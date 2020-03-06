@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394412"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
 Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
@@ -86,14 +86,14 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Objectnaam | Tellernaam |
 |:--|:--|
 | Logische schijf | % Vrije inodes |
-| Logische schijf | % vrije ruimte |
+| Logische schijf | Percentage vrije ruimte |
 | Logische schijf | % Gebruikte inodes |
 | Logische schijf | Percentage gebruikte ruimte |
-| Logische schijf | gelezen bytes per seconde |
-| Logische schijf | leesbewerkingen per seconde |
+| Logische schijf | Bytes gelezen op schijf/sec |
+| Logische schijf | Schijf lezen per seconde |
 | Logische schijf | Schijfoverdrachten per seconde |
-| Logische schijf | geschreven Bytes per seconde |
-| Logische schijf | schrijfbewerkingen per seconde |
+| Logische schijf | Bytes geschreven naar schijf/sec |
+| Logische schijf | Schijf schrijven per seconde |
 | Logische schijf | Beschikbare Megabytes |
 | Logische schijf | Logische schijf Bytes per seconde |
 | Geheugen | Percentage beschikbaar geheugen |
@@ -129,14 +129,14 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Processor | % I/o-wacht tijd |
 | Processor | Percentage tijd in Nice |
 | Processor | Percentage tijd in beschermde modus |
-| Processor | Percentage processortijd |
+| Processor | % Processortijd |
 | Processor | Percentage gebruikers tijd |
 | Systeem | Vrij fysiek geheugen |
 | Systeem | Vrije ruimte in wissel geheugen bestanden |
 | Systeem | Vrij virtueel geheugen |
 | Systeem | Processen |
 | Systeem | Grootte opgeslagen in Wissel bestanden |
-| Systeem | Bedrijfstijd |
+| Systeem | Actieve tijdsduur |
 | Systeem | Gebruikers |
 
 

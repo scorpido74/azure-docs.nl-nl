@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388952"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -35,7 +35,7 @@ Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u 
 --- | ---
 **VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
 **ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
-**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft de volgende machtigingen nodig:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: het in-of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met behulp van de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. AllowDiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een virtuele machine wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/>- **VirtualMachine. provisioning. AllowVirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
+**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft de volgende machtigingen nodig:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: het in-of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met behulp van de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. AllowDiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een virtuele machine wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowDiskRandomAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowVirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
 
 
 

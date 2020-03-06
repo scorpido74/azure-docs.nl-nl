@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 5e7a4eff57841fdcf3bab87eda4e9771d9742bc5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190369"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386765"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
@@ -24,7 +24,7 @@ In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van New Yo
 
 > [!div class="checklist"]
 > * Een SQL-groep maken in de Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken voor gegevens in Azure Blob Storage
@@ -86,7 +86,7 @@ Volg deze stappen om een lege data base te maken.
     ![prestaties configureren](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Selecteer **Toepassen**.
-9. Selecteer op de Blade inrichten een **sortering** voor de lege data base. Gebruik voor deze zelfstudie de standaardwaarde. Zie [Collations](/sql/t-sql/statements/collations) (Sorteringen) voor meer informatie over sorteringen
+9. Selecteer op de Blade inrichten een **sortering** voor de lege data base. Gebruik voor deze zelfstudie de standaardwaarde. Zie [Sorteringen](/sql/t-sql/statements/collations) voor meer informatie over sorteringen.
 
 11. Nu u het formulier hebt ingevuld, selecteert u **maken** om de data base in te richten. De inrichting duurt een paar minuten. 
 
@@ -148,7 +148,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Servertype    | Database-engine                            | Deze waarde is verplicht                                       |
     | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet er ongeveer als volgt uitzien: **mynewserver-20180430.database.Windows.net**. |
-    | Authentication | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
+    | Verificatie | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
     | Aanmelden          | Het beheerdersaccount voor de server                   | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord       | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 
@@ -630,7 +630,7 @@ In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
 > * Een datawarehouse gemaakt in Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding gemaakt met het datawarehouse met SMMS
 > * Een gebruiker gemaakt die wordt aangewezen om gegevens te laden
 > * Externe tabellen gemaakt voor gegevens in Azure Storage Blob

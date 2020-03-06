@@ -15,11 +15,11 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792590"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392928"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow indelingen en codecs
 
@@ -40,7 +40,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die door d
 
 ### <a name="input-containerfile-formats"></a>Invoer van container/bestands indelingen
 
-* F4V van Adobe® Flash®
+* Adobe® Flash® F4V
 * MXF/SMPTE 377M
 * GXF
 * MPEG-2-transport stromen
@@ -68,7 +68,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die door d
 * AAC (AAC-LC, AAC-HE en AAC-HEv2; tot 5,1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
-* Windows Media-Audio
+* Windows Media Audio
 * WAV/PCM
 
 ## <a id="output_format"></a>Uitvoer indelingen en codecs Media Encoder Premium Workflow
@@ -77,7 +77,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die worden
 
 ### <a name="output-containerfile-formats"></a>Uitvoer container/bestands indelingen
 
-* F4V van Adobe® Flash®
+* Adobe® Flash® F4V
 * MXF (OP1a, XDCAM en AS02)
 * DPP (inclusief AS11)
 * GXF
@@ -107,7 +107,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die worden
 * AAC (AAC-LC, AAC-HE en AAC-HEv2; tot 5,1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
-* Windows Media-Audio
+* Windows Media Audio
 
 >[!NOTE]
 >Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
@@ -137,7 +137,7 @@ Bij uitvoer zijn de volgende opties beschikbaar:
 
 Als uw invoer video geen ondertiteling bevat, bevat het uitvoer activum nog een leeg TTML-bestand. 
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

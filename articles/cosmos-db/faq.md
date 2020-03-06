@@ -8,11 +8,11 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 322d1c9ead1e7591c359c35c445fa32529db22ef
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387117"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -519,7 +519,7 @@ Azure Cosmos DB Gremlin-API maakt gebruik van de open-source-stuurprogramma's al
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Hoe worden RU/s in rekening gebracht bij het uitvoeren van query's op een grafiekdatabase?
 
-Alle graph-objecten, hoekpunten en randen, worden weergegeven als JSON-documenten in de back-end. Omdat een Gremlin-query op een wijzigen kunt of veel graph-objecten op een tijdstip, wordt de kosten die gepaard gaan met het rechtstreeks met betrekking tot de objecten, randen die worden verwerkt door de query. Dit is hetzelfde proces dat Azure Cosmos DB voor alle andere API's gebruikt. Zie [aanvraag eenheden in azure Cosmos DB](request-units.md)voor meer informatie.
+Alle graph-objecten, hoekpunten en randen, worden weergegeven als JSON-documenten in de back-end. Omdat een Gremlin-query op een wijzigen kunt of veel graph-objecten op een tijdstip, wordt de kosten die gepaard gaan met het rechtstreeks met betrekking tot de objecten, randen die worden verwerkt door de query. Dit is hetzelfde proces dat Azure Cosmos DB voor alle andere API's gebruikt. Zie [Aanvraageenheden in Azure Cosmos DB](request-units.md) voor meer informatie.
 
 De RU-kosten zijn gebaseerd op de werkset van de gegevens van het transport en niet het resultaat ingesteld. Bijvoorbeeld, als een query is erop gericht om op te halen van een hoekpunt als gevolg hiervan, maar moet meer dan één ander object van de manier waarop passeren, klikt u vervolgens de kosten wordt worden gebaseerd op alle graph-objecten die nodig is voor het berekenen van het hoekpunt één resultaat.
 

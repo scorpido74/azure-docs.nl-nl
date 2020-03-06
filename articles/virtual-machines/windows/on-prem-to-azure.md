@@ -16,11 +16,11 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388642"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migreren van Amazon Web Services (AWS) en andere platforms naar Managed Disks in azure
 
@@ -63,7 +63,7 @@ Kies een locatie waar Azure Managed Disks beschikbaar zijn. Als u migreert naar 
 Als u migreert naar Premium Managed Disks, moet u de grootte van de virtuele machine bijwerken naar Premium Storage geschikte grootte die beschikbaar is in de regio waarin de VM zich bevindt. Controleer de grootte van de virtuele machines die Premium Storage kunnen worden ondersteund. De Azure VM-grootte specificaties worden weer gegeven in [grootten voor virtuele machines](sizes.md).
 Bekijk de prestatie kenmerken van virtuele machines die met Premium Storage werken en kies de meest geschikte VM-grootte die het beste past bij uw werk belasting. Zorg ervoor dat er voldoende band breedte beschikbaar is op uw virtuele machine om het schijf verkeer te verzorgen.
 
-### <a name="disk-sizes"></a>Schijfformaten
+### <a name="disk-sizes"></a>Schijf grootten
 
 **Premium-Managed Disks**
 

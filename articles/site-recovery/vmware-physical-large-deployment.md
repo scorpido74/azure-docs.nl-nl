@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895799"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362578"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Herstel na nood geval op schaal instellen voor virtuele VMware-machines/fysieke servers
 
@@ -127,7 +127,7 @@ Het is belang rijk dat u voldoende configuratie servers en scale-out proces serv
  
 De capaciteit van de configuratie server wordt beïnvloed door het aantal computers dat repliceert, en niet op basis van het verloop tempo van gegevens. Als u wilt weten of u aanvullende configuratie servers nodig hebt, gebruikt u deze gedefinieerde VM-limieten.
 
-**CPU** | **Geheugen** | **Cache schijf** | **Limiet van gerepliceerde machines**
+**VERBRUIK** | **Geheugenmetabase** | **Cache schijf** | **Limiet van gerepliceerde machines**
  --- | --- | --- | ---
 8 Vcpu's<br> 2 sockets * 4 kernen @ 2,5 GHz | 16 GB | 600 GB | Maxi maal 550 computers<br> Er wordt van uitgegaan dat elke machine drie schijven van 100 GB elk heeft.
 
@@ -153,7 +153,7 @@ De capaciteit van de proces server wordt beïnvloed door de gegevens verloop tar
 - U wordt aangeraden een server met de hoogste specificatie toe te voegen. 
 
 
-**CPU** | **Geheugen** | **Cache schijf** | **Verloop frequentie**
+**VERBRUIK** | **Geheugenmetabase** | **Cache schijf** | **Verloop frequentie**
  --- | --- | --- | --- 
 12 Vcpu's<br> 2 sockets * 6 kernen @ 2,5 GHz | 24 GB | 1 GB | Tot 2 TB per dag
 

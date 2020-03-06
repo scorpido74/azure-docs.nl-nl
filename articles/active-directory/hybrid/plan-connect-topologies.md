@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Ondersteunde topologieën | Microsoft Docs'
+title: 'Azure AD Connect: ondersteunde topologieën | Microsoft Docs'
 description: In dit onderwerp vindt u informatie over ondersteunde en niet-ondersteunde topologieën voor Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376104"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Sync als de oplossing voor sleutel integratie. Dit artikel bevat zowel ondersteunde als niet-ondersteunde configuraties.
@@ -29,7 +29,7 @@ In dit artikel worden verschillende topologieën voor on-premises en Azure Activ
 
 Hier ziet u de legenda voor afbeeldingen in het artikel:
 
-| Description | Valuta |
+| Beschrijving | Valuta |
 | --- | --- |
 | On-premises Active Directory-forest |![On-premises Active Directory-forest](./media/plan-connect-topologies/LegendAD1.png) |
 | On-premises Active Directory met gefilterde import |![Active Directory met gefilterde import](./media/plan-connect-topologies/LegendAD2.png) |
@@ -42,7 +42,7 @@ Hier ziet u de legenda voor afbeeldingen in het artikel:
 
 
 > [!IMPORTANT]
-> Micro soft biedt geen ondersteuning voor het wijzigen of uitvoeren van Azure AD Connect synchronisatie buiten de configuraties of acties die formeel zijn gedocumenteerd. Een van deze configuraties of acties kan leiden tot een inconsistente of niet-ondersteunde status van Azure AD Connect synchronisatie. Daarom biedt Microsoft geen technische ondersteuning voor dergelijke implementaties.
+> Micro soft biedt geen ondersteuning voor het wijzigen of uitvoeren van Azure AD Connect synchronisatie buiten de configuraties of acties die formeel zijn gedocumenteerd. Een van deze configuraties of acties kan leiden tot een inconsistente of niet-ondersteunde status van Azure AD Connect synchronisatie. Als gevolg hiervan kan micro soft geen technische ondersteuning bieden voor dergelijke implementaties.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant

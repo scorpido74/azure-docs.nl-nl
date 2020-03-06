@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394391"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Gegevens bronnen in het Windows-gebeurtenis logboek in Azure Monitor
 Windows-gebeurtenis logboeken zijn een van de meest voorkomende [gegevens bronnen](agent-data-sources.md) voor het verzamelen van gegevens met behulp van Windows-agents, omdat veel toepassingen naar het Windows-gebeurtenis logboek schrijven.  U kunt gebeurtenissen uit standaard logboeken, zoals systeem en toepassing, verzamelen naast het opgeven van aangepaste logboeken die zijn gemaakt door toepassingen die u wilt bewaken.
@@ -46,7 +46,7 @@ Windows-gebeurtenis records hebben een type **gebeurtenis** en hebben de eigensc
 | EventCategory |De categorie van de gebeurtenis. |
 | Event Data |Alle gebeurtenis gegevens in RAW-indeling. |
 | Gebeurtenis |Nummer van de gebeurtenis. |
-| eventLevel |De ernst van de gebeurtenis in de vorm van een getal. |
+| EventLevel |De ernst van de gebeurtenis in de vorm van een getal. |
 | EventLevelName |De ernst van de gebeurtenis in de vorm van tekst. |
 | Geschreven |De naam van het gebeurtenis logboek waaruit de gebeurtenis is verzameld. |
 | ParameterXml |Gebeurtenis parameter waarden in XML-indeling. |

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
 ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360819"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er door Azure Monitor bewaakt?
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -117,7 +117,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |IoT Hub | Ja | Ja | Nee |  |
 |Key Vault | Ja | Ja | Nee |  |
 |Kubernetes Service (AKS) | Nee | Nee | [Ja](insights/container-insights-overview.md)  |  |
-|Load balancer | Ja | Ja | Nee |  |
+|Load Balancer | Ja | Ja | Nee |  |
 |Logic Apps | Ja | Ja | Nee |  |
 |Machine Learning-service | Nee | Nee | Nee |  |
 |Beheerde toepassingen  | Nee | Nee | Nee |  |

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274474"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393099"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Inktgegevens naar de Ink Recognizer-API verzenden 
 

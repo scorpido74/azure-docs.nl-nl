@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812918"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394835"
 ---
 # <a name="about-voice-assistants"></a>Over spraak assistenten
 
@@ -31,7 +31,7 @@ Toepassingen maken verbinding met de Voice Assistant-service met de speech Softw
 
 De eerste stap bij het maken van een spraak assistent is bepalen wat het moet doen. De speech-service biedt meerdere, complementaire oplossingen voor het bouwen van uw assistent-interacties. Of u de flexibiliteit en veelzijdigheid wilt hebben dat het directe- [lijn spraak](direct-line-speech.md) kanaal van het bot-Framework of de eenvoud van [aangepaste opdrachten (preview)](custom-commands.md) voor duidelijke scenario's is, en u kunt de juiste hulpprogram ma's downloaden om aan de slag te gaan.
 
-| Als u wilt... | Bekijk vervolgens... | Bijvoorbeeld... |
+| Als u wilt dat... | Bekijk vervolgens... | Bijvoorbeeld... |
 |-------------------|------------------|----------------|
 |Open-end-conversatie met robuuste integratie van vaardig heden en volledige implementatie beheer | Het [directe-lijn spraak](direct-line-speech.md) kanaal van het bot-Framework | <ul><li>"Ik moet naar Seattle gaan"</li><li>"Welk soort pizza kan ik best Ellen?"</li></ul>
 |Discussies over opdrachten en besturings elementen of taak gerichte uitwisseling met vereenvoudigd ontwerpen en hosten | [Aangepaste opdrachten (preview-versie)](custom-commands.md) | <ul><li>"Het overhead licht inschakelen"</li><li>"Maak IT 5 graden warmer"</ul>
@@ -56,7 +56,7 @@ Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrach
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstart | Platform | API-referentie |
+| Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |
@@ -80,7 +80,7 @@ Spraak assistenten die zijn gebouwd met behulp van de spraak service kunnen gebr
 > [!NOTE]
 > Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)

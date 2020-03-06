@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826592"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359171"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Een Azure SQL Database of failover naar een secundaire herstellen
 
@@ -89,7 +89,7 @@ Als de downtime van uw toepassing niet leidt tot bedrijfs aansprakelijkheid, kun
 
 Als u geo-herstel gebruikt om een storing te herstellen, moet u ervoor zorgen dat de verbinding met de nieuwe data bases juist is geconfigureerd zodat de normale toepassings functie kan worden hervat. Dit is een controle lijst met taken voor het voorbereiden van uw herstelde database productie.
 
-### <a name="update-connection-strings"></a>Verbindings reeksen bijwerken
+### <a name="update-connection-strings"></a>Verbindingsreeksen bijwerken
 
 Omdat de herstelde data base zich op een andere server bevindt, moet u de connection string van de toepassing bijwerken zodat deze naar die server verwijst.
 

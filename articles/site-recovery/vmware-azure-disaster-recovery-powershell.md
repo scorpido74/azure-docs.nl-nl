@@ -8,17 +8,17 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861266"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391752"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell
 
 In dit artikel ziet u hoe u virtuele VMware-machines repliceert naar Azure met behulp van Azure PowerShell.
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > - Maak een Recovery Services kluis en stel de kluis context in.
@@ -342,7 +342,7 @@ U hebt de volgende gegevens nodig om een gedetecteerde virtuele machine te bevei
 * Het Beveilig bare item dat moet worden gerepliceerd.
 * Het opslag account waarnaar de virtuele machine moet worden gerepliceerd (alleen als u naar het opslag account repliceert). 
 * Er is een logboek opslag vereist om virtuele machines te beveiligen met een Premium Storage-account of een beheerde schijf.
-* De proces server die moet worden gebruikt voor replicatie. De lijst met beschikbare processervers zijn opgehaald en opgeslagen in de ***$ProcessServers [0]***  *(ScaleOut-surrogaatbestand)* en ***$ProcessServers [1]*** *(ConfigurationServer)* variabelen.
+* De proces server die moet worden gebruikt voor replicatie. De lijst met beschik bare proces servers is opgehaald en opgeslagen in de variabelen ***$ProcessServers [0]***  *(uitschalen-ProcessServer)* en ***$ProcessServers [1]*** *(ConfigurationServer)* .
 * Het account dat moet worden gebruikt voor de push-installatie van de Mobility service-software op de computers. De lijst met beschik bare accounts is opgehaald en opgeslagen in de variabele ***$AccountHandles*** .
 * De toewijzing van de beveiligings container voor het replicatie beleid dat moet worden gebruikt voor replicatie.
 * De resource groep waarin de virtuele machines moeten worden gemaakt voor failover.
@@ -351,11 +351,11 @@ U hebt de volgende gegevens nodig om een gedetecteerde virtuele machine te bevei
 Repliceer nu de volgende virtuele machines met de instellingen die zijn opgegeven in deze tabel
 
 
-|Virtuele machine  |Proces server        |Opslagaccount              |Opslag account voor logboek  |Beleid           |Account voor de installatie van de Mobility-service|Doelresourcegroep  | Virtueel doelnetwerk  |Doel-subnet  |
+|Virtuele machine  |Proces server        |Opslagaccount              |Opslag account voor logboek  |Beleid           |Account voor de installatie van de Mobility-service|Doel resource groep  | Virtueel netwerk van doel  |Doel-subnet  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |N.v.t.| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N.v.t.                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell

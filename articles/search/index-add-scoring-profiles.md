@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379690"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Score profielen toevoegen aan een Azure Cognitive Search-index
 
-  Score verwijst naar de berekening van een *Zoek Score* voor elk item dat wordt geretourneerd in de zoek resultaten. De score is een indicatie van de relevantie van een item in de context van de huidige Zoek bewerking. Hoe hoger de score, hoe relevant het item. In Zoek resultaten worden items gerangschikt van hoog naar laag, op basis van de zoek scores die voor elk item worden berekend.  
+  Score verwijst naar de berekening van een *Zoek Score* voor elk item dat wordt geretourneerd in de zoek resultaten. De score is een indicatie van de relevantie van een item in de context van de huidige zoekbewerking. Hoe hoger de score, hoe relevanter het item. In Zoek resultaten worden items gerangschikt van hoog naar laag, op basis van de zoek scores die voor elk item worden berekend.  
 
  In azure Cognitive Search wordt gebruikgemaakt van de standaard score voor het berekenen van een eerste score, maar u kunt de berekening aanpassen via een *Score profiel*. Score profielen geven u meer controle over de rang schikking van items in Zoek resultaten. U kunt bijvoorbeeld items verhogen op basis van hun omzet potentieel, nieuwere items promoten of mogelijk objecten verhogen die in de voor Raad te lang zijn.  
 
@@ -280,7 +280,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 |1 dag|"P1D"|  
 |2 dagen en 12 uur|"P2DT12H"|  
 |15 minuten|"PT15M"|  
-|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M 6.334 S"|  
+|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M6.334S"|  
 
  Zie [XML-schema: data types (w3.org-website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)voor meer voor beelden.  
 

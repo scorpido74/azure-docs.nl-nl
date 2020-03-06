@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077032e4fe3886d5bf9a678dffdffca1a5802091
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848405"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377511"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -32,7 +32,7 @@ Sommige van deze instellingen zijn van toepassing op de MFA-server, Azure MFA of
 
 | Functie | Beschrijving |
 | ------- | ----------- |
-| Accountvergrendeling | Accounts in de multi-factor Authentication-Service tijdelijk vergren delen als er te veel pogingen tot authenticatie in een rij zijn geweigerd. Deze functie is alleen van toepassing op gebruikers die een pincode invoeren om te verifiëren. (MFA-server) |
+| Account vergrendeling | Accounts in de multi-factor Authentication-Service tijdelijk vergren delen als er te veel pogingen tot authenticatie in een rij zijn geweigerd. Deze functie is alleen van toepassing op gebruikers die een pincode invoeren om te verifiëren. (MFA-server) |
 | [Gebruikers blok keren/deblokkeren](#block-and-unblock-users) | Wordt gebruikt om te voor komen dat specifieke gebruikers Multi-Factor Authentication-aanvragen kunnen ontvangen. Verificatiepogingen voor geblokkeerde gebruikers worden automatisch geweigerd. Gebruikers blijven 90 dagen geblokkeerd vanaf het moment dat ze zijn geblokkeerd. |
 | [Fraude waarschuwing](#fraud-alert) | Instellingen configureren met betrekking tot gebruikers die frauduleuze verificatie aanvragen rapporteren |
 | [Meldingen](#notifications) | Meldingen van gebeurtenissen van MFA-server inschakelen. |
@@ -49,9 +49,9 @@ De instellingen in deze sectie gelden alleen voor MFA-servers.
 | Serverinstellingen | MFA-server downloaden en activerings referenties genereren om uw omgeving te initialiseren |
 | [Eenmalige bypass](#one-time-bypass) | Toestaan dat een gebruiker wordt geverifieerd zonder verificatie in twee stappen gedurende een beperkte periode. |
 | [Regels voor opslaan in cache](#caching-rules) |  Caching wordt hoofd zakelijk gebruikt wanneer on-premises systemen, zoals VPN, meerdere verificatie aanvragen verzenden terwijl de eerste aanvraag nog wordt uitgevoerd. Met deze functie kunnen de volgende aanvragen automatisch worden uitgevoerd nadat de gebruiker de eerste verificatie heeft uitgevoerd. |
-| Serverstatus | Bekijk de status van uw on-premises MFA-servers, waaronder versie, status, IP en tijd en datum van de laatste communicatie. |
+| Server status | Bekijk de status van uw on-premises MFA-servers, waaronder versie, status, IP en tijd en datum van de laatste communicatie. |
 
-## <a name="activity-report"></a>Rapport met activiteiten
+## <a name="activity-report"></a>Activiteiten rapport
 
 De rapportage die hier beschikbaar is, is specifiek voor MFA server (on-premises). Voor Azure MFA-rapporten (Cloud) raadpleegt u het rapport aanmeldingen in azure AD.
 
@@ -75,7 +75,7 @@ Gebruik de functie _blok keren en blok_ keren van gebruikers om te voor komen da
 4. Voer een opmerking in het veld **reden voor blok kering opheffen** in.
 5. Selecteer **blok kering opheffen** om het blok keren van de gebruiker te volt ooien.
 
-## <a name="fraud-alert"></a>Melding bij fraude
+## <a name="fraud-alert"></a>Fraudewaarschuwing
 
 Configureer de functie _fraude waarschuwing_ zodat uw gebruikers frauduleuze pogingen voor toegang tot hun resources kunnen rapporteren. Gebruikers kunnen fraude pogingen melden via de mobiele app of via hun telefoon.
 
@@ -106,7 +106,7 @@ Hier kunt u e-mail adressen configureren voor gebruikers die e-mails met fraude 
 
 ![Voor beeld e-mail bericht fraude waarschuwing](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
-## <a name="phone-call-settings"></a>Instellingen voor telefoongesprekken
+## <a name="phone-call-settings"></a>Instellingen voor telefoon gesprek
 
 ### <a name="caller-id"></a>Beller-ID
 
@@ -163,7 +163,7 @@ Voorbeeld scripts voor het maken van aangepaste berichten.
 | Fraude bevestiging | Er is een fraude waarschuwing verzonden. Als u uw account wilt blok keren, neemt u contact op met de IT-Help Desk van uw bedrijf. |
 | Fraude begroeting (standaard) | Hartelijk dank dat u het aanmeldings verificatie systeem van micro soft gebruikt. Druk op het hekje om uw verificatie te volt ooien. Als u deze verificatie niet hebt gestart, probeert iemand mogelijk toegang te krijgen tot uw account. Druk op het hekje nul om een fraude waarschuwing te verzenden. Hiermee wordt het IT-team van uw bedrijf op de hoogte gebracht en worden verdere verificatie pogingen geblokkeerd. |
 | Fraude gemeld dat er een fraude waarschuwing is verzonden. | Als u uw account wilt blok keren, neemt u contact op met de IT-Help Desk van uw bedrijf. |
-| Activering | Hartelijk dank dat u het micro soft-aanmeld verificatie systeem gebruikt. Druk op het hekje om uw verificatie te volt ooien. |
+| Activiteitsstatus | Hartelijk dank dat u het micro soft-aanmeld verificatie systeem gebruikt. Druk op het hekje om uw verificatie te volt ooien. |
 | Poging tot authenticatie geweigerd | Verificatie geweigerd. |
 | Nieuwe poging (standaard) | Hartelijk dank dat u het micro soft-aanmeld verificatie systeem gebruikt. Druk op het hekje om uw verificatie te volt ooien. |
 | Begroeting (standaard) | Hartelijk dank dat u het micro soft-aanmeld verificatie systeem gebruikt. Druk op het hekje om uw verificatie te volt ooien. |
@@ -177,7 +177,7 @@ Voorbeeld scripts voor het maken van aangepaste berichten.
 | Activerings begroeting (pincode) | Hartelijk dank dat u het aanmeldings verificatie systeem van micro soft gebruikt. Voer uw pincode in, gevolgd door de hekje om uw verificatie te volt ooien. |
 | Vragen om toestel voor cijfers | Hartelijk dank dat u het aanmeldings verificatie systeem van micro soft gebruikt. Zet deze oproep over naar de extensie... |
 
-## <a name="one-time-bypass"></a>Eenmalige toegang
+## <a name="one-time-bypass"></a>Eenmalige bypass
 
 Met de functie _eenmalig overs Laan_ kan een gebruiker één keer verifiëren zonder verificatie in twee stappen uit te voeren. De bypass is tijdelijk en verloopt na een opgegeven aantal seconden. In situaties waarin de mobiele app of telefoon geen melding of telefoon oproep ontvangt, kunt u eenmalig overs Laan toestaan, zodat de gebruiker toegang kan krijgen tot de gewenste resource.
 
@@ -219,7 +219,7 @@ Instellingen voor app-wacht woorden, vertrouwde IP-adressen, verificatie opties 
 
 De vertrouwde IP-adresbereiken kunnen privé of openbaar zijn.
 
-## <a name="app-passwords"></a>App-wachtwoorden
+## <a name="app-passwords"></a>App-wacht woorden
 
 Sommige toepassingen, zoals Office 2010 of eerder en Apple mail vóór iOS 11, bieden geen ondersteuning voor verificatie in twee stappen. De apps zijn niet geconfigureerd om een tweede verificatie te accepteren. Als u deze toepassingen wilt gebruiken, kunt u profiteren van de functie voor het maken van _app-wacht woorden_ . U kunt een app-wacht woord gebruiken in plaats van uw traditionele wacht woord, zodat een app de verificatie in twee stappen kan overs Laan en verder kan werken.
 
@@ -278,8 +278,8 @@ Azure AD ondersteunt Federatie of eenmalige aanmelding (SSO) met on-premises Win
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld. Gebruik de volgende procedure om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **Gebruikers**.
-3. Selecteer **Multi-Factor Authentication**.
+2. Selecteer aan de linkerkant **Azure Active Directory** **gebruikers** > .
+3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 5. Selecteer op de pagina **Service-instellingen** de optie **gebruikers toestaan app-wacht woorden te maken om zich aan te melden bij niet-browser-apps** .
 
@@ -300,8 +300,8 @@ Als uw organisatie de NPS-extensie implementeert voor het leveren van MFA aan on
 
 | Type Azure AD-Tenant | Opties voor de functie vertrouwde IP-adressen |
 |:--- |:--- |
-| Managed |**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd.|
-| Federatief |**Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij de organisatie, kunnen verificatie in twee stappen overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
+| Bijgehouden |**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd.|
+| Federatie |**Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij de organisatie, kunnen verificatie in twee stappen overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee de verificatie in twee stappen kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
 
 Het omzeilen van vertrouwde Ip's werkt alleen vanuit het bedrijfs intranet. Als u de optie **alle federatieve gebruikers** selecteert en de gebruiker zich aanmeldt van buiten het bedrijfs intranet, moet de gebruiker verifiëren met behulp van verificatie in twee stappen. Het proces is hetzelfde, zelfs als de gebruiker een AD FS claim presenteert. 
 
@@ -346,8 +346,8 @@ Ongeacht of de functie voor vertrouwde IP-adressen is ingeschakeld, is verificat
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>De functie voor vertrouwde IP-adressen inschakelen met behulp van service-instellingen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **Gebruikers**.
-3. Selecteer **Multi-Factor Authentication**.
+2. Selecteer aan de linkerkant **Azure Active Directory** **gebruikers** > .
+3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 5. Kies op de pagina **Service-instellingen** onder **betrouw bare ip's**een (of beide) van de volgende twee opties:
 
@@ -370,16 +370,16 @@ Wanneer uw gebruikers hun accounts voor Azure Multi-Factor Authentication inschr
 
 | Methode | Beschrijving |
 |:--- |:--- |
-| Bellen naar telefoon |Hiermee wordt een geautomatiseerd telefoon gesprek geplaatst. De gebruiker beantwoordt het gesprek en drukt # in op de toetsenblok van de telefoon om te authenticeren. Het telefoon nummer is niet gesynchroniseerd met on-premises Active Directory. |
-| Sms-bericht naar telefoon |Hiermee verzendt u een tekst bericht met een verificatie code. De gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface. Dit proces wordt eenrichtings-SMS genoemd. Twee richtings-SMS betekent dat de gebruiker een bepaalde code moet herstellen. SMS-in twee richtingen is afgeschaft en wordt niet ondersteund na 14 november 2018. Beheerders moeten een andere methode inschakelen voor gebruikers die eerder twee richtings SM'S hebben gebruikt.|
+| Bellen naar telefoon |Hiermee wordt een geautomatiseerd telefoon gesprek geplaatst. De gebruiker beantwoordt het gesprek en drukt # in het toetsen blok van de telefoon om te verifiëren. Het telefoon nummer is niet gesynchroniseerd met on-premises Active Directory. |
+| SMS-bericht naar telefoon |Hiermee verzendt u een tekst bericht met een verificatie code. De gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface. Dit proces wordt eenrichtings-SMS genoemd. Twee richtings-SMS betekent dat de gebruiker een bepaalde code moet herstellen. SMS-in twee richtingen is afgeschaft en wordt niet ondersteund na 14 november 2018. Beheerders moeten een andere methode inschakelen voor gebruikers die eerder twee richtings SM'S hebben gebruikt.|
 | Melding via mobiele app |Hiermee verzendt u een push melding naar uw telefoon of geregistreerd apparaat. De gebruiker bekijkt de melding en selecteert **verifiëren** om de verificatie te volt ooien. De Microsoft Authenticator-app is beschikbaar voor [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)en [IOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
-| Verificatiecode van mobiele app of hardwaretoken |De Microsoft Authenticator-app genereert elke 30 seconden een nieuwe OATH-verificatie code. De gebruiker voert de verificatie code in de aanmeldings interface in. De Microsoft Authenticator-app is beschikbaar voor [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)en [IOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
+| Verificatie code van de mobiele app of het hardware-token |De Microsoft Authenticator-app genereert elke 30 seconden een nieuwe OATH-verificatie code. De gebruiker voert de verificatie code in de aanmeldings interface in. De Microsoft Authenticator-app is beschikbaar voor [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)en [IOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="enable-and-disable-verification-methods"></a>Verificatie methoden in-en uitschakelen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **Gebruikers**.
-3. Selecteer **Multi-Factor Authentication**.
+2. Selecteer aan de linkerkant **Azure Active Directory** **gebruikers** > .
+3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 5. Selecteer op de pagina **Service-instellingen** onder **verificatie opties**de methoden die aan uw gebruikers moeten worden verstrekt.
 6. Klik op **Opslaan**.
@@ -388,7 +388,7 @@ Meer informatie over het gebruik van verificatie methoden vindt u in het artikel
 
 ## <a name="remember-multi-factor-authentication"></a>Onthouden Multi-Factor Authentication
 
-De functie _multi-factor Authentication onthouden_ voor apparaten en browsers die worden vertrouwd door de gebruiker is een gratis functie voor alle multi-factor Authentication-gebruikers. Gebruikers kunnen volgende controles gedurende een bepaald aantal dagen overslaan nadat ze zijn aangemeld bij een apparaat met behulp van Multi-Factor Authentication. De functie verbetert de bruikbaarheid door het aantal keren dat een gebruiker verificatie in twee stappen moet uitvoeren op hetzelfde apparaat te minimaliseren.
+De functie _multi-factor Authentication onthouden_ voor apparaten en browsers die worden vertrouwd door de gebruiker is een gratis functie voor alle multi-factor Authentication-gebruikers. Gebruikers kunnen volgende controles over een bepaald aantal dagen overs Laan nadat ze zijn aangemeld bij een apparaat met behulp van Multi-Factor Authentication. De functie verbetert de bruikbaarheid door het aantal keren dat een gebruiker verificatie in twee stappen moet uitvoeren op hetzelfde apparaat te minimaliseren.
 
 >[!IMPORTANT]
 >Als een account of apparaat is aangetast, kan de beveiliging worden beïnvloed door Multi-Factor Authentication voor vertrouwde apparaten. Als er een bedrijfs account wordt aangetast of een vertrouwd apparaat verloren is gegaan of wordt gestolen, moet u [MFA-sessies intrekken](howto-mfa-userdevicesettings.md).
@@ -414,8 +414,8 @@ De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke k
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication onthouden inschakelen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer aan de linkerkant **Azure Active Directory** > **Gebruikers**.
-3. Selecteer **Multi-Factor Authentication**.
+2. Selecteer aan de linkerkant **Azure Active Directory** **gebruikers** > .
+3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
 5. Op de pagina **service** -instellingen **beheert u multi-factor Authentication onthouden**en selecteert **u de optie gebruikers toestaan om multi-factor Authentication te onthouden op apparaten die ze vertrouwen** .
 6. Stel het aantal dagen in zodat vertrouwde apparaten de verificatie in twee stappen kunnen overs Laan. De standaard waarde is 14 dagen.

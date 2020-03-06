@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377739"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-delegering voor single sign-on bij uw apps met Application Proxy
 
@@ -46,27 +46,27 @@ In dit diagram wordt de stroom uitgelegd wanneer een gebruiker toegang probeert 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u aan de slag met eenmalige aanmelding voor geïntegreerde Windows-toepassingen, zorg er dan voor dat uw omgeving klaar is met de volgende instellingen en configuraties is:
 
-* Uw apps, zoals SharePoint Web-apps, zijn ingesteld op het gebruik van geïntegreerde Windows-verificatie. Zie voor meer informatie, [ondersteuning voor Kerberos-verificatie inschakelen](https://technet.microsoft.com/library/dd759186.aspx), of voor SharePoint Zie [plannen voor Kerberos-verificatie in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx).
-* Al uw apps hebt [Service Principal Names](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* De server waarop de Connector wordt uitgevoerd en de server met de app zijn toegevoegd aan een domein en deel uitmaken van hetzelfde domein of vertrouwde domeinen. Zie voor meer informatie over het koppelen van domeinen, [een Computer toevoegen aan een domein](https://technet.microsoft.com/library/dd807102.aspx).
+* Uw apps, zoals SharePoint Web-apps, zijn ingesteld op het gebruik van geïntegreerde Windows-verificatie. Zie [Enable support for Kerberos Authentication](https://technet.microsoft.com/library/dd759186.aspx)(Engelstalig) voor meer informatie, of voor share point Zie [Kerberos-verificatie plannen in share point 2013](https://technet.microsoft.com/library/ee806870.aspx).
+* Al uw apps hebben [service-principal-namen](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
+* De server waarop de Connector wordt uitgevoerd en de server met de app zijn toegevoegd aan een domein en deel uitmaken van hetzelfde domein of vertrouwde domeinen. Zie [een computer toevoegen aan een domein](https://technet.microsoft.com/library/dd807102.aspx)voor meer informatie over het toevoegen van domeinen aan een domein.
 * De server waarop de Connector wordt uitgevoerd heeft toegang tot het lezen van het kenmerk TokenGroupsGlobalAndUniversal voor gebruikers. Deze standaardinstelling is mogelijk beïnvloed door het beperken van de omgeving.
 
 ### <a name="configure-active-directory"></a>Active Directory configureren
 De Active Directory-configuratie varieert, afhankelijk van of de toepassingsserver en de Application Proxy-connector zich in hetzelfde domein of niet.
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>Connector en toepassingsserver in hetzelfde domein
-1. In Active Directory, gaat u naar **extra** >  **: gebruikers en Computers**.
+1. Ga in Active Directory naar **Hulpprogram ma's** > **gebruikers en computers**.
 2. Selecteer de server waarop de connector wordt uitgevoerd.
-3. Met de rechtermuisknop op en selecteer **eigenschappen** > **delegering**.
-4. Selecteer **deze computer mag alleen aan opgegeven services delegeren**. 
+3. Klik met de rechter muisknop en selecteer **eigenschappen** > **delegering**.
+4. Selecteer **deze computer mag alleen delegeren aan de opgegeven services**. 
 5. Selecteer **elk verificatie protocol gebruiken**.
-6. Onder **Services waarop dit account gedelegeerde referenties kan presenteren** de waarde voor de identiteit van de SPN-naam van de toepassingsserver toevoegen. Hierdoor kunnen de Connector voor toepassingsproxy te imiteren van gebruikers in AD op basis van de toepassingen die zijn gedefinieerd in de lijst.
+6. Onder **Services waaraan dit account gedelegeerde referenties kan geven** , voegt u de waarde voor de SPN-identiteit van de toepassings server toe. Hierdoor kunnen de Connector voor toepassingsproxy te imiteren van gebruikers in AD op basis van de toepassingen die zijn gedefinieerd in de lijst.
 
    ![Schermafbeelding van de eigenschappen van de connector-Server-venster](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector en toepassingsserver in verschillende domeinen bevinden
-1. Zie voor een lijst met vereisten voor het werken met KCD in meerdere domeinen, [Kerberos-beperkte delegatie in domeinen](https://technet.microsoft.com/library/hh831477.aspx).
-2. Gebruik de `principalsallowedtodelegateto` eigenschap op de Connector-server de Proxy-toepassing om te delegeren voor de Connector-server in te schakelen. De toepassingsserver wordt `sharepointserviceaccount` en de delegatieverlenend server `connectormachineaccount`. Gebruik deze code als voorbeeld voor Windows 2012 R2:
+1. Zie [Kerberos-beperkte delegering over domeinen](https://technet.microsoft.com/library/hh831477.aspx)voor een lijst met vereisten voor het werken met KCD in verschillende domeinen.
+2. Gebruik de eigenschap `principalsallowedtodelegateto` op de connector server om de toepassings proxy in te scha kelen voor delegeren voor de connector server. De toepassings server is `sharepointserviceaccount` en de server voor het delegeren is `connectormachineaccount`. Gebruik deze code als voorbeeld voor Windows 2012 R2:
 
 ```powershell
 $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
@@ -76,14 +76,14 @@ Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateTo
 Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
 ```
 
-`sharepointserviceaccount`Dit kan het SPS-computer account zijn of een service account waaronder de SPS-app-pool wordt uitgevoerd.
+`sharepointserviceaccount` kan het SPS-computer account zijn of een service account waaronder de SPS-app-pool wordt uitgevoerd.
 
 ## <a name="configure-single-sign-on"></a>Eenmalige aanmelding configureren 
-1. Publiceer de toepassing op basis van de instructies die worden beschreven [publiceren van toepassingen met toepassingsproxy](application-proxy-add-on-premises-application.md). Zorg ervoor dat u selecteert **Azure Active Directory** als de **vooraf-verificatie methode**.
-2. Nadat uw toepassing wordt weergegeven in de lijst van zakelijke toepassingen, selecteert u deze en klikt u op **eenmalige aanmelding**.
-3. De modus voor één aanmelding instellen op **geïntegreerde Windows-verificatie**.  
-4. Voer de **SPN voor interne toepassing** van de toepassingsserver. In dit voorbeeld is de SPN voor de gepubliceerde toepassing http/www.contoso.com. Deze SPN moet zich in de lijst met services die de connector gedelegeerde referenties kan presenteren. 
-5. Kies de **gedelegeerde Aanmeldingsidentiteit** voor de connector te gebruiken namens uw gebruikers. Zie voor meer informatie, [werken met verschillende on-premises en cloud-identiteiten](#working-with-different-on-premises-and-cloud-identities)
+1. Publiceer uw toepassing volgens de instructies in [toepassingen publiceren met toepassings proxy](application-proxy-add-on-premises-application.md). Zorg ervoor dat u **Azure Active Directory** selecteert als **methode voor verificatie**vooraf.
+2. Als uw toepassing wordt weer gegeven in de lijst met bedrijfs toepassingen, selecteert u deze en klikt u op **eenmalige aanmelding**.
+3. Stel de modus voor eenmalige aanmelding in op **geïntegreerde Windows-verificatie**.  
+4. Voer de **interne toepassings-SPN** van de toepassings server in. In dit voorbeeld is de SPN voor de gepubliceerde toepassing http/www.contoso.com. Deze SPN moet zich in de lijst met services die de connector gedelegeerde referenties kan presenteren. 
+5. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](#working-with-different-on-premises-and-cloud-identities) voor meer informatie
 
    ![Geavanceerde configuratie](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -107,19 +107,19 @@ SPNEGO inschakelen:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Zie voor meer informatie over Kerberos, [alle u wilt weten over Kerberos-beperkte delegatie (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
+Meer informatie over Kerberos vindt [u in alles wat u wilt weten over Kerberos-beperkte delegering (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
 
 Niet-Windows-apps doorgaans gebruiker gebruikersnamen of namen van de SAM-account in plaats van dat e-mailadressen. Als deze situatie is van toepassing op uw toepassingen, moet u de gedelegeerde login ID-veld voor de verbinding van uw cloud-identiteiten met de identiteiten van uw toepassing configureren. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Werken met verschillende on-premises en cloud-identiteiten
-De toepassingsproxy wordt ervan uitgegaan dat gebruikers dezelfde identiteit in de cloud en on-premises. Maar in sommige omgevingen, vanwege bedrijfs beleid of toepassings afhankelijkheden, moeten organisaties wellicht alternatieve Id's gebruiken om zich aan te melden. In dergelijke gevallen kunt u KCD nog steeds gebruiken voor eenmalige aanmelding. Configureer een **gedelegeerde Aanmeldingsidentiteit** voor elke toepassing om op te geven welke identiteit moet worden gebruikt bij het uitvoeren van eenmalige aanmelding.  
+De toepassingsproxy wordt ervan uitgegaan dat gebruikers dezelfde identiteit in de cloud en on-premises. Maar in sommige omgevingen, vanwege bedrijfs beleid of toepassings afhankelijkheden, moeten organisaties wellicht alternatieve Id's gebruiken om zich aan te melden. In dergelijke gevallen kunt u KCD nog steeds gebruiken voor eenmalige aanmelding. Configureer een **gedelegeerde aanmeldings-id** voor elke toepassing om aan te geven welke identiteit moet worden gebruikt bij het uitvoeren van eenmalige aanmelding.  
 
 Op deze manier kunt veel organisaties die beschikken over verschillende on-premises en cloud-identiteiten voor eenmalige aanmelding vanuit de cloud naar on-premises toepassingen zonder de gebruikers verschillende gebruikersnamen en wachtwoorden in te voeren. Dit omvat organisaties die:
 
-* Hebt u meerdere domeinen intern (joe@us.contoso.com, joe@eu.contoso.com) en één domein in de cloud (joe@contoso.com).
-* Niet-routeerbare domeinnaam intern hebben (joe@contoso.usa) en een juridische in de cloud.
+* Meerdere domeinen intern hebben (joe@us.contoso.com, joe@eu.contoso.com) en één domein in de Cloud (joe@contoso.com).
+* Een niet-Routeer bare domein naam hebben intern (joe@contoso.usa) en één Legal in de Cloud.
 * Domeinnamen niet intern gebruiken (Jaap)
-* Gebruik verschillende aliassen on-premises en in de Cloud. Bijvoorbeeld, joe-johns@contoso.com vs. joej@contoso.com  
+* Gebruik verschillende aliassen on-premises en in de Cloud. Bijvoorbeeld joe-johns@contoso.com versus joej@contoso.com  
 
 Met Application Proxy, kunt u selecteren welke identiteit gebruiken om op te halen van het Kerberos-ticket. Deze instelling is per toepassing. Sommige van deze opties zijn geschikt voor systemen die e-mailindeling niet accepteert, anderen zijn ontworpen voor de alternatieve aanmelding.
 
@@ -128,24 +128,24 @@ Met Application Proxy, kunt u selecteren welke identiteit gebruiken om op te hal
 Als gedelegeerde Aanmeldingsidentiteit wordt gebruikt, kan de waarde niet uniek zijn in alle domeinen of forests in uw organisatie. U kunt dit probleem voorkomen door het publiceren van deze twee keer met behulp van twee verschillende connectorgroepen toepassingen. Omdat elke toepassing een andere gebruiker publiek heeft, kunt u de Connectors toevoegen aan een ander domein.
 
 ### <a name="configure-sso-for-different-identities"></a>Eenmalige aanmelding configureren voor verschillende identiteiten
-1. Azure AD Connect-instellingen configureren, zodat de identiteit van de belangrijkste het e-mailadres (e-mail is). Dit wordt gedaan als onderdeel van het proces aanpassen door het veranderen van de **User Principal Name** veld in de synchronisatie-instellingen. Deze instellingen ook bepalen hoe gebruikers aanmelden bij Office 365, Windows10 apparaten, en andere toepassingen die gebruikmaken van Azure AD als hun identiteitenarchief.  
-   ![Schermafbeelding van de gebruikers - User Principal Name vervolgkeuzelijst identificeren](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
-2. Selecteer in de toepassingsconfiguratie-instellingen voor de toepassing die u wilt wijzigen, de **gedelegeerde Aanmeldingsidentiteit** moet worden gebruikt:
+1. Azure AD Connect-instellingen configureren, zodat de identiteit van de belangrijkste het e-mailadres (e-mail is). Dit wordt gedaan als onderdeel van het aanpassings proces door het veld UPN ( **User Principal name** ) in de synchronisatie-instellingen te wijzigen. Deze instellingen ook bepalen hoe gebruikers aanmelden bij Office 365, Windows10 apparaten, en andere toepassingen die gebruikmaken van Azure AD als hun identiteitenarchief.  
+   ![de scherm afbeelding van gebruikers identificeren-vervolg keuzelijst gebruikers-principal-naam](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
+2. Selecteer in de configuratie-instellingen van de toepassing die u wilt wijzigen de **gedelegeerde aanmeldings-id** die moet worden gebruikt:
 
-   * User Principal Name (bijvoorbeeld joe@contoso.com)
-   * Alternatieve UPN-naam (bijvoorbeeld joed@contoso.local)
+   * Principal-naam van gebruiker (bijvoorbeeld joe@contoso.com)
+   * Alternatieve Principal-naam van gebruiker (bijvoorbeeld joed@contoso.local)
    * Deel van de User Principal Name (bijvoorbeeld: Jaap) gebruikersnaam
    * Onderdeel van de gebruikersnaam van de alternatieve User Principal Name (bijvoorbeeld joed)
    * On-premises SAM-accountnaam is (afhankelijk van de configuratie van de domeincontroller)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Oplossen van problemen met eenmalige aanmelding voor verschillende identiteiten
-Als er een fout is opgetreden in het proces voor eenmalige aanmelding, deze wordt weergegeven in het gebeurtenislogboek van de connector-computer, zoals wordt beschreven [probleemoplossing](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
-Maar in sommige gevallen kan de aanvraag is verzonden naar de back-endtoepassing terwijl antwoorden op deze toepassing in verschillende HTTP-antwoorden. Het oplossen van dergelijke gevallen moet beginnen door te controleren gebeurtenisnummer 24029 op de connector-machine in het gebeurtenislogboek van de Application Proxy-sessie. De identiteit van de gebruiker die is gebruikt voor overdracht wordt weergegeven in het veld 'gebruiker' in de details van de gebeurtenis. Als u wilt inschakelen sessielogboek, selecteer **logboeken en foutopsporing weergeven analytische** in het menu Beeld van event viewer.
+Als er een fout optreedt in het SSO-proces, wordt dit weer gegeven in het gebeurtenis logboek van de connector computer, zoals wordt uitgelegd in [probleem oplossing](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
+Maar in sommige gevallen kan de aanvraag is verzonden naar de back-endtoepassing terwijl antwoorden op deze toepassing in verschillende HTTP-antwoorden. Het oplossen van dergelijke gevallen moet beginnen door te controleren gebeurtenisnummer 24029 op de connector-machine in het gebeurtenislogboek van de Application Proxy-sessie. De identiteit van de gebruiker die is gebruikt voor overdracht wordt weergegeven in het veld 'gebruiker' in de details van de gebeurtenis. Als u het sessie logboek wilt inschakelen, selecteert u **analyse logboeken en fout opsporing weer geven** in het menu Beeld van Logboeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Application Proxy-toepassing voor het gebruik van Kerberos-beperkte overdracht configureren](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Oplossen van problemen met Application Proxy](application-proxy-troubleshoot.md)
+* [Een toepassings proxy toepassing configureren voor het gebruik van beperkte Kerberos-delegering](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
 
 
 Ga naar het [blog over toepassingsproxy](https://blogs.technet.com/b/applicationproxyblog/) voor nieuws en updates.

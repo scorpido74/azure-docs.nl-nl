@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
 ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396238"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten opsporen en problemen oplossen machine learning pijp lijnen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

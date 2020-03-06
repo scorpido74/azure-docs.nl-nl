@@ -6,16 +6,16 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672111"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382591"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Een ASP.NET Core-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-dotnetcore.md) om een app te implementeren in App Service onder _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een .NET Core-web-app maken en implementeren in App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-dotnetcore.md).
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.
@@ -86,7 +86,7 @@ Maak een ASP.NET Core-web-app door de volgende stappen uit te voeren:
    | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
    |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-   | Locatie | Europa - west | Het datacenter waar de web-app wordt gehost. |
+   | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
    | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)

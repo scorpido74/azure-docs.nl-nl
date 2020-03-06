@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961309"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394985"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofd doel)
 
@@ -22,7 +22,7 @@ In dit artikel worden de configuratie, het proces en de hoofddoel servers beschr
 
 Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers hebt u een Site Recovery configuratie server die on-premises is geïmplementeerd.
 
-**Instelling** | **Details** | **Koppelen**
+**Instelling** | **Details** | **Links**
 --- | --- | ---
 **Materialen**  | Op de computer met de configuratie server worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server.<br/><br/> Wanneer u de configuratie server instelt, worden alle onderdelen automatisch geïnstalleerd. | [Lees](vmware-azure-common-questions.md#configuration-server) de veelgestelde vragen over de configuratie server.
 **Rol** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor de nood herstel van [VMware](vmware-azure-architecture.md) en [fysieke servers](physical-azure-architecture.md) naar Azure.
@@ -34,7 +34,7 @@ Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysiek
 
 ## <a name="process-server"></a>Proces server
 
-**Instelling** | **Details** | **Koppelen**
+**Instelling** | **Details** | **Links**
 --- | --- | ---
 **Implementatie**  | Voor herstel na nood gevallen en replicatie van on-premises virtuele VMware-machines en fysieke servers hebt u een proces server on-premises nodig. De proces server wordt standaard geïnstalleerd op de configuratie server wanneer u deze implementeert. | [Meer informatie](vmware-azure-architecture.md?#architectural-components).
 **Rol (on-premises** | -Ontvangt replicatie gegevens van machines die zijn ingeschakeld voor replicatie.<br/> -Hiermee optimaliseert u de replicatie gegevens met caching, compressie en versleuteling, en verzendt u deze naar Azure Storage.<br/> -Voert een push-installatie van de Site Recovery Mobility-service uit op on-premises VMware-Vm's en fysieke servers die u wilt repliceren.<br/> -Voert automatische detectie van on-premises machines uit. | [Meer informatie](vmware-physical-azure-config-process-server-overview.md#process-server). 

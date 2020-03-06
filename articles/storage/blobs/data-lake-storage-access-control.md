@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026129"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381970"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangs beheer in Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ Azure Data Lake Storage Gen2 implementeert een model voor toegangs beheer dat zo
 
 <a id="azure-role-based-access-control-rbac" />
 
-## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
 RBAC gebruikt roltoewijzingen om effectief machtigingen sets toe te passen op *beveiligings-principals*. Een *beveiligingsprincipal is een object dat een gebruiker* , groep, Service-Principal of beheerde identiteit vertegenwoordigt die is gedefinieerd in azure Active Directory (AD) dat toegang tot Azure-resources aanvraagt.
 
@@ -60,13 +60,13 @@ Zie een van de volgende artikelen voor het instellen van machtigingen voor besta
 
 |||
 |--------|-----------|
-|Azure Storage-verkenner |[Gebruik Azure Storage Explorer voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|Azure Opslagverkenner |[Gebruik Azure Storage Explorer voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Java gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
 |PowerShell|[Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure-CLI|[Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
-|REST API |[Pad-bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure CLI|[Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|REST-API |[Pad-bijwerken](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Als de beveiligingsprincipal een *service* -principal is, is het belang rijk dat u de object-id van de Service-Principal gebruikt en niet de object-id van de gerelateerde app-registratie. Als u de object-ID van de Service-Principal wilt ophalen, opent u de Azure CLI en gebruikt u deze opdracht: `az ad sp show --id <Your App ID> --query objectId`. Zorg ervoor dat u de tijdelijke aanduiding `<Your App ID>` vervangt door de App-ID van de app-registratie.
@@ -88,7 +88,7 @@ Zowel toegangs-Acl's als standaard-Acl's hebben dezelfde structuur.
 
 De machtigingen voor een container object zijn **lezen**, **schrijven**en **uitvoeren**en kunnen worden gebruikt voor bestanden en mappen, zoals wordt weer gegeven in de volgende tabel:
 
-|            |    Bestand     |   Directory |
+|            |    File     |   Directory |
 |------------|-------------|----------|
 | **Lezen (L)** | Kan de inhoud van een bestand lezen | Moet worden **gelezen** en **uitgevoerd** om de inhoud van de map weer te geven |
 | **Schrijven (S)** | Kan schrijven of toevoegen aan een bestand | **Schrijven** en **uitvoeren** is vereist om onderliggende items in een map te maken |
@@ -286,7 +286,7 @@ Gebruik altijd Azure AD-beveiligings groepen als de toegewezen Principal in Acl'
 
 - De aanroeper heeft machtigingen voor super gebruiker,
 
-Of
+of
 
 - De bovenliggende map moet de machtigingen schrijven + uitvoeren hebben.
 - Voor de map die moet worden verwijderd en voor elke map erin zijn de machtigingen lezen + schrijven + uitvoeren vereist.
@@ -302,7 +302,7 @@ De maker van een bestand of map wordt de eigenaar. In het geval van de hoofdmap 
 
 De groep die eigenaar is, wordt gekopieerd uit de groep die eigenaar is van de bovenliggende map waaronder het nieuwe bestand of de map wordt gemaakt.
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Ik ben de gebruiker die eigenaar is van een bestand, maar ik heb de LSU-machtigingen die ik nodig heb niet. Wat kan ik doen?
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Ik ben de gebruiker die eigenaar is van een bestand, maar ik heb de LSU-machtigingen die ik nodig heb niet. Wat moet ik doen?
 
 De gebruiker die eigenaar is kan de machtigingen van het bestand wijzigen en zichzelf de vereiste LSU-machtigingen geven.
 

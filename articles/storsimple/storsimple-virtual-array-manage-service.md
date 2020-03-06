@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516680"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365581"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service voor de virtuele StorSimple-matrix implementeren
 
@@ -94,7 +94,7 @@ Nadat u een service hebt gemaakt, moet u uw StorSimple-apparaat registreren bij 
 Voer de volgende stappen uit om de service registratie sleutel op te halen.
 
 #### <a name="to-get-the-service-registration-key"></a>De service registratie sleutel ophalen
-1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;**  **sleutels**.
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;** **sleutels**.
    
    ![De blade Sleutels](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. Op de Blade **sleutels** wordt een service registratie sleutel weer gegeven. Kopieer de registratie sleutel met behulp van het Kopieer pictogram. 
@@ -107,7 +107,7 @@ Als u een sleutel rotatie moet uitvoeren of als de lijst met service beheerders 
 Voer de volgende stappen uit om een service registratie sleutel opnieuw te genereren.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
-1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;**  **sleutels**.
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;** **sleutels**.
    
    ![De blade Sleutels](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. Klik op de Blade **sleutels** op **opnieuw genereren**.

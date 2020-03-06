@@ -4,13 +4,13 @@ description: Eindpunt resources beschrijven in een service manifest, inclusief h
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382836"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Resources specificeren in een servicemanifest
+# <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
 Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd/gewijzigd zonder dat de gecompileerde code wordt gewijzigd. Azure Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het bestand ServiceManifest. XML wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
 

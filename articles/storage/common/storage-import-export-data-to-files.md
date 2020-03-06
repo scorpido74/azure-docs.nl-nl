@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363905"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure import/export-service gebruiken om gegevens te importeren in Azure Files
 
@@ -26,7 +26,7 @@ De import/export-service ondersteunt alleen het importeren van Azure Files naar 
 Voordat u een import taak maakt om gegevens over te dragen naar Azure Files, moet u de volgende lijst met vereisten zorgvuldig door nemen en volt ooien. U moet het volgende doen:
 
 - Een actief Azure-abonnement hebben om te gebruiken met de import/export-service.
-- Ten minste één Azure Storage account hebben. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-account-create.md).
+- Ten minste één Azure Storage account hebben. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 - Voldoende aantal schijven van [ondersteunde typen](storage-import-export-requirements.md#supported-disks)hebben.
 - Een Windows-systeem met een [ondersteunde besturingssysteem versie](storage-import-export-requirements.md#supported-operating-systems)hebben.
 - [Down load de WAImportExport-versie 2](https://aka.ms/waiev2) op het Windows-systeem. Unzip de standaard map `waimportexport`. Bijvoorbeeld `C:\WaImportExport`.

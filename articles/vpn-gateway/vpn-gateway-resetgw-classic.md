@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379233"
 ---
-# <a name="reset-a-vpn-gateway"></a>Een VPN Gateway opnieuw instellen
+# <a name="reset-a-vpn-gateway"></a>Een VPN-gateway opnieuw instellen
 
 Het opnieuw instellen van een Azure VPN-gateway is handig als u cross-premises VPN-connectiviteit verliest in een of meer Site-to-Site VPN-tunnels. In een dergelijke situatie functioneren al uw on-premises VPN-apparaten naar behoren, maar kunnen ze geen IPSec-tunnels tot stand brengen met de Azure VPN-gateways. Dit artikel helpt u bij het opnieuw instellen van uw VPN-gateway.
 
@@ -50,7 +50,7 @@ U kunt een resource manager VPN-gateway opnieuw instellen met behulp van de Azur
    ![VPN Gateway Blade opnieuw instellen](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. Klik op de Blade opnieuw instellen op de knop **opnieuw instellen** .
 
-## <a name="ps"></a>PowerShell
+## <a name="ps"></a>Zo
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager-implementatiemodel
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Resultaat:
+Daardoor
 
 Wanneer u een retour resultaat ontvangt, kunt u aannemen dat de gateway opnieuw is ingesteld. Er is echter niets in het retour resultaat dat aangeeft dat het opnieuw instellen is geslaagd. Als u de geschiedenis nauw keurig wilt zien wanneer de gateway opnieuw is ingesteld, kunt u deze informatie bekijken in de [Azure Portal](https://portal.azure.com). Navigeer in de portal naar **' gatewaynaam '-> resource Health**.
 
@@ -77,7 +77,7 @@ In het volgende voor beeld wordt de gateway opnieuw ingesteld voor een virtueel 
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Resultaat:
+Daardoor
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Als u de gateway opnieuw wilt instellen, gebruikt u de opdracht [AZ Network vnet
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Resultaat:
+Daardoor
 
 Wanneer u een retour resultaat ontvangt, kunt u aannemen dat de gateway opnieuw is ingesteld. Er is echter niets in het retour resultaat dat aangeeft dat het opnieuw instellen is geslaagd. Als u de geschiedenis nauw keurig wilt zien wanneer de gateway opnieuw is ingesteld, kunt u deze informatie bekijken in de [Azure Portal](https://portal.azure.com). Navigeer in de portal naar **' gatewaynaam '-> resource Health**.

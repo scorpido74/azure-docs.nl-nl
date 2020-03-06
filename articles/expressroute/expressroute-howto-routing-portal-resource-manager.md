@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436959"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361584"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering voor een ExpressRoute-circuit maken en wijzigen
 
 Dit artikel helpt u bij het maken en beheren van routerings configuratie voor een ExpressRoute-circuit met Azure Resource Manager (ARM) met behulp van de Azure Portal. U kunt ook controleren op de status, bijwerken of verwijderen en inrichting van peerings voor een ExpressRoute-circuit ongedaan maken. Als u wilt een andere methode gebruiken om te werken met uw circuit, selecteert u een artikel in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
-> * [Azure-CLI](howto-routing-cli.md)
+> * [Azure CLI](howto-routing-cli.md)
 > * [Open bare peering](about-public-peering.md)
-> * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - Microsoft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
-U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Zie voor meer informatie over routering domeinen en peerings [ExpressRoute-Routeringsdomeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
+U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Voor meer informatie over routerings domeinen en peerings, Zie [ExpressRoute-routerings domeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
@@ -43,12 +43,12 @@ Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met ser
 > 
 > 
 
-## <a name="msft"></a>Microsoft-peering
+## <a name="msft"></a>Micro soft-peering
 
 In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de configuratie voor de Microsoft-peering voor een ExpressRoute-circuit.
 
 > [!IMPORTANT]
-> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via de Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Zie voor meer informatie, [een routefilter voor Microsoft-peering configureren](how-to-routefilter-powershell.md).
+> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via de Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Zie [Configure a route filter for micro soft peering](how-to-routefilter-powershell.md)(Engelstalig) voor meer informatie.
 > 
 > 
 
@@ -72,9 +72,9 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de c
    * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel de primaire en secundaire koppelingen moet u de dezelfde VLAN-ID.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.
    * Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent om een set voorvoegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.
-   * **Optioneel:** klant-ASN: als u voorvoegsels adverteert die niet zijn geregistreerd op de AS-nummer peering, kunt u het AS-nummer waaraan ze zijn geregistreerd.
+   * **Optioneel-** Klant-ASN: als u voor voegsels adverteert die niet zijn geregistreerd voor het peering als-nummer, kunt u het AS-nummer opgeven waarop ze zijn geregistreerd.
    * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
-   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
+   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
 3. U kunt selecteren om de peering die u configureren, wilt zoals wordt weergegeven in het volgende voorbeeld. Selecteer de rij voor Microsoft-peering.
 
    [![Selecteer de rij met micro soft-peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Selecteer de rij met micro soft-peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
@@ -96,18 +96,18 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de c
 
    ![Status van peering: geconfigureerd](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Status van peering: geconfigureerd")]
 
-### <a name="getmsft"></a>Details van Microsoft-peering weergeven
+### <a name="getmsft"></a>Details van micro soft-peering weer geven
 
 U kunt de eigenschappen van micro soft-peering weer geven door de rij voor de peering te selecteren.
 
 [![Eigenschappen van micro soft-peering weer geven](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Eigenschappen weergeven")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
-### <a name="updatemsft"></a>Configuratie van Microsoft-peering bijwerken
+### <a name="updatemsft"></a>De configuratie van micro soft-peering bijwerken
 
 U kunt de rij selecteren voor de peering die u wilt wijzigen, vervolgens de eigenschappen van de peering wijzigen en uw wijzigingen opslaan.
 
 ![Rij met peering selecteren](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="deletemsft"></a>Microsoft-peering verwijderen
+### <a name="deletemsft"></a>Micro soft-peering verwijderen
 
 U kunt de peering-configuratie verwijderen door te klikken op het pictogram verwijderen, zoals wordt weer gegeven in de volgende afbeelding:
 
@@ -138,7 +138,7 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de A
    * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel de primaire en secundaire koppelingen moet u de dezelfde VLAN-ID.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken. U kunt een privé AS-nummer gebruiken voor deze peering, behalve voor het aantal van 65515 tot 65520, inclusief.
    * U moet de routes van uw on-premises edge-router naar Azure aankondigen via BGP bij het instellen van de persoonlijke peering.
-   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
+   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
 3. Selecteer de rij met persoonlijke Azure-peering, zoals wordt weer gegeven in het volgende voor beeld:
 
    [![Selecteer de rij met persoonlijke peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "Selecteer de rij met persoonlijke peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
@@ -149,13 +149,13 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de A
 
    ![privé-peering opgeslagen](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
-### <a name="getprivate"></a>Details van een Azure private peering weergeven
+### <a name="getprivate"></a>Details van persoonlijke Azure-peering weer geven
 
 U kunt de eigenschappen van persoonlijke Azure-peering weergeven door de peering te selecteren.
 
 [![Eigenschappen van privé-peering weer geven](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Eigenschappen van privé-peering weer geven")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
-### <a name="updateprivate"></a>Configuratie van een Azure private peering bijwerken
+### <a name="updateprivate"></a>De configuratie voor persoonlijke Azure-peering bijwerken
 
 U kunt de rij voor peering selecteren en de eigenschappen van de peering wijzigen. Sla uw wijzigingen na het bijwerken op.
 
@@ -175,7 +175,7 @@ U kunt de peeringconfiguratie verwijderen door het verwijderingspictogram te sel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volgende stap, [een VNet koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md)
+Volgende stap [een VNet koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Voor meer informatie over ExpressRoute-werkstromen raadpleegt u [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-werkstromen).
 * Voor meer informatie over circuitpeering raadpleegt u [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuits en -routeringsdomeinen).
 * Bekijk het [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtual Network-overzicht) voor meer informatie over het gebruik van virtuele netwerken.

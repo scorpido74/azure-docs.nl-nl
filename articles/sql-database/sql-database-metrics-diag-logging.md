@@ -12,11 +12,11 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/24/2020
 ms.openlocfilehash: dead8b95446009880c36f97a095aee4aaae0579d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365349"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrische gegevens en logboek registratie van diagnostische gegevens
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u logboek registratie van diagnostische gege
 
 Deze diagnostische gegevens kunnen worden gebruikt om het resource gebruik te meten en statistieken over query's uit te voeren voor een eenvoudiger prestatie bewaking.
 
-![Architectuur](./media/sql-database-metrics-diag-logging/architecture.png)
+![De architectuur](./media/sql-database-metrics-diag-logging/architecture.png)
 
 Zie voor meer informatie over de metrische gegevens en logboek categorieën die worden ondersteund door de verschillende Azure-Services:
 
@@ -85,7 +85,7 @@ U kunt het menu **Diagnostische instellingen** in de Azure Portal gebruiken om s
 > [!IMPORTANT]
 > De logboek registratie van de telemetrie van diagnostische gegevens is standaard niet ingeschakeld.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Pools voor Elastic Database
 
@@ -463,7 +463,7 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: ResourceUsageStats |
+|Category|De naam van de categorie. Altijd: ResourceUsageStats |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: MANAGEDINSTANCES |
 |SubscriptionId|GUID van abonnement voor de data base |
@@ -488,7 +488,7 @@ Details van de telemetrie die beschikbaar zijn voor alle logboeken, worden besch
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: QueryStoreRuntimeStatistics |
+|Category|De naam van de categorie. Altijd: QueryStoreRuntimeStatistics |
 |OperationName|Naam van de bewerking. Altijd: QueryStoreRuntimeStatisticsEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -539,7 +539,7 @@ Meer informatie over [gegevens van runtime statistieken voor query Store](https:
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: QueryStoreWaitStatistics |
+|Category|De naam van de categorie. Altijd: QueryStoreWaitStatistics |
 |OperationName|Naam van de bewerking. Altijd: QueryStoreWaitStatisticsEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -577,7 +577,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: fouten |
+|Category|De naam van de categorie. Altijd: fouten |
 |OperationName|Naam van de bewerking. Altijd: ErrorEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -606,7 +606,7 @@ Meer informatie over [SQL Server fout berichten](https://docs.microsoft.com/sql/
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: DatabaseWaitStatistics |
+|Category|De naam van de categorie. Altijd: DatabaseWaitStatistics |
 |OperationName|Naam van de bewerking. Altijd: DatabaseWaitStatisticsEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -635,7 +635,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: time-outs |
+|Category|De naam van de categorie. Altijd: time-outs |
 |OperationName|Naam van de bewerking. Altijd: TimeoutEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -658,7 +658,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: blokken |
+|Category|De naam van de categorie. Altijd: blokken |
 |OperationName|Naam van de bewerking. Altijd: BlockEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -682,7 +682,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |TimeGenerated [UTC] |Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: deadlocks |
+|Category|De naam van de categorie. Altijd: deadlocks |
 |OperationName|Naam van de bewerking. Altijd: DeadlockEvent |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
@@ -703,7 +703,7 @@ Meer informatie over [Data Base-wacht statistieken](https://docs.microsoft.com/s
 |TimeGenerated [UTC]|Tijds tempel waarop het logboek is vastgelegd |
 |Type|Altijd: AzureDiagnostics |
 |ResourceProvider|De naam van de resource provider. Altijd: micro soft. SQL |
-|Categorie|De naam van de categorie. Altijd: AutomaticTuning |
+|Category|De naam van de categorie. Altijd: AutomaticTuning |
 |Resource|Naam van de resource |
 |ResourceType|De naam van het resource type. Altijd: SERVERS/data BASEs |
 |SubscriptionId|GUID van abonnement voor de data base |

@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543670"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388166"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2
 
@@ -71,9 +71,9 @@ Omdat de laagste granulatie van DistCp één bestand is, is het instellen van he
 
 Hier volgen een aantal richtlijnen.
 
-* **Stap 1: Bepaal het totale geheugen dat beschikbaar is voor de ' standaard '** garen-app-wachtrij: de eerste stap is het bepalen van het geheugen dat beschikbaar is voor de standaard-app-wachtrij voor garens. Deze informatie is beschikbaar in de Ambari-portal die aan het cluster is gekoppeld. Navigeer naar GARENs en Bekijk het tabblad Configuratie om het garen geheugen weer te geven dat beschikbaar is voor de standaard-app-wachtrij. Dit is het totale beschik bare geheugen voor uw DistCp-taak (dit is eigenlijk een MapReduce-taak).
+* **Stap 1: Bepaal het totale geheugen dat beschikbaar is voor de ' standaard '** coactieve app-wachtrij: de eerste stap is het bepalen van het geheugen dat beschikbaar is voor de standaard-app-wachtrij voor garens. Deze informatie is beschikbaar in de Ambari-portal die aan het cluster is gekoppeld. Navigeer naar GARENs en Bekijk het tabblad Configuratie om het garen geheugen weer te geven dat beschikbaar is voor de standaard-app-wachtrij. Dit is het totale beschik bare geheugen voor uw DistCp-taak (dit is eigenlijk een MapReduce-taak).
 
-* **Stap 2: Het aantal mappers** berekenen: de waarde van **m** is gelijk aan het quotiënt van het totale garen geheugen gedeeld door de grootte van de garen container. De informatie over de grootte van de garen container is ook beschikbaar in de Ambari-Portal. Navigeer naar GARENs en Bekijk het tabblad Configuratie. De grootte van de garen container wordt in dit venster weer gegeven. De vergelijking voor het aantal mappers (**m**) is
+* **Stap 2: het aantal mappers berekenen** . de waarde van **m** is gelijk aan het QUOTIËNT van het totale garen geheugen gedeeld door de grootte van de garen container. De informatie over de grootte van de garen container is ook beschikbaar in de Ambari-Portal. Navigeer naar GARENs en Bekijk het tabblad Configuratie. De grootte van de garen container wordt in dit venster weer gegeven. De vergelijking voor het aantal mappers (**m**) is
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -81,11 +81,11 @@ Hier volgen een aantal richtlijnen.
 
 We gaan ervan uit dat u een 4x D14v2s-cluster hebt en u probeert 10 TB aan gegevens over te brengen van tien verschillende mappen. Elk van de mappen bevat verschillende hoeveel heden gegevens en de bestands grootten in elke map verschillen.
 
-* **Totaal aantal garens**: Vanuit de Ambari-Portal hebt u vastgesteld dat het garen geheugen van 96 GB is voor een D14-knoop punt. Dit betekent dat het totale garen geheugen voor het cluster van vier knoop punten: 
+* **Totaal aantal garens**: vanuit de Ambari-Portal hebt u vastgesteld dat het garen geheugen 96 GB is voor een D14-knoop punt. Dit betekent dat het totale garen geheugen voor het cluster van vier knoop punten: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Aantal mappers**: Vanuit de Ambari-Portal hebt u vastgesteld dat de grootte van de garen container 3.072 MB is voor een D14-cluster knooppunt. Het aantal mappers is dus:
+* **Aantal mappers**: vanuit de Ambari-Portal hebt u vastgesteld dat de grootte van de garen container 3.072 MB is voor een D14-cluster knooppunt. Het aantal mappers is dus:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

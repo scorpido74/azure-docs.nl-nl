@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390116"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
@@ -61,7 +61,7 @@ Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, maakt en wijst 
     |Naam|Doel|
     |--|--|
     |Resourcenaam| Een aangepaste naam die u kiest, die wordt gebruikt als onderdeel van de URL voor uw ontwerp-en Voorspellings eindpunt query's.|
-    |Abonnements naam| het abonnement dat wordt gefactureerd voor de resource.|
+    |Abonnementsnaam| het abonnement dat wordt gefactureerd voor de resource.|
     |Resourcegroep| Een aangepaste naam voor de resource groep die u kiest of maakt. Met resource groepen kunt u Azure-resources groeperen voor toegang en beheer in dezelfde regio.|
     |Locatie van ontwerpen|De regio die aan uw model is gekoppeld.|
     |Prijs categorie ontwerpen|De prijs categorie bepaalt de maximale trans actie per seconde en maand.|

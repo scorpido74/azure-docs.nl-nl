@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390629"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
 
@@ -118,7 +118,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Uitvoeren vanaf een opdracht prompt:
 
-  Open een opdrachtprompt en typ `R`.
+  Open een opdracht prompt en typ `R`.
 
 * Gebruiken in een IDE:
 
@@ -157,7 +157,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | 0,6 |
 | Ondersteunde DSVM-edities      | Linux, Windows     |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Windows: Geïnstalleerd `C:\JuliaPro-VERSION`<br /> Linux: Geïnstalleerd `/opt/JuliaPro-VERSION`    |
+| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op `C:\JuliaPro-VERSION`<br /> Linux: geïnstalleerd op `/opt/JuliaPro-VERSION`    |
 | Koppelingen naar voorbeelden      | Voor beelden van Jupyter-notebooks voor Julia zijn opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    

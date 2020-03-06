@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919631"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381636"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Zelf studie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
     ![IntelliJ-idee scala-invoeg toepassing inschakelen](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
-3. Selecteer **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
+3. Select **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
 
     ![IntelliJ-idee scala-invoeg toepassing installeren](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
 

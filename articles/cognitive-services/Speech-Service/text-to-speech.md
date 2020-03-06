@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: erhopf
 ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394787"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
@@ -72,7 +72,7 @@ Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/spe
 > [!IMPORTANT]
 > Elk Chinees, Japans en Koreaans teken worden als twee tekens beschouwd voor facturering.
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 - [Speech-SDK](speech-sdk.md)
 - [REST API: tekst-naar-spraak](rest-text-to-speech.md)

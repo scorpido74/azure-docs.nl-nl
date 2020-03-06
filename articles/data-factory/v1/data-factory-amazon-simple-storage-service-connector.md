@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924842"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387335"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Gegevens verplaatsen van de Amazon Simple Storage-service met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -37,7 +37,7 @@ Als u wilt kopiëren van gegevens vanaf Amazon S3, zorg ervoor dat u de volgende
 * `s3:GetObject` en `s3:GetObjectVersion` voor Amazon S3-object bewerkingen.
 * `s3:ListBucket` voor Amazon S3-Bucket bewerkingen. Als u de wizard voor het kopiëren van Data Factory gebruikt, is `s3:ListAllMyBuckets` ook vereist.
 
-Zie voor meer informatie over de volledige lijst met machtigingen voor Amazon S3 [machtigingen op te geven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Zie [machtigingen opgeven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)voor meer informatie over de volledige lijst met Amazon S3-machtigingen.
 
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een Amazon S3-bron met behulp van verschillende hulpprogram ma's of Api's.
@@ -62,13 +62,13 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 Een gekoppelde service koppelt een gegevens archief aan een data factory. U maakt een gekoppelde service van het type **awsaccesskey worden** om uw Amazon S3-gegevens archief te koppelen aan uw Data Factory. De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de gekoppelde service van Amazon S3 (Awsaccesskey worden).
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| accessKeyID |ID van de geheime toegangssleutel. |string |Ja |
+| accessKeyID |ID van de geheime toegangssleutel. |tekenreeks |Ja |
 | secretAccessKey |De geheime toegangssleutel zelf. |Versleutelde geheime teken reeks |Ja |
 
 >[!NOTE]
->Toegangssleutels voor het kopiëren van gegevens vanaf Amazon S3 IAM-account voor deze connector vereist. [Tijdelijke beveiligingsreferentie](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) wordt niet ondersteund.
+>Toegangssleutels voor het kopiëren van gegevens vanaf Amazon S3 IAM-account voor deze connector vereist. [Tijdelijke beveiligings referenties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) worden niet ondersteund.
 >
 
 Hier volgt een voorbeeld:
@@ -91,13 +91,13 @@ Als u een gegevensset wilt opgeven om invoer gegevens in Azure Blob-opslag weer 
 
 Secties zoals structuur, Beschik baarheid en beleid zijn vergelijkbaar voor alle typen gegevens sets (zoals SQL database, Azure Blob en Azure Table). De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het type **AmazonS3** (die de Amazon S3-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | bucketName |De naam van de S3-bucket. |Tekenreeks |Ja |
 | sleutel |De object sleutel S3. |Tekenreeks |Nee |
 | prefix |Voorvoegsel voor de sleutel S3-object. Objecten waarvan sleutels met dit voorvoegsel beginnen worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |Tekenreeks |Nee |
-| versie |De versie van de S3-object, als S3 versiebeheer is ingeschakeld. |Tekenreeks |Nee |
-| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie de [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling ](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
+| version |De versie van de S3-object, als S3 versiebeheer is ingeschakeld. |Tekenreeks |Nee |
+| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
 | compression | Geef het type en het niveau van compressie voor de gegevens. De ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |Nee |
 
 
@@ -172,7 +172,7 @@ U kunt hetzelfde doen voor de eigenschap **prefix** van een Amazon S3-gegevensse
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie [pijp lijnen maken](data-factory-create-pipelines.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in de **typeProperties** -sectie van de activiteit, verschillen per type activiteit. Voor de Kopieer activiteit kunnen eigenschappen variëren, afhankelijk van de typen bronnen en Sinks. Wanneer een bron in de Kopieer activiteit van het type **FileSystemSource** (inclusief Amazon S3) is, is de volgende eigenschap beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursive |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |Nee |
 

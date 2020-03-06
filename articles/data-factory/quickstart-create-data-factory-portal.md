@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
 ms.openlocfilehash: 15e1c3de5392238e9e1dbfd324fe40087950a766
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380802"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snelstartgids: een data factory maken met behulp van de Azure Data Factory-gebruikers interface
 
@@ -35,7 +35,7 @@ In deze quickstart wordt beschreven hoe u de Azure Data Factory-UI kunt gebruike
 Bekijk deze video voor een beter begrip van de Data Factory-UI: 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Visually-build-pipelines-for-Azure-Data-Factory-v2/Player]
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Ga naar de [Azure Portal](https://portal.azure.com). 
@@ -215,4 +215,4 @@ Deze procedure is optioneel in deze zelfstudie. U kunt een *Scheduler-trigger* m
 1. Controleer of er tot de opgegeven datum en tijd voor elke pijplijnuitvoering een uitvoerbestand is gemaakt in de **uitvoermap**. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. Doorloop de [zelfstudies](tutorial-copy-data-portal.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's. 
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in Azure Blob Storage. Doorloop de [zelfstudies](tutorial-copy-data-portal.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's. 

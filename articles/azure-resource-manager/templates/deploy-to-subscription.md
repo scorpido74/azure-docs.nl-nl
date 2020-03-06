@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379125"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 

@@ -6,11 +6,11 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759786"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379879"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -29,7 +29,7 @@ In deze zelf studie leert u hoe u herstel na nood gevallen instelt voor Azure-Vm
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 - De [architectuur en onderdelen voor dit scenario](concepts-azure-to-azure-architecture.md) doornemen.
 - Controleer de [ondersteunings vereisten](site-recovery-support-matrix-azure-to-azure.md) voordat u begint.
@@ -38,7 +38,7 @@ Vereisten om deze zelfstudie te voltooien:
 
 Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. Selecteer deze vervolgens **&-beheer hulpprogramma's** > **back-up en site Recovery**.
 1. Geef in **Naam** een beschrijvende naam op om de kluis mee aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.

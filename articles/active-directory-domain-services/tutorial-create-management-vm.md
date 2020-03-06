@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612208"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376485"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
 
@@ -59,7 +59,6 @@ Azure AD DS biedt een beheerd domein voor de verbruikte gebruikers, toepassingen
 
 Leden van de groep *Aad DC-Administrators* beschikken over bevoegdheden op het door Azure AD DS beheerde domein waarmee ze taken kunnen uitvoeren zoals:
 
-* Computers toevoegen aan het beheerde domein.
 * Configureer het ingebouwde groeps beleidsobject (GPO) voor de containers *AADDC computers* en *AADDC gebruikers* in het beheerde domein.
 * DNS beheren in het beheerde domein.
 * Aangepaste organisatie-eenheden (Ou's) maken en beheren op het beheerde domein.

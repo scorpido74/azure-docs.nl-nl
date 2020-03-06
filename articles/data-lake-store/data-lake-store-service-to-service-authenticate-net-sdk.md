@@ -1,6 +1,6 @@
 ---
-title: 'Service-naar-serviceverificatie: .NET-SDK met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het bereiken van service-naar-serviceverificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met behulp van .NET SDK
+title: 'Service-naar-service-verificatie: .NET SDK met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het uitvoeren van service-to-service-verificatie met Azure Data Lake Storage Gen1 met behulp Azure Active Directory met behulp van .NET SDK
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65915858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390553"
 ---
-# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Service-naar-serviceverificatie met Azure Data Lake Storage Gen1 met .NET SDK
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-service-to-service-authenticate-java.md)
 > * [.NET-SDK gebruiken](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-service-to-service-authenticate-python.md)
-> * [REST-API gebruiken](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [REST API gebruiken](data-lake-store-service-to-service-authenticate-rest-api.md)
 >
 >
 
-In dit artikel leert u over het gebruik van de .NET SDK-service-naar-serviceverificatie met Azure Data Lake Storage Gen1 doen. Zie voor verificatie van eindgebruikers met Data Lake Storage Gen1 met .NET SDK, [eindgebruikersverificatie met Data Lake Storage Gen1 met .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+In dit artikel leert u hoe u .NET SDK kunt gebruiken om service-naar-service-verificatie met Azure Data Lake Storage Gen1 uit te voeren. Voor verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van .NET SDK raadpleegt u [verificatie door eind gebruikers met data Lake Storage gen1 met behulp van .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Vereisten
-* **Visual Studio 2013 of hoger**. De onderstaande instructies wordt Visual Studio 2019 gebruikt.
+* **Visual Studio 2013 of hoger**. In de onderstaande instructies wordt gebruikgemaakt van Visual Studio 2019.
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Maken van een Azure Active Directory-toepassing voor 'Web'** . U moet zijn voltooid de stappen in [Service-naar-serviceverificatie met Data Lake Storage Gen1 met behulp van Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Een Azure Active Directory Web-toepassing maken**. U moet de stappen in [service-to-service-verificatie met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md)hebben voltooid.
 
 ## <a name="create-a-net-application"></a>Een .NET-toepassing maken
-1. Selecteer in Visual Studio, de **bestand** in het menu **nieuw**, en vervolgens **Project**.
-2. Kies **Console-App (.NET Framework)** , en selecteer vervolgens **volgende**.
-3. In **projectnaam**, voer `CreateADLApplication`, en selecteer vervolgens **maken**.
+1. Selecteer in Visual Studio het menu **bestand** , **Nieuw**en vervolgens **project**.
+2. Kies **console-app (.NET Framework)** en selecteer **volgende**.
+3. Voer in **project naam**`CreateADLApplication`in en selecteer vervolgens **maken**.
 
 4. Voeg de NuGet-pakketten toe aan het project.
 
@@ -71,8 +71,8 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-## <a name="service-to-service-authentication-with-client-secret"></a>Service-naar-serviceverificatie met clientgeheim
-Dit codefragment in uw .NET-client-toepassing toevoegen. Vervang de tijdelijke aanduiding door de waarden die zijn opgehaald uit een Azure AD-webtoepassing (weergegeven als een vereiste). Dit codefragment kunt u verifiëren van uw toepassing **niet-interactief** met Data Lake Storage Gen1 met behulp van de client-geheim/sleutel voor Azure AD-webtoepassing.
+## <a name="service-to-service-authentication-with-client-secret"></a>Service-naar-service verificatie met client geheim
+Voeg dit fragment toe aan uw .NET-client toepassing. Vervang de waarden van de tijdelijke aanduiding door de waarden die zijn opgehaald uit een Azure AD-webtoepassing (vermeld als een vereiste). Met dit code fragment kunt u uw toepassing **niet-interactief** verifiëren met data Lake Storage gen1 met behulp van het client geheim/-sleutel voor de Azure AD-webtoepassing.
 
 ```csharp
 private static void Main(string[] args)
@@ -89,11 +89,11 @@ private static void Main(string[] args)
 }
 ```
 
-Het bovenstaande codefragment maakt gebruik van een Help-functie `GetCreds_SPI_SecretKey`. De code voor deze Help-functie is beschikbaar [hier op GitHub](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+In het voor gaande fragment wordt een hulp functie `GetCreds_SPI_SecretKey`. De code voor deze Help functie is [hier beschikbaar op github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
-## <a name="service-to-service-authentication-with-certificate"></a>Service-naar-serviceverificatie met certificaat
+## <a name="service-to-service-authentication-with-certificate"></a>Service-naar-service verificatie met certificaat
 
-Dit codefragment in uw .NET-client-toepassing toevoegen. Vervang de tijdelijke aanduiding door de waarden die zijn opgehaald uit een Azure AD-webtoepassing (weergegeven als een vereiste). Dit codefragment kunt u verifiëren van uw toepassing **niet-interactief** met Data Lake Storage Gen1 met behulp van het certificaat voor een Azure AD-webtoepassing. Zie voor instructies over het maken van een Azure AD-toepassing [service-principal maken met certificaten](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+Voeg dit fragment toe aan uw .NET-client toepassing. Vervang de waarden van de tijdelijke aanduiding door de waarden die zijn opgehaald uit een Azure AD-webtoepassing (vermeld als een vereiste). Met dit code fragment kunt u uw toepassing **niet-interactief** verifiëren met data Lake Storage gen1 met behulp van het certificaat voor een Azure AD-webtoepassing. Zie [Service-Principal maken met certificaten](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)voor instructies over het maken van een Azure AD-toepassing.
 
 ```csharp
 private static void Main(string[] args)
@@ -110,10 +110,10 @@ private static void Main(string[] args)
 }
 ```
 
-Het bovenstaande codefragment maakt gebruik van een Help-functie `GetCreds_SPI_Cert`. De code voor deze Help-functie is beschikbaar [hier op GitHub](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+In het voor gaande fragment wordt een hulp functie `GetCreds_SPI_Cert`. De code voor deze Help functie is [hier beschikbaar op github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u service-naar-serviceverificatie gebruiken om te verifiëren met Data Lake Storage Gen1 met .NET SDK. U kunt nu de volgende artikelen die bespreken hoe u de .NET SDK gebruiken om te werken met Data Lake Storage Gen1 kijken.
+In dit artikel hebt u geleerd hoe u service-naar-service-verificatie kunt gebruiken om te verifiëren met Data Lake Storage Gen1 met behulp van .NET SDK. U kunt nu de volgende artikelen bekijken over het gebruik van de .NET SDK om met Data Lake Storage Gen1 te werken.
 
-* [Accountbeheerbewerkingen in Data Lake Storage Gen1 met .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Bewerkingen van de gegevens in Data Lake Storage Gen1 met .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-data-operations-net-sdk.md)

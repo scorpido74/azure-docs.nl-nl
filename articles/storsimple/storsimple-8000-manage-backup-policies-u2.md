@@ -1,6 +1,6 @@
 ---
-title: Back-upbeleid van StorSimple 8000-serie beheren | Microsoft Docs
-description: Wordt uitgelegd hoe u de service StorSimple Device Manager maken en beheren van handmatige back-ups, back-upschema's en back-upretentie op een StorSimple 8000-apparaat kunt gebruiken.
+title: StorSimple 8000 Series-back-upbeleid beheren | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u de StorSimple-Apparaatbeheer service kunt gebruiken voor het maken en beheren van hand matige back-ups, back-upscheman en het bewaren van back-ups op een StorSimple 8000 Series-apparaat.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,88 +15,88 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60819067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394584"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>De StorSimple Device Manager-service in Azure portal gebruiken voor back-upbeleid beheren
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>De StorSimple Apparaatbeheer-service in Azure Portal gebruiken voor het beheren van het back-upbeleid
 
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt uitgelegd hoe u de service StorSimple Device Manager **back-upbeleid** blade voor het beheren van back-processen en back-upretentie voor uw StorSimple-volumes. Ook wordt beschreven hoe u een handmatige back-up.
+In deze zelf studie wordt uitgelegd hoe u de Blade StorSimple Apparaatbeheer service **back-upbeleid** gebruikt voor het beheren van back-upprocessen en het bewaren van back-ups voor uw StorSimple-volumes. Ook wordt beschreven hoe u een hand matige back-up kunt volt ooien.
 
-Wanneer u back-up van een volume, kunt u kiezen om een momentopname van een lokale of een cloud-momentopname te maken. Als u een back-up een lokaal vastgemaakt volume, wordt u aangeraden dat u opgeeft dat een cloud-momentopname. Een groot aantal lokale momentopnamen van een lokaal vastgemaakt volume is gekoppeld aan een gegevensset die een groot aantal verloop heeft resulteert in een situatie waarin u snel geen lokale schijfruimte meer uitvoeren kunt. Als u kiest voor lokale momentopnamen worden gemaakt, raden wij u minder dagelijkse momentopnamen maakt u een back-up van de meest recente status behouden voor een dag duren en verwijder deze.
+Wanneer u een back-up maakt van een volume, kunt u ervoor kiezen om een lokale moment opname of een Cloud momentopname te maken. Als u een back-up maakt van een lokaal vastgemaakt volume, raden we u aan een moment opname van de Cloud op te geven. Het nemen van een groot aantal lokale moment opnamen van een lokaal vastgemaakt volume dat is gekoppeld aan een gegevensset die veel verloop heeft, resulteert in een situatie waarin de lokale ruimte snel kan worden uitgevoerd. Als u ervoor kiest om lokale moment opnamen te maken, raden we u aan om een back-up van minder dagelijkse moment opnamen te maken, de meest recente status te herstellen, ze gedurende een dag te bewaren en deze vervolgens te verwijderen.
 
-Wanneer u een cloudmomentopname van een lokaal vastgemaakt volume maakt, kunt u alleen de gewijzigde gegevens kopiëren naar de cloud, waar deze is ontdubbeld en gecomprimeerd.
+Wanneer u een Cloud momentopname van een lokaal vastgemaakt volume maakt, kopieert u alleen de gewijzigde gegevens naar de Cloud, waar deze wordt ontdubbeld en gecomprimeerd.
 
-## <a name="the-backup-policy-blade"></a>De blade back-upbeleid
+## <a name="the-backup-policy-blade"></a>De Blade back-upbeleid
 
-De **back-upbeleid** blade voor uw StorSimple-apparaat kunt u back-upbeleid beheren en plannen van lokale en cloud-momentopnamen. Back-upbeleid worden gebruikt om back-upschema's en back-upretentie voor een verzameling van volumes te configureren. Back-upbeleid kunnen u een momentopname van meerdere volumes tegelijkertijd. Dit betekent dat de back-ups die zijn gemaakt door een back-upbeleid crash-consistente kopieën zijn.
+Met de Blade **back-upbeleid** voor uw StorSimple-apparaat kunt u het back-upbeleid beheren en lokale en Cloud momentopnamen plannen. Back-upbeleid wordt gebruikt voor het configureren van back-upscheman en het bewaren van back-ups voor een verzameling van volumes. Met back-upbeleid kunt u een moment opname van meerdere volumes tegelijk maken. Dit betekent dat de back-ups die zijn gemaakt met een back-upbeleid, consistente kopieën zullen maken.
 
-De lijst in tabelvorm back-upbeleid kunt u filteren op de bestaande back-upbeleid door een of meer van de volgende velden:
+Met de lijst met back-upbeleid in tabel vorm kunt u ook het bestaande back-upbeleid filteren op een of meer van de volgende velden:
 
-* **De naam van beleid** – de naam die is gekoppeld aan het beleid. De verschillende soorten beleid zijn onder andere:
+* **Beleids naam** : de naam die aan het beleid is gekoppeld. De verschillende typen beleids regels zijn onder andere:
 
-  * Geplande beleidsregels, die expliciet zijn gemaakt door de gebruiker.
-  * Geïmporteerde beleidsregels, die zijn gemaakt in de StorSimple Snapshot Manager. Deze moeten een label dat de beschrijving van de StorSimple Snapshot Manager-host die de beleidsregels zijn geïmporteerd uit.
+  * Het geplande beleid dat expliciet door de gebruiker wordt gemaakt.
+  * Geïmporteerd beleid, dat oorspronkelijk is gemaakt in de StorSimple-Snapshot Manager. Deze hebben een tag die de StorSimple-Snapshot Manager host beschrijft waaruit het beleid is geïmporteerd.
 
   > [!NOTE]
-  > Automatische of standaard back-upbeleid zijn niet meer ingeschakeld op het moment van volume maken.
+  > Automatisch of standaard back-upbeleid is niet meer ingeschakeld op het moment dat het volume wordt gemaakt.
 
-* **Laatste geslaagde back-up** – de datum en tijd van de laatste geslaagde back-up die is gemaakt met dit beleid.
+* **Laatste geslaagde back-up** : de datum en tijd van de laatste geslaagde back-up die is gemaakt met dit beleid.
 
-* **Volgende back-up** – de datum en tijd van de volgende geplande back-up die door dit beleid wordt gestart.
+* **Volgende back-up** : de datum en tijd van de volgende geplande back-up die door dit beleid wordt gestart.
 
-* **Volumes** – de volumes die zijn gekoppeld aan het beleid. Alle volumes die zijn gekoppeld aan een back-upbeleid zijn gegroepeerd wanneer back-ups worden gemaakt.
+* **Volumes** : de volumes die zijn gekoppeld aan het beleid. Alle volumes die aan een back-upbeleid zijn gekoppeld, worden gegroepeerd wanneer er back-ups worden gemaakt.
 
-* **Schema's** : het aantal planningen die zijn gekoppeld aan het back-upbeleid.
+* **Schema's** : het aantal schema's dat is gekoppeld aan het back-upbeleid.
 
-De gebruikte bewerkingen die u voor back-upbeleid uitvoeren kunt zijn:
+De veelgebruikte bewerkingen die u kunt uitvoeren voor back-upbeleid zijn:
 
 * Een back-upbeleid toevoegen
-* Toevoegen of wijzigen van een planning
-* Toevoegen of verwijderen van een volume
-* Verwijderen van een back-upbeleid
-* Een handmatige back-up maken
+* Een planning toevoegen of wijzigen
+* Een volume toevoegen of verwijderen
+* Een back-upbeleid verwijderen
+* Een hand matige back-up maken
 
 ## <a name="add-a-backup-policy"></a>Een back-upbeleid toevoegen
 
-Een back-upbeleid automatisch uw back-ups plannen toevoegen. Wanneer u een volume voor het eerst maakt, is er geen standaard back-upbeleid dat is gekoppeld aan het volume. U wilt toevoegen en toewijzen van een back-upbeleid voor het beveiligen van volumegegevens.
+Voeg een back-upbeleid toe om uw back-ups automatisch te plannen. Wanneer u voor het eerst een volume maakt, is er geen standaard back-upbeleid gekoppeld aan uw volume. U moet een back-upbeleid toevoegen en toewijzen om volume gegevens te beveiligen.
 
-De volgende stappen uitvoeren in Azure portal om een back-upbeleid voor uw StorSimple-apparaat toevoegen. Nadat u het beleid hebt toegevoegd, kunt u een schema definiëren (Zie [toevoegen of wijzigen van een schema](#add-or-modify-a-schedule)).
+Voer de volgende stappen uit in de Azure Portal om een back-upbeleid voor uw StorSimple-apparaat toe te voegen. Nadat u het beleid hebt toegevoegd, kunt u een planning definiëren (Zie [een planning toevoegen of wijzigen](#add-or-modify-a-schedule)).
 
 [!INCLUDE [storsimple-8000-add-backup-policy-u2](../../includes/storsimple-8000-add-backup-policy-u2.md)]
 
-## <a name="add-or-modify-a-schedule"></a>Toevoegen of wijzigen van een planning
+## <a name="add-or-modify-a-schedule"></a>Een planning toevoegen of wijzigen
 
-U kunt toevoegen of wijzigen van een schema dat is gekoppeld aan een bestaande back-upbeleid op uw StorSimple-apparaat. De volgende stappen uitvoeren in Azure portal toevoegen of wijzigen van een schema.
+U kunt een schema toevoegen of wijzigen dat is gekoppeld aan een bestaand back-upbeleid op uw StorSimple-apparaat. Voer de volgende stappen uit in de Azure Portal om een schema toe te voegen of te wijzigen.
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
 
-## <a name="add-or-remove-a-volume"></a>Toevoegen of verwijderen van een volume
+## <a name="add-or-remove-a-volume"></a>Een volume toevoegen of verwijderen
 
-U kunt toevoegen of verwijderen van een volume dat is toegewezen aan een back-upbeleid op uw StorSimple-apparaat. Voer de volgende stappen uit in de Azure-portal toevoegen of verwijderen van een volume.
+U kunt een volume toevoegen aan of verwijderen uit een back-upbeleid op uw StorSimple-apparaat. Voer de volgende stappen uit in de Azure Portal om een volume toe te voegen of te verwijderen.
 
 [!INCLUDE [storsimple-8000-add-volume-backup-policy-u2](../../includes/storsimple-8000-add-remove-volume-backup-policy-u2.md)]
 
 
-## <a name="delete-a-backup-policy"></a>Verwijderen van een back-upbeleid
+## <a name="delete-a-backup-policy"></a>Een back-upbeleid verwijderen
 
-De volgende stappen uitvoeren in Azure portal om een back-upbeleid op uw StorSimple-apparaat verwijderen.
+Voer de volgende stappen uit in de Azure Portal om een back-upbeleid op uw StorSimple-apparaat te verwijderen.
 
 [!INCLUDE [storsimple-8000-delete-backup-policy](../../includes/storsimple-8000-delete-backup-policy.md)]
 
-## <a name="take-a-manual-backup"></a>Een handmatige back-up maken
+## <a name="take-a-manual-backup"></a>Een hand matige back-up maken
 
-De volgende stappen uitvoeren in Azure portal om te maken van een back-up op-aanvraag (handmatig) voor één volume.
+Voer de volgende stappen uit in de Azure Portal om een back-up op aanvraag (hand matig) te maken voor één volume.
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [met de StorSimple Device Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

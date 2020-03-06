@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462925"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388415"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunctionaliteit voor Stateful Reliable Services
 De Azure Service Fabric stateful Reliable Services StatefulServiceBase-klasse verzendt [Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen die kunnen worden gebruikt om fouten in de service op te sporen, inzicht te krijgen in hoe de runtime werkt en om te helpen bij het oplossen van problemen.
@@ -20,8 +20,8 @@ De naam van de Event source voor de stateful Reliable Services klasse StatefulSe
 
 Voor beelden van hulpprogram ma's en technologieën die u helpen bij het verzamelen en/of weer geven van Event source-gebeurtenissen zijn [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)en de [TraceEvent-bibliotheek van micro soft](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Evenements
-| Gebeurtenisnaam | Gebeurtenis-id | Niveau | Gebeurtenisbeschrijving |
+## <a name="events"></a>Gebeurtenissen
+| Gebeurtenisnaam | Gebeurtenis-id | Niveau | Gebeurtenis beschrijving |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Informatief |Verzonden wanneer de service RunAsync taak wordt gestart |
 | StatefulRunAsyncCancellation |2 |Informatief |Verzonden wanneer de service RunAsync taak wordt geannuleerd |
@@ -41,7 +41,7 @@ StatefulRunAsyncSlowCancellation wordt verzonden wanneer een annulerings aanvraa
 ## <a name="performance-counters"></a>Prestatiemeteritems
 De Reliable Services runtime definieert de volgende categorieën voor prestatie meter items:
 
-| Categorie | Beschrijving |
+| Category | Beschrijving |
 | --- | --- |
 | Transactionele Replicator Service Fabric |Tellers die specifiek zijn voor de Service Fabric transactionele Replicator van Azure |
 | Service Fabric TStore |Tellers die specifiek zijn voor de Azure Service Fabric TStore |

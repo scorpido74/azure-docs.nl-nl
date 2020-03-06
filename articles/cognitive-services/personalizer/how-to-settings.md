@@ -4,11 +4,11 @@ description: Service configuratie bevat de manier waarop de service beloningen b
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381269"
 ---
 # <a name="configure-personalizer-learning-loop"></a>De learning-lus van Personaler configureren
 

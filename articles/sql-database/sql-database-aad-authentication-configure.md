@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 ms.date: 01/07/2020
 tags: azure-synapse
 ms.openlocfilehash: 42f79b83d174571d26f49b28ed480f86a004036c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358409"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -129,7 +129,7 @@ Uw beheerde exemplaar heeft machtigingen nodig voor het lezen van Azure AD om ta
 
 5. Nadat de bewerking is voltooid, wordt in de rechter bovenhoek de volgende melding weer gegeven:
 
-    ![voltooid](./media/sql-database-aad-authentication/success.png)
+    ![geslaagd](./media/sql-database-aad-authentication/success.png)
 
 6. U kunt nu uw Azure AD-beheerder kiezen voor uw beheerde exemplaar. Selecteer op de pagina Active Directory-beheer de optie admin-opdracht **instellen** .
 
@@ -179,7 +179,7 @@ Als best practice voor bestaande Azure AD-beheerders voor MI gemaakt vóór GA e
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie.
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie voor gedetailleerde informatie [Installeren en configureren van Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -275,7 +275,7 @@ Als u later een beheerder wilt verwijderen, selecteert u aan de bovenkant van de
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie. Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie voor gedetailleerde informatie [Installeren en configureren van Azure PowerShell](/powershell/azure/overview). Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
 
 - Connect-AzAccount
 - Select-AzSubscription

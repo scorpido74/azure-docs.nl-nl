@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Functies in preview | Microsoft Docs'
-description: Dit onderwerp wordt beschreven in meer detail-functies die zich in de Preview-versie in Azure AD Connect.
+title: 'Azure AD Connect: functies in de preview-versie | Microsoft Docs'
+description: In dit onderwerp vindt u meer informatie over de functies in de preview-versie van Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347801"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375961"
 ---
-# <a name="more-details-about-features-in-preview"></a>Meer informatie over functies in preview
-In dit onderwerp wordt beschreven hoe u het gebruik van functies die momenteel in preview.
+# <a name="more-details-about-features-in-preview"></a>Meer informatie over functies in Preview
+In dit onderwerp wordt beschreven hoe u functies kunt gebruiken die momenteel als preview-versie beschikbaar zijn.
 
 ## <a name="group-writeback"></a>Groep terugschrijven
-De optie voor write-back van groep in optionele functies kunt u Write-back van **Office 365-groepen** naar een forest met Exchange geïnstalleerd. Dit is een groep die altijd is gemaakt in de cloud. Als u Exchange on-premises hebt, kunt klikt u vervolgens u terug deze groepen met on-premises gebruikers met een on-premises Exchange-postvak kunnen verzenden en ontvangen van e-mailberichten van deze groepen.
+Met de optie voor het terugschrijven van groepen in optionele functies kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd. Dit is een groep die altijd in de Cloud is gemastereerd. Als u Exchange on-premises hebt, kunt u deze groepen terugschrijven naar on-premises, zodat gebruikers met een on-premises Exchange-postvak e-mails van deze groepen kunnen verzenden en ontvangen.
 
-Meer informatie over Office 365-groepen en het gebruik ervan kan worden gevonden [hier](https://aka.ms/O365g).
+Meer informatie over Office 365-groepen en hoe u deze kunt gebruiken, vindt u [hier](https://aka.ms/O365g).
 
-Een Office 365-groep wordt weergegeven als een distributiegroep in de on-premises AD DS. Uw on-premises Exchange-server moet zich op Exchange 2013 cumulatieve update 8 (uitgebracht in maart 2015) of Exchange 2016 voor het herkennen van dit nieuwe groepstype.
+Een Office 365-groep wordt weer gegeven als een distributie groep in on-premises AD DS. Uw on-premises Exchange-server moet op Exchange 2013 cumulatief update 8 (uitgebracht in maart 2015) of Exchange 2016 zijn om dit nieuwe groeps type te herkennen.
 
-**Opmerkingen bij de tijdens de Preview-versie**
+**Notities tijdens de preview**
 
-* Het kenmerk van het adresboek momenteel niet is ingevuld in de Preview-versie. De groep is niet zichtbaar in de GAL zonder dat dit kenmerk. De eenvoudigste manier voor het vullen van dit kenmerk is het gebruik van de Exchange PowerShell-cmdlet `update-recipient`.
-* Alleen forests met de Exchange-schema zijn geldige doelen voor groepen. Als er geen Exchange is gedetecteerd, klikt u vervolgens is Write-back van groep niet mogelijk om in te schakelen.
-* Slechts één forest organisatie implementaties van Exchange worden momenteel ondersteund. Als u meer dan één organisatie on-premises Exchange hebt, moet u een on-premises GALSync oplossing voor deze groepen worden weergegeven in de andere forests.
-* De functie voor write-back van groep verwerkt beveiligingsgroepen of distributiegroepen niet.
+* Het kenmerk adres boek wordt momenteel niet ingevuld in de preview-versie. Zonder dit kenmerk is de groep niet zichtbaar in de GAL. De eenvoudigste manier om dit kenmerk in te vullen, is door de Exchange Power shell-cmdlet `update-recipient`te gebruiken.
+* Alleen forests met het Exchange-schema zijn geldige doelen voor groepen. Als er geen uitwisseling is gedetecteerd, kan groeps terugschrijven niet worden ingeschakeld.
+* Er worden momenteel alleen implementaties van Exchange-organisaties met één forest ondersteund. Als u meer dan één Exchange-organisatie on-premises hebt, hebt u een on-premises GALSync-oplossing nodig voor deze groepen om weer te geven in uw andere forests.
+* De functie voor het terugschrijven van groepen verwerkt geen beveiligings groepen of distributie groepen.
 
 > [!NOTE]
-> Een abonnement op Azure AD Premium is vereist voor write-back van groep.
+> Er is een abonnement op Azure AD Premium vereist voor het terugschrijven van de groep.
 > 
 >
 
-## <a name="user-writeback"></a>Write-back van gebruiker
+## <a name="user-writeback"></a>Gebruikers terugschrijven
 > [!IMPORTANT]
-> De gebruiker Write-back van preview-functie is verwijderd in de update van augustus 2015 naar Azure AD Connect. Als u deze hebt ingeschakeld, moet u deze functie uitschakelen.
+> De preview-functie voor het terugschrijven van gebruikers is in de update van augustus 2015 voor Azure AD Connect verwijderd. Als u het hebt ingeschakeld, moet u deze functie uitschakelen.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Doorgaan met uw [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md).
+Ga door met de [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md).
 
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484803"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388157"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Implementatie van de status integratie met Azure Deployment Manager introduceren (open bare preview)
 
@@ -138,7 +138,7 @@ Op dit moment weet Azure Deployment Manager hoe u een query kunt uitvoeren op de
 
     1. Nadat een implementatie bewerking is voltooid, kunnen Vm's opnieuw worden opgestart, opnieuw worden geconfigureerd op basis van nieuwe gegevens of zelfs worden gestart voor de eerste keer. Het kan ook enige tijd duren voordat de status van de Services wordt gestart, zodat deze door de provider voor status controle kan worden geaggregeerd. Tijdens dit tumultuous-proces is het wellicht niet verstandig om te controleren of de service status is verstreken omdat de update nog niet een constante status heeft bereikt. Het is mogelijk dat de service in orde is en dat de status van de resources onbeschadigd is. 
     1. Tijdens de wacht fase wordt de service status niet bewaakt. Dit wordt gebruikt om de geïmplementeerde resources de tijd maken te geven voordat het status controle proces wordt gestart. 
-1. Flexibel
+1. Elastisch
 
     1. Omdat het niet mogelijk is om in alle gevallen te weten hoe lang bronnen makenen voordat ze stabiel worden, biedt de elastische fase een flexibele periode tussen het moment waarop de bronnen mogelijk Insta Biel zijn en wanneer ze zijn vereist voor het onderhouden van een gezonde stabiele overheids.
     1. Wanneer de elastische fase begint, begint Azure Deployment Manager het aansturen van het meegeleverde REST-eind punt voor de service status regel matig. Het polling-interval kan worden geconfigureerd. 

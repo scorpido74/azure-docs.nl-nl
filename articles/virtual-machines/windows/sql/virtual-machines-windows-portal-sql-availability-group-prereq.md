@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224755"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388739"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op virtuele machines van Azure
 
@@ -37,11 +37,11 @@ In het volgende diagram ziet u wat u in de zelf studie maakt.
 In deze zelf studie wordt ervan uitgegaan dat u een basis memorandum hebt van SQL Server AlwaysOn-beschikbaarheids groepen. Zie overzicht van AlwaysOn [Availability groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)als u niet bekend bent met deze technologie.
 
 
-## <a name="create-an-azure-account"></a>Maak een Azure-account
+## <a name="create-an-azure-account"></a>Een Azure-account maken
 U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) [voor delen van Visual Studio-abonnee activeren](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Klik op **+** om een nieuw object te maken in de portal.
 
    ![Nieuw object](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -50,7 +50,7 @@ U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](h
 
    ![Resourcegroep](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klik op **resource groep**.
-5. Klik op **Maken**.
+5. Klik op **Create**.
 6. Typ onder **naam van resource groep**een naam voor de resource groep. Typ bijvoorbeeld **SQL-ha-RG**.
 7. Als u meerdere Azure-abonnementen hebt, controleert u of het abonnement het Azure-abonnement is waarin u de beschikbaarheids groep wilt maken.
 8. Selecteer een locatie. De locatie is de Azure-regio waar u de beschikbaarheids groep wilt maken. In dit artikel worden alle resources op één Azure-locatie gebouwd.
@@ -94,7 +94,7 @@ Het virtuele netwerk maken:
 
    In het voor beeld wordt de naam **beheerder**van het subnet gebruikt. Dit subnet is voor de domein controllers.
 
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
    ![Het virtuele netwerk configureren](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -313,8 +313,8 @@ In de volgende stappen configureert u de Active Directory accounts. De volgende 
 
 | |Installatie account<br/> |sqlserver-0 <br/>SQL Server-en SQL Agent-service account |sqlserver-1<br/>SQL Server-en SQL Agent-service account
 | --- | --- | --- | ---
-|**Voor naam** |Installatie |SQLSvc1 | SQLSvc2
-|**SamAccountName van gebruiker** |Installatie |SQLSvc1 | SQLSvc2
+|**Voor naam** |Installeren |SQLSvc1 | SQLSvc2
+|**SamAccountName van gebruiker** |Installeren |SQLSvc1 | SQLSvc2
 
 Gebruik de volgende stappen om elk account te maken.
 
@@ -364,7 +364,7 @@ Voordat u verdergaat, moet u rekening houden met de volgende ontwerp beslissinge
 Maak vervolgens drie Vm's: twee SQL Server Vm's en een virtuele machine voor een extra cluster knooppunt. Als u elk van de virtuele machines wilt maken, gaat u terug naar de resource groep **SQL-ha-RG** , klikt u op **toevoegen**, zoekt u naar het juiste galerie-item, klikt u op **virtuele machine**en klikt u vervolgens op **uit galerie**. Gebruik de informatie in de volgende tabel om u te helpen bij het maken van de virtuele machines:
 
 
-| Pagina | VM1 | VM2 | VM3 |
+| Faxvoorblad | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | Het juiste galerie-item selecteren |**Windows Server 2016 Data Center** |**SQL Server 2016 SP1 Enter prise op Windows Server 2016** |**SQL Server 2016 SP1 Enter prise op Windows Server 2016** |
 | **Basis beginselen** van de configuratie van virtuele machines |**Name** = cluster-FSW<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |**Name** = sqlserver-0<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |**Name** = sqlserver-1<br/>**Gebruikers naam** = domein Administrator<br/>**Wacht woord** = contoso! 0000<br/>**Abonnement** = uw abonnement<br/>**Resource groep** = SQL-ha-RG<br/>**Locatie** = uw Azure-locatie |

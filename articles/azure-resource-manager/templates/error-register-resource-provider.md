@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u registratie fouten van Azure-resource
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390053"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Los fouten voor de registratie van de resourceprovider
 
@@ -79,13 +79,13 @@ Voor de ondersteunde API-versies voor een bepaald type resource, gebruikt u:
 
 ## <a name="solution-2---azure-cli"></a>Oplossing 2 - Azure CLI
 
-Als u wilt zien of de provider is geregistreerd, gebruikt u de `az provider list` opdracht.
+Als u wilt controleren of de provider is geregistreerd, gebruikt u de opdracht `az provider list`.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Gebruik voor het registreren van een resourceprovider de `az provider register` opdracht en geeft u de *naamruimte* om u te registreren.
+Als u een resource provider wilt registreren, gebruikt u de opdracht `az provider register` en geeft u de *naam ruimte* op die u wilt registreren.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -113,10 +113,10 @@ U kunt de status van inschrijving en registreren van een naamruimte van de resou
 
    ![Abonnement selecteren om resourceprovider te registreren](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. Voor uw abonnement en selecteer **resourceproviders**.
+1. Selecteer **resource providers**voor uw abonnement.
 
    ![Resourceproviders selecteren](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. Bekijk de lijst met resourceproviders en selecteer indien nodig, de **registreren** koppeling voor het registreren van de resourceprovider van het type dat u probeert te implementeren.
+1. Bekijk de lijst met resource providers en selecteer zo nodig de **registratie** koppeling om de resource provider te registreren van het type dat u wilt implementeren.
 
    ![Lijst met resourceproviders](./media/error-register-resource-provider/list-resource-providers.png)

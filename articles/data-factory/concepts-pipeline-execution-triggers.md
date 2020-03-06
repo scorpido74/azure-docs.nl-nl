@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681473"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386508"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pijplijnen uitvoeren en triggers in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -80,7 +80,7 @@ U kunt de pijplijn handmatig uitvoeren met een van de volgende methoden:
 - .NET SDK
 - Azure PowerShell-module
 - REST-API
-- Python SDK
+- Python-SDK
 
 ### <a name="rest-api"></a>REST-API
 In de volgende voorbeeldopdracht wordt getoond hoe u de pijplijn handmatig kunt uitvoeren met behulp van de REST-API:
@@ -278,11 +278,11 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 
 | JSON-eigenschap | Type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | tekenreeks | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Ja | Geen | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | tekenreeks | Ja | None | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Ja | None | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | getal | Nee | 1 | 1 tot 1000 | `"interval":10` |
-| **endTime** | tekenreeks | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Nee | Geen | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | tekenreeks | Ja | None | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | object | Nee | None | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Eigenschap startTime
 In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van een trigger bepaalt:

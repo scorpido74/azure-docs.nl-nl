@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395929"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Kolom patronen gebruiken bij het toewijzen van gegevens stroom
 
@@ -35,7 +35,7 @@ De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waa
 
 ![kolom patronen](media/data-flow/columnpattern2.png "Kolompatronen")
 
-Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één geaggregeerde kolom per overeenkomst. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die wordt samengevoegd met _Totaal. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
+Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één geaggregeerde kolom per overeenkomst. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die wordt samengevoegd met _total. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
 
 Als u wilt controleren of uw overeenkomende voor waarde juist is, kunt u het uitvoer schema van gedefinieerde kolommen valideren in het tabblad **controleren** of een moment opname van de gegevens op het tabblad **voor het voor beeld van gegevens** ophalen. 
 
@@ -65,9 +65,9 @@ Als uw regel resulteert in meerdere identieke toewijzingen, schakelt u **dubbele
 
 * `$$` wordt omgezet naar de naam of waarde van elk match tijdens runtime
 * `name` staat voor de naam van elke binnenkomende kolom
-* `type` staat voor het gegevens type van elke binnenkomende kolom
+* `type` vertegenwoordigt het gegevens type van elke binnenkomende kolom
 * `stream` staat voor de naam die is gekoppeld aan elke stroom of trans formatie in uw stroom
-* `position` is de volg orde van de kolommen in uw gegevens stroom
+* `position` is de ordinale positie van kolommen in uw gegevens stroom
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de data flow- [expressie](data-flow-expression-functions.md) van de toewijzings gegevens voor gegevens transformaties

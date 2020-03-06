@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772232"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387166"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -129,7 +129,7 @@ Zodra de IoT Edge Security-Daemon wordt uitgevoerd, bekijkt u de logboeken van d
 
 ### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>De berichten weer geven die via de IoT Edge hub worden verzonden
 
-U kunt de berichten van de IoT Edge hub bekijken en inzichten verzamelen uit uitgebreide logboeken van de runtime-containers. Als u wilt inschakelen op de uitgebreide logboeken op deze containers, instellen `RuntimeLogLevel` in uw configuratiebestand yaml. Open het bestand:
+U kunt de berichten van de IoT Edge hub bekijken en inzichten verzamelen uit uitgebreide logboeken van de runtime-containers. Als u uitgebreide logboeken op deze containers wilt inschakelen, stelt u `RuntimeLogLevel` in het configuratie bestand van uw yaml in. Open het bestand:
 
 Op Linux:
 
@@ -143,7 +143,7 @@ In Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Standaard de `agent` element ziet er als volgt:
+Het `agent` element ziet er standaard uit als in het volgende voor beeld:
 
    ```yaml
    agent:
@@ -155,7 +155,7 @@ Standaard de `agent` element ziet er als volgt:
        auth: {}
    ```
 
-Vervang `env: {}` met:
+Vervang `env: {}` door:
 
    ```yaml
    env:
@@ -167,7 +167,7 @@ Vervang `env: {}` met:
 
 Sla het bestand op en start de IoT Edge security manager opnieuw.
 
-U kunt ook de berichten controleren die worden verzonden tussen IoT Hub en de IoT Edge-apparaten. Bekijk deze berichten met behulp van de [Azure IOT hub-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Zie voor meer informatie, [handig hulpmiddel bij het ontwikkelen met Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+U kunt ook de berichten controleren die worden verzonden tussen IoT Hub en de IoT Edge-apparaten. Bekijk deze berichten met behulp van de [Azure IOT hub-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Zie [het handige hulp programma bij het ontwikkelen met Azure IOT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)voor meer informatie.
 
 ### <a name="restart-containers"></a>Opnieuw opstarten van containers
 
@@ -220,7 +220,7 @@ Een netwerk configuratie op het doelnet werk verhindert dat de IoT Edge agent he
 
 De IoT Edge-runtime stelt een netwerk in voor elk van de modules waarmee moet worden gecommuniceerd. In Linux is dit netwerk een brugnetwerk. In Windows wordt NAT gebruikt. Dit probleem komt vaker voor op Windows-apparaten die gebruikmaken van Windows-containers die het NAT-netwerk gebruiken.
 
-**Resolutie**
+**Afsluiting**
 
 Zorg ervoor dat er een route naar internet is voor de IP-adressen die aan deze brug/dit NAT-netwerk zijn toegewezen. Soms heeft een VPN-configuratie op de host voorrang op het IoT Edge-netwerk.
 
@@ -239,7 +239,7 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 
 Poort 443 is bezig met een ander proces op de hostmachine. De IoT Edge hub wijst poorten 5671 en 443 toe voor gebruik in Gateway scenario's. Deze poorttoewijzing mislukt als er al een ander proces bezig is op deze poort.
 
-**Resolutie**
+**Afsluiting**
 
 Zoek en stop het proces dat poort 443 gebruikt. Dit proces is meestal een webserver.
 
@@ -251,13 +251,13 @@ Een container kan niet worden uitgevoerd, en in de edgeAgent-Logboeken wordt een
 
 De IoT Edge-agent heeft geen machtigingen voor toegang tot de installatie kopie van een module.
 
-**Resolutie**
+**Afsluiting**
 
 Zorg ervoor dat de registerreferenties van uw juist zijn opgegeven in uw manifest implementatie
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge security-daemon is mislukt met een ongeldige hostnaam
 
-De opdracht `sudo journalctl -u iotedge` mislukt dat en wordt het volgende bericht:
+De opdracht `sudo journalctl -u iotedge` mislukt en het volgende bericht wordt afgedrukt:
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -267,7 +267,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 IoT Edge-runtime biedt alleen ondersteuning voor hostnamen die korter zijn dan 64 tekens lang zijn. Fysieke machines gewoonlijk lang hostnamen niet hebben, maar het probleem komt vaker voor op een virtuele machine. De automatisch gegenereerde hostnamen voor Windows virtuele machines die worden gehost in Azure, meestal in het bijzonder te lang.
 
-**Resolutie**
+**Afsluiting**
 
 Wanneer u deze fout ziet, kunt u deze kunt oplossen door de DNS-naam van uw virtuele machine configureren en vervolgens de DNS-naam als de hostnaam in de setup-opdracht in te stellen.
 
@@ -276,8 +276,8 @@ Wanneer u deze fout ziet, kunt u deze kunt oplossen door de DNS-naam van uw virt
 
    ![DNS-naam van de virtuele machine configureren](./media/troubleshoot/configure-dns.png)
 
-3. Geef een waarde voor **DNS-naamlabel** en selecteer **opslaan**.
-4. Kopiëren van de nieuwe DNS-naam, de indeling moet  **\<DNSnamelabel\>.\< VM-locatie\>. cloudapp.azure.com**.
+3. Geef een waarde op voor het label voor de **DNS-naam** en selecteer **Opslaan**.
+4. Kopieer de nieuwe DNS-naam, die de indeling **\<DNSnamelabel\>moet hebben.\<vmlocation\>. cloudapp.Azure.com**.
 5. Gebruik de volgende opdracht voor het instellen van de IoT Edge-runtime met uw DNS-naam in de virtuele machine:
 
    * Op Linux:
@@ -300,7 +300,7 @@ U kunt de stabiliteitsproblemen op beperkte apparaten, zoals de Raspberry Pi, on
 
 De IoT Edge hub, die deel uitmaakt van de IoT Edge runtime, is standaard geoptimaliseerd voor prestaties en probeert grote delen van geheugen toe te wijzen. Deze optimalisatie is niet ideaal voor beperkte edge-apparaten en stabiliteitsproblemen kan veroorzaken.
 
-**Resolutie**
+**Afsluiting**
 
 Stel voor de IoT Edge hub een omgevings variabele **OptimizeForPerformance** in op **False**. Er zijn twee manieren om omgevings variabelen in te stellen:
 
@@ -310,7 +310,7 @@ Selecteer uw IoT Edge apparaat en op de pagina Details van apparaat in uw IoT Hu
 
 ![OptimizeForPerformance ingesteld op false](./media/troubleshoot/optimizeforperformance-false.png)
 
-**OR**
+**OF**
 
 In het manifest van de implementatie:
 
@@ -330,15 +330,15 @@ In het manifest van de implementatie:
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Kan niet op Windows op de IoT Edge daemon-logboeken ophalen
 
-Als u een EventLogException ontvangt wanneer u `Get-WinEvent` op Windows, controleert u de Register-invoer.
+Als u een EventLogException krijgt wanneer u `Get-WinEvent` in Windows gebruikt, controleert u de Register vermeldingen.
 
 **Hoofd oorzaak**
 
-De `Get-WinEvent` PowerShell-opdracht is afhankelijk van een registervermelding moet aanwezig zijn om te zoeken van Logboeken op een specifieke `ProviderName`.
+De `Get-WinEvent` Power shell-opdracht is afhankelijk van een register vermelding die aanwezig moet zijn om logboeken te zoeken op basis van een specifieke `ProviderName`.
 
-**Resolutie**
+**Afsluiting**
 
-Een registervermelding voor de IoT Edge-daemon instellen. Maak een **iotedge.reg** bestand met de volgende inhoud en importeren naar het Windows-register door erop te dubbelklikken of met behulp van de `reg import iotedge.reg` opdracht:
+Een registervermelding voor de IoT Edge-daemon instellen. Maak een **iotedge. reg** -bestand met de volgende inhoud en importeer het in het Windows-REGI ster door erop te dubbel klikken of door de `reg import iotedge.reg` opdracht te gebruiken:
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -351,7 +351,7 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge-module is mislukt voor het verzenden van een bericht naar de edgeHub met 404-fout
 
-Een aangepaste IoT Edge-module is mislukt voor het verzenden van een bericht naar de edgeHub met een 404-fout `Module not found` fout. De IoT Edge-daemon afdrukken van het volgende bericht naar de logboeken:
+Een aangepaste IoT Edge module kan geen bericht verzenden naar de edgeHub met een 404 `Module not found` fout. De IoT Edge-daemon afdrukken van het volgende bericht naar de logboeken:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -361,7 +361,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 De IoT Edge-daemon wordt afgedwongen proces-id in voor alle modules die verbinding maken met de edgeHub uit veiligheidsoverwegingen. Hiermee wordt gecontroleerd dat alle berichten worden verzonden door een module afkomstig van de belangrijkste proces-ID van de module zijn. Als een bericht wordt verzonden door een module van de ID van een ander proces dan in eerste instantie tot stand gebracht, wordt deze het bericht met een 404-fout-bericht negeren.
 
-**Resolutie**
+**Afsluiting**
 
 Vanaf versie 1.0.7 zijn alle module processen gemachtigd om verbinding te maken. Als u een upgrade naar 1.0.7 niet mogelijk hebt, voert u de volgende stappen uit. Zie [1.0.7 release wijzigingen logboek](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)voor meer informatie.
 
@@ -369,11 +369,11 @@ Zorg ervoor dat de hetzelfde proces-ID altijd door de aangepaste IoT Edge-module
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Firewall- en poortinstellingen configuratieregels voor IoT Edge-implementatie
 
-Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging zijn altijd communicatiekanalen tussen Azure IoT Edge en Azure IoT-Hub geconfigureerd om uitgaand. Deze configuratie is gebaseerd op de [Services communicatiepatroon](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), die minimaliseert de kwetsbaarheid voor aanvallen voor een schadelijke entiteit om te verkennen. Binnenkomende communicatie is alleen vereist voor specifieke scenario's waar Azure IoT Hub moeten push-berichten naar de Azure IoT Edge-apparaat. Cloud-naar-apparaat-berichten worden beschermd met behulp van beveiligde TLS-kanalen en verder kunnen beveiligd met X.509-certificaten en -modules voor TPM-apparaat. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie kan worden tot stand gebracht, Zie [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging zijn altijd communicatiekanalen tussen Azure IoT Edge en Azure IoT-Hub geconfigureerd om uitgaand. Deze configuratie is gebaseerd op het [service-ondersteunde communicatie patroon](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), waarmee de kwets baarheid voor een kwaadwillende entiteit wordt geminimaliseerd. Binnenkomende communicatie is alleen vereist voor specifieke scenario's waar Azure IoT Hub moeten push-berichten naar de Azure IoT Edge-apparaat. Cloud-naar-apparaat-berichten worden beschermd met behulp van beveiligde TLS-kanalen en verder kunnen beveiligd met X.509-certificaten en -modules voor TPM-apparaat. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie tot stand kan worden gebracht. Zie [IOT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 Hoewel IoT Edge verbeterde configuratie biedt voor het beveiligen van Azure IoT Edge-runtime en modules geïmplementeerd, is het nog steeds afhankelijk van de onderliggende machine en het netwerk. Daarom is het van cruciaal belang om ervoor te zorgen dat de juiste netwerk-en firewall regels worden ingesteld voor beveiligde Edge-to-Cloud communicatie. De volgende tabel kan worden gebruikt als richt lijn bij de configuratie van firewall regels voor de onderliggende servers waarop Azure IoT Edge runtime wordt gehost:
 
-|Protocol|Port|binnenkomende|Uitgaand|Hulp|
+|Protocol|Poort|binnenkomende|Uitgaand|Richtlijnen|
 |--|--|--|--|--|
 |MQTT|8883|GEBLOKKEERDE (standaard)|GEBLOKKEERDE (standaard)|<ul> <li>Uitgaand (uitgaand) te openen bij gebruik van MQTT als het communicatieprotocol configureren.<li>. 1883 voor MQTT wordt niet ondersteund door de IoT Edge. <li>Binnenkomende verbindingen voor (inkomend) moeten worden geblokkeerd.</ul>|
 |AMQP|5671|GEBLOKKEERDE (standaard)|OPEN (standaard)|<ul> <li>Standaard communicatieprotocol voor IoT Edge. <li> Moet worden geconfigureerd om te worden geopend als Azure IoT Edge is niet geconfigureerd voor andere ondersteunde protocollen of AMQP het gewenste communicatieprotocol is.<li>5672 voor AMQP wordt niet ondersteund door de IoT Edge.<li>Deze poort blokkeren wanneer Azure IoT Edge maakt gebruik van een andere IoT-Hub ondersteund protocol.<li>Binnenkomende verbindingen voor (inkomend) moeten worden geblokkeerd.</ul></ul>|
@@ -387,7 +387,7 @@ Het apparaat heeft geen problemen met het starten van modules die in de implemen
 
 Standaard worden modules IoT Edge in hun eigen geïsoleerde container netwerk gestart. Het apparaat heeft mogelijk problemen met de DNS-naam omzetting binnen dit particuliere netwerk.
 
-**Resolutie**
+**Afsluiting**
 
 **Optie 1: DNS-server instellen in container Engine-instellingen**
 
@@ -435,6 +435,6 @@ Zorg ervoor dat u deze configuratie ook instelt voor de *edgeAgent* -en *edgeHub
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Denkt u dat u een fout op het IoT Edge-platform hebt gevonden? [Verzend een probleem](https://github.com/Azure/iotedge/issues) zodat we verder kunnen blijven verbeteren.
+Denkt u dat u een fout op het IoT Edge-platform hebt gevonden? [Dien een probleem](https://github.com/Azure/iotedge/issues) in zodat we kunnen blijven verbeteren.
 
 Als u meer vragen hebt, maakt u een [ondersteuningsaanvraag](https://portal.azure.com/#create/Microsoft.Support) voor hulp.

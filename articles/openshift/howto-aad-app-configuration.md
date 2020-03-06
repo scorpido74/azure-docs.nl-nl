@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381448"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
@@ -107,7 +107,7 @@ Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https:/
 
 Zie [Azure-abonnements beheerders toevoegen of wijzigen](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)voor meer informatie over het beheren van beheerders en andere rollen.
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
 * [Toepassingen en Service-Principal-objecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Snelstartgids: een app met het Azure Active Directory v 1.0-eind punt registreren](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)

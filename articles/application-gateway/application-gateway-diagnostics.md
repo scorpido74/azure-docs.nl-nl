@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384800"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -163,7 +163,7 @@ Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk
 |instanceId     | Application Gateway exemplaar dat de aanvraag heeft verzonden.        |
 |clientIP     | Oorspronkelijk IP-adres voor de aanvraag.        |
 |clientPort     | Bron poort voor de aanvraag.       |
-|HttpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
+|httpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
 |requestUri     | De URI van de ontvangen aanvraag.        |
 |RequestQuery     | Door de **server gerouteerd**: het exemplaar van de back-end-pool dat de aanvraag heeft verzonden.</br>**X-AzureApplicationGateway-log-id**: correlatie-id die voor de aanvraag wordt gebruikt. Het kan worden gebruikt om problemen met verkeer op de back-endservers op te lossen. </br>**Server-status**: http-antwoord code die Application Gateway ontvangen van de back-end.       |
 |User agent     | Gebruikers agent van de header van de HTTP-aanvraag.        |
@@ -207,7 +207,7 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |instanceId     | Application Gateway exemplaar dat de aanvraag heeft verzonden.        |
 |clientIP     | Oorspronkelijk IP-adres voor de aanvraag.        |
 |clientPort     | Bron poort voor de aanvraag.       |
-|HttpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
+|httpMethod     | De HTTP-methode die door de aanvraag wordt gebruikt.       |
 |requestUri     | De URI van de ontvangen aanvraag.        |
 |User agent     | Gebruikers agent van de header van de HTTP-aanvraag.        |
 |httpStatus     | Er is een HTTP-status code geretourneerd naar de client van Application Gateway.       |
@@ -264,7 +264,7 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |requestCount     | Aantal geleverde aanvragen.        |
 |periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
-|Doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
+|throughput| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
 ```json
 {
@@ -301,7 +301,7 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |requestUri     | De URL van de ontvangen aanvraag.       |
 |ruleSetType     | Type regel instellingen. De beschik bare waarde is OWASP.        |
 |ruleSetVersion     | Gebruikte versie van regel instellingen. Beschik bare waarden zijn 2.2.9 en 3,0.     |
-|ruleId     | De regel-ID van de trigger gebeurtenis.        |
+|RuleId     | De regel-ID van de trigger gebeurtenis.        |
 |message     | Gebruikers vriendelijk bericht voor de activerings gebeurtenis. Meer informatie vindt u in de sectie Details.        |
 |action     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden worden vergeleken en geblokkeerd.      |
 |site     | De site waarvoor het logboek is gegenereerd. Momenteel wordt alleen globaal weer gegeven omdat regels globaal zijn.|

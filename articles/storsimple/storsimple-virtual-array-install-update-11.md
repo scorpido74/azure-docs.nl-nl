@@ -1,6 +1,6 @@
 ---
-title: Installatie van Update 1.1 op de StorSimple Virtual Array | Microsoft Docs
-description: Beschrijft hoe u updates met de Azure portal en de lokale web-UI voor StorSimple Virtual Array toe te passen
+title: Update 1,1 op StorSimple Virtual array installeren | Microsoft Docs
+description: Hierin wordt beschreven hoe u updates toepast met de Azure Portal en de lokale web-UI voor de virtuele StorSimple-matrix
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,116 +15,116 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61408658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384842"
 ---
-# <a name="install-update-11-on-your-storsimple-virtual-array"></a>Update 1.1 installeren op uw StorSimple Virtual Array
+# <a name="install-update-11-on-your-storsimple-virtual-array"></a>Update 1,1 installeren op de virtuele StorSimple-matrix
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel beschrijft de stappen die nodig zijn voor het installeren van Update 1.1 op uw virtuele StorSimple-matrix via de lokale webgebruikersinterface en via de Azure-portal.
+In dit artikel worden de stappen beschreven die nodig zijn om update 1,1 te installeren op uw virtuele StorSimple-matrix via de lokale webgebruikersinterface en via de Azure Portal.
 
-U past u de software-updates of hotfixes voor uw StorSimple Virtual Array om up-to-date te houden. Voordat u een update toepast, wordt aangeraden dat u de volumes of shares offline op de host eerst neemt en klik vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Nadat de volumes of shares offline zijn, u moet ook rekening houden met een handmatige back-up van het apparaat.
+U past de software-updates of hotfixes toe om uw virtuele StorSimple-matrix up-to-date te houden. Voordat u een update toepast, raden we u aan om eerst de volumes of shares op de host offline te zetten en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Nadat de volumes of shares offline zijn, moet u ook een hand matige back-up van het apparaat maken.
 
 > [!IMPORTANT]
-> - Update 1.1 komt overeen met **10.0.10307.0** softwareversie op uw apparaat. Voor informatie over wat is er nieuw in deze update, gaat u naar [opmerkingen bij de Release voor 1.1 Update](storsimple-virtual-array-update-11-release-notes.md).
+> - Update 1,1 komt overeen met de **10.0.10307.0** -software versie op het apparaat. Voor informatie over wat er nieuw is in deze update gaat u naar [release opmerkingen voor update 1,1](storsimple-virtual-array-update-11-release-notes.md).
 >
-> - Houd er rekening mee dat een update of hotfix installeert uw apparaat opnieuw wordt opgestart. Gezien het feit dat de StorSimple Virtual Array een apparaat met één knooppunt is, een i/o bezig is onderbroken en uw apparaat ondervindt uitvaltijd.
+> - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Gezien de StorSimple virtuele matrix is een apparaat met één knoop punt, worden alle I/O-bewerkingen onderbroken en wordt de uitval tijd van uw apparaat verstoord.
 >
-> - Update 1.1 is beschikbaar in de Azure-portal alleen als de virtuele matrix Update 1 wordt uitgevoerd. Voor virtuele matrices met Update 0.6-versies, moet u eerst installeren van Update 1.0 en 1.1 Update toepassen.
+> - Update 1,1 is alleen beschikbaar in de Azure Portal als update 1 wordt uitgevoerd op de virtuele matrix. Voor virtuele matrices waarop update 0,6-versies worden uitgevoerd, moet u eerst Update 1,0 installeren en vervolgens Update 1,1 Toep assen.
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-Als met Update 0,2 en hoger, wordt u aangeraden dat u updates via de Azure-portal installeert. De portal procedure moet de gebruiker om te scannen, downloaden en installeer vervolgens de updates. Afhankelijk van de versie van de software die uw virtuele array wordt uitgevoerd, is toepassen van de update via de Azure-portal anders.
+Als u update 0,2 en hoger uitvoert, wordt u aangeraden updates te installeren via de Azure Portal. Voor de portal procedure moet de gebruiker de updates scannen, downloaden en installeren. Afhankelijk van de software versie waarop uw virtuele array wordt uitgevoerd, wordt het Toep assen van een update via de Azure Portal anders.
 
- - Als uw virtuele array kan Update 1 wordt uitgevoerd, installeert de Azure-portal Update 1.1 (10.0.10307.0) rechtstreeks op uw apparaat. Deze procedure duurt ongeveer 10 minuten om te voltooien.
- - Als uw virtuele array wordt Update 0.6 uitgevoerd, is bijgewerkt in de fase van de twee. De Azure-portal installeert eerst Update 1.0 (10.0.10296.0) op uw apparaat. De virtuele matrix wordt opnieuw opgestart en de portal-Update 1.1 (10.0.10307.0) op uw apparaat installeert. Deze procedure duurt ongeveer 15 minuten om te voltooien.
+ - Als uw virtuele array update 1 uitvoert, installeert de Azure Portal de update 1,1 (10.0.10307.0) rechtstreeks op het apparaat. Deze procedure duurt ongeveer 10 minuten om te volt ooien.
+ - Als voor uw virtuele array Update 0,6 wordt uitgevoerd, wordt de update uitgevoerd in twee fasen. De Azure Portal installeert eerst Update 1,0 (10.0.10296.0) op het apparaat. De virtuele matrix wordt opnieuw opgestart en de portal installeert vervolgens Update 1,1 (10.0.10307.0) op het apparaat. Deze procedure duurt ongeveer 15 minuten.
 
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-11.md)]
 
-Nadat de installatie voltooid is, gaat u naar uw StorSimple Device Manager-service. Selecteer **apparaten** en selecteer en klik op het apparaat dat u zojuist hebt bijgewerkt. Ga naar **instellingen > beheren > apparaatupdates**. De weergegeven software-versie moet **10.0.10307.0**.
+Nadat de installatie is voltooid, gaat u naar de StorSimple-Apparaatbeheer service. Selecteer **apparaten** en selecteer en klik vervolgens op het apparaat dat u zojuist hebt bijgewerkt. Ga naar **instellingen > > updates**van het apparaat te beheren. De weer gegeven software versie moet **10.0.10307.0**zijn.
 
-![Softwareversie na-update](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
+![Software versie na update](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
 
-## <a name="use-the-local-web-ui"></a>Gebruik de lokale web-UI
+## <a name="use-the-local-web-ui"></a>De lokale web-UI gebruiken
 
-Er zijn twee stappen bij het gebruik van de lokale webgebruikersinterface:
+Er zijn twee stappen voor het gebruik van de lokale web-UI:
 
-* Download de update of hotfix
-* Installeer de update of de hotfix
+* De update of hotfix downloaden
+* De update of hotfix installeren
 
 > [!IMPORTANT] 
-> **Met deze update alleen doorgaan als u Update 1 (10.0.10296.0) worden uitgevoerd. Als u Update 0.6, [Update 1 installeren](storsimple-virtual-array-install-update-1.md) op het apparaat eerst, en vervolgens Update 1.1.**
+> **Ga alleen verder met deze update als u update 1 (10.0.10296.0) uitvoert. Als u update 0,6 uitvoert, installeer dan eerst [Update 1](storsimple-virtual-array-install-update-1.md) op uw apparaat en pas vervolgens Update 1,1 toe.**
 
-### <a name="download-the-update-or-the-hotfix"></a>Download de update of hotfix
+### <a name="download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-Voer de volgende stappen uit om te 1.1 Update downloaden via de Microsoft Update-catalogus.
+Voer de volgende stappen uit om update 1,1 te downloaden uit de Microsoft Update catalogus.
 
-#### <a name="to-download-the-update-or-the-hotfix"></a>De update of de hotfix te downloaden
+#### <a name="to-download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-1. Start Internet Explorer en navigeer naar [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en navigeer naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 
-2. Als u van de Microsoft Update-catalogus voor de eerste keer op deze computer gebruikmaakt, klikt u op **installeren** wanneer hierom wordt gevraagd voor het installeren van de invoegtoepassing Microsoft Update-catalogus.
+2. Als u de Microsoft Update catalogus voor de eerste keer op deze computer gebruikt, klikt u op **installeren** wanneer u wordt gevraagd de invoeg toepassing Microsoft Update catalogus te installeren.
 
-3. Voer in het zoekvak van de Microsoft Update-catalogus, het aantal Knowledge Base (KB) van de hotfix die u wilt downloaden. Voer **4337628** voor 1.1 bijwerken en klik vervolgens op **zoeken**.
+3. Voer in het zoekvak van de catalogus van de Microsoft Update het Knowledge Base-nummer (KB) in van de hotfix die u wilt downloaden. Voer **4337628** in bij Update 1,1 en klik vervolgens op **zoeken**.
    
-    De lijst met hotfixes wordt weergegeven, bijvoorbeeld **StorSimple Virtual Array Update 1.1**.
+    De hotfix-vermelding wordt weer gegeven, bijvoorbeeld **StorSimple Virtual array Update 1,1**.
    
     ![Catalogus doorzoeken](./media/storsimple-virtual-array-install-update-11/download1.png)
 
 4. Klik op **Downloaden**.
 
-5. De twee bestanden downloaden naar een map. U kunt ook de map kopiëren naar een netwerkshare die bereikbaar is vanaf het apparaat.
+5. Down load de twee bestanden naar een map. U kunt de map ook kopiëren naar een netwerk share die bereikbaar is vanaf het apparaat.
 
-6. Open de map waar de bestanden zich bevinden.
+6. Open de map waarin de bestanden zich bevinden.
 
     ![Bestanden in het pakket](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
-    U ziet u twee bestanden:
-    -  Een pakketbestand van Microsoft Update zelfstandige `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om bij te werken software van het apparaat.
-    - Een bestand met de cumulatieve updates voor juni `Windows8.1-KB4284815-x64`. Voor meer informatie over wat is inbegrepen in deze rollup, gaat u naar [juni maandelijkse security updatepakket](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
+    U ziet twee bestanden:
+    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
+    - Een bestand dat cumulatieve updates bevat voor juni `Windows8.1-KB4284815-x64`. Ga naar [maandelijkse Security Rollup van juni](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)voor meer informatie over wat er in dit pakket is opgenomen.
 
-### <a name="install-the-update-or-the-hotfix"></a>Installeer de update of de hotfix
+### <a name="install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-Voordat u de update of hotfix installeren, controleert u of:
+Voordat u de update of hotfix installeert, moet u het volgende doen:
 
- - U hebt de update of hotfix gedownload lokaal op uw host of toegankelijk is via een netwerkshare.
- - Uw virtuele array kan Update 1 (10.0.10296.0) wordt uitgevoerd. Als u Update 0.6, [Update 1 installeren](storsimple-virtual-array-install-update-1.md) eerste en installeer vervolgens Update 1.1.
+ - U beschikt over de update of de hotfix is lokaal op uw host gedownload of toegankelijk via een netwerk share.
+ - In uw virtuele matrix wordt update 1 (10.0.10296.0) uitgevoerd. Als u update 0,6 uitvoert, installeert u eerst [Update 1](storsimple-virtual-array-install-update-1.md) en installeert u vervolgens Update 1,1.
 
-Deze procedure duurt ongeveer vier minuten om te voltooien. Voer de volgende stappen uit voor het installeren van de update of hotfix.
+Deze procedure duurt circa 4 minuten. Voer de volgende stappen uit om de update of hotfix te installeren.
 
-#### <a name="to-install-the-update-or-the-hotfix"></a>De update of de hotfix te installeren
+#### <a name="to-install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-1. Ga in de lokale webgebruikersinterface naar **onderhoud** > **Software-Update**. Noteer de versie van de software die u uitvoert. **Met deze update alleen doorgaan als u Update 1 (10.0.10296.0) worden uitgevoerd. Als u Update 0.6, [Update 1 installeren](storsimple-virtual-array-install-update-1.md) op het apparaat eerst, en vervolgens Update 1.1.**
+1. Ga in de lokale web-UI naar **onderhoud** > **Software-update**. Noteer de software versie die u uitvoert. **Ga alleen verder met deze update als u update 1 (10.0.10296.0) uitvoert. Als u update 0,6 uitvoert, installeer dan eerst [Update 1](storsimple-virtual-array-install-update-1.md) op uw apparaat en pas vervolgens Update 1,1 toe.**
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. In **Update bestandspad**, voer de naam van de update of hotfix. U kunt ook bladeren naar het installatiebestand van de update of hotfix als geplaatst op een netwerkshare. Klik op **Toepassen**.
+2. In **pad van update bestand**voert u de bestands naam in voor de update of de hotfix. U kunt ook naar het installatie bestand van de update of hotfix bladeren als u dit op een netwerk share plaatst. Klik op **Apply** (Toepassen).
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
-3. Een waarschuwing wordt weergegeven. Gezien de virtuele matrix is een apparaat met één knooppunt, nadat de update wordt toegepast, het apparaat opnieuw wordt opgestart en er uitvaltijd is. Klik op het vinkje.
+3. Er wordt een waarschuwing weer gegeven. Gezien de virtuele matrix is een apparaat met één knoop punt, nadat de update is toegepast, wordt het apparaat opnieuw opgestart en is er downtime. Klik op het vinkje.
    
    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update3m.png)
 
-4. De update wordt gestart. Wanneer het apparaat is bijgewerkt, opnieuw wordt gestart. De lokale UI is niet toegankelijk in deze duur.
+4. De update wordt gestart. Nadat het apparaat is bijgewerkt, wordt het opnieuw opgestart. De lokale gebruikers interface is niet toegankelijk in deze duur.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Nadat het opnieuw opstarten voltooid is, gaat u naar de **aanmelden** pagina. Als u wilt controleren of software van het apparaat is bijgewerkt, klikt u in de lokale web-UI, gaat u naar **onderhoud** > **Software-Update**. De weergegeven software-versie moet **10.0.0.0.0.10307** voor Update 1.1.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhoud** > **Software-update**in de lokale webinterface van het web. De weer gegeven software versie moet **10.0.0.0.0.10307** zijn voor update 1,1.
    
    > [!NOTE]
-   > We rapport de softwareversies in een iets andere manier in de lokale web-UI en de Azure-portal. Bijvoorbeeld, de lokale webgebruikersinterface gerapporteerd **10.0.0.0.0.10307** en de Azure portal rapporten **10.0.10307.0** voor dezelfde versie.
+   > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10307** en de Azure Portal rapport **10.0.10307.0** voor dezelfde versie.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Herhaal stappen 2-4 voor het installeren van de Windows-security-oplossing met behulp van bestand `Windows8.1-KB4284815-x64`. De virtuele matrix wordt opnieuw opgestart na de installatie en u moet zich aanmelden bij de lokale webgebruikersinterface.
+6. Herhaal de stappen 2-4 om de Windows-beveiligings oplossing te installeren met behulp van bestands `Windows8.1-KB4284815-x64`. De virtuele matrix wordt opnieuw opgestart na de installatie en u moet zich aanmelden bij de lokale webgebruikersinterface.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [beheren van uw StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Meer informatie over [het beheren van uw StorSimple Virtual array](storsimple-ova-web-ui-admin.md).

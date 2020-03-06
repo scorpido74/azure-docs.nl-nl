@@ -4,11 +4,11 @@ description: Meer informatie over het ophalen, opmaken, pagina's en overs laan v
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304017"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388630"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 

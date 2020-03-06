@@ -3,15 +3,15 @@ title: Beheerde identiteiten
 description: Meer informatie over hoe beheerde identiteiten werken in Azure App Service en Azure Functions, hoe u een beheerde identiteit kunt configureren en een token voor een back-end-bron kunt genereren.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365517"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -24,7 +24,7 @@ Aan uw toepassing kunnen twee typen identiteiten worden verleend:
 - Een door het **systeem toegewezen identiteit** is gekoppeld aan uw toepassing en wordt verwijderd als uw app wordt verwijderd. Een app kan slechts één door het systeem toegewezen identiteit hebben.
 - Een door de **gebruiker toegewezen identiteit** is een zelfstandige Azure-resource die aan uw app kan worden toegewezen. Een app kan meerdere door de gebruiker toegewezen identiteiten hebben.
 
-## <a name="adding-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen
+## <a name="add-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen
 
 Voor het maken van een app met een door het systeem toegewezen identiteit moet er een extra eigenschap worden ingesteld voor de toepassing.
 
@@ -47,7 +47,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, moet u de `az webapp identity assign`-opdracht gebruiken voor een bestaande toepassing. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
-- Gebruik de Inge sloten Azure Cloud Shell via de knop ' try-button ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
+- Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
 - [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt. 
 
 De volgende stappen helpen u bij het maken van een web-app en het toewijzen van een-id met behulp van de CLI:
@@ -146,10 +146,10 @@ Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
 }
 ```
 
-Waar `<TENANTID>` en `<PRINCIPALID>` worden vervangen door GUID'S. De eigenschap tenantId identificeert de AAD-Tenant waarvan de identiteit deel uitmaakt. De principalId is een unieke id voor de nieuwe identiteit van de toepassing. Binnen AAD heeft de service-principal dezelfde naam die u hebt gegeven aan uw App Service-of Azure Functions-exemplaar.
+De eigenschap tenantId identificeert de AAD-Tenant waarvan de identiteit deel uitmaakt. De principalId is een unieke id voor de nieuwe identiteit van de toepassing. Binnen AAD heeft de service-principal dezelfde naam die u hebt gegeven aan uw App Service-of Azure Functions-exemplaar.
 
 
-## <a name="adding-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit toevoegen
+## <a name="add-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit toevoegen
 
 Voor het maken van een app met een door de gebruiker toegewezen identiteit moet u de identiteit maken en vervolgens de resource-id toevoegen aan uw app-configuratie.
 
@@ -230,15 +230,17 @@ Wanneer de site wordt gemaakt, heeft deze de volgende aanvullende eigenschappen:
 }
 ```
 
-Waar `<PRINCIPALID>` en `<CLIENTID>` worden vervangen door GUID'S. De principalId is een unieke id voor de identiteit die wordt gebruikt voor AAD-beheer. De clientId is een unieke id voor de nieuwe identiteit van de toepassing die wordt gebruikt om op te geven welke identiteit tijdens runtime-aanroepen moet worden gebruikt.
+De principalId is een unieke id voor de identiteit die wordt gebruikt voor AAD-beheer. De clientId is een unieke id voor de nieuwe identiteit van de toepassing die wordt gebruikt om op te geven welke identiteit tijdens runtime-aanroepen moet worden gebruikt.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Tokens verkrijgen voor Azure-resources
+## <a name="obtain-tokens-for-azure-resources"></a>Tokens verkrijgen voor Azure-resources
 
 Een app kan de beheerde identiteit gebruiken om tokens op te halen voor toegang tot andere bronnen die worden beveiligd door AAD, zoals Azure Key Vault. Deze tokens vertegenwoordigen de toepassing die toegang heeft tot de resource en geen specifieke gebruiker van de toepassing. 
 
+Mogelijk moet u de doel bron configureren om toegang toe te staan vanuit uw toepassing. Als u bijvoorbeeld een token aanvraagt om toegang te krijgen tot Key Vault, moet u ervoor zorgen dat u een toegangs beleid hebt toegevoegd dat de identiteit van uw toepassing bevat. Anders worden uw aanroepen naar Key Vault geweigerd, zelfs als ze het token bevatten. Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)voor meer informatie over welke bronnen Azure Active Directory-tokens ondersteunen.
+
 > [!IMPORTANT]
-> Mogelijk moet u de doel bron configureren om toegang toe te staan vanuit uw toepassing. Als u bijvoorbeeld een token aanvraagt om toegang te krijgen tot Key Vault, moet u ervoor zorgen dat u een toegangs beleid hebt toegevoegd dat de identiteit van uw toepassing bevat. Anders worden uw aanroepen naar Key Vault geweigerd, zelfs als ze het token bevatten. Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)voor meer informatie over welke bronnen Azure Active Directory-tokens ondersteunen.
+> De back-end-services voor beheerde identiteiten bewaren een cache per resource-URI gedurende ongeveer acht uur. Als u het toegangs beleid van een bepaalde doel resource bijwerkt en direct een token voor die bron ophaalt, kunt u een token in de cache met verouderde machtigingen ontvangen totdat het token verloopt. Er is momenteel geen manier om het vernieuwen van tokens af te dwingen.
 
 Er is een eenvoudig REST-protocol voor het verkrijgen van een token in App Service en Azure Functions. Dit kan worden gebruikt voor alle toepassingen en talen. Voor .NET en Java biedt de Azure SDK een abstractie over dit protocol en wordt een lokale ontwikkel ervaring vergemakkelijkt.
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Code voorbeelden
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > Voor .NET-talen kunt u ook gebruikmaken van [micro soft. Azure. Services. AppAuthentication](#asal) in plaats van deze aanvraag zelf te vervaardigen.
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -413,7 +415,7 @@ Voor Java-toepassingen en-functies is de eenvoudigste manier om te werken met ee
 
 ## <a name="remove"></a>Een identiteit verwijderen
 
-Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te scha kelen met behulp van de portal, Power shell of CLI op dezelfde manier als waarop deze is gemaakt. Door de gebruiker toegewezen identiteiten kunnen afzonderlijk worden verwijderd. Als u alle identiteiten wilt verwijderen, moet u in het REST/ARM-sjabloon protocol dit doen door het type in te stellen op ' geen ':
+Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te scha kelen met behulp van de portal, Power shell of CLI op dezelfde manier als waarop deze is gemaakt. Door de gebruiker toegewezen identiteiten kunnen afzonderlijk worden verwijderd. Als u alle identiteiten wilt verwijderen, stelt u het type in op ' geen ' in de [arm-sjabloon](#using-an-azure-resource-manager-template):
 
 ```json
 "identity": {

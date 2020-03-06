@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u Service Fabric stateful-Services part
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434068"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390193"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric betrouw bare Services partitioneren
 Dit artikel bevat een inleiding tot de basis concepten van het partitioneren van Azure Service Fabric reliable Services. De bron code die in het artikel wordt gebruikt, is ook beschikbaar op [github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

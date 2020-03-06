@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929073"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387330"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Gegevens verplaatsen van PostgreSQL met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -55,7 +55,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
   - .NET API
   - REST-API
 
-    Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+    Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -70,11 +70,11 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor PostgreSQL gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Ja |
 | server |De naam van de PostgreSQL-server. |Ja |
-| database |De naam van de PostgreSQL-data base. |Ja |
+| enddatabase |De naam van de PostgreSQL-data base. |Ja |
 | schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
@@ -86,7 +86,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (die de postgresql-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de PostgreSQL-data base-instantie waarnaar de gekoppelde service verwijst. De tabel naam is hoofdletter gevoelig. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -97,7 +97,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 
 Wanneer bron van het type **RelationalSource** (inclusief postgresql), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -304,7 +304,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 
 | PostgreSQL-database type | PostgresSQL aliassen | .NET Framework type |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |Datum en tijd |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bits [(n)] | |Byte [], teken reeks |
@@ -316,10 +316,10 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | teken variërend [(n)] |varchar [(n)] |Tekenreeks |
 | Cid | |Tekenreeks |
 | CIDR | |Tekenreeks |
-| cirkel | |Byte [], teken reeks |
-| date | |Datetime |
+| Middencirkel | |Byte [], teken reeks |
+| date | |Datum en tijd |
 | DateRange | |Tekenreeks |
-| dubbele precisie |float8 |Double |
+| dubbele precisie |float8 |Double-waarde |
 | inet | |Byte [], teken reeks |
 | intarry | |Tekenreeks |
 | int4range | |Tekenreeks |
@@ -328,17 +328,17 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | interval [Fields] [(p)] | |Periode |
 | json | |Tekenreeks |
 | jsonb | |Byte[] |
-| lijn | |Byte [], teken reeks |
+| streep | |Byte [], teken reeks |
 | lseg | |Byte [], teken reeks |
 | macaddr | |Byte [], teken reeks |
-| money | |Decimal |
-| numeriek [(p, s)] |decimaal [(p, s)] |Decimal |
+| money | |decimaal |
+| numeriek [(p, s)] |decimaal [(p, s)] |decimaal |
 | numrange | |Tekenreeks |
 | oid | |Int32 |
-| Pad | |Byte [], teken reeks |
+| pad | |Byte [], teken reeks |
 | pg_lsn | |Int64 |
 | punt | |Byte [], teken reeks |
-| polygoon | |Byte [], teken reeks |
+| Polygoon | |Byte [], teken reeks |
 | real |float4 |Enkelvoudig |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |

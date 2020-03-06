@@ -10,11 +10,11 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510529"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379335"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge-modules van de Azure-portal implementeren
 
@@ -24,18 +24,18 @@ In dit artikel laat zien hoe de Azure-portal begeleidt u bij het maken van een m
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [IoT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IoT Edge-apparaat](how-to-register-device.md#register-in-the-azure-portal) met IoT Edge-runtime geïnstalleerd.
+* Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
+* Een [IOT edge apparaat](how-to-register-device.md#register-in-the-azure-portal) waarop de IOT Edge-runtime is geïnstalleerd.
 
 ## <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. Zie voor meer informatie over hoe implementatie werk manifesten en hoe ze worden gemaakt, [te begrijpen hoe IoT Edge-modules kunnen worden gebruikt, geconfigureerd en opnieuw gebruikt](module-composition.md).
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. Zie [begrijpen hoe IOT Edge modules kunnen worden gebruikt, geconfigureerd en opnieuw worden gebruikt](module-composition.md)voor meer informatie over hoe implementatie manifesten werken en hoe u ze kunt maken.
 
-De Azure portal heeft een wizard waarmee wordt beschreven hoe u het manifest van de implementatie, in plaats van het JSON-document handmatig. Er drie stappen: **modules toevoegen**, **routes opgeven**, en **implementatie bekijken**.
+De Azure portal heeft een wizard waarmee wordt beschreven hoe u het manifest van de implementatie, in plaats van het JSON-document handmatig. Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
 
 ### <a name="select-device-and-add-modules"></a>Apparaat selecteren en modules toevoegen
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw IoT-hub.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
 1. Selecteer in het linkerdeel venster **IOT Edge** in het menu.
 1. Klik op de ID van het doelapparaat uit de lijst met apparaten.
 1. Selecteer op de bovenste balk **modules instellen**.
@@ -47,7 +47,7 @@ De Azure portal heeft een wizard waarmee wordt beschreven hoe u het manifest van
    * **Marketplace-module** : modules die worden gehost op de Azure Marketplace. Voor sommige Marketplace-modules is aanvullende configuratie vereist. Controleer dus de module gegevens in de lijst met [IOT Edge modules van Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
    * **Azure stream Analytics module** : modules die zijn gegenereerd op basis van een Azure stream Analytics workload.
 
-1. Nadat u een module hebt toegevoegd, selecteert u de module naam in de lijst om de module-instellingen te openen. Vul de optionele velden indien nodig. Voor meer informatie over container maken van opties voor beleid voor opnieuw opstarten en gewenste status zien [EdgeAgent gewenste eigenschappen](module-edgeagent-edgehub.md#edgeagent-desired-properties). Zie voor meer informatie over de moduledubbel [definiëren of update gewenste eigenschappen](module-composition.md#define-or-update-desired-properties).
+1. Nadat u een module hebt toegevoegd, selecteert u de module naam in de lijst om de module-instellingen te openen. Vul de optionele velden indien nodig. Zie [EdgeAgent gewenste eigenschappen](module-edgeagent-edgehub.md#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status. Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](module-composition.md#define-or-update-desired-properties).
 1. Herhaal zo nodig stap 5 tot en met 8 om extra modules toe te voegen aan uw implementatie.
 1. Selecteer **volgende: routes** om door te gaan naar de sectie routes.
 
@@ -59,7 +59,7 @@ Voeg de routes toe of werk deze bij met informatie van [Declareer routes](module
 
 ### <a name="review-deployment"></a>Implementatie bekijken
 
-De revisie sectie ziet u de JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Houd er rekening mee dat er twee modules aangegeven dat u hebt toegevoegd: **$edgeAgent** en **$edgeHub**. Deze twee modules waaruit de [IoT Edge-runtime](iot-edge-runtime.md) en zijn vereist standaardwaarden in elke implementatie.
+De revisie sectie ziet u de JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Houd er rekening mee dat er twee modules zijn gedeclareerd die u niet hebt toegevoegd: **$edgeAgent** en **$edgeHub**. Deze twee modules vormen de [IOT Edge runtime](iot-edge-runtime.md) en zijn de standaard instellingen voor elke implementatie.
 
 Controleer uw implementatie gegevens en selecteer vervolgens **maken**.
 
@@ -106,4 +106,4 @@ Selecteer **volgende: routes** en ga door met de implementatie zoals beschreven 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md)
+Meer informatie over het [implementeren en bewaken van IOT Edge modules op schaal](how-to-deploy-monitor.md)

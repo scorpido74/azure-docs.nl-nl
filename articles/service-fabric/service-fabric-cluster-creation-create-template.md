@@ -4,11 +4,11 @@ description: Meer informatie over het maken van een resource manager-sjabloon vo
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463248"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396632"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Een Service Fabric cluster resource manager-sjabloon maken
 
@@ -254,9 +254,9 @@ Zie voor meer informatie over de JSON-syntaxis en de eigenschappen voor de resou
 
 * [Micro soft. ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

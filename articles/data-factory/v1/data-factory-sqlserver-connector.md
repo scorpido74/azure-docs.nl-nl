@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928167"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361429"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Gegevens verplaatsen van en naar SQL Server on-premises of op IaaS (Azure VM) met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -55,7 +55,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -73,12 +73,12 @@ U maakt een gekoppelde service van het type **OnPremisesSqlServer** om een on-pr
 
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor SQL Server gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSqlServer**. |Ja |
 | connectionString |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises SQL Server-Data Base. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voorbeeld: **domainname\\username**. |Nee |
+| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voor beeld: **domein naam\\gebruikers naam**. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
 
 U kunt referenties versleutelen met de cmdlet **New-AzDataFactoryEncryptValue** en deze gebruiken in de Connection String, zoals wordt weer gegeven in het volgende voor beeld (eigenschap**EncryptedCredential** ):
@@ -130,7 +130,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **SqlServerTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel of weer gave in de SQL Server Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja |
 
@@ -147,7 +147,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de
 ### <a name="sqlsource"></a>SqlSource
 Wanneer de bron in een Kopieer activiteit van het type **SqlSource**is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. Kan verwijzen naar meerdere tabellen vanuit de data base waarnaar wordt verwezen door de invoer gegevensset. Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: Selecteer een van de MyTable. |Nee |
 | sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. |Nee |
@@ -165,7 +165,7 @@ Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, worden de kol
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voorbeeld: "00: 30:00 ' (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
@@ -656,31 +656,31 @@ De toewijzing is hetzelfde als de SQL Server gegevens type toewijzing voor ADO.N
 | binary |Byte[] |
 | bit |Booleaans |
 | char |String, Char[] |
-| date |Datum/tijd |
-| Datetime |Datum/tijd |
-| datetime2 |Datum/tijd |
+| date |DateTime |
+| Datum en tijd |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| decimaal |decimaal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
+| Float |Double-waarde |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |decimaal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |decimaal |
 | nvarchar |String, Char[] |
 | real |Enkelvoudig |
 | rowversion |Byte[] |
-| smalldatetime |Datum/tijd |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |decimaal |
 | sql_variant |Object * |
 | tekst |String, Char[] |
 | tijd |TimeSpan |
 | tijdstempel |Byte[] |
-| tinyint |byte |
-| uniqueidentifier |GUID |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

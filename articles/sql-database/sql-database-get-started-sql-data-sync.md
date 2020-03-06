@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380770"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Zelf studie: SQL Data Sync instellen tussen Azure SQL Database en SQL Server on-premises
 
@@ -197,7 +197,7 @@ Gegevens synchronisatie maakt aanvullende tabellen in de Data Base voor het bijh
 
 **Zijn mijn gegevens convergent na een synchronisatie?**
 
-Dat hoeft niet. Maak een synchronisatie groep met een hub en drie spaken (A, B en C), waarbij synchronisaties hub zijn naar A, hub naar B en hub naar C. Als er een wijziging wordt aangebracht in data base A *na* de hub naar een synchronisatie, wordt die wijziging niet naar data base B of Data Base C geschreven tot de volgende synchronisatie taak.
+Niet noodzakelijkerwijs. Maak een synchronisatie groep met een hub en drie spaken (A, B en C), waarbij synchronisaties hub zijn naar A, hub naar B en hub naar C. Als er een wijziging wordt aangebracht in data base A *na* de hub naar een synchronisatie, wordt die wijziging niet naar data base B of Data Base C geschreven tot de volgende synchronisatie taak.
 
 **Hoe kan ik schema wijzigingen in een synchronisatie groep ophalen?**
 

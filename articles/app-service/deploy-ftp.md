@@ -7,11 +7,11 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680909"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373657"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uw app implementeren op Azure App Service met behulp van FTP/S
 
@@ -112,6 +112,6 @@ Azure App Service ondersteunt verbinding via de actieve en passieve modus. De pa
 
 Probeer [te implementeren naar Azure met git](deploy-local-git.md)voor meer geavanceerde implementatie scenario's. Met op Git gebaseerde implementatie naar Azure kunt u versie beheer, pakket herstel, MSBuild en meer.
 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 * [Implementatie referenties Azure App Service](deploy-configure-credentials.md)

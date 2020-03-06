@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888053"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365001"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -64,7 +64,7 @@ In dit scenario kunt u een resource limiet van twee Cpu's instellen voor het con
 
 * Voor het **maximum aantal** resources in een container groep raadpleegt u de [Beschik baarheid van resources][region-availability] voor Azure container instances in de implementatie regio.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 
 Container groepen kunnen een extern IP-adres delen, een of meer poorten op dat IP-adres en een DNS-label met een Fully Qualified Domain Name (FQDN). Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. Het IP-adres en de FQDN van een container groep worden vrijgegeven wanneer de container groep wordt verwijderd. 
 
@@ -72,7 +72,7 @@ Binnen een container groep kunnen container instanties elkaar via localhost bere
 
 Implementeer eventueel container groepen in een [virtueel Azure-netwerk][virtual-network] , zodat containers veilig kunnen communiceren met andere resources in het virtuele netwerk.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 U kunt externe volumes opgeven om te koppelen binnen een container groep. Ondersteunde volumes zijn:
 * [Azure-bestandsshare][azure-files]

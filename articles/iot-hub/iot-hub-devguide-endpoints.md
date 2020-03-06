@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457120"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382201"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -39,7 +39,7 @@ In de volgende lijst worden de eind punten beschreven:
 
 * **Taak beheer**. Elke IoT hub biedt een reeks service gerichte HTTPS REST-eind punten voor het opvragen en beheren van [taken](iot-hub-devguide-jobs.md).
 
-* **Apparaat-eind punten**. Voor elk apparaat in het identiteitsregister wordt door IoT Hub een reeks eindpunten zichtbaar gemaakt:
+* **Apparaat-eind punten**. Voor elk apparaat in het identiteits register IoT Hub een set eind punten beschikbaar:
 
   * *Apparaat-naar-Cloud-berichten verzenden*. Een apparaat gebruikt dit eind punt om [apparaat-naar-Cloud-berichten te verzenden](iot-hub-devguide-messages-d2c.md).
 
@@ -69,7 +69,7 @@ In het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) worden de verschillen
 
 Alle IoT Hub-eind punten gebruiken het [TLS](https://tools.ietf.org/html/rfc5246) -protocol en er wordt nooit een eind punt weer gegeven op niet-versleutelde/niet-beveiligde kanalen.
 
-## <a name="custom-endpoints"></a>Aangepaste eindpunten
+## <a name="custom-endpoints"></a>Aangepaste eind punten
 
 U kunt bestaande Azure-Services in uw abonnement koppelen aan uw IoT-hub om te fungeren als eind punten voor bericht routering. Deze eind punten fungeren als service-eind punten en worden gebruikt als sinks voor bericht routes. Apparaten kunnen niet rechtstreeks naar de extra eind punten schrijven. Meer informatie over [bericht routering](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
@@ -87,7 +87,7 @@ U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/res
 |Status|Beschrijving|
 |---|---|
 |healthy|Het eind punt accepteert berichten zoals verwacht.|
-|Slechte|Het eind punt accepteert geen berichten zoals verwacht en IoT Hub probeert gegevens naar dit eind punt te verzenden. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.|
+|slechte|Het eind punt accepteert geen berichten zoals verwacht en IoT Hub probeert gegevens naar dit eind punt te verzenden. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.|
 |onbekend|IoT Hub heeft geen verbinding gemaakt met het eind punt. Er zijn geen berichten van dit eind punt bezorgd aan of afgewezen.|
 |geval|Het eind punt accepteert geen berichten nadat IoT Hub opnieuw hebt geprobeerd berichten te verzenden voor de evaluatie periode.|
 

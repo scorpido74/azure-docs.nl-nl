@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978592"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396350"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Beveiliging en privacy van gegevens in azure Cognitive Search
 
@@ -41,7 +41,7 @@ Versleuteling loopt over de gehele indexerings pijplijn: vanuit verbindingen, vi
 
 | Beveiligingslaag | Beschrijving |
 |----------------|-------------|
-| Versleuteling 'in transit' <br>(HTTPS/SSL/TLS) | Azure Cognitive Search luistert naar HTTPS-poort 443. Op het platform worden verbindingen met Azure-Services versleuteld. <br/><br/>Alle interacties van client-naar-service Azure Cognitive Search zijn SSL/TLS 1,2-compatibel.  Zorg ervoor dat u TLSv 1.2 gebruikt voor SSL-verbindingen met uw service.|
+| Versleuteling in transit <br>(HTTPS/SSL/TLS) | Azure Cognitive Search luistert naar HTTPS-poort 443. Op het platform worden verbindingen met Azure-Services versleuteld. <br/><br/>Alle interacties van client-naar-service Azure Cognitive Search zijn SSL/TLS 1,2-compatibel.  Zorg ervoor dat u TLSv 1.2 gebruikt voor SSL-verbindingen met uw service.|
 | Versleuteling 'at rest' <br>Door micro soft beheerde sleutels | Versleuteling is volledig intern in het indexerings proces, met geen meetbaar effect op het indexeren van tijd tot voltooiing of index grootte. Deze fout treedt automatisch op bij alle indexeringen, met inbegrip van incrementele updates van een index die niet volledig is versleuteld (gemaakt vóór 2018 januari).<br><br>Intern is versleuteling gebaseerd op [Azure Storage-service versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), met behulp van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Versleuteling is intern voor Azure Cognitive Search, met certificaten en versleutelings sleutels die intern door micro soft worden beheerd en universeel worden toegepast. U kunt versleuteling niet in-of uitschakelen, uw eigen sleutels beheren of vervangen, of versleutelings instellingen weer geven in de portal of via een programma.<br><br>Versleuteling op rest werd aangekondigd in 24 januari 2018 en is van toepassing op alle service lagen, inclusief de gratis laag, in alle regio's. Voor volledige versleuteling moet de indexen die vóór die datum zijn gemaakt, worden verwijderd en opnieuw worden opgebouwd om versleuteling te laten plaatsvinden. Anders worden alleen nieuwe gegevens die na 24 januari worden toegevoegd, versleuteld.|
 | Versleuteling 'at rest' <br>Door klant beheerde sleutels | Versleuteling met door de klant beheerde sleutels is nu algemeen beschikbaar voor zoek services die zijn gemaakt op of na januari 2019. Het wordt niet ondersteund op gratis (gedeelde) Services.<br><br>Azure Cognitive Search-indexen en synoniemen kaarten kunnen nu in rust worden versleuteld met sleutels die door de klant sleutels worden beheerd in Azure Key Vault. Zie [versleutelings sleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.<br><br>Deze functie vervangt niet de standaard versleuteling op rest, maar er wordt een aanvulling op toegepast.<br><br>Als u deze functie inschakelt, wordt de index grootte verhoogd en wordt de query prestaties verkleind. Op basis van waarnemingen tot heden kunt u verwachten dat er in query tijden een toename van 30%-60% wordt weer geven, hoewel de werkelijke prestaties afhankelijk zijn van de index definitie en typen query's. Als gevolg van deze invloed van prestaties raden we u aan deze functie alleen in te scha kelen voor indexen die echt nodig zijn.
 

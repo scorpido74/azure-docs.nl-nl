@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672082"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373652"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelf studie: een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -357,7 +357,7 @@ Zie voor meer informatie [Een aangepast domein toewijzen aan een web-app](script
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een subdomein toewijzen met behulp van een CNAME-record

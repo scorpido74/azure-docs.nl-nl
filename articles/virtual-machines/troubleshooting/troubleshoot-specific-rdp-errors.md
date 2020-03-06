@@ -16,27 +16,27 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088174"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382701"
 ---
-# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-fout berichten voor een Windows-VM in azure oplossen
+# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
 Er wordt mogelijk een specifiek fout bericht weer gegeven wanneer Extern bureaublad verbinding met een virtuele machine van Windows (VM) in azure wordt gebruikt. In dit artikel worden enkele veelvoorkomende fout berichten beschreven, samen met de stappen voor probleem oplossing om deze op te lossen. Als u problemen ondervindt met het maken van verbinding met uw virtuele machine via RDP, maar geen specifiek fout bericht tegen komt, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md).
 
 Voor informatie over specifieke fout berichten raadpleegt u het volgende:
 
 * [De externe sessie is beëindigd omdat er geen extern bureaublad licentie servers beschikbaar zijn om een licentie te bieden](#rdplicense).
 * [Extern bureaublad kan de computer naam niet vinden](#rdpname).
-* [Er is een verificatie fout opgetreden. Kan geen verbinding maken met](#rdpauth)de lokale beveiligings autoriteit.
-* [Windows-beveiligings fout: Uw referenties werken](#wincred)niet.
+* [Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit](#rdpauth).
+* [Windows-beveiligings fout: uw referenties werken niet](#wincred).
 * [Deze computer kan geen verbinding maken met de externe computer](#rdpconnect).
 
 <a id="rdplicense"></a>
 
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>De externe sessie is beëindigd omdat er geen Extern bureaublad licentie servers beschikbaar zijn om een licentie te bieden.
-Oorzaak: De respijt periode van de licentie verlening voor 120 dagen voor de Extern bureaublad serverrol is verlopen en u moet licenties installeren.
+Oorzaak: de licentie respijt periode van 120 dagen voor de Extern bureaublad serverrol is verlopen en u moet licenties installeren.
 
 U kunt dit probleem verhelpen door een lokale kopie van het RDP-bestand op te slaan vanuit de portal en deze opdracht uit te voeren vanaf een Power shell-opdracht prompt om verbinding te maken. Met deze stap wordt de licentie verlening voor alleen die verbinding uitgeschakeld:
 
@@ -49,7 +49,7 @@ Zie het blog bericht [Azure VM mislukt met ' geen extern bureaublad licentie ser
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>Extern bureaublad kan de computer naam niet vinden.
-Oorzaak: De Extern bureaublad-client op uw computer kan de naam van de computer in de instellingen van het RDP-bestand niet omzetten.
+Oorzaak: de Extern bureaublad-client op uw computer kan de naam van de computer in de instellingen van het RDP-bestand niet omzetten.
 
 Mogelijke oplossingen:
 
@@ -67,9 +67,9 @@ Het adres gedeelte van dit RDP-bestand heeft:
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit.
-Oorzaak: De doel-VM kan de beveiligings autoriteit niet vinden in het gedeelte met de gebruikers naam van uw referenties.
+Oorzaak: de doel-VM kan de beveiligings instantie niet vinden in het gedeelte met de gebruikers naam van uw referenties.
 
-Als uw gebruikers naam in de vorm *SecurityAuthority*\\*username* (voor beeld: Corp\gebruiker1.) is het gedeelte *SecurityAuthority* de computer naam van de virtuele machine (voor de lokale beveiligings instantie) of een Active Directory domein naam.
+Als uw gebruikers naam in de vorm *SecurityAuthority*\\*gebruikers* naam is (bijvoorbeeld: corp\gebruiker1.), is het gedeelte *SecurityAuthority* de computer naam van de virtuele machine (voor de lokale beveiligings instantie) of een Active Directory domein naam.
 
 Mogelijke oplossingen:
 
@@ -79,13 +79,13 @@ Mogelijke oplossingen:
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows-beveiligings fout: Uw referenties werken niet.
-Oorzaak: De doel-VM kan de account naam en het wacht woord niet valideren.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows-beveiligings fout: uw referenties werken niet.
+Oorzaak: de doel-VM kan de account naam en het wacht woord niet valideren.
 
 Een op Windows gebaseerde computer kan de referenties van een lokaal account of een domein account valideren.
 
-* Voor lokale accounts gebruikt u de syntaxis *computer*\\*naam username* (bijvoorbeeld: SQL1\Admin4798).
-* Gebruik voor domein accounts de syntaxis van de *domein*\\naam*username* (voor beeld: CONTOSO\peterodman).
+* Voor lokale accounts gebruikt u de syntaxis *computername*\\*username* (bijvoorbeeld: SQL1\Admin4798).
+* Gebruik voor domein accounts de syntaxis *domein* naam\\*gebruikers naam* (bijvoorbeeld: CONTOSO\peterodman).
 
 Als u uw VM hebt gepromoveerd naar een domein controller in een nieuw Active Directory-forest, wordt het lokale beheerders account waarmee u zich hebt aangemeld, geconverteerd naar een gelijkwaardig account met hetzelfde wacht woord in het nieuwe forest en domein. Het lokale account wordt verwijderd.
 
@@ -98,7 +98,7 @@ Als u het wacht woord van het lokale beheerders account wilt wijzigen, raadpleeg
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Deze computer kan geen verbinding maken met de externe computer.
-Oorzaak: Het account dat wordt gebruikt om verbinding te maken, beschikt niet over Extern bureaublad aanmeldings rechten.
+Oorzaak: het account dat wordt gebruikt om verbinding te maken, beschikt niet over Extern bureaublad aanmeldings rechten.
 
 Elke Windows-computer heeft een lokale groep Extern bureaublad gebruikers, die de accounts en groepen bevat waarmee deze extern kan worden aangemeld. Leden van de lokale groep Administrators hebben ook toegang, zelfs als deze accounts niet worden weer gegeven in de lokale groep Extern bureaublad gebruikers. Voor computers die lid zijn van een domein, bevat de lokale beheerders groep ook de domein beheerders voor het domein.
 

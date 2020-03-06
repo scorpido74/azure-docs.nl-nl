@@ -4,11 +4,11 @@ description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure 
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393283"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteunings matrix voor Hyper-V-migratie
 

@@ -11,11 +11,11 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5911f7235f1469fed460f173b808fbfdf9c853e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183870"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374840"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -163,7 +163,7 @@ Het element **ContentDefinitionParameter** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van het sleutel waarde-paar. |
+| Naam | Ja | De naam van het sleutel waarde-paar. |
 
 Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) voor meer informatie.
 
@@ -190,7 +190,7 @@ Het **protocol** element bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OpenIdConnect` of `SAML2`. De waarde van `OpenIdConnect` vertegenwoordigt de OpenID Connect Connect 1,0-protocol norm volgens de OpenID Connect Foundation-specificatie. De `SAML2` vertegenwoordigt de SAML 2,0-protocol norm als per OASIS-specificatie. Gebruik geen SAML-token in productie. |
+| Naam | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OpenIdConnect` of `SAML2`. De waarde van `OpenIdConnect` vertegenwoordigt de OpenID Connect Connect 1,0-protocol norm volgens de OpenID Connect Foundation-specificatie. De `SAML2` vertegenwoordigt de SAML 2,0-protocol norm als per OASIS-specificatie. Gebruik geen SAML-token in productie. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

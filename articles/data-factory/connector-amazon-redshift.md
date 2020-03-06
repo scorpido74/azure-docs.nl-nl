@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893320"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396528"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens kopiëren van Amazon Redshift met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-amazon-redshift-connector.md)
+> * [Versie 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Huidige versie](connector-amazon-redshift.md)
 
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een Amazon Redshift te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een Amazon Redshift te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -33,7 +33,7 @@ Deze Amazon Redshift-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van Amazon Redshift kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U kunt gegevens van Amazon Redshift kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
 Met name deze Amazon Redshift-connector biedt ondersteuning voor het ophalen van gegevens van RedShift met behulp van query of ingebouwde Redshift Unload-ondersteuning.
 
@@ -55,15 +55,15 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amazon redshift:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AmazonRedshift** | Ja |
 | server |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
 | poort |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee, standaard waarde is 5439 |
-| database |De naam van de Amazon Redshift-data base. |Ja |
+| enddatabase |De naam van de Amazon Redshift-data base. |Ja |
 | gebruikersnaam |De naam van de gebruiker die toegang heeft tot de data base. |Ja |
-| wachtwoord |Het wacht woord voor het gebruikers account. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| wachtwoord |Het wacht woord voor het gebruikers account. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
 **Voorbeeld:**
 
@@ -93,11 +93,11 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amaz
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-gegevensset.
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit Amazon redshift:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AmazonRedshiftTable** | Ja |
 | schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
@@ -126,13 +126,13 @@ Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds onde
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-bron.
 
 ### <a name="amazon-redshift-as-source"></a>Amazon Redshift als bron
 
-Als u gegevens wilt kopiëren uit Amazon Redshift, stelt u het bron type in de Kopieer activiteit in op **AmazonRedshiftSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
+Als u gegevens wilt kopiëren uit Amazon Redshift, stelt u het bron type in de Kopieer activiteit in op **AmazonRedshiftSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AmazonRedshiftSource** | Ja |
 | query |Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: Select * from MyTable. |Nee (als de 'tableName' in de gegevensset is opgegeven) |
@@ -214,21 +214,21 @@ Voor deze voorbeeld use-case verwijdert u met de Kopieer activiteit gegevens uit
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Toewijzing van gegevens type voor Amazon RedShift
 
-Bij het kopiëren van gegevens uit Amazon Redshift worden de volgende toewijzingen gebruikt vanuit gegevens typen van Amazon Redshift om Azure Data Factory tussenliggende gegevens typen. Zie [Schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe copy activity in het schema en de gegevens van een brontype aan de sink toegewezen.
+Bij het kopiëren van gegevens uit Amazon Redshift worden de volgende toewijzingen gebruikt vanuit gegevens typen van Amazon Redshift om Azure Data Factory tussenliggende gegevens typen. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
 | Amazon Redshift-gegevens type | Data factory tussentijdse gegevenstype |
 |:--- |:--- |
 | BIGINT |Int64 |
 | BOOLEAN |Tekenreeks |
 | CHAR |Tekenreeks |
-| DATE |Datum/tijd |
-| DECIMAL |Decimal |
-| DOUBLE PRECISION |Double |
+| DATE |DateTime |
+| DECIMAL |decimaal |
+| DOUBLE PRECISION |Double-waarde |
 | INTEGER |Int32 |
 | REAL |Enkelvoudig |
 | SMALLINT |Int16 |
 | TEXT |Tekenreeks |
-| TIMESTAMP |Datum/tijd |
+| TIMESTAMP |DateTime |
 | VARCHAR |Tekenreeks |
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
@@ -236,4 +236,4 @@ Bij het kopiëren van gegevens uit Amazon Redshift worden de volgende toewijzing
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

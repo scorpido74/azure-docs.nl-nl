@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084952"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385125"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Het Azure Site Recovery Deployment Planner rapport analyseren
 In dit artikel worden de werkbladen in het Excel-rapport behandeld dat door de Azure Site Recovery-implementatieplanner voor Hyper-V naar Azure is gegenereerd.
@@ -121,7 +121,7 @@ De tijd die een initiële replicatie kost, is gebaseerd op de schijfgrootte van 
 ### <a name="cost-estimation"></a>Kostenraming
 De grafiek toont de weergave Samenvatting van de geschatte totale kosten voor noodherstel (DR) voor Azure van de gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
 
-![Samenvatting kostenramingen](media/hyper-v-deployment-planner-analyze-report/cost-estimation-summary-h2a.png)
+![Kostenraming samenvatting](media/hyper-v-deployment-planner-analyze-report/cost-estimation-summary-h2a.png)
 
 De samenvatting helpt u bij het begrijpen van de kosten die u nodig hebt om te betalen voor opslag, rekensnelheid, netwerk en licentie wanneer u alle compatibele virtuele machines naar Azure met behulp van Site Recovery beveiligt. De kosten worden berekend op basis van compatibele virtuele machines en niet op basis van alle geprofileerde virtuele machines. 
  
@@ -135,7 +135,7 @@ U kunt de kosten maandelijks of jaarlijks weergeven. Meer informatie over [onder
 
 **Kosten voor noodherstelanalyse**: de kosten die worden gemaakt tijdens testfailovers. Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve VM's. 
 
-**Kosten voor Azure Storage per maand/jaar**: het staafdiagram toont de totale opslagkosten die worden gemaakt voor Premium- en Standard-opslag voor replicatie en noodherstelanalyse. U vindt een gedetailleerde kostenanalyse per virtuele machine op het werkblad [Kostenraming](hyper-v-deployment-planner-cost-estimation.md).
+**Kosten voor Azure Storage per maand/jaar**: het staafdiagram toont de totale opslagkosten die worden gemaakt voor Premium- en Standard-opslag voor replicatie en noodherstelanalyse. Vindt u gedetailleerde kostenanalyse per virtuele machine in het blad [kostenraming](hyper-v-deployment-planner-cost-estimation.md).
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Groeifactor en gebruikte percentielwaarden
 Deze sectie onder aan het werkblad toont de percentielwaarde die voor alle prestatiemeteritems van de geprofileerde virtuele machines wordt gebruikt (standaard is dit het 95e percentiel). Het toont ook de groeifactor in procenten die in alle berekeningen wordt gebruikt (standaard 30 procent).
@@ -187,7 +187,7 @@ Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner 
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf op grond van de grootte ervan aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf door grootte aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
 **Opslagtype**: Standard of Premium.
 

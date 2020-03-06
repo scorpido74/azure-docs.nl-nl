@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391963"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
 
@@ -148,7 +148,7 @@ Als meerdere pincodes voldoen aan een match-voor waarde, gebruikt Bing Aangepast
 
 Als u zich op het juiste niveau hebt geabonneerd op een aangepaste zoek opdracht (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), wordt het tabblad **Statistieken** toegevoegd aan uw productie-exemplaren. Het tabblad Statistieken bevat details over de manier waarop uw aangepaste zoek eindpunten worden gebruikt, inclusief oproep volume, populaire query's, geografische distributie, respons codes en veilige Zoek opdrachten. U kunt details filteren met behulp van de beschik bare besturings elementen.
 
-## <a name="usage-guidelines"></a>Gebruiksrichtlijnen
+## <a name="usage-guidelines"></a>Gebruiks richtlijnen
 
 - Voor elk exemplaar van de aangepaste zoek opdracht is het maximum aantal rangorde aanpassingen dat u kunt aanbrengen in **actieve** en **geblokkeerde** segmenten beperkt tot 400.
 - Het toevoegen van een segment aan de actieve of geblokkeerde tabbladen telt als een aanpassing van de rang schikking.

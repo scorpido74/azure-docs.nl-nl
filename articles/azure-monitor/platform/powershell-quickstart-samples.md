@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373394"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Voor beelden van Azure Monitor Power shell-snel starten
 In dit artikel wordt beschreven hoe u Power shell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
@@ -148,7 +148,7 @@ De volgende tabel beschrijft de para meters en waarden die worden gebruikt om ee
 
 | parameter | waarde |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Naam |simpletestdiskwrite |
 | Locatie van deze waarschuwings regel |VS - oost |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

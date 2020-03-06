@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085233"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376330"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
 In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
@@ -49,7 +49,7 @@ U kunt met behulp van de Azure AD Connect wizard diverse taken met betrekking to
 U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-vertrouwens relatie te controleren en de juiste maat regelen te nemen om de vertrouwens relatie te herstellen. Volg deze stappen om uw Azure AD-en AD FS-vertrouwens relatie te herstellen.
 
 1. Selecteer **Aad en ADFS-vertrouwens relatie** in de lijst met extra taken herstellen.
-   ![AAD-en ADFS-vertrouwens relatie herstellen](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+   AAD-en ADFS-vertrouwens relatie ![herstellen](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Geef op de pagina **verbinding maken met Azure AD** uw globale beheerders referenties voor Azure AD op en klik op **volgende**.
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
@@ -64,7 +64,7 @@ U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-
 
     De pagina **gereed voor configuratie** toont de lijst met acties die worden uitgevoerd om de vertrouwens relatie te herstellen.
 
-    ![Gereed om te configureren](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Klaar om te configureren](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Klik op **installeren** om de vertrouwens relatie te herstellen.
 
@@ -77,8 +77,8 @@ Het is raadzaam om de on-premises UPN (User Principal Name) en de principal-naam
 ![Alternatieve ID-kenmerk selectie](./media/how-to-connect-fed-management/attributeselection.png)
 
 Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee belang rijke stappen:
-1. **De juiste set met uitgifte claims configureren**: De claim regels voor uitgifte in de Azure AD Relying Party-vertrouwens relatie zijn gewijzigd om het geselecteerde UserPrincipalName-kenmerk te gebruiken als de alternatieve ID van de gebruiker.
-2. **Alternatieve aanmeldings-id inschakelen in de AD FS configuratie**: De configuratie van de AD FS wordt bijgewerkt, zodat AD FS gebruikers kunt opzoeken in de juiste forests met behulp van de alternatieve ID. Deze configuratie wordt ondersteund voor AD FS op Windows Server 2012 R2 (met KB2919355) of hoger. Als de AD FS servers 2012 R2 zijn, Azure AD Connect de aanwezigheid van de vereiste KB controleren. Als de KB niet wordt gedetecteerd, wordt een waarschuwing weer gegeven nadat de configuratie is voltooid, zoals hieronder wordt weer gegeven:
+1. **De juiste set met uitgifte claims configureren**: de claim regels voor uitgifte in de Azure AD Relying Party-vertrouwens relatie zijn gewijzigd om het geselecteerde userPrincipalName-kenmerk te gebruiken als de alternatieve id van de gebruiker.
+2. **Alternatieve aanmeldings-id inschakelen in de AD FS configuratie**: de AD FS configuratie wordt bijgewerkt, zodat AD FS gebruikers in de juiste forests kunt opzoeken met de alternatieve id. Deze configuratie wordt ondersteund voor AD FS op Windows Server 2012 R2 (met KB2919355) of hoger. Als de AD FS servers 2012 R2 zijn, Azure AD Connect de aanwezigheid van de vereiste KB controleren. Als de KB niet wordt gedetecteerd, wordt een waarschuwing weer gegeven nadat de configuratie is voltooid, zoals hieronder wordt weer gegeven:
 
     ![Waarschuwing voor ontbrekende KB op 2012R2](./media/how-to-connect-fed-management/kbwarning.png)
 
@@ -106,9 +106,9 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 4. Azure AD Connect vraagt naar het wacht woord van het PFX-bestand dat u hebt opgegeven bij het configureren van uw nieuwe AD FS farm met Azure AD Connect. Klik op **wacht woord invoeren** om het wacht woord voor het pfx-bestand op te geven.
 
-   ![Certificaatwachtwoord](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Certificaat wachtwoord](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![Geef een SSL-certificaat op](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![SSL-certificaat opgeven](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Voer op de pagina **AD FS servers** de server naam of het IP-adres in dat moet worden toegevoegd aan de AD FS-farm.
 
@@ -116,7 +116,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 6. Klik op **volgende**en ga door de pagina definitieve **configuratie** . Nadat Azure AD Connect het toevoegen van de servers aan de AD FS-farm hebt voltooid, krijgt u de mogelijkheid om de verbinding te controleren.
 
-   ![Gereed om te configureren](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![Installatie voltooid](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
@@ -134,9 +134,9 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Geef op de pagina **SSL-certificaat opgeven** het wacht woord op voor het pfx-bestand dat u hebt opgegeven toen u de AD FS farm met Azure AD Connect hebt geconfigureerd.
-   ![Certificaat wachtwoord](./media/how-to-connect-fed-management/WapServer3.PNG)
+   ![certificaat wachtwoord](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![Geef een SSL-certificaat op](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![SSL-certificaat opgeven](./media/how-to-connect-fed-management/WapServer4.PNG)
 
 4. Voeg de server toe die moet worden toegevoegd als WAP-server. Omdat de WAP-server mogelijk niet is toegevoegd aan het domein, vraagt de wizard om beheerders referenties aan de server die wordt toegevoegd.
 
@@ -144,11 +144,11 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 5. Geef op de pagina **proxy Trust referenties** de beheerders referenties op voor het configureren van de proxy vertrouwensrelatie en toegang tot de primaire server in de AD FS-farm.
 
-   ![Vertrouwde proxyreferenties](./media/how-to-connect-fed-management/WapServer6.PNG)
+   ![Referenties voor proxy vertrouwen](./media/how-to-connect-fed-management/WapServer6.PNG)
 
 6. Op de pagina **gereed voor configuratie** bevat de wizard de lijst met acties die worden uitgevoerd.
 
-   ![Gereed om te configureren](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Klik op **installeren** om de configuratie te volt ooien. Nadat de configuratie is voltooid, krijgt u de mogelijkheid om de verbinding met de servers te controleren. Klik op **controleren** om de verbinding te controleren.
 
@@ -178,7 +178,7 @@ Het is eenvoudig om een domein toe te voegen voor federatief met Azure AD met be
 
 5. Klik op **Volgende**. Op de pagina **gereed voor configuratie ziet u** de lijst met acties die Azure AD Connect worden uitgevoerd. Klik op **installeren** om de configuratie te volt ooien.
 
-   ![Gereed om te configureren](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > Gebruikers van het toegevoegde federatieve domein moeten worden gesynchroniseerd voordat ze zich kunnen aanmelden bij Azure AD.
@@ -195,7 +195,7 @@ Als u het logo van het bedrijf wilt wijzigen dat wordt weer gegeven op de **aanm
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> De *TargetName* -para meter is vereist. Het standaard thema dat wordt uitgebracht met AD FS is standaard genoemd.
+> De *TargetName*-parameter is vereist. Het standaard thema dat wordt uitgebracht met AD FS is standaard genoemd.
 
 ## <a name="addsignindescription"></a>Een beschrijving van een aanmelding toevoegen 
 Als u een beschrijving van de aanmeldings pagina wilt toevoegen aan de **aanmeldings pagina**, gebruikt u de volgende Windows Power shell-cmdlet en syntaxis.
@@ -212,7 +212,7 @@ Met Azure AD Connect kunt u een kenmerk opgeven dat moet worden gebruikt als een
 
 U kunt bijvoorbeeld **MS-DS-consistencyguid** als het kenmerk voor het bron anker selecteren en **ImmutableID** als **MS-DS-consistencyguid** geven als het kenmerk een waarde heeft. Als er geen waarde is voor het kenmerk, geeft u **objectGuid** als de onveranderbare id. U kunt de set aangepaste claim regels maken, zoals wordt beschreven in de volgende sectie.
 
-**Regel 1: Query kenmerken**
+**Regel 1: query kenmerken**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
@@ -221,21 +221,21 @@ In deze regel zoekt u een query uit op de waarden **MS-DS-consistencyguid** en *
 
 Daarnaast kunt u met behulp van **toevoegen** en niet bij niet- **probleem**voor komen dat u een uitgaand probleem voor de entiteit toevoegt en de waarden als tussenliggende waarden gebruiken. U geeft de claim op in een latere regel nadat u hebt vastgesteld welke waarde moet worden gebruikt als de onveranderlijke ID.
 
-**Regel 2: Controleren of MS-DS-consistencyguid bestaat voor de gebruiker**
+**Regel 2: controleren of MS-DS-consistencyguid bestaat voor de gebruiker**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Deze regel definieert een tijdelijke vlag met de naam **idflag** die is ingesteld op **useguid** als er geen **MS-DS-consistencyguid** voor de gebruiker is ingevuld. De logica achter dit is het feit dat AD FS geen lege claims toestaat. Dus wanneer u claims http://contoso.com/ws/2016/02/identity/claims/objectguid en http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid in regel 1 toevoegt, wordt er alleen een **msdsconsistencyguid** claim gemaakt als de waarde voor de gebruiker wordt ingevuld. Als deze niet is ingevuld, ziet AD FS dat deze een lege waarde heeft en deze onmiddellijk wegvalt. Alle objecten hebben **objectGuid**, zodat de claim altijd aanwezig is nadat regel 1 is uitgevoerd.
+Deze regel definieert een tijdelijke vlag met de naam **idflag** die is ingesteld op **useguid** als er geen **MS-DS-consistencyguid** voor de gebruiker is ingevuld. De logica achter dit is het feit dat AD FS geen lege claims toestaat. Dus wanneer u claims http://contoso.com/ws/2016/02/identity/claims/objectguid en http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid in regel 1 toevoegt, wordt er alleen een **msdsconsistencyguid** -claim gemaakt als de waarde voor de gebruiker wordt ingevuld. Als deze niet is ingevuld, ziet AD FS dat deze een lege waarde heeft en deze onmiddellijk wegvalt. Alle objecten hebben **objectGuid**, zodat de claim altijd aanwezig is nadat regel 1 is uitgevoerd.
 
 **Regel 3: MS-DS-consistencyguid als onveranderbare ID uitgeven als deze aanwezig is**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Dit is een impliciete controle. Als de waarde voor de claim bestaat, moet u deze als onveranderlijke ID uitgeven. In het vorige voor beeld wordt de claim **nameidentifier** gebruikt. U moet dit wijzigen in het juiste claim type voor de onveranderbare ID in uw omgeving.
+Dit is **een impliciete** controle. Als de waarde voor de claim bestaat, moet u deze als onveranderlijke ID uitgeven. In het vorige voor beeld wordt de claim **nameidentifier** gebruikt. U moet dit wijzigen in het juiste claim type voor de onveranderbare ID in uw omgeving.
 
-**Regel 4: ObjectGuid als onveranderbare ID uitgeven als MS-DS-consistencyGuid niet aanwezig is**
+**Regel 4: objectGuid als onveranderlijke ID uitgeven als MS-DS-consistencyGuid niet aanwezig is**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]

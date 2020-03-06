@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771520"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395646"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerp handleiding voor de Azure Table Storage-tabel: schaal bare en uitvoerende tabellen
 
@@ -52,7 +52,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -72,7 +72,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>jun</td>
@@ -100,7 +100,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Verkoop</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -109,7 +109,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -159,26 +159,26 @@ De volgende tabel bevat enkele van de belangrijkste waarden waarvan u rekening m
 Zie [Wat is het Table service-gegevens model](https://msdn.microsoft.com/library/azure/dd179338.aspx)? voor meer informatie.  
 
 ### <a name="cost-considerations"></a>Kostenoverwegingen
-Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een oplossing die gebruikmaakt van Table-opslag. In veel gevallen is het echter wel mogelijk om gedenormaliseerde of dubbele gegevens op te slaan om de prestaties of schaal baarheid van uw oplossing te verbeteren. Zie voor meer informatie over prijzen [prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een oplossing die gebruikmaakt van Table-opslag. In veel gevallen is het echter wel mogelijk om gedenormaliseerde of dubbele gegevens op te slaan om de prestaties of schaal baarheid van uw oplossing te verbeteren. Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen.  
 
 ## <a name="guidelines-for-table-design"></a>Richtlijnen voor tabelontwerp
 In deze lijsten vindt u een overzicht van enkele belang rijke richt lijnen die u moet onthouden wanneer u uw tabellen ontwerpt. In deze hand leiding worden deze allemaal in meer detail beschreven. Deze richt lijnen verschillen van de richt lijnen die u normaal gesp roken volgt voor het ontwerpen van relationele data bases.  
 
 De opslag van de tabel ontwerpen voor een efficiënte *Lees bewerking* :
 
-* **Ontwerp voor het uitvoeren van query's in leesintensief toepassingen.** Wanneer u uw tabellen ontwerpt, moet u nadenken over de query's (met name de latentie gevoelige waarden) die u wilt uitvoeren voordat u nadenkt over hoe u uw entiteiten bijwerkt. Dit leidt meestal tot een efficiënte en krachtige oplossing.  
+* **Ontwerpen voor het uitvoeren van query's in lees-en zware toepassingen.** Wanneer u uw tabellen ontwerpt, moet u nadenken over de query's (met name de latentie gevoelige waarden) die u wilt uitvoeren voordat u nadenkt over hoe u uw entiteiten bijwerkt. Dit leidt meestal tot een efficiënte en krachtige oplossing.  
 * **Geef zowel `PartitionKey` als `RowKey` op in uw query's.** *Punt query's* zoals dit zijn de meest efficiënte tabel opslag query's.  
-* **Houd rekening met het opslaan van kopieën maken van entiteiten.** Table Storage is goedkope, dus overweeg om dezelfde entiteit meerdere keren (met verschillende sleutels) op te slaan om efficiëntere query's mogelijk te maken.  
-* **Houd rekening met uw gegevens denormalizing.** Table Storage is goedkope, dus overweeg om uw gegevens te denormaliseren. Bijvoorbeeld, opslaan, samenvatting entiteiten zodat query's voor statistische gegevens alleen nodig voor toegang tot één entiteit.  
-* **Samengestelde sleutels waarden gebruiken.** De enige sleutels die u hebt, zijn `PartitionKey` en `RowKey`. Gebruik bijvoorbeeld samengestelde sleutelwaarden zodat alternatieve versleutelde Toegangspaden naar entiteiten.  
-* **Query-projectie gebruiken.** U kunt verminderen de hoeveelheid gegevens die u via het netwerk worden overgebracht met behulp van query's die u selecteert alleen de velden die u nodig hebt.  
+* **Overweeg dubbele exemplaren van entiteiten op te slaan.** Table Storage is goedkope, dus overweeg om dezelfde entiteit meerdere keren (met verschillende sleutels) op te slaan om efficiëntere query's mogelijk te maken.  
+* **Overweeg uw gegevens te denormaliseren.** Table Storage is goedkope, dus overweeg om uw gegevens te denormaliseren. Bijvoorbeeld, opslaan, samenvatting entiteiten zodat query's voor statistische gegevens alleen nodig voor toegang tot één entiteit.  
+* **Samengestelde sleutel waarden gebruiken.** De enige sleutels die u hebt, zijn `PartitionKey` en `RowKey`. Gebruik bijvoorbeeld samengestelde sleutelwaarden zodat alternatieve versleutelde Toegangspaden naar entiteiten.  
+* **Query projectie gebruiken.** U kunt verminderen de hoeveelheid gegevens die u via het netwerk worden overgebracht met behulp van query's die u selecteert alleen de velden die u nodig hebt.  
 
 Het ontwerpen van de tabel opslag om te *schrijven* naar een efficiënte manier:  
 
 * **Maak geen dynamische partities.** Kies de sleutels waarmee u kunt uw verzoeken, verdeeld over meerdere partities op elk moment.  
 * **Vermijd pieken in verkeer.** Distribueer het verkeer over een redelijke periode en Vermijd pieken in het verkeer.
-* **Niet per se een afzonderlijke tabel voor elk type entiteit maken.** Wanneer u atomische transacties via Entiteitstypen vereist, kunt u deze meerdere Entiteitstypen opslaan in dezelfde partitie in dezelfde tabel.
-* **Houd rekening met de maximale doorvoer die u moet doen.** U moet rekening houden met de schaalbaarheids doelen voor Table Storage en ervoor zorgen dat uw ontwerp deze niet overschrijdt.  
+* **Maak niet noodzakelijkerwijs een afzonderlijke tabel voor elk type entiteit.** Wanneer u atomische transacties via Entiteitstypen vereist, kunt u deze meerdere Entiteitstypen opslaan in dezelfde partitie in dezelfde tabel.
+* **Houd rekening met de maximale door Voer die u moet door nemen.** U moet rekening houden met de schaalbaarheids doelen voor Table Storage en ervoor zorgen dat uw ontwerp deze niet overschrijdt.  
 
 Verderop in deze hand leiding ziet u voor beelden waarin al deze principes in de praktijk worden geplaatst.  
 
@@ -193,7 +193,7 @@ Een goed uitgangs punt om gegevens efficiënt te kunnen lezen is het stellen van
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>De manier waarop uw keuze van `PartitionKey` en `RowKey` invloed heeft op de prestaties van query's
 In de volgende voor beelden wordt ervan uitgegaan dat er in tabel opslag werk nemers worden opgeslagen met de volgende structuur (de meeste voor beelden laten de `Timestamp` eigenschap voor duidelijkheid weg):  
 
-| kolom naam | Gegevenstype |
+| Kolom naam | Gegevenstype |
 | --- | --- |
 | `PartitionKey` (afdelings naam) |Tekenreeks |
 | `RowKey` (werk nemer-ID) |Tekenreeks |
@@ -216,7 +216,7 @@ Zie voor voor beelden van code aan de client zijde die de Storage-client bibliot
 
 * [Een punt query uitvoeren met de Storage-client bibliotheek](#run-a-point-query-by-using-the-storage-client-library)
 * [Meerdere entiteiten ophalen met behulp van LINQ](#retrieve-multiple-entities-by-using-linq)
-* [Server-side-projectie](#server-side-projection)  
+* [Projectie aan server zijde](#server-side-projection)  
 
 Zie voor voorbeelden van de client-side-code die meerdere Entiteitstypen die zijn opgeslagen in dezelfde tabel kunnen worden verwerkt:  
 
@@ -322,7 +322,7 @@ Een alternatieve methode is het denormaliseren van uw gegevens en alleen werk ne
 
 ![Afbeelding van entiteit van werk nemer][2]
 
-Zie voor meer informatie de [denormalisatie patroon](#denormalization-pattern) verderop in deze handleiding.  
+Zie voor meer informatie het [denormalisatie patroon](#denormalization-pattern) verderop in deze hand leiding.  
 
 De volgende tabel bevat een overzicht van de voor-en nadelen van de benaderingen voor het opslaan van werk nemers en afdelings entiteiten met een een-op-veel-relatie. U moet ook overwegen hoe vaak u verwacht om verschillende bewerkingen uit te voeren. Het kan acceptabel zijn om een ontwerp te hebben dat een dure bewerking bevat als deze bewerking alleen zelden plaatsvindt.  
 
@@ -382,7 +382,7 @@ De volgende tabel bevat een overzicht van de voor-en nadelen van de benaderingen
 Hoe u een van deze opties kiest, en welke van de voor delen en nadelen het belangrijkst zijn, is afhankelijk van uw specifieke toepassings scenario's. Hoe vaak worden er bijvoorbeeld afdelings entiteiten gewijzigd? Moeten al uw werknemers query's de aanvullende afdelings gegevens hebben? Hoe dicht zijn de schaalbaarheids limieten voor uw partities of uw opslag account?  
 
 ### <a name="one-to-one-relationships"></a>-Op-een-relaties
-Domein modellen kunnen een-op-een-relaties tussen entiteiten bevatten. Als u een een-op-een-relatie in Table Storage wilt implementeren, moet u ook kiezen hoe u de twee gerelateerde entiteiten wilt koppelen wanneer u deze beide moet ophalen. Deze koppeling kan impliciet zijn, op basis van een Conventie in de sleutel waarden, of expliciet, door een koppeling op te slaan in de vorm van `PartitionKey` en `RowKey` waarden in elke entiteit te koppelen aan de gerelateerde entiteit. Zie de sectie voor een bespreking van of u de gerelateerde entiteiten in dezelfde partitie moet opslaan, [een-op-veel relaties](#one-to-many-relationships).  
+Domein modellen kunnen een-op-een-relaties tussen entiteiten bevatten. Als u een een-op-een-relatie in Table Storage wilt implementeren, moet u ook kiezen hoe u de twee gerelateerde entiteiten wilt koppelen wanneer u deze beide moet ophalen. Deze koppeling kan impliciet zijn, op basis van een Conventie in de sleutel waarden, of expliciet, door een koppeling op te slaan in de vorm van `PartitionKey` en `RowKey` waarden in elke entiteit te koppelen aan de gerelateerde entiteit. Zie de sectie [een-op-veel-relaties](#one-to-many-relationships)voor een bespreking van de vraag of u de gerelateerde entiteiten in dezelfde partitie moet opslaan.  
 
 Er zijn ook implementatie overwegingen die kunnen leiden tot het implementeren van een-op-een-relaties in tabel opslag:  
 
@@ -430,7 +430,7 @@ Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren 
 De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op basis van een e-mail adres) opgeven punt query's:  
 
 * $filter = (PartitionKey eq 'Verkoop') en (RowKey eq 'empid_000223')  
-* $filter = (PartitionKey eq 'Verkoop') en (RowKey eq 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ 'email_jonesj@contoso.com')  
 
 Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven, gesorteerd op werk nemer-ID-order of een bereik dat is gesorteerd in de e-mailadres volgorde. Zoek naar entiteiten met het juiste voor voegsel in de `RowKey`.  
 
@@ -465,8 +465,8 @@ Zorg er echter voor dat u de schaal baarheids limieten van de partitie niet over
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Secundaire index tussen partitie-patroon](#inter-partition-secondary-index-pattern)
-* [Samengestelde sleutel patroon](#compound-key-pattern)
+* [Secundair index patroon tussen partities](#inter-partition-secondary-index-pattern)
+* [Samengesteld sleutel patroon](#compound-key-pattern)
 * [Trans acties van entiteits groep](#entity-group-transactions)
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)
 
@@ -490,7 +490,7 @@ Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren 
 De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op basis van een e-mail adres) opgeven punt query's:  
 
 * $filter = (PartitionKey eq ' empid_Sales') en (RowKey eq '000223')
-* $filter = (PartitionKey eq ' email_Sales') en (RowKey eq 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' email_Sales ') en (RowKey EQ 'jonesj@contoso.com')  
 
 Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven, gesorteerd op werk nemer-ID-order of een bereik dat is gesorteerd in de e-mailadres volgorde. Zoek naar entiteiten met het juiste voor voegsel in de `RowKey`.  
 
@@ -502,7 +502,7 @@ Houd er rekening mee dat de filter syntaxis die in de voor gaande voor beelden w
 #### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* U uw dubbele entiteiten uiteindelijk consistent zijn met elkaar kunt houden met behulp van de [uiteindelijk consistent transacties patroon](#eventually-consistent-transactions-pattern) te handhaven van de primaire en secundaire index-entiteiten.  
+* U kunt ervoor zorgen dat uw dubbele entiteiten uiteindelijk consistent zijn met elkaar met behulp van het [patroon voor uiteindelijk consistente trans acties](#eventually-consistent-transactions-pattern) voor het onderhouden van de primaire en secundaire index entiteiten.  
 * Table Storage is relatief goedkope gebruik, dus de kosten besparing van het opslaan van dubbele gegevens mag geen grote bezorgdheid zijn. U kunt de kosten van uw ontwerp echter altijd evalueren op basis van uw verwachte opslag vereisten en alleen dubbele entiteiten toevoegen ter ondersteuning van de query's die door uw client toepassing worden uitgevoerd.  
 * De waarde die wordt gebruikt voor de `RowKey` moet uniek zijn voor elke entiteit. Overweeg het gebruik van de samengestelde sleutel waarden.  
 * Met de opvullings numerieke waarden in de `RowKey` (bijvoorbeeld de werk nemer-ID 000223) kunnen sorteren en filteren op basis van de boven-en ondergrenzen worden gesorteerd.  
@@ -523,9 +523,9 @@ Gebruik dit patroon wanneer u wilt voor komen dat de schaal limieten voor partit
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Uiteindelijk consistent transacties patroon](#eventually-consistent-transactions-pattern)  
-* [Intra-partitie secundaire index patroon](#intra-partition-secondary-index-pattern)  
-* [Samengestelde sleutel patroon](#compound-key-pattern)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
+* [Secundair index patroon voor de intra partitie](#intra-partition-secondary-index-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
 * [Trans acties van entiteits groep](#entity-group-transactions)  
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)  
 
@@ -549,7 +549,7 @@ Maar u kunt geen EGT gebruiken om deze twee bewerkingen uit te voeren. Om te voo
 
 ![Oplossingsdiagram voor uiteindelijke consistentie][12]
 
-Een client initieert de archief bewerking door een bericht te plaatsen in een Azure-wachtrij (in dit voor beeld om werk nemers te archiveren #456). Een werkrol, peilt de wachtrij voor nieuwe berichten; Wanneer er een wordt gevonden, leest het bericht en een verborgen kopie van de wachtrij verlaat. Vervolgens haalt een kopie van de entiteit op basis van de werkrol de **huidige** tabel, voegt u een kopie in de **archief** tabel en verwijdert u vervolgens de oorspronkelijke uit de **huidige** tabel. Ten slotte, als er geen fouten uit de vorige stap zijn, de werkrol verborgen wordt het bericht verwijderd uit de wachtrij.  
+Een client initieert de archief bewerking door een bericht te plaatsen in een Azure-wachtrij (in dit voor beeld om werk nemers te archiveren #456). Een werkrol, peilt de wachtrij voor nieuwe berichten; Wanneer er een wordt gevonden, leest het bericht en een verborgen kopie van de wachtrij verlaat. Met de rol werk rollen volgende wordt een kopie van de entiteit opgehaald uit de **huidige** tabel, wordt een kopie ingevoegd in de **Archief** tabel en wordt vervolgens het origineel uit de **huidige** tabel verwijderd. Ten slotte, als er geen fouten uit de vorige stap zijn, de werkrol verborgen wordt het bericht verwijderd uit de wachtrij.  
 
 In dit voor beeld voegt stap 4 in het diagram de werk nemer in de **Archief** tabel in. De werk nemer kan worden toegevoegd aan een BLOB in Blob Storage of een bestand in een bestands systeem.  
 
@@ -574,7 +574,7 @@ Gebruik dit patroon wanneer u een garantie voor de uiteindelijke consistentie tu
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
 * [Trans acties van entiteits groep](#entity-group-transactions)  
-* [Samenvoegen of vervangen](#merge-or-replace)  
+* [Samen voegen of vervangen](#merge-or-replace)  
 
 > [!NOTE]
 > Als de transactie isolatie belang rijk is voor uw oplossing, kunt u het beste uw tabellen opnieuw ontwerpen zodat u EGTs kunt gebruiken.  
@@ -649,8 +649,8 @@ Gebruik dit patroon wanneer u een set entiteiten wilt opzoeken die alle een geme
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutel patroon](#compound-key-pattern)  
-* [Uiteindelijk consistent transacties patroon](#eventually-consistent-transactions-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
 * [Trans acties van entiteits groep](#entity-group-transactions)  
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)  
 
@@ -681,7 +681,7 @@ Gebruik dit patroon wanneer u vaak nodig hebt om te controleren of gerelateerde 
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutel patroon](#compound-key-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
 * [Trans acties van entiteits groep](#entity-group-transactions)  
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)
 
@@ -727,7 +727,7 @@ De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementa
 
 * [Trans acties van entiteits groep](#entity-group-transactions)  
 * [Werken met heterogene entiteits typen](#work-with-heterogeneous-entity-types)  
-* [Uiteindelijk consistent transacties patroon](#eventually-consistent-transactions-pattern)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Logboek tail-patroon
 Haal de *n* -entiteiten die het laatst zijn toegevoegd aan een partitie op met behulp van een `RowKey` waarde die in omgekeerde datum-en tijd volgorde wordt gesorteerd.  
@@ -765,7 +765,7 @@ Gebruik dit patroon wanneer u entiteiten in omgekeerde datum/tijd-volg orde wilt
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Voeg / anti patroon toevoegen](#prepend-append-anti-pattern)  
+* [Anti-patroon laten voorafgaan door/toevoegen](#prepend-append-anti-pattern)  
 * [Entiteiten ophalen](#retrieve-entities)  
 
 ### <a name="high-volume-delete-pattern"></a>Patroon van hoge volumes verwijderen
@@ -829,8 +829,8 @@ Gebruik dit patroon wanneer u nodig hebt om te werken en een gegevensreeks die z
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Patroon voor grote instanties](#large-entities-pattern)  
-* [Samenvoegen of vervangen](#merge-or-replace)  
+* [Patroon voor grote entiteiten](#large-entities-pattern)  
+* [Samen voegen of vervangen](#merge-or-replace)  
 * [Uiteindelijk consistent transactie patroon](#eventually-consistent-transactions-pattern) (als u de gegevens reeksen in een BLOB opslaat)  
 
 ### <a name="wide-entities-pattern"></a>Breed entiteiten patroon
@@ -858,7 +858,7 @@ Gebruik dit patroon wanneer u entiteiten wilt opslaan waarvan de grootte of het 
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
 * [Trans acties van entiteits groep](#entity-group-transactions)
-* [Samenvoegen of vervangen](#merge-or-replace)
+* [Samen voegen of vervangen](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Patroon voor grote instanties
 Gebruik Blob Storage voor het opslaan van grote eigenschaps waarden.  
@@ -883,8 +883,8 @@ Gebruik dit patroon wanneer u entiteiten wilt opslaan waarvan de grootte de limi
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Uiteindelijk consistent transacties patroon](#eventually-consistent-transactions-pattern)  
-* [Breed entiteiten patroon](#wide-entities-pattern)
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
+* [Patroon voor grote entiteiten](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
@@ -915,8 +915,8 @@ Vermijd het Anti-patroon laten voorafgaan door/Append wanneer uw volume aan tran
 #### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutel patroon](#compound-key-pattern)  
-* [Logboek tail-patroon](#log-tail-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* [Eind patroon van logboek](#log-tail-pattern)  
 * [Entiteiten wijzigen](#modify-entities)  
 
 ### <a name="log-data-anti-pattern"></a>Logboek gegevens anti-patroon
@@ -959,7 +959,7 @@ Houd rekening met de volgende punten bij het bepalen hoe gegevens worden opgesla
 In deze sectie worden enkele van de overwegingen op moet letten wanneer u de patronen die worden beschreven in de vorige secties implementeert beschreven. De meeste van deze sectie bevat voorbeelden die zijn geschreven in C# en die gebruikmaken van de Storage-clientbibliotheek (versie 4.3.0 op het moment van schrijven).  
 
 ### <a name="retrieve-entities"></a>Entiteiten ophalen
-Zoals beschreven in de sectie [ontwerp voor het uitvoeren van query's](#design-for-querying), de meest efficiënte query is een point-query. In sommige scenario's moet u echter mogelijk meerdere entiteiten ophalen. In deze sectie worden enkele veelvoorkomende benaderingen beschreven om entiteiten op te halen met behulp van de Storage-client bibliotheek.  
+Zoals beschreven in het sectie [ontwerp voor het uitvoeren van query's](#design-for-querying), is de meest efficiënte query een Point-query. In sommige scenario's moet u echter mogelijk meerdere entiteiten ophalen. In deze sectie worden enkele veelvoorkomende benaderingen beschreven om entiteiten op te halen met behulp van de Storage-client bibliotheek.  
 
 #### <a name="run-a-point-query-by-using-the-storage-client-library"></a>Een punt query uitvoeren met de Storage-client bibliotheek
 De eenvoudigste manier om een punt query uit te voeren, is met behulp van de bewerking tabel **ophalen** . Zoals weer gegeven in het C# volgende code fragment, haalt deze bewerking een entiteit op met een `PartitionKey` van de waarde ' Sales ' en een `RowKey` van de waarde ' 212 ':  
@@ -1139,7 +1139,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,7 +1159,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,7 +1196,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1232,7 +1232,7 @@ Elke entiteit moet nog steeds `PartitionKey`, `RowKey`en `Timestamp` waarden bev
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1254,7 +1254,7 @@ Elke entiteit moet nog steeds `PartitionKey`, `RowKey`en `Timestamp` waarden bev
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1295,7 +1295,7 @@ Elke entiteit moet nog steeds `PartitionKey`, `RowKey`en `Timestamp` waarden bev
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Werknemer</td>

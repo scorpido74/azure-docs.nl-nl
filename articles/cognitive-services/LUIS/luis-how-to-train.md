@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143693"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361100"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Train uw actieve versie van de LUIS-app 
 
 Training is het proces van uw app Language Understanding (LUIS) voor het verbeteren van de natuurlijke taal begrijpen lessen. Uw LUIS-app na updates voor het model zoals toevoegen, bewerken, labels of verwijderen van entiteiten, intents of uitingen trainen. 
 
-Training en [testen](luis-concept-test.md) een app is een iteratief proces. Nadat u uw LUIS-app trainen, kunt u deze testen met voorbeeldgegevens uitingen om te controleren of de intenties en entiteiten correct worden herkend. Als ze niet zijn, moet u opnieuw updates voor de LUIS-app, trainen en testen. 
+Training en [testen](luis-concept-test.md) van een app is een iteratief proces. Nadat u uw LUIS-app trainen, kunt u deze testen met voorbeeldgegevens uitingen om te controleren of de intenties en entiteiten correct worden herkend. Als ze niet zijn, moet u opnieuw updates voor de LUIS-app, trainen en testen. 
 
 Training wordt toegepast op de actieve versie in de LUIS-portal. 
 
 ## <a name="how-to-train-interactively"></a>Hoe u met het trainen van interactief
 
-De iteratief proces gestart in de [LUIS portal](https://www.luis.ai), moet u eerst uw LUIS-app ten minste één keer te trainen. Zorg ervoor dat elke bedoeling heeft ten minste één utterance voordat een training.
+Als u het iteratieve proces in de [Luis-Portal](https://www.luis.ai)wilt starten, moet u eerst uw Luis-app ten minste één keer trainen. Zorg ervoor dat elke bedoeling heeft ten minste één utterance voordat een training.
 
-1. Toegang tot uw app door het selecteren van de naam ervan op de **mijn Apps** pagina. 
+1. U hebt toegang tot uw app door de naam ervan te selecteren op de pagina **mijn apps** . 
 
-1. Selecteer in uw app **Train** in het bovenste deelvenster. 
+1. In uw app selecteert u **trainen** in het bovenste paneel. 
 
 1. Wanneer de training is voltooid, wordt boven aan de browser een melding weer gegeven.
 
@@ -54,7 +54,7 @@ U hoeft niet te trainen na elke één wijziging. Training moet worden uitgevoerd
 
 ## <a name="training-with-the-rest-apis"></a>Training met de REST API 's
 
-Training in de portal LUIS bestaat uit één stap van de te drukken de **Train** knop. Training met de REST API's is een proces in twee stappen. De eerste [aanvragen training](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) met HTTP POST. Vraag de [trainingsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) met HTTP Get. 
+Training in de LUIS-Portal is één stap van het drukken op de **trein** knop. Training met de REST API's is een proces in twee stappen. Eerst moet u [training aanvragen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) met http post. Vraag vervolgens de [trainings status](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) aan met HTTP Get. 
 
 Als u wilt weten wanneer de training is voltooid, moet u de status te peilen totdat alle modellen met succes zijn getraind. 
 
