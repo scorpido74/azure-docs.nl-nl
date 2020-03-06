@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844935"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359577"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -40,7 +40,7 @@ De standaard indeling voor logboeken in Azure Database for PostgreSQL is. log. E
 
 Azure Database for PostgreSQL biedt een opslag locatie voor de korte termijn voor de. log-bestanden. Een nieuw bestand begint elke 1 uur of 100 MB, afhankelijk van wat het eerste komt. Logboeken worden toegevoegd aan het huidige bestand wanneer ze worden verzonden vanuit post gres.  
 
-U kunt de Bewaar periode voor deze logboek opslag op korte termijn instellen met behulp van de para meter `log_retention_period`. De standaard waarde is 3 dagen; de maximum waarde is 7 dagen. De opslag locatie voor de korte termijn kan Maxi maal 1 GB aan logboek bestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de Bewaar periode, verwijderd om ruimte te maken voor nieuwe logboeken. 
+U kunt de Bewaar periode voor deze logboek opslag op korte termijn instellen met behulp van de para meter `log_retention_period`. De standaardwaarde is drie dagen, de maximumwaarde is zeven dagen. De opslag locatie voor de korte termijn kan Maxi maal 1 GB aan logboek bestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de Bewaar periode, verwijderd om ruimte te maken voor nieuwe logboeken. 
 
 Voor een langere periode voor het bewaren van Logboeken en logboek analyse kunt u de. log-bestanden downloaden en verplaatsen naar een service van derden. U kunt de bestanden downloaden met behulp van de [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure cli](howto-configure-server-logs-using-cli.md). U kunt ook Azure Monitor Diagnostische instellingen configureren waarmee uw logboeken (in JSON-indeling) automatisch worden meegestuurd naar locaties met langere termijn. Meer informatie over deze optie vindt u in de sectie hieronder. 
 
@@ -105,7 +105,7 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | ResourceProvider | De naam van de resource provider. Altijd `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Resource-URI |
-| Bron | Naam van de server |
+| Resource | Naam van de server |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Gelijk | Logboek registratie niveau, voor beeld: logboek, fout, kennisgeving |
@@ -117,7 +117,7 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | DatatypeName | Naam van het gegevens type (indien van toepassing) |
 | LogicalServerName | Naam van de server | 
 | _ResourceId | Resource-URI |
-| Voorvoegsel | Voor voegsel van logboek regel |
+| Beleids | Voor voegsel van logboek regel |
 
 
 ## <a name="next-steps"></a>Volgende stappen

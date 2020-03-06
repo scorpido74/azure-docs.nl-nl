@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364552"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -52,7 +52,7 @@ Grote tijdwaarden in tijdelijke query-elementen kunnen bijdragen aan de uitvoer 
 
 Dus wees voorzichtig bij het ontwerpen van uw Stream Analytics-query. Als u een groot tijdsvenster (meer dan enkele uren, maximaal zeven dagen) voor de tijdelijke-elementen in de query-syntaxis van de taak, kan dit leiden tot een vertraging in de eerste uitvoer wanneer de taak wordt gestart of opnieuw opgestart.  
 
-Een beperking voor dit type van de eerste uitvoer vertraging is het gebruik van query-parallellisatie technieken (partitionering van gegevens) of Voeg meer Streaming-eenheden voor de verbetering van de doorvoer totdat de taak de resultaten.  Zie voor meer informatie, [overwegingen bij het maken van Stream Analytics-taken](stream-analytics-concepts-checkpoint-replay.md)
+Een beperking voor dit type van de eerste uitvoer vertraging is het gebruik van query-parallellisatie technieken (partitionering van gegevens) of Voeg meer Streaming-eenheden voor de verbetering van de doorvoer totdat de taak de resultaten.  Zie [overwegingen bij het maken van stream Analytics Jobs](stream-analytics-concepts-checkpoint-replay.md) voor meer informatie.
 
 Deze factoren van invloed zijn op de actualiteit van de eerste uitvoer die wordt gegenereerd:
 
@@ -74,15 +74,15 @@ Tijdens normale werking van de taak als u van de taak uitvoer valt achter (lange
 - Of de upstream-bron is beperkt
 - Of de verwerkingslogica in de query is rekenintensieve
 
-Als u wilt zien van de gegevens, in de Azure-portal, selecteert u de streaming-taak en selecteer de **taakdiagram**. Voor elke invoer, is er een per partitie achterstand gebeurtenis metrisch gegeven. Als de achterstand gebeurtenis metrische gegevens stijgen blijft, is dit een indicatie dat de systeemresources die zijn beperkt. Mogelijk die het gevolg is van uitvoer-sink beperking of intensief CPU. Zie voor meer informatie over het gebruik van het taakdiagram [gegevensgestuurde foutopsporing met behulp van het taakdiagram](stream-analytics-job-diagram-with-metrics.md).
+Als u deze details wilt zien, selecteert u in de Azure Portal de streaming-taak en selecteert u het **taak diagram**. Voor elke invoer, is er een per partitie achterstand gebeurtenis metrisch gegeven. Als de achterstand gebeurtenis metrische gegevens stijgen blijft, is dit een indicatie dat de systeemresources die zijn beperkt. Mogelijk die het gevolg is van uitvoer-sink beperking of intensief CPU. Zie voor meer informatie over het gebruik van het taak diagram [fout opsporing op basis van gegevens met behulp van het taak diagram](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor sleutel schending bij Azure SQL Database uitvoer
 
-Als u Azure SQL-database als uitvoer naar een Stream Analytics-taak configureert, voegt het bulksgewijs records in de doeltabel. In het algemeen, Azure stream analytics garandeert [ten minste één keer levering](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) naar het uitvoereindpunt worden verplaatst, een kunt nog steeds [precies bereiken-bezorging]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) om SQL uitvoer wanneer SQL-tabel heeft een unique-beperking gedefinieerd.
+Als u Azure SQL-database als uitvoer naar een Stream Analytics-taak configureert, voegt het bulksgewijs records in de doeltabel. Over het algemeen garandeert Azure stream Analytics [ten minste één keer per levering](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) aan de uitvoer sink, een kan nog steeds [precies één keer worden AFgeleverd]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) bij SQL-uitvoer wanneer voor SQL-tabel een unieke beperking is gedefinieerd.
 
 Wanneer unique key-beperkingen zijn ingesteld op de SQL-tabel en er zijn dubbele records worden ingevoegd in de SQL-tabel, geeft Azure Stream Analytics de dubbele record wordt verwijderd. Deze splitst de gegevens in batches en recursief de batches voegen tot één dubbele record wordt gevonden. Als de streaming-taak heeft een groot aantal dubbele rijen, deze splitsen en in te voegen proces is de duplicaten één voor één, dit minder efficiënt en tijdrovend is negeren. Als u meerdere waarschuwingsberichten voor schending van de sleutel in het activiteitenlogboek is opgenomen in het afgelopen uur ziet, is het waarschijnlijk dat de SQL-uitvoer de hele taak vertragen.
 
-U lost dit probleem, moet u [configureren van de index]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) die de schending van de sleutel wordt veroorzaakt doordat de optie IGNORE_DUP_KEY. Als u deze optie inschakelt, kunnen dubbele waarden moeten worden genegeerd door SQL tijdens bulksgewijs invoegen en SQL Azure levert gewoon een waarschuwingsbericht wordt weergegeven in plaats van een fout. Azure Stream Analytics produceren schending van de primaire sleutel fouten niet meer.
+Om dit probleem op te lossen, moet u [de index configureren]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) die de sleutel schending veroorzaakt door de optie IGNORE_DUP_KEY in te scha kelen. Als u deze optie inschakelt, kunnen dubbele waarden moeten worden genegeerd door SQL tijdens bulksgewijs invoegen en SQL Azure levert gewoon een waarschuwingsbericht wordt weergegeven in plaats van een fout. Azure Stream Analytics produceren schending van de primaire sleutel fouten niet meer.
 
 Houd rekening met de volgende opmerkingen bij het configureren van IGNORE_DUP_KEY voor verschillende soorten indexen:
 
@@ -94,9 +94,9 @@ Houd rekening met de volgende opmerkingen bij het configureren van IGNORE_DUP_KE
 Wanneer u het oorspronkelijke compatibiliteits niveau (1,0) gebruikt, wordt Azure Stream Analytics gebruikt om kolom namen te wijzigen in kleine letters. Dit gedrag is in latere compatibiliteits niveaus verholpen. Om het probleem op te slaan, raden we klanten aan om over te stappen op compatibiliteits niveau 1,1 en hoger. U kunt meer informatie vinden over het [compatibiliteits niveau voor Azure stream Analytics taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
 
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 
-Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

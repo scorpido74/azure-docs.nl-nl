@@ -4,11 +4,11 @@ description: Meer informatie over het gebruik van REST API om Azure-bestands sha
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444808"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393185"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-bestands shares herstellen met behulp van REST API
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Als u een herstel bewerking voor een Azure-bestands share wilt activeren, zijn de volgende onderdelen van de hoofd tekst van de aanvraag:
 
-Name |  Type   |   Beschrijving
+Naam |  Type   |   Beschrijving
 --- | ---- | ----
 Eigenschappen | AzureFileShareRestoreRequest | RestoreRequestResource-eigenschappen
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Als u een herstel bewerking voor een Azure-bestands share wilt activeren, zijn de volgende onderdelen van de hoofd tekst van de aanvraag:
 
-Name |  Type   |   Beschrijving
+Naam |  Type   |   Beschrijving
 --- | ---- | ----
 Eigenschappen | AzureFileShareRestoreRequest | RestoreRequestResource-eigenschappen
 

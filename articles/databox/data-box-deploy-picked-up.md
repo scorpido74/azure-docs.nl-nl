@@ -10,11 +10,11 @@ ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380280"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Zorg ervoor dat het kopiëren van gegevens naar het apparaat is voltooid en dat 
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[In de VS, Canada, Europa](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[In de VS, Canada, Europa](#tab/in-us-canada-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa retourneert.
 
@@ -114,7 +114,7 @@ Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[In Australië](#tab/in-australia)
+## <a name="in-australia"></a>[In Australië](#tab/in-australia)
 
 Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten vooraf worden gemeld. Voer de volgende stappen uit voor verzenden vanuit Australië.
 
@@ -143,7 +143,7 @@ Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan) 
+## <a name="in-japan"></a>[In Japan](#tab/in-japan) 
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
 2. Schakel het apparaat uit en verwijder de kabels.
@@ -191,7 +191,7 @@ Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[In Singapore](#tab/in-singapore) 
+## <a name="in-singapore"></a>[In Singapore](#tab/in-singapore) 
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
 2. Noteer het volgnummer (weergegeven als referentienummer op de pagina Voorbereiden voor verzending van de lokale web-UI van Data Box). Dit is beschikbaar nadat de stap voor het voorbereiden van de verzending is voltooid. Download het verzendlabel vanaf deze pagina en plak het op de doos. 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[Zelfbeheerd](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged) 
 
 Als u Data Box gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies. 
 

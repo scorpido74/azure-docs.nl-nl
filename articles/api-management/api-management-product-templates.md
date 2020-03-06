@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374364"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Product sjablonen in azure API Management
 
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
   
  Met de sjablonen in deze sectie kunt u de inhoud van de product pagina's in de ontwikkelaars portal aanpassen.  
   
@@ -81,7 +81,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|Paginering|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling producten.|  
+|Zoekresultaten oproepen|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling producten.|  
 |Filteren|[Filter](api-management-template-data-model-reference.md#Filtering) entiteit.|De filter gegevens voor de lijst pagina met producten.|  
 |Producten|Verzameling van [product](api-management-template-data-model-reference.md#Product) entiteiten.|De producten die zichtbaar zijn voor de huidige gebruiker.|  
   
@@ -208,10 +208,10 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 |--------------|----------|-----------------|  
 |Product|[Voortplant](api-management-template-data-model-reference.md#Product)|Het opgegeven product.|  
 |IsDeveloperSubscribed|booleaans|Hiermee wordt aangegeven of de huidige gebruiker is geabonneerd op dit product.|  
-|Subscription State|getal|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br />-   `1 - active`: het abonnement is actief.<br />-   `2 - expired`: het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br />-   `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br />-   `4 - rejected`: de abonnements aanvraag is geweigerd door een beheerder.<br />-   `5 - cancelled`: het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
-|Beperkingen|matrix|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
+|SubscriptionState|getal|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br />-   `1 - active`: het abonnement is actief.<br />-   `2 - expired`: het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br />-   `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br />-   `4 - rejected`: de abonnements aanvraag is geweigerd door een beheerder.<br />-   `5 - cancelled`: het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
+|Limieten|matrix|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
 |DelegatedSubscriptionEnabled|booleaans|Of [delegering](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) is ingeschakeld voor dit abonnement.|  
-|DelegatedSubscriptionUrl|string|Als delegering is ingeschakeld, wordt de URL van het overgedragen abonnement.|  
+|DelegatedSubscriptionUrl|tekenreeks|Als delegering is ingeschakeld, wordt de URL van het overgedragen abonnement.|  
 |IsAgreed|booleaans|Als het product voor waarden heeft, of de huidige gebruiker de voor waarden heeft geaccepteerd.|  
 |Abonnementen|Verzameling van [overzichts](api-management-template-data-model-reference.md#SubscriptionSummary) entiteiten van abonnementen.|De abonnementen op het product.|  
 |APIs|Verzameling van [API](api-management-template-data-model-reference.md#API) -entiteiten.|De Api's in dit product.|  

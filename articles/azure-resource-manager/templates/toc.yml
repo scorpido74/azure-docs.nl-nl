@@ -1,8 +1,8 @@
-- name: Documentatie voor Azure Resource Manager-sjablonen
+- name: Documentatie voor ARM-sjablonen
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat zijn Azure Resource Manager-sjablonen?
+    - name: Wat zijn ARM-sjablonen?
       href: overview.md
 - name: Snelstartgidsen
   items:

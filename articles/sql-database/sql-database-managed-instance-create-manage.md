@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823406"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360484"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Naslag informatie over beheerde API voor beheerde instanties van Azure SQL Database
 
@@ -72,7 +72,7 @@ Als u beheerde exemplaren wilt maken en beheren met [Azure cli](/cli/azure), geb
 Als u exemplaar database wilt maken en beheren nadat het beheerde exemplaar is gemaakt, gebruikt u de volgende T-SQL-opdrachten. U kunt deze opdrachten geven met behulp van de Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio code](https://code.visualstudio.com/docs)of andere Program ma's waarmee verbinding kan worden gemaakt met een Azure SQL database server en Transact-SQL-opdrachten kunnen worden door gegeven.
 
 > [!TIP]
-> Voor Quick starts die aangeven dat u een beheerd exemplaar moet configureren en er verbinding mee moet maken met behulp van SQL Server Management Studio in micro soft Windows, Zie [Quick Start: Azure VM configureren om verbinding te maken met een Azure SQL database beheerd exemplaar](sql-database-managed-instance-configure-vm.md) en [Quick Start: Configureer een punt-naar-site-verbinding met een Azure SQL Database beheerde instantie van on-premises](sql-database-managed-instance-configure-p2s.md).
+> Voor Quick starts die aangeven dat u een beheerd exemplaar moet configureren en er verbinding mee moet maken met SQL Server Management Studio in micro soft Windows, Zie [Quick Start: Azure VM configureren om verbinding te maken met een Azure SQL database beheerd exemplaar](sql-database-managed-instance-configure-vm.md) en [Quick Start: Configureer een punt-naar-site-verbinding met een Azure SQL database beheerde instantie van on-premises](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > U kunt een beheerd exemplaar niet maken of verwijderen met behulp van Transact-SQL.
 

@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: Concepten
   items:
+    - name: Best practices voor Azure AD B2C
+      href: best-practices.md
     - name: Toepassingstypen
       href: application-types.md
     - name: Verificatieprotocollen

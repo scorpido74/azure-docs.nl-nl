@@ -1,6 +1,6 @@
 ---
-title: Azure Functions met mediaservices ontwikkelen
-description: In dit onderwerp laat zien hoe om te beginnen met het ontwikkelen van Azure Functions met Media Services met behulp van de Azure portal.
+title: Azure Functions ontwikkelen met Media Services
+description: In dit onderwerp wordt beschreven hoe u Azure Functions ontwikkelt met Media Services met behulp van de Azure Portal.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217465"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397237"
 ---
-# <a name="develop-azure-functions-with-media-services"></a>Azure Functions met mediaservices ontwikkelen
+# <a name="develop-azure-functions-with-media-services"></a>Azure Functions ontwikkelen met Media Services
 
-In dit artikel wordt beschreven hoe u aan de slag met het maken van Azure Functions met Media Services. De Azure-functie die is gedefinieerd in dit artikel een container van het opslagaccount met de naam bewaakt **invoer** voor nieuwe MP4-bestanden. Wanneer een bestand in de opslagcontainer is verwijderd, wordt de functie uitgevoerd in de blobtrigger. Azure functions, Zie [overzicht](../../azure-functions/functions-overview.md) en andere onderwerpen in de **Azure functions** sectie.
+In dit artikel wordt beschreven hoe u aan de slag gaat met het maken van Azure Functions die gebruikmaken van Media Services. Met de Azure-functie die in dit artikel is gedefinieerd, wordt een opslag account container met de naam **input** voor nieuwe MP4-bestanden bewaakt. Zodra een bestand in de opslag container wordt neergezet, voert de BLOB-trigger de functie uit. Zie overzicht en andere onderwerpen in het gedeelte **Azure functions** voor meer [informatie](../../azure-functions/functions-overview.md) over Azure functions.
 
-Als u wilt om te verkennen en implementeren van bestaande Azure-functies die gebruikmaken van Azure Media Services, Bekijk [Media Services, Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Deze opslagplaats bevat voorbeelden van Media Services gebruiken om werkstromen met betrekking tot het opnemen inhoud rechtstreeks van blob-opslag, codering, en inhoud schrijven terug naar blob-opslag weer te geven. Dit omvat ook voorbeelden over het bewaken van taakmeldingen via WebHooks en Azure-wachtrijen. U kunt ook ontwikkelen van uw functies op basis van de voorbeelden in de [Media Services, Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) opslagplaats. Voor het implementeren van de functies, drukt u op de **implementeren in Azure** knop.
+Als u bestaande Azure Functions wilt verkennen en implementeren die gebruikmaken van Azure Media Services, raadpleegt u [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Deze opslag plaats bevat voor beelden die Media Services gebruiken om werk stromen weer te geven die zijn gerelateerd aan het opnemen van inhoud rechtstreeks vanuit Blob Storage, versleuteling en het schrijven van inhoud naar Blob Storage. Het bevat ook voor beelden van het bewaken van taak meldingen via webhooks en Azure queues. U kunt ook uw functies ontwikkelen op basis van de voor beelden in de [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) opslag plaats. Als u de functies wilt implementeren, klikt u op de knop **implementeren naar Azure** .
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Voordat u uw eerste functie kunt maken, moet u een actief Azure-account hebben. Als u nog geen Azure-account hebt, zijn er [gratis accounts beschikbaar](https://azure.microsoft.com/free/).
-- Als u maken van Azure Functions die acties uitvoeren op uw account voor Azure Media Services (AMS) of luisteren naar gebeurtenissen die worden verzonden door Media Services wilt, moet u een AMS-account maken zoals wordt beschreven [hier](media-services-portal-create-account.md).
+- Als u Azure Functions wilt maken die acties uitvoeren op uw Azure Media Services-account (AMS) of als u wilt Luis teren naar gebeurtenissen die door Media Services worden verzonden, moet u een AMS-account maken, zoals [hier](media-services-portal-create-account.md)wordt beschreven.
     
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
 1. Ga naar de [Azure-portal](https://portal.azure.com) en meld u aan met uw Azure-account.
-2. Een functie-app maken zoals wordt beschreven [hier](../../azure-functions/functions-create-function-app-portal.md).
+2. Maak een functie-app, zoals [hier](../../azure-functions/functions-create-function-app-portal.md)wordt beschreven.
 
 >[!NOTE]
-> Een opslagaccount dat u opgeeft in de **StorageConnection** omgevingsvariabele (Zie de volgende stap) moet zich in dezelfde regio als uw app.
+> Een opslag account dat u opgeeft in de omgevings variabele **StorageConnection** (Zie de volgende stap) moet zich in dezelfde regio bevinden als uw app.
 
-## <a name="configure-function-app-settings"></a>Instellingen voor functie-app configureren
+## <a name="configure-function-app-settings"></a>Instellingen voor de functie-app configureren
 
-Bij het ontwikkelen van Media Services-functies, is het handig om toe te voegen omgevingsvariabelen die worden gebruikt in uw functies. Klik op de koppeling van de App-instellingen configureren voor het configureren van app-instellingen. Zie voor meer informatie, [Azure-functie-app-instellingen configureren](../../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabelen toe te voegen die tijdens uw functies worden gebruikt. Als u de app-instellingen wilt configureren, klikt u op de koppeling app-instellingen configureren. Zie [How to configure Azure function app Settings](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)(Engelstalig) voor meer informatie. 
 
-De functie, gedefinieerd in dit artikel wordt ervan uitgegaan dat u hebt de volgende omgevingsvariabelen in uw app-instellingen:
+De functie die in dit artikel is gedefinieerd, veronderstelt dat u de volgende omgevings variabelen in de app-instellingen hebt:
 
-**AMSAADTenantDomain**: Azure AD-tenant-eindpunt. Zie voor meer informatie over het verbinden met de AMS-API, [dit](media-services-use-aad-auth-to-access-ams-api.md) artikel.
+**AMSAADTenantDomain**: Azure AD-Tenant eindpunt. Zie [Dit](media-services-use-aad-auth-to-access-ams-api.md) artikel voor meer informatie over het maken van verbinding met de AMS-API.
 
-**AMSRESTAPIEndpoint**:  De URI die staat voor de REST API-eindpunt. 
+**AMSRESTAPIEndpoint**: een URI die het rest API-eind punt vertegenwoordigt. 
 
-**AMSClientId**: Azure AD-toepassing client-ID.
+**AMSClientId**: client-id van Azure AD-toepassing.
 
-**AMSClientSecret**: Azure AD-toepassing-clientgeheim.
+**AMSClientSecret**: client geheim van Azure AD-toepassing.
 
-**StorageConnection**: opslag-verbinding van het account dat is gekoppeld aan de Media Services-account. Deze waarde wordt gebruikt de **function.json** bestand en **run.csx** bestand (Zie hieronder).
+**StorageConnection**: opslag verbinding van het account dat is gekoppeld aan het Media Services-account. Deze waarde wordt gebruikt in het bestand **Function. json** en **Run. CSX** (zie hieronder).
 
 ## <a name="create-a-function"></a>Een functie maken
 
-Wanneer uw functie-app is geïmplementeerd, kunt u het vinden van **App Services** Azure Functions.
+Als uw functie-app is geïmplementeerd, kunt u deze vinden in **App Services** Azure functions.
 
-1. Selecteer uw functie-app en klik op **nieuwe functie**.
-2. Kies de **C#** taal en **gegevensverwerking** scenario.
-3. Kies **BlobTrigger** sjabloon. Deze functie wordt geactiveerd wanneer een blob is geüpload naar de **invoer** container. De **invoer** naam is opgegeven in de **pad**, in de volgende stap.
+1. Selecteer de functie-app en klik op **nieuwe functie**.
+2. Kies het **C#** scenario voor taal-en **gegevens verwerking** .
+3. Kies **sjabloon blobtrigger** -sjabloon. Deze functie wordt geactiveerd wanneer een BLOB wordt geüpload naar de **invoer** container. De naam van de **invoer** wordt in de volgende stap in het **pad**opgegeven.
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Wanneer u selecteert **BlobTrigger**, sommige meer besturingselementen worden weergegeven op de pagina.
+4. Wanneer u **sjabloon blobtrigger**selecteert, worden er nog meer besturings elementen op de pagina weer gegeven.
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
@@ -74,18 +74,18 @@ Wanneer uw functie-app is geïmplementeerd, kunt u het vinden van **App Services
 
 ## <a name="files"></a>Bestanden
 
-Uw Azure-functie is gekoppeld aan de codebestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure portal gebruiken voor het maken van een functie **function.json** en **run.csx** worden voor u gemaakt. U wilt toevoegen of upload een **project.json** bestand. De rest van deze sectie geeft een korte uitleg van elk bestand en bevat de definities.
+Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie, **Function. json** en **Run. CSX** te maken, worden voor u gemaakt. U moet een **project. json** -bestand toevoegen of uploaden. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-Het bestand function.json definieert de functiebindingen en andere configuratie-instellingen. De runtime maakt gebruik van dit bestand om te bepalen welke gebeurtenissen u wilt controleren en het doorgeven van gegevens in en als resultaat de gegevens van een functie wordt uitgevoerd. Zie voor meer informatie, [Azure functions-HTTP- en webhook-bindingen](../../azure-functions/functions-reference.md#function-code).
+Het bestand function. json definieert de functie bindingen en andere configuratie-instellingen. De runtime gebruikt dit bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe de uitvoering van de functie kan worden geretourneerd. Zie [Azure functions http en webhook-bindingen](../../azure-functions/functions-reference.md#function-code)voor meer informatie.
 
 >[!NOTE]
->Stel de **uitgeschakeld** eigenschap **waar** om te voorkomen dat de functie wordt uitgevoerd. 
+>Stel de eigenschap **disabled** in op **True** om te voor komen dat de functie wordt uitgevoerd. 
 
-Vervang de inhoud van het bestaande function.json-bestand met de volgende code:
+Vervang de inhoud van het bestaande function. JSON-bestand door de volgende code:
 
 ```json
 {
@@ -104,9 +104,9 @@ Vervang de inhoud van het bestaande function.json-bestand met de volgende code:
 
 ### <a name="projectjson"></a>project.json
 
-Het bestand project.json bevat afhankelijkheden. Hier volgt een voorbeeld van **project.json** bestand met de vereiste .NET Azure Media Services-pakketten van Nuget. Houd er rekening mee dat de versienummers met de meest recente updates op de pakketten, wijzigen zodat de meest recente versies dient u te bevestigen. 
+Het bestand project. json bevat afhankelijkheden. Hier volgt een voor beeld van het bestand **project. json** dat de vereiste .net Azure Media Services-pakketten van Nuget bevat. Houd er rekening mee dat de versie nummers worden gewijzigd met de meest recente updates voor de pakketten. Daarom moet u de meest recente versies bevestigen. 
 
-De volgende definitie aan project.json toevoegen. 
+Voeg de volgende definitie toe aan project. json. 
 
 ```json
 {
@@ -124,18 +124,18 @@ De volgende definitie aan project.json toevoegen.
 
 ```
     
-### <a name="runcsx"></a>run.csx
+### <a name="runcsx"></a>run. CSX
 
-Dit is de C# code voor uw functie.  De functie onder monitors gedefinieerd met een container van het opslagaccount met de naam **invoer** (dat is wat is opgegeven in het pad) voor nieuwe MP4-bestanden. Wanneer een bestand in de opslagcontainer is verwijderd, wordt de functie uitgevoerd in de blobtrigger.
+Dit is de C# code voor uw functie.  Met de functie die hieronder is gedefinieerd, wordt een opslag account container met de naam **input** (die is opgegeven in het pad) voor nieuwe MP4-bestanden gecontroleerd. Zodra een bestand in de opslag container wordt neergezet, voert de BLOB-trigger de functie uit.
     
-Het voorbeeld dat is gedefinieerd in deze sectie ziet u 
+In het voor beeld dat in deze sectie is gedefinieerd, ziet u 
 
-1. het opnemen van een asset naar een Media Services-account (door een blob kopiëren naar een AMS-asset) en 
-2. hoe naar een codeertaak verzendt die Media Encoder Standard van gebruikt vooraf "Adaptief streamen".
+1. het opnemen van een asset in een Media Services-account (door een BLOB te omgaan in een AMS-Asset) en 
+2. een coderings taak verzenden die gebruikmaakt van de standaard instelling ' adaptieve streaming ' van Media Encoder Standard.
 
-In het scenario voor echte leven wilt u waarschijnlijk taakvoortgang bijhouden en publiceert u de gecodeerde asset. Zie voor meer informatie, [gebruik Azure WebHooks voor het bewaken van taakmeldingen mediaservices](media-services-dotnet-check-job-progress-with-webhooks.md). Zie voor meer voorbeelden van [Media Services, Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
+In het scenario voor een echt leven wilt u waarschijnlijk de voortgang van de taak bijhouden en vervolgens uw versleutelde Asset publiceren. Zie [Azure-Webhooks gebruiken voor het bewaken van Media Services taak meldingen](media-services-dotnet-check-job-progress-with-webhooks.md)voor meer informatie. Zie [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)voor meer voor beelden.  
 
-Vervang de inhoud van het bestaande bestand run.csx door de volgende code: Wanneer u klaar bent voor het definiëren van uw functie klikt u op **opslaan en uitvoeren**.
+Vervang de inhoud van het bestaande run. CSX-bestand door de volgende code: wanneer u klaar bent met het definiëren van de functie, klikt u op **opslaan en uitvoeren**.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -330,23 +330,23 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="test-your-function"></a>Uw functie testen
 
-Om de functie testen, moet u voor het uploaden van een MP4-bestand in de **invoer** container van het opslagaccount dat u hebt opgegeven in de verbindingsreeks.  
+Als u uw functie wilt testen, moet u een MP4-bestand uploaden naar de **invoer** container van het opslag account dat u in de Connection String hebt opgegeven.  
 
-1. Selecteer het opslagaccount dat u hebt opgegeven in de **StorageConnection** omgevingsvariabele.
-2. Klik op **Blobs**.
-3. Klik op **+ Container**. Naam van de container **invoer**.
-4. Druk op **uploaden** en blader naar een MP4-bestand dat u wilt uploaden.
+1. Selecteer het opslag account dat u hebt opgegeven in de omgevings variabele **StorageConnection** .
+2. Klik op **blobs**.
+3. Klik op **+ Container**. Geef de container **invoer**een naam.
+4. Druk op **uploaden** en blader naar een. MP4-bestand dat u wilt uploaden.
 
 >[!NOTE]
-> Wanneer u een blobtrigger in een verbruiksabonnement gebruikt, kunnen er maximaal 10 minuten duren in de verwerking van nieuwe blobs nadat een functie-app niet actief is geworden. Nadat de functie-app wordt uitgevoerd, worden onmiddellijk blobs verwerkt. Zie voor meer informatie, [Blob opslagtriggers en bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Wanneer u een BLOB-trigger in een verbruiks plan gebruikt, kan er een vertraging van 10 minuten zijn bij het verwerken van nieuwe blobs nadat een functie-app niet actief is geweest. Nadat de functie-app is uitgevoerd, worden de blobs onmiddellijk verwerkt. Zie [Blob Storage-triggers en-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Op dit moment bent u klaar om te beginnen met het ontwikkelen van een Media Services-toepassing. 
+U bent nu klaar om te beginnen met het ontwikkelen van een Media Services-toepassing. 
  
-Zie voor meer informatie en volledige samples/oplossingen van het gebruik van Azure Functions en Logic Apps met Azure Media Services voor het maken van aangepaste inhoud maken werkstromen, de [Media Services .NET-functies integratie voorbeeld op GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
+Zie voor meer informatie en voor beelden/oplossingen van het gebruik van Azure Functions en Logic Apps met Azure Media Services voor het maken van aangepaste werk stromen voor het maken van inhoud, het [Media Services .net functions Integration sample op github](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-Zie ook [gebruik Azure WebHooks voor het bewaken van taakmeldingen Media Services met .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
+Zie ook [Azure-Webhooks gebruiken om Media Services taak meldingen te bewaken met .net](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396304"
 ---
 # <a name="what-is-azure-service-bus"></a>Wat is Azure Service Bus?
 
@@ -35,7 +35,7 @@ Enkele algemene berichtenscenario's:
 
 Een naam ruimte is een container voor alle Messa ging-onderdelen. Meerdere wacht rijen en onderwerpen kunnen zich in één naam ruimte bevinden, en naam ruimten fungeren vaak als toepassings containers.
 
-## <a name="queues"></a>Queues
+## <a name="queues"></a>Wachtrijen
 
 Berichten worden verzonden naar en ontvangen van *wachtrijen*. Wacht rijen slaan berichten totdat de ontvangende toepassing beschikbaar is om ze te ontvangen en verwerken.
 
@@ -43,7 +43,7 @@ Berichten worden verzonden naar en ontvangen van *wachtrijen*. Wacht rijen slaan
 
 Berichten in wacht rijen worden besteld en getimed op aankomst. Als een bericht is geaccepteerd, wordt het veilig ondergebracht in redundante opslag. Berichten worden in de *pull* -modus bezorgd en leveren alleen berichten wanneer daarom wordt gevraagd.
 
-## <a name="topics"></a>Topics
+## <a name="topics"></a>Onderwerpen
 
 U kunt ook *onderwerpen* gebruiken voor het verzenden en ontvangen van berichten. Daar waar een wachtrij vaak wordt gebruikt voor punt-naar-punt communicatie, zijn onderwerpen handig in scenario's met publiceren/abonneren.
 

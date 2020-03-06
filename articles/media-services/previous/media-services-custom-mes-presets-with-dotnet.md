@@ -1,6 +1,6 @@
 ---
-title: Voorinstellingen voor Media Encoder Standard aanpassen | Microsoft Docs
-description: In dit onderwerp ziet u hoe geavanceerde codering met Media Encoder Standard taak voorinstellingen aanpassen. Het onderwerp wordt beschreven hoe u een codering taak en een taak maken met Media Services .NET SDK. U ziet ook hoe u aangepaste voorinstellingen voor de coderingstaak opgeven.
+title: Media Encoder Standard voor instellingen aanpassen | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u geavanceerde code ring kunt uitvoeren door Media Encoder Standard voor instellingen voor de taak aan te passen. In het onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een coderings taak en-taak te maken. Ook wordt uitgelegd hoe u aangepaste voor instellingen kunt opgeven voor de coderings taak.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394750"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Voorinstellingen van aanpassen Media Encoder Standard  
+# <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard voor instellingen aanpassen  
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel leest hoe geavanceerde codering met Media Encoder Standard (MES) met behulp van een aangepaste voorinstelling. Het artikel gebruikmaakt van .NET om een coderingstaak en een taak die wordt uitgevoerd met deze taak te maken.  
+In dit artikel wordt beschreven hoe u met een aangepaste voor instelling geavanceerde code ring met Media Encoder Standard (MES) uitvoert. In het artikel wordt .NET gebruikt voor het maken van een coderings taak en een taak waarmee deze taak wordt uitgevoerd.  
 
-Dit artikel leest u hoe u een vooraf ingestelde aanpassen door de [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) vooraf ingesteld en het aantal lagen te verminderen. De [voorinstellingen van Media Encoder Standard aanpassen](media-services-advanced-encoding-with-mes.md) dit artikel ziet u aangepaste voorinstellingen die kunnen worden gebruikt voor het uitvoeren van geavanceerde coderingstaken.
+In dit artikel wordt beschreven hoe u een vooraf ingestelde procedure kunt aanpassen door de [H264 multiple bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -voor instelling te nemen en het aantal lagen te verminderen. Het artikel [customizing Media Encoder Standard presets](media-services-advanced-encoding-with-mes.md) bevat aangepaste voor instellingen die kunnen worden gebruikt voor het uitvoeren van geavanceerde coderings taken.
 
 > [!NOTE]
-> De aangepaste voorinstellingen die worden beschreven in dit artikel kunnen niet worden gebruikt [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformaties of de CLI-opdrachten. Zie de [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md) voor meer informatie.
+> De aangepaste voor instellingen die in dit artikel worden beschreven, kunnen niet worden gebruikt in [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) -trans formaties of de CLI-opdrachten. Zie de [richt lijnen voor migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md) voor meer informatie.
 
-## <a id="customizing_presets"></a> Een MES-definitie aanpassen
+## <a id="customizing_presets"></a>Een MES-voor instelling aanpassen
 
-### <a name="original-preset"></a>Oorspronkelijke definitie
+### <a name="original-preset"></a>Oorspronkelijke voor instelling
 
-Opslaan van de JSON die is gedefinieerd in de [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) artikel in een bestand met JSON-extensie. Bijvoorbeeld, **CustomPreset_JSON.json**.
+Sla de JSON op die is gedefinieerd in het artikel [H264 meerdere bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) in een bestand met de extensie. json. Bijvoorbeeld **CustomPreset_JSON. json**.
 
-### <a name="customized-preset"></a>Aangepaste voorinstelling
+### <a name="customized-preset"></a>Aangepaste voor instelling
 
-Open de **CustomPreset_JSON.json** bestands- en verwijderen van de eerste drie lagen uit **H264Layers** , zodat uw bestand er als uitzien volgt.
+Open het bestand **CustomPreset_JSON. json** en Verwijder eerst drie lagen uit **H264Layers** zodat uw bestand er als volgt uitziet.
 
 ```json 
     {  
@@ -113,21 +113,21 @@ Open de **CustomPreset_JSON.json** bestands- en verwijderen van de eerste drie l
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Coderen met mediaservices .NET SDK
+## <a id="encoding_with_dotnet"></a>Code ring met Media Services .NET SDK
 
-Het volgende codevoorbeeld maakt gebruik van Media Services .NET SDK aan de volgende taken uitvoeren:
+In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volgende taken uit te voeren:
 
-- Maak een coderingstaak.
-- Een verwijzing naar de Media Encoder Standard encoder worden opgehaald.
-- Laden van de aangepaste JSON-definitie die u hebt gemaakt in de vorige sectie. 
+- Maak een coderings taak.
+- Een verwijzing naar de Media Encoder Standard encoder ophalen.
+- Laad de aangepaste JSON-voor instelling die u in de vorige sectie hebt gemaakt. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Een coderingstaak toevoegen aan de taak. 
-- Geef het invoeractivum moeten worden gecodeerd.
-- Maak een uitvoerasset met de gecodeerde asset.
-- Voeg een gebeurtenis-handler om te controleren of de taak wordt uitgevoerd.
+- Een coderings taak toevoegen aan de taak. 
+- Geef op welke invoer-Asset moet worden gecodeerd.
+- Maak een uitvoer activum dat het gecodeerde activum bevat.
+- Voeg een gebeurtenis-handler toe om de voortgang van de taak te controleren.
 - Verzend de taak.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
@@ -266,7 +266,7 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>Zie ook
 
-- [Coderen met een aangepaste transformeren met behulp van CLI](../latest/custom-preset-cli-howto.md)
+- [Coderen met een aangepaste trans formatie met behulp van CLI](../latest/custom-preset-cli-howto.md)
 - [Coderen met Media Services v3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

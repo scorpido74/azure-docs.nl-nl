@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389528"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -79,15 +79,15 @@ In dit scenario wordt een speciale opname voor prestatie meter items uitgevoerd 
 | Latentie      | Gemiddeld aantal seconden/gegevens aanvraag         |
 |              | Gemiddeld aantal seconden per Lees bewerking                 |
 |              | Gemiddeld aantal seconden per schrijf bewerking                |
-| I/o-grootte      | Gem. Bytes/gegevens aanvraag       |
-|              | Gem. Bytes/Read               |
-|              | Gem. Bytes/schrijven              |
+| I/o-grootte      | Gemiddeld aantal bytes/gegevens aanvraag       |
+|              | Gem. bytes/Lees bewerking               |
+|              | Gemiddeld aantal bytes/schrijven              |
 | Doorvoer   | Data Bytes/sec                |
 |              | Gelezen bytes/sec                |
 |              | Geschreven bytes/sec               |
-| Lengte van wachtrij | Gem. Lengte van Lees wachtrij        |
-|              | Gem. Lengte van schrijf wachtrij       |
-|              | Gem. Lengte van gegevens wachtrij        |
+| Wachtrijlengte | Gem. wachtrij lengte Lees bewerking        |
+|              | Gem. wachtrij lengte schrijf bewerking       |
+|              | Gem. lengte van gegevens wachtrij        |
 
 ### <a name="advanced-performance-analysis"></a>Geavanceerde prestatie analyse
 
@@ -131,10 +131,10 @@ Informatie over Windows VM, schijven of opslag groepen configuratie, prestatie m
 
 Voert een op regels gebaseerde engine op de achtergrond uit om gegevens te verzamelen en doorlopende prestatie problemen vast te stellen. De volgende regels worden momenteel ondersteund:
 
-- HighCpuUsage-regel: Detecteert hoge CPU-gebruiks perioden, en toont de belangrijkste consumers van het CPU-gebruik tijdens deze peri Oden.
-- HighDiskUsage-regel: Detecteert hoge gebruiks tijden voor schijven op fysieke schijven en toont de meest voorkomende consumenten gebruikers tijdens deze peri Oden.
+- HighCpuUsage-regel: detecteert hoge CPU-gebruiks perioden, en toont de belangrijkste consumers van het CPU-gebruik tijdens deze peri Oden.
+- HighDiskUsage-regel: detecteert hoge gebruiks tijden voor schijven op fysieke schijven en toont de meest voorkomende consumenten gebruikers tijdens deze peri Oden.
 - HighResolutionDiskMetric-regel: Hiermee worden de metrische gegevens voor IOPS, door Voer en I/O-latentie per 50 milliseconden voor elke fysieke schijf weer gegeven. Hiermee kunt u snel de schijfruimte beperkings punten identificeren.
-- HighMemoryUsage-regel: Detecteert gebruiks perioden in hoog geheugen en toont de prestaties van het hoogste geheugen gebruik tijdens die peri Oden.
+- HighMemoryUsage-regel: detecteert gebruiks perioden in hoog geheugen en toont de prestaties van het hoogste geheugen gebruik tijdens die peri Oden.
 
 > [!NOTE] 
 > Op dit moment worden Windows-versies met de .NET Framework 4,5 of hogere versies ondersteund.
@@ -166,7 +166,7 @@ Diskspd I/O-workload testen (besturingssysteem schijf [schrijven] en groeps stat
 
 -  Dit hulp programma moet worden uitgevoerd op de VM met het prestatie probleem. 
 
--  De volgende besturingssystemen worden ondersteund: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 en Windows Server 2016; Windows 8,1 en Windows 10.
+-  De volgende besturings systemen worden ondersteund: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 en Windows Server 2016; Windows 8,1 en Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Mogelijke problemen wanneer u het hulp programma uitvoert op productie-Vm's
 
@@ -248,12 +248,12 @@ Wanneer de traceringen of bewerkingen zijn voltooid, wordt een nieuw bestand wee
 
 ## <a name="review-the-diagnostics-report"></a>Het diagnostische rapport controleren
 
-In het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. zip-** bestand kunt u een HTML-rapport vinden waarin de bevindingen van PerfInsights worden beschreven. Als u het rapport wilt bekijken, vouwt u het bestand **\_PerformanceDiagnostics\_jjjj-mm-dd hh-mm-SS-FFF. zip** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
+Binnen het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. zip-** bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. zip** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
 
 Selecteer het tabblad **bevindingen** .
 
-![Scherm opname van scherm](media/how-to-use-perfInsights/pi-finding-tab.png)
-opname van PerfInsights-rapport![van PerfInsights rapport](media/how-to-use-perfInsights/pi-findings.png)
+![scherm opname van het PerfInsights-rapport](media/how-to-use-perfInsights/pi-finding-tab.png)
+![scherm opname van PerfInsights rapport](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bevindingen die zijn gecategoriseerd als hoog, zijn bekende problemen die prestatie problemen kunnen veroorzaken. Bevindingen die zijn gecategoriseerd als medium, vertegenwoordigen niet-optimale configuraties die niet noodzakelijkerwijs prestatie problemen veroorzaken. Bevindingen die zijn gecategoriseerd als laag, zijn alleen informatieve instructies.
@@ -270,7 +270,7 @@ In het perspectief fysieke schijf (schijf toewijzing) toont de tabel alle logisc
 
 ![Scherm afbeelding van het tabblad schijf](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-In het perspectief volume (volume toewijzing) tonen de tabellen alle fysieke schijven onder elk logisch volume. U ziet dat voor RAID/dynamische schijven een logisch volume op meerdere fysieke schijven kan worden uitgevoerd. In het volgende voor beeld is *C\\: koppelen* een koppel punt geconfigureerd als *SpannedDisk* op de fysieke schijven 2 en 3:
+In het perspectief volume (volume toewijzing) tonen de tabellen alle fysieke schijven onder elk logisch volume. U ziet dat voor RAID/dynamische schijven een logisch volume op meerdere fysieke schijven kan worden uitgevoerd. In het volgende voor beeld is *C:\\Mount* is een koppel punt dat is geconfigureerd als *SpannedDisk* op de fysieke schijven 2 en 3:
 
 ![Scherm afbeelding van het tabblad volume](media/how-to-use-perfInsights/pi-volume-tab.png)
 
@@ -313,5 +313,5 @@ Op de volgende scherm afbeelding wordt een bericht weer gegeven dat vergelijkbaa
 
 Volg de instructies in het bericht voor toegang tot de werk ruimte bestands overdracht. Voor extra beveiliging moet u uw wacht woord wijzigen bij het eerste gebruik.
 
-Nadat u zich hebt aangemeld, vindt u een dialoog venster waarin u het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. zip-** bestand dat is verzameld door PerfInsights, kunt uploaden.
+Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. zip-** bestand dat is verzameld door PerfInsights.
 

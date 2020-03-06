@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842866"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396964"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Inleiding tot verbindings problemen in azure Network Watcher
 
@@ -46,7 +46,7 @@ In de volgende tabel ziet u de eigenschappen die worden geretourneerd wanneer he
 |Hops []. Taken | Een verzameling van problemen die zijn opgetreden tijdens de controle bij die hop. Als er geen problemen zijn, is de waarde leeg.|
 |Hops []. Problemen []. Oorsprong | Bij de huidige hop, waar het probleem zich voordeed. Mogelijke waarden zijn:<br/> **Inkomend** -probleem bevindt zich op de koppeling van de vorige hop naar de huidige hop<br/>**Uitgaand** -probleem bevindt zich op de koppeling van de huidige hop naar de volgende hop<br/>**Lokaal** -probleem bevindt zich op de huidige hop.|
 |Hops []. Problemen []. Ernst | De ernst van het probleem is gedetecteerd. Mogelijke waarden zijn **fout** en **waarschuwing**. |
-|Hops []. Problemen []. Voert |Het type probleem dat is gevonden. Mogelijke waarden zijn: <br/>**CPU**<br/>**Geheugenmetabase**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops []. Problemen []. Voert |Het type probleem dat is gevonden. Mogelijke waarden zijn: <br/>**VERBRUIK**<br/>**Geheugenmetabase**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |Details over het gevonden probleem.|
 |Hops []. Problemen []. Context []. key |De sleutel van het paar sleutel waarden dat is geretourneerd.|
 |Hops[].Issues[].Context[].value |De waarde van het sleutel waarde-paar dat wordt geretourneerd.|

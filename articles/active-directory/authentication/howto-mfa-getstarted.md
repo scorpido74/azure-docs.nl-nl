@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378089"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -28,7 +28,7 @@ Mensen maken verbinding met de resources van de organisatie in steeds complexe s
 
 Voordat u een implementatie van Azure Multi-Factor Authentication start, zijn er vereiste items die moeten worden overwogen.
 
-| Scenario | Vereisten |
+| Scenario | Vereiste |
 | --- | --- |
 | **Cloud-only-** identiteits omgeving met moderne verificatie | **Geen aanvullende vereiste taken** |
 | Scenario's voor **hybride** identiteit | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wordt geïmplementeerd en gebruikers identiteiten worden gesynchroniseerd of Federated met de on-premises Active Directory Domain Services met Azure Active Directory. |
@@ -52,7 +52,7 @@ Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met
 
 * Alle gebruikers, een specifieke gebruiker, lid van een groep of toegewezen rol
 * Specifieke Cloud toepassing waartoe toegang wordt verkregen
-* Apparaatplatform
+* Platform apparaat
 * Status van apparaat
 * Netwerk locatie of geografisch geplaatste IP-adres
 * Clienttoepassingen
@@ -85,7 +85,7 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
 ### <a name="configuring-a-named-location"></a>Een benoemde locatie configureren
 
 1. Open **Azure Active Directory** in het Azure Portal
-2. **Beveiliging** selecteren
+2. Selecteer **Beveiliging**
 3. Kies onder **beheren**de optie **benoemde locaties**
 4. **Nieuwe locatie** selecteren
 5. Geef in het veld **naam** een zinvolle naam op
@@ -117,7 +117,7 @@ Een mobiele app, zoals de app Microsoft Authenticator, genereert elke 30 seconde
 
 Er wordt een automatische spraak oproep naar de gebruiker geplaatst. De gebruiker beantwoordt het gesprek en drukt **#** op het toetsen blok van de telefoon om hun verificatie goed te keuren. Bellen naar telefoon is een fantastische back-upmethode voor meldings-of verificatie code van een mobiele app.
 
-### <a name="text-message-to-phone"></a>Sms-bericht naar telefoon
+### <a name="text-message-to-phone"></a>SMS-bericht naar telefoon
 
 Er wordt een tekst bericht met een verificatie code naar de gebruiker verzonden. de gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface.
 
@@ -240,7 +240,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 
@@ -288,11 +288,11 @@ Het doel van deze instelling is om te bepalen wat er moet gebeuren wanneer een g
 | Sleutel bestaat niet | Niet Inge schreven | De MFA-vraag is mislukt |
 | Waarde ingesteld op waar/niet ingesteld | Niet Inge schreven | De MFA-vraag is mislukt |
 | Sleutel ingesteld op ONWAAR | Niet Inge schreven | Verificatie zonder MFA |
-| Sleutel ingesteld op False of True | Geregistreerd | Moet worden geverifieerd met MFA |
+| Sleutel ingesteld op False of True | Inge schreven | Moet worden geverifieerd met MFA |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integreren met Active Directory Federation Services
 
-Als uw organisatie federatief is met Azure AD, kunt u [Azure multi-factor Authentication gebruiken om AD FS resources](multi-factor-authentication-get-started-adfs.md), zowel on-premises als in de Cloud, te beveiligen. Met Azure MFA kunt u wacht woorden verminderen en een veiligere verificatie methode bieden. Beginnen met Windows Server 2016, kunt u Azure MFA configureren voor primaire authenticatie.
+Als uw organisatie federatief is met Azure AD, kunt u [Azure multi-factor Authentication gebruiken om AD FS resources](multi-factor-authentication-get-started-adfs.md), zowel on-premises als in de Cloud, te beveiligen. Met Azure MFA kunt u wacht woorden verminderen en een veiligere verificatie methode bieden. Vanaf Windows Server 2016 kunt u nu Azure MFA configureren voor primaire authenticatie.
 
 In tegens telling tot AD FS in Windows Server 2012 R2, integreert de AD FS 2016 Azure MFA-adapter rechtstreeks met Azure AD en is er geen on-premises Azure MFA-server vereist. De Azure MFA-adapter is ingebouwd in Windows Server 2016 en er is geen aanvullende installatie nodig.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c51387e92a100cabc5b35ccc7abde0483e77b5b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917353"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378523"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -91,7 +91,7 @@ Nee. Nadat u een Azure AD Domain Services beheerd domein hebt gemaakt, kunt u he
 Nee. U bent niet gemachtigd om verbinding te maken met domein controllers voor het beheerde domein met behulp van Extern bureaublad. Leden van de groep *Aad DC-Administrators* kunnen het beheerde domein beheren met AD-beheer Programma's zoals het Active Directory Administration Center (ADAC) of AD Power shell. Deze hulpprogram ma's worden geïnstalleerd met behulp van de functie *Remote Server Administration Tools* op een Windows-Server die is gekoppeld aan het beheerde domein. Zie [een beheer-VM maken voor het configureren en beheren van een Azure AD Domain Services beheerd domein](tutorial-create-management-vm.md)voor meer informatie.
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Ik heb Azure AD Domain Services ingeschakeld. Welk gebruikers account moet ik gebruiken om computers toe te voegen aan dit domein?
-Leden van de groep beheerders van *Aad DC-Administrators* kunnen lid worden van een domein. Daarnaast krijgen leden van deze groep extern bureau blad toegang tot computers die zijn toegevoegd aan het domein.
+Elk gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein, kan deel nemen aan een virtuele machine. Leden van de groep *Aad DC-Administrators* krijgen toegang tot extern bureau blad voor computers die zijn toegevoegd aan het beheerde domein.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Heb ik domein beheerders rechten voor het beheerde domein dat wordt meegeleverd door Azure AD Domain Services?
 Nee. U hebt geen beheerders bevoegdheden verleend voor het beheerde domein. De bevoegdheden *domein beheerder* en *ondernemings Administrator* zijn niet beschikbaar voor gebruik binnen het domein. Leden van de groep domein Administrators of ondernemings Administrators in uw on-premises Active Directory zijn ook geen machtigingen voor domein/ondernemings Administrator verleend voor het beheerde domein.

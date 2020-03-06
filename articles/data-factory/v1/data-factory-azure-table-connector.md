@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918724"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387553"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Gegevens verplaatsen van en naar een Azure-tabel met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -38,7 +38,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst: 
 
@@ -60,7 +60,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **AzureTable** heeft de volgende eigenschappen.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de Azure Table-Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
 
@@ -79,10 +79,10 @@ De eigenschappen die beschikbaar zijn in de typeProperties-sectie van de activit
 
 **AzureTableSource** ondersteunt de volgende eigenschappen in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Gebruik de aangepaste query om gegevens te lezen. |Query reeks voor Azure Table. Zie de voor beelden in de volgende sectie. |Nee. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
-| azureTableSourceIgnoreTableNotFound |Geef aan of de uitzonde ring van de tabel niet bestaat. |WAAR<br/>ONWAAR |Nee |
+| azureTableSourceIgnoreTableNotFound |Geef aan of de uitzonde ring van de tabel niet bestaat. |WAAR<br/>TERECHT |Nee |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-voor beelden
 Als de kolom van een Azure-tabel van het teken reeks type is:
@@ -99,7 +99,7 @@ Als de Azure-tabel kolom van het type datetime is:
 
 **AzureTableSink** ondersteunt de volgende eigenschappen in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
@@ -474,13 +474,13 @@ Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-fact
 
 Bij het verplaatsen van gegevens naar & vanuit een Azure-tabel, worden de volgende toewijzingen die zijn [gedefinieerd door azure Table service](https://msdn.microsoft.com/library/azure/dd179338.aspx) vanuit Azure Table OData-typen gebruikt tot .net-type en vice versa.
 
-| OData-gegevenstype | .NET-type | Details |
+| OData-gegevens type | .NET-type | Details |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Een byte matrix van Maxi maal 64 KB. |
-| Edm.Boolean |bool |Een booleaanse waarde. |
-| Edm.DateTime |Datum/tijd |Een waarde van 64 bits, uitgedrukt als Coordinated Universal Time (UTC). Het ondersteunde DateTime-bereik begint van 12:00 middernacht, 1 januari 1601 n. (C.E.), UTC. Het bereik eindigt op 31 december 9999. |
+| Edm.Boolean |bool |Een Booleaanse waarde. |
+| Edm.DateTime |DateTime |Een waarde van 64 bits, uitgedrukt als Coordinated Universal Time (UTC). Het ondersteunde DateTime-bereik begint van 12:00 middernacht, 1 januari 1601 n. (C.E.), UTC. Het bereik eindigt op 31 december 9999. |
 | Edm.Double |double |Een 64-bits drijvende-komma waarde. |
-| Edm.Guid |GUID |Een 128-bits Globally Unique Identifier. |
+| Edm.Guid |Guid |Een 128-bits Globally Unique Identifier. |
 | Edm.Int32 |Int32 |Een 32-bits geheel getal. |
 | Edm.Int64 |Int64 |Een 64-bits geheel getal. |
 | Edm.String |Tekenreeks |Een UTF-16-gecodeerde waarde. Teken reeks waarden kunnen Maxi maal 64 KB zijn. |
@@ -534,10 +534,10 @@ Op basis van het type toewijzing van het OData-type van de Azure Table aan .NET-
 
 **Azure-tabel schema:**
 
-| Kolomnaam | Type |
+| Kolom naam | Type |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
+| naam |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 Definieer vervolgens de Azure Table-gegevensset als volgt. U hoeft geen sectie ' Structure ' op te geven met het type informatie omdat de type-informatie al is opgegeven in het onderliggende gegevens archief.

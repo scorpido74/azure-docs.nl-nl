@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370880"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402738"
 ---
 # <a name="supported-data-format-details"></a>Details van ondersteunde gegevens indeling
 
@@ -391,39 +391,39 @@ De eerste rij met gegevens wordt gescand op teken reeksen die een bekende tekst 
 
 Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolom naam staan, geëxtraheerd en gebruikt om de cellen in die kolom te casten. Hier volgt een voor beeld van een kolom naam die een type waarde heeft: ' columnName (typeName) '. De volgende niet-hoofdletter gevoelige type namen worden ondersteund:
 
-**Rijnummers**
+#### <a name="numbers"></a>Rijnummers
 
-    - EDM. int64
-    - int
-    - long
-    - EDM. Double
-    - float
-    - double
-    - getal
+- EDM. int64
+- int
+- long
+- EDM. Double
+- float
+- double
+- getal
 
-**Booleaanse waarden**
+#### <a name="booleans"></a>Booleaanse waarden
 
-    - EDM. Boolean
-    - bool
-    - booleaans
+- EDM. Boolean
+- bool
+- booleaans
 
-**Data**
+#### <a name="dates"></a>Datums
 
-    - EDM. datetime
-    - date
-    - datum/tijd
+- EDM. datetime
+- date
+- datum/tijd
 
-**Geografie**
+#### <a name="geography"></a>Geografie
 
-    - EDM. Geografie
-    - Geografie
+- EDM. Geografie
+- Geografie
 
-**Teken reeksen**
+#### <a name="strings"></a>Tekenreeksen
 
-    - EDM. String
-    - varchar
-    - tekst
-    - Case ' teken reeks
+- EDM. String
+- varchar
+- tekst
+- Case ' teken reeks
 
 Als er geen type gegevens kunnen worden geëxtraheerd uit de header en de optie dynamisch typen is ingeschakeld bij het lezen, wordt elke cel afzonderlijk geanalyseerd om te bepalen welk gegevens type het meest geschikt is voor cast als.
 

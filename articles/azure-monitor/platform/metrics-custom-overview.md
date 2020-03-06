@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385327"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Aangepaste metrische gegevens in Azure Monitor
 
@@ -28,7 +28,7 @@ Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monit
 
 Wanneer u aangepaste metrische gegevens naar Azure Monitor stuurt, moet u het volgende informatie punt of elke waarde vermelden.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 Als u aangepaste metrische gegevens naar Azure Monitor wilt verzenden, moet de entiteit die de metrische gegevens indient, een geldig Azure Active Directory (Azure AD)-token in de **Bearer** -header van de aanvraag hebben. Er zijn een aantal ondersteunde manieren om een geldig Bearer-token te verkrijgen:
 1. [Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Geeft een identiteit aan een Azure-resource zelf, zoals een virtuele machine. Managed Service Identity (MSI) is ontworpen om resources machtigingen te geven om bepaalde bewerkingen uit te voeren. Een voor beeld is het toestaan van een resource over het verzenden van metrische gegevens. Aan een resource of het MSI-bestand kunnen **bewakings gegevens** voor de uitgever van machtigingen worden verleend voor een andere resource. Met deze machtiging kan het MSI-bestand ook metrische gegevens verzenden voor andere resources.
 2. [Azure AD-Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). In dit scenario kan een Azure AD-toepassing of-service worden toegewezen aan machtigingen voor het verzenden van metrische gegevens over een Azure-resource.
@@ -59,7 +59,7 @@ Elk gegevens punt dat naar Azure Monitor wordt verzonden, moet worden gemarkeerd
 ### <a name="namespace"></a>Naamruimte
 Naam ruimten zijn een manier om Vergelijk bare metrische gegevens te categoriseren of groeperen. Met behulp van naam ruimten kunt u isolatie verkrijgen tussen groepen metrische gegevens die verschillende inzichten of prestatie-indica toren kunnen verzamelen. U kunt bijvoorbeeld een naam ruimte hebben met de naam **contosomemorymetrics** die geheugen gebruik houdt van metrische gegevens die uw app profiel. Een andere naam ruimte met de naam **contosoapptransaction** kan alle metrische gegevens over gebruikers transacties in uw toepassing bijhouden.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 **Naam** is de naam van de metrische gegevens die worden gerapporteerd. Normaal gesp roken is de naam beschrijvend genoeg om te helpen bij het identificeren van wat wordt gemeten. Een voor beeld hiervan is een metrische waarde die het aantal door het geheugen gebruikte bytes op een bepaalde VM meet. Dit kan een metrische naam zijn, zoals het **geheugen bytes dat in gebruik**is.
 
 ### <a name="dimension-keys"></a>Dimensie sleutels
@@ -156,13 +156,17 @@ U hoeft geen aangepaste metriek vooraf te definiëren in Azure Monitor voordat d
 
 ## <a name="using-custom-metrics"></a>Aangepaste metrische gegevens gebruiken
 Nadat aangepaste metrische gegevens zijn verzonden naar Azure Monitor, kunt u ze via de Azure Portal door bladeren en query's uitvoeren via de Azure Monitor REST-Api's. U kunt ook waarschuwingen maken om u te waarschuwen wanneer aan bepaalde voor waarden wordt voldaan.
+
+> [!NOTE]
+> U moet een rol lezer of Inzender zijn om aangepaste metrische gegevens weer te geven.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Door uw aangepaste metrische gegevens bladeren via de Azure Portal
-1.  Ga naar de [Azure Portal](https://portal.azure.com).
-2.  Selecteer het deel venster **monitor** .
-3.  Selecteer **Metrische gegevens**.
-4.  Selecteer een resource waarvoor u aangepaste metrische gegevens hebt verzonden.
-5.  Selecteer de metrische naam ruimte voor uw aangepaste metrische gegevens.
-6.  Selecteer de aangepaste metriek.
+1.    Ga naar de [Azure Portal](https://portal.azure.com).
+2.    Selecteer het deel venster **monitor** .
+3.    Selecteer **Metrische gegevens**.
+4.    Selecteer een resource waarvoor u aangepaste metrische gegevens hebt verzonden.
+5.    Selecteer de metrische naam ruimte voor uw aangepaste metrische gegevens.
+6.    Selecteer de aangepaste metriek.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische gegevens te publiceren alleen beschikbaar in een subset van Azure-regio's. Deze beperking betekent dat metrische gegevens alleen voor resources in een van de ondersteunde regio's kunnen worden gepubliceerd. De volgende tabel bevat de set ondersteunde Azure-regio's voor aangepaste metrische gegevens. Ook worden de bijbehorende eind punten vermeld waarvoor metrische gegevens voor resources in deze regio's moeten worden gepubliceerd:
@@ -196,7 +200,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 ## <a name="quotas-and-limits"></a>Quota en limieten
 Azure Monitor de volgende gebruiks limieten opleggen voor aangepaste metrische gegevens:
 
-|Categorie|Limiet|
+|Category|Limiet|
 |---|---|
 |Actieve tijd reeks/abonnementen/regio|50,000|
 |Dimensie sleutels per metriek|10|

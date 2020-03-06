@@ -39,6 +39,8 @@
   items:
     - name: Basisbeginselen
       items:
+        - name: Functies van Application Gateway
+          href: features.md
         - name: Hoe Application Gateway werkt
           href: how-application-gateway-works.md
         - name: Onderdelen van Application Gateway

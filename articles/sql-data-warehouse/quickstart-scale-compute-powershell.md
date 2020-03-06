@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: scale Compute-Power shell '
-description: Schaal berekenen in SQL-groep in Power shell. Vergroot de schaal van Compute voor betere prestaties, of verklein de schaal juist om kosten te besparen.
+description: Schaal berekenen in SQL-groep in Power shell. Schaal de rekenkracht uit voor betere prestaties of verklein de schaal om kosten te besparen.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200465"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390500"
 ---
 # <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Snelstartgids: Compute scale in in azure Synapse Analytics SQL-groep met behulp van Azure PowerShell
 
-Schaal Compute in SQL pool met behulp van Azure PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties, of verklein de schaal juist om kosten te besparen.
+Schaal Compute in SQL pool met behulp van Azure PowerShell. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

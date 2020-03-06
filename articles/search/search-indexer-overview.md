@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379715"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexeer functies in azure Cognitive Search
 
@@ -32,7 +32,7 @@ U kunt op de volgende manieren indexeerfuncties maken en beheren:
 
 * [Wizard Portal-> gegevens importeren](search-import-data-portal.md)
 * [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 Een nieuwe indexeerfunctie wordt in eerste instantie aangekondigd als preview-functie. Preview-functies worden geïntroduceerd in API's (REST en .NET) en vervolgens geïntegreerd in de portal nadat ze geleidelijk algemeen beschikbaar zijn gesteld. Als u een nieuwe indexeerfunctie evalueert, moet u er rekening mee houden dat u code moet schrijven.
 

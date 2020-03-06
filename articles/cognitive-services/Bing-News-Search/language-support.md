@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Bing nieuws zoeken-API
+title: Taal ondersteuning-Bing Nieuws zoeken-API
 titleSuffix: Azure Cognitive Services
-description: Een lijst van natuurlijke talen, landen en regio's die worden ondersteund door de Bing nieuws zoeken-API.
+description: Een lijst met natuurlijke talen, landen en regio's die worden ondersteund door de Bing Nieuws zoeken-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384974"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385078"
 ---
-# <a name="language-and-region-support-for-the-bing-news-search-api"></a>Ondersteuning voor taal en regio voor de Bing nieuws zoeken-API
+# <a name="language-and-region-support-for-the-bing-news-search-api"></a>Ondersteuning van talen en regio's voor de Bing Nieuws zoeken-API
 
-De Bing nieuws zoeken-API biedt ondersteuning voor verschillende landen/regio's, veel met meer dan één taal. Een land/regio met een query op te geven fungeert voornamelijk om zoekresultaten te verfijnen op basis van de interesses in dat land/regio. Bovendien worden de resultaten kunnen koppelingen naar Bing bevatten en deze koppelingen kunnen lokaliseren van de gebruikerservaring van Bing op basis van het opgegeven land/regio of taal.
+Het Bing Nieuws zoeken-API ondersteunt talrijke landen/regio's, veel met meer dan één taal. Het opgeven van een land/regio met een query is voornamelijk bedoeld voor het verfijnen van de zoek resultaten op basis van interesses in dat land/deze regio. Daarnaast kunnen de resultaten koppelingen naar Bing bevatten en kunnen deze koppelingen de Bing-gebruikers ervaring lokaliseren volgens het opgegeven land/regio of taal.
 
-U kunt geeft u een land/regio met de `cc` queryparameter. Als u een land/regio opgeeft, moet u ook opgeven een of meer taalcodes die met behulp van de `Accept-Language` HTTP-header. De ondersteunde talen zijn afhankelijk van countr/de regio; voor elk land/regio in de tabel markten wordt verstrekt.
+U kunt een land/regio opgeven met behulp van de `cc` query parameter. Als u een land/regio opgeeft, moet u ook een of meer taal codes opgeven met behulp van de `Accept-Language` HTTP-header. De ondersteunde talen variëren per teleenheid/regio. ze worden vermeld voor elk land/elke regio in de tabel markten.
 
-U kunt ook opgeven de markt met behulp van de `mkt` query parameter en een code van de **markten** tabel. Tegelijkertijd een markt op te geven, geeft een land/regio en taal van voorkeur. De `setLang` queryparameter kan worden ingesteld op een taalcode die in dit geval; dit is doorgaans de dezelfde taal die is opgegeven door `mkt` , tenzij de gebruiker geeft de voorkeur aan om te zien van Bing in een andere taal.
+U kunt ook de markt opgeven met behulp van de `mkt` query parameter en een code uit de tabel **markten** . Als u een markt opgeeft, geeft u een land/regio en een voorkeurs taal op. In dit geval kan de query parameter `setLang` worden ingesteld op een taal code. doorgaans is dit dezelfde taal die wordt opgegeven door `mkt` tenzij de gebruiker de voor keur geeft om Bing in een andere taal te zien.
 
-## <a name="supported-markets-for-news-search-endpoint"></a>Ondersteunde markten voor nieuws zoeken-eindpunten
+## <a name="supported-markets-for-news-search-endpoint"></a>Ondersteunde markten voor het zoeken naar nieuws-eind punten
 
-Voor de `/news/search` eindpunt, de volgende tabel bevat de markt code-waarden die u gebruiken kunt om op te geven de `mkt` queryparameter. Bing retourneert de inhoud voor alleen deze markten. De lijst is onderhevig aan wijzigingen.  
+Voor het `/news/search`-eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de `mkt` query-para meter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
-Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Zie [landcodes](#countrycodes).  
+Zie [land codes](#countrycodes)voor een lijst met land-/regiocodes die u kunt opgeven in de `cc` query parameter.  
 
-|Land/regio|Taal|Code van de markt|  
+|Land/regio|Taal|Markt code|  
 |---------------------|--------------|-----------------|
 |Denemarken|Deens|da-DK|
 |Oostenrijk|Duits|de-AT|
@@ -40,14 +40,14 @@ Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Z
 |Australië|Nederlands|en-AU|
 |Canada|Nederlands|NL-CA|
 |Verenigd Koninkrijk|Nederlands|en-GB|
-|Indonesië|Nederlands|NL-ID|
+|Indonesië|Nederlands|en-ID|
 |Ierland|Nederlands|NL-Internet Explorer|
 |India|Nederlands|NL-IN|
-|Maleisië|Nederlands|en Mijn|
+|Maleisië|Nederlands|en-mijn|
 |Nieuw-Zeeland|Nederlands|NL-NZ|
-|Republiek der Filippijnen|Nederlands|NL-PH|
+|Republiek der Filippijnen|Nederlands|en-PH|
 |Singapore|Nederlands|en-SG|
-|Verenigde Staten|Nederlands|en-US|
+|Verenigde Staten|Nederlands|nl-NL|
 |Nederlands|Algemene|en-WW|
 |Nederlands|Algemene|en-XA|
 |Zuid-Afrika|Nederlands|en-ZA|
@@ -56,9 +56,9 @@ Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Z
 |Spanje|Spaans|es-ES|
 |Mexico|Spaans|es-MX|
 |Verenigde Staten|Spaans|es-US|
-|Spaans|Algemene|ES-Excel|
+|Spaans|Algemene|es-XL|
 |Finland|Fins|fi-FI|  
-|Frankrijk|Frans|fr-BE|
+|Frankrijk|Frans|fr-worden|
 |Canada|Frans|fr-CA|
 |België|Nederlands|nl-BE|
 |Zwitserland|Frans|FR-h|
@@ -75,18 +75,18 @@ Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Z
 |Zweden|Zweeds|SV-SE|  
 |Turkije|Turks|tr-TR|  
 
-## <a name="supported-markets-for-news-endpoint"></a>Ondersteunde markten voor nieuws-eindpunt
-Voor de `/news` eindpunt, de volgende tabel bevat de markt code-waarden die u gebruiken kunt om op te geven de `mkt` queryparameter. Bing retourneert de inhoud voor alleen deze markten. De lijst is onderhevig aan wijzigingen.  
+## <a name="supported-markets-for-news-endpoint"></a>Ondersteunde markten voor nieuws eindpunt
+Voor het `/news`-eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de `mkt` query-para meter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
-Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Zie [landcodes](#countrycodes).  
+Zie [land codes](#countrycodes)voor een lijst met land-/regiocodes die u kunt opgeven in de `cc` query parameter.  
 
-|Land/regio|Taal|Code van de markt|  
+|Land/regio|Taal|Markt code|  
 |---------------------|--------------|-----------------|
 |Denemarken|Deens|da-DK|
 |Duitsland|Duits|de-DE|
 |Australië|Nederlands|en-AU|
 |Verenigd Koninkrijk|Nederlands|en-GB|
-|Verenigde Staten|Nederlands|en-US|
+|Verenigde Staten|Nederlands|nl-NL|
 |Nederlands|Algemene|en-WW|
 |Chili|Spaans|es-CL|
 |Mexico|Spaans|es-MX|
@@ -98,17 +98,17 @@ Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Z
 |Brazilië|Portugees|pt-BR|
 |Volksrepubliek China|Chinees|zh-CN|
 
-## <a name="supported-markets-for-news-trending-endpoint"></a>Ondersteunde markten voor trending nieuws-eindpunt
-Voor de `/news/trendingtopics` eindpunt, de volgende tabel bevat de markt code-waarden die u gebruiken kunt om op te geven de `mkt` queryparameter. Bing retourneert de inhoud voor alleen deze markten. De lijst is onderhevig aan wijzigingen.  
+## <a name="supported-markets-for-news-trending-endpoint"></a>Ondersteunde markten voor het verloop van nieuws-eind punten
+Voor het `/news/trendingtopics`-eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de `mkt` query-para meter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
-Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Zie [landcodes](#countrycodes).  
+Zie [land codes](#countrycodes)voor een lijst met land-/regiocodes die u kunt opgeven in de `cc` query parameter.  
 
-|Land/regio|Taal|Code van de markt|  
+|Land/regio|Taal|Markt code|  
 |---------------------|--------------|-----------------|
 |Duitsland|Duits|de-DE|
 |Australië|Nederlands|en-AU|
 |Verenigd Koninkrijk|Nederlands|en-GB|
-|Verenigde Staten|Nederlands|en-US|
+|Verenigde Staten|Nederlands|nl-NL|
 |Canada|Nederlands|NL-CA|
 |India|Nederlands|NL-IN|
 |Frankrijk|Frans|fr-FR|
@@ -118,11 +118,11 @@ Voor een lijst van land/regio codes die u kunt opgeven de `cc` queryparameter, Z
 
 
 <a name="countrycodes"></a>   
-### <a name="country-codes"></a>Landcodes  
+### <a name="country-codes"></a>Land codes  
 
-Hieronder vindt u het land/regio-codes die u kunt opgeven in de `cc` queryparameter. De lijst is onderhevig aan wijzigingen.  
+Hier volgen de land/regio codes die u kunt opgeven in de `cc` query parameter. De lijst is onderhevig aan wijzigingen.  
 
-|Land/regio|Landnummer|  
+|Land/regio|Landcode|  
 |---------------------|------------------|  
 |Argentinië|AR|  
 |Australië|AU|  
@@ -162,4 +162,4 @@ Hieronder vindt u het land/regio-codes die u kunt opgeven in de `cc` queryparame
 |Verenigde Staten|VS|
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het zoeken in Bing nieuws-eindpunten [nieuws zoeken-API voor Bing versie 7 verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+Zie [Nieuws zoeken API V7-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)voor meer informatie over de Bing News Search-eind punten.

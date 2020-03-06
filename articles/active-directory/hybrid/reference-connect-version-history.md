@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376252"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -31,7 +31,7 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt om de meest recente status weer te geven.
@@ -496,7 +496,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Name                          | Toegang               | Van toepassing op
+Type     | Naam                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | OPGEHAALD                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemings Administrators             | Volledig beheer         | Dit object  |
@@ -792,7 +792,7 @@ Het probleem dat zich voordoet, is dat de **optie alle domeinen en organisatie-e
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Meer details:
+* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Met name:
   * Als u de functie wilt openen, start u de wizard Azure AD Connect en kiest u de optie *bron anker bijwerken* .
   * Deze optie is alleen zichtbaar voor bestaande implementaties die gebruikmaken van objectGuid als source Anchor-kenmerk.
   * Bij het configureren van de optie valideert de wizard de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een gebruikers object in de Directory, gebruikt de wizard de MS-DS-ConsistencyGuid als het kenmerk source Anchor. Als het kenmerk is geconfigureerd voor een of meer gebruikers objecten in de Directory, sluit de wizard het kenmerk dat wordt gebruikt door andere toepassingen en is het niet geschikt als source Anchor-kenmerk en staat het bron anker niet toe om door te gaan. Als u zeker weet dat het kenmerk niet door bestaande toepassingen wordt gebruikt, moet u contact opnemen met de ondersteuning voor meer informatie over het onderdrukken van de fout.
@@ -836,12 +836,12 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Selecteer|
     |CertKeyAlgorithmParams|CertHashString|Waar|
-    |||Met|
+    |||With|
 
 * De volgende schema wijzigingen zijn geïntroduceerd zodat klanten aangepaste synchronisatie regels kunnen maken voor flow sAMAccountName, domainNetBios en domainFQDN voor groeps objecten, evenals DN voor gebruikers objecten:
 
@@ -1054,7 +1054,7 @@ Uitgebracht: december 2016
 * De issuerID-claim regel voor AD FS ontbreekt in deze build. De claim regel issuerID is vereist als u meerdere domeinen met Azure AD federeren. Als u Azure AD Connect gebruikt om uw on-premises AD FS-implementatie te beheren, wordt de bestaande issuerID-claim regel uit uw AD FS configuratie verwijderd als u een upgrade naar deze build uitvoert. U kunt het probleem omzeilen door de claim regel issuerID toe te voegen na de installatie/upgrade. Raadpleeg dit artikel over [meerdere domein ondersteuning voor federeren met Azure AD](how-to-connect-install-multiple-domains.md)voor meer informatie over het toevoegen van issuerID claim regels.
 * Poort 9090 moet open-uitgaand zijn om de installatie te volt ooien.
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Pass-Through-verificatie (preview-versie).
 
@@ -1074,7 +1074,7 @@ Uitgebracht: november 2016
 * Er is een probleem opgelost waarbij de regels voor samen voegen niet opnieuw worden geëvalueerd wanneer een object in de connector ruimte gelijktijdig buiten het bereik valt voor één joinlijn en in bereik is voor een andere regel. Dit kan gebeuren als u twee of meer joinlijnen hebt waarvan de samenvoegings voorwaarden elkaar wederzijds uitsluiten.
 * Er is een probleem opgelost waarbij binnenkomende synchronisatie regels (vanuit Azure AD) die geen joinlijnen bevatten, niet worden verwerkt als ze een lagere prioriteits waarde hebben dan die regels voor samen voegen.
 
-**Verbeteringen**
+**Rijke**
 
 * Er is ondersteuning toegevoegd voor het installeren van Azure AD Connect op Windows Server 2016 Standard of hoger.
 * Er is ondersteuning toegevoegd voor het gebruik van SQL Server 2016 als de externe data base voor Azure AD Connect.
@@ -1093,7 +1093,7 @@ Uitgebracht: augustus 2016
 * Azure AD Connect wizard geeft niet de werkelijke wachtwoord synchronisatie en de configuratie van wacht woord terugschrijven weer wanneer de server zich in de faserings modus bevindt. Deze worden altijd weer gegeven als uitgeschakeld.
 * Configuratie wijzigingen in wachtwoord synchronisatie en wacht woord terugschrijven worden niet persistent gemaakt door Azure AD Connect wizard wanneer de server zich in de faserings modus bevindt.
 
-**Verbeteringen**
+**Rijke**
 
 * De cmdlet start-ADSyncSyncCycle is bijgewerkt om aan te geven of een nieuwe synchronisatie cyclus wel of niet kan worden gestart.
 * De cmdlet stop-ADSyncSyncCycle is toegevoegd om de synchronisatie cyclus en-bewerking te beëindigen. deze worden momenteel uitgevoerd.
@@ -1112,7 +1112,7 @@ Uitgebracht: juni 2016
 ## <a name="111800"></a>1.1.180.0
 Uitgebracht: mei 2016
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Waarschuwt en helpt u bij het controleren van domeinen als u dit niet hebt gedaan voordat u Azure AD Connect uitvoert.
 * Er is ondersteuning toegevoegd voor [Microsoft Cloud Duitsland](reference-connect-instances.md#microsoft-cloud-germany).
@@ -1128,7 +1128,7 @@ Uitgebracht: mei 2016
 ## <a name="111300"></a>1.1.130.0
 Uitgebracht: april 2016
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Er is ondersteuning toegevoegd voor kenmerken met meerdere waarden voor [Directory-extensies](how-to-connect-sync-feature-directory-extensions.md).
 * Er is ondersteuning toegevoegd voor meer configuratie variaties voor [automatische upgrade](how-to-connect-install-automatic-upgrade.md) die in aanmerking komen voor een upgrade.
@@ -1156,7 +1156,7 @@ Uitgebracht: februari 2016
 ## <a name="111050"></a>1.1.105.0
 Uitgebracht: februari 2016
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * [Automatische upgrade](how-to-connect-install-automatic-upgrade.md) functie voor klanten van snelle instellingen.
 * Ondersteuning voor de globale beheerder met behulp van Azure Multi-Factor Authentication en Privileged Identity Management in de installatie wizard.
@@ -1194,7 +1194,7 @@ Uitgebracht: december 2015
 ## <a name="1091250"></a>1.0.9125.0
 Uitgebracht: november 2015
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Kan AD FS opnieuw configureren voor Azure AD-vertrouwens relatie.
 * Kan het Active Directory schema vernieuwen en de synchronisatie regels opnieuw genereren.
@@ -1226,7 +1226,7 @@ Uitgebracht: november 2015
 ## <a name="1086670"></a>1.0.8667.0
 Uitgebracht: augustus 2015
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * De installatie wizard voor Azure AD Connect is nu gelokaliseerd in alle Windows Server-talen.
 * Er is ondersteuning toegevoegd voor het ontgrendelen van het account bij gebruik van Azure AD-wachtwoord beheer.
@@ -1255,7 +1255,7 @@ Uitgebracht: juni 2015
 
 De naam is gewijzigd van Azure AD Sync naar Azure AD Connect.
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Installatie van [snelle instellingen](how-to-connect-install-express.md)
 * Kan [AD FS configureren](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
@@ -1294,14 +1294,14 @@ Uitgebracht: april 2015
 * Als u een wachtwoord synchronisatie afdwingt, wordt ook de voorkeurs lijst met domein controllers verwijderd.
 * CSExportAnalyzer heeft problemen met enkele object statussen.
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Een koppeling kan nu verbinding maken met het object type ' elk ' in de MV.
 
 ## <a name="104850222"></a>1.0.485.0222
 Uitgebracht: februari 2015
 
-**Verbeteringen**
+**Rijke**
 
 * Verbeterde prestaties bij het importeren.
 
@@ -1315,7 +1315,7 @@ Uitgebracht: februari 2015
 ## <a name="104751202"></a>1.0.475.1202
 Uitgebracht: december 2014
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Wachtwoord synchronisatie met filteren op basis van een kenmerk wordt nu ondersteund. Zie [wachtwoord synchronisatie met filters](how-to-connect-sync-configure-filtering.md)voor meer informatie.
 * Het kenmerk MS-DS-ExternalDirectoryObjectID wordt teruggeschreven naar Active Directory. Deze functie voegt ondersteuning toe voor Office 365-toepassingen. OAuth2 wordt gebruikt voor toegang tot online en on-premises post vakken in een hybride Exchange-implementatie.
@@ -1336,7 +1336,7 @@ Uitgebracht: december 2014
 ## <a name="104701023"></a>1.0.470.1023
 Uitgebracht: oktober 2014
 
-**Nieuwe functies**
+**Nieuwe functies:**
 
 * Wachtwoord synchronisatie van meerdere on-premises Active Directory naar Azure AD.
 * Gelokaliseerde installatie-UI naar alle Windows Server-talen.
@@ -1359,4 +1359,4 @@ Uitgebracht: september 2014
 **Eerste versie van Azure AD Sync.**
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

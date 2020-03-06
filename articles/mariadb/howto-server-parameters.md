@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363548"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Server parameters configureren in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -21,13 +21,13 @@ Azure Database for MariaDB ondersteunt de configuratie van sommige server parame
 
 1. Meld u aan bij de Azure Portal en zoek vervolgens de Azure Database for MariaDB-server.
 2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for MariaDB-server te openen.
-![Pagina van de parameters voor Azure portal-server](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Zoek alle instellingen die u nodig hebt om aan te passen. Controleer de **beschrijving** kolom om te begrijpen van het doel en de toegestane waarden.
-![Vervolgkeuzelijst omlaag opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klik op **opslaan** uw wijzigingen op te slaan.
-![Opslaan of wijzigingen negeren](./media/howto-server-parameters/4-save_parameters.png)
-5. Als u nieuwe waarden voor de parameters hebt opgeslagen, kunt u altijd terugkeren alles weer op de standaardwaarden hiervoor **alle standaardinstellingen opnieuw instellen**.
-![Alle standaardinstellingen opnieuw instellen](./media/howto-server-parameters/5-reset_parameters.png)
+![pagina Azure Portal Server parameters](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Zoek alle instellingen die u nodig hebt om aan te passen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
+![vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Klik op **Opslaan** om uw wijzigingen op te slaan.
+wijzigingen ![opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
+5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
+![alles opnieuw instellen op de standaard](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Lijst met parameters van de server kunnen worden geconfigureerd
 
@@ -35,18 +35,18 @@ De lijst met ondersteunde serverparameters groeit voortdurend. Gebruik het tabbl
 
 ## <a name="non-configurable-server-parameters"></a>Niet-configureerbare serverparameters
 
-InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconfigureerd en gekoppeld aan uw [prijscategorie](concepts-pricing-tiers.md).
+De InnoDB-buffer groep en het maximum aantal verbindingen kunnen niet worden geconfigureerd en zijn gekoppeld aan uw [prijs categorie](concepts-pricing-tiers.md).
 
-|**Prijscategorie**| **vCore(s)**|**InnoDB buffergroep (MB)**|
+|**Prijscategorie**| **vCore (s)**|**InnoDB buffer pool (MB)**|
 |---|---|---|
 |Basic| 1| 1024|
 |Basic| 2| 2560|
-|Algemeen doel| 2| 3584|
-|Algemeen doel| 4| 7680|
-|Algemeen doel| 8| 15360|
-|Algemeen doel| 16| 31232|
-|Algemeen doel| 32| 62976|
-|Algemeen doel| 64| 125952|
+|Algemeen gebruik| 2| 3584|
+|Algemeen gebruik| 4| 7680|
+|Algemeen gebruik| 8| 15360|
+|Algemeen gebruik| 16| 31232|
+|Algemeen gebruik| 32| 62976|
+|Algemeen gebruik| 64| 125952|
 |Geoptimaliseerd geheugen| 2| 7168|
 |Geoptimaliseerd geheugen| 4| 15360|
 |Geoptimaliseerd geheugen| 8| 30720|
@@ -55,7 +55,7 @@ InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconf
 
 Deze extra server-parameters zijn niet kunnen worden geconfigureerd in het systeem:
 
-|**Parameter**|**Vaste waarde**|
+|**Bepaalde**|**Vaste waarde**|
 | :------------------------ | :-------- |
 |innodb_file_per_table in Basic-laag|UIT|
 |innodb_flush_log_at_trx_commit|1|
@@ -68,10 +68,10 @@ Andere server parameters die hier niet worden vermeld, worden ingesteld op hun M
 
 ### <a name="populating-the-time-zone-tables"></a>Invullen van de tijdzone-tabellen
 
-De tijdzone-tabellen op de server kunnen worden gevuld door het aanroepen van de `az_load_timezone` opgeslagen procedure van een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench.
+De tijd zone tabellen op uw server kunnen worden gevuld door de `az_load_timezone` opgeslagen procedure aan te roepen vanuit een hulp programma zoals de MySQL-opdracht regel of MySQL Workbench.
 
 > [!NOTE]
-> Als u werkt met de `az_load_timezone` opdracht via MySQL Workbench, moet u de veilige modus eerst uitschakelen met behulp van `SET SQL_SAFE_UPDATES=0;`.
+> Als u de `az_load_timezone`-opdracht uit MySQL Workbench uitvoert, moet u de veilige update modus mogelijk eerst uitschakelen met behulp van `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -87,13 +87,13 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>De globale niveau tijdzone instellen
 
-De globale niveau tijdzone kan worden ingesteld van de **serverparameters** pagina in de Azure portal. De onderstaande stelt de globale tijdzone op de waarde "VS / Stille Oceaan '.
+De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. De onderstaande stelt de globale tijdzone op de waarde "VS / Stille Oceaan '.
 
 ![De tijdzoneparameter instellen](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>De sessie niveau tijdzone instellen
 
-De sessie niveau time zone kan worden ingesteld door het uitvoeren van de `SET time_zone` opdracht uit vanaf een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench. In het volgende voorbeeld wordt de tijdzone ingesteld op de **VS / Stille Oceaan** tijdzone.
+De tijd zone op sessie niveau kan worden ingesteld door de `SET time_zone` opdracht uit te voeren vanuit een hulp programma zoals de MySQL-opdracht regel of MySQL Workbench. In het volgende voor beeld wordt de tijd zone ingesteld op de **Amerikaanse/Pacific-** tijd zone.
 
 ```sql
 SET time_zone = 'US/Pacific';

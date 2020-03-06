@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387470"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Gegevens naar of van Oracle on-premises kopiëren met behulp van Azure Data Factory
 
@@ -82,7 +82,7 @@ U kunt een pijp lijn met een Kopieer activiteit maken. De pijp lijn verplaatst g
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de wizard kopiëren. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook een van de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager sjabloon**, de **.net API**of de **rest API**. Zie de [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook een van de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager sjabloon**, de **.net API**of de **rest API**. Raadpleeg de [zelf studie activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Voer de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst, ongeacht of u de hulpprogram ma's of Api's gebruikt.
 
@@ -99,7 +99,7 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die u gebruik
 
 De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de aan Oracle gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap **type** moet worden ingesteld op **OnPremisesOracle**. |Ja |
 | driverType | Opgeven welk stuur programma moet worden gebruikt voor het kopiëren van gegevens van of naar een Oracle-data base. Toegestane waarden zijn **micro soft** en **ODP** (standaard). Zie de [ondersteunde versie en de installatie](#supported-versions-and-installation) voor details van Stuur Programma's. | Nee |
@@ -150,7 +150,7 @@ De secties van een JSON-bestand van een gegevensset, zoals de structuur, Beschik
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **OracleTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de Oracle-data base waarnaar de gekoppelde service verwijst. |Nee (als **oracleReaderQuery** of **OracleSource** is opgegeven) |
 
@@ -169,7 +169,7 @@ Eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activi
 
 Als de bron van het type **OracleSource** in Kopieer activiteit is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-query teken reeks. Bijvoorbeeld ' Select \* from **myTable**'. <br/><br/>Als dit niet wordt opgegeven, wordt deze SQL-instructie uitgevoerd: ' Select \* from **myTable**' |Nee<br />(als **TableName** van **gegevensset** is opgegeven) |
 
@@ -177,9 +177,9 @@ Als de bron van het type **OracleSource** in Kopieer activiteit is, zijn de volg
 
 **OracleSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| writeBatchTimeout |De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt. |**timespan**<br/><br/> Voor beeld: 00:30:00 (30 minuten) |Nee |
+| writeBatchTimeout |De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt. |**duur**<br/><br/> Voor beeld: 00:30:00 (30 minuten) |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte de waarde van **writeBatchSize**bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 100) |
 | sqlWriterCleanupScript |Hiermee geeft u een query op voor het uitvoeren van de Kopieer activiteit, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |Nee |
 | sliceIdentifierColumnName |Hiermee geeft u de kolom naam voor de Kopieer activiteit moet worden gevuld met een segment-id die automatisch is gegenereerd. De waarde voor **sliceIdentifierColumnName** wordt gebruikt voor het opschonen van gegevens van een specifiek segment wanneer het opnieuw wordt uitgevoerd. |De kolom naam van een kolom met het gegevens type **binary (32)** . |Nee |
@@ -550,7 +550,7 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 ```
 
 
-## <a name="troubleshooting-tips"></a>Tips om problemen op te lossen
+## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
 ### <a name="problem-1-net-framework-data-provider"></a>Probleem 1: .NET Framework gegevens provider
 
@@ -563,7 +563,7 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 * De .NET Framework gegevens provider voor Oracle is niet geïnstalleerd.
 * De .NET Framework-gegevens provider voor Oracle is geïnstalleerd op .NET Framework 2,0 en is niet gevonden in de .NET Framework 4,0-mappen.
 
-**Resolutie**
+**Afsluiting**
 
 * Als u de .NET-Provider voor Oracle nog niet hebt geïnstalleerd, [installeert u deze](https://www.oracle.com/technetwork/topics/dotnet/downloads/)en voert u het scenario opnieuw uit.
 * Als u het fout bericht ziet, zelfs nadat u de provider hebt geïnstalleerd, voert u de volgende stappen uit:
@@ -578,7 +578,7 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Resolutie**
+**Afsluiting**
 
 Mogelijk moet u de query reeks in uw Kopieer activiteit aanpassen op basis van de manier waarop datums worden geconfigureerd in de Oracle-data base. Hier volgt een voor beeld (met behulp van de functie **to_date** ):
 
@@ -600,7 +600,7 @@ Wanneer u gegevens van Oracle verplaatst, worden de volgende toewijzingen gebrui
 | BLOB |Byte[]<br/>(alleen ondersteund op Oracle 10g en latere versies wanneer u een micro soft-stuur programma gebruikt) |
 | CHAR |Tekenreeks |
 | CLOB |Tekenreeks |
-| DATE |Datum/tijd |
+| DATE |DateTime |
 | FLOAT |Decimal, String (als precisie > 28) |
 | INTEGER |Decimal, String (als precisie > 28) |
 | INTERVAL JAAR TOT MAAND |Int32 |
@@ -613,9 +613,9 @@ Wanneer u gegevens van Oracle verplaatst, worden de volgende toewijzingen gebrui
 | NVARCHAR2 |Tekenreeks |
 | RAW |Byte[] |
 | ROWID |Tekenreeks |
-| TIMESTAMP |Datum/tijd |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datum/tijd |
-| TIMESTAMP WITH TIME ZONE |Datum/tijd |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Aantal |
 | VARCHAR2 |Tekenreeks |
 | XML |Tekenreeks |

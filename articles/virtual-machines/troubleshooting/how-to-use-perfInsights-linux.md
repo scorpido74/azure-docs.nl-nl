@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080519"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394773"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -69,7 +69,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - Stuur programmagegevens
 
 - Hardware
-  - PCI-apparaten`*`[]
+  - PCI-apparaten [`*`]
 
 - Processen en geheugen
   - Lijst met processen (taak naam, gebruikt geheugen, bestanden geopend)
@@ -83,7 +83,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - Netwerk routerings tabel
   - Poorten en status geopend
 
-- Storage
+- Opslag
   - Lijst met apparaten blok keren
   - Lijst met partities
   - Koppelings punten lijst
@@ -112,7 +112,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
 - [Meta gegevens van Azure virtual machine-instantie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies
+>[`*`] PCI-gegevens zijn nog niet verzameld in Debian-en SLES-distributies
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>De PerfInsights Linux uitvoeren op uw VM
 
@@ -173,7 +173,7 @@ Voer de volgende stappen uit om het PerfInsights-hulp programma uit te voeren:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Ga naar de map die het `perfinsights.py` bestand bevat en voer uit `perfinsights.py` om de beschik bare commandline-para meters weer te geven.
+2. Ga naar de map die `perfinsights.py` bestand bevat en voer `perfinsights.py` uit om de beschik bare commandline-para meters weer te geven.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -209,7 +209,7 @@ Wanneer de uitvoering is voltooid, wordt een nieuw tar-bestand weer gegeven in d
 
 ## <a name="review-the-diagnostics-report"></a>Het diagnostische rapport controleren
 
-Binnen het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz** -bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **\_PerformanceDiagnostics\_jjjj-mm-dd hh-mm-SS-FFF. tar. gz** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
+Binnen het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz** -bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
 
 ### <a name="overview-tab"></a>Tabblad Overzicht
 
@@ -254,4 +254,4 @@ Op de volgende scherm afbeelding wordt een bericht weer gegeven dat vergelijkbaa
 
 Volg de instructies in het bericht voor toegang tot de werk ruimte bestands overdracht. Voor extra beveiliging moet u uw wacht woord wijzigen bij het eerste gebruik.
 
-Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het bestand **PerformanceDiagnostics\_jjjj-\_mm-dd hh-mm-SS-FFF. tar. gz** dat door PerfInsights is verzameld.
+Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz-** bestand dat door PerfInsights is verzameld.

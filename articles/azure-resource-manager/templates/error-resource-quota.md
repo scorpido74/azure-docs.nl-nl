@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u resource quotum fouten oplost bij het
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390283"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Fouten voor resource quota oplossen
 
@@ -40,7 +40,7 @@ please delete some resources of this type before creating a new one.
 Quota worden toegepast per resourcegroep, abonnement, account en andere bereiken. Uw abonnement mag bijvoorbeeld worden geconfigureerd om het aantal kerngeheugens voor een regio te beperken. Als u een virtuele machine probeert te implementeren met meer kerngeheugens dan is toegestaan, ontvangt u een foutmelding die aangeeft dat het quotum is overschreden.
 Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor de volledige quotum informatie.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="azure-cli"></a>Azure CLI
 

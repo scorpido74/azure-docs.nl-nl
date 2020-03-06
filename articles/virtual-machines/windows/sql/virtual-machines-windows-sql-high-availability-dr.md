@@ -15,13 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933961"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387824"
 ---
-# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Maximale beschikbaarheid en herstel na noodgeval voor SQL Server in SQL Server Virtual Machine
+# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure Virtual Machines
 
 Microsoft Azure virtuele machines (Vm's) met SQL Server kunnen de kosten van een Data Base-oplossing met hoge Beschik baarheid en herstel na nood gevallen (HADR) verlagen. De meeste SQL Server HADR-oplossingen worden ondersteund in virtuele machines van Azure, zowel als Azure-only als hybride oplossingen. In een alleen-Azure-oplossing wordt het hele HADR-systeem uitgevoerd in Azure. In een hybride configuratie wordt een deel van de oplossing uitgevoerd in Azure en wordt het andere onderdeel on-premises in uw organisatie uitgevoerd. Dankzij de flexibiliteit van de Azure-omgeving kunt u zich gedeeltelijk of volledig verplaatsen naar Azure om te voldoen aan de budget-en HADR vereisten van uw SQL Server-database systemen.
 
@@ -156,7 +156,7 @@ Zie de richt lijnen in [Best practices voor SQL Server in azure virtual machines
 
 Zie [SQL Server op azure virtual machines](virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
 
-### <a name="other-resources"></a>Overige bronnen
+### <a name="other-resources"></a>Meer informatie
 * [Een nieuwe Active Directory-forest in azure installeren](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Failovercluster voor beschikbaarheids groepen maken in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

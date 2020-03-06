@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888665"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376153"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
@@ -115,7 +115,7 @@ De browser berekent standaard automatisch de juiste zone, Internet of intranet, 
 
 Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzigen:
 
-| Optie | Beheerder overweging | Ervaring gebruiker |
+| Optie | Beheerder overweging | Gebruikers ervaring |
 | --- | --- | --- |
 | Groeps beleid | Beheerder vergrendelt het bewerken van intranet zone-instellingen | Gebruikers kunnen hun eigen instellingen niet wijzigen |
 | Groeps beleids voorkeur |  De beheerder staat het bewerken op intranet zone-instellingen toe | Gebruikers kunnen hun eigen instellingen wijzigen |
@@ -140,7 +140,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
    > Als u wilt voor komen dat sommige gebruikers naadloze SSO gebruiken (bijvoorbeeld als deze gebruikers zich aanmelden bij gedeelde kiosken), stelt u de voor gaande waarden in op **4**. Met deze actie wordt de Azure AD-URL toegevoegd aan de zone met beperkte toegang en wordt de hele tijd naadloze SSO afgebroken.
    >
 
-5. Selecteer **OK** en vervolgens weer **OK**.
+5. Selecteer **OK**en selecteer vervolgens **OK** .
 
     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso7.png)
 

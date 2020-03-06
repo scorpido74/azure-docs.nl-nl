@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373013"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
@@ -153,6 +153,6 @@ In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in
 * [Betrouwbaarheidsscore waarschuwing](security-center-secure-score.md)
 * [Incidenten en waarschuwingen onderzoeken in Azure Security Center](security-center-investigation.md)
 * [Detectiemogelijkheden van Azure Security Center](security-center-detection-capabilities.md)
-* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
+* [Partneroplossingen controleren met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt controleren.
 * [Veelgestelde vragen over Azure Security Center](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service
 * [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure

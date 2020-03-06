@@ -4,11 +4,11 @@ description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Bas
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843309"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389327"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>De Knowledge Base doorzoeken op antwoorden
 
@@ -99,4 +99,4 @@ Het HTTP-antwoord is het antwoord dat is opgehaald uit de Knowledge Base, op bas
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Betrouwbaarheidsscore](./confidence-score.md)
+> [Betrouwbaarheids Score](./confidence-score.md)

@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919066"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376313"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.
@@ -268,7 +268,7 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
     | Beschrijving | *Geef een beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises AD-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
-    | Omgekeerd object type | **Person** |  |
+    | Omgekeerd object type | **Gelaedeerde** |  |
     | Koppelings type | **Koppelen** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
@@ -310,7 +310,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Beschrijving | *Geef een beschrijving op* ||
     | Verbonden systeem | *De AAD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
-    | Omgekeerd object type | **Person** ||
+    | Omgekeerd object type | **Gelaedeerde** ||
     | Koppelings type | **Koppelen** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
@@ -319,7 +319,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Kenmerk | Operator | Waarde |
     | --- | --- | --- |
     | sourceObjectType | WAARD | Gebruiker |
-    | cloudMastered | NOTEQUAL | Waar |
+    | cloudMastered | NOTEQUAL | True |
 
     Het bereik filter bepaalt op welke Azure AD-objecten deze regel voor uitgaande synchronisatie wordt toegepast. In dit voor beeld gebruiken we dezelfde bereik filter van de out-of-Box-synchronisatie regel *out to AD* . Hiermee wordt voor komen dat de synchronisatie regel wordt toegepast op gebruikers objecten die niet zijn gesynchroniseerd vanuit on-premises Active Directory. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
 
@@ -399,4 +399,4 @@ De ingebouwde synchronisatie planner opnieuw inschakelen:
 **Overzichts onderwerpen**
 
 * [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

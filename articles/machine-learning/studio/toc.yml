@@ -8,19 +8,19 @@
       href: what-is-ml-studio.md
     - name: Onze ML-producten vergelijken
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: Zelfstudies
+- name: Snelstartgidsen
   items:
     - name: Uw eerste experiment opzetten
       displayName: quickstart
       href: create-experiment.md
-    - name: Een voorspellende oplossing maken
-      items:
-        - name: 1 - Experiment maken
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - Trainen en evalueren
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - Webservice implementeren
-          href: tutorial-part3-credit-risk-deploy.md
+- name: Zelfstudies
+  items:
+    - name: '1: Voorspellend experiment maken'
+      href: tutorial-part1-credit-risk.md
+    - name: '2: Oplossing trainen en evalueren'
+      href: tutorial-part2-credit-risk-train.md
+    - name: '3: Webservice implementeren'
+      href: tutorial-part3-credit-risk-deploy.md
 - name: Voorbeelden
   items:
     - name: Beschikbare gegevenssets
@@ -44,7 +44,7 @@
     - name: Modelbeheer
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een werkruimte beheren
       items:

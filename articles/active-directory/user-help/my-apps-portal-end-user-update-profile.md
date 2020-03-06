@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022276"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374734"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uw profiel-en account gegevens bijwerken in de portal mijn apps
 
@@ -114,7 +114,7 @@ Voor twee ledige verificatie moet u twee soorten verificatie gegevens gebruiken,
 
     - **Stel de Microsoft Authenticator-app in.** U kunt ervoor kiezen om de Microsoft Authenticator-app zo in te stellen dat deze als verificatie methode wordt gebruikt. Zie [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) voor meer informatie over de app Microsoft Authenticator.
 
-3. Selecteer **opslaan** uw wijzigingen op te slaan.
+3. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>De gebruiks voorwaarden van uw organisatie controleren
 

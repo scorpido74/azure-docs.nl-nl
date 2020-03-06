@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327255"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390729"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Afwijkende detector containers installeren en uitvoeren (preview-versie)
 
@@ -168,7 +168,7 @@ Als u de container uitvoert met een uitvoer [koppeling](anomaly-detector-contain
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De afwijkende detector containers verzenden facturerings gegevens naar Azure met behulp van een _afwijkende detector_ bron in uw Azure-account. 
 

@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300975"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399800"
 ---
-# <a name="what-is-azure-stack-edge"></a>Wat is Azure Stack Edge? 
+# <a name="what-is-azure-stack-edge"></a>Wat is Azure Stack Edge?
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge is een rand computer apparaat met AI-functionaliteit met mogelijkheden voor netwerk gegevens overdracht. In dit artikel vindt u een overzicht van de Azure Stack EDGE-oplossing, de voor delen, de belangrijkste mogelijkheden en de scenario's waarin u dit apparaat kunt implementeren. 
+Azure Stack Edge is een rand computer apparaat met AI-functionaliteit met mogelijkheden voor netwerk gegevens overdracht. In dit artikel vindt u een overzicht van de Azure Stack EDGE-oplossing, de voor delen, de belangrijkste mogelijkheden en de scenario's waarin u dit apparaat kunt implementeren.
 
-Azure Stack Edge is een hardware-as-a-service-oplossing. Micro soft stuurt u een door een Cloud beheerd apparaat met een ingebouwd veld Programmeer bare Gate-matrix (FPGA) waarmee de AI-interferentie wordt versneld en alle mogelijkheden van een gateway voor netwerk opslag zijn. 
+Azure Stack Edge is een hardware-as-a-service-oplossing. Micro soft stuurt u een door een Cloud beheerd apparaat met een ingebouwd veld Programmeer bare Gate-matrix (FPGA) waarmee de AI-interferentie wordt versneld en alle mogelijkheden van een gateway voor netwerk opslag zijn.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
@@ -38,7 +38,6 @@ Hier volgen de verschillende scenario's waarbij Azure Stack Edge kan worden gebr
 
 - **Gegevens overdragen via het netwerk naar Azure** : gebruik Azure stack Edge om snel en eenvoudig gegevens over te dragen naar Azure om verdere Compute en analyses mogelijk te maken of voor archiverings doeleinden. 
 
-
 ## <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
 Azure Stack Edge heeft de volgende mogelijkheden:
@@ -51,17 +50,17 @@ Azure Stack Edge heeft de volgende mogelijkheden:
 |Toegang tot gegevens     | Rechtstreekse gegevenstoegang vanuit Azure Storage Blobs en Azure Files met behulp van cloud-API’s voor aanvullende gegevensverwerking in de cloud. Lokale cache op het apparaat wordt gebruikt voor snelle toegang tot de meest recent gebruikte bestanden.|
 |Door de Cloud beheerde     |Het apparaat en de service worden beheerd via de Azure Portal.  |
 |Offline upload     | Modus zonder verbinding ondersteunt scenario’s voor offline uploaden.|
-|Ondersteunde protocollen     | Ondersteuning voor het standaard SMB- en NFS-protocol voor gegevensopname. <br> Ga naar [Azure stack Edge-systeem vereisten](data-box-edge-system-requirements.md)voor meer informatie over ondersteunde versies.|
+|Ondersteunde protocollen     | Ondersteuning voor het standaard SMB- en NFS-protocol voor gegevensopname. <br> Zie [Azure stack Edge-systeem vereisten](data-box-edge-system-requirements.md)voor meer informatie over ondersteunde versies.|
 |Gegevensvernieuwing     | Mogelijkheid om lokale bestanden te vernieuwen met de meest recente uit de cloud.|
 |Versleuteling    | BitLocker-ondersteuning om gegevens lokaal te versleutelen en de gegevensoverdracht naar de cloud via *HTTPS* te beveiligen.|
 |Bandbreedte regeling| Beperking voor het beperken van het bandbreedte gebruik tijdens piek uren.|
-
+|ExpressRoute | Beveiliging is toegevoegd via ExpressRoute. Gebruik peering-configuratie waarbij verkeer van lokale apparaten naar de Cloud opslag eindpunten via de ExpressRoute wordt verplaatst. Zie [ExpressRoute Overview](../expressroute/expressroute-introduction.md)(Engelstalig) voor meer informatie.
 
 ## <a name="components"></a>Onderdelen
 
 De Azure Stack EDGE-oplossing bestaat uit Azure Stack Edge-resource, Azure Stack Edge-fysiek apparaat en een lokale webgebruikersinterface.
 
-* **Azure stack rand fysiek apparaat** : een door micro soft geleverde 1U-server die kan worden geconfigureerd om gegevens naar Azure te verzenden. 
+* **Azure stack rand fysiek apparaat** : een door micro soft geleverde 1U-server die kan worden geconfigureerd om gegevens naar Azure te verzenden.
     
 * **Azure stack-rand resource** : een resource in de Azure Portal waarmee u een Azure stack edge-apparaat kunt beheren vanuit een webinterface die u vanaf verschillende geografische locaties kunt openen. Gebruik de Azure Stack Edge-resource om resources te maken en te beheren, apparaten en waarschuwingen weer te geven en te beheren, en om shares te beheren.  
 
@@ -75,22 +74,16 @@ De Azure Stack EDGE-oplossing bestaat uit Azure Stack Edge-resource, Azure Stack
 
     Voor informatie over het gebruik van de Web-UI, gaat u naar [de webgebaseerde gebruikers interface gebruiken om uw Azure stack Edge te beheren](data-box-edge-manage-access-power-connectivity-mode.md).
 
-
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 Azure Stack rand het fysieke apparaat, de Azure-resource en het doel-opslag account waarnaar u de gegevens overdraagt, moeten zich niet allemaal in dezelfde regio bevinden.
 
 - **Beschik baarheid van resources** : Zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor een lijst met alle regio's waar de Azure stack Edge-resource beschikbaar is. Azure Stack Edge kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
     
-- **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s. De regio's waar het opslag accounts archief Azure Stack Edge-gegevens moeten zich bevinden dicht bij de locatie waar het apparaat zich bevindt voor optimale prestaties. Een opslagaccount dat zich ver van het apparaat vandaan bevindt, resulteert in lange latenties en tragere prestaties. 
-
+- **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s. De regio's waar het opslag accounts archief Azure Stack Edge-gegevens moeten zich bevinden dicht bij de locatie waar het apparaat zich bevindt voor optimale prestaties. Een opslagaccount dat zich ver van het apparaat vandaan bevindt, resulteert in lange latenties en tragere prestaties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de [systeem vereisten voor de Azure stack Edge](data-box-edge-system-requirements.md).
 - Meer informatie over de [limieten voor de Azure stack rand](data-box-edge-limits.md).
 - [Azure Azure stack Edge](data-box-edge-deploy-prep.md) implementeren in azure Portal.
-
-
-
-

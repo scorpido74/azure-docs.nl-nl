@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290923"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376325"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronisatie: De installatiewizard een tweede keer uitvoeren
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronisatie: een tweede keer uitvoeren van de installatie wizard
 De eerste keer dat u de Azure AD Connect-installatie wizard uitvoert, wordt u begeleid bij het configureren van de installatie. Als u de installatie wizard opnieuw uitvoert, biedt het opties voor onderhoud.
 
 >[!IMPORTANT]
@@ -47,14 +47,14 @@ Selecteer een van de taken en klik op **volgende** om door te gaan.
 >
 >
 
-## <a name="view-current-configuration"></a>De huidige configuratie weergeven
+## <a name="view-current-configuration"></a>Huidige configuratie weer geven
 Met deze optie krijgt u een snel overzicht van de momenteel geconfigureerde opties.
 
 ![Pagina met een lijst met alle opties en hun status](./media/how-to-connect-installation-wizard/viewconfig.png)
 
 Klik op **vorige** om terug te gaan. Als u **Afsluiten**selecteert, sluit u de installatie wizard.
 
-## <a name="customize-synchronization-options"></a>Synchronisatieopties aanpassen
+## <a name="customize-synchronization-options"></a>Synchronisatie opties aanpassen
 Deze optie wordt gebruikt om wijzigingen aan te brengen in de synchronisatie configuratie. U ziet een subset met opties vanuit het installatiepad van de aangepaste configuratie. U ziet deze optie ook als u in eerste instantie snelle installatie hebt gebruikt.
 
 * [Voeg meer Directory's toe](how-to-connect-install-custom.md#connect-your-directories). Zie [een connector verwijderen](how-to-connect-sync-service-manager-ui-connectors.md#delete)voor meer informatie over het verwijderen van een map.
@@ -68,14 +68,14 @@ De andere opties van de eerste installatie kunnen niet worden gewijzigd en zijn 
 * Wijzig de methode voor samen voeging voor objecten uit een ander forest.
 * Filteren op basis van een groep inschakelen.
 
-## <a name="refresh-directory-schema"></a>Directory-schema vernieuwen
+## <a name="refresh-directory-schema"></a>Adreslijst schema vernieuwen
 Deze optie wordt gebruikt als u het schema hebt gewijzigd in een van uw on-premises AD DS-forests. U hebt bijvoorbeeld Exchange of een upgrade naar een Windows Server 2012-schema met Device-objecten geïnstalleerd. In dit geval moet u Azure AD Connect het schema opnieuw te lezen vanaf AD DS en de cache ervan bij te werken. Met deze actie worden ook de synchronisatie regels opnieuw gegenereerd. Als u het Exchange-schema toevoegt, worden de synchronisatie regels voor Exchange toegevoegd aan de configuratie.
 
 Wanneer u deze optie selecteert, worden alle mappen in uw configuratie weer gegeven. U kunt de standaard instelling blijven gebruiken en alle forests vernieuwen of de selectie ervan opheffen.
 
 ![Pagina met een lijst met alle directory's in de omgeving](./media/how-to-connect-installation-wizard/refreshschema.png)
 
-## <a name="configure-staging-mode"></a>De faseringsmodus configureren
+## <a name="configure-staging-mode"></a>Faserings modus configureren
 Met deze optie kunt u de faserings modus op de server inschakelen en uitschakelen. Meer informatie over de faserings modus en hoe deze wordt gebruikt, vindt u in [bewerkingen](how-to-connect-sync-staging-server.md).
 
 De optie geeft aan of fase ring op dit moment is ingeschakeld of uitgeschakeld:  
@@ -94,5 +94,5 @@ Zie [gebruikers aanmelding](plan-connect-user-signin.md#changing-the-user-sign-i
 
 **Overzichts onderwerpen**
 
-* [Azure AD Connect-synchronisatie: Synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

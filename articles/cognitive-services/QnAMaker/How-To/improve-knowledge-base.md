@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: diberry
 ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389457"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
@@ -157,7 +157,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Eigenschap HTTP-aanvraag|Name|Type|Doel|
+|Eigenschap HTTP-aanvraag|Naam|Type|Doel|
 |--|--|--|--|
 |URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
 |Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Het wordt weer gegeven als de `host`.|

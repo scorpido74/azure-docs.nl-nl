@@ -7,29 +7,29 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394237"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Aanvraag eenheden in Azure Cosmos DB
 
-Met Azure Cosmos DB betaalt u de door u ingerichte door Voer en de opslag die u per uur verbruikt. De door voer moet worden ingericht om ervoor te zorgen dat er te allen tijde voldoende systeem bronnen beschikbaar zijn voor uw Azure Cosmos-data base. U hebt voldoende resources nodig om te voldoen aan de [Azure Cosmos DB sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
+Met Azure Cosmos DB betaalt u de door u ingerichte doorvoer en de opslag die u per uur verbruikt. De doorvoer moet worden ingericht om ervoor te zorgen dat er te allen tijde voldoende systeembronnen beschikbaar zijn voor uw Azure Cosmos-database. U hebt voldoende resources nodig om te voldoen aan de [Azure Cosmos DB sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
 Azure Cosmos DB ondersteunt veel Api's, zoals SQL, MongoDB, Cassandra, Gremlin en Table. Elke API heeft een eigen set database bewerkingen. Deze bewerkingen variëren van eenvoudig punt Lees-en schrijf bewerkingen naar complexe query's. Bij elke database bewerking worden systeem resources verbruikt op basis van de complexiteit van de bewerking. 
 
-De kosten van alle database bewerkingen worden genormaliseerd door Azure Cosmos DB en worden uitgedrukt in *aanvraag eenheden* (of RUs voor short). U kunt RUs per seconde beschouwen als de valuta voor door voer. RUs per seconde is een op tarieven gebaseerde valuta. De systeem bronnen zoals CPU, IOPS en geheugen die nodig zijn om de database bewerkingen uit te voeren die door Azure Cosmos DB worden ondersteund, worden abstract. 
+De kosten van alle database bewerkingen worden genormaliseerd door Azure Cosmos DB en worden uitgedrukt in *aanvraag eenheden* (of RUs voor short). U kunt RU's per seconde beschouwen als de valuta voor doorvoer. RU's per seconde is een op tarieven gebaseerde valuta. De systeembronnen, zoals CPU, IOPS en geheugen, die nodig zijn om de databasebewerkingen uit te voeren die door Azure Cosmos DB worden ondersteund, worden hierdoor geabstraheerd. 
 
-De kosten voor het lezen van een 1 KB-item zijn 1 aanvraag eenheid (of 1 RU). Er is mini maal 10 RU/s vereist om elke 1 GB aan gegevens op te slaan. Alle andere database bewerkingen worden op dezelfde manier toegewezen als kosten met behulp van RUs. Ongeacht welke API u gebruikt om te communiceren met uw Azure Cosmos-container, worden de kosten altijd gemeten door RUs. Of de database bewerking een schrijf-, lees-of query is, worden de kosten altijd gemeten in RUs.
+De kosten voor het lezen van een item van 1 kB bedragen 1 aanvraageenheid (of 1 RU). Er is mini maal 10 RU/s vereist om elke 1 GB aan gegevens op te slaan. Aan alle overige databasebewerkingen worden op dezelfde manier kosten toegewezen in de vorm van RU's. Ongeacht welke API u gebruikt om met uw Azure Cosmos-container te communiceren - de kosten worden altijd gemeten in RU's. Of de databasebewerking een schrijf-, lees-of querybewerking is, de kosten worden altijd gemeten in RU's.
 
-In de volgende afbeelding ziet u het hoge idee van RUs:
+In de volgende afbeelding ziet u het idee op hoog niveau met betrekking tot RU's:
 
 ![Database bewerkingen gebruiken aanvraag eenheden](./media/request-units/request-units.png)
 
-Azure Cosmos DB zorgt ervoor dat het aantal RUs voor een bepaalde database bewerking in een bepaalde gegevensset deterministisch is om de capaciteit te beheren en te plannen. U kunt de reactie header controleren om het aantal RUs bij te houden dat door een database bewerking wordt gebruikt. Wanneer u de [factoren begrijpt die van invloed zijn op de ru-kosten](request-units.md#request-unit-considerations) en de doorvoer vereisten van uw toepassing, kunt u uw toepassing effectief uitvoeren.
+Azure Cosmos DB zorgt ervoor dat het aantal RU's voor een bepaalde databasebewerking voor een bepaalde gegevensset deterministisch is om de capaciteit te kunnen beheren en plannen. U kunt de antwoordheader controleren om het aantal RU's bij te houden dat door een databasebewerking wordt gebruikt. Wanneer u de [factoren begrijpt die van invloed zijn op de ru-kosten](request-units.md#request-unit-considerations) en de doorvoer vereisten van uw toepassing, kunt u uw toepassing effectief uitvoeren.
 
-U voorziet het aantal RUs voor uw toepassing per seconde op basis van een interval van 100 RUs per seconde. Als u de ingerichte door Voer voor uw toepassing wilt schalen, kunt u het aantal RUs op elk gewenst moment verg Roten of verkleinen. U kunt schalen in stappen of verlaagt 100 RUs. U kunt uw wijzigingen programmatisch of via de Azure Portal maken. U wordt per uur gefactureerd.
+Uw toepassing wordt ingericht met het aantal RU's op basis van seconden in stappen van 100 RU's per seconde. Als u de ingerichte doorvoer voor uw toepassing wilt schalen, kunt u het aantal RU's op elk moment vergroten of verkleinen. U kunt omhoog of omlaag schalen in stappen van 100 RU's. U kunt uw wijzigingen programmatisch aanbrengen of via Azure Portal. U wordt per uur gefactureerd.
 
 U kunt de door Voer op twee verschillende granulariteit inrichten: 
 

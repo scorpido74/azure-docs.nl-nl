@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383687"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393868"
 ---
 # <a name="add-entities-to-extract-data"></a>Entiteiten toevoegen om gegevens op te halen 
 
@@ -90,7 +90,7 @@ In de volgende lijst ziet u de canonieke naam en de synoniemen.
 |--|--|
 |Rood|Crimson, bloed, Apple, brand engine|
 |Blauw|lucht, azure, kobalt|
-|Groen|Kelly, licht groen|
+|Dag|Kelly, licht groen|
 
 Gebruik de procedure om een lijst entiteit te maken. Zodra de lijst entiteit is gemaakt, hoeft u geen label voor beeld-uitingen in te richten. Lijst items en synoniemen worden vergeleken met de exacte tekst. 
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870918"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386987"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Werken met matrices en objecten in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ U kunt matrices maken, zoals wordt weer gegeven in het volgende voor beeld:
     FROM Families f
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [
@@ -54,14 +54,14 @@ FROM f
 
 ## <a id="Iteration"></a>Herhaling
 
-De SQL-API biedt ondersteuning voor het herhalen van JSON-matrices, waarbij een nieuwe constructie wordt toegevoegd via het [sleutel woord in](sql-query-keywords.md#in) in de bron van. In het volgende voorbeeld:
+De SQL-API biedt ondersteuning voor het herhalen van JSON-matrices, waarbij een nieuwe constructie wordt toegevoegd via het [sleutel woord in](sql-query-keywords.md#in) in de bron van. In het volgende voor beeld:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [
@@ -97,7 +97,7 @@ Met de volgende query wordt iteratie uitgevoerd over `children` in de `Families`
     FROM c IN Families.children
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [
@@ -130,7 +130,7 @@ U kunt verder filteren op elke afzonderlijke vermelding van de matrix, zoals wor
     WHERE c.grade = 8
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [{
@@ -145,7 +145,7 @@ U kunt ook aggregatie over het resultaat van een matrix herhaling. Met de volgen
     FROM child IN Families.children
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [

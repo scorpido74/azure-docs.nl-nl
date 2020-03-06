@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378835"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -39,7 +39,7 @@ De categorie **B2C** in audit Logboeken bevat de volgende soorten activiteiten:
 |Toepassing | Maak, lees-, update-en delete-bewerkingen (ruw) in B2C-toepassingen. |
 |Sleutel |RUWE bewerkingen op sleutels die zijn opgeslagen in een B2C-sleutel container. |
 |Resource |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
-|Authentication |Validatie van gebruikers referenties en het uitgeven van tokens.|
+|Verificatie |Validatie van gebruikers referenties en het uitgeven van tokens.|
 
 Raadpleeg de categorie **basis directory** voor een ruwe activiteiten voor gebruikers objecten.
 
@@ -53,7 +53,7 @@ Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Sectie|Veld|Beschrijving|
 |-------|-----|-----------|
-| Activiteit | Name | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
 | Gestart door (actor) | Id | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 | Doel (en) | Id | De **object-id** van de gebruiker die zich aanmeldt. |

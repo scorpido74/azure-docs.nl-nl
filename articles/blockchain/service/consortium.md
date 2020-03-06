@@ -5,11 +5,11 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455723"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384456"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Block Chain Service consortium
 
@@ -31,7 +31,7 @@ Met consortium Management in azure Block Chain Service kunt u deel nemers in het
 
 Deel nemers aan een consortium kunnen individuen of organisaties zijn en kunnen aan een gebruikersrol of een beheerdersrol worden toegewezen. De volgende tabel geeft een overzicht van de verschillen op hoog niveau tussen de twee rollen:
 
-| Actie | Gebruikersrol | Beheerdersrol
+| Bewerking | Gebruikersrol | Beheerdersrol
 |--------|:----:|:------------:|
 | Nieuw lid maken | Ja | Ja |
 | Nieuwe leden uitnodigen | Nee | Ja |

@@ -1,6 +1,6 @@
 ---
 title: Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)
-description: Dit artikel bevat de vereisten voor het gebruik van Microsoft Azure schijf versleuteling voor IaaS-Vm's.
+description: Dit artikel bevat vereisten voor het gebruik van Microsoft Azure-schijfversleuteling voor IaaS-VM's.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5a42b1e0dc82b3340bbebe176c71cb1754d00664
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245225"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391495"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)
 
@@ -23,9 +23,9 @@ Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schi
 Een sleutel kluis maken en configureren voor gebruik Azure Disk Encryption met Azure AD (eerdere versie) omvat drie stappen:
 
 1. Een sleutelkluis maken. 
-2. Stel een Azure AD-toepassing en Service-Principal in.
-3. Stel het toegangs beleid voor de sleutel kluis in voor de Azure AD-app.
-4. Geavanceerd toegangs beleid voor sleutel kluis instellen.
+2. Instellen van een Azure AD-toepassing en service-principal.
+3. Het toegangsbeleid voor key vault voor de Azure AD-app ingesteld.
+4. Set-sleutelkluis geavanceerde toegangsbeleid.
  
 U kunt eventueel ook een sleutel versleutelings sleutel genereren of importeren (KEK).
 
@@ -36,11 +36,11 @@ Zie de belangrijkste procedure [voor het maken en configureren van een sleutel k
 
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken 
-Azure Disk Encryption is geïntegreerd met [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) , zodat u de schijf versleutelings sleutels en geheimen in uw sleutel kluis abonnement kunt controleren en beheren. U kunt een sleutel kluis maken of een bestaande gebruiken voor Azure Disk Encryption. Zie [aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutel kluizen. U kunt een resource manager-sjabloon, Azure PowerShell of de Azure CLI gebruiken om een sleutel kluis te maken. 
+Azure Disk Encryption is geïntegreerd met [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) , zodat u de schijf versleutelings sleutels en geheimen in uw sleutel kluis abonnement kunt controleren en beheren. U kunt een key vault maken of gebruik een bestaande resourcegroep voor Azure Disk Encryption. Zie [aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutel kluizen. U kunt een Resource Manager-sjabloon, Azure PowerShell of Azure CLI gebruiken om een sleutelkluis te maken. 
 
 
 >[!WARNING]
->Om ervoor te zorgen dat de versleutelings geheimen geen regionale grenzen overschrijden, moeten Azure Disk Encryption de Key Vault en de virtuele machines in dezelfde regio naast elkaar hebben. Maak en gebruik een Key Vault dat zich in dezelfde regio bevindt als de virtuele machine die moet worden versleuteld. 
+>Om te verzekeren dat de geheimen van de versleuteling niet overschreden door de regionale grenzen, moet Azure Disk Encryption de Key Vault en de virtuele machines in dezelfde regio worden geplaatst. Maak en gebruik van een Key Vault die zich in dezelfde regio als de virtuele machine moeten worden versleuteld. 
 
 
 ### <a name="create-a-key-vault-with-powershell"></a>Een sleutel kluis maken met Power shell
@@ -90,13 +90,13 @@ U kunt een sleutel kluis maken met behulp van de [Resource Manager-sjabloon](htt
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a>Een Azure AD-app en service-principal instellen 
-Wanneer versleuteling moet worden ingeschakeld op een actieve virtuele machine in azure, Azure Disk Encryption genereert en schrijft de versleutelings sleutels naar uw sleutel kluis. Voor het beheren van versleutelings sleutels in uw sleutel kluis is Azure AD-verificatie vereist. Maak een Azure AD-toepassing voor dit doel einde. Voor verificatie doeleinden kunt u verificatie op basis van client geheim of [Azure AD-verificatie op basis van client certificaten](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)gebruiken.
+Wanneer u versleuteling wordt ingeschakeld op een actieve virtuele machine in Azure nodig hebt, wordt Azure Disk Encryption genereert en schrijft de versleutelingssleutels in uw key vault. Beheer van versleutelingssleutels in uw key vault, vereist Azure AD-verificatie. Maak een Azure AD-toepassing voor dit doel. Voor verificatie doeleinden kunt u verificatie op basis van client geheim of [Azure AD-verificatie op basis van client certificaten](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)gebruiken.
 
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-powershell"></a>Een Azure AD-app en-service-principal instellen met Azure PowerShell 
 Als u de volgende opdrachten wilt uitvoeren, moet u de [Azure AD Power shell-module](/powershell/azure/active-directory/install-adv2)ophalen en gebruiken. 
 
-1. Gebruik de Power shell [-cmdlet New-AzADApplication](/powershell/module/az.resources/new-azadapplication) om een Azure AD-toepassing te maken. MyApplicationHomePage en MyApplicationUri kunnen wille keurige waarden zijn.
+1. Gebruik de Power shell [-cmdlet New-AzADApplication](/powershell/module/az.resources/new-azadapplication) om een Azure AD-toepassing te maken. MyApplicationHomePage en de MyApplicationUri mag geen waarden die u wilt.
 
      ```azurepowershell
      $aadClientSecret = "My AAD client secret"
@@ -105,41 +105,41 @@ Als u de volgende opdrachten wilt uitvoeren, moet u de [Azure AD Power shell-mod
      $servicePrincipal = New-AzADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
      ```
 
-3. De $azureAdApplication. ApplicationId is de Azure AD ClientID en de $aadClientSecret is het client geheim dat u later gaat gebruiken om Azure Disk Encryption in te scha kelen. Beveilig het Azure AD-client geheim op de juiste manier. Als `$azureAdApplication.ApplicationId` wordt uitgevoerd, wordt de ApplicationID weer gegeven.
+3. De $azureAdApplication.ApplicationId is de ClientID van Azure AD en de $aadClientSecret is het clientgeheim die u later gebruiken wilt voor Azure Disk Encryption inschakelen. Het clientgeheim van de Azure AD op de juiste manier beveiligen. Als u `$azureAdApplication.ApplicationId` uitvoert, wordt de ApplicationID weer gegeven.
 
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a>Een Azure AD-app en-service-principal instellen met Azure CLI
 
 U kunt de service-principals beheren met Azure CLI met behulp van de [AZ AD SP](/cli/azure/ad/sp) -opdrachten. Zie [een Azure-service-principal maken](/cli/azure/create-an-azure-service-principal-azure-cli)voor meer informatie.
 
-1. Maak een nieuwe service-principal.
+1. Maak een nieuwe serviceprincipal.
      
      ```azurecli-interactive
      az ad sp create-for-rbac --name "ServicePrincipalName" --password "My-AAD-client-secret" --skip-assignment 
      ```
-3.  De geretourneerde appId is de Azure AD-ClientID die wordt gebruikt in andere opdrachten. Het is ook de SPN die u gebruikt voor AZ set-Policy. Het wacht woord is het client geheim dat u later moet gebruiken om Azure Disk Encryption in te scha kelen. Beveilig het Azure AD-client geheim op de juiste manier.
+3.  De toepassings-id geretourneerd aan de ClientID van Azure AD wordt gebruikt in andere opdrachten. Het is ook de SPN die u voor az keyvault-beleid instellen gebruikt. Het wachtwoord is het clientgeheim die u later gebruiken moet om Azure Disk Encryption inschakelen. Het clientgeheim van de Azure AD op de juiste manier beveiligen.
  
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a>Een Azure AD-app en service-principal instellen, hoewel de Azure Portal
-Gebruik de stappen in de [Portal gebruiken om een Azure Active Directory-toepassing en Service-Principal te maken die toegang hebben tot bronnen](../../active-directory/develop/howto-create-service-principal-portal.md) artikelen om een Azure AD-toepassing te maken. In elke stap die hieronder wordt vermeld, gaat u rechtstreeks naar de sectie artikel om dit te volt ooien. 
+Gebruik de stappen in de [Portal gebruiken om een Azure Active Directory-toepassing en Service-Principal te maken die toegang hebben tot bronnen](../../active-directory/develop/howto-create-service-principal-portal.md) artikelen om een Azure AD-toepassing te maken. Elke stap hieronder gaat u rechtstreeks naar de sectie om te voltooien. 
 
 1. [Vereiste machtigingen verifiëren](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
 2. [Een Azure Active Directory-toepassing maken](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
-     - U kunt elke naam en aanmeldings-URL gebruiken die u wilt bij het maken van de toepassing.
+     - U kunt een willekeurige naam gebruiken en aanmeldings-URL die u dat wilt bij het maken van de toepassing.
 3. [Haal de toepassings-id en de verificatie sleutel](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)op. 
      - De verificatie sleutel is het client geheim en wordt gebruikt als de AadClientSecret voor set-AzVMDiskEncryptionExtension. 
-        - De verificatie sleutel wordt door de toepassing gebruikt als referentie om zich aan te melden bij Azure AD. In de Azure Portal heet dit geheim sleutels, maar het heeft geen betrekking op sleutel kluizen. Beveilig dit geheim op de juiste manier. 
+        - De verificatiesleutel wordt gebruikt door de toepassing als een referentie zich aanmeldt bij Azure AD. Dit geheim wordt aangeroepen sleutels in de Azure-portal, maar heeft geen relatie tot sleutelkluizen. Dit geheim op de juiste manier beveiligen. 
      - De toepassings-ID wordt later gebruikt als AadClientId voor set-AzVMDiskEncryptionExtension en als ServicePrincipalName voor set-AzKeyVaultAccessPolicy. 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a>Het toegangs beleid voor de sleutel kluis instellen voor de Azure AD-app
-Om versleutelings geheimen te schrijven naar een opgegeven Key Vault, heeft Azure Disk Encryption de client-ID en het client geheim nodig van de Azure Active Directory toepassing die machtigingen heeft om geheimen naar de Key Vault te schrijven. 
+Azure Disk Encryption moet encryption geheimen worden geschreven naar een opgegeven Key Vault, de Client-ID en het Clientgeheim van de Azure Active Directory-toepassing met machtigingen voor geheimen schrijven naar de Key Vault. 
 
 > [!NOTE]
 > Azure Disk Encryption moet u het volgende toegangs beleid configureren voor uw Azure AD-client toepassing: _WrapKey_ en machtigingen _instellen_ .
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a>Stel het toegangs beleid voor de sleutel kluis in voor de Azure AD-app met Azure PowerShell
-Uw Azure AD-toepassing heeft rechten nodig om toegang te krijgen tot de sleutels of geheimen in de kluis. Gebruik de cmdlet [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) om machtigingen toe te kennen aan de toepassing, met behulp van de client-id (die is gegenereerd toen de toepassing is geregistreerd) als de parameter waarde _– ServicePrincipalName_ . Zie voor meer informatie het blog bericht [Azure Key Vault-stap voor stap](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+Uw Azure AD-toepassing moet de rechten voor toegang tot de sleutels of geheimen in de kluis. Gebruik de cmdlet [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) om machtigingen toe te kennen aan de toepassing, met behulp van de client-id (die is gegenereerd toen de toepassing is geregistreerd) als de parameter waarde _– ServicePrincipalName_ . Zie voor meer informatie het blog bericht [Azure Key Vault-stap voor stap](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
 
-1. Stel het toegangs beleid voor de sleutel kluis in voor de AD-toepassing met Power shell.
+1. Het toegangsbeleid voor key vault voor de AD-toepassing met PowerShell instellen.
 
      ```azurepowershell
      $keyVaultName = 'MySecureVault'
@@ -151,7 +151,7 @@ Uw Azure AD-toepassing heeft rechten nodig om toegang te krijgen tot de sleutels
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a>Het toegangs beleid voor de sleutel kluis instellen voor de Azure AD-app met Azure CLI
 Gebruik [AZ sleutel kluis set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) om het toegangs beleid in te stellen. Zie [Key Vault beheren met CLI 2,0](../../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)voor meer informatie.
 
-Geef de service-principal die u hebt gemaakt via de Azure CLI-toegang om geheimen en terugloop sleutels op te halen met de volgende opdracht:
+Geef de service-principal die u hebt gemaakt via de Azure CLI-toegang tot het ophalen van geheimen en tekstterugloop sleutels met de volgende opdracht:
  
      ```azurecli-interactive
      az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
@@ -159,19 +159,19 @@ Geef de service-principal die u hebt gemaakt via de Azure CLI-toegang om geheime
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a>Het toegangs beleid voor de sleutel kluis instellen voor de Azure AD-app met de portal
 
-1. Open de resource groep met uw sleutel kluis.
+1. Open de resourcegroep met uw key vault.
 2. Selecteer uw sleutel kluis, ga naar **toegangs beleid**en klik vervolgens op **nieuwe toevoegen**.
 3. Zoek onder **Principal selecteren**naar de Azure AD-toepassing die u hebt gemaakt en selecteer deze. 
 4. Voor **sleutel machtigingen**controleert u de **toets SHIFT** onder **cryptografische bewerkingen**.
 5. Controleer bij **geheime machtigingen** **instellen** onder **geheime beheer bewerkingen**.
 6. Klik op **OK** om het toegangs beleid op te slaan. 
 
-![Azure Key Vault cryptografische bewerkingen-terugloop sleutel](../media/disk-encryption/keyvault-portal-fig3.png)
+![Azure Key Vault cryptografische bewerkingen - sleutel Inpakken](../media/disk-encryption/keyvault-portal-fig3.png)
 
-![Azure Key Vault geheime machtigingen: instellen](../media/disk-encryption/keyvault-portal-fig3b.png)
+![Azure Key Vault-geheim machtigingen - instellen](../media/disk-encryption/keyvault-portal-fig3b.png)
 
 ## <a name="set-key-vault-advanced-access-policies"></a>Geavanceerd toegangs beleid voor sleutel kluis instellen
-Het Azure-platform moet toegang hebben tot de versleutelings sleutels of geheimen in uw sleutel kluis om ze beschikbaar te maken voor de VM voor het opstarten en ontsleutelen van de volumes. Het inschakelen van schijf versleuteling op de sleutel kluis of implementaties mislukt.  
+Het Azure-platform moet toegang hebben tot de sleutels of geheimen in uw key vault zodat ze beschikbaar voor de virtuele machine voor opstarten en ontsleutelen van de volumes. Schijf-versleuteling inschakelen voor de sleutelkluis of implementaties mislukken.  
 
 ### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a>Geavanceerd toegangs beleid voor sleutel kluis instellen met Azure PowerShell
  Gebruik de sleutel kluis Power shell [-cmdlet Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) om schijf versleuteling in te scha kelen voor de sleutel kluis.
@@ -221,26 +221,26 @@ Gebruik [AZ Key kluis update](/cli/azure/keyvault#az-keyvault-update) om schijf 
 3. Selecteer **toegang tot Azure virtual machines inschakelen voor implementatie** en/of **toegang tot Azure Resource Manager voor sjabloon implementatie**inschakelen, indien nodig. 
 4. Klik op **Opslaan**.
 
-![Geavanceerd toegangs beleid voor Azure Key kluis](../media/disk-encryption/keyvault-portal-fig4.png)
+![Azure-sleutelkluis geavanceerde toegangsbeleid](../media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-optional"></a>Een Key Encryption Key instellen (optioneel)
-Als u een sleutel versleutelings sleutel (KEK) wilt gebruiken voor een extra beveiligingslaag voor de versleutelings sleutels, voegt u een KEK toe aan uw sleutel kluis. Gebruik de cmdlet [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) om een sleutel versleutelings sleutel te maken in de sleutel kluis. U kunt ook een KEK importeren uit uw on-premises sleutel beheer HSM. Zie [Key Vault-documentatie](../../key-vault/key-vault-hsm-protected-keys.md)voor meer informatie. Wanneer een sleutel versleutelings sleutel is opgegeven, wordt met Azure Disk Encryption die sleutel gebruikt om de versleutelings geheimen te verpakken voordat er naar Key Vault wordt geschreven. 
+Als u wilt een sleutel key-versleuteling (KEK) te gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, moet u een KEK-sleutel toevoegen aan uw key vault. Gebruik de cmdlet [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) om een sleutel versleutelings sleutel te maken in de sleutel kluis. U kunt ook een KEK-sleutel van uw on-premises Sleutelbeheer HSM importeren. Zie [Key Vault-documentatie](../../key-vault/key-vault-hsm-protected-keys.md)voor meer informatie. Wanneer een sleutel van versleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel het verpakken van de geheimen van de versleuteling voor het schrijven naar de Key Vault. 
 
 * Gebruik een RSA-sleutel type bij het genereren van sleutels. Azure Disk Encryption biedt nog geen ondersteuning voor het gebruik van elliptische curve toetsen.
 
-* Uw sleutel kluis geheim en KEK Url's moeten een versie nummer hebben. Azure dwingt deze beperking van versie beheer af. Zie de volgende voor beelden voor geldige geheime en KEK-Url's:
+* Uw key vault-geheim en de KEK-sleutel-URL's moeten worden bijgehouden. Azure wordt deze beperking van versiebeheer afgedwongen. Zie de volgende voorbeelden voor geldige geheim en KEK-sleutel-URL's:
 
   * Voor beeld van een geldige geheime URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Voor beeld van een geldige KEK-URL: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-* Azure Disk Encryption biedt geen ondersteuning voor het opgeven van poort nummers als onderdeel van sleutel kluis geheimen en KEK-Url's. Voor voor beelden van niet-ondersteunde en ondersteunde sleutel kluis-Url's, zie de volgende voor beelden:
+* Azure Disk Encryption biedt geen ondersteuning voor het opgeven van de poortnummers als onderdeel van de key vault-geheimen en KEK-sleutel-URL's. Zie voor voorbeelden van niet-ondersteunde en ondersteunde key vault-URL's in de volgende voorbeelden:
 
   * Onacceptabele URL voor sleutel kluis *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Aanvaard bare sleutel kluis-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 ### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a>Een coderings sleutel met Azure PowerShell instellen 
-Voordat u het Power shell-script gebruikt, moet u vertrouwd zijn met de Azure Disk Encryption vereisten om inzicht te krijgen in de stappen in het script. Het voorbeeld script heeft mogelijk wijzigingen nodig voor uw omgeving. Met dit script worden alle Azure Disk Encryption vereisten gemaakt en wordt een bestaande IaaS-VM versleuteld, waarbij de schijf versleutelings sleutel wordt ingedrukt met behulp van een sleutel versleutelings sleutel. 
+Voordat u het PowerShell-script gebruikt, moet u bekend bent met de Azure Disk Encryption-vereisten voor het begrijpen van de stappen in het script. Het voorbeeldscript mogelijk wijzigingen voor uw omgeving. Dit script maakt alle vereisten voor Azure Disk Encryption en een bestaande IaaS-VM, de versleutelingssleutel van de schijf met behulp van een sleutel van versleutelingssleutel wrapping versleutelt. 
 
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
@@ -288,7 +288,7 @@ Voordat u het Power shell-script gebruikt, moet u vertrouwd zijn met de Azure Di
 ```
 
 ## <a name="certificate-based-authentication-optional"></a>Verificatie op basis van certificaten (optioneel)
-Als u verificatie via een certificaat wilt gebruiken, kunt u het uploaden naar uw sleutel kluis en implementeren op de client. Voordat u het Power shell-script gebruikt, moet u vertrouwd zijn met de Azure Disk Encryption vereisten om inzicht te krijgen in de stappen in het script. Het voorbeeld script heeft mogelijk wijzigingen nodig voor uw omgeving.
+Als u wilt om certificaatverificatie te gebruiken, kunt u een voor uw key vault uploaden en deze implementeren naar de client. Voordat u het PowerShell-script gebruikt, moet u bekend bent met de Azure Disk Encryption-vereisten voor het begrijpen van de stappen in het script. Het voorbeeldscript mogelijk wijzigingen voor uw omgeving.
 
      
  ```powershell
@@ -368,7 +368,7 @@ Als u verificatie via een certificaat wilt gebruiken, kunt u het uploaden naar u
 
 ## <a name="certificate-based-authentication-and-a-kek-optional"></a>Verificatie op basis van certificaten en een KEK (optioneel)
 
-Als u verificatie via certificaat wilt gebruiken en de versleutelings sleutel wilt verpakken met een KEK, kunt u het onderstaande script als voor beeld gebruiken. Voordat u het Power shell-script gebruikt, moet u vertrouwd zijn met alle voor gaande Azure Disk Encryption vereisten om inzicht te krijgen in de stappen in het script. Het voorbeeld script heeft mogelijk wijzigingen nodig voor uw omgeving.
+Als u wilt het gebruik van certificaatverificatie en de versleutelingssleutel met een KEK-sleutel inpakken, kunt u het onderstaande script als voorbeeld. Voordat u het PowerShell-script gebruikt, moet u bekend bent met alle van de vorige vereisten voor Azure Disk Encryption wilt weten welke stappen in het script. Het voorbeeldscript mogelijk wijzigingen voor uw omgeving.
 
      
  ```powershell

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0f50fe51f9c1cdef3c3f07c91640f5b9b9616229
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370958"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402752"
 ---
 # <a name="connect-to-a-wfs-service"></a>Verbinding maken met een WFS-service
 
@@ -91,7 +91,7 @@ De volgende code maakt gebruik van de WFS-client om WFS services te verkennen. S
 
 <br/>
 
-<iframe height='700' scrolling='no' title= 'WFS service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS service Explorer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS service Explorer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 U kunt ook een proxy service gebruiken om resources te laden die worden gehost op domeinen waarvoor geen CORs is ingeschakeld. U definieert eerst een variabele voor de proxy service-URL en stelt de `proxyService` optie in voor de WFS-client. Als u een proxy service optie voor de gebruiker wilt weer geven, voegt u een gebruikers invoer toe aan de gebruikers interface. Laad de service-URL wanneer op de invoer wordt geklikt. De volgende code fragmenten laten zien hoe u de proxy service kunt gebruiken.

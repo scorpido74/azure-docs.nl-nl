@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378698"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380135"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
@@ -99,7 +99,7 @@ Service-eindpunten bieden de volgende voordelen:
   - Nsg's toestaan standaard uitgaand Internet verkeer en verkeer van uw VNet naar Azure-Services toe. Dit verkeer blijft werken met Service-eind punten. 
   - Als u al het uitgaande Internet verkeer wilt weigeren en alleen verkeer naar specifieke Azure-Services wilt toestaan, kunt u dit doen met behulp van [service Tags](security-overview.md#service-tags) in uw nsg's. U kunt ondersteunde Azure-Services als doel opgeven in uw NSG-regels en Azure biedt ook het onderhoud van de IP-adressen die onder elke tag liggen. Zie [Azure-servicelabels voor NSG's](security-overview.md#service-tags) voor meer informatie. 
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 - **Virtuele netwerken met peers, verbonden of meerdere virtuele netwerken**: als u Azure-services wilt koppelen aan meerdere subnetten binnen een virtueel netwerk of aan meerdere virtuele netwerken, kunt u in elk van de subnetten service-eindpunten inschakelen en de Azure-serviceresources vervolgens aan al deze subnetten koppelen.
 - **Uitgaand verkeer van een virtueel netwerk naar Azure-Services filteren**: als u het verkeer dat vanuit een virtueel netwerk naar een Azure-service wilt verzenden, wilt controleren of filteren, kunt u een virtueel netwerk apparaat in het virtuele netwerk implementeren. U kunt dan service-eindpunten toepassen op het subnet waarop het virtueel-netwerkapparaat is geïmplementeerd en Azure-serviceresources alleen koppelen aan dit subnet. Dit scenario kan nuttig zijn als u virtuele netwerk apparaten wilt filteren om de toegang tot Azure-Services vanuit uw virtuele netwerk alleen te beperken tot specifieke Azure-resources. Zie [Egress with network virtual appliances](/azure/architecture/reference-architectures/dmz/nva-ha) (Uitgaand verkeer met virtueel-netwerkapparaten) voor meer informatie.
@@ -119,7 +119,7 @@ Wanneer u service-eind punten hebt geconfigureerd voor een specifieke service, c
 >[!NOTE]
 > Service-eindpuntroute overschrijft BGP- of UDR-routes voor de overeenkomst met het adresvoorvoegsel van een Azure-service. Zie [problemen met efficiënte routes oplossen](diagnose-network-routing-problem.md)voor meer informatie.
 
-## <a name="provisioning"></a>Inrichting
+## <a name="provisioning"></a>Inrichten
 
 Service-eind punten kunnen worden geconfigureerd op virtuele netwerken, onafhankelijk van een gebruiker met schrijf toegang tot een virtueel netwerk. Voor het beveiligen van Azure-service resources naar een VNet moet de gebruiker gemachtigd zijn voor *micro soft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/Action* voor de toegevoegde subnetten. De ingebouwde rollen van de service beheerder bevatten standaard deze machtiging. U kunt de machtiging wijzigen door aangepaste rollen te maken.
 

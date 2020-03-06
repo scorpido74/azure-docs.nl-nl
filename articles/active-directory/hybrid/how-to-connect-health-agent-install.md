@@ -17,13 +17,13 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897369"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376091"
 ---
-# <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
+# <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Agent Installation (Engelstalig)
 
 In dit document wordt beschreven hoe u de Azure AD Connect Health-agents installeert en configureert. U kunt de agents [hier](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) downloaden.
 
@@ -72,7 +72,7 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
     * [Download de Azure AD Connect Health-agent voor AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Zie de installatie-instructies](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
-## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>De Azure AD Connect Health-agent voor AD FS installeren
+## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installeren van de Azure AD Connect Health-Agent voor AD FS
 
 > [!NOTE]
 > De AD FS-server moet verschillen van de synchronisatieserver. Installeer AD FS-agent niet op uw synchronisatieserver.
@@ -373,7 +373,7 @@ Als de agent gedurende meer dan twee uur geen gegevens kan verzenden naar de Azu
 De rolparameter heeft momenteel de volgende waarden:
 
 * ADFS
-* Synchroniseren
+* Sync
 * ADDS
 
 > [!NOTE]
@@ -381,10 +381,10 @@ De rolparameter heeft momenteel de volgende waarden:
 >
 >
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
-* [Azure AD Connect Health Operations](how-to-connect-health-operations.md) (Azure AD Connect Health-bewerkingen)
+* [Azure AD Connect Health-bewerkingen](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health for Sync gebruiken](how-to-connect-health-sync.md)
 * [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)

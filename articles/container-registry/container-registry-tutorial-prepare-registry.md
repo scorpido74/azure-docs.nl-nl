@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454435"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384325"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: een Azure-containerregister met geo-replicatie voorbereiden
 
@@ -37,7 +37,7 @@ Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elk
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
 
@@ -73,7 +73,7 @@ Er wordt een kaart weergegeven met groene zeshoeken die Azure-regio's vertegenwo
 
  ![Kaart met regio's in Azure Portal][tut-map-01]
 
-Repliceer uw register naar de regio US - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
+Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
 
  ![Gebruikersinterface voor het maken van een replicatie in Azure Portal][tut-portal-04]
 
@@ -205,7 +205,7 @@ Gebruik vervolgens de opdracht `docker push` om de *acr-helloworld*-installatiek
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Omdat u het register voor de geo-replicatie hebt geconfigureerd, wordt uw installatiekopie automatisch gerepliceerd naar zowel de regio *US - west* als de regio *US - oost* met deze enkele `docker push`-opdracht.
+Omdat u het register voor de geo-replicatie hebt geconfigureerd, wordt uw installatiekopie automatisch gerepliceerd naar zowel de regio *VS - west* als de regio *VS - oost* met deze enkele `docker push`-opdracht.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

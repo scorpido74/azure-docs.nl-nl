@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516782"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365632"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual array implementeren: ingesteld als bestands server via Azure Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -37,13 +37,13 @@ Het installatie-en configuratie proces kan ongeveer 10 minuten duren. De informa
 Voordat u de virtuele StorSimple-matrix configureert en instelt, moet u ervoor zorgen dat:
 
 * U hebt een virtuele matrix ingericht en er verbinding mee gemaakt zoals beschreven in de [virtuele StorSimple-matrix inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) of [een virtuele StorSimple-matrix inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* U hebt de service registratie sleutel van de StorSimple Apparaatbeheer-service die u hebt gemaakt voor het beheren van StorSimple virtuele matrices. Zie [voor meer informatie stap 2: Haal de service registratie sleutel](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) op voor de virtuele StorSimple-matrix.
+* U hebt de service registratie sleutel van de StorSimple Apparaatbeheer-service die u hebt gemaakt voor het beheren van StorSimple virtuele matrices. Zie voor meer informatie [stap 2: de service registratie sleutel ophalen voor de](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) virtuele StorSimple-matrix.
 * Als dit de tweede of volgende virtuele matrix is die u registreert met een bestaande StorSimple-Apparaatbeheer service, moet u de versleutelings sleutel voor service gegevens hebben. Deze sleutel is gegenereerd toen het eerste apparaat is geregistreerd bij deze service. Als u deze sleutel kwijtraakt, raadpleegt u de versleutelings [sleutel voor service gegevens ophalen](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) voor uw virtuele StorSimple-matrix.
 
 ## <a name="step-by-step-setup"></a>Stapsgewijze installatie
 Gebruik de volgende stapsgewijze instructies voor het instellen en configureren van uw virtuele StorSimple-matrix.
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Stap 1: De lokale webgebruikersinterface instellen en de registratie van uw apparaat volt ooien
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Stap 1: de installatie van de lokale webgebruikersinterface volt ooien en uw apparaat registreren
 #### <a name="to-complete-the-setup-and-register-the-device"></a>De installatie volt ooien en het apparaat registreren
 1. Open een browser venster en maak verbinding met de lokale web-UI. Type:
    
@@ -52,7 +52,7 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
    Gebruik de verbindings-URL die u in de vorige stap hebt genoteerd. Er wordt een fout bericht weer gegeven met de melding dat er een probleem is met het beveiligings certificaat van de website. Klik op **door gaan naar deze webpagina**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Meld u aan bij de Web-UI van uw virtuele matrix als **StorSimpleAdmin**. Voer het beheerders wachtwoord voor het apparaat in die u in stap 3 hebt gewijzigd: Start de virtuele matrix in [een StorSimple-virtuele matrix inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) of in [een StorSimple-virtuele matrix inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
+2. Meld u aan bij de Web-UI van uw virtuele matrix als **StorSimpleAdmin**. Voer het beheerders wachtwoord voor het apparaat in dat u hebt gewijzigd in stap 3: de virtuele matrix starten in [een StorSimple-virtuele matrix inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) of in [een StorSimple-virtuele matrix inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. U wordt naar de **Start** pagina geleid. Op deze pagina worden de verschillende instellingen beschreven die nodig zijn om de virtuele matrix te configureren en te registreren bij de StorSimple-Apparaatbeheer service. De **netwerk instellingen**, **webproxy-instellingen**en **tijd instellingen** zijn optioneel. De enige vereiste instellingen zijn **Apparaatinstellingen** en **Cloud instellingen**.
@@ -70,13 +70,13 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
 6. Op de pagina **Apparaatinstellingen** :
    
    1. Wijs een unieke **naam** toe aan uw apparaat. Deze naam mag 1-15 tekens lang zijn en mag letter, cijfers en afbreek streepjes bevatten.
-   2. Klik op het pictogram ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) **Bestands server** voor het **type** apparaat dat u maakt. Met een bestands server kunt u gedeelde mappen maken.
+   2. Klik op het pictogram **Bestands server** ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) voor het **type** apparaat dat u maakt. Met een bestands server kunt u gedeelde mappen maken.
    3. Als uw apparaat een bestands server is, moet u het apparaat toevoegen aan een domein. Voer een **domein naam**in.
-   4. Klik op **Toepassen**.
+   4. Klik op **Apply** (Toepassen).
 7. Er wordt een dialoog venster weer gegeven. Voer uw domein referenties in de opgegeven indeling in. Klik op het vinkje. De domein referenties worden geverifieerd. Er wordt een fout bericht weer gegeven als de referenties onjuist zijn.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. Klik op **Toepassen**. Hiermee worden de apparaatinstellingen toegepast en gevalideerd.
+8. Klik op **Apply** (Toepassen). Hiermee worden de apparaatinstellingen toegepast en gevalideerd.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -88,12 +88,12 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
-   Op de pagina webproxy:
+   Op de pagina **webproxy** :
    
-   1. Geef de **URL** van de webproxy op in deze indeling: *&lt;http://host-IP&gt;-adres of FQDN:P sorteren-nummer*. Let op: HTTPS-Url's worden niet ondersteund.
+   1. Geef de **URL van de webproxy** op in deze indeling: *http://&lt;host-IP-adres of FQDN&gt;:P sorteren-nummer*. Let op: HTTPS-Url's worden niet ondersteund.
    2. Geef **verificatie** op als **basis** of **geen**.
    3. Als u verificatie gebruikt, moet u ook een **gebruikers naam** en **wacht woord**opgeven.
-   4. Klik op **Toepassen**. Hiermee worden de geconfigureerde web proxy-instellingen gevalideerd en toegepast.
+   4. Klik op **Apply** (Toepassen). Hiermee worden de geconfigureerde web proxy-instellingen gevalideerd en toegepast.
 10. (Optioneel) de tijd instellingen voor uw apparaat configureren, zoals de tijd zone en de primaire en secundaire NTP-servers. NTP-servers zijn vereist omdat uw apparaat tijd moet synchroniseren zodat het kan worden geverifieerd bij uw Cloud serviceproviders.
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -103,13 +103,13 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
     1. Selecteer in de vervolg keuzelijst de **tijd zone** op basis van de geografische locatie waar het apparaat wordt geïmplementeerd. De standaard tijd zone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
     2. Geef een **primaire NTP-server** voor uw apparaat op of accepteer de standaard waarde van time.Windows.com. Zorg ervoor dat in uw netwerk NTP-verkeer kan worden doorgegeven van uw datacenter naar internet.
     3. Geef eventueel een **secundaire NTP-server** op voor uw apparaat.
-    4. Klik op **Toepassen**. Hiermee worden de geconfigureerde tijd instellingen gevalideerd en toegepast.
+    4. Klik op **Apply** (Toepassen). Hiermee worden de geconfigureerde tijd instellingen gevalideerd en toegepast.
 11. Configureer de Cloud instellingen voor uw apparaat. In deze stap voltooit u de configuratie van het lokale apparaat en registreert u het apparaat met uw StorSimple-Apparaatbeheer service.
     
-    1. Voer de **service registratie sleutel** in die u in [stap 2 hebt ontvangen: Haal de service registratie sleutel](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) op voor de virtuele StorSimple-matrix.
-    2. Als dit de eerste keer is dat u het apparaat registreert bij deze service, wordt de versleutelings **sleutel voor service gegevens**weer gegeven. Kopieer deze sleutel en bewaar deze op een veilige plaats. Deze sleutel is vereist bij de service registratie sleutel om extra apparaten te registreren bij de StorSimple-Apparaatbeheer service. 
+    1. Voer de **service registratie sleutel** in die u in [stap 2 hebt ontvangen: de service registratie sleutel voor de](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) virtuele StorSimple-matrix ophalen.
+    2. Als dit de eerste keer is dat u het apparaat registreert bij deze service, wordt de **versleutelings sleutel voor service gegevens**weer gegeven. Kopieer deze sleutel en bewaar deze op een veilige plaats. Deze sleutel is vereist bij de service registratie sleutel om extra apparaten te registreren bij de StorSimple-Apparaatbeheer service. 
        
-       Als dit niet het eerste apparaat is dat u bij deze service registreert, moet u de versleutelings sleutel voor de service gegevens opgeven. Raadpleeg voor meer informatie de versleutelings [sleutel voor service gegevens](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) ophalen op uw lokale webinterface.
+       Als dit niet het eerste apparaat is dat u bij deze service registreert, moet u de versleutelings sleutel voor de service gegevens opgeven. Raadpleeg voor meer informatie de [versleutelings sleutel voor service gegevens](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) ophalen op uw lokale webinterface.
     3. Klik op **registreren**. Hiermee wordt het apparaat opnieuw opgestart. Mogelijk moet u 2-3 minuten wachten voordat het apparaat is geregistreerd. Nadat het apparaat opnieuw is opgestart, wordt u naar de aanmeldings pagina geleid.
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
@@ -120,7 +120,7 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
     
     ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
-## <a name="step-2-configure-the-device-as-file-server"></a>Stap 2: Het apparaat configureren als bestands server
+## <a name="step-2-configure-the-device-as-file-server"></a>Stap 2: het apparaat configureren als bestands server
 Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om de vereiste apparaatinstellingen te volt ooien.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Het apparaat als bestands server configureren
@@ -138,7 +138,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
     
    3. Er wordt een 256-bits AES-sleutel gebruikt in combi natie met de door de gebruiker gedefinieerde sleutel voor versleuteling. Geef een 32-teken sleutel op en voer de sleutel opnieuw in om deze te bevestigen. Noteer de sleutel in een app voor sleutel beheer voor toekomstig naslag doeleinden.
     
-   4. Klik op **vereiste instellingen configureren** om referenties voor het opslag account op te geven die u met uw apparaat wilt gebruiken. Klik op **nieuwe toevoegen** als er geen referenties voor het opslag account zijn geconfigureerd. **Zorg ervoor dat het opslag account dat u gebruikt, blok-blobs ondersteunt. Pagina-blobs worden niet ondersteund.** Meer informatie over het blok keren van [blobs en pagina](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)-blobs.
+   4. Klik op **vereiste instellingen configureren** om referenties voor het opslag account op te geven die u met uw apparaat wilt gebruiken. Klik op **nieuwe toevoegen** als er geen referenties voor het opslag account zijn geconfigureerd. **Zorg ervoor dat het opslag account dat u gebruikt, blok-blobs ondersteunt. Pagina-blobs worden niet ondersteund.** Meer informatie over het blok keren van [blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
       ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Ga als volgt te werk op de Blade **een opslag account referenties toevoegen** : 
@@ -155,7 +155,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
    
         ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **Configureren**.
+5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **Configureren**
    
    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
@@ -169,11 +169,11 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
    
    U kunt door gaan met het toevoegen van een share.
 
-## <a name="step-3-add-a-share"></a>Stap 3: Een share toevoegen
+## <a name="step-3-add-a-share"></a>Stap 3: een share toevoegen
 Voer in de [Azure-portal](https://portal.azure.com/) de volgende stappen uit om een share te maken.
 
 #### <a name="to-create-a-share"></a>Een share maken
-1. Selecteer het bestands server apparaat dat u in de vorige stap hebt geconfigureerd en klik op **...** (of klik met de rechter muisknop). Selecteer in het context menu de optie **share toevoegen**. U kunt ook op **+ share toevoegen** klikken op de opdracht balk van het apparaat.
+1. Selecteer het bestands server apparaat dat u in de vorige stap hebt geconfigureerd en klik op **...** (of met de rechter muisknop). Selecteer in het context menu de optie **share toevoegen**. U kunt ook op **+ share toevoegen** klikken op de opdracht balk van het apparaat.
    
    ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Geef de volgende share-instellingen op:
@@ -182,10 +182,10 @@ Voer in de [Azure-portal](https://portal.azure.com/) de volgende stappen uit om 
     
    2. Een optionele **Beschrijving** voor de share. De beschrijving helpt bij het identificeren van de eigen aren van shares.
     
-   3. Een **type** voor de share. Het type kan worden gelaagd of **lokaal vastgemaakt**, waarbij de standaard instelling wordt ingesteld op laag. Voor werk belastingen waarvoor lokale garanties, lage latenties en hogere prestaties zijn vereist, selecteert u een **lokaal** vastgemaakte share. Voor alle andere gegevens selecteert u een gelaagde share.
+   3. Een **type** voor de share. Het type kan worden **gelaagd** of **lokaal vastgemaakt**, waarbij de standaard instelling wordt ingesteld op laag. Voor werk belastingen waarvoor lokale garanties, lage latenties en hogere prestaties zijn vereist, selecteert u een **lokaal vastgemaakte** share. Voor alle andere gegevens selecteert u een **gelaagde** share.
       Een lokaal vastgemaakte share is dik ingericht en zorgt ervoor dat de primaire gegevens op de share lokaal op het apparaat blijven en niet overvloeit naar de Cloud. Een gelaagde share aan de andere kant is dun ingericht. Wanneer u een gelaagde share maakt, wordt 10% van de ruimte ingericht op de lokale laag en wordt 90% van de ruimte ingericht in de Cloud. Als u bijvoorbeeld een volume van 1 TB hebt ingericht, zou 100 GB zich in de lokale ruimte bevinden en wordt 900 GB in de Cloud gebruikt wanneer de gegevens lagen. Dit betekent dat als u alle lokale ruimte op het apparaat uitvoert, u geen gelaagde share kunt inrichten.
    
-   4. Wijs in het veld **standaard volledige machtigingen instellen op** de machtigingen toe aan de gebruiker of de groep die toegang tot deze share heeft. Geef de naam op van de gebruiker of de gebruikers groep in de *John\@contoso.com* -indeling. We raden u aan om een gebruikers groep (in plaats van één gebruiker) te gebruiken om beheerders bevoegdheden voor toegang tot deze shares toe te staan. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
+   4. Wijs in het veld **standaard volledige machtigingen instellen op** de machtigingen toe aan de gebruiker of de groep die toegang tot deze share heeft. Geef de naam van de gebruiker of de gebruikers groep op in *john\@contoso.com* -indeling. We raden u aan om een gebruikers groep (in plaats van één gebruiker) te gebruiken om beheerders bevoegdheden voor toegang tot deze shares toe te staan. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
    
    5. Klik op **toevoegen** om de share te maken. 
     
@@ -195,15 +195,15 @@ Voer in de [Azure-portal](https://portal.azure.com/) de volgende stappen uit om 
    
        ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-      Nadat de share is gemaakt met de opgegeven instellingen, wordt de Blade shares bijgewerkt met de nieuwe share. Bewaking en back-up zijn standaard ingeschakeld voor de share.
+      Nadat de share is gemaakt met de opgegeven instellingen, wordt de Blade **shares** bijgewerkt met de nieuwe share. Bewaking en back-up zijn standaard ingeschakeld voor de share.
    
       ![Een share toevoegen](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>Stap 4: Verbinding maken met de share
+## <a name="step-4-connect-to-the-share"></a>Stap 4: verbinding maken met de share
 U moet nu verbinding maken met een of meer shares die u in de vorige stap hebt gemaakt. Voer de volgende stappen uit op de Windows Server-host die is verbonden met uw virtuele StorSimple-matrix.
 
 #### <a name="to-connect-to-the-share"></a>Verbinding maken met de share
-1. Druk ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) op + R. Geef in het venster uitvoeren de  *&#92; &#92; &lt;naam&gt; van de bestands server* op als pad, waarbij de naam van de *Bestands server* wordt vervangen door de apparaatnaam die u aan de bestands server hebt toegewezen. Klik op **OK**.
+1. Druk op ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R. Geef in het venster uitvoeren de  *&#92; &#92;&lt;Bestands server naam&gt;* als het pad op, waarbij de naam van de *Bestands server* wordt vervangen door de apparaatnaam die u aan de bestands server hebt toegewezen. Klik op **OK**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Hiermee opent u bestanden Verkenner. U moet nu de shares kunnen zien die u als mappen hebt gemaakt. Selecteer een share (map) en dubbelklik erop om de inhoud te bekijken.
