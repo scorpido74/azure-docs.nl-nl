@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268237"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296148"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
@@ -39,7 +39,7 @@ Consulting Services-aanbiedingen die zijn gebaseerd op micro soft Dynamics 365, 
 Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie artikelen over [het publiceren van een Azure Consulting-Service](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) en [het publiceren van een managed services-aanbod voor Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
 
 > [!Note]
-> Advies Services in azure Marketplace moeten gebruikmaken van aanbiedingen die zijn gericht op een * * technische doel groep met focussen op *technische oplossingen en services van Azure.* \* * Consulting Services in AppSource moeten profiteren van de mogelijkheden die zijn gericht op hun expertise bij het leveren van kwaliteits oplossingen voor Dynamics 365, Power BI of PowerApps voor het vermelden van hun advies services-aanbod op AppSource
+> Advies Services in azure Marketplace moeten gebruikmaken van aanbiedingen die zijn gericht op een * * technische doel groep met focussen op *technische oplossingen en services van Azure.* \* * Consulting Services in AppSource moeten profiteren van de mogelijkheden die zijn gericht op hun expertise bij het leveren van kwaliteits oplossingen voor Dynamics 365, Power BI of Power apps om hun advies services-aanbod op AppSource te vermelden.
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ Partners moeten beschikken over een **Silver-of Gold-competentie** in het releva
 | Dynamics 365 Customer Insights | Moet ten minste één geslaagde productie-implementatie van [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) met ten minste 5 metingen en vijf segmenten hebben. |
 | Dynamics 365 Business Central | Moet goud of zilver gecertificeerd zijn voor [ondernemings resource planning-competentie](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) en moet de Cloud solution provider zijn voor ten minste drie Business Central-klanten. <br> <br> OF <br> <br> Moet een [zakelijke centrale toepassing hebben gepubliceerd in AppSource](https://appsource.microsoft.com/) |
 | Power BI | Moeten worden vermeld op de [Power bi partner show case](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
-|Power Apps | Moet in aanmerking komen voor geavanceerde voor delen in het [PowerApps-partnerschaps programma](https://aka.ms/PowerAppsPartner). |
+|Power Apps | Moet in aanmerking komen voor geavanceerde voor delen in het [Power apps-partner programma](https://aka.ms/PowerAppsPartner). |
 
 Aanvullende bronnen en ondersteuning:
 

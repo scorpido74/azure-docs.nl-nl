@@ -4,12 +4,12 @@ description: De lijst met alle meest gestelde vragen met betrekking tot de QnA M
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273388"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296096"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -224,7 +224,7 @@ Als u de inhoud van meerdere talen hebt, maakt u een afzonderlijke service voor 
 <details>
 <summary><b>Hoe kan ik een nieuwe bot maken met QnA Maker?</b></summary>
 
-**Antwoord**: Volg de instructies in [deze](./Tutorials/create-qna-bot.md) documentatie om uw Bot te maken met Azure bot service.
+**Antwoord**: Volg de instructies in [deze](./Quickstarts/create-publish-knowledge-base.md) documentatie om uw Bot te maken met Azure bot service.
 
 </details>
 
@@ -255,7 +255,7 @@ De eindpunt sleutel van de kennis basis is `QnAAuthkey` in de ABS-service.
 
 **Antwoord**: Volg deze stappen om de QnA Maker-service in te sluiten als een web-chat besturings element in uw website:
 
-1. Maak uw FAQ-bot door de volgende [instructies te volgen.](./Tutorials/create-qna-bot.md)
+1. Maak uw FAQ-bot door de volgende [instructies te volgen.](./Quickstarts/create-publish-knowledge-base.md)
 2. Schakel de volgende stappen uit om Web Chat [in te scha](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) kelen
 
 </details>

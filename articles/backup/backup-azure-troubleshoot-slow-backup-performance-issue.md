@@ -4,12 +4,12 @@ description: Biedt richt lijnen voor probleem oplossing waarmee u de oorzaak van
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603151"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295960"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problemen met langzame back-ups van bestanden en mappen in Azure Backup
 
@@ -44,19 +44,19 @@ We raden u ook ten zeerste aan de [Veelgestelde vragen over de Azure backup-serv
 
 Knel punten op de computer waarvan een back-up wordt gemaakt, kunnen vertragingen veroorzaken. Bijvoorbeeld: de mogelijkheid van de computer om te lezen van of te schrijven naar de schijf of beschik bare band breedte voor het verzenden van gegevens via het netwerk, kan knel punten veroorzaken.
 
-Windows biedt een ingebouwd hulp programma met de naam [Performance Monitor](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) om deze knel punten te detecteren.
+Windows biedt een ingebouwd hulp programma met de naam [Performance Monitor](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) om deze knel punten te detecteren.
 
 Hier volgen enkele prestatie meter items en bereiken die nuttig kunnen zijn bij het diagnosticeren van knel punten voor optimale back-ups.
 
 | Item | Status |
 | --- | --- |
-| Logische schijf (fysieke schijf)--% inactief |• 100% niet-actief tot 50% inactief = in orde</br>• 49% niet actief tot 20% inactief = waarschuwing of monitor</br>• 19% niet-actief tot 0% inactief = kritiek of van specificatie |
-| Logische schijf (fysieke schijf)--% gem. Lees-of schrijf tijd schijf |• 0,001 MS tot 0,015 MS = in orde</br>• 0,015 MS tot 0,025 MS = waarschuwing of monitor</br>• 0,026 MS of langer = kritiek of van de specificatie |
+| Logische schijf (fysieke schijf)--% inactief |* 100% niet-actief tot 50% inactief = in orde</br>* 49% niet actief tot 20% inactief = waarschuwing of monitor</br>* 19% niet-actief tot 0% inactief = kritiek of van specificatie |
+| Logische schijf (fysieke schijf)--% gem. Lees-of schrijf tijd schijf |* 0,001 MS tot 0,015 MS = in orde</br>* 0,015 MS tot 0,025 MS = waarschuwing of monitor</br>* 0,026 MS of meer = kritiek of van specificatie |
 | Logische schijf (fysieke schijf)--huidige wachtrij lengte voor de schijf (voor alle exemplaren) |80 aanvragen langer dan 6 minuten |
-| Geheugen--groep niet-wisselbaar bytes |• Minder dan 60% van verbruikte groep = in orde<br>• 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>• Groter dan 80% groep verbruikt = kritiek of van specificatie |
-| Geheugen--groeps wisselbaar bytes |• Minder dan 60% van verbruikte groep = in orde</br>• 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>• Groter dan 80% groep verbruikt = kritiek of van specificatie |
-| Geheugen-beschik bare mega bytes |• 50% vrije geheugen beschikbaar of meer = in orde</br>• 25% vrije beschik bare geheugen = monitor</br>• 10% van het beschik bare geheugen beschikbaar = waarschuwing</br>• Minder dan 100 MB of 5% van het beschik bare geheugen = kritiek of van de specificatie |
-| Processor--\%processor tijd (alle exemplaren) |• Minder dan 60% verbruikt = in orde</br>• 61% tot 90% verbruikt = monitor of waarschuwing</br>• 91% tot 100% verbruikt = kritiek |
+| Geheugen--groep niet-wisselbaar bytes |* Minder dan 60% van verbruikte groep = in orde<br>* 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>* Groter dan 80% groep verbruikt = kritiek of van specificatie |
+| Geheugen--groeps wisselbaar bytes |* Minder dan 60% van verbruikte groep = in orde</br>* 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>* Groter dan 80% groep verbruikt = kritiek of van specificatie |
+| Geheugen-beschik bare mega bytes |* 50% vrije geheugen beschikbaar of meer = in orde</br>* 25% vrije beschik bare geheugen = monitor</br>* 10% vrije beschik bare geheugen = waarschuwing</br>* Minder dan 100 MB of 5% van het beschik bare geheugen = kritiek of van specificatie |
+| Processor--\%processor tijd (alle exemplaren) |* Minder dan 60% verbruikt = in orde</br>* 61% tot 90% verbruikt = monitor of waarschuwing</br>* 91% tot 100% verbruikt = kritiek |
 
 > [!NOTE]
 > Als u vaststelt dat de infra structuur de culprit is, raden wij u aan de schijven regel matig te defragmenteren voor betere prestaties.

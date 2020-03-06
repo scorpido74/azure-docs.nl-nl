@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Meer informatie over het gebruik van Azure dev Spaces en Azure Kubernetes Services voor bedrijfs continuïteit en voor bereiding op nood herstel
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252387"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295824"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
 
@@ -27,11 +27,9 @@ Door ontwikkel ruimten in AKS-clusters in verschillende regio's in te scha kelen
 
 Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Zie [een Kubernetes-cluster maken met Azure Cloud shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell) voor meer informatie over het implementeren van een AKS-cluster dat compatibel is met Azure dev Spaces.
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>Ontwikkel ruimten inschakelen via de Azure Portal
 
-Klik op het navigatie-item voor de **dev Space** onder de eigenschappen van elk cluster in de Azure Portal. Kies vervolgens de optie voor het inschakelen van dev spaties.
+Selecteer de menu opdracht **dev Spaces** onder de instellingen van elk cluster in de Azure Portal. Kies vervolgens de optie om dev Spaces in te scha kelen en op te slaan.
 
 ![Ontwikkel ruimten inschakelen via Azure Portal](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ U moet de meest recente versies van uw Baseline set services implementeren voor 
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Selecteer het juiste AKS-cluster om te gebruiken voor dev-ruimten
 
-Zodra u een back-upcluster hebt geconfigureerd waarop de basis lijn van uw team wordt uitgevoerd, kunt u op elk gewenst moment snel overschakelen naar het back-upcluster. Vervolgens kunt u de afzonderlijke services die u aan het werk bent, opnieuw uitvoeren in dev Spaces.
+Zodra u een back-upcluster hebt geconfigureerd waarop de basis lijn van uw team wordt uitgevoerd, kunt u op elk gewenst moment snel overschakelen naar het back-upcluster. Vervolgens kunt u de afzonderlijke services die u aan het werk bent, opnieuw uitvoeren in onderliggende ontwikkel ruimten.
 
 Selecteer een ander cluster met de volgende CLI-opdracht:
 
