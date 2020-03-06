@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 4f75adba27c8173f918fa1afbd44f307d50eb995
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9507428e63b337b3d8419a833d03d081d494c522
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902021"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330801"
 ---
 # <a name="ship-an-application"></a>Een toepassing verzenden
 
-Bekijk de [spraak SDK licentie](https://aka.ms/csspeech/license201809), evenals de [software van derden kennisgevingen](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html) wanneer u de Azure Cognitive Services Speech SDK distribueert. Bekijk ook de [privacyverklaring van Microsoft](https://aka.ms/csspeech/privacy).
+Bekijk de [Speech SDK-licentie](https://aka.ms/csspeech/license201809), evenals de [kennisgevingen van software van derden](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html) wanneer u de Azure Cognitive Services Speech SDK distribueert. Lees ook de [privacyverklaring van micro soft](https://aka.ms/csspeech/privacy).
 
 Afhankelijk van het platform, er verschillende afhankelijkheden bestaan voor het uitvoeren van uw toepassing.
 
@@ -28,18 +28,18 @@ Afhankelijk van het platform, er verschillende afhankelijkheden bestaan voor het
 
 De Cognitive Services Speech SDK is getest op Windows 10 en Windows Server 2016.
 
-De Cognitive Services Speech SDK vereist [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) op het systeem. U kunt downloaden installatieprogramma's voor de nieuwste versie van de `Microsoft Visual C++ Redistributable for Visual Studio 2019` hier:
+De Cognitive Services Speech SDK vereist [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) op het systeem. U kunt installatie Programma's voor de nieuwste versie van de `Microsoft Visual C++ Redistributable for Visual Studio 2019` hier downloaden:
 
-- [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
-- [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
+- [-](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+- [x86](https://aka.ms/vs/16/release/vc_redist.x64.exe)
 
-Als uw toepassing gebruikmaakt van beheerde code, de `.NET Framework 4.6.1` of hoger is vereist op de doelcomputer.
+Als uw toepassing beheerde code gebruikt, is de `.NET Framework 4.6.1` of later vereist op de doel computer.
 
 De Media Foundation-bibliotheken moeten worden geïnstalleerd voor de invoer van de microfoon. Deze bibliotheken maken deel uit van Windows 10 en Windows Server 2016. Het is mogelijk het gebruik van de spraak-SDK zonder deze bibliotheken, zolang een microfoon niet wordt gebruikt als de audio-invoerapparaat.
 
 De vereiste spraak SDK-bestanden kunnen worden geïmplementeerd in dezelfde map als uw toepassing. Op deze manier uw toepassing hebben rechtstreeks toegang tot de bibliotheken. Zorg ervoor dat u selecteert de juiste versie (Win32/x64) die overeenkomt met uw toepassing.
 
-| Name | Functie |
+| Naam | Functie |
 | :--- | :------- |
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core-SDK, vereist voor de systeemeigen en beheerde implementatie |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | vereist voor de beheerde implementatie                      |
@@ -52,13 +52,13 @@ De vereiste spraak SDK-bestanden kunnen worden geïmplementeerd in dezelfde map 
 
 ## <a name="linux"></a>Linux
 
-De Speech SDK ondersteunt momenteel de distributies Ubuntu 16,04, Ubuntu 18,04 en Debian 9.
-Voor een systeemeigen toepassing, moet u voor het verzenden van de spraak-SDK-bibliotheek, `libMicrosoft.CognitiveServices.Speech.core.so`.
+De Speech SDK ondersteunt momenteel de Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8-distributies.
+Voor een systeem eigen toepassing moet u de Speech SDK-bibliotheek verzenden `libMicrosoft.CognitiveServices.Speech.core.so`.
 Zorg ervoor dat u selecteert u de versie (x86, x64) die overeenkomt met uw toepassing. Afhankelijk van de Linux-versie moet u ook mogelijk om op te nemen van de volgende afhankelijkheden:
 
-- De gedeelde bibliotheken van de GNU C-bibliotheek (met inbegrip van de bibliotheek POSIX Threads Programming `libpthreads`)
+- De gedeelde bibliotheken van de GNU C-bibliotheek (met inbegrip van de programmeer bibliotheek POSIX-threads, `libpthreads`)
 - De OpenSSL-bibliotheek (`libssl.so.1.0.0` of `libssl.so.1.0.2`)
-- De gedeelde bibliotheek voor ALSA toepassingen (`libasound.so.2`)
+- De gedeelde bibliotheek voor ALSA-toepassingen (`libasound.so.2`)
 
 Op Ubuntu moeten de GNU C-bibliotheken standaard al zijn geïnstalleerd. De laatste drie kan worden geïnstalleerd met behulp van deze opdrachten:
 
@@ -74,7 +74,17 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
+Op RHEL/CentOS 8:
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-- [Zie voor het herkennen van gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

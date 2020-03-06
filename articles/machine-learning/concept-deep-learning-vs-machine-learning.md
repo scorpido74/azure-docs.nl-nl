@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 1217028dc6c206633f13fe44951732809cd72d22
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/05/2020
+ms.openlocfilehash: a930dc3974536047096912505b9a786cf53c41b8
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762790"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328588"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -76,7 +76,7 @@ Net als bij afbeeldings herkenning moet in afbeeldings bijschriften voor een bep
 
 Doorgaans gebruiken installatie kopieën voor bijschriften van toepassingen convolutional Neural-netwerken om objecten in een installatie kopie te identificeren en vervolgens een recurrent Neural-netwerk te gebruiken om de labels te omzetten in consistente zinnen.
 
-### <a name="machine-translation"></a>Machinevertaling
+### <a name="machine-translation"></a>Automatische vertaling
 
 Met machine vertalingen worden woorden of zinnen uit de ene taal gebruikt en worden ze automatisch omgezet in een andere taal. De automatische vertaling van de machine is al lange tijd in de buurt, maar met een diep gaande leer proces worden indrukwekkende resultaten in twee specifieke gebieden gecentraliseerd: automatisch omzetten van tekst (en vertaling van spraak naar tekst) en automatische vertaling van afbeeldingen.
 

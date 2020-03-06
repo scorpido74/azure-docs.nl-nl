@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008363"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399326"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de API voor Azure Active Directory rapportage
 
@@ -50,13 +50,10 @@ Zie voor gedetailleerde instructies de [vereisten voor toegang tot de Azure Acti
 Het Microsoft Graph API-eind punt voor audit Logboeken is `https://graph.microsoft.com/beta/auditLogs/directoryAudits` en het Microsoft Graph API-eind punt voor aanmeldingen is `https://graph.microsoft.com/beta/auditLogs/signIns`. Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)voor meer gegevens.
 
 Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
-
-> [!NOTE]
->  De **https:\/\/graph.windows.net\/\<Tenant naam\>\/rapporten**\/eind punt wordt afgeschaft. Gebruik de nieuwe API-eind punten die hierboven worden beschreven om via een programma toegang te krijgen tot de activiteiten en beveiligings rapporten.
   
-## <a name="apis-with-graph-explorer"></a>Api's met Graph Explorer
+## <a name="apis-with-microsoft-graph-explorer"></a>Api's met Microsoft Graph Explorer
 
-U kunt de [MSGraph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeld-en controle-API-gegevens te verifiëren. Meld u aan bij uw account met behulp van beide aanmeld knoppen in de gebruikers interface van Graph Explorer en stel **AuditLog. Read. all** en **Directory. Read. all** in voor uw Tenant, zoals wordt weer gegeven.   
+U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeld-en controle-API-gegevens te verifiëren. Meld u aan bij uw account met behulp van beide aanmeld knoppen in de gebruikers interface van Graph Explorer en stel **AuditLog. Read. all** en **Directory. Read. all** in voor uw Tenant, zoals wordt weer gegeven.   
 
 ![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 

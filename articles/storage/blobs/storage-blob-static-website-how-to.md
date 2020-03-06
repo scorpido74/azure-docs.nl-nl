@@ -6,13 +6,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 05/28/2019
-ms.openlocfilehash: 35b5a85ea6fba87e785b581a7a20d0c28f312820
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 03/04/2020
+ms.openlocfilehash: e312cc0dc6c58bb33a737e1fc28dd6eb3578b764
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330254"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -20,25 +20,35 @@ U kunt statische inhoud (HTML-, CSS-, java script-en afbeeldings bestanden) rech
 
 Dit artikel laat u zien hoe u statische website-hosting kunt inschakelen met behulp van de Azure Portal, de Azure CLI of Power shell.
 
-<a id="portal" />
+## <a name="enable-static-website-hosting"></a>Statisch website hosting inschakelen
 
-## <a name="portal"></a>[Portal](#tab/azure-portal)
+Het hosten van statische websites is een functie die u moet inschakelen op het opslag account.
 
-Zie [zelf studie: een statische website hosten op Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)voor een stapsgewijze zelf studie.
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Nadat u de functie voor het hosten van statische websites hebt ingeschakeld, kunt u de pagina's van uw site vanuit een browser weer geven met behulp van de open bare URL van de website.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) om aan de slag te gaan.
 
-<a id="portal-find-url" />
+2. Zoek uw opslagaccount op en geef het accountoverzicht weer.
 
-### <a name="find-the-website-url-by-using-the-azure-portal"></a>De URL van de website zoeken met behulp van de Azure Portal
+3. Selecteer **Statische website** om de configuratiepagina voor statische websites weer te geven.
 
-In het deel venster dat wordt weer gegeven naast de pagina account overzicht van uw opslag account, selecteert u **statische website**. De URL van uw site wordt weer gegeven in het veld voor het **primaire eind punt** .
+4. Selecteer **Ingeschakeld** om het hosten van statische websites in te schakelen voor het opslagaccount.
 
-![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+5. Geef in het veld **naam van index document** een standaard index pagina op (bijvoorbeeld: *index. html*). 
+
+   De standaardindexpagina wordt weergegeven wanneer een gebruiker naar de hoofdmap van uw statische website navigeert.  
+
+6. Geef in het veld **pad naar fout document** een standaardfouten pagina op (bijvoorbeeld: *404. html*). 
+
+   De standaardfoutpagina wordt weergegeven wanneer een gebruiker probeert te navigeren naar een pagina die niet in uw statische website bestaat.
+
+7. Klik op **Opslaan**. Het eindpunt voor uw statische website wordt nu weergegeven in de Azure-portal. 
+
+    ![Het hosten van een statische website inschakelen voor een opslagaccount](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 <a id="cli" />
-
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -64,45 +74,9 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
 
    * Vervang de tijdelijke aanduiding `<index-document-name>` door de naam van het index document. Dit document is vaak "index. html".
 
-4. Objecten uploaden naar de *$Web* container vanuit een bronmap.
-
-   > [!NOTE]
-   > Als u Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u een `\` escape-teken toevoegt bij het verwijzen naar de `$web` container (bijvoorbeeld `\$web`). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
-
-   In dit voor beeld wordt ervan uitgegaan dat u opdrachten uit Azure Cloud Shell sessie uitvoert.
-
-   ```azurecli-interactive
-   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
-   ```
-
-   * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
-
-   * Vervang de tijdelijke aanduiding `<source-path>` door een pad naar de locatie van de bestanden die u wilt uploaden.
-
-   > [!NOTE]
-   > Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken (bijvoorbeeld: `C:\myFolder`.
-   >
-   > Als u Azure Cloud Shell gebruikt, moet u verwijzen naar een bestands share die zichtbaar is voor de Cloud Shell. Deze locatie kan de bestands share zijn van de Cloud share zelf of een bestaande bestands share die u koppelt van de Cloud Shell. Zie [bestanden in azure Cloud shell persistent](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)maken voor meer informatie over hoe u dit doet.
-
-<a id="cli-find-url" />
-
-### <a name="find-the-website-url-by-using-the-azure-cli"></a>De URL van de website zoeken met behulp van de Azure CLI
-
-U kunt inhoud vanuit een browser weer geven met behulp van de open bare URL van de website.
-
-Zoek de URL met behulp van de volgende opdracht:
-
-```azurecli-interactive
-az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
-```
-
-* Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
-
-* Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell" />
-
-## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U kunt statisch website hosting inschakelen met behulp van de module Azure PowerShell.
 
@@ -152,28 +126,101 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
 
    * Vervang de tijdelijke aanduiding `<index-document-name>` door de naam van het index document. Dit document is vaak "index. html".
 
-7. Objecten uploaden naar de *$Web* container vanuit een bronmap.
+---
 
-    ```powershell
-    # upload a file
-    set-AzStorageblobcontent -File "<path-to-file>" `
-    -Properties @{ ContentType = "text/html; charset=utf-8";} `
-    -Container `$web `
-    -Blob "<blob-name>" `
-    -Context $ctx
-     ```
+## <a name="upload-files"></a>Bestanden uploaden 
 
-   * Vervang de waarde van de tijdelijke aanduiding `<path-to-file>` door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld: `C:\temp\index.html`).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-   * Vervang de waarde van de tijdelijke aanduiding `<blob-name>` door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld: `index.html`).
+In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van de versie van Storage Explorer die wordt weer gegeven in de Azure Portal. U kunt echter ook de versie van [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken die buiten de Azure portal wordt uitgevoerd. U kunt [AzCopy](../common/storage-use-azcopy-v10.md), Power shell, CLI of een aangepaste toepassing gebruiken die bestanden kan uploaden naar de **$Web** container van uw account. Zie [zelf studie: een statische website op Blob Storage hosten](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)voor een stapsgewijze zelf studie die bestanden uploadt met Visual Studio code.
+
+1. Selecteer **Storage Explorer (preview)** .
+
+2. Vouw het knoop punt **BLOB containers** uit en selecteer vervolgens de container **$Web** .
+
+3. Kies de knop **uploaden** om bestanden te uploaden.
+
+   ![Bestanden uploaden](media/storage-blob-static-website/storage-blob-static-website-upload.png)
+
+4. Als u van plan bent om de inhoud van het bestand weer te geven in de browser, moet u ervoor zorgen dat het inhouds type van dat bestand is ingesteld op `text/html`. 
+
+   ![Inhouds typen controleren](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
+
+   >[!NOTE]
+   > Storage Explorer stelt deze eigenschap automatisch in op `text/html` voor gebruikelijke, herkende uitbrei dingen zoals `.html`. In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html`, wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud weer te geven. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Objecten uploaden naar de *$Web* container vanuit een bronmap.
+
+> [!NOTE]
+> Als u Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u een `\` escape-teken toevoegt bij het verwijzen naar de `$web` container (bijvoorbeeld `\$web`). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
+
+In dit voor beeld wordt ervan uitgegaan dat u opdrachten uit Azure Cloud Shell sessie uitvoert.
+
+```azurecli-interactive
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+```
+
+* Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
+
+* Vervang de tijdelijke aanduiding `<source-path>` door een pad naar de locatie van de bestanden die u wilt uploaden.
+
+> [!NOTE]
+> Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken (bijvoorbeeld: `C:\myFolder`.
+>
+> Als u Azure Cloud Shell gebruikt, moet u verwijzen naar een bestands share die zichtbaar is voor de Cloud Shell. Deze locatie kan de bestands share zijn van de Cloud share zelf of een bestaande bestands share die u koppelt van de Cloud Shell. Zie [bestanden in azure Cloud shell persistent](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)maken voor meer informatie over hoe u dit doet.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Objecten uploaden naar de *$Web* container vanuit een bronmap.
+
+```powershell
+# upload a file
+set-AzStorageblobcontent -File "<path-to-file>" `
+-Properties @{ ContentType = "text/html; charset=utf-8";} `
+-Container `$web `
+-Blob "<blob-name>" `
+-Context $ctx
+```
+
+* Vervang de waarde van de tijdelijke aanduiding `<path-to-file>` door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld: `C:\temp\index.html`).
+
+* Vervang de waarde van de tijdelijke aanduiding `<blob-name>` door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld: `index.html`).
+
+---
+
+## <a name="find-the-website-url-by-using-the-azure-portal"></a>De URL van de website zoeken met behulp van de Azure Portal
+
+U kunt de pagina's van uw site vanuit een browser weer geven met behulp van de open bare URL van de website.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+<a id="portal-find-url" />
+
+In het deel venster dat wordt weer gegeven naast de pagina account overzicht van uw opslag account, selecteert u **statische website**. De URL van uw site wordt weer gegeven in het veld voor het **primaire eind punt** .
+
+![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+<a id="cli-find-url" />
+
+Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
+
+```azurecli-interactive
+az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
+```
+
+* Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
+
+* Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell-find-url" />
 
-### <a name="find-the-website-url-by-using-powershell"></a>De URL van de website zoeken met behulp van Power shell
-
-U kunt inhoud vanuit een browser weer geven met behulp van de open bare URL van de website.
-
-Zoek de URL met behulp van de volgende opdracht:
+Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 
 ```powershell
  $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
@@ -184,9 +231,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-<a id="metrics" />
-
 ---
+
+<a id="metrics" />
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Metrische gegevens inschakelen op de vaste website pagina's
 

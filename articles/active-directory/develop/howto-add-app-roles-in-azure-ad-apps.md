@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834243"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399085"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -35,7 +35,7 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
 1. Kies in de lijst **Favorieten** of **alle directory's** de Active Directory Tenant waar u de toepassing wilt registreren.
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
@@ -44,10 +44,10 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 1. Bewerk het app-manifest door de `appRoles`-instelling te vinden en alle toepassings rollen toe te voegen.
 
      > [!NOTE]
-     > Elke definitie van een app-functie in dit manifest moet een andere geldige GUID hebben in de context van het manifest voor de eigenschap `id`.    
-     > 
+     > Elke definitie van een app-functie in dit manifest moet een andere geldige GUID hebben in de context van het manifest voor de eigenschap `id`.
+     >
      > De eigenschap `value` van elke definitie van een app-functie moet exact overeenkomen met de teken reeksen die worden gebruikt in de code in de toepassing. De eigenschap `value` mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout melding wanneer u het manifest opslaat.
-     
+
 1. Sla het manifest op.
 
 ### <a name="examples"></a>Voorbeelden
@@ -122,7 +122,7 @@ Wanneer u app-rollen hebt toegevoegd in uw toepassing, kunt u gebruikers en groe
 
 ## <a name="more-information"></a>Meer informatie
 
-- [Autorisatie in een web-app met behulp van Azure AD-toepassings rollen &amp; rol claims (voor beeld)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Autorisatie toevoegen met behulp van app-rollen & rollen claims aan een ASP.NET Core-web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Beveiligings groepen en toepassings rollen gebruiken in uw apps (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, nu met groeps claims en toepassings rollen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

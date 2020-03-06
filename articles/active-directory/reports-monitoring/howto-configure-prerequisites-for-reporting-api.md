@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273805"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399297"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
-De [Azure Active Directory (Azure AD) rapportage-API's](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze Api's aanroepen vanuit programmeer talen en hulpprogram ma's.
+De [Azure Active Directory (Azure AD) rapportage-API's](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze Api's aanroepen vanuit programmeer talen en hulpprogram ma's.
 
 De rapportage-API maakt gebruik van [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) om toegang tot de Web-api's te verlenen.
 
@@ -43,7 +43,7 @@ Als u toegang wilt krijgen tot de rapportage gegevens via de API, moet een van d
 
 - Beveiligings lezer
 
-- Beveiligingsbeheer
+- Beveiligingsbeheerder
 
 - Globale beheerder
 
@@ -191,7 +191,6 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het openen van activiteiten rapporten met behulp van de Microsoft Graph-API en de stappen voor de oplossing.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Fout: kan geen gebruikers rollen ophalen uit Microsoft Graph
 
  Meld u aan bij uw account met behulp van de aanmeldings knoppen in de interface van Graph Explorer om te voor komen dat er een fout optreedt wanneer u zich aanmeldt met Graph Explorer. 
@@ -204,7 +203,6 @@ Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijg
 
 ![Machtigingen voor gebruikers interface wijzigen](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Fout: de Tenant is niet B2C of de Tenant heeft geen Premium-licentie
 
 Voor toegang tot aanmeldings rapporten is een licentie voor Azure Active Directory Premium 1 (P1) vereist. Als dit fout bericht wordt weer gegeven tijdens het openen van de aanmeldingen, moet u ervoor zorgen dat uw Tenant is gelicentieerd met een Azure AD P1-licentie.
@@ -215,7 +213,7 @@ Voor toegang tot aanmeldings rapporten is een licentie voor Azure Active Directo
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fout: de machtiging voor het lezen van de Directory gegevens van de toepassing voor AAD ontbreekt 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Fout: de machtiging alle controle logboek gegevens lezen voor de toepassing ontbreekt in de app
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Fout: er ontbreekt een machtiging voor de toepassing Microsoft Graph-API voor het lezen van alle audit logboek gegevens
 
 Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Directory rapportage](howto-configure-prerequisites-for-reporting-api.md) om ervoor te zorgen dat uw toepassing wordt uitgevoerd met de juiste set machtigingen. 
 

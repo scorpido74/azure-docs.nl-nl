@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453231"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296351"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Verificatie toevoegen en gebruikers identiteiten beheren in uw mobiele apps
 
@@ -21,9 +21,9 @@ Met een weer gave van de gebruiker en hun gedrag in uw toepassing kunnen ontwikk
 Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw mobiele apps.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center auth](/appcenter/auth/) is een op de cloud gebaseerde service voor identiteits beheer die ontwikkel aars kunnen gebruiken om gebruikers te verifiëren en gebruikers identiteiten te beheren. App Center auth kan ook worden geïntegreerd met andere onderdelen van Visual Studio App Center. Ontwikkel aars kunnen de gebruikers-id gebruiken om [gebruikers gegevens](/appcenter/data/index) in andere services te bekijken en ook [Push meldingen naar gebruikers te verzenden in plaats van afzonderlijke apparaten](/appcenter/push/push-to-user#app-center-auth-set-identity). 
+[App Center auth](/appcenter/auth/) is een op de cloud gebaseerde service voor identiteits beheer die ontwikkel aars kunnen gebruiken om gebruikers te verifiëren en gebruikers identiteiten te beheren. App Center auth kan ook worden geïntegreerd met andere onderdelen van Visual Studio App Center. Ontwikkel aars kunnen de gebruikers-id gebruiken om [gebruikers gegevens](/appcenter/data/index) in andere services te bekijken en ook [Push meldingen naar gebruikers te verzenden in plaats van afzonderlijke apparaten](/appcenter/push/push-to-user#setting-user-identity). 
 
-**Belangrijke functies**
+**Belangrijkste functies**
 - Aangedreven door Azure Active Directory B2C (Azure AD B2C). 
     - Bedrijfs kwaliteit.
     - Maxi maal beschikbaar.
@@ -43,7 +43,7 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) is een identiteits beheer service van Business-to-consumer (B2C) die ontwikkel aars kunnen gebruiken om hun klanten te verifiëren. Met deze service met witte labels kunnen ontwikkel aars aanpassen en bepalen hoe gebruikers veilig werken met hun web-, Desktop-, mobiele of single-page toepassingen. Met Azure AD B2C kunnen gebruikers zich registreren, aanmelden, kunnen ze wachtwoorden herstellen en profielen bewerken. In Azure AD B2C is een formulier geïmplementeerd van de OpenID Connect- en OAuth 2.0-protocollen. 
 
-**Belangrijke functies**
+**Belangrijkste functies**
 - Klanten veilig verifiëren met hun favoriete ID-provider.
 - Beheer de identiteit en toegang van klanten.
 - Krijg ondersteuning voor aanmelding bij sociale media, zoals Facebook, GitHub, Google, LinkedIn, Twitter, WeChat en Weibo.
@@ -53,7 +53,7 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 - Aanmeld-, voorkeurs-en conversie gegevens vastleggen voor klanten.
 
 **Referentie**
-- [Azure Portal](https://portal.azure.com/)
+- [Azure-portal](https://portal.azure.com/)
 - [Documentatie over Azure AD B2C](/azure/active-directory-b2c/)
 - [Snelstartgidsen](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
 - [Voorbeelden](/azure/active-directory-b2c/code-samples)
@@ -63,14 +63,14 @@ Gebruik de volgende services om gebruikers authenticatie in te scha kelen in uw 
 - Externe resources, zoals Microsoft Office 365, de Azure Portal en duizenden andere SaaS-toepassingen (Software as a Service).
 - Interne resources, zoals apps op het bedrijfsnetwerk en intranet, samen met cloud-apps die door uw eigen organisatie zijn ontwikkeld.
 
-**Belangrijke functies**
+**Belangrijkste functies**
 - Naadloze en zeer veilige toegang door gebruikers te verbinden met de toepassingen die ze nodig hebben.
 - Uitgebreide identiteits beveiliging en verbeterde beveiliging voor identiteiten en toegang op basis van gebruiker, locatie, apparaat, gegevens en toepassings context.
 - Duizenden vooraf geïntegreerde apps voor commerciële en aangepaste toepassingen, zoals Office 365, Salesforce.com en Box.
 - De mogelijkheid om toegang op schaal te beheren.
 
 **Referentie**
-- [Azure Portal](https://portal.azure.com/)
+- [Azure-portal](https://portal.azure.com/)
 - [Wat is Azure AD?](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Aan de slag met Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Snelstartgidsen](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)

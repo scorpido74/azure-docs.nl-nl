@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845738"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399112"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
 
@@ -30,7 +30,7 @@ In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd do
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Machine Learning registreert de bewakings gegevens met behulp van Azure Monitor. Dit is een volledige stack monitoring-service in Azure. Azure Monitor biedt een volledige set functies voor het bewaken van uw Azure-resources. Het kan ook resources in andere Clouds en on-premises bewaken.
+Azure Machine Learning logt monitorgegevens met behulp van Azure Monitor, een volledige stackmonitorservice in Azure. Azure Monitor biedt een volledige set functies voor het bewaken van uw Azure-resources. Het kan ook resources in andere Clouds en on-premises bewaken.
 
 Begin met het artikel [Azure Monitor overzicht](/azure/azure-monitor/overview). Dit biedt een overzicht van de mogelijkheden van bewaking. In de volgende secties vindt u informatie over het gebruik van Azure Monitor met Azure Machine Learning.
 
@@ -38,7 +38,7 @@ Zie [verbruik en geschatte kosten](/azure/azure-monitor/platform/usage-estimated
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Gegevens van Azure Machine Learning bewaken
 
-Azure Machine Learning worden dezelfde soorten bewakings gegevens verzameld als andere Azure-resources, die worden beschreven in [gegevens van Azure-resources bewaken](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Zie [Azure machine learning monitoring data Naslag informatie](monitor-resource-reference.md) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens die door Azure machine learning zijn gemaakt.
+Azure Machine Learning verzamelt dezelfde soorten gegevens als andere Azure-resources, die worden beschreven in [Gegevens van Azure-resources bewaken](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Zie [Azure machine learning monitoring data Naslag informatie](monitor-resource-reference.md) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens die door Azure machine learning zijn gemaakt.
 
 ## <a name="analyzing-metric-data"></a>Metrische gegevens analyseren
 

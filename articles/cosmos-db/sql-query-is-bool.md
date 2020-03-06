@@ -1,18 +1,18 @@
 ---
-title: IS_BOOL in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie IS_BOOL in Azure Cosmos DB.
+title: IS_BOOL in Azure Cosmos DB query taal
+description: Meer informatie over de functie IS_BOOL van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cb928558483a703a554d3eb6eb049af544f72eb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349887"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303865"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL (Azure Cosmos DB)
  Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Booleaanse waarde is.  
@@ -25,7 +25,7 @@ IS_BOOL(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expr*  
+*expressie*  
    Is een expressie.  
   
 ## <a name="return-types"></a>Retour typen
@@ -34,7 +34,7 @@ IS_BOOL(<expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten gecontroleerd van JSON-Boole-, getal-, teken reeks-, null-, object-, matrix-en niet-gedefinieerde typen met behulp van de functie `IS_BOOL`.  
+  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_BOOL`.  
   
 ```sql
 SELECT   
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
 ```  
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

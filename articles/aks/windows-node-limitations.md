@@ -4,12 +4,12 @@ description: Meer informatie over de bekende beperkingen bij het uitvoeren van W
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298169"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -69,7 +69,7 @@ Tijdens de preview-periode bieden Windows-knooppunt groepen geen ondersteuning v
 
 ## <a name="how-many-node-pools-can-i-create"></a>Hoeveel knooppunt groepen kan ik maken?
 
-Het AKS-cluster kan Maxi maal acht (8) knooppunt Pools hebben. U kunt Maxi maal 400 knoop punten in deze knooppunt groepen hebben. [Beperkingen van de knooppunt groep][nodepool-limitations].
+Het AKS-cluster kan Maxi maal 10 knooppunt groepen bevatten. U kunt Maxi maal 1000 knoop punten in deze knooppunt groepen hebben. [Beperkingen van de knooppunt groep][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Wat kan ik mijn Windows-knooppunt groepen noemen?
 

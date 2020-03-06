@@ -3,12 +3,12 @@ title: Een managed services-aanbod publiceren naar Azure Marketplace
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten worden vrijgegeven aan het beheer van de gedelegeerde resources van Azure.
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155244"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328939"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -59,7 +59,7 @@ Voer de volgende secties uit in de sectie **Plan Details** :
 |**Titel**     | Beschrijvende naam voor het plan dat moet worden weer gegeven. Maximale lengte van 50 tekens.        |
 |**Samenvatting**     | Beknopt overzicht van het plan voor weer gave onder de titel. Maximale lengte van 100 tekens.        |
 |**Beschrijving**     | Beschrijvende tekst voor een gedetailleerde uitleg van het plan.         |
-|**Factureringsmodel**     | Er zijn twee facturerings modellen die hier worden weer gegeven, maar u moet **Bring your own License** voor aanbiedingen voor beheerde services kiezen. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.   |
+|**Facturerings model**     | Er zijn twee facturerings modellen die hier worden weer gegeven, maar u moet **Bring your own License** voor aanbiedingen voor beheerde services kiezen. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.   |
 |**Is dit een privé abonnement?**     | Hiermee wordt aangegeven of de SKU privé of openbaar is. De standaard waarde is **Nee** (openbaar). Als u deze selectie verlaat, is uw abonnement niet beperkt tot specifieke klanten (of een bepaald aantal klanten). Nadat u een openbaar abonnement hebt gepubliceerd, kunt u dit later niet meer wijzigen in persoonlijk. Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja**. Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 20.000 abonnementen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren. Zie voor meer informatie [persoonlijke sku's en abonnementen](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
 
 > [!IMPORTANT]
@@ -155,9 +155,6 @@ Nadat een klant uw aanbieding heeft toegevoegd, kunnen ze [een of meer specifiek
 > Delegering moet worden uitgevoerd door een niet-gast account in de Tenant van de klant waarvan de [eigenaar ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Nadat de klant een abonnement (of een of meer resource groepen binnen een abonnement) heeft gedelegeerd, wordt de resource provider **micro soft. ManagedServices** geregistreerd voor dat abonnement en kunnen gebruikers in uw Tenant toegang krijgen tot de gedelegeerde resources volgens de autorisaties in uw aanbieding.
-
-> [!NOTE]
-> Op dit moment kunnen abonnementen (of resource groepen binnen een abonnement) niet worden gedelegeerd als het abonnement gebruikmaakt van Azure Databricks. Als er al een abonnement (of resource groepen binnen een abonnement) is gedelegeerd, is het op dit moment niet mogelijk om Databricks-werk ruimten in dat abonnement te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

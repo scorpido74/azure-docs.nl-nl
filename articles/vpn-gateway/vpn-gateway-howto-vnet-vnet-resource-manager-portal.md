@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654724"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399198"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -23,7 +23,7 @@ Dit artikel helpt u om virtuele netwerken (VNet's) te verbinden met behulp van h
 De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-implementatiemodel en maken gebruik van Azure Portal. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -75,16 +75,16 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
 
 - **Virtuele-netwerkinstellingen**
     - **Naam**: VNet1
-    - **Adres ruimte**: 10.11.0.0/16
+    - **Adres ruimte**: 10.1.0.0/16
     - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
     - **Resource groep**: TestRG1
     - **Locatie**: VS-Oost
     - **Subnet**
         - **Naam**: front-end
-        - **Adres bereik**: 10.11.0.0/24
+        - **Adres bereik**: 10.1.0.0/24
     - **Gatewaysubnet**:
         - **Naam**: *GatewaySubnet* wordt aangevuld
-        - **Adres bereik**: 10.11.255.0/27
+        - **Adres bereik**: 10.1.255.0/27
 
 - **Instellingen voor virtuele-netwerkgateway**
     - **Naam**: VNet1GW
@@ -126,11 +126,6 @@ Als u al beschikt over een VNet, controleert u of de instellingen compatibel zij
 
 ### <a name="to-create-a-virtual-network"></a>Een virtueel netwerk maken
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>Extra adresruimte toevoegen en subnetten maken
-Wanneer het VNet is gemaakt, kunt u er extra adresruimte en subnetten aan toevoegen.
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>De gateway van een virtueel netwerk maken
 In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU. Zie de [voorbeeldinstellingen](#example-settings) als u deze configuratie bij wijze van oefening maakt.

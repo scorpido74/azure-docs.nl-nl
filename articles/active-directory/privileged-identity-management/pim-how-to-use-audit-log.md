@@ -1,6 +1,6 @@
 ---
-title: Controle rapport voor Azure AD-rollen weer geven in PIM-Azure AD | Microsoft Docs
-description: Meer informatie over het weer geven van de controle geschiedenis voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
+title: Audit logboek rapport weer geven voor Azure AD-rollen in azure AD PIM | Microsoft Docs
+description: Meer informatie over het weer geven van de controle logboek geschiedenis voor Azure AD-rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498510"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329499"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>De controle geschiedenis voor Azure AD-rollen in PIM weer geven
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>De controle geschiedenis voor Azure AD-rollen in Privileged Identity Management weer geven
 
 U kunt de controle geschiedenis van de Privileged Identity Management (PIM) gebruiken om alle roltoewijzingen en activeringen in de afgelopen 30 dagen voor alle geprivilegieerde rollen weer te geven. Als u de volledige controle geschiedenis van de activiteiten in uw Azure Active Directory-organisatie (Azure AD) wilt zien, met inbegrip van beheerder, eind gebruiker en synchronisatie activiteit, kunt u de [Azure Active Directory beveiligings-en activiteiten rapporten](../reports-monitoring/overview-reports.md)gebruiken.
 
@@ -32,7 +32,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Selecteer het tabblad voor uw versie")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
@@ -50,7 +50,7 @@ Resource controle geeft u een overzicht van alle activiteiten die zijn gekoppeld
 
 1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 
-    ![Resource audit lijst met filters](media/pim-how-to-use-audit-log/resource-audit.png)
+    ![Resource audit lijst met filters](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>Mijn controle weer geven
 
@@ -66,7 +66,7 @@ Met mijn controle kunt u uw activiteiten voor persoonlijke rollen weer geven.
 
 1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 
-    ![Controle lijst voor de huidige gebruiker](media/pim-how-to-use-audit-log/audit-time-span.png)
+    ![Controle lijst voor de huidige gebruiker](media/azure-pim-resource-rbac/my-audit-time.png)
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
@@ -84,7 +84,7 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
 
     Afhankelijk van de controle geschiedenis wordt een kolom diagram samen met de totale activeringen, maximum aantal activeringen per dag en gemiddeld aantal activeringen per dag weer gegeven.
 
-    ![Controle geschiedenis van Directory rollen](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Controle geschiedenis van Directory rollen weer geven")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
     Onder aan de pagina wordt een tabel weer gegeven met informatie over elke actie in de beschik bare controle geschiedenis. De kolommen hebben de volgende betekenissen:
 
@@ -113,6 +113,28 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
     ![Deel venster grafiek parameters bijwerken](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
 1. Selecteer **gereed** om de gefilterde controle geschiedenis weer te geven.
+
+## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>Reden, goed keurder en ticket nummer voor goedkeurings gebeurtenissen ophalen
+
+1. Meld u aan bij de [Azure Portal](https://aad.portal.azure.com) met privileged Role Administrators en open Azure AD.
+1. Selecteer **audit logboeken**.
+1. Gebruik het **service** filter om alleen controle gebeurtenissen voor de privileged Identity Management-service weer te geven. Op de pagina **controle logboeken** kunt u het volgende doen:
+
+    - Zie de reden voor een controle gebeurtenis in de kolom **status reden** .
+    - Zie de goed keurder in de kolom **geïnitieerd door (actor)** voor de gebeurtenis ' lid toevoegen aan een Role-aanvraag goedgekeurd '.
+
+    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/filter-audit-logs.png "Het controle logboek voor de PIM-service filteren")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+
+1. Selecteer een gebeurtenis in het controle logboek om het ticket nummer weer te geven op het tabblad **activiteit** van het **detail** venster.
+  
+    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Controleer het ticket nummer voor de controle gebeurtenis")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+
+1. U kunt de aanvrager bekijken (persoon die de rol activeert) op het tabblad **doelen** van het **detail** venster voor een controle gebeurtenis. Er zijn twee doel typen voor Azure AD-rollen:
+
+    - De rol (**type** = rol)
+    - De aanvrager (**type** = gebruiker)
+
+Normaal gesp roken is de gebeurtenis audit logboek direct boven de goedkeurings gebeurtenis een gebeurtenis voor ' lid toevoegen aan rol is voltooid ' waarbij het **geïnitieerd door (actor)** de aanvrager is. In de meeste gevallen hoeft u de aanvrager niet te vinden in de goedkeurings aanvraag vanuit een controle perspectief.
 
 ---
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669570"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361950"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
 
@@ -206,38 +206,38 @@ Azure Monitor voor VM's configureert een Log Analytics werk ruimte voor het verz
 
 |Objectnaam |Naam van het prestatiemeteritem |
 |------------|-------------|
-|Logische schijf |% vrije ruimte |
+|Logische schijf |Percentage vrije ruimte |
 |Logische schijf |Gemiddelde Lees tijd schijf |
 |Logische schijf |Gemiddelde tijd schijf overdracht |
 |Logische schijf |Gemiddelde schrijf tijd schijf |
-|Logische schijf |bytes per seconde |
-|Logische schijf |gelezen bytes per seconde |
-|Logische schijf |leesbewerkingen per seconde |
+|Logische schijf |Schijf Bytes per seconde |
+|Logische schijf |Bytes gelezen op schijf/sec |
+|Logische schijf |Schijf lezen per seconde |
 |Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |geschreven Bytes per seconde |
-|Logische schijf |schrijfbewerkingen per seconde |
+|Logische schijf |Bytes geschreven naar schijf/sec |
+|Logische schijf |Schijf schrijven per seconde |
 |Logische schijf |Beschikbare Megabytes |
 |Geheugen |Beschikbare megabytes (MB) |
-|Netwerkadapter |Ontvangen bytes per seconde |
-|Netwerkadapter |Verzonden bytes per seconde |
-|Processor |Percentage processortijd |
+|-Netwerkadapter |Ontvangen bytes per seconde |
+|-Netwerkadapter |Verzonden bytes per seconde |
+|Processor |% Processortijd |
 
 ### <a name="linux-performance-counters"></a>Linux-prestatiemeteritems
 
 |Objectnaam |Naam van het prestatiemeteritem |
 |------------|-------------|
 |Logische schijf |Percentage gebruikte ruimte |
-|Logische schijf |gelezen bytes per seconde |
-|Logische schijf |leesbewerkingen per seconde |
+|Logische schijf |Bytes gelezen op schijf/sec |
+|Logische schijf |Schijf lezen per seconde |
 |Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |geschreven Bytes per seconde |
-|Logische schijf |schrijfbewerkingen per seconde |
+|Logische schijf |Bytes geschreven naar schijf/sec |
+|Logische schijf |Schijf schrijven per seconde |
 |Logische schijf |Beschikbare Megabytes |
 |Logische schijf |Logische schijf Bytes per seconde |
 |Geheugen |Beschikbaar geheugen in megabytes |
 |Netwerk |Totaal aantal ontvangen Bytes |
 |Netwerk |Totaal aantal verzonden Bytes |
-|Processor |Percentage processortijd |
+|Processor |% Processortijd |
 
 ## <a name="management-packs"></a>Management packs
 

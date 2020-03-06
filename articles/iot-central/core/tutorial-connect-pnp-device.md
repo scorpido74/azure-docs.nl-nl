@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602596"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329439"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Zelf studie: een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat (preview) te maken en dit te verbinden met uw IoT Central toepassing
 
@@ -169,10 +169,10 @@ U gebruikt de SDK van het apparaat om de gegenereerde stub voor de apparaatcode 
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. Wanneer de build is voltooid, wordt de toepassing uitgevoerd op dezelfde opdracht prompt. Vervang `<scopeid>` en `<primarykey>` door de waarden die u eerder hebt genoteerd:
+1. Wanneer de build is voltooid, wordt de toepassing uitgevoerd op dezelfde opdracht prompt. Vervang `<scopeid>` en `<devicekey>` door de waarden die u eerder hebt genoteerd:
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
 1. De toepassing wordt gestart met het verzenden van gegevens naar IoT Hub. Soms ziet u de fout `Error registering device for DPS` de eerste keer dat u de vorige opdracht uitvoert. Als u deze fout ziet, voert u de opdracht opnieuw uit.

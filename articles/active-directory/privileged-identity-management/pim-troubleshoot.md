@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596697"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299666"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Problemen met Privileged Identity Management oplossen
 
@@ -34,9 +34,9 @@ Als een actieve eigenaar of beheerder van de gebruikers toegang voor een Azure-r
 
 Dit probleem kan zich voordoen wanneer de rol beheerder voor gebruikers toegang voor de PIM-Service-Principal per ongeluk is verwijderd uit het abonnement. De Privileged Identity Management-service kan alleen toegang krijgen tot Azure-resources als de MS-PIM-Service-Principal altijd wordt toegewezen aan de [rol van beheerder voor gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) via het Azure-abonnement.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
-Wijs de rol beheerder voor gebruikers toegang toe aan de privileged Identity Management Service Principal Name (MS-PIM) op abonnements niveau. Deze toewijzing moet de privileged Identity Management-service toestaan om toegang te krijgen tot de Azure-resources. De rol kan worden toegewezen op een niveau van de beheer groep of op het abonnements niveau, afhankelijk van uw vereisten. Zie [een toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)voor meer informatie over service-principals.
+Wijs de rol beheerder voor gebruikers toegang toe aan de privileged Identity Management Service Principal Name (MS-PIM) op abonnements niveau. Deze toewijzing moet de privileged Identity Management-service toestaan om toegang te krijgen tot de Azure-resources. De rol kan worden toegewezen op een niveau van de beheer groep of op het abonnements niveau, afhankelijk van uw vereisten. Zie [een toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)voor meer informatie over service-principals.
 
 ## <a name="next-steps"></a>Volgende stappen
 

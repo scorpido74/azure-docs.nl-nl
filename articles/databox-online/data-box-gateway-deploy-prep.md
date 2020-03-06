@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303202"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Zelf studie: de implementatie van Azure Data Box Gateway voorbereiden
 
@@ -94,7 +94,7 @@ Als u een Data Box Gateway resource wilt maken, voert u de volgende stappen uit 
     - Of de Azure Government Portal op deze URL: [https://portal.azure.us](https://portal.azure.us). Ga voor meer informatie naar [verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. Selecteer in het linkerdeel venster **+ een resource maken**. Zoeken naar **Data Box EDGE/Data Box gateway**. Selecteer Data Box Edge/Data Box Gateway. Selecteer **Maken**.
-3. Kies het abonnement dat u wilt gebruiken voor Data Box Gateway apparaat. Selecteer de regio waar u de Data Box Gateway resource wilt implementeren. Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar. Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. Selecteer in de optie **Data Box gateway** **maken**.
+3. Kies het abonnement dat u wilt gebruiken voor Data Box Gateway apparaat. Selecteer de regio waar u de Data Box Gateway resource wilt implementeren. Zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor een lijst met alle regio's waar de Azure stack Edge-resource beschikbaar is. Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. Selecteer in de optie **Data Box gateway** **maken**.
 
     ![Data Box Gateway-service zoeken](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -109,8 +109,8 @@ Als u een Data Box Gateway resource wilt maken, voert u de volgende stappen uit 
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Name   | Een beschrijvende naam om de resource aan te duiden.<br>De naam is tussen 2 en 50 tekens lang en kan letters, cijfers en afbreekstreepjes bevatten.<br> De naam begint en eindigt met een letter of cijfer.        |   
-    |Regio     |Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar voor het implementeren van uw resource. Alle overheids regio's die zijn opgenomen in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) zijn beschikbaar voor de Azure Government. <br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
+    |Naam   | Een beschrijvende naam om de resource aan te duiden.<br>De naam is tussen 2 en 50 tekens lang en kan letters, cijfers en afbreekstreepjes bevatten.<br> De naam begint en eindigt met een letter of cijfer.        |   
+    |Regio     |Zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor een lijst met alle regio's waar de Azure stack Edge-resource beschikbaar is. Alle overheids regio's die zijn opgenomen in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) zijn beschikbaar voor de Azure Government. <br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
     
     ![Data Box Gateway-resource maken](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

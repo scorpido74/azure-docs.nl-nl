@@ -1,18 +1,18 @@
 ---
-title: IS_NULL in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie IS_NULL in Azure Cosmos DB.
+title: IS_NULL in Azure Cosmos DB query taal
+description: Meer informatie over de functie IS_NULL van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 20486b8f8c0436d264135bb09952345548222216
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349857"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303831"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
  Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie null is.  
@@ -25,7 +25,7 @@ IS_NULL(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expr*  
+*expressie*  
    Is een expressie.  
   
 ## <a name="return-types"></a>Retour typen
@@ -34,7 +34,7 @@ IS_NULL(<expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten gecontroleerd van JSON-Boole-, getal-, teken reeks-, null-, object-, matrix-en niet-gedefinieerde typen met behulp van de functie `IS_NULL`.  
+  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_NULL`.  
   
 ```sql
 SELECT   
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

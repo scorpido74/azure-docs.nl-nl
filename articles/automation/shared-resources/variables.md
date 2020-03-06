@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303049"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabele assets in Azure Automation
 
@@ -33,9 +33,6 @@ Omdat Automation-variabelen persistent zijn, zijn ze beschikbaar, zelfs als het 
 Wanneer u een variabele maakt, kunt u de versleuteling en opslag opgeven door Azure Automation als een beveiligd activum. Andere beveiligde assets zijn referenties, certificaten en verbindingen. Azure Automation versleutelt deze assets en slaat ze op met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. De sleutel wordt opgeslagen in een door het systeem beheerde Key Vault. Voordat u een beveiligde Asset opslaat, wordt Azure Automation de sleutel uit de Key Vault geladen en wordt deze vervolgens gebruikt om de Asset te versleutelen. 
 
 Azure Automation elke versleutelde variabele veilig op te slaan. De waarde kan niet worden opgehaald met de cmdlet [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) die wordt geleverd als onderdeel van de module Azure PowerShell. De enige manier om een versleutelde waarde op te halen, is met behulp van de **Get-AutomationVariable-** activiteit in een RUNBOOK of DSC-configuratie.
-
->[!NOTE]
->Als u de versleuteling voor een variabele wilt verwijderen, moet u de variabele verwijderen en opnieuw maken als niet-versleuteld.
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
@@ -96,6 +93,9 @@ De functies in de volgende tabel worden gebruikt om variabelen in een Python2-ru
 1. Klik vanuit uw Automation-account op de tegel **assets** en selecteer vervolgens op de Blade **assets** de optie **variabelen**.
 2. Selecteer **een variabele toevoegen**op de tegel **variabelen** .
 3. Voltooi de opties op de Blade **nieuwe variabele** en klik vervolgens op **maken** om de nieuwe variabele op te slaan.
+
+>[!NOTE]
+>Als u de versleuteling voor een variabele wilt verwijderen, moet u de variabele verwijderen en opnieuw maken als niet-versleuteld.
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Een nieuwe variabele maken met Windows Power shell
 

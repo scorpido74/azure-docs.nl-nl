@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838697"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388477"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Een klassieke studio-webservice (klassiek) opnieuw trainen en implementeren
 
@@ -47,24 +47,11 @@ U kunt Score-eind punten toevoegen met behulp van de voorbeeld code die in deze 
 1. Klik in Machine Learning Studio (klassiek) in de linker navigatie kolom op Web Services.
 1. Klik onder aan het dash board van de webservice op **voor beeld van eind punten beheren**.
 1. Klik op **Toevoegen**.
-1. Typ een naam en beschrijving voor het nieuwe eind punt. Selecteer het logboek registratie niveau en of voorbeeld gegevens zijn ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
+1. Typ een naam en beschrijving voor het nieuwe eindpunt. Selecteer het niveau van logboekregistratie en of de voorbeeldgegevens is ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Het getrainde model van het toegevoegde eind punt bijwerken
 
 ### <a name="retrieve-patch-url"></a>De PATCH-URL ophalen
-
-### <a name="option-1-programmatically"></a>Optie 1: programmatisch
-
-Voer de volgende stappen uit om de juiste PATCH-URL via een programma te verkrijgen:
-
-1. Voer de voorbeeld code [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) uit.
-1. Zoek de *HelpLocation* -waarde uit de uitvoer van AddEndpoint en kopieer de URL.
-
-   ![HelpLocation in de uitvoer van het addEndpoint-voor beeld.](./media/retrain-classic/addEndpoint-output.png)
-1. Plak de URL in een browser om naar een pagina te navigeren die hulp koppelingen voor de webservice biedt.
-1. Klik op de koppeling **resource bijwerken** om de Help-pagina voor de patch te openen.
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>Optie 2: de Azure Machine Learning Web Services-portal gebruiken
 
 Volg deze stappen om de juiste PATCH-URL op te halen met behulp van de webportal:
 
@@ -101,8 +88,8 @@ De volgende voorbeeld code laat zien hoe u de *BaseLocation*, *RelativeLocation*
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,7 +118,7 @@ De *apiKey* en de *endpointUrl* voor de oproep kunnen worden verkregen via het d
 
 De waarde van de para meter *name* in *resources* moet overeenkomen met de resource naam van het opgeslagen getrainde model in het voorspellende experiment. De resource naam ophalen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik in het linkermenu op **machine learning**.
 1. Klik onder naam op uw werk ruimte en klik vervolgens op **webservices**.
 1. Klik onder naam op **optellings model [voorspellend exp.]** .

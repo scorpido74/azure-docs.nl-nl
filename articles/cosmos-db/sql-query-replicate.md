@@ -4,15 +4,15 @@ description: Meer informatie over de functie voor het REPLICEREN van SQL-functie
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5e0b7f29c503daa8a95dcc46238e60728c0cec50
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349572"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302182"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLICEREN (Azure Cosmos DB)
  Herhaalt een tekenreekswaarde een opgegeven aantal keren.
@@ -29,7 +29,7 @@ REPLICATE(<str_expr>, <num_expr>)
    Is een teken reeks expressie.
   
 *num_expr*  
-   Een numerieke expressie is. Als *num_expr* negatief of niet-eindig is, wordt het resultaat niet gedefinieerd.
+   Een numerieke expressie is. Als *num_expr* negatief of niet eindig is, is het resultaat niet gedefinieerd.
   
 ## <a name="return-types"></a>Retour typen
   
@@ -51,6 +51,10 @@ SELECT REPLICATE("a", 3) AS replicate
 ```json
 [{"replicate": "aaa"}]
 ```  
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

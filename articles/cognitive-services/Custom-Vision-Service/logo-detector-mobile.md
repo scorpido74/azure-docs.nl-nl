@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970224"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398991"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Zelf studie: Azure service-logo's herkennen in camera afbeeldingen
 
@@ -107,7 +107,7 @@ Voor de app is een service-principal-account in Azure vereist om de services te 
 
 U kunt als volgt een service-principal maken met behulp van Azure Cloud Shell of de Azure CLI. Meld u aan en selecteer het abonnement dat u wilt gebruiken om te beginnen.
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +115,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 Vervolgens maakt u uw service-principal. (Dit proces kan enige tijd duren.)
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 

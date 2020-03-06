@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161219"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300109"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integreren met Azure Active Directory
 
@@ -38,13 +38,13 @@ Er zijn verschillende manieren waarop uw toepassing kan worden geïntegreerd met
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Bladeren naar gebruikers, het inrichten van gebruikers beheren en de toegang tot uw toepassing controleren
 
-**Blader naar gebruikers in de Directory.**  Gebruik de Graph API om gebruikers te helpen bij het zoeken en zoeken naar andere personen in hun organisatie bij het uitnodigen van anderen of het verlenen van toegang, in plaats van dat ze e-mail adressen moeten typen. Gebruikers kunnen bladeren door gebruik te maken van een vertrouwde Adresboek stijl interface, inclusief het weer geven van de details van de organisatie hiërarchie. Meer informatie over de [Graph API](active-directory-graph-api.md).
+**Blader naar gebruikers in de Directory.**  Gebruik de Microsoft Graph-API om gebruikers te helpen bij het zoeken en zoeken naar andere personen in hun organisatie bij het uitnodigen van anderen of het verlenen van toegang, in plaats van dat ze e-mail adressen moeten typen. Gebruikers kunnen bladeren door gebruik te maken van een vertrouwde Adresboek stijl interface, inclusief het weer geven van de details van de organisatie hiërarchie. Meer informatie over de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
 
-**Active Directory groepen en distributie lijsten opnieuw gebruiken die uw klant al beheert.**  Azure AD bevat de groepen die uw klant al gebruikt voor het distribueren van e-mail en het beheren van de toegang. Gebruik de Graph API om deze groepen opnieuw te gebruiken in plaats van uw klant te verplichten om een afzonderlijke set groepen in uw toepassing te maken en te beheren. Groeps informatie kan ook worden verzonden naar uw toepassing in aanmeldings tokens. Meer informatie over de [Graph API](active-directory-graph-api.md).
+**Active Directory groepen en distributie lijsten opnieuw gebruiken die uw klant al beheert.**  Azure AD bevat de groepen die uw klant al gebruikt voor het distribueren van e-mail en het beheren van de toegang. Gebruik de Microsoft Graph-API om deze groepen opnieuw te gebruiken in plaats van uw klant te verplichten om een afzonderlijke set groepen in uw toepassing te maken en te beheren. Groeps informatie kan ook worden verzonden naar uw toepassing in aanmeldings tokens. Meer informatie over de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
 
-**Gebruik Azure AD om te bepalen wie toegang heeft tot uw toepassing.**  Beheerders en eigen aren van toepassingen in azure AD kunnen toegang tot toepassingen toewijzen aan specifieke gebruikers en groepen. Met behulp van de Graph API kunt u deze lijst lezen en gebruiken om het inrichten en het ongedaan maken van de inrichting van resources en toegang in uw toepassing te beheren.
+**Gebruik Azure AD om te bepalen wie toegang heeft tot uw toepassing.**  Beheerders en eigen aren van toepassingen in azure AD kunnen toegang tot toepassingen toewijzen aan specifieke gebruikers en groepen. Met de Microsoft Graph-API kunt u deze lijst lezen en gebruiken om het inrichten en het ongedaan maken van de inrichting van resources en toegang in uw toepassing te beheren.
 
-**Gebruik Azure AD voor functies op basis van Access Control.**  Beheerders en eigen aren van toepassingen kunnen gebruikers en groepen toewijzen aan rollen die u definieert wanneer u uw toepassing registreert in azure AD. De functie gegevens worden naar uw toepassing verzonden in aanmeldings tokens en kunnen ook worden gelezen met behulp van de Graph API. Meer informatie over het [gebruik van Azure AD voor autorisatie](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Gebruik Azure AD voor functies op basis van Access Control.**  Beheerders en eigen aren van toepassingen kunnen gebruikers en groepen toewijzen aan rollen die u definieert wanneer u uw toepassing registreert in azure AD. De functie gegevens worden naar uw toepassing verzonden in aanmeldings tokens en kunnen ook worden gelezen met behulp van de Microsoft Graph-API. Meer informatie over het [gebruik van Azure AD voor autorisatie](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Toegang krijgen tot het profiel van de gebruiker, de agenda, het e-mail adres, de contact personen, bestanden en meer
 

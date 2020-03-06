@@ -4,15 +4,15 @@ description: Meer informatie over de SQL-functie StringToArray in Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302913"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Retourneert een expressie die is vertaald naar een matrix. Als expressie niet kan worden vertaald, retourneert ongedefinieerd.  
@@ -59,7 +59,7 @@ Hier volgt de resultatenset.
 Hier volgt een voor beeld van ongeldige invoer. 
    
  Enkele aanhalings tekens in de matrix zijn geen geldige JSON.
-Hoewel ze wel geldig zijn binnen een query, worden ze niet geparseerd naar geldige matrices. Teken reeksen binnen de teken reeks van de matrix moeten worden voorafgegaan door ' [\\ ' \\ '] of de omliggende aanhaling moet één ' ['] ' bevatten.
+Hoewel ze wel geldig zijn binnen een query, worden ze niet geparseerd naar geldige matrices. Teken reeksen binnen de matrix teken reeks moeten worden voorafgegaan door ' [\\'\\'] ' of de omliggende aanhaling moet één ' ['] ' zijn.
 
 ```sql
 SELECT
@@ -90,6 +90,10 @@ Hier volgt de resultatenset.
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

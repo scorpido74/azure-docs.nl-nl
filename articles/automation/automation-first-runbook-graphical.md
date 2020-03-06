@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246464"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331465"
 ---
 # <a name="my-first-graphical-runbook"></a>Mijn eerste grafische runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246464"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-In deze zelfstudie wordt stap voor stap het maken van een [grafisch runbook](automation-runbook-types.md#graphical-runbooks) in Azure Automation beschreven. Begin met een eenvoudig runbook dat wordt getest en gepubliceerd, terwijl u leert hoe u de status van de runbook-taak kunt volgen. Wijzig vervolgens het runbook om Azure-resources daad werkelijk te beheren. in dit geval wordt het starten van een virtuele Azure-machine gestart. Voltooi de zelf studie om het runbook betrouwbaarder te maken door runbook-para meters en voorwaardelijke koppelingen toe te voegen.
+In deze zelfstudie wordt stap voor stap het maken van een [grafisch runbook](automation-runbook-types.md#graphical-runbooks) in Azure Automation beschreven. Begin met een eenvoudig runbook dat u kunt testen en publiceren, terwijl u leert hoe u de status van de runbook-taak moet volgen. Wijzig vervolgens het runbook om Azure-resources daad werkelijk te beheren. in dit geval wordt het starten van een virtuele Azure-machine gestart. Voltooi de zelf studie om het runbook betrouwbaarder te maken door runbook-para meters en voorwaardelijke koppelingen toe te voegen.
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
@@ -37,7 +37,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="step-1---create-runbook"></a>Stap 1: runbook maken
 
-Begin met het maken van een eenvoudig runbook dat de tekst ' Hallo wereld ' uitvoert.
+Begin met het maken van een eenvoudig runbook waarmee de tekst **Hallo wereld** als uitvoer wordt gegeven.
 
 1. Open uw Automation-account in Azure Portal. 
 
@@ -78,7 +78,7 @@ Voordat u het runbook publiceert om het beschikbaar te maken in productie, moet 
 
    De taak status wordt **in de wachtrij geplaatst**, wat aangeeft dat de taak wacht totdat een runbook worker in de Cloud beschikbaar is. De status verandert in **starten** wanneer een werk nemer de taak claimt. Ten slotte wordt de status **actief** wanneer het runbook daad werkelijk wordt uitgevoerd.
 
-1. Wanneer de runbook-taak is voltooid, wordt de uitvoer van de test pagina weer gegeven. In dit geval ziet u **Hallo wereld**.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Wanneer de runbook-taak is voltooid, wordt de uitvoer weer gegeven in het deel venster testen. In dit geval ziet u **Hallo wereld**.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. Sluit het testvenster om terug te gaan naar het papier.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>Stap 4: het runbook publiceren en starten

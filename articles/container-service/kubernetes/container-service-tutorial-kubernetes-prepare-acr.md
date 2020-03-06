@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274135"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399779"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(AFGESCHAFT) Azure Container Registry implementeren en gebruiken
 
@@ -74,7 +74,7 @@ docker images
 
 Uitvoer:
 
-```bash
+```output
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -89,7 +89,7 @@ Voer de volgende opdracht uit om de naam van de loginServer op te vragen.
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Tag nu de `azure-vote-front`-installatiekopie met de loginServer van het containerregister. Voeg bovendien `:v1` toe aan het eind van de naam van de installatiekopie. Deze tag geeft de versie van de installatiekopie aan.
+Tag nu de `azure-vote-front`-installatiekopie met de loginServer van het containerregister. Voeg bovendien `:v1` toe aan het eind van de installatiekopienaam. Deze tag geeft de versie van de installatiekopie aan.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -103,7 +103,7 @@ docker images
 
 Uitvoer:
 
-```bash
+```output
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
@@ -123,7 +123,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Dit duurt enkele minuten duren.
 
-## <a name="list-images-in-registry"></a>Installatiekopieën vermelden in het register
+## <a name="list-images-in-registry"></a>Installatiekopieën in het register weergeven
 
 U kunt een lijst met installatiekopieën die naar Azure Container Registry zijn gepusht, retourneren met de opdracht [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Werk de opdracht bij met de naam van het ACR-exemplaar.
 
@@ -133,7 +133,7 @@ az acr repository list --name <acrName> --output table
 
 Uitvoer:
 
-```azurecli
+```output
 Result
 ----------------
 azure-vote-front
@@ -147,7 +147,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 Uitvoer:
 
-```azurecli
+```output
 Result
 --------
 v1
@@ -160,7 +160,7 @@ Bij het voltooien van de zelfstudie is de containerinstallatiekopie opgeslagen i
 In deze zelfstudie is een Azure Container Registry voorbereid voor gebruik in een ACS Kubernetes-cluster. De volgende stappen zijn voltooid:
 
 > [!div class="checklist"]
-> * Er is een exemplaar van Azure Container Registry (ACR) geïmplementeerd
+> * Er is een Azure Container Registry-exemplaar geïmplementeerd
 > * Er is een containerinstallatiekopie voor ACR getagd
 > * De installatiekopie is geüpload naar ACR
 

@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301655"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
-[Git](https://git-scm.com/) is een populair versie beheersysteem waarmee u uw projecten kunt delen en samen werken. Bij het verzenden van een trainings taak naar Azure Machine Learning, als de trainings bestanden worden opgeslagen in een lokale Git-opslag plaats, wordt informatie over de opslag plaats bijgehouden als onderdeel van het trainings proces.
+[Git](https://git-scm.com/) is een populair versie beheersysteem waarmee u uw projecten kunt delen en Hiermee kunnen samen werken. 
+
+Azure Machine Learning volledig ondersteunt Git-opslag plaatsen voor het bijhouden van werk-u kunt opslag plaatsen rechtstreeks naar het bestands systeem van de gedeelde werk ruimte klonen, Git gebruiken op uw lokale werk station of gebruikmaken van Git van een CI/CD-pijp lijn.
+
+Bij het verzenden van een taak naar Azure Machine Learning, als bron bestanden worden opgeslagen in een lokale Git-opslag plaats, wordt informatie over de opslag plaats bijgehouden als onderdeel van het trainings proces.
 
 Omdat Azure Machine Learning gegevens van een lokale Git-opslag plaats registreert, is deze niet gekoppeld aan een specifieke centrale opslag plaats. Uw opslag plaats kan worden gekloond van GitHub, GitLab, bitbucket, Azure DevOps of een andere Git-compatibele service.
 
-## <a name="how-does-git-integration-work"></a>Hoe werkt Git-integratie?
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-opslag plaatsen klonen in het bestands systeem van de werk ruimte
+Azure Machine Learning biedt een gedeeld bestands systeem voor alle gebruikers in de werk ruimte.
+Als u een Git-opslag plaats wilt klonen in deze bestands share, kunt u het beste een reken instantie maken & een Terminal te openen.
+Zodra de Terminal is geopend, hebt u toegang tot een volledige Git-client en kunt u Git klonen en gebruiken via de Git CLI-ervaring.
+
+We raden u aan de opslag plaats te klonen in de map gebruikers, zodat anderen geen conflicten rechtstreeks op uw werk vertakking kunnen door voeren.
+
+U kunt elke Git-opslag plaats klonen die u kunt verifiëren (GitHub, Azure opslag plaatsen, BitBucket, etc.)
+
+Lees hier hier voor een hand leiding voor het gebruik van de Git [cli.](https://guides.github.com/introduction/git-handbook/)
+
+## <a name="track-code-that-comes-from-git-repositories"></a>Code traceren die afkomstig is van Git-opslag plaatsen
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git` opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
@@ -53,7 +68,7 @@ Als uw trainings bestanden zich niet in een Git-opslag plaats in uw ontwikkeling
 
 De Git-informatie wordt opgeslagen in de eigenschappen voor een trainings uitvoering. U kunt deze informatie weer geven met behulp van de Azure Portal, python SDK en CLI. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 1. Selecteer uw werk ruimte in de [Azure Portal](https://portal.azure.com).
 1. Selecteer __experimenten__en selecteer vervolgens een van uw experimenten.
@@ -81,7 +96,7 @@ De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende J
 }
 ```
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python-SDK
 
 Na het verzenden van een trainings uitvoering wordt een [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) -object geretourneerd. Het kenmerk `properties` van dit object bevat de geregistreerde Git-informatie. Met de volgende code wordt bijvoorbeeld de commit-hash opgehaald:
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931404"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389501"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Boots trap
 
@@ -23,7 +23,7 @@ Er zijn drie benaderingen om instellingen van het configuratie bestand in te ste
 
 * Azure PowerShell gebruiken
 * .NET SDK gebruiken
-* Azure Resource Manager-sjabloon gebruiken
+* Azure Resource Manager sjabloon gebruiken
 
 Met deze programmatische methoden kunt u bijvoorbeeld opties in deze bestanden configureren:
 

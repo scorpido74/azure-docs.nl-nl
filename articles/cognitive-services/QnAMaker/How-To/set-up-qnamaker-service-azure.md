@@ -4,11 +4,11 @@ description: Voordat u een QnA Maker knowledge bases maken kunt, moet u eerst ee
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389346"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 

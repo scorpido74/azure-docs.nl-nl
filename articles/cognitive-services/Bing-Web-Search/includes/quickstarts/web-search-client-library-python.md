@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: ffa493c5bed152eea58d29bbf56215af7ebce5b1
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 6612b24b187afc72c4bc2e5ca9ef768cd1b27053
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208242"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402610"
 ---
 De Bing Web Search-client bibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw python-toepassing. In deze snelstartgids leert u hoe u een aanvraag verzendt, een JSON-antwoord ontvangt en de resultaten filtert en parseert.
 
@@ -27,7 +27,7 @@ De Bing Web Search SDK is compatibel met Python 2.7, 3.3, 3.4, 3.5 en 3.6. We ra
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) voor Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) voor Python 3.x
 
-[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Uw virtuele omgeving maken en configureren
 

@@ -14,18 +14,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 348a6a50583594d3e608bb16fcef65879b595e67
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6088b4c54ed16c5ef46d2c0671e619884cad29d4
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330614"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het Azure/service-bus-pakket
-> [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]
-> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
-
 In deze zelf studie leert u hoe u een node. js-programma kunt schrijven om berichten naar een Service Bus onderwerp te verzenden en berichten van een Service Bus-abonnement te ontvangen met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket. Dit pakket maakt gebruik van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md) , terwijl het oudere [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket wordt gebruikt [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). De voor beelden zijn geschreven in Java script.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -87,7 +83,7 @@ Interactie met een Service Bus onderwerp begint met het instantiëren van de kla
 3. Voer in de bovenstaande code de connection string en de naam van uw onderwerp in.
 4. Voer vervolgens de opdracht `node send.js` in een opdracht prompt uit om dit bestand uit te voeren. 
 
-Gefeliciteerd! U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
+Gefeliciteerd. U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
 
 Berichten bevatten enkele standaard eigenschappen, zoals `label`, en `messageId` die u kunt instellen tijdens het verzenden. Als u aangepaste eigenschappen wilt instellen, gebruikt u de `userProperties`. Dit is een JSON-object dat sleutel-waardeparen van uw aangepaste gegevens kan bevatten.
 
@@ -130,7 +126,7 @@ Interactie met een Service Bus-abonnement begint bij het instantiëren van de kl
 3. Voer in de bovenstaande code de connection string en namen in van uw onderwerp en abonnement.
 4. Voer vervolgens de opdracht `node receiveMessages.js` in een opdracht prompt uit om dit bestand uit te voeren.
 
-Gefeliciteerd! U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
+Gefeliciteerd. U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
 
 De methode [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) neemt in een `ReceiveMode`. Dit is een enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet om [uw berichten](message-transfers-locks-settlement.md#settling-receive-operations) af te rekenen als u de `PeekLock` modus gebruikt met behulp van `complete()`, `abandon()`, `defer()`of `deadletter()` methoden in het bericht.
 

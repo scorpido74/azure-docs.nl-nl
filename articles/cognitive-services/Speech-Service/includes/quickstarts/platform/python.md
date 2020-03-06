@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9c398c755db78583b93cbba5bdef6c3cf01eb9e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384044"
 ---
 In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor python installeert.
 
@@ -26,7 +26,7 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
 - Het Python Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
   - Windows: x64 en x86
   - Mac: macOS X versie 10,12 of hoger
-  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 op x64
+  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 op x64
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,12 +46,22 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
+  - Voer op RHEL/CentOS 8 de volgende opdrachten uit om de vereiste pakketten te installeren:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib openssl python3
+        ```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
 - In Windows hebt u [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) voor uw platform nodig. Houd er rekening mee dat als u dit voor de eerste keer installeert, Windows opnieuw moet worden opgestart voordat u doorgaat met deze hand leiding.
-- En ten slotte hebt u [Python 3,5, 3,6 of 3,7](https://www.python.org/downloads/)nodig. Als u de installatie wilt controleren, opent u een opdracht prompt en typt u de opdracht `python --version` en controleert u het resultaat. Als de toepassing correct is geïnstalleerd, ontvangt u een antwoord "python 3.5.1" of soortgelijk.
+- En ten slotte hebt u [Python 3,5 tot 3,8](https://www.python.org/downloads/)nodig. Als u de installatie wilt controleren, opent u een opdracht prompt en typt u de opdracht `python --version` en controleert u het resultaat. Als de toepassing correct is geïnstalleerd, ontvangt u een antwoord "python 3.5.1" of soortgelijk.
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>De Speech SDK installeren met Visual Studio code
 
-1. Down load en installeer de meest recente ondersteunde versie van [python](https://www.python.org/downloads/) voor uw platform, 3,5 of hoger.
+1. Down load en installeer de meest recente ondersteunde versie van [python](https://www.python.org/downloads/) voor uw platform 3,5 tot 3,8.
    - Windows-gebruikers moeten tijdens het installatie proces ' python toevoegen aan uw pad ' selecteren.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Open Visual Studio Code en installeer de Python-extensie. Selecteer **Bestand** > **Voorkeuren** > **Extensies** in het menu. Zoek **python** en klik op **installeren**.

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
 ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390152"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
  
@@ -24,7 +24,7 @@ De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd La
 
 In de volgende video ziet u hoe u deze container gebruikt.
 
-[![Demonstratie van de container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[demonstratie van ![container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -32,9 +32,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u de LUIS-container wilt uitvoeren, moet u rekening houden met de volgende vereisten:
 
-|Verplicht|Doel|
+|Vereist|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten.| 
 |App-bestand voor Azure `Cognitive Services` resource en LUIS- [pakket](luis-how-to-start-new-app.md) |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>* Een _Cognitive Services_ Azure-resource en de gekoppelde facturerings sleutel de URI van het facturerings eindpunt. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten. <br>* Een getrainde of gepubliceerde app is verpakt als gekoppelde invoer voor de container met de bijbehorende App-ID. U kunt het verpakte bestand ophalen uit de LUIS-portal of de ontwerp-Api's. Als u een LUIS-app-pakket van de [ontwerp-api's](#authoring-apis-for-package-file)krijgt, hebt u ook uw _ontwerp sleutel_nodig.<br><br>Deze vereisten worden gebruikt om opdracht regel argumenten door te geven aan de volgende variabelen:<br><br>**{AUTHORING_KEY}** : deze sleutel wordt gebruikt om de verpakte app uit de Luis-service in de Cloud op te halen en uploadt de query logboeken terug naar de Cloud. De indeling is `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : deze id wordt gebruikt om de app te selecteren. De indeling is `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : deze sleutel wordt gebruikt om de container te starten. U kunt de eindpunt sleutel op twee plaatsen vinden. De eerste is de Azure Portal in de lijst sleutels van de _Cognitive Services_ resource. De eindpunt sleutel is ook beschikbaar in de LUIS-Portal op de pagina sleutels en eindpunt instellingen. Gebruik niet de start sleutel.<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina overzicht.<br><br>De [ontwerp sleutel en de eindpunt sleutel](luis-boundaries.md#key-limits) hebben verschillende doel einden. Gebruik deze niet om te zetten. |
 
@@ -216,7 +216,7 @@ ApiKey={API_KEY}
 * Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 * Als u een ander besturings systeem gebruikt, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw systeem. In deze voor beelden wordt ervan uitgegaan dat een Windows-console met een regel vervolg teken `^`. Omdat de container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
 
-Met deze opdracht gebeurt het volgende:
+Deze opdracht:
 
 * Hiermee wordt een container uit de installatie kopie van de LUIS-container uitgevoerd
 * Hiermee wordt de LUIS-app geladen vanuit de invoer koppeling op *C:\Input*, die zich op de container host bevindt
@@ -228,7 +228,7 @@ Met deze opdracht gebeurt het volgende:
 Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de **Azure-resources** -pagina in de Luis-Portal en is ook beschikbaar op de pagina Azure `Cognitive Services` resource sleutels.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
@@ -243,9 +243,9 @@ De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. Eind p
 
 Gebruik de host, `http://localhost:5000`voor container-Api's.
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3-Voorspellings eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
 
-|Pakkettype|HTTP-woord|Route|Queryparameters|
+|Pakkettype|HTTP-term|Route|Queryparameters|
 |--|--|--|--|
 |Gepubliceerd|GET, POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Versie|GET, POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
@@ -254,14 +254,14 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 
 |Query parameter|Type|Doel|
 |--|--|--|
-|`query`|string|De utterance van de gebruiker.|
+|`query`|tekenreeks|De utterance van de gebruiker.|
 |`verbose`|booleaans|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
 |`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
 |`show-all-intents`|booleaans|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2-Voorspellings eindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
 
-|Pakkettype|HTTP-woord|Route|Queryparameters|
+|Pakkettype|HTTP-term|Route|Queryparameters|
 |--|--|--|--|
 |Gepubliceerd|[Get](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Versie|GET, POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
@@ -270,11 +270,11 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 
 |Query parameter|Type|Doel|
 |--|--|--|
-|`q`|string|De utterance van de gebruiker.|
+|`q`|tekenreeks|De utterance van de gebruiker.|
 |`timezoneOffset`|getal|Met de time zone offset kunt u [de tijd zone wijzigen](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt gebruikt door de vooraf samengestelde entiteit datetimeV2.|
 |`verbose`|booleaans|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
 |`staging`|booleaans|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
-|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
+|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaard waarde is True.|
 
 ***
 
@@ -282,7 +282,7 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 
 Een voor beeld van een krul opdracht voor het uitvoeren van query's op de container voor een gepubliceerde app is:
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3-Voorspellings eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2-Voorspellings eindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 
@@ -361,13 +361,13 @@ Als u de container uitvoert met een uitvoer [koppeling](luis-container-configura
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De LUIS-container verzendt facturerings gegevens naar Azure met behulp van een _Cognitive Services_ resource in uw Azure-account. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie voor meer informatie over deze opties [containers configureren](luis-container-configuration.md).
+Zie [containers configureren](luis-container-configuration.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

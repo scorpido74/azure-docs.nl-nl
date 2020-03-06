@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 2e1f0313b6e611eac6968c17cececd382a6d45fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 117d4a5c1c4ac00e6d6a561f7dc4254a15a24f9c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330682"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Snelstartgids: node. js gebruiken om verbinding te maken en gegevens op te vragen uit Azure Cosmos DB SQL-API-account
 
@@ -33,9 +33,17 @@ In deze Quick Start maakt en beheert u een Azure Cosmos DB SQL-API-account van d
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-a-database"></a>Een database maken
+## <a name="create-an-azure-cosmos-account"></a>Een Azure Cosmos-account maken
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Voor dit Quick Start kunt u de optie [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) gebruiken om een Azure Cosmos-account te maken.
+
+1. Ga naar de pagina [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) .
+
+1. Kies het **SQL** -API-account en selecteer **maken**. Meld u aan met uw Microsoft-account zoals Outlook.
+
+1. Nadat het aanmelden is gelukt, moet uw Azure Cosmos-account gereed zijn. Selecteer **openen in het Azure Portal** om het zojuist gemaakte account te openen.
+
+Voor de optie ' Probeer Azure Cosmos DB gratis ' hebt u geen Azure-abonnement nodig en biedt u een Azure Cosmos-account voor een beperkte periode van 30 dagen. Als u het Azure Cosmos-account gedurende een langere periode wilt gebruiken, moet u in plaats daarvan [het account maken](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) binnen uw Azure-abonnement.
 
 ## <a name="add-a-container"></a>Een container toevoegen
 
@@ -145,7 +153,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand _app.js_.
   ```
 
 > [!NOTE]
-> In de methoden ' update ' en ' delete ' moet het item worden geselecteerd in de-data base door het aanroepen van `conatiner.item()`. De twee door gegeven para meters zijn de id van het item en de partitie sleutel van het item. In dit geval is de sleutel partitioneren de waarde van het veld Category.
+> In de methoden ' update ' en ' delete ' moet het item worden geselecteerd in de-data base door het aanroepen van `container.item()`. De twee door gegeven para meters zijn de id van het item en de partitie sleutel van het item. In dit geval is de sleutel partitioneren de waarde van het veld Category.
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
@@ -176,10 +184,6 @@ U kunt nu teruggaan naar Data Explorer, wijzigen en werken met deze nieuwe gegev
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>Resources opschonen
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

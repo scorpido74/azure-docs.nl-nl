@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669553"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359097"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen (open bare preview)
 
@@ -335,7 +335,7 @@ Een SNAT-poort kan na vijf seconden opnieuw worden gebruikt voor hetzelfde doel-
 ## <a name="limitations"></a>Beperkingen
 
 - NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
-- De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.
+- De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met IPv6-voor voegsel.
 - Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 - NAT kan niet meerdere virtuele netwerken omvatten.
 
@@ -349,21 +349,25 @@ We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [NAT voor het virtuele netwerk](nat-overview.md).
-- Zelf studie voor het valideren van de NAT-gateway
-  * [Azure cli](tutorial-create-validate-nat-gateway-cli.md),
-  * [Power shell](tutorial-create-validate-nat-gateway-cli.md),
-  * [Portal](tutorial-create-validate-nat-gateway-cli.md)
-- Snelstartgids voor het implementeren van een NAT-gateway resource
-  * [Azure cli](./quickstart-create-nat-gateway-cli.md),
-  * [Power shell](./quickstart-create-nat-gateway-powershell.md),
-  * [Portal](./quickstart-create-nat-gateway-portal.md).
-- Meer informatie over [beschikbaarheids zones](../availability-zones/az-overview.md).
-- Meer informatie over [standaard Load Balancer](../load-balancer/load-balancer-standard-overview.md).
-- Meer informatie over [beschikbaarheids zones en standaard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md).
-- Meer informatie over de resource-API voor NAT-gateways
-  * [rest API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  * [Azure cli](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Vertel ons wat u verder kunt bouwen in UserVoice](https://aka.ms/natuservoice).
-- [Feedback geven over de open bare preview](https://aka.ms/natfeedback).
+* Meer informatie over NAT voor het [virtuele netwerk](nat-overview.md).
+* Meer informatie over [metrische gegevens en waarschuwingen voor NAT-gateway bronnen](nat-metrics.md).
+* Meer informatie over het [oplossen van problemen met NAT-gateway bronnen](troubleshoot-nat.md).
+* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
+* [Feedback geven over de open bare preview](https://aka.ms/natfeedback).
+* Zelf studie voor het valideren van de NAT-gateway
+  - [Azure cli](tutorial-create-validate-nat-gateway-cli.md),
+  - [Power shell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+* Snelstartgids voor het implementeren van een NAT-gateway resource
+  - [Azure cli](./quickstart-create-nat-gateway-cli.md),
+  - [Power shell](./quickstart-create-nat-gateway-powershell.md),
+  - [Portal](./quickstart-create-nat-gateway-portal.md).
+* Meer informatie over de resource-API voor NAT-gateway
+  - [rest API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
+  - [Azure cli](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+* Meer informatie over [beschikbaarheids zones](../availability-zones/az-overview.md).
+* Meer informatie over [standaard Load Balancer](../load-balancer/load-balancer-standard-overview.md).
+* Meer informatie over [beschikbaarheids zones en standaard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md).
+
+

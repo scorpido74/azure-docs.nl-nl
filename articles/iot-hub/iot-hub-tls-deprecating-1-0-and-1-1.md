@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912151"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402787"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Afschaffing van TLS 1,0 en 1,1 in IoT Hub en Device Provisioning Service
 
-IoT Hub en de DPS (Device Provisioning Service) worden verplaatst naar Transport Layer Security (TLS) 1,2 als versleutelings methode voor IoT-apparaten en-services om de beste versleuteling te bieden. Daarom zal oudere ondersteuning voor TLS 1,0 en TLS 1,1 en verschillende niet-aanbevolen oudere code ringen worden afgeschaft in **1 juli 2020**.
-
-
-## <a name="impact"></a>Impact
-Op basis van de specifieke omstandigheden en configuraties van klanten zijn de afschaffing van TLS 1,0 en 1,1 en niet-aanbevolen oudere code ringen een invloed op de wijziging van uw IoT-apparaten en-services die communiceren met IoT Hub of DPS. In sommige gevallen kunnen apparaten en services die niet compatibel zijn met deze wijzigingen, geen verbinding maken met de IoT Hub of DPS na de genoemde afsluitings datum.
-
+IoT Hub en de DPS (Device Provisioning Service) worden verplaatst naar Transport Layer Security (TLS) 1,2 als versleutelings methode voor IoT-apparaten en-services om de beste versleuteling te bieden. 
 
 ## <a name="supported-ciphers"></a>Ondersteunde versleuteling
 

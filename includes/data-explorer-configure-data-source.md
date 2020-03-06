@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305015"
 ---
 ## <a name="configure-the-data-source"></a>De gegevens bron configureren
 
@@ -25,11 +25,11 @@ U voert de volgende stappen uit om Azure Data Explorer te configureren als een g
 
 U kunt de service-principal maken in het [Azure Portal](#azure-portal) of met behulp van de [Azure cli](#azure-cli) -opdracht regel ervaring. Ongeacht de methode die u gebruikt, krijgt u na het maken van de waarden voor vier verbindings eigenschappen die u in latere stappen gaat gebruiken.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Volg de instructies in de [documentatie van Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal)om de service-principal te maken.
 
-    1. Wijs in de sectie [toepassing aan een rol toewijzen](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) een roltype van het type **lezer** toe aan uw Azure Data Explorer-cluster.
+    1. Wijs in de sectie [toepassing aan een rol toewijzen](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) een roltype van het type **lezer** toe aan uw Azure Data Explorer-cluster.
 
     1. In de sectie [waarden ophalen voor aanmelden](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) kopieert u de drie eigenschaps waarden die zijn opgenomen in de stappen: **Directory-ID** (Tenant-ID), **toepassings-id**en **wacht woord**.
 
@@ -37,7 +37,7 @@ U kunt de service-principal maken in het [Azure Portal](#azure-portal) of met be
 
     ![Abonnements-ID-Portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 1. Een service-principal maken. Stel een geschikt bereik en een roltype van `reader`in.
 
@@ -81,7 +81,7 @@ Nu u een Service-Principal hebt, voegt u deze toe aan de rol *kijkers* in de Azu
 
 1. Selecteer in de sectie **overzicht** de data base met de StormEvents-voorbeeld gegevens.
 
-    ![data base selecteren](media/data-explorer-configure-data-source/select-database.png)
+    ![Data base selecteren](media/data-explorer-configure-data-source/select-database.png)
 
 1. Selecteer **machtigingen** en vervolgens **toevoegen**.
 
@@ -103,7 +103,7 @@ Nu u een Service-Principal hebt, voegt u deze toe aan de rol *kijkers* in de Azu
 
 1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster en selecteer **query**.
 
-    ![Query’s uitvoeren](media/data-explorer-configure-data-source/query.png)
+    ![Query's uitvoeren](media/data-explorer-configure-data-source/query.png)
 
 1. Voer de volgende opdracht uit in het query-venster. Gebruik de toepassings-ID en Tenant-ID van de Azure Portal of CLI.
 

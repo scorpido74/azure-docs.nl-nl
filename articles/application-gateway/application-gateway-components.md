@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301349"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-onderdelen
 
@@ -53,11 +53,11 @@ Application Gateway ondersteunt vier protocollen: HTTP, HTTPS, HTTP/2 en WebSock
 >Ondersteuning voor HTTP/2-protocollen is alleen beschikbaar voor clients die verbinding maken met de gateway-listeners van de toepassing. De communicatie met back-endserver-Server groepen is altijd over HTTP/1.1. HTTP/2-ondersteuning is standaard uitgeschakeld. U kunt ervoor kiezen om deze functie in te scha kelen.
 
 - Geef de HTTP-en HTTPS-protocollen op in de configuratie van de listener.
-- Ondersteuning voor [Websockets en http/2-protocollen](overview.md#websocket-and-http2-traffic) wordt systeem eigen en [WebSocket-ondersteuning](application-gateway-websocket.md) is standaard ingeschakeld. Er is geen door de gebruiker configureerbare instelling om selectief WebSocket-ondersteuning in of uit te schakelen. Gebruik websockets met HTTP-en HTTPS-listeners.
+- Ondersteuning voor [Websockets en http/2-protocollen](features.md#websocket-and-http2-traffic) wordt systeem eigen en [WebSocket-ondersteuning](application-gateway-websocket.md) is standaard ingeschakeld. Er is geen door de gebruiker configureerbare instelling om selectief WebSocket-ondersteuning in of uit te schakelen. Gebruik websockets met HTTP-en HTTPS-listeners.
 
 Gebruik een HTTPS-listener voor SSL-beëindiging. Een HTTPS-listener versleutelt de versleuteling en ontsleuteling van uw toepassings gateway, zodat uw webservers niet worden belast met de overhead.
 
-### <a name="custom-error-pages"></a>Aangepaste foutenpagina's
+### <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
 Met Application Gateway kunt u aangepaste fout pagina's maken in plaats van de standaardfout pagina's weer te geven. U kunt uw eigen huisstijl en lay-out hanteren door een aangepaste foutpagina te gebruiken. Application Gateway wordt een aangepaste fout pagina weer gegeven wanneer een aanvraag de back-end niet kan bereiken.
 
@@ -115,13 +115,13 @@ De poort en het protocol dat wordt gebruikt in de HTTP-instellingen bepalen of h
 
 Dit onderdeel wordt ook gebruikt voor het volgende:
 
-- Bepaal of een gebruikers sessie op dezelfde server moet worden bewaard met de [sessie affiniteit op basis van cookies](overview.md#session-affinity).
+- Bepaal of een gebruikers sessie op dezelfde server moet worden bewaard met de [sessie affiniteit op basis van cookies](features.md#session-affinity).
 
-- Back-end-groeps leden zonder problemen verwijderen met behulp van het verwerkings [Stop](overview.md#connection-draining).
+- Back-end-groeps leden zonder problemen verwijderen met behulp van het verwerkings [Stop](features.md#connection-draining).
 
 - Koppel een aangepaste test om de status van de back-end te controleren, de time-outinterval van de aanvraag in te stellen, de hostnaam en het pad in de aanvraag te overschrijven en met één klik te bieden voor het opgeven van instellingen voor de App Service back-end.
 
-## <a name="backend-pools"></a>Back-endpools
+## <a name="backend-pools"></a>Back-end-Pools
 
 Een back-end-groep routeert aanvragen naar back-endservers, die de aanvraag verwerken. Back-end-Pools kunnen het volgende bevatten:
 
@@ -152,6 +152,6 @@ Zie [de status van uw toepassings gateway bewaken](../application-gateway/applic
 
 Een toepassings gateway maken:
 
-* [In de Azure-Portal](quick-create-portal.md)
+* [In de Azure Portal](quick-create-portal.md)
 * [Met behulp van Azure PowerShell](quick-create-powershell.md)
 * [Via de Azure CLI](quick-create-cli.md)

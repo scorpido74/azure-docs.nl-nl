@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331482"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Een Media Services-account maken via de Azure-portal
 
@@ -46,13 +46,9 @@ U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proe
 In de stappen in deze sectie wordt uitgelegd hoe u een AMS-account maakt.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Klik op **+Nieuw** > **Web en mobiel** > **Media Services**.
-   
-    ![Media Services-account maken](./media/media-services-create-account/media-services-new1.png)
+2. Klik op **+ een resource maken** > **Media** - > **Media Services**.
 3. Voer bij **MEDIA SERVICES-ACCOUNT MAKEN** de vereiste waarden in.
-   
-    ![Media Services-account maken](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. Voer in **Accountnaam** de naam van het nieuwe AMS-account in. Voor de naam van een Media Services-account mogen alleen cijfers en kleine letters worden gebruikt. Spaties zijn niet toegestaan. De naam mag 3 tot 24 tekens lang zijn.
    2. Selecteer in Abonnement een van de verschillende Azure-abonnementen waartoe u toegang hebt.
    3. Selecteer in **Resourcegroep** de nieuwe of bestaande resource.  Een resourcegroep is een verzameling resources met dezelfde levenscyclus, dezelfde machtigingen en hetzelfde beleid. Klik [hier](../../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.
@@ -71,7 +67,6 @@ In de stappen in deze sectie wordt uitgelegd hoe u een AMS-account maakt.
 ## <a name="to-manage-your-ams-account"></a>Uw AMS-account beheren
 
 Selecteer **Instellingen** aan de linkerkant van de portal als u uw AMS-account wilt beheren, bijvoorbeeld om via programmacode verbinding te maken met de AMS-API, video's te uploaden, assets te coderen, beveiliging van inhoud te configureren of de taakvoortgang te bekijken. Ga vanuit **Instellingen** naar een van de beschikbare blades (zoals **API-toegang**, **Assets**, **Taken** of **Inhoudsbeveiliging**).
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

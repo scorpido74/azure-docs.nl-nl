@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909037"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298646"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
@@ -26,7 +26,7 @@ Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Dir
 ## <a name="cloud-provisioning-agent-requirements"></a>Vereisten voor de inrichtings agent voor Cloud
 U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting:
     
-- Een algemeen beheerders account voor uw Azure AD-Tenant.
+- Een globaal beheerders account voor uw Azure AD-Tenant dat geen gast gebruiker is.
 - Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.
 - On-premises firewall configuraties.
 
@@ -39,6 +39,10 @@ De rest van het document bevat stapsgewijze instructies voor deze vereisten.
 
 1. Maak een alleen-Cloud account voor globale beheerders op uw Azure AD-Tenant. Op deze manier kunt u de configuratie van uw Tenant beheren als uw on-premises Services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Het volt ooien van deze stap is van cruciaal belang om ervoor te zorgen dat de Tenant niet wordt vergrendeld.
 1. Voeg een of meer [aangepaste domein namen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-Tenant. Uw gebruikers kunnen zich aanmelden met een van deze domein namen.
+
+### <a name="in-your-directory-in-active-directory"></a>In uw directory in Active Directory
+
+Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) uit om de Directory kenmerken voor te bereiden op synchronisatie.
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 

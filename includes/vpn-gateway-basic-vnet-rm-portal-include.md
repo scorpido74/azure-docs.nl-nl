@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/25/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 872ba86c9e43b1f6642331908eb829605f6c19bd
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301935"
 ---
 U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource Manager-implementatiemodel en de Azure-portal. Zie [Overzicht van virtuele netwerken](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over virtuele netwerken.
 
 >[!NOTE]
->Overleg met uw on-premises netwerkbeheerder om een IP-adresbereik te reserveren dat u specifiek voor dit virtuele netwerk kunt gebruiken, voordat dit VNet verbinding met een on-premises locatie kan maken. Als er een dubbel adresbereik bestaat aan beide zijden van de VPN-verbinding, wordt verkeer niet correct gerouteerd. Als u dit VNet met een ander VNet wilt verbinden, kan de adresruimte niet met het andere VNet overlappen. Houd hier rekening mee als u uw netwerkconfiguratie gaan plannen.
+>Wanneer u een virtueel netwerk als onderdeel van een cross-premises architectuur gebruikt, moet u ervoor zorgen dat u met uw on-premises netwerk beheerder een IP-adres bereik reserveren dat u specifiek voor dit virtuele netwerk kunt gebruiken. Als er een dubbel adresbereik bestaat aan beide zijden van de VPN-verbinding, wordt verkeer niet correct gerouteerd. Bovendien, als u dit virtuele netwerk wilt verbinden met een ander virtueel netwerk, kan de adres ruimte niet overlappen met het andere virtuele netwerk. Houd hier rekening mee als u uw netwerkconfiguratie gaan plannen.
 >
 >
 
@@ -29,21 +29,31 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 1. Selecteer **Virtual Network** in de **Marketplace** -resultaten.
 
    ![Virtueel netwerk selecteren](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace-results.png "De resource pagina van het virtuele netwerk zoeken")
-1. Klik op de pagina **Virtual Network** op **maken**.
+1. Selecteer op de pagina **Virtual Network** **maken**.
 
-   ![pagina virtueel netwerk](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Klik op Maken")
-1. Nadat u op maken hebt geklikt, wordt de pagina **virtueel netwerk maken** geopend.
+   ![pagina virtueel netwerk](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet-click-create.png "Selecteer Maken")
+1. Zodra u **maken**selecteert, wordt de pagina **virtueel netwerk maken** geopend.
+1. Configureer op het tabblad **basis beginselen** de instellingen **Project Details** en **exemplaar Details** VNet.
 
-   ![Pagina virtueel netwerk maken](./media/vpn-gateway-basic-vnet-rm-portal-include/create-virtual-network-page.png "De pagina Virtueel netwerk maken")
-1. Configureer de VNet-instellingen op de pagina **Virtueel netwerk maken**. Wanneer u de velden invult, verandert het rode uitroepteken in een groen vinkje als de tekens die u in het veld invoert, zijn gevalideerd. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
+   ![Tabblad basis beginselen](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Tabblad basis beginselen") Wanneer u de velden invult, ziet u een groen vinkje wanneer de tekens die u in het veld invoert, worden gevalideerd. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
 
-   - **Naam**: geef de naam op voor het virtuele netwerk.
-   - **Adresruimte**: voer de adresruimte. Als er meerdere adresruimten moeten worden toegevoegd, voert u de eerste adresruimte hier toe. U kunt later, nadat u het VNet hebt gemaakt, extra adresruimten toevoegen. Als voor uw configuratie IPv6-adres ruimte is vereist, schakelt u het selectie vakje in om die informatie in te voeren.
    - **Abonnement**: controleer of het weergegeven abonnement het juiste is. U kunt abonnementen wijzigen met behulp van de vervolgkeuzelijst.
-   - **Resource groep**: Selecteer een bestaande resource groep of maak een nieuwe door een naam in te voeren voor de nieuwe resource groep. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden als u een nieuwe groep aanmaakt. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/management/overview.md#resource-groups) voor meer informatie over resourcegroepen.
-   - **Locatie**: selecteer de locatie voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, zich bevinden.
-   - **Subnet**: Voeg de **naam** en het **adres bereik**van het subnet toe. U kunt later, nadat u het VNet hebt gemaakt, extra subnetten toevoegen.
-   - **DDoS-beveiliging**: Selecteer **basis**, tenzij u de standaard service wilt gebruiken.
-   - **Service-eind punten**: u kunt deze instelling **uitgeschakeld**laten, tenzij u met uw configuratie deze instelling opgeeft.
-   - **Firewall**: u kunt deze instelling **uitgeschakeld**laten, tenzij u met uw configuratie deze instelling opgeeft.
-1. Klik op **maken** om de implementatie van het virtuele netwerk te starten.
+   - **Resource groep**: Selecteer een bestaande resource groep of klik op **Nieuw maken** om een nieuwe te maken. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/management/overview.md#resource-groups) voor meer informatie over resourcegroepen.
+   - **Naam**: geef de naam op voor het virtuele netwerk.
+   - **Regio**: Selecteer de locatie voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, zich bevinden.
+
+1. Configureer de waarden op het tabblad **IP-adressen** . De waarden die in de onderstaande voor beelden worden weer gegeven, zijn voor demonstratie doeleinden. U kunt deze waarden aanpassen op basis van de instellingen die u nodig hebt.
+
+   ![Tabblad IP-adressen](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "Tabblad IP-adressen")  
+   - **IPv4-adres ruimte**: standaard wordt er automatisch een adres ruimte gemaakt. U kunt op de adres ruimte klikken om deze aan te passen aan uw eigen waarden. U kunt ook extra adres ruimten toevoegen.
+   - **IPv6**: als voor uw configuratie IPv6-adres ruimte is vereist, schakelt u het selectie vakje **IPv6-adres ruimte toevoegen** in om die informatie in te voeren.
+   - **Subnet**: als u de standaard adres ruimte gebruikt, wordt automatisch een standaard subnet gemaakt. Als u de adres ruimte wijzigt, moet u een subnet toevoegen. Selecteer **+ subnet toevoegen** om het venster **subnet toevoegen** te openen. Configureer de volgende instellingen en selecteer **toevoegen** om de waarden toe te voegen:
+      - **Subnetnaam**: in dit voor beeld noemen we het subnet ' front-end '.
+      - **Adres bereik van subnet**: het adres bereik voor dit subnet.
+
+1. Wijzig op het tabblad **beveiliging** op dit moment de standaard waarden:
+
+   - **DDoS-beveiliging**: Basic
+   - **Firewall**: uitgeschakeld
+1. Selecteer **controleren + maken** om de instellingen van het virtuele netwerk te valideren.
+1. Nadat de instellingen zijn gevalideerd, selecteert u **maken**.

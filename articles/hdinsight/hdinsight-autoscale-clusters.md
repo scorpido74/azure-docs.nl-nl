@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399710"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
 > [!Important]
-> De functie voor automatisch schalen van Azure HDInsight is uitgebracht voor algemene Beschik baarheid op 7 november, 2019 voor Spark-en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u een Spark-cluster hebt gemaakt vóór november 7, 2019 en u de functie voor automatisch schalen op uw cluster wilt gebruiken, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen op het nieuwe cluster in te scha kelen. 
+> De functie voor automatisch schalen van Azure HDInsight is uitgebracht voor algemene Beschik baarheid op 7 november, 2019 voor Spark-en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u een Spark-cluster hebt gemaakt vóór november 7, 2019 en u de functie voor automatisch schalen op uw cluster wilt gebruiken, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen op het nieuwe cluster in te scha kelen.
 >
->Automatisch schalen voor interactieve Query's (LLAP) en HBase-clusters is nog steeds beschikbaar als preview-versie. Automatisch schalen is alleen beschikbaar voor Spark-, Hadoop-, interactieve query-en HBase-clusters. 
-
+> Automatisch schalen voor interactieve Query's (LLAP) en HBase-clusters is nog steeds beschikbaar als preview-versie. Automatisch schalen is alleen beschikbaar voor Spark-, Hadoop-, interactieve query-en HBase-clusters.
 
 Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal worker-knoop punten in een cluster omhoog en omlaag geschaald. Andere typen knoop punten in het cluster kunnen momenteel niet worden geschaald.  Tijdens het maken van een nieuw HDInsight-cluster kunnen er mini maal en Maxi maal aantal worker-knoop punten worden ingesteld. Automatisch schalen bewaakt vervolgens de resource vereisten van de analyse belasting en schaalt het aantal worker-knoop punten omhoog of omlaag. Er zijn geen extra kosten verbonden aan deze functie.
 
@@ -59,23 +58,18 @@ Automatisch schalen bewaakt het cluster voortdurend en verzamelt de volgende met
 
 De bovenstaande metrische gegevens worden elke 60 seconden gecontroleerd. Met automatisch schalen kunt u op basis van deze metrische gegevens schalen en omlaag schalen.
 
-### <a name="load-based-cluster-scale-up"></a>Scale-up van cluster op basis van belasting
+### <a name="load-based-scale-conditions"></a>Schaal voorwaarden op basis van een belasting
 
-Wanneer aan de volgende voor waarden wordt voldaan, wordt door automatisch schalen een opschaal aanvraag uitgegeven:
+Wanneer aan de volgende voor waarden wordt voldaan, wordt door automatisch schalen een schaal aanvraag uitgegeven:
 
-* De totale CPU in behandeling is groter dan de totale vrije CPU gedurende meer dan drie minuten.
-* Totaal geheugen in behandeling is groter dan het totale beschik bare geheugen gedurende meer dan drie minuten.
+|Omhoog schalen|Omlaag schalen|
+|---|---|
+|De totale CPU in behandeling is groter dan de totale vrije CPU gedurende meer dan drie minuten.|De totale beschik bare CPU is minder dan de totale vrije CPU voor meer dan 10 minuten.|
+|Totaal geheugen in behandeling is groter dan het totale beschik bare geheugen gedurende meer dan drie minuten.|Totaal geheugen in behandeling is minder dan het totale beschik bare geheugen gedurende meer dan 10 minuten.|
 
-De HDInsight-service berekent hoeveel nieuwe worker-knoop punten er nodig zijn om aan de huidige CPU-en geheugen vereisten te voldoen en geeft vervolgens een opschaal aanvraag uit om het vereiste aantal knoop punten toe te voegen.
+Voor omhoog schalen berekent de HDInsight-service hoeveel nieuwe worker-knoop punten er nodig zijn om aan de huidige CPU-en geheugen vereisten te voldoen. vervolgens wordt een opschaal aanvraag uitgegeven om het vereiste aantal knoop punten toe te voegen.
 
-### <a name="load-based-cluster-scale-down"></a>Schaal van cluster op basis van belasting-omlaag
-
-Wanneer aan de volgende voor waarden wordt voldaan, wordt door automatisch schalen een aanvraag voor omlaag schalen uitgegeven:
-
-* De totale beschik bare CPU is minder dan de totale vrije CPU voor meer dan 10 minuten.
-* Totaal geheugen in behandeling is minder dan het totale beschik bare geheugen gedurende meer dan 10 minuten.
-
-Op basis van het aantal AM-containers per knoop punt en de huidige CPU-en geheugen vereisten, wordt met automatisch schalen een aanvraag voor het verwijderen van een bepaald aantal knoop punten opgelost. De service detecteert ook welke knoop punten kandidaten zijn voor verwijdering op basis van de huidige taak uitvoering. Met de bewerking omlaag schalen worden de knoop punten eerst buiten gebruik gesteld en vervolgens uit het cluster verwijderd.
+Voor het omlaag schalen, op basis van het aantal AM-containers per knoop punt en de huidige CPU en geheugen vereisten, wordt met automatisch schalen een aanvraag voor het verwijderen van een bepaald aantal knoop punten opgelost. De service detecteert ook welke knoop punten kandidaten zijn voor verwijdering op basis van de huidige taak uitvoering. Met de bewerking omlaag schalen worden de knoop punten eerst buiten gebruik gesteld en vervolgens uit het cluster verwijderd.
 
 ## <a name="get-started"></a>Aan de slag
 

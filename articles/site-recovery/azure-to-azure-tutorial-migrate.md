@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954105"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303933"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -73,7 +73,7 @@ In deze zelfstudie leert u het volgende:
     - [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
     -  [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
-    - Zie de [documentatie van netwerken](https://docs.microsoft.com/azure/#pivot=products&panel=network)voor andere netwerk onderdelen.
+    - Zie de [documentatie van netwerken](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerk onderdelen.
 
 
 
@@ -115,7 +115,7 @@ De volgende stappen laten zien hoe u de overstap naar de doel regio kunt uitvoer
 4. Nadat de taak is voltooid, controleert u of de virtuele machine wordt weer gegeven in de Azure-doel regio zoals verwacht.
 
 
-## <a name="discard"></a>Hierdoor 
+## <a name="discard"></a>Negeren 
 
 Als u de verplaatste virtuele machine hebt gecontroleerd en wilt wijzigen in het herstel punt, of als u terug wilt gaan naar een vorig punt, selecteert u in de **gerepliceerde items**de virtuele machine > **wijzigings punt**. Deze stap biedt u de mogelijkheid om een ander herstel punt en failover naar die ene te specificeren. 
 

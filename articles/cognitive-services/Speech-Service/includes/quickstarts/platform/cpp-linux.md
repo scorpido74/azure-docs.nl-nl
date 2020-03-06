@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 6bb647273467a07786413ff4ea30cda836b7cb1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467680"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383948"
 ---
 In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Linux installeert
 
@@ -23,7 +23,7 @@ In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-
 
 ## <a name="system-requirements"></a>Systeemvereisten
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,6 +46,17 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
+
+   * Op RHEL/CentOS 8:
+
+     ```sh
+     sudo yum update
+     sudo yum groupinstall "Development tools"
+     sudo yum install alsa-lib openssl wget
+     ```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="install-speech-sdk"></a>Speech SDK installeren
 

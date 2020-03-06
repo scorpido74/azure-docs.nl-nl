@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199951"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296334"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Back-ups maken en herstellen in azure Synapse SQL-pool
 
@@ -58,7 +58,7 @@ De volgende lijst bevat Details voor de Bewaar periode van het herstel punt:
 2. Moment opnamen worden niet uitgevoerd wanneer een SQL-groep wordt onderbroken.
 3. De leeftijd van een herstel punt wordt gemeten door de absolute kalender dagen vanaf het moment dat het herstel punt wordt gemaakt, inclusief wanneer de SQL-groep wordt gepauzeerd.
 4. Op elk moment is een SQL-groep gegarandeerd dat er Maxi maal 42 door de gebruiker gedefinieerde herstel punten en 42 automatische herstel punten kunnen worden opgeslagen zolang deze herstel punten de Bewaar periode van 7 dagen niet hebben bereikt
-5. Als er een moment opname wordt gemaakt, wordt de SQL-groep vervolgens langer dan zeven dagen onderbroken en vervolgens hervat, is het mogelijk dat het herstel punt persistent is totdat er 42 totaal herstel punten zijn (inclusief door de gebruiker gedefinieerde en automatische)
+5. Als er een moment opname wordt gemaakt, wordt de SQL-groep vervolgens langer dan zeven dagen onderbroken en vervolgens hervat, wordt het herstel punt bewaard totdat er 42 totaal herstel punten zijn (inclusief door de gebruiker gedefinieerde en automatische)
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Moment opname bewaren wanneer een SQL-groep wordt verwijderd
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300584"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden uit Azure Data Lake Storage voor SQL Analytics
 In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan om de gegevens te importeren voor de beste prestaties. 
@@ -46,6 +46,8 @@ U kunt deze sectie overs Laan en door gaan met het maken van de externe gegevens
 Als u toegang wilt krijgen tot uw Data Lake Storage-account, moet u een database hoofd sleutel maken om uw referentie geheim te versleutelen. Vervolgens maakt u een referentie data base-scope om uw geheim op te slaan. Bij verificatie met Service-principals (Azure Directory-toepassings gebruiker) worden de referenties van de data base-Scope opgeslagen die zijn ingesteld in AAD. U kunt ook de data base-scoped referentie gebruiken om de sleutel van het opslag account op te slaan voor Gen2.
 
 Als u verbinding wilt maken met Data Lake Storage met Service-principals, moet u **eerst** een Azure Active Directory toepassing maken, een toegangs sleutel maken en de toepassing toegang verlenen tot het data Lake Storage-account. Zie [verifiëren voor Azure data Lake Storage met behulp van Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor instructies.
+
+Meld u aan bij de SQL-groep met een gebruiker met machtigingen op het niveau van het besturings element en voer de volgende SQL-instructies uit voor uw Data Base:
 
 ```sql
 -- A: Create a Database Master Key.

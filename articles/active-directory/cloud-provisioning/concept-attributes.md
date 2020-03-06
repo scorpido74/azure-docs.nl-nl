@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299326"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
 Een object in Azure Active Directory (Azure AD), zoals elke directory, is een programmatische gegevens constructie op hoog niveau waarmee items worden aangeduid als gebruikers, groepen en contact personen. Wanneer u een nieuwe gebruiker of contact persoon in azure AD maakt, maakt u een nieuw exemplaar van dat object. Deze instanties kunnen worden gedifferentieerd op basis van hun eigenschappen.
@@ -75,7 +75,7 @@ Volg deze stappen om het schema weer te geven en te controleren.
 1.  Ga naar [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 1.  Meld u aan met het account van uw globale beheerder.
 1.  Selecteer aan de linkerkant de optie **machtigingen wijzigen** en zorg ervoor dat **map. readwrite. all** is *gezonden*.
-1.  Voer de query uit https://graph.microsoft.com/beta/serviceprincipals/?$filter = startsWith (DisplayName, ' Active '). Deze query retourneert een gefilterde lijst met Service-principals.
+1.  Voer de query `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`uit. Deze query retourneert een gefilterde lijst met Service-principals.
 1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer de waarde voor `"id"`.
     ```
     "value": [

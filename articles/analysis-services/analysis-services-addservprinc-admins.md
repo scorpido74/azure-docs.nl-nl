@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298085"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
  Voor het automatiseren van Power shell-taken zonder toezicht moet een service-principal over **Server beheerders** rechten beschikken voor de Analysis Services server die wordt beheerd. In dit artikel wordt beschreven hoe u een Service-Principal kunt toevoegen aan de rol Server Administrators op een Azure AS-server. U kunt dit doen met behulp van SQL Server Management Studio of een resource manager-sjabloon.
- 
-> [!NOTE]
-> Voor Server bewerkingen die gebruikmaken van Azure PowerShell-cmdlets, moet de Service-Principal ook behoren tot de rol van **eigenaar** van de resource in [Azure op rollen gebaseerde Access Control (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd in Azure Active Directory.
@@ -42,7 +39,7 @@ U kunt Server beheerders configureren met behulp van SQL Server Management Studi
     
     ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Een resource manager-sjabloon gebruiken
+## <a name="using-a-resource-manager-template"></a>Een Resource Manager-sjabloon gebruiken
 
 U kunt Server beheerders ook configureren door de Analysis Services server te implementeren met behulp van een Azure Resource Manager sjabloon. De identiteit waarmee de implementatie wordt uitgevoerd, moet behoren tot de rol **Inzender** voor de resource in [Azure role-based Access Control (RBAC)](../role-based-access-control/overview.md).
 
@@ -96,6 +93,24 @@ De volgende Resource Manager-sjabloon implementeert een Analysis Services server
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Beheerde identiteiten gebruiken
+
+Een beheerde identiteit kan ook worden toegevoegd aan de lijst met beheerders van Analysis Services. U hebt bijvoorbeeld een [logische app met een door het systeem toegewezen beheerde identiteit](../logic-apps/create-managed-service-identity.md)en wilt deze de mogelijkheid geven om uw Analysis Services server te beheren.
+
+In de meeste delen van de Azure Portal en Api's worden beheerde identiteiten geïdentificeerd met behulp van de object-ID van de Service-Principal. Analysis Services vereist echter dat ze worden geïdentificeerd aan de hand van hun client-ID. U kunt de Azure CLI gebruiken om de client-ID voor een service-principal te verkrijgen:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+U kunt ook Power shell gebruiken:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+U kunt deze client-ID vervolgens gebruiken in combi natie met de Tenant-ID om de beheerde identiteit toe te voegen aan de Analysis Services beheerders lijst, zoals hierboven wordt beschreven.
 
 ## <a name="related-information"></a>Gerelateerde informatie
 

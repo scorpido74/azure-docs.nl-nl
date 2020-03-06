@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190259"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397819"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor het Azure Act
 
 Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocol-handler bevatten `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
-Alle technische profielen van Azure AD bevatten het **Aad-algemene** technische profiel. In de volgende technische profielen is het protocol niet opgegeven omdat het protocol is geconfigureerd in het **Aad-algemene** technische profiel:
-
+De volgende technische profielen van het [standaard beleid voor Starter Packs](custom-policy-get-started.md#custom-policy-starter-pack) van Azure AD bevatten het **Aad-algemene** technische profiel. De technische profielen van Azure AD geven niet het protocol op omdat het protocol is geconfigureerd in het **Aad-algemeen** Technical profiel:
+ 
 - **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserReadUsingAlternativeSecurityId-fout** : Zoek een sociaal account in de Directory.
 - **Aad-UserWriteUsingAlternativeSecurityId** : een nieuw sociaal account maken.
 - **Aad-UserReadUsingEmailAddress** : Zoek een lokaal account in de Directory.

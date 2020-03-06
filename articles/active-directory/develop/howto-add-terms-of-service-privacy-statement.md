@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300006"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
 
@@ -43,7 +43,7 @@ Zorg ervoor dat de Url's voldoen aan de volgende richt lijnen voordat u koppelin
 |---------------|---------------------------------------|
 | Indeling        | Geldige URL                             |
 | Geldige schema's | HTTP en HTTPS<br/>U kunt het beste HTTPS |
-| Max. lengte    | 2048 tekens                       |
+| Maximum lengte    | 2048 tekens                       |
 
 Voor beelden: `https://myapp.com/terms-of-service` en `https://myapp.com/privacy-statement`
 
@@ -53,12 +53,12 @@ Wanneer de service voorwaarden en de privacyverklaring gereed zijn, kunt u aan d
 
 * [Via de Azure Portal](#azure-portal)
 * [De JSON van het app-object gebruiken](#app-object-json)
-* [De MSGraph bèta-REST API gebruiken](#msgraph-beta-rest-api)
+* [De Microsoft Graph-API gebruiken](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>De Azure Portal gebruiken
 Volg deze stappen in de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar de sectie **app-registraties** en selecteer uw app.
 3. Open het deel venster **huis stijl** .
 4. Vul de URL-velden **voor de service voorwaarden** en de **privacyverklaring** in.
@@ -77,12 +77,12 @@ Als u de JSON van het app-object liever rechtstreeks wilt wijzigen, kunt u de ma
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>De MSGraph bèta-REST API gebruiken
+### <a name="msgraph-rest-api"></a>De Microsoft Graph-API gebruiken
 
-Als u al uw apps op een programmatische manier wilt bijwerken, kunt u de MSGraph Beta REST API gebruiken om alle apps bij te werken zodat deze koppelingen bevatten naar de service voorwaarden en de privacyverklaring.
+Als u al uw apps op een programmatische manier wilt bijwerken, kunt u de Microsoft Graph-API gebruiken om alle apps bij te werken zodat deze koppelingen bevatten naar de service voorwaarden en de privacyverklaring.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Zorg ervoor dat u geen vooraf bestaande waarden overschrijft die u hebt toegewezen aan een van deze velden: `supportUrl`, `marketingUrl`en `logoUrl`
-> * De MSGraph Beta REST API werkt alleen wanneer u zich aanmeldt met een Azure AD-account. Persoonlijke micro soft-accounts worden niet ondersteund.
+> * De Microsoft Graph-API werkt alleen wanneer u zich aanmeldt met een Azure AD-account. Persoonlijke micro soft-accounts worden niet ondersteund.

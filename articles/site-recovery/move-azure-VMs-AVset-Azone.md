@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298303"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
-Beschikbaarheidszones in azure helpen bij het beveiligen van uw toepassingen en gegevens van data centers. Elke beschikbaarheidszone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke schei ding van Beschikbaarheidszones binnen een regio helpt bij het beveiligen van toepassingen en gegevens van data centers. Met Beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (Vm's). Beschikbaarheidszones worden ondersteund in regio's selecteren, zoals vermeld in [Wat zijn Beschikbaarheidszones in azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
+Beschikbaarheidszones in azure helpen bij het beveiligen van uw toepassingen en gegevens van data centers. Elke beschikbaarheids zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke schei ding van Beschikbaarheidszones binnen een regio helpt bij het beveiligen van toepassingen en gegevens van data centers. Met Beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (Vm's). Beschikbaarheidszones worden ondersteund in regio's selecteren, zoals vermeld in [Wat zijn Beschikbaarheidszones in azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
 
 In een scenario waarin uw Vm's worden geïmplementeerd als *één exemplaar* in een specifieke regio en u de beschik baarheid wilt verbeteren door deze vm's te verplaatsen naar een beschikbaarheids zone, kunt u dit doen met behulp van Azure site Recovery. Deze actie kan verder worden gecategoriseerd in:
 
@@ -42,7 +42,7 @@ In een scenario waarin uw Vm's worden geïmplementeerd als *één exemplaar* in 
 ## <a name="prepare-the-source-vms"></a>De bron-VM’s voorbereiden
 
 1. Uw Vm's moeten beheerde schijven gebruiken als u deze wilt verplaatsen naar een beschikbaarheids zone met behulp van Site Recovery. U kunt bestaande Windows-Vm's die gebruikmaken van niet-beheerde schijven, converteren voor het gebruik van beheerde schijven. Volg de stappen in [een virtuele Windows-machine converteren van niet-beheerde schijven naar beheerde schijven](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks). Zorg ervoor dat de beschikbaarheidsset is geconfigureerd als *beheerd*.
-2. Controleer of de meest recente basiscertificaten aanwezig zijn op de Azure-VM’s die u wilt verplaatsen. Als de meest recente basis certificaten niet aanwezig zijn, kan het kopiëren van gegevens naar de doel regio niet worden ingeschakeld vanwege beveiligings beperkingen.
+2. Controleer of de meest recente basiscertificaten aanwezig zijn op de virtuele Azure-machines die u wilt verplaatsen. Als de meest recente basis certificaten niet aanwezig zijn, kan het kopiëren van gegevens naar de doel regio niet worden ingeschakeld vanwege beveiligings beperkingen.
 
 3. Voor Windows-VM’s moet u de meest recente Windows-updates op de VM installeren, zodat alle vertrouwde basiscertificaten op de machine aanwezig zijn. In een niet-verbonden omgeving voert u de standaard Windows Update-en certificaat update processen voor uw organisatie uit.
 
@@ -70,7 +70,7 @@ In een scenario waarin uw Vm's worden geïmplementeerd als *één exemplaar* in 
     - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
     - [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Raadpleeg de netwerk [documentatie](https://docs.microsoft.com/azure/#pivot=products&panel=network)voor andere netwerk onderdelen.
+   Raadpleeg de netwerk [documentatie](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerk onderdelen.
 
     > [!IMPORTANT]
     > Zorg ervoor dat u een zone-redundante load balancer gebruikt in het doel. Meer informatie vindt u op [Standard Load Balancer en Beschikbaarheidszones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).

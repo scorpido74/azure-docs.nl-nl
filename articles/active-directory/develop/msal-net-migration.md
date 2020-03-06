@@ -13,21 +13,21 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4ffcd82931b4df92aa2885eb043deae90a70526f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695344"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299880"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Toepassingen migreren naar MSAL.NET
 
 Zowel micro soft Authentication Library voor .NET (MSAL.NET) als Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars platform (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van Azure AD Authentication Library (ADAL). MSAL gebruiken:
 
 - u kunt een bredere set met micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren, zoals het micro soft Identity platform-eind punt gebruikt.
-- uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
+- Uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
 - uw toepassing kan stapsgewijze toestemming bieden en het ondersteunen van voorwaardelijke toegang is eenvoudiger
-- u profiteert van de innovatie.
+- U profiteert van de innovatie.
 
 **MSAL.net is nu de aanbevolen verificatie bibliotheek voor gebruik met het micro soft Identity-platform**. Er worden geen nieuwe functies geïmplementeerd op ADAL.NET. De inspanningen zijn gericht op het verbeteren van MSAL.
 
@@ -118,7 +118,7 @@ Niet alle subsidies worden nog ondersteund in MSAL.NET en het v 2.0-eind punt. H
 
 Dit zijn de subsidies die worden ondersteund in ADAL.NET en MSAL.NET voor desktop-en mobiele toepassingen
 
-Toekennen | ADAL.NET | MSAL.NET
+Verlenen | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interactief | [Interactieve verificatie](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Tokens interactief ophalen in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Geïntegreerde Windows-verificatie | [Geïntegreerde verificatie op Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication)
@@ -129,7 +129,7 @@ Toestel code stroom | [Apparaatprofiel voor apparaten zonder webbrowsers](https:
 
 Hier volgen de subsidies die worden ondersteund in ADAL.NET en MSAL.NET voor webtoepassingen, Web-Api's en daemon-toepassingen:
 
-Type app | Toekennen | ADAL.NET | MSAL.NET
+Type app | Verlenen | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web-app, Web-API, daemon | Client referenties | [Client referentie stromen in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Client referentie stromen in MSAL.net](msal-authentication-flows.md#client-credentials))
 Web-API | Namens | [Service voor het aanroepen van services namens de gebruiker met ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Namens in MSAL.NET](msal-authentication-flows.md#on-behalf-of)
@@ -145,7 +145,7 @@ MSAL.NET maakt de token cache een verzegelde klasse, waardoor de mogelijkheid om
 
 Als u in v 1.0 de https://login.microsoftonline.com/common Authority gebruikt, kunnen gebruikers zich aanmelden met een AAD-account (voor elke organisatie). Zie [verificatie van de certificerings instantie in ADAL.net](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Als u de https://login.microsoftonline.com/common -instantie in v 2.0 gebruikt, kunnen gebruikers zich aanmelden met een AAD-organisatie of een persoonlijk micro soft-account (MSA). Als u de aanmelding voor een AAD-account (hetzelfde gedrag als met ADAL.NET) wilt beperken, moet u in MSAL.NET de https://login.microsoftonline.com/organizations gebruiken. Zie de para meter `authority` in [open bare client toepassing](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)voor meer informatie.
+Als u de https://login.microsoftonline.com/common-instantie in v 2.0 gebruikt, kunnen gebruikers zich aanmelden met een AAD-organisatie of een persoonlijk micro soft-account (MSA). Als u de aanmelding voor een AAD-account (hetzelfde gedrag als met ADAL.NET) wilt beperken, moet u in MSAL.NET de https://login.microsoftonline.com/organizationsgebruiken. Zie de para meter `authority` in [open bare client toepassing](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)voor meer informatie.
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0 en v 2.0-tokens
 
@@ -165,7 +165,7 @@ OAuth2 machtigingen zijn machtigings bereiken die een v 1.0 Web API (resource)-t
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bereiken voor het aanvragen van toegang tot specifieke OAuth2-machtigingen van een v 1.0-toepassing
 
-Als u tokens wilt verkrijgen voor specifieke bereiken van een v 1.0-toepassing (bijvoorbeeld de AAD-grafiek, die https://graph.windows.net) is, moet u `scopes` maken door een gewenste resource-id te koppelen met een gewenste OAuth2-machtiging voor die bron.
+Als u tokens wilt verkrijgen voor een toepassing die v 1.0-tokens accepteert (bijvoorbeeld de Microsoft Graph-API, die https://graph.microsoft.com)is, moet u `scopes` maken door een gewenste resource-id te koppelen met een gewenste OAuth2-machtiging voor die bron.
 
 Bijvoorbeeld, om toegang te krijgen tot de naam van de gebruiker, een web-API van v 1.0 die de URI van de App-ID is `ResourceId`, wilt u het volgende gebruiken:
 
@@ -173,16 +173,16 @@ Bijvoorbeeld, om toegang te krijgen tot de naam van de gebruiker, een web-API va
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-Als u wilt lezen en schrijven met MSAL.NET Azure Active Directory met behulp van de AAD Graph API (https://graph.windows.net/) , maakt u een lijst met bereiken zoals in het volgende code fragment:
+Als u wilt lezen en schrijven met MSAL.NET Azure Active Directory met behulp van de Microsoft Graph API (https://graph.microsoft.com/), maakt u een lijst met bereiken zoals in het volgende code fragment:
 
 ```csharp
-ResourceId = "https://graph.windows.net/";
+ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Waarschuwing: als u een of twee schuine strepen hebt in het bereik dat overeenkomt met een v 1.0 Web-API
 
-Als u het bereik wilt schrijven dat overeenkomt met de Azure Resource Manager-API (https://management.core.windows.net/) , moet u het volgende bereik aanvragen (Let op de twee slashes) 
+Als u het bereik wilt schrijven dat overeenkomt met de Azure Resource Manager-API (https://management.core.windows.net/), moet u het volgende bereik aanvragen (Let op de twee slashes) 
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -196,7 +196,7 @@ Dit komt doordat de Resource Manager-API een slash in de claim van de doel groep
 De logica die door Azure AD wordt gebruikt, is als volgt:
 - Voor ADAL (v 1.0)-eind punt met een v 1.0-toegangs token (alleen mogelijk), AUD = resource
 - Voor MSAL (v 2.0-eind punt) waarbij een toegangs token wordt gevraagd voor een resource die v 2.0-tokens accepteert, AUD = resource. AppId
-- Voor MSAL (v 2.0-eind punt) waarbij een toegangs token wordt gevraagd voor een resource die een v 1.0-toegangs token accepteert (dit is het geval hierboven), parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als de resource-id te gebruiken. Als https:\/-database.windows.net de doel groep 'https://database.windows.net/ ' verwacht, moet u daarom een scope van HTTPS aanvragen:\/ /database.windows.net//.default. Zie ook #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): het afsluitende slash van de bron-URL wordt wegge laten, wat de oorzaak is van een mislukte SQL-verificatie #747
+- Voor MSAL (v 2.0-eind punt) waarbij een toegangs token wordt gevraagd voor een resource die een v 1.0-toegangs token accepteert (dit is het geval hierboven), parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als de resource-id te gebruiken. Als https:\/-database.windows.net de doel groep 'https://database.windows.net/' verwacht, moet u daarom een scope van HTTPS aanvragen:\//database.windows.net//.default. Zie ook #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): het afsluitende slash van de bron-URL wordt wegge laten, wat de oorzaak is van een mislukte SQL-verificatie #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Bereiken om toegang aan te vragen tot alle machtigingen van een v 1.0-toepassing

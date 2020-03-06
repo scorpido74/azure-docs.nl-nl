@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397043"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services kluizen
 
@@ -30,7 +30,7 @@ Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van
 
 - **Alle configuraties van Azure virtual machines beveiligen**: Recovery Services kluizen beveiligen vm's op basis van Resource Manager, zoals Premium-schijven, Managed disks en versleutelde vm's. Als u een back-upkluis bijwerkt naar een Recovery Services kluis, hebt u de mogelijkheid om uw op Service Manager gebaseerde Vm's te upgraden naar op Resource Manager gebaseerde Vm's. Tijdens de upgrade van de kluis kunt u uw op Service Manager gebaseerde VM-herstel punten behouden en de beveiliging configureren voor de bijgewerkte virtuele machines (Resource Manager-ingeschakeld). [Meer informatie](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Direct herstellen voor IaaS-vm's**: met Recovery Services kluizen kunt u bestanden en mappen van een IaaS-VM herstellen zonder de volledige VM te herstellen, waardoor de herstel tijden sneller zijn. Direct terugzetten voor IaaS Vm's is beschikbaar voor virtuele Windows-en Linux-machines. [Meer informatie](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Direct herstellen voor IaaS-vm's**: met Recovery Services kluizen kunt u bestanden en mappen van een IaaS-VM herstellen zonder de volledige VM te herstellen, waardoor de herstel tijden sneller zijn. Direct terugzetten voor IaaS Vm's is beschikbaar voor virtuele Windows-en Linux-machines. [Meer informatie](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Uw Recovery Services-kluizen beheren in de portal
 

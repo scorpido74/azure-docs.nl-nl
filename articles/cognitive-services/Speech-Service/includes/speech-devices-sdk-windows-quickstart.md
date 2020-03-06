@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: d2f8603b659fe44f83b725a92fb7b73cfe34cf37
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383888"
 ---
 In deze Quick Start leert u hoe u de speech apparaten SDK voor Windows kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](../conversation-transcription-service.md) -apparaat. Voor conversatie-transcriptie wordt alleen [Azure KINECT DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund. Voor andere spraak gebruiken lineaire Mic-matrices die een geometrie van een microfoon matrix bieden, worden ondersteund.
 
@@ -74,7 +74,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.9.0</version>
+             <version>1.10.0</version>
         </dependency>
     </dependencies>
    ```

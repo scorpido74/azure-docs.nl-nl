@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613753"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298731"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -34,7 +34,7 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
     * Als dat nodig is, [maakt en configureert][create-azure-ad-ds-instance]de eerste zelf studie een Azure Active Directory Domain Services-exemplaar.
-* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein.
 
 ## <a name="azure-resource-manager-template-overview"></a>Overzicht van Azure Resource Manager sjablonen
 
@@ -94,7 +94,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
     | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
     | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aaddscontoso.com*. |
-    | Domein gebruikers naam           | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Domein gebruikers naam           | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet deel uitmaken van het beheerde domein van Azure AD DS. |
     | Domeinwachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
     | Gebruikers naam van de VM-beheerder         | Geef een lokaal Administrator-account op om te maken op de VM. |
@@ -104,7 +104,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
 
 > [!WARNING]
 > **Wacht woorden met een waarschuwing.**
-> Het sjabloon parameter bestand vraagt het wacht woord aan voor een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Voer geen waarden hand matig in dit bestand in en laat het toegankelijk op bestands shares of andere gedeelde locaties.
+> Het sjabloon parameter bestand vraagt het wacht woord aan voor een gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein. Voer geen waarden hand matig in dit bestand in en laat het toegankelijk op bestands shares of andere gedeelde locaties.
 
 Het duurt enkele minuten voordat de implementatie is voltooid. Wanneer u klaar bent, wordt de Windows-VM gemaakt en gekoppeld aan het beheerde domein van Azure AD DS. De virtuele machine kan worden beheerd of aangemeld met behulp van domein accounts.
 
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om een bestaande virtuele machine met Windows Serve
     | Resourcegroep            | Kies de resource groep met uw bestaande VM. |
     | Locatie                  | Selecteer de locatie van de bestaande virtuele machine. |
     | VM-lijst                   | Voer de door komma's gescheiden lijst in van de bestaande virtuele machine (s) die u wilt toevoegen aan de Azure AD DS beheerde domein, zoals *myVM1, myVM2*. |
-    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet deel uitmaken van het beheerde domein van Azure AD DS. |
     | Domein deelname gebruikers wachtwoord | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
 
@@ -131,7 +131,7 @@ Voer de volgende stappen uit om een bestaande virtuele machine met Windows Serve
 
 > [!WARNING]
 > **Wacht woorden met een waarschuwing.**
-> Het sjabloon parameter bestand vraagt het wacht woord aan voor een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Voer geen waarden hand matig in dit bestand in en laat het toegankelijk op bestands shares of andere gedeelde locaties.
+> Het sjabloon parameter bestand vraagt het wacht woord aan voor een gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein. Voer geen waarden hand matig in dit bestand in en laat het toegankelijk op bestands shares of andere gedeelde locaties.
 
 Het duurt even voordat de implementatie is voltooid. Wanneer u klaar bent, worden de opgegeven Windows-Vm's gekoppeld aan het beheerde domein van Azure AD DS en kunnen ze worden beheerd of aangemeld met behulp van domein accounts.
 

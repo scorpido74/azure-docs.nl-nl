@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299411"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwerpen van toepassingen voor de Cloud. Trainings bronnen samen met beveiligings vragen en concepten die u kunt overwegen tijdens de vereisten en ontwerp fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) , worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwerpen.
@@ -27,7 +27,7 @@ In dit artikel komen de volgende SDL-fasen aan bod:
 
 - Training
 - Vereisten
-- Ontwerpen
+- Ontwerp
 
 ## <a name="training"></a>Training
 Voordat u begint met het ontwikkelen van uw Cloud toepassing, is het tijd om inzicht te krijgen in de beveiliging en privacy van Azure. Als u deze stap uitvoert, kunt u het aantal en de ernst van de zwakke plekken in uw toepassing beperken. U bent er meer voor bereid om op de juiste manier te reageren op de steeds veranderende bedreigings breedte.
@@ -38,7 +38,7 @@ Gebruik de volgende resources tijdens de trainings fase om vertrouwd te raken me
 
   - De [aan de slag-hand leiding voor Azure-ontwikkel aars](../../guides/developer/azure-developer-guide.md) biedt essentiële informatie voor ontwikkel aars die aan de slag willen gaan met het Azure-platform voor hun ontwikkelings behoeften.
 
-  - [Sdk's en hulpprogram ma's](https://docs.microsoft.com/azure/index#pivot=sdkstools) beschrijft de hulpprogram ma's die beschikbaar zijn in Azure.
+  - [Sdk's en hulpprogram ma's](https://docs.microsoft.com/azure/index?pivot=sdkstools) beschrijft de hulpprogram ma's die beschikbaar zijn in Azure.
 
   - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) biedt ontwikkel samenwerkings hulpmiddelen. De hulpprogram ma's zijn hoogwaardige pijp lijnen, gratis Git-opslag plaatsen, Configureer bare Kanban boards en uitgebreide geautomatiseerde belasting tests op basis van de Cloud.
     In het [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) worden onze resources gecombineerd voor het leren van DevOps-procedures, Git-versie beheer, agile-methoden, hoe we werken met DevOps bij micro soft en hoe u uw eigen DevOps-voortgang kunt beoordelen.
@@ -66,7 +66,7 @@ Vraag beveiligings vragen als:
 
   - Bevat mijn toepassing gevoelige gegevens?
 
-  - Verzamelt of slaat mijn toepassing gegevens op die mij nodig heeft om te voldoen aan de industrie normen en nalevings Programma's zoals de [Federal Financial Instituut onderzoeksbureau (FFIEC)](../blueprints/ffiec-analytics-overview.md) of de [Payment Card Industry Data Security standards (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)?
+  - Verzamelt of opslaat mijn toepassing gegevens die mij nodig heeft om te voldoen aan de industrie normen en nalevings Programma's zoals de [Federal Financial Instituut onderzoeksbureau (FFIEC)](../blueprints/ffiec-analytics-overview.md) of de [PCI DSS (Data Security Standards) van de betalings kaart](../blueprints/pcidss-analytics-overview.md).
 
   - Verzamelt mijn toepassing gevoelige persoonlijke of klant gegevens die kunnen worden gebruikt, hetzij zelf, hetzij met andere informatie, om een persoon te identificeren, contact op te nemen of te vinden.
 
@@ -97,7 +97,7 @@ U wilt echter ook [aannemen dat er](https://docs.microsoft.com/azure/devops/lear
 
   - Hoe kan ik de aanval herstellen, zoals gegevens lekken of knoeien?
 
-## <a name="design"></a>Ontwerpen
+## <a name="design"></a>Ontwerp
 
 De ontwerp fase is essentieel voor het opstellen van aanbevolen procedures voor ontwerp-en functionele specificaties. Het is ook essentieel voor het uitvoeren van een risico analyse waardoor beveiligings-en privacy-problemen in een project worden verholpen.
 
@@ -126,10 +126,10 @@ Gebruik voor ontwikkeling een beveiligde coderings bibliotheek en een software r
 Zorg ervoor dat u de nieuwste versie van uw Framework gebruikt en alle beveiligings functies die beschikbaar zijn in het Framework. Micro soft biedt een uitgebreide [set ontwikkel tools](https://azure.microsoft.com/product-categories/developer-tools/) voor alle ontwikkel aars die op elk platform of elke taal werken om Cloud toepassingen te leveren. U kunt code met de taal van uw keuze door kiezen uit verschillende [sdk's](https://azure.microsoft.com/downloads/).
 U kunt profiteren van Ide's (Full-complete Integrated Development Environments) en editors met geavanceerde mogelijkheden voor fout opsporing en ingebouwde ondersteuning voor Azure.
 
-Micro soft biedt diverse [talen, frameworks en hulpprogram ma's](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) die u kunt gebruiken om toepassingen te ontwikkelen in Azure. Een voor beeld is [Azure voor .net-en .net core-ontwikkel aars](https://docs.microsoft.com/dotnet/azure/). Voor elke taal en elk Framework dat we bieden, vindt u Quick starts, zelf studies en API-verwijzingen waarmee u snel aan de slag kunt.
+Micro soft biedt diverse [talen, frameworks en hulpprogram ma's](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) die u kunt gebruiken om toepassingen te ontwikkelen in Azure. Een voor beeld is [Azure voor .net-en .net core-ontwikkel aars](https://docs.microsoft.com/dotnet/azure/). Voor elke taal en elk Framework dat we bieden, vindt u Quick starts, zelf studies en API-verwijzingen waarmee u snel aan de slag kunt.
 
 Azure biedt tal van services die u kunt gebruiken voor het hosten van websites en webtoepassingen. Met deze services kunt u ontwikkelen in uw favoriete taal, of dat nu .NET, .NET core, Java, Ruby, node. js, PHP of python is.
-[Azure App Service web apps](../../app-service/overview.md) (Web Apps) is een van deze services.
+[Azure App Service web apps](../../app-service/overview.md) (Web apps) is een van deze services.
 
 Web Apps voegt de kracht van Microsoft Azure toe aan uw toepassing. Het bevat beveiliging, taak verdeling, automatisch schalen en geautomatiseerd beheer. U kunt ook profiteren van de DevOps-mogelijkheden in Web Apps, zoals pakket beheer, faserings omgevingen, aangepaste domeinen, SSL/TLS-certificaten en doorlopende implementatie vanuit Azure DevOps, GitHub, docker hub en andere bronnen.
 
@@ -149,18 +149,18 @@ Bedreigings modellering is het proces van het identificeren van mogelijke beveil
 
 Ter ondersteuning van het proces van bedreigings modellering hebben we de [sdl-Threat Modeling tool](threat-modeling-tool.md) ontworpen met niet-beveiligings experts. Met dit hulp programma kunnen alle ontwikkel aars de bedreigings modellen vereenvoudigen door duidelijke richt lijnen te bieden voor het maken en analyseren van bedreigingen.
 
-Het ontwerpen van het toepassings ontwerp en het opsommen van [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) -dreigingen, spoofing, manipulatie, afwijzing, openbaar making van informatie, denial of service en uitbrei ding van bevoegdheden: in alle vertrouwens grenzen is een efficiënte manier bewezen om ontwerp fouten te ondervangen vroeg op. De volgende tabel geeft een lijst van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van de functies van Azure. Deze oplossingen werken niet in elke situatie.
+Het ontwerpen van het ontwerp van de toepassing en het opsommen van [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) Threats: vervalsing, knoeien, afwijzing, vrijgeven van informatie, denial of service en uitbrei ding van bevoegdheden: in alle vertrouwens grenzen is een doel matige manier bewezen om ontwerp fouten vroegtijdig op te vangen. De volgende tabel geeft een lijst van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van de functies van Azure. Deze oplossingen werken niet in elke situatie.
 
-| Bestaat | Beveiligings eigenschap | Potentieel beperking van het Azure-platform |
+| Bedreiging | Beveiligings eigenschap | Potentieel beperking van het Azure-platform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Spoofing               | Authentication        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Manipulatie              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
+| Spoofing               | Verificatie        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Knoeien              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
 | Ging            | Niet-afwijzing       | [Bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)van Azure inschakelen.|
-| Openbaarmaking van informatie | Aard       | Versleutel gevoelige gegevens in [rust](../fundamentals/encryption-atrest.md) en [onderweg](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Denial of service (DoS)      | Beschikbaarheid          | Bewaak de prestatie gegevens voor mogelijke denial of service-voor waarden. Verbindings filters implementeren. [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt bescherming tegen DDoS-aanvallen.|
-| Verhoging van bevoegdheden | Authorization         | Gebruik Azure Active Directory <span class="underline"></span> [privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
+| Vrijgeven van informatie | Aard       | Versleutel gevoelige gegevens in [rust](../fundamentals/encryption-atrest.md) en [onderweg](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Denial of service      | Beschikbaarheid          | Bewaak de prestatie gegevens voor mogelijke denial of service-voor waarden. Verbindings filters implementeren. [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt bescherming tegen DDoS-aanvallen.|
+| Uitbrei ding van bevoegdheden | Autorisatie         | Gebruik Azure Active Directory <span class="underline"></span> [privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
-### <a name="reduce-your-attack-surface"></a>Kwetsbaarheid verminderen
+### <a name="reduce-your-attack-surface"></a>Verminder de kwets baarheid voor aanvallen
 
 Een kwets bare kwets baarheid is de totale som van de mogelijke problemen die zich kunnen voordoen. In dit artikel richten we ons op de kwets baarheid van een toepassing.
 Het is de focus om een toepassing te beschermen tegen aanvallen. Een eenvoudige en snelle manier om uw kwets baarheid te minimaliseren, is het verwijderen van ongebruikte resources en code uit uw toepassing. Hoe kleiner uw toepassing, hoe kleiner uw kwets baarheid. Verwijder bijvoorbeeld:
@@ -233,7 +233,7 @@ Implementeer just *-in-time* -toegang (JIT) om de belichtings tijd van bevoegdhe
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Nieuwe verificatie vereisen voor belang rijke trans acties
 
-[Aanvraag vervalsing op meerdere sites](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (ook wel bekend als *XSRF* of *CSRF*) is een aanval tegen webhosten waarvoor een kwaadwillende Web-App de interactie beïnvloedt tussen een client browser en een web-app die die browser vertrouwt. Aanvallen op aanvraag vervalsing op meerdere sites zijn mogelijk omdat webbrowsers sommige typen verificatie tokens automatisch laten verzenden met elke aanvraag naar een website.
+[Cross-site-aanvraag vervalsing](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (ook wel bekend als *XSRF* of *CSRF*) is een aanval voor webhostende apps waarin een schadelijke Web-App de interactie beïnvloedt tussen een client browser en een web-app die die browser vertrouwt. Aanvallen op aanvraag vervalsing op meerdere sites zijn mogelijk omdat webbrowsers sommige typen verificatie tokens automatisch laten verzenden met elke aanvraag naar een website.
 Deze vorm van exploitatie is ook bekend als een aanval of *sessie* met *één klik* , omdat de aanval de eerder geauthenticeerde sessie van de gebruiker benut.
 
 De beste manier om dit soort aanvallen te tegen komen, is door de gebruiker te vragen om iets dat alleen de gebruiker kan opgeven vóór elke belang rijke trans actie, zoals een aankoop, het deactiveren van accounts of het wijzigen van een wacht woord. U kunt de gebruiker vragen om het wacht woord opnieuw in te voeren, een CAPTCHA te volt ooien of een geheim token in te dienen dat alleen de gebruiker zou hebben. De meest voorkomende benadering is het geheime token.

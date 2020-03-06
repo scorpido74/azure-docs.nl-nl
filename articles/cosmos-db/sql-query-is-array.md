@@ -1,18 +1,18 @@
 ---
-title: IS_ARRAY in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie IS_ARRAY in Azure Cosmos DB.
+title: IS_ARRAY in Azure Cosmos DB query taal
+description: Meer informatie over de functie IS_ARRAY van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11ff29dcae7bf5c2e532eee658ee39d39b964e35
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303882"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
  Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een matrix is.  
@@ -25,7 +25,7 @@ IS_ARRAY(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expr*  
+*expressie*  
    Is een expressie.  
   
 ## <a name="return-types"></a>Retour typen
@@ -34,7 +34,7 @@ IS_ARRAY(<expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten gecontroleerd van JSON-Boole-, getal-, teken reeks-, null-, object-, matrix-en niet-gedefinieerde typen met behulp van de functie `IS_ARRAY`.  
+  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_ARRAY`.  
   
 ```sql
 SELECT   
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,24 +1,24 @@
 ---
-title: Azure dev Spaces installeren op AKS & het programma aan de client zijde
+title: Azure dev Spaces inschakelen op AKS & de hulpprogram ma's aan de client zijde installeren
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Meer informatie over het installeren van Azure dev Spaces in een AKS-cluster en het installeren van het programma aan de client zijde.
+description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252009"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302896"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
 
-In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt installeren op een AKS-cluster en hoe u het hulp programma aan de client zijde installeert.
+In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt inschakelen op een AKS-cluster en hoe u de hulpprogram ma's aan de client zijde installeert.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten installeren met behulp van de CLI
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten inschakelen met de CLI
 
-Voordat u ontwikkel ruimten kunt installeren met behulp van de CLI, hebt u het volgende nodig:
+Voordat u ontwikkel ruimten kunt inschakelen met behulp van de CLI, hebt u het volgende nodig:
 * Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
 * [De Azure-cli is geïnstalleerd][install-cli].
 * [Een AKS-cluster][create-aks-cli] in een [ondersteunde regio][supported-regions].
@@ -49,25 +49,25 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Met de opdracht `use-dev-spaces` wordt ook de Azure dev Space CLI geïnstalleerd.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure dev Spaces installeren met behulp van de Azure Portal
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Azure dev Spaces inschakelen met behulp van de Azure Portal
 
-Voordat u ontwikkel ruimten kunt installeren met behulp van de Azure Portal, hebt u het volgende nodig:
+Voordat u ontwikkel ruimten kunt inschakelen met behulp van de Azure Portal, hebt u het volgende nodig:
 * Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
 * [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
-Azure dev Spaces installeren met behulp van de Azure Portal:
+Azure-ontwikkel ruimten inschakelen met behulp van de Azure Portal:
 1. Meld u aan bij de [Azure-portal][az-portal].
 1. Navigeer naar uw AKS-cluster.
-1. Klik op *dev Spaces*.
+1. Selecteer de menu opdracht *dev Spaces* .
 1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
 
 ![Ontwikkel ruimten in de Azure Portal inschakelen](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Wanneer u Azure dev Spaces installeert met behulp van de Azure Portal **, wordt er geen** hulp programma voor het installeren van de client voor Azure-ontwikkel ruimten geïnstalleerd.
+Wanneer u Azure dev Spaces inschakelt met behulp van de Azure Portal **, worden geen** hulpprogram Ma's voor Azure-ontwikkel ruimten geïnstalleerd.
 
-## <a name="install-the-client-side-tooling"></a>Installeer het hulp programma aan de client zijde
+## <a name="install-the-client-side-tools"></a>De hulpprogram ma's aan de client zijde installeren
 
-U kunt de Azure dev Spaces-client-side tool gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om het programma aan de client zijde te installeren:
+U kunt de Azure dev Spaces-client-side hulp middelen gebruiken om te communiceren met ontwikkel ruimten in een AKS-cluster vanaf uw lokale computer. Er zijn verschillende manieren om de hulpprogram ma's aan de client zijde te installeren:
 
 * Installeer de [Azure dev Space-extensie][vscode-extension]in [Visual Studio code][vscode].
 * Installeer de werk belasting Azure Development in [Visual Studio 2019][visual-studio].

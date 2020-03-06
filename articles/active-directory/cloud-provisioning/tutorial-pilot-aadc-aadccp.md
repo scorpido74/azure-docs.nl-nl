@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442119"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298816"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
@@ -31,7 +31,7 @@ Voordat u deze zelf studie probeert, moet u rekening houden met de volgende item
 3. Zorg ervoor dat de objecten in het test bereik MS-DS-consistencyGUID hebben gevuld, zodat de inrichting van de Cloud moeilijk overeenkomt met de objecten. 
 
    > [!NOTE]
-   > Bij Azure AD Connect Sync worden standaard geen *MS-DS-consistencyGUID* gevuld voor groeps objecten. Volg de stappen in [dit blog bericht](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) om *MS-DS-consistencyGUID* voor groeps objecten in te vullen.
+   > Bij Azure AD Connect Sync worden standaard geen *MS-DS-consistencyGUID* gevuld voor groeps objecten.
 
 4. Dit is een geavanceerd scenario. Zorg ervoor dat u de stappen in deze zelf studie nauw keurig volgt.
 
@@ -86,7 +86,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
     ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Klik op **volgende**op de pagina regels voor **samen voegen** .
- 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Add**.
+ 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Toevoegen**.
  Aangepaste regel](media/how-to-cloud-custom-user-rule/user4.png) ![</br>
 
 Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact). Herhaal de stappen per geconfigureerde AD-connector/per AD-forest. 
@@ -119,7 +119,7 @@ Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep 
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>De Azure AD Connect-inrichtings agent installeren
 1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.  Als u de eenvoudige zelf studie over [AD en Azure-omgeving](tutorial-basic-ad-azure.md) gebruikt, wordt deze CP1.
-2. Down load [hier](https://go.microsoft.com/fwlink/?linkid=2109037)de Azure AD Connect Cloud-inrichtings agent.
+2. Down load de Azure AD Connect Cloud-inrichtings agent met behulp van de stappen die [hier](how-to-install.md#install-the-agent)worden beschreven.
 3. Voer de Azure AD Connect Cloud inrichting (AADConnectProvisioningAgent. installer) uit
 3. **Accepteer** de licentie voorwaarden in het welkomst scherm en klik op **installeren**.</br>
 ![Welkomstscherm](media/how-to-install/install1.png)</br>
@@ -143,7 +143,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
 1. Meld u aan bij Azure Portal.
 2. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure-portal](media/how-to-install/install6.png)</br>
 
 3.  Klik in het scherm **Azure AD inrichten (preview)** op **Alle agents controleren**.
 ![Azure AD-inrichtings](media/how-to-install/install7.png)</br>

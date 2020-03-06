@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 07/12/2019
-ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/05/2020
+ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396152"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Logboek registratie inschakelen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ U kunt ook aangepaste stack traceringen voor uw webservice registreren door Appl
 service.update(enable_app_insights=True)
 ```
 
-Zie de [procedure](how-to-enable-app-insights.md) voor meer informatie over het werken met Application Insights in azure machine learning Studio.
+Zie [gegevens bewaken en verzamelen van ml-webservice-eind punten](how-to-enable-app-insights.md)voor meer informatie.
 
 ## <a name="python-native-logging-settings"></a>Systeem eigen logboek registratie-instellingen van python
 
@@ -111,3 +111,7 @@ Bepaalde Logboeken in de SDK bevatten mogelijk een fout die aangeeft dat u het l
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Gegevens van ML-webservice-eind punten bewaken en verzamelen](how-to-enable-app-insights.md)

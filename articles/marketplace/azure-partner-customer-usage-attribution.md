@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819890"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302862"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Gebruikskenmerken van klanten van Azure-partners
 
@@ -87,7 +87,7 @@ De resource moet alleen worden toegevoegd aan het bestand **mainTemplate. json**
 
 ## <a name="use-the-resource-manager-apis"></a>De Resource Manager-Api's gebruiken
 
-In sommige gevallen kunt u de voor keur geven aan aanroepen direct voor de Resource Manager REST-Api's om Azure-Services te implementeren. [Azure ondersteunt meerdere sdk's](https://docs.microsoft.com/azure/#pivot=sdkstools) om deze aanroepen mogelijk te maken. U kunt een van de Sdk's gebruiken of de REST-Api's rechtstreeks aanroepen om resources te implementeren.
+In sommige gevallen kunt u de voor keur geven aan aanroepen direct voor de Resource Manager REST-Api's om Azure-Services te implementeren. [Azure ondersteunt meerdere sdk's](https://docs.microsoft.com/azure/?pivot=sdkstools) om deze aanroepen mogelijk te maken. U kunt een van de Sdk's gebruiken of de REST-Api's rechtstreeks aanroepen om resources te implementeren.
 
 Als u een resource manager-sjabloon gebruikt, moet u uw oplossing labelen door de instructies te volgen die eerder zijn beschreven. Als u geen Resource Manager-sjabloon gebruikt en directe API-aanroepen maakt, kunt u nog steeds uw implementatie labelen om het gebruik van Azure-resources te koppelen.
 
@@ -296,11 +296,11 @@ U kunt ook technische richt lijnen ontvangen van een technische consultant van m
     * De contact gegevens volt ooien/controleren.
     * De details van de consultatie kunnen vooraf worden ingevuld of worden geselecteerd in de vervolg keuzelijsten.
     * Voer een titel en de beschrijving van het probleem in (Geef zo veel mogelijk details op).
-1. Klik op verzenden
+1. Klik op Submit
 
 Bekijk stap-voor-stap-instructies met scherm afbeeldingen op [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 
-### <a name="whats-next"></a>Volgend onderwerp
+### <a name="whats-next"></a>Wat er volgt
 
 U kunt contact opnemen met een technische consultant van micro soft-partners om een oproep naar uw behoeften te stellen.
 

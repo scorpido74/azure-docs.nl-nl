@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445359"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383862"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnementssleutel voor de Spraakservice. [Gratis downloaden](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3.5](https://www.python.org/downloads/) of hoger.
+* [Python 3,5 tot 3,8](https://www.python.org/downloads/).
 * Het Python Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
     * Windows: x64 en x86.
     * Mac: Mac OS X-versie 10.12 of hoger.
-    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 op x64.
+    * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 op x64.
 * Voer op Linux de volgende opdrachten uit om de vereiste pakketten te installeren:
 
   * Op Ubuntu:
@@ -40,6 +40,16 @@ ms.locfileid: "77445359"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * Op RHEL/CentOS 8:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 * In Windows hebt u [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) voor uw platform nodig.
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>De Speech-SDK installeren en gebruiken met Visual Studio Code
 
-1. Download en installeer een 64-bits versie (3.5 of hoger) van [Python](https://www.python.org/downloads/) op de computer.
+1. Down load en installeer een 64-bits versie van [python](https://www.python.org/downloads/), 3,5 tot 3,8 op uw computer.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Open Visual Studio Code en installeer de Python-extensie. Selecteer **Bestand** > **Voorkeuren** > **Extensies** in het menu. Zoek naar **Python**.
 

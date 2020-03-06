@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122522"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398329"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Detrainer of model Score is de fase waarin het geïmplementeerde model wordt geb
 
 * Algemene informatie [over hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md).
 
-## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
+## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
 
 Gebruik de volgende code om verbinding te maken met een bestaande werk ruimte:
 
@@ -101,7 +101,7 @@ Zie [How to Deploy to Azure Kubernetes service](how-to-deploy-azure-kubernetes-s
 Het invoer script ontvangt gegevens die zijn verzonden naar de webservice, geeft deze door aan het model en retourneert de Score resultaten. Met het volgende script wordt het tensor flow-model bij het opstarten geladen en wordt het model vervolgens gebruikt voor het beoordelen van gegevens.
 
 > [!TIP]
-> Het invoerscript is specifiek voor uw model. Het script moet bijvoorbeeld weten dat het Framework kan worden gebruikt met uw model, gegevens indelingen, enzovoort.
+> Het invoer script is specifiek voor uw model. Het script moet bijvoorbeeld weten dat het Framework kan worden gebruikt met uw model, gegevens indelingen, enzovoort.
 
 ```python
 import json

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399998"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-activiteit in Azure Data Factory
 U kunt een webhook-activiteit gebruiken om de uitvoering van pijp lijnen via uw aangepaste code te beheren. Met de webhook-activiteit kunnen klanten een eind punt aanroepen en een call back-URL door geven. De pijplijn uitvoering wacht totdat de retour aanroep is aangeroepen voordat u verdergaat met de volgende activiteit.
@@ -116,6 +116,10 @@ Geef de bron-URI op waarvoor het toegangs token wordt aangevraagd met behulp van
 Azure Data Factory wordt een extra eigenschap "callBackUri" in de hoofd tekst door gegeven aan het URL-eind punt en verwacht dat deze URI wordt aangeroepen voordat de opgegeven time-outwaarde. Als de URI niet wordt aangeroepen, mislukt de activiteit met de status out.
 
 De webhook-activiteit zelf mislukt wanneer de aanroep van het aangepaste eind punt mislukt. Elk fout bericht kan worden toegevoegd aan de hoofd tekst van de call back en wordt gebruikt in een volgende activiteit.
+
+Voor elke REST API-aanroep zal de client een time-out hebben als het eind punt niet over 1 minuut reageert. Dit is de standaard-HTTP-best practice. Om dit probleem op te lossen, moet u 202-patroon implementeren in dit geval waarbij het eind punt 202 (geaccepteerd) retourneert en de client pollt.
+
+De time-out van 1 min op de aanvraag heeft niets te maken met de time-out van de activiteit. Die wordt gebruikt om te wachten op de callbackUri.
 
 De hoofd tekst die is door gegeven aan de call back-URI moet een geldige JSON zijn. U moet de koptekst van het inhouds type instellen op `application/json`.
 

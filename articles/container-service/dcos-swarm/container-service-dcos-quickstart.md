@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399224"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(AFGESCHAFT) Een DC/OS-cluster implementeren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. Deze quickstart biedt details over de basisstappen die nodig zijn om een DC/OS-cluster te implementeren en een eenvoudige workload uit te voeren.
+DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. In deze Snelstartgids worden de basis stappen beschreven die nodig zijn voor het implementeren van een DC/OS-cluster en het uitvoeren van een basis werk belasting.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -36,7 +36,7 @@ az login
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -128,19 +128,19 @@ Het standaardmechanisme voor het plannen van een ACS DC/OS-cluster is Marathon. 
 
 Voer de volgende opdracht uit om het uitvoeren van de toepassing op het DC/OS-cluster te plannen.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Voer de volgende opdracht uit om de implementatiestatus voor de app te zien.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Wanneer de waarde in de kolom **WAITING** is gewijzigd van *True* naar *False*, is de implementatie van de toepassing voltooid.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een DC/OS-cluster geïmplementeerd en hebt u een eenvoudige Docker-container op het cluster uitgevoerd. Ga verder met de ACS-zelfstudies voor meer informatie over Azure Container Service.
+In deze Snelstartgids hebt u een DC/OS-cluster geïmplementeerd en een eenvoudige docker-container op het cluster uitgevoerd. Ga verder met de ACS-zelfstudies voor meer informatie over Azure Container Service.
 
 > [!div class="nextstepaction"]
 > [Een ACS DC/OS-cluster beheren](container-service-dcos-manage-tutorial.md)

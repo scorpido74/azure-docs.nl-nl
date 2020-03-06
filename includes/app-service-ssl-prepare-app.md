@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300996"
 ---
 ## <a name="prepare-your-web-app"></a>Uw web-app voorbereiden
 
-Als u een aangepast SSL-certificaat (een certificaat van een derde of een App Service-certificaat) met uw web-app wilt verbinden, moet uw [App Service-plan](https://azure.microsoft.com/pricing/details/app-service/) op de prijscategorie **Basic**, **Standard** **Premium** of **Isolated** zijn ingesteld. In deze stap zorgt u ervoor dat de web-app zich in de ondersteunde prijscategorie bevindt.
+Als u aangepaste beveiligings bindingen wilt maken of client certificaten wilt inschakelen voor uw app service-app, moet uw [app service plan](https://azure.microsoft.com/pricing/details/app-service/) zich in de laag **Basic**, **Standard**, **Premium**of **geïsoleerd** bevallen. In deze stap zorgt u ervoor dat de web-app zich in de ondersteunde prijscategorie bevindt.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Open de [Azure Portal](https://portal.azure.com).
+Open de [Azure-portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Navigeer naar uw web-app
 
@@ -51,7 +51,7 @@ Aangepaste SSL wordt niet ondersteund in de laag **F1** of **D1**. Als u omhoog 
 
 Selecteer een van de lagen die niet gratis zijn (**B1**, **B2**, **B3** of een laag in de categorie **Productie**). Klik op **Aanvullende opties bekijken** voor aanvullende opties.
 
-Klik op **Toepassen**.
+Klik op **Apply** (Toepassen).
 
 ![Prijscategorie kiezen](./media/app-service-ssl-prepare-app/choose-pricing-tier.png)
 

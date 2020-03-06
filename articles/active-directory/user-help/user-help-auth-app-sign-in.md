@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297837"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Meld u aan bij uw accounts met behulp van de app Microsoft Authenticator
 
-Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u gebruikmaakt van verificatie in twee stappen. Verificatie in twee stappen helpt u veiliger toegang te krijgen tot uw accounts, vooral als u gevoelige informatie bekijkt. Omdat wachtwoorden kunnen worden vergeten, gestolen of gewijzigd, is verificatie in twee stappen een extra beveiligingsstap waarmee u uw account beschermt door het voor anderen lastiger te maken om in te breken.
+Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u twee ledige verificatie gebruikt. Verificatie in twee stappen helpt u veiliger toegang te krijgen tot uw accounts, vooral als u gevoelige informatie bekijkt. Omdat wachtwoorden kunnen worden vergeten, gestolen of gewijzigd, is verificatie in twee stappen een extra beveiligingsstap waarmee u uw account beschermt door het voor anderen lastiger te maken om in te breken.
 
 U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbeeld:
 
@@ -49,13 +49,19 @@ Aanmelding via de telefoon is alleen beschikbaar op iOS-en Android-apparaten met
 
 ### <a name="turn-on-phone-sign-in"></a>Aanmelding via telefoon inschakelen
 
-- Open de Microsoft Authenticator-app, ga naar uw werk-of school account en schakel aanmelding via de telefoon in:
+Open de Microsoft Authenticator-app, ga naar uw werk-of school account en schakel aanmelding via de telefoon in.
 
-    - **Als dit pictogram wordt weer gegeven ![pictogram dat u hebt ingesteld op](media/user-help-auth-app-sign-in/icon.png).** Als dit pictogram naast de naam van uw werk-of school account wordt weer gegeven, betekent dit dat u de aanmelding voor de telefoon al hebt ingesteld voor het account. U wordt mogelijk gevraagd om Push meldingen voor uw account toe te voegen, zodat u op de hoogte kunt worden gesteld van verificatie aanvragen buiten de app.
+Op een Android-apparaat:
 
-    - **Als u de app hebt gebruikt voor twee ledige verificatie.** Als u de app en verificatie met twee factoren al hebt gebruikt, kunt u de vervolg keuze pijl naast de account naam kiezen en vervolgens **aanmelding via telefoon inschakelen**selecteren.
+- **Als dit pictogram wordt weer gegeven ![pictogram dat u hebt ingesteld op](media/user-help-auth-app-sign-in/icon.png).** Als dit pictogram naast de naam van uw werk-of school account wordt weer gegeven, betekent dit dat u de aanmelding voor de telefoon al hebt ingesteld voor het account. U wordt mogelijk gevraagd om Push meldingen voor uw account toe te voegen, zodat u op de hoogte kunt worden gesteld van verificatie aanvragen buiten de app.
+- **Als u de app al gebruikt voor verificatie met twee factoren.** Als u de app en verificatie met twee factoren al hebt gebruikt, kunt u de pijl naast de account naam selecteren en vervolgens **Aanmelden via telefoon inschakelen**selecteren.
+- **Als u uw werk-of school account niet kunt vinden.** Als u uw werk-of school account niet kunt vinden op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw werk-of school account toe door de stappen te volgen in het artikel [uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md) .
 
-    - **Als u uw werk-of school account niet kunt vinden.** Als u uw werk-of school account niet kunt vinden op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw werk-of school account toe door de stappen te volgen in het artikel [uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md) .
+Op een iOS-apparaat:
+
+- **Wanneer u op de tegel account tikt**, wordt het account in een volledig scherm weer gegeven. Als u **Aanmelden via telefoon is ingeschakeld** , betekent dit dat u volledig hebt ingesteld om u aan te melden zonder uw wacht woord. Als u **aanmelding via telefoon inschakelen**ziet, tikt u erop om aanmelding via de telefoon in te scha kelen.
+- **Als u de app al hebt gebruikt voor twee ledige verificatie**, kunt u op de account tegel tikken, die vervolgens in een volledig scherm van het account wordt weer gegeven. Tik vervolgens op **Aanmelden via de telefoon** om aanmelding via de telefoon in te scha kelen.
+- **Als u uw werk-of school account niet kunt vinden** op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw werk-of school account toe door de stappen te volgen in het artikel uw werk-of school account toevoegen.
 
 Nadat u aanmelding via de telefoon hebt ingeschakeld, kunt u zich aanmelden met behulp van de app Microsoft Authenticator.
 
@@ -82,13 +88,19 @@ U kunt aanmelding via de telefoon inschakelen voor uw persoonlijke Microsoft-acc
 
 ### <a name="turn-on-phone-sign-in"></a>Aanmelding via telefoon inschakelen 
 
-- Open de Microsoft Authenticator-app, ga naar uw persoonlijke Microsoft-account en schakel aanmelding via de telefoon in:
+Open de Microsoft Authenticator-app, ga naar uw werk-of school account en schakel aanmelding via de telefoon in.
 
-    - **Als dit pictogram wordt weer gegeven ![pictogram dat u hebt ingesteld op](media/user-help-auth-app-sign-in/icon.png).** Als dit pictogram naast uw account naam wordt weer gegeven, betekent dit dat u de aanmelding voor de telefoon al hebt ingesteld voor het account. U wordt mogelijk gevraagd om Push meldingen voor uw account toe te voegen, zodat u op de hoogte kunt worden gesteld van verificatie aanvragen buiten de app.
+Op een Android-apparaat:
 
-    - **Als u de app hebt gebruikt voor twee ledige verificatie.** Als u de app en verificatie met twee factoren al hebt gebruikt, kunt u de vervolg keuze pijl naast de account naam kiezen en vervolgens **aanmelding via telefoon inschakelen**selecteren.
+- **Als dit pictogram wordt weer gegeven ![pictogram dat u hebt ingesteld op](media/user-help-auth-app-sign-in/icon.png).** Als dit pictogram naast uw persoonlijke Microsoft-account naam wordt weer gegeven, betekent dit dat u de aanmelding voor de telefoon al hebt ingesteld voor het account. U wordt mogelijk gevraagd om Push meldingen voor uw account toe te voegen, zodat u op de hoogte kunt worden gesteld van verificatie aanvragen buiten de app.
+- **Als u de app hebt gebruikt voor twee ledige verificatie.** Als u de app en verificatie met twee factoren al hebt gebruikt, kunt u de pijl naast de account naam selecteren en vervolgens **Aanmelden via telefoon inschakelen**selecteren.
+- **Als u uw werk-of school account niet kunt vinden.** Als u uw account niet kunt vinden op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Volg de stappen in het artikel [persoonlijke micro soft-accounts toevoegen](user-help-auth-app-add-personal-ms-account.md) om uw account toe te voegen.
 
-    - **Als je je account niet kunt vinden.** Als u uw account niet kunt vinden op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw persoonlijke Microsoft-account toe door de stappen in het artikel [uw persoonlijke Microsoft-account toevoegen](user-help-auth-app-add-personal-ms-account.md#add-your-personal-microsoft-account) te volgen.
+Op een iOS-apparaat:
+
+- **Wanneer u op de tegel account tikt**, wordt het account in een volledig scherm weer gegeven. Als u **Aanmelden via telefoon is ingeschakeld** , betekent dit dat u volledig hebt ingesteld om u aan te melden zonder uw wacht woord. Als u **aanmelding via telefoon inschakelen**ziet, tikt u erop om aanmelding via de telefoon in te scha kelen.
+- **Als u de app al gebruikt voor twee ledige verificatie**, kunt u op de account tegel tikken, die vervolgens in een volledig scherm van het account wordt weer gegeven. Tik vervolgens op **Aanmelden via de telefoon** om aanmelding via de telefoon in te scha kelen.
+- **Als u uw account niet kunt vinden** op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw persoonlijke Microsoft-account toe door de stappen in het artikel [persoonlijke micro soft-accounts toevoegen](user-help-auth-app-add-personal-ms-account.md) te volgen.
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Meld u aan bij uw account via de aanmelding via de telefoon
 
@@ -100,7 +112,7 @@ U kunt aanmelding via de telefoon inschakelen voor uw persoonlijke Microsoft-acc
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Meld u aan met twee ledige verificatie voor uw account
 
-Voor de standaard twee ledige verificatie methode moet u uw gebruikers naam en wacht woord invoeren in het apparaat waarmee u zich aanmeldt en vervolgens kiezen of de Microsoft Authenticator-app een melding verzendt, of dat u de gekoppelde verificatie code liever vanuit het scherm **accounts** van de Microsoft Authenticator-app kunt kopiëren. U schakelt twee ledige verificatie voor uw account in als onderdeel van het proces om het account toe te voegen aan de app Microsoft Authenticator.
+Voor de standaard twee ledige verificatie methode moet u uw gebruikers naam en wacht woord invoeren in het apparaat waarmee u zich aanmeldt en vervolgens kiezen of de Microsoft Authenticator app Microsoft Authenticator app ontvangt. Op een Android-apparaat kunt u deze verificatie codes vinden op het scherm accounts. Op een iOS-apparaat kunt u deze verificatie codes vinden in het scherm **accounts** of in de weer gave volledig scherm van een account, afhankelijk van het type account. U schakelt twee ledige verificatie voor uw account in als onderdeel van het proces om het account toe te voegen aan de app Microsoft Authenticator.
 
 >[!Note]
 >Als u uw werk-of school account of uw persoonlijke account niet ziet op het scherm **accounts** van de app Microsoft Authenticator, betekent dit dat u het account niet hebt toegevoegd aan de app Microsoft Authenticator. Zie [uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md) of [uw persoonlijke accounts toevoegen](user-help-auth-app-add-personal-ms-account.md)om uw account toe te voegen.

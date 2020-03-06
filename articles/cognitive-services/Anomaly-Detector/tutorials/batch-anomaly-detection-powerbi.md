@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448857"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402659"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelf studie: afwijkingen visualiseren met batch detectie en Power BI
 
@@ -29,13 +29,13 @@ In deze zelfstudie leert u het volgende:
 > * U kunt afwijkingen in uw gegevens visualiseren, waaronder verwachte en weer gegeven waarden en grenzen voor afwijkings detectie.
 
 ## <a name="prerequisites"></a>Vereisten
-
+* Een [Azure-abonnement](https://azure.microsoft.com/free/)
 * [Micro soft power bi Desktop](https://powerbi.microsoft.com/get-started/)gratis beschikbaar.
 * Een Excel-bestand (. XLSX) dat gegevens punten van de tijd reeks bevat. De voorbeeld gegevens voor deze Quick Start vindt u op [github](https://go.microsoft.com/fwlink/?linkid=2090962)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
 ## <a name="load-and-format-the-time-series-data"></a>De time series-gegevens laden en Format teren
 

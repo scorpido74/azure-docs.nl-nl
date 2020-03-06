@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331141"
 ---
 # <a name="configure-openssl-for-linux"></a>OpenSSL voor Linux configureren
 
@@ -42,13 +42,13 @@ Controleer of er `certs` submap onder OPENSSLDIR is. In het bovenstaande voor be
 - OPENSSLDIR is `/opt/ssl`. Er is `certs` submap met veel `.crt` of `.pem` bestanden.
 Stel de omgevings variabele `SSL_CERT_DIR` in op `/opt/ssl/certs` voordat u een programma uitvoert dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
 ```bash
-SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR is `/etc/pki/tls`. Er is een certificaat bundel bestand, bijvoorbeeld `ca-bundle.pem` of `ca-bundle.crt`.
-Stel de omgevings variabele `SSL_CERT_FILE` in op `/etc/pki/tls/ca-bundle.pem` voordat u een programma uitvoert dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
+- OPENSSLDIR is `/etc/pki/tls` (bijvoorbeeld op systemen met RHEL/CentOS). Er is `certs` submap met een certificaat bundel bestand, bijvoorbeeld `ca-bundle.crt`.
+Stel de omgevings variabele `SSL_CERT_FILE` zodanig in dat dit bestand wordt gebruikt voordat een programma wordt uitgevoerd dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
 ```bash
-SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

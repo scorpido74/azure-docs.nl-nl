@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303304"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Zelf studie: het data Lake Capture-patroon implementeren om een Databricks Delta tabel bij te werken
 
@@ -34,7 +34,7 @@ Deze oplossing wordt in omgekeerde volg orde gebouwd, te beginnen met de Azure D
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-* Maak een opslag account met een hiërarchische naam ruimte (Azure Data Lake Storage Gen2). In deze zelf studie wordt een opslag account met de naam `contosoorders` gebruikt. Zorg ervoor dat aan uw gebruikersaccount de [rol van Gegevensbijdrager voor opslagblob](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) is toegewezen.
+* Maak een opslag account met een hiërarchische naam ruimte (Azure Data Lake Storage Gen2). In deze zelf studie wordt een opslag account met de naam `contosoorders`gebruikt. Zorg ervoor dat aan uw gebruikersaccount de [rol van Gegevensbijdrager voor opslagblob](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) is toegewezen.
 
   Zie [een Azure data Lake Storage Gen2-account maken](data-lake-storage-quickstart-create-account.md).
 
@@ -42,12 +42,12 @@ Deze oplossing wordt in omgekeerde volg orde gebouwd, te beginnen met de Azure D
 
   Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
+  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
 
   > [!IMPORTANT]
   > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
-  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze waarden later nodig.
+  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze waarden later nodig.
 
 ## <a name="create-a-sales-order"></a>Een verkoop order maken
 
@@ -133,7 +133,7 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
 
 1. Kopieer en plak het volgende code blok in de eerste cel van het notitie blok dat u hebt gemaakt, maar voer deze code nog niet uit.  
 
-   Vervang de `appId`, `password` `tenant` waarden voor tijdelijke aanduidingen in dit code blok door de waarden die u hebt verzameld bij het volt ooien van de vereisten van deze zelf studie.
+   Vervang de `appId`, `password``tenant` waarden voor tijdelijke aanduidingen in dit code blok door de waarden die u hebt verzameld bij het volt ooien van de vereisten van deze zelf studie.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -152,7 +152,7 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
     Met deze code wordt een widget gemaakt met de naam **source_file**. Later gaat u een Azure-functie maken die deze code aanroept en een bestandspad naar die widget door gegeven.  Deze code verifieert ook uw service-principal met het opslag account en maakt enkele variabelen die u in andere cellen gebruikt.
 
     > [!NOTE]
-    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. <br><br>In plaats van deze regel code te gebruiken: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` gebruikt u bijvoorbeeld de volgende regel code: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Nadat u deze zelf studie hebt voltooid, raadpleegt u het artikel [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) op de Azure Databricks-website om voor beelden van deze benadering te bekijken.
+    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. <br><br>In plaats van deze regel code te gebruiken: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`gebruikt u bijvoorbeeld de volgende regel code: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Nadat u deze zelf studie hebt voltooid, raadpleegt u het artikel [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) op de Azure Databricks-website om voor beelden van deze benadering te bekijken.
 
 2. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -336,7 +336,7 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
     }
     ```
 
-   Deze code parseert informatie over de opslag gebeurtenis die is gegenereerd en maakt vervolgens een aanvraag bericht met een URL van het bestand dat de gebeurtenis heeft geactiveerd. Als onderdeel van het bericht geeft de functie een waarde door aan de **source_file** -widget die u eerder hebt gemaakt. de functie code verzendt het bericht naar de Databricks-taak en gebruikt het token dat u eerder hebt verkregen als verificatie.
+   Deze code parseert informatie over de opslag gebeurtenis die is gegenereerd en maakt vervolgens een aanvraag bericht met een URL van het bestand dat de gebeurtenis heeft geactiveerd. Als onderdeel van het bericht geeft de functie een waarde door aan de widget **source_file** die u eerder hebt gemaakt. de functie code verzendt het bericht naar de Databricks-taak en gebruikt het token dat u eerder hebt verkregen als verificatie.
 
 ## <a name="create-an-event-grid-subscription"></a>Een Event Grid-abonnement maken
 

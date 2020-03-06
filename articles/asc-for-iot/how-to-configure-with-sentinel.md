@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center voor IoT-gids voor configuratie met Azure Sentinel (preview) | Microsoft Docs
-description: In deze hand leiding wordt uitgelegd hoe u Azure Sentinel configureert om gegevens van uw Azure Security Center voor IoT-oplossing te ontvangen.
+description: Hierin wordt uitgelegd hoe u Azure Sentinel configureert om gegevens te ontvangen van uw Azure Security Center voor IoT-oplossing.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463178"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303542"
 ---
 > [!IMPORTANT]
 > De Azure Security Center voor IoT Data Connector in azure Sentinel is momenteel beschikbaar als open bare preview.
@@ -48,10 +48,10 @@ Verbinding maken met waarschuwingen van Azure Security Center voor IoT en deze r
 ## <a name="connect-to-azure-security-center-for-iot"></a>Verbinding maken met Azure Security Center voor IoT
 
 1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Azure Security Center voor IOT** .
-1. Klik in het rechterdeel venster aan de rechter kant op **connector pagina openen**. 
+1. Klik onder aan het rechterdeel venster op **connector pagina openen**. 
 1. Klik op **verbinding maken**naast elk IOT hub abonnement waarvan u de waarschuwingen en de waarschuwingen van apparaten wilt streamen naar Azure Sentinel. 
-    - Als Azure Security Center voor IoT niet is ingeschakeld op die hub, wordt er een waarschuwings bericht weer gegeven. Klik op de koppeling **inschakelen** om de service te starten. 
-1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de standaard analyse regel in te scha kelen om incidenten automatisch te maken op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. Deze regel kan worden gewijzigd of bewerkt onder **analyse** > **actieve** regels.
+    - Als Azure Security Center voor IoT niet op die hub is ingeschakeld, wordt er een waarschuwings bericht weer gegeven. Klik op de koppeling **inschakelen** om de service te starten en in te scha kelen. 
+1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de regel in te scha kelen om automatisch incidenten te maken op basis van de gegenereerde waarschuwingen.  Deze regel kan worden gewijzigd of bewerkt onder **analyse** > **actieve** regels.
 
 > [!NOTE]
 >Het kan 10 seconden of langer duren om de hub-lijst te vernieuwen nadat de verbinding is gewijzigd. 

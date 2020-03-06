@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329013"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheids injectie gebruiken in .NET Azure Functions
 
@@ -131,6 +131,52 @@ Als u uw eigen registratie provider nodig hebt, moet u een aangepast type regist
 > [!WARNING]
 > - Voeg geen `AddApplicationInsightsTelemetry()` toe aan de verzameling Services omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
 > - Registreer uw eigen `TelemetryConfiguration` of `TelemetryClient` niet als u de ingebouwde Application Insights functionaliteit gebruikt. Als u uw eigen `TelemetryClient`-exemplaar moet configureren, maakt u er een via de geïnjecteerde `TelemetryConfiguration`, zoals wordt weer gegeven in de [Azure functions monitor](./functions-monitoring.md#version-2x-and-later-2).
+
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> en ILoggerFactory
+
+De host injecteert `ILogger<T>`-en `ILoggerFactory`-Services in constructors.  Deze nieuwe logboek registratie filters worden echter standaard uit de functie Logboeken gefilterd.  U moet het `host.json`-bestand wijzigen om te kiezen voor extra filters en categorieën.  In het volgende voor beeld ziet u hoe u een `ILogger<HttpTrigger>` toevoegt met logboeken die door de host worden weer gegeven.
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+En een `host.json` bestand waarmee het logboek filter wordt toegevoegd.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
 
 ## <a name="function-app-provided-services"></a>Services die door de functie-app worden meegeleverd
 

@@ -4,15 +4,15 @@ description: Meer informatie over SQL-systeem functie ToString in Azure Cosmos D
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 53630a0ecd76459f23a978e98040a86152d7c0d8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304256"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  Retourneert een tekenreeksrepresentatie van de scalaire expressie. 
@@ -25,7 +25,7 @@ ToString(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expr*  
+*expressie*  
    Is een scalaire expressie.  
   
 ## <a name="return-types"></a>Retour typen
@@ -94,6 +94,10 @@ Hier volgt de resultatenset.
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
 ``` 
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

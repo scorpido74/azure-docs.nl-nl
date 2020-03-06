@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064383"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329457"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Aan de slag met Azure Stream Analytics: fraude detectie in realtime
 
@@ -94,7 +94,7 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
     >[!NOTE]
     >Zorg ervoor dat u werkt met de Event Hub, niet de Event Hub naam ruimte.
 
-3.  Voeg een beleid toe met de naam `sa-policy-manage-demo` en voor **claim**, selecteer **beheren**.
+3.  Voeg een beleid toe met de naam `asa-policy-manage-demo` en voor **claim**, selecteer **beheren**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  

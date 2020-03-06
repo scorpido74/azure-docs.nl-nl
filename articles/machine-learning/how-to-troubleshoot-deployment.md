@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945799"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399680"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
@@ -34,13 +34,13 @@ De aanbevolen en meest recente benadering voor model implementatie is via de API
 
 3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
 
-Meer informatie over dit proces in de [Modelbeheer](concept-model-management-and-deployment.md) inleiding.
+Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-management-and-deployment.md) -inleiding.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Om lokaal fouten op te sporen, moet u een werkende docker-installatie op uw lokale systeem hebben.
 
@@ -183,7 +183,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="service-launch-fails"></a>Service starten mislukt
 
-Nadat de installatie kopie is gemaakt, probeert het systeem een container te starten met behulp van de implementatie configuratie. Als onderdeel van de container starten van proces, de `init()` functie in uw scoring-script wordt aangeroepen door het systeem. Als er niet-onderschepte uitzonderingen in de `init()` functioneren, ziet u mogelijk **CrashLoopBackOff** fout in het foutbericht.
+Nadat de installatie kopie is gemaakt, probeert het systeem een container te starten met behulp van de implementatie configuratie. Als onderdeel van het opstart proces van de container wordt de functie `init()` in uw score script aangeroepen door het systeem. Als er niet-onderschepte uitzonde ringen in de `init()` functie worden weer gegeven, ziet u mogelijk de fout melding **CrashLoopBackOff** in het fout bericht.
 
 Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlog) om de logboeken te controleren.
 
@@ -204,7 +204,7 @@ Als het logboek registratie niveau wordt ingesteld op DEBUG, kan er extra inform
 
 ## <a name="function-fails-runinput_data"></a>Functie mislukt: run(input_data)
 
-Als de service is geïmplementeerd, maar deze loopt vast bij het plaatsen van gegevens naar het scoring-eindpunt, kunt u fout-instructie in afvangen toevoegen uw `run(input_data)` functie zodat het gedetailleerde foutbericht wordt weergegeven in plaats daarvan retourneert. Bijvoorbeeld:
+Als de service is geïmplementeerd, maar deze crasht wanneer u gegevens naar het Score-eind punt post, kunt u een fout melding toevoegen aan de functie `run(input_data)`, zodat er in plaats daarvan een gedetailleerd fout bericht wordt geretourneerd. Bijvoorbeeld:
 
 ```python
 def run(input_data):
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Houd er rekening mee**: retourneren foutmeldingen vanuit de `run(input_data)` aanroep moet worden gedaan voor het opsporen van fouten in doel alleen. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
+**Opmerking**: het retour neren van fout berichten van de `run(input_data)` aanroep moet alleen worden uitgevoerd voor fout opsporing. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
+
+## <a name="http-status-code-502"></a>HTTP-status code 502
+
+Een 502-status code geeft aan dat de service een uitzonde ring heeft veroorzaakt of is vastgelopen in de `run()` methode van het score.py-bestand. Gebruik de informatie in dit artikel om fouten in het bestand op te sporen.
 
 ## <a name="http-status-code-503"></a>HTTP-status code 503
 
@@ -261,6 +265,12 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
     > Als er pieken van aanvragen worden ontvangen die groter zijn dan de nieuwe minimum replica's kunnen worden verwerkt, kunt u 503s opnieuw ontvangen. Als het verkeer naar uw service toeneemt, is het mogelijk dat u de minimum replica's moet verg Roten.
 
 Voor meer informatie over het instellen van `autoscale_target_utilization`, `autoscale_max_replicas`en `autoscale_min_replicas` voor, raadpleegt u de [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) -module verwijzing.
+
+## <a name="http-status-code-504"></a>HTTP-status code 504
+
+Een 504-status code geeft aan dat er een time-out is opgetreden voor de aanvraag. De standaard time-out is 1 minuut.
+
+U kunt de time-out verhogen of proberen de service te versnellen door de score.py te wijzigen zodat overbodige aanroepen worden verwijderd. Als deze acties het probleem niet verhelpen, gebruikt u de informatie in dit artikel om fouten op te sporen in het score.py-bestand. De code heeft mogelijk een vastgelopen status of een oneindige lus.
 
 ## <a name="advanced-debugging"></a>Geavanceerde fout opsporing
 
@@ -438,5 +448,5 @@ docker stop debug
 
 Meer informatie over implementatie:
 
-* [Over het implementeren en waar](how-to-deploy-and-where.md)
-* [Zelfstudie: Trainen en implementeren van modellen](tutorial-train-models-with-aml.md)
+* [Implementeren en waar](how-to-deploy-and-where.md)
+* [Zelf studie: modellen trainen & implementeren](tutorial-train-models-with-aml.md)

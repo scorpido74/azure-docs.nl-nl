@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 3f8d0e8996aa972aa63f31d6d5cf8b3fb3c00bd8
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4cfea801523fbc67766920ffd2777908be5ed40b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652154"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402564"
 ---
 De Bing Web Search-client bibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw node. js-toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
 
@@ -25,7 +25,7 @@ U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 * [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel  
 
-[!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../../includes/bing-web-search-quickstart-signup.md)]
 
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900393"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303083"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing kiezen voor gegevens overdracht
 
@@ -42,7 +42,7 @@ De volgende Visual illustreert de richt lijnen voor het kiezen van de verschille
 
 ![Hulpprogram ma's voor Azure-gegevens overdracht](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**De maximale limieten van de apparaten voor offline overdracht-Data Box Disk, Data Box en Data Box Heavy kunnen worden uitgebreid door meerdere orders van het apparaattype te plaatsen.*
+**de bovengrens van de apparaten voor offline overdracht-data Box disk, data box en data Box Heavy kunnen worden uitgebreid door meerdere orders van het apparaattype te plaatsen.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Een oplossing voor gegevens overdracht selecteren
 
@@ -50,20 +50,19 @@ Beantwoord de volgende vragen om een oplossing voor gegevens overdracht te selec
 
 - Is uw beschik bare netwerk bandbreedte beperkt of niet bestaande en wilt u grote gegevens sets overdragen?
   
-    Zo ja, zie: [Scenario 1: Overdracht van grote gegevens sets zonder of lage netwerk](storage-solution-large-dataset-low-network.md)bandbreedte.
+    Zo ja, zie: [scenario 1: grote gegevens sets overzetten zonder of lage netwerk bandbreedte](storage-solution-large-dataset-low-network.md).
 - Wilt u grote gegevens sets via het netwerk overdragen en hebt u een gemiddeld tot hoge netwerk bandbreedte?
 
-    Zo ja, zie: [Scenario 2: Overzetten van grote gegevens sets met gemiddeld naar](storage-solution-large-dataset-moderate-high-network.md)hoge netwerk bandbreedte.
+    Zo ja, zie: [scenario 2: grote gegevens sets overdragen met gemiddeld naar hoge netwerk bandbreedte](storage-solution-large-dataset-moderate-high-network.md).
 - Wilt u af en toe slechts een paar bestanden overzetten via het netwerk?
 
-    Zo ja, Zie [scenario 3: De overdracht van kleine gegevens sets met een beperkt](storage-solution-small-dataset-low-moderate-network.md)aantal netwerk bandbreedte.
+    Zo ja, Zie [scenario 3: kleine gegevens sets overdragen met beperkte netwerk bandbreedte](storage-solution-small-dataset-low-moderate-network.md).
 - Zoekt u regel matig naar tijd gegevens overdracht?
 
-    Zo ja, gebruik dan de scripted/programmatische opties die worden [beschreven in scenario 4: Periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
+    Zo ja, gebruik dan de scripted/programmatische opties die worden beschreven in [scenario 4: periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
 - Bent u op zoek naar voortdurende, doorlopende gegevens overdracht?
 
-    Zo ja, gebruikt u de opties [in scenario 4: Periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
- 
+    Zo ja, gebruikt u de opties in [scenario 4: periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Functie voor gegevens overdracht in Azure Portal
 
@@ -74,7 +73,7 @@ U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor
 - [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Lees een overzicht van AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Azure PowerShell gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [Quick Start: blobs maken, downloaden en vermelden met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Meer informatie over:
 
     - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](https://docs.microsoft.com/azure/databox/).

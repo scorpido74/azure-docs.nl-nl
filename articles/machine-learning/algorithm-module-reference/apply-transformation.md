@@ -8,41 +8,45 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 03/05/2020
+ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395258"
 ---
 # <a name="apply-transformation-module"></a>Module transformatie toepassen
 
 In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.  
-  
+Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.
+
 Als u bijvoorbeeld z-scores hebt gebruikt voor het normaliseren van uw trainings gegevens met behulp van de module **normaliseren gegevens** , zou u ook de z-Score waarde willen gebruiken die tijdens de Score fase is berekend voor training. In Azure Machine Learning kunt u de normalisatie methode opslaan als een trans formatie en vervolgens **trans formatie Toep assen** gebruiken om de z-Score toe te passen op de invoer gegevens vóór de score.
-  
-Azure Machine Learning biedt ondersteuning voor het maken en Toep assen van verschillende soorten aangepaste trans formaties. Stel dat u trans formaties wilt opslaan en opnieuw wilt gebruiken voor:  
-  
-- Ontbrekende waarden verwijderen of vervangen, met behulp van **schone ontbrekende gegevens**
-- Gegevens normaliseren met behulp van **Normal data**
-  
+
+## <a name="how-to-save-transformations"></a>Trans formaties opslaan
+
+Met de ontwerp functie kunt u gegevens transformaties opslaan als gegevens **sets** , zodat u ze kunt gebruiken in andere pijp lijnen.
+
+1. Selecteer een module voor gegevens transformatie die met succes is uitgevoerd.
+
+1. Selecteer het tabblad **uitvoer en logboeken** .
+
+1. Selecteer het **pictogram opslaan** om de **resultaat transformatie**op te slaan.
 
 ## <a name="how-to-use-apply-transformation"></a>Trans formatie Toep assen gebruiken  
   
-1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden in het **model score & evaluatie** categorie. 
+1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden in het gedeelte beoordeling van de **model score &** van het palet van de module. 
   
-2. Zoek een bestaande trans formatie die moet worden gebruikt als invoer. Eerder opgeslagen trans formaties vindt u in de categorie **mijn gegevens sets** onder **gegevens sets** in de structuur van de module links.  
+1. Zoek de opgeslagen trans formatie die u wilt gebruiken onder **gegevens sets** > **mijn gegevens sets** in het module palet.
+
+1. Verbind de uitvoer van de opgeslagen trans formatie met de linker invoer poort van de module **Apply trans formatie** .
+
+    De gegevensset moet exact hetzelfde schema (aantal kolommen, kolom namen, gegevens typen) hebben als de gegevensset waarvoor de trans formatie voor het eerst is ontworpen.  
   
-   
+1. Verbind de gegevensset-uitvoer van de gewenste module met de juiste invoer poort van de module **Apply trans formatie** .
   
-3. Verbind de gegevensset die u wilt transformeren. De gegevensset moet exact hetzelfde schema (aantal kolommen, kolom namen, gegevens typen) hebben als de gegevensset waarvoor de trans formatie voor het eerst is ontworpen.  
-  
-4. Er hoeven geen andere para meters te worden ingesteld, omdat alle aanpassingen worden uitgevoerd bij het definiëren van de trans formatie.  
-  
-5. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u de pijp lijn uit.  
+1. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u de pijp lijn uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

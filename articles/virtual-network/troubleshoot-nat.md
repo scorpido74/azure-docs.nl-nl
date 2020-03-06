@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 185556e3045cb1a879bc256f4f2932549de71cd8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d56cd3b3d286d69a51d8cc14eb8020343cf7295a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274940"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302981"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Problemen met Azure Virtual Network NAT-connectiviteit oplossen
 
@@ -44,7 +44,7 @@ Eén [NAT-gateway resource](nat-gateway-resource.md) ondersteunt van 64.000 tot 
 #### <a name="steps"></a>Stappen:
 
 1. Onderzoek hoe uw toepassing uitgaande connectiviteit maakt (bijvoorbeeld code controle of pakket opname). 
-2. Bepaal of deze activiteit verwacht gedrag is of of de toepassing niet goed werkt.  Gebruik metrische gegevens in Azure Monitor om uw bevindingen te staven.
+2. Bepaal of deze activiteit verwacht gedrag is of of de toepassing niet goed werkt.  Gebruik [metrische gegevens](nat-metrics.md) in azure monitor om uw bevindingen te staven.
 3. Evalueren of de juiste patronen worden gevolgd.
 4. Evalueren of de SNAT-poort uitputting moet worden verminderd met extra IP-adressen die zijn toegewezen aan de NAT gateway-resource.
 
@@ -83,3 +83,4 @@ De volgende tabel kan worden gebruikt als uitgangs punt voor de hulpprogram ma's
 
 - Meer informatie over [Virtual Network NAT](nat-overview.md)
 - Meer informatie over de [NAT gateway-resource](nat-gateway-resource.md)
+- Meer informatie over [metrische gegevens en waarschuwingen voor NAT-gateway bronnen](nat-metrics.md).

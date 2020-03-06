@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b441eb1e6531030a998fe628ae833b29a5d9fe5a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902045"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302556"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migreren van een kennisdatabase met behulp van exporteren / importeren
 
@@ -46,13 +46,9 @@ Voor het migreren van een Knowledge Base moet u vanuit één kennis database exp
    > [!div class="mx-imgBorder"]
    > [Knowledge Base ![importeren](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. **Test** de nieuwe knowledge base met behulp van het paneel Test. Meer informatie over het [uw knowledge base test](../How-To/test-knowledge-base.md).
-1. **Publiceren** de knowledge base. Meer informatie over het [kennisbank publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
-1. Gebruik het eind punt in uw toepassing of bot-code. Hier te zien hoe u [maken van een QnA bot](../Tutorials/create-qna-bot.md).
+1. **Test** de nieuwe Knowledge Base met behulp van het test paneel. Meer informatie over het [testen van uw Knowledge Base](../How-To/test-knowledge-base.md).
 
-    ![QnA Maker-waarden](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
-
-    Op dit moment worden alle de knowledge base-inhoud - vragen, antwoorden en metagegevens, samen met de namen van de bronbestanden en de URL's, geïmporteerd naar de nieuwe knowledge base.
+1. **Publiceer** de Knowledge Base en maak een chat-bot. Meer informatie over het [publiceren van uw Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="chat-logs-and-alterations"></a>Chat-logboeken en-wijzigingen
 Niet-hoofdletter gevoelige wijzigingen (synoniemen) worden niet automatisch geïmporteerd. Gebruik de [v4-api's](https://go.microsoft.com/fwlink/?linkid=2092179) om de wijzigingen in de nieuwe Knowledge Base te verplaatsen.
@@ -62,4 +58,4 @@ Het is niet mogelijk om chat-logboeken te migreren omdat de nieuwe Knowledge Bas
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een kennisdatabase bewerken](../How-To/edit-knowledge-base.md)
+> [Een kennis database bewerken](../How-To/edit-knowledge-base.md)

@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119698"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330823"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Snelstartgids: een spraak assistent maken met de spraak-SDK, java (preview)
 
 Quick starts zijn ook beschikbaar voor [spraak naar tekst](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre), [tekst naar spraak](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)en [spraak omzetting](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre).
 
-In dit artikel maakt u een Java-Console toepassing met behulp van de [Azure Cognitive Services Speech-SDK](speech-sdk.md). De toepassing maakt verbinding met een eerder geontwerpde bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal, verzendt een spraak aanvraag en retourneert een activiteit van een spraak reactie (indien geconfigureerd). De toepassing is gebouwd met het Speech SDK maven-pakket en de eclips Java IDE in Windows, Ubuntu Linux of op macOS. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
+In dit artikel maakt u een Java-Console toepassing met behulp van de [Azure Cognitive Services Speech-SDK](speech-sdk.md). De toepassing maakt verbinding met een eerder geontwerpde bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal, verzendt een spraak aanvraag en retourneert een activiteit van een spraak reactie (indien geconfigureerd). De toepassing is gebouwd met het Speech SDK maven-pakket en de-eclips Java IDE op Windows, Linux of macOS. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-- Besturings systeem: Windows (64-bits), Ubuntu Linux 16.04/18.04 (64-bits) of macOS 10,13 of hoger.
+- Besturings systeem: Windows (64-bits), Ubuntu Linux 16.04/18.04 (64-bits), RHEL/CentOS 8 (x64) of macOS 10,13 of hoger.
 - [Eclips Java IDE](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) of [jdk 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang een gratis versie](get-started.md) of maak deze in de [Azure Portal](https://portal.azure.com).
@@ -42,6 +42,17 @@ Als u Ubuntu 16.04/18.04 uitvoert, moet u ervoor zorgen dat deze afhankelijkhede
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+Op RHEL/CentOS 8:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 Als u Windows (64-bits) gebruikt, moet u ervoor zorgen dat u de micro C++ Soft Visual Redistributable voor uw platform hebt geïnstalleerd:
 

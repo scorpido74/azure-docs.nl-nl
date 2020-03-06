@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383873"
 ---
 1. Start Android Studio en selecteer **een nieuw Android Studio-project starten** in het **welkomst** venster.
 
@@ -27,7 +27,7 @@ Android Studio heeft even de tijd nodig om het nieuwe Android-project voor te be
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-De huidige versie van de Cognitive Services Speech SDK is 1.9.0.
+De huidige versie van de Cognitive Services Speech SDK is 1.10.0.
 
 De Speech SDK voor Android wordt aangeboden als een [AAR (Android Library)](https://developer.android.com/studio/projects/android-library) die de vereiste bibliotheken en Android-machtigingen bevat.
 Het wordt gehost in een Maven-opslag plaats op https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Stel uw project in voor gebruik van de Speech SDK. Open het venster **project st
 
    ![Scherm afbeelding van afhankelijkheid van tape wisselaar](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Voer in het venster dat wordt weer gegeven de naam en versie van de Speech SDK voor Android, *com. micro soft. cognitiveservices. speech: Client-SDK: 1.9.0*. Selecteer vervolgens **OK**.
+1. Voer in het venster dat wordt weer gegeven de naam en versie van de Speech SDK voor Android, *com. micro soft. cognitiveservices. speech: Client-SDK: 1.10.0*. Selecteer vervolgens **OK**.
    De spraak-SDK moet nu worden toegevoegd aan de lijst met afhankelijkheden, zoals wordt weer gegeven:
 
    ![Scherm opname van de SDK voor spraak in de lijst met afhankelijkheden](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

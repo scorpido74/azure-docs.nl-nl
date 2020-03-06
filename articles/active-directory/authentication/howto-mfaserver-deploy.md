@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155227"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378011"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Aan de slag met de Azure Multi-Factor Authentication-server
 
@@ -96,7 +96,7 @@ Als u de functie Gebeurtenisbevestiging niet gebruikt en gebruikers geen mobiele
 Volg deze stappen om de Azure Multi-Factor Authentication-server te downloaden via Azure Portal:
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Zoek naar *Azure Active Directory* en selecteer deze optie. Selecteer **beveiliging** > **MFA**.
+2. Zoek en selecteer *Azure Active Directory*. Selecteer **beveiliging** > **MFA**.
 3. Selecteer **Server instellingen**onder **beheer MFA server**.
 4. Selecteer **Downloaden** en volg de instructies op de downloadpagina om het installatieprogramma op te slaan. 
 

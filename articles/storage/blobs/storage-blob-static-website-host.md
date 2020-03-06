@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330392"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -93,9 +93,7 @@ Maak vervolgens een 'Hallo wereld'-webpagina met Visual Studio Code en implement
 
 Visual Studio Code uploadt nu uw bestanden naar uw webeindpunt en geeft de statusbalk voor succes weer. Start de website om deze te bekijken in Azure.
 
-![Implementatie van statische website bekijken in Azure](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-U hebt de zelfstudie voltooid en een statische website in Azure geïmplementeerd.
+U hebt de zelf studie voltooid en een statische website geïmplementeerd in Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

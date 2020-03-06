@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669536"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359257"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Wat is Virtual Network NAT (open bare preview)?
 
@@ -192,13 +192,13 @@ We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de o
 
 ## <a name="limitations"></a>Beperkingen
 
-- NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
-- De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.
-- Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
-- NAT kan niet meerdere virtuele netwerken omvatten.
+* NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
+* De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met IPv6-voor voegsel.
+* Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
+* NAT kan niet meerdere virtuele netwerken omvatten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
-- [Vertel ons wat u verder kunt bouwen in UserVoice](https://aka.ms/natuservoice).
-- [Feedback geven over de open bare preview](https://aka.ms/natfeedback).
+* Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
+* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
+* [Feedback geven over de open bare preview](https://aka.ms/natfeedback).

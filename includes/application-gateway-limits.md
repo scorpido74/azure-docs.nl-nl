@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054892"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305078"
 ---
 | Resource | Standaard/maximum limiet | Opmerking |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054892"
 | Front-end-poorten |100<sup>1</sup> | |
 | Back-end-adres groepen |100<sup>1</sup> | |
 | Back-endservers per pool |1,200 | |
-| HTTP-listeners |100<sup>1</sup> | |
+| HTTP-listeners |200<sup>1</sup> |Beperkt tot 100 actieve listeners die routerings verkeer zijn. Actieve listeners = totaal aantal listeners-Listeners niet actief.<br>Als er een standaard configuratie binnen een routerings regel is ingesteld om verkeer te routeren (bijvoorbeeld een listener, een back-end-pool en HTTP-instellingen), wordt die ook meegeteld als listener.|
 | Regels voor HTTP-taak verdeling |100<sup>1</sup> | |
 | Back-end-HTTP-instellingen |100<sup>1</sup> | |
 | Exemplaren per gateway |V1 SKU-32<br>V2-SKU-125 | |
@@ -36,7 +36,7 @@ ms.locfileid: "77054892"
 | Maximale URL-lengte|32 KB| |
 | Maximale header grootte voor HTTP/2 |4KB| |
 | Maximale grootte voor het uploaden van bestanden, standaard |2 GB | |
-| Maximale grootte voor het uploaden van bestanden WAF |v1-middel grote WAF-gateways, 100 MB<br>v1 grote WAF-gateways, 500 MB<br>v2 WAF, 750 MB| |
+| Maximale grootte voor het uploaden van bestanden WAF |V1-middel grote WAF-gateways, 100 MB<br>V1 grote WAF-gateways, 500 MB<br>V2 WAF, 750 MB| |
 | Maximale grootte van WAF, zonder bestanden|128 KB||
 | Aangepaste regels voor WAF maximum|100||
 | Maxi maal aantal WAF uitsluitingen|100||

@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193566"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304035"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelf studie: gegevens laden naar Azure Synapse Analytics SQL-groep
 
@@ -24,7 +24,7 @@ In deze zelf studie wordt gebruikgemaakt van poly Base om het WideWorldImporters
 
 > [!div class="checklist"]
 > * Een Data Warehouse maken met behulp van SQL-groep in de Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met de SQL-groep met SSMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken die gebruikmaken van Azure-blob als de gegevensbron
@@ -133,7 +133,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | ------------ | --------------- | ----------- | 
     | Servertype | Database-engine | Deze waarde is verplicht |
     | Servernaam | De volledig gekwalificeerde servernaam | **Sqlpoolservername.database.Windows.net** is bijvoorbeeld een volledig gekwalificeerde server naam. |
-    | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
+    | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
     | Aanmelden | Het beheerdersaccount voor de server | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 
@@ -1096,7 +1096,7 @@ In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
 > * Een Data Warehouse gemaakt met behulp van SQL-groep in de Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbonden met de SQL-groep met SSMS
 > * Een gebruiker gemaakt die wordt aangewezen om gegevens te laden
 > * Externe tabellen gemaakt voor gegevens in Azure Storage Blob

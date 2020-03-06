@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975309"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389774"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Concepten van IoT Hub Device Provisioning Service-apparaten
 
@@ -42,7 +42,7 @@ De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware ge
 
 Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
 
-## <a name="registration-id"></a>Registratie-id
+## <a name="registration-id"></a>Registratie-ID
 
 De registratie-ID wordt gebruikt om een apparaat in de Device Provisioning-Service op unieke wijze te identificeren. De apparaat-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, niet hoofdletter gevoelig en kan speciale tekens bevatten, waaronder dubbele punt, punt, onderstrepings teken en afbreek streepje.
 

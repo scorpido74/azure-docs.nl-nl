@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344012"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainen van modellen met Azure Machine Learning
 
@@ -28,6 +28,8 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
     | [Automatische machine learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis**. Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
     | [Schattingen](#estimators) | Met Estimator-klassen kunt u **eenvoudig modellen trainen op basis van populaire machine learning Frameworks**. Er zijn Estimator-klassen voor **Scikit-Learn**, **PyTorch**, **tensor flow**en **Chainer**. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen. |
     | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen**die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning, schattingen en het uitvoeren van een configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>**gegevens bronnen, invoer en uitvoer** van * bijhouden voor uw werk stroom.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen**. Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
+
++ [Azure machine learning SDK voor python](#r-sdk): de SDK maakt gebruik van het Reticulate-pakket om een binding te maken met de PYTHON-sdk van Azure machine learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
 
 + **Designer**: Azure machine learning Designer (preview) biedt een eenvoudig ingangs punt in machine learning voor het maken van een proef versie van concepten of voor gebruikers die weinig Codeer ervaring hebben. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
 
@@ -61,7 +63,7 @@ Definieer de herhalingen, afstemming-instellingen, parametrisatie en andere inst
 > [!TIP]
 > Naast de python-SDK kunt u ook gebruikmaken van automatische ML tot en met [Azure machine learning Studio](https://ml.azure.com).
 
-* [Wat is automatische machine learning?](concept-automated-ml.md)
+* [Wat is geautomatiseerde machine learning?](concept-automated-ml.md)
 * [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md)
 * [Zelf studie: automatische machine learning gebruiken om taxi tarieven te voors pellen](tutorial-auto-train-models.md)
 * [Voor beelden: Jupyter Notebook voor beelden voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
@@ -88,6 +90,15 @@ Machine learning-pijp lijnen kunnen de eerder genoemde trainings methoden (confi
 * [Voor beelden: Jupyter Notebook voor beelden voor machine learning pijp lijnen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Voor beelden: pijp lijn met automatische machine learning](https://aka.ms/pl-automl)
 * [Voor beelden: pijp lijn met schattingen](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+Met de R-SDK kunt u de R-taal gebruiken met Azure Machine Learning. De SDK gebruikt het Reticulate-pakket om een verbinding te maken met de python-SDK van Azure Machine Learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
+
+Raadpleeg voor meer informatie de volgende artikelen:
+
+* [Zelf studie: een logistiek regressie model maken](tutorial-1st-r-experiment.md)
+* [Naslag informatie over Azure Machine Learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 

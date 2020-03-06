@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ee04fa7120f5510d703d72e662036f4fe952cd66
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330665"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Aan de slag met Azure AD-verificatie met behulp van de Azure Portal
 
@@ -31,86 +31,41 @@ Meer informatie over het gebruik van de Azure Portal om toegang te krijgen tot A
 
 - Een Azure-account. Als u geen account hebt, kunt u beginnen met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Een Media Services-account. Zie [een Azure Media Services-account maken met behulp van de Azure Portal](media-services-portal-create-account.md)voor meer informatie.
-- Controleer de Access Azure Media Services- [API met Azure AD-verificatie voor meer informatie](media-services-use-aad-auth-to-access-ams-api.md). 
 
 Wanneer u Azure AD-verificatie met Azure Media Services gebruikt, hebt u twee verificatie opties:
 
-- **Gebruikers verificatie**. Verifieer een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen om referenties. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen. 
 - **Service-Principal-verificatie**. Verifieer een service. Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren: Web apps, functie-apps, Logic apps, Api's of een micro service.
+- **Gebruikers verificatie**. Verifieer een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen om referenties. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen. 
 
-> [!IMPORTANT]
-> Media Services ondersteunt momenteel het Azure Access Control service-verificatie model. Access Control autorisatie wordt echter afgeschaft op 1 juni 2018. We raden u aan om zo snel mogelijk naar het Azure Active Directory-verificatiemodel te migreren.
+## <a name="access-the-media-services-api"></a>Toegang krijgt tot de Media Services API
 
-## <a name="select-the-authentication-method"></a>De verificatie methode selecteren
+Op deze pagina kunt u de verificatie methode selecteren die u wilt gebruiken om verbinding te maken met de API. De pagina bevat ook de waarden die u nodig hebt om verbinding te maken met de API.
 
 1. Selecteer uw Media Services account in de [Azure Portal](https://portal.azure.com/).
 2. Selecteer hoe u verbinding wilt maken met de Media Services-API.
+3. Selecteer onder **verbinding maken met Media Services-API**de versie van de Media Services-API waarmee u verbinding wilt maken.
 
-    ![De pagina verbindings methode selecteren](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started01.png)
+## <a name="service-principal-authentication--recommended"></a>Service-Principal-verificatie (aanbevolen)
+
+Verifieert een service met een Azure Active Directory-app (Azure AD) en een geheim. Dit wordt aanbevolen voor alle services in de middelste laag die de Media Services-API aanroepen. Voor beelden zijn Web Apps, functions, Logic Apps, Api's en micro Services. Dit is de aanbevolen verificatie methode.
+
+### <a name="manage-your-azure-ad-app-and-secret"></a>Uw Azure AD-app en-geheim beheren
+
+Met de sectie **uw Aad-app beheren en geheime** kunt u een nieuwe Azure AD-app selecteren of maken en een geheim genereren. Uit veiligheids overwegingen kan het geheim niet worden weer gegeven nadat de Blade is gesloten. De toepassing maakt gebruik van de toepassings-ID en het geheim voor verificatie om een geldig token voor Media Services te verkrijgen.
+
+Zorg ervoor dat u voldoende machtigingen hebt om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing toe te wijzen aan een rol in uw Azure-abonnement. Zie [vereiste machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)voor meer informatie.
+
+### <a name="connect-to-media-services-api"></a>Verbinding maken met de Media Services-API
+
+De **API Connect to Media Services** biedt u waarden die u gebruikt om verbinding te maken met uw Service Principal-toepassing. U kunt tekst waarden ophalen of de JSON-of XML-blokken kopiëren.
 
 ## <a name="user-authentication"></a>Gebruikersverificatie
 
-Als u verbinding wilt maken met de Media Services-API met behulp van de optie voor gebruikers verificatie, moet de client-app een Azure AD-token aanvragen met de volgende para meters:  
+Deze optie kan worden gebruikt voor het verifiëren van een werk nemer of lid van een Azure Active Directory die een app gebruikt om te communiceren met Media Services resources. De interactieve toepassing moet eerst de gebruiker vragen naar de referenties van de gebruiker. Deze verificatie methode mag alleen worden gebruikt voor beheer toepassingen.
 
-* Azure AD-Tenant eindpunt
-* Media Services resource-URI
-* Client-ID van Media Services (systeem eigen) 
-* Media Services (systeem eigen) URI voor omleiding van toepassing 
-* Resource-URI voor REST Media Services
+### <a name="connect-to-media-services-api"></a>Verbinding maken met de Media Services-API
 
-U kunt de waarden voor deze para meters ophalen op de pagina **Media Services-API met gebruikers verificatie** . 
-
-![De pagina verbinding maken met gebruikers verificatie](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
-
-Als u verbinding maakt met de Media Services-API met behulp van de Media Services Microsoft .NET SDK, zijn de vereiste waarden voor u beschikbaar als onderdeel van de SDK. Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de Azure Media Services-API met .net](media-services-dotnet-get-started-with-aad.md)voor meer informatie.
-
-Als u geen gebruik maakt van de Media Services .NET-client-SDK, moet u hand matig een Azure AD-token aanvraag maken met behulp van de para meters die eerder zijn besproken. Zie [de Azure AD-verificatie bibliotheek gebruiken om het Azure AD-token op te halen](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)voor meer informatie.
-
-## <a name="service-principal-authentication"></a>Verificatie van service-principal
-
-Als u verbinding wilt maken met de Media Services-API met behulp van de optie Service-Principal, moet uw middelste app (Web API of Web Application) een Azure AD-token aanvragen met de volgende para meters:  
-
-* Azure AD-Tenant eindpunt
-* Media Services resource-URI 
-* Resource-URI voor REST Media Services
-* Azure AD-toepassings waarden: de **client-id** en het **client geheim**
-
-U kunt de waarden voor deze para meters ophalen op de pagina **verbinding maken met Media Services-API met Service-Principal** . Gebruik deze pagina om een nieuwe Azure AD-toepassing te maken of om een bestaande app te selecteren. Nadat u de Azure AD-app hebt geselecteerd, kunt u de client-ID ophalen (toepassings-ID) en de client Secret-waarden (sleutel) genereren. 
-
-![Verbinding maken met de Service Principal-pagina](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
-
-Wanneer de Blade **Service-Principal** wordt geopend, wordt de eerste Azure AD-toepassing geselecteerd die voldoet aan de volgende criteria:
-
-- Het is een geregistreerde Azure AD-toepassing.
-- Het heeft Inzender of eigenaars Access Control machtigingen voor het account.
-
-Nadat u een Azure AD-app hebt gemaakt of geselecteerd, kunt u een client geheim (sleutel) en de client-ID (toepassings-ID) maken en kopiëren. Het client geheim en de client-ID zijn vereist om in dit scenario het toegangs token op te halen.
-
-Als u geen machtigingen hebt voor het maken van Azure AD-apps in uw domein, worden de besturings elementen van de Azure AD-App van de Blade niet weer gegeven en wordt er een waarschuwings bericht weer gegeven.
-
-Als u verbinding maakt met de Media Services-API met behulp van de Media Services .NET SDK, raadpleegt u [Azure AD-verificatie gebruiken om toegang te krijgen tot de Azure Media Services-API met .net](media-services-dotnet-get-started-with-aad.md).
-
-Als u de Media Services .NET-client-SDK niet gebruikt, moet u hand matig een Azure AD-token aanvraag maken met behulp van de para meters die eerder zijn besproken. Zie [de Azure AD-verificatie bibliotheek gebruiken om het Azure AD-token op te halen](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)voor meer informatie.
-
-### <a name="get-the-client-id-and-client-secret"></a>De client-ID en het client geheim ophalen
-
-Nadat u een bestaande Azure AD-app hebt geselecteerd of de optie voor het maken van een nieuwe hebt geselecteerd, worden de volgende knoppen weer gegeven:
-
-![Knop machtigingen beheren en de toepassing beheren](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
-
-Als u de Blade van de Azure AD-toepassing wilt openen, klikt u op **toepassing beheren**. Op de Blade **toepassing beheren** kunt u de client-id van de app ophalen (toepassings-id). Selecteer **sleutels**om een client geheim (sleutel) te genereren.
-
-![Optie Blade sleutels van toepassing beheren](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
-
-### <a name="manage-permissions-and-the-application"></a>Machtigingen en de toepassing beheren
-
-Nadat u de Azure AD-toepassing hebt geselecteerd, kunt u de toepassing en machtigingen beheren. Als u uw Azure AD-toepassing wilt instellen voor toegang tot andere toepassingen, klikt u op **machtigingen beheren**. Voor beheer taken, zoals het wijzigen van sleutels en antwoord-Url's of het bewerken van het manifest van de toepassing, klikt u op **toepassing beheren**.
-
-### <a name="edit-the-apps-settings-or-manifest"></a>De instellingen of het manifest van de app bewerken
-
-Als u de instellingen of het manifest van de app wilt bewerken, klikt u op **toepassing beheren**.
-
-![Toepassings pagina beheren](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
+Kopieer uw referenties om uw gebruikers toepassing te verbinden via de sectie **verbinding maken met Media Services-API** . U kunt tekst waarden ophalen of de JSON-of XML-blokken kopiëren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

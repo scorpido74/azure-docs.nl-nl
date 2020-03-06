@@ -3,12 +3,12 @@ title: Integreren met andere toepassingen-QnA Maker
 description: QnA Maker kan worden geïntegreerd in client toepassingen zoals chat bots en met andere services voor natuurlijke taal verwerking, zoals Language Understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300516"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>De Knowledge Base voor client toepassingen ontwerpen
 
@@ -20,7 +20,7 @@ QnA Maker integreert met conversatie-client toepassingen zoals [micro soft bot F
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Een bot maken zonder code te schrijven
 
-Nadat u uw Knowledge Base hebt gepubliceerd, maakt u een bot op de pagina **publiceren** door de knop **bot maken** te selecteren. Gebruik de [bot-zelf studie](../tutorials/create-qna-bot.md) om te leren wat er gebeurt wanneer u de knop selecteert.
+Nadat u uw Knowledge Base hebt gepubliceerd, maakt u een bot op de pagina **publiceren** door de knop **bot maken** te selecteren. Gebruik de [bot-zelf studie](../Quickstarts/create-publish-knowledge-base.md) om te leren wat er gebeurt wanneer u de knop selecteert.
 
 ## <a name="providing-multi-turn-conversations"></a>Meerdere gesp rekken bieden
 

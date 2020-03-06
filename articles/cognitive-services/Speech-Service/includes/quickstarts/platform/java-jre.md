@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467277"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383915"
 ---
 In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor 64-bits Java 8 jre.
 
 > [!NOTE]
-> Zie [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md) voor de Speech Devices SDK en het Roobo-apparaat.
+> Zie [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md) voor de Speech Devices-SDK en het Roobo-apparaat.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -29,7 +29,7 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
 - Het pakket java Speech SDK is beschikbaar voor deze besturings systemen:
   - Windows: 64-alleen-bits
   - Mac: macOS X versie 10,13 of hoger
-  - Linux: 64-bit alleen op Ubuntu 16,04, Ubuntu 18,04 of Debian 9
+  - Linux: 64-bit alleen op Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,6 +51,16 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
+
+  - Voer op RHEL/CentOS 8 de volgende opdrachten uit om de vereiste pakketten te installeren:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+        ```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 - In Windows hebt u [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) voor uw platform nodig. Houd er rekening mee dat als u dit voor de eerste keer installeert, Windows opnieuw moet worden opgestart voordat u doorgaat met deze hand leiding.
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756316"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399338"
 ---
 # <a name="start-using-privileged-identity-management"></a>Aan de slag met Privileged Identity Management
 
@@ -62,7 +62,7 @@ Als u Privileged Identity Management in uw Directory wilt gaan gebruiken, moet u
 
     ![Kies een account venster om uw identiteit te verifiëren](./media/pim-getting-started/pick-account.png)
 
-1. Als er meer informatie is vereist voor verificatie, wordt u begeleid bij het proces. Zie [hulp vragen bij verificatie in twee stappen](https://go.microsoft.com/fwlink/p/?LinkId=708614)voor meer informatie.
+1. Als er meer informatie is vereist voor verificatie, wordt u begeleid bij het proces. Zie [hulp vragen bij verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-troubleshoot.md)voor meer informatie.
 
     ![Meer informatie over de vereiste Window als uw organisatie meer informatie nodig heeft](./media/pim-getting-started/more-information-required.png)
 

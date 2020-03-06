@@ -1,18 +1,18 @@
 ---
-title: IS_STRING in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie IS_STRING in Azure Cosmos DB.
+title: IS_STRING in Azure Cosmos DB query taal
+description: Meer informatie over de functie IS_STRING van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e105394765ccd8a495a0b44b0c29e0c4c0b9f59a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349797"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303763"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
  Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een tekenreeks is.  
@@ -25,7 +25,7 @@ IS_STRING(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expr*  
+*expressie*  
    Is een expressie.  
   
 ## <a name="return-types"></a>Retour typen
@@ -34,7 +34,7 @@ IS_STRING(<expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten gecontroleerd van JSON-Boole-, getal-, teken reeks-, null-, object-, matrix-en niet-gedefinieerde typen met behulp van de functie `IS_STRING`.  
+  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_STRING`.  
   
 ```sql
 SELECT   
@@ -52,6 +52,10 @@ SELECT
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
+
+## <a name="remarks"></a>Opmerkingen
+
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

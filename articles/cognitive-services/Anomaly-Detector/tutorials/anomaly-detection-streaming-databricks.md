@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448903"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402674"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelf studie: anomalie detectie van streaminggegevens met behulp van Azure Databricks
 
@@ -33,19 +33,17 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een Apache Spark-cluster in Azure Databricks maken
 > * Een Twitter-app voor toegang tot streaminggegevens maken
 > * Notitieblokken maken in Azure Databricks
-> * Bibliotheken koppelen voor Event Hubs en Twitter API
+> * Bibliotheken toevoegen voor Event Hubs en Twitter-API
 > * Een anomalie detector-resource maken en de toegangs sleutel ophalen
 > * Tweets verzenden naar Event Hubs
 > * Tweets lezen van Event Hubs
 > * Anomalie detectie uitvoeren op tweets
 
 > [!Note]
-> In deze zelf studie wordt een aanpak geïntroduceerd voor het implementeren van de aanbevolen [oplossings architectuur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) voor de anomalie detectie-API.
+> * In deze zelf studie wordt een aanpak geïntroduceerd voor het implementeren van de aanbevolen [oplossings architectuur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) voor de anomalie detectie-API.
+> * Deze zelf studie kan niet worden voltooid met een gratis proef versie voor de anomalie detectie-API of Azure Databricks. 
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-
-> [!Note]
-> Deze zelf studie kan niet worden voltooid met een gratis proef versie voor de anomalie detectie-API. Als u een gratis account wilt gebruiken om het Azure Databricks-cluster te maken, gaat u voordat het cluster is gemaakt naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie.
+Maak een [Azure-abonnement](https://azure.microsoft.com/free/) als u er nog geen hebt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -103,11 +101,11 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
      Selecteer **Cluster maken**. 
 4. Het maken van het cluster duurt enkele minuten. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
+## <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
 
 Als u een stream van tweets wilt ontvangen, moet u een toepassing in Twitter maken. Volg de stappen om een Twitter-toepassing te maken en de waarden vast te leggen die u nodig hebt om deze zelfstudie te voltooien.
 
-1. Ga in een webbrowser naar [Twitter Application Management](https://apps.twitter.com/) en selecteer **Create New App**.
+1. Ga vanuit een webbrowser naar [Twitter Application Management](https://apps.twitter.com/) en selecteer **Create New App**.
 
     ![Twitter-toepassing maken](../media/tutorials/databricks-create-twitter-app.png "Twitter-toepassing maken")
 
@@ -153,7 +151,7 @@ Selecteer op de pagina bibliotheek het cluster waar u de bibliotheek wilt gebrui
 
 In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](../overview.md) detectie-api's om een afwijkende opsporing uit te voeren op een stroom van tweets in bijna realtime. Voordat u de Api's gebruikt, moet u een afwijkende detector bron op Azure maken en een toegangs sleutel voor het gebruik van de anomalie detectie-Api's ophalen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **+ Een resource maken**.
 
@@ -165,7 +163,7 @@ In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](.
 
     |Waarde |Beschrijving  |
     |---------|---------|
-    |Name     | Een naam voor de afwijkende detector-resource.        |
+    |Naam     | Een naam voor de afwijkende detector-resource.        |
     |Abonnement     | Het Azure-abonnement waaraan de resource wordt gekoppeld.        |
     |Locatie     | Een Azure-locatie.        |
     |Prijscategorie     | Een prijs categorie voor de service. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)voor meer informatie over de prijzen voor anomalie detectie.        |
@@ -182,11 +180,11 @@ In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](.
 
     ![Toegangs sleutels kopiëren](../media/tutorials/cognitive-services-copy-access-keys.png "Toegangs sleutels kopiëren")
 
-## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Azure Databricks
+## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Databricks
 
 In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de volgende namen maken
 
-- **SendTweetsToEventHub** - een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter en ze kunt streamen naar Event Hubs.
+- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
 - **Notitie analyzetweetsfromeventhub** : een notebook van de consument die u gebruikt om de tweets van Event hubs te lezen en anomalie detectie uit te voeren.
 
 1. Selecteer in de werk ruimte Azure Databricks **werk ruimte** in het linkerdeel venster. Selecteer **Maken** in de vervolgkeuzelijst **Werkruimte** en selecteer **Notitieblok**.
@@ -300,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -323,7 +321,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgend
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
+Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
 
 Schrijf eerst een client om anomalie detectie aan te roepen. 
 ```scala
@@ -423,7 +421,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -495,7 +493,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}

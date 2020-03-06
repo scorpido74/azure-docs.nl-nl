@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351020"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303899"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
@@ -25,18 +25,18 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Retour typen
   
-  Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.sssZ`, waarbij:
+  Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
   
   |||
   |-|-|
   |DD|jaar met vier cijfers|
   |MM|maand van twee cijfers (01 = januari, etc.)|
   |DD|2-cijferige dag van de maand (01 tot en met 31)|
-  |D|de aanzienlijke voor het begin van de tijd elementen|
+  |T|de aanzienlijke voor het begin van de tijd elementen|
   |UU|twee cijfers per uur (00 tot en met 23)|
-  |mm|twee cijfer minuten (00 tot en met 59)|
-  |SS|twee cijfer seconden (00 tot en met 59)|
-  |.sss|drie cijfers van decimale delen van een seconde|
+  |mm|twee cijfers minuten (00 tot en met 59)|
+  |SS|seconden van twee cijfers (00 tot en met 59)|
+  |.fffffff|aantal seconden van zeven cijfers|
   |Z|UTC (Coordinated Universal Time)||
   
   Zie [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) voor meer informatie over de ISO 8601-indeling.
@@ -46,6 +46,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime () is een niet-deterministische functie. 
   
   Het geretourneerde resultaat is UTC.
+
+  Nauw keurigheid is 7 cijfers, met een nauw keurigheid van 100 nano seconden.
 
 ## <a name="examples"></a>Voorbeelden
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

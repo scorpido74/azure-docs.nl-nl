@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160301"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299751"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML-token referentie
 
@@ -156,7 +156,7 @@ Dit is een voor beeld van een typisch SAML-token.
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* Zie de [Operations-beleids bewerkingen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) en de entiteit van het [beleid](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)van Azure AD voor meer informatie over het beheren van de levens duur van tokens via de Azure AD-Graph API.
+* Zie de [beleids resource](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)voor meer informatie over het beheren van het token levensduur beleid met behulp van de Microsoft Graph-API.
 * Zie [Configureer bare token levensduur in azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie en voor beelden over het beheren van beleids regels via Power shell-cmdlets, inclusief voor beelden. 
 * [Aangepaste en optionele claims](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) toevoegen aan de tokens voor uw toepassing.
 * [Eenmalige aanmelding (SSO) met SAML](single-sign-on-saml-protocol.md)gebruiken.

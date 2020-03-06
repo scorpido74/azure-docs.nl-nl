@@ -3,12 +3,12 @@ title: Naleving met behulp van Azure Policy
 description: Ingebouwde beleids regels toewijzen in Azure Policy om de naleving van uw Azure-container registers te controleren
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330733"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Controle van de naleving van Azure-container registers met behulp van Azure Policy
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Voer vervolgens de [lijst AZ policy state](/cli/azure/policy/state#az-policy-assignment-list) uit om de nalevings status van JSON-indeling te retour neren voor alle resources onder een specifieke beleids-id:
+Voer vervolgens de [lijst AZ policy state](/cli/azure/policy/state#az-policy-state-list) uit om de nalevings status van JSON-indeling te retour neren voor alle resources onder een specifieke beleids-id:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Of Voer [AZ policy state List](/cli/azure/policy/state#az-policy-assignment-list) uit om de nalevings status in JSON-indeling te retour neren van een specifieke register bron, zoals *myregistry*:
+Of Voer [AZ policy state List](/cli/azure/policy/state#az-policy-state-list) uit om de nalevings status in JSON-indeling te retour neren van een specifieke register bron, zoals *myregistry*:
 
 ```azurecli
 az policy state list \

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299827"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Bereiken voor een web-API die v 1.0-tokens accepteert
 
@@ -25,7 +25,7 @@ OAuth2 machtigingen zijn machtigings bereiken die een Azure Active Directory-toe
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bereiken voor het aanvragen van toegang tot specifieke OAuth2-machtigingen van een v 1.0-toepassing
 
-Voor het verkrijgen van tokens voor specifieke bereiken van een v 1.0-toepassing (bijvoorbeeld de Azure AD-grafiek, die is https://graph.windows.net), maakt u bereiken door een gewenste resource-id te koppelen met een gewenste OAuth2-machtiging voor die bron.
+Voor het verkrijgen van tokens voor specifieke bereiken van een v 1.0-toepassing (bijvoorbeeld de Microsoft Graph-API, die https://graph.microsoft.com)is, maakt u bereiken door een gewenste resource-id te koppelen met een gewenste OAuth2-machtiging voor die bron.
 
 Bijvoorbeeld voor toegang namens de gebruiker een v 1.0 Web-API waarbij de URI van de App-ID is `ResourceId`:
 
@@ -37,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Als u wilt lezen en schrijven met MSAL.NET Azure AD Graph API (https:\//graph.windows.net/), moet u een lijst met bereiken maken, zoals wordt weer gegeven in de volgende voor beelden:
+Als u wilt lezen en schrijven met MSAL.NET Azure AD met behulp van de Microsoft Graph-API (https:\//graph.microsoft.com/), moet u een lijst met bereiken maken, zoals wordt weer gegeven in de volgende voor beelden:
 
 ```csharp
-string ResourceId = "https://graph.windows.net/";
+string ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.windows.net/";
+var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

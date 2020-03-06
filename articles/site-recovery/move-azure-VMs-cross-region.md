@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092189"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303916"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines verplaatsen naar een andere Azure-regio
 
@@ -70,7 +70,7 @@ Mogelijk wilt u Azure Infrastructure as a Service (IaaS) virtuele machines verpl
    - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
    - [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Raadpleeg de [documentatie voor Azure-netwerken](https://docs.microsoft.com/azure/#pivot=products&panel=network)voor andere netwerk onderdelen. 
+   Raadpleeg de [documentatie voor Azure-netwerken](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerk onderdelen. 
 
 4. Als u de configuratie wilt testen voordat u de verplaatsing uitvoert, maakt u hand matig [een niet-productie netwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in de doel regio. Door de installatie te testen, maakt u minimale interferentie met de productie omgeving en wordt het aanbevolen.
     
@@ -120,7 +120,7 @@ Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan
    > We raden u aan om een afzonderlijk Azure VM-netwerk te gebruiken voor de testfailover, niet het productie netwerk in de doel regio.
 
 4. Selecteer **OK**om te beginnen met het testen van de verplaatsing. Als u de voortgang wilt bijhouden, selecteert u de virtuele machine om de eigenschappen ervan te openen **.** Of selecteer de taak **testfailover** in de kluis. Selecteer vervolgens **instellingen** > **taken** > **site Recovery taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
 6. Als u de virtuele machine die u hebt gemaakt voor testen wilt verwijderen, selecteert u testfailover **opschonen** voor het gerepliceerde item. Noteer alle opmerkingen met betrekking tot de test en sla ze op van **notities**.
 
 ## <a name="perform-the-move-and-confirm"></a>Het verplaatsen en bevestigen uitvoeren

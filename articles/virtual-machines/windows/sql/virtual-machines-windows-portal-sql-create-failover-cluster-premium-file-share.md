@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651358"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303219"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -53,7 +53,7 @@ Controleer de IOPS-activiteit van uw omgeving en controleer of Premium-bestands 
 
 Veel werk belastingen hebben een bursting-IO, dus het is een goed idee om tijdens zware gebruiks perioden te controleren en zowel de maximale IOPS als de gemiddelde IOPS te noteren. Premium-bestands shares bieden IOPS op basis van de grootte van de share. Premium-bestands shares bieden ook extra bursting waarmee u uw IO kunt indelen om de basislijn hoeveelheid tot een uur te laten opdrien.
 
-Zie [prestatie lagen voor bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers)voor meer informatie over de prestaties van Premium-bestands shares.
+Zie [prestatie lagen voor bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers)voor meer informatie over de prestaties van Premium-bestands shares.
 
 ### <a name="licensing-and-pricing"></a>Licentie verlening en prijzen
 

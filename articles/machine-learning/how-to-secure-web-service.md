@@ -1,7 +1,7 @@
 ---
-title: Webservices beveiligen met SSL
+title: Webservices beveiligen met behulp van TLS
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het inschakelen van HTTPS om een webservice te beveiligen die via Azure Machine Learning wordt geïmplementeerd.
+description: Meer informatie over het inschakelen van HTTPS om een webservice te beveiligen die via Azure Machine Learning wordt geïmplementeerd. Azure Machine Learning gebruikt TLS-versie 1,2 om modellen te beveiligen die als webservices zijn geïmplementeerd.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905223"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355536"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS gebruiken om een webservice te beveiligen via Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dit artikel laat u zien hoe u een webservice kunt beveiligen die via Azure Machine Learning wordt geïmplementeerd.
@@ -52,7 +52,7 @@ Dit is het algemene proces voor het beveiligen van een webservice:
 
 Er zijn kleine verschillen bij het beveiligen van s in verschillende [implementatie doelen](how-to-deploy-and-where.md).
 
-## <a name="get-a-domain-name"></a>Een domeinnaam krijgen
+## <a name="get-a-domain-name"></a>Een domeinnaam ophalen
 
 Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw webservice.
 
@@ -258,6 +258,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Procedures voor:
+Leer hoe u het volgende doet:
 + [Een machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 + [Veilig experimenten en demijnen uitvoeren in een virtueel Azure-netwerk](how-to-enable-virtual-network.md)

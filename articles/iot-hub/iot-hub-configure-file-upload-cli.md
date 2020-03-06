@@ -1,6 +1,6 @@
 ---
-title: Uploaden van bestanden naar IoT Hub met behulp van Azure CLI configureren | Microsoft Docs
-description: Het configureren van bestand wordt geüpload naar Azure IoT Hub met behulp van de platformoverschrijdende Azure CLI.
+title: Het uploaden van bestanden naar IoT Hub configureren met behulp van Azure CLI | Microsoft Docs
+description: Het configureren van uploads van bestanden naar Azure IoT Hub met behulp van de platformoverschrijdende Azure CLI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,34 +8,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734912"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302522"
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>IoT Hub-bestand wordt geüpload met behulp van Azure CLI configureren
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Uploads van IoT Hub-bestanden configureren met behulp van Azure CLI
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Naar [uploaden van bestanden vanaf een apparaat](iot-hub-devguide-file-upload.md), moet u eerst een Azure Storage-account koppelen met uw IoT-hub. U kunt een bestaand opslagaccount gebruiken of een nieuwe maken.
+Als u [bestanden van een apparaat wilt uploaden](iot-hub-devguide-file-upload.md), moet u eerst een Azure Storage-account koppelen aan uw IOT-hub. U kunt een bestaand opslag account gebruiken of een nieuwe maken.
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Een actief Azure-account. Als u geen account hebt, kunt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/) binnen een paar minuten.
+* Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Een Azure IoT-hub. Als u een IoT-hub hebt, kunt u de [ `az iot hub create` opdracht](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) een te maken of [maken van een IoT-hub met behulp van de portal](iot-hub-create-through-portal.md).
+* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u met de [`az iot hub create`-opdracht](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) een IOT- [hub maken met behulp van de portal](iot-hub-create-through-portal.md).
 
-* Een Azure Storage-account. Als u een Azure Storage-account niet hebt, kunt u de [Azure CLI - storage-accounts beheren](../storage/common/storage-azure-cli.md#manage-storage-accounts) te maken of de portal gebruiken om [een opslagaccount maken](../storage/common/storage-create-storage-account.md).
+* Een Azure Storage-account. Als u geen Azure Storage account hebt, kunt u de Azure CLI gebruiken om er een te maken. Zie [Een opslagaccount maken](../storage/common/storage-create-storage-account.md) voor meer informatie.
 
-## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account
+## <a name="sign-in-and-set-your-azure-account"></a>Meld u aan en stel uw Azure-account in
 
 Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
-1. Voer bij de opdrachtprompt de [aanmeldingsopdracht](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. Voer de volgende [opdracht](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)uit vanaf de opdracht prompt:
 
     ```azurecli
     az login
@@ -43,40 +43,40 @@ Meld u aan bij uw Azure-account en selecteer uw abonnement.
 
     Volg de instructies om te verifiëren met de code en meld u aan bij uw Azure-account via een webbrowser.
 
-2. Als u meerdere Azure-abonnementen hebt en u zich aanmeldt bij Azure, hebt u toegang tot alle Azure accounts die zijn gekoppeld aan uw referenties. Gebruik de volgende [opdracht om een lijst van de Azure-accounts](https://docs.microsoft.com/cli/azure/account) die u kunt gebruiken:
+2. Als u meerdere Azure-abonnementen hebt en u zich aanmeldt bij Azure, hebt u toegang tot alle Azure accounts die zijn gekoppeld aan uw referenties. Gebruik de volgende [opdracht om de Azure-accounts weer te geven](https://docs.microsoft.com/cli/azure/account) die u kunt gebruiken:
 
     ```azurecli
     az account list
     ```
 
-    Gebruik de volgende opdracht om het abonnement dat u wilt gebruiken voor het uitvoeren van de opdrachten voor het maken van uw IoT-hub te selecteren. U kunt de naam van het abonnement of de id van de uitvoer van de vorige opdracht gebruiken:
+    Gebruik de volgende opdracht om het abonnement te selecteren dat u wilt gebruiken voor het uitvoeren van de opdrachten voor het maken van uw IoT-hub. U kunt de naam van het abonnement of de id van de uitvoer van de vorige opdracht gebruiken:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>Details van uw opslagaccount ophalen
+## <a name="retrieve-your-storage-account-details"></a>Details van uw opslag account ophalen
 
-De volgende stappen wordt ervan uitgegaan dat u hebt gemaakt uw storage-account met de **Resource Manager** implementatiemodel, en niet de **klassieke** implementatiemodel.
+Bij de volgende stappen wordt ervan uitgegaan dat u uw opslag account hebt gemaakt met behulp van het **Resource Manager** -implementatie model en niet het **klassieke** implementatie model.
 
-Voor het configureren van het uploaden van bestanden van uw apparaten, moet u de verbindingsreeks voor een Azure storage-account. Het opslagaccount moet zich in hetzelfde abonnement als uw IoT-hub. U moet ook de naam van een blob-container in het opslagaccount. Gebruik de volgende opdracht om op te halen van de sleutels van uw storage-account:
+Als u het uploaden van bestanden vanaf uw apparaten wilt configureren, hebt u de connection string voor een Azure-opslag account nodig. Het opslag account moet zich in hetzelfde abonnement benemen als uw IoT-hub. U hebt ook de naam van een BLOB-container in het opslag account nodig. Gebruik de volgende opdracht om de sleutels van uw opslag account op te halen:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} \
   --resource-group {your storage account resource group}
 ```
 
-Noteer de **connectionString** waarde. U hebt deze nodig in de volgende stappen.
+Noteer de waarde **Connections Tring** . U hebt deze nodig in de volgende stappen.
 
-U kunt een bestaande blobcontainer gebruiken voor het uploaden van uw bestanden of een nieuwe maken:
+U kunt een bestaande BLOB-container voor het uploaden van bestanden gebruiken of een nieuwe maken:
 
-* Als u de bestaande blob-containers in uw opslagaccount, gebruik de volgende opdracht:
+* Als u de bestaande BLOB-containers in uw opslag account wilt weer geven, gebruikt u de volgende opdracht:
 
     ```azurecli
     az storage container list --connection-string "{your storage account connection string}"
     ```
 
-* Voor het maken van een blob-container in uw opslagaccount, gebruikt u de volgende opdracht uit:
+* Als u een BLOB-container in uw opslag account wilt maken, gebruikt u de volgende opdracht:
 
     ```azurecli
     az storage container create --name {container name} \
@@ -85,21 +85,21 @@ U kunt een bestaande blobcontainer gebruiken voor het uploaden van uw bestanden 
 
 ## <a name="file-upload"></a>Bestand uploaden
 
-U kunt nu uw IoT-hub zodat de mogelijkheid om te configureren [bestanden uploaden naar de IoT-hub](iot-hub-devguide-file-upload.md) met behulp van de details van uw opslagaccount.
+U kunt nu uw IoT-hub configureren, zodat u [bestanden kunt uploaden naar de IOT-hub](iot-hub-devguide-file-upload.md) met behulp van de gegevens van uw opslag account.
 
-De configuratie moet de volgende waarden:
+Voor de configuratie zijn de volgende waarden vereist:
 
-* **Storage-container**: Een blob-container in Azure storage-account in uw huidige Azure-abonnement koppelen aan uw IoT-hub. U hebt de benodigde opslag-accountgegevens in de voorgaande sectie hebt opgehaald. IoT Hub wordt automatisch gegenereerd SAS URI's met schrijfmachtigingen voor deze blob-container voor apparaten moet worden gebruikt bij het uploaden van bestanden.
+* **Opslag container**: een BLOB-container in een Azure-opslag account in uw huidige Azure-abonnement dat u wilt koppelen aan uw IOT-hub. U hebt de benodigde gegevens voor het opslag account opgehaald in de voor gaande sectie. IoT Hub genereert automatisch SAS-Uri's met schrijf machtigingen voor deze BLOB-container zodat apparaten kunnen worden gebruikt bij het uploaden van bestanden.
 
-* **Meldingen over geüploade bestanden ontvangen**: In- of bestand uploaden meldingen uitschakelen.
+* **Meldingen ontvangen voor geüploade bestanden**: meldingen voor het uploaden van bestanden in-of uitschakelen.
 
-* **SAS TTL**: Deze instelling is de time-to-live van de SAS-URI's op het apparaat wordt geretourneerd door de IoT Hub. Standaard ingesteld op één uur.
+* **SAS TTL**: deze instelling is de time-to-Live van de SAS-uri's die op het apparaat worden geretourneerd door IOT hub. Standaard ingesteld op één uur.
 
-* **Melding instellingen standaard TTL-bestand**: De time-to-live van een bestand uploaden van melding voordat deze is verlopen. Standaard ingesteld op één dag.
+* **Instellingen voor bestands meldingen standaard-TTL**: de time-to-Live van een melding bij het uploaden van een bestand voordat deze is verlopen. Standaard ingesteld op één dag.
 
-* **Maximumaantal leveringen voor melding bestand**: Het aantal keren dat die de IoT-Hub wil ervoor zorgen dat een bestand uploaden een melding. Standaard ingesteld op 10.
+* **Aantal bestands meldingen maximale leverings**duur: het aantal keren dat de IOT hub een melding over het uploaden van een bestand probeert te leveren. Standaard ingesteld op 10.
 
-Gebruik de volgende Azure CLI-opdrachten voor het configureren van instellingen voor het uploaden van uw IoT-hub:
+Gebruik de volgende Azure CLI-opdrachten voor het configureren van de instellingen voor het uploaden van bestanden op uw IoT-hub:
 
 <!--Robinsh this is out of date, add cloud powershell -->
 
@@ -125,7 +125,7 @@ az iot hub update --name {your iot hub name} \
   --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-U kunt de configuratie van de uploaden bestand bekijken op uw IoT-hub met behulp van de volgende opdracht uit:
+U kunt de configuratie voor het uploaden van bestanden op uw IoT-hub bekijken met de volgende opdracht:
 
 ```azurecli
 az iot hub show --name {your iot hub name}
@@ -133,16 +133,16 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de functies voor het uploaden van bestanden van IoT-Hub, [uploaden van bestanden vanaf een apparaat](iot-hub-devguide-file-upload.md).
+Zie [bestanden uploaden van een apparaat](iot-hub-devguide-file-upload.md)voor meer informatie over de mogelijkheden voor het uploaden van bestanden van IOT hub.
 
 Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 
 * [IoT-apparaten bulksgewijs beheren](iot-hub-bulk-identity-mgmt.md)
-* [Metrische gegevens van IoT Hub](iot-hub-metrics.md)
+* [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [Controle van bewerkingen](iot-hub-operations-monitoring.md)
 
-Als u wilt de mogelijkheden van IoT Hub verder verkennen, Zie:
+Zie voor meer informatie over de mogelijkheden van IoT Hub:
 
-* [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md)
+* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
 * [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
-* [Beveiligen van uw IoT-oplossing vanaf het begin van](../iot-fundamentals/iot-security-ground-up.md)
+* [Beveilig uw IoT-oplossing vanaf de grond](../iot-fundamentals/iot-security-ground-up.md)

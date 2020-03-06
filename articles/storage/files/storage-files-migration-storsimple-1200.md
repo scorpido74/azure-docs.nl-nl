@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252667"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330937"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200-migratie naar Azure File Sync
 
 De StorSimple 1200-serie is een virtueel apparaat dat wordt uitgevoerd in een on-premises Data Center. Het is mogelijk om de gegevens van dit apparaat te migreren naar een Azure File Sync omgeving. Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync.
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple is een stopgezet micro soft-product. Uitgebreide ondersteuning voor dit product en de Cloud service verloopt op 31 2022 december. Het is belang rijk om te beginnen met het plannen van een migratie van StorSimple direct.
+
+Azure File Sync is de standaard-en strategische Azure-service voor de lange termijn waarmee StorSimple-apparaten kunnen worden gemigreerd.
+
+> [!IMPORTANT]
+> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFilesMigration@microsoft. com voor een aangepast migratie plan en voor hulp tijdens de migratie.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

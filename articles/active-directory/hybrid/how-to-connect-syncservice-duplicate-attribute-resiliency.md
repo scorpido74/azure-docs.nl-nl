@@ -1,6 +1,6 @@
 ---
-title: Tolerantie voor synchronisatie- en kenmerk | Microsoft Docs
-description: Nieuwe gedrag van het verwerken van objecten met de UPN of ProxyAddress conflicten tijdens de directorysynchronisatie met Azure AD Connect.
+title: Tolerantie van Identiteitssynchronisatie en dubbele kenmerken | Microsoft Docs
+description: Nieuw gedrag voor het afhandelen van objecten met UPN-of proxyAddress attribuut-conflicten tijdens adreslijst synchronisatie met Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,85 +16,88 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298340"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
-Tolerantie van dubbele kenmerk is een functie in Azure Active Directory die wordt veroorzaakt door problemen elimineren **UserPrincipalName** en **ProxyAddress** veroorzaakt een conflict bij het uitvoeren van een van de Microsoft hulpprogramma's voor synchronisatie.
+Dubbel kenmerk tolerantie is een functie in Azure Active Directory die de wrijvings kracht veroorzaakt door **userPrincipalName** -en SMTP **proxyAddress attribuut** -conflicten bij het uitvoeren van een van de synchronisatie hulpprogramma's van micro soft.
 
-Deze twee kenmerken in het algemeen moeten uniek zijn in alle **gebruiker**, **groep**, of **Neem contact op met** objecten in een bepaalde Azure Active Directory-tenant.
+Deze twee kenmerken zijn over het algemeen verplicht uniek te zijn voor alle **gebruikers**-, **groeps**-of **Contact** objecten in een bepaalde Azure Active Directory Tenant.
 
 > [!NOTE]
-> Alleen gebruikers kunnen de UPN's hebben.
+> Alleen gebruikers kunnen Upn's hebben.
 > 
 > 
 
-Het nieuwe gedrag waarmee deze functie is in de cloud-gedeelte van de synchronisatie-pijplijn, daarom is het client agnostische en relevant zijn voor een Microsoft-synchronisatie product met inbegrip van Azure AD Connect, DirSync en MIM-Connector. De algemene term 'synchronisatieclient' wordt gebruikt in dit document om weer te geven van een van deze producten.
+Het nieuwe gedrag dat door deze functie wordt ingeschakeld, bevindt zich in het Cloud gedeelte van de synchronisatie pijplijn, daarom is het client neutraal en relevant voor elk micro soft-synchronisatie product, waaronder Azure AD Connect, DirSync en MIM + connector. De algemene term Sync Client wordt in dit document gebruikt om een van deze producten aan te duiden.
 
-## <a name="current-behavior"></a>Gedrag van het huidige
-Als er een poging voor het inrichten van een nieuw object met een UPN of ProxyAddress-waarde die in strijd is met deze beperking voor uniekheid, blokkeert Azure Active Directory dat object worden gemaakt. Op dezelfde manier als een object wordt bijgewerkt met een niet-unieke UPN of ProxyAddress, mislukt de update. De inrichting poging of de update wordt opnieuw uitgevoerd door de synchronisatieclient bij elke cyclus exporteren en blijft mislukken, totdat het conflict opgelost is. Een e-mailbericht fout rapport wordt gegenereerd na elke poging en een fout wordt vastgelegd door de synchronisatieclient.
+## <a name="current-behavior"></a>Huidige gedrag
+Als er een poging wordt gedaan om een nieuw object in te richten met een UPN-of proxyAddress attribuut-waarde die in strijd is met deze uniekheids beperking, Azure Active Directory blokkeert u dat object dat wordt gemaakt. En als een object wordt bijgewerkt met een niet-unieke UPN of proxyAddress attribuut, mislukt de update. De inrichtings poging of-update wordt opnieuw geprobeerd door de synchronisatieclient tijdens elke export cyclus en blijft mislukken totdat het conflict is opgelost. Er wordt een e-mail fout rapport gegenereerd bij elke poging en er wordt een fout vastgelegd door de synchronisatieclient.
 
-## <a name="behavior-with-duplicate-attribute-resiliency"></a>Probleem met de tolerantie van dubbel kenmerk
-In plaats van volledig mislukken in te richten of bijwerken van een object met een dubbel kenmerk, Azure Active Directory 'in quarantaine plaatst' de dubbel kenmerk die de beperking voor uniekheid schendt. Als dit kenmerk vereist is voor het inrichten, zoals UserPrincipalName, wordt een tijdelijke aanduiding door de service toegewezen. De indeling van deze tijdelijke waarden is  
-“***\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com***”.  
-Als het kenmerk niet vereist is, zoals een **ProxyAddress**, Azure Active Directory gewoon in quarantaine plaatst het conflict-kenmerk en wordt voortgezet met het maken van het object of de update.
+## <a name="behavior-with-duplicate-attribute-resiliency"></a>Gedrag met tolerantie voor dubbel kenmerk
+In plaats van een object met een dubbel kenmerk niet volledig in te richten of bij te werken, heeft Azure Active Directory ' quarantaines ' het dubbele kenmerk dat de uniekheids beperking zou schenden. Als dit kenmerk is vereist voor het inrichten, zoals UserPrincipalName, wordt door de service een waarde voor de tijdelijke aanduiding toegewezen. De indeling van deze tijdelijke waarden is  
+_**\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft. com**_ .
 
-Bij het kenmerk in quarantaine plaatsen, wordt informatie over het conflict in de dezelfde fout rapport e-mail die wordt gebruikt in het oude gedrag verzonden. Deze informatie wordt alleen weergegeven in het foutenrapport één keer als de quarantaine gebeurt, het is niet blijven echter moeten worden vastgelegd in toekomstige e-mailberichten. Ook, omdat de uitvoer van dit object is geslaagd, de synchronisatieclient Meld u niet een fout en probeert niet opnieuw voor het maken / bijwerken van de bewerking op de volgende synchronisatiecycli.
+Het kenmerk tolerantie proces verwerkt alleen UPN-en SMTP- **proxyAddress attribuut** -waarden.
 
-Ter ondersteuning van dit gedrag is een nieuw kenmerk toegevoegd aan de gebruiker, groep en neem contact op met object-klassen:  
+Als het kenmerk niet is vereist, zoals een **proxyAddress attribuut**, wordt het kenmerk conflict door Azure Active Directory eenvoudigweg in quarantaine geplaatst en wordt de object-of bijwerk actie uitgevoerd.
+
+Bij het in quarantaine van het kenmerk wordt informatie over het conflict verzonden in hetzelfde fout rapport-e-mail adres dat wordt gebruikt in het oude gedrag. Deze informatie wordt echter slechts één keer weer gegeven in het fouten rapport, wanneer de quarantaine plaatsvindt, wordt het niet meer in toekomstige e-mail berichten geregistreerd. Omdat de export voor dit object is geslaagd, wordt er door de synchronisatieclient geen fout in het logboek geregistreerd en wordt de bewerking maken/bijwerken niet opnieuw geprobeerd bij de volgende synchronisatie cycli.
+
+Ter ondersteuning van dit gedrag is er een nieuw kenmerk toegevoegd aan de object klassen gebruiker, groep en contact persoon:  
 **DirSyncProvisioningErrors**
 
-Dit is een kenmerk met meerdere waarden dat wordt gebruikt voor het opslaan van de conflicterende kenmerken die schendt de beperking voor uniekheid moeten ze worden toegevoegd normaal. Een achtergrondtaak van de timer is ingeschakeld in Azure Active Directory, die elk uur naar dubbel kenmerk conflicten die zijn opgelost, en worden de kenmerken in kwestie automatisch verwijderd uit quarantaine wordt uitgevoerd.
+Dit is een kenmerk met meerdere waarden dat wordt gebruikt voor het opslaan van de conflicterende kenmerken die de beperking van uniekheid zouden overschrijden, moeten ze normaal gesp roken worden toegevoegd. Er is een achtergrond timer taak ingeschakeld in Azure Active Directory die elk uur wordt uitgevoerd om te zoeken naar dubbele kenmerk conflicten die zijn opgelost, en de betreffende kenmerken automatisch uit quarantaine worden verwijderd.
 
-### <a name="enabling-duplicate-attribute-resiliency"></a>Inschakelen van tolerantie van dubbel kenmerk
-Tolerantie van dubbele kenmerk is het standaardgedrag voor alle Azure Active Directory-tenants. Dit is op die standaard voor alle tenants die ingeschakeld synchronisatie voor de eerste keer op 22 augustus 2016 of hoger. Tenants die ingeschakeld synchroniseren vóór deze datum is de functie is ingeschakeld in batches. Deze implementatie zal beginnen in September 2016 en een e-mailmelding verzonden naar contact op met technische berichtgeving van elke tenant met de specifieke datum wanneer de functie wordt ingeschakeld.
+### <a name="enabling-duplicate-attribute-resiliency"></a>Tolerantie van dubbel kenmerk inschakelen
+De tolerantie voor dubbele kenmerken is het nieuwe standaard gedrag voor alle Azure Active Directory tenants. Het is standaard ingeschakeld voor alle tenants die synchronisatie voor de eerste keer op 22 augustus, 2016 of hoger. Tenants die vóór deze datum de synchronisatie hebben ingeschakeld, hebben de functie ingeschakeld in batches. Deze implementatie begint in september 2016 en er wordt een e-mail melding verzonden naar de contact persoon van de technische melding van elke Tenant met de specifieke datum waarop de functie wordt ingeschakeld.
 
 > [!NOTE]
-> Nadat de tolerantie van dubbel-kenmerk is ingeschakeld kan niet worden uitgeschakeld.
+> Wanneer dubbele kenmerken tolerantie is ingeschakeld, kan deze niet worden uitgeschakeld.
 
-Als u wilt controleren of de functie is ingeschakeld voor uw tenant, kunt u doen door de meest recente versie van de Azure Active Directory PowerShell-module downloaden en uitvoeren:
+Als u wilt controleren of de functie is ingeschakeld voor uw Tenant, kunt u dit doen door de nieuwste versie van de Azure Active Directory Power shell-module te downloaden en uit te voeren:
 
 `Get-MsolDirSyncFeatures -Feature DuplicateUPNResiliency`
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> U kunt de cmdlet Set-MsolDirSyncFeature niet meer gebruiken proactief de tolerantie van dubbele kenmerk-functie inschakelen voordat deze is ingeschakeld voor uw tenant. Als u de functie testen, moet u een nieuwe Azure Active Directory-tenant maken.
+> U kunt de cmdlet Set-MsolDirSyncFeature niet meer gebruiken om de tolerantie functie voor dubbele kenmerken proactief in te scha kelen voordat deze is ingeschakeld voor uw Tenant. Als u de functie wilt testen, moet u een nieuwe Azure Active Directory-Tenant maken.
 
-## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Objecten met DirSyncProvisioningErrors identificeren
-Er zijn momenteel twee methoden voor het identificeren van objecten die u deze fouten als gevolg van conflicten tijdens het dubbele eigenschap, Azure Active Directory PowerShell hebt en de [Microsoft 365-beheercentrum](https://admin.microsoft.com). Er zijn plannen om uit te breiden naar extra portal op basis van rapportage in de toekomst.
+## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identificeren van objecten met DirSyncProvisioningErrors
+Er zijn momenteel twee methoden om objecten te identificeren die deze fouten hebben als gevolg van dubbele eigenschaps conflicten, Azure Active Directory Power shell en het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Er zijn plannen die in de toekomst moeten worden uitgebreid naar extra rapportage op basis van portal.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
-Het volgende is van de waarde true voor de PowerShell-cmdlets in dit onderwerp:
+Voor de Power shell-cmdlets in dit onderwerp is het volgende waar:
 
-* Alle van de volgende cmdlets zijn hoofdlettergevoelig.
-* De **– ErrorCategory PropertyConflict** moet altijd worden opgenomen. Er zijn momenteel geen andere typen **ErrorCategory**, maar dit kan in de toekomst worden uitgebreid.
+* Alle volgende cmdlets zijn hoofdletter gevoelig.
+* De **– ErrorCategory PropertyConflict** moet altijd worden opgenomen. Er zijn momenteel geen andere typen **ErrorCategory**, maar dit kan in de toekomst worden verlengd.
 
-Eerst aan de slag door te voeren **Connect-MsolService** en referenties in te voeren voor een tenantbeheerder.
+Ga eerst aan de slag door **Connect-MsolService** uit te voeren en referenties in te voeren voor een Tenant beheerder.
 
-Gebruik vervolgens de volgende cmdlets en operators om fouten op verschillende manieren weer te geven:
+Gebruik vervolgens de volgende cmdlets en Opera tors om fouten op verschillende manieren te bekijken:
 
-1. [Alles weergeven](#see-all)
-2. [Door de eigenschapstype](#by-property-type)
-3. [Door de conflicterende waarde](#by-conflicting-value)
-4. [Met behulp van een tekenreeks zoeken](#using-a-string-search)
-5. Gesorteerd
+1. [Alles weer geven](#see-all)
+2. [Op eigenschaps type](#by-property-type)
+3. [Op conflicterende waarde](#by-conflicting-value)
+4. [Een teken reeks zoeken gebruiken](#using-a-string-search)
+5. Geordend
 6. [In een beperkt aantal of alle](#in-a-limited-quantity-or-all)
 
-#### <a name="see-all"></a>Alles bekijken
-Wanneer verbinding is gemaakt, een algemeen overzicht van het kenmerk inrichten uitvoeren fouten in de tenant:
+#### <a name="see-all"></a>Alles weer geven
+Nadat de verbinding tot stand is gebracht, kunt u een algemene lijst met fouten bij het inrichten van de Tenant bekijken:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-Dit resulteert in een resultaat als volgt uit:  
+Dit resulteert in het volgende:  
  ![Get-MsolDirSyncProvisioningError](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
 
-#### <a name="by-property-type"></a>Door de eigenschapstype
-Toevoegen als fouten wilt bekijken door de eigenschapstype, de **- PropertyName** markeren met de **UserPrincipalName** of **ProxyAddresses** argument:
+#### <a name="by-property-type"></a>Op eigenschaps type
+Als u fouten wilt bekijken op basis van het type eigenschap, voegt u de vlag **-PropertyName** toe met het argument **userPrincipalName** of **proxyAddresses** :
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
@@ -102,77 +105,77 @@ of
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
-#### <a name="by-conflicting-value"></a>Door de conflicterende waarde
-Om te zien van fouten met betrekking tot een bepaalde eigenschap toevoegen de **- eigenschapwaarde** vlag ( **- PropertyName** moet ook worden gebruikt bij het toevoegen van deze vlag):
+#### <a name="by-conflicting-value"></a>Op conflicterende waarde
+Als u fouten met betrekking tot een specifieke eigenschap wilt weer geven, voegt u de vlag **-PropertyValue** toe ( **-PropertyName** moet ook worden gebruikt bij het toevoegen van deze vlag):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
-#### <a name="using-a-string-search"></a>Met behulp van een tekenreeks zoeken
-Een brede reeks search gebruik doen de **- SearchString** vlag. Dit kan worden gebruikt onafhankelijk van alle bovenstaande vlaggen, met uitzondering van **- ErrorCategory PropertyConflict**, die is vereist:
+#### <a name="using-a-string-search"></a>Een teken reeks zoeken gebruiken
+Als u een uitgebreide zoek opdracht wilt uitvoeren, gebruikt u de vlag **-search string** . Dit kan onafhankelijk van alle bovenstaande vlaggen worden gebruikt, met uitzonde ring van **-ErrorCategory PropertyConflict**. Dit is altijd vereist:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>In een beperkt aantal of alle
-1. **MaxResults \<Int >** kan worden gebruikt om de query naar een specifiek aantal waarden te beperken.
-2. **Alle** kan worden gebruikt om te controleren of alle resultaten worden opgehaald in het geval dat een groot aantal fouten bestaat.
+1. **MaxResults \<Int >** kan worden gebruikt om de query te beperken tot een bepaald aantal waarden.
+2. **Alle** kunnen worden gebruikt om ervoor te zorgen dat alle resultaten worden opgehaald in het geval dat een groot aantal fouten bestaat.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="microsoft-365-admin-center"></a>Microsoft 365-beheercentrum
-U kunt directory synchronisatiefouten weergeven in het Microsoft 365-beheercentrum. Het rapport in de Microsoft 365 admin center weergeven **gebruiker** objecten op waarvoor deze fouten. Het wordt niet weergegeven informatie over conflicten tussen **groepen** en **contactpersonen**.
+## <a name="microsoft-365-admin-center"></a>Microsoft 365-beheer centrum
+U kunt Directory synchronisatie fouten weer geven in het Microsoft 365-beheer centrum. In het rapport in het Microsoft 365-beheer centrum worden alleen **gebruikers** objecten weer gegeven die deze fouten bevatten. Er wordt geen informatie weer gegeven over conflicten tussen **groepen** en **contact personen**.
 
-![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "actieve gebruikers")
+![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Actieve gebruikers")
 
-Zie voor instructies over het weergeven van directory synchronisatie van fouten in het Microsoft 365-beheercentrum [directory synchronisatiefouten in Office 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Zie voor instructies over het weer geven van adreslijst synchronisatie fouten in het Microsoft 365-beheer centrum [Directory-synchronisatie fouten in Office 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
-### <a name="identity-synchronization-error-report"></a>Rapport over mappensynchronisatie fout identiteit
-Wanneer een object met dubbel kenmerk conflict wordt verwerkt met dit nieuwe gedrag een melding is opgenomen in de standaard Identity synchronisatie foutenrapport e-mail die wordt verzonden naar de technische berichtgeving contact op met de knop voor de tenant. Er is echter een belangrijke wijziging in dit gedrag. In het verleden, zou informatie over een dubbel kenmerk conflict worden opgenomen in elke volgende foutrapport totdat het conflict is opgelost. Met dit nieuwe gedrag, wordt de foutmelding voor een bepaalde conflict alleen weergegeven eenmaal - op het moment dat de Conflicterend kenmerk in quarantaine is geplaatst.
+### <a name="identity-synchronization-error-report"></a>Identiteitssynchronisatie fout rapport
+Wanneer een object met een dubbel kenmerk conflict wordt verwerkt met dit nieuwe gedrag, wordt er een melding opgenomen in het standaard-e-mail bericht van identiteits synchronisatie dat wordt verzonden naar de contact persoon van de technische melding voor de Tenant. Er is echter een belang rijke wijziging in dit gedrag. In het verleden zou informatie over een dubbel kenmerk conflict worden opgenomen in elk volgende fouten rapport tot het conflict is opgelost. Met dit nieuwe gedrag wordt de fout melding voor een gegeven conflict slechts eenmaal weer gegeven-op het moment dat het conflicterende kenmerk in quarantaine is geplaatst.
 
-Hier volgt een voorbeeld van hoe het e-mailmelding voor een conflict ProxyAddress uitziet:  
-    ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "actieve gebruikers")  
+Hier volgt een voor beeld van hoe de e-mail melding eruitziet voor een proxyAddress attribuut-conflict:  
+    ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Actieve gebruikers")  
 
-## <a name="resolving-conflicts"></a>Het oplossen van conflicten
-Het oplossen van de strategie en de resolutie tactieken voor deze fouten moet niet verschillen van de manier waarop dubbel kenmerk fouten in het verleden zijn verwerkt. Het enige verschil is dat de taak timer vervalmechanisme via de tenant aan de servicezijde automatisch het kenmerk in kwestie aan het juiste object toevoegen nadat het conflict opgelost is.
+## <a name="resolving-conflicts"></a>Conflicten oplossen
+Het oplossen van problemen met strategieën en oplossingen voor deze fouten mag niet verschillen van de manier waarop dubbele kenmerk fouten in het verleden zijn verwerkt. Het enige verschil is dat de timer taak via de Tenant aan de service zijde wordt geveegd om het betreffende kenmerk automatisch toe te voegen aan het juiste object zodra het conflict is opgelost.
 
-Het volgende artikel geeft een overzicht van de verschillende strategieën gehanteerd oplossen van problemen: [Dubbele of ongeldige kenmerken te voorkomen dat de directory-synchronisatie in Office 365](https://support.microsoft.com/kb/2647098).
+In het volgende artikel vindt u een overzicht van verschillende strategieën voor probleem oplossing en oplossingen: [dubbele of ongeldige kenmerken voor komen Directory synchronisatie in Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Bekende problemen
-Geen van deze bekende problemen zorgt ervoor dat gegevens verloren gaan of de service degradatie. Sommige hiervan zijn aesthetic, anderen ertoe leiden dat standaard "*vooraf tolerantie*" dubbel kenmerk fouten moeten worden gegenereerd in plaats van het conflict-kenmerk en een andere in quarantaine plaatsen zorgt ervoor dat bepaalde fouten vereist extra handmatig bijwerken.
+Geen van deze bekende problemen veroorzaakt gegevens verlies of service vermindering. Verschillende hiervan zijn esthetisch, andere veroorzaken standaard '*pre-tolerantie*'-kenmerk fouten die moeten worden gegenereerd in plaats van het in quarantaine het conflict kenmerk, en een andere heeft tot gevolg dat er voor bepaalde fouten extra hand matige herstel is vereist.
 
-**Core gedrag:**
+**Kern gedrag:**
 
-1. Objecten met een specifiek kenmerk configuraties blijven ontvangen ze foutberichten uitvoer in plaats van de dubbele kenmerken in quarantaine wordt geplaatst.  
+1. Objecten met specifieke kenmerk configuraties blijven export fouten ontvangen, in tegens telling tot de dubbele kenmerk (en) die in quarantaine worden geplaatst.  
    Bijvoorbeeld:
    
-    a. Nieuwe gebruiker wordt gemaakt in AD met een UPN van **Jaap\@contoso.com** en ProxyAddress **smtp:Joe\@contoso.com**
+    a. Er wordt een nieuwe gebruiker gemaakt in AD met een UPN van de **\@contoso.com** en proxyAddress attribuut **smtp: Joe\@contoso.com**
    
-    b. De eigenschappen van dit object in strijd zijn met een bestaande groep, waarbij ProxyAddress is **SMTP:Joe\@contoso.com**.
+    b. De eigenschappen van dit object conflicteren met een bestaande groep, waarbij proxyAddress attribuut is **SMTP: Joe\@contoso.com**.
    
-    c. Bij het exporteren, een **ProxyAddress conflict** fout wordt gegenereerd in plaats van de kenmerken van het conflict in quarantaine geplaatst. De bewerking wordt opnieuw geprobeerd bij elke volgende synchronisatiecyclus als zijn zou voordat de tolerantiefunctie is ingeschakeld.
-2. Als twee groepen zijn gemaakt van on-premises met hetzelfde SMTP-adres, een mislukt om in te richten op de eerste poging met een standard dubbele **ProxyAddress** fout. De dubbele waarde is echter goed in quarantaine op de volgende synchronisatiecyclus.
+    c. Bij het exporteren wordt een **proxyAddress attribuut-conflict** fout gegenereerd in plaats van dat de conflict kenmerken in quarantaine worden geplaatst. Bij elke volgende synchronisatie cyclus wordt er opnieuw geprobeerd om de bewerking uit te kunnen laten lopen, net zoals die zou zijn voordat de tolerantie functie was ingeschakeld.
+2. Als twee groepen on-premises zijn gemaakt met hetzelfde SMTP-adres, kan een van de eerste pogingen niet worden ingericht met een standaard dubbele **proxyAddress attribuut** -fout. De dubbele waarde wordt echter wel op de juiste wijze in quarantaine geplaatst tijdens de volgende synchronisatie cyclus.
 
 **Office-Portal rapport**:
 
-1. Het gedetailleerde foutbericht voor twee objecten in een conflict UPN is hetzelfde. Hiermee wordt aangegeven dat ze hebben beide al hun UPN gewijzigd / in quarantaine geplaatst wanneer u in feite alleen een van deze waren voor alle gegevens zijn gewijzigd.
-2. Het gedetailleerde foutbericht voor een conflict UPN ziet u de verkeerde displayName voor een gebruiker die hun UPN gewijzigd heeft/in quarantaine geplaatst. Bijvoorbeeld:
+1. Het gedetailleerde fout bericht voor twee objecten in een UPN-conflict is hetzelfde. Dit geeft aan dat beide UPN-namen zijn gewijzigd, wanneer er slechts één van de gegevens is gewijzigd.
+2. In het gedetailleerde fout bericht voor een UPN-conflict wordt de verkeerde displayName weer gegeven voor een gebruiker die de UPN heeft gewijzigd/in quarantaine is geplaatst. Bijvoorbeeld:
    
-    a. **Gebruiker A** synchronisaties eerst met een **UPN = gebruiker\@contoso.com**.
+    a. **Gebruiker A** synchroniseert eerst met **UPN = User\@contoso.com**.
    
-    b. **Gebruiker B** wordt geprobeerd om te worden gesynchroniseerd volgende met **UPN = gebruiker\@contoso.com**.
+    b. **Gebruiker B** probeert te synchroniseren naast **UPN = User\@contoso.com**.
    
-    c. **Gebruiker B** UPN is gewijzigd in **User1234\@contoso.onmicrosoft.com** en **gebruiker\@contoso.com** wordt toegevoegd aan **DirSyncProvisioningErrors** .
+    c. **Gebruiker B** UPN is gewijzigd in **User1234\@contoso.onmicrosoft.com** en **gebruikers\@contoso.com** aan **DirSyncProvisioningErrors**is toegevoegd.
    
-    d. Het foutbericht voor **gebruiker B** moet geven aan dat **gebruiker A** al **gebruiker\@contoso.com** zoals weergegeven in een UPN, maar het **gebruiker B** eigen displayName.
+    d. In het fout bericht voor **gebruiker B** moet worden aangegeven dat **gebruiker a** al een **gebruiker\@contoso.com** als UPN, maar de eigen DisplayName **van gebruiker b** wordt weer gegeven.
 
-**Rapport over mappensynchronisatie fout identiteit**:
+**Identiteitssynchronisatie fout rapport**:
 
-De koppeling voor *stappen over het oplossen van dit probleem* is onjuist:  
-    ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "actieve gebruikers")  
+De koppeling voor *stappen voor het oplossen van dit probleem* is onjuist:  
+    ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Actieve gebruikers")  
 
-Deze moet verwijzen naar [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
+Deze moet verwijzen naar [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
 
 ## <a name="see-also"></a>Zie ook
 * [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
-* [Identificeren van de synchronisatiefouten directory in Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
+* [Directory-synchronisatie fouten in Office 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

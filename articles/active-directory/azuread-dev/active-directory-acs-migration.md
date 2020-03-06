@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165343"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377915"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
@@ -68,13 +68,13 @@ Volg de stappen in deze sectie om erachter te komen welke van uw apps van invloe
 ### <a name="download-and-install-acs-powershell"></a>ACS Power shell downloaden en installeren
 
 1. Ga naar het PowerShell Gallery en down load [ACS. namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-1. De module installeren door uit te voeren
+2. De module installeren door uit te voeren
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Een lijst met alle mogelijke opdrachten ophalen door uit te voeren
+3. Een lijst met alle mogelijke opdrachten ophalen door uit te voeren
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Volg de stappen in deze sectie om erachter te komen welke van uw apps van invloe
   
     Mogelijk moet u `Set-ExecutionPolicy -ExecutionPolicy Bypass` uitvoeren voordat u opdrachten kunt uitvoeren en de beheerder van deze abonnementen moet zijn om de opdrachten uit te voeren.
 
-1. Vermeld uw beschik bare Azure-abonnementen met de cmdlet **Get-AcsSubscription** .
-1. Vermeld uw ACS-naam ruimten met behulp van de cmdlet **Get-AcsNamespace** .
+2. Vermeld uw beschik bare Azure-abonnementen met de cmdlet **Get-AcsSubscription** .
+3. Vermeld uw ACS-naam ruimten met behulp van de cmdlet **Get-AcsNamespace** .
 
 ### <a name="check-which-applications-will-be-impacted"></a>Controleren welke toepassingen worden beïnvloed
 
@@ -103,8 +103,8 @@ Volg de stappen in deze sectie om erachter te komen welke van uw apps van invloe
 
     Als een van de naam ruimten bijvoorbeeld contoso-test is, gaat u naar `https://contoso-test.accesscontrol.windows.net`
 
-1. Onder **vertrouwens relaties**selecteert u **toepassingen voor relying** Party om de lijst met apps weer te geven die van invloed zijn op de uittreding van ACS.
-1. Herhaal stap 1-2 voor elke andere ACS-naam ruimte die u hebt.
+2. Onder **vertrouwens relaties**selecteert u **toepassingen voor relying** Party om de lijst met apps weer te geven die van invloed zijn op de uittreding van ACS.
+3. Herhaal stap 1-2 voor elke andere ACS-naam ruimte die u hebt.
 
 ## <a name="retirement-schedule"></a>Pensioen planning
 
@@ -210,7 +210,7 @@ Op hoog niveau *is Azure Active Directory waarschijnlijk de beste keuze voor uw 
 | Aangepaste certificaten voor token-ondertekening uploaden | Ondersteund | Ondersteund |
 | Claims in tokens aanpassen |-Invoer claims door geven van id-providers<br />-Toegangs token van ID-provider als claim ophalen<br />-Uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Uitvoer claims met constante waarden uitgeven |-Kan geen claims door geven van federatieve id-providers<br />-Kan geen toegangs Token ophalen van de identiteits provider als een claim<br />-Kan geen uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Kan uitvoer claims verzenden met constante waarden<br />-Kan uitvoer claims uitgeven op basis van eigenschappen van gebruikers die zijn gesynchroniseerd met Azure AD |
 | **Automation** | | |
-| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund via Microsoft Graph en Azure AD Graph API |
+| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund met behulp van de Microsoft Graph-API |
 
 Als u besluit dat Azure AD het beste migratie traject is voor uw toepassingen en services, moet u rekening houden met twee manieren om uw app te integreren met Azure AD.
 
@@ -261,7 +261,7 @@ In de volgende tabel worden de functies van Access Control vergeleken die releva
 | Aangepaste certificaten voor token-ondertekening uploaden | Ondersteund | Aangepaste handtekening sleutels, geen certificaten, ondersteund via aangepast beleid |
 | Claims in tokens aanpassen |-Invoer claims door geven van id-providers<br />-Toegangs token van ID-provider als claim ophalen<br />-Uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Uitvoer claims met constante waarden uitgeven |-Kan claims van id-providers passeren; aangepast beleid dat is vereist voor sommige claims<br />-Kan geen toegangs Token ophalen van de identiteits provider als een claim<br />-Kan uitvoer claims uitgeven op basis van de waarden van invoer claims via aangepaste beleids regels<br />-Kan uitvoer claims met constante waarden uitgeven via aangepaste beleids regels |
 | **Automation** | | |
-| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service |Het maken van gebruikers die zijn toegestaan via Azure AD Graph API<br />-Kan geen B2C-tenants,-toepassingen of-beleid maken via een programma |
+| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service |-Maken van gebruikers die zijn toegestaan met de Microsoft Graph-API<br />-Kan geen B2C-tenants,-toepassingen of-beleid maken via een programma |
 
 Als u besluit dat Azure AD B2C het beste migratie traject is voor uw toepassingen en services, begint u met de volgende bronnen:
 
@@ -325,7 +325,7 @@ U kunt ook Azure AD gebruiken voor server-naar-Server-verificatie met behulp van
 | Client verificatie methoden |-Eenvoudig wacht woord<br />-Ondertekende SWT<br />-SAML-token van een federatieve id-provider |-Eenvoudig wacht woord<br />-Ondertekende JWT |
 | Token indelingen |- JWT<br />-SAML 1,1<br />-SAML 2,0<br />-SWT<br /> | Alleen JWT |
 | Token transformatie |-Aangepaste claims toevoegen<br />-Eenvoudig als-dan claim de uitgifte logica | Aangepaste claims toevoegen | 
-| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund via Microsoft Graph en Azure AD Graph API |
+| Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund met behulp van de Microsoft Graph-API |
 
 Raadpleeg de volgende bronnen voor hulp bij het implementeren van server-naar-server-scenario's:
 

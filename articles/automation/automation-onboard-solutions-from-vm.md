@@ -2,15 +2,15 @@
 title: Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een Azure-VM onboarden
 description: Leer hoe u een virtuele machine van Azure kunt vrijgeven met Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen die deel uitmaken van Azure Automation.
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421827"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299520"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een virtuele machine in azure onboarden
 
@@ -22,13 +22,17 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>De oplossingen inschakelen
 
-Ga naar een bestaande virtuele machine. Selecteer onder **bewerkingen** **Update beheer**, **inventaris**of het bijhouden van **wijzigingen**. De virtuele machine kan in elke regio bestaan, ongeacht de locatie van uw Automation-account. Wanneer u een oplossing van een virtuele machine uitschakelt, moet u de `Microsoft.OperationalInsights/workspaces/read` toestemming hebben om te bepalen of de virtuele machine onboarded is voor een werk ruimte. Zie voor meer informatie over extra machtigingen die in het algemeen nodig zijn de [machtigingen die nodig zijn voor het onboarden van computers](automation-role-based-access-control.md#onboarding).
+Schakel eerst één of alle drie de oplossingen in op uw virtuele machine:
 
-Als u de oplossing alleen voor de virtuele machine wilt inschakelen, moet u ervoor zorgen dat **inschakelen voor deze VM** is geselecteerd. Als u meerdere computers wilt voorbereiden op de oplossing, selecteert u **inschakelen voor vm's in dit abonnement**en selecteert u vervolgens **klikken om machines te selecteren die u wilt inschakelen**. Zie [Onboarding updatebeheer, wijzigingen bijhouden en Inventory Solutions](automation-onboard-solutions-from-automation-account.md)voor meer informatie over het voorbereiden van meerdere computers tegelijk.
+1. In de [Azure Portal](https://portal.azure.com)selecteert u in het linkerdeel venster de optie **virtuele machines** of zoekt en selecteert u **virtuele machines** op de **Start** pagina.
+2. Selecteer de virtuele machine waarvoor u een oplossing wilt inschakelen.
+3. Selecteer op de pagina VM onder **bewerkingen** **Update beheer**, **inventaris**of **bijhouden van wijzigingen**. De virtuele machine kan in elke regio bestaan, ongeacht de locatie van uw Automation-account. Wanneer u een oplossing op basis van een virtuele machine onboardt, moet u de `Microsoft.OperationalInsights/workspaces/read` machtiging hebben om te bepalen of de virtuele machine onboarded is voor een werk ruimte. Zie voor meer informatie over vereiste extra machtigingen de [machtigingen die nodig zijn voor het onboarden van computers](automation-role-based-access-control.md#onboarding).
+
+Zie [Onboarding updatebeheer, wijzigingen bijhouden en Inventory Solutions](automation-onboard-solutions-from-automation-account.md)voor meer informatie over het voorbereiden van meerdere computers tegelijk.
 
 Selecteer de Azure Log Analytics-werk ruimte en het Automation-account en selecteer vervolgens **inschakelen** om de oplossing in te scha kelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
-![Onboarding van de Updatebeheer oplossing](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Onboarding van de Updatebeheer oplossing](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 Ga naar de andere oplossingen en selecteer **inschakelen**. De vervolg keuzelijsten Log Analytics werk ruimte en Automation-account zijn uitgeschakeld omdat deze oplossingen gebruikmaken van dezelfde werk ruimte en hetzelfde Automation-account als de eerder ingeschakelde oplossing.
 
@@ -41,9 +45,9 @@ Elke oplossing maakt gebruik van een scope configuratie in de werk ruimte om te 
 
 Als de geselecteerde werk ruimte nog niet beschikt over de Updatebeheer-of Wijzigingen bijhouden oplossingen, worden de volgende Scope configuraties gemaakt:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig-change tracking**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig-updates**
 
 Als de geselecteerde werk ruimte al de oplossing heeft, wordt de oplossing niet opnieuw geïmplementeerd en wordt de scope configuratie niet toegevoegd.
 
@@ -55,9 +59,9 @@ Wanneer een computer wordt toegevoegd aan de Updatebeheer, Wijzigingen bijhouden
 
 Ga naar uw werkruimte. Onder **Algemeen**selecteert u **opgeslagen Zoek opdrachten**. De twee opgeslagen Zoek opdrachten die door deze oplossingen worden gebruikt, worden in de volgende tabel weer gegeven:
 
-|Name     |Categorie  |Alias  |
+|Naam     |Category  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 
 Selecteer een van de opgeslagen Zoek opdrachten om de query weer te geven die wordt gebruikt om de groep in te vullen. In de volgende afbeelding ziet u de query en de resultaten:
@@ -115,5 +119,7 @@ Een virtuele machine verwijderen uit Updatebeheer:
 Ga verder met de zelf studies voor de oplossingen voor meer informatie over het gebruik ervan:
 
 * [Zelf studie-updates voor uw virtuele machine beheren](automation-tutorial-update-management.md)
+
 * [Zelf studie-software op een virtuele machine identificeren](automation-tutorial-installed-software.md)
+
 * [Zelf studie: problemen met wijzigingen in een virtuele machine oplossen](automation-tutorial-troubleshoot-changes.md)

@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330971"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
-Het opnemen van streaming is gericht op scenario's die een lage latentie vereisen met een opname tijd van minder dan 10 seconden voor verschillende volume gegevens. Het wordt gebruikt om de operationele verwerking van veel tabellen in een of meer data bases te optimaliseren, waarbij de gegevens stroom in elke tabel relatief klein is (weinig records per seconde), maar het totale gegevens opname volume hoog is (duizenden records per seconde).
+Gebruik Streaming-opname wanneer u een lage latentie nodig hebt met een opname tijd van minder dan 10 seconden voor variërende volume gegevens. Het wordt gebruikt om de operationele verwerking van veel tabellen in een of meer data bases te optimaliseren, waarbij de gegevens stroom in elke tabel relatief klein is (weinig records per seconde), maar het totale gegevens opname volume hoog is (duizenden records per seconde). 
 
-Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanneer de hoeveelheid gegevens groter wordt dan 1 MB per seconde per tabel. Lees [overzicht van gegevens opname](/azure/data-explorer/ingest-data-overview) voor meer informatie over de verschillende methoden voor opname.
+Gebruik bulk opname in plaats van het opnemen van opname wanneer de hoeveelheid gegevens groter wordt dan 1 MB per seconde per tabel. Lees [overzicht van gegevens opname](/azure/data-explorer/ingest-data-overview) voor meer informatie over de verschillende methoden voor opname.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +48,7 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
 Er zijn twee ondersteunde typen streaming-opname:
 
 
-* [**Event hub**](/azure/data-explorer/ingest-data-event-hub) gebruikt als gegevens bron
+* [**Event hub**](/azure/data-explorer/ingest-data-event-hub), die wordt gebruikt als gegevens bron
 * **Aangepaste opname** vereist dat u een toepassing schrijft die gebruikmaakt van een van de Azure Data Explorer-client bibliotheken. Zie voor [beeld van streaming opname](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) voor een voorbeeld toepassing.
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Kies het juiste type stroom opname
@@ -72,15 +72,12 @@ Er zijn twee ondersteunde typen streaming-opname:
 
 ## <a name="limitations"></a>Beperkingen
 
+* Streaming-opname ondersteunt geen [database cursors](/azure/kusto/management/databasecursor) of [gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/tables#create-ingestion-mapping) gegevens toewijzing wordt ondersteund. 
 * Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Gelijktijdige opname is beperkt tot zes opname per kern. Bijvoorbeeld: voor 16 kern Sku's, zoals D14 en L16, is de Maxi maal ondersteunde belasting 96 gelijktijdige opname. Voor twee kern-Sku's, zoals D11, is de Maxi maal ondersteunde belasting 12 gelijktijdige opname.
 * De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
 * Het inschakelen van streaming-opname in een cluster, zelfs wanneer er geen gegevens worden opgenomen via streaming, maakt gebruik van de lokale SSD-schijf van de cluster machines voor het streamen van opname gegevens en vermindert de opslag ruimte die beschikbaar is voor warme cache.
 * Er kunnen geen [gebieds Tags](/azure/kusto/management/extents-overview#extent-tagging) worden ingesteld voor de gegevens van de streaming-opname.
-
-Streaming-opname ondersteunt de volgende functies niet:
-* [Database cursors](/azure/kusto/management/databasecursor).
-* [Gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/create-ingestion-mapping-command) gegevens toewijzing wordt ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

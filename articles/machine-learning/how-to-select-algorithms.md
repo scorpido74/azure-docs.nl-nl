@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 01/21/2020
-ms.openlocfilehash: 65f43bf87e704c85d83220f4ffbc50581aafb549
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 03/05/2020
+ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315465"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328660"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen voor Azure Machine Learning selecteren
 
@@ -47,7 +47,7 @@ Wanneer u weet wat u met uw gegevens wilt doen, moet u aanvullende vereisten voo
 Maak keuzen en mogelijke trans acties voor de volgende vereisten:
 
 - Nauw keurigheid
-- Trainingstijd
+- Trainings tijd
 - Lineariteit
 - Aantal para meters
 - Aantal functies
@@ -66,7 +66,7 @@ Er zijn drie manieren om de module evaluate model te gebruiken:
 
 Zie [Evaluate model module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)voor een volledige lijst met metrische gegevens en benaderingen die u kunt gebruiken om de nauw keurigheid van machine learning modellen te evalueren.
 
-## <a name="training-time"></a>Trainingstijd
+## <a name="training-time"></a>Trainings tijd
 
 Bij het leren van een super visie betekent de training dat historische gegevens worden gebruikt voor het bouwen van een machine learning model dat fouten minimaliseert. Het aantal minuten of uren dat nodig is voor het trainen van een model, is afhankelijk van de verschillende algoritmen. De trainings tijd is vaak nauw verbonden met nauw keurigheid. een voor de andere. 
 

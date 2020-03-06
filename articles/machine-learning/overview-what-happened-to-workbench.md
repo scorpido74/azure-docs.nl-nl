@@ -9,14 +9,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 11/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 21c6972b73f15a3f128b4a26222e478a5e2a245a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/05/2020
+ms.openlocfilehash: 5a8d31157023cf75076bfef7df09e65a066ceaa5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533921"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328610"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
@@ -48,7 +47,7 @@ De huidige versie bevat nieuwe en verbeterde CLI- en SDK-clients, maar de Workbe
 
 ## <a name="support-timeline"></a>Ondersteuningstijdlijn
 
-Met ingang van 9 januari 2019 is de ondersteuning voor Machine Learning Workbench, accounts van Azure Machine Learning voor experimenten en modelbeheer en de bijbehorende SDK en CLI beëindigd.
+Op 9 januari 2019 wordt ondersteuning geboden voor Machine Learning Workbench, Azure Machine Learning Experimenten-en Modelbeheer-accounts, en de bijbehorende SDK en CLI zijn geëindigd.
 
 Alle nieuwste mogelijkheden zijn beschikbaar via deze nieuwe <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, de [CLI](reference-azure-machine-learning-cli.md) en de [portal](how-to-manage-workspace.md).
 

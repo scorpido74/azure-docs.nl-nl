@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 68bb1fea88ab7ba30e0ba07839f2d962840b7818
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921178"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303610"
 ---
 # <a name="assets-in-azure-media-services"></a>Activa in Azure Media Services
 
@@ -75,6 +75,6 @@ Ter bescherming van uw activa in rust, moeten de activa van de versleuteling van
 
 [Assets in Media Services beheren](manage-asset-concept.md)
 
-## <a name="also-see"></a>Zie ook
+## <a name="see-also"></a>Zie ook
 
 [Verschillen tussen Media Services v2 en v3](migrate-from-v2-to-v3.md)

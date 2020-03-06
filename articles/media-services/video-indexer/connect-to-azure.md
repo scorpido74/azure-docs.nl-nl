@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328826"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
@@ -124,8 +124,8 @@ Als de verbinding met Azure is mislukt, kunt u proberen om het probleem op te lo
 4. Er moet een AD-toepassing worden gemaakt om Video Indexer te verifiëren met Media Services-API. De volgende stappen leiden u door het Azure AD-verificatie proces dat wordt beschreven in [aan de slag met Azure AD-verificatie met behulp van de Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
     1. Selecteer in het nieuwe Media Services account **API-toegang**.
-    2. Selecteer de [verificatie methode](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)voor de Service-Principal.
-    3. Haal de client-ID en het client geheim op, zoals wordt beschreven in de sectie [de client-id en het client geheim ophalen](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) .
+    2. Selecteer de [verificatie methode](../previous/media-services-portal-get-started-with-aad.md)voor de Service-Principal.
+    3. De client-ID en het client geheim ophalen
 
         Nadat u **instellingen**->**sleutels**hebt geselecteerd, voegt u **Beschrijving**toe en drukt u op **Opslaan**. de sleutel waarde wordt gevuld.
 
@@ -165,7 +165,7 @@ De volgende Azure Media Services gerelateerde overwegingen zijn van toepassing:
 
 * Als u verbinding maakt met een nieuw Media Services-account, wordt het standaard **streaming-eind punt** in video indexer automatisch gestart:
 
-    ![Media Services streaming-eind punt](./media/create-account/ams-streaming-endpoint.png)
+    ![Media Services streaming-eindpunt](./media/create-account/ams-streaming-endpoint.png)
 
     Streaming-eind punten hebben een aanzienlijke opstart tijd. Daarom kan het enkele minuten duren vanaf het moment dat u uw account hebt verbonden met Azure, totdat uw Video's kunnen worden gestreamd en bekeken in de Video Indexer-webtoepassing.
 

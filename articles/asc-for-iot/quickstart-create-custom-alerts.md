@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766451"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303525"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Snelstartgids: aangepaste waarschuwingen maken
 
@@ -80,7 +80,6 @@ Gebruik beveiligings groepen om uw apparaten in logische categorieën te groeper
 ## <a name="alerts-available-for-customization"></a>Waarschuwingen die beschikbaar zijn voor aanpassing
 
 Azure Security Center voor IoT biedt een groot aantal waarschuwingen dat kan worden aangepast op basis van uw specifieke behoeften. Bekijk de [aanpas bare waarschuwings tabel](concept-customizable-security-alerts.md) voor de ernst van de waarschuwing, de gegevens bron, de beschrijving en de voorgestelde herstel stappen als en wanneer elke waarschuwing wordt ontvangen. 
-|
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300482"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Snelstartgids: Azure cache gebruiken voor redis met node. js
 
@@ -55,14 +55,15 @@ Maak geen nieuwe verbindingen voor elke bewerking in uw code. Probeer verbinding
 
 ## <a name="create-a-new-nodejs-app"></a>Een nieuwe Node.js-app maken
 
-Maak een nieuw scriptbestand met de naam *redistest.js*.
+Maak een nieuw scriptbestand met de naam *redistest.js*. Gebruik de opdracht `npm install redis bluebird` om de vereiste pakketten te installeren.
 
-Voeg het volgende voorbeeld van JavaScript toe aan het bestand. Deze code laat zien hoe u verbinding kunt maken met een instantie van Azure Cache voor Redis via de omgevingsvariabelen voor hostnaam en sleutel. Met de code wordt ook een tekenreekswaarde opgeslagen in de cache en daaruit opgehaald. De opdrachten `PING` en `CLIENT LIST` worden ook uitgevoerd. Zie [](https://github.com/mranney/node_redis)[ voor meer voorbeelden van het gebruik van Redis met de https://redis.js.org/node_redis](https://redis.js.org/)-client.
+Voeg het volgende voorbeeld van JavaScript toe aan het bestand. Deze code laat zien hoe u verbinding kunt maken met een exemplaar van Azure Cache voor Redis via de omgevingsvariabelen voor hostnaam en sleutel. Met de code wordt ook een tekenreekswaarde opgeslagen in de cache en daaruit opgehaald. De opdrachten `PING` en `CLIENT LIST` worden ook uitgevoerd. Zie [](https://github.com/mranney/node_redis)[ voor meer voorbeelden van het gebruik van Redis met de https://redis.js.org/node_redis](https://redis.js.org/)-client.
 
 ```js
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 

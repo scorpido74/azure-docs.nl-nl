@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157250"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302709"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van REST
 
@@ -26,7 +26,7 @@ Meer informatie over het gebruik van de Apache Hive WebHCat REST API om MapReduc
 
 * Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Er zijn verschillende opties:
+Merken
   * Windows Power shell of,
   * [Krul](https://curl.haxx.se/) met [JQ](https://stedolan.github.io/jq/)
 
@@ -37,7 +37,7 @@ Er zijn verschillende opties:
 >
 > De REST API wordt beveiligd met behulp van [basis verificatie voor toegang](https://en.wikipedia.org/wiki/Basic_access_authentication). U moet altijd aanvragen indienen via HTTPS om ervoor te zorgen dat uw referenties veilig worden verzonden naar de server.
 
-### <a name="curl"></a>Curl
+### <a name="curl"></a>Ezelsoor
 
 1. Stel de variabelen hieronder in om gebruiks gemak te gebruiken. Dit voor beeld is gebaseerd op een Windows-omgeving en wordt zo nodig herzien voor uw omgeving.
 
@@ -171,7 +171,7 @@ Er zijn verschillende opties:
 
 1. Wanneer de status van de taak is gewijzigd in `SUCCEEDED`, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De para meter `statusdir` die wordt door gegeven met de query, bevat de locatie van het uitvoer bestand. In dit voor beeld is de locatie `/example/curl`. Dit adres slaat de uitvoer van de taak op in de standaard opslag voor clusters op `/example/curl`.
 
-U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli). Zie de [Azure CLI gebruiken met Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) -document voor meer informatie over het werken met blobs in de Azure cli.
+U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](/cli/azure/install-azure-cli). Zie [Quick Start: Create, down loads en List blobs with Azure cli](../../storage/blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het gebruik van Azure CLI om te werken met Azure Blob-opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802215"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302046"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Een directe interverbinding tussen Azure en Oracle Cloud Infrastructure instellen  
 
@@ -35,7 +35,7 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
 
 * Als u verbinding wilt maken tussen Azure en OCI, hebt u een actief Azure-abonnement en een actieve OCI pacht nodig.
 
-* Connectiviteit is alleen mogelijk wanneer een Azure ExpressRoute-peering locatie zich in de buurt van of op dezelfde peering-locatie bevindt als de OCI FastConnect. Zie de [Preview-beperkingen](oracle-oci-overview.md#preview-limitations).
+* Connectiviteit is alleen mogelijk wanneer een Azure ExpressRoute-peering locatie zich in de buurt van of op dezelfde peering-locatie bevindt als de OCI FastConnect. Zie de [Beschik baarheid van regio's](oracle-oci-overview.md#region-availability).
 
 * Uw Azure-abonnement moet zijn ingeschakeld voor deze preview-functie.
 
@@ -63,7 +63,7 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
     * Plak de ExpressRoute-service sleutel in **Provider service sleutel**.
     * Gebruik de eerste/30 persoonlijke IP-adres ruimte gehaald uit in een vorige stap voor het **primaire BGP IP-adres** en de tweede/30 privé IP-adres ruimte voor het **secundaire BGP IP-** adres.
         * Wijs het eerste bebruikbaar adres van de twee bereiken voor het IP-adres van de Oracle BGP (primair en secundair) en het tweede adres toe aan het BGP-IP-adres van de klant (vanuit een FastConnect-perspectief). Het eerste bebruikbaarde IP-adres is het tweede IP-adres in de/30-adres ruimte (het eerste IP-adres is gereserveerd door micro soft).
-    * Klik op **Maken**.
+    * Klik op **Create**.
 1. Voltooi het koppelen van de FastConnect aan het virtuele Cloud netwerk onder uw Oracle-Tenant via de dynamische routerings gateway via de route tabel.
 1. Ga naar Azure en zorg ervoor dat de **provider status** voor uw ExpressRoute-circuit is gewijzigd in **ingericht** en dat een peering van het type **Azure private** is ingericht. Dit is een vereiste voor de volgende stappen.
 
@@ -79,13 +79,13 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
 
 Nadat u de netwerk configuratie hebt voltooid, kunt u de geldigheid van uw configuratie controleren door te klikken op **ARP-records ophalen** en **route tabel ophalen** onder de Blade ExpressRoute persoonlijke peering in de Azure Portal.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatisering
 
 Micro soft heeft terraform-scripts gemaakt om de automatische implementatie van de netwerk verbinding in te scha kelen. De terraform-scripts moeten bij Azure worden geverifieerd voordat ze kunnen worden uitgevoerd, omdat ze voldoende machtigingen nodig hebben voor het Azure-abonnement. Verificatie kan worden uitgevoerd met behulp van een [Azure Active Directory Service-Principal](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) of met behulp van de Azure cli. Zie de [terraform-documentatie](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)voor meer informatie.
 
 De terraform-scripts en gerelateerde documentatie voor het implementeren van de Inter-Connect vindt u in deze [github-opslag plaats](https://aka.ms/azureociinterconnecttf).
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 Als u agents op beide Clouds installeert, kunt u gebruikmaken van Azure [Netwerkprestatiemeter (NPM)](../../../expressroute/how-to-npm.md) om de prestaties van het end-to-end netwerk te bewaken. NPM helpt u bij het eenvoudig identificeren van netwerk problemen en helpt ze te elimineren.
 

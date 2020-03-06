@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6bffa114b325e8b98f439e7ff2ce21480407a643
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274912"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359082"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metrische gegevens van Azure Virtual Network NAT
 
@@ -57,6 +57,10 @@ Resource Health wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Virtual Network NAT](nat-overview.md)
-- Meer informatie over de [NAT gateway-resource](nat-gateway-resource.md)
-- Meer informatie over [Azure monitor](../azure-monitor/overview.md)
+* Meer informatie over [Virtual Network NAT](nat-overview.md)
+* Meer informatie over de [NAT gateway-resource](nat-gateway-resource.md)
+* Meer informatie over [Azure monitor](../azure-monitor/overview.md)
+* Meer informatie over het [oplossen van problemen met NAT-gateway bronnen](troubleshoot-nat.md).
+* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
+
+

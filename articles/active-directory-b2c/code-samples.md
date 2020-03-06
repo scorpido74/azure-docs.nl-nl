@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fc37e594984aa4c13fc9e770129a0423ba512737
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189681"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397565"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C: codevoorbeelden
 
@@ -46,5 +46,4 @@ In de volgende tabellen ziet u koppelingen naar voorbeelden voor toepassingen, w
 
 | Voorbeeld | Beschrijving |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Een toepassing met één pagina (SPA) waarmee een Web-API wordt aangeroepen. Verificatie verloopt via Azure AD B2C door MSAL.js te gebruiken. |
-| [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | Een app met één pagina die is geïmplementeerd met een ASP.NET Web-API-backend, waarmee gebruikers worden geregistreerd en aangemeld via Azure AD B2C en de Web-API wordt aangeroepen met behulp van OAuth 2.0 -toegangstokens. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Een toepassing met één pagina (SPA) waarmee een Web-API wordt aangeroepen. De verificatie wordt uitgevoerd met Azure AD B2C met behulp van MSAL. js. |

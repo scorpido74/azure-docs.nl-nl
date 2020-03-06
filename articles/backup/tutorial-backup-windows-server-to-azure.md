@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226483"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381426"
 ---
-# <a name="back-up-windows-server-to-azure"></a>Maak back-ups van Windows Server naar Azure
+# <a name="back-up-windows-server-to-azure"></a>Een back-up maken van een Windows-server naar Azure
 
 U kunt Azure Backup gebruiken om uw Windows-server te beschermen tegen beschadigingen, aanvallen en noodgevallen. Azure Backup biedt een lichtgewicht hulpprogramma dat bekendstaat als Microsoft Azure Recovery Services-agent (MARS). De MARS-agent wordt geïnstalleerd op de Windows-server om bestanden en mappen te beschermen, evenals serverconfiguratiegegevens (via Windows Server System State). In deze zelfstudie wordt uitgelegd hoe u de MARS-agent kunt gebruiken om van uw Windows-server een back-up te maken naar Azure. In deze zelfstudie leert u het volgende:
 

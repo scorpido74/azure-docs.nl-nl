@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972944"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384137"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Inleiding tot Cloud service monitoring
 
@@ -24,7 +24,7 @@ Met de basis controle worden gegevens van de prestatie meter items uit rolinstan
 Met geavanceerde controle worden extra metrische gegevens bemonsterd en verzameld met intervallen van vijf minuten, 1 uur en 12 uur. De geaggregeerde gegevens worden opgeslagen in een opslag account, in tabellen, en worden na 10 dagen verwijderd. Het gebruikte opslag account wordt geconfigureerd door de rol; u kunt verschillende opslag accounts voor verschillende rollen gebruiken. Dit is geconfigureerd met een connection string in de [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) -en [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) -bestanden.
 
 
-## <a name="basic-monitoring"></a>Basiscontrole
+## <a name="basic-monitoring"></a>Basis controle
 
 Zoals vermeld in de inleiding, verzamelt een Cloud service automatisch elementaire bewakings gegevens van de virtuele machine van de host. Deze gegevens omvatten het CPU-percentage, het netwerk in/uit en de lees-en schrijf bewerking van de schijf. De verzamelde bewakings gegevens worden automatisch weer gegeven op het overzicht en de metrische pagina's van de Cloud service in de Azure Portal. 
 

@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805838"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331124"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Procedure: compressie van gecomprimeerde audio-invoer met de Speech SDK op Android gebruiken
 
 De **gecomprimeerde audio-invoer stroom** -API van de Speech SDK biedt een manier om gecomprimeerde audio naar de spraak service te streamen met behulp van PullStream of PushStream.
 
 > [!IMPORTANT]
-> Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor [ C++, C#en Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md). Het wordt ook ondersteund voor java in Android en [objectief-C in Ios-](how-to-use-codec-compressed-audio-input-streams-ios.md) platform.
+> Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor [ C++, C#en Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md). Het wordt ook ondersteund voor java in Android en [objectief-C in Ios-](how-to-use-codec-compressed-audio-input-streams-ios.md) platform.
 > Speech SDK-versie 1.7.0 of hoger is vereist.
 
 Zie de mainline speech-documentatie voor WAV/PCM. Buiten WAV/PCM worden de volgende in de codec gecomprimeerde invoer indelingen ondersteund:

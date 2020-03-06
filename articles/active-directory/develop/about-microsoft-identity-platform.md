@@ -12,18 +12,18 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300210"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Evolutie van het Microsoft Identity Platform
 
 Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Ontwikkel aars kunnen toepassingen maken die zich aanmelden bij gebruikers, tokens ophalen om Api's aan te roepen, zoals Microsoft Graph, of Api's die ontwikkel aars hebben gebouwd. Het bestaat uit een verificatie service, open source-bibliotheken, toepassings registratie en configuratie (via een ontwikkelaars Portal en toepassings-API), volledige documentatie voor ontwikkel aars, Quick start-voor beelden, code voorbeelden, zelf studies, procedures-naar-gidsen en andere inhoud voor ontwikkel aars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect.
 
-Tot nu toe hebben de meeste ontwikkel aars met het Azure AD v 1.0-platform gewerkt voor het verifiëren van werk-en school accounts (ingericht door Azure AD) door het aanvragen van tokens van het Azure AD v 1.0-eind punt met behulp van Azure AD Authentication Library (ADAL), Azure Portal voor registratie en configuratie van toepassingen en Azure AD-Graph API voor de configuratie van een programmatische toepassing.
+Tot nu toe hebben de meeste ontwikkel aars met het Azure AD v 1.0-platform gewerkt voor het verifiëren van werk-en school accounts (ingericht door Azure AD) door het aanvragen van tokens van het Azure AD v 1.0-eind punt met behulp van Azure AD Authentication Library (ADAL), Azure Portal voor registratie en configuratie van toepassingen en de Microsoft Graph-API voor configuratie van een programmatische toepassing.
 
 Met het Unified micro soft Identity platform (v 2.0) kunt u eenmaal code schrijven en een micro soft-identiteit verifiëren in uw toepassing. Voor verschillende platforms wordt de volledig ondersteunde open-source micro soft Authentication Library (MSAL) aanbevolen voor gebruik met de identiteits platform-eind punten. MSAL is eenvoudig te gebruiken. biedt uw gebruikers een fantastische SSO-ervaring (eenmalige aanmelding), helpt u bij het bezorgen van hoge betrouw baarheid en prestaties en is ontwikkeld met behulp van micro soft Secure Development Lifecycle (SDL). Wanneer u Api's aanroept, kunt u uw toepassing zo configureren dat deze gebruikmaakt van incrementele toestemming, zodat u de aanvraag voor toestemming voor meer invasieve bereiken kunt vertragen tot het gebruik van de toepassing dit tijdens runtime garandeert.  MSAL biedt ook ondersteuning voor Azure Active Directory B2C, zodat uw klanten hun eigen identiteiten voor sociale, zakelijke of lokale accounts gebruiken om toegang te krijgen tot uw toepassingen en Api's voor eenmalige aanmelding.
 
@@ -49,7 +49,7 @@ De Azure Portal- **[app-registraties](https://go.microsoft.com/fwlink/?linkid=20
 
 Voor integratie met Azure AD B2C (bij het verifiëren van sociale of lokale identiteiten) moet u uw toepassing registreren in een Azure AD B2C-Tenant. Deze ervaring maakt ook deel uit van de Azure Portal.
 
-De **API van de toepassing in Microsoft Graph** is momenteel beschikbaar als preview-versie. Gebruik deze API om op een programmatische manier uw toepassingen te configureren die zijn geïntegreerd met het micro soft Identity platform voor de verificatie van een micro soft-identiteit. U kunt echter pas de Azure AD Graph 1,6 API en het toepassings manifest gebruiken totdat deze API de algemene Beschik baarheid bereikt.
+Gebruik de [API Application](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) om programmatisch uw toepassingen te configureren die zijn geïntegreerd met het micro soft Identity platform voor de verificatie van een micro soft-identiteit.
 
 ### <a name="msal-libraries"></a>MSAL-bibliotheken
 

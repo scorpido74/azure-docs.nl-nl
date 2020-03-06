@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330307"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
 
-De StorSimple 8000-serie vertegenwoordigt twee afzonderlijke Sku's en het is mogelijk om de gegevens van een van deze Sku's te migreren naar een Azure File Sync omgeving. Dit artikel gaat over het migreren van beide apparaten naar Azure File Sync en biedt de benodigde achtergrond kennis en migraties stappen om uw migratie Azure File Sync een succes te maken.
+De StorSimple 8000-serie wordt vertegenwoordigd door de 8100-of het 8600 fysieke, on-premises apparaat en de bijbehorende Cloud service onderdelen. Het is mogelijk om de gegevens van een van deze apparaten te migreren naar een Azure File Sync omgeving. Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync.
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple is een stopgezet micro soft-product. Uitgebreide ondersteuning voor dit product en de Cloud service verloopt op 31 2022 december. Het is belang rijk om te beginnen met het plannen van een migratie van StorSimple direct.
+
+Azure File Sync is de standaard-en strategische Azure-service voor de lange termijn waarmee StorSimple-apparaten kunnen worden gemigreerd.
+
+> [!IMPORTANT]
+> Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFilesMigration@microsoft. com voor een aangepast migratie plan en voor hulp tijdens de migratie.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

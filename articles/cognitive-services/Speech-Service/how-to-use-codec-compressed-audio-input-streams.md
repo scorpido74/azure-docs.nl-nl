@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805821"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331107"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Gecomprimeerde audio-invoer van codec gebruiken met de Speech SDK
 
 De **gecomprimeerde audio-invoer stroom** -API van de Speech SDK biedt een manier om gecomprimeerde audio naar de spraak service te streamen met behulp van PullStream of PushStream.
 
 > [!IMPORTANT]
-> Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor C++, C#en Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Het wordt ook ondersteund voor [java in Android](how-to-use-codec-compressed-audio-input-streams-android.md) en [objectief-C in Ios-](how-to-use-codec-compressed-audio-input-streams-ios.md) platform.
-> Speech SDK-versie 1.7.0 of hoger is vereist.
+> Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor C++, C#en Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Het wordt ook ondersteund voor [java in Android](how-to-use-codec-compressed-audio-input-streams-android.md) en [objectief-C in Ios-](how-to-use-codec-compressed-audio-input-streams-ios.md) platform.
+> Speech SDK-versie 1.7.0 of hoger is vereist (versie 1.10.0 of hoger voor RHEL 8, CentOS 8).
 
 Zie de mainline speech-documentatie voor WAV/PCM.  Buiten WAV/PCM worden de volgende in de codec gecomprimeerde invoer indelingen ondersteund:
 
@@ -40,6 +40,15 @@ Het verwerken van gecomprimeerde audio wordt geïmplementeerd met behulp van [gs
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
+
+Op RHEL/CentOS 8:
+
+```sh
+sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 

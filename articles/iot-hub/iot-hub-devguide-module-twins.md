@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303593"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Module apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -236,11 +236,15 @@ De [sdk's van het Azure IOT-apparaat](iot-hub-devguide-sdks.md) maken het eenvou
 
 Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecten met de volgende beperkingen:
 
-* Alle sleutels in JSON-objecten zijn hoofdletter gevoelige 64 bytes UTF-8 UNICODE-teken reeksen. Toegestane tekens uitsluiten UNICODE-besturings tekens (segmenten C0 en C1) en `.`, SP en `$`.
+* **Sleutels**: alle sleutels in JSON-objecten zijn hoofdletter gevoelige 64 bytes UTF-8 Unicode-teken reeksen. Toegestane tekens uitsluiten UNICODE-besturings tekens (segmenten C0 en C1) en `.`, SP en `$`.
 
-* Alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan. De maximum waarde voor gehele getallen is 4503599627370495 en de minimum waarde voor gehele getallen is-4503599627370496.
+* **Waarden**: alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan.
 
-* Alle JSON-objecten in labels, gewenste en gerapporteerde eigenschappen kunnen een maximale diepte van 5 hebben. Het volgende object is bijvoorbeeld geldig:
+    * Gehele getallen kunnen een minimum waarde van-4503599627370496 en een maximum waarde van 4503599627370495 hebben.
+
+    * Teken reeks waarden zijn UTF-8-code ring en kunnen Maxi maal 512 bytes lang zijn.
+
+* **Diepte**: alle JSON-objecten in labels, gewenste en gerapporteerde eigenschappen kunnen een maximale diepte van 5 hebben. Het volgende object is bijvoorbeeld geldig:
 
     ```json
     {
@@ -262,13 +266,21 @@ Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecte
     }
     ```
 
-* Alle teken reeks waarden kunnen Maxi maal 512 bytes lang zijn.
-
 ## <a name="module-twin-size"></a>Dubbele grootte van module
 
-IoT Hub dwingt een maximale grootte van 8 KB af voor de waarde van `tags`en een maximale grootte van 32 KB voor elke waarde van `properties/desired` en `properties/reported`. Deze totalen zijn uitsluitend van elementen met het kenmerk alleen-lezen.
+IoT Hub dwingt een maximale grootte van 8 KB af voor de waarde van `tags`en een maximale grootte van 32 KB voor elke waarde van `properties/desired` en `properties/reported`. Deze totalen zijn exclusief van alleen-lezen elementen als `$etag`, `$version`en `$metadata/$lastUpdated`.
 
-De grootte wordt berekend door alle tekens te tellen, met uitzonde ring van UNICODE-besturings tekens (segmenten C0 en C1) en spaties die zich buiten teken reeks constanten bevinden.
+Dubbele grootte wordt als volgt berekend:
+
+* IoT Hub cumulatieve berekeningen voor elke eigenschap in het JSON-document en voegt de lengte van de sleutel en waarde van de eigenschap toe.
+
+* Eigenschaps sleutels worden beschouwd als UTF8-gecodeerde teken reeksen.
+
+* Eenvoudige eigenschaps waarden worden beschouwd als UTF8-gecodeerde teken reeksen, numerieke waarden (8 bytes) of Boole-waarden (4 bytes).
+
+* De grootte van door UTF8 gecodeerde teken reeksen wordt berekend door alle tekens te tellen, met uitzonde ring van UNICODE-besturings tekens (segmenten C0 en C1).
+
+* Complexe eigenschaps waarden (geneste objecten) worden berekend op basis van de cumulatieve grootte van de eigenschaps sleutels en eigenschaps waarden die ze bevatten.
 
 IoT Hub weigert een fout bij alle bewerkingen die de grootte van deze documenten boven de limiet verg Roten.
 
@@ -324,7 +336,7 @@ Bijvoorbeeld:
 
 Deze informatie wordt op elk niveau (niet alleen de bladeren van de JSON-structuur) bewaard om updates die object sleutels verwijderen te behouden.
 
-## <a name="optimistic-concurrency"></a>Optimistische gelijktijdige uitvoering
+## <a name="optimistic-concurrency"></a>Optimistische gelijktijdigheid
 
 De labels, gewenste en gerapporteerde eigenschappen bieden ondersteuning voor optimistische gelijktijdigheid.
 Labels hebben een ETag, zoals per [RFC7232](https://tools.ietf.org/html/rfc7232), die de JSON-weer gave van de tag vertegenwoordigt. U kunt ETags gebruiken in bewerkingen voor voorwaardelijke updates van de back-end van de oplossing om consistentie te garanderen.

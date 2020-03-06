@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298527"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Virtuele Azure-machines verplaatsen tussen Azure Government en open bare regio's 
 
@@ -100,7 +100,7 @@ De Mobility-service moet worden geïnstalleerd op elke server die u wilt replice
     - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
     - [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    Voor andere netwerkonderdelen raadpleegt u de [netwerkondersteuningsdocumentatie.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
+    Raadpleeg de netwerk [documentatie](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerk onderdelen.
 
 4. [Maak handmatig een niet-productienetwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in de doelregio als u de configuratie wilt testen voordat u het uiteindelijke knippen naar de doelregio uitvoert. Hiermee ontstaat er slechts minimale verstoring in de productie. Dit wordt aanbevolen.
 
@@ -115,7 +115,7 @@ De onderstaande stappen begeleiden u bij het gebruik van Azure Site Recovery om 
 4. Maak een resourcegroep met de naam **ContosoRG**.
 5. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 6. Klik in Recovery Services kluizen op **overzicht** > **ConsotoVMVault** > **en repliceren**
-7. Selecteer **naar Azure** > **niet gevirtualiseerd/Overig**.
+7. selecteer **Naar Azure** > **Niet gevirtualiseerde/overige**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Stel de configuratie server in om virtuele machines te detecteren.
 
@@ -163,7 +163,7 @@ Selecteer en controleer doelbronnen.
 2. Geef het doel implementatie model op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
-   ![Kiezen](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Doel](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
@@ -220,7 +220,7 @@ Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tij
    > We raden u aan om een afzonderlijk Azure VM-netwerk te gebruiken voor de testfailover en niet het productie netwerk waarin u de virtuele machines wilt verplaatsen die u uiteindelijk hebt ingesteld toen u replicatie inschakelde.
 
 4. Klik op **OK** om de verplaatsing te testen. Klik op de VM om de eigenschappen ervan te openen als u de voortgang wilt volgen. U kunt ook op de taak **Failover testen** klikken in kluisnaam > **Instellingen** > **Taken** > **Site Recovery-taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
 6. Als u de VM wilt verwijderen die is gemaakt als onderdeel van de verplaatsingstest, klikt u op **Failovertest wissen** op het gerepliceerde item. Leg in **Notities** eventuele opmerkingen over de test vast en sla deze op.
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Voer de overstap naar de doelregio uit en bevestig dit.

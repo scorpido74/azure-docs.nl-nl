@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524373"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330869"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -240,6 +240,9 @@ GO
 *\<id-naam >* de naam is van de beheerde identiteit in azure AD. Omdat de computer is toegewezen, is deze altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergave naam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup*).
 
 Typ `EXIT` om terug te keren naar de Cloud Shell-prompt.
+
+> [!NOTE]
+> De back-end-services van beheerde identiteiten [onderhouden ook een token cache](overview-managed-identity.md#obtain-tokens-for-azure-resources) waarmee het token voor een doel bron alleen wordt bijgewerkt wanneer het is verlopen. Als u een fout maakt bij het configureren van uw SQL Database machtigingen en de machtigingen probeert te wijzigen *nadat* u een token met uw app hebt opgehaald, ontvangt u geen nieuw token met de bijgewerkte machtigingen totdat het token in de cache verloopt.
 
 ### <a name="modify-connection-string"></a>De verbindingsreeks wijzigen
 

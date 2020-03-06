@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383909"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor de migratie?
 
@@ -22,6 +22,14 @@ Het plannen en uitvoeren van de migratie is aanzienlijk afhankelijk van de compl
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wat is de definitie van een nieuwe klant op IaaS Vm's (klassiek)?
 
 Klanten die niet over IaaS-Vm's (klassiek) beschikken in hun abonnementen in de maand Febrauary 2020 (een maand voordat de afschaffing werd gestart), worden beschouwd als nieuwe klanten. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Wat is de definitie van een bestaande klant op IaaS-Virtual Machines (klassiek)?
+
+Klanten die actief of gestopt zijn, maar toegewezen IaaS Vm's (klassiek) in hun abonnementen in de maand februari 2020, worden beschouwd als een bestaande klant. Alleen deze klanten krijgen tot 1 maart 2023 om hun Vm's vanuit Azure Service Manager te migreren naar Azure Resource Manager. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Waarom krijg ik een fout melding met de mede deling "NewClassicVMCreationNotAllowedForSubscription"?
+
+Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning voor White List van het abonnement.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 

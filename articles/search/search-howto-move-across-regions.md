@@ -8,81 +8,97 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/18/2020
-ms.openlocfilehash: 392c86d8ea24e59d388926d4df581305ea2b531d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/05/2020
+ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599299"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379587"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verplaats uw Azure Cognitive Search-service naar een andere Azure-regio
 
-Als u uw Azure cognitieve service-account wilt verplaatsen van de ene regio naar een andere, maakt u een export sjabloon om uw abonnement (en) te verplaatsen. Nadat u uw abonnement hebt verplaatst, moet u uw gegevens verplaatsen en uw service opnieuw maken.
+Het verplaatsen van een zoek service naar een andere regio wordt momenteel niet ondersteund, omdat er geen automatisering of hulpprogram ma's zijn om u te helpen bij het end-to-end van de taak.
 
-In dit artikel leert u het volgende:
+In de portal wordt met de opdracht **sjabloon exporteren** een basis definitie van een service (naam, locatie, laag, replica en aantal partities) gemaakt, maar wordt de inhoud van uw service niet herkend en worden er geen sleutels, rollen of Logboeken overgeboekt.
+
+Wanneer u de zoek opdracht verplaatst van de ene regio naar een andere, wordt de volgende aanpak aanbevolen:
+
+1. Inventariseer uw bestaande service voor een volledige lijst met objecten op de service. Als u logboek registratie hebt ingeschakeld, maakt en archiveert u rapporten die u mogelijk nodig hebt voor een toekomstige vergelijking.
+
+1. Maak een service in de nieuwe regio en publiceer vanuit de bron code alle bestaande indexen, Indexeer functies, gegevens bronnen, vaardig heden en synoniemen. Service namen moeten uniek zijn, zodat u de bestaande naam niet opnieuw kunt gebruiken.
+
+1. Schakel logboek registratie in en als u deze gebruikt, maakt u de beveiligings rollen opnieuw.
+
+1. Update client toepassingen en test suites voor het gebruik van de nieuwe service naam en API-sleutels en test alle toepassingen.
+
+1. Verwijder de oude service zodra de nieuwe service volledig operationeel is.
+
+<!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
+
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> * Een sjabloon exporteren.
-> * Wijzig de sjabloon: het toevoegen van de doel regio, de namen van de zoek-en opslag accounts.
-> * Implementeer de sjabloon voor het maken van de nieuwe zoek-en opslag accounts.
-> * Controleer de status van uw service in de nieuwe regio
-> * Resources opschonen in de bron regio.
+> * Export a template.
+> * Modify the template: adding the target region, search and storage account names.
+> * Deploy the template to create the new search and storage accounts.
+> * Verify your service status in the new region
+> * Clean up resources in the source region.
 
-## <a name="prerequisites"></a>Vereisten
+## Prerequisites
 
-- Zorg ervoor dat de services en functies die uw account gebruikt worden ondersteund in de doel regio.
+- Ensure that the services and features that your account uses are supported in the target region.
 
-- Zorg ervoor dat uw abonnement white list is voor de doel regio voor preview-functies. Zie voor meer informatie over preview-functies [kennis winkels](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incrementele verrijking](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)en [persoonlijk eind punt](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
 
-## <a name="assessment-and-planning"></a>Beoordeling en planning
+## Assessment and planning
 
-Wanneer u uw zoek service naar de nieuwe regio verplaatst, moet u [uw gegevens naar de nieuwe opslag service verplaatsen](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) en vervolgens uw indexen, vaardig heden en kennis winkels opnieuw samen stellen. U moet de huidige instellingen vastleggen en json-bestanden kopiëren om het opnieuw samen stellen van uw service gemakkelijker en sneller te maken.
+When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
-## <a name="moving-your-search-services-resources"></a>De resources van uw zoek service verplaatsen
+## Moving your search service's resources
 
-Als u wilt beginnen, gaat u een resource manager-sjabloon exporteren en wijzigen.
+To start you will export and then modify a Resource Manager template.
 
-### <a name="export-a-template"></a>Een sjabloon exporteren
+### Export a template
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. Ga naar de pagina van de resource groep.
+2. Go to your Resource Group page.
 
 > [!div class="mx-imgBorder"]
-> ![pagina voor beeld van een resource groep](./media/search-move-resource/export-template-sample.png)
+> ![Resource Group page example](./media/search-move-resource/export-template-sample.png)
 
-3. Selecteer **Alle resources**.
+3. Select **All resources**.
 
-3. Selecteer in het navigatie menu links **sjabloon exporteren**.
+3. In the left hand navigation menu select **Export template**.
 
-4. Kies **downloaden** op de pagina **sjabloon exporteren** .
+4. Choose **Download** in the **Export template** page.
 
-5. Zoek het zip-bestand dat u hebt gedownload van de portal en pak het bestand uit naar een map van uw keuze.
+5. Locate the .zip file that you downloaded from the portal, and unzip that file to a folder of your choice.
 
-Het zip-bestand bevat de. json-bestanden waaruit de sjabloon en scripts bestaan voor het implementeren van de sjabloon.
+The zip file contains the .json files that comprise the template and scripts to deploy the template.
 
-### <a name="modify-the-template"></a>De sjabloon aanpassen
+### Modify the template
 
-U gaat de sjabloon wijzigen door de namen en regio's van de zoek-en opslag accounts te wijzigen. De namen moeten voldoen aan de regels voor elke naam Conventie van service en regio. 
+You will modify the template by changing the search and storage account names and regions. The names must follow the rules for each service and region naming conventions. 
 
-Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **centrale amerikaanse** = **centralus**.
+To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
-1. Selecteer in Azure Portal **Een resource maken**.
+1. In the Azure portal, select **Create a resource**.
 
-2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
+2. In **Search the Marketplace**, type **template deployment**, and then press **ENTER**.
 
-3. Selecteer **Sjabloonimplementatie**.
+3. Select **Template deployment**.
 
-4. Selecteer **Maken**.
+4. Select **Create**.
 
-5. Selecteer **Bouw uw eigen sjabloon in de editor**.
+5. Select **Build your own template in the editor**.
 
-6. Selecteer **bestand laden**en volg de instructies voor het laden van het **sjabloon. json** -bestand dat u in de vorige sectie hebt gedownload en uitgepakt.
+6. Select **Load file**, and then follow the instructions to load the **template.json** file that you downloaded and unzipped in the previous section.
 
-7. Geef in het bestand **Template. json** de doel-en opslag accounts een naam door de standaard waarde van de namen van de zoek-en opslag account in te stellen. 
+7. In the **template.json** file, name the target search and storage accounts by setting the default value of the search and storage account names. 
 
-8. Bewerk de eigenschap **Location** in het bestand **Template. json** in de doel regio voor uw zoek-en opslag Services. In dit voor beeld wordt de doel regio ingesteld op `centralus`.
+8. Edit the **location** property in the **template.json** file to the target region for both your search and storage services. This example sets the target region to `centralus`.
 
 ```json
 },
@@ -113,35 +129,34 @@ Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations
             },
 ```
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+### Deploy the template
 
-1. Sla het bestand **Template. json** op.
+1. Save the **template.json** file.
 
-2. Voer de eigenschaps waarden in of Selecteer deze:
+2. Enter or select the property values:
 
-- **Subscription**: selecteer een Azure-abonnement.
+- **Subscription**: Select an Azure subscription.
 
-- **Resourcegroep**: selecteer **Nieuwe maken** en geef de resourcegroep een naam.
+- **Resource group**: Select **Create new** and give the resource group a name.
 
-- **Locatie**: Selecteer een Azure-locatie.
+- **Location**: Select an Azure location.
 
-3. Klik op het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden** en klik vervolgens op de knop **aankoop selecteren** .
+3. Click the **I agree to the terms and conditions stated above** checkbox, and then click the **Select Purchase** button.
 
-## <a name="verifying-your-services-status-in-new-region"></a>De status van uw Services verifiëren in de nieuwe regio
+## Verifying your services' status in new region
 
-Als u de verplaatsing wilt controleren, opent u de nieuwe resource groep en worden uw services weer gegeven in de nieuwe regio.
+To verify the move, open the new resource group and your services will be listed with the new region.
 
-Als u uw gegevens van de bron regio naar de doel regio wilt verplaatsen, raadpleegt u de richt lijnen in dit artikel voor [het verplaatsen van uw gegevens naar het nieuwe opslag account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
 
-## <a name="clean-up-resources-in-your-original-region"></a>Resources in de oorspronkelijke regio opschonen
+## Clean up resources in your original region
 
-Als u de wijzigingen wilt door voeren en de verplaatsing van uw service account wilt volt ooien, verwijdert u het bron service account.
+To commit the changes and complete the move of your service account, delete the source service account.
 
-## <a name="next-steps"></a>Volgende stappen
+## Next steps
 
-[Een index maken](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
 
-[Een vaardig heden maken](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
 
-[Een kennis archief maken](https://docs.microsoft.com/azure/search/knowledge-store-create-portal)
-
+[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->

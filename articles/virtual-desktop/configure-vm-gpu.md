@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719752"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384822"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -82,7 +82,7 @@ Voer een van de volgende handelingen uit om te controleren of apps de GPU gebrui
 Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 
 1. Maak verbinding met het bureau blad van de virtuele machine met behulp van de Windows-client voor virtueel bureau blad.
-2. Start de Logboeken en ga naar het volgende knoop punt: **Logboeken van toepassingen en Services** > **micro soft** > **Windows** > **RemoteDesktopServices-RdpCoreTS** > **operationeel**
+2. Start de Logboeken en ga naar het volgende knoop punt: **Logboeken van toepassingen en Services** > **micro soft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **operationeel**
 3. Zoek naar gebeurtenis-ID 170 om te bepalen of GPU-versneld coderen wordt gebruikt. Als u ' AVC hardware encoder enabled: 1 ' ziet, wordt GPU-code ring gebruikt.
 4. Zoek naar gebeurtenis-ID 162 om te bepalen of de AVC 444-modus wordt gebruikt. Als u ' AVC available: 1 eerste profiel: 2048 ' ziet, wordt het gebruik van AVC 444 gebruikt.
 

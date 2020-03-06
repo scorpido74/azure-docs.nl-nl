@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612808"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299105"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met domein deelname oplossen met een door Azure AD Domain Services beheerd domein
 
@@ -55,7 +55,7 @@ Raadpleeg de volgende stappen voor probleem oplossing om problemen met betrekkin
 
 1. Gebruik de UPN-indeling om referenties op te geven, zoals `dee@aaddscontoso.onmicrosoft.com`. Zorg ervoor dat deze UPN juist is geconfigureerd in azure AD.
     * De *SAMAccountName* voor uw account kan automatisch worden gegenereerd als er meerdere gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang. Daarom kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
-1. Gebruik de referenties voor een gebruikers account dat deel uitmaakt van de groep *Aad DC Administrators* om vm's toe te voegen aan het Azure AD DS beheerde domein.
+1. Probeer de referenties te gebruiken voor een gebruikers account dat deel uitmaakt van het Azure AD DS beheerde domein om Vm's samen te voegen met het beheerde domein.
 1. Zorg ervoor dat u [wachtwoord synchronisatie hebt ingeschakeld][enable-password-sync] en lang genoeg hebt gewacht totdat de eerste wachtwoord synchronisatie is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen

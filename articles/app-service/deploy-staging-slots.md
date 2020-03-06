@@ -3,14 +3,14 @@ title: Faserings omgevingen instellen
 description: Meer informatie over het implementeren van apps op een niet-productie sleuf en voor het omwisselen naar productie. Verg root de betrouw baarheid en Elimineer de uitval tijd van de app van implementaties.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666449"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300840"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
@@ -23,13 +23,13 @@ Het implementeren van uw toepassing in een niet-productie sleuf biedt de volgend
 * Als u eerst een app implementeert in een sleuf en deze naar productie verwisselt, zorgt u ervoor dat alle exemplaren van de sleuf worden opgewarmd voordat ze in productie worden gewisseld. Dit elimineert downtime wanneer u uw app implementeert. Het omleiden van verkeer is naadloos en er worden geen aanvragen verwijderd vanwege wissel bewerkingen. U kunt deze volledige werk stroom automatiseren door [automatisch wisselen](#Auto-Swap) te configureren wanneer de validatie vooraf verwisselen niet nodig is.
 * Na een swap heeft de sleuf met eerder gefaseerde app nu de vorige productie-app. Als de wijzigingen die worden gewisseld naar de productie sleuf niet zoals verwacht, kunt u dezelfde swap direct uitvoeren om uw ' laatste bekende goede site ' terug te krijgen.
 
-Elke App Service plan tier ondersteunt een verschillend aantal implementatie sleuven. Er worden geen extra kosten in rekening gebracht voor het gebruik van implementatie sites. Zie [app service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)voor meer informatie over het aantal sleuven dat door de laag van de app wordt ondersteund. 
+Elke App Service plan tier ondersteunt een verschillend aantal implementatie sleuven. Er worden geen extra kosten in rekening gebracht voor het gebruik van implementatie sites. Zie [app service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor meer informatie over het aantal sleuven dat door de laag van de app wordt ondersteund. 
 
 Als u uw app wilt schalen naar een andere laag, zorgt u ervoor dat de doellaag het aantal sleuven ondersteunt dat uw app al gebruikt. Als uw app bijvoorbeeld meer dan vijf sleuven heeft, kunt u deze niet omlaag schalen naar de **Standard** -laag, omdat de laag **standaard** slechts vijf implementatie sleuven ondersteunt. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Site toevoegen
+## <a name="add-a-slot"></a>Een sleuf toevoegen
 De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde** laag zodat u meerdere implementatie sleuven kunt inschakelen.
 
 
@@ -40,7 +40,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
 
 2. Selecteer in het linkerdeel venster **implementatie sleuven** > **sleuf toevoegen**.
    
-    ![Een nieuwe implementatiesite toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Een nieuwe implementatie site toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Als de app zich nog niet in de **standaard**-, **Premium**-of **geïsoleerde** laag bevindt, wordt er een bericht weer gegeven met de ondersteunde lagen voor het inschakelen van gefaseerde publicatie. Op dit moment kunt u de optie **upgrade** selecteren en naar het tabblad **schaal** van uw app gaan voordat u doorgaat.
@@ -48,7 +48,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
 
 3. Geef in het dialoog venster **een sleuf toevoegen** een naam op voor de sleuf en selecteer of u een app-configuratie wilt klonen vanuit een andere implementatie site. Selecteer **toevoegen** om door te gaan.
    
-    ![Configuratiebron](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Configuratie bron](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
     U kunt een configuratie klonen vanuit elke bestaande sleuf. Instellingen die kunnen worden gekloond zijn onder andere app-instellingen, verbindings reeksen, taal raamwerk versies, Web-sockets, HTTP-versie en platform Bitness.
 
@@ -101,7 +101,7 @@ Op een wille keurig punt van de wissel bewerking wordt al het werk van het initi
 
 Als u een app-instelling of connection string wilt configureren voor een specifieke sleuf (niet gewisseld), gaat u naar de pagina **configuratie** voor die sleuf. Voeg een instelling toe of bewerk deze en selecteer vervolgens **implementatie sleuf instelling**. Als u dit selectie vakje inschakelt, wordt App Service dat de instelling niet kan worden gewisseld. 
 
-![Sleufinstelling](./media/web-sites-staged-publishing/SlotSetting.png)
+![Sleuf instelling](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -210,7 +210,7 @@ Zie voor meer informatie over het aanpassen van het `applicationInitialization`-
 
 U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-instellingen](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaard waarde is `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld is `200,202`. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
 
 > [!NOTE]
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Een swap initiëren met een preview (multi-phase swap) en de configuratie van de doel sleuf Toep assen op de bron sleuf
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Implementatie sleuven wisselen
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

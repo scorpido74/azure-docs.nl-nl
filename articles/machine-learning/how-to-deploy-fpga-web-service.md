@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538096"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402715"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) en laat zien hoe u uw modellen implementeert met behulp van Azure Machine Learning naar een Azure-FPGA. 
 
-FPGA's bevatten een matrix van programmeerbare logische blokken en een hiërarchie van herconfigureerbare interconnects. Met de onderlinge verbindingen kunnen deze blokken na de productie op verschillende manieren worden geconfigureerd. Vergeleken met andere chips, biedt Fpga's een combi natie van programmeer baarheid en prestaties.
+Fpga's bevatten een matrix met Programmeer bare logische blokken en een hiërarchie van Herconfigureer bare onderlinge verbindingen. Met de onderlinge verbindingen kunnen deze blokken na de productie op verschillende manieren worden geconfigureerd. Vergeleken met andere chips, biedt Fpga's een combi natie van programmeer baarheid en prestaties.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Fpga's versus CPU, GPU en ASIC
 
@@ -64,7 +64,7 @@ Deze DNN modellen zijn momenteel beschikbaar:
 Fpga's zijn beschikbaar in deze Azure-regio's:
   - VS - oost
   - Azië - zuidoost
-  - Europa - west
+  - Europa -west
   - VS - west 2
 
 > [!IMPORTANT]
@@ -77,9 +77,9 @@ De **PBS-serie van Azure-vm's** bevat Intel Arria 10 fpga's. Het wordt weer gege
 Azure Fpga's zijn geïntegreerd met Azure Machine Learning. Micro soft maakt gebruik van Fpga's voor DNN-evaluatie, zoek volgorde van Bing en SDN (software defined Networking) om de latentie te reduceren, terwijl Cpu's worden vrijgemaakt voor andere taken.
 
 De volgende scenario's gebruiken Fpga's:
-+ [Geautomatiseerd systeem voor netwerkinspectie optische](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [Systeem voor geautomatiseerde optische inspectie](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Land cover toewijzing](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Landings cover toewijzing](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
 
 
@@ -289,7 +289,7 @@ print("\nSuccessfully converted: ", converted_model.name, converted_model.url, c
       converted_model.id, converted_model.created_time, '\n')
 ```
 
-### <a name="create-docker-image"></a>Een Docker-installatiekopie maken
+### <a name="create-docker-image"></a>Docker-installatie kopie maken
 
 Het geconverteerde model en alle afhankelijkheden worden toegevoegd aan een docker-installatie kopie.  Deze docker-installatie kopie kan vervolgens worden geïmplementeerd en geïnstantieerd.  Ondersteunde implementatie doelen zijn AKS in de Cloud of een edge-apparaat, zoals [Azure data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  U kunt ook Tags en beschrijvingen toevoegen voor uw geregistreerde docker-installatie kopie.
 
@@ -325,7 +325,7 @@ Gebruik voor het implementeren van uw modellen vervolgens als een webservice sch
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")
@@ -436,6 +436,6 @@ Bekijk deze notitie blokken, Video's en blogs:
 
 + [Grootschalige-hardware: ML op schaal boven op Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
-+ [In de Microsoft FPGA gebaseerde instelbare cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
++ [In de op micro soft FPGA Configureer bare Cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Project Brainwave voor realtime AI: project-startpagina](https://www.microsoft.com/research/project/project-brainwave/)
++ [Project brainwave voor real-time AI: start pagina van project](https://www.microsoft.com/research/project/project-brainwave/)

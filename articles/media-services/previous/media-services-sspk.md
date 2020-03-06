@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693416"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301383"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft® Smooth Streaming client Porting kit 
 ## <a name="overview"></a>Overzicht
-Micro soft Smooth Streaming client Porting kit (**SSPK** for Short) is een Smooth streaming-client implementatie die is geoptimaliseerd voor het helpen van Inge sloten hardwarefabrikanten, kabel-en mobiele Opera Tors, inhouds serviceproviders, fabrikanten van telefoons, Independent Software Vendors (Isv's) en Solution Providers voor het maken van producten en services voor het streamen van adaptieve inhoud in Smooth Streaming-indeling. SSPK is een apparaat-en platform onafhankelijke implementatie van Smooth Streaming-client die door de licentie kan worden getransporteerd naar elk apparaat en platform. 
+Micro soft Smooth Streaming client Porting kit (**SSPK** for Short) is een Smooth streaming-client implementatie die is geoptimaliseerd voor het helpen van Inge sloten hardwarefabrikanten, kabel en mobiele Opera Tors, aanbieders van leveranciers, leveranciers van Hoorn, onafhankelijke software leveranciers (isv's) en oplossingen voor het maken van adaptieve inhoud in Smooth streaming indeling. SSPK is een apparaat-en platform onafhankelijke implementatie van Smooth Streaming-client die door de licentie kan worden getransporteerd naar elk apparaat en platform. 
 
 Hieronder vindt u een architectuur op hoog niveau en het vak IIS Smooth Streaming Porting kit is de Smooth Streaming-client implementatie die door micro soft wordt geleverd en bevat alle hoofd logica voor het afspelen van Smooth Streaming inhoud. Deze inhoud wordt vervolgens getransporteerd door partners voor een specifiek apparaat of platform door de juiste interfaces te implementeren. 
 
@@ -48,7 +48,7 @@ SSPK wordt in licentie gegeven voor termen die uitstekende bedrijfs waarde biede
   * voor beeld PAL-implementatie voor Linux
   * voor beeld van een HAL-implementatie voor GStreamer
 
-## <a name="licensing-options"></a>Licentieopties
+## <a name="licensing-options"></a>Licentie opties
 Micro soft Smooth Streaming client Porting kit wordt beschikbaar gesteld voor licentie verlening onder twee verschillende licentie overeenkomsten: één voor het ontwikkelen van Smooth Streaming client interim-producten en een andere voor het distribueren van eind producten van Smooth Streaming client naar eind gebruikers.
 
 * Voor chipset-fabrikanten, systeem integrators of onafhankelijke software leveranciers (Isv's) die een bron code-kit nodig hebben voor het ontwikkelen van interim-producten, moet een micro soft Smooth Streaming client porting Kit **interim-product licentie** worden uitgevoerd.
@@ -91,11 +91,11 @@ Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microso
 * EchoStar-aankoop maatschappij
 * Enseo, Inc.
 * Fluendo S.A.
-* HANDAN BroadInfoCom co., Ltd.
+* HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
 * iWEDIA S.A. 
-* Vrijheid wereld wijde Services BV
+* Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
 * Nintendo Co., Ltd.
@@ -105,7 +105,6 @@ Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microso
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Belangrijkste Victory-investeringen, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret W.S.
 * VisualOn, Inc.
@@ -119,21 +118,21 @@ Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microso
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
 * Arion Technology, Inc.
-* ATMACA ELEKTRONIK-SAN. VE BOTER. A. Ş
+* ATMACA ELEKTRONIK-SAN. VE BOTER. A.Ş
 * Britse lucht Broadcasting beperkt
 * CastPal Technology Inc., Shenzhen
 * Comp-elektronica, Inc.
-* Dongguan Digital AV Technology Corp. Ltd.
+* Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar-aankoop maatschappij
 * Enseo, Inc.
-* FilmFlex-films, beperkt
+* FilmFlex Movies Limited
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
 * Gibson-innovaties beperkt
 * Haier-informatie aanvrager S. R. L
-* HANDAN BroadInfoCom co., Ltd.
+* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast co., Ltd
+* Homecast Co., Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
 * Kaonmedia co., Ltd.
@@ -152,7 +151,6 @@ Interim-en finale SSPK-licenties kunnen technische vragen naar [smoothpk@microso
 * SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCL overzeese marketing (Macau commerciële offshore), beperkt
 * Technicolor-bezorgings technologieën, SAS
 * Tongfang Global Ltd.
 * Belangrijkste Victory-investeringen, Ltd.

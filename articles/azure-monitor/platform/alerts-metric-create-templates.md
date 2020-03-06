@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664833"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368008"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -565,7 +565,7 @@ az group deployment create \
 
 Nieuwere metrische waarschuwingen bieden ondersteuning voor waarschuwingen over multidimensionale metrische gegevens en het ondersteunen van meerdere criteria. U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor metrische gegevens te maken over dimensionale metrische gegevens en meerdere criteria op te geven.
 
-Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwings regel die meerdere criteria bevat:
+Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwingsregel die meerdere criteria bevat:
 - U kunt in elk criterium slechts één waarde per dimensie selecteren.
 - U kunt '\*' niet als dimensie waarde gebruiken.
 - Wanneer de metrische gegevens die in verschillende criteria zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante criteria).

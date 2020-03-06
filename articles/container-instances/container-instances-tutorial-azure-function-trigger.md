@@ -4,12 +4,12 @@ description: Een door HTTP geactiveerde Power shell-functie zonder server maken 
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196532"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331022"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelf studie: een Azure-functie activeren die door HTTP wordt geactiveerd om een container groep te maken
 
@@ -42,7 +42,7 @@ In dit artikel wordt ervan uitgegaan dat u het project publiceert met behulp van
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Een door Azure beheerde identiteit inschakelen in de functie-app
 
-Schakel nu een door het systeem toegewezen [beheerde identiteit](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) in de functie-app in. De Power shell-host waarop de app wordt uitgevoerd, kan automatisch worden geverifieerd met deze identiteit, waardoor functies kunnen worden uitgevoerd op Azure-Services waaraan de identiteit toegang heeft verleend. In deze zelf studie verleent u de beheerde identiteits machtigingen om resources te maken in de resource groep van de functie-app. 
+Schakel nu een door het systeem toegewezen [beheerde identiteit](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) in de functie-app in. De Power shell-host waarop de app wordt uitgevoerd, kan automatisch worden geverifieerd met deze identiteit, waardoor functies kunnen worden uitgevoerd op Azure-Services waaraan de identiteit toegang heeft verleend. In deze zelf studie verleent u de beheerde identiteits machtigingen om resources te maken in de resource groep van de functie-app. 
 
 Gebruik eerst de opdracht [AZ Group show][az-group-show] om de id van de resource groep van de functie-app op te halen en op te slaan in een omgevings variabele. In dit voor beeld wordt ervan uitgegaan dat u de opdracht uitvoert in een bash-shell.
 

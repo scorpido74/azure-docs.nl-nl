@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176636"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374353"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sjablonen uitgeven in azure API Management
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
   
  Met de sjablonen in deze sectie kunt u de inhoud van de uitgifte pagina's in de ontwikkelaars portal aanpassen.  
   
@@ -104,7 +104,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 |`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  
 |`IsAuthenticated`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker is aangemeld bij de ontwikkelaars Portal.|  
 |`CanReportIssues`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker machtigingen heeft om een probleem op te lossen.|  
-|`Search`|string|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
+|`Search`|tekenreeks|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
   
 ### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   

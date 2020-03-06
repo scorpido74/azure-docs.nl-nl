@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184006"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399066"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OpenID Connect Connect Technical-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -77,9 +77,11 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | client_id | Ja | De toepassings-id van de ID-provider. |
-| IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, Azure AD B2C controleert of het token zich in een claim bevindt die wordt geretourneerd door de ID-provider en is deze gelijk aan de waarde die is opgegeven. |
-| METAGEGEVENSARCHIEFMETHODE | Ja | Een URL die verwijst naar een JSON-configuratie document dat is opgemaakt volgens de OpenID Connect Connect-detectie specificatie, ook wel bekend als een bekende OpenID Connect-configuratie-eind punt. |
-| ProviderName | Nee | De naam van de ID-provider. |
+| IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, wordt door Azure AD B2C gecontroleerd of de `aud` claim in een token dat door de identiteits provider is geretourneerd, gelijk is aan de waarde die is opgegeven in de IdTokenAudience-meta gegevens.  |
+| METAGEGEVENSARCHIEFMETHODE | Ja | Een URL die verwijst naar een configuratie document van een OpenID Connect Connect-ID-provider, dat ook wel bekend staat als OpenID Connect goed bekend configuratie-eind punt. De URL kan de `{tenant}`-expressie bevatten, die wordt vervangen door de naam van de Tenant.  |
+| authorization_endpoint | Nee | Een URL die verwijst naar een OpenID Connect Connect ID-provider configuratie autorisatie-eind punt. De waarde van authorization_endpoint meta gegevens heeft voor rang op de `authorization_endpoint` die is opgegeven in het OpenID Connect-bekende configuratie-eind punt. De URL kan de `{tenant}`-expressie bevatten, die wordt vervangen door de naam van de Tenant. |
+| verlener | Nee | De unieke id van een OpenID Connect Connect-ID-provider. De waarde van de meta gegevens van de verlener heeft voor rang op het `issuer` dat is opgegeven in het OpenID Connect-configuratie-eind punt.  Indien opgegeven, wordt met Azure AD B2C gecontroleerd of de `iss` claim in een token dat door de ID-provider is geretourneerd, gelijk is aan de waarde die is opgegeven in de meta gegevens van de verlener. |
+| ProviderName | Nee | De naam van de ID-provider.  |
 | response_types | Nee | Het antwoord type volgens de OpenID Connect Connect Core 1,0-specificatie. Mogelijke waarden: `id_token`, `code`of `token`. |
 | response_mode | Nee | De methode die de ID-provider gebruikt om het resultaat terug te sturen naar Azure AD B2C. Mogelijke waarden: `query`, `form_post` (standaard) of `fragment`. |
 | scope | Nee | Het bereik van de aanvraag die is gedefinieerd volgens de OpenID Connect Connect Core 1,0-specificatie. Zoals `openid`, `profile`en `email`. |
