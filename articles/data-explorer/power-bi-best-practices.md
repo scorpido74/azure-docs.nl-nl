@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024034"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395227"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Aanbevolen procedures voor het gebruik van Power BI om gegevens van Azure Data Explorer te doorzoeken en te visualiseren
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. [Power bi](https://docs.microsoft.com/power-bi/) is een Business Analytics-oplossing waarmee u uw gegevens kunt visualiseren en de resultaten van uw organisatie kan delen. Azure Data Explorer biedt drie opties voor het maken van verbinding met gegevens in Power BI. Gebruik de [ingebouwde connector](power-bi-connector.md), [Importeer een query van Azure Data Explorer in Power bi](power-bi-imported-query.md)of gebruik een [SQL-query](power-bi-sql-query.md). In dit artikel vindt u tips voor het uitvoeren van query's en het visualiseren van uw Azure-Data Explorer gegevens met Power BI. 
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. [Power bi](https://docs.microsoft.com/power-bi/) is een Business Analytics-oplossing waarmee u uw gegevens kunt visualiseren en de resultaten van uw organisatie kan delen. Azure Data Explorer biedt drie opties voor het maken van verbinding met gegevens in Power BI. Gebruik de [ingebouwde connector](power-bi-connector.md), [Importeer een query van Azure Data Explorer in Power bi](power-bi-imported-query.md)of gebruik een [SQL-query](power-bi-sql-query.md). In dit artikel vindt u tips voor het uitvoeren van query's en het visualiseren van uw Azure-Data Explorer gegevens met Power BI. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Aanbevolen procedures voor het gebruik van Power BI 
 

@@ -1,6 +1,6 @@
 ---
-title: Oplossen van problemen met de implementatie van de StorSimple 8000-serie | Microsoft Docs
-description: Beschrijft hoe u kunt vaststellen en oplossen van fouten die optreden bij het implementeren van StorSimple.
+title: Problemen met de implementatie van StorSimple 8000 Series oplossen | Microsoft Docs
+description: Hierin wordt beschreven hoe u fouten opspoort en corrigeert die optreden wanneer u de eerste keer StorSimple implementeert.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,198 +15,198 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715214"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384891"
 ---
-# <a name="troubleshoot-storsimple-device-deployment-issues"></a>Oplossen van problemen met de implementatie van de StorSimple-apparaat
+# <a name="troubleshoot-storsimple-device-deployment-issues"></a>Problemen met de implementatie van StorSimple-apparaten oplossen
 ## <a name="overview"></a>Overzicht
-In dit artikel biedt nuttige richtlijnen voor probleemoplossing voor uw Microsoft Azure StorSimple-implementatie. Hierin worden veelvoorkomende problemen, mogelijke oorzaken en aanbevolen stappen voor het oplossen van problemen die u tegenkomen kunt bij het configureren van StorSimple. 
+In dit artikel vindt u nuttige richt lijnen voor probleem oplossing voor uw Microsoft Azure StorSimple-implementatie. Hierin worden veelvoorkomende problemen, mogelijke oorzaken en aanbevolen stappen beschreven om u te helpen bij het oplossen van problemen die zich kunnen voordoen bij het configureren van StorSimple. 
 
-Deze informatie is van toepassing op zowel het fysieke apparaat voor StorSimple 8000-serie en StorSimple Cloud Appliance.
+Deze informatie is van toepassing op het fysieke StorSimple-apparaat van de 8000-serie en de StorSimple Cloud Appliance.
 
 > [!NOTE]
-> Configuratie-gerelateerde problemen met het apparaat dat u zich kan voordoen kunnen optreden wanneer u het apparaat voor de eerste keer implementeren of ze later optreden kunnen wanneer het apparaat ingeschakeld is. In dit artikel gaat over het oplossen van problemen bij de implementatie van de eerste keer in. Als u wilt een operationele apparaat gaat oplossen, gaat u naar [het hulpprogramma Diagnostics gebruiken om op te lossen een operationele apparaat](storsimple-8000-diagnostics.md).
+> Problemen met betrekking tot het configureren van apparaten kunnen zich voordoen wanneer u het apparaat voor de eerste keer implementeert, of ze kunnen later worden uitgevoerd wanneer het apparaat operationeel is. Dit artikel richt zich op het oplossen van problemen met de implementatie van voor het eerst. Als u problemen met een operationeel apparaat wilt oplossen, gaat u naar [het hulp programma Diagnostics gebruiken om problemen met een operationeel apparaat op te lossen](storsimple-8000-diagnostics.md).
 
-In dit artikel wordt ook beschrijft de hulpmiddelen voor het oplossen van StorSimple-implementaties en biedt een voorbeeld van stapsgewijze probleemoplossing.
+In dit artikel worden ook de hulpprogram ma's beschreven voor het oplossen van problemen met StorSimple-implementaties en vindt u een voor beeld van stapsgewijze probleem oplossing.
 
-## <a name="first-time-deployment-issues"></a>Problemen bij de implementatie van de eerste keer
-Als u een probleem ondervindt bij het implementeren van uw apparaat voor de eerste keer, houd rekening met het volgende:
+## <a name="first-time-deployment-issues"></a>Implementatie problemen voor de eerste keer
+Als u een probleem ondervindt bij het implementeren van uw apparaat voor de eerste keer, moet u rekening houden met het volgende:
 
-* Als u een fysiek apparaat oplossen wilt, zorg ervoor dat de hardware is geïnstalleerd en geconfigureerd zoals beschreven in [uw StorSimple 8100-apparaat installeert](storsimple-8100-hardware-installation.md) of [uw StorSimple 8600-apparaat installeert](storsimple-8600-hardware-installation.md).
-* Controleer de vereisten voor de implementatie. Zorg ervoor dat u alle informatie die wordt beschreven in de [Configuratiecontrolelijst voor implementatie](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist).
-* Lees de opmerkingen bij de Release van StorSimple om te zien als het probleem wordt beschreven. Opmerkingen bij de release bevatten oplossingen voor bekende installatieproblemen. 
+* Als u problemen met een fysiek apparaat oplost, moet u ervoor zorgen dat de hardware is geïnstalleerd en geconfigureerd zoals wordt beschreven in [uw StorSimple 8100-apparaat installeren](storsimple-8100-hardware-installation.md) of [uw StorSimple 8600-apparaat installeren](storsimple-8600-hardware-installation.md).
+* Controleer de vereisten voor de implementatie. Zorg ervoor dat u beschikt over alle informatie die wordt beschreven in de [controle lijst voor implementatie configuratie](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist).
+* Bekijk de opmerkingen bij de release van StorSimple om te controleren of het probleem wordt beschreven. De release opmerkingen bevatten tijdelijke oplossingen voor bekende installatie problemen. 
 
-Tijdens de implementatie van het apparaat problemen de meest voorkomende die gebruikers face zich voordoen wanneer ze de wizard setup uitgevoerd en wanneer ze worden geregistreerd via Windows PowerShell voor StorSimple. (U Windows PowerShell voor StorSimple om te registreren en configureren uw StorSimple-apparaat. Zie voor meer informatie over het registreren van apparaten, [stap 3: Configureren en registreren van uw apparaat via Windows PowerShell voor StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)).
+Tijdens de implementatie van het apparaat worden de meest voorkomende problemen beschreven die gebruikers ondervinden wanneer ze de installatie wizard uitvoeren en wanneer ze het apparaat registreren via Windows PowerShell voor StorSimple. (U gebruikt Windows PowerShell voor StorSimple om uw StorSimple-apparaat te registreren en te configureren. Zie voor meer informatie over apparaatregistratie, [stap 3: uw apparaat configureren en registreren via Windows PowerShell voor StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)).
 
-Aan de hand van de volgende secties kunnen u oplossen van problemen die optreden bij het configureren van het StorSimple-apparaat voor de eerste keer.
+De volgende secties kunnen u helpen bij het oplossen van problemen die zich voordoen wanneer u het StorSimple-apparaat voor de eerste keer configureert.
 
-## <a name="first-time-setup-wizard-process"></a>Eerst setup wizard-proces
-De volgende stappen geven een overzicht van het installatieproces van de wizard. Zie voor gedetailleerde informatie, [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md).
+## <a name="first-time-setup-wizard-process"></a>Wizard voor de eerste keer dat de installatie wordt uitgevoerd
+In de volgende stappen wordt het installatie wizard-proces samenvatten. Zie [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md)voor gedetailleerde informatie over de installatie.
 
-1. Voer de [Invoke-hcssetupwizard uit](https://technet.microsoft.com/library/dn688135.aspx) cmdlet voor het starten van de setup-wizard u door de resterende leidt stappen. 
-2. Het netwerk configureren: de wizard setup kunt u netwerkinstellingen voor de DATA 0-netwerkinterface op uw StorSimple-apparaat configureren. Deze instellingen omvatten het volgende:
-   * Virtuele IP-adres (VIP), subnetmasker en gateway-de [Set HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) cmdlet wordt uitgevoerd op de achtergrond. Wordt het IP-adres, subnetmasker en gateway voor de DATA 0-netwerkinterface geconfigureerd op uw StorSimple-apparaat.
-   * Primaire DNS-server: de [Set HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) cmdlet wordt uitgevoerd op de achtergrond. Het configureert de DNS-instellingen voor uw StorSimple-oplossing.
-   * NTP-server: de [Set HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet wordt uitgevoerd op de achtergrond. Configureert het de NTP-serverinstellingen voor uw StorSimple-oplossing.
-   * Optionele webproxy – de [Set HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) cmdlet wordt uitgevoerd op de achtergrond. Dit wordt ingesteld en wordt de configuratie van de web-proxy voor uw StorSimple-oplossing.
-3. Het wachtwoord instellen: de volgende stap is het instellen van het beheerderswachtwoord voor het apparaat.
-   Het beheerderswachtwoord voor het apparaat wordt gebruikt voor aanmelding bij uw apparaat. Het standaardapparaatwachtwoord is **Password1**.
+1. Voer de cmdlet [invoke-hcssetupwizard uit](https://technet.microsoft.com/library/dn688135.aspx) uit om de installatie wizard te starten, waarmee u de resterende stappen doorloopt. 
+2. Het netwerk configureren: met de wizard Setup kunt u netwerk instellingen configureren voor de DATA 0-netwerk interface op uw StorSimple-apparaat. Deze instellingen omvatten het volgende:
+   * Virtueel IP-adres (VIP), subnetmasker en gateway: de cmdlet [set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) wordt op de achtergrond uitgevoerd. Hiermee configureert u het IP-adres, subnetmasker en de gateway voor de DATA 0-netwerk interface op uw StorSimple-apparaat.
+   * Primaire DNS-server: de cmdlet [set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) wordt uitgevoerd op de achtergrond. De DNS-instellingen voor uw StorSimple-oplossing worden geconfigureerd.
+   * NTP-server: de cmdlet [set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) wordt uitgevoerd op de achtergrond. Hiermee configureert u de instellingen van de NTP-server voor uw StorSimple-oplossing.
+   * Optionele webproxy: de cmdlet [set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) wordt uitgevoerd op de achtergrond. Hiermee wordt de configuratie van de webproxy voor uw StorSimple-oplossing ingesteld en ingeschakeld.
+3. Stel het wacht woord in: de volgende stap is het instellen van het beheerders wachtwoord voor het apparaat.
+   Het beheerders wachtwoord voor het apparaat wordt gebruikt om u aan te melden bij uw apparaat. Het standaardapparaatwachtwoord is **Password1**.
         
      > [!IMPORTANT]
-     > Wachtwoorden zijn verzameld vóór de inschrijving, maar pas nadat u het apparaat wordt geregistreerd toegepast. Als er een fout opgetreden bij het toepassen van een wachtwoord, wordt u gevraagd het wachtwoord opnieuw opgeven totdat de vereiste wachtwoorden (die voldoen aan de complexiteitsvereisten voldoen) worden verzameld.
+     > Wacht woorden worden vóór de registratie verzameld, maar pas toegepast nadat u het apparaat hebt geregistreerd. Als er een fout is opgetreden bij het Toep assen van een wacht woord, wordt u gevraagd het wacht woord opnieuw op te geven totdat de vereiste wacht woorden (die voldoen aan de complexiteits vereisten) worden verzameld.
      
-4. Registreer het apparaat: de laatste stap is het apparaat registreren bij de StorSimple Device Manager-service die wordt uitgevoerd in Microsoft Azure. De registratie, moet u [de serviceregistratiesleutel ophalen](storsimple-8000-manage-service.md#get-the-service-registration-key) vanuit Azure portal, en deze opgeven in de wizard setup. **Nadat het apparaat is geregistreerd, wordt een versleutelingssleutel voor servicegegevens wordt geleverd aan u. Zorg ervoor dat deze versleutelingssleutel op een veilige locatie omdat deze vereist is voor alle latere apparaten registreren bij de service.**
+4. Het apparaat registreren: de laatste stap is het registreren van het apparaat bij de StorSimple Apparaatbeheer-service die wordt uitgevoerd in Microsoft Azure. Voor de registratie moet u [de service registratie sleutel](storsimple-8000-manage-service.md#get-the-service-registration-key) van de Azure Portal ophalen en deze opgeven in de wizard Setup. **Nadat het apparaat is geregistreerd, wordt er een versleutelings sleutel voor service gegevens aan u door gegeven. Zorg ervoor dat u deze versleutelings sleutel op een veilige locatie behoudt, omdat het vereist is om alle volgende apparaten bij de service te registreren.**
 
-## <a name="common-errors-during-device-deployment"></a>Veelvoorkomende fouten tijdens de implementatie van apparaat
-De volgende tabellen worden de algemene fouten die wanneer optreden mogelijk u:
+## <a name="common-errors-during-device-deployment"></a>Veelvoorkomende fouten tijdens de implementatie van het apparaat
+In de volgende tabellen staan de veelvoorkomende fouten die u kunt tegen komen wanneer u:
 
-* Configureer de vereiste netwerkinstellingen.
-* De optionele web proxy-instellingen configureren.
-* Het beheerderswachtwoord instellen.
-* Het apparaat te registreren.
+* Configureer de vereiste netwerk instellingen.
+* Configureer de optionele web proxy-instellingen.
+* Stel het beheerders wachtwoord voor het apparaat in.
+* Registreer het apparaat.
 
-## <a name="errors-during-the-required-network-settings"></a>Fouten tijdens de vereiste netwerkinstellingen
+## <a name="errors-during-the-required-network-settings"></a>Fouten tijdens de vereiste netwerk instellingen
 | Nee. | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 | --- | --- | --- | --- |
-| 1 |Invoke-hcssetupwizard uit: Met deze opdracht kan alleen worden uitgevoerd op de actieve controller. |Configuratie werd uitgevoerd op de passieve controller. |Deze opdracht uitvoert vanaf de actieve controller. Zie voor meer informatie, [actieve controller op uw apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
-| 2 |Invoke-hcssetupwizard uit: Het apparaat is niet gereed. |Er zijn problemen met de netwerkverbinding beschikbaar is op DATA 0. |Controleer de fysieke netwerkverbinding beschikbaar is op DATA 0. |
-| 3 |Invoke-hcssetupwizard uit: Er is een IP-adresconflict met een ander systeem op het netwerk (uitzondering van HRESULT: 0x80070263). |Het IP-adres opgegeven voor de DATA 0 is al in gebruik door een ander systeem. |Geef een nieuwe IP-adres dat niet wordt gebruikt. |
-| 4 |Invoke-hcssetupwizard uit: Een cluster-bron is mislukt. (Uitzondering van HRESULT: 0x800713AE). |Dubbele VIP. Het opgegeven IP-adres wordt al gebruikt. |Geef een nieuwe IP-adres dat niet wordt gebruikt. |
-| 5 |Invoke-hcssetupwizard uit: Ongeldig IPv4-adres. |Het IP-adres is opgegeven in een onjuiste indeling. |Controleer de indeling en geef uw IP-adres opnieuw. Zie voor meer informatie, [Ipv4-adressen][1]. |
-| 6 |Invoke-hcssetupwizard uit: Ongeldig IPv6-adres. |Het IP-adres is opgegeven in een onjuiste indeling. |Controleer de indeling en geef uw IP-adres opnieuw. Zie voor meer informatie, [Ipv6-adressen][2]. |
-| 7 |Invoke-hcssetupwizard uit: Er zijn geen eindpunten meer beschikbaar is via de eindpunttoewijzer. (Uitzondering van HRESULT: 0x800706D9) |Functie van het cluster werkt niet. |[Neem contact op met Microsoft Ondersteuning](storsimple-8000-contact-microsoft-support.md) voor volgende stappen. |
+| 1 |Invoke-Hcssetupwizard uit: deze opdracht kan alleen worden uitgevoerd op de actieve controller. |De configuratie is uitgevoerd op de passieve controller. |Voer deze opdracht uit vanaf de actieve controller. Zie [een actieve controller identificeren op het apparaat](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)voor meer informatie. |
+| 2 |Invoke-Hcssetupwizard uit: het apparaat is niet gereed. |Er zijn problemen met de netwerk verbinding op DATA 0. |Controleer de fysieke netwerk verbinding op gegevens 0. |
+| 3 |Invoke-Hcssetupwizard uit: er is een IP-adres conflict met een ander systeem op het netwerk (uitzonde ring van HRESULT: 0x80070263). |Het IP-adres dat is opgegeven voor de gegevens 0, is al in gebruik door een ander systeem. |Geef een nieuw IP-adres op dat niet in gebruik is. |
+| 4 |Invoke-Hcssetupwizard uit: een cluster bron is mislukt. (Uitzonde ring van HRESULT: 0x800713AE). |Duplicaat VIP. Het opgegeven IP-adres wordt al gebruikt. |Geef een nieuw IP-adres op dat niet in gebruik is. |
+| 5 |Invoke-Hcssetupwizard uit: ongeldig IPv4-adres. |Het IP-adres is in een onjuiste indeling opgenomen. |Controleer de indeling en geef uw IP-adres opnieuw op. Zie [IPv4-adres Sering][1]voor meer informatie. |
+| 6 |Invoke-Hcssetupwizard uit: ongeldig IPv6-adres. |Het IP-adres is in een onjuiste indeling opgenomen. |Controleer de indeling en geef uw IP-adres opnieuw op. Zie [IPv6 Addressing][2](Engelstalig) voor meer informatie. |
+| 7 |Invoke-Hcssetupwizard uit: er zijn geen eind punten meer beschikbaar in de eindpunttoewijzer. (Uitzonde ring van HRESULT: 0x800706D9) |De cluster functionaliteit werkt niet. |[Neem contact op met Microsoft Ondersteuning](storsimple-8000-contact-microsoft-support.md) voor volgende stappen. |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Fouten tijdens de optionele web proxy-instellingen
 | Nee. | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 | --- | --- | --- | --- |
-| 1 |Invoke-hcssetupwizard uit: Ongeldige parameter (uitzondering van HRESULT: 0x80070057) |Een van de opgegeven parameters voor de proxy-instellingen is niet geldig. |De URI is niet opgegeven in de juiste indeling. Gebruik de volgende indeling: http:// *\<IP-adres of FQDN-naam van de webproxyserver >* : *\<TCP-poortnummer >* |
-| 2 |Invoke-hcssetupwizard uit: RPC-server niet beschikbaar (uitzondering van HRESULT: 0x800706ba) |De hoofdoorzaak is een van de volgende opties:<ol><li>Het cluster is niet maximaal.</li><li>De passieve controller niet kan communiceren met de actieve controller en de opdracht wordt uitgevoerd vanaf de passieve controller.</li></ol> |Afhankelijk van de hoofdoorzaak:<ol><li>[Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om ervoor te zorgen dat het cluster actief is.</li><li>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht uitvoeren vanaf de passieve controller wilt, moet u om ervoor te zorgen dat de passieve controller met de actieve controller communiceren kan. U moet [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) als deze verbinding verbroken is.</li></ol> |
-| 3 |Invoke-hcssetupwizard uit: RPC-aanroep is mislukt (uitzondering van HRESULT: 0x800706be) |Cluster is niet actief. |[Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om ervoor te zorgen dat het cluster actief is. |
-| 4 |Invoke-hcssetupwizard uit: Cluster-bron is niet gevonden (uitzondering van HRESULT: 0x8007138f) |De cluster-bron is niet gevonden. Dit kan gebeuren wanneer de installatie niet juist is. |Mogelijk moet u het apparaat opnieuw instellen op de standaardfabrieksinstellingen. [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om de clusterbron van een te maken. |
-| 5 |Invoke-hcssetupwizard uit: Cluster-bron niet online (uitzondering van HRESULT: 0x8007138c) |Clusterresources zijn niet online. |[Neem contact op met Microsoft Ondersteuning](storsimple-8000-contact-microsoft-support.md) voor volgende stappen. |
+| 1 |Invoke-Hcssetupwizard uit: ongeldige para meter (uitzonde ring van HRESULT: 0x80070057) |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling: http:// *\<IP-adres of FQDN-naam van de webproxyserver >* : *\<TCP-poort nummer >* |
+| 2 |Invoke-Hcssetupwizard uit: RPC-server niet beschikbaar (uitzonde ring van HRESULT: 0x800706ba) |De hoofd oorzaak is een van de volgende:<ol><li>Het cluster is niet actief.</li><li>De passieve controller kan niet communiceren met de actieve controller en de opdracht wordt uitgevoerd vanuit de passieve controller.</li></ol> |Afhankelijk van de hoofd oorzaak:<ol><li>[Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om te controleren of het cluster actief is.</li><li>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht van de passieve controller wilt uitvoeren, moet u ervoor zorgen dat de passieve controller kan communiceren met de actieve controller. U moet [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) als deze verbinding is verbroken.</li></ol> |
+| 3 |Invoke-Hcssetupwizard uit: RPC-aanroep is mislukt (uitzonde ring van HRESULT: 0x800706be) |Het cluster is niet beschikbaar. |[Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om te controleren of het cluster actief is. |
+| 4 |Invoke-Hcssetupwizard uit: cluster bron niet gevonden (uitzonde ring van HRESULT: 0x8007138f) |De cluster bron is niet gevonden. Dit kan gebeuren wanneer de installatie niet juist is. |Mogelijk moet u het apparaat opnieuw instellen op de standaard fabrieks instellingen. [Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om een cluster bron te maken. |
+| 5 |Invoke-Hcssetupwizard uit: cluster bron niet online (uitzonde ring van HRESULT: 0x8007138c) |Cluster bronnen zijn niet online. |[Neem contact op met Microsoft Ondersteuning](storsimple-8000-contact-microsoft-support.md) voor volgende stappen. |
 
-## <a name="errors-related-to-device-administrator-password"></a>Fouten met betrekking tot het beheerderswachtwoord voor het apparaat
-Het standaard beheerderswachtwoord is **Wachtwoord1**. Dit wachtwoord verloopt na de eerste aanmelding; Daarom moet u de wizard setup gebruiken om deze te wijzigen. Wanneer u het apparaat te voor de eerste keer registreren, moet u een nieuw beheerderswachtwoord voor het apparaat opgeven. 
+## <a name="errors-related-to-device-administrator-password"></a>Fouten met betrekking tot het beheerders wachtwoord voor het apparaat
+Het standaard beheerders wachtwoord voor het apparaat is **Wachtwoord1**. Dit wacht woord verloopt na de eerste aanmelding; Daarom moet u de installatie wizard gebruiken om deze te wijzigen. U moet een nieuw beheerders wachtwoord voor het apparaat opgeven wanneer u het apparaat voor de eerste keer registreert. 
 
-Zorg ervoor dat uw wachtwoord voldoet aan de volgende vereisten:
+Zorg ervoor dat uw wacht woorden voldoen aan de volgende vereisten:
 
-* Uw beheerderswachtwoord voor het apparaat moet tussen 8 en 15 tekens lang zijn.
-* Wachtwoorden moeten 3 van de volgende tekentypen van 4 bevatten: kleine letters, hoofdletters, numerieke en speciale. 
-* Uw wachtwoord mag niet gelijk zijn aan de laatste 24 wachtwoorden.
+* Het beheerders wachtwoord voor uw apparaat moet tussen de 8 en 15 tekens lang zijn.
+* Wacht woorden moeten drie van de volgende vier teken typen bevatten: kleine letters, hoofd letters, cijfers en speciale tekens. 
+* Uw wacht woord mag niet hetzelfde zijn als de laatste 24 wacht woorden.
 
-Bovendien, houd er rekening mee dat wachtwoorden verlopen elk jaar en kunnen worden gewijzigd nadat u het apparaat wordt geregistreerd. Als de registratie om welke reden dan ook mislukt, wordt de wachtwoorden die niet worden gewijzigd.
+Houd er bovendien rekening mee dat wacht woorden elk jaar verlopen en alleen kunnen worden gewijzigd nadat het apparaat is geregistreerd. Als de registratie om welke reden dan ook mislukt, worden de wacht woorden niet gewijzigd.
 
-Voor meer informatie over het beheerderswachtwoord voor het apparaat, gaat u naar [de StorSimple Device Manager-service gebruiken om uw StorSimple-wachtwoord wijzigen](storsimple-8000-change-passwords.md).
+Ga voor meer informatie over het beheerders wachtwoord voor het apparaat naar [het gebruik van de StorSimple Apparaatbeheer-service om uw StorSimple-wacht woord te wijzigen](storsimple-8000-change-passwords.md).
 
-U kunt een of meer van de volgende fouten tegenkomen bij het instellen van de apparaatbeheerder en StorSimple Snapshot Manager wachtwoorden.
+U kunt een of meer van de volgende fouten tegen komen bij het instellen van de StorSimple Snapshot Manager wacht woorden.
 
 | Nee. | Foutbericht | Aanbevolen actie |
 | --- | --- | --- |
-| 1 |Het wachtwoord overschrijdt de maximumlengte. |Uw beheerderswachtwoord voor het apparaat moet tussen 8 en 15 tekens lang zijn. |
-| 2 |Het wachtwoord voldoet niet aan de vereiste lengte. |Uw beheerderswachtwoord voor het apparaat moet tussen 8 en 15 tekens lang zijn.|
-| 3 |Het wachtwoord moet tekens in kleine letters bevatten. |Wachtwoorden moeten 3 van de volgende tekentypen van 4 bevatten: kleine letters, hoofdletters, numerieke en speciale. Zorg ervoor dat uw wachtwoord voldoet aan deze vereisten. |
-| 4 |Het wachtwoord moet tekens bevatten. |Wachtwoorden moeten 3 van de volgende tekentypen van 4 bevatten: kleine letters, hoofdletters, numerieke en speciale. Zorg ervoor dat uw wachtwoord voldoet aan deze vereisten. |
-| 5 |Het wachtwoord moet tekens bevatten. |Wachtwoorden moeten 3 van de volgende tekentypen van 4 bevatten: kleine letters, hoofdletters, numerieke en speciale. Zorg ervoor dat uw wachtwoord voldoet aan deze vereisten. |
-| 6 |Het wachtwoord moet 3 van de volgende tekentypen van 4 bevatten: hoofdletters, kleine letters, cijfers en speciale. |Uw wachtwoord bevat niet de vereiste typen tekens. Zorg ervoor dat uw wachtwoord voldoet aan deze vereisten. |
-| 7 |Parameter komt niet overeen met de bevestiging. |Zorg ervoor dat uw wachtwoord voldoet aan alle vereisten en dat u deze correct ingevoerd. |
-| 8 |Uw wachtwoord mag niet overeenkomen met de standaardwaarde. |Is het standaardwachtwoord *Wachtwoord1*. U moet dit wachtwoord wijzigen nadat u zich aanmeldt voor de eerste keer. |
-| 9 |Het wachtwoord die u hebt ingevoerd komt niet overeen met het wachtwoord van het apparaat. Geef het wachtwoord. |Controleer het wachtwoord en typ het opnieuw. |
+| 1 |Het wacht woord overschrijdt de maximum lengte. |Het beheerders wachtwoord voor uw apparaat moet tussen de 8 en 15 tekens lang zijn. |
+| 2 |Het wacht woord voldoet niet aan de vereiste lengte. |Het beheerders wachtwoord voor uw apparaat moet tussen de 8 en 15 tekens lang zijn.|
+| 3 |Het wacht woord mag alleen kleine letters bevatten. |Wacht woorden moeten drie van de volgende vier teken typen bevatten: kleine letters, hoofd letters, cijfers en speciale tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
+| 4 |Het wacht woord moet numerieke tekens bevatten. |Wacht woorden moeten drie van de volgende vier teken typen bevatten: kleine letters, hoofd letters, cijfers en speciale tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
+| 5 |Het wacht woord moet speciale tekens bevatten. |Wacht woorden moeten drie van de volgende vier teken typen bevatten: kleine letters, hoofd letters, cijfers en speciale tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
+| 6 |Het wacht woord moet drie van de volgende vier teken typen bevatten: hoofd letters, kleine letters, cijfers en speciale tekens. |Uw wacht woord bevat niet de vereiste typen tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
+| 7 |De para meter komt niet overeen met de bevestiging. |Zorg ervoor dat uw wacht woord voldoet aan alle vereisten en of u het correct hebt ingevoerd. |
+| 8 |Uw wacht woord mag niet overeenkomen met de standaard waarde. |Het standaard wachtwoord is *Wachtwoord1*. Als u zich voor de eerste keer aanmeldt, moet u dit wacht woord wijzigen. |
+| 9 |Het wacht woord dat u hebt opgegeven, komt niet overeen met het wacht woord van het apparaat. Voer het wacht woord opnieuw in. |Controleer het wacht woord en typ het opnieuw. |
 
-Wachtwoorden worden verzameld voordat het apparaat is geregistreerd, maar alleen na een succesvolle registratie worden toegepast. De werkstroom van de recovery wachtwoord vereist dat het apparaat te registreren.
+Wacht woorden worden verzameld voordat het apparaat wordt geregistreerd, maar worden pas na een geslaagde registratie toegepast. De werk stroom voor wachtwoord herstel vereist dat het apparaat wordt geregistreerd.
 
 > [!IMPORTANT]
-> In het algemeen als een poging tot het toepassen van een wachtwoord is mislukt, de software herhaaldelijk geprobeerd voor het verzamelen van het wachtwoord totdat hij erin slaagt. In zeldzame gevallen, kan niet het wachtwoord worden toegepast. In dit geval kunt u het apparaat te registreren en doorgaan, maar de wachtwoorden worden niet gewijzigd. U kunt het beheerderswachtwoord voor het apparaat wijzigen na de registratie van de Azure-portal.
+> Over het algemeen geldt dat als een poging om een wacht woord toe te passen mislukt, de software herhaaldelijk probeert het wacht woord te verzamelen totdat het is gelukt. In zeldzame gevallen kan het wacht woord niet worden toegepast. In dit geval kunt u het apparaat registreren en door gaan, maar de wacht woorden worden niet gewijzigd. U kunt het beheerders wachtwoord van het apparaat na de registratie van de Azure Portal wijzigen.
 
 
-U kunt het wachtwoord in Azure portal via de StorSimple Device Manager-service opnieuw. Ga voor meer informatie naar [wijzigen van het beheerderswachtwoord](storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+U kunt het wacht woord opnieuw instellen in de Azure Portal via de StorSimple Apparaatbeheer-service. Ga voor meer informatie naar [het beheerders wachtwoord van het apparaat wijzigen](storsimple-8000-change-passwords.md#change-the-device-administrator-password).
 
-## <a name="errors-during-device-registration"></a>Fouten tijdens het registreren van apparaten
-De StorSimple Device Manager-service die wordt uitgevoerd in Microsoft Azure kunt u het apparaat te registreren. Er kan een of meer van de volgende problemen optreden tijdens het registreren van apparaten.
+## <a name="errors-during-device-registration"></a>Fouten tijdens het registreren van het apparaat
+U gebruikt de StorSimple Apparaatbeheer-service die wordt uitgevoerd in Microsoft Azure om het apparaat te registreren. Tijdens het registreren van het apparaat kunt u een of meer van de volgende problemen tegen komen.
 
 | Nee. | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 | --- | --- | --- | --- |
-| 1 |Fout 350027: Het apparaat te registreren met StorSimple Device Manager is mislukt. | |Wacht een paar minuten en probeer het opnieuw. Als het probleem zich blijft voordoen, [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
-| 2 |Fout 350013: Er is een fout opgetreden bij het registreren van het apparaat. Dit wordt mogelijk veroorzaakt door onjuiste serviceregistratiesleutel. | |Registreer het apparaat opnieuw met de juiste serviceregistratiesleutel. Zie voor meer informatie, [de serviceregistratiesleutel ophalen.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
-| 3 |Fout 350063: Verificatie van StorSimple Device Manager-service die zijn doorgegeven, maar de registratie is mislukt. Voer de bewerking na enige tijd. |Deze fout geeft aan dat verificatie met ACS is verstreken, maar de register-aanroep naar de service is mislukt. Dit wordt mogelijk een gevolg zijn van een sporadisch netwerkfout opgetreden. |Als het probleem zich blijft, neem voordoen [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
-| 4 |Fout 350049: Kan de service niet bereiken tijdens het registreren. |Wanneer de oproep wordt gedaan bij de service, is een Webuitzondering ontvangen. In sommige gevallen kan dit opgelost door de bewerking later opnieuw te proberen. |Controleer uw IP-adres en DNS-naam en probeer het vervolgens opnieuw. Als het probleem zich blijft voordoen, [Neem contact op met Microsoft Support.](storsimple-8000-contact-microsoft-support.md) |
-| 5 |Fout 350031: Het apparaat is al geregistreerd. | |Er is geen actie nodig. |
-| 6 |Fout 350016: Registratie van het apparaat is mislukt. | |Controleer of dat de registratiesleutel correct is. |
-| 7 |Invoke-hcssetupwizard uit: Er is een fout opgetreden tijdens het registreren van uw apparaat. Dit kan zijn vanwege onjuiste IP-adres of de DNS-naam. Controleer uw netwerkinstellingen en probeer het opnieuw. Als het probleem zich blijft voordoen, [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md). (Fout 350050) |Zorg ervoor dat uw apparaat naar het externe netwerk kan pingen. Als u geen verbinding met extern netwerk, wordt de registratie kan mislukken vanwege de volgende fout. Deze fout kan bestaan uit een combinatie van een of meer van de volgende opties:<ul><li>Onjuiste IP</li><li>Onjuiste subnet</li><li>Ongeldige gateway</li><li>Onjuiste DNS-instellingen</li></ul> |Zie de stappen in de [voorbeeld van stapsgewijze probleemoplossing](#step-by-step-storsimple-troubleshooting-example). |
-| 8 |Invoke-hcssetupwizard uit: De huidige bewerking is mislukt vanwege een interne servicefout [0x1FBE2]. Probeer het later opnieuw. Als het probleem zich blijft voordoen, neem contact op met Microsoft Support. |Dit is een algemene fout opgetreden voor alle onzichtbaar gebruikersfouten service of -agent. De meest voorkomende reden is mogelijk dat de ACS-verificatie is mislukt. Een mogelijke oorzaak van het probleem is dat er problemen met de configuratie van de NTP-server zijn en tijd op het apparaat is niet juist ingesteld. |Corrigeer de tijd (als er problemen zijn) en voer vervolgens de bewerking voor de registratie opnieuw uit. Als u de opdracht Set-HcsSystem - Timezone gebruiken om aan te passen van de tijdzone, elk woord in de tijdzone (bijvoorbeeld ' Pacific Standard Time') met een hoofdletter.  Als dit probleem zich blijft voordoen, [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. |
-| 9 |Waarschuwing: Het apparaat kan niet worden geactiveerd. De apparaatbeheerder van uw en StorSimple Snapshot Manager wachtwoorden zijn niet gewijzigd. |Als de registratie is mislukt, worden de apparaatbeheerder en StorSimple Snapshot Manager wachtwoorden worden niet gewijzigd. | |
+| 1 |Fout 350027: kan het apparaat niet registreren bij de StorSimple-Apparaatbeheer. | |Wacht een paar minuten en probeer het opnieuw. Als het probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md). |
+| 2 |Fout 350013: er is een fout opgetreden bij het registreren van het apparaat. Dit kan worden veroorzaakt door een onjuiste service registratie sleutel. | |Registreer het apparaat opnieuw met de juiste service registratie sleutel. Zie [de service registratie sleutel ophalen](storsimple-8000-manage-service.md#get-the-service-registration-key) voor meer informatie. |
+| 3 |Fout 350063: er is een verificatie voor de StorSimple-Apparaatbeheer service voltooid, maar de registratie is mislukt. Voer de bewerking na enige tijd opnieuw uit. |Deze fout geeft aan dat de verificatie met ACS is geslaagd, maar dat de registratie aanroep voor de service is mislukt. Dit kan het gevolg zijn van een sporadisch netwerk fout. |Als het probleem zich blijft voordoen, neemt u [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md). |
+| 4 |Fout 350049: de service is niet bereikbaar tijdens de registratie. |Wanneer de aanroep naar de service wordt gedaan, wordt er een webuitzondering ontvangen. In sommige gevallen kan dit worden opgelost door de bewerking later opnieuw uit te voeren. |Controleer uw IP-adres en DNS-naam en voer de bewerking opnieuw uit. Als het probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning.](storsimple-8000-contact-microsoft-support.md) |
+| 5 |Fout 350031: het apparaat is al geregistreerd. | |Geen actie vereist. |
+| 6 |Fout 350016: registratie van het apparaat is mislukt. | |Controleer of de registratie sleutel juist is. |
+| 7 |Invoke-Hcssetupwizard uit: er is een fout opgetreden tijdens het registreren van uw apparaat. Dit kan worden veroorzaakt door een onjuist IP-adres of een onjuiste DNS-naam. Controleer de netwerk instellingen en probeer het opnieuw. Als het probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md). (Fout 350050) |Zorg ervoor dat het apparaat het externe netwerk kan pingen. Als u geen verbinding met een extern netwerk hebt, kan de registratie mislukken met deze fout. Deze fout kan bestaan uit een combi natie van een of meer van de volgende:<ul><li>Onjuist IP-adres</li><li>Onjuist subnet</li><li>Onjuiste gateway</li><li>Onjuiste DNS-instellingen</li></ul> |Raadpleeg de stappen in het [voor beeld van stapsgewijze probleem oplossing](#step-by-step-storsimple-troubleshooting-example). |
+| 8 |Invoke-Hcssetupwizard uit: de huidige bewerking is mislukt vanwege een interne service fout [0x1FBE2]. Voer de bewerking na enige tijd opnieuw uit. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |Dit is een algemene fout die wordt gegenereerd voor alle gebruikers onzichtbare fouten van de service of de agent. De meest voorkomende reden is mogelijk dat de ACS-verificatie is mislukt. Een mogelijke oorzaak van de fout is dat er problemen zijn met de configuratie van de NTP-server en dat de tijd op het apparaat niet juist is ingesteld. |Corrigeer de tijd (als er problemen zijn) en voer de registratie bewerking opnieuw uit. Als u de opdracht set-HcsSystem-zone gebruiken om de tijd zone aan te passen, moet u elk woord met een hoofd letter in de tijd zone (bijvoorbeeld ' Pacific (standaard tijd) ').  Als dit probleem zich blijft voordoen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. |
+| 9 |Waarschuwing: kan het apparaat niet activeren. Uw StorSimple-wacht woord voor de apparaat-en gebruikers Snapshot Manager zijn niet gewijzigd. |Als de registratie mislukt, worden de StorSimple en de wacht woorden van de apparaat-Snapshot Manager niet gewijzigd. | |
 
-## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Hulpprogramma's voor het oplossen van StorSimple-implementaties
-StorSimple bevat verschillende hulpprogramma's die u gebruiken kunt om op te lossen van uw StorSimple-oplossing. Deze omvatten:
+## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Hulpprogram ma's voor het oplossen van problemen met StorSimple-implementaties
+StorSimple bevat verschillende hulpprogram ma's die u kunt gebruiken om problemen met uw StorSimple-oplossing op te lossen. Deze omvatten:
 
-* Ondersteuning voor pakketten en logboeken van het apparaat.
-* Cmdlets die speciaal is ontworpen voor het oplossen van problemen.
+* Ondersteuning voor pakketten en logboeken van apparaten.
+* Cmdlets die specifiek zijn ontworpen voor het oplossen van problemen.
 
-## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Ondersteuning voor pakketten en logboeken van het apparaat beschikbaar voor het oplossen van problemen
-Een ondersteuningspakket bevat alle relevante logboeken die het team van Microsoft Support helpen kunnen bij het oplossen van problemen met het apparaat. U kunt Windows PowerShell voor StorSimple gebruiken voor het genereren van een versleutelde ondersteuningspakket die u vervolgens met het ondersteunend personeel delen kunt.
+## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Ondersteunings pakketten en logboeken voor apparaten beschikbaar voor het oplossen van problemen
+Een ondersteunings pakket bevat alle relevante logboeken die het Microsoft Ondersteuning team kunnen helpen bij het oplossen van problemen met apparaten. U kunt Windows PowerShell voor StorSimple gebruiken om een versleuteld ondersteunings pakket te genereren dat u vervolgens met ondersteunings medewerkers kunt delen.
 
-### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>De logboeken of de inhoud van het ondersteuningspakket weergeven
-1. Windows PowerShell voor StorSimple gebruiken voor het genereren van een ondersteuningspakket met, zoals beschreven in [maken en beheren van een ondersteuningspakket](storsimple-8000-create-manage-support-package.md).
-2. Download de [ontsleuteling script](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) lokaal op uw clientcomputer.
-3. Gebruik deze [stapsgewijze procedure](storsimple-8000-create-manage-support-package.md#edit-a-support-package) om te openen en ontsleutelen van het ondersteuningspakket.
-4. De logboeken van de ontsleutelde ondersteuning-pakket hebben etw/etvx-indeling. U kunt de volgende stappen uit om deze bestanden in Windows logboeken weer te geven kunt uitvoeren:
+### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>De logboeken of de inhoud van het ondersteunings pakket weer geven
+1. Gebruik Windows PowerShell voor StorSimple om een ondersteunings pakket te genereren, zoals beschreven in [een ondersteunings pakket maken en beheren](storsimple-8000-create-manage-support-package.md).
+2. Down load het [script voor ontsleuteling](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) lokaal op uw client computer.
+3. Gebruik deze [Stapsgewijze procedure](storsimple-8000-create-manage-support-package.md#edit-a-support-package) om het ondersteunings pakket te openen en te ontsleutelen.
+4. De ontsleutelde ondersteunings pakket logboeken bevinden zich in de indeling etw/etvx. U kunt de volgende stappen uitvoeren om deze bestanden weer te geven in Windows Logboeken:
    
-   1. Voer de **eventvwr** opdracht op uw Windows-client. Hiermee wordt logboeken gestart.
-   2. In de **acties** deelvenster, klikt u op **opgeslagen logboek openen** en wijst u de logboekbestanden in etvx/etw-indeling (het ondersteuningspakket). U kunt nu het bestand weergeven. Nadat u het bestand opent, kunt u met de rechtermuisknop op en sla het bestand als tekst.
+   1. Voer de opdracht **eventvwr** uit op uw Windows-client. Hiermee wordt de Logboeken gestart.
+   2. Klik in het deel venster **acties** op **opgeslagen logboek openen** en wijs de logboek bestanden in etvx/etw-indeling (het ondersteunings pakket) aan. U kunt het bestand nu weer geven. Nadat u het bestand hebt geopend, kunt u met de rechter muisknop klikken en het bestand opslaan als tekst.
       
       > [!IMPORTANT]
-      > U kunt ook de **Get-WinEvent** cmdlet voor het openen van deze bestanden in Windows PowerShell. Zie voor meer informatie, [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) in de documentatie van Windows PowerShell-cmdlet-verwijzing.
+      > U kunt ook de cmdlet **Get-Wine vent** gebruiken om deze bestanden te openen in Windows Power shell. Zie [Get-Wine vent](https://technet.microsoft.com/library/hh849682.aspx) in de naslag documentatie voor Windows Power shell-cmdlets voor meer informatie.
      
-5. Wanneer de logboeken in Logboeken openen, kunt u zoeken naar de volgende logboeken die problemen met betrekking tot de apparaatconfiguratie bevatten:
+5. Wanneer de logboeken in Logboeken zijn geopend, zoekt u de volgende logboeken die problemen bevatten met betrekking tot de apparaatconfiguratie:
    
-   * hcs_pfconfig/operationeel logboek
+   * hcs_pfconfig/Operational-logboek
    * hcs_pfconfig/Config
-6. In de logboekbestanden gezocht naar tekenreeksen met betrekking tot de cmdlets aangeroepen door de wizard setup. Zie [eerst setup-wizard proces](#first-time-setup-wizard-process) voor een lijst van deze cmdlets.
-7. Als u nog niet om de oorzaak van het probleem te achterhalen, kunt u [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. Gebruik de stappen in [Maak een ondersteuningsaanvraag](storsimple-8000-contact-microsoft-support.md#create-a-support-request) wanneer u contact op met Microsoft Support voor hulp.
+6. Zoek in de logboek bestanden naar teken reeksen met betrekking tot de cmdlets die worden aangeroepen door de installatie wizard. Zie de wizard voor het installeren van de [eerste keer](#first-time-setup-wizard-process) voor een lijst met deze cmdlets.
+7. Als u de oorzaak van het probleem niet kunt achterhalen, kunt u [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. Volg de stappen in [een ondersteunings aanvraag maken](storsimple-8000-contact-microsoft-support.md#create-a-support-request) wanneer u contact opneemt met Microsoft ondersteuning voor hulp.
 
 ## <a name="cmdlets-available-for-troubleshooting"></a>Cmdlets die beschikbaar zijn voor het oplossen van problemen
-Gebruik de volgende Windows PowerShell-cmdlets voor het detecteren van fouten in de basisnetwerkverbinding.
+Gebruik de volgende Windows Power shell-cmdlets om connectiviteits fouten te detecteren.
 
-* `Get-NetAdapter`: Gebruik deze cmdlet voor het detecteren van de status van netwerkinterfaces.
-* `Test-Connection`: Deze cmdlet gebruiken om te controleren of de netwerkverbinding binnen en buiten het netwerk.
-* `Test-HcsmConnection`: Deze cmdlet gebruiken om te controleren of de connectiviteit van een apparaat is geregistreerd.
-* `Sync-HcsTime`: Gebruik deze cmdlet voor het weergeven van de tijd op het apparaat en tijdsynchronisatie met de NTP-server dwingen.
-* `Enable-HcsPing` en `Disable-HcsPing`: Deze cmdlets gebruiken om de hosts te pingen de netwerkinterfaces op uw StorSimple-apparaat toestaan. Standaard reageren de StorSimple-netwerkinterfaces niet op aanvragen van de ping.
-* `Trace-HcsRoute`: Deze cmdlet gebruiken als een hulpmiddel voor het traceren van route. Deze pakketten verzendt naar elke router op de manier om een uiteindelijke bestemming gedurende een bepaalde periode en vervolgens worden berekend op basis van de pakketten die zijn geretourneerd door elke hop resultaten. Aangezien `Trace-HcsRoute` ziet u de mate van pakketverlies op elke router en koppeling, u kunt achterhalen welke routers of koppelingen mogelijk veroorzaakt door problemen met het netwerk.
-* `Get-HcsRoutingTable`: Gebruik deze cmdlet om weer te geven van de lokale IP-routeringstabel.
+* `Get-NetAdapter`: gebruik deze cmdlet om de status van netwerk interfaces te detecteren.
+* `Test-Connection`: gebruik deze cmdlet om de netwerk verbinding binnen en buiten het netwerk te controleren.
+* `Test-HcsmConnection`: gebruik deze cmdlet om de connectiviteit van een geregistreerd apparaat te controleren.
+* `Sync-HcsTime`: gebruik deze cmdlet om de tijd van het apparaat weer te geven en een tijd synchronisatie met de NTP-server af te dwingen.
+* `Enable-HcsPing` en `Disable-HcsPing`: gebruik deze cmdlets zodat de hosts de netwerk interfaces op uw StorSimple-apparaat kunnen pingen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen.
+* `Trace-HcsRoute`: gebruik deze cmdlet als een hulp programma voor route tracering. Er worden pakketten naar elke router verzonden naar een eind bestemming gedurende een bepaalde periode en vervolgens worden de resultaten berekend op basis van de pakketten die worden geretourneerd door elke hop. Omdat `Trace-HcsRoute` de mate van pakket verlies op een router of koppeling laat zien, kunt u bepalen welke routers of koppelingen mogelijk netwerk problemen veroorzaken.
+* `Get-HcsRoutingTable`: gebruik deze cmdlet om de lokale IP-routerings tabel weer te geven.
 
-## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Problemen met de cmdlet Get-NetAdapter oplossen
-Bij het configureren van netwerkinterfaces voor de implementatie van een apparaat van de eerste keer, is de status van uw hardware niet beschikbaar in de gebruikersinterface van de StorSimple Device Manager-service omdat het apparaat nog niet is geregistreerd bij de service. Bovendien de **hardwarestatus** blade mogelijk niet altijd goed overeen met de status van het apparaat, met name als er problemen die invloed hebben op synchronisatie van de service zijn. In deze situaties kunt u de `Get-NetAdapter` cmdlet om te bepalen van de status en de status van de netwerkinterfaces.
+## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Problemen oplossen met de cmdlet Get-netadapter
+Wanneer u netwerk interfaces configureert voor een implementatie voor de eerste keer dat het apparaat wordt geïmplementeerd, is de hardware-status niet beschikbaar in de gebruikers interface van de StorSimple Apparaatbeheer-service omdat het apparaat nog niet is geregistreerd bij de service. Daarnaast is het mogelijk dat de Blade **Hardware-status** niet altijd goed overeenkomt met de status van het apparaat, met name als er problemen zijn die van invloed zijn op de service synchronisatie. In deze situaties kunt u de cmdlet `Get-NetAdapter` gebruiken om de status en status van uw netwerk interfaces te bepalen.
 
-### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Voor een overzicht van alle netwerkadapters op uw apparaat
+### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Een lijst met alle netwerk adapters op het apparaat weer geven
 1. Start Windows PowerShell voor StorSimple en typ vervolgens `Get-NetAdapter`. 
-2. De uitvoer van de `Get-NetAdapter` cmdlet en de volgende richtlijnen om te begrijpen van de status van de netwerkinterface.
+2. Gebruik de uitvoer van de `Get-NetAdapter` cmdlet en de volgende richt lijnen om inzicht te krijgen in de status van uw netwerk interface.
    
-   * Als de interface in orde is en is ingeschakeld is, de **ifIndex** status wordt weergegeven als **van**.
-   * Als de interface in orde is, maar niet fysiek zijn verbonden (via een netwerkkabel), de **ifIndex** wordt weergegeven als **uitgeschakelde**.
-   * Als de interface in orde is, maar niet ingeschakeld is, de **ifIndex** status wordt weergegeven als **NotPresent**.
-   * Als de interface niet bestaat, wordt deze niet weergegeven in deze lijst. De gebruikersinterface van de StorSimple Device Manager-service wordt nog steeds deze interface weergegeven in een foutstatus.
+   * Als de interface in orde is en is ingeschakeld, wordt de status **van**de **ifIndex** weer gegeven.
+   * Als de interface is in orde, maar niet fysiek is verbonden (door een netwerk kabel), wordt de **ifIndex** als **uitgeschakeld**weer gegeven.
+   * Als de interface in orde is, maar niet is ingeschakeld, wordt de status van **ifIndex** weer gegeven als **NotPresent**.
+   * Als de interface niet bestaat, wordt deze niet weer gegeven in deze lijst. In de gebruikers interface van de StorSimple-Apparaatbeheer-service wordt deze interface nog steeds weer gegeven met de status mislukt.
 
-Ga voor meer informatie over het gebruik van deze cmdlet naar [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) in de Windows PowerShell-cmdlet-verwijzing.
+Ga voor meer informatie over het gebruik van deze cmdlet naar [Get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) in de naslag gids voor Windows Power shell-cmdlets.
 
-De volgende secties ziet u voorbeelden van uitvoer van de `Get-NetAdapter` cmdlet.
+In de volgende secties ziet u voor beelden van uitvoer van de cmdlet `Get-NetAdapter`.
 
- In deze voorbeelden controller 0 is de passieve controller en is als volgt geconfigureerd:
+ In deze voor beelden was controller 0 de passieve controller en is deze als volgt geconfigureerd:
 
-* DATA 0, 1 van de gegevens, DATA 2 en DATA 3-netwerk interfaces aanwezig op het apparaat was.
-* GEGEVENS 4 en 5 gegevens netwerkinterfacekaarten zijn niet aanwezig ze worden daarom niet weergegeven in de uitvoer.
+* DATA 0-, DATA 1-, DATA 2-en DATA 3-netwerk interfaces bestonden op het apparaat.
+* DATA 4-en DATA 5-netwerk interface kaarten zijn niet aanwezig; Daarom worden ze niet weer gegeven in de uitvoer.
 * DATA 0 is ingeschakeld.
 
-Controller 1 is de actieve controller en is als volgt geconfigureerd:
+Controller 1 was de actieve controller en is als volgt geconfigureerd:
 
-* DATA 0, 1 gegevens, DATA 2, DATA 3, 4 van de gegevens en gegevens 5 network interfaces aanwezig op het apparaat was.
+* DATA 0, DATA 1, DATA 2, DATA 3, DATA 4 en DATA 5-netwerk interfaces bestonden op het apparaat.
 * DATA 0 is ingeschakeld.
 
-**Voorbeelduitvoer: controller 0**
+**Voorbeeld uitvoer – controller 0**
 
-Hier volgt de uitvoer van controller 0 (de passieve controller). GEGEVENS 1, DATA 2 en DATA 3 zijn niet verbonden. GEGEVENS 4 en 5 van de gegevens worden niet weergegeven omdat ze niet aanwezig op het apparaat zijn.
+Hier volgt de uitvoer van controller 0 (de passieve controller). De gegevens 1, DATA 2 en DATA 3 zijn niet verbonden. DATA 4 en DATA 5 worden niet weer gegeven, omdat ze niet aanwezig zijn op het apparaat.
 
      Controller0>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -218,9 +218,9 @@ Hier volgt de uitvoer van controller 0 (de passieve controller). GEGEVENS 1, DAT
      DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 
-**Voorbeelduitvoer: controller 1**
+**Voorbeeld uitvoer – controller 1**
 
-Hier volgt de uitvoer van controller 1 (de actieve controller). Alleen de DATA 0-netwerkinterface op het apparaat is geconfigureerd en een werkende.
+Hier volgt de uitvoer van controller 1 (de actieve controller). Alleen de DATA 0-netwerk interface op het apparaat is geconfigureerd en werkt.
 
      Controller1>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -235,79 +235,79 @@ Hier volgt de uitvoer van controller 1 (de actieve controller). Alleen de DATA 0
 
 
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Problemen oplossen met de cmdlet Test-Connection
-U kunt de `Test-Connection` cmdlet om te bepalen of uw StorSimple-apparaat verbinding met het externe netwerk maken kan. Als alle netwerkparameters, met inbegrip van de DNS-server correct zijn geconfigureerd in de installatiewizard, kunt u de `Test-Connection` cmdlet om te pingen van een bekend adres buiten het netwerk, zoals outlook.com.
+U kunt de cmdlet `Test-Connection` gebruiken om te bepalen of het StorSimple-apparaat verbinding kan maken met het externe netwerk. Als alle netwerk parameters, met inbegrip van de DNS, correct zijn geconfigureerd in de installatie wizard, kunt u de cmdlet `Test-Connection` gebruiken om een bekend adres buiten het netwerk te pingen, zoals outlook.com.
 
-Ping-opdracht naar het oplossen van problemen met de netwerkverbinding met deze cmdlet als ping is uitgeschakeld, moet u inschakelen.
+U moet ping inschakelen om verbindings problemen met deze cmdlet op te lossen als ping is uitgeschakeld.
 
-Zie de volgende voorbeelden van uitvoer van de `Test-Connection` cmdlet.
+Bekijk de volgende voor beelden van uitvoer van de cmdlet `Test-Connection`.
 
 > [!NOTE]
-> In het eerste voorbeeld is het apparaat geconfigureerd met een onjuiste DNS-naam. In het tweede voorbeeld wordt is de DNS-server juist.
+> In het eerste voor beeld is het apparaat geconfigureerd met een onjuiste DNS. In het tweede voor beeld is de DNS juist.
 
-**Voorbeelduitvoer: onjuiste DNS-naam**
+**Voorbeeld uitvoer – onjuiste DNS**
 
-Er wordt geen uitvoer voor de IPV4 en IPV6-adressen, waarmee wordt aangegeven dat de DNS-server niet is omgezet in het volgende voorbeeld. Dit betekent dat er geen verbinding met het externe netwerk en een juiste DNS-server moet worden opgegeven.
-
-     Source        Destination     IPV4Address      IPV6Address
-     ------        -----------     -----------      -----------
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-
-**Voorbeelduitvoer: de juiste DNS**
-
-In het volgende voorbeeld retourneert de DNS-server het IPV4-adres, waarmee wordt aangegeven dat de DNS-server correct is geconfigureerd. Hiermee bevestigt u dat er een verbinding met het externe netwerk is.
+In het volgende voor beeld is er geen uitvoer voor de IPV4-en IPV6-adressen, wat aangeeft dat de DNS niet is opgelost. Dit betekent dat er geen verbinding is met het externe netwerk en dat er een correcte DNS moet worden opgegeven.
 
      Source        Destination     IPV4Address      IPV6Address
      ------        -----------     -----------      -----------
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+
+**Voorbeeld uitvoer-juiste DNS**
+
+In het volgende voor beeld retourneert de DNS het IPV4-adres, waarmee wordt aangegeven dat de DNS juist is geconfigureerd. Hiermee wordt bevestigd dat er verbinding is met het externe netwerk.
+
+     Source        Destination     IPV4Address      IPV6Address
+     ------        -----------     -----------      -----------
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
 
-## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Problemen met de cmdlet Test-HcsmConnection oplossen
-Gebruik de `Test-HcsmConnection` cmdlet voor een apparaat dat al is verbonden met en geregistreerd bij uw StorSimple Device Manager-service. Deze cmdlet kunt u controleren of de netwerkverbinding tussen een geregistreerd apparaat en de bijbehorende StorSimple Device Manager-service. U kunt deze opdracht uitvoert op Windows PowerShell voor StorSimple.
+## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Problemen oplossen met de cmdlet test-HcsmConnection
+Gebruik de cmdlet `Test-HcsmConnection` voor een apparaat dat al is verbonden met en geregistreerd bij uw StorSimple Apparaatbeheer-service. Met deze cmdlet kunt u de connectiviteit controleren tussen een geregistreerd apparaat en de bijbehorende StorSimple-Apparaatbeheer service. U kunt deze opdracht uitvoeren op Windows PowerShell voor StorSimple.
 
-### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>De cmdlet Test-HcsmConnection uitvoeren
+### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>De cmdlet test-HcsmConnection uitvoeren
 1. Zorg ervoor dat het apparaat is geregistreerd.
-2. Controleer de status van het apparaat. Als het apparaat is gedeactiveerd, in de onderhoudsmodus bevinden, of offline is, ziet u mogelijk een van de volgende fouten:
+2. Controleer de Apparaatstatus. Als het apparaat wordt gedeactiveerd, in de onderhouds modus of offline, ziet u mogelijk een van de volgende fouten:
    
-   * ErrorCode.CiSDeviceDecommissioned – dit geeft aan dat het apparaat is gedeactiveerd.
-   * ErrorCode.DeviceNotReady – dit geeft aan dat het apparaat in de onderhoudsmodus bevindt.
-   * ErrorCode.DeviceNotReady – dit geeft aan dat het apparaat niet online is.
-3. Controleren of de StorSimple Device Manager-service wordt uitgevoerd (Gebruik de [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) cmdlet). Als de service wordt niet uitgevoerd, ziet u mogelijk de volgende fouten:
+   * Error code. CiSDeviceDecommissioned: Dit geeft aan dat het apparaat wordt gedeactiveerd.
+   * Error code. DeviceNotReady: Dit geeft aan dat het apparaat zich in de onderhouds modus bevindt.
+   * Error code. DeviceNotReady: Dit geeft aan dat het apparaat niet online is.
+3. Controleer of de StorSimple-Apparaatbeheer service wordt uitgevoerd (gebruik de cmdlet [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) ). Als de service niet wordt uitgevoerd, ziet u mogelijk de volgende fouten:
    
    * ErrorCode.CiSApplianceAgentNotOnline
-   * ErrorCode.CisPowershellScriptHcsError – dit geeft aan dat er een uitzondering opgetreden is bij het uitvoeren van Get-ClusterResource.
-4. Controleer de token van de Access Control Service (ACS). Als dit een Webuitzondering genereert, is het mogelijk het resultaat van een probleem gateway, een ontbrekende proxy-verificatie, een onjuiste DNS-naam of een verificatiefout opgetreden. U ziet mogelijk de volgende fouten:
+   * Error code. CisPowershellScriptHcsError: Dit geeft aan dat er een uitzonde ring is opgetreden bij het uitvoeren van Get-ClusterResource.
+4. Controleer het Access Control Service-token (ACS). Als er een webuitzondering wordt gegenereerd, kan dit het resultaat zijn van een gateway probleem, een ontbrekende proxy verificatie, een onjuiste DNS of een verificatie fout. Mogelijk worden de volgende fouten weer geven:
    
-   * ErrorCode.CiSApplianceGateway – dit geeft aan dat een uitzondering HttpStatusCode.BadGateway: de naam resolver-service kan de hostnaam niet omzetten.
-   * ErrorCode.CiSApplianceProxy – dit geeft aan dat een uitzondering HttpStatusCode.ProxyAuthenticationRequired (HTTP-statuscode 407): de client kan niet worden geverifieerd met de proxyserver.
-   * ErrorCode.CiSApplianceDNSError – dit geeft aan dat een uitzondering WebExceptionStatus.NameResolutionFailure: de naam resolver-service kan de hostnaam niet omzetten.
-   * ErrorCode.CiSApplianceACSError – dit geeft aan dat de service heeft een verificatiefout geretourneerd, maar er een verbinding is.
+   * Error code. CiSApplianceGateway: Dit geeft aan dat er een HTTP status code. BadGateway-uitzonde ring is: de naam resolver-service kan de hostnaam niet omzetten.
+   * Error code. CiSApplianceProxy: Dit geeft aan dat er een HTTP status code. ProxyAuthenticationRequired-uitzonde ring is (HTTP-status code 407): de client kan niet worden geverifieerd bij de proxy server.
+   * Error code. CiSApplianceDNSError: dit duidt op een WebExceptionStatus. NameResolutionFailure-uitzonde ring: de naam resolver-service kan de hostnaam niet omzetten.
+   * Error code. CiSApplianceACSError: Dit geeft aan dat de service een verificatie fout heeft geretourneerd, maar dat er verbinding is.
      
-     Als dit een Webuitzondering niet genereren is, controleert u ErrorCode.CiSApplianceFailure. Hiermee wordt aangegeven dat het apparaat is mislukt.
-5. Controleer de verbinding van de cloud-service. Als de service een Webuitzondering genereert, ziet u mogelijk de volgende fouten:
+     Als er geen web-uitzonde ring wordt gegenereerd, controleert u op error code. CiSApplianceFailure. Dit geeft aan dat het apparaat is mislukt.
+5. Controleer de verbinding met de Cloud service. Als de service een web-uitzonde ring genereert, ziet u mogelijk de volgende fouten:
    
-   * ErrorCode.CiSApplianceGateway – dit geeft aan dat een uitzondering HttpStatusCode.BadGateway: een tussenliggende proxyserver heeft een ongeldige aanvraag ontvangen van een andere proxy of van de oorspronkelijke server.
-   * ErrorCode.CiSApplianceProxy – dit geeft aan dat een uitzondering HttpStatusCode.ProxyAuthenticationRequired (HTTP-statuscode 407): de client kan niet worden geverifieerd met de proxyserver.
-   * ErrorCode.CiSApplianceDNSError – dit geeft aan dat een uitzondering WebExceptionStatus.NameResolutionFailure: de naam resolver-service kan de hostnaam niet omzetten.
-   * ErrorCode.CiSApplianceACSError – dit geeft aan dat de service heeft een verificatiefout geretourneerd, maar er een verbinding is.
+   * Error code. CiSApplianceGateway: Dit geeft aan dat er een HTTP status code. BadGateway-uitzonde ring: een tussenliggende proxy server een ongeldige aanvraag van een andere proxy of van de oorspronkelijke server heeft ontvangen.
+   * Error code. CiSApplianceProxy: Dit geeft aan dat er een HTTP status code. ProxyAuthenticationRequired-uitzonde ring is (HTTP-status code 407): de client kan niet worden geverifieerd bij de proxy server.
+   * Error code. CiSApplianceDNSError: dit duidt op een WebExceptionStatus. NameResolutionFailure-uitzonde ring: de naam resolver-service kan de hostnaam niet omzetten.
+   * Error code. CiSApplianceACSError: Dit geeft aan dat de service een verificatie fout heeft geretourneerd, maar dat er verbinding is.
      
-     Als dit een Webuitzondering niet genereren is, controleert u ErrorCode.CiSApplianceSaasServiceError. Dit duidt op een probleem met de StorSimple Device Manager-service.
-6. Controleer de connectiviteit van Azure Service Bus. ErrorCode.CiSApplianceServiceBusError geeft aan dat het apparaat kan geen verbinding met de Service Bus maken.
+     Als er geen web-uitzonde ring wordt gegenereerd, controleert u op error code. CiSApplianceSaasServiceError. Dit duidt op een probleem met de StorSimple-Apparaatbeheer service.
+6. Controleer de Azure Service Bus-verbinding. Error code. CiSApplianceServiceBusError geeft aan dat het apparaat geen verbinding kan maken met de Service Bus.
 
-De logboekbestanden CiSCommandletLog0Curr.errlog en CiSAgentsvc0Curr.errlog heeft meer informatie, zoals details van uitzondering.
+De logboek bestanden CiSCommandletLog0Curr. errlog en CiSAgentsvc0Curr. errlog hebben meer informatie, zoals Details van uitzonde ringen.
 
-Voor meer informatie over het gebruik van de cmdlet, gaat u naar [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) in Windows PowerShell-referentiedocumentatie.
+Ga naar [test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) in de Windows Power shell-referentie documentatie voor meer informatie over het gebruik van de cmdlet.
 
 > [!IMPORTANT]
-> U kunt deze cmdlet voor zowel de actieve als de passieve controller uitgevoerd.
+> U kunt deze cmdlet uitvoeren voor zowel de actieve als de passieve controller.
 
-Zie de volgende voorbeelden van uitvoer van de `Test-HcsmConnection` cmdlet.
+Bekijk de volgende voor beelden van uitvoer van de cmdlet `Test-HcsmConnection`.
 
-**Voorbeeld van uitvoer: geregistreerd apparaat waarop StorSimple Update 3**
+**Voor beeld van uitvoer: het apparaat is geregistreerd met StorSimple update 3**
 
       Controller1>Test-HcsmConnection
 
@@ -337,23 +337,23 @@ Zie de volgende voorbeelden van uitvoer van de `Test-HcsmConnection` cmdlet.
       Checking connectivity to Microsoft Update servers  ... Success
       Controller1>
 
-**Voorbeelduitvoer: offline apparaat** 
+**Voorbeeld uitvoer – offline apparaat** 
 
-Dit voorbeeld is van een apparaat met de status van **Offline** in Azure portal.
+Dit voor beeld is afkomstig van een apparaat met de status **offline** in het Azure Portal.
 
      Checking device registrationstate: Success
      Device is registered successfully
      Checking connectivity from device to SaaS.. Failure
 
-Het apparaat kan geen verbinding maken met behulp van de huidige configuratie van de web-proxy. Dit wordt mogelijk een probleem met de configuratie van uw webproxy of een probleem met de netwerkverbinding. In dit geval moet u ervoor dat de webproxy-instellingen juist zijn en uw webproxyservers online en bereikbaar zijn.
+Het apparaat kan geen verbinding maken met behulp van de huidige web proxy-configuratie. Dit kan een probleem zijn met de configuratie van de webproxy of een probleem met de netwerk verbinding. In dit geval moet u er zeker van zijn dat uw webproxy-instellingen juist zijn en uw webproxyservers online en bereikbaar zijn.
 
-## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Problemen met de cmdlet Sync-HcsTime oplossen
-Deze cmdlet gebruiken om de apparaattijd weer te geven. Als de tijd op het apparaat een offset met de NTP-server heeft, kunt u deze cmdlet kunt vervolgens de tijd met een force synchroniseren met uw NTP-server gebruiken.
-- Als de afstand tussen het apparaat en de NTP-server groter dan 5 minuten is, ziet u een waarschuwing. 
-- Als de verschuiving van de groter is dan 15 minuten, wordt het apparaat offline gaat. U kunt deze cmdlet nog steeds gebruiken om af te dwingen een tijdsynchronisatie. 
-- Echter, als de verschuiving van de groter is dan 15 uur, klikt u vervolgens u wordt pas weer force-synchronisatie die de tijd en een foutbericht wordt weergegeven.
+## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Problemen oplossen met de cmdlet Sync-HcsTime
+Gebruik deze cmdlet om de tijd van het apparaat weer te geven. Als de apparaattijd een offset heeft met de NTP-server, kunt u deze cmdlet vervolgens gebruiken om de tijd te synchroniseren met uw NTP-server.
+- Als de offset tussen het apparaat en de NTP-server langer is dan vijf minuten, wordt er een waarschuwing weer gegeven. 
+- Als de offset 15 minuten overschrijdt, wordt het apparaat offline gezet. U kunt deze cmdlet nog steeds gebruiken voor het afdwingen van een tijd synchronisatie. 
+- Als de offset echter 15 uur overschrijdt, kunt u de tijd niet meer synchroniseren en wordt er een fout bericht weer gegeven.
 
-**Voorbeeld van uitvoer: geforceerde tijdsynchronisatie met Sync-HcsTime**
+**Voorbeeld uitvoer – geforceerde tijd synchronisatie met Sync-HcsTime**
 
      Controller0>Sync-HcsTime
      The current device time is 4/24/2015 4:05:40 PM UTC.
@@ -363,9 +363,9 @@ Deze cmdlet gebruiken om de apparaattijd weer te geven. Als de tijd op het appar
      Controller0>
 
 ## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Problemen oplossen met de cmdlets Enable-HcsPing en Disable-HcsPing
-Deze cmdlets gebruiken om ervoor te zorgen dat de netwerkinterfaces op uw apparaat op ICMP-ping-aanvragen reageert. Standaard reageren de StorSimple-netwerkinterfaces niet op aanvragen van de ping. Met deze cmdlet is de eenvoudigste manier om te weten of uw apparaat online en bereikbaar is is.
+Gebruik deze cmdlets om ervoor te zorgen dat de netwerk interfaces op uw apparaat reageren op ICMP-ping-aanvragen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen. Het gebruik van deze cmdlet is de eenvoudigste manier om erachter te komen of uw apparaat online en bereikbaar is.
 
-**Voorbeeld van uitvoer: Enable-HcsPing en Disable-HcsPing**
+**Voorbeeld uitvoer: Enable-HcsPing en Disable-HcsPing**
 
      Controller0>
      Controller0>Enable-HcsPing
@@ -377,9 +377,9 @@ Deze cmdlets gebruiken om ervoor te zorgen dat de netwerkinterfaces op uw appara
      Controller0>
 
 ## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Problemen oplossen met de cmdlet Trace-HcsRoute
-Deze cmdlet gebruiken als een hulpmiddel voor het traceren van route. Deze pakketten verzendt naar elke router op de manier om een uiteindelijke bestemming gedurende een bepaalde periode en vervolgens worden berekend op basis van de pakketten die zijn geretourneerd door elke hop resultaten. Omdat de cmdlet ziet u de mate van pakketverlies op elke router en koppeling, u kunt achterhalen welke routers of koppelingen mogelijk veroorzaakt door problemen met het netwerk.
+Gebruik deze cmdlet als een hulp programma voor route tracering. Er worden pakketten naar elke router verzonden naar een eind bestemming gedurende een bepaalde periode en vervolgens worden de resultaten berekend op basis van de pakketten die worden geretourneerd door elke hop. Omdat met de cmdlet de mate van pakket verlies bij een router of koppeling wordt weer gegeven, kunt u bepalen welke routers of koppelingen mogelijk netwerk problemen veroorzaken.
 
-**Voorbeeld van de uitvoer van het traceren van de route van een pakket met de Trace-HcsRoute**
+**Voorbeeld uitvoer waarin wordt getoond hoe u de route van een pakket traceert met Trace-HcsRoute**
 
      Controller0>Trace-HcsRoute -Target 10.126.174.25
 
@@ -399,15 +399,15 @@ Deze cmdlet gebruiken als een hulpmiddel voor het traceren van route. Deze pakke
      Trace complete.
 
 ## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Problemen oplossen met de cmdlet Get-HcsRoutingTable
-Deze cmdlet gebruiken om de routeringstabel voor uw StorSimple-apparaat weer te geven. Een routeringstabel is een set regels die u bepalen waar de gegevenspakketten die via een netwerk IP (Internet Protocol kunt) wordt gevraagd.
+Gebruik deze cmdlet om de routerings tabel voor uw StorSimple-apparaat weer te geven. Een routerings tabel is een set regels die u kan helpen bepalen waar gegevens pakketten die via een Internet Protocol-netwerk worden verzonden, worden omgeleid.
 
-De routeringstabel toont de interfaces en de gateway die de gegevens naar de opgegeven netwerken routeert. Het biedt ook de routering metrische gegevens die de besluitvormer voor het pad naar een bepaald doel te bereiken. Des te lager de routering metrische gegevens, hoe hoger de voorkeur.
+De routerings tabel toont de interfaces en de gateway die de gegevens naar de opgegeven netwerken routeren. Het biedt ook de para meters van de route ring, de maker van het pad dat wordt gebruikt om een bepaald doel te bereiken. Hoe lager de routerings metriek, des te hoger de voor keur.
 
-Bijvoorbeeld, hebt u 2 netwerkinterfaces DATA 2 en DATA 3, verbonden met Internet. Als de routering metrische gegevens voor de DATA 2 en DATA 3 respectievelijk 15 en 261 zijn, is 2 van de gegevens met lagere routering metric de voorkeursinterface gebruikt voor het bereiken van het Internet.
+Als u bijvoorbeeld 2 netwerk interfaces, DATA 2 en DATA 3 hebt, verbonden met internet. Als de metrische gegevens van de route ring voor DATA 2 en DATA 3 respectievelijk 15 en 261 zijn, is gegevens 2 met de laagste routerings metriek de voorkeurs interface die wordt gebruikt om het Internet te bereiken.
 
-Als u Update 1 op uw StorSimple-apparaat worden uitgevoerd, heeft uw DATA 0-netwerkinterface de hoogste voorkeur voor het cloudverkeer. Dit betekent dat zelfs als er andere interfaces ingeschakeld voor de cloud zijn, het cloudverkeer zou worden gerouteerd via DATA 0.
+Als u update 1 op uw StorSimple-apparaat uitvoert, heeft uw DATA 0-netwerk interface de hoogste voor keur voor het Cloud verkeer. Dit betekent dat zelfs als er andere Cloud interfaces zijn ingeschakeld, het Cloud verkeer wordt gerouteerd via gegevens 0.
 
-Als u de `Get-HcsRoutingTable` cmdlet zonder parameters (zoals het volgende voorbeeld wordt getoond) de cmdlet zowel IPv4 als IPv6-routeringstabel wordt uitgevoerd. U kunt ook opgeven `Get-HcsRoutingTable -IPv4` of `Get-HcsRoutingTable -IPv6` om op te halen van een relevante routeringstabel.
+Als u de cmdlet `Get-HcsRoutingTable` uitvoert zonder para meters op te geven (zoals in het volgende voor beeld), voert de cmdlet zowel IPv4-als IPv6-routerings tabellen uit. U kunt ook `Get-HcsRoutingTable -IPv4` of `Get-HcsRoutingTable -IPv6` opgeven om een relevante routerings tabel op te halen.
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -473,61 +473,61 @@ Als u de `Get-HcsRoutingTable` cmdlet zonder parameters (zoals het volgende voor
 
       Controller0>
 
-## <a name="step-by-step-storsimple-troubleshooting-example"></a>Voorbeeld van stapsgewijze StorSimple-probleemoplossing
-Het volgende voorbeeld ziet stapsgewijze oplossen van problemen met een StorSimple-implementatie. In het voorbeeldscenario device Registration service is mislukt met een foutbericht met de mededeling dat de instellingen van het netwerk of de DNS-naam onjuist is.
+## <a name="step-by-step-storsimple-troubleshooting-example"></a>Voor beeld van Step-by-Step StorSimple Troubleshooting
+In het volgende voor beeld ziet u stapsgewijze oplossingen voor een StorSimple-implementatie. In het voorbeeld scenario mislukt apparaatregistratie met een fout bericht dat aangeeft dat de netwerk instellingen of de DNS-naam onjuist zijn.
 
-Het foutbericht dat wordt geretourneerd is:
+Het geretourneerde fout bericht is:
 
      Invoke-HcsSetupWizard: An error has occurred while registering the device. This could be due to incorrect IP address or DNS name. Please check your network settings and try again. If the problems persist, contact Microsoft Support.
      +CategoryInfo: Not specified
      +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 
-De fout wordt mogelijk veroorzaakt door een van de volgende:
+De fout kan een van de volgende oorzaken hebben:
 
-* Installatie van de onjuiste hardware
-* Defecte netwerk (s)
+* Onjuiste hardware-installatie
+* Defecte netwerk interface (s)
 * Onjuist IP-adres, subnetmasker, gateway, primaire DNS-server of webproxy
-* Ongeldige registratiesleutel
-* Onjuiste firewall-instellingen
+* Onjuiste registratie sleutel
+* Onjuiste firewall instellingen
 
-### <a name="to-locate-and-fix-the-device-registration-problem"></a>Om te zoeken en los het probleem van de registratie van apparaat
-1. Controleer de apparaatconfiguratie van uw: Voer op de actieve controller `Invoke-HcsSetupWizard`.
+### <a name="to-locate-and-fix-the-device-registration-problem"></a>Het registratie probleem van het apparaat zoeken en oplossen
+1. Controleer de apparaatconfiguratie: Voer `Invoke-HcsSetupWizard`uit op de actieve controller.
    
    > [!NOTE]
-   > De wizard setup moet uitvoeren op de actieve controller. Om te controleren dat u met de actieve controller verbonden bent, bekijkt u de banner weergegeven in de seriële console. De banner geeft aan of u bent verbonden met controller 0 of 1-controller, en of de domeincontroller actief of passief is. Ga voor meer informatie naar [actieve controller op uw apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
+   > De wizard Setup moet worden uitgevoerd op de actieve controller. Als u wilt controleren of u verbinding hebt met de actieve controller, bekijkt u de banner die in de seriële console wordt weer gegeven. De banner geeft aan of u verbonden bent met controller 0 of controller 1 en of de controller actief of passief is. Ga voor meer informatie naar [een actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
    
-2. Zorg ervoor dat het apparaat juist is bekabeld: Controleer het netwerk op het apparaat terug gegevensvlak-bekabeling. De bekabeling is specifiek voor het model. Ga voor meer informatie naar [uw StorSimple 8100-apparaat installeert](storsimple-8100-hardware-installation.md) of [uw StorSimple 8600-apparaat installeert](storsimple-8600-hardware-installation.md).
+2. Controleer of het apparaat op de juiste wijze is aangesloten: Controleer de netwerk kabels op het apparaat van de back-upvlak. De bekabeling is specifiek voor het model van het apparaat. Ga voor meer informatie naar [uw StorSimple 8100-apparaat installeren](storsimple-8100-hardware-installation.md) of [installeer uw StorSimple 8600-apparaat](storsimple-8600-hardware-installation.md).
    
    > [!NOTE]
-   > Als u van 10 GbE-netwerkpoorten gebruikmaakt, moet u het gebruik van de opgegeven QSFP SFP-adapters en SFP-kabels. Zie voor meer informatie de [lijst kabels en switches infraroodzenders aanbevolen voor de 10 GbE-poorten](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+   > Als u 10 GbE-netwerk poorten gebruikt, moet u de meegeleverde QSFP-SFP-adapters en SFP-kabels gebruiken. Zie voor meer informatie de [lijst met kabels, switches en transceivers die worden aanbevolen voor de 10 GbE-poorten](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
   
-3. Controleer of de status van de netwerkinterface:
+3. Controleer de status van de netwerk interface:
    
-   * Gebruik de cmdlet Get-NetAdapter voor het detecteren van de status van de netwerkinterfaces voor de DATA 0. 
-   * Als de koppeling wordt niet werkt, de **ifindex** status wordt aangegeven dat de interface is niet actief is. Vervolgens moet u om te controleren of de netwerkverbinding van de poort op het apparaat en de switch. U moet ook sprake is van slechte kabels. 
-   * Als u vermoedt dat de DATA 0-poort op de actieve controller is mislukt, u dit controleren kunt door verbinding te maken met de DATA 0-poort op controller 1. U kunt dit controleren de netwerkkabel verbreken op de achterkant van het apparaat vanaf controller 0, sluit de kabel en controller 1 en voer de cmdlet Get-NetAdapter opnieuw uit.
-     Als de DATA 0-op een domeincontroller poort is mislukt, [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. U moet mogelijk de controller op uw systeem vervangen.
-4. Controleer of de verbinding met de switch:
+   * Gebruik de cmdlet Get-netadapter om de status van de netwerk interfaces voor DATA 0 te detecteren. 
+   * Als de koppeling niet werkt, wordt in de status van **ifindex** aangegeven dat de interface niet beschikbaar is. Vervolgens moet u de netwerk verbinding van de poort naar het apparaat en de switch controleren. U moet ook onjuiste kabels uitchecken. 
+   * Als u vermoedt dat de DATA 0-poort op de actieve controller is mislukt, kunt u dit bevestigen door verbinding te maken met de DATA 0-poort op controller 1. Om dit te bevestigen, verbreekt u de verbinding tussen de netwerk kabel en de achterkant van het apparaat van controller 0, sluit u de kabel aan op controller 1 en voert u de cmdlet Get-netadapter opnieuw uit.
+     Als de DATA 0-poort op een controller mislukt, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. Mogelijk moet u de controller op het systeem vervangen.
+4. Controleer de verbinding met de switch:
    
-   * Zorg ervoor dat DATA 0-netwerkinterfaces op controller 0 en controller 1 in uw primaire behuizing zich op hetzelfde subnet bevinden. 
-   * Controleer de hub of een router. Normaal gesproken moet u beide controllers verbinding maken met de dezelfde hub of een router. 
-   * Zorg ervoor dat de switches die u voor de verbinding gebruikt DATA 0 voor beide controllers in hetzelfde vLAN hebben.
-5. Elimineer gebruikersfouten:
+   * Zorg ervoor dat de gegevens 0 netwerk interfaces op controller 0 en controller 1 in uw primaire behuizing zich in hetzelfde subnet bevinden. 
+   * Controleer de hub of router. Normaal gesp roken moet u beide controllers verbinden met dezelfde hub of router. 
+   * Zorg ervoor dat de switches die u voor de verbinding gebruikt, gegevens 0 hebben voor beide controllers in hetzelfde vLAN.
+5. Gebruikers fouten elimineren:
    
-   * De wizard setup opnieuw uitvoeren (Voer **Invoke-hcssetupwizard uit**), en voer de waarden opnieuw om het ervoor te zorgen dat er geen fouten zijn. 
-   * Controleer of de registratie van de sleutel die wordt gebruikt. Dezelfde registratiesleutel kan worden gebruikt op meerdere apparaten verbinden met een StorSimple Device Manager-service. Gebruik de procedure in [de serviceregistratiesleutel ophalen](storsimple-8000-manage-service.md#get-the-service-registration-key) om ervoor te zorgen dat u van de juiste registratiesleutel gebruikmaakt.
+   * Voer de installatie wizard opnieuw uit (Voer **invoke-hcssetupwizard uit**uit) en geef de waarden opnieuw op om ervoor te zorgen dat er geen fouten zijn. 
+   * Controleer de gebruikte registratie sleutel. Dezelfde registratie sleutel kan worden gebruikt om meerdere apparaten te verbinden met een StorSimple-Apparaatbeheer service. Gebruik de procedure in [down load de service registratie sleutel](storsimple-8000-manage-service.md#get-the-service-registration-key) om ervoor te zorgen dat u de juiste registratie sleutel gebruikt.
      
      > [!IMPORTANT]
-     > Als u meerdere services die worden uitgevoerd hebt, moet u om ervoor te zorgen dat de registratiesleutel voor de betreffende service wordt gebruikt om het apparaat te registreren. Als u een apparaat hebt geregistreerd met de verkeerde StorSimple Device Manager-service, moet u [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor de volgende stappen. Mogelijk moet de fabrieksinstellingen van het apparaat (deze kan leiden tot verlies van gegevens) worden uitgevoerd en vervolgens verbinden met de gewenste service.
+     > Als er meerdere services worden uitgevoerd, moet u ervoor zorgen dat de registratie sleutel voor de juiste service wordt gebruikt om het apparaat te registreren. Als u een apparaat met de verkeerde StorSimple-Apparaatbeheer service hebt geregistreerd, moet u [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om de volgende stappen uit te voeren. Mogelijk moet u de fabrieks instellingen van het apparaat opnieuw instellen (wat kan leiden tot gegevens verlies) om deze vervolgens te verbinden met de gewenste service.
      > 
      > 
-6. Gebruik de cmdlet Test-Connection om te controleren of dat er een verbinding met het externe netwerk. Ga voor meer informatie naar [problemen oplossen met de cmdlet Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
-7. Controleer of firewall storingen. Als u hebt gecontroleerd of de virtuele IP-adres (VIP), subnet, gateway en DNS-instellingen juist, zijn en ziet u nog steeds problemen met de netwerkverbinding, dan is het mogelijk dat de communicatie tussen uw apparaat en het externe netwerk door uw firewall wordt geblokkeerd. U moet ervoor zorgen dat de poorten 80 en 443 beschikbaar op uw StorSimple-apparaat voor uitgaande communicatie zijn. Zie voor meer informatie, [netwerkvereisten voor uw StorSimple-apparaat](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
-8. Bekijk de logboeken. Ga naar [ondersteuning voor pakketten en logboeken van het apparaat beschikbaar voor het oplossen van](#support-packages-and-device-logs-available-for-troubleshooting).
-9. Als de voorgaande stappen het probleem niet wordt opgelost [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor hulp.
+6. Gebruik de cmdlet Test-Connection om te controleren of u verbinding hebt met het externe netwerk. Ga voor meer informatie naar [problemen oplossen met de cmdlet Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
+7. Controleren op Firewall interferentie. Als u hebt gecontroleerd of de instellingen voor de virtuele IP (VIP), het subnet, de gateway en DNS juist zijn en u nog steeds verbindings problemen ziet, is het mogelijk dat de firewall de communicatie blokkeert tussen uw apparaat en het externe netwerk. U moet ervoor zorgen dat de poorten 80 en 443 op uw StorSimple-apparaat beschikbaar zijn voor uitgaande communicatie. Zie [netwerk vereisten voor uw StorSimple-apparaat](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)voor meer informatie.
+8. Bekijk de logboeken. Ga naar [ondersteunings pakketten en logboeken voor apparaten die beschikbaar zijn voor het oplossen van problemen](#support-packages-and-device-logs-available-for-troubleshooting).
+9. Als de voor gaande stappen het probleem niet oplossen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Leer hoe u het hulpprogramma Diagnostics gebruiken om op te lossen van een StorSimple-apparaat](storsimple-8000-diagnostics.md).
+[Meer informatie over het gebruik van het diagnostische hulp programma voor het oplossen van problemen met een StorSimple-apparaat](storsimple-8000-diagnostics.md).
 
 <!--Link references-->
 

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791746"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358978"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Lussen maken waarmee werk stroom acties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
@@ -176,7 +176,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
    | Eigenschap | Waarde |
    | -------- | ----- |
    | **Interval** | 1 | 
-   | **Frequentie** | Dag |
+   | **Frequentie** | Day |
    | **Deze uren** | 8 |
    ||| 
 
@@ -232,7 +232,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
       | Eigenschap | Waarde | Beschrijving |
       | -------- | ----- | ----------- | 
-      | **Aan** | *\<e-mail adres\@domein >* | het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
+      | **Aan** | *\<e-mail adres\@domein >* | Het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
       | **Onderwerp** | De huidige waarde voor limiet is **limiet** | Geef het onderwerp van de e-mail op. Voor dit voor beeld moet u de **limiet** variabele toevoegen. | 
       | **Hoofdtekst** | <- *e-mail-inhoud*> | Geef de inhoud van het e-mail bericht op die u wilt verzenden. Voor dit voor beeld voert u de gewenste tekst in. | 
       |||| 
@@ -333,7 +333,7 @@ In dit voor beeld ' until ' wordt een HTTP-eind punt aangeroepen, waardoor een r
 }
 ```
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
 * Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 * [Azure Logic apps site voor gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of te stemmen.

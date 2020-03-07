@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615513"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390710"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevensplatforms die worden ondersteund op de Data Science Virtual Machine
 
@@ -23,7 +23,7 @@ Met een Data Science Virtual Machine (DSVM) kunt u uw analyses maken op basis va
 
 De volgende hulpprogram ma's voor gegevens platforms worden ondersteund op de DSVM.
 
-## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
+## <a name="sql-server-developer-edition"></a>SQL Server Developer-editie
 
 | | |
 | ------------- | ------------- |
@@ -55,7 +55,7 @@ Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM? 
 
- SQL Server wordt op de normale manier geïnstalleerd. Kan worden gevonden op `C:\Program Files\Microsoft SQL Server`. De Machine Learning Server-instantie in de data base is gevonden op `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. De DSVM heeft ook een afzonderlijke zelfstandige Machine Learning Server instantie, die wordt geïnstalleerd op `C:\Program Files\Microsoft\R Server\R_SERVER`. Deze twee Machine Learning Server exemplaren delen geen bibliotheken.
+ SQL Server wordt op de normale manier geïnstalleerd. U kunt het vinden op `C:\Program Files\Microsoft SQL Server`. De Machine Learning Server-instantie in de data base is gevonden op `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. De DSVM heeft ook een afzonderlijke zelfstandige Machine Learning Server instantie, die wordt geïnstalleerd op `C:\Program Files\Microsoft\R Server\R_SERVER`. Deze twee Machine Learning Server exemplaren delen geen bibliotheken.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark-2.x (zelfstandig)

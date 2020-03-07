@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292923"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356766"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -92,10 +92,10 @@ Zie de [Application Insights-documentatie](https://docs.microsoft.com/azure/appl
 
 De volgende gebieden van Application Insights kunnen nuttig zijn bij het evalueren van het gedrag, de prestaties en de fouten in uw functies:
 
-| Tab-toets | Beschrijving |
+| Tabbesturingselement | Beschrijving |
 | ---- | ----------- |
 | **[Masters](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
-| **[Performance](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen. |
+| **[Nemen](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen. |
 | **Servers** | Het resource gebruik en de door Voer per server weer geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. Servers worden aangeduid als instanties in de **Cloud**. |
 | **[Metrische gegevens](../azure-monitor/app/metrics-explorer.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
 | **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
@@ -126,7 +126,7 @@ De tabellen die beschikbaar zijn, worden weer gegeven op het tabblad **schema** 
 | **uitzonderingen** | Eventuele uitzonde ringen die worden veroorzaakt door de runtime. |
 | **customMetrics** | Het aantal geslaagde en mislukte aanroepen, succes percentage en duur. |
 | **customEvents** | Gebeurtenissen die worden bijgehouden door de runtime, bijvoorbeeld: HTTP-aanvragen die een functie activeren. |
-| **performanceCounters** | Informatie over de prestaties van de servers waarop de functies worden uitgevoerd. |
+| **Performance Counters** | Informatie over de prestaties van de servers waarop de functies worden uitgevoerd. |
 
 De andere tabellen zijn voor beschikbaarheids testen en voor client-en browser-telemetrie. U kunt aangepaste telemetrie implementeren om er gegevens aan toe te voegen.
 
@@ -151,19 +151,19 @@ Met de functie runtime worden logboeken gemaakt met een categorie die begint met
 
 Als u Logboeken in uw functie code schrijft, wordt de categorie `Function` in versie 1. x van de functions-runtime. In versie 2. x is de categorie `Function.<YOUR_FUNCTION_NAME>.User`.
 
-### <a name="log-levels"></a>Logboekniveaus
+### <a name="log-levels"></a>Logboek niveaus
 
 De Azure Functions logger bevat ook een *logboek niveau* voor elk logboek. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) is een inventarisatie en de gehele code geeft het relatieve belang aan:
 
-|LogLevel    |Coderen|
+|LogLevel    |Code|
 |------------|---|
 |Tracering       | 0 |
-|Foutopsporing       | 1 |
+|Fouten opsporen       | 1 |
 |Informatie | 2 |
 |Waarschuwing     | 3 |
 |Fout       | 4 |
 |Kritiek    | 5 |
-|Geen        | 6 |
+|None        | 6 |
 
 Het `None` van het logboek niveau wordt uitgelegd in de volgende sectie. 
 
@@ -642,7 +642,7 @@ Selecteer **Live Metrics stream**in Application Insights. [Voorbeeld logboek ver
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 U kunt streaming-logboeken inschakelen met behulp van de [Azure cli](/cli/azure/install-azure-cli). Gebruik de volgende opdrachten om u aan te melden, uw abonnement te kiezen en logboek bestanden te streamen:
 

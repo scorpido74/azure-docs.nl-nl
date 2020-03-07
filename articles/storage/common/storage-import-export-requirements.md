@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360930"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export-systeemvereisten
 
@@ -21,20 +21,20 @@ Dit artikel beschrijft de belangrijke vereisten voor uw Azure Import/Export-serv
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Voor het voorbereiden van de harde schijven met het hulpprogramma WAImportExport van de volgende **64-bits besturingssysteem die ondersteuning bieden voor BitLocker-stationsversleuteling** worden ondersteund.
+Om de harde schijven voor te bereiden met het WAImportExport-hulp programma, worden het volgende **64-bits besturings systeem ondersteund dat ondersteuning biedt voor BitLocker-stationsversleuteling** .
 
 
-|Platform |Versie |
+|Platform |Version |
 |---------|---------|
 |Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> WindowsServer 2012, Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Andere vereiste software voor Windows-client
 
-|Platform |Versie |
+|Platform |Version |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
-| BitLocker        |  _          |
+| BitLocker        |  \_          |
 
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
@@ -45,19 +45,19 @@ Azure Import/Export-service ondersteunt de volgende typen opslagaccounts:
 - Blob Storage-accounts
 - Algemeen v1-opslag accounts (klassiek of Azure Resource Manager implementaties),
 
-Zie voor meer informatie over de storage-accounts, [overzicht van Azure storage-accounts](storage-account-overview.md).
+Zie [overzicht van Azure Storage-accounts](storage-account-overview.md)voor meer informatie over opslag accounts.
 
-Elke taak kan worden gebruikt voor het overbrengen van gegevens naar of van slechts één opslagaccount. Een taak één import/export kan niet met andere woorden, omvatten voor meerdere opslagaccounts. Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-account-create.md).
+Elke taak kan worden gebruikt voor het overbrengen van gegevens naar of van slechts één opslagaccount. Een taak één import/export kan niet met andere woorden, omvatten voor meerdere opslagaccounts. Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 
 > [!IMPORTANT]
-> De Azure Import Export-service biedt geen ondersteuning voor storage-accounts waarbij de [Virtual Network-Service-eindpunten](../../virtual-network/virtual-network-service-endpoints-overview.md) functie is ingeschakeld. 
+> De Azure import-export service biedt geen ondersteuning voor opslag accounts waarbij de [Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md) functie is ingeschakeld. 
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 
 De volgende lijst met opslagtypen wordt ondersteund met Azure Import/Export-service.
 
 
-|Taak  |Storage-Service |Ondersteund  |Niet ondersteund  |
+|Job  |Storage-Service |Ondersteund  |Niet ondersteund  |
 |---------|---------|---------|---------|
 |Importeren     |  Azure Blob Storage <br><br> Azure File storage       | Blok-Blobs en pagina-blobs ondersteund <br><br> Ondersteunde bestanden          |
 |Exporteren     |   Azure Blob Storage       | Blok-blobs, pagina-blobs en toevoeg-blobs ondersteund         | Azure Files niet ondersteund
@@ -93,6 +93,6 @@ Bij het voorbereiden van harde schijven en kopiëren van de gegevens met behulp 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Instellen van het hulpprogramma WAImportExport](storage-import-export-tool-how-to.md)
+* [Het hulp programma WAImportExport instellen](storage-import-export-tool-how-to.md)
 * [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](storage-use-azcopy.md)
-* [Voorbeeld van Azure Import Export REST-API](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Voor beeld van Azure import-export REST API](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

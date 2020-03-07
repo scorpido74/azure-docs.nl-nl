@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374315"
 ---
 # <a name="api-management-policy-expressions"></a>API Management-beleids expressies
 In dit artikel wordt de syntaxis van beleids C# expressies in 7 beschreven. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
@@ -76,134 +76,134 @@ De volgende tabel bevat de .NET Framework typen en de leden die zijn toegestaan 
 
 |Type|Ondersteunde leden|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|Alles|
+|Newtonsoft.Json.Formatting|Alle|
 |Newtonsoft.Json.JsonConvert|Serializeobject verwachtte, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Alles|
-|Newtonsoft.Json.Linq.JArray|Alles|
-|Newtonsoft.Json.Linq.JConstructor|Alles|
-|Newtonsoft.Json.Linq.JContainer|Alles|
-|Newtonsoft.Json.Linq.JObject|Alles|
-|Newtonsoft.Json.Linq.JProperty|Alles|
-|Newtonsoft.Json.Linq.JRaw|Alles|
-|Newtonsoft.Json.Linq.JToken|Alles|
-|Newtonsoft.Json.Linq.JTokenType|Alles|
-|Newtonsoft.Json.Linq.JValue|Alles|
-|System. matrix|Alles|
-|System.BitConverter|Alles|
-|System. Boolean|Alles|
-|System.Byte|Alles|
-|System. char|Alles|
-|System. Collections. generic. dictionary < TKey, TValue >|Alles|
-|System.Collections.Generic.HashSet\<T>|Alles|
-|System. Collections. generic. ICollection\<T >|Alles|
-|System. Collections. generic. IDictionary < TKey, TValue >|Alles|
-|System. Collections. generic. IEnumerable\<T >|Alles|
-|System. Collections. generic. IEnumerator\<T >|Alles|
-|System. Collections. generic. IList\<T >|Alles|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Alles|
-|System. Collections. generic. IReadOnlyDictionary < TKey, TValue >|Alles|
-|System. Collections. generic. ISet\<T >|Alles|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Alles|
-|System.Collections.Generic.List\<T>|Alles|
-|System.Collections.Generic.Queue\<T>|Alles|
-|System. Collections. generic. stack\<T >|Alles|
-|Systeem. Convert|Alles|
+|Newtonsoft.Json.Linq.Extensions|Alle|
+|Newtonsoft.Json.Linq.JArray|Alle|
+|Newtonsoft.Json.Linq.JConstructor|Alle|
+|Newtonsoft.Json.Linq.JContainer|Alle|
+|Newtonsoft.Json.Linq.JObject|Alle|
+|Newtonsoft.Json.Linq.JProperty|Alle|
+|Newtonsoft.Json.Linq.JRaw|Alle|
+|Newtonsoft.Json.Linq.JToken|Alle|
+|Newtonsoft.Json.Linq.JTokenType|Alle|
+|Newtonsoft.Json.Linq.JValue|Alle|
+|System. matrix|Alle|
+|System.BitConverter|Alle|
+|System. Boolean|Alle|
+|System.Byte|Alle|
+|System. char|Alle|
+|System. Collections. generic. dictionary < TKey, TValue >|Alle|
+|System. Collections. generic. Hashset\<T >|Alle|
+|System. Collections. generic. ICollection\<T >|Alle|
+|System. Collections. generic. IDictionary < TKey, TValue >|Alle|
+|System. Collections. generic. IEnumerable\<T >|Alle|
+|System. Collections. generic. IEnumerator\<T >|Alle|
+|System. Collections. generic. IList\<T >|Alle|
+|System. Collections. generic. IReadOnlyCollection\<T >|Alle|
+|System. Collections. generic. IReadOnlyDictionary < TKey, TValue >|Alle|
+|System. Collections. generic. ISet\<T >|Alle|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Alle|
+|System. Collections. generic. list\<T >|Alle|
+|System. Collections. generic. Queue\<T >|Alle|
+|System. Collections. generic. stack\<T >|Alle|
+|Systeem. Convert|Alle|
 |System.DateTime|(Constructor), toevoegen, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, datum, dag, DayOfWeek, DayOfYear, DaysInMonth, uur, IsDaylightSavingTime, IsLeapYear, MaxValue, milliseconde, minuut, MinValue, maand, nu , Parseren, seconde, aftrekken, Ticks, TimeOfDay, vandaag, ToString, UtcNow, year|
 |System.DateTimeKind|Utc|
-|System.DateTimeOffset|Alles|
-|Systeem. decimaal|Alles|
-|Systeem. Double|Alles|
-|System. Exception|Alles|
-|System. GUID|Alles|
-|System. Int16|Alles|
-|System. Int32|Alles|
-|System. Int64|Alles|
-|System. IO. StringReader|Alles|
-|System. IO. StringWriter|Alles|
-|System. LINQ. overzicht|Alles|
-|System.Math|Alles|
-|System.MidpointRounding|Alles|
-|System.Net.WebUtility|Alles|
-|System. Nullbaar|Alles|
-|Systeem. wille keurig|Alles|
-|System.SByte|Alles|
-|System. Security. Cryptography. AsymmetricAlgorithm|Alles|
-|System.Security.Cryptography.CipherMode|Alles|
-|System.Security.Cryptography.HashAlgorithm|Alles|
-|System.Security.Cryptography.HashAlgorithmName|Alles|
-|System.Security.Cryptography.HMAC|Alles|
-|System.Security.Cryptography.HMACMD5|Alles|
-|System.Security.Cryptography.HMACSHA1|Alles|
-|System.Security.Cryptography.HMACSHA256|Alles|
-|System.Security.Cryptography.HMACSHA384|Alles|
-|System.Security.Cryptography.HMACSHA512|Alles|
-|System.Security.Cryptography.KeyedHashAlgorithm|Alles|
-|System.Security.Cryptography.MD5|Alles|
-|System.Security.Cryptography.Oid|Alles|
-|System.Security.Cryptography.PaddingMode|Alles|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Alles|
-|System.Security.Cryptography.RSA|Alles|
-|System.Security.Cryptography.RSAEncryptionPadding|Alles|
-|System.Security.Cryptography.RSASignaturePadding|Alles|
-|System.Security.Cryptography.SHA1|Alles|
-|System.Security.Cryptography.SHA1Managed|Alles|
-|System.Security.Cryptography.SHA256|Alles|
-|System.Security.Cryptography.SHA256Managed|Alles|
-|System.Security.Cryptography.SHA384|Alles|
-|System.Security.Cryptography.SHA384Managed|Alles|
-|System.Security.Cryptography.SHA512|Alles|
-|System.Security.Cryptography.SHA512Managed|Alles|
-|System. Security. Cryptography. SymmetricAlgorithm|Alles|
-|System.Security.Cryptography.X509Certificates.PublicKey|Alles|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Alles|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
-|System. Security. Cryptography. X509Certificates. X509Certificate|Alles|
-|System. Security. Cryptography. X509Certificates. X509Certificate2|Alles|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Alles|
-|System.Security.Cryptography.X509Certificates.X509NameType|Alles|
-|System. single|Alles|
-|System. String|Alles|
-|System. StringComparer|Alles|
-|System. StringComparison|Alles|
-|System. StringSplitOptions|Alles|
-|System.Text.Encoding|Alles|
+|System.DateTimeOffset|Alle|
+|Systeem. decimaal|Alle|
+|Systeem. Double|Alle|
+|System. Exception|Alle|
+|System. GUID|Alle|
+|System. Int16|Alle|
+|System. Int32|Alle|
+|System. Int64|Alle|
+|System. IO. StringReader|Alle|
+|System. IO. StringWriter|Alle|
+|System. LINQ. overzicht|Alle|
+|System.Math|Alle|
+|System.MidpointRounding|Alle|
+|System.Net.WebUtility|Alle|
+|System. Nullbaar|Alle|
+|Systeem. wille keurig|Alle|
+|System.SByte|Alle|
+|System. Security. Cryptography. AsymmetricAlgorithm|Alle|
+|System.Security.Cryptography.CipherMode|Alle|
+|System.Security.Cryptography.HashAlgorithm|Alle|
+|System.Security.Cryptography.HashAlgorithmName|Alle|
+|System.Security.Cryptography.HMAC|Alle|
+|System.Security.Cryptography.HMACMD5|Alle|
+|System.Security.Cryptography.HMACSHA1|Alle|
+|System.Security.Cryptography.HMACSHA256|Alle|
+|System.Security.Cryptography.HMACSHA384|Alle|
+|System.Security.Cryptography.HMACSHA512|Alle|
+|System.Security.Cryptography.KeyedHashAlgorithm|Alle|
+|System.Security.Cryptography.MD5|Alle|
+|System.Security.Cryptography.Oid|Alle|
+|System.Security.Cryptography.PaddingMode|Alle|
+|System.Security.Cryptography.RNGCryptoServiceProvider|Alle|
+|System.Security.Cryptography.RSA|Alle|
+|System.Security.Cryptography.RSAEncryptionPadding|Alle|
+|System.Security.Cryptography.RSASignaturePadding|Alle|
+|System.Security.Cryptography.SHA1|Alle|
+|System.Security.Cryptography.SHA1Managed|Alle|
+|System.Security.Cryptography.SHA256|Alle|
+|System.Security.Cryptography.SHA256Managed|Alle|
+|System.Security.Cryptography.SHA384|Alle|
+|System.Security.Cryptography.SHA384Managed|Alle|
+|System.Security.Cryptography.SHA512|Alle|
+|System.Security.Cryptography.SHA512Managed|Alle|
+|System. Security. Cryptography. SymmetricAlgorithm|Alle|
+|System.Security.Cryptography.X509Certificates.PublicKey|Alle|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Alle|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Naam|
+|System. Security. Cryptography. X509Certificates. X509Certificate|Alle|
+|System. Security. Cryptography. X509Certificates. X509Certificate2|Alle|
+|System.Security.Cryptography.X509Certificates.X509ContentType|Alle|
+|System.Security.Cryptography.X509Certificates.X509NameType|Alle|
+|System. single|Alle|
+|System. String|Alle|
+|System. StringComparer|Alle|
+|System. StringComparison|Alle|
+|System. StringSplitOptions|Alle|
+|System.Text.Encoding|Alle|
 |System.Text.RegularExpressions.Capture|Index, lengte, waarde|
 |System.Text.RegularExpressions.CaptureCollection|Aantal, item|
 |System.Text.RegularExpressions.Group|Vastleg ging, geslaagd|
 |System.Text.RegularExpressions.GroupCollection|Aantal, item|
 |System.Text.RegularExpressions.Match|Leeg, groepen, resultaat|
 |System.Text.RegularExpressions.Regex|(Constructor), IsMatch, overeenkomst, overeenkomsten, vervangen, unesc, Split|
-|System.Text.RegularExpressions.RegexOptions|Alles|
-|System. Text. String Builder|Alles|
-|System.TimeSpan|Alles|
-|System.TimeZone|Alles|
-|System. time zone info. matrix adjustmentrule|Alles|
-|System.TimeZoneInfo.TransitionTime|Alles|
-|System.TimeZoneInfo|Alles|
-|System. tuple|Alles|
-|System. UInt16|Alles|
-|System. UInt32|Alles|
-|System. UInt64|Alles|
-|System.Uri|Alles|
-|System. UriPartial|Alles|
-|System.Xml.Linq.Extensions|Alles|
-|System.Xml.Linq.XAttribute|Alles|
-|System.Xml.Linq.XCData|Alles|
-|System.Xml.Linq.XComment|Alles|
-|System.Xml.Linq.XContainer|Alles|
-|System.Xml.Linq.XDeclaration|Alles|
+|System.Text.RegularExpressions.RegexOptions|Alle|
+|System. Text. String Builder|Alle|
+|System.TimeSpan|Alle|
+|System.TimeZone|Alle|
+|System. time zone info. matrix adjustmentrule|Alle|
+|System.TimeZoneInfo.TransitionTime|Alle|
+|System.TimeZoneInfo|Alle|
+|System. tuple|Alle|
+|System. UInt16|Alle|
+|System. UInt32|Alle|
+|System. UInt64|Alle|
+|System.Uri|Alle|
+|System. UriPartial|Alle|
+|System.Xml.Linq.Extensions|Alle|
+|System.Xml.Linq.XAttribute|Alle|
+|System.Xml.Linq.XCData|Alle|
+|System.Xml.Linq.XComment|Alle|
+|System.Xml.Linq.XContainer|Alle|
+|System.Xml.Linq.XDeclaration|Alle|
 |System.Xml.Linq.XDocument|Alle, behalve van: laden|
-|System.Xml.Linq.XDocumentType|Alles|
-|System.Xml.Linq.XElement|Alles|
-|System.Xml.Linq.XName|Alles|
-|System.Xml.Linq.XNamespace|Alles|
-|System.Xml.Linq.XNode|Alles|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Alles|
-|System.Xml.Linq.XNodeEqualityComparer|Alles|
-|System.Xml.Linq.XObject|Alles|
-|System.Xml.Linq.XProcessingInstruction|Alles|
-|System.Xml.Linq.XText|Alles|
-|System.Xml.XmlNodeType|Alles|
+|System.Xml.Linq.XDocumentType|Alle|
+|System.Xml.Linq.XElement|Alle|
+|System.Xml.Linq.XName|Alle|
+|System.Xml.Linq.XNamespace|Alle|
+|System.Xml.Linq.XNode|Alle|
+|System.Xml.Linq.XNodeDocumentOrderComparer|Alle|
+|System.Xml.Linq.XNodeEqualityComparer|Alle|
+|System.Xml.Linq.XObject|Alle|
+|System.Xml.Linq.XProcessingInstruction|Alle|
+|System.Xml.Linq.XText|Alle|
+|System.Xml.XmlNodeType|Alle|
 
 ## <a name="ContextVariables"></a>Context variabele
 Een variabele met de naam `context` impliciet beschikbaar in elke beleids [expressie](api-management-policy-expressions.md#Syntax). De leden van het apparaat bieden informatie die relevant is voor de `\request`. Alle `context` leden zijn alleen-lezen.
@@ -211,17 +211,17 @@ Een variabele met de naam `context` impliciet beschikbaar in elke beleids [expre
 |Context variabele|Toegestane methoden, eigenschappen en parameter waarden|
 |----------------------|-------------------------------------------------------|
 |context|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Implementatie](#ref-context-deployment)<br /><br /> Verstreken: time span-time interval tussen de waarde van tijds tempel en huidige tijd<br /><br /> [Last error](#ref-context-lasterror)<br /><br /> [Bewerking](#ref-context-operation)<br /><br /> [Voortplant](#ref-context-product)<br /><br /> [Aanvraag](#ref-context-request)<br /><br /> Aanvraag-id: GUID-unieke aanvraag-id's<br /><br /> [Antwoord](#ref-context-response)<br /><br /> [Abonnement](#ref-context-subscription)<br /><br /> Tijds tempel: datum/tijd waarop de aanvraag is ontvangen<br /><br /> Tracering: BOOL-geeft aan of tracering is in-of uitgeschakeld <br /><br /> [Gebruiker](#ref-context-user)<br /><br /> [Variabelen](#ref-context-variables): IReadOnlyDictionary < teken reeks, object ><br /><br /> Trace annuleren (bericht: teken reeks)|
-|<a id="ref-context-api"></a>context.Api|Id: teken reeks<br /><br /> IsCurrentRevision: BOOL<br /><br />  Name: teken reeks<br /><br /> Pad: teken reeks<br /><br /> Revisie: teken reeks<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Versie: teken reeks |
+|<a id="ref-context-api"></a>context. Inschakelen|Id: teken reeks<br /><br /> IsCurrentRevision: BOOL<br /><br />  Name: teken reeks<br /><br /> Pad: teken reeks<br /><br /> Revisie: teken reeks<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Versie: teken reeks |
 |<a id="ref-context-deployment"></a>context. Inhoudsdistributiepad|Regio: teken reeks<br /><br /> ServiceName: teken reeks<br /><br /> Certificaten: IReadOnlyDictionary < teken reeks, X509Certificate2 >|
-|<a id="ref-context-lasterror"></a>context.LastError|Bron: teken reeks<br /><br /> Reden: teken reeks<br /><br /> Bericht: teken reeks<br /><br /> Bereik: teken reeks<br /><br /> Sectie: teken reeks<br /><br /> Pad: teken reeks<br /><br /> PolicyId: teken reeks<br /><br /> Voor meer informatie over context. Last error, Zie [fout afhandeling](api-management-error-handling-policies.md).|
-|<a id="ref-context-operation"></a>context.Operation|Id: teken reeks<br /><br /> Methode: teken reeks<br /><br /> Name: teken reeks<br /><br /> UrlTemplate: teken reeks|
-|<a id="ref-context-product"></a>context.Product|Api's: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: BOOL<br /><br /> Groepen: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Id: teken reeks<br /><br /> Name: teken reeks<br /><br /> Status: Enum ProductState {NotPublished, gepubliceerd}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: BOOL|
-|<a id="ref-context-request"></a>context.Request|Hoofd tekst: [IMessageBody](#ref-imessagebody) of `null` als de aanvraag geen hoofd tekst heeft.<br /><br /> Certificaat: System. Security. Cryptography. X509Certificates. X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary < teken reeks, teken reeks [] ><br /><br /> IpAddress: teken reeks<br /><br /> MatchedParameters: IReadOnlyDictionary < teken reeks, teken reeks ><br /><br /> Methode: teken reeks<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> URL: [IUrl](#ref-iurl)|
+|<a id="ref-context-lasterror"></a>context. Last error|Bron: teken reeks<br /><br /> Reden: teken reeks<br /><br /> Bericht: teken reeks<br /><br /> Bereik: teken reeks<br /><br /> Sectie: teken reeks<br /><br /> Pad: teken reeks<br /><br /> PolicyId: teken reeks<br /><br /> Voor meer informatie over context. Last error, Zie [fout afhandeling](api-management-error-handling-policies.md).|
+|<a id="ref-context-operation"></a>context. Schijf|Id: teken reeks<br /><br /> Methode: teken reeks<br /><br /> Name: teken reeks<br /><br /> UrlTemplate: teken reeks|
+|<a id="ref-context-product"></a>context. Voortplant|Api's: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: BOOL<br /><br /> Groepen: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Id: teken reeks<br /><br /> Name: teken reeks<br /><br /> Status: Enum ProductState {NotPublished, gepubliceerd}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: BOOL|
+|<a id="ref-context-request"></a>context. Schot|Hoofd tekst: [IMessageBody](#ref-imessagebody) of `null` als de aanvraag geen hoofd tekst heeft.<br /><br /> Certificaat: System. Security. Cryptography. X509Certificates. X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary < teken reeks, teken reeks [] ><br /><br /> IpAddress: teken reeks<br /><br /> MatchedParameters: IReadOnlyDictionary < teken reeks, teken reeks ><br /><br /> Methode: teken reeks<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> URL: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>teken reeks context. Request. headers. GetValueOrDefault (koptekstnaam: teken reeks, defaultValue: teken reeks)|kopnaam: teken reeks<br /><br /> defaultValue: teken reeks<br /><br /> Retourneert waarden van een door komma's gescheiden aanvraag header of `defaultValue` als de header niet wordt gevonden.|
-|<a id="ref-context-response"></a>context.Response|Hoofd tekst: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary < teken reeks, teken reeks [] ><br /><br /> Status code: int<br /><br /> StatusReason: teken reeks|
+|<a id="ref-context-response"></a>context. Beantwoord|Hoofd tekst: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary < teken reeks, teken reeks [] ><br /><br /> Status code: int<br /><br /> StatusReason: teken reeks|
 |<a id="ref-context-response-headers"></a>teken reeks context. Response. headers. GetValueOrDefault (koptekstnaam: teken reeks, defaultValue: teken reeks)|kopnaam: teken reeks<br /><br /> defaultValue: teken reeks<br /><br /> Retourneert door komma's gescheiden waarden voor een antwoord header of `defaultValue` als de header niet wordt gevonden.|
 |<a id="ref-context-subscription"></a>context. Abonnees|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Id: teken reeks<br /><br /> Sleutel: teken reeks<br /><br /> Name: teken reeks<br /><br /> PrimaryKey: teken reeks<br /><br /> Secundaire sleutel: teken reeks<br /><br /> Start date: DateTime?|
-|<a id="ref-context-user"></a>context.User|E-mail: teken reeks<br /><br /> Voor naam: teken reeks<br /><br /> Groepen: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Id: teken reeks<br /><br /> Identiteiten: IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Opmerking: teken reeks<br /><br /> RegistrationDate: DateTime|
+|<a id="ref-context-user"></a>context. Gebruiker|E-mail: teken reeks<br /><br /> Voor naam: teken reeks<br /><br /> Groepen: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> Id: teken reeks<br /><br /> Identiteiten: IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Opmerking: teken reeks<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|Id: teken reeks<br /><br /> Name: teken reeks<br /><br /> Pad: teken reeks<br /><br /> Protocollen: IEnumerable < teken reeks\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: teken reeks<br /><br /> Name: teken reeks|
 |<a id="ref-imessagebody"></a>IMessageBody|Als < T\>(preserveContent: BOOL = false): waarbij T: String, byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> De methoden `context.Request.Body.As<T>` en `context.Response.Body.As<T>` worden gebruikt om de tekst van een aanvraag en een antwoord bericht in een opgegeven type `T`te lezen. Standaard gebruikt de methode de oorspronkelijke hoofd tekst van het bericht en wordt deze weer gegeven nadat deze is geretourneerd. Als u wilt voor komen dat de methode op een kopie van de hoofd stroom wordt toegepast, stelt u de para meter `preserveContent` in op `true`. [Hier](api-management-transformation-policies.md#SetBody) kunt u een voor beeld bekijken.|
