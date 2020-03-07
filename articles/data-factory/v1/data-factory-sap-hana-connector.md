@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387461"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Gegevens verplaatsen van SAP HANA met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -36,13 +36,13 @@ Deze connector ondersteunt alle versies van SAP HANA data base. Het ondersteunt 
 
 Als u de verbinding met het SAP HANA-exemplaar wilt inschakelen, installeert u de volgende onderdelen:
 - **Data Management Gateway**: Data Factory-service ondersteunt het maken van verbinding met on-premises gegevens archieven (inclusief SAP Hana) met behulp van een onderdeel dat Data Management Gateway wordt genoemd. Zie voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway, [gegevens verplaatsen tussen een on-premises gegevens archief naar een artikel in de Cloud gegevens opslag](data-factory-move-data-between-onprem-and-cloud.md) . De gateway is vereist, zelfs als de SAP HANA wordt gehost in een virtuele Azure IaaS-machine (VM). U kunt de gateway op dezelfde VM installeren als het gegevens archief of op een andere virtuele machine zolang de gateway verbinding kan maken met de data base.
-- **SAP Hana ODBC-stuur programma** op de gateway computer. U kunt het SAP HANA ODBC-stuurprogramma downloaden via het [SAP Software Download Center](https://support.sap.com/swdc). Zoek met het tref woord **SAP Hana client voor Windows**. 
+- **SAP Hana ODBC-stuur programma** op de gateway computer. U kunt het ODBC-stuur programma van SAP HANA downloaden via het [SAP-software Download centrum](https://support.sap.com/swdc). Zoek met het tref woord **SAP Hana client voor Windows**. 
 
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises SAP HANA gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
 
 - De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -57,14 +57,14 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor SAP HANA gekoppelde service.
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port`op. | string | Ja
+server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port`op. | tekenreeks | Ja
 authenticationType | Type verificatie. | tekenreeksexpressie. "Basic" of "Windows" | Ja 
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | string | Ja
-wachtwoord | Het wachtwoord voor de gebruiker. | string | Ja
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | string | Ja
-encryptedCredential | De versleutelde referentie teken reeks. | string | Nee
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
+wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | tekenreeks | Ja
+encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | Nee
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -79,7 +79,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** va
 
 Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** is (inclusief SAP Hana), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query | Hiermee geeft u de SQL-query voor het lezen van gegevens uit het SAP HANA-exemplaar. | SQL-query. | Ja |
 
@@ -283,31 +283,31 @@ Bij het verplaatsen van gegevens uit SAP HANA worden de volgende toewijzingen ge
 
 SAP HANA type | Op .NET gebaseerd type
 ------------- | ---------------
-TINYINT | byte
+TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
 REAL | Enkelvoudig
 DOUBLE | Enkelvoudig
-DECIMAL | Decimal
-BOOLEAN | byte
+DECIMAL | decimaal
+BOOLEAN | Byte
 VARCHAR | Tekenreeks
 NVARCHAR | Tekenreeks
 CLOB | Byte[]
 ALPHANUM | Tekenreeks
 BLOB | Byte[]
-DATE | Datum/tijd
+DATE | DateTime
 TIME | TimeSpan
-TIMESTAMP | Datum/tijd
-SECONDDATE | Datum/tijd
+TIMESTAMP | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 Er zijn enkele bekende beperkingen bij het kopiëren van gegevens uit SAP HANA:
 
-- NVARCHAR-tekenreeksen worden afgekapt tot de maximale lengte van 4000 Unicode-tekens
+- NVARCHAR-teken reeksen worden afgekapt tot een maximale lengte van 4000 Unicode-tekens
 - SMALLDECIMAL wordt niet ondersteund
 - VARBINARY wordt niet ondersteund
-- Geldige datums liggen tussen 30-12-1899 en 31-12-9999
+- Geldige datums liggen tussen 1899/12/30 en 9999/12/31
 
 ## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.

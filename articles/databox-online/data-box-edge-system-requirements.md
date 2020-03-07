@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757863"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384761"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Systeem vereisten voor Azure Data Box Edge
 
@@ -58,7 +58,7 @@ Azure IoT Edge staat uitgaande communicatie van een on-premises edge-apparaat na
 
 Gebruik de volgende tabel voor poort configuratie voor de servers die als host fungeren voor Azure IoT Edge runtime:
 
-| Poort nummer | In of uit | Poort bereik | Verplicht | Hulp |
+| Poort nummer | In of uit | Poort bereik | Vereist | Richtlijnen |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| Af       | WAN        | Ja      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist bij het gebruik van handmatige scripts of Azure IoT Device Provisioning Service (DPS).|
 
@@ -82,9 +82,9 @@ We raden u aan de firewall regels voor uitgaand verkeer op te nemen, op basis va
 
 | URL-patroon                      | Onderdeel of functionaliteit                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Micro soft container Registry (vereist)               |
-| https://\*.azurecr.io                     | Persoonlijke en container registers van derden (optioneel) | 
-| https://\*.azure-devices.net              | IoT Hub toegang (vereist)                             | 
+| https:\/-mcr.microsoft.com<br></br>https://\*. cdn.mscr.io | Micro soft container Registry (vereist)               |
+| https://\*. azurecr.io                     | Persoonlijke en container registers van derden (optioneel) | 
+| https://\*. azure-devices.net              | IoT Hub toegang (vereist)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>URL-patronen voor de gateway voor Azure Government
 
@@ -94,7 +94,7 @@ We raden u aan de firewall regels voor uitgaand verkeer op te nemen, op basis va
 
 | URL-patroon                      | Onderdeel of functionaliteit                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Micro soft container Registry (vereist)               |
+| https:\/-mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Micro soft container Registry (vereist)               |
 | https://\*. azure-devices.us              | IoT Hub toegang (vereist)           |
 | https://\*. azurecr.us                    | Persoonlijke en container registers van derden (optioneel) | 
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390479"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation runbooks toevoegen aan herstel plannen
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 
 In dit artikel wordt beschreven hoe u Azure Automation runbooks integreert om [Azure site Recovery](site-recovery-overview.md) herstel plannen uit te breiden. We laten u zien hoe u basis taken automatiseert die anders hand matig moeten worden uitgevoerd en hoe u een herstel met meerdere stappen kunt omzetten in een actie met één klik.
 
-## <a name="recovery-plans"></a>Herstel plannen 
+## <a name="recovery-plans"></a>Herstelplannen 
 
 U kunt herstel plannen gebruiken bij het uitvoeren van een failover van on-premises machines of Azure-Vm's. Met herstel plannen kunt u een systematisch herstel proces definiëren dat definieert hoe machines failover uitvoeren en hoe ze worden gestart en hersteld na een failover. 
 
@@ -99,7 +99,7 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
 - Als u nog geen ervaring hebt met Azure Automation, kunt u [zich registreren](https://azure.microsoft.com/services/automation/) en [voorbeeld scripts downloaden](https://azure.microsoft.com/documentation/scripts/).
 - Zorg ervoor dat het Automation-account de volgende modules bevat:
-    - AzureRM. profile
+    - AzureRM.profile
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
@@ -117,7 +117,7 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
     ![Klik op de knop aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klik op het weglatings teken (...) naast **groep 1: Start** > **post actie toevoegen**.
+2. Klik op het weglatings teken (...) naast **groep 1: Start** > **Voeg een actie post toe**.
 3. Controleer in **actie invoegen**of **script** is geselecteerd en geef een naam op voor het script (**Hallo wereld**).
 4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **groep 1: post-stappen**.
 

@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681164"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358131"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
 
@@ -24,7 +24,7 @@ Een [Azure app service plan](overview-hosting-plans.md) bevat de resources die e
 
 U kunt een leeg App Service plan maken of u kunt een plan maken als onderdeel van het maken van een app.
 
-1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken**.
 
    ![Maak een resource in de Azure Portal.][createResource] 
 
@@ -65,7 +65,7 @@ U kunt een app naar een andere App Service plan verplaatsen, zolang het bron pla
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-5. Selecteer **OK** als u klaar bent.
+5. Wanneer u klaar bent, selecteert u **OK**.
    
    ![App Service plan kiezer.][change] 
 
@@ -96,7 +96,7 @@ Om onverwachte kosten te voor komen, wordt het plan ook standaard verwijderd wan
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een app omhoog schalen in Azure](manage-scale-up.md)
+> [Een app omhoog schalen in azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

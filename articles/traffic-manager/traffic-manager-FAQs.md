@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938804"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386915"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -172,7 +172,7 @@ U kunt het maximum aantal eind punten opgeven dat moet worden geretourneerd en m
 
 We kunnen niet garanderen dat dezelfde set van eind punten wordt geretourneerd in elke query. Dit wordt ook beïnvloed door het feit dat een aantal van de eind punten mogelijk niet in orde is op het moment dat ze niet worden opgenomen in het antwoord
 
-## <a name="real-user-measurements"></a>Real User Measurements
+## <a name="real-user-measurements"></a>Real-user-metingen
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Wat zijn de voor delen van het gebruik van Real-user-metingen?
 
@@ -252,7 +252,7 @@ Nee, u hoeft geen onderdelen aan de server zijde op Azure te hosten om Real-user
 
 Zoals vermeld in het vorige antwoord, worden de Server onderdelen van Real-user-metingen eigendom en beheerd door Azure. Dit betekent dat uw Azure-bandbreedte gebruik niet wordt verhoogd omdat u Real-user-metingen gebruikt. Dit omvat geen bandbreedte gebruik buiten de Azure-kosten. We beperken de band breedte die wordt gebruikt door slechts één pixel afbeelding te downloaden om de latentie naar een Azure-regio te meten. 
 
-## <a name="traffic-view"></a>Traffic View
+## <a name="traffic-view"></a>Verkeersweergave
 
 ### <a name="what-does-traffic-view-do"></a>Wat doet Verkeersweergave?
 
@@ -499,11 +499,11 @@ In de volgende tabel wordt het gedrag van Traffic Manager status controles voor 
 
 | Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
 | --- | --- | --- |
-| Geblokkeerd. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
+| Disabled. Het onderliggende profiel is uitgeschakeld. |Gestopt |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |
 | Online. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
 | CheckingEndpoints. Ten minste één onderliggend profiel voor een onderliggend knoop punt is ' CheckingEndpoint '. Er zijn geen eind punten ' online ' of ' verslechterd ' |Hetzelfde als hierboven. | |
-| Inactieve. Alle eind punten van een onderliggend profiel zijn uitgeschakeld of gestopt of dit profiel heeft geen eind punten. |Stopped | |
+| Inactieve. Alle eind punten van een onderliggend profiel zijn uitgeschakeld of gestopt of dit profiel heeft geen eind punten. |Gestopt | |
 
 ## <a name="next-steps"></a>Volgende stappen:
 

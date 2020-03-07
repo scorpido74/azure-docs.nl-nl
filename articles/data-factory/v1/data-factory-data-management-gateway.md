@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356329"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
 > [!NOTE]
@@ -97,7 +97,7 @@ Data Management Gateway kan op de volgende manieren worden geïnstalleerd:
 4. Selecteer op de pagina **Welkom** een **taal** en klik op **volgende**.
 5. **Accepteer** de gebruiksrecht overeenkomst en klik op **volgende**.
 6. Selecteer **map** om de gateway te installeren en klik op **volgende**.
-7. Op de **gereed voor installatie** pagina, klikt u op **installeren**.
+7. Klik op de pagina **gereed voor installatie** op **installeren**.
 8. Klik op **volt ooien** om de installatie te volt ooien.
 9. Haal de sleutel op uit het Azure Portal. Zie de volgende sectie voor stapsgewijze instructies.
 10. Voer de volgende stappen uit op de pagina de **Gateway registreren** van **Data Management Gateway Configuration Manager** op uw computer wordt uitgevoerd:
@@ -140,7 +140,7 @@ Er zijn twee firewalls die u moet overwegen: **bedrijfs firewall** die wordt uit
 
 Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande poorten configureren:
 
-| Domeinnamen | Poorten | Beschrijving |
+| Domein namen | Poorten | Beschrijving |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
 | *.core.windows.net |443 |Gebruikt voor gefaseerde kopie met behulp van Azure-Blob (indien geconfigureerd)|
@@ -305,7 +305,7 @@ U kunt de functie voor automatisch bijwerken uitschakelen of inschakelen door de
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>Configuratiebeheer
 Nadat u de gateway hebt geïnstalleerd, kunt u Data Management Gateway Configuration Manager op een van de volgende manieren starten:
 
 1. Typ in het venster **zoeken** **Data Management Gateway** voor toegang tot dit hulp programma.
@@ -341,7 +341,7 @@ Op de pagina Diagnostische gegevens kunt u de volgende acties uitvoeren:
 Op de Help-pagina wordt de volgende informatie weer gegeven:
 
 * Korte beschrijving van de gateway
-* Versienummer
+* Versie nummer
 * Koppelingen naar online-Help, privacyverklaring en licentie overeenkomst.
 
 ## <a name="monitor-gateway-in-the-portal"></a>De gateway in de portal controleren
@@ -380,20 +380,20 @@ De volgende tabel bevat mogelijke statussen van een **Gateway knooppunt**:
 
 Status  | Opmerkingen/Scenario's
 :------- | :------------------
-Online | Het knoop punt dat is verbonden met Data Factory service.
+Aanschaffen | Het knoop punt dat is verbonden met Data Factory service.
 Offline | Het knoop punt is offline.
 Upgrade uitvoeren | Het knoop punt wordt automatisch bijgewerkt.
-Beperkt | Vanwege een connectiviteits probleem. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, het connectiviteits probleem van de service bus of het probleem met de synchronisatie van referenties.
-Inactief | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten.<br/><br/> Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
+Aantal | Vanwege een connectiviteits probleem. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, het connectiviteits probleem van de service bus of het probleem met de synchronisatie van referenties.
+Inactieve | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten.<br/><br/> Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
 
 De volgende tabel bevat mogelijke statussen van een **logische gateway**. De status van de gateway is afhankelijk van de status van de gateway-knoop punten.
 
 Status | Opmerkingen
 :----- | :-------
 Registratie vereist | Er is nog geen knoop punt geregistreerd voor deze logische gateway
-Online | Gateway knooppunten zijn online
+Aanschaffen | Gateway knooppunten zijn online
 Offline | Geen knoop punt in online status.
-Beperkt | Niet alle knoop punten in deze gateway hebben de status in orde. Deze status is een waarschuwing dat een deel van het knoop punt mogelijk niet beschikbaar is. <br/><br/>Kan worden veroorzaakt door een probleem met de referenties voor de verzender/het worker-knoop punt.
+Aantal | Niet alle knoop punten in deze gateway hebben de status in orde. Deze status is een waarschuwing dat een deel van het knoop punt mogelijk niet beschikbaar is. <br/><br/>Kan worden veroorzaakt door een probleem met de referenties voor de verzender/het worker-knoop punt.
 
 ## <a name="scale-up-gateway"></a>Gateway omhoog schalen
 U kunt het aantal **gelijktijdige taken voor gegevens verplaatsing** configureren dat kan worden uitgevoerd op een knoop punt om de mogelijkheid van het verplaatsen van gegevens tussen on-premises en gegevens archieven in de cloud te verg Roten.
@@ -420,7 +420,7 @@ In deze sectie worden de stappen beschreven voor het verplaatsen van de Gateway-
     ![Pagina configureren](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. Zorg dat de **micro soft-Data Management Gateway Configuration Manager** geopend.
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![Configuratiebeheer](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Klik op de pagina **configureren** in de portal op **sleutel opnieuw maken** op de opdracht balk en klik op **Ja** voor het waarschuwings bericht. Klik op de **knop kopiëren** naast de sleutel tekst die de sleutel naar het klem bord kopieert. De gateway op de oude computer werkt niet meer nadat u de sleutel opnieuw hebt gemaakt.
 
     ![Sleutel opnieuw maken](./media/data-factory-data-management-gateway/RecreateKey.png)

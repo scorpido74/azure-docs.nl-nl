@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
 ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378259"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388450"
 ---
-# <a name="registration-management"></a>Registratiebeheer
+# <a name="registration-management"></a>Registratie beheer
 
 In dit onderwerp wordt uitgelegd hoe u apparaten registreert bij Notification hubs om Push meldingen te ontvangen. In het onderwerp worden registraties op hoog niveau beschreven. vervolgens worden de twee belangrijkste patronen voor het registreren van apparaten geïntroduceerd: de registratie van het apparaat rechtstreeks op de notification hub en registreren via een back-end van de toepassing.
 
@@ -263,7 +263,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 Als u registraties van de back-end wilt beheren, moet u extra code schrijven. De app van het apparaat moet elke keer dat de app wordt gestart (samen met tags en sjablonen) de bijgewerkte PNS-ingang naar de back-end geven en de back-end moet deze ingang bijwerken op de notification hub. In de volgende afbeelding ziet u dit ontwerp.
 
-![Registratiebeheer](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![Registratie beheer](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 De voor delen van het beheer van registraties van de back-end zijn de mogelijkheid om tags te wijzigen in registraties, zelfs wanneer de bijbehorende app op het apparaat inactief is en de client-app te verifiëren voordat u een tag toevoegt aan de registratie.
 

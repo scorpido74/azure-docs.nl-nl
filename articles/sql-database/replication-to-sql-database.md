@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997272"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359866"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replicatie naar SQL Database afzonderlijke en gepoolde data bases
 
@@ -61,7 +61,7 @@ Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste ve
 
 ![replicatie naar SQL-data base](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
-## <a name="scenarios"></a>Scenario's  
+## <a name="scenarios"></a>Scenario 's  
 
 ### <a name="typical-replication-scenario"></a>Typisch replicatie scenario  
 
@@ -106,7 +106,7 @@ De volgende opties worden niet ondersteund voor Azure SQL Database-abonnementen:
 
 ## <a name="examples"></a>Voorbeelden
 
-Maak een publicatie en een push-abonnement. Zie voor meer informatie:
+Maak een publicatie en een push-abonnement. Ga voor meer informatie naar:
   
 - [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de naam van de Azure SQL database-server als de abonnee (bijvoorbeeld **N'azuresqldbdns. data base. Windows. net**) en de naam van de Azure-SQL database als de doel database (bijvoorbeeld **AdventureWorks**).  

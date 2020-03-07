@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083763"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362685"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC)
 
@@ -62,7 +62,7 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Klassiek | Micro soft. ClassicNetwork/virtualNetworks/lezen |
 |  |  | Micro soft. ClassicNetwork/virtualNetworks/deelname/actie |
-| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Opslag | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Klassiek | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |

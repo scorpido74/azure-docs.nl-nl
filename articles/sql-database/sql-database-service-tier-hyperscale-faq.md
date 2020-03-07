@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359886"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 
@@ -39,19 +39,19 @@ De grootschalige is alleen beschikbaar voor afzonderlijke data bases met behulp 
 
 De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschik baarheid van de data base en het opslag type, de prestaties en de maximale grootte, zoals beschreven in de volgende tabel.
 
-| | Resourcetype | Algemeen doel |  Hyperscale | Bedrijfskritiek |
+| | Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
-| **Geschikt voor** |Alles|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, snelle verticale en horizontale reken schaal, snel data base terugzetten.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
-|  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Afzonderlijke database | Eén data base/elastische pool/beheerd exemplaar |
+| **Geschikt voor** |Alle|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, snelle verticale en horizontale reken schaal, snel data base terugzetten.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
+|  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
 | **Reken grootte**|Eén data base/elastische pool * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
-| |Beheerd exemplaar | 8, 16, 24, 32, 40, 64, 80 vCores | N/A | 8, 16, 24, 32, 40, 64, 80 vCores |
-| **Opslagtype** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| |Beheerd exemplaar | 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 8, 16, 24, 32, 40, 64, 80 vCores |
+| **Opslagtype** | Alle |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Opslag grootte** | Eén data base/elastische pool *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
-| | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
-| **IOPS** | Afzonderlijke database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
-| | Beheerd exemplaar | Is afhankelijk van de bestands grootte | N/A | 1375 IOPS/vCore |
-|**Beschikbaarheid**|Alles|1 replica, geen uitschalen van Lees bewerkingen, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees scale-out, gedeeltelijke lokale cache | 3 replica's, 1 Lees scale-out, zone-redundante HA, volledige lokale opslag |
-|**Back-ups**|Alles|RA-GRS, 7-35 dagen retentie (standaard 7 dagen)| RA-GRS, 7 dagen retentie, constant tijds duur herstel (PITR) | RA-GRS, 7-35 dagen retentie (standaard 7 dagen) |
+| | Beheerd exemplaar  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
+| **IOPS** | Individuele database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
+| | Beheerd exemplaar | Is afhankelijk van de bestands grootte | N.v.t. | 1375 IOPS/vCore |
+|**Beschikbaarheid**|Alle|1 replica, geen uitschalen van Lees bewerkingen, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees scale-out, gedeeltelijke lokale cache | 3 replica's, 1 Lees scale-out, zone-redundante HA, volledige lokale opslag |
+|**Back-ups**|Alle|RA-GRS, 7-35 dagen retentie (standaard 7 dagen)| RA-GRS, 7 dagen retentie, constant tijds duur herstel (PITR) | RA-GRS, 7-35 dagen retentie (standaard 7 dagen) |
 
 \* elastische Pools worden niet ondersteund in de servicelaag grootschalige
 
@@ -274,11 +274,11 @@ Nee. Back-ups worden beheerd door het opslag subsysteem en maken gebruik van ops
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Kan ik geo-herstel uitvoeren met een grootschalige-data base
 
-Ja.  Geo-Restore wordt volledig ondersteund. In tegens telling tot het herstel punt in de tijd is het mogelijk dat voor geo-herstel een langdurige bewerking met een lange uitvoerings grootte nodig is.
+Ja. Geo-Restore wordt volledig ondersteund. In tegens telling tot het herstel punt in de tijd vereist geo-Restore een omvang van gegevens bewerkingen. Gegevens bestanden worden parallel gekopieerd. de duur van deze bewerking is vooral afhankelijk van de grootte van het grootste bestand in de data base, in plaats van de totale database grootte. De geo-herstel tijd is aanzienlijk korter als de data base wordt hersteld in de Azure-regio die is [gekoppeld](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) aan de regio van de bron database.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kan ik geo-replicatie met grootschalige-data base instellen
 
-Op dit moment niet.
+Momenteel niet.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Kan ik een back-up van een grootschalige-data base maken en deze herstellen op mijn on-premises server of op SQL Server in een VM
 
@@ -296,7 +296,7 @@ Nee. Poly Base wordt niet ondersteund in Azure SQL Database.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Biedt grootschalige ondersteuning voor R en python
 
-Op dit moment niet.
+Momenteel niet.
 
 ### <a name="are-compute-nodes-containerized"></a>Worden reken knooppunten container
 

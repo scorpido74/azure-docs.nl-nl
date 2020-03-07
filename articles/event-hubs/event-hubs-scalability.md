@@ -15,30 +15,30 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309520"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365341"
 ---
 # <a name="scaling-with-event-hubs"></a>Schalen met Event Hubs
 
 Er zijn twee factoren die van invloed zijn op schalen met Event Hubs.
-*   Eenheden gegevensdoorvoer
+*   Doorvoereenheden
 *   Partities
 
-## <a name="throughput-units"></a>Eenheden gegevensdoorvoer
+## <a name="throughput-units"></a>Doorvoereenheden
 
 De doorvoercapaciteit van Event Hubs wordt bepaald door het aantal beschikbare *doorvoereenheden*. Doorvoereenheden zijn vooraf aangeschafte capaciteitseenheden. Met één door Voer kunt u:
 
 * Inkomende gegevens: Maximaal 1 MB per seconde of 1000 gebeurtenissen per seconde (afhankelijk van wat het eerste komt).
 * Uitgaande gegevens: Maximaal 2 MB per seconde of 4096 gebeurtenissen per seconde.
 
-Wanneer de capaciteit van de aangekochte doorvoereenheden wordt overschreven, wordt de invoer vertraagd en een [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) afgegeven. De uitvoer geeft geen vertragingsuitzonderingen af, maar is nog steeds beperkt tot de capaciteit van de aangekochte doorvoereenheden. Als zich uitzonderingen met betrekking tot de publicatiesnelheid voordoen of als u meer uitgaande gegevens verwacht, controleert u hoeveel doorvoereenheden u hebt aangeschaft voor de naamruimte. U kunt doorvoereenheden beheren op de **schaal** blade van de naamruimten in de [Azure-portal](https://portal.azure.com). U kunt ook doorvoereenheden via een programma met behulp van beheren de [Event Hubs-API's](event-hubs-api-overview.md).
+Wanneer de capaciteit van de aangekochte doorvoereenheden wordt overschreven, wordt de invoer vertraagd en een [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) afgegeven. De uitvoer geeft geen vertragingsuitzonderingen af, maar is nog steeds beperkt tot de capaciteit van de aangekochte doorvoereenheden. Als zich uitzonderingen met betrekking tot de publicatiesnelheid voordoen of als u meer uitgaande gegevens verwacht, controleert u hoeveel doorvoereenheden u hebt aangeschaft voor de naamruimte. U kunt doorvoer eenheden beheren op de Blade **schaal aanpassen** van de naam ruimten in de [Azure Portal](https://portal.azure.com). U kunt doorvoer eenheden ook programmatisch beheren met behulp van de [Event hubs-api's](event-hubs-api-overview.md).
 
 Doorvoereenheden zijn vooraf aangeschafte en worden gefactureerd per uur. Nadat u doorvoereenheden hebt aangeschaft, worden deze voor minimaal één uur in rekening gebracht. Maximaal 20 doorvoereenheden eenheden kunnen worden aangeschaft voor een Event Hubs-naamruimte en worden gedeeld door alle eventhubs in die naamruimte.
 
-De **automatisch vergroten** functie van Event Hubs automatisch omhoog wordt geschaald uitgaande door het aantal doorvoereenheden, om te voldoen aan gebruik behoeften. Verhoging van doorvoereenheden wordt voorkomen dat beperkingsscenario's, waarbij:
+De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Verhoging van doorvoereenheden wordt voorkomen dat beperkingsscenario's, waarbij:
 
 - Inkomend verkeer gegevenstarieven groter zijn dan set-doorvoereenheden.
 - Gegevens uitgaande aanvraag snelheid groter zijn dan de set-doorvoereenheden.

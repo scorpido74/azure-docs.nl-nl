@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379720"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Hoe zoeken in volledige tekst werkt in azure Cognitive Search
 
-Dit artikel is voor ontwikkel aars die meer inzicht nodig hebben in de manier waarop de zoek opdracht in de volledige tekst van lucene in azure Cognitive Search werkt. Voor tekst query's levert Azure Cognitive Search probleemloos de verwachte resultaten in de meeste scenario's, maar in sommige gevallen kan er een resultaat worden weer geven dat ' uit ' lijkt. In dergelijke situaties kan een achtergrond in de vier stadia van de uitvoering van de Lucene-query (het parseren van query's, lexicale analyse, document matching, scoreing) helpen bij het identificeren van specifieke wijzigingen in de query parameters of de index configuratie die de gewenste daarvan. 
+Dit artikel is voor ontwikkel aars die meer inzicht nodig hebben in de manier waarop de zoek opdracht in de volledige tekst van lucene in azure Cognitive Search werkt. Voor tekstquery’s worden in de meeste scenario’s in Azure Cognitive Search soepel de verwachte resultaten geretourneerd, maar zo nu en dan krijgt u mogelijk een resultaat dat niet helemaal klopt. In dergelijke situaties helpt het iets af te weten van de vier stadia van Lucene-queryuitvoering (query’s parseren, lexicale analyse, documentovereenkomsten, scoren). Dit kan u helpen specifieke wijzigingen in de queryparameters of indexconfiguratie te identificeren, die leiden tot het verwachte resultaat. 
 
 > [!Note] 
 > Azure Cognitive Search maakt gebruik van Lucene voor zoeken in volledige tekst, maar de integratie van Lucene is niet volledig. U kunt de Lucene-functionaliteit selectief beschikbaar maken en uitbreiden om de scenario's in te scha kelen die belang rijk zijn voor Azure Cognitive Search. 
@@ -268,18 +268,18 @@ De index voor het veld **Beschrijving** is als volgt:
 | Termijn | Document lijst |
 |------|---------------|
 | massa | 3
-| en de | 4
+| en | 4
 | Beach | 1
 | waarbij | 3
 | denkt | 3
 | afstand | 1
 | Réunion | 2
-| kaua ʻ i | 2
+| kauaʻi | 2
 | staan | 2
 | Noord | 2
 | Oceaan | 1, 2, 3
-| van | 2
-| Waarop |2
+| bij | 2
+| op |2
 | stil | 4
 | kleed  | 1, 3
 | secluded | 4
@@ -287,9 +287,9 @@ De index voor het veld **Beschrijving** is als volgt:
 | spacious | 1
 | van | 1, 2
 | tot | 1
-| weergeven | 1, 2, 3
+| weergave | 1, 2, 3
 | Walking | 1
-| Met | 3
+| door | 3
 
 
 **Overeenkomende query termen op basis van geïndexeerde voor waarden**
@@ -360,7 +360,7 @@ Een voor beeld illustreert waarom dit van belang is. Zoek opdrachten met Joker t
 Er zijn twee manieren voor het afstemmen van relevantie scores in azure Cognitive Search:
 
 1. **Score profielen** verhogen documenten in de geclassificeerde lijst met resultaten op basis van een set regels. In ons voor beeld kunnen we documenten beschouwen die overeenkomen met het veld titel die relevant zijn voor documenten die overeenkomen met het veld Beschrijving. Daarnaast kunnen we documenten met een lagere prijs promoten als in onze index een prijs veld voor elk hotel voor komt. Meer informatie over het [toevoegen van Score profielen aan een zoek index.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Term versterking** (alleen beschikbaar in de volledige lucene-query syntaxis) biedt een Boosting operator `^` die kan worden toegepast op elk deel van de query structuur. In ons voor beeld, in plaats van te zoeken op het voor voegsel van de *airconditioning*\*, kan er worden gezocht naar de exacte conditie of met het voor voegsel, maar documenten die overeenkomen met de *exacte term worden* verhoogd door Boost toe te passen op de term query: * Air-voor waarde ^ 2 | | lucht conditie * *. Meer informatie over het verbeteren van de [term](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Term versterking** (alleen beschikbaar in de volledige lucene-query syntaxis) biedt een Boosting operator `^` die kan worden toegepast op elk deel van de query structuur. In het voor beeld, in plaats van te zoeken op het voor voegsel van de *airconditioning*\*, kan er worden gezocht naar de exacte conditie of met het voor voegsel, maar documenten die overeenkomen met de *exacte term worden* verhoogd door Boost toe te passen op de term query: * lucht voorwaarde ^ 2 | | lucht conditie * *. Meer informatie over het verbeteren van de [term](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Score in een gedistribueerde index
@@ -393,11 +393,11 @@ In dit artikel wordt gezocht in volledige tekst in de context van Azure Cognitiv
 
 ## <a name="see-also"></a>Zie ook
 
-[Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
 [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Volledige lucene-query syntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Volledige Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
 [Zoekresultaten verwerken](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
 

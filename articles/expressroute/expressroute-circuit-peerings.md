@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356598"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-circuits en -peering
 
@@ -36,11 +36,11 @@ Elk circuit heeft een vaste bandbreedte (50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 
 
 ### <a name="quotas"></a>Quota's, limieten en beperkingen
 
-Standaardquota en limieten gelden voor elk ExpressRoute-circuit. Raadpleeg de [Azure-abonnement en Servicelimieten, Quotums en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) pagina voor actuele informatie over quota.
+Standaardquota en limieten gelden voor elk ExpressRoute-circuit. Raadpleeg de pagina [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor actuele informatie over quota's.
 
 ## <a name="routingdomains"></a>ExpressRoute-peering
 
-Een ExpressRoute-circuit heeft meerdere Routering domeinen/peerings die ermee verbonden zijn: Azure openbare, Azure privé- en Microsoft. Elke peering identiek is geconfigureerd op twee routers (in actief / actief- of delen van belasting configureren) voor hoge beschikbaarheid. Azure-services worden aangemerkt als *openbare Azure* en *Azure privé* om weer te geven van de IP-adressen van schema's.
+Een ExpressRoute-circuit heeft meerdere Routering domeinen/peerings die ermee verbonden zijn: Azure openbare, Azure privé- en Microsoft. Elke peering identiek is geconfigureerd op twee routers (in actief / actief- of delen van belasting configureren) voor hoge beschikbaarheid. Azure-Services worden gecategoriseerd als *Azure Public* en *Azure private* om de IP-adresserings schema's weer te geven.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
@@ -48,17 +48,17 @@ Een ExpressRoute-circuit heeft meerdere Routering domeinen/peerings die ermee ve
 
 Azure compute-services, namelijk virtuele machines (IaaS) en cloudservices (PaaS), die zijn geïmplementeerd in een virtueel netwerk kunnen worden verbonden via het domein voor persoonlijke peering. Het domein voor persoonlijke peering wordt beschouwd als een vertrouwde uitbreiding van uw Basisnetwerk in Microsoft Azure. U kunt bidirectionele connectiviteit tussen uw Basisnetwerk en de Azure-netwerken (VNets) instellen. Deze peering, kunt u verbinding maken met virtuele machines en services rechtstreeks op hun persoonlijke IP-adressen in de cloud.  
 
-U kunt meer dan één virtueel netwerk verbinden met het domein voor persoonlijke peering. Controleer de [pagina met veelgestelde vragen](expressroute-faqs.md) voor meer informatie over limieten en beperkingen. U kunt de [Azure-abonnement en Servicelimieten, Quotums en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) pagina voor actuele informatie over limieten.  Raadpleeg de [Routing](expressroute-routing.md) pagina voor gedetailleerde informatie over de configuratie van de routering.
+U kunt meer dan één virtueel netwerk verbinden met het domein voor persoonlijke peering. Bekijk de [pagina met veelgestelde vragen](expressroute-faqs.md) voor informatie over limieten en beperkingen. U kunt de pagina [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor actuele informatie over limieten bekijken.  Raadpleeg de pagina [route ring](expressroute-routing.md) voor gedetailleerde informatie over de routerings configuratie.
 
-### <a name="microsoftpeering"></a>Microsoft-peering
+### <a name="microsoftpeering"></a>Micro soft-peering
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Connectiviteit met micro soft onlineservices (Office 365 en Azure PaaS Services) vindt plaats via micro soft-peering. We inschakelen bidirectionele connectiviteit tussen uw WAN- en Microsoft cloud-services via de Microsoft-peering routering domein. U moet verbinding maken met Microsoft cloud-services alleen via het openbare IP-adressen die eigendom zijn van u of uw connectiviteitsprovider en u moet voldoen aan alle gedefinieerde regels. Zie voor meer informatie de [vereisten voor ExpressRoute](expressroute-prerequisites.md) pagina.
+Connectiviteit met micro soft onlineservices (Office 365 en Azure PaaS Services) vindt plaats via micro soft-peering. We inschakelen bidirectionele connectiviteit tussen uw WAN- en Microsoft cloud-services via de Microsoft-peering routering domein. U moet verbinding maken met Microsoft cloud-services alleen via het openbare IP-adressen die eigendom zijn van u of uw connectiviteitsprovider en u moet voldoen aan alle gedefinieerde regels. Zie de pagina met ExpressRoute- [vereisten](expressroute-prerequisites.md) voor meer informatie.
 
-Zie de [pagina met veelgestelde vragen](expressroute-faqs.md) voor meer informatie over de services die worden ondersteund, kosten en informatie over de configuratie. Zie de [ExpressRoute-locaties](expressroute-locations.md) pagina voor meer informatie over de lijst van connectiviteitsproviders bieden ondersteuning voor Microsoft-peering.
+Raadpleeg de [pagina met veelgestelde vragen](expressroute-faqs.md) voor meer informatie over ondersteunde services, kosten en configuratie details. Zie de pagina [ExpressRoute locations](expressroute-locations.md) voor informatie over de lijst met connectiviteits providers die ondersteuning bieden voor micro soft-peering.
 
-## <a name="peeringcompare"></a>Vergelijking van de peering
+## <a name="peeringcompare"></a>Peering-vergelijking
 
 De volgende tabel worden de drie de peerings vergeleken:
 
@@ -66,17 +66,17 @@ De volgende tabel worden de drie de peerings vergeleken:
 
 U kunt een of meer van de Routeringsdomeinen inschakelen als onderdeel van uw ExpressRoute-circuit. U kunt kiezen om alle Routeringsdomeinen plaats op de dezelfde VPN-verbinding als u wilt combineren in één routeringsdomein. U kunt ze ook op verschillende Routeringsdomeinen, vergelijkbaar met het diagram plaatsen. De aanbevolen configuratie is dat privépeering rechtstreeks met het Basisnetwerk verbonden is en de openbare en Microsoft peeringkoppelingen zijn verbonden met uw DMZ.
 
-Elke peering moeten afzonderlijke BGP-sessies (een paar voor elk type peering). De BGP-sessie-paren bieden een maximaal beschikbare koppeling. Als u verbinding via layer 2-connectiviteitsproviders maakt, bent u verantwoordelijk voor het configureren en beheren van routering. U kunt meer informatie aan de hand van de [werkstromen](expressroute-workflows.md) voor het instellen van ExpressRoute.
+Elke peering moeten afzonderlijke BGP-sessies (een paar voor elk type peering). De BGP-sessie-paren bieden een maximaal beschikbare koppeling. Als u verbinding via layer 2-connectiviteitsproviders maakt, bent u verantwoordelijk voor het configureren en beheren van routering. U kunt meer te weten komen door de [werk stromen](expressroute-workflows.md) te controleren voor het instellen van ExpressRoute.
 
 ## <a name="health"></a>ExpressRoute-status
 
-ExpressRoute-circuits mogen worden bewaakt voor beschikbaarheid, verbinding met vnet's en het gebruik van bandbreedte gebruik [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
+ExpressRoute-circuits kunnen worden bewaakt voor Beschik baarheid, connectiviteit met VNets en bandbreedte gebruik met behulp van [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
-NPM controleert de status van persoonlijke Azure-peering en Microsoft-peering. Bekijk onze [boeken](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) voor meer informatie.
+NPM controleert de status van persoonlijke Azure-peering en Microsoft-peering. Bekijk onze [post](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zoek een serviceprovider Zie [ExpressRoute-providers en -locaties service](expressroute-locations.md).
+* Zoek een serviceprovider Zie [ExpressRoute-service providers en-locaties](expressroute-locations.md).
 * Controleer of aan alle vereisten is voldaan. Zie [ExpressRoute prerequisites](expressroute-prerequisites.md) (Vereisten voor ExpressRoute).
 * Configureer uw ExpressRoute-verbinding.
   * [Create and manage ExpressRoute circuits](expressroute-howto-circuit-portal-resource-manager.md) (ExpressRoute-circuits maken en beheren)

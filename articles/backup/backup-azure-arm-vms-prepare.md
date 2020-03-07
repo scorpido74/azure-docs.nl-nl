@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-mac
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363730"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -41,7 +41,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
  Een kluis slaat back-ups en herstel punten op die gedurende een periode zijn gemaakt en slaat back-upbeleid op dat is gekoppeld aan back-upcomputers. Maak als volgt een kluis:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Typ **Recovery Services**in zoeken. Klik onder **Services**op **Recovery Services kluizen**.
 
      ![Recovery Services kluizen zoeken](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -133,7 +133,7 @@ Als u hebt geselecteerd voor het maken van een nieuw back-upbeleid, vult u de be
     * U kunt moment opnamen voor direct terugzetten tussen een en vijf dagen bewaren. Twee dagen is de standaard instelling.
 4. Geef in **Bewaar termijn**op hoe lang u uw dagelijkse of wekelijkse back-uppunten wilt houden.
 5. Geef bij het **bewaren van maandelijks back-uppunt**op of u een maandelijkse back-up van uw dagelijkse of wekelijkse back-ups wilt behouden.
-6. Klik op **OK** het beleid op te slaan.
+6. Klik op **OK** om het beleid op te slaan.
 
     ![Nieuw back-upbeleid](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
