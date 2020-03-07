@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176480"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374482"
 ---
 # <a name="azure-api-management-template-resources"></a>Resources van Azure API Management-sjabloon
 Azure API Management biedt de volgende typen resources voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
@@ -51,22 +51,22 @@ De volgende lokalisatie opties worden ondersteund:
 | Landinstelling    | Taal               |
 |-----------|------------------------|
 | nl      | Engelstalig              |
-| Support      | Tsjechisch              |
+| "cs"      | "Čeština"              |
 | normalis      | Deutsch              |
-| s      | Spaans              |
+| s      | "Español"              |
 | nl      | Frans             |
 | hu      | Magyar               |
-| ,      | Italiano             |
-| "ja-JP"   | Japans                |
-| ko      | Koreaans                |
-| nl      | Nederlands           |
-| pl      | Poolse               |
-| "pt-br"   | "Português (Brazilië)"   |
+| "it"      | Italiano             |
+| "ja-JP"   | "日本語"                |
+| ko      | "한국어"                |
+| nl      | "Nederlands"           |
+| pl      | "Polski"               |
+| "pt-br"   | "Português (Brasil)"   |
 | "pt-pt"   | "Português (Portugal)" |
-| ru      | Russisch              |
-| SV      | Svenska              |
+| "ru"      | "Русский"              |
+| "sv"      | Svenska              |
 | formulieren      | Turks               |
-| "zh-Hans" | "中文(简体)"           |
+| "zh-hans" | "中文(简体)"           |
 | "zh-hant" | "中文(繁體)"           |
 
  Raadpleeg de volgende tabellen voor de teken reeks bronnen die beschikbaar zijn voor gebruik in de sjablonen voor de ontwikkelaars Portal. Gebruik de tabel naam als voor voegsel voor de teken reeks resources in die tabel.  
@@ -135,24 +135,24 @@ De volgende lokalisatie opties worden ondersteund:
 |WebDevelopersAppNotSubmitted|Niet verzonden|  
 |WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Naam|  
-|WebDevelopersAppTableStateHeader|Staat|  
+|WebDevelopersAppTableStateHeader|Status|  
 |WebDevelopersEditLink|Bewerken|  
 |WebDevelopersRegisterAppLink|Toepassing registreren|  
 |WebDevelopersRemoveLink|Verwijderen|  
-|WebDevelopersSubmitLink|Verstuur|  
+|WebDevelopersSubmitLink|Verzenden|  
 |WebDevelopersYourApplicationsHeader|Uw toepassingen|  
   
 ###  <a name="AppStrings"></a>AppStrings  
   
 |Naam|Tekst|  
 |----------|----------|  
-|WebApplicationsHeader|Applicaties|  
+|WebApplicationsHeader|Toepassingen|  
   
 ###  <a name="CommonResources"></a>CommonResources  
   
 |Naam|Tekst|  
 |----------|----------|  
-|NoItemsToDisplay|Er zijn geen resultaten gevonden.|  
+|NoItemsToDisplay|Geen resultaten gevonden.|  
 |GeneralExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Probeer het opnieuw.|  
 |GeneralJsonExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Laad de pagina opnieuw en probeer het opnieuw.|  
 |ConfirmationMessageUnsavedChanges|Er zijn een aantal niet-opgeslagen wijzigingen. Weet u zeker dat u de wijzigingen wilt annuleren en wilt negeren?|  
@@ -167,8 +167,8 @@ De volgende lokalisatie opties worden ondersteund:
 |ButtonLabelSave|Opslaan|  
 |GeneralExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Probeer het opnieuw.|  
 |NoItemsToDisplay|Er zijn geen items om weer te geven.|  
-|PagerButtonLabelFirst|Eerste|  
-|PagerButtonLabelLast|Duren|  
+|PagerButtonLabelFirst|Instantie|  
+|PagerButtonLabelLast|Laatste|  
 |PagerButtonLabelNext|Volgende|  
 |PagerButtonLabelPrevious|Vorige|  
 |PagerLabelPageNOfM|Pagina {0} van {1}|  
@@ -221,11 +221,11 @@ De volgende lokalisatie opties worden ondersteund:
 |OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|< p\> de client wordt geverifieerd met de autorisatie server en vraagt een toegangs token op uit het eind punt van de token. </p\> < p\> de autorisatie server de client verifieert en als dit geldig is, wordt een toegangs token verleend. </p\>|  
 |OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> als de aanvraag client verificatie mislukt of ongeldig is, reageert de autorisatie server met een HTTP 400 (ongeldige aanvraag) status code (tenzij anders opgegeven) en bevat de volgende para meters met het antwoord. </p\>|  
 |OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> de client een aanvraag naar het eind punt van het token doet door de volgende para meters toe te voegen met de indeling ' Application/x-www-form-urlencoded ' met een teken codering van UTF-8 in de entiteit van de HTTP-aanvraag. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> als de aanvraag voor het toegangs token geldig en geautoriseerd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteit-body van het HTTP-antwoord met een 200 (OK ) status code. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> als de aanvraag voor het toegangs token geldig en goedgekeurd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteit-body van het HTTP-antwoord met een 200 (OK)-status code. </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|< p\> de client de stroom initieert door de gebruikers agent van de resource-eigenaar naar het autorisatie-eind punt te sturen.  De client bevat de client-id, het aangevraagde bereik, de lokale status en een omleidings-URI waarnaar de autorisatie server de gebruikers agent weer verzendt zodra toegang is verleend (of geweigerd). </p\> < p\> de autorisatie server de resource-eigenaar verifieert (via de gebruikers agent) en bepaalt of de resource-eigenaar de toegangs aanvraag van de client verleent of weigert. </p\> < p\> ervan uitgaande dat de eigenaar van de resource toegang verleent, stuurt de autorisatie server de gebruikers agent terug naar de client met behulp van de omleidings-URI die u eerder hebt ingesteld.  De omleidings-URI bevat het toegangs token in het URI-fragment. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> als de eigenaar van de resource de toegangs aanvraag weigert of als de aanvraag mislukt om andere redenen dan een ontbrekende of ongeldige omleidings-URI, informeert de autorisatie server de client door de volgende para meters toe te voegen aan het fragment onderdeel van de th e-omleidings-URI met de indeling ' Application/x-www-form-urlencoded '. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> als de eigenaar van de resource de toegangs aanvraag weigert of als de aanvraag om andere redenen dan een ontbrekende of ongeldige omleidings-URI is mislukt, informeert de autorisatie server de client door de volgende para meters toe te voegen aan het fragment onderdeel van de omleidings-URI met de indeling ' Application/x-www-form-urlencoded '. </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> de client-app moet de gebruiker naar het autorisatie-eind punt sturen om het OAuth-proces te initiëren.      Bij het autorisatie-eind punt verifieert de gebruiker de toegang tot de app en verleent of weigert deze. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> als de resource-eigenaar de toegangs aanvraag verleent, geeft de autorisatie server een toegangs token uit en wordt het aan de client geleverd door de volgende para meters toe te voegen aan het fragment onderdeel van de omleidings-URI met behulp van de toepassing/x-www-for m-urlencoded-indeling. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> als de resource-eigenaar de toegangs aanvraag verleent, geeft de autorisatie server een toegangs token uit en wordt het aan de client geleverd door de volgende para meters toe te voegen aan het fragment onderdeel van de omleidings-URI met de indeling ' Application/x-www-form-urlencoded '. </p\>|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|De autorisatie code stroom is geoptimaliseerd voor clients die de vertrouwelijkheid van hun referenties kunnen onderhouden (zoals webserver toepassingen die zijn geïmplementeerd met behulp van PHP, Java, Python, Ruby, ASP.NET, enzovoort).|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Autorisatie code verlenen|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|De stroom van client referenties is geschikt in gevallen waarin de client (uw toepassing) toegang tot de beveiligde bronnen aanvraagt onder het besturings element. De client wordt beschouwd als eigenaar van een resource, dus er is geen interactie tussen de eind gebruiker vereist.|  
@@ -237,7 +237,7 @@ De volgende lokalisatie opties worden ondersteund:
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> de eigenaar van de resource de client met de gebruikers naam en het wacht woord. </p\> < p\> de client een toegangs token van het token eind punt van de autorisatie server aanvraagt door de referenties op te nemen die zijn ontvangen van de resource-eigenaar.  Bij het maken van de aanvraag verifieert de client bij de autorisatie server. </p\> < p\> de autorisatie server de client verifieert en de referenties van de resource-eigenaar valideert, en als dit geldig is, wordt een toegangs token verleend. </p\>|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> als de aanvraag client verificatie mislukt of ongeldig is, reageert de autorisatie server met een HTTP 400 (ongeldige aanvraag) status code (tenzij anders opgegeven) en bevat de volgende para meters met het antwoord. </p\>|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> de client een aanvraag naar het eind punt van het token doet door de volgende para meters toe te voegen met de indeling ' Application/x-www-form-urlencoded ' met een teken codering van UTF-8 in de entiteit van de HTTP-aanvraag. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> als de aanvraag voor het toegangs token geldig en geautoriseerd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteit-body van het HTTP-antwoord met een 200 (O K) status code. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> als de aanvraag voor het toegangs token geldig en goedgekeurd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteit-body van het HTTP-antwoord met een 200 (OK)-status code. </p\>|  
 |OAuth2Step_AccessTokenRequest_Name|Toegangs token aanvraag|  
 |OAuth2Step_AuthorizationRequest_Name|Autorisatie aanvraag|  
 |OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|Vereist. Het toegangs token dat is uitgegeven door de autorisatie server.|  
@@ -259,21 +259,21 @@ De volgende lokalisatie opties worden ondersteund:
 |OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
 |OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
 |OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
-|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, ACCESS_DENIED, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, ACCESS_DENIED, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
+|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
+|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
 |OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
 |OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
 |OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
 |OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
-|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op ' authorization_code '.|  
-|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op ' client_credentials '.|  
+|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op authorization_code.|  
+|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op client_credentials.|  
 |OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op ' wacht woord '.|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. Het wacht woord voor de resource-eigenaar.|  
 |OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|Beschrijving. De URI van het omleidings eindpunt moet een absolute URI zijn.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|VEREIST als de para meter "redirect_uri" is opgenomen in de autorisatie aanvraag en de waarden moeten identiek zijn.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|VEREIST als de para meter "redirect_uri" is opgenomen in de autorisatie aanvraag en de waarden ervan identiek moeten zijn.|  
 |OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|Beschrijving. De URI van het omleidings eindpunt moet een absolute URI zijn.|  
 |OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|Beschrijving. Het vernieuwings token dat kan worden gebruikt om nieuwe toegangs tokens te verkrijgen.|  
 |OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|Beschrijving. Het vernieuwings token dat kan worden gebruikt om nieuwe toegangs tokens te verkrijgen.|  
@@ -301,7 +301,7 @@ De volgende lokalisatie opties worden ondersteund:
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De gebruikers naam van de resource-eigenaar.|  
 |OAuth2UnsupportedTokenType|Het token type{0}wordt niet ondersteund.|  
 |OAuth2InvalidState|Ongeldig antwoord van de autorisatie server|  
-|OAuth2GrantType_AuthorizationCode|autorisatie code|  
+|OAuth2GrantType_AuthorizationCode|Autorisatie code|  
 |OAuth2GrantType_Implicit|Wenst|  
 |OAuth2GrantType_ClientCredentials|Clientreferenties|  
 |OAuth2GrantType_ResourceOwnerPassword|Wacht woord van resource-eigenaar|  
@@ -326,7 +326,7 @@ De volgende lokalisatie opties worden ondersteund:
 |SectionHeadingRequestParameters|Aanvraag parameters|  
 |SectionHeadingRequestUrl|Aanvraag-URL|  
 |SectionHeadingResponse|Antwoord|  
-|SectionHeadingRequestHeaders|Aanvraag headers|  
+|SectionHeadingRequestHeaders|Aanvraagheaders|  
 |FormLabelSubtextOptional|Beschrijving|  
 |SectionHeadingCodeSamples|Codevoorbeelden|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect Connect ID-token dat is verkregen van < ik\>{0}</i\>. Ondersteunde toekennings typen: < ik\>{1}</i\>.|  
@@ -381,13 +381,13 @@ De volgende lokalisatie opties worden ondersteund:
 |----------|----------|  
 |WebProductsAgreement|Door u te abonneren op {0} product, gaat u akkoord met de `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
 |WebProductsLegalTermsLink|Gebruiksvoorwaarden|  
-|WebProductsSubscribeButton|Abonneer u nu|  
-|WebProductsUsageLimitsHeader|Gebruiksbeperkingen|  
+|WebProductsSubscribeButton|Abonneren op|  
+|WebProductsUsageLimitsHeader|Gebruiks limieten|  
 |WebProductsYouAreNotSubscribed|U bent geabonneerd op dit product.|  
 |WebProductsYouRequestedSubscription|U hebt een abonnement op dit product aangevraagd.|  
 |ErrorYouNeedToAgreeWithLegalTerms|U moet akkoord gaan met de gebruiks voorwaarden voordat u kunt door gaan.|  
 |ButtonLabelAddSubscription|Abonnement toevoegen|  
-|LinkLabelChangeSubscriptionName|Kunt|  
+|LinkLabelChangeSubscriptionName|kunt|  
 |ButtonLabelConfirm|Bevestigen|  
 |TextblockMultipleSubscriptionsCount|U hebt {0} abonnementen op dit product:|  
 |TextblockSingleSubscriptionsCount|U hebt {0} abonnement op dit product:|  
@@ -423,7 +423,7 @@ De volgende lokalisatie opties worden ondersteund:
 |ValidationErrorSpecificEmailInvalid|E-mail{0}is ongeldig|  
 |ValidationErrorPasswordInvalid|Het wacht woord is ongeldig. Corrigeer de fouten en probeer het opnieuw.|  
 |PropertyTooShort|{0} is te kort|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|Ongeldig e-mail adres.|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|Ongeldig e-mailadres.|  
 |ValidationMessageNewPasswordConfirmationRequired|Bevestig het nieuwe wacht woord|  
 |ValidationErrorPasswordConfirmationRequired|Wacht woord voor bevestigen is leeg|  
 |WebAuthenticationEmailChangeNotice|E-mail met wijzigings bevestiging is aan {0}. Volg de instructies in de IT om het nieuwe e-mail adres te bevestigen. Als het e-mail adres in de volgende paar minuten niet in uw postvak wordt ontvangen, controleert u de map Ongewenste e-mail.|  
@@ -432,7 +432,7 @@ De volgende lokalisatie opties worden ondersteund:
 |WebAuthenticationEmailHasBeenRevertedNotice|U hebt al een e-mail adres. De aanvraag is teruggezet|  
 |ValidationErrorEmailAlreadyExists|E-mail adres bestaat al|  
 |ValidationErrorEmailInvalid|Ongeldig e-mail adres|  
-|TextboxLabelEmail|E-mail|  
+|TextboxLabelEmail|Email|  
 |ValidationErrorEmailRequired|E-mail adres is vereist.|  
 |WebAuthenticationErrorNoticeHeader|Fout|  
 |WebAuthenticationFieldLengthErrorMessage|{0} moet een maximum lengte van {1} zijn|  
@@ -451,7 +451,7 @@ De volgende lokalisatie opties worden ondersteund:
 |WebAuthenticationNewPasswordLabel|Nieuw wacht woord|  
 |ValidationMessageNewPasswordRequired|Het nieuwe wacht woord is vereist.|  
 |TextboxLabelNotificationsSenderEmail|E-mail adres afzender|  
-|TextboxLabelOrganizationName|Naam van de organisatie|  
+|TextboxLabelOrganizationName|Organisatie naam|  
 |WebAuthenticationOrganizationRequiredErrorMessage|De naam van de organisatie is leeg|  
 |WebAuthenticationPasswordChangedNotice|Het wacht woord is bijgewerkt|  
 |WebAuthenticationPasswordChangedNoticeTitle|Wacht woord bijgewerkt|  
@@ -466,7 +466,7 @@ De volgende lokalisatie opties worden ondersteund:
 |WebAuthenticationRequestNotFoundNotice|Kan de aanvraag niet vinden|  
 |WebAuthenticationSenderEmailRequiredErrorMessage|E-mail adres afzender is leeg|  
 |WebAuthenticationSigninPasswordLabel|Bevestig de wijziging door een wacht woord in te voeren|  
-|WebAuthenticationSignupConfirmNotice|E-mail adres voor registratie bevestiging is onderweg {0}. < br/\> Volg de instructies in het e-mail bericht om uw account te activeren. < br/\> als het e-mail bericht binnen de komende minuten niet in uw postvak wordt ontvangen, controleert u uw ongewenste e-mail map.|  
+|WebAuthenticationSignupConfirmNotice|E-mail adres voor registratie bevestiging is onderweg {0}. < br/\> Volg de instructies in het e-mail bericht om uw account te activeren. < br/\> als het e-mail bericht binnen enkele minuten niet in uw postvak wordt ontvangen, controleert u de map Ongewenste e-mail.|  
 |WebAuthenticationSignupConfirmNoticeHeader|Uw account is gemaakt|  
 |WebAuthenticationSignupConfirmNoticeRepeatHeader|Het e-mail adres voor registratie bevestiging is opnieuw verzonden|  
 |WebAuthenticationSignupConfirmNoticeTitle|Account gemaakt|  
@@ -517,7 +517,7 @@ De volgende lokalisatie opties worden ondersteund:
 |WebAuthenticationRemember|Mij onthouden op deze computer|  
 |WebAuthenticationSigininWithPassword|Meld u aan met uw gebruikers naam en wacht woord|  
 |WebAuthenticationSigninTitle|Aanmelden|  
-|WebAuthenticationSignUpNow|Nu aanmelden|  
+|WebAuthenticationSignUpNow|Nu registreren|  
   
 ###  <a name="SignupStrings"></a>SignupStrings  
   
@@ -542,15 +542,15 @@ De volgende lokalisatie opties worden ondersteund:
 |ButtonLabelShowKey|Weergeven|  
 |ButtonLabelRenewSubscription|Verlengen|  
 |WebDevelopersSubscriptionRequested|Aangevraagd op {0}|  
-|WebDevelopersSubscriptionRequestedState|Aangevraagde|  
+|WebDevelopersSubscriptionRequestedState|Aangevraagd|  
 |WebDevelopersSubscriptionTableNameHeader|Naam|  
-|WebDevelopersSubscriptionTableStateHeader|Staat|  
+|WebDevelopersSubscriptionTableStateHeader|Status|  
 |WebDevelopersUsageStatisticsLink|Analyse rapporten|  
 |WebDevelopersYourSubscriptions|Uw abonnementen|  
 |SubscriptionPropertyLabelRequestedDate|Aangevraagd op|  
 |SubscriptionPropertyLabelStartedDate|Gestart op|  
 |PageTitleRenameSubscription|Naam van abonnement wijzigen|  
-|SubscriptionPropertyLabelName|Abonnements naam|  
+|SubscriptionPropertyLabelName|Abonnementsnaam|  
   
 ###  <a name="SubscriptionStrings"></a>SubscriptionStrings  
   
@@ -577,20 +577,20 @@ De volgende lokalisatie opties worden ondersteund:
 |ButtonLabelChangeAccountInfo|Account gegevens wijzigen|  
 |ButtonLabelChangePassword|Wacht woord wijzigen|  
 |ButtonLabelCloseAccount|Account sluiten|  
-|TextboxLabelEmail|E-mail|  
+|TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Voornaam|  
 |TextboxLabelEmailLastName|Achternaam|  
 |TextboxLabelNotificationsSenderEmail|E-mail adres afzender|  
-|TextboxLabelOrganizationName|Naam van de organisatie|  
+|TextboxLabelOrganizationName|Organisatie naam|  
 |SubscriptionStateActive|Actief|  
-|SubscriptionStateCancelled|Gevraagd|  
+|SubscriptionStateCancelled|Geannuleerd|  
 |SubscriptionStateExpired|Verlopen|  
-|SubscriptionStateRejected|Afgekeurd|  
-|SubscriptionStateRequested|Aangevraagde|  
-|SubscriptionStateSuspended|Gebroken|  
+|SubscriptionStateRejected|Afgewezen|  
+|SubscriptionStateRequested|Aangevraagd|  
+|SubscriptionStateSuspended|Suspended|  
 |DefaultSubscriptionNameTemplate|{0} (standaard)|  
 |SubscriptionNameTemplate|Toegang voor ontwikkel aars #{0}|  
-|TextboxLabelSubscriptionName|Abonnements naam|  
+|TextboxLabelSubscriptionName|Abonnementsnaam|  
 |ValidationMessageSubscriptionNameRequired|De naam van het abonnement mag niet leeg zijn.|  
 |ApiManagementUserLimitReached|Deze service heeft het maximum aantal toegestane gebruikers bereikt. Voer een upgrade uit naar een hogere prijs categorie.|  
   

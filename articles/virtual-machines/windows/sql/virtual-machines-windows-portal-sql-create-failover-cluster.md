@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388779"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren op virtuele machines van Azure
 
@@ -397,7 +397,7 @@ De load balancer maken:
 
 1. Selecteer **OK** om de back-end-pool te maken.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer-statustest configureren
+### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer Health probe configureren
 
 1. Selecteer op de Blade load balancer **status controles**.
 

@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie voor het kopiëren van gegevens naar Azure Data Box via NFS | Microsoft Docs
+title: Zelf studie voor het kopiëren van gegevens naar Azure Data Box via NFS | Microsoft Docs
 description: Leer hoe u gegevens kopieert naar uw Azure Data Box via NFS
 services: databox
 author: alkohli
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443152"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380194"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelf studie: gegevens kopiëren naar Azure Data Box via NFS
 
 Deze zelfstudie beschrijft hoe u verbinding kunt maken en gegevens kunt kopiëren vanaf uw hostcomputer via de lokale gebruikersinterface.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de zelfstudie [ Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
+1. U hebt de [zelfstudie: Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is bijgewerkt naar **Geleverd**.
 3. U hebt een hostcomputer waarop de gegevens staan die u naar de Data Box wilt kopiëren. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
@@ -40,8 +40,8 @@ Zorg voordat u begint voor het volgende:
 
 Data Box maakt op basis van het geselecteerde opslagaccount maximaal:
 - Drie shares voor elk gekoppeld opslagaccount voor GPv1 en GPv2.
-- Een share voor een premium-opslag. 
-- Een share voor blob storage-account. 
+- Eén share voor premium opslag. 
+- Eén share voor een blob-opslagaccount. 
 
 Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau containers en entiteiten op het tweede niveau blobs. Onder shares voor Azure Files zijn entiteiten op het eerste niveau shares en entiteiten op het tweede niveau bestanden.
 
@@ -88,11 +88,11 @@ Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopi�
 - Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 - We adviseren u om niet SMB en NFS tegelijk te gebruiken of om dezelfde gegevens naar dezelfde eindbestemming in Azure te kopiëren. In dergelijke gevallen kan de definitieve uitkomst niet worden vastgesteld.
 - **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
-- Als het opnemen van hoofdlettergevoelige map- en namen van een NFS-share aan NFS op Data Box: 
-    - De aanvraag blijft behouden in de naam.
-    - De bestanden zijn niet hoofdlettergevoelig.
+- Bij het opnemen van hoofdletter gevoelige Directory-en bestands namen van een NFS-share naar NFS op Data Box: 
+    - Het geval blijft in de naam.
+    - De bestanden zijn niet hoofdletter gevoelig.
     
-    Bijvoorbeeld, als kopiëren `SampleFile.txt` en `Samplefile.Txt`, de aanvraag worden bewaard in de naam van de vorm naar Data Box worden gekopieerd, maar de tweede bestand, het eerste item wordt overschreven als deze worden beschouwd als hetzelfde bestand.
+    Als u bijvoorbeeld `SampleFile.txt` en `Samplefile.Txt`kopieert, blijft het hoofdletter gebruik in de naam bij het kopiëren naar Data Box, maar wordt het tweede bestand overschreven wanneer dit wordt beschouwd als hetzelfde bestand.
 
 
 Gebruik een hulpprogramma voor kopiëren dat op Robocopy lijkt als u een Linux-hostcomputer gebruikt. Voorbeelden van beschikbare alternatieven in Linux zijn [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) en [Ultracopier](https://ultracopier.first-world.info/).  
@@ -134,9 +134,9 @@ Volg deze richtlijnen als u rsync gebruikt voor een kopie met meerdere threads:
      We adviseren u om met 16 parallelle kopieën te beginnen en het aantal threads te verhogen op basis van de beschikbare resources.
 
 > [!IMPORTANT]
-> De volgende typen van de Linux-bestanden worden niet ondersteund: symbolische koppelingen, tekenbestanden, bestanden blokkeren, sockets en pipes. Deze bestandstypen zal leiden tot fouten tijdens de **voorbereiding voor verzending** stap.
+> De volgende Linux-bestands typen worden niet ondersteund: symbolische koppelingen, teken bestanden, blok keren van bestanden, sockets en pijp leidingen. Deze bestands typen veroorzaken fouten tijdens de **voorbereiding voor verzending** stap.
 
-Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie voor meer informatie, [foutenlogboeken weergeven tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy). Zie voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens, [Data Box oplossen van problemen met](data-box-troubleshoot.md).
+Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
     

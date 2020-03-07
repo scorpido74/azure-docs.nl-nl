@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389670"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
 
@@ -28,7 +28,7 @@ Azure dev Spaces heeft bepaalde vereisten voor binnenkomend *en* uitgaand netwer
 
 Azure dev Spaces heeft ingangs-en uitgangs verkeer nodig voor de volgende FQDN-tekens:
 
-| FQDN-NAAM                       | Port       | Gebruiken      |
+| FQDN-NAAM                       | Poort       | Gebruiken      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS: 443 | Docker-installatie kopieën ophalen voor Azure dev Spaces |
 | gcr.io                     | HTTPS: 443 | Helm-installatie kopieën voor Azure-ontwikkel ruimten ophalen |
@@ -65,7 +65,7 @@ Met AKS-clusters kunt u extra beveiliging configureren waarmee het IP-adres kan 
 
 Op dit moment wordt Azure dev Spaces niet ondersteund met [persoonlijke AKS-clusters][aks-private-clusters].
 
-## <a name="client-requirements"></a>Clientvereisten
+## <a name="client-requirements"></a>Client vereisten
 
 Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u de Azure dev Spaces-client-side Tool wilt gebruiken, moet u verkeer van de ontwikkel machines naar het *azds-\*. azds.io-* domein toestaan. Zie *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` voor de exacte FQDN. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 

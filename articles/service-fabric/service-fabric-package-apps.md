@@ -4,11 +4,11 @@ description: Meer informatie over het inpakken van een Azure Service Fabric-toep
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083607"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361270"
 ---
 # <a name="package-an-application"></a>Toepassingspakket maken
 

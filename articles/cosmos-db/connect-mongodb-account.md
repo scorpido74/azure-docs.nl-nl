@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373841"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Een MongoDB-toepassing verbinden met Azure Cosmos DB
-Meer informatie over het verbinden van uw MongoDB-app met een Azure Cosmos DB met behulp van een MongoDB connection string. U kunt vervolgens een Azure Cosmos-Data Base gebruiken als het gegevens Archief voor uw MongoDB-app. 
+Ontdek hoe u uw MongoDB-app met een Azure Cosmos DB kunt verbinden met behulp van een MongoDB-verbindingsreeks. U kunt vervolgens een Azure Cosmos-database gebruiken als het gegevensarchief voor uw MongoDB-app. 
 
-In deze zelf studie kunt u op twee manieren connection string gegevens ophalen:
+In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophalen:
 
 - [De Quick](#QuickstartConnection)start-methode, voor gebruik met .net-, node. js-, MongoDb-, Java-en python-Stuur Programma's
 - [De aangepaste Connection String methode](#GetCustomConnection), voor gebruik met andere Stuur Programma's

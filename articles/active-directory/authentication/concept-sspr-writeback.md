@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368173"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378320"
 ---
 # <a name="what-is-password-writeback"></a>Wat is wacht woord terugschrijven?
 
@@ -63,7 +63,7 @@ Als u wacht woord terugschrijven wilt gebruiken, moet er een van de volgende lic
 > [!WARNING]
 > Zelfstandige Office 365-licentie plannen *bieden geen ondersteuning voor ' selfservice voor wacht woord opnieuw instellen/wijzigen/ontgrendelen met on-premises terugschrijven '* en vereisen dat u een van de voor gaande plannen hebt om deze functionaliteit te kunnen gebruiken.
 
-## <a name="how-password-writeback-works"></a>Hoe wacht woord terugschrijven werkt
+## <a name="how-password-writeback-works"></a>Hoe wachtwoord terugschrijven werkt
 
 Wanneer een federatieve of wacht woord-hash gesynchroniseerde gebruiker probeert om hun wacht woord opnieuw in te stellen of te wijzigen in de Cloud, worden de volgende acties uitgevoerd:
 

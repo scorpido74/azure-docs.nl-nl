@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768010"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387024"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Werken met data bases, containers en items in Azure Cosmos DB
 
-Nadat u hebt gemaakt een [Azure Cosmos DB-account](account-overview.md) onder uw Azure-abonnement, kunt u gegevens beheren in uw account met het maken van databases, containers en objecten. In dit artikel worden deze entiteiten beschreven. 
+Nadat u een [Azure Cosmos DB account](account-overview.md) hebt gemaakt onder uw Azure-abonnement, kunt u gegevens in uw account beheren door data bases, containers en items te maken. In dit artikel wordt elk van deze entiteiten beschreven. 
 
 In de volgende afbeelding ziet u de hiërarchie van verschillende entiteiten in een Azure Cosmos DB-account:
 
@@ -28,7 +28,7 @@ U kunt een of meer Azure Cosmos-data bases maken onder uw account. Een data base
 
 | Azure Cosmos-entiteit | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-database | Database | Keyspace | Database | Database | N.V.T. |
+|Azure Cosmos-database | Database | Keyspace | Database | Database | N.v.t. |
 
 > [!NOTE]
 > Wanneer u uw eerste tabel maakt met Table-API accounts, wordt er automatisch een standaard database gemaakt in uw Azure Cosmos-account.
@@ -37,12 +37,12 @@ U kunt een of meer Azure Cosmos-data bases maken onder uw account. Een data base
 
 U kunt communiceren met een Azure Cosmos-data base met Azure Cosmos-Api's, zoals beschreven in de volgende tabel:
 
-| Bewerking | Azure-CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
+| Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Het inventariseren van alle databases| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.V.T. | N.V.T. |
-|Database lezen| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.V.T. | N.V.T. |
-|Niewe database maken| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.V.T. | N.V.T. |
-|Database bijwerken| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.V.T. | N.V.T. |
+|Het inventariseren van alle databases| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.v.t. | N.v.t. |
+|Database lezen| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.v.t. | N.v.t. |
+|Niewe database maken| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.v.t. | N.v.t. |
+|Database bijwerken| Ja | Ja | Ja (database is toegewezen aan een keyspace) | Ja | N.v.t. | N.v.t. |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-containers
@@ -68,13 +68,13 @@ U kunt [Change feed](change-feed.md) gebruiken om u te abonneren op het operatio
 
 U kunt [opgeslagen procedures, triggers, door de gebruiker gedefinieerde functies (udf's)](stored-procedures-triggers-udfs.md)en [samenvoeg procedures](how-to-manage-conflicts.md) voor uw Azure Cosmos-container registreren. 
 
-U kunt een [Unique key-beperking](unique-keys.md) opgeven in de Azure Cosmos-container. Zorg ervoor dat een of meer waarden per partitiesleutel logische met een unieke sleutel beleid. Als u een container maakt met behulp van een beleid met unieke sleutels, kunnen er geen nieuwe of bijgewerkte items worden gemaakt met waarden die de waarden dupliceren die zijn opgegeven door de beperking voor unieke sleutels. Zie voor meer informatie, [Unique key-beperkingen](unique-keys.md).
+U kunt een [Unique key-beperking](unique-keys.md) opgeven in de Azure Cosmos-container. Zorg ervoor dat een of meer waarden per partitiesleutel logische met een unieke sleutel beleid. Als u een container maakt met behulp van een beleid met unieke sleutels, kunnen er geen nieuwe of bijgewerkte items worden gemaakt met waarden die de waarden dupliceren die zijn opgegeven door de beperking voor unieke sleutels. Zie [beperkingen voor unieke sleutels](unique-keys.md)voor meer informatie.
 
 Een Azure Cosmos-container is gespecialiseerd in API-specifieke entiteiten, zoals wordt weer gegeven in de volgende tabel:
 
 | Azure Cosmos-entiteit | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-container | Container | Tabel | Verzameling | Grafiek | Tabel |
+|Azure Cosmos-container | Container | Tabel | Verzameling | Graph | Tabel |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschappen van een Azure Cosmos-container
 
@@ -96,13 +96,13 @@ Een Azure Cosmos-container heeft een reeks door het systeem gedefinieerde eigens
 
 Een Azure Cosmos-container ondersteunt de volgende bewerkingen wanneer u een van de Azure Cosmos-Api's gebruikt:
 
-| Bewerking | Azure-CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
+| Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Het inventariseren van containers in een database | Ja | Ja | Ja | Ja | N.V.T. | N.V.T. |
-| Lezen van een container | Ja | Ja | Ja | Ja | N.V.T. | N.V.T. |
-| Een nieuwe container maken | Ja | Ja | Ja | Ja | N.V.T. | N.V.T. |
-| Een container bijwerken | Ja | Ja | Ja | Ja | N.V.T. | N.V.T. |
-| Een container verwijderen | Ja | Ja | Ja | Ja | N.V.T. | N.V.T. |
+| Het inventariseren van containers in een database | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
+| Lezen van een container | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
+| Een nieuwe container maken | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
+| Een container bijwerken | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
+| Een container verwijderen | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos-items
 
@@ -132,7 +132,7 @@ Elk Azure Cosmos-item heeft de volgende door het systeem gedefinieerde eigenscha
 
 Azure Cosmos-items ondersteunen de volgende bewerkingen. U kunt een van de Azure Cosmos-Api's gebruiken om de bewerkingen uit te voeren.
 
-| Bewerking | Azure-CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
+| Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
 | Invoegen, vervangen, verwijderen, Upsert, lezen | Nee | Ja | Ja | Ja | Ja | Ja |
 

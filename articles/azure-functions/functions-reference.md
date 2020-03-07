@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768995"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357989"
 ---
 # <a name="azure-functions-developers-guide"></a>Hand leiding Azure Functions ontwikkel aars
 In Azure Functions delen specifieke functies enkele kern technische concepten en onderdelen, ongeacht de taal of binding die u gebruikt. Lees de informatie in dit overzicht die van toepassing is op alle voor waarden, voordat u naar een bepaalde taal of binding gaat gaan.
@@ -19,7 +19,7 @@ In dit artikel wordt ervan uitgegaan dat u het [Azure functions overzicht](funct
 ## <a name="function-code"></a>Functie code
 Een *functie* is het primaire concept in azure functions. Een functie bevat twee belang rijke onderdelen: uw code, die in verschillende talen kan worden geschreven, en een bepaalde configuratie, het bestand function. json. Voor gecompileerde talen wordt dit configuratie bestand automatisch gegenereerd vanuit aantekeningen in uw code. Voor script talen moet u zelf het configuratie bestand opgeven.
 
-Het bestand function. json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie kan slechts één trigger hebben. De runtime gebruikt dit configuratie bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe gegevens kunnen worden opgehaald uit een functie-uitvoering. Hier volgt een voor beeld van een function. JSON-bestand.
+Het bestand function. json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie heeft één en slechts één trigger. De runtime gebruikt dit configuratie bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe gegevens kunnen worden opgehaald uit een functie-uitvoering. Hier volgt een voor beeld van een function. JSON-bestand.
 
 ```json
 {
@@ -42,9 +42,9 @@ De eigenschap `bindings` is de locatie waar u triggers en bindingen configureert
 
 | Eigenschap | Waarden/typen | Opmerkingen |
 | --- | --- | --- |
-| `type` |string |Bindings type. Bijvoorbeeld `queueTrigger`. |
+| `type` |tekenreeks |Bindings type. Bijvoorbeeld `queueTrigger`. |
 | `direction` |' in ', ' out ' |Geeft aan of de binding is voor het ontvangen van gegevens van de functie of het verzenden van gegevens van de functie. |
-| `name` |string |De naam die wordt gebruikt voor de afhankelijke gegevens in de functie. Voor C#is dit de naam van een argument; voor Java script is het de sleutel in een lijst met sleutel/waarden. |
+| `name` |tekenreeks |De naam die wordt gebruikt voor de afhankelijke gegevens in de functie. Voor C#is dit de naam van een argument; voor Java script is het de sleutel in een lijst met sleutel/waarden. |
 
 ## <a name="function-app"></a>Function App
 Een functie-app biedt een uitvoerings context in azure waarin uw functies worden uitgevoerd. Zo is het de implementatie-en beheer eenheid voor uw functies. Een functie-app bestaat uit een of meer afzonderlijke functies die met elkaar worden beheerd, geïmplementeerd en geschaald. Alle functies in een functie-app delen hetzelfde prijs plan, dezelfde implementatie methode en dezelfde runtime versie. U kunt een functie-app beschouwen als een manier om uw functies te organiseren en gezamenlijk te beheren. Zie [een functie-app beheren](functions-how-to-use-azure-function-app-settings.md)voor meer informatie. 

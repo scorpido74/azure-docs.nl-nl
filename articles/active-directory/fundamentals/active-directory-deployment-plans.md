@@ -1,6 +1,6 @@
 ---
-title: Implementatie plannen-Azure Active Directory | Microsoft Docs
-description: End-to-end-richt lijnen over het implementeren van veel Azure Active Directory mogelijkheden.
+title: Implementatieplannen voor - Azure Active Directory | Microsoft Docs
+description: End-to-end-richtlijnen over het implementeren van de vele mogelijkheden van Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378223"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -71,7 +71,7 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | Mogelijkheid | Beschrijving|
 | -| - |
 | [Eenmalige aanmelding](https://aka.ms/deploymentplans/sso)| Met eenmalige aanmelding kunnen uw gebruikers toegang krijgen tot de apps en bronnen die ze nodig hebben om zaken te doen terwijl ze zich slechts één keer aanmelden. Nadat ze zich hebben aangemeld, kunnen ze van Microsoft Office naar Sales Force naar interne toepassingen gaan zonder dat ze een tweede keer referenties hoeven in te voeren. |
-| [Toegangs venster](https://aka.ms/deploymentplans/accesspanel)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
+| [Toegangs venster](https://aka.ms/deploymentplans/accesspanel)| Biedt uw gebruikers een eenvoudige hub om te ontdekken en toegang tot al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Hybride scenario's implementeren
