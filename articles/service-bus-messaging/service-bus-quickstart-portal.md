@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260834"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358268"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Snelstartgids: Azure Portal gebruiken om een Service Bus wachtrij te maken
-In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van een Service Bus wachtrij, met behulp van de [Azure Portal][Azure portal] om een bericht naam ruimte en een wachtrij binnen die naam ruimte te maken en om de autorisatie referenties voor die naam ruimte te verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van een Service Bus wachtrij, met behulp van de [Azure Portal][Azure portal] om een bericht naam ruimte en een wachtrij binnen die naam ruimte te maken en om de autorisatie referenties voor die naam ruimte te verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -25,7 +25,7 @@ In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van ee
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voordat u begint.
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u hebt gemaakt met behulp van Power shell. 
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u hebt gemaakt met behulp van Power shell. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -46,7 +46,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-Nadat de naamruimte en de wachtrij zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om berichten te verzenden en te ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters).
+Nadat de naamruimte en de wachtrij zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om berichten te verzenden en te ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) controleren.
 
 Ga als volgt te werk om de code uit te voeren:
 
@@ -80,7 +80,7 @@ U kunt via de portal de resourcegroep, de naamruimte en de wachtrij verwijderen.
 
 Deze sectie bevat meer informatie over de werking van de voorbeeldcode. 
 
-### <a name="get-connection-string-and-queue"></a>Verbindingsreeks en wachtrij ophalen
+### <a name="get-connection-string-and-queue"></a>De verbindingsreeks en de wachtrij ophalen
 
 De connection string-en wachtrij naam worden door gegeven aan de methode `Main()` als opdracht regel argumenten. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
 
@@ -213,7 +213,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten gaat u verder met de zelf studies in het gedeelte **berichten verzenden en ontvangen** . 
+In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden naar en het ontvangen van berichten vanuit een wachtrij. Voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten gaat u verder met de zelf studies in het gedeelte **berichten verzenden en ontvangen** . 
 
 > [!div class="nextstepaction"]
 > [Berichten verzenden en ontvangen](service-bus-dotnet-get-started-with-queues.md)

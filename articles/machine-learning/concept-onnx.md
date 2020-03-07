@@ -12,11 +12,11 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541060"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396233"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX en Azure Machine Learning: ML-modellen maken en versnellen
 
@@ -38,13 +38,13 @@ U kunt ONNX-modellen op verschillende manieren verkrijgen:
 + Train een nieuw ONNX-model in Azure Machine Learning (Zie de voor beelden onder aan dit artikel)
 + Bestaand model converteren van een andere indeling naar ONNX (Raadpleeg de [zelf studies](https://github.com/onnx/tutorials)) 
 + Een vooraf getraind ONNX-model ophalen uit het [ONNX-model Zoo](https://github.com/onnx/models) (Zie voor beelden onder aan dit artikel)
-+ Genereren van een aangepaste ONNX-model van [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Een aangepast ONNX-model genereren vanuit de [Azure Custom Vision-service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
 Veel modellen, waaronder afbeeldings classificatie, object detectie en tekst verwerking, kunnen worden weer gegeven als ONNX modellen. Sommige modellen kunnen echter niet worden geconverteerd. Als u deze situatie uitvoert, dient u een probleem op te lossen in het GitHub van het respectieve conversie programma dat u hebt gebruikt. U kunt door gaan met het gebruik van uw bestaande indelings model totdat het probleem is opgelost.
 
 ## <a name="deploy-onnx-models-in-azure"></a>U kunt ONNX-modellen in Azure implementeren
 
-Met Azure Machine Learning kunt u uw ONNX-modellen implementeren, beheren en bewaken. Met behulp van de standaard [implementatiewerkstroom](concept-model-management-and-deployment.md) en u kunt ONNX-Runtime, kunt u een REST-eindpunt gehost in de cloud maken. Zie voor beelden van Jupyter-notebooks aan het einde van dit artikel om het zelf te proberen. 
+Met Azure Machine Learning kunt u uw ONNX-modellen implementeren, beheren en bewaken. Met de Standard- [implementatie werk stroom](concept-model-management-and-deployment.md) en ONNX runtime kunt u een rest-eind punt maken dat wordt gehost in de Cloud. Zie voor beelden van Jupyter-notebooks aan het einde van dit artikel om het zelf te proberen. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>ONNX-runtime installeren en gebruiken met python
 
@@ -62,33 +62,33 @@ import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-De documentatie bij het model meestal ziet u de invoer en uitvoer voor het gebruik van het model. U kunt ook een hulpprogramma voor gegevensvisualisatie zoals gebruiken [Netron](https://github.com/lutzroeder/Netron) om het model weer te geven. U kunt ONNX-Runtime kunt u ook query metagegevens van het model, invoer en uitvoer:    
+De documentatie bij het model meestal ziet u de invoer en uitvoer voor het gebruik van het model. U kunt ook een visualisatie programma, zoals [Netron](https://github.com/lutzroeder/Netron) , gebruiken om het model weer te geven. U kunt ONNX-Runtime kunt u ook query metagegevens van het model, invoer en uitvoer:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-Naar Deductie uw model, gebruik `run` en door te geven in de lijst van de uitvoer geretourneerd (laat leeg als u wilt dat ze allemaal) en een overzicht van de invoerwaarden. Het resultaat is een lijst van de uitvoer.  
+Als u uw model wilt delegeren, gebruikt u `run` en geeft u een overzicht van de uitvoer die u wilt retour neren (laat dit leeg als u wilt dat alle) en een kaart van de invoer waarden. Het resultaat is een lijst van de uitvoer.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Zie voor de volledige Python API-verwijzing de [ONNX-Runtime-referentiedocumenten](https://aka.ms/onnxruntime-python).    
+Zie [ONNX runtime Reference docs](https://aka.ms/onnxruntime-python)(Engelstalig) voor de volledige Python API-referentie.    
 
 ## <a name="examples"></a>Voorbeelden
 
-Zie [How-to-naar-gebruik-azureml/implementatie/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) bijvoorbeeld laptops die maakt en implementeert kunt ONNX-modellen.
+Zie [How-to-use-azureml/Deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) voor voorbeeld notitieblokken voor het maken en implementeren van onnx-modellen.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>Meer informatie
 
 Meer informatie over ONNX of bij te dragen aan het project:
-+ [U kunt ONNX-Projectwebsite](https://onnx.ai)
-+ [U kunt ONNX-code op GitHub](https://github.com/onnx/onnx)
++ [ONNX-project website](https://onnx.ai)
++ [ONNX-code op GitHub](https://github.com/onnx/onnx)
 
 Meer informatie over ONNX-Runtime of bij te dragen aan het project:
 + [ONNX runtime GitHub opslag plaats](https://github.com/Microsoft/onnxruntime)

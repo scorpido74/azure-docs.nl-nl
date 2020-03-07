@@ -1,6 +1,6 @@
 ---
-title: Azure voordeur Service - verkeersrouteringsmethoden | Microsoft Docs
-description: In dit artikel krijgt u inzicht in de verschillende verkeersrouteringsmethoden die wordt gebruikt door de voordeur
+title: Azure front-deur service-routerings methoden voor verkeer | Microsoft Docs
+description: Dit artikel helpt u bij het begrijpen van de verschillende routerings methoden voor verkeer die worden gebruikt door de voor deur
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,77 +12,77 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382104"
 ---
-# <a name="front-door-routing-methods"></a>Methoden voor het doorsturen van voordeur
+# <a name="front-door-routing-methods"></a>Routerings methoden voor voor deur
 
-Azure voordeur-Service ondersteunt verschillende methoden om te bepalen hoe uw HTTP/HTTPS-verkeer routeren naar de verschillende service-eindpunten voor routering van verkeer. Met elk van de clientaanvragen voordeur wordt bereikt, wordt de geconfigureerde routeringsmethode toegepast om te controleren of dat de aanvragen worden doorgestuurd naar het beste back-end-exemplaar. 
+De Azure front-deur service ondersteunt diverse methoden voor het routeren van verkeer om te bepalen hoe u uw HTTP/HTTPS-verkeer naar de verschillende service-eind punten kunt routeren. Met elk van de aanvragen van uw client die de voor deur bereiken, wordt de geconfigureerde routerings methode toegepast om ervoor te zorgen dat de aanvragen worden doorgestuurd naar de beste back-end-instantie. 
 
-Er zijn vier belangrijke concepten voor de routering van verkeer beschikbaar in de voordeur:
+Er zijn vier belang rijke concepten voor verkeers routering die beschikbaar zijn in de voor deur:
 
-* **[Latentie](#latency):** De latentie-gebaseerde routering, zorgt u ervoor dat aanvragen worden verzonden naar de laagste latentie back-ends acceptabele binnen een bereik gevoeligheid. In principe worden de aanvragen van gebruikers verzonden naar de 'dichtstbijzijnde' set back-ends met betrekking tot de netwerklatentie.
-* **[Prioriteit](#priority):** Als u wilt een back-end van de primaire service gebruiken voor al het verkeer en back-ups opgeven als de primaire of de back-ends voor back-up niet beschikbaar zijn, kunt u prioriteiten toewijzen aan uw verschillende back-ends.
-* **[Gewogen](#weighted):** Als u verkeer verspreiden over een set back-ends wilt, gelijkmatig of op basis van gewicht coëfficiënten, kunt u uw verschillende back-ends gewicht toewijzen.
-* **Sessie-affiniteit:** U kunt de sessie-affiniteit voor uw front-end-hosts of domeinen als u wilt dat de volgende aanvragen van een gebruiker worden verzonden naar de dezelfde back-end, zolang de sessie van de gebruiker nog steeds actief is en het exemplaar van de back-end nog steeds in orde op basis van statuscontroles rapporteert configureren. 
+* **[Latentie](#latency):** Met de latentie gebaseerde route ring zorgt u ervoor dat aanvragen worden verzonden naar de laagste latentie back-end die acceptabel is binnen een gevoeligheids bereik. In principe worden uw gebruikers aanvragen verzonden naar de ' dichtstbijgelegen ' set back-ends met betrekking tot netwerk latentie.
+* **[Prioriteit](#priority):** U kunt prioriteiten toewijzen aan uw verschillende back-endservers wanneer u een back-end van een primaire service voor alle verkeer wilt gebruiken en back-ups wilt maken voor het geval de primaire of de back-end niet beschikbaar zijn.
+* **[Gewogen](#weighted):** U kunt gewichten toewijzen aan uw verschillende back-ends wanneer u verkeer wilt distribueren over een reeks back-ends, hetzij gelijkmatig als op basis van gewichts coëfficiënten.
+* **Sessie affiniteit:** U kunt sessie affiniteit voor uw frontend-hosts of-domeinen configureren als u wilt dat de volgende aanvragen van een gebruiker naar dezelfde back-end worden verzonden, mits de gebruikers sessie nog steeds actief is en het back-end-exemplaar in orde is op basis van status controles. 
 
-Alle Front Door-configuraties omvatten bewaking van de back-endstatus en geautomatiseerde, directe failover wereldwijd. Zie voor meer informatie, [voordeur back-end bewaking](front-door-health-probes.md). De deur kunnen worden geconfigureerd met een van beide gebaseerd op een enkele routeringsmethode werk en afhankelijk van uw toepassing moet kunt u meerdere of alle van deze methoden voor het doorsturen in combinatie voor het bouwen van een optimale routeringstopologie.
+Alle Front Door-configuraties omvatten bewaking van de back-endstatus en geautomatiseerde, directe failover wereldwijd. Zie voor meer informatie [back-end van front deur controleren](front-door-health-probes.md). U kunt de voor deur zo configureren dat deze op basis van één routerings methode werkt en afhankelijk van de behoeften van uw toepassing, kunt u meerdere of al deze routerings methoden in combi natie gebruiken om een optimale routerings topologie te bouwen.
 
-## <a name = "latency"></a>Laagste latentie op basis van routering van verkeer
+## <a name = "latency"></a>Laagste verkeer op basis van latentie-route ring
 
-Implementatie van back-ends op twee of meer locaties over de hele wereld, kunt de reactietijd van veel toepassingen verbeteren door het routeren van verkeer naar de locatie die zich het dichtst bij uw eindgebruikers. De standaardmethode voor de configuratie van de voordeur in Routering van verkeer verzendt aanvragen van uw eindgebruikers naar de dichtstbijzijnde back-end van de voordeur-omgeving die de aanvraag ontvangen. In combinatie met de Anycast-architectuur van Azure voordeur Service biedt deze aanpak zorgt ervoor dat elk van de maximale prestaties van uw eindgebruikers get aangepast op basis van hun locatie.
+Het implementeren van back-ends op twee of meer locaties over de hele wereld kan de reactie snelheid van veel toepassingen verbeteren door verkeer naar de locatie die zich het dichtst bij uw eind gebruikers bevindt. De standaard methode voor het routeren van verkeer voor de configuratie van de voor deur stuurt aanvragen van uw eind gebruikers door naar de dichtstbijzijnde back-end vanuit de front-deur omgeving die de aanvraag heeft ontvangen. In combi natie met de anycast-architectuur van de Azure front-deur service, zorgt deze benadering ervoor dat elk van uw eind gebruikers de maximale prestaties op basis van hun locatie kan verkrijgen.
 
-De 'dichtstbijzijnde' back-end is niet noodzakelijkerwijs dichtstbijzijnde wordt gemeten door geografische afstand. In plaats daarvan bepaalt de voordeur de dichtstbijzijnde back-ends door te meten of de netwerklatentie. Meer informatie over [routering architectuur van de voordeur](front-door-routing-architecture.md). 
+De ' dichtstbijgelegen ' back-end is niet noodzakelijkerwijs het dichtst bij de geografische afstand gemeten. In plaats daarvan bepaalt de voor deur de dichtstbijzijnde back-end door netwerk latentie te meten. Lees meer over [de routerings architectuur van de front deur](front-door-routing-architecture.md). 
 
-Hieronder volgt de algemene stroomschema:
+Hieronder ziet u de algehele beslissings stroom:
 
-| Beschikbare back-ends | Prioriteit | Latentie signaal (gebaseerd op de statustest) | Gewicht |
+| Beschik bare back-ends | Prioriteit | Latentie signaal (op basis van de status test) | Gewicht |
 |-------------| ----------- | ----------- | ----------- |
-| Selecteer in de eerste plaats alle back-ends die zijn ingeschakeld en geretourneerd in orde (200 OK) voor de statustest. Bijvoorbeeld, er zijn zes back-ends A, B, C, D, E en F, en tussen deze C is niet in orde en E is uitgeschakeld. Zodat de lijst met beschikbare back-ends A is, B, D, f kan zijn.  | Vervolgens zijn de hoogste prioriteit back-ends met de beschikbare netwerken geselecteerd. Bijvoorbeeld, back-end A, B en D hebben prioriteit 1 en back-end-F heeft prioriteit 2. Zodat de geselecteerde back-ends zijn A, B en D.| Selecteer de back-ends met latentiebereik (minimale latentie en latentie gevoeligheid in ms die zijn opgegeven). Bijvoorbeeld, als A 15 ms, B 30 ms is en D 60 ms weg van de voordeur omgeving waar de aanvraag bevindt zich, en latentie gevoeligheid is 30 ms vervolgens laagste latentie van toepassingen bestaat uit de back-end A en B, is omdat D is meer dan 30 ms weg van de dichtstbijzijnde back-end die is een A. | Ten slotte wordt voordeur round robin het verkeer tussen de laatste geselecteerde groep van back-ends via de verhouding van de gewichten opgegeven. Bijvoorbeeld, als back-end A heeft een gewicht van 5 en back-end B heeft een gewicht van 8, wordt het verkeer wordt gedistribueerd in de verhouding van 5:8 tussen back-ends A en B. |
+| Selecteer eerst alle back-ends die zijn ingeschakeld en in orde zijn geretourneerd (200 OK) voor de status test. Stel dat er zes back-ends A, B, C, D, E en F zijn, en dat er onder C sprake is van een slechte status en E is uitgeschakeld. De lijst met beschik bare back-ends is dus A, B, D en F.  | Vervolgens worden de back-end met de hoogste prioriteit geselecteerd voor de beschik bare items. Zeg, back-end A, B en D hebben prioriteit 1 en backend F de prioriteit 2. Daarom zijn de geselecteerde back-ends A, B en D.| Selecteer de back-ends met het latentie bereik (minste latentie & latentie gevoeligheid in MS opgegeven). Stel, als een 15 MS is, B 30 MS en D 60 MS weg van de front-deur omgeving waar de aangevraagde aanvraag en latentie gevoeligheid 30 MS zijn, en de laagste latentie groep bestaat uit de back-end A en B, omdat D groter is dan 30 MS van de dichtstbijzijnde back-end. | Ten slotte wordt de voor deur round robin het verkeer tussen de uiteindelijke geselecteerde pool met back-ends in de verhouding van de opgegeven gewichten. Als back-end A een gewicht van 5 heeft en backend B een gewicht van 8 heeft, wordt het verkeer gedistribueerd in de verhouding 5:8 tussen back-ends A en B. |
 
 >[!NOTE]
-> Standaard de latentie gevoeligheid-eigenschap is ingesteld op 0 ms, dat wil zeggen, altijd de aanvraag doorsturen naar de snelste beschikbare back-end.
+> De eigenschap voor de latentie gevoeligheid wordt standaard ingesteld op 0 MS, dat wil zeggen, de aanvraag altijd door sturen naar de snelste beschik bare back-end.
 
 
-## <a name = "priority"></a>Op basis van prioriteit-routering van verkeer
+## <a name = "priority"></a>Op prioriteit gebaseerd verkeer: route ring
 
-Vaak wil een organisatie voor de betrouwbaarheid van de services door het implementeren van een of meer back-services als hun primaire service uitvalt. In de industrie, wordt deze topologie ook wel actief/stand-by of actief/passief-implementatietopologie. De methode 'Prioriteit' Routering van verkeer kan Azure-klanten eenvoudig dit patroon wilt implementeren failover.
+Een organisatie wil vaak betrouw baarheid bieden voor de services door een of meer back-upservices te implementeren voor het geval de primaire service uitvalt. In de hele branche wordt deze topologie ook wel actief/stand-by of actieve/passieve implementatie topologie genoemd. Met de routerings methode ' Priority ' kunnen Azure-klanten het failover-patroon eenvoudig implementeren.
 
-Uw standaard voordeur bevat een lijst met dezelfde prioriteit van de back-ends. Standaard verzendt voordeur verkeer alleen naar de hoogste prioriteit backends (laagste waarde voor prioriteit) dat wil zeggen, de primaire set van back-ends. Als de primaire back-ends niet beschikbaar zijn, routeert voordeur het verkeer naar de secundaire set back-ends (tweede laagste waarde voor prioriteit). Als zowel de primaire en secundaire back-ends zijn niet beschikbaar is, wordt het verkeer wordt gerouteerd naar de derde, enzovoort. Beschikbaarheid van de back-end is gebaseerd op de geconfigureerde status (ingeschakeld of uitgeschakeld) en de status van lopende back-end zoals wordt bepaald door de status tests.
+De standaard-deur bevat een lijst met gelijke prioriteiten voor de back-end. Standaard verzendt de voor deur alleen verkeer naar de back-ends met de hoogste prioriteit (laagste waarde voor de prioriteit), de primaire set back-ends. Als de primaire back-ends niet beschikbaar zijn, stuurt front deur het verkeer naar de secundaire set back-ends (tweede laagste waarde voor prioriteit). Als zowel de primaire als de secundaire back-end niet beschikbaar zijn, gaat het verkeer naar de derde, enzovoort. De beschik baarheid van de back-end is gebaseerd op de geconfigureerde status (ingeschakeld of uitgeschakeld) en de voortdurende status van de back-end, zoals bepaald door de status controles.
 
-### <a name="configuring-priority-for-backends"></a>Prioriteit voor back-ends configureren
+### <a name="configuring-priority-for-backends"></a>De prioriteit voor back-ends configureren
 
-Elk van de back-ends in de endgroep back-in de configuratie van de voordeur heeft een eigenschap genaamd 'Prioriteit', een getal tussen 1 en 5. Met Azure voordeur Service, moet u de prioriteit van de back-end expliciet het gebruik van deze eigenschap voor elke back-end configureren. Deze eigenschap is een waarde tussen 1 en 5. Lagere waarden geven een hogere prioriteit. Back-ends kunt prioriteitswaarden delen.
+Elk van de back-ends in uw back-end-groep binnen de configuratie van de voor deur heeft een eigenschap met de naam priority. Dit kan een getal tussen 1 en 5 zijn. Met de Azure front-deur service configureert u de back-end-prioriteit expliciet met behulp van deze eigenschap voor elke back-end. Deze eigenschap is een waarde tussen 1 en 5. Lagere waarden vertegenwoordigen een hogere prioriteit. Back-ends kunnen prioriteits waarden delen.
 
-## <a name = "weighted"></a>Gewogen verkeersrouteringsmethode
-De 'Gewogen' verkeersrouteringsmethode kunt u verkeer gelijkmatig verdelen of een vooraf gedefinieerde weging gebruiken.
+## <a name = "weighted"></a>Gewogen verkeer-routerings methode
+Met de methode gewogen verkeers routering kunt u verkeer gelijkmatig distribueren of een vooraf gedefinieerde wegings factor gebruiken.
 
-In de routering van verkeer gewogen methode, kunt u een gewicht toewijzen aan elke back-end in de voordeur configuratie van uw back-endgroep. Het gewicht is een geheel getal tussen 1 en 1000. Deze parameter maakt gebruik van een standaardgewicht van '50'.
+In de routerings methode gewogen verkeer wijst u een gewicht toe aan elke back-end in de front-deur configuratie van de back-endserver. Het gewicht is een geheel getal tussen 1 en 1000. Voor deze para meter wordt het standaard gewicht van ' 50 ' gebruikt.
 
-Onder de lijst met beschikbare back-ends in de gevoeligheid geaccepteerde latentie (zoals opgegeven), het verkeer verdeeld in een round robin-mechanisme in de verhouding van de gewichten opgegeven. Als de gevoeligheid van de latentie is ingesteld op 0 milliseconden, klikt u vervolgens deze eigenschap niet van kracht, tenzij er twee back-ends met de dezelfde netwerklatentie zijn. 
+In de lijst met beschik bare back-ends binnen de toegestane latentie gevoeligheid (zoals opgegeven), wordt het verkeer gedistribueerd in een Round Robin-mechanisme in de verhouding van de opgegeven gewichten. Als de latentie gevoeligheid is ingesteld op 0 milliseconden, wordt deze eigenschap pas van kracht als er twee back-ends zijn met dezelfde netwerk latentie. 
 
-De gewogen methode kunt enkele handige scenario's:
+De methode weighted maakt enkele handige scenario's mogelijk:
 
-* **Upgrade van de toepassing geleidelijk**: Toewijzen van een percentage van het verkeer routeren naar een nieuwe back-end en het verkeer, geleidelijk na verloop van tijd om deze te zetten op par met andere back-ends te verhogen.
-* **Toepassingen migreren naar Azure**: Een back endpool maken met Azure en externe back-ends. Het gewicht van de back-ends liever van de nieuwe back-ends aanpassen. U kunt geleidelijk instellen dit vanaf de nieuwe back-ends uitgeschakeld, die vervolgens toe te wijzen ze het laagste gewicht langzaam om niveaus waar ze het meeste verkeer uitvoeren. Vervolgens ten slotte de minder gewenste back-ends uitschakelen en verwijderen uit de groep.  
-* **Cloudbursting voor extra capaciteit**: Snelle uitbreiding van een on-premises implementatie naar de cloud door de gegevens achter de voordeur. Als u extra capaciteit in de cloud nodig hebt, kunt u toevoegen of meer back-ends inschakelen en opgeven welk deel van het verkeer wordt gerouteerd naar elke back-end.
+* **Geleidelijke upgrade**van de toepassing: wijs een percentage van het verkeer toe om naar een nieuwe back-end te routeren, en verhoog het verkeer geleidelijk gedurende een periode om het gemiddeld met andere back-ends te brengen.
+* **Toepassings migratie naar Azure**: Maak een back-end-groep met zowel Azure als externe back-endservers. Pas het gewicht van de back-ends aan om de voor keur te geven aan de nieuwe back-end. U kunt dit geleidelijk instellen, te beginnen met het uitschakelen van de nieuwe back-ups en vervolgens de laagste gewichten toewijzen, waardoor deze langzaam toeneemt op het niveau van het verkeer. Vervolgens worden de minder voorkeurs back-ends uitgeschakeld en verwijderd uit de groep.  
+* **Cloud-bursting voor extra capaciteit**: Vouw snel een on-premises implementatie uit in de Cloud door deze achter de deur te plaatsen. Wanneer u extra capaciteit nodig hebt in de Cloud, kunt u meer back-endservers toevoegen of inschakelen en opgeven welk deel van het verkeer naar elke back-end gaat.
 
-## <a name = "affinity"></a>Sessie-affiniteit
-Standaard zonder sessieaffiniteit, stuurt de voordeur aanvragen die afkomstig zijn van dezelfde client naar verschillende back-ends op basis van de configuratie voor taakverdeling met name als de latenties naar verschillende back-ends wijzigen of als andere aanvragen van dezelfde gebruiker gebieden op een andere voordeur-omgeving. Bij sommige stateful toepassingen en in bepaalde andere situaties wordt er echter de voorkeur aan gegeven om opeenvolgende aanvragen van één gebruiker naar de back-end te sturen waarmee ook de eerste aanvraag is verwerkt. De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde back-end wilt behouden. Met behulp van cookies voordeur die worden beheerd, kan Azure voordeur Service sturen daarop volgende verkeer van een gebruikerssessie naar dezelfde back-end voor het verwerken van, zolang de back-end in orde is en de gebruikerssessie is nog niet is verlopen. 
+## <a name = "affinity"></a>Sessie affiniteit
+Standaard zonder sessie affiniteit stuurt front deur aanvragen die afkomstig zijn van dezelfde client naar verschillende back-ends op basis van de taakverdelings configuratie, met name als de latenties voor verschillende back-ends worden gewijzigd of als andere aanvragen van dezelfde gebruiker lands op een andere front-deur omgeving. Bij sommige stateful toepassingen en in bepaalde andere situaties wordt er echter de voorkeur aan gegeven om opeenvolgende aanvragen van één gebruiker naar de back-end te sturen waarmee ook de eerste aanvraag is verwerkt. De functie Sessieaffiniteit op basis van cookies is handig als u een gebruikerssessie op dezelfde back-end wilt behouden. Door gebruik te maken van door de voor deur beheerde cookies kan de Azure front-deur service volgend verkeer van een gebruikers sessie naar dezelfde back-end omleiden voor verwerking, zolang de back-end in orde is en de gebruikers sessie niet is verlopen. 
 
 U kunt sessieaffiniteit inschakelen op het hostniveau van de front-end, voor elk van de geconfigureerde domeinen (of subdomeinen). Na het inschakelen voegt Front Door een cookie toe aan de gebruikerssessie. Met op cookies gebaseerde sessieaffiniteit kan Front Door verschillende gebruikers herkennen, zelfs als deze hetzelfde IP-adres hebben. Hierdoor kan er nog meer verkeer worden verdeeld tussen uw verschillende back-ends.
 
 De cookie blijft even lang actief als de gebruikerssessie, omdat Front Door momenteel alleen ondersteuning biedt voor sessiecookies. 
 
 > [!NOTE]
-> Openbare proxy's vertonen storen bij sessie-affiniteit. Dit is omdat een sessie tot stand brengen voordeur een sessieaffiniteitscookie toevoegen aan het antwoord kan niet worden uitgevoerd vereist als het antwoord gecachet kan worden is als de cookies die van andere clients die aanvragen van dezelfde bron zou worden onderbroken. Om dit te voorkomen, sessie-affiniteit wordt **niet** tot stand worden gebracht als de back-end een antwoord gecachet kan worden stuurt wanneer deze wordt uitgevoerd. Als de sessie is al tot stand is gebracht, het maakt niet uit als het antwoord van de back-end gecachet kan worden.
-> Sessie-affiniteit wordt tot stand worden gebracht in de volgende omstandigheden **tenzij** het antwoord heeft een 304 HTTP-statuscode:
-> - Het antwoord heeft specifieke waarden opgeven voor de ```Cache-Control``` -header die voorkomen in cache opslaan, zoals "Vertrouwelijk" of niet-store '.
-> - Het antwoord bevat een ```Authorization``` -header die niet is verlopen.
-> - Het antwoord heeft een HTTP 302-statuscode.
+> Open bare proxy's kunnen problemen veroorzaken met sessie affiniteit. Dit komt doordat voor het maken van een sessie aan de voor deur een sessie affiniteits cookie moet worden toegevoegd aan het antwoord. Dit kan niet worden gedaan als het antwoord in de cache kan worden opgeslagen, omdat de cookies van andere clients die dezelfde bron aanvragen, worden verstoord. Als u dit wilt beveiligen, wordt de sessie affiniteit **niet** tot stand gebracht als de back-end een cachebaar antwoord stuurt wanneer dit wordt geprobeerd. Als de sessie al tot stand is gebracht, maakt het niet uit of het antwoord van de back-end in de cache kan worden opgeslagen.
+> Sessie affiniteit wordt in de volgende omstandigheden tot stand gebracht, **tenzij** het antwoord een HTTP 304-status code heeft:
+> - Het antwoord heeft specifieke waarden die zijn ingesteld voor de ```Cache-Control``` header waardoor caching niet mogelijk is, zoals ' persoonlijk ' of geen Store '.
+> - Het antwoord bevat een ```Authorization``` header die niet is verlopen.
+> - Het antwoord heeft een HTTP 302-status code.
 
 ## <a name="next-steps"></a>Volgende stappen
 

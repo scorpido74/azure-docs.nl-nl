@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358023"
 ---
 > [!NOTE]
 > Microsoft Flow is nu energie automatisering. Raadpleeg dit [blog](https://aka.ms/flow-now-pa) voor meer informatie.
@@ -38,10 +38,10 @@ Microsoft Flow stelt kantoormedewerkers in staat om eenvoudige integraties tot s
 
 Raadpleeg de volgende tabel om te bepalen of Microsoft Flow of Logic Apps het meest geschikt is voor een bepaalde integratie:
 
-|  | Microsoft Flow | Logische apps |
+|  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | **Gebruikers** |Kantoorpersoneel, zakelijke gebruikers, SharePoint-beheerders |Professionele integrators en ontwikkelaars, IT-professionals |
-| **Scenario's** |Self service |Geavanceerde integraties |
+| **Scenario's** |Selfservice |Geavanceerde integraties |
 | **Hulp programma voor ontwerpen** |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
 | **Beheer van toepassings levenscyclus (ALM)** |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | **Beheer ervaring** |Microsoft Flow omgevingen en beleid voor preventie van gegevens verlies (DLP) beheren, licenties volgen: [Microsoft flow beheer centrum](https://admin.flow.microsoft.com) |Resource groepen, verbindingen, Toegangs beheer en logboek registratie beheren: [Azure Portal](https://portal.azure.com) |
@@ -55,7 +55,7 @@ Met Azure Functions ontwikkelt u indelingen door code te schrijven en de [extens
 
 U kunt services combineren en matchen als u een indeling bouwt, waarbij u functies aanroept vanuit logische apps en logische apps aanroept vanuit functies. U kunt kiezen hoe u elke indeling bouwt op basis van de mogelijkheden van de services of van uw persoonlijke voorkeur. De volgende tabel geeft een overzicht van enkele van de belangrijkste verschillen:
 
-|  | Durable Functions | Logische apps |
+|  | Durable Functions | Logic Apps |
 | --- | --- | --- |
 | **Ontwikkeling** | Code-first (imperatief) | Designer-first (declaratief) |
 | **Connectiviteit** | [Circa 15 bindingstypen](functions-triggers-bindings.md#supported-bindings); code schrijven voor aangepaste bindingen | [Grote verzameling connectors](../connectors/apis-list.md), [Enterprise Library Integration Pack voor B2B-scenario's](../logic-apps/logic-apps-enterprise-integration-overview.md); [aangepaste bindingen ontwikkelen](../logic-apps/custom-connector-overview.md) |
@@ -80,14 +80,14 @@ WebJobs en de WebJobs SDK werken samen het beste, maar u kunt WebJobs ook zonder
 
 Azure Functions is gebaseerd op de WebJobs SDK en deelt daarom veel triggers en verbindingen met andere Azure-services. Hier volgt een aantal factoren om te overwegen als u kiest tussen Azure Functions en WebJobs met de WebJobs SDK:
 
-|  | Functions | WebJobs met WebJobs SDK |
+|  | Functies | WebJobs met WebJobs SDK |
 | --- | --- | --- |
 |[App-model zonder server](https://azure.microsoft.com/solutions/serverless/) met [automatisch schalen](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Ontwikkelen en testen in de browser](functions-create-first-azure-function.md) |✔||
 |[Betalen per gebruik](functions-scale.md#consumption-plan)|✔||
 |[Integratie met Logic Apps](functions-twitter-email.md)|✔||
 | Trigger-gebeurtenissen |[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Bestandssysteem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Ondersteunde talen  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+| Ondersteunde talen  |C#<br>F#<br>Javascript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |Pakketbeheer|NPM en NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> webjobs (zonder de webjobs SDK) ondersteunt C#, Java, java script, bash,. cmd,. bat, Power shell, PHP, type script, python en meer. Dit is geen allesomvattende lijst. Een WebJob kan elk programma of script uitvoeren dat in de App Service-sandbox kan worden uitgevoerd.

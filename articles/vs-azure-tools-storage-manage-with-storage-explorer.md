@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891284"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357033"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
@@ -25,7 +25,7 @@ Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig kun
 
 ## <a name="prerequisites"></a>Vereisten
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 De volgende versies van Windows-ondersteunings Storage Explorer:
 
@@ -35,13 +35,13 @@ De volgende versies van Windows-ondersteunings Storage Explorer:
 
 Voor alle versies van Windows Storage Explorer vereist .NET Framework 4.6.2 of hoger.
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 De volgende versies van macOS-ondersteunings Storage Explorer:
 
 * macOS 10,12 Sierra en latere versies
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Storage Explorer is beschikbaar in de [snap Store](https://snapcraft.io/storage-explorer) voor de meest voorkomende distributies van Linux. We raden u aan de module Store te plaatsen voor deze installatie. Met de module Storage Explorer worden alle afhankelijkheden en updates geïnstalleerd wanneer nieuwe versies worden gepubliceerd in de snap Store.
 
@@ -56,7 +56,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 Storage Explorer is ook beschikbaar als een *. tar. gz* -down load. U moet afhankelijkheden hand matig installeren. De volgende distributies van Linux-ondersteuning *. tar. gz* -installatie:
 
 * Ubuntu 18,04 x64
-* Ubuntu 16,04 x64
+* Ubuntu 16.04 x64
 * Ubuntu 14,04 x64
 
 De installatie van het *tar. gz* -netwerk werkt mogelijk met andere distributies, maar alleen deze vermelde items worden officieel ondersteund.
@@ -123,7 +123,7 @@ Er zijn verschillende manieren om te koppelen aan een resource in Storage Explor
 
 1. Selecteer **een resource toevoegen via Azure Active Directory (Azure AD)** en selecteer vervolgens **volgende**.
 
-1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Volgende**.
+1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Next**.
 
 1. Kies het resource type dat u wilt koppelen. Geef de gegevens op die nodig zijn om verbinding te maken. 
 
@@ -155,7 +155,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 1. Selecteer **een SAS-URI (Shared Access Signature) gebruiken**en selecteer **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Volgende**.
+1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Next**.
 
 1. Bekijk de **samen vatting** van de verbinding om te controleren of alle gegevens correct zijn. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 

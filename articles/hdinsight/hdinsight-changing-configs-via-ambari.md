@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386924"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari gebruiken om configuraties van HDInsight-clusters te optimaliseren
 
@@ -175,7 +175,7 @@ Hadoop-taken zijn meestal I/O-knel punten. Het comprimeren van gegevens kan I/O 
 
 De beschik bare compressie typen zijn:
 
-| Indeling | Hulpprogramma | Ring | Bestands extensie | Splitsbaar? |
+| Indeling | Hulpprogramma | Algoritme | Bestands extensie | Splitsbaar? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | Nee |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ja |
@@ -240,7 +240,7 @@ Hive maakt het mogelijk om dynamische partities te maken bij het invoegen van re
 
 1. Wijzig de para meter `hive.exec.max.dynamic.partitions` om het aantal dynamische partities te beperken dat moet worden gemaakt. De standaard waarde is 5000.
 
-1. Als u het totale aantal dynamische partities per knoop punt wilt beperken, wijzigt u `hive.exec.max.dynamic.partitions.pernode`. De standaard waarde is 2000.
+1. Als u het totale aantal dynamische partities per knoop punt wilt beperken, wijzigt u `hive.exec.max.dynamic.partitions.pernode`. De standaardwaarde is 2000.
 
 ### <a name="enable-local-mode"></a>Lokale modus inschakelen
 
@@ -266,7 +266,7 @@ In de volgende secties worden extra optimalisaties voor onderdelen beschreven di
 
 Het standaard type voor samen voegen in Hive is een *wille keurige samen voeging*. In Hive leest speciale mappers de invoer en wordt een koppelings sleutel/-waardepaar naar een tussenliggend bestand verzenden. Hadoop sorteert en voegt deze paren samen in een wille keurige fase. Deze fase in wille keurige volg orde is duur. Het selecteren van de juiste koppeling op basis van uw gegevens kan de prestaties aanzienlijk verbeteren.
 
-| Type samen voeging | Als | Werking | Hive-instellingen | Opmerkingen |
+| Type samen voeging | Als | werking | Hive-instellingen | Opmerkingen |
 | -- | -- | -- | -- | -- |
 | In wille keurige volg orde | <ul><li>Standaard keuze</li><li>Werkt altijd</li></ul> | <ul><li>Lees bewerkingen van een deel van een van de tabellen</li><li>Buckets en sorteren op koppelings sleutel</li><li>Hiermee wordt één Bucket naar elke reductie verzonden</li><li>De deelname aan de minder kant wordt uitgevoerd</li></ul> | Er is geen belang rijke Hive-instelling vereist | Werkt elke keer |
 | Kaart toevoegen | <ul><li>Een tabel kan in het geheugen passen</li></ul> | <ul><li>Hiermee wordt een kleine tabel in de hash-tabel van het geheugen gelezen</li><li>Streamt via een deel van het grote bestand</li><li>Koppelt elke record uit een hash-tabel</li><li>Samen voegingen zijn alleen door de Mapper</li></ul> | `hive.auto.confvert.join=true` | Zeer snel, maar beperkt |
@@ -278,11 +278,11 @@ Aanvullende aanbevelingen voor het optimaliseren van de engine voor het uitvoere
 
 | Instelling | Aanbevolen | Standaard HDInsight |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | false |
+| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | onwaar |
 | `tez.am.resource.memory.mb` | 4 GB voor de meeste grenzen | Automatisch afgestemd |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10.000 |
-| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
+| `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20.000 |
 
 ## <a name="apache-pig-optimization"></a>Naoptimalisatie van Apache-varkens
 

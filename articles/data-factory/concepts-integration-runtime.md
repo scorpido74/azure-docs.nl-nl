@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358441"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory
-De Integratie Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
+De Integration Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
 
 - **Gegevens stroom**: een [gegevens stroom](concepts-data-flow-overview.md) uitvoeren in een beheerde Azure Compute-omgeving.  
 - **Gegevens verplaatsing**: gegevens kopiëren tussen gegevens archieven in openbaar netwerk en gegevens archieven in een particulier netwerk (on-premises of een virtueel particulier netwerk). Deze optie biedt ondersteuning voor ingebouwde connectors, indelingsconversie, kolomtoewijzing en hoogwaardige en schaalbare gegevensoverdracht.
@@ -48,7 +48,7 @@ Het volgende diagram toont hoe verschillende typen Integration Runtime gecombine
 
 ![Verschillende typen Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure-integratieruntime
+## <a name="azure-integration-runtime"></a>Integratie-runtime Azure
 Een Azure Integration Runtime is geschikt voor:
 
 - Gegevens stromen uitvoeren in azure 
@@ -70,7 +70,7 @@ Zie voor informatie over het maken en configureren van een Azure-IR 'Azure IR ma
 > [!NOTE] 
 > Azure Integration runtime heeft eigenschappen die betrekking hebben op Data flow runtime, waarmee de onderliggende Compute-infra structuur wordt gedefinieerd die wordt gebruikt om de gegevens stromen uit te voeren. 
 
-## <a name="self-hosted-integration-runtime"></a>Zelf-hostende integratieruntime
+## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
 Een zelf-hostende IR is geschikt voor:
 
 - Het uitvoeren van kopieeractiviteit tussen een gegevensarchief in de cloud en een gegevensarchief in een privénetwerk.
@@ -82,7 +82,7 @@ Een zelf-hostende IR is geschikt voor:
 > [!NOTE] 
 > Java Runtime Environment (JRE) is een afhankelijkheid van zelf-Hostende IR. Zorg ervoor dat JRE is geïnstalleerd op dezelfde host.
 
-### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende Azure IR-netwerkomgeving
+### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende IR-netwerkomgeving
 Als u gegevensintegratie veilig wilt uitvoeren in een privénetwerkomgeving zonder rechtstreekse zichtbaarheid vanuit de openbare cloudomgeving, kunt u een zelf-hostende on-premises IR installeren achter de firewall van het bedrijf of in een virtueel privénetwerk.  De zelf-hostende Integration Runtime maakt alleen uitgaande HTTP-gebaseerde verbindingen met het openbare internet.
 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Zelf-hostende IR-rekenresource en -schalen
@@ -112,7 +112,7 @@ Zie de volgende artikelen voor meer informatie over Azure-SSIS Runtime:
 ## <a name="integration-runtime-location"></a>Locatie van Integration Runtime
 De Data Factory-locatie is waar de metagegevens van de data factory worden opgeslagen en waar van het activeren van de pijplijn wordt gestart. Ondertussen heeft een data factory wel toegang tot gegevensarchieven en Compute Services in andere Azure-regio’s om gegevens te verplaatsen tussen gegevensarchieven of om gegevens te verwerken middels Compute Services. Dit gedrag wordt gerealiseerd via de [IR die algemeen beschikbaar](https://azure.microsoft.com/global-infrastructure/services/) is om de gegevensnaleving, efficiëntie en verminderde kosten voor uitgaand netwerkverkeer te realiseren.
 
-De locatie van de IR definieert de locatie van de back-end rekenkracht en in wezen de locatie waar de verplaatsing van gegevens, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
+De locatie van de IR definieert de locatie van de back-endrekenkracht en in wezen de locatie waar de gegevensverplaatsing, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
 
 ### <a name="azure-ir-location"></a>Locatie van Azure IR
 U kunt een bepaalde locatie van een Azure IR instellen, in welk geval de gegevensverplaatsing of verzendactiviteit in die specifieke regio plaatsvindt. 

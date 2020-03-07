@@ -3,12 +3,12 @@ title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358058"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -65,16 +65,16 @@ De aanbevolen mapstructuur voor een python functions-project ziet eruit als in h
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ De hoofdmap van het project (\_\_app\_\_) kan de volgende bestanden bevatten:
 
 Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function. json). 
 
-Gedeelde code moet worden bewaard in een afzonderlijke map in \_\_app\_\_. Als u wilt verwijzen naar modules in de map SharedCode, kunt u de volgende syntaxis gebruiken:
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-Als u verwijst naar modules die lokaal zijn voor een functie, kunt u de relatieve import syntaxis als volgt gebruiken:
-
-```python
-from . import example
-```
-
 Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map main project ( *\_\_app\_\_* ) worden opgenomen in het pakket, maar niet in de map zelf. U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap, in dit voor beeld `tests`. Hierdoor kunt u geen test code implementeren met uw app. Zie [unit testen](#unit-testing)voor meer informatie.
+
+## <a name="import-behavior"></a>Gedrag bij importeren
+
+U kunt modules in uw functie code importeren met behulp van zowel expliciete relatieve als absolute verwijzingen. Op basis van de mappen structuur die hierboven wordt weer gegeven, werkt de volgende import vanuit het functie bestand *\_\_app\_\_\mijn\_eerst\_functie\\_\_init\_\_. py*:
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+De volgende Imports *werken niet* binnen hetzelfde bestand:
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+Gedeelde code moet worden bewaard in een afzonderlijke map in *\_\_app\_\_* . Als u wilt verwijzen naar modules in de map *gedeelde\_code* , kunt u de volgende syntaxis gebruiken:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Triggers en invoer
 

@@ -5,11 +5,11 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485128"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358232"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
@@ -75,7 +75,7 @@ $TriggerMetadata.sys
 
 | Eigenschap   | Beschrijving                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Wanneer, in UTC, de functie is geactiveerd        | DateTime |
+| UtcNow     | Wanneer, in UTC, de functie is geactiveerd        | DateTime |
 | MethodName | De naam van de functie die is geactiveerd     | tekenreeks   |
 | RandGuid   | een unieke GUID voor deze uitvoering van de functie | tekenreeks   |
 
@@ -125,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Hier volgen enkele geldige para meters voor het aanroepen van `Push-OutputBinding`:
 
-| Name | Type | Positie | Beschrijving |
+| Naam | Type | Positie | Beschrijving |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |

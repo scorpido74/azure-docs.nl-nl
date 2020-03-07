@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387949"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Zelf studie: het hulp programma voor gegevens migratie gebruiken om uw gegevens te migreren naar Azure Cosmos DB
 
-Deze zelf studie bevat instructies over het gebruik van het hulp programma voor gegevens migratie van Azure Cosmos DB, waarmee u gegevens uit verschillende bronnen kunt importeren in azure Cosmos-containers en-tabellen. U kunt importeren vanuit JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB en zelfs Azure Cosmos DB SQL-API-verzamelingen. U migreert deze gegevens naar verzamelingen en tabellen voor gebruik met Azure Cosmos DB. Het hulpprogramma voor gegevensmigratie kan ook worden gebruikt wanneer u vanaf een verzameling met één partitie migreert naar een verzameling met meerdere partities voor de SQL-API.
+Deze zelfstudie bevat instructies over het gebruik van het Azure Cosmos DB-hulpprogramma voor gegevensmigratie waarmee gegevens uit diverse bronnen kunnen worden geïmporteerd in Azure Cosmos-containers en -tabellen. U kunt importeren vanuit JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB en zelfs Azure Cosmos DB SQL-API-verzamelingen. U migreert deze gegevens naar verzamelingen en tabellen voor gebruik met Azure Cosmos DB. Het hulpprogramma voor gegevensmigratie kan ook worden gebruikt wanneer u vanaf een verzameling met één partitie migreert naar een verzameling met meerdere partities voor de SQL-API.
 
 Welke API gaat u gebruiken met Azure Cosmos DB?
 
@@ -35,7 +35,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Voordat u de instructies in dit artikel volgt, moet u de volgende stappen uitvoeren:
 
-* **Installeer** [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) of hoger.
+* **Installeer** [Microsoft .NET Framework 4,51](https://www.microsoft.com/download/developer-tools.aspx) of hoger.
 
 * **Verhoog de doorvoer:** de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor een afzonderlijke verzameling of een reeks verzamelingen instelt. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie [prestatieniveaus](performance-levels.md) en [prijscategorieën](https://azure.microsoft.com/pricing/details/cosmos-db/) in Azure Cosmos DB voor meer informatie over het verhogen van de doorvoer in de Azure-portal.
 
@@ -208,7 +208,7 @@ Vergelijkbaar met de SQL-bron kan de eigenschap van het type geneste scheidingst
 
 Let op de aliassen zoals DomainInfo.Domain_Name en RedirectInfo.Redirecting. Door een scheidingsteken voor nesten '.' op te geven, maakt het importprogramma DomainInfo- en RedirectInfo-subdocumenten tijdens het importeren. Hier volgt een voorbeeld van een resulterend document in Azure Cosmos DB:
 
-*{"DomainInfo": {"domein naam": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Federal Agency": "administratieve conferentie van de Verenigde Staten", "RedirectInfo": {"omleiden": "0", "Redirect_Destination": ""}, "ID": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Federal Agency": "administratieve conferentie van de Verenigde Staten", "RedirectInfo": {"omleiden": "0", "Redirect_Destination": ""}, "ID": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
 
 Met het importprogramma wordt een poging gedaan informatie over het type af te leiden voor waarden zonder aanhalingstekens in CSV-bestanden (waarden tussen aanhalingstekens worden altijd behandeld als tekenreeksen).  Typen worden geïdentificeerd in de volgende volgorde: getal, datum/tijd, Booleaanse waarde.  
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356543"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
-In dit artikel wordt beschreven hoe u verschillende taken beheert in een Azure Cosmos-account met behulp van de Azure Portal-, Azure PowerShell-, Azure CLI-en Azure Resource Manager-sjablonen.
+In dit artikel wordt beschreven hoe u verschillende taken in een Azure Cosmos-account kunt beheren met behulp van de Azure-portal, Azure PowerShell, Azure CLI en Azure Resource Manager-sjablonen.
 
 ## <a name="create-an-account"></a>Een account maken
 
@@ -51,9 +51,9 @@ Met deze Azure Resource Manager sjabloon wordt een Azure Cosmos-account gemaakt 
 
    ![Menu Regio's toevoegen of verwijderen](./media/how-to-manage-database-account/add-region.png)
 
-In een schrijf modus met één regio kunt u de schrijf regio niet verwijderen. U moet een failover naar een andere regio uitvoeren voordat u de huidige schrijf regio kunt verwijderen.
+In een schrijfmodus voor één regio kunt u de schrijfregio niet verwijderen. U dient dan failover toe te passen naar een andere regio voordat u de huidige schrijfregio kunt verwijderen.
 
-In een schrijf modus met meerdere regio's kunt u een regio toevoegen of verwijderen als u ten minste één regio hebt.
+In een schrijfmodus voor meerdere regio's kunt u elke regio toevoegen of verwijderen als er minstens één regio is.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 

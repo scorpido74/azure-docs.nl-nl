@@ -13,11 +13,11 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: 89ec405a348e3ace851fd5f5e17283a8036692a5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199407"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355607"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure Synapse Analytics maakt gebruik van IP-firewall regels op server niveau. H
 
 Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-pool ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory. 
 
 Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.
