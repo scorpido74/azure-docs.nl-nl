@@ -4,11 +4,11 @@ description: Grafieken in metrische Explorer interpreteren en metrische Explorer
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670165"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368248"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Metrische gegevens in Application Insights verkennen
 Metrische gegevens in [Application Insights][start] worden gemeten waarden en aantallen gebeurtenissen die worden verzonden via telemetrie van uw toepassing. Ze helpen prestatie problemen te detecteren en trends te bekijken in de manier waarop uw toepassing wordt gebruikt. Er is een breed scala aan standaard waarden en u kunt ook uw eigen aangepaste metrische gegevens en gebeurtenissen maken.
@@ -175,7 +175,7 @@ Als u gegevens continu wilt exporteren, zodat u deze extern kunt verwerken, kunt
 ### <a name="power-bi"></a>Power BI
 Als u zelfs rijkere weer gaven van uw gegevens wilt, kunt u [exporteren naar Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytische gegevens
 [Analytics](../../azure-monitor/app/analytics.md) is een veelzijdigere manier om uw telemetrie te analyseren met behulp van een krachtige query taal. Gebruik deze functie als u resultaten wilt combi neren of berekenen op basis van metrische gegevens, of als u een uitgebreid onderzoek wilt doen naar de recente prestaties van uw app. 
 
 U kunt vanuit een metrische grafiek op het analyse pictogram klikken om rechtstreeks naar de overeenkomende analyse query te gaan.

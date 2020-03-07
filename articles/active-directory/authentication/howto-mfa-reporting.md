@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378054"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Rapporten in azure Multi-Factor Authentication
 
@@ -28,11 +28,11 @@ Azure Multi-Factor Authentication biedt verschillende rapporten die kunnen worde
 | Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
 | Gebruik voor on-premises onderdelen | Activiteiten rapport van Azure AD > Security > MFA > | Bevat informatie over het algehele gebruik voor MFA via de NPS-extensie, ADFS en MFA-server. |
 | Geschiedenis van overgeslagen gebruikers | Azure AD > Security > MFA > eenmalige bypass | Biedt een geschiedenis van aanvragen om Multi-Factor Authentication voor een gebruiker over te slaan. |
-| Serverstatus | Azure AD > Security > MFA > Server-status | Hier wordt de status weer gegeven van Multi-Factor Authentication-servers die aan uw account zijn gekoppeld. |
+| Server status | Azure AD > Security > MFA > Server-status | Hier wordt de status weer gegeven van Multi-Factor Authentication-servers die aan uw account zijn gekoppeld. |
 
 ## <a name="view-mfa-reports"></a>MFA-rapporten weer geven
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory** > **beveiliging** > **MFA**.
 3. Selecteer het rapport dat u wilt weer geven.
 
@@ -64,7 +64,7 @@ De rapporten voor aanmeldingsactiviteiten voor MFA bieden u toegang tot de volge
 **MFA-resultaat:** meer informatie over of MFA is voldaan of geweigerd:
 
 - Als MFA is voldaan, bevat deze kolom meer informatie over hoe dit is gebeurd.
-   - Verificatie op basis van meerdere factoren van Azure
+   - Azure Multi-Factor Authentication
       - voltooid in de cloud
       - verlopen als gevolg van beleid dat is geconfigureerd in de tenant
       - registratie gevraagd
@@ -117,7 +117,7 @@ De rapporten voor aanmeldingsactiviteiten voor MFA bieden u toegang tot de volge
 
 **Voorwaardelijke toegang** Informatie over beleid voor voorwaardelijke toegang dat is betrokken bij de aanmeldings poging, waaronder:
 
-- Beleidsnaam
+- Naam van beleid
 - Besturings elementen toewijzen
 - Sessie besturings elementen
 - Resultaat

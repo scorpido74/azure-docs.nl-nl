@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844952"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359643"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Trage query Logboeken in Azure Database for MySQL
 In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -79,7 +79,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `insert_id_s` | Invoeg-ID |
 | `sql_text_s` | Volledige query |
 | `server_id_s` | De server-ID |
-| `thread_id_s` | Thread-ID |
+| `thread_id_s` | Thread-id |
 | `\_ResourceId` | Resource-URI |
 
 > [!Note]

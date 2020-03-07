@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277176"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384919"
 ---
-# <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft-ondersteuning
+# <a name="contact-microsoft-support"></a>Neem contact op met Microsoft Ondersteuning
 
 De StorSimple-Apparaatbeheer biedt de mogelijkheid om **een nieuwe ondersteunings aanvraag in te loggen** op de Blade service overzicht. Als u problemen ondervindt met uw StorSimple-oplossing, kunt u een service aanvraag voor technische ondersteuning maken. In een online-sessie met uw ondersteunings technicus moet u mogelijk ook een ondersteunings sessie starten op uw StorSimple-apparaat. Dit artikel begeleidt u door:
 
@@ -57,7 +57,7 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
    1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Schakel het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** in.
-   3. Klik op **Maken**.
+   3. Klik op **Create**.
    
        ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
