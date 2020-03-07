@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527991"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363728"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -128,7 +128,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-## <a name="back-up-azure-vms"></a>Back-up maken van Azure-VM's
+## <a name="back-up-azure-vms"></a>Back-ups maken van Azure-VM's
 
 Gebruik een Recovery Services kluis om uw virtuele machines te beveiligen. Voordat u de beveiliging toepast, stelt u de kluis context (het type gegevens dat in de kluis wordt beveiligd) in en controleert u het beveiligings beleid. Het beveiligings beleid is het schema wanneer de back-uptaken worden uitgevoerd en hoe lang elke moment opname van de back-up wordt bewaard.
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-Of
+of
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -417,7 +417,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstelpunt kiezen
+### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 
@@ -792,7 +792,7 @@ Naast het herstellen van schijven, kunt u ook afzonderlijke bestanden herstellen
 De basis stappen voor het herstellen van een bestand vanuit een Azure VM-back-up zijn:
 
 * De VM selecteren
-* Een herstelpunt kiezen
+* Een herstel punt kiezen
 * De schijven van het herstel punt koppelen
 * De vereiste bestanden kopiëren
 * De schijf ontkoppelen
@@ -806,7 +806,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstelpunt kiezen
+### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 

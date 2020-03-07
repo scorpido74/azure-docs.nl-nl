@@ -4,11 +4,11 @@ description: Informatie over hoe gegevens kunnen worden gewijzigd voordat voorsp
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361103"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>ALTER utterance gegevens vóór of tijdens de voorspelling
 LUIS biedt methoden voor het bewerken van de utterance vóór of tijdens de voorspelling. Dit zijn onder andere het corrigeren van de [Spelling](luis-tutorial-bing-spellcheck.md)en het oplossen van problemen met de tijd zone voor vooraf ontwikkelde [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -35,7 +35,7 @@ Het eindpunt moet twee parameters voor spellingcorrecties om te werken:
 
 Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) een fout detecteert, worden de oorspronkelijke utterance en de gecorrigeerde utterance met de voor spellingen van het eind punt geretourneerd.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ Wanneer [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cogn
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ De tijd zone wordt gecorrigeerd door de tijd zone van de gebruiker toe te voegen
 ### <a name="daylight-savings-example"></a>Voorbeeld van de zomer-en besparingen
 Als u de geretourneerde vooraf gemaakte datetimeV2 nodig hebt om te passen op zomer tijd, moet u de `timezoneOffset` query string-para meter gebruiken met een +/-waarde in minuten voor de [eindpunt](https://go.microsoft.com/fwlink/?linkid=2092356) query.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
 
 60 minuten toevoegen:
 
@@ -95,7 +95,7 @@ https://{Region}. API. cognitieve. Microsoft. com/Luis/v 2.0/apps/{appId}? q = d
 
 https://{Region}. API. cognitieve. Microsoft. com/Luis/v 2.0/apps/{appId}? q = de lampjes inschakelen? **time zone offset =-60**& uitgebreid = {boolean} & spelling controle = {boolean} & fase ring = {boolean} & Bing-spelling controle-abonnement-key = {string} & log = {Boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
 
 60 minuten toevoegen:
 

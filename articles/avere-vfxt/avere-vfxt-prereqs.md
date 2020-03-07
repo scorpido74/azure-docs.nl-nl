@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547503"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372119"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -49,7 +49,7 @@ Controleer of u voldoende quota hebt voor de volgende Azure-onderdelen. Indien n
 >
 > Zorg ervoor dat het quotum is ingeschakeld voor de regio waar u de werk stroom wilt uitvoeren.
 
-|Azure-onderdeel|Quota|
+|Azure-onderdeel|Overschreden|
 |----------|-----------|
 |Virtuele machines|3 of meer E32s_v3 (één per cluster knooppunt) |
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |

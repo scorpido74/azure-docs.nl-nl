@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226336"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356906"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -115,7 +115,7 @@ Gebruik de volgende tabel om u te helpen bij het configureren van het certificaa
 
 | Instelling | Beschrijving |
 |-|-|
-| Name | Een beschrijvende naam voor uw App Service certificaat. |
+| Naam | Een beschrijvende naam voor uw App Service certificaat. |
 | Naam van het Blot-domein | Geef hier het hoofd domein op. Het verleende certificaat beveiligt *zowel* het hoofd domein als het subdomein `www`. In het verleende certificaat bevat het veld algemene naam het hoofd domein en het veld alternatieve naam voor onderwerp bevat het `www` domein. Als u alleen een subdomein wilt beveiligen, geeft u de Fully Qualified Domain Name van het subdomein hier op (bijvoorbeeld `mysubdomain.contoso.com`).|
 | Abonnement | Het abonnement dat het certificaat zal bevatten. |
 | Resourcegroep | De resource groep die het certificaat zal bevatten. U kunt een nieuwe resource groep gebruiken of dezelfde resource groep selecteren als uw App Service-app, bijvoorbeeld. |
@@ -136,9 +136,9 @@ Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nie
 
 | Instelling | Beschrijving |
 |-|-|
-| Name | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
+| Naam | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
 | Resourcegroep | Als aanbeveling selecteert u dezelfde resource groep als uw App Service certificaat. |
-| Location | Selecteer dezelfde locatie als uw App Service-app. |
+| Locatie | Selecteer dezelfde locatie als uw App Service-app. |
 | Prijscategorie | Zie [Azure Key Vault prijs informatie](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie. |
 | Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Toegang Virtual Network | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
@@ -361,7 +361,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 

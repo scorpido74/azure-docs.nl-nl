@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024327"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376007"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Voor hybride identiteit benodigde poorten en protocollen
 Het volgende document bevat technische Naslag informatie over de vereiste poorten en protocollen voor het implementeren van een hybride identiteits oplossing. Gebruik de volgende afbeelding en Raadpleeg de bijbehorende tabel.
@@ -51,7 +51,7 @@ In deze tabel worden de poorten en protocollen beschreven die vereist zijn voor 
 | HTTP |80 (TCP) |Wordt gebruikt voor het downloaden van Crl's (certificaat intrekkings lijsten) om SSL-certificaten te controleren. |
 | HTTPS |443 (TCP) |Wordt gebruikt om te synchroniseren met Azure AD. |
 
-Voor een lijst met Url's en IP-adressen die u moet openen in uw firewall, Zie [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)adresbereiken.
+Voor een lijst met Url's en IP-adressen die u moet openen in uw firewall, raadpleegt u [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) adresbereiken en [problemen met Azure AD Connect connectiviteit oplossen](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tabel 3-Azure AD Connect en AD FS federatie servers/WAP
 In deze tabel worden de poorten en protocollen beschreven die vereist zijn voor de communicatie tussen de Azure AD Connect-server en AD FS federatie/WAP-servers.  
@@ -105,7 +105,7 @@ In deze tabel worden de volgende uitgaande poorten en protocollen beschreven die
 | Protocol | Poorten | Beschrijving |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Uitgaand |
-| Service Bus van Azure |5671 (TCP) |Uitgaand |
+| Azure Service Bus |5671 (TCP) |Uitgaand |
 
 Azure Service Bus poort 5671 is niet meer vereist voor de nieuwste versie van de agent. De nieuwste versie van Azure AD Connect Health Agent is alleen poort 443 vereist.
 

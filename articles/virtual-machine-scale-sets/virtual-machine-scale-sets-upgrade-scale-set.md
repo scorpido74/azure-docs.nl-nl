@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
 ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390466"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Een schaalset voor virtuele machines wijzigen
 
@@ -360,7 +360,7 @@ Sommige eigenschappen kunnen alleen worden gewijzigd in bepaalde waarden als de 
 Bepaalde wijzigingen kunnen worden toegepast op specifieke Vm's in plaats van de eigenschappen van de globale schaalset. Op dit moment is de enige specifieke VM-update die wordt ondersteund, om gegevens schijven te koppelen/loskoppelen van Vm's in de schaalset. Deze functie is beschikbaar als preview-versie. Zie de [Preview-documentatie](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)voor meer informatie.
 
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 ### <a name="application-updates"></a>Toepassings updates
 Als een toepassing wordt geïmplementeerd naar een schaalset via uitbrei dingen, zorgt een update voor de configuratie van de extensie ervoor dat de toepassing wordt bijgewerkt volgens het upgrade beleid. Als u bijvoorbeeld een nieuwe versie van een script hebt dat in een aangepaste script extensie moet worden uitgevoerd, kunt u de eigenschap *fileUris* bijwerken om naar het nieuwe script te verwijzen. In sommige gevallen wilt u mogelijk een update forceren, ook al is de configuratie van de extensie ongewijzigd (bijvoorbeeld omdat u het script hebt bijgewerkt zonder een wijziging in de URI van het script). In dergelijke gevallen kunt u de *updatetag* wijzigen om een update af te dwingen. Het Azure-platform interpreteert deze eigenschap niet. Als u de waarde wijzigt, heeft dit geen effect op de uitvoering van de uitbrei ding. Door een wijziging wordt de uitbrei ding gewoon geforceerd opnieuw uitgevoerd. Zie de [rest API-documentatie voor uitbrei dingen](/rest/api/compute/virtualmachineextensions/createorupdate)voor meer informatie over de *updatetag*. Houd er rekening mee dat de *updatetag* kan worden gebruikt met alle uitbrei dingen, niet alleen de aangepaste script extensie.

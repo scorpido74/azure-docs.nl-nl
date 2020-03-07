@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962489"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376947"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en-beperkingen in Azure Active Directory
 
@@ -32,7 +32,7 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
 
 * Alle volgende Azure-beheerders rollen worden beïnvloed:
   * Helpdesk beheerder
-  * Ondersteunings beheerder voor service
+  * Serviceondersteuningsbeheerder
   * Factureringsbeheerder
   * Laag1-ondersteuning voor partner
   * Laag2-ondersteuning voor partner
@@ -71,7 +71,7 @@ Elk gebruikers account dat moet worden aangemeld bij Azure AD, moet een unieke k
 
 | Eigenschap | UserPrincipalName-vereisten |
 | --- | --- |
-| Toegestane tekens |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Toegestane tekens |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
 | Tekens niet toegestaan |<ul> <li>Een '\@\" teken dat de gebruikers naam niet van het domein scheidt.</li> <li>Mag geen punt bevatten: "." direct voor het\@\"-symbool</li></ul> |
 | Lengte beperkingen |<ul> <li>De totale lengte mag niet langer zijn dan 113 tekens</li><li>Er mogen Maxi maal 64 tekens zijn vóór het\@\"-symbool</li><li>Er mogen Maxi maal 48 tekens na het symbool '\@\"</li></ul> |
 
@@ -163,7 +163,7 @@ Als u aan de slag wilt gaan, moet u [de Azure AD Power shell-module downloaden e
 De volgende artikelen bevatten aanvullende informatie over het opnieuw instellen van wacht woorden via Azure AD:
 
 * [Hoe kan ik een geslaagde implementatie van SSPR voltooien?](howto-sspr-deployment.md)
-* [Uw wachtwoord opnieuw instellen of wijzigen](../user-help/active-directory-passwords-update-your-own-password.md).
+* [Stel uw wachtwoord opnieuw in of wijzig het](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Registreer u voor selfservice voor wachtwoordherstel](../user-help/active-directory-passwords-reset-register.md).
 * [Hebt u een vraag over licenties?](concept-sspr-licensing.md)
 * [Welke gegevens worden gebruikt door selfservice voor wachtwoordherstel en welke gegevens moet u voor uw gebruikers invullen?](howto-sspr-authenticationdata.md)
