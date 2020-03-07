@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906772"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362732"
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
 Voordat u een virtuele Windows-machine (VM) van on-premises naar Azure uploadt, moet u de virtuele harde schijf (VHD of VHDX) voorbereiden. Azure biedt ondersteuning voor virtuele machines van de eerste en tweede generatie die in VHD-bestands indeling zijn en die een schijf met een vaste grootte hebben. De maximale grootte die is toegestaan voor de VHD is 1.023 GB. 
 
@@ -74,7 +74,7 @@ Nadat u de schijf hebt geconverteerd, maakt u een virtuele machine die gebruikma
 4. Als u wilt converteren van VHDX, selecteert u **VHD** > **volgende**.
 5. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u **vaste grootte** > **volgende**.
 6. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
-7. Selecteer **Finish**.
+7. Selecteer **Voltooien**.
 
 > [!NOTE]
 > Gebruik een Power shell-sessie met verhoogde bevoegdheden om de opdrachten in dit artikel uit te voeren.
@@ -235,13 +235,13 @@ Controleer of de volgende instellingen juist zijn geconfigureerd voor externe to
 
 9. Als de virtuele machine deel uitmaakt van een domein, controleert u het volgende beleid om er zeker van te zijn dat de oorspronkelijke instellingen niet worden teruggedraaid. 
     
-    | Doel                                     | Beleid                                                                                                                                                       | Waarde                                                                                    |
+    | Doel                                     | Beleid                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP is ingeschakeld                           | Computer Ga Settings\Administrative Templates\Components\Remote Desktop, bureaublad-services\Extern Desktop Session Host\Connections         | Gebruikers toestaan om extern verbinding te maken met behulp van Extern bureaublad                                  |
     | NLA-groeps beleid                         | Settings\Administrative Templates\Components\Remote Desktop Host\Security                                                    | Gebruikers verificatie vereisen voor externe toegang met behulp van NLA |
     | Keep-Alive instellingen                      | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Keep-Alive-verbindings interval configureren                                                 |
     | Instellingen opnieuw verbinden                       | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Automatisch opnieuw verbinding maken                                                                   |
-    | Beperkt aantal verbindings instellingen | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Aantal verbindingen beperken                                                              |
+    | Beperkt aantal verbindings instellingen | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Het aantal verbindingen beperken                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Windows Firewall-regels configureren
 1. Schakel Windows Firewall in voor de drie profielen (domein, standaard en openbaar):
@@ -269,7 +269,7 @@ Controleer of de volgende instellingen juist zijn geconfigureerd voor externe to
    ``` 
 5. Als de virtuele machine deel uitmaakt van een domein, controleert u het volgende Azure AD-beleid om er zeker van te zijn dat de oorspronkelijke instellingen niet worden teruggedraaid. 
 
-    | Doel                                 | Beleid                                                                                                                                                  | Waarde                                   |
+    | Doel                                 | Beleid                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | De Windows Firewall profielen inschakelen | Computer Ga Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Alle netwerk verbindingen beveiligen         |
     | RDP inschakelen                           | Computer Ga Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Uitzonde ringen voor binnenkomende Extern bureaublad toestaan |
@@ -377,7 +377,7 @@ Zorg ervoor dat de VM in orde, veilig en RDP toegankelijk is:
 ### <a name="install-windows-updates"></a>Windows-updates installeren
 In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. Als dit niet mogelijk is, controleert u of de volgende updates zijn geïnstalleerd. Als u de meest recente updates wilt downloaden, gaat u naar de pagina Windows Update-geschiedenis: [Windows 10 en Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8,1 en Windows Server 2012 R2](https://support.microsoft.com/help/4009470) en [Windows 7 SP1 en Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
-| Component               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Onderdeel               | Binair bestand         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | schijf. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -401,8 +401,8 @@ In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. A
 |                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Kerngeheugen                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| Extern bureaublad-services | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+| Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Externe bureaubladservices | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |

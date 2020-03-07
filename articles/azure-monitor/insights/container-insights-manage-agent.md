@@ -4,11 +4,11 @@ description: Dit artikel wordt beschreven in de meest voorkomende onderhoudstake
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385475"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Over het beheren van de Azure-Monitor voor containers-agent
 
@@ -18,11 +18,11 @@ Azure Monitor voor containers maakt gebruik van een beperkte versie van de Log A
 
 Azure Monitor voor containers maakt gebruik van een beperkte versie van de Log Analytics-agent voor Linux. Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt de agent automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS) en Azure Red Hat open SHIFT. De agent wordt niet beheerd voor een [hybride Kubernetes-cluster](container-insights-hybrid-setup.md) en u moet de agent hand matig bijwerken.
 
-Als de upgrade van de agent mislukt voor een cluster dat wordt gehost op AKS, wordt in dit artikel ook het proces voor het hand matig bijwerken van de agent beschreven. Als u wilt volgen de versies die zijn uitgebracht, Zie [agent aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
+Als de upgrade van de agent mislukt voor een cluster dat wordt gehost op AKS, wordt in dit artikel ook het proces voor het hand matig bijwerken van de agent beschreven. Zie [Release aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent als u de gepubliceerde versies wilt volgen.
 
 ### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agent op het bewaakte Kubernetes-cluster
 
-Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azure Red Hat open Shift, bestaat uit twee rechte stappen voor door sturen. De eerste stap is om uit te schakelen controleren met Azure Monitor voor containers met behulp van Azure CLI. Volg de stappen de [uitschakelen bewaking](container-insights-optout.md?#azure-cli) artikel. Met behulp van Azure CLI, kunnen we de agent verwijderen van de knooppunten in het cluster zonder gevolgen voor de oplossing en de bijbehorende gegevens die zijn opgeslagen in de werkruimte. 
+Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azure Red Hat open Shift, bestaat uit twee rechte stappen voor door sturen. De eerste stap is om uit te schakelen controleren met Azure Monitor voor containers met behulp van Azure CLI. Volg de stappen die worden beschreven in het artikel [controle uitschakelen](container-insights-optout.md?#azure-cli) . Met behulp van Azure CLI, kunnen we de agent verwijderen van de knooppunten in het cluster zonder gevolgen voor de oplossing en de bijbehorende gegevens die zijn opgeslagen in de werkruimte. 
 
 >[!NOTE]
 >Terwijl u deze activiteit onderhoud uitvoert, de knooppunten in het cluster niet van verzamelde gegevens doorsturen zijn en prestatieweergaven worden geen gegevens weergegeven tussen het moment dat u de agent verwijderen en de nieuwe versie installeert. 
@@ -30,9 +30,9 @@ Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azu
 
 Als u de nieuwe versie van de agent wilt installeren, volgt u de stappen die worden beschreven in de [controle inschakelen met Azure cli](container-insights-enable-new-cluster.md#enable-using-azure-cli)om dit proces te volt ooien.  
 
-Nadat u de bewaking opnieuw hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u bijgewerkte metrische gegevens voor de status voor het cluster kunt weer geven. Als u wilt controleren of de agent is bijgewerkt, moet u de opdracht uitvoeren: `kubectl logs omsagent-484hw --namespace=kube-system`
+Nadat u de bewaking opnieuw hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u bijgewerkte metrische gegevens voor de status voor het cluster kunt weer geven. Voer de volgende opdracht uit om te controleren of de upgrade van de agent is geslaagd: `kubectl logs omsagent-484hw --namespace=kube-system`
 
-De status is vergelijkbaar met het volgende voorbeeld, waarbij de waarde voor *omi* en *omsagent* moet overeenkomen met de meest recente versie die is opgegeven in de [releasegeschiedenis van agent](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+De status moet lijken op het volgende voor beeld, waarbij de waarde voor *Omi* en *omsagent* moet overeenkomen met de nieuwste versie die is opgegeven in de [release geschiedenis](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent.  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -78,7 +78,7 @@ $ helm upgrade --name myrelease-1 \
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Het uitschakelen van de variabele verzameling omgeving voor een container
 
-Azure Monitor voor containers verzamelt omgevingsvariabelen van containers die worden uitgevoerd in een schil en geeft deze weer in het eigenschappenvenster van de geselecteerde container in de **Containers** weergeven. U kunt dit gedrag beheren door het verzamelen van een specifieke container tijdens de implementatie van het Kubernetes-cluster uit te scha kelen of door de omgevings variabele *AZMON_COLLECT_ENV*in te stellen. Deze functie is beschikbaar via de agentversie – ciprod11292018 en hoger.  
+Azure Monitor voor containers worden omgevings variabelen verzameld uit de containers die worden uitgevoerd in een pod en worden ze weer gegeven in het eigenschappen venster van de geselecteerde container in de weer gave **containers** . U kunt dit gedrag beheren door het verzamelen van een specifieke container tijdens de implementatie van het Kubernetes-cluster uit te scha kelen of door de omgevings variabele *AZMON_COLLECT_ENV*in te stellen. Deze functie is beschikbaar via de agentversie – ciprod11292018 en hoger.  
 
 Als u het verzamelen van omgevings variabelen voor een nieuwe of bestaande container wilt uitschakelen, stelt u de variabele **AZMON_COLLECT_ENV** met de waarde **False** in het yaml-configuratie bestand van de Kubernetes-implementatie. 
 
@@ -106,4 +106,4 @@ Als u de detectie van de omgevings variabelen opnieuw wilt inschakelen, past u h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen ondervindt tijdens het bijwerken van de agent, raadpleegt u de [problemen oplossen met](container-insights-troubleshoot.md) voor ondersteuning.
+Als u problemen ondervindt tijdens het bijwerken van de agent, raadpleegt u de [hand leiding](container-insights-troubleshoot.md) voor het oplossen van problemen voor ondersteuning.

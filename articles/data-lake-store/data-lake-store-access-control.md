@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226099"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394255"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Toegangsbeheer in Azure Data Lake Storage Gen1
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 implementeert een model voor toegangsbeheer die is 
 
 Er zijn twee soorten toegangsbeheerlijsten (ACL's): **Toegangs-ACL's** en **Standaard-ACL's**.
 
-* **Toegangs-acl's**: Dit beheert de toegang tot een object. Bestanden en mappen hebben Toegangs-ACL's.
+* **Toegangs-ACL's**: deze beheren de toegang tot een object. Bestanden en mappen hebben Toegangs-ACL's.
 
-* **Standaard-acl's**: Een ' sjabloon ' van Acl's die zijn gekoppeld aan een map die de toegangs-Acl's bepaalt voor alle onderliggende items die zijn gemaakt in die map. Bestanden hebben geen Standaard-ACL's.
+* **Standaard-ACL's**: een 'sjabloon' van ACL's die zijn gekoppeld aan een map die de Toegangs-ACL's bepaalt voor alle onderliggende items die zijn gemaakt onder die map. Bestanden hebben geen Standaard-ACL's.
 
 
 Toegangs-ACL's en Standaard-ACL's hebben dezelfde structuur.
@@ -108,7 +108,7 @@ Een supergebruiker heeft de meeste rechten van alle gebruikers in het Data Lake 
 * kan de machtigingen voor elk bestand en elke map wijzigen,
 * kan de eigenaar of groep die eigenaar is van een bestand of map wijzigen.
 
-Alle gebruikers die deel van uitmaken de **eigenaren** rol voor een Data Lake Storage Gen1-account worden automatisch een supergebruiker.
+Alle gebruikers die deel uitmaken van de rol **eigen aren** voor een Data Lake Storage gen1 account, zijn automatisch een super gebruiker.
 
 ### <a name="the-owning-user"></a>De gebruiker die eigenaar is
 
@@ -124,16 +124,16 @@ De gebruiker die het item heeft gemaakt, wordt automatisch de gebruiker die eige
 
 ### <a name="the-owning-group"></a>De groep die eigenaar is
 
-**Achtergrond**
+**Achtergrondbitmap**
 
 In de POSIX ACL's is elke gebruiker gekoppeld aan een 'hoofdgroep'. Gebruiker 'Els' kan bijvoorbeeld behoren tot de groep 'Financiën'. Els kan behoren tot meerdere groepen, maar één groep is altijd ingesteld als haar hoofdgroep. Wanneer Els in POSIX een bestand maakt, wordt de groep die eigenaar van het bestand is als haar hoofdgroep ingesteld. In dit geval is dit 'Financiën'. De groep die eigenaar is, gedraagt zich op dezelfde manier als toegewezen machtigingen voor andere gebruikers/groepen.
 
 Omdat er geen 'hoofdgroep' die is gekoppeld aan gebruikers in Data Lake Storage Gen1, wordt de groep die eigenaar is toegewezen als hieronder.
 
-**De groep die eigenaar is voor een nieuw bestand of map toewijzen**
+**De groep die eigenaar is toewijzen aan een nieuw bestand of nieuwe map**
 
-* Voor **Beeld 1**: De hoofdmap "/". Deze map wordt gemaakt wanneer een Gen1 van Data Lake Storage-account is gemaakt. In dit geval is de groep die eigenaar ingesteld op een GUID alle gelijk is aan nul.  Deze waarde is niet toegestaan voor toegang.  Er is een tijdelijke aanduiding totdat die een groep is toegewezen.
-* **Case 2** (Elk ander geval): Wanneer een nieuw item wordt gemaakt, wordt de groep die eigenaar is, gekopieerd van de bovenliggende map.
+* **Voorbeeld 1**: de hoofdmap '/'. Deze map wordt gemaakt wanneer een Gen1 van Data Lake Storage-account is gemaakt. In dit geval is de groep die eigenaar ingesteld op een GUID alle gelijk is aan nul.  Deze waarde is niet toegestaan voor toegang.  Er is een tijdelijke aanduiding totdat die een groep is toegewezen.
+* **Voorbeeld 2** (alle andere gevallen): wanneer een nieuw item wordt gemaakt, wordt de groep die eigenaar is, gekopieerd van de bovenliggende map.
 
 **De groep die eigenaar is wijzigen**
 
@@ -144,7 +144,7 @@ De groep die eigenaar is kan worden gewijzigd door:
 > [!NOTE]
 > De groep die eigenaar is, kan de ACL's van een bestand of map *niet* wijzigen.
 >
-> Voor accounts die zijn gemaakt op of vóór September 2018, de groep die eigenaar is ingesteld op de gebruiker die heeft gemaakt van het account in het geval van de hoofdmap voor **voorbeeld1**, hierboven.  Een gebruikersaccount is niet geldig voor het verstrekken van machtigingen via de groep die eigenaar is, worden dus er zijn geen machtigingen verleend door deze standaardinstelling. U kunt deze machtiging toewijzen aan een geldige gebruikersgroep.
+> Voor accounts die zijn gemaakt op of vóór 1 september 2018, is de groep die eigenaar is ingesteld op de gebruiker die het account heeft gemaakt in het geval van de hoofdmap voor **Case 1**hierboven.  Een gebruikersaccount is niet geldig voor het verstrekken van machtigingen via de groep die eigenaar is, worden dus er zijn geen machtigingen verleend door deze standaardinstelling. U kunt deze machtiging toewijzen aan een geldige gebruikersgroep.
 
 
 ## <a name="access-check-algorithm"></a>Algoritme voor toegangscontrole
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Het masker
 
-Zoals wordt geïllustreerd in de algoritme voor het controleren van toegang, het masker beperkt de toegang voor **benoemde gebruikers**, wordt de **groep die eigenaar is**, en **benoemde groepen**.  
+Zoals geïllustreerd in het algoritme voor toegangs controle, beperkt het masker de toegang voor **benoemde gebruikers**, de **groep die eigenaar**is en **benoemde groepen**.  
 
 > [!NOTE]
 > Voor een nieuw Data Lake Storage Gen1-account, is het masker voor de toegangs-ACL van de hoofdmap ('/') standaard ingesteld op LSU.

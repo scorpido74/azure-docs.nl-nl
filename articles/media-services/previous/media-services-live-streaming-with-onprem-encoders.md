@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887098"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390530"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
 
@@ -176,19 +176,19 @@ Zelfs nadat u het programma hebt gestopt en verwijderd, kunnen gebruikers de gea
 ## <a id="states"></a>Kanaal status en facturering
 Mogelijke waarden voor de huidige status van een kanaal zijn:
 
-* **Gestopt**: dit is de begin status van het kanaal nadat het is gemaakt. In deze status kunnen de eigenschappen van het kanaal worden bijgewerkt, maar is streaming niet toegestaan.
-* **Starten**: het kanaal wordt gestart. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, keert het kanaal terug naar de status **gestopt** .
+* **Gestopt**: dit is de begin status van het kanaal nadat het is gemaakt. In deze status kunnen de kanaal eigenschappen worden bijgewerkt, maar streaming is niet toegestaan.
+* **Starten**: het kanaal wordt gestart. Er zijn geen updates of streaming toegestaan tijdens deze status. Als er een fout optreedt, keert het kanaal terug naar de status **gestopt** .
 * **Uitvoeren**: het kanaal kan live streams verwerken.
-* **Stoppen**: het kanaal wordt gestopt. In deze status zijn streaming en updates niet toegestaan.
-* **Verwijderen**: het kanaal wordt verwijderd. In deze status zijn streaming en updates niet toegestaan.
+* **Stoppen**: het kanaal wordt gestopt. Er zijn geen updates of streaming toegestaan tijdens deze status.
+* **Verwijderen**: het kanaal wordt verwijderd. Er zijn geen updates of streaming toegestaan tijdens deze status.
 
-In de volgende tabel wordt het verband tussen de verschillende kanaalstatussen en de facturering weergegeven.
+In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de facturerings modus.
 
-| Kanaalstatus | Portal UI-indicatoren | In rekening gebracht? |
+| Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
-| **Ingang** |**Ingang** |Nee (overgangsstatus) |
+| **Ingang** |**Ingang** |Nee (tijdelijke status) |
 | **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Ja |
-| **Stoppen** |**Stoppen** |Nee (overgangsstatus) |
+| **Stoppen** |**Stoppen** |Nee (tijdelijke status) |
 | **Gestopt** |**Gestopt** |Nee |
 
 ## <a id="cc_and_ads"></a>Ondertiteling en AD-invoeging

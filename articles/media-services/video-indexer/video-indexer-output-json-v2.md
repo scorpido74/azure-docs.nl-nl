@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514388"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363927"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Bekijk de Video Indexer uitvoer die door de API is geproduceerd
 
@@ -28,7 +28,7 @@ Wanneer u de API **Get video-index** aanroept en de reactie status OK is, krijgt
 
 U kunt de samen vatting van de video ook visueel bekijken door op de knop **afspelen** op de video op de [video indexer](https://www.videoindexer.ai/) website te drukken. Zie [video Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie.
 
-![Inzichten](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de API **video-index ophalen** . 
 
@@ -38,11 +38,11 @@ In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de A
 
 ## <a name="root-elements"></a>Hoofd elementen
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
-|name|De naam van de afspeel lijst.|
+|naam|De naam van de afspeel lijst.|
 |description|De beschrijving van de afspeel lijst.|
 |userName|De naam van de gebruiker die de afspeel lijst heeft gemaakt.|
 |toegevoegd|De aanmaak tijd van de afspeel lijst.|
@@ -53,7 +53,7 @@ In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de A
 |isBase|Hiermee wordt aangegeven of de afspeel lijst een basis-afspeel lijst (een video) of een afspeel lijst is gemaakt van andere Video's (afgeleid).|
 |durationInSeconds|De totale duur van de afspeel lijst.|
 |summarizedInsights|Bevat één [summarizedInsights](#summarizedinsights).
-|video's|Een lijst met [Video's](#videos) die de afspeel lijst bouwen.<br/>Als deze afspeel lijst met geconstrueerde Peri Oden van andere Video's (afgeleid) is, bevatten de Video's in deze lijst alleen gegevens uit de opgenomen Peri Oden.|
+|Video's|Een lijst met [Video's](#videos) die de afspeel lijst bouwen.<br/>Als deze afspeel lijst met geconstrueerde Peri Oden van andere Video's (afgeleid) is, bevatten de Video's in deze lijst alleen gegevens uit de opgenomen Peri Oden.|
 
 ```json
 {
@@ -80,7 +80,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 
 |Kenmerk | Beschrijving|
 |---|---|
-|name|De naam van de video. Bijvoorbeeld Azure Monitor.|
+|naam|De naam van de video. Bijvoorbeeld Azure Monitor.|
 |id|De ID van de video. Bijvoorbeeld 63c6d532ff.|
 |privacyMode|Uw uitsplitsing kan een van de volgende modi hebben: **persoonlijk**, **openbaar**. **Openbaar** : de video is zichtbaar voor iedereen in uw account en iedereen met een koppeling naar de video. **Persoonlijk** : de video is zichtbaar voor iedereen in uw account.|
 |duration|Bevat één duur die aangeeft hoe lang een inzicht heeft plaatsgevonden. De duur is in seconden.|
@@ -92,17 +92,17 @@ In deze sectie vindt u een overzicht van de inzichten.
 |audioEffects| Kan nul of meer audioEffects bevatten. Zie [audioEffects](#audioEffects)voor meer gedetailleerde informatie.|
 |labels| Mag niet meer dan nul labels bevatten. Zie [labels](#labels)voor meer informatie.|
 |merken| Kan nul of meer merken bevatten. Zie [Brands](#brands)voor meer gedetailleerde informatie.|
-|statistieken | Zie [Statistieken](#statistics)voor meer informatie.|
+|autoriteiten | Zie [Statistieken](#statistics)voor meer informatie.|
 |emoties| Kan nul of meer emoties bevatten. Zie [emoties](#emotions)voor meer gedetailleerde informatie.|
-|-onderwerpen|Kan nul of meer onderwerpen bevatten. De [onderwerpen](#topics) begrijpen.|
+|onderwerp|Kan nul of meer onderwerpen bevatten. De [onderwerpen](#topics) begrijpen.|
 
-## <a name="videos"></a>video's
+## <a name="videos"></a>Video's
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de video.|
 |id|De ID van de video.|
-|name|De naam van de video.
+|naam|De naam van de video.
 |state|De status van de video (geüpload, verwerkt, verwerkt, mislukt, in quarantaine geplaatst).|
 |processingProgress|De verwerkings voortgang tijdens de verwerking (bijvoorbeeld 20%).|
 |failureCode|De fout code als de verwerking is mislukt (bijvoorbeeld ' UnsupportedFileType ').|
@@ -121,7 +121,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 |indexingPreset|De definitie die wordt gebruikt om de video te indexeren.|
 |streamingPreset|De voor instelling die wordt gebruikt voor het publiceren van de video.|
 |linguisticModelId|Het CRI'S-model dat wordt gebruikt om de video te transcriberen.|
-|statistieken | Zie [Statistieken](#statistics)voor meer informatie.|
+|autoriteiten | Zie [Statistieken](#statistics)voor meer informatie.|
 
 ```json
 {
@@ -154,14 +154,14 @@ Elk inzicht (bijvoorbeeld transcript regels, gezichten, Brands enz.) bevat een l
 
 Een gezicht kan een ID, een naam, een miniatuur, andere meta gegevens en een lijst met de tijdelijke instanties hebben (bijvoorbeeld: 00:00:05 – 00:00:10, 00:01:00-00:02:30 en 00:41:21 – 00:41:49.) Elke tijdelijke instantie kan aanvullende meta gegevens bevatten. Bijvoorbeeld: de coördinaten van het gezicht (20230, 60, 60).
 
-|Versie|De code versie|
+|Version|De code versie|
 |---|---|
 |sourceLanguage|De bron taal van de video (uitgaande van één hoofd taal). In de vorm van een [bcp-47-](https://tools.ietf.org/html/bcp47) teken reeks.|
 |language|De Insights-taal (vertaald van de bron taal). In de vorm van een [bcp-47-](https://tools.ietf.org/html/bcp47) teken reeks.|
 |verslag|Het [transcript](#transcript) inzicht.|
 |optische|Het [OCR](#ocr) -inzicht.|
 |trefwoorden|De [Zoek woorden](#keywords) begrijpen.|
-|blokken|Kan een of meer [blokken](#blocks) bevatten|
+|Block|Kan een of meer [blokken](#blocks) bevatten|
 |aanhoudende|De [gezichten](#faces) begrijpen.|
 |labels|De [labels](#labels) begrijpen.|
 |afzonderlijke|De [Foto's](#shots) begrijpen.|
@@ -171,7 +171,7 @@ Een gezicht kan een ID, een naam, een miniatuur, andere meta gegevens en een lij
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) Insight.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) Insight.|
 |emoties| [Emoties](#emotions) Insight.|
-|-onderwerpen|De [onderwerpen](#topics) begrijpen.|
+|onderwerp|De [onderwerpen](#topics) begrijpen.|
 
 Voorbeeld:
 
@@ -194,21 +194,21 @@ Voorbeeld:
 }
 ```
 
-#### <a name="blocks"></a>blokken
+#### <a name="blocks"></a>Block
 
 Kenmerk | Beschrijving
 ---|---
 id|De ID van het blok.|
-instanties|Een lijst met tijds bereiken van dit blok.|
+vaak|Een lijst met tijds bereiken van dit blok.|
 
 #### <a name="transcript"></a>verslag
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De regel-ID.|
 |tekst|De transcriptie zelf.|
 |language|De transcript taal. Bedoeld ter ondersteuning van transcripten waarbij elke regel een andere taal kan hebben.|
-|instanties|Een lijst met peri Oden waarin deze regel wordt weer gegeven. Als de instantie een transcript heeft, heeft deze slechts één exemplaar.|
+|vaak|Een lijst met peri Oden waarin deze regel wordt weer gegeven. Als de instantie een transcript heeft, heeft deze slechts één exemplaar.|
 
 Voorbeeld:
 
@@ -241,17 +241,17 @@ Voorbeeld:
 
 #### <a name="ocr"></a>optische
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De OCR-regel-ID.|
 |tekst|De OCR-tekst.|
-|betrouwbaarheid|Het vertrouwens niveau van de herkenning.|
+|vallen|Het vertrouwens niveau van de herkenning.|
 |language|De OCR-taal.|
-|instanties|Een lijst met peri Oden waarin deze OCR is verschenen (dezelfde OCR kan meerdere keren voor komen).|
+|vaak|Een lijst met peri Oden waarin deze OCR is verschenen (dezelfde OCR kan meerdere keren voor komen).|
 |hoogte|De hoogte van de OCR-rechthoek|
-|top|De bovenste locatie in px|
-|links| De vestiging links in px|
-|breedte|De breedte van de OCR-rechthoek|
+|Boven|De bovenste locatie in px|
+|Gebleven| De vestiging links in px|
+|Breedte|De breedte van de OCR-rechthoek|
 
 ```json
 "ocr": [
@@ -276,13 +276,13 @@ Voorbeeld:
 
 #### <a name="keywords"></a>trefwoorden
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De ID van het sleutel woord.|
 |tekst|De tekst van het sleutel woord.|
-|betrouwbaarheid|Het vertrouwens niveau van het tref woord.|
+|vallen|Het vertrouwens niveau van het tref woord.|
 |language|De taal van het tref woord (tijdens het vertalen).|
-|instanties|Een lijst met tijds bereiken waar dit tref woord is opgetreden (een tref woord kan meerdere keren voor komen).|
+|vaak|Een lijst met tijds bereiken waar dit tref woord is opgetreden (een tref woord kan meerdere keren voor komen).|
 
 ```json
 {
@@ -307,19 +307,19 @@ Voorbeeld:
 
 #### <a name="faces"></a>aanhoudende
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De face-ID.|
-|name|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
-|betrouwbaarheid|De gezichts-id-betrouw baarheid.|
+|naam|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
+|vallen|De gezichts-id-betrouw baarheid.|
 |description|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
 |knownPersonId|De interne ID van een bekende persoon.|
-|referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
+|ReferenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
 |Type|Op dit moment hebben we alleen Bing.|
 |titel|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
 |imageUrl|Als het een beroemdheden is, wordt de afbeeldings-URL.|
-|instanties|Dit zijn exemplaren van waar het gezicht zich in het opgegeven tijds bereik bevindt. Elk exemplaar heeft ook een thumbnailsId. |
+|vaak|Dit zijn exemplaren van waar het gezicht zich in het opgegeven tijds bereik bevindt. Elk exemplaar heeft ook een thumbnailsId. |
 
 ```json
 "faces": [{
@@ -352,12 +352,12 @@ Voorbeeld:
 
 #### <a name="labels"></a>labels
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De label-ID.|
-|name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
+|naam|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
 |language|De naam taal van het label (bij omzetting). BCP-47|
-|instanties|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
+|vaak|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
 
 
 ```json
@@ -411,10 +411,10 @@ Voorbeeld:
 
 #### <a name="scenes"></a>scene
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De scène-ID.|
-|instanties|Een lijst met tijds bereiken van deze scène (een scène kan slechts één exemplaar hebben).|
+|vaak|Een lijst met tijds bereiken van deze scène (een scène kan slechts één exemplaar hebben).|
 
 ```json
 "scenes":[  
@@ -444,11 +444,11 @@ Voorbeeld:
 
 #### <a name="shots"></a>afzonderlijke
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De opname-ID.|
 |keyFrames|Een lijst met keyframes in de foto (elke bevat een ID en een lijst met tijds bereik exemplaren). Elk keyframe-exemplaar heeft een thumbnailId-veld met de miniatuur-ID van het keyframe.|
-|instanties|Een lijst met tijds bereiken van deze opname (een opname kan slechts 1 exemplaar hebben).|
+|vaak|Een lijst met tijds bereiken van deze opname (een opname kan slechts 1 exemplaar hebben).|
 
 ```json
 "shots":[  
@@ -494,16 +494,16 @@ Voorbeeld:
 
 Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst transcriptie en/of video OCR. Dit omvat geen visuele herkenning van merken of logo detectie.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De merk-ID.|
-|name|De naam van het merk.|
-|referenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|naam|De naam van het merk.|
+|ReferenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | De Wikipedia-URL van het merk, indien aanwezig. Bijvoorbeeld [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|De beschrijving van de Brands.|
 |tags|Een lijst met vooraf gedefinieerde labels die aan dit merk zijn gekoppeld.|
-|betrouwbaarheid|De betrouw bare waarde van de Video Indexer merk detector (0-1).|
-|instanties|Een lijst met tijds bereiken van dit merk. Elk exemplaar heeft een brandType, waarmee wordt aangegeven of dit merk zich in het transcript of in de OCR bevindt.|
+|vallen|De betrouw bare waarde van de Video Indexer merk detector (0-1).|
+|vaak|Een lijst met tijds bereiken van dit merk. Elk exemplaar heeft een brandType, waarmee wordt aangegeven of dit merk zich in het transcript of in de OCR bevindt.|
 
 ```json
 "brands": [
@@ -551,9 +551,9 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 ]
 ```
 
-#### <a name="statistics"></a>statistieken
+#### <a name="statistics"></a>autoriteiten
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |CorrespondenceCount|Aantal correspondentie in de video.|
 |SpeakerWordCount|Het aantal woorden per spreker.|
@@ -563,11 +563,11 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De audio-effect-ID.|
 |type|Het type audio-effect (bijvoorbeeld Clapping, Speech, stilte).|
-|instanties|Een lijst met peri Oden waarin dit audio-effect is opgetreden.|
+|vaak|Een lijst met peri Oden waarin dit audio-effect is opgetreden.|
 
 ```json
 "audioEffects": [
@@ -592,11 +592,11 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 
 Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatief). Bijvoorbeeld: 0-0,1, 0,1-0,2.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De sentiment-ID.|
 |averageScore |Het gemiddelde van alle scores van alle exemplaren van dat sentiment type-positief/neutraal/negatief|
-|instanties|Een lijst met tijds bereikn waar deze sentiment verscheen.|
+|vaak|Een lijst met tijds bereikn waar deze sentiment verscheen.|
 |sentimentType |Het type kan ' positief ', ' neutraal ' of ' negatief ' zijn.|
 
 ```json
@@ -631,12 +631,12 @@ Het visualContentModeration-blok bevat Peri Oden die Video Indexer mogelijk inho
 
 Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alleen beschikbaar voor de persoonlijke weer gave. Gebruikers hebben de mogelijkheid om een aanvraag in te dienen voor een menselijke beoordeling van de inhoud. in dat geval zal het kenmerk IsAdult het resultaat van de beoordeling van de mens bevatten.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De controle-ID van de visuele inhoud.|
 |adultScore|De volwassen Score (van content moderator).|
 |racyScore|De ongepaste-Score (van inhouds toezicht).|
-|instanties|Een lijst met peri Oden waarin deze visuele elementen worden gevisualiseerd.|
+|vaak|Een lijst met peri Oden waarin deze visuele elementen worden gevisualiseerd.|
 
 ```json
 "VisualContentModeration": [
@@ -667,7 +667,7 @@ Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alle
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De moderator-ID van de tekst inhoud.|
 |bannedWordsCount |Het aantal verboden woorden.|
@@ -677,11 +677,11 @@ Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alle
 
 Video Indexer identificeert emoties op basis van spraak-en audio-hints. De geïdentificeerde Emotion kan zijn: Joy, verdriet, boosheid of vrezen.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De Emotion-ID.|
 |type|Het EMOTION-tijdstip dat is geïdentificeerd, is gebaseerd op spraak-en audio hints. De EMOTION kan worden: Joy, verdriet, boosheid of vrezen.|
-|instanties|Een lijst met tijds bereikn waar deze Emotion verscheen.|
+|vaak|Een lijst met tijds bereikn waar deze Emotion verscheen.|
 
 ```json
 "emotions": [{
@@ -763,19 +763,19 @@ Video Indexer identificeert emoties op basis van spraak-en audio-hints. De geïd
 ],
 ```
 
-#### <a name="topics"></a>-onderwerpen
+#### <a name="topics"></a>onderwerp
 
 Video Indexer van de belangrijkste onderwerpen van transcripten wordt verduidelijkt. Als dat mogelijk is, wordt de [IPTC](https://iptc.org/standards/media-topics/) -taxonomie van het 2de niveau opgenomen. 
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De onderwerp-ID.|
-|name|De naam van het onderwerp, bijvoorbeeld ' Farmaceutischen '.|
-|referenceId|Brood kruimels die de hiërarchie van onderwerpen weer spie gelen. Bijvoorbeeld: "Health en Wellbeing/medicijn en gezondheids zorg/farmaceutische bedrijven".|
-|betrouwbaarheid|De betrouwbaarheids Score in het bereik [0, 1]. Hoger is meer vertrouwen.|
+|naam|De naam van het onderwerp, bijvoorbeeld ' Farmaceutischen '.|
+|ReferenceId|Brood kruimels die de hiërarchie van onderwerpen weer spie gelen. Bijvoorbeeld: "Health en Wellbeing/medicijn en gezondheids zorg/farmaceutische bedrijven".|
+|vallen|De betrouwbaarheids Score in het bereik [0, 1]. Hoger is meer vertrouwen.|
 |language|De taal die wordt gebruikt in het onderwerp.|
 |iptcName|De naam van de IPTC-media code, indien gedetecteerd.|
-|instanties |Momenteel indexeert Video Indexer geen onderwerp naar tijds intervallen, zodat de hele video wordt gebruikt als het interval.|
+|vaak |Momenteel indexeert Video Indexer geen onderwerp naar tijds intervallen, zodat de hele video wordt gebruikt als het interval.|
 
 ```json
 "topics": [{

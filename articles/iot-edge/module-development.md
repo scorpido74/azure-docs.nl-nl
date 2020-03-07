@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548625"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358697"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Uw eigen IoT Edge-modules ontwikkelen
 
@@ -31,9 +31,9 @@ De IoT Edge hub biedt twee belangrijke functies: proxy naar IoT Hub en lokale co
 
 IoT Hub ziet u een exemplaar van de module analogously aan een apparaat, in de zin dat:
 
-* Er is een moduledubbel van die is uniek en geïsoleerd van de [apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md) en de andere moduledubbels van het apparaat;
-* Er kunnen worden verzonden [apparaat-naar-cloud-berichten](../iot-hub/iot-hub-devguide-messaging.md);
-* kan de ontvangen [directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) speciaal bedoeld voor de identiteit.
+* het heeft een module die twee ledig is en die is geïsoleerd van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md) en de andere module apparaatdubbels van dat apparaat.
+* Er kunnen [apparaat-naar-Cloud-berichten](../iot-hub/iot-hub-devguide-messaging.md)worden verzonden.
+* het kan [directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) ontvangen die specifiek zijn gericht op de identiteit.
 
 Momenteel kunnen modules geen Cloud-naar-apparaat-berichten ontvangen of de functie voor het uploaden van bestanden gebruiken.
 
@@ -75,7 +75,7 @@ IoT Edge ondersteunt meerdere besturings systemen, architecturen en ontwikkeling
 
 IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor alle talen in de volgende tabel.
 
-| Ontwikkeltaal | Ontwikkelhulpprogramma’s |
+| Ontwikkel taal | Ontwikkelhulpprogramma’s |
 | -------------------- | ----------------- |
 | C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
@@ -90,7 +90,7 @@ IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor al
 
 IoT Edge ondersteunt de ontwikkeling van AMD64 Windows-apparaten voor alle talen in de volgende tabel.
 
-| Ontwikkeltaal | Ontwikkelhulpprogramma’s |
+| Ontwikkel taal | Ontwikkelhulpprogramma’s |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio code (geen mogelijkheden voor fout opsporing)<br>Visual Studio 2017/2019 |

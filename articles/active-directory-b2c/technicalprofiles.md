@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78186740"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378768"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -111,7 +111,7 @@ Het **protocol** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`of `None`. |
+| Naam | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`of `None`. |
 | Afhandelingsprocedure | Nee | Wanneer de protocol naam is ingesteld op `Proprietary`, geeft u de volledig gekwalificeerde naam op van de assembly die door Azure AD B2C wordt gebruikt om de protocolhandler te bepalen. |
 
 ## <a name="metadata"></a>Metagegevens

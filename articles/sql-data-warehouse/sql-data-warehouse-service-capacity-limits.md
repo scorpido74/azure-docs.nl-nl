@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358398"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -24,7 +24,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 
 ## <a name="workload-management"></a>Werklastbeheer
 
-| Categorie | Beschrijving | Maximum |
+| Category | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maxi maal aantal DWU voor één SQL-pool-eenheid (Data Warehouse) | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standaard-DTU per server |54,000<br></br>Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft standaard een DTU-quotum van 54.000, waarmee Maxi maal DW5000c kan worden toegestaan. Dit quotum is gewoon een veiligheidsbeperking. U kunt het quotum verhogen door [een ondersteunings ticket te maken](sql-data-warehouse-get-started-create-support-ticket.md) en *quotum* als aanvraag type te selecteren.  U kunt uw DTU-behoeften berekenen door de 7,5 te vermenigvuldigen met het totale DWU dat nodig is, of door 9,5 te vermenigvuldigen met het totale aantal cDWU dat nodig is. Bijvoorbeeld:<br></br>DW6000 x 7,5 = 45.000 Dtu's<br></br>DW5000c x 9,5 = 47.500 Dtu's.<br></br>U kunt uw huidige DTU-verbruik weer geven met de optie SQL Server in de portal. Zowel onderbroken als niet-onderbroken databases tellen mee voor het DTU-quotum. |
@@ -36,7 +36,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 
 ## <a name="database-objects"></a>Database objecten
 
-| Categorie | Beschrijving | Maximum |
+| Category | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Database |Maximale grootte | Gen1:240 TB gecomprimeerd op schijf. Deze ruimte is onafhankelijk van tempdb of logboek ruimte en daarom is deze ruimte toegewezen aan permanente tabellen.  Geclusterde column Store-compressie wordt geschat op 5X.  Met deze compressie kan de Data Base worden uitgebreid tot ongeveer 1 PB wanneer alle tabellen zijn geclusterd (het standaard tabel type). <br/><br/> Gen2: onbeperkte opslag voor column Store-tabellen.  Het Rowstore-gedeelte van de data base is nog steeds beperkt tot 240 TB gecomprimeerd op schijf. |
 | Tabel |Maximale grootte |Onbeperkte grootte voor column Store-tabellen. <br>60 TB voor rowstore-tabellen gecomprimeerd op schijf. |
@@ -59,14 +59,14 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 
 ## <a name="loads"></a>Laden
 
-| Categorie | Beschrijving | Maximum |
+| Category | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Poly base belastingen |MB per rij |1<br/><br/>Poly base laadt rijen die kleiner zijn dan 1 MB. Het laden van LOB-gegevens typen in tabellen met een geclusterde column store-index (CCI) wordt niet ondersteund.<br/><br/> |
 ||||
 
 ## <a name="queries"></a>Query's
 
-| Categorie | Beschrijving | Maximum |
+| Category | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Query's uitvoeren |Query's in de wachtrij voor gebruikers tabellen. |1000 |
 | Query's uitvoeren |Gelijktijdige query's op systeem weergaven. |100 |

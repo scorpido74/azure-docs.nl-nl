@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390644"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine gegevensopnamehulpprogramma 's
 
@@ -34,7 +34,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Koppelingen naar voorbeelden      | [AdlCopy gebruiken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, Azure CLI     |
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 |    |           |
 | ------------- | ------------- |
@@ -69,7 +69,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Koppelingen naar voorbeelden      | [Gegevens CosmosDB importeren](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure Storage-verkenner
+## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
 |    |           |
 | ------------- | ------------- |
@@ -80,7 +80,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Koppelingen naar voorbeelden      | [Azure-opslagverkenner](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
-## <a name="bcp"></a>BCP
+## <a name="bcp"></a>bcp
 
 |    |           |
 | ------------- | ------------- |
@@ -98,6 +98,6 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Wat is het?   | Een hulp programma om een Azure Blob Storage-container te koppelen aan het Linux-bestands systeem.      |
 | Ondersteunde DSVM-versies      | Linux      |
 | Wordt doorgaans gebruikt      | Lezen van en schrijven naar blobs in een container.      |
-|  Hoe gebruikt en voert u deze uit?    |   Voer _blobfuse_ op een terminal.    |
+|  Hoe gebruikt en voert u deze uit?    |   Voer _blobfuse_ uit op een Terminal.    |
 | Koppelingen naar voorbeelden      | [blobfuse op GitHub](https://github.com/Azure/azure-storage-fuse)      |
-| Gerelateerde hulpprogram ma's op de DSVM      | Azure-CLI      |
+| Gerelateerde hulpprogram ma's op de DSVM      | Azure CLI      |

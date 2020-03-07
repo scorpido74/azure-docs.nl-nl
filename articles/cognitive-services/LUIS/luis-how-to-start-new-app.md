@@ -1,7 +1,7 @@
 ---
 title: Een nieuwe app maken-LUIS
 titleSuffix: Azure Cognitive Services
-description: Maak en beheer uw toepassingen op de webpagina Language Understanding (LUIS).
+description: Maken en beheren van uw toepassingen op de webpagina van de Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904277"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390077"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Een nieuwe LUIS-app maken in de LUIS-Portal
 Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de LUIS-portal of via de LUIS-ontwerp- [api's](developer-reference-resource.md).
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="using-the-luis-portal"></a>De LUIS-Portal gebruiken
+## <a name="using-the-luis-portal"></a>Met behulp van de portal LUIS
 
 U kunt op verschillende manieren een nieuwe app maken in de preview-portal:
 
-* Begin met een lege app en maak intents, uitingen en entiteiten.
+* Beginnen met een lege app en intenties, uitingen en entiteiten te maken.
 * Begin met een lege app en voeg een [vooraf gebouwd domein](luis-how-to-use-prebuilt-domains.md)toe.
 * Importeer een LUIS-app uit een `.lu`-of `.json`-bestand dat al de intenties, uitingen en entiteiten bevat.
 
-## <a name="using-the-authoring-apis"></a>De ontwerp-Api's gebruiken
-U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api's:
+## <a name="using-the-authoring-apis"></a>Met behulp van de API's voor ontwerpen
+U kunt een nieuwe app maken met de authoring API's in een aantal manieren:
 
 * [Toepassing toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) : begin met een lege app en maak intents, uitingen en entiteiten.
 * [Vooraf gebouwde toepassing toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) : begin met een vooraf gebouwd domein, met inbegrip van intenties, uitingen en entiteiten.  
@@ -54,7 +54,7 @@ U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api
 
 1. Voer in het dialoog venster de naam van uw toepassing in, bijvoorbeeld `Pizza Tutorial`.
 
-    ![Dialoog venster nieuwe app maken](./media/create-pizza-tutorial-app-in-portal.png)
+    ![Dialoogvenster voor een nieuwe app maken](./media/create-pizza-tutorial-app-in-portal.png)
 
 1. Kies uw toepassings cultuur en selecteer vervolgens **gereed**. De beschrijving en Voorspellings bron zijn op dit moment optioneel. U kunt op elk gewenst moment instellen in het gedeelte **beheren** van de portal.
 

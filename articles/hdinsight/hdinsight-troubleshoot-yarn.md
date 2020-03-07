@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895260"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395178"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop GARENs oplossen met behulp van Azure HDInsight
 
@@ -24,7 +24,7 @@ Meer informatie over de meest voorkomende problemen en hun oplossingen als u wer
 
 De volgende stappen uit in Ambari gebruiken om te maken van een nieuwe YARN-wachtrij en vervolgens de capaciteitstoewijzing tussen alle wachtrijen in balans brengen.
 
-In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beide worden gewijzigd van 50% capaciteit aan 25% capaciteit, waardoor de nieuwe capaciteit van de wachtrij (spark)-50%.
+In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsvr**) gewijzigd van 50% capaciteit in 25% capaciteit, waardoor de nieuwe wachtrij (Spark) 50% capaciteit wordt weer geven.
 
 | Wachtrij | Capaciteit | Maximale capaciteit |
 | --- | --- | --- |
@@ -32,16 +32,16 @@ In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beid
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Selecteer de **Ambari-weergaven** pictogram en selecteer vervolgens het rasterpatroon. Selecteer vervolgens **YARN wachtrijbeheerder**.
+1. Selecteer het pictogram **Ambari weer gaven** en selecteer vervolgens het raster patroon. Selecteer vervolgens **garening Queue Manager**.
 
     ![Ambari-dash board voor Apache-wachtrij beheer](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Selecteer de **standaard** wachtrij.
 
     ![Apache Ambari-garen selecteren standaard wachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Voor de **standaard** in de wachtrij, wijzigt u de **capaciteit** van 50% tot 25%. Voor de **thriftsvr** in de wachtrij, wijzigt u de **capaciteit** 25%.
+3. Voor de **standaard** wachtrij wijzigt u de **capaciteit** van 50% in 25%. Voor de **thriftsvr** -wachtrij wijzigt u de **capaciteit** in 25%.
 
     ![De capaciteit aan 25% van de standaard- en thriftsvr wachtrijen wijzigen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Voor het maken van een nieuwe wachtrij selecteert **wachtrij toevoegen**.
+4. Selecteer **wachtrij toevoegen**om een nieuwe wachtrij te maken.
 
     ![Ambari-invoeg wachtrij voor Apache-garen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -49,10 +49,10 @@ In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beid
 
     ![Naam wachtrij voor Apache Ambari GARENs-dash board](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Laat de **capaciteit** waarden op 50% en selecteer vervolgens de **acties** knop.
+6. Wijzig de **capaciteits** waarden bij 50% en selecteer vervolgens de knop **acties** .
 
     ![Bewerking voor Ambari-garen selecteren voor Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Selecteer **slaan en te vernieuwen wachtrijen**.
+7. Selecteer **opslaan en wacht rijen vernieuwen**.
 
     ![Selecteer opslaan en vernieuwen van wachtrijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -66,7 +66,7 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
 
 ### <a name="resolution-steps"></a>Oplossingen
 
-1. Verbinding maken met het HDInsight-cluster met behulp van een Secure Shell (SSH)-client. Zie voor meer informatie, [meer lezen](#additional-reading-2).
+1. Verbinding maken met het HDInsight-cluster met behulp van een Secure Shell (SSH)-client. Zie [aanvullende Lees bewerkingen](#additional-reading-2)voor meer informatie.
 
 1. Als u de toepassing-id's voor de YARN-toepassingen die momenteel worden uitgevoerd, moet u de volgende opdracht uitvoeren:
 
@@ -74,7 +74,7 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
     yarn top
     ```
 
-    De id's worden vermeld in de **APPLICATIONID** kolom. U kunt Logboeken downloaden de **APPLICATIONID** kolom.
+    De Id's worden weer gegeven in de kolom **APPLICATIONID** . U kunt Logboeken downloaden vanuit de kolom **APPLICATIONID** .
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -129,10 +129,10 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
 
     Deze opdracht maakt een logboekbestand met de naam containerlogs.txt.
 
-### <a name="additional-reading-2"></a>Meer lezen
+### <a name="additional-reading-2"></a>Aanvullende Lees bewerkingen
 
 - [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN-concepten en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Apache Hadoop GARENs en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Volgende stappen
 
