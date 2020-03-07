@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421557"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372584"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Hoofd concepten van Windows Power shell-werk stromen voor Automation-runbooks
 
@@ -41,9 +41,9 @@ Power shell-werk stroom code lijkt bijna identiek te zijn met Power shell-script
 
 ### <a name="activities"></a>Activiteiten
 
-Een activiteit is een specifieke taak in een werkstroom. Net zoals een script van een of meer opdrachten bestaat, wordt een werkstroom bestaat uit een of meer activiteiten die worden uitgevoerd in een reeks. Windows PowerShell-werkstroom converteert automatisch veel van de Windows PowerShell-cmdlets voor activiteiten wanneer deze een werkstroom wordt uitgevoerd. Wanneer u een van deze cmdlets in uw runbook opgeeft, wordt de bijbehorende activiteit uitgevoerd door Windows Workflow Foundation. Voor die cmdlets zonder een bijbehorende activiteit, voert Windows PowerShell-werkstroom automatisch de cmdlet uit binnen een [InlineScript](#inlinescript) activiteit. Er is een set van cmdlets die zijn uitgesloten en niet kan worden gebruikt in een werkstroom, tenzij u ze expliciet opneemt in een InlineScript blok. Zie voor meer informatie over deze concepten [met behulp van activiteiten in Script Workflows](https://technet.microsoft.com/library/jj574194.aspx).
+Een activiteit is een specifieke taak in een werkstroom. Net zoals een script van een of meer opdrachten bestaat, wordt een werkstroom bestaat uit een of meer activiteiten die worden uitgevoerd in een reeks. Windows PowerShell-werkstroom converteert automatisch veel van de Windows PowerShell-cmdlets voor activiteiten wanneer deze een werkstroom wordt uitgevoerd. Wanneer u een van deze cmdlets in uw runbook opgeeft, wordt de bijbehorende activiteit uitgevoerd door Windows Workflow Foundation. Voor die cmdlets zonder een bijbehorende activiteit voert Windows Power shell-werk stroom automatisch de cmdlet uit binnen een [InlineScript](#inlinescript) -activiteit. Er is een set van cmdlets die zijn uitgesloten en niet kan worden gebruikt in een werkstroom, tenzij u ze expliciet opneemt in een InlineScript blok. Zie voor meer informatie over deze concepten [activiteiten gebruiken in script werk stromen](https://technet.microsoft.com/library/jj574194.aspx).
 
-Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters configureren hun werking. Zie voor meer informatie over de algemene werkstroomparameters [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters configureren hun werking. Zie [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)voor meer informatie over de algemene werk stroom parameters.
 
 ### <a name="positional-parameters"></a>Positionele para meters
 
@@ -189,7 +189,7 @@ Workflow Copy-Files
 }
 ```
 
-U kunt de **ForEach-Parallel** constructie verwerken van opdrachten voor elk item in een verzameling gelijktijdig. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok worden opeenvolgend uitgevoerd. Dit maakt gebruik van de volgende syntaxis die hieronder wordt weer gegeven. In dit geval wordt Activiteit1 op hetzelfde moment gestart voor alle items in de verzameling. Activiteit2 wordt voor elk item gestart nadat Activiteit1 is voltooid. Activiteit3 start pas als zowel Activiteit1 als Activiteit2 zijn voltooid voor alle items. We gebruiken de para meter `ThrottleLimit` om de parallellisme te beperken. Te hoog van een `ThrottleLimit` kan problemen veroorzaken. De ideale waarde voor de para meter `ThrottleLimit` hangt af van veel factoren in uw omgeving. U moet beginnen met een lage waarde en verschillende waarden verhogen totdat u er een hebt gevonden die geschikt is voor uw specifieke omstandigheid.
+U kunt de **foreach-parallelle** construct gebruiken om opdrachten voor elk item in een verzameling tegelijk te verwerken. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok worden opeenvolgend uitgevoerd. Dit maakt gebruik van de volgende syntaxis die hieronder wordt weer gegeven. In dit geval wordt Activiteit1 op hetzelfde moment gestart voor alle items in de verzameling. Activiteit2 wordt voor elk item gestart nadat Activiteit1 is voltooid. Activiteit3 start pas als zowel Activiteit1 als Activiteit2 zijn voltooid voor alle items. We gebruiken de para meter `ThrottleLimit` om de parallellisme te beperken. Te hoog van een `ThrottleLimit` kan problemen veroorzaken. De ideale waarde voor de para meter `ThrottleLimit` hangt af van veel factoren in uw omgeving. U moet beginnen met een lage waarde en verschillende waarden verhogen totdat u er een hebt gevonden die geschikt is voor uw specifieke omstandigheid.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Controlepunten
 
-Een *controle punt* is een moment opname van de huidige status van de werk stroom die de huidige waarde voor variabelen bevat en een uitvoer die op dat punt is gegenereerd. Als een werk stroom eindigt met een fout of wordt onderbroken, wordt deze in de volgende keer uitgevoerd vanaf het laatste controle punt in plaats van aan het begin van de werk stroom.  U kunt een controlepunt instellen in een werkstroom met de **Checkpoint-Workflow** activiteit. Azure Automation heeft een functie met de naam [fair share](automation-runbook-execution.md#fair-share), waarbij elk runbook dat drie uur wordt uitgevoerd, wordt verwijderd zodat andere runbooks kunnen worden uitgevoerd. Uiteindelijk wordt het niet-geladen runbook opnieuw geladen en wanneer dit het geval is, wordt de uitvoering hervat vanaf het laatste controle punt dat in het runbook is gemaakt. Om ervoor te zorgen dat het runbook uiteindelijk wordt voltooid, moet u controle punten toevoegen met intervallen die minder dan drie uur worden uitgevoerd. Als tijdens elke uitvoering een nieuw controle punt wordt toegevoegd en als het runbook na 3 uur wordt verwijderd als gevolg van een fout, wordt het runbook voor onbepaalde tijd hervat.
+Een *controle punt* is een moment opname van de huidige status van de werk stroom die de huidige waarde voor variabelen bevat en een uitvoer die op dat punt is gegenereerd. Als een werk stroom eindigt met een fout of wordt onderbroken, wordt deze in de volgende keer uitgevoerd vanaf het laatste controle punt in plaats van aan het begin van de werk stroom.  U kunt een controle punt instellen in een werk stroom met het **controle punt-werk stroom** activiteit. Azure Automation heeft een functie met de naam [fair share](automation-runbook-execution.md#fair-share), waarbij elk runbook dat drie uur wordt uitgevoerd, wordt verwijderd zodat andere runbooks kunnen worden uitgevoerd. Uiteindelijk wordt het niet-geladen runbook opnieuw geladen en wanneer dit het geval is, wordt de uitvoering hervat vanaf het laatste controle punt dat in het runbook is gemaakt. Om ervoor te zorgen dat het runbook uiteindelijk wordt voltooid, moet u controle punten toevoegen met intervallen die minder dan drie uur worden uitgevoerd. Als tijdens elke uitvoering een nieuw controle punt wordt toegevoegd en als het runbook na 3 uur wordt verwijderd als gevolg van een fout, wordt het runbook voor onbepaalde tijd hervat.
 
 In de volgende voorbeeld code treedt een uitzonde ring op nadat de werk stroom is beëindigd door Activiteit2. Wanneer de werk stroom opnieuw wordt uitgevoerd, wordt deze gestart door Activiteit2 uit te voeren, aangezien dit net nadat het laatste controle punt is ingesteld.
 
@@ -287,7 +287,7 @@ workflow CreateTestVms
 
 Dit is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
 
-Zie voor meer informatie over controlepunten, [controlepunten toevoegen aan een Scriptwerkstroom](https://technet.microsoft.com/library/jj574114.aspx).
+Zie [controle punten toevoegen aan een script werk stroom](https://technet.microsoft.com/library/jj574114.aspx)voor meer informatie over controle punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

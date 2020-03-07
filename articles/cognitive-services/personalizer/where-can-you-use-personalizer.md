@@ -4,11 +4,11 @@ description: Personaler kan in elke situatie worden toegepast, waarbij uw toepas
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622705"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374878"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Waar en hoe persoonlijker gebruiken
 

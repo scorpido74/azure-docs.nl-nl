@@ -4,11 +4,11 @@ description: Gebruik Azure Resource Manager en Azure CLI om resources te impleme
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382882"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resources implementeren met Resource Manager-sjablonen en Azure CLI
 

@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372371"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Doorlopende implementatie voor Azure Functions
 
@@ -67,7 +67,7 @@ Voer de volgende stappen uit om een continue implementatie voor een bestaande fu
 
 Wanneer het proces is voltooid, wordt alle code uit de opgegeven bron in uw app geïmplementeerd. Op dat moment activeren wijzigingen in de implementatie bron een implementatie van die wijzigingen in de functie-app in Azure.
 
-## <a name="deployment-scenarios"></a>Implementatiescenario’s
+## <a name="deployment-scenarios"></a>Implementatiescenario's
 
 <a name="existing"></a>
 

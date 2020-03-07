@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/28/2020
 ms.openlocfilehash: 4912b07c60ecc8a2db65d3b8ffb339cf83909396
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250850"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359056"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -228,7 +228,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 > [!NOTE]
 > Gebruik de laag gratis alleen voor experimentele scenario's, niet voor productie scenario's. Deze laag beperkt de door Voer en het gebruik en heeft geen SLA (Service Level Agreement).
 
-| Artefact | Gratis | Basic | Standaard |
+| Artefact | Gratis | Basic | Standard |
 |----------|------|-------|----------|
 | EDI-handels overeenkomsten | 10 | 1 | 1000 |
 | EDI-handels partners | 25 | 2 | 1000 |
@@ -254,7 +254,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 ### <a name="throughput-limits"></a>Doorvoer limieten
 
-| Runtime-eind punt | Gratis | Basic | Standaard | Opmerkingen |
+| Runtime-eind punt | Gratis | Basic | Standard | Opmerkingen |
 |------------------|------|-------|----------|-------|
 | Lees aanroepen per 5 minuten | 3,000 | 30,000 | 60,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
 | Aanroepen starten per 5 minuten | 3,000 | 30,000 | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230576"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355618"
 ---
 # <a name="manage-your-function-app"></a>Uw functie-app beheren 
 
@@ -25,9 +25,9 @@ In dit artikel wordt beschreven hoe u uw functie-apps configureert en beheert.
 > [!TIP]  
 > Veel configuratie opties kunnen ook worden beheerd met behulp van de [Azure cli]. 
 
-## <a name="get-started-in-the-azure-portal"></a>Aan de slag in Azure Portal
+## <a name="get-started-in-the-azure-portal"></a>Aan de slag in de Azure Portal
 
-Als u wilt beginnen, gaat u naar de [Azure Portal] en meldt u zich aan bij uw Azure-account. Typ de naam van uw functie-app in de zoekbalk boven in de portal en selecteer deze in de lijst. Nadat u de functie-app hebt geselecteerd, ziet u de volgende pagina:
+Als u wilt beginnen, gaat u naar de [Azure-portal] en meldt u zich aan bij uw Azure-account. Typ de naam van uw functie-app in de zoekbalk boven in de portal en selecteer deze in de lijst. Nadat u de functie-app hebt geselecteerd, ziet u de volgende pagina:
 
 ![Overzicht van functie-app in de Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -83,7 +83,7 @@ De rest van dit artikel richt zich op de volgende App Service functies in de Azu
 + [Geavanceerde hulp middelen (kudu)](#kudu)
 + [Implementatie opties](#deployment)
 + [CORS](#cors)
-+ [Authenticatie](#auth)
++ [Verificatie](#auth)
 
 Zie [Azure app service-instellingen configureren](../app-service/configure-common.md)voor meer informatie over het werken met app service-instellingen.
 
@@ -149,4 +149,4 @@ Wanneer functies een HTTP-trigger gebruiken, kunt u vereisen dat aanroepen eerst
 + [Doorlopende implementatie voor Azure Functions](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

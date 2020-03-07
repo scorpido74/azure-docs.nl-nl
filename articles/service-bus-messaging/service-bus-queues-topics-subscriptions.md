@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759581"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358260"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-wachtrijen, -onderwerpen en -abonnementen
 
@@ -23,7 +23,7 @@ Microsoft Azure Service Bus biedt ondersteuning voor een set Cloud, op berichten
 
 De Messa ging-entiteiten die de kern vormen van de mogelijkheden voor berichten in Service Bus zijn wacht rijen, onderwerpen en abonnementen, en regels/acties.
 
-## <a name="queues"></a>Queues
+## <a name="queues"></a>Wachtrijen
 
 Wacht rijen bieden de aflevering van het FIFO-bericht ( *First in, first out* ) aan een of meer concurrerende consumenten. Dat wil zeggen dat ontvangers berichten doorgaans ontvangen en verwerken in de volg orde waarin ze aan de wachtrij zijn toegevoegd en dat er slechts één bericht verbruiker elk bericht ontvangt en verwerkt. Een belang rijk voor deel van het gebruik van wacht rijen is het behalen van tijdelijke ontkoppeling van toepassings onderdelen. Met andere woorden, de producenten (afzenders) en consumenten (ontvangers) hoeven niet tegelijkertijd berichten te verzenden en te ontvangen, omdat berichten blijvend in de wachtrij worden opgeslagen. Bovendien hoeft de producent niet te wachten op een antwoord van de consument om berichten te kunnen verwerken en te verzenden.
 

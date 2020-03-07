@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934893"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357674"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS gebruiken om aangepaste domein instellingen op te geven voor een Azure-service
 
@@ -40,10 +40,10 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Naam     | myfunctionapp        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
-|TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
+|TTL-eenheid     | Uren        | Uren worden gebruikt als meet tijd         |
 |Alias     | adatumfunction.azurewebsites.net        | De DNS-naam waarvoor u de alias maakt, in dit voor beeld is de DNS-naam adatumfunction.azurewebsites.net die standaard wordt verschaft voor de functie-app.        |
 
 Ga terug naar de functie-app, klik op **platform functies**en klik onder **netwerken** op **aangepaste domeinen**en klik onder **aangepaste hostnamen** op **+ hostnaam toevoegen**.
@@ -65,10 +65,10 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Name     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Naam     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | A        | Gebruik een A-record als de resource een IP-adres is.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
-|TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
+|TTL-eenheid     | Uren        | Uren worden gebruikt als meet tijd         |
 |IP-adres     | `<your ip address>`       | Het open bare IP-adres.|
 
 ![een A-record maken](./media/dns-custom-domain/arecord.png)
@@ -92,14 +92,14 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Name     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Naam     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt. Als de resource een IP-adres heeft gebruikt, wordt er een record gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
-|TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
+|TTL-eenheid     | Uren        | Uren worden gebruikt als meet tijd         |
 |Alias     | webserver.azurewebsites.net        | De DNS-naam waarvoor u de alias maakt, in dit voor beeld is de DNS-naam van de webserver.azurewebsites.net die standaard wordt verschaft voor de web-app.        |
 
 
-![Een CNAME-record maken](./media/dns-custom-domain/createcnamerecord.png)
+![een CNAME-record maken](./media/dns-custom-domain/createcnamerecord.png)
 
 Ga terug naar de app service die is geconfigureerd voor de aangepaste domein naam. Klik op **aangepaste domeinen**en klik vervolgens op **hostnamen**. Klik op **+ hostnaam toevoegen**om de CNAME-record toe te voegen die u hebt gemaakt.
 
@@ -115,7 +115,7 @@ Zie [een actieve DNS-naam migreren naar Azure app service](../app-service/manage
 
 Als u een aangepast domein wilt aanschaffen, kunt u [een aangepaste domein naam voor Azure web apps kopen voor](../app-service/manage-custom-dns-buy-domain.md) meer informatie over app service domeinen.
 
-## <a name="blob-storage"></a>Blob-opslag
+## <a name="blob-storage"></a>Blob Storage
 
 Voer de volgende stappen uit om een CNAME-record voor een Blob Storage-account te configureren met de methode asverify. Deze methode zorgt ervoor dat er geen uitval tijd is.
 
@@ -128,10 +128,10 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Name     | asverify. mystorageaccount        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Naam     | asverify. mystorageaccount        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
-|TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
+|TTL-eenheid     | Uren        | Uren worden gebruikt als meet tijd         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | De DNS-naam waarvoor u de alias maakt, in dit voor beeld is de DNS-naam van de asverify.adatumfunctiona9ed.blob.core.windows.net die standaard wordt gegeven aan het opslag account.        |
 
 Ga terug naar uw opslag account door te klikken op **opslag** > **opslag accounts**, selecteer uw opslag account en klik op **aangepast domein**. Typ de alias die u hebt gemaakt zonder het voor voegsel asverify in het tekstvak, controleer * * gebruik indirecte CNAME-validatie en klik op **Opslaan**. Nadat deze stap is voltooid, gaat u terug naar uw DNS-zone en maakt u een CNAME-record zonder het asverify-voor voegsel.  Na dat moment kunt u de CNAME-record met het voor voegsel cdnverify verwijderen.
@@ -156,10 +156,10 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Name     | cdnverify. mycdnendpoint        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Naam     | cdnverify. mycdnendpoint        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
-|TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
+|TTL-eenheid     | Uren        | Uren worden gebruikt als meet tijd         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | De DNS-naam waarvoor u de alias maakt, in dit voor beeld is de DNS-naam van de cdnverify.adatumcdnendpoint.azureedge.net die standaard wordt gegeven aan het opslag account.        |
 
 Ga terug naar uw CDN-eind punt door te klikken op **netwerk** > **CDN-profielen**en selecteer uw CDN-profiel. Klik op **+ aangepast domein** en voer uw CNAME-record alias in zonder het cdnverify-voor voegsel en klik op **toevoegen**.

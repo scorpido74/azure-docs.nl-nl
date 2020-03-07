@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512977"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370562"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenis schema
 
@@ -83,16 +83,16 @@ Het schema dat is gepubliceerd voor een Azure Blob-opslag gebeurtenis is bijvoor
 
 Alle gebeurtenissen hebben dezelfde gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
-| -------- | ---- | ----------- |
-| onderwerp | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
-| subject | string | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | string | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| id | string | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| Eigenschap | Type | Vereist | Beschrijving |
+| -------- | ---- | -------- | ----------- |
+| onderwerp | tekenreeks | Nee, maar indien opgenomen, moet overeenkomen met het Event Grid onderwerp Azure Resource Manager ID precies. Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
+| subject | tekenreeks | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| eventType | tekenreeks | Ja | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| eventTime | tekenreeks | Ja | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | Ja | De unieke id voor de gebeurtenis. |
+| data | object | Nee | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| dataVersion | tekenreeks | Nee, maar wordt voorzien van een lege waarde. | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
+| metadataVersion | tekenreeks | Niet vereist, maar indien opgenomen, moet overeenkomen met het Event Grid schema `metadataVersion` precies (momenteel alleen `1`). Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
 
 Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegevens object:
 
@@ -104,7 +104,7 @@ Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegeve
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Resource groepen (beheer bewerkingen)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
-* [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure-Signa lering](event-schema-azure-signalr.md)
 * [Azure Machine Learning](event-schema-machine-learning.md)
 
 Voor aangepaste onderwerpen wordt het gegevens object bepaald door de uitgever van de gebeurtenis. De gegevens op het hoogste niveau moeten dezelfde velden hebben als standaard, door de resource gedefinieerde gebeurtenissen.

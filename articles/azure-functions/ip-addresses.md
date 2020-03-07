@@ -4,11 +4,11 @@ description: Meer informatie over het vinden van binnenkomende en uitgaande IP-a
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612884"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358069"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure Functions
 
@@ -25,9 +25,9 @@ IP-adressen zijn gekoppeld aan functie-apps, niet met afzonderlijke functies. In
 
 Elke functie-app heeft één inkomend IP-adres. Het IP-adres zoeken:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
-3. Selecteer **Platformfuncties**.
+3. Selecteer **platform functies**.
 4. Selecteer **Eigenschappen**en het inkomende IP-adres wordt weer gegeven onder **virtueel IP-adres**.
 
 ## <a name="find-outbound-ip-addresses"></a>Uitgaande IP-adressen van functie-app
@@ -105,7 +105,7 @@ Als u de wijziging van een uitgaand IP-adres wilt forceren:
 2. Wacht tien minuten.
 3. Schaal terug naar de locatie waar u bent begonnen.
 
-## <a name="ip-address-restrictions"></a>IP-adresbeperkingen
+## <a name="ip-address-restrictions"></a>IP-adres beperkingen
 
 U kunt een lijst met IP-adressen die u wilt toestaan of weigeren van toegang tot een functie-app configureren. Zie [Azure app service static IP-beperkingen](../app-service/app-service-ip-restrictions.md)voor meer informatie.
 
@@ -115,9 +115,9 @@ Als u statische, specifieke IP-adressen nodig hebt, raden wij u aan [app service
 
 Als u wilt weten of uw functie-app wordt uitgevoerd in een App Service Environment:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
-3. Selecteer het tabblad **Overzicht**.
+3. Selecteer het tabblad **overzicht** .
 4. De laag App Service plan wordt weer gegeven onder **app service plan/prijs categorie**. De prijs Categorie App Service Environment is **geïsoleerd**.
  
 Als alternatief kunt u het [Cloud shell](../cloud-shell/quickstart.md)gebruiken:

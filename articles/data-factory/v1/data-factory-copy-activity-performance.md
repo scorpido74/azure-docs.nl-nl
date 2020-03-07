@@ -13,16 +13,16 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438922"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357271"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Kopiëren en afstemmingshandleiding van activiteit
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](data-factory-copy-activity-performance.md)
+> * [Versie 1](data-factory-copy-activity-performance.md)
 > * [Versie 2 (huidige versie)](../copy-activity-performance.md)
 
 > [!NOTE]
@@ -32,15 +32,15 @@ Copy Activity in Azure Data Factory biedt een eersteklas veilige, betrouwbare en
 
 Azure biedt een set geavanceerde datawarehouseoplossingen voor opslag en gegevensbeheer en Copy Activity biedt een uiterst geoptimaliseerde gegevens laden die gemakkelijk te configureren en instellen. Met slechts één kopieeractiviteit, kunt u bereiken:
 
-* Het laden van gegevens in **Azure SQL Data Warehouse** op **1,2 GBps**. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
-* Het laden van gegevens in **Azure Blob-opslag** op **1,0 GBps**
-* Het laden van gegevens in **Azure Data Lake Store** op **1,0 GBps**
+* Gegevens laden in **Azure SQL Data Warehouse** van **1,2 Gbps**. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Gegevens laden in **Azure Blob-opslag** op **1,0 Gbps**
+* Gegevens laden in **Azure data Lake Store** op **1,0 Gbps**
 
 Dit artikel wordt beschreven:
 
-* [Naslaginformatie over prestatiecijfers](#performance-reference) voor ondersteunde bron- en sink-gegevensopslag voor het plannen van uw project.
+* [Prestatie referentie nummers](#performance-reference) voor ondersteunde bron-en Sink-gegevens opslag om u te helpen bij het plannen van uw project.
 * Functies waarmee de Kopieer doorvoer kan worden verhoogd in verschillende scenario's, waaronder [gegevens verplaatsings eenheden](#cloud-data-movement-units)voor de Cloud, [parallelle kopie](#parallel-copy)en [gefaseerde kopie](#staged-copy);
-* [Richtlijnen voor afstemmen van prestaties](#performance-tuning-steps) over het afstemmen van de prestaties en de belangrijkste factoren die de kopieerprestaties kunnen beïnvloeden.
+* [Richt lijnen voor het afstemmen](#performance-tuning-steps) van de prestaties van de prestaties en de belangrijkste factoren die van invloed kunnen zijn op de Kopieer prestaties.
 
 > [!NOTE]
 > Als u niet bekend bent met de Kopieer activiteit in het algemeen, raadpleegt u [gegevens verplaatsen met behulp van Kopieer activiteit voordat u](data-factory-data-movement-activities.md) dit artikel leest.
@@ -104,7 +104,7 @@ Een **DMU (Cloud gegevens verplaatsings eenheid)** is een meting die de kracht v
 | Gegevens kopiëren tussen winkels op basis van bestanden | Tussen 4 en 16, afhankelijk van het aantal en de grootte van de bestanden. |
 | Alle andere kopieerscenario 's | 4 |
 
-Als u deze standaard instelling wilt overschrijven, geeft u als volgt een waarde op voor de eigenschap **cloudDataMovementUnits** . De **toegestane waarden** voor de eigenschap **cloudDataMovementUnits** zijn 2, 4, 8, 16, 32. Het **werkelijke aantal Cloud DMUs** dat de Kopieer bewerking wordt gebruikt tijdens runtime, is gelijk aan of kleiner dan de geconfigureerde waarde, afhankelijk van het gegevens patroon. Zie voor informatie over het niveau van prestatieverbetering krijgt u mogelijk bij het configureren van meer eenheden voor een specifiek exemplaar gegevensbronnen en sinks, de [prestaties verwijzing](#performance-reference).
+Als u deze standaard instelling wilt overschrijven, geeft u als volgt een waarde op voor de eigenschap **cloudDataMovementUnits** . De **toegestane waarden** voor de eigenschap **cloudDataMovementUnits** zijn 2, 4, 8, 16, 32. Het **werkelijke aantal Cloud DMUs** dat de Kopieer bewerking wordt gebruikt tijdens runtime, is gelijk aan of kleiner dan de geconfigureerde waarde, afhankelijk van het gegevens patroon. Voor informatie over het prestatie niveau dat u kunt krijgen wanneer u meer eenheden voor een specifieke Kopieer bron en Sink configureert, raadpleegt u de [prestatie verwijzing](#performance-reference).
 
 ```json
 "activities":[
@@ -132,7 +132,7 @@ Als u deze standaard instelling wilt overschrijven, geeft u als volgt een waarde
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
-U kunt de **parallelCopies** eigenschap om aan te geven van de parallelle uitvoering die u wilt dat de Kopieeractiviteit om te gebruiken. U kunt deze eigenschap beschouwen als het maximum aantal threads in een Kopieeractiviteit waarmee u kunt vanuit de bron lezen of schrijven naar de sinkgegevensopslag parallel.
+U kunt de eigenschap **parallelCopies** gebruiken om aan te geven welke parallellisme u wilt gebruiken om te kopiëren. U kunt deze eigenschap beschouwen als het maximum aantal threads in een Kopieeractiviteit waarmee u kunt vanuit de bron lezen of schrijven naar de sinkgegevensopslag parallel.
 
 Data Factory bepaalt voor elke kopie-activiteit die wordt uitgevoerd, het aantal parallelle exemplaren te gebruiken om gegevens te kopiëren van de bron-gegevens opslaan en op te slaan op de doelgegevens. Het standaard aantal parallelle kopieën dat wordt gebruikt, is afhankelijk van het type bron en Sink dat u gebruikt.
 
@@ -166,9 +166,9 @@ Normaal gesp roken moet het standaard gedrag u de beste door voer geven. Als u e
 ```
 Die u moet weten:
 
-* Als u gegevens tussen bestanden zijn gebaseerd, kopieert de **parallelCopies** bepalen de parallelle uitvoering op bestandsniveau. De logische groepen te verdelen binnen een enkel bestand onder er zou gebeuren automatisch en transparant en is ontworpen om de beste geschikt chunkgrootte voor een bepaalde bron-gegevenstype store gebruiken om gegevens in parallelle en rechthoekige naar parallelCopies te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als flattenhierarchy is **mergeFile**, Kopieeractiviteit niet profiteren van parallelle uitvoering op bestandsniveau.
+* Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt de **parallelCopies** de parallelle factor op bestands niveau. De logische groepen te verdelen binnen een enkel bestand onder er zou gebeuren automatisch en transparant en is ontworpen om de beste geschikt chunkgrootte voor een bepaalde bron-gegevenstype store gebruiken om gegevens in parallelle en rechthoekige naar parallelCopies te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit geen gebruik maken van parallellisme op bestands niveau.
 * Wanneer u een waarde voor de eigenschap **parallelCopies** opgeeft, moet u rekening houden met de toename van de belasting van uw bron-en Sink-gegevens opslag, en naar de gateway als dit een hybride kopie is. Dit gebeurt met name wanneer u hebt meerdere activiteiten of gelijktijdige uitvoeringen van de dezelfde activiteiten worden uitgevoerd voor hetzelfde gegevensarchief. Als u merkt dat het gegevens archief of de gateway is overbelast met de belasting, verlaagt u de **parallelCopies** -waarde om de belasting te ontlasten.
-* Wanneer u gegevens van winkels die niet op bestanden zijn gebaseerd op winkels die op basis van bestanden kopieert, data movement service negeert de **parallelCopies** eigenschap. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
+* Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd, wordt de eigenschap **parallelCopies** genegeerd door de service voor gegevens verplaatsing. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
 
 > [!NOTE]
 > U moet Data Management Gateway versie 1,11 of hoger gebruiken om de functie **parallelCopies** te gebruiken wanneer u een hybride kopie gaat maken.
@@ -178,14 +178,14 @@ Die u moet weten:
 Als u deze twee eigenschappen beter wilt gebruiken en de door Voer van gegevens verplaatsing wilt uitbreiden, raadpleegt u de voor beelden van use cases. U hoeft **parallelCopies** niet te configureren om te profiteren van het standaard gedrag. Als u configureert en **parallelCopies** te klein is, is het mogelijk dat meerdere Cloud-DMUs niet volledig worden gebruikt.
 
 ### <a name="billing-impact"></a>Facturerings impact
-Er **belangrijk** te onthouden dat de kosten worden berekend op basis van de totale tijd van de kopieerbewerking. Als een Kopieer taak wordt gebruikt om één uur te maken met één Cloud eenheid en nu 15 minuten duurt met vier Cloud eenheden, blijft de volledige factuur bijna hetzelfde. U kunt bijvoorbeeld vier Cloud eenheden gebruiken. De eerste cloud eenheid besteedt tien minuten, de tweede, 10 minuten, de derde, 5 minuten en de vierde, 5 minuten, alle in één Kopieer activiteit uit. Er worden kosten in rekening gebracht voor de totale Kopieer tijd (gegevens verplaatsing), die 10 + 10 + 5 + 5 = 30 minuten is. Het gebruik van **parallelCopies** heeft geen invloed op facturering.
+Het is **belang rijk** te weten dat u wordt gefactureerd op basis van de totale tijd van de Kopieer bewerking. Als een Kopieer taak wordt gebruikt om één uur te maken met één Cloud eenheid en nu 15 minuten duurt met vier Cloud eenheden, blijft de volledige factuur bijna hetzelfde. U kunt bijvoorbeeld vier Cloud eenheden gebruiken. De eerste cloud eenheid besteedt tien minuten, de tweede, 10 minuten, de derde, 5 minuten en de vierde, 5 minuten, alle in één Kopieer activiteit uit. Er worden kosten in rekening gebracht voor de totale Kopieer tijd (gegevens verplaatsing), die 10 + 10 + 5 + 5 = 30 minuten is. Het gebruik van **parallelCopies** heeft geen invloed op facturering.
 
 ## <a name="staged-copy"></a>Gefaseerd kopiëren
 Wanneer u gegevens van een brongegevensarchief naar een sink-gegevensarchief kopieert, kunt u Blob-opslag gebruiken als een tussentijdse faseringsopslag. Fasering is vooral nuttig in de volgende gevallen:
 
-1. **U wilt opnemen van gegevens uit verschillende gegevensarchieven in SQL Data Warehouse met PolyBase**. SQL Data Warehouse gebruikmaakt van een grote hoeveelheid gegevens laden in SQL Data Warehouse PolyBase als een mechanisme voor hoge doorvoer. De bron gegevens moeten echter in Blob Storage zijn en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob-opslag, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert de Data Factory de benodigde gegevenstransformaties om ervoor te zorgen dat het voldoet aan de vereisten van PolyBase. Vervolgens deze gebruikmaakt van PolyBase om gegevens te laden in SQL Data Warehouse. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+1. **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base**. SQL Data Warehouse gebruikmaakt van een grote hoeveelheid gegevens laden in SQL Data Warehouse PolyBase als een mechanisme voor hoge doorvoer. De bron gegevens moeten echter in Blob Storage zijn en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob-opslag, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert de Data Factory de benodigde gegevenstransformaties om ervoor te zorgen dat het voldoet aan de vereisten van PolyBase. Vervolgens deze gebruikmaakt van PolyBase om gegevens te laden in SQL Data Warehouse. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 2. **Soms duurt het even om een hybride gegevens verplaatsing uit te voeren (dat wil zeggen, kopiëren tussen een on-premises gegevens opslag en een gegevens archief in de Cloud) via een trage netwerk verbinding**. U kunt de prestaties verbeteren door de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u deze laadt in de doel gegevens opslag.
-3. **U niet wilt openen van poorten dan poort 80 en poort 443 in uw firewall vanwege bedrijfsbeleid IT**. Wanneer u gegevens van een on-premises gegevensarchief naar een Azure SQL Database-sink of een Azure SQL Data Warehouse-sink kopiëren, moet u bijvoorbeeld uitgaande TCP-communicatie op poort 1433 voor zowel de Windows firewall en firewall van uw bedrijf te activeren. In dit scenario maakt u gebruik van de gateway om eerst gegevens te kopiëren naar een staging-opslag kopie van een Blob Storage via HTTP of HTTPS op poort 443. Laad vervolgens de gegevens in SQL Database of SQL Data Warehouse vanuit het faseren van de Blob-opslag. In deze stroom moet u geen poort 1433 in te schakelen.
+3. **U wilt geen andere poorten dan poort 80 en poort 443 in uw firewall openen vanwege een bedrijfs beleid**. Wanneer u gegevens van een on-premises gegevensarchief naar een Azure SQL Database-sink of een Azure SQL Data Warehouse-sink kopiëren, moet u bijvoorbeeld uitgaande TCP-communicatie op poort 1433 voor zowel de Windows firewall en firewall van uw bedrijf te activeren. In dit scenario maakt u gebruik van de gateway om eerst gegevens te kopiëren naar een staging-opslag kopie van een Blob Storage via HTTP of HTTPS op poort 443. Laad vervolgens de gegevens in SQL Database of SQL Data Warehouse vanuit het faseren van de Blob-opslag. In deze stroom moet u geen poort 1433 in te schakelen.
 
 ### <a name="how-staged-copy-works"></a>Hoe gefaseerd kopiëren werkt
 Wanneer u de faserings functie activeert, worden de gegevens eerst van de brongegevens opslag gekopieerd naar de staging-gegevens opslag (neem uw eigen op). Vervolgens is de gegevens van de faseringsgegevensopslag gekopieerd naar de sinkgegevensopslag. Data Factory wordt automatisch de gegevensstroom twee fasen voor u beheerd. Tijdelijke gegevens uit de opslag staging ruimt Data Factory ook nadat de verplaatsing van gegevens voltooid is.
@@ -203,14 +203,14 @@ Wanneer u verplaatsing van gegevens met behulp van een faseringsopslag activeert
 U kunt gegevens tussen twee on-premises gegevensarchieven met behulp van een faseringsopslag op dit moment niet kopiëren. Deze optie is binnenkort beschikbaar.
 
 ### <a name="configuration"></a>Configuratie
-Configureer de **enableStaging** instellen in de Kopieeractiviteit om op te geven of u wilt dat de gegevens naar de tijdelijk opgeslagen in Blob-opslag voordat u deze te in een doelgegevensarchief laden. Wanneer u **enableStaging** INSTELT op True, geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. Als u niet hebt, moet u ook om te maken van een Azure Storage of opslag shared access signature-gekoppelde service voor fasering.
+Configureer de instelling **enableStaging** in de Kopieer activiteit om op te geven of u wilt dat de gegevens in Blob Storage worden klaargezet voordat u deze in een doel gegevens archief laadt. Wanneer u **enableStaging** INSTELT op True, geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. Als u niet hebt, moet u ook om te maken van een Azure Storage of opslag shared access signature-gekoppelde service voor fasering.
 
-| Eigenschap | Beschrijving | Standaardwaarde | Verplicht |
+| Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
-| **enableStaging** |Geef op of u wilt het kopiëren van gegevens via een tussentijdse opslag staging. |Onwaar |Nee |
-| **linkedServiceName** |Geef de naam op van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag met een shared access signature niet gebruiken om gegevens te laden in SQL Data Warehouse met PolyBase. U kunt deze gebruiken in alle andere scenario's. |N/A |Ja, wanneer **enableStaging** is ingesteld op TRUE |
-| **path** |Geef het pad op Blob-opslag die u wilt de voorbereide gegevens bevatten. Als u een pad opgeeft, wordt een container voor het opslaan van tijdelijke gegevens gemaakt in de service. <br/><br/> Geef een pad alleen als u Storage met een shared access signature gebruiken of u tijdelijke gegevens op een specifieke locatie te vereisen. |N/A |Nee |
-| **enableCompression** |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat deze wordt gekopieerd naar de bestemming. Deze instelling beperkt de hoeveelheid gegevens die worden overgebracht. |Onwaar |Nee |
+| **enableStaging** |Geef op of u wilt het kopiëren van gegevens via een tussentijdse opslag staging. |False |Nee |
+| **linkedServiceName** |Geef de naam op van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag met een shared access signature niet gebruiken om gegevens te laden in SQL Data Warehouse met PolyBase. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
+| **path** |Geef het pad op Blob-opslag die u wilt de voorbereide gegevens bevatten. Als u een pad opgeeft, wordt een container voor het opslaan van tijdelijke gegevens gemaakt in de service. <br/><br/> Geef een pad alleen als u Storage met een shared access signature gebruiken of u tijdelijke gegevens op een specifieke locatie te vereisen. |N.v.t. |Nee |
+| **enableCompression** |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat deze wordt gekopieerd naar de bestemming. Deze instelling beperkt de hoeveelheid gegevens die worden overgebracht. |False |Nee |
 
 Hier volgt een voorbeelddefinitie van Kopieeractiviteit met de eigenschappen die worden beschreven in de voorgaande tabel:
 
@@ -248,28 +248,28 @@ De kosten worden berekend op basis van twee stappen: duur van de kopieerbewerkin
 ## <a name="performance-tuning-steps"></a>Prestaties afstemmen stappen
 Het is raadzaam dat u deze stappen voor het afstemmen van de prestaties van uw Data Factory-service met de Kopieeractiviteit uitvoeren:
 
-1. **Basislijn van**. Test uw pijplijn met behulp van de Kopieeractiviteit op basis van een representatieve steekproef tijdens de ontwikkelingsfase. U kunt het Data Factory [segment model](data-factory-scheduling-and-execution.md) gebruiken om de hoeveelheid gegevens te beperken waarmee u samenwerkt.
+1. **Een basis lijn vaststellen**. Test uw pijplijn met behulp van de Kopieeractiviteit op basis van een representatieve steekproef tijdens de ontwikkelingsfase. U kunt het Data Factory [segment model](data-factory-scheduling-and-execution.md) gebruiken om de hoeveelheid gegevens te beperken waarmee u samenwerkt.
 
    De uitvoerings tijd en prestatie kenmerken verzamelen met behulp van de **app voor bewaking en beheer**. Kies **controleren & beheren** op de start pagina van Data Factory. Kies de **uitvoer gegevensset**in de structuur weergave. Kies in de lijst **activiteit Windows** de uitvoering van de Kopieer activiteit. **Activiteit Windows** vermeldt de duur van de Kopieer activiteit en de grootte van de gekopieerde gegevens. De door Voer wordt weer gegeven in het **activiteiten venster Verkenner**. Zie [Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer](data-factory-monitor-manage-app.md)voor meer informatie over de app.
 
    ![Details uitvoering van activiteit](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
    Verderop in dit artikel kunt u de prestaties en configuratie van uw scenario vergelijken om de [prestatie referentie](#performance-reference) van de activiteit van onze tests te kopiëren.
-2. **Diagnose en prestaties te optimaliseren**. Als de prestaties die u ziet dat niet voldoet aan uw verwachtingen, moet u prestatieknelpunten. Vervolgens prestaties als u wilt verwijderen of het effect van knelpunten te optimaliseren. Een volledige beschrijving van de prestatiediagnose van valt buiten het bereik van dit artikel, maar hier volgen enkele algemene overwegingen:
+2. **Prestaties diagnosticeren en optimaliseren**. Als de prestaties die u ziet dat niet voldoet aan uw verwachtingen, moet u prestatieknelpunten. Vervolgens prestaties als u wilt verwijderen of het effect van knelpunten te optimaliseren. Een volledige beschrijving van de prestatiediagnose van valt buiten het bereik van dit artikel, maar hier volgen enkele algemene overwegingen:
 
    * Prestatiefuncties:
-     * [Parallelle kopiëren](#parallel-copy)
+     * [Parallelle kopie](#parallel-copy)
      * [Eenheden voor gegevens verplaatsing in de Cloud](#cloud-data-movement-units)
-     * [Gefaseerd kopiëren](#staged-copy)
+     * [Gefaseerde kopie](#staged-copy)
      * [Schaal baarheid Data Management Gateway](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Gegevensbeheergateway](#considerations-for-data-management-gateway)
    * [Bron](#considerations-for-the-source)
-   * [Sink](#considerations-for-the-sink)
+   * [Tenen](#considerations-for-the-sink)
    * [Serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization)
    * [Compressie](#considerations-for-compression)
    * [Toewijzen van kolommen](#considerations-for-column-mapping)
    * [Andere overwegingen](#other-considerations)
-3. **De configuratie van de uitbreiden naar uw volledige gegevensset**. Wanneer u tevreden bent met de resultaten en prestaties van de uitvoering, kunt u de actieve periode van de definitie en pijp lijn uitvouwen om uw hele gegevensset te behandelen.
+3. **Breid de configuratie uit naar uw volledige gegevensset**. Wanneer u tevreden bent met de resultaten en prestaties van de uitvoering, kunt u de actieve periode van de definitie en pijp lijn uitvouwen om uw hele gegevensset te behandelen.
 
 ## <a name="considerations-for-data-management-gateway"></a>Overwegingen voor Data Management Gateway
 **Gateway-installatie**: we raden u aan om een toegewezen computer te gebruiken om data management gateway te hosten. Zie [overwegingen voor het gebruik van Data Management Gateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).
@@ -280,62 +280,62 @@ Het is raadzaam dat u deze stappen voor het afstemmen van de prestaties van uw D
 ### <a name="general"></a>Algemeen
 Zorg ervoor dat het onderliggende gegevensarchief niet wordt overbelast door andere werkbelastingen die worden uitgevoerd op of tegen.
 
-Zie voor Microsoft-gegevensarchieven, [bewaking en afstemming van onderwerpen](#performance-reference) die specifiek zijn voor gegevensarchieven en geven u inzicht in gegevens van de prestatiekenmerken opslaan, responstijden te minimaliseren en doorvoer te maximaliseren.
+Zie voor micro soft-gegevens archieven [onderwerpen bewaken en afstemmen](#performance-reference) die specifiek zijn voor gegevens opslag en Help u inzicht krijgen in de prestatie kenmerken van het gegevens archief, de reactie tijden minimaliseren en de door Voer maximaliseren.
 
-Als u gegevens kopieert van Blob-opslag naar SQL Data Warehouse, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Als u gegevens kopieert van Blob-opslag naar SQL Data Warehouse, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Opgeslagen gegevens op basis van bestanden
 *(Inclusief Blob Storage, Data Lake Store, Amazon S3, on-premises bestands systemen en on-premises HDFS)*
 
-* **Gemiddelde van de bestandsgrootte en het aantal bestanden**: Kopieeractiviteit brengt gegevens één bestand tegelijk. Met de dezelfde hoeveelheid gegevens worden verplaatst, wordt de algehele doorvoer lager als de gegevens van veel kleine bestanden in plaats van enkele grote bestanden vanwege de bootstrap-fase voor elk bestand bestaat. Indien mogelijk, dus kleine bestanden combineren in grotere bestanden om te krijgen hogere doorvoer.
-* **Bestand-indeling en compressie**: Zie voor meer manieren om prestaties te verbeteren, de [aandachtspunten voor serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization) en [overwegingen voor compressie](#considerations-for-compression) secties.
+* De **gemiddelde bestands grootte en het aantal bestanden**: de Kopieer activiteit brengt gegevens één bestand per keer over. Met de dezelfde hoeveelheid gegevens worden verplaatst, wordt de algehele doorvoer lager als de gegevens van veel kleine bestanden in plaats van enkele grote bestanden vanwege de bootstrap-fase voor elk bestand bestaat. Indien mogelijk, dus kleine bestanden combineren in grotere bestanden om te krijgen hogere doorvoer.
+* **Bestands indeling en-compressie**: voor meer manieren om de prestaties te verbeteren, zie de [overwegingen voor serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization) en [overwegingen voor compressie](#considerations-for-compression) secties.
 * Zie de sectie [overwegingen voor Data Management Gateway](#considerations-for-data-management-gateway) voor het scenario voor een **on-premises bestands systeem** , waarin **Data Management Gateway** is vereist.
 
 ### <a name="relational-data-stores"></a>Op opgeslagen relationele gegevens
 *(Bevat SQL Database; SQL Data Warehouse; Amazon RedShift; SQL Server data bases; en Oracle-, MySQL-, DB2-, Teradata-, Sybase-en PostgreSQL-data bases, enzovoort.)*
 
-* **Een gegevenspatroon**: uw tabelschema is van invloed op de doorvoer van de kopie. Een grote rijgrootte biedt u een betere prestaties dan kleine rijgrootte, om te kopiëren van de dezelfde hoeveelheid gegevens. De reden is dat de database minder batches van gegevens die minder rijen bevatten efficiënter kunt ophalen.
-* **Query of een opgeslagen procedure**: de logica van de query of een opgeslagen procedure die u in de bron van Kopieeractiviteit opgeeft voor het ophalen van gegevens efficiënter te optimaliseren.
+* **Gegevens patroon**: uw tabel schema is van invloed op de door Voer van de Kopieer activiteit. Een grote rijgrootte biedt u een betere prestaties dan kleine rijgrootte, om te kopiëren van de dezelfde hoeveelheid gegevens. De reden is dat de database minder batches van gegevens die minder rijen bevatten efficiënter kunt ophalen.
+* **Query of opgeslagen procedure**: Optimaliseer de logica van de query of opgeslagen procedure die u opgeeft in de bron van de Kopieer activiteit om gegevens efficiënter op te halen.
 * Voor **on-premises relationele data bases**, zoals SQL Server en Oracle, waarvoor het gebruik van **Data Management Gateway**is vereist, raadpleegt u de sectie overwegingen voor Data Management Gateway.
 
 ## <a name="considerations-for-the-sink"></a>Overwegingen voor de sink
 ### <a name="general"></a>Algemeen
 Zorg ervoor dat het onderliggende gegevensarchief niet wordt overbelast door andere werkbelastingen die worden uitgevoerd op of tegen.
 
-Raadpleeg voor Microsoft-gegevensarchieven, [bewaking en afstemming van onderwerpen](#performance-reference) die specifiek zijn voor gegevensopslag. Deze onderwerpen vindt u informatie over data store prestatiekenmerken en hoe u responstijden te minimaliseren en doorvoer te maximaliseren.
+Raadpleeg voor micro soft-gegevens archieven [onderwerpen over het bewaken en afstemmen](#performance-reference) die specifiek zijn voor gegevens archieven. Deze onderwerpen vindt u informatie over data store prestatiekenmerken en hoe u responstijden te minimaliseren en doorvoer te maximaliseren.
 
-Als u gegevens kopieert van **Blob-opslag** naar **SQL Data Warehouse**, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Als u gegevens kopieert van **Blob-opslag** naar **SQL Data Warehouse**, kunt u overwegen **poly base** te gebruiken om de prestaties te verbeteren. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor meer informatie. Zie voor een overzicht met een use-case [1 TB in Azure SQL Data Warehouse onder 15 minuten laden met Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Opgeslagen gegevens op basis van bestanden
 *(Inclusief Blob Storage, Data Lake Store, Amazon S3, on-premises bestands systemen en on-premises HDFS)*
 
-* **Kopieer gedrag**: als u gegevens van een ander bestand op basis van gegevensarchief kopieert, Copy-activiteit heeft drie opties via de **copyBehavior** eigenschap. Deze hiërarchie behoudt, hiërarchie worden samengevoegd of bestanden worden samengevoegd. Hiërarchie relatiegegevens of behouden heeft weinig of geen performance overhead, maar samenvoegen van bestanden zorgt ervoor dat de prestatieoverhead te verhogen.
-* **Bestand-indeling en compressie**: Zie de [aandachtspunten voor serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization) en [overwegingen voor compressie](#considerations-for-compression) secties voor meer manieren om prestaties te verbeteren.
+* **Gedrag bij kopiëren**: als u gegevens kopieert vanuit een ander gegevens archief op basis van een bestand, heeft Kopieer activiteit drie opties via de eigenschap **copyBehavior** . Deze hiërarchie behoudt, hiërarchie worden samengevoegd of bestanden worden samengevoegd. Hiërarchie relatiegegevens of behouden heeft weinig of geen performance overhead, maar samenvoegen van bestanden zorgt ervoor dat de prestatieoverhead te verhogen.
+* **Bestands indeling en-compressie**: Zie [aandachtspunten voor serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization) en [overwegingen voor compressie](#considerations-for-compression) secties voor meer manieren om de prestaties te verbeteren.
 * **Blob-opslag**: momenteel ondersteunt Blob Storage alleen blok-blobs voor geoptimaliseerde gegevens overdracht en door voer.
 * Zie de sectie [overwegingen voor Data Management Gateway](#considerations-for-data-management-gateway) voor **on-premises scenario's voor bestands systemen** waarvoor het gebruik van **Data Management Gateway**is vereist.
 
 ### <a name="relational-data-stores"></a>Op opgeslagen relationele gegevens
 *(Inclusief SQL Database, SQL Data Warehouse, SQL Server data bases en Oracle-data bases)*
 
-* **Kopieer gedrag**: afhankelijk van de eigenschappen die u hebt ingesteld voor **sqlSink**, Kopieeractiviteit schrijft gegevens naar de doeldatabase op verschillende manieren.
+* **Kopieer gedrag**: afhankelijk van de eigenschappen die u hebt ingesteld voor **sqlSink**, schrijven de Kopieer activiteit gegevens op verschillende manieren naar de doel database.
   * Standaard voegt de data movement service wordt gebruikt de bulksgewijs kopiëren-API om gegevens in te voegen modus, waarbij de beste prestaties biedt.
   * Als u een opgeslagen procedure in de sink is geconfigureerd, is de database de één rij met gegevens van toepassing op een tijdstip in plaats van als bulksgewijs laden. Prestaties aanzienlijk wordt geweigerd. Als uw gegevensset groot is, kunt u, indien van toepassing, overwegen om over te scha kelen naar het gebruik van de eigenschap **sqlWriterCleanupScript** .
   * Als u de eigenschap **sqlWriterCleanupScript** configureert voor elke uitvoering van de Kopieer activiteit, wordt het script door de service geactiveerd en vervolgens gebruikt u de API voor bulk kopieën om de gegevens in te voegen. Bijvoorbeeld, als u wilt overschrijven de hele tabel met de meest recente gegevens, kunt u een script voor het eerst alle records verwijderen voordat u de nieuwe gegevens uit de bron voor bulksgewijs laden.
-* **Patroon en batch gegevensgrootte**:
+* **Gegevens patroon en Batch grootte**:
   * Uw tabelschema is van invloed op de doorvoer van de kopie. Als u wilt kopiëren van de dezelfde hoeveelheid gegevens, biedt een grote rijgrootte betere prestaties dan een kleine rijgrootte omdat de database kan efficiënter minder batches van de gegevens worden doorgevoerd.
-  * Kopieeractiviteit voegt de gegevens in een reeks van batches. U kunt het aantal rijen in een batch instellen met behulp van de **writeBatchSize** eigenschap. Als uw gegevens klein rijen is, kunt u instellen de **writeBatchSize** eigenschap met een hogere waarde om te profiteren van lagere batch overhead en hogere doorvoer. Als de rijgrootte van uw gegevens te groot is, Wees voorzichtig wanneer u verhogen **writeBatchSize**. Een hoge waarde kan leiden tot een mislukte kopieerbewerking veroorzaakt door overbelasting van de database.
+  * Kopieeractiviteit voegt de gegevens in een reeks van batches. U kunt het aantal rijen in een batch instellen met behulp van de eigenschap **writeBatchSize** . Als uw gegevens kleine rijen hebben, kunt u de eigenschap **writeBatchSize** instellen op een hogere waarde om te profiteren van lagere batch overhead en een hogere door voer. Als de Rijgrootte van uw gegevens groot is, moet u voorzichtig zijn wanneer u **writeBatchSize**verhoogt. Een hoge waarde kan leiden tot een mislukte kopieerbewerking veroorzaakt door overbelasting van de database.
 * Zie de sectie [overwegingen voor Data Management Gateway](#considerations-for-data-management-gateway) voor **on-premises relationele data bases** , zoals SQL Server en Oracle, waarvoor het gebruik van **Data Management Gateway**is vereist.
 
 ### <a name="nosql-stores"></a>NoSQL-archieven
 *(Bevat tabel opslag en Azure Cosmos DB)*
 
-* Voor **Table storage**:
-  * **Partitie**: gegevens schrijven naar een interleaved partities aanzienlijk vermindert de prestaties. De brongegevens op partitiesleutel sorteren, zodat de gegevens efficiënt in één partitie is ingevoegd achter elkaar, of aanpassen van de logica voor het schrijven van de gegevens naar één partitie.
+* Voor **tabel opslag**:
+  * **Partition**: het schrijven van gegevens naar Interleaved partities vermindert de prestaties aanzienlijk. De brongegevens op partitiesleutel sorteren, zodat de gegevens efficiënt in één partitie is ingevoegd achter elkaar, of aanpassen van de logica voor het schrijven van de gegevens naar één partitie.
 * Voor **Azure Cosmos DB**:
   * **Batch grootte**: de eigenschap **writeBatchSize** stelt het aantal parallelle aanvragen voor de Azure Cosmos DB-service in om documenten te maken. U kunt betere prestaties verwachten wanneer u **writeBatchSize** verhoogt, omdat er meer parallelle aanvragen naar Azure Cosmos DB worden verzonden. U kunt echter wel controleren op beperking wanneer u naar Azure Cosmos DB schrijft (het fout bericht is ' de aanvraag snelheid is groot '). Verschillende factoren kunnen leiden tot een beperking, zoals de document grootte, het aantal voor waarden in de documenten en het indexerings beleid van de doel verzameling. Voor een hogere Kopieer doorvoer kunt u overwegen om een betere verzameling te gebruiken, bijvoorbeeld S3.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Overwegingen voor serialisatie en deserialisatie
-Serialisatie en deserialisatie kunnen optreden wanneer uw gegevensset voor invoer of uitvoer gegevensset een bestand is. Zie [ondersteunde indelingen voor bestanden en compressie](data-factory-supported-file-and-compression-formats.md) met informatie over ondersteunde bestandsindelingen door de Kopieeractiviteit.
+Serialisatie en deserialisatie kunnen optreden wanneer uw gegevensset voor invoer of uitvoer gegevensset een bestand is. Zie [ondersteunde bestands-en compressie-indelingen](data-factory-supported-file-and-compression-formats.md) met details over ondersteunde bestands indelingen op basis van de Kopieer activiteit.
 
 **Kopieer gedrag**:
 
@@ -345,21 +345,21 @@ Serialisatie en deserialisatie kunnen optreden wanneer uw gegevensset voor invoe
   * Brongegevens om te streamen, transformeren en deze vervolgens te serialiseren in de indeling van de uitvoer die u hebt aangegeven als invoer- en data-sets beide hebben verschillende bestandsindelingen of verschillende configuraties, zoals scheidingstekens, data movement service worden gedeserialiseerd. Deze bewerking resulteert in een veel belangrijker performance overhead in vergelijking met andere scenario's.
 * Wanneer u kopieert bestanden naar/van een gegevensarchief dat niet op basis van bestanden (bijvoorbeeld in een store, op basis van bestanden naar een relationele archief), wordt de stap serialisatie of deserialisatie is vereist. Deze stap resulteert in van aanzienlijke prestatieoverhead.
 
-**Bestandsindeling**: de bestandsindeling die u kiest voor het kan kopiëren prestaties beïnvloeden. Avro is bijvoorbeeld een compacte binaire indeling die metagegevens op met de gegevens slaat. Het biedt een brede ondersteuning in het Hadoop-ecosysteem voor het verwerken en uitvoeren van query's. Avro is echter duurder voor serialisatie en deserialisatie, wat in het onderste exemplaar doorvoer in vergelijking met de tekstindeling resulteert. Uw keuze van de bestandsindeling in de stroom voor de verwerking van zuinigste maken. Beginnen met welke vorm de gegevens worden opgeslagen in brongegevens of moet worden geëxtraheerd uit externe systemen; de beste indeling voor opslag, analytische verwerking en uitvoeren van query's; en in welke indeling moet de gegevens worden geëxporteerd naar de datamarts voor hulpprogramma's voor rapportage en visualisatie. Soms een bestandsindeling die is suboptimale voor lezen en schrijven prestaties mogelijk zijn een goede keuze wanneer u rekening houden met het algemene analytische proces.
+**Bestands indeling**: de bestands indeling die u kiest, kan de prestaties van het kopiëren beïnvloeden. Avro is bijvoorbeeld een compacte binaire indeling die metagegevens op met de gegevens slaat. Het biedt een brede ondersteuning in het Hadoop-ecosysteem voor het verwerken en uitvoeren van query's. Avro is echter duurder voor serialisatie en deserialisatie, wat in het onderste exemplaar doorvoer in vergelijking met de tekstindeling resulteert. Uw keuze van de bestandsindeling in de stroom voor de verwerking van zuinigste maken. Beginnen met welke vorm de gegevens worden opgeslagen in brongegevens of moet worden geëxtraheerd uit externe systemen; de beste indeling voor opslag, analytische verwerking en uitvoeren van query's; en in welke indeling moet de gegevens worden geëxporteerd naar de datamarts voor hulpprogramma's voor rapportage en visualisatie. Soms een bestandsindeling die is suboptimale voor lezen en schrijven prestaties mogelijk zijn een goede keuze wanneer u rekening houden met het algemene analytische proces.
 
 ## <a name="considerations-for-compression"></a>Overwegingen voor compressie
 Als uw gegevensset voor invoer- of een bestand is, kunt u Copy Activity om uit te voeren van compressie of decompressie als gegevens naar de bestemming schrijft instellen. Wanneer u compressie kiest, maakt u een balans tussen input/output (I/O) en de CPU. Comprimeren van de kosten van de gegevens een extra in compute-resources. Maar hierna het i/o-netwerk en opslag verlaagt. Afhankelijk van uw gegevens ziet u een boost in de algemene doorvoer van de kopie.
 
 **Codec**: Kopieer activiteit biedt ondersteuning voor gzip-, bzip2-en deflater compressie typen. Azure HDInsight kan alle drie de typen voor verwerking in beslag nemen. Elke compressie-codec heeft voor delen. Bijvoorbeeld, bzip2 heeft de laagste kopie doorvoer, maar u krijgt de beste prestaties van Hive-query met bzip2 omdat u deze voor verwerking opsplitsen kunt. Gzip is de meest met gelijke taakverdeling optie en deze het vaakst wordt gebruikt. Kies de codec die het beste bij uw end-to-end-scenario.
 
-**Niveau**: U kunt kiezen uit twee opties voor elke compressiecodec: snelste gecomprimeerde en optimaal gecomprimeerd. De snelste gecomprimeerde optie worden de gegevens zo snel mogelijk, gecomprimeerd, zelfs als het resulterende bestand is niet optimaal gecomprimeerd. De optimaal gecomprimeerde optie meer tijd in de taakwachtrij doorbrengt op compressie en resulteert in een minimale hoeveelheid gegevens. U kunt beide opties om te zien waarmee u betere algehele prestaties in uw geval testen.
+**Niveau**: u kunt kiezen uit twee opties voor elke compressie-codec: snelst gecomprimeerd en optimaal gecomprimeerd. De snelste gecomprimeerde optie worden de gegevens zo snel mogelijk, gecomprimeerd, zelfs als het resulterende bestand is niet optimaal gecomprimeerd. De optimaal gecomprimeerde optie meer tijd in de taakwachtrij doorbrengt op compressie en resulteert in een minimale hoeveelheid gegevens. U kunt beide opties om te zien waarmee u betere algehele prestaties in uw geval testen.
 
 **Overweging**: als u een grote hoeveelheid gegevens wilt kopiëren tussen een on-premises opslag en de Cloud, kunt u overwegen om tussenliggende Blob-opslag te gebruiken met compressie. Tijdelijke opslag is nuttig wanneer de bandbreedte van uw bedrijfsnetwerk en uw Azure-services de beperkende factor is en u wilt dat de gegevensset voor invoer en uitvoer gegevensset beide in niet-gecomprimeerde vorm. Meer specifiek kunt u een enkele Kopieer activiteit in twee Kopieer activiteiten afsplitsen. De eerste Kopieer activiteit kopieert van de bron naar een tijdelijke of tijdelijke Blob in gecomprimeerde vorm. De tweede Kopieer activiteit kopieert de gecomprimeerde gegevens uit de fase ring en vervolgens gedecomprimeerd tijdens het schrijven naar de sink.
 
 ## <a name="considerations-for-column-mapping"></a>Overwegingen voor kolomtoewijzing
-U kunt instellen dat de **columnMappings** eigenschap in de Kopieeractiviteit alle kaart of een subset van de invoerkolommen voor de uitvoerkolommen. Nadat de data movement service leest de gegevens van de bron, moet deze kolomtoewijzing uitvoeren voor de gegevens voordat deze de gegevens naar de sink schrijft. Deze extra verwerking vermindert kopie doorvoer.
+U kunt de eigenschap **columnMappings** in de Kopieer activiteit instellen om alle of een subset van de invoer kolommen toe te wijzen aan de uitvoer kolommen. Nadat de data movement service leest de gegevens van de bron, moet deze kolomtoewijzing uitvoeren voor de gegevens voordat deze de gegevens naar de sink schrijft. Deze extra verwerking vermindert kopie doorvoer.
 
-Als uw bron-gegevensopslag waarin u kunt zoeken, bijvoorbeeld als het is een relationele opslagplaats, zoals SQL-Database of SQL Server, of als het is een NoSQL-archief, zoals Table storage of Azure Cosmos DB, kunt u de kolom filteren pushen en logica voor opnieuw ordenen de **query** eigenschap in plaats van in de kolomtoewijzing. Op deze manier de projectie treedt op wanneer data movement service gegevens uit de brongegevensopslag leest, waar het is veel efficiënter.
+Als uw brongegevens archief query's kan uitvoeren, bijvoorbeeld als het een relationele archief is zoals SQL Database of SQL Server, of als het een NoSQL-archief is, zoals tabel opslag of Azure Cosmos DB, kunt u overwegen om de kolom filtering te pushen **en de Volg** orde van de logica te wijzigen in plaats van kolom toewijzing. Op deze manier de projectie treedt op wanneer data movement service gegevens uit de brongegevensopslag leest, waar het is veel efficiënter.
 
 ## <a name="other-considerations"></a>Andere overwegingen
 Als de grootte van de gegevens die u wilt kopiëren groot is, kunt u uw bedrijfs logica aanpassen om de gegevens verder te partitioneren met behulp van het segmenteer mechanisme in Data Factory. Plan vervolgens de Kopieer activiteit om de gegevens grootte voor elke uitvoering van de Kopieer activiteit vaker te laten uitvoeren.
@@ -367,30 +367,30 @@ Als de grootte van de gegevens die u wilt kopiëren groot is, kunt u uw bedrijfs
 Wees voorzichtig met het aantal gegevens sets en kopieer activiteiten die tegelijk Data Factory naar de connector naar hetzelfde gegevens archief moeten worden gestuurd. Veel gelijktijdige kopie taken mogelijk beperken van een gegevensarchief en leiden tot verminderde prestaties, kopie taak interne nieuwe pogingen, en in sommige gevallen, fouten bij de uitvoering.
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Voorbeeldscenario: kopiëren vanuit een on-premises SQL Server naar Blob-opslag
-**Scenario**: een pijplijn is gebouwd om te kopiëren van gegevens uit een on-premises SQL Server naar Blob storage in CSV-indeling. Als u sneller de taak voor het kopiëren, moeten de CSV-bestanden worden gecomprimeerd naar bzip2-indeling.
+**Scenario**: een pijp lijn is gebouwd om gegevens van een on-premises SQL Server naar Blob Storage te kopiëren in CSV-indeling. Als u sneller de taak voor het kopiëren, moeten de CSV-bestanden worden gecomprimeerd naar bzip2-indeling.
 
-**Test- en analyse**: de doorvoer van de Kopieeractiviteit is minder dan 2 MBps, dit is veel lager is dan de benchmark prestaties.
+**Testen en analyse**: de door Voer van de Kopieer activiteit is minder dan 2 Mbps, wat langzamer is dan de benchmark waarde voor prestaties.
 
-**Analyse van prestaties en afstemmen**: voor het oplossen van het prestatieprobleem, laten we kijken hoe de gegevens worden verwerkt en verplaatst.
+**Prestatie analyse en-afstemming**: Bekijk hoe de gegevens worden verwerkt en verplaatst om het prestatie probleem op te lossen.
 
 1. **Gegevens lezen**: de gateway opent een verbinding met SQL Server en verzendt de query. SQL Server reageert door de gegevens stroom via het intranet naar de gateway te verzenden.
 2. **Gegevens serialiseren en comprimeren**: de gateway serialeert de gegevens stroom naar de CSV-indeling en comprimeert de gegevens naar een bzip2-stroom.
 3. **Gegevens schrijven**: gateway uploadt de bzip2-stroom naar Blob-opslag via internet.
 
-Zoals u kunt zien, worden de gegevens verwerkt en verplaatst op een opeenvolgende manier: SQL Server > LAN > Gateway > WAN > Blob Storage. **De algehele prestaties worden geregeld door de minimale doorvoer via de pijplijn**.
+Zoals u kunt zien, worden de gegevens verwerkt en verplaatst op een opeenvolgende manier: SQL Server > LAN > Gateway > WAN > Blob Storage. **De algehele prestaties worden gegated door de minimale door voer over de pijp lijn**.
 
 ![Gegevensstroom](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
 Een of meer van de volgende factoren kan leiden tot de bottleneck in de prestaties:
 
-* **Bron**: SQL Server zelf heeft lage doorvoer vanwege de zware belastingen.
+* **Bron**: SQL Server zichzelf heeft een lage door Voer vanwege zware belasting.
 * **Data Management Gateway**:
   * **LAN**: de gateway bevindt zich ver van de SQL Server machine en heeft een verbinding met een lage band breedte.
   * **Gateway**: de beperkingen voor het laden van de gateway zijn bereikt om de volgende bewerkingen uit te voeren:
-    * **Serialisatie**: traag doorvoer tijdens het serialiseren van de gegevensstroom naar de CSV-indeling heeft.
-    * **Compressie**: U hebt ervoor gekozen een trage compressiecodec (bijvoorbeeld, bzip2, namelijk 2,8 MBps met Core i7).
-  * **WAN**: de bandbreedte tussen het bedrijfsnetwerk en uw Azure-services is laag (bijvoorbeeld T1 = 1,544 kbps. Tijdstip T2 = 6,312 kbps).
-* **Sink-** : Blob-opslag heeft lage doorvoer. (In dit scenario is niet waarschijnlijk omdat de SLA wordt gegarandeerd minimaal 60 MBps.)
+    * **Serialisatie**: het serialiseren van de gegevens stroom naar de CSV-indeling heeft een trage door voer.
+    * **Compressie**: u hebt een langzame compressie-codec gekozen (bijvoorbeeld bzip2, 2,8 Mbps met Kern i7).
+  * **WAN**: de band breedte tussen het bedrijfs netwerk en uw Azure-Services is laag (bijvoorbeeld T1 = 1.544 kbps; T2 = 6.312 kbps).
+* **Sink**: Blob Storage heeft lage door voer. (In dit scenario is niet waarschijnlijk omdat de SLA wordt gegarandeerd minimaal 60 MBps.)
 
 In dit geval kan bzip2 gegevenscompressie worden vertraagd de hele pijplijn. Overschakelen naar een compressiecodec gzip, kan dit knelpunt vereenvoudigen.
 
@@ -413,13 +413,13 @@ In dit geval kan bzip2 gegevenscompressie worden vertraagd de hele pijplijn. Ove
 
 ![Scenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Referentie
+## <a name="reference"></a>Naslaginformatie
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
 * Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../../storage/blobs/storage-performance-checklist.md).
 * Azure-tabel opslag: [schaal baarheid en prestatie doelen voor](../../storage/tables/scalability-targets.md) de [controle lijst voor tabel opslag en prestaties en schaal baarheid voor tabel opslag](../../storage/tables/storage-performance-checklist.md).
-* Azure SQL Database: U kunt [bewaken van de prestaties](../../sql-database/sql-database-single-database-monitor.md) en controleert u het percentage van database transaction unit (DTU)
-* Azure SQL datawarehouse: De mogelijkheid wordt gemeten in datawarehouse units (dwu's); Zie [beheren rekenkracht in Azure SQL Data Warehouse (overzicht)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure Cosmos DB: [prestatieniveaus in Azure Cosmos DB](../../cosmos-db/performance-levels.md)
-* On-premises SQL Server: [controleren en afstemmen van prestaties](https://msdn.microsoft.com/library/ms189081.aspx)
-* On-premises bestandsserver: [afstemmen van prestaties voor bestandsservers](https://msdn.microsoft.com/library/dn567661.aspx)
+* Azure SQL Database: u kunt [de prestaties bewaken](../../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren
+* Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's); Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../../cosmos-db/performance-levels.md)
+* On-premises SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx)
+* On-premises Bestands server: [prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx)

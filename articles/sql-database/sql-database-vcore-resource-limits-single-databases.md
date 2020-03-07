@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/22/2020
 ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515017"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359817"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 
@@ -37,12 +37,12 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
 |:--- | --: |--: |--: |--: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Min-maximale vCores|0.5-1|0.5-2|0,5-4|0,75-6|1.0-8|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|
+|Min-maximale vCores|0,5-1|0,5-2|0,5-4|0,75-6|1.0-8|
 |Min-Maxi maal geheugen (GB)|2.02-3|2.05-6|2.10-12|2,25-18|3,00-24|
 |Minimale automatische onderbrekings vertraging (minuten)|60|60|60|60|60|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|512|1024|1024|1024|1536|
 |Maximale logboek grootte (GB)|154|307|307|307|461|
 |Maximale gegevens grootte TempDB (GB)|32|64|128|192|256|
@@ -53,8 +53,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|75|150|300|450|600|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -63,12 +63,12 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
 |:--- | --: |--: |--: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|
 |Min-maximale vCores|1,25-10|1,50-12|1,75-14|2.00-16|
 |Min-Maxi maal geheugen (GB)|3,75-30|4.50-36|5,25-42|6,00-48|
 |Minimale automatische onderbrekings vertraging (minuten)|60|60|60|60|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|1536|3072|3072|3072|
 |Maximale logboek grootte (GB)|461|461|461|922|
 |Maximale gegevens grootte TempDB (GB)|320|384|448|512|
@@ -79,8 +79,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|750|900|1050|1200|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -89,14 +89,14 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 Compute Generation (deel 1)
 
-|Prestatieniveau|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|Prestatie niveau|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
 |:--- | --: |--: |--: |---: | --: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|1|2|3|4|5|6|
 |Geheugen (GB)|7|14|21|28|35|42|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Size|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (TB)|100 |100 |100 |100 |100 |100|
 |Maximale logboek grootte (TB)|1 |1 |1 |1 |1 |1 |
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
@@ -106,21 +106,21 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|
 |Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 Compute Generation (deel 2)
 
-|Prestatieniveau|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|Prestatie niveau|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
 |:--- | ---: |--: |--: | --: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
 |Geheugen (GB)|49|56|63|70|112|159,5|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Size|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (TB)|100 |100 |100 |100 |100 |100 |
 |Maximale logboek grootte (TB)|1 |1 |1 |1 |1 |1 |
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|512|768|
@@ -130,7 +130,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|
 |Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
@@ -141,14 +141,14 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 ### <a name="gen5-compute-generation-part-1"></a>GEN5 Compute Generation (deel 1)
 
-|Prestatieniveau|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|Prestatie niveau|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
 |Geheugen (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Size|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (TB)|100 |100 |100 |100 |100 |100 |100|
 |Maximale logboek grootte (TB)|1 |1 |1 |1 |1 |1 |1 |
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|448|
@@ -158,7 +158,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
@@ -167,14 +167,14 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 ### <a name="gen5-compute-generation-part-2"></a>GEN5 Compute Generation (deel 2)
 
-|Prestatieniveau|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|Prestatie niveau|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: |--: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
 |Geheugen (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Size|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|3X-geheugen|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (TB)|100 |100 |100 |100 |100 |100 |100 |
 |Maximale logboek grootte (TB)|1 |1 |1 |1 |1 |1 |1 |
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -184,7 +184,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Uitschalen voor leesbewerking|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
@@ -212,7 +212,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |vCores|1|2|3|4|5|6|
 |Geheugen (GB)|7|14|21|28|35|42|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|
 |Maximale logboek grootte (GB)|307|307|461|461|461|922|
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
@@ -223,8 +223,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -237,7 +237,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |vCores|7|8|9|10|16|24|
 |Geheugen (GB)|49|56|63|70|112|159,5|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|3072|3072|3072|3072|4096|4096|
 |Maximale logboek grootte (GB)|922|922|922|922|1229|1229|
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|512|768|
@@ -248,8 +248,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -260,11 +260,11 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
 |Geheugen (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximale logboek grootte (GB)|307|307|461|461|461|922|922|
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|384|
@@ -275,8 +275,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -285,11 +285,11 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
 |Geheugen (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale logboek grootte (GB)|922|922|922|1229|1229|1229|1229|
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -300,8 +300,8 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Uitschalen voor leesbewerking|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Multi-AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -312,11 +312,11 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|GP_Fsv2_72|
 |:--- | --: |
-|Compute genereren|Fsv2-reeks|
+|Compute genereren|Fsv2-serie|
 |vCores|72|
 |Geheugen (GB)|136,2|
 |Column Store-ondersteuning|Ja|
-|OLTP-opslag in het geheugen (GB)|N/A|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
 |Maximale gegevens grootte TempDB (GB)|333|
@@ -325,11 +325,11 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Max. gegevensiops *|12,800|
 |Maximale logboek frequentie (MBps)|30|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|3600|
-|Maximum aantal gelijktijdige aanmeldingen|3600|
+|Maximaal aantal gelijktijdige aanmeldingen|3600|
 |Maximaal aantal gelijktijdige sessies|30,000|
 |Aantal replica's|1|
-|Multi-AZ|N/A|
-|Uitschalen voor leesbewerking|N/A|
+|Multi-AZ|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
@@ -356,7 +356,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Max. gegevensiops *|4,000|8,000|12,000|16,000|20,000|24,000|
 |Maximale logboek frequentie (MBps)|8|16|24|32|40|48|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
-|Maximum aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|
+|Maximaal aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
@@ -397,7 +397,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
 |Geheugen (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
@@ -410,7 +410,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Max. gegevensiops *|8000|16,000|24,000|32,000|40,000|48.000|56.000|
 |Maximale logboek frequentie (MBps)|24|48|72|96|96|96|96|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
-|Maximum aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|1400|
+|Maximaal aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|1400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|4|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
@@ -423,7 +423,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 |Reken grootte|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Compute genereren|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
 |Geheugen (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
@@ -436,7 +436,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Max. gegevensiops *|64,000|72.000|80,000|96.000|128.000|160.000|204.800|
 |Maximale logboek frequentie (MBps)|96|96|96|96|96|96|96|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
-|Maximum aantal gelijktijdige aanmeldingen|1600|1800|2000|2400|3200|4000|8000|
+|Maximaal aantal gelijktijdige aanmeldingen|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |Aantal replica's|4|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
@@ -464,7 +464,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Max. gegevensiops *|160.000|
 |Maximale logboek frequentie (MBps)|264|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|12,800|
-|Maximum aantal gelijktijdige aanmeldingen|12,800|
+|Maximaal aantal gelijktijdige aanmeldingen|12,800|
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Aantal replica's|4|
 |Multi-AZ|Ja|
@@ -474,7 +474,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 \* de maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](sql-database-resource-limits-database-server.md#resource-governance)voor meer informatie.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

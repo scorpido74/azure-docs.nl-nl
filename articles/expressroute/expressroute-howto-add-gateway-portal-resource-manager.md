@@ -9,29 +9,29 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388095"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Een virtuele netwerkgateway configureren voor ExpressRoute met behulp van de Azure-portal
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-> * [Klassiek - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Klassiek-Power shell](expressroute-howto-add-gateway-classic.md)
+> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
-In dit artikel begeleidt u bij de stappen voor het toevoegen van een virtuele netwerkgateway voor een bestaande VNet. In dit artikel begeleidt u bij de stappen voor het toevoegen en verwijderen van de gateway van een virtueel netwerk (VNet) voor een bestaande VNet vergroten of verkleinen. De stappen voor deze configuratie zijn specifiek voor VNets die zijn gemaakt met het implementatiemodel van Resource Manager die worden gebruikt voor een ExpressRoute-configuratie. Zie voor meer informatie over virtuele netwerkgateways en configuratie-instellingen voor ExpressRoute gateway [virtuele netwerkgateways voor ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+In dit artikel begeleidt u bij de stappen voor het toevoegen van een virtuele netwerkgateway voor een bestaande VNet. In dit artikel begeleidt u bij de stappen voor het toevoegen en verwijderen van de gateway van een virtueel netwerk (VNet) voor een bestaande VNet vergroten of verkleinen. De stappen voor deze configuratie zijn specifiek voor VNets die zijn gemaakt met het implementatiemodel van Resource Manager die worden gebruikt voor een ExpressRoute-configuratie. Zie [over virtuele netwerk gateways voor ExpressRoute](expressroute-about-virtual-network-gateways.md)voor meer informatie over virtuele netwerk gateways en gateway configuratie-instellingen voor ExpressRoute. 
 
 
 ## <a name="before-beginning"></a>Voordat u begint
 
 De stappen voor deze taak gebruik van een VNet op basis van de waarden in de volgende lijst voor de configuratie-verwijzing. Deze lijst gebruiken we in onze voorbeelden van stappen. U kunt de lijst om te gebruiken als uitgangspunt, vervang de waarden door uw eigen kopiëren.
 
-**Lijst van configuratie-verwijzing**
+**Lijst met configuratie verwijzingen**
 
 * Virtuele-netwerknaam 'TestVNet' =
 * Virtuele netwerkadresruimte = 192.168.0.0/16
@@ -39,13 +39,13 @@ De stappen voor deze taak gebruik van een VNet op basis van de waarden in de vol
     * Subnet een adresruimte = "192.168.1.0/24"
 * Resourcegroep = "TestRG"
 * Locatie = 'VS-Oost'
-* Naam Gatewaysubnet: 'GatewaySubnet' u moet altijd een gatewaysubnet de naam *GatewaySubnet*.
+* Subnetnaam gateway: "GatewaySubnet" u moet altijd de naam van een gateway-subnet *GatewaySubnet*.
     * Gateway Subnet een adresruimte = "192.168.200.0/26"
 * Gatewaynaam = "ERGW"
 * Gatewaynaam van het openbare IP-adres = "MyERGWVIP"
 * Gatewaytype 'ExpressRoute' = dit type is vereist voor een ExpressRoute-configuratie.
 
-U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) van deze stappen voordat u begint met uw configuratie.
+U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) van deze stappen bekijken voordat u begint met de configuratie.
 
 ## <a name="create-the-gateway-subnet"></a>Her gatewaysubnet maken
 
@@ -56,7 +56,7 @@ U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expre
     ![Het gateway-subnet toevoegen](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Voeg het gatewaysubnet toe")
 
 
-4. Als **naam** voor het subnet wordt automatisch de waarde GatewaySubnet ingevuld. Deze waarde is vereist. Zonder deze waarde wordt het subnet niet in Azure als het gatewaysubnet herkend. Pas de automatisch ingevulde waarden voor de **Adressenreeks** aan overeenkomstig uw configuratievereisten. We raden aan een gatewaysubnet maken met een/27 of groter (/ 26/25 enz.). Klik vervolgens op **OK** opslaan van de waarden en het gatewaysubnet maken.
+4. Als **naam** voor het subnet wordt automatisch de waarde GatewaySubnet ingevuld. Deze waarde is vereist. Zonder deze waarde wordt het subnet niet in Azure als het gatewaysubnet herkend. Pas de automatisch ingevulde waarden voor de **Adressenreeks** aan overeenkomstig uw configuratievereisten. We raden aan een gatewaysubnet maken met een/27 of groter (/ 26/25 enz.). Klik vervolgens op **OK** om de waarden op te slaan en het gateway-subnet te maken.
 
     ![Het subnet toevoegen](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Het subnet toevoegen")
 
@@ -67,7 +67,7 @@ U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expre
 
     ![Blade velden voor virtuele netwerk gateway maken](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Velden van de blade Gateway van het virtuele netwerk maken")
 3. **Naam**: naam van uw gateway. Deze mag niet gelijk zijn aan de naam van het gateway-subnet. Het is de naam van het gateway-object dat u maakt.
-4. **Gateway van het type**: Selecteer **ExpressRoute**.
+4. **Gateway type**: Selecteer **ExpressRoute**.
 5. **SKU**: selecteer de gateway-SKU in de vervolgkeuzelijst.
 6. **Locatie**: wijzig de **locatie** om naar de locatie van het virtuele netwerk te verwijzen. Als de locatie niet verwijst naar de regio waarin het virtuele netwerk zich bevindt, wordt het virtuele netwerk niet weergegeven in de vervolgkeuzelijst Een virtueel netwerk kiezen.
 7. Kies het virtuele netwerk waaraan u deze gateway wilt toevoegen. Klik op **Virtueel netwerk** om de blade **Een virtueel netwerk kiezen** te openen. Selecteer het VNet. Als u uw VNet niet ziet, moet u controleren of het veld **Locatie** verwijst naar de regio waarin het virtuele netwerk zich bevindt.
@@ -79,4 +79,4 @@ U vindt een [Video](https://azure.microsoft.com/documentation/videos/azure-expre
 14. Klik op **Aanmaken** om de gateway aan te maken. De instellingen worden gevalideerd en de gateway wordt geïmplementeerd. Het maken van de gateway van virtueel netwerk kan tot 45 minuten duren om uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u de VNet-gateway hebt gemaakt, kunt u uw VNet koppelen aan een ExpressRoute-circuit. Zie [een Virtueelnetwerk koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md).
+Nadat u de VNet-gateway hebt gemaakt, kunt u uw VNet koppelen aan een ExpressRoute-circuit. Zie [een Virtual Network koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md).

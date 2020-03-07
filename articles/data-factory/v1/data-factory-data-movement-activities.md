@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931922"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355738"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met behulp van Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -77,7 +77,7 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 ### <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
 U kunt Kopieer activiteit gebruiken om **bestanden te kopiëren** tussen twee bestanden op basis van een bestand, u kunt de [sectie opmaak](data-factory-create-datasets.md) in zowel de definitie van de invoer-als uitvoer gegevensset overs Laan. De gegevens worden efficiënt gekopieerd zonder serialisatie/deserialisatie.
 
-Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven indelingen: **Text, JSON, AVRO, Orc en Parquet**, en de compressie **-codec gzip, Deflate, bzip2 en ZipDeflate** worden ondersteund. Zie [ondersteunde indelingen voor bestanden en compressie](data-factory-supported-file-and-compression-formats.md) met details.
+Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven indelingen: **Text, JSON, AVRO, Orc en Parquet**, en de compressie **-codec gzip, Deflate, bzip2 en ZipDeflate** worden ondersteund. Zie [ondersteunde bestands-en compressie-indelingen](data-factory-supported-file-and-compression-formats.md) met details.
 
 U kunt bijvoorbeeld de volgende kopieeractiviteiten doen:
 
@@ -87,7 +87,7 @@ U kunt bijvoorbeeld de volgende kopieeractiviteiten doen:
 * Kopiëren van gegevens in de indeling van GZip gecomprimeerde tekstbestand (CSV) van Azure Blob en schrijven naar Azure SQL Database.
 
 ## <a name="global"></a>Wereld wijd beschik bare gegevens verplaatsing
-Azure Data Factory is alleen beschikbaar in de regio's VS-Oost, VS-West en Europa-noord. De service die de Kopieer activiteit toestuurt, is echter algemeen beschikbaar in de volgende regio's en in de geografische gebieden. De algemeen beschikbare topologie zorgt u ervoor efficiënt gegevensverplaatsing die meestal regio-overschrijdende hops voorkomt. Zie [-Services per regio](https://azure.microsoft.com/regions/#services) voor beschikbaarheid van Data Factory en de verplaatsing van gegevens in een regio.
+Azure Data Factory is alleen beschikbaar in de regio's VS-Oost, VS-West en Europa-noord. De service die de Kopieer activiteit toestuurt, is echter algemeen beschikbaar in de volgende regio's en in de geografische gebieden. De algemeen beschikbare topologie zorgt u ervoor efficiënt gegevensverplaatsing die meestal regio-overschrijdende hops voorkomt. Zie [Services per regio](https://azure.microsoft.com/regions/#services) voor Beschik baarheid van Data Factory en het verplaatsen van gegevens in een regio.
 
 ### <a name="copy-data-between-cloud-data-stores"></a>Gegevens kopiëren tussen gegevens archieven in de Cloud
 Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gebruikt Data Factory een service-implementatie in de regio die het dichtst bij de Sink ligt die zich in dezelfde geografie bevindt om de gegevens te verplaatsen. Raadpleeg de volgende tabel voor toewijzing:
@@ -102,13 +102,13 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 | &nbsp; | VS - west-centraal | VS - west-centraal |
 | &nbsp; | VS - west | VS - west |
 | &nbsp; | VS - west 2 | VS - west 2 |
-| Canada | Canada-Oost | Canada-Midden |
-| &nbsp; | Canada-Midden | Canada-Midden |
-| Brazilië | Brazilië - Zuid | Brazilië - Zuid |
+| Canada | Canada - oost | Canada - midden |
+| &nbsp; | Canada - midden | Canada - midden |
+| Brazilië | Brazilië - zuid | Brazilië - zuid |
 | Europa | Europa - noord | Europa - noord |
-| &nbsp; | Europa - west | Europa - west |
-| Verenigd Koninkrijk | UK - west | UK - zuid |
-| &nbsp; | UK - zuid | UK - zuid |
+| &nbsp; | Europa -west | Europa -west |
+| Verenigd Koninkrijk | Verenigd Koninkrijk West | Verenigd Koninkrijk Zuid |
+| &nbsp; | Verenigd Koninkrijk Zuid | Verenigd Koninkrijk Zuid |
 | Azië en Stille Oceaan | Azië - zuidoost | Azië - zuidoost |
 | &nbsp; | Azië - oost | Azië - zuidoost |
 | Australië | Australië - oost | Australië - oost |
@@ -116,8 +116,8 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 | India | India - centraal | India - centraal |
 | &nbsp; | India - west | India - centraal |
 | &nbsp; | India - zuid | India - centraal |
-| Japan | Japan - Oost | Japan - Oost |
-| &nbsp; | Japan - West | Japan - Oost |
+| Japan | Japan - oost | Japan - oost |
+| &nbsp; | Japan - west | Japan - oost |
 | Korea | Korea - centraal | Korea - centraal |
 | &nbsp; | Korea - zuid | Korea - centraal |
 
@@ -191,10 +191,10 @@ De planning die in de uitvoer gegevensset is gedefinieerd, bepaalt wanneer de ac
 U kunt meer dan één invoer gegevensset opgeven om de activiteit te kopiëren. Ze worden gebruikt om de afhankelijkheden te controleren voordat de activiteit wordt uitgevoerd. Alleen de gegevens van de eerste gegevensset worden echter gekopieerd naar de doel-DataSet. Zie [planning en uitvoering](data-factory-scheduling-and-execution.md)voor meer informatie.  
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie de [Kopieeractiviteit prestatie- en afstemmingshandleiding](data-factory-copy-activity-performance.md), waarin belangrijke factoren die invloed hebben op de prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory wordt beschreven. Ook geeft een lijst van de waargenomen prestaties tijdens interne tests van en worden verschillende manieren om te optimaliseren de prestaties van Kopieeractiviteit besproken.
+Zie de gids voor het kopiëren van de prestaties van de [Kopieer activiteit](data-factory-copy-activity-performance.md), waarin de belangrijkste factoren worden beschreven die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory. Ook geeft een lijst van de waargenomen prestaties tijdens interne tests van en worden verschillende manieren om te optimaliseren de prestaties van Kopieeractiviteit besproken.
 
 ## <a name="fault-tolerance"></a>Fouttolerantie
-De Kopieer activiteit stopt standaard met het kopiëren van gegevens en retourneert een fout wanneer er incompatibele gegevens tussen de bron en de Sink optreden. u kunt expliciet configureren om de niet-compatibele rijen over te slaan en te registreren en alleen die compatibele gegevens kopiëren om het kopiëren te laten verlopen. Zie de [Kopieeractiviteit fouttolerantie](data-factory-copy-activity-fault-tolerance.md) op meer informatie.
+De Kopieer activiteit stopt standaard met het kopiëren van gegevens en retourneert een fout wanneer er incompatibele gegevens tussen de bron en de Sink optreden. u kunt expliciet configureren om de niet-compatibele rijen over te slaan en te registreren en alleen die compatibele gegevens kopiëren om het kopiëren te laten verlopen. Zie de [fout tolerantie van de Kopieer activiteit](data-factory-copy-activity-fault-tolerance.md) voor meer informatie.
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 Zie de [beveiligings overwegingen](data-factory-data-movement-security-considerations.md)die de beveiligings infrastructuur beschrijft die services voor gegevens verplaatsing in azure Data Factory gebruiken om uw gegevens te beveiligen.

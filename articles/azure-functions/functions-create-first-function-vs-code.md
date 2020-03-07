@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.openlocfilehash: b971176909a9956cd674116963e8ca02fa60e8b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355594"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Snelstartgids: een Azure Functions-project maken met Visual Studio code
 
@@ -32,7 +32,7 @@ Voordat u aan de slag gaat, moet u ervoor zorgen dat u aan de volgende vereisten
 + [Node. js](https://nodejs.org/), Active LTS en onderhoud LTS-versies (10.14.1 aanbevolen). Gebruik de `npm --version` opdracht om uw versie te controleren.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) of [python 3,6](https://www.python.org/downloads/release/python-368/), die wordt ondersteund door Azure functions. Python 3,8 wordt nog niet ondersteund. 
++ [Python 3,8](https://www.python.org/downloads/release/python-381/), [python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/) wordt ondersteund door Azure functions.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [Power shell core](/powershell/scripting/install/installing-powershell-core-on-windows)

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376469"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -103,7 +103,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.c
 
     ![Toegangs pakket-resource functie toevoegen voor een groep of team](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
     Gebruikers met een bestaande toewijzing aan het toegangs pakket worden automatisch lid van deze groep of dit team wanneer ze worden toegevoegd.
 
@@ -134,7 +134,7 @@ Hier volgen enkele overwegingen bij het selecteren van een toepassing:
 
     ![Toegangs pakket-resource functie toevoegen voor een toepassing](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
     Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze toepassing wanneer ze worden toegevoegd.
 
@@ -154,7 +154,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
     ![Toegangs pakket-resource functie toevoegen voor een share point online-site](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
     Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze share point online-site wanneer ze worden toegevoegd.
 
@@ -178,7 +178,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
 In het recht op beheer worden bulksgewijs wijzigingen in de toewijzing en resources in uw toegangs pakketten enkele keren per dag verwerkt door Azure AD. Als u dus een toewijzing maakt of de resource rollen van uw toegangs pakket wijzigt, kan het tot 24 uur duren voordat deze wijziging wordt doorgevoerd in azure AD, plus de hoeveelheid tijd die nodig is om deze wijzigingen door te geven aan andere micro soft Online Services of verbonden SaaS-toepassing z. Als uw wijziging van invloed is op slechts enkele objecten, duurt het waarschijnlijk slechts enkele minuten om toe te passen in azure AD, waarna andere onderdelen van Azure AD vervolgens detecteren dat de SaaS-toepassingen worden gewijzigd en bijgewerkt. Als uw wijziging gevolgen heeft voor duizenden objecten, neemt de wijziging langer in beslag. Als u bijvoorbeeld een toegangs pakket hebt met 2 toepassingen en 100 gebruikers toewijzingen en u besluit een share point-siterol toe te voegen aan het toegangs pakket, kan er een vertraging optreden totdat alle gebruikers deel uitmaken van die share point-siterol. U kunt de voortgang bewaken via het Azure AD-controle logboek, het Azure AD-inrichtings logboek en de audit logboeken van de share point-site.
 
-Wanneer u een lid van een team verwijdert, worden deze ook verwijderd uit de Office 365-groep. Het verwijderen van de chat functionaliteit van het team kan worden vertraagd. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

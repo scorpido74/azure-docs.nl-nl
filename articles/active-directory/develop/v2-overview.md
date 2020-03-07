@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
-ms.translationtype: MT
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194497"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358518"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van micro soft Identity platform (v 2.0)
 
@@ -33,7 +33,7 @@ Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azu
   - Sociale of lokale accounts (via Azure AD B2C)
 - **Open-source-bibliotheken**: micro soft-verificatie bibliotheken (MSAL) en ondersteuning voor andere normen-compatibele bibliotheken
 - **Portal voor toepassings beheer**: een in de Azure Portal ingebouwde registratie-en configuratie-ervaring, samen met al uw andere Azure-beheer mogelijkheden.
-- **API voor toepassings configuratie en Power shell**: Hiermee kunt u programmatische configuratie van uw toepassingen via REST API (Microsoft Graph en Azure Active Directory Graph 1,6) en Power shell, zodat u uw DevOps-taken kunt automatiseren.
+- **API voor toepassings configuratie en Power shell**: Hiermee kunt u programmatische configuratie van uw toepassingen via de Microsoft Graph-API en Power shell, zodat u uw DevOps-taken automatisch kan uitvoeren.
 - **Inhoud voor ontwikkel aars**: conceptuele en naslag documentatie, voor beelden van Snelstartgids, voor beelden van code, zelf studies en hand leidingen.
 
 Voor ontwikkel aars biedt het micro soft Identity-platform naadloze integratie in de identiteits-en beveiligings ruimte, zoals verificatie zonder wacht woord, authenticatie van de stap en voorwaardelijke toegang.  U hoeft deze functionaliteit niet zelf te implementeren: toepassingen die zijn geïntegreerd met het micro soft-identiteits platform, profiteren van dergelijke innovaties.
