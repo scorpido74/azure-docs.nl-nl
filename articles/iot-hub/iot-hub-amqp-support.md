@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286647"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359693"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Communiceren met uw IoT-hub met behulp van het AMQP-Protocol
 
@@ -29,7 +29,7 @@ De volgende informatie is vereist voor de service-client:
 | Informatie | Waarde |
 |-------------|--------------|
 | IoT hub-hostnaam | `<iot-hub-name>.azure-devices.net` |
-| Sleutel naam | `service` |
+| Sleutelnaam | `service` |
 | Toegangssleutel | Een primaire of secundaire sleutel die is gekoppeld aan de service |
 | Shared Access Signature | Een korte hand tekening voor gedeelde toegang in de volgende indeling: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Zie [toegang tot IOT hub beheren](./iot-hub-devguide-security.md#security-token-structure)voor het verkrijgen van de code voor het genereren van deze hand tekening.
 

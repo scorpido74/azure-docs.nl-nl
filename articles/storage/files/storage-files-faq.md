@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362096"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -179,12 +179,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-support-rest-apis"></a>
 **zijn er rest-api's ter ondersteuning van Get/set/copy/kopiëren van NTFS-acl's voor mappen/bestanden?**
 
-    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (of hoger) wordt gebruikt rest API.
+    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API.
 
 * <a id="ad-vm-subscription"></a>
 **heb ik toegang tot Azure files met Azure AD-referenties van een VM onder een ander abonnement?**
 
-    Als het abonnement waarmee de bestands share is geïmplementeerd, is gekoppeld aan dezelfde Azure AD-Tenant als de Azure AD Domain Services implementatie waaraan de virtuele machine is toegevoegd aan een domein, kunt u vervolgens toegang krijgen tot Azure Files met dezelfde Azure AD-referenties. De beperking wordt niet toegepast op het abonnement, maar op de gekoppelde Azure AD-Tenant.    
+    Als het abonnement waarmee de bestands share is geïmplementeerd, is gekoppeld aan dezelfde Azure AD-Tenant als de Azure AD Domain Services implementatie waaraan de virtuele machine is toegevoegd aan een domein, kunt u vervolgens toegang krijgen tot Azure Files met dezelfde Azure AD-referenties. De beperking wordt niet toegepast op het abonnement, maar op de gekoppelde Azure AD-Tenant.
     
 * <a id="ad-support-subscription"></a>
 **kan ik Azure files Azure-AD DS of AD-verificatie inschakelen met een Azure AD-Tenant die verschilt van de primaire Tenant waaraan de bestands share is gekoppeld?**

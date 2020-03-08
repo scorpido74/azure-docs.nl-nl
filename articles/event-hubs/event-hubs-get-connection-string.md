@@ -11,15 +11,15 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365342"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Een Event Hubs-verbindingsreeks ophalen
 
-Voor het gebruik van Event Hubs, moet u een Event Hubs-naamruimte maken. Een naam ruimte is een container voor het bereik van meerdere Event hubs of Kafka-onderwerpen. Deze naamruimte biedt u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Zodra een naamruimte is gemaakt, kunt u de verbindingsreeks die nodig zijn voor communicatie met Event Hubs kunt verkrijgen.
+Voor het gebruik van Event Hubs, moet u een Event Hubs-naamruimte maken. Een naam ruimte is een container voor het bereik van meerdere Event hubs of Kafka-onderwerpen. Deze naam ruimte geeft u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Zodra een naamruimte is gemaakt, kunt u de verbindingsreeks die nodig zijn voor communicatie met Event Hubs kunt verkrijgen.
 
 De verbindingsreeks voor Azure Event Hubs bevat de volgende onderdelen die zijn ingesloten in het
 
@@ -32,7 +32,7 @@ De connection string sjabloon ziet eruit als
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Een voorbeeld-verbindingsreeks uitzien als volgt `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Een voor beeld connection string kan er als volgt uitzien `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 In dit artikel leidt u door de verschillende manieren voor het verkrijgen van de verbindingsreeks.
 

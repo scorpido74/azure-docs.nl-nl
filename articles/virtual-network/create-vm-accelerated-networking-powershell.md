@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
 ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083707"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363493"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Maak een virtuele Windows-machine met versneld netwerken met behulp van Azure PowerShell
 
@@ -42,8 +42,8 @@ De voor delen van versneld netwerken zijn alleen van toepassing op de virtuele m
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 De volgende distributies worden ondersteund uit het vak van de Azure-galerie:
-* **Windows Server 2016 Datacenter** 
-* **Windows Server 2012 R2 Datacenter**
+* **Windows Server 2016 Data Center** 
+* **Windows Server 2012 R2 Data Center**
 * **Windows Server 2019 Data Center**
 
 ### <a name="supported-vm-instances"></a>Ondersteunde VM-exemplaren
@@ -216,7 +216,7 @@ Nadat u de virtuele machine in azure hebt gemaakt, maakt u verbinding met de vir
 3. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven in [de virtuele machine maken](#create-the-virtual-machine). Als u nooit hebt verbonden met een Windows-VM in azure, raadpleegt u [verbinding maken met de virtuele machine](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 4. Klik met de rechter muisknop op de Windows-knop Start en klik op **Apparaatbeheer**. Vouw het knoop punt **netwerk adapters** uit. Bevestig dat de **Mellanox connectx-3 virtuele function Ethernet-adapter** wordt weer gegeven, zoals wordt weer gegeven in de volgende afbeelding:
 
-    ![Apparaatbeheer](./media/create-vm-accelerated-networking/device-manager.png)
+    ![Apparaatmanager](./media/create-vm-accelerated-networking/device-manager.png)
 
 Versneld netwerken zijn nu ingeschakeld voor uw VM.
 

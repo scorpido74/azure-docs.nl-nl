@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen over Azure Active Directory rapporten | Microsoft Docs
-description: Vaak gestelde quesitons rond Azure Active Directory-rapporten.
+description: Veelgestelde vragen over Azure Active Directory rapporten.
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007682"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669371"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Veelgestelde vragen over Azure Active Directory rapporten
 
@@ -37,7 +37,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 **V: Ik gebruik momenteel de `https://graph.windows.net/<tenant-name>/reports/` endpoint Api's om Azure AD-beveiligings rapporten (specifieke typen detecties, zoals gelekte referenties of aanmeldingen vanaf anonieme IP-adressen), via een programma te halen in onze rapportage systemen. Waar moet ik naar overschakelen?**
 
-**A:** U kunt de  [API voor risico detectie van identiteits beveiliging](../identity-protection/graph-get-started.md) gebruiken om toegang te krijgen tot beveiligings detectie via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en waarmee risico detecties in één type worden gestandaardiseerd, zodat integratie gemakkelijker kan worden geïntegreerd in Siem's en andere hulpprogram ma's voor gegevens verzameling. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent). Dit is de micro soft-norm voor dergelijke Api's als O365 of Azure AD. Het werk vereist dus om uw huidige micro soft Graph-investeringen uit te breiden of om u te helpen bij het starten van de overgang naar dit nieuwe standaard platform.
+**A:** U kunt de  [API voor risico detectie van identiteits beveiliging](../identity-protection/graph-get-started.md) gebruiken om toegang te krijgen tot beveiligings detectie via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en waarmee risico detecties in één type worden gestandaardiseerd, zodat integratie gemakkelijker kan worden geïntegreerd in Siem's en andere hulpprogram ma's voor gegevens verzameling. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent). Dit is de micro soft-norm voor dergelijke Api's als O365 of Azure AD. Het werk vereist dus dat uw huidige Microsoft Graph investeringen kunnen worden uitgebreid of dat u de overgang naar dit nieuwe standaard platform kunt starten.
 
 ---
 

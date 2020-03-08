@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380305"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
 
@@ -30,7 +30,7 @@ Data Box is ideaal voor het overbrengen van gegevens met een totale omvang van 4
  - **Eenmalige migratie**: wanneer grote aantallen on-premises gegevens worden verplaatst naar Azure. 
      - Verplaatsen van een mediabibliotheek van offline tapes naar Azure, voor het maken van een online mediabibliotheek.
      - Uw virtuele machines, SQL Server en toepassingen migreren naar Azure
-     - Historische gegevens naar Azure verplaatsen voor gedetailleerde analyse en rapportage met HDInsight
+     - Verplaatsen van historische gegevens naar Azure voor gedetailleerde analyse en rapportage met HDInsight.
 
  - **InitiÃ«le bulkoverdracht**: wanneer eerst een grote overdracht plaatsvindt met Data Box (seed), gevolgd door incrementele overdrachten via het netwerk. 
      - Bijvoorbeeld: voor de eerste grote back-up van historische gegevens naar Azure wordt gebruikgemaakt van een back-upoplossing van Commvault of Data Box. Zodra dat is voltooid, worden gegevens incrementeel via het netwerk overgebracht naar Azure-opslag.
@@ -56,7 +56,7 @@ Data Box is ontworpen om grote aantallen gegevens naar Azure te verplaatsen met 
 
 Het Data Box-apparaat biedt de volgende functies in deze versie.
 
-| Specificaties                                          | Description              |
+| Specificaties                                          | Beschrijving              |
 |---------------------------------------------------------|--------------------------|
 | Gewicht                                                  | < 50 pond.                |
 | Dimensies                                              | Apparaat - Breedte: 309,0 mm Hoogte: 430,4 mm Diepte: 502,0 mm |            
@@ -119,7 +119,7 @@ Data Box kunt gegevens overdragen op basis van de regio waarin de service is geÃ
 ## <a name="next-steps"></a>Volgende stappen
 
 - De [Systeemvereisten voor Data Box](data-box-system-requirements.md) lezen.
-- Informatie over de [Limieten voor Data Box](data-box-limits.md).
+- Informatie over de [limieten voor Data Box](data-box-limits.md).
 - [Azure Data Box](data-box-quickstart-portal.md) snel implementeren in de Azure-portal.
 
 

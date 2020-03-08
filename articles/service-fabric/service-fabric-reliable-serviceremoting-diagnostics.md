@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426705"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389746"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose en prestatie bewaking voor betrouw bare service voor externe communicatie
 De betrouw bare ServiceRemoting-runtime verzendt [prestatie meter items](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Deze bieden inzicht in de manier waarop de ServiceRemoting werkt en helpt bij het oplossen van problemen en het controleren van de prestaties.
@@ -19,7 +19,7 @@ De betrouw bare ServiceRemoting-runtime verzendt [prestatie meter items](https:/
 ## <a name="performance-counters"></a>Prestatiemeteritems
 De betrouw bare ServiceRemoting-runtime definieert de volgende categorieën voor prestatie meter items:
 
-| Categorie | Beschrijving |
+| Category | Beschrijving |
 | --- | --- |
 | Service Fabric-service |Tellers die specifiek zijn voor Azure Service Fabric service voor externe toegang, bijvoorbeeld de gemiddelde tijd die nodig is om de aanvraag te verwerken |
 | Service Fabric service methode |Tellers die specifiek zijn voor methoden die zijn geïmplementeerd door Service Fabric externe service, bijvoorbeeld hoe vaak een service methode wordt aangeroepen |
@@ -74,7 +74,7 @@ In het vorige voor beeld is `ivoicemailboxservice.leavemessageasync` de naam van
 
 De betrouw bare service-runtime publiceert de volgende prestatie meter items die betrekking hebben op de uitvoering van service methoden.
 
-| Category name | Naam van het prestatiemeteritem | Beschrijving |
+| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric service methode |Aanroepen per seconde |Aantal keren dat de service methode per seconde wordt aangeroepen |
 | Service Fabric service methode |Gemiddeld aantal milliseconden per aanroep |Gebruikte tijd in milliseconden voor het uitvoeren van de service methode |
@@ -83,7 +83,7 @@ De betrouw bare service-runtime publiceert de volgende prestatie meter items die
 ### <a name="service-request-processing-performance-counters"></a>Prestatie meter items voor verwerking van service aanvragen
 Wanneer een client een methode aanroept via een Service proxy-object, resulteert dit in een aanvraag bericht dat via het netwerk naar de externe service wordt verzonden. De service verwerkt het aanvraag bericht en stuurt een antwoord terug naar de client. De betrouw bare ServiceRemoting-runtime publiceert de volgende prestatie meter items die betrekking hebben op de verwerking van service aanvragen.
 
-| Category name | Naam van het prestatiemeteritem | Beschrijving |
+| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric-service |aantal openstaande aanvragen |Aantal aanvragen dat wordt verwerkt in de service |
 | Service Fabric-service |Gemiddeld aantal milliseconden per aanvraag |Gebruikte tijd (in milliseconden) van de service voor het verwerken van een aanvraag |

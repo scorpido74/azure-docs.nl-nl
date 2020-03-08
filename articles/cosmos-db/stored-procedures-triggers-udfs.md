@@ -8,11 +8,11 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388599"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -88,7 +88,7 @@ Net als bij pretriggers worden post-triggers ook geassocieerd met een bewerking 
 > [!NOTE]
 > Geregistreerde triggers worden niet automatisch uitgevoerd wanneer de bijbehorende bewerkingen (maken/verwijderen/vervangen/bijwerken) plaatsvinden. Ze moeten expliciet worden aangeroepen bij het uitvoeren van deze bewerkingen. Zie [het artikel triggers uitvoeren](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) voor meer informatie.
 
-## <a id="udfs"></a>De gebruiker gedefinieerde functies
+## <a id="udfs"></a>Door de gebruiker gedefinieerde functies
 
 Door de gebruiker gedefinieerde functies (Udf's) worden gebruikt om de SQL API-query taal syntaxis uit te breiden en aangepaste bedrijfs logica eenvoudig te implementeren. Ze kunnen alleen worden aangeroepen binnen query's. Udf's hebben geen toegang tot het context object en zijn bedoeld om te worden gebruikt als alleen-Compute-java script. Daarom kunnen Udf's worden uitgevoerd op secundaire replica's. Zie het artikel door de [gebruiker gedefinieerde functies schrijven](how-to-write-stored-procedures-triggers-udfs.md#udfs) voor voor beelden.
 

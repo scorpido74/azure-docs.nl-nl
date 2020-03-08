@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391128"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Een site-naar-site-verbinding maken in Azure Portal
 
 In dit artikel leest u hoe u Azure Portal gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw on-premises netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -51,7 +51,7 @@ In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt dez
 * **Subnet:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (optioneel voor deze oefening)
 * **Adres bereik gateway-subnet:** 10.1.255.0/27
 * **Gatewaynaam van het virtuele netwerk:** VNet1GW
-* **Naam van openbaar IP-adres:** VNet1GWIP
+* **Openbare IP-adresnaam:** VNet1GWpip
 * **VPN-type:** op route gebaseerd
 * **Verbindings type:** Site-naar-site (IPsec)
 * **Gatewaytype:** VPN
@@ -61,7 +61,7 @@ In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt dez
 
 ## <a name="CreatVNet"></a>1. een virtueel netwerk maken
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. de VPN-gateway maken
 
@@ -77,7 +77,7 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 * **Exemplaar details > gateway type:** VPN
 * **Exemplaar details > VPN-type:** Op basis van route
 * **Adres bereik van > gateway-subnet Virtual Network:** 10.1.255.0/27
-* **Openbaar IP-adres > open bare IP-adres naam:** VNet1GWIP
+* **Openbaar IP-adres > open bare IP-adres naam:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -92,7 +92,7 @@ De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft
 
 * **Naam:** Site1
 * **Resourcegroep:** TestRG1
-* **Locatie:** US - oost
+* **Locatie:** VS - oost
 
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]

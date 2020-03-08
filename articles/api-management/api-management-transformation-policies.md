@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012221"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374341"
 ---
 # <a name="api-management-transformation-policies"></a>API Management transformatie beleid
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -77,7 +77,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|Toep assen|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -altijd-altijd conversie Toep assen.<br />-content-type-JSON-Convert alleen als de content-type-header van het antwoord duidt op de aanwezigheid van JSON.|Ja|N.v.t.|
+|toepassen|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -altijd-altijd conversie Toep assen.<br />-content-type-JSON-Convert alleen als de content-type-header van het antwoord duidt op de aanwezigheid van JSON.|Ja|N.v.t.|
 |Overweeg-Accept-header|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -True-conversie Toep assen als JSON is aangevraagd in de koptekst van de Accept-aanvraag.<br />-ONWAAR-altijd conversie Toep assen.|Nee|true|
 |parseren datum|Wanneer ingesteld op `false` datum waarden worden alleen tijdens de trans formatie gekopieerd|Nee|true|
 
@@ -122,7 +122,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
 |type|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -Java script-vriendelijk: de geconverteerde JSON heeft een formulier vriendelijk voor Java script-ontwikkel aars.<br />-direct-de geconverteerde JSON weerspiegelt de oorspronkelijke XML-document structuur.|Ja|N.v.t.|
-|Toep assen|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -altijd-Convert altijd.<br />-content-type-XML: alleen converteren als de content-type-header van het antwoord de aanwezigheid van XML aangeeft.|Ja|N.v.t.|
+|toepassen|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -altijd-Convert altijd.<br />-content-type-XML: alleen converteren als de content-type-header van het antwoord de aanwezigheid van XML aangeeft.|Ja|N.v.t.|
 |Overweeg-Accept-header|Het kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -True-de conversie Toep assen als XML is aangevraagd in de header geaccepteerd van aanvraag.<br />-ONWAAR-altijd conversie Toep assen.|Nee|true|
 
 ### <a name="usage"></a>Gebruik
@@ -519,8 +519,8 @@ OriginalUrl.
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|exists-actie|Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Wanneer deze instelling is ingesteld op `override` het aanmelden van meerdere vermeldingen met dezelfde naam resulteert in de header die wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat.|Nee|Overschrijven|
-|name|Hiermee geeft u de naam op van de header die moet worden ingesteld.|Ja|N.v.t.|
+|exists-actie|Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Wanneer deze instelling is ingesteld op `override` het aanmelden van meerdere vermeldingen met dezelfde naam resulteert in de header die wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat.|Nee|onderdrukking|
+|naam|Hiermee geeft u de naam op van de header die moet worden ingesteld.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -579,8 +579,8 @@ OriginalUrl.
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|exists-actie|Hiermee geeft u op welke actie moet worden uitgevoerd wanneer de querytekenreeks al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande para meter.<br />-Skip-vervangt niet de bestaande waarde van de query parameter.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de query parameter.<br />-DELETE-verwijdert de query parameter uit de aanvraag.<br /><br /> Wanneer u instelt op `override` het opnemen van meerdere vermeldingen met dezelfde naam resulteert in de query parameter die wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat.|Nee|Overschrijven|
-|name|Hiermee geeft u de naam op van de query parameter die moet worden ingesteld.|Ja|N.v.t.|
+|exists-actie|Hiermee geeft u op welke actie moet worden uitgevoerd wanneer de querytekenreeks al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande para meter.<br />-Skip-vervangt niet de bestaande waarde van de query parameter.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de query parameter.<br />-DELETE-verwijdert de query parameter uit de aanvraag.<br /><br /> Wanneer u instelt op `override` het opnemen van meerdere vermeldingen met dezelfde naam resulteert in de query parameter die wordt ingesteld op basis van alle vermeldingen (die meerdere keren worden weer gegeven). alleen waarden die worden weer gegeven, worden ingesteld in het resultaat.|Nee|onderdrukking|
+|naam|Hiermee geeft u de naam op van de query parameter die moet worden ingesteld.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

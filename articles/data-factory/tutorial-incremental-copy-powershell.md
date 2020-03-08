@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387846"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Incrementeel gegevens van een Azure-SQL database naar Azure Blob-opslag laden met Power shell
 
@@ -26,9 +26,9 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Maak gekoppelde services.
-> * Maak bron-, sink- en grenswaardegegevenssets.
+> * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
 > * Controleer de pijplijnuitvoering.
@@ -723,9 +723,9 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Maak gekoppelde services.
-> * Maak bron-, sink- en grenswaardegegevenssets.
+> * Bron-, sink- en grenswaardegegevenssets maken.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
 > * Controleer de pijplijnuitvoering.

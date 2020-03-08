@@ -4,11 +4,11 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207058"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357391"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Teken reeks functies voor Azure Resource Manager sjablonen
 
@@ -589,7 +589,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | objectEmpty | Bool | True |
 | stringEmpty | Bool | True |
 
-## <a name="endswith"></a>EndsWith
+## <a name="endswith"></a>endsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -2094,7 +2094,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | componentOutput | Tekenreeks | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Tekenreeks | `http://contoso.com/resources/nested/azuredeploy.json` |
 
-## <a name="utcnow"></a>utcNow
+## <a name="utcnow"></a>UtcNow
 
 `utcNow(format)`
 

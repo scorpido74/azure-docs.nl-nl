@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721025"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375968"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installatieprocedure voor Azure AD Connect en Azure AD Connect Health
 
@@ -44,11 +44,11 @@ U vindt de download voor Azure AD Connect op [Microsoft Download Center](https:/
 | --- | --- |
 |Azure AD Connect downloaden | [Azure AD Connect downloaden](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installeren met behulp van snelle instellingen | [Snelle installatie van Azure AD Connect](./how-to-connect-install-express.md)|
-|Installeren met behulp van aangepaste instellingen | [Aangepaste installatie van Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
+|Installeren met behulp van aangepaste instellingen | [Custom installation of Azure AD Connect (Engelstalig)](./how-to-connect-install-custom.md)|
+|Upgraden van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
 |Na installatie | [De installatie controleren en licenties toewijzen](how-to-connect-post-installation.md)|
 
-### <a name="learn-more-about-install-azure-ad-connect"></a>Meer informatie over Azure AD Connect installeren
+### <a name="learn-more-about-install-azure-ad-connect"></a>Meer informatie over het installeren van Azure AD Connect
 U wilt u ook voorbereiden op [operationele](how-to-connect-sync-operations.md) problemen. U wilt mogelijk een stand-by-server hebben, waarop u eenvoudig failover-overschakeling kunt uitvoeren in geval van een [noodgeval](how-to-connect-sync-staging-server.md#disaster-recovery). Als u van plan bent frequente configuratiewijzigingen aan te brengen, moet u een [faseringsmodus](how-to-connect-sync-staging-server.md)-server gebruiken.
 
 |Onderwerp |Koppeling|  
@@ -59,7 +59,7 @@ U wilt u ook voorbereiden op [operationele](how-to-connect-sync-operations.md) p
 |Operationele planning | [Azure AD Connect-synchronisatie: operationele taken en overwegingen](how-to-connect-sync-operations.md)|
 |Opties aanmelden gebruiker | [Opties van Azure AD Connect voor het aanmelden van gebruikers](plan-connect-user-signin.md)|
 
-## <a name="configure-sync-features"></a>Synchronisatie-functies configureren
+## <a name="configure-sync-features"></a>Synchronisatiefuncties configureren
 Azure AD Connect wordt geleverd met verschillende functies die u in of uit kunt schakelen of die standaard zijn ingesteld. Sommige functies vereisen mogelijk meer configuratie in bepaalde scenario's en topologieën.
 
 [Filteren](how-to-connect-sync-configure-filtering.md) wordt gebruikt wanneer u wilt beperken welke objecten worden gesynchroniseerd naar Azure AD. Alle gebruikers, contactpersonen, groepen en Windows 10-computers worden standaard gesynchroniseerd. U kunt de filtering wijzigen op basis van domeinen, OE’s of kenmerken.
@@ -70,11 +70,11 @@ Met [Wachtwoord terugschrijven](../authentication/quickstart-sspr.md) kunnen uw 
 
 Met [write-back van apparaat](how-to-connect-device-writeback.md) kan een apparaat dat is geregistreerd in azure AD, worden teruggeschreven naar on-premises Active Directory zodat het kan worden gebruikt voor voorwaardelijke toegang.
 
-De functie [Onopzettelijk verwijderen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) is standaard ingeschakeld en beschermt uw cloudgebaseerde adreslijsten tegen meerdere verwijderingen op hetzelfde moment. Er kunnen standaard 500 verwijderingen per keer gedaan worden. U kunt deze instelling wijzigen, afhankelijk van de grootte van uw organisatie.
+De functie [Onopzettelijk verwijderen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) is standaard ingeschakeld en beschermt uw clouddirectory tegen meerdere verwijderingen op hetzelfde moment. Er kunnen standaard 500 verwijderingen per keer gedaan worden. U kunt deze instelling wijzigen, afhankelijk van de grootte van uw organisatie.
 
-[Automatische upgrade](how-to-connect-install-automatic-upgrade.md) is standaard ingeschakeld voor installaties met snelle instellingen en zorgt ervoor dat u altijd beschikt over de nieuwste versie van Azure AD Connect.
+[Automatische upgrade](how-to-connect-install-automatic-upgrade.md) is standaard ingeschakeld voor installaties van snelle instellingen en zorgt ervoor dat uw Azure AD Connect altijd actueel is met de meest recente versie.
 
-### <a name="next-steps-to-configure-sync-features"></a>De volgende stappen om synchronisatie-functies te configureren
+### <a name="next-steps-to-configure-sync-features"></a>De volgende stappen om synchronisatiefuncties te configureren
 |Onderwerp |Koppeling|  
 | --- | --- |
 |Filtering configureren | [Azure AD Connect-synchronisatie: filtering configureren](how-to-connect-sync-configure-filtering.md)|
@@ -99,7 +99,7 @@ Het gesynchroniseerde configuratiemodel heet [declaratieve inrichting](concept-a
 | --- | --- |
 |Alle artikelen over Azure AD Connect-synchronisatie | [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md)|
 |Technische concepten | [Azure AD Connect-synchronisatie: technische concepten](how-to-connect-sync-technical-concepts.md)|
-|Inzicht in de standaardconfiguratie | [Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md)|
+|Inzicht krijgen in de standaardconfiguratie | [Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md)|
 |Inzicht krijgen in gebruikers en contactpersonen | [Azure AD Connect-synchronisatie: inzicht krijgen in gebruikers en contactpersonen](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Declaratieve inrichting | [Azure AD Connect-synchronisatie: inzicht krijgen in expressies declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |De standaardconfiguratie wijzigen | [Aanbevolen procedures voor het wijzigen van de standaardconfiguratie](how-to-connect-sync-best-practices-changing-default-configuration.md)|

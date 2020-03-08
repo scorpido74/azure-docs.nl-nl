@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551060"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397032"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Zelf studie: de netwerk instellingen van het cluster configureren
 
@@ -19,7 +19,7 @@ Voordat u een nieuw gemaakt Azure FXT Edge-cluster gebruikt, moet u verschillend
 
 In deze zelf studie worden de netwerk instellingen beschreven die u mogelijk moet aanpassen voor een nieuw cluster. 
 
-U leert het volgende: 
+U leert: 
 
 > [!div class="checklist"]
 > * Welke netwerk instellingen moeten mogelijk worden bijgewerkt na het maken van een cluster
@@ -64,7 +64,7 @@ Lees voor meer informatie over netwerk instellingen voor het cluster [netwerk se
 
 * [Versleutelings certificaten](#encryption-certificates) uploaden voor het cluster dat moet worden gebruikt (optioneel)
 
-### <a name="encryption-certificates"></a>Versleutelingscertificaten
+### <a name="encryption-certificates"></a>Versleutelings certificaten
 
 Het FXT Edge-bestands cluster maakt gebruik van X. 509-certificaten voor deze functies:
 

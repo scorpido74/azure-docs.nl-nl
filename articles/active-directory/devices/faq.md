@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185848"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672292"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185848"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>V: Ik heb het apparaat onlangs geregistreerd. Waarom kan ik het apparaat niet zien onder mijn gebruikers gegevens in de Azure Portal? Of waarom is de eigenaar van het apparaat gemarkeerd als N/A voor Hybrid Azure Active Directory (Azure AD) gekoppelde apparaten?
 
 **A:** Windows 10-apparaten die zijn toegevoegd aan hybride Azure AD worden niet weer gegeven onder **gebruikers apparaten**.
-Gebruik de weer gave **alle apparaten** in de Azure Portal. U kunt ook een Power shell [Get-MsolDevice-](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet gebruiken.
+Gebruik de weer gave **alle apparaten** in de Azure Portal. U kunt ook een Power shell [Get-MsolDevice-](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet gebruiken.
 
 Onder **gebruikers apparaten**worden alleen de volgende apparaten weer gegeven:
 
@@ -62,7 +62,7 @@ Onder **gebruikers apparaten**worden alleen de volgende apparaten weer gegeven:
 - Gebruiker het apparaat uitschakelt vanuit de portal mijn apps. 
 - Een beheerder (of gebruiker) verwijdert het apparaat uit het Azure Portal of schakelt het in met behulp van Power shell
 - Alleen lid worden van hybride Azure AD: een beheerder verwijdert het bereik van de organisatie-eenheid uit de synchronisatie, waardoor de apparaten uit Azure AD worden verwijderd
-- Upgrade uitvoeren van Azure AD Connect naar versie 1.4. xx. x. Meer [informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Upgrade uitvoeren van Azure AD Connect naar versie 1.4. xx. x. Meer [informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten](/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 Hieronder ziet u hoe deze acties kunnen worden verholpen.
@@ -128,7 +128,7 @@ Hieronder ziet u hoe deze acties kunnen worden verholpen.
 **A:** Het duurt Maxi maal een uur voordat een intrekking wordt toegepast vanaf het moment dat het Azure AD-apparaat is gemarkeerd als uitgeschakeld.
 
 >[!NOTE] 
->Voor geregistreerde apparaten wordt u aangeraden het apparaat te wissen om ervoor te zorgen dat gebruikers geen toegang hebben tot de resources. Zie [Wat is apparaat-inschrijving?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)voor meer informatie. 
+>Voor geregistreerde apparaten wordt u aangeraden het apparaat te wissen om ervoor te zorgen dat gebruikers geen toegang hebben tot de resources. Zie [Wat is apparaat-inschrijving?](/intune/deploy-use/enroll-devices-in-microsoft-intune)voor meer informatie. 
 
 ---
 
@@ -180,13 +180,13 @@ Verwijderde of uitgeschakelde gebruikers die zich niet eerder hebben aangemeld, 
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>V: mijn gebruikers kunnen geen printers zoeken op apparaten die zijn toegevoegd aan Azure AD. Hoe kan ik afdrukken vanaf deze apparaten inschakelen?
 
-**A:** Zie [Windows Server hybride-Cloud afdrukken implementeren met pre-authenticatie](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)voor het implementeren van printers voor apparaten die zijn toegevoegd aan Azure AD. U hebt een on-premises Windows-Server nodig voor het implementeren van hybride Cloud afdrukken. Op dit moment is de Cloud afdruk service niet beschikbaar. 
+**A:** Zie [Windows Server hybride-Cloud afdrukken implementeren met pre-authenticatie](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)voor het implementeren van printers voor apparaten die zijn toegevoegd aan Azure AD. U hebt een on-premises Windows-Server nodig voor het implementeren van hybride Cloud afdrukken. Op dit moment is de Cloud afdruk service niet beschikbaar. 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>V: Hoe kan ik verbinding maken met een extern Azure AD-apparaat dat is toegevoegd?
 
-**A:** Zie [verbinding maken met een PC die lid is van extern Azure Active Directory](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+**A:** Zie [verbinding maken met een PC die lid is van extern Azure Active Directory](/windows/client-management/connect-to-remote-aadj-pc).
 
 ---
 
@@ -220,7 +220,7 @@ Dit gedrag:
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>V: Waarom krijg ik de vraag *... Er is een fout opgetreden.* dialoog venster wanneer ik Azure AD wil toevoegen aan mijn PC?
 
-**A:** Deze fout treedt op wanneer u Azure Active Directory inschrijving met intune instelt. Zorg ervoor dat de juiste intune-licentie is toegewezen aan de gebruiker die een Azure AD-lid probeert te maken. Zie [registratie instellen voor Windows-apparaten](https://docs.microsoft.com/intune/windows-enroll)voor meer informatie.  
+**A:** Deze fout treedt op wanneer u Azure Active Directory inschrijving met intune instelt. Zorg ervoor dat de juiste intune-licentie is toegewezen aan de gebruiker die een Azure AD-lid probeert te maken. Zie [registratie instellen voor Windows-apparaten](/intune/windows-enroll)voor meer informatie.  
 
 ---
 
@@ -307,7 +307,7 @@ Hybride Azure AD-deelname heeft voor rang op de geregistreerde status van Azure 
 
 **A:** Voer de volgende stappen uit:
 
-1.  [Een nalevings beleid maken](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [Een nalevings beleid maken](/intune/compliance-policy-create-mac-os)
 1.  [Beleid voor voorwaardelijke toegang voor macOS-apparaten definiëren](../active-directory-conditional-access-azure-portal.md) 
 
 **Opmerkingen**

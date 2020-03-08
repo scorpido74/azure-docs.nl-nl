@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364957"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Uw cluster visualiseren met Service Fabric Explorer
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
 
 Service Fabric Explorer (SFX) is een open source-hulp programma voor het inspecteren en beheren van Azure Service Fabric-clusters. Service Fabric Explorer is een bureaublad toepassing voor Windows, macOS en Linux.
 
@@ -49,7 +49,7 @@ Voor het installatie programma voor ontwikkel aars kunt u Service Fabric Explore
 ## <a name="connect-to-a-service-fabric-cluster"></a>Verbinding maken met een Service Fabric cluster
 Als u verbinding wilt maken met een Service Fabric cluster, hebt u het knoop punt voor cluster beheer (FQDN/IP) en de HTTP-beheer eindpunt poort (standaard 19080) nodig. Bijvoorbeeld https\://mysfcluster.westus.cloudapp.azure.com:19080. Gebruik het selectie vakje ' verbinding maken met localhost ' om verbinding te maken met een lokaal cluster op uw werk station.
 
-### <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligde cluster
+### <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 U kunt de client toegang tot uw Service Fabric cluster beheren met certificaten of met behulp van Azure Active Directory (AAD).
 
 Als u probeert verbinding te maken met een beveiligd cluster, is afhankelijk van de configuratie van het cluster dat u nodig hebt om een client certificaat aan te bieden of u aan te melden met AAD.
@@ -119,7 +119,7 @@ Viewer voor afbeeldings archief is een functie die wordt aangeboden als u gebrui
 
 ![Cluster toewijzing Service Fabric Explorer][sfx-imagestore]
 
-## <a name="backup-and-restore"></a>Back-up en herstellen
+## <a name="backup-and-restore"></a>Back-up en herstel
 Service Fabric Explorer biedt de mogelijkheid om een interface te [maken voor back-up en herstel](./service-fabric-reliable-services-backup-restore.md). Als u back-up-en herstel functies wilt zien in SFX, moet geavanceerde modus zijn ingeschakeld.
 
 ![Geavanceerde modus inschakelen][0]

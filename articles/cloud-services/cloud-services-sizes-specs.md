@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386432"
 ---
 # <a name="sizes-for-cloud-services"></a>Grootte voor Cloud Services
 In dit onderwerp worden de beschik bare grootten en opties voor Cloud service-rolinstanties (webrollen en werk rollen) beschreven. Het biedt ook overwegingen bij de implementatie bij het plannen van het gebruik van deze resources. Elke grootte heeft een ID die u in het [service definitie bestand](cloud-services-model-and-package.md#csdef)plaatst. De prijzen voor elke grootte zijn beschikbaar op de pagina met [Cloud Services prijzen](https://azure.microsoft.com/pricing/details/cloud-services/) .
@@ -54,15 +54,15 @@ We hebben het concept van de Azure Compute Unit (ACU) ontwikkeld om een manier t
 | SKU-familie | ACU/kern |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Small-ExtraLarge](#a-series) |100 |
+| [Kleine ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [A v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [Een v2](#av2-series) |100 |
+| [!](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
-| [G](#g-series) |180 - 240* |
+| [Kg](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
 ACU's die met een * zijn gemarkeerd, maken gebruik van Intel® Turbo-technologie om de CPU-frequentie te verhogen en nóg betere prestaties te leveren. Hoe groot die extra prestaties zijn, is afhankelijk van de VM-grootte, de workload en de andere workloads die op dezelfde host worden uitgevoerd.
@@ -76,7 +76,7 @@ In de volgende tabellen ziet u de grootten en de capaciteiten die ze bieden.
 * De maximale netwerkbandbreedte is de maximale geaggregeerde bandbreedte die is toegekend en toegewezen per VM-type. De maximale bandbreedte geeft richtlijnen voor het selecteren van het juiste type virtuele machine om ervoor te zorgen dat er voldoende netwerkcapaciteit beschikbaar is. Wanneer u overstapt tussen laag, gemiddeld, hoog en zeer hoog, neemt de door Voer dienovereenkomstig toe. De werkelijke netwerkprestaties zijn afhankelijk van talloze factoren, waaronder de netwerk- en toepassingsbelastingen en de instellingen van het toepassingsnetwerk.
 
 ## <a name="a-series"></a>A-serie
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1/laag |
 | Klein           | 1         | 1,75         | 225                  | 1/gemiddeld |
@@ -90,7 +90,7 @@ In de volgende tabellen ziet u de grootten en de capaciteiten die ze bieden.
 ## <a name="a-series---compute-intensive-instances"></a>A-serie: rekenintensieve exemplaren
 Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor informatie en overwegingen over het gebruik van deze grootten.
 
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag: GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2/hoog |
 | A9*             |16         | 112          | 1817                 | 4/zeer hoog |
@@ -101,7 +101,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="av2-series"></a>Av2-serie
 
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/gemiddeld                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/gemiddeld                 |
@@ -112,8 +112,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/hoog                     |
 
 
-## <a name="d-series"></a>D-reeks
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="d-series"></a>D-serie
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1/gemiddeld |
 | Standard_D2     | 2         | 7            | 100                  | 2/hoog |
@@ -124,8 +124,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_D13    | 8         | 56           | 400                  | 8/hoog |
 | Standard_D14    | 16        | 112          | 800                  | 8/zeer hoog |
 
-## <a name="dv2-series"></a>Dv2-reeksen
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="dv2-series"></a>Dv2-serie
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1/gemiddeld |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/hoog |
@@ -140,7 +140,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="dv3-series"></a>Dv3-serie
 
-| Grootte            | Cpu-cores | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/gemiddeld |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/hoog |
@@ -151,7 +151,7 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 
 ## <a name="ev3-series"></a>Ev3-serie
 
-| Grootte            | Cpu-cores | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB   | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/gemiddeld |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/hoog |
@@ -161,8 +161,8 @@ Zie [High Performance Compute VM sizes](../virtual-machines/windows/sizes-hpc.md
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/zeer hoog |
 
 
-## <a name="g-series"></a>G-reeks
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+## <a name="g-series"></a>G-serie
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/hoog |
 | Standard_G2     | 4         | 56           | 768                  |2/hoog |
@@ -175,7 +175,7 @@ Virtuele Azure-machines uit de H-serie zijn de volgende generatie HPC-VM's, geri
 
 Naast een zeer hoge CPU-kracht biedt de H-serie ook verschillende opties voor RDMA-netwerken met lage latentie met gebruik van FDR InfiniBand, evenals verschillende geheugenconfiguraties om geheugenintensieve rekenvereisten te ondersteunen.
 
-| Grootte            | Cpu-cores | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | CPU-kernen | Geheugen: GiB  | Tijdelijke opslag (SSD): GiB       | Max. aantal NIC's/netwerkbandbreedte |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/hoog |
 | Standard_H16    | 16        | 112          | 2000                 | 8/zeer hoog |

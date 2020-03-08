@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882855"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672281"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -185,7 +185,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 > [!NOTE]
 >Als u AD FS niet als uw on-premises federatieve service hebt, volgt u de instructies van uw leverancier om te verzekeren dat ze WS-Trust 1.3- of WS-Trust 2005-eindpunten ondersteunen en dat deze via het MEX-bestand (Metadata Exchange) worden gepubliceerd.
@@ -527,7 +527,7 @@ In AD FS moet u een uitgiftetransformatieregel toevoegen die wordt doorgegeven v
 1. Klik met de rechtermuisknop op het object Relying Party-vertrouwensrelatie van het identiteitsplatform van Microsoft Office 365 en selecteer vervolgens **Claimregels bewerken**.
 1. Selecteer op het tabblad **Uitgiftetransformatieregels** de optie **Regel toevoegen**.
 1. Selecteer in de sjabloonlijst **Claimregel** de optie **Claim verzenden met een aangepaste regel**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Typ **Auth Method Claim Rule** in het vak **Naam claimregel**.
 1. Voer in het vak **Claimregel** de volgende regel in:
 
@@ -549,7 +549,7 @@ Als u downlevel Windows-apparaten wilt registreren, dient u een Windows Installe
 
 ## <a name="verify-joined-devices"></a>Gekoppelde apparaten verifiëren
 
-U kunt controleren op succesvol gekoppelde apparaten in uw organisatie met behulp van de cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) in de [Azure Active Directory PowerShell-module](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+U kunt controleren op succesvol gekoppelde apparaten in uw organisatie met behulp van de cmdlet [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) in de [Azure Active Directory PowerShell-module](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 De uitvoer van deze cmdlet toont apparaten die zijn geregistreerd en gekoppeld met Azure AD. Om alle apparaten te bekijken, gebruikt u de parameter **-All** en filtert u ze vervolgens met behulp van de eigenschap **deviceTrustType**. Domein-gekoppelde apparaten hebben de waarde **Domain Joined**.
 

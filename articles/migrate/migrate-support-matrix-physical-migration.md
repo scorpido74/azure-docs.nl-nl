@@ -4,11 +4,11 @@ description: Meer informatie over ondersteuning voor de migratie van fysieke ser
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030235"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388997"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Ondersteunings matrix voor de migratie van fysieke servers
 
@@ -26,7 +26,7 @@ U kunt on-premises machines als fysieke servers migreren met behulp van replicat
 - Vm's die worden uitgevoerd in open bare Clouds, zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP).
 
 
-## <a name="migration-limitations"></a>Migratiebeperkingen
+## <a name="migration-limitations"></a>Migratie beperkingen
 
 U kunt Maxi maal 10 computers tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
 
@@ -38,7 +38,7 @@ De tabel bevat een overzicht van de ondersteuning voor fysieke servers die u wil
 **Ondersteuning** | **Details**
 --- | ---
 **Machine workload** | Azure Migrate ondersteunt de migratie van elke werk belasting (bijvoorbeeld Active Directory, SQL Server, enzovoort) die wordt uitgevoerd op een ondersteunde computer.
-**Besturingssystemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het besturings systeem.
+**Besturings systemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het besturings systeem.
 **Linux-bestands systeem/gast opslag** | Raadpleeg de ondersteuning van het Linux- [Bestands systeem](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke ondersteuning voor het Linux-bestands systeem.
 **Netwerk/opslag** | Raadpleeg de vereisten voor het [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) en de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke netwerk-en opslag vereisten.
 **Azure-vereisten** | Bekijk de vereisten voor het Azure- [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en de [reken kracht](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor site Recovery voor de meest recente informatie. Azure Migrate heeft identieke vereisten voor de migratie van fysieke servers.
@@ -51,7 +51,7 @@ De tabel bevat een overzicht van de ondersteuning voor fysieke servers die u wil
 **Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Ondersteund.
 **Passthrough-schijven** | Ondersteund.
-**NFS** | NFS-volumes die zijn gekoppeld als volumes op de computers, worden niet gerepliceerd.
+**NBS** | NFS-volumes die zijn gekoppeld als volumes op de computers, worden niet gerepliceerd.
 **iSCSI-doelen** | Computers met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Ondersteund
@@ -60,7 +60,7 @@ De tabel bevat een overzicht van de ondersteuning voor fysieke servers die u wil
 
 
 
-## <a name="replication-appliance-requirements"></a>Vereisten voor replicatie-apparaat
+## <a name="replication-appliance-requirements"></a>Replicatie-apparaatvereisten
 
 Als u het replicatie apparaat hand matig instelt op een fysieke server, moet u ervoor zorgen dat het voldoet aan de vereisten in de tabel. Wanneer u het Azure Migrate replicatie apparaat instelt als een VMware-VM met behulp van de eicellen-sjabloon die is opgegeven in de Azure Migrate hub, wordt het apparaat ingesteld met Windows Server 2016 en voldoet aan de ondersteunings vereisten. 
 
@@ -74,13 +74,13 @@ Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de 
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gastbesturingssysteem | Controleert ondersteunde besturings systemen.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
+Gast besturingssysteem | Controleert ondersteunde besturings systemen.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
 Aantal gegevens schijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
-Netwerkadapters | Meerdere adapters worden ondersteund. |
+Netwerk adapters | Meerdere adapters worden ondersteund. |
 Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.

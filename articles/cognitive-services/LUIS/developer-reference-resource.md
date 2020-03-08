@@ -3,12 +3,12 @@ title: Bronnen voor ontwikkel aars-Language Understanding
 description: Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391951"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
 
@@ -44,7 +44,7 @@ De [Luis-rest specificaties](https://github.com/Azure/azure-rest-api-specs/tree/
 
 De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via REST-Api's:
 
-|Type|Versie|
+|Type|Version|
 |--|--|
 |Ontwerpen|[Offload](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[Preview v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |voorspelling|[Offload](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
@@ -109,7 +109,7 @@ Bot Framework biedt [verschillende hulpprogram ma's](https://github.com/microsof
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de veelvoorkomende [HTTP-fout codes](luis-reference-response-codes.md)
-* [Referentie documentatie](https://docs.microsoft.com/azure/index#pivot=sdkstools) voor alle Api's en sdk's
+* [Referentie documentatie](https://docs.microsoft.com/azure/index) voor alle Api's en sdk's
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) en [Azure bot service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Cognitieve containers](../cognitive-services-container-support.md)

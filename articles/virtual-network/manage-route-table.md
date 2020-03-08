@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979604"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357771"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Een route tabel maken, wijzigen of verwijderen
 
@@ -30,7 +30,7 @@ Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 * Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).<br>
-* Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met uw Azure-account.<br>
+* Als u de portal gebruikt, opent u https://portal.azure.comen meldt u zich aan met uw Azure-account.<br>
 * Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.<br>
 * Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren om een verbinding te maken met Azure.
 
@@ -123,7 +123,7 @@ Als er een routetabel is gekoppeld aan subnetten, kan deze niet worden verwijder
 
 1. Voer in het zoekvak boven aan de portal *route tabellen* in het zoekvak in. Wanneer **route tabellen** worden weer gegeven in de zoek resultaten, selecteert u deze.
 1. Selecteer **...** aan de rechter kant van de route tabel die u wilt verwijderen.
-1. Selecteer **Verwijderen**en selecteer vervolgens **Ja**.
+1. Selecteer **verwijderen**en selecteer vervolgens **Ja**.
 
 ### <a name="delete-a-route-table---commands"></a>Een route tabel verwijderen-opdrachten
 
@@ -236,7 +236,7 @@ U kunt het type van de volgende hop bepalen tussen een virtuele machine en het I
 
 Als u taken wilt uitvoeren op route tabellen en routes, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Actie                                                          |   Name                                                  |
+| Bewerking                                                          |   Naam                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft.Network/routeTables/read                              |   Een route tabel lezen                                    |
 | Microsoft.Network/routeTables/write                             |   Een route tabel maken of bijwerken                        |

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365686"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systeemvereisten voor StorSimple virtuele array
 
@@ -36,7 +36,7 @@ De informatie over de StorSimple-systeem vereisten die in dit artikel wordt gepu
 De software vereisten omvatten de informatie over de ondersteunde webbrowsers, SMB-versies, virtualisatieplatform en de minimale vereisten voor virtuele apparaten.
 
 ### <a name="supported-virtualization-platforms"></a>Ondersteunde virtualisatieplatform
-| **Hypervisor** | **Versie** |
+| **Visor** | **Versie** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 en hoger |
 | VMware ESXi |5,0, 5,5, 6,0 en 6,5. |
@@ -91,10 +91,10 @@ De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worde
 
 | **Poort nummer<sup>1</sup>** | **In of uit** | **Poort bereik** | **Vereist** | **Opmerkingen** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Uit |WAN |Nee |De uitgaande poort wordt gebruikt voor toegang tot internet om updates op te halen. <br></br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd. |
-| TCP 443 (HTTPS) |Uit |WAN |Ja |De uitgaande poort wordt gebruikt voor toegang tot gegevens in de Cloud. <br></br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd. |
-| UDP 53 (DNS) |Uit |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een DNS-server op Internet gebruikt. <br></br> Houd er rekening mee dat bij het implementeren van een bestands server het gebruik van lokale DNS-server wordt aangeraden. |
-| UDP 123 (NTP) |Uit |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een NTP-server op Internet gebruikt.<br></br> Houd er rekening mee dat bij het implementeren van een bestands server de synchronisatie tijd met uw Active Directory domein controllers wordt aanbevolen. |
+| TCP 80 (HTTP) |Af |WAN |Nee |De uitgaande poort wordt gebruikt voor toegang tot internet om updates op te halen. <br></br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd. |
+| TCP 443 (HTTPS) |Af |WAN |Ja |De uitgaande poort wordt gebruikt voor toegang tot gegevens in de Cloud. <br></br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd. |
+| UDP 53 (DNS) |Af |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een DNS-server op Internet gebruikt. <br></br> Houd er rekening mee dat bij het implementeren van een bestands server het gebruik van lokale DNS-server wordt aangeraden. |
+| UDP 123 (NTP) |Af |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een NTP-server op Internet gebruikt.<br></br> Houd er rekening mee dat bij het implementeren van een bestands server de synchronisatie tijd met uw Active Directory domein controllers wordt aanbevolen. |
 | TCP 80 (HTTP) |In |LAN |Ja |Dit is de binnenkomende poort voor lokale gebruikers interface op het StorSimple-apparaat voor lokaal beheer. <br></br> Houd er rekening mee dat toegang tot de lokale gebruikers interface via HTTP automatisch wordt omgeleid naar HTTPS. |
 | TCP 443 (HTTPS) |In |LAN |Ja |Dit is de binnenkomende poort voor lokale gebruikers interface op het StorSimple-apparaat voor lokaal beheer. |
 | TCP 3260 (iSCSI) |In |LAN |Nee |Deze poort wordt gebruikt om toegang te krijgen tot gegevens via iSCSI. |
@@ -120,7 +120,7 @@ We raden u aan om de firewall regels voor uitgaand verkeer, op basis van StorSim
 
 | URL-patroon | Onderdeel/functionaliteit |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-apparaatbeheerfunctie<br>Access Control Service<br>Service Bus van Azure<br>Verificatie service|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-apparaatbeheerfunctie<br>Access Control Service<br>Azure Service Bus<br>Verificatie service|
 | `http://*.backup.windowsazure.com` |Apparaatregistratie |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Certificaat intrekken |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure Storage-accounts en-bewaking |

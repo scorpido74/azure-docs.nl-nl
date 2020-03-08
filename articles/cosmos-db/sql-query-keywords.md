@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250295"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898764"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Tref woorden in Azure Cosmos DB
 In dit artikel worden tref woorden beschreven die kunnen worden gebruikt in Azure Cosmos DB SQL-query's.
@@ -108,7 +108,7 @@ Query's met een statistische systeem functie en een subquery met DISTINCT worden
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>Naast
+## <a name="in"></a>IN
 
 Gebruik het sleutel woord IN om te controleren of een opgegeven waarde overeenkomt met een wille keurige waarde in een lijst. Met de volgende query worden bijvoorbeeld alle familie-items geretourneerd waarbij de `id` is `WakefieldFamily` of `AndersenFamily`.
 
@@ -126,7 +126,9 @@ In het volgende voor beeld worden alle items geretourneerd waarbij de status een
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-De SQL-API biedt ondersteuning voor het [herhalen van JSON-matrices](sql-query-object-array.md#Iteration), waarbij een nieuwe constructie wordt toegevoegd via het sleutel woord in in de bron van. 
+De SQL-API biedt ondersteuning voor het [herhalen van JSON-matrices](sql-query-object-array.md#Iteration), waarbij een nieuwe constructie wordt toegevoegd via het sleutel woord in in de bron van.
+
+Als u de partitie sleutel opneemt in het `IN` filter, wordt de query automatisch gefilterd op de relevante partities.
 
 ## <a name="top"></a>Boven
 
