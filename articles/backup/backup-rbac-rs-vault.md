@@ -5,15 +5,15 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156383"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363720"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
 
-Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over geavanceerd toegangsbeheer voor Azure. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
+Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over geavanceerd toegangsbeheer voor Azure. Met RBAC kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 
 > [!IMPORTANT]
 > Rollen die door Azure Backup worden verschaft, zijn beperkt tot acties die kunnen worden uitgevoerd in Azure Portal of via REST API of Recovery Services kluis Power shell of CLI-cmdlets. Acties die worden uitgevoerd in de gebruikers interface van de Azure backup-agent of System Center Data Protection Manager gebruikers interface of Azure Backup Server gebruikers interface zijn niet van invloed op deze rollen.
@@ -62,7 +62,7 @@ In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende mini
 
 In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende rol vastgelegd die vereist zijn voor het uitvoeren van een Azure file share-bewerking.
 
-| Beheer bewerking | Rol vereist | Resources |
+| Beheer bewerking | Rol vereist | Bronnen |
 | --- | --- | --- |
 | Back-ups van Azure-bestands shares inschakelen | Back-upinzender |Recovery Services-kluis |
 | |Opslagaccount | Resource voor het opslag account Inzender |
@@ -80,6 +80,6 @@ In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende rol 
 * [Op rollen gebaseerd Access Control](../role-based-access-control/role-assignments-portal.md): aan de slag met RBAC in de Azure Portal.
 * Meer informatie over het beheren van toegang met:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
-  * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
-  * [REST API](../role-based-access-control/role-assignments-rest.md)
+  * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
+  * [REST-API](../role-based-access-control/role-assignments-rest.md)
 * [Access Control probleem oplossing op basis van rollen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.

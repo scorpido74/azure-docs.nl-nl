@@ -4,11 +4,11 @@ description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357975"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Snelstartgids: een blauw druk definiëren en toewijzen in de portal
 
@@ -20,7 +20,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. In dit voor beeld maakt u een nieuwe blauw druk met de naam **MyBlueprint** om rollen en beleids toewijzingen voor het abonnement te configureren. Vervolgens voegt u een nieuwe resource groep toe en maakt u een resource manager-sjabloon en roltoewijzing voor de nieuwe resource groep.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. In dit voor beeld maakt u een nieuwe blauw druk met de naam **MyBlueprint** om rollen en beleids toewijzingen voor het abonnement te configureren. Vervolgens voegt u een nieuwe resource groep toe en maakt u een resource manager-sjabloon en roltoewijzing voor de nieuwe resource groep.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
@@ -272,7 +272,7 @@ Nu de blauw druk is toegewezen aan een abonnement, controleert u de voortgang va
 
 ### <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
 
-Als u een blauw druk-toewijzing niet meer nodig hebt, verwijdert u deze uit een abonnement. De blauw druk is mogelijk vervangen door een nieuwe blauw druk met bijgewerkte patronen, beleids regels en ontwerpen. Wanneer een blauwdruk wordt verwijderd, blijven de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achter. Voer de volgende stappen uit als u een blauwdruktoewijzing wilt verwijderen:
+Als u een blauw druk-toewijzing niet meer nodig hebt, verwijdert u deze uit een abonnement. De blauw druk is mogelijk vervangen door een nieuwe blauw druk met bijgewerkte patronen, beleids regels en ontwerpen. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Voer de volgende stappen uit als u een blauwdruktoewijzing wilt verwijderen:
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 

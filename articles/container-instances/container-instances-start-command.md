@@ -4,11 +4,11 @@ description: Een opdracht regel instellen om het toegangs punt in een container 
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533412"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365156"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Stel de opdracht regel in een container exemplaar in om de standaard opdracht regel bewerking te overschrijven
 
@@ -52,7 +52,7 @@ De syntaxis van de opdracht regel is afhankelijk van de API of het hulp programm
 
 ### <a name="examples"></a>Voorbeelden
 
-|    |  Azure CLI   | Portal | Sjabloon | 
+|    |  Azure CLI   | Portal | Template | 
 | ---- | ---- | --- | --- |
 | Eén opdracht | `--command-line "python myscript.py arg1 arg2"` | **Opdracht negeren**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | Meerdere opdrachten | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Opdracht negeren**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |

@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391037"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-platform logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
 [Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel wordt beschreven hoe u bron logboeken verzamelt in een Log Analytics-werk ruimte, waarmee u het kunt analyseren met andere bewakings gegevens die zijn verzameld in Azure Monitor logboeken met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. 
@@ -54,7 +54,7 @@ Bekijk het volgende voor beeld waarin Diagnostische instellingen worden verzamel
 
 De tabel AzureDiagnostics ziet er als volgt uit:  
 
-| ResourceProvider    | Categorie     | A  | B  | C  | D  | E  | F  | Kg  | H  | I  |
+| ResourceProvider    | Category     | A  | B  | C  | D  | E  | F  | Kg  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Micro soft. Service1 | Audit logs bevat    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Micro soft. Service1 | ErrorLogs    |    |    |    | q1 | W1 | e1 |    |    |    |
@@ -71,7 +71,7 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
  
 - Tabel *Service1AuditLogs* als volgt:
 
-    | Resource provider | Categorie | A | B | C |
+    | Resource provider | Category | A | B | C |
     | -- | -- | -- | -- | -- |
     | Service1 | Audit logs bevat | x1 | y1 | z1 |
     | Service1 | Audit logs bevat | x5 | y5 | z5 |
@@ -79,7 +79,7 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
 - Tabel *Service1ErrorLogs* als volgt:  
 
-    | Resource provider | Categorie | D | E | F |
+    | Resource provider | Category | D | E | F |
     | -- | -- | -- | -- | -- | 
     | Service1 | ErrorLogs |  q1 | W1 | e1 |
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
@@ -87,7 +87,7 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
 - Tabel *Service2AuditLogs* als volgt:  
 
-    | Resource provider | Categorie | Kg | H | I |
+    | Resource provider | Category | Kg | H | I |
     | -- | -- | -- | -- | -- |
     | Service2 | Audit logs bevat | j1 | k1 | l1|
     | Service2 | Audit logs bevat | j3 | k3 | l3|

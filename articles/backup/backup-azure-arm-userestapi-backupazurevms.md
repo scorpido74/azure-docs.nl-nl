@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450162"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395567"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -41,10 +41,10 @@ De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204 geen inhoud     |         |  OK zonder geretourneerde inhoud      |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Accepted    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -104,7 +104,7 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 #### <a name="responses-1"></a>Rapporten
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Als u een beveiligd item wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-resource-eigenschappen         |
 
@@ -208,10 +208,10 @@ Het maken van een beveiligd item is een [asynchrone bewerking](https://docs.micr
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Accepted    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-eigenschappen         |
 
@@ -319,9 +319,9 @@ Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Accepted    |
 
 #### <a name="example-responses-3"></a>Voorbeeld reacties
 
@@ -439,10 +439,10 @@ Beveiliging *verwijderen* is een [asynchrone bewerking](https://docs.microsoft.c
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 204 (geen inhoud) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Beschrijving  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204-tekst     |         |  NoContent       |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Accepted    |
 
 > [!IMPORTANT]
 > Ter bescherming tegen onbedoelde verwijderings scenario's is er een functie voor het verwijderen van de Recovery Services [-kluis beschikbaar](use-restapi-update-vault-properties.md#soft-delete-state) . Als de voorlopig verwijderings status van de kluis is ingesteld op ingeschakeld, worden de gegevens niet direct verwijderd met de verwijderings bewerking. Het wordt 14 dagen bewaard en vervolgens permanent verwijderd. Er worden geen kosten in rekening gebracht voor de klant voor deze periode van 14 dagen. Als u de verwijderings bewerking ongedaan wilt maken, raadpleegt u de [sectie ongedaan maken-verwijderen](#undo-the-stop-protection-and-delete-data).

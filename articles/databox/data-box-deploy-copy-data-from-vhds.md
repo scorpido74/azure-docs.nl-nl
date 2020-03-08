@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380175"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelf studie: Data Box gebruiken om gegevens te importeren als beheerde schijven in azure
 
@@ -80,7 +80,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ bij de opdrachtprompt:
+3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ in de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 

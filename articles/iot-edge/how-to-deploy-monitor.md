@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396764"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeren en bewaken van IoT Edge-modules op schaal met Azure portal
 
@@ -24,7 +24,7 @@ Zie [informatie over IOT Edge automatische implementaties voor één apparaat of
 
 ## <a name="identify-devices-using-tags"></a>Identificatie van apparaten met behulp van tags
 
-Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge-apparaten met identificeert **tags** op het dubbele apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing.
+Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge identificeert apparaten met behulp van **Tags** op het apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing.
 
 Als u bijvoorbeeld een campus van Smart gebouwen beheert, kunt u locatie, type room en omgevings Tags toevoegen aan een apparaat:
 
@@ -39,7 +39,7 @@ Als u bijvoorbeeld een campus van Smart gebouwen beheert, kunt u locatie, type r
 }
 ```
 
-Zie voor meer informatie over apparaatdubbels en tags [apparaatdubbels begrijpen en gebruiken in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Zie voor meer informatie over apparaatdubbels en tags voor apparaten [inzicht in de apparaatdubbels in IOT hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Een implementatie maken
 
@@ -79,16 +79,16 @@ Aangepaste code als een module toevoegen of handmatig toevoegen van een Azure-se
 1. Klik in de sectie **IOT Edge modules** van de pagina op **toevoegen**.
 1. Selecteer **IOT Edge module** in de vervolg keuzelijst.
 1. Geef uw module een **IOT Edge module naam**.
-1. Voor de **URI installatiekopie** veld, voert u de container-installatiekopie voor uw module.
-1. Gebruik de vervolgkeuzelijst om te selecteren een **beleid voor opnieuw opstarten**. Kies uit de volgende opties:
+1. Voer voor het veld **afbeeldings-URI** de container installatie kopie voor uw module in.
+1. Gebruik de vervolg keuzelijst om een **beleid voor opnieuw opstarten**te selecteren. Kies in de volgende opties:
    * **altijd** : de module wordt altijd opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
    * **nooit** : de module wordt nooit opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
    * **on-failure** -de module wordt opnieuw opgestart als deze crasht, maar niet als deze wordt uitgeschakeld.
    * **bij een slechte** status: de module wordt opnieuw opgestart als deze niet meer reageert of een slecht resultaat heeft. Het is aan elke module voor het implementeren van de functie voor health-status.
-1. Gebruik de vervolgkeuzelijst om te selecteren de **gewenste Status** voor de module. Kies uit de volgende opties:
+1. Gebruik de vervolg keuzelijst om de **gewenste status** voor de module te selecteren. Kies in de volgende opties:
    * **actieve** uitvoering is de standaard optie. De module wordt gestart onmiddellijk na de implementatie wordt uitgevoerd.
    * **gestopt** : na de implementatie blijft de module inactief totdat het starten van u of een andere module wordt aangeroepen.
-1. Geef een **Container maken opties** die moeten worden doorgegeven aan de container. Zie voor meer informatie, [docker maken](https://docs.docker.com/engine/reference/commandline/create/).
+1. Geef de **Opties** voor het maken van containers op die moeten worden door gegeven aan de container. Zie [docker Create](https://docs.docker.com/engine/reference/commandline/create/)(Engelstalig) voor meer informatie.
 1. Selecteer de **dubbele instellingen** voor de module als u labels of andere eigenschappen wilt toevoegen aan de module dubbele.
 1. Voer **omgevings variabelen** voor deze module in. Omgevings variabelen bieden configuratie-informatie aan een module.
 1. Selecteer **toevoegen** om uw module toe te voegen aan de implementatie.
@@ -109,7 +109,7 @@ Als u wilt toevoegen een module van Azure Stream Analytics, de volgende stappen 
 1. Selecteer **Azure stream Analytics module** in de vervolg keuzelijst.
 1. Kies uw **abonnement**in het rechterdeel venster.
 1. Kies uw IoT **Edge-taak**.
-1. Selecteer **opslaan** uw module toevoegen aan de implementatie.
+1. Selecteer **Opslaan** om uw module toe te voegen aan de implementatie.
 
 #### <a name="configure-module-settings"></a>Module-instellingen configureren
 
@@ -127,7 +127,7 @@ Zodra u alle modules voor een implementatie hebt geconfigureerd, selecteert u **
 
 Routes definiëren hoe modules met elkaar communiceren binnen een implementatie. De wizard geeft standaard een route met de naam **upstream** en gedefinieerd als **van/messages/\* naar $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
 
-Toevoegen of bijwerken van de routes met gegevens uit [declareren routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie controleren.
+Voeg de routes toe of werk deze bij met informatie van de [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie beoordeling.
 
 Selecteer **volgende: metrische gegevens**.
 
@@ -158,8 +158,8 @@ Als meerdere implementaties gericht zijn op hetzelfde apparaat, wordt er alleen 
 
 Een gelaagde implementatie die gericht is op een apparaat, moet een hogere prioriteit hebben dan de basis implementatie om toe te passen.
 
-1. Voer een positief geheel getal voor de implementatie **prioriteit**.
-1. Voer een **voorwaarde als doel** om te bepalen welke apparaten doelgroepen voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test'` of `properties.reported.devicemodel='4000x'`.
+1. Voer een positief geheel getal in voor de implementatie **prioriteit**.
+1. Geef een **doel voorwaarde** op om te bepalen welke apparaten worden bedoeld voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test'` of `properties.reported.devicemodel='4000x'`.
 
 Selecteer **volgende: controleren + maken** om door te gaan naar de laatste stap.
 
@@ -172,17 +172,17 @@ Controleer uw implementatie gegevens en selecteer vervolgens **maken**.
 Bekijk de details van een implementatie en controleren van de apparaten waarop deze wordt uitgevoerd, gebruikt u de volgende stappen uit:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT hub.
-1. Selecteer **IoT Edge**.
+1. Selecteer **IOT Edge**.
 1. Selecteer het tabblad **IOT Edge implementaties** .
 
    ![IoT Edge-implementaties weergeven](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Controleer de implementatie-lijst. Voor elke implementatie kunt u de volgende gegevens bekijken:
-   * **ID** -de naam van de implementatie.
+   * **Id** : de naam van de implementatie.
    * **Type** : het type implementatie, **implementatie** of **gelaagde implementatie**.
    * **Doel voorwaarde** : de tag die wordt gebruikt voor het definiëren van de doel apparaten.
-   * **Prioriteit** -het getal prioriteit is toegewezen aan de implementatie.
-   * **Systeemmeetgegevens** - **Targeted** Hiermee geeft u het aantal dubbele apparaten in IoT-Hub die overeenkomen met de doelitems voorwaarde, en **toegepast** geeft het aantal apparaten waarvoor was de implementatie-inhoud toegepast op hun moduledubbels in IoT Hub.
+   * **Prioriteit** : het prioriteits nummer dat is toegewezen aan de implementatie.
+   * Met de **metrische gegevens van systeem** - **doel** wordt het aantal apparaatdubbels in IOT hub aangegeven dat overeenkomt met de doel voorwaarde en **toegepast** , wordt het aantal apparaten aangegeven waarop de implementatie-inhoud is toegepast op hun module apparaatdubbels in IOT hub.
    * **Metrische gegevens van apparaat** : het aantal IOT edge-apparaten in het geslaagde of fouten rapport van de IOT Edge-client runtime.
    * **Aangepaste metrieken** : het aantal IOT edge-apparaten in de implementatie rapport gegevens voor de metrieken die u voor de implementatie hebt gedefinieerd.
    * **Aanmaak tijd** : de tijds tempel van het moment waarop de implementatie is gemaakt. Dit tijdstempel wordt gebruikt om ties afbreken wanneer twee implementaties dezelfde prioriteit hebben.
@@ -202,7 +202,7 @@ Als u de doelvoorwaarde bijwerkt, gebeuren de volgende updates:
 Als u wilt wijzigen in een implementatie, gebruikt u de volgende stappen uit:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT hub.
-1. Selecteer **IoT Edge**.
+1. Selecteer **IOT Edge**.
 1. Selecteer het tabblad **IOT Edge implementaties** .
 
    ![IoT Edge-implementaties weergeven](./media/how-to-deploy-monitor/iot-edge-deployments.png)
@@ -213,18 +213,18 @@ Als u wilt wijzigen in een implementatie, gebruikt u de volgende stappen uit:
    * **Metrische gegevens** : u kunt metrische gegevens die u hebt gedefinieerd, wijzigen of verwijderen of nieuwe toevoegen.
    * **Labels**
    * **Modules**
-   * **Routes**
+   * **Stuurt**
    * **Implementatie**
 
 1. Selecteer **Opslaan**.
-1. Volg de stappen in [Controleer de implementatie van een](#monitor-a-deployment) om te bekijken van de wijzigingen worden uitgerold.
+1. Volg de stappen in [een implementatie controleren](#monitor-a-deployment) om de wijzigingen door te voeren.
 
 ## <a name="delete-a-deployment"></a>Een implementatie verwijderen
 
 Wanneer u een implementatie verwijdert, nemen alle geïmplementeerde apparaten de volgende implementatie van de hoogste prioriteit. Als uw apparaten niet voldoen aan de doelvoorwaarde van elke andere implementatie, klikt u vervolgens de modules niet verwijderd wanneer de implementatie wordt verwijderd.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT hub.
-1. Selecteer **IoT Edge**.
+1. Selecteer **IOT Edge**.
 1. Selecteer het tabblad **IOT Edge implementaties** .
 
    ![IoT Edge-implementaties weergeven](./media/how-to-deploy-monitor/iot-edge-deployments.png)

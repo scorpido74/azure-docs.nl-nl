@@ -4,11 +4,11 @@ description: Azure Policy definities hebben verschillende effecten die bepalen h
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355109"
 ---
 # <a name="understand-azure-policy-effects"></a>Informatie over Azure Policy-effecten
 
@@ -95,7 +95,7 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **[\*]** - [alia
 }
 ```
 
-## <a name="modify"></a>Wijzigen
+## <a name="modify"></a>wijzigen
 
 Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Voor een wijzigings beleid moet altijd `mode` zijn ingesteld op _geïndexeerd_ , tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
 

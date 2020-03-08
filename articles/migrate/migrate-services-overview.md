@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772190"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361925"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -79,7 +79,7 @@ Server assessment maakt gebruik van een licht gewicht dat u on-premises implemen
 Het Azure Migrate: hulp programma voor Server Migratie helpt u bij het migreren van on-premises virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, andere gevirtualiseerde machines en open bare Cloud-Vm's naar Azure. U kunt machines migreren nadat u ze hebt geëvalueerd, of ze migreren zonder een evaluatie.
 
 
-## <a name="select-a-tool"></a>Hulpprogramma selecteren
+## <a name="select-a-tool"></a>Selecteer een hulp programma
 
 In de Azure Migrate hub selecteert u het hulp programma dat u wilt gebruiken voor de evaluatie en voegt u het toe aan een Azure Migrate-project. Als u een ISV-hulp programma of een verwerkings functie toevoegt:
 

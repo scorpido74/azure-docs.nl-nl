@@ -8,11 +8,11 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
 ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358898"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Overzicht: wat is Azure Logic Apps?
 
@@ -104,7 +104,7 @@ Maak uw logische apps als Azure Resource Manager sjablonen, zodat u de [implemen
 
 Als u de connector die u wilt uitvoeren van aangepaste code niet vindt, kunt u logische apps uitbreiden door uw eigen code fragmenten op aanvraag via [Azure functions](../azure-functions/functions-overview.md)te maken en aan te roepen. Maak uw eigen [API's](../logic-apps/logic-apps-create-api-app.md) en [aangepaste connectors](../logic-apps/custom-connector-overview.md) die u kunt aanroepen vanuit logic apps.
 
-### <a name="pay-only-for-what-you-use"></a>Uitsluitend betalen voor wat u gebruikt
+### <a name="pay-only-for-what-you-use"></a>Alleen betalen voor wat u gebruikt
   
 Logic Apps gebruikt [prijzen en metingen](../logic-apps/logic-apps-pricing.md) op basis van verbruik tenzij u eerder logische apps hebt gemaakt met App Service-plannen.
 

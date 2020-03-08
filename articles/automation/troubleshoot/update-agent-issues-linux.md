@@ -10,11 +10,11 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769826"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372962"
 ---
 # <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>De status van Linux Hybrid Runbook Worker voor Updatebeheer begrijpen en oplossen
 
@@ -36,9 +36,9 @@ Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gere
 ![de pagina van de VM-lijst](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> De controles moeten de virtuele machine worden uitgevoerd. Als de virtuele machine wordt niet uitgevoerd krijgt u een knop **Start de virtuele machine**.
+> De controles moeten de virtuele machine worden uitgevoerd. Als de VM niet wordt uitgevoerd, wordt er een knop weer gegeven voor **het starten van de virtuele machine**.
 
-Op de **Update-Agent oplossen** pagina, klikt u op **uitvoeren controleert**, de probleemoplosser voor starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/linux/run-command.md) om een script uit te voeren op de machine om de afhankelijkheden te controleren. Wanneer de probleemoplosser voor voltooid is, wordt het resultaat van de controles.
+Klik op de pagina **Update agent oplossen** op **controles uitvoeren**om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/linux/run-command.md) om een script uit te voeren op de machine om de afhankelijkheden te controleren. Wanneer de probleemoplosser voor voltooid is, wordt het resultaat van de controles.
 
 ![Pagina oplossen](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -63,7 +63,7 @@ De controle van het besturings systeem controleert of op de Hybrid Runbook Worke
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
-Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux is geïnstalleerd. Zie voor instructies over hoe u deze installeert, [de agent voor Linux installeren](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux is geïnstalleerd. Zie voor instructies over het installeren van [de agent voor Linux installeren](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="log-analytics-agent-status"></a>Status van Log Analytics agent
@@ -84,7 +84,7 @@ Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het H
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker-status
 
-Deze controle zorgt ervoor dat de Hybrid Runbook Worker wordt uitgevoerd op de machine. De volgende processen moet aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd. Zie voor meer informatie, [probleemoplossing van de Log Analytics-Agent voor Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+Deze controle zorgt ervoor dat de Hybrid Runbook Worker wordt uitgevoerd op de machine. De volgende processen moet aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd. Zie [problemen met de log Analytics-agent voor Linux oplossen](hybrid-runbook-worker.md#oms-agent-not-running)voor meer informatie.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -102,13 +102,13 @@ Deze controle zorgt ervoor dat de computer toegang tot internet heeft.
 
 Met deze controle wordt bepaald of de Hybrid Runbook Worker goed kan communiceren met Azure Automation de Log Analytics-werk ruimte.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie voor een lijst van adressen en poorten te openen, [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met adressen en poorten die moeten worden geopend.
 
 ### <a name="operations-endpoint"></a>Operations-eindpunt
 
 Deze controle bepaalt als de agent correct met de taak-Runtime-gegevens-Service communiceren kan.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie voor een lijst van adressen en poorten te openen, [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met adressen en poorten die moeten worden geopend.
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics-eindpunt 1
 
@@ -124,7 +124,7 @@ Deze controle alleen gecontroleerd dat de computer toegang tot de eindpunten die
 
 ## <a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleemoplosser voor offline gebruiken op een Hybrid Runbook Worker door het script lokaal worden uitgevoerd. Het python-script [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) kunt u vinden in de Script Center. Een voorbeeld van de uitvoer van dit script wordt weergegeven in het volgende voorbeeld:
+U kunt de probleemoplosser voor offline gebruiken op een Hybrid Runbook Worker door het script lokaal worden uitgevoerd. Het python-script, [update_mgmt_health_check. py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) , vindt u in Script Center. Een voorbeeld van de uitvoer van dit script wordt weergegeven in het volgende voorbeeld:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

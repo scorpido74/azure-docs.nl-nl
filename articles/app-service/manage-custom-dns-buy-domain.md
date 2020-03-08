@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023409"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375197"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Een aangepaste domein naam voor Azure App Service kopen
 
@@ -20,7 +20,7 @@ Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://azure.g
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 * [Verwijder de bestedings limiet voor uw abonnement](../cost-management-billing/manage/spending-limit.md#remove). U kunt geen App Service domeinen kopen met gratis abonnements tegoeden.
@@ -59,7 +59,7 @@ Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina
 
 Selecteer een van de lagen die niet gratis zijn (**D1**, **B1**, **B2**, **B3** of een laag in de categorie **Productie**). Klik op **Aanvullende opties bekijken** voor aanvullende opties.
 
-Klik op **Toepassen**.
+Klik op **Apply** (Toepassen).
 
 ![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

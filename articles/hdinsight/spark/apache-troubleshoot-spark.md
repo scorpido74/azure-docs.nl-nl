@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894288"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395126"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark oplossen met behulp van Azure HDInsight
 
@@ -31,25 +31,25 @@ Spark-configuratie waarden kunnen worden afgestemd om te voor komen dat een Apac
 
 1. Selecteer in de lijst met configuraties de **Opties Custom-spark2-defaults**.
 
-1. Zoek de instelling van de waarde die u nodig hebt om aan te passen, zoals **spark.executor.memory**. In dit geval is de waarde van **9728m** te hoog.
+1. Zoek naar de waarde-instelling die u moet aanpassen, zoals Spark. uitvoerder **. geheugen**. In dit geval is de waarde van **9728m** te hoog.
 
     ![Selecteer de aangepaste-spark-standaardinstellingen](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. Stel de waarde in op de aanbevolen instelling. De waarde **2048m** voor deze instelling wordt aanbevolen.
+1. Stel de waarde in op de aanbevolen instelling. De waarde **2048m** wordt aanbevolen voor deze instelling.
 
 1. Sla de waarde en sla vervolgens de configuratie. Selecteer **Opslaan**.
 
     ![Waarde wijzigen naar 2048 min.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Voeg een opmerking over wijzigingen in de configuratie en selecteer vervolgens **opslaan**.
+    Schrijf een opmerking over de configuratie wijzigingen en selecteer vervolgens **Opslaan**.
 
     ![Voer een opmerking over de wijzigingen die u hebt gemaakt](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    U wordt gewaarschuwd als de configuraties vereisen aandacht. Houd er rekening mee de items en selecteer vervolgens **toch doorgaan**.
+    U wordt gewaarschuwd als de configuraties vereisen aandacht. Noteer de items en selecteer vervolgens **door gaan**.
 
     ![Selecteer Doorgaan toch](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Wanneer een configuratie is opgeslagen, wordt u gevraagd de service opnieuw te starten. Selecteer **opnieuw**.
+1. Wanneer een configuratie is opgeslagen, wordt u gevraagd de service opnieuw te starten. Selecteer **opnieuw opstarten**.
 
     ![Opnieuw opstarten selecteren](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,13 +61,13 @@ Spark-configuratie waarden kunnen worden afgestemd om te voor komen dat een Apac
 
     ![Actieve processen controleren](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. U kunt configuraties toevoegen. Selecteer in de lijst met configuraties **aangepaste-spark2-standaardinstellingen**, en selecteer vervolgens **eigenschap toevoegen**.
+1. U kunt configuraties toevoegen. Selecteer in de lijst met configuraties de **Opties aangepast-spark2-standaard**en selecteer vervolgens **eigenschap toevoegen**.
 
     ![Selecteer toevoegen de eigenschap](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Een nieuwe eigenschap definiëren. U kunt één eigenschap definiëren met behulp van een dialoogvenster voor specifieke instellingen, zoals het gegevenstype. Of u kunt meerdere eigenschappen definiëren met behulp van één definitie per regel.
 
-    In dit voorbeeld wordt de **spark.driver.memory** eigenschap is gedefinieerd met een waarde van **4g**.
+    In dit voor beeld is de eigenschap **Spark. drivers. Memory** gedefinieerd met de waarde **4G**.
 
     ![Nieuwe eigenschap definiëren](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
@@ -77,7 +77,7 @@ Deze wijzigingen zijn brede, door het cluster, maar kunnen worden overschreven w
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hoe configureer ik een Apache Spark-toepassing met behulp van een Jupyter-notebook op clusters?
 
-In de eerste cel van de Jupyter-notebook nadat de **%% configureren** richtlijn, geeft u de Spark-configuraties in geldige JSON-indeling. De werkelijke waarden zo nodig wijzigen:
+In de eerste cel van de Jupyter-notebook, na de instructie **%% Configure** , geeft u de Spark-configuraties in een geldige JSON-indeling op. De werkelijke waarden zo nodig wijzigen:
 
 ![Een configuratie toevoegen](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
@@ -99,7 +99,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 ### <a name="additional-reading"></a>Meer lezen
 
-[Verzenden van taken voor Apache Spark op HDInsight-clusters](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Verzen ding van taken Apache Spark op HDInsight-clusters](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

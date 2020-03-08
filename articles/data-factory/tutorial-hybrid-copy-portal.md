@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 01f2644874da032b95162f3f5721ab9dbea74265
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974715"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393439"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
 In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory om een pijplijn voor een data factory te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd.
@@ -27,12 +27,12 @@ In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maken voor SQL Server en Azure Storage.
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Een pijplijnuitvoering starten.
+> * Een pijplijnuitvoering starten
 > * Controleer de pijplijnuitvoering.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -78,7 +78,7 @@ In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voe
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met uw Azure-gebruikersnaam en -wachtwoord.
 
-1. Selecteer **Alle services** in het linkerdeelvenster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
+1. Selecteer **alle services**in het linkerdeel venster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
 
     ![Zoeken naar Storage-account](media/doc-common-process/search-storage-account.png)
 
@@ -113,7 +113,7 @@ In deze stap maakt u een data factory en start u de Data Factory-gebruikersinter
 
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
-   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
    ![Naam nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
@@ -153,7 +153,7 @@ In deze stap maakt u een data factory en start u de Data Factory-gebruikersinter
 
 1. Voer in het dialoog venster **Eigenschappen instellen** onder **naam** **SqlServerDataset**in. Onder **gekoppelde service**selecteert u **+ Nieuw**. In deze stap maakt u een verbinding met het brongegevensexemplaar (SQL Server-database).
 
-1. Voeg in het dialoog venster **nieuwe gekoppelde service** **naam** toe als **SqlServerLinkedService**. Selecteer **+ Nieuw**onder **verbinden via Integration runtime**.  In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Blob Storage.
+1. Voeg in het dialoog venster **nieuwe gekoppelde service** **naam** toe als **SqlServerLinkedService**. Selecteer **+ Nieuw**onder **verbinden via Integration runtime**.  In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server-database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server-database op uw computer naar Blob Storage.
 
 1. Selecteer in het dialoog venster **Integration runtime instellen** de optie **zelf gehost**en selecteer vervolgens **volgende**.
 
@@ -240,12 +240,12 @@ De uitvoermap *fromonprem* wordt automatisch door de pijplijn gemaakt in de `adf
 Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in Blob Storage. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Een zelf-hostende Integration Runtime maken.
 > * Gekoppelde services maakt voor SQL Server en Storage.
 > * Gegevenssets maakt voor SQL Server en Blob Storage.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
-> * Een pijplijnuitvoering starten.
+> * Een pijplijnuitvoering starten
 > * Controleer de pijplijnuitvoering.
 
 Zie [Ondersteunde gegevensopslagexemplaren](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslagexemplaren die worden ondersteund door Data Factory.

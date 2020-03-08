@@ -4,11 +4,11 @@ description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769027"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358247"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -156,11 +156,11 @@ Met functies kunt u de Java Virtual Machine (JVM) aanpassen die wordt gebruikt o
 
 U kunt aanvullende argumenten opgeven in een app-instelling met de naam `JAVA_OPTS`. U kunt app-instellingen toevoegen aan de functie-app die is geïmplementeerd in Azure in de Azure Portal of de Azure CLI.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Gebruik in het [Azure Portal](https://portal.azure.com)het [tabblad toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings) om de instelling `JAVA_OPTS` toe te voegen.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 U kunt de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) gebruiken om `JAVA_OPTS`in te stellen, zoals in het volgende voor beeld:
 
@@ -331,7 +331,7 @@ U kunt deze functie aanroepen op een HttpRequest. Er worden meerdere waarden naa
 
  Deze worden gedefinieerd in `azure-functions-java-library`. Dit zijn de typen hulp voor het werken met http trigger-functies.
 
-| Gespecialiseerd type      |       Kiezen        | Typisch gebruik                  |
+| Gespecialiseerd type      |       Doel        | Typisch gebruik                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP-trigger     | Hiermee wordt een methode, koptekst of query opgehaald |
 | `HttpResponseMessage` | HTTP-uitvoer binding | Retourneert een andere status dan 200   |

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: sutalasi
 ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759820"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362594"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -60,7 +60,7 @@ Als u een NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze se
 - Alle IP-adresbereiken die overeenkomen met de opslag accounts in de bron regio
     - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.
     - Sta deze adressen toe zodat gegevens kunnen worden geschreven naar het cache-opslag account van de VM.
-- Maak een [Azure Active Directory (AAD)-servicetag](../virtual-network/security-overview.md#service-tags) op basis van NSG-regel voor het toestaan van toegang tot alle IP-adressen die overeenkomen met AAD
+- Een op NSG [(Aad)-service codes](../virtual-network/security-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
 - Maak een EventsHub op basis van een NSG-regel voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
 - Maak een AzureSiteRecovery op basis van een NSG-regel voor het toestaan van toegang tot Site Recovery service in een wille keurige regio.
 - We raden u aan de vereiste NSG-regels te maken op een test-NSG en te controleren of er geen problemen zijn voordat u de regels op een productie NSG maakt.

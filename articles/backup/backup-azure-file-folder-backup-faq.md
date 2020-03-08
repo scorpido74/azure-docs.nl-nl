@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden en mappen-Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425065"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673088"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -149,7 +149,7 @@ De cachemap en de meta gegevens-VHD hebben niet de benodigde kenmerken voor de A
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Is er een manier om de hoeveelheid band breedte die voor de back-up wordt gebruikt, aan te passen?
 
-Ja, u kunt de optie **Eigenschappen wijzigen** in de Mars-agent gebruiken om de band breedte en de timing aan te passen. [Meer informatie](backup-configure-vault.md#enable-network-throttling).
+Ja, u kunt de optie **Eigenschappen wijzigen** in de Mars-agent gebruiken om de band breedte en de timing aan te passen. [Meer informatie](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Herstellen
 
