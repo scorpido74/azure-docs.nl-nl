@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250925"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899189"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
 
 1. Blijf [op de gebruikelijke manier door gaan met het maken van uw logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-   Zie [geïsoleerd versus Global in het overzicht van ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)voor meer informatie over hoe triggers en acties werken en hoe ze worden gelabeld wanneer u een ISE gebruikt vergeleken met de service Global Logic apps.
+   Zie [geïsoleerd versus multi tenant in het overzicht van ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)voor meer informatie over hoe triggers en acties werken en hoe ze worden gelabeld wanneer u een ISE gebruikt vergeleken met de multi tenant-Logic apps service.
 
 1. Zie [uw integratie service omgeving beheren](../logic-apps/ise-manage-integration-service-environment.md)als u logische apps en API-verbindingen in uw ISE wilt beheren.
 
