@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: dapine
-ms.openlocfilehash: 7bac943a4550103a941fbd812381e34ab2de2454
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 8c980d4aac5c864e83cddfad00fe6030840d1370
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445753"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925603"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -22,8 +22,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=vs)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

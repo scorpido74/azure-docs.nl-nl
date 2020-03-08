@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 447b42fe3fce3baa5b50f8333892a39464b7ee3f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: HT
+ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668547"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925902"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -22,8 +22,7 @@ Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 Als u dit al hebt gedaan, is dit geweldig. Laten we verder gaan.

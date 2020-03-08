@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383915"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925894"
 ---
-In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor 64-bits Java 8 jre.
+In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor 64-bits Java 8 jre. Als u alleen de naam van het pakket wilt laten beginnen, is de Java-SDK niet beschikbaar in de Maven-centrale opslag plaats. Of u nu Gradle of een `pom.xml` afhankelijkheids bestand gebruikt, u moet een aangepaste opslag plaats toevoegen die verwijst naar `https://csspeechstorage.blob.core.windows.net/maven/` (zie hieronder voor de naam van het pakket).
 
 > [!NOTE]
 > Zie [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md) voor de Speech Devices-SDK en het Roobo-apparaat.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 19/14/2020
 ms.author: dapine
-ms.openlocfilehash: c626d794b60a129eb800085804a468dfad060d8a
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384013"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925697"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,8 +23,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
 
 ## <a name="support-and-updates"></a>Ondersteuning en updates
 

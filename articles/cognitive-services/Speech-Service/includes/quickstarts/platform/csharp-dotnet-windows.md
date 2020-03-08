@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468229"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925596"
 ---
-In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor .NET Framework (Windows) installeert.
+In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor .NET Framework (Windows) installeert. Als u alleen de naam van het pakket wilt gebruiken om aan de slag te gaan, voert u `Install-Package Microsoft.CognitiveServices.Speech` uit in de NuGet-console.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -55,7 +55,7 @@ U moet het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) installeren,
 
 1. Klik in de Solution Explorer met de rechter muisknop op het project **HelloWorld** en selecteer vervolgens **NuGet-pakketten beheren** om de NuGet-pakket manager weer te geven.
 
-   ![NuGet Package Manager](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
+   ![NuGet-pakket beheer](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
 1. Zoek in de rechter bovenhoek de vervolg keuzelijst **pakket bron** en zorg ervoor dat **`nuget.org`** is geselecteerd.
 
@@ -71,7 +71,21 @@ U moet het [Speech SDK NuGet-pakket](https://aka.ms/csspeech/nuget) installeren,
 
    Nadat het pakket is geïnstalleerd, wordt er een bevestiging weer gegeven in het console venster van **Package Manager** .
 
-U kunt nu door gaan naar de [volgende stappen](#next-steps) .
+### <a name="choose-target-architecture"></a>Doel architectuur kiezen
+
+Maak een platform configuratie die overeenkomt met de architectuur van uw computer om de console toepassing te bouwen en uit te voeren.
+
+1. Selecteer in de menu balk de optie **Build** > **Configuration Manager**. Het dialoog venster **Configuration Manager** wordt weer gegeven.
+
+   ![Het dialoog venster Configuration Manager](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. Selecteer in de vervolg keuzelijst **actief oplossings platform** **nieuwe**. Het dialoog venster **nieuw platform voor oplossingen** wordt weer gegeven.
+
+1. **Typ of selecteer** in het vak de vervolg keuzelijst nieuw platform:
+   - Als u een 64-bits versie van Windows gebruikt, selecteert u **x64**.
+   - Als u een 32-bits versie van Windows gebruikt, selecteert u **x86**.
+
+1. Selecteer **OK** en vervolgens **sluiten**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

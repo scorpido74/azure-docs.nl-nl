@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383464"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926056"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelf studie: een Tenant maken in Windows Virtual Desktop
 
@@ -72,7 +72,7 @@ Als u een Azure Active Directory gebruiker toewijst, kan die gebruiker met de to
 
 De toepassingsrol van de TenantCreator toewijzen:
 
-1. Ga naar het [Azure Portal](https://portal.azure.com) om de toepassingsrol TenantCreator te beheren. Zoek en selecteer **bedrijfs toepassingen**. Als u met meerdere Azure Active Directory tenants werkt, is het een best practice om een persoonlijke browser sessie te openen en de Url's te kopiëren en in de adres balk te plakken.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om de TenantCreator te beheren. Zoek en selecteer **bedrijfs toepassingen**. Als u met meerdere Azure Active Directory tenants werkt, is het een best practice om een persoonlijke browser sessie te openen en de Url's te kopiëren en in de adres balk te plakken.
 
    ![Scherm opname van het zoeken naar zakelijke toepassingen in de Azure Portal](media/azure-portal-enterprise-applications.png)
 2. Zoek in **bedrijfs toepassingen**naar **virtueel bureau blad van Windows**. In de vorige sectie ziet u de twee toepassingen waarvoor u toestemming hebt gegeven. Van deze twee apps selecteert u **virtueel bureau blad van Windows**.

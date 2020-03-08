@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/30/2020
 ms.author: dapine
-ms.openlocfilehash: 4e8d100000e7191c77c09a1b2e4c28088e247d8f
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: b326f7ebcec3c371839d9bccb95e8bedf9768f1c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384048"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924709"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,8 +23,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een LUIS-toepassing maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?pivots=programming-language-python)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

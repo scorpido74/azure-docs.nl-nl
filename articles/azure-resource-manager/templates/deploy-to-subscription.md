@@ -2,17 +2,23 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e747b7faa6e9766a577b472cc3e283d6223109e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/06/2020
+ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379125"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925514"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
-Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op abonnements niveau. U kunt implementaties op abonnements niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals het maken van resource groepen of [het toewijzen van toegangs beheer op basis van rollen](../../role-based-access-control/overview.md).
+Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op:
+
+* abonnements niveau (in dit artikel)
+* [niveau beheer groep](deploy-to-management-group.md)
+* [Tenant niveau](deploy-to-tenant.md)
+
+U kunt implementaties op abonnements niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals het maken van resource groepen of [het toewijzen van toegangs beheer op basis van rollen](../../role-based-access-control/overview.md).
 
 Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, Power shell of REST API. De Azure Portal biedt geen ondersteuning voor implementatie in het abonnements niveau.
 
@@ -21,7 +27,7 @@ Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, 
 U kunt de volgende bron typen implementeren op abonnements niveau:
 
 * [budgetten](/azure/templates/microsoft.consumption/budgets)
-* [implementaties](/azure/templates/microsoft.resources/deployments)
+* [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op resource groepen.
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -88,12 +94,12 @@ Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtsp
 
 * De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
 * De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
-* De functie [resourceId ()](template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op abonnements niveau. Geef geen waarde op voor de para meter van de resource groep.
+* Gebruik de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) om de resource-id op te halen voor resources die worden geïmplementeerd op abonnements niveau.
 
   Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   De geretourneerde Resource-ID heeft de volgende indeling:
@@ -101,8 +107,6 @@ Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtsp
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  Of gebruik de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) om de resource-id voor een resource op abonnements niveau op te halen.
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 

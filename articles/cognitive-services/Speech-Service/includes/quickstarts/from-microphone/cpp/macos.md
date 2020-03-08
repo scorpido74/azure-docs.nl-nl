@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: eb2032ce9fd6efed4a45aa30b469cb67926f17c9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 96836c494cdf8f3df1621ee0e2eea6c6f64a039c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445924"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925765"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -22,8 +22,7 @@ Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=macos)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=macos)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen

@@ -3,12 +3,12 @@ title: Overzicht van Azure Resource Health
 description: Overzicht van Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379956"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924791"
 ---
 # <a name="resource-health-overview"></a>Overzicht van Resource Health
  
@@ -38,7 +38,7 @@ De status van een resource wordt weer gegeven als een van de volgende statussen.
 
 #### <a name="platform-events"></a>Platform gebeurtenissen
 
-Platform gebeurtenissen worden geactiveerd door meerdere onderdelen van de Azure-infra structuur. Ze omvatten zowel geplande acties (bijvoorbeeld gepland onderhoud) als onverwachte incidenten (bijvoorbeeld een niet-geplande host opnieuw opstarten).
+Platform gebeurtenissen worden geactiveerd door meerdere onderdelen van de Azure-infra structuur. Ze omvatten zowel geplande acties (bijvoorbeeld gepland onderhoud) als onverwachte incidenten (bijvoorbeeld een niet-geplande host opnieuw opstarten of gedegradeerde host-hardware die wordt voor speld na een opgegeven tijd venster).
 
 Resource Health biedt aanvullende informatie over de gebeurtenis en het herstel proces. U kunt ook contact opnemen met Microsoft Ondersteuning, zelfs als u geen actieve ondersteunings overeenkomst hebt.
 

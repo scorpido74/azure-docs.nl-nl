@@ -4,12 +4,12 @@ description: In deze Quick start ziet u hoe u uw Knowledge Base maakt en beheert
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524407"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389394"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Snelstartgids: Knowledge Base maken en beheren
 
@@ -30,7 +30,7 @@ Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Zelf studie: een KB maken en beantwoorden](../tutorials/create-publish-query-in-portal.md)
+>[Zelf studie: uw Knowledge Base testen met een batch-bestand](./batch-testing.md)
 
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
 * [Een kennis database bewerken](../how-to/edit-knowledge-base.md)
