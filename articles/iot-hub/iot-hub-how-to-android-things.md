@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883141"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673384"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Ontwikkelen voor Android-platformen met behulp van Azure IoT Sdk's
 
@@ -40,22 +40,22 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 1. Voer de volgende opdrachten uit in Azure Cloud Shell om de IoT Hub CLI-extensie toe te voegen en de apparaat-id te maken.
 
-   **YourIoTHubName** : vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+   **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyAndroidThingsDevice** : dit is de naam van het geregistreerde apparaat. Gebruik MyAndroidThingsDevice zoals weer gegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
+   **MyAndroidThingsDevice** : dit is de naam die is opgegeven voor het geregistreerde apparaat. Gebruik MyAndroidThingsDevice zoals weer gegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Voer de volgende opdrachten uit in Azure Cloud Shell om de *apparaat Connection String* voor het apparaat dat u zojuist hebt geregistreerd, op te halen. Vervang `YourIoTHubName` hieronder door de naam die u voor uw IOT-hub hebt gekozen.
+2. Voer de volgende opdrachten uit in Azure Cloud Shell om de *apparaat Connection String* voor het apparaat dat u zojuist hebt geregistreerd, op te halen. Vervang `YourIoTHubName` hieronder door de naam die u voor uw IoT-hub hebt gekozen.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
     ```
 
-    Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
+    Noteer de apparaatverbindingsreeks, die er ongeveer zo uitziet:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidThingsDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -79,7 +79,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
 4. Open in Android Studio het Android-project in ' \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample '.
 
-5. Open gradle. properties-bestand en vervang ' Device_connection_string ' door uw apparaat connection string eerder aangegeven.
+5. Open het bestand gradle. Properties en vervang ' Device_connection_string ' door uw apparaat connection string eerder hebt opgemerkt.
  
 6. Klik op uitvoeren-fout opsporing en selecteer uw apparaat om deze code te implementeren op uw Android-apparaten.
 

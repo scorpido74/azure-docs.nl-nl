@@ -3,12 +3,12 @@ title: Overzicht van Azure-status | Microsoft Docs
 description: Een globale weer gave van de status van Azure-Services
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654151"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898344"
 ---
 # <a name="azure-status-overview"></a>Overzicht van Azure-status
 
@@ -26,7 +26,7 @@ De Azure-status pagina wordt in realtime bijgewerkt als de status van Azure-Serv
 
 Terwijl de Azure-status pagina altijd de meest recente status informatie bevat, kunt u oudere gebeurtenissen weer geven met behulp van de [pagina status geschiedenis van Azure](https://status.azure.com/status/history/).
 
-U kunt de gebeurtenissen in het verleden bekijken tot 90 dagen, met inbegrip van een voorlopige hoofd oorzaak, risico beperking en volgende stappen voor Azure.
+Als u begint met gebeurtenissen die zijn gepubliceerd in november 2019, worden in de status geschiedenis pagina gebeurtenissen weer gegeven tot 365 dagen in het verleden, met inbegrip van een voorlopige hoofd oorzaak, oplossing en volgende stappen voor Azure.
 
 ## <a name="rss-feed"></a>RSS-feed
 

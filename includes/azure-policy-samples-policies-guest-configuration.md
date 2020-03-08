@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3c839bb09d9934749c34ddd561dc3db613df4c87
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 29aa4c105ace101fad798b31a1ab2510d3726664
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262041"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668494"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[Configureer tijd zone op Windows-computers.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Dit beleid maakt een toewijzing van een gast configuratie om de opgegeven tijd zone op virtuele Windows-machines in te stellen. |deployIfNotExists |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json)
 |[Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen van accounts zonder wacht woorden toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Dit beleid maakt een toewijzing van een gast configuratie om virtuele Linux-machines te controleren die externe verbindingen van accounts zonder wacht woorden toestaan. Er wordt ook een door het systeem toegewezen beheerde identiteit gemaakt en de VM-extensie voor gast configuratie geïmplementeerd. Dit beleid mag alleen worden gebruikt in combi natie met het bijbehorende controle beleid in een initiatief. Ga voor meer informatie over gast configuratie beleidsregels naar https://aka.ms/gcpol |deployIfNotExists |1.1.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json)

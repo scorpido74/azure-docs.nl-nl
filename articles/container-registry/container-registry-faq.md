@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252068"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403222"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -241,7 +241,7 @@ De toegewezen gebruiker is vervolgens in staat om installatie kopieën in het RE
 
 * Een installatie kopie ophalen:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 Zo heeft Fedora 28-server de volgende opties voor docker daemon:
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 Als `--signature-verification=false` ontbreken, mislukt `docker pull` met een fout die vergelijkbaar is met het volgende:
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 Om de fout op te lossen:
 1. Voeg de optie `--signature-verification=false` toe aan het configuratie bestand van de docker daemon `/etc/sysconfig/docker`. Bijvoorbeeld:
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. Start de docker daemon-service opnieuw door de volgende opdracht uit te voeren:
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 U kunt de details van `--signature-verification` vinden door `man dockerd`uit te voeren.
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 Als u een lokale bronmap doorgeeft aan de `az acr build` opdracht, wordt de map `.git` standaard uitgesloten van het geüploade pakket. U kunt een `.dockerignore`-bestand maken met de volgende instelling. De opdracht voor het herstellen van alle bestanden onder `.git` in het geüploade pakket wordt door gegeven. 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 Deze instelling is ook van toepassing op de `az acr run` opdracht.
 
@@ -499,7 +494,7 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 
-| Foutbericht | Troubleshooting Guide (Handleiding voor probleemoplossing) |
+| Foutbericht | Handleiding voor het oplossen van problemen |
 |---|---|
 |Er is geen toegang geconfigureerd voor de virtuele machine, dus er zijn geen abonnementen gevonden|Dit kan gebeuren als u `az login --identity` in uw ACR-taak gebruikt. Dit is een tijdelijke fout en treedt op wanneer de roltoewijzing van uw beheerde identiteit niet is door gegeven. Wacht een paar seconden voordat u opnieuw probeert te werken.|
 

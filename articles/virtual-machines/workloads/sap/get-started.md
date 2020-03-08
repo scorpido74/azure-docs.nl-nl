@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0219b3e35ed82795e9c799754cabdeb5d17096d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267413"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674494"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -43,6 +43,7 @@ Als u specifieke vragen hebt, gaat u naar specifieke documenten of stromen in de
 - Welke SAP-implementatie scenario's worden ondersteund met Azure Vm's en HANA grote instanties. Informatie over de ondersteunde scenario's vindt u in de documenten:
     - [SAP-workload op door Azure virtual machine ondersteunde scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [Ondersteunde scenario's voor HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+- Wat Azure-Services, Azure VM-typen en Azure-opslag zijn beschikbaar in de verschillende Azure-regio's. Controleer de site [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA op Azure (grote exemplaren)
@@ -109,6 +110,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingslogboek
+
+- 03/05/2020: structuur wijzigingen en wijzigingen in de inhoud voor Azure-regio's en Azure virtual machines in [azure virtual machines planning en implementatie voor SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - 03/03/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) om te wijzigen in een EFFICIËNTere ANF-volume-indeling
 - 03/01/2020: de herwerkte [back-upgids voor SAP Hana op Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) om Azure backup service te kunnen gebruiken. Gereduceerde en versmalde inhoud in [SAP HANA Azure Backup op bestands niveau](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level) en heeft een derde document verwijderd met een back-up via een schijf momentopname. Inhoud wordt verwerkt in de back-upgids voor SAP HANA op Azure Virtual Machines 
 - 02/27/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge beschik BAARHEID voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) en [hoge Beschik baarheid voor SAP NetWeaver op Azure VM'S in SLES multi-sid-hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) voor het aanpassen van de cluster parameter "on Fail"

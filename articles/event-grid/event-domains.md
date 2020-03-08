@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511379"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898870"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Informatie over gebeurtenis domeinen voor het beheren van Event Grid onderwerpen
 
@@ -43,13 +43,13 @@ Het biedt u ook een enkel eind punt, waarmee u alle evenementen van uw klant kun
 
 Met een domein krijgt u een nauw keurige autorisatie en verificatie controle voor elk onderwerp via het op rollen gebaseerde toegangs beheer (RBAC). U kunt deze rollen gebruiken om elke Tenant in uw toepassing te beperken tot alleen de onderwerpen waaraan u hen toegang wilt verlenen.
 
-RBAC in gebeurtenis domeinen werkt op dezelfde manier als [Managed Access Control](security-authentication.md#management-access-control) werkt in de rest van Event grid en Azure. Gebruik RBAC om aangepaste roldefinities in gebeurtenis domeinen te maken en af te dwingen.
+RBAC in gebeurtenis domeinen werkt op dezelfde manier als [Managed Access Control](security-authorization.md) werkt in de rest van Event grid en Azure. Gebruik RBAC om aangepaste roldefinities in gebeurtenis domeinen te maken en af te dwingen.
 
 ### <a name="built-in-roles"></a>Ingebouwde rollen
 
 Event Grid heeft twee ingebouwde roldefinities om RBAC gemakkelijker te maken voor het werken met gebeurtenis domeinen. Deze rollen zijn **EventGrid EventSubscription Inzender (preview)** en **EventGrid EventSubscription Reader (preview)** . U wijst deze rollen toe aan gebruikers die zich moeten abonneren op onderwerpen in uw gebeurtenis domein. U bereikt de roltoewijzing alleen voor het onderwerp dat gebruikers moeten abonneren op.
 
-Zie [ingebouwde rollen voor Event grid](security-authentication.md#built-in-roles)voor meer informatie over deze rollen.
+Zie [ingebouwde rollen voor Event grid](security-authorization.md#built-in-roles)voor meer informatie over deze rollen.
 
 ## <a name="subscribing-to-topics"></a>Abonneren op onderwerpen
 
@@ -96,12 +96,12 @@ Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeu
 
 Gebeurtenis domeinen verwerken het publiceren naar onderwerpen voor u. In plaats van gebeurtenissen te publiceren naar elk onderwerp dat u afzonderlijk beheert, kunt u al uw gebeurtenissen naar het eind punt van het domein publiceren. Event Grid zorgt ervoor dat elke gebeurtenis wordt verzonden naar het juiste onderwerp.
 
-## <a name="limits-and-quotas"></a>Limieten en quota’s
+## <a name="limits-and-quotas"></a>Limieten en quota
 Dit zijn de limieten en quota die betrekking hebben op gebeurtenis domeinen:
 
 - 100.000 onderwerpen per gebeurtenis domein 
 - 100 gebeurtenis domeinen per Azure-abonnement 
-- 500 gebeurtenisabonnementen per onderwerp in een gebeurtenisdomein
+- 500 gebeurtenis abonnementen per onderwerp in een gebeurtenis domein
 - 50 domein bereik abonnementen 
 - 5\.000 gebeurtenissen per seconde opname frequentie (in een domein)
 

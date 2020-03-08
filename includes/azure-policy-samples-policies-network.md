@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: c8a35085a10b3e008cc7fb6d29dbee5d06112c84
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: bfa7428136759c5f80458610bbde01d4f8ae4457
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668751"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[Er moet een aangepast IPsec/IKE-beleid worden toegepast op alle gateway verbindingen van Azure Virtual Network](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Dit beleid zorgt ervoor dat alle gateway verbindingen van het virtuele netwerk van Azure gebruikmaken van een aangepast beleid voor de Internet Protocol Security (IPSec)/Internet Key Exchange (IKE). Ondersteunde algoritmen en belangrijkste sterke punten- https://aka.ms/AA62kb0 |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[App Service moet een service-eind punt van een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Dit beleid controleert alle App Service die niet zijn geconfigureerd voor het gebruik van een service-eind punt voor een virtueel netwerk. |AuditIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)

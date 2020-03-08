@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377057"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672266"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor federatieve domeinen
 
@@ -40,7 +40,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **ADFS/Services/Trust/2005/windowstransport** en **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als aan een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> **ADFS/Services/Trust/2005/windowstransport** en **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als aan een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 In deze zelf studie leert u hoe u hybride Azure AD join kunt configureren voor Active Directory computers die lid zijn van een domein in een federatieve omgeving door gebruik te maken van AD FS.
 
@@ -83,7 +83,7 @@ Hybride Azure AD-deelname vereist dat apparaten toegang hebben tot de volgende m
 
 Met ingang van Windows 10 1803, als de direct hybride Azure AD-deelname voor een gefedereerde omgeving door het gebruik van AD FS mislukt, vertrouwen we op Azure AD Connect om het computer object in azure AD te synchroniseren dat vervolgens wordt gebruikt om de apparaatregistratie voor hybride Azure te volt ooien AD-deelname. Controleer of Azure AD Connect de computer objecten hebt gesynchroniseerd van de apparaten met wie u een hybride Azure AD wilt maken en lid wilt worden van Azure AD. Als de computer objecten deel uitmaken van specifieke organisatie-eenheden (Ou's), moet u ook de Ou's configureren om te synchroniseren in Azure AD Connect. Zie voor meer informatie over het synchroniseren van computer objecten met behulp van Azure AD Connect [filters configureren met behulp van Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
-Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
+Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
 Als u geen gebruik maakt van WPAD en proxy-instellingen op uw computer wilt configureren, kunt u dit doen vanaf Windows 10 1709. Zie [WinHTTP-instellingen configureren met behulp van een groeps beleidsobject (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)voor meer informatie.
 
@@ -172,7 +172,7 @@ U moet ook **toestaan dat updates voor de status balk via script worden** ingesc
 
 Voor het registreren van Windows down level-apparaten moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554). Micro soft Workplace Join voor niet-Windows 10-computers is beschikbaar in het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
 Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt op de achtergrond met Azure AD toegevoegd aan het apparaat met behulp van de referenties van de gebruiker na verificatie met Azure AD.
 

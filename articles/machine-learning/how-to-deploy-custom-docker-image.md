@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396161"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851274"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-instal
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > In dit voor beeld wordt een tag van `:v1` toegepast op de afbeelding. Als er geen tag wordt gegeven, wordt een tag van `:latest` toegepast.
+
     Tijdens het bouw proces worden gegevens gestreamd naar de opdracht regel. Als de build is geslaagd, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende tekst:
 
     ```text
@@ -170,6 +173,10 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
 * De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
+
+    > [!IMPORTANT]
+    > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1`. Als u tijdens het maken van de installatie kopie geen specifiek label hebt gebruikt, is een tag van `:latest` toegepast.
+
 * Als de installatie kopie zich in een __privé opslagplaats__bevindt, hebt u de volgende informatie nodig:
 
     * Het register __adres__. Bijvoorbeeld `myregistry.azureecr.io`.
@@ -181,7 +188,7 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 
-| Afbeelding | Beschrijving |
+| Installatiekopie | Beschrijving |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |

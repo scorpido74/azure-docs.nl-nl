@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: eb1bde6bb58e3e5299311636f8222e2fc181ec5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250758"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673307"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -425,13 +425,14 @@ Zie [Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/
 
 * [Opentellingen python op GitHub](https://github.com/census-instrumentation/opencensus-python)
 * [Aanpassing](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [Erlenmeyer integratie](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
-* [Django-integratie](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)
-* [MySQL-integratie](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
-* [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
+* [Azure Monitor-exporteurs op GitHub](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [Integratie van opentellingen](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Voorbeeld toepassingen Azure Monitor](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Binnenkomende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [Lopende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-request.md)
 * [Toepassings overzicht](./../../azure-monitor/app/app-map.md)
 * [End-to-end prestatie bewaking](./../../azure-monitor/learn/tutorial-performance.md)
 

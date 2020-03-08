@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672699"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -59,7 +59,7 @@ Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen.
 
 ### <a name="managed-environment"></a>Beheerde omgeving
 
-Een beheerde omgeving kan worden geïmplementeerd via een [wachtwoord-hash-synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) of door [middel van verificatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) met naadloze eenmalige aanmelding.
+Een beheerde omgeving kan worden geïmplementeerd via een [wachtwoord-hash-synchronisatie](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) of door [middel van verificatie](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) met naadloze eenmalige aanmelding.
 
 Voor deze scenario's is het niet nodig om een Federatie server te configureren voor authenticatie.
 
@@ -78,7 +78,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen: `
 Als uw ID-provider deze protocollen niet ondersteunt, werkt Azure AD-deelname niet systeem eigen. 
 
 >[!NOTE]
-> Azure AD join's werkt momenteel niet met [AD FS 2019, geconfigureerd met externe verificatie providers als de primaire verificatie methode](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Azure AD-koppeling wordt standaard ingesteld op wachtwoord verificatie als primaire methode, wat resulteert in verificatie fouten in dit scenario
+> Azure AD join's werkt momenteel niet met [AD FS 2019, geconfigureerd met externe verificatie providers als de primaire verificatie methode](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Azure AD-koppeling wordt standaard ingesteld op wachtwoord verificatie als primaire methode, wat resulteert in verificatie fouten in dit scenario
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smart Cards en verificatie op basis van certificaten
@@ -87,11 +87,11 @@ U kunt geen smart cards of verificatie op basis van certificaten gebruiken om ap
 
 **Aanbeveling:** Implementeer Windows hello voor bedrijven voor sterke, wacht woord-less verificatie voor Windows 10-apparaten.
 
-### <a name="user-configuration"></a>Gebruikersconfiguratie
+### <a name="user-configuration"></a>Gebruikers configuratie
 
 Als u gebruikers maakt in uw:
 
-- **On-premises Active Directory**moet u deze synchroniseren met Azure AD met behulp van [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
+- **On-premises Active Directory**moet u deze synchroniseren met Azure AD met behulp van [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
 - **Azure AD**, er is geen aanvullende installatie vereist.
 
 On-premises Upn's die verschillen van Azure AD-Upn's, worden niet ondersteund op apparaten die zijn toegevoegd aan Azure AD. Als uw gebruikers een lokale UPN gebruiken, moet u overschakelen naar het gebruik van de primaire UPN in azure AD.
@@ -127,9 +127,9 @@ Bekijk ondersteunde en niet-ondersteunde beleids regels om te bepalen of u een M
 - Zijn de niet-ondersteunde beleids regels vereist voor apparaten of gebruikers die zijn toegevoegd aan Azure AD?
 - Zijn de niet-ondersteunde beleids regels van toepassing op een Cloud implementatie?
 
-Als uw MDM-oplossing niet beschikbaar is via de app-galerie van Azure AD, kunt u deze toevoegen volgens het proces dat wordt beschreven in [Azure Active Directory integratie met MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
+Als uw MDM-oplossing niet beschikbaar is via de app-galerie van Azure AD, kunt u deze toevoegen volgens het proces dat wordt beschreven in [Azure Active Directory integratie met MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
 
-Via co-beheer kunt u SCCM gebruiken om bepaalde aspecten van uw apparaten te beheren terwijl er beleids regels worden geleverd via uw MDM-platform. Microsoft Intune kunt co-beheer met SCCM. Zie [Wat is co-beheer?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview)voor meer informatie over co-beheer voor Windows 10-apparaten. Als u een ander MDM-product dan intune gebruikt, neemt u contact op met uw MDM-provider op toepasselijke scenario's voor co-beheer.
+Via co-beheer kunt u SCCM gebruiken om bepaalde aspecten van uw apparaten te beheren terwijl er beleids regels worden geleverd via uw MDM-platform. Microsoft Intune kunt co-beheer met SCCM. Zie [Wat is co-beheer?](/configmgr/core/clients/manage/co-management-overview)voor meer informatie over co-beheer voor Windows 10-apparaten. Als u een ander MDM-product dan intune gebruikt, neemt u contact op met uw MDM-provider op toepasselijke scenario's voor co-beheer.
 
 **Aanbeveling:** Overweeg alleen MDM-beheer voor apparaten die zijn toegevoegd aan Azure AD.
 
@@ -155,7 +155,7 @@ Als uw apps aangepaste ingebouwde en/of on-premises worden gehost, moet u deze t
 - Geïntegreerde Windows-verificatie inschakelen 
 - Geef gebruikers een niet-prompt-SSO-ervaring. 
 
-Als u AD FS gebruikt, raadpleegt u [eenmalige aanmelding controleren en beheren met AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Als u AD FS gebruikt, raadpleegt u [eenmalige aanmelding controleren en beheren met AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
 **Aanbeveling:** Overweeg in de cloud te hosten (bijvoorbeeld Azure) en te integreren met Azure AD voor een betere ervaring.
 
@@ -163,7 +163,7 @@ Als u AD FS gebruikt, raadpleegt u [eenmalige aanmelding controleren en beheren 
 
 Gebruikers ontvangen SSO van apparaten die lid zijn van Azure AD als het apparaat toegang heeft tot een domein controller. 
 
-**Aanbeveling:** Implementeer [Azure AD-App proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) om veilige toegang in te scha kelen voor deze toepassingen.
+**Aanbeveling:** Implementeer [Azure AD-App proxy](/azure/active-directory/manage-apps/application-proxy) om veilige toegang in te scha kelen voor deze toepassingen.
 
 ### <a name="on-premises-network-shares"></a>On-premises netwerk shares
 
@@ -171,7 +171,7 @@ Uw gebruikers hebben SSO van aan Azure AD gekoppelde apparaten wanneer een appar
 
 ### <a name="printers"></a>Printers
 
-Voor printers moet u [hybride Cloud afdrukken](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) implementeren voor het detecteren van printers op apparaten die zijn toegevoegd aan Azure AD. 
+Voor printers moet u [hybride Cloud afdrukken](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) implementeren voor het detecteren van printers op apparaten die zijn toegevoegd aan Azure AD. 
 
 Hoewel printers niet automatisch kunnen worden gedetecteerd in een omgeving in de Cloud, kunnen uw gebruikers ook het UNC-pad van de printer gebruiken om ze rechtstreeks toe te voegen. 
 
@@ -181,26 +181,26 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 **Aanbeveling:** Overweeg deze toepassingen buiten gebruik te stellen en te verplaatsen naar hun moderne alternatieven.
 
-### <a name="remote-desktop-services"></a>Extern bureaublad-services
+### <a name="remote-desktop-services"></a>Externe bureaubladservices
 
-Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
+Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
 
 ## <a name="understand-your-provisioning-options"></a>Inzicht in uw inrichtings opties
 
 U kunt Azure AD-deelname inrichten met behulp van de volgende methoden:
 
-- **Selfservice in OOBE/instellingen** : in de selfservice modus gaan gebruikers door met het Azure AD-deelname proces tijdens Windows out of Box Experience (OOBE) of Windows-instellingen. Zie [uw werk apparaat lid maken van het netwerk van uw organisatie](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)voor meer informatie. 
-- **Windows auto pilot** : met Windows Automatische pilot kunt u apparaten vooraf configureren voor een probleemloze ervaring in OOBE voor het uitvoeren van een Azure AD-deelname. Zie voor meer informatie het [overzicht van Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Bulk inschrijving** : bij bulk registratie kan een beheerder een Azure AD-deelname door middel van een bulk inrichting hulp programma gebruiken om apparaten te configureren. Zie [bulk Registratie voor Windows-apparaten](https://docs.microsoft.com/intune/windows-bulk-enroll)voor meer informatie.
+- **Selfservice in OOBE/instellingen** : in de selfservice modus gaan gebruikers door met het Azure AD-deelname proces tijdens Windows out of Box Experience (OOBE) of Windows-instellingen. Zie [uw werk apparaat lid maken van het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)voor meer informatie. 
+- **Windows auto pilot** : met Windows Automatische pilot kunt u apparaten vooraf configureren voor een probleemloze ervaring in OOBE voor het uitvoeren van een Azure AD-deelname. Zie voor meer informatie het [overzicht van Windows auto pilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Bulk inschrijving** : bij bulk registratie kan een beheerder een Azure AD-deelname door middel van een bulk inrichting hulp programma gebruiken om apparaten te configureren. Zie [bulk Registratie voor Windows-apparaten](/intune/windows-bulk-enroll)voor meer informatie.
  
 Hier volgt een vergelijking van deze drie benaderingen 
  
-|   | Self-service instellen | Windows Autopilot | Bulkinschrijving |
+|   | Self-service instellen | Windows auto pilot | Bulkinschrijving |
 | --- | --- | --- | --- |
 | Gebruikers interactie vereist voor het instellen van | Ja | Ja | Nee |
 | IT-inspanningen vereisen | Nee | Ja | Ja |
 | Toepasselijke stromen | OOBE-&-instellingen | Alleen OOBE | Alleen OOBE |
-| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureerbaar | Nee |
+| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureer bare | Nee |
 | OEM-ondersteuning van apparaat vereisen | Nee | Ja | Nee |
 | Ondersteunde versies | 1511+ | 1709+ | 1703+ |
  
@@ -266,7 +266,7 @@ Op basis van uw bereik gebeurt een van de volgende situaties:
 
 Er zijn drie Url's die betrekking hebben op uw MDM-configuratie:
 
-- URL voor MDM-gebruiksvoorwaarden
+- URL voor MDM-gebruiks voorwaarden
 - URL voor MDM-detectie 
 - URL voor MDM-naleving
 
@@ -296,7 +296,7 @@ U kunt deze implementatie gebruiken om [beheerde apparaten te vereisen voor toeg
 
 > [!div class="nextstepaction"]
 > [Een nieuw Windows 10-apparaat toevoegen aan Azure ad tijdens een eerste uitvoering](azuread-joined-devices-frx.md)
-> [uw werk apparaat toevoegen aan het netwerk van uw organisatie](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [uw werk apparaat toevoegen aan het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

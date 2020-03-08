@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468434"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671819"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Procedure: de implementatie van voorwaardelijke toegang plannen in Azure Active Directory
 
@@ -163,13 +163,13 @@ Het test plan is belang rijk voor een vergelijking tussen de verwachte resultate
 
 |Beleid |Scenario |Verwacht resultaat | Resultaat |
 |---|---|---|---|
-|[MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* op een vertrouwde locatie/werk|Gebruiker wordt niet gevraagd om MFA| |
-|[MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* , maar niet op een vertrouwde locatie/werk|De gebruiker wordt gevraagd om te MFA en kan zich aanmelden| |
-|[MFA vereisen (voor beheerder)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|De globale beheerder meldt zich aan bij de *app*|Beheerder wordt gevraagd om te MFA| |
-|[Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Gebruiker meldt zich aan bij de *app* met een [Tor-Browser](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Beheerder wordt gevraagd om te MFA| |
-|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat|Toegang verleend| |
-|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat|Toegang geblokkeerd| |
-|[Wachtwoord wijziging voor Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)|De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid| |
+|[MFA vereisen wanneer dat niet aan het werk is](/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* op een vertrouwde locatie/werk|Gebruiker wordt niet gevraagd om MFA| |
+|[MFA vereisen wanneer dat niet aan het werk is](/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* , maar niet op een vertrouwde locatie/werk|De gebruiker wordt gevraagd om te MFA en kan zich aanmelden| |
+|[MFA vereisen (voor beheerder)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|De globale beheerder meldt zich aan bij de *app*|Beheerder wordt gevraagd om te MFA| |
+|[Riskante aanmeldingen](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Gebruiker meldt zich aan bij de *app* met een [Tor-Browser](/azure/active-directory/active-directory-identityprotection-playbook)|Beheerder wordt gevraagd om te MFA| |
+|[Apparaatbeheer](/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat|Toegang verleend| |
+|[Apparaatbeheer](/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat|Toegang geblokkeerd| |
+|[Wachtwoord wijziging voor Risk ante gebruikers](/azure/active-directory/identity-protection/howto-user-risk-policy)|Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)|De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid| |
 
 ### <a name="configure-the-policy"></a>Het beleid configureren
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 1e919f22d5dd7975f055f262ec9ba69230aebd17
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780834"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893098"
 ---
 In deze sectie gebruikt u de Azure CLI om een apparaat-id voor dit artikel te maken. Apparaat-id's zijn hoofdlettergevoelig.
 
@@ -22,10 +22,10 @@ In deze sectie gebruikt u de Azure CLI om een apparaat-id voor dit artikel te ma
 1. Voer in Azure Cloud Shell de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI te installeren:
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     ```
 
-2. Maak een nieuwe apparaat-id `myDeviceId` met de naam en haal het apparaat Connection String op met de volgende opdrachten:
+2. Maak een nieuwe apparaat-id met de naam `myDeviceId` en haal het apparaat op connection string met de volgende opdrachten:
 
     ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}

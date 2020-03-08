@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646991"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898404"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure data Science Virtual Machines gebruiken
 
@@ -38,6 +38,9 @@ Zodra u de DSVM hebt gemaakt, selecteert u de vervolg keuzelijst **uitvoeren** i
 
 Wanneer u een DSVM-exemplaar selecteert Azure Notebooks, wordt u mogelijk gevraagd om de specifieke computer referenties die worden gebruikt bij het maken van de virtuele machine.
 
+> [!Important]
+> De gebruikers naam moet een kleine letter zijn om deze te gebruiken met JupyterHub.
+
 Als aan een van de voor waarden niet wordt voldaan, kunt u nog steeds verbinding maken met de DSVM. Selecteer in de vervolg keuzelijst de optie **Directe Compute** , waarin u wordt gevraagd een naam (om weer te geven in de lijst), het IP-adres en de poort van de virtuele machine (meestal 8000, de standaard poort waarnaar JupyterHub luistert) en de VM-referenties:
 
 ![Vragen om Server gegevens te verzamelen voor de optie directe compute](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ Als meerdere gebruikers een DSVM delen, kunt u voor komen dat elkaar worden gebl
 
 1. Ga op het [Azure Portal](https://portal.azure.com)naar de virtuele machine.
 1. Onder **ondersteuning en probleem oplossing** in de linkermarge selecteert u **wacht woord opnieuw instellen**.
-1. Voer een nieuwe gebruikers naam en wacht woord in en selecteer **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
+1. Geef een nieuwe **gebruikers naam**op. De gebruikers naam moet een kleine letter zijn om deze te gebruiken met JupyterHub. Voer een wacht woord in. Selecteer vervolgens **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
 1. Herhaal de vorige stap voor extra gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen

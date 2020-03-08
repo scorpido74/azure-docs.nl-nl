@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192140"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671878"
 ---
 # <a name="conditional-access-session"></a>Voorwaardelijke toegang: sessie
 
@@ -30,12 +30,12 @@ Organisaties kunnen met dit besturings element instellen dat Azure AD apparaatge
 
 Raadpleeg de volgende artikelen voor meer informatie over het gebruik en de configuratie van door apps afgedwongen beperkingen:
 
-- [Beperkte toegang inschakelen met share point online](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [Beperkte toegang inschakelen met share point online](/sharepoint/control-access-from-unmanaged-devices)
 - [Beperkte toegang inschakelen met Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Toepassings beheer voor voorwaardelijke toegang
 
-App-beheer voor voorwaardelijke toegang maakt gebruik van een reverse proxy-architectuur en is uniek geïntegreerd met voorwaardelijke toegang van Azure AD. Met voorwaardelijke toegang van Azure AD kunt u toegangs beheer op de apps van uw organisatie afdwingen op basis van bepaalde voor waarden. De voor waarden bepalen wie (gebruiker of groep gebruikers) en wat (welke Cloud-apps) en waar (de locaties en netwerken) een beleid voor voorwaardelijke toegang wordt toegepast. Nadat u de voor waarden hebt vastgesteld, kunt u gebruikers door sturen naar [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) waar u gegevens kunt beveiligen met app-beheer voor voorwaardelijke toegang door toegangs-en sessie besturings elementen toe te passen.
+App-beheer voor voorwaardelijke toegang maakt gebruik van een reverse proxy-architectuur en is uniek geïntegreerd met voorwaardelijke toegang van Azure AD. Met voorwaardelijke toegang van Azure AD kunt u toegangs beheer op de apps van uw organisatie afdwingen op basis van bepaalde voor waarden. De voor waarden bepalen wie (gebruiker of groep gebruikers) en wat (welke Cloud-apps) en waar (de locaties en netwerken) een beleid voor voorwaardelijke toegang wordt toegepast. Nadat u de voor waarden hebt vastgesteld, kunt u gebruikers door sturen naar [Microsoft Cloud app Security](/cloud-app-security/what-is-cloud-app-security) waar u gegevens kunt beveiligen met app-beheer voor voorwaardelijke toegang door toegangs-en sessie besturings elementen toe te passen.
 
 App-beheer voor voorwaardelijke toegang kunt app-toegang voor gebruikers en sessies moeten worden bewaakt en beheerd in realtime op basis van de toegangs-en-sessie. Toegangs-en-sessie worden gebruikt in de Cloud App Security-portal verder verfijnen filters en acties worden uitgevoerd voor een gebruiker ingesteld. Met de beleidsregels voor toegangs- en sessiebeleid, kunt u het volgende doen:
 
@@ -46,7 +46,7 @@ App-beheer voor voorwaardelijke toegang kunt app-toegang voor gebruikers en sess
 - Toegang blok keren: u kunt de toegang voor specifieke apps en gebruikers nauw keurig blok keren, afhankelijk van verschillende risico factoren. U kunt ze bijvoorbeeld blok keren als ze client certificaten gebruiken als een vorm van Apparaatbeheer.
 - Aangepaste activiteiten blok keren: sommige apps hebben unieke scenario's die risico lopen, bijvoorbeeld het verzenden van berichten met gevoelige inhoud in apps zoals micro soft teams of vertraging. In dit soort scenario's kunt u berichten voor gevoelige inhoud scannen en deze in realtime blok keren.
 
-Zie voor meer informatie het artikel [app-beheer voor voorwaardelijke toegang implementeren voor aanbevolen apps](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
+Zie voor meer informatie het artikel [app-beheer voor voorwaardelijke toegang implementeren voor aanbevolen apps](/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="sign-in-frequency-preview"></a>Aanmeldings frequentie (preview-versie)
 

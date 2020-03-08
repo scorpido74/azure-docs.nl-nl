@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617576"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673120"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -76,7 +76,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
 | Agent (s) pushen naar beveiligde servers | De referenties die voor de server zijn opgegeven, zijn ongeldig. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br> Probeer de beveiligings agent hand matig te installeren op de productie server zoals opgegeven in [dit artikel](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).|
-| Azure Backup Agent kan geen verbinding maken met de Azure Backup-Service (ID: 100050) | De Azure Backup-Agent kan geen verbinding maken met de Azure Backup-service. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br>1. Voer de volgende opdracht uit vanaf een prompt met verhoogde bevoegdheid: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Hiermee opent u het venster Internet Explorer. <br/> 2. Ga naar **Hulpprogram ma's** > **Internet opties** > **verbindingen** > **LAN-instellingen**. <br/> 3. Wijzig de instellingen voor het gebruik van een proxy server. Geef vervolgens de proxyserver gegevens op.<br/> 4. als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy deze [url's](backup-configure-vault.md#verify-internet-access) en dit [IP-adres](backup-configure-vault.md#verify-internet-access)toestaan.|
+| Azure Backup Agent kan geen verbinding maken met de Azure Backup-Service (ID: 100050) | De Azure Backup-Agent kan geen verbinding maken met de Azure Backup-service. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br>1. Voer de volgende opdracht uit vanaf een prompt met verhoogde bevoegdheid: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Hiermee opent u het venster Internet Explorer. <br/> 2. Ga naar **Hulpprogram ma's** > **Internet opties** > **verbindingen** > **LAN-instellingen**. <br/> 3. Wijzig de instellingen voor het gebruik van een proxy server. Geef vervolgens de proxyserver gegevens op.<br/> 4. als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy deze [url's](install-mars-agent.md#verify-internet-access) en dit [IP-adres](install-mars-agent.md#verify-internet-access)toestaan.|
 | Installatie van Azure Backup-agent mislukt | De installatie van Microsoft Azure Recovery Services is mislukt. Alle wijzigingen die zijn aangebracht in het systeem door de Microsoft Azure Recovery Services-installatie zijn teruggedraaid. (ID: 4024) | Installeer de Azure-agent hand matig.
 
 ## <a name="configuring-protection-group"></a>Beveiligings groep configureren

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962051"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894539"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenario: daemon-toepassing die web-Api's aanroept
 
@@ -42,11 +42,11 @@ Hier volgen enkele voor beelden van gebruiks voorbeelden voor daemon-apps:
 - Bureaublad toepassingen (zoals Windows-Services in Windows-of daemon-processen in Linux) die batch-taken uitvoeren, of een besturingssysteem service die op de achtergrond wordt uitgevoerd
 - Web-Api's die directory's moeten bewerken, niet specifieke gebruikers
 
-Er is een andere veelvoorkomende situatie waarbij niet-daemon-toepassingen gebruikmaken van client referenties: zelfs wanneer ze namens gebruikers handelen, moeten ze voor technische redenen toegang hebben tot een web-API of een resource onder hun identiteit. Een voor beeld is toegang tot geheimen in Azure Key Vault of een Azure SQL database voor een cache.
+Er is een andere veelvoorkomende situatie waarbij niet-daemon-toepassingen gebruikmaken van client referenties: zelfs wanneer ze namens gebruikers handelen, moeten ze om technische redenen toegang hebben tot een web-API of een resource onder hun eigen identiteit. Een voor beeld is toegang tot geheimen in Azure Key Vault of een Azure SQL database voor een cache.
 
 Toepassingen die een token voor hun eigen identiteiten verkrijgen:
 
-- zijn vertrouwelijke client toepassingen. Deze apps, gezien de toegang tot bronnen onafhankelijk van gebruikers, moeten hun identiteit bewijzen. Ze zijn ook in plaats daarvan gevoelige apps. Ze moeten worden goedgekeurd door de Tenant beheerders van de Azure Active Directory (Azure AD).
+- Zijn vertrouwelijke client toepassingen. Deze apps, gezien de toegang tot bronnen onafhankelijk van gebruikers, moeten hun identiteit bewijzen. Ze zijn ook in plaats daarvan gevoelige apps. Ze moeten worden goedgekeurd door de Tenant beheerders van de Azure Active Directory (Azure AD).
 - Een geheim (toepassings wachtwoord of-certificaat) hebt geregistreerd bij Azure AD. Dit geheim wordt door gegeven tijdens het aanroepen van Azure AD om een token op te halen.
 
 ## <a name="specifics"></a>Opsporingsgegevens

@@ -11,24 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 1f10a577f681d1df4ba99c987df457ea1ca09470
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108256"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671608"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
 Ontwikkelaars Portal is een automatisch gegenereerde, volledig aanpas bare website met de documentatie van uw Api's. Het is waar API-consumers uw Api's kunnen detecteren, meer informatie over het gebruik ervan moeten gebruiken, toegang te vragen en uit te proberen.
 
 In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde versies van de ontwikkelaars Portal in API Management. Ook wordt de architectuur uitgelegd en vindt u antwoorden op veelgestelde vragen.
-
-> [!WARNING]
->
-> [Meer informatie over het migreren van de preview-versie naar de algemeen beschik bare versie](#preview-to-ga) van de ontwikkelaars Portal.
 
 ![API Management ontwikkelaars Portal](media/api-management-howto-developer-portal/cover.png)
 
@@ -39,7 +35,7 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 U kunt uw ontwikkelaars Portal op twee manieren bouwen:
 
 - **Beheerde versie** : door de portal te bewerken en aan te passen, die in uw API Management-exemplaar is ingebouwd en toegankelijk is via de URL `<your-api-management-instance-name>.developer.azure-api.net`. Raadpleeg [Dit documentatie artikel](api-management-howto-developer-portal-customize.md) voor meer informatie over het openen en aanpassen van de beheerde Portal.
-- **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de meegeleverde kern functionaliteit uitbreiden. U moet ook zelf een upgrade van de portal naar de nieuwste versie uitvoeren. Raadpleeg de [github-opslag plaats met de bron code van de portal][1] en [de zelf studie over het implementeren van een widget][3]voor meer informatie en instructies. In de [zelf studie voor de beheerde versie](api-management-howto-developer-portal-customize.md) wordt het beheer paneel van de portal beschreven. dit wordt ook aanbevolen in de zelf-hostende versie.
+- **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de verschafte kern functionaliteit uitbreiden. u kunt bijvoorbeeld aangepaste widgets implementeren voor integraties met systemen van derden. In dit scenario bent u de maintainer van de portal en bent u verantwoordelijk voor het upgraden van de portal naar de nieuwste versie. Raadpleeg de [github-opslag plaats met de bron code van de portal][1] en [de zelf studie over het implementeren van een widget][3]voor meer informatie en instructies. In de [zelf studie voor de beheerde versie](api-management-howto-developer-portal-customize.md) wordt het beheer paneel van de portal door lopen, wat gebruikelijk is voor de beheerde en zelf-hostende versies.
 
 ## <a name="portal-architectural-concepts"></a>Concepten van de portal architectuur
 
@@ -70,7 +66,7 @@ De portal is gebaseerd op een aangepaste Fork van het [Paperbits-Framework](http
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-In deze sectie beantwoorden we veelgestelde vragen over de nieuwe ontwikkelaars Portal, die algemeen zijn. Raadpleeg [de sectie wiki van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/wiki)voor vragen die specifiek zijn voor de zelf-hostende versie.
+In deze sectie beantwoorden we veelgestelde vragen over de ontwikkelaars Portal, die algemeen zijn. Raadpleeg [de sectie wiki van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/wiki)voor vragen die specifiek zijn voor de zelf-hostende versie.
 
 ### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> hoe kan ik migreren vanuit de preview-versie van de portal?
 
@@ -86,13 +82,13 @@ Als u de inhoud van de portal niet opnieuw wilt instellen, kunt u eventueel pas 
 
 Als uw portal is ingericht na de aankondiging van de algemene Beschik baarheid, moet deze al de nieuwe standaard inhoud gebruiken. Aan uw zijde is geen actie vereist.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Hoe kan ik migreren van de oude ontwikkelaars Portal naar de nieuwe ontwikkelaars Portal?
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Hoe kan ik migreren van de oude ontwikkelaars Portal naar de ontwikkelaars Portal?
 
 Portals zijn incompatibel en u moet de inhoud hand matig migreren.
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Beschikt de nieuwe portal over alle functies van de oude Portal?
+### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Beschikt de portal over alle functies van de oude Portal?
 
-De nieuwe ontwikkelaars Portal biedt geen ondersteuning voor *toepassingen* en *problemen*. Als u *problemen* hebt gebruikt in de oude Portal en deze nodig hebt, plaatst u een opmerking in [een specifiek github-probleem](https://github.com/Azure/api-management-developer-portal/issues/122).
+De ontwikkelaars Portal biedt geen ondersteuning meer voor *toepassingen* en *problemen*.
 
 Verificatie met OAuth in de interactieve ontwikkelaars console wordt nog niet ondersteund. U kunt de voortgang volgen via [het github-probleem](https://github.com/Azure/api-management-developer-portal/issues/208).
 
@@ -104,23 +100,25 @@ Afschaffing van de verouderde portals wordt afzonderlijk aangekondigd. Als u vra
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>De benodigde functionaliteit wordt niet ondersteund in de portal
 
-Gebruik de zelf-hostende versie en [Implementeer uw eigen widget][3].
+U kunt een [functie aanvraag](https://aka.ms/apimwish) openen of [zelf de ontbrekende functionaliteit implementeren][3]. Als u de functionaliteit zelf implementeert, kunt u de ontwikkelaars portal zelf hosten of een pull-aanvraag openen in GitHub om de wijzigingen in de beheerde versie op te nemen.
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Hoe kan ik Portal implementaties automatiseren?
 
 U kunt via de REST API programmatisch toegang krijgen tot de inhoud van de ontwikkelaars Portal en deze beheren, ongeacht of u een beheerde of zelf-hostende versie gebruikt.
 
-De API wordt beschreven in [de sectie wiki van de GitHub-opslag plaats][2]. Het kan ook worden gebruikt voor het automatiseren van de migratie van Portal-inhoud tussen omgevingen, bijvoorbeeld vanuit een test omgeving naar de productie omgeving. Meer informatie over dit proces vindt u [in dit documentatie artikel](https://aka.ms/apimdocs/migrateportal) op github.
+De API wordt beschreven in [de sectie wiki van de GitHub-opslag plaats][2]. Het kan worden gebruikt voor het automatiseren van de migratie van Portal-inhoud tussen omgevingen, bijvoorbeeld vanuit een test omgeving naar de productie omgeving. Meer informatie over dit proces vindt u [in dit documentatie artikel](https://aka.ms/apimdocs/migrateportal) op github.
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Ondersteunt de portal Azure Resource Manager sjablonen en/of is deze compatibel met API Management DevOps Resource Kit?
 
 Nee.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Moet ik extra VNet-connectiviteit inschakelen voor de nieuwe afhankelijkheden van de beheerde Portal?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Moet ik extra VNet-connectiviteit inschakelen voor de afhankelijkheden van de beheerde Portal?
 
 In de meeste gevallen-Nee.
 
 Als uw API Management-service zich in een intern VNet bevindt, is uw ontwikkelaars Portal alleen toegankelijk vanuit het netwerk. De hostnaam van het beheer eindpunt moet worden omgezet naar het interne VIP van de service van de computer die u gebruikt voor toegang tot de beheer interface van de portal. Controleer of het beheer eindpunt is geregistreerd in de DNS. In het geval van een onjuiste configuratie ziet u een fout: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+
+Als uw API Management-service zich in een intern VNet bevindt en u deze via Application Gateway via internet opent, moet u ervoor zorgen dat u verbinding met de ontwikkelaars Portal en de beheer eindpunten van API Management inschakelt.
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Ik heb een aangepast API Management domein toegewezen en de gepubliceerde Portal werkt niet
 
@@ -138,7 +136,7 @@ Nadat u de overdracht hebt ingesteld, moet u [de portal opnieuw publiceren](api-
 
 Voor de meeste configuratie wijzigingen (bijvoorbeeld VNet, aanmelden en product voorwaarden) moet [de portal opnieuw worden gepubliceerd](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console
+### <a name="cors"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console
 
 De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](api-management-cross-domain-policies.md#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven of Joker `*` waarden gebruiken. Bijvoorbeeld:
 

@@ -1,25 +1,26 @@
 ---
-title: Hoge Beschik baarheid en betrouw baarheid-Azure scheduler
+title: Hoge beschikbaarheid en betrouwbaarheid
 description: Meer informatie over hoge Beschik baarheid en betrouw baarheid in azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979291"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898565"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Hoge Beschik baarheid en betrouw baarheid voor Azure scheduler
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 Azure Scheduler biedt zowel [hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/framework/#resiliency) als betrouw baarheid voor uw taken. Zie [Sla voor scheduler](https://azure.microsoft.com/support/legal/sla/scheduler)voor meer informatie.
 
@@ -29,7 +30,7 @@ Azure scheduler is [Maxi maal beschikbaar] en maakt gebruik van geo-redundante s
 
 ### <a name="geo-redundant-service-deployment"></a>Geo-redundante service-implementatie
 
-Azure scheduler is beschikbaar in het Azure Portal in vrijwel [elke geografische regio die door Azure wordt ondersteund](https://azure.microsoft.com/global-infrastructure/regions/#services). Als een Azure-Data Center in een gehoste regio niet meer beschikbaar is, kunt u nog steeds Azure Scheduler gebruiken omdat de failover-functionaliteit van de service scheduler beschikbaar maakt vanuit een ander Data Center.
+Azure scheduler is beschikbaar in vrijwel [elke geografische regio die momenteel door Azure wordt ondersteund](https://azure.microsoft.com/global-infrastructure/regions/#services). Als een Azure-Data Center in een gehoste regio niet meer beschikbaar is, kunt u nog steeds Azure Scheduler gebruiken omdat de failover-functionaliteit van de service scheduler beschikbaar maakt vanuit een ander Data Center.
 
 ### <a name="geo-regional-job-replication"></a>Geo-regionale taak replicatie
 
@@ -50,7 +51,7 @@ Azure scheduler garandeert een eigen hoge Beschik baarheid, maar heeft een ander
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Beleid opnieuw proberen
+### <a name="retry-policies"></a>Beleid voor opnieuw proberen
 
 Met Azure Scheduler kunt u beleid voor opnieuw proberen instellen. Als een taak mislukt, wordt de taak door scheduler standaard vier keer per interval van 30 seconden herhaald. U kunt dit beleid voor opnieuw proberen agressief maken, bijvoorbeeld tien keer bij 30 seconden of minder agressief, bijvoorbeeld twee keer per dag.
 
@@ -70,9 +71,9 @@ Het actie type voor de alternatieve actie kan afwijken van de oorspronkelijke ac
 
 Zie [Error Action](scheduler-concepts-terms.md#error-action)voor meer informatie over het instellen van een alternatief eind punt.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
 * [Concepten, terminologie en entiteitenhiërarchie](scheduler-concepts-terms.md)
-* [Complexe schema's en geavanceerde terugkeerpatronen bouwen](scheduler-advanced-complexity.md)
+* [Naslaginformatie over REST API van Azure Scheduler](/rest/api/scheduler)
+* [Naslaginformatie over Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md)
 * [Limieten, quota, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)

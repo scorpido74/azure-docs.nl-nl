@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4be80e9ded2fe4009c05a2b699342f848491994a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6028f5e618b4b480a2259241fc2380f0200cebc6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046129"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898347"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Gegevens versleuteling voor Azure Database for PostgreSQL Eén server met behulp van de Azure Portal
 
@@ -93,6 +93,130 @@ Nadat Azure Database for PostgreSQL één server is versleuteld met een door de 
 4. Nadat u de Service-Principal hebt geregistreerd, moet u de sleutel opnieuw valideren en wordt de normale functionaliteit van de server hervat.
 
    ![Scherm opname van Azure Database for PostgreSQL, met de herstelde functionaliteit](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Een Azure Resource Manager sjabloon gebruiken om gegevens versleuteling in te scha kelen
+
+Naast Azure Portal, kunt u ook gegevens versleuteling inschakelen op uw Azure Database for PostgreSQL enkele server met behulp van Azure Resource Manager-sjablonen voor nieuwe en bestaande server.
+
+### <a name="for-a-new-server"></a>Voor een nieuwe server
+
+Gebruik een van de vooraf gemaakte Azure Resource Manager sjablonen om de server in te richten met gegevens versleuteling ingeschakeld: [voor beeld met gegevens versleuteling](https://github.com/Azure/azure-postgresql/tree/master/arm-templates/ExampleWithDataEncryption)
+
+Met deze Azure Resource Manager sjabloon maakt u een Azure Database for PostgreSQL enkele server en gebruikt u de **sleutel** **kluis** en code die zijn door gegeven als para meters om gegevens versleuteling op de server in te scha kelen.
+
+### <a name="for-an-existing-server"></a>Voor een bestaande server
+Daarnaast kunt u Azure Resource Manager sjablonen gebruiken om gegevens versleuteling in te scha kelen op uw bestaande Azure Database for PostgreSQL enkele servers.
+
+* Geef de URI van de Azure Key Vault sleutel die u eerder hebt gekopieerd, op onder de `keyVaultKeyUri` eigenschap in het object Properties.
+
+* Gebruik *2020-01-01-preview* als de API-versie.
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "serverName": {
+      "type": "string"
+    },
+    "keyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault name where the key to use is stored"
+      }
+    },
+    "keyVaultResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault resource group name where it is stored"
+      }
+    },
+    "keyName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key name in the key vault to use as encryption protector"
+      }
+    },
+    "keyVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "Version of the key in the key vault to use as encryption protector"
+      }
+    }
+  },
+  "variables": {
+    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "kind": "",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "name": "[parameters('serverName')]",
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "name": "addAccessPolicy",
+      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/accessPolicies",
+              "name": "[concat(parameters('keyVaultName'), '/add')]",
+              "apiVersion": "2018-02-14-preview",
+              "properties": {
+                "accessPolicies": [
+                  {
+                    "tenantId": "[subscription().tenantId]",
+                    "objectId": "[reference(resourceId('Microsoft.DBforPostgreSQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
+                    "permissions": {
+                      "keys": [
+                        "get",
+                        "wrapKey",
+                        "unwrapKey"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
+      "type": "Microsoft.DBforPostgreSQL/servers/keys",
+      "apiVersion": "2020-01-01-preview",
+      "dependsOn": [
+        "addAccessPolicy",
+        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "serverKeyType": "AzureKeyVault",
+        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

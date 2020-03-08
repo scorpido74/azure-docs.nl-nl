@@ -4,12 +4,12 @@ description: In deze zelf studie leert u hoe u de MARS-agent (Microsoft Azure Re
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171823"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672949"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Bestanden herstellen van Azure naar een Windows-server
 
@@ -21,7 +21,7 @@ Met Azure Backup kunt u afzonderlijke items uit de back-ups van uw Windows-Serve
 > * Een herstelpunt selecteren
 > * Items herstellen vanaf een herstelpunt
 
-In deze zelfstudie wordt ervan uitgegaan dat u de stappen in [Een back-up maken van Windows Server naar Azure](backup-configure-vault.md) al hebt uitgevoerd, en dat u ten minste één back-up van uw Windows Server-bestanden in Azure hebt.
+In deze zelfstudie wordt ervan uitgegaan dat u de stappen in [Een back-up maken van Windows Server naar Azure](backup-windows-with-mars-agent.md) al hebt uitgevoerd, en dat u ten minste één back-up van uw Windows Server-bestanden in Azure hebt.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Herstel van afzonderlijke items initiëren
 

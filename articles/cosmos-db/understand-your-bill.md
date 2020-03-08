@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: be1697038674a177eaced03732536c0df5b16983
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 74a4279d347be92b1047a9cf361e233ecc7fcff8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046143"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674302"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB factuur
 
@@ -20,12 +20,12 @@ Als volledig beheerde Cloud-systeem eigen database service, Azure Cosmos DB vere
 
 Met Azure Cosmos DB wordt per uur gefactureerd op basis van de ingerichte door Voer en de verbruikte opslag. Voor de ingerichte door Voer is de facturerings eenheid 100 RU/sec per uur, in rekening gebracht tegen $0,008 per uur, uitgaande van de standaard open bare prijzen, zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/). Voor de verbruikte opslag wordt gefactureerd van $0,25 per 1 GB opslag per maand. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie. 
 
-In dit artikel worden enkele voor beelden gebruikt om inzicht te krijgen in de details die u op de maandelijkse factuur ziet. De getallen die in de voor beelden worden weer gegeven, kunnen verschillen als uw Azure Cosmos-containers een andere hoeveelheid door Voer inrichten hebben, als deze over meerdere regio's vallen of gedurende een maand een andere periode hebben.
+In dit artikel worden enkele voorbeelden gebruikt om inzicht te krijgen in de details van de maandelijkse factuur. De getallen in de voorbeelden kunnen afwijken wanneer voor uw Azure Cosmos-containers een andere hoeveelheid doorvoer is ingericht, wanneer ze meerdere regio’s bestrijken, of als ze worden uitgevoerd voor een andere periode dan een maand.
 
 > [!NOTE]
 > Facturering is voor elk deel van een uur in de periode, geen 60 minuut.
 
-## <a name="billing-examples"></a>Voorbeelden van facturering
+## <a name="billing-examples"></a>Facturerings voorbeelden
 
 ### <a name="billing-example---throughput-on-a-container-full-month"></a>Voor beeld van facturering: door Voer voor een container (volledige maand)
 
@@ -49,7 +49,7 @@ In dit artikel worden enkele voor beelden gebruikt om inzicht te krijgen in de d
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Facturerings tarief als de opslag grootte verandert
 
-Opslagcapaciteit wordt in rekening gebracht in eenheden van de maximale hoeveelheid opgeslagen gegevens per uur (in GB) gedurende een maand. Als u bijvoorbeeld 100 GB aan opslag hebt gebruikt tijdens de eerste helft van de maand en 50 GB in de tweede helft, krijgt u een factuur voor het equivalent van 75 GB aan opslag gedurende die maand.
+Opslag capaciteit wordt in rekening gebracht in eenheden van de maximale hoeveelheid opgeslagen gegevens per uur, in GB, gedurende een maandelijkse periode. Als u bijvoorbeeld 100 GB aan opslag hebt gebruikt voor de helft van de maand en 50 GB voor de tweede helft van de maand, wordt u in de maand gefactureerd voor een equivalent van 75 GB opslag ruimte.
 
 ### <a name="billing-rate-when-container-or-a-set-of-containers-are-active-for-less-than-an-hour"></a>Het facturerings tarief wanneer een container of een set containers minder dan een uur actief is
 
@@ -97,12 +97,12 @@ U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure
 
 We gaan ervan uit dat u een Azure Cosmos-container hebt in VS West. De container wordt gemaakt met een door Voer van 10.000 RU/SEC en u hebt 1 TB aan gegevens per maand opgeslagen. We gaan ervan uit dat u drie regio's (VS-Oost, Europa-noord en Azië-oost) toevoegt aan uw Azure Cosmos-account, elk met dezelfde opslag en door voer. Uw totale maandelijkse factuur wordt (ervan uitgaande in 30 dagen per maand). Uw factuur zou er als volgt uitzien: 
 
-|**Item** |**Gebruik (maand)** |**Snelheid** |**Maandelijkse kosten** |
+|**Item** |**Gebruik (maand)** |**Malen** |**Maandelijkse kosten** |
 |---------|---------|---------|-------|
-|Doorvoerfactuur voor container in US - west      | 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur   |$576|
-|Doorvoerfactuur voor drie extra regio's: US - oost, Europa - noord en Azië - oost       | 3 * 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur  |$1.728|
-|Opslagfactuur voor container in US - west      | 250 GB    |$0,25/GB  |$62,50|
-|Opslagfactuur voor drie extra regio's: US - oost, Europa - noord en Azië - oost      | 3 * 250 GB    |$0,25/GB  |$187,50|
+|Doorvoer factuur voor container in West-VS      | 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur   |$576|
+|Doorvoer factuur voor drie extra regio's: VS-Oost, Europa-noord en Azië-oost       | 3 * 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur  |$1.728|
+|Opslag factuur voor container in West-VS      | 250 GB    |$0,25/GB  |$62,50|
+|Opslag factuur voor 3 extra regio's-VS-Oost, Europa-noord en Azië-oost      | 3 * 250 GB    |$0,25/GB  |$187,50|
 |**Eind**     |     |  |**$2.554**|
 
 *Er wordt ook van uitgegaan dat u elke maand 100 GB aan gegevens van de container in West-US uitmaakt om gegevens te repliceren naar de VS-Oost, Europa-noord en Azië-oost. U wordt gefactureerd voor uitgaand verkeer volgens tarieven per gegevens overdracht.*
@@ -111,12 +111,12 @@ We gaan ervan uit dat u een Azure Cosmos-container hebt in VS West. De container
 
 We gaan ervan uit dat u een Azure Cosmos-container maakt in VS West. De container wordt gemaakt met een door Voer van 10.000 RU/SEC en u hebt 1 TB aan gegevens per maand opgeslagen. We gaan ervan uit dat u drie regio's toevoegt (VS-Oost, Europa-noord en Azië-oost), elk met dezelfde opslag en door Voer en u de mogelijkheid wilt geven om te schrijven naar de containers in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De totale maandelijkse factuur wordt als volgt (indien 30 dagen per maand):
 
-|**Item** |**Gebruik (maand)**|**Snelheid** |**Maandelijkse kosten** |
+|**Item** |**Gebruik (maand)**|**Malen** |**Maandelijkse kosten** |
 |---------|---------|---------|-------|
 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)       | 10.000 RU/SEC * 24 * 30    |$0,016 per 100 RU/sec per uur    |$1.152 |
 |Doorvoer factuur voor drie extra regio's: VS-Oost, Europa-noord en Azië-oost (alle regio's zijn schrijfbaar)        | (3 + 1) * 10.000 RU/SEC * 24 * 30    |$0,016 per 100 RU/sec per uur   |$4.608 |
-|Opslagfactuur voor container in US - west      | 250 GB    |$0,25/GB  |$62,50|
-|Opslagfactuur voor drie extra regio's: US - oost, Europa - noord en Azië - oost      | 3 * 250 GB    |$0,25/GB  |$187,50|
+|Opslag factuur voor container in West-VS      | 250 GB    |$0,25/GB  |$62,50|
+|Opslag factuur voor 3 extra regio's-VS-Oost, Europa-noord en Azië-oost      | 3 * 250 GB    |$0,25/GB  |$187,50|
 |**Eind**     |     |  |**$6.010**|
 
 *Er wordt ook van uitgegaan dat u elke maand 100 GB aan gegevens van de container in West-US uitmaakt om gegevens te repliceren naar de VS-Oost, Europa-noord en Azië-oost. U wordt gefactureerd voor uitgaand verkeer volgens tarieven per gegevens overdracht.*
@@ -181,7 +181,7 @@ In de onderstaande afbeelding ziet u de wijzigingen in de totale ingerichte door
 
 De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) wordt als volgt berekend:
 
-|**Hours**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
+|**Loopt**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20.000 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Doorvoer factuur voor twee extra regio's: VS-Oost, Europa-noord (alle regio's zijn schrijfbaar)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
@@ -199,6 +199,37 @@ De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) 
 | | |Doorvoer factuur voor twee extra regio's: VS-Oost, Europa-noord (alle regio's zijn schrijfbaar)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Totale maandelijkse kosten**  | |**$38.688**   |
 
+## <a name="billing-examples-with-free-tier-accounts"></a>Facturerings voorbeelden met gratis laag accounts
+Met Azure Cosmos DB gratis laag krijgt u de eerste 400 RU/s en 5 GB aan opslag ruimte in uw account gratis, toegepast op het niveau van de account. Voor elke RU/s en opslag van meer dan 400 RU/s en 5 GB worden de reguliere prijs tarieven per de pagina met prijzen in rekening gebracht. Op de factuur worden geen kosten of een regel item weer geven voor de gratis 400 ru/s en 5 GB, alleen de RU/s en opslag buiten wat wordt gedekt door de gratis laag. De 400 RU/s is van toepassing op elk type RU/s-ingerichte door Voer, auto pilot (preview) en multi-master.  
+
+### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Voor beeld van facturering: container of Data Base met ingerichte door Voer
+- Stel dat we een Data Base of container maken in een gratis laag account met 400 RU/s en 5 GB aan opslag ruimte.
+- In uw factuur worden geen kosten voor deze resource weer gegeven. De kosten voor elk uur en maandelijks worden $0.
+- Nu gaan we in hetzelfde account een andere data base of container toevoegen met 1000 RU/s en 10 GB aan opslag ruimte.
+- Uw factuur toont nu kosten voor de 1000 RU/s en 10 GB aan opslag ruimte. 
+
+### <a name="billing-example---container-or-database-with-autopilot-throughput-preview"></a>Voor beeld van facturering: container of Data Base met auto pilot-door Voer (preview-versie)
+- Stel dat u in een gratis laag account een Data Base of container maakt waarvoor auto pilot is ingeschakeld, met een maximum van RU/s van 4000 RU/s. Deze resource wordt automatisch geschaald tussen 400 RU/s-4000 RU/s. 
+- Stel dat in uur 1 tot en met uur 10 de resource ten minste 400 RU/s is. Tijdens het uur 11 wordt de resource geschaald tot 1000 RU/s en wordt deze in het hele uur opnieuw ingesteld op 400 RU/s.
+- In uur 1 tot en met 10 wordt u gefactureerd $0 voor door Voer, omdat de 400 RU/s onder de gratis laag vallen. 
+- In uur 11 wordt u gefactureerd voor een effectief 1000 RU/s-400 RU/s = 600 RU/s, omdat dit de hoogste RU/s in het uur is. Dit zijn zes eenheden van 100 RU/s voor het uur, waardoor de totale doorvoer kosten voor het uur 6 eenheden * $0,012 = $0,072 zijn. 
+- Alle opslag die zich buiten de eerste 5 GB bevindt, wordt gefactureerd tegen normale opslag tarieven. 
+
+### <a name="billing-example---multi-region-single-write-region-account"></a>Voor beeld van facturering: meerdere regio's account voor één schrijf regio
+- Stel dat u in een gratis laag account een Data Base of container maakt met 1200 RU/s en 10 GB aan opslag ruimte. Het account wordt gerepliceerd naar drie regio's en er is een Single-Master account (één schrijf regio).
+- In totaal, zonder gratis laag, worden er kosten in rekening gebracht voor 3 * 1200 RU/s = 3600 RU/s en 3 * 10 GB = 30 GB aan opslag ruimte.
+- Na het verwijderen van 400 RU/s en 5 GB aan opslag worden er kosten in rekening gebracht voor een effectief aantal 3200 RU/s (32 eenheden) van ingerichte door Voer op het tarief voor de afzonderlijke schrijf regio's en 25 GB aan opslag ruimte.
+- De maandelijkse kosten voor RU/s zijn: 32 eenheden * $0,008 * 24 uur * 31 dagen = $190,46. De maandelijkse kosten voor opslag zijn: 25 GB * 0,25/GB = $6,25. De totale kosten zijn $190,46 + $6,25 = $196,71.
+- Opmerking: als de eenheids prijs voor RU/s of opslag verschilt in de regio's, worden in de gratis laag 400 RU/s en 5 GB de tarieven weer gegeven van het account waarin de regio is gemaakt.
+
+### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Voor beeld van facturering: multi-regio, multi-master account (meerdere schrijf regio's)
+
+Dit voor beeld weerspiegelt de [prijzen voor meerdere masters](https://azure.microsoft.com/pricing/details/cosmos-db/) voor accounts die zijn gemaakt na 1 december 2019. 
+- Stel dat u in een gratis laag account een Data Base of container maakt met 1200 RU/s en 10 GB aan opslag ruimte. Het account wordt gerepliceerd naar drie regio's en er is een multi-master account (meerdere schrijf regio's). 
+- In totaal, zonder gratis laag, worden er kosten in rekening gebracht voor 3 * 1200 RU/s = 3600 RU/s en 3 * 10 GB = 30 GB aan opslag ruimte.
+- Na het verwijderen van 400 RU/s en 5 GB aan opslag worden er kosten in rekening gebracht voor een effectief aantal 3200 RU/s (32 eenheden) van ingerichte door Voer op het niveau van meerdere schrijf regio's en 25 GB aan opslag ruimte.
+- De maandelijkse kosten voor RU/s zijn: 32 eenheden * $0,016 * 24 uur * 31 dagen = $380,93. De maandelijkse kosten voor opslag zijn: 25 GB * 0,25/GB = $6,25. De totale kosten zijn $380,93 + $6,25 = $387,18.
+
 ## <a name="proactively-estimating-your-monthly-bill"></a>Proactief schatten van uw maandelijkse factuur  
 
 Laten we eens kijken naar een ander voor beeld, waar u proactief uw factuur kunt inschatten vóór het einde van de maand. U kunt uw factuur als volgt schatten:
@@ -215,7 +246,7 @@ Laten we eens kijken naar een ander voor beeld, waar u proactief uw factuur kunt
 
 |**Doorvoer kosten** | | | |
 |----|----|----|----|
-|Type bewerking| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
+|Bewerkings type| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
 |Schrijven| 100 | 5 | 500|
 |Lezen| 400| 1| 400|
 
@@ -240,7 +271,7 @@ Uw totale factuur (zonder gereserveerde capaciteit) zou worden (waarbij 30 dagen
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**|**Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan - Oost|$0,009 |50 K| $4,50 |$3.240 |
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
 |Totaal|||$8,50|$6.120 |
 
 U kunt in plaats daarvan een gereserveerde capaciteit hebben gekocht. U kunt gereserveerde capaciteit voor 100-K RU/seconde kopen tegen de prijs van $56.064 gedurende één jaar (bij 20% korting) of $6,40 per uur. Bekijk de prijzen voor gereserveerde capaciteit op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/).  
@@ -254,10 +285,10 @@ Wat u effectief hebt aangeschaft, is een tegoed van $8 per uur, voor 100 K RU pe
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**| **Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan - Oost|$0,009 |50 K| $4,50 |$3.240 |
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
 |||Betalen naar gebruik|$8,50|$6120|
 |Aangeschafte gereserveerde capaciteit|$0,0064 (20% korting) |100 RU/sec of $8 capaciteit vooraf aangeschaft |-$8|-$5.760 |
-|Nettofactuur|||$ 0,50 |$360 |
+|Netfactuur|||$0,50 |$360 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

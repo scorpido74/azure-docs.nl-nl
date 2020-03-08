@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916503"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674232"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -182,10 +182,24 @@ De volgende tabel bevat de limieten voor de gratis proef versie [Azure Cosmos DB
 | Maximum aantal containers per abonnement (SQL, Gremlin, Table-API) | 1 |
 | Maximum aantal containers per abonnement (MongoDB-API) | 3 |
 | Maximale door Voer per container | 5000 |
-| Maximale door Voer per Data Base voor gedeelde door Voer | 20000 |
+| Maximale door Voer per Data Base voor gedeelde door Voer | 20.000 |
 | Maximale totale opslag per account | 10 GB |
 
 Probeer Cosmos DB wereld wijde distributie alleen te ondersteunen in de regio's VS-centraal, Europa-noord en Zuidoost-Azië. Er kunnen geen ondersteunings tickets voor Azure worden gemaakt voor het proberen van Azure Cosmos DB accounts. Er wordt echter ondersteuning geboden voor abonnees met bestaande ondersteunings abonnementen.
+
+## <a name="free-tier-account-limits"></a>Limieten voor gratis laag accounts
+De volgende tabel bevat de limieten voor [Azure Cosmos DB gratis laag accounts.](optimize-dev-test.md#azure-cosmos-db-free-tier)
+
+| Resource | Standaardlimiet |
+| --- | --- |
+| Aantal gratis laag accounts per Azure-abonnement | 1 |
+| Duur van de gratis laag korting | De levens duur van het account. Moet zich aanmelden tijdens het maken van het account. |
+| Maxi maal aantal RU/s gratis | 400 RU/s |
+| Maximale opslag voor gratis | 5 GB |
+| Maximum aantal gedeelde doorvoer databases | 5 |
+| Maximum aantal containers in een gedeelde doorvoer database | 25 <br>In accounts met een gratis laag is de minimale RU/s voor een gedeelde doorvoer database met Maxi maal 25 containers 400 RU/s. |
+
+  Naast het bovenstaande zijn de [limieten per account](#per-account-limits) ook van toepassing op gratis laag accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 

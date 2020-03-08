@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538801"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672306"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -57,7 +57,7 @@ Er zijn twee manieren om de waarde van de tijdstempel van activiteit te bepalen:
 
     ![Tijdstempel van activiteit](./media/manage-stale-devices/01.png)
 
-- Via de cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Via de cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
 
     ![Tijdstempel van activiteit](./media/manage-stale-devices/02.png)
 
@@ -75,7 +75,7 @@ Als u een apparaat wilt bijwerken in Azure AD, hebt u een account nodig waaraan 
 
 Selecteer in uw opschoningsbeleid accounts die over de vereiste rollen beschikken. 
 
-### <a name="timeframe"></a>Tijdsbestek
+### <a name="timeframe"></a>Periode
 
 Definieer de periode die u als indicator wilt gebruiken voor een verlopen apparaat. Als u uw tijds bestek definieert, factor het venster dat wordt vermeld voor het bijwerken van de tijds tempel van de activiteit in uw waarde. U moet bijvoorbeeld een tijds tempel overwegen die jonger is dan 21 dagen (inclusief variantie) als indicator voor een verouderd apparaat. Er zijn scenario's waarin het lijkt alsof een apparaat verlopen is terwijl dat niet het geval is. Zo is het bijvoorbeeld mogelijk dat de eigenaar van het apparaat op vakantie is of ziek is en  hierdoor de periode voor verlopen apparaten wordt overschreden.
 
@@ -129,11 +129,11 @@ Hoewel het mogelijk is om verlopen apparaten op te schonen in de Azure-portal, i
 
 Een typische routine bestaat uit de volgende stappen:
 
-1. Verbinding maken met Azure Active Directory met behulp van de cmdlet [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Verbinding maken met Azure Active Directory met behulp van de cmdlet [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
 1. De lijst met apparaten opvragen
-1. Schakel het apparaat uit met de cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0). 
+1. Schakel het apparaat uit met de cmdlet [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0). 
 1. Wacht tot de respijtperiode (d.w.z. het aantal dagen dat u hiervoor hebt gekozen) is verlopen voordat u het apparaat verwijdert.
-1. Verwijder het apparaat met de cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
+1. Verwijder het apparaat met de cmdlet [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
 
 ### <a name="get-the-list-of-devices"></a>De lijst met apparaten opvragen
 

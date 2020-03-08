@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194446"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672400"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Enterprise state roaming inschakelen in Azure Active Directory
 
@@ -25,13 +25,13 @@ Enterprise State Roaming is beschikbaar voor alle organisaties met een licentie 
 Als u Enterprise State Roaming inschakelt, krijgt uw organisatie automatisch een gratis, beperkt gebruik van licenties voor Azure Rights Management-beveiliging van Azure Information Protection. Dit gratis abonnement is beperkt tot het versleutelen en ontsleutelen van ondernemings instellingen en toepassings gegevens die zijn gesynchroniseerd door Enterprise State Roaming. U moet [een betaald abonnement](https://azure.microsoft.com/pricing/details/information-protection/) hebben om de volledige mogelijkheden van de Azure Rights Management-service te kunnen gebruiken.
 
 > [!NOTE]
-> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming inschakelen
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com/).
 1. Selecteer **Azure Active Directory** &gt; **apparaten** &gt; **Enterprise State roaming**.
-1. Selecteer **gebruikers kunnen instellingen en app-gegevens synchroniseren op verschillende apparaten**. Zie [Apparaatinstellingen configureren](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)voor meer informatie.
+1. Selecteer **gebruikers kunnen instellingen en app-gegevens synchroniseren op verschillende apparaten**. Zie [Apparaatinstellingen configureren](/azure/active-directory/device-management-azure-portal)voor meer informatie.
   
    ![afbeelding van de apparaat-instelling met de naam gebruikers kan instellingen en app-gegevens op verschillende apparaten synchroniseren](./media/enterprise-state-roaming-enable/device-settings.png)
   

@@ -4,14 +4,14 @@ description: Meer informatie over SQL WHERE-component voor Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982226"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898787"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE-component in Azure Cosmos DB
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    Expressie voor de waarde die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
   
-
 ## <a name="remarks"></a>Opmerkingen
   
-  Opdat het document dat moet worden geretourneerd van een expressie die is opgegeven als filter moet voorwaarde resulteren in waar. Alleen Booleaanse waarde ' True ', voldoen aan de voorwaarde, een andere waarde: niet-gedefinieerde, null, ingesteld op false, getal, matrix of Object zal voldoen niet aan de voorwaarde. 
+  Opdat het document dat moet worden geretourneerd van een expressie die is opgegeven als filter moet voorwaarde resulteren in waar. Alleen Booleaanse waarde `true` voldoet aan de voor waarde, een andere waarde: niet gedefinieerd, null, False, getal, matrix of object voldoet niet aan de voor waarde.
+
+  Als u de partitie sleutel opneemt in de `WHERE`-component als onderdeel van een gelijkheids filter, wordt uw query automatisch gefilterd op alleen de relevante partities.
 
 ## <a name="examples"></a>Voorbeelden
 

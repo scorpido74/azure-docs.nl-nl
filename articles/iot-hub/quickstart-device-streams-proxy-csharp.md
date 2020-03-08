@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 1232177c8fd856d704c92694edb26ff8e12ad217
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461921"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675464"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quick Start: SSH en RDP via een IoT Hub Device stream inschakelen met behulp van een C# proxy toepassing (preview-versie)
 
@@ -69,8 +69,13 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 * Voer de volgende opdracht uit om de Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt IoT Hub, IoT Edge en IoT-specifieke opdrachten (Device Provisioning Service) toe aan de Azure CLI.
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+   ```azurecli-interactive
+   az extension add --name azure-iot
+   ```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 * [Down load de Azure C# IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden en pak het zip-archief uit.
 

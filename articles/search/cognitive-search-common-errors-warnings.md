@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913477"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671981"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -48,7 +48,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. Kan `'{47.6,-122.1}'` in de kolom AUTHORS niet opslaan.  Verwacht type is JArray. | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als bijvoorbeeld het eerste document `'startTime'` veld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
+| inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. Kan `'{47.6,-122.1}'` in de kolom AUTHORS niet opslaan.  Verwacht type is JArray. "  Fout bij het converteren van het gegevens type nvarchar naar float.  ' De conversie is mislukt tijdens het converteren van de nvarchar-waarde ' 12 maanden ' naar het gegevens type int '.  "Aritmetische overflow fout bij het converteren van de expressie naar het gegevens type int." | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als bijvoorbeeld het eerste document `'startTime'` veld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
 | fouten van de onderliggende service van de gegevens bron | (van Cosmos DB) `{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
 | tijdelijke problemen | Er is een fout op transport niveau opgetreden bij het ontvangen van resultaten van de server. (provider: TCP-provider, fout: 0-een bestaande verbinding is geforceerd gesloten door de externe host | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 

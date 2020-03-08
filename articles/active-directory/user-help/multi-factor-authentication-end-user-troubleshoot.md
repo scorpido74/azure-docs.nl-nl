@@ -8,16 +8,16 @@ ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 7dfd15f6270827382a6456231e8b1699986cd5f6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191364"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897729"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met twee ledige verificatie en uw werk-of school account
 
@@ -104,7 +104,7 @@ Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbee
 
 Als u deze stappen hebt uitgevoerd, maar nog steeds problemen ondervindt, neemt u contact op met de Help Desk van uw organisatie voor hulp.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
 

@@ -1,26 +1,27 @@
 ---
-title: Geavanceerde taak planningen en herhalingen bouwen-Azure scheduler
+title: Geavanceerde taak planningen en herhalingen bouwen
 description: Meer informatie over het maken van geavanceerde planningen en herhalingen voor taken in azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300970"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898591"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Geavanceerde schema's en herhalingen maken voor taken in azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 Binnen een [Azure scheduler](../scheduler/scheduler-intro.md) -taak is het schema de kern die bepaalt wanneer en hoe de Scheduler-service de taak uitvoert. U kunt meerdere eenmalige en terugkerende schema's instellen voor een taak met scheduler. Eenmalige planningen worden slechts eenmaal uitgevoerd op een opgegeven tijd en zijn eigenlijk terugkerende schema's die slechts één keer worden uitgevoerd. Terugkerende schema's worden uitgevoerd op een opgegeven frequentie. Met deze flexibiliteit kunt u Scheduler gebruiken voor verschillende bedrijfs scenario's, bijvoorbeeld:
 
@@ -28,9 +29,9 @@ Binnen een [Azure scheduler](../scheduler/scheduler-intro.md) -taak is het schem
 
 * **Gegevens archiveren**: Maak een maandelijkse taak waarmee de factuur geschiedenis wordt gepusht naar een back-upservice.
 
-* **Externe gegevens opvragen**: Een taak maken die elke 15 minuten wordt uitgevoerd en een nieuw weer rapport van NOAA haalt.
+* **Externe gegevens aanvragen**: een taak maken die elke 15 minuten wordt uitgevoerd en een nieuw weer rapport van NOAA haalt.
 
-* **Proces installatie kopieën**: Maak een werk week taak die wordt uitgevoerd tijdens daluren en maakt gebruik van cloud computing voor het comprimeren van afbeeldingen die tijdens de dag worden geüpload.
+* **Proces afbeeldingen**: Maak een werk week taak die wordt uitgevoerd tijdens daluren en maakt gebruik van cloud computing voor het comprimeren van afbeeldingen die tijdens de dag worden geüpload.
 
 In dit artikel worden voorbeeld taken beschreven die u kunt maken met scheduler en de [Azure scheduler rest API](/rest/api/scheduler), en wordt de JavaScript object NOTATION (JSON)-definitie voor elk schema opgenomen. 
 
@@ -63,11 +64,11 @@ Voer de volgende stappen uit om een basis schema te maken met de [Azure schedule
 
 Deze tabel bevat een overzicht op hoog niveau voor de belangrijkste JSON-elementen die u kunt gebruiken bij het instellen van herhalingen en schema's voor taken. 
 
-| Element | Vereist | Description | 
+| Element | Vereist | Beschrijving | 
 |---------|----------|-------------|
 | **startTime** | Nee | Een DateTime-teken reeks waarde in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de taak voor het eerst in een basis schema wordt gestart. <p>Voor complexe schema's wordt de taak niet eerder gestart dan **StartTime**. | 
 | **recurrence** | Nee | De regels voor het terugkeer patroon voor wanneer de taak wordt uitgevoerd. Het object **recurrence** ondersteunt deze elementen: **frequentie**, **interval**, **planning**, **aantal**en **EndTime**. <p>Als u het element **recurrence** gebruikt, moet u ook het element **Frequency** gebruiken, terwijl andere **terugkeer** elementen optioneel zijn. |
-| **frequency** | Ja, wanneer u **terugkeer patroon** gebruikt | De tijds eenheid tussen exemplaren en ondersteunt deze waarden: ' Minuut ', ' uur ', ' dag ', ' week ', ' maand ' en ' jaar ' | 
+| **frequency** | Ja, wanneer u **terugkeer patroon** gebruikt | De tijds eenheid tussen exemplaren en ondersteunt deze waarden: ' minute ', ' hour ', ' Day ', ' week ', ' month ' en ' Year ' | 
 | **interval** | Nee | Een positief geheel getal dat het aantal tijds eenheden tussen exemplaren bepaalt op basis van de **frequentie**. <p>Als **interval** bijvoorbeeld 10 is en de **frequentie** is ' week ', wordt de taak elke 10 weken herhaald. <p>Dit is het hoogste aantal intervallen voor elke frequentie: <p>-18 maanden <br>-78 weken <br>-548 dagen <br>-Voor uren en minuten is het bereik 1 < = <*interval*> < = 1000. | 
 | **schedule** | Nee | Hiermee worden wijzigingen in het terugkeer patroon gedefinieerd op basis van de opgegeven minutes-tekens, uur-tekens, dagen van de week en dagen van de maand | 
 | **count** | Nee | Een positief geheel getal dat het aantal keren opgeeft dat de taak wordt uitgevoerd voordat wordt voltooid. <p>Als bijvoorbeeld een dagelijkse taak het **aantal** heeft ingesteld op 7 en de begin datum maandag is, wordt de taak uitgevoerd op zondag. Als de begin datum al is verstreken, wordt de eerste uitvoering berekend op basis van de aanmaak tijd. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. | 
@@ -143,7 +144,7 @@ Stel dat u dit voor beeld met deze voor waarden hebt: een begin tijd in het verl
    1. 2015-04-11 om 2:00 uur
    1. 2015-04-13 om 2:00 uur 
    1. 2015-04-15 om 2:00 uur
-   1. enzovoort...
+   1. Enzovoort...
 
 1. Ten slotte, wanneer een taak een schema heeft maar geen opgegeven uren en minuten, worden deze waarden standaard ingesteld op de uren en minuten in de eerste uitvoering.
 
@@ -159,7 +160,7 @@ Als u meer dan één schema-element opgeeft, is de volg orde van de evaluatie va
 
 In de volgende tabel worden de schedule-elementen in detail beschreven:
 
-| JSON-naam | Description | Geldige waarden |
+| JSON-naam | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |
 | **minutes** |Minuten van het tijdstip waarop de taak wordt uitgevoerd. |Een matrix met gehele getallen. |
 | **hours** |De uren van de dag waarop de taak wordt uitgevoerd. |Een matrix met gehele getallen. |
@@ -167,13 +168,13 @@ In de volgende tabel worden de schedule-elementen in detail beschreven:
 | **monthlyOccurrences** |Bepaalt op welke dagen van de maand de taak wordt uitgevoerd. Kan alleen worden opgegeven met een maandelijkse frequentie. |Een matrix met **monthlyOccurrences** -objecten:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **dag** is de dag van de week waarop de taak wordt uitgevoerd. Zo is bijvoorbeeld *{zondag}* elke zondag van de maand. Vereist.<br /><br />**voorval** is de dag van de maand. Bijvoorbeeld: *{zondag,-1}* is de laatste zondag van de maand. Optioneel. |
 | **monthDays** |Dag van de maand waarop de taak wordt uitgevoerd. Kan alleen worden opgegeven met een maandelijkse frequentie. |Een matrix met de volgende waarden:<br />- Alle waarden < = -1 en > =-31<br />- Alle waarden > = 1 en < =31|
 
-## <a name="examples-recurrence-schedules"></a>Voorbeelden: Herhalings schema's
+## <a name="examples-recurrence-schedules"></a>Voor beelden: herhalings schema's
 
 In de volgende voor beelden ziet u verschillende terugkeer planningen. De voor beelden focussen op het object Schedule en de bijbehorende subelementen.
 
 Deze schema's nemen aan dat het **interval** is ingesteld op 1\. De voor beelden nemen ook de juiste **frequentie** waarden voor de waarden in **schema**. U kunt **bijvoorbeeld geen '** dag ' gebruiken en een **monthDays** wijzigen in de **planning**. Deze beperkingen worden eerder in het artikel beschreven.
 
-| Voorbeeld | Description |
+| Voorbeeld | Beschrijving |
 |:--- |:--- |
 | `{"hours":[5]}` |Wordt elke dag om 5 uur uitgevoerd.<br /><br />Scheduler komt overeen met elke waarde in ' hours ' met elke waarde in ' minuten ', een voor één, om een lijst te maken van alle tijdstippen waarop de taak wordt uitgevoerd. |
 | `{"minutes":[15], "hours":[5]}` |Wordt elke dag om 5:15 uur uitgevoerd. |
@@ -207,8 +208,9 @@ Deze schema's nemen aan dat het **interval** is ingesteld op 1\. De voor beelden
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Wordt op de laatste vrijdag van de maand elke 15 minuten uitgevoerd. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Wordt elke maand op de derde woensdag om 5:15, 5:45, 17:15 en 17:45 uur uitgevoerd. |
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
 * [Azure Scheduler-concepten, -terminologie en -entiteitenhiërarchie](scheduler-concepts-terms.md)
+* [Naslaginformatie over REST API van Azure Scheduler](/rest/api/scheduler)
+* [Naslaginformatie over Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md)
 * [Azure Scheduler-limieten, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)

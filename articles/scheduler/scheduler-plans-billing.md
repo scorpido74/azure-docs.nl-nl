@@ -1,25 +1,26 @@
 ---
-title: Plannen en facturering-Azure scheduler
+title: Abonnementen en facturering
 description: Meer informatie over abonnementen en facturering voor Azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300875"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898480"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plannen en facturering voor Azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 ## <a name="job-collection-plans"></a>Taak verzamelings plannen
 
@@ -72,7 +73,7 @@ Een factureer bare P20-eenheid voor Premium kan Maxi maal 5.000 P20 Premium-taak
 
 P20 Premium-taak verzamelingen bieden dezelfde mogelijkheden als P10 Premium-taak verzamelingen, maar bieden ook ondersteuning voor een groter aantal taken per verzameling en een groter aantal taken in het algemeen dan P10 Premium, waardoor u meer schaal baarheid kunt bieden.
 
-## <a name="plan-comparison"></a>Vergelijking van abonnementen
+## <a name="plan-comparison"></a>Vergelijking plannen
 
 * Als u meer dan 100 standaard taak verzamelingen (10 standaard facturerings eenheden) hebt, kunt u een betere deal krijgen door alle taak verzamelingen in een Premium-abonnement te hebben.
 
@@ -80,8 +81,7 @@ P20 Premium-taak verzamelingen bieden dezelfde mogelijkheden als P10 Premium-taa
 
   De Scheduler service-facturen op basis van het aantal actieve taak verzamelingen die standaard of Premium zijn.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
 * [Azure Scheduler-concepten, -terminologie en -entiteitenhiërarchie](scheduler-concepts-terms.md)
 * [Azure Scheduler-limieten, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)

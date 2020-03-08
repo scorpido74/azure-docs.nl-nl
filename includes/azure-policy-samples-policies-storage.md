@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: a4c9aae28175e31fdcded22595275e4b32c333e9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 83fe11833fdbeb6c00fc816b4e462c982dfe7806
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262707"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668450"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[Toegestane opslagaccount-SKU's](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) |Met dit beleid kunt u een set opslag account-Sku's opgeven die uw organisatie kan implementeren. |Weigeren |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json)
 |[Onbeperkte netwerk toegang tot opslag accounts controleren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Controleer onbeperkte netwerk toegang in de firewall-instellingen van uw opslag account. In plaats daarvan configureert u netwerk regels zodat alleen toepassingen van toegestane netwerken toegang hebben tot het opslag account. Om verbindingen van specifieke internet-of lokale clients toe te staan, kan toegang worden verleend aan verkeer van specifieke Azure Virtual Networks of voor open bare IP-adresbereiken voor Internet |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json)

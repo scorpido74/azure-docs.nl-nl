@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772445"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898701"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen labelen in een label project
 
@@ -58,6 +58,16 @@ In azure wordt de **Verzend** knop ingeschakeld wanneer u alle afbeeldingen op d
 
 Nadat u labels voor de gegevens hebt verzonden, vernieuwt Azure de pagina met een nieuwe set installatie kopieën uit de werk wachtrij.
 
+### <a name="assisted-machine-learning"></a>Ondersteunde machine learning 
+
+Machine learning-algoritmen kunnen worden geactiveerd tijdens een classificatie taak met meerdere klassen of meerdere labels. Als deze algoritmen in uw project zijn ingeschakeld, ziet u mogelijk het volgende:
+
+* Nadat een aantal installatie kopieën zijn gelabeld, ziet u mogelijk taken die boven aan het scherm worden **geclusterd** naast de project naam.  Dit betekent dat installatie kopieën samen worden gegroepeerd om Vergelijk bare afbeeldingen op dezelfde pagina te presen teren.  Als dit het geval is, gaat u naar een van de weer gaven met meerdere afbeeldingen om de groepering te benutten.  
+
+* Op een later tijdstip ziet u mogelijk taken met een **Label** naast de project naam.  Afbeeldingen worden weer gegeven met een aanbevolen label dat afkomstig is van een machine learning classificatie model. Geen van de machine learning model heeft een nauw keurigheid van 100%. We gebruiken alleen installatie kopieën waarvoor het model betrouwbaar is, maar deze installatie kopieën zijn mogelijk nog niet goed gelabeld.  Wanneer u deze labels ziet, corrigeert u de verkeerde labels voordat u de pagina verzendt.  
+
+Met name in een label project is het machine learning model mogelijk alleen nauw keurig genoeg om een kleine subset van afbeeldingen te labelen. Zodra deze afbeeldingen zijn gelabeld, keert het labelen project terug naar hand matige labeling om meer gegevens te verzamelen voor de volgende ronde van model training. In de loop van de tijd zal het model meer vertrouwen hebben over een hoger gedeelte van de installatie kopieën, wat resulteert in meer prelabel-taken verderop in het project.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Tag-installatie kopieën voor classificatie met meerdere klassen
 
 Als uw project van het type ' afbeeldings classificatie met meerdere klassen ' is, wijst u één tag toe aan de volledige afbeelding. Als u de instructies op elk gewenst moment wilt bekijken, gaat u naar de pagina **instructies** en selecteert u **gedetailleerde instructies weer geven**.
@@ -81,6 +91,7 @@ Als u een fout wilt corrigeren, klikt u op de "**X**" om een afzonderlijke tag t
 ![Een scherm opname waarin meerdere selectie vakjes worden weer gegeven](./media/how-to-label-images/multiple-deselection.png)
 
 De **Verzend** knop wordt alleen door Azure ingeschakeld nadat u ten minste één tag hebt toegepast op elke afbeelding. Selecteer **verzenden** om uw werk op te slaan.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Afbeeldingen labelen en selectie kaders voor object detectie opgeven
 
@@ -106,7 +117,7 @@ Als u *alle* selectie vakjes in de huidige afbeelding wilt verwijderen, selectee
 
 Nadat u de selectie kaders voor een afbeelding hebt gemaakt, selecteert u **verzenden** om uw werk op te slaan of wordt de voortgang van uw werk niet opgeslagen.
 
-## <a name="finish-up"></a>Voltooien
+## <a name="finish-up"></a>Volt ooien
 
 Wanneer u een pagina met gelabelde gegevens verzendt, wijst Azure nieuwe niet-gelabelde gegevens toe vanuit een werk wachtrij. Als er geen niet meer gelabelde gegevens beschikbaar zijn, wordt er een bericht weer gegeven met een koppeling naar de start pagina van de portal.
 

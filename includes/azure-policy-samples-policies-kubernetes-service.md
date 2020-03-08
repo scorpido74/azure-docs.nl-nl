@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 66a2f6b57f807ed2a554d0aa92111b0afd25d648
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ca7e90b49d93a73e8433e269e3efc4297a10ff6b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262571"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668352"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[\[beperkte preview-\]: \[AKS\] geen geprivilegieerde containers in AKS toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Dit beleid staat het maken van geprivilegieerde containers in een Azure Kubernetes-service cluster niet toe. Beperkte preview-beleids regels werken alleen voor geregistreerde abonnementen. Als u zich wilt registreren, gaat u naar https://aka.ms/akspolicyonboarding. Ga naar https://aka.ms/akspolicydocvoor instructies over het gebruik van dit beleid. |EnforceRegoPolicy, uitgeschakeld |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\[beperkte preview-\]: \[AKS\] HTTPS-inkomend verkeer afdwingen in AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Dit beleid dwingt HTTPS-ingang af in een Azure Kubernetes-service cluster. Beperkte preview-beleids regels werken alleen voor geregistreerde abonnementen. Als u zich wilt registreren, gaat u naar https://aka.ms/akspolicyonboarding. Ga naar https://aka.ms/akspolicydocvoor instructies over het gebruik van dit beleid. |EnforceRegoPolicy, uitgeschakeld |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)

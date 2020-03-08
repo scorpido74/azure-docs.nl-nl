@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 03/05/2020
 ms.author: alzam
-ms.openlocfilehash: b9627862002a70dc84b0e268128c53a97df0ebe8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f4092f651a3058c8a2e738c81d9db7e296386bfa
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472295"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402890"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant maken voor P2S OpenVPN-protocol verbindingen
 
@@ -22,9 +22,10 @@ Wanneer u verbinding maakt met uw VNet, kunt u verificatie op basis van certific
 > Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
 >
 
-## <a name="tenant"></a>1. de Azure AD-Tenant maken
 
-Maak een Azure AD-Tenant met behulp van de stappen in het artikel [een nieuwe Tenant maken](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
+## <a name="tenant"></a>1. Azure AD-Tenant verifiëren
+
+Controleer of u een Azure AD-Tenant hebt. Als u geen Azure AD-Tenant hebt, kunt u er een maken met behulp van de stappen in het artikel [een nieuwe Tenant maken](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
 
 * Organisatie naam
 * Initiële domein naam
@@ -35,7 +36,7 @@ Voorbeeld:
 
 ## <a name="users"></a>2. gebruikers van Azure AD-tenants maken
 
-Maak vervolgens twee gebruikers accounts. Maak één globaal beheerders account en één hoofd gebruikers account. Het hoofd gebruikers account wordt gebruikt als uw hoofd account voor insluiten (Service-account). Wanneer u een Azure AD-Tenant gebruikers account maakt, past u de Directory-rol aan voor het type gebruiker dat u wilt maken.
+Uw Azure AD-Tenant heeft de volgende accounts nodig: een globaal beheerders account en een hoofd gebruikers account. Het hoofd gebruikers account wordt gebruikt als uw hoofd account voor insluiten (Service-account). Wanneer u een Azure AD-Tenant gebruikers account maakt, past u de Directory-rol aan voor het type gebruiker dat u wilt maken.
 
 Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azure-active-directory.md) om ten minste twee gebruikers te maken voor uw Azure AD-Tenant. Zorg ervoor dat u de **Directory-rol** wijzigt om de volgende account typen te maken:
 
@@ -54,7 +55,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 4. Geef vervolgens toestemming voor de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatie locatie in de adres balk van uw browser:
 
-    Public
+    Openbaar
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent

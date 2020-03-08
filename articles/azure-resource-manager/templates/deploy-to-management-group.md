@@ -2,23 +2,29 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228098"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894879"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
 
-Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op het niveau van de beheer groep. U kunt implementaties op beheer groeps niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals [het toewijzen van toegangs beheer op basis van rollen of het](../../role-based-access-control/overview.md) Toep assen van [beleid](../../governance/policy/overview.md).
+Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op:
+
+* [abonnements niveau](deploy-to-subscription.md)
+* niveau beheer groep (in dit artikel)
+* [Tenant niveau](deploy-to-tenant.md)
+
+U kunt implementaties op beheer groeps niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals [het toewijzen van toegangs beheer op basis van rollen of het](../../role-based-access-control/overview.md) Toep assen van [beleid](../../governance/policy/overview.md).
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
 U kunt de volgende resource typen implementeren op het niveau van de beheer groep:
 
-* [implementaties](/azure/templates/microsoft.resources/deployments)
+* [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op abonnementen of resource groepen.
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

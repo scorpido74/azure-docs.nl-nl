@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/26/2020
+ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650823"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898916"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Opslag opties vergelijken voor gebruik met Azure HDInsight-clusters
 
@@ -28,7 +28,7 @@ De volgende tabel bevat een overzicht van de Azure Storage services die worden o
 
 | Opslag service | Accounttype | Type naam ruimte | Ondersteunde services | Ondersteunde prestatie lagen | Ondersteunde toegangs lagen | HDInsight-versie | Cluster type |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| Voor algemeen gebruik v2 | Hiërarchisch (bestands systeem) | Blob | Standard | Hot, cool, Archive | 3.6 + | Alle behalve Spark 2,1 |
+|Azure Data Lake Storage Gen2| Voor algemeen gebruik v2 | Hiërarchisch (bestands systeem) | Blob | Standard | Hot, cool, Archive | 3.6 + | Alle behalve Spark 2,1 en 2,2|
 |Azure Storage| Voor algemeen gebruik v2 | Object | Blob | Standard | Hot, cool, Archive | 3.6 + | Alle |
 |Azure Storage| Algemeen v1 | Object | Blob | Standard | N.v.t. | Alle | Alle |
 |Azure Storage| Blob Storage * * | Object | Blok-BLOB | Standard | Hot, cool, Archive | Alle | Alle |
@@ -58,7 +58,7 @@ U kunt een cluster maken met verschillende combi Naties van services voor primai
 \* = Dit kan een of meer Data Lake Storage Gen2 accounts zijn, zolang deze allemaal zijn ingesteld om dezelfde beheerde identiteit te gebruiken voor toegang tot het cluster.
 
 > [!Note] 
-> Data Lake Storage Gen2 primaire opslag wordt niet ondersteund voor Spark 2,1-clusters. 
+> Data Lake Storage Gen2 primaire opslag wordt niet ondersteund voor Spark 2,1-of 2,2-clusters. 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure Data Lake Storage Gen2 gebruiken met Apache Hadoop in azure HDInsight
 
@@ -220,7 +220,7 @@ Data Lake Storage Gen1 gebruikt Azure Active Directory voor verificatie en maakt
 
 | **Functie** | **Beschrijving** |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 integreert met Azure Active Directory (Azure AD) voor identiteits-en toegangs beheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Vanwege de integratie Data Lake Storage Gen1 de voor delen van alle Azure AD-functies. Deze functies omvatten multi-factor Authentication, voorwaardelijke toegang, op rollen gebaseerd toegangs beheer, bewaking van toepassings gebruik, beveiligings bewaking en waarschuwingen, enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2,0-protocol voor verificatie binnen de REST-interface. Bekijk [verificatie binnen Azure data Lake Storage gen1 met behulp van Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Verificatie |Data Lake Storage Gen1 integreert met Azure Active Directory (Azure AD) voor identiteits-en toegangs beheer voor alle gegevens die zijn opgeslagen in Data Lake Storage Gen1. Vanwege de integratie Data Lake Storage Gen1 de voor delen van alle Azure AD-functies. Deze functies omvatten multi-factor Authentication, voorwaardelijke toegang, op rollen gebaseerd toegangs beheer, bewaking van toepassings gebruik, beveiligings bewaking en waarschuwingen, enzovoort. Data Lake Storage Gen1 ondersteunt het OAuth 2,0-protocol voor verificatie binnen de REST-interface. Bekijk [verificatie binnen Azure data Lake Storage gen1 met behulp van Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Toegangsbeheer |Data Lake Storage Gen1 biedt toegangs beheer door de machtigingen voor POSIX-stijlen te ondersteunen die door het WebHDFS-protocol worden weer gegeven. ACL's kunnen worden ingeschakeld voor de hoofdmap, submappen en afzonderlijke bestanden. Zie [toegangs beheer in data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md)voor meer informatie over de werking van acl's in de context van data Lake Storage gen1. |
 | Versleuteling |Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die in het account zijn opgeslagen. U geeft de versleutelings instellingen op tijdens het maken van een Data Lake Storage Gen1-account. U kunt ervoor kiezen om uw gegevens te versleutelen of te kiezen voor geen versleuteling. Zie [versleuteling in data Lake Storage gen1](../data-lake-store/data-lake-store-encryption.md)voor meer informatie. Zie [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)voor instructies over het bieden van een configuratie met betrekking tot versleuteling. |
 

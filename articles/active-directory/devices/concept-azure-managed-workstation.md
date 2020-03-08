@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561949"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672662"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -81,18 +81,18 @@ Containment-strategieën verg Roten de beveiliging door het aantal en type bestu
 
 Essentieel voor een beveiligd werk station is een supply chain-oplossing waarbij u een vertrouwd werk station met de naam ' root of Trust ' gebruikt. Technologie die in aanmerking moet worden genomen in de selectie van de basis van Trust-hardware moet de volgende technologieën bevatten die zijn opgenomen in moderne laptops: 
 
-* [Trusted Platform Module (TPM) 2,0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [BitLocker-stationsversleuteling](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [UEFI Secure boot](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Stuur Programma's en firmware die via Windows Update worden gedistribueerd](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [Virtualisatie en HVCI ingeschakeld](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [Stuur Programma's en apps HVCI-Ready](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [DMA I/O-beveiliging](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [Systeem beveiliging](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [Moderne stand-by](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [Trusted Platform Module (TPM) 2,0](/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker-stationsversleuteling](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI Secure boot](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Stuur Programma's en firmware die via Windows Update worden gedistribueerd](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [Virtualisatie en HVCI ingeschakeld](/windows-hardware/design/device-experiences/oem-vbs)
+* [Stuur Programma's en apps HVCI-Ready](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O-beveiliging](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [Systeem beveiliging](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [Moderne stand-by](/windows-hardware/design/device-experiences/modern-standby)
 
-Voor deze oplossing wordt de basis van de vertrouwens relatie geïmplementeerd met behulp van [micro soft auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) -technologie met hardware die voldoet aan de moderne technische vereisten. Voor het beveiligen van een werk station kunt u met auto pilot gebruikmaken van door micro soft OEM geoptimaliseerde Windows 10-apparaten. Deze apparaten komen in een bekende goede staat van de fabrikant. In plaats van een mogelijk onveilig apparaat te, kan auto pilot een Windows-apparaat omzetten in een status die klaar is voor het bedrijf. Hiermee worden instellingen en beleid toegepast, worden apps geïnstalleerd en wordt zelfs de editie van Windows 10 gewijzigd. Auto Pilot kan bijvoorbeeld de Windows-installatie van een apparaat wijzigen van Windows 10 Pro in Windows 10 Enter prise, zodat deze geavanceerde functies kan gebruiken.
+Voor deze oplossing wordt de basis van de vertrouwens relatie geïmplementeerd met behulp van [micro soft auto pilot](/windows/deployment/windows-autopilot/windows-autopilot) -technologie met hardware die voldoet aan de moderne technische vereisten. Voor het beveiligen van een werk station kunt u met auto pilot gebruikmaken van door micro soft OEM geoptimaliseerde Windows 10-apparaten. Deze apparaten komen in een bekende goede staat van de fabrikant. In plaats van een mogelijk onveilig apparaat te, kan auto pilot een Windows-apparaat omzetten in een status die klaar is voor het bedrijf. Hiermee worden instellingen en beleid toegepast, worden apps geïnstalleerd en wordt zelfs de editie van Windows 10 gewijzigd. Auto Pilot kan bijvoorbeeld de Windows-installatie van een apparaat wijzigen van Windows 10 Pro in Windows 10 Enter prise, zodat deze geavanceerde functies kan gebruiken.
 
 ![Niveaus van beveiligde werk stations](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen 
 
 * **Verbeterde beveiliging** : deze op instap niveau beveiligde oplossing is geschikt voor thuis gebruikers, gebruikers van kleine bedrijven en algemene ontwikkel aars.
 
-   Het verbeterde werk station is een op beleid gebaseerde manier om de beveiliging van het lage beveiligings profiel te verhogen. Het biedt een veilige manier om met klant gegevens te werken en ook met productiviteits Programma's zoals e-mail en surfen op internet. U kunt controle beleid en intune gebruiken om een uitgebreid werk station te bewaken voor gebruikers gedrag en profiel gebruik. U implementeert het profiel uitgebreid werk station met het script Windows10 (1809) en maakt gebruik van geavanceerde beveiliging tegen schadelijke software met behulp van [Advanced Threat Protection (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
+   Het verbeterde werk station is een op beleid gebaseerde manier om de beveiliging van het lage beveiligings profiel te verhogen. Het biedt een veilige manier om met klant gegevens te werken en ook met productiviteits Programma's zoals e-mail en surfen op internet. U kunt controle beleid en intune gebruiken om een uitgebreid werk station te bewaken voor gebruikers gedrag en profiel gebruik. U implementeert het profiel uitgebreid werk station met het script Windows10 (1809) en maakt gebruik van geavanceerde beveiliging tegen schadelijke software met behulp van [Advanced Threat Protection (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Hoge beveiliging** : de meest efficiënte manier om de kwets baarheid van een werk station te beperken, is het verwijderen van de mogelijkheid om het werk station zelf te beheren. Het verwijderen van lokale beheerders rechten is een stap die de beveiliging verbetert, maar kan de productiviteit beïnvloeden als deze onjuist is geïmplementeerd. Het High-Security-profiel is gebaseerd op het verbeterde beveiligings profiel met één belang rijke wijziging: het verwijderen van de lokale beheerder. Dit profiel is bedoeld voor gebruikers met een hoog profiel: leidinggevenden, Sala rissen en gevoelige gegevens gebruikers, goed keurders voor services en processen.
 
@@ -121,8 +121,8 @@ Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen 
 
 * **Geïsoleerd** : dit aangepaste, offline scenario vertegenwoordigt het extreem einde van het spectrum. Er zijn geen installatie scripts voor deze aanvraag. Mogelijk moet u een bedrijfskritische functie beheren waarvoor een niet-ondersteund of verouderd besturings systeem is vereist. Bijvoorbeeld een productie lijn met hoge waarde of een systeem voor levens ondersteuning. Omdat de beveiliging kritiek is en Cloud Services niet beschikbaar zijn, kunt u deze computers hand matig of met een geïsoleerde Active Directory-forest-architectuur, zoals de verbeterde beveiligings beheer omgeving (ESAE), beheren en bijwerken. In deze omstandigheden kunt u alle toegang verwijderen, behalve basis intune en ATP-status controles.
 
-   * [Vereisten voor de intune-netwerk communicatie](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [Vereiste voor ATP-netwerk communicatie](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Vereisten voor de intune-netwerk communicatie](/intune/network-bandwidth-use)
+   * [Vereiste voor ATP-netwerk communicatie](/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: c189ad1a6b6ebc13b71ca547176af27a43a78a7d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640567"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673443"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>De IoT-extensie voor Azure CLI gebruiken voor Azure IoT Hub Apparaatbeheer
 
@@ -23,7 +23,9 @@ ms.locfileid: "68640567"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[De IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) is een nieuwe open source IOT-extensie die wordt toegevoegd aan de mogelijkheden van de [Azure cli](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). De Azure CLI bevat opdrachten voor interactie met Azure Resource Manager-en beheer eindpunten. U kunt bijvoorbeeld Azure CLI gebruiken om een Azure VM of een IoT-hub te maken. Een CLI-uitbrei ding stelt een Azure-service in staat om de Azure CLI te verbeteren, zodat u toegang hebt tot aanvullende servicespecifieke mogelijkheden. De IoT-extensie biedt IoT-ontwikkel aars opdracht regel toegang tot alle IoT Hub, IoT Edge en IoT Hub Device Provisioning Service mogelijkheden.
+[De IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) is een open-source IOT-extensie die wordt toegevoegd aan de mogelijkheden van de [Azure cli](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). De Azure CLI bevat opdrachten voor interactie met Azure Resource Manager-en beheer eindpunten. U kunt bijvoorbeeld Azure CLI gebruiken om een Azure VM of een IoT-hub te maken. Een CLI-uitbrei ding stelt een Azure-service in staat om de Azure CLI te verbeteren, zodat u toegang hebt tot aanvullende servicespecifieke mogelijkheden. De IoT-extensie biedt IoT-ontwikkel aars opdracht regel toegang tot alle IoT Hub, IoT Edge en IoT Hub Device Provisioning Service mogelijkheden.
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -59,12 +61,11 @@ Voer Azure CLI en de IoT-extensie voor Azure CLI uit met verschillende beheer op
 
 * [Python 2.7 x of Python 3.x](https://www.python.org/downloads/)
 
-<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
+* De Azure CLI. Als u de app wilt installeren, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az –version` om de versie te valideren.
 
-* De Azure CLI. Als u de app wilt installeren, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az –version` om de versie te valideren.
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-* Installeer de IoT-extensie. De eenvoudigste manier is `az extension add --name azure-cli-iot-ext` uit te voeren. [In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) worden verschillende manieren voor het installeren van de extensie beschreven.
+* Installeer de IoT-extensie. De eenvoudigste manier is `az extension add --name azure-iot` uit te voeren. [In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) worden verschillende manieren voor het installeren van de extensie beschreven.
 
 ## <a name="sign-in-to-your-azure-account"></a>Aanmelden bij uw Azure-account
 

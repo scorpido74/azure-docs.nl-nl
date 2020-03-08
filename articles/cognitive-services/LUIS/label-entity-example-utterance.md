@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448094"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898380"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Door de machine geleerde entiteit in een voor beeld-utterance
 
@@ -86,7 +86,7 @@ Entiteits rollen worden aangeduid met het palet entity.
 1. Selecteer op de detail pagina Details het **entiteits palet** in de context werkbalk.
 1. Nadat het entiteits palet wordt geopend, selecteert u de entiteit in de lijst met entiteiten.
 1. Ga naar de **entiteits controle**en selecteer een bestaande rol of maak een nieuwe rol.
-1. In het voor beeld utterance tekst labelt u de tekst met de rol van entiteit. 
+1. In het voor beeld utterance tekst labelt u de tekst met de rol van entiteit.
 
 ## <a name="unlabel-entities"></a>Entiteiten onlabelen
 

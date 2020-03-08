@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291495"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675610"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
 [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
@@ -118,6 +118,9 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 - De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 - Als u de uitvoerings tijd consistent wilt maken voor kritieke bedrijfs processen, kunt u proberen bepaalde batch taken en gebruikers te omleiden naar toepassings exemplaren die in de zone actief zijn met het actieve DBMS-exemplaar met behulp van SAP batch Server-groepen, SAP-aanmeldings groepen of RFC-groepen. In het geval van een zonegebonden-failover moet u deze groepen echter hand matig verplaatsen naar exemplaren die worden uitgevoerd op Vm's die in de zone actief zijn met de actieve DB-VM.  
 - In elk van de zones wilt u mogelijk niet-actieve dialoog instanties implementeren. Dit is om direct terug te keren naar de voormalige resource capaciteit als een zone die wordt gebruikt door een deel van uw toepassings exemplaren buiten dienst is.
+
+> [!IMPORTANT]
+> In dit Active/Active-scenario worden extra kosten in rekening gebracht voor de band breedte van micro soft, van 04/01/2020 op. Controleer de [prijs informatie](https://azure.microsoft.com/pricing/details/bandwidth/)voor de document bandbreedte. De gegevens overdracht tussen de SAP-toepassingslaag en de SAP DBMS-laag is zeer intensief. Het scenario actief/actief kan daarom bijdragen aan een behoorlijke prijs. Blijf dit artikel controleren om precies te profiteren van de kosten 
 
 
 ## <a name="activepassive-deployment"></a>Actieve/passieve implementatie

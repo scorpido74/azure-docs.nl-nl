@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194344"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672380"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Veelgestelde vragen over instellingen en gegevensroaming
 
@@ -35,7 +35,7 @@ In dit artikel vindt u antwoorden op enkele vragen die beheerders kunnen hebben 
 * *Andere Windows-instellingen*, zoals muis instellingen.
 
 > [!NOTE]
-> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
 **Toepassings gegevens**: universele Windows-apps kunnen instellingen gegevens schrijven naar een zwervende map en alle gegevens die naar deze map worden geschreven, worden automatisch gesynchroniseerd. Het is aan te melden dat een app door de ontwikkelaar van de app kan worden ontworpen om gebruik te maken van deze mogelijkheid. Voor meer informatie over het ontwikkelen van een universele Windows-app die gebruikmaakt van roaming, raadpleegt u de [Opslag-API van AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) en de [Windows 8 AppData-blog voor ontwikkel aars](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 

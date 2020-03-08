@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: faaf32b08fdf2415b1c60192f917fc2aedc14704
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e0fb78be363795bbb09fb0f14bd018fceea34a48
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660985"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897904"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Zelf studie: een NAT-gateway maken met behulp van Azure PowerShell en de NAT-service testen
 
@@ -271,7 +271,7 @@ New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rsg -Location $loc -AddressP
 
 ### <a name="create-public-ip-for-destination-vm"></a>Een openbaar IP-adres voor de doel-VM maken
 
-We maken een openbaar IP-adres om te gebruiken voor toegang tot de bron-VM.  Gebruik [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) voor het maken van een open bare IP-adres resource met de naam **myPublicIPdestinationVM** in **myResourceGroupNAT**.  Het resultaat van deze opdracht wordt opgeslagen in een variabele met de naam **$publicIpdestinationVM** voor later gebruik.
+We maken een openbaar IP-adres om te gebruiken voor toegang tot de doel-VM.  Gebruik [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) voor het maken van een open bare IP-adres resource met de naam **myPublicIPdestinationVM** in **myResourceGroupNAT**.  Het resultaat van deze opdracht wordt opgeslagen in een variabele met de naam **$publicIpdestinationVM** voor later gebruik.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

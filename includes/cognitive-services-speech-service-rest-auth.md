@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168320"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668462"
 ---
 ## <a name="authentication"></a>Verificatie
 
@@ -22,7 +22,7 @@ Elke aanvraag vereist een autorisatie-header. Deze tabel ziet u welke headers vo
 
 Wanneer u de `Ocp-Apim-Subscription-Key`-header gebruikt, hoeft u alleen uw abonnements sleutel op te geven. Bijvoorbeeld:
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ Als u een toegangs token wilt ophalen, moet u een aanvraag indienen bij het `iss
 
 Het `issueToken`-eind punt heeft de volgende indeling:
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ De hoofd tekst van het antwoord bevat de toegangs token in de indeling JSON Web 
 
 In dit voorbeeld is een eenvoudige PowerShell-script voor een toegangstoken. Vervang `YOUR_SUBSCRIPTION_KEY` door de abonnements sleutel van uw speech-service. Zorg ervoor dat u het juiste eindpunt voor de regio die overeenkomt met uw abonnement. In dit voorbeeld is momenteel ingesteld op VS-West.
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL is een opdrachtregelprogramma beschikbaar in Linux (en in de Windows-subsysteem voor Linux). Deze cURL-opdracht laat zien hoe een toegangstoken. Vervang `YOUR_SUBSCRIPTION_KEY` door de abonnements sleutel van uw speech-service. Zorg ervoor dat u het juiste eindpunt voor de regio die overeenkomt met uw abonnement. In dit voorbeeld is momenteel ingesteld op VS-West.
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 Dit C# klasse ziet u hoe u een toegangstoken. Uw abonnementssleutel Speech Service doorgeven als u een exemplaar maken van de klasse. Als uw abonnement zich niet in de regio vs-West bevindt, wijzigt u de waarde van `FetchTokenUri` zodat deze overeenkomt met de regio voor uw abonnement.
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

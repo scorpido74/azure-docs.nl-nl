@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: f3ce439f3e8c2290539e088402c2636974d37821
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430405"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898854"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -72,6 +72,7 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
 - Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
 - Als u de Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
+- Beheerde schijven die zijn versleuteld met door de klant beheerde sleutels, kunnen niet ook worden versleuteld met Azure Disk Encryption.
 
 ### <a name="powershell"></a>PowerShell
 

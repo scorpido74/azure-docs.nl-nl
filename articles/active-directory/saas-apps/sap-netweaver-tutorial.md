@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP NetWeaver | Microsoft Docs'
+title: 'Zelf studie: zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SAP NetWeaver | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP NetWeaver.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103372"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897736"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP net-Weaver
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SAP net-Weaver
 
 In deze zelf studie leert u hoe u SAP NetWeaver integreert met Azure Active Directory (Azure AD). Wanneer u SAP NetWeaver integreert met Azure AD, kunt u het volgende doen:
 
@@ -104,7 +104,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP NetWeaver moet u
 
     c. Dubbel klik op de relevante client om de HTTP-beveiligings sessie in te scha kelen.
 
-    ![De downloadkoppeling certificaat](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
+    ![De link om het certificaat te downloaden](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
     d. Activeer de onderstaande SICF-services:
     ```
@@ -115,22 +115,22 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP NetWeaver moet u
     ```
 1. Ga naar transactiecode **SAML2** in de bedrijfsclient van het SAP-systeem [T01/122]. In een browser wordt een gebruikersinterface geopend. In dit voorbeeld wordt ervanuit gegaan dat 122 een SAP-bedrijfsclient is.
 
-    ![De downloadkoppeling certificaat](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
+    ![De link om het certificaat te downloaden](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
 1. Voer uw gebruikersnaam en wachtwoord in de gebruikersinterface in en klik op **Edit**.
 
-    ![De downloadkoppeling certificaat](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
+    ![De link om het certificaat te downloaden](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
 1. Vervang **Provider Name** T01122 door `http://T01122` en klik op **Save**.
 
     > [!NOTE]
-    > Standaard is de naam van de `<sid><client>` provider als een indeling, maar de naam van Azure `<protocol>://<name>`AD verwacht in de indeling van, waarbij `https://<sid><client>` de naam van de provider wordt aangeraden zodat meerdere SAP NetWeaver ABAP-engines kunnen worden geconfigureerd in azure AD.
+    > Standaard is de naam van de provider als `<sid><client>`-indeling, maar de naam van Azure AD verwacht in de indeling van `<protocol>://<name>`. u wordt aangeraden de naam van de provider in te houden als `https://<sid><client>` zodat meerdere SAP NetWeaver ABAP-engines kunnen worden geconfigureerd in azure AD.
 
-    ![De downloadkoppeling certificaat](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
+    ![De link om het certificaat te downloaden](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
 1. **Metagegevens van de serviceprovider genereren**: als de instellingen **Local Provider** en **Trusted Providers** in de SAML 2.0-gebruikersinterface zijn geconfigureerd, bestaat de volgende stap uit het genereren van het bestand met metagegevens van de serviceprovider (dat alle instellingen, contexten voor verificatie en overige configuraties in SAP bevat). Als dit bestand is gegenereerd, moet het in Azure AD worden geüpload.
 
-    ![De downloadkoppeling certificaat](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
+    ![De link om het certificaat te downloaden](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
     a. Ga naar het tabblad **Local Provider**.
 
@@ -150,7 +150,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. Klik op **bestand met meta gegevens uploaden** om het **META gegevensbestand van de service provider**te uploaden, dat u eerder hebt verkregen.
 
-    b. Klik op **map logo** voor het selecteren van het bestand met metagegevens en klikt u op **uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
 
     c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Identifier** en **Reply URL** automatisch ingevuld in het tekstvak van de sectie **Standaard SAML-configuratie**, zoals hieronder weergegeven:
 
@@ -177,27 +177,27 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     b. Selecteer in de lijst **Transformatie** **ExtractMailPrefix()** .
 
-    c. Selecteer **user.userprinicipalname** in de lijst **Parameter 1**.
+    c. Selecteer in de lijst **para meter 1** de optie **User. userPrincipalName**.
 
     d. Klik op **Opslaan**.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-   ![De downloadkoppeling certificaat](common/metadataxml.png)
+   ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Op de sectie **SAP NetWeaver instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-    1. Voer in het veld **Naam** `B.Simon` in.  
-    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+    1. Voer in het veld **Naam**`B.Simon` in.  
+    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
     1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
     1. Klik op **Create**.
 
@@ -209,7 +209,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 1. Typ en selecteer **SAP NetWeaver** in de lijst met toepassingen.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -273,7 +273,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 14. Houd er rekening mee dat de waarden voor de toewijzing van de **bron-** en **gebruikers-id-** koppeling tussen de SAP-gebruiker en de Azure AD-claim worden bepaald.  
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Scenario: Toewijzing van SAP-gebruiker aan Azure AD-gebruiker.
+    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Scenario: SAP-gebruiker naar Azure AD-gebruikers toewijzing.
 
     a. Schermopname van details NameID van SAP.
 
@@ -328,35 +328,35 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ## <a name="configure-sap-netweaver-for-oauth"></a>SAP netweave configureren voor OAuth
 
-1. SAP-gedocumenteerd proces is beschikbaar op de locatie: [Netweaver-Gateway service inschakelen en OAuth 2,0 scope maken](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
+1. SAP gedocumenteerde proces is beschikbaar op de volgende locatie: [NetWeaver Gateway service inschakelen en OAuth 2,0 scope maken](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
 
 2. Ga naar SPRO en zoek naar **Services activeren en onderhouden**.
 
     ![Eenmalige aanmelding configureren](./media/sapnetweaver-tutorial/oauth01.png)
 
-3. In dit voor beeld willen we verbinding maken met de OData `DAAG_MNGGRP` -service: met OAuth naar Azure AD SSO. Gebruik de naam van de technische service voor het `DAAG_MNGGRP` zoeken naar de service en Activeer indien nog niet actief, `green` al (zoek naar status op het tabblad knoop punten van ICF) Zorg ervoor dat de systeem alias (het verbonden back-end-systeem, waar de service daad werkelijk wordt uitgevoerd) juist is.
+3. In dit voor beeld willen we verbinding maken met de OData-service: `DAAG_MNGGRP` met OAuth naar Azure AD SSO. Gebruik de naam van de technische service voor het zoeken naar de service `DAAG_MNGGRP` en Activeer indien deze nog niet actief is (zoek naar `green` status onder het tabblad ICF-knoop punten). Zorg ervoor dat de systeem alias (het verbonden back-end-systeem, waar de service daad werkelijk wordt uitgevoerd) juist is.
 
     ![Eenmalige aanmelding configureren](./media/sapnetweaver-tutorial/oauth02.png)
 
-    * Klik vervolgens op knop **OAuth** op de bovenste knop balk en `scope` wijs deze toe (behoud de standaard naam als deze wordt aangeboden).
+    * Klik vervolgens op knop **OAuth** op de bovenste knop balk en wijs `scope` toe (behoud de standaard naam als deze wordt aangeboden).
 
-4. In ons voor beeld wordt het `DAAG_MNGGRP_001`bereik gegenereerd op basis van de service naam door automatisch een nummer toe te voegen. Rapport `/IWFND/R_OAUTH_SCOPES` kan worden gebruikt om de naam van het bereik te wijzigen of hand matig te maken.
+4. In ons voor beeld wordt het bereik `DAAG_MNGGRP_001`en wordt het gegenereerd op basis van de service naam door automatisch een nummer toe te voegen. Rapport `/IWFND/R_OAUTH_SCOPES` kan worden gebruikt om de naam van het bereik te wijzigen of hand matig te maken.
 
     ![Eenmalige aanmelding configureren](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > Bericht `soft state status is not supported` : kan als geen probleem worden genegeerd. Zie [hier](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) voor meer informatie
+    > Bericht `soft state status is not supported`: kan worden genegeerd, omdat er geen problemen zijn. Zie [hier](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) voor meer informatie
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>Een service gebruiker maken voor de OAuth 2,0-client
 
-1. OAuth2 gebruikt a `service ID` om het toegangs token voor de eind gebruiker op te halen. Belang rijke beperking van het OAuth- `OAuth 2.0 Client ID` ontwerp: de moet identiek `username` zijn met de OAuth 2,0-client die wordt gebruikt voor aanmelding bij het aanvragen van een toegangs token. Daarom gaan we in ons voor beeld een OAuth 2,0-client met de naam CLIENT1 registreren, en moet er een vereiste zijn dat er een gebruiker met dezelfde naam (CLIENT1) in het SAP-systeem bestaat en dat de gebruiker wordt geconfigureerd voor gebruik door de toepassing waarnaar wordt verwezen. 
+1. OAuth2 maakt gebruik van een `service ID` voor het verkrijgen van het toegangs token voor de eind gebruiker. Belang rijke beperking van het OAuth-ontwerp: de `OAuth 2.0 Client ID` moet identiek zijn aan de `username` de OAuth 2,0-client wordt gebruikt voor aanmelding bij het aanvragen van een toegangs token. Daarom gaan we in ons voor beeld een OAuth 2,0-client met de naam CLIENT1 registreren, en moet er een vereiste zijn dat er een gebruiker met dezelfde naam (CLIENT1) in het SAP-systeem bestaat en dat de gebruiker wordt geconfigureerd voor gebruik door de toepassing waarnaar wordt verwezen. 
 
-2. Wanneer u een OAuth-client registreert `SAML Bearer Grant type`, wordt de gebruikt.
+2. Wanneer u een OAuth-client registreert, gebruiken we de `SAML Bearer Grant type`.
 
     >[!NOTE]
     >Raadpleeg voor meer informatie OAuth 2,0-client registratie voor het toekennings [type voor](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) de SAML Bearer.
 
-3. tcod: SU01/Create User CLIENT1 as `System type` en Assign password, sla het op als moet worden voorzien van de referentie voor de API-programmeur, die deze moet branden met de gebruikers naam voor de aanroepende code. Er mag geen profiel of rol worden toegewezen.
+3. tcod: SU01/Create User CLIENT1 als `System type` en geef een wacht woord op. Sla het op als dit nodig is om de referentie toe te voegen aan de API-programmeur, die deze moet branden met de gebruikers naam voor de aanroepende code. Er mag geen profiel of rol worden toegewezen.
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>De nieuwe OAuth 2,0-client-ID registreren bij de wizard maken
 
@@ -376,7 +376,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     ![Eenmalige aanmelding configureren](./media/sapnetweaver-tutorial/oauth08.png)
 
-4. Klik onder Scope toewijzing op **toevoegen** om het eerder gemaakte bereik toe te voegen:`DAAG_MNGGRP_001`
+4. Klik onder Scope toewijzing op **toevoegen** om het eerder gemaakte bereik toe te voegen: `DAAG_MNGGRP_001`
 
     ![Eenmalige aanmelding configureren](./media/sapnetweaver-tutorial/oauth09.png)
 
@@ -386,7 +386,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-Apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 

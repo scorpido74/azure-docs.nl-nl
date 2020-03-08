@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375304"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893342"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -72,7 +72,7 @@ Beleid voor voorwaardelijke toegang is standaard van toepassing op browser toepa
       - Deze optie omvat clients die gebruikmaken van basis/verouderde verificatie protocollen die geen ondersteuning bieden voor moderne verificatie.
          - Geverifieerde SMTP: wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.
          - Automatische detectie: wordt door Outlook-en EAS-clients gebruikt om post vakken in Exchange Online te vinden en er verbinding mee te maken.
-         - Exchange Online Power shell: wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.
+         - Exchange Online Power shell: wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.
          - Exchange Web Services (EWS): een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.
          - IMAP4: wordt gebruikt door IMAP-e-mailclients.
          - MAPI via HTTP (MAPI/HTTP): wordt gebruikt door Outlook 2010 en hoger.
@@ -142,8 +142,8 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | E-mail/agenda/personen-app, Outlook 2016, Outlook 2013 (met moderne verificatie)| Office 365 Exchange Online | Windows 10 |
 | MFA en locatie beleid voor apps. Beleids regels op basis van apparaten worden niet ondersteund.| Alle apps app service | Android en iOS |
 | Micro soft teams-Services: Hiermee beheert u alle services die micro soft-teams en alle client-apps ondersteunen-Windows Desktop, iOS, Android, WP en web client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android en macOS |
-| Office 2016-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 share point online | Windows 8.1, Windows 7 |
-| Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 share point online | Windows 10 |
+| Office 2016-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | Office 365 share point online | Windows 8.1, Windows 7 |
+| Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | Office 365 share point online | Windows 10 |
 | Office 2016 (alleen Word, Excel, Power Point, OneNote). | Office 365 share point online | macOS |
 | Office 2019| Office 365 share point online | Windows 10, macOS |
 | Mobiele Office-apps | Office 365 share point online | Android, iOS |

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270022"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851135"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelf studie: C# gebruik en AI voor het genereren van Doorzoek bare inhoud van Azure-blobs
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>Een client maken
 
-Maak een instantie van de klasse `SearchServiceClient` onder Main.
+Maak een instantie van de klasse `SearchServiceClient` onder `Main`.
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > De klasse `SearchServiceClient` beheert verbindingen met uw zoekservice. Als u wilt voorkomen dat er te veel verbindingen worden geopend, kunt u proberen één instantie van `SearchServiceClient` in uw toepassing te delen, indien mogelijk. De bijbehorende methoden zijn thread-safe om delen in te schakelen.
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>Functie toevoegen om het programma te sluiten tijdens een fout
+
+Deze zelf studie is bedoeld om u inzicht te geven in elke stap van de Indexing-pijp lijn. Als er een kritiek probleem is waarmee wordt voor komen dat het programma de gegevens bron, vaardig heden, index of Indexeer functie kan maken, wordt het fout bericht uitgevoerd en wordt het programma afgesloten zodat het probleem kan worden begrepen en opgelost.
+
+Voeg `ExitProgram` toe aan `Main` voor het afhandelen van scenario's waarvoor het programma moet worden afgesloten.
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 Voor een succes volle aanvraag retourneert de methode de gegevens bron die is gemaakt. Als er een probleem is met de aanvraag, zoals een ongeldige para meter, genereert de methode een uitzonde ring.
 
-Voeg nu een regel toe aan het hoofd om de `CreateOrUpdateDataSource`-functie aan te roepen die u zojuist hebt toegevoegd.
+Voeg nu een regel toe aan `Main` om de `CreateOrUpdateDataSource`-functie aan te roepen die u zojuist hebt toegevoegd.
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Voeg de volgende regels toe aan het hoofd.
+Voeg de volgende regels toe aan `Main`.
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 Tijdens het testen is het mogelijk dat u de index meer dan één keer probeert te maken. Controleer daarom of de index die u gaat maken al bestaat voordat u deze probeert te maken.
 
-Voeg de volgende regels toe aan het hoofd.
+Voeg de volgende regels toe aan `Main`.
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Voeg de volgende regels toe aan het hoofd.
+Voeg de volgende regels toe aan `Main`.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 Waarschuwingen komen veel voor bij sommige combinaties van bronbestand en vaardigheid en wijzen niet altijd op een probleem. In deze zelfstudie zijn de waarschuwingen onschadelijk (bijvoorbeeld geen tekstinvoeren van de JPEG-bestanden).
 
-Voeg de volgende regels toe aan het hoofd.
+Voeg de volgende regels toe aan `Main`.
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ Nadat het indexeren is voltooid, kunt u query's uitvoeren waarmee de inhoud van 
 
 Voer als verificatiestap query's uit op de index voor alle velden.
 
-Voeg de volgende regels toe aan het hoofd.
+Voeg de volgende regels toe aan `Main`.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Voeg de volgende code toe aan Main. De eerste try-catch retourneert de index definitie, met de naam, het type en de kenmerken van elk veld. De tweede is een query met para meters, waarbij `Select` opgeeft welke velden moeten worden meegenomen in de resultaten, bijvoorbeeld `organizations`. Een zoek reeks van `"*"` retourneert alle inhoud van één veld.
+Voeg de volgende code toe aan `Main`. De eerste try-catch retourneert de index definitie, met de naam, het type en de kenmerken van elk veld. De tweede is een query met para meters, waarbij `Select` opgeeft welke velden moeten worden meegenomen in de resultaten, bijvoorbeeld `organizations`. Een zoek reeks van `"*"` retourneert alle inhoud van één veld.
 
 ```csharp
 //Verify content is returned after indexing is finished

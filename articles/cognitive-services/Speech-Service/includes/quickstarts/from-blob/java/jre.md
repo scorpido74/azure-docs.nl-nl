@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
-ms.translationtype: MT
+ms.openlocfilehash: b58ca353bffb99b21b1049dd23620f575bde687b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942718"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668635"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,9 @@ De eerste stap is om ervoor te zorgen dat uw project in eclips is geopend.
 ## <a name="add-a-reference-to-gson"></a>Een verwijzing naar Gson toevoegen
 In deze Quick Start maakt u gebruik van een externe JSON-serialisatiefunctie/deserialisatie. Voor Java hebben we gekozen voor [Gson](https://github.com/google/gson).
 
-Open pom. XML en voeg de volgende verwijzing toe: [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+Open pom. XML en voeg de volgende verwijzing toe.
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
 

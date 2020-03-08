@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920090"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673378"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
@@ -57,7 +57,7 @@ Zie voor hulp bij het kiezen van algoritmen
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-script uitvoeren](execute-r-script.md) |
 | Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. | [N-gram functies uit tekst extra heren](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) |
 | Aanbeveling | Aanbevelings modellen bouwen. | [Aanbeveling evalueren](evaluate-recommender.md) <br/> [Aanbeveling van Score SVD](score-svd-recommender.md) <br/> [Train SVD-aanbeveling](train-SVD-recommender.md) |
-| Afwijkingsdetectie | Anomalie detectie modellen bouwen. | [Anomalie detectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Model voor afwijkings detectie trainen](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>Foutberichten
 

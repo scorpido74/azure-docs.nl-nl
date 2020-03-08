@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971501"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671567"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Veelgestelde vragen over Azure Databricks
 
@@ -88,11 +88,20 @@ Als u de werk ruimte niet hebt gemaakt en u als gebruiker bent toegevoegd, neemt
 
 #### <a name="error-message"></a>Foutbericht
 
-Fout bij het starten van de Cloud provider: er is een fout in de Cloud provider opgetreden tijdens het instellen van het cluster. Zie de Databricks-gids voor meer informatie. Azure-fout code: PublicIPCountLimitReached. Azure-fout bericht: kan niet meer dan 60 open bare IP-adressen maken voor dit abonnement in deze regio.
+Fout bij het starten van de Cloud provider: er is een fout in de Cloud provider opgetreden tijdens het instellen van het cluster. Zie de Databricks-gids voor meer informatie. Azure-fout code: PublicIPCountLimitReached. Azure-fout bericht: kan niet meer dan 10 open bare IP-adressen maken voor dit abonnement in deze regio.
+
+#### <a name="background"></a>Achtergrond
+
+Databricks-clusters gebruiken één openbaar IP-adres per knoop punt (inclusief het knoop punt van het stuur programma). Azure-abonnementen hebben [limieten voor openbaar IP-adres](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address) per regio. Het maken en opschalen van clusters kan dus mislukken als dit ertoe leidt dat het aantal open bare IP-adressen die zijn toegewezen aan het abonnement in die regio de limiet overschrijdt. Deze limiet omvat ook open bare IP-adressen die zijn toegewezen voor niet-Databricks gebruik, zoals aangepaste, door de gebruiker gedefinieerde Vm's.
+
+Over het algemeen gebruiken clusters alleen open bare IP-adressen wanneer ze actief zijn. `PublicIPCountLimitReached` fouten kunnen echter korte tijd blijven optreden, zelfs nadat andere clusters zijn beëindigd. Dit komt doordat Databricks de Azure-resources tijdelijk in de cache opslaat wanneer een cluster wordt beëindigd. Het in de cache opslaan van resources is standaard, omdat de latentie van het opstarten en automatisch schalen van het cluster aanzienlijk wordt gereduceerd in veel gang bare scenario's.
 
 #### <a name="solution"></a>Oplossing
 
-Databricks-clusters gebruiken één openbaar IP-adres per knooppunt. Als uw abonnement al alle open bare Ip's heeft gebruikt, moet u [aanvragen om het quotum te verhogen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Kies **quotum** als het **probleem type**en **netwerk: arm** als het **quotum type**. Vraag in **Details**een toename van een openbaar IP-adres quotum aan. Als uw limiet bijvoorbeeld 60 is, en u een cluster met een 100-knoop punt wilt maken, moet u een limiet voor 160 aanvragen.
+Als uw abonnement de open bare IP-adres limiet voor een bepaalde regio al heeft bereikt, moet u een van de volgende handelingen uitvoeren.
+
+- Nieuwe clusters maken in een andere Databricks-werk ruimte. De andere werk ruimte moet zich bevinden in een regio waarin u de open bare IP-adres limiet van uw abonnement niet hebt bereikt.
+- [Vraag om uw open bare IP-adres limiet te verg Roten](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Kies **quotum** als het **probleem type**en **netwerk: arm** als het **quotum type**. Vraag in **Details**een toename van een openbaar IP-adres quotum aan. Als uw limiet bijvoorbeeld 60 is, en u een cluster met een 100-knoop punt wilt maken, moet u een limiet voor 160 aanvragen.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probleem: een tweede type fout bij het starten van een Cloud provider tijdens het instellen van het cluster (MissingSubscriptionRegistration)
 
@@ -123,4 +132,3 @@ Meld u aan als globale beheerder voor de Azure Portal. Ga voor Azure Active Dire
 
 - [Snelstartgids: aan de slag met Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Wat is Azure Databricks?](what-is-azure-databricks.md)
-

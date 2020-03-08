@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: c9f3af6ddd691f75a8cc01230c54e9881c341582
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2520c218dbdd4dbad233de924db708769dac5dd1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262691"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668993"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[De API-app mag alleen toegankelijk zijn via HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |Het gebruik van HTTPS garandeert Server/service-verificatie en beveiligt gegevens tijdens de overdracht van aanvallen met een netwerklaag. |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json)
 |[Verificatie moet zijn ingeschakeld in uw API-app](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4ebc54a-46e1-481a-bee2-d4411e95d828) |Azure App Service-verificatie is een functie die voor komt dat anonieme HTTP-aanvragen de API-app bereiken of ze verifiëren die tokens hebben voordat ze de API-app bereiken |AuditIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Authentication_ApiApp_Audit.json)

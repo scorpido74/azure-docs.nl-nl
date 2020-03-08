@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186087"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671863"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport (preview)
 
@@ -48,8 +48,8 @@ Het resultaat van een alleen-rapport beleid voor een bepaalde aanmelding weer ge
 
 Als u de cumulatieve impact van beleids regels voor voorwaardelijke toegang met behulp van de nieuwe voorwaardelijke Access Insights-werkmap wilt weer geven, moet u Azure Monitor integreren met Azure AD en de aanmeld logboeken exporteren. Er zijn twee stappen voor het instellen van deze integratie: 
 
-1. [Meld u aan voor een Azure monitor-abonnement en maak een werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exporteer de aanmeldings logboeken van Azure AD naar Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Meld u aan voor een Azure monitor-abonnement en maak een werk ruimte](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Exporteer de aanmeldings logboeken van Azure AD naar Azure monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
 Meer informatie over Azure Monitor prijzen vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Resources om kosten te schatten, een daglimiet in te stellen of de Bewaar periode voor gegevens aan te passen, kunt u vinden in het artikel, het [gebruik en de kosten beheren met Azure monitor logboeken](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

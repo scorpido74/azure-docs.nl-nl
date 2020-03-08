@@ -186,9 +186,14 @@
               href: live-event-error-codes.md
             - name: Foutcodes in taak
               href: job-error-codes.md
-    - name: Richtlijnen voor hoge beschikbaarheid
-      displayName: 'failover, bcdr'
-      href: media-services-high-availability-guidance.md
+    - name: Hoge beschikbaarheid
+      items:
+        - name: Encoding
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-encoding.md
+        - name: Streaming
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-streaming.md
     - name: Hulp bij migratie van v2 naar v3
       href: migrate-from-v2-to-v3.md
       displayName: naming

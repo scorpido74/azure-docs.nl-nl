@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905529"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894533"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
 
@@ -114,22 +114,17 @@ U kunt een failover van een account initiëren vanuit de Azure Portal, Power she
 
 ## <a name="about-the-preview"></a>Over de preview-versie
 
-Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. de failover van het account is momenteel beschikbaar in deze regio's:
-
-- Azië - oost
-- Azië (zuidoost)
-- Australië - Oost
-- Australië - Zuidoost
-- US - centraal
-- US - oost 2
-- US - west-centraal
-- US - west 2
+Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. De failover van het account is momenteel beschikbaar in alle open bare regio's. De account-failover is op dit moment niet beschikbaar in soevereine/nationale Clouds.
 
 Het voor beeld is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
 
 ### <a name="additional-considerations"></a>Aanvullende overwegingen
 
 Bekijk de aanvullende overwegingen die in deze sectie worden beschreven om te begrijpen hoe uw toepassingen en services kunnen worden beïnvloed wanneer u een failover tijdens de preview-periode afdwingt.
+
+#### <a name="storage-account-containing-archived-blobs"></a>Opslag account met gearchiveerde blobs
+
+Opslag accounts met gearchiveerde blobs ondersteunen de failover van het account. Zodra de failover is voltooid, kunt u het account weer converteren naar GRS of RA-GRS alle archieved-blobs moeten eerst worden gemigreerd naar een online laag.
 
 #### <a name="storage-resource-provider"></a>Opslagresourceprovider
 
@@ -162,8 +157,8 @@ Houd er wel bij dat alle gegevens die zijn opgeslagen op een tijdelijke schijf v
 
 De volgende functies en services worden niet ondersteund voor account-failover voor de preview-versie:
 
-- Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover-overschakeling worden uitgevoerd voor opslagaccounts met Azure-bestandsshares die worden gebruikt als cloudeindpunten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen.  
-- Er kan geen failover worden uitgevoerd voor een opslag account met gearchiveerde blobs. Bewaar gearchiveerde blobs in een afzonderlijk opslag account waarvan u niet van plan bent een failover uit te voeren.
+- Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover-overschakeling worden uitgevoerd voor opslagaccounts met Azure-bestandsshares die worden gebruikt als cloudeindpunten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen.
+- ADLS Gen2 opslag accounts (accounts waarvoor een hiërarchische naam ruimte is ingeschakeld) worden op dit moment niet ondersteund.
 - Er kan geen failover worden uitgevoerd voor een opslag account met Premium-blok-blobs. Opslag accounts die ondersteuning bieden voor Premium-blok-blobs ondersteunen momenteel geen geo-redundantie.
 - Er kan geen failover worden uitgevoerd voor een opslag account met een of meer [Onveranderbaarheid-beleids](../blobs/storage-blob-immutable-storage.md) containers waarvoor een virus is ingeschakeld. Een niet-vergrendelde/vergrendelde, op tijd gebaseerde Bewaar-en wettelijk Bewaar beleidsregels voor komen failover om naleving te behouden.
 - Nadat de failover is voltooid, kunnen de volgende functies niet meer werken als deze oorspronkelijk is ingeschakeld: [gebeurtenis abonnementen](../blobs/storage-blob-event-overview.md), [feed voor wijzigingen](../blobs/storage-blob-change-feed.md), [levenscyclus beleid](../blobs/storage-lifecycle-management-concepts.md)en [Opslaganalyse logboek registratie](storage-analytics-logging.md).

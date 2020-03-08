@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Kronos | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Kronos | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Kronos configureert.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec568793d717da2493b2c45fe1dca5ad56073886
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4ae90b729db51287f2a98caa36ae43d83a2a207c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986250"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897797"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Kronos
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Kronos
 
 In deze zelf studie leert u hoe u Kronos integreert met Azure Active Directory (Azure AD). Wanneer u Kronos integreert met Azure AD, kunt u het volgende doen:
 
@@ -103,27 +103,27 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     b. Selecteer in de lijst **Transformatie** **ExtractMailPrefix()** .
 
-    c. Selecteer **user.userprinicipalname** in de lijst **Parameter 1**.
+    c. Selecteer in de lijst **para meter 1** de optie **User. userPrincipalName**.
 
     d. Klik op **Opslaan**.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Op de sectie **Kronos instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -135,7 +135,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer **Kronos** in de lijst met toepassingen.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -147,15 +147,15 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-kronos-sso"></a>Kronos SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op **Kronos** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Kronos ondersteunings team](https://www.kronos.in/contact/en-in/form). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren op **Kronos** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Kronos ondersteunings team](https://www.kronos.in/contact/en-in/form). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-kronos-test-user"></a>Een testgebruiker maken voor Kronos
 
-In deze sectie gaat u in Kronos een gebruiker maken met de naam Britta Simon. Neem contact op met het  [ondersteuningsteam van Kronos](https://www.kronos.in/contact/en-in/form) om de gebruikers toe te voegen aan het Kronos-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie gaat u in Kronos een gebruiker maken met de naam Britta Simon. Neem contact op met het  [ondersteuningsteam van Kronos](https://www.kronos.in/contact/en-in/form) om de gebruikers toe te voegen aan het Kronos-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Kronos klikt, wordt u automatisch aangemeld bij de instantie van Kronos waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 

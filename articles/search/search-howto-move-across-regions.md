@@ -3,36 +3,53 @@ title: Uw service resource verplaatsen tussen regio's
 titleSuffix: Azure Cognitive Search
 description: In dit artikel wordt uitgelegd hoe u uw Azure Cognitive Search-resources verplaatst van de ene regio naar de andere in de Azure-Cloud.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/05/2020
-ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/06/2020
+ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379587"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850683"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verplaats uw Azure Cognitive Search-service naar een andere Azure-regio
 
-Het verplaatsen van een zoek service naar een andere regio wordt momenteel niet ondersteund, omdat er geen automatisering of hulpprogram ma's zijn om u te helpen bij het end-to-end van de taak.
+Af en toe informeren klanten over het verplaatsen van een bestaande zoek service naar een andere regio. Er zijn momenteel geen ingebouwde mechanismen of hulp middelen die u helpen bij deze taak. Het blijft een hand matig proces, dat hieronder wordt beschreven in dit artikel.
 
-In de portal wordt met de opdracht **sjabloon exporteren** een basis definitie van een service (naam, locatie, laag, replica en aantal partities) gemaakt, maar wordt de inhoud van uw service niet herkend en worden er geen sleutels, rollen of Logboeken overgeboekt.
+> [!NOTE]
+> In de Azure Portal hebben alle services een opdracht **sjabloon exporteren** . In het geval van Azure Cognitive Search, wordt met deze opdracht een basis definitie van een service (naam, locatie, laag, replica en aantal partities) gemaakt, maar wordt de inhoud van uw service niet herkend en worden er geen sleutels, rollen of Logboeken uitgevoerd. Hoewel de opdracht bestaat, is het niet raadzaam om deze te gebruiken voor het verplaatsen van een zoek service.
 
-Wanneer u de zoek opdracht verplaatst van de ene regio naar een andere, wordt de volgende aanpak aanbevolen:
+## <a name="steps-for-moving-a-service"></a>Stappen voor het verplaatsen van een service
 
-1. Inventariseer uw bestaande service voor een volledige lijst met objecten op de service. Als u logboek registratie hebt ingeschakeld, maakt en archiveert u rapporten die u mogelijk nodig hebt voor een toekomstige vergelijking.
+Als u een zoek service naar een andere regio wilt verplaatsen, moet uw aanpak er ongeveer als volgt uitzien:
 
-1. Maak een service in de nieuwe regio en publiceer vanuit de bron code alle bestaande indexen, Indexeer functies, gegevens bronnen, vaardig heden en synoniemen. Service namen moeten uniek zijn, zodat u de bestaande naam niet opnieuw kunt gebruiken.
+1. Identificeer gerelateerde services om inzicht te krijgen in de volledige impact van het verplaatsen van een service. Mogelijk gebruikt u Azure Storage voor logboek registratie, kennis opslag of als externe gegevens bron. Mogelijk gebruikt u Cognitive Services voor AI-verrijking. Het is gebruikelijk om toegang te krijgen tot services in andere regio's, maar dit wordt geleverd met extra bandbreedte kosten. Cognitive Services en Azure Cognitive Search moeten zich in dezelfde regio bevinden als u gebruikmaakt van AI-verrijking.
+
+1. Inventariseer uw bestaande service voor een volledige lijst met objecten op de service. Als u logboek registratie hebt ingeschakeld, maakt en archiveert u rapporten die u mogelijk nodig hebt voor een historische record.
+
+1. Controleer de prijzen en beschik baarheid in de nieuwe regio om de beschik baarheid van Azure Cognitive Search plus alle gerelateerde services die u in dezelfde regio wilt maken, te garanderen. Controleer op de pariteit van de functie. Sommige preview-functies hebben beperkte Beschik baarheid.
+
+1. Maak een service in de nieuwe regio en publiceer opnieuw van de bron code bestaande indexen, Indexeer functies, gegevens bronnen, vaardig heden, kennis winkels en synoniemen. Service namen moeten uniek zijn, zodat u de bestaande naam niet opnieuw kunt gebruiken.
+
+1. Herlaad indexen en kennis winkels, indien van toepassing. U gebruikt toepassings code om JSON-gegevens naar een index te pushen of om Indexeer functies opnieuw uit te voeren om documenten uit externe bronnen te halen. 
 
 1. Schakel logboek registratie in en als u deze gebruikt, maakt u de beveiligings rollen opnieuw.
 
 1. Update client toepassingen en test suites voor het gebruik van de nieuwe service naam en API-sleutels en test alle toepassingen.
 
-1. Verwijder de oude service zodra de nieuwe service volledig operationeel is.
+1. Verwijder de oude service zodra de nieuwe service volledig getest en operationeel is.
+
+## <a name="next-steps"></a>Volgende stappen
+
++ [Kies een laag](search-sku-tier.md)
++ [Een zoek service maken](search-create-service-portal.md)
++ [Zoek documenten laden](search-what-is-data-import.md)
++ [Logboekregistratie inschakelen](search-monitor-logs.md)
+
 
 <!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
 

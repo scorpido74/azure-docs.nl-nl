@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200092"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672113"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -134,8 +134,8 @@ U kunt de waarde van deze door de service gedefinieerde variabelen ophalen om aa
 | $SucceededTasks |Het aantal taken dat is voltooid. |
 | $FailedTasks |Het aantal mislukte taken. |
 | $CurrentDedicatedNodes |Het huidige aantal toegewezen reken knooppunten. |
-| $CurrentLowPriorityNodes |Het huidige aantal reken knooppunten met lage prioriteit, met inbegrip van knoop punten met een vooraf-bezet. |
-| $PreemptedNodeCount | Het aantal knoop punten in de pool dat zich in een pre-bezet bevindt. |
+| $CurrentLowPriorityNodes |Het huidige aantal reken knooppunten met lage prioriteit, inclusief alle knoop punten die zijn voor rang. |
+| $PreemptedNodeCount | Het aantal knoop punten in de groep die een afgebroken status hebben. |
 
 > [!TIP]
 > De alleen-lezen, service gedefinieerde variabelen die in de vorige tabel worden weer gegeven, zijn *objecten* die verschillende methoden bieden om toegang te krijgen tot gegevens die zijn gekoppeld aan elk. Zie [voorbeeld gegevens verkrijgen](#getsampledata) verderop in dit artikel voor meer informatie.

@@ -1,31 +1,32 @@
 ---
-title: Naslag informatie over Power shell-cmdlets-Azure scheduler
+title: Naslag informatie over Power shell-cmdlets
 description: Meer informatie over Power shell-cmdlets voor Azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300876"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898483"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Naslag informatie over Power shell-cmdlets voor Azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en beheren van scheduler-taken en-taak verzamelingen. In dit artikel vindt u een overzicht van de belangrijkste Power shell-cmdlets voor Azure scheduler met koppelingen naar de bijbehorende referentie artikelen. Zie [Azure PowerShell installeren en configureren voor meer informatie over](/powershell/azure/overview)het installeren van Azure PowerShell voor uw Azure-abonnement. Zie [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)(Engelstalig) voor meer informatie over [Azure Resource Manager-cmdlets](/powershell/azure/overview).
 
-| Cmdlet | Description |
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+| Cmdlet | Beschrijving |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Hiermee wordt een taak verzameling uitgeschakeld. |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Hiermee schakelt u een taak verzameling in. |
@@ -48,15 +49,14 @@ U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en b
 
 Voor meer informatie kunt u een van de volgende cmdlets uitvoeren: 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
-* [Concepten, terminologie en entiteitenhiërarchie](scheduler-concepts-terms.md)
-* [Uw eerste taak maken en plannen-Azure Portal](scheduler-get-started-portal.md)
-* [Naslaginformatie over REST API van Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler-concepten, -terminologie en -entiteitenhiërarchie](scheduler-concepts-terms.md)
+* [Azure Scheduler-limieten, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)
+* [Naslaginformatie over REST API van Azure Scheduler](/rest/api/scheduler)

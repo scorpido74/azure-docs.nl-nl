@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 76d3be0fc00465c35dbc79a258b57db962969cc8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255006"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672333"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -43,11 +43,11 @@ Als u uw hybride implementatie van Azure AD wilt plannen, moet u vertrouwd zijn 
 
 |   |   |
 | --- | --- |
-| ![Controleren][1] | Ondersteunde apparaten controleren |
-| ![Controleren][1] | Bekijk de dingen die u moet weten |
-| ![Controleren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
-| ![Controleren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
-| ![Controleren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
+| ![Selecteren][1] | Ondersteunde apparaten controleren |
+| ![Selecteren][1] | Bekijk de dingen die u moet weten |
+| ![Selecteren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
+| ![Selecteren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
+| ![Selecteren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
 
 ## <a name="review-supported-devices"></a>Ondersteunde apparaten controleren
 
@@ -59,7 +59,7 @@ Hybride Azure AD-deelname ondersteunt een breed scala aan Windows-apparaten. Omd
 - Windows Server 2016
 - Windows Server 2019
 
-Voor apparaten met het Windows-besturings systeem wordt de ondersteunde versie vermeld in dit artikel [Windows 10 release-informatie](https://docs.microsoft.com/windows/release-information/). Als best practice, raadt micro soft u aan om te upgraden naar de nieuwste versie van Windows 10.
+Voor apparaten met het Windows-besturings systeem wordt de ondersteunde versie vermeld in dit artikel [Windows 10 release-informatie](/windows/release-information/). Als best practice, raadt micro soft u aan om te upgraden naar de nieuwste versie van Windows 10.
 
 ### <a name="windows-down-level-devices"></a>Windows-apparaten op lagere niveaus
 
@@ -87,7 +87,7 @@ Als eerste plannings stap moet u uw omgeving controleren en bepalen of u apparat
 
 - Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
-- Als u gebruikmaakt van [Unified Write Filter](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) en soort gelijke technologieën die wijzigingen in de schijf bij het opnieuw opstarten wissen, moeten ze worden toegepast nadat het apparaat is toegevoegd aan hybride Azure AD. Als u dergelijke technologieën inschakelt voordat hybride Azure AD-deelname is voltooid, wordt het apparaat tijdens elke herstart ontkoppeld
+- Als u gebruikmaakt van [Unified Write Filter](/windows-hardware/customize/enterprise/unified-write-filter) en soort gelijke technologieën die wijzigingen in de schijf bij het opnieuw opstarten wissen, moeten ze worden toegepast nadat het apparaat is toegevoegd aan hybride Azure AD. Als u dergelijke technologieën inschakelt voordat hybride Azure AD-deelname is voltooid, wordt het apparaat tijdens elke herstart ontkoppeld
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Apparaten afhandelen met Azure AD-status geregistreerd
 Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](overview.md#getting-devices-in-azure-ad) bij uw Tenant, kan dit leiden tot een dubbele status van hybride Azure AD join en Azure AD geregistreerd apparaat. U wordt aangeraden om een upgrade uit te voeren naar Windows 10 1803 (met KB4489894 toegepast) of hoger om dit scenario automatisch te verhelpen. In versies van vóór 1803 moet u de Azure AD-status geregistreerd hand matig verwijderen voordat u hybride deelname van Azure AD inschakelt. In 1803 en hoger releases zijn de volgende wijzigingen aangebracht om deze dubbele status te voor komen:
@@ -100,7 +100,7 @@ Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](ove
 > Het geregistreerde Azure AD-apparaat wordt niet automatisch verwijderd als het wordt beheerd door intune.
 
 ### <a name="additional-considerations"></a>Aanvullende overwegingen
-- Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 - Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van Windows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
 
@@ -116,7 +116,7 @@ Hybride Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen, a
 
 ### <a name="managed-environment"></a>Beheerde omgeving
 
-Een beheerde omgeving kan worden geïmplementeerd via een [PHS (Password Hash Sync)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) of door [middel van verificatie (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) met [naadloze eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
+Een beheerde omgeving kan worden geïmplementeerd via een [PHS (Password Hash Sync)](/azure/active-directory/hybrid/whatis-phs) of door [middel van verificatie (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) met [naadloze eenmalige aanmelding](/azure/active-directory/hybrid/how-to-connect-sso).
 
 Voor deze scenario's is het niet nodig om een Federatie server te configureren voor authenticatie.
 
@@ -133,7 +133,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 > [!NOTE]
 > Azure AD biedt geen ondersteuning voor Smart Cards of certificaten in beheerde domeinen.
@@ -147,9 +147,9 @@ Ga op basis van het scenario dat overeenkomt met uw identiteits infrastructuur n
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren
 
-Soms kunnen uw on-premises AD-Upn's afwijken van uw Azure AD-Upn's. In dergelijke gevallen biedt Windows 10 Hybrid Azure AD-deelname beperkte ondersteuning voor on-premises AD-Upn's op basis van de [verificatie methode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), het domein type en de Windows 10-versie. Er zijn twee typen on-premises AD-Upn's die in uw omgeving kunnen bestaan:
+Soms kunnen uw on-premises AD-Upn's afwijken van uw Azure AD-Upn's. In dergelijke gevallen biedt Windows 10 Hybrid Azure AD-deelname beperkte ondersteuning voor on-premises AD-Upn's op basis van de [verificatie methode](/azure/security/fundamentals/choose-ad-authn), het domein type en de Windows 10-versie. Er zijn twee typen on-premises AD-Upn's die in uw omgeving kunnen bestaan:
 
-- Routeer bare UPN: een routeerbaar UPN heeft een geldig geverifieerd domein dat is geregistreerd bij een domein registratie service. Als contoso.com bijvoorbeeld het primaire domein in azure AD is, is contoso.org het primaire domein in on-premises AD eigendom van Contoso en wordt het [geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+- Routeer bare UPN: een routeerbaar UPN heeft een geldig geverifieerd domein dat is geregistreerd bij een domein registratie service. Als contoso.com bijvoorbeeld het primaire domein in azure AD is, is contoso.org het primaire domein in on-premises AD eigendom van Contoso en wordt het [geverifieerd in azure AD](/azure/active-directory/fundamentals/add-custom-domain)
 - Niet-omleid bare UPN: een niet-routeerbaare UPN heeft geen geverifieerd domein. Het is alleen van toepassing op het particuliere netwerk van uw organisatie. Als contoso.com bijvoorbeeld het primaire domein is in azure AD, contoso. local is het primaire domein in on-premises AD, maar dit is geen verifieerbaar domein op internet en wordt alleen gebruikt in het netwerk van contoso.
 
 De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor deze on-premises AD-Upn's in Windows 10 Hybrid Azure AD-deelname

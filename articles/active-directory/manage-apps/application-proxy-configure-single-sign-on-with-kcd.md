@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377739"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669057"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-delegering voor single sign-on bij uw apps met Application Proxy
 
@@ -66,17 +66,27 @@ De Active Directory-configuratie varieert, afhankelijk van of de toepassingsserv
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector en toepassingsserver in verschillende domeinen bevinden
 1. Zie [Kerberos-beperkte delegering over domeinen](https://technet.microsoft.com/library/hh831477.aspx)voor een lijst met vereisten voor het werken met KCD in verschillende domeinen.
-2. Gebruik de eigenschap `principalsallowedtodelegateto` op de connector server om de toepassings proxy in te scha kelen voor delegeren voor de connector server. De toepassings server is `sharepointserviceaccount` en de server voor het delegeren is `connectormachineaccount`. Gebruik deze code als voorbeeld voor Windows 2012 R2:
+2. Gebruik de eigenschap `principalsallowedtodelegateto` van het service account (computer of toegewezen domein gebruikers account) van de webtoepassing om Kerberos-verificatie overdracht van de toepassings proxy (connector) mogelijk te maken. De toepassings server wordt uitgevoerd in de context van `webserviceaccount` en de server wordt overdraagt `connectorcomputeraccount`. Voer de onderstaande opdrachten uit op een domein controller (waarop Windows Server 2012 R2 of hoger wordt uitgevoerd) in het domein van `webserviceaccount`. Gebruik platte namen (niet-UPN) voor beide accounts.
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   Als de `webserviceaccount` een computer account is, gebruikt u deze opdrachten:
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` kan het SPS-computer account zijn of een service account waaronder de SPS-app-pool wordt uitgevoerd.
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   Als de `webserviceaccount` een gebruikers account is, gebruikt u deze opdrachten:
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Eenmalige aanmelding configureren 
 1. Publiceer uw toepassing volgens de instructies in [toepassingen publiceren met toepassings proxy](application-proxy-add-on-premises-application.md). Zorg ervoor dat u **Azure Active Directory** selecteert als **methode voor verificatie**vooraf.
@@ -149,4 +159,3 @@ Maar in sommige gevallen kan de aanvraag is verzonden naar de back-endtoepassing
 
 
 Ga naar het [blog over toepassingsproxy](https://blogs.technet.com/b/applicationproxyblog/) voor nieuws en updates.
-

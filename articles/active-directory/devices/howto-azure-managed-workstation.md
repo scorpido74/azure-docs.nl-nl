@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561938"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672606"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
 
@@ -29,13 +29,13 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 > [!NOTE]
 > Pas een van de profielen toe die nodig zijn voor uw vereisten. U kunt overstappen op een ander profiel door het toe te wijzen in Microsoft Intune.
 
-| Profiel | Laag | Verbeterd | Hoog | Gespecialiseerd | Gesteld | Isolated |
+| Profiel | Laag | Verbeterd | Hoog | Gespecialiseerd | Gesteld | Alleenstaand |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Gebruiker in azure AD | Ja | Ja | Ja | Ja | Ja | Ja |
 | Door intune beheerde | Ja | Ja | Ja | Ja | Ja | Ja |
 | Apparaat-Azure AD geregistreerd | Ja |  |  |  |  | |   |
 | Apparaat-Azure AD toegevoegd |   | Ja | Ja | Ja | Ja | Ja |
-| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | N.V.T. |
+| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | N.v.t. |
 | Hardware voldoet aan de veilige Windows 10-standaarden |   | Ja | Ja | Ja | Ja | Ja |
 | Micro soft Defender ATP is ingeschakeld |   | Ja  | Ja | Ja | Ja | Ja |
 | Beheer rechten verwijderen |   |   | Ja  | Ja | Ja | Ja |
@@ -57,15 +57,15 @@ U kunt het inrichten van licenties automatiseren door op [groepen gebaseerde lic
 
 Azure Active Directory (Azure AD) beheert gebruikers, groepen en apparaten voor uw beheerders werkstations. Identiteits Services en-functies inschakelen met een [Administrator-account](../users-groups-roles/directory-assign-admin-roles.md).
 
-Wanneer u het beveiligde werk station Administrator-account maakt, wordt het account beschikbaar gesteld aan uw huidige werk station. Zorg ervoor dat u een bekend veilig apparaat gebruikt om deze eerste configuratie en alle globale configuratie uit te voeren. Als u de bloot stelling van aanvallen voor de eerste keer wilt beperken, kunt u overwegen de [richt lijnen te volgen om malware-infecties te voor komen](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection).
+Wanneer u het beveiligde werk station Administrator-account maakt, wordt het account beschikbaar gesteld aan uw huidige werk station. Zorg ervoor dat u een bekend veilig apparaat gebruikt om deze eerste configuratie en alle globale configuratie uit te voeren. Als u de bloot stelling van aanvallen voor de eerste keer wilt beperken, kunt u overwegen de [richt lijnen te volgen om malware-infecties te voor komen](/windows/security/threat-protection/intelligence/prevent-malware-infection).
 
 Multi-factor Authentication vereisen, ten minste voor uw beheerders. Zie op [cloud gebaseerde MFA implementeren](../authentication/howto-mfa-getstarted.md) voor implementatie richtlijnen.
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD-gebruikers en-groepen
 
 1. Ga vanuit het Azure Portal naar **Azure Active Directory** > **gebruikers** > **nieuwe gebruiker**.
-1. Maak de apparaat-beheerder door de stappen in de [zelf studie gebruikers maken](https://docs.microsoft.com/Intune/quickstart-create-user)te volgen.
-1. Voer
+1. Maak de apparaat-beheerder door de stappen in de [zelf studie gebruikers maken](/Intune/quickstart-create-user)te volgen.
+1. voer het volgende in:
 
    * **Naam** : Beveilig de beheerder van het werk station
    * **Gebruikers naam** - `secure-ws-admin@identityitpro.com`
@@ -127,9 +127,9 @@ Van de Azure Portal:
 1. Wijzig de instelling voor het **MDM-gebruikers bereik** in **alle**.
 1. Selecteer **Opslaan**.
 
-Met deze stappen kunt u apparaten beheren met intune. Zie voor meer informatie de [Snelstartgids voor intune: automatische inschrijving instellen voor Windows 10-apparaten](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). In een toekomstige stap maakt u een intune-configuratie en nalevings beleid.
+Met deze stappen kunt u apparaten beheren met intune. Zie voor meer informatie de [Snelstartgids voor intune: automatische inschrijving instellen voor Windows 10-apparaten](/Intune/quickstart-setup-auto-enrollment). In een toekomstige stap maakt u een intune-configuratie en nalevings beleid.
 
-#### <a name="azure-ad-conditional-access"></a>Azure AD Conditional Access
+#### <a name="azure-ad-conditional-access"></a>Voorwaardelijke toegang voor Azure AD
 
 Voorwaardelijke toegang van Azure AD kan helpen om geprivilegieerde beheer taken te beperken tot compatibele apparaten. Vooraf gedefinieerde leden van de groep **beveiligde werk Station-gebruikers** zijn vereist om multi-factor Authentication uit te voeren wanneer ze zich aanmelden bij Cloud toepassingen. Een best practice is het uitsluiten van toegangs accounts voor nood gevallen van het beleid. Zie [accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md)voor meer informatie.
 
@@ -137,7 +137,7 @@ Voorwaardelijke toegang van Azure AD kan helpen om geprivilegieerde beheer taken
 
 ### <a name="configure-enrollment-status"></a>Inschrijvings status configureren
 
-Het is belang rijk om ervoor te zorgen dat uw beveiligde werk station een vertrouwd schoon apparaat is. Wanneer u nieuwe apparaten aanschaft, kunt u instellen dat de fabrieks instellingen [van Windows 10 Pro in de S-modus](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode)worden ingesteld, waardoor de bloot stelling aan beveiligings problemen tijdens het beheer van de toeleverings keten wordt beperkt. Nadat u een apparaat van uw leverancier hebt ontvangen, kunt u auto pilot gebruiken om de modus van S te wijzigen. De volgende richt lijnen bevatten informatie over het Toep assen van het transformatie proces.
+Het is belang rijk om ervoor te zorgen dat uw beveiligde werk station een vertrouwd schoon apparaat is. Wanneer u nieuwe apparaten aanschaft, kunt u instellen dat de fabrieks instellingen [van Windows 10 Pro in de S-modus](/Windows/deployment/Windows-10-pro-in-s-mode)worden ingesteld, waardoor de bloot stelling aan beveiligings problemen tijdens het beheer van de toeleverings keten wordt beperkt. Nadat u een apparaat van uw leverancier hebt ontvangen, kunt u auto pilot gebruiken om de modus van S te wijzigen. De volgende richt lijnen bevatten informatie over het Toep assen van het transformatie proces.
 
 Om ervoor te zorgen dat apparaten volledig worden geconfigureerd voordat ze worden gebruikt, biedt intune een manier om het **apparaat te blok keren totdat alle apps en profielen zijn geïnstalleerd**.
 
@@ -154,7 +154,7 @@ Nadat u een apparaatgroep hebt gemaakt, moet u een implementatie profiel maken o
 In intune in de Azure Portal:
 
 1. Selecteer **inschrijving van apparaten** > **Windows-inschrijving** > **implementatie profielen** > **profiel maken**.
-1. Voer
+1. voer het volgende in:
 
    * Naam: **profiel voor beveiligde werk station implementeren**.
    * Beschrijving: **implementatie van beveiligde werk stations**.
@@ -162,7 +162,7 @@ In intune in de Azure Portal:
 
 1. Selecteer **Next**.
 
-   * Voor **implementatie modus**kiest u **zelf implementeren (preview)** . Apparaten met dit profiel zijn gekoppeld aan de gebruiker die het apparaat inschrijft. Er zijn gebruikers referenties vereist om het apparaat in te schrijven. Het is belang rijk om te weten dat wanneer u een apparaat implementeert in de modus **zelf implementeren** , u laptops in een gedeeld model kunt implementeren. Er vindt geen gebruikers toewijzing plaats totdat het apparaat voor de eerste keer wordt toegewezen aan een gebruiker. Als gevolg hiervan worden alle gebruikers beleidsregels, zoals BitLocker, pas ingeschakeld als een gebruikers toewijzing is voltooid. Zie [selected profiles](https://docs.microsoft.com/intune/device-profile-assign)(Engelstalig) voor meer informatie over het aanmelden bij een beveiligd apparaat.
+   * Voor **implementatie modus**kiest u **zelf implementeren (preview)** . Apparaten met dit profiel zijn gekoppeld aan de gebruiker die het apparaat inschrijft. Er zijn gebruikers referenties vereist om het apparaat in te schrijven. Het is belang rijk om te weten dat wanneer u een apparaat implementeert in de modus **zelf implementeren** , u laptops in een gedeeld model kunt implementeren. Er vindt geen gebruikers toewijzing plaats totdat het apparaat voor de eerste keer wordt toegewezen aan een gebruiker. Als gevolg hiervan worden alle gebruikers beleidsregels, zoals BitLocker, pas ingeschakeld als een gebruikers toewijzing is voltooid. Zie [selected profiles](/intune/device-profile-assign)(Engelstalig) voor meer informatie over het aanmelden bij een beveiligd apparaat.
    * In het vak **toevoegen aan Azure AD** moet het **lid van Azure AD zijn opgenomen** en grijs worden weer gegeven.
    * Selecteer uw taal (regio), type **standaard**gebruikers account. 
 
@@ -175,7 +175,7 @@ In intune in de Azure Portal:
 1. Selecteer **Next**.
 1. Selecteer **Maken** om het profiel te maken. Het auto pilot-implementatie profiel is nu beschikbaar om aan apparaten toe te wijzen.
 
-Registratie van apparaten in auto pilot biedt een andere gebruikers ervaring op basis van apparaattype en rol. In het voor beeld van de implementatie illustreren we een model waarin de beveiligde apparaten bulksgewijs worden geïmplementeerd en kunnen worden gedeeld, maar wanneer het apparaat voor de eerste keer wordt gebruikt, wordt het aan een gebruiker toegewezen. Zie [intune auto pilot Device Enrollment](https://docs.microsoft.com/intune/device-enrollment)(Engelstalig) voor meer informatie.
+Registratie van apparaten in auto pilot biedt een andere gebruikers ervaring op basis van apparaattype en rol. In het voor beeld van de implementatie illustreren we een model waarin de beveiligde apparaten bulksgewijs worden geïmplementeerd en kunnen worden gedeeld, maar wanneer het apparaat voor de eerste keer wordt gebruikt, wordt het aan een gebruiker toegewezen. Zie [intune auto pilot Device Enrollment](/intune/device-enrollment)(Engelstalig) voor meer informatie.
 
 ### <a name="configure-windows-update"></a>Windows Update configureren
 
@@ -186,7 +186,7 @@ In deze richt lijnen wordt geadviseerd om een nieuwe update-ring te maken en de 
 In Azure Portal:
 
 1. Ga naar **Microsoft Intune** > **Software-updates** > **Windows 10-update ringen**.
-1. Voer
+1. voer het volgende in:
 
    * Naam: door **Azure beheerde werk station-updates**
    * Onderhouds kanaal- **Windows Insider-snel**
@@ -203,7 +203,7 @@ In Azure Portal:
 1. Selecteer **Maken**.
 1. Voeg op het tabblad **toewijzingen** de groep **beveiligde werk stations** toe.
 
-Zie [Policy CSP-update](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update)voor meer informatie over Windows Update-beleid.
+Zie [Policy CSP-update](/windows/client-management/mdm/policy-csp-update)voor meer informatie over Windows Update-beleid.
 
 ### <a name="windows-defender-atp-intune-integration"></a>Integratie van Windows Defender ATP intune
 
@@ -223,7 +223,7 @@ Als u de integratie van Windows Defender ATP en intune wilt configureren, gaat u
 1. Stel **Connect Windows-apparaten versie 10.0.15063 en hoger in op aan Windows Defender ATP** **.**
 1. Selecteer **Opslaan**.
 
-Zie [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)(Engelstalig) voor meer informatie.
+Zie [Windows Defender Advanced Threat Protection](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)(Engelstalig) voor meer informatie.
 
 ### <a name="finish-workstation-profile-hardening"></a>Beveiliging van het workstation profiel volt ooien
 
@@ -231,12 +231,12 @@ Down load en voer het juiste script uit om de beveiliging van de oplossing te vo
 
 | Profiel | Download locatie | Bestands |
 | --- | --- | --- |
-| Lage beveiliging | N/A | N/A |
+| Lage beveiliging | N.v.t. | N.v.t. |
 | Verbeterde beveiliging | https://aka.ms/securedworkstationgit | Uitgebreid-werk station-Windows10-(1809). ps1 |
-| Hoge beveiliging | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
-| Gespecialiseerd | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) Security Baseline Baseline. ps1 |
-| Gespecialiseerde naleving * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Gesteld | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Hoge beveiliging | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809).ps1 |
+| Gespecialiseerd | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC - Windows10 (1803) SecurityBaseline.ps1 |
+| Gespecialiseerde naleving * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
+| Gesteld | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \* specialistische naleving is een script dat de gespecialiseerde configuratie afdwingt die is opgenomen in de NCSC Windows10 Security Baseline Baseline.
 
@@ -245,7 +245,7 @@ Nadat het script is uitgevoerd, kunt u in intune updates Toep assen op profielen
 * Hier vindt u de intune-configuratie profielen voor apparaten die zijn gemaakt door de scripts: **Azure Portal** > **Microsoft intune** de configuratie van het **apparaat** >  > **profielen**.
 * Hier vindt u het intune-nalevings beleid voor apparaten dat is gemaakt door de scripts: **Azure Portal** > **Microsoft Intune** > **apparaatcompatibiliteit** > **beleid**.
 
-Als u de wijzigingen wilt bekijken die door de scripts zijn aangebracht, kunt u de profielen exporteren. Op deze manier kunt u extra beveiliging bepalen die nodig is, zoals beschreven in de SECCON- [documentatie](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
+Als u de wijzigingen wilt bekijken die door de scripts zijn aangebracht, kunt u de profielen exporteren. Op deze manier kunt u extra beveiliging bepalen die nodig is, zoals beschreven in de SECCON- [documentatie](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
 Voer het intune-`DeviceConfiguration_Export.ps1` script voor gegevens export uit vanuit de [apparaatconfiguratie GiuHub-opslag plaats](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) om alle huidige intune-profielen te exporteren.
 
@@ -260,7 +260,7 @@ Door de volgende instructies te volgen, hebt u een beveiligd werk station geïmp
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>Regels instellen in de Firewall Configuration service provider (CSP)
 
-U kunt wijzigingen aanbrengen in het beheer van zowel binnenkomende als uitgaande regels als nodig is voor uw toegestane en geblokkeerde eind punten. Als u doorgaat met de beveiliging van het beveiligde werk station, kunt u de beperking versoepelen waardoor al het binnenkomende en uitgaande verkeer wordt geweigerd. U kunt toegestane uitgaande sites toevoegen aan gemeen schappelijke en vertrouwde websites. Zie de [Firewall Configuration-service](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp)voor meer informatie.
+U kunt wijzigingen aanbrengen in het beheer van zowel binnenkomende als uitgaande regels als nodig is voor uw toegestane en geblokkeerde eind punten. Als u doorgaat met de beveiliging van het beveiligde werk station, kunt u de beperking versoepelen waardoor al het binnenkomende en uitgaande verkeer wordt geweigerd. U kunt toegestane uitgaande sites toevoegen aan gemeen schappelijke en vertrouwde websites. Zie de [Firewall Configuration-service](/Windows/client-management/mdm/firewall-csp)voor meer informatie.
 
 Beperkend URL-verkeer beheer omvat:
 
@@ -302,7 +302,7 @@ Zie voor meer informatie over het configureren van Chrome-instellingen [Chrome b
 
 In een beveiligde modus is de installatie van de toepassing beperkt tot de intune-bedrijfs portal. Voor de installatie van de portal is echter toegang tot Microsoft Store vereist. In uw beveiligde oplossing kunt u de bedrijfs portal beschikbaar maken voor alle apparaten via een offline modus.
 
-Een door intune beheerde kopie van de [bedrijfsportal](https://docs.microsoft.com/Intune/store-apps-company-portal-app) biedt u toegang op aanvraag tot extra hulpprogram ma's die u naar gebruikers van de beveiligde werk stations kunt pushen.
+Een door intune beheerde kopie van de [bedrijfsportal](/Intune/store-apps-company-portal-app) biedt u toegang op aanvraag tot extra hulpprogram ma's die u naar gebruikers van de beveiligde werk stations kunt pushen.
 
 Mogelijk moet u Windows 32-bits Apps of andere apps installeren waarvan de implementatie speciale voor bereidingen vereist. In dergelijke gevallen kunt u het [micro soft Win32 content prep-hulp programma](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) een kant-en-klare `.intunewin` indelings bestand bieden voor installatie.
 
@@ -371,11 +371,11 @@ Nadat u het apparaat hebt geconfigureerd, voltooit u een controle en controleert
 
 ## <a name="assign-devices"></a>Apparaten toewijzen
 
-Als u apparaten en gebruikers wilt toewijzen, moet u de [geselecteerde profielen](https://docs.microsoft.com/intune/device-profile-assign) toewijzen aan uw beveiligings groep. Alle nieuwe gebruikers die machtigingen nodig hebben voor de service, moeten ook worden toegevoegd aan de beveiligings groep.
+Als u apparaten en gebruikers wilt toewijzen, moet u de [geselecteerde profielen](/intune/device-profile-assign) toewijzen aan uw beveiligings groep. Alle nieuwe gebruikers die machtigingen nodig hebben voor de service, moeten ook worden toegevoegd aan de beveiligings groep.
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>Sentinel en Windows Defender ATP gebruiken om beveiligings incidenten te bewaken en erop te reageren
 
-Het bewaken van de implementatie van een beveiligd werk station kan worden uitgevoerd door [Sentinel] in te scha kelen en te gebruiken voor het [beheren van dreigingen en beveiligings problemen](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) . de richt lijnen bieden geen uitgebreide dreigingen van bedreigingen, maar bieden goede gang bare inspanningen om potentiële beveiligings incidenten te bewaken en hierop te reageren.
+Het bewaken van de implementatie van een beveiligd werk station kan worden uitgevoerd door [Sentinel] in te scha kelen en te gebruiken voor het [beheren van dreigingen en beveiligings problemen](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) . de richt lijnen bieden geen uitgebreide dreigingen van bedreigingen, maar bieden goede gang bare inspanningen om potentiële beveiligings incidenten te bewaken en hierop te reageren.
 
 We gaan **Azure-Sentinel** gebruiken voor: 
 
@@ -387,7 +387,7 @@ Voor Sentinel-bewaking moeten connectors met uw gegevens bronnen, zoals Azure AD
 
 1. Ga in de **Azure Portal**naar **Azure Sentinel (preview)** > Selecteer **toevoegen**
 1. Selecteer **een nieuwe werk ruimte maken** in het **Sentinel Kies een werk ruimte die u wilt toevoegen aan Azure** .
-1. Voer
+1. voer het volgende in:
    * **Log Analytics-werk ruimte** -' beveiliging van werk station controleren '
    * **Abonnement** : Selecteer uw actieve abonnement
    * **Resource groep** : Selecteer de * * nieuwe maken * * > beveiligde werk station RG > **OK**
@@ -412,7 +412,7 @@ Wanneer gegevens door Sentinel worden verzameld, kunt u activiteiten observeren 
 * Het dash board gebruiken om beveiligings problemen op computer niveau te identificeren tijdens onderzoek
 * Herstel bewerkingen naar intune pushen
 
-Uw [Defender ATP-dash board](https://securitycenter.windows.com/machines)configureren. Met behulp van de richt lijnen in het [dash board & voor risico beheer](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)
+Uw [Defender ATP-dash board](https://securitycenter.windows.com/machines)configureren. Met behulp van de richt lijnen in het [dash board & voor risico beheer](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>Toepassings activiteiten bewaken met micro soft Monitoring Agent (MMA)
 Vanaf het gespecialiseerde werk station is app-kluis ingeschakeld voor het bewaken van toepassings activiteiten op een werk station. Als u de bewaking wilt integreren in uw Log Analytics-werk ruimte, moet u een MMA-agent en-configuratie volgen. 
@@ -438,7 +438,7 @@ Vervolgens moet u Log Analytics instellen om de nieuwe logboeken te ontvangen
 1. Ga in het **Azure Portal**naar **Log Analytics werk ruimte** > Selecteer controle van beveiligd werk station
 1. Selecteer **Geavanceerde instellingen** > **gegevens** > **Windows-gebeurtenis logboeken**
 1. In **gebeurtenissen verzamelen uit de volgende gebeurtenis logboeken** 
-1. Voer
+1. voer het volgende in:
    * ' Micro soft-Windows-AppLocker/EXE en DLL ' > **gegevens** selectie opheffen
    * ' Micro soft-Windows-AppLocker/MSI en script ' **> selectie** opheffen
    * ' Micro soft-Windows-AppLocker/verpakte app-implementatie ' > **selectie** opheffen
@@ -447,20 +447,20 @@ Vervolgens moet u Log Analytics instellen om de nieuwe logboeken te ontvangen
 
 Toepassings Logboeken is beschikbaar in uw geselecteerde Log Analytics-werk ruimte.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
-* Meer informatie over het [detecteren van bedreigingen met Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)
-* [Incidenten onderzoeken met Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases)
-* [Automatische bedreigings reacties instellen in azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook)
-* Meer informatie over hoe u uw [blootstellings Score](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) kunt controleren
-* [Beveiligings aanbeveling](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) controleren
-* Beveiligings [herstel](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) beheren
-* [Eindpunt detectie en-antwoorden](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response) beheren
-* Bewaak profielen met [intune-profiel bewaking](https://docs.microsoft.com/intune/device-profile-monitor).
+* Meer informatie over het [detecteren van bedreigingen met Azure Sentinel](/azure/sentinel/tutorial-detect-threats)
+* [Incidenten onderzoeken met Azure Sentinel](/azure/sentinel/tutorial-investigate-cases)
+* [Automatische bedreigings reacties instellen in azure Sentinel](/azure/sentinel/tutorial-respond-threats-playbook)
+* Meer informatie over hoe u uw [blootstellings Score](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) kunt controleren
+* [Beveiligings aanbeveling](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) controleren
+* Beveiligings [herstel](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) beheren
+* [Eindpunt detectie en-antwoorden](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response) beheren
+* Bewaak profielen met [intune-profiel bewaking](/intune/device-profile-monitor).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Microsoft intune](https://docs.microsoft.com/intune/index).
+* Meer informatie over [Microsoft intune](/intune/index).
 * Meer informatie over [Azure AD](../index.yml).
-* Werken met [micro soft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* [Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/) ontdekken
+* Werken met [micro soft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+* [Azure-Sentinel](/azure/sentinel/) ontdekken

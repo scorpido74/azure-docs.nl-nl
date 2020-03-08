@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187471"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671787"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een JWT-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -56,6 +56,7 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 | allow_infinite_rolling_refresh_token | Nee | Als deze is ingesteld op `true`, verloopt het vernieuwings token sliding window levens duur nooit. |
 | IssuanceClaimPattern | Nee | Hiermee bepaalt u de claim van de verlener (ISS). Een van de volgende waarden:<ul><li>AuthorityAndTenantGuid: de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, en uw Tenant-id https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp: de ISS-claim bevat uw domein naam, zoals `login.microsoftonline` of `tenant-name.b2clogin.com`, uw Tenant-id en de naam van uw Relying Party-beleid. https:\/-login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Standaard waarde: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Nee | Hiermee bepaalt u de waarde van de `acr` claim.<ul><li>Geen-Azure AD B2C geeft de claim ACR niet uit</li><li>PolicyId: de `acr` claim bevat de naam van het beleid</li></ul>De opties voor het instellen van deze waarde zijn TFP (Trust Framework Policy) en ACR (Naslag informatie over de verificatie context). U kunt deze waarde het beste instellen op TFP, om de waarde in te stellen, ervoor zorgen dat de `<Item>` met de `Key="AuthenticationContextReferenceClaimPattern"` bestaat en dat de waarde wordt `None`. Voeg in uw Relying Party-beleid `<OutputClaims>` item toe, voeg dit element toe `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Zorg er ook voor dat uw beleid het claim type bevat `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| Nee | De id van een gebruikers traject die moet worden uitgevoerd tijdens het [vernieuwen van een toegangs token](authorization-code-flow.md#4-refresh-the-token) post-aanvraag naar het `/token`-eind punt. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512195"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672670"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
 Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of alleen in de Cloud moeten worden opgenomen. Elke organisatie kan aan Azure AD gekoppelde apparaten implementeren, ongeacht de omvang of de branche. Azure AD-deelname werkt zelfs in een hybride omgeving en biedt toegang tot zowel Cloud-als on-premises apps en bronnen.
 
-|   | Azure AD-Join |
+|   | Deelname aan Azure AD |
 | --- | --- |
 | **Definitie** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
 | **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |
@@ -31,7 +31,7 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 | **Besturings systemen** | Alle Windows 10-apparaten |
 | **Inrichten** | Self-service: Windows OOBE of instellingen |
 |   | Bulkinschrijving |
-|   | Windows Autopilot |
+|   | Windows auto pilot |
 | **Aanmeldings opties voor apparaten** | Organisatie accounts met: |
 |   | Wachtwoord |
 |   | Windows Hello voor Bedrijven |
@@ -45,13 +45,13 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 
 Aan Azure AD gekoppelde apparaten zijn aangemeld voor het gebruik van een Azure AD-account in de organisatie. Toegang tot resources in de organisatie kan verder worden beperkt op basis van het Azure AD-account en het [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) dat wordt toegepast op de apparaat-id.
 
-Beheerders kunnen apparaten die zijn toegevoegd aan Azure AD beveiligen en verder beheren met de MDM-hulpprogram ma's (Mobile Device Management), zoals Microsoft Intune of in scenario's voor co-beheer met micro soft endpoint Configuration Manager. Deze hulpprogram ma's bieden een manier om organisatie-vereiste configuraties af te dwingen, zoals het vereisen van een versleutelde opslag, wachtwoord complexiteit, software-installatie en software-updates. Beheerders kunnen organisatie toepassingen beschikbaar maken voor apparaten die lid zijn van Azure AD met behulp van Configuration Manager om [apps te beheren via de Microsoft Store voor bedrijven en onderwijs](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Beheerders kunnen apparaten die zijn toegevoegd aan Azure AD beveiligen en verder beheren met de MDM-hulpprogram ma's (Mobile Device Management), zoals Microsoft Intune of in scenario's voor co-beheer met micro soft endpoint Configuration Manager. Deze hulpprogram ma's bieden een manier om organisatie-vereiste configuraties af te dwingen, zoals het vereisen van een versleutelde opslag, wachtwoord complexiteit, software-installatie en software-updates. Beheerders kunnen organisatie toepassingen beschikbaar maken voor apparaten die lid zijn van Azure AD met behulp van Configuration Manager om [apps te beheren via de Microsoft Store voor bedrijven en onderwijs](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Azure AD-deelname kan worden uitgevoerd met selfservice opties zoals out of Box Experience (OOBE), bulk inschrijving of [Windows auto pilot](https://docs.microsoft.com/intune/enrollment-autopilot).
+Azure AD-deelname kan worden uitgevoerd met selfservice opties zoals out of Box Experience (OOBE), bulk inschrijving of [Windows auto pilot](/intune/enrollment-autopilot).
 
 Apparaten die aan Azure AD zijn toegevoegd, kunnen nog steeds toegang tot uw on-premises resources hebben bij het gebruik van eenmalige aanmelding wanneer ze zich op het netwerk van de organisatie bevinden. Apparaten die zijn toegevoegd aan Azure AD, kunnen nog steeds worden geverifieerd voor on-premises servers zoals bestanden, printers en andere toepassingen.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Hoewel Azure AD-koppeling voornamelijk is bedoeld voor organisaties die geen on-premises Windows Server Active Directory-infrastructuur hebben, kunt u dit beslist gebruiken in scenario’s waarbij:
 
@@ -74,8 +74,8 @@ Het doel van Azure AD-gekoppelde apparaten is vereenvoudiging van:
 
 Azure AD-koppeling kan via een van de volgende methoden worden geïmplementeerd:
 
-- [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Bulkimplementatie](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Bulkimplementatie](/intune/windows-bulk-enroll)
 - [Selfservice-ervaring](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d397d179a3f5bd50479e76c04e5eb709a3ef1f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260715"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897818"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met AwardSpring
 
@@ -84,27 +84,27 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<subdomain>.awardspring.com/SignIn/SamlMetaData`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<subdomain>.awardspring.com/SignIn/SamlAcs`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<subdomain>.awardspring.com/SignIn/SamlAcs`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<subdomain>.awardspring.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.awardspring.com/`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem voor deze waarden contact op met [het clientondersteuningsteam van AwardSpring](mailto:support@awardspring.com). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. De AwardSpring-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
 1. Daarnaast verwacht AwardSpring toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    |  Name | Bronkenmerk |
+    |  Naam | Bronkenmerk |
     | ---------------| --------------- |
     | Voornaam | user.givenname |
     | Achternaam | user.surname |
-    | E-mail | user.mail |
-    | Gebruikersnaam | user.userprinicipalname |
+    | Email | user.mail |
+    | Gebruikersnaam | user.userprincipalname |
     | StudentID | < Student ID > |
 
     > [!NOTE]
@@ -128,7 +128,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -165,7 +165,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u in het toegangsvenster op de tegel AwardSpring klikt, wordt u automatisch aangemeld bij de instantie van AwardSpring waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

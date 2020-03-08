@@ -6,19 +6,19 @@ author: LauraBrenner
 manager: evansma
 ms.service: batch
 ms.topic: tutorial
-ms.date: 12/11/2018
+ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 12205fd04b015ac3cfe32765779808b636f53946
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023069"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672982"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
-Azure Batch biedt mogelijkheden voor rendering in de cloud waarbij u betaalt op basis van gebruik. Azure Batch ondersteunt rendering-apps zoals Autodesk Maya, 3ds Max, Arnold en V-Ray. In deze zelfstudie wordt stapsgewijs uitgelegd hoe u een kleine scène rendert met Batch met behulp van de Azure-opdrachtregelinterface. Procedures voor:
+Azure Batch biedt mogelijkheden voor rendering in de cloud waarbij u betaalt op basis van gebruik. Azure Batch ondersteunt rendering-apps zoals Autodesk Maya, 3ds Max, Arnold en V-Ray. In deze zelfstudie wordt stapsgewijs uitgelegd hoe u een kleine scène rendert met Batch met behulp van de Azure-opdrachtregelinterface. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een scène uploaden naar Azure Storage
@@ -33,13 +33,13 @@ In deze zelfstudie rendert u een 3ds Max-scène met Batch met behulp van de ray-
 
 U hebt een abonnement op basis van betalen-per-gebruik of een andere betaalde Azure-optie nodig om renderingtoepassingen in Batch te kunnen gebruiken op basis van betalen per gebruik. **Licenties op basis van betalen per gebruik worden niet ondersteund als u gebruikmaakt van een gratis Azure-aanbieding die een financieel tegoed biedt.**
 
-De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright © Autodesk, Inc.)
+De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), samen met een Bash-voorbeeldscript en JSON-configuratiebestanden. De 3ds Max-scène is afkomstig uit de [voorbeeldbestanden van Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-voorbeeldbestanden zijn beschikbaar onder de Creative Commons-licentie Naamsvermelding-NietCommercieel-GelijkDelen. Copyright &copy; auto Desk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.20 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-## <a name="create-a-batch-account"></a>Een Batch-account maken
+## <a name="create-a-batch-account"></a>Batch-account maken
 
 Als u dat nog niet hebt gedaan, maakt u een resourcegroep, een Batch-account en een gekoppeld opslagaccount in uw abonnement. 
 
@@ -60,7 +60,7 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
-Maak een Batch-account met behulp van de opdracht [az batch account create](/cli/azure/batch/account#az-batch-account-create). In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup* en wordt het gemaakte opslagaccount gekoppeld.  
+Maak een Batch-account met behulp van de opdracht [az batch account create](/cli/azure/batch/account#az-batch-account-create). In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup*, en wordt het gemaakte opslagaccount gekoppeld.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -124,7 +124,7 @@ Maak een Batch-pool voor rendering met de opdracht [az batch pool create](/cli/a
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.3.2"
+      "version": "1.3.8"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },

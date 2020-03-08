@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330869"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897695"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -127,6 +127,9 @@ In *Web. config*werkt u vanaf de bovenkant van het bestand en brengt u de volgen
 
 - Zoek de connection string met de naam `MyDbConnection` en vervang de `connectionString` waarde door `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Vervang _\<server naam >_ en _\<db-name >_ door de naam van de server en de data base.
 
+> [!NOTE]
+> De SqlAuthenticationProvider die u zojuist hebt geregistreerd, is gebaseerd op de AppAuthentication-bibliotheek die u eerder hebt geïnstalleerd. Standaard wordt een door het systeem toegewezen identiteit gebruikt. Als u gebruik wilt maken van een door de gebruiker toegewezen identiteit, moet u een aanvullende configuratie opgeven. Zie [Connection String ondersteuning](../key-vault/service-to-service-authentication.md#connection-string-support) voor de AppAuthentication-bibliotheek.
+
 Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app.
 
 Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser is nu rechtstreeks verbonden met de Azure SQL Database, met behulp van Azure AD-verificatie. Met deze installatie kunt u database migraties uitvoeren vanuit Visual Studio.
@@ -189,6 +192,9 @@ Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser i
 
 Vervolgens configureert u uw App Service-app om verbinding te maken met SQL Database met een door het systeem toegewezen beheerde identiteit.
 
+> [!NOTE]
+> Hoewel de instructies in deze sectie betrekking hebben op een door het systeem toegewezen identiteit, kan een door de gebruiker toegewezen identiteit net zo eenvoudig worden gebruikt. Om dit te doen. u hebt de wijziging van de `az webapp identity assign command` nodig om de gewenste door de gebruiker toegewezen identiteit toe te wijzen. Wanneer u de SQL-gebruiker maakt, moet u ervoor zorgen dat u de naam van de door de gebruiker toegewezen identiteits bron gebruikt in plaats van de naam van de site.
+
 ### <a name="enable-managed-identity-on-app"></a>Beheerde identiteit op de app inschakelen
 
 Als u een beheerde identiteit voor uw Azure-app wilt inschakelen, gebruikt u de opdracht [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in de Cloud Shell. Vervang in de volgende opdracht *\<app-name >* .
@@ -237,7 +243,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<id-naam >* de naam is van de beheerde identiteit in azure AD. Omdat de computer is toegewezen, is deze altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergave naam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup*).
+*\<id-naam >* de naam is van de beheerde identiteit in azure AD. Als de identiteit is toegewezen aan het systeem, wordt de naam altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergave naam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup*).
 
 Typ `EXIT` om terug te keren naar de Cloud Shell-prompt.
 

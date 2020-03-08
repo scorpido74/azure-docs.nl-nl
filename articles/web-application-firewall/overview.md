@@ -4,19 +4,19 @@ description: Dit artikel bevat een overzicht van Azure Web Application firewall 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502042"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851182"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Wat is Azure Web Application Firewall?
 
-Web Application firewall (WAF) biedt gecentraliseerde beveiliging van uw webtoepassingen van veelvoorkomende aanvallen en beveiligings problemen. Webtoepassingen worden steeds gericht op kwaad aardige aanvallen die veelvoorkomende beveiligings problemen misbruiken. SQL-injectie en cross-site scripting zijn onder de meest voorkomende aanvallen.
+WAF (Web Application Firewall) biedt gecentraliseerde bescherming van uw webtoepassingen, van veelvoorkomende aanvallen tot beveiligingsproblemen. Webtoepassingen worden steeds gericht op kwaad aardige aanvallen die veelvoorkomende beveiligings problemen misbruiken. SQL-injectie en cross-site scripting zijn onder de meest voorkomende aanvallen.
 
 ![Overzicht van WAF](media/overview/wafoverview.png)
 
@@ -24,7 +24,11 @@ Het voor komen van dergelijke aanvallen in toepassings code is lastig. Dit kan s
 
 Een WAF-oplossing kan sneller reageren op een beveiligings risico door een bekende zwakke plek in plaats van elke afzonderlijke webtoepassing te beveiligen.
 
-WAF kan worden geïmplementeerd met Azure-toepassing gateway en de Azure front-deur service. WAF bevat momenteel functies die zijn aangepast voor elke specifieke service. Zie het overzicht voor elke service voor meer informatie over WAF-functies voor elke service.
+## <a name="supported-services"></a>Ondersteunde services
+
+WAF kan worden geïmplementeerd met [Azure-toepassing gateway](../application-gateway/overview.md) en de [Azure front-deur service](../frontdoor/front-door-overview.md). Beide services zijn laag-7 (HTTP/S) load balancers, maar Application Gateway is een regionale service en de voor deur is een wereld wijde service. WAF heeft functies die zijn aangepast voor elke specifieke service.
+
+Zie het overzicht van WAF voor elke service voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

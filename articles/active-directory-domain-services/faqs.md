@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c51387e92a100cabc5b35ccc7abde0483e77b5b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378523"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893065"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -97,7 +97,7 @@ Elk gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domei
 Nee. U hebt geen beheerders bevoegdheden verleend voor het beheerde domein. De bevoegdheden *domein beheerder* en *ondernemings Administrator* zijn niet beschikbaar voor gebruik binnen het domein. Leden van de groep domein Administrators of ondernemings Administrators in uw on-premises Active Directory zijn ook geen machtigingen voor domein/ondernemings Administrator verleend voor het beheerde domein.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Kan ik groepslid maatschappen wijzigen met behulp van LDAP of andere AD-beheer Programma's in beheerde domeinen?
-Nee. Groepslid maatschappen kunnen niet worden gewijzigd in domeinen die worden onderhouden door Azure AD Domain Services. Hetzelfde geldt voor gebruikers kenmerken. U kunt groepslid maatschappen of gebruikers kenmerken wijzigen in azure AD of op uw on-premises domein. Wijzigingen worden automatisch gesynchroniseerd naar Azure AD Domain Services.
+Gebruikers en groepen die zijn gesynchroniseerd van Azure Active Directory naar Azure AD Domain Services kunnen niet worden gewijzigd, omdat de bron van oorsprong is Azure Active Directory. Elke gebruiker of groep die afkomstig is van het beheerde domein, kan worden gewijzigd.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Hoe lang duurt het voor de wijzigingen die ik in mijn Azure AD-adres lijst aanbrengt, worden weer gegeven in mijn beheerde domein?
 Wijzigingen die zijn aangebracht in uw Azure AD-adres lijst met behulp van de Azure AD-gebruikers interface of Power shell, worden automatisch gesynchroniseerd met uw beheerde domein. Dit synchronisatie proces wordt op de achtergrond uitgevoerd. Er is geen gedefinieerde tijds periode voor deze synchronisatie om alle object wijzigingen te volt ooien.

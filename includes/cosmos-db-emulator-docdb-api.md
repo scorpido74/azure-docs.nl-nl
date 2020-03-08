@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: c071cd289a1304a561a821fc6b5ad86d9bf986af
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 315d4d6b85a28337b0e7c43ad7054e4d31eba670
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299334"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674217"
 ---
-[Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen. Of u kunt de [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met een URI van `https://localhost:8081`. Zie [verificatie aanvragen](../articles/cosmos-db/local-emulator.md#authenticating-requests)voor de sleutel die moet worden gebruikt met de emulator.
+U kunt [Azure Cosmos DB gratis proberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen, of een [Azure Cosmos DB gratis laag-account](../articles/cosmos-db/optimize-dev-test.md#azure-cosmos-db-free-tier)maken met de eerste 400 ru/s en 5 GB aan opslag ruimte. U kunt ook de [Azure Cosmos DB emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met een URI van `https://localhost:8081`. Zie [verificatie aanvragen](../articles/cosmos-db/local-emulator.md#authenticating-requests)voor de sleutel die moet worden gebruikt met de emulator.

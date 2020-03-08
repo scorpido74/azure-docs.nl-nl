@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390273"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893142"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -384,7 +384,7 @@ Aanbevolen instellingen:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 en hoger | 0777 |
 
-Als u een cluster met Kuberetes-versie 1.8.5 of hoger gebruikt en het permanente volume dynamisch maakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
+Als u een cluster met Kubernetes-versie 1.8.5 of hoger gebruikt en het permanente volume dynamisch maakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
 
 ```yaml
 kind: StorageClass
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 Deze fout wordt veroorzaakt door een upstream-voor waarde voor het automatisch schalen van clusters waarbij de cluster-automatische schaal functie eindigt op een andere waarde dan die werkelijk in het cluster. Als u deze status wilt weer geven, schakelt u de [automatisch schalen][cluster-autoscaler]van het cluster uit en weer in.
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Een trage schijf bijlage duurt 10 tot 15 minuten en er wordt een fout bericht weer gegeven
+
+Bij Kubernetes-versies **ouder dan 1.15.0** wordt er mogelijk een fout bericht weer gegeven zoals **fout WaitForAttach kan geen LUN vinden voor de schijf**.  De tijdelijke oplossing hiervoor moet u ongeveer 15 minuten wachten en het opnieuw proberen.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

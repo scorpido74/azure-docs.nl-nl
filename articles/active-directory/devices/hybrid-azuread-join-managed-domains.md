@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3407214d332cbd333fe019948d254e01d71197fb
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377050"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672277"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor beheerde domeinen
 
@@ -66,7 +66,7 @@ Hybride Azure AD-deelname vereist dat apparaten toegang hebben tot de volgende m
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (als u naadloze SSO gebruikt of wilt gebruiken)
 
-Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
+Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
 Als u geen gebruik maakt van WPAD en proxy-instellingen op uw computer moet configureren, kunt u dit doen vanaf Windows 10 1709. Zie [WinHTTP-instellingen configureren met behulp van een groeps beleidsobject (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)voor meer informatie.
 
@@ -154,7 +154,7 @@ U moet ook [naadloze SSO configureren](../hybrid/how-to-connect-sso-quick-start.
 
 Voor het registreren van Windows down level-apparaten moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554). Micro soft Workplace Join voor niet-Windows 10-computers is beschikbaar in het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
 Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt op de achtergrond met Azure AD toegevoegd aan het apparaat met behulp van de referenties van de gebruiker na verificatie met Azure AD.
 

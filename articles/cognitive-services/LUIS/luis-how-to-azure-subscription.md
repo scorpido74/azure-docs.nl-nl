@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390116"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669389"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
@@ -81,7 +81,7 @@ Resource `kind`:
 
 1. Meld u aan bij de Azure CLI:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Resource `kind`:
 
 1. Maak een **Luis-ontwerp bron**, van de soort `LUIS.Authoring`, met de naam `my-luis-authoring-resource` in de _bestaande_ resource groep met de naam `my-resource-group` voor de `westus`-regio. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. Maak een **Luis-Voorspellings eindpunt bron**, van het type `LUIS`, met de naam `my-luis-prediction-resource` in de _bestaande_ resource groep met de naam `my-resource-group` voor de `westus`-regio. Als u een hogere door voer wilt dan de gratis laag, wijzigt u `F0` in `S0`. Meer informatie over [prijs categorieën en door Voer](luis-boundaries.md#key-limits).
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 

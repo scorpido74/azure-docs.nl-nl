@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851449"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Azure Data Explorer implementeren in uw Virtual Network (preview-versie)
 
@@ -75,16 +75,16 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 
 #### <a name="inbound-nsg-configuration"></a>Configuratie van binnenkomende NSG
 
-| **Gebruiken**   | **From**   | **Aan**   | **Protocol**   |
+| **Gebruiken**   | **Van**   | **Aan**   | **Protocol**   |
 | --- | --- | --- | --- |
 | Beheer  |[ADX beheer adressen](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX-subnet: 443  | TCP  |
 | Statuscontrole  | [Adressen voor status controle ADX](#health-monitoring-addresses)  | ADX-subnet: 443  | TCP  |
-| ADX interne communicatie  | ADX-subnet: alle poorten  | ADX-subnet: alle poorten  | Alles  |
+| ADX interne communicatie  | ADX-subnet: alle poorten  | ADX-subnet: alle poorten  | Alle  |
 | Azure load balancer-inkomend (Health probe) toestaan  | AzureLoadBalancer  | ADX-subnet: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Configuratie van uitgaande NSG
 
-| **Gebruiken**   | **From**   | **Aan**   | **Protocol**   |
+| **Gebruiken**   | **Van**   | **Aan**   | **Protocol**   |
 | --- | --- | --- | --- |
 | Afhankelijkheid van Azure Storage  | ADX-subnet  | Opslag: 443  | TCP  |
 | Afhankelijkheid van Azure Data Lake  | ADX-subnet  | AzureDataLake: 443  | TCP  |
@@ -93,33 +93,33 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Azure Monitor configuratie downloaden  | ADX-subnet  | [Azure monitor configuratie-eindpunt adressen](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (indien van toepassing) | ADX-subnet | AzureActiveDirectory: 443 | TCP |
 | Certificeringsinstantie | ADX-subnet | Internet: 80 | TCP |
-| Interne communicatie  | ADX-subnet  | ADX-subnet: alle poorten  | Alles  |
+| Interne communicatie  | ADX-subnet  | ADX-subnet: alle poorten  | Alle  |
 | Poorten die worden gebruikt voor `sql\_request`-en `http\_request`-invoeg toepassingen  | ADX-subnet  | Internet: aangepast  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Relevante IP-adressen
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>IP-adressen van Azure Data Explorer Management
 
-| Regio | Adressen |
+| Regio | Komen |
 | --- | --- |
 | Australië - centraal | 20.37.26.134 |
 | Australië-Central2 | 20.39.99.177 |
 | Australië - oost | 40.82.217.84 |
 | Australië - zuidoost | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
-| Canada-Midden | 40.82.188.208 |
-| Canada-Oost | 40.80.255.12 |
+| Canada - midden | 40.82.188.208 |
+| Canada - oost | 40.80.255.12 |
 | India - centraal | 40.81.249.251 |
 | VS - centraal | 40.67.188.68 |
 | Centrale VS-EUAP | 40.89.56.69 |
 | Azië - oost | 20.189.74.103 |
 | VS - oost | 52.224.146.56 |
-| VS - oost 2 | 52.232.230.201 |
+| VS - oost2 | 52.232.230.201 |
 | Oost-VS2 EUAP | 52.253.226.110 |
 | Frankrijk - centraal | 40.66.57.91 |
 | Frankrijk - zuid | 40.82.236.24 |
-| Japan - Oost | 20.43.89.90 |
-| Japan - West | 40.81.184.86 |
+| Japan - oost | 20.43.89.90 |
+| Japan - west | 40.81.184.86 |
 | Korea - centraal | 40.82.156.149 |
 | Korea - zuid | 40.80.234.9 |
 | VS - noord-centraal | 40.81.45.254 |
@@ -129,25 +129,25 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | VS - zuid-centraal | 20.45.3.60 |
 | Azië - zuidoost | 40.119.203.252 |
 | India - zuid | 40.81.72.110 |
-| UK - zuid | 40.81.154.254 |
-| UK - west | 40.81.122.39 |
+| Verenigd Koninkrijk Zuid | 40.81.154.254 |
+| Verenigd Koninkrijk West | 40.81.122.39 |
 | VS - west-centraal | 52.159.55.120 |
-| Europa - west | 51.145.176.215 |
+| Europa -west | 51.145.176.215 |
 | India - west | 40.81.88.112 |
 | VS - west | 13.64.38.225 |
 | VS - west 2 | 40.90.219.23 |
 
 #### <a name="health-monitoring-addresses"></a>Adressen voor status controle
 
-| Regio | Adressen |
+| Regio | Komen |
 | --- | --- |
 | Australië - centraal | 191.239.64.128 |
 | Australië - centraal 2 | 191.239.64.128 |
 | Australië - oost | 191.239.64.128 |
 | Australië - zuidoost | 191.239.160.47 |
-| Brazilië - Zuid | 23.98.145.105 |
-| Canada-Midden | 168.61.212.201 |
-| Canada-Oost | 168.61.212.201 |
+| Brazilië - zuid | 23.98.145.105 |
+| Canada - midden | 168.61.212.201 |
+| Canada - oost | 168.61.212.201 |
 | India - centraal | 23.99.5.162 |
 | VS - centraal | 168.61.212.201 |
 | Centrale VS-EUAP | 168.61.212.201 |
@@ -157,8 +157,8 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | VS-Oost 2 EUAP | 137.116.81.189 |
 | Frankrijk - centraal | 23.97.212.5 |
 | Frankrijk - zuid | 23.97.212.5 |
-| Japan - Oost | 138.91.19.129 |
-| Japan - West | 138.91.19.129 |
+| Japan - oost | 138.91.19.129 |
+| Japan - west | 138.91.19.129 |
 | Korea - centraal | 138.91.19.129 |
 | Korea - zuid | 138.91.19.129 |
 | VS - noord-centraal | 23.96.212.108 |
@@ -168,17 +168,17 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | VS - zuid-centraal | 23.98.145.105 |
 | India - zuid | 23.99.5.162 |
 | Azië - zuidoost | 168.63.173.234 |
-| UK - zuid | 23.97.212.5 |
-| UK - west | 23.97.212.5 |
+| Verenigd Koninkrijk Zuid | 23.97.212.5 |
+| Verenigd Koninkrijk West | 23.97.212.5 |
 | VS - west-centraal | 168.61.212.201 |
-| Europa - west | 23.97.212.5 |
+| Europa -west | 23.97.212.5 |
 | India - west | 23.99.5.162 |
 | VS - west | 23.99.5.162 |
-| VS - west 2 | 23.99.5.162 | 
+| VS - west 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor configuratie-eindpunt adressen
 
-| Regio | Adressen |
+| Regio | Komen |
 | --- | --- |
 | Australië - centraal | 52.148.86.165 |
 | Australië - centraal 2 | 52.148.86.165 |
@@ -192,7 +192,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Centrale VS-EUAP | 13.90.43.231 |
 | Azië - oost | 13.75.117.221 |
 | VS-Oost | 13.90.43.231 |
-| VS-Oost 2 | 13.68.89.19 | 
+| VS-Oost 2 | 13.68.89.19 |    
 | VS-Oost 2 EUAP | 13.68.89.19 |
 | Frankrijk - centraal | 52.174.4.112 |
 | Frankrijk - zuid | 52.174.4.112 |
@@ -263,3 +263,149 @@ Voor de regio **VS-West** moet u bijvoorbeeld de volgende udr's definiëren:
 Als u Azure Data Explorer cluster wilt implementeren in uw virtuele netwerk, gebruikt u het [azure Data Explorer-cluster implementeren in uw VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) -Azure Resource Manager sjabloon.
 
 Met deze sjabloon maakt u het cluster, het virtuele netwerk, het subnet, de netwerk beveiligings groep en de open bare IP-adressen.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+In deze sectie vindt u informatie over het oplossen van problemen met connectiviteit, operationele en het maken van clusters voor een cluster dat is geïmplementeerd in uw [Virtual Network](/azure/virtual-network/virtual-networks-overview).
+
+### <a name="access-issues"></a>Toegangs problemen
+
+Als u een probleem hebt bij het openen van het cluster met behulp van het open bare (cluster.region.kusto.windows.net) of particuliere (private-cluster.region.kusto.windows.net)-eind punt en u vermoedt dat dit is gerelateerd aan de installatie van het virtuele netwerk, voert u de volgende stappen uit om Los het probleem op.
+
+#### <a name="check-tcp-connectivity"></a>TCP-connectiviteit controleren
+
+De eerste stap omvat het controleren van TCP-verbindingen met behulp van Windows-of Linux-besturings systeem.
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. Down load [TCping](https://www.elifulkerson.com/projects/tcping.php) naar de computer die verbinding maakt met het cluster.
+   2. Ping het doel van de bron machine met behulp van de volgende opdracht:
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. *Netcat* installeren op de computer die verbinding maakt met het cluster
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. Ping het doel van de bron machine met behulp van de volgende opdracht:
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+Als de test niet is geslaagd, gaat u verder met de volgende stappen. Als de test is geslaagd, wordt het probleem niet veroorzaakt door een probleem met de TCP-verbinding. Ga naar [operationele problemen](#cluster-creation-and-operations-issues) om verder te kunnen problemen oplossen.
+
+#### <a name="check-the-network-security-group-nsg"></a>Controleer de netwerk beveiligings groep (NSG)
+
+   Controleer of de [netwerk beveiligings groep](/azure/virtual-network/security-overview) (NSG) die is gekoppeld aan het subnet van het cluster, een regel voor binnenkomend verkeer heeft waarmee toegang vanaf het IP-adres van de client computer wordt toegestaan voor poort 443.
+
+#### <a name="check-route-table"></a>Route tabel controleren
+
+   Als het subnet van het cluster geforceerde tunneling heeft ingesteld op Firewall (subnet met een [route tabel](/azure/virtual-network/virtual-networks-udr-overview) met de standaard route 0.0.0.0/0), moet u ervoor zorgen dat het IP-adres van de computer een route met het [type volgende hop](/azure/virtual-network/virtual-networks-udr-overview) naar VirtualNetwork/Internet heeft. Dit is vereist om problemen met asymmetrische routes te voor komen.
+
+### <a name="ingestion-issues"></a>Opname problemen
+
+Als u problemen ondervindt met de opname en u vermoedt dat deze zijn gerelateerd aan de installatie van het virtuele netwerk, voert u de volgende stappen uit.
+
+#### <a name="check-ingestion-health"></a>Status van opname controleren
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>Controleer de beveiligings regels op de gegevens bron resources
+
+Als bij de metrische gegevens wordt aangegeven dat er geen gebeurtenissen zijn verwerkt vanuit de data source (*verwerkte gebeurtenissen* (voor gebeurtenis/IOT hubs), moet u ervoor zorgen dat de gegevens bron bronnen (Event hub of Storage) toegang toestaan vanuit het subnet van het cluster in de firewall regels of service-eind punten.
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Controleer de beveiligings regels die zijn geconfigureerd op het subnet van het cluster
+
+Zorg ervoor dat het subnet van het cluster NSG, UDR en firewall regels correct zijn geconfigureerd. Test bovendien de netwerk connectiviteit voor alle afhankelijke eind punten. 
+
+### <a name="cluster-creation-and-operations-issues"></a>Problemen met het maken van clusters en bewerkingen
+
+Voer de volgende stappen uit om het probleem op te lossen als u problemen ondervindt met het maken van clusters of als u vermoedt dat deze zijn gerelateerd aan de configuratie van het virtuele netwerk.
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>Het virtuele netwerk met de REST API diagnosticeren
+
+De [ARMClient](https://chocolatey.org/packages/ARMClient) wordt gebruikt om de rest API aan te roepen met behulp van Power shell. 
+
+1. Aanmelden met ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+1. Diagnose bewerking aanroepen
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. Het antwoord controleren
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. Wachten tot de bewerking is voltooid
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   Wacht tot de *status* eigenschap *is voltooid*. vervolgens wordt het veld *Eigenschappen* weer gegeven:
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+Als voor de eigenschap *bevindingen* een leeg resultaat wordt weer gegeven, betekent dit dat alle netwerk tests zijn door gegeven en dat er geen verbindingen worden verbroken. Als de volgende fout wordt weer gegeven: de *uitgaande afhankelijkheid {dependency naam}: {Port} is mogelijk niet voldaan aan (uitgaand)* , het cluster kan de afhankelijke service-eind punten niet bereiken. Ga door met de volgende stappen om problemen op te lossen.
+
+#### <a name="check-network-security-group-nsg"></a>Controleer de netwerk beveiligings groep (NSG)
+
+Controleer of de [netwerk beveiligings groep](/azure/virtual-network/security-overview) juist is geconfigureerd volgens de instructies in [afhankelijkheden voor VNet-implementaties](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)
+
+#### <a name="check-route-table"></a>Route tabel controleren
+
+Als voor het subnet van het cluster geforceerde tunneling is ingesteld op Firewall (subnet met [een route tabel](/azure/virtual-network/virtual-networks-udr-overview) met de standaard route ' 0.0.0.0/0 '), moet u ervoor zorgen dat de IP-adressen van de [beheer-IP-adressen](#azure-data-explorer-management-ip-addresses) en de [status controle](#health-monitoring-addresses) worden weer geven met het [volgende hop-type](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*en het [adres voorvoegsel](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) *voor de* *status controle-IP/32*. Dit is vereist om problemen met asymmetrische routes te voor komen.
+
+#### <a name="check-firewall-rules"></a>Firewall regels controleren
+
+Als u uitgaand verkeer van het tunnel-subnet afdwingt naar een firewall, moet u ervoor zorgen dat alle afhankelijkheden van de FQDN-(bijvoorbeeld *. blob.core.Windows.net*) zijn toegestaan in de firewall configuratie, zoals beschreven in het [beveiligen van uitgaand verkeer met firewall](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall).

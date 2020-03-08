@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7faf4a029168c12a3213bc9a06891200e9ac6142
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: d6d75e47edc5cb759e28098a5932e62bc0ed4678
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446381"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668998"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -76,7 +76,9 @@ U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en d
 
 Vanuit het `IntentRecognizer`-object roept u de `RecognizeOnceAsync()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
 
-In de instructie using voegt u deze code toe onder uw model: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
+In de instructie using voegt u deze code toe onder uw model.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
 ## <a name="display-recognition-results-or-errors"></a>Herkennings resultaten (of fouten) weer geven
 

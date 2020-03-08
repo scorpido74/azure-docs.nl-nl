@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620710"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671849"
 ---
 # <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
@@ -67,22 +67,10 @@ Als u een aangepast besturings element wilt verwijderen, moet u er eerst voor zo
 
 Als u een aangepast besturings element wilt bewerken, moet u het huidige besturings element verwijderen en een nieuw besturings element maken met de bijgewerkte gegevens.
 
-## <a name="session-controls"></a>Sessie besturings elementen
-
-Sessie besturings elementen maken beperkte ervaring in een Cloud-app mogelijk. De sessie besturings elementen worden afgedwongen door Cloud-apps en zijn afhankelijk van aanvullende informatie van Azure AD naar de app over de sessie.
-
-![Beheer](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>Door apps afgedwongen beperkingen gebruiken
-
-U kunt dit besturings element gebruiken om te vereisen dat Azure AD apparaatgegevens doorgeeft aan de geselecteerde Cloud-apps. De apparaatgegevens maken het mogelijk om te bepalen of een verbinding tot stand wordt gebracht vanaf een apparaat dat compatibel is met of een domein. Dit besturings element ondersteunt alleen share point online en Exchange Online als geselecteerde Cloud-apps. Als deze functie is ingeschakeld, gebruikt de Cloud-app de apparaatgegevens om gebruikers, afhankelijk van de status van het apparaat, te voorzien van een beperkte of volledige ervaring.
-
-Raadpleeg voor meer informatie:
-
-- [Beperkte toegang inschakelen met share point online](https://aka.ms/spolimitedaccessdocs)
-- [Beperkte toegang inschakelen met Exchange Online](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
-- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).
+- [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+
+- [Modus alleen rapport](concept-conditional-access-report-only.md)
+
+- [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668497"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
 
@@ -87,7 +87,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | **Hoe kunt u het probleem oplossen?** | Controleer de accounts in de lijst. Als ze geen toegang meer nodig hebben, moet u ze verwijderen uit hun geprivilegieerde rollen. |
 | **Preventie** | Zorg ervoor dat accounts die worden gedeeld sterke wacht woorden draaien wanneer er een wijziging is in de gebruikers die het wacht woord kennen. </br>Controleer regel matig accounts met geprivilegieerde rollen met [toegangs beoordelingen](pim-how-to-start-security-review.md) en verwijder roltoewijzingen die niet meer nodig zijn. |
 | **Actie voor het verkleinen van de portal** | Hiermee verwijdert u het account uit hun geprivilegieerde rol. |
-| **Aanbevolen procedures** | Gedeelde, service-en toegangs accounts voor toegang die worden geverifieerd met een wacht woord en die zijn toegewezen aan streng beschermde administratieve rollen, zoals globale beheerder of beveiligings beheerder, moeten hun wacht woorden draaien voor de volgende gevallen:<ul><li>Na een beveiligings incident met betrekking tot misbruik of inbreuk op beheerders toegangs rechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat ze geen beheerder meer zijn (bijvoorbeeld nadat een werk nemer die een beheerder is, de organisatie verlaat of verlaat)</li><li>Met regel matige intervallen (bijvoorbeeld elk kwar taal of per jaar), zelfs als er geen sprake is van een onbekende schending of wijziging van IT-personeel</li></ul>Omdat meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rollen hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie](https://aka.ms/breakglass) |
+| **Aanbevolen procedures** | Gedeelde, service-en toegangs accounts voor toegang die worden geverifieerd met een wacht woord en die zijn toegewezen aan streng beschermde administratieve rollen, zoals globale beheerder of beveiligings beheerder, moeten hun wacht woorden draaien voor de volgende gevallen:<ul><li>Na een beveiligings incident met betrekking tot misbruik of inbreuk op beheerders toegangs rechten</li><li>Nadat de bevoegdheden van een gebruiker zijn gewijzigd, zodat ze geen beheerder meer zijn (bijvoorbeeld nadat een werk nemer die een beheerder is, de organisatie verlaat of verlaat)</li><li>Met regel matige intervallen (bijvoorbeeld elk kwar taal of per jaar), zelfs als er geen sprake is van een onbekende schending of wijziging van IT-personeel</li></ul>Omdat meerdere personen toegang hebben tot de referenties van deze accounts, moeten de referenties worden geroteerd om ervoor te zorgen dat mensen die hun rollen hebben verlaten, geen toegang meer hebben tot de accounts. [Meer informatie over het beveiligen van accounts](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen worden buiten Privileged Identity Management toegewezen
 

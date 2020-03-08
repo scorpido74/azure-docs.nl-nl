@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429293"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669442"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische IoT-apparaat-en module beheer met Azure CLI
 
@@ -35,9 +35,13 @@ Automatische configuraties worden voor de eerste keer uitgevoerd, kort nadat de 
 
 ## <a name="cli-prerequisites"></a>CLI-vereisten
 
-* Een [IoT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement. 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az –-version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen. 
-* De [IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement. 
+
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az –-version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen. 
+
+* De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-cli).
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>Apparaatdubbels implementeren
 
@@ -127,7 +131,7 @@ Gebruik de volgende opdracht om een configuratie te maken:
 
 * --**config-id** : de naam van de configuratie die wordt gemaakt in de IOT-hub. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
 
-* --**labels** : Labels toevoegen om uw configuratie bij te houden. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Bijvoorbeeld, `HostPlatform, Linux` of `Version, 3.0.1`
+* --**labels** : Labels toevoegen om uw configuratie bij te houden. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Bijvoorbeeld `HostPlatform, Linux` of `Version, 3.0.1`
 
 * --**inhoud** inline JSON of bestandspad naar de doel inhoud moet worden ingesteld als twee gewenste eigenschappen. 
 
@@ -200,7 +204,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**set** : een eigenschap in de configuratie bijwerken. U kunt de volgende eigenschappen bijwerken:
 
-    * targetCondition - voorbeeld `targetCondition=tags.location.state='Oregon'`
+    * targetCondition-bijvoorbeeld `targetCondition=tags.location.state='Oregon'`
 
     * labels 
 

@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657738"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673329"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw in Azure Monitor documentatie?
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw zijn of aanzienlijk zijn bijgewerkt. Het wordt de eerste week van elke maand vernieuwd, zodat artikel updates van de vorige maand worden meegenomen.
+
+## <a name="march-2020"></a>2020 maart
+
+### <a name="agents"></a>Agents
+Meerdere updates als onderdeel van het herschrijven van inhoud van de diagnostische extensie.
+
+- [Overzicht van de Azure-bewakings agenten](platform/agents-overview.md) : herstructurering van tabellen om de unieke functies van elke agent beter te verduidelijken.
+- [Overzicht van Azure Diagnostics extensie](platform/diagnostics-extension-overview.md) -herschrijven volt ooien.
+- [Gebruik Blob Storage voor IIS en tabel opslag voor gebeurtenissen in azure monitor](platform/diagnostics-extension-logs.md) -algemeen herschrijven voor updates en duidelijkheid.
+- [Installeer en configureer Windows Azure Diagnostics extension (WAD)](platform/diagnostics-extension-windows-install.md) -nieuw artikel. 
+- [Uitbreidings schema voor Windows diagnostische gegevens](platform/diagnostics-extension-schema-windows.md) : opnieuw georganiseerd.
+- [Gegevens verzenden van de Windows Azure Diagnostics-extensie naar Azure Event hubs](platform/diagnostics-extension-stream-event-hubs.md) -volledig herschreven en bijgewerkt.
+- [Diagnostische gegevens opslaan en weer geven in azure Storage](platform/diagnostics-extension-to-storage.md) -volledig herschreven en bijgewerkt.
+- [Log Analytics extensie voor virtuele machines voor Windows](../virtual-machines/extensions/oms-windows.md) -betere verduidelijking van de relatie met log Analytics agent.
+- [Azure monitor extensie van de virtuele machine voor Linux](../virtual-machines/extensions/oms-linux.md) -beter verduidelijkt de relatie met log Analytics agent.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Verbindings reeksen in azure-toepassing Insights](app/sdk-connection-string.md) -nieuw artikel.
+
+### <a name="insights-and-solutions"></a>Inzichten en oplossingen
+
+#### <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
+- [Integreer Azure Active Directory met de door Azure Kubernetes service](../aks/azure-ad-integration.md) toegevoegde opmerking voor het maken van een client toepassing ter ondersteuning van een cluster met RBAC-functionaliteit ter ondersteuning van Azure monitor voor containers.
+
+#### <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines
+- [Veelgestelde vragen over Azure monitor voor VM's (ga)](insights/vminsights-ga-release-faq.md) : Wijzig hoe prestatie gegevens worden opgeslagen.
+
+#### <a name="office-365"></a>Office 365
+- [Office 365-beheer oplossing in azure](insights/solution-office-365.md) -bijgewerkte datum van afschaffing.
+
+
+### <a name="logs"></a>Logboeken
+- [Optimaliseer logboek query's in azure monitor](log-query/query-optimization.md) -nieuw artikel.
+- [Gebruik en kosten voor Azure monitor logboeken beheren](platform/manage-cost-storage.md) : verbeterde voorbeeld query's om inzicht te krijgen in uw gebruik.
+
+### <a name="metrics"></a>Metrische gegevens
+- Azure Monitor de metrische gegevens van het [platform exporteerbaar via Diagnostische instellingen](platform/metrics-supported-export-diagnostic-settings.md) : de sectie is toegevoegd bij wijzigen in gedrag voor Null-waarden en nulwaarden.
+
+
+### <a name="visualizations"></a>Visualisaties
+Meerdere nieuwe artikelen voor het weer geven van Designer-conversie gids voor werkmappen.
+
+- [Azure monitor weer gave Designer naar werkmappen-overgangs gids](platform/view-designer-conversion-overview.md) : nieuw artikel.
+- [Azure monitor weer gave Designer naar werkmappen conversie opties](platform/view-designer-conversion-options.md) -nieuw artikel.
+- [Azure monitor weer geven Designer naar Workbook conversies](platform/view-designer-conversion-tiles.md) -nieuw artikel.
+- [Azure monitor Designer weer geven voor werkmappen conversie samenvatting en toegang tot](platform/view-designer-conversion-access.md) nieuw artikel.
+- [Azure monitor Designer weer geven voor werkmappen conversie common tasks](platform/view-designer-conversion-tasks.md) -nieuw artikel.
+- [Azure monitor weer gave Designer naar werkmappen conversie-voor beelden](platform/view-designer-conversion-examples.md) : nieuw artikel.
+
+
+
 
 ## <a name="january-2020"></a>Januari 2020
 
@@ -43,14 +97,14 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw zijn of a
 ### <a name="insights-and-solutions"></a>Inzichten en oplossingen
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
-- [Azure monitor configureren voor het verzamelen van gegevens van containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) , Details over het bijwerken van agents op Azure Red Hat open Shift en extra informatie toegevoegd om de methoden voor het bijwerken van de agent te onderscheiden.
-- [Maak prestatie waarschuwingen voor Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) : herziene informatie en bijgewerkte stappen voor het maken van een waarschuwing voor prestatie gegevens die in de werk ruimte zijn opgeslagen met behulp van werk ruimte-context waarschuwingen.
-- [Kubernetes bewaking met Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) : het artikel overzicht en het artikel analyseren met betrekking tot ondersteuning van Windows Kubernetes-clusters bijgewerkt.
-- [Azure Red Hat open Shift-clusters configureren met Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) -Details toegevoegd voor het bijwerken van de agent op Azure Red Hat open Shift en extra informatie toevoegen om de methoden voor het bijwerken van de agent te onderscheiden.
-- [Configureer hybride Kubernetes-clusters met Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) -bijgewerkt om toegevoegde ondersteuning voor beveiligde poort te weer spie gelen: 10250 met de CAdvisor van Kubelet.
-- [Het beheren van de Azure monitor voor containers agent](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) -bijgewerkte details met betrekking tot gedrag en configuratie van metrische gegevens over metrieken met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
-- [Azure monitor configureren voor containers Prometheus-integratie](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) -bijgewerkte details met betrekking tot gedrag en configuratie van metrische uitval tijd met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
-- [Het bijwerken van Azure monitor voor containers voor metrische](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) gegevens-bijgewerkte details met betrekking tot gedrag en configuratie van metrische uitval tijd met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
+- [Azure monitor configureren voor het verzamelen van gegevens van containers](insights/container-insights-agent-config.md) , Details over het bijwerken van agents op Azure Red Hat open Shift en extra informatie toegevoegd om de methoden voor het bijwerken van de agent te onderscheiden.
+- [Maak prestatie waarschuwingen voor Azure monitor voor containers](insights/container-insights-alerts.md) : herziene informatie en bijgewerkte stappen voor het maken van een waarschuwing voor prestatie gegevens die in de werk ruimte zijn opgeslagen met behulp van werk ruimte-context waarschuwingen.
+- [Kubernetes bewaking met Azure monitor voor containers](insights/container-insights-analyze.md) : het artikel overzicht en het artikel analyseren met betrekking tot ondersteuning van Windows Kubernetes-clusters bijgewerkt.
+- [Azure Red Hat open Shift-clusters configureren met Azure monitor voor containers](insights/container-insights-azure-redhat-setup.md) -Details toegevoegd voor het bijwerken van de agent op Azure Red Hat open Shift en extra informatie toevoegen om de methoden voor het bijwerken van de agent te onderscheiden.
+- [Configureer hybride Kubernetes-clusters met Azure monitor voor containers](insights/container-insights-hybrid-setup.md) -bijgewerkt om toegevoegde ondersteuning voor beveiligde poort te weer spie gelen: 10250 met de CAdvisor van Kubelet.
+- [Het beheren van de Azure monitor voor containers agent](insights/container-insights-manage-agent.md) -bijgewerkte details met betrekking tot gedrag en configuratie van metrische gegevens over metrieken met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
+- [Azure monitor configureren voor containers Prometheus-integratie](insights/container-insights-prometheus-integration.md) -bijgewerkte details met betrekking tot gedrag en configuratie van metrische uitval tijd met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
+- [Het bijwerken van Azure monitor voor containers voor metrische](insights/container-insights-update-metrics.md) gegevens-bijgewerkte details met betrekking tot gedrag en configuratie van metrische uitval tijd met Azure Red Hat open Shift vergeleken met andere typen Kubernetes-clusters.
 
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines

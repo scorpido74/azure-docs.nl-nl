@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918964"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894568"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
 Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
@@ -40,14 +40,14 @@ Een lijst met alle geografische gebieden voor Office 365 vindt u in waar bevinde
 
 De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische locaties:
 
-| Geografisch gebied | waarde preferredDataLocation |
+| Geo | waarde preferredDataLocation |
 | --- | --- |
 | Azië en Stille Oceaan | APC |
 | Australië | AU'S |
 | Canada | KUNNEN |
 | Europese Unie | EUR |
 | Frankrijk | FRA |
-| India | IND |
+| India | ZOEKEN |
 | Japan | JPN |
 | Korea | KOR |
 | Zuid-Afrika | ZAF |
@@ -61,7 +61,7 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect ondersteuning voor synchronisatie
 
-Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocation** voor **gebruikers** objecten in versie 1.1.524.0 en hoger. Specifiek:
+Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocation** voor **gebruikers** objecten in versie 1.1.524.0 en hoger. Met name:
 
 * Het schema van de **gebruiker** van het object type in de Azure AD-connector wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 * Het schema van de **persoon** van het object type in de tekst wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
@@ -145,7 +145,7 @@ Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gest
     | Beschrijving | *Geef een aangepaste beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises Active Directory-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
-    | Omgekeerd object type | **Person** |  |
+    | Omgekeerd object type | **Gelaedeerde** |  |
     | Koppelings type | **Koppelen** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
@@ -174,7 +174,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Beschrijving | *Geef een beschrijving op* ||
     | Verbonden systeem | *De Azure AD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
-    | Omgekeerd object type | **Person** ||
+    | Omgekeerd object type | **Gelaedeerde** ||
     | Koppelings type | **Koppelen** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
@@ -183,9 +183,9 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Kenmerk | Operator | Waarde |
     | --- | --- | --- |
     | sourceObjectType | WAARD | Gebruiker |
-    | cloudMastered | NOTEQUAL | Waar |
+    | cloudMastered | NOTEQUAL | True |
 
-    Het bereik filter bepaalt op welke Azure AD-objecten deze regel voor uitgaande synchronisatie wordt toegepast. In dit voor beeld gebruiken we hetzelfde bereik filter van ' out to Azure AD: User Identity ' OOB (out-of-box)-synchronisatie regel. Hiermee wordt voor komen dat de synchronisatie regel wordt toegepast op **gebruikers** objecten die niet zijn gesynchroniseerd vanuit on-premises Active Directory. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
+    Het bereik filter bepaalt op welke Azure AD-objecten deze regel voor uitgaande synchronisatie wordt toegepast. In dit voor beeld gebruiken we hetzelfde bereik filter van ' out to Azure AD: User Identity ' OOB (out-of-box)-synchronisatie regel. Hiermee wordt voor komen dat de synchronisatie regel wordt toegepast op **gebruikers** objecten die niet zijn gesynchroniseerd vanuit een on-premises Active Directory. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
 
 6. Ga naar het tabblad **trans formatie** en implementeer de volgende transformatie regel:
 
@@ -260,7 +260,6 @@ Het is nu tijd om de configuratie te controleren en in te scha kelen voor uw geb
 3. Controleer met behulp van Exchange Online Power shell of de Postvak regio juist is ingesteld.  
 ![Scherm afbeelding van Exchange Online Power shell](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Ervan uitgaande dat uw Tenant is gemarkeerd om deze functie te kunnen gebruiken, wordt het postvak verplaatst naar de juiste geo-waarde. U kunt dit controleren door te kijken naar de naam van de server waarop het postvak zich bevindt.
-4. Gebruik het script in de [TechNet-galerie](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)om te controleren of deze instelling van kracht is op veel post vakken. Dit script bevat ook een lijst met de server voorvoegsels van alle Office 365-data centers en de geografische locatie waar deze zich bevindt. Het kan worden gebruikt als referentie in de vorige stap om de locatie van het postvak te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -278,4 +277,4 @@ Meer informatie over het configuratie model in de sync-engine:
 Overzichts onderwerpen:
 
 * [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

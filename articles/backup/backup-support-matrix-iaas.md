@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363726"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668524"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -66,7 +66,7 @@ De volgende tabel bevat een overzicht van de ondersteunde besturings systemen bi
 **Scenario** | **Ondersteuning voor besturings systeem**
 --- | ---
 Back-up maken met extensie van Azure VM-agent | -Windows 10-client (alleen 64 bits) <br/><br/>-Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)  <br/><br/> -Windows Server 2008 (alleen 64 bits)
-Back-ups maken met MARS-agent | [Ondersteunde](backup-support-matrix-mars-agent.md#support-for-direct-backups) besturings systemen.
+Back-ups maken met MARS-agent | [Ondersteunde](backup-support-matrix-mars-agent.md#supported-operating-systems) besturings systemen.
 Back-up maken met DPM-MABS | Ondersteunde besturings systemen voor back-up met [MABS](backup-mabs-protection-matrix.md) en [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 
 Azure Backup biedt geen ondersteuning voor 32-bits besturingssystemen.

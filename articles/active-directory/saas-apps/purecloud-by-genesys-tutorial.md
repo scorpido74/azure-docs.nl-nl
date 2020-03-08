@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242437"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897770"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met PureCloud door Genesys
 
@@ -125,7 +125,7 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
 
     | Naam | Bronkenmerk|
     | ---------------| --------------- |
-    | E-mail | user.userprinicipalname |
+    | Email | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
@@ -143,7 +143,7 @@ In deze sectie maakt u een test gebruiker met de naam B. Simon in de Azure Porta
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de gebruikers naam in de volgende indeling in: username@companydomain.extension. Bijvoorbeeld: `B.Simon@contoso.com`.
    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
    1. Selecteer **Maken**.
@@ -222,7 +222,7 @@ In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD me
 
 Wanneer u de tegel **PureCloud by Genesys** in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de PureCloud op Genesys-account waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 97c5bf0c7bdf036a0555e8d536b5421d739327ad
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380685"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669168"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Werkbelasting beheer met resource klassen in azure Synapse Analytics
 
@@ -73,7 +73,7 @@ De geheugen toewijzing voor elke resource klasse is als volgt.
 | DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
 | DW300c         | achtste                | 6                    | 22%                    | 70%                    |
 | DW400c         | 6,25%             | 6                    | 22%                    | 70%                    |
-| DW500c         | 20               | 6                    | 22%                    | 70%                    |
+| DW500c         | 5%                | 6                    | 22%                    | 70%                    |
 | DW1000c naar<br> DW30000c | 3%       | 6                    | 22%                    | 70%                    |
 
 

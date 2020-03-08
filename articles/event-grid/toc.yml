@@ -96,8 +96,12 @@
   items:
     - name: Concepten binnen Event Grid
       href: concepts.md
-    - name: Verificatie en beveiliging
-      href: security-authentication.md
+    - name: Beveiliging
+      items:
+        - name: Verificatie
+          href: security-authentication.md
+        - name: Autorisatie
+          href: security-authorization.md
     - name: Leveren en opnieuw proberen
       href: delivery-and-retry.md
     - name: Gebeurtenissen filteren

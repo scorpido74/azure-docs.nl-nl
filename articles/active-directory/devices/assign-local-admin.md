@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379664"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672733"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -68,8 +68,8 @@ Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten
 
 Standaard voegt Azure AD de gebruiker die de Azure AD-koppeling uitvoert, toe aan de groep Administrators op het apparaat. Als u wilt voor komen dat gewone gebruikers lokale beheerders worden, hebt u de volgende opties:
 
-- [Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) : Windows auto pilot biedt u de mogelijkheid om te voor komen dat een primaire gebruiker die de koppeling uitvoert, een lokale beheerder wordt. U kunt dit doen door [een auto pilot-profiel te maken](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
-- [Bulk inschrijving](https://docs.microsoft.com/intune/windows-bulk-enroll) : een Azure AD-deelname die wordt uitgevoerd in de context van een bulk registratie, gebeurt in de context van een automatisch gemaakte gebruiker. Gebruikers die zich aanmelden nadat een apparaat is toegevoegd, worden niet toegevoegd aan de groep Administrators.   
+- [Windows auto pilot](/windows/deployment/windows-autopilot/windows-10-autopilot) : Windows auto pilot biedt u de mogelijkheid om te voor komen dat een primaire gebruiker die de koppeling uitvoert, een lokale beheerder wordt. U kunt dit doen door [een auto pilot-profiel te maken](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
+- [Bulk inschrijving](/intune/windows-bulk-enroll) : een Azure AD-deelname die wordt uitgevoerd in de context van een bulk registratie, gebeurt in de context van een automatisch gemaakte gebruiker. Gebruikers die zich aanmelden nadat een apparaat is toegevoegd, worden niet toegevoegd aan de groep Administrators.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Een gebruiker op een apparaat hand matig verhogen 
 

@@ -1,6 +1,6 @@
 ---
-title: Problemen met wachtwoord beveiliging oplossen-Azure Active Directory
-description: Informatie over het oplossen van veelvoorkomende problemen met Azure AD-wachtwoord beveiliging
+title: Problemen met on-premises Azure AD-wachtwoord beveiliging oplossen
+description: Meer informatie over het oplossen van problemen met Azure AD-wachtwoord beveiliging voor een on-premises Active Directory Domain Services omgeving
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377981"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671734"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Probleem oplossing voor Azure AD-wachtwoord beveiliging
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoord beveiliging
 
 Na de implementatie van Azure AD-wachtwoord beveiliging kan het nodig zijn om het probleem op te lossen. In dit artikel vindt u meer informatie over enkele veelvoorkomende probleemoplossings stappen.
 
@@ -82,9 +82,9 @@ Dit probleem kan verschillende oorzaken hebben.
 
 1. Uw DC-agent (s) kan geen beleid downloaden of bestaande beleids regels kunnen niet worden ontsleuteld. Controleer op mogelijke oorzaken in de bovenstaande onderwerpen.
 
-1. De modus voor het afdwingen van het wachtwoord beleid is nog steeds ingesteld op controle. Als deze configuratie van kracht is, moet u deze opnieuw configureren om te worden afgedwongen met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie [wachtwoord beveiliging inschakelen](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. De modus voor het afdwingen van het wachtwoord beleid is nog steeds ingesteld op controle. Als deze configuratie van kracht is, moet u deze opnieuw configureren om te worden afgedwongen met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
 
-1. Het wachtwoord beleid is uitgeschakeld. Als deze configuratie van kracht is, configureert u deze opnieuw in ingeschakeld met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie [wachtwoord beveiliging inschakelen](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Het wachtwoord beleid is uitgeschakeld. Als deze configuratie van kracht is, configureert u deze opnieuw in ingeschakeld met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
 
 1. U hebt de DC-agent software niet geïnstalleerd op alle domein controllers in het domein. In dit geval is het moeilijk om ervoor te zorgen dat externe Windows-clients een bepaalde domein controller doel hebben tijdens een wijziging van het wacht woord. Als u denkt dat u een bepaalde domein controller hebt waarop de DC-agent software is geïnstalleerd, kunt u controleren door het gebeurtenis logboek van de DC-agent beheerder te controleren: ongeacht het resultaat is er ten minste één gebeurtenis om het resultaat van het wacht woord te documenteren /categorievalidatie. Als er geen gebeurtenis aanwezig is voor de gebruiker waarvan het wacht woord is gewijzigd, wordt de wijziging van het wacht woord waarschijnlijk verwerkt door een andere domein controller.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 De Azure AD-proxy software voor wachtwoord beveiliging is niet in een wille keurige versie beperkt. Micro soft raadt u aan om de domein controller en de proxy agent te upgraden naar de meest recente versies zodra ze worden uitgebracht. De cmdlet `Get-AzureADPasswordProtectionProxy` kan worden gebruikt om proxy agenten te vinden waarvoor upgrades zijn vereist, vergelijkbaar met het bovenstaande voor beeld voor DC-agents.
 
-Raadpleeg [de DC-agent bijwerken](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) en [de proxy-agent bijwerken](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) voor meer informatie over specifieke upgrade procedures.
+Raadpleeg [de DC-agent bijwerken](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) en [de proxy service upgraden](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) voor meer informatie over specifieke upgrade procedures.
 
 ## <a name="emergency-remediation"></a>Herstel na nood geval
 
 Als er sprake is van een situatie waarbij de DC-Agent service problemen veroorzaakt, wordt de DC-Agent service mogelijk onmiddellijk afgesloten. De dll voor wachtwoord filter van de domein controller probeert de niet-actieve service nog steeds aan te roepen en registreert waarschuwings gebeurtenissen (10012, 10013), maar alle binnenkomende wacht woorden worden tijdens die tijd geaccepteerd. De DC-Agent service kan vervolgens ook worden geconfigureerd via Windows Service Control Manager met het opstart type ' uitgeschakeld ', indien nodig.
 
-Een andere maat regel voor herstel is het instellen van de modus inschakelen op Nee in de Azure AD-portal voor wachtwoord beveiliging. Zodra het bijgewerkte beleid is gedownload, gaat elke DC-Agent service in een quiescent-modus waarbij alle wacht woorden worden geaccepteerd als-is. Zie [afdwingen modus](howto-password-ban-bad-on-premises-operations.md#enforce-mode)voor meer informatie.
+Een andere maat regel voor herstel is het instellen van de modus inschakelen op Nee in de Azure AD-portal voor wachtwoord beveiliging. Zodra het bijgewerkte beleid is gedownload, gaat elke DC-Agent service in een quiescent-modus waarbij alle wacht woorden worden geaccepteerd als-is. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
 
 ## <a name="removal"></a>Procedure
 

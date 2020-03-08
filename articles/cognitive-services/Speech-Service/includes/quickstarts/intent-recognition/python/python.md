@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: af7c7d992db9afa0fb7affa0053bd89257a5a30e
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446213"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668645"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -74,7 +74,7 @@ Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguage
 
 Vanuit het `IntentRecognizer`-object roept u de `recognize_once()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
 
-Voeg deze code toe onder uw model:
+Voeg deze code toe onder uw model.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +82,13 @@ Voeg deze code toe onder uw model:
 
 Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wilt u er iets mee doen. We gaan het eenvoudig opslaan en het resultaat afdrukken naar de console.
 
-Voeg de volgende code toe onder de aanroep van `recognize_once()`: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+Voeg deze code toe onder de aanroep van `recognize_once()`.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien:
+Op dit moment moet uw code er als volgt uitzien.
 
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.

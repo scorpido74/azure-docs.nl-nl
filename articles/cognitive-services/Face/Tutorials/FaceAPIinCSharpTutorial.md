@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a5cf3c59c94134e1d0751c1467cd324a95c366eb
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165924"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898806"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Zelf studie: een Windows Presentation Framework (WPF)-app maken voor het weer geven van gezichts gegevens in een installatie kopie
 
 In deze zelf studie leert u hoe u de Azure face-service, via de .NET-client-SDK, kunt gebruiken om gezichten in een installatie kopie te detecteren en deze gegevens vervolgens weer te geven in de gebruikers interface. U maakt een WPF-toepassing die gezichten detecteert, tekent een kader rond elk gezicht en geeft een beschrijving van het gezicht weer in de status balk. 
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een WPF-toepassing maken
@@ -49,7 +49,7 @@ Volg deze stappen voor het maken van een nieuw WPF-toepassingsproject.
 1. Open het dialoogvenster Nieuw project in Visual Studio. Vouw **Geïnstalleerd** en vervolgens **Visual C#** uit en selecteer **WPF App (.NET Framework)** .
 1. Noem de toepassing **FaceTutorial** en klik vervolgens op **OK**.
 1. Download de vereiste NuGet-pakketten. Klik met de rechtermuisknop op uw project in Solution Explorer en selecteer **NuGet-pakketten beheren**. Zoek en installeer vervolgens het volgende pakket:
-    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
+    - [Micro soft. Azure. CognitiveServices. Vision. Face 2.5.0-Preview. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>De initiële code toevoegen
 
@@ -75,7 +75,7 @@ Voeg vervolgens de **mainwindow** -constructor toe. Hiermee wordt de teken reeks
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan de klasse toe. Deze methoden komen overeen met de gebeurtenis-handlers die zijn gedeclareerd in *mainwindow. xaml*. Met de methode **BrowseButton_Click** wordt het dialoogvenster **OpenFileDialog** gemaakt, waarmee de gebruiker een JPG-afbeelding kan selecteren. Daarna wordt de afbeelding in het hoofdvenster weergegeven. U voegt de resterende code voor **BrowseButton_Click** en **FacePhoto_MouseMove** later toe. Kijk ook naar de verwijzing `faceList`, een lijst met **DetectedFace**-objecten. Deze verwijzing is waar uw app de werkelijke gezichts gegevens opslaat en aanroept.
+Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan de klasse toe. Deze methoden komen overeen met de gebeurtenis-handlers die zijn gedeclareerd in *mainwindow. xaml*. Met de methode **BrowseButton_Click** wordt het dialoogvenster **OpenFileDialog** gemaakt, waarmee de gebruiker een JPG-afbeelding kan selecteren. Daarna wordt de afbeelding in het hoofdvenster weergegeven. U voegt de resterende code voor **BrowseButton_Click** en **FacePhoto_MouseMove** later toe. Kijk ook naar de verwijzing `faceList`, een lijst met &mdash;DetectedFace **-objecten. Deze verwijzing is waar uw app de werkelijke gezichts gegevens opslaat en aanroept.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -85,7 +85,7 @@ Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan 
 
 <!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_end)] -->
 
-### <a name="try-the-app"></a>Probeer de app
+### <a name="try-the-app"></a>De app uitproberen
 
 Druk op **Start** in het menu om uw app te testen. Als het app-venster wordt geopend, klikt u in de linkerbenedenhoek op **Bladeren**. Het dialoogvenster **Bestand openen** verschijnt. Selecteer een afbeelding in uw bestandssysteem en controleer of deze in het venster wordt weergegeven. Sluit vervolgens de app en ga door naar de volgende stap.
 
@@ -117,7 +117,7 @@ Voeg de volgende code toe aan de methode **FacePhoto_MouseMove**. Deze gebeurten
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Voer de toepassing uit en blader naar een afbeelding met een gezicht. Wacht enkele seconden, zodat de Face-service kan reageren. U zou nu een rode rechthoek rond de gezichten in de afbeelding moeten zien. Als u de muisaanwijzer boven een gezichtsrechthoek beweegt, moet de beschrijving van dat gezicht op de statusbalk worden weergegeven.
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604992"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851366"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Op gebeurtenissen gebaseerde architecturen met serverloze architectuur met Azure Cosmos DB en Azure Functions
 
@@ -37,7 +37,7 @@ U hebt het volgende nodig om een stroom op basis van een gebeurtenis op een serv
 Het maken van uw Azure-functie met een Azure Functions trigger voor Cosmos DB wordt nu ondersteund in alle Azure Functions IDE-en CLI-integraties:
 
 * [Visual Studio-extensie](../azure-functions/functions-develop-vs.md) voor Visual Studio-gebruikers.
-* [Visual Studio core-extensie](/azure/javascript/tutorial-vscode-serverless-node-01) voor gebruikers van Visual Studio code.
+* [Visual Studio code-extensie](/azure/javascript/tutorial-vscode-serverless-node-01) voor gebruikers van Visual Studio code.
 * En ten slotte [kern cli-hulp programma](../azure-functions/functions-run-local.md#create-func) voor een platformoverschrijdende IDE neutraal-ervaring.
 
 ## <a name="run-your-trigger-locally"></a>Uw trigger lokaal uitvoeren

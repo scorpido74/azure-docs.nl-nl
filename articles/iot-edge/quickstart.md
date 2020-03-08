@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674248"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quick Start: uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
 
@@ -29,7 +29,7 @@ In deze snelstart leert u de volgende zaken:
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
-In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert als een IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies zijn een uitbreiding op het werk dat u hier doet. Hierin worden modules geïmplementeerd waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
+In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert als een IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze zelfstudie implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies bouwen voort op het werk dat u hier doet door modules te implementeren waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
 
 Als u nog geen actief abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -40,8 +40,10 @@ U kunt de Azure CLI gebruiken om veel van de stappen in deze Quick Start uit te 
 Voeg de Azure IoT-extensie toe aan het exemplaar van Cloud Shell.
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -90,7 +92,7 @@ Met de volgende code wordt een gratis **F1** -hub in de resource groep `IoTEdgeR
 
    Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
-## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
+## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren.
 
 Registreer een IoT Edge-apparaat bij uw net gemaakte IoT Hub.
 ![Diagram - Een apparaat registreren met een IoT Hub-entiteit](./media/quickstart/register-device.png)
@@ -105,7 +107,7 @@ Omdat IoT Edge-apparaten zich anders gedragen en anders kunnen worden beheerd da
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-   Als u een foutbericht over iothubowner-beleidssleutels ontvangt, controleer dan of in de cloudshell de meest recente versie van de azure-cli-iot-ext-extensie wordt uitgevoerd.
+   Als er een fout optreedt in de iothubowner-beleids sleutels, moet u ervoor zorgen dat de nieuwste versie van de Azure IOT-extensie wordt uitgevoerd in uw Cloud shell.
 
 2. Haal de verbindingsreeks voor uw apparaat op, zodat uw fysieke apparaat aan de bijbehorende identiteit in IoT Hub wordt gekoppeld.
 

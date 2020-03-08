@@ -5,21 +5,22 @@ services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 293cd956f8270a4863fcc657f58c970096cec1e3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300922"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898528"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Limieten, quota en beperkings drempels in azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 ## <a name="limits-quotas-and-thresholds"></a>Limieten, quota en drempel waarden
 
@@ -34,7 +35,9 @@ Elke aanvraag die wordt gedaan voor de Scheduler-service retourneert een antwoor
 * De id's voor het Azure-abonnement, de taak verzameling en de taak 
 * Het type bewerking dat de aanvraag heeft gedaan
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
 * [Azure Scheduler-concepten, -terminologie en -entiteitenhiërarchie](scheduler-concepts-terms.md)
+* [Plannen en facturering voor Azure scheduler](scheduler-plans-billing.md)
+* [Naslaginformatie over REST API van Azure Scheduler](/rest/api/scheduler)
+* [Naslaginformatie over Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md)

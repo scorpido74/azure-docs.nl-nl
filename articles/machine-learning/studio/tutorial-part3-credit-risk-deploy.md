@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432199"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898742"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Zelf studie 3: een model voor krediet Risico's implementeren-Azure Machine Learning Studio (klassiek)
 
@@ -34,7 +34,7 @@ In [deel twee van de zelfstudie](tutorial-part2-credit-risk-train.md) hebt u mod
 In dit deel van de zelfstudie gaat u het volgende doen:
 
 > [!div class="checklist"]
-> * Voorbereiden op implementatie
+> * Implementatie voorbereiden
 > * De webservice implementeren
 > * De webservice testen
 > * De webservice beheren
@@ -44,7 +44,7 @@ In dit deel van de zelfstudie gaat u het volgende doen:
 
 Voltooi [deel twee van de zelfstudie](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
+## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 Als u anderen de mogelijkheid wilt bieden om het voorspellende model te gebruiken dat u in deze zelfstudie hebt ontwikkeld, kunt u het als webservice implementeren in Azure.
 
 Tot nu hebt u geëxperimenteerd met het trainen van het model. Met de geïmplementeerde service wordt echter niet meer getraind - hij wordt gebruikt om nieuwe voorspellingen te genereren door de invoer van de gebruiker te beoordelen op basis van het model. We gaan dus nu voorbereidingen treffen om dit experiment van een ***trainingsexperiment*** om te zetten in een ***voorspellend*** experiment. 
@@ -227,11 +227,7 @@ De webservice is een Azure-webservice waarmee gegevens kunnen worden ontvangen e
 * **Aanvraag/antwoord**: de gebruiker stuurt een of meer rijen kredietgegevens naar de service aan de hand van een HTTP-protocol. De service reageert met een of meer resultatensets.
 * **Batchuitvoering**: de gebruiker slaat een of meer rijen kredietgegevens op in een Azure-blob en stuurt vervolgens de bloblocatie naar de service. De service beoordeelt de rijen met gegevens in de invoerblob, slaat de resultaten op in een andere blob en retourneert de URL van de container.  
 
-De snelste en eenvoudigste manier om toegang te verkrijgen tot een klassieke webservice is via de [web-app voor de Azure ML-service voor aanvraag/antwoord](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) of via de [Azure ML-web-app-sjabloon voor batchuitvoering](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
-
-Met deze web-app-sjablonen kan een aangepaste web-app worden gebouwd die bekend is met de invoergegevens van uw webservice en waarvan bekend is wat er wordt geretourneerd. U hoeft alleen toegang te bieden tot uw webservice en gegevens en de sjabloon doet de rest.
-
-Zie [Consume an Azure Machine Learning Web service with a web app template](/azure/machine-learning/studio/consume-web-services) (Een Azure Machine Learning-webservice gebruiken met een web-app-sjabloon) voor meer informatie over het gebruik van de web-app-sjablonen.
+Zie [een Azure machine learning-webservice met een web-app-sjabloon gebruiken](/azure/machine-learning/studio/consume-web-services)voor meer informatie over het openen en gebruiken van de webservice.
 
 
 
@@ -244,7 +240,7 @@ Zie [Consume an Azure Machine Learning Web service with a web app template](/azu
 In deze zelfstudie hebt u de volgende stappen voltooid:
 
 > [!div class="checklist"]
-> * Voorbereiden op implementatie
+> * Implementatie voorbereiden
 > * De webservice implementeren
 > * De webservice testen
 > * De webservice beheren

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616463"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675616"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade van besturings systeem
 In dit document worden de details van upgrades van besturings systemen op de HANA grote instanties beschreven.
@@ -58,11 +58,11 @@ De configuratie van het besturings systeem kan van de aanbevolen instellingen in
   Om de juiste netwerk prestaties en systeem stabiliteit te hebben, wordt aanbevolen om ervoor te zorgen dat de systeemspecifieke, juiste versie van eNIC-en fNIC-Stuur Programma's wordt geïnstalleerd, zoals in de volgende compatibiliteits tabel wordt weer gegeven. Servers worden aan klanten geleverd met compatibele versies. Houd er rekening mee dat in sommige gevallen tijdens het herstellen van het besturings systeem/de kernel de Stuur Programma's kunnen worden teruggedraaid naar de standaard versies van het stuur programma. Zorg ervoor dat de juiste versie van het stuur programma post OS/kernel-patch bewerkingen uitvoert.
        
       
-  |  BESTURINGSSYSTEEM leverancier    |  Versie van besturingssysteem pakket     |  eNIC-stuur programma  |  fNIC-stuur programma |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+  |  BESTURINGSSYSTEEM leverancier    |  Versie van besturingssysteem pakket     |  Firmwareversie  |  eNIC-stuur programma |  fNIC-stuur programma | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Opdrachten voor het upgraden van Stuur Programma's en het opschonen van oude RPM-pakketten

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950282"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898151"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Ondersteunde gegevens bronnen in Azure Data Catalog
 
@@ -124,7 +124,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 en hogere versies.</td>
     </tr>
     <tr>
       <td>Oracle Database weer gave</td>
@@ -132,7 +132,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 en hogere versies.</td>
     </tr>
     <tr>
       <td>Overige (algemene activa)</td>
@@ -199,7 +199,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td>Alleen servers in de native modus. De share point-modus wordt niet ondersteund. Alleen SQL Server 2008 en latere versies</td>
     </tr>
     <tr>
-      <td>SQL Server-tabel</td>
+      <td>SQL Server tabel</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -295,7 +295,7 @@ U kunt meta gegevens publiceren met behulp van een open bare API of een eenmalig
       <td></td>
     </tr>
     <tr>
-      <td>HTTP-eindpunt</td>
+      <td>HTTP-eind punt</td>
       <td>✓</td>
       <td></td>
       <td></td>

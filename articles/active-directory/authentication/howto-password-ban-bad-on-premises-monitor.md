@@ -1,6 +1,6 @@
 ---
-title: Wachtwoord beveiligings monitor en logboek registratie-Azure Active Directory
-description: Meer informatie over Azure AD-wachtwoord beveiligings bewaking en logboek registratie
+title: On-premises Azure AD-wachtwoord beveiliging controleren
+description: Meer informatie over het bewaken en controleren van Logboeken voor Azure AD-wachtwoord beveiliging voor een on-premises Active Directory Domain Services omgeving
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671663"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD-controle en logboek registratie voor wachtwoord beveiliging
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Logboeken controleren en bekijken voor on-premises Azure AD-wachtwoord beveiligings omgevingen
 
 Na de implementatie van Azure AD-wachtwoord beveiliging, zijn bewaking en rapportage essentiële taken. In dit artikel vindt u meer informatie over verschillende bewakings technieken, waaronder waar elke service gegevens registreert en hoe u kunt rapporteren over het gebruik van Azure AD-wachtwoord beveiliging.
 
@@ -40,7 +40,7 @@ Houd er rekening mee dat het tracerings logboek standaard uitgeschakeld is.
 
 Gebeurtenissen die zijn vastgelegd door de verschillende onderdelen van de DC-agent vallen binnen de volgende bereiken:
 
-|Component |Bereik gebeurtenis-ID|
+|Onderdeel |Bereik gebeurtenis-ID|
 | --- | --- |
 |Dll voor wachtwoord filter van DC-agent| 10000-19999|
 |Hosting proces van DC-Agent service| 20000-29999|
@@ -309,7 +309,7 @@ Houd er rekening mee dat het tracerings logboek standaard uitgeschakeld is.
 
 Gebeurtenissen worden door de verschillende proxy onderdelen geregistreerd met behulp van de volgende bereiken:
 
-|Component |Bereik gebeurtenis-ID|
+|Onderdeel |Bereik gebeurtenis-ID|
 | --- | --- |
 |Hosting proces van proxy service| 10000-19999|
 |Bedrijfs logica voor de kern van proxy service| 20000-29999|

@@ -3,12 +3,12 @@ title: Overzicht van Service Health | Microsoft Docs
 description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654015"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898441"
 ---
 # <a name="service-health-overview"></a>Overzicht van Service Health
 
@@ -16,11 +16,12 @@ Service Health biedt u een aanpasbaar dash board waarmee u de status van uw Azur
 
 ## <a name="service-health-events"></a>Service Health gebeurtenissen
 
-Service Health houdt drie typen status gebeurtenissen bij die van invloed kunnen zijn op uw resources:
+Service Health houdt vier typen status gebeurtenissen bij die van invloed kunnen zijn op uw resources:
 
 1. **Service problemen** : problemen in de Azure-Services die nu van invloed zijn op u. 
 2. **Gepland onderhoud** : aanstaande onderhouds werkzaamheden die in de toekomst van invloed kunnen zijn op de beschik baarheid van uw services.  
 3. **Status adviseur** -wijzigingen in Azure-Services die uw aandacht vereisen. Voor beelden zijn wanneer Azure-functies zijn afgeschaft of als u een gebruiks quotum overschrijdt.
+4. **Beveiligings adviezen (preview)** : beveiligings waarschuwingen die van invloed kunnen zijn op de beschik baarheid van uw Azure-Services.
 
 > [!NOTE]
 > Voor het weer geven van Service Health gebeurtenissen moeten gebruikers [de rol van lezer krijgen](../role-based-access-control/role-assignments-portal.md) voor een abonnement.

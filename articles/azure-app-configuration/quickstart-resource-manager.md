@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: 702c03aec1980b12debeef3afeb84e0cbaef55b6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274954"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671589"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>Snelstartgids: geautomatiseerde VM-implementatie met app-configuratie
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Snelstartgids: geautomatiseerde VM-implementatie met app-configuratie en Resource Manager-sjabloon
 
 De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources met behulp van PowerShell-cmdlets of -scripts. In deze Quick start ziet u hoe u Azure PowerShell en Azure Resource Manager sjablonen kunt gebruiken om een Azure-app configuratie archief te implementeren. Vervolgens leert u hoe u de sleutel waarden in de Store gebruikt om een virtuele machine te implementeren.
 
 U gebruikt de sjabloon vereiste om een app-configuratie archief te maken en vervolgens sleutel waarden toe te voegen aan de Store met behulp van de Azure Portal of Azure CLI. De primaire sjabloon verwijst naar bestaande sleutel-waarde configuraties uit een bestaande configuratie opslag. De opgehaalde waarden worden gebruikt voor het instellen van eigenschappen van de resources die zijn gemaakt door de sjabloon, zoals een virtuele machine in dit voor beeld.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

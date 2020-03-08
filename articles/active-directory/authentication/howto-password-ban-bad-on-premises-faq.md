@@ -1,24 +1,24 @@
 ---
-title: Veelgestelde vragen over on-premises wachtwoord beveiliging-Azure Active Directory
-description: Veelgestelde vragen over on-premises Azure AD-wachtwoord beveiliging
+title: Veelgestelde vragen over on-premises Azure AD-wachtwoord beveiliging
+description: Veelgestelde vragen over Azure AD-wachtwoord beveiliging in een on-premises Active Directory Domain Services omgeving bekijken
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b4c941272906e7ff5a017c78c8bc7c5084a667
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abef6e52e37cfa2faeb426bc59bb0de5a52a6658
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847827"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671666"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>On-premises Veelgestelde vragen over Azure AD-wachtwoord beveiliging
+# <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
 In deze sectie vindt u antwoorden op veel Veelgestelde vragen over Azure AD-wachtwoord beveiliging.
 

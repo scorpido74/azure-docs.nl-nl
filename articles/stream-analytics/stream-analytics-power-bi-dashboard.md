@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431632"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851150"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
@@ -28,7 +28,7 @@ U kunt [een video](https://www.youtube.com/watch?v=SGUpT-a99MA) bekijken waarin 
 Zorg ervoor dat u het volgende hebt voordat u begint:
 
 * Een Azure-account.
-* Een account voor Power BI. U kunt een werk account of een school account gebruiken.
+* Een account voor Power BI Pro. U kunt een werk account of een school account gebruiken.
 * Een voltooide versie van de zelf studie voor [fraude detectie in realtime](stream-analytics-real-time-fraud-detection.md) . De zelf studie bevat een app die fictieve telefonische meta gegevens genereert. In de zelf studie maakt u een Event Hub en verzendt u de gegevens van de telefoon oproep naar de Event Hub. U schrijft een query die frauduleuze aanroepen detecteert (aanroepen vanaf hetzelfde nummer op hetzelfde tijdstip op verschillende locaties). 
 
 
@@ -56,7 +56,7 @@ In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag v
 
 4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**.
 
-8. Klik op **Maken**.
+8. Klik op **Create**.
 
 De gegevensset wordt gemaakt met de volgende instellingen:
 
@@ -163,7 +163,7 @@ De stream Analytics-taak begint met zoeken naar frauduleuze aanroepen in de binn
 
     ![Titel en Ondertitel voor nieuwe tegel](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. Klik op **Toepassen**.
+9. Klik op **Apply** (Toepassen).
 
     U hebt nu een fraude teller.
 
@@ -234,8 +234,8 @@ Als een taak wordt gestart nadat het token is verlopen, treedt er een fout op en
 
 Nadat de autorisatie is vernieuwd met Power BI, wordt een groene waarschuwing weer gegeven in het autorisatie gebied om aan te geven dat het probleem is opgelost.
 
-## <a name="get-help"></a>Hulp krijgen
-Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Help opvragen
+Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)

@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073473"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898902"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Snelstart: Een virtuele Windows-machine maken met de Azure CLI
 
-De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure CLI gebruikt voor het implementeren van een virtuele machine (VM) in Azure waarop Windows Server 2016 wordt uitgevoerd. Om uw virtuele machine in actie te zien, voert u een externe bureaubladsessie uit voor de virtuele machine uit en installeert u de IIS-webserver.
+De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure CLI gebruikt voor het implementeren van een virtuele machine (VM) in Azure waarop Windows Server 2016 wordt uitgevoerd. Om uw VM in actie te zien, voert u een externe bureaubladsessie voor de virtuele machine uit en installeert u de IIS-webserver.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -46,16 +46,15 @@ az group create --name myResourceGroup --location eastus
 
 Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt. In dit voor beeld wordt *azureuser* gebruikt voor een gebruikers naam met beheerders rechten. 
 
-U moet de waarde voor `--admin-password` wijzigen, anders mislukt deze. Wijzig de waarde in een wacht woord dat voldoet aan de [wachtwoord vereisten voor Azure-vm's](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). De gebruikers naam en het wacht woord worden later gebruikt wanneer u verbinding maakt met de virtuele machine.
+U moet een wacht woord opgeven dat voldoet aan de [wachtwoord vereisten voor virtuele Azure-machines](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). In het onderstaande voor beeld wordt u gevraagd om een wacht woord in te voeren op de opdracht regel. U kunt ook de para meter `--admin-password` toevoegen met een waarde voor uw wacht woord. De gebruikers naam en het wacht woord worden later gebruikt wanneer u verbinding maakt met de virtuele machine.
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten. In het volgende voorbeeld van uitvoer ziet u dat het maken van de virtuele machine is geslaagd.
@@ -103,7 +102,7 @@ Wanneer u klaar bent, sluit u de externe-bureaubladverbinding met de virtuele ma
 
 ## <a name="view-the-web-server-in-action"></a>De webserver in actie zien
 
-Nu IIS is geïnstalleerd en poort 80 op de virtuele machine is geopend voor toegang vanaf internet, kunt u een webbrowser van uw keuze gebruiken om de standaardwelkomstpagina van IIS weer te geven. Gebruik het openbare IP-adres van uw virtuele machine dat is verkregen in een vorige stap. In het volgende voorbeeld ziet u de IIS-standaardwebsite:
+Nu IIS is geïnstalleerd en poort 80 op de virtuele machine is geopend voor toegang vanaf internet, kunt u een webbrowser van uw keuze gebruiken om de standaardwelkomstpagina van IIS weer te geven. Gebruik het openbare IP-adres van uw VM dat is verkregen in een vorige stap. In het volgende voorbeeld ziet u de IIS-standaardwebsite:
 
 ![Standaardsite van IIS](./media/quick-create-powershell/default-iis-website.png)
 

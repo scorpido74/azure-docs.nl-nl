@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369861"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898390"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Een Azure Stream Analytics-taak testen met voorbeeld gegevens
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Een Azure Stream Analytics-taak testen in de portal
 
-In Azure Stream Analytics kunt u uw query testen zonder de taak te starten of te stoppen. U kunt query's testen op binnenkomende gegevens van uw invoer sink of voorbeeld gegevens uit een lokaal bestand in azure Portal uploaden. U kunt query's ook lokaal testen vanuit uw lokale voorbeeld gegevens of met Live-gegevens in [Visual Studio](stream-analytics-live-data-local-testing.md) en [Visual Studio code](visual-studio-code-local-run-live-input.md).
+In Azure Stream Analytics kunt u uw query testen zonder de taak te starten of te stoppen. U kunt query's testen op binnenkomende gegevens van uw streaming-bronnen of voorbeeld gegevens uploaden vanuit een lokaal bestand in azure Portal. U kunt query's ook lokaal testen vanuit uw lokale voorbeeld gegevens of met Live-gegevens in [Visual Studio](stream-analytics-live-data-local-testing.md) en [Visual Studio code](visual-studio-code-local-run-live-input.md).
 
-## <a name="sample-incoming-data-from-input"></a>Voor beeld van binnenkomende gegevens van invoer
+## <a name="automatically-sample-incoming-data-from-input"></a>Automatisch voor beeld van binnenkomende gegevens van invoer
 
-Azure Stream Analytics worden automatisch gebeurtenissen opgehaald uit de invoer van streams. U kunt query's uitvoeren op het standaard voorbeeld of een specifiek tijds bestek instellen voor het voor beeld.
+Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invoer. U kunt query's uitvoeren op het standaard voorbeeld of een specifiek tijds bestek instellen voor het voor beeld.
 
 1. Meld u aan bij Azure Portal.
 
@@ -98,6 +98,7 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 10. Nadat u de resultaten hebt gecontroleerd die in de browser worden weer gegeven, kunt u de taak **starten** .
 
 ## <a name="next-steps"></a>Volgende stappen
+* [Een IOT-oplossing bouwen met behulp van stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): deze zelf studie helpt u bij het bouwen van een end-to-end oplossing met een gegevens generator waarmee verkeer wordt gesimuleerd op een telefoon stand.
 
 * [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
@@ -105,4 +106,4 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 * [Wat is invoer van Azure Stream Analytics?](stream-analytics-add-inputs.md)
 
-* [Inzicht in de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Meer informatie over de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)

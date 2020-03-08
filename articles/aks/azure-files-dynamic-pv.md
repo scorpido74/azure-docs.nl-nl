@@ -4,12 +4,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596417"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897715"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
 
@@ -29,11 +29,13 @@ Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share word
 
 * *Standard_LRS* -standaard lokaal redundante opslag (LRS)
 * *Standard_GRS* -standaard geo-redundante opslag (GRS)
+* *Standard_ZRS* -standaard zone redundante opslag (GRS)
 * *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang (RA-GRS)
 * *Premium_LRS* -Premium lokaal redundante opslag (LRS)
+* *Premium_ZRS* -Premium zone-redundante opslag (GRS)
 
 > [!NOTE]
-> Azure Files Premium-opslag wordt ondersteund in AKS-clusters met Kubernetes 1,13 of hoger.
+> Azure Files Premium Storage ondersteunen in AKS-clusters met Kubernetes 1,13 of hoger, is de minimale Premium-bestands share 100 GB
 
 Zie [Kubernetes-opslag klassen][kubernetes-storage-classes]voor meer informatie over Kubernetes-opslag klassen voor Azure files.
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Koppelings opties
 
-De standaard waarde voor *file mode* en *dirMode* is *0755* voor Kubernetes-versie 1.9.1 en hoger. Als u een cluster met Kuberetes-versie 1.8.5 of hoger gebruikt en het permanente volume dynamisch maakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
+De standaard waarde voor *file mode* en *dirMode* is *0777* voor Kubernetes-versie 1.13.0 en hoger. Als het permanente volume dynamisch wordt gemaakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
 
 ```yaml
 kind: StorageClass
@@ -174,16 +175,13 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
-
-Als u een cluster van versie 1.8.0-1.8.4 gebruikt, kan een beveiligings context worden opgegeven met de *runAsUser* -waarde ingesteld op *0*. Zie [Configure a security context][kubernetes-security-context](Engelstalig) voor meer informatie over pod-beveiligings context.
 
 ## <a name="next-steps"></a>Volgende stappen
 

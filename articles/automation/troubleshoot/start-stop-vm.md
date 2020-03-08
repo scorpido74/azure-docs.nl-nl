@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505725"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851392"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
 
@@ -203,7 +203,7 @@ Dit probleem kan worden veroorzaakt door een onjuist geconfigureerd of verlopen 
 
 Als u wilt controleren of het run as-account correct is geconfigureerd, gaat u naar uw Automation-account in het Azure Portal en selecteert u **uitvoeren als-accounts** onder **account instellingen**. Hier ziet u de status van uw uitvoeren als-accounts, als een uitvoeren als-account onjuist is geconfigureerd of is verlopen. de status wordt hier weer gegeven.
 
-Als uw uitvoeren als-account [onjuist is geconfigureerd](../manage-runas-account.md#misconfiguration), moet u het uitvoeren als-account verwijderen en opnieuw maken.
+Als uw uitvoeren als-account onjuist is geconfigureerd, moet u het uitvoeren als-account verwijderen en opnieuw maken. Zie [Azure Automation uitvoeren als-accounts beheren](../manage-runas-account.md).
 
 Als het certificaat is verlopen voor uw uitvoeren als-account, volgt u de stappen die worden vermeld bij [zelfondertekend certificaat vernieuwen](../manage-runas-account.md#cert-renewal) om het certificaat te vernieuwen.
 

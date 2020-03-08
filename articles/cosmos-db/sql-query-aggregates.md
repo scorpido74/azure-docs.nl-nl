@@ -1,17 +1,17 @@
 ---
 title: Statistische functies in Azure Cosmos DB
 description: Meer informatie over de syntaxis van de statistische SQL-functie, typen statistische functies die door Azure Cosmos DB worden ondersteund.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871836"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897830"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Statistische functies in Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Statistische functies voeren een berekening uit op een reeks waarden in de compo
     FROM Families f
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [{
@@ -39,7 +39,7 @@ U kunt ook alleen de scalaire waarde van het aggregatie retour neren met behulp 
     FROM Families f
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ U kunt ook aggregaties met filters combi neren. De volgende query retourneert bi
     WHERE f.address.state = "WA"
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [ 1 ]

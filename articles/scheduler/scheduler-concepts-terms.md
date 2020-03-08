@@ -1,32 +1,33 @@
 ---
-title: Concepten, termen en entiteiten - Azure Scheduler | Microsoft Docs
+title: Concepten, termen en entiteiten
 description: De concepten, terminologie en entiteitenhiërarchie, inclusief jobs en jobverzamelingen, in Azure Scheduler leren
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300956"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898577"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+>
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 ## <a name="entity-hierarchy"></a>Entiteitenhiërarchie
 
 De volgende entiteiten of resources worden door de REST API voor Azure Scheduler beschikbaar gemaakt en gebruikt:
 
-| Entiteit | Description |
+| Entiteit | Beschrijving |
 |--------|-------------|
 | **Job** | Definieert één terugkerende actie, met eenvoudige of complexe strategieën, die moet worden uitgevoerd. Acties omvatten mogelijk HTTP-, opslagwachtrij-, Service Bus-wachtrij- of Service Bus-onderwerpaanvragen. | 
 | **Jobverzameling** | Bevat een aantal jobs en onderhoudt instellingen, quota en vertragingen die worden gedeeld door jobs binnen de verzameling. Als eigenaar van een Azure-abonnement kunt u jobverzamelingen maken en jobs groeperen op basis van gebruiks- of toepassingsgrenzen. Een jobverzameling heeft de volgende kenmerken: <p>- Beperkt tot één regio. <br>- U kunt er quota mee afdwingen, zodat u het gebruik voor alle jobs in een verzameling kunt beperken. <br>- Quota omvatten MaxJobs en MaxRecurrence. | 
@@ -37,7 +38,7 @@ De volgende entiteiten of resources worden door de REST API voor Azure Scheduler
 
 Op hoog niveau maakt de REST API van de Scheduler deze bewerkingen voor het beheren van entiteiten beschikbaar.
 
-### <a name="job-management"></a>Taakbeheer
+### <a name="job-management"></a>Jobbeheer
 
 Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
@@ -75,13 +76,13 @@ Azure Scheduler ondersteunt meerdere jobtypen:
 Op hoog niveau bevat een Scheduler-job uit de volgende basisonderdelen:
 
 * De actie die wordt uitgevoerd wanneer de timer van de job wordt gestart
-* Optioneel: De tijd voor het uitvoeren van de taak
-* Optioneel: Wanneer en hoe vaak de taak moet worden herhaald
-* Optioneel: Een fout actie die wordt uitgevoerd als de primaire actie mislukt
+* Optioneel: de tijd voor het uitvoeren van de job
+* Optioneel: wanneer en hoe vaak de job moet worden herhaald
+* Optioneel: een foutactie die wordt uitgevoerd als de primaire actie mislukt
 
 De job bevat ook door het systeem geleverde gegevens, zoals volgende geplande uitvoeringstijd van de job. De codedefinitie van de job is een object in de indeling JSON (JavaScript Object Notation). Deze bevat drie elementen:
 
-| Element | Vereist | Description | 
+| Element | Vereist | Beschrijving | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nee | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Ja | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
@@ -227,7 +228,7 @@ Net als de primaire **action** kunt u voor de foutactie eenvoudige of samengeste
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>terugkeer
+## <a name="recurrence"></a>recurrence
 
 Een job wordt herhaald als de JSON-definitie van de job het object **recurrence** omvat, bijvoorbeeld:
 
@@ -245,7 +246,7 @@ Een job wordt herhaald als de JSON-definitie van de job het object **recurrence*
 },
 ```
 
-| Eigenschap | Vereist | Value | Description | 
+| Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
 | **interval** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
@@ -275,7 +276,7 @@ In het geval dat een Scheduler-job mislukt, kunt u een beleid voor opnieuw probe
 },
 ```
 
-| Eigenschap | Vereist | Value | Description | 
+| Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ja | **Vast**, **Geen** | Bepaalt of u een beleid voor opnieuw proberen opgeeft (**vast**) of niet (**geen**). | 
 | **retryInterval** | Nee | PT30S | Geeft het interval en de frequentie op tussen herhaalpogingen in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). De minimumwaarde is 15 seconden; de maximumwaarde is 18 maanden. | 
@@ -286,7 +287,7 @@ Zie [High availability and reliability](../scheduler/scheduler-high-availability
 
 <a name="status"></a>
 
-## <a name="state"></a>status
+## <a name="state"></a>state
 
 De status van een job is **Ingeschakeld**, **Uitgeschakeld**, **Voltooid** of **Mislukt**, bijvoorbeeld: 
 
@@ -319,11 +320,9 @@ Bijvoorbeeld:
 }
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Scheduler?](scheduler-intro.md)
-* [Concepten, terminologie en entiteitenhiërarchie](scheduler-concepts-terms.md)
 * [Complexe schema's en geavanceerde terugkeerpatronen bouwen](scheduler-advanced-complexity.md)
-* [Limieten, quota, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)
 * [Naslaginformatie over REST API van Azure Scheduler](/rest/api/scheduler)
 * [Naslaginformatie over Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md)
+* [Limieten, quota, standaardwaarden en foutcodes](scheduler-limits-defaults-errors.md)

@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4f7357c79b9a6a57d7ede7342408d519d2278cbe
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262187"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668530"
 ---
-|Naam |Beschrijving |Beleid |Versie |
+|Naam |Beschrijving |Beleidsregels |Version |
 |---|---|---|---|
 |[\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van Canada Federal PBMM-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/canadafederalPBMM-blueprint |67 |2.0.0-Preview |
 |[\[preview-\]: controle van CIS Microsoft Azure Stichting 1.1.0-aanbevelingen en implementeer specifieke ondersteunende VM-extensies](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Dit initiatief omvat audit en implementatie beleid voor VM-extensies die een subset van CIS-Microsoft Azure basis benchmark aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/cisazure-blueprintvoor meer informatie. |83 |2.0.0-Preview |
@@ -22,7 +22,7 @@ ms.locfileid: "78262187"
 |[\[preview\]: controle PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Dit initiatief omvat audit-en VM-extensie-implementatie beleid voor een subset van PCI v 3.2.1:2018-besturings elementen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/pciv321-initvoor meer informatie. |39 |1.0.0-Preview |
 |[\[preview\]: Bekijk SWIFT CSP-CSCF v2020 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van de SWIFT CSP-CSCF v2020-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/SWIFT-blueprintvoor meer informatie. |71 |1.0.0-Preview |
 |[\[preview\]: audit UK officiële en UK NHS Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Dit initiatief omvat beleids regels die een subset van de UK officiële en UK NHS-besturings elementen verpakken. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/ukofficial-blueprint en https://aka.ms/uknhs-blueprint |66 |2.0.0-Preview |
-|[Aanbevelingen voor Azure Security Bench Mark controleren en specifieke ondersteunende VM-extensies implementeren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleidsregels die een subset van Azure Security Bench Mark-aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/azsecbmvoor meer informatie. |137 |1.0.0-Preview |
+|[Aanbevelingen voor Azure Security Bench Mark controleren en specifieke ondersteunende VM-extensies implementeren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleidsregels die een subset van Azure Security Bench Mark-aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/azsecbmvoor meer informatie. |148 |2.0.0-Preview |
 |[Audit FedRAMP High Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Dit initiatief omvat audit-en VM-extensie-implementatie beleid voor een subset van FedRAMP H-besturings elementen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/fedramph-blueprintvoor meer informatie. |80 |2.0.0-Preview |
 |[Audit HITRUST/HIPAA-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Dit initiatief omvat beleids regels waarmee een subset van HITRUST/HIPAA-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Audit Motion Picture Association of America (MPAA) Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Dit initiatief omvat beleids regels die een subset van MPAA-beveiligings-en richt lijnen voor het beheren van de werking van een Motion Picture Association of America-besturings element oplossen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/mpaa-blueprint |45 |1.0.0-Preview |

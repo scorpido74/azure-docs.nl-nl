@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888786"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672234"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten 
 
@@ -26,7 +26,7 @@ Zie voor andere Windows-clients het artikel [problemen oplossen met hybride Azur
 
 In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekoppelde apparaten hebt geconfigureerd](hybrid-azuread-join-plan.md) om de volgende scenario's te ondersteunen:
 
-- Voorwaardelijke toegang op basis van het apparaat
+- Voorwaardelijke toegang op basis van een apparaat
 - [Zwervende instellingen voor ondernemingen](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello voor Bedrijven](../active-directory-azureadjoin-passport-deployment.md)
 
@@ -356,7 +356,7 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
    - Oplossing: Schakel TPM op apparaten met deze fout uit. Windows 1809 detecteert automatisch TPM-fouten en voltooit hybride Azure AD-deelname zonder de TPM te gebruiken.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Reden: TPM is vergrendeld.
-   - Oplossing: tijdelijke fout. Wacht tot de cooldown-periode. Probeer het na enige tijd opnieuw. Meer informatie vindt u in het artikel over de [grond beginselen van TPM](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Oplossing: tijdelijke fout. Wacht tot de cooldown-periode. Probeer het na enige tijd opnieuw. Meer informatie vindt u in het artikel over de [grond beginselen van TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>Netwerk fouten
 
@@ -372,13 +372,13 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 ##### <a name="federated-join-server-errors"></a>Fouten van federatieve lid server
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Resolutie |
+| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
 | --- | --- | --- | --- |
 | Directory fout | Uw aanvraag is tijdelijk beperkt. Probeer na 300 seconden een ogen blik. | Verwachte fout. Mogelijk omdat er snel meerdere registratie aanvragen worden gedaan. | Na de cooldown-periode opnieuw verbinding maken |
 
 ##### <a name="sync-join-server-errors"></a>Fouten bij het samen voegen van servers
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Resolutie |
+| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
 | --- | --- | --- | --- |
 | Directory fout | AADSTS90002: kan de Tenant <UUID> niet vinden. Deze fout kan optreden als er geen actieve abonnementen voor de Tenant zijn. Neem contact op met de beheerder van uw abonnement. | De Tenant-ID in het SCP-object is onjuist | Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen en aanwezig is in de Tenant. |
 | Directory fout | Het apparaatobject met de opgegeven ID is niet gevonden. | Verwachte fout voor Sync-koppeling. Het apparaatobject is niet gesynchroniseerd van AD naar Azure AD | Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |

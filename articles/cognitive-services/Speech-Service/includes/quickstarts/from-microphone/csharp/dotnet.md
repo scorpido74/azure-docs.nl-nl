@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 9c16e2e1726fcbf1e0b55ee0e9808a607b611ea6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.openlocfilehash: 6d32bb6a0f1428a57f504cb7aca6ca5d89ea4c52
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446454"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668684"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,17 +56,23 @@ Nu gaan we een `SpeechRecognizer`maken. Dit object wordt gemaakt in een using-in
 
 Vanuit het `SpeechRecognizer`-object roept u de `RecognizeOnceAsync()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
 
-Voeg in de instructie using deze code toe: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
+Voeg deze code toe binnen de instructie using.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>De herkennings resultaten (of fouten) weer geven
 
 Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wilt u er iets mee doen. We gaan het eenvoudig opslaan en het resultaat afdrukken naar de console.
 
-Voeg in de instructie using onder `RecognizeOnceAsync()`de volgende code toe: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
+Voeg deze code toe binnen de instructie using onder `RecognizeOnceAsync()`.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
+Op dit moment moet uw code er als volgt uitzien.
+
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 

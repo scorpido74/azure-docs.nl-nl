@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 478b6cffb6fbb2be7a87b9b61d5b7e2ee71a74c2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840703"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673655"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problemen met Virtual Network-gateway en-verbindingen met Azure Network Watcher Power shell oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
-> - [REST API](network-watcher-troubleshoot-manage-rest.md)
+> - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
+> - [REST-API](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher biedt veel mogelijkheden voor het koppelen van uw netwerk bronnen in Azure. Een van deze mogelijkheden is het oplossen van problemen met resources. Het oplossen van resources kan worden aangeroepen via de portal, Power shell, CLI of REST API. Als Network Watcher wordt aangeroepen, wordt de status van een Virtual Network gateway of een verbinding gecontroleerd en worden de bevindingen daarvan geretourneerd.
 
@@ -47,7 +47,7 @@ Probleem oplossing voor bronnen biedt de mogelijkheid problemen op te lossen die
 De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. De variabele `$networkWatcher` wordt door gegeven aan de cmdlet `Start-AzNetworkWatcherResourceTroubleshooting` in stap 4.
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>Een Virtual Network gateway verbinding ophalen
@@ -58,7 +58,7 @@ In dit voor beeld wordt het oplossen van resources uitgevoerd op een verbinding.
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Create a storage account
 
 Resource-probleem oplossing retourneert gegevens over de status van de resource. logboeken worden ook opgeslagen in een opslag account om te worden gecontroleerd. In deze stap maken we een opslag account. als er een bestaand opslag account bestaat, kunt u dit gebruiken.
 

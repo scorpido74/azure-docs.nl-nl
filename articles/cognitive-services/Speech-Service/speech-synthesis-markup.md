@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379008"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674468"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -329,7 +329,7 @@ Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of
 
 | Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| `alphabet` | Hiermee geeft u het fonetische alfabet op dat moet worden gebruikt wanneer de uitspraak van de teken reeks in het `ph` kenmerk wordt gesynthesizerd. De teken reeks die het alfabet opgeeft, moet worden opgegeven in kleine letters. Hier volgen de mogelijke alfabetten die u kunt opgeven.<ul><li>IPA &ndash; Internationaal Fonetisch alfabet</li><li>Telefoonset voor SAPI &ndash; Speech-API</li><li>Universele Telefoonset met ups &ndash;</li></ul>Het alfabet is alleen van toepassing op de foneem in het-element. Zie [verwijzing naar fonetische alfabet](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)voor meer informatie. | Optioneel |
+| `alphabet` | Hiermee geeft u het fonetische alfabet op dat moet worden gebruikt wanneer de uitspraak van de teken reeks in het `ph` kenmerk wordt gesynthesizerd. De teken reeks die het alfabet opgeeft, moet worden opgegeven in kleine letters. Hier volgen de mogelijke alfabetten die u kunt opgeven.<ul><li>`ipa` &ndash; Internationaal Fonetisch alfabet</li><li>fonetische alfabet `sapi` &ndash; Speech-Service</li><li>Universele Telefoonset van `ups` &ndash;</li></ul><br>Het alfabet is alleen van toepassing op de `phoneme` in het element. Zie [verwijzing naar fonetische alfabet](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)voor meer informatie. | Optioneel |
 | `ph` | Een teken reeks met telefoons die de uitspraak van het woord in het `phoneme`-element opgeven. Als de opgegeven teken reeks niet-herkende telefoons bevat, weigert de TTS-Service (tekst naar spraak) het hele SSML-document en wordt er geen van de spraak uitvoer opgegeven in het document. | Vereist als u fonemen gebruikt. |
 
 **Voorbeelden**
@@ -418,13 +418,11 @@ Could you help leave a message to Robert Benigni for me?
 - Bestands grootte: de maximale limiet voor de grootte van het aangepaste Lexicon bestand is 100KB. als dit niet het geval is, mislukt de synthese aanvraag.
 - Vernieuwen van Lexicon cache: het aangepaste Lexicon wordt in de cache opgeslagen als Key op de TTS-service wanneer het voor het eerst wordt geladen. Een Lexicon met dezelfde URI kan niet binnen 15 minuten opnieuw worden geladen, dus de aangepaste Lexicon wijziging moet worden gewacht om te worden doorgevoerd.
 
-**SAPI-Telefoonset**
+**Fonetische sets van spraak service**
 
-In het bovenstaande voor beeld gebruiken we de set International Phonetic Association (IPA). Ontwikkel aars kunnen het IPA gebruiken omdat de IPA de internationale standaard is. 
+In het bovenstaande voor beeld gebruiken we het internationale fonetische alfabet, ook wel bekend als de IPA-telefoonset. Ontwikkel aars suggereren dat ze de IPA gebruiken, omdat dit de internationale standaard is. Gezien het feit dat de IPA niet eenvoudig te onthouden is, definieert de speech-service een fonetische set voor zeven talen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`en `zh-TW`).
 
-Als u overweegt dat IPA niet eenvoudig te onthouden is, definieert micro soft SAPI Phone set voor zeven talen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`en `zh-TW`). Zie de [verwijzing naar het fonetische alfabet](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)voor meer informatie over het alfabet.
-
-U kunt de set SAPI Phone met aangepaste lexicons gebruiken, zoals hieronder wordt geïllustreerd. Stel de waarde voor het alfabet in met **SAPI**.
+U kunt de `sapi` als de Vale voor het kenmerk `alphabet` gebruiken met aangepaste lexicons, zoals hieronder wordt geïllustreerd:
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ U kunt de set SAPI Phone met aangepaste lexicons gebruiken, zoals hieronder word
 </lexicon>
 ```
 
-Zie voor meer informatie over het gedetailleerde SAPI-alfabet de [Naslag Gids voor SAPI-alfabet](sapi-phoneset-usage.md).
+Zie voor meer informatie over het fonetische alfabet van de gedetailleerde spraak service de [fonetische set van de spraakherkennings service](speech-ssml-phonetic-sets.md).
 
 ## <a name="adjust-prosody"></a>Prosody aanpassen
 

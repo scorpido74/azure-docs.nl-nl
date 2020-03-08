@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529296"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897927"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight verbinden met uw on-premises netwerk
 
@@ -28,12 +28,12 @@ Informatie over het verbinden van HDInsight met uw on-premises netwerk met behul
 
 Als u HDInsight en resources in het gekoppelde netwerk wilt toestaan om te communiceren op naam, moet u de volgende acties uitvoeren:
 
-* Azure Virtual Network maken.
-* Maak een aangepaste DNS-server in de Azure-Virtual Network.
-* Configureer het virtuele netwerk voor het gebruik van de aangepaste DNS-server in plaats van de standaard recursieve resolver van Azure.
-* Configureer door sturen tussen de aangepaste DNS-server en uw on-premises DNS-server.
+1. Azure Virtual Network maken.
+1. Maak een aangepaste DNS-server in de Azure-Virtual Network.
+1. Configureer het virtuele netwerk voor het gebruik van de aangepaste DNS-server in plaats van de standaard recursieve resolver van Azure.
+1. Configureer door sturen tussen de aangepaste DNS-server en uw on-premises DNS-server.
 
-Met deze configuratie wordt het volgende gedrag ingeschakeld:
+Deze configuraties bieden het volgende gedrag:
 
 * Aanvragen voor volledig gekwalificeerde domein namen die het DNS-achtervoegsel __voor het virtuele netwerk__ hebben, worden doorgestuurd naar de aangepaste DNS-server. De aangepaste DNS-server stuurt deze aanvragen vervolgens door naar de recursieve resolver van Azure, waarmee het IP-adres wordt geretourneerd.
 * Alle andere aanvragen worden doorgestuurd naar de on-premises DNS-server. Zelfs aanvragen voor open bare Internet bronnen zoals microsoft.com worden doorgestuurd naar de on-premises DNS-server voor naam omzetting.
@@ -65,11 +65,13 @@ In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
   
-2. Ga in het menu links naar **+ een resource maken**  > **Compute**  > **Ubuntu Server 18,04 LTS**.
+1. Selecteer in het bovenste menu de optie **+ een resource maken**.
 
-    ![Een virtuele Ubuntu-machine maken](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![Een virtuele Ubuntu-machine maken](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. Voer op het tabblad __basis beginselen__ de volgende gegevens in:  
+1. Selecteer **reken** > **virtuele machine** om naar de pagina **een virtuele machine maken** te gaan.
+
+1. Voer op het tabblad __basis beginselen__ de volgende gegevens in:  
   
     | Veld | Waarde |
     | --- | --- |
@@ -81,7 +83,7 @@ In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.
     |Installatiekopie | Verlaat **Ubuntu Server 18,04 LTS**. |
     |Verificatietype | __Open bare__ __wacht woord__ of SSH-sleutel: de verificatie methode voor het SSH-account. We raden u aan open bare sleutels te gebruiken, omdat ze veiliger zijn. In dit voor beeld wordt **wacht woord**gebruikt.  Zie het document [SSH-sleutels voor Linux-Vm's maken en gebruiken](../virtual-machines/linux/mac-create-ssh-keys.md) voor meer informatie.|
     |Gebruikersnaam |Voer de gebruikers naam van de beheerder voor de virtuele machine in.  In dit voor beeld wordt **sshuser**gebruikt.|
-    |Wacht woord of open bare SSH-sleutel | Het beschik bare veld wordt bepaald door uw keuze voor **verificatie type**.  Voer de juiste waarde in.|
+    |Wachtwoord of openbare SSH-sleutel | Het beschik bare veld wordt bepaald door uw keuze voor **verificatie type**.  Voer de juiste waarde in.|
     |Openbare poorten voor inkomend verkeer|Selecteer **Geselecteerde poorten toestaan**. Selecteer vervolgens **SSH (22)** in de vervolg keuzelijst **Selecteer binnenkomende poorten** .|
 
     ![Basis configuratie van virtuele machine](./media/connect-on-premises-network/virtual-machine-basics.png)
@@ -178,7 +180,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    De `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` tekst is het __DNS-achtervoegsel__ voor dit virtuele netwerk. Sla deze waarde op, aangezien u die later nog nodig hebt.
+    De `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` tekst is het __DNS-achtervoegsel__ voor dit virtuele netwerk. Sla deze waarde op, zoals deze later wordt gebruikt.
 
 5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local`-bestand:
 
@@ -232,7 +234,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 Als u het virtuele netwerk wilt configureren voor het gebruik van de aangepaste DNS-server in plaats van de recursieve resolver van Azure, gebruikt u de volgende stappen uit de [Azure Portal](https://portal.azure.com):
 
-1. Ga in het menu links naar **alle services**  > **netwerk**  > **virtuele netwerken**.
+1. Ga in het menu links naar **alle services** > **netwerk** > **virtuele netwerken**.
 
 2. Selecteer het virtuele netwerk in de lijst, waarmee de standaard weergave voor uw virtuele netwerk wordt geopend.  
 

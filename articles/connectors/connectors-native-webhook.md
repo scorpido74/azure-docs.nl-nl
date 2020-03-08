@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030082"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674110"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
 
@@ -47,7 +47,7 @@ Zo is de actie [**e-mail bericht verzenden goed keuren**](connectors-create-api-
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-Zie deze onderwerpen voor meer informatie:
+Zie de volgende onderwerpen voor meer informatie:
 
 * [Trigger parameters voor HTTP-webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhooks en abonnementen](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
@@ -65,37 +65,49 @@ Zie deze onderwerpen voor meer informatie:
 
 ## <a name="add-an-http-webhook-trigger"></a>Een HTTP-webhook-trigger toevoegen
 
-Deze ingebouwde trigger registreert een call back-URL met de opgegeven service en wacht op de service om een HTTP POST-aanvraag naar die URL te verzenden. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app onmiddellijk uitgevoerd.
+Deze ingebouwde trigger roept het eind punt van het abonnement op de doel service aan en registreert een call back-URL met de doel service. De logische app wacht vervolgens tot de doel service een `HTTP POST` aanvraag verzendt naar de call back-URL. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en worden gegevens in de aanvraag samen met de werk stroom door gegeven.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer op de ontwerp functie in het zoekvak ' http-webhook ' in als uw filter. Selecteer in de lijst **Triggers** de **http-webhook-** trigger.
+1. Voer `http webhook` als uw filter in het zoekvak van de ontwerp functie in. Selecteer in de lijst **Triggers** de **http-webhook-** trigger.
 
    ![Trigger voor HTTP-webhook selecteren](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   In dit voor beeld wordt de naam van de trigger gewijzigd in ' HTTP-webhook-trigger ' zodat de stap een meer beschrijvende naam heeft. Daarnaast voegt het voor beeld een HTTP-webhook-actie toe en beide namen moeten uniek zijn.
+   In dit voor beeld wordt de naam van de trigger gewijzigd in `HTTP Webhook trigger` zodat de stap een meer beschrijvende naam heeft. Daarnaast voegt het voor beeld een HTTP-webhook-actie toe en beide namen moeten uniek zijn.
 
-1. Geef de waarden voor de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) op die u wilt gebruiken voor de abonnementen Subscriber en opzeg ging, bijvoorbeeld:
+1. Geef de waarden voor de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) op die u wilt gebruiken voor de aanroepen van abonneren en het afmelden.
+
+   In dit voor beeld bevat de trigger de methoden, Uri's en bericht teksten die moeten worden gebruikt bij het uitvoeren van de abonnements-en afmeldings bewerkingen.
 
    ![Para meters voor HTTP-webhook-trigger opgeven](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
+   | Eigenschap | Vereist | Beschrijving |
+   |----------|----------|-------------|
+   | **Abonnement-methode** | Ja | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
+   | **Abonneren: URI** | Ja | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
+   | **Abonneren: hoofd tekst** | Nee | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, door gebruik te maken van de `@listCallbackUrl()` expressie om de call back-URL van uw logische app op te halen. |
+   | **Afmelden-methode** | Nee | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
+   | **Opzeg ging van de URI** | Nee | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
+   | **Afmelden: hoofd tekst** | Nee | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor het gebruik van de functie `listCallbackUrl()`. De trigger bevat echter automatisch de headers, `x-ms-client-tracking-id` en `x-ms-workflow-operation-name`, die door de doel service kunnen worden gebruikt om de abonnee uniek te identificeren. |
+   ||||
 
-   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
+1. Open de lijst **nieuwe para meters toevoegen** om andere trigger eigenschappen toe te voegen.
+
+   ![Meer trigger eigenschappen toevoegen](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
+
+   Als u bijvoorbeeld verificatie moet gebruiken, kunt u de eigenschappen **Abonneren-authenticatie** en **Afmelden/authenticatie** toevoegen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
 
 1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
 1. Wanneer u klaar bent, kunt u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
-   Als u uw logische app opslaat, wordt het eind punt van de abonnee aangeroepen en wordt de call back-URL geregistreerd voor het activeren van deze logische app.
-
-1. Wanneer de doel service nu een `HTTP POST` aanvraag verzendt naar de call back-URL, wordt de logische app geactiveerd en worden alle gegevens opgenomen die via de aanvraag zijn door gegeven.
+   Als u uw logische app opslaat, wordt het eind punt van de abonnee op de doel service aangeroepen en wordt de call back-URL geregistreerd. De logische app wacht vervolgens tot de doel service een `HTTP POST` aanvraag verzendt naar de call back-URL. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en worden gegevens in de aanvraag samen met de werk stroom door gegeven. Als deze bewerking is voltooid, wordt de trigger afgemeld bij het eind punt en wordt de resterende werk stroom door de logische app voortgezet.
 
 ## <a name="add-an-http-webhook-action"></a>Een HTTP-webhook-actie toevoegen
 
-Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service geregistreerd, wordt de werk stroom van de logische app onderbroken en wordt gewacht tot de betreffende service een HTTP POST-aanvraag verzendt naar die URL. Wanneer deze gebeurtenis plaatsvindt, wordt de logische app uitgevoerd met de actie.
+Met deze ingebouwde actie wordt het eind punt voor abonneren op de doel service aangeroepen en wordt een call back-URL geregistreerd bij de doel service. Uw logische app wordt vervolgens onderbroken en er wordt gewacht tot de doel service een `HTTP POST` aanvraag verzendt naar de call back-URL. Wanneer deze gebeurtenis plaatsvindt, geeft de actie gegevens in de aanvraag door aan de werk stroom. Als de bewerking is voltooid, wordt de actie afgemeld bij het eind punt, waarna de logische app de resterende werk stroom blijft uitvoeren.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-webhook-trigger als de eerste stap gebruikt.
 
@@ -103,23 +115,37 @@ Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service gere
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer op de ontwerp functie in het zoekvak ' http-webhook ' in als uw filter. Selecteer in de lijst **acties** de actie **http-webhook** .
+1. Voer `http webhook` als uw filter in het zoekvak van de ontwerp functie in. Selecteer in de lijst **acties** de actie **http-webhook** .
 
    ![Actie voor HTTP-webhook selecteren](./media/connectors-native-webhook/select-http-webhook-action.png)
 
    In dit voor beeld wordt de naam van de actie gewijzigd in HTTP-webhook-actie zodat de stap een meer beschrijvende naam heeft.
 
-1. Geef de waarden op voor de para meters van de HTTP-webhook-actie, die vergelijkbaar zijn met de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) die u wilt gebruiken voor de abonnementen Subscriber and opzeg ging, bijvoorbeeld:
+1. Geef de waarden op voor de para meters van de HTTP-webhook-actie, die vergelijkbaar zijn met de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)die u wilt gebruiken voor de aanroepen voor abonneren en het afmelden.
+
+   In dit voor beeld omvat de actie de methoden, Uri's en bericht teksten die moeten worden gebruikt bij het uitvoeren van de abonnements-en afmeldings bewerkingen.
 
    ![Actie parameters voor HTTP-webhook opgeven](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Tijdens runtime roept de logische app het abonnements eindpunt aan wanneer deze actie wordt uitgevoerd. De logische app onderbreekt vervolgens de werk stroom en wacht tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Als de actie is voltooid, wordt de actie afgemeld bij het eind punt en wordt uw logische app hervat met het uitvoeren van de werk stroom.
+   | Eigenschap | Vereist | Beschrijving |
+   |----------|----------|-------------|
+   | **Abonnement-methode** | Ja | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
+   | **Abonneren: URI** | Ja | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
+   | **Abonneren: hoofd tekst** | Nee | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, door gebruik te maken van de `@listCallbackUrl()` expressie om de call back-URL van uw logische app op te halen. |
+   | **Afmelden-methode** | Nee | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
+   | **Opzeg ging van de URI** | Nee | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
+   | **Afmelden: hoofd tekst** | Nee | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor het gebruik van de functie `listCallbackUrl()`. De actie bevat echter automatisch de headers, `x-ms-client-tracking-id` en `x-ms-workflow-operation-name`, die door de doel service kunnen worden gebruikt om de abonnee uniek te identificeren. |
+   ||||
 
-1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
+1. Open de lijst **nieuwe para meters** toevoegen om andere actie-eigenschappen toe te voegen.
 
-   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
+   ![Meer actie-eigenschappen toevoegen](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
+
+   Als u bijvoorbeeld verificatie moet gebruiken, kunt u de eigenschappen **Abonneren-authenticatie** en **Afmelden/authenticatie** toevoegen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
 
 1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+
+   Wanneer deze actie nu wordt uitgevoerd, roept uw logische app het eind punt voor abonneren aan bij de doel service en registreert de call back-URL. Met de logische app wordt de werk stroom onderbroken en wordt gewacht tot de doel service een `HTTP POST` aanvraag verzendt naar de call back-URL. Wanneer deze gebeurtenis plaatsvindt, geeft de actie gegevens in de aanvraag door aan de werk stroom. Als de bewerking is voltooid, wordt de actie afgemeld bij het eind punt, waarna de logische app de resterende werk stroom blijft uitvoeren.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
@@ -133,13 +159,13 @@ Hier vindt u meer informatie over de uitvoer van een HTTP-webhook-trigger of-act
 |---------------|------|-------------|
 | koppen | object | De headers van de aanvraag |
 | body | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
-| statuscode | int | De status code van de aanvraag |
+| status code | int | De status code van de aanvraag |
 |||
 
 | Statuscode | Beschrijving |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Geaccepteerd |
+| 202 | Accepted |
 | 400 | Ongeldig verzoek |
 | 401 | Niet geautoriseerd |
 | 403 | Verboden |

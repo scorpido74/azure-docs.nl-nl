@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3bc69f8bd946fa50ba272c287047aae7981af4e3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 432604dd3db1629a4c9b10d0d5c8649f3817d97f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074448"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673153"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met behulp van Azure PowerShell
 
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te zoeken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -124,7 +124,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Listeners zijn vereist om de toepassingsgateway verkeer op de juiste manier naar de back-endadresgroepen te kunnen laten doorsturen. In dit artikel maakt u twee listeners voor uw twee domeinen. Listeners worden gemaakt voor de domeinen *contoso.com* en *fabrikam.com* .
 
-Maak de eerste listener met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *contosoRule* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Maak de eerste listener met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist zodat de listener weet welke back-endpool voor inkomend verkeer moet worden gebruikt. Maak een basis regel met de naam *contosoRule* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -227,7 +227,7 @@ for ($i=1; $i -le 2; $i++)
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
-    -ImageReferenceVersion latest
+    -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
   Set-AzVmssOsProfile $vmssConfig `
@@ -276,13 +276,13 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-cname-record-in-your-domain"></a>CNAME-record in uw domein maken
 
-Als de toepassingsgateway met het bijbehorende openbare IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het DNS-adres van de toepassings gateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd wanneer de toepassings Gateway opnieuw wordt gestart.
+Als de toepassingsgateway met het bijbehorende IP-adres is gemaakt, kunt u het DNS-adres ophalen en dit gebruiken om een CNAME-record in uw domein te maken. U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het DNS-adres van de toepassings gateway op te halen. Kopieer de waarde *fqdn* van DNSSettings en gebruik deze als de waarde van de CNAME-record die u maakt. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd wanneer de toepassings Gateway opnieuw wordt gestart.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
+## <a name="test-the-application-gateway"></a>Toepassingsgateway testen
 
 Voer uw domeinnaam in de adresbalk van de browser in. Zoals http:\//www.contoso.com.
 

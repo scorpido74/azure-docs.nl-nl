@@ -3,12 +3,12 @@ title: Offline back-ups met behulp van Azure Data Box
 description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196470"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672973"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
 
@@ -124,7 +124,7 @@ Het offline back-upproces met MARS en Azure Data Box vereist dat de Data Box app
 
 1. Zorg ervoor dat u eerdere installaties van de MARS-agent verwijdert.
 1. Down load de nieuwste MARS-agent van [deze website](https://aka.ms/azurebackup_agent).
-1. Voer *MARSAgentInstaller. exe*uit en voer *alleen* de stappen uit om [de agent te installeren en registreren](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) bij de Recovery Services kluis waar u uw back-ups wilt opslaan.
+1. Voer *MARSAgentInstaller. exe*uit en voer *alleen* de stappen uit om [de agent te installeren en registreren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) bij de Recovery Services kluis waar u uw back-ups wilt opslaan.
 
    > [!NOTE]
    > De Recovery Services kluis moet zich in hetzelfde abonnement benemen als de Azure Data Box taak.
@@ -307,7 +307,7 @@ Voer de volgende acties uit vanaf de-server die u wilt configureren voor offline
     >[!NOTE]
     > Voer een van de volgende acties uit om de gebruikers-ID van Azure op te halen:
     >
-    >* Voer in de met Azure verbonden Power shell de opdracht `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` uit.
+    >* Voer in de met Azure verbonden Power shell de opdracht `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` uit.
     > * Ga naar het registerpad *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* met de naam *CurrentUserId*.
 
 6. Klik met de rechter muisknop op de teken reeks die u in de vorige stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in stap 2 hebt geëxporteerd. Selecteer **OK**.

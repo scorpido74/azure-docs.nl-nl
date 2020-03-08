@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377613"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671890"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Verificatie sessie beheer met voorwaardelijke toegang configureren
 
@@ -37,7 +37,7 @@ Met de aanmeldings frequentie wordt de tijds periode gedefinieerd voordat een ge
 
 De standaard configuratie van de Azure Active Directory (Azure AD) voor de aanmeldings frequentie van gebruikers is een draaiende Window van 90 dagen. Het is vaak een goed idee om gebruikers te vragen om referenties, maar dit kan Backfire: gebruikers die zijn getraind om hun referenties op te geven zonder dat ze dit doen, kunnen ze per ongeluk door geven aan een kwaad aardige referentie prompt.
 
-Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
+Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
 
 De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OIDC-protocollen zijn geïmplementeerd volgens de standaarden. De meeste micro soft-apps voor Windows, Mac en Mobile met inbegrip van de volgende webtoepassingen voldoen aan de instelling.
 
@@ -72,7 +72,7 @@ Voorbeeld 2:
 
 Met een permanente browser sessie kunnen gebruikers aangemeld blijven nadat ze het browser venster hebben gesloten en opnieuw hebben geopend.
 
-Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op persoonlijke apparaten kiezen of ze de sessie willen blijven door een ' aangemeld blijven? ' weer te geven. vragen na geslaagde verificatie. Als de browser persistentie is geconfigureerd in AD FS met behulp van de richt lijnen in het artikel [AD FS instellingen voor eenmalige aanmelding](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op persoonlijke apparaten kiezen of ze de sessie willen blijven door een ' aangemeld blijven? ' weer te geven. vragen na geslaagde verificatie. Als de browser persistentie is geconfigureerd in AD FS met behulp van de richt lijnen in het artikel [AD FS instellingen voor eenmalige aanmelding](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 ), zullen we voldoen aan dit beleid en de Azure AD-sessie behouden. U kunt ook configureren of gebruikers in uw Tenant de ' aangemeld blijven? ' moeten zien. prompt door de juiste instelling te wijzigen in het deel venster huis stijl in Azure Portal met behulp van de richt lijnen in het artikel [uw Azure AD-aanmeldings pagina aanpassen](../fundamentals/customize-branding.md).
 
 ## <a name="configuring-authentication-session-controls"></a>Verificatie sessie besturings elementen configureren

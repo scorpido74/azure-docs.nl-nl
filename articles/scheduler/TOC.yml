@@ -6,15 +6,15 @@
       href: scheduler-intro.md
 - name: Aan de slag
   items:
-    - name: Opdrachten maken en beheren - portal
-      href: scheduler-get-started-portal.md
+    - name: Schema's maken en beheren - Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Migreren van Scheduler naar Logic Apps
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Concepten
   items:
     - name: 'Concepten, termen en entiteiten'
       href: scheduler-concepts-terms.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Plannen en ontwerpen
       items:

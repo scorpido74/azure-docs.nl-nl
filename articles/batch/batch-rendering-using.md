@@ -5,20 +5,20 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449671"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672014"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch Rendering gebruiken
 
 Er zijn verschillende manieren om Azure Batch rendering te gebruiken:
 
-* API's:
+* APIs
   * Code schrijven met behulp van een van de batch-Api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.
 * Opdracht regel Programma's:
   * De [Azure-opdracht regel](https://docs.microsoft.com/cli/azure/) of [Power shell](https://docs.microsoft.com/powershell/azure/overview) kan worden gebruikt om batch gebruik te maken van scripts.
@@ -58,7 +58,8 @@ Met de sectie ' gegevens ' in Batch Explorer kunnen bestanden worden gekopieerd 
 
 Invoeg toepassingen zijn beschikbaar voor sommige client toepassingen.  Met de invoeg toepassingen kunnen Pools en taken rechtstreeks vanuit de toepassing worden gemaakt of Batch Explorer worden aangeroepen.
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Auto Desk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

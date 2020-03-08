@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917773"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672635"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwings token?
 
@@ -33,7 +33,7 @@ De volgende Windows-onderdelen spelen een belang rijke rol bij het aanvragen en 
 * **Azure AD CloudAP-invoeg toepassing**: een specifieke Azure AD-invoeg toepassing die is gebouwd op het CloudAP-Framework, waarmee gebruikers referenties met Azure AD worden gecontroleerd tijdens het aanmelden bij Windows.
 * **Azure AD WAM-invoeg toepassing**: een specifieke Azure AD-invoeg toepassing die is gebouwd op het WAM-Framework, waarmee SSO kan worden gemaakt voor toepassingen die afhankelijk zijn van Azure AD voor authenticatie.
 * **Dsreg**: een specifiek Azure AD-onderdeel in Windows 10 dat het registratie proces voor apparaten voor alle statussen van het apparaat verwerkt.
-* **Trusted Platform Module** (TPM): een TPM is een hardware-onderdeel dat is ingebouwd in een apparaat en biedt op hardware gebaseerde beveiligings functies voor gebruikers-en apparaatgegevens. Meer informatie vindt u in het artikel [Trusted Platform Module technologie overzicht](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+* **Trusted Platform Module** (TPM): een TPM is een hardware-onderdeel dat is ingebouwd in een apparaat en biedt op hardware gebaseerde beveiligings functies voor gebruikers-en apparaatgegevens. Meer informatie vindt u in het artikel [Trusted Platform Module technologie overzicht](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
 ## <a name="what-does-the-prt-contain"></a>Wat bevat de PRT?
 
@@ -48,7 +48,7 @@ Een PRT is een ondoorzichtige blob die wordt verzonden vanuit Azure AD waarvan d
 
 ## <a name="how-is-a-prt-issued"></a>Hoe wordt een PRT uitgegeven?
 
-Apparaatregistratie is een vereiste voor verificatie op basis van apparaten in azure AD. Een PRT wordt alleen aan gebruikers uitgegeven op geregistreerde apparaten. Zie het artikel [Windows hello voor bedrijven en apparaatregistratie](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)voor meer gedetailleerde informatie over het registreren van apparaten. Tijdens de registratie van het apparaat genereert het onderdeel dsreg twee sets cryptografische sleutel paren:
+Apparaatregistratie is een vereiste voor verificatie op basis van apparaten in azure AD. Een PRT wordt alleen aan gebruikers uitgegeven op geregistreerde apparaten. Zie het artikel [Windows hello voor bedrijven en apparaatregistratie](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)voor meer gedetailleerde informatie over het registreren van apparaten. Tijdens de registratie van het apparaat genereert het onderdeel dsreg twee sets cryptografische sleutel paren:
 
 * Apparaatsoftware (dkpub/dkpriv)
 * Transport sleutel (tkpub/tkpriv)

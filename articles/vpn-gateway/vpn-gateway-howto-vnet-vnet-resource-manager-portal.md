@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399198"
+ms.locfileid: "78674163"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -127,7 +127,7 @@ Als u al beschikt over een VNet, controleert u of de instellingen compatibel zij
 ### <a name="to-create-a-virtual-network"></a>Een virtueel netwerk maken
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>De gateway van een virtueel netwerk maken
+## <a name="create-the-vnet1-gateway"></a>De VNet1-gateway maken
 In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU. Zie de [voorbeeldinstellingen](#example-settings) als u deze configuratie bij wijze van oefening maakt.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>En vnet4 maken en configureren
-Nadat u VNet1 hebt geconfigureerd, maakt u en vnet4 door de vorige stappen te herhalen en de waarden te vervangen door en vnet4-waarden. U hoeft niet te wachten totdat de virtuele netwerk gateway voor VNet1 is gemaakt voordat u en vnet4 configureert. Als u uw eigen waarden gebruikt, mogen de adresruimten niet overlappen met een van de VNet's waarmee u verbinding wilt maken.
+Nadat u VNet1 hebt geconfigureerd, maakt u en vnet4 en de en vnet4-gateway door de vorige stappen te herhalen en de waarden te vervangen door en vnet4 waarden. U hoeft niet te wachten totdat de virtuele netwerk gateway voor VNet1 is gemaakt voordat u en vnet4 configureert. Als u uw eigen waarden gebruikt, mogen de adresruimten niet overlappen met een van de VNet's waarmee u verbinding wilt maken.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>De VNet1 gateway-verbinding configureren
 Wanneer de virtuele netwerk gateways voor zowel VNet1 als en vnet4 zijn voltooid, kunt u de verbindingen van uw virtuele netwerk gateway maken. In deze sectie maakt u een verbinding tussen VNet1 en VNet4. Deze stappen werken alleen voor VNets in hetzelfde abonnement. Als uw VNet's onder verschillende abonnementen vallen, moet u [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) gebruiken om de verbinding te maken. Als uw VNet's echter behoren tot verschillende resourcegroepen die onder hetzelfde abonnement vallen, kunt u deze verbinden met behulp van de portal.
@@ -148,7 +148,7 @@ Wanneer de virtuele netwerk gateways voor zowel VNet1 als en vnet4 zijn voltooid
    ![Pagina verbindingen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Pagina verbindingen")
 2. Selecteer **+ toevoegen** om de pagina **verbinding toevoegen** te openen.
 
-   ![Verbinding toevoegen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "een verbinding toevoegen")
+   ![Verbinding toevoegen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "een verbinding toevoegen")
 3. Vul op de pagina **Verbinding toevoegen** de waarden voor uw verbinding in:
 
    - **Naam**: Voer een naam in voor de verbinding. Bijvoorbeeld *VNet1toVNet4*.

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 3ad011529f8b4be90fc0c108a2049c30d1c69302
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500081"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897319"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service
 
@@ -36,10 +36,10 @@ U leert het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * [Git installeren](https://git-scm.com/)
-* [.NET Core installeren](https://www.microsoft.com/net/core/)
+* [.NET Core SDK installeren](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>Lokale .NET Core-app maken
 
@@ -219,7 +219,7 @@ De `Database.Migrate()`-aanroep helpt u wanneer deze wordt uitgevoerd in azure, 
 > Voor productie-apps die u wilt uitbreiden, volgt u de best practices in [toepassen van migraties in productie](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
 > 
 
-Sla uw wijzigingen op en voer deze door naar de Git-opslagplaats. 
+Sla uw wijzigingen op en voor deze door naar de Git-opslagplaats. 
 
 ```bash
 git add .

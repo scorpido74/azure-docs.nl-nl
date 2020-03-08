@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 1337870fc871282f84af17b34ba26b3b0271316b
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: bda8f1e3419f80faabb2f469a9ac5fd5c77bd79e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110711"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674399"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -57,14 +57,14 @@ Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het app
 
 Om deze zelfstudie te voltooien moet uw Azure-abonnement een IoT hub bevatten met een apparaat toegevoegd aan het apparaatidentiteitsregister. Met de vermelding in het apparaatidentiteitsregister kan het gesimuleerd apparaat dat u in deze zelfstudie uitvoert, verbinding maken met uw hub.
 
-Als u nog geen IoT-hub hebt ingesteld in uw abonnement, kunt u er een instellen met het volgende CLI-script. Dit script gebruikt de naam **zelfstudie-iot-hub** voor de IoT hub, u moet deze naam vervangen door een eigen unieke naam wanneer u dit uitvoert. Het script maakt de brongroep en hub in de regio **US - centraal** die u kunt wijzigen in een regio dichterbij. Met het script wordt uw verbindingsreeks voor de IoT hub, die u gebruikt in het back-endvoorbeeld om verbinding te maken met uw IoT hub:
+Als u nog geen IoT-hub hebt ingesteld in uw abonnement, kunt u er een instellen met het volgende CLI-script. Dit script gebruikt de naam **zelfstudie-iot-hub** voor de IoT hub, u moet deze naam vervangen door een eigen unieke naam wanneer u dit uitvoert. Het script maakt de brongroep en hub in de regio **VS - centraal** die u kunt wijzigen in een regio dichterbij. Met het script wordt uw verbindingsreeks voor de IoT hub, die u gebruikt in het back-endvoorbeeld om verbinding te maken met uw IoT hub:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed:
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location

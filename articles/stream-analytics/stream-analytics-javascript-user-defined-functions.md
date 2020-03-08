@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426063"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851177"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
  
@@ -99,10 +99,10 @@ Door de gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics on
 
 Er zijn verschillen in de typen die de querytaal van Stream Analytics en JavaScript ondersteunen. Deze tabel bevat de conversietoewijzingen tussen de twee:
 
-Stream Analytics | JavaScript
+Stream Analytics | Javascript
 --- | ---
 bigint | Number (In JavaScript kunnen alleen gehele getallen tot exact 2^53 worden weergegeven)
-Datum/tijd | Date (JavaScript ondersteunt alleen milliseconden)
+DateTime | Date (JavaScript ondersteunt alleen milliseconden)
 double | Aantal
 nvarchar(MAX) | Tekenreeks
 Record | Object
@@ -113,10 +113,10 @@ NULL | Null
 Hier volgen JavaScript-naar-Stream Analytics-conversies:
 
 
-JavaScript | Stream Analytics
+Javascript | Stream Analytics
 --- | ---
 Aantal | Bigint (als het een rond getal tussen long.MinValue en long.MaxValue is; anders is het double)
-Datum | Datum/tijd
+Date | DateTime
 Tekenreeks | nvarchar(MAX)
 Object | Record
 Matrix | Matrix
@@ -147,7 +147,7 @@ SELECT
     DataString,
     DataValue,
     HexValue,
-    UDF.json_stringify(input) As InputEvent
+    UDF.jsonstringify(input) As InputEvent
 INTO
     output
 FROM
@@ -161,7 +161,7 @@ Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep,
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt.  
 2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 Meer hulp vindt u mogelijk op het [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen

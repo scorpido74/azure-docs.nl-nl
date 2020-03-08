@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392760"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668754"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -85,7 +85,7 @@ Bij micro soft-peering moet u de volgende services/regio's en relevante Communit
 - Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 - Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+Zie de [routerings vereisten voor ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
@@ -97,7 +97,7 @@ Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expr
 Bandbreedte regeling | Ondersteund. In de MARS-agent gebruikt u **Eigenschappen wijzigen** om de band breedte aan te passen.
 Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
 
-## <a name="support-for-direct-backups"></a>Ondersteuning voor directe back-ups
+## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 >[!NOTE]
 > De MARS-agent biedt geen ondersteuning voor Windows Server Core-Sku's.
@@ -114,7 +114,6 @@ De besturings systemen moeten 64 bits zijn en moeten de nieuwste service packs e
 Windows 10 (Enterprise, Pro, Home) | Ja | Nee |  Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows 8,1 (Enter prise, Pro)| Ja |Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows 8 (Enterprise, Pro) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
-Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee | -.
 Windows Server 2019 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 
 Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)(Engelstalig) voor meer informatie.
+
+### <a name="operating-systems-at-end-of-support"></a>Besturings systemen aan het einde van de ondersteuning
+
+De volgende besturings systemen zijn aan het einde van de ondersteuning en het wordt ten zeerste aanbevolen om het besturings systeem bij te werken om te blijven beveiligd.
+
+Als bestaande verplichtingen voor komen dat het besturings systeem wordt geüpgraded, kunt u overwegen om de Windows-servers te migreren naar Azure-Vm's en Azure VM-back-ups te gebruiken om de beveiliging te blijven gebruiken. Ga hier naar de [pagina migratie](https://azure.microsoft.com/migration/windows-server/) voor meer informatie over het migreren van uw Windows-Server.
+
+Voor on-premises of gehoste omgevingen waarin u het besturings systeem niet kunt upgraden of migreren naar Azure, kunt u uitgebreide beveiligings updates voor de machines activeren om te blijven beveiligen en worden ondersteund. U ziet dat alleen specifieke edities in aanmerking komen voor uitgebreide beveiligings updates. Ga naar de [pagina met veelgestelde vragen](https://www.microsoft.com/cloud-platform/extended-security-updates) voor meer informatie.
+
+| **Besturingssysteem**                                       | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja               | Nee                 | Controleer de bijbehorende server versie voor vereisten voor software/modules |
+| Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja               | Ja                | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM. exe) |
+| Windows Server 2008 SP2 (Standard, Data Center, Foundation)  | Ja               | Nee                 | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM. exe) <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Back-uplimieten
 

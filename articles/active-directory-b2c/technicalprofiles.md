@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378768"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668769"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -101,7 +101,7 @@ De **TechnicalProfile** bevat de volgende elementen:
 | SubjectNamingInfo | 0:1 | Hiermee bepaalt u de productie van de onderwerpnaam in tokens waarin de onderwerpnaam afzonderlijk van claims is opgegeven. Bijvoorbeeld OAuth of SAML.  |
 | IncludeInSso | 0:1 |  Of het gebruik van dit technische profiel het gedrag van eenmalige aanmelding (SSO) moet Toep assen voor de sessie, of in plaats daarvan expliciete interactie vereist. Dit element is alleen geldig in SelfAsserted-profielen die worden gebruikt binnen een validatie technische profiel. Mogelijke waarden: `true` (standaard) of `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Een id van een technisch profiel waarvan u wilt dat alle invoer-en uitvoer claims aan dit technische profiel worden toegevoegd. Het technische profiel waarnaar wordt verwezen, moet in hetzelfde beleids bestand worden gedefinieerd. |
-| IncludeTechnicalProfile |0:1 | Een id van een technisch profiel waarvan u wilt dat alle gegevens worden toegevoegd aan dit technische profiel. Het technische profiel waarnaar wordt verwezen, moet zich in hetzelfde beleids bestand bevinden. |
+| IncludeTechnicalProfile |0:1 | Een id van een technisch profiel waarvan u wilt dat alle gegevens worden toegevoegd aan dit technische profiel. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Een ander technisch profiel dat moet worden gebruikt voor sessie beheer. |
 |EnabledForUserJourneys| 0:1 |Hiermee wordt bepaald of het technische profiel wordt uitgevoerd in een reis van de gebruiker.  |
 

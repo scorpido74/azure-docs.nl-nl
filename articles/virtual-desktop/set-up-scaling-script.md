@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367245"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894507"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -37,7 +37,7 @@ Tijdens de piek duur van het gebruik controleert de taak het huidige aantal sess
 >[!NOTE]
 >*SessionThresholdPerCPU* beperkt het aantal sessies op de virtuele machine niet. Deze para meter bepaalt alleen wanneer nieuwe Vm's moeten worden gestart om de verbindingen te verdelen. Als u het aantal sessies wilt beperken, moet u de instructies [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) volgen om de *MaxSessionLimit* -para meter dienovereenkomstig te configureren.
 
-Tijdens de gebruiks tijd bepaalt de taak welke host-Vm's moeten worden afgesloten op basis van de para meter *MinimumNumberOfRDSH* . Met de taak worden de Vm's van de sessie-host ingesteld op de afvoer modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter *LimitSecondsToForceLogOffUser* instelt op een positieve waarde die niet gelijk is aan nul, stuurt het script alle momenteel aangemelde gebruikers een melding om hun werk op te slaan, de geconfigureerde tijds duur te wachten en vervolgens af te dwingen dat de gebruikers zich afmelden. Zodra alle gebruikers sessies op de sessiehost van de host-VM zijn afgemeld, wordt de virtuele machine door het script afgesloten.
+Tijdens de gebruiks tijd bepaalt de taak welke host-Vm's moeten worden afgesloten op basis van de para meter *MinimumNumberOfRDSH* . Met de taak worden de Vm's van de sessie-host ingesteld op de afvoer modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter *LimitSecondsToForceLogOffUser* instelt op een positieve waarde die niet gelijk is aan nul, wordt door de taak een melding verzonden naar gebruikers die momenteel zijn aangemeld om hun werk op te slaan, de geconfigureerde tijds duur te wachten en vervolgens af te dwingen dat de gebruikers zich afmelden. Zodra alle gebruikers sessies op de sessiehost van de host-VM zijn afgemeld, wordt de VM door de taak afgesloten.
 
 Als u de para meter *LimitSecondsToForceLogOffUser* instelt op nul, kan de sessie configuratie-instelling in opgegeven groeps beleid voor het afmelden van gebruikers sessies worden afgehandeld. Als u dit groeps beleid wilt zien, gaat u naar **computer configuratie** > - **beleid** > **Beheersjablonen** >  Windows- **onderdelen** ** > Terminal Services > Terminal Server** > **sessie tijds limieten**. Als er actieve sessies op een host-VM zijn, wordt de VM van de host in de sessie uitgevoerd. Als er geen actieve sessies zijn, wordt de host-VM van de sessie afgesloten met de taak.
 

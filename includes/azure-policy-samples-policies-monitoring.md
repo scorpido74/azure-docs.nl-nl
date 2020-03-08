@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: c7e99bf95d9db08f6c942b4ce5ac127dfeb86f36
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: edf1bcdcf5908f0fddd323a71d9051143f994c15
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262089"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668321"
 ---
-|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|Naam |Beschrijving |Effect (s) |Version |GitHub |
 |---|---|---|---|---|
 |[\[preview\]: audit Dependency Agent Deployment-VM-installatie kopie (OS) niet vermeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11ac78e3-31bc-4f0c-8434-37ab963cea07) |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) zich niet in de opgegeven lijst bevindt en de agent niet is geïnstalleerd. De lijst met installatie kopieën van besturings systemen wordt na verloop van tijd bijgewerkt, omdat de ondersteuning wordt bijgewerkt. |auditIfNotExists |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgent_OSImage_Audit.json)
 |[\[preview\]: audit Dependency Agent Deployment in Virtual Machine Scale Sets-VM-installatie kopie (OS) niet vermeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2dd799a-a932-4e9d-ac17-d473bc3c6c10) |Rapporten Virtual Machine Scale Sets als niet-compatibel als de VM-installatie kopie (OS) zich niet in de opgegeven lijst bevindt en de agent niet is geïnstalleerd. De lijst met installatie kopieën van besturings systemen wordt na verloop van tijd bijgewerkt, omdat de ondersteuning wordt bijgewerkt. |auditIfNotExists |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgent_OSImage_VMSS_Audit.json)

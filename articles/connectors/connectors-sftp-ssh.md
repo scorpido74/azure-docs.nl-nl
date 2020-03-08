@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161871"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851524"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
@@ -36,29 +36,34 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
   > [!NOTE]
   > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
+  U kunt dit adaptieve gedrag onderdrukken wanneer u in plaats daarvan [een constante segment grootte opgeeft](#change-chunk-size) die u wilt gebruiken. Deze grootte kan variëren van 5 MB tot 50 MB. Stel bijvoorbeeld dat u een 45 MB-bestand hebt en een netwerk dat deze bestands grootte zonder latentie kan ondersteunen. De resultaten van een adaptieve Chunking worden in verschillende aanroepen in plaats van de aanroep. Als u het aantal aanroepen wilt beperken, kunt u een segment grootte van 50 MB instellen. In een ander scenario kunt u, als er een time-out optreedt voor uw logische app, bijvoorbeeld een segment van 15 MB, de grootte tot 5 MB verkleinen.
+
   Segment grootte is gekoppeld aan een verbinding, wat betekent dat u dezelfde verbinding kunt gebruiken voor acties die Chunking ondersteunen en vervolgens voor acties die geen ondersteuning bieden voor Chunking. In dit geval wordt de segment grootte voor acties die geen Chunking-bereik ondersteunen van 5 MB tot 50 MB. In deze tabel ziet u welke SFTP-SSH-acties Chunking ondersteunen:
 
-  | Bewerking | Ondersteuning voor segmentering |
-  |--------|------------------|
-  | **Bestand kopiëren** | Nee |
-  | **Bestand maken** | Ja |
-  | **Map maken** | Niet van toepassing |
-  | **Bestand verwijderen** | Niet van toepassing |
-  | **Archief naar map uitpakken** | Niet van toepassing |
-  | **Bestands inhoud ophalen** | Ja |
-  | **Bestands inhoud ophalen met behulp van pad** | Ja |
-  | **Meta gegevens van bestand ophalen** | Niet van toepassing |
-  | **Meta gegevens van bestand ophalen met behulp van pad** | Niet van toepassing |
-  | **Bestanden in de map weer geven** | Niet van toepassing |
-  | **Bestands naam wijzigen** | Niet van toepassing |
-  | **Bestand bijwerken** | Nee |
-  |||
+  | Bewerking | Ondersteuning voor segmentering | Ondersteuning voor segment grootte negeren |
+  |--------|------------------|-----------------------------|
+  | **Bestand kopiëren** | Nee | Niet van toepassing |
+  | **Bestand maken** | Ja | Ja |
+  | **Map maken** | Niet van toepassing | Niet van toepassing |
+  | **Bestand verwijderen** | Niet van toepassing | Niet van toepassing |
+  | **Archief naar map uitpakken** | Niet van toepassing | Niet van toepassing |
+  | **Bestands inhoud ophalen** | Ja | Ja |
+  | **Bestands inhoud ophalen met behulp van pad** | Ja | Ja |
+  | **Meta gegevens van bestand ophalen** | Niet van toepassing | Niet van toepassing |
+  | **Meta gegevens van bestand ophalen met behulp van pad** | Niet van toepassing | Niet van toepassing |
+  | **Bestanden in de map weer geven** | Niet van toepassing | Niet van toepassing |
+  | **Bestands naam wijzigen** | Niet van toepassing | Niet van toepassing |
+  | **Bestand bijwerken** | Nee | Niet van toepassing |
+  ||||
 
-* SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden die 15 MB of kleiner zijn. Als u bestanden groter dan 15 MB wilt ophalen, volgt u dit patroon:
+  > [!NOTE]
+  > Als u grote bestanden wilt uploaden, hebt u zowel lees-als schrijf machtigingen nodig voor de hoofdmap op uw SFTP-server.
 
-  * Gebruik een SFTP-SSH-trigger die bestands eigenschappen retourneert, bijvoorbeeld **Wanneer een bestand wordt toegevoegd of gewijzigd (alleen eigenschappen)** .
+* SFTP-SSH-Triggers bieden geen ondersteuning voor het segmenteren van berichten. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden die 15 MB of kleiner zijn. Als u bestanden groter dan 15 MB wilt ophalen, volgt u dit patroon:
 
-  * Volg de trigger met de bewerking voor het **ophalen van bestands inhoud** van SFTP-SSH, die het volledige bestand leest en impliciet gebruikmaakt van het segmenteren van berichten.
+  1. Gebruik een SFTP-SSH-trigger die alleen bestands eigenschappen retourneert, zoals **Wanneer een bestand wordt toegevoegd of gewijzigd (alleen eigenschappen)** .
+
+  1. Volg de trigger met de bewerking voor het **ophalen van bestands inhoud** van SFTP-SSH, die het volledige bestand leest en impliciet gebruikmaakt van het segmenteren van berichten.
 
 <a name="comparison"></a>
 
@@ -153,13 +158,13 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voor lege logische apps voert u in het zoekvak ' sftp SSH ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers.
+1. Voor lege logische apps voert u in het zoekvak `sftp ssh` in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers.
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, kiest u **nieuwe stap**. Voer in het zoekvak ' sftp SSH ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**. Voer in het zoekvak `sftp ssh` in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Geef de benodigde gegevens voor de verbinding op.
 
@@ -177,9 +182,25 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
    1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-SSH-trigger of de actie die u hebt toegevoegd.  ***Zorg ervoor dat u*** de sleutel plakt. ***Voer de sleutel niet hand matig in of bewerk deze***.
 
-1. Wanneer u klaar bent met het invoeren van de verbindings gegevens, kiest u **maken**.
+1. Wanneer u klaar bent met het invoeren van de verbindings gegevens, selecteert u **maken**.
 
 1. Geef nu de gegevens op die nodig zijn voor de geselecteerde trigger of actie en blijf de werk stroom van uw logische app bouwen.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Segment grootte overschrijven
+
+Als u het standaard adaptieve gedrag dat door de segmentering wordt gebruikt, wilt overschrijven, kunt u een constante segment grootte van 5 MB tot 50 MB opgeven.
+
+1. Selecteer de knop met weglatings tekens ( **...** ) in de rechter bovenhoek van de actie en selecteer vervolgens **instellingen**.
+
+   ![SFTP-SSH-instellingen openen](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. Voer onder **inhouds overdracht**, in de eigenschap **segment grootte** , een geheel getal in van `5` naar `50`, bijvoorbeeld: 
+
+   ![Geef de segment grootte op die u in plaats daarvan wilt gebruiken](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. Wanneer u klaar bent, selecteert u **Gereed**.
 
 ## <a name="examples"></a>Voorbeelden
 

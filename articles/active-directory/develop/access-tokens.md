@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 3/2/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: c4e41ff76bf646fe49ff9051e0f193f21f8cd34f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 752e8745a1cf2965d2dc88eaeee9404cf596547a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377795"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668326"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -30,7 +30,7 @@ Als uw toepassing een bron (Web-API) is waarmee clients toegang kunnen aanvragen
 Raadpleeg de volgende secties voor meer informatie over hoe een resource de claims in een toegangs token kan valideren en gebruiken.
 
 > [!IMPORTANT]
-> Toegangs tokens worden gemaakt op basis van de *doel groep* van het token, wat betekent dat de toepassing die eigenaar is van de scopes in het token.  Op die manier kan een bron instelling `accessTokenAcceptedVersion` in het [app-manifest](reference-app-manifest.md#manifest-reference) naar `2` een client kan het v 1.0-eind punt aanroepen om een v 2.0-toegangs token te ontvangen.  Op deze manier is het wijzigen van de [optionele claims](active-directory-optional-claims.md) voor het toegangs token voor uw client geen invloed op het toegangs token ontvangen wanneer een token wordt aangevraagd voor `user.read`, dat eigendom is van de resource.  
+> Toegangs tokens worden gemaakt op basis van de *doel groep* van het token, wat betekent dat de toepassing die eigenaar is van de scopes in het token.  Op die manier kan een bron instelling `accessTokenAcceptedVersion` in het [app-manifest](reference-app-manifest.md#manifest-reference) naar `2` een client kan het v 1.0-eind punt aanroepen om een v 2.0-toegangs token te ontvangen.  Op deze manier is het wijzigen van de [optionele claims](active-directory-optional-claims.md) voor het toegangs token voor uw client geen invloed op het toegangs token ontvangen wanneer een token wordt aangevraagd voor `user.read`, dat eigendom is van de resource.
 > Om dezelfde reden, terwijl u uw client toepassing test met een persoonlijk account (zoals hotmail.com of outlook.com), is het mogelijk dat het toegangs token dat door uw client is ontvangen, een ondoorzichtige teken reeks is. Dit komt doordat de bron die wordt geopend, verouderde MSA-tickets (Microsoft-account) heeft aangevraagd die zijn versleuteld en niet kunnen worden begrepen door de client.
 
 ## <a name="sample-tokens"></a>Voorbeeld tokens
@@ -84,7 +84,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 |-----|--------|-------------|
 | `aud` | Teken reeks, een app-ID-URI | Identificeert de beoogde ontvanger van het token. In ID-tokens is de doel groep de toepassings-ID van uw app, toegewezen aan uw app in de Azure Portal. Uw app moet deze waarde valideren en het token afwijzen als de waarde niet overeenkomt. |
 | `iss` | Teken reeks, een STS-URI | Identificeert de Security Token Service (STS) die het token bouwt en retourneert en de Azure AD-Tenant waarin de gebruiker is geverifieerd. Als het uitgegeven token een v 2.0-token is (Zie de `ver` claim), wordt de URI in `/v2.0`beëindigd. De GUID waarmee wordt aangegeven dat de gebruiker een consumenten gebruiker is van een Microsoft-account is `9188040d-6c67-4c5b-b112-36a304b66dad`. Uw app moet het GUID-gedeelte van de claim gebruiken om de set tenants te beperken die zich kunnen aanmelden bij de app, indien van toepassing. |
-|`idp`| Teken reeks, meestal een STS-URI | Registreert de identiteitsprovider waarmee het onderwerp van het token is geverifieerd. Deze waarde is gelijk aan de waarde van de verlener-claim tenzij het gebruikers account zich niet in dezelfde Tenant bevindt als de verlener-gasten, bijvoorbeeld. Als de claim niet aanwezig is, betekent dit dat de waarde van `iss` in plaats daarvan kan worden gebruikt.  Voor persoonlijke accounts die worden gebruikt in een organisatie context (bijvoorbeeld een persoonlijk account dat is uitgenodigd voor een Azure AD-Tenant), is de `idp` claim mogelijk ' live.com ' of een STS-URI met de Microsoft-account Tenant `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
+|`idp`| Teken reeks, meestal een STS-URI | Registreert de identiteitsprovider waarmee het onderwerp van het token is geverifieerd. Deze waarde is gelijk aan de waarde van de verlener-claim tenzij het gebruikers account zich niet in dezelfde Tenant bevindt als de verlener-gasten, bijvoorbeeld. Als de claim niet aanwezig is, betekent dit dat de waarde van `iss` in plaats daarvan kan worden gebruikt.  Voor persoonlijke accounts die worden gebruikt in een organisatie context (bijvoorbeeld een persoonlijk account dat is uitgenodigd voor een Azure AD-Tenant), is de `idp` claim mogelijk ' live.com ' of een STS-URI met de Microsoft-account Tenant `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 | `iat` | int, een UNIX-time stamp | ' Uitgegeven op ' geeft aan wanneer de authenticatie voor dit token is opgetreden. |
 | `nbf` | int, een UNIX-time stamp | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. |
 | `exp` | int, een UNIX-time stamp | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Het is belang rijk te weten dat een resource het token vóór deze tijd kan afwijzen, zoals wanneer een wijziging in de verificatie vereist is of een intrekking van het token is gedetecteerd. |
@@ -100,7 +100,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `scp` | Teken reeks, een door spaties gescheiden lijst met bereiken | De set bereiken die wordt weer gegeven door uw toepassing waarvoor de client toepassing toestemming heeft aangevraagd (en ontvangen). Uw app moet controleren of deze bereiken geldig zijn voor uw app en autorisatie beslissingen nemen op basis van de waarde van deze bereiken. Alleen opgenomen voor [gebruikers tokens](#user-and-application-tokens). |
 | `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
 | `wids` | Matrix van [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) -guid's | Hiermee worden de rollen voor de Tenant opgegeven die aan deze gebruiker zijn toegewezen, in het gedeelte van de rollen die aanwezig zijn op [de pagina beheer rollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  Deze claim wordt per toepassing geconfigureerd via de eigenschap `groupMembershipClaims` van het [toepassings manifest](reference-app-manifest.md).  Het instellen op ' all ' of ' DirectoryRole ' is vereist.  Mag niet aanwezig zijn in tokens die zijn verkregen via de impliciete stroom vanwege problemen met de token lengte. |
-| `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de eigenschap `groupMembershipClaims` van het [toepassings manifest](reference-app-manifest.md). Met een waarde van Null worden alle groepen uitgesloten, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Office 365-distributie lijsten. <br><br>Zie de `hasgroups` claim hieronder voor meer informatie over het gebruik van de `groups` claim met de impliciete toekenning. <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in een overschrijding een limiet heeft (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het AAD Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
+| `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de eigenschap `groupMembershipClaims` van het [toepassings manifest](reference-app-manifest.md). Met een waarde van Null worden alle groepen uitgesloten, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Office 365-distributie lijsten. <br><br>Zie de `hasgroups` claim hieronder voor meer informatie over het gebruik van de `groups` claim met de impliciete toekenning. <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in de loop van een limiet is (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het Microsoft Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
 | `hasgroups` | Booleaans | Indien aanwezig, wordt altijd `true`, zodat de gebruiker zich in ten minste één groep bevindt. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`) te bepalen. |
 | `groups:src1` | JSON-object | Voor token aanvragen die geen beperkte lengte hebben (Zie `hasgroups` hierboven) maar nog steeds te groot zijn voor het token, wordt een koppeling naar de lijst met volledige groepen voor de gebruiker opgenomen. Voor JWTs als een gedistribueerde claim voor SAML als een nieuwe claim in plaats van de `groups` claim. <br><br>**Voor beeld-JWT-waarde**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Teken reeks, een GUID | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt om toegang te krijgen tot een resource, en kan worden gebruikt als sleutel in database tabellen. Omdat het onderwerp altijd aanwezig is in de tokens die door Azure AD worden uitgegeven, raden we u aan deze waarde te gebruiken in een autorisatie systeem voor algemeen gebruik. Het onderwerp is echter een Pairwise-id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen die apps daarom twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van de vereisten van uw architectuur en privacy. Zie ook de `oid` claim (die hetzelfde blijft in apps binnen een Tenant). |
@@ -111,28 +111,28 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `rh` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Resources mogen deze claim niet gebruiken. |
 | `ver` | Teken reeks, een `1.0` of `2.0` | Hiermee wordt de versie van het toegangs token aangegeven. |
 
+**Claim van groepen overschrijding**
 
-> [!NOTE]
-> **Claim van groepen overschrijding**
->
-> Om ervoor te zorgen dat de token grootte niet groter is dan de grootte limieten voor de HTTP-header, beperkt Azure AD het aantal object-Id's dat in de claim van de groep wordt opgenomen. Als een gebruiker lid is van meer groepen dan de limiet van overschrijding (150 voor SAML-tokens, 200 voor JWT-tokens), levert Azure AD de groeps claim niet in het token. In plaats daarvan bevat het een overschrijding-claim in het token dat aangeeft dat de toepassing een query moet uitvoeren op de Microsoft Graph-API om het groepslid maatschap van de gebruiker op te halen.
-  ```csharp
-  {
-    ...
-    "_claim_names": {
-     "groups": "src1"
-      },
-      {
-    "_claim_sources": {
-      "src1": {
-          "endpoint":"[Url to get this user's group membership from]"
-          }
-         }
+Om ervoor te zorgen dat de token grootte niet groter is dan de grootte limieten voor de HTTP-header, beperkt Azure AD het aantal object-Id's dat in de claim van de groep wordt opgenomen. Als een gebruiker lid is van meer groepen dan de limiet van overschrijding (150 voor SAML-tokens, 200 voor JWT-tokens), levert Azure AD de groeps claim niet in het token. In plaats daarvan bevat het een overschrijding-claim in het token dat aangeeft dat de toepassing een query moet uitvoeren op de Microsoft Graph-API om het groepslid maatschap van de gebruiker op te halen.
+
+```JSON
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
        }
-    ...
-   }
-   ```
-> U kunt de `BulkCreateGroups.ps1` in de map voor het [maken van apps](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) gebruiken om overschrijding-scenario's te testen.
+     }
+  ...
+ }
+ ```
+
+U kunt de `BulkCreateGroups.ps1` in de map voor het [maken van apps](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) gebruiken om overschrijding-scenario's te testen.
 
 #### <a name="v10-basic-claims"></a>v 1.0 basis claims
 
@@ -170,9 +170,9 @@ Micro soft-identiteiten kunnen op verschillende manieren worden geverifieerd. Di
 
 Als u een id_token of een access_token wilt valideren, moet uw app zowel de hand tekening van het token als de claims valideren. Als u toegangs tokens wilt valideren, moet uw app ook de uitgever, de doel groep en de handtekening tokens valideren. Deze moeten worden gevalideerd aan de hand van de waarden in het detectie document voor OpenID Connect. De Tenant-onafhankelijke versie van het document bevindt zich bijvoorbeeld op [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-De Azure AD-middleware heeft ingebouwde mogelijkheden voor het valideren van toegangs tokens, en u kunt bladeren door onze voor [beelden](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) om er een te vinden in de taal van uw keuze. Zie voor meer informatie over het expliciet valideren van een JWT-token het [hand MATIGE JWT-validatie voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).
+De Azure AD-middleware heeft ingebouwde mogelijkheden voor het valideren van toegangs tokens, en u kunt bladeren door onze voor [beelden](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) om er een te vinden in de taal van uw keuze.
 
-We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie eenvoudig kunt afhandelen. De onderstaande informatie is bedoeld voor degenen die het onderliggende proces willen begrijpen. Er zijn ook verschillende open source-bibliotheken van derden beschikbaar voor JWT-validatie-er is ten minste één optie voor bijna elk platform en elke taal. Zie [v 1.0-verificatie bibliotheken](../azuread-dev/active-directory-authentication-libraries.md) en [v 2.0-verificatie bibliotheken](reference-v2-libraries.md)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
+We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie kunt afhandelen. De onderstaande informatie is bedoeld voor degenen die het onderliggende proces willen begrijpen. Er zijn ook verschillende open source-bibliotheken van derden beschikbaar voor JWT-validatie-er is ten minste één optie voor bijna elk platform en elke taal. Zie [v 1.0-verificatie bibliotheken](../azuread-dev/active-directory-authentication-libraries.md) en [v 2.0-verificatie bibliotheken](reference-v2-libraries.md)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
 
 ### <a name="validating-the-signature"></a>De hand tekening valideren
 
@@ -210,7 +210,7 @@ Dit meta gegevens document:
 > [!NOTE]
 > Het eind punt v 1.0 retourneert zowel de `x5t` als de `kid` claims, terwijl het v 2.0-eind punt alleen reageert met de `kid`-claim. We raden u aan om de `kid` claim te gebruiken om uw token te valideren.
 
-Het uitvoeren van de handtekening validatie valt buiten het bereik van dit document. er zijn veel open source-bibliotheken beschikbaar om u zo nodig te helpen.  Het micro soft Identity-platform heeft echter een uitbrei ding voor token-ondertekening van de standaard-aangepaste handtekening sleutels.  
+Het uitvoeren van de handtekening validatie valt buiten het bereik van dit document. er zijn veel open source-bibliotheken beschikbaar om u zo nodig te helpen.  Het micro soft Identity-platform heeft echter een uitbrei ding voor token-ondertekening van de standaard-aangepaste handtekening sleutels.
 
 Als uw app aangepaste handtekening sleutels heeft als gevolg van het gebruik van de functie voor het [toewijzen van claims](active-directory-claims-mapping.md) , moet u een `appid` query parameter met de app-id toevoegen om een `jwks_uri` aan de handtekening sleutel gegevens van uw app toe te wijzen, die voor validatie moet worden gebruikt. Bijvoorbeeld: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` bevat een `jwks_uri` van `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
@@ -233,13 +233,15 @@ Uw toepassing kan tokens namens een gebruiker (de gebruikelijke stroom) of recht
 
 * Alleen app-tokens hebben een `scp` claim en kunnen in plaats daarvan een `roles` claim hebben. Hier wordt de machtiging voor de toepassing (in plaats van de gedelegeerde machtigingen) vastgelegd. Zie machtigingen en toestemming ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)) voor meer informatie over gedelegeerde en toepassings machtigingen.
 * Er ontbreken veel specifieke claims, zoals `name` of `upn`.
-* De `sub`-en `oid` claims zijn hetzelfde. 
+* De `sub`-en `oid` claims zijn hetzelfde.
 
 ## <a name="token-revocation"></a>Token intrekking
 
 Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of ingetrokken om verschillende redenen. Deze zijn onderverdeeld in twee hoofd categorieën: time-outs en intrekken.
 
 ### <a name="token-timeouts"></a>Token-time-outs
+
+Met de configuratie van de [levens duur van tokens](active-directory-configurable-token-lifetimes.md)kan de levens duur van vernieuwings tokens worden gewijzigd.  Het is normaal en verwacht dat sommige tokens zonder gebruik worden uitgevoerd (bijvoorbeeld de gebruiker heeft de app drie maanden niet geopend) en verloopt daarom.  Apps zullen scenario's ondervinden waarbij de aanmeldings server een vernieuwings token weigert als gevolg van de leeftijd. 
 
 * MaxInactiveTime: als het vernieuwings token niet is gebruikt binnen de tijd die is bepaald door de MaxInactiveTime, is het vernieuwings token niet langer geldig.
 * MaxSessionAge: als MaxAgeSessionMultiFactor of MaxAgeSessionSingleFactor is ingesteld op een andere waarde dan de standaard instelling (tot-ingetrokken), is de verificatie vereist na de tijd die is ingesteld in de MaxAgeSession * verstreken.
@@ -248,6 +250,8 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
   * Een gevoelige toepassing heeft een MaxAgeSessionSingleFactor van één dag. Als een gebruiker zich op maandag aanmeldt en op dinsdag (nadat 25 uur is verstreken), moeten ze opnieuw worden geverifieerd.
 
 ### <a name="revocation"></a>Intrekkings
+
+Het vernieuwen van tokens kan door de server worden ingetrokken vanwege een wijziging in de referenties of door het gebruik of de beheerder.  Vernieuwings tokens kunnen worden onderverdeeld in twee klassen, die zijn uitgegeven aan vertrouwelijke clients (de meest rechtse kolom) en die worden verleend aan open bare clients (alle andere kolommen).   
 
 |   | Cookie op basis van wacht woorden | Token op basis van wacht woorden | Cookie op basis van niet-wacht woord | Niet-op wacht woord gebaseerde token | Vertrouwelijk client token |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -264,7 +268,7 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 >
 > Primaire vernieuwings tokens (PRT) in Windows 10 worden gescheiden op basis van de referentie. Windows hello en het wacht woord hebben bijvoorbeeld hun respectieve PRTs, die van elkaar zijn geïsoleerd. Wanneer een gebruiker zich aanmeldt met een Hello-Referentie (pincode of biometrie) en vervolgens het wacht woord wijzigt, wordt het wacht woord gebaseerd op PRT dat eerder is opgehaald, ingetrokken. Als u zich opnieuw aanmeldt met een wacht woord, worden de oude PRT ongeldig en wordt een nieuwe aanvraag aangevraagd.
 >
-> Vernieuwings tokens worden niet ongeldig of ingetrokken wanneer het wordt gebruikt om een nieuw toegangs token op te halen en token te vernieuwen.  
+> Vernieuwings tokens worden niet ongeldig of ingetrokken wanneer het wordt gebruikt om een nieuw toegangs token op te halen en token te vernieuwen.  Uw app moet echter de oude verwijderen als deze wordt gebruikt en vervangen door de nieuwe, omdat het nieuwe token een nieuwe verloop tijd bevat. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

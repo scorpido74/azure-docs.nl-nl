@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186237"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671928"
 ---
 # <a name="building-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang bouwen
 
@@ -34,7 +34,7 @@ In het gedeelte toewijzingen bepaalt u de wie, wat en waar van het beleid voor v
 
 [Gebruikers en groepen](concept-conditional-access-users-groups.md) geven aan wie het beleid moet worden opgenomen of uitgesloten. Deze toewijzing kan alle gebruikers, specifieke groepen gebruikers, Directory rollen of externe gast gebruikers bevatten. 
 
-### <a name="cloud-apps-or-actions"></a>Cloud-apps of-acties
+### <a name="cloud-apps-or-actions"></a>Cloud-apps of acties
 
 [Cloud-apps of-acties](concept-conditional-access-cloud-apps.md) kunnen Cloud toepassingen of gebruikers acties die voor het beleid gelden, opnemen of uitsluiten.
 
@@ -66,11 +66,11 @@ Deze toewijzings voorwaarde staat beleids regels voor voorwaardelijke toegang to
 
 Dit besturings element wordt gebruikt om apparaten uit te sluiten die zijn toegevoegd aan hybride Azure AD of die compatibel zijn met intune. Deze uitsluiting kan worden uitgevoerd om onbeheerde apparaten te blok keren. 
 
-## <a name="access-controls"></a>Toegangs beheer
+## <a name="access-controls"></a>Besturingselementen voor toegang
 
 In het gedeelte toegangs beheer van het beleid voor voorwaardelijke toegang wordt bepaald hoe een beleid wordt afgedwongen.
 
-### <a name="grant"></a>Geef
+### <a name="grant"></a>Verlenen
 
 [Grant](concept-conditional-access-grant.md) biedt beheerders een methode voor het afdwingen van beleid waarbij ze toegang kunnen blok keren of verlenen.
 
@@ -131,6 +131,6 @@ Het artikel [common Conditional Access policies](concept-conditional-access-poli
 
 [Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen](../authentication/howto-mfa-getstarted.md)
 
-[Apparaatcompatibiliteit beheren met intune](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Apparaatcompatibiliteit beheren met intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security en voorwaardelijke toegang](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security en voorwaardelijke toegang](/cloud-app-security/proxy-intro-aad)

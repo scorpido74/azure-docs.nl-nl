@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670624"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894818"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Beginnen met controleren van de ASP.NET Core-webtoepassing
 
@@ -24,10 +24,10 @@ Deze Snelstartgids helpt u bij het toevoegen van de Application Insights SDK aan
 
 Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
-- [Installeer Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+- [Installeer Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) met de volgende werk belastingen:
   - ASP.NET-ontwikkeling en webontwikkeling
   - Azure-ontwikkeling
-- [.NET Core 2.0 SDK installeren](https://www.microsoft.com/net/core)
+- [.NET Core 2.0 SDK installeren](https://dotnet.microsoft.com/download)
 - U hebt een Azure-abonnement en een bestaande .NET Core-webtoepassing nodig.
 
 Als u geen ASP.NET Core-webtoepassing hebt, kunt u onze stapsgewijze hand leiding gebruiken om [een ASP.net core-app te maken en Application Insights toe te voegen.](../../azure-monitor/app/asp-net-core.md)

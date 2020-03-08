@@ -1,6 +1,6 @@
 ---
 title: Hoe SSO voor on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD | Microsoft Docs
-description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Leer hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773309"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672706"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hoe SSO voor on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe dit werkt.
 
  Als aan Azure AD gekoppelde computers niet zijn verbonden met het netwerk van uw organisatie, is een VPN-of andere netwerk infrastructuur vereist. On-premises SSO vereist een line-of-Insight-communicatie met uw on-premises AD DS domein controllers.
 
-## <a name="how-it-works"></a>Het werkt als volgt 
+## <a name="how-it-works"></a>How it works (Engelstalig artikel) 
 
 Omdat u slechts één gebruikers naam en wacht woord moet onthouden, vereenvoudigt SSO de toegang tot uw resources en verbetert de beveiliging van uw omgeving. Met een toegevoegd Azure AD-apparaat hebben uw gebruikers al een SSO-ervaring voor de Cloud-apps in uw omgeving. Als uw omgeving een Azure AD en een on-premises AD heeft, wilt u waarschijnlijk het bereik van uw SSO-ervaring uitbreiden naar uw LOB-apps (line of Business), bestands shares en printers.
 
@@ -42,13 +42,13 @@ Een omgeving met zowel een Azure AD-als een on-premises AD, is ook wel een hybri
 Tijdens een toegangs poging tot een resource die Kerberos aanvraagt in de on-premises omgeving van de gebruiker, wordt het apparaat:
 
 1. Hiermee worden de gegevens van het on-premises domein en de gebruikers referenties naar de gevonden DC verzonden om de gebruiker te laten verifiëren.
-1. Ontvangt een Kerberos [ticket-granting ticket (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) dat wordt gebruikt voor toegang tot bronnen die deel uitmaken van AD. Als de poging om de TGT op te halen voor het AAD Connect-domein mislukt (er kan een vertraging optreden in de DCLocator-time-out), worden de referentie beheer vermeldingen geprobeerd, of kan de gebruiker een authenticatie pop-up ontvangen met referenties voor de doel bron.
+1. Ontvangt een Kerberos [ticket-granting ticket (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) dat wordt gebruikt voor toegang tot bronnen die deel uitmaken van AD. Als de poging om de TGT op te halen voor het AAD Connect-domein mislukt (er kan een vertraging optreden in de DCLocator-time-out), worden de referentie beheer vermeldingen geprobeerd, of kan de gebruiker een authenticatie pop-up ontvangen met referenties voor de doel bron.
 
 Alle apps die zijn geconfigureerd voor **geïntegreerde Windows-verificatie** , halen zichzelf SSO wanneer een gebruiker deze probeert te openen.
 
-Windows hello voor bedrijven vereist aanvullende configuratie om on-premises SSO in te scha kelen vanaf een aan Azure AD toegevoegd apparaat. Zie voor meer informatie [Azure AD gekoppelde apparaten configureren voor on-premises eenmalige aanmelding met Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+Windows hello voor bedrijven vereist aanvullende configuratie om on-premises SSO in te scha kelen vanaf een aan Azure AD toegevoegd apparaat. Zie voor meer informatie [Azure AD gekoppelde apparaten configureren voor on-premises eenmalige aanmelding met Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Wat is inbegrepen
+## <a name="what-you-get"></a>Wat u krijgt
 
 Met SSO kunt u op een aan Azure AD gekoppelde apparaat het volgende doen: 
 

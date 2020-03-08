@@ -1,58 +1,62 @@
 ---
-title: Gegevens versleuteling voor het oplossen van problemen met Azure Database for MySQL
-description: Meer informatie over het oplossen van problemen met gegevens versleuteling voor uw Azure Database for MySQL
+title: Problemen met gegevens versleuteling in Azure Database for MySQL oplossen
+description: Meer informatie over het oplossen van problemen met gegevens versleuteling in Azure Database for MySQL
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4b517a463ec949d804798787ad4b35b53145a4a8
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 516f0b2080fc894ec00f222c712ffdea4ee74356
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371551"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851098"
 ---
-# <a name="troubleshooting-data-encryption-with-customer-managed-keys-in-azure-database-for-mysql"></a>Problemen met gegevens versleuteling oplossen met door de klant beheerde sleutels in Azure Database for MySQL
-In dit artikel wordt beschreven hoe u veelvoorkomende problemen/fouten kunt identificeren en oplossen die zich voordoen op een Azure Database for MySQL die is geconfigureerd met gegevens versleuteling met door de klant beheerde sleutel.
+# <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Problemen met gegevens versleuteling in Azure Database for MySQL oplossen
+
+In dit artikel wordt beschreven hoe u veelvoorkomende problemen kunt identificeren en oplossen die zich in Azure Database for MySQL voordoen wanneer met gegevens versleuteling wordt geconfigureerd met behulp van een door de klant beheerde sleutel.
 
 ## <a name="introduction"></a>Inleiding
-Wanneer gegevens versleuteling is geconfigureerd voor het gebruik van een door de klant beheerde sleutel in Azure Key Vault, is continue toegang tot deze sleutel vereist om de server beschikbaar te houden. Als de server de toegang tot de door de klant beheerde sleutel in Azure Key Vault kwijtraakt, wordt door de server alle verbindingen met het juiste fout bericht geweigerd en wordt de status gewijzigd in niet ***toegankelijk*** in de Azure Portal.
 
-Als een niet-toegankelijke Azure Database for MySQL-server niet meer nodig is, kan deze onmiddellijk worden verwijderd om de kosten voor het maken te stoppen. Alle andere acties op de server zijn pas toegestaan als de toegang tot de Azure-sleutel kluis is hersteld en de server weer beschikbaar is. Het wijzigen van de optie voor gegevens versleuteling van Ja (door de klant beheerd) naar ' nee ' (door service beheerd) op een niet-toegankelijke server is ook niet mogelijk wanneer een server is versleuteld met door de klant beheerd. U moet de sleutel hand matig opnieuw valideren om de server weer beschikbaar te maken. Dit is nodig om de gegevens te beschermen tegen onbevoegde toegang terwijl machtigingen voor de door de klant beheerde sleutel zijn ingetrokken.
+Wanneer u gegevens versleuteling configureert om een door de klant beheerde sleutel te gebruiken in Azure Key Vault, hebben servers voortdurende toegang tot de sleutel nodig. Als de server de toegang tot de door de klant beheerde sleutel in Azure Key Vault kwijtraakt, worden alle verbindingen geweigerd, wordt het juiste fout bericht weer gegeven en wordt de status gewijzigd in niet ***toegankelijk*** in de Azure Portal.
 
-## <a name="common-errors-causing-server-to-become-inaccessible"></a>Veelvoorkomende fouten waardoor de server niet meer toegankelijk is
+Als u een ontoegankelijke Azure Database for MySQL server niet meer nodig hebt, kunt u deze verwijderen om kosten te besparen. Er zijn geen andere acties op de server toegestaan totdat toegang tot de sleutel kluis is hersteld en de server beschikbaar is. Het is ook niet mogelijk om de gegevens versleutelings optie van `Yes`(door de klant beheerd) te wijzigen in `No` (door service beheerd) op een niet-toegankelijke server wanneer deze is versleuteld met een door de klant beheerde sleutel. U moet de sleutel hand matig opnieuw valideren voordat de server weer toegankelijk is. Deze actie is nodig om de gegevens te beveiligen tegen onbevoegde toegang terwijl machtigingen voor de door de klant beheerde sleutel worden ingetrokken.
 
-De meeste problemen die zich voordoen wanneer u gegevens versleuteling met Azure Key Vault gebruikt, worden veroorzaakt door een van de volgende onjuiste configuraties:
+## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>Veelvoorkomende fouten die ervoor zorgen dat de server niet meer toegankelijk is
 
-De sleutel kluis is niet beschikbaar of bestaat niet
+De volgende onjuiste configuraties veroorzaken de meeste problemen met gegevens versleuteling die gebruikmaakt van Azure Key Vault sleutels:
 
-* De sleutel kluis is per ongeluk verwijderd.
-* Een onregelmatige netwerk fout zorgt ervoor dat de sleutel kluis niet beschikbaar is.
+- De sleutel kluis is niet beschikbaar of bestaat niet:
+  - De sleutel kluis is per ongeluk verwijderd.
+  - Een onregelmatige netwerk fout zorgt ervoor dat de sleutel kluis niet beschikbaar is.
 
-Geen machtigingen voor toegang tot de sleutel kluis of de sleutel bestaat niet
-
-* De sleutel is per ongeluk verwijderd, uitgeschakeld of de sleutel is verlopen.
-* De door het Azure Database for MySQL exemplaar beheerde identiteit is per ongeluk verwijderd.
-* Machtigingen die zijn verleend aan de door de Azure Database for MySQL server beheerde identiteit voor de sleutels zijn niet voldoende (Get, wrap en Unwrap).
-* De machtigingen voor het Azure Database for MySQL Server-exemplaar-beheerde identiteit zijn ingetrokken.
+- U hebt geen machtigingen voor toegang tot de sleutel kluis of de sleutel bestaat niet:
+  - De sleutel is verlopen of per ongeluk verwijderd of uitgeschakeld.
+  - De beheerde identiteit van het Azure Database for MySQL exemplaar is per ongeluk verwijderd.
+  - De beheerde identiteit van het Azure Database for MySQL-exemplaar heeft onvoldoende sleutel machtigingen. De machtigingen bevatten bijvoorbeeld Get, wrap en Unwrap.
+  - De beheerde identiteits machtigingen voor het Azure Database for MySQL-exemplaar zijn ingetrokken of verwijderd.
 
 ## <a name="identify-and-resolve-common-errors"></a>Veelvoorkomende fouten identificeren en oplossen
+
 ### <a name="errors-on-the-key-vault"></a>Fouten in de sleutel kluis
 
 #### <a name="disabled-key-vault"></a>Uitgeschakelde sleutel kluis
-* AzureKeyVaultKeyDisabledMessage
-* **Uitleg** : de bewerking kan niet worden voltooid op de server omdat de Azure Key Vault sleutel is uitgeschakeld.
+
+- `AzureKeyVaultKeyDisabledMessage`
+- **Uitleg**: de bewerking kan niet worden voltooid op de server omdat de Azure Key Vault sleutel is uitgeschakeld.
 
 #### <a name="missing-key-vault-permissions"></a>Ontbrekende sleutel kluis machtigingen
-* AzureKeyVaultMissingPermissionsMessage
-* De-server beschikt niet over de vereiste machtigingen voor Get, rewrap en uitpakken voor de Azure Key Vault machtigingen. Ken de ontbrekende machtigingen toe aan de service-principal met de ID.
+
+- `AzureKeyVaultMissingPermissionsMessage`
+- **Uitleg**: de vereiste Get-, wrap-en Unwrap-machtigingen voor de server kunnen niet worden Azure Key Vault. Ken de ontbrekende machtigingen toe aan de service-principal met de ID.
 
 ### <a name="mitigation"></a>Oplossing
-* Controleer of de door de klant beheerde sleutel aanwezig is in Key Vault:
-* Zoek de sleutel kluis en ga vervolgens naar de sleutel kluis in de Azure Portal.
-* Zorg ervoor dat de sleutel die wordt geïdentificeerd door de sleutel-URI aanwezig is.
 
+- Controleer of de door de klant beheerde sleutel aanwezig is in de sleutel kluis.
+- Zoek de sleutel kluis en ga vervolgens naar de sleutel kluis in de Azure Portal.
+- Zorg ervoor dat de sleutel-URI een sleutel identificeert die aanwezig is.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Gegevens versleuteling instellen met een door de klant beheerde sleutel voor uw Azure-Data Base voor MySQL met behulp van de Azure Portal](howto-data-encryption-portal.md).
+
+[Gebruik de Azure Portal om gegevens versleuteling in te stellen met een door de klant beheerde sleutel op Azure Database for MySQL](howto-data-encryption-portal.md)

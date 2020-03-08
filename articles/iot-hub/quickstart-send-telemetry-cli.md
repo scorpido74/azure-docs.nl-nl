@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931817"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851415"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en bewaak deze met de Azure CLI
 
@@ -35,6 +35,7 @@ Ongeacht of u de CLI lokaal of in de Cloud Shell uitvoert, blijft de portal geop
 In deze sectie start u een exemplaar van de Azure Cloud Shell. Als u de CLI lokaal gebruikt, gaat u naar de sectie [twee cli-sessies voorbereiden](#prepare-two-cli-sessions).
 
 De Cloud Shell starten:
+
 1. Selecteer de knop **Cloud shell** in de rechter menu balk van het Azure Portal. 
 
     ![Knop Azure Portal Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ De Cloud Shell starten:
     > [!NOTE]
     > Als dit de eerste keer is dat u de Cloud Shell gebruikt, wordt u gevraagd om opslag ruimte te maken. Dit is vereist voor het gebruik van de Cloud Shell.  Selecteer een abonnement om een opslag account en Microsoft Azure bestands share te maken. 
 
-1. Selecteer uw voorkeurs CLI-omgeving in de vervolg keuzelijst **omgeving selecteren** . In deze Quick Start wordt gebruikgemaakt van de **bash** -omgeving. Alle volgende CLI-opdrachten werken ook in de Power shell-omgeving. 
+2. Selecteer uw voorkeurs CLI-omgeving in de vervolg keuzelijst **omgeving selecteren** . In deze Quick Start wordt gebruikgemaakt van de **bash** -omgeving. Alle volgende CLI-opdrachten werken ook in de Power shell-omgeving. 
 
     ![CLI-omgeving selecteren](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Twee CLI-sessies voorbereiden
+
 In deze sectie bereidt u twee Azure CLI-sessies voor. Als u de Cloud Shell gebruikt, voert u de twee sessies uit op afzonderlijke browser tabbladen. Als u een lokale CLI-client gebruikt, voert u twee afzonderlijke CLI-instanties uit. U gebruikt de eerste sessie als een gesimuleerd apparaat en de tweede sessie om berichten te controleren en te verzenden. Als u een opdracht wilt uitvoeren, selecteert u **kopiëren** om een code blok in deze Snelstartgids te kopiëren, plakt u deze in de shell-sessie en voert u deze uit.
 
 Voor Azure CLI moet u zijn aangemeld bij uw Azure-account. Alle communicatie tussen uw Azure CLI-shell sessie en uw IoT-hub wordt geverifieerd en versleuteld. Als gevolg hiervan heeft deze Snelstartgids geen aanvullende verificatie nodig die u zou gebruiken met een echt apparaat, zoals een connection string.
 
-1. Voer de opdracht [AZ extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) toe om de Microsoft Azure IOT-extensie voor Azure cli toe te voegen aan uw cli-shell. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
+*  Voer de opdracht [AZ extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) toe om de Microsoft Azure IOT-extensie voor Azure cli toe te voegen aan uw cli-shell. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Nadat u de Azure IOT-extensie hebt geïnstalleerd, hoeft u deze niet opnieuw te installeren in een Cloud Shell sessie. 
+   
+   Nadat u de Azure IOT-extensie hebt geïnstalleerd, hoeft u deze niet opnieuw te installeren in een Cloud Shell sessie. 
 
-1. Open een tweede CLI-sessie.  Als u de Cloud Shell gebruikt, selecteert u **nieuwe sessie openen**. Als u de CLI lokaal gebruikt, opent u een tweede exemplaar. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Nieuwe Cloud Shell-sessie openen](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  Open een tweede CLI-sessie.  Als u de Cloud Shell gebruikt, selecteert u **nieuwe sessie openen**. Als u de CLI lokaal gebruikt, opent u een tweede exemplaar. 
+
+    >[!div class="mx-imgBorder"]
+    >![nieuwe Cloud Shell-sessie openen](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 In deze sectie gebruikt u de Azure CLI voor het maken van een resource groep en een IoT Hub.  Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Een IoT Hub fungeert als een centrale Message hub voor bidirectionele communicatie tussen uw IoT-toepassing en de apparaten. 

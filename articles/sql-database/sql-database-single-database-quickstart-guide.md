@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 4332d57c8d5587a34ba3a593deb9bd635132b03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6070b53e5f906bc378402d98275b8f798f57b505
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674434"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Aan de slag met individuele databases in Azure SQL Database
 
 [Een individuele database](sql-database-single-index.yml) is een volledig beheerde PaaS-database-als-een-service (DbaaS) die ideaal is als opslag-engine voor moderne toepassingen in de cloud. In dit gedeelte leert u hoe u snel een individuele SQL Database maakt en configureert.
 
-## <a name="quickstart-overview"></a>Quickstart-overzicht
+## <a name="quickstart-overview"></a>Overzicht van quickstarts
 
 Dit gedeelte bevat een overzicht van beschikbare artikelen waarmee u snel aan de slag kunt met individuele databases. In de volgende quickstarts leert u snel een individuele database te maken, een firewallregel voor databaseservers te configureren en vervolgens een database te importeren in de nieuwe individuele database via een `.bacpac`-bestand:
 
@@ -34,10 +34,8 @@ Dit gedeelte bevat een overzicht van beschikbare artikelen waarmee u snel aan de
 
 U kunt PowerShell of Azure CLI gebruiken om uw database te maken, configureren en schalen.
 
-- [Een individuele database maken met PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)
-- [Een individuele database maken met Azure CLI](scripts/sql-database-create-and-configure-database-cli.md)
-- [Een individuele database bijwerken en resources schalen met PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [Een individuele database bijwerken en resources schalen met Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [Een afzonderlijke data base maken en configureren met Power shell](scripts/sql-database-create-and-configure-database-powershell.md) of [Azure cli](scripts/sql-database-create-and-configure-database-cli.md)
+- [Uw afzonderlijke data base bijwerken en resources schalen met Power shell](scripts/sql-database-monitor-and-scale-database-powershell.md) of [Azure cli](scripts/sql-database-monitor-and-scale-database-cli.md)
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migreren naar een individuele database met minimale downtime
 

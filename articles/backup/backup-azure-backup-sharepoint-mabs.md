@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met MABS
 description: Gebruik Azure Backup Server om back-ups te maken van uw share point-gegevens en deze te herstellen. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584248"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673128"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
 
@@ -127,7 +127,7 @@ Nadat u MABS en de share point-farm hebt geconfigureerd zoals eerder is uitgeleg
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS biedt een maximum van twee dagelijkse back-ups naar Azure vanaf het meest beschik bare meest recente back-uppunt van de schijf. Azure Backup kunt ook de hoeveelheid WAN-band breedte bepalen die kan worden gebruikt voor back-ups in piek-en piek uren met behulp van [Azure backup netwerk beperking](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling).
+    > MABS biedt een maximum van twee dagelijkse back-ups naar Azure vanaf het meest beschik bare meest recente back-uppunt van de schijf. Azure Backup kunt ook de hoeveelheid WAN-band breedte bepalen die kan worden gebruikt voor back-ups in piek-en piek uren met behulp van [Azure backup netwerk beperking](backup-windows-with-mars-agent.md#enable-network-throttling).
     >
     >
 11. Afhankelijk van het back-upschema dat u hebt geselecteerd, selecteert u op de pagina **online retentie beleid opgeven** het Bewaar beleid voor dagelijkse, wekelijkse, maandelijkse en jaarlijkse back-uppunten.

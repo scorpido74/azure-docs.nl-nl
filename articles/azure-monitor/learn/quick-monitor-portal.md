@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661700"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894856"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Begin uw ASP.NET-webtoepassing te controleren
 
@@ -23,7 +23,7 @@ Deze snelstartgids laat zien hoe u Application Insights kunt toevoegen aan een b
 ## <a name="prerequisites"></a>Vereisten
 Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+- Installeer [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 
@@ -70,7 +70,7 @@ U kunt nu Application Insights openen in Azure Portal om allerlei gegevens over 
 
 3. Klik op het pictogram **app Analytics** ![toepassings overzicht](media/quick-monitor-portal/app-viewinlogs-icon.png) **weer gave in Logboeken (Analytics)** voor een van de toepassings onderdelen. Hiermee opent u **Logboeken (Analytics)** , dat een uitgebreide query taal biedt voor het analyseren van alle gegevens die zijn verzameld door Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
-    ![Analyse](media/quick-monitor-portal/6viewanalytics.png)
+    ![Analytische gegevens](media/quick-monitor-portal/6viewanalytics.png)
 
 4. Klik op **Live Metrics stream** aan de linkerkant onder onderzoek. Hier worden live statistieken weergegeven over uw toepassing terwijl deze wordt uitgevoerd. Dit zijn onder andere gegevens over het aantal inkomende aanvragen, de duur van deze aanvragen en eventuele fouten die optreden. U kunt ook kritieke prestatiegegevens inspecteren, zoals de processor en het geheugen.
 

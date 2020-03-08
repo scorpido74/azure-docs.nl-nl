@@ -3,12 +3,12 @@ title: Over opslag plaatsen & installatie kopieën
 description: Inleiding tot de belangrijkste concepten van Azure-container registers, opslag plaatsen en container installatie kopieën.
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362347"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669021"
 ---
 # <a name="about-registries-repositories-and-images"></a>Over registers, opslag plaatsen en installatie kopieën
 
@@ -24,9 +24,7 @@ Naast docker-container installatie kopieën ondersteunt Azure Container Registry
 
 Het adres van een artefact in een Azure container Registry bevat de volgende elementen. 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **loginUrl** : de volledig gekwalificeerde naam van de registerpad. De Registry-host in een Azure container Registry heeft de indeling *myregistry*. azurecr.io (alle kleine letters). U moet de loginUrl opgeven wanneer u docker of andere client hulpprogramma's gebruikt om artefacten te halen of te pushen naar een Azure container Registry. 
 * **naam ruimte** -slash-gescheiden logische groepering van gerelateerde installatie kopieën of artefacten, bijvoorbeeld voor een werk groep of app
@@ -36,9 +34,7 @@ Het adres van een artefact in een Azure container Registry bevat de volgende ele
 
 De volledige naam van een installatie kopie in een Azure container Registry kan er bijvoorbeeld als volgt uitzien:
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 Raadpleeg de volgende secties voor meer informatie over deze elementen.
 
@@ -46,21 +42,18 @@ Raadpleeg de volgende secties voor meer informatie over deze elementen.
 
 Container registers beheren *opslag*plaatsen, verzamelingen container installatie kopieën of andere artefacten met dezelfde naam, maar met verschillende Tags. De volgende drie installatie kopieën bevinden zich bijvoorbeeld in de opslag plaats ' ACR-HelloWorld ':
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *ACR-HelloWorld: nieuwste*
+- *ACR-HelloWorld: v1*
+- *ACR-HelloWorld: v2*
 
 Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u installatie kopieën groeperen met behulp van door slash gescheiden namen van opslag plaatsen, bijvoorbeeld:
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *Marketing/campaign10-18/Web: v2*
+- *Marketing-campaign10-18/API: v3*
+- *Marketing-campaign10-18/Email-Sender: v2*
+- *product-retouren/webverzending: 20180604*
+- *product-retourneert/legacy-integrator: 20180715*
 
 ## <a name="image"></a>Installatiekopie
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 Geef bijvoorbeeld de manifesten voor de opslag plaats ' ACR-HelloWorld ' weer:
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,9 +124,7 @@ U kunt een installatie kopie van een REGI ster ophalen door de samen vatting op 
 
 U kunt bijvoorbeeld een installatie kopie ophalen uit de opslag plaats ' ACR-HelloWorld ' per manifest Digest:
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > Als u herhaaldelijk gewijzigde installatie kopieën met identieke Tags pusht, kunt u zwevende installatie kopieën maken--installatie kopieën die niet zijn gelabeld, maar nog steeds ruimte in uw REGI ster gebruiken. Niet-gelabelde afbeeldingen worden niet weer gegeven in de Azure CLI of in het Azure Portal wanneer u afbeeldingen op label lijst of weer geven. De lagen zijn echter nog steeds aanwezig en gebruiken ruimte in het REGI ster. Als u een niet-gecodeerde afbeelding verwijdert, maakt u register ruimte vrij wanneer het manifest de enige is, of het laatste, dat verwijst naar een bepaalde laag. Zie [container installatie kopieën in azure container Registry verwijderen](container-registry-delete.md)voor meer informatie over het vrijmaken van ruimte die wordt gebruikt door niet-gecodeerde installatie kopieën.
