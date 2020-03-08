@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981110"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893036"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
 
 De term encoding in Media Services is van toepassing op het proces van het converteren van bestanden met digitale video en/of audio van de ene standaard indeling naar een andere, met het doel van (a) om de grootte van de bestanden te reduceren en/of (b) die een indeling produceert die compatibel is met een groot aantal apparaten en apps. Dit proces wordt ook wel video compressie of transcode ring genoemd. Zie [gegevens compressie](https://en.wikipedia.org/wiki/Data_compression) en [Wat is code ring en trans codering?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) voor verdere bespreking van de concepten.
 
 Video's worden meestal geleverd aan apparaten en apps door [progressief te downloaden](https://en.wikipedia.org/wiki/Progressive_download) of door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
+
+> [!IMPORTANT]
+> Media Services worden geen geannuleerde of fout taken gefactureerd. Een taak die bijvoorbeeld een voortgang van 50% heeft bereikt en wordt geannuleerd, wordt niet in rekening gebracht tegen 50% van de taak minuten. Er worden alleen kosten in rekening gebracht voor voltooide taken.
 
 * Voor het leveren van een progressieve down load kunt u Azure Media Services gebruiken om een digitaal media bestand (mezzanine) te converteren naar een [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -bestand, dat Video's bevat die zijn gecodeerd met de [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) -codec en de audio die is gecodeerd met de [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -codec. Dit MP4-bestand wordt naar een asset in uw opslag account geschreven. U kunt de Azure Storage Api's of Sdk's (bijvoorbeeld [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) gebruiken om het bestand rechtstreeks te downloaden. Als u het uitvoer activum hebt gemaakt met een specifieke container naam in Storage, gebruikt u die locatie. Als dat niet het geval is, kunt u Media Services gebruiken om [de url's van de Asset-container weer te geven](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Om inhoud voor te bereiden voor levering door Adaptive Bitrate Streaming, moet het mezzanine-bestand worden gecodeerd op meerdere bitsnelheden (hoog naar laag). Om te zorgen voor een correcte overgang van kwaliteit, wordt de resolutie van de video verlaagd naarmate de bitsnelheid wordt verlaagd. Dit resulteert in een zogenaamde coderings ladder, een tabel met resoluties en bitrates (zie een [automatisch gegenereerde, Adaptive bitrate ladder](autogen-bitrate-ladder.md)). U kunt Media Services gebruiken om uw mezzanine-bestanden op meerdere bitsnelheden te coderen. In dat geval krijgt u een set van MP4-bestanden en bijbehorende streaming-configuratie bestanden die worden geschreven naar een asset in uw opslag account. U kunt vervolgens de [dynamische verpakkings](dynamic-packaging-overview.md) functie in Media Services gebruiken om de video via streaming protocollen zoals [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) en [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)te leveren. Hiervoor moet u een streaming- [Locator](streaming-locators-concept.md) maken en streaming-url's bouwen die overeenkomen met de ondersteunde protocollen. deze kunnen vervolgens worden door gegeven aan apparaten/apps op basis van hun mogelijkheden.
@@ -41,7 +44,7 @@ Als u wilt coderen met Media Services v3, moet u een [trans formatie](https://do
 
 Wanneer de codering met Media Services, gebruikt u voorinstellingen voor het coderingsprogramma vertellen hoe de invoer media-bestanden moeten worden verwerkt. U kunt bijvoorbeeld de video oplossing en/of het aantal audio kanalen die u wilt opgeven in de gecodeerde inhoud.
 
-U kunt snel aan de slag met een van de aanbevolen ingebouwde voorinstellingen op basis van aanbevolen procedures voor de bedrijfstak of u kunt kiezen om het bouwen van een aangepaste voorinstelling wilt richten op uw specifieke vereisten voor scenario of het apparaat. Zie voor meer informatie, [coderen met een aangepaste transformatie](customize-encoder-presets-how-to.md).
+U kunt snel aan de slag met een van de aanbevolen ingebouwde voorinstellingen op basis van aanbevolen procedures voor de bedrijfstak of u kunt kiezen om het bouwen van een aangepaste voorinstelling wilt richten op uw specifieke vereisten voor scenario of het apparaat. Zie [coderen met een aangepaste trans formatie](customize-encoder-presets-how-to.md)voor meer informatie.
 
 Met ingang van 1 januari 2019 tijdens het coderen met Media Encoder Standard voor het maken van MP4-bestand (en), wordt er een nieuw. mpi-bestand gegenereerd dat wordt toegevoegd aan de uitvoer Asset. Dit MPI-bestand is bedoeld om de prestaties te verbeteren voor [dynamische pakket](dynamic-packaging-overview.md) -en streaming-scenario's.
 
@@ -135,6 +138,12 @@ In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de
 ## <a name="scaling-encoding-in-v3"></a>Encoding in v3 schalen
 
 Zie [schalen met CLI](media-reserved-units-cli-how-to.md)voor informatie over het schalen van media verwerking.
+
+## <a name="billing"></a>Facturering
+
+Media Services worden geen geannuleerde of fout taken gefactureerd. Een taak die bijvoorbeeld een voortgang van 50% heeft bereikt en wordt geannuleerd, wordt niet in rekening gebracht tegen 50% van de taak minuten. Er worden alleen kosten in rekening gebracht voor voltooide taken.
+
+Ga voor meer informatie naar het overzicht van [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772105"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924802"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [SMB-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In dit artikel ziet u twee manieren om een Azure-bestands share te koppelen: op aanvraag met de `mount`-opdracht en de opstart procedure door een vermelding in `/etc/fstab`te maken.
@@ -24,7 +24,7 @@ De aanbevolen manier om een Azure-bestands share te koppelen aan Linux maakt geb
 | Ubuntu | 14.04 + | 16.04 + |
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
 | CentOS | 7+ |  7.5 + |
-| Debian | 8 + | 10+ |
+| Debian | 8 + | 10 + |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
@@ -276,11 +276,11 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Feedback
 Linux-gebruikers willen we graag van u horen.
 
-De groep Azure Files voor Linux-gebruikers biedt een forum waarmee u feedback kunt delen tijdens het evalueren en aannemen van bestands opslag in Linux. E-mail [Azure files Linux-gebruikers](mailto:azurefileslinuxusers@microsoft.com) om lid te worden van de groep gebruikers.
+De groep Azure Files voor Linux-gebruikers biedt een forum waarmee u feedback kunt delen tijdens het evalueren en aannemen van bestands opslag in Linux. E-mail [Azure files Linux-gebruikers](mailto:azurefiles@microsoft.com) om lid te worden van de groep gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
 * [Implementatie van Azure Files plannen](storage-files-planning.md)
 * [Veelgestelde vragen](../storage-files-faq.md)
-* [Probleemoplossing](storage-troubleshoot-linux-file-connection-problems.md)
+* [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945317"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389336"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -64,7 +64,7 @@ U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../q
 De POST-aanvraag gebruikt:
 
 * Vereiste [URI-para meters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Vereiste [header-eigenschap](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, voor beveiliging
+* Vereiste header-eigenschap, `Authorization`, voor beveiliging
 * Vereiste [Eigenschappen van de hoofd tekst](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 De GenerateAnswer-URL heeft de volgende indeling:
@@ -245,7 +245,7 @@ U kunt in de gepubliceerde KB zoeken met behulp van `isTest=false`of in de test 
 
 ## <a name="common-http-errors"></a>Veelvoorkomende HTTP-fouten
 
-|Coderen|Uitleg|
+|Code|Uitleg|
 |:--|--|
 |2xx|Geslaagd|
 |400|de aanvraagparameters zijn onjuist wat betekent dat de vereiste parameters ontbreken, onjuist gevormd of te groot zijn|

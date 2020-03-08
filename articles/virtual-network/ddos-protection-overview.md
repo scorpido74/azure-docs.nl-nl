@@ -1,13 +1,9 @@
 ---
-title: Azure DDoS Protection Standard-overzicht | Microsoft Docs
+title: Azure DDoS Protection standaard overzicht
 description: Meer informatie over de Azure DDoS Protection-Service.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905186"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389982"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
 
-DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putten, waardoor de toepassing niet meer beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
+DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Een DDoS-aanval probeert de bronnen van een toepassing te ontnemen, waardoor de toepassing niet beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
 
 Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerpen van toepassingen, biedt verdediging tegen DDoS-aanvallen. Azure DDoS Protection biedt de volgende service lagen:
 
@@ -37,7 +33,7 @@ Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerp
 |Automatische aanvals oplossingen                    |Ja                                   |Ja                                           |
 |Beschikbaarheids garantie                          |Azure-regio                          |Toepassing                                   |
 |Risico beperkings beleid                             |Afgestemd op volume van Azure Traffic Region |Afgestemd op volume van toepassings verkeer          |
-|Metrische gegevens en waarschuwingen                                |Nee                                    |Realtime aanvals metrieken & Diagnostische logboeken via Azure monitor                                 |
+|Metrische gegevens & waarschuwingen                                |Nee                                    |Realtime aanvals metrieken & Diagnostische logboeken via Azure monitor                                 |
 |Risico beperkings rapporten                              |Nee                                    |Rapporten voor risico beperking na aanvallen                |
 |Stroom logboeken voor risico beperking                            |Nee                                    |NRT-logboek stroom voor SIEM-integratie           |
 |Aanpassingen migratie beleid                 |Nee                                    |DDoS-experts benaderen                           |

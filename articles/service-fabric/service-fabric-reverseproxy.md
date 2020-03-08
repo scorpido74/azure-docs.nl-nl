@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464295"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899358"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverse proxy in azure Service Fabric
 Met omgekeerde proxy die in azure Service Fabric is ingebouwd, kunnen micro services die worden uitgevoerd in een Service Fabric cluster worden gedetecteerd en gecommuniceerd met andere services met http-eind punten.
@@ -80,7 +80,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
   * Wanneer de doel service stateless is, pickt reverse proxy een wille keurig exemplaar van de service partitie om de aanvraag door te sturen naar.
 * **Time-out:**  Hiermee geeft u de time-out op voor de HTTP-aanvraag die is gemaakt door de omgekeerde proxy naar de service namens de client aanvraag. De standaard waarde is 60 seconden. Dit is een optionele para meter.
 
-### <a name="example-usage"></a>Gebruiksvoorbeelden
+### <a name="example-usage"></a>Voor beeld van gebruik
 Als voor beeld gaat u naar de service *Fabric:/MyApp/MyService* waarmee een HTTP-listener wordt geopend op de volgende URL:
 
 ```
@@ -117,7 +117,7 @@ De Service Fabric reverse-proxy probeert een service adres opnieuw op te lossen 
 
 Replica's of service-exemplaren kunnen echter een hostproces delen en kunnen ook een poort delen wanneer deze wordt gehost door een http. sys-gebaseerde webserver, waaronder:
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [Weblistener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

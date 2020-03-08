@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-communicatie-protocollen en poorten | Microsoft Docs
-description: Handleiding voor ontwikkelaars - beschrijving van de ondersteunde communicatieprotocollen voor communicatie van apparaat-naar-cloud en cloud-naar-apparaat en de poortnummers die geopend worden moet.
+title: Communicatie protocollen en poorten voor Azure IoT Hub | Microsoft Docs
+description: 'Ontwikkelaars handleiding: hierin worden de ondersteunde communicatie protocollen voor apparaat-naar-Cloud-en Cloud-naar-apparaat-communicatie en de te openen poort nummers beschreven.'
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669326"
 ---
-# <a name="reference---choose-a-communication-protocol"></a>Verwijzen naar - een communicatieprotocol kiezen
+# <a name="reference---choose-a-communication-protocol"></a>Referentie-Kies een communicatie protocol
 
-IoT Hub kunt u apparaten met de volgende protocollen voor communicatie van apparaat:
+Met IoT Hub kunnen apparaten de volgende protocollen gebruiken voor communicatie aan de apparaten:
 
 * [MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
 * MQTT via WebSockets
@@ -25,34 +25,34 @@ IoT Hub kunt u apparaten met de volgende protocollen voor communicatie van appar
 * AMQP via WebSockets
 * HTTPS
 
-Zie voor meer informatie over hoe deze protocollen specifieke IoT-Hub-functies ondersteunen [richtlijnen voor communicatie van apparaat-naar-cloud](iot-hub-devguide-d2c-guidance.md) en [Cloud-to-device communications guidance](iot-hub-devguide-c2d-guidance.md).
+Zie [apparaat-naar-Cloud-communicatie richtlijnen](iot-hub-devguide-d2c-guidance.md) en [Cloud-naar-apparaat-communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md)voor meer informatie over de wijze waarop deze protocollen specifieke IOT hub functies ondersteunen.
 
-De volgende tabel bevat de op hoog niveau aanbevelingen voor de keuze van protocol:
+De volgende tabel bevat de aanbevelingen op hoog niveau voor uw keuze van het Protocol:
 
 | Protocol | Wanneer u dit protocol moet kiezen |
 | --- | --- |
-| MQTT <br> MQTT via WebSocket |Gebruik op alle apparaten die niet nodig hebben om meerdere apparaten (elk met een eigen referenties per apparaat) via de dezelfde TLS-verbinding verbinding te maken. |
-| AMQP <br> AMQP via WebSocket |Op veld en cloud-gateways gebruiken om te profiteren van multiplexing via apparaten verbinding. |
-| HTTPS |Gebruik voor de apparaten die niet kan ondersteuning voor andere protocollen bieden. |
+| MQTT <br> MQTT via WebSocket |Gebruik op alle apparaten die geen verbinding hoeven te maken met meerdere apparaten (elk met een eigen referenties per apparaat) via dezelfde TLS-verbinding. |
+| AMQP <br> AMQP via WebSocket |Gebruik op veld-en Cloud gateways om verbinding te maken met multiplexing op verschillende apparaten. |
+| HTTPS |Gebruiken voor apparaten die geen ondersteuning bieden voor andere protocollen. |
 
-De volgende punten overwegen wanneer u ervoor uw protocol voor communicatie van apparaat kiest:
+Houd rekening met de volgende punten wanneer u uw protocol kiest voor communicatie aan de apparaten:
 
-* **Cloud-naar-apparaat patroon**. HTTPS heeft geen een efficiënte manier voor het implementeren van server-push. Als zodanig, wanneer u HTTPS gebruikt, pollen apparaten IoT Hub voor cloud-naar-apparaat-berichten. Deze benadering is inefficiënt voor het apparaat en de IoT Hub. Onder de huidige richtlijnen voor HTTPS, moet elk apparaat gecontroleerd op berichten elke 25 minuten of langer. MQTT en AMQP ondersteuning voor server push bij het ontvangen van berichten van cloud-naar-apparaat. Ze inschakelen direct pushes van berichten uit IoT Hub op het apparaat. Als levering latentie is een probleem, zijn MQTT- of AMQP de beste protocollen gebruiken. Voor zelden verbonden apparaten, wordt HTTPS als goed werkt.
+* **Patroon van Cloud naar apparaat**. HTTPS heeft geen efficiënte manier voor het implementeren van server push. Wanneer u HTTPS gebruikt, worden de apparaten gecontroleerd IoT Hub voor Cloud-naar-apparaat-berichten. Deze aanpak is inefficiënt voor zowel het apparaat als het IoT Hub. Onder de huidige HTTPS-richt lijnen moet elk apparaat elke 25 minuten een poll voor berichten ontvangen. MQTT en AMQP ondersteunings server push bij het ontvangen van Cloud-naar-apparaat-berichten. Ze scha kelen onmiddellijke push berichten van IoT Hub naar het apparaat. Als leverings latentie een probleem is, zijn MQTT of AMQP de beste protocollen om te gebruiken. Voor zelden verbonden apparaten werkt HTTPS ook.
 
-* **Veld gateways**. Wanneer u MQTT- en HTTPS, u meerdere apparaten (elk met een eigen referenties per apparaat) kan geen verbinding kunt maken met behulp van dezelfde TLS-verbinding. Voor [veld gatewayscenario's](iot-hub-devguide-endpoints.md#field-gateways) waarvoor een TLS-verbinding tussen de veldgateway en IoT Hub voor elk verbonden apparaat vereist, zijn deze protocollen suboptimale.
+* **Veld gateways**. Wanneer u MQTT en HTTPS gebruikt, kunt u niet meerdere apparaten (elk met een eigen referenties per apparaat) verbinden met dezelfde TLS-verbinding. Voor [veld Gateway scenario's](iot-hub-devguide-endpoints.md#field-gateways) waarvoor een TLS-verbinding tussen de gateway van het veld en IOT hub voor elk aangesloten apparaat is vereist, zijn deze protocollen in het ideale netwerk.
 
-* **Lage resource apparaten**. Het MQTT- en HTTPS-bibliotheken hebben een kleinere footprint dan de AMQP-bibliotheken. Als het apparaat heeft beperkte resources (bijvoorbeeld minder dan 1 MB RAM-geheugen), kunnen deze protocollen daarom alleen protocolimplementatie beschikbaar zijn.
+* **Weinig bron apparaten**. De MQTT-en HTTPS-bibliotheken hebben een kleinere footprint dan de AMQP-bibliotheken. Als het apparaat een beperkt aantal bronnen heeft (bijvoorbeeld minder dan 1 MB RAM-geheugen), zijn deze protocollen mogelijk de enige protocol implementatie die beschikbaar is.
 
-* **Netwerk-traversal**. Het AMQP-protocol gebruikt poort 5671 en MQTT luistert op poort 8883. Gebruik van deze poorten kan problemen veroorzaken in netwerken die niet-HTTPS-protocollen worden gesloten. MQTT via WebSockets, AMQP via WebSockets of HTTPS in dit scenario gebruiken.
+* **Netwerk-traversal**. Het standaard AMQP-protocol gebruikt poort 5671 en MQTT luistert op poort 8883. Het gebruik van deze poorten kan problemen veroorzaken in netwerken die worden gesloten met niet-HTTPS-protocollen. Gebruik MQTT over websockets, AMQP via websockets of HTTPS in dit scenario.
 
-* **Nettolading**. MQTT en AMQP zijn binaire protocollen, die leiden tot meer compacte nettoladingen dan HTTPS.
+* **Grootte van nettolading**. MQTT en AMQP zijn binaire protocollen, wat resulteert in meer compact payloads dan HTTPS.
 
 > [!WARNING]
-> Wanneer u HTTPS gebruikt, moet elk apparaat voor cloud-naar-apparaatberichten pollen elke 25 minuten of langer. Tijdens de ontwikkeling is het echter aanvaardbaar is voor het pollen vaker dan elke 25 minuten.
+> Wanneer u HTTPS gebruikt, moet elk apparaat niet vaker dan eens in de 25 minuten worden gepeild voor Cloud-naar-apparaat-berichten. In de ontwikkeling kan elk apparaat vaker worden doorzocht, indien gewenst.
 
-## <a name="port-numbers"></a>Poortnummers
+## <a name="port-numbers"></a>Poort nummers
 
-Apparaten kunnen communiceren met IoT Hub in Azure met behulp van verschillende protocollen. Normaal gesproken wordt de keuze van protocol bepaald door de specifieke vereisten van de oplossing. De volgende tabel bevat de uitgaande poorten die geopend voor een apparaat worden moeten te kunnen een specifieke protocol te gebruiken:
+Apparaten kunnen met behulp van verschillende protocollen communiceren met IoT Hub in Azure. Normaal gesp roken wordt de keuze van het protocol aangestuurd door de specifieke vereisten van de oplossing. De volgende tabel geeft een lijst van de uitgaande poorten die open moeten zijn voor een apparaat om een specifiek protocol te kunnen gebruiken:
 
 | Protocol | Poort |
 | --- | --- |
@@ -62,8 +62,8 @@ Apparaten kunnen communiceren met IoT Hub in Azure met behulp van verschillende 
 | AMQP via WebSockets |443 |
 | HTTPS |443 |
 
-Als u een IoT-hub hebt gemaakt in een Azure-regio, blijft de IoT-hub hetzelfde IP-adres voor de levensduur van deze IoT-hub. Echter, als Microsoft de IoT-hub naar een andere schaaleenheid te handhaven van de kwaliteit van de service wordt verplaatst, wordt deze toegewezen een nieuw IP-adres.
+Zodra u een IoT-hub in een Azure-regio hebt gemaakt, behoudt de IoT-hub hetzelfde IP-adres voor de levens duur van de IoT-hub. Als micro soft de IoT-hub echter verplaatst naar een andere schaal eenheid om de kwaliteit van de service te behouden, wordt er een nieuw IP-adres toegewezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over hoe IoT Hub het MQTT-protocol implementeert, [communiceren met uw IoT-hub met behulp van het MQTT-protocol](iot-hub-mqtt-support.md).
+Zie [communiceren met uw IOT-hub met behulp van het MQTT-protocol](iot-hub-mqtt-support.md)voor meer informatie over de wijze waarop IOT hub het MQTT-protocol implementeert.

@@ -3,22 +3,48 @@ title: Release opmerkingen-spraak service
 titleSuffix: Azure Cognitive Services
 description: Een actief logboek van de functie versies, verbeteringen, fout oplossingen en bekende problemen met betrekking tot de spraak service.
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168145"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394779"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0:2020-februari release
+
+**Nieuwe functies**
+ - Python-pakketten zijn toegevoegd ter ondersteuning van de nieuwe 3,8-versie van python.
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64-ondersteuningC++( C#,, Java, python).
+   > [!NOTE] 
+   > Klanten moeten OpenSSL configureren volgens [deze instructies](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux).
+ - Linux ARM32-ondersteuning voor Debian en Ubuntu.
+ - DialogServiceConnector ondersteunt nu een optionele para meter ' bot ID ' op BotFrameworkConfig. Met deze para meter kunt u meerdere directe-regel spraak botsen met één Azure-spraak bron. Als de para meter niet is opgegeven, wordt de standaard-bot gebruikt (zoals wordt bepaald door de configuratie pagina voor direct-spraak kanaal).
+ - DialogServiceConnector heeft nu een SpeechActivityTemplate-eigenschap. De inhoud van deze JSON-teken reeks wordt gebruikt door directe regel spraak om vooraf een breed scala aan ondersteunde velden te vullen in alle activiteiten die een bot met directe lijnen bereiken, inclusief activiteiten die automatisch zijn gegenereerd als reactie op gebeurtenissen als spraak herkenning.
+ - TTS maakt nu gebruik van abonnements sleutel voor verificatie en vermindert de eerste byte latentie van het eerste synthese resultaat nadat een synthesizer is gemaakt.
+ - Bijgewerkte modellen voor spraak herkenning voor 19 land instellingen voor een gemiddelde reductie van een woord fout van 18,6% (es-ES, es-MX, FR-CA, fr-FR, it-IT, ja-JP, ko-KR, punt-k, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, pt-PT, tr-TR). De nieuwe modellen bieden aanzienlijke verbeteringen in meerdere domeinen, waaronder dicteer functies, Call-Center transcriptie en video indexerings scenario's.
+
+**Oplossingen voor oplossingen**
+ - Er is een probleem opgelost waarbij conversatie transcriber niet correct heeft gewacht in JAVA-Api's 
+ - Android x86-emulator reparatie voor Xamarin [github-probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
+ - Ontbrekende toevoegen (ophalen | Set) eigenschaps methoden naar AudioConfig
+ - Een TTS-fout oplossen waarbij de audioDataStream niet kan worden gestopt wanneer de verbinding is mislukt
+ - Het gebruik van een eind punt zonder regio zou USP storingen voor conversatie-vertaler veroorzaken
+ - Voor het genereren van een ID in universele Windows-toepassingen wordt nu een adequaat uniek GUID-algoritme gebruikt. het was voorheen en onbedoeld standaard ingesteld op een stubbed-implementatie die vaak conflicten veroorzaakt in grote sets met interacties.
+ 
+ **Voorbeelden**
+ - Unit-voor beeld voor het gebruik van Speech SDK met [Unity-microfoon en push-modus streaming](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
+
+**Andere wijzigingen**
+ - [Documentatie voor OpenSSL-configuratie is bijgewerkt voor Linux](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0:2020-januari release
 

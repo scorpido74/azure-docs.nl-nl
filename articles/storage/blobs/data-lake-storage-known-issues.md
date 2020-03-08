@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7fd76be8d17dc1c632e555a56d038d4f5c1e1486
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919608"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668778"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -29,7 +29,7 @@ Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebru
 
 Zie [Azure-Services die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Open source-platforms ondersteund
+## <a name="supported-open-source-platforms"></a>Ondersteunde open source-platforms
 
 Data Lake Storage Gen2 ondersteuning voor verschillende open source-platforms. Zie voor een volledige lijst [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
 
@@ -102,7 +102,7 @@ Gebruik alleen versies `1.6.0` of hoger. Er is momenteel een opslag fout die v
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer in azure Portal
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer in de Azure Portal
 
 Acl's worden nog niet ondersteund.
 
@@ -111,6 +111,14 @@ Acl's worden nog niet ondersteund.
 ## <a name="thirdpartyapplications"></a>Toepassingen van derden
 
 Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2 toepassingen die BLOB-Api's aanroepen, waarschijnlijk zullen werken.
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Toegangs beheer lijsten (ACL) en anonieme lees toegang
+
+Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
+
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Stuur programma voor Windows Azure Storage Blob (WASB)
+
+Er zijn op dit moment diverse problemen met het gebruik van het WASB-stuur programma samen met accounts die een hiërarchische naam ruimte hebben. U wordt aangeraden het [ABFS-stuur programma (Azure Blob File System)](data-lake-storage-abfs-driver.md) in uw workloads te gebruiken. 
 
 
 

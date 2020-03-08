@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
-ms.author: sedusch
+ms.date: 03/05/2020
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616820"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893070"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -416,85 +416,88 @@ Als u gegevens wilt verzamelen voor het plannen van uw implementatie in azure, i
 Details over ondersteunde SAP-onderdelen op Azure, ondersteunde Azure-infrastructuur eenheden en gerelateerde versies van besturings systemen en DBMS-releases worden uitgelegd in het artikel [wat SAP-software ondersteunt voor Azure-implementaties](./sap-supported-product-on-azure.md). De resultaten van de evaluatie van geldige SAP-releases, besturings systemen en DBMS-releases hebben een grote invloed op de inspanningen die SAP-systemen verplaatsen naar Azure. De resultaten van deze evaluatie zijn het bepalen of er aanzienlijke voorbereidings inspanningen kunnen zijn in gevallen waarin SAP-release-upgrades of wijzigingen van besturings systemen nodig zijn.
 
 
+## <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure-regio's
+De Azure-Services van micro soft worden verzameld in azure-regio's. Een Azure-regio is een verzameling van data centers die de hardware en infra structuur bevatten die de verschillende Azure-Services uitvoert en host. Deze infra structuur bevat een groot aantal knoop punten die als reken knooppunten of opslag knooppunten functioneren of netwerk functionaliteit uitvoeren. 
 
-## <a name="first-steps-planning-a-deployment"></a>Eerste stappen voor het plannen van een implementatie
-De eerste stap in de implementatie planning is niet controleren op Vm's die beschikbaar zijn om SAP uit te voeren. De eerste stap is een tijd die tijdrovend is, maar het belangrijkste is dat u met nalevings-en beveiligings teams in uw bedrijf kunt werken met de grens waarden voor het implementeren van het type SAP-werk belasting of het bedrijfs proces in een open bare Cloud. Als uw bedrijf andere software vóór Azure heeft geïmplementeerd, kan het proces gemakkelijk zijn. Als uw bedrijf meer aan het begin van de reis is, zijn er mogelijk grotere discussies nodig om de grens waarden en beveiligings voorwaarden te achterhalen, waardoor bepaalde SAP-gegevens en SAP-bedrijfs processen kunnen worden gehost in een open bare Cloud.
+Voor een lijst van de verschillende Azure-regio's raadpleegt u het artikel [Azure-geografs](https://azure.microsoft.com/global-infrastructure/geographies/). Niet alle Azure-regio's bieden dezelfde services. Afhankelijk van het SAP-product dat u wilt uitvoeren en het besturings systeem en het DBMS dat erin is gerelateerd, kunt u een situatie ontvangen dat een bepaalde regio niet de VM-typen bevat die u nodig hebt. Dit geldt met name voor het uitvoeren van SAP HANA, waarbij u doorgaans Vm's van de M/Mv2 VM-serie nodig hebt. Deze VM-families worden alleen geïmplementeerd in een subset van de regio's. U kunt meer informatie vinden over de exacte VM, typen, Azure-opslag typen of andere Azure-Services die beschikbaar zijn in welke regio's, met behulp van de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/). Wanneer u de planning start en bepaalde regio's in acht neemt als primaire regio en uiteindelijk secundaire regio, moet u eerst onderzoeken of de benodigde services in die regio's beschikbaar zijn. 
 
-Als nuttige Help kunt u naar [micro soft compliance-aanbiedingen](https://docs.microsoft.com/microsoft-365/compliance/offering-home) verwijzen voor een lijst met compatibiliteits aanbiedingen die micro soft kan bieden. 
+### <a name="availability-zones"></a>Beschikbaarheidszones
+Verschillende Azure-regio's hebben een concept geïmplementeerd met de naam Beschikbaarheidszones. Beschikbaarheidszones zijn fysiek gescheiden locaties binnen een Azure-regio. Elke beschikbaarheids zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Als u bijvoorbeeld twee virtuele machines in twee Beschikbaarheidszones van Azure implementeert en een Framework met hoge Beschik baarheid implementeert voor uw SAP DBMS-systeem of de SAP Central-Services, beschikt u over de beste SLA in Azure. Voor deze specifieke SLA voor virtuele machines in azure, controleert u de meest recente versie van de service overeenkomst van de [virtuele](https://azure.microsoft.com/support/legal/sla/virtual-machines/)machine. Omdat Azure-regio's snel in de afgelopen jaren zijn ontwikkeld en uitgebreid, kan de topologie van de Azure-regio's, het aantal fysieke data centers, de afstand tussen deze data centers en de afstand tussen de Azure-beschikbaarheidszones verschillend zijn. En met de netwerk latentie.
 
-Andere aspecten van problemen zoals gegevens versleuteling voor data-by-rest of andere versleuteling in de Azure-service wordt beschreven in [Azure Encryption Overview](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview)(Engelstalig).
-
-Te laag inschatten deze fase van het project niet in uw planning. Alleen als u akkoord en regels rond dit onderwerp hebt, moet u naar de volgende stap gaan. Dit is de planning van de netwerk architectuur die u in azure implementeert.
+Het principe van Beschikbaarheidszones is niet van toepassing op de HANA-specifieke service van [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Service overeenkomsten voor HANA grote instanties vindt u in het artikel [Sla voor SAP Hana on Azure large instances](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) 
 
 
+### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fout domeinen
+Fout domeinen vertegenwoordigen een fysieke fout eenheid, nauw gerelateerd aan de fysieke infra structuur in data centers en terwijl een fysieke Blade of rek kan worden beschouwd als een fout domein, is er geen directe een-op-een-toewijzing tussen de twee.
 
-## <a name="microsoft-azure-virtual-machine-services"></a>Virtuele machine Services Microsoft Azure
-Het Microsoft Azure platform is een platform voor Cloud Services op Internet dat wordt gehost en beheerd in micro soft-data centers. Het platform bevat de Microsoft Azure virtuele-machine Services (infra structuur als een service of IaaS) en een reeks mogelijkheden voor PaaS (Rich platform as a Service).
+Wanneer u meerdere Virtual Machines implementeert als onderdeel van een SAP-systeem in Microsoft Azure virtual machine Services, kunt u de Azure Fabric-controller beïnvloeden om uw toepassing in verschillende fout domeinen te implementeren, waardoor er hogere vereisten van Beschik baarheid service overeenkomsten. De distributie van fout domeinen via een Azure-schaal eenheid (verzameling van honderden reken knooppunten of opslag knooppunten en netwerken) of de toewijzing van Vm's aan een specifiek fout domein is echter iets waarover u geen directe controle hebt. Als u de Azure Fabric-controller wilt richten op het implementeren van een set virtuele machines in verschillende fout domeinen, moet u een Azure-beschikbaarheidsset toewijzen aan de Vm's tijdens de implementatie. Zie voor meer informatie over Azure-beschikbaarheids sets hoofd stuk [Azure-beschikbaarheids sets][planning-guide-3.2.3] in dit document.
 
-Met het Azure-platform is de behoefte aan technologieën en infrastructuur aankopen van de voor grond verminderd. Het vereenvoudigt het onderhoud en de exploitatie van toepassingen door berekening en opslag op aanvraag te bieden om webtoepassingen en verbonden toepassingen te hosten, te schalen en te beheren. Infrastructuur beheer is geautomatiseerd met een platform dat is ontworpen voor hoge Beschik baarheid en dynamisch schalen om gebruik te kunnen afstemmen op de optie voor een prijs model voor betalen per gebruik.
+
+### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgrade domeinen
+Upgrade domeinen vertegenwoordigen een logische eenheid waarmee u kunt bepalen hoe een virtuele machine binnen een SAP-systeem, die bestaat uit SAP-exemplaren die worden uitgevoerd in meerdere Vm's, wordt bijgewerkt. Wanneer een upgrade wordt uitgevoerd, loopt Microsoft Azure het proces van het bijwerken van deze upgrade domeinen één voor één. Door Vm's te verspreiden tijdens de implementatie via verschillende upgrade domeinen, kunt u uw SAP-systeem gedeeltelijk beschermen tegen potentiële downtime. Als u Azure wilt dwingen de Vm's van een SAP-systeem distributie over verschillende upgrade domeinen te implementeren, moet u een specifiek kenmerk instellen tijdens de implementatie tijd van elke virtuele machine. Net als bij fout domeinen is een Azure-schaal eenheid onderverdeeld in meerdere upgrade domeinen. Als u de Azure Fabric-controller wilt richten op het implementeren van een set Vm's via verschillende upgrade domeinen, moet u een Azure-Beschikbaarheidsset toewijzen aan de Vm's tijdens de implementatie. Zie voor meer informatie over Azure-beschikbaarheids sets hoofd stuk [Azure-beschikbaarheids sets][planning-guide-3.2.3] hieronder.
+
+
+### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure-beschikbaarheids sets
+Azure Virtual Machines binnen één Azure-beschikbaarheidsset worden gedistribueerd door de Azure Fabric-controller via verschillende fout-en upgrade domeinen. Het doel van de distributie over verschillende fout-en upgrade domeinen is om te voor komen dat alle Vm's van een SAP-systeem worden afgesloten in het geval van infrastructuur onderhoud of een storing binnen één fout domein. Standaard maken Vm's geen deel uit van een beschikbaarheidsset. De deelname van een virtuele machine in een beschikbaarheidsset wordt gedefinieerd tijdens de implementatie tijd of later op basis van een herconfiguratie en herimplementatie van een virtuele machine.
+
+Lees [dit artikel][virtual-machines-manage-availability]voor meer informatie over het concept van Azure-beschikbaarheids sets en de manier waarop beschikbaarheids sets betrekking hebben op fout-en upgrade domeinen. 
+
+Bij het definiëren van beschikbaarheids sets en het combi neren van verschillende virtuele machines van verschillende VM-families binnen één beschikbaarheidsset, kunnen er problemen optreden waardoor u een bepaald VM-type niet in een dergelijke beschikbaarheidsset kunt gebruiken. De reden hiervoor is dat de beschikbaarheidsset is gebonden aan de schaal eenheid die een bepaald type Compute-hosts bevat. Met een bepaald type Compute-host kunnen alleen bepaalde typen VM-families worden uitgevoerd. Als u bijvoorbeeld een beschikbaarheidsset maakt en de eerste VM in de beschikbaarheidsset implementeert en u een VM-type van de Esv3-serie kiest en vervolgens probeert te implementeren als tweede virtuele machine van de M-serie, wordt u in de tweede toewijzing geweigerd. De reden hiervoor is dat de Vm's van de Esv3-serie niet op dezelfde host worden uitgevoerd als de virtuele machines van de M-serie. Hetzelfde probleem kan zich voordoen wanneer u de grootte van Vm's probeert te wijzigen en probeert een virtuele machine uit de Esv3-serie te verplaatsen naar een VM-type van de M-serie. In het geval van het wijzigen van de grootte van een VM-serie die niet op dezelfde host kan worden gehost, moet u alle virtuele machines in de beschikbaarheidsset afsluiten en de grootte ervan aanpassen zodat deze kan worden uitgevoerd op het type van de andere host. Voor Sla's van Vm's die in de beschikbaarheidsset worden geïmplementeerd, raadpleegt u het artikel service-Sla's van de [virtuele machine](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+
+Het principe van de beschikbaarheidsset en gerelateerde update en het fout domein zijn niet van toepassing op de HANA-specifieke service van [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Service overeenkomsten voor HANA grote instanties vindt u in het artikel [Sla voor SAP Hana on Azure large instances](https://azure.microsoft.com/support/legal/sla/sap-hana-large/). 
+
+> [!IMPORTANT]
+> De concepten van Azure-beschikbaarheidszones-en Azure-beschikbaarheids sets sluiten elkaar wederzijds uit. Dit betekent dat u een paar of meerdere Vm's kunt implementeren in een specifieke beschikbaarheids zone of een Azure-beschikbaarheidsset. Maar niet beide.
+
+
+## <a name="azure-virtual-machine-services"></a>Azure virtual machine-Services
+Azure biedt een groot aantal verschillende virtuele machines die u kunt selecteren om te implementeren. Er zijn geen technologieën van voor-en infra structuur nodig. De Azure VM service-aanbieding vereenvoudigt het onderhoud en de exploitatie van toepassingen met behulp van Compute en opslag op aanvraag om webtoepassingen en verbonden toepassingen te hosten, te schalen en te beheren. Infrastructuur beheer is geautomatiseerd met een platform dat is ontworpen voor hoge Beschik baarheid en dynamisch schalen om gebruik te kunnen afstemmen op de behoeften van verschillende prijs modellen.
 
 ![Plaatsing van Microsoft Azure Services voor virtuele machines][planning-guide-figure-400]
 
-Met virtuele-machine services van Azure kunt u met micro soft aangepaste server installatie kopieën naar Azure implementeren als IaaS-exemplaren. De Virtual Machines in azure zijn gebaseerd op virtuele harde schijven (VHD) en kunnen verschillende besturings systemen uitvoeren als gast besturingssysteem.
+Met Azure virtual machines kunt u met micro soft aangepaste server installatie kopieën naar Azure implementeren als IaaS-exemplaren. Of u kunt kiezen uit een uitgebreide selectie installatie kopieën van het besturings systeem uit de galerie van Azure-installatie kopieën.
 
-Vanuit een operationeel perspectief biedt de Azure Virtual Machine-Service vergelijk bare ervaringen als virtuele machines die op locatie zijn geïmplementeerd. Het heeft echter het grote voor deel dat u de infra structuur niet hoeft aan te schaffen, te beheren en te beheren. Ontwikkel aars en beheerders hebben volledige controle over de installatie kopie van het besturings systeem op deze virtuele machines. Beheerders kunnen zich op afstand aanmelden bij die virtuele machines om taken voor onderhoud en probleem oplossing uit te voeren, evenals software-implementatie taken. Ten aanzien van de implementatie zijn de enige beperkingen de omvang en de mogelijkheden van Azure Vm's. Deze grootten zijn mogelijk niet zo nauw keurig in de configuratie, omdat deze op locatie kunnen worden uitgevoerd. Er zijn verschillende VM-typen die een combi natie vertegenwoordigen van:
+Vanuit een operationeel perspectief biedt de Azure Virtual Machine-Service vergelijk bare ervaringen als virtuele machines die op locatie zijn geïmplementeerd. U bent verantwoordelijk voor het beheer, de bewerkingen en de patches van het specifieke besturings systeem, dat wordt uitgevoerd in een Azure-VM en de bijbehorende toepassingen in die VM. Micro soft biedt niet meer services die buiten de host vallen van de virtuele machine op de Azure-infra structuur (infra structuur als een service-IaaS). Voor SAP-werk belasting die u als een klant implementeert, heeft micro soft geen aanbiedingen meer dan de IaaS-aanbiedingen. 
 
-* Aantal Vcpu's
-* Geheugen
-* Aantal Vhd's dat kan worden bijgevoegd
-* Netwerk-en opslag bandbreedte
+Het Microsoft Azure platform is een platform met meerdere tenants. Als gevolg van opslag-, netwerk-en reken bronnen die virtuele machines van Azure hosten, zijn er een paar uitzonde ringen die worden gedeeld tussen tenants. Intelligente beperking en quotum logica wordt gebruikt om te voor komen dat een Tenant op een drastische manier de prestaties van een andere Tenant (ruis op de buur) beïnvloedt. Met name voor het certificeren van het Azure-platform voor SAP HANA moet micro soft de bron isolatie bewijzen voor gevallen waarin meerdere Vm's regel matig op dezelfde host kunnen worden uitgevoerd. Hoewel logica in azure probeert om afwijkingen in de band breedte te blijven gebruiken, hebben veel gedeelde platformen vaak grotere afwijkingen in de beschik baarheid van resources en band breedte, dan kunnen klanten zich in hun on-premises implementaties voordoen. De kans dat een SAP-systeem op Azure grotere afwijkingen kan ondervinden dan in een on-premises systeem moet in aanmerking worden genomen.
 
-De grootte en beperkingen van verschillende verschillende groottes van virtuele machines kunnen worden weer gegeven in een tabel in [dit artikel (Linux)][virtual-machines-sizes-linux] en [dit artikel (Windows)][virtual-machines-sizes-windows].
+### <a name="azure-virtual-machines-for-sap-workload"></a>Azure virtual machines voor SAP-workload
 
-Niet alle verschillende VM-reeksen kunnen worden aangeboden in elk van de Azure-regio's. Houd er ook rekening mee dat niet alle Vm's of VM-serie zijn gecertificeerd voor SAP.
+Voor SAP-workload is de selectie beperkt tot verschillende VM-families die geschikt zijn voor SAP-workload en SAP HANA workload specifiek. De manier waarop u het juiste VM-type vindt en de mogelijkheid om te werken met de SAP-workload wordt beschreven in het document [wat SAP-software wordt ondersteund voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure). 
 
-> [!IMPORTANT]
-> Voor het gebruik van SAP NetWeaver, S/4HANA en SAP HANA, worden alleen de subset van VM-typen en configuraties die worden vermeld in SAP-notitie [1928533] ondersteund. Controleer de [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) voor SAP Hana gecertificeerde Azure-eenheden
->
+> [!NOTE]
+> De VM-typen die zijn gecertificeerd voor SAP-werk belasting, er is geen overinrichting van CPU-en geheugen bronnen.
 
-Het Microsoft Azure platform is een platform met meerdere tenants. Als resultaat opslag, netwerk en andere bronnen worden gedeeld tussen tenants. Intelligente beperking en quotum logica wordt gebruikt om te voor komen dat een Tenant op een drastische manier de prestaties van een andere Tenant (ruis op de buur) beïnvloedt. Met name voor het certificeren van het Azure-platform voor SAP HANA moet micro soft de bron isolatie bewijzen voor gevallen waarin meerdere Vm's regel matig op dezelfde host kunnen worden uitgevoerd. Hoewel logica in azure probeert om afwijkingen in de band breedte te blijven gebruiken, hebben veel gedeelde platformen vaak grotere afwijkingen in de beschik baarheid van resources en band breedte, dan kunnen klanten zich in hun on-premises implementaties voordoen. De kans dat een SAP-systeem op Azure grotere afwijkingen kan ondervinden dan in een on-premises systeem moet in aanmerking worden genomen.
+Naast de selectie van uitsluitend ondersteunde Vm's, moet u ook controleren of deze beschikbaar zijn in een bepaalde regio op basis van de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/). Maar belang rijker u moet evalueren of:
 
-Daarom moeten klanten vertrouwd zijn met de verschillende mogelijkheden van de Azure-typen die worden ondersteund met SAP in het gebied van:
+- CPU-en geheugen resources van verschillende VM-typen 
+- Band breedte voor IOPS van verschillende VM-typen
+- Netwerk mogelijkheden van verschillende VM-typen
+- Aantal schijven dat kan worden bijgevoegd
+- De mogelijkheid om bepaalde typen Azure-opslag te gebruiken
 
-* CPU-en geheugen resources van verschillende VM-typen 
-* Band breedte voor IOPS van verschillende VM-typen
-* Netwerk mogelijkheden van verschillende VM-typen
+aan uw behoeften voldoen. De meeste van deze gegevens vindt u [hier (Linux)][virtual-machines-sizes-linux] en [hier (Windows)][virtual-machines-sizes-windows] voor een bepaald VM-type.
 
-De meeste van deze gegevens kunt u [hier (Linux)][virtual-machines-sizes-linux] en [(Windows)][virtual-machines-sizes-windows]vinden.
+Als prijs model hebt u verschillende prijs opties die er als volgt uitzien:
+
+- Betalen per gebruik
+- Een jaar gereserveerd
+- Drie jaar gereserveerd
+- Prijzen voor steun
+
+De prijs van elk van de verschillende aanbiedingen met verschillende service aanbiedingen rond besturings systemen en verschillende regio's is beschikbaar op de site [Linux virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Raadpleeg de volgende artikelen voor meer informatie en flexibiliteit van één jaar en drie gereserveerde exemplaren van een jaar:
+
+- [Wat zijn Azure-reserveringen?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
+- [Hoe de korting voor Azure-reserve ringen wordt toegepast op virtuele machines](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
+
+Lees het artikel [Azure spot virtual machines](https://azure.microsoft.com/pricing/spot/)voor meer informatie over de prijzen. De prijzen van hetzelfde VM-type kunnen ook verschillen tussen de verschillende Azure-regio's. Voor sommige klanten was het waard om te worden geïmplementeerd in een goedkopere Azure-regio.
+
+Daarnaast biedt Azure de concepten van een specifieke host. Het speciale host-concept geeft u meer controle over patch-cycli die door Azure worden uitgevoerd. U kunt de patch op basis van uw eigen planningen laten duren. Deze aanbieding is specifiek gericht op klanten met werk belasting die mogelijk niet de normale werk belasting volgen. Lees voor meer informatie over de concepten van voor Azure exclusieve host aanbiedingen het artikel [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Het gebruik van deze aanbieding wordt ondersteund voor SAP-werk belasting en wordt gebruikt door verschillende SAP-klanten die meer controle moeten hebben over patching van de infra structuur en uiteindelijk onderhouds plannen van micro soft. Lees het artikel [onderhoud voor virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)voor meer informatie over de manier waarop micro soft de Azure-infra structuur die als host fungeert voor virtuele machines, kan lezen en onderhouden.
 
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure-regio's
-Virtual Machines worden geïmplementeerd in de zogenaamde *Azure-regio's*. Een Azure-regio kan een of meer data centers zijn die zich dicht bij elkaar bevinden. Voor de meeste geopolitieke regio's in de wereld heeft micro soft ten minste twee Azure-regio's. In Europa is er bijvoorbeeld een Azure-regio van *Europa-Noord* en een van *Europa-West*. Deze twee Azure-regio's binnen een geopolitieke regio worden gescheiden door aanzienlijke voldoende afstand, zodat natuurlijke of technische rampen geen invloed hebben op beide Azure-regio's in dezelfde geopolitieke regio. Omdat micro soft nieuwe Azure-regio's in verschillende geopolitieke regio's wereld wijd bouwt, is het aantal van deze regio's gestaag toenemend 2015 en is het aantal 20 Azure-regio's met extra regio's al aangekondigd. U als klant kunt SAP-systemen implementeren in al deze regio's, waaronder de twee Azure-regio's in China. Voor actuele informatie over Azure-regio's raadpleegt u deze website: <https://azure.microsoft.com/regions/>
+ 
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Het concept van de Microsoft Azure virtuele machine
-Microsoft Azure biedt een IaaS-oplossing (Infrastructure as a Service) voor het hosten van Virtual Machines met vergelijk bare functies als een on-premises virtualisatieoplossing. U kunt Virtual Machines maken vanuit de Azure Portal, Power shell of CLI, die ook implementatie-en beheer mogelijkheden bieden.
-
-Met Azure Resource Manager kunt u uw toepassingen inrichten met behulp van een declaratieve sjabloon. U kunt in één enkele sjabloon meerdere services plus de bijbehorende afhankelijkheden implementeren. U gebruikt dezelfde sjabloon om uw toepassing herhaaldelijk te implementeren tijdens elke fase van de levens cyclus van de toepassing.
-
-Meer informatie over het gebruik van Resource Manager-sjablonen vindt u hier:
-
-* [Virtuele machines implementeren en beheren met behulp van Azure Resource Manager sjablonen en de Azure CLI](../../linux/create-ssh-secured-vm-from-template.md)
-* [Virtuele machines beheren met Azure Resource Manager en Power shell][virtual-machines-deploy-rmtemplates-powershell]
-* <https://azure.microsoft.com/documentation/templates/>
-
-Een andere interessante functie is de mogelijkheid om installatie kopieën te maken op basis van Virtual Machines, zodat u bepaalde opslag plaatsen kunt voorbereiden op basis waarvan u snel virtuele machine-instanties kunt implementeren, die voldoen aan uw vereisten.
-
-Meer informatie over het maken van installatie kopieën van Virtual Machines vindt u in [dit artikel (Linux)][virtual-machines-linux-capture-image-resource-manager] en [dit artikel (Windows)][virtual-machines-windows-capture-image-resource-manager].
-
-#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fout domeinen
-Fout domeinen vertegenwoordigen een fysieke fout eenheid, nauw gerelateerd aan de fysieke infra structuur in data centers en terwijl een fysieke Blade of rek kan worden beschouwd als een fout domein, is er geen directe een-op-een-toewijzing tussen de twee.
-
-Wanneer u meerdere Virtual Machines implementeert als onderdeel van één SAP-systeem in Microsoft Azure virtual machine Services, kunt u de Azure Fabric-controller beïnvloeden om uw toepassing in verschillende fout domeinen te implementeren, zodat u voldoet aan de vereisten van de SLA Microsoft Azure. De distributie van fout domeinen via een Azure-schaal eenheid (verzameling van honderden reken knooppunten of opslag knooppunten en netwerken) of de toewijzing van Vm's aan een specifiek fout domein is echter iets waarover u geen directe controle hebt. Als u de Azure Fabric-controller wilt richten op het implementeren van een set virtuele machines in verschillende fout domeinen, moet u een Azure-beschikbaarheidsset toewijzen aan de Vm's tijdens de implementatie. Zie voor meer informatie over Azure-beschikbaarheids sets hoofd stuk [Azure-beschikbaarheids sets][planning-guide-3.2.3] in dit document.
-
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgrade domeinen
-Upgrade domeinen vertegenwoordigen een logische eenheid waarmee u kunt bepalen hoe een virtuele machine binnen een SAP-systeem, die bestaat uit SAP-exemplaren die worden uitgevoerd in meerdere Vm's, wordt bijgewerkt. Wanneer een upgrade wordt uitgevoerd, loopt Microsoft Azure het proces van het bijwerken van deze upgrade domeinen één voor één. Door Vm's te verspreiden tijdens de implementatie via verschillende upgrade domeinen, kunt u uw SAP-systeem gedeeltelijk beschermen tegen potentiële downtime. Als u Azure wilt dwingen de Vm's van een SAP-systeem distributie over verschillende upgrade domeinen te implementeren, moet u een specifiek kenmerk instellen tijdens de implementatie tijd van elke virtuele machine. Net als bij fout domeinen is een Azure-schaal eenheid onderverdeeld in meerdere upgrade domeinen. Als u de Azure Fabric-controller wilt richten op het implementeren van een set Vm's via verschillende upgrade domeinen, moet u een Azure-Beschikbaarheidsset toewijzen aan de Vm's tijdens de implementatie. Zie voor meer informatie over Azure-beschikbaarheids sets hoofd stuk [Azure-beschikbaarheids sets][planning-guide-3.2.3] hieronder.
-
-#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure-beschikbaarheids sets
-Azure Virtual Machines binnen één Azure-beschikbaarheidsset worden gedistribueerd door de Azure Fabric-controller via verschillende fout-en upgrade domeinen. Het doel van de distributie over verschillende fout-en upgrade domeinen is om te voor komen dat alle Vm's van een SAP-systeem worden afgesloten in het geval van infrastructuur onderhoud of een storing binnen één fout domein. Standaard maken Vm's geen deel uit van een beschikbaarheidsset. De deelname van een virtuele machine in een beschikbaarheidsset wordt gedefinieerd tijdens de implementatie tijd of later op basis van een herconfiguratie en herimplementatie van een virtuele machine.
-
-Lees [dit artikel][virtual-machines-manage-availability] voor meer informatie over het concept van Azure-beschikbaarheids sets en de manier waarop beschikbaarheids sets betrekking hebben op fout-en upgrade domeinen.
-
-Als u beschikbaarheids sets voor Azure Resource Manager wilt definiëren via een JSON-sjabloon, raadpleegt u [de rest-API-specificaties](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json) en zoekt u op ' Beschik baarheid '.
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Opslag: Microsoft Azure Storage en gegevens schijven
 Microsoft Azure Virtual Machines gebruik verschillende opslag typen. Wanneer u SAP on Azure virtuele machine Services implementeert, is het belang rijk om inzicht te krijgen in de verschillen tussen deze twee hoofd typen opslag:
@@ -799,6 +802,17 @@ Zie voor informatie over de installatie, configuratie en het gebruik van CLI-opd
 
 Lees ook hoofd stuk [Azure CLI voor Linux-vm's][deployment-guide-4.5.2] in de [implementatie handleiding][planning-guide] voor het gebruik van Azure CLI voor het implementeren van de Azure-extensie voor SAP.
 
+
+## <a name="first-steps-planning-a-deployment"></a>Eerste stappen voor het plannen van een implementatie
+De eerste stap in de implementatie planning is niet controleren op Vm's die beschikbaar zijn om SAP uit te voeren. De eerste stap is een tijd die tijdrovend is, maar het belangrijkste is dat u met nalevings-en beveiligings teams in uw bedrijf kunt werken met de grens waarden voor het implementeren van het type SAP-werk belasting of het bedrijfs proces in een open bare Cloud. Als uw bedrijf andere software vóór Azure heeft geïmplementeerd, kan het proces gemakkelijk zijn. Als uw bedrijf meer aan het begin van de reis is, zijn er mogelijk grotere discussies nodig om de grens waarden en beveiligings voorwaarden te achterhalen, waardoor bepaalde SAP-gegevens en SAP-bedrijfs processen kunnen worden gehost in een open bare Cloud.
+
+Als handige Help kunt u naar [micro soft compliance-aanbiedingen](https://docs.microsoft.com/microsoft-365/compliance/offering-home) verwijzen voor een lijst met compatibiliteits aanbiedingen die micro soft kan bieden. 
+
+Andere aspecten van problemen zoals gegevens versleuteling voor data-by-rest of andere versleuteling in de Azure-service wordt beschreven in [Azure Encryption Overview](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview)(Engelstalig).
+
+Te laag inschatten deze fase van het project niet in uw planning. Alleen als u akkoord en regels rond dit onderwerp hebt, moet u naar de volgende stap gaan. Dit is de planning van de netwerk architectuur die u in azure implementeert.
+
+
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Verschillende manieren om Vm's voor SAP in azure te implementeren
 
 In dit hoofd stuk vindt u informatie over de verschillende manieren om een virtuele machine in azure te implementeren. Meer voorbereidende procedures en de verwerking van Vhd's en virtuele machines in azure zijn in dit hoofd stuk opgenomen.
@@ -922,7 +936,7 @@ Een dergelijke virtuele machine hoeft niet te worden gegeneraliseerd en kan word
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Een VHD uploaden en hiervan een Azure-schijf maken
 In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings systeem, en deze koppelen aan een virtuele machine als een gegevens schijf of gebruiken als besturingssysteem schijf. Dit is een proces met meerdere stappen
 
-**Powershell**
+**PowerShell**
 
 * Meld u aan bij uw abonnement met *Connect-AzAccount*
 * Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
@@ -979,7 +993,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Vhd's of Managed Disks op on-premises downloaden
 De Azure-infra structuur als een service is geen eenrichtings straat met alleen Vhd's en SAP-systemen kunnen worden geüpload. U kunt SAP-systemen ook verplaatsen van Azure naar de on-premises wereld.
 
-Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelfs bij het downloaden van schijven die zijn gekoppeld aan Vm's, moet de virtuele machine worden afgesloten en opnieuw worden toegewezen. Als u de inhoud van de data base alleen wilt downloaden, moet u deze gebruiken om een nieuw systeem on-premises in te stellen. als dat wel het geval is, is dat tijdens de Download fase en de installatie van het nieuwe systeem dat het systeem in azure nog steeds operationeel kan zijn. kunt u een lange uitval tijd voor komen door een gecomprimeerde back-up van de Data Base op een schijf uit te voeren en alleen die schijf te downloaden in plaats van de basis-VM van het besturings systeem te downloaden.
+Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelfs bij het downloaden van schijven die zijn gekoppeld aan Vm's, moet de virtuele machine worden afgesloten en opnieuw worden toegewezen. Als u de inhoud van de Data Base wilt downloaden, moet u deze vervolgens gebruiken om een nieuw systeem on-premises in te stellen en als het acceptabel is dat tijdens de download tijd en de installatie van het nieuwe systeem dat het systeem in azure nog operationeel kan zijn kunt u een lange uitval tijd voor komen door een gecomprimeerde back-up van de Data Base op een schijf uit te voeren en alleen die schijf te downloaden in plaats van de basis-VM van het besturings systeem te downloaden.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -1052,7 +1066,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-U kunt Azure CLI gebruiken om een VHD te kopiëren, zoals wordt weer gegeven in [dit artikel][storage-azure-cli-copy-blobs]. Gebruik *AZ Disk Create* zoals wordt weer gegeven in het volgende voor beeld om een nieuwe beheerde schijf te maken.
+U kunt Azure CLI gebruiken om een VHD te kopiëren. Gebruik *AZ Disk Create* zoals wordt weer gegeven in het volgende voor beeld om een nieuwe beheerde schijf te maken.
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1153,8 +1167,6 @@ az storage blob show --name <target blob name> --container <target container nam
 
 * Koppel de nieuwe VHD aan een virtuele machine zoals hierboven wordt beschreven.
 
-Zie [dit artikel][storage-azure-cli-copy-blobs]voor voor beelden.
-
 ### <a name="disk-handling"></a>Schijf verwerking
 
 #### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>VM/schijf-structuur voor SAP-implementaties
@@ -1251,7 +1263,7 @@ Vervolgens moet u beslissen of u een nieuwe en lege schijf wilt maken of dat u e
 ---
 Als de nieuwe schijf een lege schijf is, moet u ook de schijf Format teren. Voor opmaak, met name voor DBMS-gegevens en-logboek bestanden, gelden dezelfde aanbevelingen als voor bare-metal implementaties van het DBMS.
 
-Zoals reeds vermeld in hoofd stuk [het concept van de Microsoft Azure virtuele machine][planning-guide-3.2], biedt een Azure Storage-account geen oneindige resources in termen van I/O-volume, IOPS en gegevens volume. Normaal gesp roken worden DBMS-Vm's het meest beïnvloed. U kunt het beste een afzonderlijk opslag account voor elke virtuele machine gebruiken als u een aantal virtuele machines van I/O-volumes wilt implementeren om de limiet van het volume van het Azure Storage-account te blijven instellen. Anders moet u zien hoe u deze Vm's tussen verschillende opslag accounts kunt verdelen zonder de limiet van elk enkel opslag account te hoeven aanraken. Meer informatie vindt u in de [DBMS-implementatie handleiding][dbms-guide]. Houd er ook rekening mee dat deze beperkingen gelden voor de pure SAP-toepassings server Vm's of andere Vm's, waarvoor uiteindelijk extra Vhd's nodig zijn. Deze beperkingen zijn niet van toepassing als u beheerde schijven gebruikt. Als u Premium Storage wilt gebruiken, raden we u aan Managed disk te gebruiken.
+Een Azure Storage-account biedt geen oneindige resources in termen van I/O-volume, IOPS en gegevens volume. Normaal gesp roken worden DBMS-Vm's het meest beïnvloed. U kunt het beste een afzonderlijk opslag account voor elke virtuele machine gebruiken als u een aantal virtuele machines van I/O-volumes wilt implementeren om de limiet van het volume van het Azure Storage-account te blijven instellen. Anders moet u zien hoe u deze Vm's tussen verschillende opslag accounts kunt verdelen zonder de limiet van elk enkel opslag account te hoeven aanraken. Meer informatie vindt u in de [DBMS-implementatie handleiding][dbms-guide]. Houd er ook rekening mee dat deze beperkingen gelden voor de pure SAP-toepassings server Vm's of andere Vm's, waarvoor uiteindelijk extra Vhd's nodig zijn. Deze beperkingen zijn niet van toepassing als u beheerde schijven gebruikt. Als u Premium Storage wilt gebruiken, raden we u aan Managed disk te gebruiken.
 
 Een ander onderwerp, dat relevant is voor opslag accounts, is of de Vhd's in een opslag account geo-replicatie krijgen. Geo-replicatie is ingeschakeld of uitgeschakeld op het niveau van het opslag account en niet op het VM-niveau. Als geo-replicatie is ingeschakeld, worden de Vhd's binnen het opslag account gerepliceerd naar een ander Azure-Data Center binnen dezelfde regio. Voordat u besluit om dit te doen, moet u rekening houden met de volgende beperking:
 
@@ -1623,9 +1635,7 @@ Met dit document moet u toegewezen poorten kunnen openen in het VPN-apparaat dat
 
 Andere beveiligings maatregelen bij het implementeren van Vm's in een dergelijk scenario kunnen zijn het maken van een [netwerk beveiligings groep][virtual-networks-nsg] voor het definiëren van toegangs regels.
 
-### <a name="dealing-with-different-virtual-machine-series"></a>Omgaan met andere reeksen voor virtuele machines
 
-Micro soft heeft veel meer VM-typen toegevoegd die verschillen in het aantal Vcpu's, het geheugen of het belang rijker op de hardware waarop het wordt uitgevoerd. Niet alle virtuele machines worden ondersteund met SAP (Zie Ondersteunde VM-typen in SAP-notitie [1928533]). Sommige van deze virtuele machines worden uitgevoerd op verschillende hardware-generaties van de host. Deze hardware-generaties van de host worden geïmplementeerd in de granulatie van een Azure-schaal eenheid. Er kunnen situaties ontstaan waarin de verschillende typen VM'S die u hebt gekozen, niet kunnen worden uitgevoerd op dezelfde schaal eenheid. Een beschikbaarheidsset is beperkt in de mogelijkheid om schaal eenheden op te slaan op basis van verschillende hardware.  Als u bijvoorbeeld de SAP DBMS-laag uitvoert op een E64s_v3, wordt de VM die zich in een beschikbaarheidsset bevindt, samen met de virtuele machine waarop het secundaire DBMS-exemplaar wordt uitgevoerd in een HA-configuratie, niet eenvoudigweg gestopt en opnieuw gestart als VM met de M-serie, omdat u mogelijk wilt pgrade de virtuele machine. Reden is dat virtuele machines uit de M-serie en virtuele machines uit de Ev3-serie worden uitgevoerd op verschillende hardware en met andere Scale-eenheden. U moet een nieuwe beschikbaarheidsset maken, de secundaire Ev3-serie verwijderen, zonder de opslag te verwijderen, en de virtuele machine opnieuw implementeren als virtuele machine uit de M-serie in de nieuwe beschikbaarheidsset.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Afdrukken op een lokale netwerk printer vanuit een SAP-exemplaar in azure
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882180"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673360"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd onl
 
 Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. Met een klik op een knop kunt Cosmos DB u op een flexibele en onafhankelijke manier door Voer en opslag over elk wille keurig aantal Azure-regio's wereld wijd schalen. U kunt de door Voer en opslag elastisch schalen en profiteren van snelle, single-milliseconden gegevens toegang met uw favoriete API, zoals SQL, MongoDB, Cassandra, Tables of Gremlin. Cosmos DB voorziet in uitgebreide [Service Level Agreements](https://aka.ms/acdbsla) (sla's) voor doorvoer-, latentie-, Beschik baarheid en consistentie garanties, iets wat geen andere database service biedt.
 
-U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen.
+U kunt [Azure Cosmos DB gratis proberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en toezeg gingen, of de [Azure Cosmos DB gratis laag](optimize-dev-test.md#azure-cosmos-db-free-tier) gebruiken om een account te krijgen met de eerste 400 ru/s en 5 GB aan opslag ruimte.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/)
@@ -28,13 +28,13 @@ U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosm
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-### <a name="turnkey-global-distribution"></a>Kant en klare wereldwijde distributie
+### <a name="turnkey-global-distribution"></a>Kant-en-klare wereldwijde distributie
 
 Met Cosmos DB bent u in staat om wereldwijd zeer responsieve en maximaal beschikbare toepassingen te bouwen. Cosmos DB worden uw gegevens op transparante wijze gerepliceerd waar uw gebruikers zich bevinden, zodat uw gebruikers kunnen communiceren met een replica van de gegevens die er het dichtst bij staan.
 
 Met Cosmos DB kunt u op elk gewenst moment met een klik op een knop elke willekeurige Azure-regio aan uw Cosmos-account toevoegen of eruit verwijderen. Cosmos DB worden uw gegevens naadloos gerepliceerd naar alle regio's die zijn gekoppeld aan uw Cosmos-account terwijl uw toepassing Maxi maal beschikbaar blijft, dankzij de mogelijkheden voor *meerdere multihoming* van de service. Zie het artikel [Wereldwijde distributie](distribute-data-globally.md) voor meer informatie.
 
-### <a name="always-on"></a>Altijd beschikbaar
+### <a name="always-on"></a>AlwaysOn
 
 In het kader van een diep gaande integratie met Azure-infra structuur en [transparante replicatie van meerdere masters](global-dist-under-the-hood.md)biedt Cosmos DB [99,999% hoge Beschik baarheid](high-availability.md) voor zowel lees-als schrijf bewerkingen. Cosmos DB biedt u ook de mogelijkheid om via een programma (of via de portal) de regionale failover van uw Cosmos-account aan te roepen. Met deze functie kunt u ervoor zorgen dat uw toepassing is ontworpen voor failover in het geval van regionale nood gevallen.
 
@@ -48,7 +48,7 @@ Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij h
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme [afweging te maken tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie opties](consistency-levels.md) te bieden - *sterke*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* : voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
+Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme [afweging te maken tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie mogelijkheden](consistency-levels.md) te bieden - *sterke*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* : voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -89,7 +89,7 @@ Cosmos DB biedt een keuze uit Api's voor het werken met uw gegevens die zijn opg
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Oplossingen die profiteren van Azure Cosmos DB
 
-Elke [Web-, mobiele, gaming-en IOT-toepassing](use-cases.md) die enorme hoeveel heden gegevens, lees bewerkingen en schrijf bewerkingen op een [wereld wijde schaal](distribute-data-globally.md) met bijna-echte reactie tijden voor een verscheidenheid aan gegevens moet afhandelen, profiteert van de [gegarandeerde hoge Beschik baarheid van Cosmos db ](https://azure.microsoft.com/support/legal/sla/cosmos-db/), hoge door Voer, lage latentie en instel bare consistentie. Kom meer te weten over hoe Cosmos DB kan worden gebruikt om toepassingen voor [IoT en telematica](use-cases.md#iot-and-telematics), [detailhandel en marketing](use-cases.md#retail-and-marketing), [gaming](use-cases.md#gaming) en [web en mobiel](use-cases.md#web-and-mobile-applications) te maken.
+Elke [Web-, mobiele, gaming-en IOT-toepassing](use-cases.md) die enorme hoeveel heden gegevens, lees-en schrijf bewerkingen op een [wereld wijde schaal](distribute-data-globally.md) met bijna-echte reactie tijden voor een verscheidenheid aan gegevens moet afhandelen, heeft voor deel Cosmos DB van de [gegarandeerd hoge Beschik baarheid](https://azure.microsoft.com/support/legal/sla/cosmos-db/), hoge door Voer, lage latentie en instel bare consistentie. Kom meer te weten over hoe Cosmos DB kan worden gebruikt om toepassingen voor [IoT en telematica](use-cases.md#iot-and-telematics), [detailhandel en marketing](use-cases.md#retail-and-marketing), [gaming](use-cases.md#gaming) en [web en mobiel](use-cases.md#web-and-mobile-applications) te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228287"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391112"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureBackup** |Azure Backup.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **opslag** -en **AzureActiveDirectory** -Tags. | Uitgaand | Nee | Ja |
 | **AzureBotService** | Azure Bot Service. | Uitgaand | Nee | Nee |
 | **Cloud** | Alle [open bare IP-adressen van data centers](https://www.microsoft.com/download/details.aspx?id=56519). | Uitgaand | Ja | Ja |
-| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Deze tag of de IP-adressen waarop deze tag wordt toegepast, kunnen worden gebruikt om Indexeer functies beveiligde toegang te geven tot gegevens bronnen. Raadpleeg de [documentatie van de indexers verbinding](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) voor meer informatie. | Inkomend | Nee | Nee |
+| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Deze tag of de IP-adressen waarop deze tag wordt toegepast, kunnen worden gebruikt om Indexeer functies beveiligde toegang te geven tot gegevens bronnen. Raadpleeg de [documentatie van de indexers verbinding](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) voor meer informatie. <br/><br/> *Opmerking*: het IP-adres van de zoek service is niet opgenomen in de lijst met IP-bereiken voor deze servicetag en **moet ook worden toegevoegd** aan de IP-firewall van gegevens bronnen. | Inkomend | Nee | Nee |
 | **AzureConnectors** | Azure Logic Apps connectors voor probe/back-endverbinding. | Inkomend | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Uitgaand | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos DB. | Uitgaand | Ja | Ja |
