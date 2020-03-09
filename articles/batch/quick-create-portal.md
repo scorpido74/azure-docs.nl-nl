@@ -10,13 +10,13 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379112"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstart: uw eerste Batch-taak uitvoeren in Azure Portal
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren in Azure Portal
 
 In deze snelstartgids leert u hoe u Azure Portal gebruikt voor het maken van een Batch-account, een *pool* met computerknooppunten (virtuele machines), en een *Batch-taak* waarmee *basistaken* worden uitgevoerd in de groep. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
@@ -26,7 +26,7 @@ In deze snelstartgids leert u hoe u Azure Portal gebruikt voor het maken van een
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-batch-account"></a>Een Batch-account maken
+## <a name="create-a-batch-account"></a>Batch-account maken
 
 Volg deze stappen om een Batch-voorbeeldaccount te maken voor testdoeleinden. U hebt een Batch-account nodig om pools en taken te maken. Zoals hier wordt getoond, kunt u een Azure-opslagaccount aan het Batch-account koppelen. Hoewel dit niet is vereist voor deze snelstartgids, is een opslagaccount handig voor het implementeren van toepassingen, en voor het opslaan van invoer- en uitvoergegevens voor de meeste workloads uit de praktijk.
 
@@ -41,11 +41,11 @@ Volg deze stappen om een Batch-voorbeeldaccount te maken voor testdoeleinden. U 
 
 4. Laat de overige instellingen op de standaardwaarden staan, en selecteer **Maken** om het account te maken.
 
-   ![Een Batch-account maken][account_portal]  
+   ![Batch-account maken][account_portal]  
 
 Wanneer het bericht **Implementatie is voltooid** wordt weergegeven, gaat u naar het Batch-account in de portal.
 
-## <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
+## <a name="create-a-pool-of-compute-nodes"></a>Een pool van rekenknooppunten maken
 
 Nu u beschikt over een Batch-account, maakt u een voorbeeldpool met Windows-rekenknooppunten voor testdoeleinden. De pool in dit snelle voorbeeld bestaat uit 2 knooppunten waarop een Windows Server 2012 R2-installatiekopie wordt uitgevoerd vanuit Azure Marketplace.
 
@@ -84,11 +84,11 @@ Na enkele minuten is de status van de pool **Onveranderlijk** en worden de knoop
 
 ## <a name="create-a-job"></a>Een taak maken
 
-Nu u beschikt over een pool, kunt u een taak maken om uit te voeren op deze pool. Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De Batch-taak heeft in eerste instantie geen taken. 
+Nu u beschikt over een pool, kunt u een Batch-taak maken om uit te voeren op deze pool. Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De Batch-taak heeft in eerste instantie geen taken. 
 
 1. Selecteer in de weergave Batch-account **Taken** > **Toevoegen**. 
 
-2. Voer een **taak-id** in met naam *myjob*. Selecteer *mypool* bij **Pool**. Behoud de standaardwaarden voor de overige instellingen en selecteer **OK**.
+2. Voer een **taak-id** in met naam *myjob*. Selecteer **mypool** bij *Pool*. Behoud de standaardwaarden voor de overige instellingen en selecteer **OK**.
 
    ![Een taak maken][job_create]
 
@@ -106,7 +106,7 @@ De eerste taak maken:
 
 2. Voer een **Taak-id** in met de naam *mytask*. 
 
-3. Voer `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` in bij **Opdrachtregel**. Behoud de standaardwaarden voor de overige instellingen en selecteer **OK**.
+3. Voer **in bij**Opdrachtregel`cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Behoud de standaardwaarden voor de overige instellingen en selecteer **OK**.
 
    ![Een taak maken][task_create]
 

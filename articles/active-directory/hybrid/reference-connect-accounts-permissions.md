@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248776"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376114"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -102,7 +102,7 @@ Hier volgt een samen vatting van de pagina's van de wizard Snelle installatie, d
 
 | Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N.V.T. |Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |<li>Hiermee maakt u het ADSync-service account dat wordt gebruikt om de synchronisatie service uit te voeren. |
+| N.v.t. |Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |<li>Hiermee maakt u het ADSync-service account dat wordt gebruikt om de synchronisatie service uit te voeren. |
 | Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
 | Verbinding maken met AD DS |Referenties voor on-premises Active Directory |Lid van de groep Ondernemings Administrators (EA) in Active Directory |<li>Hiermee maakt u het AD DS Connector-account in Active Directory en verleent u er machtigingen voor. Dit gemaakte account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie.</li> |
 
@@ -119,7 +119,7 @@ Hier volgt een samen vatting van de pagina's van de wizard Aangepaste installati
 
 | Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N.V.T. |Gebruiker die de installatie wizard uitvoert |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker systeem beheerder (SA) in SQL zijn</li> |Maakt standaard het lokale account dat wordt gebruikt als service account voor de synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen bepaald account opgeeft. |
+| N.v.t. |Gebruiker die de installatie wizard uitvoert |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker systeem beheerder (SA) in SQL zijn</li> |Maakt standaard het lokale account dat wordt gebruikt als service account voor de synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen bepaald account opgeeft. |
 | Synchronisatie Services installeren, Service account optie |Referenties voor het AD-of lokale gebruikers account |Gebruiker, machtigingen worden verleend door de installatie wizard |Als de beheerder een account opgeeft, wordt dit account gebruikt als service account voor de synchronisatie service. |
 | Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
 | Verbinding maken met uw directory’s |On-premises Active Directory referenties voor elk forest dat is verbonden met Azure AD |De machtigingen zijn afhankelijk van de functies die u inschakelt en vindt u in het AD DS Connector-account maken |Dit account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie. |

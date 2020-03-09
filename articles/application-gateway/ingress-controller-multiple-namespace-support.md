@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373479"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
 
@@ -23,7 +23,7 @@ Vanaf versie 0,7 [Azure-toepassing gateway Kubernetes IngressController](https:/
 
 Versie 0,7 van AGIC blijft alleen de naam ruimte `default` observeren, tenzij dit expliciet wordt gewijzigd in een of meer verschillende naam ruimten in de helm-configuratie (Zie de sectie hieronder).
 
-## <a name="enable-multiple-namespace-support"></a>Ondersteuning voor meerdere naam ruimten inschakelen
+## <a name="enable-multiple-namespace-support"></a>Ondersteuning voor meerdere naamruimten inschakelen
 Ondersteuning voor meerdere naam ruimten inschakelen:
 1. Wijzig het bestand [helm-config. yaml](#sample-helm-config-file) op een van de volgende manieren:
    - de `watchNamespace` sleutel volledig verwijderen uit [helm-config. yaml](#sample-helm-config-file) -AGIC worden alle naam ruimten nageleefd
@@ -83,8 +83,8 @@ spec:
 
 Ondanks de twee bronnen voor binnenkomend verkeer om `www.contoso.com` te worden doorgestuurd naar de respectieve Kubernetes-naam ruimten, kan slechts één back-end het verkeer onderhouden. Met AGIC wordt een configuratie gemaakt op basis van de eerste keer dat deze wordt geleverd voor een van de bronnen. Als er tegelijkertijd twee ingresses-resources worden gemaakt, heeft de eerdere versie van het alfabet prioriteit. In het bovenstaande voor beeld kunnen we alleen instellingen voor de inkomende `production` maken. Application Gateway wordt geconfigureerd met de volgende resources:
 
-  - Listener: `fl-www.contoso.com-80`
-  - Routerings regel: `rr-www.contoso.com-80`
+  - Listener: `fl- www.contoso.com-80`
+  - Routerings regel: `rr- www.contoso.com-80`
   - Back-end-groep: `pool-production-contoso-web-service-80-bp-80`
   - HTTP-instellingen: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Status test: `pb-production-contoso-web-service-80-websocket-ingress`

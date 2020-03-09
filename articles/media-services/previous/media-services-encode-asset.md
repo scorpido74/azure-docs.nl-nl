@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392970"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Overzicht van media encoders op aanvraag van Azure 
 
@@ -48,10 +48,10 @@ Elke Media Services-account kan standaard één actieve coderings taak tegelijk 
 ### <a name="how-to-use"></a>Gebruiksinstructies
 [Coderen met Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Indelingen
+### <a name="formats"></a>Opmaak
 [Indelingen en codecs](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Voorinstellingen
+### <a name="presets"></a>Stations
 Media Encoder Standard is geconfigureerd met behulp van een van de [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschreven coderings definities.
 
 ### <a name="input-and-output-metadata"></a>Invoer-en uitvoer meta gegevens
@@ -89,7 +89,7 @@ Als uw invoer video geen ondertiteling bevat, bevat het uitvoer activum nog een 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 * [Geavanceerde coderings taken uitvoeren door Media Encoder Standard voor instellingen aan te passen](media-services-custom-mes-presets-with-dotnet.md)
 * [Quota en beperkingen](media-services-quotas-and-limitations.md)
 

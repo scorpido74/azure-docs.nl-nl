@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754420"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362697"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -76,7 +76,7 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
 
 Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure grijs is en u niet met Azure bent verbonden via een snelle route of een site-naar-site-VPN-verbinding, dan,
 
-1. Ga naar **virtuele machine** > **netwerk**, klik op de naam van de vereiste netwerk interface.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Ga naar **virtuele machine** > **netwerk**, klik op de naam van de vereiste netwerk interface.  ![netwerk interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Navigeer naar **IP-configuraties**en klik vervolgens op het veld naam van de vereiste IP-configuratie. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Als u openbaar IP-adres wilt inschakelen, klikt u op **inschakelen**. IP-](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png) ![inschakelen
 4. Klik op **vereiste instellingen configureren** > **nieuwe maken**. ![nieuwe](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png) maken
@@ -160,12 +160,12 @@ Om het probleem op te lossen:
    - Gebruik het hulp programma om toegang te krijgen tot de context van het systeem gebruikers en te bepalen of het proxy adres is geconfigureerd. 
    - Als de proxy is geconfigureerd, opent u Internet Explorer in een systeem gebruikers context met behulp van het hulp programma PsExec.
   
-     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+     **PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"**
 
    - Om ervoor te zorgen dat de hoofddoel server kan communiceren met de configuratie server:
   
      - Wijzig de proxy-instellingen in Internet Explorer om het IP-adres van de hoofddoel server via de proxy over te slaan.   
-     Of
+     of
      - Schakel de proxy op de hoofddoel server uit. 
 
 

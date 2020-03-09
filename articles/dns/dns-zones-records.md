@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392614"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
@@ -109,7 +109,7 @@ De meerdere teken reeksen in een DNS-record mogen niet worden verward met de mee
 
 ### <a name="tags"></a>Tags
 
-Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie voor meer informatie over tags [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md).
+Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md) voor meer informatie over tags.
 
 Azure DNS ondersteunt het gebruik van Azure Resource Manager-Tags op DNS-zone bronnen.  Tags in DNS-record sets worden niet ondersteund, hoewel als alternatieve meta gegevens wordt ondersteund voor DNS-record sets, zoals hieronder wordt uitgelegd.
 
@@ -129,13 +129,13 @@ Op het niveau van de Azure DNS REST API worden eTags opgegeven met behulp van HT
 
 | Header | Gedrag |
 | --- | --- |
-| Geen |PUT altijd geslaagd (geen ETag-controles) |
+| None |PUT altijd geslaagd (geen ETag-controles) |
 | If-match \<ETAG-> |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
 | If-match * |Alleen geslaagd als de resource bestaat |
 | If-None-Match * |Alleen geslaagd als de resource niet bestaat |
 
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 
 De volgende standaard limieten zijn van toepassing wanneer u Azure DNS gebruikt:
 

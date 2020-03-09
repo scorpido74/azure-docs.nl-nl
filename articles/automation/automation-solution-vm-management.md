@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616046"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373203"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>VM's buiten bedrijfsuren starten/stoppen oplossing in Azure Automation
 
@@ -270,7 +270,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |Eigenschap | Beschrijving|
 |----------|----------|
 |Caller |  Wie de bewerking heeft gestart. Mogelijke waarden zijn een e-mailadres of het systeem voor geplande taken.|
-|Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs.|
+|Category | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs.|
 |CorrelationId | De GUID die de correlatie-ID van de runbook-taak is.|
 |JobId | De GUID die de ID van de runbook-taak is.|
 |operationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak.|
@@ -291,7 +291,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |Eigenschap | Beschrijving|
 |----------|----------|
 |Caller |  Wie de bewerking heeft gestart. Mogelijke waarden zijn een e-mailadres of het systeem voor geplande taken.|
-|Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams.|
+|Category | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams.|
 |JobId | De GUID die de ID van de runbook-taak is.|
 |operationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak.|
 |ResourceGroup | Hiermee wordt de resourcegroepnaam van de runbooktaak opgegeven.|

@@ -6,11 +6,11 @@ ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e31d4a5f513355e61cb53a6548b3091637bfe9a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472840"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379163"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Zelf studie: uw eerste Azure Resource Manager sjabloon maken en implementeren
 
@@ -22,7 +22,7 @@ Zie [Azure Resource Manager-sjablonen](overview.md)als u meer wilt weten over de
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="get-tools"></a>Hulpprogramma 's downloaden
+## <a name="get-tools"></a>Hulp middelen ophalen
 
 Laten we beginnen door ervoor te zorgen dat u beschikt over de hulpprogram ma's die u nodig hebt voor het maken en implementeren van sjablonen.
 
@@ -79,13 +79,13 @@ Gefeliciteerd, u hebt uw eerste sjabloon gemaakt.
 
 Meld u aan met uw Azure-referenties om aan de slag te gaan met Azure PowerShell/Azure CLI.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az login
@@ -96,7 +96,7 @@ az login
 
 Wanneer u een sjabloon implementeert, geeft u een resource groep op die de resources zal bevatten. Voordat u de implementatie opdracht uitvoert, maakt u de resource groep met behulp van Azure CLI of Azure PowerShell. Selecteer de tabbladen in het volgende code gedeelte om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voor beelden in dit artikel zijn geschreven voor de bash-shell.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -104,7 +104,7 @@ New-AzResourceGroup `
   -Location "Central US"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -118,7 +118,7 @@ az group create \
 
 Als u de sjabloon wilt implementeren, gebruikt u Azure CLI of Azure PowerShell. Gebruik de resource groep die u hebt gemaakt. Geef een naam op voor de implementatie, zodat u deze gemakkelijk kunt herkennen in de implementatie geschiedenis. Voor het gemak maakt u ook een variabele die het pad naar het sjabloon bestand opslaat. Met deze variabele kunt u de implementatie opdrachten eenvoudiger uitvoeren omdat u het pad niet telkens opnieuw hoeft te typen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -142,11 +142,11 @@ az group deployment create \
 
 De implementatie opdracht retourneert resultaten. Zoek `ProvisioningState` om te controleren of de implementatie is geslaagd.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![Inrichtings status van Power shell-implementatie](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Inrichtings status van Azure CLI-implementatie](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
@@ -156,7 +156,7 @@ De implementatie opdracht retourneert resultaten. Zoek `ProvisioningState` om te
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **resource groepen**in het menu links.
 

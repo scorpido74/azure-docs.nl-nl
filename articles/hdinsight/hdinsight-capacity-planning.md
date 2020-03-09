@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887237"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389823"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -96,15 +96,15 @@ Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, control
 
 Voer de volgende stappen uit om de beschik bare kernen te controleren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar de **overzichts** pagina voor het HDInsight-cluster. 
 3. Klik in het menu links op **quotum limieten**.
 
-   Op de pagina wordt het aantal kern geheugens weer gegeven dat in gebruik is, het aantal beschik bare kernen en de totale kernen.
+   Op de pagina worden het aantal gebruikte kernen, het aantal beschikbare kernen en het totale aantal kernen weergegeven.
 
 Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
 1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 1. Selecteer op de pagina **nieuwe ondersteunings aanvraag** , onder tabblad **basis beginselen** , de volgende opties:

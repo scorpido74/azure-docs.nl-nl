@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361304"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics beheren met de Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
 
 ### <a name="create-an-account"></a>Een account maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Klik op **een resource maken** > **Intelligence en analyse** > **Data Lake Analytics**.
 3. Selecteer waarden voor de volgende items: 
    1. **Naam**: de naam van het data Lake Analytics-account.
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
    3. **Resource groep**: de Azure-resource groep waarin het account moet worden gemaakt. 
    4. **Locatie**: het Azure-data centrum voor het data Lake Analytics-account. 
    5. **Data Lake Store**: het standaard archief dat moet worden gebruikt voor het data Lake Analytics-account. Het Azure data Lake Store-account en het data Lake Analytics-account moeten zich op dezelfde locatie bestaan.
-4. Klik op **Maken**. 
+4. Klik op **Create**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Een Data Lake Analytics account verwijderen
 
@@ -60,7 +60,7 @@ Data Lake Analytics ondersteunt de volgende gegevens bronnen:
 
 U kunt Data Explorer gebruiken om door gegevens bronnen te bladeren en basis bewerkingen voor bestands beheer uit te voeren. 
 
-### <a name="add-a-data-source"></a>Een gegevens bron toevoegen
+### <a name="add-a-data-source"></a>Een gegevensbron toevoegen
 
 1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
 2. Klik op **gegevens bronnen**.

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967446"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375404"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
 Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure API Management.
@@ -59,7 +59,7 @@ U kunt contact met ons opnemen via een van de volgende opties:
 Wanneer een functie in preview is, betekent dit dat er actief feedback wordt gegeven over de manier waarop de functie werkt. Een functie in preview is functioneel voltooid, maar het is mogelijk dat we een belang rijke wijziging aanbrengen in reactie op feedback van klanten. Het is raadzaam dat u niet afhankelijk bent van een functie die in uw productie omgeving wordt weer gegeven. Als u feedback hebt over de preview-functies, laat het ons dan weten via een van de contact opties in [Hoe kan ik de Microsoft Azure API management een vraag stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hoe kan ik de verbinding tussen de API Management Gateway en mijn back-end-services beveiligen?
-U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt het volgende doen:
+U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt:
 
 * Gebruik HTTP-basis verificatie. Zie [uw eerste API importeren en publiceren](import-and-publish.md)voor meer informatie.
 * Gebruik wederzijdse verificatie van SSL, zoals beschreven in [How to Secure back-end services met behulp van client certificaat verificatie in Azure API Management](api-management-howto-mutual-certificates.md).
@@ -67,13 +67,13 @@ U hebt verschillende opties om de verbinding tussen de API Management Gateway en
 * Verbind uw API Management-exemplaar met een Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hoe kan ik mijn API Management service-exemplaar naar een nieuw exemplaar kopiëren?
-U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt het volgende doen:
+U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt:
 
 * Gebruik de functie back-up en herstellen in API Management. Zie herstel [na nood gevallen implementeren met behulp van service back-up en herstellen in Azure API Management](api-management-howto-disaster-recovery-backup-restore.md)voor meer informatie.
 * Maak uw eigen functie voor back-up en herstel met behulp van de [API Management rest API](/rest/api/apimanagement/). Gebruik de REST API om de entiteiten van het gewenste service-exemplaar op te slaan en te herstellen.
 * Down load de service configuratie met behulp van Git en upload deze naar een nieuw exemplaar. Zie [de configuratie van uw API Management-service opslaan en configureren met behulp van Git](api-management-configuration-repository-git.md)voor meer informatie.
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Kan ik mijn API Management-instantie programmatisch beheren?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Kan ik mijn API Management-exemplaar programmatisch beheren?
 Ja, u kunt API Management programmatisch beheren met behulp van:
 
 * Het [API Management rest API](/rest/api/apimanagement/).
@@ -83,7 +83,7 @@ Ja, u kunt API Management programmatisch beheren met behulp van:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hoe kan ik een gebruiker toevoegen aan de groep Administrators?
 U kunt als volgt een gebruiker toevoegen aan de groep Administrators:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar de resource groep met de API Management instantie die u wilt bijwerken.
 3. Wijs in API Management de rol van **API Management-service Inzender** toe aan de gebruiker.
 
@@ -98,7 +98,7 @@ De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](https://do
 Als het beleid dat u wilt toevoegen lichter gekleurd of grijs wordt weer gegeven in de beleids editor, moet u ervoor zorgen dat u het juiste bereik voor het beleid hebt. Elke beleids instructie is ontworpen voor gebruik in specifieke bereiken en beleids secties. Zie de sectie gebruik van het beleid in [API management-beleid](/azure/api-management/api-management-policies)voor het controleren van de beleids secties en-bereiken voor een beleid.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hoe kan ik meerdere omgevingen in één API in te stellen?
-Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt het volgende doen:
+Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt:
 
 * Host verschillende Api's op dezelfde Tenant.
 * Host dezelfde Api's op verschillende tenants.

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954334"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362637"
 ---
 # <a name="manage-process-servers"></a>Processervers beheren
 
@@ -43,7 +43,7 @@ U kunt als volgt de belasting verdelen door Vm's tussen twee proces servers te v
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Klik op **taak verdeling**, selecteer de doel proces server waarnaar u machines wilt verplaatsen. Klik vervolgens op **OK**
+4. Klik op **taak verdeling**, selecteer de doel proces server waarnaar u machines wilt verplaatsen. Klik vervolgens op **OK**.
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
@@ -59,7 +59,7 @@ Verplaats de hele werk belasting die door een proces server wordt verwerkt, als 
 1. Klik in de kluis onder **beheren** op **site Recovery-infra structuur**. Klik onder **voor VMware & fysieke machines**op **configuratie servers**.
 2. Klik op de configuratie server waarmee de proces servers zijn geregistreerd.
 3. Klik op de proces server van waaruit u de werk belasting wilt wijzigen.
-4. Klik op **Switch**, selecteer de doel proces server waarnaar u de werk belasting wilt verplaatsen. Klik vervolgens op **OK**
+4. Klik op **Switch**, selecteer de doel proces server waarnaar u de werk belasting wilt verplaatsen. Klik vervolgens op **OK**.
 
     ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
 

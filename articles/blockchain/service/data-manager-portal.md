@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977013"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387036"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
@@ -111,13 +111,13 @@ Block Chain Data Manager vereist dat de ABI-en byte code-bestanden van het contr
     | Veld | Beschrijving |
     |-------|-------------|
     | Naam  | Geef de container een naam. Bijvoorbeeld *smartcontract* |
-    | Openbaar toegangsniveau | Kies *privé (geen anonieme toegang)* |
+    | Openbaar toegangs niveau | Kies *privé (geen anonieme toegang)* |
 
 1. Selecteer **OK** om de container te maken.
 1. Selecteer de container en selecteer vervolgens **uploaden**.
 1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [contract Abi en byte code ophalen](#get-contract-abi-and-bytecode) .
 
-    ![Blob uploaden](./media/data-manager-portal/upload-blobs.png)
+    ![BLOB uploaden](./media/data-manager-portal/upload-blobs.png)
 
     Selecteer **Uploaden**.
 

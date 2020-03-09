@@ -1,5 +1,5 @@
 - name: Documentatie voor Azure Marketplace en AppSource
-  href: index.md
+  href: index.yml
   items:
     - name: Roadmap voor Azure Marketplace en AppSource
       href: ./marketplace-roadmap.md
@@ -51,9 +51,6 @@
           items:
             - name: Best practices voor aanbiedingsvermeldingen
               href: ./gtm-offer-listing-best-practices.md
-              items:
-                - name: Categorieën
-                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Hoe u wordt uitgelicht
               href: ./gtm-how-to-get-featured.md
             - name: Validatie van Marketplace-inhoud

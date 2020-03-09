@@ -14,11 +14,11 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027793"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379922"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Problemen met tijdelijke verbindings fouten naar SQL Database oplossen
 
@@ -187,7 +187,7 @@ Normaal gesp roken moet u ervoor zorgen dat alleen poort 1433 is geopend voor ui
 
 Als uw client programma bijvoorbeeld wordt gehost op een Windows-computer, kunt u Windows Firewall op de host gebruiken om poort 1433 te openen.
 
-1. Open het Configuratiescherm.
+1. Open het configuratie scherm.
 2. Selecteer **alle configuratie scherm-Items** > **Windows Firewall** > **geavanceerde instellingen** > **Uitgaande regels** > **acties** > **nieuwe regel**.
 
 Als uw client programma wordt gehost op een virtuele machine (VM) van Azure, Lees [dan de poorten na 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md).
@@ -215,7 +215,7 @@ Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voere
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
-## <a name="diagnostics"></a>Diagnostics
+## <a name="diagnostics"></a>Diagnostiek
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 

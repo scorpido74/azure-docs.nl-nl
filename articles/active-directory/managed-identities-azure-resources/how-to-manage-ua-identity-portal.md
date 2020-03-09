@@ -16,11 +16,11 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363990"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Een rol maken, weer geven, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure Portal
 
@@ -46,7 +46,7 @@ Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw a
    - **Abonnement**: Kies het abonnement voor het maken van de door de gebruiker toegewezen beheerde identiteit onder
    - **Resource groep**: Maak een nieuwe resource groep die uw door de gebruiker toegewezen beheerde identiteit bevat of kies **bestaande gebruiken** om de door de gebruiker toegewezen beheerde identiteit in een bestaande resource groep te maken.
    - **Locatie**: Kies een locatie om de door de gebruiker toegewezen beheerde identiteit te implementeren, bijvoorbeeld **VS-West**.
-4. Klik op **Maken**.
+4. Klik op **Create**.
 
 ![Een door de gebruiker toegewezen beheerde identiteit maken](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

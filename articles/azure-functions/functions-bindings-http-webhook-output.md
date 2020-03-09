@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210903"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356792"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions HTTP-uitvoer bindingen
 
@@ -27,8 +27,8 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-| **type** |moet worden ingesteld op `http`. |
-| **direction** | moet worden ingesteld op `out`. |
+| **type** |Moet worden ingesteld op `http`. |
+| **direction** | Moet worden ingesteld op `out`. |
 | **naam** | De naam van de variabele die wordt gebruikt in de functie code voor het antwoord of `$return` om de retour waarde te gebruiken. |
 
 ## <a name="usage"></a>Gebruik

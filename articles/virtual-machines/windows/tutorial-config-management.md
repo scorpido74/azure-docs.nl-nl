@@ -16,11 +16,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064805"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373085"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Zelf studie: wijzigingen bewaken en een virtuele Windows-machine bijwerken in azure
 
@@ -94,7 +94,7 @@ Kies in het venster **updatebeheer inschakelen** de log Analytics werk ruimte en
 Een van de volgende vereiste onderdelen die ontbreken tijdens het voorbereiden worden automatisch toegevoegd:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-werkruimte
-* [Automatisering](../../automation/automation-offering-get-started.md)
+* [Automation](../../automation/automation-offering-get-started.md)
 * Een [hybride runbook worker](../../automation/automation-hybrid-runbook-worker.md), dat is ingeschakeld op de VM
 
 Nadat de oplossing is ingeschakeld, wordt het venster **Update beheer** geopend. Configureer de locatie, Log Analytics werk ruimte en het Automation-account dat moet worden gebruikt en selecteer vervolgens **inschakelen**. Als deze opties grijs worden weer gegeven, is er een andere automatiserings oplossing voor de virtuele machine ingeschakeld en moet de werk ruimte en het Automation-account van de oplossing worden gebruikt.

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760348"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362684"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -28,7 +28,7 @@ Site Recovery draagt bij aan uw strategie voor bedrijfs continuïteit en nood he
 
 Nee, dit is een niet-ondersteund scenario.
 
-## <a name="service-providers"></a>Serviceproviders
+## <a name="service-providers"></a>Service providers
 
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Ik ben een service provider. Werkt Site Recovery voor specifieke en gedeelde infrastructuur modellen?
 Ja, Site Recovery werkt voor zowel toegewezen als gedeelde infrastructuurmodellen.
@@ -73,13 +73,13 @@ Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deplo
 
 Nee, er zijn geen extra kosten voor de cache. Wanneer u naar een standaard-opslag account repliceert, maakt deze cache-opslag deel uit van hetzelfde doel-opslag account.
 
-### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ik ben al meer dan een maand gebruiker van Azure Site Recovery. Krijg ik nog steeds de eerste 31 dagen gratis voor elke beschermde instantie?
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ik ben al meer dan een maand Azure Site Recovery gebruiker geweest. Krijg ik nog steeds de eerste 31 dagen gratis voor elk beschermd exemplaar?
 
-Ja. Voor elk beschermd exemplaar worden geen Azure Site Recovery-kosten in rekening gebracht tijdens de eerste 31 dagen. Als u bijvoorbeeld 10 instanties voor de afgelopen zes maanden hebt beveiligd en u een elfde exemplaar verbindt met Azure Site Recovery, zijn er gedurende de eerste 31 dagen geen kosten in rekening gebracht voor het elfde exemplaar. Voor de eerste tien exemplaren blijven Azure Site Recovery kosten in rekening gebracht omdat ze al meer dan 31 dagen zijn beveiligd.
+Ja. Voor elk beschermd exemplaar worden gedurende de eerste 31 dagen geen Azure Site Recovery kosten in rekening gebracht. Als u bijvoorbeeld 10 instanties voor de afgelopen zes maanden hebt beveiligd en u een elfde exemplaar verbindt met Azure Site Recovery, zijn er gedurende de eerste 31 dagen geen kosten in rekening gebracht voor het elfde exemplaar. Voor de eerste tien exemplaren blijven Azure Site Recovery kosten in rekening gebracht omdat ze al meer dan 31 dagen zijn beveiligd.
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Worden er gedurende de eerste 31 dagen andere Azure-kosten in rekening gebracht?
 
-Ja, hoewel Site Recovery gratis is gedurende de eerste 31 dagen van een beschermd exemplaar, worden er mogelijk kosten in rekening gebracht voor Azure Storage, opslag transacties en gegevens overdracht. Voor een herstelde virtuele machine worden mogelijk ook Azure-rekenkosten in rekening gebracht.
+Ja, hoewel Site Recovery gratis is gedurende de eerste 31 dagen van een beschermd exemplaar, worden er mogelijk kosten in rekening gebracht voor Azure Storage, opslag transacties en gegevens overdracht. Een herstelde virtuele machine kan ook Azure-reken kosten in rekening worden gebracht.
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Zijn er kosten verbonden aan het uitvoeren van nood herstel oefeningen/testfailover?
@@ -106,7 +106,7 @@ Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sit
 Mobility-agents die zijn geïnstalleerd op de gerepliceerde items communiceren alleen met de proces server op TLS 1,2. Communicatie van configuratie server naar Azure en van proces server naar Azure kan echter worden uitgevoerd op TLS 1,1 of 1,0. Volg de [richt lijnen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) voor het afdwingen van TLS 1,2 op alle configuratie servers en proces servers die door u zijn ingesteld.
 
 
-## <a name="disaster-recovery"></a>Herstel na noodgeval
+## <a name="disaster-recovery"></a>Herstel na noodgevallen
 
 ### <a name="what-can-site-recovery-protect"></a>Wat kan Site Recovery beschermen?
 * **Azure vm's**: site Recovery kunt elke workload repliceren die wordt uitgevoerd op een ondersteunde Azure VM
@@ -219,7 +219,7 @@ Ja, u kunt het herstel van de alternatieve locatie gebruiken om naar een andere 
 * [Voor virtuele VMware-machines](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Voor virtuele Hyper-V-machines](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatisering
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Kan ik Site Recovery scenario's automatiseren met een SDK?
 Ja. U kunt Site Recovery-werkstromen automatiseren met de Rest API-, PowerShell- of Azure-SDK. Momenteel ondersteunde scenario's voor de implementatie van Site Recovery met behulp van Power shell:
