@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355719"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -86,7 +86,7 @@ Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis
 
 Als u nog geen Azure-account hebt, kunt u het volgende doen:
 
-* [Gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). U ontvangt tegoed dat kan worden gebruikt om betaalde Azure-services te proberen. Zelfs nadat het tegoed is gebruikt, kunt u het account houden en de gratis Azure-services en -functies gebruiken.
+* [Gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). U ontvangt tegoed dat kan worden gebruikt om betaalde Azure-services uit te proberen. Zelfs nadat het tegoed is gebruikt, kunt u het account houden en de gratis Azure-services en -functies gebruiken.
 * [Uw voordelen als Visual Studio-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Via uw MSDN-abonnement ontvangt u elke maand tegoeden die u voor betaalde Azure-services kunt gebruiken.
 
 <a name="cache-size"></a>
@@ -99,7 +99,7 @@ Hier volgen enkele aandachtspunten voor het kiezen van een cache aanbieding.
 * **Geheugen**: de lagen basis en standaard bieden 250 MB – 53 GB. De Premium-laag biedt tot 1,2 TB (als een cluster) of 120 GB (niet-geclusterd). Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
 * **Netwerk prestaties**: als u een werk belasting hebt waarvoor hoge door Voer is vereist, biedt de Premium-laag meer band breedte dan Standard of Basic. Daarnaast hebben grotere caches in elke laag meer band breedte vanwege de onderliggende virtuele machine die als host fungeert voor de cache. Zie de [volgende tabel](#cache-performance)voor meer informatie.
 * **Door Voer**: de Premium-laag biedt de Maxi maal beschik bare door voer. Als de cache server of client de bandbreedte limiet bereikt, ontvangt u mogelijk time-outs aan de client zijde. Zie de volgende tabel voor meer informatie.
-* **Hoge Beschik baarheid/Sla**: Azure cache voor redis garandeert dat een Standard/Premium-cache ten minste 99,9% van de tijd beschikbaar is. Zie voor meer informatie over onze SLA [Azure cache for redis prijzen](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eind punten. De SLA heeft geen betrekking op beveiliging tegen verlies van gegevens. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten.
+* **Hoge Beschik baarheid/Sla**: Azure cache voor redis garandeert dat een Standard/Premium-cache ten minste 99,9% van de tijd beschikbaar is. Zie voor meer informatie over onze SLA [Azure cache for redis prijzen](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eind punten. De SLA heeft geen betrekking op beveiliging tegen gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten.
 * **Redis-gegevens persistentie**: met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infra structuur kunnen leiden tot mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure-cache voor redis biedt de opties RDB en AOF (binnenkort beschikbaar) in redis-persistentie. Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
 * **Redis-cluster**: als u caches wilt maken die groter zijn dan 120 GB of als u gegevens wilt Shard tussen meerdere redis-knoop punten, kunt u redis clustering gebruiken, die beschikbaar is in de laag Premium. Elk knoop punt bestaat uit een primair/replica-cache paar voor maximale Beschik baarheid. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
 * **Verbeterde beveiliging en netwerk isolatie**: Azure Virtual Network (VNET)-implementatie biedt verbeterde beveiliging en isolatie voor uw Azure-cache voor redis, evenals subnetten, beleid voor toegangs beheer en andere functies om de toegang verder te beperken. Zie [Virtual Network-ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie.
@@ -125,13 +125,13 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 * Met redis clustering neemt de door Voer lineair toe als u het aantal Shards (knoop punten) in het cluster verhoogt. Als u bijvoorbeeld een P4-cluster van 10 Shards maakt, is de beschik bare door Voer 400.000 * 10 = 4.000.000 RPS.
 * De door Voer voor grotere sleutel grootten is hoger in de Premium-laag, vergeleken met de Standard-laag.
 
-| Prijscategorie | Grootte | Cpu-cores | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
+| Prijscategorie | Grootte | CPU-kernen | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
 | --- | --- | --- | --- | --- | --- |
 | **Standaard cache grootten** | | |**Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aantal aanvragen per seconde (RPS) niet-SSL** |**SSL-aanvragen per seconde (RPS)** |
 | C0 | 250 MB | Gedeeld | 100 / 12.5  |  15.000 |   7\.500 |
 | C1 |   1 GB | 1      | 500 / 62.5  |  38.000 |  20.720 |
-| C2 | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
+| Vind | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
+| Stand |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
 | C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55.000 |
 | C5 |  26 GB | 4      | 1,000 / 125 | 102.000 |  93.000 |
 | C6 |  53 GB | 8      | 2,000 / 250 | 126.000 | 120,000 |
@@ -159,7 +159,7 @@ Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China
 
 | Cloud   | DNS-achtervoegsel voor redis            |
 |---------|---------------------------------|
-| Public  | *.redis.cache.windows.net       |
+| Openbaar  | *.redis.cache.windows.net       |
 | US Gov  | *.redis.cache.usgovcloudapi.net |
 | Duitsland | *.redis.cache.cloudapi.de       |
 | China   | *.redis.cache.chinacloudapi.cn  |
@@ -307,7 +307,7 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 * Houd rekening met de prestatie kosten die zijn gekoppeld aan de verschillende bewerkingen die u uitvoert. Zo is de `KEYS` opdracht een O (n)-bewerking en moet worden vermeden. De [redis.io-site](https://redis.io/commands/) bevat details over de tijd complexiteit voor elke bewerking die wordt ondersteund. Klik op elke opdracht om de complexiteit van elke bewerking weer te geven.
 
 #### <a name="configuration-and-concepts"></a>Configuratie en concepten
-* Gebruik de standaard-of Premium-laag voor productie systemen. De laag Basic is een systeem met één knooppunt zonder gegevensreplicatie en zonder SLA. Gebruik minimaal een C1-cache. C0-caches worden doorgaans gebruikt voor eenvoudige ontwikkel-en test scenario's.
+* Gebruik de standaard-of Premium-laag voor productie systemen. De laag basis is een systeem met één knoop punt zonder gegevens replicatie en geen SLA. Gebruik ook ten minste een C1-cache. C0-caches worden doorgaans gebruikt voor eenvoudige ontwikkel-en test scenario's.
 * Houd er rekening mee dat redis een **in-Memory-** gegevens archief is. Lees [dit artikel](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) zodat u op de hoogte bent van scenario's waarin gegevens verlies zich kan voordoen.
 * Ontwikkel uw systeem zodat het verbinding problemen kan verwerken [vanwege patches en failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
@@ -456,7 +456,7 @@ Hier volgen enkele veelvoorkomende redenen voor het verbreken van een cache.
   * Het exemplaar waarop de cache is geïmplementeerd, is door Azure bijgewerkt
     * Dit kan zijn voor redis-server updates of algemeen VM-onderhoud.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Welke Azure Cache-aanbieding is juist voor mij?
+### <a name="which-azure-cache-offering-is-right-for-me"></a>Welke Azure-cache aanbieding is geschikt voor mij?
 > [!IMPORTANT]
 > Na de [aankondiging](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)van vorig jaar zijn de Azure Managed cache service-en Azure in-Role cache-Services **buiten gebruik gesteld** op 30 november 2016. Onze aanbeveling is [Azure cache te gebruiken voor redis](https://azure.microsoft.com/services/cache/). Zie [migreren van Managed cache service naar Azure cache voor redis](cache-migrate-to-redis.md)voor informatie over het migreren van.
 >

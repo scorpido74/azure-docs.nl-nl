@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704082"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377156"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Snelstartgids: een toepassing verwijderen die is geregistreerd bij het micro soft Identity-platform
 
@@ -39,7 +39,7 @@ Toepassingen die u of uw organisatie hebben geregistreerd, worden vertegenwoordi
 ### <a name="to-remove-an-application"></a>Toepassing verwijderen
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-2. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+2. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 3. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht**.
 4. Selecteer **Verwijderen** op de pagina **Overzicht**.
 5. Selecteer **Ja** om te bevestigen dat u de app wilt verwijderen.
@@ -57,7 +57,7 @@ Als u de toegang van een toepassing tot uw directory wilt verwijderen (nadat u t
 
 Lees meer over andere gerelateerde snelstarts voor app-beheer:
 
-* [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
+* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
-* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
+* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)

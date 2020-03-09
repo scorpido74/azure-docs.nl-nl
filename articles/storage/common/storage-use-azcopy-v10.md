@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391190"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -63,11 +63,11 @@ U kunt autorisatie referenties opgeven door gebruik te maken van Azure Active Di
 
 Gebruik deze tabel als richt lijn:
 
-| Opslagtype | Momenteel ondersteunde autorisatie methode |
+| Opslag type | Momenteel ondersteunde autorisatie methode |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
+|**Blob-opslag** | Azure AD & SAS |
 |**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
-|**File Storage** | Alleen SAS |
+|**Bestands opslag** | Alleen SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
 
@@ -90,9 +90,9 @@ Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegeweze
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
 
 - Container (bestands systeem)
-- Opslagaccount
-- Resourcegroep
-- Abonnement
+- Opslag account
+- Resource groep
+- Abonnees
 
 Zie voor meer informatie over het controleren en toewijzen [van rollen toegang verlenen tot Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -247,7 +247,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Zie [using Shared Access signatures (SAS) (Engelstalig)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)voor meer informatie over SAS-tokens en hoe u er een kunt verkrijgen.
 
-## <a name="transfer-files"></a>Bestandsoverdracht
+## <a name="transfer-files"></a>Bestanden overdragen
 
 Nadat u uw identiteit hebt geverifieerd of een SAS-token hebt aangeschaft, kunt u beginnen met het overdragen van bestanden.
 
@@ -271,9 +271,9 @@ Als u deze problemen wilt voor komen, moet u een statische koppeling (niet wijzi
 
 Voer de volgende opdracht uit om de koppeling te verkrijgen:
 
-| Besturingssysteem  | Opdracht |
+| Besturingssysteem  | Cmd |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
+| **Spreek** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
@@ -281,9 +281,9 @@ Voer de volgende opdracht uit om de koppeling te verkrijgen:
 
 De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolgens AzCopy downloaden met behulp van deze URL.
 
-| Besturingssysteem  | Opdracht |
+| Besturingssysteem  | Cmd |
 |--------|-----------|
-| **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
+| **Spreek** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen
