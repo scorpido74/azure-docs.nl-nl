@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148968"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392093"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
-Configuratie bestanden voor VPN-clients zijn opgenomen in een zip-bestand. Configuratie bestanden bieden de instellingen die zijn vereist voor een systeem eigen Windows, Mac IKEv2-VPN of Linux-clients om verbinding te maken met een VNet via punt-naar-site-verbindingen die gebruikmaken van systeem eigen Azure-certificaat authenticatie.
+Configuratie bestanden voor VPN-clients zijn opgenomen in een zip-bestand. Configuratie bestanden bieden de instellingen die zijn vereist voor een systeem eigen Windows, Mac IKEv2-VPN of Linux-clients om verbinding te maken met een virtueel netwerk via punt-naar-site-verbindingen die gebruikmaken van systeem eigen Azure-certificaat verificatie.
 
-Client configuratie bestanden zijn specifiek voor de VPN-configuratie voor het VNet. Als er wijzigingen zijn aangebracht in de punt-naar-site-VPN-configuratie nadat u de configuratie bestanden voor de VPN-client hebt gegenereerd, zoals het type VPN-protocol of het verificatie type, moet u nieuwe VPN-client configuratie bestanden voor uw gebruikers apparaten genereren. 
+Client configuratie bestanden zijn specifiek voor de VPN-configuratie voor het virtuele netwerk. Als er wijzigingen zijn aangebracht in de punt-naar-site-VPN-configuratie nadat u de configuratie bestanden voor de VPN-client hebt gegenereerd, zoals het type VPN-protocol of het verificatie type, moet u nieuwe VPN-client configuratie bestanden voor uw gebruikers apparaten genereren. 
 
 * Voor meer informatie over point-to-site-verbindingen leest u [About Point-to-Site VPN](point-to-site-about.md) (Over point-to-site-VPN).
 * Zie [Configure openvpn for P2S](vpn-gateway-howto-openvpn.md) (Engelstalig) en [Configure openvpn clients](vpn-gateway-howto-openvpn-clients.md)(Engelstalig) voor openvpn instructies.
@@ -41,6 +41,8 @@ U kunt client configuratie bestanden genereren met behulp van Power shell of met
 
 1. Navigeer in het Azure Portal naar de virtuele netwerk gateway voor het virtuele netwerk waarmee u verbinding wilt maken.
 2. Klik op de pagina virtuele netwerk gateway op **punt-naar-site-configuratie**.
+
+   ![client portal downloaden](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. Klik boven aan de pagina punt-naar-site-configuratie op **VPN-client downloaden**. Het duurt enkele minuten voordat het client configuratie pakket is gegenereerd.
 4. Uw browser geeft aan dat een zip-bestand voor de client configuratie beschikbaar is. Deze heeft dezelfde naam als uw gateway. Pak het bestand uit om de mappen weer te geven.
 
@@ -90,7 +92,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
     >
   
 2. Controleer of u een client certificaat hebt geïnstalleerd dat is uitgegeven door het basis certificaat dat u hebt geüpload naar Azure wanneer u P2S-instellingen hebt geconfigureerd. Dit wijkt af van de VPNServerRoot die u in de vorige stap hebt geïnstalleerd. Het client certificaat wordt gebruikt voor verificatie en is vereist. Zie [certificaten genereren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)voor meer informatie over het genereren van certificaten. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
-3. Open het dialoog venster **netwerk** onder **netwerk voorkeuren** en klik op **+** om een nieuw VPN-client VERBINDINGS profiel te maken voor een P2S-verbinding met Azure VNet.
+3. Open het dialoog venster **netwerk** onder **netwerk voorkeuren** en klik op **+** om een nieuw VPN-client VERBINDINGS profiel te maken voor een P2S-verbinding met het virtuele Azure-netwerk.
 
    De **Interface** waarde is ' VPN ' en de waarde van het **VPN-type** is ' IKEv2 '. Geef een naam op voor het profiel in het veld **service naam** en klik vervolgens op **maken** om het VPN-client verbindings profiel te maken.
 
@@ -114,8 +116,8 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
-   ![Toep assen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
-9. Klik in het dialoog venster **netwerk** op **Toep assen** om alle wijzigingen op te slaan. Klik vervolgens op **verbinding maken** om de P2S-verbinding met Azure VNet te starten.
+   ![toepassen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+9. Klik in het dialoog venster **netwerk** op **Toep assen** om alle wijzigingen op te slaan. Klik vervolgens op **verbinding maken** om de P2S-verbinding met het virtuele Azure-netwerk te starten.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
@@ -138,7 +140,7 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Selecteer **instellingen** en selecteer vervolgens **netwerk**.
+2. Selecteer **instellingen**en selecteer vervolgens **netwerk**.
 
    ![verbindingen bewerken](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Klik op de knop **+** om een nieuwe verbinding te maken.
