@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620617"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362658"
 ---
 # <a name="about-migration"></a>Info over migratie
 
@@ -36,7 +36,7 @@ Naast het gebruik van Site Recovery voor herstel na nood gevallen van on-premise
 - Voor migratie repliceert u on-premises machines naar Azure of Azure-Vm's naar een secundaire regio. Vervolgens voert u de virtuele machine van de primaire site naar de secundaire uit en voltooit u het migratie proces. Hierbij is geen failback betrokken.  
 
 
-## <a name="migration-scenarios"></a>Migratie scenario's
+## <a name="migration-scenarios"></a>Migratiescenario's
 
 **Scenario** | **Details**
 --- | ---

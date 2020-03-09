@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950413"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392573"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
 Standaard worden berichten gerouteerd naar het ingebouwde service-Facing-eind punt (**berichten/gebeurtenissen**) die compatibel zijn met [Event hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Dit eind punt is momenteel alleen beschikbaar via het [AMQP](https://www.amqp.org/) -protocol op poort 5671. Een IoT-hub geeft de volgende eigenschappen aan om u in staat te stellen de ingebouwde Event hub-compatibele **berichten/gebeurtenissen**voor berichten-endpoint te beheren.
 
-| Eigenschap            | Description |
+| Eigenschap            | Beschrijving |
 | ------------------- | ----------- |
 | **Aantal partities** | Stel deze eigenschap in op maken om het aantal [partities](../event-hubs/event-hubs-features.md#partitions) voor apparaat-naar-Cloud-gebeurtenis opname te definiëren. |
 | **Bewaar tijd**  | Met deze eigenschap geeft u op hoe lang in dagen berichten worden bewaard door IoT Hub. De standaard waarde is één dag, maar kan tot zeven dagen worden verhoogd. |
@@ -40,17 +40,17 @@ Sommige product integraties en Event Hubs Sdk's zijn op de hoogte van IoT Hub en
 
 Wanneer u Event Hubs Sdk's of product integraties gebruikt die niet op de hoogte zijn van IoT Hub, hebt u een event hub-compatibel eind punt en Event hub-compatibele naam nodig. U kunt deze waarden als volgt ophalen uit de portal:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw IoT-hub.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
 
 2. Klik op **ingebouwde eind punten**.
 
-3. De sectie **Events** bevat de volgende waarden: **Partities**, **Event hub-compatibele naam**, **Event hub-compatibel eind punt**, retentie **tijd**en **consumenten groepen**.
+3. De **sectie Events** bevat de volgende waarden: **partities**, **een event hub-compatibele naam**, een **Event hub-compatibel eind punt**, **retentie tijd**en **consumenten groepen**.
 
-    ![Apparaat-naar-cloudinstellingen](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
+    ![Apparaat-naar-Cloud-instellingen](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-In de portal bevat het veld met de Event hub-compatibel eind punt een volledig Event Hubs connection string dat er als volgt uitziet: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Als de SDK die u gebruikt andere waarden vereist, dan zou het volgende zijn:
+In de portal bevat het veld met de Event hub-compatibel eind punt een volledig Event Hubs connection string dat er als volgt uitziet: **eind punt = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Als de SDK die u gebruikt andere waarden vereist, dan zou het volgende zijn:
 
-| Name | Value |
+| Naam | Waarde |
 | ---- | ----- |
 | Eindpunt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostnaam | abcd1234namespace.servicebus.windows.net |
@@ -69,7 +69,7 @@ De Sdk's die u kunt gebruiken om verbinding te maken met het ingebouwde Event hu
 
 De product integraties die u kunt gebruiken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar zijn, zijn:
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Zie [gegevens verwerken van IOT hub met Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure functions](https://docs.microsoft.com/azure/azure-functions/). Zie [gegevens verwerken van IOT hub met Azure functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
 * [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Bekijk [gegevens als invoer in stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
 * [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Zie [een logboek bron van een IOT hub toevoegen aan uw time series Insights-omgeving](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). U kunt de [Spout-bron](https://github.com/apache/storm/tree/master/external/storm-eventhubs) weer geven op github.

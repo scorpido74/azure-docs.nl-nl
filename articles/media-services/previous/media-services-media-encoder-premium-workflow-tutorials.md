@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016715"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392925"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Geavanceerde Media Encoder Premium Workflow zelf studies
 ## <a name="overview"></a>Overzicht
@@ -219,7 +219,7 @@ Als u de werk stroom lokaal wilt testen, klikt u op de knop afspelen in de werk 
 ## <a id="MXF_to_MP4_with_dyn_packaging"></a>MXF coderen in MP4: dynamische verpakking met multibitrate ingeschakeld
 In dit scenario maakt u een set met meerdere bitsnelheden MP4-bestanden met met AAC gecodeerde audio van één. MXF-invoer bestand.
 
-Wanneer een multi-bitrate activa-uitvoer gewenst is voor gebruik in combi natie met de functies voor dynamische pakketten die worden aangeboden door Azure Media Services, moeten meerdere GOP terug-afgevulde MP4-bestanden van elk een andere bitrate en oplossing worden gegenereerd. Om dit te doen, biedt de coderings [MXF in een single bitrate MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) -walkthrough een goed uitgangs punt.
+Wanneer een multi-bitrate activa-uitvoer gewenst is voor gebruik in combi natie met de functies voor dynamische pakketten die worden aangeboden door Azure Media Services, moeten meerdere GOP terug-afgevulde MP4-bestanden van elk een andere bitrate en oplossing worden gegenereerd. Om dit te doen, biedt de [coderings MXF in een single bitrate MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) -walkthrough een goed uitgangs punt.
 
 ![Werk stroom starten](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
 
@@ -238,7 +238,7 @@ Verbind de niet-gecomprimeerde video-uitvoer pincode van de invoer van het Media
 
 Pas nu de configuratie voor onze nieuwe AVC-encoder aan voor uitvoer 960x540 bij 2,5 Mbps. (Gebruik de eigenschappen "uitvoer breedte", "uitvoer hoogte" en "bitrate (kbps)" voor dit.)
 
-Omdat we de resulterende activa samen met Azure Media Services dynamische verpakkingen wilt gebruiken, moet het streaming-eind punt kunnen genereren van deze MP4-bestanden HLS/gefragmenteerde MP4-en-streep fragmenten die exact op elkaar zijn afgestemd op een manier die clients die wisselen tussen verschillende bitsnelheden, krijgen één vloeiende, continue video-en audio-ervaring. Om dit te doen, moeten we ervoor zorgen dat in de eigenschappen van beide AVC-encoders de grootte van de GOP terug ("groep van afbeeldingen") voor beide MP4-bestanden is ingesteld op 2 seconden. Dit kan worden gedaan door:
+Omdat we de resulterende activa in combi natie met Azure Media Services dynamische verpakkingen willen gebruiken, moet het streaming-eind punt kunnen genereren van deze MP4-bestanden HLS/gefragmenteerde MP4/DASH-fragmenten die exact op elkaar zijn afgestemd op een manier die clients die wisselen tussen verschillende bitsnelheden, een continue video-en audio-ervaring krijgen. Om dit te doen, moeten we ervoor zorgen dat in de eigenschappen van beide AVC-encoders de grootte van de GOP terug ("groep van afbeeldingen") voor beide MP4-bestanden is ingesteld op 2 seconden. Dit kan worden gedaan door:
 
 * de grootte modus GOP terug instellen op vaste GOP terug-grootte en
 * het sleutel frame interval tot twee seconden.
@@ -294,7 +294,7 @@ Maak een derde file output-component om de uitgaande stroom van de muxer uit te 
 *Audio-muxer voor het maken van bestands uitvoer*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>De toevoegen. ISM SMIL-bestand
-Voor de dynamische verpakking om in combi natie met zowel MP4-bestanden (en de alleen-audio-MP4) in onze Media Services-Asset te werken, hebben we ook een manifest bestand nodig (ook wel een ' SMIL '-bestand genoemd: Synchronized Multi Media Integration Language). Dit bestand geeft aan Azure Media Services welke MP4-bestanden beschikbaar zijn voor dynamische pakketten en welke van die voor het streamen van audio. Een typisch manifest bestand voor een set MP4's met één audio stroom ziet er als volgt uit:
+Als u wilt dat de dynamische verpakking in combi natie met zowel MP4-bestanden (en de alleen-audio-MP4) in onze Media Services-Asset werkt, hebt u ook een manifest bestand nodig (ook wel een ' SMIL-bestand: Synchronized Multi Media Integration Language ' genoemd). Dit bestand geeft aan Azure Media Services welke MP4-bestanden beschikbaar zijn voor dynamische pakketten en welke van die voor het streamen van audio. Een typisch manifest bestand voor een set MP4's met één audio stroom ziet er als volgt uit:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -693,8 +693,8 @@ Voordat we de cliplist-XML kunnen herschrijven die tijdens het opstarten van de 
 
 Eerst moeten we bepalen op basis van welk punt de video moet worden bijgesneden. Om dit handig te maken voor de minder technische gebruiker van de werk stroom, publiceert u twee eigenschappen naar de hoofdmap van de grafiek. Als u dit wilt doen, klikt u met de rechter muisknop op het ontwerp oppervlak en selecteert u eigenschap toevoegen:
 
-* Eerste eigenschap: "ClippingTimeStart" van het type: TIJD CODE
-* Tweede eigenschap: "ClippingTimeEnd" van het type: TIJD CODE
+* Eerste eigenschap: "ClippingTimeStart" van het type: "tijd code"
+* Tweede eigenschap: "ClippingTimeEnd" van het type: "tijd code"
 
 ![Dialoog venster Eigenschappen voor begin tijd van knippen toevoegen](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -761,7 +761,7 @@ Dit is gedaan door middel van normale bewerkingen voor teken reeks manipulatie. 
 
 *De resulterende lijst met clips registreren*
 
-Voer een test uit om te zien hoe de video-en audio gegevensstromen zijn afgekapt. Als u meer dan één test uitvoert met verschillende waarden voor het beperkende punt, zult u merken dat deze niet meer in aanmerking komen. De reden hiervoor is dat de ontwerper, in tegens telling tot de Azure runtime, de cliplist XML niet voor elke uitvoering overschrijft. Dit betekent dat alleen de eerste keer dat u de in-en uitpunten hebt ingesteld, ervoor zorgt dat het XML-bestand, alle andere keren, onze Guard-`clipListXML.indexOf("<trim>") == -1`component (als ()) de werk stroom niet kan toevoegen aan een ander trim element wanneer dat al aanwezig is.
+Voer een test uit om te zien hoe de video-en audio gegevensstromen zijn afgekapt. Als u meer dan één test uitvoert met verschillende waarden voor het beperkende punt, zult u merken dat deze niet meer in aanmerking komen. De reden hiervoor is dat de ontwerper, in tegens telling tot de Azure runtime, de cliplist XML niet voor elke uitvoering overschrijft. Dit betekent dat alleen de eerste keer dat u de in-en uitpunten hebt ingesteld, ervoor zorgt dat het XML-bestand, alle andere keren, onze Guard-component (als (`clipListXML.indexOf("<trim>") == -1`)) de werk stroom niet kan toevoegen aan een ander trim element wanneer het al aanwezig is.
 
 Om ervoor te zorgen dat onze werk stroom handig kan worden getest, kunt u het beste een code voor het bewaren van een huis houden om te controleren of een knip element al aanwezig is. Als dit het geval is, kunt u deze verwijderen voordat u doorgaat door de XML te wijzigen met de nieuwe waarden. In plaats van gebruik te maken van een teken reeks manipulatie, is het waarschijnlijk veiliger om dit te doen via real XML object model parsering.
 

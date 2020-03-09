@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c184972789c412406f264f725f8b94e1f7f162ce
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547044"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358668"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>De Azure IoT Edge-runtime en de bijbehorende architectuur begrijpen
 
@@ -92,7 +92,7 @@ Elk item in het implementatie manifest bevat specifieke informatie over een modu
   * In uitvoering
   * Niet in orde
   * Mislukt
-  * Stopped
+  * Gestopt
 
 * **restartPolicy** : de manier waarop de IOT Edge-agent een module opnieuw opstart. Mogelijke waarden:
   
@@ -125,4 +125,4 @@ Meer informatie over het Azure IoT Edge Security Framework vindt u in de [IOT Ed
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Informatie over Azure IoT Edge-modules](iot-edge-modules.md)
+[Azure IoT Edge-modules begrijpen](iot-edge-modules.md)

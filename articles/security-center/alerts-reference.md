@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661956"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380716"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -243,7 +243,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
 |**PREVIEW-functie binding met de rol cluster-beheerder gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe binding met de rol cluster beheerder gedetecteerd, wat resulteert in Administrator bevoegdheden. Het is niet noodzakelijkerwijs mogelijk om beheerders bevoegdheden te bieden in het cluster.|Persistentie|
-|**VOOR beeld-weer gegeven Kubernetes-dash board gedetecteerd**|Kubernetes-controle logboek analyse heeft de bloot stelling van het Kubernetes-dash board door een Load Balancer-service gedetecteerd. Met beschik bare Dash boards kunt u niet-geverifieerde toegang tot het cluster beheer en een beveiligings risico vormen.|Persistentie|
+|**VOOR beeld-weer gegeven Kubernetes-dash board gedetecteerd**|Kubernetes-controle logboek analyse heeft de bloot stelling van het Kubernetes-dash board door een Load Balancer-service gedetecteerd. Met beschik bare Dash boards kunt u niet-geverifieerde toegang tot het cluster beheer en een beveiligings risico vormen.|Initiële toegang|
 |**VOOR beeld-nieuwe rol met hoge bevoegdheden gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe rol met hoge bevoegdheden gedetecteerd. Een binding met een rol met hoge bevoegdheden geeft de gebruiker/groep verhoogde bevoegdheden in het cluster. Het is niet nood zakelijk dat verhoogde bevoegdheden worden geboden, maar kan leiden tot problemen met de escalatie van bevoegdheden in het cluster.|Persistentie|
 |**PREVIEW-nieuwe container in de uitvoeren-naam ruimte gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe container gedetecteerd in de uitvoeren-systeem naam ruimte die niet voor komt in de containers die normaal gesp roken in deze naam ruimte worden uitgevoerd. De uitvoeren-naam ruimten mogen geen gebruikers resources bevatten. Aanvallers kunnen deze naam ruimte gebruiken om schadelijke onderdelen te verbergen.|Persistentie|
 |**PREVIEW-analyse container voor digitale valuta gedetecteerd**|Kubernetes-controle logboek analyse heeft een container gedetecteerd met een installatie kopie die is gekoppeld aan een hulp programma voor het analyseren van digitale valuta.|Uitvoering|
@@ -263,7 +263,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 |**SSH-server wordt uitgevoerd in een container**|Computer logboeken geven aan dat een SSH-server wordt uitgevoerd in een docker-container. Hoewel dit gedrag opzettelijk kan zijn, geeft dit vaak aan dat een container onjuist is geconfigureerd of wordt geschonden.|Uitvoering|
 |**Er is een container met een Miner-installatie kopie gedetecteerd**|Met computer Logboeken wordt de uitvoering aangegeven van een docker-container met een installatie kopie die is gekoppeld aan digitale valuta analyse. Dit gedrag kan erop duiden dat uw resources worden misbruikt.|Uitvoering|
 |**Verdachte aanvraag voor Kubernetes-API**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan voor de Kubernetes-API. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|Uitvoering|
-|**Verdachte aanvraag naar het Kubernetes-dash board**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan aan het Kubernetes-dash board. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|-|
+|**Verdachte aanvraag naar het Kubernetes-dash board**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan aan het Kubernetes-dash board. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|Zijwaartse beweging|
 ||||
 
 
@@ -395,7 +395,7 @@ Meer informatie over de bedoeling van een aanval kan u helpen om het evenement g
 
 De reeks stappen die de voortgang beschrijven van een cyberattack van Reconnaissance naar Data exfiltration wordt vaak een ' Kill-keten ' genoemd. 
 
-De ondersteunde intenties van de Kill-keten van Security Center zijn gebaseerd op het [Mitre ATT & VERzonken™ Framework](https://attack.mitre.org/matrices/enterprise) en wordt beschreven in de volgende tabel.
+De ondersteunde intenties van de Kill-keten van Security Center zijn gebaseerd op het [Mitre ATT & VERzonken&trade; Framework](https://attack.mitre.org/matrices/enterprise) en wordt beschreven in de volgende tabel.
 
 |Intentie|Beschrijving|
 |------|-------|

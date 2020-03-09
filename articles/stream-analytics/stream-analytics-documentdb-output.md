@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364554"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-uitvoer naar Azure Cosmos DB  
 Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. In dit document staan enkele aanbevolen procedures voor het implementeren van deze configuratie.
@@ -64,7 +64,7 @@ Als u *alle* documenten wilt opslaan, inclusief de bestanden met een dubbele id,
 Met Azure Cosmos DB worden partities automatisch geschaald op basis van uw werk belasting. We raden u daarom aan [onbeperkte](../cosmos-db/partition-data.md) containers te plaatsen als benadering voor het partitioneren van uw gegevens. Als Stream Analytics naar een onbeperkt aantal containers schrijft, worden er zoveel parallelle schrijvers als de vorige query stap of het schema voor het partitioneren van gegevens gebruikt.
 
 > [!NOTE]
-> Azure Stream Analytics ondersteunt alleen onbeperkte containers met partitie sleutels op het hoogste niveau. Bijvoorbeeld, `/region` wordt ondersteund. Geneste partitie sleutels (bijvoorbeeld `/region/name`) worden niet ondersteund. 
+> Azure Stream Analytics ondersteunt alleen onbeperkte containers met partitie sleutels op het hoogste niveau. `/region` wordt bijvoorbeeld ondersteund. Geneste partitie sleutels (bijvoorbeeld `/region/name`) worden niet ondersteund. 
 
 Afhankelijk van de partitie sleutel die u kiest, kan deze _waarschuwing_worden weer gegeven:
 
@@ -113,7 +113,7 @@ Met Azure Cosmos DB als uitvoer in Stream Analytics wordt de volgende prompt voo
 |Accountcode     | De gedeelde toegangs sleutel voor het Azure Cosmos DB-account.|
 |Database        | De naam van de Azure Cosmos DB-Data Base.|
 |Containernaam | De naam van de container, zoals `MyContainer`. Er moet een container met de naam `MyContainer` bestaan.  |
-|Document-id     | Optioneel. De naam van de kolom in uitvoergebeurtenissen dat wordt gebruikt als de unieke sleutel bij welke invoegen of bijwerken bewerkingen moeten worden gebaseerd. Als u dit leeg laat, worden alle gebeurtenissen ingevoegd, zonder update optie.|
+|Document-ID     | Optioneel. De naam van de kolom in uitvoergebeurtenissen dat wordt gebruikt als de unieke sleutel bij welke invoegen of bijwerken bewerkingen moeten worden gebaseerd. Als u dit leeg laat, worden alle gebeurtenissen ingevoegd, zonder update optie.|
 
 Nadat u de Azure Cosmos DB uitvoer hebt geconfigureerd, kunt u deze in de query gebruiken als het doel van een [into-instructie](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Wanneer u een Azure Cosmos DB uitvoer op die manier gebruikt, [moet een partitie sleutel expliciet worden ingesteld](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 
 

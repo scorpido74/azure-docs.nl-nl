@@ -4,11 +4,11 @@ description: Hierin worden de resource providers beschreven die ondersteuning bi
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478589"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372278"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resource providers en-typen
 
@@ -29,11 +29,11 @@ U kunt deze stappen uitvoeren via de Azure Portal, Azure PowerShell of Azure CLI
 
 Zie [resource providers voor Azure-Services](azure-services-resource-providers.md)voor een lijst waarin resource providers worden toegewezen aan Azure-Services.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 Als u alle resource providers en de registratie status voor uw abonnement wilt weer geven:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer in het menu Azure Portal **alle services**.
 
     ![abonnementen selecteren](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +50,7 @@ Als u alle resource providers en de registratie status voor uw abonnement wilt w
 
 Informatie weer geven voor een bepaalde resource provider:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer in het menu Azure Portal **alle services**.
 3. In het vak **alle services** voert u **resource Explorer**in en selecteert u vervolgens **resource Explorer**.
 
@@ -179,7 +179,7 @@ West US
 ...
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Als u alle resource providers in Azure en de registratie status voor uw abonnement wilt weer geven, gebruikt u:
 

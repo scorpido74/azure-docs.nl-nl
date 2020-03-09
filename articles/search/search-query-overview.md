@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793220"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379621"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
 
@@ -33,7 +33,7 @@ Het volgende voor beeld is een representatieve query die is geconstrueerd in de 
 }
 ```
 
-+ **`queryType`** stelt de parser in. Dit is de [standaard eenvoudige query-parser](search-query-simple-examples.md) (optimaal voor zoeken in volledige tekst) of de [volledige lucene-query-parser](search-query-lucene-examples.md) die wordt gebruikt voor geavanceerde query constructies zoals reguliere expressies, proximity Search, fuzzy en Zoek opdracht met Joker tekens.
++ **`queryType`** stelt de parser in. Dit is de [standaard eenvoudige query-parser](search-query-simple-examples.md) (optimaal voor Zoek opdrachten in volledige tekst) of de [volledige lucene-query-parser](search-query-lucene-examples.md) die wordt gebruikt voor geavanceerde query constructies zoals reguliere expressies, proximity-zoek acties, fuzzy-en Joker tekens zoeken.
 
 + **`search`** biedt de overeenkomende criteria, meestal tekst, maar vaak vergezeld van Booleaanse Opera tors. Enkele zelfstandige termen zijn *term* query's. Met een aanhalings teken voor meerdere delen worden query's voor de *sleutel woordgroepen* uitgevoerd. De zoek opdracht kan niet worden gedefinieerd, zoals in **`search=*`** , maar dit is waarschijnlijk een aantal termen, zinsdelen en Opera tors die vergelijkbaar zijn met wat er in het voor beeld wordt weer gegeven.
 
