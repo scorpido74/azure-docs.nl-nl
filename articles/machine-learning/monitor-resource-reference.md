@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979709"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927553"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
 
@@ -31,14 +31,14 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:---|
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
 | JobId | ID van de verzonden taak |
 | ExperimentId | ID van het experiment |
 | Experimentnaam | De naam van het experiment |
 | CustomerSubscriptionId | SubscriptionId waar experiment en job worden verzonden |
 | WorkspaceName | De naam van de machine learning-werk ruimte |
 | ClusterName | De naam van het cluster |
-| provisioningState | Status van het verzenden van taken |
+| ProvisioningState | Status van het verzenden van taken |
 | ResourceGroupName | Naam van de resource groep |
 | JobName | De naam van de taak |
 | ClusterId | ID van het cluster |
@@ -60,8 +60,8 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:--- |
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
-| provisioningState | De inrichtings status van het cluster |
+| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| ProvisioningState | De inrichtings status van het cluster |
 | ClusterName | De naam van het cluster |
 | ClusterType | Type van het cluster |
 | Type CreatedBy | Gebruiker die het cluster heeft gemaakt |
@@ -76,7 +76,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | Uitgever | Uitgever van het cluster type |
 | Aanbieding | Aanbod waarmee het cluster is gemaakt |
 | Sku | SKU van het knoop punt/de virtuele machine die in het cluster is gemaakt |
-| Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
+| Version | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
 | SubnetId | SubnetId van het cluster |
 | AllocationState | Cluster toewijzings status |
 | CurrentNodeCount | Huidig aantal knoop punten van het cluster |
@@ -103,7 +103,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 |:--- |:--- |
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
-| Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
+| Category | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
 | ClusterName | De naam van het cluster |
 | NodeId | ID van het cluster knooppunt dat is gemaakt |
 | VmSize | VM-grootte van het knoop punt |
@@ -112,7 +112,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | Uitgever | Uitgever van de VM-installatie kopie, bijvoorbeeld micro soft-dsvm |
 | Aanbieding | Aanbieding gekoppeld aan het maken van een virtuele machine |
 | Sku | SKU van het knoop punt/VM gemaakt |
-| Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
+| Version | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
 | ClusterCreationTime | Tijdstip waarop het cluster is gemaakt |
 | ResizeStartTime | Tijdstip waarop het omhoog/omlaag schalen van het cluster is gestart |
 | ResizeEndTime | Tijd waarop het omhoog/omlaag schalen van het cluster is beëindigd |
@@ -126,15 +126,15 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 
 In de volgende tabellen worden de platform gegevens weer gegeven die zijn verzameld voor Azure Machine Learning alle metrische gegevens worden opgeslagen in de naam ruimte **Azure machine learning-werkruimte**.
 
-**Model**
+**Activiteitsmodel**
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
-| Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
-| Model implementeren is voltooid | Aantal | Het aantal model implementaties dat is geslaagd. |
-| Model register mislukt | Aantal | Het aantal model registraties dat is mislukt. |
-| Model registratie is voltooid | Aantal | Het aantal model registraties dat is geslaagd. |
+| Model implementeren is mislukt | Count | Het aantal model implementaties dat is mislukt. |
+| Model implementeren gestart | Count | Het aantal model implementaties is gestart. |
+| Model implementeren is voltooid | Count | Het aantal model implementaties dat is geslaagd. |
+| Model register mislukt | Count | Het aantal model registraties dat is mislukt. |
+| Model registratie is voltooid | Count | Het aantal model registraties dat is geslaagd. |
 
 **Quotum**
 
@@ -142,19 +142,19 @@ Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Actieve kernen | Aantal | Het aantal actieve reken kernen. |
-| Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
-| Niet-actieve kernen | Aantal | Het aantal niet-actieve Compute-kernen. |
-| Niet-actieve knoop punten | Aantal | Het aantal niet-actieve reken knooppunten. |
-| Kernen verlaten | Aantal | Het aantal Leave-kernen. |
-| Knoop punten verlaten | Aantal | Het aantal knoop punten dat de poort verlaat. |
-| Afgebroken kernen | Aantal | Het aantal afgebroken kernen. |
-| Knoop punten die zijn afgebroken | Aantal | Het aantal knoop punten dat is afgebroken. |
+| Actieve kernen | Count | Het aantal actieve reken kernen. |
+| Actieve knoop punten | Count | Het aantal actieve knoop punten. |
+| Niet-actieve kernen | Count | Het aantal niet-actieve Compute-kernen. |
+| Niet-actieve knoop punten | Count | Het aantal niet-actieve reken knooppunten. |
+| Kernen verlaten | Count | Het aantal Leave-kernen. |
+| Knoop punten verlaten | Count | Het aantal knoop punten dat de poort verlaat. |
+| Afgebroken kernen | Count | Het aantal afgebroken kernen. |
+| Knoop punten die zijn afgebroken | Count | Het aantal knoop punten dat is afgebroken. |
 | Percentage quotum gebruik | Procent | Het percentage van de gebruikte quota. |
-| Totaal aantal kernen | Aantal | Het totale aantal kernen. |
-| Totaal aantal knoop punten | Aantal | Het totale aantal knoop punten. |
-| Onbruikbaar aantal kern geheugens | Aantal | Het aantal onbruikbaar kern geheugens. |
-| Niet-bruikbare knoop punten | Aantal | Het aantal niet-bruikbare knoop punten. |
+| Totaal aantal kernen | Count | Het totale aantal kernen. |
+| Totaal aantal knoop punten | Count | Het totale aantal knoop punten. |
+| Onbruikbaar aantal kern geheugens | Count | Het aantal onbruikbaar kern geheugens. |
+| Niet-bruikbare knoop punten | Count | Het aantal niet-bruikbare knoop punten. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quotum metrieken:
 
@@ -164,15 +164,15 @@ Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quot
 | Naam van VM-familie | Percentage quotum gebruik | De naam van de VM-familie die door het cluster wordt gebruikt. |
 | VM-prioriteit | Percentage quotum gebruik | De prioriteit van de virtuele machine.
 
-**Uitvoeren**
+**Uitvoeringsrun**
 
 Informatie over trainings uitvoeringen.
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
-| Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
-| Gestart uitvoeringen | Aantal | Het aantal gestarte uitvoeringen. |
+| Voltooide uitvoeringen | Count | Het aantal voltooide uitvoeringen. |
+| Mislukte uitvoeringen | Count | Het aantal mislukte uitvoeringen. |
+| Gestart uitvoeringen | Count | Het aantal gestarte uitvoeringen. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor uitvoering:
 

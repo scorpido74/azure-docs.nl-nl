@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381129"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
 
@@ -32,15 +32,15 @@ Met de OPC-micro service kunt u afzonderlijke rollen gebruiken om toegang te kri
 
 De OPC-kluis micro service definieert de volgende rollen:
 
-- **Lezer**: Standaard heeft alle geverifieerde gebruikers in de Tenant Lees toegang. 
+- **Lezer**: standaard heeft elke geverifieerde gebruiker in de Tenant Lees toegang. 
   - Lees toegang tot toepassingen en certificaat aanvragen. Kan toepassingen en certificaat aanvragen weer geven en er query's op uitvoeren. Detectie gegevens van apparaten en open bare certificaten zijn ook toegankelijk met lees toegang.
-- **Schrijver**: De rol schrijver wordt toegewezen aan een gebruiker om schrijf machtigingen voor bepaalde taken toe te voegen. 
+- **Writer**: de rol schrijver wordt toegewezen aan een gebruiker om schrijf machtigingen voor bepaalde taken toe te voegen. 
   - Lees-/schrijftoegang tot toepassingen en certificaat aanvragen. Kan toepassingen registreren, bijwerken en verwijderen. Kan certificaat aanvragen maken en goedgekeurde persoonlijke sleutels en certificaten verkrijgen. Kan ook persoonlijke sleutels verwijderen.
-- **Goed keurder**: De rol van de goed keurder wordt toegewezen aan een gebruiker om certificaat aanvragen goed te keuren of af te wijzen. De rol bevat geen andere functies.
+- **Goed keurder**: de rol van de goed keurder is toegewezen aan een gebruiker om certificaat aanvragen goed te keuren of af te wijzen. De rol bevat geen andere functies.
   - Naast de rol fiatteur om toegang te krijgen tot de OPC kluis micro Service-API, moet de gebruiker ook beschikken over de machtiging voor sleutel ondertekening in Azure Key Vault om de certificaten te kunnen ondertekenen.
   - De rol schrijver en goed keurder moet aan verschillende gebruikers worden toegewezen.
   - De belangrijkste rol van de goed keurder is het goed keuren van het genereren en afkeuren van certificaat aanvragen.
-- **Beheerder**: De beheerdersrol wordt toegewezen aan een gebruiker om de certificaat groepen te beheren. De rol biedt geen ondersteuning voor de functie goed keurder, maar bevat de rol schrijver.
+- **Beheerder**: de beheerdersrol is toegewezen aan een gebruiker om de certificaat groepen te beheren. De rol biedt geen ondersteuning voor de functie goed keurder, maar bevat de rol schrijver.
   - De beheerder kan de certificaat groepen beheren, de configuratie wijzigen en toepassings certificaten intrekken door een nieuwe certificaatintrekkingslijst (CRL) uit te geven.
   - In het ideale geval worden de rollen schrijver, goed keurder en beheerder toegewezen aan verschillende gebruikers. Voor extra beveiliging moet een gebruiker met de rol goed keurder of beheerder ook beschikken over de machtiging voor het ondertekenen van sleutels in Key Vault, het uitgeven van certificaten of het vernieuwen van een certificaat van een certificerings instantie.
   - Naast de rol van micro Service-beheer, bevat de rol, maar is niet beperkt tot:
@@ -110,19 +110,19 @@ Onderhoud van een activa-inventaris voor alle productie-hosts (inclusief permane
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Inventarisatie van de standaard implementatie van Azure OPC kluis micro Services productie 
 
 In Azure:
-- **App service plan**: App service-plan voor service-hosts. Standaard S1.
-- **App service** voor micro service: De OPC kluis servicehost.
-- **App service** voor voorbeeld toepassing: De OPC-kluis voor beeld van een toepassingshost.
-- **Key Vault standaard**: Voor het opslaan van geheimen en Azure Cosmos DB sleutels voor de webservices.
-- **Key Vault Premium**: Voor het hosten van de CA-sleutels van de verlener, voor het ondertekenen van service en voor de kluis configuratie en opslag van persoonlijke sleutels van de toepassing.
+- **App service plan**: app service-plan voor service-hosts. Standaard S1.
+- **App service** voor micro service: de OPC kluis servicehost.
+- **App service** voor voorbeeld toepassing: de voor beeld-Toepassingshost van de OPC-kluis.
+- **Key Vault standaard**: voor het opslaan van geheimen en Azure Cosmos DB sleutels voor de webservices.
+- **Key Vault Premium**: voor het hosten van de CA-sleutels van de verlener, voor het ondertekenen van service en voor de kluis configuratie en opslag van persoonlijke sleutels van toepassingen.
 - **Azure Cosmos DB**: Data Base voor toepassings-en certificaat aanvragen. 
 - **Application Insights**: (optioneel) bewakings oplossing voor de webservice en toepassing.
-- **Registratie van Azure AD-toepassing**: Een registratie voor de voorbeeld toepassing, de service en de Edge-module.
+- **Registratie van Azure AD-toepassing**: een registratie voor de voorbeeld toepassing, de service en de Edge-module.
 
 Voor de Cloud Services moeten alle hostnamen, resource groepen, resource namen, abonnements-Id's en Tenant-Id's die worden gebruikt voor het implementeren van de service worden gedocumenteerd. 
 
 In Azure IoT Edge of een lokale IoT Edge Server:
-- **OPC-kluis IOT Edge module**: Ter ondersteuning van een Factory Network OPC UA Global Discovery-server. 
+- **OPC-kluis IOT Edge module**: ter ondersteuning van een Factory Network OPC UA Global Discovery-server. 
 
 Voor de IoT Edge-apparaten moeten de hostnamen en IP-adressen worden gedocumenteerd. 
 
@@ -174,8 +174,8 @@ De OPC-kluis service is een online certificerings instantie die eind entity cert
   - RSA-basis-CA-sleutels met een typische levens duur die groter is dan of gelijk is aan 20 jaar, moeten 4096 bits of meer zijn.
   - CA-sleutels voor RSA-verlener moeten ten minste 2048 bits zijn. Als de verval datum van het CA-certificaat na 2030 is, moet de CA-sleutel 4096 bits of hoger zijn.
 - Levens duur van certificaat
-  - Basis-CA-certificaten: De maximale geldigheids duur van het certificaat voor basis-Ca's mag niet langer zijn dan 25 jaar.
-  - CA-certificaten voor subcertificerings instanties of online uitgevers: De maximale geldigheids duur van het certificaat voor Ca's die online zijn en alleen abonnee certificaten verlenen, mag niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.<br>
+  - Basis-CA-certificaten: de maximale geldigheids periode van het certificaat voor basis-Ca's mag niet langer zijn dan 25 jaar.
+  - CA-certificaten voor subcertificerings instanties of online uitgevers: de maximale geldigheids periode van het certificaat voor Ca's die online zijn en alleen abonnee certificaten verlenen, mag niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.<br>
     > [!IMPORTANT]
     > Het certificaat van de certificerings instantie, zoals het wordt gegenereerd in de standaard OPC-kluis micro service zonder externe basis certificerings instantie, wordt beschouwd als een online subca, met de betreffende vereisten en levens duur. De standaard levensduur wordt ingesteld op 5 jaar, met een sleutel lengte die groter is dan of gelijk is aan 2048.
   - Alle asymmetrische sleutels moeten een maximale levens duur van vijf jaar hebben en een aanbevolen levens duur van 1 jaar.<br>
@@ -191,7 +191,7 @@ De OPC-kluis service is een online certificerings instantie die eind entity cert
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA-sleutels en certificaten moeten voldoen aan de minimum vereisten
 
 - **Persoonlijke sleutels**: RSA-sleutels moeten ten minste 2048 bits zijn. Als de verval datum van het CA-certificaat na 2030 is, moet de CA-sleutel 4096 bits of hoger zijn.
-- **Levens duur**: De maximale geldigheids duur van het certificaat voor Ca's die online zijn en alleen abonnee certificaten verlenen, mag niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.
+- **Levens duur**: de maximale geldigheids periode van het certificaat voor ca's die online zijn en alleen abonnee certificaten mogen niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>CA-sleutels worden beveiligd met behulp van hardware security modules
 
@@ -208,7 +208,7 @@ Standaardwerk procedures (Vereisteverklaringen) documenteren en onderhouden voor
 - Hoe de certificaat aanvraag wordt verwerkt en gevalideerd (indien van toepassing, moet u ook zien hoe certificaat vernieuwing en aanvragen voor opnieuw genereren worden verwerkt). 
 - Hoe verleende certificaten worden gedistribueerd naar de abonnees. 
 
-De OPC kluis micro service VKA wordt beschreven in [OPC-kluis architectuur](overview-opc-vault-architecture.md) en [beheert de OPC-kluis certificaat service](howto-opc-vault-manage.md). De procedures volgen ' OPC uniforme architectuur specificatie deel 12: Discovery-en Global-Services. "
+De OPC kluis micro service VKA wordt beschreven in [OPC-kluis architectuur](overview-opc-vault-architecture.md) en [beheert de OPC-kluis certificaat service](howto-opc-vault-manage.md). De procedures volgen ' OPC Unified architecture specification part ' 12: Discovery and Global Services. '
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Standaard operationele PKI-procedures voor het intrekken van certificaten documenteren en onderhouden

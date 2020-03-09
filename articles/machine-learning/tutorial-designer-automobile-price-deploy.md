@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 390655e3caab89425fe3c8623928c584f8bd3324
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934003"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933141"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelf studie: een machine learning model implementeren met de ontwerp functie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Als u uw pijp lijn wilt implementeren, moet u eerst de trainings pijplijn omzett
 
 1. Selecteer boven het pijplijn canvas **pijp lijn maken** > **real-time pipeline-pijp lijn**.
 
-    ![Scherm afbeelding waarin wordt weer gegeven waar u de knop pijp lijn maken kunt vinden](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Scherm afbeelding waarin wordt weer gegeven waar u de knop pijp lijn maken kunt vinden](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     Uw pijp lijn moet er nu als volgt uitzien: 
 
@@ -56,7 +56,7 @@ Als u uw pijp lijn wilt implementeren, moet u eerst de trainings pijplijn omzett
     > Standaard zal de invoer van de **webservice** hetzelfde gegevens schema verwachten als de trainings gegevens die worden gebruikt voor het maken van de voorspellende pijp lijn. In dit scenario wordt de prijs in het schema opgenomen. De prijs wordt echter niet gebruikt als een factor tijdens de voor spelling.
     >
 
-1. Selecteer **uitvoeren**en gebruik hetzelfde reken doel en experiment dat u in deel één hebt gebruikt.
+1. Selecteer **verzenden**en gebruik hetzelfde reken doel en experiment dat u in deel één hebt gebruikt.
 
 1. Selecteer **Implementeren**.
 

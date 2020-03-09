@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898289"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927544"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Ondersteuning voor het Commercial Marketplace-programma in Partner Center
 
@@ -27,9 +27,9 @@ Micro soft biedt ondersteuning voor een groot aantal producten en services. Het 
 
 1. Meld u met uw werk account aan bij het [commerciële Marketplace-programma op partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) . (Als u dit nog niet hebt gedaan, moet u [een partner centrum-account maken](./create-account.md).)
 
-1. Selecteer in het bovenste menu aan de rechter kant van de pagina het **ondersteunings** pictogram. 
+2. Selecteer in het bovenste menu aan de rechter kant van de pagina het **ondersteunings** pictogram. 
  
-1. Het deel venster **Help en ondersteuning** wordt weer gegeven aan de rechter kant van de pagina. 
+3. Het deel venster **Help en ondersteuning** wordt weer gegeven aan de rechter kant van de pagina. 
  
    ![Vervolg keuzemenu ondersteuning](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Micro soft biedt ondersteuning voor een groot aantal producten en services. Het 
 
    ![Help en ondersteuning van start pagina](./media/homepage-help-support.png)
 
-1. Selecteer **[documentatie](../index.md)** om uitgebreide antwoorden op vragen en resources te bekijken. 
+4. Selecteer **[documentatie](../index.yml)** om uitgebreide antwoorden op vragen en resources te bekijken. 
 
-1. Selecteer **[Community-Forum voor Marketplace-partners](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** om uw vragen te beantwoorden door gebruik te maken van de kennis van andere micro soft-Publishers. 
+5. Selecteer **[Community-Forum voor Marketplace-partners](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** om uw vragen te beantwoorden door gebruik te maken van de kennis van andere micro soft-Publishers. 
 
-1. Selecteer **[extra Help](https://aka.ms/marketplacepublishersupport)** om een nieuw ticket voor een **ondersteunings aanvraag** te openen.  
+6. Selecteer **[extra Help](https://aka.ms/marketplacepublishersupport)** om een nieuw ticket voor een **ondersteunings aanvraag** te openen.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Een ondersteunings ticket openen
 

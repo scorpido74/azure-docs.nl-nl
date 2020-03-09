@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397819"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932974"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -58,13 +58,13 @@ In het volgende voor beeld wordt het **Aad-algemene** technische profiel weer ge
 
 ## <a name="input-claims"></a>Invoer claims
 
-De volgende technische profielen zijn **InputClaims** voor sociale en lokale accounts:
+Het InputClaims-element bevat een claim waarmee een account in de Directory wordt gezocht of een nieuwe wordt gemaakt. Er moet precies één input claim-element in de claim verzameling voor invoer zijn voor alle technische profielen van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory.
 
-- De technische profielen van het sociaal account **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserWriteUsingAlternativeSecurityId** bevatten de **AlternativeSecurityId** -claim. Deze claim bevat de gebruikers-id van het sociaal-account.
-- De technische profielen van het lokale account **Aad-UserReadUsingEmailAddress** en **Aad-UserWriteUsingLogonEmail** bevatten de **e-mail** claim. Deze claim bevat de aanmeldings naam van het lokale account.
-- De geïntegreerde (lokale en sociale) technische profielen **Aad-UserReadUsingObjectId**, **Aad-UserWritePasswordUsingObjectId**, **Aad-UserWriteProfileUsingObjectId**en **Aad-UserWritePhoneNumberUsingObjectId** bevatten de **objectId** -claim. De unieke id van een account.
+Als u een bestaand gebruikers account wilt lezen, bijwerken of verwijderen, is de invoer claim een sleutel waarmee het account in azure AD-adres lijst op unieke wijze wordt geïdentificeerd. Bijvoorbeeld **objectId**, **userPrincipalName**, **signInNames. emailAddress**, **signInNames. username**of **alternativeSecurityId**. 
 
-Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren.
+Als u een nieuw gebruikers account wilt maken, is de invoer claim een sleutel waarmee een lokaal of federatief account op unieke wijze wordt geïdentificeerd. Bijvoorbeeld lokale account: **signInNames. emailAddress**of **signInNames. username**. Voor een federatief account: **alternativeSecurityId**.
+
+Het InputClaimsTransformations-element kan een verzameling trans formatie-elementen voor invoer claims bevatten die worden gebruikt voor het wijzigen van de invoer claim of het genereren van een nieuwe.
 
 ## <a name="output-claims"></a>Uitvoer claims
 

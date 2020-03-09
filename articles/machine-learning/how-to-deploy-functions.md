@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-ms.date: 11/22/2019
-ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/06/2020
+ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471938"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927442"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,24 +148,24 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In dit voor beeld wordt een prijs categorie voor _Linux Premium_ (`--sku EP1`) gebruikt.
+    In dit voor beeld wordt een _Linux Basic_ -prijs categorie (`--sku B1`) gebruikt.
 
     > [!IMPORTANT]
     > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u moet de `--is-linux`-para meter gebruiken.
 
-1. Maak het opslag account dat moet worden gebruikt voor de opslag van de Webtaak en ontvang het connection string. Vervang `<webjobStorage>` door de naam die u wilt gebruiken.
+1. Maak het opslag account dat moet worden gebruikt voor de opslag van de Web-taak en ontvang het connection string. Vervang `<webjobStorage>` door de naam die u wilt gebruiken.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van `package.location` eerder zijn geretourneerd. Vervang `<webjobStorage>` vervangen door de naam van het opslag account uit de vorige stap:
+1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van `package.location` eerder zijn geretourneerd. Vervang `<webjobStorage>` door de naam van het opslag account uit de vorige stap:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -179,7 +179,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli-interactive
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Neem deze connection string op om te voorzien in de functie-app. Deze worden later gebruikt wanneer u wordt gevraagd om `<triggerConnectionString>`
@@ -205,7 +205,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
     ```
     Sla de geretourneerde waarde op. deze wordt gebruikt als de `imagetag` in de volgende stap.
 
-1. Als u de functie-app met de referenties die nodig zijn voor toegang tot het container register, wilt opgeven, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagetag>` door de waarden van de aanroep AZ CLI in de vorige stap. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
+1. Als u de functie-app met de referenties die nodig zijn voor toegang tot het container register, wilt opgeven, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam van de functie-app. Vervang `<acrinstance>` en `<imagetag>` door de waarden van de aanroep AZ CLI in de vorige stap. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -246,6 +246,52 @@ Op dit punt begint de functie-app het laden van de installatie kopie.
 
 > [!IMPORTANT]
 > Het kan enkele minuten duren voordat de installatie kopie is geladen. U kunt de voortgang bewaken met behulp van Azure Portal.
+
+## <a name="test-the-deployment"></a>De implementatie testen
+
+Nadat de installatie kopie is geladen en de app beschikbaar is, gebruikt u de volgende stappen om de app te activeren:
+
+1. Maak een tekst bestand dat de gegevens bevat die het score.py-bestand verwacht. Het volgende voor beeld werkt met een score.py die een matrix van 10 getallen verwacht:
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > De indeling van de gegevens is afhankelijk van wat uw score.py en model verwacht.
+
+2. Gebruik de volgende opdracht om dit bestand te uploaden naar de invoer container in de BLOB voor trigger opslag die u eerder hebt gemaakt. Vervang `<file>` door de naam van het bestand dat de gegevens bevat. Vervang `<triggerConnectionString>` door de connection string die u eerder hebt geretourneerd. In dit voor beeld is `input` de naam van de invoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde:
+
+    ```azurecli-interactive
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. Als u de uitvoer wilt weer geven die door de functie is geproduceerd, gebruikt u de volgende opdracht om de gegenereerde uitvoer bestanden te vermelden. Vervang `<triggerConnectionString>` door de connection string die u eerder hebt geretourneerd. In dit voor beeld is `output` de naam van de uitvoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde::
+
+    ```azurecli-interactive
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    De uitvoer van deze opdracht is vergelijkbaar met `sample_input_out.json`.
+
+4. Gebruik de volgende opdracht om het bestand te downloaden en de inhoud te controleren. Vervang `<file>` door de bestands naam die wordt geretourneerd door de vorige opdracht. Vervang `<triggerConnectionString>` door de connection string die u eerder hebt geretourneerd: 
+
+    ```azurecli-interactive
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    Zodra de opdracht is voltooid, opent u het bestand. Het bevat de gegevens die door het model worden geretourneerd.
+
+Zie voor meer informatie over het gebruik van BLOB-triggers het artikel [een functie maken die wordt geactiveerd door Azure Blob-opslag](/azure/azure-functions/functions-create-storage-blob-triggered-function) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

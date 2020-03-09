@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208709"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926851"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -33,7 +33,7 @@ SCIM is een gestandaardiseerde definitie van twee eind punten: een/users-eind pu
 
 Met het standaard gebruikers object schema en de rest Api's voor beheer dat is gedefinieerd in SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) kunnen id-providers en apps gemakkelijker met elkaar worden geïntegreerd. Toepassings ontwikkelaars die een SCIM-eind punt bouwen, kunnen worden geïntegreerd met elke SCIM-compatibele client zonder aangepaste werk.
 
-Voor het automatiseren van de inrichting van een toepassing moet u een SCIM-eind punt bouwen en integreren met de Azure AD SCIM-compatibel. Voer de volgende stappen uit om het inrichten van gebruikers en groepen in uw toepassing te starten. 
+Voor het automatiseren van de inrichting van een toepassing moet u een SCIM-eind punt bouwen en integreren met de Azure AD SCIM-client. Voer de volgende stappen uit om het inrichten van gebruikers en groepen in uw toepassing te starten. 
     
   * **[Stap 1: uw gebruikers-en groeps schema ontwerpen.](#step-1-design-your-user-and-group-schema)** Identificeer de objecten en kenmerken die uw toepassing nodig heeft en bepaal hoe deze worden toegewezen aan het gebruikers-en groeps schema dat wordt ondersteund door de Azure AD SCIM-implementatie.
 
@@ -752,7 +752,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
-Nu u uw schema hebt desidned en de Azure AD SCIM-implementatie hebt begrepen, kunt u aan de slag met het ontwikkelen van uw SCIM-eind punt. In plaats van helemaal zelf te beginnen en de implementatie helemaal zelf te bouwen, kunt u vertrouwen op een aantal open source SCIM-bibliotheken die zijn gepubliceerd door de SCIM-commuinty.  
+Nu u uw schema hebt ontworpen en de Azure AD SCIM-implementatie hebt begrepen, kunt u aan de slag met het ontwikkelen van uw SCIM-eind punt. In plaats van helemaal zelf te beginnen en de implementatie helemaal zelf te bouwen, kunt u vertrouwen op een aantal open source SCIM-bibliotheken die zijn gepubliceerd door de SCIM-commuinty.  
 De open-source .NET core- [referentie code](https://aka.ms/SCIMReferenceCode) die door het Azure AD-inrichtings team is gepubliceerd, is een van de bronnen waarmee u uw ontwikkeling kunt starten. Nadat u het SCIM-eind punt hebt gemaakt, moet u het testen. U kunt de verzameling [postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gebruiken die deel uitmaakt van de referentie code of door loop de [hierboven](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)vermelde voorbeeld aanvragen/antwoorden.  
 
 Opmerking: de referentie code is bedoeld om aan de slag te gaan met het bouwen van uw SCIM-eind punt en wordt ' AS IS ' gegeven. Bijdragen van de community zijn welkom bij het bouwen en onderhouden van de code. 

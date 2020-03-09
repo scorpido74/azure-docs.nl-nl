@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184023"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933051"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een eenmalige wachtwoord technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -69,7 +69,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 ### <a name="metadata"></a>Metagegevens
 
-De volgende instellingen kunnen worden gebruikt voor het configureren van code generatie en-onderhoud:
+De volgende instellingen kunnen worden gebruikt voor het configureren van de modus voor code generatie:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ De volgende instellingen kunnen worden gebruikt voor het configureren van code g
 | CodeLength | Nee | Lengte van de code. De standaard waarde is `6`. |
 | CharacterSet | Nee | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaard waarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
 | NumRetryAttempts | Nee | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaard waarde is `5`. |
-| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `GenerateCode`of `VerifyCode`. |
+| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `GenerateCode`. |
 | ReuseSameCode | Nee | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaard waarde is `false`. |
 
 ### <a name="returning-error-message"></a>Fout bericht retour neren
@@ -90,22 +90,22 @@ Het volgende voor beeld `TechnicalProfile` wordt gebruikt voor het genereren van
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 ### <a name="metadata"></a>Metagegevens
 
-De volgende instellingen kunnen worden gebruikt voor het configureren van het fout bericht dat wordt weer gegeven bij fout bij code verificatie:
+De volgende instellingen kunnen worden gebruikt voor de code verificatie modus:
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `VerifyCode`. |
+
+
+### <a name="error-messages"></a>Foutberichten
+
+De volgende instellingen kunnen worden gebruikt voor het configureren van de fout berichten die worden weer gegeven wanneer de code verificatie is mislukt. De meta gegevens moeten worden geconfigureerd in het [zelfondertekende](self-asserted-technical-profile.md) technische profiel. De fout berichten kunnen worden [gelokaliseerd](localization-string-ids.md#one-time-password-error-messages).
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als de sessie met de code verificatie is verlopen. Het is de code verlopen of de code is nooit voor een bepaalde id gegenereerd. |
 | UserMessageIfMaxRetryAttempted | Nee | Het bericht dat aan de gebruiker wordt weer gegeven als het maximum aantal toegestane verificatie pogingen is overschreden. |
 | UserMessageIfInvalidCode | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft gegeven. |
-
-### <a name="returning-error-message"></a>Fout bericht retour neren
-
-Zoals wordt beschreven in [meta gegevens](#metadata), kunt u het fout bericht dat wordt weer gegeven aan de gebruiker aanpassen voor verschillende fout situaties. U kunt deze berichten verder lokaliseren door de land instelling te prefixen, bijvoorbeeld:
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|Nee| Het bericht dat wordt weer gegeven aan de gebruiker als de code niet kan worden geverifieerd.|
 
 ### <a name="example"></a>Voorbeeld
 
@@ -154,24 +156,21 @@ Het volgende voor beeld `TechnicalProfile` wordt gebruikt voor het controleren v
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor een voor beeld van het gebruik van een technial-profiel met een eenmalig wacht woord met aangepaste e-mail verificatie:
+Zie het volgende artikel voor een voor beeld van het gebruik van een technisch profiel met een eenmalig wacht woord met aangepaste e-mail verificatie:
 
 - [Aangepaste e-mail verificatie in Azure Active Directory B2C](custom-email.md)
 

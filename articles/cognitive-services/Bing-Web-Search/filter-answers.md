@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111414"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381808"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden filteren die het zoek antwoord bevat  
 
@@ -111,7 +111,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > Afhankelijk van de query, kunt u, als u de operator `site:` query gebruikt, de kans bestaat dat het antwoord inhoud voor volwassenen bevat, ongeacht de instelling van [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt.
 
-### <a name="freshness"></a>Versheid
+### <a name="freshness"></a>Nieuwheid
 
 Als u de resultaten van webantwoorden wilt beperken tot webpagina's die Bing hebben gedetecteerd tijdens een bepaalde periode, stelt u de query parameter voor [vernieuwen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) in op een van de volgende niet-hoofdletter gevoelige waarden:
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773652"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390533"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Media Services entiteiten beheren met REST  
 
@@ -40,7 +40,7 @@ In dit onderwerp wordt beschreven hoe u Azure Media Services entiteiten met REST
 
 Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
-## <a name="connect-to-media-services"></a>Maak verbinding met Media Services
+## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
 
 Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 

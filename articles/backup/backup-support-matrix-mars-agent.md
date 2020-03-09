@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668754"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932712"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -158,7 +158,7 @@ Windows 7| 1\.700 GB
 
 **Type** | **Ondersteuning**
 --- | ---
-Versleuteld| Ondersteund.
+Versleutelde<sup>*</sup>| Ondersteund.
 Gecomprimeerd | Ondersteund.
 Verspreide gegevens | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
@@ -169,6 +169,8 @@ Gecomprimeerde stream| Wordt niet ondersteund. Genegeerd.
 Sparse stream| Wordt niet ondersteund. Genegeerd.
 OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
 Mappen met DSF-replicatie ingeschakeld | Wordt niet ondersteund.
+
+\* ervoor te zorgen dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Ondersteunde stations of volumes voor back-up
 

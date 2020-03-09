@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-extensie voor Visual Studio code
 description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van de aliassen van Resource Manager.
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386814"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932818"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 
@@ -82,7 +82,7 @@ Wanneer u zich voor het eerst aanmeldt, worden alleen de standaard-abonnements b
 
    - Opdracht palet: 
 
-     Ga in de menu balk naar **weer gave** > **opdracht palet**en voer **Azure policy in: Selecteer abonnementen**.
+     Ga in de menu balk naar > **opdracht palet** **weer geven** en voer **Azure in: Selecteer abonnementen**.
 
    - Venster voet tekst
 

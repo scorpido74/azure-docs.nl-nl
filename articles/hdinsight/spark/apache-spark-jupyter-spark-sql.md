@@ -1,19 +1,19 @@
 ---
 title: 'Snelstartgids: Apache Spark cluster maken met sjabloon-Azure HDInsight'
-description: Deze snelstart laat zien hoe u met een Resource Manager-sjabloon een Apache Spark-cluster maakt in HDInsight en hoe u een eenvoudige Spark SQL-query uitvoert.
+description: In deze Quick start ziet u hoe u Resource Manager-sjabloon gebruikt om een Apache Spark cluster te maken in azure HDInsight en een Spark SQL-query uit te voeren.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 2637603fa303d57340aa36786443508f1930a481
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/05/2020
+ms.openlocfilehash: a4c207cdbe4bbd0fdef5e1da8da0f4b582702308
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381325"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932792"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Snelstartgids: Apache Spark cluster in azure HDInsight maken met Resource Manager-sjabloon
 
@@ -21,9 +21,7 @@ In deze Quick Start gebruikt u een Azure Resource Manager sjabloon voor het make
 
 [Overzicht: Apache Spark in azure HDInsight](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter notebook](https://jupyter.org/) | [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular) start-sjablonen
 
-## <a name="prerequisites"></a>Vereisten
-
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-an-apache-spark-cluster"></a>Een Apache Spark-cluster maken
 
@@ -42,18 +40,18 @@ Het cluster maakt gebruik van Azure Storage Blobs als de clusteropslag. Zie [Sne
 
     | Eigenschap | Waarde |
     |---|---|
-    |**Abonnement**|Selecteer het Azure-abonnement dat is gebruikt om dit cluster te maken. Het abonnement dat we gebruiken voor deze snelstart is **&lt;<naam van Azure-abonnement>** . |
-    | **Resourcegroep**|Maak een resourcegroep of selecteer een bestaande resourcegroep. Deze resourcegroep wordt gebruikt om Azure-resources voor uw projecten te beheren. De naam van de nieuwe resourcegroep die we gebruiken voor deze snelstart is **myspark20180403rg**.|
-    | **Locatie**|Selecteer een locatie voor de resourcegroep. De sjabloon gebruikt deze locatie voor het maken van het cluster en als standaardclusteropslag. De locatie voor deze snelstart is **VS - oost 2**.|
-    | **Clusternaam**|Voer een naam in voor het cluster dat u wilt maken. De naam voor het nieuwe cluster dat we gebruiken voor deze snelstart is **myspark20180403**.|
-    | **Gebruikersnaam/Wachtwoord voor clusteraanmeldgegevens**|De standaard aanmeldings naam is admin. Kies een wacht woord voor de cluster aanmelding. De aanmeldingsnaam voor deze snelstart is **admin**.|
-    | **SSH-gebruikersnaam en SSH-wachtwoord**|Kies een wachtwoord voor de SSH-gebruiker. De SSH-gebruikersnaam voor deze snelstart is **sshuser**.|
+    |Abonnement|Selecteer het Azure-abonnement dat is gebruikt om dit cluster te maken. |
+    | Resourcegroep|Maak een resourcegroep of selecteer een bestaande resourcegroep. Deze resourcegroep wordt gebruikt om Azure-resources voor uw projecten te beheren. De naam van de nieuwe resourcegroep die we gebruiken voor deze snelstart is **myspark20180403rg**.|
+    | Locatie|Selecteer een locatie voor de resourcegroep. De sjabloon gebruikt deze locatie voor het maken van het cluster en de standaard cluster opslag. De locatie voor deze snelstart is **VS - oost 2**.|
+    | ClusterName|Voer een naam in voor het cluster dat u wilt maken. De naam voor het nieuwe cluster dat we gebruiken voor deze snelstart is **myspark20180403**.|
+    | Aanmeldings naam en wacht woord voor het cluster|De standaard aanmeldings naam is admin. Kies een wacht woord voor de cluster aanmelding. De aanmeldingsnaam voor deze snelstart is **admin**.|
+    | Gebruikers naam en wacht woord voor SSH|Kies een wachtwoord voor de SSH-gebruiker. De SSH-gebruikersnaam voor deze snelstart is **sshuser**.|
 
     ![Een Spark-cluster maken in HDInsight met behulp van Azure Resource Manager-sjabloon](./media/apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Een Spark-cluster maken in HDInsight met behulp van een Azure Resource Manager sjabloon")
 
-3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden**, selecteer **Vastmaken aan dashboard** en selecteer **Kopen**. U ziet een nieuwe tegel met de titel **Implementatie van sjabloonimplementatie**. Het duurt ongeveer 20 minuten om het cluster te maken. Het cluster moet zijn gemaakt voordat u verder kunt gaan met de volgende sessie.
+3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. U ziet een nieuwe tegel met de titel **Implementatie van sjabloonimplementatie**. Het duurt ongeveer 20 minuten om het cluster te maken. Het cluster moet zijn gemaakt voordat u verder kunt gaan met de volgende sessie.
 
-Als u een probleem ondervindt met het maken van HDInsight-clusters, is het mogelijk dat u niet over de juiste machtigingen beschikt. Zie [Vereisten voor toegangsbeheer](../hdinsight-hadoop-create-linux-clusters-portal.md) voor meer informatie.
+Als u een probleem ondervindt met het maken van HDInsight-clusters, is het mogelijk dat u niet over de juiste machtigingen beschikt. Zie [Vereisten voor toegangsbeheer](../hdinsight-hadoop-customize-cluster-linux.md#access-control) voor meer informatie.
 
 ## <a name="install-intellijeclipse-for-spark-applications"></a>IntelliJ/eclips installeren voor Spark-toepassingen
 
@@ -92,6 +90,7 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
     ![Kernel-status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Kernel-status")
 
     Wanneer u de notebook voor het eerst start, voert de kernel enkele taken in de achtergrond uit. Wacht tot de kernel gereed is.
+
 1. Plak de volgende code in een lege cel en druk op **Shift+Enter** om de code uit te voeren. Met de opdracht worden de Hive-tabellen in het cluster weergegeven:
 
     ```sql
@@ -120,7 +119,7 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-HDInsight slaat uw gegevens en Jupyter Notebooks op in Azure Storage of Azure Data Lake Store, zodat u een cluster veilig kunt verwijderen wanneer dit niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt. Als u direct verder wilt met de zelfstudie die wordt vermeld bij [Volgende stappen](#next-steps), is het beter om het cluster te behouden.
+Met HDInsight worden uw gegevens en Jupyter-notebooks opgeslagen in Azure Storage of Azure Data Lake Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt. Als u direct verder wilt met de zelfstudie die wordt vermeld bij [Volgende stappen](#next-steps), is het beter om het cluster te behouden.
 
 Ga terug naar Azure Portal en selecteer **Verwijderen**.
 
@@ -133,4 +132,4 @@ U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourceg
 In deze Quick Start hebt u geleerd hoe u een Apache Spark cluster maakt in HDInsight en een eenvoudige Spark SQL-query uitvoert. Ga naar de volgende zelf studie voor meer informatie over het gebruik van een HDInsight-cluster voor het uitvoeren van interactieve query's op voorbeeld gegevens.
 
 > [!div class="nextstepaction"]
->[Interactieve query's uitvoeren in Apache Spark](./apache-spark-load-data-run-query.md)
+> [Interactieve query's uitvoeren in Apache Spark](./apache-spark-load-data-run-query.md)

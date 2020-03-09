@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure-ontwikkel ruimten en hoe ze worden geconfigureerd in het configuratie bestand azds. yaml.
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375229"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hoe Azure dev Spaces werkt en is geconfigureerd
 
@@ -220,7 +220,7 @@ Op een meer gedetailleerd niveau ziet u hier wat er gebeurt wanneer u `azds up`u
 1. De controller vervangt de tijdelijke aanduiding *$ (tag)* in het helm-diagram met de unieke sessie-id en installeert de helm-grafiek voor uw service. Door een verwijzing naar de unieke sessie-ID toe te voegen aan de helm-grafiek, kan de container die is geïmplementeerd op het AKS-cluster voor deze specifieke sessie worden gekoppeld aan de sessie aanvraag en de bijbehorende gegevens.
 1. Tijdens de installatie van de helm-grafiek voegt de Kubernetes-webhook-Admission server extra containers toe aan de pod van uw toepassing voor instrumentatie en toegang tot de bron code van uw project. De containers devspaces-proxy en devspaces-proxy-init worden toegevoegd om HTTP-tracering en ruimte routering te bieden. De devspaces-build-container wordt toegevoegd om de pod toegang te geven tot het docker-exemplaar en de project bron code voor het bouwen van de container van uw toepassing.
 1. Wanneer de pod van de toepassing is gestart, worden de container devspaces-build en de container devspaces-proxy-init gebruikt voor het bouwen van de toepassings container. Vervolgens worden de toepassings container-en devspaces-proxy containers gestart.
-1. Nadat de toepassings container is gestart, gebruikt de client-side-functionaliteit de functionaliteit voor Kubernetes *-poorten* om via http://localhost http-toegang tot uw toepassing te bieden. Door deze poort door te sturen verbindt u uw ontwikkelings machine met de service in uw dev-ruimte.
+1. Nadat de toepassings container is gestart, gebruikt de client-side-functionaliteit de functionaliteit voor Kubernetes *-poorten* om via http://localhosthttp-toegang tot uw toepassing te bieden. Door deze poort door te sturen verbindt u uw ontwikkelings machine met de service in uw dev-ruimte.
 1. Wanneer alle containers in het Pod zijn gestart, wordt de service uitgevoerd. Op dit punt begint de client-side-functionaliteit de HTTP-traceringen, stdout en stderr te streamen. Deze informatie wordt weer gegeven door de client-side-functionaliteit voor de ontwikkelaar.
 
 ### <a name="updating-a-running-service"></a>Een actieve service bijwerken

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376702"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
@@ -87,7 +87,7 @@ Daarnaast hebben een aangewezen goed keurder en een aanvrager van een toegangs p
 | Rechts | Beschrijving |
 | --- | --- |
 | Fiatteur | Geautoriseerd door een beleid voor het goed keuren of weigeren van aanvragen voor toegang tot pakketten, hoewel ze de toegangs pakket definities niet kunnen wijzigen. |
-| Requestor | Geautoriseerd door een beleid van een toegangs pakket om het toegangs pakket aan te vragen. |
+| Aanvrager | Geautoriseerd door een beleid van een toegangs pakket om het toegangs pakket aan te vragen. |
 
 De volgende tabel geeft een lijst van de taken die de rechten voor het beheer kunnen uitvoeren.
 
@@ -122,10 +122,10 @@ Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om gro
 
 | Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen | Kan Office 365-groep toevoegen | Kan app toevoegen | Kan de share point online-site toevoegen |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globale beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Gebruikers beheerder](../users-groups-roles/directory-assign-admin-roles.md) | n.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globale beheerder](../users-groups-roles/directory-assign-admin-roles.md) | N.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Gebruikers beheerder](../users-groups-roles/directory-assign-admin-roles.md) | N.v.t. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [InTune-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Beheerder uitwisselen](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
+| [Exchange-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
 | [Teams service-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  |  |
 | [Share point-beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |

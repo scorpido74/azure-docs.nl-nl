@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189647"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933017"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -113,7 +113,7 @@ Upload vervolgens de SAML-verklaring en het handtekening certificaat voor antwoo
 
 ### <a name="21-create-the-saml-token-issuer"></a>2,1 de uitgever van het SAML-token maken
 
-Voeg nu de mogelijkheid voor uw Tenant toe om SAML-tokens te verlenen.
+Voeg nu de mogelijkheid voor uw Tenant toe om SAML-tokens te verlenen, met behulp van [SAML-token Uitgever](saml-issuer-technical-profile.md) en technische profielen van de [SAML-sessie provider](custom-policy-reference-sso.md#samlssosessionprovider) .
 
 Open `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** in het aangepaste beleids Starter Pack.
 
@@ -297,7 +297,7 @@ De meta gegevens worden in het SAML-protocol gebruikt om de configuratie van een
 
 Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en in het manifest van de toepassings registratie, worden deze **samengevoegd**. De eigenschappen die zijn opgegeven in de meta gegevens-URL worden eerst verwerkt en hebben voor rang.
 
-Voor deze zelf studie waarbij de SAML-test toepassing wordt gebruikt, gebruikt u de volgende waarde voor `samlMetadataUrl`:
+Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u de volgende waarde voor `samlMetadataUrl`:
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -324,7 +324,7 @@ Voor deze zelf studie, waarin u de SAML-test toepassing gebruikt, stelt u de eig
 
 Deze optionele eigenschap vertegenwoordigt de `Logout` URL (`SingleLogoutService` URL in de Relying Party meta gegevens) en er wordt van uitgegaan dat de `BindingType` wordt `Http-Redirect`.
 
-Voor deze zelf studie waarbij de SAML-test toepassing wordt gebruikt, houdt u `logoutUrl` ingesteld op `https://samltestapp2.azurewebsites.net/logout`:
+Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, houdt u `logoutUrl` ingesteld op `https://samltestapp2.azurewebsites.net/logout`:
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

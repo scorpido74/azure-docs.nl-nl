@@ -5,11 +5,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922296"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374012"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Een aangepaste Windows-container uitvoeren in Azure (Preview)
 
@@ -19,10 +19,10 @@ In deze Quick start ziet u hoe u een ASP.NET-app, in een Windows-installatie kop
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
-- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
+- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Installeer Docker voor Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
 
@@ -79,7 +79,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 ## <a name="create-a-windows-container-app"></a>Een Windows-container-app maken
 
-1. Meld u aan bij de [Azure Portal]( https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal]( https://portal.azure.com).
 
 1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
@@ -103,7 +103,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
-![Implementatie geslaagd](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Implementatie is voltooid](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Klik op **Ga naar resource**.
 

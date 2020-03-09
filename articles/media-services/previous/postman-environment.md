@@ -1,6 +1,6 @@
 ---
-title: Importeren van de Postman-omgeving voor Azure Media Services REST-aanroepen
-description: Dit onderwerp bevat een definitie van de Postman-omgeving voor Azure Media Services REST-aanroepen.
+title: De Postman-omgeving importeren voor Azure Media Services REST-aanroepen
+description: In dit onderwerp vindt u een definitie van de Postman-omgeving voor Azure Media Services REST-aanroepen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637553"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926717"
 ---
 # <a name="import-the-postman-environment"></a>De Postman-omgeving importeren  
 
-In dit artikel bevat een definitie van de **Postman** omgevingsvariabelen die worden gebruikt de [Postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen die Media Services REST-API's aanroepen bevat. De omgeving en verzameling bestanden worden gebruikt door de [Postman configureren voor Media Services REST API-aanroepen](media-rest-apis-with-postman.md) zelfstudie.
+Dit artikel bevat een definitie van de **postman** -omgevings variabelen die worden gebruikt de [postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen bevat die Media Services rest-api's aanroepen. De omgevings-en verzamelings bestanden worden gebruikt door de zelf studie [postman configureren voor Media Services rest API](media-rest-apis-with-postman.md) .
+
+> [!NOTE]
+> De waarde van `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Als u uw Tenant-ID wilt ophalen, kunt u de muis aanwijzer over uw gebruikers naam in de portal (in de rechter bovenhoek) bewegen en deze bevindt zich in de map: micro soft ({{TENANTID}}).
 
 ```
 {

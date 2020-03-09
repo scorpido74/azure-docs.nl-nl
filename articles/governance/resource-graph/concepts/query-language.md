@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over de query taal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851210"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927484"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -28,8 +28,12 @@ Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgesl
 |---|---|
 |Bronnen |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
 |ResourceContainers |Inclusief een abonnement (in Preview--`Microsoft.Resources/subscriptions`) en resource groep (`Microsoft.Resources/subscriptions/resourcegroups`) en gegevens. |
+|AdvisorResources |Bevat resources met _betrekking_ tot `Microsoft.Advisor`. |
 |AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement`. |
+|MaintenanceResources |Bevat resources met _betrekking_ tot `Microsoft.Maintenance`. |
 |SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security`. |
+
+Zie [verwijzing: ondersteunde tabellen en resource typen](../reference/supported-tables-resources.md)voor een volledige lijst met resource typen.
 
 > [!NOTE]
 > _Resources_ is de standaard tabel. Tijdens het uitvoeren van een query op de tabel _resources_ is het niet nodig om de naam van de tabel op te geven, tenzij `join` of `union` worden gebruikt. De aanbevolen procedure is echter om altijd de eerste tabel in de query op te halen.
@@ -76,12 +80,12 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[MV-uitvouwen](/azure/kusto/query/mvexpandoperator) |[Cosmos DB met specifieke schrijf locaties weer geven](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximum van 400. De standaard waarde is 128. |
 |[ter](/azure/kusto/query/orderoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `sort` |
 |[project](/azure/kusto/query/projectoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) | |
-|[project-away](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
+|[project-weg](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
 |[acties](/azure/kusto/query/sortoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `order` |
 |[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
-|[take](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` |
+|[Houd](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` |
 |[Boven](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[_kolom_ _naam `withsource=`tabel_. De limiet van 3 `union` poten in één query. Het oplossen van een benadering van `union` poot-tabellen is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
+|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[_kolom_ _naam `withsource=`tabel_.\] De limiet van 3 `union` poten in één query. Het oplossen van een benadering van `union` poot-tabellen is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
 |[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Escape tekens
@@ -108,7 +112,7 @@ Sommige eigenschapnamen, zoals de namen die een `.` of `$`bevatten, moeten in de
 
   - **cmd** : sluit het `$` teken niet.
 
-  - **PowerShell** - ``` ` ```
+  - **Power shell** - - ``` ` ```
 
     Voorbeeld query waarmee het eigenschaps _\$type_ in Power shell wordt geescapet:
 

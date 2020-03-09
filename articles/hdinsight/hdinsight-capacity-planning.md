@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389823"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932677"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -56,7 +56,7 @@ Een cluster kan toegang krijgen tot een combi natie van verschillende opslag acc
 * Wanneer u gegevens wilt maken, bent u al geüpload naar een BLOB-container die beschikbaar is voor het cluster.
 * Als u verschillende onderdelen van de opslag ruimte wilt isoleren om redenen van beveiliging, of om het beheer te vereenvoudigen.
 
-Voor een cluster met een 48-knoop punt raden we u aan 4 tot 8 opslag accounts aan te bieden. Hoewel er mogelijk al voldoende totale opslag ruimte beschikbaar is, biedt elk opslag account extra netwerk bandbreedte voor de reken knooppunten. Wanneer u meerdere opslag accounts hebt, gebruikt u een wille keurige naam voor elk opslag account, zonder voor voegsel. Het doel van een wille keurige naam is het verminderen van de kans op opslag knelpunten (beperking) of fouten in de algemene modus voor alle accounts. Gebruik slechts één container per opslag account voor betere prestaties.
+Gebruik slechts één container per opslag account voor betere prestaties.
 
 ## <a name="choose-a-cluster-type"></a>Een cluster type kiezen
 

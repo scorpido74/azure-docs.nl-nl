@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121896"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372001"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor redis maken en beheren met behulp van de klassieke Azure-CLI
 > [!div class="op_single_selector"]
@@ -38,9 +38,9 @@ De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure-c
 
 | Eigenschap | Switch | Beschrijving |
 | --- | --- | --- |
-| name |-n,--naam |De naam van de Azure-cache voor redis. |
+| naam |-n,--naam |De naam van de Azure-cache voor redis. |
 | resourcegroep |-g, --resource-group |De naam van de resource groep. |
-| location |-l,--locatie |Locatie voor het maken van de cache. |
+| locatie |-l,--locatie |Locatie voor het maken van de cache. |
 | size |-z,--grootte |Grootte van de Azure-cache voor redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis SKU. Moet een van de volgende zijn: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--inschakelen-niet-SSL-poort |De eigenschap EnableNonSslPort van de Azure-cache voor redis. Voeg deze markering toe als u de niet-SSL-poort voor uw cache wilt inschakelen |

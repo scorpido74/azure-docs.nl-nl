@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184448"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932996"
 ---
 # <a name="localization"></a>Lokalisatie
 
@@ -146,7 +146,7 @@ Het **LocalizedString** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ElementType | Ja | Een verwijzing naar een claim type-element of een gebruikers interface-element in het beleid. Mogelijke waarden: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`of. De `ClaimType`-waarde wordt gebruikt om een van de claim kenmerken te lokaliseren, zoals opgegeven in de StringId. De `UxElement`-waarde wordt gebruikt om een van de elementen van de gebruikers interface te lokaliseren zoals opgegeven in de StringId. De `ErrorMessage`-waarde wordt gebruikt voor het lokaliseren van een van de systeem fout berichten die zijn opgegeven in de StringId. De `Predicate`-waarde wordt gebruikt om een van de [predicaat](predicates.md) fout berichten te lokaliseren, zoals opgegeven in de StringId. De `InputValidation`-waarde wordt gebruikt om een van de fout berichten van de [PredicateValidation](predicates.md) -groep te lokaliseren zoals opgegeven in de StringId. |
+| ElementType | Ja | Een verwijzing naar een claim type-element of een gebruikers interface-element in het beleid. Mogelijke waarden: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`of `GetLocalizedStringsTransformationClaimType`. De `ClaimType`-waarde wordt gebruikt om een van de claim kenmerken te lokaliseren, zoals opgegeven in de StringId. De `UxElement`-waarde wordt gebruikt om een van de elementen van de gebruikers interface te lokaliseren zoals opgegeven in de StringId. De `ErrorMessage`-waarde wordt gebruikt voor het lokaliseren van een van de systeem fout berichten die zijn opgegeven in de StringId. De `Predicate`-waarde wordt gebruikt om een van de [predicaat](predicates.md) fout berichten te lokaliseren, zoals opgegeven in de StringId. De `InputValidation`-waarde wordt gebruikt om een van de fout berichten van de [PredicateValidation](predicates.md) -groep te lokaliseren zoals opgegeven in de StringId. De `GetLocalizedStringsTransformationClaimType`-waarde wordt gebruikt om gelokaliseerde teken reeksen naar claims te kopiëren. Zie [GetLocalizedStringsTransformation claims Transformation](string-transformations.md#getlocalizedstringstransformation) (Engelstalig) voor meer informatie.  | 
 | ElementId | Ja | Als **element type** is ingesteld op `ClaimType`, `Predicate`of `InputValidation`, bevat dit element een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema. |
 | StringId | Ja | Als **element type** is ingesteld op `ClaimType`, bevat dit element een verwijzing naar een kenmerk van een claim type. Mogelijke waarden: `DisplayName`, `AdminHelpText`of `PatternHelpText`. De waarde van de `DisplayName` wordt gebruikt om de weergave naam van de claim in te stellen. De waarde van de `AdminHelpText` wordt gebruikt om de naam van de Help-tekst van de claim gebruiker in te stellen. De `PatternHelpText`-waarde wordt gebruikt om de Help-tekst van het claim patroon in te stellen. Als element **type** is ingesteld op `UxElement`, bevat dit element een verwijzing naar een kenmerk van een element van een gebruikers interface. Als element **type** is ingesteld op `ErrorMessage`, wordt met dit element de id van een fout bericht opgegeven. Zie [lokalisatie teken reeks-id's](localization-string-ids.md) voor een volledige lijst met `UxElement`-id's.|
 
