@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: Routebeschrijving van A naar B
               href: map-route.md
+        - name: Ruimtelijke I/O-module
+          items:
+            - name: De ruimtelijke I/O-module gebruiken
+              href: how-to-use-spatial-io-module.md
+            - name: Een eenvoudige gegevenslaag toevoegen
+              href: spatial-io-add-simple-data-layer.md
+            - name: Ruimtelijke gegevens lezen en schrijven
+              href: spatial-io-read-write-spatial-data.md
+            - name: Een OGC-kaartlaag toevoegen
+              href: spatial-io-add-ogc-map-layer.md
+            - name: Verbinding maken met een WFS-service
+              href: spatial-io-connect-wfs-service.md
+            - name: Kernbewerkingen gebruiken
+              href: spatial-io-core-operations.md
+            - name: Details van ondersteunde gegevensindeling
+              href: spatial-io-supported-data-format-details.md
         - name: Browsers die Web-SDK ondersteunen
           href: supported-browsers.md
     - name: Ontwikkelen met de Android SDK

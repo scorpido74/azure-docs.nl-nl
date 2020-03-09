@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: de21e0efb6725433fe16b15665fafd9226c74f61
-  ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+  ms.openlocfilehash: cab367254df3f83903eeee110f0a435b97ea8eba
+  ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/02/2020
-  ms.locfileid: "78208768"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78368614"
 landingContent:
 - title: Over Azure Maps
   linkLists:
@@ -74,6 +74,22 @@ landingContent:
       url: tutorial-route-location.md
     - text: Een winkellocator maken
       url: tutorial-create-store-locator.md
+  - linkListType: how-to-guide
+    links:
+    - text: De ruimtelijke I/O-module gebruiken
+      url: how-to-use-spatial-io-module.md
+    - text: Een eenvoudige gegevenslaag toevoegen
+      url: spatial-io-add-simple-data-layer.md
+    - text: Ruimtelijke gegevens lezen en schrijven
+      url: spatial-io-read-write-spatial-data.md
+    - text: Een OGC-kaartlaag toevoegen
+      url: spatial-io-add-ogc-map-layer.md
+    - text: Verbinding maken met een WFS-service
+      url: spatial-io-connect-wfs-service.md
+    - text: Kernbewerkingen gebruiken
+      url: spatial-io-core-operations.md
+    - text: Details van ondersteunde gegevensindeling
+      url: spatial-io-supported-data-format-details.md
   - linkListType: reference
     links:
     - text: Kaartbesturingselement
@@ -82,6 +98,8 @@ landingContent:
       url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
     - text: Servicemodule
       url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+    - text: Ruimtelijke I/O-module
+      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
 - title: Ontwikkelen met Android SDK
   linkLists:
   - linkListType: how-to-guide

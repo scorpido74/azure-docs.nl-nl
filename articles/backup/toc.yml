@@ -142,10 +142,16 @@
       items:
         - name: Overzicht
           href: backup-azure-about-mars.md
+        - name: Installeren of upgraden
+          items:
+            - name: MARS-agent installeren
+              href: install-mars-agent.md
+            - name: MARS-agent upgraden
+              href: upgrade-mars-agent.md
         - name: Backup
           items:
             - name: Back-ups maken van Windows Server-bestanden en -mappen
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: Back-ups maken van Windows Server-systeemstatus
               href: backup-azure-system-state.md
         - name: Herstellen

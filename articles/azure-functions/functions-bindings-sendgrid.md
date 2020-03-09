@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710979"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356234"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
 
@@ -32,13 +32,17 @@ De SendGrid-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensi
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die gebruikmaakt van een service bus wachtrij trigger en een SendGrid-uitvoer binding.
 
 ### <a name="synchronous"></a>Verwerkt
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -65,6 +69,10 @@ public class OutgoingEmail
 ### <a name="asynchronous"></a>Asynchrone
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static async void Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -92,7 +100,7 @@ public class OutgoingEmail
 
 U kunt de instelling van de eigenschap `ApiKey` van het kenmerk weglaten als u uw API-sleutel in een app-instelling met de naam ' AzureWebJobsSendGridApiKey ' hebt.
 
-# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
 
@@ -151,7 +159,7 @@ public class Message
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
@@ -193,7 +201,7 @@ module.exports = function (context, input) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u een door HTTP geactiveerde functie die een e-mail verzendt met behulp van de SendGrid-binding. U kunt standaard waarden opgeven in de binding configuratie. Zo is het e-mail adres *van* e-mail geconfigureerd in *Function. json*. 
 
@@ -250,7 +258,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
     return func.HttpResponse(f"Sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In het volgende voor beeld wordt de `@SendGridOutput` annotatie van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) gebruikt voor het verzenden van een e-mail bericht met de SendGrid-uitvoer binding.
 
@@ -306,7 +314,7 @@ public class HttpTriggerSendGrid {
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
@@ -324,19 +332,19 @@ public static void Run(
 
 Zie voor een volledig [ C# voor beeld.](#example)
 
-# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
 
 Kenmerken worden niet ondersteund door C# het script.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Kenmerken worden niet ondersteund door python.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Met de aantekening [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) kunt u de SendGrid-binding declaratief configureren door configuratie waarden op te geven. Zie het voor [beeld](#example) en de [configuratie](#configuration) secties voor meer informatie.
 
@@ -348,8 +356,8 @@ De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die
 
 | *Function. json* -eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type |N.v.t.| moet worden ingesteld op `sendGrid`.| Nee |
-| richting |N.v.t.| moet worden ingesteld op `out`.| Nee |
+| type |N.v.t.| Moet worden ingesteld op `sendGrid`.| Nee |
+| richting |N.v.t.| Moet worden ingesteld op `out`.| Nee |
 | naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` als er slechts één retour waarde is. | Nee |
 | apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
 | tot| Handeling | Het e-mail adres van de ontvanger. | Ja |

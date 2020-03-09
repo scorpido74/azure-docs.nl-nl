@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: Bewerkingsmodel en verantwoordelijkheden
           href: hana-operations-model.md
+        - name: Compatibele besturingssystemen
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Architectuur
       items:
         - name: Algemene architectuur

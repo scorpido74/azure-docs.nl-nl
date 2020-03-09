@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Azure Open-gegevenssets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Designer-gegevenssets
+      href: sample-designer-datasets.md
     - name: MLOps-voorbeelden van volledige scenario's
       href: 'https://github.com/microsoft/MLOps'
-    - name: Designer-voorbeeldgegevenssets
-      href: designer-sample-datasets.md
 - name: Concepten
   items:
     - name: Werkruimte

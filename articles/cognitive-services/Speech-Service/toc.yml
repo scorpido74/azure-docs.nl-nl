@@ -193,10 +193,8 @@
           items:
             - name: REST API voor tekst-naar-spraak
               href: rest-text-to-speech.md
-        - name: Telefoongebruik instellen
-          items:
-            - name: Telefoongebruik bij Spraak-API (SAPI) instellen
-              href: sapi-phoneset-usage.md
+        - name: Fonetische SSML-sets
+          href: speech-ssml-phonetic-sets.md
     - name: Resources
       items:
         - name: Veelgestelde vragen over tekst naar spraak
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: De Speech Devices SDK ophalen
           href: get-speech-devices-sdk.md
-        - name: Releaseopmerkingen
-          href: devices-sdk-release-notes.md
-        - name: Details Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Details Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-        - name: Microfoonspecificatie
     - name: Hardware
       items:
         - name: Aanbeveling voor microfoonmatrix
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1-kit
+        - name: Details Roobo v1
           href: speech-devices-sdk-roobo-v1.md
+        - name: Details Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
     - name: Snelstartgids
       items:
         - name: De Speech Devices SDK gebruiken

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 38ff40b537730418fe9f0f8295884dae98a2fe0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355955"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -35,7 +35,7 @@ Meer informatie over een openbaar IP-adres en hoe u er een kunt maken, wijzigen 
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 - Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met uw Azure-account.
+- Als u de portal gebruikt, opent u https://portal.azure.comen meldt u zich aan met uw Azure-account.
 - Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 - Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren om een verbinding te maken met Azure.
 
@@ -45,7 +45,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
 2. Geef het *open bare IP-adres* op in het vak *Zoeken in de Marketplace* . Wanneer het **open bare IP-adres** wordt weer gegeven in de zoek resultaten, selecteert u dit.
 3. Selecteer onder **openbaar IP-adres** **maken**.
 4. Typ of selecteer waarden voor de volgende instellingen onder **openbaar IP-adres maken**en selecteer vervolgens **maken**:
@@ -57,7 +57,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
    |Naam|Ja|De naam moet uniek zijn binnen de resource groep die u selecteert.|
    |Toewijzing van IP-adres|Ja|**Dynamisch:** Dynamische adressen worden alleen toegewezen nadat een openbaar IP-adres aan een Azure-resource is gekoppeld en de resource voor de eerste keer wordt gestart. Dynamische adressen kunnen worden gewijzigd als ze zijn toegewezen aan een resource, zoals een virtuele machine, en de virtuele machine is gestopt (toewijzing ongedaan gemaakt) en vervolgens opnieuw gestart. Het adres blijft hetzelfde als een virtuele machine opnieuw wordt opgestart of gestopt (maar niet ongedaan gemaakt). Dynamische adressen worden vrijgegeven wanneer een open bare IP-adres bron wordt ontkoppeld van een bron waaraan deze is gekoppeld. **Statisch:** Statische adressen worden toegewezen wanneer een openbaar IP-adres wordt gemaakt. Statische adressen worden pas vrijgegeven nadat een open bare IP-adres resource is verwijderd. Als het adres niet aan een resource is gekoppeld, kunt u de toewijzings methode wijzigen nadat het adres is gemaakt. Als het adres aan een resource is gekoppeld, kunt u de toewijzings methode mogelijk niet wijzigen. Als u *IPv6* selecteert voor de **IP-versie**, moet de toewijzings methode *dynamisch* zijn voor de basis-SKU.  Standaard-SKU-adressen zijn *statisch* voor zowel IPv4 als IPv6. |
    |Time-out voor inactiviteit (minuten)|Nee|Hoe lang duurt het voordat een TCP-of HTTP-verbinding is geopend, zonder dat er wordt gebruikgemaakt van clients om Keep-Alive-berichten te verzenden. Als u IPv6 selecteert voor de **IP-versie**, kan deze waarde niet worden gewijzigd. |
-   |DNS-naamlabel|Nee|Moet uniek zijn binnen de Azure-locatie waar u de naam maakt in (voor alle abonnementen en alle klanten). Azure registreert automatisch de naam en het IP-adres in DNS zodat u verbinding kunt maken met een resource met de naam. Azure voegt een standaard-subnet, zoals *location.cloudapp.Azure.com* (waarbij locatie de locatie is die u hebt geselecteerd), toe aan de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Als u ervoor kiest beide adres versies te maken, wordt dezelfde DNS-naam toegewezen aan zowel IPv4-als IPv6-adressen. De standaard-DNS van Azure bevat IPv4 A-en IPv6 AAAA-naam records en reageert met beide records wanneer de DNS-naam wordt opgezocht. De client kiest voor welk adres (IPv4 of IPv6) moet worden gecommuniceerd. In plaats van of naast het gebruik van het DNS-naamlabel met het standaardachtervoegsel, kunt u de Azure DNS-service gebruiken om een DNS-naam met een aangepast achtervoegsel te configureren dat wordt omgezet naar het openbare IP-adres. Zie [Azure DNS gebruiken met een openbaar IP-adres van Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) voor meer informatie.|
+   |Label voor de DNS-naam|Nee|Moet uniek zijn binnen de Azure-locatie waar u de naam maakt in (voor alle abonnementen en alle klanten). Azure registreert automatisch de naam en het IP-adres in DNS zodat u verbinding kunt maken met een resource met de naam. Azure voegt een standaard-subnet, zoals *location.cloudapp.Azure.com* (waarbij locatie de locatie is die u hebt geselecteerd), toe aan de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Als u ervoor kiest beide adres versies te maken, wordt dezelfde DNS-naam toegewezen aan zowel IPv4-als IPv6-adressen. De standaard-DNS van Azure bevat IPv4 A-en IPv6 AAAA-naam records en reageert met beide records wanneer de DNS-naam wordt opgezocht. De client kiest voor welk adres (IPv4 of IPv6) moet worden gecommuniceerd. In plaats van of naast het gebruik van het DNS-naamlabel met het standaardachtervoegsel, kunt u de Azure DNS-service gebruiken om een DNS-naam met een aangepast achtervoegsel te configureren dat wordt omgezet naar het openbare IP-adres. Zie [Azure DNS gebruiken met een openbaar IP-adres van Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) voor meer informatie.|
    |Naam (alleen zichtbaar als u de IP-versie van **beide**selecteert)|Ja, als u de IP-versie van **beide** selecteert|De naam moet anders zijn dan de naam die u invoert voor de eerste **naam** in deze lijst. Als u ervoor kiest om zowel een IPv4-als een IPv6-adres te maken, worden er in de portal twee afzonderlijke open bare IP-adres bronnen gemaakt, waarvan elke toegewezen IP-adres versie hieraan is gekoppeld.|
    |Toewijzing van IP-adressen (alleen zichtbaar als u de IP-versie van **beide**selecteert)|Ja, als u de IP-versie van **beide** selecteert|Dezelfde beperkingen als voor de toewijzing van IP-adressen hierboven|
    |Abonnement|Ja|Moet zich in hetzelfde [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|

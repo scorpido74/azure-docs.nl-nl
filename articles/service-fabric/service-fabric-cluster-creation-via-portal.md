@@ -4,16 +4,16 @@ description: Meer informatie over het instellen van een beveiligd Service Fabric
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363378"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Het maken van een productie cluster om te voldoen aan de behoeften van uw toepas
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Zoeken naar de Service Fabric cluster resource
 
-Meld u aan bij de [Azure Portal][azure-portal].
+Meld u aan bij de [Azure-portal][azure-portal].
 Klik op **een resource maken** om een nieuwe resource sjabloon toe te voegen. Zoek de Service Fabric cluster sjabloon op de **Marketplace** onder **Alles**.
 Selecteer **service Fabric cluster** in de lijst.
 

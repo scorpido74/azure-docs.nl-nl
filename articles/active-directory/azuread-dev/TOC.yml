@@ -155,8 +155,8 @@
           href: active-directory-acs-migration.md
         - name: Uitgeschakelde naamruimten van de Access Control Service opnieuw activeren
           href: howto-reactivate-disabled-acs-namespaces.md
-    - name: De Azure AD Graph API gebruiken
-      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: De Microsoft Graph API gebruiken
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: AD FS voor ontwikkelaars
       href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
 - name: Verwijzingen
@@ -164,8 +164,8 @@
     - name: Verificatiebibliotheken
       displayName: ADAL
       href: active-directory-authentication-libraries.md
-    - name: Azure AD Graph API
-      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Manifest van de toepassing
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Codes van verificatie- en autorisatiefouten

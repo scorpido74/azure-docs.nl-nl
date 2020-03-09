@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048447"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395483"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -24,7 +24,7 @@ Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig 
 
 |Eigenschap  |Beschrijving |
 |---------|---------|
-|Name    |    Een unieke naam binnen de resource groep.      |
+|Naam    |    Een unieke naam binnen de resource groep.      |
 |Subnet    |  Het subnet voor het implementeren en toewijzen van privé-IP-adressen van een virtueel netwerk. Zie de sectie beperkingen in dit artikel voor meer informatie over het subnet.         |
 |Persoonlijke koppelings bron    |   De bron van de persoonlijke koppeling om verbinding te maken met behulp van de resource-ID of alias, uit de lijst met beschik bare typen. Er wordt een unieke netwerk-id gegenereerd voor al het verkeer dat wordt verzonden naar deze bron.       |
 |Doel-subresource   |      De subresource waarmee verbinding moet worden gemaakt. Elk resource type voor een persoonlijke koppeling heeft verschillende opties om te selecteren op basis van voor keur.    |

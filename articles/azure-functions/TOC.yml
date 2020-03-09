@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: Machine Learning met TensorFlow
       href: functions-machine-learning-tensorflow.md
+    - name: Classificatie van afbeeldingen met PyTorch
+      href: machine-learning-pytorch.md
     - name: Een aangepaste Linux-installatiekopie maken
       href: functions-create-function-linux-custom-image.md
     - name: Functions op IoT Edge-apparaat
