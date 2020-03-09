@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273836"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365603"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual array implementeren: de Azure Portal voorbereiden
 
@@ -71,7 +71,7 @@ Voordat u een virtuele matrix implementeert, moet u het volgende doen:
 * U hebt toegang tot een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2008 R2 of hoger of VMware (ESXi 5,0, 5,5, 6,0 of 6,5) dat kan worden gebruikt om een apparaat in te richten.
 * Het hostsysteem kan de volgende resources voor het inrichten van uw virtuele matrix toewijzen:
   
-  * Minimaal 4 kerngeheugens.
+  * Minimaal 4 processorkernen.
   * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele matrix als bestands server te configureren, ondersteunt 8 GB 2.000.000-bestanden. U hebt 16 GB RAM nodig om 2-4 miljoen bestanden te ondersteunen.
   * Eén netwerkinterface.
   * Een virtuele schijf van 500 GB voor systeem gegevens.
@@ -127,7 +127,7 @@ Voer de volgende stappen uit in [Azure Portal](https://portal.azure.com/).
 
 #### <a name="to-get-the-virtual-array-image"></a>De installatie kopie van de virtuele matrix ophalen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). 
 2. Klik in het Azure Portal op **bladeren > StorSimple Device Managers**.
 3. Selecteer een bestaande StorSimple-Apparaatbeheer service. Klik in de Blade **StorSimple Apparaatbeheer** op **Quick Start**. 
 4. Klik op de koppeling die overeenkomt met de afbeelding die u wilt downloaden van het micro soft Download centrum. De installatiekopieën zijn ongeveer 4,8 GB.
@@ -149,7 +149,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) 
 
 1. Navigeer naar uw Apparaatbeheer-service, selecteer en dubbel klik erop. Hiermee opent u de Blade **overzicht** .
 2. Selecteer **referenties voor het opslag account** in de **configuratie** sectie.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Ga als volgt te werk op de Blade **een opslag account toevoegen** :
    
    1. Selecteer bij **abonnement**de optie **actueel**.
@@ -158,7 +158,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) 
    
    3. Selecteer **inschakelen** om een beveiligd kanaal te maken voor de netwerk communicatie tussen uw StorSimple-apparaat en de Cloud. Selecteer alleen **uitschakelen** als u binnen een privécloud werkt.
    
-   4. Klik op **Add**. U wordt gewaarschuwd nadat het opslag account is gemaakt.<br></br>
+   4. Klik op **Toevoegen**. U wordt gewaarschuwd nadat het opslag account is gemaakt.<br></br>
    
       ![Een bestaande opslag account referentie toevoegen](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

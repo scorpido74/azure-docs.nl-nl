@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934543"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386311"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -34,7 +34,7 @@ Tenzij een [domein is toegevoegd](./domain-joined/hdinsight-security-overview.md
 
 HDInsight die lid is van een domein ondersteunt meerdere gebruikers en gedetailleerde instellingen voor machtigingen en rollen. Zie [HDInsight-clusters die zijn gekoppeld](./domain-joined/apache-domain-joined-manage.md)aan een domein voor meer informatie.
 
-## <a name="domain-names"></a>Domeinnamen
+## <a name="domain-names"></a>Domein namen
 
 De Fully Qualified Domain Name (FQDN) die moet worden gebruikt bij het maken van verbinding met het cluster via internet, is `CLUSTERNAME.azurehdinsight.net` of `CLUSTERNAME-ssh.azurehdinsight.net` (alleen voor SSH).
 
@@ -63,7 +63,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
     >
     > Als u de volledige functionaliteit van de Ambari-webgebruikersinterface wilt gebruiken, gebruikt u een SSH-tunnel om webverkeer te proxy naar het hoofd knooppunt van het cluster. Zie [ssh-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, Resource Manager, JobHistory, NameNode, Oozie en andere web-UIs](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
+* **Ambari (rest)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > Verificatie met behulp van de gebruikers naam en het wacht woord van de Cluster beheerder.
@@ -84,7 +84,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
 
 Zie voor meer informatie de [poorten die worden gebruikt door Apache Hadoop Services in HDInsight](hdinsight-hadoop-port-settings-for-services.md) -document.
 
-## <a name="file-locations"></a>Bestandslocaties
+## <a name="file-locations"></a>Bestands locaties
 
 Hadoop-gerelateerde bestanden kunnen worden gevonden op de cluster knooppunten op `/usr/hdp`. Deze map bevat de volgende submappen:
 
@@ -201,9 +201,9 @@ Als u __Azure data Lake Storage__gebruikt, raadpleegt u de volgende koppelingen 
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure-CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [Data Lake Tools voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Data Lake-Hulpprogram Ma's voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)

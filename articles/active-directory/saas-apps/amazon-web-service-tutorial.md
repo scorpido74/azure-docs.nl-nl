@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047267"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669342"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS)
 
@@ -264,7 +264,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     b. Voer voor **Beschrijving** **dit beleid in om de functies van AWS-accounts op te halen**.
 
-    c. Selecteer **beleid maken**.
+    c. Selecteer **Beleid maken**.
 
 17. Maak een nieuw gebruikers account in de AWS IAM-service.
 
@@ -337,7 +337,10 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     ![Scherm afbeelding van de sectie instellingen, met bij gemarkeerd](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Bij de inrichtings service worden alleen rollen van AWS naar Azure AD geïmporteerd. Met deze service worden gebruikers en groepen van Azure AD niet terug naar AWS ingericht.
+> De inrichtings service importeert rollen alleen van AWS naar Azure AD. Met de service worden geen gebruikers en groepen van Azure AD naar AWS ingericht.
+
+> [!NOTE]
+> Nadat u de inrichtings referenties hebt opgeslagen, moet u wachten tot de eerste synchronisatie cyclus is uitgevoerd. Het volt ooien van de synchronisatie duurt meestal ongeveer 40 minuten. U kunt de status onder aan de **inrichtings** pagina zien onder **huidige status**.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Testgebruiker voor Amazon Web Services (AWS) maken
 

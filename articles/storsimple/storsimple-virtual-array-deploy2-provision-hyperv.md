@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365684"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual array implementeren-inrichten in Hyper-V
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -40,7 +40,7 @@ Hier vindt u de vereisten voor het inrichten van een virtuele matrix op een host
 Zorg voordat u begint voor het volgende:
 
 * U hebt alle stappen [voor het voorbereiden van de virtuele StorSimple-matrix in de portal](storsimple-virtual-array-deploy1-portal-prep.md)voltooid.
-* U hebt de virtuele-matrix installatie kopie voor Hyper-V gedownload van de Azure Portal. Zie **voor meer informatie stap 3: Down load de installatie kopie** van de virtuele matrix van [de hand leiding voor het maken van de portal voor StorSimple Virtual array](storsimple-virtual-array-deploy1-portal-prep.md).
+* U hebt de virtuele-matrix installatie kopie voor Hyper-V gedownload van de Azure Portal. Zie voor meer informatie **stap 3: de installatie kopie van de virtuele matrix downloaden** van [de hand leiding voor het voorbereiden van de portal voor StorSimple Virtual array](storsimple-virtual-array-deploy1-portal-prep.md).
 
   > [!IMPORTANT]
   > De software die wordt uitgevoerd op de virtuele StorSimple-matrix mag alleen worden gebruikt met de StorSimple-Apparaatbeheer service.
@@ -53,7 +53,7 @@ Voordat u een virtuele matrix implementeert, moet u het volgende doen:
 * U hebt toegang tot een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2008 R2 of later dat kan worden gebruikt om een apparaat in te richten.
 * Het hostsysteem kan de volgende resources voor het inrichten van uw virtuele matrix toewijzen:
 
-  * Minimaal 4 kerngeheugens.
+  * Minimaal 4 processorkernen.
   * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele matrix te configureren als bestands server, ondersteunt 8 GB minder dan 2.000.000 bestanden. U hebt 16 GB RAM nodig om 2-4 miljoen bestanden te ondersteunen.
   * Eén netwerkinterface.
   * Een virtuele schijf van 500 GB voor gegevens.
@@ -78,12 +78,12 @@ Als u een virtuele matrix wilt maken, hebt u het volgende nodig:
 
 Zorg ervoor dat de onderliggende hardware (hostsysteem) waarop u de virtuele matrix maakt, de volgende resources aan uw virtuele array kan toewijzen:
 
-* Minimaal 4 kerngeheugens.
+* Minimaal 4 processorkernen.
 * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele matrix te configureren als bestands server, ondersteunt 8 GB minder dan 2.000.000 bestanden. U hebt 16 GB RAM nodig om 2-4 miljoen bestanden te ondersteunen.
 * Eén netwerkinterface.
 * Een virtuele schijf van 500 GB voor systeem gegevens.
 
-## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>Stap 2: Een virtuele matrix inrichten in Hyper Visor
+## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>Stap 2: een virtuele matrix inrichten in Hyper Visor
 Voer de volgende stappen uit om een apparaat in de hypervisor in te richten.
 
 #### <a name="to-provision-a-virtual-array"></a>Een virtuele matrix inrichten
@@ -121,7 +121,7 @@ Voer de volgende stappen uit om een apparaat in de hypervisor in te richten.
 11. U hebt 4 kerngeheugens nodig om te voldoen aan de minimale vereisten. Selecteer uw hostsysteem in het venster **Hyper-V-beheer** om 4 virtuele processors toe te voegen. Zoek in het rechterdeelvenster onder de lijst met **Virtuele Machines** de virtuele machine die u zojuist hebt gemaakt. Klik met de rechtermuisknop op de naam van de machine en selecteer **Instellingen**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. Klik op de pagina **Instellingen** in het linkerdeelvenster op **Processor**. Stel in het rechterdeelvenster **Aantal virtuele processors** in op 4 (of meer). Klik op **Toepassen**.
+12. Klik op de pagina **Instellingen** in het linkerdeelvenster op **Processor**. Stel in het rechterdeelvenster **Aantal virtuele processors** in op 4 (of meer). Klik op **Apply** (Toepassen).
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. Om aan de minimum vereisten te voldoen, moet u ook een virtuele schijf van 500 GB toevoegen. Op de pagina **Instellingen** doet u het volgende:
@@ -153,7 +153,7 @@ Voer de volgende stappen uit om een apparaat in de hypervisor in te richten.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>Stap 3: De virtuele matrix starten en het IP-adres ophalen
+## <a name="step-3-start-the-virtual-array-and-get-the-ip"></a>Stap 3: de virtuele matrix starten en het IP-adres ophalen
 Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding mee te maken.
 
 #### <a name="to-start-the-virtual-array"></a>De virtuele matrix starten
@@ -163,7 +163,7 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
 2. Wanneer het apparaat is gestart, selecteert u het apparaat, klikt u met de rechtermuisknop en selecteert u **Verbinding maken**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Mogelijk moet u 5-10 minuten wachten totdat het apparaat klaar is. Er wordt een statusbericht op de console weergegeven om de voortgang aan te geven. Wanneer het apparaat gereed is, gaat u naar **Actie**. Druk `Ctrl + Alt + Delete` op om u aan te melden bij de virtuele matrix. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
+3. Mogelijk moet u 5-10 minuten wachten totdat het apparaat klaar is. Er wordt een statusbericht op de console weergegeven om de voortgang aan te geven. Wanneer het apparaat gereed is, gaat u naar **Actie**. Druk op `Ctrl + Alt + Delete` om u aan te melden bij de virtuele matrix. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Uit veiligheidsoverwegingen verloopt het beheerderswachtwoord voor het apparaat na de eerste aanmelding. U wordt gevraagd om het wachtwoord te wijzigen.

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
 ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597148"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386961"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB
 
 In Azure Cosmos DB heeft elke container een indexerings beleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Het standaard indexerings beleid voor nieuw gemaakte containers indexeert elke eigenschap van elk item, waarbij bereik indexen worden afgedwongen voor wille keurige teken reeksen of getallen en ruimtelijke indexen voor een geojson-object van het type punt. Zo kunt u hoge query prestaties krijgen zonder dat u op de hoogte hoeft te zijn van indexering en index beheer vooraf.
 
-In sommige gevallen is het mogelijk dat u dit automatische gedrag wilt overschrijven zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
+In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
 
 > [!NOTE]
 > De methode voor het bijwerken van het indexerings beleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL-API (core) van Azure Cosmos DB.
@@ -58,9 +58,9 @@ Hetzelfde voor beeld opnieuw uitvoeren:
     }
 ```
 
-- het `employees` pad van de `headquarters` is `/headquarters/employees/?`
+- het `employees` pad van de `headquarters`is `/headquarters/employees/?`
 
-- het pad van de `locations` `country` is `/locations/[]/country/?`
+- het pad van de `locations``country` is `/locations/[]/country/?`
 
 - het pad naar iets onder `headquarters` is `/headquarters/*`
 
@@ -73,17 +73,17 @@ Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitg
 - Neem het hoofdpad op om selectieve paden uit te sluiten die niet hoeven te worden geïndexeerd. Dit is de aanbevolen benadering, omdat hiermee Azure Cosmos DB proactief een nieuwe eigenschap kan indexeren die aan uw model kan worden toegevoegd.
 - Sluit het hoofdpad uit om selectieve paden op te nemen die moeten worden geïndexeerd.
 
-- Voor paden met gewone tekens die bevatten: alfanumerieke tekens en _ (onderstrepings teken), hoeft u de padtekenreeks niet te escapepen rond dubbele aanhalings tekens (bijvoorbeeld '/Path/? '). Voor paden met andere speciale tekens moet u de teken reeks voor het pad Escape rond dubbele aanhalings tekens (bijvoorbeeld "/\"path-ABC \"/?"). Als u speciale tekens in uw pad verwacht, kunt u elk pad voor de beveiliging op te zeggen. Dit is functioneel geen verschil als u elk pad en alleen de bestanden met speciale tekens weglaat.
+- Voor paden met gewone tekens die bevatten: alfanumerieke tekens en _ (onderstrepings teken), hoeft u de padtekenreeks niet te escapepen rond dubbele aanhalings tekens (bijvoorbeeld '/Path/? '). Voor paden met andere speciale tekens moet u de padtekenreeks Escape rond dubbele aanhalings tekens (bijvoorbeeld "/\"pad-ABC-\"/?"). Als u speciale tekens in uw pad verwacht, kunt u elk pad voor de beveiliging op te zeggen. Dit is functioneel geen verschil als u elk pad en alleen de bestanden met speciale tekens weglaat.
 
 - De systeem eigenschap "ETAG" wordt standaard uitgesloten van indexeren, tenzij de ETAG wordt toegevoegd aan het opgenomen pad voor indexering.
 
 Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
-- de `kind` kan `range` of `hash` zijn. De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
+- de `kind` kan `range` of `hash`zijn. De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
 
 - `precision` is een getal dat is gedefinieerd op index niveau voor opgenomen paden. Een waarde van `-1` duidt op de maximale nauw keurigheid. U kunt deze waarde het beste altijd instellen op `-1`.
 
-- de `dataType` kan `String` of `Number` zijn. Hiermee worden de typen JSON-eigenschappen aangegeven die worden geïndexeerd.
+- de `dataType` kan `String` of `Number`zijn. Hiermee worden de typen JSON-eigenschappen aangegeven die worden geïndexeerd.
 
 Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende standaard waarden:
 
@@ -103,7 +103,7 @@ Wanneer u een ruimtelijk pad definieert in het indexerings beleid, moet u defini
 
 * Polygoon
 
-* Multi Polygon
+* MultiPolygon
 
 * Lines Tring
 
@@ -132,7 +132,7 @@ De volgende overwegingen worden gebruikt bij het gebruik van samengestelde index
 
 - De samengestelde index ondersteunt ook een `ORDER BY`-component met de tegenovergestelde volg orde op alle paden.
 
-Bekijk het volgende voor beeld waarin een samengestelde index is gedefinieerd voor de eigenschappen name, Age en _ts:
+Bekijk het volgende voor beeld waarbij een samengestelde index is gedefinieerd voor de eigenschappen naam, leeftijd en _ts:
 
 | **Samengestelde index**     | **Voor beeld-`ORDER BY` query**      | **Ondersteund door samengestelde index?** |
 | ----------------------- | -------------------------------- | -------------- |
@@ -157,7 +157,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 Deze query is efficiënter, neemt minder tijd in beslag en verbruikt meer dan één RU, als het een samengestelde index op (naam ASC, Age ASC) kan gebruiken.
 
-Query's met bereik filters kunnen ook worden geoptimaliseerd met een samengestelde index. De query kan echter slechts één bereik filter hebben. Bereik filters omvatten `>`, `<`, `<=`, `>=` en `!=`. Het bereik filter moet als laatste worden gedefinieerd in de samengestelde index.
+Query's met bereik filters kunnen ook worden geoptimaliseerd met een samengestelde index. De query kan echter slechts één bereik filter hebben. Bereik filters omvatten `>`, `<`, `<=`, `>=`en `!=`. Het bereik filter moet als laatste worden gedefinieerd in de samengestelde index.
 
 Houd rekening met de volgende query met filters voor gelijkheid en bereik:
 
@@ -171,7 +171,7 @@ De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen
 
 - De eigenschappen in het filter van de query moeten overeenkomen met die in de samengestelde index. Als een eigenschap zich in de samengestelde index bevindt maar niet is opgenomen in de query als een filter, wordt de samengestelde index niet gebruikt voor de query.
 - Als een query extra eigenschappen in het filter heeft die niet in een samengestelde index zijn gedefinieerd, wordt een combi natie van samengestelde en bereik indexen gebruikt om de query te evalueren. Hiervoor is minder RU vereist dan exclusief het gebruik van bereik indexen.
-- Als een eigenschap een bereik filter heeft (`>`, `<`, `<=`, `>=` of `!=`), moet deze eigenschap als laatste worden gedefinieerd in de samengestelde index. Als een query meer dan één bereik filter heeft, wordt de samengestelde index niet gebruikt.
+- Als een eigenschap een bereik filter heeft (`>`, `<`, `<=`, `>=`of `!=`), moet deze eigenschap als laatste worden gedefinieerd in de samengestelde index. Als een query meer dan één bereik filter heeft, wordt de samengestelde index niet gebruikt.
 - Bij het maken van een samengestelde index voor het optimaliseren van query's met meerdere filters, heeft de `ORDER` van de samengestelde index geen invloed op de resultaten. Deze eigenschap is optioneel.
 - Als u geen samengestelde index voor een query met filters voor meerdere eigenschappen definieert, zal de query toch slagen. De RU-kosten van de query kunnen echter worden verminderd met een samengestelde index.
 

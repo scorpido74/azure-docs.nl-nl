@@ -1,6 +1,6 @@
 ---
-title: Azure CDN van Verizon Premium regels-engine-functies | Microsoft Docs
-description: Naslagdocumentatie voor Azure CDN van Verizon Premium regels engine functies.
+title: Azure CDN van de functies van de functie van Verizon Premium-regels | Microsoft Docs
+description: Referentie documentatie voor Azure CDN van de functies van de Verizon Premium-regel engine.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,88 +8,88 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593246"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381828"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN van Verizon Premium regels-engine-functies
+# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN van de functies van de functie van Verizon Premium-regels
 
-Dit artikel vindt u gedetailleerde beschrijvingen van de beschikbare functies voor Azure Content Delivery Network (CDN) [regels-Engine](cdn-verizon-premium-rules-engine.md).
+In dit artikel vindt u gedetailleerde beschrijvingen van de beschik bare functies voor de [regels](cdn-verizon-premium-rules-engine.md)van Azure Content Delivery Network (CDN).
 
-Het derde deel van een regel is de functie. Een functie bepaalt het type actie dat wordt toegepast op het aanvraagtype die wordt geïdentificeerd door een set criteria voor overeenkomst.
+Het derde deel van een regel is de functie. Een functie definieert het type actie dat wordt toegepast op het aanvraag type dat wordt geïdentificeerd door een set matching voorwaarden.
 
-## <a name="access-features"></a>Toegang tot functies
+## <a name="access-features"></a>Access-functies
 
-Deze functies zijn ontworpen voor het beheren van toegang tot inhoud.
+Deze functies zijn ontworpen om de toegang tot inhoud te beheren.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Weigeren van toegang (403)](#deny-access-403) | Hiermee bepaalt u of alle aanvragen zijn afgewezen met een 403 verboden-antwoord.
-[Auth-token](#token-auth) | Hiermee bepaalt u of op tokens gebaseerde verificatie moet worden toegepast op een aanvraag.
-[Weigering van token autorisatiecode](#token-auth-denial-code) | Bepaalt het type van de reactie die aan een gebruiker wordt geretourneerd wanneer een aanvraag wordt geweigerd vanwege de verificatie op basis van tokens.
-[Token Authentication URL hoofdlettergevoeligheid negeren](#token-auth-ignore-url-case) | Bepaalt of de URL-vergelijkingen gemaakt door verificatie op basis van tokens hoofdlettergevoelig zijn.
-[De Auth Parameter-token](#token-auth-parameter) | Hiermee bepaalt u of de queryreeks-parameter op tokens gebaseerde verificatie moet worden gewijzigd.
+[Toegang weigeren (403)](#deny-access-403) | Hiermee wordt bepaald of alle aanvragen worden afgewezen met een 403 verboden-antwoord.
+[Token verificatie](#token-auth) | Hiermee wordt bepaald of verificatie op basis van tokens wordt toegepast op een aanvraag.
+[Weigerings code voor token auth](#token-auth-denial-code) | Hiermee wordt het type reactie bepaald dat wordt geretourneerd naar een gebruiker wanneer een aanvraag wordt geweigerd vanwege verificatie op basis van tokens.
+[URL-Case negeren van token verificatie](#token-auth-ignore-url-case) | Hiermee wordt bepaald of URL-vergelijkingen die worden uitgevoerd door verificatie op basis van tokens hoofdletter gevoelig zijn.
+[Token auth-para meter](#token-auth-parameter) | Hiermee wordt bepaald of de naam van de op tokens gebaseerde verificatie query teken reeks parameter moet worden gewijzigd.
 
-## <a name="caching-features"></a>Functies voor opslaan in cache
+## <a name="caching-features"></a>Cache functies
 
-Deze functies zijn ontworpen om aan te passen wanneer en hoe inhoud wordt opgeslagen in de cache.
+Deze functies zijn ontworpen om aan te passen wanneer en hoe inhoud in de cache wordt opgeslagen.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Bandbreedte-Parameters](#bandwidth-parameters) | Bepaalt of bandbreedte bandbreedtebeperking parameters (bijvoorbeeld ec_rate en ec_prebuf) actief zijn.
-[Bandbreedtebeperking](#bandwidth-throttling) | Beperkt de bandbreedte voor de respons van de point-of-presence (POP).
-[Bypass Cache](#bypass-cache) | Hiermee bepaalt u of de aanvraag opslaan in cache omzeilen moet.
-[Cache-Control Header Treatment](#cache-control-header-treatment) | Hiermee bepaalt u de generatie van `Cache-Control` headers met het pop-server als de functie voor externe Max-Age actief is.
-[Cache-sleutel Query-tekenreeks](#cache-key-query-string) | Bepaalt of de cache-sleutel bevat of niet van toepassing op queryreeksparameters die zijn gekoppeld aan een aanvraag.
-[Cache-sleutel opnieuw schrijven](#cache-key-rewrite) | Herschrijft de cache-sleutel die is gekoppeld aan een aanvraag.
-[Opvulling van de Cache voltooien](#complete-cache-fill) | Hiermee wordt bepaald wat er gebeurt wanneer een aanvraag resulteert in een gedeeltelijke Cachemisser op een pop-server.
-[Bestandstypen comprimeren](#compress-file-types) | Definieert de bestandsindelingen voor de bestanden die gecomprimeerd zijn op de server.
-[Standaard interne Max-Age](#default-internal-max-age) | Bepaalt de standaardintervaltijd van max-age voor pop-server naar de oorsprong server cache hervalidatie.
-[Koptekst behandeling verloopt](#expires-header-treatment) | Hiermee bepaalt u de generatie van `Expires` headers met een pop-server als de functie externe Max-Age actief is.
-[Externe Max-Age](#external-max-age) | Bepaalt de max-age-interval voor de browser op hervalidatie van POP-cache.
-[Force Internal Max-Age](#force-internal-max-age) | Bepaalt de max-age-interval voor pop-server naar de oorspronkelijke server cache hervalidatie.
-[H.264-ondersteuning (http-progressief downloaden)](#h264-support-http-progressive-download) | Hiermee bepaalt u de typen H.264-bestandsindelingen die kunnen worden gebruikt voor het streamen van inhoud.
-[Aanvraag voor Honor No-Cache](#honor-no-cache-request) | Bepaalt of een HTTP-client geen cache-aanvragen worden doorgestuurd naar de oorspronkelijke server.
-[Negeren van oorsprong No-Cache](#ignore-origin-no-cache) | Hiermee bepaalt u of het CDN bepaalde richtlijnen die worden aangeleverd vanuit een originele server negeert.
-[Ongeldig bereiken negeren](#ignore-unsatisfiable-ranges) | Hiermee bepaalt u het antwoord dat wordt geretourneerd naar clients wanneer een aanvraag statuscode 416 gevraagde bereik niet geldig genereert.
-[Interne Max-verouderd](#internal-max-stale) | Besturingselementen hoe lang na de verlooptijd van de normale een activum in de cache kan worden geleverd vanuit een pop-server wanneer de pop-server niet kan valideren van de cache asset met de oorspronkelijke server.
-[Partial Cache Sharing](#partial-cache-sharing) | Bepaalt of een aanvraag voor gedeeltelijk in de cache inhoud kunt genereren.
-[De inhoud in cache prevalidate](#prevalidate-cached-content) | Bepaalt of de inhoud in cache in aanmerking komen voor vroege hervalidatie voordat de TTL verloopt.
-[Bestanden opslaan in Cache nul bytes vernieuwen](#refresh-zero-byte-cache-files) | Bepaalt hoe van de client van een HTTP-aanvraag voor een asset 0-byte-cache door de POP's worden verwerkt.
-[Statuscodes gecachet kan worden ingesteld](#set-cacheable-status-codes) | Definieert de set statuscodes die tot de inhoud in cache leiden kunnen.
-[Verouderde Contentlevering bij fout](#stale-content-delivery-on-error) | Bepaalt of verlopen in de cache inhoud wordt geleverd als een fout optreedt tijdens de hervalidatie van de cache of bij het ophalen van de aangevraagde inhoud op de bronserver van de klant.
-[Tijdens het Revalidate verlopen](#stale-while-revalidate) | Verbetert de prestaties doordat de POP's voor het bieden van verouderde client voor de aanvrager terwijl hervalidatie doorgevoerd wordt.
+[Bandbreedte parameters](#bandwidth-parameters) | Bepaalt of para meters voor bandbreedte regeling (bijvoorbeeld ec_rate en ec_prebuf) actief zijn.
+[Bandbreedte regeling](#bandwidth-throttling) | Beperkt de band breedte voor het antwoord dat wordt gegeven door de POP (Point-of-Presence).
+[Cache overs Laan](#bypass-cache) | Hiermee wordt bepaald of caching moet worden overgeslagen voor de aanvraag.
+[Cache-controle header verwerking](#cache-control-header-treatment) | Hiermee beheert u de generatie van `Cache-Control` headers door de POP wanneer de functie voor de externe Max-leeftijd actief is.
+[Cache sleutel query reeks](#cache-key-query-string) | Hiermee wordt bepaald of de cache sleutel query teken reeks parameters bevat of uitsluit die aan een aanvraag zijn gekoppeld.
+[Cache sleutel opnieuw schrijven](#cache-key-rewrite) | Hiermee wordt de cache sleutel die is gekoppeld aan een aanvraag, opnieuw geschreven.
+[Volledige cache opvulling](#complete-cache-fill) | Hiermee wordt bepaald wat er gebeurt wanneer een aanvraag resulteert in een gedeeltelijke cache Missing in een POP.
+[Bestands typen comprimeren](#compress-file-types) | Hiermee definieert u de bestands indelingen voor de bestanden die op de server zijn gecomprimeerd.
+[Standaard interne Max. leeftijd](#default-internal-max-age) | Hiermee wordt het standaard interval voor de maximum leeftijd van de POP-to-Origin-server cache hervalidatie bepaald.
+[Verwerking van verlooptde header](#expires-header-treatment) | Hiermee beheert u de generatie van `Expires` headers door een POP wanneer de functie voor de externe Max-Age actief is.
+[Extern Max-Age](#external-max-age) | Hiermee wordt het maximale leeftijds interval voor browser naar hervalidatie van POP-caches bepaald.
+[Interne Max. duur forceren](#force-internal-max-age) | Hiermee wordt het maximale leeftijds interval voor de hervalidatie van de server cache voor POP-to-Origin bepaald.
+[H. 264-ondersteuning (HTTP progressieve down load)](#h264-support-http-progressive-download) | Bepaalt de typen H. 264-bestands indelingen die kunnen worden gebruikt om inhoud te streamen.
+[Geen cache aanvragen](#honor-no-cache-request) | Hiermee wordt bepaald of er geen aanvragen van een HTTP-client worden doorgestuurd naar de oorspronkelijke server.
+[Geen cache oorsprong negeren](#ignore-origin-no-cache) | Hiermee wordt bepaald of bepaalde instructies van een oorspronkelijke server worden genegeerd door het CDN.
+[Unsatisfiable-bereiken negeren](#ignore-unsatisfiable-ranges) | Bepaalt het antwoord dat wordt geretourneerd aan clients wanneer een aanvraag een 416-status code voor het aangevraagde bereik genereert.
+[Intern Max-verouderd](#internal-max-stale) | Hiermee bepaalt u hoe lang de normale verloop tijd van een activum in de cache kan worden uitgevoerd vanuit een POP wanneer de POP de asset in het cache geheugen niet opnieuw kan valideren met de oorspronkelijke server.
+[Delen van cache gedeeltelijk](#partial-cache-sharing) | Hiermee wordt bepaald of een aanvraag gedeeltelijk in de cache opgeslagen inhoud kan genereren.
+[Inhoud in cache voorvalideren](#prevalidate-cached-content) | Hiermee wordt bepaald of inhoud in de cache in aanmerking komt voor eerdere hervalidaties voordat de TTL verloopt.
+[Cache bestanden met nul bytes vernieuwen](#refresh-zero-byte-cache-files) | Hiermee wordt bepaald hoe de aanvraag van een HTTP-client voor een cache-Asset van 0 bytes door de Pop's wordt verwerkt.
+[Cacheable status codes instellen](#set-cacheable-status-codes) | Hiermee definieert u de set status codes die kunnen resulteren in inhoud in de cache.
+[Verouderde inhouds levering bij fout](#stale-content-delivery-on-error) | Hiermee wordt bepaald of verlopen inhoud in de cache wordt bezorgd als er een fout optreedt tijdens de hervalidatie van de cache of wanneer de aangevraagde inhoud wordt opgehaald van de bron server van de klant.
+[Verouderd tijdens opnieuw valideren](#stale-while-revalidate) | Verbetert de prestaties doordat de Pop's een verouderde client aan de aanvrager kunnen leveren terwijl er hervalidatie plaatsvindt.
 
 ## <a name="comment-feature"></a>Functie voor opmerkingen
 
-Deze functie is ontworpen om aanvullende gegevens in een regel.
+Deze functie is ontworpen om in een regel aanvullende informatie te bieden.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Opmerking](#comment) | Hiermee kunt een opmerking in een regel worden toegevoegd.
+[Heffen](#comment) | Hiermee kan een notitie worden toegevoegd binnen een regel.
 
-## <a name="header-features"></a>Header-functies
+## <a name="header-features"></a>Koptekst functies
 
-Deze functies zijn ontworpen voor het toevoegen, wijzigen of verwijderen van headers van de aanvraag of antwoord.
+Deze functies zijn ontworpen om kopteksten toe te voegen, te wijzigen of te verwijderen uit de aanvraag of het antwoord.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Leeftijd Response-Header](#age-response-header) | Bepaalt of een leeftijd response-header is opgenomen in het antwoord verzonden naar de aanvrager.
-[Fouten opsporen in Cache antwoordheaders](#debug-cache-response-headers) | Bepaalt of een antwoord op de response-header X-EG-Debug, die informatie over het cache-beleid voor de aangevraagde asset bevat kan bevatten.
-[Client-aanvraagheader wijzigen](#modify-client-request-header) | Overschreven, wordt toegevoegd of verwijderd van een koptekst van een aanvraag.
-[Client-Reactieheader wijzigen](#modify-client-response-header) | Overschreven, wordt toegevoegd of verwijderd van een koptekst van een antwoord.
-[Instellen van aangepaste IP-Header Client](#set-client-ip-custom-header) | Hiermee kunt u het IP-adres van de aanvragende client moet worden toegevoegd aan de aanvraag als een voor aangepaste aanvraagheader.
+[Header van ouderdoms reactie](#age-response-header) | Hiermee wordt bepaald of een ouderdoms reactie header is opgenomen in het antwoord dat naar de aanvrager wordt verzonden.
+[Debug cache-antwoord headers](#debug-cache-response-headers) | Hiermee wordt bepaald of in een antwoord de reactie header X-EC-debug wordt vermeld, die informatie bevat over het cache beleid voor de aangevraagde Asset.
+[Header van client aanvraag wijzigen](#modify-client-request-header) | Hiermee wordt een koptekst van een aanvraag overschreven, toegevoegd of verwijderd.
+[Reactie header van client wijzigen](#modify-client-response-header) | Hiermee wordt een header overschreven, toegevoegd of verwijderd uit een antwoord.
+[Aangepaste client-IP-header instellen](#set-client-ip-custom-header) | Hiermee kan het IP-adres van de aanvragende client worden toegevoegd aan de aanvraag als aangepaste aanvraag header.
 
-## <a name="logging-features"></a>Functies voor logboekregistratie
+## <a name="logging-features"></a>Logboek registratie functies
 
-Deze functies zijn ontworpen om aan te passen de gegevens die zijn opgeslagen in onbewerkte logboekbestanden.
+Deze functies zijn ontworpen om de gegevens die zijn opgeslagen in onbewerkte logboek bestanden aan te passen.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Het aangepaste logboekveld 1](#custom-log-field-1) | Bepaalt de indeling en de inhoud die is toegewezen aan het aangepaste logboek-veld in een onbewerkte logboekbestand.
-[Logboek-queryreeks](#log-query-string) | Bepaalt of een queryreeks samen met de URL in toegang tot logboeken worden opgeslagen.
+[Aangepast logboek veld 1](#custom-log-field-1) | Bepaalt de indeling en de inhoud die is toegewezen aan het aangepaste logboek veld in een onbewerkte logboek bestand.
+[Query reeks voor logboek](#log-query-string) | Hiermee wordt bepaald of een query reeks wordt opgeslagen samen met de URL in de logboeken van de toegang.
 
 
 <!---
@@ -136,87 +136,49 @@ If the desired site does not appear in the list, then you should edit its config
 **Default Behavior:** Site configurations are inactive by default.
 --->
 
-## <a name="origin-features"></a>Functies van de oorsprong
+## <a name="origin-features"></a>Oorsprongs functies
 
 Deze functies zijn ontworpen om te bepalen hoe het CDN communiceert met een oorspronkelijke server.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Maximum aantal Keep-Alive-aanvragen](#maximum-keep-alive-requests) | Definieert het maximum aantal aanvragen voor een Keep-Alive-verbinding wordt gesloten.
-[Speciale proxy-kopteksten](#proxy-special-headers) | Definieert de set met CDN-specifieke aanvraagheaders die vanuit een POP worden doorgestuurd naar een bronserver.
+[Maximum aantal Keep-Alive-aanvragen](#maximum-keep-alive-requests) | Hiermee definieert u het maximum aantal aanvragen voor een keep-alive-verbinding voordat het wordt gesloten.
+[Proxy-speciale headers](#proxy-special-headers) | Hiermee wordt de set CDN-specifieke aanvraag headers gedefinieerd die vanuit een POP worden doorgestuurd naar een bron server.
 
-## <a name="specialty-features"></a>Gespecialiseerde functies
+## <a name="specialty-features"></a>Speciale functies
 
-Deze functies bieden geavanceerde functionaliteit voor ervaren gebruikers.
+Deze functies bieden geavanceerde functionaliteit voor geavanceerde gebruikers.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Gecachet kan worden HTTP-methoden](#cacheable-http-methods) | Bepaalt de reeks aanvullende HTTP-methoden die in de cache kan worden opgeslagen in het netwerk.
-[Cache-instantie aanvraaggrootte](#cacheable-request-body-size) | Hiermee definieert u de drempelwaarde voor het bepalen of een POST-antwoord kan worden opgeslagen in de cache.
-[Variabele van de gebruiker](#user-variable) | Alleen voor intern gebruik.
+[Cacheable HTTP-methoden](#cacheable-http-methods) | Bepaalt de set extra HTTP-methoden die in het netwerk in de cache kunnen worden opgeslagen.
+[Grootte van cacheable aanvraag hoofdtekst](#cacheable-request-body-size) | Definieert de drempel waarde voor het bepalen of een POST-antwoord in de cache kan worden opgeslagen.
+[Gebruikers variabele](#user-variable) | Alleen voor intern gebruik.
 
 ## <a name="url-features"></a>URL-functies
 
-Deze functies kunnen een aanvraag om te worden omgeleid of herschreven naar een andere URL.
+Met deze functies kan een aanvraag worden omgeleid of herschreven naar een andere URL.
 
-Name | Doel
+Naam | Doel
 -----|--------
-[Omleidingen volgen](#follow-redirects) | Hiermee bepaalt u of aanvragen kunnen worden omgeleid naar de hostnaam die is gedefinieerd in de locatieheader die is geretourneerd door een klant-bronserver.
-[URL-omleiding](#url-redirect) | Leidt aanvragen via de Location-header.
-[Herschrijven van URL](#url-rewrite)  | Herschrijft de aanvraag-URL.
+[Omleidingen volgen](#follow-redirects) | Hiermee wordt bepaald of aanvragen kunnen worden omgeleid naar de hostnaam die is opgegeven in de locatie-header die wordt geretourneerd door een server van de klant.
+[URL-omleiding](#url-redirect) | Stuurt aanvragen via de locatie header.
+[URL opnieuw schrijven](#url-rewrite)  | Hiermee herschrijft u de aanvraag-URL.
 
-## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Azure CDN van Verizon Premium regels-engine functies verwijzing
-
----
-
-### <a name="age-response-header"></a>Leeftijd Response-Header
-
-**Doel**: Bepaalt of een leeftijd response-header is opgenomen in het antwoord verzonden naar de aanvrager.
-
-Value|Resultaat
---|--
-Enabled | De leeftijd response-header is opgenomen in het antwoord verzonden naar de aanvrager.
-Uitgeschakeld | De leeftijd response-header is uitgesloten van het antwoord verzonden naar de aanvrager.
-
-**Standaardgedrag**: Uitgeschakeld.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
+## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Naslag informatie over de functies van de functie voor Azure CDN van Verizon Premium-regels
 
 ---
 
-### <a name="bandwidth-parameters"></a>Bandbreedte-Parameters
+### <a name="age-response-header"></a>Header van ouderdoms reactie
 
-**Doel:** Bepaalt of bandbreedte bandbreedtebeperking parameters (bijvoorbeeld ec_rate en ec_prebuf) actief zijn.
-
-Bandbreedtebeperking parameters van bandbreedte te bepalen of de overdrachtssnelheid van gegevens voor een aanvraag van een client zijn beperkt tot een aangepaste tarief.
+**Doel**: Hiermee wordt bepaald of een ouderdoms reactie header is opgenomen in het antwoord dat naar de aanvrager wordt verzonden.
 
 Waarde|Resultaat
 --|--
-Enabled|Hiermee kunt u de POP's aanvragen voor bandbreedteregeling in acht neemt.
-Uitgeschakeld|Zorgt ervoor dat de POP's bandbreedtebeperking parameters negeren. De gevraagde inhoud normaal gesproken wordt geleverd (dat wil zeggen, zonder bandbreedtebeperking).
+Ingeschakeld | De header van de leeftijds reactie is opgenomen in het antwoord dat naar de aanvrager wordt verzonden.
+Uitgeschakeld | De header van de leeftijds reactie is uitgesloten van het antwoord dat naar de aanvrager is verzonden.
 
-**Standaardgedrag:** Ingeschakeld.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="bandwidth-throttling"></a>Bandbreedtebeperking
-
-**Doel:** Beperkt de bandbreedte voor de respons van de POP's.
-
-Beide van de volgende opties moeten worden gedefinieerd om in te stellen correct bandbreedtebeperking.
-
-Optie|Description
---|--
-Kilobytes per seconde|Deze optie instelt op de maximale bandbreedte (in Kb per seconde) die kan worden gebruikt voor het leveren van het antwoord.
-Prebuf seconden|Deze optie instelt op het aantal seconden voor de POP's moet worden gewacht tot de bandbreedte wordt beperkt. Het doel van deze periode van onbeperkte bandbreedte is om te voorkomen dat een mediaspeler ondervindt problemen met de haperend of buffering door bandbreedtebeperking.
-
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag**: uitgeschakeld.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -224,18 +186,56 @@ Prebuf seconden|Deze optie instelt op het aantal seconden voor de POP's moet wor
 
 ---
 
-### <a name="bypass-cache"></a>Cache overslaan
+### <a name="bandwidth-parameters"></a>Bandbreedte parameters
 
-**Doel:** Hiermee bepaalt u of de aanvraag opslaan in cache omzeilen moet.
+**Doel:** Bepaalt of para meters voor bandbreedte regeling (bijvoorbeeld ec_rate en ec_prebuf) actief zijn.
+
+Met de para meters voor bandbreedte regeling wordt bepaald of het overdrachtsnelheid van de gegevens overdracht voor een client aanvraag beperkt is tot een aangepast aantal.
 
 Waarde|Resultaat
 --|--
-Enabled|Zorgt ervoor dat alle aanvragen te vallen door op de oorspronkelijke server, zelfs als de inhoud is eerder in de cache op de POP's.
-Uitgeschakeld|Zorgt ervoor dat pop's aan cache activa op basis van de cache-beleid dat is gedefinieerd in de antwoordheaders.
+Ingeschakeld|Hiermee kunnen de Pop's de bandbreedte beperkings aanvragen naleven.
+Uitgeschakeld|Zorgt ervoor dat de Pop's de para meters voor bandbreedte beperking negeren. De aangevraagde inhoud wordt normaal bediend (dat wil zeggen, zonder bandbreedte beperking).
 
-**Standaardgedrag:**
+**Standaard gedrag:** Ingeschakeld.
 
-- **Grote HTTP:** Uitgeschakeld
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="bandwidth-throttling"></a>Bandbreedte regeling
+
+**Doel:** De band breedte beperken voor het antwoord dat door de Pop's wordt gegeven.
+
+Beide opties moeten worden gedefinieerd om de bandbreedte beperking goed in te stellen.
+
+Optie|Beschrijving
+--|--
+Kbytes per seconde|Stel deze optie in op de maximale band breedte (KB per seconde) die kan worden gebruikt voor het leveren van het antwoord.
+Prebuf seconden|Stel deze optie in op het aantal seconden dat de Pop's moeten worden gewacht totdat de band breedte wordt beperkt. Het doel van deze tijds periode voor onbeperkte band breedte is om te voor komen dat een media speler Stuttering of buffer problemen ondervindt vanwege bandbreedte beperking.
+
+**Standaard gedrag:** Geblokkeerd.
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="bypass-cache"></a>Cache overs Laan
+
+**Doel:** Hiermee wordt bepaald of caching moet worden overgeslagen voor de aanvraag.
+
+Waarde|Resultaat
+--|--
+Ingeschakeld|Zorgt ervoor dat alle aanvragen door lopen op de oorspronkelijke server, zelfs als de inhoud eerder in de cache op Pop's is opgeslagen.
+Uitgeschakeld|Leidt ertoe dat Pop's activa in de cache opslaan volgens het cache beleid dat is gedefinieerd in de antwoord headers.
+
+**Standaard gedrag:**
+
+- **Http-groot:** Geblokkeerd
 
 <!---
 - **ADN:** Enabled
@@ -248,41 +248,17 @@ Uitgeschakeld|Zorgt ervoor dat pop's aan cache activa op basis van de cache-bele
 
 ---
 
-### <a name="cacheable-http-methods"></a>Gecachet kan worden HTTP-methoden
+### <a name="cacheable-http-methods"></a>Cacheable HTTP-methoden
 
-**Doel:** Bepaalt de reeks aanvullende HTTP-methoden die in de cache kan worden opgeslagen in het netwerk.
+**Doel:** Bepaalt de set extra HTTP-methoden die in het netwerk in de cache kunnen worden opgeslagen.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze functie wordt ervan uitgegaan dat GET antwoorden altijd worden gecached. Als gevolg hiervan moet de GET HTTP-methode niet worden opgenomen bij het instellen van deze functie.
-- Deze functie ondersteunt alleen de HTTP POST-methode. POST antwoord in cache opslaan door deze functie in te stellen `POST`.
-- Standaard worden alleen aanvragen waarvan de hoofdtekst kleiner dan 14 Kb is het in cache opgeslagen. De gecachet kan worden aanvraag hoofdtekst van de grootte van functie gebruiken om in te stellen van de grootte van de hoofdtekst van de maximale aanvraag.
+- Deze functie gaat ervan uit dat het ophalen van antwoorden altijd in de cache moet worden opgeslagen. Als gevolg hiervan moet de GET HTTP-methode niet worden opgenomen bij het instellen van deze functie.
+- Deze functie ondersteunt alleen de POST-HTTP-methode. Schakel POST-Response caching in door deze functie in te stellen op `POST`.
+- Standaard worden alleen aanvragen waarvan de hoofd tekst kleiner is dan 14 KB in de cache opgeslagen. Gebruik de functie grootte van cacheable aanvraag hoofdtekst om de maximale grootte van de aanvraag tekst in te stellen.
 
-**Standaardgedrag:** Alleen GET-antwoorden in cache zijn opgeslagen.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="cacheable-request-body-size"></a>Cache-instantie aanvraaggrootte
-
-**Doel:** Hiermee definieert u de drempelwaarde voor het bepalen of een POST-antwoord kan worden opgeslagen in de cache.
-
-Deze drempelwaarde wordt bepaald door de grootte van een maximale aanvraag hoofdtekst op te geven. Aanvragen die een grotere aanvraagtekst bevatten niet in cache zijn opgeslagen.
-
-Belangrijke informatie:
-
-- Deze functie is alleen van toepassing wanneer het bericht antwoorden komen in aanmerking voor het opslaan in cache. Gebruik de gecachet kan worden HTTP-methoden-functie in te schakelen POST-aanvraag in.
-- Hoofdtekst van de aanvraag wordt voor in aanmerking genomen:
-    - x-www-form-urlencoded goedkeurt waarden
-    - Ervoor te zorgen dat een unieke cache-sleutel
-- Definiëren van de hoofdtekst van een groot aantal aanvragen kan gegevens leveren de prestaties beïnvloeden.
-    - **Aanbevolen waarde:** 14 Kb
-    - **Minimale waarde:** 1 Kb
-
-**Standaardgedrag:** 14 Kb
+**Standaard gedrag:** Alleen antwoorden ophalen worden in de cache opgeslagen.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -290,20 +266,44 @@ Belangrijke informatie:
 
 ---
 
-### <a name="cache-control-header-treatment"></a>Cache-Control Header Treatment
+### <a name="cacheable-request-body-size"></a>Grootte van cacheable aanvraag hoofdtekst
 
-**Doel:** Hiermee bepaalt u de generatie van `Cache-Control` headers met het pop-server als de functie voor extern Max-Age actief is.
+**Doel:** Definieert de drempel waarde voor het bepalen of een POST-antwoord in de cache kan worden opgeslagen.
 
-De eenvoudigste manier om dit type configuratie is de externe Max-Age en de functies van de Cache-Control-Header behandeling plaatsen in dezelfde instructie.
+Deze drempel waarde wordt bepaald door de maximale grootte van de aanvraag tekst op te geven. Aanvragen die een grotere aanvraag tekst bevatten, worden niet in de cache opgeslagen.
 
-Value|Resultaat
+Belang rijke informatie:
+
+- Deze functie is alleen van toepassing wanneer POST-antwoorden in aanmerking komen voor caching. Gebruik de functie cacheable HTTP-methoden om caching van POST-aanvragen in te scha kelen.
+- De aanvraag tekst wordt in aanmerking genomen voor:
+    - x-www-form-urlencoded-waarden
+    - Een unieke cache sleutel garanderen
+- Het definiëren van een grote maximale aanvraag hoofdtekst kan van invloed zijn op de prestaties van de gegevens levering.
+    - **Aanbevolen waarde:** 14 KB
+    - **Minimum waarde:** 1 KB
+
+**Standaard gedrag:** 14 KB
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="cache-control-header-treatment"></a>Cache-controle header verwerking
+
+**Doel:** Hiermee beheert u de generatie van `Cache-Control` headers door de POP wanneer de functie voor de externe Max-Age actief is.
+
+De eenvoudigste manier om dit type configuratie te beheersen is het plaatsen van de verwerkings functies External Max-Age en de cache-Control header in dezelfde instructie.
+
+Waarde|Resultaat
 --|--
-Overschrijven|Zorgt ervoor dat de volgende acties uitgevoerd:<br/> -Overschrijft de `Cache-Control` header die worden gegenereerd door de oorspronkelijke server. <br/>-Toegevoegd de `Cache-Control` header die worden geproduceerd door de functie externe Max-Age aan het antwoord.
-Doorgeven|Zorgt ervoor dat de `Cache-Control` header die worden geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server produceert een `Cache-Control` header, waar deze voor de eindgebruiker validatiewerkstroom doorloopt. <br/> Als de oorspronkelijke server produceert geen een `Cache-Control` header, wordt deze optie kan ertoe leiden dat de antwoord-header bevat geen een `Cache-Control` header.
-Indien ontbrekend toevoegen|Als een `Cache-Control` header is niet ontvangen van de oorspronkelijke server en vervolgens deze optie voegt de `Cache-Control` header die worden geproduceerd door de functie externe Max-Age. Deze optie is handig om ervoor te zorgen dat alle activa zijn toegewezen een `Cache-Control` header.
-Verwijderen| Deze optie zorgt ervoor dat een `Cache-Control` -header is niet opgenomen in de header-reactie. Als een `Cache-Control` header al is toegewezen, en vervolgens wordt deze verwijderd uit het header-antwoord.
+Overschrijven|Zorgt ervoor dat de volgende acties worden uitgevoerd:<br/> -Hiermee wordt de `Cache-Control` header overschreven die is gegenereerd door de oorspronkelijke server. <br/>-Voegt de `Cache-Control` header toe die door de functie External Max-Age is gemaakt aan het antwoord.
+Door geven|Zorgt ervoor dat de `Cache-Control`-header die door de functie voor de externe Max-Age wordt gemaakt, nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Cache-Control`-header produceert, wordt deze door gegeven aan de eind gebruiker. <br/> Als de bron server geen `Cache-Control`-header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Cache-Control`-header bevat.
+Als ontbrekend toevoegen|Als er geen `Cache-Control` header van de oorspronkelijke server is ontvangen, voegt deze optie de `Cache-Control` header toe die door de functie External Max-Age wordt gemaakt. Deze optie is handig om ervoor te zorgen dat aan alle assets een `Cache-Control` header wordt toegewezen.
+Verwijderen| Deze optie zorgt ervoor dat een `Cache-Control` header niet is opgenomen in het antwoord van de header. Als er al een `Cache-Control` header is toegewezen, wordt deze verwijderd uit de reactie van de header.
 
-**Standaardgedrag:** Overschreven.
+**Standaard gedrag:** Schrijft.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -311,75 +311,75 @@ Verwijderen| Deze optie zorgt ervoor dat een `Cache-Control` -header is niet opg
 
 ---
 
-### <a name="cache-key-query-string"></a>Cache-sleutel Query-tekenreeks
+### <a name="cache-key-query-string"></a>Cache sleutel query reeks
 
-**Doel:** Bepaalt of de cache-sleutel bevat of niet van toepassing op queryreeksparameters die zijn gekoppeld aan een aanvraag.
+**Doel:** Hiermee wordt bepaald of de cache sleutel query teken reeks parameters bevat of uitsluit die aan een aanvraag zijn gekoppeld.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Geef een of meer query tekenreeks parameternamen en elke parameternaam scheiden met een spatie.
-- Deze functie bepaalt of queryreeksparameters worden opgenomen of van de cache-sleutel uitgesloten. Aanvullende informatie is opgegeven voor elke optie in de volgende tabel.
+- Geef een of meer parameter namen voor de query teken reeks op en Scheid elke parameter naam met één spatie.
+- Deze functie bepaalt of query teken reeks parameters worden opgenomen of uitgesloten van de cache sleutel. Voor elke optie in de volgende tabel vindt u aanvullende informatie.
 
-type|Description
+Type|Beschrijving
 --|--
- Opnemen|  Geeft aan dat alle opgegeven parameters moet worden opgenomen in de cache-sleutel. Een unieke cache-sleutel wordt gegenereerd voor elke aanvraag die een unieke waarde voor een queryreeks-parameter gedefinieerd in deze functie bevat.
- Alle  |Geeft aan dat een unieke cache-sleutel is gemaakt voor elke aanvraag voor een asset die een unieke queryreeks bevat. Dit type configuratie wordt meestal niet aanbevolen omdat dit tot een klein percentage treffers in cache leiden kan. Een klein aantal treffers in cache verhoogt de belasting van de oorspronkelijke server, omdat deze meer aanvragen moet verwerken. Deze configuratie een duplicaat van het cachegedrag bekend als "unieke-cache" op de pagina Query-tekenreeks in cache opslaan.
- Uitsluiten | Geeft aan dat alleen de opgegeven parameter (s) is uitgesloten van de cache-sleutel. Alle andere queryreeksparameters zijn opgenomen in de cache-sleutel.
- Sluit alle  |Geeft aan dat alle queryreeksparameters zijn uitgesloten van de cache-sleutel. Deze configuratie een duplicaat van de "standaard-cache" standaard cachegedrag op de pagina Query-tekenreeks in cache opslaan.  
+ Behoort|  Geeft aan dat elke opgegeven para meter moet worden opgenomen in de cache sleutel. Er wordt een unieke cache sleutel gegenereerd voor elke aanvraag die een unieke waarde bevat voor een query reeks parameter die is gedefinieerd in deze functie.
+ Alles toevoegen  |Hiermee wordt aangegeven dat voor elke aanvraag een unieke cache sleutel wordt gemaakt voor een activum dat een unieke query teken reeks bevat. Dit type configuratie wordt doorgaans niet aanbevolen omdat dit kan leiden tot een klein percentage aan cache treffers. Bij een laag aantal treffers in de cache wordt de belasting van de oorspronkelijke server verhoogd, omdat deze meer aanvragen moet verwerken. Deze configuratie dupliceert het cache gedrag ' unique-cache ' op de cache-pagina van de query-teken reeks.
+ Exclude | Geeft aan dat alleen de opgegeven para meter (s) worden uitgesloten van de cache sleutel. Alle andere query reeks parameters zijn opgenomen in de cache sleutel.
+ Alles uitsluiten  |Geeft aan dat alle query reeks parameters worden uitgesloten van de cache sleutel. Deze configuratie dupliceert de standaard cache-instelling voor cache op de pagina cache van de query-teken reeks.  
 
-De regelengine kunt u het aanpassen van de manier waarop de query queryreeksen opslaan in cache is geïmplementeerd. U kunt bijvoorbeeld opgeven dat de query queryreeksen opslaan in cache wordt uitgevoerd alleen op bepaalde locaties of bestandstypen.
+Met de regel engine kunt u de manier aanpassen waarop de cache van de query teken reeks wordt geïmplementeerd. U kunt bijvoorbeeld opgeven dat de caching van de query reeks alleen op bepaalde locaties of bestands typen wordt uitgevoerd.
 
-Als u wilt dupliceren van de "no-cache" queryreeks cachegedrag op de pagina Query-tekenreeks in cache opslaan, maakt u een regel met een URL-Query Wildcard-voorwaarde voor overeenkomst en de functie Cache overslaan. Stel de voorwaarde voor overeenkomst van jokertekens voor URL-Query op een sterretje (*).
+Als u de cache-instelling voor de query reeks ' no-cache ' op de cache-pagina van de query-teken reeks wilt dupliceren, maakt u een regel met een URL-query Joker teken voor waarde en een functie voor bypass-cache. Stel de voor waarde voor het vergelijken van de URL-query in op een asterisk (*).
 
 >[!IMPORTANT]
-> Als het token autorisatie voor elk pad voor dit account is ingeschakeld, is standard-cachemodus de enige modus die kan worden gebruikt voor het opslaan van de query-tekenreeks. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string-premium.md) voor meer informatie.
+> Als token autorisatie is ingeschakeld voor een pad op dit account, is de modus standaard-cache de enige modus die kan worden gebruikt voor het opslaan van de query in de teken reeks cache. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string-premium.md) voor meer informatie.
 
-#### <a name="sample-scenarios"></a>Voorbeeldscenario 's
+#### <a name="sample-scenarios"></a>Voorbeeld Scenario's
 
-Het volgende voorbeeld van gebruik voor deze functie biedt een voorbeeld van een aanvraag en de standaard-cache-sleutel:
+Het volgende voor beeld van het gebruik van deze functie biedt een voorbeeld aanvraag en de standaard cache sleutel:
 
-- **Voorbeeld van een aanvraag:** http://wpc.0001.&lt ; domein&gt; /800001/Origin/folder/asset.htm?sessionid=1234 & taal = nl & userid = 01
-- **Standaard-cache-sleutel:** /800001/Origin/folder/asset.htm
+- **Voorbeeld aanvraag:** http://wpc.0001.&lt;D omain&gt;/800001/Origin/folder/Asset.htm? SessionID = 1234 & language = en & userid = 01
+- **Standaard cache-sleutel:** /800001/Origin/folder/Asset.htm
 
-##### <a name="include"></a>Opnemen
+##### <a name="include"></a>Behoort
 
-Voorbeeldconfiguratie:
+Voorbeeld configuratie:
 
-- **Type:** Opnemen
-- **Parameter (s):** taal
+- **Type:** Behoort
+- **Para meter (s):** taal
 
-Dit type configuratie genereert de volgende query-tekenreeks parameter cache-sleutel:
+Met dit type configuratie wordt de volgende query teken reeks parameter cache sleutel gegenereerd:
 
     /800001/Origin/folder/asset.htm?language=EN
 
-##### <a name="include-all"></a>Alle
+##### <a name="include-all"></a>Alles toevoegen
 
-Voorbeeldconfiguratie:
+Voorbeeld configuratie:
 
-- **Type:** Alle
+- **Type:** Alles toevoegen
 
-Dit type configuratie genereert de volgende query-tekenreeks parameter cache-sleutel:
+Met dit type configuratie wordt de volgende query teken reeks parameter cache sleutel gegenereerd:
 
     /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 
-##### <a name="exclude"></a>Uitsluiten
+##### <a name="exclude"></a>Exclude
 
-Voorbeeldconfiguratie:
+Voorbeeld configuratie:
 
-- **Type:** Uitsluiten
-- **Parameter (s):** sessioned gebruikers-id
+- **Type:** Weekend
+- **Para meter (s):** gesessione gebruikers-id
 
-Dit type configuratie genereert de volgende query-tekenreeks parameter cache-sleutel:
+Met dit type configuratie wordt de volgende query teken reeks parameter cache sleutel gegenereerd:
 
     /800001/Origin/folder/asset.htm?language=EN
 
-##### <a name="exclude-all"></a>Sluit alle
+##### <a name="exclude-all"></a>Alles uitsluiten
 
-Voorbeeldconfiguratie:
+Voorbeeld configuratie:
 
-- **Type:** Sluit alle
+- **Type:** Alles uitsluiten
 
-Dit type configuratie genereert de volgende query-tekenreeks parameter cache-sleutel:
+Met dit type configuratie wordt de volgende query teken reeks parameter cache sleutel gegenereerd:
 
     /800001/Origin/folder/asset.htm
 
@@ -389,20 +389,20 @@ Dit type configuratie genereert de volgende query-tekenreeks parameter cache-sle
 
 ---
 
-### <a name="cache-key-rewrite"></a>Cache-sleutel opnieuw schrijven
+### <a name="cache-key-rewrite"></a>Cache sleutel opnieuw schrijven
 
-**Doel:** Herschrijft de cache-sleutel die is gekoppeld aan een aanvraag.
+**Doel:** Hiermee wordt de cache sleutel die is gekoppeld aan een aanvraag, opnieuw geschreven.
 
-Een cache-sleutel is het relatieve pad waarmee een asset voor de doeleinden van caching. De servers controleren met andere woorden, de versie van een cache van een asset op basis van het pad zoals gedefinieerd in de cache-sleutel.
+Een cache sleutel is het relatieve pad dat een Asset identificeert voor het opslaan in de cache. Met andere woorden, de servers controleren op een versie van een asset in de cache op basis van het pad zoals gedefinieerd door de cache sleutel.
 
-Deze functie configureren met het definiëren van de volgende opties:
+Configureer deze functie door de volgende opties te definiëren:
 
-Optie|Description
+Optie|Beschrijving
 --|--
-Oorspronkelijke pad| Het relatieve pad op van het type van de aanvragen waarvan Cachesleutel wordt herschreven definiëren. Een relatief pad worden gedefinieerd met een basis oorsprongpad selecteren en vervolgens een reguliere-expressiepatroon te definiëren.
-Nieuw pad|Het relatieve pad voor de nieuwe cache-sleutel definiëren. Een relatief pad worden gedefinieerd met een basis oorsprongpad selecteren en vervolgens een reguliere-expressiepatroon te definiëren. Het relatieve pad kan dynamisch worden samengesteld met behulp van [HTTP-variabelen](cdn-http-variables.md).
+Oorspronkelijk pad| Definieer het relatieve pad naar de typen aanvragen waarvan de cache sleutel opnieuw wordt geschreven. U kunt een relatief pad definiëren door een basis pad voor de oorsprong te selecteren en vervolgens een reguliere-expressie patroon te definiëren.
+Nieuw pad|Definieer het relatieve pad voor de nieuwe cache sleutel. U kunt een relatief pad definiëren door een basis pad voor de oorsprong te selecteren en vervolgens een reguliere-expressie patroon te definiëren. Dit relatieve pad kan dynamisch worden gemaakt door het gebruik van [http-variabelen](cdn-http-variables.md).
 
-**Standaardgedrag:** Een aanvraag voor de cache-sleutel wordt bepaald door de aanvraag-URI.
+**Standaard gedrag:** De cache sleutel van een aanvraag wordt bepaald door de URI van de aanvraag.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -412,15 +412,15 @@ Nieuw pad|Het relatieve pad voor de nieuwe cache-sleutel definiëren. Een relati
 
 ### <a name="comment"></a>Opmerking
 
-**Doel:** Hiermee kunt een opmerking in een regel worden toegevoegd.
+**Doel:** Hiermee kan een notitie worden toegevoegd binnen een regel.
 
-Er wordt één gebruikt voor deze functie bevatten aanvullende informatie over het algemeen gebruik van een regel of waarom een bepaalde overeenkomen met de voorwaarde of functie is toegevoegd aan de regel.
+Het enige gebruik van deze functie is om aanvullende informatie te verstrekken over het algemene doel van een regel of waarom een bepaalde overeenkomst voorwaarde of-functie is toegevoegd aan de regel.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Maximaal 150 tekens kan worden opgegeven.
+- Er kunnen Maxi maal 150 tekens worden opgegeven.
 - Gebruik alleen alfanumerieke tekens.
-- Deze functie heeft geen invloed op het gedrag van de regel. Dit is alleen bedoeld om een gebied waarin u voor toekomstig gebruik of die kan helpen opgeven kunt bij het oplossen van de regel.
+- Deze functie is niet van invloed op het gedrag van de regel. Het is alleen bedoeld om een gebied te bieden waarin u informatie kunt opgeven voor toekomstige referentie of die u kan helpen bij het oplossen van problemen met de regel.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -428,47 +428,47 @@ Belangrijke informatie:
 
 ---
 
-### <a name="complete-cache-fill"></a>Opvulling van de Cache voltooien
+### <a name="complete-cache-fill"></a>Volledige cache opvulling
 
-**Doel:** Hiermee wordt bepaald wat er gebeurt wanneer een aanvraag resulteert in een gedeeltelijke Cachemisser op een pop-server.
+**Doel:** Hiermee wordt bepaald wat er gebeurt wanneer een aanvraag resulteert in een gedeeltelijke cache Missing in een POP.
 
-Een gedeeltelijke Cachemisser beschrijving van de status van de cache voor een asset die niet volledig is gedownload naar een pop-server. Als een activum wordt slechts gedeeltelijk in de cache op een pop-server, klikt u vervolgens de volgende aanvraag voor de activa doorgestuurd opnieuw naar de oorspronkelijke server.
+In een gedeeltelijke cache-Missing wordt de cache status voor een Asset beschreven die niet volledig is gedownload naar een POP. Als een activum slechts gedeeltelijk in de cache wordt opgeslagen in een POP, wordt de volgende aanvraag voor dat activum opnieuw doorgestuurd naar de oorspronkelijke server.
 <!---
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
 --->
-Een gedeeltelijke Cachemisser treedt meestal op wanneer een gebruiker een download afgebroken of voor activa die uitsluitend zijn aangevraagd met behulp van HTTP-aanvragen voor bereik. Deze functie is vooral nuttig zijn voor grote activa die normaal gesproken niet worden gedownload van begin tot eind (bijvoorbeeld video's). Als gevolg hiervan, is deze functie standaard ingeschakeld op de grote HTTP-platform. Deze is uitgeschakeld op alle andere platforms.
+Een gedeeltelijke cache-Misser treedt doorgaans op wanneer een gebruiker een down load afbreekt of voor assets die alleen worden aangevraagd met behulp van HTTP-bereik aanvragen. Deze functie is vooral nuttig voor grote activa die doorgaans niet van begin tot eind worden gedownload (bijvoorbeeld Video's). Als gevolg hiervan is deze functie standaard ingeschakeld op het grote HTTP-platform. Het is uitgeschakeld op alle andere platforms.
 
-Houd de standaardconfiguratie voor de grote HTTP-platform, omdat het vermindert de belasting van de oorspronkelijke server van uw klant en verhoogt de snelheid waarmee uw klanten uw inhoud downloaden.
+Behoud de standaard configuratie voor het grote HTTP-platform, omdat dit de belasting van de bron server van de klant vermindert en de snelheid waarmee uw klanten uw inhoud downloaden, verhoogt.
 
-Value|Resultaat
+Waarde|Resultaat
 --|--
-Enabled|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is om af te dwingen de pop-server om te starten van een op de achtergrond ophalen van de activa van de oorspronkelijke server. Waarna de asset worden weergegeven in de lokale cache van de pop-server.
-Uitgeschakeld|Hiermee voorkomt dat een pop-server uitvoeren van een op de achtergrond ophalen voor de asset. Het resultaat is een pop-server aan te vragen bij de oorspronkelijke server van de klant zorgt ervoor dat de volgende aanvraag voor de activa van die regio.
+Ingeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is om te voor komen dat de POP een achtergrond ophaalt van de Asset van de oorspronkelijke server. Daarna bevinden de Asset zich in de lokale cache van de POP.
+Uitgeschakeld|Hiermee voor komt u dat een POP een op de achtergrond ophalen voor de Asset uitvoert. Het resultaat is dat de volgende aanvraag voor dat activum vanuit die regio een POP heeft om deze aan te vragen bij de oorspronkelijke server van de klant.
 
-**Standaardgedrag:** Ingeschakeld.
+**Standaard gedrag:** Ingeschakeld.
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkomst vanwege de manier die in welke cache instellingen worden bijgehouden:
+Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan deze functie niet worden gekoppeld aan de volgende match-voor waarden:
 
-- AS-nummer
+- Als getal
 - IP-adres van client
-- Cookie-Parameter
-- Cookie Parameter reguliere expressie
-- Country
+- Cookie parameter
+- Cookie para meter regex
+- Land
 - Apparaat
-- Microsoft Edge Cname
+- Micro soft Edge CNAME
 - Verwijzende domein
-- Aanvraag-Header letterlijke waarde
-- Aanvraag-Header reguliere expressie
-- Aanvraag-Header jokertekens
-- Aanvraagmethode
-- Aanvraag-schema
-- URL-Query letterlijke waarde
-- URL-Query reguliere expressie
-- URL-Query jokertekens
-- URL Query Parameter
+- Letterlijke aanvraag header
+- Regex-aanvraag header
+- Joker teken voor aanvraag header
+- Verzoekmethode
+- Aanvraag schema
+- URL-query-letterlijke waarde
+- URL-query-regex
+- URL-query Joker teken
+- URL-query parameter
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -476,27 +476,27 @@ Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkoms
 
 ---
 
-### <a name="compress-file-types"></a>Bestandstypen comprimeren
+### <a name="compress-file-types"></a>Bestands typen comprimeren
 
-**Doel:** Definieert de bestandsindelingen voor de bestanden die gecomprimeerd zijn op de server.
+**Doel:** Hiermee definieert u de bestands indelingen voor de bestanden die op de server zijn gecomprimeerd.
 
-Een bestandsindeling kan worden opgegeven met behulp van de Internet-media-type (bijvoorbeeld: Content-Type). Mediatype van Internet zijn platformonafhankelijk metagegevens waarmee de servers voor het identificeren van de bestandsindeling van een bepaalde asset. Hieronder vindt u een lijst met algemene Internet mediatypen.
+Een bestands indeling kan worden opgegeven met behulp van het type Internet media (bijvoorbeeld inhouds type). Het media type van het internet is platform onafhankelijke meta gegevens waarmee de servers de bestands indeling van een bepaalde Asset kunnen identificeren. Hieronder vindt u een lijst met algemene Internet Media typen.
 
-Mediatype van Internet|Description
+Type Internet Media|Beschrijving
 --|--
-text/plain|Bestanden met tekst zonder opmaak
-text/html| HTML-bestanden
-text/css|Cascading Style Sheets (CSS)
+tekst/zonder opmaak|Tekst bestanden zonder opmaak
+tekst/HTML| HTML-bestanden
+tekst/CSS|Cascading Style Sheet (CSS)
 application/x-javascript|Javascript
-application/javascript|Javascript
+toepassing/Java script|Javascript
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Geef meerdere mediatypen van Internet door die begrenst elkaar met een spatie.
-- Deze functie worden alleen gecomprimeerd activa waarvan de grootte minder dan 1 MB is. Grotere activa zijn niet door de servers gecomprimeerd.
-- Bepaalde typen inhoud, zoals afbeeldingen, video en audio-media-activa (bijvoorbeeld, JPG, MP3, MP4, enzovoort), zijn al gecomprimeerd. Omdat er extra compressie op deze typen van de activa is bestandsgrootte niet aanzienlijk verslechteren, verdient het aanbeveling dat u geen compressie op deze inschakelt.
-- Jokertekens bevatten, zoals sterretjes, worden niet ondersteund.
-- Voordat u deze functie op een regel toevoegt, zorg ervoor dat u instelt dat de compressie uitgeschakelde optie op de pagina compressie voor het platform waarop deze regel wordt toegepast.
+- Geef meerdere typen Internet media op door één spatie te scheiden.
+- Deze functie comprimeert alleen assets waarvan de grootte kleiner is dan 1 MB. Grotere assets worden niet gecomprimeerd door de servers.
+- Bepaalde typen inhoud, zoals afbeeldingen, Video's en audio-media-assets (bijvoorbeeld JPG, MP3, MP4 enzovoort), zijn al gecomprimeerd. Omdat extra compressie van deze typen assets de bestands grootte niet aanzienlijk vermindert, wordt aanbevolen dat u compressie niet inschakelt.
+- Joker tekens, zoals sterretjes, worden niet ondersteund.
+- Voordat u deze functie aan een regel toevoegt, moet u ervoor zorgen dat u de optie voor compressie uitgeschakeld instelt op de compressie pagina voor het platform waarop deze regel wordt toegepast.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -504,103 +504,103 @@ Belangrijke informatie:
 
 ---
 
-### <a name="custom-log-field-1"></a>Het aangepaste logboekveld 1
+### <a name="custom-log-field-1"></a>Aangepast logboek veld 1
 
-**Doel:** Bepaalt de indeling en de inhoud die wordt toegewezen aan het aangepaste logboek-veld in een onbewerkte logboekbestand.
+**Doel:** Bepaalt de indeling en de inhoud die wordt toegewezen aan het aangepaste logboek veld in een onbewerkte logboek bestand.
 
-Deze aangepaste veld kunt u om te bepalen welke aanvraag en antwoord-header-waarden worden opgeslagen in uw logboekbestanden.
+Met dit aangepaste veld kunt u bepalen welke waarden voor de aanvraag-en antwoord header worden opgeslagen in uw logboek bestanden.
 
-Het aangepaste logboekveld heet standaard 'x-ec_custom-1'. De naam van dit veld kan worden aangepast via de pagina instellingen van het onbewerkte.
+Het aangepaste logboek veld wordt standaard ' x-ec_custom-1 ' genoemd. De naam van dit veld kan worden aangepast op de pagina instellingen voor onbewerkte Logboeken.
 
-De indeling voor het opgeven van de aanvraag- en reactieheaders wordt als volgt gedefinieerd:
+De notatie voor het opgeven van aanvraag-en reactie headers wordt als volgt gedefinieerd:
 
-Header-Type|Indeling|Voorbeelden
+Koptekst type|Indeling|Voorbeelden
 -|-|-
-Aanvraagheader|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
-Antwoordkoptekst|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+Aanvraagheader|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Verwijzende} i <br/> % {Authorization} i
+Reactie header|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Een veld van het aangepaste logboek kan elke combinatie van header-velden en tekst zonder opmaak bevatten.
-- Geldige tekens voor dit veld zijn als volgt: alfanumerieke tekens (0-9, a-z, A-Z), streepjes, dubbele punten, puntkomma's, apostroffen, komma's, punten, onderstrepingstekens, gelijktekens, haakjes, haakjes en spaties. Het percentagesymbool en de accolades zijn alleen toegestaan als die wordt gebruikt om op te geven van een headerveld.
-- De spelling voor elk veld van de opgegeven header moet overeenkomen met de naam van de gewenste aanvraag/antwoord-header.
-- Als u opgeven van meerdere headers wilt, gebruikt u een scheidingsteken om aan te geven van elke header. U kunt bijvoorbeeld een afkorting voor elke header:
-    - AE: % {accepteren-Encoding} i A: % {autorisatie} i CT: % {Content-Type}-o
+- Een aangepast logboek veld kan een wille keurige combi natie van header velden en tekst zonder opmaak bevatten.
+- Geldige tekens voor dit veld zijn: alfanumeriek (0-9, a-z en A-Z), streepjes, dubbele punten, punt komma's, apostrofs, komma's, punten, onderstrepings tekens, gelijktekens, haakjes, haakjes en spaties. Het symbool voor het percentage en de accolades zijn alleen toegestaan wanneer het wordt gebruikt om een koptekst veld op te geven.
+- De spelling voor elk opgegeven header veld moet overeenkomen met de gewenste naam van de aanvraag/antwoord header.
+- Als u meerdere kopteksten wilt opgeven, gebruikt u een scheidings teken om elke koptekst aan te geven. U kunt bijvoorbeeld een afkorting voor elke header gebruiken:
+    - AE:% {Accept-Encoding} i A:% {Authorization} i CT:% {content-type} o
 
-**Standaardwaarde:**  -
+**Standaard waarde:**  -
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
 ---
-### <a name="debug-cache-response-headers"></a>Fouten opsporen in Cache antwoordheaders
+### <a name="debug-cache-response-headers"></a>Debug cache-antwoord headers
 
-**Doel:** Bepaalt of een antwoord kan bevatten [X-EG-Debug antwoordheaders](cdn-http-debug-headers.md), waarmee u informatie op het cache-beleid voor de aangevraagde asset.
+**Doel:** Hiermee wordt bepaald of een antwoord [X-EC-debug-antwoord headers](cdn-http-debug-headers.md)kan bevatten, dat informatie bevat over het cache beleid voor de aangevraagde Asset.
 
-Fouten opsporen in een cacheantwoord headers worden opgenomen in het antwoord wanneer beide van de volgende waar zijn:
+De reactie headers van debug-cache worden opgenomen in het antwoord wanneer beide volgende voor waarden van toepassing zijn:
 
-- De functie voor antwoordheaders voor fouten opsporen in Cache is ingeschakeld op de opgegeven aanvraag.
-- De opgegeven aanvraag definieert de set foutopsporing cache antwoordheaders die worden opgenomen in het antwoord.
+- De functie voor de reactie headers van de debug-cache is ingeschakeld voor de opgegeven aanvraag.
+- Met de opgegeven aanvraag wordt de set debug cache response headers gedefinieerd die worden opgenomen in het antwoord.
 
-Fouten opsporen in een cacheantwoord headers kunnen worden aangevraagd door de volgende header en de opgegeven richtlijnen op te nemen in de aanvraag:
+Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende header en de opgegeven instructies in de aanvraag op te nemen:
 
 `X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Voorbeeld:**
 
-X-EG-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
+X-EC-debug: x-EU-cache, x-EC-check-cache, x-EG-cache-sleutel, x-EC-cache-status
 
-Value|Resultaat
+Waarde|Resultaat
 -|-
-Enabled|Aanvragen voor foutopsporing cache antwoordheaders wordt een antwoord met de header X-EG-Debug.
-Uitgeschakeld|De antwoord-header X-EG-Debug worden, uitgesloten van het antwoord.
+Ingeschakeld|Aanvragen voor de reactie headers van debug-cache retour neren een antwoord dat de X-EC-debug-header bevat.
+Uitgeschakeld|De reactie header X-EC-debug wordt van het antwoord uitgesloten.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
 ---
-### <a name="default-internal-max-age"></a>Standaard interne Max-Age
+### <a name="default-internal-max-age"></a>Standaard interne Max. leeftijd
 
-**Doel:** Bepaalt de standaardintervaltijd van max-age voor pop-server naar de oorsprong server cache hervalidatie. Met andere woorden, de hoeveelheid tijd dat wordt gewacht voordat een pop-server wordt gecontroleerd of een activum in de cache overeenkomt met de asset die zijn opgeslagen op de oorspronkelijke server.
+**Doel:** Hiermee wordt het standaard interval voor de maximum leeftijd van de POP-to-Origin-server cache hervalidatie bepaald. Met andere woorden, de hoeveelheid tijd die wordt door gegeven voordat een POP controleert of een activum in de cache overeenkomt met het activum dat op de oorspronkelijke server is opgeslagen.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze actie vindt alleen plaats voor antwoorden van een bronserver die niet een indicatie maximale leeftijd in hebt toegewezen de `Cache-Control` of `Expires` header.
-- Deze actie vindt niet plaats voor activa die worden niet gecachet kan worden beschouwd.
-- Deze actie heeft geen invloed op de POP-cache revalidations browser. Deze typen revalidations worden bepaald door de `Cache-Control` of `Expires` koppen die zijn verzonden naar de browser, die kan worden aangepast met de functie externe Max-Age.
-- De resultaten van deze actie nog geen een waarneembare effect op de antwoordheaders en de inhoud die is geretourneerd door de POP's voor uw inhoud, maar deze mogelijk van invloed op de hoeveelheid hervalidatie verkeer vanuit POP's verzonden naar de oorspronkelijke server.
-- Deze functie door te configureren:
-    - Selecteren van de statuscode waarvoor een interne standaard max-age kan worden toegepast.
-    - Een geheel getal op te geven en selecteer vervolgens de gewenste tijdseenheid (bijvoorbeeld seconden, minuten, uren, enz.). Deze waarde bepaalt het standaardinterval voor de interne max-age.
+- Deze actie wordt alleen uitgevoerd voor antwoorden van een originele server die geen maximale leeftijds aanduiding heeft toegewezen in de `Cache-Control` of `Expires` koptekst.
+- Deze actie wordt niet uitgevoerd voor activa die niet als cachebaar worden beschouwd.
+- Deze actie heeft geen invloed op de hervalidaties van POP-caches in de browser. Deze typen hervalidaties worden bepaald door de `Cache-Control` of `Expires` kopteksten die naar de browser worden verzonden en die kunnen worden aangepast met de externe functie Max-Age.
+- De resultaten van deze actie hebben geen waarneembaar effect op de antwoord headers en de inhoud die wordt geretourneerd van Pop's voor uw inhoud, maar kan ook invloed hebben op de hoeveelheid hervalidatie verkeer dat vanuit Pop's naar uw oorspronkelijke server wordt verzonden.
+- Deze functie configureren door:
+    - De status code selecteren waarvoor een standaard interne Max-leeftijd kan worden toegepast.
+    - Geef een geheel getal op en selecteer vervolgens de gewenste tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort). Met deze waarde wordt het standaard interval voor een intern maximum leeftijd gedefinieerd.
 
-- Instellen van de tijdseenheid op 'Uit', wordt een standaard interne max-age interval van zeven dagen voor aanvragen die niet zijn toegewezen aan een indicatie maximale leeftijd in toegewezen hun `Cache-Control` of `Expires` header.
+- Als u de tijds eenheid instelt op ' uit ', wordt er een standaard intern interval van 7 dagen toegewezen voor aanvragen waaraan geen maximale leeftijds aanduiding is toegewezen in hun `Cache-Control` of `Expires` koptekst.
 
-**Standaardwaarde:** 7 dagen
+**Standaard waarde:** 7 dagen
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkomst vanwege de manier die in welke cache instellingen worden bijgehouden:
-- AS-nummer
+Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan deze functie niet worden gekoppeld aan de volgende match-voor waarden:
+- Als getal
 - IP-adres van client
-- Cookie-Parameter
-- Cookie Parameter reguliere expressie
-- Country
+- Cookie parameter
+- Cookie para meter regex
+- Land
 - Apparaat
-- Cname voor edge
+- Edge CNAME
 - Verwijzende domein
-- Aanvraag-Header letterlijke waarde
-- Aanvraag-Header reguliere expressie
-- Aanvraag-Header jokertekens
-- Aanvraagmethode
-- Aanvraag-schema
-- URL-Query letterlijke waarde
-- URL-Query reguliere expressie
-- URL-Query jokertekens
-- URL Query Parameter
+- Letterlijke aanvraag header
+- Regex-aanvraag header
+- Joker teken voor aanvraag header
+- Verzoekmethode
+- Aanvraag schema
+- URL-query-letterlijke waarde
+- URL-query-regex
+- URL-query Joker teken
+- URL-query parameter
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -608,19 +608,19 @@ Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkoms
 
 ---
 
-### <a name="deny-access-403"></a>Deny Access (403)
+### <a name="deny-access-403"></a>Toegang weigeren (403)
 
-**Doel**: Hiermee bepaalt u of alle aanvragen zijn afgewezen met een 403 verboden-antwoord.
+**Doel**: Hiermee wordt bepaald of alle aanvragen worden afgewezen met een 403 niet-toegestaan antwoord.
 
-Value | Resultaat
+Waarde | Resultaat
 ------|-------
-Enabled| Zorgt ervoor dat alle aanvragen die voldoen aan de overeenkomende criteria kunnen worden geweigerd met een 403 verboden-antwoord.
-Uitgeschakeld| Hiermee herstelt u het standaardgedrag. De standaardinstelling is dat de oorspronkelijke server om te bepalen van het type van de reactie die wordt geretourneerd.
+Ingeschakeld| Zorgt ervoor dat alle aanvragen die voldoen aan de overeenkomende criteria, moeten worden afgewezen met een 403 verboden antwoord.
+Uitgeschakeld| Hiermee herstelt u het standaard gedrag. Het standaard gedrag is het toestaan van de oorspronkelijke server om te bepalen welk type antwoord wordt geretourneerd.
 
-**Standaardgedrag**: Uitgeschakeld
+**Standaard gedrag**: uitgeschakeld
 
 > [!TIP]
-   > Een mogelijk kunnen worden gebruikt voor deze functie is om te koppelen aan een voorwaarde voor overeenkomst van Header van toegang tot HTTP-verwijzende sites die van inline koppelingen naar uw inhoud gebruikmaken blokkeren.
+   > Een mogelijk gebruik van deze functie is om deze te koppelen aan een match-voor waarde van de aanvraag header om de toegang tot HTTP-verwijzende sites die inline koppelingen naar uw inhoud gebruiken, te blok keren.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -628,20 +628,20 @@ Uitgeschakeld| Hiermee herstelt u het standaardgedrag. De standaardinstelling is
 
 ---
 
-### <a name="expires-header-treatment"></a>Koptekst behandeling verloopt
+### <a name="expires-header-treatment"></a>Verwerking van verlooptde header
 
-**Doel:** Hiermee bepaalt u de generatie van `Expires` headers met een pop-server als de functie externe Max-Age actief is.
+**Doel:** Hiermee beheert u de generatie van `Expires` headers door een POP wanneer de functie voor de externe Max-Age actief is.
 
-De eenvoudigste manier om dit type configuratie is om de externe Max-Age en de onderdelen van de koptekst behandeling verloopt in dezelfde instructie.
+De eenvoudigste manier om dit type configuratie te behaalt, is door de verwerkings functies voor de externe en verlopende header in dezelfde instructie te plaatsen.
 
-Value|Resultaat
+Waarde|Resultaat
 --|--
-Overschrijven|Zorgt ervoor dat de volgende acties uitgevoerd:<br/>-Overschrijft de `Expires` header die worden gegenereerd door de oorspronkelijke server.<br/>-Toegevoegd de `Expires` header die worden geproduceerd door de functie externe Max-Age aan het antwoord.
-Doorgeven|Zorgt ervoor dat de `Expires` header die worden geproduceerd door de functie externe Max-Age nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server produceert een `Expires` header, worden doorgegeven aan de eindgebruiker. <br/>Als de oorspronkelijke server produceert geen een `Expires` header, wordt deze optie kan ertoe leiden dat de antwoord-header bevat geen een `Expires` header.
-Indien ontbrekend toevoegen| Als een `Expires` header is niet ontvangen van de oorspronkelijke server en vervolgens deze optie voegt de `Expires` header die worden geproduceerd door de functie externe Max-Age. Deze optie is handig om ervoor te zorgen dat alle activa zal worden toegewezen een `Expires` header.
-Verwijderen| Zorgt ervoor dat een `Expires` -header is niet opgenomen in de header-reactie. Als een `Expires` header al is toegewezen, en vervolgens wordt deze verwijderd uit het header-antwoord.
+Overschrijven|Zorgt ervoor dat de volgende acties worden uitgevoerd:<br/>-Hiermee wordt de `Expires` header overschreven die is gegenereerd door de oorspronkelijke server.<br/>-Voegt de `Expires` header toe die door de functie External Max-Age is gemaakt aan het antwoord.
+Door geven|Zorgt ervoor dat de `Expires`-header die door de functie voor de externe Max-Age wordt gemaakt, nooit wordt toegevoegd aan het antwoord. <br/> Als de oorspronkelijke server een `Expires` header produceert, wordt deze door gegeven aan de eind gebruiker. <br/>Als de bron server geen `Expires`-header produceert, kan deze optie ertoe leiden dat de antwoord header geen `Expires`-header bevat.
+Als ontbrekend toevoegen| Als er geen `Expires` header van de oorspronkelijke server is ontvangen, voegt deze optie de `Expires` header toe die door de functie External Max-Age wordt gemaakt. Deze optie is handig om ervoor te zorgen dat aan alle activa een `Expires` header wordt toegewezen.
+Verwijderen| Hiermee zorgt u ervoor dat een `Expires` header niet is opgenomen in het antwoord van de header. Als er al een `Expires` header is toegewezen, wordt deze verwijderd uit de reactie van de header.
 
-**Standaardgedrag:** Overschrijven
+**Standaard gedrag:** Schrijft
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -649,20 +649,20 @@ Verwijderen| Zorgt ervoor dat een `Expires` -header is niet opgenomen in de head
 
 ---
 
-### <a name="external-max-age"></a>Externe Max-Age
+### <a name="external-max-age"></a>Extern Max-Age
 
-**Doel:** Bepaalt de max-age-interval voor de browser op hervalidatie van POP-cache. Met andere woorden, de hoeveelheid tijd dat wordt gewacht voordat een browser op een nieuwe versie van een asset van een pop-server controleren kunt.
+**Doel:** Hiermee wordt het maximale leeftijds interval voor browser naar hervalidatie van POP-caches bepaald. Met andere woorden, de hoeveelheid tijd die wordt door gegeven voordat een browser een nieuwe versie van een Asset van een POP kan controleren.
 
-Inschakelen van deze functie wordt gegenereerd `Cache-Control: max-age` en `Expires` headers van de POP's en ze verzenden naar de HTTP-client. Standaard wordt deze headers die headers die zijn gemaakt door de oorspronkelijke server overschreven. De Cache-Control-Header-verwerking en de functies die verloopt Header behandeling kunnen echter worden gebruikt om dit gedrag te.
+Als u deze functie inschakelt, worden `Cache-Control: max-age` en `Expires` headers uit de Pop's gegenereerd en naar de HTTP-client verzonden. Standaard worden deze headers die zijn gemaakt door de oorspronkelijke server overschreven. De header verwerking van de cache en de verlopende header verwerking kan echter worden gebruikt om dit gedrag te wijzigen.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze actie heeft geen invloed op pop-server naar de oorspronkelijke server cache revalidations. Deze typen revalidations worden bepaald door de `Cache-Control` en `Expires` kopteksten van de oorspronkelijke server ontvangen en kunnen worden aangepast met de standaard interne Max-Age en de werking van interne Max-Age-functies.
-- Deze functie configureren door een geheel getal opgeven en het selecteren van de gewenste tijdseenheid (bijvoorbeeld seconden, minuten, uren, enz.).
-- Als u deze functie op een negatieve waarde zorgt ervoor dat de POP's voor het verzenden van een `Cache-Control: no-cache` en een `Expires` tijd die is ingesteld in het verleden met elk antwoord naar de browser. Hoewel een HTTP-client wordt de reactie niet in cache, deze instelling heeft geen invloed op de POP's kunnen het antwoord van de oorspronkelijke server in de cache.
-- Instellen van de tijdseenheid op 'Uit', wordt deze functie uitgeschakeld. De `Cache-Control` en `Expires` kopteksten in de cache opgeslagen met de reactie van de oorspronkelijke server worden doorgegeven aan de browser.
+- Deze actie heeft geen invloed op de hervalidaties van de server cache met de oorspronkelijke POP. Deze typen hervalidaties worden bepaald door de `Cache-Control` en `Expires` headers die van de oorspronkelijke server worden ontvangen en kunnen worden aangepast met de standaard interne Max-leeftijd en de functies voor het afdwingen van interne Max.
+- U kunt deze functie configureren door een geheel getal op te geven en de gewenste tijds eenheid te selecteren (bijvoorbeeld seconden, minuten, uren, enzovoort).
+- Als u deze functie instelt op een negatieve waarde, verzendt de Pop's een `Cache-Control: no-cache` en een `Expires` tijd die in het verleden is ingesteld, met elke reactie op de browser. Hoewel een HTTP-client het antwoord niet in de cache opslaat, heeft deze instelling geen invloed op de mogelijkheid van de Pop's om de reactie van de oorspronkelijke server op te slaan in de cache.
+- Als u de tijds eenheid instelt op uit, wordt deze functie uitgeschakeld. De `Cache-Control` en `Expires` headers die in de cache worden opgeslagen met het antwoord van de oorspronkelijke server, worden door gegeven aan de browser.
 
-**Standaardgedrag:** Uit
+**Standaard gedrag:** Office
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -672,18 +672,18 @@ Belangrijke informatie:
 
 ### <a name="follow-redirects"></a>Omleidingen volgen
 
-**Doel:** Hiermee bepaalt u of aanvragen kunnen worden omgeleid naar de hostnaam die is gedefinieerd in de locatieheader die is geretourneerd door een klant-bronserver.
+**Doel:** Hiermee wordt bepaald of aanvragen kunnen worden omgeleid naar de hostnaam die is opgegeven in de locatie-header die wordt geretourneerd door een server van de klant.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Aanvragen kunnen alleen worden omgeleid naar edge CNAME-records die met hetzelfde platform overeenkomen.
+- Verzoeken kunnen alleen worden omgeleid naar Edge CNAME-aanvragen die overeenkomen met hetzelfde platform.
 
-Value|Resultaat
+Waarde|Resultaat
 -|-
-Enabled|Aanvragen kunnen worden omgeleid.
-Uitgeschakeld|Geen worden aanvragen omgeleid.
+Ingeschakeld|Aanvragen kunnen worden omgeleid.
+Uitgeschakeld|Aanvragen worden niet omgeleid.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -691,43 +691,43 @@ Uitgeschakeld|Geen worden aanvragen omgeleid.
 
 ---
 
-### <a name="force-internal-max-age"></a>Force Internal Max-Age
+### <a name="force-internal-max-age"></a>Interne Max. duur forceren
 
-**Doel:** Bepaalt de max-age-interval voor pop-server naar de oorspronkelijke server cache hervalidatie. Met andere woorden, de hoeveelheid tijd dat wordt gewacht voordat een pop-server controleren kunt of een activum in de cache overeenkomt met de asset die zijn opgeslagen op de oorspronkelijke server.
+**Doel:** Hiermee wordt het maximale leeftijds interval voor de hervalidatie van de server cache voor POP-to-Origin bepaald. Met andere woorden, de hoeveelheid tijd die wordt door gegeven voordat een POP kan controleren of een activum in de cache overeenkomt met het activum dat is opgeslagen op de bron server.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze functie overschrijft de max-age-interval dat is gedefinieerd `Cache-Control` of `Expires` headers die zijn gegenereerd op basis van een bronserver.
-- Deze functie heeft geen invloed op de POP-cache revalidations browser. Deze typen revalidations worden bepaald door de `Cache-Control` of `Expires` koppen die zijn verzonden naar de browser.
-- Deze functie heeft geen waarneembare gevolgen heeft voor het antwoord geleverd door een pop-server voor de aanvrager. Echter, heeft dit van invloed op de hoeveelheid hervalidatie verkeer vanuit de POP's verzonden naar de oorspronkelijke server.
-- Deze functie door te configureren:
-    - Selecteren van de statuscode waarvoor een interne max-age worden toegepast.
-    - Een geheel getal op te geven en te selecteren van de gewenste tijdseenheid (bijvoorbeeld seconden, minuten, uren, enz.). Deze waarde bepaalt van de aanvraag max-age interval.
+- Deze functie overschrijft het maximale leeftijds interval dat is gedefinieerd in `Cache-Control` of `Expires` kopteksten die zijn gegenereerd op basis van een oorspronkelijke server.
+- Deze functie heeft geen invloed op de hervalidaties van POP-caches in de browser. Deze typen hervalidaties worden bepaald door de `Cache-Control` of `Expires` kopteksten die naar de browser worden verzonden.
+- Deze functie heeft geen waarneembaar effect op het antwoord dat door een POP aan de aanvrager wordt geleverd. Het kan echter ook invloed hebben op de hoeveelheid hervalidatie van verkeer dat van de Pop's naar de oorspronkelijke server wordt verzonden.
+- Deze functie configureren door:
+    - De status code selecteren waarvoor een intern maximum leeftijd wordt toegepast.
+    - Geef een geheel getal op en selecteer de gewenste tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort). Met deze waarde wordt het maximale leeftijds interval van de aanvraag gedefinieerd.
 
-- Als de tijdseenheid op 'Uit', wordt deze functie uitgeschakeld. Een interne max-age interval wordt niet worden toegewezen aan de aangevraagde activa. Als de oorspronkelijke header geen cache-instructies bevat, de asset zal worden opgeslagen in het cachegeheugen op basis van de actieve instelling in de functie standaard interne Max-Age.
+- Als u de tijds eenheid instelt op uit, wordt deze functie uitgeschakeld. Een intern interval van Maxi maal leeftijd wordt niet toegewezen aan aangevraagde activa. Als de oorspronkelijke header geen cache-instructies bevat, wordt het activum in de cache opgeslagen volgens de actieve instelling in de standaard optie voor de interne Max.
 
-**Standaardgedrag:** Uit
+**Standaard gedrag:** Office
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkomst vanwege de manier die in welke cache instellingen worden bijgehouden:
-- AS-nummer
+Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan deze functie niet worden gekoppeld aan de volgende match-voor waarden:
+- Als getal
 - IP-adres van client
-- Cookie-Parameter
-- Cookie Parameter reguliere expressie
-- Country
+- Cookie parameter
+- Cookie para meter regex
+- Land
 - Apparaat
-- Cname voor edge
+- Edge CNAME
 - Verwijzende domein
-- Aanvraag-Header letterlijke waarde
-- Aanvraag-Header reguliere expressie
-- Aanvraag-Header jokertekens
-- Aanvraagmethode
-- Aanvraag-schema
-- URL-Query letterlijke waarde
-- URL-Query reguliere expressie
-- URL-Query jokertekens
-- URL Query Parameter
+- Letterlijke aanvraag header
+- Regex-aanvraag header
+- Joker teken voor aanvraag header
+- Verzoekmethode
+- Aanvraag schema
+- URL-query-letterlijke waarde
+- URL-query-regex
+- URL-query Joker teken
+- URL-query parameter
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -735,16 +735,16 @@ Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkoms
 
 ---
 
-### <a name="h264-support-http-progressive-download"></a>H.264-ondersteuning (http-progressief downloaden)
+### <a name="h264-support-http-progressive-download"></a>H. 264-ondersteuning (HTTP progressieve down load)
 
-**Doel:** Hiermee bepaalt u de typen H.264-bestandsindelingen die kunnen worden gebruikt voor het streamen van inhoud.
+**Doel:** Bepaalt de typen H. 264-bestands indelingen die kunnen worden gebruikt om inhoud te streamen.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Een door spaties gescheiden set toegestane H.264 bestandsnaamextensies definiëren in de optie bestandsextensies. De optie bestandsextensies overschrijft het standaardgedrag. Ondersteuning voor MP4 en F4V onderhouden door op te nemen die bestandsextensies wanneer deze optie instelt.
-- Zijn een periode wanneer u elke bestandsnaamextensie opgeeft (bijvoorbeeld _.mp4_, _.f4v_).
+- Definieer een door spaties gescheiden reeks toegestane bestands extensies van H. 264 in de optie Bestands extensies. Met de optie Bestands extensies wordt het standaard gedrag overschreven. Onderhoud van MP4-en F4V-ondersteuning door deze bestands extensies op te nemen bij het instellen van deze optie.
+- Neem een punt op wanneer u elke bestands extensie opgeeft (bijvoorbeeld _. MP4_, _. F4V_).
 
-**Standaardgedrag:** HTTP-progressief downloaden biedt standaard ondersteuning voor MP4 en F4V media.
+**Standaard gedrag:** HTTP progressieve down loads biedt standaard ondersteuning voor MP4-en F4V-media.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -752,22 +752,22 @@ Belangrijke informatie:
 
 ---
 
-### <a name="honor-no-cache-request"></a>Aanvraag voor Honor No-Cache
+### <a name="honor-no-cache-request"></a>Geen cache aanvragen
 
-**Doel:** Hiermee bepaalt u of Nee-cache-aanvragen van een HTTP-client zal worden doorgestuurd naar de oorspronkelijke server.
+**Doel:** Hiermee wordt bepaald of er geen aanvragen van een HTTP-client worden doorgestuurd naar de oorspronkelijke server.
 
-Een niet-cache-aanvraag treedt op wanneer de HTTP-client verzendt een `Cache-Control: no-cache` en/of `Pragma: no-cache` -header in de HTTP-aanvraag.
+Er treedt een no-cache-aanvraag op wanneer de HTTP-client een `Cache-Control: no-cache`-en/of `Pragma: no-cache`-header in de HTTP-aanvraag verzendt.
 
-Value|Resultaat
+Waarde|Resultaat
 --|--
-Enabled|Kan geen van de client van een HTTP-cache-aanvragen worden doorgestuurd naar de oorspronkelijke server en de oorspronkelijke server retourneert de antwoordheaders en de hoofdtekst met het pop-server terug naar de HTTP-client.
-Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is om te voorkomen dat niet-cache-aanvragen worden doorgestuurd naar de oorspronkelijke server.
+Ingeschakeld|Hiermee kunnen de aanvragen van een HTTP-client geen cache worden doorgestuurd naar de oorspronkelijke server. de oorspronkelijke server retourneert de antwoord headers en de hoofd tekst via de POP terug naar de HTTP-client.
+Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is om te voor komen dat geen cache aanvragen worden doorgestuurd naar de oorspronkelijke server.
 
-Voor alle productieverkeer, is het raadzaam deze functie in de standaardstaat uitgeschakeld laten staan. Bronservers wordt anders niet worden afgeschermd van eindgebruikers die mogelijk veel niet-cache-aanvragen per ongeluk activeren bij het vernieuwen van webpagina's, of van de vele populaire mediaspelers die zijn gecodeerd voor het verzenden van een niet-cache-header met elke video aanvraag. Deze functie kan echter nuttig toe te passen op bepaalde niet-productie voor fasering of het testen van mappen, zodat u nieuwe inhoud op aanvraag worden opgehaald uit de oorspronkelijke server zijn.
+Voor alle productie verkeer wordt het nadrukkelijk aanbevolen om deze functie in te scha kelen met de standaard uitgeschakelde status. Als dat niet het geval is, worden de oorspronkelijke servers niet afgeschermd van eind gebruikers die per ongeluk veel no-cache aanvragen kunnen activeren bij het vernieuwen van webpagina's, of van de vele populaire media spelers die zijn gecodeerd om een no-cache-header met elke video aanvraag te verzenden. Deze functie kan echter nuttig zijn om te worden toegepast op bepaalde niet-productie staging of test directory's, zodat nieuwe inhoud op aanvraag kan worden opgehaald van de oorspronkelijke server.
 
-De status van de cache die is gerapporteerd voor een aanvraag die kan worden doorgestuurd naar een oorspronkelijke server vanwege deze functie is `TCP_Client_Refresh_Miss`. Het rapport Statusbepaling van de Cache, die beschikbaar in de module reporting Core is, bevat statistische gegevens door de status van de cache. Dit rapport kunt u voor het bijhouden van het aantal en percentage van de aanvragen die worden doorgestuurd naar een bronserver vanwege deze functie.
+De cache status die wordt gerapporteerd voor een aanvraag die kan worden doorgestuurd naar een originele server omdat deze functie is `TCP_Client_Refresh_Miss`. Het rapport cache statussen, dat beschikbaar is in de module kern rapportage, biedt statistische informatie over de cache status. Met dit rapport kunt u het aantal en het percentage bijhouden van aanvragen die worden doorgestuurd naar een originele server als gevolg van deze functie.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -775,111 +775,43 @@ De status van de cache die is gerapporteerd voor een aanvraag die kan worden doo
 
 ---
 
-### <a name="ignore-origin-no-cache"></a>Negeren van oorsprong No-Cache
+### <a name="ignore-origin-no-cache"></a>Geen cache oorsprong negeren
 
-**Doel:** Hiermee bepaalt u of het CDN wordt genegeerd door de volgende richtlijnen die worden aangeleverd vanuit een originele server:
+**Doel:** Hiermee wordt bepaald of de CDN de volgende instructies negeert die afkomstig zijn van een oorspronkelijke server:
 
 - `Cache-Control: private`
 - `Cache-Control: no-store`
 - `Cache-Control: no-cache`
 - `Pragma: no-cache`
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze functie configureren met het definiëren van een door spaties gescheiden lijst van statuscodes waarvoor de bovenstaande richtlijnen worden genegeerd.
-- De set met geldige waarden voor deze functie zijn: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, en 505.
-- Deze functie uitschakelen door deze te stellen op een lege waarde.
+- Deze functie configureren door een door spaties gescheiden lijst met status codes te definiëren waarvoor de bovenstaande instructies worden genegeerd.
+- De set geldige status codes voor deze functie zijn: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 en 505.
+- Schakel deze functie uit door deze in te stellen op een lege waarde.
 
-**Standaardgedrag:** Het standaardgedrag is om te voldoen aan de bovenstaande richtlijnen.
-
-#### <a name="compatibility"></a>Compatibiliteit
-
-Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkomst vanwege de manier die in welke cache instellingen worden bijgehouden:
-- AS-nummer
-- IP-adres van client
-- Cookie-Parameter
-- Cookie Parameter reguliere expressie
-- Country
-- Apparaat
-- Cname voor edge
-- Verwijzende domein
-- Aanvraag-Header letterlijke waarde
-- Aanvraag-Header reguliere expressie
-- Aanvraag-Header jokertekens
-- Aanvraagmethode
-- Aanvraag-schema
-- URL-Query letterlijke waarde
-- URL-Query reguliere expressie
-- URL-Query jokertekens
-- URL Query Parameter
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="ignore-unsatisfiable-ranges"></a>Ongeldig bereiken negeren
-
-**Doel:** Hiermee bepaalt u het antwoord dat wordt geretourneerd naar clients wanneer een aanvraag statuscode 416 gevraagde bereik niet geldig genereert.
-
-Standaard wordt deze statuscode geretourneerd wanneer de aanvraag opgegeven bytebereik kan niet worden voldaan door een pop-server en een veld als bereik aanvraagheader is niet opgegeven.
-
-Value|Resultaat
--|-
-Enabled|Hiermee voorkomt dat de POP's reageren op een ongeldige bytebereik-aanvraag met een 416 statuscode gevraagde bereik niet geldig. In plaats daarvan wordt de servers leveren de aangevraagde asset en 200 OK naar de client geretourneerd.
-Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is om te voldoen aan de 416 statuscode gevraagde bereik niet geldig.
-
-**Standaardgedrag:** Uitgeschakeld.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="internal-max-stale"></a>Interne Max-verouderd
-
-**Doel:** Besturingselementen hoe lang na de verlooptijd van de normale een activum in de cache kan worden geleverd vanuit een pop-server wanneer de pop-server niet kan valideren van de cache asset met de oorspronkelijke server.
-
-Normaal gesproken wanneer van een asset max-age tijd is verlopen, wordt de pop-server een validatieaanvraag verzonden naar de oorspronkelijke server. De oorspronkelijke server wordt vervolgens reageren met een van beide een 304 niet worden gewijzigd zodat de pop-server een nieuwe van de lease voor de cache asset, hetzij met 200 OK als u wilt de pop-server voorzien van een bijgewerkte versie van de activa in de cache.
-
-Als de pop-server kan tot stand brengen van een verbinding met de oorspronkelijke server bij dergelijke hervalidatie, en vervolgens deze interne Max-verouderde-functie of en hoe lang bepaalt is, blijven de pop-server voldoen aan de asset nu verouderd.
-
-Houd er rekening mee dat dit tijdsinterval wordt gestart wanneer van de asset max-age is verlopen, niet als de mislukte hervalidatie optreedt. De maximale periode gedurende welke een asset kan worden geleverd zonder geslaagde hervalidatie is daarom de hoeveelheid tijd die is opgegeven door de combinatie van max-age plus max-verouderd. Bijvoorbeeld, als een asset om 9:00 uur met een max-age van 30 minuten en een maximale-verouderde van 15 minuten in cache is opgeslagen, zou klikt u vervolgens een poging is mislukt hervalidatie op 9:44 leiden tot een eindgebruiker de verouderde cache asset ontvangen tijdens een poging tot mislukte hervalidatie om 9:46 tot de en leiden zou d gebruiker ontvangt een 504 time-out van Gateway.
-
-Een waarde die is geconfigureerd voor deze functie is vervangen door een andere `Cache-Control: must-revalidate` of `Cache-Control: proxy-revalidate` headers ontvangen van de oorspronkelijke server. Als een van de headers van de oorspronkelijke server is ontvangen wanneer een asset is in eerste instantie in de cache opgeslagen, klikt u vervolgens in de pop-server niet een verlopen in de cache asset fungeren. Als de pop-server kan niet valideren met de oorsprong als van de asset max-age interval is verlopen, is geeft de pop-server in dat geval een 504 time-out van Gateway-fout.
-
-Belangrijke informatie:
-
-- Deze functie door te configureren:
-    - Selecteren van de statuscode waarvoor een max-verouderde worden toegepast.
-    - Een geheel getal op te geven en selecteer vervolgens de gewenste tijdseenheid (bijvoorbeeld seconden, minuten, uren, enz.). Deze waarde bepaalt de interne max-verouderde die worden toegepast.
-
-- Instellen van de tijdseenheid op 'Uit', wordt deze functie uitgeschakeld. Een activum in de cache worden niet buiten de normale vervaltijd verwerkt.
-
-**Standaardgedrag:** Twee minuten
+**Standaard gedrag:** Het standaard gedrag is om te voldoen aan de bovenstaande richt lijnen.
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkomst vanwege de manier die in welke cache instellingen worden bijgehouden:
-- AS-nummer
+Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan deze functie niet worden gekoppeld aan de volgende match-voor waarden:
+- Als getal
 - IP-adres van client
-- Cookie-Parameter
-- Cookie Parameter reguliere expressie
-- Country
+- Cookie parameter
+- Cookie para meter regex
+- Land
 - Apparaat
-- Cname voor edge
+- Edge CNAME
 - Verwijzende domein
-- Aanvraag-Header letterlijke waarde
-- Aanvraag-Header reguliere expressie
-- Aanvraag-Header jokertekens
-- Aanvraagmethode
-- Aanvraag-schema
-- URL-Query letterlijke waarde
-- URL-Query reguliere expressie
-- URL-Query jokertekens
-- URL Query Parameter
+- Letterlijke aanvraag header
+- Regex-aanvraag header
+- Joker teken voor aanvraag header
+- Verzoekmethode
+- Aanvraag schema
+- URL-query-letterlijke waarde
+- URL-query-regex
+- URL-query Joker teken
+- URL-query parameter
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -887,16 +819,84 @@ Deze functie kan niet worden gekoppeld aan de volgende criteria voor overeenkoms
 
 ---
 
-### <a name="log-query-string"></a>Logboek-queryreeks
+### <a name="ignore-unsatisfiable-ranges"></a>Unsatisfiable-bereiken negeren
 
-**Doel:** Bepaalt of een queryreeks samen met de URL in toegang tot logboeken worden opgeslagen.
+**Doel:** Hiermee wordt bepaald welk antwoord wordt geretourneerd naar clients wanneer een aanvraag een aangevraagde bereik van 416 niet Satisfiable-status code genereert.
 
-Value|Resultaat
+Deze status code wordt standaard geretourneerd wanneer de opgegeven byte-bereik aanvraag niet kan worden voldaan door een POP en een if-Range-aanvraag header veld niet is opgegeven.
+
+Waarde|Resultaat
 -|-
-Enabled|Kan de opslag van queryreeksen bij het vastleggen van URL's in een toegangslogboek. Als een URL geen een queryreeks bevat, klikt u vervolgens deze optie geen effect.
-Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is queryreeksen negeren wanneer URL's op te nemen in een toegangslogboek.
+Ingeschakeld|Hiermee wordt voor komen dat de Pop's reageren op een ongeldige byte-bereik aanvraag met een 416 aangevraagde bereik geen Satisfiable-status code. In plaats daarvan leveren de servers de aangevraagde Asset en retour neren ze een 200 OK naar de client.
+Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is om te voldoen aan het aangevraagde bereik van 416 geen Satisfiable-status code.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Geblokkeerd.
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="internal-max-stale"></a>Intern Max-verouderd
+
+**Doel:** Hiermee bepaalt u hoe lang de normale verloop tijd van een activum in de cache kan worden uitgevoerd vanuit een POP wanneer de POP de asset in het cache geheugen niet opnieuw kan valideren met de oorspronkelijke server.
+
+Normaal gesp roken stuurt de POP een validatie aanvraag naar de oorspronkelijke server als de maximale leeftijds periode van een activum is verlopen. De oorspronkelijke server reageert vervolgens met een 304 die niet is gewijzigd om de POP een nieuwe lease te geven op de asset in de cache of met 200 OK om de POP te voorzien van een bijgewerkte versie van de asset in het cache geheugen.
+
+Als met de POP geen verbinding kan worden gemaakt met de bron server tijdens een hervalidatie, bepaalt deze interne maximum-verouderde functie of en hoe lang de POP de nu verouderde Asset mag blijven gebruiken.
+
+Houd er rekening mee dat dit tijds interval begint wanneer de duur van het activum verloopt, niet wanneer de hervalidatie is mislukt. Daarom is de maximale periode gedurende welke een activum kan worden geleverd zonder geslaagde hervalidatie, de hoeveelheid tijd die is opgegeven door de combi natie van Max-Age plus Max-verouderd. Als een Asset bijvoorbeeld is opgeslagen in de cache bij 9:00 met een maximum leeftijd van 30 minuten en een maximum verouderd van 15 minuten, zou een mislukte hervalidatie poging op 9:44 resulteren in een eind gebruiker die de verouderde in de cache geplaatste Asset ontvangt, terwijl een mislukte hervalidatie poging om 9:46 zou leiden tot de en d gebruiker die een time-out van 504-Gateway ontvangt.
+
+Elke waarde die voor deze functie is geconfigureerd, is vervangen door `Cache-Control: must-revalidate` of `Cache-Control: proxy-revalidate` headers die zijn ontvangen van de oorspronkelijke server. Als een van deze headers wordt ontvangen van de oorspronkelijke server wanneer een asset in eerste instantie in de cache wordt geplaatst, zal de POP geen verouderde asset in de cache hebben. Als in dat geval de POP niet opnieuw kan worden gevalideerd met de oorsprong wanneer het maximale leeftijds interval van het activum is verlopen, retourneert de POP een time-outfout van 504-Gateway.
+
+Belang rijke informatie:
+
+- Deze functie configureren door:
+    - De status code selecteren waarvoor een Max-verouderd wordt toegepast.
+    - Geef een geheel getal op en selecteer vervolgens de gewenste tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort). Met deze waarde wordt het interne Max-verouderde bedrag gedefinieerd dat wordt toegepast.
+
+- Als u de tijds eenheid instelt op uit, wordt deze functie uitgeschakeld. Een asset in de cache wordt niet meer geleverd dan de normale verloop tijd.
+
+**Standaard gedrag:** Twee minuten
+
+#### <a name="compatibility"></a>Compatibiliteit
+
+Als gevolg van de manier waarop de cache-instellingen worden bijgehouden, kan deze functie niet worden gekoppeld aan de volgende match-voor waarden:
+- Als getal
+- IP-adres van client
+- Cookie parameter
+- Cookie para meter regex
+- Land
+- Apparaat
+- Edge CNAME
+- Verwijzende domein
+- Letterlijke aanvraag header
+- Regex-aanvraag header
+- Joker teken voor aanvraag header
+- Verzoekmethode
+- Aanvraag schema
+- URL-query-letterlijke waarde
+- URL-query-regex
+- URL-query Joker teken
+- URL-query parameter
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="log-query-string"></a>Query reeks voor logboek
+
+**Doel:** Hiermee wordt bepaald of een query reeks wordt opgeslagen samen met de URL in de logboeken van de toegang.
+
+Waarde|Resultaat
+-|-
+Ingeschakeld|Hiermee staat u de opslag van query reeksen toe wanneer Url's worden opgenomen in een toegangs logboek. Als een URL geen query teken reeks bevat, heeft deze optie geen effect.
+Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is het negeren van query reeksen bij het opnemen van Url's in een Access-logboek.
+
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -906,16 +906,16 @@ Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is que
 
 ### <a name="maximum-keep-alive-requests"></a>Maximum aantal Keep-Alive-aanvragen
 
-**Doel:** Definieert het maximum aantal aanvragen voor een Keep-Alive-verbinding wordt gesloten.
+**Doel:** Hiermee definieert u het maximum aantal aanvragen voor een keep-alive-verbinding voordat het wordt gesloten.
 
-Als u het maximum aantal aanvragen op een lage waarde wordt afgeraden en kan leiden tot verminderde prestaties.
+Het instellen van het maximum aantal aanvragen voor een lage waarde wordt afgeraden en kan leiden tot verminderde prestaties.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Deze waarde als een geheel getal opgeven.
-- Geen komma's of punten in de opgegeven waarde.
+- Geef deze waarde op als geheel getal.
+- Neem geen komma's of punten op in de opgegeven waarde.
 
-**Standaardwaarde:** 10.000 aanvragen
+**Standaard waarde:** 10.000 aanvragen
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -923,39 +923,39 @@ Belangrijke informatie:
 
 ---
 
-### <a name="modify-client-request-header"></a>Client-aanvraagheader wijzigen
+### <a name="modify-client-request-header"></a>Header van client aanvraag wijzigen
 
-**Doel:** Elke aanvraag bevat een set aanvraagheaders waarin deze worden beschreven. Deze functie kan:
+**Doel:** Elke aanvraag bevat een set aanvraag headers waarmee deze wordt beschreven. Deze functie kan:
 
-- Toevoegen of de waarde die is toegewezen aan een aanvraagheader overschrijven. Als de opgegeven aanvraagheader niet bestaat, wordt klikt u vervolgens deze functie toegevoegd aan de aanvraag.
-- Een aanvraagheader verwijderen uit de aanvraag.
+- De waarde die is toegewezen aan een aanvraag header toevoegen of overschrijven. Als de opgegeven aanvraag header niet bestaat, wordt deze door deze functie toegevoegd aan de aanvraag.
+- Een aanvraag header uit de aanvraag verwijderen.
 
-Aanvragen die worden doorgestuurd naar een oorspronkelijke server weer de wijzigingen van deze functie.
+Aanvragen die worden doorgestuurd naar een originele server, worden weer gegeven in de wijzigingen die zijn aangebracht door deze functie.
 
-Een van de volgende acties kan worden uitgevoerd op een aanvraagheader:
+Een van de volgende acties kan worden uitgevoerd op een aanvraag header:
 
-Optie|Description|Voorbeeld
+Optie|Beschrijving|Voorbeeld
 -|-|-
-Toevoegen|De opgegeven waarde zal worden toegevoegd aan het einde van de bestaande waarde voor de aanvraag-header.|**Aanvraag-header-waarde (client):**<br/>Value1<br/>**Aanvraag-header-waarde (regelengine):**<br/>Value2 <br/>**Nieuwe aanvraagheader-waarde:** <br/>Value1Value2
-Overschrijven|De waarde van de aanvraag-header wordt worden ingesteld op de opgegeven waarde.|**Aanvraag-header-waarde (client):**<br/>Value1<br/>**Aanvraag-header-waarde (regelengine):**<br/>Value2<br/>**Nieuwe aanvraagheader-waarde:**<br/> Value2 <br/>
-Verwijderen|Hiermee verwijdert u de koptekst opgegeven aanvraag.|**Aanvraag-header-waarde (client):**<br/>Value1<br/>**Client-aanvraag-header-configuratie wijzigen:**<br/>Verwijder de aanvraagheader in kwestie.<br/>**Resultaat:**<br/>De opgegeven aanvraagheader niet doorgestuurd naar de oorspronkelijke server.
+Toevoegen|De opgegeven waarde wordt toegevoegd aan het einde van de bestaande waarde van de aanvraag header.|**Waarde van aanvraag header (client):**<br/>Value1<br/>**Waarde van aanvraag header (regel Engine):**<br/>Enzovoort <br/>**Nieuwe waarde van aanvraag header:** <br/>Value1Value2
+Overschrijven|De waarde van de aanvraag header wordt ingesteld op de opgegeven waarde.|**Waarde van aanvraag header (client):**<br/>Value1<br/>**Waarde van aanvraag header (regel Engine):**<br/>Enzovoort<br/>**Nieuwe waarde van aanvraag header:**<br/> Enzovoort <br/>
+Verwijderen|Hiermee verwijdert u de opgegeven aanvraag header.|**Waarde van aanvraag header (client):**<br/>Value1<br/>**Configuratie van de header van de client aanvraag wijzigen:**<br/>Verwijder de aanvraag header in de vraag.<br/>**Daardoor**<br/>De opgegeven aanvraag header wordt niet doorgestuurd naar de oorspronkelijke server.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Zorg ervoor dat de waarde die is opgegeven in de optie voor een exacte overeenkomst voor de gewenste aanvraagheader is.
-- Aanvraag is niet in aanmerking voor de identificatie van een koptekst genomen. Bijvoorbeeld, een van de volgende variaties van de `Cache-Control` header-naam kan worden gebruikt om te kunnen identificeren:
-    - cache-control
+- Zorg ervoor dat de waarde die is opgegeven in de optie name, overeenkomt met een exacte overeenkomst voor de gewenste aanvraag header.
+- Er wordt geen rekening gehouden met het doel om een header te identificeren. U kunt bijvoorbeeld een van de volgende variaties van de naam van de `Cache-Control` header gebruiken om deze te identificeren:
+    - Cache-Control
     - CACHE-CONTROL
     - cachE-Control
-- Wanneer u een headernaam opgeeft, gebruikt u alleen alfanumerieke tekens, streepjes of onderstrepingstekens bevatten.
-- Verwijderen van een koptekst wordt voorkomen dat deze wordt doorgestuurd naar een oorspronkelijke server door de POP's.
+- Als u een header naam opgeeft, gebruikt u alleen alfanumerieke tekens, streepjes of onderstrepingen.
+- Als u een koptekst verwijdert, voor komt u dat deze wordt doorgestuurd naar een originele server door de Pop's.
 - De volgende headers zijn gereserveerd en kunnen niet worden gewijzigd door deze functie:
-    - doorgestuurd
+    - aanvrag
     - host
-    - via
+    - kopen
     - waarschuwing
-    - x doorgestuurd voor
-    - Alle headernamen die met "x-EG beginnen" zijn gereserveerd.
+    - x-doorgestuurd-voor
+    - Alle header-namen die beginnen met ' x-EC ' zijn gereserveerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -963,47 +963,47 @@ Belangrijke informatie:
 
 ---
 
-### <a name="modify-client-response-header"></a>Client-Reactieheader wijzigen
+### <a name="modify-client-response-header"></a>Reactie header van client wijzigen
 
-Elke reactie bevat een set van antwoordheaders waarin deze worden beschreven. Deze functie kan:
+Elk antwoord bevat een set antwoord headers waarmee deze wordt beschreven. Deze functie kan:
 
-- Toevoegen of de waarde die is toegewezen aan een response-header overschreven. Als de opgegeven antwoord-header niet bestaat, wordt klikt u vervolgens deze functie toegevoegd aan het antwoord.
-- Verwijdert een antwoordheader van het antwoord.
+- De waarde die is toegewezen aan een antwoord header toevoegen of overschrijven. Als de opgegeven antwoord header niet bestaat, wordt deze door deze functie toegevoegd aan het antwoord.
+- Een reactie header uit het antwoord verwijderen.
 
-Standaard worden de antwoord-headerwaarden worden gedefinieerd door een oorspronkelijke-server en de POP's.
+Standaard worden de waarden van de antwoord header gedefinieerd door een bron server en door de Pop's.
 
-Een van de volgende acties kan worden uitgevoerd op een antwoordheader:
+Een van de volgende acties kan worden uitgevoerd op een reactie header:
 
-Optie|Description|Voorbeeld
+Optie|Beschrijving|Voorbeeld
 -|-|-
-Toevoegen|De opgegeven waarde zal worden toegevoegd aan het einde van de waarde van de bestaande antwoord-header.|**Antwoord-header-waarde (client):**<br />Value1<br/>**Antwoord-header-waarde (regelengine):**<br/>Value2<br/>**Nieuwe waarde voor antwoord-header:**<br/>Value1Value2
-Overschrijven|De waarde van de antwoord-header wordt worden ingesteld op de opgegeven waarde.|**Antwoord-header-waarde (client):**<br/>Value1<br/>**Antwoord-header-waarde (regelengine):**<br/>Value2 <br/>**Nieuwe waarde voor antwoord-header:**<br/>Value2 <br/>
-Verwijderen|Hiermee verwijdert u de opgegeven antwoord-header.|**Antwoord-header-waarde (client):**<br/>Value1<br/>**Client antwoord-header-configuratie wijzigen:**<br/>Verwijder de betreffende response-header.<br/>**Resultaat:**<br/>De opgegeven antwoord-header niet doorgestuurd naar de aanvrager.
+Toevoegen|De opgegeven waarde wordt toegevoegd aan het einde van de bestaande waarde van de antwoord header.|**Waarde van de antwoord header (client):**<br />Value1<br/>**Waarde van de reactie header (regel Engine):**<br/>Enzovoort<br/>**Nieuwe waarde voor de reactie header:**<br/>Value1Value2
+Overschrijven|De waarde van de antwoord header wordt ingesteld op de opgegeven waarde.|**Waarde van de antwoord header (client):**<br/>Value1<br/>**Waarde van de reactie header (regel Engine):**<br/>Enzovoort <br/>**Nieuwe waarde voor de reactie header:**<br/>Enzovoort <br/>
+Verwijderen|Hiermee verwijdert u de opgegeven reactie header.|**Waarde van de antwoord header (client):**<br/>Value1<br/>**Configuratie van de client antwoord header wijzigen:**<br/>Verwijder de antwoord header in de vraag.<br/>**Daardoor**<br/>De opgegeven antwoord header wordt niet doorgestuurd naar de aanvrager.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- Zorg ervoor dat de waarde die is opgegeven in de optie voor een exacte overeenkomst voor de gewenste response-header.
-- Aanvraag is niet in aanmerking voor de identificatie van een koptekst genomen. Bijvoorbeeld, een van de volgende variaties van de `Cache-Control` header-naam kan worden gebruikt om te kunnen identificeren:
-    - cache-control
+- Zorg ervoor dat de waarde die is opgegeven in de optie name, een exacte overeenkomst voor de gewenste reactie header is.
+- Er wordt geen rekening gehouden met het doel om een header te identificeren. U kunt bijvoorbeeld een van de volgende variaties van de naam van de `Cache-Control` header gebruiken om deze te identificeren:
+    - Cache-Control
     - CACHE-CONTROL
     - cachE-Control
-- Verwijderen van een koptekst voorkomt u dat het wordt doorgestuurd naar de aanvrager.
+- Als u een koptekst verwijdert, kan deze niet worden doorgestuurd naar de aanvrager.
 - De volgende headers zijn gereserveerd en kunnen niet worden gewijzigd door deze functie:
-    - accept-encoding
-    - Leeftijd
+    - accepteren-coderen
+    - leeftijd
     - verbinding
     - content-encoding
     - content-length
     - content-range
     - date
     - server
-    - trailer
-    - transfer-encoding
-    - Een upgrade uitvoert
-    - variëren
-    - via
+    - aanhangwagen
+    - overdracht-encoding
+    - upgrades
+    - variatie
+    - kopen
     - waarschuwing
-    - Alle headernamen die met "x-EG beginnen" zijn gereserveerd.
+    - Alle header-namen die beginnen met ' x-EC ' zijn gereserveerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1011,36 +1011,18 @@ Belangrijke informatie:
 
 ---
 
-### <a name="partial-cache-sharing"></a>Partial Cache Sharing
+### <a name="partial-cache-sharing"></a>Delen van cache gedeeltelijk
 
-**Doel:** Bepaalt of een aanvraag voor gedeeltelijk in de cache inhoud kunt genereren.
+**Doel:** Hiermee wordt bepaald of een aanvraag gedeeltelijk in de cache opgeslagen inhoud kan genereren.
 
-Deze gedeeltelijke cache kan vervolgens worden gebruikt om te voldoen aan nieuwe aanvragen voor die inhoud totdat de gevraagde inhoud is volledig in de cache opgeslagen.
+Deze gedeeltelijke cache kan vervolgens worden gebruikt om te voldoen aan nieuwe aanvragen voor die inhoud totdat de aangevraagde inhoud volledig in de cache is opgeslagen.
 
-Value|Resultaat
+Waarde|Resultaat
 -|-
-Enabled|Gedeeltelijk in de cache inhoud kunnen worden gegenereerd door aanvragen.
-Uitgeschakeld|Aanvragen kunnen alleen genereren voor een volledig in de cache opgeslagen versie van de aangevraagde inhoud.
+Ingeschakeld|Aanvragen kunnen gedeeltelijk in de cache opgeslagen inhoud genereren.
+Uitgeschakeld|Aanvragen kunnen alleen een volledig in cache opgeslagen versie van de aangevraagde inhoud genereren.
 
-**Standaardgedrag:** Uitgeschakeld.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="prevalidate-cached-content"></a>De inhoud in cache prevalidate
-
-**Doel:** Hiermee bepaalt u of de inhoud in cache in aanmerking voor vroege hervalidatie komen, voordat de TTL verloopt.
-
-De hoeveelheid tijd vóór de vervaldatum van de gevraagde inhoud TTL gedurende welke het komen in aanmerking voor vroege hervalidatie definiëren.
-
-Belangrijke informatie:
-
-- 'Uit' selecteren als de tijdseenheid hervalidatie vereist om te worden toegepast na de inhoud in cache is TTL verlopen. Tijd mag niet worden opgegeven en wordt genegeerd.
-
-**Standaardgedrag:** Uitschakelen. Hervalidatie kan alleen plaatsvinden nadat de inhoud in cache-TTL is verlopen.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1048,26 +1030,44 @@ Belangrijke informatie:
 
 ---
 
-### <a name="proxy-special-headers"></a>Speciale proxy-kopteksten
+### <a name="prevalidate-cached-content"></a>Inhoud in cache voorvalideren
 
-**Doel:** Definieert de set [Verizon-specifieke HTTP-aanvraagheaders](cdn-verizon-http-headers.md) die, van een POP worden doorgestuurd naar een oorspronkelijke server.
+**Doel:** Hiermee wordt bepaald of inhoud in de cache in aanmerking komt voor eerdere hervalidaties voordat de TTL verloopt.
 
-Belangrijke informatie:
+Definieer de hoeveelheid tijd vóór de verval datum van de TTL van de aangevraagde inhoud, zodat deze in aanmerking komt voor eerdere hervalidaties.
 
-- Elk CDN-specifieke aanvraagheader gedefinieerd in deze functie wordt doorgestuurd naar een oorspronkelijke server. Uitgesloten headers zijn niet doorgestuurd.
-- Als u wilt voorkomen dat een aanvraagheader CDN-specifieke worden doorgestuurd, door deze te verwijderen uit spaties gescheiden lijst in het headerveld-lijst.
+Belang rijke informatie:
 
-De volgende HTTP-headers zijn opgenomen in de lijst met:
+- Als u ' uit ' selecteert, moet de tijds eenheid opnieuw worden ingesteld om te worden uitgevoerd nadat de TTL van de inhoud in de cache is verlopen. De tijd mag niet worden opgegeven en wordt genegeerd.
+
+**Standaard gedrag:** Office. Hervalidatie mag alleen plaatsvinden nadat de TTL van de inhoud in de cache is verlopen.
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="proxy-special-headers"></a>Proxy-speciale headers
+
+**Doel:** Hiermee wordt de set met [Verizon-specifieke HTTP-aanvraag headers](cdn-verizon-http-headers.md) gedefinieerd die worden doorgestuurd van een pop naar een bron server.
+
+Belang rijke informatie:
+
+- Elke CDN-specifieke aanvraag header die in deze functie is gedefinieerd, wordt doorgestuurd naar een originele server. Uitgesloten headers worden niet doorgestuurd.
+- Als u wilt voor komen dat een CDN-specifieke aanvraag header wordt doorgestuurd, verwijdert u deze uit een lijst met door spaties gescheiden waarden in het veld koptekst.
+
+De volgende HTTP-headers zijn opgenomen in de standaard lijst:
 - Via
-- X doorgestuurd voor
-- X-Forwarded-Proto
+- X-doorgestuurd-voor
+- X-doorgestuurd-proto
 - X-Host
 - X-Midgress
 - X-Gateway-List
-- X-EC-Name
+- X-EG-naam
 - Host
 
-**Standaardgedrag:** Alle CDN-specifieke aanvraagheaders doorgestuurd naar de oorspronkelijke server.
+**Standaard gedrag:** Alle CDN-specifieke aanvraag headers worden doorgestuurd naar de oorspronkelijke server.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1075,42 +1075,20 @@ De volgende HTTP-headers zijn opgenomen in de lijst met:
 
 ---
 
-### <a name="refresh-zero-byte-cache-files"></a>Bestanden opslaan in Cache nul bytes vernieuwen
+### <a name="refresh-zero-byte-cache-files"></a>Cache bestanden met nul bytes vernieuwen
 
-**Doel:** Bepaalt hoe van de client van een HTTP-aanvraag voor een asset 0-byte-cache door de POP's worden verwerkt.
+**Doel:** Hiermee wordt bepaald hoe de aanvraag van een HTTP-client voor een cache-Asset van 0 bytes door de Pop's wordt verwerkt.
 
 Geldige waarden zijn:
 
 Waarde|Resultaat
 --|--
-Enabled|Zorgt ervoor dat de POP opnieuw ophalen van de activa van de oorspronkelijke server.
-Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is om te fungeren voor geldige cache activa op aanvraag.
+Ingeschakeld|Zorgt ervoor dat de POP de Asset opnieuw ophaalt van de oorspronkelijke server.
+Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is het uitvoeren van geldige cache-assets op aanvraag.
 
-Deze functie is niet vereist voor de juiste caching en levering van inhoud, maar zijn mogelijk nuttig zijn als tijdelijke oplossing. Dynamische inhoud generatoren van bronservers kunnen bijvoorbeeld per ongeluk resulteren in 0-byte-antwoorden aan de POP's worden verzonden. Deze typen antwoorden zijn meestal in cache opgeslagen door de POP's. Als u weet dat een 0-byte-antwoord nooit een geldige reactie voor dergelijke inhoud is, deze functie kunt voorkomen dat deze typen van de activa die worden geleverd aan uw clients.
+Deze functie is niet vereist voor correcte caching en levering van inhoud, maar kan nuttig zijn als tijdelijke oplossing. Dynamische inhouds generator op originele servers kan bijvoorbeeld per ongeluk leiden tot 0-byte-antwoorden die naar de Pop's worden verzonden. Deze typen reacties worden meestal in de cache opgeslagen door de Pop's. Als u weet dat een antwoord van 0-bytes nooit een geldig antwoord voor dergelijke inhoud is, kan deze functie verhinderen dat deze typen assets aan uw clients worden geleverd.
 
-**Standaardgedrag:** Uitgeschakeld.
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="set-cacheable-status-codes"></a>Statuscodes gecachet kan worden ingesteld
-
-**Doel:** Definieert de set statuscodes die tot de inhoud in cache leiden kunnen.
-
-Standaard is opslaan in cache alleen ingeschakeld voor antwoorden op 200 OK.
-
-Een set door spaties gescheiden van de gewenste statuscodes definiëren.
-
-Belangrijke informatie:
-
-- De functie genegeerd authenticiteit No-Cache inschakelen. Als deze functie niet is ingeschakeld, 200 OK antwoorden kunnen niet worden opgeslagen in het cachegeheugen.
-- De set met geldige waarden voor deze functie zijn: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, en 505.
-- Deze functie kan niet worden gebruikt om uit te schakelen in cache opslaan van antwoorden die een 200 OK statuscode genereren.
-
-**Standaardgedrag:** Alleen voor antwoorden die een 200 OK statuscode genereren is cache ingeschakeld.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1118,25 +1096,47 @@ Belangrijke informatie:
 
 ---
 
-### <a name="set-client-ip-custom-header"></a>Instellen van aangepaste IP-Header Client
+### <a name="set-cacheable-status-codes"></a>Cacheable status codes instellen
 
-**Doel:** Hiermee voegt u een aangepaste header die de aanvragende client op IP-adres aan de aanvraag identificeert toe.
+**Doel:** Hiermee definieert u de set status codes die kunnen resulteren in inhoud in de cache.
 
-De optie voor Header-naam definieert de naam van de aangepaste aanvraagheader waar het IP-adres van de client wordt opgeslagen.
+Caching is standaard alleen ingeschakeld voor 200 OK-antwoorden.
 
-Met deze functie kunt u een klant bronserver om erachter te komen client-IP-adressen via een aangepaste aanvraagheader. Als de aanvraag is uitgevoerd uit de cache, klikt u vervolgens de oorspronkelijke server wordt niet worden op de hoogte van de IP-adres van de client. Daarom is het aanbevolen dat deze functie worden gebruikt met activa die worden niet in cache opgeslagen.
+Definieer een door spaties gescheiden set van de gewenste status codes.
 
-Zorg ervoor dat de naam van de opgegeven header komt niet overeen met een van de volgende namen:
+Belang rijke informatie:
 
-- Naam van de aanvraag voor Standard-header. Een lijst met de naam van de standard-header kan worden gevonden in [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
-- Naam van de gereserveerde header:
-    - doorgestuurd voor
+- Schakel de functie oorsprong zonder cache negeren in. Als deze functie niet is ingeschakeld, worden niet-200 OK-antwoorden mogelijk niet in de cache opgeslagen.
+- De set geldige status codes voor deze functie zijn: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 en 505.
+- Deze functie kan niet worden gebruikt om caching uit te scha kelen voor antwoorden die een status code van 200 OK genereren.
+
+**Standaard gedrag:** Caching is alleen ingeschakeld voor antwoorden die een status code van 200 OK genereren.
+
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
+
+</br>
+
+---
+
+### <a name="set-client-ip-custom-header"></a>Aangepaste client-IP-header instellen
+
+**Doel:** Hiermee wordt een aangepaste header toegevoegd waarmee de client wordt geïdentificeerd op basis van het IP-adres van de aanvraag.
+
+De optie header naam definieert de naam van de aangepaste aanvraag header waarin het IP-adres van de client wordt opgeslagen.
+
+Met deze functie kan een klant bron server client-IP-adressen vinden via een aangepaste aanvraag header. Als de aanvraag afkomstig is uit de cache, wordt de oorspronkelijke server niet op de hoogte gesteld van het IP-adres van de client. Daarom is het raadzaam deze functie te gebruiken met activa die niet in de cache zijn opgeslagen.
+
+Zorg ervoor dat de opgegeven header naam niet overeenkomt met een van de volgende namen:
+
+- Namen van de standaard aanvraag header. Een lijst met namen van standaard headers vindt u in [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+- Gereserveerde header-namen:
+    - doorgestuurd: voor
     - host
-    - variëren
-    - via
+    - variatie
+    - kopen
     - waarschuwing
-    - x doorgestuurd voor
-    - Alle headernamen die met "x-EG beginnen" zijn gereserveerd.
+    - x-doorgestuurd-voor
+    - Alle header-namen die beginnen met ' x-EC ' zijn gereserveerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1144,35 +1144,16 @@ Zorg ervoor dat de naam van de opgegeven header komt niet overeen met een van de
 
 ---
 
-### <a name="stale-content-delivery-on-error"></a>Verouderde Contentlevering bij fout
+### <a name="stale-content-delivery-on-error"></a>Verouderde inhouds levering bij fout
 
-**Doel:** Bepaalt of verlopen in de cache inhoud worden geleverd als een fout optreedt tijdens de hervalidatie van de cache of bij het ophalen van de aangevraagde inhoud op de bronserver van de klant.
+**Doel:** Hiermee wordt bepaald of verlopen inhoud in de cache wordt bezorgd als er een fout optreedt tijdens de hervalidatie van de cache of wanneer de aangevraagde inhoud wordt opgehaald van de bron server van de klant.
 
-Value|Resultaat
+Waarde|Resultaat
 -|-
-Enabled|Verouderde content wordt geleverd aan de aanvrager wanneer een fout tijdens een verbinding met een oorspronkelijke server optreedt.
-Uitgeschakeld|Fout bij de oorspronkelijke server wordt doorgestuurd naar de aanvrager.
+Ingeschakeld|Verouderde inhoud wordt aan de aanvrager geleverd als er een fout optreedt tijdens een verbinding met een bron server.
+Uitgeschakeld|De fout van de bron server wordt doorgestuurd naar de aanvrager.
 
-**Standaardgedrag:** Uitgeschakeld
-
-[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
----
-
-### <a name="stale-while-revalidate"></a>Tijdens het Revalidate verlopen
-
-**Doel:** Verbetert de prestaties doordat de POP's voor het bieden van verouderde inhoud voor de aanvrager terwijl hervalidatie doorgevoerd wordt.
-
-Belangrijke informatie:
-
-- Er is het gedrag van deze functie afhankelijk van de geselecteerde tijdseenheid.
-    - **Tijdseenheid:** Geef een tijdsduur en selecteer een tijdseenheid (bijvoorbeeld seconden, minuten, uren, enzovoort) om toe te staan van verouderde contentlevering. Dit type installatieprogramma kunt het CDN om uit te breiden, de hoeveelheid tijd die dit kan worden bezorgd inhoud voordat vereist validatie op basis van de volgende formule: **TTL** + **tijdens Revalidate tijd verlopen**
-    - **Uitgeschakeld:** Selecteer 'Uit' moet worden gevalideerd voordat een aanvraag voor verouderde inhoud kan worden geleverd.
-        - Geef een lengte van de tijd niet omdat deze niet van toepassing is en worden genegeerd.
-
-**Standaardgedrag:** Uitschakelen. Hervalidatie moet plaatsvinden voordat de aangevraagde inhoud kan worden weergegeven.
+**Standaard gedrag:** Geblokkeerd
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1180,26 +1161,45 @@ Belangrijke informatie:
 
 ---
 
-### <a name="token-auth"></a>Auth-token
+### <a name="stale-while-revalidate"></a>Verouderd tijdens opnieuw valideren
 
-**Doel:** Hiermee bepaalt u of op tokens gebaseerde verificatie wordt toegepast op een aanvraag.
+**Doel:** Verbetert de prestaties doordat de Pop's verouderde inhoud kunnen leveren aan de aanvrager terwijl er een hervalidatie plaatsvindt.
 
-Als verificatie op basis van het Token is ingeschakeld, wordt alleen aanvragen die een versleutelde beveiligingstoken bieden en te voldoen aan de vereisten die door dit token opgegeven worden herkend.
+Belang rijke informatie:
 
-De versleutelingssleutel die wordt gebruikt om te coderen en decoderen token waarden wordt bepaald door de primaire sleutel en de sleutel van de back-up-opties op de pagina Token verificatie. Houd er rekening mee dat sleutels voor Documentversleuteling platform-specifiek zijn.
+- Het gedrag van deze functie is afhankelijk van de geselecteerde tijds eenheid.
+    - **Tijds eenheid:** Geef een tijds duur op en selecteer een tijds eenheid (bijvoorbeeld seconden, minuten, uren, enzovoort) om verouderde levering van inhoud toe te staan. Met dit type installatie kan het CDN de tijds duur verlengen die inhoud kan leveren voordat er validatie nodig is volgens de volgende formule: **TTL** + **verouderd tijdens** hervalidatie van tijd
+    - **Uit:** Selecteer uit om hervalidatie te vereisen voordat een aanvraag voor verouderde inhoud kan worden geleverd.
+        - Geef geen tijds duur op omdat deze niet van toepassing is en wordt genegeerd.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Office. Er moet een hervalidatie worden uitgevoerd voordat de aangevraagde inhoud kan worden geleverd.
 
-Deze functie heeft voorrang op de meeste functies met uitzondering van de functie voor herschrijven van URL's.
+[Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
-Value | Resultaat
+</br>
+
+---
+
+### <a name="token-auth"></a>Token verificatie
+
+**Doel:** Hiermee wordt bepaald of op tokens gebaseerde verificatie wordt toegepast op een aanvraag.
+
+Als verificatie op basis van tokens is ingeschakeld, worden alleen aanvragen geaccepteerd die een versleuteld token leveren en voldoen aan de vereisten die door dat token zijn opgegeven.
+
+De versleutelings sleutel die wordt gebruikt om token waarden te versleutelen en ontsleutelen, wordt bepaald door de primaire sleutel en de opties voor de back-upsleutel op de token auth-pagina. Houd er wel van uit dat versleutelings sleutels specifiek zijn voor het platform.
+
+**Standaard gedrag:** Geblokkeerd.
+
+Deze functie heeft voor rang op de meeste functies, met uitzonde ring van de functie voor het herschrijven van de URL.
+
+Waarde | Resultaat
 ------|---------
-Enabled | Beveiligt de gevraagde inhoud met verificatie op basis van tokens. Alleen aanvragen van clients die Geef een geldig token en voldoen aan de vereisten wordt van kracht. FTP-transacties zijn uitgesloten van verificatie op basis van tokens.
-Uitgeschakeld| Hiermee herstelt u het standaardgedrag. Het standaardgedrag is om toe te staan van uw tokens gebaseerde authenticatie-configuratie om te bepalen of een aanvraag wordt beveiligd.
+Ingeschakeld | Beveiligt de aangevraagde inhoud met verificatie op basis van tokens. Alleen aanvragen van clients die een geldig token leveren en voldoen aan de vereisten, worden gehonoreerd. FTP-trans acties worden uitgesloten van verificatie op basis van tokens.
+Uitgeschakeld| Hiermee herstelt u het standaard gedrag. Het standaard gedrag is om de verificatie configuratie op basis van tokens toe te staan om te bepalen of een aanvraag wordt beveiligd.
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Gebruik geen Token verificatie met een voorwaarde altijd.
+Gebruik geen token verificatie met de voor waarde altijd overeenkomen.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1207,50 +1207,50 @@ Gebruik geen Token verificatie met een voorwaarde altijd.
 
 ---
 
-### <a name="token-auth-denial-code"></a>Weigering van token autorisatiecode
+### <a name="token-auth-denial-code"></a>Weigerings code voor token auth
 
-**Doel:** Bepaalt het type van de reactie die aan een gebruiker wordt geretourneerd wanneer een aanvraag wordt geweigerd vanwege de verificatie op basis van tokens.
+**Doel:** Hiermee wordt het type reactie bepaald dat wordt geretourneerd door een gebruiker wanneer een aanvraag wordt geweigerd vanwege verificatie op basis van tokens.
 
-De beschikbare responscodes worden weergegeven in de volgende tabel.
+De beschik bare respons codes worden in de volgende tabel weer gegeven.
 
-Antwoordcode|De naam van de reactie|Description
+Antwoord code|Antwoord naam|Beschrijving
 -------------|-------------|--------
-301|Permanent verplaatst|Niet-geautoriseerde gebruikers leidt deze statuscode naar de URL die is opgegeven in de Location-header.
-302|Gevonden|Niet-geautoriseerde gebruikers leidt deze statuscode naar de URL die is opgegeven in de Location-header. Deze statuscode is de standaardmethode van het uitvoeren van een omleiding.
-307|Tijdelijke omleiding|Niet-geautoriseerde gebruikers leidt deze statuscode naar de URL die is opgegeven in de Location-header.
-401|Niet geautoriseerd|Deze statuscode combineren met de reactieheader WWW-verificatie, kunt u een gebruiker voor de verificatie wordt gevraagd.
-403|Verboden|Dit bericht is de standaard 403 verboden statusbericht dat een onbevoegde gebruiker ziet wanneer u probeert te krijgen tot beveiligde inhoud.
-404|Bestand is niet gevonden|Deze statuscode geeft aan dat de HTTP-client kan communiceren met de server is, maar de aangevraagde inhoud is niet gevonden.
+301|Permanent verplaatst|Met deze status code worden niet-gemachtigde gebruikers omgeleid naar de URL die is opgegeven in de locatie-header.
+302|Gegeven|Met deze status code worden niet-gemachtigde gebruikers omgeleid naar de URL die is opgegeven in de locatie-header. Deze status code is de industrie standaard methode voor het uitvoeren van een omleiding.
+307|Tijdelijke omleiding|Met deze status code worden niet-gemachtigde gebruikers omgeleid naar de URL die is opgegeven in de locatie-header.
+401|Niet geautoriseerd|Door deze status code te combi neren met de reactie header WWW-Authenticated kunt u een gebruiker vragen om verificatie.
+403|Verboden|Dit bericht is het standaard status bericht 403 verboden dat een niet-gemachtigde gebruiker te zien krijgt bij het openen van beveiligde inhoud.
+404|Kan het bestand niet vinden|Deze status code geeft aan dat de HTTP-client kan communiceren met de server, maar de aangevraagde inhoud is niet gevonden.
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Gebruik geen Token autorisatiecode denial-of met een voorwaarde altijd. Gebruik in plaats daarvan de **aangepaste denial-of verwerking** sectie de **Token Authentication** pagina van de **beheren** portal. Zie voor meer informatie, [beveiligen van Azure CDN-assets met tokenverificatie](cdn-token-auth.md).
+Gebruik geen code voor de weigerings verificatie van tokens met een voor waarde altijd overeenkomen. In plaats daarvan gebruikt u de sectie voor het **verwerken van aangepaste weigering** op de pagina **token verificatie** van de portal **beheren** . Zie [Azure CDN-assets beveiligen met token verificatie](cdn-token-auth.md)voor meer informatie.
 
 #### <a name="url-redirection"></a>URL-omleiding
 
-Deze functie biedt ondersteuning voor URL-omleiding naar een door de gebruiker gedefinieerde URL wanneer deze is geconfigureerd voor een statuscode 3xx retourneren. Deze door de gebruiker gedefinieerde URL kan worden opgegeven met de volgende stappen uit:
+Deze functie ondersteunt URL-omleiding naar een door de gebruiker gedefinieerde URL wanneer deze is geconfigureerd om een 3xx-status code te retour neren. Deze door de gebruiker gedefinieerde URL kan worden opgegeven door de volgende stappen uit te voeren:
 
-1. Selecteer een antwoordcode 3xx voor de Token autorisatiecode denial-of-functie.
-2. Selecteer "Locatie" in de naam van de optionele Header-optie.
-3. De optionele Header-waarde-optie instellen op de gewenste URL.
+1. Selecteer een 3xx-respons code voor de functie code voor Denial-en-Token verificatie.
+2. Selecteer locatie in de optie optionele header naam.
+3. Stel de optie optionele header-waarde in op de gewenste URL.
 
-Als een URL is niet gedefinieerd voor een statuscode 3xx, wordt de pagina standaardreactie voor een statuscode 3xx worden geretourneerd naar de gebruiker.
+Als er geen URL is gedefinieerd voor een 3xx-status code, wordt de standaard reactie pagina voor een 3xx-status code geretourneerd aan de gebruiker.
 
-URL-omleiding is alleen van toepassing voor 3xx responscodes.
+URL-omleiding is alleen van toepassing op 3xx-antwoord codes.
 
-De optie optionele Header-waarde ondersteunt alfanumerieke tekens, aanhalingstekens en spaties.
+De optie voor de optionele header-waarde ondersteunt alfanumerieke tekens, citaten en spaties.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Verificatie
 
-Deze functie ondersteunt de mogelijkheid om op te nemen van de WWW-Authenticate-header reageren op een niet-gemachtigde aanvraag voor inhoud die is beveiligd door verificatie op basis van tokens. Als de WWW-Authenticate-header is ingesteld op 'basic' in de configuratie, wordt klikt u vervolgens de niet-gemachtigde gebruiker gevraagd referenties.
+Deze functie biedt ondersteuning voor de mogelijkheid om de header WWW-Authenticate toe te voegen bij het reageren op een niet-geautoriseerde aanvraag voor inhoud die is beveiligd met verificatie op basis van tokens. Als de WWW-Authenticate-header is ingesteld op ' Basic ' in uw configuratie, wordt de niet-geautoriseerde gebruiker gevraagd om de account referenties op te vragen.
 
-De bovenstaande configuratie kan worden bereikt door de volgende stappen uit:
+De bovenstaande configuratie kan worden bereikt door de volgende stappen uit te voeren:
 
-1. Selecteer '401' als de responscode voor de Token autorisatiecode denial-of-functie.
-2. Selecteer 'WWW ' verifiëren in de naam van de optionele Header-optie.
-3. Stel de optie optionele Header-waarde voor 'basic'.
+1. Selecteer "401" als de antwoord code voor de functie code voor Denial-en-Token-auth.
+2. Selecteer WWW-authenticatie in de optie optionele header naam.
+3. Stel de optie optionele header waarde in op ' Basic '.
 
-De WWW-Authenticate-header is alleen van toepassing voor 401-responscodes.
+De WWW-Authenticate-header is alleen van toepassing op 401-antwoord codes.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1258,11 +1258,11 @@ De WWW-Authenticate-header is alleen van toepassing voor 401-responscodes.
 
 ---
 
-### <a name="token-auth-ignore-url-case"></a>Token Authentication URL hoofdlettergevoeligheid negeren
+### <a name="token-auth-ignore-url-case"></a>URL-Case negeren van token verificatie
 
-**Doel:** Bepaalt of de URL-vergelijkingen gemaakt door verificatie op basis van tokens hoofdlettergevoelig zijn.
+**Doel:** Hiermee wordt bepaald of URL-vergelijkingen die worden uitgevoerd door verificatie op basis van tokens hoofdletter gevoelig zijn.
 
-De parameters die worden beïnvloed door deze functie zijn:
+De para meters die worden beïnvloed door deze functie zijn:
 
 - ec_url_allow
 - ec_ref_allow
@@ -1272,10 +1272,10 @@ Geldige waarden zijn:
 
 Waarde|Resultaat
 ---|----
-Enabled|Zorgt ervoor dat de POP hoofdlettergevoeligheid niet bij het vergelijken van URL's voor de parameters voor verificatie op basis van tokens.
-Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is voor de URL-vergelijkingen voor tokenverificatie zijn hoofdlettergevoelig.
+Ingeschakeld|Zorgt ervoor dat de POP het hoofdletter gebruik negeert bij het vergelijken van Url's voor verificatie parameters op basis van tokens.
+Uitgeschakeld|Hiermee herstelt u het standaard gedrag. Het standaard gedrag is voor URL-vergelijkingen voor token verificatie om hoofdletter gevoelig te zijn.
 
-**Standaardgedrag:** Uitgeschakeld.
+**Standaard gedrag:** Geblokkeerd.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1283,22 +1283,22 @@ Uitgeschakeld|Hiermee herstelt u het standaardgedrag. Het standaardgedrag is voo
 
 ---
 
-### <a name="token-auth-parameter"></a>De Auth Parameter-token
+### <a name="token-auth-parameter"></a>Token auth-para meter
 
-**Doel:** Hiermee bepaalt u of de queryreeks-parameter op tokens gebaseerde verificatie moet worden gewijzigd.
+**Doel:** Hiermee wordt bepaald of de naam van de op tokens gebaseerde verificatie query teken reeks parameter moet worden gewijzigd.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- De optie waarde definieert de parameternaam van de query-tekenreeks waarmee een token kan worden opgegeven.
-- De optie waarde kan niet worden ingesteld op "ec_token."
-- Zorg ervoor dat de naam die is gedefinieerd in de optie waarde alleen geldige URL-tekens bevat.
+- De waarde optie definieert de naam van de query teken reeks parameter waarlangs een token kan worden opgegeven.
+- De optie waarde kan niet worden ingesteld op ec_token.
+- Zorg ervoor dat de naam die in de optie waarde is gedefinieerd, alleen geldige URL-tekens bevat.
 
 Waarde|Resultaat
 ----|----
-Enabled|De optie waarde definieert de parameternaam van de query-tekenreeks waarmee de tokens moeten worden gedefinieerd.
-Uitgeschakeld|Een token worden opgegeven als een niet-gedefinieerde queryreeks-parameter in de aanvraag-URL.
+Ingeschakeld|De waarde optie definieert de naam van de query teken reeks parameter waarlangs de tokens moeten worden gedefinieerd.
+Uitgeschakeld|Een token kan worden opgegeven als een niet-gedefinieerde query teken reeks parameter in de aanvraag-URL.
 
-**Standaardgedrag:** Uitgeschakeld. Een token worden opgegeven als een niet-gedefinieerde queryreeks-parameter in de aanvraag-URL.
+**Standaard gedrag:** Geblokkeerd. Een token kan worden opgegeven als een niet-gedefinieerde query teken reeks parameter in de aanvraag-URL.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1308,41 +1308,41 @@ Uitgeschakeld|Een token worden opgegeven als een niet-gedefinieerde queryreeks-p
 
 ### <a name="url-redirect"></a>URL-omleiding
 
-**Doel:** Leidt aanvragen via de Location-header.
+**Doel:** Stuurt aanvragen via de locatie header.
 
-De configuratie van deze functie is vereist voor het instellen van de volgende opties:
+Voor de configuratie van deze functie moet u de volgende opties instellen:
 
-Optie|Description
+Optie|Beschrijving
 -|-
-Code|Selecteer de responscode die worden geretourneerd aan de aanvrager.
-Bron & patroon| Deze instellingen geven aan een aanvraag-URI-patroon dat het type aanvragen dat kan worden omgeleid. Alleen aanvragen waarvan de URL voldoet aan beide van de volgende criteria worden omgeleid: <br/> <br/> **Bron (of inhoud toegangspunt):** Selecteer een relatief pad die een oorspronkelijke server identificeert. Dit pad wordt de _/XXXX/_ sectie en de naam van uw eindpunt. <br/><br/> **Bron (patroon):** Een patroon dat aanvragen worden aangeduid met het relatieve pad moet worden gedefinieerd. Dit patroon van gewone expressie moet een pad dat begint direct na de toegang tot de eerder geselecteerde inhoud verwijzen (Zie hierboven) definiëren. <br/> -Zorg ervoor dat de aanvraag-URI (dat wil zeggen, bron & patroon) eerder gedefinieerde criteria niet conflicteert met alle criteria voor overeenkomst gedefinieerd voor deze functie. <br/> -Geef een patroon; Als u een lege waarde als het patroon, worden alle tekenreeksen worden vergeleken.
-Bestemming| Definieer de URL waarnaar de bovenstaande aanvragen worden omgeleid. <br/><br/> Dynamisch bouw deze URL met behulp van: <br/> -Een reguliere-expressiepatroon <br/>- [HTTP-variabelen](cdn-http-variables.md) <br/><br/> Vervang de waarden die zijn vastgelegd in het bron-patroon in de doel-patroon met $_n_ waar _n_ geeft een waarde door de volgorde waarin deze is vastgelegd. $1 vertegenwoordigt bijvoorbeeld de eerste waarde die is vastgelegd in het bron-patroon, terwijl $2 geeft aan dat de tweede waarde. <br/>
+Code|Selecteer de antwoord code die wordt geretourneerd naar de aanvrager.
+Patroon van bron &| Deze instellingen definiëren een URI-patroon voor aanvragen dat het type aanvragen identificeert dat kan worden omgeleid. Alleen aanvragen waarvan de URL voldoet aan de volgende criteria, worden omgeleid: <br/> <br/> **Bron (of inhouds toegangs punt):** Selecteer een relatief pad dat een originele server aanduidt. Dit pad is de _/xxxx/_ -sectie en de naam van uw eind punt. <br/><br/> **Bron (patroon):** Er moet een patroon worden gedefinieerd waarmee aanvragen worden geïdentificeerd op relatief pad. In dit reguliere-expressie patroon moet een pad worden gedefinieerd dat direct na het eerder geselecteerde toegangs punt voor inhoud begint (zie hierboven). <br/> -Zorg ervoor dat de aanvraag-URI-criteria (dat wil zeggen, Bron & patroon) dat eerder is gedefinieerd, niet conflicteren met de voor waarden voor de overeenkomst die voor deze functie zijn gedefinieerd. <br/> -Geef een patroon op. Als u een lege waarde gebruikt als patroon, worden alle teken reeksen overeenkomen.
+Doel| Definieer de URL waarnaar de bovenstaande aanvragen worden omgeleid. <br/><br/> Deze URL dynamisch samen stellen met: <br/> -Een reguliere-expressie patroon <br/>- [http-variabelen](cdn-http-variables.md) <br/><br/> Vervang de waarden die zijn vastgelegd in het bron patroon in het doel patroon door $_n_ , waarbij _n_ een waarde identificeert door de volg orde waarin deze is vastgelegd. $1 staat bijvoorbeeld voor de eerste waarde die is vastgelegd in het bron patroon, terwijl $2 de tweede waarde vertegenwoordigt. <br/>
 
-Het is raadzaam een absolute URL gebruiken. Het gebruik van een relatieve URL kan CDN-URL's omleiden naar een ongeldig pad.
+Het is raadzaam om een absolute URL te gebruiken. Het gebruik van een relatieve URL kan CDN-Url's omleiden naar een ongeldig pad.
 
-**Voorbeeldscenario**
+**Voorbeeld scenario**
 
-In dit voorbeeld ziet u hoe u een rand CNAME-URL die wordt omgezet aan deze basis CDN-URL omleiden: http:\//marketing.azureedge.net/brochures
+In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-CDN-URL: http:\/-marketing.azureedge.net/brochures
 
-In aanmerking komende aanvragen worden omgeleid naar deze basis edge CNAME-URL: http:\//cdn.mydomain.com/resources
+Kwalificerende aanvragen worden omgeleid naar deze CNAME-URL: http:\/-cdn.mydomain.com/resources
 
 Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
-**Belangrijke punten:**
+**Belangrijkste punten:**
 
-- De functie voor URL-omleiding definieert de aanvraag URL's die worden omgeleid. Criteria voor aanvullende overeenkomst als gevolg hiervan zijn niet vereist. Hoewel de voorwaarde voor overeenkomst is gedefinieerd als 'Altijd', wordt alleen aanvragen die naar de map 'brochures' op de 'marketing' origine verwijzen worden omgeleid.
-- Alle overeenkomende aanvragen omgeleid naar de rand van het CNAME-URL die is gedefinieerd in de doel-optie.
-    - Voorbeeldscenario voor #1:
-        - Voorbeeld van een aanvraag (CDN URL): http:\//marketing.azureedge.net/brochures/widgets.pdf
-        - Aanvraag-URL (na omleiding): http:\//cdn.mydomain.com/resources/widgets.pdf  
-    - Voorbeeldscenario voor #2:
-        - Voorbeeld van een aanvraag (Edge CNAME-URL): http:\//marketing.mydomain.com/brochures/widgets.pdf
-        - Aanvraag-URL (na omleiding): http:\//cdn.mydomain.com/resources/widgets.pdf voorbeeldscenario
-    - Voorbeeldscenario voor #3:
-        - Voorbeeld van een aanvraag (Edge CNAME-URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt
-        - Aanvraag-URL (na omleiding): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt 
-- De variabele aanvraag schema (% {scheme}) wordt gebruikt in de doel-optie, die zorgt ervoor dat het schema van de aanvraag ongewijzigd na omleiding blijft.
-- De URL-segmenten die zijn vastgelegd in de aanvraag worden toegevoegd aan de nieuwe URL via "$1."
+- De URL-omleidings functie definieert de Url's van de aanvraag die worden omgeleid. Als gevolg hiervan zijn er geen aanvullende match-voor waarden vereist. Hoewel de match-voor waarde is gedefinieerd als ' Always ', worden alleen aanvragen die verwijzen naar de map ' brochures ' op de oorsprong van de klant, omgeleid.
+- Alle overeenkomende aanvragen worden omgeleid naar de URL van de Edge CNAME die is gedefinieerd in de doel optie.
+    - Voorbeeld scenario #1:
+        - Voorbeeld aanvraag (CDN-URL): http:\/-marketing.azureedge.net/brochures/widgets.pdf
+        - Aanvraag-URL (na omleiding): http:\/-cdn.mydomain.com/resources/widgets.pdf  
+    - Voorbeeld scenario #2:
+        - Voorbeeld aanvraag (Edge CNAME URL): http:\//marketing.mydomain.com/brochures/widgets.pdf
+        - Aanvraag-URL (na omleiding): http:\/-cdn.mydomain.com/resources/widgets.pdf-voorbeeld scenario
+    - Voorbeeld scenario #3:
+        - Voorbeeld aanvraag (Edge CNAME URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt
+        - Aanvraag-URL (na omleiding): http:\/-cdn.mydomain.com/resources/campaignA/final/productC.ppt 
+- De variabele voor het aanvraag schema (% {Scheme}) wordt gebruikt in de doel optie, wat ervoor zorgt dat het schema van de aanvraag ongewijzigd blijft na omleiding.
+- De URL-segmenten die van de aanvraag zijn vastgelegd, worden toegevoegd aan de nieuwe URL via ' $1 '.
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1352,58 +1352,58 @@ Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleid
 
 ### <a name="url-rewrite"></a>URL opnieuw genereren
 
-**Doel:** Herschrijft de aanvraag-URL.
+**Doel:** Hiermee herschrijft u de aanvraag-URL.
 
-Belangrijke informatie:
+Belang rijke informatie:
 
-- De configuratie van deze functie is vereist voor het instellen van de volgende opties:
+- Voor de configuratie van deze functie moet u de volgende opties instellen:
 
-Optie|Description
+Optie|Beschrijving
 -|-
- Bron & patroon | Deze instellingen geven aan een aanvraag-URI-patroon dat het type aanvragen dat kan worden herschreven. Er wordt alleen aanvragen waarvan de URL voldoet aan beide van de volgende criteria worden herschreven: <br/><br/>  - **Bron (of inhoud toegangspunt):** Selecteer een relatief pad die een oorspronkelijke server identificeert. Dit pad wordt de _/XXXX/_ sectie en de naam van uw eindpunt. <br/><br/> - **Bron (patroon):** Een patroon dat aanvragen worden aangeduid met het relatieve pad moet worden gedefinieerd. Dit patroon van gewone expressie moet een pad dat begint direct na de toegang tot de eerder geselecteerde inhoud verwijzen (Zie hierboven) definiëren. <br/> Controleer of dat de aanvraag-URI (dat wil zeggen, bron & patroon) eerder gedefinieerde criteria niet conflicteert met een van de criteria voor overeenkomst gedefinieerd voor deze functie. Geef een patroon; Als u een lege waarde als het patroon, worden alle tekenreeksen worden vergeleken.
- Bestemming  |Definieer de relatieve URL waarnaar de bovenstaande aanvragen worden herschreven door: <br/>    1. Een punt voor toegang tot inhoud waarmee een bronserver selecteren. <br/>    2. Definieert een relatief pad gebruiken: <br/>        -Een reguliere-expressiepatroon <br/>        - [HTTP-variabelen](cdn-http-variables.md) <br/> <br/> Vervang de waarden die zijn vastgelegd in het bron-patroon in de doel-patroon met $_n_ waar _n_ geeft een waarde door de volgorde waarin deze is vastgelegd. $1 vertegenwoordigt bijvoorbeeld de eerste waarde die is vastgelegd in het bron-patroon, terwijl $2 geeft aan dat de tweede waarde.
+ Patroon van bron & | Deze instellingen definiëren een URI-patroon voor aanvragen dat het type aanvragen identificeert dat kan worden herschreven. Alleen aanvragen waarvan de URL voldoet aan de volgende criteria, worden herschreven: <br/><br/>  - **bron (of inhouds toegangs punt):** Selecteer een relatief pad dat een originele server aanduidt. Dit pad is de _/xxxx/_ -sectie en de naam van uw eind punt. <br/><br/> - **bron (patroon):** er moet een patroon worden gedefinieerd waarmee aanvragen op relatief pad worden geïdentificeerd. In dit reguliere-expressie patroon moet een pad worden gedefinieerd dat direct na het eerder geselecteerde toegangs punt voor inhoud begint (zie hierboven). <br/> Controleer of de aanvraag-URI-criteria (dat wil zeggen, Bron & patroon) die eerder zijn gedefinieerd, niet conflicteren met een van de match-voor waarden die zijn gedefinieerd voor deze functie. Geef een patroon op. Als u een lege waarde gebruikt als patroon, worden alle teken reeksen overeenkomen.
+ Doel  |Definieer de relatieve URL waarnaar de bovenstaande aanvragen worden herschreven: <br/>    1. Selecteer een toegangs punt voor inhoud dat een originele server identificeert. <br/>    2. het definiëren van een relatief pad met behulp van: <br/>        -Een reguliere-expressie patroon <br/>        - [http-variabelen](cdn-http-variables.md) <br/> <br/> Vervang de waarden die zijn vastgelegd in het bron patroon in het doel patroon door $_n_ , waarbij _n_ een waarde identificeert door de volg orde waarin deze is vastgelegd. $1 staat bijvoorbeeld voor de eerste waarde die is vastgelegd in het bron patroon, terwijl $2 de tweede waarde vertegenwoordigt.
 
- Deze functie kunt de POP's te herschrijven van de URL zonder het uitvoeren van een traditionele omleiding. Dat wil zeggen, ontvangt de aanvrager de dezelfde responscode alsof de rewritten URL heeft aangevraagd.
+ Met deze functie kunnen Pop's de URL herschrijven zonder een traditionele omleiding uit te voeren. Dat wil zeggen dat de aanvrager dezelfde antwoord code ontvangt alsof de herschreven URL is aangevraagd.
 
-**Voorbeeldscenario 1**
+**Voorbeeld scenario 1**
 
-In dit voorbeeld ziet u hoe u een rand CNAME-URL die wordt omgezet aan deze basis CDN-URL omleiden: http:\//marketing.azureedge.net/brochures/
+In dit voor beeld ziet u hoe u een Edge CNAME-URL omleidt die wordt omgezet naar deze basis-CDN-URL: http:\/-marketing.azureedge.net/brochures/
 
-In aanmerking komende aanvragen worden omgeleid naar deze basis edge CNAME-URL: http:\//MyOrigin.azureedge.net/resources/
+Kwalificerende aanvragen worden omgeleid naar deze CNAME-URL: http:\/-MyOrigin.azureedge.net/resources/
 
 Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
-**Sample Scenario 2**
+**Voorbeeld scenario 2**
 
-In dit voorbeeld ziet u hoe u omleiden van een rand CNAME-URL in hoofdletters naar kleine letters reguliere expressies gebruiken.
+In dit voor beeld ziet u hoe u een Edge CNAME-URL kunt omleiden van hoofd letters naar kleine letters met reguliere expressies.
 
 Deze URL-omleiding kan worden bereikt via de volgende configuratie: ![URL-omleiding](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
-**Belangrijke punten:**
+**Belangrijkste punten:**
 
-- De functie voor herschrijven van URL's definieert de aanvraag URL's die zal worden herschreven. Criteria voor aanvullende overeenkomst als gevolg hiervan zijn niet vereist. Hoewel de voorwaarde voor overeenkomst is gedefinieerd als 'Altijd', wordt alleen aanvragen die naar de map 'brochures' op de 'marketing' origine verwijzen worden herschreven.
+- De functie voor het herschrijven van URL'S definieert de Url's van de aanvraag die worden herschreven. Als gevolg hiervan zijn er geen aanvullende match-voor waarden vereist. Hoewel de overeenkomst voor waarde is gedefinieerd als ' Always ', worden alleen aanvragen die verwijzen naar de map ' brochures ' op de oorsprong van de klant ' Marketing ', opnieuw geschreven.
 
-- De URL-segmenten die zijn vastgelegd in de aanvraag worden toegevoegd aan de nieuwe URL via "$1."
+- De URL-segmenten die van de aanvraag zijn vastgelegd, worden toegevoegd aan de nieuwe URL via ' $1 '.
 
 #### <a name="compatibility"></a>Compatibiliteit
 
-Deze functie bevat die overeenkomen met criteria die moeten worden voldaan voordat deze kan worden toegepast op een aanvraag. Deze functie is om te voorkomen dat het instellen van conflicterende overeenkomen met criteria, niet compatibel met de volgende criteria voor overeenkomst:
+Deze functie bevat overeenkomende criteria waaraan moet worden voldaan voordat deze kan worden toegepast op een aanvraag. Deze functie is niet compatibel met de volgende match-voor waarden om het instellen van conflicterende match criteria te voor komen:
 
-- AS-nummer
+- Als getal
 - CDN-oorsprong
 - IP-adres van client
-- Oorsprong van de klant
-- Aanvraag-schema
-- URL-Path-map
-- URL-pad-extensie
-- URL-pad bestandsnaam
-- URL-pad letterlijke waarde
-- URL-pad reguliere expressie
-- URL-pad jokertekens
-- URL-Query letterlijke waarde
-- URL Query Parameter
-- URL-Query reguliere expressie
-- URL-Query jokertekens
+- Oorsprong van klant
+- Aanvraag schema
+- URL-pad naar map
+- Extensie van URL-pad
+- URL-pad bestands naam
+- Letterlijke URL-pad
+- Regex URL-pad
+- Joker teken voor URL-pad
+- URL-query-letterlijke waarde
+- URL-query parameter
+- URL-query-regex
+- URL-query Joker teken
 
 [Terug naar boven](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1411,7 +1411,7 @@ Deze functie bevat die overeenkomen met criteria die moeten worden voldaan voord
 
 ---
 
-### <a name="user-variable"></a>Variabele van de gebruiker
+### <a name="user-variable"></a>Gebruikers variabele
 
 **Doel:** Alleen voor intern gebruik.
 
@@ -1424,5 +1424,5 @@ Deze functie bevat die overeenkomen met criteria die moeten worden voldaan voord
 - [Verwijzing regelengine](cdn-verizon-premium-rules-engine-reference.md)
 - [Voorwaardelijke expressies regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Criteria voor overeenkomst regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
-- [Met behulp van de regelengine HTTP-gedrag negeren](cdn-verizon-premium-rules-engine.md)
+- [HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)
 - [Overzicht van Azure CDN](cdn-overview.md)

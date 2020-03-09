@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386344"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm topologieën implementeren en beheren in azure HDInsight
 
@@ -210,8 +210,8 @@ In het gedeelte **topologie acties** kunt u de volgende knoppen selecteren om ee
 | Activeren | Hervat de verwerking van een gedeactiveerde topologie. |
 | Deactiveren | Hiermee wordt een actieve topologie onderbroken. |
 | Opnieuw verdelen | Hiermee past u de parallellisme van de topologie aan. U moet actieve topologieën opnieuw verdelen nadat u het aantal knoop punten in het cluster hebt gewijzigd. Met deze bewerking kan de topologie de parallellisme aanpassen om het extra of gereduceerde aantal knoop punten in het cluster te compenseren.<br/><br/>Zie <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">informatie over de parallellisme van een Apache Storm topologie</a>voor meer informatie.
-| verwijderen | Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out. |
-| Foutopsporing | Hiermee wordt een foutopsporingssessie gestart voor de actieve topologie. |
+| Verwijderen | Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out. |
+| Fouten opsporen | Hiermee wordt een foutopsporingssessie gestart voor de actieve topologie. |
 | Fout opsporing stoppen | Hiermee wordt de foutopsporingssessie voor de actieve topologie beëindigd. |
 | Logboek niveau wijzigen | Hiermee wijzigt u het logboek niveau voor fout opsporing. |
 
@@ -255,14 +255,14 @@ U kunt de Fully Qualified Domain Name (FQDN) voor het hoofd knooppunt van het cl
 | Ambari-Web | Selecteer op de webpagina Ambari-cluster (`https://CLUSTERNAME.azurehdinsight.net`) **Services** boven aan de pagina en selecteer vervolgens **Storm**. Selecteer op het tabblad **samen vatting** de optie **Storm-gebruikers interface Server**. De FQDN van het knoop punt dat als host fungeert voor de Storm-gebruikers interface en REST API wordt boven aan de pagina weer gegeven. |
 | Ambari REST API | Gebruik de opdracht `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` om informatie op te halen over het knoop punt waarop de Storm-gebruikers interface en de REST API worden uitgevoerd. Vervang de twee exemplaren van *clustername* door de naam van het cluster. Wanneer u hierom wordt gevraagd, voert u het wacht woord voor het gebruikers account (beheer) in. In het antwoord bevat de vermelding ' host_name ' van de JSON-uitvoer de FQDN-naam van het knoop punt. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Aanvragen voor de REST API moeten *basis verificatie*gebruiken, dus u moet de naam en het wacht woord van de beheerder voor het HDInsight-cluster gebruiken.
 
 > [!NOTE]  
 > Omdat basis verificatie wordt verzonden met behulp van Lees bare tekst, moet u *altijd* https gebruiken om de communicatie met het cluster te beveiligen.
 
-### <a name="return-values"></a>Retourwaarden
+### <a name="return-values"></a>Retour waarden
 
 Informatie die wordt geretourneerd door de REST API, kan alleen worden gebruikt vanuit het cluster. Zo is de Fully Qualified Domain Name (FQDN) die voor [Apache ZooKeeper](https://zookeeper.apache.org/) servers wordt geretourneerd, niet toegankelijk via internet.
 

@@ -3,7 +3,7 @@ title: Azure Active Directory logboeken streamen naar Azure Monitor-logboeken | 
 description: Meer informatie over het integreren van Azure Active Directory-logboeken met Azure Monitor-logboeken
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989772"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376454"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-logboeken integreren met Azure Monitor-logboeken
 
@@ -44,8 +44,8 @@ In dit artikel leert u hoe u Azure Active Directory (Azure AD)-logboeken integre
 
 U kunt Logboeken voor controle activiteiten en logboeken voor de registratie van activiteiten naar Azure Monitor logboeken voor verdere analyse routeren. 
 
-* **Audit logboeken**: Het [rapport activiteiten van controle logboeken](concept-audit-logs.md) geeft u toegang tot de geschiedenis van elke taak die wordt uitgevoerd in uw Tenant.
-* **Aanmeld logboeken**: Met het [rapport aanmeldings activiteit](concept-sign-ins.md)kunt u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de audit Logboeken.
+* **Auditlogboeken**: het [activiteitenrapport voor auditlogboeken](concept-audit-logs.md) biedt u toegang tot de geschiedenis van elke taak die in uw tenant is uitgevoerd.
+* **Aanmeldingslogboeken**: met het [activiteitenrapport voor aanmeldingen](concept-sign-ins.md) kunt u bepalen wie de taken heeft uitgevoerd die in het auditlogboek zijn gerapporteerd.
 
 > [!NOTE]
 > Auditlogboeken en aanmeldingslogboeken met betrekking tot B2C worden momenteel niet ondersteund.
@@ -62,9 +62,9 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 ## <a name="send-logs-to-azure-monitor"></a>Logboeken naar Azure Monitor verzenden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
-2. Selecteer > diagnostischeinstellingen -> Azure Active Directory diagnostische**instelling toevoegen**. U kunt ook **export instellingen** selecteren op de pagina **controle logboeken** of aanmeldingen om naar de configuratie pagina Diagnostische instellingen te gaan.  
+2. Selecteer **Azure Active Directory** **diagnostische instellingen** >  -> **Diagnostische instelling toevoegen**. U kunt ook **export instellingen** selecteren op de pagina **controle logboeken** of **aanmeldingen** om naar de configuratie pagina Diagnostische instellingen te gaan.  
     
 3. Schakel in het menu **Diagnostische instellingen** het selectie vakje **verzenden naar log Analytics werk ruimte** in en selecteer vervolgens **configureren**.
 
