@@ -8,11 +8,11 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668958"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379527"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
@@ -119,12 +119,12 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 
     | Eigenschap | Vereist | Beschrijving |
     | --- | --- | --- |
-    | Name |Ja |De naam van het logboek profiel. |
+    | Naam |Ja |De naam van het logboek profiel. |
     | StorageAccountId |Nee |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
     | serviceBusRuleId |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
     | RetentionInDays |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
-    | Categorie |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
+    | Category |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
 
 ### <a name="example-script"></a>Voorbeeldscript
 Hier volgt een voor beeld van een Power shell-script voor het maken van een logboek profiel waarmee het activiteiten logboek naar zowel een opslag account als Event Hub wordt geschreven.
@@ -165,7 +165,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
     | naam |Ja |De naam van het logboek profiel. |
     | storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
     | locaties |Ja |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement met behulp van `az account list-locations --query [].name`. |
-    | dagen |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
+    | days |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
     |enabled | Ja |Waar of ONWAAR.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
     | categorieën |Ja |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
 

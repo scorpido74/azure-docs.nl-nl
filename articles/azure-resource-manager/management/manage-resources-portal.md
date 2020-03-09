@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478797"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360024"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
 
@@ -33,7 +33,7 @@ Azure-resources zijn georganiseerd door Azure-Services en resource groepen. De v
 
 Een resource openen met het Service type:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de Azure-service in het linkerdeel venster. In dit geval **opslag accounts**.  Als de service niet wordt weer gegeven, selecteert u **alle services**en selecteert u vervolgens het Service type.
 
     ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Een resource openen met het Service type:
 
 Een resource openen per resource groep:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **resource groepen** in het linkerdeel venster om de resource in de groep weer te geven.
 3. Selecteer de resource die u wilt openen. 
 
@@ -70,7 +70,7 @@ In de scherm afbeelding ziet u de beheer opties voor een virtuele Azure-machine.
 
 Zie [Azure Resource Manager resource groep verwijderen](delete-resource-group.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Bronnen verplaatsen
+## <a name="move-resources"></a>Resources verplaatsen
 
 1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
 2. Selecteer **verplaatsen**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
@@ -80,7 +80,7 @@ Zie [Azure Resource Manager resource groep verwijderen](delete-resource-group.md
 
 Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](move-resource-group-and-subscription.md).
 
-## <a name="lock-resources"></a>Bronnen vergrendelen
+## <a name="lock-resources"></a>Resources vergrendelen
 
 Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 
@@ -114,7 +114,7 @@ U kunt het speld pictogram in de rechter bovenhoek van de grafieken selecteren o
 
 ## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
 
-[Op rollen gebaseerde toegangsbeheer (RBAC)](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+[Op rollen gebaseerde toegangsbeheer (RBAC)](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie [Toegang beheren met behulp van RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

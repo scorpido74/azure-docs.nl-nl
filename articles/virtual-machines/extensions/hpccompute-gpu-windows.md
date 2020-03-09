@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073024"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383388"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows
 
@@ -35,7 +35,7 @@ Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te instal
 
 Deze extensie ondersteunt de volgende OSs:
 
-| Distributie | Versie |
+| Distributie | Version |
 |---|---|
 | Windows 10 | Kern |
 | Windows Server 2016 | Kern |
@@ -85,9 +85,9 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
 
-De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie, [naam en type voor de onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Wanneer het nesten van de extensie-resource, de JSON wordt geplaatst in de `"resources": []` object van de virtuele machine.
+In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []`-object van de virtuele machine geplaatst.
 
 ```json
 {
@@ -124,7 +124,7 @@ Set-AzVMExtension
     }'
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az vm extension set `
@@ -171,7 +171,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="support"></a>Ondersteuning
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.

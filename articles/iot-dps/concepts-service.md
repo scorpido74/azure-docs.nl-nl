@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378904"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service concepten
 
@@ -45,7 +45,7 @@ De instelling op service niveau die bepaalt hoe Device Provisioning Service appa
 
 * **Statische configuratie via de registratie lijst**: specificatie van de gewenste IOT-hub in de registratie lijst heeft voor rang op het toewijzings beleid op service niveau.
 
-## <a name="enrollment"></a>Inschrijving
+## <a name="enrollment"></a>Registratie
 
 Een inschrijving is de record met apparaten of groepen apparaten die door automatische inrichting kunnen worden geregistreerd. De registratie record bevat informatie over het apparaat of de groep apparaten, waaronder:
 - het [Attestation-mechanisme](concepts-security.md#attestation-mechanism) dat wordt gebruikt door het apparaat
@@ -73,6 +73,6 @@ Een afzonderlijke inschrijving is een vermelding voor één apparaat dat kan wor
 
 Een registratie is de record van een apparaat dat is geregistreerd/ingericht naar een IoT Hub via de Device Provisioning Service. Registratie records worden automatisch gemaakt. ze kunnen worden verwijderd, maar kunnen niet worden bijgewerkt.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
-Bewerkingen zijn de facturerings eenheid van de Device Provisioning Service. Eén bewerking is het volt ooien van een instructie naar de service. Dit omvat de registratie en herregistratie van apparaten en wijzigingen aan de serverkant, zoals het toevoegen en bijwerken van inschrijvingslijsten.
+Bewerkingen zijn de facturerings eenheid van de Device Provisioning Service. Eén bewerking is het volt ooien van een instructie naar de service. Bewerkingen omvatten apparaatregistratie en nieuwe registraties; bewerkingen omvatten ook wijzigingen aan de service zijde, zoals het toevoegen van inschrijvings lijst vermeldingen en het bijwerken van inschrijvings lijst vermeldingen.

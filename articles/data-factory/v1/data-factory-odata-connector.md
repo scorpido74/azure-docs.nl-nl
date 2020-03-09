@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387508"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Gegevens verplaatsen vanuit een OData-bron met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -45,7 +45,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -60,7 +60,7 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor een gekoppelde OData-service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OData** |Ja |
 | url |De URL van de OData-service. |Ja |
@@ -145,9 +145,9 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **ODataResource** (die OData-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Pad |Pad naar de OData-resource |Nee |
+| pad |Pad naar de OData-resource |Nee |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
@@ -156,7 +156,7 @@ De eigenschappen die beschikbaar zijn in de typeProperties-sectie van de activit
 
 Wanneer bron van het type **RelationalSource** (inclusief OData), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Voorbeeld | Verplicht |
+| Eigenschap | Beschrijving | Voorbeeld | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |"?$select=Name, Description&$top=5" |Nee |
 
@@ -168,16 +168,16 @@ Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-fact
 
 Bij het verplaatsen van gegevens uit OData worden de volgende toewijzingen gebruikt vanuit OData-typen naar .NET-type.
 
-| OData-gegevenstype | .NET-type |
+| OData-gegevens type | .NET-type |
 | --- | --- |
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |Datum/tijd |
-| Edm.Decimal |Decimal |
-| Edm.Double |Double |
+| Edm.DateTime |DateTime |
+| Edm.Decimal |decimaal |
+| Edm.Double |Double-waarde |
 | EDM. single |Enkelvoudig |
-| Edm.Guid |GUID |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |

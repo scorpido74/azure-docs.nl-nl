@@ -12,11 +12,11 @@ author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064747"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391028"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruim
 
 ## <a name="default-roles"></a>Standaard rollen
 
-Een Azure Machine Learning-werk ruimte is een Azure-resource. Net als bij andere Azure-resources geldt dat als er een nieuwe Azure Machine Learning-werk ruimte wordt gemaakt, deze drie standaard rollen bevat. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
+Een Azure Machine Learning-werkruimte is een Azure-resource. Net als andere Azure-resources, heeft een nieuwe Azure Machine Learning-werkruimte drie standaardrollen wanneer deze wordt gemaakt. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
 
 | Rol | Toegangsniveau |
 | --- | --- |
-| **Lezer** | Alleen-lezen acties in de werk ruimte. Lezers kunnen assets in een werk ruimte vermelden en weer geven, maar kunnen deze assets niet maken of bijwerken. |
-| **Inzender** | Activa in een werk ruimte weer geven, maken, bewerken of verwijderen (indien van toepassing). Inzenders kunnen bijvoorbeeld een experiment maken, een berekenings cluster maken of koppelen, een run verzenden en een webservice implementeren. |
-| **Eigenaar** | Volledige toegang tot de werk ruimte, met inbegrip van de mogelijkheid om activa in een werk ruimte weer te geven, te maken, te bewerken of te verwijderen (indien van toepassing). Daarnaast kunt u roltoewijzingen wijzigen. |
+| **Lezer** | Alleen-lezenacties in de werkruimte. Lezers kunnen assets in een werkruimte opsommen en bekijken, maar kunnen ze niet maken of bijwerken. |
+| **Inzender** | Assets in een werkruimte bekijken, maken, bewerken of verwijderen (waar van toepassing). Zo kunnen inzenders een experiment maken, een rekencluster maken of koppelen, een uitvoering starten en een webservice implementeren. |
+| **Eigenaar** | Volledige toegang tot de werkruimte, inclusief de mogelijkheid om assets in een werkruimte te bekijken, maken, bewerken of verwijderen (waar van toepassing). Daarnaast kunt u roltoewijzingen wijzigen. |
 
 > [!IMPORTANT]
 > De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [How RBAC werkt](/azure/role-based-access-control/overview#how-rbac-works)voor meer informatie.
@@ -40,12 +40,12 @@ Zie [ingebouwde rollen voor Azure](/azure/role-based-access-control/built-in-rol
 
 ## <a name="manage-workspace-access"></a>Toegang tot de werk ruimte beheren
 
-Als u eigenaar bent van een werk ruimte, kunt u rollen toevoegen en verwijderen voor de werk ruimte. U kunt ook rollen toewijzen aan gebruikers. Gebruik de volgende koppelingen om te ontdekken hoe u de toegang beheert:
-- [Azure Portal gebruikers interface](/azure/role-based-access-control/role-assignments-portal)
+Als u de eigenaar van een werkruimte bent, kunt u rollen voor de werkruimte toevoegen en verwijderen. U kunt ook rollen toewijzen aan gebruikers. Gebruik de volgende koppelingen om te ontdekken hoe u toegang kunt beheren:
+- [Azure-portal-gebruikersinterface](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST-API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager sjablonen](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager-sjablonen](/azure/role-based-access-control/role-assignments-template)
 
 Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u ook een CLI-opdracht gebruiken om rollen toe te wijzen aan gebruikers.
 
@@ -61,7 +61,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
-Als de ingebouwde rollen onvoldoende zijn, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
+Als de ingebouwde rollen niet voldoen, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
 
 > [!NOTE]
 > U moet een eigenaar van de resource op dat niveau zijn om aangepaste rollen te maken binnen die resource.
@@ -173,4 +173,4 @@ U hebt machtigingen op abonnements niveau nodig voor het uitvoeren van een gerel
 - [Overzicht van ENTER prise Security](concept-enterprise-security.md)
 - [Veilig experimenten en demijnen/Score in een virtueel netwerk uitvoeren](how-to-enable-virtual-network.md)
 - [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)
-- [Bewerkingen van de resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [Resourceproviderbewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

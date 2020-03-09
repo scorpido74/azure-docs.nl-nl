@@ -16,11 +16,11 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2efaceefc53b3c0b5dfd899baf9fd30fdf9a76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430054"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375519"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Beheerde identiteiten configureren voor Azure-resources op een Azure-VM met behulp van Azure CLI
 
@@ -35,10 +35,10 @@ In dit artikel, met behulp van de Azure CLI, leert u hoe u de volgende beheerde 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u wilt de CLI-scriptvoorbeelden uitvoeren, hebt u drie opties:
-    - Gebruik [Azure Cloud Shell](../../cloud-shell/overview.md) vanuit Azure portal (Zie volgende sectie).
+    - Gebruik [Azure Cloud shell](../../cloud-shell/overview.md) van de Azure Portal (zie volgende sectie).
     - Gebruik de ingesloten Azure Cloud Shell via het 'Try It' de knop, zich in de rechterbovenhoek van elk codeblok.
     - [Installeer de nieuwste versie van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) als u liever een lokale cli-console gebruikt. 
       
@@ -61,7 +61,7 @@ Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identi
    az login
    ```
 
-2. Maak met [az group create](/cli/azure/group/#az-group-create) een [resourcegroep](../../azure-resource-manager/management/overview.md#terminology) voor insluiting en implementatie van uw VM en de bijbehorende bronnen. U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
+2. Maak met [az group create](../../azure-resource-manager/management/overview.md#terminology) een [resourcegroep](/cli/azure/group/#az-group-create) voor insluiting en implementatie van uw VM en de bijbehorende bronnen. U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -214,7 +214,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' ide
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Beheerde identiteiten voor een overzicht van Azure-resources](overview.md)
+- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
 - Zie voor de volledige Snelstartgids voor het maken van virtuele Azure-machines: 
   - [Een virtuele Windows-machine maken met CLI](../../virtual-machines/windows/quick-create-cli.md)  
   - [Een virtuele Linux-machine maken met CLI](../../virtual-machines/linux/quick-create-cli.md) 

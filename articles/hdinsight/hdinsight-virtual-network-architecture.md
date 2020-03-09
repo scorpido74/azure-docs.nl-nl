@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744743"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389818"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-architectuur
 
@@ -54,18 +54,18 @@ De volgende tabel bevat een overzicht van de negen cluster knooppunten die worde
 
 | Resourcetype | Nummer aanwezig | Details |
 | --- | --- | --- |
-|Hoofdknooppunt | twee |    |
+|Hoofdknooppunt | cijfer |    |
 |Zookeeper-knooppunt | drie | |
-|Worker-knoop punt | twee | Dit aantal kan variëren afhankelijk van de configuratie van het cluster en het schalen. Er zijn mini maal drie worker-knoop punten nodig voor Apache Kafka.  |
-|Gateway-knooppunt | twee | Gateway knooppunten zijn virtuele Azure-machines die zijn gemaakt op Azure, maar die niet zichtbaar zijn in uw abonnement. Neem contact op met de ondersteuning als u deze knoop punten opnieuw moet opstarten. |
+|Worker-knoop punt | cijfer | Dit aantal kan variëren afhankelijk van de configuratie van het cluster en het schalen. Er zijn mini maal drie worker-knoop punten nodig voor Apache Kafka.  |
+|Gateway-knooppunt | cijfer | Gateway knooppunten zijn virtuele Azure-machines die zijn gemaakt op Azure, maar die niet zichtbaar zijn in uw abonnement. Neem contact op met de ondersteuning als u deze knoop punten opnieuw moet opstarten. |
 
 De volgende netwerk bronnen worden automatisch gemaakt in het virtuele netwerk dat wordt gebruikt met HDInsight:
 
 | Netwerk bron | Nummer aanwezig | Details |
 | --- | --- | --- |
-|Load Balancer | drie | |
+|Load balancer | drie | |
 |Netwerkinterfaces | negen | Deze waarde is gebaseerd op een normaal cluster, waarbij elk knoop punt een eigen netwerk interface heeft. De negen interfaces zijn voor de twee hoofd knooppunten, drie Zookeeper-knoop punten, twee worker-knoop punten en twee gateway knooppunten die in de voor gaande tabel worden vermeld. |
-|Openbare IP-adressen | twee |    |
+|Openbare IP-adressen | cijfer |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Eind punten voor verbinding maken met HDInsight
 

@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564037"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357194"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een Integration runtime in Azure Data Factory bewaken  
 **Integration runtime** is de reken infrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
@@ -42,7 +42,7 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 
 | Eigenschap | Beschrijving |
 -------- | ------------- | 
-| Name | De naam van de Azure Integration runtime. |  
+| Naam | De naam van de Azure Integration runtime. |  
 | Status | Status van de Azure Integration runtime. | 
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
@@ -69,7 +69,7 @@ De volgende tabel bevat beschrijvingen van de bewakings eigenschappen voor **elk
 
 | Eigenschap | Beschrijving | 
 | -------- | ----------- | 
-| Name | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
+| Naam | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
 | Status | De status van de algemene zelf-hostende Integration runtime en elk knoop punt. Voor beeld: online/offline/beperkt/etc. Zie de volgende sectie voor meer informatie over deze statussen. | 
 | Version | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
@@ -177,7 +177,7 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 | Type | Het type (beheerd/zelf-Hostend) van uw Azure SSIS Integration runtime. |
 | ResourceGroupName | De naam van uw Azure-resource groep waarin uw data factory en Azure-SSIS Integration runtime zijn gemaakt. |
 | DataFactoryName | De naam van uw Azure-data factory. |
-| Name | De naam van uw Azure SSIS Integration runtime. |
+| Naam | De naam van uw Azure SSIS Integration runtime. |
 | Beschrijving | De beschrijving van uw Azure SSIS Integration runtime. |
 
   

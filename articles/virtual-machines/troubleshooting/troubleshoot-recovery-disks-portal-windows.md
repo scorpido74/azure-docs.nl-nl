@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374553"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382655"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
 Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u met behulp van de Azure Portal de virtuele harde schijf verbindt met een andere Windows-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken. 

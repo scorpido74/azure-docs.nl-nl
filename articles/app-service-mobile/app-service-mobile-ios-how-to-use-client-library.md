@@ -7,11 +7,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77458916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374214"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>IOS-client bibliotheek gebruiken voor Azure Mobile Apps
 
@@ -556,7 +556,7 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het onde
 3. Gebruik de terminal om `pod install` uit te voeren vanuit de map met uw project en open vervolgens de gegenereerde Xcode-werk ruimte (niet het project).
 4. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt. Voer de volgende vervangingen uit:
 
-   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure Portal].
+   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure-portal].
    * Vervang de **Insert-resource-id hier** door de client-id voor de back-end van uw mobiele app. U kunt de client-ID verkrijgen via het tabblad **Geavanceerd** onder **Azure Active Directory instellingen** in de portal.
    * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
    * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .
@@ -892,7 +892,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx

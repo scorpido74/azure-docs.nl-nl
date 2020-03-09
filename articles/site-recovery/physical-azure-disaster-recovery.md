@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362661"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -29,7 +29,7 @@ Deze zelf studie laat zien hoe u herstel na nood gevallen instelt voor on-premis
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 - Zorg ervoor dat u bekend bent met de [architectuur en onderdelen](physical-azure-architecture.md) voor dit scenario.
 - Raadpleeg de [ondersteuningsvereisten](vmware-physical-secondary-support-matrix.md) voor alle onderdelen.
@@ -146,7 +146,7 @@ Selecteer en controleer doelbronnen.
 2. Geef het doel implementatie model op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
-   ![Kiezen](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Doel](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Een replicatiebeleid maken

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362691"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Deployment Planner rapport voor VMware-nood herstel naar Azure
 
@@ -122,9 +122,9 @@ In de openbare preview bevat het rapport geen informatie over de virtuele machin
 ![Aanbevolen VM-batchgrootte](media/site-recovery-vmware-deployment-planner-analyze-report/ir-batching-v2a.png)
 
 ### <a name="cost-estimation"></a>Kostenraming
-De grafiek toont de weergave Samenvatting van de geschatte totale noodherstel (DR) kosten voor Azure van uw gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
+De grafiek toont de weergave Samenvatting van de geschatte totale kosten voor noodherstel (DR) voor Azure van de gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
 
-![Samenvatting kostenramingen](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
+![Kostenraming samenvatting](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
 
 De samenvatting helpt u bij het begrijpen van de kosten die u nodig hebt om te betalen voor opslag, rekensnelheid, netwerk en licentie wanneer u alle compatibele virtuele machines naar Azure met Azure Site Recovery beveiligt. De kosten worden berekend op basis van compatibele virtuele machines en niet op basis van alle geprofileerde virtuele machines.  
 
@@ -139,7 +139,7 @@ U kunt de kosten maandelijks of jaarlijks weergeven. Meer informatie over [onder
 **Kosten voor DR-oefeningen**: de kosten die zullen worden gemaakt tijdens de testfailovers. Azure Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve virtuele machines.
 
 **Azure-opslagkosten per maand-jaar** Dit toont de totale opslagkosten die zullen worden gemaakt voor premium en standard-opslag voor replicatie en details voor DR.
-U vindt een gedetailleerde kostenanalyse per virtuele machine op het werkblad [Kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md).
+Vindt u gedetailleerde kostenanalyse per virtuele machine in het blad [kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Groeifactor en gebruikte percentielwaarden
 Deze sectie onder aan het werkblad toont de percentielwaarde die voor alle prestatiemeteritems van de geprofileerde virtuele machines wordt gebruikt (standaard is dit het 95e percentiel), plus de groeifactor in procenten die in alle berekeningen wordt gebruikt (standaard 30%).

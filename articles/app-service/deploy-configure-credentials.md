@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843783"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372082"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
@@ -70,7 +70,7 @@ Omdat referenties op gebruikers niveau zijn gekoppeld aan de gebruiker en niet a
 ## <a name="appscope"></a>Referenties op app-niveau ophalen en opnieuw instellen
 De referenties op app-niveau ophalen:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **App Services** >  **&lt;any_app** > het **implementatie centrum** > **FTP/referenties**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **App Services** >  **&lt;any_app** > het **implementatie centrum** > **FTP/referenties**. > 
 
 2. Selecteer **app-referenties**en selecteer de koppeling **kopiëren** om de gebruikers naam of het wacht woord te kopiëren.
 

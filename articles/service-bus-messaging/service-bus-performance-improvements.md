@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370476"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Aanbevolen procedures voor prestatie verbeteringen met behulp van Service Bus Messa ging
 
@@ -160,7 +160,7 @@ Service Bus heeft één functie, die specifiek wordt gebruikt voor ontwikkeling,
 
 Wanneer er nieuwe regels of filters aan het onderwerp worden toegevoegd, kunt u [TopicDescription.EnableFilteringMessagesBeforePublishing][] gebruiken om te controleren of de nieuwe filter expressie werkt zoals verwacht.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 In de volgende secties worden typische bericht scenario's beschreven en worden de voorkeurs instellingen voor Service Bus geschetst. Doorvoer tarieven worden geclassificeerd als klein (minder dan 1 bericht/seconde), gemiddeld (1 bericht/seconde of meer, maar minder dan 100 berichten/seconde) en hoog (100 berichten/seconde of hoger). Het aantal clients wordt geclassificeerd als klein (5 of minder), gemiddeld (meer dan 5, kleiner dan of gelijk aan 20), en groot (meer dan 20).
 

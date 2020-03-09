@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754325"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379599"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) -> 
 
 Azure Cognitive Search is een volledig beheerde, op de cloud gebaseerde zoek service die wordt gebruikt voor het bouwen van een uitgebreide zoek ervaring in aangepaste apps. In dit artikel worden de Service beheer taken behandeld die u kunt uitvoeren in de [Azure Portal](https://portal.azure.com) voor een zoek service die u al hebt ingericht. Service beheer is lichter ontwerp, beperkt tot de volgende taken:
 
@@ -62,8 +62,8 @@ In het dash board is bron bewaking beperkt tot de informatie die wordt weer gege
 
 Met de REST API van de zoek service kunt u via programma code een aantal op documenten en indexen ontvangen: 
 
-* [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Aantal documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Documenten tellen](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen
 
@@ -75,7 +75,7 @@ Klanten die [Indexeer functies](search-indexer-overview.md) gebruiken om indexen
 
 Als u geen Indexeer functies gebruikt, gebruikt u uw toepassings code om objecten en gegevens parallel naar verschillende zoek services te pushen. Zie [prestaties en optimalisatie in Azure Cognitive Search](search-performance-optimization.md)voor meer informatie.
 
-## <a name="backup-and-restore"></a>Back-up maken en terugzetten
+## <a name="backup-and-restore"></a>Back-ups en herstellen
 
 Omdat Azure Cognitive Search geen primaire oplossing voor gegevens opslag is, bieden we geen formeel mechanisme voor Self-Service back-up en herstel. U kunt echter de voorbeeld code **index-Backup-Restore** in dit [Azure Cognitive Search .net-voor beeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples) gebruiken om een back-up te maken van de index definitie en moment opname naar een reeks json-bestanden en vervolgens deze bestanden te gebruiken om de index te herstellen, indien nodig. Met dit hulp programma kunt u ook indexen verplaatsen tussen service lagen.
 

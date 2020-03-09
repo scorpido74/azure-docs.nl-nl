@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550941"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395437"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Zelf studie: netwerk verbindingen maken en energie leveren aan het Azure FXT Edge-knoop punt
 
@@ -45,7 +45,7 @@ In dit artikel wordt ook beschreven hoe u [netstroom](#connect-power-cables) voo
 
 In dit artikel wordt ook uitgelegd hoe u verbinding maakt met de [seriële poort](#serial-port-only-when-necessary)van het knoop punt, indien nodig voor gespecialiseerde probleem oplossing. 
 
-### <a name="network-ports"></a>Netwerkpoorten 
+### <a name="network-ports"></a>Netwerk poorten 
 
 Elk Azure FXT Edge-bestands knooppunt bevat de volgende netwerk poorten: 
 

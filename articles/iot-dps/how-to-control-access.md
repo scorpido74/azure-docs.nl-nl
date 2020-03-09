@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453809"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396053"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Toegang tot Azure IoT Hub Device Provisioning Service beheren
 
@@ -39,7 +39,7 @@ U kunt op de volgende manieren [machtigingen](#device-provisioning-service-permi
 > [!NOTE]
 > Zie [machtigingen](#device-provisioning-service-permissions) voor gedetailleerde informatie.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Azure IoT Hub Device Provisioning Service verleent toegang tot eind punten door een token te controleren op basis van het beleid voor gedeelde toegang. Beveiligings referenties, zoals symmetrische sleutels, worden nooit via de kabel verzonden.
 

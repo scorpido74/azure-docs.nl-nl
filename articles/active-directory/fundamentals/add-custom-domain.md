@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073532"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376852"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>De naam van uw aangepaste domein met behulp van de Azure Active Directory-portal toevoegen
 
@@ -26,13 +26,13 @@ Elke nieuwe Azure AD-Tenant wordt geleverd met een initiële domein naam, *\<dom
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u een aangepaste domein naam kunt toevoegen, maakt u uw domein naam met een domein registratie service. Zie voor een erkende domeinregistrar [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html).
+Voordat u een aangepaste domein naam kunt toevoegen, maakt u uw domein naam met een domein registratie service. Zie voor een geaccrediteerd domein registratie [ICANN-accreditatie registraties](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>Maken van uw directory in Azure AD
 
 Nadat u uw domeinnaam hebt ontvangen, kunt u uw eerste Azure AD-directory maken. Meld u aan bij de Azure Portal voor uw directory met een account met de rol **eigenaar** voor het abonnement.
 
-Uw nieuwe map maken met de volgende stappen in [maken van een nieuwe tenant voor uw organisatie](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Maak een nieuwe map door de stappen in [een nieuwe Tenant voor uw organisatie maken](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)te volgen.
 
 >[!IMPORTANT]
 >De persoon die de tenant maakt, wordt automatisch de globale beheerder voor de tenant. De globale beheerder kunt u extra beheerders toevoegen aan de tenant.
@@ -98,15 +98,15 @@ Nadat u uw aangepaste domein naam hebt geverifieerd, kunt u uw TXT-of MX-verific
 
 Als Azure AD een aangepaste domeinnaam niet verifiëren kan, probeert u de volgende suggesties:
 
-- **Wacht ten minste een uur en probeer het opnieuw**. DNS-records moeten zijn doorgegeven voordat Azure AD het domein kan verifiëren. Dit proces kan een uur of langer duren.
+- **Wacht minstens een uur en probeer het opnieuw**. DNS-records moeten zijn doorgegeven voordat Azure AD het domein kan verifiëren. Dit proces kan een uur of langer duren.
 
-- **Zorg ervoor dat de DNS-record klopt.** Ga terug naar de registratie site van de domein naam. Zorg ervoor dat de vermelding daar staat en dat deze overeenkomt met de DNS-invoer gegevens die door Azure AD worden verstrekt.
+- **Controleer of de DNS-record juist is.** Ga terug naar de registratie site van de domein naam. Zorg ervoor dat de vermelding daar staat en dat deze overeenkomt met de DNS-invoer gegevens die door Azure AD worden verstrekt.
 
   Als u de record op de registratie site niet kunt bijwerken, deelt u de vermelding met iemand die gemachtigd is om de vermelding toe te voegen en controleert u of deze juist is.
 
-- **Zorg ervoor dat de domeinnaam niet al wordt gebruikt in een andere directory.** Een domein naam kan alleen in één Directory worden geverifieerd. Als uw domein naam momenteel in een andere Directory is geverifieerd, kan deze ook niet worden geverifieerd in de nieuwe map. U lost dit probleem duplicatie, moet u de domeinnaam verwijderen uit de oude map. Zie voor meer informatie over het verwijderen van domeinnamen [aangepaste domeinnamen beheren](../users-groups-roles/domains-manage.md).
+- **Zorg ervoor dat de domein naam niet al in gebruik is in een andere map.** Een domein naam kan alleen in één Directory worden geverifieerd. Als uw domein naam momenteel in een andere Directory is geverifieerd, kan deze ook niet worden geverifieerd in de nieuwe map. U lost dit probleem duplicatie, moet u de domeinnaam verwijderen uit de oude map. Zie [aangepaste domein namen beheren](../users-groups-roles/domains-manage.md)voor meer informatie over het verwijderen van domein namen.
 
-- **Zorg ervoor dat u hebt geen niet-beheerde Power BI-tenants.** Als uw gebruikers hebt geactiveerd Power BI via self-service-aanmelding en die een niet-beheerde tenant voor uw organisatie zijn gemaakt, moet u via management als een beheerder intern of extern uitvoeren met behulp van PowerShell. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) voor meer informatie.
+- **Zorg ervoor dat u geen niet-beheerde Power BI tenants hebt.** Als uw gebruikers hebt geactiveerd Power BI via self-service-aanmelding en die een niet-beheerde tenant voor uw organisatie zijn gemaakt, moet u via management als een beheerder intern of extern uitvoeren met behulp van PowerShell. Zie [Een niet-beheerde directory overnemen als beheerder in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -116,4 +116,4 @@ Als Azure AD een aangepaste domeinnaam niet verifiëren kan, probeert u de volge
 
 - De gegevens van uw domein naam in Azure AD beheren. Zie [aangepaste domein namen beheren](../users-groups-roles/domains-manage.md)voor meer informatie.
 
-- Als u beschikt over on-premises versies van Windows-Server die u wilt gebruiken samen met Azure Active Directory, raadpleegt u [uw on-premises directory's integreren met Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Zie [uw on-premises Directory's integreren met Azure Active Directory](../connect/active-directory-aadconnect.md)als u on-premises versies van Windows Server hebt die u naast Azure Active Directory wilt gebruiken.

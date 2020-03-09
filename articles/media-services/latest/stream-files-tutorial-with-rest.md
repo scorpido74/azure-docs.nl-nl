@@ -13,25 +13,25 @@ ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
 ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514337"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359531"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
 
-Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Encoding](encoding-concept.md) voor richtlijnen voor codering.
+Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Coderen](encoding-concept.md) voor richtlijnen voor codering.
 
 In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en de video kunt streamen met Azure Media Services. 
 
 ![De video afspelen](./media/stream-files-tutorial-with-api/final-video.png)
 
-In deze handleiding ontdekt u hoe u:    
+In deze zelfstudie ontdekt u hoe u:    
 
 > [!div class="checklist"]
-> * Een Media Services-account kunt maken
-> * Toegang kunt krijgen tot de Media Services API
+> * Een Media Services-account maken
+> * Toegang krijgt tot de Media Services API
 > * Postman-bestanden downloaden
 > * Postman configureren
 > * Aanvragen verzenden met behulp van Postman
@@ -248,9 +248,9 @@ In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https:\//
         }
         ```
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met behulp van intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+De taak neemt enige tijd in beslag en wanneer dit het geval is, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **wordt geannuleerd** en **geannuleerd** wanneer het annuleren is voltooid.
 
 #### <a name="job-error-codes"></a>Foutcodes in taak
 
