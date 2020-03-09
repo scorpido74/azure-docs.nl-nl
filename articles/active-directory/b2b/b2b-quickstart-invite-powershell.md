@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377799"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Snelstart: Een gastgebruiker toevoegen met PowerShell
 
@@ -82,7 +82,7 @@ Voer uw referenties in wanneer dit wordt gevraagd.
    ```
 2. De opdracht verzendt een uitnodiging naar het opgegeven e-mailadres. Controleer de uitvoer, die er als volgt moet uitzien:
 
-   ![PowerShell-uitvoer wordt weergegeven in afwachting van acceptatie van de gebruiker](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
+   ![PowerShell-uitvoer die wacht op acceptatie door de gebruiker](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
 ## <a name="verify-the-user-exists-in-the-directory"></a>Controleer of de gebruiker bestaat in de map
 

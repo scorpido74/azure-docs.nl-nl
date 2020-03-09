@@ -4,11 +4,11 @@ description: Schijven uitsluiten van replicatie naar Azure met Azure Site Recove
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498265"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362672"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Schijven uitsluiten van herstel na nood gevallen
 
@@ -68,7 +68,7 @@ DB-Disk0-OS | Disk0 | C:\ | Besturingssysteem schijf.
 DB-Disk1| Disk1 | D:\ | SQL-systeem database en gebruiker Database1.
 DB-Disk2 (de schijf is uitgesloten van beveiliging) | Disk2 | E:\ | Tijdelijke bestanden.
 DB-Disk3 (de schijf is uitgesloten van beveiliging) | Disk3 | F:\ | SQL-data base Tempdb.<br/><br/> Mappad-F:\MSSQL\Data\. Noteer het mappad voordat u een failover uitvoert.
-DB-Disk4 | Disk4 |G:\ | Gebruikersdatabase2
+DB-Disk4 | Disk4 |G:\ | Gebruikersdatabase 2
 
 1. De replicatie voor de SalesDB-VM wordt ingeschakeld.
 2. Disk2 en Disk3 worden uitgesloten van replicatie, omdat gegevens verloop op die schijven tijdelijk is. 
@@ -82,8 +82,8 @@ Omdat de schijven niet worden gerepliceerd, worden de virtuele machines die na e
 --- | --- | ---
 Disk0 | C:\ | Besturingssysteem schijf.
 Disk1 | E:\ | Tijdelijke opslag<br/><br/>Azure voegt deze schijf toe. Omdat Disk2 en Disk3 zijn uitgesloten van replicatie, is E: de eerste stationsletter in de lijst beschik bare. Azure wijst E: toe aan het tijdelijke opslagvolume. Andere stationsletters voor gerepliceerde schijven blijven hetzelfde.
-Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase 1
-Disk3 | G:\ | Gebruikersdatabase2
+Disk2 | D:\ | SQL-systeemdatabase en gebruikersdatabase1
+Disk3 | G:\ | Gebruikersdatabase 2
 
 In ons voor beeld is de SQL TempDB-schijf, omdat Disk3 is uitgesloten van replicatie en niet beschikbaar op de virtuele Azure-machine, de SQL-service is gestopt en heeft het F:\MSSQL\Data-pad nodig. U kunt dit pad op een aantal manieren maken: 
 
@@ -180,7 +180,7 @@ DB-Disk0-OS | Disk0 |   C:\ | Besturingssysteem schijf.
 DB-Disk1 | Disk1 | D:\ | SQL-systeem database en gebruiker Database1.
 DB-Disk2 (uitgesloten schijf) | Disk2 | E:\ | Tijdelijke bestanden.
 DB-Disk3 (uitgesloten schijf) | Disk3 | F:\ | SQL-TempDB-data base<br/><br/> Mappad (F:\MSSQL\Data\).
-DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase2
+DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase 2
 
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>Voor beeld 2: de wissel bestand schijf uitsluiten

@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356298"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-data-movement-activities.md)
+> * [Versie 1](v1/data-factory-data-movement-activities.md)
 > * [Huidige versie](copy-activity-overview.md)
 
 In Azure Data Factory kunt u de Kopieer activiteit gebruiken om gegevens te kopiëren tussen gegevens archieven die zich lokaal en in de cloud bevinden. Nadat u de gegevens hebt gekopieerd, kunt u andere activiteiten gebruiken om deze verder te transformeren en te analyseren. U kunt ook de Kopieer activiteit gebruiken om trans formatie-en analyse resultaten te publiceren voor business intelligence (BI) en het gebruik van toepassingen.
@@ -138,7 +138,7 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 | enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance.md#staged-copy). | Nee |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 U kunt de uitvoering van de Kopieer activiteit bewaken in de gebruikers interface van de Azure Data Factory **Author &-controle** of via een programma.
 
@@ -179,7 +179,7 @@ De details van de Kopieer activiteit en prestatie kenmerken worden ook weer gege
 | rowsCopied | Het aantal rijen dat is gekopieerd naar de Sink (niet van toepassing op een binaire kopie). | Waarde voor Int64 (geen unit) |
 | rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door `enableSkipIncompatibleRow` in te stellen op waar. | Waarde voor Int64 (geen unit) |
 | copyDuration | De duur van de Kopieer uitvoering. | Int32-waarde, in seconden |
-| Doorvoer | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
+| throughput | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
 | sinkPeakConnections| Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit.| Int32-waarde (geen eenheid) |
 | sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
