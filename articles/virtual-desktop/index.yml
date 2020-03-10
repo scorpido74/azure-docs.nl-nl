@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over Windows Virtual Desktop
+summary: Lever een virtuele desktopervaring en externe apps aan elk apparaat. Combineer Microsoft 365 en Azure om gebruikers de enige Windows 10-ervaring met meerdere sessies te bieden, op buitengewone schaal en met lagere IT-kosten.
 metadata:
-  title: Documentatie over Windows Virtual Desktop | Microsoft Docs
+  title: Documentatie over Windows Virtual Desktop
   description: Windows Virtual Desktop voor Azure is een Windows 10 Enterprise-ervaring voor meerdere gebruikers in de cloud.
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 'Lever een virtuele desktopervaring en externe apps aan elk apparaat. Combineer Microsoft 365 en Azure om gebruikers de enige Windows 10-ervaring met meerdere sessies te bieden, op buitengewone schaal en met lagere IT-kosten.'
-sections:
-  - title: Overzicht
-    items:
-      - type: paragraph
-        text: 'Meer informatie over Windows Virtual Desktop en hoe u het gebruikt. Via zelfstudies, instructies, verwijzingen en meer leert u hoe u hostpools en tenants instelt en rollen toewijst aan gebruikers voor uw Windows Virtual Desktop-omgeving.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Wat is Windows Virtual Desktop?</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over de installatie en configuratie van Windows Virtual Desktop en hoe u verbinding maakt met de client wanneer u klaar bent.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Een tenant maken in Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Een hostpool maken met Azure Marketplace</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">Appgroepen beheren voor Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Service-principals en roltoewijzingen maken met PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898655"
+landingContent:
+- title: Over Windows Virtual Desktop
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Windows Virtual Desktop?
+      url: overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een tenant maken in Windows Virtual Desktop
+      url: tenant-setup-azure-active-directory.md
+    - text: Een hostpool maken met Azure Marketplace
+      url: create-host-pools-azure-marketplace.md
+    - text: Groepen voor Windows Virtual Desktop beheren
+      url: manage-app-groups.md
+    - text: Service-principals en roltoewijzingen maken met PowerShell
+      url: create-service-principal-role-powershell.md
+- title: Verbinding maken met Windows Virtual Desktop
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows Desktop-client
+      url: connect-windows-7-and-10.md
+    - text: Webclient
+      url: connect-web.md
+    - text: Android-client
+      url: connect-android.md
+    - text: macOS-client
+      url: connect-macos.md
+    - text: iOS-client
+      url: connect-ios.md

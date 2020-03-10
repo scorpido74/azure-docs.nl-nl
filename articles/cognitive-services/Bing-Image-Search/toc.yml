@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C# gebruiken'
-          href: image-search-sdk-quickstart.md
-        - name: Node.js gebruiken
-          href: image-search-sdk-node-quickstart.md
-        - name: Python gebruiken
-          href: image-sdk-python-quickstart.md
-        - name: Java gebruiken
-          href: image-sdk-java-quickstart.md
+        - name: Bing Image Search-clientbibliotheken
+          href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: Een webtoepassing maken om afbeeldingen te zoeken
@@ -44,7 +38,7 @@
   items:
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Afbeeldingsinzichten krijgen
       href: image-insights.md

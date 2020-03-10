@@ -145,10 +145,6 @@
             - name: Uitvoer
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: Resources op abonnementsniveau
-          href: deploy-to-subscription.md
-        - name: Resources op beheergroepniveau
-          href: deploy-to-management-group.md
     - name: Creatiehulpprogramma's gebruiken
       items:
         - name: VS-code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: Sjabloon beveiligen met een SAS-token
           href: secure-template-with-sas-token.md
-        - name: Implementeren naar meerdere resourcegroepen of abonnementen
+    - name: Bereikimplementaties
+      items:
+        - name: Abonnement
+          href: deploy-to-subscription.md
+        - name: Beheergroep
+          href: deploy-to-management-group.md
+        - name: Tenant
+          href: deploy-to-tenant.md
+        - name: Meerdere resourcegroepen of abonnementen
           href: cross-resource-group-deployment.md
     - name: Parameters opgeven
       items:

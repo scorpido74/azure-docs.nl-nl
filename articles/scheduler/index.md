@@ -1,24 +1,28 @@
 ---
-title: Documentatie voor Azure Scheduler - zelfstudies, API-verwijzing | Microsoft Docs
-description: Meer informatie over hoe u Scheduler gebruikt voor het plannen en aanroepen van taken, zoals terugkerende toepassingsacties en routineonderhoud. Zelfstudies, API-verwijzingen en meer.
+title: Documentatie voor Azure Scheduler
+description: Geautomatiseerde taken maken, plannen en uitvoeren in de cloud, bijvoorbeeld terugkerende toepassingsacties en routinematig onderhoud
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610334"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898608"
 ---
 # <a name="scheduler-documentation"></a>Documentatie over Scheduler
 
-Meer informatie over hoe u Scheduler gebruikt voor het plannen en automatisch aanroepen van terugkerende taken in de cloud. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u taken kunt plannen en bewaken, zoals terugkerende toepassingsacties en routineonderhoud.
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, [dat buiten gebruik wordt gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). [Migreer zo snel mogelijk naar Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) om door te gaan met taken die u hebt ingesteld in Scheduler. 
+>
+> Scheduler is niet langer beschikbaar in de Azure-portal, maar de [REST API](/rest/api/scheduler) en [Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taakcollecties kunt beheren.
+
+Meer informatie over geautomatiseerde, terugkerende taken maken, plannen, uitvoeren, beheren en bijwerken in de cloud. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u taken kunt plannen en bewaken, zoals terugkerende toepassingsacties en routineonderhoud.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -40,6 +44,24 @@ Meer informatie over hoe u Scheduler gebruikt voor het plannen en automatisch aa
         </a>
     </li>
     <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Migreren van Azure Scheduler naar Azure Logic Apps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=scheduler">
         <div class="cardSize">
             <div class="cardPadding">
@@ -51,24 +73,6 @@ Meer informatie over hoe u Scheduler gebruikt voor het plannen en automatisch aa
                     </div>
                     <div class="cardText">
                         <h3>Videobibliotheek voor Azure Scheduler</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Aan de slag met Azure Scheduler</h3>
                     </div>
                 </div>
             </div>
