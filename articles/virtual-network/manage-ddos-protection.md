@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390732"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection Standard beheren met de Azure Portal
 
@@ -44,7 +44,7 @@ Het is niet nodig om meer dan één abonnement te maken voor de meeste organisat
 
     |Instelling        |Waarde                                              |
     |---------      |---------                                          |
-    |Name           | myDdosProtectionPlan                              |
+    |Naam           | myDdosProtectionPlan                              |
     |Abonnement   | Selecteer uw abonnement.                         |
     |Resourcegroep | Selecteer **nieuwe maken** en voer *myResourceGroup* in |
     |Locatie       | VS - oost                                           |
@@ -57,7 +57,7 @@ Het is niet nodig om meer dan één abonnement te maken voor de meeste organisat
 
     | Instelling         | Waarde                                                        |
     | ---------       | ---------                                                    |
-    | Name            | myVirtualNetwork                                             |
+    | Naam            | myVirtualNetwork                                             |
     | Abonnement    | Selecteer uw abonnement.                                    |
     | Resourcegroep  | Selecteer **Bestaande gebruiken** en vervolgens **myResourceGroup** |
     | Locatie        | VS - oost                                                      |
@@ -71,7 +71,7 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 2. Selecteer in de linkerbovenhoek van het Azure Portal **een resource maken** .
 3. Voer de naam in van het virtuele netwerk waarvoor u DDoS Protection standaard wilt inschakelen in het **vak resources, services en documenten zoeken** bovenaan de portal. Wanneer de naam van het virtuele netwerk wordt weer gegeven in de zoek resultaten, selecteert u dit.
 4. Selecteer **DDoS Protection**onder **instellingen**.
-5. Selecteer **standaard**. Selecteer onder **DDoS-beschermings plan**een bestaand DDoS-beveiligings plan of het plan dat u hebt gemaakt in stap 1 en selecteer vervolgens **Opslaan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
+5. selecteer **Standaard**. Selecteer onder **DDoS-beschermings plan**een bestaand DDoS-beveiligings plan of het plan dat u hebt gemaakt in stap 1 en selecteer vervolgens **Opslaan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
 
 **Opdrachten** 
 - Azure CLI: [AZ Network DDoS-Protection Create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
@@ -107,14 +107,14 @@ U kunt een van de beschik bare metrische gegevens voor DDoS-beveiliging selecter
 
     |Instelling                  |Waarde                                                                                               |
     |---------                |---------                                                                                           |
-    |Name                     | myDdosAlert                                                                                        |
+    |Naam                     | myDdosAlert                                                                                        |
     |Abonnement             | Selecteer het abonnement dat het open bare IP-adres bevat waarvoor u waarschuwingen wilt ontvangen.        |
     |Resourcegroep           | Selecteer de resource groep die het open bare IP-adres bevat waarvoor u waarschuwingen wilt ontvangen.      |
-    |Bron                 | Selecteer het open bare IP-adres met het open bare IP-adres waarvoor u waarschuwingen wilt ontvangen. DDoS bewaakt open bare IP-adressen die zijn toegewezen aan bronnen in een virtueel netwerk. Als u geen resources met open bare IP-adressen in het virtuele netwerk hebt, moet u eerst een resource met een openbaar IP-adres maken. U kunt het open bare IP-adres van alle resources die zijn geïmplementeerd via Resource Manager (niet klassiek) bewaken in het [virtuele netwerk voor Azure-Services](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), met uitzonde ring van Azure app service omgevingen en Azure VPN gateway. Als u wilt door gaan met deze zelf studie, kunt u snel een virtuele [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machine maken.                   |
+    |Resource                 | Selecteer het open bare IP-adres met het open bare IP-adres waarvoor u waarschuwingen wilt ontvangen. DDoS bewaakt open bare IP-adressen die zijn toegewezen aan bronnen in een virtueel netwerk. Als u geen resources met open bare IP-adressen in het virtuele netwerk hebt, moet u eerst een resource met een openbaar IP-adres maken. U kunt het open bare IP-adres van alle resources die zijn geïmplementeerd via Resource Manager (niet klassiek) bewaken in het [virtuele netwerk voor Azure-Services](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), met uitzonde ring van Azure app service omgevingen en Azure VPN gateway. Als u wilt door gaan met deze zelf studie, kunt u snel een virtuele [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machine maken.                   |
     |Gegevens                   | Onder DDoS-aanval of niet                                                                            |
     |Drempelwaarde                | 1- **1** betekent dat u een aanval ondervindt. **0** betekent dat u geen aanval ondervindt.                         |
     |Periode                   | Selecteer de waarde die u kiest.                                                                   |
-    |Melden via E-mail         | Schakel het selectievakje in                                                                                  |
+    |Melden via E-mail         | Schakel het selectie vakje in                                                                                  |
     |Extra beheerder | Voer uw e-mail adres in als u geen e-mail eigenaar, bijdrager of lezer bent voor het abonnement. |
 
     Binnen een paar minuten van aanvals detectie ontvangt u een e-mail bericht van Azure Monitor metrische gegevens die er ongeveer als volgt uitzien:
@@ -230,7 +230,7 @@ De waarschuwingen bevatten algemene informatie over het open bare IP-adres dat w
 
 Als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Actie                                            | Name                                     |
+| Bewerking                                            | Naam                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Een DDoS-beschermings plan lezen              |
 | Microsoft.Network/ddosProtectionPlans/write       | Een DDoS-beschermings plan maken of bijwerken  |

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: erhopf
 ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255677"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390799"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -104,7 +104,7 @@ De HTTP-statuscode voor elke reactie geeft aan dat het slagen of veelvoorkomende
 | `100` | Doorgaan | De eerste aanvraag is geaccepteerd. Doorgaan met het verzenden van de rest van de gegevens. (Gebruikt met gesegmenteerde overdracht) |
 | `200` | OK | De aanvraag is uitgevoerd. de antwoordtekst is een JSON-object. |
 | `400` | Ongeldig verzoek | Er is geen taal code gegeven, geen ondersteunde taal, ongeldig audio bestand, enzovoort. |
-| `401` | Niet-geautoriseerd | Abonnementssleutel of autorisatie-token is ongeldig in de regio is opgegeven of ongeldig eindpunt. |
+| `401` | Niet geautoriseerd | Abonnementssleutel of autorisatie-token is ongeldig in de regio is opgegeven of ongeldig eindpunt. |
 | `403` | Verboden | Ontbrekende abonnementssleutel of autorisatie token. |
 
 ## <a name="chunked-transfer"></a>Gesegmenteerde overdracht

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393704"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
 
@@ -39,12 +39,12 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
    |Instelling|Waarde|Doel|
    |--|--|--|
-   |Name|`my-luis-resource`|De naam van de Azure-resource. U hebt deze naam nodig wanneer u de resource aan de app toewijst in de LUIS-Portal.|
+   |Naam|`my-luis-resource`|De naam van de Azure-resource. U hebt deze naam nodig wanneer u de resource aan de app toewijst in de LUIS-Portal.|
    |Abonnement|Uw abonnement|Selecteer een van de abonnementen die zijn gekoppeld aan uw account.|
    |Resourcegroep|`my-resource-group`|Maak een nieuwe resource groep voor al uw cognitieve service bronnen. Wanneer u klaar bent met de resources, kunt u de resource groep verwijderen om uw abonnement op te schonen. |
-   |Locatie van ontwerpen|**US - west**|De Azure-regio voor het ontwerpen.|
+   |Locatie van ontwerpen|**VS - west**|De Azure-regio voor het ontwerpen.|
    |Prijs categorie ontwerpen|**F0**|De standaard prijs categorie voor het ontwerpen.|
-   |Runtime-locatie|**US - west**|De Azure-regio voor Voorspellings eindpunt query's.|
+   |Runtime-locatie|**VS - west**|De Azure-regio voor Voorspellings eindpunt query's.|
    |Prijs categorie voor runtime|**S0**|Deze prijs categorie biedt voor websites met veel verkeer.|
    | | | |
 

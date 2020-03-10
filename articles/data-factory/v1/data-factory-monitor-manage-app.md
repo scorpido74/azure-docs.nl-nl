@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384764"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Als u geen Data Factory toepassing hebt om deze stappen te testen met, gaat u na
 ## <a name="understand-the-monitoring-and-management-app"></a>Meer informatie over de app voor bewaking en beheer
 Er zijn drie tabbladen aan de linkerkant: **resource Explorer**, **bewakings weergaven**en **waarschuwingen**. Het eerste tabblad (**resource Explorer**) is standaard geselecteerd.
 
-### <a name="resource-explorer"></a>Resource Verkenner
+### <a name="resource-explorer"></a>Resource Explorer
 U ziet het volgende:
 
 * De resource Explorer- **structuur weergave** in het linkerdeel venster.
@@ -75,7 +75,7 @@ In resource Explorer ziet u alle resources (pijp lijnen, gegevens sets, gekoppel
 * De eigenschappen van het geselecteerde object worden weer gegeven in de venster Eigenschappen in het rechterdeel venster.
 * De JSON-definitie van het geselecteerde object wordt weer gegeven, indien van toepassing. Bijvoorbeeld: een gekoppelde service, een gegevensset of een pijp lijn.
 
-![Resource Verkenner](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
 Zie het artikel [planning en uitvoering](data-factory-scheduling-and-execution.md) voor gedetailleerde conceptuele informatie over activiteit Vensters.
 
@@ -187,13 +187,13 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het activiteiten venster wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>Out</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
 <td>Geannuleerd</td><td>Het activiteiten venster is geannuleerd door de gebruiker.</td>
@@ -207,10 +207,10 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 <td>Gereed</td><td>-</td><td>Het activiteiten venster is klaar voor gebruik.</td>
 </tr>
 <tr>
-<td>Genegeerd</td><td>-</td><td>Het activiteiten venster is niet verwerkt.</td>
+<td>Overgeslagen</td><td>-</td><td>Het activiteiten venster is niet verwerkt.</td>
 </tr>
 <tr>
-<td>Geen</td><td>-</td><td>Er is een activiteiten venster gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
+<td>None</td><td>-</td><td>Er is een activiteiten venster gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
 </tr>
 </table>
 
@@ -244,7 +244,7 @@ U kunt het tabblad **script** gebruiken om de JSON-definitie van de geselecteerd
 ![Script tabblad](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Systeem weergaven gebruiken
-De bewakings-en beheer-app bevat vooraf ontwikkelde systeem weergaven (Windows**recente**activiteiten, **mislukte activiteiten**Vensters, Windows **-activiteiten in uitvoering**) waarmee u recente/mislukte activiteiten Vensters kunt weer geven voor uw gegevens standaard.
+De bewakings-en beheer-app bevat vooraf ontwikkelde systeem weergaven (Windows**recente**activiteiten, **mislukte activiteit**Vensters, Windows **activiteiten in uitvoering**) waarmee u recente/mislukte/lopende activiteiten Vensters voor uw Data Factory kunt weer geven.
 
 Ga naar het tabblad **controle weergaven** aan de linkerkant door erop te klikken.
 

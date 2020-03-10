@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253171"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384707"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Data Box Edge beheren
 
@@ -66,7 +66,7 @@ Bij het genereren van de activerings sleutel voor het Data Box Edge apparaat of 
 -  Een share maken met een gekoppeld opslag account.
 -  Het maken van een gebruiker die toegang heeft tot de shares op het apparaat.
 
-U moet `User` toegang hebben tot Active Directory Tenant als u dit moet `Read all directory objects`kunnen doen. U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects`. Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Data Box Edge apparaat, het maken van een gebruiker, de configuratie van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat niet uitgevoerd.
+U moet een `User` toegang hebben op Active Directory Tenant, zoals u moet kunnen `Read all directory objects`. U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor het `Read all directory objects`. Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Data Box Edge apparaat, het maken van een gebruiker, de configuratie van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat niet uitgevoerd.
 
 Zie [standaard toegang voor beheerders, gebruikers en gast gebruikers](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)voor meer informatie over het verlenen van toegang aan gebruikers Azure Active Directory Graph API.
 
@@ -80,7 +80,7 @@ U hoeft geen toegangs machtigingen voor het abonnements niveau te verlenen zodat
 
 Voordat u probeert een resource te maken, moet u ervoor zorgen dat de resource provider is geregistreerd in het abonnement. Als de resource provider niet is geregistreerd, moet u ervoor zorgen dat de gebruiker die de nieuwe resource maakt, voldoende rechten heeft om de vereiste resource provider te registreren op het abonnements niveau. Als u dit nog niet hebt gedaan, ziet u de volgende fout:
 
-*De naam \<van het abonnements abonnement > heeft geen machtigingen om de resource provider (s) te registreren: Microsoft.DataBoxEdge.*
+*De naam van het abonnement \<abonnement > heeft geen machtigingen voor het registreren van de resource provider (s): micro soft. DataBoxEdge.*
 
 
 Voer de volgende opdracht uit om een lijst met geregistreerde resource providers in het huidige abonnement op te halen:
@@ -89,7 +89,7 @@ Voer de volgende opdracht uit om een lijst met geregistreerde resource providers
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Voor data Box edge apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u `Microsoft.DataBoxEdge`de registratie wilt registreren, moet u de volgende opdracht uitvoeren:
+`Microsoft.DataBoxEdge` moet worden geregistreerd voor Data Box Edge apparaat. Als u `Microsoft.DataBoxEdge`wilt registreren, moet u de volgende opdracht uitvoeren voor de abonnements beheerder:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -134,4 +134,4 @@ U kunt het fysieke apparaat afsluiten of opnieuw opstarten met behulp van de lok
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [beheren](data-box-edge-manage-shares.md)van shares.
+- Meer informatie over het [beheren van shares](data-box-edge-manage-shares.md).

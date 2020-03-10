@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869296"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374953"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
 
@@ -63,14 +63,14 @@ Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevo
 
 ![B2B-gebruiker met gast gebruikers type](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Gastgebruikers toevoegen aan een groep
+## <a name="add-guest-users-to-a-group"></a>Gast gebruikers toevoegen aan een groep
 Als u gebruikers van B2B-samen werking hand matig aan een groep wilt toevoegen, volgt u deze stappen:
 
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory** op elke pagina.
 3. Selecteer onder **beheren**de optie **groepen**.
 4. Selecteer een groep (of klik op **nieuwe groep** om een nieuw item te maken). Het is een goed idee om in de groeps beschrijving te vermelden dat de groep B2B-gast gebruikers bevat.
-5. Selecteer **Leden**. 
+5. Selecteer **leden**. 
 6. Voer een van de volgende handelingen uit:
    - Als de gast gebruiker al in de directory bestaat, zoekt u naar de B2B-gebruiker. Selecteer de gebruiker en klik vervolgens op **selecteren** om de gebruiker aan de groep toe te voegen.
    - Als de gast gebruiker zich nog niet in de map bevinden, kunt u deze in de groep uitnodigen door hun e-mail adres in het zoekvak te typen, een optioneel persoonlijk bericht te typen en vervolgens op **selecteren**te klikken. De uitnodiging gaat automatisch naar de uitgenodigde gebruiker.
@@ -79,7 +79,7 @@ Als u gebruikers van B2B-samen werking hand matig aan een groep wilt toevoegen, 
    
 U kunt ook dynamische groepen gebruiken met Azure AD B2B-samen werking. Zie [dynamische groepen en Azure Active Directory B2B Collaboration](use-dynamic-groups.md)(Engelstalig) voor meer informatie.
 
-## <a name="add-guest-users-to-an-application"></a>Gastgebruikers toevoegen aan een toepassing
+## <a name="add-guest-users-to-an-application"></a>Gast gebruikers toevoegen aan een toepassing
 
 Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan een toepassing:
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan e
    - Klik op **Selecteren**.
    - Klik op **Toewijzen**.
  
-## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gastgebruikers opnieuw verzenden
+## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gast gebruikers opnieuw verzenden
 
 Als een gast gebruiker de uitnodiging nog niet heeft ingewisseld, kunt u de uitnodigings-e-mail opnieuw verzenden.
 

@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614074"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382775"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -22,7 +22,7 @@ In deel drie van de serie leert u het volgende:
 > * Kestrel configureren voor gebruik van HTTPS
 > * Het SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
-> * Poort 443 openen in de Azure-load balancer
+> * Poort 443 openen in de Azure load balancer
 > * De toepassing implementeren in een extern cluster
 
 In deze zelfstudiereeks leert u het volgende:
@@ -40,11 +40,11 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
-* [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
+* [Installeer de Service Fabric-SDK](service-fabric-get-started.md)
 
-## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Haal een certificaat op of maak een zelfondertekend ontwikkelingscertificaat.
+## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Een certificaat verkrijgen of een zelfondertekend ontwikkelingscertificaat maken
 
 Gebruik voor productietoepassingen een certificaat van een [certificeringsinstantie (CA)](https://wikipedia.org/wiki/Certificate_authority). U kunt voor ontwikkelings- en testdoeleinden een zelfondertekend certificaat maken en gebruiken. De Service Fabric SDK bevat het *CertSetup.ps1*-script, dat een zelfondertekend certificaat maakt en dat certificaat vervolgens importeert naar het `Cert:\LocalMachine\My`-certificaatarchief. Open een opdrachtprompt als beheerder en voer de volgende opdracht uit voor het maken van een certificaat met het onderwerp 'CN=mytestcert':
 
@@ -68,7 +68,7 @@ Thumbprint                                Subject
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>Een HTTPS-eindpunt in het servicemanifest definiëren
 
-Start Visual Studio als een **beheerder** en open de Voting-oplossing. Open *VotingWeb/PackageRoot/ServiceManifest.xml* vanuit Solution Explorer. Het servicemanifest definieert de service-eindpunten.  Zoek de sectie **Eindpunten** en bewerk het bestaande eindpunt met de naam 'ServiceEndpoint'.  Wijzig de naam in 'EndpointHttps', stel het protocol in op *https*, het type op *Invoer* en het poortnummer op *443*.  Sla uw wijzigingen op.
+Start Visual Studio als een **beheerder** en open de Voting-oplossing. Open *VotingWeb/PackageRoot/ServiceManifest.xml* vanuit Solution Explorer. Het servicemanifest definieert de service-eindpunten.  Zoek de sectie **Eindpunten** en bewerk het bestaande eindpunt met de naam 'ServiceEndpoint'.  Wijzig de naam in 'EndpointHttps', stel het protocol in op *https*, het type op *invoer* en het poortnummer op *443*.  Sla uw wijzigingen op.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -356,7 +356,7 @@ Installeer vervolgens het certificaat op het externe cluster met behulp [van de 
 > [!Warning]
 > Een zelfondertekend certificaat volstaat voor ontwikkel- en testtoepassingen. Gebruik voor productietoepassingen in plaats van een zelfondertekend certificaat een certificaat van een [certificeringsinstantie (CA)](https://wikipedia.org/wiki/Certificate_authority).
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Poort 443 openen in de Azure-load balancer
+## <a name="open-port-443-in-the-azure-load-balancer"></a>Poort 443 openen in de Azure load balancer
 
 Open poort 443 in de load balancer als dat nog niet is gebeurd.
 
@@ -398,7 +398,7 @@ In dit deel van de zelfstudie hebt u het volgende geleerd:
 > * Kestrel configureren voor gebruik van HTTPS
 > * Het SSL-certificaat installeren op de externe clusterknooppunten
 > * Netwerkservice toegang geven tot de persoonlijke sleutel van het certificaat
-> * Poort 443 openen in de Azure-load balancer
+> * Poort 443 openen in de Azure load balancer
 > * De toepassing implementeren in een extern cluster
 
 Ga door naar de volgende zelfstudie:

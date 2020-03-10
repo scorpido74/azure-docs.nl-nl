@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846279"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390365"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Service limieten in azure Cognitive Search
 
@@ -46,7 +46,7 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen en an
 
 ## <a name="index-limits"></a>Index limieten
 
-| Bron | Gratis | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Resource | Gratis | Basis&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximale aantal indexen |3 |5 of 15 |50 |200 |200 |1000 per partitie of 3000 per service |10 |10 |
 | Maximum aantal eenvoudige velden per index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -76,10 +76,10 @@ Als u wilt bepalen of uw service document limieten heeft, gebruikt u de [rest AP
 
 Als de portal een document limiet aangeeft, is uw service gemaakt vóór de eind versie van 2017 of is deze gemaakt in een Data Center met clusters met lagere capaciteit voor het hosten van Azure Cognitive Search Services:
 
-+ Australië Oost
++ Australië - oost
 + Azië - oost
 + India - centraal
-+ Japan - West
++ Japan - west
 + VS - west-centraal
 
 Voor services die aan de document limieten voldoen, gelden de volgende maximum limieten:
@@ -107,17 +107,17 @@ Als u de document grootte wilt behouden, moet u niet-bevraagde gegevens uit de a
 Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit van de service als geheel te bieden, maar grotere gegevens sets hebben mogelijk meer indexerings tijd nodig dan het maximum aantal toestaat. Als een indexerings taak niet kan worden voltooid binnen de toegestane maximum tijd, voert u deze uit volgens een schema. De scheduler houdt de indexerings status bij. Als een geplande indexerings taak om welke reden dan ook wordt onderbroken, kan de Indexeer functie ophalen waar deze voor het laatst bij de volgende geplande uitvoering was gebleven.
 
 
-| Bron | Gratis&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Resource | Gratis&nbsp;<sup>1</sup> | Basis&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximale aantal indexeerfuncties |3 |5 of 15|50 |200 |200 |N/A |10 |10 |
-| Maximale aantal gegevensbronnen |3 |5 of 15 |50 |200 |200 |N/A |10 |10 |
-| Maximum vaardig heden <sup>4</sup> |3 |5 of 15 |50 |200 |200 |N/A |10 |10 |
-| Maximale indexerings belasting per aanroep |10.000 documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |N/A |Geen limiet |Geen limiet |
+| Maximale aantal indexeerfuncties |3 |5 of 15|50 |200 |200 |N.v.t. |10 |10 |
+| Maximale aantal gegevensbronnen |3 |5 of 15 |50 |200 |200 |N.v.t. |10 |10 |
+| Maximum vaardig heden <sup>4</sup> |3 |5 of 15 |50 |200 |200 |N.v.t. |10 |10 |
+| Maximale indexerings belasting per aanroep |10.000 documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |N.v.t. |Geen limiet |Geen limiet |
 | Minimale planning | 5 minuten |5 minuten |5 minuten |5 minuten |5 minuten |5 minuten |5 minuten | 5 minuten |
-| Maximale uitvoerings tijd <sup>5</sup> | 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N/A  |24 uur |24 uur |
-| Maximale uitvoerings tijd voor cognitieve Zoek vaardig heden of BLOB-indexering met afbeeldings analyse <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N/A  |2 uur |2 uur |
-| BLOB-Indexer: maximale grootte van BLOB, MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4&nbsp;miljoen |8&nbsp;miljoen |16&nbsp;miljoen |N/A |4&nbsp;miljoen |4&nbsp;miljoen |
+| Maximale uitvoerings tijd <sup>5</sup> | 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N.v.t.  |24 uur |24 uur |
+| Maximale uitvoerings tijd voor cognitieve Zoek vaardig heden of BLOB-indexering met afbeeldings analyse <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N.v.t.  |2 uur |2 uur |
+| BLOB-Indexer: maximale grootte van BLOB, MB |16 |16 |128 |256 |256 |N.v.t.  |256 |256 |
+| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4&nbsp;miljoen |8&nbsp;miljoen |16&nbsp;miljoen |N.v.t. |4&nbsp;miljoen |4&nbsp;miljoen |
 
 <sup>1</sup> gratis services hebben de maximale uitvoerings tijd van de Indexeer functie van 3 minuten voor BLOB-bronnen en 1 minuut voor alle andere gegevens bronnen. Voor AI-indexering die in Cognitive Services aanroept, zijn gratis services beperkt tot 20 gratis trans acties per dag, waarbij een trans actie wordt gedefinieerd als een document dat door de verrijkings pijplijn is door gegeven.
 
@@ -136,10 +136,10 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 
 Het Maxi maal toegestane aantal synoniemen is afhankelijk van de prijs categorie. Elke regel kan Maxi maal 20 uitbrei dingen hebben, waarbij een uitbrei ding een gelijkwaardige term is. Als bijvoorbeeld ' kat ', ' Association ' met ' Kitty ', ' Feline ' en ' Felis ' (het genus voor katten) als drie uitbrei dingen worden beschouwd.
 
-| Bron | Gratis | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| Resource | Gratis | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximum aantal synoniemen |3 |3|5 |10 |20 |20 | 10 | 10 |
-| Maximum aantal regels per kaart |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
+| Maximum aantal regels per kaart |5000 |20.000|20.000 |20.000 |20.000 |20.000 | 20.000 | 20.000  |
 
 ## <a name="queries-per-second-qps"></a>Query's per seconde (QPS)
 

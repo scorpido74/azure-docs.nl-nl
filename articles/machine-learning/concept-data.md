@@ -11,11 +11,11 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
 ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396187"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Toegang tot gegevens in Azure Machine Learning
 
@@ -28,7 +28,7 @@ Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag, raden we u a
 3. Gebruik deze gegevensset in uw machine learning experiment door ofwel 
     1. Deze koppelen aan het reken doel van het experiment voor model training
 
-        **OR** 
+        **OF** 
 
     1. Gebruik het rechtstreeks in Azure Machine Learning oplossingen zoals geautomatiseerde machine learning (Automated ML) experimenten, machine learning pijp lijnen en de [Azure machine learning Designer](concept-designer.md).
 4. Maak gegevensset-monitors voor uw model-uitvoer gegevensset om te detecteren voor gegevens drift. 
@@ -54,9 +54,9 @@ Ondersteunde Azure Storage-services die kunnen worden geregistreerd als data sto
 + Azure Data Lake
 + Azure Data Lake Gen2
 + Azure SQL Database
-+ Azure Database voor PostgreSQL
++ Azure Database for PostgreSQL
 + Databricks-bestandssysteem
-+ Azure Database voor MySQL
++ Azure Database for MySQL
 
 ### <a name="datasets"></a>Gegevenssets
 

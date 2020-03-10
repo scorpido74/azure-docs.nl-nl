@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362082"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)en [Azure Automation](../../automation/automation-intro.md).
@@ -101,7 +101,7 @@ In deze sectie bevat informatie over de ondersteunde Linux-distributies.
 Beginnen met versies die na augustus 2018 wordt uitgebracht, maken we de volgende wijzigingen aan ons ondersteuningsmodel:  
 
 * Alleen de server-versies worden ondersteund, een niet-client.  
-* Nieuwe versies van door [Azure Linux geviseerde distributies](../../virtual-machines/linux/endorsed-distros.md) worden altijd ondersteund.  
+* Richt u op de ondersteuning van een van de door [Azure Linux geviseerde distributies](../../virtual-machines/linux/endorsed-distros.md). Houd er rekening mee dat er enige vertraging is tussen een nieuwe distributie/versie die door Azure Linux wordt goedgekeurd en wordt ondersteund voor de Log Analytics Linux-agent.
 * Alle secundaire versies worden ondersteund voor elke primaire versie weergegeven.
 * De versies die zijn geslaagd voor de datum van de fabrikant einde van ondersteuning worden niet ondersteund.  
 * Nieuwe versies van AMI worden niet ondersteund.  

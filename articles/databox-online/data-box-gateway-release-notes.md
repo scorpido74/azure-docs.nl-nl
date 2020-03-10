@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway General Availability opmerkingen bij de release | Microsoft Docs
-description: Beschrijving van essentiële openstaande problemen en oplossingen voor de Azure Data Box Gateway met versie met algemene beschikbaarheid.
+title: Azure Data Box Gateway algemene Beschik baarheid release opmerkingen | Microsoft Docs
+description: Hierin worden essentiële openstaande problemen en oplossingen beschreven voor het Azure Data Box Gateway uitvoeren van algemene Beschik baarheid.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,45 +9,45 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754196"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384663"
 ---
-# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway General Availability opmerkingen bij de release
+# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Opmerkingen bij de release van Azure Data Box Edge/Azure Data Box Gateway algemene Beschik baarheid
 
 ## <a name="overview"></a>Overzicht
 
-De volgende releaseopmerkingen de kritieke open problemen identificeren en de opgeloste problemen voor algemene beschikbaarheid (GA) de release van Azure Data Box Edge en Azure Data Box-Gateway.
+De volgende opmerkingen bij de release identificeren de kritieke openstaande problemen en de opgeloste problemen voor de algemene Beschik baarheid (GA) voor Azure Data Box Edge en Azure Data Box Gateway.
 
-Opmerkingen bij de release worden voortdurend bijgewerkt en als kritieke problemen waarvoor een tijdelijke oplossingen nodig zijn gedetecteerd, worden ze toegevoegd. Voordat u uw gegevens in het Edge/Data Box-Gateway implementeert, zorgvuldig door de informatie in de release-opmerkingen.
+De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Data Box Edge/Data Box Gateway implementeert.
 
-De GA-versie komt overeen met de versies van software:
+De GA-release komt overeen met de software versies:
 
 - **Data Box Gateway 1903 (1.5.814.447)**
 - **Data Box Edge 1903 (1.5.814.447)**
 
 
-## <a name="whats-new"></a>Nieuwe functies
+## <a name="whats-new"></a>Wat is er nieuw
 
-- **Nieuwe installatiekopieën van virtuele schijven** -nieuwe VHDX en VMDK zijn nu beschikbaar in de Azure-portal. Download deze installatiekopieën als u wilt inrichten, configureren en implementeren van nieuwe apparaten van de gegevensgateway in het algemeen beschikbaar. De Data Box-Gateway-apparaten die zijn gemaakt in het eerdere voorbeeld releases kunnen niet worden bijgewerkt naar deze versie. Ga voor meer informatie naar [voorbereidingen voor het implementeren van Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
-- **Ondersteuning voor NFS** -ondersteuning voor NFS is momenteel in preview en beschikbaar voor v3.0 en v4.1 clients die toegang hebben tot de gegevens in het Edge- en Data Box-Gateway-apparaten.
-- **Opslag tolerantie** -uw gegevens in het Edge-apparaat bestand zijn tegen het uitvallen van één schijf met de functie voor opslag tolerantie. Deze functie is momenteel beschikbaar als preview-product. U kunt opslag tolerantie inschakelen door te selecteren de **Resilient** optie in de **Opslaginstellingen** in de lokale webgebruikersinterface.
+- **Nieuwe installatie kopieën van virtuele schijven** : nieuwe VHDX en VMDK zijn nu beschikbaar in de Azure Portal. Down load deze installatie kopieën om nieuwe Data Box Gateway GA-apparaten in te richten, te configureren en te implementeren. De Data Box Gateway-apparaten die zijn gemaakt in de eerdere Preview-versies, kunnen niet worden bijgewerkt naar deze versie. Ga voor meer informatie naar voor [bereiding voor het implementeren van Azure data Box gateway](data-box-gateway-deploy-prep.md).
+- **Ondersteuning voor NFS** : NFS-ondersteuning is momenteel beschikbaar in de preview-versie van v 3.0 en v 4.1-clients die toegang hebben tot de Data Box Edge en data Box gateway apparaten.
+- **Tolerantie van opslag** : uw data Box edge-apparaat kan een storing van één gegevens schijf met de functie voor opslag tolerantie hebben. Deze functie is momenteel beschikbaar als preview-product. U kunt de tolerantie voor opslag inschakelen door de optie voor **robuuste** toegang te selecteren in de **opslag instellingen** in de lokale webgebruikersinterface.
 
 
-## <a name="known-issues-in-ga-release"></a>Bekende problemen in GA-versie
+## <a name="known-issues-in-ga-release"></a>Bekende problemen in GA release
 
-De volgende tabel bevat een overzicht van de bekende problemen voor de Data Box-Gateway met versie uitgevoerd.
+De volgende tabel bevat een overzicht van bekende problemen voor de Data Box Gateway uitvoering van release.
 
 | Nee. | Functie | Probleem | Tijdelijke oplossing/opmerkingen |
 | --- | --- | --- | --- |
-| **1.** |Bestandstypen | De volgende bestandstypen worden niet ondersteund: teken bestanden, bestanden blokkeren, sockets, pipes, symbolische koppelingen.  |Deze bestanden zijn gekopieerd resultaten in 0 heeft een lengte van bestanden die worden gemaakt op de NFS delen. Deze bestanden blijven in een foutstatus en er wordt ook gerapporteerd *error.xml*. <br> Symbolische koppelingen naar de directory's leiden tot mappen ophalen nooit offline gemarkeerd. U mag de grijze cross als gevolg hiervan niet weergegeven in de mappen die aangeeft dat de mappen zijn offline en alle gekoppelde inhoud is volledig geüpload naar Azure. |
-| **2.** |Verwijderen | Vanwege een fout in deze release, als een NFS-share is verwijderd, kan klikt u vervolgens de share niet worden verwijderd. De status van de share wordt weergegeven *verwijderen*.  |Dit gebeurt alleen als de share met behulp van de naam van een niet-ondersteund bestandstype. |
-| **3.** |kopiëren | Het kopiëren van gegevens is mislukt met fout:  De aangevraagde bewerking kan niet worden voltooid vanwege een beperking van bestand system.  |De alternatieve gegevens Stream (AD) die zijn gekoppeld aan groter zijn dan 128 KB wordt niet ondersteund.   |
+| **1.** |Bestands typen | De volgende bestands typen worden niet ondersteund: teken bestanden, blok keren bestanden, sockets, sluizen en symbolische koppelingen.  |Als u deze bestanden kopieert, worden er bestanden met een lengte van 0 gemaakt op de NFS-share. Deze bestanden blijven in een fout status en worden ook gerapporteerd in *error. XML*. <br> Symbolische koppelingen naar directory's leiden ertoe dat directory's nooit offline worden gemarkeerd. Als gevolg hiervan is het mogelijk dat de grijze cross-by-directory's niet worden weer gegeven die aangeven dat de directory's offline zijn en dat alle bijbehorende inhoud volledig is geüpload naar Azure. |
+| **2.** |Verwijdering | Als gevolg van een fout in deze release, wordt de share mogelijk niet verwijderd als een NFS-share wordt verwijderd. Bij de status van de share wordt het *verwijderen*weer gegeven.  |Dit gebeurt alleen wanneer de share een niet-ondersteunde bestands naam gebruikt. |
+| **3.** |Exemplaar | Het kopiëren van de gegevens is mislukt met de volgende fout: de aangevraagde bewerking kan niet worden voltooid vanwege een beperking van het bestands systeem.  |De alternatieve gegevens stroom (ADS) die is gekoppeld aan de bestands grootte van meer dan 128 KB wordt niet ondersteund.   |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorbereidingen voor het implementeren van Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
-- [Voorbereidingen voor het implementeren van Azure Data Box Edge](data-box-edge-deploy-prep.md).
+- [Bereid u voor op de implementatie van Azure data Box gateway](data-box-gateway-deploy-prep.md).
+- [Bereid u voor op de implementatie van Azure data Box Edge](data-box-edge-deploy-prep.md).

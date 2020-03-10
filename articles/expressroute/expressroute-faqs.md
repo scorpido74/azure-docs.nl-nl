@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770982"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361585"
 ---
-# <a name="expressroute-faq"></a>Veelgestelde vragen over ExpressRoute
+# <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
 ## <a name="what-is-expressroute"></a>Wat is ExpressRoute?
 
@@ -26,15 +26,15 @@ ExpressRoute-verbindingen gaan niet via het openbare internet. Deze verbindingen
 
 ### <a name="where-is-the-service-available"></a>Waar de service beschikbaar is?
 
-Deze pagina voor de locatie en de beschikbaarheid wordt weergegeven: [ExpressRoute partners en locaties](expressroute-locations.md).
+Zie deze pagina voor service locatie en beschik baarheid: [ExpressRoute partners en locaties](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Hoe kan ik ExpressRoute gebruiken om te verbinden met Microsoft als ik geen partnerschappen met een van de ExpressRoute-provider-partners?
 
-U kunt een regionale luchtvaartmaatschappij selecteren en land Ethernet-verbindingen op een van de uitwisseling van de ondersteunde locaties van de provider. U kunt vervolgens koppelen met Microsoft op de providerlocatie. Controleer de laatste sectie van [ExpressRoute partners en locaties](expressroute-locations.md) om te zien of uw serviceprovider aanwezig is in een van de exchange-locaties. Vervolgens kunt u een ExpressRoute-circuit via de service-provider verbinding maken met Azure bestellen.
+U kunt een regionale luchtvaartmaatschappij selecteren en land Ethernet-verbindingen op een van de uitwisseling van de ondersteunde locaties van de provider. U kunt vervolgens koppelen met Microsoft op de providerlocatie. Raadpleeg de laatste sectie van [ExpressRoute-partners en-locaties](expressroute-locations.md) om te zien of uw service provider aanwezig is op een van de Exchange-locaties. Vervolgens kunt u een ExpressRoute-circuit via de service-provider verbinding maken met Azure bestellen.
 
 ### <a name="how-much-does-expressroute-cost"></a>Wat kost ExpressRoute?
 
-Controleer [prijsinformatie](https://azure.microsoft.com/pricing/details/expressroute/) voor informatie over prijzen.
+Bekijk de [prijs](https://azure.microsoft.com/pricing/details/expressroute/) informatie voor prijs gegevens.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Als ik voor een ExpressRoute-circuit van een bepaalde bandbreedte betalen, de VPN-verbinding die ik aankopen op mijn netwerkserviceprovider doen hoeft te zijn dezelfde snelheid?
 
@@ -58,7 +58,7 @@ De enige manier voor het filteren/insluiten van routes bevindt zich op de on-pre
 
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Biedt ExpressRoute een Service Level Agreement (SLA)?
 
-Zie voor meer informatie, de [ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) pagina.
+Zie de pagina [EXPRESSROUTE Sla](https://azure.microsoft.com/support/legal/sla/) voor meer informatie.
 
 ## <a name="supported-services"></a>Ondersteunde services
 
@@ -80,7 +80,7 @@ Als uw ExpressRoute-circuit is ingeschakeld voor Azure micro soft-peering, kunt 
 * Power BI-beschikbaar via een regionale community van Azure, Zie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) voor meer informatie over de regio van uw Power bi Tenant.
 * Azure Active Directory
 * [Virtueel bureau blad van Windows](https://azure.microsoft.com/services/virtual-desktop/)
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Global Services van Azure-community)
+* [Azure-DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services Community)
 * Open bare IP-adressen van Azure voor IaaS (Virtual Machines, Virtual Network gateways, load balancers, enzovoort)  
 * De meeste andere Azure-Services worden ook ondersteund. Controleer of rechtstreeks met de service die u wilt gebruiken om te controleren of de ondersteuning.
 
@@ -116,7 +116,7 @@ De omgevingen Dynamics 365 en Common Data Service (CDS) worden gehost op Azure e
 
 ### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>Zijn er beperkingen met betrekking tot de hoeveelheid gegevens die ik kan overdragen met behulp van ExpressRoute?
 
-We doen niet een limiet ingesteld voor de hoeveelheid gegevens worden overgebracht. Raadpleeg [prijsinformatie](https://azure.microsoft.com/pricing/details/expressroute/) voor meer informatie over tarieven voor bandbreedte.
+We doen niet een limiet ingesteld voor de hoeveelheid gegevens worden overgebracht. Raadpleeg de [prijs informatie](https://azure.microsoft.com/pricing/details/expressroute/) voor informatie over de bandbreedte tarieven.
 
 ### <a name="what-connection-speeds-are-supported-by-expressroute"></a>Welke verbindingssnelheden worden ondersteund door ExpressRoute?
 
@@ -126,13 +126,13 @@ Ondersteunde bandbreedte aanbiedingen:
 
 ### <a name="which-service-providers-are-available"></a>Welke serviceproviders zijn beschikbaar?
 
-Zie [ExpressRoute partners en locaties](expressroute-locations.md) voor een lijst van serviceproviders en locaties.
+Zie [ExpressRoute-partners en-locaties](expressroute-locations.md) voor de lijst met service providers en locaties.
 
 ## <a name="technical-details"></a>Technische details
 
 ### <a name="what-are-the-technical-requirements-for-connecting-my-on-premises-location-to-azure"></a>Wat zijn de technische vereisten voor het verbinden van mijn on-premises locatie naar Azure?
 
-Zie [ExpressRoute vereisten pagina](expressroute-prerequisites.md) voor vereisten.
+Zie de [pagina met ExpressRoute-vereisten](expressroute-prerequisites.md) voor vereisten.
 
 ### <a name="are-connections-to-expressroute-redundant"></a>Verbindingen met ExpressRoute redundante zijn?
 
@@ -156,7 +156,7 @@ Bekijk [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-a
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hoe kan ik ervoor zorgen dat hoge beschikbaarheid in een virtueel netwerk is verbonden met ExpressRoute?
 
-U kunt hoge beschikbaarheid bereiken via een ExpressRoute-circuits in verschillende peeringlocaties (bijvoorbeeld, Singapore, Singapore2) verbinding met uw virtuele netwerk. Als één ExpressRoute-circuit uitgeschakeld wordt, wordt connectiviteit schakelt over naar een ander ExpressRoute-circuit. Standaard wordt het virtuele netwerk uitgaand verkeer doorgestuurd op basis van op gelijke kosten Multipath routering (ECMP). U kunt verbinding gewicht gebruiken één aansluiting liever naar een andere. Zie voor meer informatie, [ExpressRoute-routering optimaliseren](expressroute-optimize-routing.md).
+U kunt hoge beschikbaarheid bereiken via een ExpressRoute-circuits in verschillende peeringlocaties (bijvoorbeeld, Singapore, Singapore2) verbinding met uw virtuele netwerk. Als één ExpressRoute-circuit uitgeschakeld wordt, wordt connectiviteit schakelt over naar een ander ExpressRoute-circuit. Standaard wordt het virtuele netwerk uitgaand verkeer doorgestuurd op basis van op gelijke kosten Multipath routering (ECMP). U kunt verbinding gewicht gebruiken één aansluiting liever naar een andere. Zie optimalisatie van ExpressRoute- [route ring](expressroute-optimize-routing.md)voor meer informatie.
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hoe kan ik ervoor te zorgen dat mijn verkeer dat is bestemd voor open bare Azure-Services, zoals Azure Storage en Azure SQL op micro soft-peering of open bare peering, de voor keur heeft op het ExpressRoute-pad?
 
@@ -164,9 +164,9 @@ U moet het *lokale voorkeurs* kenmerk op uw router (s) implementeren om ervoor t
 
 Zie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) voor meer informatie over het selecteren van BGP-paden en algemene router configuraties. 
 
-### <a name="onep2plink"></a>Als ik geen CO-locatie op een cloudexchange ben en mijn serviceprovider point-to-point-verbinding biedt, heb ik nodig om twee fysieke verbindingen tussen mijn on-premises netwerk en Microsoft?
+### <a name="onep2plink"></a>Als ik niet op de kant ben van een Cloud uitwisseling en mijn service provider een Point-to-point-verbinding biedt, moet ik dan twee fysieke verbindingen tussen mijn on-premises netwerk en micro soft best Ellen?
 
-Als uw serviceprovider twee virtuele Ethernet-circuits via de fysieke verbinding maken kan, moet u slechts één fysieke verbinding. De fysieke verbinding (bijvoorbeeld in een fiber optische) wordt beëindigd op een laag 1 (L1)-apparaat (Zie de afbeelding). De twee virtuele Ethernet-circuits zijn gelabeld met verschillende VLAN-id's, één voor het primaire circuit en één voor de secundaire server. Deze VLAN-id's zijn in de buitenste 802.1Q Ethernet-header. De binnenste 802.1Q Ethernet-header (niet weergegeven) is toegewezen aan een specifieke [ExpressRoute routeringsdomein](expressroute-circuit-peerings.md).
+Als uw serviceprovider twee virtuele Ethernet-circuits via de fysieke verbinding maken kan, moet u slechts één fysieke verbinding. De fysieke verbinding (bijvoorbeeld in een fiber optische) wordt beëindigd op een laag 1 (L1)-apparaat (Zie de afbeelding). De twee virtuele Ethernet-circuits zijn gelabeld met verschillende VLAN-id's, één voor het primaire circuit en één voor de secundaire server. Deze VLAN-id's zijn in de buitenste 802.1Q Ethernet-header. De interne 802.1 Q-Ethernet-header (niet weer gegeven) wordt toegewezen aan een specifiek [ExpressRoute-routerings domein](expressroute-circuit-peerings.md).
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
@@ -197,27 +197,27 @@ De eenvoudige stappen zijn:
 * U of de provider, moet het BGP peering (s) configureren.
 * Het virtueel netwerk koppelen aan het ExpressRoute-circuit.
 
-Zie voor meer informatie, [ExpressRoute-werkstromen voor circuitinrichting en circuitstatussen](expressroute-workflows.md).
+Zie [ExpressRoute-werk stromen voor circuit inrichting en circuit statussen](expressroute-workflows.md)voor meer informatie.
 
 ### <a name="are-there-connectivity-boundaries-for-my-expressroute-circuit"></a>Zijn er begrenzing connectiviteit voor mijn ExpressRoute-circuit?
 
-Ja. De [ExpressRoute partners en locaties](expressroute-locations.md) artikel biedt een overzicht van de grenzen van de verbinding voor een ExpressRoute-circuit. Connectiviteit voor een ExpressRoute-circuit is beperkt tot één geopolitieke regio. Connectiviteit kan worden uitgebreid om cross-geopolitieke regio's door in te schakelen van de ExpressRoute premium-functie.
+Ja. Het artikel [ExpressRoute partners en locaties](expressroute-locations.md) bevat een overzicht van de connectiviteits grenzen voor een ExpressRoute-circuit. Connectiviteit voor een ExpressRoute-circuit is beperkt tot één geopolitieke regio. Connectiviteit kan worden uitgebreid om cross-geopolitieke regio's door in te schakelen van de ExpressRoute premium-functie.
 
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>Kan ik naar meer dan één virtueel netwerk aan een ExpressRoute-circuit koppelen?
 
-Ja. U kunt maximaal 10 virtuele netwerken-verbindingen op een standard ExpressRoute-circuit, en tot wel 100 op hebben een [premium ExpressRoute-circuit](#expressroute-premium). 
+Ja. U kunt Maxi maal 10 virtuele netwerken verbindingen hebben met een standaard ExpressRoute-circuit en Maxi maal 100 op een [Premium ExpressRoute-circuit](#expressroute-premium). 
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Ik heb meerdere Azure-abonnementen met virtuele netwerken. Kan ik virtuele netwerken koppelen die zich in afzonderlijke abonnementen op één ExpressRoute-circuit?
 
 Ja. U kunt Maxi maal 10 virtuele netwerken in hetzelfde abonnement als het circuit of andere abonnementen koppelen met een enkel ExpressRoute-circuit. Deze limiet kan worden verhoogd met het inschakelen van de ExpressRoute premium-functie.
 
-Zie voor meer informatie, [delen van een ExpressRoute-circuit voor meerdere abonnementen](expressroute-howto-linkvnet-arm.md).
+Zie [een ExpressRoute-circuit delen over meerdere abonnementen](expressroute-howto-linkvnet-arm.md)voor meer informatie.
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Ik heb meerdere Azure-abonnementen die zijn gekoppeld aan verschillende tenants van Azure Active Directory of Enterprise Agreement-inschrijvingen. Kan ik virtuele netwerken die zich in afzonderlijke tenants en inschrijvingen voor een enkel ExpressRoute-circuit niet in dezelfde tenant of inschrijving verbinding maken?
 
 Ja. Autorisaties voor ExpressRoute kunnen abonnement, de tenant en de inschrijving grenzen omvatten zonder aanvullende configuratie vereist. 
 
-Zie voor meer informatie, [delen van een ExpressRoute-circuit voor meerdere abonnementen](expressroute-howto-linkvnet-arm.md).
+Zie [een ExpressRoute-circuit delen over meerdere abonnementen](expressroute-howto-linkvnet-arm.md)voor meer informatie.
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Worden virtuele netwerken worden gekoppeld aan hetzelfde circuit geïsoleerd van elkaar?
 
@@ -235,7 +235,7 @@ Ja. Als u hebt niet geadverteerd standaardroutes (0.0.0.0/0) of Internet route v
 
 Ja. U kunt de standaardroutes bekendmaakt (0.0.0.0/0) voor het blokkeren van alle internetverbinding met virtuele machines die binnen een virtueel netwerk is geïmplementeerd en routeren van al het verkeer af via het ExpressRoute-circuit.
 
-Als u standaardroutes bekendmaakt, dwingen we verkeer naar services die worden aangeboden via Microsoft-peering (zoals Azure storage en SQL-database) terug naar uw locatie. U moet uw routers voor het retourneren van verkeer naar Azure via het pad van de Microsoft-peering of via Internet configureren. Als u een service-eindpunt voor de service hebt ingeschakeld, wordt het verkeer naar de service wordt niet geforceerd op uw locatie. Het verkeer blijft in het Azure-backbone-netwerk. Zie voor meer informatie over service-eindpunten, [service-eindpunten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+Als u standaardroutes bekendmaakt, dwingen we verkeer naar services die worden aangeboden via Microsoft-peering (zoals Azure storage en SQL-database) terug naar uw locatie. U moet uw routers voor het retourneren van verkeer naar Azure via het pad van de Microsoft-peering of via Internet configureren. Als u een service-eindpunt voor de service hebt ingeschakeld, wordt het verkeer naar de service wordt niet geforceerd op uw locatie. Het verkeer blijft in het Azure-backbone-netwerk. Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json) voor meer informatie over service-eind punten
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Kunnen virtuele netwerken die zijn gekoppeld aan hetzelfde ExpressRoute-circuit met elkaar communiceren?
 
@@ -243,7 +243,7 @@ Ja. Virtuele machines die worden geïmplementeerd in virtuele netwerken die zijn
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Kan ik site-naar-site-connectiviteit voor virtuele netwerken in combinatie met ExpressRoute gebruiken?
 
-Ja. ExpressRoute kan worden gecombineerd met site-naar-site VPN-verbindingen. Zie [configureren van ExpressRoute en site-naar-site-verbindingen naast elkaar](expressroute-howto-coexist-resource-manager.md).
+Ja. ExpressRoute kan worden gecombineerd met site-naar-site VPN-verbindingen. Zie [ExpressRoute-en site-to-site-verbindingen configureren](expressroute-howto-coexist-resource-manager.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Waarom is er een openbaar IP-adres dat is gekoppeld aan de ExpressRoute-gateway in een virtueel netwerk?
 
@@ -284,16 +284,16 @@ U kunt de bandbreedte van het ExpressRoute-circuit met de REST API of PowerShell
 ExpressRoute premium is een verzameling van de volgende functies:
 
 * Verhoogd routering tabellimiet van 4000 routes tot 10.000 routes voor persoonlijke peering.
-* Een hoger aantal vnet's en globale bereiken ExpressRoute-verbindingen die kunnen worden ingeschakeld op een ExpressRoute-circuit (de standaardwaarde is 10). Zie voor meer informatie de [limieten voor ExpressRoute](#limits) tabel.
+* Een hoger aantal vnet's en globale bereiken ExpressRoute-verbindingen die kunnen worden ingeschakeld op een ExpressRoute-circuit (de standaardwaarde is 10). Zie de tabel met ExpressRoute- [limieten](#limits) voor meer informatie.
 * Connectiviteit met Office 365
 * Globale connectiviteit via de Microsoft core-netwerk. U kunt nu een VNet in een geopolitieke regio met een ExpressRoute-circuit in een andere regio koppelen.<br>
-    **Voorbeelden:**
+    **Vindt**
 
     *  U kunt een VNet dat is gemaakt in West-Europa aan een ExpressRoute-circuit gemaakt in Silicon Valley koppelen. 
     *  Op de Microsoft-peering, worden de voorvoegsels van andere geopolitieke regio's worden geadverteerd, zodat u verbinding, bijvoorbeeld SQL Azure in Europa (West) vanuit een circuit in Silicon Valley maken kunt.
 
 
-### <a name="limits"></a>Het aantal verbindingen voor vnet's en ExpressRoute globaal bereik kan ik inschakelen op een ExpressRoute-circuit als ik ExpressRoute premium ingeschakeld?
+### <a name="limits"></a>Hoeveel VNets-en ExpressRoute-Global Reach verbindingen kan ik inschakelen op een ExpressRoute-circuit als ik ExpressRoute Premium inschakel?
 
 De volgende tabellen tonen de limieten voor ExpressRoute en het aantal vnet's en globale bereiken ExpressRoute-verbindingen per ExpressRoute-circuit:
 
@@ -313,7 +313,7 @@ Nee. De functies kan niet worden opgenomen. We inschakelen alle functies wanneer
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>Wat kost ExpressRoute premium?
 
-Raadpleeg [prijsinformatie](https://azure.microsoft.com/pricing/details/expressroute/) voor kosten.
+Raadpleeg de [prijs informatie](https://azure.microsoft.com/pricing/details/expressroute/) voor de kosten.
 
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Moet ik betalen voor de ExpressRoute premium naast standard ExpressRoute-kosten in rekening gebracht?
 
@@ -342,10 +342,10 @@ ExpressRoute local is beschikbaar op de peering locaties waar een of twee Azure-
 
 ### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Hoe maak ik een ExpressRoute-circuit verbinding maken met Office 365-services?
 
-1. Controleer de [ExpressRoute vereisten pagina](expressroute-prerequisites.md) om ervoor te zorgen dat u voldoet aan de vereisten.
-2. Om ervoor te zorgen dat aan de behoeften van uw connectiviteit wordt voldaan, bekijk de lijst van serviceproviders en locaties in de [ExpressRoute partners en locaties](expressroute-locations.md) artikel.
-3. Aan de hand van plan bent uw capaciteitsvereisten [netwerkplanning en prestatieafstemming voor Office 365](https://aka.ms/tune/).
-4. Volg de stappen die worden vermeld in de werkstromen voor het instellen van connectiviteit [ExpressRoute-werkstromen voor circuitinrichting en circuitstatussen](expressroute-workflows.md).
+1. Bekijk de [pagina met ExpressRoute-vereisten](expressroute-prerequisites.md) om te controleren of u aan de vereisten voldoet.
+2. Om ervoor te zorgen dat aan de connectiviteits vereisten wordt voldaan, bekijkt u de lijst met service providers en locaties in het artikel [ExpressRoute partners en locaties](expressroute-locations.md) .
+3. Plan uw capaciteits vereisten door [netwerk planning en prestaties afstemmen voor Office 365](https://aka.ms/tune/)te controleren.
+4. Volg de stappen in de werk stromen voor het instellen van connectiviteit [ExpressRoute werk stromen voor circuit inrichting en circuit statussen](expressroute-workflows.md).
 
 > [!IMPORTANT]
 > Zorg ervoor dat u premium-invoegtoepassing voor ExpressRoute hebt ingeschakeld bij het configureren van de verbinding met Office 365-services.
@@ -354,26 +354,26 @@ ExpressRoute local is beschikbaar op de peering locaties waar een of twee Azure-
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Kunnen mijn huidige ExpressRoute-circuits connectiviteit ondersteunen met Office 365-Services?
 
-Ja. Uw bestaande ExpressRoute-circuit kan worden geconfigureerd ter ondersteuning van de verbinding met Office 365-services. Zorg ervoor dat u hebt onvoldoende capaciteit om te verbinden met Office 365-services en dat u premium-invoegtoepassing hebt ingeschakeld. [Netwerkplanning en prestatieafstemming voor Office 365](https://aka.ms/tune/) helpt u van plan bent uw verbinding nodig heeft. Zie ook [maken en aanpassen van een ExpressRoute-circuit](expressroute-howto-circuit-classic.md).
+Ja. Uw bestaande ExpressRoute-circuit kan worden geconfigureerd ter ondersteuning van de verbinding met Office 365-services. Zorg ervoor dat u hebt onvoldoende capaciteit om te verbinden met Office 365-services en dat u premium-invoegtoepassing hebt ingeschakeld. [Netwerk planning en prestaties afstemmen voor Office 365](https://aka.ms/tune/) helpt u bij het plannen van de connectiviteits behoeften. Zie ook [een ExpressRoute-circuit maken en wijzigen](expressroute-howto-circuit-classic.md).
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Welke Office 365 services zijn toegankelijk via een ExpressRoute-verbinding?
 
-Raadpleeg [Office 365-URL's en IP-adresbereiken](https://aka.ms/o365endpoints) pagina voor een bijgewerkte lijst met services die via ExpressRoute worden ondersteund.
+Raadpleeg de pagina met [Office 365-url's en IP-](https://aka.ms/o365endpoints) adresbereiken voor een bijgewerkte lijst met services die via ExpressRoute worden ondersteund.
 
 ### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Wat kost ExpressRoute voor Office 365-services?
 
-Office 365-services vereist premium-invoegtoepassing wordt ingeschakeld. Zie de [pagina met prijsinformatie](https://azure.microsoft.com/pricing/details/expressroute/) voor kosten.
+Office 365-services vereist premium-invoegtoepassing wordt ingeschakeld. Zie de [pagina prijs informatie](https://azure.microsoft.com/pricing/details/expressroute/) voor de kosten.
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>Welke regio's wordt ExpressRoute voor Office 365 ondersteund?
 
-Zie [ExpressRoute partners en locaties](expressroute-locations.md) voor meer informatie.
+Zie [ExpressRoute-partners en-locaties](expressroute-locations.md) voor informatie.
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Krijg ik toegang tot Office 365 via Internet, zelfs als ExpressRoute is geconfigureerd voor mijn organisatie?
 
 Ja. Office 365-service-eindpunten zijn bereikbaar via het Internet, hoewel ExpressRoute voor uw netwerk is geconfigureerd. Neem contact op met uw organisatie networking-team als het netwerk op de locatie is geconfigureerd voor het verbinding maken met Office 365-services via ExpressRoute.
 
 ### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Hoe kan ik plannen voor hoge beschikbaarheid voor Office 365-netwerkverkeer op Azure ExpressRoute?
-Zie de aanbeveling voor [hoge beschikbaarheid en failover met Azure ExpressRoute](https://aka.ms/erhighavailability)
+Raadpleeg de aanbeveling voor [hoge Beschik baarheid en failover met Azure ExpressRoute](https://aka.ms/erhighavailability)
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Kan ik toegang tot Office 365 US Government Community (GCC) services via een Azure US Government ExpressRoute-circuit?
 
@@ -383,7 +383,7 @@ Ja. Office 365 GCC service-eindpunten zijn bereikbaar via het Azure US Governmen
 
 ### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Ik ben inschakelen van het Microsoft-peering voor het eerst welke routes ziet ik?
 
-Niet ziet u alle routes. U moet een routefilter koppelen aan uw circuit voorvoegsel advertenties te starten. Zie voor instructies [configureren routefilters voor Microsoft-peering](how-to-routefilter-powershell.md).
+Niet ziet u alle routes. U moet een routefilter koppelen aan uw circuit voorvoegsel advertenties te starten. Zie [route filters configureren voor micro soft-peering](how-to-routefilter-powershell.md)voor instructies.
 
 ### <a name="i-turned-on-microsoft-peering-and-now-i-am-trying-to-select-exchange-online-but-it-is-giving-me-an-error-that-i-am-not-authorized-to-do-it"></a>Kan ik Microsoft-peering ingeschakeld en ik wil nu selecteert u Exchange Online, maar het biedt me een foutbericht dat ik niet ben gemachtigd om dit te doen.
 
@@ -391,7 +391,7 @@ Wanneer u routefilters, kan een klant inschakelen Microsoft-peering. Voor het ge
 
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Kan ik Microsoft-peering vóór 1 augustus 2017, hoe kan ik profiteren van routefilters ingeschakeld?
 
-Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Office 365. Als u advertenties voor open bare Azure-voor voegsels wilt toevoegen aan dezelfde micro soft-peering, kunt u een route filter maken, de services selecteren die u nodig hebt (met inbegrip van de Office 365-service (s) die u nodig hebt) en het filter koppelen aan uw micro soft-peering. Zie voor instructies [configureren routefilters voor Microsoft-peering](how-to-routefilter-powershell.md).
+Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Office 365. Als u advertenties voor open bare Azure-voor voegsels wilt toevoegen aan dezelfde micro soft-peering, kunt u een route filter maken, de services selecteren die u nodig hebt (met inbegrip van de Office 365-service (s) die u nodig hebt) en het filter koppelen aan uw micro soft-peering. Zie [route filters configureren voor micro soft-peering](how-to-routefilter-powershell.md)voor instructies.
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Ik heb Microsoft-peering op één locatie, nu ik probeer uit te schakelen op een andere locatie en ik zie niet alle voorvoegsels.
 
@@ -399,7 +399,7 @@ Uw bestaande circuit gaat verder met het adverteren van de voor voegsels voor Of
 
 * Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Standaard ziet u geen voorvoegsels.
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressRouteDirect"></a>ExpressRoute direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 

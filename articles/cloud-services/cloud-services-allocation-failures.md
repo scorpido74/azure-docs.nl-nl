@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395833"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Toewijzingsfouten oplossen die zijn opgetreden bij het implementeren van Cloud Services in Azure
 ## <a name="summary"></a>Samenvatting
@@ -28,7 +28,7 @@ Bij het implementeren van exemplaren in een Cloud service of het toevoegen van n
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Achtergrond: hoe de toewijzing werkt
-De servers in Azure-datacenters worden in clusters gepartitioneerd. Er is een nieuwe aanvraag voor Cloud Service toewijzing in meerdere clusters geprobeerd. Wanneer de eerste instantie wordt geïmplementeerd in een Cloud service (in staging of productie), wordt die Cloud service vastgemaakt aan een cluster. Eventuele verdere implementaties voor de Cloud service worden uitgevoerd in hetzelfde cluster. In dit artikel wordt dit als ' vastgemaakt aan een cluster ' genoemd. Diagram 1 hieronder illustreert het geval van een normale toewijzing die wordt geprobeerd in meerdere clusters; Diagram 2 illustreert het geval van een toewijzing die is vastgemaakt aan cluster 2 omdat de CS_1 van de bestaande Cloud service wordt gehost.
+De servers in Azure-datacenters worden in clusters gepartitioneerd. Er is een nieuwe aanvraag voor Cloud Service toewijzing in meerdere clusters geprobeerd. Wanneer de eerste instantie wordt geïmplementeerd in een Cloud service (in staging of productie), wordt die Cloud service vastgemaakt aan een cluster. Eventuele verdere implementaties voor de Cloud service worden uitgevoerd in hetzelfde cluster. In dit artikel wordt dit als ' vastgemaakt aan een cluster ' genoemd. Diagram 1 hieronder illustreert het geval van een normale toewijzing die wordt geprobeerd in meerdere clusters; Diagram 2 illustreert het geval van een toewijzing die is vastgemaakt aan cluster 2 omdat de bestaande Cloud service CS_1 wordt gehost.
 
 ![Toewijzings diagram](./media/cloud-services-allocation-failure/Allocation1.png)
 

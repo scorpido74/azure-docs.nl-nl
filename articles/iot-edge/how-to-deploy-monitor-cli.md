@@ -9,12 +9,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fffe1ebda0103b3ed2cd8f76642ecb2967d23069
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9152b38a0155b610f39f7de239bcc377ad96be5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510291"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893022"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Implementeren en bewaken van IoT Edge-modules op schaal met behulp van de Azure CLI
 
@@ -26,10 +26,10 @@ In dit artikel hebt instellen u Azure CLI en de IoT-extensie. U leert hoe u modu
 
 ## <a name="cli-prerequisites"></a>CLI-vereisten
 
-* Een [IoT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
-* [IoT Edge-apparaten](how-to-register-device.md#prerequisites-for-the-azure-cli) met IoT Edge-runtime geïnstalleerd.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
-* De [IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
+* [IOT edge apparaten](how-to-register-device.md#prerequisites-for-the-azure-cli) waarop de IOT Edge-runtime is geïnstalleerd.
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
+* De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
@@ -163,7 +163,7 @@ Zie [gelaagde implementatie](module-deployment-monitoring.md#layered-deployment)
 
 ## <a name="identify-devices-using-tags"></a>Identificatie van apparaten met behulp van tags
 
-Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge-apparaten met identificeert **tags** op het dubbele apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing. Als u een campus van slimme gebouwen beheert, kunt u bijvoorbeeld de volgende codes toevoegen aan een apparaat:
+Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge identificeert apparaten met behulp van **Tags** op het apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing. Als u een campus van slimme gebouwen beheert, kunt u bijvoorbeeld de volgende codes toevoegen aan een apparaat:
 
 ```json
 "tags":{
@@ -176,7 +176,7 @@ Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wil
 }
 ```
 
-Zie voor meer informatie over apparaatdubbels en tags [apparaatdubbels begrijpen en gebruiken in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Zie voor meer informatie over apparaatdubbels en tags voor apparaten [inzicht in de apparaatdubbels in IOT hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Een implementatie maken
 
@@ -193,12 +193,12 @@ Gebruik dezelfde opdracht met de vlag `--layered` om een gelaagd gelaagde deploy
 De opdracht voor het maken van de implementatie heeft de volgende para meters:
 
 * **--laagst** : een optionele vlag voor het identificeren van de implementatie als een gelaagde implementatie.
-* **--implementatie-id** -de naam van de implementatie die wordt gemaakt in de IoT-hub. Geef uw implementatie een unieke naam die maximaal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`. Vereiste parameter.
-* **--inhoud** -bestandspad naar de implementatie manifest van de JSON. Vereiste parameter.
-* **--hubnaam** -naam van de IoT-hub waarin de implementatie wordt gemaakt. De hub moet zich in het huidige abonnement. Wijzig uw huidige abonnement met de opdracht `az account set -s [subscription name]`.
-* **--labels** -labels voor het bijhouden van uw implementaties toevoegen. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Labels maken de JSON-indeling voor de namen en waarden. Bijvoorbeeld: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--doelvoorwaarde** -Geef een doelvoorwaarde om te bepalen welke apparaten doelgroepen voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test' and properties.reported.devicemodel='4000x'`.
-* **--prioriteit** -een positief geheel getal zijn. In het geval dat twee of meer implementaties zijn gericht op hetzelfde apparaat, wordt de implementatie met de hoogste numerieke waarde voor prioriteit wordt toegepast.
+* **--implementatie-id** : de naam van de implementatie die wordt gemaakt in de IOT-hub. Geef uw implementatie een unieke naam die maximaal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`. Vereiste parameter.
+* **--Content** -filepath naar de JSON van het implementatie manifest. Vereiste parameter.
+* **--hub-naam** -naam van de IOT-hub waarin de implementatie wordt gemaakt. De hub moet zich in het huidige abonnement. Wijzig uw huidige abonnement met de opdracht `az account set -s [subscription name]`.
+* **--labels** : Voeg labels toe om uw implementaties bij te houden. Labels zijn naam, waarde-paren die uw implementatie te beschrijven. Labels maken de JSON-indeling voor de namen en waarden. Bijvoorbeeld: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
+* **--doel-condition** : Voer een doel voorwaarde in om te bepalen welke apparaten worden bedoeld voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--Priority** : een positief geheel getal. In het geval dat twee of meer implementaties zijn gericht op hetzelfde apparaat, wordt de implementatie met de hoogste numerieke waarde voor prioriteit wordt toegepast.
 * **--metrische gegevens** : Maak metrische gegevens die de edgeHub-gerapporteerde eigenschappen doorzoeken om de status van een implementatie bij te houden. Metrische gegevens hebben een JSON-invoer of een filepath. Bijvoorbeeld `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
 ## <a name="monitor-a-deployment"></a>Controleer de implementatie van een
@@ -211,13 +211,13 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 
 De opdracht show voor de implementatie heeft de volgende para meters:
 
-* **--implementatie-id** -de naam van de implementatie die deel uitmaakt van de IoT-hub. Vereiste parameter.
-* **--hubnaam** -naam van de IoT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat. Vereiste parameter.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 Controleer de implementatie in het opdrachtvenster. De eigenschap **Metrics** bevat een aantal voor elke metrische waarde die door elke hub wordt geëvalueerd:
 
-* **targetedCount** -een systeem-metric die Hiermee geeft u het aantal dubbele apparaten in IoT-Hub die overeenkomen met de doelitems voorwaarde.
-* **appliedCount** -een systeem metrische waarde geeft het aantal apparaten waarvoor de implementatie-inhoud toegepast op hun moduledubbels in IoT Hub.
+* **targetedCount** : een systeem metriek waarmee het aantal apparaatdubbels van het apparaat in IOT hub wordt opgegeven dat overeenkomt met de doel voorwaarde.
+* **appliedCount** : met een systeem metriek geeft u het aantal apparaten op waarop de implementatie-inhoud is toegepast op de bijbehorende module apparaatdubbels in IOT hub.
 * **reportedSuccessfulCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in het geslaagde implementatie rapport van de IOT Edge-client runtime.
 * **reportedFailedCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in de implementatie rapportage fout van de IOT Edge-client runtime.
 
@@ -229,9 +229,9 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 
 De opdracht show-meet waarde accepteert de volgende para meters:
 
-* **--implementatie-id** -de naam van de implementatie die deel uitmaakt van de IoT-hub.
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
 * **--metrisch-id** : de naam van de metriek waarvoor u de lijst met apparaat-id's wilt zien, bijvoorbeeld `reportedFailedCount`.
-* **--hubnaam** -naam van de IoT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`.
 
 ## <a name="modify-a-deployment"></a>Een implementatie wijzigen
 
@@ -253,10 +253,10 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 
 De implementatie-update opdracht heeft de volgende para meters:
 
-* **--implementatie-id** -de naam van de implementatie die deel uitmaakt van de IoT-hub.
-* **--hubnaam** -naam van de IoT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
-* **--ingesteld** -Update een eigenschap in de implementatie. U kunt de volgende eigenschappen bijwerken:
-  * targetCondition - voorbeeld `targetCondition=tags.location.state='Oregon'`
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* **--set** -een eigenschap in de implementatie bijwerken. U kunt de volgende eigenschappen bijwerken:
+  * targetCondition-bijvoorbeeld `targetCondition=tags.location.state='Oregon'`
   * labels
   * priority
 * **--Voeg** een nieuwe eigenschap toe aan de implementatie, met inbegrip van de doel voorwaarden of labels.
@@ -274,8 +274,8 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 
 De opdracht voor het verwijderen van de implementatie heeft de volgende para meters:
 
-* **--implementatie-id** -de naam van de implementatie die deel uitmaakt van de IoT-hub.
-* **--hubnaam** -naam van de IoT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
+* **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,11 +4,11 @@ description: In deze zelf studie gebruikt u beleids regels voor het afdwingen va
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384510"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
 
@@ -69,7 +69,7 @@ De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het t
 
 1. **Een herstel taak maken** uitschakelen is uitgeschakeld. In dit vak kunt u een taak maken voor het wijzigen van bestaande resources naast nieuwe of bijgewerkte resources. Zie [bronnen herstellen](../how-to/remediate-resources.md)voor meer informatie.
 
-1. Het **maken van een beheerde identiteit** wordt automatisch gecontroleerd omdat deze beleids definitie het [wijzigings](../concepts/effects.md#modify) effect gebruikt. **Machtigingen** worden automatisch ingesteld op _Inzender_ op basis van de beleids definitie. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Het **maken van een beheerde identiteit** wordt automatisch gecontroleerd omdat deze beleids definitie het [wijzigings](../concepts/effects.md#modify) effect gebruikt. **Machtigingen** worden automatisch ingesteld op _Inzender_ op basis van de beleids definitie. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
 
 1. Selecteer boven aan de wizard het tabblad **controleren + maken** .
 
@@ -129,7 +129,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
 
 1. Selecteer **Opslaan**.
 
-## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST-API
+## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST API
 
 U kunt een beleid maken met de REST API voor Azure Policy definities. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
 
@@ -358,10 +358,10 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 1. Blader door de lijst met **Beschikbare definities** (rechterhelft van de pagina **Initiatiefdefinitie**) en selecteer het beleidsdefinitie(s) die u wilt toevoegen aan dit initiatief. Voor het initiatief **Secure** Initiative voegt u de volgende ingebouwde beleids definities toe door de **+** naast de beleids definitie-informatie te selecteren of door een regel voor een beleids definitie te selecteren en vervolgens op de optie **+ toevoegen** te klikken op de pagina Details:
 
    - Toegestane locaties
-   - Ontbrekende Endpoint Protection bewaken in Azure Security Center
+   - Ontbrekende Endpoint Protection in Azure Security Center controleren
    - De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
    - Azure Backup moet zijn ingeschakeld voor Virtual Machines
-   - Schijfversleuteling moet worden toegepast op virtuele machines
+   - Schijf versleuteling moet worden toegepast op virtuele machines
 
    Nadat u de beleids definitie hebt geselecteerd in de lijst, wordt deze toegevoegd onder **categorie**.
 
@@ -443,7 +443,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Selecteer het tabblad **para meters** boven aan de wizard. Als u in de vorige stappen een initiatief parameter hebt geconfigureerd, stelt u hier een waarde in.
 
-1. Selecteer het tabblad **herstel** bovenaan de wizard. Laat **Beheerde identiteit maken** uitgeschakeld. Dit selectie vakje _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen, een beleid bevat met het [deployIfNotExists](../concepts/effects.md#deployifnotexists) of [aanpassen](../concepts/effects.md#modify) van effecten. Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Selecteer het tabblad **herstel** bovenaan de wizard. Laat **Beheerde identiteit maken** uitgeschakeld. Dit selectie vakje _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen, een beleid bevat met het [deployIfNotExists](../concepts/effects.md#deployifnotexists) of [aanpassen](../concepts/effects.md#modify) van effecten. Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
 
 1. Selecteer boven aan de wizard het tabblad **controleren + maken** .
 

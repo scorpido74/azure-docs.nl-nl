@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215323"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392005"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Een interne load balancer maken met Azure CLI om taken te verdelen over VM's
 
@@ -39,7 +39,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupIL
     --name myResourceGroupILB \
     --location eastus
 ```
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
@@ -52,9 +52,9 @@ Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met 
 ```
 ## <a name="create-basic-load-balancer"></a>Load balancer van het type Basic maken
 
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren.
   - een front-end-IP-configuratie die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-  - een back-end-IP-pool waar de front-end-pool het netwerkverkeer op de load balancer naartoe stuurt.
+  - een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
   - een statustest die de status van de back-end-VM-exemplaren vaststelt.
   - een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
 
@@ -87,7 +87,7 @@ Een statustest controleert alle exemplaren van de virtuele machines om ervoor te
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endgroep *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -126,7 +126,7 @@ done
 
 In dit voorbeeld maakt u twee virtuele machines die worden gebruikt als back-endservers voor de load balancer. Installeer NGINX op de virtuele machines om te controleren of de load balancer is gemaakt.
 
-### <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
+### <a name="create-an-availability-set"></a>Beschikbaarheidsset maken
 
 Een beschikbaarheidsset maken met [az vm availabilityset create](/cli/azure/network/nic)
 
@@ -234,4 +234,4 @@ U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een interne load balancer van het type Basic gemaakt, VM's aan de load balancer gekoppeld, een regel voor het load balancer-verkeer geconfigureerd, een statustest gemaakt en vervolgens de load balancer getest. Als u meer wilt weten over load balancers en de bijbehorende resources, raadpleegt u de artikelen met procedures.
+In dit artikel hebt u een interne load balancer van het type Basic gemaakt, VM's aan de load balancer gekoppeld, een regel voor het load balancer-verkeer geconfigureerd, een statustest gemaakt en vervolgens de load balancer getest. Als u meer wilt weten over load balancers en de bijbehorende resources, gaat u door naar de artikelen met procedures.

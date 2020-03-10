@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562357"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395079"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -150,7 +150,7 @@ Eén streaming-eind punt kan zowel live als on-demand Video's streamen en de mee
 
     Houd rekening met een scenario waarbij uw klanten hoofd zakelijk live-inhoud volgen, maar alleen af en toe inhoud op aanvraag kunnen bekijken en wordt geleverd vanuit hetzelfde streaming-eind punt. Het lage gebruik van on-demand inhoud zou cache ruimte innemen die beter zou kunnen worden opgeslagen voor de live-inhoud. In dit scenario raden we u aan om de live-inhoud van één streaming-eind punt en de lange-staart inhoud van een ander streaming-eind punt te leveren. Hierdoor worden de prestaties van de inhoud van de live-gebeurtenis verbeterd.
     
-## <a name="scaling-streaming-with-cdn"></a>Streamen schalen met CDN
+## <a name="scaling-streaming-with-cdn"></a>Streaming schalen met CDN
 
 Zie de volgende artikelen:
 

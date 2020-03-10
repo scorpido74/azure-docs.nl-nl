@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464589"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391424"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Hosting model voor Azure Service Fabric
 Dit artikel bevat een overzicht van de toepassings hosting modellen van Azure Service Fabric en beschrijft de verschillen tussen de modellen **gedeeld proces** en **exclusief proces** . Hierin wordt beschreven hoe een geïmplementeerde toepassing eruitziet op een Service Fabric knoop punt en de relatie tussen replica's (of exemplaren) van de service en het proces-hostproces.
@@ -145,7 +145,7 @@ Het exclusieve proces hosting model is niet coherent met een toepassings model m
 
 Overweeg het geval van meerdere *ServiceTypes* per *ServicePackage*, waarbij een andere *code package* elke *service*type registreert. Stel dat we een *ServicePackage* ' MultiTypeServicePackage ' hebben, die twee *CodePackages*heeft:
 
-- 'MyCodePackageA', which registers *ServiceType* 'MyServiceTypeA'.
+- ' MyCodePackageA ', waarmee *service* type ' MyServiceTypeA ' wordt geregistreerd.
 - ' MyCodePackageB ', waarmee *service* type ' MyServiceTypeB ' wordt geregistreerd.
 
 Stel nu dat we een toepassing maken, **Fabric:/SpecialApp**. Binnen **Fabric:/SpecialApp**maken we twee services met het model voor exclusieve processen:

@@ -9,18 +9,18 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384280"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
 > 
 
@@ -28,21 +28,21 @@ Dit artikel helpt u bij het maken van een verbinding voor een virtueel netwerk k
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Controleer de [vereisten](expressroute-prerequisites.md), [routeringsvereisten](expressroute-routing.md), en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
+* Bekijk de [](expressroute-prerequisites.md) [vereisten, routerings behoeften](expressroute-routing.md)en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
 * U moet een actief ExpressRoute-circuit hebben.
-  * Volg de instructies voor [maken van een ExpressRoute-circuit](expressroute-howto-circuit-portal-resource-manager.md) en laat het circuit inschakelen door de connectiviteitsprovider.
+  * Volg de instructies voor het [maken van een ExpressRoute-circuit](expressroute-howto-circuit-portal-resource-manager.md) en laat het circuit ingeschakeld door uw connectiviteits provider.
   * Zorg ervoor dat u Azure private peering is geconfigureerd voor uw circuit hebt. Zie het artikel [peering maken en wijzigen voor een ExpressRoute-circuit](expressroute-howto-routing-portal-resource-manager.md) voor informatie over peering en route ring.
   * Zorg ervoor dat de persoonlijke Azure-peering is geconfigureerd en van de BGP-peering tussen uw netwerk en Microsoft is, zodat u end-to-end-connectiviteit kunt inschakelen.
-  * Zorg ervoor dat u hebt een virtueel netwerk en een virtuele netwerkgateway gemaakt en volledig is ingericht. Volg de instructies voor [een virtuele netwerkgateway maken voor ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Het GatewayType 'ExpressRoute', niet VPN maakt gebruik van een virtuele netwerkgateway voor ExpressRoute.
+  * Zorg ervoor dat u hebt een virtueel netwerk en een virtuele netwerkgateway gemaakt en volledig is ingericht. Volg de instructies voor het [maken van een virtuele netwerk gateway voor ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Het GatewayType 'ExpressRoute', niet VPN maakt gebruik van een virtuele netwerkgateway voor ExpressRoute.
 
 * U kunt maximaal 10 virtuele netwerken koppelen aan een standard ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio bij het gebruik van een standard ExpressRoute-circuit.
 
 * Een enkel VNet kan worden gekoppeld aan maximaal vier ExpressRoute-circuits. De procedure hieronder gebruiken om te maken van een nieuw verbindingsobject voor elk ExpressRoute-circuit dat u verbinding maakt. De ExpressRoute-circuits kunnen zich in hetzelfde abonnement, verschillende abonnementen of een combinatie van beide.
 
-* U kunt een virtueel netwerk buiten de geopolitieke regio van het ExpressRoute-circuit koppelen of een groter aantal virtuele netwerken verbinden met uw ExpressRoute-circuit als u de premium-invoegtoepassing voor ExpressRoute hebt ingeschakeld. Controleer de [Veelgestelde vragen over](expressroute-faqs.md) voor meer informatie over de premium-invoegtoepassing.
+* U kunt een virtueel netwerk buiten de geopolitieke regio van het ExpressRoute-circuit koppelen of een groter aantal virtuele netwerken verbinden met uw ExpressRoute-circuit als u de premium-invoegtoepassing voor ExpressRoute hebt ingeschakeld. Raadpleeg de [Veelgestelde vragen](expressroute-faqs.md) voor meer informatie over de Premium-invoeg toepassing.
 
-* U kunt [een video bekijken](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit) voordat u begint voor een beter begrip van de stappen.
+* U kunt [een video bekijken](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit) voordat u begint met een beter begrip van de stappen.
 
 ## <a name="connect-a-vnet-to-a-circuit---same-subscription"></a>Een VNet verbinden met een circuit - hetzelfde abonnement
 
@@ -55,7 +55,7 @@ Dit artikel helpt u bij het maken van een verbinding voor een virtueel netwerk k
 1. Zorg ervoor dat uw ExpressRoute-circuit en de persoonlijke Azure-peering is is geconfigureerd. Volg de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-arm.md) en [peering maken en wijzigen voor een ExpressRoute-circuit](expressroute-howto-routing-arm.md). Uw ExpressRoute-circuit moet er uitzien zoals in de volgende afbeelding:
 
    [![Scherm opname van ExpressRoute-circuit](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Circuit weer geven")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. U kunt nu beginnen een verbinding voor het koppelen van uw virtuele netwerkgateway voor uw ExpressRoute-circuit wordt ingericht. Klik op **verbinding** > **toevoegen** openen de **verbinding toevoegen** pagina en configureer vervolgens de waarden.
+2. U kunt nu beginnen een verbinding voor het koppelen van uw virtuele netwerkgateway voor uw ExpressRoute-circuit wordt ingericht. Klik op **verbinding** > **toevoegen** om de pagina **verbinding toevoegen** te openen en configureer vervolgens de waarden.
 
    [![Scherm opname van verbinding toevoegen](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Scherm opname van verbinding toevoegen")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Nadat de verbinding is geconfigureerd, wordt de informatie voor de verbinding weergegeven in het verbindingsobject.
@@ -86,7 +86,7 @@ De circuiteigenaar van het heeft de mogelijkheid om te wijzigen en autorisaties 
 
 ### <a name="circuit-owner-operations"></a>Circuit eigenaar bewerkingen
 
-**Maken van een verbinding-autorisatieregels**
+**Een verbindings autorisatie maken**
 
 De circuiteigenaar van het maakt een autorisatie. Dit resulteert in het maken van een autorisatiesleutel die door de gebruiker van een circuit kan worden gebruikt om hun virtuele netwerkgateways aan ExpressRoute-circuit. Een autorisatie is geldig voor slechts één verbinding.
 
@@ -94,46 +94,46 @@ De circuiteigenaar van het maakt een autorisatie. Dit resulteert in het maken va
 > Voor elke verbinding is een afzonderlijke autorisatie vereist.
 >
 
-1. Klik op de pagina ExpressRoute **autorisaties** en typ vervolgens een **naam** voor de autorisatie en klik op **opslaan**.
+1. Klik op de pagina ExpressRoute op **autorisaties** en typ een **naam** voor de autorisatie en klik op **Opslaan**.
 
    ![Autorisaties](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
-2. Wanneer de configuratie is opgeslagen, Kopieer de **Resource-ID** en de **Autorisatiesleutel**.
+2. Nadat de configuratie is opgeslagen, kopieert u de **resource-id** en de **autorisatie sleutel**.
 
    ![Autorisatiesleutel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-**Autorisatie om een verbinding verwijderen**
+**Een verbindings autorisatie verwijderen**
 
-U kunt een verbinding verwijderen door het selecteren van de **verwijderen** pictogram op de pagina voor de verbinding.
+U kunt een verbinding verwijderen door het pictogram **verwijderen** te selecteren op de pagina voor uw verbinding.
 
 ### <a name="circuit-user-operations"></a>Circuit gebruikersbewerkingen
 
 De gebruiker circuit moet de resource-ID en een autorisatiesleutel van de circuiteigenaar van het.
 
-**Een verbinding-autorisatie inwisselen**
+**Een verbindings autorisatie inwisselen**
 
-1. Klik op de **+ nieuw** knop.
+1. Klik op de knop **+ Nieuw** .
 
    ![Klik op Nieuw](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
-2. Zoeken naar **'Verbinding'** op Marketplace, selecteert u deze en klikt u op **maken**.
+2. Zoek naar **' verbinding '** in de Marketplace, Selecteer deze en klik op **maken**.
 
    ![Zoeken naar verbinding](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
-3. Zorg ervoor dat de **verbindingstype** is ingesteld op 'ExpressRoute'.
-4. Vul de details en klik vervolgens op **OK** op de pagina van de basisprincipes.
+3. Zorg ervoor dat het **verbindings type** is ingesteld op ' ExpressRoute '.
+4. Vul de details in en klik op **OK** op de pagina basis beginselen.
 
    ![De pagina Basisinformatie](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
-5. In de **instellingen** pagina, selecteer de **gateway van virtueel netwerk** en controleer de **autorisatie inwisselen** selectievakje.
-6. Voer de **autorisatiesleutel** en de **URI van Peercircuit** en geef een naam op voor de verbinding. Klik op **OK**. De **URI van het peer circuit** is de resource-id van het ExpressRoute-circuit (dat u kunt vinden onder het instellingen venster Eigenschappen van het ExpressRoute-circuit).
+5. Selecteer op de pagina **instellingen** de **virtuele netwerk gateway** en schakel het selectie vakje **autorisatie inwisselen** in.
+6. Voer de **autorisatie sleutel** en de **URI van het peer circuit** in en geef de verbinding een naam. Klik op **OK**. De **URI van het peer circuit** is de resource-id van het ExpressRoute-circuit (dat u kunt vinden onder het instellingen venster Eigenschappen van het ExpressRoute-circuit).
 
    ![De pagina Instellingen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
-7. Lees de informatie in de **samenvatting** pagina en klik op **OK**.
+7. Controleer de informatie op de pagina **samen vatting** en klik op **OK**.
 
-**Vrij te geven van autorisatie om een verbinding**
+**Een verbindings autorisatie vrijgeven**
 
 U kunt een autorisatie vrijgeven door het verwijderen van de verbinding die het ExpressRoute-circuit aan het virtuele netwerk is gekoppeld.
 
 ## <a name="delete-a-connection-to-unlink-a-vnet"></a>Een verbinding als u wilt ontkoppelen van een VNet verwijderen
 
-U kunt een verbinding verwijderen en uw VNet aan een ExpressRoute-circuit ontkoppelen door het selecteren van de **verwijderen** pictogram op de pagina voor de verbinding.
+U kunt een verbinding verwijderen en uw VNet ontkoppelen aan een ExpressRoute-circuit door het pictogram **verwijderen** te selecteren op de pagina voor uw verbinding.
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over ExpressRoute raadpleegt u de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md).

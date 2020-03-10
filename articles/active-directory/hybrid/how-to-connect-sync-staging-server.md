@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect synchronisatie: Operationele taken en overwegingen | Microsoft Docs'
+title: 'Azure AD Connect synchronisatie: operationele taken en overwegingen | Microsoft Docs'
 description: In dit onderwerp worden operationele taken voor Azure AD Connect Sync beschreven en wordt uitgelegd hoe u dit onderdeel kunt voorbereiden.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900063"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376214"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Serverherstel en herstel na noodgevallen faseren
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: staging-server en herstel na nood gevallen
 Met een server in de faserings modus kunt u wijzigingen aanbrengen in de configuratie en de wijzigingen bekijken voordat u de server actief maakt. U kunt ook volledige import en volledige synchronisatie uitvoeren om te controleren of alle wijzigingen worden verwacht voordat u deze wijzigingen aanbrengt in uw productie omgeving.
 
 ## <a name="staging-mode"></a>Faseringsmodus
@@ -33,7 +33,7 @@ De faserings modus kan worden gebruikt voor verschillende scenario's, waaronder:
 * Test en implementeer nieuwe configuratie wijzigingen.
 * Een nieuwe server introduceren en de oude buiten gebruik stellen.
 
-Tijdens de installatie kunt u de server in de faserings **modus**selecteren. Met deze actie wordt de server actief voor importeren en synchroniseren, maar worden er geen export bewerkingen uitgevoerd. Een server in de faserings modus voert geen wachtwoord synchronisatie of het terugschrijven van wacht woorden uit, zelfs niet als u deze functies tijdens de installatie hebt geselecteerd. Wanneer u de faserings modus uitschakelt, wordt het exporteren van de server gestart, wordt wachtwoord synchronisatie ingeschakeld en wordt het terugschrijven van wacht woorden ingeschakeld.
+Tijdens de installatie kunt u de server in de **faserings modus**selecteren. Met deze actie wordt de server actief voor importeren en synchroniseren, maar worden er geen export bewerkingen uitgevoerd. Een server in de faserings modus voert geen wachtwoord synchronisatie of het terugschrijven van wacht woorden uit, zelfs niet als u deze functies tijdens de installatie hebt geselecteerd. Wanneer u de faserings modus uitschakelt, wordt het exporteren van de server gestart, wordt wachtwoord synchronisatie ingeschakeld en wordt het terugschrijven van wacht woorden ingeschakeld.
 
 > [!NOTE]
 > Stel dat u een Azure AD Connect hebt met de synchronisatie functie voor wachtwoord hash ingeschakeld. Wanneer u de faserings modus inschakelt, stopt de server met het synchroniseren van wachtwoord wijzigingen van on-premises AD. Wanneer u de faserings modus uitschakelt, wordt het synchroniseren van wachtwoord wijzigingen door de server hervat vanaf waar deze de laatste keer is gestopt. Als de server gedurende lange tijd in de faserings modus blijft, kan het even duren voordat de server alle wachtwoord wijzigingen synchroniseert die zijn opgetreden tijdens de periode.
@@ -71,10 +71,10 @@ Als u aangepaste wijzigingen hebt aangebracht aan de primaire server en de confi
 
 U hebt nu gefaseerd wijzigingen naar Azure AD en on-premises AD exporteren (als u Exchange Hybrid Deployment gebruikt). Met de volgende stappen kunt u controleren wat er moet worden gewijzigd voordat u de export naar de directory's start.
 
-#### <a name="verify"></a>Bevestigen
-1. Start een opdracht prompt en ga naar`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Uitvoeren: `csexport "Name of Connector" %temp%\export.xml /f:x`De naam van de connector is te vinden in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
-3. Uitvoeren: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`U hebt een bestand in% Temp% met de naam export. csv dat kan worden onderzocht in micro soft Excel. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
+#### <a name="verify"></a>Verifiëren
+1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Uitvoeren: `csexport "Name of Connector" %temp%\export.xml /f:x` de naam van de connector kan worden gevonden in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
+3. Uitvoeren: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` u een bestand hebt in% Temp% met de naam export. csv dat kan worden onderzocht in micro soft Excel. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
 4. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (Importeer en synchroniseer en controleer) totdat de wijzigingen die worden geëxporteerd, worden verwacht.
 
 **Informatie over het bestand export. CSV** Het meren deel van het bestand is zelf uitleg. Enkele afkortingen voor het begrijpen van de inhoud:
@@ -82,7 +82,7 @@ U hebt nu gefaseerd wijzigingen naar Azure AD en on-premises AD exporteren (als 
 * AMODT – kenmerk wijzigings type. Hiermee wordt aangegeven of de bewerking op kenmerk niveau een add, update of Delete is.
 
 **Algemene Id's ophalen** Het bestand export. csv bevat alle wijzigingen die moeten worden geëxporteerd. Elke rij komt overeen met een wijziging voor een object in de connector ruimte en het object wordt geïdentificeerd door het kenmerk DN. Het kenmerk DN is een unieke id die is toegewezen aan een object in de connector ruimte. Wanneer u veel rijen/wijzigingen in het export. CSV-bestand wilt analyseren, is het wellicht lastig om te achterhalen welke objecten de wijzigingen hebben op basis van het kenmerk DN. Gebruik het Power shell-script csanalyzer. ps1 om het proces van het analyseren van de wijzigingen te vereenvoudigen. Het script haalt algemene id's op (bijvoorbeeld displayName, userPrincipalName) van de objecten. Het script gebruiken:
-1. Kopieer het Power shell-script uit de sectie [CSAnalyzer](#appendix-csanalyzer) naar een `csanalyzer.ps1`bestand met de naam.
+1. Kopieer het Power shell-script uit de sectie [CSAnalyzer](#appendix-csanalyzer) naar een bestand met de naam `csanalyzer.ps1`.
 2. Open een Power shell-venster en blader naar de map waarin u het Power shell-script hebt gemaakt.
 3. Uitvoeren: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
 4. U hebt nu een bestand met de naam **processedusers1. CSV** dat kan worden onderzocht in micro soft Excel. Houd er rekening mee dat het bestand een toewijzing bevat van het kenmerk DN aan algemene id's (bijvoorbeeld displayName en userPrincipalName). Het bevat momenteel niet de daad werkelijke kenmerk wijzigingen die moeten worden geëxporteerd.
@@ -92,7 +92,7 @@ U hebt nu gefaseerd wijzigingen naar Azure AD en on-premises AD exporteren (als 
 2. Voer de installatie wizard uit op de server in de **faserings modus** en schakel de **faserings modus**uit.
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
-## <a name="disaster-recovery"></a>Herstel na noodgeval
+## <a name="disaster-recovery"></a>Herstel na noodgevallen
 Een deel van het implementatie ontwerp is het plannen van wat er moet gebeuren als er sprake is van een nood geval waarin u de synchronisatie server kwijtraakt. Er zijn verschillende modellen die u kunt gebruiken, afhankelijk van verschillende factoren, waaronder:
 
 * Wat is uw tolerantie voor het aanbrengen van wijzigingen in objecten in azure AD tijdens de downtime?
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>Volgende stappen
 **Overzichts onderwerpen**  
 
-* [Azure AD Connect-synchronisatie: Synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)  
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)  
+* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)  
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)  

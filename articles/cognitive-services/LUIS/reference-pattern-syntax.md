@@ -11,28 +11,28 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393857"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
-De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet bevatten woorden en entiteiten die u wilt vergelijken en woorden en leestekens die u wilt negeren. Het is **niet** een reguliere expressie.
+De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet bevatten woorden en entiteiten die u wilt vergelijken en woorden en leestekens die u wilt negeren. Het is **geen** reguliere expressie.
 
 > [!CAUTION]
 > Patronen bestaan alleen uit door machines geleerde entiteits-Parents, geen subonderdelen.
 
-Entiteiten in de patronen zijn omgeven door accolades, `{}`. Patronen kunnen bestaan uit entiteiten en entiteiten met functies. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
+Entiteiten in patronen worden omgeven door accolades, `{}`. Patronen kunnen bestaan uit entiteiten en entiteiten met functies. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
 |Functie|Syntaxis|Niveau nesten|Voorbeeld|
 |--|--|--|--|
 |entiteit| {} accolades|2|Waar is formulier {entity-name}?|
-|optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
-|shapes|()-haakjes|2|is (a \| b)|
+|Beschrijving|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
+|Shapes|()-haakjes|2|is (a \| b)|
 |of| \|-verticale streep (pipe)<br><br>Er is een limiet van 2 op de verticale balken (of) in één groep |-|Waar is formulier ({Form-name-Short} &#x7c; {Form-name-Long} &#x7c; {Form-Number})|
 |begin en/of einde van utterance|^-caret|-|^ utterance starten<br>de utterance is voltooid.<br>^ strikte letterlijke overeenkomst van de volledige utterance met {Number} entiteit ^|
 
@@ -75,14 +75,14 @@ Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van
 |Nee|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) ) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis voor een entiteit toevoegen aan een patroon-sjabloon
-Als u wilt toevoegen een entiteit in de sjabloon voor het patroon, zoals de naam van de entiteit met behulp van accolades, rondom `Who does {Employee} manage?`.
+Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?`.
 
 |Patroon met entiteit|
 |--|
 |`Who does {Employee} manage?`|
 
 ## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis voor het toevoegen van een entiteit en een rol aan een patroon-sjabloon
-De entiteitsrol van een wordt aangeduid als `{entity:role}` met de naam van de entiteit gevolgd door een dubbele punt, gevolgd door de rolnaam. Als u wilt toevoegen een entiteit met een rol in de sjabloon voor het patroon, moet u de naam van de entiteit en de rolnaam met behulp van accolades, zoals `Book a ticket from {Location:Origin} to {Location:Destination}`.
+De rol van een entiteit wordt aangeduid als `{entity:role}` met de naam van de entiteit, gevolgd door een dubbele punt, en vervolgens de naam van de rol. Als u een entiteit met een rol wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit en de naam van de rol door accolades, zoals `Book a ticket from {Location:Origin} to {Location:Destination}`.
 
 |Patroon met behulp van entiteit|
 |--|
@@ -91,7 +91,7 @@ De entiteitsrol van een wordt aangeduid als `{entity:role}` met de naam van de e
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis voor het toevoegen van een pattern.any aan patroon sjabloon
 De entiteit Pattern.any kunt u een entiteit van de verschillende lengten toevoegen aan het patroon. Als de sjabloon patroon wordt gevolgd, mag de pattern.any een willekeurige lengte.
 
-Om toe te voegen een **Pattern.any** entiteit in de sjabloon patroon rondom de Pattern.any-entiteit met de accolades, zoals `How much does {Booktitle} cost and what format is it available in?`.
+Als u een **patroon wilt toevoegen. een wille keurige** entiteit in de patroon sjabloon, rondom het patroon. elke entiteit met de accolades, zoals `How much does {Booktitle} cost and what format is it available in?`.
 
 |Patroon met Pattern.any entiteit|
 |--|
@@ -99,9 +99,9 @@ Om toe te voegen een **Pattern.any** entiteit in de sjabloon patroon rondom de P
 
 |Titels in het patroon|
 |--|
-|Wat kost **stelen dit boek** kosten, en welke indeling is beschikbaar in?|
-|Wat kost **vragen** kosten, en welke indeling is beschikbaar in?|
-|Wat kost **de benieuwd Incident van de hond in de nacht-tijd** kosten, en welke indeling is beschikbaar in?|
+|Wat zijn de kosten van **Dit boek** , maar wat is er beschikbaar in?|
+|Wat zijn de kosten voor de **vraag** en welke indeling is er beschikbaar in?|
+|Wat gebeurt er met **het nieuws gierige incidenten van de hond in de nacht** kosten en in welke indeling deze beschikbaar is?|
 
 De woorden van de boek titel zijn niet verwarrend voor LUIS, omdat LUIS weet waar de titel van het boek eindigt, op basis van het patroon. elke entiteit.
 
@@ -112,11 +112,11 @@ Maak een [expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/serv
 * Uw patroon bevat een [patroon.](luis-concept-entity-types.md#patternany-entity)
 * En met deze patroon syntaxis kan een onjuiste entiteits extractie worden uitgevoerd op basis van de utterance.
 
-Stel bijvoorbeeld dat u hebt een patroon met beide optioneel syntaxis `[]`, en de syntaxis van de entiteit, `{}`, gecombineerde op een manier om gegevens te extraheren onjuist.
+Stel dat u een patroon hebt met zowel een optionele syntaxis, `[]`en de syntaxis van de entiteit, `{}`, gecombineerd op een manier om gegevens onjuist op te halen.
 
 Houd rekening met het patroon [zoeken] e-mail over {subject} [van {persoon}].
 
-In de volgende uitingen de **onderwerp** en **persoon** entiteit correct en niet correct worden opgehaald:
+In de volgende uitingen worden het **onderwerp** en de **persoons** entiteit op de juiste wijze en onjuist opgehaald:
 
 |Utterance|Entiteit|Juiste extractie|
 |--|--|:--:|
@@ -125,10 +125,10 @@ In de volgende uitingen de **onderwerp** en **persoon** entiteit correct en niet
 
 In de voor gaande tabel moet het onderwerp worden `the man from La Mancha` (een boek titel), maar omdat het onderwerp het optionele woord `from`bevat, is de titel onjuist voor speld.
 
-U kunt met het oplossen van deze uitzondering op het patroon, toevoegen `the man from la mancha` als een lijst met expliciete-overeenkomst voor de {subject} entiteit met de [API ontwerpen voor expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Als u deze uitzonde ring op het patroon wilt herstellen, voegt u `the man from la mancha` toe als expliciet overeenkomende lijst voor de entiteit {subject} met behulp van de [API voor het maken van een expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxis voor het markeren van optionele tekst in een sjabloon utterance
-Optionele tekst in de utterance met behulp van de syntaxis van reguliere expressie vierkant haakje sluiten, markeert `[]`. De optionele tekst kunt vierkante haken maximaal twee vierkante haken nesten.
+Markeer optionele tekst in de utterance met de reguliere expressie vier Kante haakjes syntaxis `[]`. De optionele tekst kunt vierkante haken maximaal twee vierkante haken nesten.
 
 |Patroon met optionele tekst|Betekenis|
 |--|--|

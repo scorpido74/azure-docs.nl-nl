@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494129"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389700"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter notebook in Apache Spark-clusters in azure HDInsight
 
@@ -53,7 +53,7 @@ Een Apache Spark cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure
 
 Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter notebook in Spark HDInsight-clusters.
 
-- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze zijn standaard beschikbaar. Deze contexten zijn:
+- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze zijn standaard beschikbaar. Deze context zijn:
 
   - **sc** -voor Spark-context
   - **sqlContext** -voor Hive-context
@@ -72,9 +72,9 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
    | Magische | Voorbeeld | Beschrijving |
    | --- | --- | --- |
    | Help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
-   | valuta |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
-   | Geconfigureerd |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De geforceerde vlag (-f) is verplicht als er al een sessie is gemaakt. Hiermee zorgt u ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query uit op basis van de sqlContext. Als de para meter `-o` wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
+   | info |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
+   | Configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De geforceerde vlag (-f) is verplicht als er al een sessie is gemaakt. Hiermee zorgt u ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query op de sqlContext. Als de para meter `-o` wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
    | lokale |`%%local`<br>`a=1` |Alle code in de volgende regels wordt lokaal uitgevoerd. De code moet een geldige Python2-code zijn, zelfs als de kernel die u gebruikt. , Zelfs als u **PySpark3** of **Spark** -kernels hebt geselecteerd tijdens het maken van het notitie blok en u de `%%local` Magic in een cel gebruikt, mag die cel alleen een geldige Python2-code hebben. |
    | logboeken |`%%logs` |Hiermee worden de logboeken voor de huidige livy-sessie uitgevoerd. |
    | delete |`%%delete -f -s <session number>` |Hiermee verwijdert u een specifieke sessie van het huidige livy-eind punt. U kunt de sessie die voor de kernel zelf wordt gestart, niet verwijderen. |
@@ -140,7 +140,7 @@ De nieuwe kernels bevinden zich in de ontwikkelings fase en zullen gedurende een
 
 - [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 - [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 - [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)

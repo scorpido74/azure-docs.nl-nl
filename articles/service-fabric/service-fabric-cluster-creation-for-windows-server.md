@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903374"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389837"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
 U kunt Azure Service Fabric gebruiken om Service Fabric-clusters te maken op alle virtuele machines of computers waarop Windows Server wordt uitgevoerd. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving met een set onderling verbonden Windows Server-computers, deze on-premises of met een Cloud provider. Service Fabric biedt een installatie pakket om Service Fabric clusters te maken die het zelfstandige Windows Server-pakket worden genoemd. Traditionele Service Fabric clusters op Azure zijn beschikbaar als beheerde service, terwijl zelfstandige Service Fabric clusters self-service zijn. Zie [Azure en zelfstandige service Fabric clusters vergelijken](./service-fabric-deploy-anywhere.md)voor meer informatie over de verschillen.
@@ -18,7 +18,7 @@ U kunt Azure Service Fabric gebruiken om Service Fabric-clusters te maken op all
 Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van een Service Fabric zelfstandig cluster.
 
 > [!NOTE]
-> Dit zelfstandige Windows Server-pakket is gratis verkrijgbaar en kan worden gebruikt voor productie-implementaties. Dit pakket bevat mogelijk nieuwe Service Fabric-functies die in ' preview ' zijn opgenomen. Schuif omlaag naar '[Preview-functies die deel uitmaken van dit pakket](#previewfeatures_anchor)'. van de sectie voor de lijst met preview-functies. U kunt [download een exemplaar van de gebruiksrechtovereenkomst](https://go.microsoft.com/fwlink/?LinkID=733084) nu.
+> Dit zelfstandige Windows Server-pakket is gratis verkrijgbaar en kan worden gebruikt voor productie-implementaties. Dit pakket bevat mogelijk nieuwe Service Fabric-functies die in ' preview ' zijn opgenomen. Schuif omlaag naar '[Preview-functies die deel uitmaken van dit pakket](#previewfeatures_anchor)'. van de sectie voor de lijst met preview-functies. U kunt nu [een exemplaar van de gebruiksrecht overeenkomst downloaden](https://go.microsoft.com/fwlink/?LinkID=733084) .
 > 
 > 
 
@@ -35,12 +35,12 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van een Servi
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Het pakket Service Fabric voor Windows Server downloaden
 Als u het cluster wilt maken, gebruikt u de Service Fabric voor Windows Server-pakket (Windows Server 2012 R2 en nieuwer) die hier worden gevonden: <br>
-[Download Link - Service Fabric Standalone Package - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
+[Koppeling downloaden-Service Fabric zelfstandig pakket-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 Zoek [hier](service-fabric-cluster-standalone-package-contents.md)meer informatie over de inhoud van het pakket.
 
 Het runtime pakket voor Service Fabric wordt automatisch gedownload op het moment dat het cluster wordt gemaakt. Als u implementeert vanaf een computer die niet is verbonden met internet, moet u het runtime-pakket buiten band downloaden: <br>
-[Download Link - Service Fabric Runtime - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
+[Koppeling downloaden-Service Fabric runtime-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
 Zoek voor beelden van zelfstandige cluster configuraties op: <br>
 [Voor beelden van zelfstandige cluster configuraties](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)

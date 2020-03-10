@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 96aa7517a3418ab30b0b6a1736eea950ecf4a731
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533790"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390128"
 ---
 # <a name="add-contributors-to-your-app"></a>Inzenders toevoegen aan uw app
 
-Een app-eigenaar kan mede werkers toevoegen aan apps. Deze mede werkers kunnen het model, de training en de publicatie van de app, wijzigen. 
+Een app-eigenaar kan mede werkers toevoegen aan apps. Deze medewerkers kunnen wijzigen het model te trainen en publiceren van de app. 
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -49,15 +49,15 @@ De volgende procedure geldt voor alle gebruikers die **niet zijn gemigreerd** om
 
 U bent niet gemigreerd als uw LUIS-ontwerp ervaring niet is gekoppeld aan een bewerkings resource op de pagina **Azure-resources beheren** in de Luis >-Portal.
 
-Een app heeft één auteur, de eigenaar, maar kan veel deel nemers hebben. Als u samen werkers wilt toestaan om uw LUIS-app te bewerken, moet u de e-mail toevoegen die wordt gebruikt voor toegang tot de LUIS-Portal naar de lijst met mede werkers. Zodra ze zijn toegevoegd, wordt de app weer gegeven in de LUIS-Portal.
+Een app kunt heeft een enkel auteur, de eigenaar, maar veel deelnemers. Als u wilt toestaan dat de medewerkers om uw LUIS-app te bewerken, moet u het e-mailbericht dat ze gebruiken voor toegang tot de portal LUIS aan de lijst met deelnemers toevoegen. Zodra ze zijn toegevoegd, ziet u de app in hun LUIS-portal.
 
 1. Selecteer **beheren** in het menu rechtsboven en selecteer vervolgens deel **nemers** in het linkermenu.
 
 1. Selecteer **samen werker toevoegen** op de werk balk.
 
-1. Voer het e-mail adres in dat de samen werker gebruikt om zich aan te melden bij de LUIS-Portal.
+1. Voer het e-mailadres dat de samenwerker wordt gebruikt om u te melden bij de LUIS-portal.
 
-    ![E-mail adres van de mede werker toevoegen](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![De samenwerker e-mailadres toevoegen](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
 ### <a name="users-with-multiple-emails"></a>Gebruikers met meerdere e-mail berichten 
@@ -66,26 +66,26 @@ Als u inzenders/mede werkers aan een LUIS-app toevoegt, geeft u precies het e-ma
 
 <a name="owner-and-collaborators"></a>
 
-### <a name="azure-active-directory-resources"></a>Azure Active Directory resources
+### <a name="azure-active-directory-resources"></a>Azure Active Directory-resources
 
-Als u [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) in uw organisatie gebruikt, moet language UNDERSTANDING (Luis) toestemming hebben voor de informatie over de toegang van gebruikers wanneer ze Luis willen gebruiken. De resources die LUIS nodig hebben, zijn mini maal. 
+Als u [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) in uw organisatie gebruikt, moet language UNDERSTANDING (Luis) toestemming hebben voor de informatie over de toegang van gebruikers wanneer ze Luis willen gebruiken. De resources die vereist dat LUIS zijn minimaal. 
 
-De gedetailleerde beschrijving wordt weer gegeven wanneer u zich probeert aan te melden met een account met beheerders toestemming of geen beheerder toestemming vereist, zoals toestemming van de beheerder:
+De gedetailleerde beschrijving ziet u wanneer u probeert aan te melden met een account met toestemming van een beheerder is of geen toestemming van een beheerder, zoals administrator toestemming vereist:
 
-* Met kunt u zich aanmelden bij de app met uw organisatie account en de app uw profiel laten lezen. Ook kan de app basis informatie over het bedrijf lezen. Dit geeft LUIS-machtiging voor het lezen van basis profiel gegevens, zoals gebruikers-ID, e-mail, naam
-* Hiermee kunnen uw gegevens worden weer gegeven en bijgewerkt met de app, zelfs wanneer u de app momenteel niet gebruikt. De machtiging is vereist voor het vernieuwen van het toegangs token van de gebruiker.
+* Hiermee kunt u zich aanmelden bij de app met uw organisatieaccount en kan uw profiel te lezen. Ook kunnen de app die basisgegevens over het bedrijfsinformatie te lezen. Dit geeft LUIS-machtiging voor het lezen van basis profiel gegevens, zoals gebruikers-ID, e-mail, naam
+* Hiermee kan de app weergeven en bijwerken van uw gegevens, zelfs wanneer u de app momenteel niet worden gebruikt. De machtiging is vereist voor het vernieuwen van het toegangs token van de gebruiker.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory Tenant gebruiker
+### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory-tenant-gebruiker
 
-LUIS maakt gebruik van de toestemmings stroom van de standaard Azure Active Directory (Azure AD). 
+LUIS gebruikt standaard instemmingsstroom van Azure Active Directory (Azure AD). 
 
-De Tenant beheerder moet direct samen werken met de gebruiker die toegang nodig heeft om LUIS te gebruiken in azure AD. 
+De tenantbeheerder kunnen rechtstreeks met de gebruiker die toegang krijgen tot LUIS in de Azure AD gebruiken nodig heeft. 
 
-* Eerst meldt de gebruiker zich aan bij LUIS en ziet u het pop-updialoogvenster dat door de beheerder moet worden goedgekeurd. De gebruiker neemt contact op met de Tenant beheerder voordat u doorgaat. 
-* Ten tweede meldt de Tenant beheerder zich aan bij LUIS en ziet hij een pop-upvenster met goedkeurings stroom. Dit is het dialoog venster dat de beheerder moet machtigen voor de gebruiker. Zodra de beheerder de machtiging heeft geaccepteerd, kan de gebruiker door gaan met LUIS. Als de Tenant beheerder zich niet bij LUIS aanmeldt, heeft de beheerder toegang tot [toestemming](https://account.activedirectory.windowsazure.com/r#/applications) voor Luis, zoals weer gegeven in de volgende scherm afbeelding. U ziet dat de lijst is gefilterd op items die de naam `LUIS`bevatten.
+* Eerst de gebruiker zich aanmeldt bij LUIS en ziet de pop-upvenster hoeven beheerder goedkeuring. De gebruiker neemt contact op met de tenantbeheerder voordat u doorgaat. 
+* Ten tweede tenant-beheerder zich aanmeldt bij LUIS en een toestemming stroom pop-upvenster ziet. Dit is het dialoogvenster dat de beheerder moet de machtiging voor de gebruiker. Zodra de beheerder de machtiging accepteert, kan de gebruiker om door te gaan met LUIS. Als de Tenant beheerder zich niet bij LUIS aanmeldt, heeft de beheerder toegang tot [toestemming](https://account.activedirectory.windowsazure.com/r#/applications) voor Luis, zoals weer gegeven in de volgende scherm afbeelding. U ziet dat de lijst is gefilterd op items die de naam `LUIS`bevatten.
 
-![Toestemming van Azure Active Directory per app-website](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Azure active directory-machtigingen per app-website](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Als de Tenant beheerder alleen bepaalde gebruikers in staat wilt stellen om LUIS te gebruiken, zijn er enkele mogelijke oplossingen:
 * De "toestemming van de beheerder" (toestemming geven aan alle gebruikers van de Azure AD), maar vervolgens ingesteld op "ja" de "gebruikers toewijzing vereist" onder eigenschappen van bedrijfs toepassing en uiteindelijk alleen de gewenste gebruikers aan de toepassing toewijzen/toevoegen. Met deze methode wordt de beheerder nog steeds ' toestemming van de beheerder ' gegeven aan de app, maar het is mogelijk om de gebruikers te beheren die er toegang toe hebben.

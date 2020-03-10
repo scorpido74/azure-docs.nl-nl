@@ -4,11 +4,11 @@ description: In deze zelf studie maakt u een aangepaste beleids definitie voor A
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966021"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386802"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
 
@@ -164,7 +164,7 @@ We hebben de resource-eigenschap gevonden, maar we moeten die eigenschap nog toe
 Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
 - Azure Policy-extensie voor VS code
-- Azure-CLI
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
@@ -172,7 +172,7 @@ Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In dez
 
 Met de extensie Azure Policy voor de VS code-extensie kunt u eenvoudig bladeren door uw resources en [aliassen detecteren](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 In Azure CLI wordt de `az provider`-opdrachtgroep gebruikt om te zoeken naar resource-aliassen. We filteren op de naamruimte **Microsoft.Storage**, op basis van de gegevens die we eerder over de Azure-resource hebben verkregen.
 

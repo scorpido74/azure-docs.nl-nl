@@ -4,11 +4,11 @@ description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om 
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152864"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392052"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -281,7 +281,7 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
 1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik op **Volgende**.
 
-    ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Methode voor gegevens beveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. Geef in **doel stellingen voor de korte termijn**op hoe lang u een back-up van de gegevens wilt laten maken op schijf.
    - Geef in **Bewaar termijn**op hoeveel dagen schijf herstel punten moeten worden bewaard.

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/04/2020
+ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623620"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933293"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -262,16 +262,16 @@ Gebruik de module voor het **evalueren van modellen** om te evalueren hoe goed u
 
 Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden om uw machine learning model te trainen. U kunt op elk moment een pijplijn uitvoering verzenden terwijl u pijp lijnen in de ontwerp functie bouwt. U kunt dit doen om uw werk te controleren terwijl u de functies van uw pijp lijn naar verwachting controleert.
 
-1. Selecteer boven aan het canvas de optie **uitvoeren**.
+1. Selecteer aan de bovenkant van het canvas de optie **verzenden**.
 
-1. Selecteer in het dialoog venster **pijplijn uitvoering instellen** **+ Nieuw experiment** voor het **experiment**.
+1. Selecteer in het dialoog venster **pijplijn uitvoering instellen** de optie **nieuwe maken**.
 
     > [!NOTE]
     > Experimenten groeperen gelijksoortige pijp lijnen worden uitgevoerd. Als u een pijp lijn meerdere keren uitvoert, kunt u hetzelfde experiment selecteren voor opeenvolgende uitvoeringen.
 
-    1. Voer een beschrijvende naam in voor de naam van het **experiment**.
+    1. Voer een beschrijvende naam in voor de **nieuwe naam**van het experiment.
 
-    1. Selecteer **Uitvoeren**.
+    1. Selecteer **Indienen**.
     
     U kunt de uitvoerings status en-gegevens weer geven in de rechter bovenhoek van het canvas.
 

@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837420"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383578"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Zelfstudie: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt
 Deze zelfstudie laat zien hoe u een aangepast domein toevoegt aan een Azure CDN-eindpunt (Content Delivery Network). Wanneer u een CDN-eindpunt gebruikt voor het leveren van inhoud, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de URL van uw CDN. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen. 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstartgids: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
+Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstart: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
 
 Als u nog geen aangepast domein hebt, moet u er eerst een aanschaffen bij een domeinprovider. Zie bijvoorbeeld [Een aangepaste domeinnaam kopen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
@@ -68,9 +68,9 @@ Om een CNAME-record te maken met het subdomein cdnverify:
 
     | Bron                    | Type  | Doel                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Bron: Voer de naam van uw aangepaste domein in, met inbegrip van het subdomein cdnverify, in de volgende indeling: cdnverify.&lt;aangepaste domein naam&gt;. Bijvoorbeeld: cdnverify.www.contoso.com.
+    - Bron: Voer de naam van uw aangepaste domein in, met inbegrip van het subdomein cdnverify, in de volgende indeling: cdnverify.&lt;aangepaste domein naam&gt;. Bijvoorbeeld: cdnverify. www.contoso.com.
 
     - Type: Voer *CNAME* in.
 
@@ -94,7 +94,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
     - Type: Laat *CNAME* geselecteerd.
 
-    - Host: Voer het subdomein in van uw aangepaste domein dat moet worden gebruikt, met inbegrip van de naam van het cdnverify-subdomein. Bijvoorbeeld: cdnverify.www.
+    - Host: Voer het subdomein in van uw aangepaste domein dat moet worden gebruikt, met inbegrip van de naam van het cdnverify-subdomein. Bijvoorbeeld: cdnverify. www.
 
     - Verwijst naar: Voer de hostnaam van uw CDN-eindpunt in, inclusief de naam van het subdomein cdnverify. Bijvoorbeeld: cdnverify.contoso.azureedge.net. 
 
@@ -162,7 +162,7 @@ Maken van een CNAME-record voor uw aangepaste domein:
 
     | Bron          | Type  | Doel           |
     |-----------------|-------|-----------------------|
-    | < www. contoso. com > | CNAME | contoso.azureedge.net |
+    | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
    - Bron: Voer uw aangepaste domein naam in (bijvoorbeeld www\.contoso.com).
 

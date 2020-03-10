@@ -1,7 +1,7 @@
 ---
 title: 'Een virtueel netwerk maken: quickstart - Azure-portal'
 titlesuffix: Azure Virtual Network
-description: In deze snelstart leert u hoe u een virtueel netwerk maakt met Azure Portal. Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, veilig communiceren met elkaar en met Internet
+description: In deze snelstart leert u hoe u een virtueel netwerk maakt met het Azure Portal. Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, veilig communiceren met elkaar en met Internet
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
 ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488499"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393117"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Snelstart: een virtueel netwerk maken met Azure Portal
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
@@ -46,15 +46,15 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com).
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Locatie | Selecteer **US - oost**.|
-    | Subnet - Naam | Voer *myVirtualSubnet* in. |
+    | Locatie | Selecteer **VS - oost**.|
+    | Subnet - naam | Voer *myVirtualSubnet* in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
 
 4. Laat de rest als standaard en selecteer **maken**.
 
 ## <a name="create-virtual-machines"></a>Virtuele machines maken
 
-Maak twee virtuele machines in het virtuele netwerk:
+Twee virtuele machines in het virtuele netwerk maken:
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
@@ -71,7 +71,7 @@ Maak twee virtuele machines in het virtuele netwerk:
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie. |
     | **INSTANTIEDETAILS** |  |
     | Naam van de virtuele machine | Voer *myVm1* in. |
-    | Regio | Selecteer **US - oost**. |
+    | Regio | Selecteer **VS - oost**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
     | Installatiekopie | Verlaat het standaard **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
@@ -142,7 +142,7 @@ Nadat u *myVm1*hebt gemaakt, maakt u verbinding met internet.
 
     Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-3. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+3. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 4. Open het gedownloade *RDP*-bestand.
 

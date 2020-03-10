@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387614"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Gegevens verplaatsen van een HTTP-bron met behulp van Azure Data Factory
 
@@ -50,7 +50,7 @@ U kunt een pijp lijn met een Kopieer activiteit maken om gegevens te verplaatsen
 
 De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de HTTP-gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type | De eigenschap **type** moet worden ingesteld op **http**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
@@ -65,7 +65,7 @@ Zie [gegevens verplaatsen tussen on-premises bronnen en de Cloud met behulp van 
 
 Stel **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | userName | De gebruikers naam die moet worden gebruikt voor toegang tot het HTTP-eind punt. | Ja |
 | wachtwoord | Het wacht woord voor de gebruiker (**gebruikers naam**). | Ja |
@@ -93,7 +93,7 @@ Stel **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de 
 
 Als u basis verificatie wilt gebruiken, stelt u **authenticationType** in op **ClientCertificate**. Naast de algemene HTTP-connector eigenschappen die in de voor gaande secties worden beschreven, stelt u de volgende eigenschappen in:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand. | Geef **embeddedCertData** of **certThumbprint** op |
 | CertThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Pas toe wanneer u gegevens van een on-premises HTTP-bron kopieert. | Geef **embeddedCertData** of **certThumbprint** op |
@@ -157,7 +157,7 @@ Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lij
 
 De sectie **typeProperties** verschilt voor elk type gegevensset. De sectie **typeProperties** bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het **http-** type heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | Het **type** van de gegevensset moet worden ingesteld op **http**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer het pad niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory functies en systeem variabelen](data-factory-functions-variables.md)gebruiken. Voor beeld: **relativeUrl**: **$ $Text. Format ('/My/Report? month = {0: jjjj}-{0: mm} & fmt = CSV ', slice start)** . | Nee |
@@ -220,7 +220,7 @@ Eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activi
 
 Op dit moment worden de volgende eigenschappen ondersteund wanneer de bron in de Kopieer activiteit van het type **http** is:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Het is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. | Nee<br />(standaard waarde: **00:01:40**) |
 

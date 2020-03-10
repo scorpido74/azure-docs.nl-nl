@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151378"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393537"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Certificaten voor punt-naar-site genereren en exporteren met Power shell
 
@@ -25,7 +25,7 @@ Als u geen toegang hebt tot een computer met Windows 10 of Windows Server 2016, 
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>Een geëxporteerde certificaat installeren
+## <a name="install"></a>Een geëxporteerd client certificaat installeren
 
 Voor elke client die verbinding maakt met het VNet via een P2S-verbinding, moet een client certificaat lokaal worden geïnstalleerd.
 

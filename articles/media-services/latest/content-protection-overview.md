@@ -16,11 +16,11 @@ ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393486"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
@@ -91,11 +91,11 @@ Een videospeler-app op basis van een player SDK (systeemeigen of browsergebaseer
 * De Player SDK ondersteunt de vereiste streaming protocollen: Smooth, DASH en/of HTTP Live Streaming (HLS).
 * De SDK van de Player kan verwerken van een JWT-token in een aanvraag voor het ophalen van licenties.
 
-U kunt een speler maken met behulp van de [API van Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [API van Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie kunt gebruiken voor verschillende DRM-platforms.
+U kunt een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
 
-Voor testen AES of CENC (Widevine en/of PlayReady) gecodeerde inhoud, kunt u [Azure Media Player](https://aka.ms/azuremediaplayer). Zorg ervoor dat u **Geavanceerde opties** selecteert en controleer uw versleutelings opties.
+Voor het testen van AES-of CENC (Widevine en/of PlayReady) versleutelde inhoud kunt u [Azure Media Player](https://aka.ms/azuremediaplayer)gebruiken. Zorg ervoor dat u **Geavanceerde opties** selecteert en controleer uw versleutelings opties.
 
-Als u testen van FairPlay gecodeerde inhoud wilt, gebruikt u [deze test player](https://aka.ms/amtest). De speler ondersteunt Widevine, PlayReady en FairPlay DRMs, samen met AES-128 Clear Key encryption.
+Als u FairPlay versleutelde inhoud wilt testen, gebruikt u [deze test speler](https://aka.ms/amtest). De speler ondersteunt Widevine, PlayReady en FairPlay DRMs, samen met AES-128 Clear Key encryption.
 
 Kies de juiste browser om verschillende DRMs te testen:
 
@@ -124,7 +124,7 @@ Het HLS-protocol ondersteunt de volgende container indelingen en versleutelings 
 
 |Containerindeling|Versleutelingsmethode|Voor beeld van URL|
 |---|---|---|
-|Alles|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2-TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -142,7 +142,7 @@ Het MPEG-DASH-protocol ondersteunt de volgende container indelingen en versleute
 
 |Containerindeling|Versleutelingsmethode|URL-voor beelden
 |---|---|---|
-|Alles|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -169,7 +169,7 @@ Algemene browsers ondersteunen de volgende DRM-clients:
 
 ## <a name="controlling-content-access"></a>Toegang tot inhoud beheren
 
-U kunt bepalen wie toegang heeft tot uw inhoud door het configureren van het beleid voor de inhoud van de sleutels. Media Services ondersteunt meerdere manieren om gebruikers te autoriseren die sleutels aanvragen. De client (speler) moet voldoen aan van het beleid voordat de sleutel kan worden geleverd aan de client. Het beleid voor de inhoud van de sleutels kan hebben *open* of *token* beperking.
+U kunt bepalen wie toegang heeft tot uw inhoud door het configureren van het beleid voor de inhoud van de sleutels. Media Services ondersteunt meerdere manieren om gebruikers te autoriseren die sleutels aanvragen. De client (speler) moet voldoen aan van het beleid voordat de sleutel kan worden geleverd aan de client. Het beleid voor inhouds sleutels kan *Open* of *token* beperking hebben.
 
 Een open-beperkt beleid voor inhouds sleutels kan worden gebruikt wanneer u een licentie wilt verlenen aan iemand zonder autorisatie. Als uw omzet bijvoorbeeld op ad of op basis van een abonnement is.  
 

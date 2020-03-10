@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380919"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -285,7 +285,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.
@@ -304,7 +304,7 @@ Azure Marketplace moet standaard worden gebruikt, tenzij u specifieke problemen 
 - Nalevings-of regelgeving (bijvoorbeeld beveiligings beleid) die voor alle machines aanwezig moet zijn.
 - Het gebruik van aangepaste installatie kopieën mag niet lichter worden beschouwd. Ze introduceren extra complexiteit, omdat u nu VHD-bestanden moet beheren voor de onderliggende basis installatie kopieën. U moet deze basis installatie kopieën ook regel matig patchen met software-updates. Deze updates omvatten nieuwe besturings systemen (OS)-updates en eventuele updates of configuratie wijzigingen die nodig zijn voor het software pakket zelf.
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>Artefacten
 
 ### <a name="what-are-artifacts"></a>Wat zijn artefacten?
 Artefacten zijn aanpas bare elementen die u kunt gebruiken om uw nieuwste bits te implementeren of uw ontwikkel hulpprogramma's te implementeren op een VM. Koppel artefacten aan uw virtuele machine wanneer u de virtuele machine maakt. Nadat de virtuele machine is ingericht, worden de artefacten geïmplementeerd en geconfigureerd voor uw VM. Verschillende bestaande artefacten zijn beschikbaar in onze [open bare github-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). U kunt ook [uw eigen artefacten ontwerpen](devtest-lab-artifact-author.md).
@@ -345,7 +345,7 @@ De volgende blog berichten bieden richt lijnen en informatie over het gebruik va
 
 Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (CI), kunt u dezelfde scenario's gebruiken door [Azure Resource Manager sjablonen](https://azure.microsoft.com/resources/templates/) te implementeren met behulp van [Azure PowerShell-cmdlets](../azure-resource-manager/templates/deploy-powershell.md) en [.net sdk's](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). U kunt ook [rest-api's gebruiken voor DevTest Labs](https://aka.ms/dtlrestapis) om te integreren met uw hulpprogramma keten.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wanneer moet ik een nieuw virtueel netwerk maken voor mijn DevTest Labs-omgeving versus een bestaand virtueel netwerk gebruiken?
 Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, is het raadzaam om de hoeveelheid VNets/subnetten zo klein mogelijk te maken dat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren.
@@ -399,7 +399,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 
 U kunt deze fout oplossen door een van de volgende stappen uit te voeren:
 
-#### <a name="option-1"></a>Optie 1
+#### <a name="option-1"></a>optie 1
 Controleer de beschik baarheid van het resource type in azure-regio's op de pagina [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) . Als het resource type niet beschikbaar is in een bepaalde regio, biedt DevTest Labs geen ondersteuning voor het maken van een lab in die regio. Selecteer een andere regio bij het maken van uw Lab.
 
 #### <a name="option-2"></a>Optie 2

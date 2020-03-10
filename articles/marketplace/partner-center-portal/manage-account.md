@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927089"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385525"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -291,7 +291,7 @@ Als uw Azure AD-toepassing gegevens in Microsoft Azure AD leest en schrijft, is 
 4. Er wordt een scherm weer gegeven met de **client-id** en **sleutel waarden**. Zorg ervoor dat u deze informatie afdrukt of kopieert, omdat u deze niet meer kunt openen nadat u deze pagina verlaat.
 5. Als u meer sleutels wilt maken, selecteert u **nog een sleutel toevoegen**.
 
-## <a name="define-user-roles-and-permissions"></a>Gebruikersrollen en machtigingen definiëren
+## <a name="define-user-roles-and-permissions"></a>Gebruikers rollen en-machtigingen definiëren
 
 De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen aan het programma voor commerciële Marketplace in het partner centrum:
 

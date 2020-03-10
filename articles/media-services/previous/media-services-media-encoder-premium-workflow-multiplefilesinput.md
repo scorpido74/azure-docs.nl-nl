@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015440"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392976"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Meerdere invoer bestanden en onderdeel eigenschappen gebruiken met Premium encoder
 ## <a name="overview"></a>Overzicht
@@ -31,7 +31,7 @@ Er zijn scenario's waarin u mogelijk onderdeel eigenschappen kunt aanpassen, de 
 * Een logo afbeelding bedekken op de invoer video terwijl de video is gecodeerd.
 * Meerdere audio taal code ring.
 
-Als u wilt dat de **Media Encoder Premium workflow** weet dat u sommige eigenschappen in de werk stroom wijzigt wanneer u de taak maakt of meerdere invoer bestanden verzendt, moet u een configuratie teken reeks gebruiken die **setRuntimeProperties** en/of **bevat transcodeSource**. In dit onderwerp wordt uitgelegd hoe u deze gebruikt.
+Als u wilt dat de **Media Encoder Premium workflow** weet dat u sommige eigenschappen in de werk stroom wijzigt wanneer u de taak maakt of meerdere invoer bestanden verzendt, moet u een configuratie teken reeks gebruiken die **setRuntimeProperties** en/of **transcodeSource**bevat. In dit onderwerp wordt uitgelegd hoe u deze gebruikt.
 
 ## <a name="configuration-string-syntax"></a>Syntaxis van de configuratie teken reeks
 De configuratie teken reeks die in de coderings taak moet worden ingesteld, maakt gebruik van een XML-document dat er als volgt uitziet:
@@ -97,7 +97,7 @@ Voorbeeld:
 ```
 
 ### <a name="property-with-an-xml-value"></a>Eigenschap met een XML-waarde
-Als u een eigenschap wilt instellen die een XML-waarde verwacht, inkapselen met behulp `<![CDATA[ and ]]>`van.
+Als u een eigenschap wilt instellen die een XML-waarde verwacht, inkapselen met behulp van `<![CDATA[ and ]]>`.
 
 Voorbeeld:
 
@@ -131,7 +131,7 @@ Voorbeeld:
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u geen regel terugloop hoeft `<![CDATA[`op te geven.
+> Zorg ervoor dat u geen regel terugloop hoeft op te geven na `<![CDATA[`.
 
 ### <a name="propertypath-value"></a>waarde propertyPath
 In de vorige voor beelden was het propertyPath "/media file input/filename" of "/inactiveTimeout" of "clipListXml".
@@ -269,7 +269,7 @@ Met aanvullende frame-nauw keurige bijsnijden:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Voor beeld 1: Een afbeelding boven op de video bedekken
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Voor beeld 1: een afbeelding bovenop de video bedekken
 
 ### <a name="presentation"></a>Presentatie
 Bekijk een voor beeld waarin u een logo afbeelding wilt bedekken op de invoer video terwijl de video is gecodeerd. In dit voor beeld heet de invoer video ' Microsoft_HoloLens_Possibilities_816p24. MP4 ' en heet het logo ' logo. png '. Voer de volgende stappen uit:
@@ -299,7 +299,7 @@ In het bovenstaande voor beeld wordt de naam van het video bestand verzonden naa
 ### <a name="step-by-step-workflow-creation"></a>Stapsgewijze werk stroom maken
 Hier volgen de stappen voor het maken van een werk stroom die twee bestanden als invoer accepteert: een video en een afbeelding. De afbeelding wordt boven op de video bedekt.
 
-Open **Workflow Designer** en selecteer **bestand** > **nieuwe werk ruimte** > trans code trans**blauw**.
+Open **Workflow Designer** en selecteer **bestand** > **nieuwe werk ruimte** ** > ** afcode van de trans code.
 
 In de nieuwe werk stroom worden drie elementen weer gegeven:
 
@@ -429,7 +429,7 @@ Nadat de taak is voltooid, wordt in het bestand MP4 in het uitvoer element de ov
 
 U kunt de voorbeeld werk stroom downloaden vanuit [github](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Voor beeld 2: Meerdere audio taal codering
+## <a name="example-2--multiple-audio-language-encoding"></a>Voor beeld 2: meerdere audio taal codering
 
 Er is een voor beeld van een workflow voor het coderen van meerdere audio talen beschikbaar in [github](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 

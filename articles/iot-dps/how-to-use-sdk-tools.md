@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974799"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391009"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>De hulpprogram ma's in de Sdk's gebruiken om de ontwikkeling van het inrichten te vereenvoudigen
 De IoT Hub Device Provisioning Service vereenvoudigt het inrichtings proces met Zero-Touch, just-in-time- [inrichting](concepts-auto-provisioning.md) op een veilige en schaal bare manier.  Er is een beveiligings attest in de vorm van X. 509-certificaat of Trusted Platform Module (TPM) vereist.  Micro soft is ook in samen werking met [andere partners voor beveiligingshardware](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in de beveiliging van IOT-implementatie te verbeteren. Meer informatie over de vereiste voor hardware-beveiliging kan voor ontwikkel aars behoorlijk lastig zijn. Er wordt een set met Sdk's voor Azure IoT Provisioning Service gegeven, zodat ontwikkel aars een laag kunnen gebruiken voor het schrijven van clients die met de inrichtings service communiceren. De Sdk's bieden ook voor beelden voor veelvoorkomende scenario's en een set hulpprogram ma's om beveiligings attesten in ontwikkeling te vereenvoudigen.

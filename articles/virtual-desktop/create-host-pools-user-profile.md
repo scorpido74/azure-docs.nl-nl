@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
 ms.openlocfilehash: a6bc8546a4047e921d62953e39eaddf546f38229
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367437"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388839"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
 
@@ -65,7 +65,7 @@ Als u de virtuele machines met de FSLogix-software wilt configureren, gaat u als
 6. Maak een sleutel met de naam **profielen**.
 7. Maak de volgende waarden voor de sleutel profielen:
 
-| Name                | Type               | Gegevens/waarde                        |
+| Naam                | Type               | Gegevens/waarde                        |
 |---------------------|--------------------|-----------------------------------|
 | Ingeschakeld             | 32              | 1                                 |
 | VHDLocations        | Waarde met meerdere teken reeksen | "Netwerkpad voor bestands share"     |

@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315775"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391823"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-scripts ontwikkelen met Data Lake-tools voor Visual Studio
 
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u Visual Studio gebruikt om Azure Data Lake 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Visual Studio**: Alle edities, met uitzonde ring van Express, worden ondersteund.
+* **Visual Studio**: alle versies behalve Express worden ondersteund.
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -55,7 +55,7 @@ Voor deze zelfstudie moet Data Lake-tools voor Visual Studio zijn geïnstalleerd
 
 1. Open Visual Studio.
 
-1. Open **Server Explorer** door**Server Explorer** **weer geven** > te selecteren.
+1. Open **Server Explorer** door > **Server Explorer** **weer geven** te selecteren.
 
 1. Klik met de rechter muisknop op **Azure**en selecteer **verbinding maken met Microsoft Azure abonnement**. Volg de instructies in **Aanmelden bij uw account**.
 

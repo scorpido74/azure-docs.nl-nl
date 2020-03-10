@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454418"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893359"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
 
@@ -91,7 +91,7 @@ Wanneer u een wijziging aanbrengt in de portal, moet u deze hand matig opslaan d
 Voordat u uw portal voor de bezoekers beschikbaar maakt, moet u de automatisch gegenereerde inhoud personaliseren. De aanbevolen wijzigingen zijn de indelingen, stijlen en de inhoud van de start pagina.
 
 > [!NOTE]
-> Vanwege integratie overwegingen kunnen de volgende pagina's niet worden verwijderd of verplaatst onder een andere URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef``/publish`, `/signin`, `/signin-sso``/signup`.
+> Vanwege integratie overwegingen kunnen de volgende pagina's niet worden verwijderd of verplaatst onder een andere URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Startpagina
 
@@ -125,6 +125,10 @@ Als u uw portal en de meest recente wijzigingen beschikbaar wilt maken voor bezo
 ## <a name="visit-the-published-portal"></a>Ga naar de gepubliceerde Portal
 
 Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.developer.azure-api.net`. Bekijk het in een afzonderlijke browser sessie (incognito/private Browse mode) als een externe gebruiker.
+
+## <a name="apply-the-cors-policy-on-apis"></a>Het CORS-beleid Toep assen op Api's
+
+U moet CORS (cross-Origin Resource Sharing) inschakelen op uw Api's om de bezoekers van uw portal de Api's te laten testen via de ingebouwde interactieve console. Raadpleeg [Dit documentatie artikel](api-management-howto-developer-portal.md#cors) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

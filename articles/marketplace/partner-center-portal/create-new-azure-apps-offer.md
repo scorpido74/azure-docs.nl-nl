@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391475"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -69,7 +69,7 @@ Raadpleeg de volgende documentatie voor Azure-toepassingen, die Quick starts, ze
 
 * Voor beelden
 
-    * [Azure-CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     * [Oplossingen voor beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
@@ -90,7 +90,7 @@ Uw technische team moet kennis hebben van de volgende micro soft-technologieën:
 Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te beheren:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure-CLI](https://docs.microsoft.com/cli/azure)
+* [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
@@ -125,7 +125,7 @@ Wanneer u de **aanbiedings-id** en **aanbiedings alias**hebt ingevoerd, selectee
 
 Op de pagina **aanbieding instellen** wordt u gevraagd om de volgende informatie op te vragen. Zorg ervoor dat u **Opslaan** selecteert na het volt ooien van deze velden.
 
-### <a name="test-drive"></a>Test drive
+### <a name="test-drive"></a>Station testen
 
 Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven voor ' voor u ' te kopen, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. [Meer informatie over test stations.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -169,7 +169,7 @@ U moet de details van de Marketplace (naam, beschrijving, installatie kopieën, 
 > [!NOTE]
 > Aanbiedings inhoud (zoals de beschrijving, documenten, scherm afbeeldingen, gebruiks voorwaarden, enzovoort) is niet vereist in het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -196,7 +196,7 @@ Tips voor het schrijven van uw beschrijving:
 - Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen. 
 - U kunt HTML-tags gebruiken om uw beschrijving te Format teren en het aantrekkelijker te maken.
 
-### <a name="search-keywords"></a>Sleutelwoorden zoeken
+### <a name="search-keywords"></a>Tref woorden zoeken
 
 U kunt eventueel Maxi maal drie Zoek trefwoorden invoeren om klanten te helpen uw aanbieding op Marketplace te vinden. Probeer deze tref woorden ook in uw beschrijving te gebruiken voor de beste resultaten.
 
@@ -208,7 +208,7 @@ In deze sectie vindt u koppelingen waarmee klanten meer inzicht kunnen krijgen i
 
 Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en om een geldig privacybeleid te bieden.
 
-#### <a name="useful-links"></a>Nuttige koppelingen
+#### <a name="useful-links"></a>Handige koppelingen
 
 Bied optionele aanvullende online documenten over uw oplossing.  Voeg extra nuttige koppelingen toe door te klikken op **+ een koppeling toevoegen**.
 
@@ -234,7 +234,7 @@ De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 
 
 Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. U kunt Maxi maal vijf scherm opnamen toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
 
-#### <a name="videos"></a>Video’s
+#### <a name="videos"></a>Video's
 
 U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels).
 
@@ -309,7 +309,7 @@ Azure Government Services verwerkt gegevens die onderworpen zijn aan bepaalde we
 
 Op het tabblad **plan vermelding** worden de plannings gegevens weer gegeven die kunnen verschillen tussen verschillende abonnementen voor dezelfde aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 Ingevuld op basis van uw naam die u bij het maken van het abonnement hebt ingesteld.  Deze naam wordt weer gegeven als de titel van dit ' software-abonnement ' dat wordt weer gegeven in de Marketplace.  Mag Maxi maal 100 tekens bevatten.
 
@@ -342,7 +342,7 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Als uw oplossings sjabloon alleen indirect moet worden geïmplementeerd als er een andere oplossings sjabloon of beheerde toepassing wordt verwezen, schakelt u dit selectie vakje in om de oplossings sjabloon te publiceren, maar deze te verbergen bij klanten die ze rechtstreeks zoeken en bezoeken.
 
-## <a name="pricing-and-availability"></a>Prijzen en beschik baarheid
+## <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
 
 Het tabblad **prijzen en beschik baarheid** is alleen zichtbaar voor beheerde toepassings abonnementen.  U kunt de markten configureren waarop dit plan beschikbaar is, de prijs per maand van het beheer van de oplossing en of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een privé-publiek).
 
@@ -457,7 +457,7 @@ Het is volledig optioneel om informatie op het tabblad verkopen op te geven voor
 
 Zie voor meer informatie over het invullen van dit tabblad de [optie co-sell in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell).
 
-## <a name="test-drive"></a>Test drive
+## <a name="test-drive"></a>Station testen
 
 Op het tabblad **test station** kunt u een demonstratie (of "test drive") instellen waarmee klanten uw aanbieding kunnen proberen voordat deze zich aanmeldt. Meer informatie in het artikel [Wat is een test drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)  Als u geen test drive voor uw aanbieding wilt opgeven, keert u terug naar de pagina voor het instellen van de **aanbieding** en schakelt u **Test Drive inschakelen**in.
 

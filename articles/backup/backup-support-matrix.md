@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254911"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932630"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -84,7 +84,7 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
-Azure Backup biedt geen ondersteuning voor automatische klok aanpassing voor zomer-en winter tijd voor back-ups van Azure-VM'S. Wijzig de back-upbeleiden naar behoefte hand matig.
+Azure Backup biedt geen ondersteuning voor automatische klok aanpassing voor zomer-en winter tijd voor back-ups van Azure-VM'S. Het uur van de back-up wordt niet voorwaarts of achterwaarts geschoven. Om ervoor te zorgen dat de back-up op de gewenste tijd wordt uitgevoerd, wijzigt u het back-upbeleid als vereist hand matig.
 
 ## <a name="disk-deduplication-support"></a>Ondersteuning voor schijf ontdubbeling
 
@@ -152,9 +152,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | VS - west-centraal   |
-| MARS-agent/on-premises | Nee                                                           | N.V.T.               |
-| SQL-/SAP HANA          | Nee                                                           | N.V.T.               |
-| AFS                    | Nee                                                           | N.V.T.               |
+| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
+| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
+| AFS                    | Nee                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

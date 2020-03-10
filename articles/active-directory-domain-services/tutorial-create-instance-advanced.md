@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612549"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383686"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratie opties
 
@@ -139,7 +139,7 @@ Vul de velden in het venster *netwerk* als volgt in:
 
 Een speciale beheer groep met de naam *Aad DC-Administrators* wordt gebruikt voor het beheer van het Azure AD DS-domein. Aan leden van deze groep worden beheerders machtigingen verleend op Vm's die zijn gekoppeld aan het beheerde domein. Op Vm's die lid zijn van een domein, wordt deze groep toegevoegd aan de lokale groep Administrators. Leden van deze groep kunnen ook Extern bureaublad gebruiken om extern verbinding te maken met virtuele machines die lid zijn van een domein.
 
-U hebt geen machtigingen voor *domein Administrator* of *ondernemings Administrator* voor een beheerd domein met Azure AD DS. Deze machtigingen zijn gereserveerd door de service en worden niet beschikbaar gesteld voor gebruikers binnen de Tenant. In plaats daarvan kunt u met de groep *Aad DC-Administrators* bepaalde geprivilegieerde bewerkingen uitvoeren. Deze bewerkingen omvatten het toevoegen van computers aan het domein, die deel uitmaken van de beheer groep op Vm's die lid zijn van een domein en het configureren van groepsbeleid.
+U hebt geen machtigingen voor *domein Administrator* of *ondernemings Administrator* voor een beheerd domein met Azure AD DS. Deze machtigingen zijn gereserveerd door de service en worden niet beschikbaar gesteld voor gebruikers binnen de Tenant. In plaats daarvan kunt u met de groep *Aad DC-Administrators* bepaalde geprivilegieerde bewerkingen uitvoeren. Deze bewerkingen behoren tot de beheer groep op Vm's die lid zijn van een domein en het configureren van groepsbeleid.
 
 De wizard maakt automatisch de groep *Aad DC-Administrators* in uw Azure AD-adres lijst. Als u een bestaande groep met deze naam in uw Azure AD-adres lijst hebt, wordt deze groep door de wizard geselecteerd. U kunt ervoor kiezen om tijdens het implementatie proces extra gebruikers toe te voegen aan deze groep *Aad DC-Administrators* . Deze stappen kunnen later worden uitgevoerd.
 

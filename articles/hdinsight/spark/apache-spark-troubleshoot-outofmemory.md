@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894318"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395152"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight
 
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 De meest waarschijnlijke oorzaak van deze uitzondering is dat niet voldoende heapgeheugen is toegewezen aan de Java virtual machines (JVMs). Deze JVMs worden als uitvoerende toepassingen of stuur Programma's geïntroduceerd als onderdeel van de Apache Spark toepassing.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Bepaal de maximale grootte van de gegevens die de Spark-toepassing moet verwerken. Maak een schatting van de grootte op basis van het maximum van de invoer gegevens, de tussenliggende gegevens die worden geproduceerd door het transformeren van de invoer gegevens en de uitvoer gegevens die de tussenliggende gegevens hebben getransformeerd. Als de oorspronkelijke schatting niet voldoende is, verg root u de grootte en herhaalt u dit tot de geheugen fouten.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 U kunt het Spark-geschiedenis server geheugen verhogen door de eigenschap `SPARK_DAEMON_MEMORY` in de Spark-configuratie te bewerken en alle services opnieuw te starten.
 
@@ -200,7 +200,7 @@ Wanneer de livy-server onverwacht wordt beëindigd, worden alle verbindingen met
 
 Wanneer een groot aantal taken wordt verzonden via livy, worden deze sessie statussen in ZK (op HDInsight-clusters) opgeslagen als onderdeel van hoge Beschik baarheid voor livy-server en worden deze sessies hersteld wanneer de livy-service opnieuw wordt gestart. Wanneer de computer opnieuw wordt opgestart na een onverwachte beëindiging, maakt livy één thread per sessie. Dit is een aantal te herstellen sessies die te veel threads veroorzaken.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Verwijder alle vermeldingen met behulp van de stappen die hieronder worden beschreven.
 

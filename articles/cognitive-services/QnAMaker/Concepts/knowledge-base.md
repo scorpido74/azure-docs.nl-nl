@@ -4,13 +4,13 @@ description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord 
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843346"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389150"
 ---
-# <a name="importing-from-data-sources"></a>Importeren uit gegevens bronnen
+# <a name="importing-from-data-sources"></a>Importeren uit gegevensbronnen
 
 Een kennis database bestaat uit vraag-en antwoord sets in open bare Url's en bestanden.
 
@@ -61,7 +61,7 @@ Als u niet zeker weet hoe u uw QnA in het `.tsv`-bestand kunt weer geven, maakt 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Ontwikkelingslevenscyclus van een kennisdatabase](./development-lifecycle-knowledge-base.md)
+> [Ontwikkelings levenscyclus van een Knowledge Base](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Zie ook
 
@@ -70,9 +70,9 @@ Gebruik de QnA Maker [prijs informatie](../reference-markdown-format.md) om u te
 [Overzicht van QnA Maker](../Overview/overview.md)
 
 Een Knowledge Base maken en bewerken met:
-* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Een antwoord genereren met:
-* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

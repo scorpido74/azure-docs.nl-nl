@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366720"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Een StorSimple-cloudapparaat implementeren en beheren in Azure (Update 3 en hoger)
 
@@ -46,13 +46,13 @@ Het StorSimple-cloudapparaat is beschikbaar in twee modellen: de Standard 8010 (
 | --- | --- | --- |
 | **Maximale capaciteit** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 kerngeheugens, 7 GB geheugen)| Standard_DS3 (4 kerngeheugens, 14 GB geheugen)|
-| **Beschikbaarheid in regio’s** |Alle Azure-regio's |Azure-regio's waar ondersteuning wordt geboden voor Premium Storage en Azure-VM’s met DS3<br></br>Gebruik [deze lijst](https://azure.microsoft.com/regions/services/) om te kijken of zowel **Virtuele Machines > DS-serie** als **Opslag > Schijfruimte** beschikbaar is in uw regio. |
+| **Beschikbaarheid in regio's** |Alle Azure-regio's |Azure-regio's waar ondersteuning wordt geboden voor Premium Storage en Azure-VM’s met DS3<br></br>Gebruik [deze lijst](https://azure.microsoft.com/regions/services/) om te kijken of zowel **Virtuele Machines > DS-serie** als **Opslag > Schijfruimte** beschikbaar is in uw regio. |
 | **Opslagtype** |Maakt gebruik van Azure Standard-opslag voor lokale schijven<br></br> Ontdek hoe u [een Standard-opslagaccount maakt](../storage/common/storage-create-storage-account.md) |Maakt gebruik van Azure Premium Storage voor lokale schijven<sup>2</sup> <br></br> |
 | **Richtlijnen voor de workload** |Bestanden ophalen uit back-ups op itemniveau |Ontwikkelings- en testscenario’s voor cloudapparaten <br></br>Lage latentie en workloads met hogere prestaties<br></br>Secundair apparaat voor herstel na noodgevallen |
 
-<sup>1</sup> *Voorheen bekend als de 1100*.
+<sup>1</sup> *voorheen bekend als de 1100*.
 
-<sup>2</sup> *Voor zowel de 8010 als de 8020 wordt voor de cloudlaag Azure Standard-opslag gebruikt. Het verschil zit hem alleen in de lokale laag in het apparaat*.
+<sup>2</sup> *zowel de 8010 als de 8020 gebruiken de Azure Standard-opslag voor de Cloud-laag. Het verschil bestaat alleen in de lokale laag in het apparaat*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Hoe het cloudapparaat verschilt van het fysieke apparaat
 
@@ -64,8 +64,8 @@ In de volgende tabel ziet u enkele belangrijke verschillen tussen het StorSimple
 
 |  | Fysiek apparaat | Cloudapparaat |
 | --- | --- | --- |
-| **Location** |Bevindt zich in het datacenter. |Wordt uitgevoerd in Azure. |
-| **Netwerkinterfaces** |Heeft zes netwerkinterfaces: DATA 0 t/m DATA 5. |Heeft slechts één netwerkinterface: DATA 0. |
+| **Locatie** |Bevindt zich in het datacenter. |Wordt uitgevoerd in Azure. |
+| **Netwerkinterfaces** |Heeft zes netwerkinterfaces: DATA 0 t/m DATA 5. |Heeft slechts één netwerkinterface: DATA 0 |
 | **Registratie** |Geregistreerd tijdens de initiële configuratiestap. |Registratie is een afzonderlijke taak. |
 | **Gegevensversleutelingssleutel van service** |Genereer de sleutel opnieuw op het fysieke apparaat en werk het cloudapparaat daarna bij met de nieuwe sleutel. |Het is niet mogelijk om sleutels opnieuw te genereren op het cloudapparaat. |
 | **Ondersteunde volumetypen** |Ondersteunt zowel lokaal vastgemaakte als gelaagde volumes. |Ondersteunt alleen gelaagde volumes. |
@@ -118,7 +118,7 @@ Voer de volgende stappen uit om het StorSimple-cloudapparaat te maken.
 
 Als het maken van het cloudapparaat in deze stap mislukt, hebt u mogelijk geen verbinding met internet. Ga voor meer informatie naar [Problemen met internetverbinding oplossen](#troubleshoot-internet-connectivity-errors) wanneer u een cloudapparaat maakt.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Stap 2: Het cloudapparaat configureren en registreren
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Stap 2: het cloudapparaat configureren en registreren
 
 Voordat u aan deze procedure begint, zorgt u ervoor dat u een kopie van de gegevensversleutelingssleutel van de service hebt. De versleutelingssleutel voor servicegegevens wordt gemaakt wanneer u uw eerste fysieke StorSimple-apparaat hebt geregistreerd bij de StorSimple-apparaatbeheerservice. U krijgt de instructie deze op een veilige locatie op te slaan. Als u geen kopie van de gegevensversleutelingssleutel van de service hebt, moet u contact opnemen met Microsoft Ondersteuning voor hulp.
 
@@ -126,7 +126,7 @@ Voer de volgende stappen uit om het StorSimple-cloudapparaat te configureren en 
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Stap 3: (Optioneel) De configuratie-instellingen van het apparaat wijzigen
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Stap 3: (optioneel) de configuratie-instellingen van het apparaat wijzigen
 
 In het volgende gedeelte wordt beschreven welke apparaatconfiguratie-instellingen vereist zijn voor het StorSimple-cloudapparaat als u CHAP of StorSimple Snapshot Manager wilt gebruiken of als u het beheerderswachtwoord van het apparaat wilt wijzigen.
 
@@ -162,13 +162,13 @@ Externe toegang tot uw cloudapparaat via de Windows PowerShell-interface is niet
 
 De volgende procedure in twee stappen beschrijft hoe u op afstand verbinding maakt met uw cloudapparaat.
 
-### <a name="step-1-configure-remote-management"></a>Stap 1: Extern beheer configureren
+### <a name="step-1-configure-remote-management"></a>Stap 1: extern beheer configureren
 
 Voer de volgende stappen uit om extern beheer te configureren voor uw StorSimple-cloudapparaat.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>Stap 2: Externe toegang verkrijgen tot het cloudapparaat
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Stap 2: extern toegang verkrijgen tot het cloudapparaat
 
 Nadat u extern beheer op het cloudapparaat hebt ingeschakeld, gebruikt u Windows PowerShell op afstand om verbinding maken met het apparaat vanaf een andere virtuele machine binnen hetzelfde virtuele netwerk. U kunt bijvoorbeeld verbinding maken vanaf de virtuele hostmachine die u hebt geconfigureerd en gebruikt om verbinding maken met iSCSI. Bij de meeste implementaties hebt u al een openbaar eindpunt geopend voor toegang tot uw host-VM; deze virtuele machine kunt u vervolgens gebruiken voor toegang tot het cloudapparaat.
 

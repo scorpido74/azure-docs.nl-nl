@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612152"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390616"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Ontwikkel hulpprogramma's op de Azure Data Science Virtual Machine
 
@@ -28,7 +28,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 | Wat is het?   | IDE voor algemeen gebruik      |
 | Ondersteunde DSVM-versies      | Windows: Visual Studio 2017, Windows 2019 (preview): Visual Studio 2019      |
 | Wordt doorgaans gebruikt      | Software ontwikkeling    |
-| Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM?      | Data Science-werkbelasting (Python / R tools), Azure-workload (Hadoop, Data Lake), Node.js, SQL Server-hulpprogramma's, [Azure Machine Learning voor Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM?      | Data Science workload (python en R-hulpprogram ma's), Azure workload (Hadoop, Data Lake), node. js, SQL Server-hulpprogram ma's, [Azure machine learning voor Visual Studio code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Hoe gebruiken en uitvoeren      | Snelkoppeling bureau blad (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Open Visual Studio met behulp van het bureaublad pictogram of het menu **Start** . Zoek naar Program ma's (Windows-logo toets + S), gevolgd door **Visual Studio**. Van daaruit kunt u projecten maken in talen zoals C#python, R en node. js.   |
 | Gerelateerde hulpprogram ma's op de DSVM      |     Visual Studio Code, RStudio, Juno  |
 

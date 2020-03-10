@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930090"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387482"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Gegevens verplaatsen van en naar Azure Cosmos DB met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -41,7 +41,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -483,16 +483,16 @@ Azure Cosmos DB is een NoSQL-Archief voor JSON-documenten, waarbij geneste struc
 ## <a name="appendix"></a>Bijlage
 1. **Vraag:** Ondersteunt de Kopieer activiteit een update van bestaande records?
 
-    **Antwoord:** nee.
+    **Antwoord:** Geen.
 2. **Vraag:** Hoe probeert een kopie opnieuw te Azure Cosmos DB worden verwerkt met al gekopieerde records?
 
     **Antwoord:** Als records een ID-veld hebben en er wordt geprobeerd een record met dezelfde ID in te voegen, wordt er een fout gegenereerd door de Kopieer bewerking.
 3. **Vraag:** Ondersteunt Data Factory [bereik of gegevens partities op basis van hashes](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Antwoord:** nee.
+    **Antwoord:** Geen.
 4. **Vraag:** Kan ik meer dan één Azure Cosmos DB verzameling opgeven voor een tabel?
 
-    **Antwoord:** nee. Op dit moment kan slechts één verzameling worden opgegeven.
+    **Antwoord:** Geen. Op dit moment kan slechts één verzameling worden opgegeven.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemming
 Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

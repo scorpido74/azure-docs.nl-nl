@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
 ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938662"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392642"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-eindpunten
 
@@ -38,7 +38,7 @@ In de volgende secties wordt elk type eind punt uitgebreid beschreven.
 Azure-eind punten worden gebruikt voor services op basis van Azure in Traffic Manager. De volgende Azure-resource typen worden ondersteund:
 
 * PaaS Cloud Services.
-* Web-apps
+* Web Apps
 * Web-app-sleuven
 * PublicIPAddress-bronnen (die rechtstreeks of via een Azure Load Balancer kunnen worden verbonden met Vm's). Aan de publicIpAddress moet een DNS-naam zijn toegewezen om te worden gebruikt in een Traffic Manager profiel.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913256"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945549"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -340,7 +340,7 @@ Als bijvoorbeeld *www.contoso.com* is opgegeven in de instelling voor de **hostn
 
 ## <a name="back-end-pool"></a>Back-endgroep
 
-U kunt een back-end-pool naar vier typen back-endservers verwijzen: een specifieke virtuele machine, een virtuele-machine schaalset, een IP-adres/FQDN of een app service. Elke back-end-pool kan verwijzen naar meerdere leden van hetzelfde type. Het is niet toegestaan om leden van verschillende typen in dezelfde back-end-groep aan te wijzen.
+U kunt een back-end-pool naar vier typen back-endservers verwijzen: een specifieke virtuele machine, een virtuele-machine schaalset, een IP-adres/FQDN of een app service. 
 
 Nadat u een back-end-pool hebt gemaakt, moet u deze koppelen aan een of meer aanvraag-routerings regels. U moet ook status controles configureren voor elke back-end-pool op uw toepassings gateway. Wanneer aan een regel voorwaarde voor het door sturen van de aanvraag wordt voldaan, stuurt de toepassings gateway het verkeer naar de gezonde servers (zoals bepaald door de status tests) in de bijbehorende back-end-pool.
 

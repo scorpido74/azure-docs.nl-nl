@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362093"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files oplossen in Linux
 
@@ -288,6 +288,6 @@ U kunt dit probleem omzeilen door een harde koppeling op te geven. Met een harde
 
 Als u geen upgrade kunt uitvoeren naar de nieuwste kernelversies, kunt u dit probleem omzeilen door een bestand in de Azure-bestandsshare te bewaren waarnaar u elke 30 seconden, of minder, schrijft. Dit moet een schrijfbewerking zijn, zoals het herschrijven van de aanmaakdatum of wijzigingsdatum van het bestand. Anders ontvangt u wellicht de resultaten die in de cache zijn opgeslagen, en wordt het opnieuw verbinden mogelijk niet geactiveerd.
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
 
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893065"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946440"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -36,6 +36,7 @@ Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 * [Kan ik domein controllers toevoegen aan een Azure AD Domain Services beheerd domein?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [Kunnen gast gebruikers die worden uitgenodigd voor mijn Directory Azure AD Domain Services gebruiken?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [Kan ik een bestaand Azure AD Domain Services beheerd domein verplaatsen naar een ander abonnement, een andere resource groep, een andere regio of een virtueel netwerk?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Bevat Azure AD Domain Services opties voor hoge Beschik baarheid?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Kan ik meerdere beheerde domeinen maken voor één Azure AD-adres lijst?
 Nee. U kunt slechts één beheerd domein maken dat door Azure AD Domain Services wordt onderhouden voor één Azure AD-adres lijst.
@@ -74,6 +75,10 @@ Nee. Gast gebruikers die zijn uitgenodigd voor uw Azure AD-adres lijst met het [
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Kan ik een bestaand Azure AD Domain Services beheerd domein verplaatsen naar een ander abonnement, een andere resource groep, een andere regio of een virtueel netwerk?
 Nee. Nadat u een Azure AD Domain Services beheerd domein hebt gemaakt, kunt u het exemplaar niet verplaatsen naar een andere resource groep, een virtueel netwerk, een abonnement, enzovoort. Zorg ervoor dat u het meest geschikte abonnement, de resource groep, de regio en het virtuele netwerk selecteert wanneer u het Azure AD DS-exemplaar implementeert.
+
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Bevat Azure AD Domain Services opties voor hoge Beschik baarheid?
+
+Ja. Elk Azure AD Domain Services beheerd domein bevat twee domein controllers. U kunt deze domein controllers niet beheren of er geen verbinding mee maken, die deel uitmaken van de beheerde service. Als u Azure AD Domain Services implementeert in een regio die Beschikbaarheidszones ondersteunt, worden de domein controllers gedistribueerd over meerdere zones. In regio's die geen ondersteuning bieden voor Beschikbaarheidszones, worden de domein controllers verdeeld over beschikbaarheids sets. U hebt geen configuratie opties of beheer controle over deze distributie. Zie [beschikbaarheids opties voor virtuele machines in azure](../virtual-machines/windows/availability.md)voor meer informatie.
 
 ## <a name="administration-and-operations"></a>Beheer en bewerkingen
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278084"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390470"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
 In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](virtual-machine-scale-sets-overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
@@ -39,7 +39,7 @@ Sommige functies zijn momenteel alleen beschikbaar in Vm's:
 - U kunt een afzonderlijke VM migreren van systeem eigen schijven naar Managed disks, maar u kunt geen VM-exemplaren in een schaalset migreren.
 - U kunt open bare IPv6-IP-adressen toewijzen aan afzonderlijke virtuele netwerk interface kaarten (Nic's), maar kunnen dit niet doen voor VM-exemplaren in een schaalset. U kunt open bare IPv6-IP-adressen toewijzen aan load balancers vóór afzonderlijke Vm's of schaal sets Vm's.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Schaal sets met Azure Managed Disks
 Schaal sets kunnen worden gemaakt met [Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) in plaats van traditionele Azure-opslag accounts. Managed Disks bieden de volgende voor delen:
@@ -60,7 +60,7 @@ Bij het overinrichten worden de succes percentages van het inrichten verbeterd, 
 
 Als uw schaalset gebruikmaakt van door de gebruiker beheerde opslag en u het overinrichten uitschakelt, kunt u meer dan 20 Vm's per opslag account hebben, maar dit wordt niet aanbevolen om te beginnen met 40 om de oorzaak van de IO-prestaties. 
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 Een schaalset die is gebouwd op een Marketplace-installatie kopie (ook wel een platform installatie kopie genoemd) en die is geconfigureerd voor het gebruik van Azure Managed Disks ondersteunt een capaciteit van Maxi maal 1.000 Vm's. Als u uw schaalset configureert voor ondersteuning van meer dan 100 Vm's, werken niet alle scenario's hetzelfde (bijvoorbeeld taak verdeling). Zie [werken met grote schaal sets voor virtuele machines](virtual-machine-scale-sets-placement-groups.md)voor meer informatie. 
 
 Een schaalset die is geconfigureerd met door de gebruiker beheerde opslag accounts, is momenteel beperkt tot 100 Vm's (en 5 opslag accounts worden aanbevolen voor deze schaal).

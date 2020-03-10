@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813407"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394988"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
 
@@ -45,27 +45,27 @@ De eerste stap bij het oplossen van problemen is het controleren van de status e
 
 ![Problemen met de proces server status oplossen](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>Stap 1: Problemen met de proces server status oplossen
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>Stap 1: problemen met de proces server status waarschuwingen oplossen
 
 De proces server genereert een aantal status waarschuwingen. Deze waarschuwingen en aanbevolen acties worden in de volgende tabel samenvatten.
 
 **Waarschuwings type** | **Optreedt** | **Problemen oplossen**
 --- | --- | --- 
-![In orde][green] | Geen  | De proces server is verbonden en in orde.
-![Waarschuwing][yellow] | De opgegeven services worden niet uitgevoerd. | 1. Controleer of de services worden uitgevoerd.<br/> 2. Als de services op de verwachte wijze worden uitgevoerd, volgt u de onderstaande instructies om problemen [met connectiviteit en replicatie op te lossen](#check-connectivity-and-replication).
+![In orde][green] | None  | De proces server is verbonden en in orde.
+![Waarschuwing][yellow] | De opgegeven services worden niet uitgevoerd. | 1. Controleer of de services worden uitgevoerd.<br/> 2. als de services worden uitgevoerd zoals verwacht, volgt u de onderstaande instructies voor het oplossen van problemen [met connectiviteit en replicatie](#check-connectivity-and-replication).
 ![Waarschuwing][yellow]  | CPU-gebruik > 80% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
-![Kritiek][red] |  CPU-gebruik > 95% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).<br/> 4. Als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) voor de replicatie van VMware/fysieke servers uit.
-![Waarschuwing][yellow] | Geheugen gebruik > 80% gedurende de afgelopen 15 minuten. |  1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de instructies die aan de waarschuwing zijn gekoppeld.<br/> 4. Als het probleem zich blijft voordoen, volgt u de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
-![Kritiek][red] | Geheugen gebruik > 95% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/> 2. Volg de instructies die aan de waarschuwing zijn gekoppeld.<br/> 3. 4. Als het probleem blijft bestaan, volgt u de onderstaande instructies om problemen [met connectiviteit en replicatie op te lossen](#check-connectivity-and-replication).<br/> 4. Als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) uit voor problemen met de replicatie van VMware/fysieke servers.
+![Kritiek][red] |  CPU-gebruik > 95% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).<br/> 4. als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) voor de replicatie van VMware/fysieke servers uit.
+![Waarschuwing][yellow] | Geheugen gebruik > 80% gedurende de afgelopen 15 minuten. |  1. Voeg geen nieuwe machines toe.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [gedefinieerde limieten](site-recovery-plan-capacity-vmware.md#capacity-considerations)en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>3. Volg de instructies die aan de waarschuwing zijn gekoppeld.<br/> 4. als het probleem zich blijft voordoen, volgt u de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
+![Kritiek][red] | Geheugen gebruik > 95% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/> 2. Volg de instructies die aan de waarschuwing zijn gekoppeld.<br/> 3. 4. Als het probleem blijft bestaan, volgt u de onderstaande instructies om problemen [met connectiviteit en replicatie op te lossen](#check-connectivity-and-replication).<br/> 4. als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) uit voor problemen met de replicatie van VMware/fysieke servers.
 ![Waarschuwing][yellow] | De beschik bare ruimte in de cachemap < 30% gedurende de afgelopen 15 minuten. | 1. Voeg geen nieuwe machines toe en overweeg een [extra proces server](vmware-azure-set-up-process-server-scale.md)in te stellen.<br/>2. Controleer of het aantal Vm's dat gebruikmaakt van de proces server wordt uitgelijnd op [richt lijnen](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
-![Kritiek][red] |  Beschik bare ruimte < 25% gedurende de afgelopen 15 minuten | 1. Volg de instructies die zijn gekoppeld aan de waarschuwing voor dit probleem.<br/> 2. 3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).<br/> 3. Als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) voor de replicatie van VMware/fysieke servers uit.
+![Kritiek][red] |  Beschik bare ruimte < 25% gedurende de afgelopen 15 minuten | 1. Volg de instructies die zijn gekoppeld aan de waarschuwing voor dit probleem.<br/> 2. 3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).<br/> 3. als het probleem zich blijft voordoen, voert u de [Deployment planner](https://aka.ms/asr-v2a-deployment-planner) voor de replicatie van VMware/fysieke servers uit.
 ![Kritiek][red] | Geen heartbeat van de proces server gedurende 15 minuten of langer. De tmansvs-service communiceert niet met de configuratie server. | 1) Controleer of de proces server actief is.<br/> 2. Controleer of de tmassvc wordt uitgevoerd op de proces server.<br/> 3. Volg de onderstaande instructies om [verbindings-en replicatie problemen op te lossen](#check-connectivity-and-replication).
 
 
 ![Tabel sleutel](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>Stap 2: Services van proces server controleren
+## <a name="step-2-check-process-server-services"></a>Stap 2: process server-services controleren
 
 De volgende tabel bevat een overzicht van de services die op de proces server moeten worden uitgevoerd. Er zijn kleine verschillen in Services, afhankelijk van de implementatie van de proces server. 
 
@@ -78,14 +78,14 @@ Voor alle services, met uitzonde ring van de Microsoft Azure Recovery Services-a
 **Proces server geïmplementeerd in azure voor failback** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Logboek-upload service (LogUpload)
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>Stap 3: De heartbeat van de proces server controleren
+## <a name="step-3-check-the-process-server-heartbeat"></a>Stap 3: de heartbeat van de proces server controleren
 
 Als er geen heartbeat van de proces server is (fout code 806), doet u het volgende:
 
 1. Controleer of de virtuele machine van de proces server actief is.
 2. Controleer de logboeken op fouten.
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log  C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *. log c\programdata\asr\home\svsystems\ monitor_protection*. log
 
 ## <a name="check-connectivity-and-replication"></a>Connectiviteit en replicatie controleren
 
@@ -94,15 +94,15 @@ Als er geen heartbeat van de proces server is (fout code 806), doet u het volgen
 ![Verbindings-en replicatie problemen oplossen](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-## <a name="step-4-verify-time-sync-on-source-machine"></a>Stap 4: Tijd synchronisatie op bron computer controleren
+## <a name="step-4-verify-time-sync-on-source-machine"></a>Stap 4: de tijd synchronisatie op de bron computer controleren
 
 Zorg ervoor dat de systeem datum en-tijd voor de gerepliceerde machine synchroon zijn. [Meer informatie](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
 
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Stap 5: Antivirus software op de bron computer controleren
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Stap 5: controleren op antivirus software op de bron machine
 
 Controleer of het Site Recovery niet wordt geblokkeerd door antivirus software op de gerepliceerde machine. Raadpleeg [dit artikel](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)als u site Recovery van antivirus Programma's wilt uitsluiten.
 
-## <a name="step-6-check-connectivity-from-source-machine"></a>Stap 6: Controleer de verbinding vanaf de bron computer
+## <a name="step-6-check-connectivity-from-source-machine"></a>Stap 6: de connectiviteit van de bron computer controleren
 
 
 1. Installeer de [Telnet-client](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) op de bron computer als dat nodig is. Gebruik Ping niet.
@@ -119,7 +119,7 @@ Controleer of het Site Recovery niet wordt geblokkeerd door antivirus software o
 **Mislukt** | U kunt geen verbinding maken | Zorg ervoor dat binnenkomende poort 9443 is toegestaan op de proces server. Als u bijvoorbeeld een perimeter netwerk of een gescreend subnet hebt. Controleer de connectiviteit opnieuw.
 **Gedeeltelijk geslaagd** | U kunt verbinding maken, maar de bron machine meldt dat de proces server niet kan worden bereikt. | Ga door met de volgende procedure voor probleem oplossing.
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>Stap 7: Problemen met een onbereikbare proces server oplossen
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>Stap 7: problemen met een onbereikbare proces server oplossen
 
 Als de proces server niet bereikbaar is vanaf de bron computer, wordt fout 78186 weer gegeven. Als dit probleem niet wordt opgelost, leidt dit tot zowel toepassings consistente als crash consistente herstel punten die niet op de verwachte manier worden gegenereerd.
 
@@ -130,7 +130,7 @@ Los problemen op door te controleren of de bron machine het IP-adres van de proc
 
 Als Telnet is gelukt, maar de bron machine rapporteert dat de proces server niet kan worden bereikt, controleert u of u het IP-adres van de proces server kunt bereiken.
 
-1. Probeer in een webbrowser IP-adres https://< PS_IP > te bereiken: < PS_Data_Port >/.
+1. Probeer in een webbrowser het IP-adres https://< te bereiken PS_IP >: < PS_Data_Port >/.
 2. Als er een HTTPS-certificaat fout wordt weer gegeven, is dat normaal. Als u de fout negeert, ziet u een 400-ongeldige aanvraag. Dit betekent dat de server de browser aanvraag niet kan verwerken en dat de standaard HTTPS-verbinding prima is.
 3. Als deze controle niet werkt, noteert u het fout bericht van de browser. Een 407-fout geeft bijvoorbeeld aan dat er een probleem is met de verificatie van de proxy.
 
@@ -138,7 +138,7 @@ Als Telnet is gelukt, maar de bron machine rapporteert dat de proces server niet
 
 Daarnaast kunt u het hulp programma cxpsclient uitvoeren om de end-to-end-verbinding te controleren.
 
-1. Voer het hulp programma als volgt uit:
+1. Voer het hulpprogramma als volgt uit:
 
     ```
     <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
@@ -162,7 +162,7 @@ Probleem met het uploaden van gegevens die zijn geblokkeerd voor bron machines n
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>Stap 8: Controleer of de proces server gegevens pusht
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>Stap 8: controleren of de proces server gegevens pusht
 
 Controleer of de proces server bezig is met het pushen van gegevens naar Azure.
 
@@ -174,7 +174,7 @@ Controleer of de proces server bezig is met het pushen van gegevens naar Azure.
 
   Als cbengine. exe geen grote hoeveelheid gegevens verstuurt, voert u de stappen in de volgende secties uit.
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Stap 9: Controleer de verbinding tussen de proces server en Azure Blob-opslag
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Stap 9: de verbinding tussen de proces server en Azure Blob-opslag controleren
 
 1. In Broncontrole selecteert u **cbengine. exe**.
 2. Controleer onder **TCP-verbindingen**of er verbinding is tussen de proces server en de Azure-opslag.
@@ -211,7 +211,7 @@ Als er geen verbinding is tussen de proces server en de URL van de Azure Blob St
 5. Gebruik op de opdracht regel van de proces server Telnet om uw open bare IP-adres van Azure te pingen.
 6. Als u geen verbinding kunt maken, volgt u de volgende procedure.
 
-## <a name="step-11-check-process-server-firewall-settings"></a>Stap 11: Controleer de firewall instellingen van de proces server. 
+## <a name="step-11-check-process-server-firewall-settings"></a>Stap 11: de firewall instellingen van de proces server controleren. 
 
 Controleer of de op IP-adres gebaseerde firewall op de proces server de toegang blokkeert.
 
@@ -228,18 +228,18 @@ Controleer of de op IP-adres gebaseerde firewall op de proces server de toegang 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>Stap 12: De proxy-instellingen van de proces server controleren 
+## <a name="step-12-verify-process-server-proxy-settings"></a>Stap 12: de proxy-instellingen van de proces server controleren 
 
-1. Als u een proxy server gebruikt, moet u ervoor zorgen dat de naam van de proxy server wordt opgelost door de DNS-server. Controleer de waarde die u hebt opgegeven bij het instellen van de configuratie server in de register sleutel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure site Recovery\ProxySettings**.
+1. Als u een proxy server gebruikt, moet u ervoor zorgen dat de naam van de proxy server wordt opgelost door de DNS-server. Controleer de waarde die u hebt opgegeven bij het instellen van de configuratie server in de register sleutel **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\ProxySettings**.
 2. Zorg ervoor dat dezelfde instellingen worden gebruikt door de Azure Site Recovery-agent om gegevens te verzenden.
 
     a) zoeken naar **Microsoft Azure backup**.
 
-    b) Open **Microsoft Azure backup**en selecteer Eigenschappen van **actie** > **wijzigen**.
+    b) Open **Microsoft Azure backup**en selecteer **actie** > **Eigenschappen wijzigen**.
 
     c) op het tabblad **proxy configuratie** moet het proxy adres gelijk zijn aan het proxy adres dat wordt weer gegeven in de Register instellingen. Als dat niet het geval is, wijzigt u dit in hetzelfde adres.
 
-## <a name="step-13-check-bandwidth"></a>Stap 13: Band breedte controleren
+## <a name="step-13-check-bandwidth"></a>Stap 13: band breedte controleren
 
 Verg root de band breedte tussen de proces server en Azure en controleer of het probleem zich nog steeds voordoet.
 

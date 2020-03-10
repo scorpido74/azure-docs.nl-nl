@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367635"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942651"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -47,7 +47,7 @@ De Text Analytics-API biedt twee versies van named entity Recognition-v2 en v3. 
 Zie [taal ondersteuning](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor meer informatie.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Entiteitstypen
 
@@ -74,7 +74,7 @@ Entiteit koppelen
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
 
 ### <a name="entity-types"></a>Entiteitstypen
 
@@ -130,7 +130,7 @@ Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of d
 > [!NOTE]
 > U vindt de sleutel en het eind punt voor uw Text Analytics-resource in azure Portal. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
 
 [Benoemde entiteit herkenning v3-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -144,7 +144,7 @@ NER
 Entiteit koppelen
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
 
 [Naslag Gids voor benoemde entiteits herkenning (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -185,7 +185,7 @@ Alle POST-aanvragen retour neren een JSON-indelings antwoord met de eigenschappe
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
 
 
-#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Voor beeld v3-antwoorden
 
@@ -242,7 +242,7 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>Voor beeld van NER v2-antwoord
 ```json

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561779"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361331"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
 
@@ -222,7 +222,7 @@ Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
    | Veld | Waarde |
    | --- | --- |
    | Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
-   | Name |"SSH-wacht woord wijzigen" |
+   | Naam |"SSH-wacht woord wijzigen" |
    | Bash-script-URI |De URI naar het changepassword.sh-bestand |
    | Knooppunt type (n): (Head, worker, Nimbus, supervisor of Zookeeper.) |✓ voor alle weer gegeven knooppunt typen |
    | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. |

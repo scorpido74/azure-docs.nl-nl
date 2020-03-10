@@ -8,13 +8,13 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385105"
 ---
-# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>On-premises Hyper-V-servers voorbereiden op herstel na nood geval naar Azure
+# <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>On-premises Hyper-V-servers voorbereiden op herstel na noodgeval in Azure
 
 In dit artikel wordt beschreven hoe u uw on-premises Hyper-V-infra structuur voorbereidt wanneer u herstel na nood gevallen van Hyper-Vm's naar Azure wilt instellen met behulp van [Azure site Recovery](site-recovery-overview.md).
 

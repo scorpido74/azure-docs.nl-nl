@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
 ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023637"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393646"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Kies de juiste IoT Hub laag voor uw oplossing
 
@@ -66,7 +66,7 @@ De partitie configuratie blijft ongewijzigd wanneer u migreert van de Basic-laag
 > [!NOTE]
 > De gratis laag biedt geen ondersteuning voor upgrades naar Basic of Standard.
 
-## <a name="iot-hub-rest-apis"></a>REST API's voor IoT Hub
+## <a name="iot-hub-rest-apis"></a>IoT Hub REST-Api's
 
 Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard van IoT Hub betekent dat sommige API-aanroepen niet werken met de Basic-laag hubs. In de volgende tabel ziet u welke Api's beschikbaar zijn:
 

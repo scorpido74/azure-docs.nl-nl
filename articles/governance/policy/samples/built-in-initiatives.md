@@ -4,11 +4,11 @@ description: Lijst met ingebouwde beleids initiatieven voor Azure Policy. Catego
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387260"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy ingebouwde initiatief definities
 
@@ -20,6 +20,6 @@ De naam van elke ingebouwde koppeling naar de bron van de initiatief definitie o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de ingebouwde opslag plaats van de [Azure Policy github](https://github.com/Azure/azure-policy).
+- Bekijk de inbouwingen op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).

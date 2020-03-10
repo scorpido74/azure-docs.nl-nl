@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377684"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory code voorbeelden (v 1.0-eind punt)
 
@@ -54,7 +54,7 @@ In dit voor beeld ziet u hoe u een toepassing met één pagina schrijft die is b
 
 De volgende voor beelden illustreren webtoepassingen die gebruikers ondertekenen. Sommige van deze toepassingen roepen ook de Microsoft Graph of uw eigen web-API aan, in de naam van de aangemelde gebruiker.
 
- Platform | Alleen tekenen in gebruikers | Aanroepen Microsoft Graph of AAD-grafiek| Hiermee wordt een andere ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
+ Platform | Alleen tekenen in gebruikers | Aanroepen Microsoft Graph | Hiermee wordt een andere ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
  -------- | ------------------- | --------------------- | -------------------------
 ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multi tenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD-grafiek) | [DotNet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-webapp-multi tenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD-grafiek) |
@@ -125,10 +125,6 @@ Zie [Microsoft Graph Community-voor beelden & zelf studies](https://github.com/m
 
 ## <a name="see-also"></a>Zie ook
 
-[Ontwikkelaars handleiding Azure Active Directory](v1-overview.md)
-
-[Verificatie bibliotheken Azure Active Directory](active-directory-authentication-libraries.md)
-
-[Concepten en naslag informatie over Azure AD Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD Graph API helper-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Ontwikkelaars handleiding Azure Active Directory](v1-overview.md)
+- [Verificatie bibliotheken Azure Active Directory](active-directory-authentication-libraries.md)
+- [Conceptuele en naslag informatie over Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api)

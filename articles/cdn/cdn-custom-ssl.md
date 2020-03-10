@@ -16,11 +16,11 @@ ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361655"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394847"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast Azure CDN-domein configureren
 
@@ -48,7 +48,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
-Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstartgids: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
+Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstart: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
 
 Daarnaast moet u een aangepast Azure CDN-domein koppelen aan uw CDN-eindpunt. Zie [zelf studie: een aangepast domein toevoegen aan uw Azure CDN-eind punt](cdn-map-content-to-custom-domain.md)voor meer informatie.
 
@@ -62,7 +62,7 @@ Daarnaast moet u een aangepast Azure CDN-domein koppelen aan uw CDN-eindpunt. Zi
 Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud aan een aangepast Azure CDN-domein, moet u een SSL-certificaat gebruiken. U kunt ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure CDN of uw eigen certificaat gebruiken.
 
 
-# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Optie 1 (standaard): HTTPS met een door CDN beheerd certificaat inschakelen](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Optie 1 (standaard): HTTPS met een door CDN beheerd certificaat inschakelen](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
 
 Wanneer u een door CDN beheerd certificaat gebruikt, kan de HTTPS-functie met een paar muisklikken worden ingeschakeld. Azure CDN verwerkt volledige certificaatbeheertaken, zoals aanschaf en vernieuwing. Zodra u de functie hebt ingeschakeld, wordt de procedure onmiddellijk gestart. Als het aangepaste domein al is toegewezen aan het CDN-eindpunt, is geen verdere actie vereist. Azure CDN verwerkt de stappen en voltooit uw aanvraag automatisch. Als uw aangepaste domein echter elders is toegewezen, moet u e-mail gebruiken om uw domeinbezit te valideren.
 
@@ -93,7 +93,7 @@ Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 7. Ga door naar [Domein valideren](#validate-the-domain).
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Optie 2: HTTPS met uw eigen certificaat inschakelen](#tab/option-2-enable-https-with-your-own-certificate)
+# <a name="option-2-enable-https-with-your-own-certificate"></a>[Optie 2: HTTPS met uw eigen certificaat inschakelen](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
 > Deze optie is alleen beschikbaar bij **Azure CDN van micro soft** en **Azure CDN van Verizon** -profielen. 
@@ -178,7 +178,7 @@ Als u uw eigen certificaat gebruikt, is domeinvalidatie niet nodig.
 
 Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het aangepaste domein is, en *Waarde* de hostnaam van het CDN-eindpunt:
 
-| Name            | Type  | Waarde                 |
+| Naam            | Type  | Waarde                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -324,7 +324,7 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > - Het HTTPS-protocol inschakelen in uw aangepast domein

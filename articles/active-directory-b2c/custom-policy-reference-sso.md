@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226801"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933018"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
@@ -138,7 +138,7 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies t
 
 Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moet de `RegisterServiceProviders` worden ingesteld op `true`. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
 
-Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-producttechnische profiel](connect-with-saml-service-providers.md)
+Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-producttechnische profiel](saml-issuer-technical-profile.md)
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">

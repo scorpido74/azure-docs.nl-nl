@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389562"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
 
@@ -88,13 +88,13 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="error"></a>Fout
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat Global-fout | Tomcat. Global. error | Count | Aantal fouten bij verwerkte aanvragen |
 
 ### <a name="performance"></a>Prestaties
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >|Percentage van het CPU-gebruik van het systeem | System. CPU. Usage | Procent | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
 >| CPU-gebruiks percentage van app | CPU-gebruiks percentage van app | Procent | Recent CPU-gebruik voor het Java Virtual Machine proces. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat geen van de Cpu's threads uit het JVM-proces heeft uitgevoerd gedurende de recent gebruikte periode, terwijl een waarde van 1,0 betekent dat alle Cpu's actief threads van de JVM 100% van de tijd tijdens de laatste periode hebben uitgevoerd. Threads van de JVM bevatten de Application threads en de JVM interne threads.|
@@ -110,7 +110,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="request"></a>Aanvraag
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Totaal aantal verzonden bytes in Tomcat | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
 >| Totaal aantal bytes ontvangen Tomcat | Tomcat. Global. ontvangen | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft ontvangen |
@@ -120,7 +120,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="session"></a>Sessie
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Aantal actieve Tomcat-sessies | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
 >| Time-outperiode van Tomcat-sessie | Tomcat. Sessions. Alive. Max | Milliseconden | Langste tijd (in seconden) dat een verlopen sessie actief was |

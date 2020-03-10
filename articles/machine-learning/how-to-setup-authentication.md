@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355323"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -297,12 +297,12 @@ Web-Services bieden ook ondersteuning voor verificatie op basis van tokens, maar
 
 ### <a name="token-based-web-service-authentication"></a>Verificatie op basis van tokens-based web-service
 
-Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers een Azure Machine Learning JSON Web Token aan de webservice aanbieden om deze te openen. Het token verloopt na een opgegeven tijds kader en moet worden vernieuwd om aanroepen voort te zetten.
+Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers een Azure Machine Learning JSON Web Token aan de webservice aanbieden om deze te openen. Het token verloopt na bepaalde tijd, en moet worden vernieuwd om aanroepen te kunnen blijven doen.
 
 * Token verificatie is **standaard uitgeschakeld** wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens **wordt niet ondersteund** wanneer u implementeert in azure container instances.
 
-Als u de verificatie van tokens wilt beheren, gebruikt u de para meter `token_auth_enabled` wanneer u een implementatie maakt of bijwerkt.
+Gebruik de parameter `token_auth_enabled` om tokenverificatie te besturen wanneer u een implementatie maakt of bijwerkt.
 
 Als token verificatie is ingeschakeld, kunt u de methode `get_token` gebruiken om een JSON Web Token (JWT) op te halen en de verval tijd van dat token:
 
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de `refresh_by` tijd van het token. Als u tokens wilt vernieuwen buiten de python-SDK, moet u de REST API met Service-Principal-verificatie gebruiken om regel matig de `service.get_token()`-aanroep te maken, zoals eerder is besproken.
+> U moet een nieuw token aanvragen nadat de `refresh_by`-tijd van het token is verstreken. Als u tokens wilt vernieuwen buiten de python-SDK, moet u de REST API met Service-Principal-verificatie gebruiken om regel matig de `service.get_token()`-aanroep te maken, zoals eerder is besproken.
 >
 > We raden u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. 
 >

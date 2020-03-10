@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384909"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>De StorSimple Apparaatbeheer-service voor StorSimple 8000 Series-apparaten implementeren
 
@@ -95,7 +95,7 @@ Voer de volgende stappen uit om de service registratie sleutel op te halen.
 
 Behoud de service registratie sleutel op een veilige locatie. U hebt deze sleutel nodig, evenals de versleutelings sleutel voor service gegevens, om extra apparaten te registreren bij deze service. Nadat u de service registratie sleutel hebt verkregen, moet u uw apparaat configureren via de Windows PowerShell voor StorSimple-interface.
 
-Zie [voor meer informatie over het gebruik van deze registratie sleutel stap 3: Configureer en registreer het apparaat via Windows PowerShell voor StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Zie voor meer informatie over het gebruik van deze registratie sleutel [stap 3: het apparaat configureren en registreren via Windows PowerShell voor StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 ## <a name="regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
 Als u een sleutel rotatie moet uitvoeren of als de lijst met service beheerders is gewijzigd, moet u een service registratie sleutel opnieuw genereren. Wanneer u de sleutel opnieuw genereert, wordt de nieuwe sleutel alleen gebruikt voor het registreren van volgende apparaten. De apparaten die al zijn geregistreerd, worden niet beïnvloed door dit proces.
@@ -103,7 +103,7 @@ Als u een sleutel rotatie moet uitvoeren of als de lijst met service beheerders 
 Voer de volgende stappen uit om een service registratie sleutel opnieuw te genereren.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
-1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;**  **sleutels**.
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;** **sleutels**.
     
     ![De blade Sleutels](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -145,7 +145,7 @@ Een apparaat moet voldoen aan de volgende criteria voordat het kan worden geauto
 * U kunt een apparaat niet machtigen terwijl de overschakeling van de versleutelings sleutel voor de service gegevens wordt uitgevoerd.
 * U kunt een apparaat machtigen wanneer een aantal van de apparaten die zijn geregistreerd bij de service, zijn doorgevoerd in de versleuteling, terwijl anderen dat niet doen. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Stap 2: Windows PowerShell voor StorSimple gebruiken om de wijziging van de versleutelings sleutel van de service gegevens te initiëren
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Stap 2: gebruik Windows PowerShell voor StorSimple om de wijziging van de versleutelings sleutel voor de service gegevens te initiëren
 Deze stap wordt uitgevoerd in de Windows PowerShell voor StorSimple-interface op het geautoriseerde StorSimple-apparaat.
 
 > [!NOTE]
@@ -170,19 +170,19 @@ Als u de seriële console van het apparaat gebruikt om verbinding te maken met d
    
    Als er één apparaat is geregistreerd bij uw service, is het rollover proces nu voltooid en kunt u de volgende stap overs Laan. Als er meerdere apparaten zijn geregistreerd bij uw service, gaat u verder met stap 3.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Stap 3: De versleutelings sleutel voor service gegevens op andere StorSimple-apparaten bijwerken
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Stap 3: de versleutelings sleutel voor service gegevens op andere StorSimple-apparaten bijwerken
 Deze stappen moeten worden uitgevoerd in de Windows Power shell-interface van uw StorSimple-apparaat als er meerdere apparaten zijn geregistreerd bij uw StorSimple Manager-service. De sleutel die u hebt verkregen in stap 2 moet worden gebruikt voor het bijwerken van alle resterende StorSimple-apparaten die zijn geregistreerd bij de StorSimple Manager-service.
 
 Voer de volgende stappen uit om de service gegevens versleuteling op uw apparaat bij te werken.
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>De versleutelings sleutel voor service gegevens op fysieke apparaten bijwerken
 1. Gebruik Windows PowerShell voor StorSimple om verbinding te maken met de console. Selecteer optie 1 om u aan te melden met volledige toegang.
-2. Typ het volgende achter de opdracht prompt:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Geef de versleutelings sleutel voor service gegevens op [die u hebt verkregen in stap 2: Gebruik Windows PowerShell voor StorSimple om de wijziging](#to-initiate-the-service-data-encryption-key-change)van de versleutelings sleutel van de service gegevens te initiëren.
+2. Typ bij de opdracht prompt: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+3. Geef de versleutelings sleutel voor service gegevens op die u hebt verkregen in [stap 2: gebruik Windows PowerShell voor StorSimple om de wijziging van de versleutelings sleutel van de service gegevens te initiëren](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>De versleutelings sleutel voor service gegevens op alle 8010/8020-Cloud apparaten bijwerken
 1. Down load en stel het Power shell-script [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) . 
-2. Open Power shell en typ bij de opdracht prompt:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Open Power shell en typ bij de opdracht prompt: `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Met dit script wordt ervoor gezorgd dat de versleutelings sleutel voor service gegevens is ingesteld op alle 8010/8020-Cloud apparaten onder Apparaatbeheer.
 

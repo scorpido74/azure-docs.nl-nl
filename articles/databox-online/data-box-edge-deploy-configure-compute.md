@@ -10,13 +10,13 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277122"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397313"
 ---
-# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Zelfstudie: Gegevens transformeren met Azure Data Box Edge
+# <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Zelf studie: gegevens transformeren met Azure Data Box Edge
 
 In deze zelfstudie wordt beschreven hoe u een rekenprocesrol configureert op uw Azure Data Box Edge-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Data Box Edge gegevens transformeren voordat deze naar Azure worden verzonden.
 
@@ -25,7 +25,7 @@ Deze procedure kan ongeveer tien tot 15 minuten duren.
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Rekenproces configureren
+> * Reken kracht configureren
 > * Shares toevoegen
 > * Een rekenprocesmodule toevoegen
 > * Gegevenstransformatie controleren en gegevens overdragen
@@ -38,7 +38,7 @@ Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configur
 - U hebt het Data Box Edge-apparaat geactiveerd zoals beschreven in [Azure Data Box Edge aansluiten, instellen en activeren](data-box-edge-deploy-connect-setup-activate.md).
 
 
-## <a name="configure-compute"></a>Rekenproces configureren
+## <a name="configure-compute"></a>Reken kracht configureren
 
 Als u de reken kracht op uw Data Box Edge wilt configureren, maakt u een IoT Hub resource.
 
@@ -50,10 +50,10 @@ Als u de reken kracht op uw Data Box Edge wilt configureren, maakt u een IoT Hub
 3. Voer de volgende gegevens in op de Blade **Edge Compute configureren** :
 
    
-    |Veld  |Value  |
+    |Veld  |Waarde  |
     |---------|---------|
     |IoT Hub     | Kies een **nieuwe** of **bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub resource hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de Data Box Edge-resource.     |
-    |Name     |Voer een naam in voor de IoT Hub resource.         |
+    |Naam     |Voer een naam in voor de IoT Hub resource.         |
 
     ![Aan de slag met Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -109,15 +109,15 @@ In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat 
 2. Voer op de Blade **module configureren en toevoegen** de volgende waarden in:
 
     
-    |Veld  |Value  |
+    |Veld  |Waarde  |
     |---------|---------|
-    |Name     | Een unieke naam voor de module. Deze module is een docker-container die u kunt implementeren op het IoT Edge apparaat dat is gekoppeld aan uw Data Box Edge.        |
-    |URI installatiekopie     | De afbeeldings-URI voor de bijbehorende container installatie kopie voor de module.        |
+    |Naam     | Een unieke naam voor de module. Deze module is een docker-container die u kunt implementeren op het IoT Edge apparaat dat is gekoppeld aan uw Data Box Edge.        |
+    |Afbeeldings-URI     | De afbeeldings-URI voor de bijbehorende container installatie kopie voor de module.        |
     |Referenties vereist     | Als u dit selectie vakje inschakelt, worden gebruikers naam en wacht woord gebruikt om modules op te halen met een overeenkomende URL.        |
     |Invoer share     | Selecteer een invoer share. De rand van de lokale share is in dit geval de invoer share. De module die hier wordt gebruikt, verplaatst bestanden van de lokale Edge-share naar een Edge-share waarnaar ze in de cloud worden geüpload.        |
     |Uitvoer share     | Selecteer een uitvoer share. De Edge-share is in dit geval de uitvoer share.        |
-    |Triggertype     | Selecteer een **bestand** of **schema**. Een bestands trigger wordt geactiveerd wanneer een bestands gebeurtenis plaatsvindt, zoals een bestand wordt geschreven naar de invoer share. Een geplande trigger wordt geactiveerd op basis van een schema dat door u is gedefinieerd.         |
-    |Triggernaam     | Een unieke naam voor de trigger.         |
+    |Trigger type     | Selecteer een **bestand** of **schema**. Een bestands trigger wordt geactiveerd wanneer een bestands gebeurtenis plaatsvindt, zoals een bestand wordt geschreven naar de invoer share. Een geplande trigger wordt geactiveerd op basis van een schema dat door u is gedefinieerd.         |
+    |Naam van trigger     | Een unieke naam voor de trigger.         |
     |Omgevingsvariabelen| Optionele informatie die helpt bij het definiëren van de omgeving waarin uw module wordt uitgevoerd.   |
 
     ![Module toevoegen en configureren](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
@@ -160,7 +160,7 @@ U hebt het validatieproces voltooid.
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Rekenproces configureren
+> * Reken kracht configureren
 > * Shares toevoegen
 > * Een rekenprocesmodule toevoegen
 > * Gegevenstransformatie controleren en gegevens overdragen

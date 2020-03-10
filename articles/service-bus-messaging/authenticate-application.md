@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395637"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -21,7 +21,7 @@ Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een token is `https://servicebus.azure.net`.
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang verifiëren voor Azure service bus resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden door gegeven aan service bus service. 
@@ -39,19 +39,19 @@ Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verl
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Ingebouwde RBAC-rollen voor Azure Service Bus
 Voor Azure Service Bus is het beheer van naam ruimten en alle gerelateerde resources via de Azure Portal en de Azure Resource Management-API al beveiligd met behulp van het RBAC-model ( *op rollen gebaseerd toegangs beheer* ). Azure biedt de onderstaande ingebouwde RBAC-rollen voor het verlenen van toegang tot een Service Bus naam ruimte:
 
-- [Azure Service Bus gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Hiermee wordt gegevens toegang tot Service Bus naam ruimte en de bijbehorende entiteiten (wacht rijen, onderwerpen, abonnementen en filters) ingeschakeld
-- [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de bijbehorende entiteiten.
-- [Azure Service Bus gegevens ontvanger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Gebruik deze rol om toegang te krijgen tot Service Bus naam ruimte en de bijbehorende entiteiten. 
+- [Azure Service Bus gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Hiermee wordt gegevens toegang tot Service Bus naam ruimte en de entiteiten (wacht rijen, onderwerpen, abonnementen en filters) ingeschakeld
+- [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de entiteiten.
+- [Azure Service Bus gegevens ontvanger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): gebruik deze rol om toegang te krijgen tot Service Bus naam ruimte en de bijbehorende entiteiten. 
 
 ## <a name="resource-scope"></a>Bron bereik 
 Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
 In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service Bus resources kunt bereiken, te beginnen met het smalle bereik:
 
-- **Wachtrij**, **onderwerp**of **abonnement**: De roltoewijzing is van toepassing op de specifieke Service Bus entiteit. Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van gebruikers/groepen/beheerde identiteiten aan Service Bus RBAC-rollen op abonnements niveau. 
-- **Naam ruimte service bus**: Roltoewijzing omvat de volledige topologie van Service Bus onder de naam ruimte en aan de Consumer-groep die eraan is gekoppeld.
-- **Resourcegroep**: De roltoewijzing is van toepassing op alle Service Bus resources onder de resource groep.
-- **Abonnement**: De roltoewijzing is van toepassing op alle Service Bus resources in alle resource groepen in het abonnement.
+- **Wachtrij**, **onderwerp**of **abonnement**: roltoewijzing is van toepassing op de specifieke service bus entiteit. Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van gebruikers/groepen/beheerde identiteiten aan Service Bus RBAC-rollen op abonnements niveau. 
+- **Service Bus naam ruimte**: roltoewijzing omvat de volledige topologie van service bus onder de naam ruimte en aan de Consumer groep die eraan is gekoppeld.
+- **Resource groep**: roltoewijzing is van toepassing op alle service bus resources onder de resource groep.
+- **Abonnement**: roltoewijzing is van toepassing op alle service bus resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
 > Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
@@ -67,7 +67,7 @@ Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar 
 > [!NOTE]
 > De stappen die hieronder worden beschreven, wijzen een rol toe aan uw Service Bus-naam ruimte. U kunt dezelfde stappen volgen om een rol toe te wijzen aan andere ondersteunde bereiken (resource groep, abonnement, enz.).
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw service bus naam ruimte. Selecteer **Access Control (IAM)** in het menu links om de instellingen voor toegangs beheer voor de naam ruimte weer te geven. Als u een Service Bus naam ruimte moet maken, volgt u de instructies in dit artikel: [Maak een service bus Messa ging-naam ruimte](service-bus-create-namespace-portal.md).
+1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw service bus naam ruimte. Selecteer **Access Control (IAM)** in het menu links om de instellingen voor toegangs beheer voor de naam ruimte weer te geven. Als u een Service Bus naam ruimte moet maken, volgt u de instructies in dit artikel: [een service bus Messa ging-naam ruimte maken](service-bus-create-namespace-portal.md).
 
     ![Selecteer Access Control in het menu links](./media/authenticate-application/select-access-control-menu.png)
 1. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
@@ -91,10 +91,10 @@ Een belang rijk voor deel van het gebruik van Azure AD met Service Bus is dat uw
 
 In de volgende secties ziet u hoe u uw systeem eigen toepassing of webtoepassing kunt configureren voor verificatie met het micro soft Identity-platform 2,0. Zie [overzicht van micro soft Identity platform (v 2.0)](../active-directory/develop/v2-overview.md)voor meer informatie over micro soft identity platform 2,0.
 
-Zie voor een overzicht van de OAuth 2.0-stroom voor het verlenen van code, [autoriseren de toegang tot Azure Active Directory web-apps met behulp van de OAuth 2.0-code verlenen stroom](../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van de oauth 2,0 code Grant flow](../active-directory/develop/v2-oauth2-auth-code-flow.md)voor een overzicht van de OAuth 2,0-code subsidie stroom.
 
 ### <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-tenant
-De eerste stap bij het gebruik van Azure AD om Service Bus entiteiten te autoriseren, registreert uw client toepassing met een Azure AD-Tenant vanuit de [Azure Portal](https://portal.azure.com/). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op AD. Azure AD biedt vervolgens een client-ID (ook wel een toepassings-ID genoemd) die u kunt gebruiken om uw toepassing te koppelen aan Azure AD runtime. Zie voor meer informatie over de client-ID, [toepassing en service-principalobjecten in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
+De eerste stap bij het gebruik van Azure AD om Service Bus entiteiten te autoriseren, registreert uw client toepassing met een Azure AD-Tenant vanuit de [Azure Portal](https://portal.azure.com/). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op AD. Azure AD biedt vervolgens een client-ID (ook wel een toepassings-ID genoemd) die u kunt gebruiken om uw toepassing te koppelen aan Azure AD runtime. Zie voor meer informatie over de client-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
 De volgende afbeeldingen tonen stappen voor het registreren van een webtoepassing:
 
@@ -107,7 +107,7 @@ Nadat u uw toepassing hebt geregistreerd, ziet u de **toepassings-id (client)** 
 
 ![Toepassings-ID van de geregistreerde toepassing](./media/authenticate-application/application-id.png)
 
-Zie voor meer informatie over het registreren van een toepassing met Azure AD [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md).
+Zie [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
 > [!IMPORTANT]
 > Noteer de **TenantId** en de **ApplicationId**. U hebt deze waarden nodig om de toepassing uit te voeren.
@@ -128,7 +128,7 @@ De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen w
     ![Clientgeheim](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Machtigingen voor de Service Bus-API
-Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een **omleidings-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. Gebruik `https://servicebus.microsoft.com` voor dit voorbeeld omdat het voorbeeld code al gebruikmaakt van deze URI.
+Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een **omleidings-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. Gebruik `https://servicebus.microsoft.com` voor dit voor beeld, omdat de voorbeeld code deze URI al gebruikt.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Client bibliotheken voor het verkrijgen van tokens  
 Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het verzenden/ontvangen van gegevens in Azure Service Bus, kunt u code toevoegen aan uw toepassing om een beveiligingsprincipal te verifiëren en het OAuth 2,0-token te verkrijgen. Als u het token wilt verifiëren en verkrijgen, kunt u een van de [micro soft-identiteits platform verificatie bibliotheken](../active-directory/develop/reference-v2-libraries.md) of een andere open-source-bibliotheek gebruiken die ondersteuning biedt voor OpenID Connect of verbinding maken met 1,0. Uw toepassing kan vervolgens het toegangs token gebruiken om een aanvraag voor Azure Service Bus te autoriseren.
@@ -136,7 +136,7 @@ Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het
 Voor een lijst met scenario's waarvoor het verkrijgen van tokens wordt ondersteund, zie het gedeelte [scenario's](https://aka.ms/msal-net-scenarios) van de [micro soft Authentication Library (MSAL) voor .net github-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) opslag plaats.
 
 ## <a name="sample-on-github"></a>Voor beeld op GitHub
-Zie het volgende voor beeld op GitHub: [Rollen: basis toegangs beheer voor service bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
+Zie het volgende voor beeld op GitHub: [Role-Base Access Control voor service bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 Gebruik de optie **client geheim aanmelden** en niet de optie **interactief gebruiker aanmelden** . Wanneer u de optie client geheim gebruikt, wordt er geen pop-upvenster weer gegeven. De toepassing maakt gebruik van de Tenant-ID en App-ID voor authenticatie. 
 
@@ -144,10 +144,10 @@ Gebruik de optie **client geheim aanmelden** en niet de optie **interactief gebr
 
 Voordat u het voor beeld kunt uitvoeren, moet u het bestand **app. config** bewerken en de volgende waarden instellen, afhankelijk van uw scenario:
 
-- `tenantId`: Stel in op de waarde **TenantId** .
-- `clientId`: Stel in op **ApplicationId** -waarde.
-- `clientSecret`: Als u zich wilt aanmelden met behulp van het client geheim, maakt u het in azure AD. Een web-app of API ook gebruiken in plaats van een systeemeigen app. Voeg ook de app onder **Access Control (IAM)** in de naamruimte die u eerder hebt gemaakt.
-- `serviceBusNamespaceFQDN`: Stel in op de volledige DNS-naam van de zojuist gemaakte Service Bus naam ruimte; bijvoorbeeld `example.servicebus.windows.net`.
+- `tenantId`: ingesteld op **TenantId** -waarde.
+- `clientId`: ingesteld op **ApplicationId** -waarde.
+- `clientSecret`: als u zich wilt aanmelden met behulp van het client geheim, maakt u het in azure AD. Een web-app of API ook gebruiken in plaats van een systeemeigen app. Voeg ook de app toe onder **Access Control (IAM)** in de naam ruimte die u eerder hebt gemaakt.
+- `serviceBusNamespaceFQDN`: Stel in op de volledige DNS-naam van de zojuist gemaakte Service Bus naam ruimte. bijvoorbeeld `example.servicebus.windows.net`.
 - `queueName`: Stel in op de naam van de wachtrij die u hebt gemaakt.
 - De omleidings-URI die u in uw app in de vorige stappen hebt opgegeven.
 

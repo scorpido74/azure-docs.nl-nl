@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438671"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384727"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Zelf studie: de implementatie van Azure Data Box Edge voorbereiden  
 
@@ -95,9 +95,9 @@ Voer de volgende stappen uit in Azure Portal om een Data Box-resource te maken.
     - Of de Azure Government Portal op deze URL: [https://portal.azure.us](https://portal.azure.us). Ga voor meer informatie naar [verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. Selecteer in het linkerdeel venster **+ een resource maken**. Zoeken naar **Data Box EDGE/Data Box gateway**. Selecteer **Data Box EDGE/Data Box gateway**. Selecteer **Maken**.
-3. Kies het abonnement dat u wilt gebruiken voor het Data Box Edge apparaat. Selecteer de regio waar u de Data Box Edge-resource wilt implementeren. Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar. 
+3. Kies het abonnement dat u wilt gebruiken voor het Data Box Edge apparaat. Selecteer de regio waar u de Data Box Edge-resource wilt implementeren. Zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor een lijst met alle regio's waar de Azure stack Edge-resource beschikbaar is.
 
-    Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. In de regio worden alleen de meta gegevens voor Apparaatbeheer opgeslagen. De werkelijke gegevens kunnen worden opgeslagen in elk opslag account. 
+    Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. In de regio worden alleen de meta gegevens voor Apparaatbeheer opgeslagen. De werkelijke gegevens kunnen worden opgeslagen in elk opslag account.
     
     Selecteer bij **Maken** bij de optie **Data Box Edge**.
 
@@ -114,8 +114,8 @@ Voer de volgende stappen uit in Azure Portal om een Data Box-resource te maken.
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Name   | Een beschrijvende naam om de resource aan te duiden.<br>De naam is tussen 2 en 50 tekens lang en kan letters, cijfers en afbreekstreepjes bevatten.<br> De naam begint en eindigt met een letter of cijfer.        |
-    |Regio     |Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar voor het implementeren van uw resource. Als u Azure Government gebruikt, zijn alle overheids regio's beschikbaar, zoals weer gegeven in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).<br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
+    |Naam   | Een beschrijvende naam om de resource aan te duiden.<br>De naam is tussen 2 en 50 tekens lang en kan letters, cijfers en afbreekstreepjes bevatten.<br> De naam begint en eindigt met een letter of cijfer.        |
+    |Regio     |Zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor een lijst met alle regio's waar de Azure stack Edge-resource beschikbaar is. Als u Azure Government gebruikt, zijn alle overheids regio's beschikbaar, zoals weer gegeven in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).<br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
 
     ![Details van project en exemplaar](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 

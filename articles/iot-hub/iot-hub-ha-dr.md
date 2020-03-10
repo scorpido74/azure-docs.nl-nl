@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
 ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392554"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub hoge Beschik baarheid en herstel na nood geval
 
@@ -125,9 +125,9 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 
 | HA/DR-optie | RTO | RPO | Is hand matige interventie vereist? | Implementatie complexiteit | Extra kosten impact|
 | --- | --- | --- | --- | --- | --- |
-| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|Geen|Geen|
-| Hand matige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
-| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
+| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|None|None|
+| Hand matige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|None|
+| Kruis regio HA |< 1 min|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
 
 ## <a name="next-steps"></a>Volgende stappen
 

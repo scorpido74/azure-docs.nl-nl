@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978760"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357669"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure verklarende woorden lijst: een woorden lijst met Cloud terminologie op het Azure-platform
 
@@ -69,7 +69,7 @@ Het proces van het automatisch repliceren van inhoud, zoals blobs, tabellen en w
 Zie [actieve geo-replicatie voor Azure SQL database](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>installatiekopie
+## <a name="image"></a>image
 Een bestand dat de configuratie van het besturings systeem en de toepassing bevat die kan worden gebruikt om een wille keurig aantal virtuele machines te maken. In azure zijn er twee soorten installatie kopieën: VM-installatie kopie en installatie kopie van besturings systeem. Een VM-installatie kopie bevat een besturings systeem en alle schijven die zijn gekoppeld aan een virtuele machine wanneer de installatie kopie wordt gemaakt. Een besturingssysteem installatie kopie bevat alleen een gegeneraliseerd besturings systeem zonder configuratie van de gegevens schijf.  
 Zie [navigeren en installatie kopieën van virtuele Windows-machines selecteren in azure met Power shell of de CLI](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -129,7 +129,7 @@ Zie [over Azure Storage-accounts](storage/common/storage-create-storage-account.
 De overeenkomst van een klant met micro soft waarmee ze Azure-Services kunnen verkrijgen. De abonnements prijzen en gerelateerde voor waarden gelden voor de aanbieding die is gekozen voor het abonnement.
 Zie [Microsoft Online Subscription overeenkomst](https://azure.microsoft.com/support/legal/subscription-agreement/) en [hoe Azure-abonnementen zijn gekoppeld aan Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>tag
+## <a name="tag"></a>Tag
 Een indexerings term waarmee u resources kunt categoriseren op basis van uw vereisten voor het beheren of factureren. Wanneer u een complexe verzameling resources hebt, kunt u Tags gebruiken om deze activa te visualiseren op de manier die het meest zinvol is. U kunt bijvoorbeeld resources taggen die een vergelijkbare rol hebben in uw organisatie of bij dezelfde afdeling horen.  
 Zie [Tags gebruiken om uw Azure-resources te organiseren](resource-group-using-tags.md)
 

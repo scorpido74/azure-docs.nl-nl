@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444506"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395952"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
@@ -33,13 +33,13 @@ Hiermee gaat u naar het canvas voor gegevens stromen waar u uw transformatie log
 
 Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![Geval](media/data-flow/canvas1.png "Geval")
 
-### <a name="graph"></a>Grafiek
+### <a name="graph"></a>Graph
 
 In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![Geval](media/data-flow/canvas2.png "Geval")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Eigenschappen van gegevens stroom voor Azure Integration runtime
 
@@ -125,15 +125,15 @@ Bouw een expressie die een vast bereik voor waarden in de gepartitioneerde gegev
 
 Als u een goed beeld hebt van de kardinaliteit van uw gegevens, is het mogelijk dat sleutel partities een goede strategie zijn. Bij sleutel partities worden partities gemaakt voor elke unieke waarde in de kolom. U kunt het aantal partities niet instellen omdat het aantal is gebaseerd op unieke waarden in de gegevens.
 
-#### <a name="inspect"></a>Controleren
+#### <a name="inspect"></a>Controleert
 
 Het tabblad **controleren** bevat een weer gave van de meta gegevens van de gegevensstroom die u transformeert. U kunt de kolom aantallen, gewijzigde kolommen, toegevoegde kolommen, gegevens typen, kolom ordening en kolom verwijzingen bekijken. **Inspecteer** is een alleen-lezen weer gave van uw meta gegevens. U hoeft de foutopsporingsmodus niet in te scha kelen om meta gegevens in het deel venster **controleren** weer te geven.
 
-![Controleert](media/data-flow/inspect1.png "Controleren")
+![Controleert](media/data-flow/inspect1.png "Controleert")
 
 Wanneer u de vorm van uw gegevens via trans formaties wijzigt, worden de wijzigingen in de meta gegevens in het deel venster **controleren** weer gegeven. Als er geen gedefinieerd schema is in uw bron transformatie, worden de meta gegevens niet weer gegeven in het deel venster **controleren** . Het ontbreken van meta gegevens is gebruikelijk in schema-drift-scenario's.
 
-#### <a name="data-preview"></a>Voorbeeld van gegevens
+#### <a name="data-preview"></a>Voor beeld van gegevens
 
 Als de foutopsporingsmodus is ingeschakeld, biedt het tabblad **voor beeld van gegevens** een interactieve moment opname van de gegevens bij elke trans formatie. Zie voor meer informatie de [Preview van gegevens in de foutopsporingsmodus](concepts-data-flow-debug-mode.md#data-preview).
 

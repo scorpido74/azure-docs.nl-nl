@@ -1,7 +1,7 @@
 ---
-title: Taal ondersteuning-QnA Maker
+title: Taalondersteuning - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Een lijst met cultuur, natuurlijke talen die door QnA Maker worden ondersteund voor uw Knowledge Base. Maak geen talen in dezelfde Knowledge Base.
+description: Een lijst van cultuur, natuurlijke talen die worden ondersteund door de QnA Maker voor uw knowledge base. Geen verschillende talen in de dezelfde knowledge base.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389247"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taal ondersteuning voor een QnA Maker resource en kennis bases
 
@@ -42,9 +42,9 @@ De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker bron.
 |Kroatisch|
 |Tsjechisch|
 |Deens|
+|Dutch|
 |Nederlands|
-|Nederlands|
-|Estisch|
+|Estlands|
 |Fins|
 |Frans|
 |Galicisch|
@@ -55,15 +55,15 @@ De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker bron.
 |Hindi|
 |Hongaars|
 |IJslands|
-|Indonesisch|
+|Bahasa Indonesia|
 |Iers|
 |Italiaans|
 |Japans|
-|Kannada|
+|Kanarees|
 |Koreaans|
 |Lets|
 |Litouws|
-|Malajalam|
+|Malayalam|
 |Maleis|
 |Noors|
 |Pools|

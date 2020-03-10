@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361102"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
 
@@ -35,7 +35,7 @@ LUIS begrijpt uitingen in de volgende talen:
 | Amerikaans-Engels |`en-US` | ✔ | ✔  |✔|✔|
 | Arabisch (preview-modern Standard-Arabisch) |`ar-AR`|-|-|-|-|
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Nederlands |`nl-NL` |✔|  -   |-|✔|
+| Dutch |`nl-NL` |✔|  -   |-|✔|
 | Frans (Frankrijk) |`fr-FR` |✔| ✔ |✔ |✔|
 | Frans (Canada) |`fr-CA` |-|   -   |-|✔|
 | Duits |`de-DE` |✔| ✔ |✔ |✔|
@@ -81,7 +81,7 @@ Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-gl
 |--|:--:|:--:|:--:|:--:|
 |Arabisch|||||
 |Chinees||✔||✔|
-|Nederlands|||✔|✔|
+|Dutch|||✔|✔|
 |Engels (en-us)|✔ ||||
 |Frans (fr-FR)|✔||||
 |Frans (fr-CA)|✔||||
@@ -98,7 +98,7 @@ Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-gl
 
 De volgende cult uren hebben aangepaste tokenizer-versies:
 
-|Culture|Version|Doel|
+|Cultuur|Version|Doel|
 |--|--|--|
 |Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` als een utterance invoert, wordt deze `Ich fahre einen kranken wagen`. Het markeren van `kranken` en het `wagen` onafhankelijk als verschillende entiteiten toestaan.|
 |Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, blijft het één token. `krankenwagen` is dus als één entiteit gemarkeerd. |

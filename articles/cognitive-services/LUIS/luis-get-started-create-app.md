@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393759"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
@@ -61,7 +61,7 @@ Selecteer de intentie **HomeAutomation.TurnOff**. U kunt zien dat de intentie ee
 
 [![Scherm opname van HomeAutomation. TurnOff intentie](media/luis-quickstart-new-app/home-automation-turnoff.png "Scherm opname van HomeAutomation. TurnOff intentie")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-## <a name="train-the-luis-app"></a>LUIS-app trainen
+## <a name="train-the-luis-app"></a>LUIS-app inleren
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757401"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394512"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Quick start voor bash in Azure Cloud Shell
 
@@ -58,7 +58,7 @@ Maak een nieuwe resource groep in Westus met de naam ' MyRG '.
 az group create --location westus --name MyRG
 ```
 
-### <a name="create-a-linux-vm"></a>Een Linux VM maken
+### <a name="create-a-linux-vm"></a>Een Linux-VM maken
 Maak een Ubuntu-VM in de nieuwe resource groep. Met de Azure CLI worden SSH-sleutels gemaakt en wordt de virtuele machine ingesteld. <br>
 
 ```azurecli-interactive
@@ -66,9 +66,9 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Het gebruik van `--generate-ssh-keys` geeft Azure CLI de opdracht om open bare en persoonlijke sleutels te maken en in te stellen in uw virtuele machine en `$Home` map. Standaard sleutels worden in Cloud Shell op `/home/<user>/.ssh/id_rsa` en `/home/<user>/.ssh/id_rsa.pub` geplaatst. Uw `.ssh` map is opgeslagen in de afbeelding van de bestands share van 5 GB die wordt gebruikt om `$Home` persistent te maken.
+> Het gebruik van `--generate-ssh-keys` geeft Azure CLI de opdracht om open bare en persoonlijke sleutels te maken en in te stellen in uw virtuele machine en `$Home` map. Standaard sleutels worden in Cloud Shell op `/home/<user>/.ssh/id_rsa` en `/home/<user>/.ssh/id_rsa.pub`geplaatst. Uw `.ssh` map is opgeslagen in de afbeelding van de bestands share van 5 GB die wordt gebruikt om `$Home`persistent te maken.
 
-Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud Shell ($ User@Azure:).
+Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud Shell ($User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH in uw virtuele Linux-machine
 1. Zoek de naam van uw virtuele machine in de zoek balk Azure Portal.

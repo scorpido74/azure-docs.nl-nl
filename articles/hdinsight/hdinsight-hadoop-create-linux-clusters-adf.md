@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395216"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelf studie: Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory
 
@@ -28,7 +28,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een data factory maken met behulp van Azure Portal
 > * Gekoppelde services maken
 > * Een pijplijn maken
-> * Een pijp lijn activeren
+> * Een pijplijn activeren
 > * Een pijplijn bewaken
 > * De uitvoer controleren
 
@@ -48,7 +48,7 @@ In deze sectie wordt gebruikgemaakt van een Azure PowerShell script voor het mak
 
 1. Meldt zich aan bij Azure.
 2. Hiermee maakt u een Azure-resourcegroep.
-3. Hiermee wordt een Azure Storage-account gemaakt.
+3. Hiermee maakt u een Azure-opslagaccount.
 4. Hiermee maakt u een BLOB-container in het opslag account
 5. Hiermee kopieert u het voor beeld-HiveQL-script (**partitionweblogs. HQL**) naar de BLOB-container. Het script is beschikbaar op [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). Het voorbeeld script is al beschikbaar in een andere open bare BLOB-container. Het onderstaande Power shell-script maakt een kopie van deze bestanden in het Azure Storage-account dat wordt gemaakt.
 
@@ -156,7 +156,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Ga vanaf links naar **alle services** > **algemene** > **resource groepen**.
 1. Selecteer de naam van de resource groep die u in uw Power shell-script hebt gemaakt. Gebruik het filter als er te veel resource groepen worden weer gegeven.
-1. In de **overzichts** weergave ziet u een resource die wordt weer gegeven, tenzij u de resource groep deelt met andere projecten. Deze resource is het opslag account met de naam die u eerder hebt opgegeven. Selecteer de naam van het opslag account.
+1. In de **overzichts** weergave ziet u een resource die wordt weer gegeven, tenzij u de resource groep deelt met andere projecten. Deze resource is het opslag account met de naam die u eerder hebt opgegeven. Selecteer de naam van het opslagaccount.
 1. Selecteer de tegel **containers** .
 1. Selecteer de **adfgetstarted** -container. U ziet een map met de naam **hivescripts**.
 1. Open de map en zorg ervoor dat deze het voorbeeld script bestand, **partitionweblogs. HQL**bevat.
@@ -183,7 +183,7 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
 
 ## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Ga in het menu links naar **+ een resource maken** > **Analytics** > **Data Factory**.
 
@@ -196,7 +196,7 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
     |Naam | Voer een naam in voor de data factory. Deze naam moet wereldwijd uniek zijn.|
     |Abonnement | Selecteer uw Azure-abonnement. |
     |Resourcegroep | Selecteer **bestaande gebruiken** en selecteer vervolgens de resource groep die u hebt gemaakt met behulp van het Power shell-script. |
-    |Versie | Verlaat **v2**. |
+    |Version | Verlaat **v2**. |
     |Locatie | De locatie wordt automatisch ingesteld op de locatie die u hebt opgegeven tijdens het maken van de resource groep. Voor deze zelf studie is de locatie ingesteld op **VS-Oost**. |
     |GIT inschakelen|Schakel dit selectie vakje uit.|
 
@@ -260,7 +260,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
     | Naam | Voer `HDInsightLinkedService` in.|
     | Type | Selecteer **HDInsight op aanvraag**. |
     | Een gekoppelde Azure Storage-service | Selecteer `HDIStorageLinkedService`. |
-    | Clustertype | **Hadoop** selecteren |
+    | Cluster type | **Hadoop** selecteren |
     | Time To Live | Geef de duur op waarvoor het HDInsight-cluster beschikbaar moet zijn voordat het automatisch wordt verwijderd.|
     | Service-Principal-ID | Geef de toepassings-ID op van de Azure Active Directory service-principal die u hebt gemaakt als onderdeel van de vereisten. |
     | Sleutel van de Service-Principal | Geef de verificatie sleutel voor de service-principal van Azure Active Directory op. |
@@ -310,7 +310,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
     ![De Azure Data Factory-pijp lijn publiceren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "De Azure Data Factory-pijp lijn publiceren")
 
-## <a name="trigger-a-pipeline"></a>Een pijp lijn activeren
+## <a name="trigger-a-pipeline"></a>Een pijplijn activeren
 
 1. Selecteer in de werk balk op het ontwerp oppervlak **trigger toevoegen** > **nu activeren**.
 
@@ -320,7 +320,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
 ## <a name="monitor-a-pipeline"></a>Een pijplijn bewaken
 
-1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet een pijplijn die worden uitgevoerd in de lijst **Pipeline Runs**. U ziet de status van de uitvoering onder de kolom **status** .
+1. Ga naar het tabblad **Monitor** aan de linkerkant. U ziet een pijplijn die worden uitgevoerd in de lijst **Pipeline Runs**. U ziet de status van de uitvoering onder de kolom **status** .
 
     ![De Azure Data Factory pijp lijn bewaken](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "De Azure Data Factory pijp lijn bewaken")
 
@@ -348,7 +348,7 @@ Wanneer u het HDInsight-cluster op aanvraag hebt gemaakt, hoeft u het HDInsight-
 
 U kunt ook de volledige resource groep verwijderen die u voor deze zelf studie hebt gemaakt. Hiermee verwijdert u het opslag account en de Azure Data Factory die u hebt gemaakt.
 
-### <a name="delete-the-resource-group"></a>De resource groep verwijderen
+### <a name="delete-the-resource-group"></a>De resourcegroep verwijderen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen** in het linkerdeel venster.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249103"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893305"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -35,7 +35,7 @@ Blok is een krachtig besturings element dat moet worden beheerd met de juiste ke
 Beheerders kunnen ervoor kiezen om een of meer besturings elementen af te dwingen bij het verlenen van toegang. Deze besturings elementen bevatten de volgende opties: 
 
 - [Multi-factor Authentication (Azure Multi-Factor Authentication) vereisen](../authentication/concept-mfa-howitworks.md)
-- [Vereisen dat het apparaat wordt gemarkeerd als compatibel (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Vereisen dat het apparaat wordt gemarkeerd als compatibel (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Hybride Azure AD-aangesloten apparaat vereisen](../devices/concept-azure-ad-join-hybrid.md)
 - [Goedgekeurde client-app vereisen](app-based-conditional-access.md)
 - [Beveiligings beleid voor apps vereisen](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ Als u dit selectie vakje inschakelt, moeten gebruikers Azure Multi-Factor Authen
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat wordt gemarkeerd als compatibel
 
-Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die aan specifieke nalevings vereisten voldoen. Deze informatie over beleids naleving wordt vanuit intune doorgestuurd naar Azure AD, waarbij voorwaardelijke toegang kan besluiten om toegang tot resources toe te kennen of te blok keren. Zie voor meer informatie over nalevings beleid het artikel [regels instellen op apparaten om toegang tot resources in uw organisatie in te stellen met intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
+Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die aan specifieke nalevings vereisten voldoen. Deze informatie over beleids naleving wordt vanuit intune doorgestuurd naar Azure AD, waarbij voorwaardelijke toegang kan besluiten om toegang tot resources toe te kennen of te blok keren. Zie voor meer informatie over nalevings beleid het artikel [regels instellen op apparaten om toegang tot resources in uw organisatie in te stellen met intune](/intune/protect/device-compliance-get-started).
 
 Een apparaat kan worden gemarkeerd als compatibel door intune (voor elk besturings systeem van een apparaat) of door een MDM-systeem van derden voor Windows 10-apparaten. Jamf Pro is het enige ondersteunde MDM-systeem van derden. Meer informatie over integratie vindt u in het artikel, [Integreer Jamf Pro met intune voor naleving](/intune/protect/conditional-access-integrate-jamf).
 
@@ -67,7 +67,35 @@ Organisaties kunnen ervoor kiezen om de apparaat-id te gebruiken als onderdeel v
 
 Organisaties kunnen vereisen dat een toegangs poging tot de geselecteerde Cloud-apps moet worden uitgevoerd vanuit een goedgekeurde client-app. Deze goedgekeurde client-apps ondersteunen het [intune-beveiligings beleid voor apps](/intune/app-protection-policy) onafhankelijk van een MDM-oplossing (Mobile-Device Management).
 
-Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde apps](/intune/apps/apps-supported-intune-apps).
+Deze instelling is van toepassing op de volgende client-apps:
+
+- Microsoft Azure Information Protection
+- Micro soft-boekingen
+- Micro soft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Facturering van Microsoft
+- Microsoft Kaizala
+- Microsoft Launcher
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Micro soft Skype voor bedrijven
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Micro soft Yammer
 
 **Opmerkingen**
 
@@ -76,11 +104,18 @@ Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde ap
    - Biedt alleen ondersteuning voor de voor waarde iOS en Android voor Device platform.
 - Voorwaardelijke toegang kan niet worden beschouwd als micro soft Edge in de InPrivate-modus van een goedgekeurde client-app.
 
+Zie het artikel [How to: goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang](app-based-conditional-access.md) voor configuratie voorbeelden.
+
 ### <a name="require-app-protection-policy"></a>Beleid voor app-beveiliging vereisen
 
 In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een [intune-app-beveiligings beleid](/intune/app-protection-policy) aanwezig is op de client-app voordat toegang beschikbaar is voor de geselecteerde Cloud-apps. 
 
-Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde apps](/intune/apps/apps-supported-intune-apps).
+Deze instelling is van toepassing op de volgende client-apps:
+
+- Micro soft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
 
 **Opmerkingen**
 
@@ -88,7 +123,9 @@ Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde ap
 - De vereisten voor het **beveiligings beleid voor apps vereisen** :
     - Biedt alleen ondersteuning voor de voor waarde iOS en Android voor Device platform.
 
-### <a name="terms-of-use"></a>Gebruiksrechtovereenkomst
+Zie het artikel [procedure: app-beveiligings beleid en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang](app-protection-based-conditional-access.md) voor configuratie voorbeelden.
+
+### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
 Als uw organisatie gebruiks voorwaarden heeft gemaakt, kunnen er aanvullende opties worden weer gegeven onder besturings elementen verlenen. Met deze opties kunnen beheerders bevestigings voorwaarden vereisen als voor waarde voor het openen van de bronnen die door het beleid worden beveiligd. Meer informatie over de gebruiks voorwaarden vindt u in het artikel [Azure Active Directory gebruiks voorwaarden](terms-of-use.md).
 

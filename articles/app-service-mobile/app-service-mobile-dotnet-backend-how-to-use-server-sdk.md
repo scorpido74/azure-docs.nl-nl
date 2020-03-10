@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358150"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Werken met de .NET back-end-server-SDK voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -29,7 +29,7 @@ In dit onderwerp wordt beschreven hoe u de .NET back-end server-SDK kunt gebruik
 De referentie documentatie voor de server SDK bevindt zich hier: [Azure Mobile apps .net-referentie][1].
 
 ## <a name="create-app"></a>Procedure: een back-end voor een mobiele app van .NET maken
-Als u een nieuw project start, kunt u een App Service-toepassing maken met behulp van de [Azure Portal] of Visual Studio. U kunt de App Service toepassing lokaal uitvoeren of het project publiceren naar uw mobiele app voor App Service op basis van de Cloud.
+Als u een nieuw project start, kunt u een App Service-toepassing maken met behulp van de [Azure-portal] of Visual Studio. U kunt de App Service toepassing lokaal uitvoeren of het project publiceren naar uw mobiele app voor App Service op basis van de Cloud.
 
 Als u mobiele mogelijkheden toevoegt aan een bestaand project, raadpleegt u de sectie [de SDK downloaden en initialiseren](#install-sdk) .
 
@@ -196,7 +196,7 @@ Als u de Azure SDK hebt geïnstalleerd, kunt u nu als volgt een controller voor 
    * Selecteer in de vervolg keuzelijst **model klasse** uw nieuwe DTO.
    * Selecteer in de vervolg keuzelijst **DbContext** de DbContext-klasse voor mobiele services.
    * De naam van de controller wordt voor u gemaakt.
-4. Klik op **Add**.
+4. Klik op **Toevoegen**.
 
 Het Quick Start-Server Project bevat een voor beeld van een eenvoudige **TodoItemController**.
 
@@ -462,7 +462,7 @@ Zorg ervoor dat op uw mobiele back-end [micro soft. Azure. Mobile. server. Authe
 In het voor gaande voor beeld moet u de toepassings instellingen *authAudience* en *authIssuer* in het bestand Web. config configureren op elk de URL van de hoofdmap van uw toepassing, met behulp van het HTTPS-schema. Op dezelfde manier moet u *authSigningKey* instellen als de waarde van de handtekening sleutel van uw toepassing.
 De handtekening sleutel verkrijgen:
 
-1. Navigeer naar uw app binnen het [Azure Portal]
+1. Navigeer naar uw app binnen het [Azure-portal]
 2. Klik op **extra**, **kudu**en **Ga naar**.
 3. Klik in de kudu-beheer site op **omgeving**.
 4. Zoek de waarde voor *WEBSITE\_AUTH\_ondertekenen\_sleutel*.
@@ -475,7 +475,7 @@ Gebruik de handtekening sleutel voor de para meter *authSigningKey* in de config
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
 [Micro soft. Azure. Mobile. server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Micro soft. Azure. Mobile. server. Quick Start]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

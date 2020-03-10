@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169613"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396601"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Een IoT-hub maken met behulp van de Azure Portal
 
@@ -92,7 +92,7 @@ Voeg vervolgens een routerings query toe. In dit voor beeld worden de berichten 
 
 Klik op **Opslaan** om de routerings regel op te slaan. U keert terug naar het deel venster bericht Routering en uw nieuwe routerings regel wordt weer gegeven.
 
-### <a name="custom-endpoints"></a>Aangepaste eindpunten
+### <a name="custom-endpoints"></a>Aangepaste eind punten
 
 Klik op het tabblad **aangepaste eind punten** . U ziet alle aangepaste eind punten die al zijn gemaakt. Hier kunt u nieuwe eind punten toevoegen of bestaande eind punten verwijderen. 
 
@@ -112,7 +112,7 @@ Hier volgen twee manieren om een specifieke IoT-hub te vinden in uw abonnement:
 
 1. Als u de resource groep kent waarvan de IoT-hub deel uitmaakt, klikt u op **resource groepen**en selecteert u vervolgens de resource groep in de lijst. In het scherm voor de resource groep worden alle resources in die groep weer gegeven, met inbegrip van de IoT-hubs. Klik op de hub die u wilt bekijken.
 
-2. Klik op **Alle resources**. In het deel venster **alle resources** ziet u een vervolg keuzelijst met de standaard `All types`. Klik op de vervolg keuzelijst en schakel `Select all`uit. Zoek `IoT Hub` en controleer het. Klik op de vervolg keuzelijst om de keuze lijst te sluiten en de items worden gefilterd, zodat alleen uw IoT-hubs worden weer gegeven.
+2. Klik op **alle resources**. In het deel venster **alle resources** ziet u een vervolg keuzelijst met de standaard `All types`. Klik op de vervolg keuzelijst en schakel `Select all`uit. Zoek `IoT Hub` en controleer het. Klik op de vervolg keuzelijst om de keuze lijst te sluiten en de items worden gefilterd, zodat alleen uw IoT-hubs worden weer gegeven.
 
 ## <a name="delete-the-iot-hub"></a>De IoT-hub verwijderen
 

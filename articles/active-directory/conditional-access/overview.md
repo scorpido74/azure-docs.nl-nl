@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966274"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671872"
 ---
 # <a name="what-is-conditional-access"></a>Wat is voorwaardelijke toegang?
 
@@ -92,7 +92,7 @@ Ontdek hoe andere organisaties voorwaardelijke toegang van Azure AD gebruiken vo
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-Klanten met [Microsoft 365 Business licenties](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot functies voor voorwaardelijke toegang. 
+Klanten met [Microsoft 365 Business licenties](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot functies voor voorwaardelijke toegang. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -102,6 +102,6 @@ Zie [de implementatie van voorwaardelijke toegang plannen in azure Active Direct
 
 [Meer informatie over identiteits beveiliging](../identity-protection/overview-v2.md)
 
-[Meer informatie over Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Meer informatie over Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[Meer informatie over Microsoft Intune](https://docs.microsoft.com/intune/index)
+[Meer informatie over Microsoft Intune](/intune/index)

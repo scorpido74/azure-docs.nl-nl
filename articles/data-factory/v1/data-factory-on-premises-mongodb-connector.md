@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387545"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Gegevens verplaatsen van MongoDB met behulp van Azure Data Factory
 
@@ -46,7 +46,7 @@ U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst va
 
 De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
 Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
@@ -61,7 +61,7 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor **OnPremisesMongoDB** gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesMongoDb** |Ja |
 | server |Het IP-adres of de hostnaam van de MongoDB-server. |Ja |
@@ -79,7 +79,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **MongoDbCollection** heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
 
@@ -90,7 +90,7 @@ De eigenschappen die beschikbaar zijn in de **typeProperties** -sectie van de ac
 
 Wanneer de bron van het type **MongoDbSource** is, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als de **verzamelings** - **DataSet** is opgegeven) |
 
@@ -292,15 +292,15 @@ Bij het verplaatsen van gegevens naar MongoDB worden de volgende toewijzingen ge
 
 | Type MongoDB | .NET Framework type |
 | --- | --- |
-| Binary |Byte[] |
+| Binair bestand |Byte[] |
 | Booleaans |Booleaans |
-| Datum |Datum/tijd |
-| NumberDouble |Double |
+| Date |DateTime |
+| NumberDouble |Double-waarde |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Tekenreeks |
 | Tekenreeks |Tekenreeks |
-| MEE |GUID |
+| MEE |Guid |
 | Object |Opnieuw genormaliseerd in kolommen met ' _ ' als genest scheidings teken |
 
 > [!NOTE]
@@ -321,14 +321,14 @@ U kunt de [wizard kopiëren](data-factory-data-movement-activities.md#create-a-p
 ### <a name="example"></a>Voorbeeld
 Bijvoorbeeld: ' ExampleTable ' hieronder is een MongoDB-tabel met één kolom met een matrix van objecten in elke cel, facturen en één kolom met een matrix van scalaire typen – classificaties.
 
-| _id | Klant naam | Facturen | Servicelaag | Waarderingen |
+| _id | Klant naam | Facturen | Serviceniveau | Inhoudrestricties |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", item: "pop-uptaak", prijs: "456", korting: "0,2"}, {invoice_id: "124", item: "oven", prijs: "1235", korting: "0,2"}] |Zilver |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", item: "koel kast", prijs: "12543", korting: "0,0"}] |Goud |[1,2] |
 
 Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ', zoals hieronder wordt weer gegeven. De basis tabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens uit de matrices zijn wegge laten en worden uitgevouwen in de virtuele tabellen.
 
-| _id | Klant naam | Servicelaag |
+| _id | Klant naam | Serviceniveau |
 | --- | --- | --- |
 | 1111 |ABC |Zilver |
 | 2222 |XYZ |Goud |
@@ -341,7 +341,7 @@ In de volgende tabellen ziet u de virtuele tabellen die de oorspronkelijke matri
 
 Tabel "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Korting |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Koop |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |pop- |456 |0.2 |
 | 1111 |1 |124 |droog |1235 |0.2 |

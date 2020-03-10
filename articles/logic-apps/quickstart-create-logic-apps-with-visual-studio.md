@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386608"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -149,7 +149,7 @@ Voordat u uw logische app kunt uitvoeren en testen, implementeert u de app in az
 
    ![Logische app implementeren naar een Azure-resourcegroep](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-deployment.png)
 
-1. Als het vak **para meters bewerken** wordt weer gegeven, geeft u een resource naam op voor uw logische app. Sla uw wijzigingen op.
+1. Als het vak **para meters bewerken** wordt weer gegeven, geeft u een resource naam op voor uw logische app. Sla de instellingen op.
 
    ![Naam van de implementatie opgeven voor de logische app](./media/quickstart-create-logic-apps-with-visual-studio/edit-parameters-deployment.png)
 

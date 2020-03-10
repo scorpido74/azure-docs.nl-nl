@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749233"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393219"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
@@ -25,16 +25,16 @@ Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transac
 
 In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in een controle lijst georganiseerd die u kunt volgen tijdens het ontwikkelen van uw Blob Storage-toepassing.
 
-| Klaar | Categorie | Ontwerpoverwegingen |
+| Zo | Category | Ontwerpoverwegingen |
 | --- | --- | --- |
 | &nbsp; |Schaalbaarheids doelen |[Kunt u uw toepassing zo ontwerpen dat deze niet meer dan het maximale aantal opslag accounts gebruikt?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Schaalbaarheids doelen |[Vermijdt u benadering van capaciteits-en transactie limieten?](#capacity-and-transaction-targets) |
 | &nbsp; |Schaalbaarheids doelen |[Is een groot aantal clients gelijktijdig toegang tot één BLOB?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Schaalbaarheids doelen |[Blijft uw toepassing binnen de schaalbaarheids doelen voor één BLOB?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Partitionering |[Is uw naamgevings Conventie ontworpen om een betere taak verdeling te bieden?](#partitioning) |
-| &nbsp; |Networking |[Hebben apparaten aan de client zijde voldoende band breedte en lage latentie om de benodigde prestaties te verwezenlijken?](#throughput) |
-| &nbsp; |Networking |[Hebben apparaten aan de client zijde een netwerk koppeling van hoge kwaliteit?](#link-quality) |
-| &nbsp; |Networking |[Bevindt de client toepassing zich in dezelfde regio als het opslag account?](#location) |
+| &nbsp; |Netwerken |[Hebben apparaten aan de client zijde voldoende band breedte en lage latentie om de benodigde prestaties te verwezenlijken?](#throughput) |
+| &nbsp; |Netwerken |[Hebben apparaten aan de client zijde een netwerk koppeling van hoge kwaliteit?](#link-quality) |
+| &nbsp; |Netwerken |[Bevindt de client toepassing zich in dezelfde regio als het opslag account?](#location) |
 | &nbsp; |Directe client toegang |[Maakt u gebruik van Shared Access signatures (SAS) en cross-Origin Resource Sharing (CORS) om direct toegang tot Azure Storage te bieden?](#sas-and-cors) |
 | &nbsp; |Caching |[Worden de gegevens in de toepassing opgeslagen die regel matig worden geopend en zelden worden gewijzigd?](#reading-data) |
 | &nbsp; |Caching |[Worden de updates voor de toepassing in de cache opgeslagen op de client en vervolgens geüpload in grotere sets?](#uploading-data-in-batches) |
@@ -42,7 +42,7 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 | &nbsp; |.NET-configuratie |[Hebt u uw client geconfigureerd voor het gebruik van een voldoende aantal gelijktijdige verbindingen?](#increase-default-connection-limit) |
 | &nbsp; |.NET-configuratie |[Voor .NET-toepassingen hebt u .NET geconfigureerd voor het gebruik van een voldoende aantal threads?](#increase-minimum-number-of-threads) |
 | &nbsp; |Parallelle uitvoering |[Hebt u gegarandeerd dat de parallelle kracht op de juiste wijze is gebonden, zodat u de mogelijkheden van uw client niet overbelastt of de schaalbaarheids doelen kunt benaderen?](#unbounded-parallelism) |
-| &nbsp; |Tools |[Gebruikt u de nieuwste versies van door micro soft meegeleverde client bibliotheken en-hulpprogram ma's?](#client-libraries-and-tools) |
+| &nbsp; |Hulpprogramma's |[Gebruikt u de nieuwste versies van door micro soft meegeleverde client bibliotheken en-hulpprogram ma's?](#client-libraries-and-tools) |
 | &nbsp; |Nieuwe pogingen |[Gebruikt u een beleid voor opnieuw proberen met een exponentiële uitstel voor het beperken van fouten en time-outs?](#timeout-and-server-busy-errors) |
 | &nbsp; |Nieuwe pogingen |[Voor komt uw toepassing nieuwe pogingen voor niet-herstel bare fouten?](#non-retryable-errors) |
 | &nbsp; |Blobs kopiëren |[Worden de blobs op de meest efficiënte manier gekopieerd?](#blob-copy-apis) |
@@ -52,7 +52,7 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 | &nbsp; |Meta gegevens gebruiken |[Slaat u veelgebruikte meta gegevens over blobs op in hun meta gegevens?](#use-metadata) |
 | &nbsp; |Snel uploaden |[Als u probeert een BLOB snel te uploaden, kunt u blokken parallel uploaden?](#upload-one-large-blob-quickly) |
 | &nbsp; |Snel uploaden |[Kunt u blobs parallel uploaden wanneer u een groot aantal blobs wilt uploaden?](#upload-many-blobs-quickly) |
-| &nbsp; |Blob-type |[Gebruikt u pagina-blobs of blok-blobs wanneer dit van toepassing is?](#choose-the-correct-type-of-blob) |
+| &nbsp; |BLOB-type |[Gebruikt u pagina-blobs of blok-blobs wanneer dit van toepassing is?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Schaalbaarheids doelen
 
@@ -115,7 +115,7 @@ U kunt een aantal aanbevolen procedures volgen om de frequentie van dergelijke b
   
 - Zie [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)voor meer informatie over het partitie schema dat wordt gebruikt in azure Storage.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 
 De beperkingen van het fysieke netwerk van de toepassing kunnen een grote invloed hebben op de prestaties. In de volgende secties worden enkele beperkingen beschreven die gebruikers kunnen tegen komen.  
 
