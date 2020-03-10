@@ -12,11 +12,11 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
 ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116898"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355272"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
