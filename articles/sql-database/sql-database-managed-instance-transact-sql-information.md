@@ -12,11 +12,11 @@ ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 02/10/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462578"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360040"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -48,7 +48,7 @@ Op deze pagina worden ook [tijdelijke bekende problemen](#Issues) beschreven die
 - [BESCHIKBAARHEIDS GROEP NEERZETTEN](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - De [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) -component van de instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Back-up maken
 
 Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige data bases kunnen maken `COPY_ONLY` back-ups. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
 

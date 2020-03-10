@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6346c29210b6390f11c884ff51e0b60af89bbbb7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420913"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373143"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typen runbook
 
@@ -77,7 +77,7 @@ Power shell workflow-runbooks zijn tekst-runbooks op basis van [Windows Power sh
 
 * Alle complexe logica met PowerShell Workflow-code implementeren.
 * Gebruik [controle punten](automation-powershell-workflow.md#checkpoints) om het runbook te hervatten als er een fout optreedt.
-* Gebruik [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) meerdere acties parallel uitvoeren.
+* Gebruik [parallelle verwerking](automation-powershell-workflow.md#parallel-processing) om meerdere acties parallel uit te voeren.
 * Kan andere grafische runbooks en Power shell-werk stroom runbooks als onderliggende runbooks bevatten om werk stromen op hoog niveau te maken.
 
 ### <a name="limitations"></a>Beperkingen

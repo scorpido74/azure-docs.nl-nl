@@ -16,11 +16,11 @@ ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378403"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -557,7 +557,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **Voor**   | givenName       |     |    \+ Update maken |
 | **Naam**   |   SN   |     |  \+ Update maken |
 | **PreferredNameData**  |  displayName |     |   \+ Update maken |
-| **Bedrijfs**         | bedrijf   |     |  \+ Update maken |
+| **Bedrijfs**         | company   |     |  \+ Update maken |
 | **SupervisoryOrganization**  | department  |     |  \+ Update maken |
 | **ManagerReference**   | Manager  |     |  \+ Update maken |
 | **BusinessTitle**   |  titel     |     |  \+ Update maken | 

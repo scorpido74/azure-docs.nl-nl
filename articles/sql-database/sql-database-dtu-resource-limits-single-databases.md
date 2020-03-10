@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637589"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359949"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model
 
@@ -31,14 +31,14 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 > [!IMPORTANT]
 > Zie [Eén data base schalen](sql-database-single-database-scale.md) voor meer informatie over schaling en overwegingen
 
-### <a name="basic-service-tier"></a>Basic-serviceniveau
+### <a name="basic-service-tier"></a>Servicelaag Basic
 
 | **Reken grootte** | **Basic** |
 | :--- | --: |
 | Maximaal aantal DTU's | 5 |
 | Inbegrepen opslag (GB) | 2 |
 | Maximum aantal opslag opties (GB) | 2 |
-| Maximale OLTP-opslag in het geheugen (GB) |N/A |
+| Maximale OLTP-opslag in het geheugen (GB) |N.v.t. |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen) | 30 |
 | Maximaal aantal gelijktijdige sessies | 300 |
 |||
@@ -49,14 +49,14 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 >Met betrekking tot gegevens opslag wordt de Basic-servicelaag op standaard pagina-blobs geplaatst. Standaard pagina-blobs maken gebruik van schijven op basis van harde schijven (HDD) en zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
 >
 
-### <a name="standard-service-tier"></a>Standard-serviceniveau
+### <a name="standard-service-tier"></a>Servicelaag Standard
 
 | **Reken grootte** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maximaal aantal DTU's | 10 | 20 | 50 | 100 |
 | Inbegrepen opslag (GB) | 250 | 250 | 250 | 250 |
 | Maximum aantal opslag opties (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximale OLTP-opslag in het geheugen (GB) | N/A | N/A | N/A | N/A |
+| Maximale OLTP-opslag in het geheugen (GB) | N.v.t. | N.v.t. | N.v.t. | N.v.t. |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 60 | 90 | 120 | 200 |
 | Maximaal aantal gelijktijdige sessies |600 | 900 | 1200 | 2400 |
 ||||||
@@ -69,17 +69,17 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 
 ### <a name="standard-service-tier-continued"></a>Standard-servicelaag (vervolg)
 
-| **Reken grootte** | **S4** | **S6** | **S7** | **S9** | **S12** |
+| **Reken grootte** | **Stand** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maximaal aantal DTU's | 200 | 400 | 800 | 1600 | 3000 |
 | Inbegrepen opslag (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximum aantal opslag opties (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximale OLTP-opslag in het geheugen (GB) | N/A | N/A | N/A | N/A |N/A |
+| Maximale OLTP-opslag in het geheugen (GB) | N.v.t. | N.v.t. | N.v.t. | N.v.t. |N.v.t. |
 | Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximaal aantal gelijktijdige sessies |4800 | 9600 | 19200 | 30.000 |30.000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Premium-serviceniveau
+### <a name="premium-service-tier"></a>Premium servicelaag
 
 | **Reken grootte** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|

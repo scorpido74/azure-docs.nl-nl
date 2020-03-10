@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9585e74170d21ad899224462b6e41e7e9bb75727
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e4dfc33756a287b6d2f6e41edded3332ca85241d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363410"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -60,6 +60,8 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.KeyVault/vaults| Nee |Nee |[Kluizen](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows |N.v.t. | Nee |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces|Ja| Nee | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.NetApp/netAppAccounts/capacityPools |Ja| Nee | [Azure NetApp-capaciteits Pools](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Micro soft. NetApp/netAppAccounts/capacityPools/volumes |Ja| Nee | [Azure NetApp-volumes](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways|N.v.t.| Nee |  |
 |Microsoft.Network/dnsZones | N.v.t.| Nee | [DNS-zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | N.v.t. | Nee |[Express route-circuits](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
@@ -81,6 +83,8 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.Storage/storageAccounts/services | Ja| Nee | [BLOB Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Bestands Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [wachtrij Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) en [tabel Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs |N.v.t.| Nee | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Micro soft. micro soft. VMWareCloudSimple/informatie |Ja|Nee |[CloudSimple Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
+|Microsoft.Web/hostingEnvironments/multiRolePools | Ja | Nee | [Groepen met meerdere rollen App Service Environment](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft.Web/hostingEnvironments/workerPools | Ja | Nee | [Werk groepen App Service Environment](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Ja | Nee | [App Service plannen](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | Ja | Nee | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) en [functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | Ja | Nee | [App Service sleuven](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|

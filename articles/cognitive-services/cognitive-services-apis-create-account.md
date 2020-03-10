@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362448"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
@@ -31,7 +31,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
 1. Een resource maken.
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Resource met meerdere services](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Resource met meerdere services](#tab/multiservice)
     
     De resource met meerdere services heeft de naam **Cognitive Services** in de portal. [Maak een Cognitive Services resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
@@ -40,10 +40,10 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Tekstanalyse   |
-    | Translator Text  | Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element) | Aangepast zoeken met Bing | Bing Entiteiten zoeken            | Bing Automatische suggesties |
-    | Bing Spellingcontrole |                                                      |                    |                               |                  |
+    | Translator Text  | Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element) | Bing Aangepaste zoekopdrachten | Bing Entiteiten zoeken            | Automatische suggesties van Bing |
+    | Bing-spellingcontrole |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[Resource met één service](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
 
@@ -58,7 +58,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
 3. Geef op de pagina **maken** de volgende informatie op:
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Resource met meerdere services](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Resource met meerdere services](#tab/multiservice)
 
     |    |    |
     |--|--|
@@ -72,7 +72,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
     Klik op **Create**.
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[Resource met één service](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
     |    |    |
     |--|--|

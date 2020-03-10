@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366648"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373166"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -84,7 +84,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
 
 Wanneer het Automation-account is gemaakt, worden er automatisch verschillende resources voor u gemaakt. Na het maken kunnen deze runbooks veilig worden verwijderd als u deze niet wilt blijven gebruiken. De uitvoeren als-accounts kunnen worden gebruikt om te verifiëren bij uw account in een runbook, en moet blijven staan, tenzij u een andere maakt of niet nodig hebt. In de volgende tabel vindt u een overzicht van de bronnen voor het Uitvoeren als-account.
 
-| Bron | Beschrijving |
+| Resource | Beschrijving |
 | --- | --- |
 | AzureAutomationTutorial Runbook |Een voor beeld van een grafisch runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
 | AzureAutomationTutorialScript Runbook |Een voor beeld van een Power shell-runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |

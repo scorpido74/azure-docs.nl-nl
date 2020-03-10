@@ -1,6 +1,6 @@
 ---
-title: De StorSimple 8000-serie-apparaatconfiguratie wijzigen | Microsoft Docs
-description: Beschrijft hoe u de service StorSimple Device Manager gebruiken voor het configureren van een StorSimple-apparaat dat al is geïmplementeerd.
+title: De configuratie van de StorSimple 8000-serie wijzigen | Microsoft Docs
+description: Hierin wordt beschreven hoe u de StorSimple Apparaatbeheer-service gebruikt om een StorSimple-apparaat dat al is geïmplementeerd, opnieuw te configureren.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,158 +15,158 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632157"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365802"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>De StorSimple Device Manager-service gebruiken voor het wijzigen van de configuratie van uw StorSimple-apparaat
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>De StorSimple Apparaatbeheer-service gebruiken om de configuratie van uw StorSimple-apparaat te wijzigen
 
 ## <a name="overview"></a>Overzicht
 
-De Azure-portal **apparaatinstellingen** sectie de **instellingen** blade bevat alle apparaatparameters die u kunt opnieuw configureren op een StorSimple-apparaat dat wordt beheerd door een StorSimple Device Manager-service . Deze zelfstudie wordt uitgelegd hoe u kunt de **instellingen** blade aan de volgende op apparaatniveau taken uitvoeren:
+De sectie **apparaatinstellingen** Azure Portal op de Blade **instellingen** bevat alle para meters die u opnieuw kunt configureren op een StorSimple-apparaat dat wordt beheerd door een StorSimple Apparaatbeheer-service. In deze zelf studie wordt uitgelegd hoe u de Blade **instellingen** kunt gebruiken om de volgende taken op apparaatniveau uit te voeren:
 
-* Beschrijvende naam van apparaat wijzigen
-* Apparaatinstellingen tijd wijzigen
-* Toewijzen van een secundaire DNS-server
-* Netwerkinterfaces wijzigen
-* Wisselen of opnieuw toewijzen van IP-adressen
+* Beschrijvende naam van het apparaat wijzigen
+* Apparaatinstellingen wijzigen
+* Een secundaire DNS toewijzen
+* Netwerk interfaces wijzigen
+* IP-adressen wisselen of opnieuw toewijzen
 
-## <a name="modify-device-friendly-name"></a>Beschrijvende naam van apparaat wijzigen
+## <a name="modify-device-friendly-name"></a>Beschrijvende naam van het apparaat wijzigen
 
-De Azure-portal kunt u wijzigen van de naam van het apparaat en hieraan een unieke beschrijvende naam van uw keuze. Gebruik de **algemene instellingen** blade op uw apparaat te wijzigen van de beschrijvende naam van het apparaat. De beschrijvende naam mag geen tekens en mag maximaal 64 tekens lang zijn.
+U kunt de Azure Portal gebruiken om de naam van het apparaat te wijzigen en dit een unieke beschrijvende naam te geven. Gebruik de Blade **algemene instellingen** op het apparaat om de beschrijvende naam van het apparaat te wijzigen. De beschrijvende naam mag tekens bevatten en mag Maxi maal 64 tekens lang zijn.
 
 > [!NOTE] 
-> U kunt de naam van het apparaat in Azure portal alleen wijzigen voordat de installatie van het apparaat is voltooid. Als de minimale Apparaatinstelling voltooid is, kunt u de naam van het apparaat niet wijzigen.
+> U kunt de naam van het apparaat alleen wijzigen in de Azure Portal voordat de installatie van het apparaat is voltooid. Zodra de minimale installatie van het apparaat is voltooid, kunt u de naam van het apparaat niet meer wijzigen.
 
 ![Apparaatnaam in algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-Een StorSimple-apparaat dat is verbonden met de StorSimple Device Manager-service wordt een standaardnaam toegewezen. De standaardnaam geeft doorgaans het serienummer van het apparaat. Apparaat met een standaardnaam die is 15 tekens lang zijn, zoals 8600-SHX0991003G44HT, geeft bijvoorbeeld het volgende:
+Een StorSimple-apparaat dat is verbonden met de StorSimple Apparaatbeheer-service krijgt een standaard naam. De standaard naam weerspiegelt meestal het serie nummer van het apparaat. Bijvoorbeeld een standaard apparaatnaam die 15 tekens lang is, zoals 8600-SHX0991003G44HT, geeft het volgende aan:
 
-* **8600** – geeft aan dat het Apparaatmodel.
-* **VX** – geeft aan dat de productie-site.
-* **0991003** -geeft aan dat een specifiek product.
-* **G44HT**-de laatste 5 cijfers voor het maken van de unieke serienummers worden verhoogd. Dit kan een opeenvolgende reeks zijn.
+* **8600** : geeft het model van het apparaat aan.
+* **SHX** : geeft de productie site aan.
+* **0991003** -geeft een specifiek product aan.
+* **G44HT**: de laatste vijf cijfers worden verhoogd om unieke serie nummers te maken. Dit is mogelijk geen opeenvolgende set.
 
-## <a name="modify-device-description"></a>Beschrijving van het apparaat wijzigen
+## <a name="modify-device-description"></a>Apparaatbeschrijving wijzigen
 
-Gebruik de **algemene instellingen** blade op uw apparaat te wijzigen van de beschrijving van het apparaat.
+Gebruik de Blade **algemene instellingen** op het apparaat om de apparaatbeschrijving te wijzigen.
 
-![Beschrijving van het apparaat in de algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
+![Apparaatbeschrijving in algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
-Een beschrijving van het apparaat kan de eigenaar en de fysieke locatie van het apparaat te identificeren. Het beschrijvingsveld moet minder dan 256 tekens bevatten.
+Een apparaatbeschrijving helpt doorgaans bij het identificeren van de eigenaar en de fysieke locatie van het apparaat. Het beschrijvings veld moet minder dan 256 tekens bevatten.
 
-## <a name="modify-time-settings"></a>Tijdinstellingen wijzigen
+## <a name="modify-time-settings"></a>Tijd instellingen wijzigen
 
-Tijd moet om te kunnen verifiëren met uw serviceprovider voor cloud-opslag synchroniseren voor uw apparaat. Gebruik de **algemene instellingen** blade op uw apparaat te wijzigen van de tijd apparaatinstellingen.
+Uw apparaat moet de tijd synchroniseren om te verifiëren bij de service provider voor de Cloud opslag. Gebruik de Blade **algemene instellingen** op het apparaat om de apparaatinstellingen te wijzigen.
 
-![Beschrijving van het apparaat in de algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Apparaatbeschrijving in algemene instellingen](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
- Selecteer uw tijdzone in de vervolgkeuzelijst. U kunt maximaal twee Network Time Protocol (NTP)-servers opgeven:
+ Selecteer uw tijd zone in de vervolg keuzelijst. U kunt Maxi maal twee NTP-servers (Network Time Protocol) opgeven:
 
- - **Primaire NTP-server** -de configuratie is vereist en wordt opgegeven wanneer u Windows PowerShell voor StorSimple gebruiken om uw apparaat te configureren. U kunt de standaard Windows-Server opgeven **time.windows.com** als uw NTP-server. U kunt de configuratie van de primaire NTP server via de Azure-portal weergeven, maar moet u de Windows PowerShell-interface gebruiken om deze te wijzigen. Gebruik de `Set-HcsNTPClientServerAddress` cmdlet om te wijzigen van de primaire NTP-server van uw apparaat. Ga voor meer informatie naar de syntaxis voor [Set HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet.
+ - **Primaire NTP-server** : de configuratie is vereist en wordt opgegeven wanneer u Windows PowerShell voor StorSimple gebruikt om uw apparaat te configureren. U kunt de standaard Windows Server- **time.Windows.com** opgeven als uw NTP-server. U kunt de configuratie van de primaire NTP-server weer geven via de Azure Portal, maar u moet de Windows Power shell-interface gebruiken om deze te wijzigen. Gebruik de cmdlet `Set-HcsNTPClientServerAddress` om de primaire NTP-server van uw apparaat te wijzigen. Ga naar de syntaxis van de cmdlet [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) voor meer informatie.
 
-- **Secundaire NTP-server** -de configuratie is optioneel. De portal kunt u een secundaire NTP-server configureren.
+- **Secundaire NTP-server** : de configuratie is optioneel. U kunt de portal gebruiken om een secundaire NTP-server te configureren.
 
-Bij het configureren van de NTP-server, zorg ervoor dat uw netwerk de NTP-verkeer kan worden doorgegeven van uw datacenter met het Internet toestaat. Wanneer u een openbare NTP-server opgeeft, moet u ervoor zorgen dat uw netwerkfirewalls en andere beveiligingsapparaten zijn geconfigureerd om toe te staan van NTP verkeer naar en van het externe netwerk. Als in twee richtingen NTP verkeer is niet toegestaan, moet u een interne NTP-server (een Windows-domeincontroller biedt deze functie). Als uw apparaat kan geen tijd synchroniseren, is het mogelijk niet kan communiceren met de cloudopslagprovider.
+Wanneer u de NTP-server configureert, moet u ervoor zorgen dat het NTP-verkeer door uw netwerk kan worden door gegeven van uw Data Center naar het internet. Wanneer u een open bare NTP-server opgeeft, moet u ervoor zorgen dat uw netwerk firewalls en andere beveiligings apparaten zodanig zijn geconfigureerd dat NTP-verkeer kan worden getransporteerd naar en van het externe netwerk. Als bidirectionele NTP-verkeer niet is toegestaan, moet u een interne NTP-server gebruiken (een Windows-domein controller biedt deze functie). Als uw apparaat geen tijd kan synchroniseren, kan het mogelijk niet communiceren met uw provider voor Cloud opslag.
 
-Een lijst van openbare NTP-servers wilt bekijken, gaat u naar de [NTP-Servers Web](https://support.ntp.org/bin/view/Servers/WebHome).
+Als u een lijst met open bare NTP-servers wilt bekijken, gaat u naar het [Web NTP-servers](https://support.ntp.org/bin/view/Servers/WebHome).
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Wat gebeurt er als het apparaat is geïmplementeerd in een andere tijdzone?
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Wat gebeurt er als het apparaat in een andere tijd zone wordt geïmplementeerd?
 
-Als het apparaat is geïmplementeerd in een andere tijdzone, wijzigt u de tijdzone van het apparaat. Gezien het feit dat het back-upbeleid de tijdzone van het apparaat gebruiken, wordt de back-upbeleid wordt automatisch aangepast in overeenstemming met de nieuwe tijdzone. Er is geen tussenkomst van de gebruiker is vereist.
+Als het apparaat in een andere tijd zone wordt geïmplementeerd, wordt de tijd zone van het apparaat gewijzigd. Aangezien alle back-upbeleiden de tijd zone van het apparaat gebruiken, wordt het back-upbeleid automatisch aangepast op basis van de nieuwe tijd zone. Er is geen tussen komst van de gebruiker vereist.
 
 ## <a name="modify-dns-settings"></a>DNS-instellingen wijzigen
 
-Een DNS-server wordt gebruikt wanneer uw apparaat probeert te communiceren met uw serviceprovider voor cloud-opslag. Gebruik de **netwerkinstellingen** blade op uw apparaat weergeven en wijzigen van de geconfigureerde DNS-instellingen. 
+Een DNS-server wordt gebruikt wanneer het apparaat probeert te communiceren met uw provider voor de Cloud opslag. Gebruik de Blade **netwerk instellingen** op het apparaat om de GECONFIGUREERDE DNS-instellingen weer te geven en te wijzigen. 
 
-![DNS-instellingen in netwerkinstellingen](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
+![DNS-instellingen in netwerk instellingen](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
-Voor hoge beschikbaarheid moet u zowel de primaire en secundaire DNS-servers configureren tijdens de initiële implementatie.
+Voor maximale Beschik baarheid moet u de primaire en secundaire DNS-servers configureren tijdens de initiële implementatie van het apparaat.
 
-**Primaire DNS-server** -u de Windows PowerShell voor StorSimple gebruiken om eerst de primaire DNS-server tijdens de eerste installatie. U kunt de primaire DNS-server alleen via de Windows PowerShell-interface opnieuw configureren. Gebruik de `Set-HcsDNSClientServerAddress` cmdlet om te wijzigen van de primaire DNS-server van uw apparaat. Ga voor meer informatie naar de syntaxis voor [Set HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet.
+**Primaire DNS-server** : u gebruikt de Windows PowerShell voor StorSimple om eerst de primaire DNS-server op te geven tijdens de eerste installatie. U kunt de primaire DNS-server alleen opnieuw configureren via de Windows Power shell-interface. Gebruik de cmdlet `Set-HcsDNSClientServerAddress` om de primaire DNS-server van uw apparaat te wijzigen. Ga naar de syntaxis van de cmdlet [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) voor meer informatie.
 
-**Secundaire DNS-server** : als u wilt wijzigen van de secundaire DNS-server, gebruikt u de `Set-HcsDNSClientServerAddress` cmdlet in de Windows PowerShell-interface van het apparaat of **netwerkinstellingen** blade van uw StorSimple-apparaat in Azure portal.
+**Secundaire DNS-server** : als u de secundaire DNS-server wilt wijzigen, gebruikt u de cmdlet `Set-HcsDNSClientServerAddress` in de Windows Power shell-interface van de Blade apparaat-of **netwerk instellingen** van uw StorSimple-apparaat in de Azure Portal.
 
-Als u wilt wijzigen van de secundaire DNS-server in Azure portal, moet u de volgende stappen uitvoeren.
+Als u de secundaire DNS-server in Azure Portal wilt wijzigen, voert u de volgende stappen uit.
 
-1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer in de lijst met apparaten en klikt u op uw apparaat.
+1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer en klik op uw apparaat in de lijst met apparaten.
 
-2. In de **instellingen** blade, Ga naar **apparaatinstellingen > netwerk**. Hiermee opent u de **netwerkinstellingen** blade. Klik op **DNS-instellingen** tegel. Wijzigen van de secundaire IP-adres van de DNS-server.
+2. Ga op de Blade **instellingen** naar **Apparaatinstellingen > netwerk**. Hiermee opent u de Blade **netwerk instellingen** . Klik op **DNS-instellingen** tegel. Wijzig het IP-adres van de secundaire DNS-server.
 
-    ![Secundaire DNS-server IP-adres wijzigen](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
+    ![IP-adres van secundaire DNS-server wijzigen](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. Klik in de opdrachtbalk op **opslaan** wanneer u hierom wordt gevraagd om bevestiging, klikt u op **OK**.
+4. Klik in de opdracht balk op **Opslaan** en klik op **OK**als u om bevestiging wordt gevraagd.
 
-    ![Opslaan en wijzigingen bevestigen](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
+    ![Wijzigingen opslaan en bevestigen](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
 
 
-## <a name="modify-network-interfaces"></a>Netwerkinterfaces wijzigen
+## <a name="modify-network-interfaces"></a>Netwerk interfaces wijzigen
 
-Uw apparaat heeft zes apparaat netwerkinterfaces, waarvan vier 1 GbE zijn en twee 10 GbE zijn. Deze interfaces zijn gelabeld als DATA 0-5 van de gegevens. DATA 0, 1 van de gegevens, gegevens 4 en 5 van de gegevens zijn 1 GbE zijn 10 GbE-netwerkinterfaces DATA 2 en DATA 3.
+Uw apparaat heeft zes netwerk interfaces voor apparaten, waarvan vier GbE en twee van 10 GbE. Deze interfaces worden aangeduid als DATA 0 – DATA 5. DATA 0, DATA 1, DATA 4 en DATA 5 zijn 1 GbE, terwijl DATA 2 en DATA 3 10 GbE-netwerk interfaces zijn.
 
-Gebruik de **netwerkinstellingen** blade het configureren van elk van de interfaces op die moet worden gebruikt.
+Gebruik de Blade **netwerk instellingen** om elke interface te configureren die moet worden gebruikt.
 
-![Netwerkinterfaces via netwerkinstellingen configureren](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
+![Netwerk interfaces configureren via netwerk instellingen](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-Voor hoge beschikbaarheid, wordt u aangeraden dat u ten minste twee interfaces voor iSCSI- en twee interfaces voor cloud-functionaliteit op uw apparaat hebt. We raden aan maar hoeven niet dat niet-gebruikte interfaces worden uitgeschakeld.
+Om hoge Beschik baarheid te garanderen, raden we u aan ten minste twee iSCSI-interfaces en twee Cloud interfaces op uw apparaat te hebben. We raden u aan om te voor komen dat ongebruikte interfaces worden uitgeschakeld.
 
-Voor elke netwerkinterface, worden de volgende parameters weergegeven:
+Voor elke netwerk interface worden de volgende para meters weer gegeven:
 
-* **Snelheid** – geen gebruiker configureerbare parameter. DATA 0, 1 van de gegevens, gegevens 4 en 5 van de gegevens zijn altijd 1 GbE dat DATA 2 en DATA 3 10 GbE-netwerkinterfaces.
+* **Snelheid** : geen door de gebruiker te configureren para meter. DATA 0, DATA 1, DATA 4 en DATA 5 zijn altijd 1 GbE, terwijl DATA 2 en DATA 3 10 GbE-interfaces zijn.
   
   > [!NOTE]
-  > Snelheid en duplex worden altijd automatisch-onderhandeld. Jumboframes worden niet ondersteund.
+  > Snelheid en duplex worden altijd automatisch onderhandeld. Jumbo-frames worden niet ondersteund.
   
-* **Interface-status** – een interface kan worden ingeschakeld of uitgeschakeld. Indien ingeschakeld, wordt het apparaat probeert het gebruik van de interface. Het is raadzaam dat alleen de interfaces die zijn verbonden met het netwerk en gebruikt wordt ingeschakeld. Schakel alle interfaces die u niet gebruikt.
-* **Type interface** : deze parameter kunt u voor het isoleren van iSCSI-verkeer van cloud-opslagverkeer. Deze parameter kan een van de volgende zijn:
+* **Interface status** : een interface kan worden ingeschakeld of uitgeschakeld. Als deze functie is ingeschakeld, probeert het apparaat de interface te gebruiken. U wordt aangeraden alleen de interfaces die zijn verbonden met het netwerk, in te scha kelen. Schakel alle interfaces uit die u niet gebruikt.
+* **Interface type** : met deze para meter kunt u iSCSI-verkeer van opslag verkeer in de Cloud isoleren. Dit kan een van de volgende para meters zijn:
   
-  * **Cloud ingeschakeld** – wanneer ingeschakeld, het apparaat deze interface gebruikt om te communiceren met de cloud.
-  * **iSCSI ingeschakeld** – wanneer ingeschakeld, het apparaat deze interface gebruikt om te communiceren met de iSCSI-host.
+  * **Cloud ingeschakeld** : wanneer deze functie is ingeschakeld, gebruikt het apparaat deze interface om te communiceren met de Cloud.
+  * **iSCSI ingeschakeld** : wanneer deze functie is ingeschakeld, gebruikt het apparaat deze interface om met de iSCSI-host te communiceren.
     
-    Het is raadzaam dat u iSCSI-verkeer van cloud storage verkeer isoleren. Let ook op dat als de host zich in hetzelfde subnet bevindt als uw apparaat, hoeft u niet om toe te wijzen een gateway. echter, als de host zich in een ander subnet dan uw apparaat, u moet toewijzen van een gateway.
-* **IP-adres** : bij het configureren van een van de netwerkinterfaces, moet u een virtueel IP (VIP) configureren. Dit kan zijn IPv4 of IPv6- of beide. Zowel de IPv4 en IPv6-adres-families worden ondersteund voor de netwerkinterfaces van het apparaat. Wanneer u IPv4 gebruikt, geeft u de IP-adres van een 32-bits (*xxx.xxx.xxx.xxx*) in een decimale-puntindeling. Wanneer u IPv6 gebruikt, simpelweg een 4-cijferige voorvoegsel en een 128-bits-adres wordt automatisch gegenereerd voor de netwerkinterface van uw apparaat op basis van dit voorvoegsel.
-* **Subnet** – dit verwijst naar het subnetmasker en via de Windows PowerShell-interface is geconfigureerd.
-* **Gateway** : dit is de standaardgateway die door deze interface moet worden gebruikt wanneer wordt geprobeerd om te communiceren met knooppunten die zich niet binnen de dezelfde IP-adresruimte (subnet). De standaard-gateway moet zich in dezelfde adresruimte (subnet) als de interface IP-adres, zoals wordt bepaald door het subnetmasker.
-* **Vaste IP-adres** : dit veld is alleen beschikbaar als u de DATA 0 configureren interface. Voor bewerkingen zoals updates of het oplossen van het apparaat, moet u mogelijk rechtstreeks verbinding maken met de apparaatcontroller. Het vaste IP-adres kan worden gebruikt voor toegang tot zowel de actieve als de passieve controller op uw apparaat.
+    U kunt het beste iSCSI-verkeer isoleren vanuit opslag verkeer in de Cloud. Als uw host zich in hetzelfde subnet als uw apparaat bevindt, hoeft u geen gateway toe te wijzen. Als uw host echter zich in een ander subnet bevindt dan uw apparaat, moet u een gateway toewijzen.
+* **IP-adres** : wanneer u een van de netwerk interfaces configureert, moet u een virtueel IP (VIP) configureren. Dit kan IPv4 of IPv6 zijn of beide. De IPv4-en IPv6-adres families worden ondersteund voor de netwerk interfaces van het apparaat. Wanneer u IPv4 gebruikt, geeft u een 32-bits IP-adres (*xxx.xxx.xxx.xxx*) op in punt decimale notatie. Wanneer u IPv6 gebruikt, moet u een voor voegsel van vier cijfers opgeven en wordt er automatisch een 128-bits adres gegenereerd voor de netwerk interface van het apparaat op basis van dat voor voegsel.
+* **Subnet** : dit verwijst naar het subnetmasker en wordt geconfigureerd via de Windows Power shell-interface.
+* **Gateway** : dit is de standaard gateway die moet worden gebruikt door deze interface wanneer deze probeert te communiceren met knoop punten die zich niet binnen dezelfde IP-adres ruimte (subnet) bevinden. De standaard gateway moet zich in dezelfde adres ruimte (subnet) bevinden als het IP-adres van de interface, zoals wordt bepaald door het subnetmasker.
+* **Vast IP-adres** : dit veld is alleen beschikbaar wanneer u de data 0-interface configureert. Voor bewerkingen zoals updates of het oplossen van problemen met het apparaat, moet u mogelijk rechtstreeks verbinding maken met de apparaat controller. Het vaste IP-adres kan worden gebruikt voor toegang tot zowel de actieve als de passieve controller op het apparaat.
 
 > [!NOTE]
-> * Om ervoor te zorgen goede werking, Controleer of de interfacesnelheid en de duplex op de switch die elke apparaatinterface is verbonden met. Interfaces van de switch moet ofwel worden onderhandeld met of worden geconfigureerd voor Gigabit Ethernet (1000 Mbps) en full-duplex. Interfaces operationele trager of half-duplex leidt tot prestatieproblemen.
-> * Om te beperken onderbrekingen en uitvaltijd, wordt u aangeraden dat u portfast op elk van de switchpoorten die door de iSCSI-netwerkinterface van uw apparaat verbinden inschakelt. Dit zorgt ervoor dat de netwerkverbinding snel kan worden gemaakt in het geval van een failover.
+> * Controleer de interface snelheid en duplex op de switch waarmee elke apparaatinterface is verbonden om de juiste werking te garanderen. Switch-interfaces moeten onderhandelen met of moeten worden geconfigureerd voor Gigabit Ethernet (1000 Mbps) en moeten full-duplex zijn. Interfaces die zijn verbonden met tragere snelheden of half-duplex, leiden tot prestatie problemen.
+> * Om onderbrekingen en downtime tot een minimum te beperken, raden we u aan om PortFast in te scha kelen op elke switch poort die door de iSCSI-netwerk interface van uw apparaat wordt verbonden. Dit zorgt ervoor dat de netwerk verbinding snel kan worden ingesteld in het geval van een failover.
 
-### <a name="configure-data-0"></a>DATA 0 configureren
+### <a name="configure-data-0"></a>GEGEVENS configureren 0
 
-DATA 0 is standaard ingeschakeld cloud. Bij het configureren van DATA 0, moet u ook twee vaste IP-adressen, één voor elke domeincontroller configureren. Deze vaste IP-adressen kunnen worden gebruikt om rechtstreeks toegang hebben tot de apparaatcontrollers en zijn nuttig wanneer u updates installeert op het apparaat voor garbagecollection goed te laten werken of als u toegang hebben tot de domeincontrollers voor het oplossen van.
+DATA 0 is standaard ingeschakeld voor de Cloud. Bij het configureren van gegevens 0 moet u ook twee vaste IP-adressen configureren, één voor elke controller. Deze vaste IP-adressen kunnen worden gebruikt om rechtstreeks toegang te krijgen tot de apparaat controllers en zijn handig wanneer u updates op het apparaat installeert, zodat de garbagecollection goed werkt of wanneer u de controllers opent voor het oplossen van problemen.
 
-U kunt de vaste IP-controllers via de blade DATA 0 instellingen opnieuw configureren.
+U kunt de vaste IP-controllers opnieuw configureren via de Blade DATA 0-instellingen.
 
-![Netwerkinterface - DATA 0 configureren](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
+![Netwerk interface configureren-gegevens 0](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> De vaste IP-adressen voor de controller worden gebruikt voor het uitvoeren van de updates op het apparaat en ruimte vrijmaken algoritmen (garbagecollection) goed te laten werken. Daarom moeten de vaste IP-adressen routeerbaar zijn en verbinding kunnen maken met internet.
+> De vaste IP-adressen voor de controller worden gebruikt voor het onderhoud van de updates voor het apparaat en voor het goed functioneren van de ruimte voor het terugwinnen van de Prullenbak. Daarom moeten de vaste IP-adressen routeerbaar zijn en verbinding kunnen maken met internet.
 
-### <a name="configure-data-1---data-5"></a>GEGEVENS-1 - 5-gegevens configureren
+### <a name="configure-data-1---data-5"></a>GEGEVENS configureren 1-DATA 5
 
-Voor gegevens-1 - 5-netwerkinterfaces van gegevens, kunt u de netwerkinstellingen configureren zoals wordt weergegeven in de volgende schermafbeelding:
+Voor DATA 1-DATA 5-netwerk interfaces kunt u alle netwerk instellingen configureren, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Netwerkinterfaces DATA 1 - 5 gegevens configureren](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
+![Netwerk interfaces gegevens configureren 1-DATA 5](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
 
 
-## <a name="swap-or-reassign-ips"></a>Wisselen of opnieuw toewijzen van IP-adressen
+## <a name="swap-or-reassign-ips"></a>IP-adressen wisselen of opnieuw toewijzen
 
-Op dit moment als een netwerkinterface op de controller een VIP-adres dat wordt gebruikt (door hetzelfde apparaat of een ander apparaat in het netwerk) toegewezen wordt, wordt klikt u vervolgens de controller failover. Als u wisselen of opnieuw toewijzen van VIP's voor de netwerkinterface van een apparaat, moet u een juiste procedure volgen als u een dubbel IP-situatie kunt maken.
+Als er op dit moment een netwerk interface op de controller wordt toegewezen aan een VIP dat in gebruik is (door hetzelfde apparaat of een ander apparaat in het netwerk), wordt een failover uitgevoerd voor de controller. Als u Vip's verwisselt of opnieuw toewijst voor een netwerk interface van een apparaat, moet u een juiste procedure volgen, omdat u een dubbele IP-situatie zou kunnen maken.
 
-Voer de volgende stappen uit om te wisselen of opnieuw toewijzen van de VIP's voor het gebruik van de netwerkinterfaces:
+Voer de volgende stappen uit om de Vip's voor een van de netwerk interfaces te vervangen of opnieuw toe te wijzen:
 
-#### <a name="to-reassign-ips"></a>Opnieuw toewijzen van IP-adressen
+#### <a name="to-reassign-ips"></a>IP-adressen opnieuw toewijzen
 
-1. Hiermee schakelt u het IP-adres voor beide interfaces.
-2. Nadat de IP-adressen zijn uitgeschakeld, moet u het nieuwe IP-adressen toewijzen aan de betreffende interfaces.
+1. Het IP-adres voor beide interfaces wissen.
+2. Nadat de IP-adressen zijn gewist, wijst u de nieuwe IP-adressen toe aan de respectieve interfaces.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [MPIO configureren voor uw StorSimple-apparaat](storsimple-8000-configure-mpio-windows-server.md).
-* Meer informatie over het [de StorSimple Device Manager-service gebruiken voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Meer informatie over het [configureren van MPIO voor uw StorSimple-apparaat](storsimple-8000-configure-mpio-windows-server.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

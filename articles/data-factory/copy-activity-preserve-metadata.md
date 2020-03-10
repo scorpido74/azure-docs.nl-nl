@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 056909f5fd5838e5ae50fb84bd3535029d862acf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483243"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357206"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Meta gegevens en Acl's behouden met Kopieer activiteit in Azure Data Factory
 
@@ -145,5 +145,5 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
 
 Zie de andere artikelen van de Kopieeractiviteit:
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Prestaties van Kopieer activiteit](copy-activity-performance.md)

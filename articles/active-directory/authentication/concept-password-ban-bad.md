@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848609"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377875"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Ongeldige wacht woorden in uw organisatie elimineren
 

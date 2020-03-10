@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361098"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Enterprise-strategieën voor een LUIS-app
 Bekijk deze ontwerpstrategieën voor uw enterprise-app.
@@ -31,13 +31,13 @@ Als uw aanvraag frequentie voor de LUIS-app groter is dan het toegestane [quotum
 * [Meerdere sleutels](#assign-multiple-luis-keys-to-same-app) maken en toewijzen aan de app. 
 
 ### <a name="use-multiple-apps-with-same-app-definition"></a>Meerdere apps met dezelfde definitie van de app gebruiken
-De oorspronkelijke LUIS-app exporteren en importeren van de app terug in afzonderlijke apps. Elke app heeft een eigen app-ID. Wanneer u publiceert, in plaats van met dezelfde sleutel in alle apps, maakt u een aparte sleutel voor elke app. Verdelen in alle apps zodanig dat geen enkele app wordt overbelast. Voeg [Application Insights](luis-tutorial-bot-csharp-appinsights.md) om het gebruik bewaken. 
+De oorspronkelijke LUIS-app exporteren en importeren van de app terug in afzonderlijke apps. Elke app heeft een eigen app-ID. Wanneer u publiceert, in plaats van met dezelfde sleutel in alle apps, maakt u een aparte sleutel voor elke app. Verdelen in alle apps zodanig dat geen enkele app wordt overbelast. Voeg [Application Insights](luis-tutorial-bot-csharp-appinsights.md) toe om het gebruik te bewaken. 
 
 Om toegang te krijgen van de dezelfde bovenste intentie tussen alle apps, zorg ervoor dat de intentie voorspelling tussen het eerste en tweede doel is groot genoeg dat LUIS niet worden verward is, die verschillende resultaten oplevert tussen apps voor kleine variaties in uitingen. 
 
-Bij het trainen van deze apps op hetzelfde niveau, moet u ervoor zorgen dat [alle gegevens](luis-how-to-train.md#train-with-all-data)worden getraind.
+Bij het trainen van deze apps op hetzelfde niveau, moet u ervoor zorgen dat [alle gegevens worden getraind](luis-how-to-train.md#train-with-all-data).
 
-Een enkele app aanwijzen als de master. Alle uitingen die worden voorgesteld voor controle moeten worden toegevoegd aan de hoofd-app vervolgens verplaatst naar alle andere apps. Dit is een volledige export van de app, of het laden van de gelabelde uitingen van het model aan de onderliggende objecten. Laden kan worden gedaan vanuit de [LUIS](luis-reference-regions.md) website of de API ontwerpen voor een [enkel utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) of voor een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
+Een enkele app aanwijzen als de master. Alle uitingen die worden voorgesteld voor controle moeten worden toegevoegd aan de hoofd-app vervolgens verplaatst naar alle andere apps. Dit is een volledige export van de app, of het laden van de gelabelde uitingen van het model aan de onderliggende objecten. Het laden kan worden uitgevoerd vanaf de [Luis](luis-reference-regions.md) -website of de ontwerp-API voor [één utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) of voor een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
 Plan een periodieke beoordeling, bijvoorbeeld elke twee weken, van het [eind punt uitingen](luis-how-to-review-endpoint-utterances.md) voor het actieve leer proces en vervolgens opnieuw te trainen en opnieuw te publiceren. 
 
@@ -45,9 +45,9 @@ Plan een periodieke beoordeling, bijvoorbeeld elke twee weken, van het [eind pun
 Als uw LUIS-app meer eindpunt treffers dan is toegestaan door uw één sleutel quotum ontvangt, maken en toewijzen van meer sleutels aan de LUIS-app. Maken van een traffic manager of load balancer voor het beheren van de eindpunt-query's in de eindpunt-sleutels. 
 
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Wanneer uw monolithische app verkeerde bedoelingen retourneert
-Als uw app is bedoeld om te voorspellen van een groot aantal uitingen van de gebruiker, Overweeg de implementatie van de [verzending model](#dispatch-tool-and-model). Een monolithische app worden opgesplitst kunt LUIS focus detectie tussen intents is in plaats van de tussen intents via de app bovenliggende en onderliggende apps maar verwarrend. 
+Als uw app een breed scala aan gebruikers uitingen moet voors pellen, kunt u overwegen het [Verzend model](#dispatch-tool-and-model)te implementeren. Een monolithische app worden opgesplitst kunt LUIS focus detectie tussen intents is in plaats van de tussen intents via de app bovenliggende en onderliggende apps maar verwarrend. 
 
-Plan een periodieke [uitingen eindpunt voor een nadere](luis-how-to-review-endpoint-utterances.md) voor actief leren, zoals elke twee weken, klikt u vervolgens opnieuw trainen en opnieuw publiceren. 
+Plan een periodieke [beoordeling van het uitingen](luis-how-to-review-endpoint-utterances.md) voor het actieve leer proces, bijvoorbeeld elke twee weken, en voer vervolgens opnieuw een Train en opnieuw uit. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Als u wilt hebben van meer dan 500 intents
 Stel dat u een Office-assistent ontwikkelt met meer dan 500 intenties. Als 200 intents verwant zijn aan de vergaderingen plannen, 200 herinneringen zijn, 200 zijn over het ophalen van informatie over collega's, en 200 zijn voor het verzenden van e-mailbericht, groep intents zodat elke groep is in een enkele app vervolgens maakt u een op het hoogste niveau app die elk doel. Gebruik het [Verzend model](#dispatch-tool-and-model) om de app op het hoogste niveau te bouwen. Wijzig vervolgens uw bot om de trapsgewijze oproep te gebruiken, zoals wordt weer gegeven in de [zelf studie over het verzend model](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs). 

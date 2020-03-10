@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161564"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356926"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -65,7 +65,7 @@ Er worden automatisch extra reken instanties toegevoegd voor uw app met dezelfde
 
 ### <a name="longer-run-duration"></a>Langere duur van de uitvoering
 
-Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host. json-configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze 60 minuten te maken voor apps uit het Premium-abonnement.
+Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host. json-configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze niet-gebonden te maken voor apps voor Premium-abonnementen (gegarandeerd 60 minuten).
 
 ## <a name="plan-and-sku-settings"></a>Plannings-en SKU-instellingen
 

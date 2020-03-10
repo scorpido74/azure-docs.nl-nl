@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598048"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344093"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Aan de slag met de hand leiding voor Azure-ontwikkel aars
+# <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
 ## <a name="what-is-azure"></a>Wat is Azure?
 
@@ -163,7 +163,7 @@ Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken
   >
   > **Aan de slag**: [gebruik een aangepaste docker-installatie kopie voor app service op Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook om onbevoegde toegang tot uw resources te voor komen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
 

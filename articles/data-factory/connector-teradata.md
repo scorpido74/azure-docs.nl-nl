@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930920"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358478"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -33,7 +33,7 @@ Deze Teradata-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van Teradata-Vantage kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U kunt gegevens van Teradata-Vantage kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
 Deze Teradata-connector ondersteunt met name:
 
@@ -63,13 +63,13 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De gekoppelde Teradata-service ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Teradata**. | Ja |
 | connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Teradata-exemplaar. Raadpleeg de volgende voor beelden.<br/>U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. | Ja |
 | gebruikersnaam | Geef een gebruikers naam op om verbinding te maken met Teradata. Van toepassing wanneer u Windows-verificatie gebruikt. | Nee |
 | wachtwoord | Geef een wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. U kunt er ook voor kiezen om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). <br>Is van toepassing wanneer u Windows-verificatie gebruikt of een verwijzing naar een wacht woord in Key Vault voor basis verificatie. | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Ja |
 
 Meer verbindings eigenschappen die u in connection string per case kunt instellen:
 
@@ -150,10 +150,10 @@ Deze sectie bevat een lijst met eigenschappen die door de Teradata-gegevensset w
 
 Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable`. | Ja |
-| database | De naam van het Teradata-exemplaar. | Nee (als 'query' in de activiteitbron is opgegeven) |
+| enddatabase | De naam van het Teradata-exemplaar. | Nee (als 'query' in de activiteitbron is opgegeven) |
 | table | De naam van de tabel in het Teradata-exemplaar. | Nee (als 'query' in de activiteitbron is opgegeven) |
 
 **Voorbeeld:**
@@ -204,7 +204,7 @@ Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Ter
 
 Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op `TeradataSource`. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor voor beelden. | Nee (als de tabel in de gegevensset is opgegeven) |
@@ -260,7 +260,7 @@ Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query
 
 U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partities met name wanneer u grote hoeveel heden gegevens uit uw Teradata laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
 
-| Scenario                                                     | Aanbevolen instellingen                                           |
+| Scenario                                                     | Voorgestelde instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel.                                   | **Partitie optie**: hash. <br><br/>Tijdens de uitvoering van Data Factory detecteert automatisch de kolom PK, wordt er een hash op toegepast en worden gegevens gekopieerd op partities. |
 | Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: hash.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt voor het Toep assen van de hash-partitie. Als u dit niet opgeeft, detecteert Data Factory automatisch de PK-kolom van de tabel die u in de Teradata-gegevensset hebt opgegeven.<br><br>Tijdens de uitvoering van Data Factory worden `?AdfHashPartitionCondition` vervangen door de hash-partitie logica en verzonden naar Teradata. |
@@ -302,13 +302,13 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 |:--- |:--- |
 | BigInt |Int64 |
 | Blob |Byte[] |
-| byte |Byte[] |
+| Byte |Byte[] |
 | ByteInt |Int16 |
-| CHAR |Tekenreeks |
+| char |Tekenreeks |
 | Clob |Tekenreeks |
-| Datum |Datum/tijd |
-| Decimal |Decimal |
-| Double |Double |
+| Date |DateTime |
+| decimaal |decimaal |
+| Double-waarde |Double-waarde |
 | Graphic |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Geheel getal |Int32 |
 | Interval dag |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
@@ -324,21 +324,21 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 | Interval Second |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Interval Year |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Interval Year To Month |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Aantal |Double |
+| Aantal |Double-waarde |
 | Periode (datum) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijd) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijd met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijds tempel) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Periode (tijds tempel met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 | SmallInt |Int16 |
-| Tijd |TimeSpan |
+| Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Tijdstempel |Datum/tijd |
-| Timestamp With Time Zone |Datum/tijd |
+| Tijdstempel |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |Tekenreeks |
 | VarGraphic |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Xml |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
+| XML |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
 
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
@@ -347,4 +347,4 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in Data Factory.

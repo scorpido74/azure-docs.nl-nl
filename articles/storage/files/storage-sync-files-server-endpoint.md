@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362090"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Een Azure File Sync server-eind punt toevoegen/verwijderen
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
@@ -35,9 +35,9 @@ Als u een server eindpunt wilt toevoegen, gaat u naar de gewenste synchronisatie
 
 De volgende informatie is vereist onder **Server eindpunt toevoegen**:
 
-- **Geregistreerde server**: De naam van de server of het cluster voor het maken van het server eindpunt op.
-- **Pad**: Het pad op de Windows-Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
-- **Cloud lagen**: Een switch om Cloud lagen in of uit te scha kelen. Wanneer deze functie is ingeschakeld, worden bestanden door Cloud lagen *gelaagd* naar uw Azure-bestands shares. Hiermee converteert u on-premises bestands shares naar een cache, in plaats van een volledige kopie van de gegevensset, om u te helpen de efficiëntie van de ruimte op uw server te beheren.
+- **Geregistreerde server**: de naam van de server of het cluster voor het maken van het server eindpunt op.
+- **Pad**: het pad op de Windows-Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
+- **Cloud lagen**: een schakel optie om Cloud lagen in of uit te scha kelen. Wanneer deze functie is ingeschakeld, worden bestanden door Cloud lagen *gelaagd* naar uw Azure-bestands shares. Hiermee converteert u on-premises bestands shares naar een cache, in plaats van een volledige kopie van de gegevensset, om u te helpen de efficiëntie van de ruimte op uw server te beheren.
 - **Beschik bare volume ruimte**: de hoeveelheid beschik bare ruimte die moet worden gereserveerd op het volume waarop het server eindpunt zich bevindt. Als het volume beschik bare ruimte bijvoorbeeld is ingesteld op 50% op een volume met één server eindpunt, wordt er ongeveer de helft van de hoeveelheid gegevens gelaagd tot Azure Files. Ongeacht of Cloud lagen zijn ingeschakeld, heeft uw Azure-bestands share altijd een volledige kopie van de gegevens in de synchronisatie groep.
 
 Selecteer **maken** om het server eindpunt toe te voegen. De bestanden in een naam ruimte van een synchronisatie groep worden nu gesynchroniseerd. 
@@ -54,14 +54,14 @@ Om ervoor te zorgen dat alle gelaagde bestanden worden ingetrokken voordat u het
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Als `-Order CloudTieringPolicy` u opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
+Als u `-Order CloudTieringPolicy` opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
 Andere optionele, maar nuttige para meters die u kunt overwegen:
-* `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
+* `-ThreadCount` bepaalt het aantal bestanden dat parallel kan worden ingetrokken.
 * `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
 * `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
 > [!Note]  
-> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde `Invoke-StorageSyncFileRecall` gegevens in te trekken, mislukt de cmdlet.  
+> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, mislukt de `Invoke-StorageSyncFileRecall`-cmdlet.  
 
 Het server eindpunt verwijderen:
 
@@ -73,5 +73,5 @@ Het server eindpunt verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een server met Azure File Sync registreren of de registratie ervan opheffen](storage-sync-files-server-registration.md)
-- [Planning voor de implementatie van een Azure File Sync](storage-sync-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

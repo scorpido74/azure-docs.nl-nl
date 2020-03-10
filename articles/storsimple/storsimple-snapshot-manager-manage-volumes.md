@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931629"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365921"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager gebruiken om volumes weer te geven en te beheren
 ## <a name="overview"></a>Overzicht
@@ -93,7 +93,7 @@ Gebruik de volgende procedure om informatie weer te geven over lokale en Azure S
    
    | Kolom met resultaten | Beschrijving |
    |:--- |:--- |
-   |  Name |De **naam** kolom bevat de stationsletter die aan elk gedetecteerd volume is toegewezen. |
+   |  Naam |De **naam** kolom bevat de stationsletter die aan elk gedetecteerd volume is toegewezen. |
    |  Apparaat |De kolom **apparaat** bevat het IP-adres van het apparaat dat is verbonden met de hostcomputer. |
    |  Volume naam apparaat |De kolom **volume naam apparaat** bevat de naam van het volume van het apparaat waartoe het geselecteerde volume behoort. Dit is de volume naam die is gedefinieerd in de Azure Portal voor dat specifieke volume. |
    |  Toegangs paden |In de kolom **toegangs paden** wordt het toegangspad naar het volume weer gegeven. Dit is de stationsletter of het koppel punt waarop het volume toegankelijk is op de hostcomputer. |
@@ -149,7 +149,7 @@ Voordat u begint:
 8. Klik met de rechter muisknop op de naam van de volume groep.
    
    * Als u een interactieve back-uptaak (op aanvraag) wilt starten, klikt u op **back-up maken**. 
-   * Als u een automatische back-up wilt plannen, klikt u op **back-upbeleid maken**. Selecteer op de pagina **Algemeen** een volume groep in de lijst. Voer op de pagina **planning** de details van de planning in. Klik op **OK**als u klaar bent. 
+   * Als u een automatische back-up wilt plannen, klikt u op **back-upbeleid maken**. Selecteer op de pagina **Algemeen** een volume groep in de lijst. Voer op de pagina **planning** de details van de planning in. Klik op **OK**wanneer u klaar bent. 
 9. Als u wilt controleren of de back-uptaak is gestart, vouwt u het knoop punt **taken** in het deel venster **bereik** uit en klikt u vervolgens op het knoop punt dat **wordt uitgevoerd** . De lijst met actieve taken wordt weer gegeven in het **resultaten** venster. 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Een dynamisch gespiegeld volume configureren en een back-up maken
@@ -202,7 +202,7 @@ Gebruik de volgende procedure om een dynamisch gespiegeld volume te configureren
 6. Klik met de rechter muisknop op de naam van de volume groep. 
    
    * Als u een interactieve back-uptaak (op aanvraag) wilt starten, klikt u op **back-up maken**. 
-   * Als u een automatische back-up wilt plannen, klikt u op **back-upbeleid maken**. Selecteer op de pagina **Algemeen** de volume groep in de lijst. Voer op de pagina **planning** de details van de planning in. Klik op **OK**als u klaar bent. 
+   * Als u een automatische back-up wilt plannen, klikt u op **back-upbeleid maken**. Selecteer op de pagina **Algemeen** de volume groep in de lijst. Voer op de pagina **planning** de details van de planning in. Klik op **OK**wanneer u klaar bent. 
 7. U kunt de back-uptaak controleren terwijl deze wordt uitgevoerd. Vouw in het deel venster **bereik** het knoop punt **taken** uit en klik vervolgens op **uitvoeren**. de taak Details worden weer gegeven in het deel venster met **resultaten** . Wanneer de back-uptaak is voltooid, worden de details overgebracht naar de taken lijst van de **afgelopen 24** uur. 
 
 ## <a name="next-steps"></a>Volgende stappen

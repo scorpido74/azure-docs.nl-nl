@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314331"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355072"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -28,7 +28,7 @@ De service is ook compatibel met populaire open-source hulpprogram ma's, zoals P
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
-> **Gratis proef versie.**  Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) . U ontvangt tegoed wat u kunt uitgeven aan Azure-services. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er wordt nooit geld van uw creditcard afgeschreven, tenzij u uw instellingen zelf wijzigt en expliciet aangeeft dat u wilt betalen.
+> **Gratis proef versie.**  Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) . U ontvangt tegoed wat u kunt uitgeven aan Azure-services. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er worden nooit kosten in rekening gebracht bij uw creditcard tenzij u de instellingen expliciet wijzigt en aangeeft dat u wilt betalen.
 
 
 ## <a name="what-is-machine-learning"></a>Wat is machine learning?
@@ -66,7 +66,7 @@ U kunt [model training en-aanpassing ook automatiseren](tutorial-auto-train-mode
 
 Voor code-free of low-code training en implementatie kunt u het volgende proberen:
 
-+ **Azure Machine Learning Designer**
++ **Azure Machine Learning Designer (preview-versie)**
 
   Gebruik de ontwerp functie voor het voorbereiden van gegevens, het trainen, testen, implementeren, beheren en bijhouden van machine learning modellen zonder code te schrijven. Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbinden om uw model samen te stellen. Probeer de [ontwerp zelf studie](tutorial-designer-automobile-price-train-score.md).
 
@@ -104,10 +104,10 @@ Azure Machine Learning werkt met andere services op het Azure-platform en kan oo
 
 + Reken doelen zoals __Azure Kubernetes service__, __Azure container instances__, __Azure Databricks__, __Azure data Lake Analytics__en __Azure HDInsight__. Zie [Wat zijn reken doelen?](concept-compute-target.md)voor meer informatie over Compute-doelen.
 + __Azure Event grid__. Zie [Azure machine learning-gebeurtenissen gebruiken](concept-event-grid-integration.md)voor meer informatie.
-+ __Azure Monitor__. Zie [Monitoring Azure machine learning](monitor-azure-machine-learning.md)voor meer informatie.
++ __Azure monitor__. Zie [Monitoring Azure machine learning](monitor-azure-machine-learning.md)voor meer informatie.
 + Gegevens archieven zoals __Azure Storage accounts__, __Azure data Lake Storage__, __Azure SQL database__, __Azure database for PostgreSQL__en __Azure open gegevens sets__. Zie voor meer informatie [toegang tot gegevens in azure Storage-services](how-to-access-data.md) en gegevens [sets maken met Azure open data sets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
 + __Virtuele netwerken van Azure__. Zie voor meer informatie [veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md).
-+ __Azure pijplijnen__. Zie [machine learning modellen trainen en implementeren](/azure/devops/pipelines/targets/azure-machine-learning)voor meer informatie.
++ __Azure-pijp lijnen__. Zie [machine learning modellen trainen en implementeren](/azure/devops/pipelines/targets/azure-machine-learning)voor meer informatie.
 + __Git-opslagplaats logboeken__. Zie [Git-integratie](concept-train-model-git-integration.md)voor meer informatie.
 + __MLFlow__. Zie voor meer informatie [MLflow voor het bijhouden van metrische gegevens en het implementeren van modellen](how-to-use-mlflow.md) 
 + __Kubeflow__. Zie [end-to-end werk stroom pijplijnen bouwen](https://www.kubeflow.org/docs/azure/)voor meer informatie.

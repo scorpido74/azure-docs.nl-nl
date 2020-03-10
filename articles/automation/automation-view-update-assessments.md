@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372967"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Updatebeheer update-evaluaties weer geven
 
@@ -28,7 +28,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Updateclassificaties
+## <a name="update-classifications"></a>Update classificaties
 
 De volgende tabellen geven een lijst van de ondersteunde update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
@@ -42,10 +42,10 @@ De volgende tabellen geven een lijst van de ondersteunde update classificaties i
 |Functiepakketten     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
 |Servicepacks     | Een cumulatieve set met hotfixes die op een toepassing worden toegepast.        |
 |Definitie-updates     | Een update van virus-of andere definitie bestanden.        |
-|Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
+|Hulpprogramma's     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux-2"></a>Spreek
 
 |Classificatie  |Beschrijving  |
 |---------|---------|

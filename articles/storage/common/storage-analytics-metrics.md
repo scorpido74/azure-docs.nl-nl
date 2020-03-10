@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514775"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360968"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics-metrische gegevens (klassiek)
 
@@ -54,9 +54,9 @@ Opslaganalyse kunt metrische gegevens opslaan die geaggregeerde trans actie-stat
 |Niveau metrische gegevens|Tabel namen|Ondersteund voor versies|  
 |-------------------|-----------------|----------------------------|  
 |Metrische gegevens per uur, primaire locatie|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Versies ouder dan 2013-08-15. Hoewel deze namen nog steeds worden ondersteund, is het raadzaam om te scha kelen naar het gebruik van de tabellen die hieronder worden weer gegeven.|  
-|Metrische gegevens per uur, primaire locatie|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
-|Metrische gegevens over minuten, primaire locatie|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
-|Metrische gegevens per uur, secundaire locatie|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
+|Metrische gegevens per uur, primaire locatie|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
+|Metrische gegevens over minuten, primaire locatie|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
+|Metrische gegevens per uur, secundaire locatie|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
 |Metrische gegevens over minuten, secundaire locatie|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
 |Capaciteit (alleen Blob service)|$MetricsCapacityBlob|Alle versies.|  
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om metrische gegevens in te scha kelen in de [Azure
 Met de [Azure Portal](https://portal.azure.com) kunt u op dit moment geen metrische gegevens over minuten configureren in uw opslag account. u moet metrische gegevens over de minuut inschakelen met behulp van Power shell of via een programma.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Metrische opslag gegevens inschakelen met behulp van Power shell  
-U kunt Power shell op uw lokale machine gebruiken om metrische opslag gegevens te configureren in uw opslag account met behulp van de Azure PowerShell cmdlet **Get-AzStorageServiceMetricsProperty** om de huidige instellingen op te halen en de cmdlet  **Stel-AzStorageServiceMetricsProperty** in om de huidige instellingen te wijzigen.  
+U kunt Power shell op uw lokale machine gebruiken om metrische opslag gegevens te configureren in uw opslag account met behulp van de cmdlet **Get-AzStorageServiceMetricsProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzStorageServiceMetricsProperty** om de huidige instellingen te wijzigen.  
 
 De cmdlets die metrische opslag gegevens regelen, gebruiken de volgende para meters:  
 
@@ -114,7 +114,7 @@ Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor h
 ## <a name="enable-storage-metrics-programmatically"></a>Metrische opslag gegevens via een programma inschakelen  
 Naast het gebruik van de Azure Portal of de Azure PowerShell-cmdlets voor het beheren van metrische gegevens voor opslag, kunt u ook een van de Azure Storage-Api's gebruiken. Als u bijvoorbeeld een .NET-taal gebruikt, kunt u de Storage-client bibliotheek gebruiken.  
 
-De klassen **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**en **CloudFileClient** hebben allemaal methoden als **SetServiceProperties** en **SetServicePropertiesAsync** die een  **ServiceProperties** -object als een para meter. U kunt het **ServiceProperties** -object gebruiken voor het configureren van metrische gegevens over opslag. Het volgende C# code fragment toont bijvoorbeeld hoe u het niveau van metrische gegevens en de retentie dagen voor de metrische gegevens van de wachtrij per uur wijzigt:  
+De klassen **CloudBlobClient**, **CloudQueueClient**, **CloudTableClient**en **CloudFileClient** hebben allemaal methoden als **SetServiceProperties** en **SetServicePropertiesAsync** die een **ServiceProperties** -object als para meter aannemen. U kunt het **ServiceProperties** -object gebruiken voor het configureren van metrische gegevens over opslag. Het volgende C# code fragment toont bijvoorbeeld hoe u het niveau van metrische gegevens en de retentie dagen voor de metrische gegevens van de wachtrij per uur wijzigt:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -155,10 +155,10 @@ U kunt de volledige details van de schema's voor deze tabellen vinden op [Opslag
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Beschikbaarheid**|**AverageE2ELatency**|**Averageserverlatency aan**|**PercentSuccess**|  
-|20140522T1100|gebruiker Hele|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|gebruiker QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
-|20140522T1100|gebruiker QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|gebruiker UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
+|20140522T1100|gebruiker Hele|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 In dit voor beeld wordt de metrische gegevens voor de partitie sleutel gebruikt voor de omzetting van tijden van minuten. De rij sleutel identificeert het type informatie dat in de rij wordt opgeslagen en dit bestaat uit twee delen van gegevens, het toegangs type en het type aanvraag:  
 
@@ -166,7 +166,7 @@ In dit voor beeld wordt de metrische gegevens voor de partitie sleutel gebruikt 
 
 -   Het aanvraag type is **alle** in dat geval een samenvattings regel, of identificeert de specifieke API, zoals **QueryEntity** of **UpdateEntity**.  
 
-In de bovenstaande voorbeeld gegevens worden alle records voor één minuut weer gegeven (vanaf 11: am), dus het aantal aanvragen voor **QueryEntities** plus het aantal **QueryEntity** -aanvragen plus het aantal aanvragen voor **UpdateEntity** dat tot zeven is opgeteld. Dit is de totaal weer gegeven voor de **gebruiker: alle** rijen. Op dezelfde manier kunt u de gemiddelde end-to-end-latentie 104,4286 voor de **gebruiker afleiden: alle** rijen door te berekenen ((143,8 * 5) + 3 + 9)/7.  
+In de bovenstaande voorbeeld gegevens worden alle records voor een enkele minuut weer gegeven (beginnend bij 11: am), dus het aantal aanvragen voor **QueryEntities** plus het aantal **QueryEntity** -aanvragen plus het aantal **UpdateEntity** -aanvragen telt tot zeven, wat het totaal is dat wordt weer gegeven op de **gebruiker: alle** rijen. Op dezelfde manier kunt u de gemiddelde end-to-end-latentie 104,4286 voor de **gebruiker afleiden: alle** rijen door te berekenen ((143,8 * 5) + 3 + 9)/7.  
 
 ## <a name="metrics-alerts"></a>Waarschuwingen voor metrische gegevens
 U kunt het beste waarschuwingen instellen in de [Azure Portal](https://portal.azure.com) zodat u automatisch op de hoogte wordt gebracht van belang rijke wijzigingen in het gedrag van uw opslag Services. Als u een opslag Verkenner-hulp programma gebruikt om deze metrische gegevens in een indeling met scheidings tekens te downloaden, kunt u micro soft Excel gebruiken voor het analyseren van de gegevens. Zie [Azure Storage-client hulpprogramma's](/azure/storage/storage-explorers) voor een lijst met beschik bare opslag Verkenner-hulpprogram ma's. U kunt waarschuwingen configureren op de Blade **waarschuwing (klassiek)** , toegankelijk onder **bewaking (klassiek)** op de Blade van het menu voor opslag accounts.

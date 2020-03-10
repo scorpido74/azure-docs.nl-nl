@@ -4,11 +4,11 @@ description: Meer informatie over hoe u prestatie problemen in Azure Functions k
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226485"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370459"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verbindingen in Azure Functions beheren
 

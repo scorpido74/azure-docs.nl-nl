@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500064"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375043"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: een RESTful API hosten met CORS in Azure App Service
 
@@ -30,7 +30,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * [Installeer Git](https://git-scm.com/).
 * [.NET Core installeren](https://www.microsoft.com/net/core/).

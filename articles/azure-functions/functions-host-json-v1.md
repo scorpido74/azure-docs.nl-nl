@@ -4,16 +4,16 @@ description: Referentie documentatie voor het Azure Functions host. JSON-bestand
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769605"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356824"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host. json-verwijzing voor Azure Functions 1. x
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1:](functions-host-json-v1.md)
+> * [Versie 1](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
 Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de V1-runtime. Het JSON-schema bevindt zich op http://json.schemastore.org/host.
@@ -140,7 +140,7 @@ Configuratie-instellingen voor de [Azure Cosmos DB trigger en bindingen](functio
 |---------|---------|---------|
 |GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en `Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|n.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -152,7 +152,7 @@ Configuratie-instellingen voor [Event hub-triggers en-bindingen](functions-bindi
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>vervullen
 
 Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
 
@@ -190,7 +190,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
 |healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de instelling `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
@@ -213,7 +213,7 @@ Configuratie-instellingen voor [http-triggers en-bindingen](functions-bindings-h
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|false|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
+|dynamicThrottlesEnabled|onwaar|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
 |maxConcurrentRequests|niet-gebonden (`-1`)|Het maximum aantal HTTP-functies dat parallel wordt uitgevoerd. Op die manier kunt u gelijktijdigheid beheren, waardoor het resource gebruik kan worden beheerd. Stel dat u een HTTP-functie hebt die gebruikmaakt van veel systeem bronnen (geheugen/CPU/sockets), zodat er problemen ontstaan wanneer gelijktijdigheid te hoog is. Het is ook mogelijk dat u een functie hebt waarmee uitgaande aanvragen voor een service van derden worden uitgevoerd. deze aanroepen moeten een beperkt aantal zijn. In dergelijke gevallen kan het Toep assen van een beperking hier helpen.|
 |maxOutstandingRequests|niet-gebonden (`-1`)|Het maximum aantal openstaande aanvragen dat op een bepaald moment wordt bewaard. Deze limiet omvat aanvragen die in de wachtrij zijn geplaatst, maar die nog niet zijn gestart, evenals de uitvoeringen die worden uitgevoerd. Alle binnenkomende aanvragen die deze limiet overschrijden, worden geweigerd met een antwoord van 429 ' bezet '. Hiermee kunnen aanroepers op tijd gebaseerde strategieën voor nieuwe pogingen gebruiken en kunt u ook de maximum latentie van aanvragen beheren. Hiermee beheert u alleen de wachtrij die zich in het uitvoerings traject van de Script Host voordoet. Andere wacht rijen, zoals de ASP.NET-aanvraag wachtrij, blijven van kracht en worden niet beïnvloed door deze instelling.|
 |routePrefix|api|Het route voorvoegsel dat van toepassing is op alle routes. Gebruik een lege teken reeks om het standaard voorvoegsel te verwijderen. |
@@ -251,9 +251,9 @@ Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-objec
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|categoryFilter|n.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
+|categoryFilter|N.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
 |defaultLevel|Informatie|Voor alle categorieën die niet zijn opgegeven in de `categoryLevels` matrix, verzendt u logboeken op dit niveau en hierboven naar Application Insights.| 
-|categoryLevels|n.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. aggregator ' geregistreerd op `Information` niveau. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', melden zich op `Error` niveau.| 
+|categoryLevels|N.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. aggregator ' geregistreerd op `Information` niveau. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', melden zich op `Error` niveau.| 
 
 ## <a name="queues"></a>Bestel
 
@@ -292,7 +292,7 @@ Configuratie-instelling voor de [SendGrind-uitvoer binding](functions-bindings-s
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|uit|n.v.t.|Het e-mail adres van de afzender over alle functies.| 
+|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -310,8 +310,8 @@ Configuratie-instelling voor [Service Bus triggers en bindingen](functions-bindi
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Het maximale aantal gelijktijdige oproepen aan de callback die de bericht-pomp moet starten. Standaard verwerkt de Functions-runtime meerdere berichten tegelijkertijd. Instellen om de runtime voor het verwerken van alleen een één wachtrij of onderwerp bericht op een tijdstip, `maxConcurrentCalls` op 1. | 
-|prefetchCount|n.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
+|maxConcurrentCalls|16|Het maximale aantal gelijktijdige oproepen aan de callback die de bericht-pomp moet starten. Standaard verwerkt de Functions-runtime meerdere berichten tegelijkertijd. Stel `maxConcurrentCalls` in op 1 om de runtime te vragen om slechts één wachtrij of onderwerp bericht tegelijk te verwerken. | 
+|prefetchCount|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
 |autoRenewTimeout|00:05:00|De maximale tijdsduur waarbinnen de vergrendeling van het bericht automatisch wordt vernieuwd.| 
 
 ## <a name="singleton"></a>Singleton
@@ -336,7 +336,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="tracing"></a>tracering
 

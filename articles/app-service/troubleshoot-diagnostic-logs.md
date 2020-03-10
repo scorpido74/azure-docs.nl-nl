@@ -1,16 +1,16 @@
 ---
-title: Bijhouden van diagnostische gegevens inschakelen
+title: Diagnostische logboekregistratie inschakelen
 description: Lees hoe u diagnostische logboek registratie kunt inschakelen en instrumentatie kunt toevoegen aan uw toepassing, en hoe u toegang hebt tot de gegevens die zijn geregistreerd door Azure.
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985931"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358212"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -59,7 +59,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 
 | Niveau | Opgenomen categorieën |
 |-|-|
-|**Uitgeschakeld** | Geen |
+|**Uitgeschakeld** | None |
 |**Optreedt** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Gegevens** | Info, waarschuwing, fout, kritiek|

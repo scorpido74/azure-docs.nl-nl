@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660917"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363732"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -125,7 +125,7 @@ Een lijst met alle logische volumes, namen en hun paden in een volume groep:
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 De logische volumes koppelen aan het pad naar keuze:
@@ -202,10 +202,10 @@ Als u het script uitvoert op een computer met beperkte toegang, controleert u of
 
 - `download.microsoft.com`
 - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (voor open bare Azure-geografische gebieden)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (voor Azure China 21Vianet)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (voor Azure Amerikaanse overheid)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (voor Azure Duitsland)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (voor open bare Azure-geografische gebieden)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (voor Azure China 21Vianet)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (voor Azure Amerikaanse overheid)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (voor Azure Duitsland)
 - Uitgaande poorten 53 (DNS), 443, 3260
 
 > [!NOTE]
@@ -295,7 +295,7 @@ Voor het bladeren door bestanden en mappen gebruikt het script de iSCSI-initiato
 
 We gebruiken een wederzijdse CHAP-verificatie mechanisme zodat elk onderdeel de andere verifieert. Dit betekent dat het zeer moeilijk is om verbinding te maken met het iSCSI-doel en om een vervalst doel te verbinden met de computer waarop het script wordt uitgevoerd.
 
-De gegevens stroom tussen de Recovery-service en de machine wordt beveiligd door een beveiligde SSL-tunnel via TCP te bouwen ([TLS 1,2 moet worden ondersteund](#system-requirements) op de computer waarop het script wordt uitgevoerd).
+De gegevens stroom tussen de Recovery-service en de machine wordt beveiligd door een beveiligde TLS-tunnel te bouwen via TCP ([tls 1,2 moet worden ondersteund](#system-requirements) op de computer waarop het script wordt uitgevoerd).
 
 Een bestands Access Control lijst (ACL) die aanwezig is in de bovenliggende/back-up van de virtuele machine, blijft ook behouden in het gekoppelde bestands systeem.
 

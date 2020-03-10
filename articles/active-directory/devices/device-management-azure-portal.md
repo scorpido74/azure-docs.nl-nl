@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377030"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren met de Azure Portal
 
@@ -196,7 +196,7 @@ U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk
 
 Als u de gerapporteerde gegevens wilt beperken tot een niveau dat geschikt is voor u, kunt u de controlegegevens filteren met de volgende velden:
 
-- Categorie
+- Category
 - Resourcetype van activiteit
 - Activiteit
 - Datumbereik

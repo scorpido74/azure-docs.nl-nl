@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381791"
 ---
 # <a name="how-to-manage-settings"></a>Instellingen beheren
 
@@ -62,7 +62,7 @@ Als een ander deel van uw werk moet worden gedeeld met andere personen, kan het 
 1.  Navigeer naar de pagina instellingen van de werk ruimte.
 2.  Klik op de knop nieuwe werk ruimte in de sectie ' nieuwe werk ruimte maken '.
 
-    ![Nieuwe werkruimte maken](media/how-to/create-new-workspace.png)
+    ![Nieuwe werk ruimte maken](media/how-to/create-new-workspace.png)
 
 4.  Voer in het dialoog venster de naam van de nieuwe werk ruimte in.
 5.  Klik op maken.
@@ -85,11 +85,11 @@ In aangepaste vertaler kunt u uw werk ruimte delen met anderen, als een ander de
 
 ## <a name="sharing-permissions"></a>Machtigingen voor delen
 
-1.  **Gelezen** Met een lezer in de werk ruimte kunnen alle gegevens in de werk ruimte worden weer gegeven.
+1.  **Lezer:** Met een lezer in de werk ruimte kunnen alle gegevens in de werk ruimte worden weer gegeven.
 
-2.  **Editors** Met een editor in de werk ruimte kunnen documenten worden toegevoegd, modellen worden getraind en documenten en projecten worden verwijderd. Ze kunnen een abonnements sleutel toevoegen, maar kunnen niet wijzigen met wie de werk ruimte wordt gedeeld, de werk ruimte verwijderen of de naam van de werk ruimte wijzigen.
+2.  **Redacteur:** Met een editor in de werk ruimte kunnen documenten worden toegevoegd, modellen worden getraind en documenten en projecten worden verwijderd. Ze kunnen een abonnements sleutel toevoegen, maar kunnen niet wijzigen met wie de werk ruimte wordt gedeeld, de werk ruimte verwijderen of de naam van de werk ruimte wijzigen.
 
-3.  **Bent** Een eigenaar heeft volledige machtigingen voor de werk ruimte.
+3.  **Eigenaar:** Een eigenaar heeft volledige machtigingen voor de werk ruimte.
 
 ## <a name="change-sharing-permission"></a>Machtiging voor delen wijzigen
 

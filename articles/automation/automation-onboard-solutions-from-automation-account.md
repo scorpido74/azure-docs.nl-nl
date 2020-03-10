@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372894"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen voor onboarding
 
@@ -35,11 +35,11 @@ Kies de Log Analytics-werk ruimte en het Automation-account en klik op **inschak
 
 De oplossing Wijzigingen bijhouden en Inventaris biedt de mogelijkheid om [Wijzigingen bijhouden](automation-vm-change-tracking.md) en [Inventaris](automation-vm-inventory.md) uit te voeren op uw virtuele machines. In deze stap schakelt u de oplossing in op een virtuele machine.
 
-Wanneer wordt gemeld dat de onboarding van de oplossing Wijzigingen bijhouden en Inventarisatie is voltooid, klikt u op **Updatebeheer** onder **CONFIGURATIEBEHEER**.
+Wanneer de melding voor het bijhouden van wijzigingen en inventarisatie van de voorraad oplossing is voltooid, selecteert u **Update beheer** onder **Update beheer**.
 
-Met de oplossing Updatebeheer kunt u updates en patches voor uw Azure-VM's beheren. U kunt de status van beschikbare updates beoordelen, de installatie van vereiste updates plannen en de implementatieresultaten bekijken om te controleren of updates correct zijn toegepast op de VM. Met deze actie is de oplossing voor uw virtuele machine ingeschakeld.
+Met de Updatebeheer oplossing kunt u updates en patches voor uw Azure-en hybride Vm's beheren. U kunt de status van beschik bare updates beoordelen, de installatie van vereiste updates plannen en de implementatie resultaten bekijken om te controleren of de updates zijn toegepast.
 
-Selecteer **Update beheer** onder **Update beheer**. De geselecteerde werk ruimte Log Analytics is dezelfde werk ruimte die wordt gebruikt in de vorige stap. Klik op **Inschakelen** om de onboarding van de oplossing Updatebeheer uit te voeren. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
+Op de pagina oplossing inschakelen is de geselecteerde Log Analytics-werk ruimte dezelfde werk ruimte die wordt gebruikt in de vorige stap. Klik op inschakelen om de Updatebeheer oplossing vrij te **maken** . Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
 ![Update oplossing voor onboarding](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -49,9 +49,9 @@ Elke oplossing maakt gebruik van een scope configuratie in de werk ruimte om te 
 
 Als de geselecteerde werk ruimte nog niet beschikt over de Updatebeheer-of Wijzigingen bijhouden oplossingen, worden de volgende Scope configuraties gemaakt:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig-change tracking**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig-updates**
 
 Als de geselecteerde werk ruimte al de oplossing heeft, wordt de oplossing niet opnieuw geïmplementeerd en wordt de scope configuratie niet toegevoegd.
 
@@ -61,9 +61,9 @@ Wanneer een computer wordt toegevoegd aan de Updatebeheer of de oplossingen voor
 
 Navigeer naar uw Log Analytics-werk ruimte en selecteer **opgeslagen Zoek opdrachten** onder **Algemeen**. De twee opgeslagen Zoek opdrachten die door deze oplossingen worden gebruikt, kunnen worden weer gegeven in de volgende tabel:
 
-|Name     |Categorie  |Alias  |
+|Naam     |Category  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 
 Selecteer een opgeslagen zoek opdracht om de query weer te geven die wordt gebruikt om de groep te vullen. In de volgende afbeelding ziet u de query en de resultaten:

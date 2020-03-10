@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176553"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374427"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Pagina sjablonen in azure API Management
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
   
  Met de sjablonen in deze sectie kunt u de inhoud van de pagina's aanmelden, registreren en pagina niet gevonden in de ontwikkelaars portal aanpassen.  
   
@@ -229,11 +229,11 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|referenceCode|string|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
-|Code|string|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
-|emailBody|string|E-mail hoofdtekst gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
-|requestedUrl|string|De aangevraagde URL wanneer de pagina niet is gevonden.|  
-|referrerUrl|string|De verwijzende URL naar de aangevraagde URL.|  
+|referenceCode|tekenreeks|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
+|Code|tekenreeks|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
+|emailBody|tekenreeks|E-mail hoofdtekst gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
+|requestedUrl|tekenreeks|De aangevraagde URL wanneer de pagina niet is gevonden.|  
+|referrerUrl|tekenreeks|De verwijzende URL naar de aangevraagde URL.|  
   
 ### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   

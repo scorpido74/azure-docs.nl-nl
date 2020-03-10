@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie: Scheduler | Microsoft Docs'
-description: Dit onderwerp beschrijft de functie ingebouwde scheduler in Azure AD Connect-synchronisatie.
+title: 'Azure AD Connect synchronisatie: scheduler | Microsoft Docs'
+description: In dit onderwerp wordt de ingebouwde functie scheduler in Azure AD Connect Sync beschreven.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,48 +17,48 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139296"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378124"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-synchronisatie: Scheduler
-Dit onderwerp beschrijft de ingebouwde scheduler in Azure AD Connect-synchronisatie (sync engine genoemd).
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect synchronisatie: scheduler
+In dit onderwerp wordt de ingebouwde scheduler in Azure AD Connect Sync (synchronisatie-engine) beschreven.
 
-Deze functie is ingevoerd in de build 1.1.105.0 (uitgebracht februari 2016).
+Deze functie is geïntroduceerd in Build 1.1.105.0 (uitgebracht op februari 2016).
 
 ## <a name="overview"></a>Overzicht
-Azure AD Connect-synchronisatie wijzigingen optreden in uw on-premises directory met behulp van een scheduler synchroniseren. Er zijn twee manieren laden scheduler, een voor Wachtwoordsynchronisatie en andere voor object of kenmerk synchronisatie en het onderhoud taken. In dit onderwerp bevat informatie over de laatste.
+Met Azure AD Connect synchronisatie worden wijzigingen in uw on-premises Directory gesynchroniseerd met behulp van een scheduler. Er zijn twee scheduler-processen: een voor wachtwoord synchronisatie en een andere voor synchronisatie-en onderhouds taken voor object/kenmerk. Dit onderwerp is van toepassing op de laatste.
 
-In eerdere versies is de planner voor objecten en kenmerken buiten de synchronisatie-engine. Het Windows Taakplanner of een afzonderlijke Windows-service gebruikt voor het activeren van het proces van synchronisatie. De scheduler wordt met de ingebouwde 1.1 versies voor de synchronisatie-engine en sta aangepast. De nieuwe standaard Synchronisatiefrequentie is 30 minuten.
+In eerdere versies was de Scheduler voor objecten en kenmerken extern voor de synchronisatie-engine. Het heeft Windows taak planner of een afzonderlijke Windows-service gebruikt om het synchronisatie proces te activeren. De scheduler is met de 1,1-releases ingebouwd in de synchronisatie-engine en kan enige aanpassing toestaan. De nieuwe standaard synchronisatie frequentie is 30 minuten.
 
 De scheduler is verantwoordelijk voor twee taken:
 
-* **Synchronisatiecyclus**. Het proces om te importeren en exporteren van wijzigingen synchroniseren.
-* **Onderhoudstaken**. Vernieuwen van sleutels en certificaten voor wachtwoord opnieuw instellen en Device Registration Service (DRS). Oude vermeldingen in de operations-logboek opschonen.
+* **Synchronisatie cyclus**. Het proces voor het importeren, synchroniseren en exporteren van wijzigingen.
+* **Onderhouds taken**. Sleutels en certificaten vernieuwen voor het opnieuw instellen van wacht woorden en Device Registration service (DRS). Oude vermeldingen in het operations-logboek opschonen.
 
-De scheduler zelf altijd wordt uitgevoerd, maar deze kan worden geconfigureerd voor één of geen van deze taken alleen worden uitgevoerd. Bijvoorbeeld, als u nodig hebt om uw eigen cyclus synchronisatieproces, kunt u uitschakelen van deze taak in de scheduler maar nog steeds de onderhoudstaak worden uitgevoerd.
+De scheduler zelf is altijd actief, maar kan worden geconfigureerd om alleen een of geen van deze taken uit te voeren. Als u bijvoorbeeld uw eigen synchronisatie cyclus proces nodig hebt, kunt u deze taak in de scheduler uitschakelen, maar nog steeds de onderhouds taak uitvoeren.
 
 ## <a name="scheduler-configuration"></a>Scheduler-configuratie
-Als u wilt zien van uw huidige configuratie-instellingen, gaat u naar PowerShell en voer `Get-ADSyncScheduler`. U ziet er ongeveer als deze afbeelding:
+Als u de huidige configuratie-instellingen wilt weer geven, gaat u naar Power shell en voert u `Get-ADSyncScheduler`uit. U ziet iets als deze afbeelding:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Als u ziet **de synchronisatieopdracht of de cmdlet is niet beschikbaar** wanneer u deze cmdlet uitvoert, klikt u vervolgens de PowerShell-module is niet geladen. Dit probleem kan optreden als u Azure AD Connect wordt uitgevoerd op een domeincontroller of op een server met een hogere mate van PowerShell beperking dan de standaardinstellingen. Als u deze fout ziet, voert u `Import-Module ADSync` de cmdlet om beschikbaar te maken.
+Als u **de synchronisatie opdracht of cmdlet is niet beschikbaar** wanneer u deze cmdlet uitvoert, wordt de Power shell-module niet geladen. Dit probleem kan zich voordoen als u Azure AD Connect uitvoert op een domein controller of op een server met hogere Power shell-beperkings niveaus dan de standaard instellingen. Als u deze fout ziet, voert u `Import-Module ADSync` uit om de cmdlet beschikbaar te maken.
 
-* **AllowedSyncCycleInterval**. Het kortste tijdsinterval tussen synchronisatie cycli toegestaan door Azure AD. U vaker dan deze instelling kan niet worden gesynchroniseerd en nog steeds worden ondersteund.
-* **CurrentlyEffectiveSyncCycleInterval**. De planning momenteel van kracht. Deze heeft dezelfde waarde als CustomizedSyncInterval (indien ingesteld) als deze niet hoger zijn dan AllowedSyncInterval. Als u een build voordat 1.1.281 gebruiken en u CustomizedSyncCycleInterval wijzigt, wordt deze wijziging van kracht na de volgende synchronisatiecyclus. Van build 1.1.281 wordt de wijziging direct van kracht.
-* **CustomizedSyncCycleInterval**. Als u wilt dat de scheduler om uit te voeren op een andere frequentie dan de standaardwaarde van 30 minuten, configureert u deze instelling. In de bovenstaande afbeelding is de planner is ingesteld op in plaats daarvan wordt elk uur uitgevoerd. Als u deze instelling op een waarde lager dan AllowedSyncInterval instelt, wordt deze gebruikt.
-* **NextSyncCyclePolicyType**. Delta- of eerste. Hiermee definieert u of de volgende uitvoering alleen proces nog deltawijzigingen moet, of de volgende uitvoering moet doen als een volledige importeren en synchroniseren. De laatste zou ook een nieuwe of gewijzigde regels verwerken.
-* **NextSyncCycleStartTimeInUTC**. Volgende keer dat de scheduler begint de volgende synchronisatiecyclus.
-* **PurgeRunHistoryInterval**. De tijd logboeken voor bewerkingen moeten worden opgeslagen. Deze logboeken kunnen worden gecontroleerd in synchronization servicemanager. De standaardwaarde is dat deze logboeken 7 dagen.
-* **SyncCycleEnabled**. Geeft aan of de scheduler de import, synchronisatie en processen voor exporteren wordt uitgevoerd als onderdeel van de werking ervan.
-* **MaintenanceEnabled**. Geeft aan of het onderhoudsproces voor is ingeschakeld. Het bijwerken van de certificaten/sleutels en Hiermee verwijdert u de operations-logboek.
-* **StagingModeEnabled**. Laat zien als [faseringsmodus](how-to-connect-sync-staging-server.md) is ingeschakeld. Als deze instelling is ingeschakeld, klikt u vervolgens het onderdrukt de uitvoer die worden uitgevoerd, maar nog steeds import en synchronisatie worden uitgevoerd.
-* **SchedulerSuspended**. Ingesteld door Connect tijdens een upgrade voor het tijdelijk blokkeren de scheduler wordt uitgevoerd.
+* **AllowedSyncCycleInterval**. Het kortste tijds interval tussen de synchronisatie cycli die zijn toegestaan door Azure AD. U kunt niet vaker synchroniseren dan deze instelling en toch worden ondersteund.
+* **CurrentlyEffectiveSyncCycleInterval**. De planning is momenteel van kracht. Deze heeft dezelfde waarde als CustomizedSyncInterval (indien ingesteld) als deze niet vaker dan AllowedSyncInterval is. Als u een build gebruikt vóór 1.1.281 en u CustomizedSyncCycleInterval wijzigt, wordt deze wijziging van kracht na de volgende synchronisatie cyclus. Vanuit build 1.1.281 wordt de wijziging onmiddellijk van kracht.
+* **CustomizedSyncCycleInterval**. Als u wilt dat de scheduler wordt uitgevoerd op een andere frequentie dan de standaard waarde van 30 minuten, configureert u deze instelling. In de bovenstaande afbeelding is de scheduler zo ingesteld dat deze elk uur wordt uitgevoerd. Als u deze instelling instelt op een waarde die lager is dan AllowedSyncInterval, wordt het laatste gebruikt.
+* **NextSyncCyclePolicyType**. Delta of de eerste. Hiermee wordt gedefinieerd of de volgende uitvoering alleen wijzigingen in de Delta moet verwerken of als de volgende uitvoering een volledige import en synchronisatie moet uitvoeren. Daarnaast worden nieuwe of gewijzigde regels opnieuw verwerkt.
+* **NextSyncCycleStartTimeInUTC**. De volgende keer dat de scheduler de volgende synchronisatie cyclus start.
+* **PurgeRunHistoryInterval**. De bewerkings logboeken voor de tijd moeten worden bewaard. Deze logboeken kunnen worden gecontroleerd in de synchronisatie Service Manager. Standaard worden deze logboeken zeven dagen bewaard.
+* **SyncCycleEnabled**. Hiermee wordt aangegeven of de scheduler de processen import, Sync en export uitvoert als onderdeel van de bewerking.
+* **MaintenanceEnabled**. Hiermee wordt aangegeven of het onderhouds proces is ingeschakeld. Hiermee worden de certificaten/sleutels bijgewerkt en wordt het operations-logboek gewist.
+* **StagingModeEnabled**. Hiermee wordt aangegeven of de [faserings modus](how-to-connect-sync-staging-server.md) is ingeschakeld. Als deze instelling is ingeschakeld, worden de exports onderdrukt van de uitvoering, maar worden nog steeds import en synchronisatie uitgevoerd.
+* **SchedulerSuspended**. Tijdens een upgrade instellen door verbinding te maken om te voor komen dat de scheduler wordt uitgevoerd.
 
-U kunt sommige van deze instellingen met wijzigen `Set-ADSyncScheduler`. De volgende parameters kunnen worden gewijzigd:
+U kunt sommige van deze instellingen wijzigen met `Set-ADSyncScheduler`. De volgende para meters kunnen worden gewijzigd:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -66,67 +66,67 @@ U kunt sommige van deze instellingen met wijzigen `Set-ADSyncScheduler`. De volg
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-In eerdere versies van Azure AD Connect, **isStagingModeEnabled** in Set-ADSyncScheduler is blootgesteld. Het is **niet-ondersteunde** deze eigenschap in te stellen. De eigenschap **SchedulerSuspended** moet alleen worden gewijzigd door Connect. Het is **niet-ondersteunde** rechtstreeks instellen met PowerShell.
+In eerdere builds van Azure AD Connect werd **isStagingModeEnabled** weer gegeven in set-ADSyncScheduler. Deze eigenschap kan **niet** worden ingesteld. De eigenschap **SchedulerSuspended** mag alleen worden gewijzigd door Connect. Het wordt **niet ondersteund** om dit rechtstreeks in te stellen met Power shell.
 
-De configuratie van de scheduler wordt opgeslagen in Azure AD. Als u een tijdelijke server hebt, zijn geen wijzigingen in de primaire server ook van invloed op de staging-server (met uitzondering van IsStagingModeEnabled).
+De scheduler-configuratie wordt opgeslagen in azure AD. Als u een staging-server hebt, is de wijziging op de primaire server ook van invloed op de staging-server (behalve IsStagingModeEnabled).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Syntaxis: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-d - dagen, uu - uren, mm - minuten, ss - seconden
+d-dagen, HH-uur, mm-minuten, ss-seconden
 
 Voorbeeld: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
-Hiermee wijzigt u de scheduler elke drie uur uitgevoerd.
+Hiermee wordt de scheduler zo gewijzigd dat elke 3 uur wordt uitgevoerd.
 
 Voorbeeld: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-Wijzigingen wijzigen met de scheduler om dagelijks uitgevoerd te.
+Met wijzigingen wordt de planner gewijzigd zodat deze dagelijks wordt uitgevoerd.
 
 ### <a name="disable-the-scheduler"></a>De scheduler uitschakelen  
-Als u configuratiewijzigingen aanbrengen wilt, klikt u vervolgens wilt u uitschakelen met de scheduler. Bijvoorbeeld, wanneer u [filtering configureren](how-to-connect-sync-configure-filtering.md) of [wijzigingen aanbrengen in synchronisatieregels](how-to-connect-sync-change-the-configuration.md).
+Als u wijzigingen in de configuratie wilt aanbrengen, moet u de scheduler uitschakelen. Wanneer u bijvoorbeeld [filters configureert](how-to-connect-sync-configure-filtering.md) of [wijzigingen aanbrengt aan de synchronisatie regels](how-to-connect-sync-change-the-configuration.md).
 
-Schakel de scheduler uitvoeren `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+Voer `Set-ADSyncScheduler -SyncCycleEnabled $false`uit om de scheduler uit te scha kelen.
 
 ![De scheduler uitschakelen](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Wanneer u uw wijzigingen hebt aangebracht, vergeet niet om in te schakelen van de scheduler opnieuw met `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Wanneer u de wijzigingen hebt aangebracht, vergeet dan niet om de Scheduler opnieuw in te scha kelen met `Set-ADSyncScheduler -SyncCycleEnabled $true`.
 
 ## <a name="start-the-scheduler"></a>De scheduler starten
-De scheduler wordt standaard elke 30 minuten uitgevoerd. In sommige gevallen wilt u mogelijk een synchronisatiecyclus tussen de geplande cycli uitvoeren of u wilt uitvoeren van een ander type.
+De scheduler wordt standaard elke 30 minuten uitgevoerd. In sommige gevallen wilt u mogelijk een synchronisatie cyclus uitvoeren tussen de geplande cycli of moet u een ander type uitvoeren.
 
-### <a name="delta-sync-cycle"></a>Delta-synchronisatiecyclus
-Een delta-synchronisatiecyclus bevat de volgende stappen uit:
+### <a name="delta-sync-cycle"></a>Delta synchronisatie cyclus
+Een Delta synchronisatie cyclus omvat de volgende stappen:
 
 
-- Delta-import op alle Connectors
-- Deltasynchronisatie op alle Connectors
-- Op alle Connectors exporteren
+- Delta-import op alle connectors
+- Delta synchronisatie op alle connectors
+- Exporteren op alle connectors
 
-### <a name="full-sync-cycle"></a>Volledige synchronisatiecyclus
-Een volledige synchronisatiecyclus bevat de volgende stappen uit:
+### <a name="full-sync-cycle"></a>Volledige synchronisatie cyclus
+Een volledige synchronisatie cyclus omvat de volgende stappen:
 
-- Volledige Import op alle Connectors
-- Volledige synchronisatie van alle Connectors
-- Op alle Connectors exporteren
+- Volledige import op alle connectors
+- Volledige synchronisatie op alle connectors
+- Exporteren op alle connectors
 
-Kan het zijn dat u hebt een urgent wijzigen die onmiddellijk moet worden gesynchroniseerd daarom moet u een cyclus handmatig uitvoeren. 
+Het kan zijn dat u een urgente wijziging hebt die onmiddellijk moet worden gesynchroniseerd. Dit is de reden waarom u hand matig een cyclus moet uitvoeren. 
 
-Als u nodig hebt om uit te voeren een synchronisatiecyclus handmatig vervolgens vanuit PowerShell uitvoeren `Start-ADSyncSyncCycle -PolicyType Delta`.
+Als u een synchronisatie cyclus hand matig moet uitvoeren, voert u de `Start-ADSyncSyncCycle -PolicyType Delta`uit Power shell uit.
 
-Voor het starten van de cyclus van een volledige synchronisatie uitvoeren `Start-ADSyncSyncCycle -PolicyType Initial` vanuit een PowerShell-prompt.   
+Als u een volledige synchronisatie cyclus wilt starten, voert u `Start-ADSyncSyncCycle -PolicyType Initial` uit vanuit een Power shell-prompt.   
 
-Uitvoeren van een volledige synchronisatiecyclus is tijdrovend, lees de volgende sectie om te lezen over het optimaliseren van dit proces.
+Het uitvoeren van een volledige synchronisatie cyclus kan veel tijd in beslag nemen. Lees de volgende sectie voor meer informatie over het optimaliseren van dit proces.
 
-### <a name="sync-steps-required-for-different-configuration-changes"></a>Stappen die nodig zijn voor andere configuratiewijzigingen synchroniseren
-Andere configuratiewijzigingen vereist synchronisatie van de verschillende stappen om te controleren of dat de wijzigingen zijn toegepast op alle objecten.
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Synchronisatie stappen die vereist zijn voor verschillende configuratie wijzigingen
+Er zijn verschillende synchronisatie stappen vereist voor verschillende configuratie wijzigingen om ervoor te zorgen dat de wijzigingen op de juiste manier worden toegepast op alle objecten.
 
-- Meer objecten of kenmerken moeten worden geïmporteerd uit een bronmap (door het toevoegen/aanpassen van de synchronisatieregels) toegevoegd
-    - Een volledige Import is vereist op de Connector voor die bronmap
-- Wijzigingen aangebracht in de synchronisatieregels
-    - Een volledige synchronisatie is vereist op de Connector voor de gewijzigde synchronisatieregels
-- Gewijzigd [filteren](how-to-connect-sync-configure-filtering.md) , zodat een ander aantal objecten opgenomen worden moet
-    - Een volledige Import is vereist op de Connector voor elk AD-Connector, tenzij u filteren op basis van het kenmerk op basis van kenmerken die al worden geïmporteerd in de synchronisatie-engine
+- Er zijn meer objecten of kenmerken toegevoegd die moeten worden geïmporteerd uit een bronmap (door de synchronisatie regels toe te voegen of te wijzigen)
+    - Er is een volledige import vereist voor de connector voor die bron directory
+- Wijzigingen in de synchronisatie regels aangebracht
+    - Er is een volledige synchronisatie vereist voor de connector voor de gewijzigde synchronisatie regels
+- Gewijzigde [filtering](how-to-connect-sync-configure-filtering.md) , zodat er een ander aantal objecten moet worden opgenomen
+    - Een volledige import is vereist voor de connector voor elke AD-connector tenzij u filtering op basis van kenmerken gebruikt op basis van attributen die al in de synchronisatie-engine worden geïmporteerd
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Een synchronisatiecyclus uitvoeren van de juiste combinatie van Delta- en volledige synchronisatie stappen aanpassen
-U kunt specifieke Connectors voor het uitvoeren van een volledige stap met de volgende cmdlets markeren om te voorkomen dat de cyclus van een volledige synchronisatie uitgevoerd.
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Een synchronisatie cyclus aanpassen Voer de juiste combi natie van verschillen tussen Delta en volledige synchronisatie uit
+Om te voor komen dat u een volledige synchronisatie cyclus uitvoert, kunt u specifieke connectors markeren om een volledige stap uit te voeren met de volgende cmdlets.
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -134,13 +134,13 @@ U kunt specifieke Connectors voor het uitvoeren van een volledige stap met de vo
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-Voorbeeld:  Als u wijzigingen hebt aangebracht in de synchronisatieregels voor 'AD-Forest A'-Connector waarvoor een nieuwe kenmerken moet worden geïmporteerd niet zou u Voer de volgende cmdlets gebruikt om een Deltasynchronisatie te bladeren die ook een volledige synchronisatie stap voor die Connector.
+Voor beeld: als u wijzigingen hebt aangebracht in de synchronisatie regels voor connector ' AD forest A ' waarvoor geen nieuwe kenmerken hoeven te worden geïmporteerd, voert u de volgende cmdlets uit om een Delta synchronisatie cyclus uit te voeren die ook een volledige synchronisatie stap voor die connector had.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-Voorbeeld:  Als u aanbrengt in de synchronisatieregels voor 'AD-Forest A'-Connector wijzigingen zodat ze nu een nieuw kenmerk moet worden geïmporteerd vereisen zou u de volgende cmdlets voor het uitvoeren van een delta-synchronisatiecyclus die ook een volledige Import, stap voor die Connector volledige synchronisatie is uitvoeren.
+Voor beeld: als u wijzigingen hebt aangebracht in de synchronisatie regels voor connector ' AD forest A ' zodat er nu een nieuw kenmerk moet worden geïmporteerd, voert u de volgende cmdlets uit om een Delta synchronisatie cyclus uit te voeren, waarbij ook een volledige synchronisatie stap is uitgevoerd voor die connector.
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -149,62 +149,62 @@ Voorbeeld:  Als u aanbrengt in de synchronisatieregels voor 'AD-Forest A'-Connec
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
 
-## <a name="stop-the-scheduler"></a>De scheduler stoppen
-Als een synchronisatiecyclus wordt momenteel door de scheduler worden uitgevoerd, moet u mogelijk om deze te stoppen. Bijvoorbeeld als u de installatiewizard te starten en u deze foutmelding krijgt:
+## <a name="stop-the-scheduler"></a>De planner stoppen
+Als de scheduler momenteel een synchronisatie cyclus uitvoert, moet u deze mogelijk stoppen. Als u bijvoorbeeld de installatie wizard start, wordt deze fout weer geven:
 
 ![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
-Wanneer een synchronisatiecyclus wordt uitgevoerd, kunt u wijzigingen in de configuratie kan niet maken. U kunt wachten totdat de scheduler het proces is voltooid, maar u ook dat deze voorkomen kunt, zodat u onmiddellijk uw wijzigingen kunt aanbrengen. De huidige cyclus stoppen, is geen schadelijke en wijzigingen in behandeling worden verwerkt door de volgende keer wordt uitgevoerd.
+Wanneer een synchronisatie cyclus wordt uitgevoerd, kunt u geen configuratie wijzigingen aanbrengen. U kunt wachten tot de scheduler het proces heeft voltooid, maar ook stoppen, zodat u uw wijzigingen direct kunt door voeren. Het stoppen van de huidige cyclus is niet schadelijk en in behandeling zijnde wijzigingen worden verwerkt met de volgende uitvoering.
 
-1. Gestart door de scheduler om te stoppen van de huidige cyclus met de PowerShell-cmdlet te vertellen `Stop-ADSyncSyncCycle`.
-2. Als u een build voordat 1.1.281, stopt klikt u vervolgens het stoppen van de scheduler niet de huidige Connector van de huidige taak. Als u wilt afdwingen dat de Connector om te stoppen, moet u de volgende acties uitvoeren: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * Start **Synchronization Service** vanuit het startmenu. Ga naar **Connectors**, markeert u de Connector met de status **met**, en selecteer **stoppen** uit de acties.
+1. Begin door de planner te vertellen dat de huidige cyclus wordt gestopt met de Power shell-cmdlet `Stop-ADSyncSyncCycle`.
+2. Als u een build vóór 1.1.281 gebruikt en vervolgens stopt met het stoppen van de scheduler, wordt de huidige connector van de huidige taak niet gestopt. Voer de volgende acties uit om te voor komen dat de connector wordt gestopt: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+   * Start de **synchronisatie service** vanuit het menu Start. Ga naar **connectors**, Markeer de connector met de status **actief**en selecteer **stoppen** in de acties.
 
-De scheduler nog steeds actief is en start opnieuw op de eerstvolgende gelegenheid installeren.
+De scheduler is nog actief en start opnieuw op de volgende mogelijkheid.
 
-## <a name="custom-scheduler"></a>Aangepaste scheduler
-De cmdlets die zijn beschreven in deze sectie zijn alleen beschikbaar in de build [1.1.130.0](reference-connect-version-history.md#111300) en hoger.
+## <a name="custom-scheduler"></a>Aangepaste planner
+De cmdlets die in deze sectie worden beschreven, zijn alleen beschikbaar in build [1.1.130.0](reference-connect-version-history.md#111300) en hoger.
 
-Als de ingebouwde scheduler niet voldoet aan uw vereisten, kunt u de Connectors die met behulp van PowerShell kunt plannen.
+Als de ingebouwde scheduler niet aan uw vereisten voldoet, kunt u de connectors plannen met behulp van Power shell.
 
 ### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
-Voor een Connector op deze manier kunt u een profiel starten:
+U kunt op deze manier een profiel voor een connector starten:
 
 ```
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-De namen te gebruiken voor [Connector namen](how-to-connect-sync-service-manager-ui-connectors.md) en [profielnamen uitvoeren](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) kunt u vinden in de [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md).
+De namen die moeten worden gebruikt voor [connector namen](how-to-connect-sync-service-manager-ui-connectors.md) en [Run profile-namen](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles) , vindt u in de [Synchronization Service Manager-gebruikers interface](how-to-connect-sync-service-manager-ui.md).
 
-![Uitvoeringsprofiel aanroepen](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
+![Uitvoerings profiel aanroepen](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
-De `Invoke-ADSyncRunProfile` cmdlet synchroon is, dat wil zeggen, deze niet terug besturingselement totdat de Connector de bewerking is voltooid, met of zonder een fout.
+De cmdlet `Invoke-ADSyncRunProfile` is synchroon, dat wil zeggen dat er geen besturings element wordt geretourneerd totdat de connector de bewerking heeft voltooid, of met een fout.
 
-Wanneer u uw Connectors plant, is de aanbeveling om ze in de volgende volgorde:
+Wanneer u uw connectors plant, moet u deze plannen in de volgende volg orde:
 
-1. (Volledige/Delta) Importeren uit on-premises adreslijsten, zoals Active Directory
-2. (Volledige/Delta) Importeren uit Azure AD
-3. (Volledige/Delta) Synchronisatie van on-premises adreslijsten, zoals Active Directory
-4. (Volledige/Delta) Synchronisatie van Azure AD
+1. (Volledig/Delta) Importeren uit on-premises directory's, zoals Active Directory
+2. (Volledig/Delta) Importeren vanuit Azure AD
+3. (Volledig/Delta) Synchronisatie van on-premises directory's, zoals Active Directory
+4. (Volledig/Delta) Synchronisatie vanuit Azure AD
 5. Exporteren naar Azure AD
-6. Exporteren naar on-premises adreslijsten, zoals Active Directory
+6. Exporteren naar on-premises directory's, zoals Active Directory
 
-Deze volgorde is hoe de Connectors in de ingebouwde scheduler wordt uitgevoerd.
+Deze volg orde is de manier waarop de connectors worden uitgevoerd met de ingebouwde scheduler.
 
 ### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-U kunt ook de synchronisatie-engine om te controleren of het is bezet of niet-actieve bewaken. Deze cmdlet retourneert een lege verzameling resultaten als de synchronisatie-engine niet actief is en niet een Connector wordt uitgevoerd. Als een Connector wordt uitgevoerd, retourneert deze de naam van de Connector.
+U kunt ook de synchronisatie-engine bewaken om te zien of deze bezet is of niet-actief is. Met deze cmdlet wordt een leeg resultaat geretourneerd als de synchronisatie-engine niet actief is en geen connector wordt uitgevoerd. Als een connector wordt uitgevoerd, wordt de naam van de connector geretourneerd.
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
-![Uitvoeringsstatus van de connector](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
-In de bovenstaande afbeelding is de eerste regel van een status waarbij de synchronisatie-engine niet actief is. De tweede regel uit als de Azure AD-Connector wordt uitgevoerd.
+![Uitvoerings status van connector](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
+In de bovenstaande afbeelding is de eerste regel van een staat waarin de synchronisatie-engine niet actief is. De tweede regel van wanneer de Azure AD-connector wordt uitgevoerd.
 
-## <a name="scheduler-and-installation-wizard"></a>Wizard Scheduler en installatie
-Als u de installatiewizard wordt gestart, klikt u vervolgens de planning tijdelijk onderbroken. Dit gedrag is omdat deze aangenomen dat wordt u configuratiewijzigingen aanbrengt en deze instellingen kunnen niet worden toegepast als de synchronisatie-engine actief wordt uitgevoerd. Om deze reden niet laat de installatiewizard openen omdat deze de synchronisatie-engine stopt van het uitvoeren van acties die synchronisatie.
+## <a name="scheduler-and-installation-wizard"></a>Wizard Planning en installatie
+Als u de installatie wizard start, wordt de scheduler tijdelijk onderbroken. Dit gedrag is omdat wordt aangenomen dat u configuratie wijzigingen aanbrengt en deze instellingen kunnen niet worden toegepast als de synchronisatie-engine actief wordt uitgevoerd. Zorg er daarom niet voor dat de installatie wizard wordt geopend omdat de synchronisatie-engine stopt met het uitvoeren van synchronisatie acties.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md) configuratie.
+Meer informatie over de [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md) configuratie.
 
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

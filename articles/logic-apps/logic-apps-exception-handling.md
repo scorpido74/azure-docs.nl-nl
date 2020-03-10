@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358710"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -21,7 +21,7 @@ De manier waarop elke integratie architectuur op de juiste wijze downtime of pro
 
 <a name="retry-policies"></a>
 
-## <a name="retry-policies"></a>Beleid opnieuw proberen
+## <a name="retry-policies"></a>Beleid voor opnieuw proberen
 
 Voor de meest eenvoudige uitzonde ring en fout afhandeling kunt u een *beleid voor opnieuw proberen* gebruiken in elke actie of trigger waarbij wordt ondersteund, bijvoorbeeld [http-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger). Met een beleid voor opnieuw proberen wordt aangegeven of en hoe de actie of de trigger een aanvraag opnieuw probeert wanneer de oorspronkelijke aanvraag een time-out heeft of mislukt. Dit is een aanvraag die resulteert in een 408-, 429-of 5xx-antwoord. Als er geen ander beleid voor opnieuw proberen wordt gebruikt, wordt het standaard beleid gebruikt.
 
@@ -72,16 +72,16 @@ Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `i
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
 | <*opnieuw proberen-beleid type*> | Tekenreeks | Het type beleid voor opnieuw proberen dat u wilt gebruiken: `default`, `none`, `fixed`of `exponential` |
-| <*retry-interval*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. |
-| <*retry-attempts*> | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt |
+| <*interval voor opnieuw proberen*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. |
+| <*nieuwe pogingen:* > | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt |
 ||||
 
 *Beschrijving*
 
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*minimum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
-| <*maximum-interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*Mini maal interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*maximum interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 ||||
 
 Hier vindt u meer informatie over de verschillende beleids typen.
@@ -112,7 +112,7 @@ Hoewel niet expliciet is gedefinieerd in uw actie of trigger, is dit het standaa
 }
 ```
 
-### <a name="none"></a>Geen
+### <a name="none"></a>None
 
 Als u wilt opgeven dat bij de actie of trigger geen mislukte aanvragen worden uitgevoerd, stelt u het > <*opnieuw proberen*in op `none`.
 
@@ -152,7 +152,7 @@ In deze tabel ziet u hoe Logic Apps een uniforme wille keurige variabele in het 
 | Aantal nieuwe pogingen | Minimum interval | Maximum interval |
 |--------------|------------------|------------------|
 | 1 | Max (0, <*Mini maal interval*>) | min (interval, <*maximum-interval*>) |
-| 2 | max(interval, <*minimum-interval*>) | min (2 * interval, <*maximum-interval*>) |
+| 2 | Max (interval, <*Mini maal interval*>) | min (2 * interval, <*maximum-interval*>) |
 | 3 | Max (2 * interval, <*Mini maal interval*>) | min (4 * interval, <*maximum-interval*>) |
 | 4 | Max (4 * interval, <*Mini maal interval*>) | min (8 * interval, <*maximum-interval*>) |
 | .... | .... | .... |

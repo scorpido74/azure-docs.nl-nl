@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366878"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Gebruik AES-128 dynamische versleuteling en de key delivery service
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Aan het einde van het artikel vindt u een volledig [.net-voor beeld](media-servi
 
 De volgende afbeelding geeft een illustratie van de eerder beschreven werkstroom. Hier wordt de token voor verificatie gebruikt.
 
-![Beschermen met AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![Beveiligen met AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 De rest van dit artikel bevat uitleg, code voorbeelden en koppelingen naar onderwerpen waarin wordt uitgelegd hoe u de eerder beschreven taken kunt uitvoeren.
 

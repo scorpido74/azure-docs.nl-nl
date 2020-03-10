@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593203"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374578"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Zelfstudie: Azure Container Registry implementeren en gebruiken
 
@@ -105,7 +105,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Het kan enkele minuten duren voordat de installatiekopie naar ACR is gepusht.
 
-## <a name="list-images-in-registry"></a>Installatiekopieën vermelden in het register
+## <a name="list-images-in-registry"></a>Installatiekopieën in het register weergeven
 
 Als u een lijst met installatie kopieën wilt retour neren die naar uw ACR-exemplaar zijn gepusht, gebruikt u de opdracht [AZ ACR Repository List][az-acr-repository-list] . Geef als volgt uw eigen `<acrName>` op:
 
