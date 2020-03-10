@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431249"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945462"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Snelstartgids: een Java-lente toepassing starten met Azure CLI
 
@@ -74,7 +74,7 @@ az extension add --name spring-cloud
 4. Open een Azure CLI-venster en voer de volgende opdrachten uit om een exemplaar van de Azure lente-Cloud in te richten.
 
     ```azurecli
-        az spring-cloud create -n <service name> -g <resource group name>
+        az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
     De implementatie van het service-exemplaar duurt ongeveer vijf minuten.
@@ -82,7 +82,7 @@ az extension add --name spring-cloud
 5. Stel de standaard naam van de resource groep en de naam van het cluster in met behulp van de volgende opdrachten:
 
     ```azurecli
-        az configure --defaults group=<service group name>
+        az configure --defaults group=<resource group name>
         az configure --defaults spring-cloud=<service instance name>
     ```
 
@@ -93,8 +93,8 @@ az extension add --name spring-cloud
 
 Werk uw config-server bij met de locatie van de Git-opslag plaats voor het project:
 
-```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
+```azurecli
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]
@@ -158,7 +158,7 @@ az spring-cloud app show --name gateway | grep url
 ```
 Windows:
 ```azurecli
-az spring-cloud app show --name gateway | findstr url
+az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
 3. Ga naar de URL die door de vorige opdracht is gegeven om de PiggyMetrics-toepassing uit te voeren.
     Scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) ![

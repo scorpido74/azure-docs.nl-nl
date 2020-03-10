@@ -2,19 +2,19 @@
 title: Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen
 description: Het zoeken en verwijderen van niet-gekoppelde, door Azure beheerde en onbeheerde (Vhd's/pagina-blobs) schijven met behulp van Azure CLI.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e475fcc5812177366b8c27ae2cca6b45d6c00709
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf48c53e7b5c1cc8537abeda164460de66abddb
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036158"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945151"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen met de Azure CLI
 Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zijn gekoppeld aan de VM standaard niet verwijderd. Deze functie helpt gegevens verlies te voor komen vanwege de onbedoelde verwijdering van Vm's. Nadat een virtuele machine is verwijderd, blijft u betalen voor niet-gekoppelde schijven. In dit artikel leest u hoe u niet-gekoppelde schijven kunt zoeken en verwijderen en overbodige kosten kunt verlagen. 
 
 

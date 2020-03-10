@@ -4,17 +4,17 @@ description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-f
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117583"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245455"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -140,18 +140,14 @@ Wanneer het kostenbeleid is ingesteld op **Ja**, kunnen abonnementsgebruikers di
 
 Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnementsgebruik geldt, kosten op basis van Betalen naar gebruik-tarieven weergegeven. Het gebruik van de reservering wordt weergegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weergegeven in het abonnementsbereik.
 
-Als u de kosten voor de tenant van de klant wilt weergeven, opent u **Cost Management + facturering** en selecteert u de relevante factureringsrekening van de Microsoft-partnerovereenkomst.
 
-![Selecteer een factureringsrekening](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Klantkosten weergeven
 
-Onder **Facturering** selecteert u **Azure-abonnementen** en selecteert u vervolgens een klant.
-
-![Selecteer een klant met een Azure-abonnement](./media/get-started-partners/subscriptions-select-customer.png)
-
-Selecteer **Kostenanalyse** en bekijk de kosten.
-Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
+Als u de kosten voor de tenant van de klant wilt weergeven, opent u **Kostenbeheer en facturering**. Selecteer **Kostenanalyse** en wijzig vervolgens het bereik naar het tenant-abonnement van de klant om de kosten te bekijken.
 
 ![Kostenanalyse als een klant weergeven ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
 
 Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de RBAC-bereiken worden nul kosten weergegeven. Kosten voor gereserveerde instanties worden alleen weergegeven in factureringsbereiken waar de aankopen zijn gedaan.
 

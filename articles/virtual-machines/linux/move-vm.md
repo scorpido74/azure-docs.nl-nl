@@ -1,36 +1,26 @@
 ---
-title: Een Linux-VM verplaatsen in azure
-description: Een Linux-VM verplaatsen naar een ander Azure-abonnement of resource groep in het Resource Manager-implementatie model.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Een virtuele machine verplaatsen met behulp van de Azure CLI
+description: Verplaats een virtuele machine naar een ander Azure-abonnement of resource groep met behulp van de Azure CLI.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979028"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944592"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Een Linux-VM verplaatsen naar een ander abonnement of een andere resource groep
-In dit artikel wordt uitgelegd hoe u een virtuele Linux-machine (VM) verplaatst tussen resource groepen of abonnementen. Het verplaatsen van een virtuele machine tussen abonnementen kan handig zijn als u een virtuele machine in een persoonlijk abonnement hebt gemaakt en u deze nu wilt verplaatsen naar het abonnement van uw bedrijf.
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Een VM verplaatsen naar een ander abonnement of een andere resource groep
+In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) verplaatst tussen resource groepen of abonnementen. Het verplaatsen van een virtuele machine tussen abonnementen kan handig zijn als u een virtuele machine in een persoonlijk abonnement hebt gemaakt en u deze nu wilt verplaatsen naar het abonnement van uw bedrijf.
 
 > [!IMPORTANT]
->U kunt Azure Managed Disks op dit moment niet verplaatsen.
->
 >Nieuwe resource-Id's worden gemaakt als onderdeel van de verplaatsing. Nadat de VM is verplaatst, moet u uw hulp middelen en scripts bijwerken om de nieuwe resource-Id's te gebruiken.
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>De Azure CLI gebruiken om een virtuele machine te verplaatsen
 

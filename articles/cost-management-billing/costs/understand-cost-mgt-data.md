@@ -4,23 +4,25 @@ description: Dit artikel helpt u om een beter beeld te krijgen van gegevens die 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560606"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245378"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
 Dit artikel helpt u beter inzicht te krijgen in de kosten en gebruiksgegevens van Azure die worden opgenomen in Azure Cost Management. Er wordt uitgelegd hoe vaak gegevens worden verwerkt, verzameld, weergegeven en afgesloten. U wordt maandelijks gefactureerd voor Azure-gebruik. Hoewel factureringscycli maandelijkse perioden zijn, verschillen de begin- en einddatums van een cyclus per abonnementstype. Hoe vaak Cost Management gebruiksgegevens ontvangt, is afhankelijk van verschillende factoren. Hoe lang het duurt om de gegevens te verwerken en hoe vaak Azure-services gebruik doorgeven aan het factureringssysteem zijn voorbeelden van dergelijke factoren.
 
 Cost Management omvat alle gebruik en aankopen, inclusief reserveringen en aanbiedingen van derden voor EA-accounts (Enterprise Agreement). Accounts van een Microsoft-gebruikersovereenkomst en individuele abonnementen met betalen per gebruik-tarieven omvatten alleen verbruik van Azure- en Marketplace-services. Ondersteuning en andere kosten zijn niet inbegrepen. Kosten worden geschat totdat er een factuur wordt gegenereerd en er wordt geen rekening gehouden met tegoeden.
+
+Als u een nieuw abonnement hebt, kunt u niet direct de Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
 ## <a name="supported-microsoft-azure-offers"></a>Ondersteunde Microsoft Azure-aanbiedingen
 

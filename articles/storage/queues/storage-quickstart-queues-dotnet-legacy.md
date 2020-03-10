@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: f51038b1e79a699c15ad2fd969d75c09a2530f6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473855"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943561"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Snelstartgids: de Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren
 
@@ -35,7 +35,7 @@ Zie [Choose between .NET Core and .NET Framework for server apps](https://docs.m
 ### <a name="linux"></a>Linux
 
 - Installeer [.NET Core voor Linux](https://www.microsoft.com/net/download/linux)
-- Installeer desgewenst [Visual Studio Code](https://www.visualstudio.com/) en de [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)
+- Installeer desgewenst [Visual Studio Code](https://www.visualstudio.com/) en de [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ### <a name="macos"></a>macOS
 
@@ -220,7 +220,7 @@ Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, pee
 Console.WriteLine();
 ```
 
-### <a name="dequeue-a-message"></a>Een bericht uit de wachtrij halen
+### <a name="dequeue-a-message"></a>Een bericht uit de wachtrij verwijderen
 
 Het voorbeeld laat ook zien hoe u een bericht uit de wachtrij kunt halen. Wanneer u een bericht uit de wachtrij weghaalt, haalt u het bericht vooraan in de wachtrij op en maakt u het tijdelijk onzichtbaar voor andere clients. Standaard blijft een bericht 30 seconden lang onzichtbaar. Gedurende deze tijd kan uw code het bericht verwerken. Om het bericht definitief uit de wachtrij te halen, verwijdert u het bericht onmiddellijk na verwerking, zodat een andere client hetzelfde bericht niet uit de wachtrij haalt.
 

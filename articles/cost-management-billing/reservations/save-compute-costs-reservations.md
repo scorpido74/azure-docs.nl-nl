@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500577"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272210"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -42,6 +42,7 @@ Service-abonnementen:
 - **Azure Database for PostgreSQL**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de PostgreSQL Database-servers.
 - **Azure Database for MariaDB**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de MariaDB Database-server.
 - **Azure Data Explorer**: onder een reservering vallen de wijzigingen in markeringen. Onder een reservering vallen niet de kosten voor berekeningen, netwerk of opslag die betrekking hebben op de clusters.
+- **Azure Cache voor Redis** - alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor netwerk of opslag die betrekking hebben op de Redis-cache-exemplaren.
 - **Premium SSD Managed Disks**: een reservering wordt gemaakt voor een opgegeven schijf-SKU. 
 
 Softwareabonnementen:

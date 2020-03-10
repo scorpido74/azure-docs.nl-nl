@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276510"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942855"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Tenant beperkingen gebruiken om de toegang tot SaaS-Cloud toepassingen te beheren
 
@@ -104,6 +104,9 @@ Hoewel de configuratie van Tenant beperkingen wordt uitgevoerd op de bedrijfs pr
 3. Selecteer in de kop **andere mogelijkheden** de optie **Tenant beperkingen**.
 
 De beheerder voor de Tenant die is opgegeven als de beperkte-toegangs context Tenant kan dit rapport gebruiken om te zien of aanmeldingen zijn geblokkeerd vanwege het beleid voor Tenant beperkingen, met inbegrip van de identiteit die wordt gebruikt en de doel directory-ID. Aanmeldingen worden opgenomen als de instelling van de beperking van de tenant is de tenant van de gebruiker of de resource-tenant voor de aanmelding.
+
+> [!NOTE]
+> Het rapport kan beperkte informatie bevatten, zoals de doelmap-ID, wanneer een gebruiker die zich in een andere Tenant bevindt dan de niet-toegankelijke context-aanmelding. In dit geval wordt de door de gebruiker geïdentificeerde informatie, zoals naam en user principal name, gemaskeerd om gebruikers gegevens in andere tenants te beveiligen.
 
 Net als andere rapporten in Azure portal, kunt u filters gebruiken om op te geven van het bereik van uw rapport. U kunt filteren op een bepaald tijds interval, gebruiker, toepassing, client of status. Als u de knop **kolommen** selecteert, kunt u ervoor kiezen om gegevens weer te geven met een combi natie van de volgende velden:
 

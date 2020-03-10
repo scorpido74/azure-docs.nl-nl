@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358414"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Gegevens uit een SAP-tabel kopiëren met behulp van Azure Data Factory
 
@@ -72,7 +72,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor de SAP BW open hub gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | `type` | De eigenschap `type` moet worden ingesteld op `SapTable`. | Ja |
 | `server` | De naam van de server waarop het SAP-exemplaar zich bevindt.<br/>Gebruiken om verbinding te maken met een SAP-toepassings server. | Nee |
@@ -90,7 +90,7 @@ De volgende eigenschappen worden ondersteund voor de SAP BW open hub gekoppelde 
 | `sncPartnerName` | De SNC naam van de communicatie partner om toegang te krijgen tot de SAP-server waarop de tabel zich bevindt.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. | Nee |
 | `sncLibraryPath` | De bibliotheek van het externe beveiligings product voor toegang tot de SAP-server waarop de tabel zich bevindt.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. | Nee |
 | `sncQop` | De SNC kwaliteit van het beveiligings niveau dat moet worden toegepast.<br/>Van toepassing wanneer `sncMode` is ingeschakeld. <br/>Toegestane waarden zijn `1` (authenticatie), `2` (integriteit), `3` (privacy), `8` (standaard), `9` (maximum). | Nee |
-| `connectVia` | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration runtime is vereist, zoals eerder is vermeld in [vereisten](#prerequisites). |Ja |
+| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration runtime is vereist, zoals eerder is vermeld in [vereisten](#prerequisites). |Ja |
 
 **Voor beeld 1: verbinding maken met een SAP-toepassings server**
 
@@ -180,7 +180,7 @@ Zie [gegevens sets](concepts-datasets-linked-services.md)voor een volledige lijs
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens van en naar de gekoppelde SAP BW hub-service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | `type` | De eigenschap `type` moet worden ingesteld op `SapTableResource`. | Ja |
 | `tableName` | De naam van de SAP-tabel waaruit de gegevens moeten worden gekopieerd. | Ja |
@@ -212,7 +212,7 @@ Voor een volledige lijst van de secties en eigenschappen voor het definiëren va
 
 Als u gegevens wilt kopiëren uit een SAP-tabel, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap                         | Beschrijving                                                  | Verplicht |
+| Eigenschap                         | Beschrijving                                                  | Vereist |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | De eigenschap `type` moet worden ingesteld op `SapTableSource`.         | Ja      |
 | `rowCount`                         | Het aantal rijen dat moet worden opgehaald.                              | Nee       |

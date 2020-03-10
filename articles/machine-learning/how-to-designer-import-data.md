@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138153"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942287"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning Designer (preview)
 
@@ -56,6 +56,8 @@ We raden u aan om gegevens sets te gebruiken voor het importeren van informatie,
 
 Zie de [referentie pagina gegevens importeren](algorithm-module-reference/import-data.md)voor gedetailleerde informatie over het gebruik van de module gegevens importeren.
 
+[!NOTE]
+> Als de gegevens veel kolommen bevatten, kunt u de module validatie is mislukt vanwege grootte beperking in gegevens importeren. De reden hiervoor is dat de kolommen de lengte van de maxmium-module zonder code ring uitsluiten. In dit geval is het raadzaam om [de gegevensset te registreren in de gebruikers interface van gegevens sets](how-to-create-register-datasets.md#use-the-ui), waardoor de fout kan worden voor komen.  
 
 ## <a name="supported-sources"></a>Ondersteunde bronnen
 

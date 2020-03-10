@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6b7ceca196831484e8f49482b8a18ac8648cac6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585472"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933766"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
 
-In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie voor meer informatie over het gebruik van de door Voer voor het inrichten van containers en data bases door [Voer voor het maken van een doorvoer snelheid voor containers en data bases](set-throughput.md) . U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
+In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie het artikel [aanvragen voor het inrichten van de doorvoer snelheid voor containers en data bases](set-throughput.md) voor meer informatie over het gebruik van container niveau en door Voer op database niveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Doorvoer inrichten met behulp van de Azure-portal
 
@@ -65,7 +65,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ### <a name="net-v3-sdk"></a>.Net v3-SDK
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs" id="DatabaseCreateWithThroughput":::
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
 Een vergelijk bare opdracht kan worden uitgevoerd via elk CQL-compatibel stuur programma. 

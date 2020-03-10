@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727107"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942960"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database beveiligings functies    
 Azure SQL Database biedt een relationele database service in Azure. SQL Database heeft een eigen set beveiligings mogelijkheden om klant gegevens te beschermen en krachtige beveiligings functies te bieden die klanten verwachten van een relationele database service. Deze mogelijkheden zijn gebaseerd op de besturings elementen die worden overgenomen van Azure.
@@ -62,9 +62,9 @@ Omdat de infrastructuur controller (FC) de centrale orchestrator van de Azure-in
 ### <a name="vlan-isolation"></a>VLAN-isolatie
 Het productie netwerk van Azure wordt logisch gescheiden in drie primaire VLAN'S:
 
-- Het belangrijkste VLAN: Verbindt niet-vertrouwde klant knooppunten.
-- Het FC-VLAN: Bevat vertrouwde FCs en ondersteunende systemen.
-- Het VLAN van het apparaat: Bevat vertrouwde netwerk-en andere infrastructuur apparaten.
+- Het hoofd-VLAN: verbindt niet-vertrouwde klant knooppunten.
+- Het FC-VLAN: bevat vertrouwde FCs en ondersteunende systemen.
+- Het VLAN van het apparaat: bevat vertrouwde netwerk-en andere infrastructuur apparaten.
 
 ### <a name="packet-filtering"></a>Pakket filtering
 De IPFilter en de software firewalls die zijn geïmplementeerd in het basis besturingssysteem en gast besturingssysteem van de knoop punten, leggen connectiviteits beperkingen af en voor komen niet-geautoriseerd verkeer tussen Vm's.
@@ -75,7 +75,7 @@ De isolatie van het basis besturingssysteem van de virtuele gast-Vm's en de gast
 ### <a name="types-of-rules-on-firewalls"></a>Typen regels op firewalls
 Een regel wordt gedefinieerd als:
 
-{Security Response Center (SRC) IP, src-poort, doel-IP, doel poort, doel protocol, in/uit, stateful/stateless, stateful flow time-out}.
+{Src IP, src-poort, doel-IP, doel poort, doel protocol, in/uit, stateful/stateless, stateful flow time-out}.
 
 Synchrone SYN-pakketten (inactief teken) zijn alleen toegestaan in of uit als een van de regels dit toestaat. Voor TCP maakt Azure gebruik van stateless regels waarbij het principe alleen alle niet-SYN-pakketten naar of van de virtuele machine toestaat. De Security-locatie is dat elke host-stack kan leiden tot het negeren van een niet-SYN als er eerder geen SYN-pakket is gedetecteerd. Het TCP-protocol zelf is stateful en in combi natie met de op stateless SYN gebaseerde regel wordt een algemeen gedrag van een stateful implementatie gerealiseerd.
 
@@ -104,5 +104,3 @@ Zie voor meer informatie over de mogelijkheden van micro soft voor het beveilige
 - [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
 - [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
 - [Azure-klant gegevens beveiliging](protection-customer-data.md)
-
-

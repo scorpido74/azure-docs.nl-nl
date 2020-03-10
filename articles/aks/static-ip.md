@@ -3,13 +3,13 @@ title: Gebruik een statisch IP-adres en een DNS-label met de Azure Kubernetes-se
 description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes service (AKS) load balancer.
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593594"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943568"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
 
@@ -67,7 +67,7 @@ Voordat u een service maakt, moet u ervoor zorgen dat de service-principal die w
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -97,7 +97,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Een DNS-label op de service Toep assen
 
-Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de aantekening van de service gebruiken `service.beta.kubernetes.io/azure-dns-label-name` om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De aantekening waarde moet uniek zijn binnen de Azure-locatie, dus wordt aanbevolen een voldoende gekwalificeerd label te gebruiken.   
+Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de aantekening van de service gebruiken `service.beta.kubernetes.io/azure-dns-label-name` om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De annotatie waarde moet uniek zijn binnen de Azure-locatie. Daarom is het raadzaam om een voldoende gekwalificeerd label te gebruiken.   
 
 Azure voegt vervolgens automatisch een standaard subnet toe, zoals `<location>.cloudapp.azure.com` (waarbij locatie de regio is die u hebt geselecteerd), naar de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Bijvoorbeeld:
 

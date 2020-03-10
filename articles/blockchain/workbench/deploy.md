@@ -4,12 +4,12 @@ description: Azure Block Chain Workbench preview implementeren
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189204"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943208"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
 
@@ -135,7 +135,7 @@ Als de implementatie van de Blockchain Workbench is voltooid, bevat een nieuwe r
 
     ![Essentiële informatie over app service](media/deploy/app-service.png)
 
-Als u een aangepaste domein naam wilt koppelen aan block Chain Workbench, raadpleegt u [een aangepaste domein naam configureren voor een web-app in azure app service met behulp van Traffic Manager](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Als u een aangepaste domein naam wilt koppelen aan block Chain Workbench, raadpleegt u [een aangepaste domein naam configureren voor een web-app in azure app service met behulp van Traffic Manager](../../app-service/configure-domain-traffic-manager.md).
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD-configuratie script
 

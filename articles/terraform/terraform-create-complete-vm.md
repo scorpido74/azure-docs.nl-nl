@@ -1,36 +1,26 @@
 ---
-title: Terraform gebruiken om een volledige virtuele Linux-machine in azure te maken
-description: Meer informatie over het gebruik van terraform voor het maken en beheren van een volledige virtuele Linux-machine omgeving in azure
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: 'Quick Start: gebruik terraform om een volledige virtuele Linux-machine in azure te maken'
+description: In deze Quick Start gebruikt u terraform voor het maken en beheren van een volledige virtuele Linux-machine omgeving in azure
+keywords: virtuele machine voor Azure devops terraform Linux VM
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 03974d68477855d4ff55b7179312c91ba7d0d055
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472737"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943529"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Een volledige infra structuur voor virtuele Linux-machines maken in azure met terraform
+# <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Snelstartgids: een volledige infra structuur voor virtuele Linux-machines maken in azure met terraform
 
 Met terraform kunt u volledige infrastructuur implementaties definiëren en maken in Azure. U bouwt terraform-sjablonen op in een Human-Lees bare indeling waarmee Azure-resources op een consistente en verreproduceerde manier worden gemaakt en geconfigureerd. In dit artikel wordt beschreven hoe u een volledige Linux-omgeving en ondersteunende resources maakt met terraform. U kunt ook leren hoe u [terraform installeert en configureert](terraform-install-configure.md).
 
 > [!NOTE]
 > Neem voor terraform specifieke ondersteuning contact op met terraform met behulp van een van hun community-kanalen:
 >
->   • De [sectie terraform](https://discuss.hashicorp.com/c/terraform-core) van de portal van de Community bevat vragen, use cases en handige patronen.
+>    * De [sectie terraform](https://discuss.hashicorp.com/c/terraform-core) van de portal van de Community bevat vragen, use cases en handige patronen.
 >
->   • Voor vragen over de provider gaat u naar de sectie [terraform providers](https://discuss.hashicorp.com/c/terraform-providers) van de portal van de community.
+>    * Ga naar de sectie [terraform providers](https://discuss.hashicorp.com/c/terraform-providers) van de community-portal voor vragen met betrekking tot providers.
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Een Azure-verbinding en-resource groep maken
@@ -44,6 +34,11 @@ De sectie `provider` vertelt terraform een Azure-provider te gebruiken. Zie [ter
 
 ```hcl
 provider "azurerm" {
+    # The "feature" block is required for AzureRM provider 2.x. 
+    # If you are using version 1.x, the "features" block is not allowed.
+    version = "~>2.0"
+    features {}
+    
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_secret   = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -147,7 +142,6 @@ resource "azurerm_network_interface" "myterraformnic" {
     name                        = "myNIC"
     location                    = "eastus"
     resource_group_name         = azurerm_resource_group.myterraformgroup.name
-    network_security_group_id   = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -159,6 +153,12 @@ resource "azurerm_network_interface" "myterraformnic" {
     tags = {
         environment = "Terraform Demo"
     }
+}
+
+# Connect the security group to the network interface
+resource "azurerm_network_interface_security_group_association" "example" {
+    network_interface_id      = azurerm_network_interface.myterraformnic.id
+    network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 }
 ```
 
@@ -201,18 +201,17 @@ De laatste stap bestaat uit het maken van een virtuele machine en het gebruik va
  SSH-sleutel gegevens vindt u in de sectie *ssh_keys* . Geef een geldige open bare SSH-sleutel op in het veld *key_data* .
 
 ```hcl
-resource "azurerm_virtual_machine" "myterraformvm" {
+resource "azurerm_linux_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
     resource_group_name   = azurerm_resource_group.myterraformgroup.name
     network_interface_ids = [azurerm_network_interface.myterraformnic.id]
-    vm_size               = "Standard_DS1_v2"
+    size                  = "Standard_DS1_v2"
 
-    storage_os_disk {
+    os_disk {
         name              = "myOsDisk"
         caching           = "ReadWrite"
-        create_option     = "FromImage"
-        managed_disk_type = "Premium_LRS"
+        storage_account_type = "Premium_LRS"
     }
 
     storage_image_reference {
@@ -222,22 +221,17 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         version   = "latest"
     }
 
-    os_profile {
-        computer_name  = "myvm"
-        admin_username = "azureuser"
-    }
-
-    os_profile_linux_config {
-        disable_password_authentication = true
-        ssh_keys {
-            path     = "/home/azureuser/.ssh/authorized_keys"
-            key_data = "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
-        }
+    computer_name  = "myvm"
+    admin_username = "azureuser"
+    disable_password_authentication = true
+        
+    admin_ssh_key {
+        username       = "azureuser"
+        public_key     = file("/home/azureuser/.ssh/authorized_keys")
     }
 
     boot_diagnostics {
-        enabled     = "true"
-        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
+        storage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {
@@ -253,13 +247,18 @@ Als u al deze secties samen wilt brengen en terraform in actie wilt zien, maakt 
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
+    # The "feature" block is required for AzureRM provider 2.x. 
+    # If you are using version 1.x, the "features" block is not allowed.
+    version = "~>2.0"
+    features {}
+
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_secret   = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     tenant_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 
-# Create a resource group if it doesn’t exist
+# Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
@@ -329,7 +328,6 @@ resource "azurerm_network_interface" "myterraformnic" {
     name                      = "myNIC"
     location                  = "eastus"
     resource_group_name       = azurerm_resource_group.myterraformgroup.name
-    network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -341,6 +339,12 @@ resource "azurerm_network_interface" "myterraformnic" {
     tags = {
         environment = "Terraform Demo"
     }
+}
+
+# Connect the security group to the network interface
+resource "azurerm_network_interface_security_group_association" "example" {
+    network_interface_id      = azurerm_network_interface.myterraformnic.id
+    network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 }
 
 # Generate random text for a unique storage account name
@@ -367,43 +371,37 @@ resource "azurerm_storage_account" "mystorageaccount" {
 }
 
 # Create virtual machine
-resource "azurerm_virtual_machine" "myterraformvm" {
+resource "azurerm_linux_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
     resource_group_name   = azurerm_resource_group.myterraformgroup.name
     network_interface_ids = [azurerm_network_interface.myterraformnic.id]
-    vm_size               = "Standard_DS1_v2"
+    size                  = "Standard_DS1_v2"
 
-    storage_os_disk {
+    os_disk {
         name              = "myOsDisk"
         caching           = "ReadWrite"
-        create_option     = "FromImage"
-        managed_disk_type = "Premium_LRS"
+        storage_account_type = "Premium_LRS"
     }
 
-    storage_image_reference {
+    source_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
         sku       = "16.04.0-LTS"
         version   = "latest"
     }
 
-    os_profile {
-        computer_name  = "myvm"
-        admin_username = "azureuser"
-    }
-
-    os_profile_linux_config {
-        disable_password_authentication = true
-        ssh_keys {
-            path     = "/home/azureuser/.ssh/authorized_keys"
-            key_data = "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
-        }
+    computer_name  = "myvm"
+    admin_username = "azureuser"
+    disable_password_authentication = true
+        
+    admin_ssh_key {
+        username       = "azureuser"
+        public_key     = file("/home/azureuser/.ssh/authorized_keys")
     }
 
     boot_diagnostics {
-        enabled = "true"
-        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
+        storage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {
@@ -436,8 +434,8 @@ persisted to local or remote state storage.
 
 ...
 
-Note: You didn’t specify an “-out” parameter to save this plan, so when
-“apply” is called, Terraform can’t guarantee this is what will execute.
+Note: You didn't specify an "-out" parameter to save this plan, so when
+"apply" is called, Terraform can't guarantee this is what will execute.
   + azurerm_resource_group.myterraform
       <snip>
   + azurerm_virtual_network.myterraformnetwork
@@ -474,4 +472,5 @@ ssh azureuser@<publicIps>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt een basis infrastructuur gemaakt in azure met behulp van terraform. Voor complexere scenario's, met inbegrip van voor beelden die load balancers en virtuele-machine schaal sets gebruiken, raadpleegt u talrijke [terraform-voor beelden voor Azure](https://github.com/hashicorp/terraform/tree/master/examples). Zie de [terraform-documentatie](https://www.terraform.io/docs/providers/azurerm/index.html)voor een actuele lijst met ondersteunde Azure-providers.
+> [!div class="nextstepaction"]
+> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)

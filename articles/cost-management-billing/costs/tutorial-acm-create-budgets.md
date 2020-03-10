@@ -4,17 +4,17 @@ description: Deze zelfstudie helpt u bij het plannen en verantwoorden van de kos
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/23/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582382"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251223"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -40,7 +40,9 @@ In deze zelfstudie leert u het volgende:
 
 Budgetten worden ondersteund voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u budgetten wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
- Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven. Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben. U kunt afzonderlijke budgetten voor EA-abonnementen en resourcegroepen maken. U kunt echter geen budgetten voor EA-factureringsrekeningen maken.
+Als u een nieuw abonnement hebt, kunt u niet direct een budget maken of andere Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
+
+Voor Azure EA-abonnementen moet u leestoegang hebben om budgetten weer te geven. Als u budgetten wilt maken en beheren, moet u de machtiging Inzender hebben. U kunt afzonderlijke budgetten voor EA-abonnementen en resourcegroepen maken. U kunt echter geen budgetten voor EA-factureringsrekeningen maken.
 
 In abonnementen worden de volgende Azure-machtigingen, of bereiken, ondersteund voor budgetten voor gebruikers en groepen. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 

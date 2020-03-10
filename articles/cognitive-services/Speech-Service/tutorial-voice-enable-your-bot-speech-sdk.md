@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394829"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -104,7 +104,7 @@ Volg deze instructies om een spraak bron te maken:
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) een spraak bron heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
@@ -125,7 +125,7 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) twee resources heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
@@ -207,7 +207,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 1. De standaard browser moet een pagina openen en weer geven met de volgende tekst: ' uw bot is klaar! '.
 1. Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal en bevestig dat er drie resources zijn:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
@@ -248,7 +248,7 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 
 Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal. Er moeten nu vier resources worden weer gegeven:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |

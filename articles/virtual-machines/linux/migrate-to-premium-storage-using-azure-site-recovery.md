@@ -1,21 +1,18 @@
 ---
 title: Migreer uw Linux-Vm's naar Azure Premium Storage met Azure Site Recovery
 description: Migreer uw bestaande virtuele machines naar Azure Premium Storage met behulp van Site Recovery. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035834"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944833"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
@@ -76,7 +73,7 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: een Recovery Services kluis maken
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 2. Selecteer **een resource maken** > **beheer** > **back-up** en **site Recovery (OMS)** . U kunt ook **bladeren** > **Recovery Services kluis** selecteren > **toevoegen**. 
 3. Geef een regio op waarnaar Vm's worden gerepliceerd. Voor het doel van de migratie in dezelfde regio selecteert u de regio waar uw bron-Vm's en bron opslag accounts zijn. 
 

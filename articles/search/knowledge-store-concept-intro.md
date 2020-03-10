@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988631"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942986"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Inleiding tot kennis winkels in azure Cognitive Search
 
@@ -97,7 +97,7 @@ De [vaardig heden](cognitive-search-working-with-skillsets.md) zijn vereist. Het
 
 Als u een kennis archief wilt maken, gebruikt u de portal of de preview-REST API (`api-version=2019-05-06-Preview`).
 
-### <a name="use-the-azure-portal"></a>De Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 De wizard **gegevens importeren** bevat opties voor het maken van een kennis archief. Voor de eerste verkenning [maakt u uw eerste kennis archief in vier stappen](knowledge-store-connect-power-bi.md).
 
@@ -131,7 +131,7 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API-referentie
+## <a name="api-reference"></a>API-verwijzing
 
 REST API versie `2019-05-06-Preview` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
 
@@ -147,3 +147,13 @@ De eenvoudigste benadering voor het maken van verrijkte documenten is [via de po
 
 > [!div class="nextstepaction"]
 > [Een kennis archief maken met behulp van Postman en REST](knowledge-store-create-rest.md)
+
+Voor meer informatie over projecties, de mogelijkheden en hoe u [deze definieert in een vaardig heden](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Prognoses in een kennis archief](knowledge-store-projection-overview.md)
+
+Begin met het [definiëren van projecties in een kennis archief](knowledge-store-projections-examples.md) voor een zelf studie over geavanceerde concepten zoals het delen, inline vorm geven en relaties.
+
+> [!div class="nextstepaction"]
+> [Projecties definiëren in een kennis archief](knowledge-store-projections-examples.md)

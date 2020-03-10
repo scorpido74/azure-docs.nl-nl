@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509272"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944301"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -37,7 +37,7 @@ Installeer eerst [Visual Studio code](https://code.visualstudio.com/) en voeg ve
 - [Azure IoT-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Docker-extensie](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - Visual Studio-extensie (s) die specifiek zijn voor de taal die u wilt ontwikkelen in:
-  - C#, inclusief Azure functions: [ C# extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - C#, inclusief Azure functions: [ C# extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   - Python: [python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   - Java: [Java Extension Pack voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C: [c/C++ uitbrei ding](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -56,7 +56,7 @@ Als u uw module-installatie kopie wilt bouwen en implementeren, moet u docker ge
 
 - [Docker Community Edition](https://docs.docker.com/install/) op uw ontwikkel computer.
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) of [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure container Registry](https://docs.microsoft.com/azure/container-registry/) of [docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > U kunt een lokale Docker-register voor prototype en in plaats van een cloud-register voor testdoeleinden gebruiken.
@@ -78,9 +78,9 @@ Als u uw module op een apparaat wilt testen, hebt u een actieve IoT-hub met ten 
 
 In de volgende stappen wordt uitgelegd hoe u een IoT Edge module maakt in uw voorkeurs taal (waaronder Azure Functions, zoals beschreven C#in) met behulp van Visual Studio code en de Azure IOT-hulpprogram ma's. U begint met het maken van een oplossing en het genereren van de eerste module in die oplossing. Elke oplossing kan meerdere modules bevatten.
 
-1. Selecteer **weergave** > **Command Palette**.
+1. Selecteer > **opdracht palet** **weer geven** .
 
-1. Voer in het opdrachtenpalet en voer de opdracht **Azure IoT Edge: nieuwe IoT Edge-oplossing**.
+1. Voer in het opdracht palet de opdracht **Azure IOT Edge: nieuwe IOT EDGE-oplossing**in en voer deze uit.
 
    ![Nieuwe IoT Edge oplossing uitvoeren](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -121,8 +121,8 @@ Als u extra modules wilt toevoegen aan uw oplossing, voert u de opdracht uit **A
 
 De standaard module code die bij de oplossing hoort, bevindt zich op de volgende locatie:
 
-- Azure function (C#): **modules >  *&lt;uw module&gt;*  > *naamvandemodulenaam.cs&lt;&gt;***
-- C#: **modules > *&lt;uw module naam&gt;* > Program.cs**
+- Azure function (C#): **modules > *&lt;uw module naam&gt;*  >  *&lt;de module naam&gt;* . cs.**
+- C#: **modules > *&lt;de naam van de module&gt;* > Program.cs**
 - Python: **modules > *&lt;de naam van de module&gt;* > main.py**
 - Node. js: **modules > *&lt;uw module naam&gt;* > app. js**
 - Java: **modules > *&lt;uw module naam&gt;* > src > main > java > com > edgemodulemodules > app. java**
@@ -198,7 +198,7 @@ Als u de Simulator wilt instellen en starten, voert u de opdracht uit **Azure IO
    > [!NOTE]
    > Als u Windows gebruikt, zorgt u ervoor dat de shell van uw Visual Studio code-geïntegreerde Terminal **Git Bash** of **WSL bash**is. U kunt de `curl`-opdracht niet uitvoeren vanuit een Power shell-of opdracht prompt.
    > [!TIP]
-   > U kunt ook [PostMan](https://www.getpostman.com/) of andere API's voor het verzenden van berichten via in plaats van `curl`.
+   > U kunt ook [postman](https://www.getpostman.com/) of andere API-hulpprogram ma's gebruiken om berichten te verzenden in plaats van `curl`.
 
 1. In de weer gave Visual Studio code debug ziet u de variabelen in het linkerdeel venster.
 
@@ -367,4 +367,4 @@ Raadpleeg dit [IOT-ontwikkelaars blog item](https://devblogs.microsoft.com/iotde
 
 Nadat u uw module hebt gemaakt, leert u hoe u [Azure IOT Edge-modules kunt implementeren vanuit Visual Studio code](how-to-deploy-modules-vscode.md).
 
-Voor het ontwikkelen van modules voor uw IoT Edge-apparaten, [begrijpen en gebruiken Azure IoT Hub SDK's](../iot-hub/iot-hub-devguide-sdks.md).
+Voor het ontwikkelen van modules voor uw IoT Edge apparaten moet u [Azure IOT hub Sdk's begrijpen en gebruiken](../iot-hub/iot-hub-devguide-sdks.md).

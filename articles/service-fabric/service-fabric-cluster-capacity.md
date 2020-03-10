@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463304"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379974"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 Voor een productie-implementatie is capaciteits planning een belang rijke stap. Hier volgen enkele van de items die u moet overwegen als onderdeel van dat proces.
@@ -68,7 +68,7 @@ De laag duurzaamheid wordt gebruikt om aan het systeem de bevoegdheden aan te ge
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Goud             | 5                              | Sku's van volledig knoop punt toegewezen aan één klant (bijvoorbeeld L32s, GS5, G5, DS15_v2, D15_v2) | Kan worden uitgesteld tot goedgekeurd door het Service Fabric-cluster | Kan gedurende 2 uur per UD worden onderbroken om meer tijd te bieden voor het herstellen van eerdere fouten in replica's |
 | Zilver           | 5                              | Vm's van één kern of hoger met ten minste 50 GB lokale SSD                      | Kan worden uitgesteld tot goedgekeurd door het Service Fabric-cluster | Kan gedurende een belang rijke periode niet worden uitgesteld                                                    |
-| Brons           | 1                              | Vm's met ten minste 50 GB lokale SSD                                              | Wordt niet vertraagd door het Service Fabric cluster           | Kan gedurende een belang rijke periode niet worden uitgesteld                                                    |
+| Bron           | 1                              | Vm's met ten minste 50 GB lokale SSD                                              | Wordt niet vertraagd door het Service Fabric cluster           | Kan gedurende een belang rijke periode niet worden uitgesteld                                                    |
 
 > [!WARNING]
 > Voor knooppunt typen met de duurzaamheid Bronze zijn _geen bevoegdheden_nodig. Dit betekent dat infrastructuur taken die van invloed zijn op uw stateful werk belastingen, niet worden gestopt of uitgesteld, wat van invloed kan zijn op uw workloads. Gebruik alleen bronzen voor knooppunt typen die alleen stateless werk belastingen uitvoeren. Voor werk belastingen met Silver of hoger wordt aanbevolen. 
@@ -132,7 +132,7 @@ Hier volgt een aanbeveling bij het kiezen van de betrouwbaarheids categorie.  He
 | **Aantal cluster knooppunten** | **Betrouwbaarheids niveau** |
 | --- | --- |
 | 1 |Geef geen para meter voor de betrouwbaarheids categorie op, het systeem berekent deze |
-| 3 |Brons |
+| 3 |Bron |
 | 5 of 6|Zilver |
 | 7 of 8 |Goud |
 | 9 en Maxi maal |Platina |

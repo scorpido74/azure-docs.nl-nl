@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372329"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules in Azure Automation beheren
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Klik op **+ een module toevoegen**. Selecteer een **zip** -bestand dat de module bevat en klik op **OK** om te beginnen met het importeren van het proces.
 
@@ -62,7 +62,7 @@ U kunt ook modules vanuit het PowerShell Gallery rechtstreeks vanuit uw Automati
 
 Als u problemen ondervindt met een module of als u een eerdere versie van een module wilt herstellen, kunt u deze verwijderen uit uw Automation-account. U kunt de oorspronkelijke versie van de [standaard modules](#default-modules) die worden geïmporteerd wanneer u een Automation-account maakt, niet verwijderen. Als de module die u wilt verwijderen een nieuwere versie is van een van de [standaard modules](#default-modules) die zijn geïnstalleerd, wordt deze teruggezet naar de versie die is geïnstalleerd met uw Automation-account. Anders wordt elke module verwijderd die u uit uw Automation-account verwijdert.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Selecteer de module die u wilt verwijderen. Selecteer op de pagina **module** de optie **verwijderen**. Als deze module een van de [standaard modules](#default-modules)is, wordt deze teruggedraaid naar de versie die aanwezig was tijdens het maken van het Automation-account.
 
@@ -82,7 +82,7 @@ Hier volgt een lijst met cmdlets in de module interne `Orchestrator.AssetManagem
 >Deze interne cmdlets zijn beschikbaar op een Windows-Hybrid Runbook Worker, maar zijn niet beschikbaar op een Linux-Hybrid Runbook Worker. Gebruik de bijbehorende modules [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) of [AZ](../az-modules.md) voor runbooks die rechtstreeks op de computer of op basis van resources in uw omgeving worden uitgevoerd. 
 >
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -252,7 +252,7 @@ Voeg `[OutputType([<MyOutputType>])]` toe waarbij MyOutputType een geldig type i
 
 De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer een Automation-account wordt gemaakt. In de onderstaande modules kunnen nieuwere versies van deze onderdelen worden geïmporteerd, maar de oorspronkelijke versie kan niet worden verwijderd uit uw Automation-account, zelfs niet als u een nieuwere versie ervan verwijdert.
 
-|Module naam|Versie|
+|Module naam|Version|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f88d8681bbb1cfc9482e84c467bbd514aed41764
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894507"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945258"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -83,7 +83,9 @@ Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit t
 3. Voer de volgende cmdlet uit om het script te downloaden voor het maken van het Azure Automation-account:
 
      ```powershell
-     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     Set-Location -Path "c:\temp"
+     $uri = "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1"
+     Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
 4. Voer de volgende cmdlet uit om het script uit te voeren en het Azure Automation-account te maken:

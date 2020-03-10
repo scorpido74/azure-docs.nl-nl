@@ -11,11 +11,11 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373684"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -179,7 +179,7 @@ De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessim
 * Moment opname-BLOB-lease-ID optioneel als er een lease bestaat
 * Kopiëren van BLOB-lease-ID vereist als er een lease bestaat op de doel-BLOB
 * Kopiëren van BLOB afbreken-lease-ID vereist als er een oneindige lease bestaat op de doel-BLOB
-* Lease Blob  
+* Lease-BLOB  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pessimistische gelijktijdigheid voor containers
 
@@ -195,11 +195,11 @@ De volgende container bewerkingen kunnen leases gebruiken voor het beheren van p
 * Container-ACL instellen
 * Lease-container  
 
-Zie voor meer informatie:  
+Ga voor meer informatie naar:  
 
-* [Voorwaardelijke headers opgeven voor bewerkingen van de blob-service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Voorwaardelijke headers opgeven voor BLOB-service bewerkingen](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease-container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease-blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Lease-BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Gelijktijdigheid beheren in tabel opslag
 
@@ -256,7 +256,7 @@ Houd er rekening mee dat de bewerkingen **entiteit invoegen of vervangen** en **
 
 In algemene ontwikkel aars die gebruikmaken van tabellen, moeten gebruikmaken van optimistische gelijktijdigheid bij het ontwikkelen van schaal bare toepassingen. Als pessimistische vergren deling vereist is, kunnen ontwikkel aars van het openen van tabellen een aangewezen BLOB toewijzen voor elke tabel en proberen een lease te maken op de BLOB voordat deze op de tabel wordt uitgevoerd. Voor deze benadering moet de toepassing ervoor zorgen dat alle gegevens toegangs paden de lease verkrijgen voordat ze op de tabel worden uitgevoerd. Houd er rekening mee dat de minimale lease tijd 15 seconden is. dit vereist zorgvuldige aandacht voor schaal baarheid.  
 
-Zie voor meer informatie:  
+Ga voor meer informatie naar:  
 
 * [Bewerkingen op entiteiten](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,9 +266,9 @@ Een scenario waarbij gelijktijdig gebruik wordt gedaan van een probleem in de wa
 
 De Queue-service biedt geen ondersteuning voor optimistische of pessimistische gelijktijdigheid en daarom moeten clients die berichten ophalen die zijn opgehaald uit een wachtrij ervoor zorgen dat berichten op een idempotente manier worden verwerkt. Een laatste WINS-strategie van schrijver wordt gebruikt voor update bewerkingen, zoals SetQueueServiceProperties, SetQueueMetaData, SetQueueACL en UpdateMessage.  
 
-Zie voor meer informatie:  
+Ga voor meer informatie naar:  
 
-* [Wachtrijservice REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [REST API Queue-service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Berichten ophalen](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Gelijktijdigheid beheren in Azure Files
@@ -277,7 +277,7 @@ De bestands service kan worden geopend met twee verschillende protocol eindpunte
 
 Wanneer een SMB-client een bestand opent om te verwijderen, wordt het bestand gemarkeerd als verwijderen in behandeling totdat alle andere SMB-client open ingangen voor dat bestand worden gesloten. Terwijl een bestand is gemarkeerd als verwijderen in behandeling, retourneert elke REST-bewerking in dat bestand de status code 409 (conflict) met de fout code SMBDeletePending. Status code 404 (niet gevonden) wordt niet geretourneerd, omdat het mogelijk is dat de SMB-client de markering voor verwijdering in behandeling verwijdert voordat het bestand wordt gesloten. Met andere woorden, de status code 404 (niet gevonden) wordt alleen verwacht wanneer het bestand is verwijderd. Houd er rekening mee dat als een bestand een SMB in behandeling heeft verwijderings status, dit niet wordt opgenomen in de resultaten van de lijst bestanden. Houd er ook rekening mee dat het REST verwijderen van bestanden en REST verwijderen Directory-bewerkingen op een andere manier wordt doorgevoerd en niet resulteert in een verwijderings status in behandeling.  
 
-Zie voor meer informatie:  
+Ga voor meer informatie naar:  
 
 * [Bestands vergrendelingen beheren](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

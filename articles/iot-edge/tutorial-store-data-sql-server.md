@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 44d1c6e5b119ae0639398c8be69ab7fb0d50fcf4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772199"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944275"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Zelfstudie: gegevens opslaan aan de rand met SQL Server-databases
 
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een AMD64 [Linux-apparaat met Azure IOT Edge](quickstart-linux.md).
   * ARM-apparaten, zoals Raspberry Pis, kunnen niet worden uitgevoerd SQL Server. Als u SQL wilt gebruiken op een ARM-apparaat, kunt u zich registreren om [Azure SQL database Edge](https://azure.microsoft.com/services/sql-database-edge/) in de preview-versie te proberen.
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
@@ -48,7 +48,7 @@ Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door 
 
 In deze zelf studie wordt een Azure Functions module gebruikt voor het verzenden van gegevens naar de SQL Server. Als u een IoT Edge module wilt ontwikkelen met Azure Functions, installeert u de volgende aanvullende vereisten op uw ontwikkel computer:
 
-* [C#-extensie voor Visual Studio Code (van OmniSharp) voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [C#-extensie voor Visual Studio Code (van OmniSharp) voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 ## <a name="create-a-function-project"></a>Een functieproject maken
@@ -81,7 +81,7 @@ In het omgevingsbestand worden de referenties voor het containerregister opgesla
 
 1. Open in VS Code Explorer het .env-bestand.
 2. Werk de velden **gebruikersnaam** en **wachtwoord** bij met de waarden die u hebt gekopieerd uit het Azure-containerregister.
-3. Sla dit bestand op.
+3. Dit bestand opslaan.
 
 ### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
 
@@ -230,7 +230,7 @@ Een [distributiemanifest](module-composition.md) declareert welke modules de IoT
 
 8. Sluit het bestand **Deployment. Temp late. json** .
 
-## <a name="build-your-iot-edge-solution"></a>Uw eigen IoT Edge-oplossing bouwen
+## <a name="build-your-iot-edge-solution"></a>Uw IoT Edge-oplossing bouwen
 
 In de voorgaande secties hebt u een oplossing met één module gemaakt en er vervolgens nog een toegevoegd aan de distributiemanifestsjabloon. De SQL Server-module wordt openbaar door micro soft gehost, maar u moet de code in de functie-module container plaatsen. In deze sectie bouwt u de oplossing, maakt u container installatie kopieën voor de sqlFunction-module en pusht u de installatie kopie naar het container register.
 

@@ -9,18 +9,18 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13d6ed773b582e1ca59ec31de9101fa1541dcb5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 53e1863f6f3421a6d8df9112f463f16443cff93e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759957"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943052"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Zelf studie: een C# IOT Edge-module ontwikkelen voor Linux-apparaten
 
 Gebruik Visual Studio code om code C# te ontwikkelen en te implementeren op een Linux-apparaat met Azure IOT Edge.
 
-U kunt Azure IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. In deze zelfstudie leert u een IoT Edge-module te maken die sensorgegevens filtert. U gebruikt het gesimuleerde IoT Edge-apparaat dat u hebt gemaakt in de quickstarts over het implementeren van Azure IoT Edge op een gesimuleerd apparaat in [Windows](quickstart.md) of [Linux](quickstart-linux.md). In deze zelfstudie leert u het volgende:
+U kunt Azure IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. In deze zelfstudie leert u een IoT Edge-module te maken die sensorgegevens filtert. U gebruikt het gesimuleerde IoT Edge-apparaat dat u hebt gemaakt in de snelstarts over het implementeren van Azure IoT Edge op een gesimuleerd apparaat in [Windows](quickstart.md) of [Linux](quickstart-linux.md). In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
@@ -42,7 +42,7 @@ Gebruik de volgende tabel om inzicht te krijgen in de mogelijkheden voor C# het 
 | C# | Visual Studio Code | Visual Studio |
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![C#modules voor LinuxAMD64 in VS code](./media/tutorial-c-module/green-check.png) | ![C#modules voor LinuxAMD64 in Visual Studio](./media/tutorial-c-module/green-check.png) |
-| **Linux ARM32** | ![C#modules voor LinuxARM32 in VS code](./media/tutorial-c-module/green-check.png) | ![C#modules voor LinuxARM64 in Visual Studio](./media/tutorial-c-module/green-check.png) |
+| **Linux-ARM32** | ![C#modules voor LinuxARM32 in VS code](./media/tutorial-c-module/green-check.png) | ![C#modules voor LinuxARM64 in Visual Studio](./media/tutorial-c-module/green-check.png) |
 
 >[!NOTE]
 >Ondersteuning voor Linux ARM64-apparaten is beschikbaar in de [open bare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie voor meer informatie [ARM64-modules ontwikkelen en fouten opsporen IOT Edge in Visual Studio code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
@@ -51,7 +51,7 @@ Gebruik de volgende tabel om inzicht te krijgen in de mogelijkheden voor C# het 
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen, [een IOT Edge module te ontwikkelen voor een Linux-apparaat](tutorial-develop-for-linux.md). Nadat u deze zelf studie hebt voltooid, moet u de volgende vereisten al hebben:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md).
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -59,7 +59,7 @@ Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door 
 
 Voor het volt ooien van deze zelf studies moet u de volgende aanvullende vereisten op uw ontwikkel computer voorbereiden:
 
-* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 ## <a name="create-a-module-project"></a>Een module project maken
@@ -92,7 +92,7 @@ In het omgevingsbestand worden de referenties voor het containerregister opgesla
 
 1. Open in VS Code Explorer het bestand **.env**.
 2. Werk de velden met de **gebruikers naam** en het **wacht woord** bij vanuit uw Azure container Registry.
-3. Sla dit bestand op.
+3. Dit bestand opslaan.
 
 ### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
 
@@ -341,5 +341,5 @@ U kunt door gaan met de volgende zelf studies om te leren hoe Azure IoT Edge u k
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [machine learning](tutorial-deploy-machine-learning.md) [
+> Custom Vision service](tutorial-deploy-custom-vision.md)

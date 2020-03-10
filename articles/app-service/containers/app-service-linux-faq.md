@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443853"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944076"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Veelgestelde vragen over Azure App Service in Linux
 
@@ -180,6 +180,10 @@ Dit zijn de regels voor het bepalen van de toegang tot de container, in volg ord
 De normale Azure App Service prijzen worden in rekening gebracht voor het aantal uren dat uw app wordt uitgevoerd.
 
 ## <a name="other-questions"></a>Andere vragen
+
+**Wat betekent ' aangevraagde functie is niet beschikbaar in de resource groep '?**
+
+Dit bericht kan worden weer gegeven bij het maken van een web-app met behulp van Azure Resource Manager (ARM). Op basis van een huidige beperking voor dezelfde resource groep kunt u geen Windows-en Linux-apps in dezelfde regio combi neren.
 
 **Wat zijn de ondersteunde tekens in de namen van toepassings instellingen?**
 

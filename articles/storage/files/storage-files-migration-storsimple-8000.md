@@ -4,30 +4,26 @@ description: Meer informatie over het migreren van een StorSimple 8100-of 8600-a
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330307"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943593"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
 
-De StorSimple 8000-serie wordt vertegenwoordigd door de 8100-of het 8600 fysieke, on-premises apparaat en de bijbehorende Cloud service onderdelen. Het is mogelijk om de gegevens van een van deze apparaten te migreren naar een Azure File Sync omgeving. Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync.
+De StorSimple 8000-serie wordt vertegenwoordigd door de 8100 of de 8600 fysieke, on-premises apparaten en hun Cloud service onderdelen. Het is mogelijk om de gegevens van een van deze apparaten te migreren naar een Azure File Sync omgeving. Azure File Sync is de standaard-en strategische Azure-service voor de lange termijn waarmee StorSimple-apparaten kunnen worden gemigreerd.
 
-## <a name="storsimple"></a>StorSimple
+De StorSimple 8000-serie bereikt het [einde van de levens duur](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) in december 2022. Het is belang rijk dat u zo snel mogelijk begint met het plannen van de migratie. Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync. 
 
-StorSimple is een stopgezet micro soft-product. Uitgebreide ondersteuning voor dit product en de Cloud service verloopt op 31 2022 december. Het is belang rijk om te beginnen met het plannen van een migratie van StorSimple direct.
-
-Azure File Sync is de standaard-en strategische Azure-service voor de lange termijn waarmee StorSimple-apparaten kunnen worden gemigreerd.
+## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
 > Micro soft streeft ernaar klanten te helpen bij hun migratie. E-mail AzureFilesMigration@microsoft. com voor een aangepast migratie plan en voor hulp tijdens de migratie.
-
-## <a name="azure-file-sync"></a>Azure File Sync
 
 Azure File Sync is een micro soft-Cloud service, gebaseerd op twee hoofd onderdelen:
 
@@ -247,10 +243,10 @@ Tijdens dit migratie proces moet u verschillende volume klonen koppelen aan uw V
 > [!IMPORTANT]
 > Om dit te laten werken, moet een register sleutel op de server worden ingesteld voordat Azure File Sync is geconfigureerd.
 
-1. Maak een nieuwe map op het systeem station van de virtuele machine. Azure File Sync gegevens moeten worden bewaard in plaats van op de gekoppelde volume klonen. Bijvoorbeeld: `“C:\syncmetadata”`
+1. Maak een nieuwe map op het systeem station van de virtuele machine. Azure File Sync gegevens moeten worden bewaard in plaats van op de gekoppelde volume klonen. Bijvoorbeeld: `"C:\syncmetadata"`
 2. Open regedit en ga naar de volgende register component: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Maak een nieuwe sleutel van het type teken reeks met de naam: ***MetadataRootPath***
-4. Stel het volledige pad naar de map die u hebt gemaakt op het systeem volume in, bijvoorbeeld: `C:\syncmetadata”`
+4. Stel het volledige pad naar de map die u hebt gemaakt op het systeem volume in, bijvoorbeeld: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure File Sync op de Azure-VM configureren
 

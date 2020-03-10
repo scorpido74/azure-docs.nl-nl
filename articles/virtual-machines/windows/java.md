@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 618d9a8d941202db05981566203bf96c02f415a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358306"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944488"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van Java. Procedures voor:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van Java. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Maven-project maken
@@ -130,7 +130,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     Vervang **&lt;abonnement-id&gt;** door uw abonnements-id, **&lt;toepassings-id&gt;** met de Active Directory toepassings-id, **&lt;verificatie sleutel&gt;** met de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
@@ -431,7 +431,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Een gegevensschijf toevoegen aan de virtuele machine
+### <a name="add-a-data-disk-to-the-vm"></a>Een gegevens schijf toevoegen aan de VM
 
 Als u een gegevens schijf wilt toevoegen aan de virtuele machine met een grootte van 2 GB, een LUN van 0 en een cache type ReadWrite, voegt u deze code toe aan het blok try in de methode Main:
 

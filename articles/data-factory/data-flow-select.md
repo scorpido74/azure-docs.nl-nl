@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930233"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934174"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Gegevens stroom koppelen selecteren trans formatie
 
@@ -55,6 +55,11 @@ Als u echter aangepaste regels wilt toevoegen, klikt u op toewijzing toevoegen. 
 Wanneer u op regels gebaseerde toewijzing kiest, geeft u de ADF de opdracht om de overeenkomende expressie te evalueren zodat deze overeenkomt met de regels voor binnenkomende patronen en de uitgaande veld namen te definiëren. U kunt een combi natie van zowel veld-als op regels gebaseerde toewijzingen toevoegen. Veld namen worden vervolgens gegenereerd tijdens runtime via ADF op basis van binnenkomende meta gegevens van de bron. U kunt de namen van de gegenereerde velden weer geven tijdens fout opsporing en het deel venster gegevens voorbeeld gebruiken.
 
 Meer informatie over het vergelijken van patronen vindt u in de documentatie van het [kolom patroon](concepts-data-flow-column-pattern.md).
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Op regels gebaseerde toewijzing gebruiken om de para meters-trans formatie te selecteren
+U kunt de veld toewijzing para meters in de optie trans formatie selecteren met behulp van op regels gebaseerde toewijzing. Gebruik het tref woord ```name``` om de binnenkomende kolom namen te controleren aan de hand van een para meter. Als u bijvoorbeeld een gegevensstroom parameter met de naam ```mycolumn```, kunt u één transformatie regel voor een enkele selectie maken die altijd de kolom naam die u instelt ```mycolumn``` op een veld naam op deze manier toewijst:
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>Volgende stappen
 * Gebruik de [sink-trans formatie](data-flow-sink.md) om uw gegevens in een gegevens archief in te voeren nadat u selecteren voor naam wijzigen, volg orde en alias kolommen hebt gebruikt.

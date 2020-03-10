@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649275"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942933"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -212,7 +212,7 @@ Zie [How to Create a app service Environment](environment/app-service-web-how-to
 Soms mislukt het maken van een App Service Environment. In dat geval ziet u de volgende fout in de activiteiten logboeken:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 U kunt dit oplossen door ervoor te zorgen dat geen van de volgende voor waarden waar is:
@@ -248,7 +248,7 @@ Zie [een geplande Webtaak maken met behulp van een cron-expressie](webjobs-creat
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hoe kan ik een aangepaste domein naam configureren voor een App Service web-app die gebruikmaakt van Traffic Manager?
 
-Zie [een aangepaste domein naam configureren voor een Azure-web-app met Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)voor meer informatie over het gebruik van een aangepaste domein naam met een app service-app die gebruikmaakt van Azure Traffic Manager voor taak verdeling.
+Zie [een aangepaste domein naam configureren voor een Azure-web-app met Traffic Manager](configure-domain-traffic-manager.md)voor meer informatie over het gebruik van een aangepaste domein naam met een app service-app die gebruikmaakt van Azure Traffic Manager voor taak verdeling.
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Mijn App Service-certificaat is gemarkeerd voor fraude. Hoe kan ik dit oplossen?
 

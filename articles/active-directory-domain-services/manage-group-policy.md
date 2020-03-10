@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613582"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946410"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure AD Domain Services beheerd domein
 
@@ -42,7 +42,11 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
 > [!NOTE]
-> Omdat er [geen toegang is tot domein controllers in Azure AD DS](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), kunt u geen centraal archief maken en gebruiken voor beheer sjablonen voor groeps beleid in een beheerd domein. [SYSVOL maakt geen deel uit van on-premises Azure AD Connect synchronisatie](synchronization.md#what-isnt-synchronized-to-azure-ad-ds). u kunt dus ook geen on-premises centrale opslag maken en deze vervolgens synchroniseren met Azure AD DS via Azure AD.
+> U kunt groepsbeleid Beheersjablonen gebruiken door de nieuwe sjablonen te kopiëren naar het beheer werkstation. Kopieer de *ADMX* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions` en kopieer de taalspecifieke *. ADML* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, waarbij `Language-CountryRegion` overeenkomt met de taal en regio van de *. ADML* -bestanden.
+>
+> Kopieer bijvoorbeeld de Engelse Verenigde Staten versie van de *. ADML* -bestanden naar de map `\en-us`.
+>
+> U kunt uw groepsbeleid beheer sjabloon ook centraal opslaan op de domein controllers die deel uitmaken van het door Azure AD DS beheerde domein. Zie [het centraal archief maken en beheren voor groepsbeleid Beheersjablonen in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)voor meer informatie.
 
 ## <a name="install-group-policy-management-tools"></a>groepsbeleid-beheer hulpprogramma's installeren
 

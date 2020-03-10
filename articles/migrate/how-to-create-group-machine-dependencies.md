@@ -1,14 +1,14 @@
 ---
 title: Afhankelijkheids visualisatie instellen in Azure Migrate
-description: Hierin wordt het instellen van afhankelijkheids visualisatie in Azure Migrate server-evaluatie beschreven.
+description: In dit artikel wordt beschreven hoe u afhankelijkheids visualisatie instelt in Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916282"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78940968"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 

@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526719"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933579"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -73,7 +73,8 @@ Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag document
 U kunt ook een bestand uploaden met behulp van een Joker teken (*) ergens in het bestandspad of de bestands naam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`of `C:\my*\*.txt`.
 
 > [!NOTE]
-> AzCopy standaard uploadt gegevens in blok-blobs. Als u bestanden wilt uploaden als toevoeg-blobs of pagina-blobs, gebruikt u de vlag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy standaard uploadt gegevens als blok-blobs. Als u bestanden wilt uploaden als toevoeg-blobs of pagina-blobs, gebruikt u de vlag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy uploadt standaard uw gegevens om de toegangs laag van het account over te nemen. Als u bestanden wilt uploaden naar een specifieke [Access-laag](../blobs/storage-blob-storage-tiers.md), gebruikt u de vlag `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Een map uploaden
 

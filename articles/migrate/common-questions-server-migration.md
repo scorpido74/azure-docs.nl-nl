@@ -3,12 +3,12 @@ title: Veelgestelde vragen over de migratie van Azure Migrate server
 description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927521"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939199"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
@@ -74,6 +74,19 @@ Nee. Azure Migrate ondersteunt alleen migratie naar Managed disks (Standard-HDD 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hoeveel Vm's kan ik op één keer repliceren met behulp van migratie zonder agent?
 
 Op dit moment kunt u 100 Vm's per exemplaar van vCenter Server tegelijk migreren. Migreer in batches van tien Vm's.
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wanneer kan ik machines migreren als fysieke servers?
+
+Computers migreren door ze te behandelen als fysieke servers is handig in een aantal scenario's:
+
+- Wanneer u on-premises fysieke servers migreert.
+- Als u virtuele machines migreert die zijn gevirtualiseerd door platforms zoals xen, KVM.
+- Als u Hyper-V-of VMware-Vm's wilt migreren, als u om een of andere reden het standaard migratie proces voor [hyper-v](tutorial-migrate-hyper-v.md)of [VMware](server-migrate-overview.md) -migratie niet kunt gebruiken. Als u bijvoorbeeld niet met VMware vCenter werkt en alleen ESXi-hosts gebruikt.
+- Vm's die momenteel worden uitgevoerd in persoonlijke Clouds migreren naar Azure
+- Als u Vm's wilt migreren die worden uitgevoerd in open bare Clouds, zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP), naar Azure.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Heb ik VMware vCenter nodig voor het migreren van virtuele VMware-machines?
+Als u [virtuele VMware-machines wilt migreren](server-migrate-overview.md) met behulp van een VMware-agent of een agentloze migratie, moeten ESXi-hosts waarop vm's zich bevinden, worden beheerd door vCenter Server. Als u niet beschikt over vCenter Server, kunt u virtuele VMware-machines migreren door ze te migreren als fysieke servers. [Meer informatie](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Volgende stappen
 

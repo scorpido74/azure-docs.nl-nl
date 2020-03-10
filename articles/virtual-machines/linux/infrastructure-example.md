@@ -1,26 +1,18 @@
 ---
 title: Voor beeld van een Azure-infrastructuur scenario
 description: Meer informatie over de belangrijkste richt lijnen voor het ontwerpen en implementeren van een voorbeeld infrastructuur in Azure.
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf63db18dac5fa202bbf339723c6555c4acb2ca2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036037"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944905"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Voor beeld van een Azure-infrastructuur scenario voor Linux-Vm's
 In dit artikel wordt uitgelegd hoe u een voorbeeld toepassings infrastructuur bouwt. We beschrijven een infra structuur voor een eenvoudige on line Store waarin alle richt lijnen en beslissingen over naam conventies, beschikbaarheids sets, virtuele netwerken en load balancers worden gecombineerd en de virtuele machines (Vm's) daad werkelijk worden geïmplementeerd.
@@ -60,7 +52,7 @@ Alle bovenstaande instructies volgen deze naamgevings regels:
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-abonnementen en-accounts
 Adventure Works Cycles maakt gebruik van het Enter prise-abonnement met de naam Adventure Works Enter prise, om facturering voor deze IT-workload te bieden.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 Adventure Works Cycles hebben bepaald dat ze Azure Managed Disks moeten gebruiken. Bij het maken van virtuele machines worden beide opslag lagen beschikbaar gemaakt:
 
 * **Standaard opslag** voor de webservers, toepassings servers en domein controllers en hun gegevens schijven.

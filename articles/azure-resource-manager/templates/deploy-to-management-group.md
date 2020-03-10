@@ -2,23 +2,17 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894879"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942750"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
 
-Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op:
-
-* [abonnements niveau](deploy-to-subscription.md)
-* niveau beheer groep (in dit artikel)
-* [Tenant niveau](deploy-to-tenant.md)
-
-U kunt implementaties op beheer groeps niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals [het toewijzen van toegangs beheer op basis van rollen of het](../../role-based-access-control/overview.md) Toep assen van [beleid](../../governance/policy/overview.md).
+Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/overview.md) of op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor een beheer groep definiëren en toewijzen. Met beheer groeps niveau sjablonen kunt u declaratief beleid Toep assen en rollen toewijzen op het niveau van de beheer groep.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
@@ -41,10 +35,10 @@ Voor sjablonen gebruikt u:
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-Gebruik voor parameter bestanden:
+Het schema voor een parameter bestand is hetzelfde voor alle implementatie bereiken. Gebruik voor parameter bestanden:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
@@ -169,5 +163,4 @@ In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan 
 
 * Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 * Zie [deployASCwithWorkspaceSettings. json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)(Engelstalig) voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
-* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
-* Zie [sjabloon functies](template-functions.md)voor een lijst met de beschik bare functies in een sjabloon.
+* U kunt ook sjablonen implementeren op [abonnements niveau](deploy-to-subscription.md) en [Tenant niveau](deploy-to-tenant.md).

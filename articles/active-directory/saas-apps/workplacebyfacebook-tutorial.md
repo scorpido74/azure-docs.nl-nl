@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58ff181ec144dcd0b1089b0e53f868f241be73f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985251"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944396"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met werk plek via Facebook
 
@@ -30,7 +30,7 @@ In deze zelf studie leert u hoe u werk plek kunt integreren met Facebook met Azu
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij werk plek via Facebook met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -90,12 +90,12 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<instancename>.facebook.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://www.facebook.com/company/<instanceID>`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://www.facebook.com/company/<instanceID>`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://www.facebook.com/company/<instanceID>`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE]
-    > Dit zijn niet de echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL. Zie de pagina verificatie van het dash board bedrijfs netwerk voor de juiste waarden voor uw werkplek community. dit wordt verderop in de zelf studie uitgelegd.
+    > Dit zijn niet de echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Zie de pagina verificatie van het dash board bedrijfs netwerk voor de juiste waarden voor uw werkplek community. dit wordt verderop in de zelf studie uitgelegd.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -115,7 +115,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -157,6 +157,8 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     a. Controleer de optie **voor eenmalige aanmelding (SSO)** .
     
     b. Klik op **+ nieuwe SSO-provider toevoegen**.
+    > [!NOTE]
+    > Zorg er ook voor dat u het selectie vakje wacht woord aanmelden inschakelt. Beheerders hebben deze optie mogelijk nodig voor aanmelding tijdens het verbreken van het certificaat om te voor komen dat ze worden vergrendeld.
 
 1. Selecteer op het tabblad **Verificatie** de optie **Eenmalige aanmelding (SSO)** en voer de volgende stappen uit:
 
@@ -234,11 +236,11 @@ Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u 
 
     ![De start pagina](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -247,4 +249,3 @@ Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u 
 - [Probeer werk plek van Facebook uit met Azure AD](https://aad.portal.azure.com)
 
 - [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

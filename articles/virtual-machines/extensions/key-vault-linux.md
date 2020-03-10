@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721299"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945223"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -67,7 +67,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Name | Waarde / voorbeeld | Gegevenstype |
+| Naam | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
@@ -78,7 +78,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | linkOnRenewal | onwaar | booleaans |
 | certificateStoreLocation  | LocalMachine | tekenreeks |
 | requiredInitialSync | true | booleaans |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Teken reeks matrix
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
@@ -102,6 +102,7 @@ De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest
       "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
+          "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,

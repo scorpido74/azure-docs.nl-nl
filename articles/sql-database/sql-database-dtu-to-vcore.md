@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811260"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945403"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migreren van het DTU-model naar het model op basis van vCore
 
@@ -36,16 +36,16 @@ De volgende tabel bevat richt lijnen voor specifieke migratie scenario's:
 |Huidige servicelaag|Doel service-laag|Type migratie|Gebruikers acties|
 |---|---|---|---|
 |Standard|Algemeen doel|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moet de juiste vCore-grootte worden gegarandeerd *|
-|Premium|Bedrijfskritiek|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moet de juiste vCore-grootte worden gegarandeerd *|
-|Standard|Bedrijfskritiek|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfskritiek|Standard|Downgrade|Moet primair eerst worden gemigreerd|
+|Premium|Bedrijfs kritiek|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moet de juiste vCore-grootte worden gegarandeerd *|
+|Standard|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
+|Bedrijfs kritiek|Standard|Downgrade|Moet primair eerst worden gemigreerd|
 |Premium|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
 |Algemeen doel|Premium|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfskritiek|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
-|Algemeen doel|Bedrijfskritiek|Upgraden|Moet secundair eerst worden gemigreerd|
+|Bedrijfs kritiek|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
+|Algemeen doel|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
 ||||
 
-\* elke 100-Dtu's in de laag Standard vereist ten minste 1 vCore en voor elke 125 Dtu's in de laag Premium is ten minste één vCore vereist.
+\* als vuist regel, is voor elke 100-Dtu's in de laag standaard Mini maal 1 vCore vereist en moet elke 125 Dtu's in de laag Premium ten minste één vCore vereisen. Zie [vCore-gebaseerd inkoop model](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)voor meer informatie.
 
 ## <a name="migrate-failover-groups"></a>Failover-groepen migreren
 
@@ -55,7 +55,7 @@ Migratie van failover-groepen met meerdere data bases vereist een afzonderlijke 
 
 U kunt een secundaire data base met geo-replicatie (een geo-secundair) alleen maken door dezelfde servicelaag te gebruiken als u hebt gebruikt voor de primaire data base. Voor data bases met een hoge frequentie voor het genereren van het logboek, wordt aangeraden om de geo-secundair te maken met dezelfde reken grootte als de primaire.
 
-Als u een geo-secundair maakt in de elastische pool voor één primaire data base, moet u ervoor zorgen dat de `maxVCore`-instelling voor de pool overeenkomt met de reken grootte van de primaire data base. Als u een geo-secundair maakt voor een primaire in een andere elastische pool, raden we aan dat de groepen dezelfde `maxVCore`-instellingen hebben.
+Als u een geo-secundair maakt in de elastische pool voor één primaire data base, moet u ervoor zorgen dat de `maxVCore` instelling voor de pool overeenkomt met de reken grootte van de primaire data base. Als u een geo-secundair maakt voor een primaire groep in een andere elastische pool, raden we aan dat de groepen dezelfde `maxVCore`-instellingen hebben.
 
 ## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Database kopie gebruiken om een DTU-gebaseerde data base te converteren naar een op vCore gebaseerde data base
 

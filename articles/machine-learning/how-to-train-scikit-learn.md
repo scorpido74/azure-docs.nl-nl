@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 08/02/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: d61e33568297e6f72aca0ab736f8a14f1758ffa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255130"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942257"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Voer deze code uit in een van de volgende omgevingen:
     - [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
     - Het gegevensset-en voorbeeld script bestand downloaden 
         - [Iris gegevensset](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+        - [train_iris. py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
     - U kunt ook een voltooide [Jupyter notebook versie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) van deze hand leiding vinden op de pagina met voor beelden van github. De notebook bevat een uitgebreide sectie voor het afstemmen van intelligente afstemming en het ophalen van het beste model op basis van primaire meet waarden.
 
 ## <a name="set-up-the-experiment"></a>Het experiment instellen
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Registreer het model in uw werk ruimte met de volgende code. Als u de para meters `model_framework`, `model_framework_version`en `resource_configuration`opgeeft, wordt de implementatie van geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het `ResourceConfiguration`-object definieert de reken resource voor de webservice.
+Registreer het model in uw werk ruimte met de volgende code. Als u de para meters `model_framework`, `model_framework_version`en `resource_configuration`opgeeft, wordt de implementatie van geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) -object definieert de reken resource voor de webservice.
 
 ```Python
 from azureml.core import Model
@@ -199,7 +199,7 @@ Het model dat u zojuist hebt geregistreerd, kan op dezelfde manier worden geïmp
 
 ### <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
 
-In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor scikit-learn. Implementatie van geen code model wordt ondersteund voor alle ingebouwde scikit-informatie over model typen. Als u het model registreert zoals hierboven wordt weer gegeven, kunt u de para meters van het `model_framework`, `model_framework_version`en `resource_configuration` gewoon `deploy()` gebruiken om uw model te implementeren.
+In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor scikit-learn. Implementatie van geen code model wordt ondersteund voor alle ingebouwde scikit-informatie over model typen. Als u het model registreert zoals hierboven wordt weer gegeven, kunt u de para meters van het `model_framework`, `model_framework_version`en `resource_configuration` gewoon [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) gebruiken om uw model te implementeren.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

@@ -4,14 +4,14 @@ description: Meer informatie over het migreren van on-premises virtuele Hyper-V-
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545905"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943302"
 ---
-# <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM's migreren naar Azure 
+# <a name="migrate-hyper-v-vms-to-azure"></a>Virtuele Hyper-V-machines migreren naar Azure 
 
 In dit artikel wordt beschreven hoe u on-premises virtuele Hyper-V-machines naar Azure migreert met behulp van migratie zonder agent met de Azure Migrate: hulp programma voor server migratie.
 
@@ -58,7 +58,7 @@ Als u de tweede zelf studie hebt gevolgd en al een Azure Migrate project hebt, v
 2. Klik in **servers detecteren, evalueren en migratie**op **servers beoordelen en migreren**.
 3. In **migratie hulpprogramma's**selecteert u **hier om een migratie hulpmiddel toe te voegen wanneer u klaar bent om te migreren**.
 
-    ![Hulpprogramma selecteren](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
+    ![Selecteer een hulp programma](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
 
 4. Selecteer in de lijst met hulpprogram ma's **Azure migrate: Server migratie** > **hulp programma toevoegen**
 
@@ -143,7 +143,7 @@ Als de detectie is voltooid, kunt u beginnen met de replicatie van virtuele Hype
 
 4. Zoek in **Virtuele machines** naar eigen inzicht naar VM's en controleer elke VM die u wilt migreren. Klik vervolgens op **volgende: doel instellingen**.
 
-    ![VM's selecteren](./media/tutorial-migrate-hyper-v/select-vms.png)
+    ![Vm's selecteren](./media/tutorial-migrate-hyper-v/select-vms.png)
 
 5. Selecteer in **doel instellingen**de doel regio waarnaar u wilt migreren, het abonnement en de resource groep waarin de virtuele Azure-machines na de migratie zich bevinden.
 7. Selecteer in **replicatie opslag account**het Azure Storage account waarin gerepliceerde gegevens worden opgeslagen in Azure.
@@ -167,7 +167,7 @@ Als de detectie is voltooid, kunt u beginnen met de replicatie van virtuele Hype
     - U kunt schijven uitsluiten van replicatie.
     - Als u schijven uitsluit, zijn deze na migratie niet beschikbaar in de Azure-VM. 
 
-    ![Schijven](./media/tutorial-migrate-hyper-v/disks.png)
+    ![Disks](./media/tutorial-migrate-hyper-v/disks.png)
 
 10. Controleer in **Replicatie controleren en beginnen** de instellingen en klik op **Repliceren** om de eerste replicatie van de servers te beginnen.
 
@@ -241,9 +241,12 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 4. Er wordt een migratietaak gestart voor de VM. Volg de taak in Azure-meldingen.
 5. Nadat de taak is afgerond, kunt u de VM bekijken en beheren vanaf de pagina **Virtuele machines**.
 
-## <a name="complete-the-migration"></a>De migratie voltooien
+## <a name="complete-the-migration"></a>Migratie voltooien
 
-1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
+1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Er gebeurt nu het volgende:
+    - Hiermee wordt de replicatie voor de on-premises computer gestopt.
+    - Hiermee verwijdert u de computer van het aantal **replicerende servers** in azure migrate: Server migratie.
+    - Hiermee wordt de replicatie status informatie voor de virtuele machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.

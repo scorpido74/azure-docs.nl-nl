@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/10/2018
-ms.openlocfilehash: 322f5306949b266958ded908e981ed530e8245c8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/03/2020
+ms.openlocfilehash: e771bc152ab50f907a8f2ad384e887c00d3f627a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227597"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933911"
 ---
 # <a name="transformation-with-azure-databricks"></a>Trans formatie met Azure Databricks
 
@@ -30,7 +30,7 @@ In deze zelf studie maakt u een end-to-end-pijp lijn met **validatie**-, **Kopie
 
 De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen gebruiken. U kunt deze indien nodig toevoegen.
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![1](media/solution-template-Databricks-notebook/pipeline-example.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,13 +41,13 @@ De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen geb
 3. **Importeer het notitie blok voor trans formatie**. 
     1. In uw Azure Databricks verwijzen we naar de volgende scherm afbeeldingen voor het importeren van een **transformatie** notitieblok in de Databricks-werk ruimte. Het hoeft zich niet op dezelfde locatie te bevinden als hieronder, maar onthoud het pad dat u later hebt gekozen.
    
-       ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)    
+       ![2](media/solution-template-Databricks-notebook/import-notebook.png)    
     
     1. Selecteer importeren vanuit: **URL**en voer de volgende URL in het tekstvak in:
     
        * `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`
         
-       ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)    
+       ![3](media/solution-template-Databricks-notebook/import-from-url.png)    
 
 4. Nu gaan we de **trans formatie** -laptop bijwerken met de verbindings gegevens van uw opslag. Ga naar **opdracht 5** (zoals weer gegeven in het onderstaande code fragment) in het geïmporteerde notitie blok en vervang `<storage name>`en `<access key>` door uw eigen opslag verbindings gegevens. Zorg ervoor dat dit account hetzelfde opslag account is dat eerder is gemaakt en dat de `sinkdata` container bevat.
 
@@ -75,9 +75,9 @@ De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen geb
 
 5.  Genereer een **Databricks-toegangs token** voor Data Factory om toegang te krijgen tot Databricks. **Sla het toegangs token** op voor later gebruik bij het maken van een Databricks-gekoppelde service, die er ongeveer als volgt uitziet: ' dapi32db32cbb4w6eee18b7d87e45exxxxxx '.
 
-    ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
+    ![4](media/solution-template-Databricks-notebook/user-setting.png)
 
-    ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
+    ![5](media/solution-template-Databricks-notebook/generate-new-token.png)
 
 ## <a name="how-to-use-this-template"></a>Deze sjabloon gebruiken
 
@@ -90,19 +90,19 @@ De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen geb
         U kunt de open bare Blob-opslag met de bron bestanden voor dit voor beeld gebruiken. Raadpleeg de volgende scherm afbeelding voor configuratie. Gebruik de onderstaande **SAS-URL** om verbinding te maken met de bron opslag (alleen-lezen toegang): 
         * `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-        ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
+        ![6](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
     1.  **Doel-BLOB-verbinding** : voor het kopiëren van gegevens naar. 
         
         Selecteer in de gekoppelde Sink-service een opslag die is gemaakt in de **vereiste** 1.
 
-        ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
+        ![7](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
     1.  **Azure Databricks** – voor het maken van een verbinding met een Databricks-cluster.
 
         Maak een Databricks-gekoppelde service met behulp van de toegangs sleutel die is gegenereerd in **vereiste** 2. c. Als u een *interactief cluster*hebt, kunt u dat selecteren. (In dit voor beeld wordt de optie *nieuw taak cluster* gebruikt.)
 
-        ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
+        ![8](media/solution-template-Databricks-notebook/databricks-connection.png)
 
 1. Selecteer **deze sjabloon gebruiken**en u ziet een pijp lijn die u hebt gemaakt, zoals hieronder wordt weer gegeven:
     
@@ -114,20 +114,20 @@ In de nieuwe pijp lijn die is gemaakt, zijn de meeste instellingen automatisch g
 
 1.  Er wordt een **beschikbaarheids vlag** voor validatie activiteit gemaakt voor het uitvoeren van een controle op de beschik baarheid van de bron. *SourceAvailabilityDataset* gemaakt in de vorige stap is geselecteerd als gegevensset.
 
-    ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
+    ![12](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1.  Er wordt een Kopieer activiteit **-bestand-naar-BLOB** gemaakt voor het kopiëren van de gegevensset van de bron naar de sink. Raadpleeg de onderstaande scherm afbeeldingen voor bron-en Sink-configuraties in de Kopieer activiteit.
 
-    ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
+    ![13](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-    ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
+    ![14](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1.  Er wordt een notitieblok activiteit **transformatie** gemaakt en de gekoppelde service die u in de vorige stap hebt gemaakt, is geselecteerd.
-    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+    ![16](media/solution-template-Databricks-notebook/notebook-activity.png)
 
      1. Selecteer het tabblad **instellingen** . Voor het pad van een *notebook*definieert de sjabloon standaard een pad. Mogelijk moet u bladeren en het juiste notitieblok pad selecteren dat is geüpload in **vereiste** 2. 
 
-         ![17](media/solution-template-Databricks-notebook/databricks-tutorial-image17.png)
+         ![17](media/solution-template-Databricks-notebook/notebook-settings.png)
     
      1. Bekijk de *Base-para meters* die zijn gemaakt, zoals weer gegeven in de scherm opname. Ze moeten worden door gegeven aan de Databricks notebook van Data Factory. 
 
@@ -135,16 +135,16 @@ In de nieuwe pijp lijn die is gemaakt, zijn de meeste instellingen automatisch g
 
 1.  **Pijplijn parameters** worden hieronder gedefinieerd.
 
-    ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
+    ![15](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Gegevens sets instellen.
     1.  **SourceAvailabilityDataset** wordt gemaakt om te controleren of er bron gegevens beschikbaar zijn.
 
-        ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
+        ![9](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
     1.  **SourceFilesDataset** -voor het kopiëren van de bron gegevens.
 
-        ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
+        ![10](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
     1.  **DestinationFilesDataset** : voor het kopiëren naar de Sink/doel locatie.
 
@@ -152,16 +152,16 @@ In de nieuwe pijp lijn die is gemaakt, zijn de meeste instellingen automatisch g
 
         2.  Bestandspad- *sinkdata/staged_sink*.
 
-            ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
+            ![11](media/solution-template-Databricks-notebook/destination-dataset.png)
 
 
 1.  Selecteer **debug** om de pijp lijn uit te voeren. U vindt een koppeling naar Databricks-logboeken voor meer gedetailleerde Spark-Logboeken.
 
-    ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
+    ![18](media/solution-template-Databricks-notebook/pipeline-run-output.png)
 
     U kunt ook het gegevens bestand controleren met behulp van Storage Explorer. (Als u wilt correleren met Data Factory pijplijn uitvoeringen, wordt in dit voor beeld de ID van de pijplijn uitvoering van data factory toegevoegd aan de uitvoermap. Op deze manier kunt u de bestanden die zijn gegenereerd via elke uitvoering, traceren.)
 
-    ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
+    ![19](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

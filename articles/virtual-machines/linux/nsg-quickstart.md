@@ -1,27 +1,22 @@
 ---
-title: Poorten openen voor een virtuele Linux-machine met Azure CLI
-description: Meer informatie over het openen van een poort/het maken van een eind punt voor uw virtuele Linux-machine met behulp van het Azure Resource Manager-implementatie model en de Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
+title: Poorten naar een virtuele machine openen met Azure CLI
+description: Meer informatie over het openen van een poort/het maken van een eind punt voor uw virtuele machine met behulp van de Azure CLI.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354051"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944548"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Poorten en eind punten openen voor een Linux-VM met de Azure CLI
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Poorten en eind punten openen voor een virtuele machine met Azure CLI
 
 U opent een poort of maakt een eind punt naar een virtuele machine (VM) in azure door een netwerk filter te maken op een subnet-of VM-netwerk interface. U plaatst deze filters, waarmee zowel binnenkomend als uitgaand verkeer worden beheerd op een netwerk beveiligings groep die is gekoppeld aan de resource die het verkeer ontvangt. We gebruiken een algemeen voor beeld van webverkeer op poort 80. In dit artikel wordt beschreven hoe u een poort naar een virtuele machine opent met de Azure CLI. 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e490f9a5b6801ed86ca7d594dfd6069a380d5fe5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772287"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943036"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Zelfstudie: Azure-functies implementeren als IoT Edge-modules
 
@@ -43,7 +43,7 @@ De Azure-functie die u maakt in deze zelfstudie filtert de temperatuurgegevens d
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -51,7 +51,7 @@ Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door 
 
 Als u een IoT Edge module wilt ontwikkelen in met Azure Functions, installeert u de volgende aanvullende vereisten op uw ontwikkel computer:
 
-* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [De .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 ## <a name="create-a-function-project"></a>Een functieproject maken
@@ -84,7 +84,7 @@ In het omgevingsbestand worden de referenties voor het containerregister opgesla
 
 1. Open in VS Code Explorer het .env-bestand.
 2. Werk de velden **gebruikersnaam** en **wachtwoord** bij met de waarden die u hebt gekopieerd uit het Azure-containerregister.
-3. Sla dit bestand op.
+3. Dit bestand opslaan.
 
 ### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
 
@@ -175,7 +175,7 @@ We gaan enkele extra code toevoegen, zodat de module de berichten aan de rand ve
 
 1. Sla het bestand op.
 
-## <a name="build-your-iot-edge-solution"></a>Uw eigen IoT Edge-oplossing bouwen
+## <a name="build-your-iot-edge-solution"></a>Uw IoT Edge-oplossing bouwen
 
 In de vorige sectie hebt u een IoT Edge oplossing gemaakt en de **CSharpFunction** gewijzigd om berichten te filteren met de gerapporteerde computer temperaturen onder de aanvaard bare drempel waarde. Nu moet u de oplossing bouwen als een containerinstallatiekopie en deze naar het containerregister pushen.
 

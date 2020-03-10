@@ -1,14 +1,15 @@
 ---
 title: Zelf studie-een infra structuur inrichten met Azure-implementatie sites met behulp van terraform
-description: Zelfstudie over het gebruik van Terraform met Azure-implementatiesites voor providers
+description: In deze zelf studie gebruikt u terraform met implementatie sleuven van Azure-providers
+keywords: implementatie sleuven voor Azure devops terraform
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: 68c790b4fad442d94e6ac82d1a545b8554d2dd4f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159179"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943488"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Zelf studie: infra structuur inrichten met Azure-implementatie sites met behulp van terraform
 
@@ -36,13 +37,13 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     cd clouddrive
     ```
 
-1. Maak een map met de naam `deploy`.
+1. Maak een directory met de naam `deploy`.
 
     ```bash
     mkdir deploy
     ```
 
-1. Maak een map met de naam `swap`.
+1. Maak een directory met de naam `swap`.
 
     ```bash
     mkdir swap
@@ -68,7 +69,12 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     resource "azurerm_resource_group" "slotDemo" {
         name = "slotDemoResourceGroup"
@@ -247,7 +253,12 @@ Voer de volgende stappen uit om de twee implementatie sleuven te testen:
 
     ```hcl
     # Configure the Azure provider
-    provider "azurerm" { }
+    provider "azurerm" { 
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
+    }
 
     # Swap the production slot and the staging slot
     resource "azurerm_app_service_active_slot" "slotDemoActiveSlot" {

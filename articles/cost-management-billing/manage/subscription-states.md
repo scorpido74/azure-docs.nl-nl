@@ -1,27 +1,29 @@
 ---
 title: Azure-abonnementsstatussen
-description: Beschrijft de verschillende statussen van een Azure-abonnement
+description: Dit artikel beschrijft de verschillende statussen van een Azure-abonnement.
 keywords: azure-abonnementsstatus
 author: anuragdalmia
-ms.reviewer: andalmia
+ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: andalmia
-ms.openlocfilehash: df8a60c0249eb51168e1a67cdd67116813312626
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 29af3d064b481548cdb9b9518e9735eb34aaf034
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200534"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270235"
 ---
 # <a name="azure-subscription-states"></a>Azure-abonnementsstatussen
-In dit artikel worden de verschillende statussen beschreven die een Azure-abonnement kan hebben. U vindt deze statussen als 'Status' in de abonnementsblades.
+
+In dit artikel worden de verschillende statussen beschreven die een Azure-abonnement kan hebben. U vindt deze statussen als **Status** in de abonnementsblades in de Azure-portal.
 
 | Abonnementsstatus | Beschrijving |
 |-------------| ----------------|
-| **Actief** | Uw Azure-abonnement is actief. U kunt dit abonnement gebruiken om nieuwe resources te implementeren en bestaande te beheren.|
-| **Einddatum verstreken** | Uw Azure-abonnement heeft een openstaande factuur. Uw abonnement is nog steeds actief, maar als u de factuur niet voldoet, leidt dit er mogelijk toe dat uw abonnement wordt uitgeschakeld. [Verschuldigd bedrag betalen voor uw Azure-abonnement.](https://docs.microsoft.com/azure/billing/billing-azure-subscription-past-due-balance) |
-| **Uitgeschakeld** | Uw Azure-abonnement is uitgeschakeld en kan niet langer worden gebruikt om Azure-resources te maken of te beheren. In deze status wordt de toewijzing van uw virtuele machines ongedaan gemaakt, worden tijdelijke IP-adressen vrijgemaakt, is opslag alleen-lezen en worden andere services uitgeschakeld. Abonnementen worden mogelijk uitgeschakeld omdat uw tegoed is verlopen, u uw bestedingslimiet hebt bereikt, u een onbetaalde factuur hebt, uw creditcardlimiet is overschreden of u het account expliciet hebt uitgeschakeld/geannuleerd. Afhankelijk van het abonnementstype en de reden voor uitschakeling, blijft een abonnement 1 tot 90 dagen uitgeschakeld, waarna het abonnement permanent wordt verwijderd. [Een uitgeschakeld Azure-abonnement opnieuw activeren.](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)|
+| **Actief** | Uw Azure-abonnement is actief. U kunt het abonnement gebruiken om nieuwe resources te implementeren en bestaande te beheren.|
 | **Verwijderd** | Uw Azure-abonnement is samen met alle onderliggende resources/gegevens verwijderd. |
+| **Uitgeschakeld** | Uw Azure-abonnement is uitgeschakeld en kan niet langer worden gebruikt om Azure-resources te maken of te beheren. In deze status wordt de toewijzing van uw virtuele machines ongedaan gemaakt, worden tijdelijke IP-adressen vrijgemaakt, is opslag alleen-lezen en worden andere services uitgeschakeld. Een abonnement kan om de volgende redenen worden uitgeschakeld: Uw tegoed is mogelijk verlopen. De bestedingslimiet is mogelijk bereikt. U hebt een achterstallige factuur. De limiet voor uw creditcard is overschreden. Of het abonnement is expliciet uitgeschakeld of geannuleerd. Afhankelijk van het abonnementstype kan een abonnement tussen de 1 en 90 dagen uitgeschakeld blijven. Daarna wordt het permanent verwijderd. Raadpleeg [Een uitgeschakeld Azure-abonnement opnieuw activeren](subscription-disabled.md) voor meer informatie. |
+| **Verlopen** | Uw Azure-abonnement is verlopen omdat het is geannuleerd. U kunt een verlopen abonnement opnieuw activeren. Raadpleeg [Een uitgeschakeld Azure-abonnement opnieuw activeren](subscription-disabled.md) voor meer informatie.|
+| **Einddatum verstreken** | Uw Azure-abonnement heeft een openstaande factuur. Uw abonnement is nog steeds actief, maar als u de factuur niet voldoet, leidt dit er mogelijk toe dat uw abonnement wordt uitgeschakeld. Raadpleeg voor meer informatie [Verschuldigd bedrag betalen voor uw Azure-abonnement](resolve-past-due-balance.md). |

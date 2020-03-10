@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251903"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945379"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251903"
 > [!IMPORTANT]
 > Dit artikel is *niet* van toepassing op **Azure SQL database Managed instance**. Zie [verbinding maken met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie over de netwerk configuratie.
 
-Wanneer u een nieuw Azure-SQL Server maakt [vanuit Azure Portal](sql-database-single-database-get-started.md), is het resultaat een openbaar eind punt in de notatie *yourservername.database.Windows.net*. Standaard is alle toegang tot het open bare eind punt geweigerd. U kunt vervolgens de volgende besturings elementen voor netwerk toegang gebruiken om de toegang tot de SQl-data base selectief via het open bare eind punt toe te staan
-- Azure-Services toestaan:-wanneer deze is ingesteld op aan, worden andere resources binnen de Azure-grens, bijvoorbeeld een virtuele machine van Azure, toegang tot SQL Database
+Wanneer u een nieuw Azure-SQL Server maakt op basis van de [Azure Portal](sql-database-single-database-get-started.md), is het resultaat een openbaar eind punt met de notatie *yourservername.database.Windows.net*.
 
-- IP-firewall regels:-gebruik deze functie om expliciet verbindingen van een specifiek IP-adres toe te staan, bijvoorbeeld van on-premises machines.
+U kunt de volgende besturings elementen voor netwerk toegang gebruiken om selectief toegang te verlenen tot de SQl-data base via het open bare eind punt:
+- Azure-Services toestaan: als deze is ingesteld op aan, kunnen andere resources binnen de grens van Azure, bijvoorbeeld een virtuele machine van Azure, toegang krijgen tot SQL Database
 
-- Virtual Network Firewall regels:-gebruik deze functie om verkeer toe te staan van een specifieke Virtual Network binnen de Azure-grens
+- IP-firewall regels: gebruik deze functie om expliciet verbindingen toe te staan van een specifiek IP-adres, bijvoorbeeld van on-premises machines
 
+U kunt ook persoonlijke toegang tot de SQL Database via [virtuele netwerken](../virtual-network/virtual-networks-overview.md) toestaan via:
+- Virtual Network Firewall regels: gebruik deze functie om verkeer toe te staan van een specifieke Virtual Network binnen de Azure-grens
+
+- Privé-koppeling: gebruik deze functie om een persoonlijk eind punt voor Azure SQL Server te maken binnen een specifieke Virtual Network
+
+
+
+Zie de onderstaande video voor een uitleg van deze toegangs controles en wat ze doen:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Azure-Services toestaan 
 Tijdens het maken van een nieuwe Azure-SQL Server [van Azure Portal](sql-database-single-database-get-started.md), wordt deze instelling uitgeschakeld.
 
- ![Scherm opname van nieuwe server maken][1]
+
 
 U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de Azure-SQL Server is gemaakt als volgt.
   
@@ -129,6 +138,9 @@ Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te breng
 > [!NOTE]
 > U kunt nog geen SQL Database in een subnet hebben. Als uw Azure SQL Database Server een knoop punt in een subnet in het virtuele netwerk is, kunnen alle knoop punten in het virtuele netwerk communiceren met uw SQL Database. In dit geval kunnen uw Vm's communiceren met SQL Database zonder dat er regels voor het virtuele netwerk of IP-regels nodig zijn.
 
+## <a name="private-link"></a>Private Link 
+Met persoonlijke koppeling kunt u verbinding maken met Azure SQL Server via een **persoonlijk eind punt**. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [Virtual Network](../virtual-network/virtual-networks-overview.md) en subnet.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie een [Azure-SQL database maken](sql-database-single-database-get-started.md)voor een Snelstartgids voor het maken van een IP-firewall regel op server niveau.
@@ -146,3 +158,4 @@ Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te breng
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425345"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942896"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens (preview-versie)
 
@@ -52,12 +52,13 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 | Microsoft Authenticator | Ja (Maxi maal 5) | Nee | Ja |
 | Andere verificator-app | Ja (Maxi maal 5) | Nee | Ja |
 | Hardware-token | Nee | Nee | Ja |
-| Telefoon | Ja | Ja | Ja |
+| telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
-| Zakelijke telefoon | Nee | Nee | Nee |
-| E-mail | Ja | Ja | Ja |
+| Telefoon (werk) | Nee | Nee | Nee |
+| Email | Ja | Ja | Ja |
 | Beveiligingsvragen | Ja | Nee | Ja |
-| App-wachtwoorden | Ja | Nee | Ja |
+| App-wacht woorden | Ja | Nee | Ja |
+| FIDO2-beveiligings sleutels<br />*Beheerde modus alleen via de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info)*| Ja | Ja | Ja |
 
 > [!NOTE]
 > App-wacht woorden zijn alleen beschikbaar voor gebruikers die zijn afgedwongen voor Multi-Factor Authentication. App-wacht woorden zijn niet beschikbaar voor gebruikers die zijn ingeschakeld voor Multi-Factor Authentication via een beleid voor voorwaardelijke toegang.
@@ -67,7 +68,7 @@ Gebruikers kunnen een van de volgende opties instellen als de standaard Multi-Fa
 - Microsoft Authenticator: melding.
 - Verificator-app of-hardware-token-code.
 - Telefoon oproep.
-- Sms-bericht.
+- SMS-bericht.
 
 Wanneer we meer authenticatie methoden blijven toevoegen aan Azure AD, zullen deze methoden beschikbaar zijn in gecombineerde registratie.
 

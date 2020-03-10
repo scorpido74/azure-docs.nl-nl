@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508999"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942912"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
 
@@ -42,7 +42,7 @@ Dit document laat zien hoe u een .NET core-console toepassing maakt die wordt ui
 1. Ga naar de [.net Core-installatie handleiding](https://www.microsoft.com/net/core) om .net core te installeren. Wanneer u uw omgeving selecteert, kiest u de opdracht regel optie.
 2. Maak een map voor uw project vanaf de opdracht regel. Navigeer naar deze map en typ `dotnet new console -o <sample-project-name>` om een C# console project te maken.
 3. Open deze map in Visual Studio code. Deze stap kan snel worden uitgevoerd via de opdracht regel door `code .` in Windows te typen.
-4. Installeer de [ C# uitbrei ding](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) vanuit de Visual Studio code Marketplace. Start Visual Studio code opnieuw.
+4. Installeer de [ C# uitbrei ding](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) vanuit de Visual Studio code Marketplace. Start Visual Studio code opnieuw.
 5. Op dit moment ziet u twee prompts. Een is voor het toevoegen van ' vereiste assets voor het maken en debuggen '. Klik op Ja. Er is nog een prompt voor het herstellen van niet-opgeloste afhankelijkheden. Klik op herstellen.
 6. Wijzig `launch.json` onder `.vscode` om externe terminal als een console te gebruiken. Deze instelling moet als `"console": "externalTerminal"` worden gelezen
 7. Met Visual Studio code kunt u fouten opsporen in .NET core-toepassingen. Klik op `F5` om uw toepassing uit te voeren en te controleren of uw installatie werkt. U ziet "Hallo wereld!" afgedrukt op de-console.

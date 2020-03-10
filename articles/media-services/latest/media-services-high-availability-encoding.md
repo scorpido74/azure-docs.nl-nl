@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899215"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934191"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services-code ring met hoge Beschik baarheid 
 
@@ -42,8 +42,8 @@ Door de richt lijnen en best practices te volgen die in het artikel worden besch
     * [Micro soft. Azure. EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (waarmee Media Services-gebeurtenissen systeem eigen worden ondersteund).
 
     U kunt ook Event Grid gebeurtenissen gebruiken via Azure Functions.
-*    Wanneer u een [taak](transforms-jobs-concept.md)maakt:
-    
+* Wanneer u een [taak](transforms-jobs-concept.md)maakt:
+
     * Selecteer een wille keurig account in de lijst met momenteel gebruikte accounts (deze lijst bevat normaal gesp roken beide accounts, maar als er problemen worden gedetecteerd, mag het slechts één account bevatten). Als de lijst leeg is, moet u een waarschuwing genereren zodat een operator kan onderzoeken.
     * Algemene richt lijnen hebt u één [gereserveerde media-eenheid](media-reserved-units-cli-how-to.md) per [JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) nodig (tenzij u [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) gebruikt waarbij 3 gereserveerde media-eenheden per JobOutput worden aanbevolen).
     * Het aantal gereserveerde media-eenheden (MRUs) voor het gekozen account ophalen. Als de huidige aantal **gereserveerde media-eenheden** niet al op de maximum waarde is, voegt u het aantal MRUs toe dat nodig is voor de taak en werkt u de service bij. Als de verzend snelheid van uw taak hoog is en u regel matig een query uitvoert op de MRUs om u het maximum te krijgen, gebruikt u een gedistribueerde cache voor de waarde met een redelijke time-out.

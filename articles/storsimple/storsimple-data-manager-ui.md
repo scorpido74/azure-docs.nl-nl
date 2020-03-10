@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273972"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933749"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure Portal
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om een StorSimple Data Manager-service te maken.
     
    5. Als u een koppeling naar deze service op uw dash board wilt ontvangen, selecteert **u vastmaken aan dash board**.
     
-   6. Klik op **Maken**.
+   6. Klik op **Create**.
 
       ![Een StorSimple Data Manager-service maken 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om een taak definitie te maken.
 
    3. Voer in de Subsectie **filter** de hoofdmap in die de gegevens bevat die van belang zijn in de _\MyRootDirectory\Data_ -indeling. Stationsletters zoals _\c: \Data_ worden niet ondersteund. U kunt ook alle bestands filters toevoegen.
 
-   4. De service voor gegevens transformatie werkt op de gegevens die via moment opnamen naar Azure worden gepusht. Wanneer u deze taak uitvoert, kunt u ervoor kiezen om een back-up te maken telkens wanneer deze taak wordt uitgevoerd (om aan de slag te gaan met de nieuwste gegevens) of de laatste bestaande back-up in de cloud te gebruiken (als u aan bepaalde gearchiveerde gegevens werkt).
+   4. De service voor gegevens transformatie werkt alleen met de laatste moment opname van de gegevens die naar Azure worden gepusht.
 
    5. Klik op **OK**.
 
@@ -150,6 +150,11 @@ Wanneer u gegevens moet verplaatsen van StorSimple naar het opslag account dat u
 4. Als u deze taak wilt bewaken, gaat u naar **taken** in uw StorSimple Data Manager. Naast bewaking op de Blade **taken** kunt u ook Luis teren naar de opslag wachtrij waar een bericht wordt toegevoegd telkens wanneer een bestand wordt verplaatst van StorSimple naar het opslag account.
 
     ![Taak uitvoeren 4 starten](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>Logboeken weer geven na voltooiing van de taak
+
+Nadat een taak is voltooid, kunt u de status van de taak bekijken. De taak status kan worden **geslaagd**, **gedeeltelijk geslaagd** en **mislukt**. U kunt de lijst weer geven met bestanden die zijn gekopieerd en bestanden die niet konden worden gekopieerd. Deze lijsten zijn beschikbaar in een container met de naam **' storsimple-Data-Manager-joblogs '** binnen uw doel-opslag account. In deze container kunt u zoeken naar een map met dezelfde naam als uw taak definitie. Binnen deze, wordt er een map gemaakt voor elke uitvoering van de taak die uw lijsten bevat. De naam van deze map is de GUID van de taak, die u kunt verkrijgen op de pagina met taak Details. In de meeste gevallen ziet u een koppeling voor de kopie logboeken op de pagina taken zelf.
+Er zijn twee sets CSV-bestanden die in deze map worden weer geven. Alle bestanden die beginnen met **copiedfilelist...** , bevatten de lijst met correct gekopieerde bestanden. Alle bestanden die beginnen met **failedfilelist...** bevatten bestanden die niet konden worden gekopieerd, samen met een fout bericht.
 
 
 ## <a name="next-steps"></a>Volgende stappen

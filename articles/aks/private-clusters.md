@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649504"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944206"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Een persoonlijk AKS-cluster maken
 
+### <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+Maak een resource groep of gebruik een bestaande resource groep voor uw AKS-cluster.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Standaard netwerken 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Waarbij *--Enable-Private-cluster* is een verplichte vlag voor een persoonlijk c
 > [!NOTE]
 > Als de docker Bridge-adres CIDR (172.17.0.1/16) in conflict is met de CIDR van het subnet, wijzigt u het docker Bridge-adres op de juiste manier.
 
-## <a name="connect-to-the-private-cluster"></a>Verbinding maken met het persoonlijke cluster
+## <a name="options-for-connecting-to-the-private-cluster"></a>Opties voor het maken van verbinding met het privé cluster
 
-Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele Azure-machine (VM) in een virtueel netwerk maken en verbinding maken met de API-server. Ga hiervoor als volgt te werk:
+Het API-server eindpunt heeft geen openbaar IP-adres. Als u de API-server wilt beheren, moet u een virtuele machine gebruiken die toegang heeft tot de Azure-Virtual Network (VNet) van het AKS-cluster. Er zijn verschillende opties voor het tot stand brengen van een netwerk verbinding met het persoonlijke cluster.
 
-1. Referenties ophalen om verbinding te maken met het cluster.
+* Maak een virtuele machine in hetzelfde Azure-Virtual Network (VNet) als het AKS-cluster.
+* Gebruik een virtuele machine in een afzonderlijk netwerk en stel de [peering van een virtueel netwerk][virtual-network-peering]in.  Zie de sectie hieronder voor meer informatie over deze optie.
+* Gebruik een [snelle route of VPN-][express-route-or-VPN] verbinding.
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+Het maken van een virtuele machine in hetzelfde VNET als het AKS-cluster is de eenvoudigste optie.  Express route en Vpn's voegen kosten toe en vereisen extra netwerk complexiteit.  Voor peering van virtuele netwerken moet u uw netwerkcidr-bereiken plannen om ervoor te zorgen dat er geen overlappende bereiken zijn.
 
-1. Voer een van de volgende bewerkingen uit:
-   * Maak een virtuele machine in hetzelfde virtuele netwerk als het AKS-cluster.  
-   * Maak een virtuele machine in een ander virtueel netwerk en vergelijkt dit virtuele netwerk met het virtuele netwerk van het AKS-cluster.
+## <a name="virtual-network-peering"></a>Peering op virtueel netwerk
 
-     Als u een virtuele machine in een ander virtueel netwerk maakt, stelt u een koppeling in tussen dit virtuele netwerk en de privé-DNS-zone. Dit doet u als volgt:
+Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonlijke cluster. Als u VNet-peering wilt gebruiken, moet u een koppeling instellen tussen het virtuele netwerk en de privé-DNS-zone.
     
-     a. Ga naar de resource groep MC_ * in de Azure Portal.  
-     b. Selecteer de privé-DNS-zone.   
-     c. Selecteer de koppeling **virtueel netwerk** in het linkerdeel venster.  
-     d. Maak een nieuwe koppeling om het virtuele netwerk van de VM toe te voegen aan de privé-DNS-zone. Het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar wordt.  
-     e. Ga terug naar de resource groep MC_ * in de Azure Portal.  
-     f. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet-\** .  
-     g. Selecteer **peerings**in het linkerdeel venster.  
-     h. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
-     i. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
-
-1. Toegang tot de virtuele machine via Secure Shell (SSH).
-1. Installeer het hulp programma Kubectl en voer de Kubectl-opdrachten uit.
-
+1. Ga naar de resource groep MC_ * in de Azure Portal.  
+2. Selecteer de privé-DNS-zone.   
+3. Selecteer de koppeling **virtueel netwerk** in het linkerdeel venster.  
+4. Maak een nieuwe koppeling om het virtuele netwerk van de VM toe te voegen aan de privé-DNS-zone. Het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar wordt.  
+5. Ga terug naar de resource groep MC_ * in de Azure Portal.  
+6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet-\** .  
+7. Selecteer **peerings**in het linkerdeel venster.  
+8. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
+9. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
 
 ## <a name="dependencies"></a>Afhankelijkheden  
 * De service private link wordt alleen ondersteund op standaard Azure Load Balancer. Basis Azure Load Balancer wordt niet ondersteund.  
@@ -179,6 +181,8 @@ Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

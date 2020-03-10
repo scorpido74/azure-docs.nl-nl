@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 99f7fc7db79785f99b96e6076607e434e43e605f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.date: 03/09/2020
+ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927327"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939289"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -64,7 +64,7 @@ Gegevens die worden verzameld door het Azure Migrate apparaat, worden opgeslagen
 
 Hier vindt u meer informatie over de manier waarop gegevens worden opgeslagen:
 
-- De gegevens worden veilig opgeslagen in een micro soft-abonnement en worden verwijderd wanneer u het Azure Migrate project verwijdert.
+- De verzamelde gegevens worden veilig opgeslagen in CosmosDB in een micro soft-abonnement. De gegevens worden verwijderd wanneer u het Azure Migrate project verwijdert. Opslag wordt verwerkt door Azure Migrate. U kunt niet specifiek een opslag account voor verzamelde gegevens kiezen.
 - Als u [afhankelijkheids visualisatie](concepts-dependency-visualization.md)gebruikt, worden de verzamelde gegevens opgeslagen in de Verenigde Staten in een Azure log Analytics-werk ruimte die in uw Azure-abonnement is gemaakt. De gegevens worden verwijderd wanneer u de Log Analytics-werk ruimte in uw abonnement verwijdert.
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Hoeveel gegevens worden er geüpload tijdens een doorlopende Profiler?
@@ -88,9 +88,13 @@ In deze stappen wordt beschreven hoe het apparaat verbinding maakt met VMware vC
 3. Het apparaat verzamelt configuratie gegevens over Vm's (kernen, geheugen, schijven, Nic's) en de prestatie geschiedenis van elke virtuele machine in de afgelopen maand.
 4. De verzamelde meta gegevens worden verzonden naar de Azure Migrate: Server Assessment Tool (via internet via HTTPS) voor evaluatie.
 
-## <a name="can-i-connect-the-appliance-to-multiple-instances-of-vcenter-server"></a>Kan ik het apparaat aansluiten op meerdere exemplaren van vCenter Server?
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Kan het Azure Migrate apparaat verbinding maken met meerdere vCenter-servers?
 
-Nee. Er is een een-op-een-toewijzing tussen een apparaat en vCenter Server. Als u Vm's op meerdere exemplaren van vCenter Server wilt detecteren, moet u meerdere toestellen implementeren.
+Nee. Er is een een-op-een-toewijzing tussen een [Azure migrate apparaat](migrate-appliance.md) en vCenter Server. Als u Vm's op meerdere exemplaren van vCenter Server wilt detecteren, moet u meerdere toestellen implementeren. 
+
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Kan een Azure Migrate project meerdere toestellen hebben?
+Aan een project kunnen meerdere apparaten zijn gekoppeld. Een apparaat kan echter slechts aan één project worden gekoppeld. 
+
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hoeveel Vm's of servers kan ik vinden met een apparaat?
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 03/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b23ef246561d052935642c323c2d830e21cbe7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f019d818fb5a017d184bda8d773eb0aaf0f3645a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "73570190"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Druva
 
@@ -44,7 +43,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Druva ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* Druva ondersteunt door **IDP** GEÏNITIEERDe SSO
+* Zodra u Druva SSO hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 > [!NOTE]
 > De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
@@ -81,11 +81,13 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-1. In de sectie **SAML-basisconfiguratie** als u wilt de toepassing in **IDP**-gestart modus configureren, hoeft de gebruiker geen stappen uit te voeren omdat de app al vooraf geïntegreerd is in Azure.
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
+1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://login.druva.com/api/commonlogin/samlconsume`
+    a. Typ in het tekstvak **id (Entiteits-ID)** de teken reeks waarde: `DCP-login`.
+    
+    b. Typ in het tekstvak **antwoord-URL (assertion Consumer Service-URL)** de url: `https://cloud.druva.com/wrsaml/consume`.
 
 1. Klik op **Opslaan**.
 
@@ -115,10 +117,10 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -173,7 +175,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Druva in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Druva waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -182,3 +184,5 @@ Wanneer u op de tegel Druva in het toegangsvenster klikt, wordt u automatisch aa
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Druva met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

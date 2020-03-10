@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441966"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943680"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Kennis archief-projecties: verrijkingen vorm geven en exporteren
 
@@ -671,7 +671,13 @@ Bij het definiëren van een projectie zijn er enkele veelvoorkomende problemen d
 
 In de voor beelden in dit artikel worden algemene patronen gedemonstreerd voor het maken van projecties. Nu u een goed inzicht hebt in de concepten, bent u beter uitgerust om projecties te maken voor uw specifieke scenario.
 
-Als u de definities van Knowledge Store doorloopt, overweeg dan incrementele verrijking als uw volgende stap. Incrementele verrijking is gebaseerd op caching, waarmee u verrijkingen die niet anderszins worden beïnvloed door een vaardig heden-wijziging, opnieuw kunt gebruiken. Dit is vooral handig voor pijp lijnen met OCR-en afbeeldings analyse.
+Bij het verkennen van nieuwe functies kunt u het beste een incrementele verrijking doen als uw volgende stap. Incrementele verrijking is gebaseerd op caching, waarmee u verrijkingen die niet anderszins worden beïnvloed door een vaardig heden-wijziging, opnieuw kunt gebruiken. Dit is vooral handig voor pijp lijnen met OCR-en afbeeldings analyse.
 
 > [!div class="nextstepaction"]
 > [Inleiding tot incrementele verrijking en caching](cognitive-search-incremental-indexing-conceptual.md)
+
+Voor een overzicht van projecties raadpleegt u meer over mogelijkheden zoals groepen en segmentering, en hoe u [deze definieert in een vaardig heden](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [Prognoses in een kennis archief](knowledge-store-projection-overview.md)
+

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fe04d491525b8119ca21ff1118a2ea460cc0795
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606605"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943428"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x
 
@@ -1430,15 +1430,16 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**     | N.v.t. | moet worden ingesteld op `cosmosDB`.        |
-|**direction**     | N.v.t. | moet worden ingesteld op `in`.         |
+|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB`.        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `in`.         |
 |**naam**     | N.v.t. | De naam van de bindingsparameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De database met het document.        |
 |**collectionName** |**CollectionName** | De naam van de verzameling waarin het document. |
 |**id**    | **Id** | De ID van het document om op te halen. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de eigenschappen `id` en **sqlQuery** niet in. Als u niet uit, één instelt, wordt de volledige verzameling worden opgehaald. |
 |**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt voor het ophalen van meerdere documenten. De eigenschap ondersteunt runtime bindingen, zoals in dit voor beeld: `SELECT * FROM c where c.departmentId = {departmentId}`. Stel de eigenschappen `id` en `sqlQuery` niet in. Als u niet uit, één instelt, wordt de volledige verzameling worden opgehaald.|
-|**connectionStringSetting**     |**ConnectionStringSetting**|De naam van de app-instelling met daarin uw Azure Cosmos DB-verbindingsreeks.        |
+|**connectionStringSetting**     |**ConnectionStringSetting**|De naam van de app-instelling met daarin uw Azure Cosmos DB-verbindingsreeks. |
 |**partitionKey**|**PartitionKey**|Hiermee geeft u de waarde voor de partitiesleutel voor de zoekopdracht. Kan omvatten bindende parameters. Dit is vereist voor zoek acties in [gepartitioneerde](../cosmos-db/partition-data.md#logical-partitions) verzamelingen.|
+|**preferredLocations**| **PreferredLocations**| Beschrijving Hiermee worden voorkeurs locaties (regio's) gedefinieerd voor accounts met geo-gerepliceerde data bases in de Azure Cosmos DB-service. De waarden moeten worden gescheiden door komma's. Bijvoorbeeld ' vs-Oost, VS Zuid-Centraal, Europa-noord '. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

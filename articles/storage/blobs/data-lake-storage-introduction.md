@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920991"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942919"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Inleiding tot Azure Data Lake Storage Gen2
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 maakt Azure Storage de basis voor het enterprise datalake
 
 Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een [hiërarchische naam ruimte](data-lake-storage-namespace.md) aan Blob Storage. De hiërarchische naamruimte organiseert objecten/bestanden in een hiërarchie van mappen voor efficiënte toegang tot gegevens. Algemene naamconventie voor object store maakt gebruik van slashes in de naam om na te bootsen een hiërarchische mapstructuur. Deze structuur wordt echte met Data Lake Storage Gen2. Bewerkingen zoals het hernoemen of verwijderen van een directory worden één atomic metagegevens worden uitgevoerd op de map in plaats van met het inventariseren van en verwerken van alle objecten die delen van het voorvoegsel van de naam van de map.
 
-In het verleden had cloudanalyses te boeten op het gebied van prestaties, beheer en beveiliging. Data Lake Storage Gen2 adressen elk van deze aspecten in de volgende manieren:
+Data Lake Storage Gen2 bouwt voort op Blob Storage en verbetert de prestaties, het beheer en de beveiliging op de volgende manieren:
 
--   De **prestaties** zijn geoptimaliseerd omdat u geen gegevens hoeft te kopiëren of transformeren als vereiste voor analyse. De hiërarchische naamruimte wordt aanzienlijk verbetert de prestaties van directory-management-bewerkingen, wat zorgt voor betere algehele prestaties van de taak.
+-   De **prestaties** zijn geoptimaliseerd omdat u geen gegevens hoeft te kopiëren of transformeren als vereiste voor analyse. Vergeleken met de platte naam ruimte in Blob Storage, verbetert de hiërarchische naam ruimte de prestaties van Directory beheer-bewerkingen aanzienlijk, waardoor de algehele taak prestaties worden verbeterd.
 
 -   **Beheer** is eenvoudiger omdat u bestanden kunt ordenen en bewerken via directory's en submappen.
 
 -   **Beveiliging** is afdwingbaar omdat u POSIX-machtigingen kunt definiëren voor mappen of afzonderlijke bestanden.
 
--   De effectiviteit van de **kosten** wordt mogelijk gemaakt als data Lake Storage Gen2 is gebaseerd op de voordelige [Azure Blob-opslag](storage-blobs-introduction.md). De aanvullende functies nog verder verlagen de totale eigendomskosten voor het uitvoeren van big data-analyses op Azure.
+Data Lake Storage Gen2 is ook zeer rendabel, omdat deze wordt gebouwd op basis van de voordelige [Azure Blob-opslag](storage-blobs-introduction.md). De aanvullende functies nog verder verlagen de totale eigendomskosten voor het uitvoeren van big data-analyses op Azure.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Belangrijke functies van Data Lake Storage Gen2
 
@@ -76,7 +76,7 @@ Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2]
 
 Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure-Services die ondersteuning bieden voor Azure data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-Services.
 
-## <a name="supported-open-source-platforms"></a>Open source-platforms ondersteund
+## <a name="supported-open-source-platforms"></a>Ondersteunde open source-platforms
 
 Data Lake Storage Gen2 ondersteuning voor verschillende open source-platforms. Zie voor een volledige lijst [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
 

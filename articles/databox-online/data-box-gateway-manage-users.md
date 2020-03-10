@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ee5eec5a5c17e443fe71f0093f09c96cf81ece0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754741"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946122"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Portal gebruiken om gebruikers te beheren in uw Azure Data Box Gateway 
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Portal gebruiken om gebruikers te beheren in uw Azure Data Box Gateway
 
 Dit artikel beschrijft hoe u gebruikers beheert in uw Azure Data Box Gateway. U kunt de Azure Data Box Gateway beheren via Azure Portal of via de lokale webinterface. Gebruik Azure Portal om gebruikers toe te voegen, te wijzigen of te verwijderen.
 
@@ -24,17 +24,16 @@ In dit artikel leert u het volgende:
 > [!div class="checklist"]
 > * Een gebruiker toevoegen
 > * Gebruiker wijzigen
-> * Een gebruiker verwijderen 
+> * Een gebruiker verwijderen
 
 ## <a name="about-users"></a>Over gebruikers
 
-Gebruikers kunnen het recht alleen-lezen of volledige bevoegdheid hebben. Zoals de naam al aangeeft, kunnen gebruikers met het recht alleen-lezen de sharegegevens alleen weergeven. Gebruikers met volledige bevoegdheid kunnen sharegegevens lezen, schrijven, wijzigen of verwijderen. 
+Gebruikers kunnen het recht alleen-lezen of volledige bevoegdheid hebben. Zoals de naam al aangeeft, kunnen gebruikers met het recht alleen-lezen de sharegegevens alleen weergeven. Gebruikers met volledige bevoegdheid kunnen sharegegevens lezen, schrijven, wijzigen of verwijderen.
 
- - **Gebruiker met volledige bevoegdheden** - een lokale gebruiker met volledige toegang. 
+ - **Gebruiker met volledige bevoegdheden** - een lokale gebruiker met volledige toegang.
  - **Alleen-lezengebruiker** - een lokale gebruiker met alleen-lezentoegang. Deze gebruikers zijn gekoppeld aan shares waarmee alleen-lezenbewerkingen mogelijk zijn.
 
-De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Wanneer de machtigingen voor een gebruiker zijn gedefinieerd, kunnen deze worden gewijzigd via Windows Verkenner. 
-
+De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Het wijzigen van machtigingen op share niveau wordt momenteel niet ondersteund.
 
 ## <a name="add-a-user"></a>Een gebruiker toevoegen
 
@@ -49,7 +48,7 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
     ![Klikken op Gebruiker toevoegen](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Deze gebruikers zijn gereserveerd door het systeem en mag niet worden gebruikt: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
+    > Deze gebruikers zijn gereserveerd door het systeem en moeten niet worden gebruikt: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
 3. U krijgt een melding wanneer het maken van de gebruiker wordt gestart en is voltooid. Wanneer de gebruiker is gemaakt, klikt u in de opdrachtbalk op **Vernieuwen** om de bijgewerkte lijst met gebruikers weer te geven.
 

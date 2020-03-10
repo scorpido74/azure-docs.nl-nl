@@ -2,13 +2,13 @@
 title: Door de gebruiker gedefinieerde functies in sjablonen
 description: Hierin wordt beschreven hoe u door de gebruiker gedefinieerde functies definieert en gebruikt in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 58b9ba7b162736329cf775e2be5a47bfcae0a4ca
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122471"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943224"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Door de gebruiker gedefinieerde functies in Azure Resource Manager sjabloon
 
@@ -18,7 +18,7 @@ In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde functies i
 
 ## <a name="define-the-function"></a>Definieer de functie
 
-Uw functies vereisen een naam ruimte waarde om naam conflicten met sjabloon functies te voor komen. In het volgende voor beeld ziet u een functie die de naam van een opslag account retourneert:
+Uw functies vereisen een naam ruimte waarde om naam conflicten met sjabloon functies te voor komen. In het volgende voor beeld ziet u een functie die een unieke naam retourneert:
 
 ```json
 "functions": [
@@ -44,23 +44,53 @@ Uw functies vereisen een naam ruimte waarde om naam conflicten met sjabloon func
 
 ## <a name="use-the-function"></a>Gebruik de functie
 
-In het volgende voor beeld ziet u hoe u uw functie aanroept.
+In het volgende voor beeld ziet u een sjabloon die een door de gebruiker gedefinieerde functie bevat. Deze functie wordt gebruikt om een unieke naam voor een opslag account op te halen. De sjabloon heeft een para meter met de naam **storageNamePrefix** die wordt door gegeven als een para meter voor de functie.
 
 ```json
-"resources": [
+{
+ "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+   "storageNamePrefix": {
+     "type": "string",
+     "maxLength": 11
+   }
+ },
+ "functions": [
   {
-    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
-    "apiVersion": "2016-01-01",
-    "type": "Microsoft.Storage/storageAccounts",
-    "location": "South Central US",
-    "tags": {},
-    "sku": {
-      "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {}
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
   }
-]
+],
+ "resources": [
+   {
+     "type": "Microsoft.Storage/storageAccounts",
+     "apiVersion": "2019-04-01",
+     "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+     "location": "South Central US",
+     "sku": {
+       "name": "Standard_LRS"
+     },
+     "kind": "StorageV2",
+     "properties": {
+       "supportsHttpsTrafficOnly": true
+     }
+   }
+ ]
+}
 ```
 
 ## <a name="limitations"></a>Beperkingen

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: c88b060104a4c17e3edad2e23cfb23a54661b969
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d99c5ae91b80b9b6b9af08001b3a7c57bc7ca8f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033802"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944534"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Een virtuele machine van Azure implementeren C# met behulp van een resource manager-sjabloon
 
@@ -198,7 +198,7 @@ Voordat u een sjabloon kunt implementeren, moet u ervoor zorgen dat u toegang he
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     Vervang **&lt;abonnement-id&gt;** door uw abonnements-id, **&lt;toepassings-id&gt;** met de Active Directory toepassings-id, **&lt;verificatie sleutel&gt;** met de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
@@ -252,7 +252,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 De sjabloon en de para meters worden geïmplementeerd vanuit een opslag account in Azure. In deze stap maakt u het account en uploadt u de bestanden. 
 

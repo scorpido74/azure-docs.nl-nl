@@ -1,25 +1,19 @@
 ---
 title: Klassiek voor Azure Resource Manager migratie technische grondige kennis
 description: Technisch diep gaande kennis over door het platform ondersteunde migratie van bronnen van het klassieke implementatie model naar Azure Resource Manager
-services: virtual-machines-linux
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 29267453-f894-4180-bb67-dce2a0e062bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 75732cf58a68948bf225e15e9227a3fa7592e738
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a5277e23d92dd026aa19e278532869747709e646
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914922"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944736"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Technisch diep gaande kennis van een door het platform ondersteunde migratie van klassiek naar Azure Resource Manager
 

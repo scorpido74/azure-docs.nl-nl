@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.topic: reference
-ms.openlocfilehash: 597e1c2f7e04a7861099763d809ac09978e09805
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 9844b2fe7f1cbaf069789a4083229b4a6f37f38f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399604"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943984"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -122,6 +122,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Compute/virtualmachinescalesets
 - micro soft. containerinstance/containergroups
 - micro soft. containerregistry/registers
+- micro soft. containerregistry/registers/agentpools
 - micro soft. containerregistry/registers/buildtasks
 - micro soft. containerregistry/registers/replicaties
 - micro soft. containerregistry/registers/taskruns
@@ -152,6 +153,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. dbforpostgresql/servergroups
 - micro soft. dbforpostgresql/servers
 - micro soft. dbforpostgresql/serversv2
+- micro soft. dbforpostgresql/singleservers
 - micro soft. deploymentmanager/artifactsources
 - micro soft. deploymentmanager/-implementaties
 - micro soft. deploymentmanager/servicetopologies
@@ -413,6 +415,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - microsoft.web/connections
 - micro soft. Web/customapis
 - micro soft. Web/hostingenvironments
+- micro soft. Web/kubeenvironments
 - micro soft. web/server farms
 - microsoft.web/sites
 - micro soft. web/sites/premieraddons

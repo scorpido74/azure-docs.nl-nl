@@ -2,23 +2,17 @@
 title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: d63697f3c140b5ad374607f1ecb00dad20e697de
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.openlocfilehash: aa72116c3e6e98293b28b2d4413fd1dafb1372d9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899137"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942746"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
-Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op:
-
-* [abonnements niveau](deploy-to-subscription.md)
-* [niveau beheer groep](deploy-to-management-group.md)
-* Tenant niveau (in dit artikel)
-
-U kunt implementaties op Tenant niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals [het toewijzen van toegangs beheer op basis van rollen of het](../../role-based-access-control/overview.md) Toep assen van [beleid](../../governance/policy/overview.md).
+Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/overview.md) of op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor uw Azure AD-Tenant definiëren en toewijzen. Met sjablonen op Tenant niveau kunt u declaratief beleid Toep assen en rollen toewijzen op globaal niveau.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
@@ -41,10 +35,10 @@ Voor sjablonen gebruikt u:
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-Gebruik voor parameter bestanden:
+Het schema voor een parameter bestand is hetzelfde voor alle implementatie bereiken. Gebruik voor parameter bestanden:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="required-access"></a>Vereiste toegang
@@ -181,5 +175,4 @@ De [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
-* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
-* Zie [sjabloon functies](template-functions.md)voor een lijst met de beschik bare functies in een sjabloon.
+* U kunt ook sjablonen implementeren op [abonnements niveau](deploy-to-subscription.md) of op het niveau van de [beheer groep](deploy-to-management-group.md).

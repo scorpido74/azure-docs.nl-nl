@@ -1,14 +1,15 @@
 ---
 title: 'Zelf studie: een Kubernetes-cluster maken met Azure Kubernetes service (AKS) met behulp van terraform'
-description: Zelfstudie voor het maken van een Kubernetes-cluster met Azure Kubernetes Service en Terraform
+description: In deze zelf studie maakt u een Kubernetes-cluster met de Azure Kubernetes-service en terraform
+keywords: Azure devops terraform AKS kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472244"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945297"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Zelf studie: een Kubernetes-cluster maken met de Azure Kubernetes-service met behulp van terraform
 
@@ -71,7 +72,10 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {

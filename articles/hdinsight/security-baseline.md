@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303270"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943953"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
 
@@ -91,7 +91,7 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1,5: netwerk pakketten en stroom logboeken vastleggen
 
-**Hulp**: Schakel de flog-logboeken voor netwerk beveiligings groepen (NSG) in voor de NSG die is gekoppeld aan het subnet dat wordt gebruikt om uw Azure HDInsight-cluster te beveiligen. Registreer de NSG-stroom Logboeken in een Azure Storage-account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Azure Network Watcher pakket vastleggen in.
+**Hulp**: Schakel de stroom logboeken voor netwerk beveiligings groepen (NSG) in voor de NSG die zijn gekoppeld aan het subnet dat wordt gebruikt om uw Azure HDInsight-cluster te beveiligen. Registreer de NSG-stroom Logboeken in een Azure Storage-account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Azure Network Watcher pakket vastleggen in.
 
 
 NSG-stroom logboeken inschakelen:

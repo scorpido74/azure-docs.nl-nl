@@ -1,27 +1,17 @@
 ---
-title: Terraform installeren en configureren om Azure-resources in te richten
-description: Meer informatie over het installeren en configureren van terraform voor het maken van Azure-resources
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: Snelstartgids-terraform installeren en configureren om Azure-resources in te richten
+description: In deze quicstart installeert en configureert u terraform om Azure-resources te maken
+keywords: Azure devops terraform installeren configureren
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473127"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943509"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform installeren en configureren om Azure-resources in te richten
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>Snelstartgids: terraform installeren en configureren om Azure-resources in te richten
  
 Terraform biedt een eenvoudige manier om Cloud infrastructuur te definiëren, te bekijken en te implementeren met behulp van een [eenvoudige sjabloon-taal](https://www.terraform.io/docs/configuration/syntax.html). In dit artikel worden de stappen beschreven die nodig zijn om terraform te gebruiken om resources in te richten in Azure.
 
@@ -29,9 +19,9 @@ Ga naar de [terraform-hub](/azure/terraform)voor meer informatie over het gebrui
 > [!NOTE]
 > Neem voor terraform specifieke ondersteuning contact op met terraform met behulp van een van hun community-kanalen:
 >
->   • De [sectie terraform](https://discuss.hashicorp.com/c/terraform-core) van de portal van de Community bevat vragen, use cases en handige patronen.
+>    * De [sectie terraform](https://discuss.hashicorp.com/c/terraform-core) van de portal van de Community bevat vragen, use cases en handige patronen.
 >
->   • Voor vragen over de provider gaat u naar de sectie [terraform providers](https://discuss.hashicorp.com/c/terraform-providers) van de portal van de community.
+>    * Ga naar de sectie [terraform providers](https://discuss.hashicorp.com/c/terraform-providers) van de community-portal voor vragen met betrekking tot providers.
 
 
 
@@ -104,6 +94,10 @@ Maak een bestand `test.tf` in een lege map en plak het volgende script.
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"

@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: De classificatie verbeteren
       href: getting-started-improving-your-classifier.md
+    - name: Een domein selecteren
+      href: select-domain.md
     - name: De voorspellings-API gebruiken
       href: use-prediction-api.md
     - name: Smart Labeler gebruiken

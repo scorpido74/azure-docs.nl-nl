@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986658"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943880"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -37,8 +37,7 @@ Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://
 Hier zijn een aantal zaken die u nodig hebt om de app uit te voeren:
 
 * Node.js 8 of later
-* Een abonnementssleutel
-
+* Een abonnements sleutel voor de Bing Search-API. Als u er nog geen hebt, [maakt u een Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). u kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)gebruiken.
 ## <a name="get-the-source-code-and-install-dependencies"></a>De broncode ophalen en afhankelijkheden installeren
 
 De eerste stap bestaat uit het klonen van de opslagplaats met de broncode van de voorbeeld-app.
@@ -391,7 +390,7 @@ De contextargumenten zijn:
 | `section` | De sectie met resultaten (`pole`, `mainline` of `sidebar`) waarin het item wordt weergegeven. |
 | `index`<br>`count` | Beschikbaar wanneer het `RankingResponse`-item aangeeft dat alle resultaten in een gegeven verzameling moeten worden weergegeven; anders `undefined`. De index van het item binnen de bijbehorende verzameling en het totale aantal items in die verzameling. U kunt deze informatie gebruiken om de resultaten te nummeren, om verschillende HTML voor het eerste of laatste resultaat te genereren, etc. |
 
-In de voorbeeld-app gebruiken zowel de `images`- als `relatedSearches`-renderers de contextargumenten om de gegenereerde HTML aan te passen. Laten we de `images`-renderer eens beter bekijken:
+In de voorbeeld-app gebruiken zowel de `images`- als `relatedSearches`-renderers de contextargumenten om de gegenereerde HTML aan te passen. Laten we de renderer `images` eens wat beter bekijken:
 
 ```javascript
 searchItemRenderers = {
@@ -420,12 +419,12 @@ De afbeeldingsrenderer:
 
 * Hiermee wordt de grootte van de miniatuur van de afbeelding (de breedte varieert, terwijl de hoogte altijd 60 pixels bedraagt) berekend.
 * Hiermee wordt de HTML ingevoegd die voorafgaat aan het afbeeldingsresultaat op basis van de context.
-* Hiermee wordt de HTML-`<a>`-tag gebouwd die is gekoppeld aan de pagina die de afbeelding bevat.
+* De HTML-tag `<a>` bouwen die wordt gekoppeld aan de pagina die de afbeelding bevat.
 * De HTML-`<img>`-tag wordt gebouwd om de miniatuur weer te geven.
 
 De afbeeldingsrenderer gebruikt de variabelen `section` en `index` om resultaten verschillend weer te geven, afhankelijk van de locatie waar ze worden weergegeven. Tussen afbeeldingsresultaten wordt in de zijbalk een regeleinde (`<br>`-tag) ingevoegd, zodat in de zijbalk een kolom met afbeeldingen wordt weergegeven. In andere secties wordt het eerste afbeeldingsresultaat `(index === 0)` voorafgegaan door een `<p>`-tag.
 
-De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. De kenmerken `title` en `alt` (een tekstuele beschrijving van de afbeelding) zijn opgebouwd uit de naam van de afbeelding en de hostnaam in de URL.
+De miniatuurgrootte wordt gebruik in de `<img>`-code en in de velden `h` en `w` in de URL van de miniatuur. De kenmerken `title` en `alt` (een tekstuele beschrijving van de afbeelding) zijn opgebouwd uit de naam van de afbeelding en de hostnaam in de URL.
 
 Hier ziet u een voorbeeld van de manier waarop afbeeldingen worden weergegeven in de voorbeeld-app:
 
@@ -435,7 +434,7 @@ Hier ziet u een voorbeeld van de manier waarop afbeeldingen worden weergegeven i
 
 Antwoorden van de Bing Zoeken-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij elke volgende aanvraag moet worden teruggestuurd naar de API. Als meer dan één van de Bing Zoeken-API's door uw app wordt gebruikt, moet u ervoor zorgen dat dezelfde client-id wordt verzonden bij elke aanvraag vanuit alle services.
 
-Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Met beveiligingsbeleid voor de browser, zoals Cross-Origin Resource Sharing (CORS), kan worden voorkomen dat de voorbeeld-app toegang heeft tot de `X-MSEdge-ClientID`-header. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 

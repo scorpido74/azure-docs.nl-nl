@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932974"
+ms.locfileid: "78944217"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -56,7 +56,7 @@ In het volgende voor beeld wordt het **Aad-algemene** technische profiel weer ge
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Invoer claims
+## <a name="inputclaims"></a>InputClaims
 
 Het InputClaims-element bevat een claim waarmee een account in de Directory wordt gezocht of een nieuwe wordt gemaakt. Er moet precies één input claim-element in de claim verzameling voor invoer zijn voor alle technische profielen van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory.
 
@@ -66,7 +66,7 @@ Als u een nieuw gebruikers account wilt maken, is de invoer claim een sleutel wa
 
 Het InputClaimsTransformations-element kan een verzameling trans formatie-elementen voor invoer claims bevatten die worden gebruikt voor het wijzigen van de invoer claim of het genereren van een nieuwe.
 
-## <a name="output-claims"></a>Uitvoer claims
+## <a name="outputclaims"></a>OutputClaims
 
 Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, op voor waarde dat u het kenmerk `DefaultValue` hebt ingesteld.
 

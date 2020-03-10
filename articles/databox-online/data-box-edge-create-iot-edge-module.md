@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315818"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942546"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Een C# IOT Edge module ontwikkelen om bestanden te verplaatsen op Data Box Edge
 
@@ -53,7 +53,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 - De volgende ontwikkel bronnen:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
-    - [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+    - [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
     - [Azure IoT Edge-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Mogelijk moet u een account maken om de software te downloaden en te installeren.
@@ -92,7 +92,7 @@ Met de volgende stappen maakt u een IoT Edge module project op basis van de .NET
 Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
 1. Selecteer in Visual Studio code **> opdracht palet weer geven** om het VS code-opdracht palet te openen.
-2. Voer in het opdrachtpalet de opdracht **Azure: Aanmelden** in, voer deze uit en volg de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
+2. Voer in het opdrachtpalet de opdracht **Azure: Sign in** in en voer deze uit. Volg vervolgens de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
 3. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Geef in het opdrachtpalet de volgende informatie op om de oplossing te maken:
 
     1. Selecteer de map waarin u de oplossing wilt maken.
@@ -107,7 +107,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
     5. Geef het container register op dat u in de vorige sectie hebt gemaakt als de opslag plaats voor installatie kopieën voor uw eerste module. Vervang **localhost:5000** door de gekopieerde waarde voor de aanmeldingsserver.
 
-        De uiteindelijke teken reeks ziet `<Login server name>/<Module name>`er als volgt uit. In dit voor beeld is de teken reeks `mycontreg2.azurecr.io/filecopymodule`:.
+        De uiteindelijke teken reeks ziet eruit als `<Login server name>/<Module name>`. In dit voor beeld is de teken reeks: `mycontreg2.azurecr.io/filecopymodule`.
 
         ![Nieuwe oplossing 3 maken](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -237,10 +237,10 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
         }
     ```
 
-7. Sla dit bestand op.
+7. Dit bestand opslaan.
 8. U kunt ook [een bestaand code voorbeeld](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) voor dit project downloaden. U kunt vervolgens het bestand dat u hebt opgeslagen in het **Program.cs** -bestand valideren in dit voor beeld.
 
-## <a name="build-your-iot-edge-solution"></a>Uw eigen IoT Edge-oplossing bouwen
+## <a name="build-your-iot-edge-solution"></a>Uw IoT Edge-oplossing bouwen
 
 In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan de FileCopyModule om bestanden te kopiëren van een lokale share naar de Cloud share. Nu moet u de oplossing bouwen als een containerinstallatiekopie en deze naar het containerregister pushen.
 
@@ -270,9 +270,9 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
 
     Mogelijk wordt de volgende waarschuwing weer gegeven die u kunt negeren:
 
-    *Program. cs (77, 44): waarschuwing CS1998: Deze asynchrone methode heeft geen ' await ' Opera tors en wordt synchroon uitgevoerd. Overweeg het gebruik van de operator await om niet-blokkerende API-aanroepen of ' await-taak. run (...) ' te gebruiken voor het CPU-gebonden werk op een achtergrond thread.*
+    *Program. cs (77, 44): waarschuwing CS1998: deze async-methode heeft geen ' await ' Opera tors en wordt synchroon uitgevoerd. Overweeg het gebruik van de operator await om niet-blokkerende API-aanroepen of ' await-taak. run (...) ' te gebruiken voor het CPU-gebonden werk op een achtergrond thread.*
 
-4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie die zich in het bestand module. json `<repository>:<version>-<platform>`bevindt met de indeling. In dit artikel moet er als volgt `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`uitzien.
+4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie die zich in het bestand module. json bevindt met de indeling `<repository>:<version>-<platform>`. Voor dit artikel moet het er als volgt uitzien: `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

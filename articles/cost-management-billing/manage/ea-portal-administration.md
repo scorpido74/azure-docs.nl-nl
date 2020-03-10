@@ -3,16 +3,16 @@ title: Beheer van Azure EA Portal
 description: In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 79225d4dfe9e53da6936f8647c9f5a1dff0b4909
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598388"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301469"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -24,7 +24,7 @@ Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren v
 
 ## <a name="update-user-state-from-pending-to-active"></a>De status van een gebruiker bijwerken van in behandeling naar actief
 
-Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan een Azure EA-inschrijving, krijgen ze de status _In behandeling_. Zodra een nieuwe accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Zodra het account wordt geactiveerd, wordt de accountstatus bijgewerkt van _In behandeling_ naar _Actief_. De accounteigenaar moet het waarschuwingsbericht lezen en op **Doorgaan** klikken. Nieuwe gebruikers worden mogelijk gevraagd hun voor- en achternaam op te geven om een Commerce-account te maken. Als dat het geval is, moeten ze de vereiste informatie toevoegen om door te gaan, waarna het account wordt geactiveerd.
+Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan een Azure EA-inschrijving, krijgen ze de status _In behandeling_. Zodra een nieuwe accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Zodra het account wordt geactiveerd, wordt de accountstatus bijgewerkt van _In behandeling_ naar _Actief_. De accounteigenaar moet het waarschuwingsbericht lezen en **Doorgaan** selecteren. Nieuwe gebruikers worden mogelijk gevraagd hun voor- en achternaam op te geven om een Commerce-account te maken. Als dat het geval is, moeten ze de vereiste informatie toevoegen om door te gaan, waarna het account wordt geactiveerd.
 
 ## <a name="add-a-department-admin"></a>Een afdelingsbeheerder toevoegen
 
@@ -39,11 +39,11 @@ Ondernemingsbeheerders kunnen bestaande accounts aan afdelingen onder de inschri
 ### <a name="to-associate-an-account-to-a-department"></a>Een account aan een afdeling koppelen
 
 1. Meld u als ondernemingsbeheerder aan bij Azure EA Portal.
-1. Klik in het linkernavigatievenster op **Beheren**.
-1. Klik op **Afdeling**.
-1. Beweeg de muisaanwijzer over de rij met het gewenste account en klik op het potloodpictogram aan de rechterkant.
-1. Selecteer de gewenste afdeling in het vervolgkeuzemenu.
-1. Klik op **Opslaan**.
+1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+1. Selecteer **Afdeling**.
+1. Beweeg de muisaanwijzer over de rij met het account en selecteer het potloodpictogram aan de rechterkant.
+1. Selecteer de afdeling in het vervolgkeuzemenu.
+1. Selecteer **Opslaan**.
 
 ## <a name="department-spending-quotas"></a>Bestedingsquota van afdeling
 
@@ -54,13 +54,13 @@ De afdelingsbeheerder kan het bestedingsquotum zien, maar de hoogte ervan kan ui
 ### <a name="enterprise-administrator-to-set-the-quota"></a>Een ondernemingsbeheerder kan het quotum als volgt instellen:
 
  1. Open Azure EA Portal.
- 1. Klik in het linkernavigatievenster op **Beheren**.
- 1. Klik op het tabblad **Afdeling**.
- 1. Klik op de gewenste afdeling.
- 1. Klik in de sectie Afdelingsgegevens op het potloodpictogram of klik op de knop **+ Afdeling toevoegen** om een bestedingsquotum aan een nieuwe afdeling toe te voegen.
+ 1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+ 1. Selecteer het tabblad **Afdeling**.
+ 1. Selecteer de afdeling.
+ 1. Selecteer in de sectie Afdelingsgegevens het potloodpictogram of selecteer het pictogram **+ Afdeling toevoegen** om een bestedingsquotum aan een nieuwe afdeling toe te voegen.
  1. Voer onder Afdelingsgegevens in het vak Bestedingsquotum $ de hoogte van het bestedingsquotum in (in de valuta van de inschrijving). Deze waarde moet hoger zijn dan 0.
     - Op dit punt kunt u ook de Afdelingsnaam en de Kostenplaats bewerken.
- 1. Druk op **Opslaan**.
+ 1. Selecteer **Opslaan**.
 
 Het bestedingsquotum voor de afdeling is nu zichtbaar in de weergave Afdelingslijst op het tabblad Afdeling. Aan het einde van de huidige toezegging blijven de bestedingsquota voor de volgende toezeggingstermijn door Azure EA Portal gehandhaafd.
 
@@ -69,8 +69,8 @@ De hoogte van het bestedingsquotum is onafhankelijk van de huidige financiële t
 ### <a name="department-administrator-to-view-the-quota"></a>De afdelingsbeheerder kan het quotum als volgt bekijken:
 
 1. Open Azure EA Portal.
-1. Klik in het linkernavigatievenster op **Beheren**.
-1. Klik op het tabblad **Afdeling** en bekijk de weergave Afdelingslijst met daarin de bestedingsquota.
+1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+1. Selecteer het tabblad **Afdeling** en bekijk de weergave Afdelingslijst met daarin de bestedingsquota.
 
 Als u een indirecte klant bent, moeten kostenfuncties door uw kanaalpartner zijn ingesteld.
 
@@ -88,27 +88,27 @@ Zie [Enterprise-gebruikersrollen](https://docs.microsoft.com/azure/billing/billi
 
 ## <a name="add-an-azure-ea-account"></a>Een Azure EA-account toevoegen
 
-Het Azure EA-account is een organisatie-eenheid in Azure EA Portal die wordt gebruikt voor abonnementsbeheer en rapportagedoeleinden. Voor toegang tot en het gebruik van Azure-services moet u een account maken of laten maken.
+Het Azure EA-account is een organisatie-eenheid in de Azure EA-portal. Dit account wordt gebruikt om abonnementen te beheren en rapporten te maken. Voor toegang tot en het gebruik van Azure-services moet u een account maken of laten maken.
 
 Zie Een account toevoegen voor meer informatie over Azure-accounts.
 
 ## <a name="enterprise-devtest-offer"></a>Aanbieding voor Enterprise Dev/Test
 
-Als Azure-ondernemingsbeheerder kunt u nu accounteigenaren in uw organisatie de mogelijkheid geven om abonnementen te maken op basis van de EA Dev/Test-aanbieding. Schakel hiervoor vanuit Azure EA Portal het selectievakje Dev/Test voor die accounteigenaar in.
+Als Azure-ondernemingsbeheerder kunt u accounteigenaren in uw organisatie de mogelijkheid geven om abonnementen te maken op basis van de EA Dev/Test-aanbieding. Als u dit wilt doen, selecteert u het vak Dev/Test voor de accounteigenaar in de Azure EA-portal.
 
 Zodra u het selectievakje Dev/Test hebt ingeschakeld, brengt u de accounteigenaar hiervan op de hoogte zodat hij of zij de EA Dev/Test-abonnementen kan instellen die voor zijn of haar teams van Dev/Test-abonnees benodigd zijn.
 
-Met deze aanbieding kunnen actieve Visual Studio-abonnees werkbelastingen voor ontwikkelen en testen in Azure uitvoeren tegen speciale Dev/Test-tarieven en krijgen ze toegang tot de volledige galerie met Dev/Test-installatiekopieën, waaronder Windows 8.1 en Windows 10.
+Hierdoor kunnen actieve Visual Studio-abonnees de ontwikkeling uitvoeren en de werklast op Azure met speciale Dev/Test-snelheden testen. Het biedt toegang tot de volledige galerie Dev/Test-installatiekopieën, waaronder Windows 8.1 en Windows 10.
 
 ### <a name="to-set-up-the-enterprise-devtest-offer"></a>U kunt de Enterprise Dev/Test-aanbieding als volgt instellen:
 
 1. Meld u aan als de ondernemingsbeheerder.
-1. Klik in het linkernavigatievenster op **Beheren**.
-1. Klik op het tabblad **Account**.
-1. Klik op de rij voor het account waarvoor u toegang tot Dev/Test wilt inschakelen.
-1. Klik rechts naast de rij op het potloodpictogram.
+1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+1. Selecteer het tabblad **Account**.
+1. Selecteer de rij voor het account waarvoor u toegang tot Dev/Test wilt inschakelen.
+1. Selecteer rechts naast de rij het potloodpictogram.
 1. Schakel het selectievakje Dev/Test in.
-1. Druk op **Opslaan**.
+1. Selecteer **Opslaan**.
 
 Wanneer een gebruiker via Azure EA Portal als accounteigenaar wordt toegevoegd, worden alle Azure-abonnementen die aan de accounteigenaar zijn gekoppeld en zijn gebaseerd op ofwel de Dev/Test-aanbieding met betalen per gebruik of de aanbiedingen voor maandelijks tegoed voor Visual Studio-abonnees omgezet naar de EA Dev/Test-aanbieding. Abonnementen op basis van andere typen, zoals betalen per gebruik, die aan de accounteigenaar zijn gekoppeld, worden omgezet naar Microsoft Azure Enterprise-aanbiedingen.
 
@@ -116,7 +116,7 @@ De Dev/Test-aanbieding is op dit moment niet van toepassing op Azure Gov-klanten
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Een ondernemingsaccount overdragen naar een nieuwe inschrijving
 
-Bij een accountoverdracht wordt een accounteigenaar verplaatst van de ene inschrijving naar een andere. Alle verwante abonnementen onder de accounteigenaar worden verplaatst naar de doelinschrijving. Dit wordt uitgevoerd wanneer u meerdere actieve inschrijvingen hebt en alleen de geselecteerde accounteigenaren wilt verplaatsen.
+Bij een accountoverdracht wordt een accounteigenaar verplaatst van de ene inschrijving naar een andere. Alle verwante abonnementen onder de accounteigenaar worden verplaatst naar de doelinschrijving. Gebruik een accountoverdracht wanneer u meerdere actieve inschrijvingen hebt en alleen de geselecteerde accounteigenaren wilt verplaatsen.
 
 Deze sectie is alleen bedoeld voor informatieve doeleinden, omdat de actie niet kan worden uitgevoerd door een ondernemingsbeheerder. Er is een ondersteuningsaanvraag nodig om een ondernemingsaccount over te brengen naar een nieuwe inschrijving.
 
@@ -158,8 +158,8 @@ Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een insch
 - De inschrijvingsstatus wordt ingesteld op _Overgedragen_. De overgedragen inschrijving is alleen beschikbaar voor rapportage van het historische gebruik.
 - U kunt geen rollen of abonnementen toevoegen aan een overgedragen inschrijving. De status Overgedragen voorkomt aanvullend gebruik van de inschrijving.
 - Het saldo van de resterende financiële toezegging in de overeenkomst gaat verloren, met inbegrip van toekomstige voorwaarden.
--   Als de inschrijving van waaruit u de overdracht uitvoert over RI-aankopen beschikt, blijven de kosten voor de aanschaf van RI in de broninschrijving. Alle RI-voordelen worden echter overgedragen zodat u deze in de nieuwe inschrijving kunt gebruiken.
--   De eenmalige aanschafkosten via de marketplace en eventuele vaste maandelijkse kosten die al bij de oude inschrijving in rekening zijn gebracht, worden niet naar de nieuwe inschrijving overgedragen. Marketplace-kosten op basis van gebruik worden wel overgedragen.
+-    Als de inschrijving van waaruit u de overdracht uitvoert over RI-aankopen beschikt, blijven de kosten voor de aanschaf van RI in de broninschrijving. Alle RI-voordelen worden echter overgedragen zodat u deze in de nieuwe inschrijving kunt gebruiken.
+-    De eenmalige aanschafkosten via de marketplace en eventuele vaste maandelijkse kosten die al bij de oude inschrijving in rekening zijn gebracht, worden niet naar de nieuwe inschrijving overgedragen. Marketplace-kosten op basis van gebruik worden wel overgedragen.
 
 ### <a name="effective-transfer-date"></a>Werkelijke overdrachtsdatum
 
@@ -214,7 +214,7 @@ Als ontvangers de toegang tot hun Azure-resources willen beperken, moeten ze ove
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer in het Hub-menu **Alle resources**.
 3. Selecteer de resource.
-4. Klik op de resourcepagina op **Instellingen** om bestaande geheimen weer te geven en bij te werken.
+4. Selecteer op de resourcepagina **Instellingen** om bestaande geheimen weer te geven en bij te werken.
 
 ## <a name="delete-subscription"></a>Abonnement verwijderen
 
@@ -222,20 +222,22 @@ Als u een abonnement waarvoor u de accounteigenaar bent, wilt verwijderen, doet 
 
 1. Meld u aan bij Azure Portal met de referenties die bij uw account horen.
 1. Selecteer **Abonnementen** op het Hub-menu.
-1. Ga naar het tabblad Abonnementen in de linkerbovenhoek van de pagina, selecteer het abonnement dat u wilt opzeggen en klik op **Abonnement opzeggen** om het tabblad Opzeggen te openen.
-1. Voer de abonnementsnaam in en kies een reden voor het opzeggen. Klik daarna op de knop **Abonnement opzeggen**.
+1. Ga naar het tabblad Abonnementen in de linkerbovenhoek van de pagina, selecteer het abonnement dat u wilt opzeggen en selecteer **Abonnement opzeggen** om het tabblad Opzeggen te openen.
+1. Voer de abonnementsnaam in en kies een reden voor het opzeggen. Selecteer daarna de knop **Abonnement opzeggen**.
 
-Let op: alleen accountbeheerders kunnen abonnementen opzeggen.
+Alleen accountbeheerders kunnen abonnementen opzeggen.
+
+Zie voor meer informatie [Wat gebeurt er nadat ik mijn abonnement heb opgezegd?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)
 
 ## <a name="delete-an-account"></a>Een account verwijderen
 
 De verwijdering van een account kan alleen worden voltooid voor actieve accounts zonder actieve abonnementen.
 
-1. Selecteer in Enterprise Portal in het linkernavigatievenster de optie **Beheren**.
-1. Klik op het tabblad **Account**.
+1. Selecteer in Enterprise-portal in het linkernavigatievenster de optie **Beheren**.
+1. Selecteer het tabblad **Account**.
 1. Ga naar de tabel Accounts en selecteer het account dat u wilt verwijderen.
-1. Klik op het X-pictogram rechts naast de rij Account.
-1. Zodra het account geen actieve abonnementen meer heeft, klikt u op de knop **Ja** onder de rij Account om te bevestigen dat u het account wilt verwijderen.
+1. Selecteer het X-pictogram rechts naast de rij Account.
+1. Zodra het account geen actieve abonnementen meer heeft, selecteert u **Ja** onder de rij Account om te bevestigen dat u het account wilt verwijderen.
 
 ## <a name="update-notification-settings"></a>Instellingen voor meldingen bijwerken
 
@@ -251,11 +253,11 @@ De huidige instellingen voor meldingen weergeven:
 
 Een contactpersoon toevoegen:
 
-1. Klik op **+Contactpersoon toevoegen**.
+1. Selecteer **+Contactpersoon toevoegen**.
 2. Voer het e-mailadres in en bevestig dit.
-3. Klik op **Opslaan**.
+3. Selecteer **Opslaan**.
 
-De nieuwe contactpersoon voor meldingen wordt weergegeven in het gedeelte **Contactpersoon voor meldingen**. Als u de meldingsfrequentie wilt wijzigen, selecteert u de contactpersoon voor meldingen en klikt u rechts van de geselecteerde rij op het potloodpictogram. Stel de frequentie in **dagelijks**, **wekelijks**, **maandelijks** of **geen**.
+De nieuwe contactpersoon voor meldingen wordt weergegeven in het gedeelte **Contactpersoon voor meldingen**. Als u de meldingsfrequentie wilt wijzigen, selecteert u de contactpersoon voor meldingen en selecteert u rechts van de geselecteerde rij het potloodpictogram. Stel de frequentie in **dagelijks**, **wekelijks**, **maandelijks** of **geen**.
 
 U kunt de _naderende einddatum van de dekkingsperiode_ onderdrukken en de meldingen over de levenscyclus _uitschakelen en de inrichting van de datum ongedaan maken_. Als u de meldingen over de levenscyclus uitschakelt, worden meldingen over de dekkingsperiode en de einddatum van de overeenkomst onderdrukt.
 
@@ -265,23 +267,23 @@ Elke partnerbeheerder in Azure EA Portal beschikt over de mogelijkheid om andere
 
 ### <a name="add-a-partner-administrator"></a>Een partnerbeheerder toevoegen
 
-Klik op het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
+Selecteer het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
 
 1. Meld u aan als partnerbeheerder.
-1. Klik in het linkernavigatievenster op **Beheren**.
-1. Klik op het tabblad **Partner**.
-1. Klik op **+ Beheerder toevoegen** en vul het e-mailadres, de contactpersoon voor meldingen en meldingsgegevens in.
-1. Druk op **Toevoegen**.
+1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+1. Selecteer het tabblad **Partner**.
+1. Selecteer **+ Beheerder toevoegen** en vul het e-mailadres, de contactpersoon voor meldingen en meldingsgegevens in.
+1. Selecteer **Toevoegen**.
 
 ### <a name="remove-a-partner-administrator"></a>Een partnerbeheerder verwijderen
 
-Klik op het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
+Selecteer het tabblad **Inschrijving** en schakel het gewenste inschrijvingsvakje in om een lijst weer te geven met alle inschrijvingen die als huidige gebruiker aan diezelfde partnerorganisatie zijn gekoppeld.
 
 1. Meld u aan als partnerbeheerder.
-1. Klik in het linkernavigatievenster op **Beheren**.
-1. Klik op het tabblad **Partner**.
+1. Selecteer **Beheren** in het navigatievenster aan de linkerkant.
+1. Selecteer het tabblad **Partner**.
 1. Selecteer in de sectie Beheerder de juiste rij voor de beheerder die u wilt verwijderen.
-1. Klik aan de rechterkant op het X-pictogram.
+1. Selecteer het X-pictogram aan de rechterkant.
 1. Bevestig dat u de beheerder wilt verwijderen.
 
 ## <a name="manage-partner-notifications"></a>Partnermeldingen beheren
@@ -291,12 +293,12 @@ Partnerbeheerders kunnen beheren met welke frequentie ze gebruiksmeldingen voor 
 Als er geen melding door een gebruiker wordt ontvangen, controleert u aan de hand van de volgende stappen of de instellingen voor meldingen van de gebruiker juist.
 
 1. Meld u als een partnerbeheerder aan bij Azure EA Portal.
-2. Klik op **Beheren** en klik vervolgens op het tabblad **Partner**.
+2. Selecteer **Beheren** en selecteer vervolgens het tabblad **Partner**.
 3. Bekijk in de sectie Beheerder de lijst met beheerders.
-4. Als u de meldingsvoorkeuren wilt bewerken, plaatst u de muisaanwijzer op de desbetreffende beheerder en klikt u op het potloodpictogram.
-5. Werk de meldingsfrequentie en de meldingen over de levenscyclus naar wens bij.
-6. Voeg indien nodig een contactpersoon toe en klik op **Toevoegen**.
-7. Klik op **Opslaan**.
+4. Als u de meldingsvoorkeuren wilt bewerken, plaatst u de muisaanwijzer op de desbetreffende beheerder en selecteert u het potloodpictogram.
+5. Verhoog de meldingsfrequentie en het aantal meldingen over de levenscyclus naar wens.
+6. Voeg indien nodig een contactpersoon toe en selecteer **Toevoegen**.
+7. Selecteer **Opslaan**.
 
 ![Voorbeeld met het venster Contactpersoon toevoegen ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 
@@ -307,11 +309,11 @@ Partnerbeheerders kunnen een lijst met al hun directe en indirecte inschrijvinge
 ### <a name="view-a-list-of-enrollments"></a>Een lijst met inschrijvingen weergeven
 
 1. Meld u aan als partnerbeheerder.
-1. Klik in het navigatiemenu aan de linkerkant van de pagina op **Beheren**.
-1. Klik op het tabblad **Inschrijving**.
-1. Schakel het selectievakje in voor de gewenste inschrijving.
+1. Selecteer in het navigatiemenu aan de linkerkant van de pagina **Beheren**.
+1. Selecteer het tabblad **Inschrijving**.
+1. Schakel het selectievakje in voor de inschrijving.
 
-Bovenaan de pagina blijft een lijst met alle inschrijvingen zichtbaar, waarbij elke inschrijving van een selectievakje is voorzien. Daarnaast kunt u tussen inschrijvingen navigeren door in het navigatiemenu aan de linkerkant van de pagina op het nummer van de huidige inschrijving te klikken. Er wordt een pop-upbericht weergegeven waarin u naar inschrijvingen kunt zoeken of een andere inschrijving kunt selecteren door op het desbetreffende selectievakje te klikken.
+Bovenaan de pagina blijft een lijst met alle inschrijvingen zichtbaar, waarbij elke inschrijving van een selectievakje is voorzien. Daarnaast kunt u tussen inschrijvingen navigeren door in het navigatiemenu aan de linkerkant van de pagina het nummer van de huidige inschrijving te selecteren. Er wordt een pop-upbericht weergegeven waarin u naar inschrijvingen kunt zoeken of een andere inschrijving kunt selecteren door het desbetreffende selectievakje te selecteren.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-aanbieding
 
@@ -346,7 +348,7 @@ Er is per abonnement maar één accounteigenaar toegestaan.  U kunt aanvullende 
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kan een Azure-accounteigenaar worden vermeld onder meer dan één afdeling?
 
-Een accounteigenaar kan maar aan één afdeling worden gekoppeld.  We doen dit om ervoor te zorgen dat de kosten/uitgaven die aan de afdeling waarmee ze onder de EA-inschrijving in Azure EA Portal zijn afgestemd, nauwkeurig worden bijgehouden en verdeeld
+Nee, een accounteigenaar kan maar aan één afdeling worden gekoppeld. We hanteren dit beleid om ervoor te zorgen dat de kosten en uitgaven die aan de afdeling waarmee ze onder de EA-inschrijving in de Azure EA-portal zijn afgestemd, nauwkeurig worden bijgehouden en verdeeld.
 
 ### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Kan een Azure-accounteigenaar als een beveiligingsgroep worden vermeld?
 
@@ -362,7 +364,7 @@ Tegenwoordig wordt dit vanuit een beleid geregeld. Dit houdt in dat u voor elk a
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Waar kan ik een abonnement maken?
 
-Voordat u een abonnement voor een Enterprise Azure-aanbieding (EA) kunt maken, moet uw account door de beheerder van uw EA-inschrijving in Azure EA Portal aan de rol van accounteigenaar worden toegevoegd. Vervolgens moet u zich bij Azure EA Portal aanmelden om recht te krijgen op het maken van abonnementen van het EA-aanbiedingstype. U wordt aangeraden om uw eerste EA-abonnement te maken via de koppeling + Abonnement toevoegen, op het tabblad Abonnement in EA Portal.  Zodra uw account echter over de juiste machtigingen beschikt, is het wellicht eenvoudiger om abonnementen te maken op het tabblad Abonnement in de linkerbovenhoek van de pagina op portal.azure.com. Hier kunt u in één stap zowel uw abonnement maken als de naam daarvan wijzigen.
+Voordat u een abonnement voor een Enterprise Azure-aanbieding (EA) kunt maken, moet uw account door de beheerder van uw EA-inschrijving in de Azure EA-portal aan de rol van accounteigenaar worden toegevoegd. Vervolgens moet u zich bij Azure de EA-portal aanmelden om recht te krijgen op het maken van abonnementen van het EA-aanbiedingstype. U wordt aangeraden om uw eerste EA-abonnement te maken via de koppeling '+ Abonnement toevoegen', op het tabblad Abonnement in de EA-portal.  Zodra uw account echter over de juiste machtigingen beschikt, is het wellicht eenvoudiger om abonnementen te maken op het tabblad Abonnement in de linkerbovenhoek van de pagina op portal.azure.com. Hier kunt u in één stap zowel uw abonnement maken als de naam daarvan wijzigen.
 
 ### <a name="who-can-create-a-subscription"></a>Wie kan een abonnement maken?
 

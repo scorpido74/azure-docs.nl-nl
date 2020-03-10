@@ -5,17 +5,17 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351191"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945559"
 ---
-# <a name="design-scalable-and-performant-tables"></a>Schaalbare en performante tabellen ontwerpen
+# <a name="design-scalable-and-performant-tables"></a>Schaalbare en beter bruikbare tabellen ontwerpen
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -50,7 +50,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>jun</td>
@@ -98,7 +98,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Verkoop</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -107,7 +107,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -121,18 +121,18 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 </table>
 
 
-Tot nu toe worden deze gegevens weer gegeven zoals in een tabel in een relationele data base, met de belangrijkste verschillen tussen de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals **FirstName** of **Age** , een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. Hoewel in tegenstelling tot in een relationele database, de zonder schema aard van de Table-service betekent dat een eigenschap niet hetzelfde gegevenstype voor elke entiteit moet hebben. Voor het opslaan van complexe gegevenstypen in één eigenschap, moet u een geserialiseerde indeling zoals JSON of XML. Zie voor meer informatie over de tabel-service, zoals ondersteunde gegevenstypen, ondersteunde datumbereiken, naamgevingsregels en beperkingen [inzicht in het Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Tot nu toe worden deze gegevens weer gegeven zoals in een tabel in een relationele data base, met de belangrijkste verschillen tussen de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals **FirstName** of **Age** , een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. Hoewel in tegenstelling tot in een relationele database, de zonder schema aard van de Table-service betekent dat een eigenschap niet hetzelfde gegevenstype voor elke entiteit moet hebben. Voor het opslaan van complexe gegevenstypen in één eigenschap, moet u een geserialiseerde indeling zoals JSON of XML. Zie [inzicht in het tabel service gegevens model](https://msdn.microsoft.com/library/azure/dd179338.aspx)voor meer informatie over de tabel service, zoals ondersteunde gegevens typen, ondersteunde datumbereiken, naamgevings regels en grootte beperkingen.
 
-Uw keuze van **PartitionKey** en **RowKey** is fundamenteel voor een goed ontwerp van een tabel. Elke entiteit die zijn opgeslagen in een tabel moet een unieke combinatie van **PartitionKey** en **RowKey**. Net als bij sleutels in een relationele-database tabel worden de waarden **PartitionKey** en **RowKey** geïndexeerd voor het maken van een geclusterde index voor het inschakelen van snelle vormgeving. De Table service maakt echter geen secundaire indexen, dus **PartitionKey** en **RowKey** zijn de enige geïndexeerde eigenschappen. Sommige van de patronen die in [tabel ontwerp patronen](table-storage-design-patterns.md) worden beschreven, illustreren hoe u deze zicht bare beperking kunt omzeilen.  
+Uw keuze van **PartitionKey** en **RowKey** is fundamenteel voor een goed ontwerp van een tabel. Elke entiteit die is opgeslagen in een tabel moet een unieke combi natie van **PartitionKey** en **RowKey**hebben. Net als bij sleutels in een relationele-database tabel worden de waarden **PartitionKey** en **RowKey** geïndexeerd voor het maken van een geclusterde index voor het inschakelen van snelle vormgeving. De Table service maakt echter geen secundaire indexen, dus **PartitionKey** en **RowKey** zijn de enige geïndexeerde eigenschappen. Sommige van de patronen die in [tabel ontwerp patronen](table-storage-design-patterns.md) worden beschreven, illustreren hoe u deze zicht bare beperking kunt omzeilen.  
 
 Een tabel bestaat uit een of meer partities, en veel van de ontwerp beslissingen die u aanbrengt, zijn een geschikte **PartitionKey** en **RowKey** om uw oplossing te optimaliseren. Een oplossing kan bestaan uit één tabel die al uw entiteiten bevat, ingedeeld in partities, maar een oplossing heeft meestal meerdere tabellen. Tabellen kunt u logisch ordenen van uw entiteiten, helpen bij het beheren van toegang tot de gegevens met behulp van toegangsbeheerlijsten en u kunt een hele tabel met behulp van een enkele opslagbewerking neerzetten.  
 
 ## <a name="table-partitions"></a>Tabelpartities
-De accountnaam, de tabelnaam, en **PartitionKey** samen bepalen de partitie in de storage-service waar de entiteit in de table-service worden opgeslagen. Als u deelneemt aan het adresschema gebruiken voor entiteiten, partities een bereik voor transacties definiëren (Zie [entiteit-groepstransacties](#entity-group-transactions) hieronder), en vormen de basis van hoe de table-service kan worden geschaald. Zie voor meer informatie over partities de [controle lijst voor prestaties en schaal baarheid voor tabel opslag](storage-performance-checklist.md).  
+De account naam, tabel naam en **PartitionKey** bepalen samen de partitie in de opslag service waar de tabel service de entiteit opslaat. En als onderdeel van het adresserings schema voor entiteiten definiëren partities een bereik voor [trans acties (zie hieronder](#entity-group-transactions) ) en vormen de basis van de manier waarop de tabel service wordt geschaald. Zie voor meer informatie over partities de [controle lijst voor prestaties en schaal baarheid voor tabel opslag](storage-performance-checklist.md).  
 
-In de Table service, een afzonderlijk knoop punt Services een of meer volledige partities en de service wordt geschaald door dynamische Load Balancing-partities tussen knoop punten. Als een knooppunt belast wordt, de table-service kunt *splitsen* het bereik van partities afgehandeld door dat knooppunt aan andere knooppunten; wanneer netwerkverkeer afneemt, de service kunt *samenvoegen* de partitie kan variëren van stille knooppunten terug op een enkel knooppunt.  
+In de Table service, een afzonderlijk knoop punt Services een of meer volledige partities en de service wordt geschaald door dynamische Load Balancing-partities tussen knoop punten. Als een knoop punt wordt geladen, kan de Table-service het bereik van partities dat door dat knoop punt wordt verwerkt, *splitsen* op verschillende knoop punten. Wanneer er verkeer wordt ondergebracht, kan de-service de partitielay-bereiken van de Stille knoop punten weer *samen voegen* op een enkel knoop punt.  
 
-Raadpleeg het artikel voor meer informatie over de interne details van de Table-service, en met name hoe partities worden beheerd door de service, [Microsoft Azure Storage: een maximaal beschikbare Cloudopslagservice met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Zie het artikel [Microsoft Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)voor meer informatie over de interne Details van de Table service, met name hoe de service partities beheert.  
 
 ## <a name="entity-group-transactions"></a>Entiteit-groepstransacties
 Entiteit-groepstransacties (EGTs) zijn in de tabel-service, het enige ingebouwde mechanisme voor het uitvoeren van atomic updates voor meerdere entiteiten. EGTs worden soms ook wel batch- *trans acties*genoemd. EGTs kan alleen worden gebruikt voor entiteiten die zijn opgeslagen in dezelfde partitie (dat wil zeggen, delen dezelfde partitie sleutel in een bepaalde tabel). U moet er dus altijd voor zorgen dat deze entiteiten zich in dezelfde partitie bevinden, zodat u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt. Dit is vaak een reden voor het bewaren van meerdere Entiteitstypen in dezelfde tabel (en de partitie) en meerdere tabellen voor verschillende Entiteitstypen niet gebruiken. Een enkele EGT kan worden uitgevoerd op maximaal 100 entiteiten.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs; anders kan de verwerking worden vertraagd.
@@ -140,22 +140,11 @@ Entiteit-groepstransacties (EGTs) zijn in de tabel-service, het enige ingebouwde
 Met EGTs kunt u ook een mogelijke trans actie in uw ontwerp introduceren. Dat wil zeggen dat het gebruik van meer partities de schaal baarheid van uw toepassing verg root, omdat Azure meer mogelijkheden heeft voor taak verdeling van aanvragen op verschillende knoop punten. Maar het gebruik van meer partities kan de mogelijkheid van uw toepassing beperken tot het uitvoeren van atomische trans acties en het behouden van sterke consistentie voor uw gegevens. Daarnaast zijn er specifieke schaalbaarheids doelen op het niveau van een partitie die de door Voer van trans acties die u voor één knoop punt kan verwachten, kunnen beperken. Zie [schaalbaarheids doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)voor meer informatie over de schaalbaarheids doelen voor Azure Standard-opslag accounts. Zie [schaalbaarheids-en prestatie doelen voor Table Storage](scalability-targets.md)voor meer informatie over de schaalbaarheids doelen voor de Table service.
 
 ## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
-In de volgende tabel worden enkele belang rijke waarden beschreven waarmee u rekening moet houden bij het ontwerpen van een Table service oplossing:  
 
-| Totale capaciteit van een Azure storage-account | 500 TB |
-| --- | --- |
-| Aantal tabellen in een Azure storage-account |Alleen beperkt door de capaciteit van het storage-account |
-| Aantal partities in een tabel |Alleen beperkt door de capaciteit van het storage-account |
-| Aantal entiteiten in een partitie |Alleen beperkt door de capaciteit van het storage-account |
-| Grootte van een afzonderlijke entiteit |Maximaal 1 MB met een maximum van 255 eigenschappen (met inbegrip van de **PartitionKey**, **RowKey**, en **Timestamp**) |
-| Grootte van de **PartitionKey** |Een tekenreeks van 1 KB groot |
-| Grootte van de **RowKey** |Een tekenreeks van 1 KB groot |
-| Grootte van een transactie entiteitsgroep |Een transactie mag maximaal 100 entiteiten en de payload moet minder dan 4 MB groot zijn. Een entiteit kunt slechts één keer bijwerken door een EGT. |
-
-Zie [Het gegevensmodel van de tabelservice](https://msdn.microsoft.com/library/azure/dd179338.aspx) voor meer informatie.  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>Kostenoverwegingen
-Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een Table service oplossing. In veel gevallen is het opslaan van gedenormaliseerde of dubbele gegevens voor het verbeteren van de prestaties of schaal baarheid van uw oplossing een geldige benadering. Zie voor meer informatie over prijzen [prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een Table service oplossing. In veel gevallen is het opslaan van gedenormaliseerde of dubbele gegevens voor het verbeteren van de prestaties of schaal baarheid van uw oplossing een geldige benadering. Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

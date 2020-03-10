@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd55f422451df935301245eef3e9dd10f7ab55b1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134939"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945648"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -321,7 +321,10 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 
 ## <a name="complete-the-migration"></a>Migratie voltooien
 
-1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
+1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Er gebeurt nu het volgende:
+    - Hiermee wordt de replicatie voor de on-premises computer gestopt.
+    - Hiermee verwijdert u de computer van het aantal **replicerende servers** in azure migrate: Server migratie.
+    - Hiermee wordt de replicatie status informatie voor de machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.

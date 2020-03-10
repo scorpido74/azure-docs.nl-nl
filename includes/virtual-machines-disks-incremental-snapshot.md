@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 2316b52115cc23d11dfb26d951a7f1820f2737cc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77520619"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945810"
 ---
 Incrementele moment opnamen (preview) zijn punt-in-time-back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen van alle wijzigingen bestaan sinds de laatste moment opname. Wanneer u probeert een incrementele moment opname te downloaden of anderszins te gebruiken, wordt de volledige VHD gebruikt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven kan ertoe leiden dat ze rendabeler worden, omdat u niet langer de volledige schijf hoeft op te slaan bij elke afzonderlijke moment opname, tenzij u dat doet. Net als bij gewone moment opnamen kunnen incrementele moment opnamen worden gebruikt voor het maken van een volledige beheerde schijf of, om een gewone moment opname te maken.
 
@@ -25,8 +25,7 @@ Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voo
 
 Alleen de volgende regio's worden momenteel ondersteund:
 
-- Beschikbaar als GA aanbieding in de regio's vs-West-Centraal, Canada-oost, Canada-centraal.
-- Beschikbaar als open bare preview in de regio's VS-Oost, VS-Oost 2, VS-midden, Europa-noord, Zuid-Azië-oost.
+- Beschikbaar als een GA aanbieding in West-Centraal VS, VS-Oost, VS-Oost 2, VS-midden, Canada-oost, Canada-centraal, Europa-noord, Zuid-Azië-oost regio's.
 
 ## <a name="restrictions"></a>Beperkingen
 - Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd (in de preview-versie).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 38ffd4931f318b15f1ac06fcfd742bde8e5c6838
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a127c8c77f97708729cf91d6ced214e98924fb6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772973"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943015"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelf studie: IoT Edge-modules voor Linux-apparaten ontwikkelen
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="key-concepts"></a>Belangrijke concepten
+## <a name="key-concepts"></a>Belangrijkste concepten
 
 In deze zelf studie wordt de ontwikkeling van een IoT Edge module door lopen. Een *IOT Edge module*, of soms alleen *module* voor kort, is een container met uitvoer bare code. U kunt een of meer modules implementeren op een IoT Edge apparaat. Met modules worden specifieke taken uitgevoerd, zoals het opnemen van gegevens uit Sens oren, het opschonen en analyseren van gegevens, of het verzenden van berichten naar een IoT-hub. Zie voor meer informatie [Azure IOT Edge modules begrijpen](iot-edge-modules.md).
 
@@ -65,7 +65,7 @@ Een ontwikkel computer:
   * Zorg ervoor dat uw ontwikkel computer geneste virtualisatie ondersteunt. Deze mogelijkheid is nodig voor het uitvoeren van een container engine, die u in de volgende sectie installeert.
 * De meeste besturings systemen waarop een container engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelf studie wordt gebruikgemaakt van een Windows-computer, maar punten bekende verschillen in MacOS of Linux.
 * Installeer [Git](https://git-scm.com/)voor het ophalen van module sjabloon pakketten verderop in deze zelf studie.  
-* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 Een Azure IoT Edge apparaat in Linux:
@@ -329,5 +329,5 @@ In deze zelf studie stelt u Visual Studio code in op uw ontwikkel computer en im
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
 > [Java](tutorial-java-module.md)
-> [Node.js](tutorial-node-module.md)
-> [Python](tutorial-python-module.md)
+> [node. js](tutorial-node-module.md)
+> [python](tutorial-python-module.md)

@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227463"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944185"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -219,14 +219,17 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Aanvullend:
 
-* Controleer of de computer nog bestaat en bereikbaar is. Als deze niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
+* Controleer of de computer nog bestaat en bereikbaar is. 
+* Als de computer niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
 * Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.
-* Voer de volgende query uit in Log Analytics om computers in uw omgeving te zoeken waarvan de `SourceComputerId` is gewijzigd. Zoek naar computers die dezelfde `Computer` waarde hebben, maar een andere `SourceComputerId` waarde. 
+* Controleer de verbinding met de Hybrid Runbook Worker met behulp van de Hybrid Runbook Worker agent-probleem Oplosser. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser.
+* Voer de volgende query uit in Log Analytics om computers in uw omgeving te vinden waarvoor `SourceComputerId` is gewijzigd. Zoek naar computers die dezelfde `Computer` waarde hebben, maar een andere `SourceComputerId` waarde.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Nadat u de betrokken computers hebt gevonden, bewerkt u de update-implementaties die zijn gericht op die computers en vervolgens verwijdert u deze en voegt u deze opnieuw toe zodat `SourceComputerId` de juiste waarde weergeeft.
+
+* Nadat u de betrokken computers hebt gevonden, bewerkt u de update-implementaties die zijn gericht op die computers en vervolgens verwijdert u deze en voegt u deze opnieuw toe zodat `SourceComputerId` de juiste waarde weergeeft.
 
 ## <a name="updates-nodeployment"></a>Scenario: updates worden geïnstalleerd zonder een implementatie
 

@@ -3,19 +3,19 @@ title: Test gegevens voorbereiden voor de Custom Speech-Speech-Service
 titleSuffix: Azure Cognitive Services
 description: Wanneer u de nauw keurigheid van micro soft-spraak herkenning wilt testen of uw aangepaste modellen wilt trainen, hebt u audio-en tekst gegevens nodig. Op deze pagina hebben we betrekking op de typen gegevens, het gebruik en het beheer ervan.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660406"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942686"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -27,9 +27,9 @@ In deze tabel worden de geaccepteerde gegevens typen vermeld, wanneer elk gegeve
 
 | Gegevenstype | Gebruikt voor testen | Aanbevolen aantal | Gebruikt voor training | Aanbevolen aantal |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | N.v.t. |
+| [Geluiden](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | n.v.t. |
 | [Audio en Transcripten met menselijke labels](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Wordt gebruikt om de nauw keurigheid te evalueren | 0,5-5 uur audio | Ja | 1-1000 uur audio |
-| [Gerelateerde tekst](#related-text-data-for-training) | Nee | N.v.t. | Ja | 1-200 MB aan Verwante tekst |
+| [Gerelateerde tekst](#related-text-data-for-training) | Nee | n.v.t. | Ja | 1-200 MB aan Verwante tekst |
 
 Bestanden moeten worden gegroepeerd op type in een gegevensset en worden geüpload als zip-bestand. Elke gegevensset kan slechts één gegevens type bevatten.
 
@@ -55,15 +55,17 @@ Audio gegevens zijn optimaal voor het testen van de nauw keurigheid van het spra
 
 Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn ingedeeld voor gebruik met Custom Speech:
 
-| Eigenschap | Waarde |
-|----------|-------|
-| Bestands indeling | RIFF (WAV) |
-| Sample frequentie | 8\.000 Hz of 16.000 Hz |
-| Kanalen | 1 (mono) |
-| Maximum lengte per audio | 2 uur |
-| Voorbeeld indeling | PCM, 16-bits |
-| Archief indeling | .zip |
-| Maximale archief grootte | 2 GB |
+| Eigenschap                 | Waarde                 |
+|--------------------------|-----------------------|
+| Bestands indeling              | RIFF (WAV)            |
+| Sample frequentie              | 8\.000 Hz of 16.000 Hz |
+| Kanalen                 | 1 (mono)              |
+| Maximum lengte per audio | 2 uur               |
+| Voorbeeld indeling            | PCM, 16-bits           |
+| Archief indeling           | .zip                  |
+| Maximale archief grootte     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > Bij het uploaden van training en het testen van gegevens, mag de zip-bestand niet groter zijn dan 2 GB. Als u meer gegevens nodig hebt voor de training, splitst u deze op in verschillende zip-bestanden en uploadt u deze afzonderlijk. Later kunt u kiezen voor het trainen van *meerdere* gegevens sets. U kunt echter alleen testen vanuit *één* gegevensset.
@@ -79,18 +81,20 @@ Gebruik <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox 
 
 Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.
 
-| Eigenschap | Waarde |
-|----------|-------|
-| Bestands indeling | RIFF (WAV) |
-| Sample frequentie | 8\.000 Hz of 16.000 Hz |
-| Kanalen | 1 (mono) |
+| Eigenschap                 | Waarde                               |
+|--------------------------|-------------------------------------|
+| Bestands indeling              | RIFF (WAV)                          |
+| Sample frequentie              | 8\.000 Hz of 16.000 Hz               |
+| Kanalen                 | 1 (mono)                            |
 | Maximum lengte per audio | 2 uur (testen)/60 s (training) |
-| Voorbeeld indeling | PCM, 16-bits |
-| Archief indeling | .zip |
-| Maximale grootte van zip | 2 GB |
+| Voorbeeld indeling            | PCM, 16-bits                         |
+| Archief indeling           | .zip                                |
+| Maximale grootte van zip         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> Bij het uploaden van training en het testen van gegevens, mag de zip-bestand niet groter zijn dan 2 GB. Uou kan alleen testen vanuit *één* gegevensset, zorg ervoor dat deze binnen de juiste bestands grootte blijft.
+> Bij het uploaden van training en het testen van gegevens, mag de zip-bestand niet groter zijn dan 2 GB. U kunt alleen testen vanuit *één* gegevensset, zorg ervoor dat deze binnen de juiste bestands grootte blijft. Daarnaast kan elk trainings bestand niet groter zijn dan 60 seconden, anders wordt er een fout opgetreden.
 
 Voor het oplossen van problemen zoals het verwijderen of vervangen van woorden, is een aanzienlijke hoeveelheid gegevens vereist om de herkenning te verbeteren. Over het algemeen is het raadzaam om per woord transcripties te bieden voor ongeveer 10 tot 1.000 uur aan audio. De transcripties voor alle WAV-bestanden moeten worden opgenomen in één bestand met tekst zonder opmaak. Elke regel van het transcriptiebestand moet de naam van een van de audiobestanden bevatten, gevolgd door de bijbehorende transcriptie. De bestandsnaam en transcriptie moeten worden gescheiden door een tab (\t).
 

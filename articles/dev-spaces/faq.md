@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 526e8a247241bd3ea0e61b6cd3b025cd473b29aa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255716"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942512"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
 
@@ -19,6 +19,10 @@ Dit is een oplossing voor veelgestelde vragen over Azure dev Spaces.
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Welke Azure-regio's bevatten momenteel Azure dev Spaces?
 
 Zie [ondersteunde regio's][supported-regions] voor een volledige lijst met beschik bare regio's.
+
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Kan ik mijn AKS-cluster migreren met Azure-ontwikkel ruimten naar een andere regio?
+
+Ja, als u uw AKS-cluster met Azure-ontwikkel ruimten wilt verplaatsen naar een andere [ondersteunde regio][supported-regions], raden we u aan om een nieuw cluster in de andere regio te maken en Azure dev Spaces te installeren en te configureren en uw resources en toepassingen te implementeren in uw nieuwe cluster. Zie [Migrate to Azure Kubernetes service (AKS) (Engelstalig)][aks-migration]voor meer informatie over het migreren van AKS.
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Kan ik Azure dev Spaces gebruiken met bestaande Dockerfiles-of helm-grafieken?
 
@@ -77,6 +81,7 @@ Wanneer u Visual Studio gebruikt om uw project voor te bereiden, hebt u de mogel
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-migration]: ../aks/aks-migration.md
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works

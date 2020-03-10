@@ -6,15 +6,15 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695433"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944957"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Preview: Een virtuele Linux-machine maken met Azure Image Builder
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Voor beeld: een virtuele Linux-machine maken met Azure Image Builder
 
 Dit artikel laat u zien hoe u een aangepaste Linux-installatie kopie kunt maken met behulp van de Azure Image Builder en de Azure CLI. In het voor beeld in dit artikel worden drie verschillende [aanpassingen](image-builder-json.md#properties-customize) gebruikt voor het aanpassen van de installatie kopie:
 
@@ -75,7 +75,7 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met behulp van `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -91,7 +91,7 @@ az group create -n $imageResourceGroup -l $location
 ## <a name="set-permissions-on-the-resource-group"></a>Machtigingen voor de resource groep instellen
 Geef de machtiging Inzender om de afbeelding in de resource groep te maken. Zonder de juiste machtigingen kan de installatie kopie niet worden gemaakt. 
 
-De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+De `--assignee` waarde is de ID van de app-registratie voor de Image Builder-service. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -114,14 +114,14 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-U kunt dit voor beeld. json aanpassen als dat nodig is. U kunt bijvoorbeeld de waarde `buildTimeoutInMinutes` verg Roten om meer builds te kunnen uitvoeren. U kunt het bestand bewerken in Cloud Shell met behulp van een `vi`tekst editor, zoals.
+U kunt dit voor beeld. json aanpassen als dat nodig is. U kunt bijvoorbeeld de waarde van `buildTimeoutInMinutes` verg Roten, zodat er meer builds meer worden uitgevoerd. U kunt het bestand bewerken in Cloud Shell met behulp van een tekst editor zoals `vi`.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt `latest`deze niet gebruiken.
+> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt `latest`niet gebruiken.
 >
 > Als u de resource groep toevoegt of wijzigt waar de installatie kopie wordt gedistribueerd, moet u controleren of de [machtigingen zijn ingesteld voor de resource groep](#set-permissions-on-the-resource-group).
 
@@ -143,7 +143,7 @@ Als de bewerking is voltooid, wordt er een bericht weer gegeven en wordt er een 
 Bovendien maakt de opbouw functie voor afbeeldingen op de achtergrond een staging-resource groep in uw abonnement. In de opbouw functie voor installatie kopieën wordt de resource groep staging gebruikt voor het bouwen van de installatie kopie. De naam van de resource groep heeft de volgende indeling: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
 > [!IMPORTANT]
-> Verwijder de faserings resource groep niet rechtstreeks. Als u het afbeeldings sjabloon artefact verwijdert, wordt de resource groep staging automatisch verwijderd. Zie de sectie opschonen [](#clean-up) aan het einde van dit artikel voor meer informatie.
+> Verwijder de faserings resource groep niet rechtstreeks. Als u het afbeeldings sjabloon artefact verwijdert, wordt de resource groep staging automatisch verwijderd. Zie de sectie [opschonen](#clean-up) aan het einde van dit artikel voor meer informatie.
 
 Zie de stappen voor [probleem oplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) als de service een fout meldt tijdens het verzenden van de afbeeldings configuratie sjabloon. U moet de sjabloon ook verwijderen voordat u opnieuw probeert de build te verzenden. De sjabloon verwijderen:
 

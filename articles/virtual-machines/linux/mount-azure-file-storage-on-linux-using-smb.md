@@ -1,24 +1,18 @@
 ---
 title: Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 description: Azure File Storage koppelen op Linux Vm's met behulp van SMB met de Azure CLI
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035664"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944612"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 
@@ -39,7 +33,7 @@ Maak een resource groep met de naam *myResourceGroup* op de locatie *VS-Oost* .
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 Maak een nieuw opslag account in de resource groep die u hebt gemaakt met [AZ Storage account create](/cli/azure/storage/account). In dit voor beeld wordt een opslag account gemaakt met de naam *mySTORAGEACCT\<wille keurig getal >* en wordt de naam van dat opslag account in de variabele **STORAGEACCT**geplaatst. Namen van opslag accounts moeten uniek zijn. met `$RANDOM` wordt een getal aan het einde toegevoegd om het uniek te maken.
 
@@ -69,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 Maak de bestands opslag share met [AZ Storage share Create](/cli/azure/storage/share). 
 
-Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de naamgeving van bestandsshares en bestanden.
+Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) voor meer informatie over de naamgeving van bestandsshares en bestanden.
 
 In dit voor beeld wordt een share gemaakt met de naam *MyShare* met een GiB-quotum van 10. 
 

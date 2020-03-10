@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick Start leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een .NET core-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 7c97c42448700fdf1f69cbbef68a407716aabfd2
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6593cc3d5926fae05b2afd1e926552a2996ae885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399486"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943711"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio code en .NET core-Azure dev Spaces
 
@@ -30,7 +30,7 @@ Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
 
 - Een Azure-abonnement. Als u nog geen account hebt, kunt u [een gratis account aanmaken](https://azure.microsoft.com/free).
 - [Visual Studio code is geïnstalleerd](https://code.visualstudio.com/download).
-- De [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) en [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) extensies voor Visual Studio code geïnstalleerd.
+- De [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) en [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extensies voor Visual Studio code geïnstalleerd.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken

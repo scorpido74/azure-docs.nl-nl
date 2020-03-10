@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 40846de9ee8eec3225a05e3c2c68c3ad5af02042
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201013"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251141"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Geëxporteerde gegevens maken en beheren
 
@@ -39,6 +39,8 @@ Exporteren van gegevens is beschikbaar voor verschillende typen Azure-accounts, 
 Voor Azure-opslagaccounts:
 - Voor het wijzigen van een geconfigureerd opslagaccount zijn schrijfmachtigingen vereist, ongeacht de machtiging voor het exporteren.
 - Uw Azure-opslagaccount moet zijn geconfigureerd voor blob- of bestandsopslag.
+
+Als u een nieuw abonnement hebt, kunt u niet direct de Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).

@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482901"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944283"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelf studie: een omgeving instellen voor machine learning op IoT Edge
 
@@ -42,7 +42,7 @@ De ontwikkelings-VM wordt ingesteld met:
 * [VS code-extensies](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 

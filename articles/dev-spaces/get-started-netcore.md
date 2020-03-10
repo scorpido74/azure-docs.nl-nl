@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een .NET core-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252430"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942495"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en .NET core met Azure dev Spaces
 
@@ -81,7 +81,7 @@ Voer de volgende Azure CLI-opdracht in. Gebruik daarbij de resourcegroep die uw 
 Uitgebreide functies, zoals Kubernetes-foutopsporing, zijn beschikbaar voor .NET Core en Node.js-ontwikkelaars die VS Code gebruiken.
 
 1. Installeer [VS Code](https://code.visualstudio.com/Download) als u dit nog niet hebt.
-1. Down load en installeer de [VS Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) en [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Extensions. Voor elke uitbrei ding klikt u op installeren op de Marketplace-pagina van de uitbrei ding en nogmaals in VS code.
+1. Down load en installeer de [VS Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) en [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Extensions. Voor elke uitbrei ding klikt u op installeren op de Marketplace-pagina van de uitbrei ding en nogmaals in VS code.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Een web-app maken die wordt uitgevoerd in een container
 

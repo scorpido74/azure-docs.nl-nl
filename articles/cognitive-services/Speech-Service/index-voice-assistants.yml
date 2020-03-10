@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Documentatie voor spraak assistenten
+title: Documentatie over spraakassistenten
 summary: Met spraak assistenten die gebruikmaken van de speech-service kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen.
 metadata:
   title: Documentatie voor spraak assistenten-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
-  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/29/2020
-  ms.locfileid: "78196906"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943334"
 landingContent:
 - title: Aan de slag
   linkLists:
@@ -35,6 +35,16 @@ landingContent:
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Veelgestelde vragen over spraakassistenten
       url: faq-voice-assistants.md
+- title: Aangepast tref woord
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepast tref woord
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Richt lijnen voor naamgeving van aangepaste tref woorden
+      url: speech-devices-sdk-kws-guidelines.md
 - title: Aangepaste opdrachten
   linkLists:
   - linkListType: quickstart

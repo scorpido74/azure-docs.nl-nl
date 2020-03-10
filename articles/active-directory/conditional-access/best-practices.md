@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963933"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377564"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
@@ -35,7 +35,7 @@ Wanneer u een nieuw beleid maakt, zijn er geen gebruikers, groepen, apps of toeg
 
 Als u uw beleid wilt laten werken, moet u het volgende configureren:
 
-| Wat           | Hoe                                  | Waarom |
+| Wat           | werking                                  | Waarom |
 | :--            | :--                                  | :-- |
 | **Cloud-apps** |Selecteer een of meer apps.  | Het doel van een beleid voor voorwaardelijke toegang is om u te laten bepalen hoe geautoriseerde gebruikers toegang hebben tot Cloud-apps.|
 | **Gebruikers en groepen** | Selecteer ten minste één gebruiker of groep die is gemachtigd om toegang te krijgen tot uw geselecteerde Cloud-apps. | Een beleid voor voorwaardelijke toegang waaraan geen gebruikers en groepen zijn toegewezen, wordt nooit geactiveerd. |
@@ -141,7 +141,7 @@ U kunt de beleids regels die u niet hebt gemaakt, migreren in de Azure Portal om
 - U kunt al uw beleids regels voor voorwaardelijke toegang beheren op één centrale locatie.
 - De klassieke Azure-Portal is buiten gebruik gesteld.   
 
-Zie [Klassiek beleid migreren in Azure Portal](policy-migration.md) voor meer informatie.
+Zie [klassiek beleid migreren in de Azure Portal](policy-migration.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

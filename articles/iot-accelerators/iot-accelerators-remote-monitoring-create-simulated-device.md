@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250255"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943059"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat maken en testen
 
@@ -82,7 +82,7 @@ Als u deze hand leiding wilt volgen, hebt u het volgende nodig:
 
 * Visual Studio Code. U kunt [Visual Studio code voor Mac, Linux en Windows downloaden](https://code.visualstudio.com/download).
 * .NET core. U kunt [.net core voor Mac, Linux en Windows](https://www.microsoft.com/net/download)downloaden.
-* [C# voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman. U kunt [postman downloaden voor Mac, Windows of Linux](https://www.getpostman.com/apps).
 * Een [IOT-hub die is geïmplementeerd in uw Azure-abonnement](../../articles/iot-hub/iot-hub-create-through-portal.md). U hebt de connection string van de IoT-hub nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
 * Een Cosmos DB-Data Base die gebruikmaakt van de SQL-API en die is geconfigureerd voor [sterke consistentie](../../articles/cosmos-db/how-to-manage-database-account.md). U hebt de connection string van de Cosmos DB-data base nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.

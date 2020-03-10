@@ -3,12 +3,12 @@ title: '& Resource groep voor het implementeren van resources voor meerdere abon
 description: Laat zien hoe u tijdens de implementatie meer dan één Azure-abonnement en-resource groep kunt bereiken.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250610"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944039"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-resources implementeren voor meer dan één abonnement of resource groep
 
@@ -213,7 +213,7 @@ In de volgende tabel wordt aangegeven of de functies worden omgezet naar de bove
 | ------------- | ----- | ---------- |
 | nest        | Outer (standaard) | Bovenliggende resource groep |
 | nest        | wend | Subresourcegroep |
-| Btrieve        | N.V.T.   | Subresourcegroep |
+| Btrieve        | N.v.t.   | Subresourcegroep |
 
 In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ziet u:
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment `
 
 De uitvoer van het vorige voor beeld is:
 
-```powershell
+```output
  Name             Type                       Value
  ===============  =========================  ==========
  parentRG         String                     Parent resource group is parentGroup

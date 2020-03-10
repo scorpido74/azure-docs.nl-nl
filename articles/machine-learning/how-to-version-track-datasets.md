@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834800"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939250"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+U kunt ook een nieuwe versie van een gegevensset registreren op 
 
 ### <a name="retrieve-a-dataset-by-name"></a>Een gegevensset op naam ophalen
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 U kunt een gegevensset gebruiken als de invoer en uitvoer van elke Machine Learning pijplijn stap. Wanneer u pijp lijnen opnieuw uitvoert, wordt de uitvoer van elke pijplijn stap geregistreerd als een nieuwe gegevensset-versie.
 
-Omdat Machine Learning pijp lijnen de uitvoer van elke Step Into een nieuwe map elke keer dat de pijp lijn opnieuw wordt uitgevoerd, kunnen de versie-uitvoer gegevens sets worden gereproduceerd.
+Omdat Machine Learning pijp lijnen de uitvoer van elke Step Into een nieuwe map elke keer dat de pijp lijn opnieuw wordt uitgevoerd, kunnen de versie-uitvoer gegevens sets worden gereproduceerd. Meer informatie over [gegevens sets in pijp lijnen](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-U kunt ook de `input_datasets` van experimenten vinden met behulp van [Azure machine learning Studio](https://ml.azure.com/). 
+U kunt ook de `input_datasets` van experimenten vinden met behulp van https://ml.azure.com/. 
 
 De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
 
@@ -183,7 +184,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie kunt u de lijst met modellen die zijn geregistreerd bij de gegevensset bekijken met behulp van python of [Azure machine learning Studio](https://ml.azure.com/). De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
+Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of gaat u naar https://ml.azure.com/.
+
+De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
 
 ![Modellen van invoer gegevens sets](./media/how-to-version-track-datasets/dataset-models.png)
 

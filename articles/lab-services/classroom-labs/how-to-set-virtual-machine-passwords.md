@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591520"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933805"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -102,6 +102,13 @@ De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan d
 
 > [!NOTE]
 > Wanneer de docent de virtuele machine start en er verbinding mee maakt, heeft dit geen invloed op het quotum van de student. 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Lijst met virtuele machines exporteren naar een CSV-bestand
+
+1. Schakel over naar het tabblad van de **virtuele-machine groep** .
+2. Selecteer **...** (ellips weglatings tekens) op de werk balk en selecteer vervolgens **CSV exporteren**. 
+
+    ![Lijst met virtuele machines exporteren](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende artikel: het [gebruik van studenten configureren](how-to-configure-student-usage.md)voor meer informatie over andere gebruiks opties voor studenten die u (als een Lab-eigenaar) kunt configureren.

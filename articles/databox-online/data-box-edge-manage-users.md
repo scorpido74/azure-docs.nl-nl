@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge gebruikers beheren | Microsoft Docs
-description: Beschrijft hoe u Azure portal gebruiken voor het beheren van gebruikers voor uw Azure Data Box-edge-apparaten.
+title: Gebruikers Azure Data Box Edge beheren | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt voor het beheren van gebruikers op uw Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756612"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946128"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>De Azure-portal gebruiken voor het beheren van gebruikers voor uw Azure Data Box-edge-apparaten
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Gebruik de Azure Portal om gebruikers op uw Azure Data Box Edge te beheren
 
-In dit artikel wordt beschreven hoe u gebruikers voor uw Azure Data Box-edge-apparaten beheren. U kunt beheren van de rand van het Azure Data Box via Azure portal of via de lokale webgebruikersinterface. Gebruik Azure Portal om gebruikers toe te voegen, te wijzigen of te verwijderen.
+In dit artikel wordt beschreven hoe u gebruikers beheert op uw Azure Data Box Edge. U kunt de Azure Data Box Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik Azure Portal om gebruikers toe te voegen, te wijzigen of te verwijderen.
 
 In dit artikel leert u het volgende:
 
@@ -33,30 +33,29 @@ Gebruikers kunnen het recht alleen-lezen of volledige bevoegdheid hebben. Zoals 
  - **Gebruiker met volledige bevoegdheden** - een lokale gebruiker met volledige toegang.
  - **Alleen-lezengebruiker** - een lokale gebruiker met alleen-lezentoegang. Deze gebruikers zijn gekoppeld aan shares waarmee alleen-lezenbewerkingen mogelijk zijn.
 
-De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Wanneer de machtigingen voor een gebruiker zijn gedefinieerd, kunnen deze worden gewijzigd via Windows Verkenner. 
-
+De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Het wijzigen van machtigingen op share niveau wordt momenteel niet ondersteund.
 
 ## <a name="add-a-user"></a>Een gebruiker toevoegen
 
 Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **overzicht > gebruikers**. Selecteer **+ gebruiker toevoegen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **overzicht > gebruikers**. Selecteer **+ gebruiker toevoegen** op de opdracht balk.
 
-    ![Selecteer een gebruiker toevoegen](media/data-box-edge-manage-users/add-user-1.png)
+    ![Gebruiker toevoegen selecteren](media/data-box-edge-manage-users/add-user-1.png)
 
-2. Geef de gebruikersnaam en het wachtwoord op voor de gebruiker die u wilt toevoegen. Bevestig het wachtwoord en selecteer **toevoegen**.
+2. Geef de gebruikersnaam en het wachtwoord op voor de gebruiker die u wilt toevoegen. Bevestig het wacht woord en selecteer **toevoegen**.
 
-    ![Gebruikersnaam en wachtwoord opgeven](media/data-box-edge-manage-users/add-user-2.png)
+    ![Gebruikers naam en wacht woord opgeven](media/data-box-edge-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Deze gebruikers zijn gereserveerd door het systeem en mag niet worden gebruikt: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
+    > Deze gebruikers zijn gereserveerd door het systeem en moeten niet worden gebruikt: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
 
-3. Een melding wordt weergegeven wanneer het maken van de gebruiker wordt gestart en is voltooid. Nadat de gebruiker is gemaakt, vanuit de opdrachtbalk en selecteer **vernieuwen** om de bijgewerkte lijst met gebruikers weer te geven.
+3. Er wordt een melding weer gegeven wanneer het maken van de gebruiker wordt gestart en voltooid. Nadat de gebruiker is gemaakt, selecteert u op de opdracht balk **vernieuwen** om de bijgewerkte lijst met gebruikers weer te geven.
 
 
 ## <a name="modify-user"></a>Gebruiker wijzigen
 
-U kunt het wachtwoord dat is gekoppeld aan een gebruiker, wijzigen wanneer de gebruiker is gemaakt. Selecteer in de lijst met gebruikers. Typ en Bevestig het nieuwe wachtwoord. Sla de wijzigingen op.
+U kunt het wachtwoord dat is gekoppeld aan een gebruiker, wijzigen wanneer de gebruiker is gemaakt. Selecteer in de lijst met gebruikers. Voer het nieuwe wacht woord in en bevestig dit. Sla de wijzigingen op.
  
 ![Gebruiker wijzigen](media/data-box-edge-manage-users/modify-user-1.png)
 
@@ -66,9 +65,9 @@ U kunt het wachtwoord dat is gekoppeld aan een gebruiker, wijzigen wanneer de ge
 Voer in Azure Portal de volgende stappen uit om een gebruiker te verwijderen.
 
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **overzicht > gebruikers**.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **overzicht > gebruikers**.
 
-    ![Selecteer gebruiker verwijderen](media/data-box-edge-manage-users/delete-user-1.png)
+    ![Selecteer de gebruiker die u wilt verwijderen](media/data-box-edge-manage-users/delete-user-1.png)
 
 2. Selecteer een gebruiker in de lijst met gebruikers en selecteer vervolgens **verwijderen**.  
 
@@ -80,7 +79,7 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker te verwijderen.
 
 De lijst met gebruikers wordt bijgewerkt en de verwijderde gebruiker wordt niet meer weergegeven.
 
-![Bijgewerkte lijst van gebruikers](media/data-box-edge-manage-users/delete-user-4.png)
+![Bijgewerkte lijst met gebruikers](media/data-box-edge-manage-users/delete-user-4.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

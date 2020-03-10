@@ -1,25 +1,19 @@
 ---
 title: Niet-gekoppelde Azure-Nic's zoeken en verwijderen
 description: Azure-Nic's zoeken en verwijderen die niet zijn gekoppeld aan Vm's met de Azure CLI
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 3d7a0e3405dd87d17c9d7aac2e989ab82531d9b0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8142b95ee666e205a8328eafd5930f1f386e49af
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036130"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945126"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Niet-gekoppelde netwerk interface kaarten (Nic's) zoeken en verwijderen voor Azure-Vm's
 Wanneer u een virtuele machine (VM) in azure verwijdert, worden de netwerk interface kaarten (Nic's) niet standaard verwijderd. Als u meerdere Vm's maakt en verwijdert, blijven de interne IP-adresleases door de ongebruikte Nic's worden gebruikt. Wanneer u andere VM-Nic's maakt, kunnen ze mogelijk geen IP-lease verkrijgen in de adres ruimte van het subnet. In dit artikel wordt beschreven hoe u niet-gekoppelde Nic's zoekt en verwijdert.

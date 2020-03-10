@@ -1,25 +1,18 @@
 ---
 title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory referenties
 description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544613"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944796"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -48,7 +41,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 
 De volgende Linux-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-| Distributie | Versie |
+| Distributie | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding is geïnstalleerd op de virtuele machine.
+De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding is geïnstalleerd op de virtuele machine. De VM moet een actieve VM-agent hebben om de uitbrei ding te installeren. Zie overzicht van VM- [agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)voor meer informatie.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
@@ -175,7 +168,7 @@ De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verif
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-Met deze regel:
+met deze regel:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL

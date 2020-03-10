@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: efe8c1a2726054c54934926f652e338797d4efa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776545"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945471"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
 Sleutel kluis is een veilige plaats voor het opslaan van sleutels. Zakelijke gebruikers moeten referenties opslaan voor CI/CD-omgevingen binnen het bereik dat ze beheren. De sleutel voor het ophalen van referenties in de sleutel kluis moet beperkt zijn tot het bron bereik.  Het heeft alleen toegang tot het sleutel kluis bereik, niet voor het hele Azure-bereik. Het lijkt erop dat een sleutel die alleen een sterk vak kan openen, geen hoofd sleutel is die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te verkrijgen met een andere sleutel. Dit is handig in een CICD-werk stroom. 
@@ -32,7 +32,6 @@ Met resultaten:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -69,7 +68,6 @@ Opnieuw, resultaten:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
