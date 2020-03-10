@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: Failoverscenario voor streamen
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: Gebruiken
       items:
         - name: Media afspelen met bestaande spelers
