@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672592"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080078"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -152,7 +152,8 @@ Nu u de virtuele machine hebt gemaakt, moet u het Azure RBAC-beleid configureren
 
 > [!NOTE]
 > Als u een gebruiker wilt toestaan zich via RDP aan te melden bij de VM, moet u zich aanmelden voor de virtuele machine beheerder of de gebruiker aanmeldt bij de virtuele machine. Een Azure-gebruiker met de rol eigenaar of Inzender die is toegewezen aan een virtuele machine, is niet automatisch gemachtigd om zich aan te melden bij de virtuele machine via RDP. Zo kunt u een gecontroleerde schei ding opgeven tussen de groep personen die virtuele machines beheren en de set personen die toegang hebben tot virtuele machines.
-' Er zijn meerdere manieren waarop u roltoewijzingen voor de virtuele machine kunt configureren:
+
+Er zijn meerdere manieren waarop u roltoewijzingen voor virtuele machines kunt configureren:
 
 - De Azure AD Portal-ervaring gebruiken
 - De Azure Cloud Shell-ervaring gebruiken
@@ -194,7 +195,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het gebruik van RBAC o
 - [Toegang tot Azure-resources beheren met RBAC en Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](/azure/role-based-access-control/role-assignments-portal)
 - [Beheer de toegang tot Azure-resources met RBAC en Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
-'
+
 ## <a name="using-conditional-access"></a>Voorwaardelijke toegang gebruiken
 
 U kunt beleid voor voorwaardelijke toegang afdwingen, zoals multi-factor Authentication of aanmeldings risico voor gebruikers, voordat u toegang verleent tot Windows-Vm's in azure die zijn ingeschakeld met aanmelden bij Azure AD. Als u beleid voor voorwaardelijke toegang wilt Toep assen, moet u de app ' Azure Windows VM Sign-in ' selecteren bij de optie voor de toewijzing van Cloud-apps of acties en vervolgens aanmeldings risico als voor waarde gebruiken en/of multi-factor Authentication vereisen als Grant Access Control. 
@@ -363,4 +364,5 @@ Als u Windows hello voor bedrijven niet hebt geïmplementeerd en als dat niet he
 Deel uw feedback over deze preview-functie of Meld problemen met het gebruik ervan in het [Feedback forum van Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie [Wat is Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) voor meer informatie over Azure Active Directory

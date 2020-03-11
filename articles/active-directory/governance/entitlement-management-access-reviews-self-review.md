@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608811"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967762"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Zelf beoordeling van een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -37,7 +37,7 @@ Als u een toegangs beoordeling wilt uitvoeren, moet u eerst de toegangs beoordel
 
 1. Klik op de koppeling **toegang controleren** .
 
-1. U kunt ook rechtstreeks naar https://myaccess.microsoft.com gaan om uw openstaande toegangs beoordelingen te vinden als u geen e-mail ontvangt.
+1. U kunt ook rechtstreeks naar https://myaccess.microsoft.com gaan om uw openstaande toegangs beoordelingen te vinden als u geen e-mail ontvangt.  (Gebruik in plaats daarvan `https://myaccess.microsoft.us` voor de Amerikaanse overheid.)
 
 1. Klik op **toegangs beoordelingen** op de linkernavigatiebalk om een lijst weer te geven met openstaande toegangs beoordelingen die aan u zijn toegewezen.
 

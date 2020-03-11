@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f6451507eb5a25f432c73468d0da0db1838c8c9a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378462"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082505"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie met Azure AD Connect sync implementeren
 Dit artikel bevat gegevens die u nodig hebt om te synchroniseren van uw wachtwoorden van gebruikers uit een on-premises Active Directory-exemplaar naar een cloud-gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -124,6 +124,7 @@ Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht wo
 
 > [!NOTE]
 > Deze functie is nu beschikbaar in de open bare preview.
+> De Power shell-opdracht set-MsolPasswordPolicy werkt niet op federatieve domeinen. 
 
 #### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Open bare preview van het synchroniseren van tijdelijke wacht woorden en ' wacht woord wijzigen bij de volgende aanmelding afdwingen '
 

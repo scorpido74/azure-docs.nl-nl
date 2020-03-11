@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544314"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080357"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -41,6 +41,10 @@ In de rest van het document worden de stappen beschreven die nodig zijn voor het
 
 De eerste stap is om ervoor te zorgen dat uw [Azure-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) beschikt over een service-principal die is toegewezen voor het verlenen van machtigingen aan de Azure container instances-service. 
 
+> [!IMPORTANT]
+> Als u de volgende opdracht wilt uitvoeren en een Service-Principal wilt maken, controleert u of u gemachtigd bent om service-principals in uw Tenant te maken.
+>
+
 Met de volgende CLI-opdracht wordt de ACI-SP in uw Azure-omgeving ingesteld:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 Bij de uitvoer van deze opdracht moet u een Service-Principal weer geven die is ingesteld met ' displayName ': ' Azure container instance-service '.
+
+Als u de Service-Principal niet kunt maken, doet u het volgende:
+* Bevestig dat u gemachtigd bent om dit te doen in uw Tenant
+* Controleer of er al een Service-Principal in uw Tenant bestaat voor de implementatie naar ACI. U kunt dit doen door `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` uit te voeren en in plaats daarvan die service-principal te gebruiken
 
 ### <a name="create-a-key-vault-resource"></a>Een Key Vault resource maken
 

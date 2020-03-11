@@ -1,26 +1,17 @@
 ---
-title: Docker-compositie gebruiken op een virtuele Linux-machine in azure
-description: Docker installeren en gebruiken en samen stellen op virtuele Linux-machines met de Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
+title: Docker Compose gebruiken
+description: Docker installeren en gebruiken en samen stellen op virtuele Linux-machines met de Azure CLI.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036278"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970309"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Aan de slag met docker en samen stellen om een toepassing met meerdere containers te definiëren en uit te voeren in azure
 Met [opstellen](https://github.com/docker/compose)kunt u een eenvoudig tekst bestand gebruiken om een toepassing te definiëren die bestaat uit meerdere docker-containers. Vervolgens voert u uw toepassing in met één opdracht die alles doet om uw gedefinieerde omgeving te implementeren. Dit artikel laat bijvoorbeeld zien hoe u snel een WordPress-blog kunt instellen met een back-MariaDB SQL database op een Ubuntu-VM. U kunt ook samen stellen gebruiken om complexere toepassingen in te stellen.

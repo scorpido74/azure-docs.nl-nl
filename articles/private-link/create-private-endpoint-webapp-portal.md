@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673706"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037152"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
 
@@ -73,6 +73,9 @@ Behoud de standaard instellingen.
 ## <a name="create-your-web-app-and-private-endpoint"></a>Een web-app en een persoonlijk eind punt maken
 
 In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk eind punt.
+
+> [!Note]
+>De functie privé-eind punt is alleen beschikbaar voor Premium v2 en geïsoleerd met een externe ASE-SKU
 
 ### <a name="web-app"></a>Web-app
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770880"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082877"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Cluster prestaties in azure HDInsight bewaken
 
@@ -32,8 +32,8 @@ Meld u aan bij de [Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari
 | Rood | Ten minste één hoofd onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
 | Orange | Ten minste één secundair onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
 | Geel | De Ambari-server heeft meer dan drie minuten geen heartbeat van de host ontvangen. |
-| Groen | Normale status. |
- 
+| Dag | Normale status. |
+
 U ziet ook kolommen met het aantal kernen en de hoeveelheid RAM-geheugen voor elke host, en het schijf gebruik en de gemiddelde belasting.
 
 ![Overzicht van Apache Ambari hosts-tabblad](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ GARENs delen de twee verantwoordelijkheden van de JobTracker, resource beheer en
 
 De Resource Manager is een *pure planner*en alleen arbitrates beschik bare bronnen tussen alle concurrerende toepassingen. De Resource Manager zorgt ervoor dat alle resources altijd in gebruik zijn, met optimalisatie voor diverse constanten, zoals service overeenkomsten, capaciteits garanties enzovoort. De ApplicationMaster onderhandelt resources van Resource Manager en werkt samen met de NodeManager (s) voor het uitvoeren en controleren van de containers en het Resource verbruik.
 
-Wanneer meerdere tenants een groot cluster delen, is er een competitie voor de resources van het cluster. De CapacityScheduler is een pluggable scheduler die helpt bij het delen van resources door aanvragen in de wachtrij te plaatsen. De CapacityScheduler biedt ook ondersteuning voor *hiërarchische wacht rijen* om ervoor te zorgen dat bronnen worden gedeeld tussen de subwachtrijen van een organisatie, voordat de wachtrij van andere toepassingen vrije bronnen mag gebruiken.
+Wanneer meerdere tenants een groot cluster delen, is er een competitie voor de resources van het cluster. De CapacityScheduler is een pluggable scheduler die helpt bij het delen van resources door aanvragen in de wachtrij te plaatsen. De CapacityScheduler biedt ook ondersteuning voor *hiërarchische wacht rijen* om ervoor te zorgen dat resources worden gedeeld tussen de subwachtrijen van een organisatie, voordat de wacht rijen van andere toepassingen vrije bronnen mogen gebruiken.
 
 Met GARENs kunnen we resources toewijzen aan deze wacht rijen en kunt u zien of al uw beschik bare resources zijn toegewezen. Als u informatie over uw wacht rijen wilt weer geven, meldt u zich aan bij de Ambari-webgebruikersinterface en selecteert u vervolgens **garen wachtrij beheer** in het bovenste menu.
 
@@ -81,6 +81,46 @@ Als de back-upopslag van uw cluster Azure Data Lake Storage (ADLS) is, wordt uw 
 * [Richt lijnen voor het afstemmen van de prestaties van Apache Hive op HDInsight en Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Richt lijnen voor het afstemmen van de prestaties van Apache Storm op HDInsight en Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>Problemen met trage knoop punten oplossen
+
+In sommige gevallen kan er sprake zijn van een traagheid vanwege onvoldoende schijf ruimte op het cluster. Onderzoek met de volgende stappen:
+
+1. Gebruik de [SSH-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met elk van de knoop punten.
+
+1. Controleer het schijf gebruik door een van de volgende opdrachten uit te voeren:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Controleer de uitvoer en controleer of er grote bestanden aanwezig zijn in de `mnt` map of in andere mappen. Normaal gesp roken bevatten de mappen `usercache`en `appcache` (mnt/resource/Hadoop/garen/Local/usercache/Hive/appcache/) grote bestanden.
+
+1. Als er grote bestanden zijn, wordt door een huidige taak de groei van het bestand of een mislukte vorige taak mogelijk bijgedragen aan dit probleem. Voer de volgende opdracht uit om te controleren of dit gedrag wordt veroorzaakt door een huidige taak:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Als met deze opdracht een specifieke taak wordt aangegeven, kunt u ervoor kiezen de taak te beëindigen met behulp van een opdracht die er ongeveer als volgt uitziet:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    Vervang `application_id` door de toepassings-ID. Als er geen specifieke taken worden aangegeven, gaat u naar de volgende stap.
+
+1. Nadat de bovenstaande opdracht is voltooid, of als er geen specifieke taken worden aangegeven, verwijdert u de grote bestanden die u hebt geïdentificeerd door een opdracht uit te voeren die er ongeveer als volgt uitziet:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+Zie [onvoldoende schijf ruimte](./hadoop/hdinsight-troubleshoot-out-disk-space.md)voor meer informatie over problemen met de schijf ruimte.
+
+> [!NOTE]  
+> Als u grote bestanden hebt die u wilt blijven gebruiken, maar wel een bijdrage levert aan het probleem met weinig schijf ruimte, moet u uw HDInsight-cluster opschalen en de services opnieuw starten. Nadat u deze procedure hebt voltooid en een paar minuten hebt gewacht, zult u zien dat de opslag is vrijgemaakt en de gebruikelijke prestaties van het knoop punt worden hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

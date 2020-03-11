@@ -1,6 +1,6 @@
 ---
-title: Resources voor het migreren van apps aan Azure Active Directory | Microsoft Docs
-description: Bronnen voor hulp bij het migreren van toegang tot toepassingen en -verificatie met Azure Active Directory (Azure AD).
+title: Resources voor het migreren van apps naar Azure Active Directory | Microsoft Docs
+description: Bronnen die u helpen bij het migreren van de toegang tot en verificatie van toepassingen naar Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,30 +8,30 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/19/2018
+ms.date: 02/29/2020
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108216"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968732"
 ---
-# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Resources voor het migreren van toepassingen naar Azure Active Directory
+# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Bronnen voor het migreren van toepassingen naar Azure Active Directory
 
-Bronnen voor hulp bij het migreren van toegang tot toepassingen en -verificatie met Azure Active Directory (Azure AD). Vul deze korte enquête (https://aka.ms/AppsMigrationFeedback) feedback wilt geven over uw ervaring migreren apps naar Azure AD (met inbegrip van blokkeringen voor de migratie, moet u voor hulpprogramma's / richtlijnen of de redenen voor het behoud van uw on-premises id-provider). 
+Bronnen die u helpen bij het migreren van de toegang tot en verificatie van toepassingen naar Azure Active Directory (Azure AD). Neem deze korte enquête (https://aka.ms/AppsMigrationFeedback) om feedback te geven over uw ervaring met het migreren van apps naar Azure AD (met inbegrip van blok keringen voor migratie, een hulp programma/richt lijn of redenen voor het behouden van uw on-premises IDP). 
 
-| Resource  | Description  |
+| Resource  | Beschrijving  |
 |:-----------|:-------------|
-|[Migreren van uw apps naar Azure AD](https://aka.ms/migrateapps/whitepaper) | Dit technische document biedt de voordelen van de migratie en wordt beschreven hoe u van plan bent voor migratie in vier fasen duidelijk beschreven: detectie, classificatie, migratie en beheer. U wordt geholpen bij het denken over het proces en u uw project in stukken eenvoudig te gebruiken. In het hele document vindt u koppelingen naar belangrijke bronnen waarmee u weg. |
-|[Gids met oplossingen: Apps uit Active Directory Federatieservices (AD FS) migreren naar Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Deze handleiding helpt u bij de dezelfde vier fasen van het plannen en uitvoeren van een toepassing migration-project op een hoger niveau in de migratie technisch document worden beschreven. In deze handleiding leert u hoe u deze fasen van toepassing op het specifieke doel van het verplaatsen van een toepassing van Azure Directory Federated Services (AD FS) naar Azure AD.|
-| [Hulpprogramma voor: Active Directory Federation Services Migration Readiness Script](https://aka.ms/migrateapps/adfstools) | Dit is een script dat u kunt uitvoeren op uw on-premises Active Directory Federation Services (AD FS)-server om te bepalen van de gereedheid van apps voor migratie naar Azure AD.|
-| [Implementatieplan: Migreren van AD FS naar synchronisatie van wachtwoordhashes](https://aka.ms/ADFSTOPHSDPDownload) | -Hashes van wachtwoorden van gebruikers zijn met wachtwoord-hashsynchronisatie van on-premises Active Directory gesynchroniseerd met Azure AD. Hiermee kunt Azure AD om gebruikers te verifiëren zonder interactie met de on-premises Active Directory.| 
-| [Implementatieplan: Migreren van AD FS naar pass-through-verificatie](https://aka.ms/ADFSTOPTADPDownload)|Azure AD-Pass through-verificatie kan gebruikers zich aanmelden bij zowel on-premises en cloudgebaseerde toepassingen met behulp van hetzelfde wachtwoord. Deze functie biedt uw gebruikers met een betere ervaring omdat ze een minder wachtwoord hebben te onthouden. Het vermindert ook de kosten van IT-helpdesk omdat gebruikers minder waarschijnlijk, u aanmelden als ze maar nodig hebt om te onthouden van een wachtwoord vergeet. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory.|
-| [Implementatieplan: Inschakelen van Single Sign-on bij een SaaS-app met Azure AD](https://aka.ms/SSODPDownload) | Eenmalige aanmelding (SSO) kunt die u toegang tot alle apps en bronnen die u nodig hebt om zaken te doen, tijdens het aanmelden slechts eenmaal met behulp van een gebruikersaccount. Bijvoorbeeld, nadat een gebruiker is aangemeld, kunt de gebruiker verplaatsen van Microsoft Office, met SalesForce, Box zonder verificatie (bijvoorbeeld een wachtwoord te typen) van een tweede keer voor. 
-| [Implementatieplan: Apps uitbreiden naar Azure AD met Application Proxy](https://aka.ms/AppProxyDPDownload)| Toegang van werknemers laptops en andere apparaten on-premises toepassingen hebben doorgaans we virtuele particuliere netwerken (VPN's) of gedemilitariseerde zones (DMZ's). Dit is niet alleen ingewikkeld en moeilijk te beveiligen, maar het instellen en beheren ervan is duur. Azure AD-toepassingsproxy, kunt u gemakkelijker toegang tot on-premises toepassingen. |
-| [Implementatieplannen](../fundamentals/active-directory-deployment-plans.md) | Zoek meer implementatieplannen voor het implementeren van functies zoals multi-factor authentication, voorwaardelijke toegang, inrichten van gebruikers, naadloze eenmalige aanmelding, self-service voor wachtwoord opnieuw instellen, en meer! |
+|[Uw apps migreren naar Azure AD](https://aka.ms/migrateapps/whitepaper) | Dit technisch document bevat de voor delen van migratie en beschrijft het plannen van migratie in vier duidelijk beschreven fasen: detectie, classificatie, migratie en doorlopend beheer. U wordt begeleid bij het bepalen van het proces en het verbreken van het project in gemakkelijk te gebruiken onderdelen. In het hele document vindt u koppelingen naar belang rijke bronnen die u op weg helpen. |
+|[Oplossings handleiding: apps migreren van Active Directory Federation Services (AD FS) naar Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | In deze hand leiding vindt u een overzicht van de vier fasen van het plannen en uitvoeren van een toepassings migratie project dat wordt beschreven op een hoger niveau in het White Paper over de migratie. In deze hand leiding leert u hoe u deze fasen toepast op het specifieke doel van het verplaatsen van een toepassing vanuit Azure Directory Federated Services (AD FS) naar Azure AD.|
+| [Hulp programma: Active Directory Federation Services-gereedheids script voor migratie](https://aka.ms/migrateapps/adfstools) | Dit is een script dat u kunt uitvoeren op uw AD FS-server (on-premises Active Directory Federation Services) om de gereedheid van apps te bepalen voor migratie naar Azure AD.|
+| [Implementatie plan: migreren van AD FS naar wacht woord-hash-synchronisatie](https://aka.ms/ADFSTOPHSDPDownload) | Hashes van wacht woorden van gebruikers worden gesynchroniseerd van on-premises Active Directory naar Azure AD. Hierdoor kan Azure AD gebruikers verifiëren zonder interactie met de on-premises Active Directory.| 
+| [Implementatie plan: migratie van AD FS naar Pass Through-verificatie](https://aka.ms/ADFSTOPTADPDownload)|Met Azure AD Pass-Through-verificatie kunnen gebruikers zich aanmelden bij zowel lokale als Cloud toepassingen met hetzelfde wacht woord. Deze functie biedt uw gebruikers een betere ervaring omdat ze een minder wacht woord hebben om te onthouden. Het vermindert ook de IT-helpdesk kosten omdat gebruikers minder waarschijnlijk moeten blijven weten hoe ze zich kunnen aanmelden wanneer ze slechts één wacht woord hoeven te onthouden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory.|
+| [Implementatie plan: eenmalige aanmelding inschakelen voor een SaaS-app met Azure AD](https://aka.ms/SSODPDownload) | Eenmalige aanmelding (SSO) helpt u bij het openen van alle apps en resources die u nodig hebt om zaken te doen, terwijl u zich slechts één keer aanmeldt met één gebruikers account. Nadat een gebruiker zich heeft aangemeld, kan de gebruiker bijvoorbeeld een tweede keer van Microsoft Office, naar Sales Force, verplaatsen zonder verificatie (bijvoorbeeld door een wacht woord in te voeren). 
+| [Implementatie plan: apps uitbreiden naar Azure AD met toepassings proxy](https://aka.ms/AppProxyDPDownload)| Het verlenen van toegang van werk nemers en andere apparaten aan on-premises toepassingen heeft traditioneel betrokken virtuele particuliere netwerken (Vpn's) of gedemilitariseerde zones (Dmz's). Dit is niet alleen ingewikkeld en moeilijk te beveiligen, maar het instellen en beheren ervan is duur. Azure AD-toepassingsproxy maakt het gemakkelijker om on-premises toepassingen te openen. |
+| [Implementatie plannen](../fundamentals/active-directory-deployment-plans.md) | Vind meer implementatie plannen voor het implementeren van functies zoals multi-factor Authentication, voorwaardelijke toegang, het inrichten van gebruikers, naadloze SSO, selfservice voor wachtwoord herstel en nog veel meer. |
 
 

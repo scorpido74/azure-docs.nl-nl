@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452104"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081689"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Balancing your service Fabric-cluster
 De Service Fabric cluster resource manager ondersteunt dynamische belasting wijzigingen, waarbij wordt gecommuniceerd op toevoegingen of verwijderingen van knoop punten of services. Hiermee worden ook de schendingen van beperkingen automatisch gecorrigeerd en wordt het cluster proactief herbalanceerd. Maar hoe vaak worden er acties uitgevoerd en wat wordt geactiveerd?
@@ -205,6 +205,7 @@ Cluster resource manager heeft automatisch een resultaat van de gerelateerde ser
 * Metrische gegevens zijn de manier waarop de Service Fabric cluster resource manager het verbruik en de capaciteit in het cluster beheert. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-metrics.md) voor meer informatie over metrische gegevens en hoe u deze kunt configureren.
 * De verplaatsings kosten zijn één manier om aan te geven dat de cluster resource manager bepaalde services duurder kan verplaatsen dan andere. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-movement-cost.md) voor meer informatie over de verplaatsings kosten
 * Cluster resource manager heeft verschillende beperkingen die u kunt configureren om het verloop in het cluster te vertragen. Ze zijn normaal gesp roken niet nodig, maar als u ze nodig hebt, kunt u [hier](service-fabric-cluster-resource-manager-advanced-throttling.md) meer informatie hierover vinden
+* Cluster resource manager kan subclustering herkennen en verwerken (een situatie die soms optreedt wanneer u placement constraints en Balancing gebruikt). Zie [hier](service-fabric-cluster-resource-manager-subclustering.md) voor meer informatie over hoe subclustering de verdeling kan beïnvloeden en hoe u deze kunt afhandelen.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

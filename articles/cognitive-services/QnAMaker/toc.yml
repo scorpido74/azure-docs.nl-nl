@@ -66,39 +66,39 @@
         - name: Resources beheren
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Analyse ophalen
-          href: How-To/get-analytics-knowledge-base.md
         - name: Een bedrijfscontinuïteitsplan maken
           href: How-To/business-continuity-plan.md
     - name: Knowledge base beheren
       items:
-        - name: Een bot maken met QnA Maker en LUIS
-          href: Tutorials/integrate-qnamaker-luis.md
+        - name: Een knowledge base maken
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: Taal selecteren
           href: How-To/language-knowledge-base.md
-        - name: Een knowledge base migreren
-          href: Tutorials/migrate-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: Samenwerken aan een knowledge base
-          href: How-To/collaborate-knowledge-base.md
-        - name: Een knowledge base testen
-          href: How-To/test-knowledge-base.md
-        - name: Actief leren gebruiken om uw knowledge base te verbeteren
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: Een knowledge base bewerken
-          href: How-To/edit-knowledge-base.md
-        - name: Gesprekken met meerdere beurten maken met vervolgvragen
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: Chit-chat toevoegen
           href: How-to/chit-chat-knowledge-base.md
-        - name: Een beveiligd SharePoint-bestand toevoegen
+        - name: Migreren naar een nieuwe knowledge base
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: Samenwerken
+          href: How-To/collaborate-knowledge-base.md
+        - name: Testen
+          href: How-To/test-knowledge-base.md
+    - name: Q&A-sets beheren
+      items:
+        - name: Knowledge base bewerken
+          href: How-To/edit-knowledge-base.md
+        - name: Opvolgingsaanwijzingen toevoegen
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Voorgestelde alternatieve vragen ophalen
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: Beveiligde SharePoint-bestanden toevoegen
           href: How-To/add-sharepoint-datasources.md
           displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-        - name: Knowledge base bewerken
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Knowledge base bewerken
+      href: How-To/metadata-generateanswer-usage.md
+      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: Gebruiken met een clienttoepassing
       items:
         - name: LUIS en QnA Maker

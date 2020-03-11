@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365347"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968074"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag
 
@@ -68,7 +68,7 @@ Een niet-vergrendeld op tijd gebaseerd Bewaar beleid wordt alleen aanbevolen voo
 De volgende limieten gelden voor het Bewaar beleid:
 
 - Voor een opslag account is het maximum aantal containers met vergrendeld op tijd gebaseerd onveranderbaar beleid 10.000.
-- Het minimale Bewaar interval is één dag. De maximum waarde is 146.000 dagen (400 jaar).
+- Het minimale Bewaar interval is 1 dag. De maximum waarde is 146.000 dagen (400 jaar).
 - Voor een container is het maximum aantal bewerkingen voor het uitbreiden van een Bewaar interval voor vergrendelde, op tijd gebaseerde onveranderlijke beleids regels 5.
 - Voor een container worden Maxi maal zeven op tijd gebaseerde controle logboeken voor Bewaar beleid bewaard voor een vergrendeld beleid.
 
@@ -84,15 +84,7 @@ Stel bijvoorbeeld dat een gebruiker een Bewaar beleid op basis van tijd maakt me
 
 Met een niet-vergrendeld op tijd gebaseerd Bewaar beleid kunt u de `allowProtectedAppendWrites` instelling op elk gewenst moment inschakelen en uitschakelen. Wanneer het Bewaar beleid op basis van tijd is vergrendeld, kan de instelling van de `allowProtectedAppendWrites` niet worden gewijzigd.
 
-Beleid voor juridische bewaring kan `allowProtectedAppendWrites` niet inschakelen en toestaan dat er geen nieuwe blokken worden toegevoegd aan toevoeg-blobs. Als er een geldige blok kering wordt toegepast op een op tijd gebaseerd Bewaar beleid met `allowProtectedAppendWrites` ingeschakeld, mislukt de *AppendBlock* -API totdat de juridische bewaring is opgeheven.
-
-> [!IMPORTANT] 
-> De instelling beveiligde toevoeg-blobs toestaan schrijf bewerkingen onder Bewaar periode is momenteel beschikbaar in de volgende regio's:
-> - VS - oost
-> - VS - zuid-centraal
-> - VS - west 2
->
-> Op dit moment raden wij u ten zeerste aan om `allowProtectedAppendWrites` in andere regio's dan die welke zijn opgegeven niet in te scha kelen, omdat het mogelijk onregelmatige fouten kan veroorzaken en de compatibiliteit van toevoeg-blobs kan beïnvloeden. Zie voor meer informatie over het instellen en vergren delen van op tijd gebaseerde Bewaar beleidsregels voor het [inschakelen van beveiligde toevoeg-blobs toestaan](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+Beleid voor juridische bewaring kan `allowProtectedAppendWrites` niet inschakelen en alle juridische bewaringen kunnen de eigenschap allowProtectedAppendWrites opheffen. Als er een geldige blok kering wordt toegepast op een op tijd gebaseerd Bewaar beleid met `allowProtectedAppendWrites` ingeschakeld, mislukt de *AppendBlock* -API totdat de juridische bewaring is opgeheven.
 
 ## <a name="legal-holds"></a>Juridische bewaring
 
@@ -140,7 +132,7 @@ Nee, u kunt onveranderbare opslag gebruiken met bestaande of nieuwe, voor algeme
 
 **Kan ik zowel een rechts Bewaar beleid op basis van een wacht tijd Toep assen?**
 
-Ja, een container kan zowel een juridische bewaring als een op tijd gebaseerd Bewaar beleid hebben. Alle blobs in die container blijven onveranderbaar totdat alle juridische bewaringen zijn gewist, zelfs als hun ingangs periode is verlopen. Een BLOB blijft daarentegen onveranderbaar totdat de daad werkelijke Bewaar periode is verstreken, zelfs als alle juridische bewaringen zijn gewist.
+Ja, een container kan zowel een juridische bewaring als een op tijd gebaseerd Bewaar beleid hebben. de instelling ' allowProtectedAppendWrites ' is echter niet van toepassing totdat de juridische bewaring is gewist. Alle blobs in die container blijven onveranderbaar totdat alle juridische bewaringen zijn gewist, zelfs als hun ingangs periode is verlopen. Een BLOB blijft daarentegen onveranderbaar totdat de daad werkelijke Bewaar periode is verstreken, zelfs als alle juridische bewaringen zijn gewist. 
 
 **Zijn beleids regels voor juridische bewaring alleen voor juridische procedures of zijn er andere scenario's voor het gebruik?**
 
@@ -164,7 +156,7 @@ Ja, u kunt de opdracht BLOB-laag instellen gebruiken om gegevens over de BLOB-la
 
 **Wat gebeurt er als ik niet meer betaal en mijn retentieperiode niet is verlopen?**
 
-In het geval van een niet-betaling, geldt het normale Bewaar beleid voor gegevens, zoals is vastgelegd in de voor waarden van uw contract met micro soft.
+In het geval van een niet-betaling, geldt het normale Bewaar beleid voor gegevens, zoals is vastgelegd in de voor waarden van uw contract met micro soft. Zie [gegevens beheer bij micro soft](https://www.microsoft.com/en-us/trust-center/privacy/data-management)voor algemene informatie. 
 
 **Biedt u ook een evaluatie- of respijtperiode voor de zojuist beschreven functie?**
 

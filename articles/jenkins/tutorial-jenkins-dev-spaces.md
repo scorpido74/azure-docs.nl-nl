@@ -3,12 +3,12 @@ title: De Azure dev Space-invoeg toepassing gebruiken voor Jenkins met de Azure 
 description: Meer informatie over het gebruik van de Azure dev Spaces-invoeg toepassing in een continue integratie pijplijn.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 281565cec5ee947781ab8ee9f62a00e01f9ababb
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250891"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037025"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Zelf studie: de Azure dev Spaces-invoeg toepassing gebruiken voor Jenkins met de Azure Kubernetes-service 
 
@@ -265,7 +265,7 @@ De Jenkins-pijplijn configuratie en Jenkinsfile definiëren de fasen in de CI-pi
 
 ![Stroom diagram Jenkins-pijp lijn](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. Down load een gewijzigde versie van het *mywebapi* -project van https://github.com/azure-devops/mywebapi. Dit project bevat verschillende bestanden die nodig zijn om een pijp lijn te maken, met inbegrip van de *Jenkinsfile*-, *Dockerfiles*-en helm-grafiek.
+1. Down load een gewijzigde versie van het *mywebapi* -project van [https://github.com/azure-devops/mywebapi](https://github.com/azure-devops/mywebapi). Dit project bevat verschillende bestanden die nodig zijn om een pijp lijn te maken, met inbegrip van de *Jenkinsfile*-, *Dockerfiles*-en helm-grafiek.
 
 2. Meld u aan bij Jenkins. Selecteer in het menu aan de linkerkant **item toevoegen**.
 

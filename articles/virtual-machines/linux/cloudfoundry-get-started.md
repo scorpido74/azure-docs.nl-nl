@@ -1,26 +1,18 @@
 ---
 title: Aan de slag met Cloud Foundry op Microsoft Azure
 description: OSS-of Pivot-Cloud Foundry uitvoeren op Microsoft Azure
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036809"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970053"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry op Azure
 
@@ -36,14 +28,14 @@ U kunt OSS-Cloud Foundry implementeren op Azure door eerst een BOSH-Director te 
 
 Micro soft biedt de beste ondersteuning voor OSS CF via de volgende Community-kanalen:
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>Bosh-Azure-CPI-kanaal voor [Cloud Foundry vertraging](https://slack.cloudfoundry.org/)
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slack"></a>Bosh-Azure-CPI-kanaal voor [Cloud Foundry vertraging](https://slack.cloudfoundry.org/)
 - [CF-Bosh-mailing lijst](https://lists.cloudfoundry.org/pipermail/cf-bosh)
 - Problemen met GitHub voor de [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) en [Service Broker](https://github.com/Azure/meta-azure-service-broker/issues)
 
 >[!NOTE]
 > Het ondersteunings niveau voor uw Azure-resources, zoals de virtuele machines waarop u Cloud Foundry uitvoert, is gebaseerd op uw Azure-ondersteunings overeenkomst. Community-ondersteuning met de hoogste inspanning geldt alleen voor de Cloud Foundry-specifieke onderdelen.
 
-### <a name="pivotal-cloud-foundry"></a>Pivotal Cloud Foundry
+### <a name="pivotal-cloud-foundry"></a>Cloud Foundry draaien
 
 Pivotal Cloud Foundry omvat hetzelfde kern platform als de OSS-distributie, samen met een aantal eigen beheer Programma's en Enter prise-ondersteuning. Als u PCF op Azure wilt uitvoeren, moet u een licentie van Pivot-out aanschaffen. De PCF-aanbieding van Azure Marketplace bevat een proef licentie van 90 dagen.
 

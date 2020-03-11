@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917404"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037127"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Controleer of het pakket al bestaat voordat u dit installeert om te voor komen dat de installatie wordt herhaald. Als `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` in de bovenstaande voorbeeld code. Herhalings installatie kan een time-out voor de webservice tot gevolg hebben.     
 
+## <a name="upload-files"></a>Bestanden uploaden
+Het **Execute R-script** ondersteunt het uploaden van bestanden met behulp van Azure machine learning R SDK.
+
+In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in het **script Execute R**:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+Nadat de pijp lijn is verzonden, kunt u een voor beeld van de afbeelding bekijken in het rechterdeel venster van de module ![geüploade-installatie kopie](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>Het uitvoeren van een R-script configureren
 
 De module voor het **uitvoeren van R-scripts** bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een **R-script** wilt configureren, geeft u een set ingangen en code op die moet worden uitgevoerd.
 
-![R-module](media/module/execute-r-script.png)
+![R-module](media/module/upload-image-in-r-script.png)
 
 Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch geconverteerd naar een R-gegevens frame wanneer deze met deze module wordt geladen.
 

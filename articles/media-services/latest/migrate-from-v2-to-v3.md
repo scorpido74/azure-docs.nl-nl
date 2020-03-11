@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/28/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393517"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081956"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -31,7 +31,7 @@ In dit artikel worden de wijzigingen beschreven die in Azure Media Services v3 z
 Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Services v2 api's](../previous/media-services-overview.md), moet u de volgende richt lijnen en overwegingen door nemen voordat u naar de V3-api's migreert. Er zijn veel voor delen en nieuwe functies in de V3 API die de ontwikkel ervaring en mogelijkheden van Media Services verbeteren. Net als in het gedeelte [bekende problemen](#known-issues) in dit artikel, zijn er echter ook enkele beperkingen door wijzigingen tussen de API-versies. Deze pagina blijft behouden naarmate het Media Services team voortdurende verbeteringen in de V3-Api's aanbrengt en de hiaten tussen de versies verhelpt. 
 
 > [!NOTE]
-> U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven (niet beheren), informatie over het openen van api's ophalen. Zie [Veelgestelde vragen](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources)voor meer informatie. 
 
 ## <a name="benefits-of-media-services-v3"></a>Voor delen van Media Services v3
   
@@ -131,7 +131,13 @@ In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene sc
 
 ## <a name="known-issues"></a>Bekende problemen
 
-* U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
+*  Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voor het volgende:
+
+    * Media Services v3 [Live-gebeurtenissen](live-events-outputs-concept.md)beheren, 
+    * V3- [assets](assets-concept.md)weer geven (niet beheren), 
+    * [krijg informatie over het openen van api's](access-api-portal.md). 
+
+Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
 * U moet gereserveerde media-eenheden (MRUs) inrichten in uw account om de gelijktijdigheid en prestaties van uw taken te bepalen, met name voor de analyse van video of audio. Zie [Mediaverwerking schalen](../previous/media-services-scale-media-processing-overview.md) voor meer informatie. U kunt de MRUs beheren met [CLI 2,0 voor Media Services v3](media-reserved-units-cli-how-to.md), met behulp van de [Azure Portal](../previous/media-services-portal-scale-media-processing.md)of met behulp van de [v2-api's](../previous/media-services-dotnet-encoding-units.md). U moet MRUs inrichten, ongeacht of u Media Services v2-of v3-Api's gebruikt.
 * Media Services entiteiten die met de V3 API zijn gemaakt, kunnen niet worden beheerd door de v2 API.  
 * Niet alle entiteiten in de v2 API worden automatisch weer gegeven in de V3 API.  Hieronder volgen enkele voor beelden van entiteiten in de twee versies die niet compatibel zijn:  

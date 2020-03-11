@@ -1,25 +1,17 @@
 ---
-title: Gedetailleerde stappen-SSH-sleutel paar voor virtuele Azure Linux-machines
+title: Gedetailleerde stappen voor het maken van een SSH-sleutel paar
 description: Meer informatie over het maken en beheren van een open bare en persoonlijke SSH-sleutel paar voor virtuele Linux-machines in Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929718"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969540"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine maken en beheren in azure 
 Met een SSH-sleutel paar (Secure Shell) kunt u een virtuele Linux-machine in azure maken die standaard gebruikmaakt van SSH-sleutels voor verificatie, waardoor het niet nodig is om zich aan te melden. Vm's die zijn gemaakt met de Azure Portal, Azure CLI, Resource Manager-sjablonen of andere hulpprogram ma's, kunnen uw open bare SSH-sleutel opnemen als onderdeel van de implementatie, waarmee SSH-sleutel verificatie wordt ingesteld voor SSH-verbindingen. 
@@ -30,8 +22,8 @@ Zie [SSH-sleutels gebruiken met Windows op Azure](ssh-from-windows.md)voor meer 
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-### <a name="private-key-passphrase"></a>Wachtwoordzin persoonlijke sleutel
-De persoonlijke SSH-sleutel moet een zeer veilige wachtwoordzin hebben om deze te beveiligen. Deze wachtwoordzin heeft alleen toegang tot het persoonlijke SSH-sleutel bestand en *is niet* het wacht woord van het gebruikers account. Wanneer u een wachtwoordzin aan de SSH-sleutel toevoegt, wordt de persoonlijke sleutel versleuteld met behulp van 128-bits AES, zodat deze niet kan worden gebruikt zonder de wachtwoordzin om de persoonlijke sleutel te ontsleutelen. Als een aanvaller uw persoonlijke sleutel stelen en deze sleutel geen wachtwoordzin heeft, zou deze de persoonlijke sleutel kunnen gebruiken om zich aan te melden bij servers die de bijbehorende open bare sleutel hebben. Als een persoonlijke sleutel wordt beveiligd door een wachtwoordzin, kan deze niet worden gebruikt door die aanvaller, waardoor er een extra beveiligingslaag is voor uw infra structuur in Azure.
+### <a name="private-key-passphrase"></a>Wachtwoordzin voor persoonlijke sleutel
+De persoonlijke SSH-sleutel moet een zeer veilige wachtwoordzin hebben om deze te beveiligen. Deze wachtwoordzin heeft alleen toegang tot het persoonlijke SSH-sleutel bestand en *is niet* het wacht woord van het gebruikers account. Wanneer u een wachtwoordzin aan uw SSH-sleutel toevoegt, wordt de persoonlijke sleutel met 128-bits AES versleuteld, zodat de persoonlijke sleutel onbruikbaar is zonder de wachtwoordzin om deze te ontsleutelen. Als een aanvaller uw persoonlijke sleutel stelen en deze sleutel geen wachtwoordzin heeft, zou deze de persoonlijke sleutel kunnen gebruiken om zich aan te melden bij servers die de bijbehorende open bare sleutel hebben. Als een persoonlijke sleutel wordt beveiligd door een wachtwoordzin, kan deze niet worden gebruikt door die aanvaller, waardoor er een extra beveiligingslaag is voor uw infra structuur in Azure.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 

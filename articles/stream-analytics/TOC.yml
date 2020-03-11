@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Querytaal voor Stream Analytics
   items:
+    - name: Overzicht van querytaal voor Stream Analytics
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Ingebouwde functies
       items:
         - name: Overzicht van ingebouwde functies

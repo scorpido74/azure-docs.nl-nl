@@ -2,17 +2,16 @@
 title: 'Zelf studie: een grafiek met metrische gegevens maken in Azure Monitor'
 description: Meer informatie over het maken van uw eerste metrieke grafiek met Azure Metrics Explorer.
 author: bwren
-services: azure-monitor
+ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: bwren
-ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661461"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082809"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Zelf studie: een grafiek met metrische gegevens maken in Azure Monitor
 Metrics Explorer is een functie van Azure Monitor in de Azure Portal waarmee u grafieken kunt maken op basis van metrische waarden, trends visueel kunt correleren en pieken en spannings dips in metrische waarden kan onderzoeken. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw Azure-resources te onderzoeken of om grafieken uit aangepaste metrische gegevens te tekenen. 
@@ -23,6 +22,10 @@ In deze zelfstudie leert u het volgende:
 > * Een metriek selecteren waarvoor u een grafiek wilt uitzetten
 > * Verschillende aggregaties van metrische waarden uitvoeren
 > * Het tijds bereik en de granulariteit voor de grafiek wijzigen
+
+Hieronder volgt een video waarin een uitgebreidere scenario wordt weer gegeven dan de procedure die wordt beschreven in dit artikel. Als u niet bekend bent met metrische gegevens, wordt u aangeraden dit artikel eerst te lezen en vervolgens de video te bekijken om meer details weer te geven. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>Vereisten
 

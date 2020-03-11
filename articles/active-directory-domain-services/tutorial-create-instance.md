@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378436"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082145"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -136,7 +136,7 @@ Als Azure AD DS geïmplementeerd, configureert u nu het virtuele netwerk zodat a
 
 1. Op het tabblad **overzicht** voor uw beheerde domein worden enkele **vereiste configuratie stappen**weer gegeven. De eerste configuratie stap is het bijwerken van de DNS-server instellingen voor het virtuele netwerk. Zodra de DNS-instellingen correct zijn geconfigureerd, wordt deze stap niet meer weer gegeven.
 
-    De vermelde adressen zijn de domein controllers voor gebruik in het virtuele netwerk. In dit voor beeld zijn deze adressen *10.1.0.4* en *10.1.0.5*. U kunt deze IP-adressen later vinden op het tabblad **Eigenschappen** .
+    De vermelde adressen zijn de domein controllers voor gebruik in het virtuele netwerk. In dit voor beeld zijn deze adressen *10.0.1.4* en *10.0.1.5*. U kunt deze IP-adressen later vinden op het tabblad **Eigenschappen** .
 
     ![Configureer DNS-instellingen voor het virtuele netwerk met de Azure AD Domain Services IP-adressen](./media/tutorial-create-instance/configure-dns.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443690"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079811"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -170,6 +170,8 @@ Azure Maps biedt ook een handig [Java script-kaart besturings element](https://d
 Voor toegang tot de Azure Maps Services gaat u naar de [Azure Portal](https://portal.azure.com) en maakt u een Azure Maps-account.
 
 Azure Maps maakt gebruik van een verificatieschema op basis van sleutels. Uw account wordt geleverd met twee sleutels die al voor u zijn gegenereerd. gebruik een van beide sleutels. Begin met het integreren van deze locatie mogelijkheden in uw toepassing en het indienen van aanvragen voor de Azure Maps Services.
+
+Opmerking-Azure Maps worden door klanten verstrekte adressen/locatie query's ("Query's") met TomTom van derden gebruikt voor het toewijzen van functionaliteit. Query's worden niet aan een klant of eind gebruiker gekoppeld wanneer ze worden gedeeld met TomTom en kunnen niet worden gebruikt om individuen te identificeren. Micro soft is momenteel bezig met het toevoegen van TomTom aan de lijst met uitbestedingen van Online Services. Houd er rekening mee dat de mobiliteits-en weers services die zijn geïntegreerd met Moovit en AccuWeather momenteel als [Preview-versie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zijn.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 

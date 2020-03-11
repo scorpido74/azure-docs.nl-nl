@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935225"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079816"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Een modus voor spraak herkenning kiezen
 
@@ -33,7 +33,7 @@ Aan het einde van een herkende utterance stopt de service de verwerking van de a
 Zie de [documentatie van .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)voor meer informatie over het gebruik van de functie `RecognizeOnceAsync`.
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ Zie de [naslag documentatie voor Speech SDK](speech-to-text.md#speech-sdk-refere
 
 ## <a name="continuous"></a>Continu
 
-Als u langlopende herkenning nodig hebt, gebruikt u de start-en bijbehorende stop functies voor doorlopende herkenning. De functie start wordt gestart en doorloopt de verwerking van alle uitingen totdat u de functie stop aanroept, of totdat er te veel tijd in stilte is verstreken. Wanneer u de doorlopende modus gebruikt, moet u zich registreren bij de verschillende gebeurtenissen die tijdens het optreden worden gestart. Zo wordt de gebeurtenis ' herkend ' geactiveerd wanneer spraak herkenning wordt uitgevoerd. U moet een gebeurtenis-handler hebben om de herkenning te kunnen afhandelen. Een limiet van 10 minuten voor de totale spraak herkennings tijd, per sessie wordt afgedwongen door de spraak service.
+Als u langlopende herkenning nodig hebt, gebruikt u de start-en bijbehorende stop functies voor doorlopende herkenning. De functie start wordt gestart en doorloopt de verwerking van alle uitingen totdat u de functie stop aanroept, of totdat er te veel tijd in stilte is verstreken. Wanneer u de doorlopende modus gebruikt, moet u zich registreren bij de verschillende gebeurtenissen die tijdens het optreden worden gestart. Zo wordt de gebeurtenis ' herkend ' geactiveerd wanneer spraak herkenning wordt uitgevoerd. U moet een gebeurtenis-handler hebben om de herkenning te kunnen afhandelen.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

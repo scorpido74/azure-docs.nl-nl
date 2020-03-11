@@ -1,19 +1,19 @@
 ---
 title: Een commercieel Marketplace-account maken in het partner centrum
 description: Meer informatie over het maken van een commercieel Marketplace-account in Partner Center.
-author: ChJenk
+author: qianw211
 manager: evansma
-ms.author: v-chjen
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 09/26/2019
-ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 03/10/2020
+ms.openlocfilehash: 59f37585dfea08e9343cf052f680fd6e9531852b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838764"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968830"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
@@ -50,7 +50,7 @@ Gebruik deze methode als u geen ervaring hebt met het partner centrum en dat nie
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Registreren op de inschrijvings pagina van het partner centrum
 
-Lees de informatie op de pagina [**Welkom bij micro soft Partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) voor inschrijving en registreer u voor een account.
+Lees de informatie op de pagina [**Welkom bij micro soft Partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) voor inschrijving en registreer u voor een account.
 
 ### <a name="sign-in-with-a-work-account"></a>Aanmelden met een werk account
 

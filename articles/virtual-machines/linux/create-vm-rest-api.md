@@ -1,25 +1,17 @@
 ---
-title: Een virtuele Linux-machine maken met de Azure-REST API
+title: Een virtuele Linux-machine maken met de REST API
 description: Meer informatie over het maken van een virtuele Linux-machine in azure die gebruikmaakt van Managed Disks-en SSH-verificatie met Azure REST API.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036432"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970275"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
 
@@ -65,7 +57,7 @@ De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag
 | Naam                       | Vereist | Type                                                                                | Beschrijving  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | locatie                   | True     | tekenreeks                                                                              | Resourcelocatie. |
-| name                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
+| naam                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |

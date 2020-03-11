@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122850"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037353"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ In dit artikel leert u de volgende taken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van de Azure machine learning](https://aka.ms/AMLFree).
+* Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer de [gratis of betaalde versie van de Azure machine learning](https://aka.ms/AMLFree).
 
 * Voor een begeleide Snelstartgids voltooit u de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure machine learning werk ruimte of virtuele notebook-machine hebt. 
 
@@ -85,7 +85,7 @@ U moet nu gegevens invoer en uitvoer configureren, waaronder:
 - De map die de labels bevat.
 - De map voor uitvoer.
 
-`Dataset` is een klasse voor het verkennen, transformeren en beheren van gegevens in Azure Machine Learning. Deze klasse heeft twee typen: `TabularDataset` en `FileDataset`. In dit voor beeld gebruikt u `FileDataset` als invoer voor de pipeline-stap voor batch-deinterferentie. 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) is een klasse voor het verkennen, transformeren en beheren van gegevens in azure machine learning. Deze klasse heeft twee typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In dit voor beeld gebruikt u `FileDataset` als invoer voor de pipeline-stap voor batch-deinterferentie. 
 
 > [!NOTE] 
 > `FileDataset` ondersteuning in batch-interferentie is voor Taan beperkt tot Azure Blob-opslag. 
@@ -94,7 +94,7 @@ U kunt ook verwijzen naar andere gegevens sets in uw aangepaste in-interferentie
 
 Zie [gegevens sets maken en openen (preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)voor meer informatie over het Azure machine learning gegevens sets.
 
-`PipelineData` objecten worden gebruikt voor de overdracht van tussenliggende gegevens tussen pijplijn stappen. In dit voor beeld gebruikt u dit voor de afleiding van uitvoer.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objecten worden gebruikt voor de overdracht van tussenliggende gegevens tussen pijplijn stappen. In dit voor beeld gebruikt u dit voor de afleiding van uitvoer.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -190,7 +190,7 @@ Het script *moet* twee functies bevatten:
 - `init()`: gebruik deze functie voor een kost bare of gemeen schappelijke voor bereiding voor latere interferentie. U kunt dit bijvoorbeeld gebruiken om het model in een globaal object te laden. Deze functie wordt slechts eenmaal aan het begin van het proces aangeroepen.
 -  `run(mini_batch)`: de functie wordt uitgevoerd voor elk `mini_batch` exemplaar.
     -  `mini_batch`: de stap parallel uitvoeren roept de methode Run aan en geeft een lijst of Panda data frame als argument door aan de-methode. Elke vermelding in min_batch is een bestandspad als invoer een FileDataset is, een Panda data frame als de invoer een TabularDataset is.
-    -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde uitvoering van het input-element aan in de invoer-mini-batch. De gebruiker moet ervoor zorgen dat er voldoende gegevens zijn opgenomen in het resultaat van de uitvoering om de invoer toe te wijzen om het resultaat uit te voeren. Uitvoer wordt geschreven in het uitvoer bestand en niet gegarandeerd in de juiste volg orde. de gebruiker moet een bepaalde sleutel in de uitvoer gebruiken om deze toe te wijzen aan de invoer.
+    -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde uitvoering van het input-element aan in de invoer-mini-batch. Zorg ervoor dat er voldoende gegevens zijn opgenomen in het resultaat van de uitvoering om de invoer toe te wijzen om het resultaat uit te voeren. Uitvoer wordt geschreven in het uitvoer bestand en niet gegarandeerd in de juiste volg orde. u moet een bepaalde sleutel in de uitvoer gebruiken om deze te koppelen aan invoer.
 
 ```python
 # Snippets from a sample script.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-Voer nu de pijp lijn uit. Maak eerst een `Pipeline`-object met behulp van uw werkruimte referentie en de door u gemaakte pijplijn stap. De para meter `steps` is een matrix met stappen. In dit geval is er slechts één stap voor batch scoreing. Als u pijp lijnen met meerdere stappen wilt maken, plaatst u de stappen in volg orde in deze matrix.
+Voer nu de pijp lijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) -object met behulp van uw werkruimte referentie en de door u gemaakte pijplijn stap. De para meter `steps` is een matrix met stappen. In dit geval is er slechts één stap voor batch scoreing. Als u pijp lijnen met meerdere stappen wilt maken, plaatst u de stappen in volg orde in deze matrix.
 
 Gebruik vervolgens de functie `Experiment.submit()` om de pijp lijn voor uitvoering in te dienen.
 

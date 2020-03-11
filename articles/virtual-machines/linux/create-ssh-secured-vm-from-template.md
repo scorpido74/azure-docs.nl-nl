@@ -1,27 +1,17 @@
 ---
 title: Een virtuele Linux-machine in azure maken op basis van een sjabloon
 description: De Azure CLI gebruiken om een virtuele Linux-machine te maken op basis van een resource manager-sjabloon
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 721b8378-9e47-411e-842c-ec3276d3256a
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf440542e8b16231514447ddcddca081b4b89368
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 581eadc60835b758f67ae616d4413800f1d6d718
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979052"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969529"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Een virtuele Linux-machine maken met Azure Resource Manager sjablonen
 
@@ -84,8 +74,8 @@ In dit voor beeld hebt u een virtuele Linux-machine gemaakt. Ga naar de [Azure Q
 
 Voor meer informatie over het maken van sjablonen bekijkt u de JSON-syntaxis en de eigenschappen voor de typen resources die u hebt geïmplementeerd:
 
-- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Micro soft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Micro soft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Micro soft. Compute/informatie](/azure/templates/microsoft.compute/virtualmachines)

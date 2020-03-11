@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367030"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Zelf studie: integratie met share point op locatie Azure Active Directory
 
@@ -113,7 +113,7 @@ Voor de configuratie van Azure AD-eenmalige aanmelding met SharePoint on-premise
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon: `urn:sharepoint:federation`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YourSharePointServerURL>/_trust/default.aspx`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [klantondersteuningsteam van SharePoint on-premises](https://support.office.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -271,7 +271,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 10. Configureer de AzureCP op de share point on-premises-Farm of een alternatieve oplossing voor aangepaste claim providers.  In dit voor beeld gebruiken we AzureCP.
 
     > [!NOTE]
-    > Houd er rekening mee dat AzureCP geen micro soft-product is of niet wordt ondersteund door de technische ondersteuning van micro soft. Down load, installeer en configureer AzureCP op de on-premises share point-Farm per https://yvand.github.io/AzureCP/ 
+    > Houd er rekening mee dat AzureCP geen micro soft-product is of niet wordt ondersteund door de technische ondersteuning van micro soft. Down load, installeer en configureer AzureCP op de on-premises share point-Farm per [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) 
 
 11. **Toegang verlenen tot de Azure Active Directory beveiligings groep in de on-premises share point** :-voor de groepen moeten on-premises toegang worden verleend tot de toepassing in share point.  Gebruik de volgende stappen om de machtigingen voor toegang tot de webtoepassing in te stellen.
 

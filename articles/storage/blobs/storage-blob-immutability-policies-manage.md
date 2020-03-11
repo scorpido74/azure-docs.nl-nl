@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903483"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970101"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Onveranderbaarheid-beleid instellen en beheren voor Blob Storage
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen e
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Bewaar beleid en juridische bewaringen instellen
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Maak een nieuwe container of selecteer een bestaande container om de blobs op te slaan die u in onveranderbare toestand wilt bewaren. De container moet zich in een v2-of Blob-opslag account voor algemeen gebruik bevinden.
 
@@ -59,11 +59,11 @@ In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen e
 
 9. Als u een juridische blok kering wilt wissen, verwijdert u de code van de toegepaste juridische id.
 
-### <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` hierop uit om de opdrachten weer te geven.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-Onveranderbaarheid-beleid maken of bijwerken:
+Op tijd gebaseerd Onveranderbaarheid-beleid maken of bijwerken:
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>Schrijven van beveiligde toevoeg-blobs toestaan inschakelen
 
-Op dit moment hebt u alleen toegang tot de `allowProtectedAppendWrites` instelling voor Bewaar beleid op basis van tijd via deze specifieke [Portal koppeling](https://aka.ms/immutableappendblobs). 
-
-> [!IMPORTANT] 
->  De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-> - VS - oost
-> - VS - zuid-centraal
-> - VS - west 2
->
-> Zie voor meer informatie [toestaan dat beveiligde toevoeg-blobs worden geschreven](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ![Extra schrijf bewerkingen voor toevoegen toestaan](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` hierop uit om de opdrachten weer te geven.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

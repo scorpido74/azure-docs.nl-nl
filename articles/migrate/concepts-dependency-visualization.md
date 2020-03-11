@@ -3,12 +3,12 @@ title: Visualisatie van afhankelijkheden in Azure Migrate
 description: Hierin wordt een overzicht gegeven van de evaluatie berekeningen in de server Assessment-service in Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361978"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082347"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
@@ -55,7 +55,7 @@ Er zijn twee opties voor het implementeren van afhankelijkheids visualisatie:
 **Ondersteunde besturingssystemen** | Bekijk de [besturings systemen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) die worden ondersteund voor visualisatie zonder agent.
 **VM's** | **VMware-hulpprogram ma's**: VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt analyseren.<br/><br/> **Account**: op het Azure migrate apparaat moet u een gebruikers account toevoegen dat kan worden gebruikt om toegang te krijgen tot vm's voor analyse.<br/><br/> **Windows-vm's**: het gebruikers account moet een lokale of een domein beheerder zijn op de computer.<br/><br/> **Linux-vm's**: de hoofd bevoegdheid is vereist voor het account. De gebruikers account vereist ook deze twee mogelijkheden op/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE. | [Meer informatie over](migrate-appliance.md) het Azure migrate apparaat.
 **VMware** | **vCenter**: voor het apparaat is een vCenter Server-account met alleen-lezen toegang vereist en de bevoegdheden voor virtual machines > gast bewerkingen zijn ingeschakeld.<br/><br/> **ESXi-hosts**: op ESXi-hosts waarop vm's worden uitgevoerd die u wilt analyseren, moet het Azure migrate apparaat verbinding kunnen maken met TCP-poort 443.
-**Verzamelde gegevens** |  Visualisatie van de afhankelijkheid van agents werkt door TCP-verbindings gegevens vast te leggen van computers waarvoor deze is ingeschakeld. Nadat de afhankelijkheids detectie is gestart, verzamelt het apparaat deze gegevens van machines door elke vijf minuten te pollen:<br/> -TCP-verbindingen.<br/> -Namen van processen die actieve verbindingen hebben.<br/> -Namen van geïnstalleerde toepassingen die het proces uitvoeren met actieve verbindingen.<br/> -Het aantal verbindingen dat wordt gedetecteerd bij elk polling-interval.
+**Verzamelde gegevens** |  Analyse van de afhankelijkheid van agents werkt door TCP-verbindings gegevens vast te leggen van computers waarop deze is ingeschakeld. Nadat de detectie van afhankelijkheden is ingeschakeld, verzamelt het apparaat TCP-verbindings gegevens elke vijf minuten van gast-Vm's. Deze gegevens worden verzameld van gast-Vm's via vCenter Server met behulp van vSphere-Api's. De verzamelde gegevens worden verwerkt op het apparaat om elke 6 uur afhankelijkheids informatie af te leiden en te verzenden naar Azure Migrate. De volgende gegevens worden verzameld van elke computer: <br/> -Namen van processen die actieve verbindingen hebben.<br/> -Namen van toepassingen die het proces uitvoeren met actieve verbindingen.<br/> -Doel poort voor de actieve verbindingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

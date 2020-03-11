@@ -1,6 +1,6 @@
 ---
-title: Privé verbinding maken met een web-app en gegevens exfiltration beveiligen met Azure-privé-eind punt
-description: Privé verbinding maken met een web-app en gegevens exfiltration beveiligen met Azure-privé-eind punt
+title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -8,24 +8,23 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: aa1fd341e60a71ad1ffbb535120e63db5a8bfd0b
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851231"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036953"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
-U kunt een privé-eind punt voor uw Azure-web-app gebruiken om clients die zich in uw particuliere netwerk bevinden, veilig toegang te geven tot de app via een persoonlijke koppeling. Het persoonlijke eind punt gebruikt een IP-adres uit uw Azure VNet-adres ruimte. Netwerk verkeer tussen de client op uw particuliere netwerk en de web-app gaat over op het Vnet en een privé koppeling in het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. Met een persoonlijk eind punt kunt u uitgaande netwerk stromen uitschakelen vanuit het subnet met NSG en het risico op gegevens lekken elimineren.
+U kunt een privé-eind punt voor uw Azure-web-app gebruiken om clients die zich in uw particuliere netwerk bevinden, veilig toegang te geven tot de app via een persoonlijke koppeling. Het persoonlijke eind punt gebruikt een IP-adres uit uw Azure VNet-adres ruimte. Netwerk verkeer tussen de client op uw particuliere netwerk en de web-app gaat over op het Vnet en een privé koppeling in het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
 
 Als u een persoonlijk eind punt gebruikt voor uw web-app, kunt u het volgende doen:
 
 - Uw web-app beveiligen door het service-eind punt te configureren, open bare bloot stelling te elimineren
-- Verbeter de beveiliging van het Vnet door gegevens exfiltration uit het Vnet te blok keren
 - Maak veilig verbinding met de web-app vanuit on-premises netwerken die verbinding maken met het Vnet met behulp van een VPN-of ExpressRoute privé-peering.
 
-Als u alleen een beveiligde verbinding tussen uw Vnet en uw web-app nodig hebt, is service-eind punt de eenvoudigste oplossing. Als u zich wilt beveiligen tegen gegevens exfiltration of als u de toegang vanaf on-premises hebt gerouteerd, is het persoonlijke eind punt de oplossing.
+Als u alleen een beveiligde verbinding tussen uw Vnet en uw web-app nodig hebt, is service-eind punt de eenvoudigste oplossing. Als u de web-app ook van on-premises moet bereiken via een Azure-gateway, is een regionaal peered Vnet of een globaal peered Vnet, het persoonlijke eind punt is de oplossing.  
 
 Voor meer informatie over [service-eind punten][serviceendpoint]
 
@@ -36,20 +35,24 @@ Wanneer u een persoonlijk eind punt voor uw web-app maakt, biedt het een beveili
 De verbinding tussen het persoonlijke eind punt en de web-app maakt gebruik van een beveiligde [persoonlijke koppeling][privatelink]. Privé-eind punt wordt alleen gebruikt voor binnenkomende stromen naar uw web-app. Uitgaande stromen gebruiken dit persoonlijke eind punt niet, maar u kunt via de [Vnet-integratie functie][vnetintegrationfeature]uitgaande stromen naar uw netwerk injecteren in een ander subnet.
 
 Het subnet waar u het persoonlijke eind punt aansluit, kan andere resources bevatten, u hebt geen toegewezen leeg subnet nodig.
+U kunt een persoonlijk eind punt implementeren in een andere regio dan de web-app. 
+
 > [!Note]
 >De Vnet-integratie functie kan niet hetzelfde subnet gebruiken dan het persoonlijke eind punt. Dit is een beperking van de Vnet-integratie functie
 
 Vanuit het beveiligings perspectief:
 
 - Wanneer u service-eind punten voor uw web-app inschakelt, schakelt u alle open bare toegang uit
-- U kunt meerdere privé-eind punten inschakelen in andere Vnets en subnetten
+- U kunt meerdere privé-eind punten inschakelen in andere Vnets en subnetten, waaronder Vnets in andere regio's
+- Het IP-adres van de NIC van het persoonlijke eind punt moet dynamisch zijn, maar blijft hetzelfde totdat u het persoonlijke eind punt verwijdert
 - Aan de NIC van het persoonlijke eind punt kan geen NSG worden gekoppeld
-- In het subnet waarop het persoonlijke eind punt wordt gehost, kan een NSG zijn gekoppeld, maar u moet het afdwingen van het netwerk beleid voor het privé-eind punt uitschakelen Zie [dit artikel] [disablesecuritype]. Als gevolg hiervan kunt u niet filteren op alle NSG die toegang hebben tot uw persoonlijke eind punt.
+- In het subnet waarop het persoonlijke eind punt wordt gehost, kan een NSG zijn gekoppeld, maar u moet het afdwingen van het netwerk beleid voor het privé-eind punt uitschakelen Zie [dit artikel][disablesecuritype]. Als gevolg hiervan kunt u niet filteren op alle NSG die toegang hebben tot uw persoonlijke eind punt
 - Wanneer u een persoonlijk eind punt op uw web-app inschakelt, wordt de configuratie van de [toegangs beperkingen][accessrestrictions] van de web-app niet geëvalueerd.
+- U kunt het risico op gegevens exfiltration van het vnet verminderen door alle NSG-regels te verwijderen waarbij het doel tag internet of Azure-Services is. Als u echter een Web App Service-eind punt in uw subnet toevoegt, krijgt u een web-app te bereiken die wordt gehost in hetzelfde stempel en beschikbaar te stellen aan Internet.
 
-Privé-eind punt voor web-app is beschikbaar voor laag Standard, PremiumV2 en geïsoleerd met een externe ASE.
+Het persoonlijke eind punt voor web-app is beschikbaar voor laag PremiumV2 en is geïsoleerd met een externe ASE.
 
-In de web-http-logboeken van uw Web-App ontdekt u dat we op de hoogte zijn van het client bron-IP. We hebben het TCP-proxy protocol geïmplementeerd en tot en met de web-app het IP-adres van de client doorgestuurd. Raadpleeg [dit artikel][tcpproxy] voor meer informatie.
+In de web-http-logboeken van uw web-app vindt u het bron-IP-adres van de client. We hebben het TCP-proxy protocol geïmplementeerd en tot en met de Web-App de IP-eigenschap van de client doorgestuurd. Raadpleeg [dit artikel][tcpproxy] voor meer informatie.
 
 ![Globaal overzicht][1]
 

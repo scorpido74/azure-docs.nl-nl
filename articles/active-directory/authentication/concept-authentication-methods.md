@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848745"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968774"
 ---
 # <a name="what-are-authentication-methods"></a>Wat zijn verificatiemethoden?
 
@@ -34,8 +34,8 @@ Micro soft raadt beheerders ten zeerste aan dat gebruikers meer dan het minimale
 | Microsoft Authenticator-app | MFA en SSPR |
 | OATH-hardware-token | Open bare Preview voor MFA en SSPR |
 | Sms | MFA en SSPR |
-| Spraakoproep | MFA en SSPR |
-| App-wachtwoorden | Alleen in bepaalde gevallen MFA |
+| Telefoon oproep | MFA en SSPR |
+| App-wacht woorden | Alleen in bepaalde gevallen MFA |
 
 ![Verificatie methoden die in gebruik zijn op het aanmeldings scherm](media/concept-authentication-methods/overview-login.png)
 
@@ -146,7 +146,7 @@ Als u het gebruik van beide meldingen via de mobiele app en de verificatie code 
 
 ### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
-De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatiecode biedt een tweede vorm van verificatie.
+De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatie code biedt een tweede vorm van verificatie.
 
 > [!WARNING]
 > Voor selfservice voor het opnieuw instellen van wacht woorden wanneer er slechts één methode vereist is voor het opnieuw instellen van de verificatie code is de enige optie beschikbaar voor gebruikers **om het hoogste beveiligings niveau te garanderen**.
@@ -156,25 +156,25 @@ Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-hardware-tokens (open bare preview)
 
-OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. Azure AD biedt ondersteuning voor het gebruik van OATH-mobiele TOTP SHA-1-tokens van de 30-seconden of 60-Second-variëteit. Klanten kunnen deze tokens van de leverancier van hun keuze aanschaffen. Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutels moeten worden gecodeerd in Base32.
+OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden gegenereerd. Azure AD biedt ondersteuning voor het gebruik van OATH-mobiele TOTP SHA-1-tokens van de 30-seconden of 60-Second-variëteit. Klanten kunnen deze tokens van de leverancier van hun keuze aanschaffen. Geheime sleutels zijn beperkt tot 128 tekens, die mogelijk niet compatibel zijn met alle tokens. De geheime sleutel mag alleen de tekens *a-z* of *a-* z en cijfers *1-7*bevatten en moet worden gecodeerd in Base32.
 
-![OATH-tokens uploaden naar de Blade van de MFA-server OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![OATH-tokens uploaden naar de Blade MFA OATH-tokens](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 OATH-hardware-tokens worden ondersteund als onderdeel van een open bare preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews
 
-Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals in het voor beeld hieronder wordt weer gegeven.
+Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt, zoals hierboven wordt weer gegeven.
+> Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt.
 
-Als een beheerder zich heeft geformatteerd als een CSV-bestand, kan deze zich vervolgens aanmelden bij de Azure Portal en naar **Azure Active Directory**, **MFA-server**, **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
+Als een beheerder zich heeft geformatteerd als een CSV-bestand, kunt u zich aanmelden bij de Azure Portal, naar **Azure Active Directory** > **Security** > **MFA** > **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
 
-Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Klik op de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u kunt oplossen.
+Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Klik op de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u kunt oplossen. De veld namen in het gedownloade CSV-bestand wijken af van de geüploade versie.
 
 Zodra er fouten zijn opgelost, kan de beheerder elke sleutel activeren door te klikken op **activeren** voor het token dat wordt geactiveerd en de otp op het token in te voeren.
 
@@ -201,14 +201,14 @@ Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Mult
 
 Er wordt een SMS-bericht verzonden naar het mobiele telefoon nummer met een verificatie code. Voer de verificatie code in die is opgegeven in de aanmeldings interface om door te gaan.
 
-#### <a name="phone-call"></a>Telefoongesprek
+#### <a name="phone-call"></a>Telefoonoproep
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Vraag de oproep af en druk op # in het telefoon blok om te verifiëren
 
 > [!IMPORTANT]
 > Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
 
-### <a name="office-phone"></a>Zakelijke telefoon
+### <a name="office-phone"></a>Telefoon (werk)
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Beantwoord het gesprek en druk op # in het telefoon blok om te verifiëren.
 

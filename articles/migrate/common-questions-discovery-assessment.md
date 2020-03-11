@@ -3,12 +3,12 @@ title: Veelgestelde vragen over detectie, beoordeling en afhankelijkheids analys
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932597"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082009"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -68,6 +68,12 @@ Bij het maken van een evaluatie in azure, afhankelijk van de prestatie duur en d
 Als u bijvoorbeeld de duur van de prestaties instelt op één dag en de percentiel waarde op het 95e percentiel, Azure Migrate worden de voorbeeld punten van 15 minuten die zijn verzonden door de collector voor de afgelopen dag in oplopende volg orde gesorteerd. Hiermee wordt de waarde van het 95e percentiel als effectief gebruik gekozen.
 
 Het gebruik van de waarde voor het percentiel van 95e zorgt ervoor dat uitbijters worden genegeerd. Uitbijters kunnen worden opgenomen als uw Azure Migrate gebruikmaakt van het 99e percentiel. Als u het piek gebruik voor de periode wilt kiezen zonder uitbijters te missen, stelt u Azure Migrate in om het 99e percentiel te gebruiken.
+
+## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Wat is het verschil tussen evaluaties op basis van een import bewerking en de detectie bron als apparaat?
+
+Evaluaties op basis van import zijn evaluaties die zijn gemaakt met machines die in Azure Migrate worden geïmporteerd met behulp van een CSV-bestand. Er zijn slechts vier velden die verplicht moeten worden geïmporteerd: Server naam, kern geheugens en besturings systeem. Hier volgen enkele dingen die u moet weten: 
+ - De gereedheids criteria zijn minder strikt in evaluaties op basis van een import bewerking voor de opstart type-para meter. Als het opstart type niet is opgegeven, wordt ervan uitgegaan dat de computer een BIOS-opstart type heeft en dat de machine niet als **voorwaardelijk**is gemarkeerd. In beoordelingen met detectie bron als apparaat is de gereedheid gemarkeerd als **voorwaardelijk gereed** als het opstart type ontbreekt. Dit verschil in de gereedheids berekening is omdat gebruikers mogelijk niet alle informatie over de computers in de vroege fase van de migratie planning hebben wanneer op import gebaseerde evaluaties worden uitgevoerd. 
+ - Bij evaluaties op basis van de prestaties wordt gebruikgemaakt van de gebruiks waarde die door de gebruiker wordt geleverd voor het berekenen van de rechter grootte. Aangezien de gebruiks waarde wordt geleverd door de gebruiker, worden de opties voor de **prestatie geschiedenis** en het **percentiel gebruik** in de eigenschappen van de beoordeling uitgeschakeld. In beoordelingen met detectie bron als apparaat wordt de gekozen percentiel waarde opgehaald uit de prestatie gegevens die zijn verzameld door het apparaat.
 
 ## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
 

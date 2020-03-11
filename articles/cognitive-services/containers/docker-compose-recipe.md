@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716892"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037522"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose gebruiken om meerdere containers te implementeren
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u meerdere Azure Cognitive Services-containe
 
 > [Docker opstellen](https://docs.docker.com/compose/) is een hulp programma voor het definiëren en uitvoeren van docker-toepassingen met meerdere containers. In opstellen gebruikt u een YAML-bestand om de services van uw toepassing te configureren. Vervolgens maakt en start u alle services van uw configuratie door één opdracht uit te voeren.
 
-Het kan handig zijn om meerdere container installatie kopieën op één hostcomputer te organiseren. In dit artikel halen we de Tekst herkennen-en formulier Recognizer-containers samen.
+Het kan handig zijn om meerdere container installatie kopieën op één hostcomputer te organiseren. In dit artikel halen we de lees-en formulier Recognizer-containers samen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 Met een docker-bestand opstellen kunt u alle fasen in de levens cyclus van een gedefinieerde service beheren: Services starten, stoppen en opnieuw samen stellen. het weer geven van de status van de service; en logboek streaming. Open een opdracht regel interface vanuit de projectmap (waarin het bestand docker-opstellen. yaml zich bevindt).
 
 > [!NOTE]
-> Om fouten te voor komen, moet u ervoor zorgen dat de host-computer stations op de juiste wijze deelt met de docker-engine. Als E:\publicpreview bijvoorbeeld wordt gebruikt als een directory in het bestand docker-samen stellen. yaml, deelt u station E met docker.
+> Om fouten te voor komen, moet u ervoor zorgen dat de host-computer stations op de juiste wijze deelt met de docker-engine. Als *E:\publicpreview* bijvoorbeeld wordt gebruikt als een directory in het bestand *docker-samen stellen. yaml* , deelt u station **E** met docker.
 
-Voer vanaf de opdracht regel interface de volgende opdracht uit om alle services te starten (of opnieuw op te starten) die zijn gedefinieerd in het bestand docker-samen stellen. yaml:
+Voer vanaf de opdracht regel interface de volgende opdracht uit om alle services te starten (of opnieuw op te starten) die zijn gedefinieerd in het bestand *docker-samen stellen. yaml* :
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ Hier volgt een voor beeld van uitvoer:
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>De Tekst herkennen-container testen
+### <a name="test-containers"></a>Test containers
 
-Open een browser op de hostmachine en ga naar **localhost** met behulp van de opgegeven poort in het docker-yaml-bestand, zoals http://localhost:5021/swagger/index.html. U kunt de functie ' proberen ' in de API gebruiken om het Tekst herkennen-eind punt te testen.
-
-![Tekst herkennen-container](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>De formulier Recognizer-container testen
-
-Open een browser op de hostmachine en ga naar **localhost** met behulp van de opgegeven poort in het docker-yaml-bestand, zoals http://localhost:5010/swagger/index.html. U kunt de functie ' proberen ' in de API gebruiken om het formulier Recognizer-eind punt te testen.
+Open een browser op de hostmachine en ga naar **localhost** met behulp van de opgegeven poort in het *docker-yaml-* bestand, zoals http://localhost:5021/swagger/index.html. U kunt bijvoorbeeld de functie **try it** in de API gebruiken om het formulier Recognizer-eind punt te testen. De Swagger-pagina's van de containers moeten beschikbaar en testable zijn.
 
 ![Container voor formulier herkenning](media/form-recognizer-swagger-page.png)
 

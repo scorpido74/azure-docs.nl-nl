@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365348"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081933"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
@@ -255,12 +255,6 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 - Azure SQL Database controle is geoptimaliseerd voor Beschik baarheid van & prestaties. Tijdens een zeer hoge activiteit Azure SQL Database bewerkingen door voeren en kunnen sommige gecontroleerde gebeurtenissen niet worden vastgelegd.
 
 - Zie [toestaan dat beveiligde toevoeg-blobs worden geschreven](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)voor het configureren van onveranderbare controles voor opslag accounts. Houd er rekening mee dat de container naam voor controle is **sqldbauditlogs**.
-
-    > [!IMPORTANT]
-    > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-    > - VS - oost
-    > - VS - zuid-centraal
-    > - VS - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell

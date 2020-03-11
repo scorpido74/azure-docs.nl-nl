@@ -51,6 +51,8 @@
       href: batch-api-basics.md
     - name: API's en hulpprogramma’s
       href: batch-apis-tools.md
+    - name: Fouten in Batch-service detecteren en afhandelen
+      href: batch-retry-after-errors.md
     - name: Aanbevolen procedures
       href: best-practices.md
     - name: Quota en limieten
@@ -131,8 +133,6 @@
           href: batch-job-schedule.md
         - name: Controleren op taakfouten
           href: batch-job-task-error-checking.md
-        - name: Fouten in Batch-service detecteren en afhandelen
-          href: batch-retry-after-errors.md
     - name: Taken persistent maken
       href: batch-task-output.md
       items:

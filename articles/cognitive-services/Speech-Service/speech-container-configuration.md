@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816570"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037327"
 ---
 # <a name="configure-speech-service-containers"></a>Spraak service containers configureren
 
 Met spraak containers kunnen klanten één spraak toepassings architectuur maken die is geoptimaliseerd om te profiteren van zowel robuuste Cloud mogelijkheden als Edge-locatie. De vier spraak containers die worden ondersteund, zijn nu, **spraak naar tekst**, **aangepast**naar tekst, **tekst-naar-spraak**en **aangepaste tekst-naar-spraak**.
 
-De runtime-omgeving voor de **spraak** container wordt geconfigureerd met behulp van de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Verschillende [voorbeelden](#example-docker-run-commands) van de opdracht beschikbaar zijn. De container-specifieke instellingen zijn de facturerings instellingen.
+De runtime-omgeving voor de **spraak** container wordt geconfigureerd met behulp van de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen.
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), en [ `Eula` ](#eula-setting) instellingen samen worden gebruikt en u moet geldige waarden opgeven voor alle drie deze, anders uw container start niet. Zie voor meer informatie over het gebruik van deze configuratie-instellingen voor het starten van een container [facturering](speech-container-howto.md#billing).
+> De instellingen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](speech-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
 ## <a name="apikey-configuration-setting"></a>ApiKey configuratie-instelling
 
-De `ApiKey` instelling geeft u aan de Azure-resource-sleutel die wordt gebruikt voor het bijhouden van informatie over facturering voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _spraak_ bron die is opgegeven voor de configuratie-instelling [`Billing`](#billing-configuration-setting) .
+Met de instelling `ApiKey` geeft u de Azure-resource sleutel op die wordt gebruikt om de facturerings gegevens voor de container bij te houden. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _spraak_ bron die is opgegeven voor de configuratie-instelling [`Billing`](#billing-configuration-setting) .
 
 Deze instelling bevindt zich op de volgende locatie:
 
@@ -50,7 +50,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 - Azure Portal: overzicht **van spraak** , gelabelde `Endpoint`
 
-| Verplicht | Naam | Gegevenstype | Beschrijving |
+| Vereist | Naam | Gegevenstype | Beschrijving |
 | -------- | ---- | --------- | ----------- |
 | Ja | `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](speech-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 
@@ -72,16 +72,16 @@ Deze instelling bevindt zich op de volgende locatie:
 
 ## <a name="mount-settings"></a>Instellingen voor koppelen
 
-Gebruik bind koppelt om te lezen en schrijven van gegevens naar en van de container. U kunt opgeven van een koppelpunt invoer of uitvoer koppelen door op te geven de `--mount` optie in de [docker uitvoeren](https://docs.docker.com/engine/reference/commandline/run/) opdracht.
+Gebruik bind koppelt om te lezen en schrijven van gegevens naar en van de container. U kunt een invoer koppeling of uitvoer koppeling opgeven door de optie `--mount` op te geven in de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) .
 
 De standaard spraak containers gebruiken geen invoer-of uitvoer koppelingen om training of service gegevens op te slaan. Aangepaste spraak containers zijn echter afhankelijk van volume koppelt.
 
-De exacte syntaxis van de locatie van de host koppelen, is afhankelijk van het hostbesturingssysteem. Bovendien de [hostcomputer](speech-container-howto.md#the-host-computer)van koppelpunten locatie is mogelijk niet toegankelijk is vanwege een conflict tussen de machtigingen die wordt gebruikt door de docker-service-account en de host koppelen locatie machtigingen.
+De exacte syntaxis van de locatie van de host koppelen, is afhankelijk van het hostbesturingssysteem. Daarnaast is de koppel locatie van de [hostcomputer](speech-container-howto.md#the-host-computer)mogelijk niet toegankelijk als gevolg van een conflict tussen de machtigingen die worden gebruikt door het docker-service account en de machtigingen voor het koppelen van de host-locatie.
 
 | Optioneel | Naam | Gegevenstype | Beschrijving |
 | -------- | ---- | --------- | ----------- |
 | Niet toegestaan | `Input` | Tekenreeks | Standaard spraak containers gebruiken deze niet. Aangepaste spraak containers gebruiken [volume koppelingen](#volume-mount-settings).                                                                                    |
-| Optioneel | `Output` | Tekenreeks | Het doel van de uitvoer-koppelpunt. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Optioneel | `Output` | Tekenreeks | Het doel van de uitvoer-koppelpunt. De standaard waarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Instellingen voor volume koppeling
 
@@ -108,7 +108,7 @@ Met deze opdracht koppelt u de _C:\Input_ -Directory van de host-computer aan de
 
 ## <a name="example-docker-run-commands"></a>Voorbeeld van de docker-opdrachten uitvoeren
 
-De volgende voorbeelden gebruiken de configuratie-instellingen om te laten zien hoe u om te schrijven en gebruik `docker run` opdrachten. Zodra actief is, de container blijft actief totdat u [stoppen](speech-container-howto.md#stop-the-container) deze.
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run`-opdrachten schrijft en gebruikt. Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](speech-container-howto.md#stop-the-container) .
 
 - **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash, `\`, als een regel voortzettings teken. Vervang of verwijder deze op basis van het hostbesturingssysteem vereisten.
 - **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
@@ -123,14 +123,14 @@ Vervang {_argument_name_} door uw eigen waarden:
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start. Zie voor meer informatie, [facturering](#billing-configuration-setting).
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart. Zie [facturering](#billing-configuration-setting)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de pagina met Azure-spraak bron sleutels.
 
 ## <a name="speech-container-docker-examples"></a>Voor beelden van spraak container docker
 
 De volgende docker-voor beelden zijn voor de spraak container.
 
-## <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
+## <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>Basis voorbeeld voor spraak naar tekst
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>Eenvoudig voor beeld voor Custom Speech-naar-tekst
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[Tekst naar spraak](#tab/tss)
+## <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>Eenvoudig voor beeld voor tekst naar spraak
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>Basis voorbeeld voor aangepaste tekst-naar-spraak
 
@@ -234,4 +234,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Beoordeling [over het installeren en uitvoeren van containers](speech-container-howto.md)
+- Meer [informatie over het installeren en uitvoeren van containers](speech-container-howto.md)

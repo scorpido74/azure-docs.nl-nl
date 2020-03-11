@@ -1,25 +1,17 @@
 ---
-title: Een OpenBSD VM-installatie kopie maken en uploaden naar Azure
+title: Een OpenBSD-installatie kopie maken en uploaden
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) die het OpenBSD-besturings systeem bevat om een virtuele Azure-machine te maken met behulp van Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
 author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291886"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969485"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Een OpenBSD-schijf kopie maken en uploaden naar Azure
 In dit artikel wordt beschreven hoe u een virtuele harde schijf (VHD) die het OpenBSD-besturings systeem bevat maakt en uploadt. Nadat u het hebt geüpload, kunt u dit als uw eigen installatie kopie gebruiken om een virtuele machine (VM) in azure te maken via Azure CLI.
@@ -67,7 +59,7 @@ Voer de volgende procedures uit op de virtuele machine waarop u het OpenBSD-best
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. De nieuwste versie van de Azure-agent kan altijd worden gevonden op [github](https://github.com/Azure/WALinuxAgent/releases). Ga als volgt te werk om de agent te installeren:
+6. De nieuwste versie van de Azure-agent kan altijd worden gevonden op [github](https://github.com/Azure/WALinuxAgent/releases). Installeer de agent als volgt:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 

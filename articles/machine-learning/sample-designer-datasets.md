@@ -9,12 +9,12 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 7c5087a15210dff7c2a51aa5af38b8f7c26e28cc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673472"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037310"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Designer (preview)
 
@@ -44,4 +44,4 @@ De voorbeeld gegevens sets zijn beschikbaar onder de categorie **gegevens sets**
 
 * Leer de basis beginselen van predictive analytics en machine learning met [de zelf studie: prijs van auto Mobile met de ontwerper](tutorial-designer-automobile-price-train-score.md)
 
-* [Import data](./algorithm-module-reference/import-data.md) -module gebruiken om voorbeeld gegevens sets te importeren
+* Meer informatie over het wijzigen van bestaande [ontwerp voorbeelden](samples-designer.md) om ze aan te passen aan uw behoeften.

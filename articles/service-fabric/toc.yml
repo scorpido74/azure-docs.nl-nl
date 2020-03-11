@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Een cluster in balans brengen
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Subclusters
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Beperking
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Servicebeweging
@@ -358,7 +360,7 @@
       href: concepts-managed-identity.md
     - name: Referenties voor containeropslagplaats configureren
       href: configure-container-repository-credentials.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: De ontwikkelomgeving instellen
       items:

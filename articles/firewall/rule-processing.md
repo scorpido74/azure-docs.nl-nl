@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396035"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082430"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Regels voor de logicaverwerking in Azure Firewall
 U kunt NAT-regels, netwerk regels en toepassings regels configureren op Azure Firewall. De regels worden verwerkt volgens het regel type. 
@@ -32,7 +32,7 @@ Als u netwerk regels en toepassings regels configureert, worden netwerk regels i
 
 Inkomende Internet connectiviteit kan worden ingeschakeld door DNAT (Destination Network Address Translation) te configureren, zoals beschreven in [zelf studie: inkomend verkeer filteren met Azure firewall DNAT met behulp van de Azure Portal](tutorial-firewall-dnat.md). NAT-regels worden vóór netwerk regels op prioriteit toegepast. Als er een overeenkomst wordt gevonden, wordt er een impliciet overeenkomende netwerk regel toegevoegd om het vertaalde verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer.
 
-Toepassings regels worden niet toegepast op binnenkomende verbindingen. Als u echter het binnenkomende HTTP/S-verkeer wilt filteren, gebruikt u Web Application firewall (WAF). Zie [Wat is Azure Web Application firewall?](../web-application-firewall/overview.md) voor meer informatie.
+Toepassings regels worden niet toegepast voor binnenkomende verbindingen. Als u echter het binnenkomende HTTP/S-verkeer wilt filteren, gebruikt u Web Application firewall (WAF). Zie [Wat is Azure Web Application firewall?](../web-application-firewall/overview.md) voor meer informatie.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -90,6 +90,10 @@ SSH-verkeer wordt geweigerd omdat de verzameling netwerk regels voor *weigeren* 
 **Daardoor**
 
 SSH-verbindingen worden geweigerd omdat een netwerk regel verzameling met een hogere prioriteit deze blokkeert. Regel verwerking stopt op dit moment.
+
+## <a name="rule-changes"></a>Regel wijzigingen
+
+Als u een regel wijzigt om eerder toegestaan verkeer te weigeren, worden alle relevante bestaande sessies verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

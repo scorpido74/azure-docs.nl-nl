@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298374"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080066"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -30,6 +30,9 @@ Dit artikel bevat twee scenario's voor het configureren van beleid voor voorwaar
 In de voorwaardelijke toegang zijn deze client-apps bekend om te worden beveiligd met een beveiligings beleid voor apps. Meer informatie over het beveiligings beleid voor apps vindt u in het artikel [overzicht van app-beveiligings beleid](/intune/apps/app-protection-policy)
 
 Zie [vereisten voor app-beveiligings beleid](concept-conditional-access-grant.md)voor een lijst met in aanmerking komende client-apps.
+
+> [!NOTE]
+>    De or-component wordt in het beleid gebruikt om gebruikers in staat te stellen apps te gebruiken die ondersteuning bieden voor het **beleid voor app-beveiliging** of het **verplicht stellen van goedgekeurde client-app** -machtigingen. Zie [app-beveiligings beleid vereisten](concept-conditional-access-grant.md)voor meer informatie over de apps die ondersteuning bieden voor de machtiging beheer **beleid voor app-beveiliging vereisen** .
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: Office 365-apps vereist goedgekeurde apps met app-beveiligings beleid
 
@@ -56,7 +59,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Selecteer onder **toegangs beheer** > **verlenen**de volgende opties:
    - **Goedgekeurde client-app vereisen**
    - **Beveiligings beleid voor apps vereisen (preview-versie)**
-   - **Alle geselecteerde besturings elementen vereisen**
+   - **Een van de geselecteerde besturings elementen vereisen**
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
@@ -75,7 +78,7 @@ Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgend
    1. **Client-apps (preview-versie)** :
       1. Stel **configureren** in op **Ja**.
       1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-1. Selecteer onder **toegangs beheer** > **verlenen**de optie **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteer **selecteren**.
+1. Selecteer onder **toegangs beheer** > **verlenen**de optie **toegang verlenen**, **beveiligings beleid voor apps vereisen**en selecteer **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
@@ -108,7 +111,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Selecteer onder **toegangs beheer** > **verlenen**de volgende opties:
    - **Goedgekeurde client-app vereisen**
    - **Beveiligings beleid voor apps vereisen (preview-versie)**
-   - **Alle geselecteerde besturings elementen vereisen**
+   - **Een van de geselecteerde besturings elementen vereisen**
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
@@ -125,7 +128,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
    1. **Client-apps (preview-versie)** :
       1. Stel **configureren** in op **Ja**.
       1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-1. Selecteer onder **toegangs beheer** > **verlenen**de optie **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteer **selecteren**.
+1. Selecteer onder **toegangs beheer** > **verlenen**de optie **toegang verlenen**, **beveiligings beleid voor apps vereisen**en selecteer **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 

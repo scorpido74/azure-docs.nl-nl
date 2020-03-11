@@ -185,47 +185,29 @@
         - name: Modellen maken en trainen
           items:
             - name: Algoritmen kiezen
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Overzichtskaart algoritmen
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Modellen in de productieomgeving implementeren
       href: deploy-models-in-production.md
 - name: Verwant
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Azure AI-galerie
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Cognitive Services
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: Afwijkingsdetectie
+      href: apps-anomaly-detection-api.md
+    - name: Voorspellend onderhoud
       items:
-        - name: Afwijkingsdetectie
-          href: apps-anomaly-detection-api.md
-        - name: Cognitive Services
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: Voorspellend onderhoud
-          items:
-            - name: Overzicht
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architectuur
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: Technische handleiding
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Overzicht
+          href: predictive-maintenance-playbook.md
+        - name: Architectuur
+          href: predictive-maintenance-architecture.md
+        - name: Technische handleiding
+          href: predictive-maintenance-technical-guide.md
 - name: Resources
   items:
-    - name: Blogs
-      items:
-        - name: Recente updates voor de TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: De TDSP gebruiken voor Azure Machine Learning
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: 'Data Science-hulpprogramma''s voor de TDSP, v.0.11'
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: Nieuwste hulpprogramma's voor de TDSP
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: Sjabloon voor de planning van Data Science-projecten
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Cortana Intelligence- en Machine Learning-blog
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: Organisaties die TDSP gebruiken
       items:
         - name: New Signature

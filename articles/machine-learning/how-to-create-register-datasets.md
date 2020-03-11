@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: bb3a18af89b0baa532309ac76905aa5550af98e5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398212"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037171"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -33,8 +33,7 @@ Met Azure Machine Learning gegevens sets kunt u het volgende doen:
 * Gegevens delen en samen werken met andere gebruikers.
 
 ## <a name="prerequisites"></a>Vereisten
-
-Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
+' Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
@@ -44,6 +43,16 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 
 > [!NOTE]
 > Voor sommige verzamelings klassen zijn afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
+
+## <a name="compute-size-guidance"></a>Richt lijn voor reken capaciteit
+
+Wanneer u een gegevensset maakt, controleert u de verwerkings kracht van de berekening en de grootte van uw gegevens in het geheugen. De grootte van uw gegevens in de opslag is niet hetzelfde als de grootte van de gegevens in een data frame. Gegevens in CSV-bestanden kunnen bijvoorbeeld tot 10x worden uitgebreid in een data frame, zodat een CSV-bestand van 1 GB 10 GB kan worden in een data frame. 
+
+De belangrijkste factor is hoe groot de gegevensset in het geheugen is, d.w.z. als een data frame. Het is raadzaam om de reken grootte en de verwerkings capaciteit twee maal zo groot te hebben als RAM-geheugen. Dus als uw data frame is 10 GB, wilt u een reken doel met 20 + GB RAM-geheugen om ervoor te zorgen dat de data frame in het geheugen kunnen passen en worden verwerkt. Als uw gegevens zijn gecomprimeerd, kunnen ze verder worden uitgebreid. 20 GB aan relatief sparse gegevens die zijn opgeslagen in de gecomprimeerde Parquet-indeling kunnen worden uitgebreid naar ~ 800 GB in het geheugen. Aangezien Parquet-bestanden gegevens in een kolom indeling opslaan en u alleen de helft van de kolommen nodig hebt, hoeft u niet meer dan ~ 400 GB in het geheugen te laden.
+ 
+Als u gebruikmaakt van Pandas, is er geen reden om meer dan 1 vCPU te hebben, want dat is alles. U kunt eenvoudig parallelliseren aan veel Vcpu's op één Azure Machine Learning Reken instantie/knoop punt via modi en Dask/Ray, en zo nodig uitschalen naar een groot cluster door de `import pandas as pd` eenvoudigweg te wijzigen in `import modin.pandas as pd`. 
+ 
+Als u een groot aantal virtuele gegevens niet kunt verkrijgen, hebt u twee opties: gebruik een framework zoals Spark of Dask om de verwerking van de gegevens uit het geheugen te kunnen uitvoeren, d.w.z. het data frame wordt in de RAM-partitie geladen door de partitie en wordt verwerkt, waarbij het uiteindelijke resultaat wordt verzameld Ed aan het einde. Als dit te langzaam is, kunt u met Spark of Dask uitschalen naar een cluster dat nog steeds interactief kan worden gebruikt. 
 
 ## <a name="dataset-types"></a>Typen gegevensset
 
@@ -57,9 +66,9 @@ Zie voor meer informatie over aanstaande wijzigingen in de API de API- [wijzigin
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-Door een gegevensset te maken, maakt u een verwijzing naar de locatie van de gegevens bron, samen met een kopie van de meta gegevens ervan. Omdat de gegevens zich op de bestaande locatie blijven, ontstaan er geen extra opslag kosten. U kunt zowel `TabularDataset` als `FileDataset` gegevens sets maken met behulp van de python-SDK of de https://ml.azure.com.
+Door een gegevensset te maken, maakt u een verwijzing naar de locatie van de gegevens bron, samen met een kopie van de meta gegevens ervan. Omdat de gegevens zich op de bestaande locatie blijven, ontstaan er geen extra opslag kosten. U kunt zowel `TabularDataset` als `FileDataset` gegevens sets maken met behulp van de python-SDK of op https://ml.azure.com.
 
-Gegevens sets moeten worden gemaakt op basis van paden in [Azure-data stores](how-to-access-data.md) of open bare Web-url's, zodat deze door Azure machine learning toegankelijk zijn.
+Gegevens sets moeten worden gemaakt op basis van paden in [Azure-data stores](how-to-access-data.md) of open bare Web-url's, zodat deze door Azure machine learning toegankelijk zijn. 
 
 ### <a name="use-the-sdk"></a>De SDK gebruiken
 
@@ -70,7 +79,6 @@ Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.
 2. Maak de gegevensset door te verwijzen naar de paden in het gegevens archief.
 > [!Note]
 > U kunt een gegevensset maken op basis van meerdere paden in meerdere gegevens opslag. Er is geen vaste limiet voor het aantal bestanden of gegevens grootte waaruit u een gegevensset kunt maken. Voor elk gegevenspad worden echter enkele aanvragen verzonden naar de opslag service om te controleren of deze naar een bestand of map verwijst. Deze overhead kan leiden tot slechtere prestaties of storingen. Een gegevensset die verwijst naar één map met 1000 bestanden in, wordt beschouwd als verwijzingen naar één gegevenspad. We raden u aan om een gegevensset te maken die verwijst naar minder dan 100 paden in gegevens opslag voor optimale prestaties.
-
 
 #### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
 

@@ -1,25 +1,17 @@
 ---
 title: Een Linux-VHD downloaden vanuit Azure
 description: Down load een Linux-VHD met behulp van de Azure CLI en de Azure Portal.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036294"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968786"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Een Linux-VHD downloaden vanuit Azure
 
@@ -56,7 +48,7 @@ Voer de volgende stappen uit om de VHD als een installatie kopie te gebruiken om
 
 Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf:
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2.  Selecteer **virtual machines**in het linkermenu.
 3.  Selecteer de virtuele machine in de lijst.
 4.  Selecteer op de pagina voor de virtuele machine **stoppen**.

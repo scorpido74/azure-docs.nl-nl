@@ -3,19 +3,20 @@ title: Een virtuele Linux-machine maken en versleutelen met Azure Power shell
 description: In deze Quick Start leert u hoe u Azure Power shell kunt gebruiken om een virtuele Linux-machine te maken en te versleutelen
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14cdd1e15212141e8c631b589c9c470bbdfe38a9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829905"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970539"
 ---
-# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Quickstart: Een virtuele Linux-machine in azure maken en versleutelen met Azure PowerShell
+# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Snelstartgids: een virtuele Linux-machine in azure maken en versleutelen met Azure PowerShell
 
-De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze Quick start ziet u hoe u de Azure PowerShell module kunt gebruiken om een virtuele Linux-machine (VM) te maken, een Key Vault te maken voor de opslag van versleutelings sleutels en de virtuele machine te versleutelen. Deze Snelstartgids maakt gebruik van de Ubuntu 16,04 LTS Marketplace-installatie kopie van canonieke en een VM Standard_D2S_V3-grootte. 
+De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze Quick start ziet u hoe u de Azure PowerShell module kunt gebruiken om een virtuele Linux-machine (VM) te maken, een Key Vault te maken voor de opslag van versleutelings sleutels en de virtuele machine te versleutelen. Deze Snelstartgids maakt gebruik van de Ubuntu 16,04 LTS Marketplace-installatie kopie van canonieke en een VM-Standard_D2S_V3 grootte. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 

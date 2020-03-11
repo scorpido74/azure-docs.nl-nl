@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: daf38baf9daff5fd192091be977a996c9bd5cfc2
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539862"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967633"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
 
 In dit scenario ziet u hoe u uw Azure API Management-exemplaar configureert om een API te beveiligen.
-We gebruiken het OpenID Connect Connect-protocol met Azure AD B2C, naast API Management om een Azure Functions back-end te beveiligen met EasyAuth.
+We gebruiken het OAuth 2,0-protocol met Azure AD B2C, naast API Management om een Azure Functions back-end te beveiligen met behulp van EasyAuth.
 
 ## <a name="aims"></a>Ernaar
 We gaan nu zien hoe API Management kunnen worden gebruikt in een vereenvoudigd scenario met Azure Functions en Azure AD B2C. U maakt een Java script-app (JS) waarmee een API wordt aangeroepen, waarmee de gebruiker zich aanmeldt met Azure AD B2C. Vervolgens gebruikt u de validatie-JWT-beleids functies van API Management om de back-end-API te beveiligen.
@@ -66,11 +66,11 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
    * De frontend-client.
    * De back-end-functie-API.
    * Beschrijving Het API Management ontwikkelaars Portal (tenzij u Azure API Management uitvoert in de laag verbruik, verderop in dit scenario).
-1. WebApp/Web-API instellen en impliciete stroom naar Ja toestaan
+1. Stel WebApp/Web API in voor alle drie toepassingen en stel impliciete stroom toestaan in op Ja voor alleen de frontend-client.
 1. Stel nu de App-ID-URI in, kies iets uniek en relevant voor de service die wordt gemaakt.
 1. Tijdelijke aanduidingen gebruiken voor de antwoord-url's, zoals https://localhost, zullen deze url's later worden bijgewerkt.
 1. Klik op maken en herhaal stap 2-5 voor elk van de drie bovenstaande apps, noteer de AppID-URI, naam en toepassings-ID voor later gebruik voor alle drie de apps.
-1. Open de back-end-API in de lijst met toepassingen en selecteer het tabblad *sleutels* (onder algemeen) en klik vervolgens op sleutel genereren om een verificatie sleutel te genereren.
+1. Open de API Management ontwikkelaars Portal-toepassing in de lijst met toepassingen en selecteer het tabblad *sleutels* (onder algemeen) en klik vervolgens op sleutel genereren om een verificatie sleutel te genereren.
 1. Nadat u op Opslaan hebt geklikt, noteert u de sleutel ergens veilig voor later gebruik: Houd er rekening mee dat deze locatie de enige kans is om deze sleutel weer te geven en te kopiëren.
 1. Selecteer nu het tabblad *gepubliceerde bereiken* (onder API-toegang)
 1. Maak een bereik en geef een naam voor de functie-API op en noteer het bereik en de volledige waarde van het bereik. Klik vervolgens op opslaan.
@@ -85,7 +85,7 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 1. Selecteer vervolgens ' Gebruikersstromen (Policies) ' en klik op ' nieuwe gebruikers stroom '.
 1. Kies het type gebruikers stroom registreren en aanmelden
 1. Geef het beleid een naam en noteer dit voor later.
-1. Klik vervolgens onder ' id-providers ' op ' gebruikers-ID aanmelden ' en klik op OK. 
+1. Klik vervolgens onder ' id-providers ' op ' aanmelden bij gebruikers-ID ' (dit kan zeggen ' e-mail registratie ') en klik op OK. 
 1. Klik onder ' gebruikers kenmerken en claims ' op ' meer weer geven '... ' Kies vervolgens de claim opties die u uw gebruikers wilt geven en hebben geretourneerd in het token. Controleer ten minste de weergave naam en het e-mail adres voor het verzamelen en retour neren, klik op OK en klik vervolgens op maken.
 1. Selecteer het beleid dat u hebt gemaakt in de lijst en klik vervolgens op de knop gebruikers stroom uitvoeren.
 1. Met deze actie opent u de Blade gebruikers stroom uitvoeren, selecteert u de frontend-toepassing en noteert u het adres van het b2clogin.com-domein dat wordt weer gegeven onder de vervolg keuzelijst voor ' domein selecteren '.
@@ -98,6 +98,7 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
    > Als u op de knop gebruikers stroom uitvoeren klikt, kunt u hier klikken (om door te gaan met het registreren of aanmelden) en een idee krijgen van wat het in de praktijk zal doen, maar de omleidings stap aan het einde zal mislukken omdat de app nog niet is geïmplementeerd.
 
 ## <a name="build-the-function-api"></a>De functie-API maken
+1. Ga terug naar uw standaard Azure AD-Tenant in de Azure Portal zodat de items in uw abonnement opnieuw kunnen worden geconfigureerd 
 1. Ga naar de Blade functie-apps van de Azure Portal, open uw lege functie-app en maak een nieuwe functie voor webhook + API in de portal via de Snelstartgids.
 1. Plak de voorbeeld code hieronder in run. CSX over de bestaande code die wordt weer gegeven.
 
@@ -156,15 +157,16 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 1. Selecteer vervolgens het tabblad platform functies en selecteer verificatie/autorisatie.
 1. Schakel de functie voor App Service verificatie in.
 1. Kies bij verificatie providers de optie Azure Active Directory en kies Geavanceerd in de schakel optie voor de beheer modus.
-1. Plak de toepassings-ID van de back-end-API (van Azure AD B2C naar het vak client-ID)
+1. Plak de toepassings-ID van de back-end-functie-API (van Azure AD B2C naar het vak client-ID)
 1. Plak het bekende open-id-configuratie-eind punt van het registratie-of aanmeldings beleid in het vak URL van de uitgever (deze configuratie is eerder vastgelegd).
-1. Voeg de drie (of twee als u gebruikmaakt van API Management verbruiks model) toepassings-Id's die u eerder voor de Azure AD B2C toepassingen hebt vastgelegd, toe aan de toegestane tokens van de doel groep. deze instelling vertelt EasyAuth welke AUD claim waarden zijn toegestaan in de ontvangen tokens.
-1. Selecteer OK en klik vervolgens op opslaan.
+1. Selecteer OK.
+1. Stel in dat de actie moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd vervolg keuzelijst ' Meld u aan met Azure Active Directory ' en klik vervolgens op opslaan.
 
    > [!NOTE]
-   > De functie-API is nu geïmplementeerd en moet 401-of 403-fouten voor niet-gemachtigde aanvragen genereren en moet gegevens retour neren wanneer er een geldige aanvraag wordt ingediend.
-   > Maar we hebben nog steeds geen IP-beveiliging. Als u een geldige sleutel hebt, kunt u dit ook vanaf elke locatie aanroepen, zodat u alle aanvragen wilt afdwingen via API Management.
-   > Als u echter de laag API Management verbruik gebruikt, kunt u deze vergren deling niet via VIP uitvoeren omdat er geen toegewezen statisch IP-adres voor die laag is. u moet afhankelijk zijn van de methode voor het vergren delen van de API-aanroepen via de gedeelde functie sleutel van het geheim , waardoor de stappen 11-14 niet mogelijk is.
+   > Nu is uw functie-API geïmplementeerd en moeten 401-antwoorden worden gegenereerd als de juiste sleutel niet is opgegeven en moet er gegevens worden geretourneerd wanneer een geldige aanvraag wordt ingediend.
+   > U hebt extra ingrijpende beveiliging in EasyAuth toegevoegd door de optie aanmelden met Azure AD te configureren voor het afhandelen van niet-geverifieerde aanvragen. Houd er rekening mee dat hiermee het gedrag van niet-geautoriseerde aanvragen wordt gewijzigd tussen de back-end-functie-app en front-end-wachtwoord verificatie als EasyAuth een omleiding van 302 naar AAD verzendt in plaats van een 401 niet-geautoriseerde reactie, wij zullen dit corrigeren door API Management later te gebruiken.
+   > Er is nog geen IP-beveiliging toegepast. Als u een geldig sleutel-en OAuth2-token hebt, kunt u dit op elk gewenst punt aanroepen. het is dan ook belang rijk dat alle aanvragen via API Management worden afgedwongen.
+   > Als u de laag API Management verbruik gebruikt, kunt u deze vergren deling niet via VIP uitvoeren omdat er geen toegewezen statisch IP-adres voor die laag is. u moet afhankelijk zijn van de methode voor het vergren delen van de API-aanroepen via de gedeelde functie sleutel van het geheim , waardoor de stappen 11-13 niet mogelijk is.
 
 1. Sluit de Blade verificatie/autorisatie 
 1. Selecteer netwerken en selecteer vervolgens toegangs beperkingen
@@ -172,13 +174,13 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 1. Als u wilt door gaan met de functies Portal en de onderstaande optionele stappen wilt uitvoeren, moet u uw eigen open bare IP-adres of CIDR-bereik ook toevoegen.
 1. Zodra er een vermelding is toegestaan in de lijst, voegt Azure een regel voor impliciete weigering toe om alle andere adressen te blok keren. 
 
-U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-beperkingen. Wanneer u één adres wilt toevoegen, zoals het API Management VIP, moet u dit toevoegen met de notatie xx. xx. xx. xx/32.
+U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-beperkingen. Wanneer u één adres wilt toevoegen, zoals de API Management VIP, moet u dit toevoegen in de notatie xx. xx. xx. xx.
 
    > [!NOTE]
    > De functie-API kan nu niet worden aangeroepen vanaf elke andere locatie dan via API Management of uw adres.
-
+   
 ## <a name="import-the-function-app-definition"></a>De definitie van de functie-app importeren
-1. Open de Blade API Management Portal en selecteer uw API Management exemplaar.
+1. Open de *blade API Management*en open vervolgens *uw exemplaar*.
 1. Selecteer de Blade Api's in het gedeelte API Management van uw exemplaar.
 1. Kies in het deel venster een nieuwe API toevoegen de optie functie-app en selecteer vervolgens ' volledig ' boven aan de pop-up.
 1. Klik op Bladeren, kies de functie-app die u als host voor de API in en klik op selecteren.
@@ -186,13 +188,13 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 1. Zorg ervoor dat u de basis-URL noteert voor later gebruik en klik vervolgens op maken.
 
 ## <a name="configure-oauth2-for-api-management"></a>Oauth2 voor API Management configureren
-1. Ga terug naar uw standaard Azure AD-Tenant in de Azure Portal zodat we de items in uw abonnement opnieuw kunnen configureren en de *API Management Blade*openen en vervolgens *uw exemplaar*openen.
+
 1. Selecteer vervolgens de Blade OAuth 2,0 op het tabblad Beveiliging en klik op toevoegen.
 1. Geef waarden op voor de *weergave naam* en *Beschrijving* voor het toegevoegde OAuth-eind punt (deze waarden worden weer gegeven in de volgende stap als een Oauth2-eind punt).
 1. U kunt een wille keurige waarde invoeren in de URL voor de registratie pagina van de client, omdat deze waarde niet wordt gebruikt.
-1. Schakel het toekennings type *impliciete verificatie* in en schakel het selectie vakje autorisatie code toekenning optioneel uit.
+1. Controleer het toekennings type *impliciete auth* en zorg ervoor dat het toekennings type voor de autorisatie code is ingeschakeld.
 1. Ga naar de velden *autorisatie* en *token* -eind punt en voer de waarden in die u hebt vastgelegd op basis van het XML-document met bekende configuratie eerder.
-1. Schuif naar beneden en vul de *para meter* ' resource ' in met de API-client-id van de functie in de registratie van de Azure AD B2C-app
+1. Schuif naar beneden en vul de *para meter* ' resource ' in met de back-end function API-client-id uit de registratie van de Azure AD B2C-app
 1. Selecteer Client Referenties, stel de client-ID in op de App-ID van de ontwikkelaars console-app. Sla deze stap over als u het verbruiks API Management model gebruikt.
 1. Stel het client geheim in op de sleutel die u eerder hebt vastgelegd. Sla deze stap over als u het verbruiks API Management model gebruikt.
 1. Registreer tot slot de redirect_uri van de autorisatie code toekenning van API Management voor later gebruik.
@@ -242,7 +244,6 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
    ```
 1. Bewerk de URL van de OpenID Connect-config zodat deze overeenkomt met uw bekende Azure AD B2C-eind punt voor het registreren of aanmelden in het beleid.
 1. Bewerk de claim waarde zodat deze overeenkomt met de geldige toepassings-ID, ook wel bekend als een client-ID voor de back-end-API-toepassing en sla op.
-1. Selecteer de API-bewerking onder de ' alle Api's '
 
    > [!NOTE]
    > API Management kan nu reageren op cross-Origin-aanvragen voor JS-wachtwoord verificatie-apps en er worden beperkingen toegepast, de frequentie beperking en vooraf validatie van het JWT-verificatie token dat wordt door gegeven voordat de aanvraag wordt doorgestuurd naar de functie-API.

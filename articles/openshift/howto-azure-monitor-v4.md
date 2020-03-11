@@ -6,17 +6,20 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.openlocfilehash: 1a372ef12ef7b0afb06ed3c540daaee5e38c3374
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899163"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082843"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Monitor integratie voor Azure Red Hat open Shift 4,3
 
-> [!IMPORTANT]
-> Azure Red Hat open Shift 4,3 wordt aangeboden als preview-versie. Preview-functies zijn self-service en worden aangeboden als en beschikbaar en zijn uitgesloten van de Service Level Agreement (SLA) en beperkte garantie. De functies zijn daarom niet bedoeld voor productie gebruik. 
+> [!IMPORTANT] 
+> Azure Red Hat open Shift 4,3 is momenteel alleen beschikbaar als persoonlijke preview in VS-Oost. Privé preview-acceptatie is alleen via de uitnodiging. Zorg ervoor dat u uw abonnement registreert voordat u deze functie inschakelt: [Azure Red Hat open Shift-inschrijving voor preview](https://aka.ms/aro-preview-register)
+
+> [!NOTE]
+> Preview-functies zijn self-service en worden aangeboden als en beschikbaar en zijn uitgesloten van de Service Level Agreement (SLA) en beperkte garantie. De functies zijn daarom niet bedoeld voor productie gebruik.
 
 In dit artikel wordt beschreven hoe u de persoonlijke preview van Azure Monitor kunt inschakelen voor containers voor open Shift 4,3-clusters die on-premises of in elke cloud omgeving worden gehost. Dezelfde instructies zijn ook van toepassing op het inschakelen van bewaking voor Azure Red Hat open Shift (ARO) 4,3-clusters.  
 

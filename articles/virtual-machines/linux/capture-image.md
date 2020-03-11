@@ -1,30 +1,19 @@
 ---
-title: Een installatie kopie van een virtuele Linux-machine in azure vastleggen met behulp van Azure CLI
+title: Een installatie kopie van een virtuele Linux-machine vastleggen met behulp van Azure CLI
 description: Leg een installatie kopie vast van een Azure-VM die moet worden gebruikt voor grootschalige implementaties met behulp van de Azure CLI.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: HT
+ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78675690"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968066"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Een installatie kopie van een virtuele machine of VHD maken
-
-<!-- generalize, image - extended version of the tutorial-->
 
 Als u meerdere exemplaren van een virtuele machine (VM) wilt maken voor gebruik in azure, moet u een installatie kopie van de VM of van de VHD van het besturings systeem vastleggen. Als u een installatie kopie voor de implementatie wilt maken, moet u persoonlijke account gegevens verwijderen. In de volgende stappen kunt u de inrichting van een bestaande virtuele machine ongedaan maken, de toewijzing ervan opheffen en een installatie kopie maken. U kunt deze installatie kopie gebruiken om Vm's te maken voor elke resource groep in uw abonnement.
 

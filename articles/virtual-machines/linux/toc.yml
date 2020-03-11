@@ -251,8 +251,8 @@
       items:
         - name: De CLI gebruiken
           href: create-cli-complete.md
-        - name: Een sjabloon gebruiken
-          displayName: 'Azure Resource Manager, ARM'
+        - name: Een ARM-sjabloon gebruiken
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: REST API gebruiken
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: Portal
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Template
+            - name: ARM-sjabloon
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: Foutcodes
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Migreren van een klassieke implementatie naar Azure Resource Manager
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Azure CLI gebruiken
               href: image-builder.md
-            - name: Sjabloonverwijzing
+            - name: ARM-sjabloonreferentie
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: Compileren voor installatiekopiegalerieën
               href: image-builder-gallery.md
             - name: Een bestaande installatiekopie bijwerken
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: Een schijf loskoppelen
           href: detach-disk.md
-        - name: Schijven implementeren met sjabloon
+        - name: Schijven implementeren met ARM-sjabloon
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: Gedeelde schijven inschakelen
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: Resources
   items:
-    - name: Auteursjablonen
+    - name: ARM-sjablonen ontwerpen
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn

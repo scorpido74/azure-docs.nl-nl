@@ -1,24 +1,17 @@
 ---
-title: Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
+title: Opties voor DNS-naam omzetting voor virtuele Linux-machines
 description: Scenario's voor naam omzetting voor virtuele Linux-machines in azure IaaS, inclusief de meegeleverde DNS-services, hybride externe DNS en uw eigen DNS-server.
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084043"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969325"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
 Azure biedt standaard DNS-naam omzetting voor alle virtuele machines die zich in één virtueel netwerk bevinden. U kunt uw eigen DNS-oplossing voor naam omzetting implementeren door uw eigen DNS-services te configureren op de virtuele machines die door Azure worden gehost. De volgende scenario's kunnen u helpen bij het kiezen van het abonnement dat geschikt is voor uw situatie.
@@ -30,7 +23,7 @@ Welk type naam omzetting u gebruikt, is afhankelijk van hoe uw virtuele machines
 
 In de volgende tabel ziet u scenario's en bijbehorende oplossingen voor naam omzetting:
 
-| **Scenario** | **Oplossing** | **Suffix** |
+| **Scenario** | **Oplossing** | **Achtervoegsel** |
 | --- | --- | --- |
 | Naam omzetting tussen rolinstanties of virtuele machines in hetzelfde virtuele netwerk |Naam omzetting die Azure biedt |hostnaam of FQDN-naam (FULLy Qualified Domain Name) |
 | Naam omzetting tussen rolinstanties of virtuele machines in verschillende virtuele netwerken |Door de klant beheerde DNS-servers die query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server). |Alleen FQDN |
@@ -126,7 +119,7 @@ Door sturen via DNS zorgt er ook voor dat de DNS-omzetting mogelijk is tussen vi
 
 Wanneer u naam omzetting gebruikt die door Azure wordt geboden, wordt het interne DNS-achtervoegsel aan elke virtuele machine verstrekt met behulp van DHCP. Wanneer u uw eigen naam omzettings oplossing gebruikt, wordt dit achtervoegsel niet verstrekt aan virtuele machines, omdat het achtervoegsel van invloed is op andere DNS-architecturen. Als u wilt verwijzen naar machines op FQDN of als u het achtervoegsel op uw virtuele machines wilt configureren, kunt u Power shell of de API gebruiken om het achtervoegsel te bepalen:
 
-* Voor virtuele netwerken die worden beheerd door Azure Resource Manager, is het achtervoegsel beschikbaar via de resource van de [netwerk interface kaart](https://msdn.microsoft.com/library/azure/mt163668.aspx) . U kunt ook de `azure network public-ip show <resource group> <pip name>` opdracht uitvoeren om de details van uw open bare IP-adres, inclusief de FQDN van de NIC, weer te geven.
+* Voor virtuele netwerken die worden beheerd door Azure Resource Manager, is het achtervoegsel beschikbaar via de resource van de [netwerk interface kaart](https://msdn.microsoft.com/library/azure/mt163668.aspx) . U kunt ook de `azure network public-ip show <resource group> <pip name>` opdracht uitvoeren om de details van uw open bare IP-adres weer te geven, inclusief de FQDN van de NIC.
 
 Als het door sturen van query's naar Azure niet aan uw behoeften voldoet, moet u uw eigen DNS-oplossing opgeven.  Uw DNS-oplossing moet:
 

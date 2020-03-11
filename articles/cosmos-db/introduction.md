@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 7fee3a1e2c26bc9fa89a4766c771a3715398b1a2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673360"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081974"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
 Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd online zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Toepassingen moeten in realtime reageren op grote fluctuaties in het gebruik tijdens piekuren, moeten steeds toenemende gegevensvolumes kunnen opslaan en deze gegevens in milliseconden beschikbaar kunnen maken voor gebruikers.
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. Met een klik op een knop kunt Cosmos DB u op een flexibele en onafhankelijke manier door Voer en opslag over elk wille keurig aantal Azure-regio's wereld wijd schalen. U kunt de door Voer en opslag elastisch schalen en profiteren van snelle, single-milliseconden gegevens toegang met uw favoriete API, zoals SQL, MongoDB, Cassandra, Tables of Gremlin. Cosmos DB voorziet in uitgebreide [Service Level Agreements](https://aka.ms/acdbsla) (sla's) voor doorvoer-, latentie-, Beschik baarheid en consistentie garanties, iets wat geen andere database service biedt.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. Met een klik op een knop kunt Cosmos DB u op een flexibele en onafhankelijke manier door Voer en opslag over elk wille keurig aantal Azure-regio's wereld wijd schalen. U kunt de door Voer en opslag elastisch schalen en profiteren van snelle, single-milliseconden-data toegang met uw favoriete API, waaronder: SQL, MongoDB, Cassandra, Tables of Gremlin. Cosmos DB voorziet in uitgebreide [Service Level Agreements](https://aka.ms/acdbsla) (sla's) voor doorvoer-, latentie-, Beschik baarheid en consistentie garanties, iets wat geen andere database service biedt.
 
 U kunt [Azure Cosmos DB gratis proberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en toezeg gingen, of de [Azure Cosmos DB gratis laag](optimize-dev-test.md#azure-cosmos-db-free-tier) gebruiken om een account te krijgen met de eerste 400 ru/s en 5 GB aan opslag ruimte.
 

@@ -1,7 +1,7 @@
 ---
-title: Uw eerste geautomatiseerde ML-experiment maken
+title: Automatische ML-classificatie modellen maken
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen en implementeren van een classificatie model met geautomatiseerde machine learning in Azure Machine Learning Studio.
+description: Meer informatie over het trainen van & implementatie van classificatie modellen met de geautomatiseerde machine learning-interface van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048288"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081621"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelf studie: een classificatie model maken met automatische MILLILITERs in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In deze zelf studie leert u hoe u uw eerste geautomatiseerde machine learning-experiment kunt maken via Azure Machine Learning Studio zonder dat u maar één regel code hoeft te schrijven. In dit voor beeld wordt een classificatie model gemaakt om te voors pellen of een client zich abonneert op een vaste termijn storting met een financiële instelling.
+In deze zelf studie leert u hoe u een basis classificatie model maakt zonder een enkele regel code te schrijven met behulp van de geautomatiseerde machine learning-interface van Azure Machine Learning. Dit classificatie model wordt voor speld als een client zich abonneert op een vaste termijn storting met een financiële instelling.
 
 Met geautomatiseerde machine learning kunt u tijdrovende taken automatiseren. Automatische machine learning snel door lopen met veel combi Naties van algoritmen en Hyper parameters om u te helpen het beste model te vinden op basis van een succes volle waarde van uw keuze.
 
@@ -34,7 +34,7 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) aan.
 
 * Down load het [**bankmarketing_train. CSV**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) -gegevens bestand. De **y** -kolom geeft aan of een klant zich heeft geabonneerd op een vaste termijn storting, die later wordt aangeduid als de doel kolom voor voor spellingen in deze zelf studie. 
 
@@ -42,7 +42,7 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 Een Azure Machine Learning-werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de service. 
 
-U maakt een werk ruimte via de Azure Machine Learning Studio, een webconsole voor het beheren van uw Azure-resources.
+U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van uw Azure-resources.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ U maakt een werk ruimte via de Azure Machine Learning Studio, een webconsole voo
 
 ## <a name="create-and-run-the-experiment"></a>Het experiment maken en uitvoeren
 
-U voltooit de volgende proef installatie en voert stappen uit in Azure Machine Learning Studio, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus. De Studio wordt niet ondersteund in Internet Explorer-browsers.
+U voltooit de volgende proef versie en voert stappen uit via Azure machine learning op https://ml.azure.com, een geconsolideerde webinterface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus. Deze interface wordt niet ondersteund in Internet Explorer-browsers.
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij Azure Machine Learning op https://ml.azure.com.
 
 1. Selecteer uw abonnement en de werk ruimte die u hebt gemaakt.
 
@@ -63,13 +63,13 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
    Aangezien dit uw eerste geautomatiseerde ML-experiment is, ziet u een lege lijst en koppelingen naar documentatie.
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Pagina Aan de slag](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Selecteer **nieuwe automatische ml-uitvoering**. 
 
 1. Maak een nieuwe gegevensset door te selecteren **uit lokale bestanden** in de vervolg keuzelijst **+ gegevensset maken** . 
 
-    1. Geef in het formulier **basis informatie** uw gegevensset een naam en geef een optionele beschrijving op. Automatische ML in Azure Machine Learning Studio ondersteunt momenteel alleen tabellaire gegevens sets, zodat het type gegevensset standaard wordt ingesteld op Tabellair.
+    1. Geef in het formulier **basis informatie** uw gegevensset een naam en geef een optionele beschrijving op. De automatische ML-interface ondersteunt momenteel alleen TabularDatasets, zodat het type gegevensset standaard wordt ingesteld op *tabellair*.
 
     1. Selecteer **volgende** linksonder
 
@@ -163,9 +163,9 @@ In het volgende voor beeld wordt genavigeerd door de **model Details** en de **V
 
 ![Details van herhaling uitvoeren](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>Het model implementeren
+## <a name="deploy-the-best-model"></a>Het beste model implementeren
 
-Met geautomatiseerde machine learning in Azure Machine Learning Studio kunt u in een paar stappen het beste model als een webservice implementeren. Implementatie is de integratie van het model, zodat dit kan voors pellen op nieuwe gegevens en mogelijke verkoop kansen kan identificeren. 
+Met de geautomatiseerde machine learning-interface kunt u in een paar stappen het beste model als een webservice implementeren. Implementatie is de integratie van het model, zodat dit kan voors pellen op nieuwe gegevens en mogelijke verkoop kansen kan identificeren. 
 
 Voor dit experiment betekent de implementatie van een webservice dat de financiële instelling nu een iteratieve en schaal bare weboplossing heeft voor het identificeren van potentiële klanten met vaste termijn storting. 
 
@@ -201,29 +201,29 @@ Implementatie bestanden zijn groter dan gegevens en experimenteer bestanden, zod
 
 ### <a name="delete-the-deployment-instance"></a>Het implementatie-exemplaar verwijderen
 
-Verwijder alleen het implementatie-exemplaar uit de Azure Machine Learning Studio als u de resource groep en-werk ruimte wilt blijven gebruiken voor andere zelf studies en verkennen. 
+Verwijder alleen het implementatie-exemplaar van Azure Machine Learning op https://ml.azure.com/ als u de resource groep en-werk ruimte wilt blijven gebruiken voor andere zelf studies en verkennen. 
 
-1. Ga naar de [Azure machine learning Studio](https://ml.azure.com/). Navigeer naar uw werk ruimte en selecteer aan de linkerkant onder het deel venster **assets** de optie **eind punten**. 
+1. Ga naar Azure Machine Learning op https://ml.azure.com/. Navigeer naar uw werk ruimte en selecteer aan de linkerkant onder het deel venster **assets** de optie **eind punten**. 
 
 1. Selecteer de implementatie die u wilt verwijderen en selecteer **verwijderen**. 
 
 1. Selecteer **door gaan**.
 
-### <a name="delete-the-resource-group"></a>De resource groep verwijderen
+### <a name="delete-the-resource-group"></a>De resourcegroep verwijderen
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze automatische machine learning zelf studie hebt u Azure Machine Learning Studio gebruikt voor het maken en implementeren van een classificatie model. Zie deze artikelen voor meer informatie en volgende stappen:
+In deze automatische machine learning zelf studie hebt u de interface van de geautomatiseerde (ML) Azure Machine Learning gebruikt voor het maken en implementeren van een classificatie model. Zie deze artikelen voor meer informatie en volgende stappen:
 
 > [!div class="nextstepaction"]
 > [Een webservice gebruiken](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Meer informatie over [parametrisatie](how-to-create-portal-experiments.md#featurization).
-+ Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).
 + Meer informatie over [automatische machine learning](concept-automated-ml.md).
-+ Voor meer informatie over metrische classificaties en grafieken raadpleegt u het artikel over [automatische machine learning resultaten begrijpen](how-to-understand-automated-ml.md#classification) .
++ Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen. + meer informatie over [parametrisatie](how-to-create-portal-experiments.md#featurization).
++ Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).
+
 
 >[!NOTE]
 > Deze gegevensset voor Bank marketing wordt beschikbaar gesteld in het [Creative Commons-licentie (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

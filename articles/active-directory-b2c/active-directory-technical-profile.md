@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a6c5872c5e2b7e1b47b40e32ddb047641e8b2e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944217"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078865"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -64,13 +64,13 @@ Als u een bestaand gebruikers account wilt lezen, bijwerken of verwijderen, is d
 
 Als u een nieuw gebruikers account wilt maken, is de invoer claim een sleutel waarmee een lokaal of federatief account op unieke wijze wordt geïdentificeerd. Bijvoorbeeld lokale account: **signInNames. emailAddress**of **signInNames. username**. Voor een federatief account: **alternativeSecurityId**.
 
-Het InputClaimsTransformations-element kan een verzameling trans formatie-elementen voor invoer claims bevatten die worden gebruikt voor het wijzigen van de invoer claim of het genereren van een nieuwe.
+Het [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) -element kan een verzameling trans formatie-elementen voor invoer claims bevatten die worden gebruikt voor het wijzigen van de invoer claim of het genereren van een nieuwe.
 
 ## <a name="outputclaims"></a>OutputClaims
 
 Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, op voor waarde dat u het kenmerk `DefaultValue` hebt ingesteld.
 
-Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
+Het [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
 Het **Aad-UserWriteUsingLogonEmail-** technische profiel maakt bijvoorbeeld een lokaal account en retourneert de volgende claims:
 
@@ -92,7 +92,7 @@ Het **Aad-UserWriteUsingLogonEmail-** technische profiel maakt bijvoorbeeld een 
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-Het **PersistedClaims** -element bevat alle waarden die door Azure AD moeten worden bewaard met mogelijke toewijzings informatie tussen een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid en de naam van het Azure AD-kenmerk.
+Het **PersistedClaims** -element bevat alle waarden die door Azure AD moeten worden bewaard met mogelijke toewijzings informatie tussen een claim type dat al is gedefinieerd in de sectie [ClaimsSchema](claimsschema.md) in het beleid en de naam van het Azure AD-kenmerk.
 
 Het **Aad-UserWriteUsingLogonEmail-** technische profiel, waarmee een nieuw lokaal account wordt gemaakt, houdt rekening met de volgende claims:
 
@@ -123,9 +123,7 @@ De naam van de claim is de naam van het kenmerk Azure AD, tenzij het kenmerk **P
 
 ### <a name="read"></a>Lezen
 
-Met de **Lees** bewerking worden gegevens over één gebruikers account gelezen. Als u gebruikers gegevens wilt lezen, moet u een sleutel opgeven als een invoer claim, zoals **objectId**, **userPrincipalName**, **signInNames** (elk type, gebruikers naam en e-mail account) of **alternativeSecurityId**.
-
-Met het volgende technische profiel worden gegevens over een gebruikers account gelezen met de objectId van de gebruiker:
+Met de **Lees** bewerking worden gegevens over één gebruikers account gelezen. Met het volgende technische profiel worden gegevens over een gebruikers account gelezen met de objectId van de gebruiker:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ Met het volgende technische profiel worden gegevens over een gebruikers account 
 
 ### <a name="write"></a>Schrijven
 
-Met de **Schrijf** bewerking wordt één gebruikers account gemaakt of bijgewerkt. Als u een gebruikers account wilt schrijven, moet u een sleutel opgeven als een invoer claim, zoals **objectId**, **userPrincipalName**, **signInNames. emailAddress**of **alternativeSecurityId**.
-
-Het volgende technische profiel maakt een nieuw sociaal account:
+Met de **Schrijf** bewerking wordt één gebruikers account gemaakt of bijgewerkt. Het volgende technische profiel maakt een nieuw sociaal account:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ Het volgende technische profiel maakt een nieuw sociaal account:
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-Met de bewerking **DeleteClaims** wordt de informatie uit een verstrekte lijst met claims gewist. Als u informatie uit claims wilt verwijderen, moet u een sleutel opgeven als een invoer claim, zoals **objectId**, **userPrincipalName**, **signInNames. emailAddress** of **alternativeSecurityId**.
-
-Met het volgende technische profiel worden claims verwijderd:
+Met de bewerking **DeleteClaims** wordt de informatie uit een verstrekte lijst met claims gewist. Met het volgende technische profiel worden claims verwijderd:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ Met het volgende technische profiel worden claims verwijderd:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-Met de bewerking **DeleteClaimsPrincipal** wordt één gebruikers account uit de map verwijderd. Als u een gebruikers account wilt verwijderen, moet u een sleutel opgeven als een invoer claim, zoals **objectId**, **userPrincipalName**, **signInNames. emailAddress** of **alternativeSecurityId**.
-
-Met het volgende technische profiel wordt een gebruikers account uit de Directory verwijderd met behulp van de user principal name:
+Met de bewerking **DeleteClaimsPrincipal** wordt één gebruikers account uit de map verwijderd. Met het volgende technische profiel wordt een gebruikers account uit de Directory verwijderd met behulp van de user principal name:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -257,12 +249,26 @@ Met het volgende technische profiel wordt een sociaal gebruikers account verwijd
 | --------- | -------- | ----------- |
 | Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read`, `Write`, `DeleteClaims`of `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nee | Een fout veroorzaken als het gebruikers object niet in de map bestaat. Mogelijke waarden: `true` of `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nee | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. De waarde kan worden [gelokaliseerd](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nee | Er wordt een fout gegenereerd als het gebruikers object al bestaat. Mogelijke waarden: `true` of `false`.|
-| UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. De waarde kan worden [gelokaliseerd](localization.md).|
 | ApplicationObjectId | Nee | De object-id van de toepassing voor extensie kenmerken. Waarde: ObjectId van een toepassing. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md). |
 | ClientId | Nee | De client-id voor toegang tot de Tenant als derde partij. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md) |
 | IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
+
+### <a name="error-messages"></a>Foutberichten
+ 
+De volgende instellingen kunnen worden gebruikt voor het configureren van het fout bericht dat wordt weer gegeven bij een fout. De meta gegevens moeten worden geconfigureerd in het [zelfondertekende](self-asserted-technical-profile.md) technische profiel. De fout berichten kunnen worden [gelokaliseerd](localization.md).
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nee | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. |
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie het volgende artikel voor een voor beeld van het gebruik van het technische profiel van Azure AD:
+
+- [Claims toevoegen en gebruikers invoer aanpassen met aangepaste beleids regels in Azure Active Directory B2C](custom-policy-configure-user-input.md)
 
 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159468"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036961"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory Connected service)?
 
@@ -24,13 +24,13 @@ ms.locfileid: "77159468"
 > - [Aan de slag](vs-active-directory-dotnet-getting-started.md)
 > - [Wat is er gebeurd](vs-active-directory-dotnet-what-happened.md)
 
-In dit artikel vindt u de exacte wijzigingen die zijn aangebracht in het ASP.NET MVC-project wanneer [u de Azure Active Directory verbonden service toevoegt met behulp van Visual Studio](vs-active-directory-add-connected-service.md).
+In dit artikel worden de exacte wijzigingen voor een ASP.NET MVC-project geïdentificeerd wanneer u de [Azure Active Directory verbonden service toevoegt met behulp van Visual Studio](vs-active-directory-add-connected-service.md).
 
 Zie [aan](vs-active-directory-dotnet-getting-started.md)de slag voor meer informatie over het werken met de verbonden service.
 
 ## <a name="added-references"></a>Verwijzingen toegevoegd
 
-Van invloed op het project bestand *. NET references) en `packages.config` (NuGet references).
+Heeft invloed op het project bestand (*. NET references) en `packages.config` (NuGet references).
 
 | Type | Naslaginformatie |
 | --- | --- |

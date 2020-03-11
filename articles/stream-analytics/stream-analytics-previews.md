@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983546"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969622"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics preview-functies
 
@@ -33,13 +33,6 @@ Ontwikkel aars kunnen gebruikmaken van de kracht van Azure Stream Analytics om g
 
 Ontwikkel aars die Stream Analytics-modules in de Cloud of op IoT Edge maken, kunnen C# aangepaste functies schrijven of opnieuw gebruiken en ze rechtstreeks in de query aanroepen via door de [gebruiker gedefinieerde functies](stream-analytics-edge-csharp-udf-methods.md).
 
-### <a name="managed-identity-authentication-with-power-bi"></a>Beheerde identiteits verificatie met Power BI
-
-Azure Stream Analytics biedt volledige ondersteuning voor verificatie op basis van beheerde identiteiten met Power BI voor een dynamische dashboard ervaring.
-
-### <a name="anomaly-detection"></a>Anomaliedetectie
-
-Azure Stream Analytics ' machine learning-modellen bieden ondersteuning voor de detectie van *Prikker* en *spannings dips* naast bidirectionele, trage positieve en trage negatieve trends. Ga voor meer informatie naar [anomalie detectie in azure stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="debug-query-steps-in-visual-studio"></a>Debug-query stappen in Visual Studio
 
@@ -56,17 +49,17 @@ Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk
 
 ### <a name="integration-with-azure-machine-learning"></a>Integratie met Azure Machine Learning
 
-Stream Analytics-taken met Machine Learning (ML)-functies, kunt u schalen. Voor meer informatie over hoe u ML-functies in uw Stream Analytics-taak gebruiken kunt, gaat u naar [schalen van uw Stream Analytics-taak met Azure Machine Learning-functies](stream-analytics-scale-with-machine-learning-functions.md). Bekijk een Praktijkscenario met [uitvoeren van sentimentanalyses met behulp van Azure Stream Analytics en Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
+Stream Analytics-taken met Machine Learning (ML)-functies, kunt u schalen. Ga voor meer informatie over hoe u de functies van ML in uw Stream Analytics-taak kunt gebruiken [uw stream Analytics-taak schalen met Azure machine learning-functies](stream-analytics-scale-with-machine-learning-functions.md). Bekijk een praktijk scenario met het uitvoeren van [sentiment-analyse met behulp van Azure stream Analytics en Azure machine learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Live gegevens testen in Visual Studio
 
-Visual Studio-hulpprogramma's voor Azure Stream Analytics, verbeter de lokale testen functie waarmee u voor het testen van query's voor live-gebeurtenis-stromen van cloudbronnen, zoals Event Hub of IoT-hub. Meer informatie over het [live gegevens lokaal met behulp van Azure Stream Analytics-hulpprogramma's voor Visual Studio Test](stream-analytics-live-data-local-testing.md).
+Visual Studio-hulpprogramma's voor Azure Stream Analytics, verbeter de lokale testen functie waarmee u voor het testen van query's voor live-gebeurtenis-stromen van cloudbronnen, zoals Event Hub of IoT-hub. Meer informatie over hoe u [Live-gegevens lokaal kunt testen met behulp van Azure stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-live-data-local-testing.md).
 
 
 ### <a name="net-user-defined-functions-on-iot-edge"></a>.NET-gebruiker gedefinieerde functies op IoT Edge
 
-Met .NET standard-door gebruiker gedefinieerde functies, kunt u de standaard .NET-code uitvoeren als onderdeel van uw streamingpijplijn automatiseert. U kunt eenvoudig C#-klassen maken of importeren van volledige-project en -bibliotheken. Volledige Maak- en debugfase van ervaring wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard ontwikkelen door de gebruiker gedefinieerde functies voor Azure Stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
+Met .NET standard-door gebruiker gedefinieerde functies, kunt u de standaard .NET-code uitvoeren als onderdeel van uw streamingpijplijn automatiseert. U kunt eenvoudig C#-klassen maken of importeren van volledige-project en -bibliotheken. Volledige Maak- en debugfase van ervaring wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard-door de gebruiker gedefinieerde functies ontwikkelen voor Azure stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
 
 ## <a name="other-previews"></a>Andere voor beelden
 

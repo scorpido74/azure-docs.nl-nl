@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583296"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969579"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -137,7 +137,7 @@ Als de taak mislukt, wordt een WSB-probleem aangegeven dat kan leiden tot storin
 
 | Symptoom | Oplossing
 | -- | --
-| -MARS-agent mislukt met fout bericht: de back-up is mislukt omdat het schaduw kopie volume niet kan worden verg root vanwege onvoldoende schijf ruimte op volumes met systeem bestanden <br/><br/> -Het volgende fout/waarschuwings logboek is aanwezig in de logboeken met betrekking tot systeem gebeurtenissen: ' er is onvoldoende schijf ruimte op het volume C: voor het verg Roten van de schaduw kopie opslag voor schaduw kopieën van C: vanwege deze fout zijn alle schaduw kopieën van volume C: risico dat ze worden verwijderd. | -Maak ruimte vrij in het gemarkeerde volume in het gebeurtenis logboek, zodat er voldoende ruimte is voor het uitbreiden van schaduw kopieën terwijl de back-up wordt uitgevoerd <br/><br/> -Tijdens het configureren van de schaduw kopie ruimte kunnen we de hoeveelheid ruimte beperken die wordt gebruikt voor de schaduw kopie. Raadpleeg dit [artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) voor meer informatie
+| -MARS-agent mislukt met fout bericht: de back-up is mislukt omdat het schaduw kopie volume niet kan worden verg root vanwege onvoldoende schijf ruimte op volumes met systeem bestanden <br/><br/> -Het volgende fout/waarschuwings logboek is aanwezig in de logboeken met betrekking tot systeem gebeurtenissen: ' er is onvoldoende schijf ruimte op het volume C: voor het verg Roten van de schaduw kopie opslag voor schaduw kopieën van C: vanwege deze fout zijn alle schaduw kopieën van volume C: risico dat ze worden verwijderd. | -Maak ruimte vrij in het gemarkeerde volume in het gebeurtenis logboek, zodat er voldoende ruimte is voor het uitbreiden van schaduw kopieën terwijl de back-up wordt uitgevoerd <br/><br/> -Tijdens het configureren van de schaduw kopie ruimte kunnen we de hoeveelheid ruimte beperken die wordt gebruikt voor de schaduw kopie. Raadpleeg dit [artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) voor meer informatie
 
 ### <a name="efi-partition-locked"></a>EFI-partitie is vergrendeld
 

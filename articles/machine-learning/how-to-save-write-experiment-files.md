@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 197e93946a52303f312912e4ebd2487f8c1360b2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/10/2020
+ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536731"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078451"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Wanneer u training uitvoert op een [Compute-doel](how-to-set-up-training-targets
 
 Voordat u een experiment kunt initiëren op een reken doel of op uw lokale computer, moet u ervoor zorgen dat de benodigde bestanden beschikbaar zijn voor het reken doel, zoals afhankelijkheids bestanden en gegevens bestanden die de code moet uitvoeren.
 
-Azure Machine Learning oefent trainings scripts uit door de hele scripthost naar de doel Compute-context te kopiëren en vervolgens een moment opname te maken. De opslaglimiet voor momentopnamen van experimenten is 300 MB en/of 2000 bestanden.
+Azure Machine Learning oefent trainings scripts uit door de hele scripthost naar de doel Compute-context te kopiëren en vervolgens een moment opname te maken. De opslag limiet voor experimenten-moment opnamen is 300 MB en/of 2000 bestanden.
 
 Daarom kunt u het beste het volgende doen:
 

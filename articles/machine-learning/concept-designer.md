@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312427"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037632"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Wat is Azure Machine Learning Designer? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is Azure Machine Learning Designer (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Met Azure Machine Learning Designer kunt u [gegevens sets](#datasets) en [modules](#module) op een interactief canvas visueel verbinden om machine learning modellen te maken. Voor meer informatie over hoe u aan de slag kunt gaan met de ontwerp functie, Zie [zelf studie: prijs van auto Mobile voors pellen met de ontwerper](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/pytho
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Overstappen van de visuele interface naar de ontwerp functie
 
-De visuele interface (preview) is bijgewerkt en is nu Azure Machine Learning Designer. De ontwerp functie is opnieuw ontworpen om een op een pijp lijn gebaseerde backend te gebruiken die volledig is geïntegreerd met de andere functies van Azure Machine Learning. 
+De visuele interface (preview) is bijgewerkt en is nu Azure Machine Learning Designer (preview). De ontwerp functie is opnieuw ontworpen om een op een pijp lijn gebaseerde backend te gebruiken die volledig is geïntegreerd met de andere functies van Azure Machine Learning. 
 
 Als gevolg van deze updates zijn sommige concepten en voor waarden voor de visuele interface gewijzigd of is de naam van de weer gegeven. Zie de onderstaande tabel voor de belangrijkste concept wijzigingen. 
 
@@ -135,13 +135,5 @@ U kunt bestaande visuele interface experimenten en webservices omzetten in pijp 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Leer de basis beginselen van predictive analytics en machine learning met [de zelf studie: prijs van auto Mobile met de ontwerper](tutorial-designer-automobile-price-train-score.md)
-* Gebruik een van de voor beelden en wijzig uw behoeften:
-
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
-- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
-- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
-- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+* Meer informatie over het wijzigen van bestaande [ontwerp voorbeelden](samples-designer.md) om ze aan te passen aan uw behoeften.
 

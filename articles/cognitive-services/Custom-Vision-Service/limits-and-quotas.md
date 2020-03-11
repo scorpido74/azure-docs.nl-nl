@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718360"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081774"
 ---
 # <a name="limits-and-quotas"></a>Limieten en quota
 
@@ -25,7 +25,7 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 
 ||**F0**|**S0**|
 |-----|-----|-----|
-|projecten|2|100|
+|Projecten|2|100|
 |Trainings afbeeldingen per project |5\.000|100.000|
 |Voor spellingen/maand|10.000 |Onbeperkt|
 |Tags/project|50|500|
@@ -42,8 +42,8 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 |Maximale hoogte of breedte van afbeelding in pixels|onbeperkt|onbeperkt|
 |Maximale afbeeldings grootte (uploaden van trainings afbeelding) |6 MB|6 MB|
 |Maximale afbeeldings grootte (voor spelling)|4 MB|4 MB|
-|Afbeelding van het maximum aantal regio's per object detectie|200|200|
-|Afbeelding van maximum aantal labels per classificatie|30|30|
+|Afbeelding van het maximum aantal regio's per object detectie|300|300|
+|Afbeelding van maximum aantal labels per classificatie|100|100|
 
 > [!NOTE]
 > Afbeeldingen die kleiner zijn dan 256 pixels, worden geaccepteerd, maar worden uitgebreid.

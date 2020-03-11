@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902539"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079861"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
 
@@ -103,13 +103,13 @@ Verzamel Server gegevens en voeg deze toe aan het CSV-bestand.
 
 De volgende tabel bevat een overzicht van de bestands velden die moeten worden ingevuld:
 
-**Veld naam** | **Ingevuld** | **Details**
+**Veldnaam** | **Ingevuld** | **Details**
 --- | --- | ---
 **Servernaam** | Ja | U kunt het beste de Fully Qualified Domain Name (FQDN) opgeven.
 **IP-adres** | Nee | Server adres.
 **Kernen** | Ja | Het aantal processor kernen dat aan de server is toegewezen.
-**Geheugen** | Ja | Het totale RAM-geheugen (in MB) dat aan de server is toegewezen.
-**Naam van besturings systeem** | Ja | Besturings systeem van de server.
+**Geheugenmetabase** | Ja | Het totale RAM-geheugen (in MB) dat aan de server is toegewezen.
+**Naam van besturings systeem** | Ja | Besturings systeem van de server. <br/> Namen van besturings systemen die overeenkomen met de namen in [deze](#supported-operating-system-names) lijst worden herkend door de evaluatie.
 **Versie van het besturingssysteem** | Nee | Versie van het besturings systeem van de server.
 **Aantal schijven** | Nee | Niet nodig als er details van de afzonderlijke schijf worden gegeven.
 **Grootte van schijf 1**  | Nee | De maximale grootte van de schijf, in GB.<br/>U kunt Details voor meer schijven toevoegen door [kolommen toe te voegen](#add-multiple-disks) aan de sjabloon. U kunt Maxi maal acht schijven toevoegen.
@@ -127,7 +127,7 @@ De volgende tabel bevat een overzicht van de bestands velden die moeten worden i
 **Netwerk-door Voer** | Nee | Gegevens die door de server worden verzonden, in MB per seconde.
 **Type firmware** | Nee | Server firmware. Waarden kunnen "BIOS" of "UEFI" zijn.
 **Servertype** | Nee | Waarden kunnen fysiek of virtueel zijn.
-**Hypervisor** | Nee | Hyper Visor waarop een machine wordt uitgevoerd. <br/> Waarden kunnen "VMware", "Hyper-V", "xen", "AWS", "GCP" of "other" zijn.
+**Visor** | Nee | Hyper Visor waarop een machine wordt uitgevoerd. <br/> Waarden kunnen "VMware", "Hyper-V", "xen", "AWS", "GCP" of "other" zijn.
 **Versie nummer van Hyper Visor** | Nee | Versie van Hyper Visor.
 **ID van virtuele machine** | Nee | VM-id. Dit is de **InstanceUUid** -waarde voor een VMware VCENTER-VM of de **hyper-v-VM-id** voor hyper-v.
 **Virtual Machine Manager-ID** | Nee | Dit is de **InstanceUUid** -waarde voor VMware vCenter. Het is niet nodig voor Hyper-V.
@@ -179,7 +179,7 @@ Als u bijvoorbeeld alle velden voor een tweede app wilt opgeven, voegt u deze ko
 Nadat u informatie aan de CSV-sjabloon hebt toegevoegd, importeert u de servers in de server evaluatie.
 
 1. Ga in Azure Migrate naar de voltooide sjabloon op de **computer detecteren**.
-2. Selecteer **Importeren**.
+2. Selecteer **importeren**.
 3. De import status wordt weer gegeven.
     - Als er waarschuwingen worden weer gegeven in de status, kunt u deze herstellen of door gaan zonder ze te adresseren.
     - Als u de nauw keurigheid van de beoordeling wilt verbeteren, kunt u de server gegevens verbeteren, zoals wordt voorgesteld in waarschuwingen
@@ -216,7 +216,7 @@ Een evaluatie uitvoeren:
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
 2. Selecteer op het tabblad **servers** in de tegel **Azure migrate: Server bepaling** de optie **evalueren**.
 
-    ![Beoordelen](./media/tutorial-assess-physical/assess.png)
+    ![Evalueren](./media/tutorial-assess-physical/assess.png)
 
 3. Geef in **servers beoordelen**een naam op voor de evaluatie.
 4. Selecteer in **detectie bron**de optie **machines die zijn toegevoegd via importeren in azure migrate**.
@@ -261,7 +261,7 @@ Een evaluatie beschrijft:
 
 ### <a name="review-cost-details"></a>Details van kosten bekijken
 
-In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure. U kunt het volgende doen:
+In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure. U kunt:
 
 - Bekijk de maandelijkse reken-en opslag kosten. De kosten worden geaggregeerd voor alle servers in de geraamde groep.
 

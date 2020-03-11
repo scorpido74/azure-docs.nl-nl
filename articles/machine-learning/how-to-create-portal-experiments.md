@@ -1,7 +1,7 @@
 ---
-title: Bouw & automatische ML-modellen implementeren
+title: AutoML gebruiken om modellen te maken & implementeren
 titleSuffix: Azure Machine Learning
-description: U kunt geautomatiseerde machine learning experimenten maken, beheren en implementeren in Azure Machine Learning Studio.
+description: Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,30 +10,32 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 706b67216d1037440fd1641d9bc82deee2c43109
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355272"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078410"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
- In dit artikel leert u hoe u geautomatiseerde machine learning experimenten kunt maken, verkennen en implementeren in Azure Machine Learning Studio zonder één regel code. Automatische machine learning automatiseert het proces van het selecteren van het beste algoritme dat voor uw specifieke gegevens moet worden gebruikt, zodat u snel een machine learning model kunt genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
+In dit artikel leert u hoe u geautomatiseerde machine learning modellen kunt maken, verkennen en implementeren zonder één regel code in de Studio-interface van Azure Machine Learning. Automatische machine learning is een proces waarbij het beste machine learning algoritme voor uw specifieke gegevens wordt geselecteerd. Met dit proces kunt u snel machine learning modellen genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
+ 
+Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een classificatie model met de automatische ml-interface van Azure machine learning](tutorial-first-experiment-automated-ml.md). 
 
- Als u de voor keur geeft aan een meer op code gebaseerde ervaring, kunt u ook [uw geautomatiseerde machine learning experimenten in python configureren](how-to-configure-auto-train.md) met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+[Configureer uw geautomatiseerde machine learning experimenten](how-to-configure-auto-train.md) met de Azure machine learning SDK voor een op een python-code gebaseerde ervaring.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Een Azure Machine Learning-werk ruimte met een type **Enter prise-editie**. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  Als u een bestaande werk ruimte wilt bijwerken naar Enter prise Edition, raadpleegt [u upgrade to Enter prise Edition](how-to-manage-workspace.md#upgrade)(Engelstalig).
 
 ## <a name="get-started"></a>Aan de slag
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com). 
+1. Meld u aan bij Azure Machine Learning op https://ml.azure.com. 
 
 1. Selecteer uw abonnement en werk ruimte. 
 
@@ -184,8 +186,8 @@ Guardrail|Status|Voor waarde&nbsp;voor&nbsp;trigger
 ---|---|---
 Ontbrekende&nbsp;waarden&nbsp;toerekening |**Buffer** <br> <br> **Vaste**|    Geen ontbrekende waarde in een van de invoer&nbsp;kolommen <br> <br> Voor sommige kolommen ontbreken waarden
 Kruisvalidatie|**Zo**|Als er geen expliciete validatieset wordt opgegeven
-Hoge&nbsp;kardinaliteit&nbsp;functie&nbsp;detectie|  **Buffer** <br> <br>**Zo**|   Er zijn geen functies met een hoge kardinaliteit gedetecteerd <br><br> Er zijn invoer kolommen met een hoge kardinaliteit gedetecteerd
-Detectie van klassecontrole |**Buffer** <br><br><br>**Gewaarschuwd** |Klassen worden in balans gebracht in de trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven <br> <br> Klassen in de trainings gegevens zijn niet in evenwicht
+Hoge&nbsp;kardinaliteit&nbsp;functie&nbsp;detectie|    **Buffer** <br> <br>**Zo**|    Er zijn geen functies met een hoge kardinaliteit gedetecteerd <br><br> Er zijn invoer kolommen met een hoge kardinaliteit gedetecteerd
+Detectie van klassecontrole    |**Buffer** <br><br><br>**Gewaarschuwd** |Klassen worden in balans gebracht in de trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven <br> <br> Klassen in de trainings gegevens zijn niet in evenwicht
 Consistentie van de gegevens van de tijd reeks|**Buffer** <br><br><br><br> **Vaste** |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. <br> <br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. Het verloop of het doorlopende venster is uitgeschakeld.
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
@@ -240,7 +242,6 @@ U hebt nu een Operational web service voor het genereren van voor spellingen. U 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Probeer de end-to-end- [zelf studie voor het maken van uw eerste automatische ml-experiment met Azure machine learning Studio](tutorial-first-experiment-automated-ml.md). 
-* Meer [informatie over automatische machine learning](concept-automated-ml.md) en Azure machine learning.
-* Krijg [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 * [Meer informatie over het gebruik van een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* Krijg [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
+* Meer [informatie over automatische machine learning](concept-automated-ml.md) en Azure machine learning.

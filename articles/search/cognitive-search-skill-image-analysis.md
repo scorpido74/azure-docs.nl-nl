@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840499"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080203"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Cognitieve vaardigheid van Image Analysis
 
@@ -35,14 +35,14 @@ Para meters zijn hoofdletter gevoelig.
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | defaultLanguageCode   |  Een teken reeks die aangeeft welke taal moet worden geretourneerd. De service retourneert herkennings resultaten in een opgegeven taal. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/><br/>Ondersteunde talen zijn: <br/>*en* -Engels (standaard) <br/> *es* -Spaans <br/> *Ja* , Japans <br/> *PT* -Portugees <br/> *zh* -vereenvoudigd Chinees|
-| visualFeatures |  Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li> *Color* : bepaalt de accent kleur, dominante kleur en of een afbeelding zwart & wit is.</li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li>  *imageType* : detecteert of de afbeelding illustraties of een lijn tekening is.</li><li>  *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig.|
+| visualFeatures |  Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li> *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](https://go.microsoft.com/fwlink/?linkid=2121117).|
 | details informatie   | Een matrix met teken reeksen die aangeeft welke specifieke details van het domein moeten worden geretourneerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* : identificeert beroemdheden als deze wordt gedetecteerd in de installatie kopie.</li><li>*bezienswaardigheden* : identificeert bezienswaardigheden als deze worden gedetecteerd in de installatie kopie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
 | Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
-| installatiekopie         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob is geproduceerd wanneer ```imageAction``` is ingesteld op een andere waarde dan ```none```. Zie het voor [beeld](#sample-output) voor meer informatie.|
+| image         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob is geproduceerd wanneer ```imageAction``` is ingesteld op een andere waarde dan ```none```. Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
 
@@ -470,20 +470,6 @@ U kunt uitvoer veld toewijzingen definiëren voor eigenschappen op lagere niveau
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {

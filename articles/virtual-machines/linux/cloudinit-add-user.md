@@ -1,25 +1,17 @@
 ---
 title: Cloud-init gebruiken om een gebruiker toe te voegen aan een virtuele Linux-machine in azure
 description: Cloud-init gebruiken om een gebruiker toe te voegen aan een Linux-VM tijdens het maken met de Azure CLI
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 428f489a24c24b173cb1cef0980dd17c1d8483ce
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036786"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969241"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een gebruiker toe te voegen aan een virtuele Linux-machine in azure
 Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken om een gebruiker toe te voegen op een virtuele machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Dit Cloud-init-script wordt uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md)(Engelstalig) voor meer informatie over de manier waarop Cloud-init systeem eigen werkt in Azure en de ondersteunde Linux-distributies.
@@ -43,7 +35,7 @@ users:
 > [!NOTE] 
 > Het #cloud-configuratie bestand bevat de para meter `- default` opgenomen. Hiermee wordt de gebruiker toegevoegd aan de bestaande gebruiker die door de beheerder is gemaakt tijdens het inrichten. Als u een gebruiker maakt zonder de para meter `- default`-de automatisch gegenereerde gebruiker met beheerders rechten die door het Azure-platform is gemaakt, wordt overschreven. 
 
-Voordat u deze installatie kopie implementeert, moet u een resource groep maken met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+Voordat u deze installatie kopie implementeert, moet u een resource groep maken met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

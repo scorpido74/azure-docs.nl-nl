@@ -1,16 +1,16 @@
 ---
-title: Windows-Hybrid Runbook Worker Azure Automation
+title: Hybrid Runbook Worker voor Azure Automation in Windows
 description: Dit artikel bevat informatie over het installeren van een Azure Automation Hybrid Runbook Worker die u kunt gebruiken om runbooks uit te voeren op Windows-computers in uw lokale Data Center of in de cloud omgeving.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: fc6d3bbe1580c4e6f7064c957a9d420555296231
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372582"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082059"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -21,7 +21,7 @@ Nadat u een runbook worker hebt geïmplementeerd, raadpleegt u [Runbooks uitvoer
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell AZ-module. U kunt nog steeds de AzureRM-module gebruiken. deze patches blijven worden ontvangen tot ten minste december 2020. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)voor meer informatie over de nieuwe AZ-module en AzureRM-compatibiliteit. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Installatie en configuratie van Windows Hybrid Runbook Worker
 
@@ -42,12 +42,12 @@ De minimale vereisten voor een Windows-Hybrid Runbook Worker zijn:
 
 * Windows Server 2012 of hoger
 * Windows Power shell 5,1 of hoger ([WMF 5,1 downloaden](https://www.microsoft.com/download/details.aspx?id=54616))
-* .NET Framework 4.6.2 of hoger
+* .NET framework 4.6.2 of hoger
 * Twee kernen
 * 4 GB aan RAM-geheugen
 * Poort 443 (uitgaand)
 
-### <a name="network-configuration"></a>Netwerk configuratie
+### <a name="network-configuration"></a>Netwerkconfiguratie
 
 Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de netwerk vereisten voor de Hybrid Runbook Worker.
 
@@ -69,16 +69,16 @@ Voer op de doel computer de volgende stappen uit om de installatie en configurat
 
 Down load het script **New-OnPremiseHybridWorker. ps1** van de [PowerShell Gallery](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker). De down load moet rechtstreeks afkomstig zijn van de computer met de Hybrid Runbook Worker-functie of van een andere computer in uw omgeving. Wanneer u het script hebt gedownload, kopieert u het naar uw werk nemer. Het script **New-OnPremiseHybridWorker. ps1** maakt gebruik van de para meters die hieronder worden beschreven tijdens de uitvoering.
 
-| Bepaalde | Hebben | Beschrijvingen |
+| Parameter | Status | Beschrijving |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Ingevuld | De naam van de resource groep die is gekoppeld aan uw Automation-account. |
-| *AutomationAccountName* | Ingevuld | De naam van uw Automation-account.
-| *Referentie* | Beschrijving | De referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving. |
-| *HybridGroupName* | Ingevuld | De naam van een Hybrid Runbook Worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen. |
-| *OMSResourceGroupName* | Beschrijving | De naam van de resource groep voor de Log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt de waarde van *AAResourceGroupName* gebruikt. |
-| *Abonnements* | Ingevuld | De id van het Azure-abonnement dat is gekoppeld aan uw Automation-account. |
-| *TenantID* | Beschrijving | De id van de Tenant organisatie die aan uw Automation-account is gekoppeld. |
-| *WorkspaceName* | Beschrijving | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
+| *AAResourceGroupName* | Verplicht | De naam van de resource groep die is gekoppeld aan uw Automation-account. |
+| *AutomationAccountName* | Verplicht | De naam van uw Automation-account.
+| *Referentie* | Optioneel | De referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving. |
+| *HybridGroupName* | Verplicht | De naam van een Hybrid Runbook Worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen. |
+| *OMSResourceGroupName* | Optioneel | De naam van de resource groep voor de Log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt de waarde van *AAResourceGroupName* gebruikt. |
+| *Abonnements* | Verplicht | De id van het Azure-abonnement dat is gekoppeld aan uw Automation-account. |
+| *TenantID* | Optioneel | De id van de Tenant organisatie die aan uw Automation-account is gekoppeld. |
+| *WorkspaceName* | Optioneel | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
 
 > [!NOTE]
 > Bij het inschakelen van oplossingen ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
@@ -139,7 +139,13 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-In de zoek resultaten ziet u heartbeat-records voor de computer, om aan te geven dat deze is verbonden en dat deze aan de service rapporteren. Standaard stuurt elke agent een heartbeat-record naar de toegewezen werk ruimte. U kunt controleren of de agent de automatiserings oplossing correct heeft gedownload wanneer deze een map bevat met de naam **AzureAutomationFiles** in **C:\Program Files\Microsoft monitoring Agent\Agent**. Als u de versie van de Hybrid Runbook Worker wilt bevestigen, bladert u naar **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** en noteert u de submap **Version** .
+In de zoek resultaten ziet u heartbeat-records voor de computer, om aan te geven dat deze is verbonden en dat deze aan de service rapporteren. Standaard stuurt elke agent een heartbeat-record naar de toegewezen werk ruimte. 
+
+Gebruik de volgende stappen om de installatie van de agent en de installatie te volt ooien.
+
+1. Schakel de oplossing in voor het onboarden van de agent computer. Zie [onboard computers in de werk ruimte](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
+2. Controleer of de agent de automatiserings oplossing correct heeft gedownload. Het moet een map met de naam **AzureAutomationFiles** in **C:\Program Files\Microsoft monitoring Agent\Agent**hebben. 
+3. Als u de versie van de Hybrid Runbook Worker wilt bevestigen, bladert u naar **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** en noteert u de submap **Version** .
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Stap 4: de runbook-omgeving installeren en verbinding maken met Azure Automation
 

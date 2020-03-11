@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562311"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968660"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met 8X8
 
@@ -30,7 +30,7 @@ In deze zelf studie leert u hoe u 8X8 integreert met Azure Active Directory (Azu
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij 8X8 met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -86,20 +86,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    a. Typ in het tekstvak **id** een URL met behulp van een van de volgende patronen:
+    a. In het tekstvak **Id** typt u een URL: `https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. Typ in het tekstvak **antwoord-URL** een URL met behulp van een van de volgende patronen:
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. In het tekstvak **Antwoord-URL** typt u een URL: `https://sso.8x8.com/saml2`
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan. U gebruikt het certificaat later in de zelf studie in de sectie **8X8 SSO configureren** .
 
@@ -151,9 +140,15 @@ Het volgende deel van de zelf studie is afhankelijk van het soort abonnement dat
 
 1. Klik op de start pagina op **Identity Management**.
 
+    ![8X8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. Controleer **eenmalige aanmelding (SSO)** en selecteer vervolgens **Microsoft Azure AD**.
 
+    ![8X8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. Kopieer de drie Url's en het handtekening certificaat van de pagina **eenmalige aanmelding met SAML** configureren in azure AD in het gedeelte **Microsoft Azure AD SAML-instellingen** in 8X8 Configuration Manager.
+
+    ![8X8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. Kopieer de **aanmeldings-URL** naar de AANMELDINGS-URL van **IDP**.
 
@@ -171,15 +166,27 @@ Het volgende deel van de zelf studie is afhankelijk van het soort abonnement dat
 
 1. Selecteer **Virtual Office-accountbeheer** in het toepassingsvenster.
 
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. Selecteer het **bedrijfs**account dat u wilt beheren en klik op **Aanmelden**.
+
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Klik op het tabblad **ACCOUNTS** in de menulijst.
 
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. Klik op **Eenmalige aanmelding** in de lijst met accounts.
+
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Selecteer **Eenmalige aanmelding** bij de verificatiemethoden en klik op **SAML**.
 
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. In het gedeelte voor **SAML-eenmalige aanmelding** voert u de volgende stappen uit:
+
+    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. Plak in het tekstvak voor de **URL voor eenmalige aanmelding** de waarde van de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 
@@ -205,7 +212,7 @@ Wanneer u op de tegel 8X8 in het toegangs venster klikt, moet u automatisch word
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

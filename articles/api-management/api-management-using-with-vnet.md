@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374933"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968209"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -113,16 +113,16 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 | * / 80, 443                  | Inkomend            | TCP                | INTERNET/VIRTUAL_NETWORK            | Client communicatie met API Management                      | Extern             |
 | * / 3443                     | Inkomend            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Beheer eindpunt voor Azure Portal en Power shell         | Externe & intern  |
 | * / 80, 443                  | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | **Afhankelijkheid van Azure Storage**                             | Externe & intern  |
-| * / 80, 443                  | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureActiveDirectory | Azure Active Directory (indien van toepassing)                   | Externe & intern  |
+| * / 80, 443                  | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (indien van toepassing)                   | Externe & intern  |
 | * / 1433                     | Uitgaand           | TCP                | VIRTUAL_NETWORK/SQL                 | **Toegang tot Azure SQL-eind punten**                           | Externe & intern  |
-| */5671, 5672, 443          | Uitgaand           | TCP                | VIRTUAL_NETWORK-EventHub            | Afhankelijkheid voor logboek registratie van Event hub-beleid en bewakings agent | Externe & intern  |
-| * / 445                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | Afhankelijkheid van de Azure-bestands share voor GIT                      | Externe & intern  |
+| */5671, 5672, 443          | Uitgaand           | TCP                | VIRTUAL_NETWORK-EventHub            | Afhankelijkheid voor [logboek registratie van Event hub-beleid](api-management-howto-log-event-hubs.md) en bewakings agent | Externe & intern  |
+| * / 445                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | Afhankelijkheid van de Azure-bestands share voor [Git](api-management-configuration-repository-git.md)                      | Externe & intern  |
 | * / 1886                     | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Vereist voor het publiceren van de status naar Resource Health          | Externe & intern  |
-| */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | Diagnostische logboeken en metrische gegevens publiceren                        | Externe & intern  |
+| */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md) publiceren                       | Externe & intern  |
 | * / 25                       | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
 | */587                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
 | * / 25028                    | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
-| * / 6381 - 6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot Azure cache voor redis-instanties tussen RoleInstances          | Externe & intern  |
+| * / 6381 - 6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot de redis-service voor beleids regels voor [frequentie limieten](api-management-access-restriction-policies.md#LimitCallRateByKey) tussen computers         | Externe & intern  |
 | * / *                        | Inkomend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer van Azure-infra structuur                          | Externe & intern  |
 
 >[!IMPORTANT]
@@ -136,9 +136,12 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Open bare Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Open bare Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**Nieuw**)</li><li>prod.warmpath.msftcloudes.com (**om te worden afgeschaft**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-black.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3-red.prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Nieuw**)</li><li>shoebox2.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod3.metrics.microsoftmetrics.com (**Nieuw**)</li><li>prod3.metrics.nsatc.net (**om te worden afgeschaft**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+
+>[!IMPORTANT]
+> De wijziging van de bovenstaande clusters met DNS-zone **. nsatc.net** naar **. microsoftmetrics.com** is doorgaans een DNS-wijziging. Het IP-adres van het cluster wordt niet gewijzigd.
 
 + **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de host `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` en `ies.global.microsoft.com`
 

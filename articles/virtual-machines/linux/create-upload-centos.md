@@ -1,22 +1,17 @@
 ---
-title: Een op CentOS gebaseerde Linux-VHD maken en uploaden in azure
+title: Een op CentOS gebaseerde Linux-VHD maken en uploaden
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een CentOS Linux-besturings systeem bevat.
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
 ms.author: mimckitt
-ms.openlocfilehash: dff90df255d6b7e050fad9a278666f81fade500c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 84dfb3a24d3b3440cb929fa6c7e7f70983051a72
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246143"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969515"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Een op CentOS gebaseerde virtuele machine voorbereiden voor Azure
 

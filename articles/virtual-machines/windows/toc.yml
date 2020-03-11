@@ -337,7 +337,8 @@
               href: spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
-            - name: Template
+            - name: ARM-sjabloon
+              displayName: Azure Resource Manager
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Foutcodes
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -349,16 +350,17 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'Een sjabloon met C# gebruiken'
+        - name: 'Een ARM-sjabloon met C# gebruiken'
           href: csharp-template.md
+          displayName: Azure Resource Manager
         - name: Een virtuele machine maken met Chef
           href: ../../chef/chef-automation.md
         - name: Java gebruiken
           href: java.md
         - name: Python gebruiken
           href: python.md
-        - name: Een sjabloon gebruiken
-          displayName: 'Azure Resource Manager template, ARM'
+        - name: ARM-sjabloon gebruiken
+          displayName: Azure Resource Manager template
           href: ps-template.md
         - name: Verbinding maken met een VM
           href: connect-logon.md
@@ -473,7 +475,8 @@
           href: change-drive-letter.md
         - name: Een beschikbaarheidsset wijzigen
           href: change-availability-set.md
-        - name: Een sjabloon downloaden
+        - name: Een ARM-sjabloon exporteren
+          displayName: Azure Resource Manager
           href: download-template.md
         - name: Azure VM-agent
           href: ../extensions/agent-windows.md
@@ -543,7 +546,8 @@
               href: image-builder-gallery-update-image-version.md
             - name: Scripts opslaan
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Sjabloonverwijzing
+            - name: ARM-sjabloonreferentie
+              displayName: Azure Resource Manager
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Problemen oplossen
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
@@ -620,7 +624,8 @@
               href: attach-managed-disk-portal.md
         - name: Een schijf loskoppelen
           href: detach-disk.md
-        - name: Schijven implementeren met sjabloon
+        - name: Schijven implementeren met ARM-sjabloon
+          displayName: Azure Resource Manager
           href: using-managed-disks-template-deployments.md
         - name: Gedeelde schijven inschakelen
           href: disks-shared-enable.md
@@ -690,6 +695,7 @@
         - name: PowerShell
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: Azure Resource Manager-sjabloon
+          displayName: ARM
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -743,7 +749,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: Resources
   items:
-    - name: Auteursjablonen
+    - name: ARM-sjablonen ontwerpen
+      displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines

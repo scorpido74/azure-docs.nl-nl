@@ -1,19 +1,19 @@
 ---
 title: Een schaalset voor virtuele Azure-machines wijzigen
 description: Meer informatie over hoe u een schaalset voor virtuele Azure-machines wijzigt en bijwerkt met de REST Api's, Azure PowerShell en Azure CLI
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390466"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082408"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Een schaalset voor virtuele machines wijzigen
 
@@ -311,7 +311,7 @@ Als u bestaande Vm's wilt bijwerken, moet u een hand matige upgrade uitvoeren va
 >[!NOTE]
 > Service Fabric-clusters kunnen alleen gebruikmaken van de *automatische* modus, maar de update wordt anders afgehandeld. Zie [service Fabric Application upgrades](../service-fabric/service-fabric-application-upgrade.md)(Engelstalig) voor meer informatie.
 
-Er is één type wijziging in eigenschappen van globale schaal sets die het upgrade beleid niet volgen. Wijzigingen in het besturingssysteem profiel voor de schaalset (zoals de gebruikers naam en het wacht woord voor beheerders) kunnen alleen worden gewijzigd in API-versie *2017-12-01* of hoger. Deze wijzigingen zijn alleen van toepassing op virtuele machines die zijn gemaakt na de wijziging in het model voor schaal sets. Als u bestaande Vm's up-to-date wilt maken, moet u een installatie kopie van elke bestaande VM uitvoeren. U kunt deze installatie kopie uitvoeren via:
+Er is één type wijziging in eigenschappen van globale schaal sets die het upgrade beleid niet volgen. Wijzigingen in het besturings systeem voor de schaalset en het profiel van de gegevens schijf (zoals beheerders naam en-wacht woord) kunnen alleen worden gewijzigd in API-versie *2017-12-01* of hoger. Deze wijzigingen zijn alleen van toepassing op virtuele machines die zijn gemaakt na de wijziging in het model voor schaal sets. Als u bestaande Vm's up-to-date wilt maken, moet u een installatie kopie van elke bestaande VM uitvoeren. U kunt deze installatie kopie uitvoeren via:
 
 - REST API met [behulp van Compute/virtualmachinescalesets/Reimage](/rest/api/compute/virtualmachinescalesets/reimage) als volgt:
 

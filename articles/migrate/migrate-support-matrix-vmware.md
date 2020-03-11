@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over VMware-evaluatie ondersteuning in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361963"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080378"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -43,6 +43,7 @@ Naast het detecteren van computers, Azure Migrate: Server assessment kan apps, r
 **vCenter-referenties** | Een vCenter Server account met alleen-lezen toegang en de bevoegdheden die zijn ingeschakeld voor Virtual Machines > gast bewerkingen.
 **VM-referenties** | Biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
 **VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/> Als uw VMware-hulpprogram ma's een versie heeft tussen 9,10-10.2.0, moet u deze upgraden naar meer dan 10.2.0.
+**Powershell** | Vm's moeten Power shell van versie 2,0 of hoger hebben
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 **Limieten** | Voor app-Discovery kunt u Maxi maal 10000 per apparaat detecteren. 
 
@@ -100,6 +101,7 @@ Deze optie is momenteel in preview. [Meer informatie](how-to-create-group-machin
 **Linux-account** | Voor visualisatie is een gebruikers account met hoofd bevoegdheid vereist.<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
 **VM-agents** | Er is geen agent nodig op de Vm's.
 **VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt analyseren. <br/> Als uw VMware-hulpprogram ma's een versie heeft tussen 9,10-10.2.0, moet u deze upgraden naar meer dan 10.2.0.
+**Powershell** | Vm's moeten Power shell van versie 2,0 of hoger hebben
 **vCenter-referenties** | Een vCenter Server account met alleen-lezen toegang en de bevoegdheden die zijn ingeschakeld voor Virtual Machines > gast bewerkingen.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt analyseren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 

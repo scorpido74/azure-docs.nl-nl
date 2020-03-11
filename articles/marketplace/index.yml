@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: Welkom bij de commerciële marketplace van Microsoft
+summary: Meer informatie over de commerciële marketplace van Microsoft, een onlinemarktplaats voor toepassingen en services waar iedereen, van start-ups tot grote bedrijven, oplossingen kunnen aanbieden aan klanten over de hele wereld.
+metadata:
+  title: Welkom bij de commerciële marketplace van Microsoft
+  description: Meer informatie over de commerciële marketplace van Microsoft, een onlinemarktplaats voor toepassingen en services waar iedereen, van start-ups tot grote bedrijven, oplossingen kunnen aanbieden aan klanten over de hele wereld.
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: landing-page
+  author: MaggiePucciEvans
+  ms.author: evansma
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
+  ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/08/2020
+  ms.locfileid: "78927593"
+landingContent:
+- title: Werken in de commerciële marketplace van Microsoft
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Een nieuw account maken
+      url: ./partner-center-portal/create-account.md
+    - text: Uw publicatieoptie bepalen
+      url: ./determine-your-listing-type.md
+    - text: Veelgestelde vragen over de commerciële marketplace van Microsoft
+      url: ./marketplace-faq-publisher-guide.md
+    - text: Releaseopmerkingen
+      url: https://aka.ms/publicmarketplaceroadmap
+    - text: Beleidsregels en voorwaarden
+      url: ./policies-terms.md
+- title: Algemene scenario's en taken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Best practices voor marketing
+      url: ./gtm-marketing-best-practices.md
+    - text: Best practices voor aanbiedingsvermeldingen
+      url: ./gtm-offer-listing-best-practices.md
+    - text: Publicatiehandleiding voor SaaS-toepassingen
+      url: ./marketplace-saas-applications-technical-publishing-guide.md
+  - linkListType: get-started
+    links:
+    - text: Deelnemen in het Azure Marketplace- en AppSource-communityforum
+      url: https://aka.ms/MarketplaceCommunity
+    - text: Meld u aan voor discussiewebinars of kijk later on demand terug
+      url: https://aka.ms/allwebinars
+    - text: Oplossingen beschikbaar maken in Microsoft AppSource en binnen Office
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
+- title: Uw aanbieding en klantgegevens analyseren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dashboard voor samenvattingen
+      url: ./partner-center-portal/summary-dashboard.md
+    - text: Dashboard voor orders
+      url: ./partner-center-portal/orders-dashboard.md
+    - text: Dashboard voor klanten
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: Dashboard voor gebruik
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: Dashboard voor Marketplace-inzichten
+      url: ./partner-center-portal/insights-dashboard.md
+    - text: Dashboard voor downloads
+      url: ./partner-center-portal/downloads-dashboard.md
+    - text: Dashboard voor classificaties en beoordelingen
+      url: ./partner-center-portal/ratings-reviews.md
+- title: Uw aanbiedingen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure-toepassingsaanbiedingen
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Dynamics 365 for Customer Engagement- en PowerApps-aanbiedingen
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Dynamics 365 for Operations-aanbiedingen
+      url: ./partner-center-portal/create-new-operations-offer.md
+    - text: Dynamics 365 Business Central-aanbiedingen
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: SaaS-aanbiedingen
+      url: ./partner-center-portal/create-new-saas-offer.md
+    - text: Aanbiedingen van virtuele machines
+      url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: Meer type aanbiedingen
+      url: ./cloud-partner-portal/cpp-marketplace-offers.md
+- title: Betaald krijgen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Stel uw betalingsaccount en belastingformulieren
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+    - text: Facturering van de commerciële markteplace
+      url: ./partner-center-portal/billing-details.md
+    - text: Betalingsdrempels, methoden en tijdsbestek
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: Betalingsrapportage
+      url: ./partner-center-portal/payout-summary.md
+    - text: Belastinginformatie
+      url: ./partner-center-portal/tax-details-paid-transactions.md
+- title: API-verwijzing
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: API-vereisten
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+    - text: SaaS-leverings-API's
+      url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+    - text: Naslaginformatie over Cloud Partner-portal-API
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: Service-API's voor Marketplace-meting
+      url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+    - text: Een aanbieding toevoegen of veranderen
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: Aanbiedingen ophalen
+      url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+    - text: Live gaan
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: Prijzen voor virtuele machine-aanbiedingen
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+- title: Ondersteuning krijgen
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Ondersteuningsopties
+      url: ./partner-center-portal/support.md
+    - text: Geografische beschikbaarheid en valuta's
+      url: ./marketplace-geo-availability-currencies.md
+    - text: Verificatiefouten oplossen
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md

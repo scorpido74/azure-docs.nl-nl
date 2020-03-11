@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192622"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037247"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
@@ -25,11 +25,11 @@ In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters. Z
 > [!IMPORTANT]  
 > Type opslag account **BlobStorage** kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
-| Type opslag account | Ondersteunde services | Ondersteunde prestatie lagen | Ondersteunde toegangs lagen |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (general-purpose v2)  | Blob     | Standard                    | Hot, cool, Archive\*   |
-| Opslag (algemeen gebruik v1)   | Blob     | Standard                    | N.v.t.                    |
-| BlobStorage                    | Blob     | Standard                    | Hot, cool, Archive\*   |
+| Type opslag account | Ondersteunde services | Ondersteunde prestatie lagen |Geen ondersteunde prestatie lagen| Ondersteunde toegangs lagen |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (general-purpose v2)  | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
+| Opslag (algemeen gebruik v1)   | Blob     | Standard                    |Premium| N.v.t.                    |
+| BlobStorage                    | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
 
 Het is niet raadzaam om de standaard BLOB-container te gebruiken voor het opslaan van Bedrijfs gegevens. Het is een goede gewoonte om de standaard-blobcontainer na ieder gebruik te verwijderen om de opslagkosten te verlagen. De standaard container bevat toepassings-en systeem Logboeken. Breng de logboeken over naar een andere locatie voordat u de container verwijdert.
 
@@ -128,7 +128,7 @@ Micro soft biedt de volgende hulpprogram ma's voor het werken met Azure Storage:
 
 | Hulpprogramma | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure-portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |

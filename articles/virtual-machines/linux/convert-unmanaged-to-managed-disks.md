@@ -1,18 +1,18 @@
 ---
-title: Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven
-description: Een Linux-VM van niet-beheerde schijven converteren naar beheerde schijven met behulp van Azure CLI in het Resource Manager-implementatie model
+title: Een Linux-VM van niet-beheerde schijven converteren naar beheerde schijven
+description: Een Linux-VM van niet-beheerde schijven converteren naar beheerde schijven met behulp van Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 24024bc66e10937f1ae2fdc5130ffcd8c76c1763
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2774dcbd5fc5b01627b965c2c02d870412c8bf77
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430992"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969698"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven
 
@@ -94,7 +94,7 @@ U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongeda
 
 U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
 3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
 4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.

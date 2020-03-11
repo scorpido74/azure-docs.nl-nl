@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396518"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968284"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -105,7 +105,7 @@ IoT Hub dwingt andere operationele limieten af:
 | Cloud-naar-apparaat-berichten<sup>1</sup> | Maximale bericht grootte van 64 KB. Maximum aantal in behandeling zijnde berichten voor levering is 50 per apparaat. |
 | Directe methode<sup>1</sup> | De maximale grootte van de directe methode lading is 128 KB. |
 | Automatische apparaat-en module configuraties<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
-| Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties (inclusief gelaagde implementaties) per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
+| Automatische implementaties IoT Edge<sup>1</sup> | 50 modules per implementatie. 100 implementaties (inclusief gelaagde implementaties) per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
 | Apparaatdubbels<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
 | Gedeeld toegangsbeleid | Het maximum aantal Shared Access-beleids regels is 16 |
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587410"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082962"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
@@ -112,7 +112,7 @@ Aangepaste TLV-gegevens:
 |  |4        |UINT32 (4 bytes) die de LINKID van het persoonlijke eind punt vertegenwoordigen. Gecodeerd in little endian-indeling.|
 
  > [!NOTE]
- > Service provider is verantwoordelijk om ervoor te zorgen dat de service achter de standaard load balancer zo is geconfigureerd dat de header van het proxy protocol wordt geparseerd volgens de [specificatie](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) wanneer proxy protocol is ingeschakeld op de privé koppelings service. De aanvraag mislukt als het proxy protocol is ingeschakeld op de privé koppelings service en de service niet is geconfigureerd voor het parseren van de header. Op dezelfde manier mislukt de aanvraag als de service een header van het proxy protocol verwacht terwijl de instelling niet is ingeschakeld op de persoonlijke koppelings service. Zodra het proxy protocol is ingeschakeld, wordt de header van het proxy protocol ook opgenomen in HTTP/TCP-status tests van de host naar de virtuele machine van de back-end, zelfs als er geen client informatie in de header voor komt. 
+ > Service provider is verantwoordelijk om ervoor te zorgen dat de service achter de standaard load balancer zo is geconfigureerd dat de header van het proxy protocol wordt geparseerd volgens de [specificatie](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) wanneer proxy protocol is ingeschakeld op de privé koppelings service. De aanvraag mislukt als het proxy protocol is ingeschakeld op de privé koppelings service, maar de service van de service provider niet is geconfigureerd voor het parseren van de header. Op dezelfde manier mislukt de aanvraag als de service provider een header van het proxy protocol verwacht, terwijl de instelling niet is ingeschakeld op de persoonlijke koppelings service. Zodra het proxy protocol is ingeschakeld, wordt de header van het proxy protocol ook opgenomen in HTTP/TCP-status tests van de host naar de virtuele machine van de back-end, zelfs als er geen client informatie in de header voor komt. 
 
 ## <a name="limitations"></a>Beperkingen
 

@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376528"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967925"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 
@@ -43,7 +43,7 @@ De eerste stap voor het goed keuren of weigeren van toegangs aanvragen is het zo
 
 Als u het e-mail bericht niet hebt, kunt u de toegangs aanvragen vinden die in behandeling zijn door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de portal van mijn toegang op [https://myaccess.microsoft.com](https://myaccess.microsoft.com).
+1. Meld u aan bij de portal van mijn toegang op [https://myaccess.microsoft.com](https://myaccess.microsoft.com).  (Voor de Amerikaanse overheid wordt het domein in de koppeling naar de portal van mijn toegang `myaccess.microsoft.us`.)
 
 1. Klik in het linkermenu op **goed keuringen** om een lijst weer te geven met toegangs aanvragen die in behandeling zijn.
 

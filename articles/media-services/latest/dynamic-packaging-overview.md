@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359512"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968255"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische verpakking in Media Services v3
 
 Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel media bron bestands indelingen. Deze service wordt geleverd via verschillende streaming protocollen, met of zonder inhouds beveiliging, om alle grote apparaten te bereiken (zoals iOS-en Android-apparaten). Deze clients begrijpen verschillende protocollen. IOS vereist bijvoorbeeld dat stromen worden geleverd in HTTP Live Streaming-indeling (HLS) en Android-apparaten ondersteuning bieden voor HLS en MPEG DASH.
 
 In Media Services vertegenwoordigt een [streaming-eind punt](streaming-endpoint-concept.md) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren. Er wordt gebruikgemaakt van een van de algemene protocollen voor streaming media die worden vermeld in de volgende sectie. Dynamische pakketten is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium).
+
+> [!NOTE]
+> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>om uw bron bestanden voor te bereiden voor levering
 
@@ -302,7 +305,4 @@ U kunt een ondersteunings ticket openen door te navigeren naar een [nieuwe onder
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!NOTE]
-> U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
-
-Meer informatie over het [uploaden, coderen en streamen van Video's](stream-files-tutorial-with-api.md).
+[Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md)
