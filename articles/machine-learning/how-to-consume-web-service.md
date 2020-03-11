@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765660"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78354972"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model dat is geïmplementeerd als een webservice gebruiken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,12 +43,12 @@ De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azur
 
 * `auth_enabled`-als sleutel verificatie is ingeschakeld, `True`; anders `False`.
 * `token_auth_enabled`-als token verificatie is ingeschakeld, `True`; anders `False`.
-* `scoring_uri` -De REST-API-adres.
+* `scoring_uri`-het REST API adres.
 * `swagger_uri`-het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md#schema)voor meer informatie.
 
 Er zijn een drie manieren om op te halen van deze informatie voor de geïmplementeerde webservices:
 
-* Wanneer u een model implementeert, een `Webservice` object wordt geretourneerd met informatie over de service:
+* Wanneer u een model implementeert, wordt er een `Webservice` object geretourneerd met informatie over de service:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -57,7 +57,7 @@ Er zijn een drie manieren om op te halen van deze informatie voor de geïmplemen
     print(service.swagger_uri)
     ```
 
-* U kunt `Webservice.list` geïmplementeerd om op te halen een lijst van webservices voor modellen in uw werkruimte. U kunt filters toevoegen om te beperken van de lijst met geretourneerde informatie. Zie de naslag documentatie voor de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) voor meer informatie over wat kan worden gefilterd.
+* U kunt `Webservice.list` gebruiken om een lijst met geïmplementeerde webservices voor modellen in uw werk ruimte op te halen. U kunt filters toevoegen om te beperken van de lijst met geretourneerde informatie. Zie de naslag documentatie voor de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) voor meer informatie over wat kan worden gefilterd.
 
     ```python
     services = Webservice.list(ws)
@@ -102,7 +102,7 @@ Wanneer u verificatie voor een implementatie inschakelt, maakt u automatisch ver
 
 Als u de verificatie wilt beheren, gebruikt u de para meter `auth_enabled` wanneer u een implementatie maakt of bijwerkt.
 
-Als verificatie is ingeschakeld, kunt u de `get_keys` methode voor het ophalen van een primaire en secundaire verificatiesleutel:
+Als verificatie is ingeschakeld, kunt u de methode `get_keys` gebruiken om een primaire en secundaire verificatie sleutel op te halen:
 
 ```python
 primary, secondary = service.get_keys()
@@ -110,7 +110,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw genereren wilt, gebruikt u [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
@@ -147,7 +147,7 @@ De REST-API wordt verwacht dat de hoofdtekst van het verzoek om te worden van ee
 > [!IMPORTANT]
 > De structuur van de gegevens moet overeenkomen met wat de scoring-script en het model in de verwachte service. Het scoring-script kan de gegevens wijzigen voordat deze wordt doorgegeven aan het model.
 
-Bijvoorbeeld, het model in de [Train binnen notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) voorbeeld wordt een matrix van 10 cijfers verwacht. Met het Score script voor dit voor beeld wordt een numpy-matrix gemaakt op basis van de aanvraag en door gegeven aan het model. Het volgende voorbeeld ziet u de gegevens die deze service wordt verwacht dat:
+Het model in het voor beeld van de [trein in notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) verwacht bijvoorbeeld een matrix van 10 getallen. Met het Score script voor dit voor beeld wordt een numpy-matrix gemaakt op basis van de aanvraag en door gegeven aan het model. Het volgende voorbeeld ziet u de gegevens die deze service wordt verwacht dat:
 
 ```json
 {
@@ -181,7 +181,7 @@ Zie [Cross-Origin-resource delen](how-to-deploy-and-where.md#cors)voor meer info
 
 ## <a name="call-the-service-c"></a>De service aanroepen (C#)
 
-In dit voorbeeld ziet u hoe u C# voor het aanroepen van de webservice gemaakt op basis van de [Train binnen notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) voorbeeld:
+In dit voor beeld ziet u hoe C# u kunt gebruiken om de webservice aan te roepen die vanuit de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld is gemaakt:
 
 ```csharp
 using System;
@@ -270,7 +270,7 @@ De geretourneerde resultaten zijn vergelijkbaar met de volgende JSON-document:
 
 ## <a name="call-the-service-go"></a>De service (Ga) aanroepen
 
-In dit voorbeeld ziet u hoe u met behulp van Go voor het aanroepen van de webservice gemaakt op basis van de [Train binnen notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) voorbeeld:
+In dit voor beeld ziet u hoe u kunt gebruiken om de webservice aan te roepen die is gemaakt vanuit de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
 
 ```go
 package main
@@ -362,7 +362,7 @@ De geretourneerde resultaten zijn vergelijkbaar met de volgende JSON-document:
 
 ## <a name="call-the-service-java"></a>Roept de service (Java)
 
-In dit voorbeeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice gemaakt op basis van de [Train binnen notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) voorbeeld:
+Dit voor beeld laat zien hoe u Java gebruikt voor het aanroepen van de webservice die is gemaakt op basis van de [trein in het notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
 
 ```java
 import java.io.IOException;
@@ -442,7 +442,7 @@ De geretourneerde resultaten zijn vergelijkbaar met de volgende JSON-document:
 
 ## <a name="call-the-service-python"></a>De service (Python) aanroepen
 
-In dit voorbeeld laat zien hoe u Python gebruikt voor het aanroepen van de webservice gemaakt op basis van de [Train binnen notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) voorbeeld:
+In dit voor beeld wordt gedemonstreerd hoe u python gebruikt om de webservice aan te roepen die is gemaakt via de [trein in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) -voor beeld:
 
 ```python
 import requests

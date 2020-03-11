@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Ontwerp concepten | Microsoft Docs'
+title: 'Azure AD Connect: ontwerp concepten | Microsoft Docs'
 description: In dit onderwerp vindt u informatie over bepaalde implementatie gebieden
 services: active-directory
 documentationcenter: ''
@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135744"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376024"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Ontwerpconcepten
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: ontwerp concepten
 Het doel van dit document is het beschrijven van gebieden die tijdens het implementatie ontwerp van Azure AD Connect moeten worden beschouwd. Dit document is een grondige kennis van bepaalde gebieden en deze concepten worden ook kort beschreven in andere documenten.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-Het kenmerk source anchor wordt gedefinieerd als *een kenmerk dat tijdens de levens duur van een object*onveranderbaar is. Het identificeert een object op unieke wijze als hetzelfde object op locatie en in azure AD. Het kenmerk wordt ook wel **immutableId** genoemd en de twee namen worden uitgewisseld gebruikt.
+Het kenmerk source anchor wordt gedefinieerd als *een kenmerk dat tijdens de levens duur van een object onveranderbaar*is. Het identificeert een object op unieke wijze als hetzelfde object op locatie en in azure AD. Het kenmerk wordt ook wel **immutableId** genoemd en de twee namen worden uitgewisseld gebruikt.
 
 Het woord onveranderbaar, dat wil zeggen ' kan niet worden gewijzigd ', is belang rijk voor dit document. Omdat de waarde van dit kenmerk niet kan worden gewijzigd nadat deze is ingesteld, is het belang rijk dat u een ontwerp kiest dat uw scenario ondersteunt.
 
@@ -45,7 +45,7 @@ De kenmerk waarde moet voldoen aan de volgende regels:
 
 * Minder dan 60 tekens lang
   * Tekens die geen a-z, A-Z of 0-9 zijn, worden gecodeerd en geteld als drie tekens
-* Geen speciaal teken: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; : , [ ] " \@ _
+* Geen speciaal teken: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; :, [] "\@ _
 * Moet globaal uniek zijn
 * Moet een teken reeks, een geheel getal of een binaire waarde zijn
 * Mag niet worden gebaseerd op de naam van de gebruiker omdat deze kunnen veranderen
@@ -62,7 +62,7 @@ Als u meerdere forests hebt en gebruikers niet tussen forests en domeinen verpla
 
 Als u gebruikers tussen forests en domeinen verplaatst, moet u een kenmerk vinden dat niet verandert of kan worden verplaatst met de gebruikers tijdens de verplaatsing. Een aanbevolen benadering is het introduceren van een synthetisch kenmerk. Een kenmerk dat iets zou kunnen bevatten dat lijkt op een GUID, zou geschikt zijn. Tijdens het maken van het object wordt een nieuwe GUID gemaakt en gestempeld op de gebruiker. Een aangepaste synchronisatie regel kan worden gemaakt op de server van de synchronisatie-engine om deze waarde te maken op basis van de **ObjectGUID** en het geselecteerde kenmerk in toevoegen bij te werken. Wanneer u het object verplaatst, moet u ook de inhoud van deze waarde kopiëren.
 
-Een andere oplossing is het kiezen van een bestaand kenmerk dat u niet wijzigt. Veelgebruikte kenmerken zijnonder andere werk nemers. Als u overweegt een kenmerk dat letters bevat, moet u ervoor zorgen dat er geen kans is (hoofd letters en kleine letters) kan worden gewijzigd voor de waarde van het kenmerk. Ongeldige kenmerken die niet moeten worden gebruikt, zijn onder andere die kenmerken met de naam van de gebruiker. In een huwelijk of echtheid wordt de naam naar verwachting gewijzigd. Dit is niet toegestaan voor dit kenmerk. Dit is ook een van de redenen waarom kenmerken zoals **userPrincipalName**, **mail**en **targetAddress** niet zelfs kunnen worden geselecteerd in de installatie wizard van Azure AD Connect. Deze kenmerken bevatten ook het teken\@' ', wat niet is toegestaan in de source Anchor.
+Een andere oplossing is het kiezen van een bestaand kenmerk dat u niet wijzigt. Veelgebruikte kenmerken zijn onder andere werk **nemers**. Als u overweegt een kenmerk dat letters bevat, moet u ervoor zorgen dat er geen kans is (hoofd letters en kleine letters) kan worden gewijzigd voor de waarde van het kenmerk. Ongeldige kenmerken die niet moeten worden gebruikt, zijn onder andere die kenmerken met de naam van de gebruiker. In een huwelijk of echtheid wordt de naam naar verwachting gewijzigd. Dit is niet toegestaan voor dit kenmerk. Dit is ook een van de redenen waarom kenmerken zoals **userPrincipalName**, **mail**en **targetAddress** niet zelfs kunnen worden geselecteerd in de installatie wizard van Azure AD Connect. Deze kenmerken bevatten ook het teken '\@'. Dit is niet toegestaan in de source Anchor.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Het kenmerk source Anchor wijzigen
 De waarde van het kenmerk source Anchor kan niet worden gewijzigd nadat het object is gemaakt in azure AD en de identiteit is gesynchroniseerd.
@@ -119,7 +119,7 @@ Wanneer u Azure AD Connect installeert met aangepaste modus, biedt de wizard Azu
 
 ![Aangepaste installatie-source Anchor-configuratie](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 | --- | --- |
 | Azure het bronanker voor mij laten beheren | Selecteer deze optie als u wilt dat Azure AD het kenmerk voor u selecteert. Als u deze optie selecteert, past Azure AD Connect wizard dezelfde [Source Anchor-kenmerk selectie logica toe die wordt gebruikt tijdens de snelle installatie](#express-installation). Net als bij snelle installatie, informeert de wizard dat het kenmerk is verzameld als het kenmerk bron anker nadat de aangepaste installatie is voltooid. |
 | Een specifiek kenmerk | Selecteer deze optie als u een bestaand AD-kenmerk opgeeft als het kenmerk sourceAnchor. |
@@ -140,7 +140,7 @@ Overschakelen van objectGUID naar ConsistencyGuid als het kenmerk bron anker:
 
 3. Voer uw Azure AD-beheerders referenties in en klik op **volgende**.
 
-4. Azure AD Connect wizard analyseert de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een object in de map, wordt door Azure AD Connect afgesloten dat er momenteel geen andere toepassing is die het kenmerk gebruikt en veilig is om het te gebruiken als bron anker kenmerk. Klik op **volgende** om door te gaan.
+4. Azure AD Connect wizard analyseert de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een object in de map, wordt door Azure AD Connect afgesloten dat er momenteel geen andere toepassing is die het kenmerk gebruikt en veilig is om het te gebruiken als bron anker kenmerk. Klik op **Volgende** om door te gaan.
 
    ![ConsistencyGuid inschakelen voor bestaande implementatie-stap 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -165,12 +165,12 @@ Als het kenmerk tijdens de analyse is geconfigureerd voor een of meer objecten i
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Gevolgen voor AD FS of Federatie configuratie van derden
 Als u Azure AD Connect gebruikt voor het beheren van on-premises AD FS-implementatie, werkt de Azure AD Connect de claim regels automatisch bij om hetzelfde AD-kenmerk als source Anchor te gebruiken. Dit zorgt ervoor dat de door ADFS gegenereerde ImmutableID-claim consistent is met de source Anchor-waarden die zijn geëxporteerd naar Azure AD.
 
-Als u AD FS buiten Azure AD Connect beheert of als u Federatie servers van derden gebruikt voor verificatie, moet u de claim regels voor ImmutableID-claim hand matig bijwerken zodat deze consistent zijn met de source Anchor-waarden die zijn geëxporteerd naar Azure AD, zoals beschreven in in het gedeelte artikel [AD FS claim regels wijzigen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). De wizard retourneert de volgende waarschuwing nadat de installatie is voltooid:
+Als u AD FS buiten Azure AD Connect beheert of als u Federatie servers van derden gebruikt voor verificatie, moet u de claim regels voor ImmutableID-claim hand matig bijwerken zodat deze consistent zijn met de source Anchor-waarden die zijn geëxporteerd naar Azure AD, zoals beschreven in de sectie artikel [wijzigen AD FS claim regels](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). De wizard retourneert de volgende waarschuwing nadat de installatie is voltooid:
 
 ![Federatie configuratie van derden](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Nieuwe directory's toevoegen aan bestaande implementatie
-Stel dat u Azure AD Connect hebt geïmplementeerd met de functie ConsistencyGuid ingeschakeld en nu een andere map wilt toevoegen aan de implementatie. Wanneer u de map probeert toe te voegen, controleert Azure AD Connect wizard de status van het kenmerk MS-DS-ConsistencyGuid in de Directory. Als het kenmerk is geconfigureerd voor een of meer objecten in de Directory, sluit de wizard het kenmerk dat door andere toepassingen wordt gebruikt en wordt er een fout geretourneerd, zoals in het onderstaande diagram wordt weer gegeven. Als u zeker weet dat het kenmerk niet wordt gebruikt door bestaande toepassingen, kunt u de fout onderdrukken door de Azure AD Connect wizard opnieuw te starten met de **/SkipLdapSearch** -switch die is opgegeven zoals hierboven is beschreven, of moet u contact opnemen met de ondersteuning voor meer informatie .
+Stel dat u Azure AD Connect hebt geïmplementeerd met de functie ConsistencyGuid ingeschakeld en nu een andere map wilt toevoegen aan de implementatie. Wanneer u de map probeert toe te voegen, controleert Azure AD Connect wizard de status van het kenmerk MS-DS-ConsistencyGuid in de Directory. Als het kenmerk is geconfigureerd voor een of meer objecten in de Directory, sluit de wizard het kenmerk dat door andere toepassingen wordt gebruikt en wordt er een fout geretourneerd, zoals in het onderstaande diagram wordt weer gegeven. Als u zeker weet dat het kenmerk niet wordt gebruikt door bestaande toepassingen, kunt u de fout onderdrukken door de Azure AD Connect wizard opnieuw te starten met de **/SkipLdapSearch** -switch die is opgegeven zoals hierboven is beschreven, of moet u contact opnemen met de ondersteuning voor meer informatie.
 
 ![Nieuwe directory's toevoegen aan bestaande implementatie](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -180,7 +180,7 @@ Tijdens de integratie van uw on-premises Directory met Azure AD is het belang ri
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Het kenmerk voor userPrincipalName kiezen
 Wanneer u het kenmerk selecteert voor het opgeven van de waarde van UPN die moet worden gebruikt in azure, moet ervoor worden gezorgd
 
-* De kenmerk waarden voldoen aan de UPN-syntaxis (RFC 822), dat wil zeggen, het moet het domein\@notatie username zijn
+* De kenmerk waarden voldoen aan de UPN-syntaxis (RFC 822), dat wil zeggen, de notatie username\@domein
 * Het achtervoegsel in de waarden komt overeen met een van de geverifieerde aangepaste domeinen in azure AD
 
 In snelle instellingen is de aangenomen keuze voor het kenmerk userPrincipalName. Als het kenmerk userPrincipalName niet de waarde bevat waarmee gebruikers zich moeten aanmelden bij Azure, moet u **aangepaste installatie**kiezen.
@@ -198,4 +198,4 @@ Lees [uw aangepaste domein naam toevoegen aan Azure Active Directory](../active-
 Azure AD Connect detecteert of u in een niet-routeerbaar domein omgeving werkt en vervolgens op de juiste wijze waarschuwt voor snelle instellingen. Als u in een niet-routeerbaar domein werkt, is het waarschijnlijk dat de UPN, van de gebruikers, niet-Routeer bare achtervoegsels bevat. Als u bijvoorbeeld onder contoso. local werkt Azure AD Connect, wordt u geadviseerd om aangepaste instellingen te gebruiken, in plaats van snelle instellingen te gebruiken. Met aangepaste instellingen kunt u het kenmerk opgeven dat moet worden gebruikt als UPN om zich aan te melden bij Azure nadat de gebruikers zijn gesynchroniseerd met Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

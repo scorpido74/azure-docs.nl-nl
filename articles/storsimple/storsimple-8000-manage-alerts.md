@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270826"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365808"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
@@ -35,7 +35,7 @@ Daarnaast ziet u mogelijk waarschuwingen met betrekking tot beveiliging, updates
 
 ## <a name="alert-severity-levels"></a>Ernst niveaus van waarschuwingen
 
-Waarschuwingen hebben verschillende ernst niveaus, afhankelijk van de impact die de waarschuwings situatie heeft en de nood zaak van een reactie op de waarschuwing. Dit zijn de vijf ernstniveaus:
+Waarschuwingen hebben verschillende ernst niveaus, afhankelijk van de impact die de waarschuwings situatie heeft en de nood zaak van een reactie op de waarschuwing. De ernst niveaus zijn:
 
 * **Kritiek** : deze waarschuwing is in reactie op een voor waarde die van invloed is op de geslaagde prestaties van uw systeem. Actie is vereist om ervoor te zorgen dat de StorSimple-service niet wordt onderbroken.
 * **Waarschuwing** : dit probleem kan cruciaal worden als het niet is opgelost. U moet de situatie onderzoeken en alle acties uitvoeren die nodig zijn om het probleem op te lossen.
@@ -64,7 +64,7 @@ Nadat u e-mail meldingen voor een apparaat hebt ingeschakeld, ontvangen leden va
       
 3. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
 
-    ![Waarschuwings instellingen](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![waarschuwings instellingen](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
 4. U ziet een melding wanneer de test-e-mail wordt verzonden. 
    

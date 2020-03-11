@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370372"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364956"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Systeemstatusrapporten gebruiken om fouten op te lossen
 Azure Service Fabric-onderdelen bieden systeem status rapporten voor alle entiteiten in het cluster direct uit het vak. Met de [Health Store](service-fabric-health-introduction.md#health-store) worden entiteiten gemaakt en verwijderd op basis van de systeem rapporten. Ook worden deze ingedeeld in een-hiërarchie waarin entiteits interacties worden vastgelegd.
@@ -27,7 +27,7 @@ Systeem status rapporten bieden inzicht in de functionaliteit van het cluster en
 > 
 > 
 
-De rapporten van systeem onderdelen worden geïdentificeerd door de bron, die begint met het '**systeem '.** 'com.microsoft.intune.mam'. Met watchdog kunnen niet hetzelfde voor voegsel voor hun bronnen worden gebruikt, omdat rapporten met ongeldige para meters worden afgewezen.
+De rapporten van systeem onderdelen worden geïdentificeerd door de bron, die begint met het '**systeem '.** beleids. Met watchdog kunnen niet hetzelfde voor voegsel voor hun bronnen worden gebruikt, omdat rapporten met ongeldige para meters worden afgewezen.
 
 Laten we eens kijken naar enkele systeem rapporten om te begrijpen wat ze activeert en om te leren hoe de potentiële problemen die ze vertegenwoordigen, kunnen worden opgelost.
 
@@ -48,7 +48,7 @@ In het rapport wordt de time-out voor globale leases opgegeven als time-to-Live 
 * **Eigenschap**: begint met **groep** en bevat knooppunt gegevens.
 * **Volgende stappen**: onderzoek waarom de groep is verbroken. Controleer bijvoorbeeld de communicatie tussen cluster knooppunten.
 
-### <a name="rebuild"></a>Opnieuw samenstellen
+### <a name="rebuild"></a>Opnieuw opbouwen
 
 De Failover Manager (FM)-service beheert informatie over de cluster knooppunten. Wanneer FM gegevens verliest en gegevens verlies oploopt, kan niet worden gegarandeerd dat het de meest bijgewerkte informatie over de cluster knooppunten bevat. In dit geval wordt het systeem opnieuw opgebouwd en worden de gegevens van alle knoop punten in het cluster door System.FM verzameld, zodat de status opnieuw kan worden samengesteld. Als gevolg van netwerk-of knooppunt problemen kan het opnieuw samen stellen vastlopen of vastgelopen raken. Dit kan gebeuren met de Failover Manager Master-service (FMM). De FMM is een stateless systeem service waarmee wordt bijgehouden waar alle FMs in het cluster zich bevinden. De primaire FMM is altijd het knoop punt met de ID die het dichtst in de buurt is van 0. Als dat knoop punt wordt verwijderd, wordt een opnieuw opbouwen geactiveerd.
 Wanneer een van de voor gaande voor waarden plaatsvindt, wordt **System.fm** of **System. FMM** door een fouten rapport gemarkeerd. Opnieuw opbouwen kan in een van de twee fasen vastzitten:
@@ -139,7 +139,7 @@ System. hosting rapporteert een waarschuwing als gedefinieerde knooppunt capacit
 ## <a name="application-system-health-reports"></a>Status rapporten van het toepassings systeem
 System.CM, dat de Cluster Manager-service vertegenwoordigt, is de instantie die informatie over een toepassing beheert.
 
-### <a name="state"></a>Staat
+### <a name="state"></a>Status
 System.CM rapporten als OK wanneer de toepassing is gemaakt of bijgewerkt. Er wordt een melding van de Health Store wanneer de toepassing wordt verwijderd, zodat deze uit de Store kan worden verwijderd.
 
 * **SourceId**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Service systeem status rapporten
 System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over services beheert.
 
-### <a name="state"></a>Staat
+### <a name="state"></a>Status
 System.FM rapporteert als OK wanneer de service is gemaakt. De entiteit wordt uit het Health Store verwijderd wanneer de service wordt verwijderd.
 
 * **SourceId**: System.fm
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Systeem status rapporten partitioneren
 System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over service partities beheert.
 
-### <a name="state"></a>Staat
+### <a name="state"></a>Status
 System.FM rapporten als OK wanneer de partitie is gemaakt en in orde is. De entiteit wordt uit het Health Store verwijderd wanneer de partitie wordt verwijderd.
 
 Als de partitie minder dan het minimale aantal replica's bevat, wordt er een fout melding weer gegeven. Als de partitie niet kleiner is dan het minimum aantal replica's, maar deze lager is dan het aantal doel replica's, wordt een waarschuwing weer gegeven. Als de partitie zich in quorum verlies bevindt, wordt er een fout melding weer gegeven in System.FM.
@@ -391,7 +391,7 @@ In het geval van het voor beeld is verder onderzoek nodig. Onderzoek de status v
 ## <a name="replica-system-health-reports"></a>Status rapporten van het replica systeem
 **System. ra**, dat het onderdeel reconfiguratie agent vertegenwoordigt, is de instantie voor de replica status.
 
-### <a name="state"></a>Staat
+### <a name="state"></a>Status
 System. RA-rapporten OK wanneer de replica is gemaakt.
 
 * **SourceId**: System. ra
@@ -684,7 +684,7 @@ De **replicatie wachtrij is vol:**
 
 Wanneer een naamgevings bewerking langer duurt dan verwacht, wordt de bewerking gemarkeerd met een waarschuwings rapport op de primaire replica van de naamgevings service partitie die de bewerking verzendt. Als de bewerking is voltooid, wordt de waarschuwing gewist. Als de bewerking is voltooid met een fout, bevat het status rapport Details over de fout.
 
-* **SourceId**: System.NamingService
+* **SourceId**: System. NamingService
 * **Eigenschap**: begint met het voor voegsel '**Duration_** ' en identificeert de trage bewerking en de service Fabric naam waarop de bewerking wordt toegepast. Als er bijvoorbeeld een service op naam **Fabric maken:/MyApp/MyService** duurt te lang. de eigenschap is **Duration_AOCreateService. Fabric:/MyApp/MyService**. ' AO ' verwijst naar de rol van de naamgevings partitie voor deze naam en bewerking.
 * **Volgende stappen**: Controleer om te zien waarom de naamgevings bewerking mislukt. Elke bewerking kan verschillende hoofd oorzaken hebben. Zo kan de service delete vastzitten. De service is mogelijk vastgelopen omdat de toepassingshost vastloopt op een knoop punt vanwege een gebruikers fout in de service code.
 
@@ -738,7 +738,7 @@ HealthEvents          :
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication systeem status rapporten
 **System. hosting** is de instantie van geïmplementeerde entiteiten.
 
-### <a name="activation"></a>Activering
+### <a name="activation"></a>Activiteitsstatus
 System. hosting rapporten als OK wanneer een toepassing is geactiveerd op het knoop punt. Anders wordt er een fout melding weer gegeven.
 
 * **SourceId**: System. hosting
@@ -773,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Downloaden
 System. hosting meldt een fout als het downloaden van het toepassings pakket mislukt.
 
 * **SourceId**: System. hosting
@@ -851,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Downloaden
 System. hosting meldt een fout als het downloaden van het service pakket mislukt.
 
 * **SourceId**: System. hosting

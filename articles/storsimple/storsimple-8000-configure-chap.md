@@ -1,6 +1,6 @@
 ---
-title: CHAP configureren voor de StorSimple 8000-apparaat | Microsoft Docs
-description: Beschrijft hoe u voor het configureren van de CHAP Challenge Handshake Authentication Protocol () op een StorSimple-apparaat.
+title: CHAP configureren voor StorSimple 8000 Series-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Challenge Handshake Authentication Protocol (CHAP) configureert op een StorSimple-apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,160 +15,160 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362703"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366717"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>CHAP configureren voor uw StorSimple-apparaat
 
-In deze zelfstudie wordt uitgelegd hoe u CHAP configureren voor uw StorSimple-apparaat. De procedure beschreven in dit artikel is van toepassing op apparaten uit de StorSimple 8000-serie.
+In deze zelf studie wordt uitgelegd hoe u CHAP configureert voor uw StorSimple-apparaat. De procedure die in dit artikel wordt beschreven, is van toepassing op apparaten uit de StorSimple 8000-serie.
 
-CHAP staat voor Challenge Handshake Authentication Protocol. Het is een verificatiemethode wordt gebruikt door servers om de identiteit van externe clients te valideren. De verificatie is gebaseerd op een gedeelde wachtwoord of geheim. CHAP is één manier (Unidirectioneel) of wederzijdse (in twee richtingen). Eén manier CHAP is wanneer het doel wordt een initiator geverifieerd. Het doel wordt de initiator geverifieerd in wederzijdse of omgekeerde CHAP, en vervolgens de initiator het doel verifieert. De initiator-verificatie kan worden geïmplementeerd zonder de doel-verificatie. Doel-verificatie kan echter worden geïmplementeerd, alleen als de verificatie van de initiator ook is geïmplementeerd.
+CHAP staat voor Challenge Handshake Authentication Protocol. Het is een verificatie schema dat door servers wordt gebruikt om de identiteit van externe clients te valideren. De verificatie is gebaseerd op een gedeeld wacht woord of geheim. CHAP kan één manier (unidirectioneel) of wederzijds (bidirectioneel) zijn. Eenrichtings CHAP is wanneer het doel een initiator verifieert. In wederzijds of reverse CHAP verifieert het doel de initiator en vervolgens verifieert de initiator het doel. Initiator verificatie kan worden geïmplementeerd zonder doel verificatie. Doel verificatie kan echter alleen worden geïmplementeerd als de authenticatie van de initiator ook is geïmplementeerd.
 
-Als een best practice, raden wij aan dat u CHAP om iSCSI-beveiliging te verbeteren.
+Als best practice wordt u aangeraden CHAP te gebruiken om iSCSI-beveiliging te verbeteren.
 
 > [!NOTE]
-> Houd er rekening mee dat IPSEC wordt momenteel niet ondersteund op StorSimple-apparaten.
+> Houd er wel van uit dat IPSEC momenteel niet wordt ondersteund op StorSimple-apparaten.
 
-De CHAP-instellingen op het StorSimple-apparaat kunnen worden geconfigureerd in de volgende manieren:
+De CHAP-instellingen op het StorSimple-apparaat kunnen op de volgende manieren worden geconfigureerd:
 
-* Eén richting of eenrichtings-verificatie
-* In twee richtingen of wederzijdse verificatie of omgekeerde verificatie
+* Eenrichtings-of eenrichtings verificatie
+* Bidirectionele of wederzijdse of omgekeerde verificatie
 
-In elk van deze gevallen is moet de portal voor het apparaat en de serversoftware van de iSCSI-initiator worden geconfigureerd. De gedetailleerde stappen voor deze configuratie worden beschreven in de volgende zelfstudie.
+In elk van deze gevallen moet de portal voor het apparaat en de iSCSI-initiator software van de server worden geconfigureerd. De gedetailleerde stappen voor deze configuratie worden beschreven in de volgende zelf studie.
 
-## <a name="unidirectional-or-one-way-authentication"></a>Eén richting of eenrichtings-verificatie
+## <a name="unidirectional-or-one-way-authentication"></a>Eenrichtings-of eenrichtings verificatie
 
-In één richting verificatie, wordt de initiator geverifieerd met het doel. Deze verificatie is vereist dat u de CHAP-initiator-instellingen op het StorSimple-apparaat en de iSCSI-Initiator-software op de host configureren. De gedetailleerde procedures voor uw StorSimple-apparaat en de Windows-host worden hierna beschreven.
+Bij een eenrichtings verificatie verifieert het doel de initiator. Voor deze verificatie moet u de instellingen van de CHAP-initiator op het StorSimple-apparaat en de iSCSI-initiator software op de host configureren. De gedetailleerde procedures voor uw StorSimple-apparaat en Windows-host worden hierna beschreven.
 
-#### <a name="to-configure-your-device-for-one-way-authentication"></a>Uw apparaat voor eenrichtingsverkeer verificatie configureren
+#### <a name="to-configure-your-device-for-one-way-authentication"></a>Uw apparaat configureren voor eenrichtings verificatie
 
-1. In de Azure-portal, gaat u naar uw StorSimple Device Manager-service. Klik op **apparaten** en selecteer en klik op een apparaat dat u wilt configureren van CHAP voor. Ga naar **apparaatinstellingen > beveiliging**. In de **beveiligingsinstellingen** blade, klikt u op **CHAP**.
+1. Ga in het Azure Portal naar uw StorSimple Apparaatbeheer-service. Klik op **apparaten** en selecteer en klik op het apparaat waarvoor u CHAP wilt configureren. Ga naar **apparaatinstellingen > beveiliging**. Klik op de Blade **beveiligings instellingen** op **CHAP**.
    
-    ![CHAP-Initiator](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. In de **CHAP** blade, en klik in de **CHAP Initiator** sectie:
+    ![CHAP Initiator](./media/storsimple-8000-configure-chap/configure-chap5.png)
+2. In de **CHAP** -Blade en in de sectie **CHAP initiator** :
    
-   1. Geef een gebruikersnaam voor het CHAP-initiator.
-   2. Een wachtwoord voor uw CHAP-initiator op te geven.
+   1. Geef een gebruikers naam op voor uw CHAP-initiator.
+   2. Geef een wacht woord op voor uw CHAP-initiator.
       
       > [!IMPORTANT]
-      > De CHAP-gebruikersnaam moet minder dan 233 tekens bevatten. De CHAP-wachtwoord moet 12 tot 16 tekens. Een langer gebruikersnaam of wachtwoord resulteert in een verificatiefout opgetreden op de Windows-host.
+      > De CHAP-gebruikers naam moet minder dan 233 tekens bevatten. Het CHAP-wacht woord moet tussen de 12 en 16 tekens lang zijn. Een langere gebruikers naam of wacht woord resulteert in een verificatie fout op de Windows-host.
    
    3. Bevestig het wachtwoord.
 
-       ![CHAP-Initiator](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Klik op **Opslaan**. Er wordt een bevestigingsbericht weergegeven. Klik op **OK** om de wijzigingen op te slaan.
+       ![CHAP Initiator](./media/storsimple-8000-configure-chap/configure-chap6.png)
+3. Klik op **Opslaan**. Er wordt een bevestigings bericht weer gegeven. Klik op **OK** om de wijzigingen op te slaan.
 
-#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Eenzijdige verificatie configureren op de host Windows server
-1. Start de iSCSI-Initiator op de host-server van Windows.
-2. In de **eigenschappen iSCSI-Initiator** venster de volgende stappen uitvoeren:
+#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Eenrichtings verificatie configureren op de Windows-hostserver
+1. Start de iSCSI-initiator op de Windows-hostserver.
+2. In het venster **Eigenschappen iSCSI-initiator** voert u de volgende stappen uit:
    
-   1. Klik op de **detectie** tabblad.
+   1. Klik op het tabblad **detectie** .
       
        ![Eigenschappen iSCSI-initiator](./media/storsimple-configure-chap/IC740944.png)
-   2. Klik op **Portal detecteren**.
-3. In de **doelportaal detecteren** in het dialoogvenster:
+   2. Klik op **Portal ontdekken**.
+3. In het dialoog venster **doel Portal detecteren** :
    
-   1. Geef het IP-adres van uw apparaat.
+   1. Geef het IP-adres van uw apparaat op.
    2. Klik op **Advanced**.
       
-       ![Doelportaal detecteren](./media/storsimple-configure-chap/IC740945.png)
-4. In de **geavanceerde instellingen** in het dialoogvenster:
+       ![Doel Portal detecteren](./media/storsimple-configure-chap/IC740945.png)
+4. In het dialoog venster **Geavanceerde instellingen** :
    
-   1. Selecteer de **inschakelen CHAP aanmelden** selectievakje.
-   2. In de **naam** veld, geef de naam van de gebruiker die u hebt opgegeven voor de CHAP-Initiator in Azure portal.
-   3. In de **Doelgeheim** veld, voert u het wachtwoord die u hebt opgegeven voor de CHAP-Initiator in Azure portal.
+   1. Schakel het selectie vakje **CHAP-aanmelding inschakelen in** .
+   2. Geef in het veld **naam** de gebruikers naam op die u hebt opgegeven voor de CHAP initiator in het Azure Portal.
+   3. Geef in het veld **doel geheim** het wacht woord op dat u hebt opgegeven voor de CHAP initiator in het Azure Portal.
    4. Klik op **OK**.
       
        ![Geavanceerde instellingen algemeen](./media/storsimple-configure-chap/IC740946.png)
-5. Op de **doelen** tabblad van de **eigenschappen iSCSI-Initiator** venster status van het apparaat moet worden weergegeven als **verbonden**. Als u een 1200 StorSimple-apparaat gebruikt, is elk volume dat is gekoppeld als een iSCSI-doel. Stap 3 en 4 moet daarom worden herhaald voor elk volume.
+5. Op het tabblad **doelen** van het venster **Eigenschappen van iSCSI-initiator** moet de apparaatstatus worden weer gegeven als **verbonden**. Als u een StorSimple 1200-apparaat gebruikt, wordt elk volume gekoppeld als een iSCSI-doel. Daarom moeten stap 3-4 voor elk volume worden herhaald.
    
     ![Volumes die zijn gekoppeld als afzonderlijke doelen](./media/storsimple-configure-chap/chap4.png)
    
    > [!IMPORTANT]
-   > Als u de naam van de iSCSI-wijzigt, wordt de nieuwe naam wordt gebruikt voor nieuwe iSCSI-sessies. Nieuwe instellingen worden niet gebruikt voor bestaande sessies totdat u zich afmelden en aanmelden opnieuw.
+   > Als u de iSCSI-naam wijzigt, wordt de nieuwe naam gebruikt voor nieuwe iSCSI-sessies. Nieuwe instellingen worden pas gebruikt voor bestaande sessies als u zich afmeldt en opnieuw aanmeldt.
 
-Voor meer informatie over het configureren van CHAP op de host Windows server, gaat u naar [aanvullende overwegingen](#additional-considerations).
+Ga naar [aanvullende overwegingen](#additional-considerations)voor meer informatie over het configureren van CHAP op de Windows-hostserver.
 
-## <a name="bidirectional-or-mutual-authentication"></a>Verificatie in twee richtingen of wederzijdse
+## <a name="bidirectional-or-mutual-authentication"></a>Bidirectionele of wederzijdse verificatie
 
-In de verificatie in twee richtingen, het doel wordt de initiator geverifieerd en vervolgens de initiator het doel verifieert. Deze procedure moet de gebruiker configureren de instellingen voor CHAP initiator en omgekeerde CHAP-instellingen op het apparaat en iSCSI-Initiator-software op de host. De volgende procedures beschrijven de stappen voor het configureren van wederzijdse verificatie op het apparaat en op de Windows-host.
+In bidirectionele verificatie verifieert het doel de initiator en vervolgens verifieert de initiator het doel. Voor deze procedure moet de gebruiker de instellingen van de CHAP-initiator, de instellingen voor omgekeerde CHAP op het apparaat en de iSCSI-initiator software op de host configureren. In de volgende procedures worden de stappen beschreven voor het configureren van wederzijdse verificatie op het apparaat en op de Windows-host.
 
-#### <a name="to-configure-your-device-for-mutual-authentication"></a>Uw apparaat voor wederzijdse verificatie te configureren
+#### <a name="to-configure-your-device-for-mutual-authentication"></a>Uw apparaat configureren voor wederzijdse verificatie
 
-1. In de Azure-portal, gaat u naar uw StorSimple Device Manager-service. Klik op **apparaten** en selecteer en klik op een apparaat dat u wilt configureren van CHAP voor. Ga naar **apparaatinstellingen > beveiliging**. In de **beveiligingsinstellingen** blade, klikt u op **CHAP**.
+1. Ga in het Azure Portal naar uw StorSimple Apparaatbeheer-service. Klik op **apparaten** en selecteer en klik op het apparaat waarvoor u CHAP wilt configureren. Ga naar **apparaatinstellingen > beveiliging**. Klik op de Blade **beveiligings instellingen** op **CHAP**.
    
     ![CHAP-doel](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. Schuif naar beneden op deze pagina en in de **CHAP-doel** sectie:
+2. Schuif omlaag op deze pagina en in de sectie **CHAP-doel** :
    
-   1. Geef een **omgekeerde CHAP-gebruikersnaam** voor uw apparaat.
-   2. Geef een **omgekeerd CHAP-wachtwoord** voor uw apparaat.
+   1. Geef een **omgekeerde CHAP-gebruikers naam** op voor uw apparaat.
+   2. Geef een **Reverse CHAP-wacht woord** op voor uw apparaat.
    3. Bevestig het wachtwoord.
-3. In de **CHAP Initiator** sectie:
+3. In het gedeelte **CHAP initiator** :
    
-   1. Geef een **gebruikersnaam** voor uw apparaat.
-   2. Geef een **wachtwoord** voor uw apparaat.
+   1. Geef een **gebruikers naam** op voor het apparaat.
+   2. Geef een **wacht woord** op voor uw apparaat.
    3. Bevestig het wachtwoord.
 
-       ![CHAP-Initiator](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Klik op **Opslaan**. Er wordt een bevestigingsbericht weergegeven. Klik op **OK** om de wijzigingen op te slaan.
+       ![CHAP Initiator](./media/storsimple-8000-configure-chap/configure-chap11.png)
+4. Klik op **Opslaan**. Er wordt een bevestigings bericht weer gegeven. Klik op **OK** om de wijzigingen op te slaan.
 
-#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Verificatie in twee richtingen op de Windows-host-server configureren
+#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Bidirectionele verificatie configureren op de Windows-hostserver
 
-1. Start de iSCSI-Initiator op de host-server van Windows.
-2. In de **eigenschappen iSCSI-Initiator** venster, klikt u op de **configuratie** tabblad.
+1. Start de iSCSI-initiator op de Windows-hostserver.
+2. Klik in het venster **Eigenschappen van iSCSI-initiator** op het tabblad **configuratie** .
 3. Klik op **CHAP**.
-4. In de **iSCSI-Initiator wederzijdse CHAP-geheim** in het dialoogvenster:
+4. In het dialoog venster **wederzijds CHAP-geheim van iSCSI-initiator** :
    
-   1. Type de **omgekeerde CHAP-wachtwoord** die u hebt geconfigureerd in Azure portal.
+   1. Typ het **omgekeerde CHAP-wacht woord** dat u hebt geconfigureerd in de Azure Portal.
    2. Klik op **OK**.
       
-       ![iSCSI-initiator wederzijdse CHAP-geheim](./media/storsimple-configure-chap/IC740949.png)
-5. Klik op de **doelen** tabblad.
-6. Klik op de **Connect** knop. 
-7. In de **verbinding naar doel** in het dialoogvenster, klikt u op **Geavanceerd**.
-8. In de **geavanceerde eigenschappen** in het dialoogvenster:
+       ![wederzijds CHAP-geheim van iSCSI-initiator](./media/storsimple-configure-chap/IC740949.png)
+5. Klik op het tabblad **doelen** .
+6. Klik op de knop **verbinding maken** . 
+7. Klik in het dialoog venster **verbinding maken met doel** op **Geavanceerd**.
+8. In het dialoog venster **Geavanceerde eigenschappen** :
    
-   1. Selecteer de **inschakelen CHAP aanmelden** selectievakje.
-   2. In de **naam** veld, geef de naam van de gebruiker die u hebt opgegeven voor de CHAP-Initiator in Azure portal.
-   3. In de **Doelgeheim** veld, voert u het wachtwoord die u hebt opgegeven voor de CHAP-Initiator in Azure portal.
-   4. Selecteer de **wederzijdse verificatie uitvoeren** selectievakje.
+   1. Schakel het selectie vakje **CHAP-aanmelding inschakelen in** .
+   2. Geef in het veld **naam** de gebruikers naam op die u hebt opgegeven voor de CHAP initiator in het Azure Portal.
+   3. Geef in het veld **doel geheim** het wacht woord op dat u hebt opgegeven voor de CHAP initiator in het Azure Portal.
+   4. Schakel het selectie vakje **wederzijdse verificatie uitvoeren** in.
       
-       ![Geavanceerde instellingen voor wederzijdse verificatie](./media/storsimple-configure-chap/IC740950.png)
-   5. Klik op **OK** de CHAP-configuratie voltooien
+       ![Geavanceerde instellingen wederzijdse verificatie](./media/storsimple-configure-chap/IC740950.png)
+   5. Klik op **OK** om de CHAP-configuratie te volt ooien
 
-Voor meer informatie over het configureren van CHAP op de host Windows server, gaat u naar [aanvullende overwegingen](#additional-considerations).
+Ga naar [aanvullende overwegingen](#additional-considerations)voor meer informatie over het configureren van CHAP op de Windows-hostserver.
 
 ## <a name="additional-considerations"></a>Aanvullende overwegingen
 
-De **snelle verbinding** functie biedt geen ondersteuning voor verbindingen waarvoor CHAP ingeschakeld. Wanneer CHAP is ingeschakeld, zorg ervoor dat u de **Connect** knop die beschikbaar is op de **doelen** tabblad verbinding maken met een doel.
+De functie **snelle verbinding** biedt geen ondersteuning voor verbindingen waarvoor CHAP is ingeschakeld. Wanneer CHAP is ingeschakeld, moet u ervoor zorgen dat u de knop **verbinding maken** gebruikt die beschikbaar is op het tabblad **doelen** om verbinding te maken met een doel.
 
-![Verbinding maken met doelserver](./media/storsimple-configure-chap/IC740947.png)
+![Verbinding maken met doel](./media/storsimple-configure-chap/IC740947.png)
 
-In de **verbinding maken met doel** in het dialoogvenster dat wordt weergegeven, selecteer de **deze verbinding toevoegen aan de lijst met favoriete doelen** selectievakje. Deze selectie zorgt ervoor dat telkens wanneer de computer opnieuw is opgestart, wordt geprobeerd om terug te zetten van de verbinding met de favoriete iSCSI-doelen.
+Schakel in het dialoog venster **verbinding maken met doel** dat wordt weer gegeven het selectie vakje **deze verbinding aan de lijst met favoriete doelen toevoegen** in. Deze selectie zorgt ervoor dat telkens wanneer de computer opnieuw wordt opgestart, wordt geprobeerd de verbinding met de iSCSI-doel doelen te herstellen.
 
 ## <a name="errors-during-configuration"></a>Fouten tijdens de configuratie
 
-Als de CHAP-configuratie onjuist is, dan kunt u waarschijnlijk om te zien een **verificatiefout** foutbericht weergegeven.
+Als uw CHAP-configuratie onjuist is, ziet u waarschijnlijk een fout bericht over een **verificatie** fout.
 
-## <a name="verification-of-chap-configuration"></a>Verificatie van CHAP-configuratie
+## <a name="verification-of-chap-configuration"></a>Verificatie van de CHAP-configuratie
 
-U kunt controleren dat CHAP wordt gebruikt door de volgende stappen te voltooien.
+U kunt controleren of CHAP wordt gebruikt door de volgende stappen uit te voeren.
 
-#### <a name="to-verify-your-chap-configuration"></a>Uw CHAP-configuratie controleren
+#### <a name="to-verify-your-chap-configuration"></a>De CHAP-configuratie controleren
 1. Klik op **favoriete doelen**.
 2. Selecteer het doel waarvoor u verificatie hebt ingeschakeld.
 3. Klik op **Details**.
    
-    ![iSCSI-initiator eigenschappen favoriete doelen](./media/storsimple-configure-chap/IC740951.png)
-4. In de **favoriete Doeldetails** dialoogvenster vak, houd er rekening mee de vermelding in de **verificatie** veld. Als is de configuratie voltooid is, moet zijn **CHAP**.
+    ![eigenschappen favoriete doelen iSCSI-initiator](./media/storsimple-configure-chap/IC740951.png)
+4. In het dialoog venster **doel Details van favoriet** ziet u de vermelding in het veld **verificatie** . Als de configuratie is geslaagd, moet **CHAP**worden gedicteerd.
    
-    ![Favoriete Doeldetails](./media/storsimple-configure-chap/IC740952.png)
+    ![Details van favoriet doel](./media/storsimple-configure-chap/IC740952.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [StorSimple security](storsimple-8000-security.md).
-* Meer informatie over [met de StorSimple Device Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Meer informatie over [StorSimple-beveiliging](storsimple-8000-security.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

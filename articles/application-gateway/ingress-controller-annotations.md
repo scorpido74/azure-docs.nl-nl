@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373484"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Aantekeningen voor de Application Gateway ingangs controller 
 
@@ -24,7 +24,7 @@ De Kubernetes ingress-resource kan worden voorzien van aantekeningen met wille k
 
 Voor een ingangs resource die wordt waargenomen door AGIC, **moet deze zijn voorzien van aantekeningen** bij `kubernetes.io/ingress.class: azure/application-gateway`. AGIC werkt alleen met de ingangs bron in kwestie.
 
-| Aantekening sleutel | Waardetype | Standaard waarde | Toegestane waarden
+| Aantekening sleutel | Waardetype | Standaardwaarde | Toegestane waarden
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |

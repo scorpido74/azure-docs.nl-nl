@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373055"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -27,9 +27,9 @@ U kunt Updatebeheer voor virtuele machines (Vm's) inschakelen met behulp van de 
 > [!NOTE]
 > Voor de Updatebeheer oplossing moet u een Log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
 
-Er is een Azure [Resource Manager-sjabloon](automation-update-management-deploy-template.md) beschikbaar waarmee u de updatebeheer-oplossing kunt implementeren in een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement.
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Er is een Azure [Resource Manager-sjabloon](automation-update-management-deploy-template.md) beschikbaar waarmee u de updatebeheer-oplossing kunt implementeren in een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement.
 
 ## <a name="solution-overview"></a>Oplossingenoverzicht
 
@@ -248,10 +248,15 @@ Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats om
 
 Als u systemen wilt bijwerken, moet u de Updatebeheer-oplossing inschakelen. Hieronder vindt u de aanbevolen en ondersteunde methoden voor het voorbereiden van de oplossing:
 
-* [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
-* [Van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
-* [Vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
-* [Met een Azure Automation runbook](automation-onboard-solutions.md)
+- [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
+
+- [Van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
+
+- [Vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
+
+- [Met een Azure Automation runbook](automation-onboard-solutions.md)
+
+- [Met een Azure Resource Manager sjabloon](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

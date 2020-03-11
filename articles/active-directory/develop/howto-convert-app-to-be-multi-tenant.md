@@ -14,12 +14,12 @@ ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33116039d5e47b95322ffafb4e8f4eef31bd84cf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467756"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375636"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: aanmelden bij een Azure Active Directory gebruiker met het toepassings patroon met meerdere tenants
 
@@ -115,7 +115,7 @@ Sommige machtigingen kunnen worden doorgestuurd naar een gewone gebruiker, terwi
 
 Bij app-specifieke machtigingen is er altijd toestemming van een tenantbeheerder nodig. Als uw toepassing een machtiging voor een app aanvraagt en een gebruiker zich probeert aan te melden bij de toepassing, wordt een fout bericht weer gegeven met de melding dat de gebruiker geen toestemming kan geven.
 
-Bepaalde gedelegeerde machtigingen vereisen ook de toestemming van een Tenant beheerder. Het is bijvoorbeeld mogelijk om terug te schrijven naar Azure AD, omdat de aangemelde gebruiker toestemming van de Tenant beheerder nodig heeft. Net als alleen app-machtigingen geldt dat als een gewone gebruiker zich probeert aan te melden bij een toepassing die een gedelegeerde machtiging aanvraagt die toestemming van de beheerder vereist, uw toepassing een fout bericht ontvangt. Of een machtiging beheerders toestemming vereist, wordt bepaald door de ontwikkelaar die de resource heeft gepubliceerd en kan worden gevonden in de documentatie voor de resource. De machtigingen documentatie voor de [Azure AD-Graph API][AAD-Graph-Perm-Scopes] en [Microsoft Graph-API][MSFT-Graph-permission-scopes] geven aan welke machtigingen beheerders toestemming nodig heeft.
+Bepaalde gedelegeerde machtigingen vereisen ook de toestemming van een Tenant beheerder. Het is bijvoorbeeld mogelijk om terug te schrijven naar Azure AD, omdat de aangemelde gebruiker toestemming van de Tenant beheerder nodig heeft. Net als alleen app-machtigingen geldt dat als een gewone gebruiker zich probeert aan te melden bij een toepassing die een gedelegeerde machtiging aanvraagt die toestemming van de beheerder vereist, uw toepassing een fout bericht ontvangt. Of een machtiging beheerders toestemming vereist, wordt bepaald door de ontwikkelaar die de resource heeft gepubliceerd en kan worden gevonden in de documentatie voor de resource. De machtigingen documentatie voor de [Microsoft Graph-API][MSFT-Graph-permission-scopes] geven aan welke machtigingen beheerders toestemming nodig heeft.
 
 Als uw toepassing gebruikmaakt van machtigingen waarvoor beheerders toestemming is vereist, moet u een penbeweging hebben, zoals een knop of koppeling, waar de beheerder de actie kan initiëren. De aanvraag die uw toepassing verzendt voor deze actie is het gebruikelijke OAuth2/OpenID Connect Connect-autorisatie verzoek dat ook de `prompt=admin_consent` query teken reeks parameter bevat. Zodra de beheerder heeft ingestemd en de Service-Principal is gemaakt in de Tenant van de klant, hebben volgende aanmeldings aanvragen niet de para meter `prompt=admin_consent` nodig. Omdat de beheerder heeft vastgesteld dat de aangevraagde machtigingen acceptabel zijn, worden er geen andere gebruikers in de Tenant om vanaf dat moment toestemming gevraagd.
 
@@ -182,7 +182,6 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]
 * [Overzicht van het instemming raamwerk][AAD-Consent-Overview]
 * [Microsoft Graph API-machtigings bereik][MSFT-Graph-permission-scopes]
-* [Graph API-machtigings bereik voor Azure AD][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -192,8 +191,6 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -213,10 +210,6 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md

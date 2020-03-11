@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361219"
 ---
 # <a name="list-of-service-fabric-events"></a>Lijst met Service Fabric gebeurtenissen 
 
@@ -31,7 +31,7 @@ Hier volgt een lijst met deze Service Fabric gebeurtenissen ingedeeld op entitei
 
 Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgrade-windows-server.md).
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Upgraden | Een upgrade van een cluster is gestart | CM | Informatief |
 | 29628 | ClusterUpgradeCompleted | Upgraden | Een cluster upgrade is voltooid | CM | Informatief | 
@@ -43,7 +43,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 **Levenscyclus gebeurtenissen van knoop punt** 
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | Het deactiveren van een knoop punt is voltooid | FM | Informatief | 
 | 18603 | NodeUp | StateTransition | Het cluster heeft gedetecteerd dat een knoop punt is gestart | FM | Informatief | 
@@ -60,7 +60,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 **Toepassings levenscyclus gebeurtenissen**
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Duur | Er is een nieuwe toepassing gemaakt | CM | Informatief | 
 | 29625 | ApplicationDeleted | Duur | Een bestaande toepassing is verwijderd | CM | Informatief | 
@@ -70,7 +70,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 Meer informatie over toepassings upgrades vindt u [hier](service-fabric-application-upgrade.md).
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Upgraden | Een toepassings upgrade is gestart | CM | Informatief | 
 | 29622 | ApplicationUpgradeCompleted | Upgraden | Een toepassings upgrade is voltooid | CM | Informatief | 
@@ -82,7 +82,7 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 
 **Service levenscyclus gebeurtenissen**
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | Duur | Er is een nieuwe service gemaakt | FM | Informatief | 
 | 18658 | ServiceDeleted | Duur | Er is een bestaande service verwijderd | FM | Informatief | 
@@ -91,15 +91,15 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 
 **Partities verplaatsen**
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Duur | De herconfiguratie van een partitie is voltooid | RA | Informatief | 
+| 18940 | PartitionReconfigured | Duur | De herconfiguratie van een partitie is voltooid | Dankzij | Informatief | 
 
 ## <a name="replica-events"></a>Replica gebeurtenissen
 
 **Gebeurtenissen voor de levens cyclus van replica's**
 
-| Gebeurtenis-id | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis-id | Naam | Category | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- |
 | 61701 | ReliableDictionaryOpened | Duur | Betrouw bare woorden lijst is geopend | DistributedDictionary | Informatief |
 | 61702 | ReliableDictionaryClosed | Duur | Betrouw bare woorden lijst is gesloten | DistributedDictionary | Informatief |
@@ -120,20 +120,20 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 | 16831 | BuildIdleReplicaStarted | Duur | Primaire replica is begonnen met het bouwen van een inactieve replica | Replicatie | Informatief |
 | 16832 | BuildIdleReplicaCompleted | Duur | Primaire replica heeft het opbouwen van een inactieve replica voltooid | Replicatie | Informatief |
 | 16833 | BuildIdleReplicaFailed | Duur | Primaire replica kan geen inactieve replica opbouwen | Replicatie | Waarschuwing |
-| 16834 | PrimaryReplicationQueueFull | Gezondheid | De replicatie wachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
-| 16835 | PrimaryReplicationQueueWarning | Gezondheid | De replicatie wachtrij van de primaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Gezondheid | De replicatie wachtrij van de primaire replica is OK | Replicatie | Informatief |
-| 16837 | SecondaryReplicationQueueFull | Gezondheid | De replicatie wachtrij van de secundaire replica is vol | Replicatie | Waarschuwing |
-| 16838 | SecondaryReplicationQueueWarning | Gezondheid | De replicatie wachtrij van de secundaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Gezondheid | De replicatie wachtrij van de secundaire replica is OK | Replicatie | Informatief |
-| 16840 | PrimaryFaultedSlowSecondary | Gezondheid | De primaire replica heeft een fout met een langzame secundaire replica veroorzaakt | Replicatie | Waarschuwing |
-| 16841 | ReplicatorFaulted | Gezondheid | Replica is mislukt | Replicatie | Waarschuwing |
+| 16834 | PrimaryReplicationQueueFull | Status | De replicatie wachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
+| 16835 | PrimaryReplicationQueueWarning | Status | De replicatie wachtrij van de primaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de primaire replica is OK | Replicatie | Informatief |
+| 16837 | SecondaryReplicationQueueFull | Status | De replicatie wachtrij van de secundaire replica is vol | Replicatie | Waarschuwing |
+| 16838 | SecondaryReplicationQueueWarning | Status | De replicatie wachtrij van de secundaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de secundaire replica is OK | Replicatie | Informatief |
+| 16840 | PrimaryFaultedSlowSecondary | Status | De primaire replica heeft een fout met een langzame secundaire replica veroorzaakt | Replicatie | Waarschuwing |
+| 16841 | ReplicatorFaulted | Status | Replica is mislukt | Replicatie | Waarschuwing |
 
 ## <a name="container-events"></a>Container gebeurtenissen
 
 **Levenscyclus gebeurtenissen van container** 
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | Er is een container gestart | Hosting | Informatief | 1 |
 | 23075 | ContainerDeactivated | Een container is gestopt | Hosting | Informatief | 1 |
@@ -149,21 +149,21 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 **Gebeurtenissen van het cluster status rapport**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Er is een nieuw cluster status rapport beschikbaar | HM | Informatief | 1 |
 | 54437 | ClusterHealthReportExpired | Een bestaand cluster status rapport is verlopen | HM | Informatief | 1 |
 
 **Gebeurtenissen van knooppunt status rapport**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | Er is een nieuw knooppunt status rapport beschikbaar | HM | Informatief | 1 |
 | 54432 | NodeHealthReportExpired | Een bestaand status rapport van het knoop punt is verlopen | HM | Informatief | 1 |
 
 **Gebeurtenissen van het status rapport van de toepassing**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | Er is een nieuw status rapport voor de toepassing gemaakt. Dit geldt voor niet-geïmplementeerde toepassingen. | HM | Informatief | 1 |
 | 54426 | DeployedApplicationNewHealthReport | Er is een nieuw geïmplementeerd toepassings status rapport gemaakt | HM | Informatief | 1 |
@@ -174,21 +174,21 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 **Gebeurtenissen van service status rapport**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Er is een nieuw service status rapport gemaakt | HM | Informatief | 1 |
 | 54433 | ServiceHealthReportExpired | Een bestaand service status rapport is verlopen | HM | Informatief | 1 |
 
 **Status rapport gebeurtenissen partitioneren**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Er is een nieuw partitie status rapport gemaakt | HM | Informatief | 1 |
 | 54431 | PartitionHealthReportExpired | Een bestaand partitie status rapport is verlopen | HM | Informatief | 1 |
 
 **Gebeurtenissen van het status rapport van de replica**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | Er is een stateful replica status rapport gemaakt | HM | Informatief | 1 |
 | 54430 | StatelessInstanceNewHealthReport | Er is een nieuw status rapport voor stateless instanties gemaakt | HM | Informatief | 1 |
@@ -199,28 +199,28 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 **Chaos-sessie gebeurtenissen**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | Er is een chaos-test sessie gestart | Test baarheid | Informatief | 1 |
 | 50023 | ChaosStopped | Een chaos-test sessie is gestopt | Test baarheid | Informatief | 1 |
 
 **Chaos**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | Een knoop punt is gepland om opnieuw te worden opgestart als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 | 50087 | ChaosNodeRestartCompleted | Het opnieuw opstarten van een knoop punt is voltooid als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 
 **Chaos toepassings gebeurtenissen**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | ChaosCodePackageRestartScheduled | Een code pakket opnieuw opstarten is gepland tijdens een chaos-test sessie | Test baarheid | Informatief | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | Het opnieuw opstarten van het code pakket is voltooid tijdens een chaos-test sessie | Test baarheid | Informatief | 1 |
 
 **Chaos-partitie gebeurtenissen**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | Een primaire partitie is ingepland om te worden verplaatst als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | Een secundaire partitie is ingepland om te worden verplaatst als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
@@ -228,7 +228,7 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 **Chaos-replica gebeurtenissen**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | Het opnieuw opstarten van een replica is gepland als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 | 50051 | ChaosReplicaRemovalScheduled | Het verwijderen van een replica is gepland als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
@@ -238,7 +238,7 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 **Correlatie gebeurtenissen**
 
-| Gebeurtenis-id | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis-id | Naam | Beschrijving |Bron (taak) | Niveau | Version |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | Er is een correlatie gedetecteerd | Test baarheid | Informatief | 1 |
 
@@ -246,7 +246,7 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 Hier volgt een uitgebreide lijst met gebeurtenissen van Service Fabric vóór versie 6,2.
 
-| Gebeurtenis-id | Name | Bron (taak) | Niveau |
+| Gebeurtenis-id | Naam | Bron (taak) | Niveau |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Informatief |
 | 25621 | NodeOpenedSuccess | FabricNode | Informatief |

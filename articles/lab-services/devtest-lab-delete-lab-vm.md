@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759717"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380991"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Een Lab of virtuele machine in een lab in Azure DevTest Labs verwijderen
 In dit artikel wordt beschreven hoe u een Lab of virtuele machine in een Lab verwijdert.
@@ -31,7 +31,7 @@ Wanneer u een DevTest Labs-exemplaar uit een resource groep verwijdert, voert de
 
 Voer de volgende acties uit om een lab te verwijderen: 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle resources** in het menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
 
     ![Uw Lab selecteren](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -56,7 +56,7 @@ De virtuele machine, de netwerk interface en de schijf die aan de VM zijn gekopp
 
 Als u een virtuele machine in een Lab wilt verwijderen, voert u de volgende handelingen uit: 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle resources** in het menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
 
     ![Uw Lab selecteren](media/devtest-lab-delete-lab-vm/select-lab.png)

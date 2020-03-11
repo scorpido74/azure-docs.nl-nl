@@ -7,11 +7,11 @@ ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462204"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373057"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Op rollen gebaseerd toegangsbeheer in Azure Automation
 
@@ -283,7 +283,7 @@ In de volgende sectie ziet u hoe u RBAC kunt configureren voor uw Automation-acc
 
 3. Typ de gebruikers naam van de gebruiker aan wie u machtigingen wilt verlenen in het veld **selecteren** . Kies de gebruiker in de lijst en klik op **Opslaan**.
 
-   ![Gebruikers toevoegen](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Add users (Gebruikers toevoegen)](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nu ziet u de gebruiker die is toegevoegd aan de pagina gebruikers, waarbij de geselecteerde rol is toegewezen.
 

@@ -7,11 +7,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358140"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>De Mobile Apps node. js-SDK gebruiken
 
@@ -131,7 +131,7 @@ Voor Visual Studio 2015 is een uitbrei ding vereist voor het ontwikkelen van nod
 
 ### <a name="create-node-backend-portal"></a>Een node. js-back-end maken met behulp van de Azure Portal
 
-U kunt een Mobile Apps back-end direct maken in de [Azure Portal]. U kunt de volgende stappen uitvoeren of een client en server samen maken door de zelf studie [een mobiele app maken](app-service-mobile-ios-get-started.md) te volgen. De zelf studie bevat een vereenvoudigde versie van deze instructies en is het meest geschikt voor testen van concept projecten.
+U kunt een Mobile Apps back-end direct maken in de [Azure-portal]. U kunt de volgende stappen uitvoeren of een client en server samen maken door de zelf studie [een mobiele app maken](app-service-mobile-ios-get-started.md) te volgen. De zelf studie bevat een vereenvoudigde versie van deze instructies en is het meest geschikt voor testen van concept projecten.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -328,7 +328,7 @@ Toegang tot de data base via een TCP/IP-verbinding. Geef een gebruikers naam en 
 
 ### <a name="howto-config-localdev"></a>Uw project configureren voor lokale ontwikkeling
 
-Mobile Apps leest een Java script-bestand met de naam *mobiele. js* van het lokale bestands systeem. Gebruik dit bestand niet voor het configureren van de Mobile Apps SDK in productie. Gebruik in plaats daarvan **app-instellingen** in de [Azure Portal].
+Mobile Apps leest een Java script-bestand met de naam *mobiele. js* van het lokale bestands systeem. Gebruik dit bestand niet voor het configureren van de Mobile Apps SDK in productie. Gebruik in plaats daarvan **app-instellingen** in de [Azure-portal].
 
 Het mobiele. js-bestand moet een configuratie object exporteren. De meest voorkomende instellingen zijn:
 
@@ -356,11 +356,11 @@ module.exports = {
 };
 ```
 
-We raden u aan om **mobiele. js** toe te voegen aan uw **. gitignore** -bestand (of een ander broncode beheer bestand) om te voor komen dat wacht woorden worden opgeslagen in de Cloud. Configureer instellingen voor de productie altijd in de **app-instellingen** binnen de [Azure Portal].
+We raden u aan om **mobiele. js** toe te voegen aan uw **. gitignore** -bestand (of een ander broncode beheer bestand) om te voor komen dat wacht woorden worden opgeslagen in de Cloud. Configureer instellingen voor de productie altijd in de **app-instellingen** binnen de [Azure-portal].
 
 ### <a name="howto-appsettings"></a>App-instellingen voor uw mobiele app configureren
 
-De meeste instellingen in het bestand mobiele. js hebben een equivalente app-instelling in de [Azure Portal]. Gebruik de volgende lijst om uw app te configureren in de **app-instellingen**:
+De meeste instellingen in het bestand mobiele. js hebben een equivalente app-instelling in de [Azure-portal]. Gebruik de volgende lijst om uw app te configureren in de **app-instellingen**:
 
 | App-instelling | de instelling mobiele. js | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |:--- |
@@ -374,7 +374,7 @@ De meeste instellingen in het bestand mobiele. js hebben een equivalente app-ins
 
 Een app-instelling instellen:
 
-1. Meld u aan bij de [Azure Portal].
+1. Meld u aan bij de [Azure-portal].
 1. Selecteer **alle resources** of **app Services**en selecteer vervolgens de naam van uw mobiele app.
 1. Het deel venster **instellingen** wordt standaard geopend. Als dat niet het geval is, selecteert u **instellingen**.
 1. Selecteer **Toepassings instellingen**in het menu **Algemeen** .
@@ -391,7 +391,7 @@ Voor het wijzigen van de meeste app-instellingen moet de service opnieuw worden 
 
 Het gebruik van Azure SQL Database als een gegevens archief is identiek voor alle Azure App Service toepassings typen. Als u dit nog niet hebt gedaan, volgt u deze stappen om een Mobile Apps back-end te maken:
 
-1. Meld u aan bij de [Azure Portal].
+1. Meld u aan bij de [Azure-portal].
 1. Selecteer in de linkerbovenhoek van het venster de knop **+ nieuw** > **Web en mobiel** > **mobiele app**en geef een naam op voor uw Mobile apps back-end.
 1. Voer in het vak **resource groep** dezelfde naam in als uw app.
 1. Het standaard App Service plan wordt geselecteerd. Als u uw App Service plan wilt wijzigen:
@@ -429,7 +429,7 @@ Het maken van de data base kan enkele minuten duren. Gebruik het gebied **meldin
 
 ### <a name="howto-tables-auth"></a>Verificatie vereisen voor toegang tot tabellen
 
-Als u App Service verificatie met het `tables`-eind punt wilt gebruiken, moet u eerst App Service-verificatie configureren in de [Azure Portal] . Zie de configuratie handleiding voor de ID-provider die u wilt gebruiken voor meer informatie:
+Als u App Service verificatie met het `tables`-eind punt wilt gebruiken, moet u eerst App Service-verificatie configureren in de [Azure-portal] . Zie de configuratie handleiding voor de ID-provider die u wilt gebruiken voor meer informatie:
 
 * [Azure Active Directory-verificatie configureren]
 * [Facebook-verificatie configureren]
@@ -740,7 +740,7 @@ Wanneer u registreert voor push meldingen van een geverifieerde client, moet u e
 
 Naast de API voor gegevens toegang via het `/tables`-eind punt, kunt Mobile Apps aangepaste API-dekking bieden. Aangepaste Api's worden op een vergelijk bare manier gedefinieerd als de tabel definities en hebben toegang tot dezelfde faciliteiten, inclusief verificatie.
 
-Als u App Service verificatie met een aangepaste API wilt gebruiken, moet u eerst App Service-verificatie in de [Azure Portal] configureren. Zie de configuratie handleiding voor de ID-provider die u wilt gebruiken voor meer informatie:
+Als u App Service verificatie met een aangepaste API wilt gebruiken, moet u eerst App Service-verificatie in de [Azure-portal] configureren. Zie de configuratie handleiding voor de ID-provider die u wilt gebruiken voor meer informatie:
 
 * [Azure Active Directory-verificatie configureren]
 * [Facebook-verificatie configureren]
@@ -894,7 +894,7 @@ Raadpleeg de volgende artikelen om aan de slag te gaan met het oplossen van prob
 * [Diagnostische logboek registratie inschakelen in Azure App Service]
 * [Problemen met Azure App Service in Visual Studio oplossen]
 
-Node. js-toepassingen hebben toegang tot een breed scala aan hulpprogram ma's voor Diagnostische logboeken. Intern gebruikt de Mobile Apps node. js SDK [Winston] voor diagnostische logboek registratie. Logboek registratie wordt automatisch ingeschakeld wanneer u de foutopsporingsmodus inschakelt of de `MS_DebugMode` app-instelling instelt op waar in de [Azure Portal]. Gegenereerde logboeken worden weer gegeven in de diagnostische Logboeken in de [Azure Portal].
+Node. js-toepassingen hebben toegang tot een breed scala aan hulpprogram ma's voor Diagnostische logboeken. Intern gebruikt de Mobile Apps node. js SDK [Winston] voor diagnostische logboek registratie. Logboek registratie wordt automatisch ingeschakeld wanneer u de foutopsporingsmodus inschakelt of de `MS_DebugMode` app-instelling instelt op waar in de [Azure-portal]. Gegenereerde logboeken worden weer gegeven in de diagnostische Logboeken in de [Azure-portal].
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -930,7 +930,7 @@ Node. js-toepassingen hebben toegang tot een breed scala aan hulpprogram ma's vo
 [Express]: https://expressjs.com/
 [Swagger]: https://swagger.io/
 
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 [OData]: https://www.odata.org
 [Toezeg]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp-voor beeld op GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app

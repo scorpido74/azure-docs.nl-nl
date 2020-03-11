@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377967"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Problemen met de portal mijn apps oplossen
 
@@ -29,7 +29,7 @@ Als u problemen ondervindt met de installatie van de uitbrei ding voor beveiligd
 
 - Zorg ervoor dat u een ondersteunde browser gebruikt, met inbegrip van:
 
-    - **Microsoft Edge.** Wordt uitgevoerd op Windows 10 jubileum Edition of hoger.
+    - **Micro soft Edge.** Wordt uitgevoerd op Windows 10 jubileum Edition of hoger.
 
     - **Google Chrome.** Wordt uitgevoerd op Windows 7 of hoger en op Mac OS X of hoger.
 

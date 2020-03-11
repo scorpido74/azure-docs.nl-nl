@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375816"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -59,7 +59,7 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | access_token |
 | account_type |
 | acr |
-| actor |
+| Actor |
 | actortoken |
 | aio |
 | altsecid |
@@ -100,7 +100,7 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | e-mail |
 | endpoint |
 | enfpolids |
-| geldig |
+| exp |
 | expires_on |
 | grant_type |
 | graph |
@@ -120,7 +120,7 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | Identity provider |
 | idp |
 | in_corp |
-| instance |
+| exemplaar |
 | ipaddr |
 | isbrowserhostedapp |
 | iss |
@@ -297,10 +297,10 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | netbiosname| NetBios-naam |
 | Gebruiker | DNS | DNS-domeinnaam |
 | Gebruiker | onpremisesecurityidentifier | Lokale beveiligings-id |
-| Gebruiker | CompanyName| Naam van organisatie |
+| Gebruiker | CompanyName| De naam van organisatie |
 | Gebruiker | streetaddress | Adres |
 | Gebruiker | code | Postcode |
-| Gebruiker | preferredlanguange | Voorkeurstaal |
+| Gebruiker | preferredlanguange | Voorkeurs taal |
 | Gebruiker | onpremisesuserprincipalname | On-premises UPN |
 | Gebruiker | mailNickname | E-mail bijnaam |
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
@@ -319,11 +319,11 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | extensionattribute14 | Uitbreidings kenmerk 14 |
 | Gebruiker | extensionattribute15 | Uitbreidings kenmerk 15 |
 | Gebruiker | othermail | Andere E-mail |
-| Gebruiker | land | Land/regio |
+| Gebruiker | regio | Land |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Staat |
+| Gebruiker | state | Status |
 | Gebruiker | JobTitle | Functie |
-| Gebruiker | employeeid | Werknemer-id |
+| Gebruiker | employeeid | Werk nemer-ID |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
 | toepassing, resource, doel groep | displayname | Weergavenaam |
 | toepassing, resource, doel groep | geobjecteerd | ObjectID |
@@ -389,7 +389,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 | Gebruiker | mail|E-mailadres|
 | Gebruiker | userPrincipalName|User principal name|
 | Gebruiker | onpremisessamaccountname|Naam van on-premises SAM-account|
-| Gebruiker | employeeid|Werknemer-id|
+| Gebruiker | employeeid|Werk nemer-ID|
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
 | Gebruiker | extensionattribute2 | Uitbreidings kenmerk 2 |
 | Gebruiker | extensionattribute3 | Uitbreidings kenmerk 3 |
@@ -410,12 +410,12 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 | TransformationMethod | Beperkingen |
 | ----- | ----- |
-| ExtractMailPrefix | Geen |
+| ExtractMailPrefix | None |
 | Koppelen | Het achtervoegsel dat wordt gekoppeld, moet een geverifieerd domein zijn van de resource Tenant. |
 
 ### <a name="custom-signing-key"></a>Aangepaste handtekening sleutel
 
-Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste handtekening sleutel wilt toevoegen, kunt u de Azure Power shell-cmdlet `new-azureadapplicationkeycredential` gebruiken om een symmetrische sleutel referentie voor uw toepassings object te maken. Klik [hier](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure Power shell-cmdlet.
+Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de Azure PowerShell cmdlet `new-azureadapplicationkeycredential` gebruiken om een symmetrische sleutel referentie voor uw toepassings object te maken. Zie [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure PowerShell-cmdlet.
 
 Apps waarvoor claim toewijzing is ingeschakeld, moeten hun token handtekening sleutels valideren door `appid={client_id}` toe te voegen aan hun [OpenID Connect Connect-aanvragen voor meta gegevens](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Hieronder ziet u de indeling van het OpenID Connect Connect-meta gegevens document dat u moet gebruiken: 
 
@@ -469,7 +469,7 @@ In dit voor beeld maakt u een beleid waarmee de set basis claims wordt verwijder
       Get-AzureADPolicy
       ```
 1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen.
-   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [Microsoft Graph opvragen](/graph/traverse-the-graph). Of Meld u in [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
+   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
    2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:  
      
       ``` powershell
@@ -493,7 +493,7 @@ In dit voor beeld maakt u een beleid waarmee de werk nemer-en TenantCountry word
       Get-AzureADPolicy
       ```
 1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen. 
-   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [Microsoft Graph opvragen](/graph/traverse-the-graph). Of Meld u in [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
+   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
    2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:  
      
       ``` powershell
@@ -517,7 +517,7 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Get-AzureADPolicy
       ```
 1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen. 
-   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [Microsoft Graph opvragen](/graph/traverse-the-graph). Of Meld u in [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
+   1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
    2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit: 
      
       ``` powershell

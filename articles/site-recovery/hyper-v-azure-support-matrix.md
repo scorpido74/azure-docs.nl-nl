@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
 ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362703"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -75,12 +75,12 @@ VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
 
 **Onderdeel** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
-ExpressRoute van Azure | Ja | Ja
+Azure ExpressRoute | Ja | Ja
 ILB | Ja | Ja
 ELB | Ja | Ja
 Azure Traffic Manager | Ja | Ja
 Multi-NIC | Ja | Ja
-Reserved IP | Ja | Ja
+Gereserveerd IP | Ja | Ja
 IPv4 | Ja | Ja
 Bron-IP-adres behouden | Ja | Ja
 Azure Virtual Network Service-eind punten<br/> (zonder Azure Storage firewalls) | Ja | Ja
@@ -89,26 +89,26 @@ Versneld netwerken | Nee | Nee
 
 ## <a name="hyper-v-host-storage"></a>Opslag voor Hyper-V-host
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
-NFS | N.V.T. | N.V.T.
+NFS | N.v.t. | N.v.t.
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
 Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM voor CLARiiON | Ja | Ja
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM-gast opslag
 
-**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
-VMDK | N.V.T. | N.V.T.
+VMDK | N.v.t. | N.v.t.
 VHD/VHDX | Ja | Ja
 VM van de 2e generatie | Ja | Ja
 EFI/UEFI<br></br>De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.| Ja | Ja
 Gedeelde cluster schijf | Nee | Nee
 Versleutelde schijf | Nee | Nee
-NFS | N.V.T. | N.V.T.
+NFS | N.v.t. | N.v.t.
 SMB 3.0 | Nee | Nee
-RDM | N.V.T. | N.V.T.
+RDM | N.v.t. | N.v.t.
 Schijf > 1 TB | Ja, Maxi maal 4.095 GB | Ja, Maxi maal 4.095 GB
 Schijf: logische en fysieke sector van 4 KB | Niet ondersteund: gen 1/gen 2 | Niet ondersteund: gen 1/gen 2
 Schijf: 4 KB logische en 512-bytes fysieke sector | Ja |  Ja
@@ -131,7 +131,7 @@ Hot Storage| Nee | Nee
 Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
 Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijven)| Ja (via Power shell AZ 3.3.0 module) | Ja (via Power shell AZ 3.3.0 module)
-Premium-opslag | Ja | Ja
+Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
 Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee

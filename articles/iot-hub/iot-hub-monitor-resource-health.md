@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929696"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359591"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub controleren en snel problemen vaststellen
 
@@ -540,7 +540,7 @@ Met Azure IoT Hub wordt de status op een regionaal niveau aangegeven. Als een re
 
 Voer de volgende stappen uit om de status van uw IoT-hubs te controleren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Navigeer naar **Service Health** > **resource Health**.
 

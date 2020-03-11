@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176757"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374400"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Gebruikers profiel sjablonen in azure API Management
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
   
  Met de sjablonen in deze sectie kunt u de inhoud van de gebruikers profiel pagina's in de ontwikkelaars portal aanpassen.  
   
@@ -107,15 +107,15 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voor naam van de huidige gebruiker.|  
-|`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
-|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
+|`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  
+|`companyName`|tekenreeks|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|tekenreeks|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|tekenreeks|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
 |`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
 |`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`changePasswordUrl`|tekenreeks|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|tekenreeks|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
 |`canChangePassword`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
 |`isSystemUser`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   
@@ -328,15 +328,15 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voor naam van de huidige gebruiker.|  
-|`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
-|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
+|`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  
+|`companyName`|tekenreeks|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|tekenreeks|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|tekenreeks|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
 |`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
 |`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`changePasswordUrl`|tekenreeks|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|tekenreeks|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
 |`canChangePassword`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
 |`isSystemUser`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   
@@ -491,15 +491,15 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voor naam van de huidige gebruiker.|  
-|`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
-|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
+|`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  
+|`companyName`|tekenreeks|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|tekenreeks|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|tekenreeks|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
 |`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
 |`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`changePasswordUrl`|tekenreeks|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|tekenreeks|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
 |`canChangePassword`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
 |`isSystemUser`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   

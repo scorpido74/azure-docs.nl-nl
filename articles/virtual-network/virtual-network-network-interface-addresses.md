@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543066"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356639"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>IP-adressen toevoegen, wijzigen of verwijderen voor een Azure-netwerk interface
 
@@ -35,7 +35,7 @@ Als u een netwerk interface moet maken, wijzigen of verwijderen, raadpleegt u he
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 - Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met uw Azure-account.
+- Als u de portal gebruikt, opent u https://portal.azure.comen meldt u zich aan met uw Azure-account.
 - Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 - Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren om een verbinding te maken met Azure.
 
@@ -53,7 +53,7 @@ U kunt zo nodig zoveel [persoonlijke](#private) en [open bare](#public) [IPv4](#
 
    |Instelling|Vereist?|Details|
    |---|---|---|
-   |Name|Ja|Moet uniek zijn voor de netwerk interface|
+   |Naam|Ja|Moet uniek zijn voor de netwerk interface|
    |Type|Ja|Omdat u een IP-configuratie toevoegt aan een bestaande netwerk interface en elke netwerk interface moet een [primaire](#primary) IP-configuratie hebben, is de enige optie **secundair**.|
    |Toewijzings methode voor privé-IP-adres|Ja|[**Dynamisch**](#dynamic): Azure wijst het volgende beschik bare adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd. [**Statisch**](#static): u wijst een ongebruikt adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd.|
    |Openbaar IP-adres|Nee|**Uitgeschakeld:** Er is momenteel geen open bare IP-adres resource gekoppeld aan de IP-configuratie. **Ingeschakeld:** Selecteer een bestaand openbaar IP-adres voor IPv4 of maak een nieuwe. Lees het artikel [open bare IP-adressen](virtual-network-public-ip-address.md#create-a-public-ip-address) voor meer informatie over het maken van een openbaar IP-adres.|
@@ -150,7 +150,7 @@ Door de vorige stappen te volgen, blijven het privé-IP-adres dat is toegewezen 
 
 Naast het inschakelen van een virtuele machine om te communiceren met andere resources binnen dezelfde of verbonden virtuele netwerken, kan een persoonlijk IP-adres ook een virtuele machine in staat stellen om uitgaande berichten te verzenden naar het internet. Uitgaande verbindingen zijn bron netwerk adres vertaald door Azure naar een onvoorspelbaar openbaar IP-adres. Lees het artikel [Azure uitgaande internet connectiviteit](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over uitgaande internet connectiviteit van Azure. U kunt geen inkomende communicatie met het privé-IP-adres van een virtuele machine via internet. Als voor uw uitgaande verbindingen een voorspelbaar openbaar IP-adres is vereist, koppelt u een open bare IP-adres resource aan een netwerk interface.
 
-### <a name="public"></a>Public
+### <a name="public"></a>Openbaar
 
 Open bare IP-adressen die zijn toegewezen via een open bare IP-adres resource, kunnen binnenkomende verbindingen met een virtuele machine via internet. Uitgaande verbindingen met internet maken gebruik van een voorspelbaar IP-adres. Zie informatie [over uitgaande verbindingen in azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie. U kunt een openbaar IP-adres toewijzen aan een IP-configuratie, maar dit is niet vereist voor. Als u geen openbaar IP-adres toewijst aan een virtuele machine door een open bare IP-adres resource te koppelen, kan de virtuele machine nog steeds uitgaande berichten verzenden naar het internet. In dit geval is het particuliere IP-adres het bron netwerk adres dat door Azure is vertaald naar een onvoorspelbaar openbaar IP-adres. Zie [open bare IP-adres](virtual-network-public-ip-address.md)bronnen voor meer informatie over open bare IP-adressen.
 
@@ -206,6 +206,6 @@ Als u een virtuele machine met verschillende IP-configuraties wilt maken, leest 
 
 |Taak|Hulpprogramma|
 |---|---|
-|Een virtuele machine met meerdere netwerkinterfaces maken|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Eén NIC-VM met meerdere IPv4-adressen maken|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Een virtuele machine met meerdere netwerkinterfaces maken|[Cli](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Power shell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Eén NIC-VM met meerdere IPv4-adressen maken|[Cli](virtual-network-multiple-ip-addresses-cli.md), [Power shell](virtual-network-multiple-ip-addresses-powershell.md)|
 |Een enkele NIC-VM maken met een privé-IPv6-adres (achter een Azure Load Balancer)|[Cli](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [power shell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-sjabloon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

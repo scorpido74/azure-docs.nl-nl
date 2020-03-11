@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373576"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
@@ -87,7 +87,7 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 | Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |

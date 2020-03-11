@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357752"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -41,7 +41,7 @@ U kunt op de volgende manieren [machtigingen](#iot-hub-permissions) verlenen:
   | -------------------- | ----------- |
   | iothubowner | Machtiging alle |
   | service | **ServiceConnect** -machtigingen |
-  | device | **DeviceConnect** -machtigingen |
+  | apparaatconfiguratie | **DeviceConnect** -machtigingen |
   | registryRead | **RegistryRead** -machtigingen |
   | registryReadWrite | **RegistryRead** -en **RegistryWrite** -machtigingen |
 
@@ -59,7 +59,7 @@ Bijvoorbeeld in een typische IoT-oplossing:
 
 ## <a name="authentication"></a>Verificatie
 
-In Azure IoT Hub wordt toegang verleend aan eindpunten door een token te verifiëren op basis van de gedeelde toegangsbeleidsregels en beveiligingsreferenties van het identiteitsregister.
+Azure IoT Hub verleent toegang tot eind punten door een token te controleren op basis van het beleid voor gedeelde toegang en de beveiligings referenties van het identiteits register.
 
 Beveiligings referenties, zoals symmetrische sleutels, worden nooit via de kabel verzonden.
 

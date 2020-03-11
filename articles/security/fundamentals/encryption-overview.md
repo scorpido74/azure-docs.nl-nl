@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804038"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358729"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -63,7 +63,7 @@ U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk 
 
 Versleutelings sleutels en geheimen worden beveiligd in uw [Azure Key Vault-abonnement](../../key-vault/key-vault-overview.md). Met de Azure Backup-Service kunt u back-ups maken en terugzetten van versleutelde virtuele machines (Vm's) die gebruikmaken van de KEK-configuratie (Key Encryption Key).
 
-### <a name="azure-storage-service-encryption"></a>Azure Storage Service-versleuteling
+### <a name="azure-storage-service-encryption"></a>Versleuteling van Azure Storage-service
 
 Data-at-rest in Azure Blob-opslag en Azure-bestands shares kunnen worden versleuteld in zowel server-als client scenario's.
 
@@ -105,7 +105,7 @@ CLE heeft ingebouwde functies die u kunt gebruiken voor het versleutelen van geg
 
 ### <a name="cosmos-db-database-encryption"></a>Database versleuteling Cosmos DB
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) is de wereld wijd gedistribueerde, multi-model data base van micro soft. Gebruikers gegevens die zijn opgeslagen in Cosmos DB in niet-vluchtige opslag (Solid-state drives) worden standaard versleuteld. Er zijn geen besturings elementen om deze in of uit te scha kelen. Versleuteling op rest wordt geïmplementeerd met behulp van een aantal beveiligings technologieën, waaronder systemen voor beveiligde sleutel opslag, versleutelde netwerken en cryptografische Api's. Versleutelings sleutels worden beheerd door micro soft en worden geroteerd volgens de interne richt lijnen van micro soft.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) is de wereld wijd gedistribueerde, multi-model data base van micro soft. Gebruikers gegevens die zijn opgeslagen in Cosmos DB in niet-vluchtige opslag (Solid-state drives) worden standaard versleuteld. Er zijn geen besturings elementen om deze in of uit te scha kelen. Versleuteling-at-rest wordt geïmplementeerd met behulp van diverse beveiligingstechnologieën, met inbegrip van beveiligde opslag van clustersleutels systemen, versleutelde netwerken en cryptografische API's. Versleutelings sleutels worden beheerd door micro soft en worden geroteerd volgens de interne richt lijnen van micro soft.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>At-rest-versleuteling in Data Lake
 
@@ -181,7 +181,7 @@ U kunt een site-naar-site-VPN-gateway verbinding gebruiken om uw on-premises net
 
 U kunt een site-naar-site-VPN-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal, Power shell of Azure CLI.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 [Een site-naar-site-verbinding maken in de Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

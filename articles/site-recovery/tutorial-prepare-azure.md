@@ -9,11 +9,11 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367087"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure voorbereiden voor on-premises herstel na nood gevallen naar Azure
 
@@ -70,7 +70,7 @@ U kunt deze taken alleen uitvoeren als aan uw account de ingebouwde rol van Inze
 
 On-premises machines worden gerepliceerd naar Azure Managed disks. Als er een failover optreedt, worden virtuele Azure-machines gemaakt op basis van deze beheerde schijven en gekoppeld aan het Azure-netwerk dat u in deze procedure opgeeft.
 
-1. Selecteer in [Azure Portal](https://portal.azure.com) **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 2. Zorg ervoor dat **Resource Manager** is geselecteerd als het implementatie model.
 3. Voer bij **Naam** een netwerknaam in. De naam moet uniek zijn binnen de Azure-resourcegroep. In deze zelfstudie gebruiken we **ContosoASRnet**.
 4. Voer in **adres ruimte**het adres bereik van het virtuele netwerk in de notatie CDR in. We gebruiken **10.1.0.0/24**.

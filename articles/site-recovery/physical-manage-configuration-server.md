@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367086"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor fysieke servers beheren
 
@@ -32,7 +32,7 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 | Vrije schijfruimte (cache van de processerver) | 600 GB
 | Vrije schijfruimte (bewaarschijf) | 600 GB|
 | Besturingssysteem  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| Landinstelling van het besturingssysteem | English (US)|
+| Landinstelling van het besturingssysteem | Engels (VS)|
 | VMware vSphere PowerCLI-versie | Niet vereist|
 | Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
 | Groeps beleid| Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen <br> -Toegang tot register bewerkings Programma's voor komen <br> -Logica vertrouwen voor bestands bijlagen <br> -Uitvoering van script inschakelen <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
