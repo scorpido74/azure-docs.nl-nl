@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: Verifiëren met beheerde identiteit - Power BI
           href: powerbi-output-managed-identity.md
+        - name: Uw gegevens versleutelen
+          href: data-protection.md
     - name: Oplossingen bouwen
       items:
         - name: Twitter-sentimentanalyse
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: De API voor IoT Edge-taken gebruiken
           href: stream-analytics-cicd-api.md
+        - name: Exporteren en implementeren met Azure Resource Manager
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Hulpprogramma's installeren

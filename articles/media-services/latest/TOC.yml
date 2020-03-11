@@ -206,11 +206,15 @@
   items:
     - name: Aan de slag
       items:
+        - name: Een account maken - portal
+          href: create-account-portal.md
         - name: Een account maken - CLI
           href: create-account-cli-how-to.md
           displayName: storage
         - name: De referenties voor het account opnieuw instellen - CLI
           href: cli-reset-account-credentials.md
+        - name: Toegang tot API's - portal
+          href: access-api-portal.md
         - name: Toegang tot API's - CLI
           href: access-api-cli-how-to.md
         - name: Gereserveerde media-eenheden schalen - CLI
