@@ -12,6 +12,17 @@
       href: quick-create-powershell.md
     - name: Een virtueel netwerk maken - Azure CLI
       href: quick-create-cli.md
+    - name: NAT
+      items:
+        - name: NAT-gateway maken - Portal
+          href: quickstart-create-nat-gateway-portal.md
+        - name: NAT-gateway maken - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: NAT-gateway maken - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT-gateway maken - ARM-sjabloon
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: Zelfstudies
   items:
@@ -23,6 +34,14 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Virtuele netwerken verbinden
       href: tutorial-connect-virtual-networks-portal.md
+    - name: NAT
+      items:
+        - name: NAT-gateway maken en valideren - Portal
+          href: tutorial-create-validate-nat-gateway-portal.md
+        - name: NAT-gateway maken en valideren - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: NAT-gateway maken en valideren - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
 - name: Voorbeelden
   items:
     - name: Azure CLI
@@ -123,20 +142,6 @@
           href: virtual-network-nsg-manage-log.md
     - name: Connectiviteit
       items:
-        - name: NAT
-          items:
-            - name: NAT-gateway maken - Portal
-              href: quickstart-create-nat-gateway-portal.md
-            - name: NAT-gateway maken - PowerShell
-              href: quickstart-create-nat-gateway-powershell.md
-            - name: NAT-gateway maken - CLI
-              href: quickstart-create-nat-gateway-cli.md
-            - name: NAT-gateway maken en valideren - Portal
-              href: tutorial-create-validate-nat-gateway-portal.md
-            - name: NAT-gateway maken en valideren - PowerShell
-              href: tutorial-create-validate-nat-gateway-powershell.md
-            - name: NAT-gateway maken en valideren - CLI
-              href: tutorial-create-validate-nat-gateway-cli.md
         - name: Netwerkverkeer routeren
           items:
             - name: Azure Portal

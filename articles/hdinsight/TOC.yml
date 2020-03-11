@@ -708,6 +708,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
             - name: Problemen met Apache HIVE oplossen
               href: ./hdinsight-troubleshoot-hive.md
+            - name: Apache Hive-logboeken nemen de hele schijfruimte van het hoofdknooppunt in
+              href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
 - name: ML Services
   items:
     - name: Overzicht

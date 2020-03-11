@@ -33,7 +33,7 @@
       items:
         - name: .Net Core met SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET met SQL DB
+        - name: .NET Framework met SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP met MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -87,8 +87,6 @@
           href: networking-features.md
         - name: Application Gateway met service-eindpunten
           href: networking/app-gateway-with-service-endpoints.md
-        - name: Privé-eindpunten
-          href: networking/private-endpoint.md
     - name: Inkomende en uitgaande IP-adressen
       href: overview-inbound-outbound-ips.md
     - name: Integratie van virtueel netwerk
@@ -146,7 +144,7 @@
         - name: Een domein kopen
           href: manage-custom-dns-buy-domain.md
         - name: Domeinen toewijzen met Traffic Manager
-          href: web-sites-traffic-manager-custom-domain-name.md
+          href: configure-domain-traffic-manager.md
         - name: Een actief domein migreren
           href: manage-custom-dns-migrate-domain.md
     - name: App beveiligen

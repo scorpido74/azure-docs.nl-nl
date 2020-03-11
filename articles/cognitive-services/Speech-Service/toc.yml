@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: Gecomprimeerde audio-invoerindelingen gebruiken
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: Gecomprimeerde audio-invoerindelingen gebruiken (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: Gecomprimeerde audio-invoerindelingen gebruiken (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: Aanpassing
       items:
         - name: Gegevens voorbereiden
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: door mensen gelabelde transcripties maken
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Aangepaste herkenning van trefwoorden
+          href: speech-devices-sdk-create-kws.md
     - name: Naslaginformatie
       items:
         - name: Speech-SDK API's
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: Spraakvoorbeelden opnemen
               href: record-custom-voice-samples.md
-            - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: Aangepaste herkenning van trefwoorden
-              href: speech-devices-sdk-create-kws.md
         - name: Audio-inhoud maken
           items:
             - name: Audio-inhoud maken
@@ -413,6 +409,12 @@
           items:
             - name: Veelgestelde vragen over spraakassistenten
               href: faq-voice-assistants.md
+    - name: Aangepast trefwoord
+      items:
+        - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Aangepaste herkenning van trefwoorden
+          href: speech-devices-sdk-create-kws.md
 - name: Hosting
   expanded: false
   items:
@@ -445,8 +447,6 @@
           href: ship-application.md
     - name: Snelstartgids
       items:
-        - name: Een project maken
-          href: quickstarts/create-project.md
         - name: Speech-SDK instellen
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'

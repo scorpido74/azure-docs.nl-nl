@@ -213,6 +213,8 @@
               items:
                 - name: JavaScript aan de clientzijde
                   href: app/javascript.md
+                - name: Bronmap voor JavaScript
+                  href: app/source-map-support.md
             - name: API-samenvatting voor Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Beheergebeurtenissen migreren naar waarschuwingen voor activiteitenlogboeken
               href: platform/migrate-management-alerts.md
+            - name: Webhook-schema
+              href: platform/activity-log-alerts-webhook.md
         - name: Servicestatuswaarschuwingen in het activiteitenlogboek
           items:
             - name: Meldingen weergeven
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: Het algemene waarschuwingsschema integreren met Logic Apps
               href: platform/alerts-common-schema-integrations.md
-            - name: Webhook-schema
-              href: platform/activity-log-alerts-webhook.md
             - name: Gedrag van sms-waarschuwingen
               href: platform/alerts-sms-behavior.md
             - name: Limiet voor meldingssnelheid

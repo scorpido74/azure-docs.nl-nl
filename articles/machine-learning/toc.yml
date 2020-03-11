@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: MLOps-voorbeelden van volledige scenario's
       href: 'https://github.com/microsoft/MLOps'
+    - name: Designer-pijplijnen
+      href: samples-designer.md
 - name: Concepten
   items:
     - name: Werkruimte
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Modellen trainen
       items:
-        - name: De ontwerper gebruiken
-          displayName: sample designer experiments
-          items:
-            - name: Prijs voorspellen
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Prijs voorspellen (geavanceerd)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Inkomen voorspellen
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Kredietrisico voorspellen (geavanceerd)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Verloop voorspellen
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Vluchtvertragingen voorspellen
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Tekstclassificatie
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: Schattingen gebruiken voor ML
           items:
             - name: Schattingen maken tijdens training

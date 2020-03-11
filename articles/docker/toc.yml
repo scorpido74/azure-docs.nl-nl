@@ -1,5 +1,5 @@
-- name: Docker-documentatie
-  href: index.md
+- name: Documentatie voor Docker
+  href: index.yml
 - name: Snelstartgids
   expanded: true
   items:

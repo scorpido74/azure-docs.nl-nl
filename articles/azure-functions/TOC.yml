@@ -44,6 +44,8 @@
       href: functions-openapi-definition.md
     - name: Verbinding maken met een virtueel netwerk
       href: functions-create-vnet.md
+    - name: Toegang tot privésite mogelijk maken
+      href: functions-create-private-site-access.md
     - name: Het formaat van afbeeldingen wijzigen met Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Een serverloze web-app maken

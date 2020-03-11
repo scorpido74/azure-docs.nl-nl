@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Cloud Services
+summary: Leer hoe u Cloud Services kunt gebruiken om maximaal beschikbare, schaalbare cloudtoepassingen en API's te hosten en uit te voeren. Legt uit hoe u VM-hosts kunt beheren en software kunt configureren, patchen en installeren.
+metadata:
+  title: Documentatie voor Azure Cloud Services
+  description: Beschrijft hoe u Cloud Services kunt gebruiken om maximaal beschikbare, schaalbare cloudtoepassingen en API's te hosten en uit te voeren.
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943185"
+landingContent:
+- title: Over Cloud Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Cloud Services?
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Videobibliotheek voor Cloud Services
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python voor Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: Ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PHP-web- en -werkrollen maken
+      url: ../cloud-services-php-create-web-role.md
+    - text: Een Node.js-toepassing maken en implementeren
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Een Node.js-webtoepassing maken en implementeren met Express
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: Implementeren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een cloudservice maken en implementeren in Portal
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: Een lege cloudservicecontainer maken in PowerShell
+      url: cloud-services-powershell-create-cloud-container.md
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Veelvoorkomende beheertaken
+      url: cloud-services-how-to-manage-portal.md
+    - text: Cloudservice configureren
+      url: cloud-services-how-to-configure-portal.md

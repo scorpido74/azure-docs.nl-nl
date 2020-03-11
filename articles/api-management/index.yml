@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over API Management
+summary: Leer hoe u API Management kunt gebruiken voor het veilig en op schaal publiceren van API's naar externe, partner- en werknemerontwikkelaars. Legt uit hoe u moderne API-gateways kunt maken en beheren voor bestaande back-endservices die op elke willekeurige locatie worden gehost.
 metadata:
-  title: 'Documentatie voor Azure API Management - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Leer hoe u API Management kunt gebruiken voor het veilig en op schaal publiceren van API''s naar externe, partner- en werknemerontwikkelaars. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u moderne API-gateways voor bestaande back-endservices kunt maken en beheren die overal ter wereld worden gehost.'
+  title: Documentatie over API Management
+  description: Leer hoe u API Management kunt gebruiken voor het veilig en op schaal publiceren van API's naar externe, partner- en werknemerontwikkelaars. Legt uit hoe u moderne API-gateways kunt maken en beheren voor bestaande back-endservices die op elke willekeurige locatie worden gehost.
   services: api-management
-  author: georgewallace
-  manager: gwallace
   ms.service: api-management
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  author: georgewallace
   ms.author: gwallace
-abstract:
-  description: 'Leer hoe u API Management kunt gebruiken voor het veilig en op schaal publiceren van API''s naar externe, partner- en werknemerontwikkelaars. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u moderne API-gateways voor bestaande back-endservices kunt maken en beheren die overal ter wereld worden gehost.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Een API Management-exemplaar maken.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Een instantie maken - Portal
-            href: /azure/api-management/get-started-create-service-instance
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Een instantie maken - PowerShell
-            href: /azure/api-management/powershell-create-service-instance
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over het beheren van API Management.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/api-management/import-and-publish">Uw eerste API importeren en publiceren</a>
-          - html: <a href="/azure/api-management/api-management-howto-add-products">Een product maken en publiceren</a>
-          - html: <a href="/azure/api-management/mock-api-responses">Voorbeeldantwoorden van een API</a>
-          - html: <a href="/azure/api-management/transform-api">Uw API's transformeren en beveiligen</a>
-          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Gepubliceerde API's bewaken</a>
-          - html: <a href="/azure/api-management/api-management-howto-api-inspector">Fouten opsporen in uw API's met behulp van de tracering van aanvragen</a>
-          - html: <a href="/azure/api-management/api-management-get-started-revise-api">Revisies gebruiken om veilig kleine wijzigingen aan te brengen</a>
-          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Meerdere versies van uw API publiceren</a>
-          - html: <a href="/azure/api-management/api-management-customize-styles">De stijl van de pagina's van de ontwikkelaarsportal aanpassen</a>
-  - title: Voorbeelden
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/api-management/policy-samples">Beleid</a>
-          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
-          - html: '<a href="https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration">Referentiearchitectuur</a>'
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78944171"
+landingContent:
+- title: Meer informatie over API Management
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is API Management?
+      url: api-management-key-concepts.md
+    - text: Beschikbaarheid van functies
+      url: api-management-features.md
+- title: Een instantie maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal
+      url: get-started-create-service-instance.md
+    - text: Azure PowerShell
+      url: powershell-create-service-instance.md
+- title: API Management beheren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Uw eerste API importeren en publiceren
+      url: import-and-publish.md
+    - text: 2. Een product maken en publiceren
+      url: api-management-howto-add-products.md
+    - text: 3. Gesimuleerde antwoorden van een API
+      url: mock-api-responses.md
+    - text: 4. Uw API transformeren en beveiligen
+      url: transform-api.md
+    - text: 5. Gepubliceerde API's bewaken
+      url: api-management-howto-use-azure-monitor.md
+    - text: 6. Fouten opsporen in uw API's met behulp van de tracering van aanvragen
+      url: api-management-howto-api-inspector.md
+    - text: 7. Revisies gebruiken om vaste wijzigingen veilig in Azure API Management aan te brengen
+      url: api-management-get-started-revise-api.md
+    - text: 8. Meerdere versies van uw API publiceren
+      url: api-management-get-started-publish-versions.md
+    - text: 9. De stijl van de pagina's van de ontwikkelaarsportal aanpassen
+      url: api-management-customize-styles.md
+- title: Voorbeelden
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Beleid
+      url: policy-samples.md
+    - text: Azure PowerShell
+      url: powershell-samples.md
+- title: Architectuur
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Basisbedrijfsintegratie
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration

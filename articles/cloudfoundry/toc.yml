@@ -1,5 +1,5 @@
 - name: Documentatie voor Cloud Foundry
-  href: index.md
+  href: index.yml
 - name: Snelstartgidsen
   expanded: true
   items:

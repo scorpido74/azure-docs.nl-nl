@@ -7,6 +7,11 @@
     - name: Nieuw in Media Services
       displayName: release notes
       href: release-notes.md
+- name: Snelstartgidsen
+  items:
+    - name: Livegebeurtenis met portal en Wirecast
+      displayName: 'live, event, portal, wirecast'
+      href: live-events-wirecast-quickstart.md
 - name: Zelfstudies
   expanded: true
   items:
@@ -189,10 +194,10 @@
     - name: Hoge beschikbaarheid
       items:
         - name: Encoding
-          displayName: 'failover, bcdr'
+          displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: Streaming
-          displayName: 'failover, bcdr'
+          displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
     - name: Hulp bij migratie van v2 naar v3
       href: migrate-from-v2-to-v3.md
