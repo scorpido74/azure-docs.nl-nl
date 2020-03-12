@@ -182,9 +182,13 @@
             - name: De gebruikersinterface aanpassen
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Taal aanpassen
+              href: custom-policy-localization.md
             - name: Aangepast e-mailadres
               href: custom-email.md
               displayName: verification
+            - name: E-mailverificatie uitschakelen
+              href: custom-policy-disable-email-verification.md
             - name: JavaScript inschakelen
               href: javascript-samples.md
             - name: Wachtwoordcomplexiteit
