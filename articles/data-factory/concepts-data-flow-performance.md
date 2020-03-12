@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381957"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129428"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
 Het toewijzen van gegevens stromen in Azure Data Factory bieden een code-Free interface voor het ontwerpen, implementeren en organiseren van gegevens transformaties op schaal. Als u niet bekend bent met het toewijzen van gegevens stromen, raadpleegt u het [overzicht gegevens stroom toewijzen](concepts-data-flow-overview.md).
 
 Bij het ontwerpen en testen van gegevens stromen van de ADF UX, zorgt u ervoor dat u overschakelt naar de foutopsporingsmodus om uw gegevens stromen in realtime uit te voeren zonder te hoeven wachten tot een cluster is opgewarmd. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
+
+In deze video ziet u enkele voor beelden van tijd notaties waarmee gegevens worden getransformeerd met gegevens stromen:
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>Prestaties van de gegevens stroom bewaken
 

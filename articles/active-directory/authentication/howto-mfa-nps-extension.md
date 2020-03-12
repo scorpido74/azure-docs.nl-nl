@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378120"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086377"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infra structuur integreren met Azure Multi-Factor Authentication
 
@@ -250,9 +250,9 @@ U kunt ervoor kiezen om deze sleutel te maken en deze in te stellen op ONWAAR wa
 
 ### <a name="nps-extension-health-check-script"></a>Script voor status controle van NPS-uitbrei ding
 
-Het volgende script is beschikbaar in de TechNet-galerie voor het uitvoeren van basis stappen voor de status controle bij het oplossen van problemen met de NPS-extensie.
+Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de status controle bij het oplossen van problemen met de NPS-extensie.
 
-[MFA_NPS_Troubleshooter. ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ U wordt aangeraden oudere en zwakkere coderings suites uit te scha kelen of te v
 Aanvullende richt lijnen voor probleem oplossing en mogelijke oplossingen vindt u in het artikel [oplossingen voor fout berichten van de NPS-extensie voor Azure multi-factor Authentication oplossen](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Volgende stappen
+
+- [Overzicht en configuratie van Network Policy Server in Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - Configureer alternatieve Id's voor aanmelding of stel een uitzonderingen lijst in voor IP-adressen die geen verificatie in twee stappen moeten uitvoeren in [Geavanceerde configuratie opties voor de NPS-extensie voor multi-factor Authentication](howto-mfa-nps-extension-advanced.md)
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396187"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129556"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Toegang tot gegevens in Azure Machine Learning
 
@@ -83,7 +83,7 @@ Met gegevens sets kunt u een aantal machine learning taken uitvoeren via een naa
 
 + [Train machine learning-modellen](how-to-train-with-datasets.md).
 + Gegevens sets gebruiken in 
-     + [automatische ML experimenten](how-to-create-portal-experiments.md)
+     + [automatische ML experimenten](how-to-use-automated-ml-for-ml-models.md)
      + de [ontwerper](tutorial-designer-automobile-price-train-score.md#import-data) 
 + Toegang tot gegevens sets voor het afgeven van een batch-deinterferentie in [machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
 + Een project voor het [labelen van gegevens](#label)maken.

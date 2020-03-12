@@ -1,6 +1,6 @@
 ---
-title: Een Data Warehouse maken en er een query op uitvoeren (Azure Portal)
-description: Een Azure Synapse Analytics SQL-groep maken en er query's op uitvoeren met behulp van de Azure Portal
+title: Een Synapse SQL-pool maken en doorzoeken (Azure Portal)
+description: Een Synapse-SQL-groep maken en er query's op uitvoeren met behulp van de Azure Portal
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a3dbe5d74dc1e88d0615937b8c6e6d2a77b64a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6966932e95ff538de4b2f9be1ac06516311a0919
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381073"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129514"
 ---
-# <a name="quickstart-create-and-query-an-azure-synapse-analytics-sql-pool-using-the-azure-portal"></a>Quick Start: een Azure Synapse Analytics SQL-groep maken en er query's op uitvoeren met behulp van de Azure Portal
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Quick Start: een Synapse SQL-groep maken en er query's op uitvoeren met behulp van de Azure Portal
 
-U kunt snel een Data Warehouse maken en er query's op uitvoeren door de SQL-groep in azure Synapse Analytics (voorheen SQL DW) in te richten met behulp van de Azure Portal.
+Maak en zoek snel een Synapse SQL-pool (Data Warehouse) in azure Synapse Analytics (voorheen SQL DW) met behulp van de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 Data warehouses worden gemaakt met behulp van SQL-pool in azure Synapse Analytics. Een SQL-groep wordt gemaakt met een gedefinieerde set [reken resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-servers.md).
 
-Volg deze stappen om een Data Warehouse te maken dat de **AdventureWorksDW** -voorbeeld gegevens bevat.
+Volg deze stappen om een SQL-groep te maken die de **AdventureWorksDW** -voorbeeld gegevens bevat.
 
 1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
 
@@ -55,7 +55,7 @@ Volg deze stappen om een Data Warehouse te maken dat de **AdventureWorksDW** -vo
    | :------ | :-------------- | :---------- |
    | **Abonnement** | Uw abonnement | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
-   | **Naam van Data Warehouse** | Een wereld wijd unieke naam (een voor beeld is *mySampleDataWarehouse*) | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. Opmerking: een datawarehouse is een type database. |
+   | **Naam van SQL-groep** | Een wereld wijd unieke naam (een voor beeld is *mySampleDataWarehouse*) | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. Opmerking: een SQL-pool is een type Data Base. |
    | **Server** | Een wereldwijd unieke naam | Selecteer bestaande server of maak een nieuwe server naam. Selecteer **nieuwe maken**. Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
 
    ![basis gegevens van een Data Warehouse maken](media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -66,7 +66,7 @@ Volg deze stappen om een Data Warehouse te maken dat de **AdventureWorksDW** -vo
 
    Zie [Compute beheren in Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md)voor meer informatie over prestatie niveaus.
 
-5. Nu u het tabblad basis principes van het formulier Azure Synapse Analytics hebt voltooid, selecteert u **controleren + maken** en vervolgens **maken** om het data warehouse in de SQL-groep te maken. De inrichting duurt een paar minuten.
+5. Nu u het tabblad basis principes van het formulier Azure Synapse Analytics hebt voltooid, selecteert u **controleren + maken** en vervolgens **maken** om de SQL-groep te maken. De inrichting duurt een paar minuten.
 
    ![Selecteer controleren + maken](media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -105,7 +105,7 @@ De Azure Synapse-service maakt een firewall op server niveau. Deze firewall voor
 
 8. Selecteer **OK** en sluit vervolgens de pagina **firewall instellingen** .
 
-U kunt nu via dit IP-adres verbinding maken met de SQL-server en de bijbehorende datawarehouses. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.
+U kunt nu verbinding maken met de SQL-Server en de bijbehorende SQL-groepen met dit IP-adres. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.
 
 > [!IMPORTANT]
 > Voor alle Azure-services is toegang via de SQL Database-firewall standaard ingeschakeld. Selecteer **uit** op deze pagina en selecteer vervolgens **Opslaan** om de firewall voor alle Azure-Services uit te scha kelen.
@@ -116,7 +116,7 @@ Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Porta
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Selecteer **Azure Synapse Analytics** in het menu aan de linkerkant en selecteer uw data warehouse op de pagina **Azure Synapse Analytics** .
+2. Selecteer **Azure Synapse Analytics** in het menu aan de linkerkant en selecteer op de pagina **Azure Synapse Analytics** .
 
 3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam sqlpoolservername.database.windows.net.
 
@@ -174,21 +174,21 @@ SQL Data Warehouse maakt gebruik van T-SQL als querytaal. Gebruik de volgende st
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in uw data warehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
+Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in de SQL-groep. Deze compute- en opslagresources worden apart in rekening gebracht.
 
-- Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. U kunt de berekening hervatten wanneer u klaar bent om met de gegevens te werken.
+- Als u de gegevens in de opslag ruimte wilt bewaren, kunt u de reken proces onderbreken wanneer u de SQL-groep niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. U kunt de berekening hervatten wanneer u klaar bent om met de gegevens te werken.
 
-- Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen.
+- Als u toekomstige kosten wilt verwijderen, kunt u de SQL-groep verwijderen.
 
 Volg deze stappen om resources op te schonen die u niet meer nodig hebt.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer uw data warehouse.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer uw SQL-groep.
 
    ![Resources opschonen](media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. Selecteer de knop **pause** om de berekening te onderbreken. Wanneer het Data Warehouse is onderbroken, ziet u een knop **hervatten** . Als u de compute wilt hervatten, selecteert u **hervatten**.
+2. Selecteer de knop **pause** om de berekening te onderbreken. Wanneer de SQL-groep is onderbroken, ziet u een knop **hervatten** . Als u de compute wilt hervatten, selecteert u **hervatten**.
 
-3. Selecteer **verwijderen**om het Data Warehouse te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
+3. Selecteer **verwijderen**om de SQL-groep te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
 
 4. Als u de door u gemaakte SQL-Server wilt verwijderen, selecteert u **sqlpoolservername.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen**. Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
@@ -196,7 +196,4 @@ Volg deze stappen om resources op te schonen die u niet meer nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu een Data Warehouse gemaakt, een firewall regel gemaakt die is verbonden met uw data warehouse en enkele query's uitgevoerd. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
-
-> [!div class="nextstepaction"]
-> [Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)
+Voor meer informatie over het laden van gegevens in de SQL-groep gaat u naar het artikel [gegevens laden in SQL-groep](load-data-from-azure-blob-storage-using-polybase.md) . 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: azure-government
 ms.date: 12/11/2019
 ms.author: gsacavdm
-ms.openlocfilehash: b6f395964c286aca1bc8a1c190edeea00ba6e15c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 38eb44e6355ddcb5ac78f5d8bb2008ea5a0f0cdf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362034"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127938"
 ---
 # <a name="azure-government-monitoring--management"></a>Azure Government Controle en beheer
 In dit artikel vindt u een overzicht van de verschillen en overwegingen voor de bewakings-en beheer Services voor de Azure Government omgeving.
@@ -179,6 +179,9 @@ De resources die momenteel worden ondersteund in de ervaring voor het maken van 
 - Microsoft.Web/sites
 - Microsoft.Web/sites/slots
 
+> [!NOTE]
+> Het maken van metrische waarschuwings regels voor meerdere resources op Virtual Machines wordt **momenteel niet ondersteund**. Dit artikel wordt bijgewerkt zodra deze functionaliteit beschikbaar wordt.
+
 U kunt nog steeds [klassieke waarschuwingen](../azure-monitor/platform/alerts-classic.overview.md) gebruiken voor resources die nog niet beschikbaar zijn in de tweede generatie van waarschuwingen. 
 
 Wanneer u Power shell/ARM/rest-aanroepen gebruikt om metrische waarschuwingen te maken, moet u de "locatie" van de metrische waarschuwing instellen op "USGov Virginia" of "USGov Iowa". Hieronder ziet u een voor beeld van de instelling:
@@ -190,6 +193,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "USGov Virginia" -ResourceGroup
 ```
 
 Zie [open bare documentatie](../azure-monitor/platform/powershell-quickstart-samples.md)voor meer informatie over het gebruik van Power shell.
+
 
 ## <a name="application-insights"></a>Application Insights
 

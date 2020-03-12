@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386961"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128682"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB ondersteunt twee indexerings modi:
 
 Indexerings beleid is standaard ingesteld op `automatic`. Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op `true`. Als u deze eigenschap instelt op `true`, kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
 
-## <a name="including-and-excluding-property-paths"></a>Eigenschaps paden opnemen en uitsluiten
+## <a id="include-exclude-paths"></a>Eigenschaps paden opnemen en uitsluiten
 
 Een aangepast indexerings beleid kan eigenschaps paden opgeven die expliciet worden opgenomen of uitgesloten van indexeren. Door het aantal geïndexeerde paden te optimaliseren, kunt u de hoeveelheid opslag die wordt gebruikt door uw container verlagen en de latentie van schrijf bewerkingen verbeteren. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie Overzicht indexering](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
 
@@ -75,7 +75,7 @@ Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitg
 
 - Voor paden met gewone tekens die bevatten: alfanumerieke tekens en _ (onderstrepings teken), hoeft u de padtekenreeks niet te escapepen rond dubbele aanhalings tekens (bijvoorbeeld '/Path/? '). Voor paden met andere speciale tekens moet u de padtekenreeks Escape rond dubbele aanhalings tekens (bijvoorbeeld "/\"pad-ABC-\"/?"). Als u speciale tekens in uw pad verwacht, kunt u elk pad voor de beveiliging op te zeggen. Dit is functioneel geen verschil als u elk pad en alleen de bestanden met speciale tekens weglaat.
 
-- De systeem eigenschap "ETAG" wordt standaard uitgesloten van indexeren, tenzij de ETAG wordt toegevoegd aan het opgenomen pad voor indexering.
+- De systeem eigenschap ' _etag ' wordt standaard uitgesloten van indexeren, tenzij de ETAG wordt toegevoegd aan het opgenomen pad voor indexering.
 
 Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 

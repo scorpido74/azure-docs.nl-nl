@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377415"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129560"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een Java script-toepassing met één pagina (SPA)
 
@@ -28,6 +28,9 @@ In deze hand leiding wordt gedemonstreerd hoe een Java script-toepassing met é�
 - Persoonlijke accounts aanmelden, evenals werk-en school accounts 
 - Een toegangstoken verkrijgen
 - Roep de Microsoft Graph-API of andere Api's aan die toegangs tokens van het *micro soft Identity platform-eind punt* vereisen
+
+>[!NOTE]
+> Als u niet bekend bent met het micro soft-identiteits platform, raden we u aan om te beginnen met de [gebruikers voor aanmelden en een toegangs token in een Java script-Spa-Snelstartgids te verkrijgen](quickstart-v2-javascript.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voor beeld-app die wordt gegenereerd door deze hand leiding werkt
 

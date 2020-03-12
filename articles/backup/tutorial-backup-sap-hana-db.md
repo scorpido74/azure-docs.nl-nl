@@ -3,12 +3,12 @@ title: Zelf studie-back-ups maken van SAP HANA-data bases in azure Vm's
 description: In deze zelf studie leert u hoe u een back-up maakt van SAP HANA-data bases die worden uitgevoerd op Azure VM naar een Azure Backup Recovery Services kluis.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 435668dedc7efa33fd5fbfeea8671f05d070a385
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382462"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129210"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelf studie: back-ups maken van SAP HANA-data bases in een Azure VM
 
@@ -96,7 +96,23 @@ Door het script voor voorafgaande registratie uit te voeren, worden de volgende 
 
 * De vereiste pakketten die worden vereist door de Azure Backup Agent, worden geïnstalleerd of bijgewerkt tijdens uw distributie.
 * Hiermee worden uitgaande netwerk connectiviteits controles uitgevoerd met Azure Backup servers en afhankelijke services, zoals Azure Active Directory en Azure Storage.
-* Het meldt zich aan bij uw HANA-systeem met behulp van de gebruikers sleutel die wordt vermeld als onderdeel van de [vereisten](#prerequisites). Deze sleutel wordt gebruikt voor het maken van een back-upgebruiker (AZUREWLBACKUPHANAUSER) in het HANA-systeem en kan worden verwijderd nadat het vooraf registratie script is uitgevoerd. Met deze back-upgebruiker (AZUREWLBACKUPHANAUSER) kan de back-upagent data bases in uw HANA-systeem detecteren, back-ups maken en herstellen.
+* Het meldt zich aan bij uw HANA-systeem met behulp van de gebruikers sleutel die wordt vermeld als onderdeel van de [vereisten](#prerequisites). De gebruikers sleutel wordt gebruikt voor het maken van een back-upgebruiker (AZUREWLBACKUPHANAUSER) in het HANA-systeem en de gebruikers sleutel kan worden verwijderd nadat het vooraf registratie script is uitgevoerd.
+* Aan AZUREWLBACKUPHANAUSER zijn de volgende vereiste rollen en machtigingen toegewezen:
+  * DATABASE beheerder: voor het maken van nieuwe data bases tijdens het herstellen.
+  * CATALOGUS gelezen: voor het lezen van de back-catalogus.
+  * SAP_INTERNAL_HANA_SUPPORT: voor toegang tot een paar persoonlijke tabellen.
+* Het script voegt een sleutel toe aan **hdbuserstore** voor AZUREWLBACKUPHANAUSER voor de Hana-invoeg toepassing voor het afhandelen van alle bewerkingen (database query's, herstel bewerkingen, het configureren en uitvoeren van back-ups).
+
+U kunt controleren of de sleutel is gemaakt door de opdracht HDBSQL uit te voeren op de HANA-computer met SIDADM-referenties:
+
+```hdbsql
+hdbuserstore list
+```
+
+De uitvoer van de opdracht moet de sleutel {SID} {DBNAME} bevatten, waarbij de gebruiker als AZUREWLBACKUPHANAUSER wordt weer gegeven.
+
+>[!NOTE]
+> Zorg ervoor dat u een unieke set SSFS-bestanden hebt onder `/usr/sap/{SID}/home/.hdb/`. Dit pad mag slechts één map bevatten.
 
 ## <a name="create-a-recovery-service-vault"></a>Een Recovery service-kluis maken
 

@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78926061"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128875"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -188,6 +188,11 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |Controles uitgevoerd|
 |---|
 |<ul><li>Ondervindt klanten die door de gebruiker zijn gegenereerd Service Bus fouten?</li><li>Ondervinden gebruikers een toename van tijdelijke fouten vanwege een upgrade van de naam ruimte van Service Bus?</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Micro soft. ServiceFabric/clusters
+|Controles uitgevoerd|
+|---|
+|<ul><li>Wordt het Service Fabric cluster actief?</li><li>Kan het Service Fabric-cluster via Azure Resource Manager worden beheerd?</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Micro soft. SQL/managedInstances/data bases
 |Controles uitgevoerd|

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: scale Compute-Power shell '
-description: Schaal berekenen in SQL-groep in Power shell. Schaal de rekenkracht uit voor betere prestaties of verklein de schaal om kosten te besparen.
+title: Schaal berekenen voor Synapse SQL-pool (Azure PowerShell)
+description: U kunt Compute voor Synapse SQL-pool (Data Warehouse) schalen met behulp van Azure PowerShell.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 2b8aef37e9e7a3022ffc799bba80e8944330b8f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390500"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129048"
 ---
-# <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Snelstartgids: Compute scale in in azure Synapse Analytics SQL-groep met behulp van Azure PowerShell
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Snelstartgids: Compute Scale for Synapse SQL pool with Azure PowerShell
 
-Schaal Compute in SQL pool met behulp van Azure PowerShell. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen.
+U kunt Compute voor Synapse SQL-pool (Data Warehouse) schalen met behulp van Azure PowerShell. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen. 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

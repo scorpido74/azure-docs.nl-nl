@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121740"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117160"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -65,7 +65,7 @@ Wanneer u een Service Bus naam ruimte maakt, wordt automatisch een beleids regel
 
 U kunt de [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regel configureren voor service bus naam ruimten, wacht rijen of onderwerpen. Het configureren van een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) op een service bus-abonnement wordt momenteel niet ondersteund, maar u kunt regels die zijn geconfigureerd in een naam ruimte of onderwerp, gebruiken om de toegang tot abonnementen te beveiligen. Zie voor een werk voorbeeld waarin deze procedure wordt geïllustreerd het voor beeld van het [gebruik van Shared Access Signature (SAS) met Service Bus abonnementen](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) .
 
-![SAS](./media/service-bus-sas/service-bus-namespace.png)
+![GEBASEERD](./media/service-bus-sas/service-bus-namespace.png)
 
 In deze afbeelding zijn de *manageRuleNS*-, *SendRuleNS*-en *listenRuleNS* -autorisatie regels van toepassing op zowel wachtrij W1 als onderwerp T1, terwijl *listenRuleQ* en *SendRuleQ* alleen van toepassing zijn op wachtrij W1 en *sendRuleT* alleen van toepassing op het onderwerp T1.
 
@@ -264,17 +264,17 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | Bewerking | Claim vereist | Claim bereik |
 | --- | --- | --- |
 | **Naamruimte** | | |
-| Autorisatie regel configureren voor een naam ruimte |Beheer |Elk naam ruimte adres |
+| Autorisatie regel configureren voor een naam ruimte |Beheren |Elk naam ruimte adres |
 | **Service register** | | |
-| Privé beleid opsommen |Beheer |Elk naam ruimte adres |
+| Privé beleid opsommen |Beheren |Elk naam ruimte adres |
 | Beginnen met Luis teren op een naam ruimte |Luisteren |Elk naam ruimte adres |
 | Berichten naar een listener verzenden in een naam ruimte |Verzenden |Elk naam ruimte adres |
 | **Wachtrij** | | |
-| Een wachtrij maken |Beheer |Elk naam ruimte adres |
-| Een wachtrij verwijderen |Beheer |Een geldig wachtrij adres |
-| Wacht rijen opsommen |Beheer |/$Resources/queues |
-| De beschrijving van de wachtrij ophalen |Beheer |Een geldig wachtrij adres |
-| Autorisatie regel configureren voor een wachtrij |Beheer |Een geldig wachtrij adres |
+| Een wachtrij maken |Beheren |Elk naam ruimte adres |
+| Een wachtrij verwijderen |Beheren |Een geldig wachtrij adres |
+| Wacht rijen opsommen |Beheren |/$Resources/queues |
+| De beschrijving van de wachtrij ophalen |Beheren |Een geldig wachtrij adres |
+| Autorisatie regel configureren voor een wachtrij |Beheren |Een geldig wachtrij adres |
 | Verzenden naar de wachtrij |Verzenden |Een geldig wachtrij adres |
 | Berichten van een wachtrij ontvangen |Luisteren |Een geldig wachtrij adres |
 | Berichten afbreken of volt ooien na ontvangst van het bericht in de modus Peek-Lock |Luisteren |Een geldig wachtrij adres |
@@ -284,25 +284,25 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | De status van een berichten wachtrij sessie instellen |Luisteren |Een geldig wachtrij adres |
 | Een bericht plannen voor latere levering; bijvoorbeeld, [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Luisteren | Een geldig wachtrij adres
 | **Onderwerp** | | |
-| Een onderwerp maken |Beheer |Elk naam ruimte adres |
-| Een onderwerp verwijderen |Beheer |Een geldig onderwerp-adres |
-| Onderwerpen opsommen |Beheer |/$Resources/topics |
-| De beschrijving van het onderwerp ophalen |Beheer |Een geldig onderwerp-adres |
-| Verificatie regel voor een onderwerp configureren |Beheer |Een geldig onderwerp-adres |
+| Een onderwerp maken |Beheren |Elk naam ruimte adres |
+| Een onderwerp verwijderen |Beheren |Een geldig onderwerp-adres |
+| Onderwerpen opsommen |Beheren |/$Resources/topics |
+| De beschrijving van het onderwerp ophalen |Beheren |Een geldig onderwerp-adres |
+| Verificatie regel voor een onderwerp configureren |Beheren |Een geldig onderwerp-adres |
 | Verzenden naar het onderwerp |Verzenden |Een geldig onderwerp-adres |
 | **Abonnement** | | |
-| Een abonnement maken |Beheer |Elk naam ruimte adres |
-| Abonnement verwijderen |Beheer |../myTopic/Subscriptions/mySubscription |
-| Abonnementen opsommen |Beheer |.. /myTopic/Subscriptions |
-| Beschrijving van abonnement ophalen |Beheer |../myTopic/Subscriptions/mySubscription |
+| Een abonnement maken |Beheren |Elk naam ruimte adres |
+| Abonnement verwijderen |Beheren |../myTopic/Subscriptions/mySubscription |
+| Abonnementen opsommen |Beheren |.. /myTopic/Subscriptions |
+| Beschrijving van abonnement ophalen |Beheren |../myTopic/Subscriptions/mySubscription |
 | Berichten afbreken of volt ooien na ontvangst van het bericht in de modus Peek-Lock |Luisteren |../myTopic/Subscriptions/mySubscription |
 | Een bericht uitstellen voor later ophalen |Luisteren |../myTopic/Subscriptions/mySubscription |
 | Deadletter een bericht |Luisteren |../myTopic/Subscriptions/mySubscription |
 | De status ophalen die is gekoppeld aan een onderwerps sessie |Luisteren |../myTopic/Subscriptions/mySubscription |
 | De status die is gekoppeld aan een onderwerps sessie instellen |Luisteren |../myTopic/Subscriptions/mySubscription |
-| **Regels** | | |
-| Een regel maken |Beheer |../myTopic/Subscriptions/mySubscription |
-| Een regel verwijderen |Beheer |../myTopic/Subscriptions/mySubscription |
+| **Wetgeving** | | |
+| Een regel maken |Beheren |../myTopic/Subscriptions/mySubscription |
+| Een regel verwijderen |Beheren |../myTopic/Subscriptions/mySubscription |
 | Regels opsommen |Beheren of Belui Steren |.. /myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Volgende stappen

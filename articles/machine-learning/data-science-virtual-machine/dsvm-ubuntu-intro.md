@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Configureer en maak een Data Science Virtual Machine voor Linux (Ubuntu) om analyses en machine learning te maken.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360609"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129120"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Snelstartgids: de Data Science Virtual Machine instellen voor Linux (Ubuntu)
 
@@ -29,7 +29,7 @@ Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor
 Hier volgen de stappen voor het maken van een instantie van de Data Science Virtual Machine Ubuntu 18,04:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) u wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u nog niet bent aangemeld.
-1. Zoek de vermelding van de virtuele machine door in ' data Science virtual machine ' te typen en Data Science Virtual Machine-Ubuntu 18,04 preview te selecteren.
+1. Zoek de vermelding van de virtuele machine door in ' data Science virtual machine ' te typen en Data Science Virtual Machine-Ubuntu 18,04 te selecteren.
 
 1. Selecteer in het volgende venster **maken**.
 
@@ -118,13 +118,14 @@ De Ubuntu DSVM voert [JupyterHub](https://github.com/jupyterhub/jupyterhub), een
       ![IP-adres van Ubuntu-computer](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. Open vanaf uw lokale computer een webbrowser en ga naar https:\//your-VM-IP: 8000, vervang ' Your-VM-IP ' door het IP-adres dat u eerder hebt genoteerd.
+   1. Het is waarschijnlijk dat de browser de pagina niet rechtstreeks opent, met de melding dat er een certificaat fout is opgetreden. De DSVM biedt beveiliging via een zelfondertekend certificaat. In de meeste browsers kunt u na deze waarschuwing klikken. Veel browsers blijven een soort visuele waarschuwing over het certificaat in uw websessie bieden.
    1. Voer de gebruikers naam en het wacht woord in die u hebt gebruikt om de virtuele machine te maken en meld u aan. 
 
       ![Jupyter-aanmelding invoeren](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. Blader door de vele beschik bare voor beelden van notitie blokken.
 
-Jjupyterlab, is de volgende generatie van Jupyter notebooks en JupyterHub, ook beschikbaar. Meld u aan bij JupyterHub en blader vervolgens naar de URL https:\//your-VM-IP: 8000/User/uw-username/Lab, waarbij u uw-gebruikers naam vervangt door de gebruikers naam die u hebt gekozen bij het configureren van de virtuele machine.
+Jjupyterlab, is de volgende generatie van Jupyter notebooks en JupyterHub, ook beschikbaar. Meld u aan bij JupyterHub en blader vervolgens naar de URL https:\//your-VM-IP: 8000/User/uw-username/Lab, waarbij u uw-gebruikers naam vervangt door de gebruikers naam die u hebt gekozen bij het configureren van de virtuele machine. Het is mogelijk dat u de toegang tot de site hebt geweigerd vanwege een certificaat fout.
 
 U kunt Jjupyterlab instellen als de standaard notebook server door deze regel toe te voegen aan `/etc/jupyterhub/jupyterhub_config.py`:
 

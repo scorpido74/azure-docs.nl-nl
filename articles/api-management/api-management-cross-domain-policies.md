@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375081"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126539"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management-beleid voor meerdere domeinen
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -127,7 +127,7 @@ In dit voor beeld wordt gedemonstreerd hoe aanvragen voorafgaand aan de vlucht w
 |voorbereidende|Hoofd element.|Ja|N.v.t.|
 |toegestaan-oorsprong|Bevat `origin` elementen die de toegestane oorsprongen voor meerdere domein aanvragen beschrijven. `allowed-origins` kunnen een enkel `origin`-element bevatten waarin wordt aangegeven dat `*` een wille keurige oorsprong of een of meer `origin`-elementen met een URI mag bevatten.|Ja|N.v.t.|
 |Oorsprong|De waarde kan `*` zijn om alle oorsprongen toe te staan, of een URI die één oorsprong opgeeft. De URI moet een schema, host en poort bevatten.|Ja|Als de poort wordt wegge laten in een URI, wordt poort 80 gebruikt voor HTTP en poort 443 wordt gebruikt voor HTTPS.|
-|toegestane methoden|Dit element is vereist als andere methoden dan GET of POST zijn toegestaan. Bevat `method` elementen waarmee de ondersteunde HTTP-woorden worden opgegeven.|Nee|Als deze sectie niet aanwezig is, worden GET en POST ondersteund.|
+|toegestane methoden|Dit element is vereist als andere methoden dan GET of POST zijn toegestaan. Bevat `method` elementen waarmee de ondersteunde HTTP-woorden worden opgegeven. De waarde `*` geeft aan dat alle methoden zijn.|Nee|Als deze sectie niet aanwezig is, worden GET en POST ondersteund.|
 |method|Hiermee geeft u een HTTP-woord op.|Er is ten minste één `method` element vereist als de sectie `allowed-methods` aanwezig is.|N.v.t.|
 |toegestaan-headers|Dit element bevat `header` elementen die namen van de headers opgeven die in de aanvraag kunnen worden opgenomen.|Nee|N.v.t.|
 |weer geven-headers|Dit element bevat `header` elementen die namen van de headers opgeven die toegankelijk zijn voor de client.|Nee|N.v.t.|

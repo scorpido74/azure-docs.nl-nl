@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381155"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129411"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure-bewakings gegevens streamen naar een Event Hub
 Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en services in azure, in andere Clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruiken voor verschillende bewakings scenario's, moet u deze mogelijk verzenden naar andere controle hulpprogramma's in uw omgeving. De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van [Azure Event hubs](/azure/event-hubs/). In dit artikel vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een Event Hub en koppelingen naar gedetailleerde richt lijnen.
@@ -35,7 +35,7 @@ Voordat u streaming voor een gegevens bron configureert, moet u [een event hubs 
 | Laag | Gegevens | Methode |
 |:---|:---|:---|
 | [Azure-Tenant](data-sources.md#azure-tenant) | Controle logboeken Azure Active Directory | Configureer een diagnostische instelling voor tenants op uw AAD-Tenant. Zie [zelf studie: Stream Azure Active Directory logboeken naar een Azure Event hub](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) voor meer informatie. |
-| [Azure-abonnement](data-sources.md#azure-subscription) | Azure-activiteitenlogboek | Maak een logboek profiel om gebeurtenissen in het activiteiten logboek te exporteren naar Event Hubs.  Zie [Azure-activiteiten logboek exporteren naar opslag of azure Event hubs](activity-log-export.md) voor meer informatie. |
+| [Azure-abonnement](data-sources.md#azure-subscription) | Azure-activiteitenlogboek | Maak een logboek profiel om gebeurtenissen in het activiteiten logboek te exporteren naar Event Hubs.  Zie [Azure platform-logboeken streamen naar azure Event hubs](resource-logs-stream-event-hubs.md) voor meer informatie. |
 | [Azure-resources](data-sources.md#azure-resources) | Metrische platform gegevens<br> Resourcelogboeken |Beide typen gegevens worden verzonden naar een Event Hub met behulp van de diagnostische instelling van de resource. Zie [Azure-resource logboeken streamen naar een event hub](resource-logs-stream-event-hubs.md) voor meer informatie. |
 | [Besturings systeem (gast)](data-sources.md#operating-system-guest) | Virtuele machines van Azure | Installeer de [Azure Diagnostics-extensie](diagnostics-extension-overview.md) op virtuele Windows-en Linux-machines in Azure. Zie [Azure Diagnostics gegevens streamen in het warme pad met behulp van Event hubs](diagnostics-extension-stream-event-hubs.md) voor meer informatie over virtuele Windows-machines en [Linux diagnostische uitbrei ding voor het bewaken van gegevens en logboeken](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) voor meer informatie over Linux-vm's. |
 | [Toepassings code](data-sources.md#application-code) | Application Insights | Application Insights biedt geen directe methode voor het streamen van gegevens naar Event hubs. U kunt [continue export](../../azure-monitor/app/export-telemetry.md) van de Application Insights gegevens naar een opslag account instellen en vervolgens een logische app gebruiken om de gegevens naar een event hub te verzenden zoals beschreven in [hand matige streaming met logische app](#manual-streaming-with-logic-app). |

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604707"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086478"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een referentie gids
 
@@ -25,7 +25,10 @@ In dit artikel vindt u een overzicht van de aanbevelingen die u in Azure Securit
 
 Zie [aanbevelingen herstellen in azure Security Center](security-center-remediate-recommendations.md)voor meer informatie over hoe u kunt reageren op deze aanbevelingen.
 
-Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat u hebt verminderd. Denk na over de ernst van de aanbevelingen om eerst de prioriteit te bepalen.
+Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat u hebt voltooid. Als u wilt bepalen welke aanbevelingen het eerst moeten worden opgelost, bekijkt u de ernst van elke aanbeveling en de mogelijke gevolgen hiervan voor uw beveiligde Score.
+
+>[!TIP]
+> Als de beschrijving van een aanbeveling ' geen gerelateerd beleid ' zegt, is dit meestal omdat deze aanbeveling afhankelijk is van een andere aanbeveling en *het bijbehorende* beleid. Zo moet de aanbeveling ' status fouten van Endpoint Protection worden hersteld... ', afhankelijk van de aanbeveling waarmee wordt gecontroleerd of een Endpoint Protection-oplossing zelfs is *geïnstalleerd* ("Endpoint Protection-oplossing moet worden geïnstalleerd..."). De onderliggende aanbeveling *heeft* een beleid. Het beperken van het beleid tot alleen de basis aanbeveling vereenvoudigt beleids beheer.
 
 ## <a name="recs-network"></a>Aanbevelingen voor netwerken
 
@@ -106,7 +109,7 @@ Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat
 |**Beveiligings problemen moeten worden opgelost met een oplossing voor de evaluatie van de beveiligings lekken**|Virtuele machines waarvoor een 3e partij oplossing voor beveiligingslekken die is geïmplementeerd worden continu wordt geëvalueerd op basis van de toepassing en beveiligingsproblemen van besturingssystemen. Wanneer u dergelijke problemen worden gevonden, is deze zijn beschikbaar voor meer informatie als onderdeel van de aanbeveling.<br>(Gerelateerd beleid: beveiligings problemen moeten worden opgelost met een oplossing voor de evaluatie van beveiligings lekken)|Hoog|N|Machine|
 |**Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld**|Beveiligingsproblemen in de configuratie van de beveiliging op uw virtuele machines te beschermen tegen aanvallen herstellen.<br>(Gerelateerd beleid: beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld)|Laag|N|Machine|
 |**Beveiligings problemen in container beveiligings configuraties moeten worden hersteld**|Beveiligingsproblemen verhelpen in de beveiligingsconfiguratie van computers waarop Docker is geïnstalleerd, om beveiliging tegen aanvallen te bieden.<br>(Gerelateerd beleid: beveiligings problemen in container beveiligings configuraties moeten worden hersteld)|Hoog|N|Machine|
-|**Endpoint Protection-status problemen moeten worden opgelost op uw computers**|Voor volledige Security Center beveiliging oplossen monitoring agent op uw virtuele machines door de instructies in de gids voor probleemoplossing.<br>(Geen gerelateerd beleid afhankelijk van ' Endpoint Protection-oplossing op uw computers installeren ')|Middelgroot|N|Machine|
+|**Endpoint Protection-status problemen moeten worden opgelost op uw computers**|Voor volledige Security Center beveiliging oplossen monitoring agent op uw virtuele machines door de instructies in de gids voor probleemoplossing.<br>(Deze aanbeveling is afhankelijk van de aanbeveling ' Endpoint Protection-oplossing installeren op uw computers ' en het bijbehorende beleid)|Middelgroot|N|Machine|
 ||||||
 
 

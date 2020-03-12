@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364455"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128787"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
@@ -87,11 +87,11 @@ U kunt de twee modellen combi neren. De door Voer voor de data base en de contai
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>De door Voer van een Data Base of container bijwerken
 
-Nadat u een Azure Cosmos-container of een-Data Base hebt gemaakt, kunt u de ingerichte door Voer bijwerken. Er is geen limiet voor de Maxi maal ingerichte door Voer die u kunt configureren voor de data base of de container. De minimale ingerichte door Voer is afhankelijk van de volgende factoren: 
+Nadat u een Azure Cosmos-container of een-Data Base hebt gemaakt, kunt u de ingerichte door Voer bijwerken. Er is geen limiet voor de Maxi maal ingerichte door Voer die u kunt configureren voor de data base of de container. De [minimale ingerichte door Voer](concepts-limits.md#storage-and-throughput) is afhankelijk van de volgende factoren: 
 
 * De maximale gegevens grootte die u ooit opslaat in de container
 * De maximale door Voer die u ooit op de container hebt ingericht
-* Het maximum aantal Azure Cosmos-containers dat u ooit in een Data Base hebt gemaakt met een gedeelde door voer. 
+* Het huidige aantal Azure Cosmos-containers dat u in een Data Base hebt met een gedeelde door voer. 
 
 U kunt de minimale door Voer van een container of een Data Base via een programma ophalen met behulp van de Sdk's of de waarde in de Azure Portal weer geven. Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) de ingerichte doorvoer waarde schalen. Wanneer u de Java-SDK gebruikt, kunt u met de methode [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) de ingerichte doorvoer waarde schalen. 
 

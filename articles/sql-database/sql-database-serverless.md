@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359823"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129183"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 
@@ -148,6 +148,10 @@ Als een serverloze data base wordt onderbroken, wordt de data base door de eerst
 ### <a name="latency"></a>Latentie
 
 De latentie voor automatisch hervatten en automatisch onderbreken van een serverloze data base is doorgaans 1 minuut tot automatisch hervatten en 1-10 minuten om automatisch te onderbreken.
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Door de klant beheerde transparante gegevens versleuteling (BYOK)
+
+Als door de [klant beheerde transparante gegevens versleuteling](transparent-data-encryption-byok-azure-sql.md) (BYOK) wordt gebruikt en de serverloze data base automatisch wordt onderbroken wanneer het verwijderen of intrekken van sleutels plaatsvindt, blijft de data base in de status automatisch onderbroken.  In dit geval wordt de data base gepauzeerd totdat de status is gewijzigd in niet toegankelijk na ongeveer 10 minuten of minder.  Zodra de data base niet meer toegankelijk is, is het herstel proces hetzelfde als voor ingerichte Compute-data bases.  Als de serverloze data base online is wanneer de sleutel wordt verwijderd of ingetrokken, wordt de data base na ongeveer 10 minuten en op dezelfde manier ook ontoegankelijk als met ingerichte reken databases.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Onboarding in Compute-laag zonder server
 

@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384146"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129164"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Uitbreidings schema voor Windows diagnostische gegevens
 Azure Diagnostics extensie is een agent in Azure Monitor die bewakings gegevens verzamelt van het gast besturingssysteem en werk belastingen van Azure Compute-resources. Dit artikel bevat informatie over het schema dat wordt gebruikt voor het configureren van de diagnostische uitbrei ding op virtuele Windows-machines en andere reken bronnen.
@@ -506,7 +506,7 @@ De *PublicConfig* en *PrivateConfig* worden gescheiden omdat de meeste JSON-gebr
 ```
 
 > [!NOTE]
-> De Sink-definitie voor open bare configuratie Azure Monitor heeft twee eigenschappen: *PrincipalId* en *geheim*. Deze zijn alleen vereist voor klassieke Vm's en klassieke Cloud Services. Deze eigenschappen mogen niet worden gebruikt voor andere resources.
+> De definitie van de persoonlijke configuratie Azure Monitor-Sink heeft twee eigenschappen: *PrincipalId* en *geheim*. Deze zijn alleen vereist voor klassieke Vm's en klassieke Cloud Services. Deze eigenschappen mogen niet worden gebruikt voor andere resources.
 
 
 ```json

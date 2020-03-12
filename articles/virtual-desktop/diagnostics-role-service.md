@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383640"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127941"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problemen identificeren en diagnosticeren
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haakjes, zoals `<tenantName>`, moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Diagnostische activiteiten ophalen in uw Tenant
+>[!IMPORTANT]
+>De functie diagnostische gegevens is voor het oplossen van problemen met één gebruiker. Alle query's die gebruikmaken van Power shell moeten de para meters *-username* of *-ActivityID* bevatten. Gebruik Log Analytics voor bewakings mogelijkheden. Zie [log Analytics voor de diagnostische functie gebruiken](diagnostics-log-analytics.md) voor meer informatie over het verzenden van diagnostische gegevens naar uw werk ruimte. 
 
-U kunt diagnostische activiteiten ophalen door de cmdlet **Get-RdsDiagnosticActivities** in te voeren. De volgende voor beeld-cmdlet retourneert een lijst met diagnostische activiteiten, gesorteerd van meest recente naar minst recent.
+### <a name="filter-diagnostic-activities-by-user"></a>Diagnostische activiteiten filteren op gebruiker
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-Net als andere virtuele bureau blad-cmdlets van Windows, moet u de para meter **-Tenant** naam gebruiken om de namen op te geven van de Tenant die u wilt gebruiken voor uw query. De naam van de Tenant is van toepassing op bijna alle query's voor diagnostische activiteiten.
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>Gedetailleerde diagnostische activiteiten ophalen
-
-De para meter **-detail** bevat aanvullende informatie voor elke geretourneerde diagnostische activiteit. De notatie voor elke activiteit is afhankelijk van het type activiteit. De para meter **-detail** kan worden toegevoegd aan een **Get-RdsDiagnosticActivities-** query, zoals wordt weer gegeven in het volgende voor beeld.
+De para meter **-username** retourneert een lijst met diagnostische activiteiten die door de opgegeven gebruiker zijn gestart, zoals wordt weer gegeven in de volgende voor beeld-cmdlet.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+De para meter **-username** kan ook worden gecombineerd met andere optionele filter parameters.
+
+### <a name="filter-diagnostic-activities-by-time"></a>Diagnostische activiteiten filteren op tijd
+
+U kunt de geretourneerde lijst met diagnostische activiteiten filteren met de para meter **-StartTime** en **-EndTime** . De para meter **-StartTime** retourneert een lijst met diagnostische activiteiten vanaf een specifieke datum, zoals wordt weer gegeven in het volgende voor beeld.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+De para meter **-EndTime** kan worden toegevoegd aan een cmdlet met de para meter **-StartTime** om een specifieke periode op te geven waarvoor u resultaten wilt ontvangen. De volgende voor beeld-cmdlet retourneert een lijst met diagnostische activiteiten van 1 augustus tot en met 10 augustus.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+De para meters **-StartTime** en **-EndTime** kunnen ook worden gecombineerd met andere optionele filter parameters.
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnostische activiteiten filteren op activiteitstype
+
+U kunt ook diagnostische activiteiten filteren op activiteitstype met de para meter **-Activity** type. Met de volgende cmdlet wordt een lijst met eind gebruikers verbindingen geretourneerd:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+Met de volgende cmdlet wordt een lijst met beheerders beheer taken geretourneerd:
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+De cmdlet **Get-RdsDiagnosticActivities** biedt momenteel geen ondersteuning voor het opgeven van feeds als activity type.
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnostische activiteiten filteren op resultaat
+
+U kunt de geretourneerde lijst met diagnostische activiteiten filteren op uitkomst met de para meter **-Result** . Met de volgende voorbeeld cmdlet wordt een lijst met geslaagde diagnostische activiteiten geretourneerd.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+Met de volgende voor beeld-cmdlet wordt een lijst met mislukte diagnostische activiteiten geretourneerd.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+De para meter **-resultaat** kan ook worden gecombineerd met andere optionele filter parameters.
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Een specifieke diagnostische activiteit ophalen op basis van de activiteits-ID
 
@@ -68,63 +112,13 @@ Als u de fout berichten voor een mislukte activiteit wilt weer geven, moet u de 
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>Diagnostische activiteiten filteren op gebruiker
+### <a name="retrieve-detailed-diagnostic-activities"></a>Gedetailleerde diagnostische activiteiten ophalen
 
-De para meter **-username** retourneert een lijst met diagnostische activiteiten die door de opgegeven gebruiker zijn gestart, zoals wordt weer gegeven in de volgende voor beeld-cmdlet.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-De para meter **-username** kan ook worden gecombineerd met andere optionele filter parameters.
-
-### <a name="filter-diagnostic-activities-by-time"></a>Diagnostische activiteiten filteren op tijd
-
-U kunt de geretourneerde lijst met diagnostische activiteiten filteren met de para meter **-StartTime** en **-EndTime** . De para meter **-StartTime** retourneert een lijst met diagnostische activiteiten vanaf een specifieke datum, zoals wordt weer gegeven in het volgende voor beeld.
+De para meter **-detail** bevat aanvullende informatie voor elke geretourneerde diagnostische activiteit. De notatie voor elke activiteit is afhankelijk van het type activiteit. De para meter **-detail** kan worden toegevoegd aan een **Get-RdsDiagnosticActivities-** query, zoals wordt weer gegeven in het volgende voor beeld.
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-De para meter **-EndTime** kan worden toegevoegd aan een cmdlet met de para meter **-StartTime** om een specifieke periode op te geven waarvoor u resultaten wilt ontvangen. De volgende voor beeld-cmdlet retourneert een lijst met diagnostische activiteiten van 1 augustus tot en met 10 augustus.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-De para meters **-StartTime** en **-EndTime** kunnen ook worden gecombineerd met andere optionele filter parameters.
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Diagnostische activiteiten filteren op activiteitstype
-
-U kunt ook diagnostische activiteiten filteren op activiteitstype met de para meter **-Activity** type. Met de volgende cmdlet wordt een lijst met eind gebruikers verbindingen geretourneerd:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-Met de volgende cmdlet wordt een lijst met beheerders beheer taken geretourneerd:
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-De cmdlet **Get-RdsDiagnosticActivities** biedt momenteel geen ondersteuning voor het opgeven van feeds als activity type.
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>Diagnostische activiteiten filteren op resultaat
-
-U kunt de geretourneerde lijst met diagnostische activiteiten filteren op uitkomst met de para meter **-Result** . Met de volgende voorbeeld cmdlet wordt een lijst met geslaagde diagnostische activiteiten geretourneerd.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-Met de volgende voor beeld-cmdlet wordt een lijst met mislukte diagnostische activiteiten geretourneerd.
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-De para meter **-resultaat** kan ook worden gecombineerd met andere optionele filter parameters.
 
 ## <a name="common-error-scenarios"></a>Veelvoorkomende fout scenario's
 

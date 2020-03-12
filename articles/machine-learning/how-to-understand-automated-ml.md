@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393353"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129678"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,12 +29,12 @@ Meer informatie over:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 * Maak een experiment voor uw geautomatiseerde machine learning uitvoeren, hetzij met de SDK, hetzij in Azure Machine Learning Studio.
 
     * De SDK gebruiken om een [classificatie model](how-to-auto-train-remote.md) of [regressie model](tutorial-auto-train-models.md) te bouwen
-    * Gebruik [Azure machine learning Studio](how-to-create-portal-experiments.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
+    * Gebruik [Azure machine learning Studio](how-to-use-automated-ml-for-ml-models.md) om een classificatie of regressie model te maken door de juiste gegevens te uploaden.
 
 ## <a name="view-the-run"></a>De uitvoering weer geven
 
@@ -89,7 +89,7 @@ balanced_accuracy|Met gelijke taakverdeling nauwkeurigheid is het rekenkundige g
 f1_score_macro|F1 score is het gemiddelde harmonische van precisie- en intrekken. Macro is het reken kundige gemiddelde van de F1-score voor elke klasse.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|gemiddelde = "macro"|
 f1_score_micro|F1 score is het gemiddelde harmonische van precisie- en intrekken. Micro wordt wereld wijd berekend door het totale aantal positieve, onwaare negatieven en valse positieven te tellen.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|gemiddelde = "micro"|
 f1_score_weighted|F1 score is het gemiddelde harmonische van precisie- en intrekken. Gewogen gemiddelde frequentie van de klasse van F1 score voor elke objectklasse|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|gemiddelde = "gewogen"|
-log_loss|Dit is de verlies-functie die wordt gebruikt voor logistieke regressie (wordt) en -extensies van het zoals neurale netwerken, gedefinieerd als de negatieve log kans van de waarde true labels een probabilistic classificatie voorspellingen gegeven. Voor één steek proef met True label YT in {0,1} en geschatte waarschijnlijke kans YP dat YT = 1, het logboek verlies is: log P&#124;(YT YP) =-(YT log (YP) + (1-YT) logboek (1-YP)).|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
+log_loss|Dit is de functie verlies die wordt gebruikt in (MultiNomial) logistiek regressie en uitbrei dingen van IT, zoals Neural-netwerken, gedefinieerd als de negatieve kans op Logboeken van de werkelijke labels op basis van de voor spellingen van een Probabilistic-classificatie. Voor één steek proef met True label YT in {0,1} en geschatte waarschijnlijke kans YP dat YT = 1, het logboek verlies is: log P&#124;(YT YP) =-(YT log (YP) + (1-YT) logboek (1-YP)).|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
 norm_macro_recall|Genormaliseerde Macro intrekken is Macro intrekken genormaliseerd zodat willekeurige prestaties een score van 0 krijgt en perfecte prestaties een score van 1 krijgt. Dit wordt bereikt door norm_macro_recall: = (recall_score_macro-R)/(1-R), waarbij R de verwachte waarde is van recall_score_macro voor wille keurige voor spellingen (R = 0,5 voor binaire classificatie en R = (1/C) voor problemen met de classificatie van C-klasse).|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Gem = "macro" |
 precision_score_macro|Precisie is het percentage positieve voorspelde elementen met een juiste label. Macro is het reken kundige gemiddelde van de precisie voor elke klasse.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|gemiddelde = "macro"|
 precision_score_micro|Precisie is het percentage positieve voorspelde elementen met een juiste label. Micro wordt wereld wijd berekend door het totale aantal positieve en foutieve positieven te tellen.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|gemiddelde = "micro"|
@@ -190,7 +190,7 @@ Met de cumulatieve winsten grafiek kunt u de classificatie afsluitdatum met behu
 ### <a name="calibration-chart"></a>Kalibratie diagram
 
 #### <a name="what-is-a-calibration-chart"></a>Wat is een ijklijn?
-Een diagram kalibreren wordt gebruikt om het vertrouwen van een Voorspellend model weer te geven. Dit gebeurt door de relatie tussen de voorspelde kans en de werkelijke kans op, waarbij "kans" vertegenwoordigt de kans dat een bepaalde instantie deel uitmaakt van een label.
+Een diagram kalibreren wordt gebruikt om het vertrouwen van een Voorspellend model weer te geven. Dit doet u door de relatie tussen de voorspelde waarschijnlijkheid en de werkelijke kans weer te geven, waarbij ' kans ' staat voor de kans dat een bepaalde instantie tot een bepaald label behoort.
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Wat doet automatische ML met de ijklijn?
 Voor alle problemen met de classificatie, kunt u de regel kalibreren voor micro-gemiddelde macro-gemiddelde en elke klasse in een bepaalde Voorspellend model bekijken.
 

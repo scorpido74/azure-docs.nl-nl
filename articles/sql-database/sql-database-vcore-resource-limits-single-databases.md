@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 01/22/2020
-ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: a8f62a24ff2c6571b5267fdbf4f23bd9e05ee499
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359817"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128679"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 
@@ -102,6 +102,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
 |Opslagtype| [Opmerking 1](#notes) |[Opmerking 1](#notes)|[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |
 |Max. gegevensiops *|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
+|Maximale logboek frequentie (MBps)|105 |105 |105 |105 |105 |105 |
 |I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -126,6 +127,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|512|768|
 |Opslagtype| [Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |
 |Max. gegevensiops *|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
+|Maximale logboek frequentie (MBps)|105 |105 |105 |105 |105 |105 |
 |I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -154,6 +156,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|448|
 |Opslagtype| [Opmerking 1](#notes) |[Opmerking 1](#notes)|[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |
 |Max. gegevensiops *|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
+|Maximale logboek frequentie (MBps)|105 |105 |105 |105 |105 |105 |105 |
 |I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -180,6 +183,7 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Opslagtype| [Opmerking 1](#notes) |[Opmerking 1](#notes)|[Opmerking 1](#notes)|[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |[Opmerking 1](#notes) |
 |Max. gegevensiops *|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
+|Maximale logboek frequentie (MBps)|105 |105 |105 |105 |105 |105 |105 |
 |I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358740"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126910"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -64,7 +64,7 @@ Een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtual-net
 
   Zie [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)voor meer informatie over de limieten van het integratie account. Verderop in dit onderwerp vindt u meer informatie over [de integratie-account lagen en hun prijs model](#integration-accounts) .
 
-Als u de Premium ISE SKU kiest, heeft de basis eenheid vaste capaciteit. Als u meer door voer wilt, kunt u tijdens het maken of later [meer schaal eenheden toevoegen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). De Developer ISE SKU beschikt niet over de mogelijkheid om meer schaal eenheden toe te voegen. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens.
+Als u de Premium ISE SKU kiest, heeft de basis eenheid vaste capaciteit. Als u meer door voer wilt, kunt u tijdens het maken of later [meer schaal eenheden toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). De Developer ISE SKU beschikt niet over de mogelijkheid om meer schaal eenheden toe te voegen. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens.
 
 Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps)voor prijs tarieven.
 

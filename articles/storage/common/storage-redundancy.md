@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674276"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130080"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -61,7 +61,7 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 
 |    Type opslagaccount    |    Ondersteunde regio’s    |    Ondersteunde services    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
+|    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Europa - west<br /> US - oost    |    Alleen blok-blobs    |
 |    FileStorage    | Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
@@ -109,10 +109,12 @@ GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende reg
 - Azië - zuidoost
 - Europa - noord
 - Europa - west
+- Japan - oost
 - Verenigd Koninkrijk Zuid
 - US - oost
 - US - oost 2
 - US - centraal
+- US - west 2
 
 Micro soft blijft GZRS en RA-GZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over ondersteunde regio's.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384691"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128636"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Zelf studie: Azure Data Box Edge verbinding maken, instellen en activeren 
 
@@ -101,6 +101,11 @@ Uw dash board geeft de verschillende instellingen weer die nodig zijn om het fys
    c. Als u verificatie gebruikt, voert u een gebruikers naam en wacht woord in.
 
    d. Selecteer **instellingen Toep assen**om de geconfigureerde web proxy-instellingen te valideren en toe te passen.
+   
+   > [!NOTE]
+   > De bestanden voor het automatisch configureren van de proxy (PAC) worden niet ondersteund. Een PAC-bestand definieert hoe webbrowsers en andere gebruikers agenten automatisch de juiste proxy server (toegangs methode) kunnen kiezen voor het ophalen van een bepaalde URL.
+   > Proxy's die al het verkeer proberen te onderscheppen en lezen (en vervolgens alles opnieuw ondertekenen met hun eigen certificering) zijn niet compatibel, omdat het certificaat van de proxy niet wordt vertrouwd.
+   > Normaal gesp roken werken transparante proxy's goed met Azure Data Box Edge.
 
 4. Beschrijving Selecteer in het linkerdeel venster **tijd instellingen**en configureer vervolgens de tijd zone en de primaire en secundaire NTP-servers voor uw apparaat.  
     NTP-servers zijn vereist omdat uw apparaat tijd moet synchroniseren zodat het kan worden geverifieerd bij uw Cloud serviceproviders.

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 817ff90c10a29d7db7037d89f3c3d51e7f997175
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 778f6b8d133ddb21f918d65a9d8aecd8b2205b08
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037171"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127201"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -209,7 +209,7 @@ Een gegevensset maken in Studio:
 1. Selecteer een **tabel** of **bestand** voor het type gegevensset.
 1. Selecteer **volgende** om het formulier **gegevens opslag en bestand selecteren** te openen. Op dit formulier selecteert u waar u uw gegevensset na het maken moet blijven en selecteert u welke gegevens bestanden u voor uw gegevensset wilt gebruiken. 
 1. Selecteer **volgende** om de **instellingen en de voor beeld** -en **schema** formulieren in te vullen. ze worden op intelligente wijze ingevuld op basis van het bestands type en u kunt uw gegevensset verder configureren voordat deze formulieren worden gemaakt. 
-1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile). 
+1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevens profilering](how-to-use-automated-ml-for-ml-models.md#profile). 
 1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
 
 ## <a name="register-datasets"></a>Gegevens sets registreren

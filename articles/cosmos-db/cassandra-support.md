@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 0a2ace3f73379cff0b9289a8cebb10cb7930348d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623422"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128912"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
@@ -145,6 +145,8 @@ Azure Cosmos DB ondersteunt de volgende databaseopdrachten op Cassandra-API-acco
 
 * Een spatie maken (de replicatie-instellingen voor deze opdracht worden genegeerd)
 * CREATE TABLE 
+* INDEX maken (zonder de index naam op te geven en volledig geblokkeerde indexen nog niet ondersteund)
+* FILTEREN TOESTAAN
 * ALTER TABLE 
 * USE 
 * INSERT 

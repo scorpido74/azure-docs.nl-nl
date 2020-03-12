@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396418"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127188"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -95,9 +95,9 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Geavanceerde voor verwerking: optionele parametrisatie
 
-Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals gegevens Guardrails, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#featurization). Schakel deze instelling in met:
+Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals gegevens Guardrails, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-use-automated-ml-for-ml-models.md#featurization). Schakel deze instelling in met:
 
-+ Azure Machine Learning studio: **automatische parametrisatie** inschakelen in de sectie **aanvullende configuratie weer geven** [met de volgende stappen](how-to-create-portal-experiments.md#create-and-run-experiment).
++ Azure Machine Learning studio: **automatische parametrisatie** inschakelen in de sectie **aanvullende configuratie weer geven** [met de volgende stappen](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 + Python-SDK: Geef `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` op voor de [`AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
@@ -153,7 +153,7 @@ Model **C** staat voor een duidelijk beeld van over-montage; de nauw keurigheid 
 
 ## <a name="classification--regression"></a>Classificatie & regressie
 
-Classificatie en regressie zijn de meest voorkomende typen machine learning taken. Beide vormen een soort super visie waarover modellen leren met behulp van trainings gegevens en deze informatie op nieuwe gegevens Toep assen. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-create-portal-experiments.md#featurization). 
+Classificatie en regressie zijn de meest voorkomende typen machine learning taken. Beide vormen een soort super visie waarover modellen leren met behulp van trainings gegevens en deze informatie op nieuwe gegevens Toep assen. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-use-automated-ml-for-ml-models.md#featurization). 
 
 Het belangrijkste doel van classificatie modellen is om te voors pellen welke categorieën nieuwe gegevens zijn op basis van de informatie van de trainings gegevens. Voor beelden van veelvoorkomende classificaties zijn fraude detectie, handschrift herkenning en object detectie.  Meer informatie en een voor beeld van [classificatie met automatische machine learning](tutorial-train-models-with-aml.md).
 
@@ -286,7 +286,7 @@ Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine le
 + Volg de [zelf studie: automatisch een regressie model trainen met Azure machine learning](tutorial-auto-train-models.md)
 
 + De instellingen voor automatische training-experiment configureren:
-  + In Azure Machine Learning Studio [gaat u](how-to-create-portal-experiments.md)als volgt te werk.
+  + In Azure Machine Learning Studio [gaat u](how-to-use-automated-ml-for-ml-models.md)als volgt te werk.
   + Gebruik de python-SDK om de [volgende stappen uit te voeren](how-to-configure-auto-train.md).
 
 + Meer informatie over het automatisch trainen van Time Series-gegevens met behulp van [deze stappen](how-to-auto-train-forecast.md).
