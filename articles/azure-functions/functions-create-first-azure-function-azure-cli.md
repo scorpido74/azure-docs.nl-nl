@@ -3,13 +3,12 @@ title: Een functie in azure maken die reageert op HTTP-aanvragen
 description: Leer hoe u een functie maakt vanaf de opdracht regel en vervolgens het lokale project publiceert op serverloze hosting in Azure Functions.
 ms.date: 01/28/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272750"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096256"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een functie maken in azure die reageert op HTTP-aanvragen
 
@@ -23,7 +22,12 @@ Voordat u begint, moet u het volgende hebben:
 
 + Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + De [Azure functions core tools](./functions-run-local.md#v2) versie 2.7.1846 of een latere versie van 2. x.
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Voor python 3,6 en 3,7 is [Azure functions core tools](./functions-run-local.md#v2) versie 2.7.1846 of een latere versie van 2. x vereist. Voor python 3,8 is [versie 3. x](./functions-run-local.md#v2) van de kern hulpprogramma's vereist.
+::: zone-end
 
 + De [Azure cli](/cli/azure/install-azure-cli) -versie 2.0.76 of hoger. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -31,7 +35,7 @@ Voordat u begint, moet u het volgende hebben:
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) of [python 3,6](https://www.python.org/downloads/release/python-368/), die door Azure functions worden ondersteund. Python 3,8 en latere versies worden nog niet ondersteund. 
++ [Python 3,8](https://www.python.org/downloads/release/python-382/), [python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/), die wordt ondersteund door Azure functions. 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [Power shell core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -51,11 +55,11 @@ Voordat u begint, moet u het volgende hebben:
 + Voer `node --version` uit om uw node. js-versie rapporten te controleren 8. x of 10. x.
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ Voer `python --version` (Linux/MacOS) of `py --version` (Windows) uit om uw python-versie rapporten te controleren 3.7. x of 3.6. x.
++ Voer `python --version` (Linux/MacOS) of `py --version` (Windows) uit om uw python-versie rapporten te controleren 3.8. x, 3.7. x of 3.6. x.
 
 ## <a name="create-venv"></a>Een virtuele omgeving maken en activeren
 
-In een geschikte map voert u de volgende opdrachten uit om een virtuele omgeving met de naam `.venv`te maken en te activeren. Zorg ervoor dat u python 3,7 of 3,6 gebruikt, die wordt ondersteund door Azure Functions.
+In een geschikte map voert u de volgende opdrachten uit om een virtuele omgeving met de naam `.venv`te maken en te activeren. Zorg ervoor dat u python 3,8, 3,7 of 3,6 gebruikt, die wordt ondersteund door Azure Functions.
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -268,13 +272,15 @@ Gebruik de volgende Azure CLI-opdrachten om deze items te maken. Elke opdracht b
     
     Het opslag account heeft slechts een paar cent (USD) voor deze Quick Start.
     
-1. Maak de functions-app met de opdracht [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Vervang in het volgende voor beeld `<STORAGE_NAME>` door de naam van het account dat u in de vorige stap hebt gebruikt en vervang `<APP_NAME>` door een globaal unieke naam die voor u van toepassing is. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. 
+1. Maak de functie-app met behulp van de opdracht [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Vervang in het volgende voor beeld `<STORAGE_NAME>` door de naam van het account dat u in de vorige stap hebt gebruikt en vervang `<APP_NAME>` door een globaal unieke naam die voor u van toepassing is. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. 
 
     ::: zone pivot="programming-language-python"  
-    Als u gebruikmaakt van python 3,6, wijzigt u ook de `--runtime-version` in `3.6`.
+    Als u gebruikmaakt van python 3,8, wijzigt u `--runtime-version` in `3.8` en `--functions_version` u `3`.
+    
+    Als u gebruikmaakt van python 3,6, wijzigt u `--runtime-version` in `3.6`.
 
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -283,19 +289,19 @@ Gebruik de volgende Azure CLI-opdrachten om deze items te maken. Elke opdracht b
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 

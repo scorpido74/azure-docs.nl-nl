@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 526e8a247241bd3ea0e61b6cd3b025cd473b29aa
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942512"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117798"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
 
@@ -77,11 +77,17 @@ Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met of zonder RBAC ingesch
 
 Wanneer u Visual Studio gebruikt om uw project voor te bereiden, hebt u de mogelijkheid om in te scha kelen voor uw service. Als u inschakelt, wordt er een openbaar eind punt gemaakt voor toegang tot uw service wanneer deze wordt uitgevoerd op uw AKS-cluster. Dit is optioneel. Als u geen ingang inschakelt, is uw service alleen toegankelijk vanuit uw AKS-cluster.
 
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Kan ik pod Managed Identities gebruiken met Azure dev Spaces?
+
+Azure dev Spaces biedt momenteel geen ondersteuning voor het gebruik van [pod Managed Identities][aks-pod-managed-id] op AKS-clusters waarvoor Azure dev Spaces zijn ingeschakeld. Als er pod beheerde identiteiten zijn geïnstalleerd en u deze wilt verwijderen, kunt u meer informatie vinden in de [opmerkingen][aks-pod-managed-id-uninstall]bij het verwijderen.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
+[aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
+[aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works

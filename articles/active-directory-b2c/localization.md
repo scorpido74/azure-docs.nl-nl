@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5dcbc2ee35620d0a29c495b24bd3756769095a17
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78932996"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126757"
 ---
 # <a name="localization"></a>Lokalisatie
 
@@ -207,160 +207,9 @@ Voeg onder het element **BuildingBlocks** het **lokalisatie** -element toe met d
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>Taalspecifieke teken reeksen en verzamelingen opgeven
+## <a name="next-steps"></a>Volgende stappen
 
-Voeg **LocalizedResources** -elementen toe binnen het **lokalisatie** -element nadat het **SupportedLanguages** -element is gesloten. U voegt **LocalizedResources** -elementen toe voor elke pagina (inhouds definitie) en elke taal die u wilt ondersteunen. U kunt de volgende **LocalizedResources** -elementen toevoegen om de Unified registratie-of aanmeldings pagina, registratie en MFA-pagina's (multi-factor Authentication) voor Engels, Spaans en Frank rijk aan te passen.
+Raadpleeg de volgende artikelen voor lokalisatie van voor beelden:
 
-- De pagina voor Unified Sign-up of aanmelden, Engels `<LocalizedResources Id="api.signuporsignin.en">`
-- Unified Sign-up-of aanmeldings pagina, Spaans `<LocalizedResources Id="api.signuporsignin.es">`
-- Unified Sign-up-of aanmeldings pagina, Frank rijk `<LocalizedResources Id="api.signuporsignin.fr">`
-- Registratie, Engels `<LocalizedResources Id="api.localaccountsignup.en">`
-- Registratie, Spaans `<LocalizedResources Id="api.localaccountsignup.es">`
-- Registratie, Frank rijk `<LocalizedResources Id="api.localaccountsignup.fr">`
-- MFA, Engelse `<LocalizedResources Id="api.phonefactor.en">`
-- MFA, Spaans `<LocalizedResources Id="api.phonefactor.es">`
-- MFA, Frank rijk `<LocalizedResources Id="api.phonefactor.fr">`
-
-Elk **LocalizedResources** -element bevat alle vereiste **LocalizedStrings** -elementen met meerdere **LocalizedString** -elementen en **LocalizedCollections** -elementen met meerdere **LocalizedCollection** -elementen.  In het volgende voor beeld wordt de pagina voor aanmeldings pagina's Engels gelokaliseerd toegevoegd:
-
-Opmerking: in dit voor beeld wordt een verwijzing naar `Gender` en `City` claim typen. Als u dit voor beeld wilt gebruiken, zorg er dan voor dat u deze claims definieert. Zie [ClaimsSchema](claimsschema.md)voor meer informatie.
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.en">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Female" Value="F" />
-      <Item Text="Male" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="New York" Value="NY" />
-      <Item Text="Paris" Value="Paris" />
-      <Item Text="London" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-Lokalisatie van de aanmeldings pagina voor Spaans.
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.es">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Femenino" Value="F" />
-      <Item Text="Masculino" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="Nueva York" Value="NY" />
-      <Item Text="París" Value="Paris" />
-      <Item Text="Londres" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-### <a name="edit-the-contentdefinition-for-the-page"></a>De ContentDefinition voor de pagina bewerken
-
-Voor elke pagina die u wilt lokaliseren, geeft u de taal codes op waarnaar u wilt zoeken in de **ContentDefinition**.
-
-In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spaans (ES) toegevoegd aan de registratie pagina. De **LocalizedResourcesReferenceId** voor elke **LocalizedResourcesReference** is hetzelfde als de land instelling, maar u kunt elke wille keurige teken reeks als de id gebruiken. Voor elke combi natie van taal en pagina wijst u de overeenkomende **LocalizedResources** aan die u eerder hebt gemaakt.
-
-```XML
-<ContentDefinition Id="api.localaccountsignup">
-...
-  <LocalizedResourcesReferences MergeBehavior="Prepend">
-    <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-    <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-  </LocalizedResourcesReferences>
-</ContentDefinition>
-```
-
-In het volgende voor beeld wordt de laatste XML weer gegeven:
-
-```XML
-<BuildingBlocks>
-  <ContentDefinitions>
-    <ContentDefinition Id="api.localaccountsignup">
-      <!-- Other content definitions elements... -->
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-         <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-         <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
-    <!-- More content definitions... -->
-  </ContentDefinitions>
-
-  <Localization Enabled="true">
-
-    <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-      <SupportedLanguage>en</SupportedLanguage>
-      <SupportedLanguage>es</SupportedLanguage>
-      <!-- More supported language... -->
-    </SupportedLanguages>
-
-    <LocalizedResources Id="api.localaccountsignup.en">
-      <LocalizedCollections>
-        <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Female" Value="F" />
-          <Item Text="Male" Value="M" />
-          <!-- More items... -->
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="New York" Value="NY" />
-          <Item Text="Paris" Value="Paris" />
-          <Item Text="London" Value="London" />
-        </LocalizedCollection>
-        <!-- More localized collections... -->
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-      <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-       <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-        <!-- More localized strings... -->
-      </LocalizedStrings>
-    </LocalizedResources>
-
-    <LocalizedResources Id="api.localaccountsignup.es">
-      <LocalizedCollections>
-       <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Femenino" Value="F" />
-          <Item Text="Masculino" Value="M" />
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="Nueva York" Value="NY" />
-          <Item Text="París" Value="Paris" />
-          <Item Text="Londres" Value="London" />
-        </LocalizedCollection>
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-      <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-      </LocalizedStrings>
-    </LocalizedResources>
-    <!-- More localized resources... -->
-  </Localization>
-</BuildingBlocks>
-```
+- [Taal aanpassing met aangepast beleid in Azure Active Directory B2C](custom-policy-localization.md)
+- [Taal aanpassing met gebruikers stromen in Azure Active Directory B2C](user-flow-language-customization.md)

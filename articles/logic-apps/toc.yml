@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: Toegang tot virtuele Azure-netwerken
       items:
-        - name: Verbinding maken met virtuele netwerken met integratieserviceomgevingen
+        - name: Serviceomgeving voor integraties maken - Azure-portal
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Serviceomgeving voor integraties maken - REST API
+          href: create-integration-service-environment-rest-api.md
         - name: Toegang instellen voor meerdere integratieserviceomgevingen
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Resources toevoegen aan integratieserviceomgevingen

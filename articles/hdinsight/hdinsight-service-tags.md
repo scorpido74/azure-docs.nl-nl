@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435447"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117233"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight
 
@@ -40,7 +40,7 @@ De eenvoudigste manier om te beginnen met het gebruik van service tags met uw HD
 
 1. Selecteer **HDInsight**in de vervolg keuzelijst **bron service label** .
 
-    ![Service label Azure Portal toevoegen](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Service label Azure Portal toevoegen](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Deze tag bevat de IP-adressen van de status-en beheer Services voor alle regio's waar HDInsight beschikbaar is, en zorgt ervoor dat uw cluster kan communiceren met de benodigde status-en beheer Services, ongeacht waar deze zijn gemaakt.
 
@@ -54,28 +54,29 @@ Lees de volgende secties van het document om erachter te komen welke service tag
 
 Als u liever de service label optie twee en uw cluster bevindt zich in een van de regio's die in deze tabel worden vermeld, hoeft u slechts één regionale servicetag toe te voegen aan uw netwerk beveiligings groep.
 
-| Land/regio | Regio | Servicetag |
+| Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Australië | Australië - oost | HDInsight. AustraliaEast |
 | &nbsp; | Australië - zuidoost | HDInsight. AustraliaSoutheast |
 | &nbsp; | Australië - centraal | HDInsight. AustraliaCentral |
-| China | China - oost 2 | HDInsight. ChinaEast2 |
-| &nbsp; | China - noord 2 | HDInsight. ChinaNorth2 |
+| China | China-oost 2 | HDInsight. ChinaEast2 |
+| &nbsp; | China-noord 2 | HDInsight. ChinaNorth2 |
 | Verenigde Staten | VS - noord-centraal | HDInsight. NorthCentralUS |
 | &nbsp; | VS - west 2 | HDInsight. WestUS2 |
 | &nbsp; | VS - west-centraal | HDInsight. WestCentralUS |
-| Canada | Canada-Oost | HDInsight. CanadaEast |
-| Brazilië | Brazilië - Zuid | HDInsight. BrazilSouth |
+| Canada | Canada - oost | HDInsight. CanadaEast |
+| Brazilië | Brazilië - zuid | HDInsight. BrazilSouth |
 | Korea | Korea - centraal | HDInsight. KoreaCentral |
 | &nbsp; | Korea - zuid | HDInsight. KoreaSouth |
 | India | India - centraal | HDInsight. CentralIndia |
 | &nbsp; | India - zuid | HDInsight. SouthIndia |
-| Japan | Japan - West | HDInsight. JapanWest |
+| Japan | Japan - west | HDInsight. JapanWest |
 | Frankrijk | Frankrijk - centraal| HDInsight. FranceCentral |
-| VK | UK - zuid | HDInsight. UKSouth |
+| VK | Verenigd Koninkrijk Zuid | HDInsight. UKSouth |
 | Azure Government | USDoD-centraal   | HDInsight. USDoDCentral |
-| &nbsp; | USGov - Texas | HDInsight. USGovTexas |
+| &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD-Oost | HDInsight. USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Meerdere regionale service tags gebruiken
 
@@ -93,7 +94,7 @@ Als uw cluster bijvoorbeeld is gemaakt in de regio `East US 2`, moet u de volgen
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Land/regio | Regio | Servicetag |
+| Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Verenigde Staten | VS - oost 2 | HDInsight. EastUS2 |
 | &nbsp; | VS - centraal | HDInsight. Centraalus |
@@ -101,9 +102,9 @@ Als uw cluster bijvoorbeeld is gemaakt in de regio `East US 2`, moet u de volgen
 | &nbsp; | VS - zuid-centraal | HDInsight. SouthCentralUS |
 | &nbsp; | VS - oost | HDInsight. Oostelijkeus |
 | &nbsp; | VS - west | HDInsight. Westelijkeus |
-| Japan | Japan - Oost | HDInsight. JapanEast |
+| Japan | Japan - oost | HDInsight. JapanEast |
 | Europa | Europa - noord | HDInsight. NorthEurope |
-| &nbsp; | Europa - west| HDInsight. Europa West |
+| &nbsp; | Europa -west| HDInsight. Europa West |
 | Azië | Azië - oost | HDInsight. EastAsia |
 | &nbsp; | Azië - zuidoost | HDInsight. SoutheastAsia |
 | Australië | Australië - oost | HDInsight. AustraliaEast |

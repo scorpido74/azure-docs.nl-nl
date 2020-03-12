@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 1f10a577f681d1df4ba99c987df457ea1ca09470
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671608"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126558"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -141,19 +141,12 @@ Voor de meeste configuratie wijzigingen (bijvoorbeeld VNet, aanmelden en product
 De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](api-management-cross-domain-policies.md#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven of Joker `*` waarden gebruiken. Bijvoorbeeld:
 
 ```XML
-<cors>
+<cors allow-credentials="true">
     <allowed-origins>
-        <origin>*</origin>
+        <origin>https://contoso.com</origin>
     </allowed-origins>
-    <allowed-methods>
-        <method>GET</method>
-        <method>POST</method>
-        <method>PUT</method>
-        <method>DELETE</method>
-        <method>HEAD</method>
-        <method>OPTIONS</method>
-        <method>PATCH</method>
-        <method>TRACE</method>
+    <allowed-methods preflight-result-max-age="300">
+        <method>*</method>
     </allowed-methods>
     <allowed-headers>
         <header>*</header>

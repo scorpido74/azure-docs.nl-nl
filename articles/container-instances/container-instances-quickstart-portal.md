@@ -1,20 +1,15 @@
 ---
 title: Snelstartgids-docker-container implementeren naar container exemplaar-Portal
 description: In deze Quick Start gebruikt u de Azure Portal om snel een in een container geplaatste web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533534"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087998"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Snelstartgids: een container exemplaar in azure implementeren met behulp van de Azure Portal
 
@@ -40,15 +35,16 @@ Voer op de pagina **basis beginselen** de volgende waarden in de tekst vakken **
 
 * Resourcegroep: **Nieuwe maken** > `myresourcegroup`
 * Containernaam: `mycontainer`
-* Containerinstallatiekopie: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Afbeeldings Bron: Quick Start- **afbeeldingen**
+* Container installatie kopie: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Basisinstellingen configureren voor een nieuwe containerinstantie in Azure Portal][aci-portal-03]
 
-Voor deze Quick Start gebruikt u de standaard instelling voor het **type installatie kopie** van **openbaar** voor het implementeren van de open bare micro soft `aci-helloworld`-installatie kopie. Deze Linux-installatie kopie verpakt een kleine web-app die is geschreven in node. js, die een statische HTML-pagina vormt.
+Voor deze Quick Start gebruikt u de standaard instellingen voor het implementeren van de open bare installatie kopie van micro soft `aci-helloworld`. In deze voorbeeld installatie kopie van Linux wordt een kleine web-app beschreven die is geschreven in node. js, die een statische HTML-pagina vormt. U kunt ook uw eigen container installatie kopieën opslaan in Azure Container Registry, docker hub of andere registers.
 
 Geef op de pagina **netwerk** een **DNS-naam label** voor uw container op. De naam moet uniek zijn binnen de Azure-regio waarin u het container exemplaar maakt. De container zal openbaar bereikbaar zijn op `<dns-name-label>.<region>.azurecontainer.io`. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
-![Een nieuwe containerinstantie configureren in Azure Portal][aci-portal-04]
+![Netwerk instellingen configureren voor een nieuwe container instantie in de Azure Portal][aci-portal-04]
 
 Wijzig de standaard instellingen en selecteer vervolgens **controleren + maken**.
 
@@ -56,7 +52,7 @@ Wanneer de validatie is voltooid, ziet u een overzicht van de containerinstellin
 
 ![Overzicht van de instellingen voor een nieuwe containerinstantie in Azure Portal][aci-portal-05]
 
-Wanneer de implementatie is gestart, wordt een melding weergegeven dat de implementatie wordt uitgevoerd. Er wordt nog een melding weergegeven wanneer de containergroep is geïmplementeerd.
+Wanneer de implementatie wordt gestart, wordt er een melding weer gegeven om aan te geven dat de implementatie wordt uitgevoerd. Er wordt nog een melding weergegeven wanneer de containergroep is geïmplementeerd.
 
 Open het overzicht voor de container groep door te navigeren naar **resource groepen** > **myresourcegroup** > **mycontainer**. Noteer de **FQDN** (de FQDN-naam) van de container-instantie, evenals de **Status**.
 
@@ -66,7 +62,7 @@ Wanneer de **Status** eenmaal *Uitvoeren* is, gaat u naar de FQDN van de contain
 
 ![App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser][aci-portal-07]
 
-Gefeliciteerd! Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
+Gefeliciteerd. Als u slechts enkele instellingen configureert, hebt u een openbaar toegankelijke toepassing in Azure Container Instances geïmplementeerd.
 
 ## <a name="view-container-logs"></a>Containerlogboeken ophalen
 

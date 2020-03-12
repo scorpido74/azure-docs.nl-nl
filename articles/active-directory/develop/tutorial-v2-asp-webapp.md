@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701327"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126637"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelden bij micro soft toevoegen aan een ASP.NET-Web-app
 
@@ -30,6 +30,9 @@ In deze hand leiding wordt beschreven hoe u aanmelden bij micro soft implementee
 Wanneer u deze hand leiding hebt voltooid, kan uw toepassing aanmeldingen van persoonlijke accounts accepteren vanaf het moment dat outlook.com en live.com. Daarnaast kunnen werk-en school accounts van elk bedrijf of organisatie die is geïntegreerd met het micro soft Identity-platform, zich aanmelden bij uw app.
 
 > Voor deze hand leiding is micro soft Visual Studio 2019 vereist.  Is dit niet het geval?  [Down load Visual Studio 2019 gratis](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Als u niet bekend bent met het micro soft-identiteits platform, raden we u aan om te beginnen met het [micro soft Identity platform-aanmeldings onderdeel toevoegen aan een ASP.net-Web-app](quickstart-v2-aspnet-webapp.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voor beeld-app die wordt gegenereerd door deze hand leiding werkt
 
@@ -430,7 +433,7 @@ Nadat u naar de weer gave controller hebt gebladerd, ziet u een tabel die de bas
 |**Naam** |Volledige naam van de gebruiker | Voor- en achternaam van de gebruiker
 |**Gebruikersnaam** |gebruikers<span>@domain.com</span> | De gebruikers naam die wordt gebruikt om de gebruiker te identificeren|
 |**Onderwerp** |Onderwerp |Een teken reeks waarmee de gebruiker op het web op unieke wijze wordt geïdentificeerd|
-|**Tenant ID** |GUID | Een unieke **GUID** die de Azure AD-organisatie van de gebruiker vertegenwoordigt|
+|**Tenant ID** |Guid | Een unieke **GUID** die de Azure AD-organisatie van de gebruiker vertegenwoordigt|
 
 Daarnaast ziet u een tabel met alle claims in de verificatie aanvraag. Zie de [lijst met claims die zich in een ID-token bevinden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)voor meer informatie.
 

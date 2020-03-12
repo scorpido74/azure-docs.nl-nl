@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898916"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095544"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Opslag opties vergelijken voor gebruik met Azure HDInsight-clusters
 
@@ -46,7 +46,6 @@ U kunt een cluster maken met verschillende combi Naties van services voor primai
 |---|---|---|---|
 | 3,6 & 4,0 | Algemeen v1, Algemeen v2 | Algemeen v1, Algemeen v2, BlobStorage (blok-blobs) | Ja |
 | 3,6 & 4,0 | Algemeen v1, Algemeen v2 | Data Lake Storage Gen2 | Nee |
-| 3,6 & 4,0 | Algemeen v1, Algemeen v2 | Data Lake Storage Gen1 | Ja |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Ja |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Algemeen v1, Algemeen v2, BlobStorage (blok-blobs) | Ja |
 | 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Nee |
@@ -54,6 +53,7 @@ U kunt een cluster maken met verschillende combi Naties van services voor primai
 | 3.6 | Data Lake Storage Gen1 | Algemeen v1, Algemeen v2, BlobStorage (blok-blobs) | Ja |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Nee |
 | 4.0 | Data Lake Storage Gen1 | Alle | Nee |
+| 4.0 | Algemeen v1, Algemeen v2 | Data Lake Storage Gen1 | Nee |
 
 \* = Dit kan een of meer Data Lake Storage Gen2 accounts zijn, zolang deze allemaal zijn ingesteld om dezelfde beheerde identiteit te gebruiken voor toegang tot het cluster.
 

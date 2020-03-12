@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566424"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127893"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -76,13 +77,13 @@ Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace]
 
 Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van *standaard bureaublad gebruikers*:
 
-1.  Selecteer bij *abonnement*het abonnement waarin u de hostgroep voor het eerst hebt gemaakt.
-2.  Voor *resource groep*selecteert u dezelfde resource groep waar de virtuele machines van de hostgroep-host zich bevinden.
-3.  Selecteer voor *regio*de regio waarin de bestaande vm's van de hostgroep-host zich bevinden.
-4.  Voer bij *naam van Hostpool*de naam van de bestaande hostgroep in.
-5.  Selecteer bij *bureau blad*het type bureau blad dat overeenkomt met de bestaande hostgroep.
-6.  Voor *standaard bureaublad gebruikers*voert u een door komma's gescheiden lijst in van alle extra gebruikers die u wilt aanmelden bij de virtuele Windows-desktop clients en toegang tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld user3@contoso.com en user4@contoso.com toegang wilt toewijzen, voert u user3@contoso.com,user4@contoso.comin.
-7.  Selecteer **volgende: virtuele machine configureren**.
+1.    Selecteer bij *abonnement*het abonnement waarin u de hostgroep voor het eerst hebt gemaakt.
+2.    Voor *resource groep*selecteert u dezelfde resource groep waar de virtuele machines van de hostgroep-host zich bevinden.
+3.    Selecteer voor *regio*de regio waarin de bestaande vm's van de hostgroep-host zich bevinden.
+4.    Voer bij *naam van Hostpool*de naam van de bestaande hostgroep in.
+5.    Selecteer bij *bureau blad*het type bureau blad dat overeenkomt met de bestaande hostgroep.
+6.    Voor *standaard bureaublad gebruikers*voert u een door komma's gescheiden lijst in van alle extra gebruikers die u wilt aanmelden bij de virtuele Windows-desktop clients en toegang tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld user3@contoso.com en user4@contoso.com toegang wilt toewijzen, voert u user3@contoso.com,user4@contoso.comin.
+7.    Selecteer **volgende: virtuele machine configureren**.
 
 >[!NOTE]
 >Behalve voor *standaard bureaublad gebruikers*moeten alle velden overeenkomen met precies wat is geconfigureerd in de bestaande hostgroep. Als er een niet-overeenkomend resultaat is, resulteert dit in een nieuwe hostgroep.

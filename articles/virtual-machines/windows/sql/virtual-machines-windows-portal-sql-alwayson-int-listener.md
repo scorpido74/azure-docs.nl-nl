@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394536"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096324"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Een load balancer configureren voor een beschikbaarheids groep op Azure SQL Server Vm's
 In dit artikel wordt uitgelegd hoe u een load balancer maakt voor een SQL Server AlwaysOn-beschikbaarheids groep in azure virtual machines die worden uitgevoerd met Azure Resource Manager. Een beschikbaarheids groep vereist een load balancer wanneer de SQL Server exemplaren zich op Azure virtual machines bevinden. Met de load balancer wordt het IP-adres voor de beschikbaarheids groep-listener opgeslagen. Als een beschikbaarheids groep meerdere regio's omvat, moet elke regio een load balancer hebben.

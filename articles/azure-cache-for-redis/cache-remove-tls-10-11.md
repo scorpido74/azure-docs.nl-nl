@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260149"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126352"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -19,7 +19,7 @@ Er is sprake van een brede push naar het exclusieve gebruik van Transport Layer 
 
 Als onderdeel van deze inspanning brengen we de volgende wijzigingen aan in azure cache voor redis:
 
-* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren.  Bestaande cache-exemplaren worden op dit moment niet bijgewerkt.  U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit.  Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
+* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren. (Dit wordt gebruikt als TLS 1,0.) Bestaande cache-exemplaren worden op dit moment niet bijgewerkt. U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit. Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
 * **Fase 2:** De ondersteuning van TLS-versies 1,0 en 1,1 wordt gestopt. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren.
 
 Als onderdeel van deze wijziging wordt de ondersteuning voor oudere, onveilige coderings-suites ook verwijderd.  Onze ondersteunde coderings-suites worden beperkt tot het volgende wanneer de cache is geconfigureerd met een minimale TLS-versie van 1,2.
@@ -87,21 +87,27 @@ Het knoop punt redis en IORedis gebruiken standaard TLS 1,2.
 
 ### <a name="php"></a>PHP
 
-Predis in PHP 7 werkt niet omdat PHP 7 alleen TLS 1,0 ondersteunt. Op PHP 7.2.1 of eerder maakt Predis standaard gebruik van TLS 1,0 of 1,1. U kunt TLS 1,2 opgeven wanneer u het client exemplaar maakt:
+#### <a name="predis"></a>Predis
+ 
+* Eerdere versies dan PHP 7: Predis ondersteunt alleen TLS 1,0. Deze versies werken niet met TLS 1,2. u moet een upgrade uitvoeren om TLS 1,2 te gebruiken.
+ 
+* PHP 7,0 naar PHP 7.2.1: Predis gebruikt standaard alleen TLS 1,0 of 1,1. U kunt de volgende tijdelijke oplossing gebruiken om TLS 1,2 te gebruiken. Geef TLS 1,2 op wanneer u het client exemplaar maakt:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-Op PHP 7,3 of hoger maakt Predis gebruik van de meest recente TLS-versie.
+* PHP 7,3 en hoger: Predis maakt gebruik van de meest recente versie van TLS.
+
+#### <a name="phpredis"></a>PhpRedis
 
 PhpRedis biedt geen ondersteuning voor TLS op een PHP-versie.
 

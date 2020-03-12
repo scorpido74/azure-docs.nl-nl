@@ -3,12 +3,12 @@ title: Installatie kopie bouwen met native Buildpack in de Cloud
 description: Gebruik de opdracht AZ ACR Pack build om een container installatie kopie te bouwen vanuit een app en naar Azure Container Registry te pushen, zonder een Dockerfile te gebruiken.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456114"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087082"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Een installatie kopie bouwen en pushen vanuit een app met behulp van een native Buildpack in de Cloud
 
@@ -30,7 +30,7 @@ Geef ten minste het volgende op wanneer u `az acr pack build`uitvoert:
 * Een van de [ondersteunde context locaties](container-registry-tasks-overview.md#context-locations) voor ACR-taken, zoals een lokale map, een github opslag plaats of een externe tarball
 * De naam van een Buildpack Builder-installatie kopie die geschikt is voor uw toepassing. Met Azure Container Registry worden installatie kopieën van de opbouw functie in de cache opgeslagen, zoals `cloudfoundry/cnb:0.0.34-cflinuxfs3` voor snellere builds.  
 
-`az acr pack build` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-overview.md#view-task-logs) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
+`az acr pack build` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-logs.md) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Voor beeld: node. js-installatie kopie bouwen met Cloud Foundry Builder
 

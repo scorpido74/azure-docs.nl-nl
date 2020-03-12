@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025925"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086219"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -42,7 +42,7 @@ Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die 
 
 ![Diagram van toepassingen en toepassings pakketten op hoog niveau][1]
 
-### <a name="applications"></a>Applicaties
+### <a name="applications"></a>Toepassingen
 Een toepassing in batch bevat een of meer toepassings pakketten en bevat configuratie opties voor de toepassing. Een toepassing kan bijvoorbeeld de standaard versie van het toepassings pakket opgeven die op reken knooppunten moet worden geïnstalleerd en of de pakketten kunnen worden bijgewerkt of verwijderd.
 
 ### <a name="application-packages"></a>Toepassingspakketten
@@ -90,13 +90,11 @@ De batch-service gebruikt het bijbehorende opslag account om uw toepassings pakk
 
 We raden u aan om een opslag account te maken dat *speciaal is bedoeld* voor gebruik met uw batch-account en hier te selecteren. Nadat u een opslag account hebt gemaakt, kunt u dit koppelen aan uw batch-account met behulp van het venster voor het **opslag account** .
 
-> [!NOTE] 
-> Op dit moment kunt u geen toepassings pakketten gebruiken met een Azure Storage-account dat is geconfigureerd met [firewall regels](../storage/common/storage-network-security.md).
-> 
+> [!IMPORTANT] 
+> - Op dit moment kunt u geen toepassings pakketten gebruiken met een Azure Storage-account dat is geconfigureerd met [firewall regels](../storage/common/storage-network-security.md).
+> - Een Azure Storage account waarvoor een **hiërarchische naam ruimte** is ingesteld op **ingeschakeld** , kan niet worden gebruikt voor toepassings pakketten.
 
 De batch-service gebruikt Azure Storage om uw toepassings pakketten op te slaan als blok-blobs. Er worden [kosten in rekening gebracht][storage_pricing] voor de blok-BLOB-gegevens en de grootte van elk pakket kan niet groter zijn dan de maximale grootte van de blok-blob. Zie [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../storage/blobs/scalability-targets.md)voor meer informatie. Houd rekening met de grootte en het aantal van uw toepassings pakketten en verwijder regel matig afgeschafte pakketten om de kosten te minimaliseren.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Huidige toepassingen weer geven
 Als u de toepassingen wilt weer geven in uw batch-account, klikt u op het menu-item **toepassingen** in het menu links terwijl u uw **batch-account**bekijkt.
@@ -182,7 +180,7 @@ Als u een bestaand toepassings pakket wilt bijwerken of verwijderen, opent u de 
 
 ![Een pakket bijwerken of verwijderen in Azure Portal][7]
 
-**Update**
+**Bijwerken**
 
 Wanneer u op **bijwerken**klikt, wordt de Windows **Update-pakket** weer gegeven. Dit venster is vergelijkbaar met het venster **Nieuw toepassings pakket** , maar alleen het selectie veld pakket is ingeschakeld, zodat u een nieuw zip-bestand kunt opgeven dat u wilt uploaden.
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484414"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096054"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -44,7 +44,7 @@ Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaa
 Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Ondersteunt Pass-Through-verificatie "alternatieve ID" als de gebruikers naam, in plaats van "userPrincipalName"?
-Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet de on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt het `UserPrincipalName` op de on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md)voor meer informatie. Niet alle Office 365-toepassingen ondersteunen `Alternate ID`. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
+Als u zich aanmeldt met een niet-UPN-waarde, zoals een alternatief e-mail adres, wordt momenteel getest in een persoonlijke Preview voor Pass-Through-verificatie (PTA) en wacht woord-hash-synchronisatie (PHS).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Fungeert wachtwoord hash synchroniseren als terugval voor Pass-Through-verificatie?
 

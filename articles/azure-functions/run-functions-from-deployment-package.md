@@ -3,12 +3,12 @@ title: Uw Azure Functions uitvoeren vanuit een pakket
 description: Laat de Azure Functions runtime uw functies uitvoeren door een implementatie pakket bestand te koppelen dat de project bestanden van de functie-app bevat.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921110"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087032"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uw Azure Functions uitvoeren vanuit een pakket bestand
 
@@ -91,6 +91,7 @@ Raadpleeg de volgende artikelen voor meer informatie.
 - Tar-en gzip-indelingen worden niet ondersteund.
 - Deze functie is niet samen met de lokale cache.
 - Gebruik de lokale zip-optie (`WEBSITE_RUN_FROM_PACKAGE`= 1) voor verbeterde prestaties van koud start.
+- Uitvoeren vanaf pakket is niet compatibel met de optie voor het aanpassen van de implementatie (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`). de stap build wordt tijdens de implementatie genegeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

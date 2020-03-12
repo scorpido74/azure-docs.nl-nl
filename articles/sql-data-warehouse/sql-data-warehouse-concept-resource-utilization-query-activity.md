@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195920"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096621"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
-Azure Synapse Analytics biedt een uitgebreide bewakings ervaring binnen het Azure Portal om inzicht te krijgen in uw data warehouse-werk belasting. De Azure Portal is het aanbevolen hulp programma voor het bewaken van uw data warehouse, zoals het biedt Configureer bare Bewaar perioden, waarschuwingen, aanbevelingen en aanpas bare grafieken en dash boards voor metrische gegevens en Logboeken. De portal biedt u ook de mogelijkheid om te integreren met andere Azure-bewakings services zoals OMS (Operations Management Suite) en Azure Monitor (Logboeken) om een holistische bewakings ervaring te bieden voor niet alleen uw data warehouse, maar ook uw volledige Azure Analytics platform voor een geïntegreerde bewakings ervaring. In deze documentatie wordt beschreven welke bewakings mogelijkheden beschikbaar zijn voor het optimaliseren en beheren van uw analyse platform met SQL Analytics. 
+Azure Synapse Analytics biedt een uitgebreide bewakings ervaring in het Azure Portal op oppervlakte inzichten met betrekking tot de werk belasting van uw data warehouse. De Azure Portal is het aanbevolen hulp programma voor het bewaken van uw data warehouse, zoals het biedt Configureer bare Bewaar perioden, waarschuwingen, aanbevelingen en aanpas bare grafieken en dash boards voor metrische gegevens en Logboeken. De portal biedt u ook de mogelijkheid om te integreren met andere Azure-bewakings Services, zoals Azure Monitor (Logboeken) met log Analytics om een holistische bewakings ervaring te bieden voor niet alleen uw data warehouse, maar ook uw volledige Azure Analytics-platform voor een geïntegreerde bewakings ervaring. In deze documentatie wordt beschreven welke bewakings mogelijkheden beschikbaar zijn voor het optimaliseren en beheren van uw analyse platform met SQL Analytics. 
 
 ## <a name="resource-utilization"></a>Resourcegebruik 
 De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor SQL Analytics. Deze metrische gegevens worden geoppereerd via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
@@ -41,9 +41,13 @@ De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor SQL Anal
 | Percentage cache treffers    | (cache treffers/cache-missers) * 100 waarbij treffers in cache de som zijn van alle treffers in de lokale SSD-cache en de cache-Misser is de column Store-segmenten in de lokale SSD-cache die is opgeteld voor alle knoop punten | Gem, min, Max    |
 | Percentage gebruikt cache   | (cache capaciteit gebruikt/cache) * 100 waarbij gebruikte cache de som is van alle bytes in de lokale SSD-cache op alle knoop punten en de cache capaciteit is de som van de opslag capaciteit van de lokale SSD-cache op alle knoop punten | Gem, min, Max    |
 | Lokaal TempDB-percentage | Lokaal TempDB-gebruik voor alle reken knooppunten: de waarden worden elke vijf minuten verzonden | Gem, min, Max    |
+| Grootte van gegevens opslag | Totale hoeveelheid gegevens die in de data base is geladen. Dit omvat gegevens die zich bevinden in CCI-en niet-CCI-tabellen, waarbij de grootte van niet-CCI-tabellen wordt gemeten door de totale grootte van het database bestand | Sum |
+| Grootte nood herstel | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Sum |
+| Opslag grootte van moment opname | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Sum |
 
 Aandachtspunten bij het weer geven van metrische gegevens en het instellen van waarschuwingen:
 
+- DWU die wordt gebruikt, duidt alleen op een **hoog niveau van gebruik** in de SQL-groep en is niet bedoeld als een uitgebreide indicatie van het gebruik. Als u wilt bepalen of u omhoog of omlaag wilt schalen, moet u rekening houden met alle factoren die van invloed kunnen zijn op DWU zoals gelijktijdigheid, geheugen, tempdb en adaptieve cache capaciteit. We raden u [aan om uw werk belasting uit te voeren op verschillende DWU-instellingen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om te voldoen aan uw bedrijfs doelstellingen.
 - Er zijn mislukte en geslaagde verbindingen gerapporteerd voor een bepaald data warehouse, niet voor de logische server
 - Het geheugen percentage weerspiegelt het gebruik, zelfs als het Data Warehouse zich in niet-actieve status bevindt, het actieve verbruik van het workload-geheugen niet weer spie gelen. Gebruik en volg deze metrische gegevens samen met anderen (TempDB, Gen2 cache) om een holistische beslissing te nemen over als het schalen voor extra cache capaciteit de prestaties van de werk belasting verg root om te voldoen aan uw vereisten.
 

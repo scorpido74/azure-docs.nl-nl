@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904978"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127648"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps
 
@@ -19,7 +19,7 @@ Azure Logic Apps is afhankelijk van Azure Storage om gegevens in rust op te slaa
 
 Wanneer u een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt voor het hosten van uw logische apps en u meer controle wilt hebben over de versleutelings sleutels die worden gebruikt door Azure Storage, kunt u uw eigen sleutel instellen, gebruiken en beheren met behulp van [Azure Key Vault](../key-vault/key-vault-overview.md). Deze mogelijkheid is ook bekend als ' Bring Your Own Key ' (BYOK) en uw sleutel wordt een ' door de klant beheerde sleutel ' genoemd.
 
-In dit onderwerp ziet u hoe u uw eigen versleutelings sleutel kunt instellen en opgeven voor het maken van uw ISE. 
+In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt en opgeeft die u wilt gebruiken wanneer u uw ISE maakt met behulp van de Logic Apps REST API. Zie voor de algemene stappen voor het maken van een ISE via Logic Apps REST API [een Integration service Environment (ISE) maken met behulp van de Logic Apps rest API](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Overwegingen
 
@@ -35,7 +35,7 @@ In dit onderwerp ziet u hoe u uw eigen versleutelings sleutel kunt instellen en 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Dezelfde vereisten [prerequisites](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) en [voor waarden om toegang te krijgen tot uw ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) als bij het maken van een ISE in de Azure Portal
 
 * Een Azure-sleutel kluis met de opties **voorlopig verwijderen** en **niet opschonen** ingeschakeld
 
@@ -66,6 +66,15 @@ Als u uw ISE wilt maken door de Logic Apps REST API aan te roepen, maakt u deze 
 
 > [!IMPORTANT]
 > Voor de versie Logic Apps REST API 2019-05-01 moet u uw eigen HTTP PUT-aanvraag voor ISE-connectors maken.
+
+Het volt ooien van de implementatie duurt gewoonlijk binnen twee uur. De implementatie kan af en toe Maxi maal vier uur duren. Als u de implementatie status wilt controleren, selecteert u in de [Azure Portal](https://portal.azure.com)op de Azure-werk balk het meldingen pictogram, waarmee het deel venster meldingen wordt geopend.
+
+> [!NOTE]
+> Als de implementatie mislukt of als u uw ISE verwijdert, kan het tot een uur duren voordat de subnetten worden vrijgegeven. Deze vertraging betekent dat u mogelijk moet wachten voordat u deze subnetten opnieuw gebruikt in een andere ISE.
+>
+> Als u het virtuele netwerk verwijdert, duurt het over het algemeen Maxi maal twee uur voordat de subnetten worden vrijgegeven, maar deze bewerking kan langer duren. 
+> Wanneer u virtuele netwerken verwijdert, moet u ervoor zorgen dat er nog geen resources zijn verbonden. 
+> Zie [virtueel netwerk verwijderen](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Aanvraagheader
 

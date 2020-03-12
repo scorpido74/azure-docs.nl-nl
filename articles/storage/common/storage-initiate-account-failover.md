@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157700"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128345"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Failover van een opslag account initiëren (preview-versie)
 
@@ -29,9 +29,8 @@ In dit artikel wordt beschreven hoe u een failover voor een account initieert vo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een account-failover kunt uitvoeren op uw opslag account, moet u ervoor zorgen dat u de volgende stappen hebt uitgevoerd:
+Voordat u een account-failover kunt uitvoeren op uw opslag account, moet u ervoor zorgen dat u de volgende stap hebt uitgevoerd:
 
-- Meld u aan voor de preview-versie van het account-failover. Zie [over de preview-versie](storage-disaster-recovery-guidance.md#about-the-preview)voor meer informatie over het registreren van.
 - Zorg ervoor dat uw opslag account is geconfigureerd voor het gebruik van geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over geografisch redundante opslag.
 
 ## <a name="important-implications-of-account-failover"></a>Belang rijke implicaties van account-failover
@@ -44,7 +43,7 @@ Na de failover wordt uw type opslag account automatisch geconverteerd naar lokaa
 
 Nadat u GRS voor uw opslag account opnieuw hebt ingeschakeld, begint micro soft met het repliceren van de gegevens in uw account naar de nieuwe secundaire regio. De replicatie tijd is afhankelijk van de hoeveelheid gegevens die wordt gerepliceerd.  
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azure Portal:
 
@@ -60,7 +59,7 @@ Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azu
 
     ![Scherm opname van het bevestigings dialoogvenster voor een account-failover](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u Power shell wilt gebruiken om een account-failover te initiëren, moet u eerst de 6.0.1-Preview-module installeren. Volg deze stappen om de module te installeren:
 
@@ -97,7 +96,7 @@ Voer de volgende opdracht uit om een account-failover te initiëren vanuit Power
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 165e87b47deca2b7f175ec07b5c615ac25db0dd2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+manager: lizross
+ms.openlocfilehash: 71ba24784dee7771acbe19bf0261c7dc02478b24
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251751"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127515"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
@@ -30,7 +31,7 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 |Platform service|Ja, Azure-systeem eigen oplossing|Ja, Azure-systeem eigen oplossing|Nee, zelf beheerd|
 |Regionale beschikbaarheid|Alle regio's|[Regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle regio's|
 |Redundantie|Lokaal redundante/zone-redundant/geo-redundant|Lokaal redundant|Lokaal redundante/zone-redundant/geo-redundant|
-|Lagen en prestaties|Standaard<br>Premium<br>Maxi maal 100.000 IOPS per share met 5 GBps per share op ongeveer 3 MS latentie|Standaard<br>Premium<br>Laag<br>Tot 320k (16 KB) IOPS met 4,5 GBps per volume bij ongeveer 1 MS-latentie|Standard-HDD: Maxi maal 500 IOPS per schijf limieten<br>Standard-SSD: Maxi maal 4.000 IOPS per schijf limieten<br>Premium-SSD: Maxi maal 20.000 IOPS per schijf limieten<br>Premium-schijven voor Opslagruimten Direct worden aanbevolen|
+|Lagen en prestaties|Standard<br>Premium<br>Maxi maal 100.000 IOPS per share met 5 GBps per share op ongeveer 3 MS latentie|Standard<br>Premium<br>Laag<br>Tot 320k (16 KB) IOPS met 4,5 GBps per volume bij ongeveer 1 MS-latentie|Standard-HDD: Maxi maal 500 IOPS per schijf limieten<br>Standard-SSD: Maxi maal 4.000 IOPS per schijf limieten<br>Premium-SSD: Maxi maal 20.000 IOPS per schijf limieten<br>Premium-schijven voor Opslagruimten Direct worden aanbevolen|
 |Capaciteit|100 TiB per share|100 TiB per volume, Maxi maal 12,5 PiB per abonnement|Maxi maal 32 TiB per schijf|
 |Vereiste infra structuur|Minimale share grootte van 1 GiB|Minimale capaciteits pool 4 TiB, minimale volume grootte 100 GiB|Twee Vm's op Azure IaaS (+ Cloudwitness) of ten minste drie Vm's zonder en kosten voor schijven|
 |Protocollen|SMB 2.1/3. en REST|NFSv3, NFSv 4.1 (preview), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -39,7 +40,7 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 
 |Functies|Azure Files|Azure NetApp Files|Opslagruimten Direct|
 |--------|-----------|------------------|---------------------|
-|Toegang|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
+|Access|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
 |Back-up maken|Integratie van Azure backup snap shot|Moment opnamen Azure NetApp Files|Integratie van Azure backup snap shot|
 |Beveiliging en naleving|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO voltooid|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integratie van Azure Active Directory|[Systeem eigen Active Directory en Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services en systeem eigen Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Alleen systeem eigen Active Directory-of Azure Active Directory Domain Services-ondersteuning|

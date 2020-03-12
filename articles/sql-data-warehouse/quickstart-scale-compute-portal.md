@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: scale Compute-Azure Portal '
-description: Schaal berekenen in SQL-groep in de Azure Portal. Vergroot de schaal van Compute voor betere prestaties, of verklein de schaal juist om kosten te besparen.
+title: Schaal berekenen voor Synapse SQL-pool (Azure Portal)
+description: U kunt Compute voor Synapse SQL pool (Data Warehouse) schalen met behulp van de Azure Portal.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200334"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130255"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Snelstartgids: Compute scale in azure Synapse Analytics SQL-groep in de Azure Portal
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Snelstartgids: Compute Scale for Synapse SQL pool with the Azure Portal
 
-Schaal berekenen in SQL-groep in de Azure Portal. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties, of verklein de schaal juist om kosten te besparen. 
+U kunt Compute voor Synapse SQL pool (Data Warehouse) schalen met behulp van de Azure Portal. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen. 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -30,9 +30,9 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U kunt een SQL-groep die u al hebt, schalen of [Quick Start: Create and Connect-Portal](create-data-warehouse-portal.md) gebruiken om een SQL-groep met de naam **mySampleDataWarehouse**te maken.  Met deze snelstart wordt **mySampleDataWarehouse** geschaald.
+U kunt een SQL-groep die u al hebt, schalen of [Quick Start: Create and Connect-Portal](create-data-warehouse-portal.md) gebruiken om een SQL-groep met de naam **mySampleDataWarehouse**te maken. Met deze snelstart wordt **mySampleDataWarehouse** geschaald.
 
->[!Note]
+>[!IMPORTANT] 
 >Uw SQL-groep moet online zijn om te kunnen worden geschaald. 
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
@@ -52,7 +52,4 @@ DWU’s wijzigen:
     ![Schuifregelaar verplaatsen](media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu geleerd hoe u de reken kracht voor de SQL-groep kunt schalen. Voor meer informatie over SQL-pool gaat u verder met de zelf studie voor het laden van gegevens.
-
-> [!div class="nextstepaction"]
->[Gegevens laden in SQL-groep](load-data-from-azure-blob-storage-using-polybase.md)
+Ga naar de zelf studie over het [laden van gegevens in een SQL-groep](load-data-from-azure-blob-storage-using-polybase.md) voor meer informatie over SQL-pool. 

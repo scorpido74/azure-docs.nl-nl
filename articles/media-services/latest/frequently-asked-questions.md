@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977723"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086792"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
@@ -28,9 +28,13 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Servic
 
 Zie [op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts](rbac-overview.md).
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Hoe streamt u naar Apple iOS-apparaten?
+
+Zorg ervoor dat u ' (Format = M3U8-AAPL) ' aan het einde van het pad (na het gedeelte '/manifest ' van de URL) hebt om de bron van de streaming-oorsprong te laten terugkeren HLS-inhoud voor het gebruik van Apple iOS systeem eigen apparaten (Zie [inhoud leveren](dynamic-packaging-overview.md)) voor meer informatie.
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Hoe kan ik gereserveerde media-eenheden configureren?
 
-Voor de analysetaken van audio en video die worden geactiveerd door Media Services v3 of Video Indexer is het raadzaam om uw account in te richten met 10 S3 MRU’s. Als u meer dan 10 S3 groepsbeleidsinstelling nodig hebt, opent u een ondersteuning ticket met de [Azure-portal](https://portal.azure.com/).
+Voor de analysetaken van audio en video die worden geactiveerd door Media Services v3 of Video Indexer is het raadzaam om uw account in te richten met 10 S3 MRU’s. Als u meer dan 10 S3 MRUs nodig hebt, kunt u een ondersteunings ticket openen met behulp van de [Azure Portal](https://portal.azure.com/).
 
 Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor meer informatie.
 
@@ -38,13 +42,17 @@ Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor m
 
 [Trans formaties](https://docs.microsoft.com/rest/api/media/transforms) gebruiken om algemene taken te configureren voor het coderen of analyseren van Video's. Elke **trans formatie** beschrijft een recept of een werk stroom van taken voor het verwerken van uw video-of audio bestanden. Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de daad werkelijke aanvraag om Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. Zie [Transformaties en taken](transforms-jobs-concept.md) voor meer informatie.
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Ik heb een video geüpload, gecodeerd en gepubliceerd. Wat is de reden waarom de video niet wordt afgespeeld wanneer ik deze probeer te streamen?
+
+Een van de meest voorkomende redenen is dat u het streaming-eind punt niet hebt van waaruit u wilt afspelen in de actieve status.
+
 ### <a name="how-does-pagination-work"></a>Hoe werkt de paginering?
 
 Wanneer u paginering gebruikt, moet u altijd de volgende koppeling gebruiken om de verzameling op te sommen en niet afhankelijk van een bepaalde pagina grootte. Zie [filteren, ordenen, paginering](entities-overview.md)voor meer informatie en voor beelden.
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Welke functies zijn nog niet beschikbaar in Azure Media Services v3?
 
-Zie voor meer informatie [functie hiaten met betrekking tot v2-api's](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Zie voor meer informatie [functie hiaten met betrekking tot v2-api's](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Wat is het proces van het verplaatsen van een Media Services account tussen abonnementen?  
 
@@ -58,7 +66,7 @@ Media Services v3 Live encoding biedt nog geen ondersteuning voor het invoegen v
 
 U kunt een [Live on-premises encoder](recommended-on-premises-live-encoders.md) gebruiken om de bron video te scha kelen. Veel apps bieden de mogelijkheid om bronnen te wisselen, waaronder Telestream Wirecast, Switch Studio (op iOS), IB Studio (gratis app) en nog veel meer.
 
-## <a name="content-protection"></a>Content Protection
+## <a name="content-protection"></a>Inhoudsbeveiliging
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>Moet ik een AES-128 Clear Key Encryption of een DRM-systeem gebruiken?
 
@@ -76,11 +84,11 @@ Zie [uw inhoud beveiligen met Media Services Dynamic Encryption](content-protect
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hoe en waar u kunt JWT-token ophalen om de aanvraag-licentie of sleutel u?
 
-1. Voor productie moet u een STS (Secure token Services) (webservice) hebben die een JWT-token verleent op een HTTPS-aanvraag. Voor testen, kunt u de code die wordt weergegeven **GetTokenAsync** methode die is gedefinieerd [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Player moet een aanvraag maken nadat een gebruiker is geverifieerd, naar de STS voor dergelijke een token en wijs deze toe aan de waarde van het token. U kunt de [API van Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
+1. Voor productie moet u een STS (Secure token Services) (webservice) hebben die een JWT-token verleent op een HTTPS-aanvraag. Voor test kunt u de code gebruiken die wordt weer gegeven in de methode **GetTokenAsync** die is gedefinieerd in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+2. Player moet een aanvraag maken nadat een gebruiker is geverifieerd, naar de STS voor dergelijke een token en wijs deze toe aan de waarde van het token. U kunt de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/)gebruiken.
 
-* Zie voor een voorbeeld van het uitvoeren van de STS, symmetrische en asymmetrische sleutel [ https://aka.ms/jwt ](https://aka.ms/jwt). 
-* Zie voor een voorbeeld van een-op basis van Azure Media Player met behulp van dergelijke JWT-token speler [ https://aka.ms/amtest ](https://aka.ms/amtest) ('player_settings' koppeling om te zien van de token invoer uitvouwen).
+* Zie [https://aka.ms/jwt](https://aka.ms/jwt)voor een voor beeld van het uitvoeren van een STS met behulp van symmetrische en asymmetrische sleutels. 
+* Voor een voor beeld van een speler op basis van Azure Media Player met behulp van deze JWT-token raadpleegt u [https://aka.ms/amtest](https://aka.ms/amtest) (vouw de koppeling ' player_settings ' uit om de invoer van het token te bekijken).
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hoe autoriseert u aanvragen voor stream-video's met AES-versleuteling
 
@@ -90,7 +98,7 @@ In STS, afhankelijk van het gebruikers profiel, kunt u verschillende claims toev
 
 Gebruik Azure Media Services Api's voor het configureren van de levering van licenties en sleutels en het versleutelen van uw assets (zoals weer gegeven in [dit voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 - [Overzicht van inhoudsbeveiliging](content-protection-overview.md)
 - [Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer](design-multi-drm-system-with-access-control.md)
@@ -126,13 +134,19 @@ Vaak klanten in een serverfarm licentie geïnvesteerd in hun eigen Datacenter of
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Kan ik de Azure Portal gebruiken om v3-resources te beheren?
 
-U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voor het volgende:
+
+* Media Services v3 [Live-gebeurtenissen](live-events-outputs-concept.md)beheren, 
+* V3- [assets](assets-concept.md)weer geven (niet beheren), 
+* [krijg informatie over het openen van api's](access-api-portal.md). 
+
+Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Is er een AssetFile-concept in v3?
 
 De AssetFiles zijn verwijderd uit de AMS-API om Media Services te scheiden van de opslag-SDK-afhankelijkheid. Nu opslag, niet Media Services, houdt de informatie bij die bij de opslag hoort. 
 
-Zie [Migrate to Media Services v3](migrate-from-v2-to-v3.md)(Engelstalig) voor meer informatie.
+Zie [Migrate to Media Services v3](media-services-v2-vs-v3.md)(Engelstalig) voor meer informatie.
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Waar is de opslag versleuteling aan de client zijde gebleven?
 

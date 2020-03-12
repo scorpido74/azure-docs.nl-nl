@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227076"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126695"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -62,7 +62,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 1. In **Microsoft Authenticator**kiest u **Aanmelden via telefoon inschakelen** in de vervolg keuzelijst account
 1. Volg de instructies in de app om de registratie te volt ooien voor aanmelden met een wacht woord. 
 
-Organisaties kunnen hun gebruikers naar het artikel [Aanmelden met uw telefoon, niet uw wacht woord](../user-help/microsoft-authenticator-app-phone-signin-faq.md) voor meer hulp bij het instellen van de app Microsoft Authenticator en het inschakelen van de aanmelding via de telefoon.
+Organisaties kunnen hun gebruikers naar het artikel [Aanmelden met uw telefoon, niet uw wacht woord](../user-help/microsoft-authenticator-app-phone-signin-faq.md) voor meer hulp bij het instellen van de app Microsoft Authenticator en het inschakelen van de aanmelding via de telefoon. Als u deze instellingen wilt Toep assen, moet u zich mogelijk afmelden en weer aanmelden bij de Tenant. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met een wacht woord zonder referenties
 
@@ -90,7 +90,7 @@ Als een gebruiker een niet-beantwoorde aanmeldings wachtwoord voor aanmelding in
 
 Eind gebruikers die zijn ingeschakeld voor MFA via de on-premises Azure MFA-server van een organisatie, kunnen nog steeds één wacht woord voor eenmalige aanmelding op hetzelfde telefoon nummer maken en gebruiken. Als de gebruiker meerdere installaties (5 +) van de Microsoft Authenticator met de referentie probeert bij te werken, kan deze wijziging een fout veroorzaken.  
 
-### <a name="device-registration"></a>Apparaatinschrijving
+### <a name="device-registration"></a>Apparaatregistratie
 
 Een van de vereisten voor het maken van deze nieuwe sterke referentie is dat het apparaat, waar de Microsoft Authenticator-app is geïnstalleerd, ook in de Azure AD-Tenant moet worden geregistreerd voor een afzonderlijke gebruiker. Als gevolg van de huidige beperkingen voor apparaatregistratie, kan een apparaat alleen worden geregistreerd in één Tenant. Deze limiet betekent dat er slechts één werk-of school account in de Microsoft Authenticator-app kan worden ingeschakeld voor aanmelding via de telefoon.
 

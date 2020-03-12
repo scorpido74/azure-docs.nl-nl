@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Historische telemetriegegevens opnemen
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Door query opgenomen telemetriegegevens
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: Concepten
   items:
     - name: Integratiepatronen

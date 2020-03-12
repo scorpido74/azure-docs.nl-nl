@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081825"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127220"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Configuratie-opties zijn beschikbaar in geautomatiseerde machine learning:
 * Model metrische gegevens verkennen
 * Registreer en implementeer model
 
-Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning experimenten maken in azure machine learning Studio](how-to-create-portal-experiments.md).
+Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning experimenten maken in azure machine learning Studio](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>Selecteer het type experiment
 
@@ -174,7 +174,7 @@ Voorbeelden zijn:
 
 De drie verschillende `task` parameter waarden (het derde taak type is `forecasting`en gebruikt een vergelijk bare algoritme groep als `regression` taken) om de lijst te bepalen van de modellen die moeten worden toegepast. Gebruik de para meters `whitelist` of `blacklist` om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [SupportedModels-klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) voor ([classificatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognose](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)en [regressie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
-De validatie service van een automatische ML vereist dat `experiment_timeout_minutes` worden ingesteld op een minimale time-out van 15 minuten om te voor komen dat er time-outfouten optreden.
+Voor de validatie service van Automated ML moet `experiment_timeout_minutes` worden ingesteld op een minimale time-out van 15 minuten om te voor komen dat er time-outfouten optreden.
 
 ### <a name="primary-metric"></a>Primaire metrische gegevens
 De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
@@ -191,7 +191,7 @@ Meer informatie over de specifieke definities van deze metrische gegevens in [in
 
 ### <a name="data-featurization"></a>Gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#featurization).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-use-automated-ml-for-ml-models.md#featurization).
 
 Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `featurization`. De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -199,7 +199,7 @@ Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `featu
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
-|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-create-portal-experiments.md#advanced-featurization-options) automatisch worden uitgevoerd.|
+|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch worden uitgevoerd.|
 
 > [!NOTE]
 > Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.

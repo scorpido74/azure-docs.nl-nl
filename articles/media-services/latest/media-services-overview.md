@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 661b4dd5364e9c823f9a77ac175c9a8eca03b8a5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: HT
+ms.openlocfilehash: 7e4a242c1f81a504872dae6399683483c836daf2
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968974"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086895"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -31,7 +31,9 @@ Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt 
 De Media Services v3 Sdk's zijn gebaseerd op [Media Services v3 OpenAPI Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
-> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+> Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren), [informatie over het openen van api's ophalen](access-api-portal.md). Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 

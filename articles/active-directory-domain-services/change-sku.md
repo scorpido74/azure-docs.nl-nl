@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614242"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126698"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>De SKU voor een bestaand Azure AD Domain Services beheerd domein wijzigen
 
-In Azure Active Directory Domain Services (Azure AD DS) zijn de beschik bare prestaties en functies gebaseerd op het type SKU. Deze functie verschillen omvatten de back-upfrequentie of het maximum aantal eenrichtings vertrouwensrelaties voor uitgaande forests (momenteel als preview-versie). U selecteert een SKU wanneer u het beheerde domein maakt en u kunt switches als uw bedrijfs behoeften veranderen nadat het beheerde domein is geïmplementeerd. Wijzigingen in zakelijke vereisten kunnen de nood zaak van vaker back-ups bevatten of extra forestvertrouwensrelaties maken. Meer informatie over de limieten en prijzen van de verschillende Sku's vindt u in [azure AD DS SKU-concepten][concepts-sku] en [Azure AD DS prijzen][pricing] pagina's.
+In Azure Active Directory Domain Services (Azure AD DS) zijn de beschik bare prestaties en functies gebaseerd op het type SKU. Deze functie verschillen omvatten de back-upfrequentie of het maximum aantal eenrichtings vertrouwensrelaties voor uitgaande forests (momenteel als preview-versie). U selecteert een SKU wanneer u het beheerde domein maakt en u kunt naar boven of beneden scha kelen tussen Sku's wanneer de bedrijfs behoeften veranderen nadat het beheerde domein is geïmplementeerd. Wijzigingen in zakelijke vereisten kunnen de nood zaak van vaker back-ups bevatten of extra forestvertrouwensrelaties maken. Meer informatie over de limieten en prijzen van de verschillende Sku's vindt u in [azure AD DS SKU-concepten][concepts-sku] en [Azure AD DS prijzen][pricing] pagina's.
 
 In dit artikel wordt beschreven hoe u de SKU voor een bestaand Azure AD DS beheerde domein wijzigt met behulp van de Azure Portal.
 
@@ -36,9 +36,12 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="sku-change-limitations"></a>Beperkingen voor het wijzigen van de SKU
 
-Er gelden enkele beperkingen voor de bewerking voor het wijzigen van de SKU als u een resource-forest gebruikt (momenteel in de preview-versie) en u eenrichtings uitgaande forestvertrouwensrelaties van Azure hebt gemaakt AD DS naar een on-premises AD DS omgeving. De *Premium* -en *Enter prise* -sku's definiëren een limiet voor het aantal vertrouwens relaties dat u kunt maken. U kunt niet overschakelen naar een SKU met een lagere maximum limiet dan u momenteel hebt geconfigureerd.
+U kunt Sku's omhoog of omlaag wijzigen nadat het beheerde domein van Azure AD DS is geïmplementeerd. Als u echter een resource-forest gebruikt (momenteel in de preview-versie) en een eenrichtings uitgaande forest-vertrouwens relatie van Azure AD DS naar een on-premises AD DS omgeving hebt gemaakt, zijn er enkele beperkingen voor de bewerking voor het wijzigen van de SKU. De *Premium* -en *Enter prise* -sku's definiëren een limiet voor het aantal vertrouwens relaties dat u kunt maken. U kunt niet overschakelen naar een SKU met een lagere maximum limiet dan u momenteel hebt geconfigureerd.
 
-Als u bijvoorbeeld twee forest-vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *standaard* -SKU. De *standaard* -SKU ondersteunt geen forest-vertrouwens relaties. Of, als u zeven vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *Enter prise* -SKU. De *Enter prise* -SKU ondersteunt Maxi maal vijf vertrouwens relaties.
+Bijvoorbeeld:
+
+* Als u twee forest-vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *standaard* -SKU. De *standaard* -SKU ondersteunt geen forest-vertrouwens relaties.
+* Of, als u zeven vertrouwens relaties hebt gemaakt voor de *Premium* -SKU, kunt u niet verlagen naar de *Enter prise* -SKU. De *Enter prise* -SKU ondersteunt Maxi maal vijf vertrouwens relaties.
 
 Zie [Azure AD DS SKU-functies en-limieten][concepts-sku]voor meer informatie over deze limieten.
 

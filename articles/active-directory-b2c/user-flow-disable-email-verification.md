@@ -8,21 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c598664ef721103740716ad6215ddaea53bc635f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 369b4e13baa344a71a51b358ef810d1a66b4b6ae
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183071"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126746"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>E-mail verificatie uitschakelen tijdens het aanmelden van de klant in Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) controleert standaard het e-mail adres van uw klant voor lokale accounts (accounts voor gebruikers die zich aanmelden met een e-mail adres of gebruikers naam). Azure AD B2C zorgt voor geldige e-mail adressen door klanten te verplichten te verifiëren tijdens het registratie proces. Ook wordt voor komen dat een kwaadwillende actor geautomatiseerde processen gebruikt voor het genereren van frauduleuze accounts in uw toepassingen.
-
-Sommige toepassings ontwikkelaars geven de voor keur aan een e-mail verificatie overs Laan tijdens het registratie proces. ook kunnen klanten hun e-mail adres later verifiëren. Ter ondersteuning hiervan kan Azure AD B2C worden geconfigureerd om e-mail verificatie uit te scha kelen. Dit maakt een probleemloos registratie proces en biedt ontwikkel aars de flexibiliteit om klanten te onderscheiden die hun e-mail adres van klanten hebben gecontroleerd.
+[!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
 Volg deze stappen om de e-mail verificatie uit te scha kelen:
 
@@ -34,8 +32,10 @@ Volg deze stappen om de e-mail verificatie uit te scha kelen:
 1. Selecteer **pagina-indelingen**.
 1. Selecteer de **pagina voor het registreren van een lokaal account**.
 1. Onder **gebruikers kenmerken**selecteert u **e-mail adres**.
-1. Selecteer in de vervolg keuzelijst **vereist verificaties** de optie **Nee**.
+1. Selecteer in de vervolg keuzelijst **verificatie vereist** de optie **Nee**.
 1. Selecteer **Opslaan**. E-mail verificatie is nu uitgeschakeld voor deze gebruikers stroom.
 
-> [!WARNING]
-> Als u e-mail verificatie in het registratie proces uitschakelt, kan dit leiden tot spam. Als u de standaard verificatie van e-mail berichten voor Azure AD B2C uitschakelt, wordt u aangeraden een vervangend verificatie systeem te implementeren.
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [het aanpassen van de gebruikers interface in azure Active Directory B2C](customize-ui-overview.md)
+

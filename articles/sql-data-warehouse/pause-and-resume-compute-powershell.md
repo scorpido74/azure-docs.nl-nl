@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: Compute & Resume-Power shell '
-description: Gebruik Power shell om de reken kracht in de SQL-groep voor Azure Synapse Analytics te onderbreken om kosten te besparen. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
+title: De compute in een Synapse SQL-groep onderbreken en hervatten met Azure PowerShell
+description: U kunt Azure PowerShell gebruiken om de SQL-groep Synapse (Data Warehouse) te onderbreken en weer te hervatten. Reken resources.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ce183edef9e5895d7b3f702f5466c505956a869a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4677668004831b93f45f4bfac240f16ba20a82ee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200563"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130285"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-with-azure-powershell"></a>Quick Start: Compute onderbreken en hervatten in azure Synapse Analytics SQL-groep met Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Quick Start: Compute onderbreken en hervatten in Synapse SQL pool met Azure PowerShell
 
-Gebruik Azure PowerShell om Compute voor de SQL-groep te onderbreken om kosten te besparen. [Hervat de compute](sql-data-warehouse-manage-compute-overview.md) wanneer u klaar bent om het Data Warehouse te gebruiken.
-
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+U kunt Azure PowerShell gebruiken om de reken resources van de Synapse SQL-pool (Data Warehouse) te onderbreken en weer te hervatten. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -50,26 +48,29 @@ Als u een ander abonnement wilt gebruiken dan de standaard instelling, voert u [
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Datawarehousegegevens opzoeken
+## <a name="look-up-sql-pool-information"></a>Gegevens van SQL-groep opzoeken
 
 Zoek de naam van de data base, de server naam en de resource groep voor de SQL-groep die u wilt onderbreken en hervatten.
 
-Volg deze stappen om locatie gegevens voor uw SQL-groep te vinden.
+Volg deze stappen om locatie gegevens voor uw SQL-groep te vinden:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linker pagina van de Azure Portal.
-1. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** . De datawarehouse wordt geopend.
+1. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** . De SQL-groep wordt geopend.
 
     ![Servernaam en resourcegroep](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. Noteer de naam van het Data Warehouse, de naam van de data base. Noteer ook de naam van de server en de resourcegroep.
+1. Noteer de naam van de SQL-groep. Dit is de naam van de data base. Noteer ook de naam van de server en de resourcegroep.
 1. Gebruik alleen het eerste deel van de server naam in de Power shell-cmdlets. In de voor gaande afbeelding is de volledige server naam sqlpoolservername.database.windows.net. We gebruiken **sqlpoolservername** als de server naam in de Power shell-cmdlet.
 
 ## <a name="pause-compute"></a>Compute onderbreken
 
-Als u kosten wilt besparen, kunt u de reken resources op aanvraag onderbreken en hervatten. Als u de data base bijvoorbeeld niet gebruikt in de nacht en in het weekend, kunt u deze onderbreken tijdens deze tijden en deze op de dag hervatten. Er worden geen kosten in rekening gebracht voor reken resources terwijl de data base wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag.
+Als u kosten wilt besparen, kunt u de reken resources op aanvraag onderbreken en hervatten. Als u de data base bijvoorbeeld niet gebruikt in de nacht en in het weekend, kunt u deze onderbreken tijdens deze tijden en deze op de dag hervatten. 
 
-Gebruik de cmdlet [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) om een Data Base te onderbreken. In het volgende voor beeld wordt een Data Warehouse met de naam **mySampleDataWarehouse** gehost op een server met de naam **sqlpoolservername**. De server bevindt zich in een Azure-resource groep met de naam **myResourceGroup**.
+>[!NOTE]
+>Er worden geen kosten in rekening gebracht voor reken resources terwijl de data base wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag.
+
+Gebruik de cmdlet [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) om een Data Base te onderbreken. In het volgende voor beeld wordt een SQL-groep met de naam **mySampleDataWarehouse** die wordt gehost op een server met de naam **sqlpoolservername**, onderbroken. De server bevindt zich in een Azure-resource groep met de naam **myResourceGroup**.
 
 
 ```Powershell
@@ -77,7 +78,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-In het volgende voor beeld wordt de data base in het $database-object opgehaald. Vervolgens wordt het object door sluizen naar [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). De resultaten worden opgeslagen in het object resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
+In het volgende voor beeld wordt de data base opgehaald in het $database-object. Vervolgens wordt het object door sluizen naar [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). De resultaten worden opgeslagen in het object resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -95,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-In het volgende voor beeld wordt de data base in het $database-object opgehaald. Vervolgens wordt het object door sluizen om [AzSqlDatabase te hervatten](/powershell/module/az.sql/resume-azsqldatabase) en worden de resultaten opgeslagen in $resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
+In het volgende voor beeld wordt de data base opgehaald in het $database-object. Vervolgens wordt het object door sluizen om [AzSqlDatabase te hervatten](/powershell/module/az.sql/resume-azsqldatabase) en worden de resultaten opgeslagen in $resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -104,9 +105,9 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="check-status-of-your-data-warehouse-operation"></a>Controleer de status van uw data warehouse-bewerking
+## <a name="check-status-of-your-sql-pool-operation"></a>Controleer de status van de SQL-groeps bewerking
 
-Als u de status van uw data warehouse wilt controleren, gebruikt u de cmdlet [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) .
+Als u de status van de SQL-groep wilt controleren, gebruikt u de cmdlet [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) .
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -114,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Er worden kosten in rekening gebracht voor datawarehouse-eenheden en gegevens die zijn opgeslagen in uw datawarehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
+Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in de SQL-groep. Deze compute- en opslagresources worden apart in rekening gebracht.
 
 - Als u de gegevens in de opslag ruimte wilt bewaren, moet u de compute onderbreken.
 - Als u toekomstige kosten wilt verwijderen, kunt u de SQL-groep verwijderen.
@@ -136,7 +137,4 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu de reken kracht voor uw SQL-groep gepauzeerd en hervat. Voor meer informatie over SQL-pool gaat u verder met de zelf studie voor het laden van gegevens.
-
-> [!div class="nextstepaction"]
-> [Gegevens laden in SQL-groep](load-data-from-azure-blob-storage-using-polybase.md)
+Voor meer informatie over SQL-pool gaat u naar het artikel [gegevens laden in SQL-groep](load-data-from-azure-blob-storage-using-polybase.md) . Zie het artikel [Compute-overzicht beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het beheren van reken mogelijkheden. 

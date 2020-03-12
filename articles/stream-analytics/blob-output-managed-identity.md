@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664301"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129969"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer (preview-versie)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer
 
-[Beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Azure Blob-opslag is beschikbaar voor Azure stream Analytics als een preview-versie. Dit geeft Stream Analytics-taken rechtstreekse toegang tot een opslag account in plaats van een connection string te gebruiken. Naast verbeterde beveiliging kunt u met deze functie ook gegevens schrijven naar een opslag account in een Virtual Network (VNET) in Azure.
+Met [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Azure Blob-opslag kunt u Stream Analytics Jobs direct toegang tot een opslag account geven in plaats van een Connection String te gebruiken. Naast verbeterde beveiliging kunt u met deze functie ook gegevens schrijven naar een opslag account in een Virtual Network (VNET) in Azure.
 
 Dit artikel laat u zien hoe u beheerde identiteit voor de BLOB-uitvoer (en) van een Stream Analytics-taak kunt inschakelen via de Azure Portal en via een Azure Resource Manager-implementatie.
 

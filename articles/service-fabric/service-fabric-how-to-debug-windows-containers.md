@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387711"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127632"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Procedure: fouten opsporen in Windows-containers in azure Service Fabric met behulp van Visual Studio 2019
 

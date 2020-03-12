@@ -8,12 +8,12 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851524"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128407"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
@@ -55,9 +55,6 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
   | **Bestands naam wijzigen** | Niet van toepassing | Niet van toepassing |
   | **Bestand bijwerken** | Nee | Niet van toepassing |
   ||||
-
-  > [!NOTE]
-  > Als u grote bestanden wilt uploaden, hebt u zowel lees-als schrijf machtigingen nodig voor de hoofdmap op uw SFTP-server.
 
 * SFTP-SSH-Triggers bieden geen ondersteuning voor het segmenteren van berichten. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden die 15 MB of kleiner zijn. Als u bestanden groter dan 15 MB wilt ophalen, volgt u dit patroon:
 

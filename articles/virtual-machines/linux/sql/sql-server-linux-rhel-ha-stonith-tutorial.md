@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252209"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096695"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelf studie: beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure 
 
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. Klik op [ **app-registraties**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Klik op **nieuwe registratie**
  5. Voer een **naam** in, zoals `<resourceGroupName>-app`, selecteer **alleen accounts in deze organisatie Directory**
- 6. Selecteer het **Web**van het type toepassing, voer een AANMELDINGS-URL in (bijvoorbeeld http://localhost) en klik op toevoegen. De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
- 7. Selecteer **certificaten en geheimen**en klik vervolgens op **Nieuw client geheim**
+ 6. Selecteer het **Web**van het type toepassing, voer een AANMELDINGS-URL in (bijvoorbeeld http://localhost) en klik op toevoegen. De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn. Als u klaar bent, klikt u op **registreren**
+ 7. Selecteer **certificaten en geheimen** voor uw nieuwe app-registratie en klik vervolgens op **Nieuw client geheim**
  8. Voer een beschrijving in voor een nieuwe sleutel (client geheim), selecteer **nooit verloopt** en klik op **toevoegen**
  9. Noteer de waarde van het geheim. Dit wordt gebruikt als het wacht woord voor de Service-Principal
 10. Selecteer **Overzicht**. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (aanmeldings-ID in de onderstaande stappen) van de Service-Principal
@@ -569,12 +569,14 @@ AD-verificatie wordt momenteel niet ondersteund voor het AG-eind punt. Daarom mo
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 Sluit de SQL-CMD-sessie af door de `exit` opdracht uit te voeren en terug te keren naar uw SSH-sessie.
@@ -623,6 +625,7 @@ Sluit de SQL-CMD-sessie af door de `exit` opdracht uit te voeren en terug te ker
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>De data base mirroring-eind punten maken op alle replica's
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>De beschikbaarheids groep maken
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Een SQL Server aanmelding maken voor pacemaker
@@ -688,9 +693,12 @@ Maak op alle SQL-servers een SQL-aanmelding voor pacemaker. Met de volgende Tran
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server aanmelding. 
@@ -733,6 +741,7 @@ Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. Voer het volgende Transact-SQL-script uit op de primaire replica en de secundaire replica's:
@@ -742,6 +751,7 @@ Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. Zodra de secundaire replica's zijn gekoppeld, kunt u ze zien in SSMS Objectverkenner door het knoop punt **altijd op Maxi maal Beschik baarheid** uit te vouwen:
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Controleer of de data base is gemaakt op de secundaire servers
@@ -805,7 +816,6 @@ We volgen de hand leiding voor het [maken van de resources van de beschikbaarhei
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>Een virtuele IP-bron maken
@@ -946,7 +956,6 @@ Om ervoor te zorgen dat de configuratie tot nu toe is geslaagd, zullen we een fa
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>Test omheining
@@ -975,7 +984,7 @@ Zie het volgende artikel over [Red Hat](https://access.redhat.com/documentation/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een beschikbaarheids groep-listener wilt gebruiken voor uw SQL-servers die u in azure hebt gemaakt, moet u eerst een load balancer maken en configureren.
+Als u een beschikbaarheids groep-listener voor uw SQL-servers wilt gebruiken, moet u een load balancer maken en configureren.
 
 > [!div class="nextstepaction"]
-> [De load balancer in de Azure Portal maken en configureren](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [Zelf studie: een beschikbaarheids groep-listener configureren voor SQL Server op virtuele RHEL-machines in azure](sql-server-linux-rhel-ha-listener-tutorial.md)

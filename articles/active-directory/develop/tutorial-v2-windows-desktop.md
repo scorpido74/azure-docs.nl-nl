@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1864b4867b8e1367a2397c5ed2ed9a77001dadb4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701192"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129922"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>De Microsoft Graph-API aanroepen vanuit een Windows-bureau blad-app
 
@@ -30,6 +30,9 @@ Wanneer u de gids hebt voltooid, kan uw toepassing een beveiligde API aanroepen 
 
 > [!NOTE]
 > Voor de gids is Visual Studio 2015 update 3, Visual Studio 2017 of Visual Studio 2019 vereist. Hebt u geen van deze versies? [Down load Visual Studio 2019 gratis](https://www.visualstudio.com/downloads/).
+
+>[!NOTE]
+> Als u geen ervaring hebt met het micro soft-identiteits platform, raden we u aan om te beginnen met het [verkrijgen van een token en het aanroepen van Microsoft Graph-API vanuit een Windows-bureau blad-app](quickstart-v2-windows-desktop.md).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voor beeld-app die wordt gegenereerd door deze hand leiding werkt
 
@@ -51,7 +54,7 @@ Deze hand leiding maakt gebruik van de volgende NuGet-pakketten:
 
 |Bibliotheek|Beschrijving|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Micro soft Authentication Library (MSAL.NET)|
+|[Micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Micro soft Authentication Library (MSAL.NET)|
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
@@ -97,10 +100,10 @@ U kunt uw toepassing snel registreren door het volgende te doen:
 
 Ga als volgt te werk om de toepassing te registreren en de registratiegegevens van de toepassing toe te voegen aan uw oplossing:
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Selecteer **nieuwe registratie**.
-   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `Win-App-calling-MsGraph`.
+   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `Win-App-calling-MsGraph`.
    - Selecteer in de sectie **Ondersteunde accounttypen** de optie **Accounts in alle organisatiemappen en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com**.
    - Selecteer **Registreren** om de toepassing te maken.
 1. Selecteer in de lijst met pagina’s voor de app de optie **Verificatie**.

@@ -1,21 +1,21 @@
 ---
-title: Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI-uitvoer (preview-versie)
+title: Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI-uitvoer
 description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om uw Azure Stream Analytics-taak te verifiëren voor Power BI uitvoer.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459690"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086323"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI (preview)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI
 
-[Beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Power bi is beschikbaar voor Azure stream Analytics als een preview-versie. Dit geeft Stream Analytics-taken direct toegang tot een werk ruimte binnen uw Power BI-account. Met deze functie kunnen implementaties van Stream Analytics taken volledig worden geautomatiseerd, omdat het niet langer nodig is dat een gebruiker zich interactief aanmeldt bij Power BI via de Azure Portal. Daarnaast zijn langlopende taken die naar Power BI schrijven, nu beter worden ondersteund, omdat u de taak niet regel matig opnieuw moet autoriseren.
+Met [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Power BI hebt stream Analytics-taken direct toegang tot een werk ruimte binnen uw Power bi-account. Met deze functie kunnen implementaties van Stream Analytics taken volledig worden geautomatiseerd, omdat het niet langer nodig is dat een gebruiker zich interactief aanmeldt bij Power BI via de Azure Portal. Daarnaast zijn langlopende taken die naar Power BI schrijven, nu beter worden ondersteund, omdat u de taak niet regel matig opnieuw moet autoriseren.
 
 In dit artikel wordt beschreven hoe u beheerde identiteit kunt inschakelen voor de Power BI uitvoer (en) van een Stream Analytics-taak via de Azure Portal en via een Azure Resource Manager-implementatie.
 
@@ -224,4 +224,4 @@ Hieronder vindt u de beperkingen van deze functie:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Integratie van dash board Power BI met Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Inzicht in de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Meer informatie over de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)

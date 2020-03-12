@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970757"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127696"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
  
@@ -24,7 +24,7 @@ Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en u hebt
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De eerste versie ondersteunt de volgende VM-reeksen: DSv3, ESv3, FSv2, LSv2 en MSv2. 
+- De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
  
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
@@ -77,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Een host maken 
 
-We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.  De volgende SKU-waarden worden ondersteund: DSv3_Type1 en ESv3_Type1.
+We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.  
 
 Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
 

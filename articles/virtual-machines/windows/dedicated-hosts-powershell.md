@@ -1,23 +1,18 @@
 ---
 title: Implementeer uw eigen Azure-hosts met behulp van de Azure PowerShell
 description: Implementeer Vm's op toegewezen hosts met behulp van Azure PowerShell.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190522"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130320"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
 
@@ -28,7 +23,7 @@ Zorg ervoor dat u Azure PowerShell versie 2.8.0 of hoger hebt geïnstalleerd en 
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De volgende VM-reeksen worden ondersteund: DSv3, ESv3 en Fsv2. 
+- De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
 ## <a name="create-a-host-group"></a>Een hostgroep aanmaken
 
@@ -57,7 +52,6 @@ $hostGroup = New-AzHostGroup `
 ## <a name="create-a-host"></a>Een host maken
 
 We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.
-
 
 Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
 

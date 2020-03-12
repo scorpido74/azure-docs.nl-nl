@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303610"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087909"
 ---
-# <a name="assets-in-azure-media-services"></a>Activa in Azure Media Services
+# <a name="assets-in-azure-media-services-v3"></a>Activa in Azure Media Services v3
 
 In Azure Media Services is een [activum](https://docs.microsoft.com/rest/api/media/assets) een kern concept. U voert media in (bijvoorbeeld via upload-of live-opname), uitvoer media (van een taak uitvoer) en het publiceren van media van (voor streaming). 
 
@@ -39,37 +39,6 @@ De namen van het activum moeten uniek zijn. Media Services v3-resource namen (bi
 ### <a name="blobs"></a>Blobs
 
 De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) en de [NTFS-naam](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
-
-## <a name="map-v3-asset-properties-to-v2"></a>V3-Asset-eigenschappen toewijzen aan v2
-
-In de volgende tabel ziet u hoe de eigenschappen van het [element](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)in v3 worden toegewezen aan de eigenschappen van het element in v2.
-
-|V3-eigenschappen|v2-eigenschappen|
-|---|---|
-|`id`-(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|`name`-(uniek) Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|`Id`-(unieke) waarde begint met het voor voegsel `nb:cid:UUID:`.|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (opties voor maken)|
-|`type`||
-
-## <a name="storage-side-encryption"></a>Versleuteling van opslag aan de serverzijde
-
-Ter bescherming van uw activa in rust, moeten de activa van de versleuteling van opslag aan de serverzijde worden versleuteld. De volgende tabel ziet u de werking van de versleuteling van opslag aan de serverzijde in Media Services:
-
-|Optie voor opslagversleuteling|Beschrijving|Media Services v2|Media Services v3|
-|---|---|---|---|
-|Media Services-Storage-versleuteling|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
-|[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
-
-<sup>1</sup> hoewel Media Services de verwerking van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
-
-<sup>2</sup> in Media Services V3 wordt opslag VERSLEUTELING (AES-256-versleuteling) alleen ondersteund voor achterwaartse compatibiliteit wanneer uw assets zijn gemaakt met Media Services v2. Dit betekent dat v3 werkt met bestaande, versleutelde opslag assets, maar geen nieuwe apparaten mag maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

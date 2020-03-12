@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474164"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128720"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De eerste versie ondersteunt de volgende VM-reeksen: DSv3, ESv3, FSv2, LSv2 en MSv2. 
+- De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
 ## <a name="create-a-host-group"></a>Een hostgroep aanmaken
 
@@ -36,8 +36,6 @@ In dit voor beeld maken we een hostgroep met 1 beschikbaarheids zone en twee fou
 1. Open Azure [Portal](https://portal.azure.com).
 1. Selecteer in de linkerbovenhoek **een resource maken** .
 1. Zoek naar **hostgroep** en selecteer **hostgroepen** in de resultaten.
-
-    ![Zoek resultaat van hostgroepen.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. Selecteer op de pagina **hostgroepen** de optie **maken**.
 1. Selecteer het abonnement dat u wilt gebruiken en selecteer vervolgens **Nieuw maken** om een nieuwe resource groep te maken.
 1. Typ *myDedicatedHostsRG* als **naam** en selecteer **OK**.
@@ -46,8 +44,6 @@ In dit voor beeld maken we een hostgroep met 1 beschikbaarheids zone en twee fou
 1. Selecteer voor de **beschikbaarheids zone**de optie **1**.
 1. Selecteer **2**bij **aantal fout domeinen**.
 1. Selecteer **controleren + maken** en wacht vervolgens op validatie.
-
-    ![Instellingen van hostgroep](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. Zodra u het bericht **validatie is voltooid** ziet, selecteert u **maken** om de hostgroep te maken.
 
 Het kan even duren voordat de hostgroep is gemaakt.
@@ -62,16 +58,12 @@ Als u het aantal fout domeinen voor uw hostgroep instelt, wordt u gevraagd om he
 
 1. Selecteer in de linkerbovenhoek **een resource maken** .
 1. Zoek naar een **specifieke host** en selecteer vervolgens **toegewezen hosts** uit de resultaten.
-
-    ![Zoek resultaat van hostgroepen.](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. Selecteer op de pagina **gereserveerde hosts** de optie **maken**.
 1. Selecteer het abonnement dat u wilt gebruiken.
 1. Selecteer *myDedicatedHostsRG* als de **resource groep**.
 1. In **Details**van het exemplaar typt u *MyHost* voor de **naam** en selecteert u *VS-Oost* voor de locatie.
-1. Selecteer in **hardwareprofiel** *standaard Es3 Family-type 1* voor de **grootte familie**, selecteer *myHostGrup* voor de **hostgroep** en selecteer vervolgens *1* voor het **fout domein**. Laat de standaard waarden voor de rest van de velden ongewijzigd.
+1. Selecteer in **hardwareprofiel** *standaard Es3 Family-type 1* voor de **grootte familie**, selecteer *myHostGroup* voor de **hostgroep** en selecteer vervolgens *1* voor het **fout domein**. Laat de standaard waarden voor de rest van de velden ongewijzigd.
 1. Wanneer u klaar bent, selecteert u **controleren + maken** en wacht u op validatie.
-
-    ![Host-instellingen](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. Zodra u het bericht **validatie is voltooid** ziet, selecteert u **maken** om de host te maken.
 
 

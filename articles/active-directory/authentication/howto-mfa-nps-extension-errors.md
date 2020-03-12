@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4f086b7c2f24cfe5d3fe74c25f6f5690b090800
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425303"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086391"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Fout berichten oplossen vanuit de NPS-extensie voor Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | **CLIENT_CERT_INSTALL_ERROR** | Er is mogelijk een probleem met de manier waarop het client certificaat is geïnstalleerd of gekoppeld aan uw Tenant. Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten. |
 | **ESTS_TOKEN_ERROR** | Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten en ADAL-tokens. |
 | **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer van en naar https://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Controleer op de server waarop de NPS-extensie wordt uitgevoerd of u https://adnotifications.windowsazure.com en https://login.microsoftonline.com/ kunt bereiken. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
+| **HTTP_CONNECT_ERROR** | Controleer op de server waarop de NPS-extensie wordt uitgevoerd of u https://adnotifications.windowsazure.com en https://login.microsoftonline.com/kunt bereiken. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
 | **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van https://adnotifications.windowsazure.com en https://login.microsoftonline.com met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
 | **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |
@@ -98,9 +98,9 @@ Als uw gebruikers problemen ondervinden [met verificatie in twee stappen](../use
 
 ### <a name="health-check-script"></a>Status controle script
 
-Het [Azure MFA-status controle script](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) voor de NPS-extensie is beschikbaar in de TechNet-galerie voor het uitvoeren van een eenvoudige status controle bij het oplossen van problemen met de NPS-extensie. Voer het script uit en kies optie 3.
+Het [Azure MFA-status controle script](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) voor de NPS-extensie voert een eenvoudige status controle uit bij het oplossen van problemen met de NPS-extensie. Voer het script uit en kies optie 3.
 
-### <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
+### <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning
 
 Als u meer hulp nodig hebt, neemt u contact op met een ondersteunings medewerker via [ondersteuning voor Azure multi-factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Wanneer u contact met ons opneemt, is het handig als u zoveel mogelijk informatie over uw probleem kunt opnemen. Informatie die u kunt opgeven bevat de pagina waar u de fout hebt gezien, de specifieke fout code, de specifieke sessie-ID, de ID van de gebruiker die de fout heeft gezien en logboeken voor fout opsporing.
 

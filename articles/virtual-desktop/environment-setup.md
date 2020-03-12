@@ -7,18 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+manager: lizross
+ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676630"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127913"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-omgeving
 
 Virtueel bureau blad van Windows is een service waarmee gebruikers eenvoudig en veilig toegang krijgen tot hun gevirtualiseerde Bureau bladen en RemoteApps. In dit onderwerp vindt u meer informatie over de algemene structuur van de virtueel-bureaublad omgeving van Windows.
 
-## <a name="tenants"></a>tenants
+## <a name="tenants"></a>Tenants
 
 De Windows Virtual Desktop-Tenant is de primaire interface voor het beheren van uw virtuele Windows-bureau blad-omgeving. Elke virtuele bureau blad-Tenant van Windows moet worden gekoppeld aan de Azure Active Directory met de gebruikers die zich aanmelden bij de omgeving. Vanuit de virtuele bureau blad-Tenant van Windows kunt u beginnen met het maken van hostgroepen om de werk belastingen van uw gebruikers uit te voeren.
 

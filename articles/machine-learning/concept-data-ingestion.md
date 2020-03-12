@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303117"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086889"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Gegevens opname in Azure Machine Learning
 
@@ -26,7 +26,7 @@ In dit artikel vindt u informatie over de voor-en nadelen van de volgende opties
 
 Gegevens opname is het proces waarin ongestructureerde gegevens worden geëxtraheerd uit een of meer bronnen en vervolgens worden voor bereid voor de trainings machine learning modellen. Het is ook tijdrovend, vooral als hand matig wordt gedaan, en als u grote hoeveel heden gegevens uit meerdere bronnen hebt. Als u deze inspanning automatiseert, worden bronnen vrijgemaakt en kunnen uw modellen de meest recente en toepasselijke gegevens gebruiken.
 
-We raden u aan eerst te evalueren met behulp van Azure Data Factory (ADF), omdat het speciaal is ontworpen voor het extra heren, laden en transformeren van gegevens. Als u geen gebruik kunt maken van uw vereisten met behulp van ADF, kunt u de python-SDK gebruiken voor het ontwikkelen van een oplossing voor aangepaste code, of ADF en de python-SDK gebruiken om een algemene werk stroom voor gegevens opname te creëren die aan uw behoeften voldoet.
+Azure Data Factory (ADF) is speciaal ontworpen voor het uitpakken, laden en transformeren van gegevens, maar met de python-SDK kunt u een aangepaste code oplossing ontwikkelen voor basis taken voor gegevens opname. Als dat niet het geval is, kunt u ook ADF en de python-SDK gebruiken om een algemene werk stroom voor gegevens opname te maken die aan uw behoeften voldoet. 
 
 ## <a name="use-azure-data-factory"></a>Azure Data Factory gebruiken
 
@@ -52,6 +52,8 @@ Deze stappen en het volgende diagram illustreren de werk stroom voor gegevens op
 
 
     ![Opname van ADF-gegevens](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md).
 
 ## <a name="use-the-python-sdk"></a>De python-SDK gebruiken 
 

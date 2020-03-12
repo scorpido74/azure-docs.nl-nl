@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513062"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086733"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelf studie: DRM dynamische versleuteling en licentie leverings service gebruiken
 
@@ -37,7 +37,7 @@ In het voorbeeld in dit artikel wordt het volgende resultaat bereikt:
 
 ![AMS met met DRM beveiligde video in Azure Media Player](./media/protect-with-drm/ams_player.png)
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Een coderings transformatie maken.
@@ -45,6 +45,8 @@ In deze handleiding ontdekt u hoe u:
 > * Stel vereisten in voor het beleid voor inhouds sleutels.
 > * Maak een StreamingLocator met het opgegeven streaming-beleid.
 > * Maak een URL die wordt gebruikt om uw bestand af te spelen.
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -186,7 +188,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het
+Uitchecken
 
 > [!div class="nextstepaction"]
 > [Beveiligen met AES-128](protect-with-aes128.md)

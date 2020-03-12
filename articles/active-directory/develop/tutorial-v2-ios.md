@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084382"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129938"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een iOS-of macOS-app
 
 In deze zelf studie leert u hoe u een iOS-of macOS-app integreert met het micro soft Identity-platform. De app meldt zich aan bij een gebruiker, haalt een toegangs token op om de Microsoft Graph-API aan te roepen en brengt een aanvraag naar de Microsoft Graph-API.  
 
 Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van elk bedrijf of organisatie die gebruikmaakt van Azure Active Directory.
+
+>[!NOTE]
+> Als u niet bekend bent met het micro soft-identiteits platform, raden we u aan om aan de slag te gaan met de [gebruikers voor aanmelden en de Microsoft Graph-API aan te roepen vanuit een IOS-of macOS-app](quickstart-v2-ios.md).
 
 ## <a name="how-this-tutorial-works"></a>Hoe deze zelf studie werkt
 

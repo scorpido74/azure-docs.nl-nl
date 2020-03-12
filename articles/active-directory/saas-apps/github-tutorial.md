@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983466"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129902"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met GitHub
 
@@ -87,14 +87,14 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>/sso`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://github.com/orgs/<entity-id>`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
     > Houd er rekening mee dat dit niet de werkelijke waarden zijn. U dient deze waarden bij te werken met de werkelijke aanmeldings-URL en -id. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Ga naar de sectie GitHub-beheerder om de waarden op te halen.
 
-5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
+5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen met **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -120,7 +120,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -163,8 +163,10 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     c. Open in de Azure-portal het gedownloade certificaat in kladblok en plak de inhoud in het tekstvak **Public Certificate**.
 
     d. Klik op het pictogram **Edit** om de **handtekeningmethode** en **samenvattingsmethode** vanuit **RSA-SHA1** en **SHA1** te bewerken tot **RSA-SHA256** en **SHA256**, zoals hieronder aangegeven.
+    
+    e. Werk de **ASSERTION Consumer Service URL (antwoord-URL)** bij van de standaard-URL, zodat deze de URL in github overeenkomt met de URL in de registratie van de Azure-app.
 
-    ![installatiekopie](./media/github-tutorial/tutorial_github_sha.png)
+    ![image](./media/github-tutorial/tutorial_github_sha.png)
 
 5. Klik op **Test SAML configuration** om te controleren of er geen validatiefouten of -fouten tijdens eenmalige aanmelding zijn opgetreden.
 
@@ -185,7 +187,7 @@ Het doel van deze sectie is om in GitHub een gebruiker te maken met de naam Brit
 
 2. Klik op **People**.
 
-    ![Iedereen](./media/github-tutorial/tutorial_github_config_github_08.png "Personen")
+    ![Iedereen](./media/github-tutorial/tutorial_github_config_github_08.png "People")
 
 3. Klik op **Invite member**.
 
@@ -210,7 +212,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel GitHub in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van GitHub waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

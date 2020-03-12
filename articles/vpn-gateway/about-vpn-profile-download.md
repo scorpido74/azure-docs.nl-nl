@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151637"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127309"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>Over P2S VPN-client profielen
 
@@ -33,7 +33,7 @@ $PROFILE.VpnProfileSASUrl
 Pak het gecomprimeerde bestand uit. Het bestand bevat de volgende mappen:
 
 * AzureVPN
-* Encarta
+* Algemeen
 * OpenVPN (als u de instellingen voor OpenVPN en Azure AD-verificatie hebt ingeschakeld op de gateway. Zie [een Tenant maken](openvpn-azure-ad-tenant.md).)
 
 ## <a name="3-retrieve-information"></a>3. informatie ophalen
@@ -60,7 +60,7 @@ Wanneer u een verbinding toevoegt, gebruikt u de gegevens die u in de vorige sta
 
 ## <a name="folder-contents"></a>Mapinhoud
 
-* De **map openvpn** bevat het *ovpn* -profiel dat moet worden gewijzigd om de sleutel en het certificaat op te laten bevatten. Zie [openvpn-clients configureren voor Azure VPN gateway](vpn-gateway-howto-openvpn-clients.md#windows)voor meer informatie.
+* De **map openvpn** bevat het *ovpn* -profiel dat moet worden gewijzigd om de sleutel en het certificaat op te laten bevatten. Zie [openvpn-clients configureren voor Azure VPN gateway](vpn-gateway-howto-openvpn-clients.md#windows)voor meer informatie. Deze map is niet aanwezig in het zip-bestand als Azure AD-verificatie is geselecteerd op de VPN-gateway. In plaats daarvan bevindt azurevpnconfig. XML zich in de map AzureVPN.
 
 * De **algemene map** bevat het open bare-server certificaat en het VpnSettings. XML-bestand. Het bestand VpnSettings. XML bevat informatie die nodig is voor het configureren van een algemene client.
 

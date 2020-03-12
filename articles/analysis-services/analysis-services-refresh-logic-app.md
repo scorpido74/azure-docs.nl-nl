@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572344"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127017"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -19,14 +19,14 @@ U kunt met behulp van Logic Apps en REST-aanroepen automatische gegevens vernieu
 
 Zie voor meer informatie over het gebruik van REST-Api's met Azure Analysis Services [asynchroon vernieuwen met de rest API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In de voor beelden in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services. Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
 
 ## <a name="design-the-logic-app"></a>De logische app ontwerpen
 
 > [!IMPORTANT]
-> In de volgende voor beelden wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld.  Als de firewall is ingeschakeld, moet het open bare IP-adres van de initiator van de aanvraag worden white list in de firewall van Azure Analysis Services. Zie [limieten en configuratie-informatie voor Azure Logic apps voor](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses)meer informatie over IP-adresbereiken voor logische apps per regio.
+> In de volgende voor beelden wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als de firewall is ingeschakeld, moet het open bare IP-adres van de initiator van de aanvraag worden white list in de firewall van Azure Analysis Services. Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#configuration)voor meer informatie over Azure Logic apps IP-bereiken per regio.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -64,13 +64,13 @@ Configureer de HTTP-activiteit als volgt:
 
 |Eigenschap  |Waarde  |
 |---------|---------|
-|**Methode**     |Verzenden         |
+|**Methode**     |POST         |
 |**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Headers**     |   Content-Type, application/json <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |
 |**Bouw**     |Vul uw Azure Active Directory TenantId in         |
-|**Gericht**     |https://*. asazure. Windows. net         |
+|**Gericht**     |https://*.asazure.windows.net         |
 |**Client ID**     |Voer uw service principal name ClientID in         |
 |**Referentie type**     |Geheim         |
 |**Geheim**     |Voer uw service principal name Secret in         |
@@ -116,4 +116,4 @@ Sla de logische app op.
 ## <a name="next-steps"></a>Volgende stappen
 
 [Voorbeelden](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)

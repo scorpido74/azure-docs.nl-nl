@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701175"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129894"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph-API aanroepen vanuit een Universeel Windows-platform toepassing (XAML)
 
@@ -32,6 +32,9 @@ Aan het einde van deze hand leiding roept uw toepassing een beveiligde API aan m
 
 >[!NOTE]
 > Voor deze hand leiding moet Visual Studio met Universeel Windows-platform Development zijn geïnstalleerd. Zie [instellen](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) voor instructies voor het downloaden en configureren van Visual Studio voor het ontwikkelen van universeel Windows-platform-apps.
+
+>[!NOTE]
+> Als u geen ervaring hebt met het micro soft-identiteits platform, raden we u aan om te beginnen met de [Microsoft Graph-API aanroepen vanuit een universeel Windows-platform-toepassing (UWP) Quick](quickstart-v2-uwp.md)start.
 
 ## <a name="how-this-guide-works"></a>De werking van deze handleiding
 
@@ -45,7 +48,7 @@ In deze hand leiding wordt het volgende NuGet-pakket gebruikt:
 
 |Bibliotheek|Beschrijving|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
@@ -343,8 +346,8 @@ Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs*:
 
 U moet uw toepassing nu registreren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer **Azure Active Directory** > **App-registraties**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory** > **app-registraties**.
 1. Selecteer **nieuwe registratie**. Voer een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, bijvoorbeeld *UWP-app-Call-MSGraph*.
 1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie-map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)** en selecteert u **registreren** om door te gaan.
 1. Zoek op de pagina overzicht de waarde van de **toepassing (client)** en kopieer deze. Ga terug naar Visual Studio, open *MainPage.xaml.cs*en vervang de waarde van `ClientId` door deze waarde.

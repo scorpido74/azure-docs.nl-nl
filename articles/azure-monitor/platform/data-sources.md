@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670522"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096728"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Bronnen van bewakings gegevens voor Azure Monitor
 Azure Monitor is gebaseerd op een [Algemeen bewakings gegevensplatform](data-platform.md) dat [Logboeken](data-platform-logs.md) en [metrische](data-platform-metrics.md)gegevens bevat. Door gegevens te verzamelen in dit platform kunnen gegevens uit meerdere bronnen worden geanalyseerd met behulp van een gemeen schappelijke set hulpprogram ma's in Azure Monitor. Bewakings gegevens kunnen ook worden verzonden naar andere locaties ter ondersteuning van bepaalde scenario's en sommige resources kunnen naar andere locaties schrijven voordat ze kunnen worden verzameld in Logboeken of metrische gegevens.
@@ -72,8 +72,8 @@ Het [Azure-activiteiten logboek](platform-logs-overview.md) bevat service status
 |:---|:---|
 | Activiteitenlogboek | Het activiteiten logboek wordt verzameld in het eigen gegevens archief dat u kunt weer geven in het menu Azure Monitor of gebruiken om waarschuwingen in het activiteiten logboek te maken. | [Query's uitvoeren op het activiteiten logboek in de Azure Portal](activity-log-view.md#azure-portal) |
 | Azure Monitor-logboeken | Configureer Azure Monitor Logboeken om het activiteiten logboek te verzamelen om het te analyseren met andere bewakings gegevens. | [Azure-activiteiten Logboeken in Log Analytics werk ruimte in Azure Monitor verzamelen en analyseren](activity-log-collect.md) |
-| Azure Storage | Exporteer het activiteiten logboek naar Azure Storage voor het archiveren. | [Activiteiten logboek archiveren](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Het activiteiten logboek streamen naar andere locaties met Event Hubs | [Activiteiten logboek streamen naar Event hub](activity-log-export.md#stream-activity-log-to-event-hub). |
+| Azure Storage | Exporteer het activiteiten logboek naar Azure Storage voor het archiveren. | [Activiteiten logboek archiveren](resource-logs-collect-storage.md)  |
+| Event Hubs | Het activiteiten logboek streamen naar andere locaties met Event Hubs | [Activiteiten logboek streamen naar Event hub](resource-logs-stream-event-hubs.md). |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure service Health](../../service-health/service-health-overview.md) biedt informatie over de status van de Azure-Services in uw abonnement waarvan uw toepassing en resources afhankelijk zijn.

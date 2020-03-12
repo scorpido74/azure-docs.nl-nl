@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424980"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096416"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobs opnemen in azure Data Explorer door zich te abonneren op Event Grid meldingen
 
@@ -44,7 +44,7 @@ In dit artikel leert u hoe u een [Azure Event grid](/azure/event-grid/overview) 
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Name | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
+    | Naam | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
     | Gebeurtenisschema | *Event Grid schema* | Het schema dat moet worden gebruikt voor het event grid. |
     | Onderwerptype | *Opslagaccount* | Het type Event Grid-onderwerp. |
     | Onderwerpresource | *gridteststorage* | De naam van uw opslagaccount. |
@@ -118,7 +118,7 @@ Maak nu verbinding met de Event Grid vanuit Azure Data Explorer, zodat gegevens 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **TestDatabase**. |
-    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. Ondersteunde compressie opties: zip en GZip |
+    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn AVRO, CSV, JSON, MEERREGELIGE JSON, PSV, SOH, SCSV, TSV, RAW en TXT. Ondersteunde compressie opties: zip en GZip |
     | Toewijzen van kolommen | *TestMapping* | De toewijzing die u hebt gemaakt in **TestDatabase** en waarmee die binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen van **TestTable**.|
     | | |
     
@@ -150,13 +150,32 @@ Sla de gegevens op in een bestand en upload het met dit script:
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Ter verkrijging van de beste opname prestaties moet *de gedecomprimeerde grootte van* de gecomprimeerde blobs die voor opname worden verzonden, worden gecommuniceerd. Omdat Event Grid meldingen alleen basis details bevatten, moet de informatie over de grootte expliciet worden gecommuniceerd. U kunt de grootte van niet-gecomprimeerde gegevens instellen door de eigenschap `rawSizeBytes` in te stellen op de BLOB-meta gegevens met de niet- *gecomprimeerde* gegevens grootte in bytes.
+
+### <a name="ingestion-properties"></a>Opname-eigenschappen
+
+U kunt de [opname-eigenschappen](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) van de BLOB-opname opgeven via de BLOB-meta gegevens.
+
+Deze eigenschappen kunnen worden ingesteld:
+
+|**Eigenschap** | **Beschrijving van eigenschap**|
+|---|---|
+| `rawSizeBytes` | Grootte van de onbewerkte (niet-gecomprimeerde) gegevens. Voor Avro/ORC/Parquet is dit de grootte voordat de indelings-specifieke compressie wordt toegepast.|
+| `kustoTable` |  De naam van de bestaande doel tabel. Onderdrukt de `Table` die is ingesteld op de Blade `Data Connection`. |
+| `kustoDataFormat` |  Gegevens indeling. Onderdrukt de `Data format` die is ingesteld op de Blade `Data Connection`. |
+| `kustoIngestionMappingReference` |  De naam van de bestaande opname toewijzing die moet worden gebruikt. Onderdrukt de `Column mapping` die is ingesteld op de Blade `Data Connection`.|
+| `kustoIgnoreFirstRecord` | Als deze is ingesteld op `true`, wordt in Kusto de eerste rij van de blob genegeerd. Gebruiken in tabel indeling gegevens (CSV, TSV of vergelijkbaar) om kopteksten te negeren. |
+| `kustoExtentTags` | Teken reeks die de [labels](/azure/kusto/management/extents-overview#extent-tagging) vertegenwoordigt die worden toegevoegd aan de resulterende gebieden. |
+| `kustoCreationTime` |  Onderdrukt [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) voor de blob, opgemaakt als een ISO 8601-teken reeks. Gebruiken voor backfilling. |
 
 > [!NOTE]
 > In azure Data Explorer worden de blobs na opname niet verwijderd.
@@ -197,7 +216,7 @@ Als u niet van plan bent de Event Grid opnieuw te gebruiken, wist u de **test-hu
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-grid/expand.png) om het menu uit te vouwen.
+    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-grid/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-grid/delete-resources-select.png)
 

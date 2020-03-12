@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246206"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128508"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De volgende VM-reeksen worden ondersteund: DSv3, ESv3 en Fsv2. 
 
 ## <a name="benefits"></a>Voordelen 
 
@@ -79,7 +78,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 
 Zodra een toegewezen host is ingericht, wijst Azure deze toe aan de fysieke server. Hiermee wordt de beschik baarheid van de capaciteit gegarandeerd wanneer u uw virtuele machine moet inrichten. Azure gebruikt de volledige capaciteit in de regio (of zone) om een fysieke server voor uw host te kiezen. Het betekent ook dat klanten kunnen verwachten dat ze hun toegewezen host footprint kunnen verg Roten zonder dat er bijna geen ruimte meer is in het cluster.
 
-## <a name="quotas"></a>Quota's
+## <a name="quotas"></a>Quota
 
 Er is een standaard quotum limiet van 3000 Vcpu's voor toegewezen hosts per regio. Maar het aantal hosts dat u kunt implementeren, wordt ook beperkt door het quotum voor de VM-grootte familie die voor de host wordt gebruikt. Een abonnement op basis van **betalen per gebruik** heeft bijvoorbeeld alleen een quotum van 10 vcpu's beschikbaar voor de Dsv3 grootte serie, in de regio VS-Oost. In dit geval moet u een quotum verhoging tot ten minste 64 Vcpu's aanvragen voordat u een specifieke host kunt implementeren. Selecteer de knop **verhogen** in de rechter bovenhoek om zo nodig een aanvraag in te dienen.
 
@@ -101,17 +100,15 @@ Zie [prijzen voor toegewezen hosts voor Azure](https://aka.ms/ADHPricing)voor me
 
 U kunt ook besparen op kosten met een [gereserveerd exemplaar van voor Azure toegewezen hosts](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
-## <a name="vm-families-and-hardware-generations"></a>VM-families en hardware-generaties
+## <a name="sizes-and-hardware-generations"></a>Grootten en hardware gegenereerd
 
-Er wordt een SKU gedefinieerd voor een host en deze vertegenwoordigt de VM-grootte reeks en-type. U kunt meerdere virtuele machines van verschillende grootten op één host combi neren, zolang ze dezelfde grootte reeks hebben. Het type is de hardware-generatie die momenteel beschikbaar is in de regio.
+Er wordt een SKU gedefinieerd voor een host en deze vertegenwoordigt de VM-grootte reeks en-type. U kunt meerdere virtuele machines van verschillende grootten op één host combi neren, zolang ze dezelfde grootte reeks hebben. 
 
-Verschillende `types` voor dezelfde VM-serie zijn van verschillende CPU-leveranciers en hebben verschillende CPU-generaties en aantal kernen.
+Het *type* is het genereren van hardware. Verschillende typen hardware voor dezelfde VM-serie zijn van verschillende CPU-leveranciers en hebben verschillende CPU-generaties en aantal kernen. 
 
-Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
+De grootten en typen hardware variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
-Toegewezen hosts ondersteunen de volgende SKU\types: DSv3_Type1 en ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Levens cyclus van host
 
 

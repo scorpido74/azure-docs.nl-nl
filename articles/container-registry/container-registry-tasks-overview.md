@@ -3,12 +3,12 @@ title: Overzicht van ACR-taken
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615960"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087275"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -124,15 +124,11 @@ Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem
 | Linux | amd64<br/>scherp<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>Taak logboeken weer geven
+## <a name="view-task-output"></a>Taakuitvoer weergeven
 
-Elke taak wordt uitgevoerd, genereert een logboek uitvoer die u kunt inspecteren om te bepalen of de taak stappen zijn uitgevoerd. Als u de opdracht [AZ ACR build](/cli/azure/acr#az-acr-build), [AZ ACR run](/cli/azure/acr#az-acr-run)of [AZ ACR Task run](/cli/azure/acr/task#az-acr-task-run) gebruikt om de taak te activeren, wordt de logboek uitvoer voor de uitvoering van de taak naar de console gestreamd en ook opgeslagen om later op te halen. Wanneer een taak automatisch wordt geactiveerd, bijvoorbeeld door het door voeren van een bron code of een update van een basis installatie kopie, worden de taak Logboeken alleen opgeslagen. Bekijk de logboeken voor een taak die wordt uitgevoerd in de Azure Portal, of gebruik de opdracht [AZ ACR taak logs](/cli/azure/acr/task#az-acr-task-logs) .
+Elke taak wordt uitgevoerd, genereert een logboek uitvoer die u kunt inspecteren om te bepalen of de taak stappen zijn uitgevoerd. Wanneer u een taak hand matig start, wordt de logboek uitvoer voor de taak uitvoering naar de console gestreamd en ook opgeslagen om later op te halen. Wanneer een taak automatisch wordt geactiveerd, bijvoorbeeld door het door voeren van een bron code of een update van een basis installatie kopie, worden de taak Logboeken alleen opgeslagen. Bekijk de uitvoerings Logboeken in de Azure Portal of gebruik de opdracht [AZ ACR taak logs](/cli/azure/acr/task#az-acr-task-logs) .
 
-Gegevens en logboeken voor taak uitvoeringen in een REGI ster worden standaard 30 dagen bewaard en vervolgens automatisch opgeschoond. Als u de gegevens voor een taak uitvoering wilt archiveren, schakelt u archiveren in met de opdracht [AZ ACR Task update-run](/cli/azure/acr/task#az-acr-task-update-run) . In het volgende voor beeld wordt het archiveren voor de taak *cf11* in REGI ster *myregistry*ingeschakeld.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+Meer informatie over het [weer geven en beheren van taak logboeken](container-registry-tasks-logs.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

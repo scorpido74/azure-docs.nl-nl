@@ -6,16 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899189"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127277"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
 Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u resources zoals Logic apps, integratie accounts en connectors toe zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk. Zo worden beheerde ISE-connectors die beschikbaar zijn nadat u uw ISE hebt gemaakt, niet automatisch weer gegeven in de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u [deze connectors hand matig toevoegen en implementeren voor uw ISE](#add-ise-connectors-environment) , zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
+
+> [!IMPORTANT]
+> Voor logische apps en integratie accounts die in een ISE samen werken, moeten beide *dezelfde ISE* gebruiken als hun locatie.
 
 ## <a name="prerequisites"></a>Vereisten
 

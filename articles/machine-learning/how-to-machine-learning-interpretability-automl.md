@@ -10,18 +10,20 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 4ab3bc43cf8ef479cb91d187a4c177db03415b86
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525580"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129746"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>Model interpreteert in geautomatiseerde machine learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel vindt u informatie over het inschakelen van de functies voor het vertolken van automatische machine learning (ML) in Azure Machine Learning. Met geautomatiseerde ML kunt u zowel het belang van onbewerkte als voor de functie van het onderdeel begrijpen. Als u de functie voor het interpreteren van modellen wilt gebruiken, stelt u `model_explainability=True` in het `AutoMLConfig`-object in.  
+In dit artikel vindt u informatie over het inschakelen van de functies voor het vertolken van automatische machine learning (ML) in Azure Machine Learning. Automatische ML helpt u bij het begrijpen van het belang van de functie. 
+
+Alle SDK-versies nadat 1.0.85 `model_explainability=True` standaard ingesteld. In de SDK-versie 1.0.85 en eerdere versies moeten gebruikers `model_explainability=True` in het `AutoMLConfig`-object instellen om de interpretie van modellen te kunnen gebruiken. 
 
 In dit artikel leert u het volgende:
 
@@ -36,14 +38,14 @@ In dit artikel leert u het volgende:
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Interpretiteit tijdens de training voor het beste model
 
-Haal de uitleg op uit het `best_run`, dat uitleg bevat over de functies van ontworpen en onbewerkte functies.
+Haal de uitleg op uit het `best_run`, dat uitleg bevat over de functies die zijn ontworpen voor de functie.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Belang rijk onderdeel van de artefact opslag downloaden
 
-U kunt `ExplanationClient` gebruiken om de toelichtingen van de functie te downloaden uit het artefact archief van de `best_run`. Als u de uitleg wilt weten voor de `raw=True`onbewerkte functies, stelt u deze in.
+U kunt `ExplanationClient` gebruiken om de toelichtingen van de functie te downloaden uit het artefact archief van de `best_run`. 
 
 ```python
-from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+from azureml.explain.model._internal.explanation_client import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -52,26 +54,26 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Interpretiteit tijdens de training voor elk model 
 
-Wanneer u de beschrijving van het model berekent en ze visualiseren, bent u niet beperkt tot een bestaande beschrijving van een model voor een geautomatiseerd ML-model. U kunt ook een uitleg voor uw model met verschillende test gegevens krijgen. De stappen in deze sectie laten zien hoe u het belang en de onbewerkte functie van het onderdeel kunt berekenen en visualiseren op basis van uw test gegevens.
+Wanneer u de beschrijving van het model berekent en ze visualiseren, bent u niet beperkt tot een bestaande beschrijving van een model voor een geautomatiseerd ML-model. U kunt ook een uitleg voor uw model met verschillende test gegevens krijgen. In de stappen in deze sectie wordt uitgelegd hoe u het belang van de functie hebt berekend en gevisualiseerd op basis van uw test gegevens.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Alle andere AutoML-modellen uit de training ophalen
 
 ```python
-automl_run, fitted_model = local_run.get_output(metric='r2_score')
+automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
 ### <a name="set-up-the-model-explanations"></a>De beschrijving van het model instellen
 
-Gebruik `automl_setup_model_explanations` om de uitleg van de functie en onbewerkte functies te verkrijgen. Het `fitted_model` kan de volgende items genereren:
+Gebruik `automl_setup_model_explanations` om de uitgevende uitleg te verkrijgen. Het `fitted_model` kan de volgende items genereren:
 
 - Aanbevolen gegevens uit getrainde of test voorbeelden
-- Lijst met functies en onbewerkte functie namen
+- Lijst met functies voor de functie naam
 - Zoekbaar klassen in de kolom gelabeld in classificatie scenario's
 
 De `automl_explainer_setup_obj` bevat alle structuren uit de bovenstaande lijst.
 
 ```python
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -86,16 +88,16 @@ Als u een uitleg voor AutoML-modellen wilt genereren, gebruikt u de klasse `Mimi
 - Uw werk ruimte
 - Een LightGBM-model dat fungeert als een vervanging van het model `fitted_model` Automated ML
 
-De MimicWrapper neemt ook het `automl_run`-object op waar de onbewerkte en geengineerde verklaringen worden geüpload.
+De MimicWrapper neemt ook het `automl_run`-object op waar de toelichte verklaringen worden geüpload.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
-                         features=automl_explainer_setup_obj.engineered_feature_names,
+                         features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
                          classes=automl_explainer_setup_obj.classes)
 ```
@@ -105,27 +107,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 U kunt de `explain()`-methode aanroepen in MimicWrapper met de getransformeerde test voorbeelden om het belang van de functie voor de gegenereerde functies te verkrijgen. U kunt `ExplanationDashboard` ook gebruiken om de visualisatie van het dash board weer te geven van de belang rijke waarden van de functie van de gegenereerde functies van ontwikkeld door featurizers ML.
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-engineered_explanations = explainer.explain(['local', 'global'],              
-                                            eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
-ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
-```
-
-### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Geïmiteerde uitleg gebruiken voor het berekenen en visualiseren van de urgentie van RAW-onderdelen
-
-U kunt de `explain()` methode opnieuw aanroepen in MimicWrapper met de getransformeerde test voorbeelden en instellen `get_raw=True` om het belang van de functie voor de onbewerkte functies te verkrijgen. U kunt `ExplanationDashboard` ook gebruiken om de dashboard visualisatie van de belang rijke waarden van de functie van de onbewerkte functies weer te geven.
-
-```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-
-raw_explanations = explainer.explain(['local', 'global'], get_raw=True, 
-                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
-                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
-print(raw_explanations.get_feature_importance_dict())
-ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="interpretability-during-inference"></a>Interpretiteit tijdens deinterferentie
@@ -134,7 +117,7 @@ In deze sectie leert u hoe u een geautomatiseerd ML-model kunt operationeel make
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Het model en de uitleg over scores registreren
 
-Gebruik de `TreeScoringExplainer` om de Score-uitleger te maken waarmee de belang rijke waarden van de onbewerkte en gewerkte functie bij een afnemende tijd worden berekend. U initialiseert de beoordelings verklaring met de `feature_map` die eerder is berekend. De Score uitleger gebruikt de `feature_map` om het belang van de onbewerkte functie te retour neren.
+Gebruik de `TreeScoringExplainer` om de Score uitleg te maken waarmee de belang rijke waarden van de functie worden berekend op het tijdstip van de afnemen. U initialiseert de beoordelings verklaring met de `feature_map` die eerder is berekend. 
 
 Sla de uitleg van de scoreer op en registreer het model en de Score uitleger met de Modelbeheer-service. Voer de volgende code:
 
@@ -208,21 +191,19 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Afleiding met test gegevens
 
-Detrain met een aantal test gegevens om de voorspelde waarde van het model geautomatiseerd ML te bekijken. Bekijk de belang rijke functie voor de voorspelde waarde en het belang van de onbewerkte functie voor de voorspelde waarde.
+Detrain met een aantal test gegevens om de voorspelde waarde van het model geautomatiseerd ML te bekijken. Bekijk de belang rijke functie voor de voorspelde waarde.
 
 ```python
 if service.state == 'Healthy':
     # Serialize the first row of the test data into json
     X_test_json = X_test[:1].to_json(orient='records')
     print(X_test_json)
-    # Call the service to get the predictions and the engineered and raw explanations
+    # Call the service to get the predictions and the engineered explanations
     output = service.run(X_test_json)
     # Print the predicted value
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
-    # Print the raw feature importances for the predicted value
-    print(output['raw_local_importance_values'])
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualiseer om patronen in gegevens en uitleg te ontdekken tijdens de trainings tijd

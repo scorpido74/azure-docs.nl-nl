@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701226"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129963"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelf studie: een multi tenant-daemon bouwen die gebruikmaakt van het micro soft Identity platform-eind punt
 
@@ -39,7 +39,8 @@ De app is gebouwd als een ASP.NET MVC-toepassing. Het maakt gebruik van de OWIN 
 
 Het onderdeel daemon in dit voor beeld is een API-controller `SyncController.cs`. Wanneer de controller wordt aangeroepen, wordt deze opgehaald in een lijst met gebruikers in de Tenant van de Azure Active Directory van de klant (Azure AD) van Microsoft Graph. `SyncController.cs` wordt geactiveerd door een AJAX-aanroep in de webtoepassing. Er wordt gebruikgemaakt [van de micro soft Authentication Library (MSAL) voor .net](msal-overview.md) om een toegangs token voor Microsoft Graph te verkrijgen.
 
-Zie de [Snelstartgids voor .net core daemon](quickstart-v2-netcore-daemon.md)voor een eenvoudiger console daemon-toepassing.
+>[!NOTE]
+> Als u geen ervaring hebt met het micro soft-identiteits platform, raden we u aan om te beginnen met de [Snelstartgids voor .net core daemon](quickstart-v2-netcore-daemon.md).
 
 ## <a name="scenario"></a>Scenario
 
@@ -57,7 +58,7 @@ Als u het voor beeld in deze Quick Start wilt uitvoeren, hebt u het volgende nod
 - Een Azure AD-tenant. Zie [een Azure AD-Tenant verkrijgen](quickstart-create-new-tenant.md)voor meer informatie.
 - Een of meer gebruikers accounts in uw Azure AD-Tenant. Dit voor beeld werkt niet met een Microsoft-account (voorheen Windows Live-account). Als u bent aangemeld bij de [Azure Portal](https://portal.azure.com) met een Microsoft-account en u hebt nooit een gebruikers account in uw directory gemaakt, moet u dat nu doen.
 
-## <a name="clone-or-download-this-repository"></a>Klonen of download deze opslagplaats
+## <a name="clone-or-download-this-repository"></a>Deze opslag plaats klonen of downloaden
 
 Voer de volgende opdracht uit vanaf de shell of de opdracht regel:
 
@@ -215,8 +216,8 @@ Dit project bevat Web-app-en Web-API-projecten. Als u deze wilt implementeren op
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>DotNet-Web-daemon-v2 maken en publiceren naar een Azure-website
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer **Een resource maken** in de linkerbovenhoek.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer in de linkerbovenhoek **een resource maken**.
 1. Selecteer **web** > **Web-app**en geef uw website een naam. Noem het bijvoorbeeld **DotNet-Web-daemon-v2-contoso.azurewebsites.net**.
 1. Selecteer de gegevens voor het **abonnement**, de **resource groep**en het **app service-plan en de locatie**. Het **besturings systeem** is **Windows**en de **publicatie** is **code**.
 1. Selecteer **maken** en wacht totdat de app service is gemaakt.
@@ -247,7 +248,7 @@ Visual Studio publiceert het project en opent automatisch een browser naar de UR
 ## <a name="clean-up-resources"></a>Resources opschonen
 Wanneer u deze niet meer nodig hebt, verwijdert u het app-object dat u hebt gemaakt in de stap [uw toepassing registreren](#register-your-application) .  Als u de toepassing wilt verwijderen, volgt u de instructies in [een toepassing verwijderen die door u of uw organisatie is gemaakt](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 
 Gebruik [stack overflow](http://stackoverflow.com/questions/tagged/msal) om ondersteuning van de community te verkrijgen.
 Stel eerst uw vragen over Stack Overflow en blader door bestaande problemen om te zien of iemand uw vraag eerder heeft gesteld.
@@ -268,7 +269,7 @@ Zie de volgende conceptuele documentatie voor meer informatie:
 - [Inzicht in ervaringen met Azure AD-toepassingtoestemming](application-consent-experience.md)
 - [Meld u aan bij een Azure Active Directory gebruiker met het toepassings patroon multi tenant](howto-convert-app-to-be-multi-tenant.md)
 - [Toestemming van gebruiker en beheerder](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Toepassings- en service-principal-objecten in Azure Active Directory](app-objects-and-service-principals.md)
+- [Toepassings-en Service-Principal-objecten in Azure Active Directory](app-objects-and-service-principals.md)
 - [Snelstartgids: een toepassing registreren bij het micro soft Identity-platform](quickstart-register-app.md)
 - [Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's](quickstart-configure-app-access-web-apis.md)
 - [Een token voor een toepassing met client referentie stromen ophalen](msal-client-applications.md)

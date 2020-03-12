@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485179"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096067"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -125,10 +125,6 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
    Aantal geslaagde aanvragen dat Application Gateway heeft geleverd. Het aantal aanvragen kan verder worden gefilterd om het aantal weer te geven per/specifieke back-end-groep-combi natie van http-instellingen.
 
-- **Overeenkomende regels voor Web Application firewall**
-
-- **Geactiveerde regels voor Web Application firewall**
-
 ### <a name="backend-metrics"></a>Metrische gegevens van back-end
 
 De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
@@ -180,9 +176,9 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
   Aantal geslaagde aanvragen dat Application Gateway heeft geleverd. Het aantal aanvragen kan verder worden gefilterd om het aantal weer te geven per/specifieke back-end-groep-combi natie van http-instellingen.
 
-- **Overeenkomende regels voor Web Application firewall**
-
-- **Geactiveerde regels voor Web Application firewall**
+- **Aantal geblokkeerde aanvragen voor Web Application firewall**
+- **Distributie van door Web Application firewall geblokkeerde aanvragen**
+- **Totale regel distributie Web Application firewall**
 
 ### <a name="backend-metrics"></a>Metrische gegevens van back-end
 

@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827115"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087183"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Quick Start: de SQL-query-editor van Azure Portal gebruiken om verbinding te maken en gegevens op te vragen
 
@@ -42,7 +42,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="sign-in-the-azure-portal"></a>Meld u aan bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Verbinding maken met behulp van SQL-verificatie
 
@@ -167,6 +167,8 @@ U moet enkele dingen weten voordat u met de queryeditor gaat werken.
 
 * De query-editor gebruikt de poorten 443 en 1443 om te communiceren.  Controleer of u het uitgaande HTTPS-verkeer op deze poorten hebt ingeschakeld. U moet ook uw uitgaande IP-adres toevoegen aan de toegestane firewall regels van de server om toegang te krijgen tot uw data bases en data warehouses.
 
+* Query-Editor werkt met een persoonlijke koppeling zonder dat het client-IP-adres moet worden toegevoegd aan de SQL Database firewall
+
 * Wanneer u op F5 drukt, wordt de pagina van de queryeditor vernieuwd en gaan query's waaraan wordt gewerkt, verloren.
 
 * De query-editor biedt geen ondersteuning voor het maken van verbinding met de `master`-database.
@@ -176,6 +178,8 @@ U moet enkele dingen weten voordat u met de queryeditor gaat werken.
 * De queryeditor ondersteunt alleen cilindrische projectie voor geografiegegevenstypen.
 
 * Er is geen ondersteuning voor IntelliSense voor databasetabellen en -weergaven. Het automatisch aanvullen van namen die al eerder zijn getypt, wordt wel ondersteund.
+
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

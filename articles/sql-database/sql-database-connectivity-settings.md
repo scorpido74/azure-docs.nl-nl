@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8d40dd09144bddc41347947c0123988530f93f90
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945434"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096675"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Verbindings instellingen
 > [!NOTE]
@@ -77,49 +77,6 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 ```
 
-## <a name="minimal-tls-version"></a>Minimale TLS-versie 
-Met minimale TLS-versie kan de klant de versie van [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) beheren voor hun Azure SQL Server.
-
-We raden u aan minimale TLS-versie in te stellen op 1,2. Voor klanten met toepassingen die afhankelijk zijn van oudere versies van TLS, wordt u aangeraden de minimale TLS-versie in te stellen volgens de vereisten van uw toepassingen. Voor klanten die afhankelijk zijn van toepassingen om verbinding te maken met behulp van een niet-versleutelde verbinding, wordt u aangeraden geen minimale TLS-versie in te stellen. Raadpleeg [TLS-overwegingen voor SQL database connectiviteit](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)voor meer informatie.
-
-Nadat de minimale TLS-versie is ingesteld, mislukken aanmeldings pogingen van clients die een TLS-versie gebruiken die kleiner is dan de minimale TLS-versie van de server, met de volgende fout:
-
-```output
-Error 47072
-Login failed with invalid TLS version
-```
-
-## <a name="set-minimal-tls-version-via-powershell"></a>Minimale TLS-versie instellen via Power shell
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Voor het volgende script is de [Azure PowerShell-module](/powershell/azure/install-az-ps)vereist.
-
-In het volgende Power shell-script ziet u hoe u de eigenschap **minimale TLS-versie** `Get` en `Set` op logisch server niveau:
-
-```powershell
-#Get the Public Network Access property
-(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).PublicNetworkAccess
-
-# Update Public Network Access to Disabled
-$SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
-
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString  -MinimalTlsVersion "1.2"
-```
-
-## <a name="set-minimal-tls-version-via-azure-cli"></a>Minimale TLS-versie instellen via Azure CLI
-> [!IMPORTANT]
-> Alle scripts in deze sectie vereisen [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in een bash-shell
-Het volgende CLI-script laat zien hoe u de instelling **minimale TLS-versie** in een bash-shell wijzigt:
-
-```azurecli-interactive
-# Get current setting for Minimal TLS Version
-az sql server show -n sql-server-name -g sql-server-group --query "minimalTlsVersion"
-
-# Update setting for Minimal TLS Version
-az sql server update -n sql-server-name -g sql-server-group --set minimalTlsVersion="1.2"
-```
 
 ## <a name="connection-policy"></a>Verbindings beleid
 Het [verbindings beleid](sql-database-connectivity-architecture.md#connection-policy) bepaalt hoe clients verbinding maken met Azure SQL Server. 

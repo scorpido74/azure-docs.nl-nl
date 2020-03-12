@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 84d539f35919293522f05abdeabeca936138c140
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081621"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129690"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelf studie: een classificatie model maken met automatische MILLILITERs in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -221,8 +221,8 @@ In deze automatische machine learning zelf studie hebt u de interface van de gea
 > [Een webservice gebruiken](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Meer informatie over [automatische machine learning](concept-automated-ml.md).
-+ Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen. + meer informatie over [parametrisatie](how-to-create-portal-experiments.md#featurization).
-+ Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).
++ Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen. + meer informatie over [parametrisatie](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Meer informatie over [gegevens profilering](how-to-use-automated-ml-for-ml-models.md#profile).
 
 
 >[!NOTE]

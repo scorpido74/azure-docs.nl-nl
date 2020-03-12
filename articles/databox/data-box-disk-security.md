@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606563"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117267"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk-beveiliging en -gegevensbescherming
 
@@ -34,7 +34,7 @@ Het volgende diagram toont de stroom van gegevens via de Azure Data Box Disk-opl
 
 ## <a name="security-features"></a>Beveiligingsfuncties
 
-Data Box Disk biedt een veilige oplossing voor gegevensbescherming door te verzekeren dat alleen bevoegde entiteiten uw gegevens kunnen bekijken, wijzigen of verwijderen. De beveiligingsfuncties van deze oplossing zijn voor de schijf en voor de bijbehorende service, zodat de gegevens worden beschermd die daarop worden opgeslagen. 
+Data Box Disk biedt een veilige oplossing voor gegevensbescherming door te verzekeren dat alleen bevoegde entiteiten uw gegevens kunnen bekijken, wijzigen of verwijderen. De beveiligingsfuncties van deze oplossing zijn voor de schijf en voor de bijbehorende service, zodat de gegevens worden beschermd die daarop worden opgeslagen.
 
 ### <a name="data-box-disk-protection"></a>Data Box Disk-bescherming
 
@@ -48,7 +48,7 @@ De Data Box Disk wordt door de volgende functies beschermd:
 
 De gegevens die in en uit de Data Box Disk stromen, worden door de volgende functies beschermd:
 
-- Voortdurende BitLocker-versleuteling van gegevens. 
+- Voortdurende BitLocker-versleuteling van gegevens.
 - Veilige verwijdering van gegevens van de schijf zodra ze naar Azure zijn geüpload. Gegevensverwijdering is in overeenstemming met NIST 800-88r1-standaarden.
 
 ### <a name="data-box-service-protection"></a>Data Box-servicebescherming
@@ -56,10 +56,9 @@ De gegevens die in en uit de Data Box Disk stromen, worden door de volgende func
 De Data Box-service wordt door de volgende functies beschermd:
 
 - Voor toegang tot de Data Box Disk-service moet uw organisatie een Azure-abonnement hebben dat Data Box Disk omvat. Uw abonnement bepaalt tot welke functies u toegang hebt in de Azure-portal.
-- Omdat de Data Box-service in Azure wordt gehost, wordt deze beschermd door de Azure-beveiligingsfuncties. Ga naar het [Vertrouwenscentrum van Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx) voor meer informatie over de beveiligingsfuncties die worden geleverd door Microsoft Azure. 
+- Omdat de Data Box-service in Azure wordt gehost, wordt deze beschermd door de Azure-beveiligingsfuncties. Ga naar het [Vertrouwenscentrum van Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx) voor meer informatie over de beveiligingsfuncties die worden geleverd door Microsoft Azure.
 - In de Data Box Disk-service wordt een wachtwoordsleutel opgeslagen die wordt gebruikt om de schijf te ontgrendelen. 
-- In de Data Box Disk-service worden de ordergegevens en -status opgeslagen. Deze informatie wordt verwijderd wanneer de order wordt verwijderd. 
-
+- In de Data Box Disk-service worden de ordergegevens en -status opgeslagen. Deze informatie wordt verwijderd wanneer de order wordt verwijderd.
 
 ## <a name="managing-personal-data"></a>Persoonlijke gegevens beheren
 
@@ -92,6 +91,6 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [Vereisten voor Data Box](data-box-disk-system-requirements.md).
+- De [Vereisten voor Data Box Disk](data-box-disk-system-requirements.md) bekijken.
 - De [Limieten voor Data Box Disk](data-box-disk-limits.md) begrijpen.
 - Snel [Azure Data Box Disk](data-box-disk-quickstart-portal.md) in Azure Portal implementeren.

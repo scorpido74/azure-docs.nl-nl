@@ -8,11 +8,11 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379527"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096285"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
@@ -165,7 +165,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
     | naam |Ja |De naam van het logboek profiel. |
     | storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
     | locaties |Ja |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement met behulp van `az account list-locations --query [].name`. |
-    | days |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
+    | dagen |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
     |enabled | Ja |Waar of ONWAAR.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
     | categorieën |Ja |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
 

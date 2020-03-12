@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e32754d94bf6d0c35ac131f244696049f56380e9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76118064"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129573"
 ---
 ## <a name="resources-for-development-with-net"></a>Resources voor ontwikkeling met .NET
 
@@ -21,13 +21,13 @@ De onderstaande koppelingen bieden nuttige bronnen voor ontwikkel aars die gebru
 
 ### <a name="azure-storage-common-apis"></a>Azure Storage algemene Api's
 
-- [API-referentie documentatie](/dotnet/api/overview/azure/storage/client)
+- [API-referentie documentatie](/dotnet/api/overview/azure/storage)
 - [Bron code van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
 ### <a name="blob-storage-apis"></a>BLOB storage-API 's
 
-- [API-referentie documentatie](/dotnet/api/overview/azure/storage/client)
+- [API-referentie documentatie](/dotnet/api/overview/azure/storage)
 - [Bron code van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [Pakket (NuGet) voor versie 11. x](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 - [Pakket (NuGet) voor versie 12. x](https://www.nuget.org/packages/Azure.Storage.Blobs)

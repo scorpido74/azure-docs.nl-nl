@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561830"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087939"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelf studie: verbinding maken, instellen, Azure Data Box Gateway activeren
 
@@ -92,6 +92,11 @@ Uw dash board geeft de verschillende instellingen weer die nodig zijn om het vir
    2. Onder **verificatie**selecteert u **geen** of **NTLM**.
    3. Als u verificatie gebruikt, voert u een **gebruikers naam** en **wacht woord**in.
    4. Selecteer **Toep assen**om de geconfigureerde web proxy-instellingen te valideren en toe te passen.
+
+   > [!NOTE]
+   > De bestanden voor het automatisch configureren van de proxy (PAC) worden niet ondersteund. Een PAC-bestand definieert hoe webbrowsers en andere gebruikers agenten automatisch de juiste proxy server (toegangs methode) kunnen kiezen voor het ophalen van een bepaalde URL.
+   > Proxy's die al het verkeer proberen te onderscheppen en lezen (en vervolgens alles opnieuw ondertekenen met hun eigen certificering) zijn niet compatibel, omdat het certificaat van de proxy niet wordt vertrouwd.
+   > Normaal gesp roken werken transparante proxy's goed met Azure Data Box Gateway.
 
 4. Beschrijving Selecteer in het linkerdeel venster **tijd instellingen**en configureer vervolgens de tijd zone en de primaire en secundaire NTP-servers voor uw apparaat. 
 

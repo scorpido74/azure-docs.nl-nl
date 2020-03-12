@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132078"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096607"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Time-out voor inactiviteit op Directory niveau instellen
 
@@ -43,7 +43,7 @@ Als u wilt controleren of het beleid voor time-out van inactiviteit juist is ing
 De instelling wordt van kracht voor nieuwe sessies. Deze functie wordt niet onmiddellijk toegepast op alle gebruikers die al zijn aangemeld.
 
 > [!NOTE]
-> Als een beheerder een time-outinstelling op Directory-niveau heeft geconfigureerd, kunnen gebruikers het beleid overschrijven en hun eigen inactieve aanmeldings duur instellen. De gebruiker moet echter een tijds interval kiezen dat lager is dan wat op mapniveau is ingesteld.
+> Als een globale beheerder een time-outinstelling op mapniveau heeft geconfigureerd, kunnen gebruikers het beleid overschrijven en hun eigen inactieve afmeldings periode instellen. De gebruiker moet echter een tijds interval kiezen dat lager is dan wat is ingesteld op mapniveau door de globale beheerder.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852183"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087004"
 ---
 # <a name="job-and-task-error-checking"></a>Fout controle taak en taak
 
@@ -72,6 +72,17 @@ In alle gevallen moeten de volgende eigenschappen worden gecontroleerd op fouten
 De impact van taak fouten op de taak en eventuele taak afhankelijkheden moeten worden overwogen.  De eigenschap [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) kan worden opgegeven voor een taak voor het configureren van een actie voor afhankelijkheden en voor de taak.
 - Voor afhankelijkheden bepaalt [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) of de taken die afhankelijk zijn van de mislukte taak worden geblokkeerd of worden uitgevoerd.
 - Voor de taak bepaalt [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) of de mislukte taak naar de taak wordt uitgeschakeld, wordt beëindigd of ongewijzigd blijft.
+
+### <a name="task-command-line-failures"></a>Opdracht regel fouten taak
+
+Wanneer de opdracht regel van de taak wordt uitgevoerd, wordt uitvoer naar `stderr.txt` en `stdout.txt`geschreven. Daarnaast kan de toepassing schrijven naar toepassingsspecifieke logboek bestanden.
+
+Als het groeps knooppunt waarop een taak is uitgevoerd nog bestaat, kunnen de logboek bestanden worden verkregen en weer gegeven. De Azure Portal lijsten en kunnen bijvoorbeeld logboek bestanden voor een taak of een groeps knooppunt weer geven. Meerdere Api's staan ook toe dat taak bestanden worden weer gegeven en opgehaald, zoals [ophalen van taak](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
+
+Vanwege Pools en groeps knooppunten die regel matig tijdelijk zijn, worden de knoop punten voortdurend toegevoegd en verwijderd. het wordt aanbevolen om de logboek bestanden persistent te maken. [Taak uitvoer bestanden](https://docs.microsoft.com/azure/batch/batch-task-output-files) zijn een handige manier om logboek bestanden op te slaan in azure Storage.
+
+### <a name="output-file-failures"></a>Fouten in het uitvoer bestand
+Bij elke upload van het bestand schrijft batch twee logboek bestanden naar het reken knooppunt, `fileuploadout.txt` en `fileuploaderr.txt`. U kunt deze logboek bestanden controleren om meer te weten te komen over een specifieke fout. In gevallen waarin de upload van het bestand nooit is geslaagd, bijvoorbeeld omdat de taak zelf niet kan worden uitgevoerd, zijn deze logboek bestanden niet aanwezig.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

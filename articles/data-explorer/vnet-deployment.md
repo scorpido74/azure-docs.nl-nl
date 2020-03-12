@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer implementeren in uw Virtual Network (preview-versie)
+title: Azure Data Explorer implementeren in uw Virtual Network
 description: Meer informatie over het implementeren van Azure Data Explorer in uw Virtual Network
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851449"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096762"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Azure Data Explorer implementeren in uw Virtual Network (preview-versie)
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Azure Data Explorer implementeren in uw Virtual Network
 
 In dit artikel worden de resources beschreven die aanwezig zijn wanneer u een Azure Data Explorer-cluster implementeert in een aangepaste Azure-Virtual Network. Deze informatie helpt u bij het implementeren van een cluster in een subnet in uw Virtual Network (VNet). Zie [Wat is azure Virtual Network?](/azure/virtual-network/virtual-networks-overview) voor meer informatie over virtuele Azure-netwerken.
 
@@ -25,9 +25,6 @@ Azure Data Explorer ondersteunt de implementatie van een cluster in een subnet i
 * NSG-regels ( [netwerk beveiligings groep](/azure/virtual-network/security-overview) ) afdwingen op uw Azure Data Explorer-cluster verkeer.
 * Verbind uw on-premises netwerk met het subnet van Azure Data Explorer cluster.
 * Beveilig uw gegevens verbindings bronnen ([Event hub](/azure/event-hubs/event-hubs-about) en [Event grid](/azure/event-grid/overview)) met [service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview).
-
-> [!NOTE]
-> De Virtual Network-integratie en-implementatie bevindt zich in de preview-modus. Als u deze functie wilt inschakelen, opent u een [ondersteunings ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>Toegang tot uw Azure Data Explorer-cluster in uw VNet
 

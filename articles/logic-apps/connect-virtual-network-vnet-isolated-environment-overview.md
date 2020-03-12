@@ -5,23 +5,26 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 03/05/2020
-ms.openlocfilehash: a0330ae8e69691f431756e6ea9a3027e1ac07b1c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/12/2020
+ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303372"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127245"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
-Soms hebben uw Logic apps en integratie accounts toegang nodig tot beveiligde bronnen, zoals virtuele machines (Vm's) en andere systemen of services die zich in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md)bevinden. Als u deze toegang wilt instellen, kunt u [een ISE ( *Integration service Environment* ) maken](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Een ISE is een geïsoleerd exemplaar van de Logic Apps service dat gebruikmaakt van toegewezen bronnen en wordt afzonderlijk uitgevoerd op basis van de ' wereld wijde ' multi-tenant Logic Apps-service.
+Soms hebben uw Logic apps toegang nodig tot beveiligde bronnen, zoals virtuele machines (Vm's) en andere systemen of services die zich binnen een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md)bevinden. Als u deze toegang wilt instellen, kunt u [een ISE ( *Integration service Environment* ) maken](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Een ISE is een geïsoleerd exemplaar van de Logic Apps service dat gebruikmaakt van toegewezen bronnen en wordt afzonderlijk uitgevoerd op basis van de ' wereld wijde ' multi-tenant Logic Apps-service.
 
 Het uitvoeren van Logic apps in uw eigen afzonderlijke geïsoleerde instantie vermindert de invloed die andere Azure-tenants mogelijk hebben op de prestaties van uw apps, ook wel bekend als het [effect ' ruiserende neighbors '](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Een ISE biedt ook de volgende voor delen:
 
 * Uw eigen vaste IP-adressen, die worden gescheiden van de statische IP-adressen die worden gedeeld door de Logic apps in de multi tenant-service. U kunt ook één openbaar, statisch en voorspelbaar uitgaand IP-adres instellen om te communiceren met de doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op deze doel systemen in te stellen voor elke ISE.
 
 * Verhoogde limieten voor de uitvoerings duur, opslag behoud, door Voer, HTTP-aanvraag en time-outwaarden, bericht grootten en aangepaste connector aanvragen. Zie [limieten en configuratie voor Azure Logic apps](logic-apps-limits-and-config.md)voor meer informatie.
+
+> [!NOTE]
+> Sommige virtuele netwerken van Azure gebruiken privé-eind punten ([persoonlijke Azure-koppeling](../private-link/private-link-overview.md)) om toegang te bieden tot Azure PaaS-Services, zoals Azure Storage, Azure Cosmos DB of Azure SQL database, partner services of klanten services die worden gehost op Azure. Als uw Logic apps toegang nodig hebben tot virtuele netwerken die gebruikmaken van privé-eind punten, moet u deze Logic apps maken, implementeren en uitvoeren in een ISE.
 
 Wanneer u een ISE maakt, *injecteert* Azure of implementeert deze ISE in uw virtuele Azure-netwerk. U kunt deze ISE vervolgens gebruiken als de locatie voor de Logic apps en integratie accounts die toegang nodig hebben.
 
@@ -42,7 +45,7 @@ U kunt nog steeds connectors gebruiken die geen **core** -of **ISE** -label hebb
 > [!IMPORTANT]
 > Logic apps, ingebouwde triggers, ingebouwde acties en connectors die worden uitgevoerd in uw ISE, gebruiken een prijs plan dat verschilt van het prijs plan op basis van verbruik. Zie [Logic apps prijs model](../logic-apps/logic-apps-pricing.md#fixed-pricing)voor meer informatie. Zie [Logic apps prijzen](../logic-apps/logic-apps-pricing.md)voor prijs informatie.
 
-In dit overzicht vindt u meer informatie over hoe een ISE uw Logic apps en integratie accounts direct toegang geeft tot uw virtuele Azure-netwerk en de verschillen tussen een ISE en de multi tenant Logic Apps-service vergelijkt.
+In dit overzicht vindt u meer informatie over hoe een ISE uw Logic apps direct toegang geeft tot uw virtuele Azure-netwerk en de verschillen tussen een ISE en de multi tenant-Logic Apps service vergelijkt.
 
 <a name="difference"></a>
 
@@ -51,8 +54,6 @@ In dit overzicht vindt u meer informatie over hoe een ISE uw Logic apps en integ
 Wanneer u logische apps maakt en uitvoert in een ISE, krijgt u dezelfde gebruikers ervaringen en vergelijk bare mogelijkheden als de multi tenant-Logic Apps service. U kunt alle dezelfde ingebouwde triggers, acties en beheerde connectors gebruiken die beschikbaar zijn in de multi tenant-Logic Apps service. Sommige beheerde connectors bieden extra ISE-versies. Het verschil tussen ISE-connectors en niet-ISE-connectors bevindt zich in de locatie waar ze worden uitgevoerd en de labels die ze hebben in de ontwerp functie voor logische apps wanneer u werkt binnen een ISE.
 
 ![Connectors met en zonder labels in een ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
-
-
 
 * Bij ingebouwde triggers en acties wordt het **kern** label weer gegeven. Ze worden altijd uitgevoerd in dezelfde ISE als uw logische app. Beheerde connectors die het label **ISE** weer geven, worden ook uitgevoerd in dezelfde ISE als uw logische app.
 
@@ -129,8 +130,6 @@ U kunt integratie accounts gebruiken met Logic apps binnen een Integration servi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verbinding maken met virtuele netwerken van Azure vanuit geïsoleerde Logic apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [Artefacten toevoegen aan integratie service omgevingen](../logic-apps/add-artifacts-integration-service-environment-ise.md)
-* [Integratie service omgevingen beheren](../logic-apps/ise-manage-integration-service-environment.md)
+* [Verbinding maken met virtuele Azure-netwerken vanuit Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * Meer informatie over [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 * Meer informatie over de [integratie van virtuele netwerken voor Azure-Services](../virtual-network/virtual-network-for-azure-services.md)

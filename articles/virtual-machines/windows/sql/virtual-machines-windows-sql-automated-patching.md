@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b48ccede9ca3330d356fa75d4df34789e31eb916
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 292f3e8819f6f9f4b2989423814e02dfcfb4bfdb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350748"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127683"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automated Patching voor SQL Server in virtuele machines van Azure (Resource Manager)
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "75350748"
 Met de functie voor automatische patching wordt een onderhouds venster voor een virtuele Azure-machine met SQL Server tot stand gebracht. Geautomatiseerde updates kunnen alleen worden geïnstalleerd tijdens dit onderhoudsvenster. In SQL Server zorgt deze beperking ervoor dat systeemupdates en eventueel benodigd opnieuw opstarten plaatsvinden op het meest geschikte tijdstip voor de database. 
 
 > [!IMPORTANT]
-> Alleen Windows-en SQL Server updates die als **belang rijk** zijn gemarkeerd, worden geïnstalleerd. Andere SQL Server-updates, zoals cumulatieve updates, moeten handmatig worden geïnstalleerd. 
+> Alleen Windows-en SQL Server-updates die als **belang rijk** of **kritiek** zijn gemarkeerd, worden geïnstalleerd. Andere SQL Server updates, zoals service packs en cumulatieve updates die niet zijn gemarkeerd als **belang rijk** of **kritiek** , moeten hand matig worden geïnstalleerd. 
 
 Geautomatiseerd patchen is afhankelijk van de [extensie voor de SQL Server IaaS-agent](virtual-machines-windows-sql-server-agent-extension.md).
 

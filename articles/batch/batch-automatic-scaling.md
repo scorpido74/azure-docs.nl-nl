@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672113"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086255"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -128,7 +128,7 @@ U kunt de waarde van deze door de service gedefinieerde variabelen ophalen om aa
 | $NetworkInBytes |Het aantal binnenkomende bytes. |
 | $NetworkOutBytes |Het aantal uitgaande bytes. |
 | $SampleNodeCount |Het aantal reken knooppunten. |
-| $ActiveTasks |Het aantal taken dat kan worden uitgevoerd, maar nog niet is uitgevoerd. Het aantal $ActiveTasks omvat alle taken in de actieve status en waarvan is voldaan aan de afhankelijkheden. Taken die de actieve status hebben maar waarvan niet is voldaan aan de afhankelijkheden, worden uitgesloten van het $ActiveTasks aantal.|
+| $ActiveTasks |Het aantal taken dat kan worden uitgevoerd, maar nog niet is uitgevoerd. Het aantal $ActiveTasks omvat alle taken in de actieve status en waarvan is voldaan aan de afhankelijkheden. Taken die de actieve status hebben maar waarvan niet is voldaan aan de afhankelijkheden, worden uitgesloten van het $ActiveTasks aantal. Voor een taak met meerdere instanties bevat $ActiveTasks het aantal instanties dat op de taak is ingesteld.|
 | $RunningTasks |Het aantal taken in een uitvoerings status. |
 | $PendingTasks |De som van $ActiveTasks en $RunningTasks. |
 | $SucceededTasks |Het aantal taken dat is voltooid. |

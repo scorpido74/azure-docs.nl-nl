@@ -1,37 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Team Data Science Process
+summary: Leer werken met Team Data Science Process, een flexibele, iteratieve data science-methodologie voor een efficiënte manier voor predictive analytics-oplossingen en intelligente toepassingen.
 metadata:
   title: Documentatie voor Team Data Science Process
-  description: 'Leer werken met Team Data Science Process, een flexibele, iteratieve data science-methodologie die op een efficiënte manier predictive analytics-oplossingen en intelligente toepassingen biedt. TDSP helpt om de teamsamenwerking en het leerproces te verbeteren. Het bevat een distillatie van de best practices en structuren van Microsoft en andere bedrijven in deze branche die willen helpen om de implementatie van initiatieven op het gebied van data science te laten slagen. Het doel is bedrijven te helpen om de voordelen van hun analyseprogramma volledig te kunnen benutten.'
-  services: machine-learning
-  author: marktab
+  description: Leer werken met Team Data Science Process, een flexibele, iteratieve data science-methodologie voor een efficiënte manier voor predictive analytics-oplossingen en intelligente toepassingen.
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/10/2020
+  author: marktab
   ms.author: marktab
-abstract:
-  description: 'Het Team Data Science Process is een flexibele, iteratieve data science-methodologie die op een efficiënte manier predictive analytics-oplossingen en intelligente toepassingen biedt. TDSP helpt om de teamsamenwerking en het leerproces te verbeteren. Het bevat een distillatie van de best practices en structuren van Microsoft en andere bedrijven in deze branche die willen helpen om de implementatie van initiatieven op het gebied van data science te laten slagen. Het doel is bedrijven te helpen om de voordelen van hun analyseprogramma volledig te kunnen benutten.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Informatie over het Team Data Science Process:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">Overzicht</a>
-          - html: <a href="lifecycle">Levenscyclus</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over het gebruik van Team Data Science Process in verschillende scenario’s:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">Spark met PySpark en Scala</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">Hive met HDInsight Hadoop</a>
-          - html: <a href="walkthroughs-azure-data-lake">U-SQL met Azure Data Lake</a>
-          - html: '<a href="walkthroughs-sql-server">R, Python en T-SQL met SQL Server</a>'
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL en Python met SQL DW</a>
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79087380"
+landingContent:
+- title: Meer informatie over het proces
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Team Data Science Process?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Levenscyclus van het proces
+      url: lifecycle.md
+    - text: Inzicht in het bedrijf
+      url: lifecycle-business-understanding.md
+    - text: Gegevens ophalen
+      url: lifecycle-data.md
+- title: Een project plannen en ontwikkelen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Projectplanning
+      url: team-data-science-process-project-templates.md
+    - text: Flexibele ontwikkeling
+      url: agile-development.md

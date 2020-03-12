@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201778"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127569"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -159,7 +160,7 @@ Als gecertificeerde integratie partner helpt Liquit de overgang naar de cloud te
 
 Aanmelden VSI is een Windows-service provider voor virtueel bureau blad en micro soft partner die software voor het testen van toepassings prestaties in virtuele Windows-desktop omgevingen levert. Klanten die hun on-premises bedrijfs Services verplaatsen naar Windows Virtual Desktop, gebruiken aanmelden VSI Enter prise Edition om de optimale prestaties, schaal baarheid en beschik baarheid van Windows 10 Enter prise multi-session, Windows 10 Enter prise te evalueren en te onderhouden. Windows 7 is ingeschakeld met hun bedrijfs kritieke toepassingen.
 
-- [Ga naar de website van de partner](https://www.loginvsi.com).
+- [Ga naar de website van de partner](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Tricerat biedt een superieure oplossing voor afdruk beheer voor virtueel bureau 
 Met Tricerat is het afdrukken naadloos in het virtuele bureau blad van Windows en verder. Met Tricerat-software kunnen beheerders eenvoudig on-premises printers verbinden met de Cloud, waardoor het beheer van grote ondernemingen van traditionele omgevingen naar nieuwe, moderne werk ruimten kan worden uitgebreid.
 
 - [Ga naar de website van de partner](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>enorme limieten
+
+![logo voor enorme limieten](./media/partners/vast-limits.png)
+
+een grote limiet, het uberAgent-bedrijf, geeft inzicht in de implementaties van virtuele Windows-Bureau bladen. Er wordt software voor Enter prise IT gemaakt omdat IT-professionals denken en welke hulpprogram ma's ze nodig hebben. De producten van de IT-mede werkers helpen efficiënter door hen precies te laten weten wat ze nodig hebben om hun taken uit te voeren. niet meer, niet minder.
+
+uberAgent is een bewakings-en analyse product dat is ontworpen voor eind gebruikers die niet alleen gegevens verzamelen; het biedt klanten de informatie die van belang is. uberAgent heeft zijn eigen metrische gegevens, met belang rijke aspecten van de gebruikers ervaring, de prestaties van toepassingen en Endpoint Security, waarmee u alles wat u nodig hebt om te weten te komen over uw virtuele bureau blad-Vm's in Windows zonder dat dit van invloed is op de gebruikers densiteit van uw systemen. uberAgent vereenvoudigt het oplossen van problemen, helpt bij het verg Roten/verkleinen en biedt uitgebreide informatie die essentieel is voor informatie beveiliging.
+
+- [Ga naar de partner website](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272883"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126651"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
@@ -39,7 +39,7 @@ Als de gast gebruiker de fout bericht ' header is te lang ' ziet, kan hij of zij
 
 Teams bieden volledige ondersteuning voor Google gast-gebruikers op alle apparaten. Google-gebruikers kunnen zich aanmelden bij teams vanaf een gemeen schappelijk eind punt zoals `https://teams.microsoft.com`.
 
-De algemene eind punten van andere toepassingen bieden mogelijk geen ondersteuning voor Google-gebruikers. Google gast gebruikers moeten zich aanmelden met een koppeling die uw Tenant gegevens bevat. Hier volgen enkele voor beelden:
+De algemene eind punten van andere toepassingen bieden mogelijk geen ondersteuning voor Google-gebruikers. Google gast gebruikers moeten zich aanmelden met een koppeling die uw Tenant gegevens bevat. Hier volgen enkele voorbeelden:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
@@ -55,25 +55,24 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
    
    ![Scherm opname met een nieuwe project pagina voor Google](media/google-federation/google-new-project.png)
 
-3. Zorg ervoor dat het nieuwe project is geselecteerd in het menu Project. Open vervolgens het menu in de linkerbovenhoek en selecteer **api's & Services** > **referenties**.
+3. Zorg ervoor dat het nieuwe project is geselecteerd in het menu Project. Selecteer vervolgens onder **api's & Services**het **venster OAuth-toestemming**.
 
-   ![Scherm afbeelding met de optie voor de Google API-referenties](media/google-federation/google-api.png)
- 
-4. Kies het tabblad het OAuth-dialoog **venster voor toestemming** en voer een **toepassings naam**in. (Behoud de andere instellingen.)
+4. Selecteer **extern**en selecteer vervolgens **maken**. 
+5. Voer op het **scherm OAuth-toestemming**een **toepassings naam**in. (Behoud de andere instellingen.)
 
    ![Scherm opname van de Google OAuth-toestemming scherm optie](media/google-federation/google-oauth-consent-screen.png)
 
-5. Ga naar de sectie **geautoriseerde domeinen** en voer microsoftonline.com in.
+6. Ga naar de sectie **geautoriseerde domeinen** en voer microsoftonline.com in.
 
    ![Scherm opname van de sectie met gemachtigde domeinen](media/google-federation/google-oauth-authorized-domains.png)
 
-6. Selecteer **Opslaan**.
+7. Selecteer **Opslaan**.
 
-7. Kies het tabblad **referenties** . Kies in het menu **referenties maken** de optie **OAuth-client-id**.
+8. **Referenties**kiezen. Kies in het menu **referenties maken** de optie **OAuth-client-id**.
 
    ![Scherm opname van de opties voor het maken van referenties met Google Api's](media/google-federation/google-api-credentials.png)
 
-8. Onder **toepassings type**kiest u **Webtoepassing**en voert u onder **geautoriseerde omleidings-uri's**de volgende uri's in:
+9. Onder **toepassings type**kiest u **Webtoepassing**en voert u onder **geautoriseerde omleidings-uri's**de volgende uri's in:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waarbij `<directory id>` uw directory-ID is)
    
@@ -82,7 +81,7 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
 
    ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
 
-9. Selecteer **Maken**. Kopieer de client-ID en het client geheim dat u gebruikt wanneer u de ID-provider toevoegt in de Azure AD-Portal.
+10. Selecteer **Maken**. Kopieer de client-ID en het client geheim dat u gebruikt wanneer u de ID-provider toevoegt in de Azure AD-Portal.
 
    ![Scherm opname met de OAuth-client-ID en het client geheim](media/google-federation/google-auth-client-id-secret.png)
 

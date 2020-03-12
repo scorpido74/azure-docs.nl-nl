@@ -1,17 +1,17 @@
 ---
-title: Azure-activiteiten logboek verzamelen met Diagnostische instellingen (preview)-Azure Monitor | Microsoft Docs
+title: Azure-activiteiten logboek met Diagnostische instellingen verzamelen-Azure Monitor | Microsoft Docs
 description: Gebruik Diagnostische instellingen om Azure-activiteiten logboeken door te sturen naar Azure Monitor-logboeken, Azure Storage of Azure Event Hubs.
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670335"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096904"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Bijwerken naar Azure-activiteiten logboek verzamelen en exporteren
 Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. De methode voor het verzenden van activiteiten logboek vermeldingen naar [een event hub-of opslag account](activity-log-export.md) of naar een [log Analytics werk ruimte](activity-log-collect.md) is gewijzigd voor het gebruik van [Diagnostische instellingen](diagnostic-settings.md). In dit artikel wordt het verschil tussen de methoden beschreven en wordt uitgelegd hoe u verouderde instellingen in de voor bereiding kunt wissen om de diagnostische instellingen te wijzigen.

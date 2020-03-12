@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5bb480181c244ee03b6ec9c2a2f5f7783c72f394
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: bdc0af39e3f3a06da6c06ddc384efe44dd678ea3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251406"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087923"
 ---
 # <a name="media-services-concepts"></a>Media Services concepten
 
@@ -26,7 +26,9 @@ In dit onderwerp vindt u een kort overzicht van Azure Media Services terminologi
 Bekijk de basisconcepten die worden beschreven in de volgende onderwerpen voordat u start met de ontwikkeling.
 
 > [!NOTE]
-> U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren), [informatie over het openen van api's ophalen](access-api-portal.md). Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3-terminologie
 

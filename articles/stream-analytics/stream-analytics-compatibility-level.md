@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201795"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087852"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteitsniveau voor Azure Stream Analytics-taken
 
@@ -25,11 +25,9 @@ Compatibiliteitsniveau bepaalt het runtimegedrag van een stream analytics-taak.
 
 Azure Stream Analytics ondersteunt momenteel drie compatibiliteits niveaus:
 
-* 1,0-vorig gedrag
-* 1,1-standaard gedrag
+* 1,0-oorspronkelijk compatibiliteits niveau, geïntroduceerd tijdens de algemene Beschik baarheid van Azure Stream Analytics enkele jaren geleden.
+* 1,1-vorig gedrag
 * 1,2-nieuwste gedrag met de meest recente verbeteringen
-
-Het oorspronkelijke 1,0-compatibiliteits niveau werd geïntroduceerd tijdens de algemene Beschik baarheid van Azure Stream Analytics enkele jaren geleden.
 
 Wanneer u een nieuwe Stream Analytics taak maakt, is dit een best practice om deze te maken met behulp van het meest recente compatibiliteits niveau. Start uw taak ontwerp dat afhankelijk is van het nieuwste gedrag, zodat u later extra wijzigingen en complexiteit kunt voor komen.
 
