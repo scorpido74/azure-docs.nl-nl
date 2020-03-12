@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770306"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082911"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen
 
@@ -34,7 +34,7 @@ U kunt bijvoorbeeld het CPU-percentage en het percentage geheugengebruik van uw 
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bepalen of uitgebreide metrische gegevens zijn ingeschakeld
 
-1. Meld u aan bij Azure Portal op https://portal.azure.com.
+1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Selecteer onder **Virtuele machines**een VM en selecteer vervolgens onder **Controle** **Metrische gegevens**. Er wordt een lijst met beschikbare metrische gegevens weergegeven.
 3. Selecteer enkele metrische gegevens en u ziet een grafiek met die gegevens.  
     ![Voorbeeld van metrische gegevens – CPU-percentage van host](./media/azure-vm-extended-metrics/metric01.png)
