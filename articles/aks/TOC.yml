@@ -117,18 +117,12 @@
   items:
     - name: Clusterbewerkingen
       items:
-        - name: Een AKS-cluster maken
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: De schaal van een AKS-cluster aanpassen
           href: scale-cluster.md
         - name: Een AKS-cluster upgraden
           href: upgrade-cluster.md
         - name: OS-updates van knooppunt verwerken
           href: node-updates-kured.md
-        - name: Een AKS-cluster verwijderen
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: ACR integreren met een AKS-cluster
           href: cluster-container-registry-integration.md
         - name: Virtuele knooppunten maken
