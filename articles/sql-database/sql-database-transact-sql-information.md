@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208815"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Verschillen in Transact-SQL oplossen tijdens de migratie naar SQL Database
 
@@ -36,9 +36,9 @@ Zie [Azure SQL database functie vergelijking](sql-database-features.md)voor een
 
 De belangrijkste DDL-instructies (Data Definition Language) zijn beschikbaar, maar sommige DDL-instructies hebben uitbrei dingen met betrekking tot de plaatsing van schijven en niet-ondersteunde functies.
 
-- CREATE and ALTER data base-instructies hebben meer dan drie dozijn opties. De instructies omvatten opties voor plaatsing, FILESTREAM en Service Broker die alleen van toepassing zijn op SQL Server. Dit is mogelijk niet van belang als u data bases maakt voordat u migreert, maar als u T-SQL-code migreert die data bases maakt, moet u [Create Data Base (Azure SQL database)](https://msdn.microsoft.com/library/dn268335.aspx) vergelijken met de SQL Server-syntaxis bij [Create data base (SQL Server Transact-SQL) ](https://msdn.microsoft.com/library/ms176061.aspx)om ervoor te zorgen dat alle opties die u gebruikt, worden ondersteund. CREATE data base for Azure SQL Database heeft ook service doelstelling-en elastische schaal opties die alleen van toepassing zijn op SQL Database.
+- CREATE and ALTER data base-instructies hebben meer dan drie dozijn opties. De instructies omvatten opties voor plaatsing, FILESTREAM en Service Broker die alleen van toepassing zijn op SQL Server. Dit is mogelijk niet van belang als u data bases maakt voordat u migreert, maar als u T-SQL-code migreert die data bases maakt, moet u [Create Data Base (Azure SQL database)](https://msdn.microsoft.com/library/dn268335.aspx) vergelijken met de SQL Server-syntaxis bij [Create data base (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) om ervoor te zorgen dat alle opties die u gebruikt, worden ondersteund. CREATE data base for Azure SQL Database heeft ook service doelstelling-en elastische schaal opties die alleen van toepassing zijn op SQL Database.
 - De instructie CREATE en ALTER TABLE heeft bestands tabel opties die niet kunnen worden gebruikt op SQL Database omdat FILESTREAM niet wordt ondersteund.
-- De instructies CREATE en ALTER login worden ondersteund, maar SQL Database biedt niet alle opties. Om uw data base draagbaarer te maken, wordt SQL Database aanbevolen data base-gebruikers in plaats van aanmeldingen te gebruiken wanneer dat mogelijk is. Zie voor meer informatie [aanmelden maken/wijzigen](https://msdn.microsoft.com/library/ms189828.aspx) en [toegang tot data bases beheren en verlenen](sql-database-manage-logins.md).
+- De instructies CREATE en ALTER login worden ondersteund, maar SQL Database biedt niet alle opties. Om uw data base draagbaarer te maken, wordt SQL Database aanbevolen data base-gebruikers in plaats van aanmeldingen te gebruiken wanneer dat mogelijk is. Zie voor meer informatie [login maken/wijzigen](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) en [aanmeldingen en gebruikers beheren](sql-database-manage-logins.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL-syntaxis wordt niet ondersteund in Azure SQL Database
 

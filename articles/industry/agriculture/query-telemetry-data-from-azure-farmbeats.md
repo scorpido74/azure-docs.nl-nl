@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: 2786519bfc54b39c986ba57c78d9d6409a596351
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b871ccb5cb110cfc6154a415059541c4b94f4106
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129782"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137302"
 ---
 # <a name="query-ingested-telemetry-data"></a>Query's opnemen in opgenomen telemetriegegevens
 
@@ -108,8 +108,8 @@ Telemetriegegevens worden ontvangen op een EventHub en vervolgens verwerkt en ge
 
 Volg de onderstaande stappen om gegevens op TSI te visualiseren
 
-1. Ga naar Azure Portal-> FarmBeats DataHub resource groep-> Klik op Time Series Insights Environment (TSI-xxxx)-> beleid voor gegevens toegang. Voeg een gebruiker toe met toegang voor lezer of Inzender.
-2. Ga naar de pagina overzicht van Time Series Insights omgeving (TSI-xxxx) en klik op de URL van de Time Series Insights Explorer. U kunt nu de opgenomen telemetrie visualiseren.
+1. Ga naar Azure Portal-> FarmBeats DataHub resource groep-> Selecteer Time Series Insights Environment (TSI-xxxx)-> beleid voor gegevens toegang. Voeg een gebruiker toe met toegang voor lezer of Inzender.
+2. Ga naar de pagina overzicht van Time Series Insights omgeving (TSI-xxxx) en selecteer de URL van de Time Series Insights Explorer. U kunt nu de opgenomen telemetrie visualiseren.
 
 Naast het opslaan, doorzoeken en visualisatie van telemetrie, biedt TSI ook integratie met een Power BI dash board. Meer informatie [vindt u hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217228"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Aanbevolen procedures voor het beveiligen van PaaS-data bases in azure
 
@@ -68,7 +68,7 @@ SQL Database standaard IP-adres beperkingen van de bron bieden toegang vanaf elk
 
 Zie voor meer informatie over Azure SQL-firewall en IP-beperkingen:
 
-- [Toegangs beheer Azure SQL Database en SQL Data Warehouse](../../sql-database/sql-database-control-access.md)
+- [Toegangs beheer Azure SQL Database en SQL Data Warehouse](../../sql-database/sql-database-manage-logins.md)
 - [Firewall regels voor Azure SQL Database en SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md)
 
 

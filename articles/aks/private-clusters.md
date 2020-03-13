@@ -4,100 +4,23 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944206"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205169"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
 In een particulier cluster heeft het besturings vlak of de API-server interne IP-adressen die zijn gedefinieerd in het [RFC1918-adres toewijzing voor privé-Internets](https://tools.ietf.org/html/rfc1918) . Door gebruik te maken van een persoonlijk cluster, kunt u ervoor zorgen dat het netwerk verkeer tussen uw API-server en uw knooppunt groepen alleen op het particuliere netwerk blijft.
 
 Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes service (AKS) beheerd Azure-abonnement. Het cluster of de knooppunt groep van een klant bevindt zich in het abonnement van de klant. De server en het cluster of de knooppunt groep kunnen met elkaar communiceren via de [Azure Private Link-service][private-link-service] in het virtuele netwerk van de API-server en een persoonlijk eind punt dat wordt weer gegeven in het subnet van het AKS-cluster van de klant.
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service en worden op een opt-basis aangeboden. Previews worden aangeboden *als is* en *als beschikbaar* en zijn uitgesloten van de Service Level Agreement (Sla) en beperkte garantie. AKS-previews worden gedeeltelijk gedekt *door de klant* ondersteuning. De functies zijn daarom niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> * [AKS-ondersteunings beleid](support-policies.md)
-> * [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
-
 ## <a name="prerequisites"></a>Vereisten
 
-* De Azure CLI-versie 2.0.77 of hoger en de Azure CLI AKS preview-extensie versie 0.4.18
+* De Azure CLI-versie 2.2.0 of hoger
 
-## <a name="currently-supported-regions"></a>Momenteel ondersteunde regio's
-
-* Australië - oost
-* Australië - zuidoost
-* Brazilië - zuid
-* Canada - midden
-* Canada - oost
-* Cenral
-* Azië - oost
-* VS - oost
-* VS - oost 2
-* VS-Oost 2 EUAP
-* Frankrijk - centraal
-* Duitsland - noord
-* Japan - oost
-* Japan - west
-* Korea - centraal
-* Korea - zuid
-* VS - noord-centraal
-* Europa - noord
-* Europa - noord
-* VS - zuid-centraal
-* Verenigd Koninkrijk Zuid
-* Europa -west
-* VS - west
-* VS - west 2
-* VS - oost 2
-
-## <a name="currently-supported-availability-zones"></a>Momenteel ondersteunde Beschikbaarheidszones
-
-* VS - centraal
-* VS - oost
-* VS - oost 2
-* Frankrijk - centraal
-* Japan - oost
-* Europa - noord
-* Azië - zuidoost
-* Verenigd Koninkrijk Zuid
-* Europa -west
-* VS - west 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
-
-Als u persoonlijke clusters wilt gebruiken, hebt u de Azure CLI AKS preview-extensie versie 0.4.18 of hoger nodig. Installeer de Azure CLI AKS preview-extensie met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de volgende opdracht [AZ extension update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunt u standaard instellingen gebruiken voor alle AKS-clusters die in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-Het kan enkele minuten duren voordat de registratie status als *geregistreerd*wordt weer gegeven. U kunt de status controleren met behulp van de volgende opdracht [AZ Feature List][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-Wanneer de status is geregistreerd, vernieuwt u de registratie van de resource provider *micro soft. container service* met de volgende opdracht [AZ provider REGI ster][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>Een persoonlijk AKS-cluster maken
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -159,6 +82,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 9. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
 
 ## <a name="dependencies"></a>Afhankelijkheden  
+
 * De service private link wordt alleen ondersteund op standaard Azure Load Balancer. Basis Azure Load Balancer wordt niet ondersteund.  
 * Als u een aangepaste DNS-server wilt gebruiken, implementeert u een AD-server met DNS om door te sturen naar deze IP-168.63.129.16
 
@@ -173,7 +97,6 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 * Geen ondersteuning voor het converteren van bestaande AKS-clusters naar particuliere clusters
 * Als u het persoonlijke eind punt in het subnet van de klant verwijdert of wijzigt, werkt het cluster niet meer. 
 * Azure Monitor voor containers Live-gegevens wordt momenteel niet ondersteund.
-* *Uw eigen DNS-server* wordt momenteel niet ondersteund.
 
 
 <!-- LINKS - internal -->

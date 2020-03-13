@@ -4,11 +4,11 @@ description: Wanneer u Azure delegated resource management gebruikt, is het bela
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456880"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270704"
 ---
 # <a name="recommended-security-practices"></a>Aanbevolen beveiligingsprocedures
 
@@ -28,12 +28,12 @@ Wanneer u uw machtigingen structuur maakt, moet u ervoor zorgen dat u het princi
 
 U kunt bijvoorbeeld een structuur als volgt gebruiken:
 
-|Groepsnaam  |Type  |principalId  |Roldefinitie ophalen  |Roldefinitie-ID  |
+|Groeps naam  |Type  |principalId  |Roldefinitie  |Roldefinitie-ID  |
 |---------|---------|---------|---------|---------|
-|Architecten     |Gebruikersgroep         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ontwerpers     |Gebruikersgroep         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Beoordeling     |Gebruikersgroep         |\<principalId\>         |Lezer         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM-specialisten     |Gebruikersgroep         |\<principalId\>         |Inzender voor VM'S         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Service Principal Name (SPN)         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Automatisering     |Service Principal Name (SPN)         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Wanneer u deze groepen hebt gemaakt, kunt u indien nodig gebruikers toewijzen. Voeg alleen de gebruikers toe die echt toegang moeten hebben. Zorg ervoor dat u het groepslid maatschap regel matig controleert en alle gebruikers verwijdert die niet meer geschikt of nood zakelijk zijn om op te nemen.
 

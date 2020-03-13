@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882110"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238487"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL-API-resources beheren met Power shell
 
-In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB resources, waaronder account, Data Base, container en door voer. Het beheer van Azure Cosmos DB wordt rechtstreeks door de AzResource-cmdlet aan de Azure Cosmos DB resource Provider verwerkt. Als u alle eigenschappen wilt weer geven die kunnen worden beheerd met behulp van Power shell voor de resource provider van Azure Cosmos DB, raadpleegt u [Azure Cosmos DB resource provider-schema](/azure/templates/microsoft.documentdb/allversions)
+In de volgende handleiding wordt beschreven hoe u PowerShell kunt gebruiken voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB-resources, waaronder accounts, databases, containers en doorvoer. Beheer van Azure Cosmos DB wordt via de AzResource-cmdlet rechtstreeks uitgevoerd door de Azure Cosmos DB-resourceprovider. Als u alle eigenschappen wilt weer geven die kunnen worden beheerd met behulp van Power shell voor de resource provider van Azure Cosmos DB, raadpleegt u [Azure Cosmos DB resource provider-schema](/azure/templates/microsoft.documentdb/allversions)
 
 Voor meerdere platform beheer van Azure Cosmos DB kunt u [Azure cli](manage-with-cli.md), de [REST API][rp-rest-api]of de [Azure Portal](create-sql-api-dotnet.md#create-account)gebruiken.
 
@@ -27,7 +27,7 @@ Voor meerdere platform beheer van Azure Cosmos DB kunt u [Azure cli](manage-with
 Volg de instructies in het [installeren en configureren van Azure PowerShell][powershell-install-configure] om uw Azure-account in Power shell te installeren en u aan te melden.
 
 * Als u de volgende opdrachten wilt uitvoeren zonder dat de gebruiker om bevestiging wordt gevraagd, voegt u de vlag `-Force` toe aan de opdracht.
-* De volgende opdrachten zijn synchroon.
+* De volgende opdrachten worden synchroon.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-accounts
 
@@ -243,7 +243,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="list-keys"></a>Lijst met account sleutels
 
-Wanneer u een Azure Cosmos DB account maakt, genereert de service twee hoofd toegangs sleutels die kunnen worden gebruikt voor verificatie wanneer het Azure Cosmos DB-account wordt geopend. Met behulp van twee toegangs sleutels kunt Azure Cosmos DB de sleutels opnieuw genereren zonder onderbreking van uw Azure Cosmos DB-account. Alleen-lezen sleutels voor verificatie van alleen-lezen-bewerkingen zijn ook beschikbaar. Er zijn twee sleutels voor lezen/schrijven (primair en secundair) en twee alleen-lezen sleutels (primair en secundair).
+Wanneer u een Azure Cosmos DB-account maakt, genereert de service twee master toegangssleutels die kunnen worden gebruikt voor verificatie wanneer het Azure Cosmos DB-account wordt geopend. Door twee toegangssleutels, kunt Azure Cosmos DB u de sleutels zonder onderbreking naar uw Azure Cosmos DB-account opnieuw genereren. Alleen-lezensleutels voor het verifiëren van alleen-lezen bewerkingen zijn ook beschikbaar. Er zijn twee sleutels voor lezen / schrijven (primaire en secundaire) en twee sleutels voor alleen-lezen (primaire en secundaire).
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -261,7 +261,7 @@ Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 
 ### <a id="list-connection-strings"></a>Verbindings reeksen weer geven
 
-Voor MongoDB-accounts kan de connection string voor het verbinden van uw MongoDB-app met het database account worden opgehaald met behulp van de volgende opdracht.
+Voor MongoDB-accounts, kan de verbindingsreeks voor uw MongoDB-app verbinden met account van de database worden opgehaald met de volgende opdracht.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account

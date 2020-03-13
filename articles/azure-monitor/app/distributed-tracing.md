@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669587"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136737"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is gedistribueerde tracering?
 
@@ -38,7 +38,7 @@ De Application Insights Sdk's voor .NET, .NET core, Java, node. js en Java scrip
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (preview-versie)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt tracerings informatie automatisch verzameld voor populaire frameworks, Bibliotheken en technologieën door de auto-Collector van de SDK-afhankelijkheden. De volledige lijst met ondersteunde technologieën is beschikbaar in [de documentatie voor het automatisch verzamelen van afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -48,7 +48,7 @@ Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt t
 
 Naast de Application Insights Sdk's ondersteunt Application Insights ook gedistribueerde tracering via [Opentellingen](https://opencensus.io/). Opentelling is een open source, leverancier-neutraal, één distributie van bibliotheken voor het verzamelen van metrische gegevens en gedistribueerde tracering voor services. Daarnaast kan de open source-community gedistribueerde tracering inschakelen met populaire technologieën zoals redis, memcached of MongoDB. [Micro soft werkt samen met Opentellingen met verschillende andere bewakings-en Cloud partners](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-[Python (preview-versie)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 De opentellings website houdt API-referentie documentatie voor [python](https://opencensus.io/api/python/trace/usage.html) en [Go](https://godoc.org/go.opencensus.io), evenals verschillende hand leidingen voor het gebruik van opentellingen. 
 

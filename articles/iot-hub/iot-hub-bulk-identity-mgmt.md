@@ -1,5 +1,5 @@
 ---
-title: Export van Azure IoT Hub-apparaat-id's importeren | Microsoft Docs
+title: Importeren/exporteren van Azure IoT Hub apparaat-id's | Microsoft Docs
 description: De Azure IoT Service SDK gebruiken om bulk bewerkingen uit te voeren op het identiteits register om apparaat-id's te importeren en exporteren. Met import bewerkingen kunt u de apparaat-id's in bulk maken, bijwerken en verwijderen.
 author: robinsh
 manager: philmea
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429261"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218420"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub apparaat-id's in bulk importeren en exporteren
 
@@ -26,7 +26,6 @@ Import-en export bewerkingen worden uitgevoerd in de context van *taken* waarmee
 De **RegistryManager** -klasse bevat de methoden **ExportDevicesAsync** en **ImportDevicesAsync** die gebruikmaken van het **project** Framework. Met deze methoden kunt u het geheel van een IoT hub-identiteits register exporteren, importeren en synchroniseren.
 
 In dit onderwerp wordt beschreven hoe u de **RegistryManager** -klasse en het **taak** systeem gebruikt voor het uitvoeren van bulksgewijs importeren en exporteren van apparaten naar en van het identiteits register van een IOT-hub. U kunt ook de Azure IoT Hub Device Provisioning Service gebruiken voor het inschakelen van Zero-Touch, just-in-time inrichting naar een of meer IoT-hubs zonder menselijke tussen komst. Zie de documentatie van de [inrichtings service](/azure/iot-dps)voor meer informatie.
-
 
 ## <a name="what-are-jobs"></a>Wat zijn taken?
 

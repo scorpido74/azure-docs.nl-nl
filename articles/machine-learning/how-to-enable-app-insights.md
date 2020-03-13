@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 11/12/2019
-ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/12/2020
+ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268485"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136190"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen. Naast het verzamelen van de invoer gegevens en het antwoord van een eind punt kunt u het volgende controleren:
+In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen via 
+* [Python SDK voor Azure Machine Learning](#python)
+* [Azure machine learning Studio](#studio) op https://ml.azure.com
+
+Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt kunt u het volgende controleren:
 
 * Aanvraag tarieven, reactie tijden en fout tarieven
 * Afhankelijkheids tarieven, reactie tijden en fout percentages
@@ -31,9 +35,10 @@ In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen di
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
+* Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
 
 * Een Azure Machine Learning-werkruimte en een lokale map met uw scripts en de Azure Machine Learning-SDK voor Python geïnstalleerd. Zie [een ontwikkel omgeving configureren](how-to-configure-environment.md) voor meer informatie over het verkrijgen van deze vereisten.
+
 * Een getrainde machine learning-model worden toegepast op Azure Kubernetes Service (AKS) of Azure Container exemplaar (ACI). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md)
 
 ## <a name="web-service-metadata-and-response-data"></a>Meta gegevens en antwoord van de webservice
@@ -42,6 +47,8 @@ In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen di
 > Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden alleen de meest recente uitvoer van het model vastgelegd. 
 
 De meta gegevens en het antwoord op de service-die overeenkomen met de meta gegevens van de webservice en de voor spellingen van het model, worden vastgelegd in de Azure-toepassing Insights-traceringen onder het bericht `"model_data_collection"`. U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
+
+<a name="python"></a>
 
 ## <a name="use-python-sdk-to-configure"></a>Python-SDK gebruiken om te configureren 
 
@@ -86,11 +93,27 @@ Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
 <service_name>.update(enable_app_insights=False)
 ```
 
+<a name="studio"></a>
+
+## <a name="use-azure-machine-learning-studio-to-configure"></a>Azure Machine Learning Studio gebruiken om te configureren
+
+U kunt ook Azure-toepassing Insights inschakelen vanuit Azure Machine Learning Studio wanneer u klaar bent om uw model te implementeren met behulp van de volgende stappen.
+
+1. Meld u aan bij uw werk ruimte op https://ml.azure.com/
+1. Ga naar **modellen** en selecteer welk model u wilt implementeren
+1. Selecteer **+ implementeren**
+1. Het formulier **model implementeren** invullen
+1. Het menu **Geavanceerd** uitvouwen
+
+    ![Formulier implementeren](./media/how-to-enable-app-insights/deploy-form.png)
+1. Selecteer **Application Insights diagnose en gegevens verzameling inschakelen**
+
+    ![App Insights inschakelen](./media/how-to-enable-app-insights/enable-app-insights.png)
 ## <a name="evaluate-data"></a>Gegevens evalueren
 De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.
 Om dit te bekijken:
 
-1. Ga in [Azure machine learning Studio](https://ml.azure.com) naar uw Azure machine learning-werk ruimte en klik op Application Insights koppeling
+1. Ga in de [Azure Portal](https://ms.portal.azure.com/) naar uw Azure machine learning-werk ruimte en klik op de koppeling Application Insights
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

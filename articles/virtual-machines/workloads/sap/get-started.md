@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be403815838233350929c7d4ca0eed979d7dfa8c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 27fdf966f99ac2cba394515cb654ed74178d6673
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080322"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137642"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -43,7 +43,7 @@ Als u specifieke vragen hebt, gaat u naar specifieke documenten of stromen in de
 - Welke SAP-implementatie scenario's worden ondersteund met Azure Vm's en HANA grote instanties. Informatie over de ondersteunde scenario's vindt u in de documenten:
     - [SAP-workload op door Azure virtual machine ondersteunde scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [Ondersteunde scenario's voor HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
-- Wat Azure-Services, Azure VM-typen en Azure-opslag zijn beschikbaar in de verschillende Azure-regio's. Controleer de site [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/) 
+- Wat Azure-Services, Azure VM-typen en Azure Storage-services zijn beschikbaar in de verschillende Azure-regio's. Controleer de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA op Azure (grote exemplaren)
@@ -110,6 +110,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingslogboek
+- 03/11/2020: wijziging in [SAP-werk belasting op door Azure virtual machine ondersteunde scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) om meerdere data bases per DBMS-exemplaar te verduidelijken
+- 03/11/2020: wijziging in [Azure virtual machines planning en implementatie voor SAP NetWeaver uitleg van](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) de virtuele machines van de eerste en tweede generatie
 - 03/10/2020: wijziging in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om echte bestaande doorvoer limieten van ANF te verduidelijken
 - 03/09/2020: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge Beschik baarheid voor SAP NetWeaver op azure vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [hoge Beschik baarheid voor NFS op Azure-vm's in Suse Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), het [instellen van pacemaker op SuSE Linux Enterprise Server in azure, een](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) [hoge Beschik baarheid van IBM Db2 LUW op Azure-vm's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)in [Hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) en [hoge Beschik baarheid voor SAP NetWeaver op Azure VM'S in de RHEL-hand leiding voor multi-sid](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) voor het bijwerken van cluster resources met resource agent Azure-lb 
 - 03/05/2020: structuur wijzigingen en wijzigingen in de inhoud voor Azure-regio's en Azure virtual machines in [azure virtual machines planning en implementatie voor SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

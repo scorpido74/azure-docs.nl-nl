@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297837"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138940"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Meld u aan bij uw accounts met behulp van de app Microsoft Authenticator
 
@@ -112,7 +112,7 @@ Op een iOS-apparaat:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Meld u aan met twee ledige verificatie voor uw account
 
-Voor de standaard twee ledige verificatie methode moet u uw gebruikers naam en wacht woord invoeren in het apparaat waarmee u zich aanmeldt en vervolgens kiezen of de Microsoft Authenticator app Microsoft Authenticator app ontvangt. Op een Android-apparaat kunt u deze verificatie codes vinden op het scherm accounts. Op een iOS-apparaat kunt u deze verificatie codes vinden in het scherm **accounts** of in de weer gave volledig scherm van een account, afhankelijk van het type account. U schakelt twee ledige verificatie voor uw account in als onderdeel van het proces om het account toe te voegen aan de app Microsoft Authenticator.
+Voor de standaard twee ledige verificatie methode moet u uw gebruikers naam en wacht woord invoeren op het apparaat waarmee u zich aanmeldt. Vervolgens opent u uw Microsoft Authenticator-app en typt u de wille keurig gegenereerde code voor uw account in het vak **code invoeren** . Op een Android-apparaat kunt u deze verificatie codes vinden op het scherm **accounts** . Op een iOS-apparaat kunt u deze verificatie codes vinden op het scherm **accounts** of in de weer gave volledig scherm van een account, afhankelijk van het type account. U schakelt twee ledige verificatie voor uw account in als onderdeel van het proces om het account toe te voegen aan de app Microsoft Authenticator.
 
 >[!Note]
 >Als u uw werk-of school account of uw persoonlijke account niet ziet op het scherm **accounts** van de app Microsoft Authenticator, betekent dit dat u het account niet hebt toegevoegd aan de app Microsoft Authenticator. Zie [uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md) of [uw persoonlijke accounts toevoegen](user-help-auth-app-add-personal-ms-account.md)om uw account toe te voegen.

@@ -9,11 +9,11 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250411"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Een schijf toevoegen aan een virtuele Linux-machine
 In dit artikel wordt beschreven hoe u een permanente schijf aan uw virtuele machine koppelt, zodat u uw gegevens kunt bewaren, zelfs als uw virtuele machine opnieuw wordt ingericht door onderhoud of het wijzigen van de grootte.

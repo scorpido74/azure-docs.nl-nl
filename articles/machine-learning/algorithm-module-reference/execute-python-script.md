@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037058"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140787"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-Nadat de pijp lijn is verzonden, kunt u een voor beeld van de afbeelding bekijken in het rechterdeel venster van de module ![geüploade-installatie kopie](media/module/upload-image-in-python-script.png)
+Nadat de pijp lijn is verzonden, kunt u een voor beeld van de afbeelding in het rechter paneel van de module bekijken
+
+[!div class="mx-imgBorder"]
+![geüploade-installatie kopie](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Het configureren van een script voor het uitvoeren van python
 
@@ -132,7 +135,7 @@ De **script module python uitvoeren** bevat een voor beeld van python-code die u
 
     ![Python-invoer toewijzing uitvoeren](media/module/python-module.png)
 
-4. Als u nieuwe Python-pakketten of-code wilt toevoegen, voegt u het zip-bestand toe dat deze aangepaste resources bevat in de **script bundel**. De invoer voor de **script bundel** moet een zip-bestand zijn dat is geüpload naar uw werk ruimte als een dataset van het bestands type. 
+4. Als u nieuwe Python-pakketten of-code wilt toevoegen, voegt u het zip-bestand toe dat deze aangepaste resources bevat in de **script bundel**. De invoer voor de **script bundel** moet een zip-bestand zijn dat is geüpload naar uw werk ruimte als een dataset van het bestands type. U kunt de gegevensset uploaden op de Asset-pagina **gegevens sets** en u kunt de module gegevensset slepen en neerzetten vanuit de lijst **mijn gegevens sets** in de structuur van de module voor ontwerpen in Designer. 
 
     Elk bestand in het geüploade gezipte archief kan worden gebruikt tijdens de uitvoering van de pijp lijn. Als het archief een mapstructuur bevat, blijft de structuur behouden, maar moet u een map met de naam **src** naar het pad laten voorafgaan door.
 

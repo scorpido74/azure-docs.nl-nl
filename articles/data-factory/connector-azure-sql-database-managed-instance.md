@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/09/2019
-ms.openlocfilehash: e25b860417333d458bdde870d20968fce7dda715
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/12/2020
+ms.openlocfilehash: cfa53d480120ec75623a6a372b258b63e6264f92
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892889"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136040"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Database beheerde instantie met behulp van Azure Data Factory
 
@@ -41,9 +41,6 @@ Deze Azure SQL Database Managed instance connector ondersteunt het volgende:
 >[!NOTE]
 >Azure SQL Database beheerde exemplaar [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) wordt nu niet ondersteund door deze connector. U kunt een [algemene ODBC-Connector](connector-odbc.md) en een SQL Server ODBC-stuur programma gebruiken via een zelf-hostende Integration runtime. Volg [deze richt lijnen voor het](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) downloaden van ODBC-stuur Programma's en het Connection String van configuraties.
 
->[!NOTE]
->Service-Principal en beheerde identiteits verificaties worden momenteel niet ondersteund door deze connector. Kies voor een tijdelijke oplossing een Azure SQL Database-Connector en geef hand matig de server van uw beheerde exemplaar op.
-
 ## <a name="prerequisites"></a>Vereisten
 
 Als u toegang wilt krijgen tot het [open bare eind punt](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)van het beheerde exemplaar van Azure SQL database, kunt u een Azure Data Factory Managed Azure Integration runtime gebruiken. Zorg ervoor dat u het open bare eind punt inschakelt en ook openbaar eindpunt verkeer op de netwerk beveiligings groep toestaat, zodat Azure Data Factory verbinding kan maken met uw data base. Zie [deze richt lijnen](../sql-database/sql-database-managed-instance-public-endpoint-configure.md)voor meer informatie.
@@ -60,7 +57,7 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor de door het Azure SQL Database beheerde exemplaar van de gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **AzureSqlMI**. | Ja |
 | connectionString |Met deze eigenschap geeft u de **Connections Tring** -gegevens op die nodig zijn om verbinding te maken met het beheerde exemplaar met behulp van SQL-verificatie. Zie de volgende voor beelden voor meer informatie. <br/>De standaardpoort is 1433. Als u Azure SQL Database beheerde instantie met een openbaar eind punt gebruikt, geeft u expliciet poort 3342 op.<br> U kunt ook een wacht woord in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, haalt u de `password` configuratie uit de connection string. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -177,7 +174,7 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
 }
 ```
 
-### <a name="managed-identity"></a> Beheerde identiteiten voor verificatie van de Azure-resources
+### <a name="managed-identity"></a>Beheerde identiteiten voor Azure-bronnen verificatie
 
 Een data factory kan worden gekoppeld aan een [beheerde identiteit voor Azure-resources](data-factory-service-identity.md) die de specifieke Data Factory vertegenwoordigt. U kunt deze beheerde identiteit gebruiken voor de Azure SQL Database Managed instance-verificatie. De aangewezen Factory heeft toegang tot en kopiëren van gegevens van of naar uw data base met behulp van deze identiteit.
 
@@ -229,7 +226,7 @@ Zie het artikel gegevens sets voor een volledige lijst met secties en eigenschap
 
 Als u gegevens wilt kopiëren naar en van Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de DataSet moet worden ingesteld op **AzureSqlMITable**. | Ja |
 | schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
@@ -265,12 +262,13 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren van Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund in de sectie bron van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SqlMISource**. | Ja |
 | sqlReaderQuery |Deze eigenschap maakt gebruik van de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `select * from MyTable`. |Nee |
 | sqlReaderStoredProcedureName |Deze eigenschap is de naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. |Nee |
 | storedProcedureParameters |Deze para meters zijn voor de opgeslagen procedure.<br/>Toegestane waarden zijn de naam of waarde-paren. De namen en de behuizing van de para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
+| isolationLevel | Hiermee geeft u het vergrendelings gedrag van de trans actie voor de SQL-bron op. De toegestane waarden zijn: **ReadCommitted** (standaard), **ReadUncommitted**, **RepeatableRead**, **Serializable**, **snap shot**. Raadpleeg [dit document](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) voor meer informatie. | Nee |
 
 **Houd rekening met de volgende punten:**
 
@@ -371,7 +369,7 @@ GO
 
 Als u gegevens wilt kopiëren naar Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund in het gedeelte Sink van Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlMISink**. | Ja |
 | writeBatchSize |Het aantal rijen dat *per batch*in de SQL-tabel moet worden ingevoegd.<br/>Toegestane waarden zijn gehele getallen voor het aantal rijen. Standaard bepaalt Azure Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte.  |Nee |
@@ -578,34 +576,34 @@ Wanneer gegevens worden gekopieerd naar en van Azure SQL Database beheerde insta
 | binary |Byte[] |
 | bit |Booleaans |
 | char |String, Char[] |
-| date |Datum/tijd |
-| Datetime |Datum/tijd |
-| datetime2 |Datum/tijd |
+| date |DateTime |
+| Datum en tijd |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| decimaal |decimaal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
-| installatiekopie |Byte[] |
+| Float |Double-waarde |
+| image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |decimaal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |decimaal |
 | nvarchar |String, Char[] |
 | real |Enkelvoudig |
 | rowversion |Byte[] |
-| smalldatetime |Datum/tijd |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |decimaal |
 | sql_variant |Object |
 | tekst |String, Char[] |
 | tijd |TimeSpan |
 | tijdstempel |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| xml |XML |
 
 >[!NOTE]
 > Voor gegevens typen die worden toegewezen aan het type van de tijdelijke decimalen, Azure Data Factory op dit moment de precisie Maxi maal 28 ondersteunen. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks in een SQL-query.

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168551"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204321"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure AI Gallery](https://gallery.azure.ai)** is een door de community gerichte site voor het detecteren en delen van oplossingen die zijn gebouwd met Azure AI.
 De galerie bevat een aantal bronnen die u kunt gebruiken om uw eigen analyse oplossingen te ontwikkelen.
@@ -86,7 +88,7 @@ En u kunt zich aanmelden met een discussie hulpprogramma zoals Disqus om melding
 
 1. Selecteer in de lijst met acties onder het canvas **op publiceren naar galerie**.
 
-1. Voer in de galerie een beschrijvende **naam** en **Tags** in. Markeer de technieken die u hebt gebruikt of het probleem dat u wilt oplossen. Een voorbeeld van een experiment beschrijvende titel is ' binaire classificatie: Twitter-Sentimentanalyse. "
+1. Voer in de galerie een beschrijvende **naam** en **Tags** in. Markeer de technieken die u hebt gebruikt of het probleem dat u wilt oplossen. Een voor beeld van een beschrijvende titel voor een experiment is ' binaire classificatie: Twitter Sentimentanalyse '.
 
 1. Voer in het vak **samen vatting** een samen vatting van uw experiment in. Een korte beschrijving van het probleem dat het experiment is opgelost en hoe u nadert.
 

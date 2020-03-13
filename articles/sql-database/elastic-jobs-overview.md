@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133653"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214479"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
 
@@ -35,7 +35,7 @@ Als u geen elastische taken hebt gebruikt, [leest u meer over de concepten van d
 
 1. Een referentie maken voor taak uitvoering in de *taak database* met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
 2. Definieer de doel groep (de data bases waarvoor u de taak wilt uitvoeren) met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
-3. Maak een taakagentreferentie in elke database waarin de taak wordt uitgevoerd [(voeg de gebruiker (of rol) toe aan elke database in de groep)](sql-database-control-access.md). Zie de [PowerShell-zelfstudie](elastic-jobs-powershell.md) voor een voorbeeld.
+3. Maak een taakagentreferentie in elke database waarin de taak wordt uitgevoerd [(voeg de gebruiker (of rol) toe aan elke database in de groep)](sql-database-manage-logins.md). Zie de [PowerShell-zelfstudie](elastic-jobs-powershell.md) voor een voorbeeld.
 4. Maak een taak met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 5. Voeg taakstappen toe met [PowerShell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 6. Voer een taak uit met [Power shell](elastic-jobs-powershell.md#run-the-job) of [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).

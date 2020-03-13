@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 15e1c3de5392238e9e1dbfd324fe40087950a766
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380802"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240756"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snelstartgids: een data factory maken met behulp van de Azure Data Factory-gebruikers interface
 
@@ -67,6 +67,10 @@ Bekijk deze video voor een beter begrip van de Data Factory-UI:
 1. Selecteer de tegel **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad.
    
    ![Startpagina voor de data factory, met de tegel Maken en controleren](./media/doc-common-process/data-factory-home-page.png)
+   
+   > [!NOTE]
+   > Als u ziet dat de webbrowser is vastgelopen bij ' autoriseren ', wist u het selectie vakje cookies van derden **en site gegevens blok keren** . U kunt ook een uitzonde ring maken voor **login.microsoftonline.com**en vervolgens proberen om de app opnieuw te openen.
+   
 1. Schakel op de pagina **Aan de slag** over naar het tabblad **Auteur** in het linkerpaneel. 
 
     ![Pagina Aan de slag](./media/doc-common-process/get-started-page-author-button.png)

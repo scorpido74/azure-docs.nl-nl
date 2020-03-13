@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274716"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138498"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>De naam of het logo van een bedrijfs toepassing in Azure Active Directory wijzigen
 
@@ -42,7 +42,7 @@ Het is eenvoudig om de naam of het logo te wijzigen voor een aangepaste bedrijfs
 7. Selecteer in de bestands kiezer het bestand dat u als het nieuwe logo wilt. De naam van het bestand wordt weer gegeven in het vak onder de huidige logo afbeelding.
 
    > [!NOTE]
-   > Voor Azure moet de logo afbeelding een PNG-bestand zijn en worden er beperkingen toegepast op breedte, hoogte en bestands grootte.
+   > Voor Azure moet de logo afbeelding een PNG-bestand zijn en worden er beperkingen toegepast op breedte, hoogte en bestands grootte. Aangepaste logo's moeten exact 215 &times; 215 pixels groot zijn en de indeling PNG hebben. U wordt aangeraden een effen kleur achtergrond te gebruiken zonder transparantie in uw toepassings logo om het beste weer te geven voor gebruikers.
 8. Selecteer **Opslaan**. Als u een nieuw logo hebt gekozen, wordt de afbeelding van het veld **logo** gewijzigd in overeenstemming met het nieuwe logo bestand.
 
 ## <a name="next-steps"></a>Volgende stappen

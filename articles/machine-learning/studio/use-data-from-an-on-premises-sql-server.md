@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169124"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204179"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een on-premises SQL Server Data Base
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Vaak ondernemingen die met on-premises gegevens werken wilt profiteren van de schaal en flexibiliteit van de cloud voor de machine learning-werkbelastingen uitvoeren. Maar ze niet willen hun huidige bedrijfsprocessen en werkstromen worden onderbroken door het verplaatsen van hun on-premises gegevens naar de cloud. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens van een on-premises SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hebt niet meer handmatig kopiëren en synchroniseren van gegevens tussen de cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanaf uw on-premises SQL Server-Data Base voor uw trainings-en Score taken.
 
@@ -43,7 +45,7 @@ De Data Factory zelfgehoste Integration Runtime heeft de volgende vereisten:
 * De Data Factory zelfgehoste Integration vereist een 64-bits besturingssysteem met .NET Framework 4.6.1 of hoger.
 * De ondersteunde versies van de Windows-besturingssysteem zijn Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * De aanbevolen configuratie voor de machine IR is ten minste 2 GHz, 4-Core CPU, 8GB RAM-geheugen en 80GB-schijf.
-* Als de hostcomputer in de slaapstand, wordt de IR wordt niet reageert op aanvragen voor gegevens. Daarom een juiste energiebeheerschema configureren op de computer voordat u installeert de IR. Als de machine is geconfigureerd voor de slaapstand, wordt de installatie van de IR een bericht weergegeven.
+* Als de hostmachine in de slaap stand wordt gezet, reageert de IR niet op gegevens aanvragen. Daarom een juiste energiebeheerschema configureren op de computer voordat u installeert de IR. Als de machine is geconfigureerd voor de slaapstand, wordt de installatie van de IR een bericht weergegeven.
 * Omdat de kopieeractiviteit wordt uitgevoerd op een specifieke frequentie, volgt het Resourcegebruik (CPU, geheugen) op de computer ook hetzelfde patroon met piek- en niet-actieve tijden. Gebruik van resources is ook afhankelijk sterk de hoeveelheid gegevens die wordt verplaatst. Wanneer meerdere kopie-taken uitgevoerd worden, moet u Resourcegebruik tijdens piektijden omhoog gaan zien. De minimale configuratie bovenstaande technisch voldoende is, kunt u een configuratie met meer bronnen dan de minimale configuratie zijn afhankelijk van uw specifieke werkbelasting voor verplaatsing van gegevens.
 
 Overweeg het volgende bij het instellen en gebruiken van een Data Factory zelfgehoste Integration Runtime:
@@ -51,7 +53,7 @@ Overweeg het volgende bij het instellen en gebruiken van een Data Factory zelfge
 * U kunt slechts één exemplaar van de IR installeren op een enkele computer.
 * U kunt een enkel IR gebruiken voor meerdere on-premises gegevensbronnen.
 * U kunt meerdere IRs op verschillende computers verbinding maken met dezelfde on-premises gegevensbron.
-* U configureert een IRs voor slechts één werk ruimte tegelijk. Op dit moment kan niet IRs worden gedeeld tussen werkruimten.
+* U configureert een IRs voor slechts één werk ruimte tegelijk. IRs kan momenteel niet worden gedeeld in werk ruimten.
 * U kunt meerdere IRs voor één werkruimte configureren. U kunt bijvoorbeeld een IR gebruiken die is verbonden met uw test gegevens bronnen tijdens de ontwikkeling en een productie-IR wanneer u klaar bent voor operationeel maken.
 * De IR hoeft niet te worden op dezelfde computer als de gegevensbron. Maar dichter bij de gegevensbron blijft verkort de termijn voor de gateway verbinding maken met de gegevensbron. Het is raadzaam dat u de IR op een computer die verschilt van de map die als host fungeert voor de on-premises gegevensbron installeren zodat de gateway en de gegevensbron niet concurreren om bronnen.
 * Als u al een IR op uw computer hebt geïnstalleerd voor Power BI of Azure Data Factory scenario's, installeert u een afzonderlijke IR voor Azure Machine Learning Studio (klassiek) op een andere computer.
@@ -118,7 +120,7 @@ De eerste stap is het maken en de gateway instellen voor toegang tot uw on-premi
 Hiermee voltooit u het installatie proces van de gateway in Azure Machine Learning Studio (klassiek).
 U bent nu klaar voor gebruik van uw on-premises gegevens.
 
-U kunt in Studio (klassiek) meerdere gateways maken en instellen voor elke werk ruimte. Bijvoorbeeld, u mogelijk een gateway die u wilt verbinding maken met uw gegevensbronnen test tijdens de ontwikkeling en een andere gateway voor uw productie-gegevensbronnen. Azure Machine Learning Studio (klassiek) biedt u de flexibiliteit om meerdere gateways in te stellen, afhankelijk van uw bedrijfs omgeving. Op dit moment kunt u een gateway tussen werkruimten niet delen en slechts één gateway kan worden geïnstalleerd op een enkele computer. Zie [gegevens verplaatsen tussen on-premises bronnen en Cloud met Data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md)voor meer informatie.
+U kunt in Studio (klassiek) meerdere gateways maken en instellen voor elke werk ruimte. Bijvoorbeeld, u mogelijk een gateway die u wilt verbinding maken met uw gegevensbronnen test tijdens de ontwikkeling en een andere gateway voor uw productie-gegevensbronnen. Azure Machine Learning Studio (klassiek) biedt u de flexibiliteit om meerdere gateways in te stellen, afhankelijk van uw bedrijfs omgeving. U kunt op dit moment geen gateway delen tussen werk ruimten en slechts één gateway kan op één computer worden geïnstalleerd. Zie [gegevens verplaatsen tussen on-premises bronnen en Cloud met Data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md)voor meer informatie.
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Stap 2: De gateway gebruiken om te lezen van gegevens van een on-premises gegevensbron
 Nadat u de gateway hebt ingesteld, kunt u een module voor het **importeren van gegevens** toevoegen aan een experiment dat de gegevens van de on-premises SQL Server Data Base instuurt.

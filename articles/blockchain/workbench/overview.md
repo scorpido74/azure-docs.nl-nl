@@ -4,12 +4,12 @@ description: Overzicht van de preview-versie van Azure Block Chain Workbench en 
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387068"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203641"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Wat is Azure Blockchain Workbench?
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench biedt een webtoepassing en REST-API's voor het behere
 
 U kunt de REST-API's van Blockchain Workbench en API's op berichtbasis integreren met bestaande systemen. De API's bieden een interface die het mogelijk maakt om meerdere technologieën voor een gedistribueerd grootboek, opslag en databaseaanbiedingen te vervangen of gebruiken.
 
-Blockchain Workbench kan berichten die zijn verzonden naar de API op berichtbasis, transformeren in transacties met een indeling die wordt verwacht door de native API van die blockchain.  Workbench kan transacties ondertekenen en naar de juiste blockchain routeren. 
+Block Chain Workbench kan berichten die zijn verzonden naar de op berichten gebaseerde API transformeren om trans acties te bouwen in een indeling die wordt verwacht door de systeem eigen API van die Block chain.  Workbench kan transacties ondertekenen en naar de juiste blockchain routeren. 
 
 Gebeurtenissen worden door Workbench automatisch afgeleverd aan Service Bus en Event Grid om berichten te verzenden naar downstream-consumenten. Ontwikkelaars kunnen hun code integreren met een van deze berichtsystemen om transacties te faciliteren en de resultaten te bekijken.
 
@@ -51,7 +51,7 @@ Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azur
 
 Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
 
-### <a name="community-support"></a>Ondersteuning door community
+### <a name="community-support"></a>Ondersteuning voor community
 
 Neem contact op met micro soft-technici en Azure Block Chain community-experts.
 

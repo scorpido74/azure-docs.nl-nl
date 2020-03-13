@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 598be26024c22ba81c3f33510423605abc854b13
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303049"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216831"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabele assets in Azure Automation
 
@@ -32,7 +32,7 @@ Omdat Automation-variabelen persistent zijn, zijn ze beschikbaar, zelfs als het 
 
 Wanneer u een variabele maakt, kunt u de versleuteling en opslag opgeven door Azure Automation als een beveiligd activum. Andere beveiligde assets zijn referenties, certificaten en verbindingen. Azure Automation versleutelt deze assets en slaat ze op met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. De sleutel wordt opgeslagen in een door het systeem beheerde Key Vault. Voordat u een beveiligde Asset opslaat, wordt Azure Automation de sleutel uit de Key Vault geladen en wordt deze vervolgens gebruikt om de Asset te versleutelen. 
 
-Azure Automation elke versleutelde variabele veilig op te slaan. De waarde kan niet worden opgehaald met de cmdlet [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) die wordt geleverd als onderdeel van de module Azure PowerShell. De enige manier om een versleutelde waarde op te halen, is met behulp van de **Get-AutomationVariable-** activiteit in een RUNBOOK of DSC-configuratie.
+Azure Automation elke versleutelde variabele veilig op te slaan. De waarde kan niet worden opgehaald met de cmdlet [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) die wordt geleverd als onderdeel van de module Azure PowerShell. De enige manier om een versleutelde waarde op te halen, is met behulp van de `Get-AutomationVariable`-activiteit in een runbook of DSC-configuratie.
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
@@ -47,7 +47,7 @@ Wanneer u een variabele met de Azure Portal maakt, moet u een gegevens type in d
 * Booleaans
 * Null
 
-De variabele is niet beperkt tot het aangewezen gegevens type. U moet de variabele instellen met behulp van Windows Power shell als u een waarde van een ander type wilt opgeven. Als u **niet gedefinieerd**opgeeft, wordt de waarde van de variabele ingesteld op **Null**en moet u de waarde instellen met de cmdlet [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) of de activiteit **set-AutomationVariable** .
+De variabele is niet beperkt tot het aangewezen gegevens type. U moet de variabele instellen met behulp van Windows Power shell als u een waarde van een ander type wilt opgeven. Als u **niet gedefinieerd**opgeeft, wordt de waarde van de variabele ingesteld op null en moet u de waarde instellen met de cmdlet [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) of de `Set-AutomationVariable`-activiteit.
 
 U kunt de portal niet gebruiken om de waarde voor een complex type variabele te maken of te wijzigen. U kunt echter een waarde van elk type opgeven met behulp van Windows Power shell. Complexe typen worden opgehaald als een [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
@@ -66,31 +66,31 @@ Voor de module AZ worden de cmdlets in de volgende tabel gebruikt voor het maken
 
 ## <a name="activities-to-access-variables"></a>Activiteiten voor toegang tot variabelen
 
-De activiteiten in de volgende tabel worden gebruikt voor toegang tot variabelen in runbooks en DSC-configuraties. Het verschil tussen **Get-AzAutomationVariable** en **Get-AutomationVariable** wordt in het begin van dit artikel uitgelegd op versleutelde variabelen.
+De activiteiten in de volgende tabel worden gebruikt voor toegang tot variabelen in runbooks en DSC-configuraties. Het verschil tussen `Get-AzAutomationVariable` en `Get-AutomationVariable` wordt uitgelegd voor versleutelde variabelen aan het begin van dit artikel.
 
 | Activiteit | Beschrijving |
 |:---|:---|
-|**Get-AutomationVariable**|De waarde van een bestaande variabele opgehaald.|
-|**Set-AutomationVariable**|Hiermee stelt u de waarde voor een bestaande variabele.|
+|`Get-AutomationVariable`|De waarde van een bestaande variabele opgehaald.|
+|`Set-AutomationVariable`|Hiermee stelt u de waarde voor een bestaande variabele.|
 
 > [!NOTE]
-> Vermijd het gebruik van variabelen in de para meter *name* van **Get-AutomationVariable** in een runbook-of DSC-configuratie. Het gebruik van deze para meter kan de detectie van afhankelijkheden tussen runbooks of DSC-configuraties en Automation-variabelen tijdens ontwerp tijd bemoeilijken.
+> Vermijd het gebruik van variabelen in de para meter `Name` van `Get-AutomationVariable` in een runbook of DSC-configuratie. Het gebruik van deze para meter kan de detectie van afhankelijkheden tussen runbooks of DSC-configuraties en Automation-variabelen tijdens ontwerp tijd bemoeilijken.
 
 De functies in de volgende tabel worden gebruikt om variabelen in een Python2-runbook te openen en op te halen.
 
 |Python2-functies|Beschrijving|
 |:---|:---|
-|automationassets.get_automation_variable|De waarde van een bestaande variabele opgehaald. |
-|automationassets.set_automation_variable|Hiermee stelt u de waarde voor een bestaande variabele. |
+|`automationassets.get_automation_variable`|De waarde van een bestaande variabele opgehaald. |
+|`automationassets.set_automation_variable`|Hiermee stelt u de waarde voor een bestaande variabele. |
 
 > [!NOTE]
-> U moet de **automationassets** -module boven aan uw python-runbook importeren om toegang te krijgen tot de Asset-functies.
+> U moet de module `automationassets` boven aan uw python-runbook importeren om toegang te krijgen tot de Asset-functies.
 
 ## <a name="creating-a-new-automation-variable"></a>Een nieuwe Automation-variabele maken
 
 ### <a name="create-a-new-variable-using-the-azure-portal"></a>Een nieuwe variabele maken met behulp van de Azure Portal
 
-1. Klik vanuit uw Automation-account op de tegel **assets** en selecteer vervolgens op de Blade **assets** de optie **variabelen**.
+1. Klik vanuit uw Automation-account op de tegel **assets** , vervolgens op de Blade **assets** en selecteer **variabelen**.
 2. Selecteer **een variabele toevoegen**op de tegel **variabelen** .
 3. Voltooi de opties op de Blade **nieuwe variabele** en klik vervolgens op **maken** om de nieuwe variabele op te slaan.
 
@@ -99,7 +99,7 @@ De functies in de volgende tabel worden gebruikt om variabelen in een Python2-ru
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Een nieuwe variabele maken met Windows Power shell
 
-Het script maakt gebruik van de cmdlet **New-AzAutomationVariable** voor het maken van een nieuwe variabele en het instellen van de oorspronkelijke waarde. De waarde kan vervolgens worden opgehaald met **Get-AzAutomationVariable**. Als de waarde een eenvoudig type is, wordt hetzelfde type opgehaald. Als het een complex type is, wordt een **PSCustomObject** -type opgehaald.
+Het script maakt gebruik van de cmdlet `New-AzAutomationVariable` om een nieuwe variabele te maken en de oorspronkelijke waarde ervan in te stellen. De waarde kan vervolgens worden opgehaald met behulp van `Get-AzAutomationVariable`. Als de waarde een eenvoudig type is, wordt hetzelfde type opgehaald. Als het een complex type is, wordt een `PSCustomObject` type opgehaald.
 
 In het volgende voor beeld ziet u hoe u een variabele van het type teken reeks maakt en de waarde ervan als resultaat geeft.
 
@@ -125,17 +125,17 @@ $vmIpAddress = $vmValue.IpAddress
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Een variabele gebruiken in een runbook-of DSC-configuratie
 
-Gebruik de activiteit **set-AutomationVariable** om de waarde van een Automation-variabele in een Power shell-RUNBOOK of DSC-configuratie in te stellen en haal de **AutomationVariable** op om deze op te halen. U mag de cmdlets **set-AzAutomationVariable** en **Get-AzAutomationVariable** of de bijbehorende AzureRM-module niet gebruiken in een runbook of DSC-configuratie, omdat deze minder efficiënt zijn dan de werk stroom activiteiten. 
+Gebruik de activiteit `Set-AutomationVariable` om de waarde in te stellen van een Automation-variabele in een Power shell-runbook of DSC-configuratie en de `Get-AutomationVariable` om deze te verkrijgen. U mag de `Set-AzAutomationVariable`-en `Get-AzAutomationVariable`-cmdlets of de bijbehorende AzureRM niet gebruiken in een runbook-of DSC-configuratie, omdat deze minder efficiënt zijn dan de werk stroom activiteiten. 
 
-Houd er rekening mee dat u de waarde van een beveiligde variabele niet kunt ophalen met **Get-AzAutomationVariable** of de bijbehorende AzureRM-module equivalent. 
+Houd er rekening mee dat u de waarde van een beveiligde variabele niet kunt ophalen met `Get-AzAutomationVariable` of het equivalent van de AzureRM-module. 
 
-De enige manier om vanuit een runbook of DSC-configuratie een nieuwe variabele te maken, is met behulp van de cmdlet **New-AzAutomationVariable** .
+De enige manier om een nieuwe variabele vanuit een runbook of DSC-configuratie te maken, is met behulp van de cmdlet `New-AzAutomationVariable`.
 
 ### <a name="textual-runbook-samples"></a>Tekstuele runbook-voor beelden
 
 #### <a name="set-and-retrieve-a-simple-value-from-a-variable"></a>Een eenvoudige waarde van een variabele instellen en ophalen
 
-De volgende voorbeeld opdrachten laten zien hoe u een variabele kunt instellen en ophalen in een tekst runbook. In dit voor beeld wordt ervan uitgegaan dat het maken van geheeltallige variabelen met de naam *NumberOfIterations* en *NumberOfRunnings* en een teken reeks variabele met de naam *SampleMessage*.
+De volgende voorbeeld opdrachten laten zien hoe u een variabele kunt instellen en ophalen in een tekst runbook. In dit voor beeld wordt ervan uitgegaan dat het maken van geheeltallige variabelen met de naam `NumberOfIterations` en `NumberOfRunnings` en een teken reeks variabele met de naam `SampleMessage`.
 
 ```powershell
 $NumberOfIterations = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
@@ -176,13 +176,13 @@ except AutomationAssetNotFound:
 
 ### <a name="graphical-runbook-samples"></a>Voor beelden van grafische runbook
 
-In een grafisch runbook kunt u de activiteit **Get-AutomationVariable** of **set-AutomationVariable** toevoegen. Klik met de rechter muisknop op de variabele in het deel venster Bibliotheek van de grafische editor en selecteer de gewenste activiteit.
+In een grafisch runbook kunt u de `Get-AutomationVariable`-of `Set-AutomationVariable`-activiteit toevoegen. Klik met de rechter muisknop op de variabele in het deel venster Bibliotheek van de grafische editor en selecteer de gewenste activiteit.
 
 ![Variabele toevoegen aan canvas](../media/variables/runbook-variable-add-canvas.png)
 
 #### <a name="set-values-in-a-variable"></a>Waarden in een variabele instellen
 
-De volgende afbeelding toont voorbeeld activiteiten om een variabele met een eenvoudige waarde in een grafisch runbook bij te werken. In dit voor beeld haalt **Get-AzVM** één virtuele machine van Azure op en slaat de computer naam op in een bestaande Automation-variabele met een type teken reeks. Het maakt niet uit of de [koppeling een pijp lijn of sequencer is](../automation-graphical-authoring-intro.md#links-and-workflow) , omdat de code slechts één object in de uitvoer verwacht.
+De volgende afbeelding toont voorbeeld activiteiten om een variabele met een eenvoudige waarde in een grafisch runbook bij te werken. In dit voor beeld haalt `Get-AzVM` één virtuele machine van Azure op en slaat de computer naam op in een bestaande automatiserings reeks variabele. Het maakt niet uit of de [koppeling een pijp lijn of sequencer is](../automation-graphical-authoring-intro.md#links-and-workflow) , omdat de code slechts één object in de uitvoer verwacht.
 
 ![Eenvoudige variabele instellen](../media/variables/runbook-set-simple-variable.png)
 

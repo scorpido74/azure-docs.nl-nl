@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604567"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139994"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Waarschuwings validatie (EICAR-test bestand) in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -75,8 +75,7 @@ Raadpleeg [dit artikel](azure-kubernetes-service-integration.md)voor meer inform
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebben we aandacht besteed aan het valideren van waarschuwingen. Raadpleeg de volgende artikelen als u meer over dit onderwerp wilt weten:
 
+* [Azure Key Vault detectie van dreigingen in Azure Security Center valideren](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -meer informatie over het beheren van waarschuwingen en het reageren op beveiligings incidenten in Security Center.
 * [Beveiligings status bewaken in azure Security Center](security-center-monitoring.md) -meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligings waarschuwingen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -meer informatie over de verschillende typen beveiligings waarschuwingen.
-* [Azure Security Center probleemoplossings handleiding](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) : informatie over het oplossen van veelvoorkomende problemen in Security Center.
-* [Blog over Azure-beveiliging](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over beveiliging en naleving van Azure.

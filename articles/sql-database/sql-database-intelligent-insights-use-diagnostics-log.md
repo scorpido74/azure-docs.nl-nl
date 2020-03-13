@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587348"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209445"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Het logboek voor diagnostische gegevens over het Intelligent Insights-Azure SQL Database gebruiken
 
-Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 ## <a name="log-header"></a>Logboek header
 
@@ -47,8 +47,8 @@ De eigenschap elastische groep (elasticPoolName_s) geeft aan aan welke elastisch
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Gedetecteerde prestatie problemen worden gerapporteerd met de volgende detectie 
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 De volgende tabel bevat de prestatie patronen die kunnen worden gegenereerd en de details die in het diagnostische logboek worden beschreven.
@@ -105,7 +105,7 @@ In het volgende voor beeld van het logboek is vastgesteld dat de query met de ha
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -137,10 +137,8 @@ Het laatste deel van het Intelligent Insights prestatie logboek is van toepassin
 U kunt het Intelligent Insights prestatie logboek gebruiken met [Azure monitor-logboeken]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Meer informatie over [intelligent Insights](sql-database-intelligent-insights.md) -concepten.
 - Meer informatie over het [oplossen van problemen met de prestaties van Azure SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Meer informatie over het [bewaken van Azure SQL database met behulp van Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
-
-
-

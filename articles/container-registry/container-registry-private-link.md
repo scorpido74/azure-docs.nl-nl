@@ -3,12 +3,12 @@ title: Persoonlijke koppeling instellen
 description: Een persoonlijk eind punt instellen in een container register en een persoonlijke koppeling inschakelen in een lokaal virtueel netwerk
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 57c2a59ad8b16c39c7c577173feae68dcb263277
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128395"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203352"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
 
@@ -28,7 +28,14 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u de stappen van Azure CLI in dit artikel wilt gebruiken, wordt Azure CLI-versie 2.2.0 of hoger aanbevolen. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren. Of voer uit in [Azure Cloud shell](../cloud-shell/quickstart.md).
-* Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en pusht u een voorbeeld installatie kopie, zoals `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
+* Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en pusht u een voorbeeld installatie kopie, zoals `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken.
+* Als u toegang tot het REGI ster wilt configureren met behulp van een persoonlijke koppeling in een ander Azure-abonnement, moet u de resource provider registreren voor Azure Container Registry in dat abonnement. Bijvoorbeeld:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 De Azure CLI-voor beelden in dit artikel gebruiken de volgende omgevings variabelen. Vervang de waarden die van toepassing zijn voor uw omgeving. Alle voor beelden zijn opgemaakt voor de bash-shell:
 

@@ -3,12 +3,12 @@ title: Diagnostische instellingen gebruiken voor Recovery Services kluizen
 description: Een artikel waarin wordt beschreven hoe u de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup gebruikt
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583942"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136936"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruik voor Recovery Services-kluizen
 
@@ -56,7 +56,9 @@ Zodra de gegevens zijn opgeslagen in de werk ruimte LA, worden toegewezen tabell
 
 Normaal gesp roken zijn alle diagnostische gegevens over back-ups voor een kluis opgenomen in één gebeurtenis met de naam ' AzureBackupReport '. De zes gebeurtenissen die hierboven worden beschreven, zijn in essentie een ontleding van alle gegevens in AzureBackupReport. 
 
-Momenteel blijven we de AzureBackupReport-gebeurtenis voor achterwaartse compatibiliteit ondersteunen, in gevallen waarin gebruikers bestaande aangepaste query's voor deze gebeurtenis hebben, bijvoorbeeld aangepaste logboek waarschuwingen, aangepaste visualisaties enzovoort. We raden u echter aan om de nieuwe gebeurtenissen voor alle nieuwe diagnostische instellingen op de kluis te kiezen, omdat hierdoor de gegevens veel gemakkelijker te gebruiken zijn om te werken in logboek query's. Dit biedt een betere detectie van schema's en hun structuur, waardoor de prestaties voor beide opname worden verbeterd. latentie en query tijden. De ondersteuning voor het gebruik van de Azure Diagnostics modus wordt uiteindelijk gefaseerd uitgevoerd en daarom kan het kiezen van de nieuwe gebeurtenissen ertoe bijdragen dat u complexe migraties op een later tijdstip kunt voor komen.
+Momenteel blijven we de AzureBackupReport-gebeurtenis voor achterwaartse compatibiliteit ondersteunen, in gevallen waarin gebruikers bestaande aangepaste query's voor deze gebeurtenis hebben, bijvoorbeeld aangepaste logboek waarschuwingen, aangepaste visualisaties enzovoort. **We raden u echter aan om zo snel mogelijk overstappen op de nieuwe gebeurtenissen**, omdat hierdoor de gegevens veel gemakkelijker te gebruiken zijn om te werken met in-logboek query's. Dit zorgt voor betere detectie van schema's en hun structuur, en verbetert de prestaties voor zowel opname latentie als query tijden. **De ondersteuning voor het gebruik van de Azure Diagnostics modus wordt uiteindelijk gefaseerd uitgevoerd en daarom kan het kiezen van de nieuwe gebeurtenissen ertoe bijdragen dat u complexe migraties op een later tijdstip kunt voor komen**.
+
+Het ingebouwde beleid van Azure Backup gebruiken om een nieuwe diagnostische instelling toe te voegen met de 6 nieuwe gebeurtenissen, voor alle kluizen in een opgegeven bereik: [Diagnostische instellingen voor de kluis op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 U kunt ervoor kiezen om afzonderlijke diagnostische instellingen voor AzureBackupReport en de zes nieuwe gebeurtenissen te maken, totdat u al uw aangepaste query's hebt gemigreerd voor het gebruik van gegevens uit de nieuwe tabellen. De onderstaande afbeelding toont een voor beeld van een kluis met twee Diagnostische instellingen. Met de eerste instelling, met de naam **Setting1** , worden gegevens van AzureBackupReport gebeurtenis verzonden naar een La-werk ruimte in de modus AzureDiagnostics. De tweede instelling, met de naam **Setting2** , verzendt gegevens van de zes nieuwe Azure backup gebeurtenissen naar een La-werk ruimte in de resource-specifieke modus.
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828079"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208933"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migratie van SQL Server naar Azure SQL Database beheerde instantie
 
@@ -72,14 +72,14 @@ Enkele van de para meters die u moet meten op uw SQL Server-exemplaar zijn:
 - Controleer de werk belasting-en query prestaties of uw SQL Server-exemplaar door dynamische beheer weergaven of query Store te controleren als u migreert van SQL Server 2016 + versie. Bepaal de gemiddelde duur en het CPU-gebruik van de belangrijkste query's in uw workload om ze te vergelijken met de query's die worden uitgevoerd op het beheerde exemplaar.
 
 > [!Note]
-> Als u een probleem ondervindt met uw werk belasting op SQL Server zoals een hoog CPU-gebruik, een constante geheugen druk, tempdb-of parametrization-problemen, moet u deze proberen op te lossen in uw bron SQL Server-exemplaar voordat u de basis lijn en migratie onderneemt. Het migreren van bekende problemen naar een nieuwe systeem migh leidt tot onverwachte resultaten en maakt een vergelijking van de prestaties ongeldig.
+> Als u een probleem ondervindt met uw werk belasting op SQL Server zoals een hoog CPU-gebruik, een constante geheugen druk, tempdb-of parameterisering-problemen, moet u deze proberen op te lossen in uw bron SQL Server-exemplaar voordat u de basis lijn en migratie onderneemt. Het migreren van bekende problemen naar een nieuwe systeem migh leidt tot onverwachte resultaten en maakt een vergelijking van de prestaties ongeldig.
 
 Als gevolg van deze activiteit moet u de gemiddelde en piek waarden voor CPU, geheugen en i/o-gebruik op uw bron systeem hebben gedocumenteerd, evenals de gemiddelde en maximale duur en het CPU-gebruik van de dominante en de meest kritieke query's in uw werk belasting. U moet deze waarden later gebruiken om de prestaties van uw werk belasting op het beheerde exemplaar te vergelijken met de basislijn prestaties van de werk belasting op de bron SQL Server.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Implementeren in een optimale beheerde instantie
 
 Het beheerde exemplaar is afgestemd op on-premises workloads die worden gepland om naar de cloud te gaan. Er wordt een [Nieuw aankoop model](sql-database-service-tiers-vcore.md) geïntroduceerd dat meer flexibiliteit biedt bij het selecteren van het juiste niveau van resources voor uw workloads. In de on-premises wereld bent u waarschijnlijk gewend om de grootte van deze werk belastingen te wijzigen met behulp van fysieke kernen en i/o-band breedte. Het inkoop model voor een beheerd exemplaar is gebaseerd op virtuele kernen of ' vCores ', met extra opslag en IO afzonderlijk beschikbaar. Het vCore-model is een eenvoudigere manier om inzicht te krijgen in uw reken vereisten in de Cloud en wat u nu on-premises gebruikt. Met dit nieuwe model kunt u de juiste grootte van uw doel omgeving in de Cloud. Enkele algemene richt lijnen die u kunnen helpen bij het kiezen van de juiste service-laag en-kenmerken, worden hier beschreven:
-- Op basis van het CPU-gebruik van de basis lijn kunt u een beheerd exemplaar inrichten dat overeenkomt met het aantal kernen dat u gebruikt op SQL Server. er moet rekening mee worden gehouden dat de CPU-kenmerken mogelijk moeten worden geschaald om te voldoen aan de [VM-kenmerken waar het beheerde exemplaar is geïnstalleerd. ](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Op basis van het CPU-gebruik van de basis lijn kunt u een beheerd exemplaar inrichten dat overeenkomt met het aantal kernen dat u gebruikt op SQL Server. in dat geval moeten de CPU-kenmerken mogelijk worden geschaald om te voldoen aan de [VM-kenmerken waar het beheerde exemplaar is geïnstalleerd](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 - Kies op basis van het geheugen gebruik van basis lijn [de servicelaag die overeenkomt met het geheugen](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). De hoeveelheid geheugen kan niet rechtstreeks worden gekozen, dus u moet het beheerde exemplaar selecteren met de hoeveelheid vCores die overeenkomt met het geheugen (bijvoorbeeld 5,1 GB/vCore in GEN5). 
 - Op basis van de IO-latentie basis lijn van het bestand subsysteem kiest u tussen Algemeen (latentie groter dan 5ms) en Bedrijfskritiek service lagen (latentie van minder dan 3 MS).
 - Op basis van de door Voer van de basis lijn wordt de grootte van de gegevens of logboek bestanden vooraf toegewezen om de verwachte IO-prestaties te verkrijgen.
@@ -113,13 +113,13 @@ Het beheerde exemplaar ondersteunt de volgende database migratie opties (momente
 
 De [Azure database Migration service (DMS)](../dms/dms-overview.md) is een volledig beheerde service die is ontworpen om naadloze migraties van meerdere database bronnen naar Azure-gegevens platforms mogelijk te maken met minimale downtime. Deze service stroomlijnt de taken die nodig zijn om bestaande derden en SQL Server data bases naar Azure te verplaatsen. Implementatie-opties in open bare preview omvatten data bases in Azure SQL Database en SQL Server data bases in een virtuele machine van Azure. DMS is de aanbevolen migratie methode voor uw bedrijfs werkbelastingen.
 
-Als u SQL Server Integration Services (SSIS) op uw SQL Server on-premises gebruikt, wordt er nog geen ondersteuning geboden voor het migreren van SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory (ADF) die een nieuwe SSISDB maken in een beheerd exemplaar en vervolgens uw pakketten opnieuw implementeren raadpleegt u [Azure-SSIS IR in ADF maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Als u SQL Server Integration Services (SSIS) op uw SQL Server on-premises gebruikt, wordt er nog geen ondersteuning geboden voor de migratie van SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory (ADF) waarmee een nieuwe SSISDB in een beheerd exemplaar wordt gemaakt en u vervolgens uw pakketten opnieuw kunt implementeren, raadpleegt u [Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Zie [uw on-premises data base migreren naar een beheerd exemplaar met behulp van DMS](../dms/tutorial-sql-server-to-managed-instance.md)voor meer informatie over dit scenario en over de configuratie stappen voor DMS.  
 
 ### <a name="native-restore-from-url"></a>Systeem eigen herstel van URL
 
-HERSTEL van systeem eigen back-ups (. bak-bestanden) die is gemaakt op basis van SQL Server on-premises of [SQL Server op virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/), dat beschikbaar is op [Azure Storage](https://azure.microsoft.com/services/storage/), is een van de belangrijkste mogelijkheden van de implementatie optie Managed instance die snel en eenvoudig offline kan zijn database migratie.
+HERSTEL van systeem eigen back-ups (. bak-bestanden) die zijn gemaakt op basis van SQL Server on-premises of [SQL Server op virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/), dat beschikbaar is op [Azure Storage](https://azure.microsoft.com/services/storage/), is een van de belangrijkste mogelijkheden van de implementatie optie Managed instance die snelle en eenvoudige offline database migratie mogelijk maakt.
 
 In het volgende diagram ziet u een overzicht van het proces:
 
@@ -130,7 +130,7 @@ De volgende tabel bevat meer informatie over de methoden die u kunt gebruiken, a
 |Stap|SQL-engine en-versie|Back-up/herstel methode|
 |---|---|---|
 |Back-up naar Azure Storage plaatsen|Eerdere SQL 2012 SP1 CU2|Het bak-bestand rechtstreeks uploaden naar Azure Storage|
-||2012 SP1 CU2-2016|Directe back-up met afgeschaft [met referentie](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
+||2012 SP1 CU2 - 2016|Directe back-up met afgeschaft [met referentie](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
 ||2016 en hoger|Directe back-ups met behulp [van SAS-referenties](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Herstellen vanuit Azure Storage naar een beheerd exemplaar|[HERSTELLEN vanaf URL met SAS-referentie](sql-database-managed-instance-get-started-restore.md)|
 

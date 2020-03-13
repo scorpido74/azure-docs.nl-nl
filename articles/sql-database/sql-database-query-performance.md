@@ -1,6 +1,6 @@
 ---
 title: Inzicht in queryprestaties
-description: De controle van de query prestaties identificeert de meeste CPU-verbruiks query's voor een Azure-SQL database.
+description: De controle van de query prestaties identificeert de meeste CPU-verbruikte en langlopende query's voor één en gegroepeerde Data bases in Azure SQL database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821238"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214047"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight voor Azure SQL Database
 
-Het beheren en afstemmen van de prestaties van relationele data bases maakt kennis en tijd. Query Performance Insight maakt deel uit van de product lijn voor Azure SQL Database intelligente prestaties. Het helpt u minder tijd te best Eden aan het oplossen van problemen met database prestaties.
+Query Performance Insight biedt intelligente query analyses voor afzonderlijke en gepoolde data bases. Het helpt bij het identificeren van de belangrijkste en langlopende query's in uw werk belasting. Zo kunt u de query's die u wilt optimaliseren vinden om de algehele prestaties van de werk belasting te verbeteren en de resource die u betaalt efficiënt te gebruiken. Query Performance Insight helpt u minder tijd te best Eden aan het oplossen van problemen met database prestaties.
 
-* Dieper inzicht in uw data bases Resource-verbruik (DTU).
-* Details over de belangrijkste database query's op basis van CPU, duur en aantal uitvoeringen (potentiële afstemmings kandidaten voor prestatie verbeteringen).
-* De mogelijkheid om in te zoomen op de details van een query om de query tekst en de geschiedenis van het resource gebruik weer te geven.
-* Aantekeningen die prestatie aanbevelingen van [SQL database Advisor](sql-database-advisor.md)weer geven.
+* Dieper inzicht in uw data bases resource (DTU)-verbruik
+* Details over de belangrijkste database query's op basis van CPU, duur en aantal uitvoeringen (potentiële afstemmings kandidaten voor prestatie verbeteringen)
+* De mogelijkheid om in te zoomen op de details van een query om de query tekst en geschiedenis van het resource gebruik weer te geven
+* Aantekeningen die prestatie aanbevelingen van [Data Base Advisor](sql-database-advisor.md) weer geven
 
 ![Inzicht in queryprestaties](./media/sql-database-query-performance/opening-title.png)
-
-> [!TIP]
-> Voor eenvoudige prestatie bewaking met Azure SQL Database raden wij u aan Query Performance Insight. Noteer de product beperkingen die in dit artikel worden gepubliceerd. Voor geavanceerde controle van de database prestaties op schaal raden wij u aan [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md). Het heeft ingebouwde intelligentie voor het oplossen van problemen met automatische prestaties. Voor het automatisch afstemmen van een aantal van de meest voorkomende prestatie problemen met de data base, is het raadzaam om automatisch af te [stemmen](sql-database-automatic-tuning.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.com/library/dn817826.aspx) actief zijn in uw data base. De standaard instelling is automatisch ingeschakeld voor alle Azure SQL-data bases. Als query Store niet wordt uitgevoerd, wordt u door de Azure Portal gevraagd dit in te scha kelen.
 
 > [!NOTE]
-> Zie [de configuratie van het query archief optimaliseren](#optimize-the-query-store-configuration-for-query-performance-insight)als het bericht ' query archief is niet juist is geconfigureerd voor deze data base ' wordt weer gegeven in de portal.
->
+> Zie [de configuratie van het query archief optimaliseren](#optimize-the-query-store-configuration)als het bericht ' query archief is niet juist is geconfigureerd voor deze data base ' wordt weer gegeven in de portal.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -65,6 +61,11 @@ Query Performance Insight is gemakkelijk te gebruiken:
 
 > [!NOTE]
 > Als SQL Database de gegevens in Query Performance Insight wilt weer geven, moet u in de query Store enkele uren aan gegevens vastleggen. Als de data base geen activiteit heeft of als de query Store niet actief was tijdens een bepaalde periode, zijn de grafieken leeg wanneer Query Performance Insight dat tijds bereik weergeeft. U kunt het query archief op elk gewenst moment inschakelen als het niet wordt uitgevoerd. Zie [Aanbevolen procedures voor query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)voor meer informatie.
+>
+
+Voor aanbevelingen voor database prestaties selecteert u [aanbevelingen](sql-database-advisor.md) op de blade query Performance Insight navigatie.
+
+![Het tabblad aanbevelingen](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>Best presterende query's voor CPU-verbruik controleren
 
@@ -72,9 +73,9 @@ Query Performance Insight worden standaard de vijf meest voorkomende query's van
 
 1. Selecteer of wis afzonderlijke query's om deze op te nemen of uit te sluiten van het diagram met behulp van selectie vakjes.
 
-    De bovenste regel bevat het totale DTU-percentage voor de data base. De balken tonen het CPU-percentage dat de geselecteerde query's tijdens het geselecteerde interval hebben verbruikt. Als bijvoorbeeld **afgelopen week** is geselecteerd, vertegenwoordigt elke balk één dag.
+   De bovenste regel bevat het totale DTU-percentage voor de data base. De balken tonen het CPU-percentage dat de geselecteerde query's tijdens het geselecteerde interval hebben verbruikt. Als bijvoorbeeld **afgelopen week** is geselecteerd, vertegenwoordigt elke balk één dag.
 
-    ![Meest voorkomende query's](./media/sql-database-query-performance/top-queries.png)
+   ![Meest voorkomende query's](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > De weer gegeven DTU-regel wordt geaggregeerd naar een maximum verbruiks waarde in peri Oden van één uur. Het is alleen bedoeld voor een vergelijking op hoog niveau met statistieken voor query-uitvoering. In sommige gevallen lijkt het DTU-gebruik te hoog ten opzichte van uitgevoerde query's, maar dit is mogelijk niet het geval.
@@ -166,7 +167,7 @@ Langlopende query's identificeren:
    * **Max** . Hiermee zoekt u query's waarin de uitvoerings tijd het maximum is voor het hele observatie interval.
    * **Gem** vindt de gemiddelde uitvoerings tijd van alle uitvoeringen van query's en toont u de bovenste voor deze gemiddelden.
 
-   ![Query duur](./media/sql-database-query-performance/top-duration.png)
+   ![Queryduur](./media/sql-database-query-performance/top-duration.png)
 
 5. Selecteer de knop **ga >** om de aangepaste weer gave te bekijken.
 
@@ -217,7 +218,7 @@ In sommige gevallen, vanwege het zoom niveau, is het mogelijk dat annotaties dic
 
 Het correleren van query's en acties voor het afstemmen van prestaties kunnen u helpen beter inzicht te krijgen in uw werk belasting.
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optimaliseer de configuratie van het query Archief voor Query Performance Insight
+## <a name="optimize-the-query-store-configuration"></a>De configuratie van het query archief optimaliseren
 
 Bij het gebruik van Query Performance Insight ziet u mogelijk de volgende fout berichten in het query archief:
 
@@ -260,7 +261,7 @@ U kunt het beste alle beleids regels instellen op **automatisch** en het opschon
 
 Verg root de grootte van het query Archief door verbinding te maken met een Data Base via [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of het Azure Portal en de volgende query uit te voeren. (Vervang `YourDB` door de naam van de data base.)
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ Als u deze instellingen toepast, wordt de query Store uiteindelijk telemetrie ve
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Samenvatting
-
-Query Performance Insight helpt u inzicht te krijgen in de gevolgen van de werk belasting van query's en hoe deze zich verhoudt tot het gebruik van database resources. Met deze functie leert u meer over de best presterende query's op uw data base en vindt u query's die u kunt optimaliseren voordat ze een probleem vormen.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor aanbevelingen voor database prestaties selecteert u [aanbevelingen](sql-database-advisor.md) op de blade query Performance Insight navigatie.
-
-    ![Het tabblad aanbevelingen](./media/sql-database-query-performance/ia.png)
-
-* Overweeg om [automatisch afstemmen](sql-database-automatic-tuning.md) in te scha kelen voor veelvoorkomende prestatie problemen met de data base.
-* Meer informatie over hoe [intelligent Insights](sql-database-intelligent-insights.md) kunt helpen bij het automatisch oplossen van problemen met database prestaties.
-* Overweeg het gebruik van [Azure SQL-analyse]( ../azure-monitor/insights/azure-sql.md) voor geavanceerde prestatie bewaking van een grote vloot van SQL-data bases, elastische Pools en beheerde instanties met ingebouwde intelligentie.
+Overweeg het gebruik van [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md) voor geavanceerde prestatie bewaking van een grote vloot van enkelvoudige en gepoolde data bases, elastische Pools, beheerde exemplaren en data bases van instanties.

@@ -13,11 +13,11 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 89bafeb077fc83f4f3165d591006831bf8287875
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365244"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263021"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
 

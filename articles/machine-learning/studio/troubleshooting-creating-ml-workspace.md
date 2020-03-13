@@ -10,17 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ba792c225c9875bbad50e3fb460c84ed012ce615
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 58ccd63e16382aca8e16eb67efba951a055eb254
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169101"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217837"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Probleemoplossings gids: maken en verbinding maken met een Azure Machine Learning Studio (klassieke) werk ruimte
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Deze hand leiding bevat oplossingen voor enkele vaak voorkomende uitdagingen bij het instellen van Azure Machine Learning Studio (klassieke) werk ruimten.
-
-
 
 ## <a name="workspace-owner"></a>Eigenaar van werk ruimte
 Als u een werk ruimte in Machine Learning Studio (klassiek) wilt openen, moet u zijn aangemeld bij het micro soft-account dat u hebt gebruikt voor het maken van de werk ruimte, of moet u een uitnodiging van de eigenaar ontvangen om deel te nemen aan de werk ruimte. Vanuit de Azure Portal kunt u de werk ruimte beheren, waaronder de mogelijkheid om toegang te configureren.

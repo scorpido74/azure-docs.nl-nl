@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214126"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-beveiligings basislijn voor Azure SQL Database
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 Daarnaast kunt u de telemetrie van Azure SQL Diagnostics streamen naar Azure SQL-analyse, een Cloud oplossing die de prestaties van Azure SQL-data bases, elastische Pools en beheerde exemplaren op schaal en op meerdere abonnementen bewaakt. Het helpt u bij het verzamelen en visualiseren van Azure SQL Database prestatie gegevens en heeft ingebouwde intelligentie voor het oplossen van prestaties.
 
-
 Controle instellen voor uw Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Platform logboeken en metrische gegevens verzamelen met Azure Monitor:
+Metrische gegevens en resource logboeken verzamelen met Azure Monitor:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 

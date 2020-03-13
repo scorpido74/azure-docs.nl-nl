@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: ebde02d222502c58536269243343b21271f19269
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168859"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204559"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -130,7 +132,7 @@ Nu de gegevens zijn opgeschoond, kunt u opgeven welke functies u wilt gebruiken 
 
 ## <a name="define-features"></a>Functies definiëren
 
-In machine learning zijn *functies* afzonderlijke meetbare eigenschappen van iets waarin u geïnteresseerd bent. In onze gegevensset staat elke rij voor één auto en elke kolom bevat een kenmerk van die auto.
+In machine learning zijn *onderdelen* afzonderlijke meet bare eigenschappen van iets waarin u geïnteresseerd bent. In onze gegevensset staat elke rij voor één auto en elke kolom bevat een kenmerk van die auto.
 
 Voor een goede set kenmerken voor het maken van een voorspellend model, moet u experimenteren en beschikken over kennis van het probleem dat u wilt oplossen. Bepaalde kenmerken zijn beter voor het voorspellen van het doel dan andere. Sommige kenmerken hebben een nauwe correlatie met andere kenmerken en kunnen worden verwijderd. City-mpg en highway-mpg lijken bijvoorbeeld sterk op elkaar, waardoor we een van de twee kunnen verwijderen zonder de voorspelling al te veel te beïnvloeden.
 

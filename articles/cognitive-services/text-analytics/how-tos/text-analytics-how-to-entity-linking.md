@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117474"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203488"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -182,14 +182,13 @@ De Text Analytics-API is stateless. Er worden geen gegevens in uw account opgesl
 
 Alle POST-aanvragen retour neren een JSON-indelings antwoord met de eigenschappen id en gedetecteerde entiteit.
 
-Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
-
+Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren. Vanwege meertalige en Emoji-ondersteuning kan het antwoord tekst verschuivingen bevatten. Zie [tekst verschuivingen verwerken](../concepts/text-offsets.md) voor meer informatie.
 
 #### <a name="version-30-preview"></a>[Versie 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Voor beeld v3-antwoorden
 
-Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De antwoorden voor beide bewerkingen vindt u hieronder.
+Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De antwoorden voor beide bewerkingen vindt u hieronder. 
 
 #### <a name="example-ner-response"></a>Voor beeld van NER-antwoord
 

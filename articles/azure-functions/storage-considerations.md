@@ -3,12 +3,12 @@ title: Aandachtspunten voor de opslag van Azure Functions
 description: Meer informatie over de opslag vereisten van Azure Functions en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356171"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276580"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
 
@@ -56,6 +56,25 @@ Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder 
 Azure Storage versleutelt alle gegevens in een opslag account in rust. Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
 
 Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren die worden gebruikt voor het versleutelen van BLOB-en bestands gegevens. Deze sleutels moeten aanwezig zijn in Azure Key Vault om functies te kunnen gebruiken om toegang te krijgen tot het opslag account. Zie [door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal](../storage/common/storage-encryption-keys-portal.md)voor meer informatie.  
+
+## <a name="mount-file-shares-linux"></a>Bestands shares koppelen (Linux)
+
+U kunt bestaande Azure Files-shares koppelen aan uw Linux-functie-apps. Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning modellen of andere gegevens in uw functies. U kunt de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) opdracht gebruiken om een bestaande share te koppelen aan uw Linux-functie-app. 
+
+In deze opdracht is `share-name` de naam van de bestaande Azure Files share, en `custom-id` kan elke wille keurige teken reeks zijn die een unieke definitie vormt van de share wanneer deze wordt gekoppeld aan de functie-app. `mount-path` is ook het pad van waaruit de share wordt geopend in uw functie-app. `mount-path` moet de indeling `/dir-name`hebben en mag niet beginnen met `/home`.
+
+Zie de scripts in [een python-functie-app maken en een Azure Files share koppelen](scripts/functions-cli-mount-files-storage-linux.md)voor een volledig voor beeld. 
+
+Op dit moment wordt alleen een `storage-type` van `AzureFiles` ondersteund. U kunt Maxi maal vijf shares koppelen aan een bepaalde functie-app. Het koppelen van een bestands share kan de koude start tijd verhogen met ten minste 200 300ms of zelfs meer wanneer het opslag account zich in een andere regio bevindt.
+
+De gekoppelde share is beschikbaar voor uw functie code op het opgegeven `mount-path`. Als `mount-path` bijvoorbeeld `/path/to/mount`is, hebt u toegang tot de doel directory per bestands systeem-Api's, zoals in het volgende python-voor beeld:
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

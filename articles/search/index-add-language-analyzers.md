@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379656"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283145"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
 
@@ -75,9 +75,9 @@ Zie [Create index &#40;Azure Cognitive Search rest API&#41;](https://docs.micros
 |Kroatisch|hr.microsoft||  
 |Tsjechisch|cs.microsoft|cs.lucene|  
 |Deens|da.microsoft|da.lucene|  
-|Nederlands|nl.microsoft|nl.lucene|  
+|Dutch|nl.microsoft|nl.lucene|  
 |Nederlands|en.microsoft|en. lucene|  
-|Estisch|et.microsoft||  
+|Estlands|et.microsoft||  
 |Fins|fi.microsoft|fi.lucene|  
 |Frans|fr.microsoft|fr. lucene|  
 |Galicisch||gl.lucene|  

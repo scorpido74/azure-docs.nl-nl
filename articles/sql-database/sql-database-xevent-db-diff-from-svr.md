@@ -3,7 +3,7 @@ title: Uitgebreide gebeurtenissen
 description: Hierin worden uitgebreide gebeurtenissen (XEvents) in Azure SQL Database beschreven en wordt uitgelegd hoe gebeurtenis sessies enigszins afwijken van gebeurtenis sessies in Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822304"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213948"
 ---
 # <a name="extended-events-in-sql-database"></a>Uitgebreide gebeurtenissen in SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -65,7 +65,7 @@ Verwante onderwerpen bieden twee voor beelden van code:
     - Fase 1 is Power shell om een Azure Storage-container te maken.
     - Fase 2 is Transact-SQL die gebruikmaakt van de Azure Storage-container.
 
-## <a name="transact-sql-differences"></a>Verschillen Transact-SQL
+## <a name="transact-sql-differences"></a>Verschillen in Transact-SQL
 
 
 - Wanneer u de opdracht [gebeurtenis sessie maken](https://msdn.microsoft.com/library/bb677289.aspx) op SQL Server uitvoert, gebruikt u de component **on server** . Maar op SQL Database u in plaats daarvan de component **on-data base** gebruiken.
@@ -91,7 +91,7 @@ De functie Extended Events wordt ondersteund door verschillende [catalogus weerg
 
 In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die de *Server\_* bevatten in plaats van *. data base\_* . Het naam patroon is als **sys. server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nieuwe dynamische beheer weergaven [(dmv's)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Nieuwe dynamische beheer weergaven [(dmv's)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.microsoft.com/library/bb677293.aspx) die ondersteuning bieden voor uitgebreide gebeurtenissen. Dmv's vertelt u over *actieve* gebeurtenis sessies.
 
@@ -142,7 +142,7 @@ SELECT
 ```
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>&nbsp;
 
 ## <a name="targets-for-your-sql-database-event-sessions"></a>Doelen voor uw SQL Database-gebeurtenis sessies
 

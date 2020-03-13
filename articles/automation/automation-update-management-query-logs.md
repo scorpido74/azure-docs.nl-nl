@@ -3,14 +3,14 @@ title: Updatebeheer logboeken van Azure doorzoeken
 description: In dit artikel wordt beschreven hoe u een query kunt uitvoeren op de logboeken voor Updatebeheer in uw Log Analytics-werk ruimte.
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867070"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216847"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query's voor Updatebeheer bijwerken in Azure Monitor logboeken
 
@@ -33,17 +33,17 @@ Er wordt een record met een type `RequiredUpdate` gemaakt die de vereiste update
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. | 
 | Product | De producten waarvoor de update van toepassing is. | 
 | PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| server | | 
+| Server | | 
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *Operations Manager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
 | TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
-| Type | *Update* | 
+| Type | *Bijwerken* | 
 | UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligings updates*<br> *Update pakketten*<br> *Functie pakketten*<br> *Service packs*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligings updates*<br> *Overig* |
-| UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Gemiddeld*<br> *Laag* |
+| UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Prioriteit*<br> *Gebrek* |
 | UpdateTitle | De titel van de update.|
 
-### <a name="update"></a>Update
+### <a name="update"></a>Bijwerken
 
 Er wordt een record met een type `Update` gemaakt die de beschik bare updates en de installatie status voor een machine weergeeft. Deze records hebben de eigenschappen in de volgende tabel:
 
@@ -55,7 +55,7 @@ Er wordt een record met een type `Update` gemaakt die de beschik bare updates en
 | Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
 | ComputerEnvironment | *Azure* of *niet-Azure*. |
 | MSRCBulletinID | ID-nummer van beveiligings Bulletin | 
-| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Gemiddeld*<br> *Laag* |  
+| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Prioriteit*<br> *Gebrek* |  
 | KBID | Knowledge Base-artikel-ID voor Windows Update. |
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | UpdateID | De unieke id van de software-update. |
@@ -63,7 +63,7 @@ Er wordt een record met een type `Update` gemaakt die de beschik bare updates en
 | Optioneel | *Waar* of *Onwaar* | 
 | RebootBehavior | Het gedrag voor opnieuw opstarten na het installeren/verwijderen van een update. |
 | _ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
-| Type | *Update* |
+| Type | *Bijwerken* |
 | VMUUID | De unieke id voor de virtuele machine. |
 | MG | De unieke id voor de beheer groep of Log Analytics werk ruimte. | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
@@ -77,7 +77,7 @@ Er wordt een record met een type `Update` gemaakt die de beschik bare updates en
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
 | ResourceGroup | De naam van de resource groep waarvan de resource lid is. | 
 | ResourceProvider | Hiermee geeft u de resource provider op. | 
-| Bron | De naam van de resource. | 
+| Resource | De naam van de resource. | 
 | ResourceType | De naam van het resource type. | 
 
 ### <a name="update-agent"></a>Agent bijwerken
@@ -92,12 +92,12 @@ Er wordt een record met een type `UpdateAgent` gemaakt met details van de Update
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSVersion | De versie van het besturings systeem. |
-| server | |
+| Server | |
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *Operations Manager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. |
 | TimeGenerated | De datum en tijd waarop de record is gemaakt. |
-| Type | *Update* | 
+| Type | *Bijwerken* | 
 | WindowsUpdateAgentVersion | De versie van de Windows Update-Agent. |
 | WSUSServer | Er worden fouten weer gegeven als de Windows Update-Agent een probleem heeft met het oplossen van problemen. |
 
@@ -117,7 +117,7 @@ Er wordt een record met een type `UpdateRunProgress` gemaakt die de update-imple
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSType | Hiermee geeft u het type besturings systeem, *Windows* of *Linux*. | 
 | Product | De producten waarvoor de update van toepassing is. |
-| Bron | De naam van de resource. | 
+| Resource | De naam van de resource. | 
 | ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
 | ResourceProvider | Hiermee geeft u de resource provider op. | 
 | ResourceType | De naam van het resource type. | 
@@ -144,11 +144,11 @@ Er wordt een record met een type `UpdateSummary` gemaakt die een update overzich
 | CriticalUpdatesMissing | Aantal ontbrekende essentiële updates die van toepassing zijn. | 
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | NETRuntimeVersion | De versie van .NET Framework geïnstalleerd op de Windows-computer. |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent*<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *Versie* | 
+| OldestMissingSecurityUpdateInDays | Totaal aantal dagen voor de oudste update dat is gedetecteerd als van toepassing die niet is geïnstalleerd. |
 | OsVersion | De versie van het besturings systeem. |
 | OtherUpdatesMissing | Aantal gedetecteerde updates dat ontbreekt. |
-| Bron |  De naam van de resource. | 
+| Resource |  De naam van de resource. | 
 | ResourceGroup | De naam van de resource groep waarvan de resource lid is. |
 | ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
 | ResourceProvider | Hiermee geeft u de resource provider op. |
@@ -192,7 +192,7 @@ Heartbeat
 Op een Windows-computer kunt u de volgende informatie controleren om de agent connectiviteit met Azure Monitor-logboeken te controleren:
 
 1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
-2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan of de computer is geregistreerd bij de Log Analytics-werkruimte en of deze de configuratie ontvangt.
+2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan dat de computer is geregistreerd bij de Log Analytics-werk ruimte en dat er configuratie wordt ontvangen.
 
 Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
 

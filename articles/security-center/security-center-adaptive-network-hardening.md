@@ -1,6 +1,6 @@
 ---
 title: Adaptieve netwerk beveiliging in Azure Security Center | Microsoft Docs
-description: Meer informatie over de beveiliging, op basis van werkelijke verkeers patronen, uw NSG-regels (netwerk beveiligings groepen) en het verbeteren van uw beveiligings postuur.
+description: Meer informatie over het gebruik van werkelijke verkeers patronen om uw NSG-regels (netwerk beveiligings groepen) te beveiligen en uw beveiligings postuur verder te verbeteren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559280"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139586"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
@@ -30,10 +30,12 @@ Adaptieve netwerk beveiliging biedt aanbevelingen voor verdere beveiliging van d
 
 Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poort 22 toestaat. De aanbeveling voor adaptieve netwerk beveiliging, op basis van de analyse, zou het bereik moeten beperken en verkeer van 140.23.30.10/29 kunnen toestaan. Dit is een smallere IP-bereik en weigert al het andere verkeer naar die poort.
 
-![weer gave netwerk beveiliging](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+>[!TIP]
+> Aanbevelingen voor adaptieve netwerk beveiliging worden alleen ondersteund op specifieke poorten. Zie voor de volledige lijst [welke poorten worden ondersteund?](#which-ports-are-supported) hieronder. 
 
-> [!NOTE]
-> Aanbevelingen voor adaptieve netwerk beveiliging worden ondersteund op de volgende poorten: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
+
+![Weer gave netwerk beveiliging](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Waarschuwingen en regels voor adaptieve netwerk beveiliging weer geven
 
@@ -73,7 +75,7 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
     ![regels afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Een regel <a name ="modify-rule"></a> wijzigen
+### Een regel <a name ="modify-rule"> </a> wijzigen
 
 Mogelijk wilt u de para meters van een regel die is aanbevolen wijzigen. Het is bijvoorbeeld mogelijk dat u de aanbevolen IP-bereiken wilt wijzigen.
 
@@ -93,20 +95,20 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 
 1. Als u een aantal para meters van een regel wilt wijzigen, klikt u op het tabblad **regels** op de drie puntjes (...) aan het einde van de rij van de regel en klikt u op **bewerken**.
 
-   ![Regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. In het venster **regel bewerken** werkt u de details bij die u wilt wijzigen en klikt u op **Opslaan**.
 
    > [!NOTE]
    > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op **afdwingen** klikken (zoals in de volgende stap wordt uitgelegd).
 
-   ![Regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkte regel en klikt u op **afdwingen**.
 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Een nieuwe regel <a name ="add-rule"></a> toevoegen
+### Een nieuwe regel <a name ="add-rule"> </a> toevoegen
 
 U kunt een regel ' toestaan ' toevoegen die niet wordt aanbevolen door Security Center.
 
@@ -129,7 +131,7 @@ U kunt een regel ' toestaan ' toevoegen die niet wordt aanbevolen door Security 
     ![regel afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Een regel <a name ="delete-rule"></a> verwijderen
+### Een regel <a name ="delete-rule"> </a> verwijderen
 
 Als dat nodig is, kunt u een aanbevolen regel voor de huidige sessie verwijderen. U kunt bijvoorbeeld bepalen dat het Toep assen van een voorgestelde regel legitiem verkeer kan blok keren.
 
@@ -139,11 +141,72 @@ Als dat nodig is, kunt u een aanbevolen regel voor de huidige sessie verwijderen
 
     ![beveiligings regels](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
-
-
-
-
-
-
  
 
+## <a name="which-ports-are-supported"></a>Welke poorten worden ondersteund?
+
+Aanbevelingen voor adaptieve netwerk beveiliging worden alleen ondersteund op specifieke poorten. Deze tabel bevat de volledige lijst:
+
+|Poort|Protocol|Gekoppelde service|
+|:---:|:----:|:----|
+|13|UDP|Daytime-service|
+|17|UDP|QOTD-Protocol|
+|19|UDP|Protocol voor kosten|
+|22|TCP|SSH|
+|23|TCP|Via|
+|53|UDP|DNS|
+|69|UDP|TFTP|
+|81|TCP|Potentieel schadelijk (TOR-eind knooppunt)|
+|111|TCP/UDP|RPC|
+|119|TCP|NNTP|
+|123|UDP|NTP|
+|135|TCP/UDP|Endpoint Mapper; RPC'S DCE|
+|137|TCP/UDP|NetBIOS-naam service|
+|138|TCP/UDP|NetBIOS-data gram service|
+|139|TCP|NetBIOS-sessie service|
+|161|TCP/UDP|SNMP|
+|162|TCP/UDP|SNMP|
+|389|TCP|LDAP|
+|445|TCP|SMB|
+|512|TCP|Rexec|
+|514|TCP|Externe shell|
+|593|TCP/UDP|HTTP RPC|
+|636|TCP|LDAP|
+|873|TCP|Rsync|
+|1433|TCP|MS SQL|
+|1434|UDP|MS SQL|
+|1900|UDP|SSDP|
+|1900|UDP|SSDP|
+|2049|TCP/UDP|NFS|
+|2301|TCP|Compaq-beheer service|
+|2323|TCP|3D-nfsd|
+|2381|TCP|Compaq-beheer service|
+|3268|TCP|LDAP|
+|3306|TCP|MySQL|
+|3389|TCP|RDP|
+|4333|TCP|mSQL|
+|5353|UDP|mDNS|
+|5432|TCP|PostgreSQL|
+|5555|TCP|Persoonlijke agent; HP OmniBack|
+|5800|TCP|VNC|
+|5900|TCP|Externe framebuffer; VNC|
+|5900|TCP|VNC|
+|5985|TCP|Windows Powershell|
+|5986|TCP|Windows Powershell|
+|6379|TCP|Redis|
+|6379|TCP|Redis|
+|7000|TCP|Cassandra|
+|7001|TCP|Cassandra|
+|7199|TCP|Cassandra|
+|8081|TCP|CosmosDB Sun-proxy beheerder|
+|8089|TCP|Splunk|
+|8545|TCP|Mogelijk schadelijk (Cryptominer)|
+|9042|TCP|Cassandra|
+|9160|TCP|Cassandra|
+|9300|TCP|Elasticsearch|
+|11211|UDP|Memcached|
+|16379|TCP|Redis|
+|26379|TCP|Redis|
+|27017|TCP|MongoDB|
+|37215|TCP|Mogelijk schadelijk|
+||||

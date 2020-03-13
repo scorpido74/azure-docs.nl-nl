@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 7a82c8af518ec062eb38f921ebf85848d10da129
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204474"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Downloadbare Infographic: basisbeginselen van Machine Learning met algoritmevoorbeelden
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Download dit overzicht infographic eenvoudig te begrijpen van de basisprincipes van machine learning voor meer informatie over populaire algoritmen gebruikt om veelvoorkomende machine learning vragen te beantwoorden. Algoritmevoorbeelden laten zien hoe de machine learning voor beginners te begrijpen welke algoritmen moet worden gebruikt en waarvoor ze gebruikt.
 

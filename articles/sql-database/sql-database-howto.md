@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082434"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209422"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database gebruiken
 
@@ -35,7 +35,7 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 - [SQL Data Sync](sql-database-sync-data.md)
 - [Data Sync-agent](sql-database-data-sync-agent.md)
 - [Schema wijzigingen repliceren](sql-database-update-sync-schema.md)
-- [Controleren met OMS](sql-database-sync-monitor-oms.md)
+- [Bewaken met OMS](sql-database-sync-monitor-oms.md)
 - [Aanbevolen procedures voor gegevens synchronisatie](sql-database-best-practices-data-sync.md)
 - [Problemen met gegevens synchronisatie oplossen](sql-database-troubleshoot-data-sync.md)
 
@@ -43,7 +43,7 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 
 - [Hand matige afstemming](sql-database-performance-guidance.md)
 - [Dmv's gebruiken om prestaties te bewaken](sql-database-monitoring-with-dmvs.md)
-- [Query opslag gebruiken om de prestaties te bewaken](sql-database-operate-query-store.md)
+- [Query opslag gebruiken om de prestaties te bewaken](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Prestaties oplossen met Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Intelligent Insights diagnostische logboek gebruiken](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [OLTP-ruimte in het geheugen bewaken](sql-database-in-memory-oltp-monitoring.md)
@@ -67,7 +67,7 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 - [OLTP in het geheugen configureren](sql-database-in-memory-oltp-migration.md)
 - [Azure Automation configureren](sql-database-manage-automation.md)
 
-## <a name="develop-applications"></a>Toepassingen ontwerpen
+## <a name="develop-applications"></a>Toepassingen ontwikkelen
 
 - [Connectiviteit](sql-database-libraries.md)
 - [Spark-connector gebruiken](sql-database-spark-connector.md)

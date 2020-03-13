@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826415"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214489"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Azure Monitor-logboeken instellen en gebruiken met een SaaS-app met meerdere tenants SQL Database
 
@@ -41,7 +41,7 @@ Raadpleeg de [zelf studie over prestatie bewaking en-beheer](saas-dbpertenant-pe
 
 Voor Azure SQL Database zijn bewaking en waarschuwingen beschikbaar in data bases en Pools in de Azure Portal. Deze ingebouwde bewaking en waarschuwingen zijn handig, maar het is ook een specifieke resource. Dit betekent dat het minder goed geschikt is voor het bewaken van grote installaties of voor een uniforme weer gave van resources en abonnementen.
 
-Voor scenario's met grote volumes kunt u Azure Monitor Logboeken gebruiken voor bewaking en waarschuwingen. Azure Monitor is een afzonderlijke Azure-service waarmee u analyses kunt uitvoeren via Diagnostische logboeken en telemetrie die zijn verzameld in een werk ruimte van mogelijk veel services. Azure Monitor-logboeken bieden een ingebouwde query taal en hulpprogram ma's voor gegevens visualisatie die de analyse van operationele gegevens mogelijk maken. De oplossing SQL Analytics biedt verschillende vooraf gedefinieerde weer gaven en query's voor Elastic pool-en database bewaking en waarschuwingen. Azure Monitor Logboeken biedt ook een aangepaste weergave ontwerper.
+Voor scenario's met grote volumes kunt u Azure Monitor Logboeken gebruiken voor bewaking en waarschuwingen. Azure Monitor is een afzonderlijke Azure-service waarmee u analyses kunt uitvoeren via Logboeken die zijn verzameld in een werk ruimte van mogelijk veel services. Azure Monitor-logboeken bieden een ingebouwde query taal en hulpprogram ma's voor gegevens visualisatie die de analyse van operationele gegevens mogelijk maken. De oplossing SQL Analytics biedt verschillende vooraf gedefinieerde weer gaven en query's voor Elastic pool-en database bewaking en waarschuwingen. Azure Monitor Logboeken biedt ook een aangepaste weergave ontwerper.
 
 OMS-werkruimten worden nu aangeduid als Log Analytics-werkruimten. Log Analytics-werk ruimten en analyse oplossingen worden geopend in de Azure Portal. De Azure Portal is het nieuwere toegangs punt, maar het is mogelijk dat de portal van Operations Management Suite op sommige gebieden zich achter het bevindt.
 
@@ -78,7 +78,7 @@ U kunt nu Azure Monitor-Logboeken openen in de Azure Portal. Het duurt enkele mi
 
 In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de telemetrie te bekijken die is verzameld voor de data bases en groepen.
 
-1. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om log Analytics-werk ruimte te openen. Zoek vervolgens naar Log Analytics.
+1. Blader naar de [Azure-portal](https://portal.azure.com). Selecteer **alle services** om log Analytics-werk ruimte te openen. Zoek vervolgens naar Log Analytics.
 
    ![Log Analytics-werk ruimte openen](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
@@ -93,7 +93,7 @@ In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de tele
 
 1. Selecteer de tegel **Azure SQL-analyse** om deze te openen.
 
-    ![Overzichts tegel](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Overzichttegel](media/saas-dbpertenant-log-analytics/overview.png)
 
 1. De weer gaven in de oplossing schuiven zijwaarts, met hun eigen interne schuif balk aan de onderkant. Vernieuw de pagina als dat nodig is.
 
@@ -128,7 +128,7 @@ In deze oefening opent u Log Analytics werk ruimte in de Azure Portal om de tele
 
 1. Ga terug naar de werk ruimte Log Analytics en selecteer **OMS-Portal** om de werk ruimte daar te openen.
 
-    ![Log Analytics werk ruimte](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics-werkruimte](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 In de werk ruimte Log Analytics kunt u het logboek en de metrische gegevens verder verkennen. 
 
@@ -149,7 +149,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 Probeer de [zelf studie voor Tenant-analyses](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Aanvullende zelf studies die voortbouwen op de initiële Wingtip tickets SaaS data base-per-Tenant toepassings implementatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Monitor-logboeken](../azure-monitor/insights/azure-sql.md)

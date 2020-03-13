@@ -1,5 +1,6 @@
 ---
 title: Wat is Azure Virtual Network NAT?
+titlesuffix: Azure Virtual Network
 description: Overzicht van Virtual Network NAT-functies,-bronnen,-architectuur en-implementatie. Meer informatie over de werking van Virtual Network NAT en het gebruik van NAT-gateway bronnen in de Cloud.
 services: virtual-network
 documentationcenter: na
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359257"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216974"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Wat is Virtual Network NAT (open bare preview)?
+# <a name="what-is-virtual-network-nat"></a>Wat is Virtual Network NAT?
 
 Virtual Network NAT (Network Address Translation) vereenvoudigt alleen uitgaande internet connectiviteit voor virtuele netwerken. Wanneer de configuratie op een subnet is geconfigureerd, gebruikt alle uitgaande verbindingen uw opgegeven statische open bare IP-adressen.  Uitgaande verbindingen zijn mogelijk zonder load balancer of open bare IP-adressen die rechtstreeks zijn gekoppeld aan virtuele machines. NAT is volledig beheerd en zeer flexibel.
 
@@ -36,10 +37,6 @@ Virtual Network NAT (Network Address Translation) vereenvoudigt alleen uitgaande
 
 
 *Afbeelding: Virtual Network NAT*
-
-
->[!NOTE] 
->Virtual Network NAT is op dit moment beschikbaar als open bare preview. Het is momenteel alleen beschikbaar in een beperkt aantal [regio's](#region-availability). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-adressen voor alleen-uitgaand verkeer
 
@@ -125,48 +122,6 @@ U kunt de werking van uw NAT bewaken door middel van multidimensionale metrische
 
 Bij algemene Beschik baarheid is het NAT-gegevenspad ten minste 99,9% beschikbaar.
 
-## <a name = "region-availability"></a>Beschik baarheid van regio
-
-NAT is momenteel beschikbaar in deze regio's:
-
-- Europa - west
-- Japan - oost
-- US - oost 2
-- US - west
-- US - west 2
-- US - west-centraal
-
-## <a name = "enable-preview"></a>Deelname aan open bare preview
-
-Abonnementen moeten worden geregistreerd om deel te nemen aan de open bare preview.  Deelname vereist een proces met twee stappen en instructies worden hieronder vermeld voor Azure CLI en Azure PowerShell.  Het kan enkele minuten duren voordat de activering is voltooid.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. abonnement registreren voor open bare preview
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. registratie activeren
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. abonnement registreren voor open bare preview
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. registratie activeren
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Prijzen
 
@@ -188,12 +143,13 @@ NAT wordt ondersteund via normale ondersteunings kanalen.
 
 ## <a name="feedback"></a>Feedback
 
-We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de open bare preview-versie](https://aka.ms/natfeedback) met ons.  En u kunt Voorst Ellen en stemmen op wat we moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
+We willen weten hoe we de service kunnen verbeteren. Voorst Ellen en stemmen op wat we moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
+
 
 ## <a name="limitations"></a>Beperkingen
 
 * NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
-* De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met IPv6-voor voegsel.
+* De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voor voegsel.
 * Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 * NAT kan niet meerdere virtuele netwerken omvatten.
 
@@ -201,4 +157,4 @@ We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de o
 
 * Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
 * [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
-* [Feedback geven over de open bare preview](https://aka.ms/natfeedback).
+

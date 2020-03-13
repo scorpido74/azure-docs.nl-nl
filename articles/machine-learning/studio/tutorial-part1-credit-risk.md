@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204253"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelf studie 1: krediet risico voors pellen-Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -129,9 +131,9 @@ Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden 
 
 8. Selecteer als gegevenstype **Generic CSV File With no header (.nh.csv)** (generiek CSV-bestand zonder koptekst).
 
-9. Voeg desgewenst een beschrijving toe.
+9. Voeg indien gewenst een beschrijving toe.
 
-10. Klik op het vinkje **OK**.  
+10. Klik op het **OK**-selectievakje.  
 
     ![De gegevensset uploaden](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
@@ -207,7 +209,7 @@ Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op we
    ![Kolomkiezer met alle kolommen geselecteerd](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. Klik op het vinkje **OK**.
+1. Klik op het **OK**-selectievakje.
 
 1. Zoek in het deelvenster **Properties** de parameter **New column names** (nieuwe kolomnamen). Voer in dit veld een lijst met namen in voor de 21 kolommen in de gegevensset, gescheiden door komma's, in de volgorde van de kolommen. U kunt de kolomnamen verkrijgen uit de datasetdocumentatie op de UCI-website, of voor het gemak kunt u de volgende lijst kopiëren en plakken:  
 

@@ -4,11 +4,11 @@ description: Grafieken in metrische Explorer interpreteren en metrische Explorer
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275891"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Metrische gegevens in Application Insights verkennen
 Metrische gegevens in [Application Insights][start] worden gemeten waarden en aantallen gebeurtenissen die worden verzonden via telemetrie van uw toepassing. Ze helpen prestatie problemen te detecteren en trends te bekijken in de manier waarop uw toepassing wordt gebruikt. Er is een breed scala aan standaard waarden en u kunt ook uw eigen aangepaste metrische gegevens en gebeurtenissen maken.

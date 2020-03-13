@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: fde8829da3e523ced44143db0dee6b93cf9152bd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 466f870f257ca4d93764cbfdb4208e8cf1f75553
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205042"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account (preview-versie)
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
 Met behulp van een persoonlijke Azure-koppeling kunt u verbinding maken met een Azure Cosmos-account via een persoonlijk eind punt. Het persoonlijke eind punt is een reeks privé-IP-adressen in een subnet binnen het virtuele netwerk. Vervolgens kunt u de toegang tot een Azure Cosmos-account beperken via privé-IP-adressen. Wanneer een persoonlijke koppeling wordt gecombineerd met een beperkt NSG-beleid, vermindert dit het risico van gegevens exfiltration. Zie het artikel over een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) voor meer informatie over privé-eind punten.
 
@@ -22,6 +22,9 @@ Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Cosmo
 U kunt verbinding maken met een Azure Cosmos-account dat is geconfigureerd met een persoonlijke koppeling met behulp van de automatische of hand matige goedkeurings methode. Zie de sectie [goedkeurings werk stroom](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) van de documentatie van de persoonlijke koppeling voor meer informatie. 
 
 In dit artikel worden de stappen beschreven voor het maken van een persoonlijk eind punt. Hierbij wordt ervan uitgegaan dat u de automatische goedkeurings methode gebruikt.
+
+> [!NOTE]
+> Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar in ondersteunde regio's voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Een persoonlijk eind punt maken met behulp van de Azure Portal
 
@@ -33,7 +36,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
 
    ![Selecties voor het maken van een persoonlijk eind punt in de Azure Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. Voer in het deel venster **een persoonlijk eind punt maken (preview)-basis beginselen** de volgende gegevens in of Selecteer deze:
+1. Voer in het deel venster **een persoonlijk eind punt maken-basis beginselen** de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -57,7 +60,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     |||
 
 1. Selecteer **volgende: Configuratie**.
-1. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
+1. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -349,7 +352,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
         },
         "VNetId": {
             "type": "string"
-        }       
+        }        
     },
     "resources": [
         {
@@ -374,7 +377,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
                     "id": "[parameters('VNetId')]"
                 }
             }
-        }       
+        }        
     ]
 }
 ```
@@ -391,7 +394,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
         },
         "IPAddress": {
             "type":"string"
-        }       
+        }        
     },
     "resources": [
          {
@@ -406,7 +409,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
                     }
                 ]
             }
-        }   
+        }    
     ]
 }
 ```
@@ -548,29 +551,13 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Een persoonlijk eind punt bijwerken wanneer u een regio toevoegt of verwijdert
 
-Als u regio's wilt toevoegen aan of verwijderen uit een Azure Cosmos-account, moet u DNS-vermeldingen voor dat account toevoegen of verwijderen. Werk deze wijzigingen dienovereenkomstig bij in het persoonlijke eind punt met behulp van de volgende stappen:
-
-1. Wanneer de beheerder van de Azure Cosmos DB regio's toevoegt of verwijdert, ontvangt de netwerk beheerder een melding over de wijzigingen die in behandeling zijn. Voor het persoonlijke eind punt dat is toegewezen aan een Azure Cosmos-account, wordt de waarde van de eigenschap `ActionsRequired` gewijzigd van `None` in `Recreate`. Vervolgens werkt de netwerk beheerder het persoonlijke eind punt bij door een PUT-aanvraag uit te geven met dezelfde resource manager-nettolading die is gebruikt om deze te maken.
-
-1. Nadat het persoonlijke eind punt is bijgewerkt, kunt u de privé-DNS-zone van het subnet bijwerken om de toegevoegde of verwijderde DNS-vermeldingen en de bijbehorende privé-IP-adressen weer te geven.
+Als u regio's wilt toevoegen aan of verwijderen uit een Azure Cosmos-account, moet u DNS-vermeldingen voor dat account toevoegen of verwijderen. Nadat er regio's zijn toegevoegd of verwijderd, kunt u de privé-DNS-zone van het subnet bijwerken om de toegevoegde of verwijderde DNS-vermeldingen en de bijbehorende privé-IP-adressen weer te geven.
 
 Stel bijvoorbeeld dat u een Azure Cosmos-account in drie regio's implementeert: "VS-West," "centraal VS" en "Europa-west". Wanneer u een persoonlijk eind punt voor uw account maakt, worden vier privé Ip's gereserveerd in het subnet. Er is één IP-adres voor elk van de drie regio's en er is één IP-adres voor het neutraal-eind punt globaal/regio.
 
-U kunt later een nieuwe regio (bijvoorbeeld ' vs Oost ') toevoegen aan het Azure Cosmos-account. De nieuwe regio is standaard niet toegankelijk vanuit het bestaande persoonlijke eind punt. De beheerder van het Azure Cosmos-account moet de verbinding met het persoonlijke eind punt vernieuwen voordat deze vanuit de nieuwe regio wordt geopend. 
+U kunt later een nieuwe regio (bijvoorbeeld ' vs Oost ') toevoegen aan het Azure Cosmos-account. Nadat u de nieuwe regio hebt toegevoegd, moet u een bijbehorende DNS-record toevoegen aan uw privé-DNS-zone of uw aangepaste DNS.
 
-Wanneer u de ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` opdracht uitvoert, bevat de uitvoer van de opdracht de para meter `actionsRequired`. Deze para meter is ingesteld op `Recreate`. Deze waarde geeft aan dat het persoonlijke eind punt moet worden vernieuwd. Vervolgens voert de beheerder van het Azure Cosmos-account de `Set-AzPrivateEndpoint` opdracht uit om het vernieuwen van het persoonlijke eind punt te activeren.
-
-```powershell
-$pe = Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>
-
-Set-AzPrivateEndpoint -PrivateEndpoint $pe
-```
-
-Er wordt automatisch een nieuw privé-IP-adres gereserveerd in het subnet onder dit persoonlijke eind punt. De waarde voor `actionsRequired` wordt `None`. Als u geen persoonlijke bevat zone-integratie hebt (met andere woorden, als u een aangepaste privé-DNS-zone gebruikt), moet u uw persoonlijke DNS-zone configureren om een nieuwe DNS-record toe te voegen voor het privé-IP-adres dat overeenkomt met de nieuwe regio.
-
-U kunt dezelfde stappen gebruiken wanneer u een regio verwijdert. Het privé-IP-adres van de verwijderde regio wordt automatisch vrijgemaakt en de `actionsRequired` markering wordt `None`. Als u geen zone-integratie met een particuliere bevat hebt, moet u uw privé-DNS-zone configureren om de DNS-record voor de verwijderde regio te verwijderen.
-
-DNS-records in de privé-DNS-zone worden niet automatisch verwijderd wanneer een persoonlijk eind punt wordt verwijderd of een regio uit het Azure Cosmos-account wordt verwijderd. U moet de DNS-records hand matig verwijderen.
+U kunt dezelfde stappen gebruiken wanneer u een regio verwijdert. Nadat u de regio hebt verwijderd, moet u de bijbehorende DNS-record verwijderen uit uw privé-DNS-zone of uw aangepaste DNS.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
@@ -582,6 +569,8 @@ De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met 
   > Als u een persoonlijk eind punt wilt maken, moet u ervoor zorgen dat zowel het virtuele netwerk als het Azure Cosmos-account in ondersteunde regio's worden ondersteund.
 
 * Wanneer u een persoonlijke koppeling met een Azure Cosmos-account gebruikt via een directe modus verbinding, kunt u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt nog niet ondersteund.
+
+* Ondersteuning voor privé-eind punten is momenteel algemeen beschikbaar in ondersteunde regio's voor de verbindings modus voor de gateway. Voor de directe modus is deze beschikbaar als een preview-functie.
 
 * Wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, wordt een persoonlijk eind punt alleen ondersteund voor accounts op Server versie 3,6 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de notatie `*.mongo.cosmos.azure.com`). Privé koppeling wordt niet ondersteund voor accounts op Server versie 3,2 (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`). Als u een persoonlijke koppeling wilt gebruiken, moet u oude accounts migreren naar de nieuwe versie.
 

@@ -3,12 +3,12 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586441"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136953"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
@@ -49,7 +49,7 @@ Het **overzichts** dashboard Recovery Services kluis bevat tegels voor controle-
 De sectie bewaking toont de resultaten van de query's van vooraf gedefinieerde **back-upwaarschuwingen** en **back-uptaken** . De bewakings tegels bieden actuele informatie over:
 
 * Kritieke en waarschuwingen voor back-uptaken (in de afgelopen 24 uur)
-* Status vooraf controleren voor Azure-Vm's: Raadpleeg de [back-up-blog op pre-check status van back-ups](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)voor volledige informatie over de status van de controle vooraf.
+* Status vooraf controleren voor virtuele Azure-machines. Zie back-up van de status van de [controle vooraf](#backup-pre-check-status)voor meer informatie over de status van de controle vooraf.
 * De back-uptaken worden uitgevoerd en taken die in de afgelopen 24 uur zijn mislukt.
 
 De gebruiks tegels bieden:
@@ -62,6 +62,22 @@ Klik op de tegels (behalve back-upopslag) om het bijbehorende menu te openen. In
 ![Menu met back-upwaarschuwingen gefilterd op kritieke waarschuwingen](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 Het menu back-upwaarschuwingen, in de bovenstaande afbeelding, wordt gefilterd op: status is actief, ernst is kritiek en tijd is de vorige 24 uur.
+
+### <a name="backup-pre-check-status"></a>Status van voorafgaande controle voor back-up
+
+Back-ups vooraf controles Controleer de configuratie van uw Vm's op problemen die de back-ups nadelig kunnen beïnvloeden. Ze voegen deze informatie samen, zodat u deze rechtstreeks vanuit het dash board van Recovery Services kluis kunt bekijken en aanbevelingen voor corrigerende maat regelen moet geven om te zorgen voor geslaagde bestands consistentie of toepassings consistente back-ups. Ze hebben geen infra structuur nodig en er zijn geen extra kosten in rekening.  
+
+Voorafgaande controles van back-ups worden uitgevoerd als onderdeel van de geplande back-upbewerkingen voor uw virtuele Azure-machines. Ze worden afgesloten met een van de volgende statussen:
+
+* **Geslaagd**: deze status geeft aan dat de configuratie van uw virtuele machine moet leiden tot geslaagde back-ups en er geen corrigerende actie moet worden ondernomen.
+* **Waarschuwing**: deze status geeft een of meer problemen aan in de configuratie van de virtuele machine die *kunnen* leiden tot back-upfouten. Het biedt de *Aanbevolen* stappen om geslaagde back-ups te maken. Als u bijvoorbeeld niet de nieuwste VM-agent hebt geïnstalleerd, kan het maken van back-ups af en toe mislukken. Deze situatie heeft een waarschuwings status.
+* **Kritiek**: deze status geeft een of meer kritieke problemen aan in de configuratie van de virtuele machine *die leiden tot* back-upfouten en de *vereiste* stappen biedt om geslaagde back-ups te maken. Als er bijvoorbeeld sprake is van een netwerk probleem dat wordt veroorzaakt door een update naar de NSG-regels van een virtuele machine, zullen back-ups mislukken, omdat het voor komt dat de virtuele machine communiceert met de Azure Backup-service. Deze situatie heeft een kritieke status.
+
+Volg de onderstaande stappen om te beginnen met het oplossen van problemen die worden gerapporteerd door prechecks van back-ups voor back-ups van VM'S op uw Recovery Services kluis.
+
+* Selecteer de tegel **status van vooraf controleren van back-up (Azure vm's)** op het dash board van de Recovery Services kluis.
+* Selecteer een virtuele machine met een pre-controle status van de back-up van **kritiek** of **waarschuwing**. Met deze actie wordt het deel venster **VM-Details** geopend.
+* Selecteer de melding op het deel venster boven aan het deel venster om de beschrijving van het configuratie probleem en de stappen voor het oplossen van problemen weer te geven.
 
 ## <a name="manage-backup-alerts"></a>Back-upwaarschuwingen beheren
 
@@ -272,4 +288,3 @@ De tegel back-upopslag in het dash board toont de opslag die wordt gebruikt in A
 
 * [Windows Server of Windows-client herstellen vanuit Azure](backup-azure-restore-windows-server.md)
 * Zie [Azure backup Overview](backup-introduction-to-azure-backup.md) (Engelstalig) voor meer informatie over Azure backup
-

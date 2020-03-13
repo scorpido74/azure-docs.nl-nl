@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269014"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -45,7 +45,7 @@ Voor klanten die migreren van on-premises bestands servers of het maken van nieu
 Als u van plan bent om de sleutel van het opslag account te gebruiken voor toegang tot uw Azure-bestands shares, kunt u het beste service-eind punten gebruiken zoals beschreven in de sectie [netwerken](#networking) .
 
 ## <a name="networking"></a>Netwerken
-Azure-bestands shares zijn overal toegankelijk via het open bare eind punt van het opslag account. Dit betekent dat geverifieerde aanvragen, zoals aanvragen die zijn geautoriseerd door de aanmeldings identiteit van een gebruiker, veilig kunnen zijn van binnen of buiten Azure. In veel klanten omgevingen kan een initiële koppeling van de Azure-bestands share op uw on-premises werk station mislukken, zelfs als de koppeling van Azure-Vm's slaagt. De reden hiervoor is dat veel organisaties en Internet serviceproviders (Isp's) de poort blok keren die door SMB wordt gebruikt om te communiceren, poort 445. 
+Azure-bestands shares zijn overal toegankelijk via het open bare eind punt van het opslag account. Dit betekent dat geverifieerde aanvragen, zoals aanvragen die zijn geautoriseerd door de aanmeldings identiteit van een gebruiker, veilig kunnen zijn van binnen of buiten Azure. In veel klanten omgevingen kan een initiële koppeling van de Azure-bestands share op uw on-premises werk station mislukken, zelfs als de koppeling van Azure-Vm's slaagt. De reden hiervoor is dat veel organisaties en Internet serviceproviders (Isp's) de poort blok keren die door SMB wordt gebruikt om te communiceren, poort 445. Ga naar [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) voor een overzicht van welke internetproviders toegang via poort 445 toestaan en welke niet.
 
 Als u de toegang tot uw Azure-bestands share wilt blok keren, hebt u twee belang rijke opties:
 

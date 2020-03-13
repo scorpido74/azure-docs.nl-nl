@@ -3,12 +3,12 @@ title: Live data (preview) weer geven met Azure Monitor voor containers | Micros
 description: In dit artikel wordt een overzicht gegeven van de real-time weer gave van Kubernetes-logboeken, gebeurtenissen en pod-metrische gegevens zonder gebruik te maken van kubectl in Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404756"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216555"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes-logboeken, gebeurtenissen en metrische gegevens over pod in realtime weer geven
 
@@ -26,7 +26,7 @@ Lees onze [installatie handleiding](container-insights-livedata-setup.md)voor hu
 
 ## <a name="live-data-preview-functionality-overview"></a>Overzicht van de functionaliteit van live data (preview)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 ![Filter voorbeeld van live data console-deel venster](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -65,7 +65,7 @@ Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (
 
 De titel van het deel venster toont de naam van de pod waarin de container is gegroepeerd.
 
-## <a name="view-events"></a>Evenementen bekijken
+## <a name="view-events"></a>Gebeurtenissen weergeven
 
 U kunt real-time gebeurtenis gegevens weer geven wanneer deze worden gegenereerd door de container Engine vanuit de weer gave **knoop punten**, **controllers**, **containers**en **implementaties (preview)** wanneer een container, Pod, knoop punt, replicaset, daemonset, taak, CronJob of implementatie is geselecteerd. Voer de volgende stappen uit om gebeurtenissen weer te geven.
 
@@ -84,7 +84,7 @@ Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (
     
 Als het object dat u hebt geselecteerd een container is, selecteert u de optie **gebeurtenissen** in het deel venster. Als u een knoop punt, Pod of controller hebt geselecteerd, wordt het weer geven van gebeurtenissen automatisch geselecteerd. 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![Deel venster Eigenschappen van paneel weer geven gebeurtenissen](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 De titel van het deel venster toont de naam van de pod waarin de container is gegroepeerd.
 
@@ -113,6 +113,6 @@ Nadat de verificatie is voltooid, wordt het console venster voor Live gegevens (
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Om door te gaan met het leren over het gebruik van Azure Monitor en controleren van andere aspecten van uw AKS-cluster [weergave Azure Kubernetes Service health](container-insights-analyze.md).
+- Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor en het controleren van andere aspecten van uw AKS-cluster.
 
 - Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken om waarschuwingen, visualisaties of verdere analyse van uw clusters te maken.

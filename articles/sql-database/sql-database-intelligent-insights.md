@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: d7b9ada17871dc7882209b7a8a449a8edcd61a94
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587325"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214079"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
 
-Azure SQL Database Intelligent Insights kunt u zien wat er gebeurt met de prestaties van uw SQL Database en beheerde exemplaar database.
+Azure SQL Database Intelligent Insights kunt u zien wat er gebeurt met de prestaties van uw data base.
 
-Intelligent Insights maakt gebruik van ingebouwde intelligentie om continu database gebruik te bewaken door middel van kunst matige intelligentie en detectie van storende gebeurtenissen die de prestaties nadelig beïnvloeden. Eenmaal gedetecteerd, wordt een gedetailleerde analyse uitgevoerd waarmee een diagnose logboek wordt gegenereerd met een intelligente evaluatie van het probleem. Deze evaluatie bestaat uit een analyse van de hoofd oorzaak van het prestatie probleem van de data base en, waar mogelijk, aanbevelingen voor betere prestaties.
+Intelligent Insights maakt gebruik van ingebouwde intelligentie om continu database gebruik te bewaken door middel van kunst matige intelligentie en detectie van storende gebeurtenissen die de prestaties nadelig beïnvloeden. Eenmaal gedetecteerd, wordt er een gedetailleerde analyse uitgevoerd waarmee een Intelligent Insights resource logboek wordt gegenereerd (SQLInsights genoemd) met een intelligente evaluatie van het probleem. Deze evaluatie bestaat uit een analyse van de hoofd oorzaak van het prestatie probleem van de data base en, waar mogelijk, aanbevelingen voor betere prestaties.
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Wat kan er Intelligent Insights voor u doen?
 
@@ -38,17 +38,17 @@ Intelligent Insights is een unieke mogelijkheid van ingebouwde intelligentie van
 
 ## <a name="how-does-intelligent-insights-work"></a>Hoe werkt Intelligent Insights
 
-Intelligent Insights de prestaties van de data base geanalyseerd door de data base-workload van het afgelopen uur te vergelijken met de afgelopen zeven dagen werk belasting voor de basis lijn. De werk belasting van de data base bestaat uit query's die het belangrijkst zijn voor de prestaties van de data base, zoals de meest herhaalde en grootste query's. Omdat elke Data Base uniek is op basis van de structuur, de gegevens, het gebruik en de toepassing, is elke basis van de werk belasting die wordt gegenereerd, specifiek en uniek voor een afzonderlijk exemplaar. Intelligent Insights, onafhankelijk van de basis lijn van de werk belasting, bewaakt ook absolute operationele drempels en detecteert problemen met buitensporige wacht tijden, kritieke uitzonde ringen en problemen met query parameterizations die van invloed kunnen zijn op de prestaties.
+Intelligent Insights de prestaties van de data base geanalyseerd door de data base-workload van het afgelopen uur te vergelijken met de afgelopen zeven dagen werk belasting voor de basis lijn. De werk belasting van de data base bestaat uit query's die het belangrijkst zijn voor de prestaties van de data base, zoals de meest herhaalde en grootste query's. Omdat elke Data Base uniek is op basis van de structuur, gegevens, het gebruik en de toepassing, is elke werk belasting basis die wordt gegenereerd specifiek en uniek voor die werk belasting. Intelligent Insights, onafhankelijk van de basis lijn van de werk belasting, bewaakt ook absolute operationele drempels en detecteert problemen met buitensporige wacht tijden, kritieke uitzonde ringen en problemen met query parameterizations die van invloed kunnen zijn op de prestaties.
 
 Wanneer er een probleem is opgetreden bij de uitvoering van een prestatie vermindering van meerdere waargenomen metrische gegevens met behulp van kunst matige intelligentie, wordt de analyse uitgevoerd. Er wordt een diagnostisch logboek gegenereerd met een intelligent inzicht in wat er gebeurt met uw data base. Met Intelligent Insights kunt u eenvoudig het prestatie probleem van de data base volgen tot oplossing. Elk gedetecteerde probleem wordt bijgehouden door de levens cyclus van de eerste detectie van het probleem en de controle van de prestatie verbetering tot de voltooiing ervan.
 
 ![Werk stroom voor analyse van database prestaties](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-De metrische gegevens die worden gebruikt om prestatie problemen met de data base te meten en te detecteren, zijn gebaseerd op de query duur, time-outaanvragen, buitensporige wacht tijden en mislukte aanvragen. Zie de sectie [detectie metrieken](sql-database-intelligent-insights.md#detection-metrics) van dit document voor meer informatie over metrische gegevens.
+De metrische gegevens die worden gebruikt om prestatie problemen met de data base te meten en te detecteren, zijn gebaseerd op de query duur, time-outaanvragen, buitensporige wacht tijden en mislukte aanvragen. Zie [detectie gegevens](#detection-metrics)voor meer informatie over metrische gegevens.
 
-Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het diagnostische logboek met intelligente vermeldingen die bestaan uit de volgende eigenschappen:
+Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het SQLInsights-logboek met intelligente vermeldingen die bestaan uit de volgende eigenschappen:
 
-| Eigenschap             | Details              |
+| Eigenschap | Details |
 | :------------------- | ------------------- |
 | database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
 | Waargenomen tijds bereik | Begin-en eind tijd voor de periode van het gedetecteerde inzicht. |
@@ -59,12 +59,12 @@ Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het 
 | Hoofdoorzaakanalyse | Analyse van de hoofd oorzaak van het probleem dat in een lees bare indeling is geïdentificeerd. Sommige inzichten bevatten waar mogelijk een aanbeveling voor de verbetering van de prestaties. |
 |||
 
-Voor een praktische beschrijving over het gebruik van Intelligent Insights met Azure SQL-analyse en voor typische gebruiks scenario's raadpleegt u de Inge sloten video:
+Voor een praktische beschrijving over het gebruik van Intelligent Insights met Azure SQL-analyse en voor typische gebruiks scenario's raadpleegt u deze video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights schijnen bij het detecteren en oplossen van problemen met SQL Database prestaties. Zie [problemen oplossen Azure SQL database prestatie problemen met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)om intelligent Insights te gebruiken voor het oplossen van problemen met de SQL database en de prestaties van de beheerde exemplaar database.
+Intelligent Insights schijnen bij het detecteren en oplossen van problemen met SQL Database prestaties. Zie [problemen met de prestaties van Azure SQL database oplossen met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)om intelligent Insights te gebruiken om problemen met database prestaties op te lossen.
 
 ## <a name="intelligent-insights-options"></a>Intelligent Insights opties
 
@@ -72,32 +72,28 @@ Intelligent Insights beschik bare opties in Azure SQL Database zijn:
 
 | Intelligent Insights optie | Ondersteuning voor één data base en gepoolde data base | Ondersteuning voor instance data base |
 | :----------------------------- | ----- | ----- |
-| **Intelligent Insights configureren** : Configureer intelligent Insights analyse voor uw data bases. | Ja | Ja | 
-| **Stream inzichten op Azure SQL-analyse** --streamen naar Azure SQL-analyse bewakings oplossing voor Azure SQL database. | Ja | Ja | 
-| **Stream Insights naar Event hub** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja | 
+| **Intelligent Insights configureren** : Configureer intelligent Insights analyse voor uw data bases. | Ja | Ja |
+| **Stream inzichten op Azure SQL-analyse** --streamen naar Azure SQL-analyse bewakings oplossing voor Azure SQL database. | Ja | Ja |
+| **Stream Insights naar Event hub** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja |
 | **Stream inzichten om** inzicht te krijgen in azure Storage streamen om te Azure Storage voor verdere analyse en lange termijn archivering. | Ja | Ja |
 
-## <a name="configure-intelligent-insights"></a>Intelligent Insights configureren
+## <a name="configure-the-export-of-the-intelligent-insights-log"></a>De export van het Intelligent Insights-logboek configureren
 
-De uitvoer van de Intelligent Insights is een slim logboek voor diagnostische gegevens over prestaties. Dit logboek kan op verschillende manieren worden gebruikt om het te streamen naar Azure SQL-analyse, Azure Event Hubs en Azure Storage of een product van derden.
+De uitvoer van de Intelligent Insights kan worden gestreamd naar een van de volgende bestemmingen voor analyse:
 
-- Gebruik het product met [Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) om inzichten weer te geven via de gebruikers interface van de Azure Portal. Dit is de geïntegreerde Azure-oplossing en de meest gang bare manier om inzichten weer te geven.
-- Gebruik het product met Azure Event Hubs voor de ontwikkeling van aangepaste scenario's voor bewaking en waarschuwingen
-- Gebruik het product met Azure Storage voor het ontwikkelen van aangepaste toepassingen, bijvoorbeeld voor aangepaste rapportage, gegevens archivering op lange termijn, enzovoort.
+- Uitvoer die naar een Log Analytics-werk ruimte is gestreamd, kan worden gebruikt met [Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) om inzichten weer te geven via de gebruikers interface van de Azure Portal. Dit is de geïntegreerde Azure-oplossing en de meest gang bare manier om inzichten weer te geven.
+- Uitvoer die naar Azure Event Hubs is gestreamd, kan worden gebruikt voor de ontwikkeling van aangepaste bewakings-en waarschuwings scenario's
+- Uitvoer die naar Azure Storage is gestreamd, kan worden gebruikt voor aangepaste toepassings ontwikkeling, zoals aangepaste rapportage, gegevens archivering op lange termijn, enzovoort.
 
-Integratie van Intelligent Insights met andere producten Azure SQL-analyse, Azure Event hub, Azure Storage of producten van derden voor gebruik wordt uitgevoerd via eerst Intelligent Insights logboek registratie (het "SQLInsights"-logboek) in de diagnose de Blade instellingen van een Data Base en configureer vervolgens Intelligent Insights logboek gegevens die moeten worden gestreamd naar een van deze producten.
+Integratie van Azure SQL-analyse, Azure Event hub, Azure Storage of producten van derden voor gebruik wordt uitgevoerd via eerst Intelligent Insights logboek registratie (het "SQLInsights"-logboek) op de Blade Diagnostische instellingen van een Data Base en vervolgens Intelligent Insights logboek gegevens configureren die moeten worden gestreamd naar een van deze bestemmingen.
 
-Zie [Azure SQL database metrische gegevens en logboek registratie van diagnostische](sql-database-metrics-diag-logging.md)gegevens voor meer informatie over het inschakelen van intelligent Insights logboek registratie en het configureren van de logboeken die moeten worden gestreamd naar een verbruikte product.
+Zie voor meer informatie over het inschakelen van Intelligent Insights logboek registratie en het configureren van metrische gegevens en bron logboekgegevens die worden gestreamd naar een verbruikt product [Azure SQL database metrieken en logboek registratie voor diagnostische](sql-database-metrics-diag-logging.md)gegevens.
 
 ### <a name="set-up-with-azure-sql-analytics"></a>Instellen met Azure SQL-analyse
 
-Azure SQL-analyse oplossing biedt Graphical User Interface-, rapportage-en waarschuwings functies voor database prestaties, samen met de Intelligent Insights diagnostische logboek gegevens.
+Azure SQL-analyse oplossing biedt Graphical User Interface-, rapportage-en waarschuwings functies voor database prestaties met behulp van de Intelligent Insights resource logboek gegevens.
 
-> [!TIP]
-> Snel aan de slag: de eenvoudigste manier om aan de slag te gaan met behulp van Intelligent Insights is het gebruik ervan samen met Azure SQL-analyse waarmee u een Graphical User Interface krijgt voor problemen met de prestaties van de data base. Azure SQL-analyse oplossing toevoegen vanuit Marketplace, een werk ruimte in deze oplossing maken en vervolgens voor elke Data Base waarvoor u Intelligent Insights wilt inschakelen, streaming van het logboek "SQLInsights" configureren op de Blade Diagnostische instellingen van een Data Base naar de werk ruimte van Azure SQL-analyse.
->
-
-Een vereiste is om Azure SQL-analyse toe te voegen aan uw Azure Portal dash board van de Marketplace en om een werk ruimte te maken, raadpleegt u [Azure SQL-analyse configureren](../azure-monitor/insights/azure-sql.md#configuration)
+Azure SQL-analyse toevoegen aan uw Azure Portal dash board vanuit Marketplace en een werk ruimte maken, Zie [Azure SQL-analyse configureren](../azure-monitor/insights/azure-sql.md#configuration)
 
 Als u Intelligent Insights met Azure SQL-analyse wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Azure SQL-analyse werk ruimte die u in de vorige stap hebt gemaakt, raadpleegt u [Azure SQL database statistieken en diagnostische gegevens registratie](sql-database-metrics-diag-logging.md).
 
@@ -107,13 +103,13 @@ In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeve
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
-Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u [Logboeken van Azure Diagnostics naar Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u [Azure SQL database statistieken en diagnostische](sql-database-metrics-diag-logging.md) logboeken vastleggen en [streamen logboeken van Azure diagnostics naar Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
-Zie [wat te doen met metrische gegevens en Diagnostische logboeken in Event hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)om event hubs te gebruiken voor het instellen van aangepaste bewaking en waarschuwingen.
+Zie [wat te doen met metrische gegevens en Diagnostische logboeken in Event hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)om event hubs te gebruiken voor het instellen van aangepaste bewaking en waarschuwingen.
 
 ### <a name="set-up-with-azure-storage"></a>Instellen met Azure Storage
 
-Als u Intelligent Insights met opslag wilt gebruiken, moet u Intelligent Insights logboek gegevens zodanig configureren dat ze naar de opslag worden gestreamd. Zie [streamen in azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
+Als u Intelligent Insights met opslag wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar de opslag, raadpleegt u de [logboek registratie van Azure SQL database metrieken en diagnostieken](sql-database-metrics-diag-logging.md) en [streamen naar Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Aangepaste integraties van Intelligent Insights logboek
 
@@ -187,7 +183,5 @@ Als een van de bewaakte kritieke uitzonde ringen de absolute drempel waarden ove
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [oplossen van problemen met de prestaties van SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Gebruik het [Intelligent Insights SQL database prestatie logboek voor diagnostische gegevens](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Meer informatie over het [bewaken van SQL database met behulp van SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md).
+- Meer informatie over het [oplossen van problemen met de prestaties van SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304392"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136156"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Aanbevelingen en aanbevolen procedures voor Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Houd tijdens de implementatie fase rekening met de volgende aanbevelingen.
 
 |  |  |
 |--|--|
-| Aangepaste beleids regels bewerken met de extensie Azure AD B2C voor Visual Studio code | Down load Visual Studio code en deze [door de Community ontwikkelde uitbrei ding van de Visual Studio code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)). Hoewel dit geen officiële micro soft-product is, bevat de Azure AD B2C-extensie voor Visual Studio code verschillende functies waarmee u eenvoudiger aangepaste beleids regels kunt gebruiken. |
+| Aangepaste beleids regels bewerken met de extensie Azure AD B2C voor Visual Studio code | Down load Visual Studio code en deze [door de Community ontwikkelde uitbrei ding van de Visual Studio code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). Hoewel dit geen officiële micro soft-product is, bevat de Azure AD B2C-extensie voor Visual Studio code verschillende functies waarmee u eenvoudiger aangepaste beleids regels kunt gebruiken. |
 | Meer informatie over het oplossen van Azure AD B2C | Meer informatie over het [oplossen van problemen met aangepaste beleids regels](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) tijdens de ontwikkeling. Meer informatie over hoe een normale verificatie stroom eruit ziet en hulpprogram ma's gebruikt voor het detecteren van afwijkingen en fouten. Gebruik bijvoorbeeld [Application Insights](troubleshoot-with-application-insights.md) om de uitvoer logboeken van gebruikers ritten te controleren. |
 | Maak gebruik van onze bibliotheek met bewezen aangepaste beleids patronen | Zoek voor [beelden](https://github.com/azure-ad-b2c/samples) voor een aantal verbeterde gebruikers ritten van Azure AD B2C klant identiteit en toegangs beheer (CIAM). |
 

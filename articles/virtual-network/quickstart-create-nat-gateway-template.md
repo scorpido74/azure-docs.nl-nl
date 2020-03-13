@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 051b1bd22b2e04f92c02b63a416160d824d1be10
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082724"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216994"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Snelstartgids: een NAT-gateway maken-Resource Manager-sjabloon
 
 Ga aan de slag met Virtual Network NAT met behulp van een Azure Resource Manager sjabloon.  Met deze sjabloon implementeert u een virtueel netwerk, een NAT-gateway en een virtuele Ubuntu-machine. De virtuele Ubuntu-machine wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gateway.
-
->[!NOTE] 
->Azure Virtual Network NAT is op dit moment beschikbaar als open bare preview en beschikbaar in een beperkt aantal [regio's](https://azure.microsoft.com/global-infrastructure/regions/). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

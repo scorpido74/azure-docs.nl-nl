@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427403"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217848"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Logboek registratie inschakelen voor Azure Machine Learning Studio (klassieke) webservices
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Dit document bevat informatie over de logboek registratie van Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie, behalve een fout nummer en een bericht, waarmee u uw aanroepen naar de Machine Learning Studio (klassieke) Api's kunt oplossen.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Het inschakelen van logboekregistratie voor een webservice
@@ -29,29 +32,29 @@ U schakelt logboek registratie in via de [Web Services-portal van Azure machine 
 
    ![Nieuwe Web Services-ervaring-koppeling](./media/web-services-logging/new-web-services-experience-link.png)
 
-2. Klik op de bovenste menubalk **webservices** voor een nieuwe webservice, of klik op **klassieke webservices** voor een klassieke webservice.
+2. Klik in de bovenste menu balk op **webservices** voor een nieuwe webservice, of klik op **klassieke** webservices voor een klassieke webservice.
 
    ![Selecteer Nieuw of klassieke webservices](./media/web-services-logging/select-web-service.png)
 
 3. Klik op de naam van de webservice voor een nieuwe webservice. Voor een klassieke webservice, klikt u op de naam van de webservice en klik vervolgens op de volgende pagina op het juiste eindpunt.
 
-4. Klik op de bovenste menubalk **configureren**.
+4. Klik op de bovenste menu balk op **configureren**.
 
-5. Stel de **logboekregistratie inschakelen** optie naar *fout* (alleen om fouten te registreren) of *alle* (voor volledige logboekregistratie).
+5. Stel de optie **logboek registratie inschakelen** in op *fouten (alleen* logboeken vastleggen) of *alle* (voor volledige logboek registratie).
 
    ![Selecteer het logboekregistratieniveau van](./media/web-services-logging/enable-logging.png)
 
 6. Klik op **Opslaan**.
 
-7. Voor klassieke webservices, maakt u de **ml-diagnostics** container.
+7. Voor klassieke webservices maakt u de container **met ml-diagnose** .
 
-   Alle logboeken van de web service worden bewaard in een blobcontainer met de naam **ml-diagnostics** in het opslagaccount dat is gekoppeld aan de webservice. Deze container wordt de eerste keer dat u toegang de webservice tot gemaakt voor nieuwe webservices. Voor klassieke webservices moet u de container maken als deze nog niet bestaat. 
+   Alle logboeken van de webservice worden bewaard in een BLOB-container met de naam **ml-diagnostische gegevens** in het opslag account dat is gekoppeld aan de webservice. Deze container wordt de eerste keer dat u toegang de webservice tot gemaakt voor nieuwe webservices. Voor klassieke webservices moet u de container maken als deze nog niet bestaat. 
 
-   1. In de [Azure-portal](https://portal.azure.com), gaat u naar het opslagaccount dat is gekoppeld aan de webservice.
+   1. Ga in het [Azure Portal](https://portal.azure.com)naar het opslag account dat is gekoppeld aan de webservice.
 
    2. Klik onder **Blob Service** op **Containers**.
 
-   3. Als de container **ml-diagnostics** niet bestaat, klikt u op **+ Container**, geef de container de naam 'ml-diagnostics' en selecteer de **toegangstype** als 'Blob'. Klik op **OK**.
+   3. Als de container **ml-diagnostische gegevens** niet aanwezig is, klikt u op **+ container**, geeft u de container de naam ' ml-Diagnostics ' en selecteert u het **toegangs type** als ' BLOB '. Klik op **OK**.
 
       ![Een nieuwe container maken om uw Diagnostische logboeken op te slaan](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -61,9 +64,9 @@ U schakelt logboek registratie in via de [Web Services-portal van Azure machine 
 
 
 ## <a name="the-effects-of-enabling-logging"></a>De gevolgen van logboekregistratie inschakelen
-Als logboekregistratie is ingeschakeld, de diagnostische gegevens en fouten van de webservice-eindpunt worden vastgelegd in de **ml-diagnostics** blob-container in Azure Storage-Account is gekoppeld met de werkruimte van de gebruiker. Deze container bevat de diagnostische gegevens voor alle de web service-eindpunten voor alle werkruimten die zijn gekoppeld aan dit storage-account.
+Wanneer logboek registratie is ingeschakeld, worden de diagnostische gegevens en fouten van het eind punt van de webservice vastgelegd in de BLOB-container voor **milliliters diagnostiek** in het Azure Storage account dat is gekoppeld aan de werk ruimte van de gebruiker. Deze container bevat de diagnostische gegevens voor alle de web service-eindpunten voor alle werkruimten die zijn gekoppeld aan dit storage-account.
 
-De logboeken kunnen worden weergegeven met behulp van een van de verschillende hulpprogramma's die beschikbaar zijn voor het verkennen van een Azure Storage-Account. De eenvoudigste manier kan worden te navigeren naar het opslagaccount in Azure portal, klikt u op **Containers**, en klik vervolgens op de container **ml-diagnostics**.  
+De logboeken kunnen worden weergegeven met behulp van een van de verschillende hulpprogramma's die beschikbaar zijn voor het verkennen van een Azure Storage-Account. Het eenvoudigste kan zijn om naar het opslag account in de Azure Portal te gaan, op **containers**te klikken en vervolgens op de container **ml-diagnostische gegevens**te klikken.  
 
 ## <a name="log-blob-detail-information"></a>Logboekgegevens voor blob
 Elke blob in de container bevat de diagnostische gegevens voor exact één van de volgende acties:
@@ -78,7 +81,7 @@ De naam van elke blob heeft een voorvoegsel van de volgende notatie:
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-Waar _Logboektype_ is een van de volgende waarden:  
+Waarbij _logboek type_ een van de volgende waarden is:  
 
 * batch  
 * score/aanvragen  

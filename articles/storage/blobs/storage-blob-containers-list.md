@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690995"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135901"
 ---
 # <a name="list-blob-containers-with-net"></a>BLOB-containers weer geven met .NET
 
-Wanneer u de containers in een Azure Storage-account in uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten worden geretourneerd door Azure Storage. In dit artikel wordt beschreven hoe u containers kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage/client).  
+Wanneer u de containers in een Azure Storage-account in uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten worden geretourneerd door Azure Storage. In dit artikel wordt beschreven hoe u containers kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
 
 ## <a name="understand-container-listing-options"></a>Informatie over container opties
 

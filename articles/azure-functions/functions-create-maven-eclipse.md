@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227130"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136830"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Maak uw eerste functie met Java en eclips 
 
@@ -42,9 +42,9 @@ Het is raadzaam om ook [Azure functions core tools, versie 2](functions-run-loca
 1. Selecteer **archetype toevoegen** en voeg de vermeldingen voor de [Azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)toe.
     - Archetype-groeps-ID: com. micro soft. Azure
     - Archetype artefact-ID: Azure-functions-archetype
-    - Versie: gebruik de meest recente versie **1,22** van [de centrale opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![eclips maven maken](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klik op **OK** en klik vervolgens op **volgende**.  Vul waarden in voor alle velden, met inbegrip van `resourceGroup`, `appName`en `appRegion` (gebruik een andere appName dan **fabrikam-function-20170920120101928**) en sluit uiteindelijk **af**.
+    - Versie: Controleer en gebruik de meest recente versie van [de centrale opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![eclips Maven maken](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+1. Klik op **OK** en klik op **Volgende**.  Vul waarden in voor alle velden, met inbegrip van `resourceGroup`, `appName`en `appRegion` (gebruik een andere appName dan **fabrikam-function-20170920120101928**) en sluit uiteindelijk **af**.
     ![-eclips maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De gegenereerde code in het project is een eenvoudige, door [http getriggerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofd tekst van de TRIGGERENDE HTTP-aanvraag echot.

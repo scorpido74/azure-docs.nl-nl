@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217875"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Zelf studie 2: Credit risico modellen trainen-Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. U ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel twee van een driedelige reeks**.
 
@@ -86,7 +88,7 @@ U moet nu de [Train model][train-model] -module vertellen dat u wilt dat het mod
 
     ![Selecteer de kolom Kredietrisico voor de module Train Model](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
-1. Klik op het vinkje **OK**.
+1. Klik op het **OK**-selectievakje.
 
 ### <a name="two-class-support-vector-machine"></a>Two-Class Support Vector Machine
 
@@ -120,7 +122,7 @@ Configureer nu de module [Normal data-gegevens][normalize-data] :
 
 1. Klik op het plusteken (+) aan de rechterkant van deze rij. Hiermee maakt u een rij van de vervolgkeuzelijsten. Selecteer **Exclude** in de eerste vervolgkeuzelijst, selecteer **column names** in de tweede vervolgkeuzelijst en voer "Kredietrisico" in het tekstveld in. Hiermee wordt aangegeven dat de kolom Kredietrisico's moet worden genegeerd (u moet dit doen omdat deze kolom numeriek is en zou worden omgezet als u deze niet uitsluit).
 
-1. Klik op het vinkje **OK**.  
+1. Klik op het **OK**-selectievakje.  
 
     ![Selecteer de module Normalize Data](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 

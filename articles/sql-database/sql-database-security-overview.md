@@ -1,5 +1,5 @@
 ---
-title: Beveiligingsoverzicht
+title: Beveiligings overzicht
 description: Meer informatie over Azure SQL Database en SQL Server beveiliging, met inbegrip van de verschillen tussen de Cloud en SQL Server on-premises.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 348b8fc44628437cbbcfbcd39a26d048284aa60e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978572"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208859"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van Azure SQL Database beveiligings mogelijkheden
 
@@ -46,7 +46,7 @@ Met [regels voor virtuele netwerken](sql-database-vnet-service-endpoint-rule-ove
 > [!IMPORTANT]
 > Het beheren van data bases en database servers binnen Azure wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../role-based-access-control/overview.md)voor meer informatie over dit artikel.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Database ondersteunt twee typen verificatie:
 
@@ -138,11 +138,11 @@ SQL Database dynamische gegevens maskering beperkt de bloot stelling van gevoeli
 
 ### <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 
-Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-en financiële, gezondheids zorg, persoonlijke gegevens, enz.) kunnen een rol draaien in uw organisatie voor Information Protection stature. Dit kan dienen als infrastructuur om:
+Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-en financiële, gezondheids zorg, persoonlijke gegevens, enz.) kunnen een rol draaien in uw organisatie voor Information Protection stature. Dit kan dienen als infra structuur voor:
 
 - Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
 - Het beheren van toegang tot en het beveiligen van de beveiliging van data bases met zeer gevoelige gegevens.
-- Te helpen voldoen aan standaarden op het gebied van gegevensbescherming en aan vereisten voor naleving van regelgeving.
+- Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
 
 Zie [aan de slag met gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.
 
@@ -152,6 +152,6 @@ Naast de bovenstaande functies en functionaliteit die uw toepassing kunnen helpe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Toegang beheren](sql-database-control-access.md) voor een discussie over het gebruik van functies voor toegangsbeheer in SQL Database.
+- Zie [aanmeldingen en gebruikers accounts beheren](sql-database-manage-logins.md)voor een bespreking van het gebruik van aanmeldingen, gebruikers accounts, database rollen en machtigingen in SQL database.
 - Zie [SQL database controle](sql-database-auditing.md)voor een bespreking van database controle.
 - Zie [SQL database Threat Detection](sql-database-threat-detection.md)(Engelstalig) voor een bespreking van detectie van bedreigingen.

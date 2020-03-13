@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge share management | Microsoft Docs
-description: Beschrijft hoe u de Azure portal gebruiken voor het beheren van bestandsshares voor uw Azure Data Box-edge-apparaten.
+title: Beheer van Azure Data Box Edge-shares | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt voor het beheren van shares op uw Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212941"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>De Azure portal gebruiken voor het beheren van bestandsshares voor uw Azure Data Box-edge-apparaten
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Gebruik de Azure Portal om shares op uw Azure Data Box Edge te beheren
 
-Dit artikel wordt beschreven hoe u shares voor uw Azure Data Box-edge-apparaten kunt beheren. U kunt beheren van de rand van het Azure Data Box via Azure portal of via de lokale webgebruikersinterface. De Azure portal gebruiken voor het toevoegen, verwijderen, shares of opslagsleutel synchroniseren voor storage-account dat is gekoppeld aan de shares vernieuwen.
+In dit artikel wordt beschreven hoe u shares op uw Azure Data Box Edge beheert. U kunt de Azure Data Box Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
 
 ## <a name="about-shares"></a>Info over shares
 
-Als u wilt gegevens overdragen naar Azure, moet u bestandsshares maken voor uw Azure Data Box-edge-apparaten. De shares die u op de gegevens in het Edge-apparaat toevoegt kunnen zijn lokale shares of shares die pushen van gegevens naar de cloud.
+Als u gegevens wilt overdragen naar Azure, moet u shares op uw Azure Data Box Edge maken. De shares die u op het Data Box Edge apparaat toevoegt, kunnen lokale shares zijn of shares die gegevens pushen naar de Cloud.
 
- - **Lokale shares**: Gebruik deze shares wanneer de gegevens moeten worden lokaal op het apparaat worden verwerkt.
- - **Shares**: Gebruik deze shares als u wilt dat het apparaatgegevens automatisch worden gepusht naar uw opslagaccount in de cloud. Alle cloud functies, zoals **vernieuwen** en **opslagsleutels synchroniseren** zijn van toepassing op de shares.
+ - **Lokale shares**: gebruik deze shares wanneer u wilt dat de gegevens lokaal worden verwerkt op het apparaat.
+ - **Shares**: gebruik deze shares als u wilt dat de apparaatgegevens automatisch naar uw opslag account in de cloud worden gepusht. Alle Cloud functies, zoals **vernieuwen** en **synchronisatie van opslag sleutels** , zijn van toepassing op de shares.
 
 In dit artikel leert u het volgende:
 
@@ -39,9 +39,9 @@ In dit artikel leert u het volgende:
 
 Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **Gateway > Shares**. Selecteer **+ bestandsshare toevoegen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Gateway > shares**. Selecteer **+ share toevoegen** op de opdracht balk.
 
-    ![Selecteer de share toevoegen](media/data-box-edge-manage-shares/add-share-1.png)
+    ![Selecteer share toevoegen](media/data-box-edge-manage-shares/add-share-1.png)
 
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
     
@@ -51,7 +51,10 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 4. Geef het **opslagaccount** op waar de share zich bevindt. In het opslagaccount met de naam van de share wordt een container gemaakt, als deze nog niet bestaat. Als de container al bestaat, wordt de bestaande container gebruikt.
 
-5. Kies in de vervolgkeuzelijst de **opslagservice** van blok-blobs, pagina-blobs of -bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. Bijvoorbeeld, in dit exemplaar, willen we de gegevens zich bevinden als blok-blobs in Azure, dus we selecteren **blok-Blob**. Als het kiezen van **pagina-Blob**, moet u ervoor zorgen dat uw gegevens 512 bytes uitgelijnd is. Gebruik **pagina-blob** voor VHD's of VHDX die altijd 512 bytes uitgelijnd.
+5. Kies in de vervolg keuzelijst de **opslag service** van blok-blob, pagina-BLOB of bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. In dit geval willen we bijvoorbeeld dat de gegevens zich bevinden als blok-blobs in Azure. Daarom selecteren we **blok-BLOB**. Als u **pagina-BLOB**kiest, moet u ervoor zorgen dat uw gegevens 512 bytes zijn uitgelijnd. Gebruik de **pagina-BLOB** voor VHD'S of VHDX die altijd 512 bytes zijn uitgelijnd.
+
+   > [!IMPORTANT]
+   > Zorg ervoor dat voor het Azure Storage account dat u gebruikt geen Onveranderbaarheid-beleid is ingesteld als u dit gebruikt met een Azure Stack Edge-of Data Box Gateway-apparaat. Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)voor meer informatie.
 
 6. Deze stap hangt af van of u een SMB- of een NFS-share gaat maken.
     - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
@@ -63,15 +66,15 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
         ![NFS-share toevoegen](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Voor eenvoudig toegang tot de shares via Edge Computing-modules, gebruikt u het lokale koppelpunt. Selecteer **gebruik van de bestandsshare met Edge Computing** zodat de share is automatisch gekoppeld nadat deze is gemaakt. Wanneer deze optie is geselecteerd, kan het Edge-module de compute ook gebruiken met het lokale koppelpunt.
+7. Gebruik het lokale koppel punt om eenvoudig toegang te krijgen tot de shares van Edge Compute-modules. Selecteer **de berekening delen met Edge gebruiken** zodat de share automatisch wordt gekoppeld nadat deze is gemaakt. Als deze optie is geselecteerd, kan de module Edge ook de compute met het lokale koppel punt gebruiken.
 
 8. Klik op **Maken** om de share te maken. U ontvangt een melding als wordt begonnen met het maken van de share. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
 
 ## <a name="add-a-local-share"></a>Een lokale share toevoegen
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **Gateway > Shares**. Selecteer **+ bestandsshare toevoegen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Gateway > shares**. Selecteer **+ share toevoegen** op de opdracht balk.
 
-    ![Selecteer de share toevoegen](media/data-box-edge-manage-shares/add-local-share-1.png)
+    ![Selecteer share toevoegen](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
     
@@ -79,68 +82,68 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 3. Selecteer een **Type** voor de share. Het type kan **SMB** of **NFS** zijn. SMB is het standaardtype. SMB is het standaardtype voor Windows-clients; NFS wordt gebruikt voor Linux-clients. De opties wijken enigszins af, afhankelijk van welk type u kiest.
 
-4. Voor eenvoudig toegang tot de shares via Edge Computing-modules, gebruikt u het lokale koppelpunt. Selecteer **gebruik van de bestandsshare met Edge Computing** zodat de Edge-module de rekenkracht met het lokale koppelpunt gebruiken kunt.
+4. Gebruik het lokale koppel punt om eenvoudig toegang te krijgen tot de shares van Edge Compute-modules. Selecteer **de berekening delen met Edge gebruiken** zodat de rand module de compute kan gebruiken met het lokale koppel punt.
 
-5. Selecteer **configureren als lokale shares Edge**. De gegevens in lokale bestandsshares blijven lokaal op het apparaat. U kunt deze gegevens lokaal verwerken.
+5. Selecteer **configureren als Edge-lokale shares**. De gegevens in lokale shares blijven lokaal op het apparaat. U kunt deze gegevens lokaal verwerken.
 
-6. In de **alle lokale gebruiker met bevoegdheden** veld, kiest u uit **nieuw** of **gebruik bestaande**.
+6. Kies in het veld **alle bevoegdheden lokale gebruiker** de optie **nieuwe maken** of **bestaande gebruiken**.
 
 7. Selecteer **Maken**. 
 
     ![Lokale share maken](media/data-box-edge-manage-shares/add-local-share-2.png)
 
-    U ziet een melding dat de share gemaakt wordt. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
+    U ziet een melding dat de share wordt gemaakt. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
 
-    ![Updates Shares blade weergeven](media/data-box-edge-manage-shares/add-local-share-3.png)
+    ![Blade met updates shares weer geven](media/data-box-edge-manage-shares/add-local-share-3.png)
     
-    Selecteer de share om de lokale koppelpunt voor het Edge-modules voor compute voor deze share weer te geven.
+    Selecteer de share om de lokale koppel punt voor de Edge Compute-modules voor deze share weer te geven.
 
-    ![Details van de lokale share weergeven](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Details van lokale share weer geven](media/data-box-edge-manage-shares/add-local-share-4.png)
 
-## <a name="mount-a-share"></a>Een bestandsshare koppelen
+## <a name="mount-a-share"></a>Een share koppelen
 
-Als u een share gemaakt voordat u compute op uw gegevens in het Edge-apparaat hebt geconfigureerd, moet u de bestandsshare koppelen. Voer de volgende stappen uit om een bestandsshare te koppelen.
+Als u een share hebt gemaakt voordat u Compute op uw Data Box Edge apparaat hebt geconfigureerd, moet u de share koppelen. Voer de volgende stappen uit om een share te koppelen.
 
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **Gateway > Shares**. Selecteer in de lijst van de shares, de share die u wilt koppelen. De **gebruikt voor compute** kolom wordt de status weergegeven **uitgeschakelde** voor de geselecteerde bestandsshare.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Gateway > shares**. Selecteer in de lijst met shares de share die u wilt koppelen. In de kolom **gebruikt voor berekening** wordt de status **uitgeschakeld** weer gegeven voor de geselecteerde share.
 
     ![Share selecteren](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. Selecteer **koppelen**.
 
-    ![Selecteer koppelen](media/data-box-edge-manage-shares/select-mount.png)
+    ![Koppeling selecteren](media/data-box-edge-manage-shares/select-mount.png)
 
-3. Wanneer u hierom wordt gevraagd om bevestiging, selecteert u **Ja**. Hiermee wordt de bestandsshare koppelen.
+3. Selecteer **Ja**als u om bevestiging wordt gevraagd. Hiermee wordt de share gekoppeld.
 
-    ![Koppelpunten bevestigen](media/data-box-edge-manage-shares/confirm-mount.png)
+    ![Bevestig bevestiging](media/data-box-edge-manage-shares/confirm-mount.png)
 
-4. Nadat de share is gekoppeld, gaat u naar de lijst met shares. U ziet dat de **gebruikt voor compute** kolom ziet u de status van de share als **ingeschakeld**.
+4. Nadat de share is gekoppeld, gaat u naar de lijst met shares. U ziet dat de kolom **gebruikt voor Compute** de status van de share als **ingeschakeld**weergeeft.
 
-    ![Gekoppelde share](media/data-box-edge-manage-shares/share-mounted.png)
+    ![Share gekoppeld](media/data-box-edge-manage-shares/share-mounted.png)
 
-5. Selecteer de share opnieuw om weer te geven van de lokale koppelpunt voor de share. Edge compute-module gebruikt deze lokale koppelpunt voor de share.
+5. Selecteer de share opnieuw om de lokale koppel punt voor de share weer te geven. De Edge Compute-module maakt gebruik van deze lokale koppel punt voor de share.
 
-    ![Lokale koppelpunt voor de share](media/data-box-edge-manage-shares/share-mountpoint.png)
+    ![Lokale koppel punt voor de share](media/data-box-edge-manage-shares/share-mountpoint.png)
 
-## <a name="unmount-a-share"></a>Een bestandsshare te ontkoppelen
+## <a name="unmount-a-share"></a>Een share ontkoppelen
 
-Voer de volgende stappen uit in de Azure portal om een bestandsshare te ontkoppelen.
+Voer de volgende stappen uit in de Azure Portal om een share te ontkoppelen.
 
-1. In de Azure-portal, gaat u naar uw gegevens in het Edge-resource en ga vervolgens naar **Gateway > Shares**.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Gateway > shares**.
 
     ![Share selecteren](media/data-box-edge-manage-shares/select-share-unmount.png)
 
-2. Selecteer in de lijst van de shares, de share die u wilt ontkoppelen. U wilt om ervoor te zorgen dat de share die u kunt ontkoppelen niet wordt gebruikt door alle modules. Als de share wordt gebruikt door een module, ziet u problemen met de bijbehorende-module. Selecteer **ontkoppelen**.
+2. Selecteer in de lijst met shares de share die u wilt ontkoppelen. U wilt er zeker van zijn dat de share die u ontkoppelt, niet wordt gebruikt door modules. Als de share wordt gebruikt door een module, worden er problemen met de bijbehorende module weer geven. Selecteer **ontkoppelen**.
 
     ![Selecteer ontkoppelen](media/data-box-edge-manage-shares/select-unmount.png)
 
-3. Wanneer u hierom wordt gevraagd om bevestiging, selecteert u **Ja**. Hiermee wordt de bestandsshare ontkoppelen.
+3. Selecteer **Ja**als u om bevestiging wordt gevraagd. Hiermee wordt de share ontkoppeld.
 
-    ![Controleer of ontkoppelen](media/data-box-edge-manage-shares/confirm-unmount.png)
+    ![Ontkoppelen bevestigen](media/data-box-edge-manage-shares/confirm-unmount.png)
 
-4. Nadat de share ontkoppeld is, gaat u naar de lijst met shares. U ziet dat **gebruikt voor compute** kolom ziet u de status van de share als **uitgeschakelde**.
+4. Wanneer de share is ontkoppeld, gaat u naar de lijst met shares. U ziet dat in de kolom **Compute** wordt weer gegeven dat de status van de share is **uitgeschakeld**.
 
-    ![Share ontkoppeld](media/data-box-edge-manage-shares/share-unmounted.png)
+    ![Delen niet gekoppeld](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Een share verwijderen
 
@@ -158,34 +161,34 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
     ![De verwijdering bevestigen](media/data-box-edge-manage-shares/delete-share-3.png)
 
-De lijst met shares updates in overeenstemming met het verwijderen.
+De lijst met shares-updates om de verwijdering weer te geven.
 
 
 ## <a name="refresh-shares"></a>Shares vernieuwen
 
-De functie vernieuwen kunt u de inhoud van een share vernieuwen. Wanneer u een share vernieuwt, wordt er een zoekopdracht gestart om de Azure-objecten te zoeken, inclusief blobs en bestanden die aan de cloud zijn toegevoegd na de laatste vernieuwing. Deze extra bestanden zijn vervolgens om te vernieuwen van de inhoud van de bestandsshare op het apparaat gedownload.
+Met de functie voor vernieuwen kunt u de inhoud van een share vernieuwen. Wanneer u een share vernieuwt, wordt er een zoekopdracht gestart om de Azure-objecten te zoeken, inclusief blobs en bestanden die aan de cloud zijn toegevoegd na de laatste vernieuwing. Deze extra bestanden worden vervolgens gedownload om de inhoud van de share op het apparaat te vernieuwen.
 
 > [!IMPORTANT]
-> - U kunt openbare shares niet vernieuwen.
-> - Machtigingen en toegangsbeheerlijsten (ACL's) blijven niet behouden via een vernieuwingsbewerking. 
+> - U kunt geen lokale shares vernieuwen.
+> - Machtigingen en toegangs beheer lijsten (Acl's) blijven niet behouden in een vernieuwings bewerking. 
 
 Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
-1.  Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
+1.   Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
     ![Share selecteren](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  Klik op **Vernieuwen**. 
+2.   Klik op **Vernieuwen**. 
 
     ![Op Vernieuwen klikken](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen.
+3.   Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen.
 
     ![Vernieuwen bevestigen](media/data-box-edge-manage-shares/refresh-share-3.png)
  
-4.  Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
+4.   Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
 
-5.  Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. De foutenlogboeken vernieuwen worden ook bijgewerkt.
+5.   Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. De logboeken voor het vernieuwen van fouten worden ook bijgewerkt.
 
     ![Bijgewerkt tijdstempel](media/data-box-edge-manage-shares/refresh-share-4.png)
  
@@ -200,11 +203,11 @@ Voer in de Azure Portal de volgende stappen uit om uw toegangssleutel voor opsla
 
 1. Ga in uw resource naar **Overzicht**. Klik in de lijst met shares op een share die is gekoppeld aan het opslagaccount dat u wilt synchroniseren.
 
-    ![Delen met relevante storage-account selecteren](media/data-box-edge-manage-shares/sync-storage-key-1.png)
+    ![Selecteer delen met relevant opslag account](media/data-box-edge-manage-shares/sync-storage-key-1.png)
 
 2. Klik op **Opslagsleutel synchroniseren**. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
-     ![Schakel synchronisatie opslagsleutel](media/data-box-edge-manage-shares/sync-storage-key-2.png)
+     ![Opslag sleutel voor synchronisatie selecteren](media/data-box-edge-manage-shares/sync-storage-key-2.png)
 
 3. Sluit het dialoogvenster wanneer de synchronisatie is voltooid.
 

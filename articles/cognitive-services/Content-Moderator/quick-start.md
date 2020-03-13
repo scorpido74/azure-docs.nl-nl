@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203551"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstartgids: Probeer Content Moderator op Internet
 
@@ -32,9 +32,23 @@ Het hulp programma Content Moderator beoordeling is een webgebaseerd hulp progra
 
 ## <a name="create-a-review-team"></a>Een beoordelingsteam maken
 
-Maak vervolgens een beoordelings team. In een werkend scenario is dit de groep personen die hand matig de toezicht beslissingen van de service controleren. U hoeft alleen maar een team naam te maken. Als u collega's wilt uitnodigen voor het team, kunt u dit doen door hier hun e-mail adressen in te voeren.
+Maak vervolgens een beoordelings team. In een werkend scenario is dit de groep personen die hand matig de toezicht beslissingen van de service controleren. Als u een team wilt maken, moet u een **regio**selecteren en een team **naam** en **Team-ID**opgeven. Als u collega's wilt uitnodigen voor het team, kunt u dit doen door hier hun e-mail adressen in te voeren.
 
-![Teamlid uitnodigen](images/QuickStart-2-small.png)
+> [!NOTE]
+> **Team naam** is een beschrijvende naam voor uw beoordelings team. Dit is de naam die wordt weer gegeven in de Azure Portal. De **Team-ID** is de naam die wordt gebruikt om het beoordelings team te identificeren.
+
+> [!div class="mx-imgBorder"]
+> lid van teamlid ![uitnodigen](images/create-team.png)
+
+Als u ervoor kiest om gegevens te versleutelen met behulp van een door de klant beheerde sleutel (CMK), wordt u gevraagd om de **resource-id** voor uw content moderator-resource in de prijs categorie E0. De resource die u opgeeft, moet nieuw zijn. 
+
+> [!div class="mx-imgBorder"]
+> ![teamlid uitnodigen met CMK](images/create-team-cmk.png)
+
+Als u probeert een Content Moderator resource opnieuw te gebruiken, wordt deze waarschuwing weer gegeven: 
+
+> [!div class="mx-imgBorder"]
+> ![CMK-fout](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Voorbeeld inhoud uploaden
 

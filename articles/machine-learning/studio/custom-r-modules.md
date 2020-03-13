@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168785"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218168"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules voor Azure Machine Learning Studio definiëren (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om deze te bepalen. Deze ziet u hoe u een van de bestanden die een module definiëren en registreren van de module voor implementatie in een Machine Learning-werkruimte. De elementen en kenmerken die worden gebruikt in de definitie van de aangepaste module worden vervolgens in meer detail beschreven. Het gebruik van aanvullende functionaliteit, bestanden en meerdere uitvoer wordt ook beschreven. 
 
@@ -200,7 +202,7 @@ Als u bijvoorbeeld de module **aangepaste rijen toevoegen** wilt wijzigen in uit
     </Ports> 
 
 
-En de lijst van objecten in een lijst in de juiste volgorde in 'CustomAddRows.R' retourneren:
+En retour neren de lijst met objecten in een lijst in de juiste volg orde in ' CustomAddRows. R ':
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
 Elk bestand dat wordt geplaatst in uw aangepaste module-ZIP-bestand is het verstandig om beschikbaar voor gebruik tijdens de uitvoeringstijd. Een directory-structuren aanwezig blijven behouden. Dit betekent dat file sourcing hetzelfde lokaal en in de uitvoering van Azure Machine Learning Studio (klassiek) werkt. 
 
 > [!NOTE]
-> U ziet dat alle bestanden zijn uitgepakt naar de map 'src', zodat alle paden moet ' src /' voorvoegsel.
+> U ziet dat alle bestanden worden uitgepakt naar de map src, zodat alle paden het voor voegsel src/hebben.
 > 
 > 
 
-Stel dat u wilt dat alle rijen met NAs verwijderen uit de gegevensset en ook eventuele dubbele rijen verwijderen voordat u deze uitvoeren in CustomAddRows en u al een R-functie die door die worden ondersteund in een bestand RemoveDupNARows.R hebt geschreven:
+Stel dat u rijen met NAs wilt verwijderen uit de gegevensset en ook dubbele rijen wilt verwijderen voordat u de gegevens uitCustomAddRowst en dat u al een R-functie hebt geschreven die in een bestand RemoveDupNARows. R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ U kunt het aanvullende bestand RemoveDupNARows.R in de functie CustomAddRows ver
         return (dataset)
     }
 
-Upload vervolgens een zip-bestand met 'CustomAddRows.R', 'CustomAddRows.xml' en 'RemoveDupNARows.R' als een aangepaste R-module.
+Upload vervolgens een zip-bestand met ' CustomAddRows. R ', ' CustomAddRows. XML ' en ' RemoveDupNARows. R ' als een aangepaste R-module.
 
 ## <a name="execution-environment"></a>Uitvoeringsomgeving
 De uitvoerings omgeving voor het R-script maakt gebruik van dezelfde versie van R als de **script module Execute r** en kan dezelfde standaard pakketten gebruiken. U kunt ook extra R-pakketten toevoegen aan uw aangepaste module door ze in de aangepaste module-zip-pakket. Alleen ze laden in uw R-script als in uw eigen R-omgeving. 
