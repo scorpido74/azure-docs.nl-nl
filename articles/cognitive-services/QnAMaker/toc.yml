@@ -68,6 +68,8 @@
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
         - name: Een bedrijfscontinuïteitsplan maken
           href: How-To/business-continuity-plan.md
+        - name: Samenwerken
+          href: How-To/collaborate-knowledge-base.md
     - name: Knowledge base beheren
       items:
         - name: Een knowledge base maken
@@ -79,8 +81,6 @@
         - name: Migreren naar een nieuwe knowledge base
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Samenwerken
-          href: How-To/collaborate-knowledge-base.md
         - name: Testen
           href: How-To/test-knowledge-base.md
     - name: Q&A-sets beheren
