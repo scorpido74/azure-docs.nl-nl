@@ -4,17 +4,17 @@ description: Deze zelfstudie helpt u bij het plannen en verantwoorden van de kos
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251223"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128350"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -54,7 +54,7 @@ Zie [Toegang tot gegevens van Cost Management toewijzen](../../cost-management/a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-- Meld u aan bij Azure Portal op https://portal.azure.com.
+- Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Een budget maken in de Azure-portal
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Een budget maken met een Azure Resource Manager-sjabloon
 
-U kunt een budget maken met behulp van een Azure Resource Manager-sjabloon. De sjabloon helpt u om een budget te maken onder een resourcegroep. De sjabloon biedt alleen ondersteuning voor Enterprise Agreement-klanten.
+U kunt een budget maken met behulp van een Azure Resource Manager-sjabloon. De sjabloon helpt u om een budget te maken onder een resourcegroep. 
 
 Selecteer de volgende afbeelding om u aan te melden bij de Azure-portal en open de sjabloon:
 

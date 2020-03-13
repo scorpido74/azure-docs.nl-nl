@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 8e272267ffc8dd2946a390470df78b179ebbdf92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199650"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117176"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
@@ -139,7 +139,7 @@ Azure Marketplace-producten die beschikbaar zijn voor abonnementen die worden be
 
 ### <a name="azure-reservations-transfer"></a>Overdracht van Azure-reserveringen
 
-Azure-reserveringen worden niet automatisch verplaatst met abonnementen. [Neem contact op met ondersteuning voor Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om reserveringen te verplaatsen.
+Azure-reserveringen worden niet automatisch verplaatst met abonnementen. U kunt de reservering behouden of [de reservering annuleren en opnieuw aanschaffen](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) in CSP. 
 
 ### <a name="access-to-azure-services"></a>Toegang tot Azure-services
 

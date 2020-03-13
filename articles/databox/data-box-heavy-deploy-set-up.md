@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514422"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117252"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
 Voer de volgende stappen uit met een van de knooppunten van het apparaat om het netwerk te bekabelen.
 
-1. Gebruik een CAT 6 RJ-45-netwerkkabel (blauwe kabel in de afbeelding) om de hostcomputer met de 1-Gbps-beheerpoort te verbinden.
+1. Gebruik een CAT 6 RJ-45-netwerkkabel (rechtsboven in de afbeelding, gekoppeld aan een plug met label MGMT) om de hostcomputer te verbinden met de 1-Gbps-beheerpoort.
 2. Gebruik een QSFP+-kabel (glasvezel of koper) om ten minste één 40 Gbps-netwerkinterfaceverbinding (verdient de voorkeur boven 1 Gbps) voor gegevens te maken. Als u een 10 Gbps-switch gebruikt, gebruikt u een SFP+-kabel met een QSFP+-naar-SFP+-adapter (de QSA-adapter) om verbinding te maken met de 40 Gbps-netwerkinterface voor gegevens.
 
     ![Bekabelde Data Box Heavy-poorten](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

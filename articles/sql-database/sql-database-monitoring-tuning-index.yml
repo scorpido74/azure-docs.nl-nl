@@ -10,13 +10,13 @@ metadata:
   ms.collection: performance
   author: CarlRabeler
   ms.author: carlrab
-  ms.date: 01/25/2020
-  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
-  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
+  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 01/26/2020
-  ms.locfileid: "76756620"
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79208900"
 landingContent:
 - title: Over bewaking en prestaties afstemmen
   linkLists:
@@ -28,14 +28,20 @@ landingContent:
     links:
     - text: Playbook voor Microsoft Azure Database-bewaking
       url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
-- title: Metrische gegevens en logboeken verzamelen
+- title: Intelligente prestatieaanbevelingen
   linkLists:
   - linkListType: concept
     links:
-    - text: Metrische gegevens en diagnoselogboeken
-      url: sql-database-metrics-diag-logging.md
-    - text: Inzicht in diagnoselogboeken van prestaties
-      url: sql-database-intelligent-insights-use-diagnostics-log.md
+    - text: Afstemmingsaanbevelingen voor SQL Database Advisor
+      url: sql-database-advisor.md
+    - text: Automatisch instellen
+      url: sql-database-automatic-tuning.md
+    - text: Inzicht in queryprestaties
+      url: sql-database-query-performance.md
+  - linkListType: video
+    links:
+    - text: Automatisch instellen
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Bronlimieten
   linkLists:
   - linkListType: concept
@@ -52,50 +58,46 @@ landingContent:
       url: sql-database-managed-instance-resource-limits.md
     - text: Resourcebeperkingen van beheerde exemplaarpools
       url: sql-database-instance-pools.md#instance-pools-resource-limitations
-- title: Aan de slag - Azure Portal
+- title: Intelligente prestatieanalyses
   linkLists:
   - linkListType: overview
     links:
-    - text: Bewaken en afstemmen met AI
-      url: sql-database-performance.md
+    - text: Intelligent Insights met AI
+      url: sql-database-intelligent-insights.md
   - linkListType: concept
     links:
-    - text: Afstemmingsaanbevelingen voor SQL Database Advisor
-      url: sql-database-advisor.md
-    - text: Inzicht in queryprestaties
-      url: sql-database-query-performance.md
+    - text: Metrische gegevens en diagnoselogboeken
+      url: sql-database-metrics-diag-logging.md
+    - text: Inzicht in diagnoselogboeken van prestaties
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
     - text: Azure SQL-analyse
       url: ../azure-monitor/insights/azure-sql.md
-    - text: Intelligent Insights
-      url: sql-database-intelligent-insights.md
     - text: Detecteerbare prestatiepatronen
       url: sql-database-intelligent-insights-troubleshoot-performance.md
-    - text: Automatisch instellen
-      url: sql-database-automatic-tuning.md
+    - text: Verwerking van intelligente query's
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
   - linkListType: video
     links:
     - text: Intelligent Insights
       url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
-    - text: Automatisch instellen
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Handmatig prestaties afstemmen
   linkLists:
   - linkListType: overview
     links:
-    - text: Richtlijnen om prestaties handmatig af te stemmen
-      url: sql-database-performance-guidance.md
+    - text: Queryprestatieproblemen identificeren
+      url: sql-database-identify-query-performance-issues.md
   - linkListType: concept
     links:
+    - text: Bewaking met DMV's
+      url: sql-database-monitoring-with-dmvs.md
+    - text: Afstemming van toepassing en database
+      url: sql-database-performance-guidance.md
     - text: Query Store gebruiken
       url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
-    - text: DMV's gebruiken
-      url: sql-database-monitoring-with-dmvs.md
     - text: Uitgebreide gebeurtenissen gebruiken
       url: sql-database-xevent-db-diff-from-svr.md
     - text: Prestatiediagnoses hyperschalen
       url: sql-database-hyperscale-performance-diagnostics.md
-    - text: Verwerking van intelligente query's
-      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: Resources schalen
   linkLists:
   - linkListType: overview

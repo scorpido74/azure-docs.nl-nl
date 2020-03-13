@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: Machines op schaal verbinden met een service-principal
       href: ./servers/onboard-service-principal.md
+    - name: Machines verbinden met Azure Arc met PowerShell DSC
+      href: ./servers/onboard-dsc.md
 - name: Naslaginformatie
   items:
     - name: CLI-interface van met Azure verbonden machineagent

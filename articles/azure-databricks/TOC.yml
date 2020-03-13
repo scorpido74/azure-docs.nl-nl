@@ -31,43 +31,8 @@
   items:
     - name: Aan de slag
       items:
-        - name: Gegevensoverzicht
-          href: /azure/databricks/getting-started/data
-          maintainContext: true
         - name: Azure Databricks-concepten
           href: /azure/databricks/getting-started/concepts
-          maintainContext: true
-        - name: Azure Databricks-gegevenssets
-          href: /azure/databricks/getting-started/databricks-datasets
-          maintainContext: true
-        - name: Apache Spark
-          items:
-            - name: Overzicht van Apache Spark
-              href: /azure/databricks/getting-started/spark/index
-              maintainContext: true
-            - name: Aan de slag met Apache Spark
-              href: /azure/databricks/getting-started/spark/quick-start
-              maintainContext: true
-            - name: DataFrames
-              href: /azure/databricks/getting-started/spark/dataframes
-              maintainContext: true
-            - name: Gegevenssets
-              href: /azure/databricks/getting-started/spark/datasets
-              maintainContext: true
-            - name: Machine learning
-              href: /azure/databricks/getting-started/spark/machine-learning
-              maintainContext: true
-            - name: Gestructureerd streamen
-              href: /azure/databricks/getting-started/spark/streaming
-              maintainContext: true
-            - name: Volgend onderwerp
-              href: /azure/databricks/getting-started/spark/next
-              maintainContext: true
-        - name: Training en veelgestelde vragen
-          href: /azure/databricks/getting-started/training-faq
-          maintainContext: true
-        - name: Ondersteunde browsers
-          href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
     - name: Runtimes van Databricks
       items:
@@ -220,6 +185,9 @@
       maintainContext: true
     - name: Gegevens
       items:
+        - name: Gegevensoverzicht
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Databases en tabellen
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -310,6 +278,9 @@
               maintainContext: true
         - name: Databricks-bestandssysteem (DBFS)
           href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Azure Databricks-gegevenssets
+          href: /azure/databricks/getting-started/databricks-datasets
           maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
@@ -731,6 +702,9 @@
           maintainContext: true
         - name: RStudio in Azure Databricks
           href: /azure/databricks/spark/latest/sparkr/rstudio
+          maintainContext: true
+        - name: Shiny in Azure Databricks
+          href: /azure/databricks/spark/latest/sparkr/shiny
           maintainContext: true
     - name: Machine learning
       items:
@@ -1385,6 +1359,9 @@
             - name: Idempotentie garanderen
               href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
+            - name: Lange taken mislukken met referentiedoorvoer
+              href: /azure/databricks/kb/jobs/azure-long-job-failed-auth
+              maintainContext: true
         - name: Bibliotheken
           items:
             - name: Kan bibliotheek niet verwijderen vanuit gebruikersinterface
@@ -1494,6 +1471,12 @@
               maintainContext: true
             - name: SQL-query's uitvoeren
               href: /azure/databricks/kb/python/sql-in-python
+              maintainContext: true
+            - name: De HDFS-API gebruiken om bestanden in Python te lezen
+              href: /azure/databricks/kb/python/hdfs-to-read-files
+              maintainContext: true
+            - name: Status van Python 2-zonsondergang
+              href: /azure/databricks/kb/python/python-2-eol
               maintainContext: true
         - name: R met Spark
           items:
@@ -1650,6 +1633,35 @@
       href: /azure/templates/microsoft.databricks/workspaces
 - name: Resources
   items:
+    - name: Apache Spark
+      items:
+        - name: Overzicht van Apache Spark
+          href: /azure/databricks/getting-started/spark/index
+          maintainContext: true
+        - name: Aan de slag met Apache Spark
+          href: /azure/databricks/getting-started/spark/quick-start
+          maintainContext: true
+        - name: DataFrames
+          href: /azure/databricks/getting-started/spark/dataframes
+          maintainContext: true
+        - name: Gegevenssets
+          href: /azure/databricks/getting-started/spark/datasets
+          maintainContext: true
+        - name: Machine learning
+          href: /azure/databricks/getting-started/spark/machine-learning
+          maintainContext: true
+        - name: Gestructureerd streamen
+          href: /azure/databricks/getting-started/spark/streaming
+          maintainContext: true
+        - name: Volgend onderwerp
+          href: /azure/databricks/getting-started/spark/next
+          maintainContext: true
+    - name: Training en veelgestelde vragen
+      href: /azure/databricks/getting-started/training-faq
+      maintainContext: true
+    - name: Ondersteunde browsers
+      href: /azure/databricks/getting-started/supported-browsers
+      maintainContext: true
     - name: Releaseopmerkingen
       items:
         - name: Platform

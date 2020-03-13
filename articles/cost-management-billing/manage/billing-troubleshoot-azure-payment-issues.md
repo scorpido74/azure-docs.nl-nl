@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200911"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942580"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Problemen met Azure-betalingen oplossen
 
 Er treedt mogelijk een fout of probleem op wanneer u het betalingsgegevensaccount probeert te bewerken in de Microsoft Azure-portal of in het Azure-accountcentrum.
 
 Als u het probleem wilt oplossen, selecteert u hieronder het onderwerp dat het meest op uw probleem lijkt.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Mijn creditcard is afgewezen toen ik mij registreerde voor Azure
+
+Raadpleeg [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](troubleshoot-declined-card.md) voor meer informatie over het oplossen van problemen met een geweigerde kaart.
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ik zie geen abonnementen in mijn account om de betalingswijze bij te werken
+
+U gebruikt mogelijk een e-mail-id die afwijkt van de naam die wordt gebruikt voor de abonnementen.
+
+Als u dit probleem wilt oplossen, raadpleegt u [Aanmeldingsfout dat er geen abonnementen zijn gevonden voor Azure Portal of het Azure-accountcentrum](no-subscriptions-found.md).
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Ik kan geen virtuele of prepaidcredit- of debitcard gebruiken als betalingswijze.
+
+*   Virtuele of prepaidcreditcards worden niet geaccepteerd als betaalmethode voor Azure-abonnementen.
+*   Debitcards worden niet geaccepteerd als betaalmethode voor Azure-abonnementen.
+
+Raadpleeg [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](troubleshoot-declined-card.md) voor meer informatie.
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kan creditcard niet verwijderen uit een opgeslagen betalingswijze
 
@@ -33,19 +50,11 @@ Als u een bestaande kaart wilt verwijderen, moet er een nieuwe kaart aan het abo
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Kan een oude betalingswijze niet verwijderen nadat een nieuwe betalingswijze is toegevoegd
 
-Het nieuwe betaalmiddel is mogelijk niet gekoppeld aan het abonnement. Zie [Een creditcard of debitcard voor Azure toevoegen, bijwerken of verwijderen](change-credit-card.md) voor meer informatie over het koppelen van het betaalmiddel aan het abonnement.
-
-Zie [Problemen met een geweigerde kaart bij Azure-aanmelding oplossen](troubleshoot-declined-card.md) voor meer informatie over het oplossen van problemen met een geweigerde kaart.
+Het nieuwe betaalmiddel is mogelijk niet gekoppeld aan het abonnement. Raadpleeg [Een creditcard voor Azure toevoegen, bijwerken of verwijderen](change-credit-card.md) voor meer informatie over het koppelen van het betaalmiddel aan het abonnement.
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Kan betalingswijze niet verwijderen door het foutbericht *Kan betalingswijze niet verwijderen*
 
 Dit komt door een openstaand saldo. Betaal openstaande saldo's voordat u de betalingswijze verwijdert.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ik zie geen abonnementen in mijn account om de betalingswijze bij te werken
-
-U gebruikt mogelijk een e-mail-id die afwijkt van de naam die wordt gebruikt voor de abonnementen.
-
-Als u dit probleem wilt oplossen, raadpleegt u [Aanmeldingsfout dat er geen abonnementen zijn gevonden voor Azure Portal of het Azure-accountcentrum](no-subscriptions-found.md).
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling doen voor een abonnement
 

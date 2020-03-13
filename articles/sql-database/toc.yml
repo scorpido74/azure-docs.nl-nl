@@ -71,13 +71,9 @@
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: Aanbevolen procedures voor beveiliging
           href: sql-database-security-best-practice.md
-        - name: Toegangsbeheer
-          items:
-            - name: Toegangsbeheer
-              href: sql-database-control-access.md
-            - name: Aanmeldingen en gebruikers
-              href: sql-database-manage-logins.md
-        - name: Verificatie
+        - name: 'Aanmeldingen, gebruikersaccounts, rollen en machtigingen'
+          href: sql-database-manage-logins.md
+        - name: Azure Active Directory-verificatie
           href: sql-database-aad-authentication.md
           items:
             - name: Azure AD-verificatie configureren
@@ -86,6 +82,8 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Multi-Factor Authentication instellen
               href: sql-database-ssms-mfa-authentication-configure.md
+            - name: Voorwaardelijke toegang
+              href: sql-database-conditional-access.md
         - name: Gegevensbeveiliging
           items:
             - name: Transparent Data Encryption (TDE)
@@ -108,12 +106,12 @@
                   href: sql-database-always-encrypted.md
                 - name: De Azure Key Vault gebruiken
                   href: sql-database-always-encrypted-azure-key-vault.md
-        - name: 'Bewaking, logboekregistratie en controle'
+        - name: Controleren
           items:
-            - name: Controleren
-              items:
-                - name: Aan de slag met het controleren van SQL Database
-                  href: sql-database-auditing.md
+            - name: Aan de slag met het controleren van SQL Database
+              href: sql-database-auditing.md
+            - name: Auditlogboek controleren
+              href: sql-database-audit-log-format.md
         - name: Beveiligingsbeheer
           items:
             - name: Advanced Data Security
@@ -140,18 +138,12 @@
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
             - name: Private Link
               href: sql-database-private-endpoint-overview.md
-            - name: Auditlogboek controleren
-              href: sql-database-audit-log-format.md
-            - name: Voorwaardelijke toegang
-              href: sql-database-conditional-access.md
         - name: Beveiliging van een beheerd exemplaar
           items:
             - name: Openbare eindpunten beveiligen
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Controle van beheerde exemplaren
               href: sql-database-managed-instance-auditing.md
-        - name: Beveiligingsbasislijn
-          href: security-baseline.md
     - name: Verbinding maken en query's uitvoeren
       href: sql-database-connect-query.md
       items:
@@ -240,36 +232,40 @@
           href: sql-database-monitoring-tuning-index.yml
         - name: Overzicht van bewaking en prestaties
           href: sql-database-monitor-tune-overview.md
-        - name: Prestatiebewaking
+        - name: Database-adviseurs en Query Performance Insight
           items:
-            - name: Bewaking met Azure SQL Analytics
-              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
-            - name: Logboekregistratie van diagnostische telemetrie
-              href: sql-database-metrics-diag-logging.md
-        - name: Intelligente prestaties
-          items:
-            - name: Automatisch instellen
-              href: sql-database-automatic-tuning.md
-            - name: Intelligente prestatie-inzichten
-              href: sql-database-intelligent-insights.md
-            - name: Acties en aanbevelingen afstemmen
-              href: sql-database-performance.md
             - name: Prestatieaanbevelingen van Database Advisor
               href: sql-database-advisor.md
-        - name: Database controleren en afstemmen
+            - name: Inzicht in queryprestaties
+              href: sql-database-query-performance.md
+        - name: Automatisch instellen
+          href: sql-database-automatic-tuning.md
+        - name: Intelligent Insights en SQL Analytics
           items:
-            - name: Handmatig instellen
+            - name: Intelligente prestatie-inzichten
+              href: sql-database-intelligent-insights.md
+            - name: Logboekregistratie van diagnostische telemetrie
+              href: sql-database-metrics-diag-logging.md
+            - name: Diagnostisch logboek van Intelligent Insights gebruiken
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: Prestatieproblemen oplossen met Intelligent Insights
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+            - name: SQL Analytics
+              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
+        - name: Handmatige bewaking en afstemming
+          items:
+            - name: Queryprestatieproblemen identificeren
+              href: sql-database-identify-query-performance-issues.md
+            - name: Afstemmingsrichtlijnen voor toepassingen en databases
               href: sql-database-performance-guidance.md
             - name: DMV's gebruiken voor het bewaken van prestaties
               href: sql-database-monitoring-with-dmvs.md
-            - name: Query Store gebruiken voor het bewaken van prestaties
-              href: sql-database-operate-query-store.md
-            - name: Prestatieproblemen oplossen met Intelligent Insights
-              href: sql-database-intelligent-insights-troubleshoot-performance.md
-            - name: Diagnostisch logboek van Intelligent Insights gebruiken
-              href: sql-database-intelligent-insights-use-diagnostics-log.md
             - name: OLTP-ruimte in het geheugen bewaken
               href: sql-database-in-memory-oltp-monitoring.md
+            - name: Prestatiediagnoses hyperschalen
+              href: sql-database-hyperscale-performance-diagnostics.md
+            - name: Resourcebeheer in dichte elastische pools
+              href: sql-database-elastic-pool-resource-management.md
             - name: Uitgebreide gebeurtenissen
               items:
                 - name: Uitgebreide gebeurtenissen
@@ -278,10 +274,6 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: Uitgebreide gebeurtenissen - ringbuffer
                   href: sql-database-xevent-code-ring-buffer.md
-        - name: Prestatiediagnoses hyperschalen
-          href: sql-database-hyperscale-performance-diagnostics.md
-        - name: Resourcebeheer in dichte elastische pools
-          href: sql-database-elastic-pool-resource-management.md
     - name: Schaalbaarheid
       items:
         - name: Documentatie voor schaalbaarheid
@@ -538,8 +530,6 @@
               href: sql-database-resource-limits-database-server.md
             - name: Connectiviteitsarchitectuur
               href: sql-database-connectivity-architecture.md
-            - name: Connectiviteitsinstellingen
-              href: sql-database-connectivity-settings.md
         - name: Gegevenssynchronisatie
           items:
             - name: Data Sync-agent
@@ -552,10 +542,6 @@
               href: sql-database-best-practices-data-sync.md
             - name: Problemen met Data Sync oplossen
               href: sql-database-troubleshoot-data-sync.md
-        - name: Prestatiebewaking
-          items:
-            - name: Inzicht in queryprestaties
-              href: sql-database-query-performance.md
         - name: T-SQL-verschillen
           href: sql-database-transact-sql-information.md
         - name: Functies
@@ -739,7 +725,7 @@
           items:
             - name: MI-pub naar MI-sub
               href: replication-with-sql-database-managed-instance.md
-            - name: 'MI pub, MI dist, SQL Sub'
+            - name: 'MI-pub, MI-dist, SQL-sub'
               href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Concepten
       items:

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270186"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898637"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 
@@ -118,7 +118,7 @@ De volgende tabel bevat de begrippen en beschrijvingen die worden weergegeven in
 
 Deze sectie is alleen van toepassing als u zich bevindt in Australië, Japan of Singapore.
 
-Vergelijk uw Azure Marketplace-totaal in **Rapporten** > **Gebruiksoverzicht** in de Enterprise-portal met uw Marketplace-factuur. De Marketplace-factuur betreft alleen Azure Marketplace-aankopen en -gebruik. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
+Vergelijk uw Azure Marketplace-totaal in **Rapporten** > **Gebruiksoverzicht** in de Enterprise-portal met uw Marketplace-factuur. De Marketplace-factuur betreft alleen Azure Marketplace-aankopen en -gebruik. De bedragen op het **Gebruiksoverzicht** bevatten al een belasting die wordt bepaald door de uitgever.
 
 Meld u aan bij de [Enterprise-portal](https://ea.azure.com) en selecteer **Rapporten**. Wijzig in de rechterbovenhoek van het tabblad de weergave van**M** in **C** en selecteer de periode die op de factuur wordt vermeld.  
 

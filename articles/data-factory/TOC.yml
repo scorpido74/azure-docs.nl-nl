@@ -392,14 +392,22 @@
       items:
         - name: Gegevens kopiëren met de kopieeractiviteit
           href: copy-activity-overview.md
+        - name: Kopieeractiviteit bewaken
+          href: copy-activity-monitoring.md
         - name: Bestanden verwijderen met de activiteit voor verwijderen
           href: delete-activity.md
         - name: Hulpprogramma voor het kopiëren van gegevens
           href: copy-data-tool.md
         - name: Ondersteuning voor indeling en compressie
           href: supported-file-formats-and-compression-codecs.md
-        - name: Prestaties en afstemmen
-          href: copy-activity-performance.md
+        - name: Prestaties van kopieeractiviteit
+          items:
+            - name: Handleiding voor prestaties en schaalbaarheid
+              href: copy-activity-performance.md
+            - name: Prestatieproblemen oplossen
+              href: copy-activity-performance-troubleshooting.md
+            - name: Prestatiefuncties
+              href: copy-activity-performance-features.md
         - name: Metagegevens en ACL's behouden
           href: copy-activity-preserve-metadata.md
         - name: Toewijzing van schema en type
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Blog
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: Een vraag stellen - MSDN-forum
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: Een vraag stellen - Stack Overflow

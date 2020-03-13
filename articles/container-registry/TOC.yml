@@ -80,6 +80,8 @@
           items:
             - name: Toegang beperken met een virtueel netwerk (preview)
               href: container-registry-vnet.md
+            - name: Integreren met Azure Private Link (preview)
+              href: container-registry-private-link.md
             - name: Toegang achter een firewall
               href: container-registry-firewall-access-rules.md
             - name: Verificatie
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: Inhoud vertrouwen
               href: container-registry-content-trust.md
-            - name: Scannen van afbeeldingen met Security Center (preview)
+            - name: Scannen van afbeeldingen met Security Center
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Registergegevens versleutelen (preview)
+              href: container-registry-customer-managed-keys.md
         - name: Registers en andere Azure-services
           expanded: false
           items:

@@ -161,6 +161,9 @@
         - name: Galeriegegevens
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Notebooks downloaden
+          displayName: export
+          href: download-notebooks-data.md
 - name: Naslaginformatie
   items:
     - name: Naslaginformatie over algoritmen en modules

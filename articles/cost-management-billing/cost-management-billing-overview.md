@@ -8,16 +8,16 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769892"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970126"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Wat is Azure Kostenbeheer en facturering?
 
-Bij producten en services van Azure is het zo dat u alleen betaalt voor wat u gebruikt. Als u Azure-resources maakt en gebruikt, worden er kosten in rekening gebracht voor de resources. U gebruikt functies van Azure Kostenbeheer en facturering voor het uitvoeren van administratieve taken en het beheren van factureringstoegang tot kosten. Er zijn ook functies voor het bewaken en controleren van Azure-uitgaven en voor het optimaliseren van het resourcegebruik van Azure.
+Bij producten en services van Azure is het zo dat u alleen betaalt voor wat u gebruikt. Als u Azure-resources maakt en gebruikt, worden er kosten in rekening gebracht voor de resources. U gebruikt functies van Azure Kostenbeheer en facturering voor het uitvoeren van administratieve taken en het beheren van factureringstoegang tot kosten. U kunt ook functies gebruiken voor het bewaken en controleren van Azure-uitgaven en voor het optimaliseren van het resourcegebruik van Azure.
 
 ## <a name="understand-azure-billing"></a>Informatie over Azure-facturering
 

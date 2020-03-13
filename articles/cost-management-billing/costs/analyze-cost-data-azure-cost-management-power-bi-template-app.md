@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe de Azure Cost Management Power B
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169693"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399655"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analyseer kosten met de Azure Cost Management Power BI-app voor Enterprise Agreements (EA)
 
@@ -43,7 +43,7 @@ De app installeren:
   ![Aan de slag met uw nieuwe app - Verbinding maken](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. Voer in het weergegeven dialoogvenster uw EA-inschrijvingsnummer in voor **BillingProfileIdOrEnrollmentNumber**. Geef het aantal maanden aan gegevens op dat moet worden opgehaald. Behoud de standaardwaarde voor **Bereik** van **Inschrijvingsnummer** en selecteer **Volgende**.  
   ![Informatie over EA-inschrijving invoeren](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Het volgende dialoogvenster maakt verbinding met Azure en haalt gegevens op die nodig zijn voor gereserveerde instantieaanbevelingen. Laat de standaardwaarden zoals ze geconfigureerd zijn en selecteer **Aanmelden**.  
+10. Het volgende dialoogvenster maakt verbinding met Azure en haalt gegevens op die nodig zijn voor gereserveerde instantieaanbevelingen. *Laat de standaardwaarden zoals ze geconfigureerd zijn* en selecteer **Aanmelden**.  
   ![Verbinding maken met Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. De laatste installatiestap maakt verbinding met uw EA-inschrijving en vereist een [Enterprise Administrator](../manage/understand-ea-roles.md)-account. Selecteer **Aanmelden** voor verificatie met uw EA-inschrijving. Met deze stap wordt ook een actie voor gegevensvernieuwing in Power BI gestart.  
   ![Verbinding maken met EA-inschrijving](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ Zie de sectie [VM-RI-dekking (gedeelde aanbeveling)](#shared-recommendation) voo
 **RI-aankopen**: in het rapport worden RI-aankopen weergegeven voor de opgegeven periode.
 
 **Prijzenoverzicht**: het rapport bevat een gedetailleerde lijst met specifieke prijzen voor een factureringsaccount of EA-inschrijving.
+
+## <a name="troubleshoot-problems"></a>Problemen oplossen
+
+Als u nog steeds problemen hebt met de Power BI-app, kan de volgende probleemoplossingsinformatie daarbij mogelijk helpen.
+
+### <a name="budgetamount-error"></a>Fout in BudgetAmount
+
+U krijgt mogelijk een fout met het volgende bericht:
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Deze fout treedt op door een fout in de onderliggende metagegevens. Het probleem treedt op omdat er geen budget beschikbaar is onder **Cost Management > Budget** in de Azure-portal. Deze fout wordt geïmplementeerd in de Power BI Desktop en Power BI-service. 
+
+#### <a name="solution"></a>Oplossing
+
+- Tot de fout is opgelost, kunt u om het probleem heen werken door een testbudget toe te voegen in de Azure-portal op het factureringsrekening-/EA-registrateniveau. Het testbudget kunt u weer verbinding maken met Power BI. Raadpleeg voor meer informatie over een budget maken [Zelfstudie: Azure-budgetten maken en beheren](tutorial-acm-create-budgets.md).
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>Ongeldige referenties voor AzureBlob-fout
+
+U krijgt mogelijk een fout met het volgende bericht:
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Deze fout treedt op als u de verificatiemethode voor de AutoFitComboMeter-blobverbinding wijzigt.
+
+#### <a name="solution"></a>Oplossing
+
+1. Maak verbinding met uw gegevens.
+1. Nadat u uw EA-registratie en aantal maanden invoert, moet u ervoor zorgen dat u de standaardwaarden **Anoniem** voor Verificatiemethode en **Geen** voor Privacyniveau behoudt.  
+  ![Verbinding maken met Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. Stel op de volgende pagina **OAuth2** voor de verificatiemethode in en **Geen** voor het Privacyniveau. Meld vervolgens aan om uw inschrijving te verifiëren. Met deze stap wordt ook een gegevensvernieuwing in Power BI gestart.
+
 
 ## <a name="data-reference"></a>Verwijzing naar gegevens
 

@@ -1,27 +1,37 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Microsoft Genomics
+summary: Ontdek hoe u met Microsoft Genomics genome sequencing uitvoert op basis van een cloudimplementatie van de Burrows-Wheeler Aligner (BWA) en de Genome Analysis Toolkit (GATK) voor secundaire analyse.
 metadata:
   title: Documentatie voor Microsoft Genomics
-  meta.description: Learn how Microsoft Genomics can power genome sequencing using a cloud implementation of the Burrows-Wheeler Aligner (BWA) and the Genome Analysis Toolkit (GATK) for secondary analysis.
+  description: Ontdek hoe u met Microsoft Genomics genome sequencing uitvoert op basis van een cloudimplementatie van de Burrows-Wheeler Aligner (BWA) en de Genome Analysis Toolkit (GATK) voor secundaire analyse.
   services: genomics
-  author: grhuynh
-  manager: cgronlun
-  ms.author: grhuynh
   ms.service: genomics
   ms.topic: landing-page
-  ms.date: 12/07/2017
-abstract:
-  description: Ontdek hoe u met Microsoft Genomics genome sequencing uitvoert op basis van een cloudimplementatie van de Burrows-Wheeler Aligner (BWA) en de Genome Analysis Toolkit (GATK) voor secundaire analyse.
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Een werkstroom indienen via de Microsoft Genomics-service
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/helix-blue-orange.svg
-            text: Een werkstroom indienen
-            href: quickstart-run-genomics-workflow-portal
+  author: grhuynh
+  ms.author: grhuynh
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 36b5898aca2f019351aaeda8438fb6771a09b6c4
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137038"
+landingContent:
+- title: Aan de slag
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Microsoft Genomics?
+      url: overview-what-is-genomics.md
+    - text: Veelgestelde vragen
+      url: frequently-asked-questions-genomics.md
+  - linkListType: quickstart
+    links:
+    - text: Een voorbeeldworkflow uitvoeren
+      url: quickstart-run-genomics-workflow-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: FASTQ-bestandsinvoer gebruiken
+      url: quickstart-input-pair-fastq.md
+    - text: BAM-bestandsinvoer gebruiken
+      url: quickstart-input-bam.md
