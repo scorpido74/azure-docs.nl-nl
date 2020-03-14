@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 7e4586a5fba91fbc7432aa352b9608be728e8654
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382718"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267025"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Voor beeld: updates beheren met onderhouds beheer en Azure PowerShell
 

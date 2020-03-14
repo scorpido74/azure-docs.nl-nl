@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350922"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249787"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -77,7 +77,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
     1. Selecteer in de lijst met **installatie kopieën** _gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016_.  
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. Zie [Performance best practices for SQL Server in Azure Virtual Machines (Best practices voor optimale prestaties van SQL Server in Azure Virtual Machines)](virtual-machines-windows-sql-performance.md) voor de aanbevolen machinegrootten en configuratie voor productieworkloads.
 
-    ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > De geschatte maandelijkse kosten die worden weergegeven in het venster **Grootte kiezen**, zijn niet inclusief de kosten voor SQL Server-licentieverlening. Deze schatting is alleen de kosten van de virtuele machine. Voor de Express-en Developer-edities van SQL Server is deze schatting de totale geschatte kosten. Zie de [pagina met prijzen voor virtuele Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en selecteer de gewenste editie van SQL server. Zie ook de [richt lijnen voor prijzen voor SQL Server Azure-vm's](virtual-machines-windows-sql-server-pricing-guidance.md) en- [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -93,7 +93,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 
 ## <a name="2-configure-optional-features"></a>2. optionele functies configureren
 
-### <a name="disks"></a>Schijven
+### <a name="disks"></a>Disks
 
 Configureer uw schijf opties op het tabblad **schijven** . 
 
@@ -106,7 +106,7 @@ Configureer uw schijf opties op het tabblad **schijven** .
 ![SQL-VM-schijf instellingen](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Networking
+### <a name="networking"></a>Netwerken
 
 Configureer uw netwerk opties op het tabblad **netwerk** . 
 
@@ -118,7 +118,7 @@ Configureer uw netwerk opties op het tabblad **netwerk** .
 
 ![SQL VM-netwerk instellingen](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-networking.png)
 
-#### <a name="monitoring"></a>Controleren
+#### <a name="monitoring"></a>Bewaking
 
 Configureer bewaking en automatisch afsluiten op het tabblad **bewaking** . 
 
@@ -242,7 +242,7 @@ Voor het versleutelen van de back-up klikt u op **Inschakelen**. Geef het **Wach
 Zie voor meer informatie [Automatische back-up voor SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
 
 
-### <a name="machine-learning-services"></a>Machine Learning-services
+### <a name="machine-learning-services"></a>Machine Learning Services
 
 U hebt de mogelijkheid om [Machine Learning Services](/sql/advanced-analytics/)in te scha kelen. Met deze optie kunt u machine learning gebruiken met python en R in SQL Server 2017. Selecteer **inschakelen** in het venster **SQL Server instellingen** .
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208841"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Wat is een enkele data base in Azure SQL Database
 
@@ -37,13 +37,13 @@ U kunt één data base verplaatsen naar of van een [elastische pool](sql-databas
 
 ## <a name="monitoring-and-alerting"></a>Bewaking en waarschuwingen
 
-U gebruikt de ingebouwde [hulpprogram ma's](sql-database-insights-alerts-portal.md)voor [prestatie bewaking](sql-database-performance.md) en waarschuwingen, gecombineerd met de prestatie classificaties. Met behulp van deze tools kunt u snel beoordelen wat de impact is van het aanpassen van de schaal op basis van uw huidige prestatiebehoeften of de prestatiebehoeften van uw project. Daarnaast kan SQL Database [metrische gegevens en diagnostische logboeken verzenden](sql-database-metrics-diag-logging.md) die de bewaking vergemakkelijken.
+U gebruikt de ingebouwde [hulpprogram ma's](sql-database-insights-alerts-portal.md)voor [prestatie bewaking](sql-database-performance.md) en waarschuwingen, gecombineerd met de prestatie classificaties. Met behulp van deze tools kunt u snel beoordelen wat de impact is van het aanpassen van de schaal op basis van uw huidige prestatiebehoeften of de prestatiebehoeften van uw project. Daarnaast kunnen SQL Database [metrische gegevens en bron logboeken verzenden](sql-database-metrics-diag-logging.md) voor een betere controle.
 
 ## <a name="availability-capabilities"></a>Beschikbaarheid
 
 Afzonderlijke data bases, elastische Pools en beheerde exemplaren bieden allemaal een groot aantal beschikbaarheids kenmerken. Zie [beschikbaarheids kenmerken](sql-database-technical-overview.md#availability-capabilities)voor meer informatie.
 
-## <a name="transact-sql-differences"></a>Verschillen Transact-SQL
+## <a name="transact-sql-differences"></a>Verschillen in Transact-SQL
 
 De meeste Transact-SQL-functies die toepassingen gebruiken, worden volledig ondersteund in zowel Microsoft SQL Server als Azure SQL Database. De belangrijkste SQL-onderdelen, zoals gegevens typen, Opera Tors, teken reeks, reken kundige, logische en cursor functies, werken bijvoorbeeld hetzelfde in SQL Server en SQL Database. Er zijn echter enkele T-SQL-verschillen in DDL-elementen (Data Definition Language) en DML (Data Manipulation Language) die resulteren in T-SQL-instructies en query's die slechts gedeeltelijk worden ondersteund (wat verderop in dit artikel wordt besproken).
 Bovendien zijn er enkele functies en syntaxis die niet wordt ondersteund omdat Azure SQL Database is ontworpen om functies te isoleren op basis van afhankelijkheden van de hoofd database en het besturings systeem. Daarom zijn de meeste activiteiten op server niveau niet geschikt voor SQL Database. T-SQL-instructies en-opties zijn niet beschikbaar als ze opties op server niveau, onderdelen van het besturings systeem of de configuratie van het bestands systeem opgeven. Wanneer dergelijke mogelijkheden vereist zijn, is een geschikt alternatief op een andere manier vaak beschikbaar vanaf SQL Database of vanuit een andere Azure-functie of-service.

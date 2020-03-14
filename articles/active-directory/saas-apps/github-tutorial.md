@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129902"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met GitHub
 
 In deze zelf studie leert u hoe u GitHub integreert met Azure Active Directory (Azure AD). Wanneer u GitHub integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot GitHub.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij GitHub met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Controle in azure AD die toegang heeft tot uw GitHub Enter prise-Cloud organisatie.
+* Beheer de toegang tot uw GitHub Enter prise-Cloud organisatie op één centrale locatie: de Azure Portal.
 
 Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
@@ -45,7 +44,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * GitHub ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* GitHub ondersteunt het [**geautomatiseerd** inrichten van gebruikers](github-provisioning-tutorial.md)
+* GitHub ondersteunt [ **geautomatiseerde** gebruikers inrichting (uitnodigingen van de organisatie)](github-provisioning-tutorial.md)
 * Nadat u GitHub hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>GitHub toevoegen vanuit de galerie

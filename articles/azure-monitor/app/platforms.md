@@ -4,12 +4,12 @@ description: Talen, platforms en integraties die beschikbaar zijn voor Applicati
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: d87b1d0aa74263f249db2030f2366b93b8c2b421
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cbda252fece638393ee7757dc165c4b009a0195e
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669825"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136720"
 ---
 # <a name="supported-languages"></a>Ondersteunde talen
 
@@ -17,7 +17,7 @@ ms.locfileid: "77669825"
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
-* [Python (preview-versie)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>Ondersteunde platforms en frameworks
 
@@ -34,7 +34,7 @@ ms.locfileid: "77669825"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [Python (preview-versie)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 * [Universele Windows-app](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows-bureaubladtoepassingen, -services en -werkrollen](../../azure-monitor/app/windows-desktop.md)
 

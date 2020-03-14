@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498243"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272394"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
 
@@ -39,7 +39,7 @@ Meer informatie over het gebruik van de Apache Ambari REST API voor het beheren 
 
  De basis-URI (Uniform Resource Identifier) voor de Ambari REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI (`CLUSTERNAME.azurehdinsight.net`) is niet hoofdletter gevoelig, maar andere instanties in de URI zijn hoofdletter gevoelig.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Gebruik de naam van het beheerders account (de standaard **beheerder**) en het wacht woord dat u hebt opgegeven tijdens het maken van het cluster.
 
@@ -332,7 +332,7 @@ In dit voor beeld wordt een JSON-document geretourneerd met de huidige configura
 
    * Hiermee maakt u een hoofd document voor de nieuwe gewenste configuratie.
 
-   * Hiermee wordt de inhoud van de `.items[]` matrix opgehaald en toegevoegd onder het element **desired_config** .
+   * Hiermee haalt u de inhoud van de matrix `.items[]` en voegt u deze toe onder het element **desired_config** .
 
    * Hiermee worden de elementen `href`, `version`en `Config` verwijderd, omdat deze elementen niet nodig zijn om een nieuwe configuratie in te dienen.
 

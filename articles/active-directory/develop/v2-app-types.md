@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226943"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262527"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -43,7 +43,7 @@ Meer informatie over hoe u [een app kunt registreren](quickstart-register-app.md
 
 Nadat de app is geregistreerd, communiceert de app met het micro soft-identiteits platform door aanvragen naar het eind punt te verzenden. We bieden open-source frameworks en bibliotheken die de details van deze aanvragen verwerken. U hebt ook de optie om de verificatie logica zelf te implementeren door aanvragen voor deze eind punten te maken:
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
@@ -62,7 +62,7 @@ Als u dit scenario in actie wilt zien, kunt u een van de app-code voorbeelden va
 
 Voor web-apps (.NET, PHP, Java, Ruby, Python, node) die de gebruiker via een browser opent, kunt u [OpenID Connect Connect](active-directory-v2-protocols.md) gebruiken voor aanmelding door gebruikers. In OpenID Connect Connect wordt de web-app een ID-token ontvangen. Een ID-token is een beveiligings token waarmee de identiteit van de gebruiker wordt geverifieerd en informatie wordt verstrekt over de gebruiker in de vorm van claims:
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -91,7 +91,7 @@ Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk 
 
 U kunt het micro soft Identity platform-eind punt gebruiken voor het beveiligen van webservices, zoals de REST Web API van uw app. Web-Api's kunnen worden geïmplementeerd in talloze platforms en talen. Ze kunnen ook worden geïmplementeerd met behulp van HTTP-triggers in Azure Functions. In plaats van ID-tokens en sessie cookies gebruikt een web-API een OAuth 2,0-toegangs token om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag, zoals:
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -121,7 +121,7 @@ In deze stroom ontvangt de app een autorisatie code van het micro soft Identity 
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons en apps aan de server zijde
 
-Apps die langlopende processen hebben of die werken zonder interactie met een gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Deze apps kunnen tokens verifiëren en ophalen met behulp van de identiteit van de app, in plaats van de gedelegeerde identiteit van een gebruiker, met de OAuth 2,0-client referenties stroom. U kunt de identiteit van de app bewijzen met behulp van een client geheim of certificaat. Zie [verifiëren naar micro soft Identity platform in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)voor meer informatie.
+Apps die langlopende processen hebben of die werken zonder interactie met een gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Deze apps kunnen tokens verifiëren en ophalen met behulp van de identiteit van de app, in plaats van de gedelegeerde identiteit van een gebruiker, met de OAuth 2,0-client referenties stroom. U kunt de identiteit van de app bewijzen met behulp van een client geheim of certificaat. Zie de [.net core daemon-console toepassing met micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)voor meer informatie.
 
 In deze stroom communiceert de app rechtstreeks met het `/token`-eind punt om toegang te verkrijgen:
 

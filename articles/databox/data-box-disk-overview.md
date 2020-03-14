@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Microsoft Azure Data Box Disk | Microsoft Docs in gegevens
-description: Beschrijft Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens aan Azure kunt overdragen
+description: Beschrijft Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens naar Azure kunt overdragen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,11 +10,11 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240728"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Wat is Azure Data Box Disk?
 
@@ -74,7 +74,7 @@ Ga naar [Azure Data Box Disk-beveiliging en -gegevensbescherming](data-box-disk-
 ## <a name="features-and-specifications"></a>Functies en specificaties
 
 
-| Specificaties                                          | Description              |
+| Specificaties                                          | Beschrijving              |
 |---------------------------------------------------------|--------------------------|
 | Gewicht                                                  | < 2 lbs. per doos. Maximaal 5 schijven in de doos                |
 | Dimensies                                              | Schijf: 2,5-inch SSD |            
@@ -84,12 +84,12 @@ Ga naar [Azure Data Box Disk-beveiliging en -gegevensbescherming](data-box-disk-
 | Gegevensinterface                                          | USB   |
 | Beveiliging                                                | Vooraf versleuteld met BitLocker en beveiligde updates <br> Met wachtwoordsleutels beschermde schijven <br> Gegevens altijd versleuteld  |
 | Overdrachtssnelheid                                      | tot 430 MBps, afhankelijk van de bestandsgrootte      |
-|Beheer                                               | Azure Portal |
+|Beheer                                               | Azure-portal |
 
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Ga voor informatie over de beschikbaarheid van regio naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box-schijf kan ook worden geïmplementeerd in de Azure Government-Cloud. Zie voor meer informatie, [wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+Voor informatie over de beschik baarheid van regio's gaat u naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
 
 
 ## <a name="pricing"></a>Prijzen

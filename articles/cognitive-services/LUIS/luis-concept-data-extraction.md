@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221082"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Gegevens uit utterance-tekst ophalen met intents en entiteiten
 LUIS biedt u de mogelijkheid informatie ophalen van natuurlijke taal-uitingen van een gebruiker. De informatie wordt opgehaald op een manier dat deze kan worden gebruikt door een programma, toepassing of bot chatten om actie te ondernemen. In de volgende secties meer informatie over welke gegevens worden geretourneerd door intenties en entiteiten met voorbeelden van JSON.
@@ -19,11 +19,11 @@ De hardste gegevens die u wilt extra heren, zijn de door de machine geleerde geg
 ## <a name="data-location-and-key-usage"></a>Locatie en de sleutel gegevensgebruik
 LUIS biedt de gegevens van het gepubliceerde [eind punt](luis-glossary.md#endpoint). De **HTTPS-aanvraag** (post of Get) bevat de utterance en enkele optionele configuraties zoals staging of productie omgevingen.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ Het **https-antwoord** bevat alle intentie-en entiteits gegevens Luis kunnen bep
 ## <a name="data-from-intents"></a>Gegevens van intenties
 De primaire gegevens zijn de naam van het bovenste score **doel**. De eindpunt-antwoord is:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ De primaire gegevens zijn de naam van het bovenste score **doel**. De eindpunt-a
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 Als uw chatbot-of LUIS-app een beslissing neemt op basis van meer dan één intentie Score, kunt u alle uitstaande scores voor intenties retour neren.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 Stel de query string-para meter in `verbose=true`. De eindpunt-antwoord is:
 
@@ -105,7 +105,7 @@ Stel de query string-para meter in `verbose=true`. De eindpunt-antwoord is:
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 Stel de query string-para meter in `show-all-intents=true`. De eindpunt-antwoord is:
 
@@ -142,7 +142,7 @@ De intenties zijn gerangschikt op de hoogste naar laagste score.
 
 Als u vooraf gemaakte domeinen toevoegt, geeft de naam van het doel het domein aan, zoals `Utilties` of `Communication` en de bedoeling:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Als u vooraf gemaakte domeinen toevoegt, geeft de naam van het doel het domein a
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 ```JSON
 {
@@ -210,7 +210,7 @@ Een bepaald woord of zinsdeel in een utterance kan overeenkomen met meer dan é�
 
 Alle entiteiten worden geretourneerd in de **entiteiten** matrix van de reactie van het eind punt:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ Alle entiteiten worden geretourneerd in de **entiteiten** matrix van de reactie 
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ Een [samengestelde entiteit](reference-entity-composite.md) bestaat uit andere e
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ Een [samengestelde entiteit](reference-entity-composite.md) bestaat uit andere e
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 Zonder de query string-para meter `verbose=true`:
 
@@ -556,7 +556,7 @@ Sommige apps moeten kunnen om nieuwe en opkomende namen, zoals producten of bedr
 Rollen zijn contextuele verschillen van entiteiten.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 De naam van de entiteit is `Location`, met twee rollen, `Origin` en `Destination`.
 
@@ -589,7 +589,7 @@ De naam van de entiteit is `Location`, met twee rollen, `Origin` en `Destination
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 In v3 is de **rolnaam** de primaire naam van het object.
 
@@ -709,7 +709,7 @@ Voor alle andere culturen en is het antwoord:
 De sleutel frase extractie-entiteit retourneert sleutel zinnen in de utterance, die door [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)worden gegeven.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ De sleutel frase extractie-entiteit retourneert sleutel zinnen in de utterance, 
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
@@ -822,7 +822,7 @@ LUIS retourneert alle entiteiten in de utterance gedetecteerd. Als gevolg hierva
 
 Het LUIS-eind punt kan dezelfde gegevens in verschillende entiteiten detecteren.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ Het LUIS-eind punt kan dezelfde gegevens in verschillende entiteiten detecteren.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 Zonder `verbose=true` als een query string-para meter.
 
@@ -1135,7 +1135,7 @@ Als een woord of woordgroep komt overeen met meer dan één entiteit van de lijs
 
 Voor de query `when is the best time to go to red rock?`en de app het woord `red` in meer dan één lijst bevat, herkent LUIS alle entiteiten en retourneert een matrix met entiteiten als onderdeel van het JSON-eindpunt antwoord:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ Voor de query `when is the best time to go to red rock?`en de app het woord `red
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 Zonder `verbose=true` in de query reeks:
 

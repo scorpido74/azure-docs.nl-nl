@@ -4,11 +4,11 @@ description: Meer informatie over VMware-evaluatie ondersteuning in Azure Migrat
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080378"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269586"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 

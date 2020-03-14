@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254207"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -409,7 +409,7 @@ Windows Defender ATP en EDR | Waarschuwingen weer geven en onderzoeken. Wanneer 
 Gebruikers met deze rol kunnen ondersteunings aanvragen openen met micro soft voor Azure en Office 365-Services, en het service dashboard en berichten centrum weer geven in het [Azure Portal](https://portal.azure.com) en [Microsoft 365 beheer centrum](https://admin.microsoft.com). Meer informatie [over beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als ' service ondersteunings beheerder '. Het is ' service beheerder ' in de [Azure Portal](https://portal.azure.com), het [Microsoft 365 beheer centrum](https://admin.microsoft.com)en de intune-Portal.
+> Voorheen heeft deze rol de naam ' service beheerder ' in [Azure Portal](https://portal.azure.com) en [Microsoft 365 beheer centrum](https://admin.microsoft.com). We hebben de naam gewijzigd in ' service ondersteunings beheerder ' om uit te lijnen met de bestaande-naam in Microsoft Graph-API, Azure AD Graph API en Azure AD Power shell.
 
 ### <a name="sharepoint-administrator"></a>[Share point-beheerder](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Kan alle aspecten van het Exchange-product beheren.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | micro soft. Directory/groepen/Unified/appRoleAssignments/update | Werk de eigenschap groups. Unified in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/Basic/update | Basis eigenschappen van Office 365-groepen bijwerken. |
 | micro soft. Directory/groepen/Unified/Create | Office 365-groepen maken. |
 | micro soft. Directory/groepen/Unified/Delete | Verwijder Office 365-groepen. |
 | micro soft. map/groepen/Unified/members/update | Update lidmaatschap van Office 365-groepen. |
 | micro soft. Directory/groepen/Unified/Owners/update | Het eigendom van Office 365-groepen bijwerken. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | microsoft.office365.exchange/allEntities/allTasks | Beheer alle aspecten van Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Beheerders machtigingen voor externe ID-providers
 
@@ -1101,7 +1102,6 @@ Kan alle aspecten van groepen en groeps instellingen, zoals naamgeving en verloo
 | microsoft.office365.messageCenter/messages/read | Lees berichten in micro soft. office365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
-| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Machtigingen voor gast Inviter
 Kan gast gebruikers uitnodigen onafhankelijk van de instelling leden kunnen gasten uitnodigen.
@@ -1212,10 +1212,12 @@ Kan alle aspecten van het product van Skype voor bedrijven beheren.
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Beheer alle aspecten van Skype voor bedrijven online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>Machtigingen voor privacy-lezer in Message Center
 
@@ -1260,7 +1262,6 @@ Kan de Office-apps Cloud Services, waaronder beleid en instellingen beheer, behe
 | microsoft.office365.messageCenter/messages/read | Lees berichten in micro soft. office365. messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
-| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. userCommunication/cons/allTasks | Lees de zicht baarheid van nieuwe berichten en werk deze bij. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
@@ -1442,7 +1443,6 @@ Kan alle aspecten van instellingen voor micro soft Search maken en beheren.
 | microsoft.office365.search/allEntities/allProperties/allTasks | Maak en verwijder alle resources en Lees alle eigenschappen in micro soft. office365. Search en werk deze bij. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
-| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="search-editor-permissions"></a>Machtigingen voor de zoek editor
@@ -1458,7 +1458,6 @@ Kan de redactionele inhoud maken en beheren, zoals blad wijzers, Q en as, locati
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | Lees berichten in micro soft. office365. messageCenter. |
 | microsoft.office365.search/content/allProperties/allTasks | Maak en verwijder inhoud en Lees alle eigenschappen in micro soft. office365. Search en werk deze bij. |
-| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 
 ### <a name="security-administrator-permissions"></a>Beveiligings beheerders machtigingen
 
@@ -1507,7 +1506,6 @@ Maakt en beheert beveiligings gebeurtenissen.
 | microsoft.azure.advancedThreatProtection/allEntities/read | Lees en configureer Azure AD Advanced Threat Protection. |
 | microsoft.intune/allEntities/allTasks | Beheer alle aspecten van intune. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Beveiligings-en compliancecentrum lezen en configureren. |
-| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Lees en configureer Windows Defender Advanced Threat Protection. |
 
 ### <a name="security-reader-permissions"></a>Machtigingen voor beveiligings lezer
@@ -1560,18 +1558,19 @@ Kan alle aspecten van de share point-service beheren.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
 | micro soft. Directory/groepen/Unified/appRoleAssignments/update | Werk de eigenschap groups. Unified in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/Basic/update | Basis eigenschappen van Office 365-groepen bijwerken. |
 | micro soft. Directory/groepen/Unified/Create | Office 365-groepen maken. |
 | micro soft. Directory/groepen/Unified/Delete | Verwijder Office 365-groepen. |
 | micro soft. map/groepen/Unified/members/update | Update lidmaatschap van Office 365-groepen. |
 | micro soft. Directory/groepen/Unified/Owners/update | Het eigendom van Office 365-groepen bijwerken. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health lezen en configureren. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lees en configureer Office 365 Service Health. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Maak en verwijder alle resources en lees de standaard eigenschappen in micro soft. office365. share point en werk deze bij. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Beheerders machtigingen voor teams communicatie
 
@@ -1738,10 +1737,10 @@ Beheerder van geprivilegieerde rol | Beheerder van geprivilegieerde rol | e8611a
 Rapport lezer | Rapport lezer | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Beheerder zoeken | Beheerder zoeken | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Zoek editor | Zoek editor | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
-Beveiligingsbeheerder | Beveiligingsbeheerder | 194ae4cb-b126-40b2-bd5b-6091b380977d
+Beveiligingsbeheer | Beveiligingsbeheerder | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Beveiligings operator | Beveiligings operator | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Beveiligings lezer | Beveiligingslezer | 5d6b6bb7-de71-4623-b4af-96380a352509
-Ondersteunings beheerder voor service | Servicebeheerder | f023fd81-a637-4b56-95fd-791ac0226033
+Ondersteunings beheerder voor service | Serviceondersteuningsbeheerder | f023fd81-a637-4b56-95fd-791ac0226033
 Share point-service beheerder | SharePoint-beheerder | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams communicatie beheerder | Teams communicatie beheerder | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Mede werker communicatie technicus voor teams | Mede werker communicatie technicus voor teams | f70938a0-fc10-4177-9e90-2178f8765737

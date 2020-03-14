@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356926"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276905"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-In dit voor beeld moet u `<RESOURCE_GROUP>` vervangen door de resource groep en `<PLAN_NAME>` met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>`](#regions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt, neemt u de optie `--is-linux` op.
+In dit voor beeld moet u `<RESOURCE_GROUP>` vervangen door de resource groep en `<PLAN_NAME>` met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt, neemt u de optie `--is-linux` op.
 
 Met het plan dat u hebt gemaakt, kunt u [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) gebruiken om uw functie-app te maken. In de portal worden zowel het abonnement als de app tegelijkertijd gemaakt. Zie [een functie-app maken in een Premium-abonnement](scripts/functions-cli-create-premium-plan.md)voor een voor beeld van een volledig Azure CLI-script.
 
@@ -99,44 +99,42 @@ Als u een computer met meer geheugen gebruikt, betekent dat niet altijd dat de f
 
 Een Java script-functie-app is bijvoorbeeld beperkt door de standaard limiet voor geheugen in node. js. Als u deze limiet wilt verhogen, voegt u de app-instelling `languageWorkers:node:arguments` met de waarde `--max-old-space-size=<max memory in MB>`toe.
 
-## <a name="regions"></a>Regio's
+## <a name="region-max-scale-out"></a>Schaal van regio Maxi maal
 
-Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings systeem.
+Hieronder vindt u de momenteel ondersteunde maximum waarden voor uitschalen voor één abonnement in elke regio en de configuratie van het besturings systeem. Open een ondersteunings ticket als u een verhoging wilt aanvragen.
+
+Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Regio| Windows | Linux |
 |--| -- | -- |
-|Australië - centraal| ✔<sup>1</sup> | |
-|Australië - centraal 2| ✔<sup>1</sup> | |
-|Australië - oost| ✔ | ✔<sup>1</sup> |
-|Australië - zuidoost | ✔ | ✔<sup>1</sup> |
-|Brazilië - zuid| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|Canada - midden| ✔ | ✔<sup>1</sup> |
-|VS - centraal| ✔ | ✔<sup>1</sup> |
-|Azië - oost| ✔ | ✔<sup>1</sup> |
-|VS - oost | ✔ | ✔<sup>1</sup> |
-|VS - oost 2| ✔ | ✔<sup>1</sup> |
-|Frankrijk - centraal| ✔ | ✔<sup>1</sup> |
-|Duitsland - west-centraal| ✔ | |
-|Japan - oost| ✔ | ✔<sup>1</sup> |
-|Japan - west| ✔ | ✔<sup>1</sup> |
-|Korea - centraal| ✔ | ✔<sup>1</sup> |
-|VS - noord-centraal| ✔ | ✔<sup>1</sup> |
-|Europa - noord| ✔ | ✔<sup>1</sup> |
-|Noor wegen-Oost| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
-|India - zuid | ✔ | |
-|Azië - zuidoost| ✔ | ✔<sup>1</sup> |
-|Verenigd Koninkrijk Zuid| ✔ | ✔<sup>1</sup> |
-|Verenigd Koninkrijk West| ✔ | ✔<sup>1</sup> |
-|Europa -west| ✔ | ✔<sup>1</sup> |
-|India - west| ✔ | ✔<sup>1</sup> |
-|VS - west-centraal| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|VS - west| ✔ | ✔<sup>1</sup> |
-|VS - west 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
-<sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.
-
+|Australië - centraal| 20 | Niet beschikbaar |
+|Australië - centraal 2| 20 | Niet beschikbaar |
+|Australië - oost| 100 | 20 |
+|Australië - zuidoost | 100 | 20 |
+|Brazilië - zuid| 60 | 20 |
+|Canada - midden| 100 | 20 |
+|VS - centraal| 100 | 20 |
+|Azië - oost| 100 | 20 |
+|VS - oost | 100 | 20 |
+|VS - oost 2| 100 | 20 |
+|Frankrijk - centraal| 100 | 20 |
+|Duitsland - west-centraal| 100 | Niet beschikbaar |
+|Japan - oost| 100 | 20 |
+|Japan - west| 100 | 20 |
+|Korea - centraal| 100 | 20 |
+|VS - noord-centraal| 100 | 20 |
+|Europa - noord| 100 | 20 |
+|Noor wegen-Oost| 20 | 20 |
+|VS - zuid-centraal| 100 | 20 |
+|India - zuid | 100 | Niet beschikbaar |
+|Azië - zuidoost| 100 | 20 |
+|Verenigd Koninkrijk Zuid| 100 | 20 |
+|Verenigd Koninkrijk West| 100 | 20 |
+|Europa -west| 100 | 20 |
+|India - west| 100 | 20 |
+|VS - west-centraal| 20 | 20 |
+|VS - west| 100 | 20 |
+|VS - west 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

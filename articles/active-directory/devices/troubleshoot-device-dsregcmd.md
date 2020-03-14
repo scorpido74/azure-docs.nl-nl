@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707941"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136480"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht
 
@@ -28,10 +28,10 @@ In deze sectie vindt u de para meters voor de status van de apparaten. In de vol
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Apparaatstatus |
 | ---   | ---   | ---   | ---   |
-| JA | NO | NO | Toegevoegd aan Azure AD |
-| NO | NO | JA | Lid van domein |
-| JA | NO | JA | Lid van hybride AD |
-| NO | JA | JA | On-premises DRS toegevoegd |
+| KLIKT | NO | NO | Toegevoegd aan Azure AD |
+| NO | NO | KLIKT | Lid van domein |
+| KLIKT | NO | KLIKT | Lid van hybride AD |
+| NO | KLIKT | KLIKT | On-premises DRS toegevoegd |
 
 > [!NOTE]
 > De status Workplace Join (geregistreerd bij Azure AD) wordt weer gegeven in de sectie gebruikers status
@@ -54,7 +54,7 @@ In deze sectie vindt u de para meters voor de status van de apparaten. In de vol
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Apparaatgegevens
+## <a name="device-details"></a>Details van apparaat
 
 Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride Azure AD (niet geregistreerd voor Azure AD). In deze sectie vindt u informatie over apparaten die zijn opgeslagen in de Cloud.
 
@@ -81,7 +81,7 @@ Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride A
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Tenantgegevens
+## <a name="tenant-details"></a>Tenant Details
 
 Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride Azure AD (niet geregistreerd voor Azure AD). In deze sectie vindt u de algemene Tenant Details wanneer een apparaat wordt toegevoegd aan Azure AD.
 
@@ -193,7 +193,7 @@ Deze sectie kan worden genegeerd voor geregistreerde Azure AD-apparaten.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnostische gegevens in plaats daarvan
+## <a name="diagnostic-data"></a>Diagnostische gegevens
 
 ### <a name="pre-join-diagnostics"></a>Diagnostische gegevens vooraf samen voegen
 
@@ -211,8 +211,16 @@ In deze sectie worden verschillende tests uitgevoerd voor het opsporen van foute
 - **Ad-configuratie test:** -test leest en controleert of het SCP-object juist is geconfigureerd in het on-PREMISes AD-forest. Fouten in deze test resulteren waarschijnlijk in samenvoeg fouten in de Discover-fase met de fout code 0x801c001d.
 - **Detectie test voor Drs:** -test haalt de Drs-eind punten van het detectie-eind punt van de meta gegevens en voert een gebruikers realm-aanvraag uit. Fouten in deze test resulteren waarschijnlijk in samenvoeg fouten in de Discover-fase.
 - **Drs-connectiviteits test:** -test voert een basis connectiviteits test uit op het Drs-eind punt.
-- **Token Acquisition test:** -test probeert een Azure AD-verificatie token op te halen als de Tenant van de gebruiker federatief is. Fouten in deze test resulteren waarschijnlijk in samenvoeg fouten in de verificatie fase. Als verificatie is mislukt, wordt de synchronisatie poging uitgevoerd als terugval, tenzij terugval expliciet wordt uitgeschakeld met een register sleutel.
-- **Terugval voor synchroniseren-samen voegen:** -stel deze optie in op ingeschakeld als de register sleutel, om te voor komen dat de terugval op het moment dat er verificatie fouten worden GESYNCHRONISEERD, niet aanwezig is. Deze optie is beschikbaar in Windows 10 1803 en hoger.
+- **Token Acquisition test:** -test probeert een Azure AD-verificatie token op te halen als de Tenant van de gebruiker federatief is. Fouten in deze test resulteren waarschijnlijk in samenvoeg fouten in de verificatie fase. Als verificatie is mislukt, wordt de synchronisatie poging uitgevoerd als terugval, tenzij terugval expliciet wordt uitgeschakeld met de onderstaande instellingen voor register sleutels.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Terugval voor synchroniseren-samen voegen:** -Stel in op ingeschakeld als de bovenstaande register sleutel, om te voor komen dat de terugval op het moment dat er verificatie fouten worden gevonden, niet aanwezig is. Deze optie is beschikbaar in Windows 10 1803 en hoger.
 - **Vorige registratie:** -tijd waarop de vorige poging tot samen voeging heeft plaatsgevonden. Alleen mislukte deelname pogingen worden geregistreerd.
 - **Fout fase:** -het stadium van de samen voeging waarin het is afgebroken. Mogelijke waarden zijn controle vooraf, Discover, auth, samen voegen.
 - Fout code van **client:** -client fout geretourneerd (HRESULT).

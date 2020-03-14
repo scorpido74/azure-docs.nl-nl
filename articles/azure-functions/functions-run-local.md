@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190786"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276658"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -65,13 +65,13 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
     ##### <a name="v2x"></a>v2. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools
     ```
 
     ##### <a name="v3x"></a>v3. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
@@ -163,33 +163,33 @@ Versie 2. x vereist dat u een standaard taal voor uw project selecteert wanneer 
 
 Voer in het Terminal venster of vanaf een opdracht prompt de volgende opdracht uit om het project en de lokale Git-opslag plaats te maken:
 
-```bash
+```
 func init MyFunctionProj
 ```
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
 In versie 2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
 
-```output
+<pre>
 Select a worker runtime:
 dotnet
 node
 python 
 powershell
-```
+</pre>
 
 Gebruik de pijl omhoog/omlaag om een taal te kiezen en druk vervolgens op ENTER. Als u van plan bent java script-of type script-functies te ontwikkelen, kiest u **knoop punt**en selecteert u vervolgens de taal. Type script heeft [een aantal aanvullende vereisten](functions-reference-node.md#typescript). 
 
 De uitvoer ziet eruit als in het volgende voor beeld voor een Java script-project:
 
-```output
+<pre>
 Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-```
+</pre>
 
 `func init` ondersteunt de volgende opties, alleen versie 2. x, tenzij anders vermeld:
 
@@ -233,7 +233,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
+- Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
   ![opslag accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
@@ -247,12 +247,12 @@ Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wi
 
   + Alle instellingen van een bestaande functie-app downloaden:
 
-    ```bash
+    ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
   + De verbindings reeks ophalen voor een specifiek opslag account:
 
-    ```bash
+    ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
@@ -262,13 +262,13 @@ Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wi
 
 Voer de volgende opdracht uit om een functie te maken:
 
-```bash
+```
 func new
 ```
 
 In versie 2. x, wanneer u `func new` uitvoert, wordt u gevraagd een sjabloon te kiezen in de standaard taal van uw functie-app. vervolgens wordt u gevraagd om een naam voor de functie te kiezen. In versie 1. x wordt u ook gevraagd om de taal te kiezen.
 
-```output
+<pre>
 Select a language: Select a template:
 Blob trigger
 Cosmos DB trigger
@@ -279,18 +279,18 @@ SendGrid
 Service Bus Queue trigger
 Service Bus Topic trigger
 Timer trigger
-```
+</pre>
 
 Functie code wordt gegenereerd in een submap met de naam van de geleverde functie, zoals u kunt zien in de volgende uitvoer van de wachtrij trigger:
 
-```output
+<pre>
 Select a language: Select a template: Queue trigger
 Function name: [QueueTriggerJS] MyQueueTrigger
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-```
+</pre>
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
@@ -303,62 +303,65 @@ U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumen
 
 Als u bijvoorbeeld een Java script-trigger in één opdracht wilt maken, voert u het volgende uit:
 
-```bash
+```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
 Als u een in een wachtrij geactiveerde functie wilt maken in één opdracht, voert u het volgende uit:
 
-```bash
+```
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
 ## <a name="start"></a>Functies lokaal uitvoeren
 
-Als u een functions-project wilt uitvoeren, voert u de host functions uit. De host schakelt triggers in voor alle functies in het project. 
+Als u een functions-project wilt uitvoeren, voert u de host functions uit. De host schakelt triggers in voor alle functies in het project. De start opdracht varieert, afhankelijk van de taal van uw project.
 
-### <a name="version-2x"></a>Versie 2. x
+# <a name="c"></a>[C\#](#tab/csharp)
 
-In versie 2. x van de runtime varieert de start opdracht, afhankelijk van de taal van uw project.
-
-#### <a name="c"></a>C\#
-
-```command
+```
 func start --build
 ```
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
-#### <a name="javascript"></a>Javascript
-
-```command
+```
 func start
 ```
 
-#### <a name="typescript"></a>TypeScript
+# <a name="python"></a>[Python](#tab/python)
 
-```command
+```
+func start
+```
+Deze opdracht moet worden [uitgevoerd in een virtuele omgeving](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv).
+
+# <a name="typescript"></a>[Type script](#tab/ts)
+
+```
 npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+---
 
-Versie 1. x van de functions runtime vereist de opdracht `host`, zoals in het volgende voor beeld:
-
-```command
-func host start
-```
+>[!NOTE]  
+> Versie 1. x van de functions runtime vereist de opdracht `host`, zoals in het volgende voor beeld:
+>
+> ```
+> func host start
+> ```
 
 `func start` ondersteunt de volgende opties:
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Alleen versie 2. x. |
-| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Wordt alleen gebruikt met `--useHttps`. Alleen versie 2. x. |
-| **`--cors-credentials`** | Alleen-lezen geverifieerde aanvragen (cookies en de verificatie header) versie 2. x toestaan. |
+| **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Niet ondersteund voor versie 1. x. |
+| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Wordt alleen gebruikt met `--useHttps`. Niet ondersteund voor versie 1. x. |
+| **`--cors-credentials`** | Toestaan dat geauthenticeerde cross-Origin-aanvragen (cookies en de header Authentication) worden niet ondersteund voor versie 1. x. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
-| **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Alleen versie 2. x. |
+| **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Niet ondersteund voor versie 1. x. |
 | **`--nodeDebugPort`** , **`-n`** | De poort voor de node. js-fout opsporing die moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
-| **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Wordt alleen gebruikt met `--cert`. Alleen versie 2. x. |
+| **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Wordt alleen gebruikt met `--cert`. Niet ondersteund voor versie 1. x. |
 | **`--port`** , **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
 | **`--script-root`** , **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C# klassen bibliotheek project bouwt, worden de bestanden host. json, local. settings. json en function. json gegenereerd in een *hoofdmap* met een pad als `MyProject/bin/Debug/netstandard2.0`. In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0`. Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
@@ -367,13 +370,13 @@ func host start
 
 Wanneer de functie host wordt gestart, wordt de URL van de met HTTP geactiveerde functies uitgevoerd:
 
-```output
+<pre>
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
 Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
-```
+</pre>
 
 >[!IMPORTANT]
 >Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"`. Zie het artikel over de [http-binding](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.
@@ -397,21 +400,31 @@ Zorg ervoor dat u dezelfde server naam en poort gebruikt als waarop de host van 
 
 Met de volgende krul opdracht wordt de functie `MyHttpTrigger` Quick Start geactiveerd vanuit een GET-aanvraag met de para meter _name_ door gegeven in de query teken reeks.
 
-```bash
+```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
 Het volgende voor beeld is dezelfde functie die wordt aangeroepen vanuit een POST-aanvraag voor het door geven van een _naam_ in de hoofd tekst van de aanvraag:
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azure Rocks'}"
+```
+---
 
 U kunt GET-aanvragen indienen vanuit een browser waarmee gegevens worden door gegeven in de query teken reeks. Voor alle andere HTTP-methoden moet u krul, Fiddler, Postman of een soortgelijk hulp programma voor HTTP-tests gebruiken.
 
 #### <a name="non-http-triggered-functions"></a>Niet-HTTP-geactiveerde functies
 
-Voor alle soorten functies behalve HTTP-triggers en webhooks kunt u uw functies lokaal testen door een beheer eindpunt aan te roepen. Als dit eind punt wordt aangeroepen met een HTTP POST-aanvraag op de lokale server, wordt de functie geactiveerd. U kunt eventueel test gegevens door geven aan de uitvoering in de hoofd tekst van de POST-aanvraag. Deze functionaliteit is vergelijkbaar met het tabblad **testen** in de Azure Portal.
+Voor alle soorten functies behalve HTTP-triggers en webhooks en Event Grid triggers kunt u uw functies lokaal testen door een beheer eindpunt aan te roepen. Als dit eind punt wordt aangeroepen met een HTTP POST-aanvraag op de lokale server, wordt de functie geactiveerd. 
+
+Zie [Local tests with Viewer web app](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)als u Event grid geactiveerde functies lokaal wilt testen.
+
+U kunt eventueel test gegevens door geven aan de uitvoering in de hoofd tekst van de POST-aanvraag. Deze functionaliteit is vergelijkbaar met het tabblad **testen** in de Azure Portal.
 
 U roept het volgende Administrator-eind punt aan om niet-HTTP-functies te activeren:
 
@@ -427,16 +440,22 @@ Als u test gegevens wilt door geven aan het eind punt van de beheerder van een f
 
 De `<trigger_input>` waarde bevat gegevens in een indeling die door de functie wordt verwacht. Het volgende krul-voor beeld is een POST naar een `QueueTriggerJS`-functie. In dit geval is de invoer een teken reeks die overeenkomt met het bericht dat naar verwachting in de wachtrij wordt gevonden.
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTrigger
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```bash
+curl --request POST -H "Content-Type:application/json" --data "{'input':'sample queue data'}" http://localhost:7071/admin/functions/QueueTrigger
+```
+---
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>Gebruik de opdracht `func run` in versie 1. x
+#### <a name="using-the-func-run-command-version-1x-only"></a>De `func run` opdracht gebruiken (alleen versie 1. x)
 
 >[!IMPORTANT]
-> De opdracht `func run` wordt niet ondersteund in versie 2. x van de hulpprogram ma's. Zie het onderwerp [How to Azure functions runtime-versies](set-runtime-version.md)voor meer informatie.
+> De opdracht `func run` wordt alleen ondersteund in versie 1. x van de hulpprogram ma's. Zie het onderwerp [How to Azure functions runtime-versies](set-runtime-version.md)voor meer informatie.
 
-U kunt een functie ook rechtstreeks aanroepen met behulp van `func run <FunctionName>` en invoer gegevens opgeven voor de functie. Deze opdracht is vergelijkbaar met het uitvoeren van een functie met behulp van het tabblad **testen** in de Azure Portal.
+In versie 1. x kunt u een functie ook rechtstreeks aanroepen met behulp van `func run <FunctionName>` en invoer gegevens opgeven voor de functie. Deze opdracht is vergelijkbaar met het uitvoeren van een functie met behulp van het tabblad **testen** in de Azure Portal.
 
 `func run` ondersteunt de volgende opties:
 
@@ -450,7 +469,7 @@ U kunt een functie ook rechtstreeks aanroepen met behulp van `func run <Function
 
 Als u bijvoorbeeld een door HTTP geactiveerde functie wilt aanroepen en de hoofd tekst van de inhoud wilt door geven, voert u de volgende opdracht uit:
 
-```bash
+```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
@@ -467,7 +486,7 @@ Een projectmap kan taalspecifieke bestanden en mappen bevatten die niet mogen wo
 
 Als u uw lokale code naar een functie-app in azure wilt publiceren, gebruikt u de opdracht `publish`:
 
-```bash
+```
 func azure functionapp publish <FunctionAppName>
 ```
 
@@ -504,7 +523,7 @@ De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 
 Met Azure Functions kunt u uw functie project implementeren in een [aangepaste docker-container](functions-deployment-technologies.md#docker-container). Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md)voor meer informatie. Aangepaste containers moeten een Dockerfile hebben. Als u een app met een Dockerfile wilt maken, gebruikt u de optie-Dockerfile op `func init`.
 
-```bash
+```
 func deploy
 ```
 
@@ -548,7 +567,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

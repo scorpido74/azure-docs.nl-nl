@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278809"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137285"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -32,12 +32,12 @@ Hieronder vindt u een moment opname van de huidige versies van alle programmeer 
 
 | Interfaces | Meest recente primaire versie | Status |
 | --- | --- | --- |
-| [.NET-SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
 | [.NET SDK preview](https://aka.ms/search-sdk-preview) |8,0-Preview |Preview, uitgebracht: april 2019 |
-| [Service REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen verkrijgbaar |
+| [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen beschikbaar |
 | [Service REST API 2019-05-06-preview](search-api-preview.md) |2019-05-06-preview |Preview |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Algemeen verkrijgbaar |
-| [REST-API voor beheer](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Algemeen verkrijgbaar |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Algemeen beschikbaar |
+| [REST-API voor beheer](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Algemeen beschikbaar |
 
 Voor de REST-Api's, met inbegrip van de `api-version` op elke aanroep is vereist. Met behulp van `api-version` is het eenvoudig om een specifieke versie te richten, zoals een preview-API. In het volgende voor beeld ziet u hoe de para meter `api-version` wordt opgegeven:
 

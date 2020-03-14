@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245523"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
@@ -56,7 +56,7 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Roltoewijzingen met onbekende beveiligingsprincipal
 
-Als u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert zonder de roltoewijzing te verwijderen, wordt het beveiligings-principal-type voor de roltoewijzing vermeld als **onbekend**. In de volgende schermopname ziet u een voorbeeld in Azure Portal. De naam van de beveiligingsprincipal wordt weer gegeven als **identiteit verwijderd** en de **identiteit bestaat niet meer**. 
+Als u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert zonder de roltoewijzing te verwijderen, wordt het beveiligings-principal-type voor de roltoewijzing vermeld als **onbekend**. In de volgende scherm afbeelding ziet u een voor beeld in de Azure Portal. De naam van de beveiligingsprincipal wordt weer gegeven als **identiteit verwijderd** en de **identiteit bestaat niet meer**. 
 
 ![Resource groep voor web-app](./media/troubleshooting/unknown-security-principal.png)
 
@@ -149,7 +149,7 @@ Voor deze items is **Schrijf** toegang vereist voor het **app service abonnement
 Deze items hebben **Schrijf** toegang tot de hele **resource groep** die uw website bevat:  
 
 * SSL-certificaten en-bindingen (SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde resource groep en geografische locatie)  
-* Waarschuwingsregels  
+* Regels voor waarschuwingen  
 * instellingen voor automatisch schalen  
 * Application Insights-onderdelen  
 * Webtests  
@@ -164,14 +164,14 @@ Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 
 * Eindpunten  
 * IP-adressen  
-* Schijven  
+* Disks  
 * Extensies  
 
 Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 
 * Beschikbaarheidsset  
 * Set met gelijke taak verdeling  
-* Waarschuwingsregels  
+* Regels voor waarschuwingen  
 
 Als u geen toegang hebt tot deze tegels, vraagt u uw beheerder om toegang tot de resource groep te krijgen.
 

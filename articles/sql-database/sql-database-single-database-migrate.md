@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359882"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268611"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server database migratie naar Azure SQL Database
 
@@ -62,7 +62,7 @@ Hieronder leest u enkele aanbevelingen voor het behalen van optimale prestaties 
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Prestaties optimaliseren nadat de migratie is voltooid
 
-[Werk uw statistieken bij](https://msdn.microsoft.com/library/ms187348.aspx) met een volledige scan nadat de migratie is voltooid.
+[Werk uw statistieken bij](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql) met een volledige scan nadat de migratie is voltooid.
 
 ## <a name="method-2-use-transactional-replication"></a>Methode 2: Transactionele replicatie gebruiken
 

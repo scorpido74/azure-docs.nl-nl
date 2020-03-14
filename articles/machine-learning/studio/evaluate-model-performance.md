@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: a7227b939af1c826d2ee06d8203710839da430ee
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168673"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218146"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Model prestaties in Azure Machine Learning Studio evalueren (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In dit artikel wordt gedemonstreerd hoe u de prestaties van een model in Azure Machine Learning Studio kunt evalueren (klassiek) en geeft u een korte uitleg van de metrische gegevens die voor deze taak beschikbaar zijn. Er worden drie veelvoorkomende leer scenario's weer gegeven: 
 

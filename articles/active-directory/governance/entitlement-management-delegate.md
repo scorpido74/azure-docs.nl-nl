@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261838"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
@@ -91,7 +91,7 @@ Daarnaast hebben een aangewezen goed keurder en een aanvrager van een toegangs p
 
 De volgende tabel geeft een lijst van de taken die de rechten voor het beheer kunnen uitvoeren.
 
-| Taak | beheerder | Maker van catalogus | Catalogus eigenaar | Toegangs pakket beheer |
+| Taak | Beheerder | Maker van catalogus | Catalogus eigenaar | Toegangs pakket beheer |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegeren aan een maker van de catalogus](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Een verbonden organisatie toevoegen](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

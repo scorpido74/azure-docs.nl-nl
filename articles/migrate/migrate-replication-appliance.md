@@ -4,11 +4,11 @@ description: Meer informatie over het Azure Migrate replicatie apparaat voor VMW
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388890"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245861"
 ---
 # <a name="replication-appliance"></a>Replicatie apparaat
 

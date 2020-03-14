@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365466"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220136"
 ---
 # <a name="language-support-for-computer-vision"></a>Taal ondersteuning voor Computer Vision
 
@@ -31,10 +31,10 @@ OCR detecteert automatisch de taal van het invoer materiaal, dus het is niet nod
 |:-----|:----:|:-----:|
 |Arabisch | `ar`|✔ |
 |Chinees (vereenvoudigd) | `zh-Hans`|✔ |
-|Chinees (traditioneel) | `zh-Hant`|✔ |
+|Chinees (Traditioneel) | `zh-Hant`|✔ |
 |Tsjechisch | `cs` |✔ |
 |Deens | `da` |✔ |
-|Nederlands | `nl` |✔ |
+|Dutch | `nl` |✔ |
 |Nederlands | `en` |✔ |
 |Fins | `fi` |✔ |
 |Frans | `fr` |✔ |

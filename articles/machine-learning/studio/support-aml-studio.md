@@ -9,21 +9,23 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7146db33368877b8eb029e106559477376c5953
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894629"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217906"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Ontvang ondersteuning en training voor Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In dit artikel vindt u informatie over het Azure Machine Learning Studio (klassiek) en het verkrijgen van ondersteuning voor uw problemen en vragen.
 
 ## <a name="learn-more-about-studio-classic"></a>Meer informatie over Studio (klassiek)
 
 Bekijk onze trainings materialen:
-+ [Zelfstudies en artikelen met procedures](../studio/index.yml) 
++ [Zelf studies en artikelen met procedures](../studio/index.yml) 
 + [Video's over beginners data wetenschappen](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 + [Algoritmen voor Cheat-werk bladen](../studio/algorithm-cheat-sheet.md) 
 
@@ -39,6 +41,6 @@ Bekijk deze bronnen voor ondersteuning:
 
 + **Gebruikers forum**: vragen stellen, vragen beantwoorden en verbinding maken met andere gebruikers in het [ondersteunings forum Azure machine learning Studio (klassiek) op MSDN](https://aka.ms/aml-forum-studio).
 
-+ **Stack Overflow**: Ga naar de Azure Machine Learning-community op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) gelabeld met 'Azure-Machine-Learning'.
++ **Stack overflow**: Ga naar de Azure Machine Learning Community op [stack overflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) gelabeld met ' Azure-machine-learning '.
 
 + **Product suggesties** en functie aanvragen delen in ons [Azure machine learning feedback kanaal](https://feedback.azure.com/forums/257792-machine-learning). Als u uw feedback wilt delen, selecteert u de knop **product feedback** aan het einde van elk artikel.

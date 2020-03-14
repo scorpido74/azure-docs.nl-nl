@@ -3,12 +3,12 @@ title: Metrische gegevens in realtime weer geven met Azure Monitor voor containe
 description: In dit artikel wordt een overzicht gegeven van de real-time weergave van metrische gegevens zonder kubectl te gebruiken met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404939"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216585"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Metrische gegevens weer geven in realtime
 
@@ -24,7 +24,7 @@ Dit artikel bevat een gedetailleerd overzicht en helpt u inzicht te krijgen in h
 
 Raadpleeg de [installatie handleiding](container-insights-livedata-setup.md)voor hulp bij het instellen of oplossen van problemen met de functie Live data (preview).
 
-## <a name="how-it-works"></a>Het werkt als volgt 
+## <a name="how-it-works"></a>Hoe werkt het? 
 
 De functie voor Live gegevens (preview) heeft rechtstreeks toegang tot de Kubernetes-API en aanvullende informatie over het verificatie model vindt u [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 
@@ -34,7 +34,7 @@ Deze functie voert een polling bewerking uit op basis van de metrieke eind punte
 
 Het polling-interval wordt geconfigureerd in de vervolg keuzelijst **ingesteld interval** zodat u elke 1, 5, 15 en 30 seconden polling voor nieuwe gegevens kunt instellen. 
 
-![Live vervolg polling-interval](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Live vervolg polling-interval](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >We raden u aan het polling-interval in te stellen op één seconde terwijl u een probleem gedurende korte tijd oplost. Deze aanvragen kunnen van invloed zijn op de beschik baarheid en beperking van de Kubernetes-API op uw cluster. Daarna kunt u de configuratie opnieuw configureren naar een langer polling-interval. 

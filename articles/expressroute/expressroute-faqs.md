@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361585"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264919"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -50,7 +50,15 @@ Ja. Een ExpressRoute-circuit, nadat deze is ingesteld, kunt u tegelijkertijd toe
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Hoe worden VNets geadverteerd op ExpressRoute-privé-peering?
 
-De ExpressRoute-gateway adverteert de *adres ruimte* van het Azure VNet, u kunt niet opnemen/uitsluiten op het niveau van het subnet. Het is altijd de VNet-adres ruimte die wordt geadverteerd. Als VNet-peering wordt gebruikt en de peered VNet is ingeschakeld, wordt ook de adres ruimte van het gekoppelde VNet geadverteerd.
+De ExpressRoute-gateway adverteert de *adres ruimte (n)* van het Azure VNet, dat u niet kunt opnemen/uitsluiten op het niveau van het subnet. Het is altijd de VNet-adres ruimte die wordt geadverteerd. Als VNet-peering wordt gebruikt en de peered VNet is ingeschakeld, wordt ook de adres ruimte van het gekoppelde VNet geadverteerd.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Hoeveel voor voegsels kunnen worden geadverteerd van een VNet naar on-premises op ExpressRoute privé-peering?
+
+Er zijn Maxi maal 200 voor voegsels die worden geadverteerd op één ExpressRoute-verbinding of via VNet-peering met behulp van gateway-door voer. Als u bijvoorbeeld 199 adres ruimten hebt op één VNet dat is verbonden met een ExpressRoute-circuit, worden alle 199 van die voor voegsels op locatie geadverteerd. Als u een VNet hebt ingeschakeld om Gateway-overdracht toe te staan met 1 adres ruimte en 150 spaken VNets ingeschakeld met de optie externe gateway toestaan, adverteert het VNet dat is geïmplementeerd met de gateway 151 voor voegsels aan on-premises.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Wat gebeurt er als ik de limiet voor het voor voegsel voor een ExpressRoute-verbinding overschrijd?
+
+De verbinding tussen het ExpressRoute-circuit en de gateway (en de peered VNets met behulp van gateway-door Voer, indien van toepassing) gaat verder. Er wordt opnieuw ingesteld wanneer de limiet voor het voor voegsel niet langer wordt overschreden.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Kan ik routes filteren die afkomstig zijn van mijn on-premises netwerk?
 

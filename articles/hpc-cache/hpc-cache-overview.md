@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582131"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241190"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
@@ -45,14 +45,14 @@ De Azure HPC-cache kan ook worden gebruikt om de efficiëntie te verbeteren van 
 
 Een implementatie van een Azure HPC-cache kan bijdragen aan het versnellen van kwantitatieve analyse berekeningen, workloads voor risico analyse en Monte Carlo-simulaties om financiële diensten bedrijven beter inzicht te geven in het nemen van strategische beslissingen.
 
-## <a name="region-availability"></a>Regionale beschikbaarheid
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 
 * VS - oost
 * VS - oost 2
 * Europa - noord
-* Europa - west
+* Europa -west
 * Azië - zuidoost
 * Sydney
 * VS - west 2
@@ -60,7 +60,7 @@ De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 
 Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheids gegevens.
 
-## <a name="service-availability"></a>Beschikbaarheid van services
+## <a name="service-availability"></a>Service beschikbaarheid
 
 U moet toegang aanvragen voor elk abonnement dat u wilt gebruiken met de Azure HPC-cache. Deze beperking helpt de kwaliteit van de service in de eerste maanden van algemene Beschik baarheid te garanderen.
 

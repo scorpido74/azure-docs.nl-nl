@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362696"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256963"
 ---
 # <a name="manage-the-mobility-agent"></a>De Mobility-agent beheren 
 
@@ -37,11 +37,24 @@ U kunt Mobility agent op uw server instellen wanneer u Azure Site Recovery gebru
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobility service bijwerken met het Power shell-script op Windows Server
 
+Voordat u begint, moet u ervoor zorgen dat de configuratie server, scale-out proces servers en alle Master doel servers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobility-service op beveiligde computers bijwerkt.
+
 Het volgende script gebruiken voor het bijwerken van de Mobility-service op een server met de Power shell-cmdlet
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Mobility service hand matig bijwerken op elke beveiligde server
+
+1. Voordat u begint, moet u ervoor zorgen dat de configuratie server, scale-out proces servers en alle Master doel servers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobility-service op beveiligde computers bijwerkt.
+
+2. [Zoek het installatie programma van de agent](vmware-physical-mobility-service-overview.md#locate-installer-files) op basis van het besturings systeem van de server.
+
+>[!IMPORTANT]
+> Als u Azure IaaS VM van de ene Azure-regio naar de andere repliceert, gebruikt u deze methode niet. Raadpleeg [onze richt lijnen](azure-to-azure-autoupdate.md) voor meer informatie over alle beschik bare opties.
+
+3. Kopieer het installatie bestand op de beveiligde computer en voer het uit om de Mobility-agent bij te werken.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Update account dat wordt gebruikt voor de push-installatie van de Mobility-service
 

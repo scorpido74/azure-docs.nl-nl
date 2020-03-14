@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377453"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262787"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator of Intune-bedrijfsportal gebruiken in Xamarin-toepassingen
 
@@ -75,12 +75,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     }
     
     else if (!AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url))
-    {               
-         return false;                
+    {                
+         return false;                  
     }
     
     return true;     
-}           
+}            
 ```
 
 Deze methode wordt aangeroepen telkens wanneer de toepassing wordt gestart. Het wordt gebruikt als een kans om de reactie van de Broker te verwerken en het verificatie proces te volt ooien dat MSAL.NET is gestart.
@@ -96,20 +96,20 @@ Het object venster instellen:
 1. Gebruik `.WithParentActivityOrWindow(App.RootViewController)` in het `AcquireTokenInteractive`-gesprek en geef de verwijzing naar het object venster dat u gaat gebruiken.
 
     In `App.cs`:
-    
+
     ```csharp
        public static object RootViewController { get; set; }
     ```
-    
+
     In `AppDelegate.cs`:
-    
+
     ```csharp
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    
+
     In het `AcquireToken`-gesprek:
-    
+
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
@@ -143,11 +143,12 @@ In het URL-schema `BundleId` unieke identificatie van de app: `$"msauth.(BundleI
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Stap 6: de Broker-id toevoegen aan de sectie LSApplicationQueriesSchemes
+
 MSAL maakt gebruik van `–canOpenURL:` om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 heeft Apple de schema's vergrendeld die een toepassing kan opvragen. 
 
 Voeg `msauthv2` toe aan de sectie `LSApplicationQueriesSchemes` van het bestand `Info.plist`, zoals in het volgende voor beeld:
 
-```XML 
+```XML
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -156,16 +157,19 @@ Voeg `msauthv2` toe aan de sectie `LSApplicationQueriesSchemes` van het bestand 
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>Stap 7: de omleidings-URI registreren in de toepassings Portal
+
 Wanneer u de Broker gebruikt, heeft de omleidings-URI een extra vereiste. De omleidings-URI _moet_ de volgende indeling hebben:
+
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
 
-Hier volgt een voorbeeld: 
+Hier volgt een voorbeeld:
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
+
 U ziet dat de omleidings-URI overeenkomt met de `CFBundleURLSchemes` naam die u hebt opgenomen in het `Info.plist` bestand.
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>Stap 8: Zorg ervoor dat de omleidings-URI is geregistreerd bij uw app
@@ -192,15 +196,114 @@ De omleidings-URI berekenen:
 
    ![Voer de bundel-ID in](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-Wanneer u de stappen hebt voltooid, wordt de omleidings-URI voor u berekend.
+Wanneer u klaar bent met de stappen, wordt de omleidings-URI voor u berekend.
 
 ![Omleidings-URI kopiëren](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 ## <a name="brokered-authentication-for-android"></a>Brokered authenticatie voor Android
 
-MSAL.NET ondersteunt alleen het platform Xamarin. iOS. Het biedt nog geen ondersteuning voor Brokers voor het platform Xamarin. Android.
+### <a name="step-1-enable-broker-support"></a>Stap 1: ondersteuning voor Broker inschakelen
 
-De systeem eigen bibliotheek van MSAL Android ondersteunt al brokered-verificatie. Zie [brokered Authentication in Android](brokered-auth.md)voor meer informatie.
+Broker-ondersteuning is ingeschakeld per PublicClientApplication. Het is standaard uitgeschakeld. Gebruik de para meter `WithBroker()` (standaard ingesteld op True) bij het maken van de `IPublicClientApplication` via de `PublicClientApplicationBuilder`.
+
+```CSharp
+var app = PublicClientApplicationBuilder
+                .Create(ClientId)
+                .WithBroker()
+                .WithRedirectUri(redirectUriOnAndroid) //(see step 4 below)
+                .Build();
+```
+
+### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>Stap 2: AppDelegate bijwerken voor het afhandelen van de call back
+
+Wanneer MSAL.NET de Broker aanroept, roept de Broker op zijn beurt terug naar uw toepassing met de methode OnActivityResult (). Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing het resultaat routeren naar MSAL.NET.
+Dit kan worden bereikt door het resultaat te routeren naar de `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` door de methode OnActivityResult () te overschrijven, zoals hieronder wordt weer gegeven
+
+```CSharp
+protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+{
+   base.OnActivityResult(requestCode, resultCode, data);
+   AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+}
+```
+
+Deze methode wordt aangeroepen wanneer de Broker-toepassing wordt gestart en wordt gebruikt als een kans om de reactie van de Broker te verwerken en het verificatie proces te volt ooien dat door MSAL.NET is gestart.
+
+### <a name="step-3-set-an-activity"></a>Stap 3: een activiteit instellen
+
+Voor een goede werking van brokered-verificatie moet u een activiteit instellen zodat MSAL de reactie van de broker kan verzenden en ontvangen.
+
+Hiervoor moet u de activiteit (meestal de MainActivity) aan de `WithParentActivityOrWindow(object parent)` als het bovenliggende object geven. 
+
+**Bijvoorbeeld:**
+
+In de aanroep voor het verkrijgen van een token:
+
+```CSharp
+result = await app.AcquireTokenInteractive(scopes)
+             .WithParentActivityOrWindow((Activity)context))
+             .ExecuteAsync();
+```
+
+### <a name="step-4-register-your-redirecturi-in-the-application-portal"></a>Stap 4: uw RedirectUri in de toepassings Portal registreren
+
+MSAL maakt gebruik van Url's om de Broker aan te roepen en vervolgens terug te keren naar uw app. Voor het volt ooien van deze retour actie moet u een URL-schema voor uw app registreren. Deze omleidings-URI moet worden geregistreerd op de Azure AD-portal voor app-registratie als een geldige omleidings-URI voor uw toepassing.
+
+
+De omleidings-URI die nodig is voor uw toepassing, is afhankelijk van het certificaat dat is gebruikt voor het ondertekenen van de APK.
+
+```
+Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
+```
+
+Het laatste deel van de URI, `hgbUYHVBYUTvuvT&Y6tr554365466=`, is de hand tekening waarmee de APK is ondertekend, base64-gecodeerd.
+Als u echter tijdens de ontwikkelings fase van uw toepassing met Visual Studio fouten opspoort in uw code zonder de APK te ondertekenen met een specifiek certificaat, zal Visual Studio de APK voor u ondertekenen voor fout opsporing, waardoor de APK een unieke hand tekening voor de machine waarop deze is gebouwd. Telkens wanneer u uw app op een andere machine bouwt, moet u de omleidings-URI in de code van de toepassing bijwerken en de registratie van de toepassing in de Azure Portal om te verifiëren met MSAL. 
+
+Tijdens het opsporen van fouten kan er een MSAL-uitzonde ring (of logboek bericht) worden weer gegeven met de mede deling dat de omleidings-URI onjuist is. **Deze uitzonde ring geeft u ook de omleidings-URI die u moet gebruiken** met de huidige machine waarvoor u fouten wilt opsporen. U kunt deze omleidings-URI gebruiken om te blijven ontwikkelen voor de tijd.
+
+Wanneer u klaar bent om uw code te volt ooien, moet u de omleidings-URI in de code bijwerken en de registratie van de toepassing in de Azure Portal om de hand tekening van het certificaat te gebruiken, gaat u de APK ondertekenen met.
+
+In de praktijk houdt dit in dat u een omleidings-URI moet registreren voor elk lid van het team, plus een omleidings-URI voor de door de productie ondertekende versie van de APK.
+
+U kunt deze hand tekening ook zelf berekenen, vergelijkbaar met de manier waarop MSAL dit doet: 
+
+```CSharp
+   private string GetRedirectUriForBroker()
+   {
+      string packageName = Application.Context.PackageName;
+      string signatureDigest = this.GetCurrentSignatureForPackage(packageName);
+      if (!string.IsNullOrEmpty(signatureDigest))
+      {
+            return string.Format(CultureInfo.InvariantCulture, "{0}://{1}/{2}", RedirectUriScheme,
+               packageName.ToLowerInvariant(), signatureDigest);
+      }
+
+      return string.Empty;
+   }
+
+   private string GetCurrentSignatureForPackage(string packageName)
+   {
+            PackageInfo info = Application.Context.PackageManager.GetPackageInfo(packageName,
+               PackageInfoFlags.Signatures);
+            if (info != null && info.Signatures != null && info.Signatures.Count > 0)
+            {
+               // First available signature. Applications can be signed with multiple signatures.
+               // The order of Signatures is not guaranteed.
+               Signature signature = info.Signatures[0];
+               MessageDigest md = MessageDigest.GetInstance("SHA");
+               md.Update(signature.ToByteArray());
+               return Convert.ToBase64String(md.Digest(), Base64FormattingOptions.None);
+               // Server side needs to register all other tags. ADAL will
+               // send one of them.
+            }
+   }
+```
+
+U kunt ook de hand tekening voor het pakket ophalen met behulp van het hulp programma voor de volgende opdrachten:
+
+Voor Windows: `keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+
+Voor Mac: `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
 
 ## <a name="next-steps"></a>Volgende stappen
 

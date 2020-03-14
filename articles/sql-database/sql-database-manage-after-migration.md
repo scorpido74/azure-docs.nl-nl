@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818968"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256183"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
@@ -30,7 +30,7 @@ In dit artikel worden enkele van de belangrijkste kenmerken van Azure SQL Databa
 
 - Data base bewaken met behulp van de Azure Portal
 - Bedrijfscontinuïteit en herstel na noodgeval (BCDR)
-- Veiligheid en naleving
+- Beveiliging en naleving
 - Intelligente database bewaking en onderhoud
 - Gegevensverplaatsing
 
@@ -87,11 +87,11 @@ In samen vatting is de traditionele on-premises SQL Server-installatie vereist d
 
 Zie voor meer informatie over herstel na nood gevallen: [Azure SQL DB nood herstel 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
-## <a name="security-and-compliance"></a>Veiligheid en naleving
+## <a name="security-and-compliance"></a>Beveiliging en naleving
 
 SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Database is beschikbaar op het niveau van de data base en op platform niveau en is het meest geschikt wanneer het in meerdere lagen wordt ingedeeld. Op elke laag krijgt u de controle en optimale beveiliging voor uw toepassing. De lagen zijn:
 
-- Identiteits & verificatie ([Windows/SQL-verificatie en Azure Active Directory [Aad]-verificatie](sql-database-control-access.md)).
+- Identiteits & authenticatie ([SQL-verificatie en Azure Active Directory [Aad]-verificatie](sql-database-manage-logins.md)).
 - Bewakings activiteit ([controle](sql-database-auditing.md) en [detectie van bedreigingen](sql-database-threat-detection.md)).
 - Het beveiligen van werkelijke gegevens ([transparent Data Encryption [TDe]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) en [Always encrypted [ae]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Toegang tot gevoelige en beschermde gegevens beheren ([beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) en [dynamische gegevens maskering](/sql/relational-databases/security/dynamic-data-masking)).
@@ -100,10 +100,10 @@ SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Databa
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Welke verificatie methoden voor gebruikers worden aangeboden in SQL Database
 
-Er zijn [twee verificatie methoden](sql-database-control-access.md#authentication) beschikbaar in SQL database:
+Er zijn twee verificatie methoden beschikbaar in SQL Database:
 
 - [Azure Active Directory-verificatie](sql-database-aad-authentication.md)
-- SQL-verificatie
+- [SQL-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. AAD ondersteunt [MFA (multi-factor Authentication)](sql-database-ssms-mfa-authentication.md) en met een [paar klikken](../active-directory/hybrid/how-to-connect-install-express.md) Aad kunnen worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde SQL Database Server. Hierdoor kunnen SQL Database en SQL Data Warehouse multi-factor Authentication-en gast gebruikers accounts binnen een Azure AD-domein aanbieden. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
 
@@ -138,7 +138,7 @@ Standaard is uw SQL database geconfigureerd om Azure-Services toegang tot de ser
 
 Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
-![VNet-service-eind punten](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![VNet-service-eindpunten](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
@@ -173,7 +173,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
 |**Database server heeft toegang tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
-|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimale|Zeer mini maal|
+|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|Database niveau|
 ||||
 
@@ -226,7 +226,7 @@ Met Express route kunt u ook Maxi maal twee keer zoveel bandbreedte limieten aan
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Voldoet aan de eisen van de regelgeving en hoe deze helpt bij de naleving van mijn eigen organisatie SQL Database
 
-SQL Database voldoet aan de regelgeving met betrekking tot naleving. Ga naar het [vertrouwens centrum van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) en inzoomen op de nalevingen die belang rijk zijn voor uw organisatie om te zien of SQL database is opgenomen in de compatibele Azure-Services om de meest recente set van nalevingen weer te geven die zijn voldaan door SQL database. Het is belang rijk om te weten dat SQL Database kan worden gecertificeerd als een compatibele service, de IT-afdeling helpt bij de naleving van de service van uw organisatie, maar deze niet automatisch gegarandeerd.
+SQL Database voldoet aan een aantal regelgevende compliancies. Als u de meest recente set compliancies wilt weer geven waaraan SQL Database is voldaan, gaat u naar het [vertrouwens centrum van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) en zoomt u in op de compliancies die belang rijk zijn voor uw organisatie om te zien of SQL database is opgenomen in de compatibele Azure-Services. Het is belang rijk om te weten dat SQL Database kan worden gecertificeerd als een compatibele service, de IT-afdeling helpt bij de naleving van de service van uw organisatie, maar deze niet automatisch gegarandeerd.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente database controle en-onderhoud na migratie
 
@@ -260,7 +260,7 @@ U kunt deze analyse ook bekijken in de sectie ' Advisor ':
 
 In SQL Database kunt u gebruikmaken van de intelligente inzichten van het platform om de prestaties te bewaken en op de juiste wijze af te stemmen. U kunt de prestaties en het resource gebruik in SQL Database bewaken met behulp van de volgende methoden:
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 Het Azure Portal toont het gebruik van een Data Base door de data base te selecteren en te klikken op de grafiek in het deel venster Overzicht. U kunt de grafiek wijzigen om meerdere metrische gegevens weer te geven, waaronder het CPU-percentage, het DTU-percentage, het IO-percentage van de gegevens, het percentage van sessies en het percentage van de database grootte.
 
@@ -288,7 +288,7 @@ Met [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md) kunt u bel
 
 Een belang rijk deel van de probleemoplossings technieken die u zou gebruiken voor het vaststellen van problemen met de prestaties van query's en data bases, blijft hetzelfde. Nadat alle dezelfde SQL Server engine de Cloud heeft gebevoegdheden. Het platform-Azure SQL DB is echter ingebouwd in Intelligence. Het helpt u bij het oplossen van problemen met de prestaties en het eenvoudiger te diagnosticeren. Het kan ook enkele van deze corrigerende maat regelen uitvoeren namens u en in sommige gevallen, zodat deze automatisch worden opgelost.
 
-Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profiteren van intelligente functies als [query Performance Insight (QPI)](sql-database-query-performance.md) en [database Advisor](sql-database-advisor.md) in combi natie, waardoor het verschil in methodologie anders is in dat respect: u hoeft niet langer het hand matig te doen om de essentiële informatie te verfijnen die u kan helpen bij het oplossen van het probleem. Het platform doet de hard werk voor u. Een voor beeld van dat is QPI. Met QPI kunt u alles inzoomen op het query niveau en de historische trends bekijken en nagaan waar precies de query teruggedraaide. De Database Advisor biedt u aanbevelingen die u kunnen helpen bij het verbeteren van de algehele prestaties in algemene, zoals-ontbrekende indexen, het weghalen van indexen, het parameterizing van uw query's, enzovoort.
+Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profiteren van intelligente functies als [query Performance Insight (QPI)](sql-database-query-performance.md) en [database Advisor](sql-database-advisor.md) in combi natie, waardoor het verschil in de methodologie in dat opzicht afwijkt: u hoeft niet langer te doen om de essentiële informatie te verfijnen die u kan helpen bij het oplossen van het probleem. Het platform doet de hard werk voor u. Een voor beeld van dat is QPI. Met QPI kunt u alles inzoomen op het query niveau en de historische trends bekijken en nagaan waar precies de query teruggedraaide. De Database Advisor biedt u aanbevelingen die u kunnen helpen bij het verbeteren van de algehele prestaties in algemene, zoals-ontbrekende indexen, het weghalen van indexen, het parameterizing van uw query's, enzovoort.
 
 Bij het oplossen van problemen is het belang rijk om te bepalen of het nu alleen de toepassing of de data base is die er een back-up van maakt, wat invloed heeft op de prestaties van uw toepassing. Vaak ligt het prestatie probleem in de toepassingslaag. Dit kan de architectuur of het gegevens toegangs patroon zijn. Stel dat u een intensieve-toepassing hebt die gevoelig is voor netwerk latentie. In dit geval gaat uw toepassing in, omdat er veel korte aanvragen worden teruggestuurd tussen de toepassing en de server en op een gelaste netwerk. deze retours worden snel opgeteld. U kunt in dit geval [batch query's](sql-database-performance-guidance.md#batch-queries)gebruiken om de prestaties te verbeteren. Door batches te gebruiken, kunt u op een enorme manier uw aanvragen verwerken in een batch. Zo kunt u de retour latentie verminderen en de prestaties van uw toepassingen verbeteren.
 

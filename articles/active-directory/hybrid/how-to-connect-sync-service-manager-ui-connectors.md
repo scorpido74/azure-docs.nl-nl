@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376336"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261045"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Connectors gebruiken met de Azure AD Connect Sync Service Manager
 

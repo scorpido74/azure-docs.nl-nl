@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820729"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255689"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Wat is de service Azure SQL Database?
 
@@ -68,7 +68,7 @@ SQL Database biedt de volgende aankoop modellen:
 Azure SQL Database biedt drie service lagen die zijn ontworpen voor verschillende soorten toepassingen:
 - [Algemeen/Standard-](sql-database-service-tier-general-purpose.md) servicelaag ontworpen voor algemene werk belastingen. Het biedt berekenings-en opslag opties op basis van budget gericht evenwicht.
 - [Bedrijfskritiek/Premium-](sql-database-service-tier-business-critical.md) servicelaag ontworpen voor OLTP-toepassingen met een hoge transactie frequentie en een minimale latentie-I/O. Het biedt de hoogste flexibiliteit voor storingen door gebruik te maken van verschillende geïsoleerde replica's.
-- [Grootschalige](sql-database-service-tier-hyperscale.md) service tier ontworpen voor zeer grote OLTP-data base en de mogelijkheid om opslag en schaal berekening voorzichtig te schalen. 
+- [Grootschalige](sql-database-service-tier-hyperscale.md) service tier ontworpen voor zeer grote OLTP-data base en de mogelijkheid om opslag en schaal berekening voorzichtig te schalen.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastische pools voor optimaal resourcegebruik
 
@@ -76,7 +76,7 @@ Voor veel bedrijven en toepassingen is het kunnen maken van enkele databases en 
 
    ![Afbeelding die elastische Pools in Basic-, Standard-en Premium-edities weergeeft](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-Met elastische pools hoeft u zich niet bezig te houden met het verhogen en verlagen van de databaseprestaties als de vraag naar resources fluctueert. De pooldatabases maken naar behoefte gebruik van de prestatieresources van de elastische pool. Pooldatabases tellen mee voor het verbruik tot het maximum voor de pool is bereikt. Zo blijven uw kosten voorspelbaar, ook al is uw gebruik van de individuele database dat niet.
+Met elastische Pools hoeft u zich niet te richten op het omhoog en omlaag plaatsen van database prestaties als de vraag naar resources schommelt. De pooldatabases maken naar behoefte gebruik van de prestatieresources van de elastische pool. Gepoolde data bases worden gebruikt, maar de limieten van de pool worden niet overschreden, waardoor uw kosten voorspelbaar blijven, zelfs als het gebruik van afzonderlijke data bases niet.
 
 U kunt [data bases aan de pool toevoegen en eruit verwijderen](sql-database-elastic-pool-manage-portal.md), en uw app schalen van een aantal data bases tot duizenden, allemaal binnen een budget dat u beheert. U kunt ook de minimale en maximale hoeveelheid beschik bare resources voor data bases in de pool beheren om ervoor te zorgen dat er geen data base in de pool is die alle pool resources gebruikt en dat elke gepoolde Data Base een gegarandeerd minimum aan resources heeft. Zie [ontwerp patronen voor SaaS-toepassingen met meerdere tenants met SQL database](sql-database-design-patterns-multi-tenancy-saas-applications.md)voor meer informatie over ontwerp patronen voor SaaS-toepassingen (Software as a Service) die gebruikmaken van elastische Pools.
 
@@ -95,7 +95,7 @@ Azure SQL Database biedt geavanceerde functies voor controle en probleem oplossi
  - De ingebouwde bewakings mogelijkheden van de nieuwste versie van SQL Server data base-engine. Hiermee kunt u real-time prestatie inzichten zoeken. 
  - PaaS bewakings mogelijkheden van Azure waarmee u een groot aantal data base-exemplaren kunt bewaken en problemen kunt oplossen.
 
-[Query Store](sql-database-operate-query-store.md), een ingebouwde SQL Server bewakings functie, registreert de prestaties van uw query's in realtime en stelt u in staat om de mogelijke prestatie problemen en de belangrijkste consumenten te identificeren. Automatische afstemming en aanbevelingen bieden advies over de query's met de teruggedraaide-prestaties en ontbrekende of gedupliceerde indexen. Met automatisch afstemmen in SQL Database kunt u hand matig de scripts Toep assen waarmee de problemen kunnen worden opgelost, of de oplossing laten SQL Database Toep assen. SQL Database kunt ook testen en controleren of de oplossing een deel van de voor delen biedt en de wijziging bewaren of herstellen, afhankelijk van het resultaat. Naast de mogelijkheden van query Store en automatisch afstemmen kunt u standaard [dmv's en XEvent](sql-database-monitoring-with-dmvs.md) gebruiken om de prestaties van de werk belasting te controleren.
+[Query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store), een ingebouwde SQL Server bewakings functie, registreert de prestaties van uw query's in realtime en stelt u in staat om de mogelijke prestatie problemen en de belangrijkste consumenten te identificeren. Automatische afstemming en aanbevelingen bieden advies over de query's met de teruggedraaide-prestaties en ontbrekende of gedupliceerde indexen. Met automatisch afstemmen in SQL Database kunt u hand matig de scripts Toep assen waarmee de problemen kunnen worden opgelost, of de oplossing laten SQL Database Toep assen. SQL Database kunt ook testen en controleren of de oplossing een deel van de voor delen biedt en de wijziging bewaren of herstellen, afhankelijk van het resultaat. Naast de mogelijkheden van query Store en automatisch afstemmen kunt u standaard [dmv's en XEvent](sql-database-monitoring-with-dmvs.md) gebruiken om de prestaties van de werk belasting te controleren.
 
 Azure biedt ingebouwde hulpprogram ma's voor [prestatie bewaking](sql-database-performance.md) en [waarschuwingen](sql-database-insights-alerts-portal.md) , gecombineerd met prestatie classificaties waarmee u de status van duizenden data bases kunt bewaken. Met deze hulpprogram ma's kunt u snel de gevolgen van het omhoog of omlaag schalen van de schaal bepalen op basis van uw huidige of verwachte prestatie behoeften. Daarnaast kan SQL Database [metrische gegevens en diagnostische logboeken verzenden](sql-database-metrics-diag-logging.md) die de bewaking vergemakkelijken. U kunt SQL Database configureren voor het opslaan van resourcegebruik, werkrollen en sessies, en connectiviteit in een van deze Azure-resources:
 
@@ -157,7 +157,7 @@ Er zijn twee automatisch afstemmings aspecten [beschikbaar in SQL database](sql-
 
 ### <a name="adaptive-query-processing"></a>Verwerking van adaptieve query’s
 
-U kunt [adaptieve query verwerking](/sql/relational-databases/performance/intelligent-query-processing)gebruiken, inclusief Interleaved uitvoering voor tabel functies met meerdere instructies, feedback over geheugen toekenning in batch modus en adaptieve samen voegingen in batch modus. Elk van deze verwerkingsfuncties voor adaptieve query’s werkt met vergelijkbare technieken voor ‘leren en aanpassen’, voor het oplossen van prestatieproblemen die het gevolg zijn hardnekkige problemen met query-optimalisatie.
+U kunt [adaptieve query verwerking](/sql/relational-databases/performance/intelligent-query-processing)gebruiken, inclusief Interleaved uitvoering voor tabel functies met meerdere instructies, feedback over geheugen toekenning in batch modus en adaptieve samen voegingen in batch modus. Elk van deze functies voor adaptieve query verwerking is vergelijkbaar met de technieken ' leren en aanpassen ', waardoor er meer prestatie problemen worden opgelost die te maken hebben met historische onsamenhangende optimalisatie problemen voor query's.
 
 ## <a name="advanced-security-and-compliance"></a>Geavanceerde beveiliging en naleving van voorschriften
 
@@ -242,7 +242,7 @@ Azure Hybrid Benefit voor SQL Server wijkt af van de mobiliteit van licenties op
 
 SQL Database-klanten beschikken over de volgende rechten die zijn gekoppeld aan Azure Hybrid Benefit voor SQL Server:
 
-|Licentiefootprint|Wat doet Azure Hybrid Benefit voor SQL Server u doen?|
+|Licentie footprint|Wat doet Azure Hybrid Benefit voor SQL Server u doen?|
 |---|---|
 |SQL Server Enterprise Edition core-klanten met SA|<li>Kan het basis tarief betalen op Algemeen of Bedrijfskritiek SKU</li><br><li>1 kern on-premises = 4 kernen in Algemeen SKU</li><br><li>1 kern on-premises = 1 kern geheugen in Bedrijfskritiek SKU</li>|
 |SQL Server Standard Edition core-klanten met SA|<li>Het basis tarief voor alleen Algemeen SKU kan worden betaald</li><br><li>1 kern on-premises = 1 kern geheugen in Algemeen SKU</li>|

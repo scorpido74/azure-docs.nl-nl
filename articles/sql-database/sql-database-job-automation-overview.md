@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240539"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 
-Met behulp van Azure SQL Database kunt u taken die regelmatig kunnen worden uitgevoerd op een of meer databases maken en plannen om T-SQL-query's en onderhoudstaken uit te voeren. Door elke taak wordt de uitvoeringsstatus in een logboek vastgelegd en wordt ook geprobeerd de bewerkingen opnieuw uit te voeren als er een fout optreedt.
+Met behulp van Azure SQL Database kunt u taken die regelmatig kunnen worden uitgevoerd op een of meer databases maken en plannen om T-SQL-query's en onderhoudstaken uit te voeren.
+Door elke taak wordt de uitvoeringsstatus in een logboek vastgelegd en wordt ook geprobeerd de bewerkingen opnieuw uit te voeren als er een fout optreedt.
 U kunt een doeldatabase of groepen Azure SQL-databases definiëren waarin de taak wordt uitgevoerd, en ook schema's voor het uitvoeren van een taak definiëren.
 Met een taak wordt de taak voor het aanmelden bij de doel database afgehandeld. Ook definieert, onderhoudt en handhaaft u Transact-SQL-scripts die in een groep van Azure SQL-databases moeten worden uitgevoerd.
 
@@ -48,10 +49,10 @@ De volgende technologieën voor het plannen van taken zijn beschikbaar in Azure 
 
 Hier volgen enkele noemenswaardige verschillen tussen SQL Agent (on-premises beschikbaar en als onderdeel van SQL Database Managed Instance) en de taakagent van Elastic Database (beschikbaar voor individuele databases in Azure SQL-database en databases in SQL Data Warehouse).
 
-|  |Elastische taken  |SQL Agent |
+| |Elastische taken |SQL Agent |
 |---------|---------|---------|
-|Bereik     |  Elk gewenst aantal Azure SQL-databases en/of -datawarehouses in dezelfde Azure-cloud als de taakagent. Doelen kunnen zich op verschillende SQL Database-servers en in verschillende abonnementen en/of regio's bevinden. <br><br>Doelgroepen kunnen bestaan uit afzonderlijke databases of datawarehouses of alle databases in een server, pool of shardkaart (dynamisch opgesomd tijdens het uitvoeren van een taak). | Een afzonderlijke database in hetzelfde SQL Server-exemplaar als de SQL agent. |
-|Ondersteunde API's en hulpprogramma's     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
+|Bereik | Elk gewenst aantal Azure SQL-databases en/of -datawarehouses in dezelfde Azure-cloud als de taakagent. Doelen kunnen zich op verschillende SQL Database-servers en in verschillende abonnementen en/of regio's bevinden. <br><br>Doelgroepen kunnen bestaan uit afzonderlijke databases of datawarehouses of alle databases in een server, pool of shardkaart (dynamisch opgesomd tijdens het uitvoeren van een taak). | Een afzonderlijke database in hetzelfde SQL Server-exemplaar als de SQL agent. |
+|Ondersteunde API's en hulpprogramma's | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent-taken
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ U moet ook Database Mail inschakelen in het beheerde exemplaar:
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 U kunt de operator op de hoogte stellen dat er iets is gebeurd met uw SQL-Agent taken. Een operator definieert contact gegevens voor een persoon die verantwoordelijk is voor het onderhoud van een of meer beheerde exemplaren. Soms worden operator verantwoordelijkheden toegewezen aan één persoon.
@@ -140,23 +141,24 @@ In systemen met meerdere beheerde exemplaren of SQL-servers, kunnen veel persone
 U kunt Opera tors maken met behulp van SSMS of het Transact-SQL-script dat in het volgende voor beeld wordt weer gegeven:
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 U kunt elke taak wijzigen en Opera tors toewijzen die via e-mail worden gewaarschuwd als de taak is voltooid, mislukt of slaagt met behulp van SSMS of het volgende Transact-SQL-script:
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>Beperkingen van SQL Agent-taken
 
 Enkele van de SQL Agent-functies die beschikbaar zijn in SQL Server worden niet ondersteund in het beheerde exemplaar:
+
 - SQL Agent-instellingen zijn alleen-lezen. Procedure `sp_set_agent_properties` wordt niet ondersteund in het beheerde exemplaar.
 - Het in-/uitschakelen van SQL-Agent wordt momenteel niet ondersteund in een beheerd exemplaar. SQL Agent wordt altijd uitgevoerd.
 - Meldingen worden gedeeltelijk ondersteund
@@ -180,17 +182,16 @@ De volgende afbeelding toont hoe een taakagent taken uitvoert op verschillende s
 
 ### <a name="elastic-job-components"></a>Onderdelen van een elastische taak
 
-|Onderdeel  | Beschrijving (aanvullende gegevens onder de tabel) |
+|Onderdeel | Beschrijving (aanvullende gegevens onder de tabel) |
 |---------|---------|
-|[**Elastische-taakagent**](#elastic-job-agent) |  De Azure-resource die u maakt om taken uit te voeren en te beheren.   |
-|[**Taakdatabase**](#job-database)    |    Een Azure SQL-database die de taakagent gebruikt om taakgerelateerde gegevens, taakdefinities, enzovoort op te slaan.      |
-|[**Doelgroep**](#target-group)      |  De verzameling servers, pools, databases en shardkaarten waarvoor een taak moet worden uitgevoerd.       |
-|[**Taak**](#job)  |  Een taak is een werkeenheid die uit een of meer [taakstappen](#job-step) bestaat. Taakstappen bepalen welk T-SQL-script moet worden uitgevoerd en andere details die nodig zijn voor het uitvoeren van het script.  |
-
+|[**Elastische-taakagent**](#elastic-job-agent) | De Azure-resource die u maakt om taken uit te voeren en te beheren. |
+|[**Taakdatabase**](#job-database) | Een Azure SQL-database die de taakagent gebruikt om taakgerelateerde gegevens, taakdefinities, enzovoort op te slaan. |
+|[**Doelgroep**](#target-group) | De verzameling servers, pools, databases en shardkaarten waarvoor een taak moet worden uitgevoerd. |
+|[**Taak**](#job) | Een taak is een werkeenheid die uit een of meer [taakstappen](#job-step) bestaat. Taakstappen bepalen welk T-SQL-script moet worden uitgevoerd en andere details die nodig zijn voor het uitvoeren van het script. |
 
 #### <a name="elastic-job-agent"></a>Elastische-taakagent
 
-Een elastische-taakagent is de Azure-resource voor het maken, uitvoeren en beheren van taken. De elastische-taakagent is een Azure-resource die u maakt in de portal ([PowerShell](elastic-jobs-powershell.md) en REST worden ook ondersteund). 
+Een elastische-taakagent is de Azure-resource voor het maken, uitvoeren en beheren van taken. De elastische-taakagent is een Azure-resource die u maakt in de portal ([PowerShell](elastic-jobs-powershell.md) en REST worden ook ondersteund).
 
 Voor het maken van een **elastische-taakagent** hebt u een bestaande SQL-database nodig. De agent configureert deze bestaande database als de [*taakdatabase*](#job-database).
 
@@ -202,24 +203,20 @@ De *taakdatabase* wordt gebruikt voor het definiëren van taken en het bijhouden
 
 Voor de huidige preview is een bestaande Azure SQL-database (S0 of hoger) vereist om een elastische-taakagent te kunnen maken.
 
-De *taak database* hoeft niet letterlijk nieuw te zijn, maar moet een schone, lege, S0 of hogere service doelstelling zijn. De aanbevolen Service doelstelling van de *taak database* is S1 of hoger, maar de optimale keuze is afhankelijk van de prestatie behoeften van uw taak (s): het aantal taak stappen, het aantal taak doelen en hoe vaak taken worden uitgevoerd. Een S0-data base kan bijvoorbeeld voldoende zijn voor een taak agent waarop weinig taken worden uitgevoerd die zijn gericht op minder dan tien data bases, maar waarbij elke minuut een taak wordt uitgevoerd, mogelijk niet snel genoeg is met een S0-data base en een hogere servicelaag mogelijk beter is. 
+De *taak database* hoeft niet letterlijk nieuw te zijn, maar moet een schone, lege, S0 of hogere service doelstelling zijn. De aanbevolen Service doelstelling van de *taak database* is S1 of hoger, maar de optimale keuze is afhankelijk van de prestatie behoeften van uw taak (s): het aantal taak stappen, het aantal taak doelen en hoe vaak taken worden uitgevoerd. Een S0-data base kan bijvoorbeeld voldoende zijn voor een taak agent waarop weinig taken worden uitgevoerd die zijn gericht op minder dan tien data bases, maar waarbij elke minuut een taak wordt uitgevoerd, mogelijk niet snel genoeg is met een S0-data base en een hogere servicelaag mogelijk beter is.
 
-Als bewerkingen voor de taak database langzamer zijn dan verwacht, [bewaakt](sql-database-monitor-tune-overview.md#monitor-database-performance) u de prestaties van de data base en het resource gebruik in de taak database tijdens peri Oden met een snelheid van Azure portal of [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dmv. Als er gebruik wordt gemaakt van een resource, zoals CPU, data IO of logboek schrijf methoden van 100% en correleert met peri Oden van tragheid, kunt u overwegen om de data base stapsgewijs te schalen naar hogere service doelstellingen (in het [DTU-model](sql-database-service-tiers-dtu.md) of in het [vCore-model](sql-database-service-tiers-vcore.md)) totdat de prestaties van de taak database voldoende zijn verbeterd.
-
+Als bewerkingen voor de taak database langzamer zijn dan verwacht, [bewaakt](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) u de prestaties van de data base en het resource gebruik in de taak database tijdens peri Oden met een snelheid van Azure portal of [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dmv. Als er gebruik wordt gemaakt van een resource, zoals CPU, data IO of logboek schrijf methoden van 100% en correleert met peri Oden van tragheid, kunt u overwegen om de data base stapsgewijs te schalen naar hogere service doelstellingen (in het [DTU-model](sql-database-service-tiers-dtu.md) of in het [vCore-model](sql-database-service-tiers-vcore.md)) totdat de prestaties van de taak database voldoende zijn verbeterd.
 
 ##### <a name="job-database-permissions"></a>Machtigingen voor taakdatabase
 
 Tijdens het maken van een taakagent worden er een schema, tabellen en een rol met de naam *jobs_reader* gemaakt in de *taakdatabase*. De rol is gemaakt met de volgende machtigingen en is ontworpen om beheerders gedetailleerder toegangsbeheer te geven voor het bewaken van de taak:
 
-
-|Rolnaam  |Machtigingen voor schema 'jobs'  |Machtigingen voor schema 'jobs_internal'  |
+|Rolnaam |Machtigingen voor schema 'jobs' |Machtigingen voor schema 'jobs_internal' |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    None     |
+|**jobs_reader** | SELECT | None |
 
 > [!IMPORTANT]
 > Houd rekening met de beveiligingsaspecten voordat u iemand als een databasebeheerder toegang verleent tot de *taakdatabase*. Een kwaadwillende gebruiker met machtigingen voor het maken of bewerken van taken kan een taak die gebruikmaakt van een opgeslagen referentie, maken of bewerken om verbinding te maken met een database onder het beheer van de kwaadwillende gebruiker. Op die manier kan de kwaadwillende gebruiker het wachtwoord van de referenties achterhalen.
-
-
 
 #### <a name="target-group"></a>Doelgroep
 
@@ -246,7 +243,6 @@ In **Voorbeeld 2** ziet u een doelgroep die een Azure SQL-server als doel heeft.
 In **Voorbeeld 3** ziet u een vergelijkbare doelgroep als in *Voorbeeld 2*, maar een afzonderlijke database wordt uitdrukkelijk uitgesloten. De actie van de taakstap wordt *niet* uitgevoerd in de uitgesloten database.<br>
 In **Voorbeeld 4** ziet u een doelgroep die een elastische pool als doel heeft. De pool wordt, vergelijkbaar met in *Voorbeeld 2*, dynamisch geïnventariseerd tijdens het uitvoeren van de taak om de lijst met databases in de pool te bepalen.
 <br><br>
-
 
 ![Voorbeelden van doelgroep](media/elastic-jobs-overview/targetgroup-examples2.png)
 
@@ -287,7 +283,7 @@ Om ervoor te zorgen dat resources niet worden overbelast tijdens het uitvoeren v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [Elastische taken maken en beheren](elastic-jobs-overview.md) 
-- [Elastische taken maken en beheren met PowerShell](elastic-jobs-powershell.md) 
-- [Elastische taken maken en beheren met Transact-SQL (T-SQL)](elastic-jobs-tsql.md) 
+- [Wat is SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Elastische taken maken en beheren](elastic-jobs-overview.md)
+- [Elastische taken maken en beheren met PowerShell](elastic-jobs-powershell.md)
+- [Elastische taken maken en beheren met Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037127"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140770"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-Nadat de pijp lijn is verzonden, kunt u een voor beeld van de afbeelding bekijken in het rechterdeel venster van de module ![geüploade-installatie kopie](media/module/upload-image-in-r-script.png)
+Nadat de pijp lijn is verzonden, kunt u een voor beeld van de afbeelding in het rechter paneel van de module bekijken
+
+[!div class="mx-imgBorder"]
+![geüploade-installatie kopie](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Het uitvoeren van een R-script configureren
 
 De module voor het **uitvoeren van R-scripts** bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een **R-script** wilt configureren, geeft u een set ingangen en code op die moet worden uitgevoerd.
 
-![R-module](media/module/upload-image-in-r-script.png)
+![R-module](media/module/execute-r-script.png)
 
 Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch geconverteerd naar een R-gegevens frame wanneer deze met deze module wordt geladen.
 
@@ -123,25 +126,25 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
 
     Om u te helpen aan de slag te gaan, is het tekstvak **R-script** vooraf ingevuld met voorbeeld code, die u kunt bewerken of vervangen.
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * Het script moet een functie bevatten met de naam `azureml_main`, het toegangs punt voor deze module.
 
@@ -174,9 +177,9 @@ Er zijn veel manieren waarop u uw pijp lijn kunt uitbreiden door gebruik te make
 
 De **script module Execute r** ondersteunt wille keurige R-script bestanden als invoer. Om dit te doen, moeten ze worden geüpload naar uw werk ruimte als onderdeel van het ZIP-bestand.
 
-1. Als u een ZIP-bestand met R-code naar uw werk ruimte wilt uploaden, klikt u op **Nieuw**, klikt u op **gegevensset**en selecteert u vervolgens een **lokaal bestand** en de optie **zip-bestand** .  
+1. Als u een ZIP-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** , klikt u op **gegevensset maken**en selecteert u vervolgens een **lokaal bestand** en de optie type **Bestands** gegevensset.  
 
-1. Controleer of het gezipte bestand beschikbaar is in de lijst met **opgeslagen gegevens sets** .
+1. Controleer of het gezipte bestand beschikbaar is in de lijst **mijn gegevens sets** onder **gegevens sets** in de structuur van de module links.
 
 1.  Verbind de gegevensset met de invoer poort van de **script bundel** .
 
@@ -306,7 +309,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | verplaatsen        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | CellRange   | 1.1.0      | 
-| Klasse        | 7.3-15     | 
+| klasse        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | Cliper        | 0.6.0      | 
 | cluster      | 2.0.7-1    | 

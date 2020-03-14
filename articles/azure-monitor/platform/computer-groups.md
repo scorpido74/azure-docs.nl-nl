@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274773"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computer groepen in Azure Monitor-logboek query's
 Met computer groepen in Azure Monitor kunt u [logboek query's](../log-query/log-query-overview.md) op een bepaalde set computers bereiken.  Elke groep wordt gevuld met computers met behulp van een query die u definieert of door het importeren van groepen van verschillende bronnen.  Wanneer de groep is opgenomen in een logboek query, zijn de resultaten beperkt tot records die overeenkomen met de computers in de groep.
@@ -27,7 +27,7 @@ U kunt een computer groep maken in Azure Monitor met behulp van een van de metho
 | API voor zoekopdrachten in logboeken |Gebruik de API voor zoeken in Logboeken om programmatisch een computer groep te maken op basis van de resultaten van een logboek query. |
 | Active Directory |Automatisch het groepslid maatschap scannen van alle agent computers die lid zijn van een Active Directory domein en een groep in Azure Monitor maken voor elke beveiligings groep. (Alleen Windows-computers)|
 | Configuratiebeheer | Importeer verzamelingen van micro soft endpoint Configuration Manager en maak een groep in Azure Monitor voor elk. |
-| Windows Server updateservices |Automatisch WSUS-servers of-clients scannen voor doel groepen en een groep maken in Azure Monitor voor elk. |
+| Windows Server Update Services |Automatisch WSUS-servers of-clients scannen voor doel groepen en een groep maken in Azure Monitor voor elk. |
 
 ### <a name="log-query"></a>Logboek query
 Computer groepen die zijn gemaakt op basis van een logboek query bevatten alle computers die worden geretourneerd door een query die u definieert.  Deze query wordt uitgevoerd telkens als groep op de computer wordt gebruikt, zodat alle wijzigingen die sinds de groep is gemaakt is doorgevoerd.  

@@ -4,11 +4,11 @@ description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Serv
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462587"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273239"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -78,7 +78,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 
 **Back-uptype** | **Node**
     --- | ---
-    Volledig | Primair
+    waard | Primair
     Differentiële | Primair
     Logboek |  Primair
     Alleen-kopiëren is volledig |  Primair
@@ -87,7 +87,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 
 **Back-uptype** | **Node**
 --- | ---
-Volledig | Primair
+waard | Primair
 Differentiële | Primair
 Logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
@@ -96,7 +96,7 @@ Alleen-kopiëren is volledig |  Secundair
 
 **Back-uptype** | **Node**
 --- | ---
-Volledig | Primair
+waard | Primair
 Differentiële | Primair
 Logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair
@@ -105,7 +105,7 @@ Alleen-kopiëren is volledig |  Secundair
 
 **Back-uptype** | **Node**
 --- | ---
-Volledig | Primair
+waard | Primair
 Differentiële | Primair
 Logboek |  Secundair
 Alleen-kopiëren is volledig |  Secundair

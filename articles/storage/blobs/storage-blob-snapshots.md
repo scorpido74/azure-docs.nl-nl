@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d9650db601426cef195c27e6eb874ec26cf13bb8
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595256"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137676"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Een BLOB-moment opname maken en beheren in .NET
 
-Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt uitgevoerd. Moment opnamen zijn handig voor het maken van back-ups van blobs. In dit artikel wordt beschreven hoe u BLOB-moment opnamen maakt en beheert met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage/client).
+Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt uitgevoerd. Moment opnamen zijn handig voor het maken van back-ups van blobs. In dit artikel wordt beschreven hoe u BLOB-moment opnamen maakt en beheert met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="about-blob-snapshots"></a>Over blob-moment opnamen
 

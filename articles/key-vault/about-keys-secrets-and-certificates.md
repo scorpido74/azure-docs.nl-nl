@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271731"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Over sleutels, geheimen en certificaten
 
@@ -120,6 +120,7 @@ De cryptografische modules die Key Vault gebruikt, of HSM of software, FIPS (Fed
 -   **ES384** -ECDSA voor SHA-384-samen vattingen en sleutels die zijn gemaakt met curve P-384. Dit algoritme wordt beschreven op [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** -ECDSA voor SHA-512-samen vattingen en sleutels die zijn gemaakt met curve P-521. Dit algoritme wordt beschreven op [RFC7518](https://tools.ietf.org/html/rfc7518).
 
+
 ###  <a name="rsa-algorithms"></a>RSA-algoritmen  
  De volgende algoritme-id's worden ondersteund met RSA-en RSA-HSM-sleutels in Key Vault.  
 
@@ -130,6 +131,9 @@ De cryptografische modules die Key Vault gebruikt, of HSM of software, FIPS (Fed
 
 #### <a name="signverify"></a>ONDERTEKENEN/CONTROLEREN
 
+-   **PS256** -ONDERTEKENINGSMETHODE RSASSA-PSS met sha-256 en MGF1 met sha-256, zoals beschreven in [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS384** -ONDERTEKENINGSMETHODE RSASSA-PSS met sha-384 en MGF1 met sha-384, zoals beschreven in [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **PS512** -ONDERTEKENINGSMETHODE RSASSA-PSS met sha-512 en MGF1 met sha-512, zoals beschreven in [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **RS256** -ONDERTEKENINGSMETHODE RSASSA-PKCS-V1_5 met SHA-256. De waarde van de door de toepassing geleverde Digest moet worden berekend met SHA-256 en moet 32 bytes lang zijn.  
 -   **RS384** -ONDERTEKENINGSMETHODE RSASSA-PKCS-V1_5 met SHA-384. De waarde van de door de toepassing geleverde Digest moet worden berekend met SHA-384 en moet 48 bytes lang zijn.  
 -   **RS512** -ONDERTEKENINGSMETHODE RSASSA-PKCS-V1_5 met SHA-512. De waarde van de door de toepassing geleverde Digest moet worden berekend met SHA-512 en moet 64 bytes lang zijn.  

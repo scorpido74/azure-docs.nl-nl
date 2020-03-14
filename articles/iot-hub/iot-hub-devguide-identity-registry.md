@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271354"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Inzicht in het identiteits register in uw IoT-hub
 
@@ -78,6 +78,8 @@ Gebruik asynchrone bewerkingen op het [eind punt](iot-hub-devguide-endpoints.md)
 Gebruik asynchrone bewerkingen op het [eind punt](iot-hub-devguide-endpoints.md) van de IOT hub van de resource provider om apparaat-id's in bulk te importeren in het id-REGI ster van een IOT-hub. Import bewerkingen zijn langlopende taken die gebruikmaken van gegevens in een door de klant opgegeven BLOB-container voor het schrijven van identiteits gegevens van apparaten in het identiteits register.
 
 Zie voor meer informatie over de import-en export-Api's [IOT hub rest-api's van de resource provider](/rest/api/iothub/iothubresource). Zie [Bulk beheer van IOT hub apparaat-id's](iot-hub-bulk-identity-mgmt.md)voor meer informatie over het uitvoeren van import-en export taken.
+
+Apparaat-id's kunnen ook vanuit een IoT Hub via de service-API worden geëxporteerd en geïmporteerd via de [rest API](/rest/api/iothub/service/createimportexportjob) of een van de IOT hub [service-sdk's](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks).
 
 ## <a name="device-provisioning"></a>Apparaat inrichten
 

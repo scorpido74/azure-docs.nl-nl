@@ -5,16 +5,16 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016745"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279882"
 ---
-# <a name="vpn-gateway-faq"></a>Veelgestelde vragen over VPN Gateways
+# <a name="vpn-gateway-faq"></a>Veelgestelde vragen VPN-gateway
 
 ## <a name="connecting"></a>Verbinding maken met virtuele netwerken
 
@@ -73,7 +73,7 @@ Op route gebaseerde gateways implementeren op route gebaseerde VPN's. Op route g
 Nee. Een Azure Vnet-gateway type kan niet worden gewijzigd van beleid op basis van route ring of op een andere manier. De gateway moet worden verwijderd en opnieuw worden gemaakt. Dit duurt ongeveer 60 minuten. Het IP-adres van de gateway en ook de PSK (vooraf gedeelde sleutel) blijven niet behouden.
 1. Verwijder alle verbindingen die zijn gekoppeld aan de gateway die moet worden verwijderd.
 1. Gateway verwijderen:
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 1. [Maak een nieuwe gateway van het type dat u wilt en voltooi de VPN-installatie](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
@@ -157,7 +157,7 @@ Zie [Bewerkingsvoorbeelden](vpn-gateway-about-vpn-devices.md#editing) voor voorb
 
 ### <a name="where-do-i-find-ipsec-and-ike-parameters"></a>Waar vind ik IPsec- en IKE-parameters?
 
-Zie [Parameters](vpn-gateway-about-vpn-devices.md#ipsec) voor de IPsec/IKE-parameters.
+Zie [Parameters](vpn-gateway-about-vpn-devices.md#ipsec) voor de IPsec-/IKE-parameters.
 
 ### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle"></a>Waarom wordt mijn op beleid gebaseerde VPN-tunnel inactief als er geen verkeer is?
 
@@ -168,6 +168,10 @@ Dit is normaal voor op beleid gebaseerde VPN-gateways (ook wel bekend als statis
 Windows Server 2012 RRAS-servers (Routering en RAS) worden ondersteund voor site-naar-site-cross-premises-configuratie.
 
 Andere VPN-softwareoplossingen zouden in principe met onze gateway moeten werken zolang ze voldoen aan de standaard-IPSec-implementaties. Neem contact op met de leverancier van de software voor configuratie- en ondersteuningsinstructies.
+
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hoe kan ik het verificatie type voor mijn punt-naar-site-verbindingen wijzigen?
+
+U kunt de verificatie methode voor uw punt-naar-site-verbindingen wijzigen door te gaan naar de sectie **punt-naar-site-configuratie** onder het VPN gateway en het gewenste keuze rondje te controleren. De huidige opties zijn **Azure-certificaat, RADIUS-verificatie en Azure Active Directory**. Houd er rekening mee dat de huidige clients **mogelijk geen verbinding kunnen maken** na de wijziging totdat het nieuwe profiel is gedownload en geconfigureerd op de client.
 
 ## <a name="P2S"></a>Point-to-site met behulp van systeemeigen Azure-certificaatverificatie
 

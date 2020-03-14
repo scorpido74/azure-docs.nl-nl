@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396769"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219718"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
@@ -25,7 +25,7 @@ Language Understanding (LUIS) biedt vooraf gemaakte entiteiten. Wanneer een voor
 |Cultuur|Overenting|Opmerkingen|
 |--|--|--|
 |Chinees|[zh-CN](#chinese-entity-support)||
-|Nederlands|[nl-NL](#dutch-entity-support)||
+|Dutch|[nl-NL](#dutch-entity-support)||
 |Nederlands|[en-US (Amerikaans)](#english-american-entity-support)||
 |Frans|[fr-ca (Canada)](#french-canadian-entity-support), [fr-fr (Frank rijk)](#french-france-entity-support), ||
 |Duits|[de-DE](#german-entity-support)||

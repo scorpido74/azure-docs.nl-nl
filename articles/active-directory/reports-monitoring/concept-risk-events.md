@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266479"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Detectie van Azure Active Directory-Risico's
 
@@ -108,19 +108,19 @@ De volgende tabel geeft een overzicht van de tijd die nodig is om een detectie t
 | Detectie type | Rapportage latentie |
 | --- | --- |
 | Real-time | 5 tot 10 minuten |
-| Offline | 2 tot 4 uur |
+| Off line | 2 tot 4 uur |
 
 
 Voor de typen risico detectie Azure Active Directory gedetecteerd, zijn de volgende detectie typen:
 
 | Type risico detectie | Detectie type |
 | :-- | --- | 
-| [Gebruikers met gelekte referenties](#leaked-credentials) | Offline |
+| [Gebruikers met gelekte referenties](#leaked-credentials) | Off line |
 | [Aanmeldingen vanaf anonieme IP-adressen](#sign-ins-from-anonymous-ip-addresses) | Real-time |
-| [Onmogelijke reis naar ongewone locaties](#impossible-travel-to-atypical-locations) | Offline |
+| [Onmogelijke reis naar ongewone locaties](#impossible-travel-to-atypical-locations) | Off line |
 | [Aanmeldingen vanaf onbekende locaties](#sign-in-from-unfamiliar-locations) | Real-time |
-| [Aanmeldingen vanaf geïnfecteerde apparaten](#sign-ins-from-infected-devices) | Offline |
-| [Aanmeldingen vanaf IP-adressen met verdachte activiteiten](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
+| [Aanmeldingen vanaf geïnfecteerde apparaten](#sign-ins-from-infected-devices) | Off line |
+| [Aanmeldingen vanaf IP-adressen met verdachte activiteiten](#sign-ins-from-ip-addresses-with-suspicious-activity) | Off line|
 
 
 ## <a name="risk-level"></a>Risico niveau

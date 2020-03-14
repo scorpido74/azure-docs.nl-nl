@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5acd1a417222b4810393e8fe912b5243caaeb4cd
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247024"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139637"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Een app met meerdere containers (preview) maken met behulp van een configuratie van Docker Compose
 
@@ -96,6 +96,9 @@ Wanneer het App Service-plan is gemaakt, toont de Azure CLI soortgelijke informa
 ```
 
 ## <a name="create-a-docker-compose-app"></a>Een Docker Compose-app maken
+
+> [!NOTE]
+> Docker opstellen op Azure-app Services heeft momenteel een limiet van 4.000 tekens.
 
 Maak in de Cloud Shell-terminal een [web-app](app-service-linux-intro.md) met meerdere containers in het `myAppServicePlan` App Service-plan met de opdracht [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vergeet niet om _\<app_name >_ te vervangen door een unieke app-naam (geldige tekens zijn `a-z`, `0-9`en `-`).
 

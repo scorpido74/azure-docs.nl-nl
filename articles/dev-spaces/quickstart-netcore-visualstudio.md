@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d3eaa3869c79852d1e598cae76e1dac81c08cdc2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245035"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137968"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core-Azure dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-In het bovenstaande voor beeld is de open bare URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Ga naar de open bare URL van uw service en communiceer met de service die wordt uitgevoerd in uw dev-ruimte.
+In het bovenstaande voor beeld is de open bare URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+Selecteer **fout** opsporing en vervolgens **op fout opsporing**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de open bare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de open bare URL van uw service in een browser en communiceert u met de service die wordt uitgevoerd in uw dev-ruimte.
 
 Dit proces heeft mogelijk open bare toegang tot uw service uitgeschakeld. Als u open bare toegang wilt inschakelen, kunt u de [ingangs waarde bijwerken in de *waarden. yaml*][ingress-update].
 
@@ -106,7 +108,7 @@ Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop 
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Sla uw wijzigingen op en start uw service met **Azure dev Spaces** in de vervolg keuzelijst start instellingen. Open de open bare URL van uw service in een browser en klik op *about*. Houd er rekening mee dat het bijgewerkte bericht wordt weer gegeven.
+Sla de wijzigingen op en selecteer **fout** opsporing en vervolgens **op fout opsporing starten**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de open bare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de open bare URL van uw service in een browser en klikt u op *about*. Houd er rekening mee dat het bijgewerkte bericht wordt weer gegeven.
 
 In plaats van een nieuwe container installatie kopie opnieuw te maken en te implementeren elke keer dat er code bewerkingen worden uitgevoerd, compileert Azure dev Spaces incrementeel code binnen de bestaande container om een snellere bewerking/debug-lus te bieden.
 

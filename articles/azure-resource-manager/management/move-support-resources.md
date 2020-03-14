@@ -4,11 +4,11 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273928"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -308,7 +308,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | clusters | Nee | Nee |
 > | fileservers | Nee | Nee |
-> | Functies | Nee | Nee |
+> | functies | Nee | Nee |
 > | werk ruimten | Nee | Nee |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
@@ -570,7 +570,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Functies | Nee | Nee |
+> | functies | Nee | Nee |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
@@ -843,7 +843,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Functies | Ja | Ja |
+> | functies | Ja | Ja |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 

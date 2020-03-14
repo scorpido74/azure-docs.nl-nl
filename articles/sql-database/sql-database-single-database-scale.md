@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 92d6dccec3ce6483072a81c8739b65e81ce2c7fe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359920"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268572"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
 
@@ -106,10 +106,11 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 
 ### <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
-- Opslag kan worden ingericht tot de maximale grootte, met een veelvoud van 1 GB. De mini maal Configureer bare gegevens opslag is 5 GB
-- Opslag voor één data base kan worden ingericht door de maximale grootte te verhogen of te verlagen met behulp van de [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
-- SQL Database wijst automatisch 30% extra opslag ruimte toe voor de logboek bestanden en 32 GB per vCore voor TempDB, maar niet meer dan 384GB. TempDB bevindt zich op een gekoppelde SSD in alle service lagen.
-- De prijs van opslag voor één data base is de som van de hoeveelheid gegevens opslag en de opslag van Logboeken, vermenigvuldigd met de prijs van de opslag eenheid van de servicelaag. De kosten voor TempDB zijn opgenomen in de prijs van de vCore. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
+- Opslag kan worden ingericht tot de maximale grootte van de gegevens opslag met een veelvoud van 1 GB. De minimale Configureer bare gegevens opslag is 1 GB. Zie documentatie pagina's voor resource limieten voor [afzonderlijke data bases](sql-database-vcore-resource-limits-single-databases.md) en [elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md) voor gegevens opslag maximale grootte limieten in elke service doelstelling.
+- Gegevens opslag voor één data base kan worden ingericht door de maximale grootte te verhogen of te verlagen met behulp van de [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), [Azure cli](/cli/azure/sql/db#az-sql-db-update)of [rest API](https://docs.microsoft.com/rest/api/sql/databases/update). Als de waarde voor de maximale grootte in bytes is opgegeven, moet deze een meervoud van 1 GB (1073741824 bytes) zijn.
+- De hoeveelheid gegevens die kan worden opgeslagen in de gegevens bestanden van een Data Base wordt beperkt door de geconfigureerde maximale grootte van de gegevens opslag. Naast die opslag wordt met SQL Database automatisch 30% meer opslag toegewezen voor het transactie logboek.
+- SQL Database wijst 32 GB per vCore automatisch toe aan de `tempdb`-data base. `tempdb` bevindt zich in de lokale SSD-opslag in alle service lagen.
+- De prijs van opslag voor één data base of een elastische pool is de som van de hoeveelheid gegevens opslag en de opslag van transactie logboeken vermenigvuldigd met de prijs van de opslag eenheid van de servicelaag. De kosten van `tempdb` zijn inbegrepen in de prijs. Zie voor meer informatie over de opslag prijs [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
 > In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.

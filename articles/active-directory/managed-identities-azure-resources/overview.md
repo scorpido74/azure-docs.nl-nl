@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365064"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240140"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
 
@@ -56,7 +56,7 @@ De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vr
 
 In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met virtuele machines (VM's) van Azure:
 
-![Beheerde service-identiteiten en Azure-VM's](media/overview/msi-vm-vmextension-imds-example.png)
+![Beheerde service-identiteiten en Azure-VM's](media/overview/data-flow.png)
 
 |  Eigenschap    | Door het systeem toegewezen beheerde identiteit | Door een gebruiker toegewezen beheerde identiteit |
 |------|----------------------------------|--------------------------------|

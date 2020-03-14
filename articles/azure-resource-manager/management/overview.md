@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u Azure Resource Manager kunt gebruiken
 ms.topic: overview
 ms.date: 08/29/2019
 ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473785"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240322"
 ---
 # <a name="azure-resource-manager-overview"></a>Overzicht van Azure Resource Manager
 
@@ -58,7 +58,7 @@ Met Resource Manager kunt u het volgende doen:
 
 Azure biedt vier bereik niveaus: [beheer groepen](../../governance/management-groups/overview.md), abonnementen, [resource groepen](#resource-groups)en resources. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
 
-![Scope](./media/overview/scope-levels.png)
+![Bereik](./media/overview/scope-levels.png)
 
 U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u bijvoorbeeld een [beleid](../../governance/policy/overview.md) toepast op het abonnement, wordt het beleid toegepast op alle resource groepen en resources in uw abonnement. Wanneer u een beleid toepast op de resource groep, wordt dat beleid toegepast op de resource groep en alle bijbehorende resources. Een andere resource groep beschikt echter niet over die beleids toewijzing.
 

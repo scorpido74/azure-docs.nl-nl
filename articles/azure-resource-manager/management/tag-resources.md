@@ -4,11 +4,11 @@ description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274500"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
 

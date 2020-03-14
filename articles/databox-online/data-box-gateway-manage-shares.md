@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755742"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265439"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om shares te beheren in uw Azure Data Box Gateway 
 
@@ -36,7 +36,7 @@ In dit artikel leert u het volgende:
 
 Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
-1. Ga in de Azure Portal naar uw Data Box Gateway-resource en navigeer vervolgens naar **Overzicht**. Klik op de opdrachtbalk op **+ Share toevoegen**.
+1. Ga in Azure Portal naar uw Data Box Gateway-resource en navigeer vervolgens naar **Overzicht**. Klik op de opdrachtbalk op **+ Share toevoegen**.
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
 
     ![Op Share toevoegen klikken](media/data-box-gateway-manage-shares/add-share-1.png)
@@ -45,9 +45,12 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 3. Selecteer een **Type** voor de share. Het type kan **SMB** of **NFS** zijn. SMB is het standaardtype. SMB is het standaardtype voor Windows-clients; NFS wordt gebruikt voor Linux-clients. De opties wijken enigszins af, afhankelijk van welk type u kiest.
 
-4. Geef het **opslagaccount** op waar de share zich bevindt. In het opslagaccount met de naam van de share wordt een container gemaakt, als deze nog niet bestaat. Als de container al bestaat, wordt de bestaande container gebruikt.
+4. Geef het **opslagaccount** op waar de share zich bevindt. In het opslagaccount met de naam van de share wordt een container gemaakt, als deze nog niet bestaat. Als de container al bestaat, wordt de bestaande container gebruikt.  
 
 5. Kies de **Opslagservice** vanuit blok-blob, pagina-blob of bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. In dit geval kiezen we ervoor de gegevens als blok-blobs in Azure op te slaan, dus we selecteren **Blok-blob**. Als u **Pagina-blob** kiest, moet u ervoor zorgen dat uw gegevens op 512 bytes zijn uitgelijnd. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
+
+   > [!IMPORTANT]
+   > Zorg ervoor dat voor het Azure Storage account dat u gebruikt geen Onveranderbaarheid-beleid is ingesteld als u dit gebruikt met een Azure Stack Edge-of Data Box Gateway-apparaat. Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)voor meer informatie.
 
 6. Deze stap hangt af van of u een SMB- of een NFS-share gaat maken.
     - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
@@ -85,32 +88,32 @@ De lijst met shares wordt bijgewerkt en de verwijderde share wordt niet meer wee
 Met de functie Vernieuwen kunt u de inhoud van een on-premises share vernieuwen. Wanneer u een share vernieuwt, wordt er een zoekopdracht gestart om de Azure-objecten te zoeken, inclusief blobs en bestanden die aan de cloud zijn toegevoegd na de laatste vernieuwing. Deze aanvullende bestanden worden vervolgens gebruikt om de inhoud te vernieuwen van de on-premises share op het apparaat. 
 
 > [!NOTE]
-> Machtigingen en toegangsbeheerlijsten (ACL's) blijven niet behouden via een vernieuwingsbewerking. 
+> Machtigingen en toegangs beheer lijsten (Acl's) blijven niet behouden in een vernieuwings bewerking. 
 
 Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
-1.  Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
+1.   Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
     ![Share selecteren](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.  Klik op **Vernieuwen**. 
+2.   Klik op **Vernieuwen**. 
 
     ![Op Vernieuwen klikken](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.  Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen. 
+3.   Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen. 
 
     ![Vernieuwen bevestigen](media/data-box-gateway-manage-shares/refresh-3.png)
  
-4.  Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
+4.   Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
 
-5.  Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. 
+5.   Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. 
 
     ![Bijgewerkt tijdstempel](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Als er een fout optreedt, wordt er een waarschuwing gegenereerd. De waarschuwing bevat meer informatie over de oorzaak en een aanbeveling om het probleem te verhelpen. De waarschuwing bevat ook een koppeling naar een bestand dat een volledig overzicht bevat van de fouten en van de bestanden die niet zijn bijgewerkt of verwijderd.
 
 >[!IMPORTANT]
-> In deze release niet vernieuwen meer dan één share op een tijdstip.
+> In deze versie kunt u niet meer dan één share tegelijk vernieuwen.
 
 ## <a name="sync-storage-keys"></a>Opslagsleutels synchroniseren
 
@@ -119,7 +122,7 @@ Als de sleutels van uw opslagaccount zijn geroteerd, moet u de toegangssleutels 
 Voer in de Azure Portal de volgende stappen uit om uw toegangssleutel voor opslag te synchroniseren.
 
 1. Ga in uw resource naar **Overzicht**. 
-2. Klik in de lijst met shares op een share die is gekoppeld aan het opslagaccount dat u wilt synchroniseren. Klik op **Opslagsleutel synchroniseren**. 
+2. Klik in de lijst met shares op een share die is gekoppeld aan het opslag account dat u wilt synchroniseren. Klik op **opslag sleutel synchroniseren**. 
 
      ![Opslagsleutel synchroniseren 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

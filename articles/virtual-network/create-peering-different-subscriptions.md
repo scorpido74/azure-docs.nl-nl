@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382907"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245120"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen
 

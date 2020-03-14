@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255884"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Laag voor algemeen gebruik-Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "73819217"
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie service lagen die worden gebruikt in Azure SQL Database, elk met verschillende architectuur modellen. Deze service lagen zijn:
 
 - Algemeen doel
-- Bedrijfskritiek
+- Bedrijfs kritiek
 - Hyperscale
 
 Het architectuur model voor de servicelaag voor algemeen gebruik is gebaseerd op een schei ding van Compute en opslag. Dit architectuur model is afhankelijk van hoge Beschik baarheid en betrouw baarheid van Azure Blob-opslag waarmee database bestanden op transparante wijze worden gerepliceerd en er geen gegevens verloren gaan als er een onderliggende infrastructuur fout optreedt.

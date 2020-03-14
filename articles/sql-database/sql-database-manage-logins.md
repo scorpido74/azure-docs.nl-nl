@@ -1,6 +1,6 @@
 ---
 title: Aanmeldingen en gebruikers
-description: Meer informatie over SQL Database en het beveiligings beheer van Azure Synapse, met name hoe u de beveiliging van database toegang en-aanmelding kunt beheren via het hoofd account op server niveau.
+description: Meer informatie over hoe Azure SQL Database en Azure Synapse Analytics gebruikers voor toegang verifieert met behulp van aanmeldingen en gebruikers accounts, en gebruikt rollen en expliciete machtigingen om aanmeldingen en gebruikers te autoriseren voor het uitvoeren van acties in data bases, evenals op server niveau.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
 ms.service: sql-database
@@ -11,219 +11,152 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/06/2020
-tags: azure-synapse
-ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: 7c70d5dd19ec0495fe09152b5653363ad369347c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360037"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268910"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>Database toegang beheren en verlenen aan SQL Database en Azure Synapse Analytics
+# <a name="granting-database-access-and-authorization-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Data base-toegang en-autorisatie verlenen aan SQL Database en Azure Synapse Analytics met behulp van aanmeldingen en gebruikers accounts
 
-Nadat de configuratie van de firewall regels is geconfigureerd, kunt u verbinding maken met Azure [SQL database](sql-database-technical-overview.md) en [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als een van de beheerders accounts, als de eigenaar van de data base of als database gebruiker in de data base.  
+Geverifieerde toegang tot data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) wordt beheerd met aanmeldingen en gebruikers accounts. [**Verificatie**](sql-database-security-overview.md#authentication) is het proces waarbij de gebruiker wordt geclaimd.
 
-> [!NOTE]  
-> Dit onderwerp is van toepassing op Azure SQL Server en op SQL Database en Azure Synapse die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud.
-> [!TIP]
-> Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie. Deze zelf studie is niet van toepassing op **Azure SQL database beheerde instantie**.
+- Een aanmelding is een afzonderlijke account in de hoofd database
+- Een gebruikers account is een afzonderlijk account in een Data Base en hoeft niet te zijn gekoppeld aan een aanmelding
 
-## <a name="unrestricted-administrative-accounts"></a>Onbeperkte beheerdersaccounts
+> [!IMPORTANT]
+> Data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) worden gezamenlijk in de rest van dit artikel vermeld als Azure SQL Database (ter vereenvoudiging).
 
-Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Als u deze beheerders accounts voor uw SQL Server wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad Eigenschappen van uw SQL-Server of SQL Database.
+Een database gebruiker maakt verbinding met een Azure-SQL database met behulp van een gebruikers account en wordt geverifieerd met een van de volgende twee methoden:
+
+- [SQL-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication), die bestaat uit een aanmeldings naam of naam van een gebruikers account en een bijbehorend wacht woord dat is opgeslagen in de Azure SQL database.
+- [Azure Active Directory-verificatie](sql-database-aad-authentication.md), waarbij aanmeldings referenties worden gebruikt die zijn opgeslagen in azure Active Directory
+
+Autorisatie voor toegang tot gegevens en het uitvoeren van verschillende acties binnen Azure SQL database worden beheerd met behulp van database rollen en expliciete machtigingen. [**Autorisatie**](sql-database-security-overview.md#authorization) verwijst naar de machtigingen die zijn toegewezen aan een gebruiker binnen een Azure SQL database en bepaalt wat de gebruiker mag doen. Autorisatie wordt beheerd door de databaserol [lidmaatschappen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) en [object machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)van uw gebruikers account. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen.
+
+In dit artikel leert u het volgende:
+
+- De configuratie voor toegang en autorisatie na het maken van een nieuwe Azure SQL Database
+- Aanmeldingen en gebruikers accounts toevoegen aan de hoofd database en gebruikers accounts en vervolgens deze accounts beheer machtigingen verlenen
+- Gebruikers accounts toevoegen in gebruikers databases, gekoppeld aan aanmeldingen of als opgenomen gebruikers accounts
+- Gebruikers accounts met machtigingen in gebruikers databases configureren met behulp van database rollen en expliciete machtigingen
+
+## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>Bestaande aanmeldingen en gebruikers accounts na het maken van een nieuwe data base
+
+Wanneer u uw eerste Azure SQL Database-implementatie maakt, geeft u een beheerders aanmelding en een bijbehorend wacht woord op voor die aanmelding. Dit beheerders account wordt **Server beheerder**genoemd. De volgende configuratie van aanmeldingen en gebruikers in de hoofd-en gebruikers databases vindt plaats tijdens de implementatie:
+
+- Er wordt een SQL-aanmelding met Administrator bevoegdheden gemaakt met behulp van de aanmeldings naam die u hebt opgegeven. Een [aanmelding](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) is een afzonderlijke gebruikers account voor aanmelding bij SQL database.
+- Aan deze aanmelding worden volledige beheerders machtigingen voor alle data bases verleend als [principal op server niveau](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Deze aanmelding heeft alle beschik bare machtigingen binnen SQL Database en kan niet worden beperkt. In een beheerd exemplaar wordt deze aanmelding toegevoegd aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (deze rol bestaat niet met één of gegroepeerde Data bases).
+- Een [gebruikers account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) met de naam `dbo` wordt gemaakt voor deze aanmelding in elke gebruikers database. De [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) -gebruiker heeft alle database machtigingen in de data base en is toegewezen aan de `db_owner` vaste databaserol. Aanvullende vaste database rollen worden verderop in dit artikel besproken.
+
+Als u de beheerders accounts voor uw SQL Server wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad **Eigenschappen** van uw SQL-server of SQL database.
 
 ![SQL Server-beheerders](media/sql-database-manage-logins/sql-admins.png)
 
-- **Server beheerder**
+> [!IMPORTANT]
+> De aanmeldings naam van de beheerder kan niet worden gewijzigd nadat deze is gemaakt. Als u het wacht woord voor de beheerder van de logische server opnieuw wilt instellen, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **SQL-servers**, selecteert u de server in de lijst en klikt u vervolgens op **wacht woord opnieuw instellen**. Als u het wacht woord voor een Managed instance server opnieuw wilt instellen, gaat u naar de Azure Portal, klikt u op het exemplaar en klikt u op **wacht woord opnieuw instellen**. U kunt ook Power shell of de Azure CLI gebruiken.
 
-  Wanneer u een Azure SQL-server maakt, moet u de **aanmeldgegevens van de serverbeheerder** opgeven. De SQL-server maakt het account vervolgens als een aanmelding in de hoofddatabase. Dit account maakt verbinding met behulp van SQL Server-verificatie (gebruikersnaam en wachtwoord). Er kan slechts één van deze accounts bestaan.
+## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>Extra aanmeldingen en gebruikers met beheerders machtigingen maken
+
+Op dit moment wordt uw SQL Database alleen geconfigureerd voor toegang met behulp van één SQL-aanmeldings-en-gebruikers account. Als u extra aanmeldingen wilt maken met volledige of gedeeltelijke beheerders machtigingen, hebt u de volgende opties (afhankelijk van de implementatie modus):
+
+- **Een Azure Active Directory beheerders account maken met volledige beheerders machtigingen**
+
+  Schakel Azure Active Directory-verificatie in en maak een aanmelding voor Azure AD-beheerders. Een Azure Active Directory-account kan worden geconfigureerd als beheerder van de SQL Database-implementatie met volledige beheerders machtigingen. Dit account kan een individuele account of een beveiligings groep zijn. Een Azure AD-beheerder **moet** worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database. Raadpleeg de volgende artikelen voor meer informatie over het inschakelen van Azure AD-verificatie voor alle SQL Database implementatie typen:
+
+  - [Azure Active Directory authenticatie gebruiken voor verificatie met SQL](sql-database-aad-authentication.md)
+  - [Verificatie van Azure Active Directory configureren en beheren met SQL](sql-database-aad-authentication-configure.md)
+
+- **Maak in de implementatie van een beheerd exemplaar SQL-aanmeldingen met volledige beheerders machtigingen**
+
+  - Een aanvullend SQL Server-aanmelding maken in het beheerde exemplaar
+  - Voeg de aanmelding toe aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) met de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) . Deze aanmelding heeft volledige beheerders machtigingen.
+  - U kunt ook een [Azure AD-aanmelding](sql-database-aad-authentication-configure.md?tabs=azure-powershell#new-azure-ad-admin-functionality-for-mi) maken met de syntaxis voor het maken van een <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding</a> .
+
+- **Maak in een enkele of gegroepeerde implementatie SQL-aanmeldingen met beperkte beheerders machtigingen**
+
+  - Een extra SQL-aanmelding in de hoofd database maken voor een implementatie van één of gegroepeerde Data Base, of voor een implementatie van een beheerd exemplaar
+  - Een gebruikers account maken in de hoofd database die is gekoppeld aan deze nieuwe aanmelding
+  - Voeg het gebruikers account toe aan de `dbmanager`, de `loginmanager`-rol of beide in de `master`-data base met behulp van de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (voor Azure Synapse Analytics gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
-  > Als u het wacht woord voor de server beheerder opnieuw wilt instellen, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **SQL-servers**, selecteert u de server in de lijst en klikt u vervolgens op **wacht woord opnieuw instellen**.
+  > `dbmanager`-en `loginmanager`-rollen zijn **niet** van toepassing op implementaties van beheerde exemplaren.
 
-- **Azure Active Directory beheerder**
+  Leden van deze [speciale hoofd database rollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) voor één of gegroepeerde Data bases kunnen de gebruikers een bevoegdheid bieden voor het maken en beheren van data bases of voor het maken en beheren van aanmeldingen. In data bases die zijn gemaakt door een gebruiker die lid is van de functie `dbmanager`, wordt het lid toegewezen aan de `db_owner` vaste databaserol en kan deze data base worden aangemeld en beheerd met behulp van de `dbo` gebruikers account. Deze rollen hebben geen expliciete machtigingen buiten de hoofd database.
 
-  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel een Azure AD-beheerder te configureren, maar er **moet** een Azure AD-beheerder worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database. Zie [verbinding maken met SQL database of Azure Synapse met behulp van Azure Active Directory verificatie](sql-database-aad-authentication.md) en [SSMS-ondersteuning voor Azure AD MFA met SQL database en Azure Synapse](sql-database-ssms-mfa-authentication.md)voor meer informatie over het configureren van Azure Active Directory toegang.
+  > [!IMPORTANT]
+  > U kunt geen extra SQL-aanmelding met volledige beheerders machtigingen maken in een enkele of gegroepeerde Data Base.
 
-De beheerders accounts van de **Server beheerder** en **Azure AD** hebben de volgende kenmerken:
+## <a name="create-accounts-for-non-administrator-users"></a>Accounts maken voor gebruikers die geen beheerder zijn
 
-- Zijn de enige accounts die automatisch verbinding kunnen maken met een wille keurige SQL Database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
-- Deze accounts worden in gebruikersdatabases beschouwd als de `dbo`-gebruiker en beschikken over alle machtigingen. (De eigenaar van een gebruikersdatabase wordt in de database ook als `dbo`-gebruiker beschouwd.) 
-- Voer de `master`-data base niet in als de `dbo` gebruiker en heb beperkte machtigingen in de Master. 
-- Zijn **geen** leden van de standard-SQL Server `sysadmin` vaste serverrol, die niet beschikbaar is in SQL database.  
-- Kan data bases, aanmeldingen, gebruikers in Master en IP-firewall regels op server niveau maken, wijzigen en verwijderen.
-- Kan leden toevoegen aan en verwijderen uit de `dbmanager` en `loginmanager` rollen.
-- Kan de `sys.sql_logins` systeem tabel weer geven.
-- De naam kan niet worden gewijzigd.
-- Als u de Azure AD-beheerders account wilt wijzigen, gebruikt u de portal of Azure CLI.
-- Het account voor de server beheerder kan later niet worden gewijzigd.
+U kunt met een van de volgende twee methoden accounts maken voor gebruikers die geen beheerder zijn:
 
-### <a name="configuring-the-firewall"></a>De firewall configureren
+- **Een aanmelding maken**
 
-Als de firewall op serverniveau is geconfigureerd voor een afzonderlijk IP-adres of -bereik, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met de hoofddatabase en alle gebruikersdatabases. De eerste firewall op serverniveau kan worden geconfigureerd via [Azure Portal](sql-database-single-database-get-started.md) met behulp van [PowerShell](sql-database-powershell-samples.md) of de [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Als er een verbinding tot stand is gebracht, kunnen extra IP-firewall regels op server niveau ook worden geconfigureerd met behulp van [Transact-SQL](sql-database-configure-firewall-settings.md).
+  Maak een SQL-aanmelding in de hoofd database. Maak vervolgens een gebruikers account in elke Data Base waartoe die gebruiker toegang nodig heeft en koppel het gebruikers account aan die aanmelding. Deze methode verdient de voor keur wanneer de gebruiker toegang moet krijgen tot meerdere data bases en u de wacht woorden gesynchroniseerd wilt laten blijven. Deze aanpak heeft echter complexer wanneer deze wordt gebruikt met geo-replicatie, aangezien de aanmelding moet worden gemaakt op zowel de primaire server als op de secundaire server (s). Zie [Azure SQL database beveiliging configureren en beheren voor geo-herstel of failover](sql-database-geo-replication-security-config.md)voor meer informatie.
+- **Een gebruikers account maken**
 
-### <a name="administrator-access-path"></a>Toegangspad beheerder
+  Maak een gebruikers account in de data base waartoe een gebruiker toegang nodig heeft (ook wel een [Inge sloten gebruiker](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)genoemd).
 
-Als de firewall op serverniveau correct is geconfigureerd, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met clienthulpprogramma's zoals SQL Server Management Studio en SQL Server Data Tools. Alleen de nieuwste hulpprogramma's bieden alle functies en mogelijkheden. Het volgende diagram toont een standaardconfiguratie voor de twee beheerdersaccounts.
+  - Met een enkele of gegroepeerde Data Base kunt u altijd dit type gebruikers account maken.
+  - Met een beheerde exemplaar database die geen ondersteuning biedt voor [Azure ad server-principals](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities), kunt u dit type gebruikers account alleen maken in een [Inge sloten data base](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Met een beheerd exemplaar dat [Azure ad-server-principals](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)ondersteunt, kunt u gebruikers accounts maken om te verifiëren bij het beheerde exemplaar zonder dat database gebruikers als Inge sloten database gebruiker moeten worden gemaakt.
 
-![configuratie van de twee beheer accounts](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
-
-Wanneer u een open poort in de firewall op serverniveau gebruikt, kunnen beheerders verbinding maken met elke SQL-database.
-
-### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Verbinding maken met een database via SQL Server Management Studio
-
-Zie [aan de slag met Azure SQL database servers, data bases en firewall regels met behulp van de Azure Portal en SQL Server Management Studio](sql-database-single-database-get-started.md)voor een overzicht van het maken van een server, een Data Base, IP-firewall regels op server niveau en het gebruik van SQL Server Management Studio om een query uit te voeren op een Data Base.
+  Met deze methode worden de verificatie gegevens van de gebruiker opgeslagen in elke Data Base en automatisch gerepliceerd naar geo-gerepliceerde data bases. Als hetzelfde account echter bestaat in meerdere data bases en u SQL-verificatie gebruikt, moet u de wacht woorden hand matig synchroniseren. Als een gebruiker ook een account in verschillende data bases met verschillende wacht woorden heeft, kan het onthouden van die wacht woorden een probleem worden.
 
 > [!IMPORTANT]
-> Het wordt aanbevolen om altijd de nieuwste versie van Management Studio te gebruiken, zodat uw versie gesynchroniseerd blijft met updates voor Microsoft Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
+> Als u Inge sloten gebruikers wilt maken die zijn toegewezen aan Azure AD-identiteiten, moet u zijn aangemeld met een Azure AD-account dat een beheerder is in de SQL Database. In een beheerd exemplaar kan een SQL-aanmelding met `sysadmin` machtigingen ook een Azure AD-aanmelding of-gebruiker maken.
 
-## <a name="additional-server-level-administrative-roles"></a>Aanvullende beheerdersrollen op serverniveau
+Voor voor beelden van het maken van aanmeldingen en gebruikers raadpleegt u:
 
->[!IMPORTANT]
->Deze sectie is niet van toepassing op **Azure SQL database beheerde instantie** omdat deze rollen specifiek zijn voor **Azure SQL database**.
+- [Aanmelding voor één of gegroepeerde Data bases maken](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [Aanmelding maken voor de data base van het beheerde exemplaar](https://docs.microsoft.com/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [Aanmelding voor Azure Synapse Analytics-Data Base maken](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Gebruiker maken](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [In azure AD opgenomen gebruikers maken](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
 
-Naast de beheerdersrollen op serverniveau die eerder zijn besproken, biedt SQL Database ook twee beperkte beheerdersrollen in de hoofddatabase waaraan gebruikersaccounts kunnen worden toegevoegd. Deze twee beheerdersrollen verlenen machtigingen voor het maken van databases of voor het beheren van aanmeldingen.
+> [!TIP]
+> Zie [zelf studie: een enkele of gegroepeerde Data Base beveiligen](sql-database-security-tutorial.md)voor een beveiligings zelfstudie die het maken SQL Server een Inge sloten gebruiker bevat in één of een gegroepeerde Data Base.
 
-### <a name="database-creators"></a>Databasemakers
+## <a name="using-fixed-and-custom-database-roles"></a>Vaste en aangepaste database rollen gebruiken
 
-Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen nieuwe databases maken. Voor het gebruik van deze rol maakt u een gebruiker in de `master`-database en voegt u deze gebruiker vervolgens toe aan de databaserol **dbmanager**. Als u een Data Base wilt maken, moet de gebruiker een gebruiker zijn op basis van een SQL Server-aanmelding in de `master`-data base of de Inge sloten database gebruiker op basis van een Azure Active Directory gebruiker.
+Nadat u een gebruikers account in een Data Base hebt gemaakt, op basis van een aanmelding of als een Inge sloten gebruiker, kunt u die gebruiker machtigen om verschillende acties uit te voeren en toegang te krijgen tot gegevens in een bepaalde data base. U kunt de volgende methoden gebruiken om toegang te verlenen:
 
-1. Maak verbinding met de `master`-data base met behulp van een beheerders account.
-2. Maak een SQL Server-verificatie aanmelding met behulp van de instructie [Create login](https://msdn.microsoft.com/library/ms189751.aspx) . Voorbeeldinstructie:
+- **Vaste database rollen**
 
-   ```sql
-   CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
-   ```
+  Voeg het gebruikers account toe aan een [vaste databaserol](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles). Er zijn negen vaste database rollen, elk met een gedefinieerde set machtigingen. De meest voorkomende vaste database rollen zijn: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter**en **db_denydatareader**. **db_owner** wordt doorgaans gebruikt voor het verlenen van volledige machtigingen aan slechts enkele gebruikers. De andere vaste databaserollen zijn handig voor het snel verkrijgen van een eenvoudige database voor ontwikkeldoeleinden, maar worden niet aanbevolen voor de meeste productiedatabases. Met de **db_datareader** vaste databaserol wordt bijvoorbeeld lees toegang verleend aan elke tabel in de data base, wat meer is dan strikt nood zakelijk is.
 
-   > [!NOTE]
-   > Gebruik een sterk wachtwoord bij het maken van aanmeldgegevens of een ingesloten databasegebruiker. Zie [Sterke wachtwoorden](https://msdn.microsoft.com/library/ms161962.aspx) voor meer informatie.
+  - Een gebruiker toevoegen aan een vaste databaserol:
 
-   Voor betere prestaties worden aanmeldingen (principals op serverniveau) tijdelijk in het cachegeheugen op databaseniveau opgeslagen. Zie [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx) als u de verificatiecache wilt vernieuwen.
+    - Gebruik in Azure SQL Database de instructie [ALTER Role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) . Zie voor voor beelden [ALTER Role-voor beelden](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - Gebruik de [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) -instructie om Azure Synapse Analytics te gebruiken. Zie [sp_addrolemember](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)-voor beelden voor voor beelden.
 
-3. Maak in de `master`-Data Base een gebruiker met behulp van de instructie [Create User](https://msdn.microsoft.com/library/ms173463.aspx) . De gebruiker kan een Inge sloten database gebruiker zijn met een Azure Active Directory-verificatie (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie) of een SQL Server-verificatie database gebruiker of een SQL Server verificatie gebruiker op basis van een SQL Server aanmelding voor authenticatie (gemaakt in de vorige stap) Voorbeeld instructies:
+- **Aangepaste databaserol**
 
-   ```sql
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
-   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
-   ```
+  Maak een aangepaste databaserol met behulp van de instructie [Create Role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) . Met een aangepaste rol kunt u uw eigen door de gebruiker gedefinieerde database rollen maken en elke rol altijd de minste machtigingen verlenen die nodig zijn voor de bedrijfs behoefte. U kunt vervolgens gebruikers toevoegen aan de aangepaste rol. Als een gebruiker lid is van meerdere rollen, worden de machtigingen van alle rollen samengevoegd.
+- **Machtigingen rechtstreeks verlenen**
 
-4. Voeg de nieuwe gebruiker toe aan de databaserol **DBManager** in `master` met behulp van de instructie [ALTER Role](https://msdn.microsoft.com/library/ms189775.aspx) . Voorbeeldinstructies:
+  Verleen de [machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) van het gebruikers account rechtstreeks. Er zijn meer dan 100 machtigingen die afzonderlijk kunnen worden verleend of geweigerd in SQL Database. Veel van deze machtigingen zijn genest. De machtiging `UPDATE` voor een schema bevat bijvoorbeeld de machtiging `UPDATE` voor elke tabel binnen dat schema. Net als bij de meeste machtigingssystemen gaat de weigering van een machtiging vóór toestemming. Vanwege de geneste aard en het aantal machtigingen kan een nauwkeurig onderzoek nodig zijn om een geschikt machtigingssysteem te ontwerpen voor een goede bescherming van uw database. Start met de lijst van machtigingen in [Machtigingen (Database-engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) en controleer de [afbeelding op postergrootte](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) van de machtigingen.
 
-   ```sql
-   ALTER ROLE dbmanager ADD MEMBER Mary; 
-   ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
-   ```
+## <a name="using-groups"></a>Groepen gebruiken
 
-   > [!NOTE]
-   > Dbmanager is een databaserol in de hoofddatabase, zodat u alleen een databasegebruiker aan de rol dbmanager kunt toevoegen. U kunt geen aanmelding op serverniveau toevoegen aan een rol op databaseniveau .
+Efficiënt toegangs beheer maakt gebruik van machtigingen die zijn toegewezen aan Active Directory beveiligings groepen en vaste of aangepaste rollen in plaats van aan individuele gebruikers.
 
-5. U kunt zo nodig een firewallregel configureren, zodat de nieuwe gebruiker verbinding kan maken. (De nieuwe gebruiker kan worden gedekt door een bestaande firewallregel.)
+- Wanneer u Azure Active Directory-verificatie gebruikt, moet u Azure Active Directory gebruikers in een Azure Active Directory beveiligings groep plaatsen. Maak voor de groep een ingesloten databasegebruiker. Plaats een of meer database gebruikers in een aangepaste databaserol met specifieke machtigingen die geschikt zijn voor die groep gebruikers.
 
-Nu kan de gebruiker verbinding maken met de data base van `master` en kunnen nieuwe data bases maken. Het account dat de database maakt, wordt eigenaar van de database.
+- Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in de-data base. Plaats een of meer database gebruikers in een aangepaste databaserol met specifieke machtigingen die geschikt zijn voor die groep gebruikers.
 
-### <a name="login-managers"></a>Aanmelding managers
+  > [!NOTE]
+  > U kunt ook groepen gebruiken voor niet-Inge sloten database gebruikers.
 
-De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol kunnen nieuwe aanmeldingen maken in de hoofddatabase. Desgewenst kunt u dezelfde stappen doorlopen (een aanmelding maken, een gebruiker maken en een gebruiker toevoegen aan de rol **loginmanager**), zodat een gebruiker nieuwe aanmeldingen kan maken in de hoofddatabase. Gewoonlijk zijn aanmeldingen niet nodig, omdat Microsoft het gebruik aanbeveelt van gebruikers van ingesloten databases. Hiervoor wordt verificatie op databaseniveau gebruikt, in plaats van gebruik te maken van gebruikers op basis van aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](https://msdn.microsoft.com/library/ff929188.aspx) voor meer informatie.
+Zorg ervoor dat u de volgende functies kunt gebruiken voor het beperken of het verhogen van machtigingen:
 
-## <a name="non-administrator-users"></a>Niet-beheerders
-
-Niet-beheerdersaccounts hebben doorgaans geen toegang nodig tot de hoofddatabase. Maak ingesloten databasegebruikers op databaseniveau met de instructie [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). De gebruiker kan een Azure Active Directory de Inge sloten database gebruiker zijn (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie) of een SQL Server-verificatie database gebruiker of een SQL Server verificatie gebruiker op basis van een SQL Server authenticatie aanmelding (gemaakt in de vorige stap). Zie [Inge sloten database gebruikers-uw data base draagbaar maken](https://msdn.microsoft.com/library/ff929188.aspx)voor meer informatie. 
-
-Als u gebruikers wilt maken, maakt u verbinding met de database en voert u de instructies uit die in de volgende voorbeelden worden getoond:
-
-```sql
-CREATE USER Mary FROM LOGIN Mary; 
-CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-```
-
-In eerste instantie kan slechts een van de beheerders of de eigenaar van de database gebruikers maken. Om extra gebruikers te machtigen voor het maken van nieuwe gebruikers, verleent u de geselecteerde gebruikers de `ALTER ANY USER`-toestemming met behulp van een instructie zoals:
-
-```sql
-GRANT ALTER ANY USER TO Mary;
-```
-
-Als u meer gebruikers volledige controle over de Data Base wilt geven, maakt u ze lid van de **db_owner** vaste databaserol.
-
-Gebruik de `ALTER ROLE`-instructie in Azure SQL Database.
-
-```sql
-ALTER ROLE db_owner ADD MEMBER Mary;
-```
-
-Gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)in azure Synapse.
-```sql
-EXEC sp_addrolemember 'db_owner', 'Mary';
-```
-
-
-> [!NOTE]
-> Een veelvoorkomende reden voor het maken van een database gebruiker op basis van een SQL Database Server-aanmelding is voor gebruikers die toegang nodig hebben tot meerdere data bases. Aangezien de Inge sloten database gebruikers afzonderlijke entiteiten zijn, houdt elke Data Base zijn eigen gebruiker en eigen wacht woord. Dit kan overhead veroorzaken, omdat de gebruiker vervolgens elk wacht woord moet onthouden voor elke Data Base en het untenable kan worden wanneer meerdere wacht woorden voor veel data bases moeten worden gewijzigd. Wanneer u echter SQL Server aanmeldingen en hoge Beschik baarheid (actieve geo-replicatie en failover-groepen) gebruikt, moeten de SQL Server-aanmeldingen hand matig worden ingesteld op elke server. Anders wordt de database gebruiker niet meer toegewezen aan de Server aanmelding nadat een failover is uitgevoerd en heeft deze geen toegang tot de data base na failover. Zie [Azure SQL database beveiliging configureren en beheren voor geo-herstel of failover](sql-database-geo-replication-security-config.md)voor meer informatie over het configureren van aanmeldingen voor geo-replicatie.
-
-### <a name="configuring-the-database-level-firewall"></a>De firewall op databaseniveau configureren
-
-U doet er verstandig aan niet-beheerders alleen via de firewall toegang te verlenen tot de databases die ze gebruiken. In plaats van het machtigen van hun IP-adressen via de firewall op serverniveau en hun toegang te verlenen tot alle databases, kunt u de instructie [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) gebruiken om de firewall op databaseniveau te configureren. De firewall op databaseniveau kan niet worden geconfigureerd met behulp van de portal.
-
-### <a name="non-administrator-access-path"></a>Toegangspad niet-beheerder
-
-Wanneer de firewall op databaseniveau correct is geconfigureerd, kunnen databasegebruikers verbinding maken met de hulp van clienthulpprogramma's zoals SQL Server Management Studio of SQL Server Data Tools. Alleen de nieuwste hulpprogramma's bieden alle functies en mogelijkheden. Het volgende diagram toont een standaardtoegangspad voor niet-beheerders.
-
-![Toegangspad niet-beheerder](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
-
-## <a name="groups-and-roles"></a>Groepen en rollen
-
-Voor efficiënt toegangsbeheer gebruikt u machtigingen die zijn toegewezen aan groepen en rollen in plaats van aan individuele gebruikers. 
-
-- Als u Azure Active Directory-verificatie gebruikt, plaatst u Azure Active Directory-gebruikers in een Azure Active Directory-groep. Maak voor de groep een ingesloten databasegebruiker. Plaats een of meer databasegebruikers in een [databaserol](https://msdn.microsoft.com/library/ms189121) en wijs vervolgens [machtigingen](https://msdn.microsoft.com/library/ms191291.aspx) toe aan de databaserol.
-
-- Als u SQL Server-verificatie gebruikt, maakt u gebruikers van ingesloten databases in de database. Plaats een of meer databasegebruikers in een [databaserol](https://msdn.microsoft.com/library/ms189121) en wijs vervolgens [machtigingen](https://msdn.microsoft.com/library/ms191291.aspx) toe aan de databaserol.
-
-Bij de databaserollen kan het gaan om de ingebouwde rollen als **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** en **db_denydatareader**. **db_owner** wordt doorgaans gebruikt voor het verlenen van volledige machtigingen aan slechts enkele gebruikers. De andere vaste databaserollen zijn handig voor het snel verkrijgen van een eenvoudige database voor ontwikkeldoeleinden, maar worden niet aanbevolen voor de meeste productiedatabases. De vaste databaserol **db_datareader** verleent bijvoorbeeld leestoegang tot alle tabellen in de database, wat doorgaans meer is dan strikt noodzakelijk. Het is veel beter de instructie [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) te gebruiken om uw eigen gebruikergedefinieerde databaserollen te maken en zorgvuldig elke rol de minimale machtigingen te verlenen die nodig zijn voor de gerelateerde zakelijke behoeften. Als een gebruiker lid is van meerdere rollen, worden de machtigingen van alle rollen samengevoegd.
-
-## <a name="permissions"></a>Machtigingen
-
-Er zijn meer dan 100 machtigingen die afzonderlijk kunnen worden verleend of geweigerd in SQL Database. Veel van deze machtigingen zijn genest. De machtiging `UPDATE` voor een schema bevat bijvoorbeeld de machtiging `UPDATE` voor elke tabel binnen dat schema. Net als bij de meeste machtigingssystemen gaat de weigering van een machtiging vóór toestemming. Vanwege de geneste aard en het aantal machtigingen kan een nauwkeurig onderzoek nodig zijn om een geschikt machtigingssysteem te ontwerpen voor een goede bescherming van uw database. Start met de lijst van machtigingen in [Machtigingen (Database-engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) en controleer de [afbeelding op postergrootte](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) van de machtigingen.
-
-
-### <a name="considerations-and-restrictions"></a>Overwegingen en beperkingen
-
-Bij het beheren van aanmeldingen en gebruikers in SQL Database, moet u het volgende overwegen:
-
-- U moet zijn verbonden met de **hoofd**database bij het uitvoeren van de `CREATE/ALTER/DROP DATABASE`-instructies.   
-- De databasegebruiker die overeenkomt met de aanmelding van de **Serverbeheerder**, kan niet worden gewijzigd of verwijderd. 
-- Amerikaans Engels is de standaardtaal van de aanmelding van de **serverbeheerder**.
-- Alleen de beheerders (aanmelding van **serverbeheerder** of Azure AD-beheerder) en de leden van de databaserol **dbmanager** in de **hoofddatabase** zijn gemachtigd om de instructies `CREATE DATABASE` en `DROP DATABASE` uit te voeren.
-- U moet zijn verbonden met de hoofddatabase bij het uitvoeren van de `CREATE/ALTER/DROP LOGIN`-instructies. Het gebruik van aanmeldingen wordt echter afgeraden. Gebruik in plaats daarvan ingesloten databasegebruikers.
-- Om verbinding te maken met een gebruikersdatabase, moet u de naam van de database in de verbindingsreeks opgeven.
-- Alleen de principal-aanmelding op serverniveau en de leden van de databaserol **loginmanager** in de **hoofd**database zijn gemachtigd om `CREATE LOGIN`-, `ALTER LOGIN`- en `DROP LOGIN`-instructies uit te voeren.
-- Bij het uitvoeren van de `CREATE/ALTER/DROP LOGIN`- en `CREATE/ALTER/DROP DATABASE`-instructies in een ADO.NET-toepassing is het gebruik van geparametriseerde opdrachten is niet toegestaan. Zie [Opdrachten en parameters](https://msdn.microsoft.com/library/ms254953.aspx) voor meer informatie.
-- Bij het uitvoeren van de `CREATE/ALTER/DROP DATABASE`- en `CREATE/ALTER/DROP LOGIN`-instructies moet elk van deze instructies de enige instructie in een Transact-SQL-batch zijn. Als deze niet overeenkomen, treedt er een fout op. De volgende Transact-SQL controleert bijvoorbeeld of de database bestaat. Als deze bestaat, wordt een `DROP DATABASE`-instructie aangeroepen om de database te verwijderen. Omdat de `DROP DATABASE`-instructie niet de enige instructie in de batch is, leidt het uitvoeren van de volgende Transact-SQL-instructie tot een fout.
-
-  ```sql
-  IF EXISTS (SELECT [name]
-           FROM   [sys].[databases]
-           WHERE  [name] = N'database_name')
-  DROP DATABASE [database_name];
-  GO
-  ```
-  
-  Gebruik in plaats daarvan de volgende Transact-SQL-instructie:
-  
-  ```sql
-  DROP DATABASE IF EXISTS [database_name]
-  ```
-
-- Bij het uitvoeren van de `CREATE USER`-instructie met de optie `FOR/FROM LOGIN` moet deze de enige instructie in een Transact-SQL-batch zijn.
-- Bij het uitvoeren van de `ALTER USER`-instructie met de optie `WITH LOGIN` moet deze de enige instructie in een Transact-SQL-batch zijn.
-- Voor `CREATE/ALTER/DROP` heeft een gebruiker de `ALTER ANY USER`-machtiging voor de database nodig.
-- Wanneer de eigenaar van een databaserol probeert om een andere databasegebruiker toe te voegen aan of te verwijderen uit die databaserol, kan de volgende fout optreden: **Gebruiker of rol 'Naam' bestaat niet in deze database.** Deze fout treedt op omdat de gebruiker niet zichtbaar is voor de eigenaar. Om dit probleem op te lossen, verleent u de roleigenaar de `VIEW DEFINITION`-machtiging voor de gebruiker. 
-
+- [Imitatie](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server) en [module-ondertekening](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server) kunnen worden gebruikt om machtigingen tijdelijk veilig te verhogen.
+- [Beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) kan worden gebruikt om de rijen waartoe een gebruiker toegang heeft te beperken.
+- [Gegevensmaskering](sql-database-dynamic-data-masking-get-started.md) kan worden gebruikt om de weergave van gevoelige gegevens te beperken.
+- [Opgeslagen procedures](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) kunnen worden gebruikt om de acties die op de database kunnen worden uitgevoerd te beperken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure SQL Database-firewall](sql-database-firewall-configure.md) voor meer informatie over firewallregels.
-- Zie [SQL security overview](sql-database-security-overview.md) (SQL-beveiligingsoverzicht) voor een overzicht van alle beveiligingsfuncties van SQL Database.
-- Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie.
-- Zie [Weergaven en opgeslagen procedures maken](https://msdn.microsoft.com/library/ms365311.aspx) voor meer informatie over weergaven en opgeslagen procedures.
-- Zie [Toegang verlenen tot een databaseobject](https://msdn.microsoft.com/library/ms365327.aspx) voor meer informatie over het verlenen van toegang tot een databaseobject.
+Zie [SQL security overview](sql-database-security-overview.md) (SQL-beveiligingsoverzicht) voor een overzicht van alle beveiligingsfuncties van SQL Database.

@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377684"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263567"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory code voorbeelden (v 1.0-eind punt)
 
@@ -78,7 +78,7 @@ De volgende voor beelden illustreren open bare client toepassingen (deskto/pmobi
 - Op de achtergrond (met geïntegreerde Windows-verificatie in Windows of gebruikers naam/wacht woord)
 - Door de interactieve aanmelding te delegeren naar een ander apparaat (apparaatcode stroom op apparaten die geen Webbe sturings elementen bieden)
 
-Client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph | Hiermee wordt een ASP.NET-of ASP.NET Core 2. x-Web-API aangeroepen
+client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph | Hiermee wordt een ASP.NET-of ASP.NET Core 2. x-Web-API aangeroepen
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 Bureau blad (WPF)           | ![In deze afbeelding wordt het .NETC# /logo weer gegeven](media/sample-v2-code/logo-net.png)  | Interactief | Onderdeel van [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [DotNet-systeem eigen-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-hand matige-JWT-validatie](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobiel (UWP)            | .![Deze afbeelding toont de .NET-C#/UWP](media/sample-v2-code/logo-windows.png)   | Interactief | [DotNet-systeem eigen-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Dit voor beeld maakt gebruik van [WAM](/windows/uwp/security/web-account-manager), niet [ADAL.net](https://aka.ms/adalnet)|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-toepassing met behulp van ADAL.net om één Tenant Web-API aan te roepen) </p> [DotNet-webapi-multi tenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-toepassing met ADAL.net voor het aanroepen van een web-API met meerdere tenants)|
@@ -93,7 +93,7 @@ Bureau blad (console)           | ![In deze afbeelding wordt de .NET-C# kern/het
 
 De volgende voor beelden tonen bureau blad-of webtoepassingen die toegang hebben tot de Microsoft Graph of een web-API zonder gebruiker (met de toepassings-id).
 
-Client toepassing | Platform | Stroom/verlenen | Hiermee wordt een ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
+client toepassing | Platform | Stroom/verlenen | Hiermee wordt een ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
 ------------------ | -------- | ---------- | -------------------- 
 Daemon-app (console)          | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png) | Client referenties met geheim of certificaat van app | [DotNet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-daemon-certificaat-referentie](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Daemon-app (console)         | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/sample-v2-code/logo-netcore.png) | Client referenties met certificaat| [dotnetcore-daemon-certificaat-referentie](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)

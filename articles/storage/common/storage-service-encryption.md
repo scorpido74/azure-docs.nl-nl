@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: d28a342359114e05545f15624a86a17f7d0d3365
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129996"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268364"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
@@ -65,7 +65,7 @@ Uw opslag account maakt standaard gebruik van door micro soft beheerde versleute
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Door de klant beheerde sleutels met Azure Key Vault
 
-U kunt Azure Storage versleuteling op het niveau van het opslag account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel op het niveau van het opslag account opgeeft, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de hoofd versleutelings sleutel voor het opslag account die op zijn beurt wordt gebruikt voor het versleutelen en ontsleutelen van alle BLOB-en bestands gegevens. Door de klant beheerde sleutels bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+U kunt Azure Storage versleuteling op het niveau van het opslag account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel op het niveau van het opslag account opgeeft, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de hoofd versleutelings sleutel voor het opslag account die op zijn beurt wordt gebruikt voor het versleutelen en ontsleutelen van alle BLOB-en bestands gegevens. Door de klant beheerde sleutels bieden meer flexibiliteit voor het beheren van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
 U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Het opslag account en de sleutel kluis moeten zich in dezelfde regio en in dezelfde Azure Active Directory-Tenant (Azure AD) bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
 
@@ -102,7 +102,7 @@ Zie een van de volgende artikelen voor meer informatie over het gebruik van door
 
 Als u door de klant beheerde sleutels wilt inschakelen voor een opslag account, moet u een Azure Key Vault gebruiken om uw sleutels op te slaan. U moet de instellingen **voorlopig verwijderen** en **niet wissen** in de sleutel kluis inschakelen.
 
-Alleen RSA-sleutels met een grootte van 2048 worden ondersteund met Azure Storage versleuteling. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+Alleen RSA-sleutels worden ondersteund met Azure Storage versleuteling. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
 ### <a name="rotate-customer-managed-keys"></a>Door de klant beheerde sleutels draaien
 
@@ -112,7 +112,31 @@ Als u de sleutel roteert, wordt het opnieuw versleutelen van gegevens in het ops
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Toegang tot door de klant beheerde sleutels intrekken
 
-Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u Power shell of Azure CLI. Zie [Azure Key Vault Power shell](/powershell/module/az.keyvault//) of [Azure Key Vault cli](/cli/azure/keyvault)(Engelstalig) voor meer informatie. Als u toegang intrekt, wordt de toegang tot alle gegevens in het opslag account effectief geblokkeerd, omdat de versleutelings sleutel niet toegankelijk is voor Azure Storage.
+U kunt de toegang tot het opslag account op elk gewenst moment intrekken voor de door de klant beheerde sleutel. Nadat de toegang tot door de klant beheerde sleutels is ingetrokken of nadat de sleutel is uitgeschakeld of verwijderd, kunnen clients geen bewerkingen aanroepen die lezen van of schrijven naar een BLOB of de meta gegevens ervan. Pogingen om een van de volgende bewerkingen aan te roepen, mislukken met fout code 403 (verboden) voor alle gebruikers:
+
+- [Blobs vermelden](/rest/api/storageservices/list-blobs), wanneer aangeroepen met de para meter `include=metadata` op de aanvraag-URI
+- [BLOB ophalen](/rest/api/storageservices/get-blob)
+- [BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
+- [BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)
+- [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
+- [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob), wanneer aangeroepen met de `x-ms-meta-name` aanvraag header
+- [BLOB kopiëren](/rest/api/storageservices/copy-blob)
+- [BLOB kopiëren van URL](/rest/api/storageservices/copy-blob-from-url)
+- [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier)
+- [Blok keren](/rest/api/storageservices/put-block)
+- [Blok van URL plaatsen](/rest/api/storageservices/put-block-from-url)
+- [Blok toevoegen](/rest/api/storageservices/append-block)
+- [Blok van URL toevoegen](/rest/api/storageservices/append-block-from-url)
+- [BLOB plaatsen](/rest/api/storageservices/put-blob)
+- [Pagina plaatsen](/rest/api/storageservices/put-page)
+- [Pagina van URL plaatsen](/rest/api/storageservices/put-page-from-url)
+- [BLOB voor incrementele kopie](/rest/api/storageservices/incremental-copy-blob)
+
+Als u deze bewerkingen opnieuw wilt aanroepen, moet u de toegang tot de door de klant beheerde sleutel herstellen.
+
+Alle gegevens bewerkingen die niet in deze sectie worden vermeld, kunnen door gaan nadat door de klant beheerde sleutels zijn ingetrokken of een sleutel wordt uitgeschakeld of verwijderd.
+
+Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u [Power shell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) of [Azure cli](storage-encryption-keys-cli.md#revoke-customer-managed-keys).
 
 ### <a name="customer-managed-keys-for-azure-managed-disks-preview"></a>Door de klant beheerde sleutels voor Azure Managed disks (preview)
 
@@ -122,11 +146,11 @@ Door de klant beheerde sleutels zijn ook beschikbaar voor het beheren van versle
 
 Clients die aanvragen indienen voor Azure Blob-opslag hebben de optie om een versleutelings sleutel op te geven voor een afzonderlijke aanvraag. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen. Door de klant verschafte sleutels (preview) kunnen worden opgeslagen in Azure Key Vault of in een ander sleutel archief.
 
-Voor een voor beeld van hoe u een door de klant opgegeven sleutel opgeeft voor een aanvraag voor Blob-opslag, raadpleegt [u een door de klant opgegeven sleutel opgeven voor een aanvraag voor Blob-opslag met .net](../blobs/storage-blob-customer-provided-key.md). 
+Voor een voor beeld van hoe u een door de klant opgegeven sleutel opgeeft voor een aanvraag voor Blob-opslag, raadpleegt [u een door de klant opgegeven sleutel opgeven voor een aanvraag voor Blob-opslag met .net](../blobs/storage-blob-customer-provided-key.md).
 
 ### <a name="encrypting-read-and-write-operations"></a>Lees-en schrijf bewerkingen versleutelen
 
-Wanneer een client toepassing een versleutelings sleutel voor de aanvraag levert, Azure Storage de versleuteling en ontsleuteling transparant uitvoeren tijdens het lezen en schrijven van BLOB-gegevens. Azure Storage schrijft een SHA-256-hash van de versleutelings sleutel naast de inhoud van de blob. De hash wordt gebruikt om te controleren of alle volgende bewerkingen voor de BLOB dezelfde versleutelings sleutel gebruiken. 
+Wanneer een client toepassing een versleutelings sleutel voor de aanvraag levert, Azure Storage de versleuteling en ontsleuteling transparant uitvoeren tijdens het lezen en schrijven van BLOB-gegevens. Azure Storage schrijft een SHA-256-hash van de versleutelings sleutel naast de inhoud van de blob. De hash wordt gebruikt om te controleren of alle volgende bewerkingen voor de BLOB dezelfde versleutelings sleutel gebruiken.
 
 Azure Storage de versleutelings sleutel niet opslaat of beheert die de client met de aanvraag verzendt. De sleutel wordt veilig verwijderd zodra het proces voor versleuteling of ontsleuteling is voltooid.
 

@@ -12,15 +12,18 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432180"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204406"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Para meters voor de webservice Azure Machine Learning Studio (klassiek) gebruiken
-Een Azure Machine Learning-webservice wordt gemaakt door het publiceren van een experiment met modules met configureerbare parameters. In sommige gevallen kunt u het gedrag van de module niet wijzigen terwijl de webservice wordt uitgevoerd. *Web-Parameters van de Service* zodat u deze taak. 
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Een Azure Machine Learning-webservice wordt gemaakt door het publiceren van een experiment met modules met configureerbare parameters. In sommige gevallen kunt u het gedrag van de module niet wijzigen terwijl de webservice wordt uitgevoerd. Met de *para meters* van de webservice kunt u deze taak uitvoeren. 
 
 Een voor beeld hiervan is het instellen van de module [import data][reader] , zodat de gebruiker van de gepubliceerde webservice een andere gegevens bron kan opgeven wanneer de webservice wordt geopend. Of configureer de module [gegevens exporteren][writer] zodat er een andere bestemming kan worden opgegeven. Enkele andere voor beelden zijn het wijzigen van het aantal bits voor de [functie-hash][feature-hashing] -module of het aantal gewenste functies voor de [functie selectie module op basis van filter][filter-based-feature-selection] . 
 
@@ -38,7 +41,7 @@ U kunt vervolgens beslissen of een standaardwaarde opgeven voor de Web Service-P
 De API-documentatie voor de webservice bevat informatie voor de gebruiker van de web-service voor het opgeven van de Web Service-Parameter is het via een programma bij het openen van de webservice.
 
 > [!NOTE]
-> De API-documentatie voor een klassieke webservice wordt geleverd via de koppeling **API Help pagina** in het **dash board** van de webservice in machine learning Studio (klassiek). De API-documentatie voor een nieuwe webservice wordt geleverd via de [Azure Machine Learning-webservices](https://services.azureml.net/Quickstart) portal op de **verbruiken** en **Swagger API** pagina's voor uw web- de service.
+> De API-documentatie voor een klassieke webservice wordt geleverd via de koppeling **API Help pagina** in het **dash board** van de webservice in machine learning Studio (klassiek). De API-documentatie voor een nieuwe webservice wordt geleverd via de [Azure machine learning](https://services.azureml.net/Quickstart) webservices Portal op de API-pagina's voor **gebruik en** **Swagger** voor uw webservice.
 > 
 > 
 
@@ -48,33 +51,33 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
 1. Klik in Machine Learning Studio (klassiek) op de module [gegevens exporteren][writer] om deze te selecteren. De eigenschappen worden weergegeven in het deelvenster met eigenschappen aan de rechterkant van het experimentcanvas.
 2. Geef het opslagtype:
    
-   * Onder **Geef bestemming**, selecteert u 'Azure Blob-opslag.
-   * Onder **Geef verificatietype**, selecteert u 'Account'.
+   * Selecteer onder **gegevens doel opgeven**de optie Azure Blob Storage.
+   * Selecteer onder **verificatie type opgeven**de optie account.
    * Voer de accountgegevens voor de Azure blob-opslag. 
 
-3. Klik op het pictogram aan de rechterkant van de **pad naar de blob die begint met de parameter container**. Het ziet er als volgt uit:
+3. Klik op het pictogram rechts van het **pad naar de blob die begint met de container parameter**. Het ziet er als volgt uit:
    
    ![Web Service Parameter-pictogram](./media/web-service-parameters/icon.png)
    
    Selecteer 'Instellen als web Serviceparameter'.
    
-   Een vermelding wordt toegevoegd onder **Webserviceparameters** onderaan in het deelvenster met eigenschappen met de naam 'Pad naar de blob die begint met de container'. Dit is de para meter van de webservice die nu is gekoppeld aan deze module parameter voor [export gegevens][writer] .
-4. Wijzig de naam van de Web Service-Parameter, klikt u op de naam, typt u 'blobpad', en druk op de **Enter** sleutel. 
-5. Als u wilt een standaardwaarde opgeven voor de Web Service-Parameter, klik op het pictogram aan de rechterkant van de naam, selecteert u "Geef standaardwaarde", voer een waarde (bijvoorbeeld ' container1/output1.csv'), en druk op de **Enter** sleutel.
+   Er wordt een vermelding toegevoegd onder de **para meters** van de webservice onder aan het deel venster Eigenschappen met de naam ' pad naar blob, beginnend met container '. Dit is de para meter van de webservice die nu is gekoppeld aan deze module parameter voor [export gegevens][writer] .
+4. Als u de naam van de para meter voor de webservice wilt wijzigen, klikt u op de naam, typt u "blob-pad" en drukt u op **Enter** . 
+5. Als u een standaard waarde wilt opgeven voor de para meter van de webservice, klikt u op het pictogram rechts van de naam, selecteert u standaard waarde opgeven, voert u een waarde in (bijvoorbeeld ' container1/output1. csv ') en drukt u op **Enter** .
    
    ![Web Service-Parameter](./media/web-service-parameters/parameter.png)
 6. Klik op **Run**. 
-7. Klik op **webservice implementeren** en selecteer **webservice implementeren [klassieke]** of **Web Service implementeren [Nieuw]** om de webservice te implementeren.
+7. Klik op **Deploy web service** en selecteer **Deploy web service [Classic]** of **Deploy web service [New]** om de webservice te implementeren.
 
 > [!NOTE] 
-> Voor het implementeren van een nieuwe webservice moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie voor meer informatie, [beheren van een webservice met behulp van de Azure Machine Learning-webserviceportal](manage-new-webservice.md). 
+> Voor het implementeren van een nieuwe webservice moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie [Manage a web service using the Azure machine learning Web Services portal](manage-new-webservice.md)(Engelstalig) voor meer informatie. 
 
 De gebruiker van de webservice kan nu een nieuwe bestemming opgeven voor de module [gegevens exporteren][writer] bij het openen van de webservice.
 
 ## <a name="more-information"></a>Meer informatie
-Zie voor een uitgebreider voorbeeld de [Webserviceparameters](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) vermelding in de [Machine Learning Blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Zie de vermelding [webservice-para meters](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) in het [machine learning blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)voor een gedetailleerd voor beeld.
 
-Zie voor meer informatie over het verkrijgen van toegang tot een Machine Learning-webservice [hoe u een Azure Machine Learning-webservice gebruiken](consume-web-services.md).
+Zie [How to verbruik a Azure machine learning web service](consume-web-services.md)(Engelstalig) voor meer informatie over het openen van een machine learning-webservice.
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

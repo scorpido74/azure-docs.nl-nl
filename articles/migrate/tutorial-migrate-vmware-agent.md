@@ -2,14 +2,14 @@
 title: Virtuele VMware-machines migreren met Azure Migrate server migratie op basis van een agent
 description: Meer informatie over het uitvoeren van een op agents gebaseerde migratie van VMware-Vm's met Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238438"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Virtuele VMware-machines migreren naar Azure (op basis van een agent)
 
@@ -156,7 +156,7 @@ De Mobility-service moet zijn geïnstalleerd op de machines die u wilt replicere
 
 - Het Azure Migrate replicatie apparaat kan een push-installatie van deze service uitvoeren wanneer u replicatie voor een machine inschakelt, of u kunt deze hand matig installeren of installatie Programma's gebruiken.
 - In deze zelfstudie gaat u de Mobility-service installeren met een push-installatie.
-- Voor een push-installatie moet u een account voorbereiden dat Azure Migrate server migratie kan gebruiken om toegang te krijgen tot de virtuele machine.
+- Voor een push-installatie moet u een account voorbereiden dat Azure Migrate server migratie kan gebruiken om toegang te krijgen tot de virtuele machine. Dit account wordt alleen gebruikt voor de push-installatie, als u de Mobility-service niet hand matig installeert.
 
 U bereidt het account als volgt voor:
 
@@ -409,7 +409,10 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 
 ## <a name="complete-the-migration"></a>Migratie voltooien
 
-1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
+1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Er gebeurt nu het volgende:
+    - Hiermee wordt de replicatie voor de on-premises computer gestopt.
+    - Hiermee verwijdert u de computer van het aantal **replicerende servers** in azure migrate: Server migratie.
+    - Hiermee wordt de replicatie status informatie voor de virtuele machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.
