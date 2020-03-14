@@ -9,95 +9,91 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 736b128e5207e58220afa69b4cf5dc4e8fea4a26
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79140804"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367513"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
 
 In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om een kleine gegevensset te maken door waarden te typen. De gegevensset kan meerdere kolommen bevatten.
+Gebruik de module **gegevens hand matig invoeren** om een kleine gegevensset te maken door waarden te typen. De gegevensset kan meerdere kolommen bevatten.
   
-Deze module kan handig zijn in scenario's zoals deze:  
+Deze module kan handig zijn in scenario's zoals:  
   
-- Een kleine set waarden voor testen genereren  
-  
-- Een korte lijst met labels maken
-  
-- Een lijst met kolom namen typen die in een gegevensset moeten worden ingevoegd
+- Er wordt een kleine set waarden voor testen gegenereerd.  
+- Een korte lijst met labels maken.  
+- Het typen van een lijst met kolom namen die moeten worden ingevoegd in een gegevensset.
 
-## <a name="enter-data-manually"></a>Gegevens handmatig invoeren 
+## <a name="create-a-dataset"></a>Een gegevensset maken 
   
-1.  Voeg de module [gegevens hand matig invoeren](./enter-data-manually.md) toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in azure machine learning. 
+1. Voeg de module [gegevens hand matig invoeren](./enter-data-manually.md) toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in azure machine learning. 
   
-2.  Selecteer een van de volgende opties voor **DataFormat**. Deze opties bepalen hoe de gegevens die u opgeeft, moeten worden geparseerd. De vereisten voor elke indeling verschillen aanzienlijk, dus zorg ervoor dat u de verwante onderwerpen leest.  
+1. Selecteer een van de volgende opties voor **DataFormat**. Deze opties bepalen hoe de gegevens die u opgeeft, moeten worden geparseerd. De vereisten voor elke indeling verschillen aanzienlijk, dus zorg ervoor dat u de verwante onderwerpen leest.  
   
-    -   **ARFF**: de kenmerk relatie bestands indeling, die wordt gebruikt door Fridge.   
-  
-    -   **CSV**: indeling met door komma's gescheiden waarden. Zie [Convert to CSV](./convert-to-csv.md)(Engelstalig) voor meer informatie.  
-  
-    -   **SVMLight**: een indeling die wordt gebruikt door Vowpal Wabbit en andere machine learning frameworks.  
-  
-    -   **TSV**: notatie van door tabs gescheiden waarden.
+   - **ARFF**: bestands indeling voor kenmerk relatie die wordt gebruikt door Fridge.   
+   - **CSV**: indeling met door komma's gescheiden waarden. Zie [Convert to CSV](./convert-to-csv.md)(Engelstalig) voor meer informatie.    
+   - **SVMLight**: indeling die wordt gebruikt door Vowpal Wabbit en andere machine learning frameworks.    
+   - **TSV**: notatie van door tabs gescheiden waarden.
 
-     Als u een indeling kiest en geen gegevens levert die voldoen aan de indelings specificaties, treedt er een runtime fout op.
+   Als u een indeling kiest en geen gegevens levert die voldoen aan de indelings specificaties, treedt er een runtime-fout op.
   
-3.  Klik in het tekstvak **Data** om te beginnen met het invoeren van gegevens. Voor de volgende indelingen is speciale aandacht vereist:  
+1. Klik in het tekstvak **Data** om te beginnen met het invoeren van gegevens. Voor de volgende indelingen is speciale aandacht vereist:  
   
-    - **CSV**: als u meerdere kolommen wilt maken, plakt u een door komma's gescheiden tekst of typt u meerdere kolommen met komma's tussen velden.
+   - **CSV**: als u meerdere kolommen wilt maken, plakt u een door komma's gescheiden tekst of typt u meerdere kolommen door komma's tussen velden te gebruiken.
   
-        Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
+     Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
   
-        Als u deze optie uitschakelt, worden de kolommen namen, Kol1, col2, enzovoort, gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
+     Als u deze optie uitschakelt, worden de kolom namen (Kol1, col2, enzovoort) gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
   
-    - **TSV**: als u meerdere kolommen wilt maken, plakt u een door tabs gescheiden tekst of typt u meerdere kolommen met tabs tussen velden.  
+   - **TSV**: als u meerdere kolommen wilt maken, plakt u een door tabs gescheiden tekst of typt u meerdere kolommen door tabs te gebruiken tussen velden.  
   
-        Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
+     Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
   
-        Als u deze optie uitschakelt, worden de kolommen namen, Kol1, col2, enzovoort, gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
+     Als u deze optie uitschakelt, worden de kolom namen (Kol1, col2, enzovoort) gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
   
-    -   **ARFF**: plakken in een bestaand ARFF-indelings bestand. Als u waarden rechtstreeks typt, moet u de optionele header en de vereiste kenmerk velden toevoegen aan het begin van de gegevens. 
+   - **ARFF**: plakken in een bestaand ARFF-indelings bestand. Als u waarden rechtstreeks typt, moet u de optionele header en de vereiste kenmerk velden toevoegen aan het begin van de gegevens. 
+
+     De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou worden `SampleText`. Houd er rekening mee dat het teken reeks type niet wordt ondersteund.
     
-        De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou worden `SampleText`. Houd er rekening mee dat teken reeks type niet wordt ondersteund.
-    
-        ```text
-        % Title: SampleText.ARFF
-        % Source: Enter Data module
-        @ATTRIBUTE SampleText NUMERIC
-        @DATA
-        \<type first data row here>  
-        ```
+     ```text
+     % Title: SampleText.ARFF  
+     % Source: Enter Data module  
+     @ATTRIBUTE SampleText NUMERIC  
+     @DATA  
+     \<type first data row here>  
+     ```
 
-    -   **SVMLight**: Typ of plak waarden in de SVMLight-indeling.  
+   - **SVMLight**: Typ of plak waarden met behulp van de SVMLight-indeling.  
   
-        Het volgende voor beeld vertegenwoordigt bijvoorbeeld de eerste paar regels van de gegevensset van de bloed donatie, in SVMight-indeling:  
+     Het volgende voor beeld vertegenwoordigt bijvoorbeeld de eerste paar regels van de SVMLight-gegevensset van de bloed donatie:  
   
-        ```text  
-        # features are [Recency], [Frequency], [Monetary], [Time]  
-        1 1:2 2:50 3:12500 4:98   
-        1 1:0 2:13 3:3250 4:28   
-        ```  
+     ```text  
+     # features are [Recency], [Frequency], [Monetary], [Time]  
+     1 1:2 2:50 3:12500 4:98   
+     1 1:0 2:13 3:3250 4:28   
+     ```  
   
-        Wanneer u de module [gegevens hand matig invoeren](./enter-data-manually.md) uitvoert, worden deze regels als volgt geconverteerd naar een gegevensset van kolommen en index waarden:  
+     Wanneer u de module [gegevens hand matig invoeren](./enter-data-manually.md) uitvoert, worden deze regels als volgt geconverteerd naar een gegevensset van kolommen en index waarden:  
   
-        |Kol1|Col2|Col3|Col4|Labels|  
-        |-|-|-|-|-|  
-        |0,00016|0,004|0,999961|0,00784|1|  
-        |0|0,004|0,999955|0,008615|1|  
+     |Kol1|Col2|Col3|Col4|Labels|  
+     |-|-|-|-|-|  
+     |0,00016|0,004|0,999961|0,00784|1|  
+     |0|0,004|0,999955|0,008615|1|  
   
-4.  Druk na elke rij op ENTER om een nieuwe regel te starten.      
+1. Selecteer de Enter-toets na elke rij om een nieuwe regel te starten.      
      
-     Als u meerdere keren op ENTER drukt om meerdere lege navolgende rijen toe te voegen, worden de lege rijen verwijderd.  
+   Als u meerdere keren selecteert om meerdere lege navolgende rijen toe te voegen, worden de lege rijen verwijderd of afgekapt.  
   
-     Als u rijen met ontbrekende waarden maakt, kunt u deze altijd later filteren.  
+   Als u rijen met ontbrekende waarden maakt, kunt u deze altijd later filteren.  
   
-5.  Verbind de uitvoer poort met andere modules en voer de pijp lijn uit.  
+1. Verbind de uitvoer poort met andere modules en voer de pijp lijn uit.  
   
-     Als u de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**.  
+   Als u de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

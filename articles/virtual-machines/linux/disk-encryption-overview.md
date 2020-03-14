@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28d37ba6796799ea27bbd5338247a504ea82388f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970453"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250424"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -81,7 +81,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 > [!NOTE]
 > De nieuwe Azure Disk Encryption-implementatie wordt ondersteund voor RHEL-besturings systeem en gegevens schijf voor RHEL7 betalen per gebruik-installatie kopieën.  
 >
-> ADE wordt ook ondersteund voor RHEL-uw eigen abonnementen, maar pas **nadat** het abonnement is geregistreerd. Zie [Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) voor meer informatie.
+> ADE wordt ook ondersteund voor RHEL-uw eigen abonnementen, maar pas **nadat** het abonnement is geregistreerd. Zie [Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) voor meer informatie.
 
 ## <a name="additional-vm-requirements"></a>Aanvullende VM-vereisten
 

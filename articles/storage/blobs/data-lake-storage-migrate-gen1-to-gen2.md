@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130056"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371847"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
 
@@ -132,7 +132,8 @@ Dit is het eenvoudigste patroon.
 
 4. Gen1 uit bedrijf nemen.
 
-![Patroon voor lift en verschuiving](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ![lift-en Shift-patroon](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Overwegingen voor het gebruik van het lift-en Shift-patroon
 
@@ -152,7 +153,8 @@ Dit is het eenvoudigste patroon.
 
 4. Gen1 uit bedrijf nemen.
 
-![Patroon voor incrementeel kopiëren](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> ![incrementele Kopieer patroon](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Overwegingen voor het gebruik van het patroon voor incrementeel kopiëren:
 
@@ -172,7 +174,8 @@ Dit is het eenvoudigste patroon.
 
 4. Alle schrijf bewerkingen naar gen1 stoppen en vervolgens gen1 uit bedrijf nemen.
 
-![Patroon met dubbele pijp lijn](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> ![dubbele pijplijn patroon](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Overwegingen voor het gebruik van het patroon met dubbele pijp lijnen:
 
@@ -190,7 +193,8 @@ Dit is het eenvoudigste patroon.
 
 4. Gen1 uit bedrijf nemen.
 
-![Bidirectioneel patroon](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> ![bidirectionele patroon](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Overwegingen voor het gebruik van het bidirectionele synchronisatie patroon:
 

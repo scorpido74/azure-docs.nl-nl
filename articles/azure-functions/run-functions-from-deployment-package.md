@@ -3,12 +3,12 @@ title: Uw Azure Functions uitvoeren vanuit een pakket
 description: Laat de Azure Functions runtime uw functies uitvoeren door een implementatie pakket bestand te koppelen dat de project bestanden van de functie-app bevat.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087032"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365268"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uw Azure Functions uitvoeren vanuit een pakket bestand
 
@@ -58,32 +58,6 @@ Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van A
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>Key Vault verwijzingen gebruiken
-
-Voor extra beveiliging kunt u Key Vault verwijzingen gebruiken in combi natie met uw externe URL. Hierdoor blijft de URL op rest versleuteld en kunt u gebruikmaken van Key Vault voor geheim beheer en draaiing. Het is raadzaam om Azure Blob-opslag te gebruiken, zodat u de bijbehorende SAS-sleutel eenvoudig kunt draaien. Azure Blob-opslag wordt versleuteld op rest, waardoor uw toepassings gegevens veilig blijven wanneer deze niet is geïmplementeerd op App Service.
-
-1. Maak een Azure Key Vault.
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Voeg uw externe URL toe als geheim in Key Vault.
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. Maak de `WEBSITE_RUN_FROM_PACKAGE` app-instelling en stel de waarde in als een Key Vault verwijzing naar de externe URL.
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-Raadpleeg de volgende artikelen voor meer informatie.
-
-- [Key Vault verwijzingen voor App Service](../app-service/app-service-key-vault-references.md)
-- [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

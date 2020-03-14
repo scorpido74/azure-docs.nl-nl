@@ -4,11 +4,11 @@ description: Gebruik Azure Resource Manager en Resource Manager-REST API om reso
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273811"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API
 

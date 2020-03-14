@@ -12,11 +12,11 @@ ms.date: 04/13/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: 28449435479aef0d6a1d8aee3e53de1a78f401b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220818"
 ---
 # <a name="project-answer-search-v7-reference"></a>Naslag informatie voor het zoeken naar project antwoorden V7
 

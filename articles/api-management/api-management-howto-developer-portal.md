@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126558"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297982"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -156,6 +156,12 @@ De interactieve console maakt een API aan de client zijde via de browser. U kunt
     </expose-headers>
 </cors>
 ```
+
+Pas het CORS op het globale bereik toe om ervoor te zorgen dat het voor alle Api's is ingeschakeld.
+
+1. Ga naar **alle api's** in de sectie **api's** van uw API Management-service in de Azure Portal.
+2. Klik op het pictogram **</>** in de sectie **binnenkomende verwerking** .
+3. Voeg het beleid in de sectie **<inbound>** van het XML-bestand. Zorg ervoor dat de **<origin>** waarde overeenkomt met het domein van uw ontwikkelaars Portal.
 
 > [!NOTE]
 > 

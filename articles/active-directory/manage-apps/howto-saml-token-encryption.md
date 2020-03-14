@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148637"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365863"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Procedure: Azure AD SAML-token versleuteling configureren (preview)
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Procedure: Azure AD SAML-token versleuteling configureren
 
 > [!NOTE]
 > Token versleuteling is een functie van Azure Active Directory (Azure AD) Premium. Zie [prijzen voor Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie over Azure AD-edities,-functies en-prijzen.
@@ -71,7 +71,7 @@ U kunt het open bare certificaat toevoegen aan de configuratie van uw toepassing
 
     ![Importeer het CER-bestand dat het X. 509-certificaat bevat](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Zodra het certificaat is geïmporteerd en de persoonlijke sleutel is geconfigureerd voor gebruik aan de kant van de toepassing, kunt u versleuteling activeren door de **..** . naast de status van de vinger afdruk te selecteren en vervolgens **token versleuteling activeren** te selecteren in de opties in de vervolg keuzemenu.
+1. Zodra het certificaat is geïmporteerd en de persoonlijke sleutel is geconfigureerd voor gebruik aan de kant van de toepassing, kunt u versleuteling activeren door de **...** naast de vingerafdruk status te selecteren en vervolgens **token versleuteling activeren** te selecteren in de opties in de vervolg keuzelijst.
 
 1. Selecteer **Ja** om de activering van het certificaat voor token versleuteling te bevestigen.
 
@@ -123,26 +123,21 @@ Wanneer u een sleutel referentie configureert met Graph, Power shell of in het m
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>Token versleuteling configureren met Power shell
 
-Deze functionaliteit is binnenkort beschikbaar. 
+1. Gebruik de nieuwste Azure AD Power shell-module om verbinding te maken met uw Tenant.
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. Stel de coderings instellingen voor tokens in met de opdracht **[set-azurekunt](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. Lees de versleutelings instellingen voor tokens met behulp van de volgende opdrachten.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Token versleuteling configureren met het toepassings manifest
 

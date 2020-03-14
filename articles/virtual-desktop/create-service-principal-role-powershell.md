@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128113"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365420"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelf studie: Service-principals en roltoewijzingen maken met behulp van Power shell
 
@@ -113,4 +113,4 @@ Nadat u zich hebt aangemeld, controleert u of alles werkt door enkele virtuele W
 Nadat u de Service-Principal hebt gemaakt en hieraan een rol hebt toegewezen in uw Windows Virtual Desktop-Tenant, kunt u deze gebruiken voor het maken van een hostgroep. Voor meer informatie over hostgroepen gaat u verder met de zelf studie voor het maken van een hostgroep in het virtuele bureau blad van Windows.
 
  > [!div class="nextstepaction"]
- > [Zelf studie voor hosten in Windows Virtual Desktop](./create-host-pools-azure-marketplace.md)
+ > [Een hostpool maken met Azure Marketplace](./create-host-pools-azure-marketplace.md)

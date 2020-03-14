@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 616cdc0387d5c5cf3c2980ae1cfbc10e3c1119f4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261357"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
@@ -65,9 +65,11 @@ De service die de Kopieer activiteit mogelijk maakt, is wereld wijd beschikbaar 
 
 ## <a name="configuration"></a>Configuratie
 
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+
 Als u de Kopieer activiteit in Azure Data Factory wilt gebruiken, moet u het volgende doen:
 
-1. **Gekoppelde services maken voor de brongegevens opslag en het sink-gegevens archief.** Raadpleeg de sectie ' eigenschappen van gekoppelde service ' van het connector artikel voor informatie over de configuratie en ondersteunde eigenschappen. De lijst met ondersteunde connectors vindt u in de sectie [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats) van dit artikel.
+1. **Gekoppelde services maken voor de brongegevens opslag en het sink-gegevens archief.** De lijst met ondersteunde connectors vindt u in de sectie [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats) van dit artikel. Raadpleeg de sectie ' eigenschappen van gekoppelde service ' van het connector artikel voor informatie over de configuratie en ondersteunde eigenschappen. 
 2. **Gegevens sets maken voor de bron en Sink.** Raadpleeg de sectie eigenschappen van gegevensset van de bron-en Sink-connector artikelen voor informatie over de configuratie en ondersteunde eigenschappen.
 3. **Maak een pijp lijn met de Kopieer activiteit.** De volgende sectie bevat een voorbeeld.
 
@@ -140,102 +142,7 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 
 ## <a name="monitoring"></a>Bewaking
 
-U kunt de uitvoering van de Kopieer activiteit bewaken in de gebruikers interface van de Azure Data Factory **Author &-controle** of via een programma.
-
-### <a name="monitor-visually"></a>Visueel bewaken
-
-Als u de uitvoering van de Kopieer activiteit visueel wilt controleren, gaat u naar uw data factory en gaat u naar **& monitor**maken. Op het tabblad **monitor** ziet u een lijst met pijplijn uitvoeringen met een knop voor het uitvoeren van de **activiteit weer geven** in de kolom **acties** :
-
-![Pijplijnuitvoeringen controleren](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-Selecteer **uitvoering van activiteit weer geven** om de lijst met activiteiten in de pijplijn uitvoering weer te geven. In de kolom **acties** ziet u koppelingen naar de invoer van de Kopieer activiteit, uitvoer, fouten (als het uitvoeren van de Kopieer activiteit mislukt) en Details:
-
-![Uitvoering van activiteiten controleren](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-Selecteer de knop **Details** in de kolom **acties** om de uitvoerings Details en prestatie kenmerken van de Kopieer activiteit te bekijken. U ziet informatie zoals volume/aantal rijen/aantal gekopieerde gegevens van bron naar sink, door Voer, stappen die door de Kopieer activiteit worden uitgevoerd met de bijbehorende duur en de configuraties die worden gebruikt voor uw Kopieer scenario.
-
->[!TIP]
->In sommige scenario's ziet u ook tips voor het **afstemmen van prestaties** boven aan de pagina controle van kopiëren. In deze tips wordt uitgelegd hoe u knel punten herkent en informatie geeft over wat u moet wijzigen om de door Voer van kopieën te verhogen. Zie de sectie [prestaties en afstemming](#performance-and-tuning) van dit artikel voor een voor beeld.
-
-**Voor beeld: kopiëren van Amazon S3 naar Azure Data Lake Store**
-![monitor-activiteit details uitvoeren](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**Voor beeld: kopiëren van Azure SQL database naar Azure SQL data warehouse met gefaseerde kopie**
-![monitor-activiteit details uitvoeren](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>Controleren via een programma
-
-De details van de Kopieer activiteit en prestatie kenmerken worden ook weer gegeven in de sectie **uitvoer** van de **kopieer activiteit resultaten** > . Hieronder vindt u een volledige lijst met eigenschappen die kunnen worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw Kopieer scenario. Zie [een pijplijn uitvoering bewaken](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)voor meer informatie over het controleren van de uitvoering van activiteiten.
-
-| Naam van eigenschap  | Beschrijving | Eenheid |
-|:--- |:--- |:--- |
-| dataRead | Hoeveelheid gegevens die uit de bron is gelezen. | Int64-waarde, in bytes |
-| datawritten door | De hoeveelheid gegevens die naar de sink wordt geschreven. | Int64-waarde, in bytes |
-| filesRead | Het aantal bestanden dat is gekopieerd tijdens het kopiëren uit de bestands opslag. | Waarde voor Int64 (geen unit) |
-| filesWritten | Het aantal bestanden dat is gekopieerd tijdens het kopiëren naar de bestands opslag. | Waarde voor Int64 (geen unit) |
-| sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Waarde voor Int64 (geen unit) |
-| sinkPeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit. | Waarde voor Int64 (geen unit) |
-| rowsRead | Het aantal rijen dat is gelezen van de bron (niet van toepassing op een binaire kopie). | Waarde voor Int64 (geen unit) |
-| rowsCopied | Het aantal rijen dat is gekopieerd naar de Sink (niet van toepassing op een binaire kopie). | Waarde voor Int64 (geen unit) |
-| rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door `enableSkipIncompatibleRow` in te stellen op waar. | Waarde voor Int64 (geen unit) |
-| copyDuration | De duur van de Kopieer uitvoering. | Int32-waarde, in seconden |
-| throughput | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
-| sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
-| sinkPeakConnections| Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit.| Int32-waarde (geen eenheid) |
-| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
-| redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Booleaans |
-| hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Booleaans |
-| effectiveIntegrationRuntime | De uitvoering van de activiteit (IR) of runtime die wordt gebruikt voor het uitzetten van de activiteiten, in de notatie `<IR name> (<region if it's Azure IR>)`. | Tekst (tekenreeks) |
-| usedDataIntegrationUnits | De effectieve gegevens integratie eenheden tijdens het kopiëren. | Int32-waarde |
-| usedParallelCopies | De effectieve parallelCopies tijdens het kopiëren. | Int32-waarde |
-| redirectRowPath | Pad naar het logboek van overgeslagen incompatibele rijen in de Blob-opslag die u configureert in de eigenschap `redirectIncompatibleRowSettings`. Zie [fout tolerantie](#fault-tolerance) verderop in dit artikel. | Tekst (tekenreeks) |
-| executionDetails | Meer details over de stadia waarin de Kopieer activiteit wordt uitgevoerd, en de bijbehorende stappen, duur, configuraties, enzovoort. We raden u aan deze sectie niet te parseren omdat deze kan worden gewijzigd.<br/><br/>Data Factory rapporteert ook de gedetailleerde duur (in seconden) die is besteed aan verschillende fasen onder `detailedDurations`. De duur van deze stappen is exclusief. Er worden alleen duur waarden weer gegeven die van toepassing zijn op de opgegeven Kopieer activiteit:<br/>**Wachtrij duur** (`queuingDuration`): de hoeveelheid tijd voordat de Kopieer activiteit daad werkelijk wordt gestart op de Integration runtime. Als u een zelf-hostende IR gebruikt en deze waarde groot is, controleert u de IR-capaciteit en het gebruik en breidt u uit op basis van uw werk belasting. <br/>**Vooraf gekopieerde script duur** (`preCopyScriptDuration`): de verstreken tijd tussen het moment waarop de Kopieer activiteit wordt gestart op de IR en wanneer de Kopieer activiteit het uitvoeren van het script vooraf kopieert in de Sink-gegevens opslag is voltooid. Van toepassing wanneer u het script voor het vooraf kopiëren configureert. <br/>**Tijd tot eerste byte** (`timeToFirstByte`): de verstreken tijd tussen het einde van de vorige stap en het tijdstip waarop de IR de eerste byte van de brongegevens opslag ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd. Als deze waarde groot is, controleert u de query of de server en optimaliseert u deze.<br/>**Overdrachts duur** (`transferDuration`): de verstreken tijd tussen het einde van de vorige stap en het tijdstip waarop de IR alle gegevens van de bron naar de Sink overdraagt. | Matrix |
-| perfRecommendation | Tips voor het afstemmen van de prestaties kopiëren. Zie [prestaties en afstemmen](#performance-and-tuning) voor meer informatie. | Matrix |
-
-```json
-"output": {
-    "dataRead": 6198358,
-    "dataWritten": 19169324,
-    "filesRead": 1,
-    "sourcePeakConnections": 1,
-    "sinkPeakConnections": 2,
-    "rowsRead": 39614,
-    "rowsCopied": 39614,
-    "copyDuration": 1325,
-    "throughput": 4.568,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedDataIntegrationUnits": 4,
-    "usedParallelCopies": 1,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AzureBlobStorage"
-            },
-            "sink": {
-                "type": "AzureSqlDatabase"
-            },
-            "status": "Succeeded",
-            "start": "2019-08-06T01:01:36.7778286Z",
-            "duration": 1325,
-            "usedDataIntegrationUnits": 4,
-            "usedParallelCopies": 1,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "preCopyScriptDuration": 12,
-                "transferDuration": 1311
-            }
-        }
-    ],
-    "perfRecommendation": [
-        {
-            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
-            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
-            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
-        }
-    ]
-}
-```
+U kunt het uitvoeren van de Kopieer activiteit in de Azure Data Factory zowel visueel als programmatisch controleren. Zie [copy-activiteit controleren](copy-activity-monitoring.md)voor meer informatie.
 
 ## <a name="incremental-copy"></a>Incrementele kopie
 
@@ -243,15 +150,7 @@ Data Factory kunt u de Delta gegevens van een brongegevens archief stapsgewijs n
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
 
-In de [hand leiding Kopieer activiteit prestaties en schaal baarheid](copy-activity-performance.md) worden de belangrijkste factoren beschreven die van invloed zijn op de prestaties van het verplaatsen van gegevens via de Kopieer activiteit in azure Data Factory. Het bevat ook een lijst met de prestatie waarden die tijdens het testen zijn waargenomen en bespreekt hoe u de prestaties van de Kopieer activiteit kunt optimaliseren.
-
-In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Data Factory, de **Tips voor het afstemmen van prestaties** boven aan de [pagina controle activiteit controleren](#monitor-visually), zoals wordt weer gegeven in het volgende voor beeld. De tips geven een uitleg over de knel punt die is geïdentificeerd voor de opgegeven kopie-uitvoering. Ze geven ook informatie over wat ze moeten wijzigen om de door Voer van kopieën te verhogen. De tips voor het afstemmen van prestaties bieden momenteel suggesties als bij het kopiëren van gegevens naar Azure SQL Data Warehouse, het verg Roten van Azure Cosmos DB RUs of Azure SQL Database Dtu's wanneer de resource aan de kant van het gegevens archief het knel punt is en verwijdert onnodige kopieën.
-
-**Voor beeld: kopiëren naar Azure SQL Database met een tip voor het afstemmen van prestaties**
-
-In dit voor beeld houdt Data Factory tijdens het uitvoeren van een kopie een hoog DTU-gebruik in de Sink-Azure SQL Database. Deze voor waarde vertraagt schrijf bewerkingen. Het voor stel is om de Dtu's te verg Roten op de laag Azure SQL Database:
-
-![Bewaking met tips voor het afstemmen van prestaties kopiëren](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+In de ervaring voor het controleren van de [Kopieer activiteit](copy-activity-monitoring.md) worden de prestatie statistieken voor de Kopieer bewerking voor elk van de uitgevoerde activiteiten weer gegeven. In de [hand leiding Kopieer activiteit prestaties en schaal baarheid](copy-activity-performance.md) worden de belangrijkste factoren beschreven die van invloed zijn op de prestaties van het verplaatsen van gegevens via de Kopieer activiteit in azure Data Factory. Het bevat ook een lijst met de prestatie waarden die tijdens het testen zijn waargenomen en bespreekt hoe u de prestaties van de Kopieer activiteit kunt optimaliseren.
 
 ## <a name="resume-from-last-failed-run"></a>Hervatten vanuit de laatste uitvoering is mislukt
 

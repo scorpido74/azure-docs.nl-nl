@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602319"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247824"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -21,6 +21,7 @@ Zie [over SQL Server back-up in azure vm's](backup-azure-sql-database.md#feature
 Als u de beveiliging voor een SQL Server Data Base op een virtuele machine wilt configureren, moet u de **AzureBackupWindowsWorkload** -extensie op die virtuele machine installeren. Als u de fout **UserErrorSQLNoSysadminMembership**krijgt, betekent dit dat uw SQL Server-exemplaar niet over de vereiste back-upmachtigingen beschikt. Volg de stappen in [set VM permissions](backup-azure-sql-database.md#set-vm-permissions)om deze fout op te lossen.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Problemen met detectie en configuratie oplossen
+
 Na het maken en configureren van een Recovery Services kluis, het detecteren van data bases en het configureren van back-ups is een proces dat uit twee stappen bestaat.<br>
 
 ![SQL](./media/backup-azure-sql-database/sql.png)
@@ -37,7 +38,23 @@ Als de SQL-VM en de exemplaren ervan tijdens de back-upconfiguratie niet zichtba
 
 Als de SQL-VM in de nieuwe kluis moet worden geregistreerd, moet de registratie bij de oude kluis ongedaan worden gemaakt.  Voor het ongedaan maken van de registratie van een SQL-VM van de kluis moeten alle beveiligde gegevens bronnen worden beveiligd en vervolgens kunt u de back-upgegevens verwijderen. Het verwijderen van een back-up van gegevens is een destructieve bewerking.  Nadat u alle voorzorgsmaatregelen hebt bekeken en hebt genomen om de registratie van de SQL-VM ongedaan te maken, registreert u dezelfde VM met een nieuwe kluis en voert u de back-upbewerking opnieuw uit.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Problemen met back-up en herstel oplossen  
 
+Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkingen of kunnen de bewerkingen vastlopen. Dit kan worden veroorzaakt door antivirus Programma's op uw virtuele machine. Als best practice worden de volgende stappen voorgesteld:
+
+1. Sluit de volgende mappen uit van antivirus scans:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    Vervang `C:\` door de letter van het *Systeem station*.
+
+1. De volgende drie processen die worden uitgevoerd in een VM uitsluiten van antivirus scans:
+
+    - IaasWLPluginSvc. exe
+    - IaasWorkloadCoordinaorService. exe
+    - TriggerExtensionJob. exe
+
+1. SQL biedt ook enkele richt lijnen voor het werken met antivirus Programma's. Raadpleeg [dit artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) voor meer informatie.
 
 ## <a name="error-messages"></a>Foutberichten
 
@@ -149,7 +166,6 @@ De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
 De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft uitgaande verbindingen met Azure Backup Service, Azure Storage of Azure Active Directory Services nodig.| -Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang toe te staan Azure Backup Azure Backup-Service, Azure Storage of Azure Active Directory Services. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
-
 
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 

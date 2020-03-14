@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127893"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365216"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -71,7 +71,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
 
 ## <a name="run-the-azure-marketplace-offering"></a>De Azure Marketplace-aanbieding uitvoeren
 
-Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](./create-host-pools-azure-marketplace.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie voor elke blade invoeren:
+Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](./create-host-pools-azure-marketplace.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie invoeren voor elk tabblad:
 
 ### <a name="basics"></a>Basisbeginselen
 

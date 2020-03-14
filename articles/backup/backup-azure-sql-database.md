@@ -3,16 +3,23 @@ title: Een back-up van SQL Server-databases maken in Azure
 description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273239"
+ms.locfileid: "79297472"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
-SQL Server-databases zijn essentiële workloads waarvoor een laag Recovery Point Objective (RPO, beoogd herstelpunt) en langetermijnretentie nodig zijn. U kunt back-ups maken van SQL Server-data bases die worden uitgevoerd op virtuele Azure-machines met [Azure backup](backup-overview.md).
+[Azure backup](backup-overview.md) biedt een op een stroom gebaseerde, gespecialiseerde oplossing voor het maken van back-ups SQL Server die worden uitgevoerd in virtuele machines van Azure. Deze oplossing wordt afgestemd op de voor delen van een back-up van nul-infra structuur, lange termijn retentie en Centraal beheer van Azure Backup. Het biedt ook de volgende voor delen voor SQL Server:
+
+1. Werkbelasting bewuste back-ups die ondersteuning bieden voor alle back-uptypen-volledig, differentieel en logboek
+2. 15-min. RPO (Recovery Point Objective) met veelvuldige logboek back-ups
+3. Herstel naar een bepaald tijdstip, tot een seconde
+4. Back-up en herstel van afzonderlijke database niveau
+
+Raadpleeg de [ondersteunings matrix](backup-azure-sql-database.md#scenario-support)voor het weer geven van de scenario's voor back-up en herstel die nu worden ondersteund.
 
 ## <a name="backup-process"></a>Back-upproces
 

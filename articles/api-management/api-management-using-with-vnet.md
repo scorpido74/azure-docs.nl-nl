@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 0ff7eff2465f187c25c58b429db752decc38ffc4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968209"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298033"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -177,9 +177,11 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 ## <a name="subnet-size"></a> Vereiste voor de grootte van het subnet
 Azure reserveert een aantal IP-adressen binnen elk subnet en deze adressen kunnen niet worden gebruikt. Het eerste en laatste IP-adres van de subnetten zijn gereserveerd voor protocol conformiteit, samen met drie meer adressen die worden gebruikt voor Azure-Services. Zie [zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) voor meer informatie.
 
-Naast de IP-adressen die worden gebruikt door de Azure VNET-infra structuur, maakt elk API Management-exemplaar in het subnet gebruik van twee IP-adressen per eenheid van Premium SKU of één IP-adres voor de Developer-SKU. Elk exemplaar reserveert een extra IP-adres voor de externe load balancer. Bij implementatie in een intern vnet is een extra IP-adres voor de interne load balancer vereist.
+Naast de IP-adressen die worden gebruikt door de Azure VNET-infra structuur, maakt elk API Management-exemplaar in het subnet gebruik van twee IP-adressen per eenheid van Premium SKU of één IP-adres voor de Developer-SKU. Elk exemplaar reserveert een extra IP-adres voor de externe load balancer. Bij het implementeren in een intern virtueel netwerk is een extra IP-adres voor de interne load balancer vereist.
 
 Gezien de berekening boven de minimale grootte van het subnet, waarbij API Management kan worden geïmplementeerd, is/29 dat drie bruikbare IP-adressen bevat.
+
+Voor elke extra schaal eenheid van API Management zijn twee meer IP-adressen vereist.
 
 ## <a name="routing"></a> Route ring
 + Een openbaar IP-adres (VIP) met gelijke taak verdeling wordt gereserveerd om toegang te bieden tot alle service-eind punten.

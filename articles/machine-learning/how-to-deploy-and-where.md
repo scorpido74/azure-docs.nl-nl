@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 025ea1e23b3587d333ecfcda27f80fcedad66ed5
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 4bb13080d2539610eb7cbf3a3e29ce3090c49f55
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096172"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283639"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -182,6 +182,8 @@ Als u het model als een service wilt implementeren, hebt u de volgende onderdele
     >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-use-parallel-run-step.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
 * **Configuratie**afleiding. Configuratie voor het dezicht configureren geeft de omgevings configuratie, het invoer script en andere onderdelen die nodig zijn om het model als een service uit te voeren.
+
+Zodra u de benodigde onderdelen hebt, kunt u de service die wordt gemaakt als gevolg van de implementatie van uw model, profileren om inzicht te krijgen in de vereisten voor de CPU en het geheugen.
 
 ### <a id="script"></a>1. uw invoer script en afhankelijkheden definiëren
 
@@ -519,6 +521,82 @@ In dit voor beeld geeft de configuratie de volgende instellingen aan:
 * Het Conda-bestand waarin de Python-pakketten worden beschreven die nodig zijn voor de.
 
 Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
+
+### <a id="profilemodel"></a>3. het model profiel voor het bepalen van het resource gebruik
+
+Zodra u het model hebt geregistreerd en de andere onderdelen hebt voor bereid die nodig zijn voor de implementatie, kunt u de CPU en het geheugen bepalen die de geïmplementeerde service nodig heeft. Profile ring test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, het geheugen gebruik en de reactie latentie. Het bevat ook een aanbeveling voor de CPU en het geheugen op basis van het resource gebruik.
+
+U hebt het volgende nodig om uw model te kunnen profielen:
+* Een geregistreerd model.
+* Een Afleidings configuratie op basis van uw instap script en omgevings definitie voor afwijzen.
+* Een gegevensset in tabel vorm met één kolom, waarbij elke rij een teken reeks bevat die de voorbeeld aanvraag gegevens vertegenwoordigt.
+
+> [!IMPORTANT]
+> Op dit moment bieden we alleen ondersteuning voor het profileren van services die hun aanvraag gegevens naar een teken reeks verwachten, bijvoorbeeld: String serialized JSON, Text, String serialized Image, enzovoort. De inhoud van elke rij van de gegevensset (teken reeks) wordt in de hoofd tekst van de HTTP-aanvraag geplaatst en verzonden naar de service die het model voor het scoren inkapselt.
+
+Hieronder ziet u een voor beeld van hoe u een invoer-gegevensset kunt samen stellen om een service te maken waarmee de binnenkomende aanvraag gegevens geserialiseerde JSON kunnen bevatten. In dit geval hebben we een gegevensset gemaakt op basis van 100 exemplaren van dezelfde inhoud van de aanvraag gegevens. In Real-World-scenario's wordt u aangeraden dat u grotere gegevens sets met verschillende invoer gebruikt, met name als uw model resource gebruik/-gedrag afhankelijk is van invoer.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Wanneer u de gegevensset hebt die voorbeeld gegevens voor de aanvraag hebt gemaakt, kunt u een Afleidings configuratie maken. De configuratie voor het afwijzen van interferentie is gebaseerd op de score.py en de omgevings definitie. In het volgende voor beeld ziet u hoe u de configuratie voor afwijzen maakt en profile ring uitvoert:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+De volgende opdracht laat zien hoe u een model kunt profielen met behulp van de CLI:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
 
@@ -1077,4 +1155,5 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 * [Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
+* [Gebeurtenis waarschuwingen en triggers maken voor model implementaties](how-to-use-event-grid.md)
 

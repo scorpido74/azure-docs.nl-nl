@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7465ec4ef717f709aacb5e543a8f1cf4fa37bfb5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586254"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139008"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -56,6 +56,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 ## <a name="install-and-validate-the-agent-on-windows"></a>De agent in Windows installeren en valideren
 
 ### <a name="install-manually"></a>De installatie handmatig uitvoeren
+
 U kunt de aangesloten machine agent hand matig installeren door het Windows Installer-pakket *AzureConnectedMachineAgent. msi*uit te voeren. 
 
 > [!NOTE]

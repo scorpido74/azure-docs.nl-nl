@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 37932a3669dc1ed7f8f3f103db93ee6757a06aad
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390407"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267194"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
 
@@ -46,7 +46,7 @@ Met Scheduled Events kan uw toepassing detecteren wanneer er onderhoud plaatsvin
 Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 
 - Door het [platform geïnitieerd onderhoud](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud van updates voor host)
-- Gedegradeerde hardware
+- De virtuele machine wordt uitgevoerd op hardware die is [gedegradeerd als host](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) die binnenkort wordt voorspeld
 - Door de gebruiker geïnitieerd onderhoud (bijvoorbeeld: een gebruiker start een virtuele machine opnieuw of implementeert deze)
 - [Spot-VM](spot-vms.md) en verwijderingen van exemplaren van de [schaalset](../../virtual-machine-scale-sets/use-spot.md) .
 
@@ -146,6 +146,9 @@ Elke gebeurtenis wordt in de toekomst gepland op basis van het gebeurtenis type.
 | Opnieuw implementeren | 10 minuten |
 | Preempt | 30 seconden |
 | Tijdig | [Configureer bare gebruiker](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 tot 15 minuten |
+
+> [!NOTE] 
+> In sommige gevallen kan Azure host-uitval voors pellen vanwege gedegradeerde hardware en zal proberen de onderbreking van uw service te verhelpen door een migratie te plannen. De betrokken virtuele machines ontvangen een geplande gebeurtenis met een `NotBefore` dat in de toekomst meestal een paar dagen is. De werkelijke tijd is afhankelijk van de voorspelde risico analyse. Azure probeert zo de voorafgaande kennisgeving van 7 dagen te geven, maar de werkelijke tijd varieert en kan kleiner zijn als de voor spelling is dat er een hoge kans op het onmiddellijk uitvallen van de hardware is. Om het risico voor uw service tot een minimum te beperken, raden we u aan uw virtuele machine zo snel mogelijk zelf opnieuw te implementeren.
 
 ### <a name="start-an-event"></a>Een gebeurtenis starten 
 

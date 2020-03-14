@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987477"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259992"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Gebruik de Azure Portal om uw Azure Data Box en Azure Data Box Heavy te beheren
 
 Dit artikel is van toepassing op zowel Azure Data Box als Azure Data Box Heavy. In dit artikel worden enkele van de complexe werk stromen en beheer taken beschreven die op het Azure Data Box apparaat kunnen worden uitgevoerd. U kunt het Data Box-apparaat beheren via de Azure Portal of via de lokale web-UI.
 
-Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van de Azure-portal. Gebruik de Azure Portal om orders te beheren, Data Box-apparaat te beheren en de status van de order bij te houden terwijl deze wordt voltooid.
+Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van Azure Portal. Gebruik de Azure Portal om orders te beheren, Data Box-apparaat te beheren en de status van de order bij te houden terwijl deze wordt voltooid.
 
 
 ## <a name="cancel-an-order"></a>Een order annuleren
@@ -77,7 +77,7 @@ Voer de volgende stappen uit om een verzendlabel te downloaden.
 
     ![Verzendlabel downloaden](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Hiermee downloadt u het volgende verzendlabel voor retourzending. Sla het label op en druk het af. Vouw het label en steek het in de doorzichtige plastic hoes op het apparaat. Zorg dat het label zichtbaar is. Verwijder eventuele stickers van de vorige verzending die op het apparaat zitten.
+2.  Hiermee downloadt u het volgende verzendlabel voor retourzending. Sla het label op en druk het af. Vouw het label in op de heldere hoes op het apparaat. Zorg dat het label zichtbaar is. Verwijder eventuele stickers van de vorige verzending die op het apparaat zitten.
 
     ![Voorbeeld van verzendlabel](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -191,13 +191,13 @@ Voer de volgende stappen uit om de ordergeschiedenis te downloaden.
 
 U kunt ook de bewakingsketenlogboeken bekijken die de auditlogboeken en de BOM-bestanden bevatten.
 
-![Logboeken in opslagaccounts](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+![Aanmelden bij opslagaccount](media/data-box-portal-admin/logs-in-storage-acct-1.png)
 
 ## <a name="view-order-status"></a>Orderstatus bekijken
 
 Wanneer de apparaatstatus in de portal verandert, wordt u per e-mail op de hoogte gesteld.
 
-|Orderstatus |Description |
+|Orderstatus |Beschrijving |
 |---------|---------|
 |Besteld     | De order is geplaatst. <br>Als het apparaat beschikbaar is, identificeert Microsoft het apparaat dat moet worden verzonden en bereidt Microsoft het apparaat voor. <br> Als het apparaat niet onmiddellijk beschikbaar is, wordt de order verwerkt zodra het apparaat beschikbaar is. Het kan enkele dagen tot een paar maanden duren voordat de order is verwerkt. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze geannuleerd en wordt u op de hoogte gesteld.         |
 |Verwerkt     | De order is verwerkt. In overeenstemming met uw order wordt het apparaat in het datacenter voorbereid voor verzending.         |

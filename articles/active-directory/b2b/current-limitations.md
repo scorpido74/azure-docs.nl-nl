@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77196130"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263359"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Beperkingen van Azure AD B2B-samen werking
 Azure Active Directory (Azure AD) B2B-samen werking is momenteel onderhevig aan de beperkingen die in dit artikel worden beschreven.
@@ -32,6 +32,21 @@ Azure AD B2B is onderhevig aan Azure AD-service Directory limieten. Zie [Azure A
 
 ## <a name="national-clouds"></a>Nationale Clouds
 [Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) zijn fysiek geïsoleerde exemplaren van Azure. B2B-samen werking wordt niet ondersteund in nationale Cloud grenzen. Als uw Azure-Tenant zich bijvoorbeeld in de open bare, globale Cloud bevindt, kunt u geen gebruiker uitnodigen waarvan het account zich in een nationale Cloud bevindt. Als u wilt samen werken met de gebruiker, vraagt u deze voor een ander e-mail adres of maakt u een gebruikers account voor de gebruiker in uw Directory.
+
+## <a name="azure-us-government-clouds"></a>Azure Amerikaanse overheids Clouds
+Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, mislukt de uitnodiging of kan de gebruiker de uitnodiging niet inwisselen. Zie [Azure Active Directory Premium P1-en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie over andere beperkingen.
+
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Hoe kan ik zien of B2B-samen werking beschikbaar is in mijn Azure US Government-Tenant?
+Ga als volgt te werk om erachter te komen of uw Azure VS government Cloud Tenant ondersteuning biedt voor B2B-samen werking:
+
+1. Ga in een browser naar de volgende URL en vervang uw Tenant naam voor *&lt;tenant&gt;* :
+
+   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
+
+2. Zoek `"tenant_region_scope"` in het JSON-antwoord:
+
+   - Als `"tenant_region_scope":"USGOV”` wordt weer gegeven, wordt B2B ondersteund.
+   - Als `"tenant_region_scope":"USG"` wordt weer gegeven, wordt B2B niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

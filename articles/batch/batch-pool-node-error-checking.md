@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484125"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369264"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
 
@@ -137,8 +137,21 @@ De grootte van het tijdelijke station is afhankelijk van de grootte van de virtu
 
 Voor bestanden die door elke taak zijn geschreven, kan een Bewaar periode worden opgegeven voor elke taak die bepaalt hoe lang de taak bestanden worden bewaard voordat ze automatisch worden opgeruimd. De retentie tijd kan worden gereduceerd om de opslag vereisten te verlagen.
 
-Als er geen tijdelijke schijf ruimte is, wordt het uitvoeren van taken op het knoop punt gestopt. In de toekomst wordt een [knooppunt fout](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gerapporteerd.
+Als de tijdelijke schijf bijna geen ruimte meer heeft (of bijna helemaal geen ruimte meer heeft), wordt het knoop punt verplaatst naar [onbruikbaar](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) en wordt er een fout in het knoop punt weer gegeven (gebruik de koppeling die al aanwezig is) wordt gemeld dat de schijf vol is.
 
+### <a name="what-to-do-when-a-disk-is-full"></a>Wat te doen wanneer een schijf vol is
+
+Bepaal waarom de schijf vol is: als u niet zeker weet wat er ruimte is op het knoop punt, wordt het aanbevolen om het knoop punt op afstand te plaatsen en hand matig te onderzoeken waar de ruimte is verdwenen. U kunt ook de [API voor batch-lijst bestanden](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) gebruiken om bestanden in met batch beheerde mappen te onderzoeken (bijvoorbeeld taak uitvoer). Houd er rekening mee dat deze API alleen bestanden in de door batch beheerde directory's bevat. als uw taken ergens anders zijn gemaakt, worden ze niet weer gegeven.
+
+Zorg ervoor dat alle gegevens die u nodig hebt, zijn opgehaald uit het knoop punt of geüpload naar een duurzame opslag. Alle beperkingen van het probleem met de schijf-volledig hebben betrekking op het verwijderen van gegevens om ruimte vrij te maken.
+
+### <a name="recovering-the-node"></a>Het knoop punt herstellen
+
+1. Als uw pool een [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) -groep is, kunt u het knoop punt opnieuw instellen met behulp van de API voor het [herstellen van batches](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage). Hiermee wordt de hele schijf opgeruimd. Opnieuw afbeelding wordt momenteel niet ondersteund voor [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) -groepen.
+
+2. Als uw pool een [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)is, kunt u het knoop punt uit de pool verwijderen met de [API knoop punten verwijderen](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Vervolgens kunt u de pool opnieuw verg Roten om het ongeldige knoop punt te vervangen door een nieuwe.
+
+3.  Oude voltooide taken of oude voltooide taken verwijderen waarvan de taak gegevens zich nog steeds op de knoop punten bevindt. Voor een hint van welke taken/taken-gegevens zich op de knoop punten bevindt, kunt u in de [RecentTasks-verzameling](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) op het knoop punt of op de [bestanden in het knoop punt](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)kijken. Als u de taak verwijdert, worden alle taken in de taak verwijderd en worden de taken in de taak verwijderd, worden de gegevens in de taak mappen op het knoop punt dat moet worden verwijderd, geactiveerd, waardoor er ruimte vrijmaken. Zodra u voldoende ruimte hebt vrijgemaakt, start u het knoop punt opnieuw op en moet u de status ' onbruikbaar ' verplaatsen en opnieuw instellen op ' inactief '.
 
 ## <a name="next-steps"></a>Volgende stappen
 

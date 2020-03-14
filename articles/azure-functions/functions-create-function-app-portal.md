@@ -4,12 +4,12 @@ description: Maak vanuit de portal een nieuwe functie-app in Azure.
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276970"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368754"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Een functie-app maken vanuit Azure Portal
 
@@ -18,10 +18,6 @@ In dit onderwerp wordt beschreven hoe u Azure Functions kunt gebruiken om een fu
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
-
-Wanneer u een functie-app maakt, moet u een geldige **app-naam** opgeven, die alleen letters, cijfers en afbreekstreepjes mag bevatten. Het onderstrepingsteken ( **_** ) is niet toegestaan.
-
-Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. De naam van uw opslagaccount moet uniek zijn binnen Azure. 
 
 Nadat de functie-app is gemaakt, kunt u afzonderlijke functies in een of meer verschillende talen maken. U kunt functies maken [met behulp van de portal](functions-create-first-azure-function.md#create-function), via [continue implementatie](functions-continuous-deployment.md) of door te [uploaden via FTP](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp).
 

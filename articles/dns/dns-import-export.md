@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936979"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365165"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Een DNS-zone bestand importeren en exporteren met behulp van de Azure CLI
 
@@ -75,7 +75,7 @@ Waarden:
 
 Als er geen zone met deze naam bestaat in de resource groep, wordt deze voor u gemaakt. Als de zone al bestaat, worden de geïmporteerde record sets samengevoegd met bestaande record sets. 
 
-### <a name="step-1-import-a-zone-file"></a>Step 1. Een zone bestand importeren
+### <a name="step-1-import-a-zone-file"></a>Stap 1. Een zone bestand importeren
 
 Een zone bestand voor de zone **contoso.com**importeren.
 
@@ -173,7 +173,7 @@ Net als bij het importeren van de zone moet u zich eerst aanmelden, uw abonnemen
 
 Als u de bestaande Azure DNS zone **contoso.com** in de resource groep **myresourcegroup** wilt exporteren naar het bestand **contoso. com. txt** (in de huidige map), voert u `azure network dns zone export`uit. Met deze opdracht wordt de Azure DNS-service aangeroepen om record sets in de zone op te sommen en de resultaten te exporteren naar een zone bestand dat met BIND compatibel is.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

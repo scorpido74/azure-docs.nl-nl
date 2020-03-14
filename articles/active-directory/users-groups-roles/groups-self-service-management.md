@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 03/10/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b52604d4ad20fed83c4649f046722ed45e766c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298000"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Self-service groeps beheer instellen in Azure Active Directory 
 
@@ -28,7 +28,7 @@ U kunt gebruikers in staat stellen hun eigen beveiligings groepen of Office 365-
 
 ## <a name="self-service-group-membership-defaults"></a>Standaard waarden voor groepslid maatschap van self-service
 
-Wanneer beveiligings groepen worden gemaakt in de Azure Portal of Azure AD Power shell gebruiken, kunnen alleen de eigen aren van de groep het lidmaatschap bijwerken. Beveiligings groepen die zijn gemaakt in het [deel venster toegang](https://account.activedirectory.windowsazure.com/r#/joinGroups) en alle Office 365-groepen zijn beschikbaar voor deelname aan alle gebruikers, hetzij door een eigenaar goedgekeurd of automatisch goedgekeurd. In het toegangs venster kunt u de lidmaatschaps opties wijzigen wanneer u de groep maakt.
+Wanneer beveiligings groepen worden gemaakt in de Azure Portal of Azure AD Power shell gebruiken, kunnen alleen de eigen aren van de groep het lidmaatschap bijwerken. Beveiligings groepen die zijn gemaakt met selfservice in het [toegangs venster](https://account.activedirectory.windowsazure.com/r#/joinGroups) en alle Office 365-groepen, kunnen worden toegevoegd aan alle gebruikers, of een door de gebruiker goedgekeurde of automatisch goedgekeurde groep is. In het toegangs venster kunt u de lidmaatschaps opties wijzigen wanneer u de groep maakt.
 
 Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaard gedrag van Office 365-groep
 ------------------ | ------------------------------- | ---------------------------------
@@ -44,17 +44,17 @@ Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaar
 ## <a name="make-a-group-available-for-user-self-service"></a>Een groep beschikbaar maken voor self-service door gebruikers
 
 1. Meld u aan bij het [beheercentrum van Azure AD](https://aad.portal.azure.com) met een account met globale beheerdersrechten voor de directory.
-2. Selecteer **Gebruikers en groepen** en selecteer vervolgens **Groepsinstellingen**.
-3. Stel **Self-service voor groepsbeheer is ingeschakeld** in op **Ja**.
-4. Stel **Gebruikers kunnen beveiligingsgroepen maken** of **Gebruikers kunnen Office 365-groepen maken** in op **Ja**.
-   * Als deze instellingen zijn ingeschakeld, kunnen alle gebruikers in uw directory nieuwe beveiligingsgroepen maken en leden toevoegen aan deze groepen. Deze nieuwe groepen zullen ook verschijnen in het Toegangsvenster voor alle andere gebruikers. Als de beleidsinstelling van de groep dit toestaat, kunnen andere gebruikers verzoeken maken om lid te worden van deze groepen. 
-   * Als deze instellingen zijn uitgeschakeld, kunnen gebruikers geen groepen maken en kunnen ze bestaande groepen waarvan ze een eigenaar zijn niet wijzigen. Ze kunnen echter nog steeds de lidmaatschappen van die groepen beheren en aanvragen van andere gebruikers om lid te worden van hun groep goedkeuren.
+1. Selecteer **groepen**en selecteer vervolgens **algemene** instellingen.
+1. Stel **eigen aren in het toegangs venster voor het beheren van groepslid maatschappen in** op **Ja**.
+1. Stel **toegang beperken tot groepen in het toegangs venster in** op **Nee**.
+1. Als u instelt dat **gebruikers beveiligings groepen kunnen maken in azure-portals** of **gebruikers kunnen Office 365-groepen maken in azure-portals** tot
 
-U kunt ook **Gebruikers die beveiligingsgroepen kunnen beheren** en **Gebruikers die Office 365-groepen kunnen beheren** gebruiken voor een meer fijnmazig toegangsbeheer over het self-servicegroepsbeheer voor uw gebruikers. Als **Gebruikers kunnen groepen maken** is ingeschakeld, kunnen alle gebruikers in uw tenant nieuwe groepen maken en leden toevoegen aan deze groepen. U kunt geen personen opgeven die hun eigen groepen kunnen maken. U kunt alleen individuen opgeven om een groeps eigenaar te maken van een andere groep.
+    - **Ja**: alle gebruikers in uw Azure AD-organisatie mogen nieuwe beveiligings groepen maken en leden toevoegen aan deze groepen. Deze nieuwe groepen zullen ook verschijnen in het Toegangsvenster voor alle andere gebruikers. Als de beleids instelling voor de groep toestaat, kunnen andere gebruikers aanvragen maken om lid te worden van deze groepen
+    - **Nee**: gebruikers kunnen geen groepen maken en kunnen bestaande groepen waarvan ze een eigenaar zijn, niet wijzigen. Ze kunnen echter nog steeds de lidmaatschappen van die groepen beheren en aanvragen van andere gebruikers om lid te worden van hun groep goedkeuren.
 
-Door gebruikers in te stellen **die self-service kunnen gebruiken voor beveiligings groepen** en **gebruikers die Office 365-groepen kunnen beheren** op **Ja**, kunt u alle gebruikers in uw Tenant in staat stellen om nieuwe groepen te maken.
+U kunt ook **eigen aren gebruiken die leden kunnen toewijzen als groeps eigenaren in azure-portals** en **eigen aren die leden kunnen toewijzen als eigen aren van Azure-portals** om meer gedetailleerde toegangs controle te verkrijgen over selfservice groeps beheer voor uw gebruikers.
 
-U kunt ook **Groep die beveiligingsgroepen kan beheren** of **Groep die Office 365-groepen kan beheren** gebruiken om een enkele groep op te geven waarvan de leden self-service kunnen gebruiken.
+Wanneer gebruikers groepen kunnen maken, mogen alle gebruikers in uw organisatie nieuwe groepen maken en kunnen ze als standaard eigenaar leden toevoegen aan deze groepen. U kunt geen personen opgeven die hun eigen groepen kunnen maken. U kunt alleen individuen opgeven om een groeps eigenaar te maken van een andere groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -63,5 +63,5 @@ Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 * [Toegang tot resources beheren met Azure Active Directory-groepen](../fundamentals/active-directory-manage-groups.md)
 * [Azure Active Directory cmdlets for configuring group settings](groups-settings-cmdlets.md) (Azure Active Directory-cmdlets voor het configureren van groepsinstellingen)
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
-* [Wat is Azure Active Directory?](../fundamentals/active-directory-whatis.md)
+* [What is Azure Active Directory?](../fundamentals/active-directory-whatis.md) (Wat is Azure Active Directory?)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

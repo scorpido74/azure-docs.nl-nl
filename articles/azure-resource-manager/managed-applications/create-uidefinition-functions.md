@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248448"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-functies
 Deze sectie bevat de hand tekeningen voor alle ondersteunde functies van een CreateUiDefinition.
@@ -54,7 +54,7 @@ In het volgende voor beeld wordt de uitvoer geretourneerd van het element met de
 "[steps('foo').bar]"
 ```
 
-### <a name="location"></a>location
+### <a name="location"></a>locatie
 Retourneert de locatie die is geselecteerd in de stap basis beginselen of de huidige context.
 
 Het volgende voor beeld kan `"westus"`retour neren:
@@ -111,7 +111,7 @@ In het volgende voor beeld wordt `"foobar"`geretourneerd:
 "[toLower('FOOBAR')]"
 ```
 
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 Retourneert een teken reeks die is geconverteerd naar hoofd letters.
 
 In het volgende voor beeld wordt `"FOOBAR"`geretourneerd:
@@ -189,7 +189,7 @@ In het volgende voor beeld wordt `2`geretourneerd:
 "[length(steps('foo').element1)]"
 ```
 
-### <a name="empty"></a>leeg
+### <a name="empty"></a>gelaten
 Retourneert `true` als de teken reeks, matrix of object null of leeg is.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
@@ -261,7 +261,7 @@ In het volgende voor beeld wordt `{"key1": "foobar"}`geretourneerd:
 "[first(steps('foo').element1)]"
 ```
 
-### <a name="last"></a>laatste
+### <a name="last"></a>duren
 Retourneert het laatste teken van de opgegeven teken reeks, de laatste waarde van de opgegeven matrix of de laatste sleutel en waarde van het opgegeven object.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
@@ -327,7 +327,7 @@ In het volgende voor beeld wordt `{"key1": "foobar"}`geretourneerd:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>skip
+### <a name="skip"></a>verdergaan
 Hiermee wordt een opgegeven aantal elementen in een verzameling omzeild en worden de resterende elementen geretourneerd.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
@@ -362,7 +362,7 @@ In het volgende voor beeld wordt `{"key2": "raboof"}`geretourneerd:
 ## <a name="logical-functions"></a>Logische functies
 Deze functies kunnen worden gebruikt in voor waarden. Sommige functies bieden mogelijk geen ondersteuning voor alle JSON-gegevens typen.
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>is gelijk aan
 Retourneert `true` als beide para meters hetzelfde type en dezelfde waarde hebben. Deze functie ondersteunt alle JSON-gegevens typen.
 
 In het volgende voor beeld wordt `true`geretourneerd:
@@ -383,7 +383,7 @@ In het volgende voor beeld wordt `false`geretourneerd:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>less
+### <a name="less"></a>jonge
 Retourneert `true` als de eerste para meter strikt kleiner is dan de tweede para meter. Deze functie ondersteunt alleen para meters van het type Number en string.
 
 In het volgende voor beeld wordt `true`geretourneerd:
@@ -431,7 +431,7 @@ In het volgende voor beeld wordt `true`geretourneerd:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>en de
+### <a name="and"></a>en
 Retourneert `true` als alle para meters naar `true`worden geëvalueerd. Deze functie biedt ondersteuning voor twee of meer para meters van het type Boolean.
 
 In het volgende voor beeld wordt `true`geretourneerd:
@@ -518,7 +518,7 @@ In het volgende voor beeld wordt `2.9`geretourneerd:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>tekenreeks
 Zet de para meter om in een teken reeks. Deze functie biedt ondersteuning voor para meters van alle JSON-gegevens typen.
 
 In het volgende voor beeld wordt `"1"`geretourneerd:
@@ -741,7 +741,7 @@ In het volgende voor beeld wordt `4`geretourneerd:
 "[ceil(3.14)]"
 ```
 
-## <a name="date-functions"></a>Datumfuncties
+## <a name="date-functions"></a>Datum functies
 ### <a name="utcnow"></a>UtcNow
 Retourneert een teken reeks in de ISO 8601-notatie van de huidige datum en tijd op de lokale computer.
 

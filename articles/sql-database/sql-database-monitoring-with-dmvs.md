@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: bea6a572e55f1a79515c385fd7b79881c54ae65e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214015"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Prestaties bewaken Azure SQL Database het gebruik van dynamische beheer weergaven
 
@@ -28,7 +28,7 @@ SQL Database gedeeltelijk ondersteunt drie categorieën dynamische beheer weerga
 - Aan uitvoering gerelateerde dynamische beheer weergaven.
 - Dynamische beheer weergaven die betrekking hebben op trans acties.
 
-Zie [dynamische beheer weergaven en-functies (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in SQL Server Books Online voor meer informatie over dynamische beheer weergaven. 
+Zie [dynamische beheer weergaven en-functies (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) in SQL Server Books Online voor meer informatie over dynamische beheer weergaven.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -40,6 +40,17 @@ GRANT VIEW DATABASE STATE TO database_user;
 ```
 
 In een exemplaar van on-premises SQL Server retour neren dynamische beheer weergaven de status informatie van de server. In SQL Database retour neren ze alleen informatie over uw huidige logische data base.
+
+Dit artikel bevat een verzameling DMV-query's die u kunt uitvoeren met behulp van SQL Server Management Studio of Azure Data Studio om de volgende typen query prestatie problemen op te sporen:
+
+- [Query's identificeren die betrekking hebben op buitensporig CPU-verbruik](#identify-cpu-performance-issues)
+- [PAGELATCH_ * en WRITE_LOG wachten op IO-knel punten](#identify-io-performance-issues)
+- [PAGELATCH_ * wacht op bytTempDB-conflicten](#identify-tempdb-performance-issues)
+- [RESOURCE_SEMAHPORE wachten door geheugen toekenning wacht op problemen](#identify-memory-grant-wait-performance-issues)
+- [Data Base-en object grootte identificeren](#calculating-database-and-objects-sizes)
+- [Informatie over actieve sessies ophalen](#monitoring-connections)
+- [Informatie over het hele systeem en het gebruik van database bronnen ophalen](#monitor-resource-use)
+- [Gegevens over query prestaties ophalen](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>Prestatie problemen met CPU identificeren
 
@@ -56,11 +67,11 @@ Gebruik de volgende query om de belangrijkste hashes van query's te identificere
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
 SELECT TOP 10 GETDATE() runtime, *
-FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
-     FROM(SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
+FROM (SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
+    FROM (SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
           FROM sys.dm_exec_requests AS req
-               CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
-     GROUP BY query_hash) AS t
+                CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
+    GROUP BY query_hash) AS t
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
@@ -72,14 +83,14 @@ Gebruik de volgende query om deze query's te identificeren:
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
 SELECT TOP 10 req.session_id, req.start_time, cpu_time 'cpu_time_ms', OBJECT_NAME(ST.objectid, ST.dbid) 'ObjectName', SUBSTRING(REPLACE(REPLACE(SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1), CHAR(10), ' '), CHAR(13), ' '), 1, 512) AS statement_text
 FROM sys.dm_exec_requests AS req
-     CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
+    CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
 ORDER BY cpu_time DESC;
 GO
 ```
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>Het CPU-probleem is opgetreden in het verleden
 
-Als het probleem zich in het verleden heeft voorgedaan en u de analyse van de hoofd oorzaak wilt uitvoeren, gebruikt u [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Gebruikers met database toegang kunnen T-SQL gebruiken om query's in query Store-gegevens op te vragen.  De standaard configuraties van de query-Store gebruiken een granulatie van 1 uur.  Gebruik de volgende query om activiteiten te bekijken voor hoge CPU-verbruiks query's. Met deze query worden de top 15 van de CPU-verbruikte query's geretourneerd.  Vergeet niet om `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`te wijzigen:
+Als het probleem zich in het verleden heeft voorgedaan en u de analyse van de hoofd oorzaak wilt uitvoeren, gebruikt u [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Gebruikers met database toegang kunnen T-SQL gebruiken om query's in query Store-gegevens op te vragen. De standaard configuraties van de query-Store gebruiken een granulatie van 1 uur. Gebruik de volgende query om activiteiten te bekijken voor hoge CPU-verbruiks query's. Met deze query worden de top 15 van de CPU-verbruikte query's geretourneerd. Vergeet niet om `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`te wijzigen:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -512,7 +523,7 @@ U kunt het gebruik ook controleren met behulp van deze twee weer gaven:
 - [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 U kunt de weer gave [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) gebruiken in elke SQL database. In de weer gave **sys. dm_db_resource_stats** worden recent gebruikte resource gegevens weer gegeven ten opzichte van de servicelaag. Gemiddeld percentages voor CPU, gegevens-IO, logboek schrijf bewerkingen en geheugen worden elke 15 seconden geregistreerd en worden gedurende één uur bewaard.
 
@@ -533,7 +544,7 @@ FROM sys.dm_db_resource_stats;
 
 Zie de voor beelden in [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)voor andere query's.
 
-### <a name="sysresource_stats"></a>sys. resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 De weer gave [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in de **hoofd** database bevat aanvullende informatie die u kan helpen bij het bewaken van de prestaties van uw SQL database in de specifieke servicelaag en de berekenings grootte. De gegevens worden elke vijf minuten verzameld en worden ongeveer 14 dagen bewaard. Deze weer gave is handig voor een historisch historische analyse van de manier waarop uw SQL database resources gebruikt.
 
@@ -612,7 +623,7 @@ In het volgende voor beeld ziet u verschillende manieren waarop u de weer gave *
 
    | Gemiddeld CPU-percentage | Maximum CPU-percentage |
    | --- | --- |
-   | 24,5 |100,00 |
+   | 24.5 |100.00 |
 
     De gemiddelde CPU is ongeveer een kwar taal van de limiet van de berekenings grootte, die goed overeenkomt met de reken grootte van de data base. Maar de maximum waarde laat zien dat de data base de limiet van de reken grootte bereikt. Moet u overstappen naar de volgende hogere reken grootte? Bekijk hoe vaak uw werk belasting 100 procent bereikt en vergelijkt deze met het doel van uw data base-workload.
 
@@ -635,19 +646,19 @@ Voor elastische pools kunt u afzonderlijke databases in de pool bewaken met de t
 
 Als u het aantal gelijktijdige aanvragen wilt zien, voert u deze Transact-SQL-query uit op uw SQL database:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R;
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R;
+```
 
 Als u de werk belasting van een on-premises SQL Server-Data Base wilt analyseren, wijzigt u deze query zodat deze kan worden gefilterd op de specifieke data base die u wilt analyseren. Als u bijvoorbeeld een on-premises Data Base hebt met de naam MyDatabase, retourneert deze Transact-SQL-query het aantal gelijktijdige aanvragen in die Data Base:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase';
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R
+INNER JOIN sys.databases D ON D.database_id = R.database_id
+AND D.name = 'MyDatabase';
+```
 
 Dit is slechts een moment opname op één punt in de tijd. Als u een beter inzicht wilt krijgen in uw werk belasting en gelijktijdige aanvraag vereisten, moet u een groot aantal voor beelden in de loop van de tijd verzamelen.
 
@@ -664,16 +675,20 @@ Als meerdere clients hetzelfde connection string gebruiken, verifieert de servic
 
 Als u het aantal actieve sessies wilt zien, voert u deze Transact-SQL-query uit op uw SQL database:
 
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections
+```
 
 Als u een on-premises SQL Server werk belasting analyseert, wijzigt u de query zodanig dat deze zich op een specifieke Data Base bevindt. Met deze query kunt u de mogelijke sessie vereisten voor de data base bepalen als u overweegt om deze naar Azure SQL Database te verplaatsen.
 
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections C
+INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
+INNER JOIN sys.databases D ON (D.database_id = S.database_id)
+WHERE D.name = 'MyDatabase'
+```
 
 Deze query's retour neren een bepaald aantal tijdstippen. Als u meerdere voor beelden in de loop van de tijd verzamelt, hebt u een goed beeld van het gebruik van uw sessie.
 
@@ -687,22 +702,22 @@ Trage of langlopende query's kunnen aanzienlijke systeem bronnen in beslag nemen
 
 In het volgende voor beeld wordt informatie gegeven over de top vijf query's gerangschikt op gemiddelde CPU-tijd. In dit voor beeld worden de query's geaggregeerd volgens hun query-hash, zodat logische equivalente query's worden gegroepeerd op basis van het cumulatieve Resource verbruik.
 
-    ```sql
-    SELECT TOP 5 query_stats.query_hash AS "Query Hash",
-       SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
-       MIN(query_stats.statement_text) AS "Statement Text"
-    FROM
-       (SELECT QS.*,
+```sql
+SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+    SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
+     MIN(query_stats.statement_text) AS "Statement Text"
+FROM
+    (SELECT QS.*,
         SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-        ((CASE statement_end_offset
-           WHEN -1 THEN DATALENGTH(ST.text)
-           ELSE QS.statement_end_offset END
-           - QS.statement_start_offset)/2) + 1) AS statement_text
-    FROM sys.dm_exec_query_stats AS QS
-    CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-    GROUP BY query_stats.query_hash
-    ORDER BY 2 DESC;
-    ```
+            ((CASE statement_end_offset
+                WHEN -1 THEN DATALENGTH(ST.text)
+                ELSE QS.statement_end_offset END
+            - QS.statement_start_offset)/2) + 1) AS statement_text
+FROM sys.dm_exec_query_stats AS QS
+CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
+GROUP BY query_stats.query_hash
+ORDER BY 2 DESC;
+```
 
 ### <a name="monitoring-blocked-queries"></a>Geblokkeerde query's bewaken
 
@@ -712,25 +727,25 @@ Trage of langlopende query's kunnen bijdragen aan overmatig bronnen gebruik en z
 
 Een inefficiënt query plan kan ook het CPU-verbruik verhogen. In het volgende voor beeld wordt de weer gave [sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) gebruikt om te bepalen welke query de meest cumulatieve CPU gebruikt.
 
-    ```sql
-    SELECT
-       highest_cpu_queries.plan_handle,
-       highest_cpu_queries.total_worker_time,
-       q.dbid,
-       q.objectid,
-       q.number,
-       q.encrypted,
-       q.[text]
-    FROM
-       (SELECT TOP 50
+```sql
+SELECT
+    highest_cpu_queries.plan_handle,
+    highest_cpu_queries.total_worker_time,
+    q.dbid,
+    q.objectid,
+    q.number,
+    q.encrypted,
+    q.[text]
+FROM
+    (SELECT TOP 50
         qs.plan_handle,
         qs.total_worker_time
     FROM
         sys.dm_exec_query_stats qs
-    ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
-    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
-    ORDER BY highest_cpu_queries.total_worker_time DESC;
-    ```
+ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
+ORDER BY highest_cpu_queries.total_worker_time DESC;
+```
 
 ## <a name="see-also"></a>Zie ook
 

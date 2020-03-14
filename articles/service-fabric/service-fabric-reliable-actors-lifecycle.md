@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258315"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-levens cyclus, automatische garbage collection en hand matig verwijderen
 Er wordt een actor geactiveerd wanneer een aanroep voor de eerste keer wordt uitgevoerd naar een van de methoden. Een actor wordt gedeactiveerd (garbagecollection door de actors-runtime) als deze niet wordt gebruikt voor een Configureer bare periode. Een actor en de status kunnen op elk gewenst moment hand matig worden verwijderd.

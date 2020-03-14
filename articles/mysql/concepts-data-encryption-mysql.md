@@ -1,17 +1,17 @@
 ---
-title: Gegevens versleuteling Azure Database for MySQL met een door de klant beheerde sleutel
+title: Gegevens versleuteling met door de klant beheerde sleutel-Azure Database for MySQL
 description: Azure Database for MySQL gegevens versleuteling met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299121"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Gegevens versleuteling Azure Database for MySQL met een door de klant beheerde sleutel
 

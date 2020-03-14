@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f2f0b277fb9dc6270e9015b5bf3205cc8aceaa0a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815471"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371236"
 ---
 # <a name="what-is-speech-translation"></a>Wat is spraakomzetting?
 
@@ -23,13 +23,13 @@ Spraak omzetting van de spraak service biedt de mogelijkheid om audio gegevensst
 
 De Vertaal engine van micro soft wordt aangedreven door twee verschillende benaderingen: statistische machine vertaling (SMT) en Neural machine translation (NMT). SMT maakt gebruik van geavanceerde statistische analyses om de best mogelijke vertalingen te ramen, op basis van de context van enkele woorden. Met NMT worden Neural-netwerken gebruikt om nauw keurige, natuurlijke geluids omzetting te bieden met behulp van de volledige context van zinnen voor het vertalen van woorden.
 
-Momenteel gebruikt micro soft NMT voor de vertaling van de populairste talen. Alle [beschikbare talen voor spraak-naar-spraak vertaling](language-support.md#speech-translation) worden aangestuurd door NMT. Spraak naar tekst converteren kan gebruikmaken van SMT of NMT, afhankelijk van de combinatie van taal. Wanneer de doel taal wordt ondersteund door NMT, is de volledige vertaling NMTd. Wanneer de doel taal niet wordt ondersteund door NMT, is de vertaling een hybride van NMT en SMT, met behulp van Engels als ' draai tabel ' tussen de twee talen.
+Momenteel gebruikt micro soft NMT voor de vertaling van de populairste talen. Alle [talen die beschikbaar zijn voor conversie van spraak naar spraak](language-support.md#speech-translation) , worden aangedreven door NMT. Spraak naar tekst converteren kan gebruikmaken van SMT of NMT, afhankelijk van de combinatie van taal. Wanneer de doel taal wordt ondersteund door NMT, is de volledige vertaling NMTd. Wanneer de doel taal niet wordt ondersteund door NMT, is de vertaling een hybride van NMT en SMT, met behulp van Engels als ' draai tabel ' tussen de twee talen.
 
 ## <a name="core-features"></a>Kern functies
 
 Hier volgen de functies die beschikbaar zijn via de Speech SDK en REST Api's:
 
-| Toepassing | SDK | REST |
+| Use-case | SDK | REST |
 |----------|-----|------|
 | Conversie van spraak naar tekst met herkennings resultaten. | Ja | Nee |
 | Conversie van spraak naar spraak. | Ja | Nee |
@@ -39,9 +39,9 @@ Hier volgen de functies die beschikbaar zijn via de Speech SDK en REST Api's:
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor spraak vertalingen, geordend op taal.
 
-| Snelstart | Platform | API-referentie |
+| Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Door](https://aka.ms/csspeech/cppref)|
@@ -59,7 +59,7 @@ Als uw toepassingen, hulpprogram ma's of producten de [Translator Speech-API](ht
 
 * [Migreren van de Translator Speech-API naar de speech-service](how-to-migrate-from-translator-speech-api.md)
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [SDK voor spraak apparaten](speech-devices-sdk.md)

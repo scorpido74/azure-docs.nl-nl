@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368250"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275943"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -28,9 +28,9 @@ De prijzen voor [Azure-toepassing Insights][start] is een model voor **betalen n
 
 Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
-## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten 
+## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten
 
-Als u Application Insights nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Application Insights in de vervolg keuzelijst Type.  Hier kunt u het aantal GB invoeren van de gegevens die u verwacht per maand te verzamelen. Daarom is de vraag hoeveel gegevens Application Insights het verzamelen van de controle van uw toepassing. 
+Als u Application Insights nog niet gebruikt, kunt u de [Azure monitor prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=monitor) gebruiken om de kosten van het gebruik van Application Insights te schatten. Begin met het invoeren van ' Azure Monitor ' in het zoekvak en klik op de resulterende Azure Monitor tegel. Schuif omlaag in de pagina naar Azure Monitor en selecteer Application Insights in de vervolg keuzelijst Type.  Hier kunt u het aantal GB invoeren van de gegevens die u verwacht per maand te verzamelen. Daarom is de vraag hoeveel gegevens Application Insights het verzamelen van de controle van uw toepassing.
 
 Er zijn twee benaderingen om dit op te lossen: gebruik van standaard bewaking en adaptieve steek proeven, die beschikbaar zijn in de ASP.NET-SDK, of schatting van uw waarschijnlijke gegevens opname op basis van wat andere vergelijk bare klanten hebben gezien.
 
@@ -42,25 +42,25 @@ Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 
-Als u in de Azure monitoring-prijs calculator voor Application Insights de functie ' schatting van gegevens volume gebaseerd op toepassings activiteit ' inschakelt, kunt u invoeren over uw toepassing (aanvragen per maand en pagina weergaven per maand), voor het geval u telemetrie aan de client zijde verzamelen), waarna de Calculator u de gemiddelde en negen tigste percentiel hoeveelheid gegevens die door vergelijk bare toepassingen zijn verzameld, laat zien. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard [steekproef](../../azure-monitor/app/sampling.md)waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen. 
+Als u in de Azure monitoring-prijs calculator voor Application Insights de functie ' schatting van gegevens volume gebaseerd op toepassings activiteit ' inschakelt, kunt u invoeren over uw toepassing (aanvragen per maand en pagina weergaven per maand), voor het geval u telemetrie aan de client zijde verzamelen), waarna de Calculator u de gemiddelde en negen tigste percentiel hoeveelheid gegevens die door vergelijk bare toepassingen zijn verzameld, laat zien. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard [steekproef](../../azure-monitor/app/sampling.md)waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
-Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Ga naar de pagina **gebruik en geschatte kosten** in het Azure Portal om aan de slag te gaan voor de Application Insights resource: 
+Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Ga naar de pagina **gebruik en geschatte kosten** in het Azure Portal om aan de slag te gaan voor de Application Insights resource:
 
 ![Prijzen kiezen](./media/pricing/pricing-001.png)
 
 A. Controleer uw gegevens volume voor de maand. Dit omvat alle gegevens die worden ontvangen en bewaard (na [steek proeven](../../azure-monitor/app/sampling.md)) van de server en client-apps, en van beschikbaarheids testen.  
 B. Er worden afzonderlijke kosten in rekening gebracht voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md). (Dit omvat geen eenvoudige beschikbaarheids testen, die zijn opgenomen in de kosten van het gegevens volume.)  
 C. Bekijk trends in gegevens volumes voor de afgelopen maand.  
-D. [Steek proeven](../../azure-monitor/app/sampling.md)voor gegevens opname inschakelen.   
+D. [Steek proeven](../../azure-monitor/app/sampling.md)voor gegevens opname inschakelen.
 E. Stel de dagelijkse gegevens volume limiet in.  
 
 (Alle prijzen die in de scherm afbeeldingen in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. Zie [Application Insights prijzen][pricing]voor actuele prijzen in uw valuta en regio.)
 
-Als u uw Application Insights-gebruik dieper wilt onderzoeken, opent u de pagina **metrische** gegevens, voegt u de metriek toe met de naam ' data Point volume ' en selecteert u vervolgens de optie *splitsing Toep assen* om de gegevens te splitsen op het type telemetrie-item. 
+Als u uw Application Insights-gebruik dieper wilt onderzoeken, opent u de pagina **metrische** gegevens, voegt u de metriek toe met de naam ' data Point volume ' en selecteert u vervolgens de optie *splitsing Toep assen* om de gegevens te splitsen op het type telemetrie-item.
 
-Application Insights kosten worden toegevoegd aan uw Azure-factuur. U kunt de details van uw Azure-factuur bekijken in het gedeelte **facturering** van de Azure portal of in de [Azure-facturerings Portal](https://account.windowsazure.com/Subscriptions). 
+Application Insights kosten worden toegevoegd aan uw Azure-factuur. U kunt de details van uw Azure-factuur bekijken in het gedeelte **facturering** van de Azure portal of in de [Azure-facturerings Portal](https://account.windowsazure.com/Subscriptions).
 
 ![Selecteer in het menu links facturering](./media/pricing/02-billing.png)
 
@@ -73,12 +73,16 @@ Als u meer wilt weten over uw gegevens volumes, selecteert u de **metrieken** vo
 
 ### <a name="queries-to-understand-data-volume-details"></a>Query's om details van gegevens volumes te begrijpen
 
+Er zijn twee benaderingen voor het onderzoeken van gegevens volumes voor Application Insights. De eerste gebruikt geaggregeerde informatie in de tabel `systemEvents` en de tweede maakt gebruik van de eigenschap `_BilledSize`, die beschikbaar is voor elke opgenomen gebeurtenis.
+
+#### <a name="using-aggregated-data-volume-information"></a>Informatie over geaggregeerd gegevens volume gebruiken
+
 U kunt bijvoorbeeld de tabel `systemEvents` gebruiken om het gegevens volume dat in de afgelopen 24 uur is opgenomen weer te geven met de query:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= ago(24h)
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes)
@@ -87,9 +91,9 @@ systemEvents
 Als u een grafiek van het gegevens volume (in bytes) per gegevens type voor de afgelopen 30 dagen wilt weer geven, kunt u het volgende gebruiken:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= startofday(ago(30d))
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
@@ -97,35 +101,38 @@ systemEvents
 
 Houd er rekening mee dat deze query kan worden gebruikt in een [Azure-logboek waarschuwing](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) om waarschuwingen op gegevens volumes in te stellen.  
 
-Als u meer wilt weten over de wijzigingen in de telemetriegegevens, kunt u het aantal gebeurtenissen op type controleren met behulp van de query:
+Voor meer informatie over wijzigingen in de telemetriegegevens, kunnen we het aantal gebeurtenissen per type ophalen met behulp van de query:
 
 ```kusto
-systemEvents 
+systemEvents
 | where timestamp >= startofday(ago(30d))
-| where type == "Billing" 
+| where type == "Billing"
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
-| summarize count() by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
-```
-
-Als er soort gelijke wijzigingen worden weer gegeven in de aantallen die worden weer gegeven in het volume in bytes, kunnen we zich richten op de gegevens typen van gebeurtenissen, die het aantal verg root items weer geven.  Als er bijvoorbeeld wordt geconstateerd dat het aantal afhankelijkheden is toegenomen, ziet u hier een query om te begrijpen welke bewerkingen verantwoordelijk zijn voor de toename:
-
-```kusto
-dependencies 
-| where timestamp >= startofday(ago(30d))
-| summarize count() by operation_Name, bin(timestamp, 1d)  
+| summarize count() by BillingTelemetryType, bin(timestamp, 1d)
 | render barchart  
 ```
 
+#### <a name="using-data-size-per-event-information"></a>Gegevens grootte per gebeurtenis gegevens gebruiken
 
-## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights gebruik op uw Azure-factuur weer geven 
+Voor meer informatie over de bron van uw gegevens volumes kunt u de eigenschap `_BilledSize` gebruiken die aanwezig is voor elke opgenomen gebeurtenis.
+
+Als u bijvoorbeeld wilt zien welke bewerkingen het meeste gegevens volume in de afgelopen 30 dagen genereren, kunnen we `_BilledSize` voor alle afhankelijkheids gebeurtenissen optellen:
+
+```kusto
+dependencies
+| where timestamp >= startofday(ago(30d))
+| summarize sum(_BilledSize) by operation_Name
+| render barchart  
+```
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights gebruik op uw Azure-factuur weer geven
 
 Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Zo kunt u met de functionaliteit ' cost analysis ' uw uitgaven voor Azure-resources weer geven. Door een filter toe te voegen op resource type (aan micro soft. Insights/onderdelen voor Application Insights), kunt u uw uitgaven bijhouden.
 
 Meer informatie over uw gebruik kan worden verkregen door het [gebruik van het Azure portal te downloaden](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
-In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
-
-## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
+## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren
 
 De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de volgende technieken:
 
@@ -139,7 +146,7 @@ De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de vol
  
 * **Dagelijkse limiet**: wanneer u een Application Insights resource maakt in de Azure Portal, wordt de daglimiet ingesteld op 100 GB per dag. Wanneer u een Application Insights resource maakt in Visual Studio, is de standaard klein (slechts 32,3 MB/dag). De standaard waarde voor dagelijks Cap is ingesteld om testen te vergemakkelijken. De bedoeling is dat de gebruiker de dagelijkse limiet verhoogt voordat de app in de productie omgeving wordt geïmplementeerd. 
 
-    De maximale limiet is 1.000 GB/dag, tenzij u een hoger maximum voor een toepassing met een hoog verkeer opvraagt. 
+    De maximale limiet is 1.000 GB/dag, tenzij u een hoger maximum voor een toepassing met een hoog verkeer opvraagt.
     
     Waarschuwings-e-mails over de dagelijkse limiet worden verzonden naar het account dat lid is van deze rollen voor uw Application Insights resource: ' ServiceAdmin ', ' AccountAdmin ', ' coadmin ', ' eigenaar '.
 
@@ -157,7 +164,7 @@ In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeve
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
 
-Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt.
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
@@ -165,7 +172,15 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
-Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die u wilt wijzigen de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold`van het dagelijks kapje instellen. 
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die u wilt wijzigen de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold`van het dagelijks kapje instellen.
+
+### <a name="create-alerts-for-the-daily-cap"></a>Waarschuwingen voor het dagelijkse kapje maken
+
+De Application Insights Daily Cap maakt een gebeurtenis in de Azure-activiteit KOG wanneer de opgenomen gegevens volumes het waarschuwings niveau of het niveau van de dagelijkse Cap betrefferen.  U kunt [een waarschuwing maken op basis van deze gebeurtenissen in het activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). De signaal namen voor deze gebeurtenissen zijn:
+
+* Waarschuwings drempelwaarde voor dagelijkse Cap Application Insights-onderdeel bereikt
+
+* Dagelijkse limiet van Application Insights onderdeel is bereikt
 
 ## <a name="sampling"></a>Steekproeven
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
@@ -191,21 +206,21 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
+In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records.
 
 ## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
-De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
+De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen.
 
 Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens retentie** :
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. De dagelijkse tijd voor het opnieuw instellen van de gegevens volume limiet kan worden geconfigureerd met behulp van Azure Resource Manager om de `dailyQuotaResetTime`-para meter in te stellen. 
+De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. De dagelijkse tijd voor het opnieuw instellen van de gegevens volume limiet kan worden geconfigureerd met behulp van Azure Resource Manager om de `dailyQuotaResetTime`-para meter in te stellen.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
 
-Bij het verzenden van gegevens naar Application Insights kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor de opname van Application Insights logboek gegevens. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)te helpen begrijpen.   
+Bij het verzenden van gegevens naar Application Insights kunnen kosten voor de gegevens bandbreedte worden berekend. Zoals beschreven op de [pagina met prijzen voor Azure-band breedte](https://azure.microsoft.com/pricing/details/bandwidth/), wordt gegevens overdracht tussen Azure-Services in twee regio's in rekening gebracht als uitgaande gegevens overdracht tegen het normale tarief. Inkomende gegevens overdracht is gratis. Deze kosten zijn echter zeer klein (aantal%) vergeleken met de kosten voor de opname van Application Insights logboek gegevens. Als gevolg van het beheer van de kosten voor Log Analytics moet u zich richten op uw opgenomen gegevens volume, en wij hebben richt lijnen om die [hier](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)te helpen begrijpen.
 
 ## <a name="limits-summary"></a>Limieten overzicht
 
@@ -217,12 +232,12 @@ Als u de dagelijkse e-mails voor volume limieten wilt uitschakelen, selecteert u
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Prijs categorie verouderde onderneming (per knoop punt)
 
-Voor vroege toepassers van Azure-toepassing Insights zijn er nog twee mogelijke prijs Categorieën: Basic en Enter prise. De prijs categorie Basic is hetzelfde als hierboven beschreven en is de standaardlaag. Dit omvat alle functies van de Enter prise-laag, zonder extra kosten. De laag basis is vooral afhankelijk van het volume van de gegevens die worden opgenomen. 
+Voor vroege toepassers van Azure-toepassing Insights zijn er nog twee mogelijke prijs Categorieën: Basic en Enter prise. De prijs categorie Basic is hetzelfde als hierboven beschreven en is de standaardlaag. Dit omvat alle functies van de Enter prise-laag, zonder extra kosten. De laag basis is vooral afhankelijk van het volume van de gegevens die worden opgenomen.
 
 > [!NOTE]
 > De naam van deze verouderde prijs categorieën is gewijzigd. De Enter prise-prijs categorie wordt nu **per knoop punt** genoemd en de prijs categorie Basic wordt nu **per GB**aangeroepen. Deze nieuwe namen worden hieronder en in de Azure Portal gebruikt.  
 
-De laag per knoop punt (voorheen onderneming) heeft een kosten per knoop punt en elk knoop punt ontvangt een dagelijks gegevens toelage. In de prijs categorie per knoop punt worden er kosten in rekening gebracht voor gegevens die boven de inbegrepen limiet zijn opgenomen. Als u Operations Management Suite gebruikt, kiest u de laag per knoop punt. 
+De laag per knoop punt (voorheen onderneming) heeft een kosten per knoop punt en elk knoop punt ontvangt een dagelijks gegevens toelage. In de prijs categorie per knoop punt worden er kosten in rekening gebracht voor gegevens die boven de inbegrepen limiet zijn opgenomen. Als u Operations Management Suite gebruikt, kiest u de laag per knoop punt.
 
 Zie [Application Insights prijzen](https://azure.microsoft.com/pricing/details/application-insights/)voor actuele prijzen in uw valuta en regio.
 
@@ -231,7 +246,7 @@ Zie [Application Insights prijzen](https://azure.microsoft.com/pricing/details/a
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>De rechten van het abonnement per knooppunt laag en het Operations Management Suite-pakket
 
-Klanten die Operations Management Suite E1 en E2 kopen, kunnen Application Insights per knoop punt ontvangen als extra onderdeel zonder extra kosten zoals [eerder aangekondigd](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). In het bijzonder bevat elke eenheid van Operations Management Suite E1 en E2 een recht op één knoop punt van de Application Insights per knooppunt laag. Elk Application Insights knoop punt bevat Maxi maal 200 MB aan gegevens die per dag (gescheiden van Log Analytics gegevens opname) worden opgenomen, met een gegevens Bewaar periode van 90 dagen zonder extra kosten. De laag wordt verderop in het artikel uitvoeriger beschreven. 
+Klanten die Operations Management Suite E1 en E2 kopen, kunnen Application Insights per knoop punt ontvangen als extra onderdeel zonder extra kosten zoals [eerder aangekondigd](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). In het bijzonder bevat elke eenheid van Operations Management Suite E1 en E2 een recht op één knoop punt van de Application Insights per knooppunt laag. Elk Application Insights knoop punt bevat Maxi maal 200 MB aan gegevens die per dag (gescheiden van Log Analytics gegevens opname) worden opgenomen, met een gegevens Bewaar periode van 90 dagen zonder extra kosten. De laag wordt verderop in het artikel uitvoeriger beschreven.
 
 Omdat deze laag alleen van toepassing is op klanten met een Operations Management Suite-abonnement, zien klanten die geen Operations Management Suite-abonnement hebben geen optie om deze laag te selecteren.
 
@@ -249,7 +264,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 * Er wordt een gegevensvolume toewijzing van 200 MB per dag gegeven voor elk gedetecteerd knoop punt (met granulatie per uur). Ongebruikte gegevens toewijzing wordt niet van de ene dag naar de volgende getransporteerd.
   * Als u de prijs categorie per knoop punt kiest, ontvangt elk abonnement een dagelijkse hoeveelheid gegevens op basis van het aantal knoop punten dat telemetrie verzendt naar de Application Insights resources in dat abonnement. Als u dus vijf knoop punten hebt die gegevens dagelijks verzenden, hebt u een gepoolde limiet van 1 GB toegepast op alle Application Insights resources in dat abonnement. Het maakt niet uit of bepaalde knoop punten meer gegevens verzenden dan andere knoop punten, omdat de opgenomen gegevens worden gedeeld op alle knoop punten. Als op een gegeven Application Insights dag meer gegevens worden ontvangen dan is opgenomen in de dagelijkse gegevens toewijzing voor dit abonnement, zijn de kosten voor overschrijding-gegevens per GB van toepassing. 
   * De dagelijkse gegevens limiet wordt berekend als het aantal uren van de dag (met behulp van UTC) dat elk knoop punt telemetriegegevens verzendt gedeeld door 24 vermenigvuldigd met 200 MB. Als u dus vier knoop punten hebt die een telemetrie verzenden gedurende 15 van de 24 uur per dag, worden de inbegrepen gegevens voor die dag ((4 &#215; 15)/24) &#215; 200 MB = 500 MB. Tegen de prijs van 2,30 USD per GB voor de overschrijding van gegevens, zijn de kosten 1,15 USD als de knoop punten 1 GB aan gegevens naar die dag verzenden.
-  * De dagelijkse limiet per knoop punt laag wordt niet gedeeld met toepassingen waarvoor u de laag per GB hebt gekozen. Ongebruikte toelage wordt niet van dag tot dag getransporteerd. 
+  * De dagelijkse limiet per knoop punt laag wordt niet gedeeld met toepassingen waarvoor u de laag per GB hebt gekozen. Ongebruikte toelage wordt niet van dag tot dag getransporteerd.
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Voor beelden van het bepalen van het aantal afzonderlijke knoop punten
 
@@ -257,20 +272,19 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 |:---------------------------------------|:----------------:|
 | 1 toepassing met 3 Azure App Service exemplaren en 1 virtuele server | 4 |
 | 3 toepassingen die worden uitgevoerd op 2 Vm's; de Application Insights resources voor deze toepassingen bevinden zich in hetzelfde abonnement en in de laag per knoop punt | 2 | 
-| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 | 
+| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 |
 | Cloud Services met één werknemersrol en één webrol, elk met 2 exemplaren | 4 | 
 | Een Azure Service Fabric-cluster met 5 knoop punten met 50 micro Services; elke micro service die drie instanties uitvoert | 5|
 
 * De nauw keurigheid van het knoop punt is afhankelijk van welke Application Insights SDK uw toepassing gebruikt. 
-  * In SDK versie 2,2 en hoger rapporteert zowel de Application Insights [core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) als de [Web-SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) elke toepassingshost als een knoop punt. Voor beelden zijn de computer naam voor de fysieke server en VM-hosts of de naam van het exemplaar voor Cloud Services.  De enige uitzonde ring hierop is een toepassing die alleen de [.net core](https://dotnet.github.io/) -en de Application Insights core-SDK gebruikt. In dat geval wordt er slechts één knoop punt voor alle hosts gerapporteerd, omdat de hostnaam niet beschikbaar is. 
-  * Voor eerdere versies van de SDK gedraagt de [Web-SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zich als de nieuwere SDK-versies, maar de kern- [SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) rapporteert slechts één knoop punt, ongeacht het aantal hosts van de toepassing. 
-  * Als uw toepassing de SDK gebruikt om **roleInstance** in te stellen op een aangepaste waarde, wordt de standaard waarde gebruikt voor het bepalen van het aantal knoop punten. 
-  * Als u een nieuwe SDK-versie gebruikt met een app die wordt uitgevoerd vanaf client computers of mobiele apparaten, zou het aantal knoop punten een groot aantal kunnen retour neren (vanwege het grote aantal client computers of mobiele apparaten). 
+  * In SDK versie 2,2 en hoger rapporteert zowel de Application Insights [core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) als de [Web-SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) elke toepassingshost als een knoop punt. Voor beelden zijn de computer naam voor de fysieke server en VM-hosts of de naam van het exemplaar voor Cloud Services.  De enige uitzonde ring hierop is een toepassing die alleen de [.net core](https://dotnet.github.io/) -en de Application Insights core-SDK gebruikt. In dat geval wordt er slechts één knoop punt voor alle hosts gerapporteerd, omdat de hostnaam niet beschikbaar is.
+  * Voor eerdere versies van de SDK gedraagt de [Web-SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zich als de nieuwere SDK-versies, maar de kern- [SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) rapporteert slechts één knoop punt, ongeacht het aantal hosts van de toepassing.
+  * Als uw toepassing de SDK gebruikt om **roleInstance** in te stellen op een aangepaste waarde, wordt de standaard waarde gebruikt voor het bepalen van het aantal knoop punten.
+  * Als u een nieuwe SDK-versie gebruikt met een app die wordt uitgevoerd vanaf client computers of mobiele apparaten, zou het aantal knoop punten een groot aantal kunnen retour neren (vanwege het grote aantal client computers of mobiele apparaten).
 
 ## <a name="automation"></a>Automatisering
 
 U kunt een script schrijven om de prijs categorie in te stellen met behulp van Azure-resource beheer. [Meer informatie](powershell.md#price).
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

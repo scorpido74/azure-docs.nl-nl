@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2019
+ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e629a9dd65a20883aa605e5d1d23248bcde575b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391112"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365148"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -42,8 +42,10 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 
 | Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **ActionGroup** | Actie groep. | Inkomend | Nee | Nee |
 | **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Azure API Management service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren op de Api's, bewerkingen, beleids regels, NamedValues die zijn geconfigureerd voor de API Management service.  | Inkomend | Ja | Ja |
 | **ApplicationInsightsAvailability** | Beschik baarheid van Application Insights. | Inkomend | Nee | Nee |
+| **AppConfiguration** | App-configuratie. | Uitgaand | Nee | Nee |
 | **AppService**    | Azure App Service. Deze tag wordt aanbevolen voor uitgaande beveiligings regels voor front-ends van webtoepassingen. | Uitgaand | Ja | Ja |
 | **AppServiceManagement** | Beheer verkeer voor implementaties die zijn toegewezen aan App Service Environment. | Beide | Nee | Ja |
 | **AzureActiveDirectory** | Azure Active Directory. | Uitgaand | Nee | Ja |
@@ -59,22 +61,27 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureDatabricks** | Azure Databricks. | Beide | Nee | Nee |
 | **AzureDataExplorerManagement** | Beheer van Azure Data Explorer. | Inkomend | Nee | Nee |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Uitgaand | Nee | Ja |
+| **AzureDevSpaces** | Azure dev Spaces. | Uitgaand | Nee | Nee |
 | **AzureEventGrid** | Azure Event Grid. <br/><br/>*Opmerking:* Deze tag behandelt Azure Event Grid-eind punten in VS Zuid-Centraal, VS Oost, VS Oost 2, VS West 2 en VS centraal. | Beide | Nee | Nee |
-| **AzureFrontDoor** | De voor deur van Azure. | Beide | Nee | Nee |
-| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de labels **AzureActiveDirectory** en **AzureFrontDoor.** front-end. U kunt ook white list volgende Ip's (deze afhankelijkheid wordt binnenkort verwijderd): 13.107.6.181 & 13.107.9.181. | Uitgaand | Nee | Nee |
+| **AzureFrontDoor. front-end** <br/> **AzureFrontDoor. back-end** <br/> **AzureFrontDoor.FirstParty**  | De voor deur van Azure. | Beide | Nee | Nee |
+| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Opmerking:* Deze tag heeft een afhankelijkheid van de tags **AzureActiveDirectory**, **AzureFrontDoor. frontend** en **AzureFrontDoor. FirstParty** . | Uitgaand | Nee | Nee |
 | **AzureIoTHub** | Azure IoT Hub. | Uitgaand | Nee | Nee |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **AzureActiveDirectory** -tag. | Uitgaand | Ja | Ja |
 | **AzureLoadBalancer** | De Azure-infrastructuur load balancer. De tag wordt omgezet in het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) waar de Azure Health-tests afkomstig zijn. Dit omvat geen verkeer naar uw Azure Load Balancer-resource. Als u Azure Load Balancer niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
 | **AzureMachineLearning** | Azure Machine Learning. | Beide | Nee | Ja |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon en aangepaste metrische gegevens (GB-eind punten).<br/><br/>*Opmerking:* Voor Log Analytics heeft deze tag een afhankelijkheid van de **opslag** code. | Uitgaand | Nee | Ja |
+| **AzureOpenDatasets** | Open gegevens sets van Azure.<br/><br/>*Opmerking:* Deze tag heeft een afhankelijkheid van het **AzureFrontDoor. frontend** -en **opslag** label. | Uitgaand | Nee | Nee |
 | **AzurePlatformDNS** | De basis-DNS-service (standaard).<br/><br>U kunt deze tag gebruiken om de standaard-DNS uit te scha kelen. Wees voorzichtig wanneer u deze tag gebruikt. U wordt aangeraden [Azure-platform overwegingen](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)te lezen. We raden u ook aan eerst tests uit te voeren voordat u deze tag gebruikt. | Uitgaand | Nee | Nee |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), een basis infrastructuur service.<br/><br/>U kunt deze tag gebruiken om de standaard IMDS uit te scha kelen. Wees voorzichtig wanneer u deze tag gebruikt. U wordt aangeraden [Azure-platform overwegingen](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)te lezen. We raden u ook aan eerst tests uit te voeren voordat u deze tag gebruikt. | Uitgaand | Nee | Nee |
 | **AzurePlatformLKM** | Windows-licentie verlening of service voor sleutel beheer.<br/><br/>U kunt deze tag gebruiken om de standaard instellingen voor licentie verlening uit te scha kelen. Wees voorzichtig wanneer u deze tag gebruikt. U wordt aangeraden [Azure-platform overwegingen](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)te lezen.  We raden u ook aan eerst tests uit te voeren voordat u deze tag gebruikt. | Uitgaand | Nee | Nee |
 | **AzureResourceManager** | Azure Resource Manager. | Uitgaand | Nee | Nee |
-| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de tags **Storage**, **AzureActiveDirectory**en **EventHub** . | Uitgaand | Nee | Nee |
+| **AzureSignalR** | Azure-Signa lering. | Uitgaand | Nee | Nee |
+| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Opmerking:* Deze tag heeft een afhankelijkheid van de tags **AzureActiveDirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** en **Storage** . | Uitgaand | Nee | Nee |
 | **AzureTrafficManager** | IP-adressen van Azure Traffic Manager test.<br/><br/>Zie [Veelgestelde vragen over Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)voor meer informatie over het IP-adres van Traffic Manager test. | Inkomend | Nee | Ja |  
 | **BatchNodeManagement** | Beheer verkeer voor implementaties die zijn toegewezen aan Azure Batch. | Beide | Nee | Ja |
 | **CognitiveServicesManagement** | De adresbereiken voor verkeer voor Azure Cognitive Services. | Uitgaand | Nee | Nee |
+| **DataFactory**  | Azure Data Factory | Uitgaand | Nee | Nee |
+| **DataFactoryManagement** | Beheer verkeer voor Azure Data Factory. | Inkomend | Nee | Nee |
 | **Dynamics365ForMarketingEmail** | De adresbereiken voor de marketing-e-mail service van Dynamics 365. | Uitgaand | Ja | Nee |
 | **ElasticAFD** | Elastische Azure-deur. | Beide | Nee | Nee |
 | **EventHub** | Azure Event Hubs. | Uitgaand | Ja | Ja |
@@ -82,13 +89,18 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **GuestAndHybridManagement** | Azure Automation-en gast configuratie. | Uitgaand | Nee | Ja |
 | **HDInsight** | Azure HDInsight. | Inkomend | Ja | Nee |
 | **Browser** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Het adres bereik bevat de [open bare IP-adres ruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
+| **LogicApps** | Logic Apps. | Beide | Nee | Nee |
+| **LogicAppsManagement** | Beheer verkeer voor Logic Apps. | Inkomend | Nee | Nee |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Uitgaand | Nee | Nee |
-| **MicrosoftContainerRegistry** | Container register voor micro soft container-installatie kopieën. <br/><br/>*Opmerking:* U kunt ook white list volgende IP-adres (deze afhankelijkheid wordt binnenkort verwijderd): 204.79.197.219. | Uitgaand | Ja | Ja |
+| **MicrosoftContainerRegistry** | Container register voor micro soft container-installatie kopieën. <br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de tag **AzureFrontDoor. FirstParty** . | Uitgaand | Ja | Ja |
+| **PowerQueryOnline** | Power Query online. | Beide | Nee | Nee |
 | **ServiceBus** | Azure Service Bus verkeer dat gebruikmaakt van de Premium-servicelaag. | Uitgaand | Ja | Ja |
 | **ServiceFabric** | Azure Service Fabric.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Service Fabric service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren voor hun Service Fabric clusters vanuit hun VNET (eind punt. https://westus.servicefabric.azure.com) | Beide | Nee | Nee |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. Deze tag is niet van toepassing op een SQL Managed instance. | Uitgaand | Ja | Ja |
 | **SqlManagement** | Beheer verkeer voor SQL-specifieke implementaties. | Beide | Nee | Ja |
 | **Storage** | Azure Storage. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. | Uitgaand | Ja | Ja |
+| **StorageSyncService** | Opslag synchronisatie service. | Beide | Nee | Nee |
+| **WindowsVirtualDesktop** | Virtueel bureau blad van Windows. | Beide | Nee | Nee |
 | **VirtualNetwork** | De adres ruimte van het virtuele netwerk (alle IP-adresbereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on-premises adres ruimten, [peered](virtual-network-peering-overview.md) virtuele netwerken, virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations)en adres voorvoegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Deze tag kan ook standaard routes bevatten. | Beide | Nee | Nee |
 
 >[!NOTE]

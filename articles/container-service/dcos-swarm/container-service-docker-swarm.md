@@ -1,6 +1,6 @@
 ---
-title: (AFGESCHAFT) Beheren Azure Swarm-cluster met Docker-API
-description: Containers implementeren in een Docker Swarm-cluster in Azure Container Service
+title: KEUR Azure Swarm-cluster beheren met docker-API
+description: Containers implementeren in een docker Swarm-cluster in Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456548"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136224"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>(AFGESCHAFT) Containerbeheer met Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>KEUR Container beheer met docker Swarm
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Containers implementeren met behulp van Docker Compose
 U kunt Docker Compose gebruiken om de implementatie en configuratie van meerdere containers te automatiseren. Hiervoor moet een SSH-tunnel (Secure Shell-tunnel) zijn gemaakt en moet de variabele DOCKER_HOST zijn ingesteld (zie de bovenstaande vereisten).
 
-Maak een docker-compose.yml-bestand op het lokale systeem. Gebruik dit [voorbeeld](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml) om dit te doen.
+Maak een docker-compose.yml-bestand op het lokale systeem. Gebruik hiervoor het volgende voor beeld:
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:

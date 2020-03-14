@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535174"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260018"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy
 
@@ -24,7 +24,7 @@ De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy volg
 | Fase van Data Box order       | Hulp programma voor het volgen en controleren                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order)                                                    |
-| Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure Portal </li><li> Vervoerders website </li><li>E-mailwaarschuwingen</ul> |
+| Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure-portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
 | Apparaat instellen              | De toegang tot de referenties van het apparaat is geregistreerd in [activiteiten logboeken](#query-activity-logs-during-setup)                                              |
 | Gegevens kopiëren naar apparaat        | [ *Fout. XML-* bestanden](#view-error-log-during-data-copy) voor het kopiëren van gegevens weer geven                                                             |
 | Voorbereiding voor verzending            | [De stuk lijst bestanden](#inspect-bom-during-prepare-to-ship) of de manifest bestanden op het apparaat controleren                                      |
@@ -64,7 +64,7 @@ U kunt uw bestelling volgen via de Azure Portal en via de website van de vervoer
 
 - Uw Data Box arriveert in uw bedrijf met een vergrendelde status. U kunt de referenties van het apparaat gebruiken die beschikbaar zijn in de Azure Portal voor uw order.  
 
-    Wanneer een Data Box is ingesteld, moet u mogelijk weten wie de referenties van het apparaat hebben geopend. Als u wilt weten wie de Blade referenties voor het **apparaat** heeft geopend, kunt u een query uitvoeren op de activiteiten Logboeken.  Alle acties die betrekking hebben op toegang tot **apparaatgegevens >** Blade referenties, worden geregistreerd `ListCredentials` in de activiteiten Logboeken als actie.
+    Wanneer een Data Box is ingesteld, moet u mogelijk weten wie de referenties van het apparaat hebben geopend. Als u wilt weten wie de Blade referenties voor het **apparaat** heeft geopend, kunt u een query uitvoeren op de activiteiten Logboeken.  Alle acties die betrekking hebben op toegang tot **apparaatgegevens >** Blade referenties, worden in de activiteiten logboeken geregistreerd als `ListCredentials` actie.
 
     ![Logboeken met queryactiviteit](media/data-box-logs/query-activity-log-1.png)
 
@@ -203,7 +203,7 @@ Voor elke order die wordt verwerkt, maakt de Data Box-Service een kopie logboek 
 
 Er wordt een CRC-berekening (cyclische redundantie controle) uitgevoerd tijdens het uploaden naar Azure. De CRCs van de gegevens kopie en nadat de gegevens zijn geüpload, worden vergeleken. Een CRC komt niet overeen, geeft aan dat de bijbehorende bestanden niet kunnen worden geüpload.
 
-Standaard worden logboeken geschreven naar een container met de `copylog`naam. De logboeken worden opgeslagen met de volgende naam Conventie:
+Standaard worden logboeken geschreven naar een container met de naam `copylog`. De logboeken worden opgeslagen met de volgende naam Conventie:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -257,7 +257,7 @@ Upload naar Azure is voltooid met waarschuwingen als uw gegevens container/BLOB/
 
 Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de containers die niet voldoen aan de Azure-naamgevings conventies werd gewijzigd tijdens het uploaden van gegevens naar Azure.
 
-De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de gegevens voor de container worden in de nieuwe hernoemde container geplaatst. In het Kopieer logboek worden de oude en de nieuwe container naam voor de container opgegeven.
+De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de gegevens voor de container worden in de nieuwe container met de naam gewijzigd. In het Kopieer logboek worden de oude en de nieuwe container naam voor de container opgegeven.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -270,7 +270,7 @@ De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de g
 
 Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de blobs of bestanden die niet voldoen aan de Azure-naamgevings conventies, is gewijzigd tijdens het uploaden van gegevens naar Azure. De nieuwe BLOB-of bestands namen worden geconverteerd naar de SHA256-Digest van het relatieve pad naar de container en worden geüpload naar het pad op basis van het doel type. Het doel kan blok-blobs, pagina-blobs of Azure Files zijn.
 
-`copylog` Hiermee geeft u de oude en de nieuwe BLOB-of bestands naam en het pad in azure op.
+Met de `copylog` geeft u de oude en de nieuwe BLOB-of bestands naam en het pad in azure op.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -295,9 +295,9 @@ Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de blobs o
 
 Nadat de gegevens zijn gewist van de Data Box schijven volgens de richt lijnen van het NIST SP 800-88 Revision 1, zijn de keten logboeken beschikbaar. Deze logboeken bevatten de audit logboeken en de order geschiedenis. De stuk lijst-of manifest bestanden worden ook gekopieerd met de audit Logboeken.
 
-### <a name="audit-logs"></a>Controlelogboeken
+### <a name="audit-logs"></a>Auditlogboeken
 
-Audit logboeken bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich in:`storage-account/azuredatabox-chainofcustodylogs`
+Audit logboeken bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich op: `storage-account/azuredatabox-chainofcustodylogs`
 
 Hier volgt een voor beeld van het audit logboek van een Data Box:
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Ordergeschiedenis downloaden
 
-Order geschiedenis is beschikbaar in Azure Portal. Als de order is voltooid en het opschonen van het apparaat (gegevens verwijdering van de schijven) is voltooid, gaat u naar de Volgorde van uw apparaten en navigeert u naar Bestellingsgegevens. De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [order geschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
+Order geschiedenis is beschikbaar in Azure Portal. Als de order is voltooid en het opschonen van het apparaat (gegevens verwijdering van de schijven) is voltooid, gaat u naar **de volg orde**van uw apparaten en navigeert u naar Bestellingsgegevens. De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [order geschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
 
 Als u door de order geschiedenis schuift, ziet u het volgende:
 

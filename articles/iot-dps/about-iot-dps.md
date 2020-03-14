@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378894"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241176"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
 Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. De IoT Hub Device Provisioning Service (DPS) is een Helper-service voor IoT Hub die Zero-Touch, just-in-time inrichting naar de juiste IoT-hub biedt zonder menselijke tussen komst. Met DPS kunnen miljoenen apparaten op een veilige en schaal bare manier worden ingericht.

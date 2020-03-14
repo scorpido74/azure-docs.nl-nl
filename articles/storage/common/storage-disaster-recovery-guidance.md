@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894533"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365357"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
 
 Micro soft streeft ernaar om ervoor te zorgen dat Azure-Services altijd beschikbaar zijn. Er kunnen echter niet-geplande service storingen optreden. Als uw toepassing tolerantie vereist, raadt micro soft aan geografisch redundante opslag te gebruiken, zodat uw gegevens naar een tweede regio worden gekopieerd. Daarnaast moeten klanten een nood herstel plan hebben voor het verwerken van een regionale service storing. Een belang rijk onderdeel van een plan voor herstel na nood gevallen is bezig met het voorbereiden van een failover naar het secundaire eind punt in het geval dat het primaire eind punt niet beschikbaar is.
 
 Azure Storage ondersteunt de failover van een account (preview) voor geografisch redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is. De failover werkt het secundaire eind punt bij om het primaire eind punt voor uw opslag account te worden. Zodra de failover is voltooid, kunnen clients naar het nieuwe primaire eind punt gaan schrijven.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 In dit artikel worden de concepten en het proces van een failover van een account beschreven en wordt uitgelegd hoe u uw opslag account voorbereidt voor herstel met de minste gevolgen voor de klant. Zie [een account-failover initiëren (preview)](storage-initiate-account-failover.md)voor meer informatie over het initiëren van een account-failover in de Azure portal of Power shell.
 
@@ -124,7 +126,7 @@ Bekijk de aanvullende overwegingen die in deze sectie worden beschreven om te be
 
 #### <a name="storage-account-containing-archived-blobs"></a>Opslag account met gearchiveerde blobs
 
-Opslag accounts met gearchiveerde blobs ondersteunen de failover van het account. Zodra de failover is voltooid, kunt u het account weer converteren naar GRS of RA-GRS alle archieved-blobs moeten eerst worden gemigreerd naar een online laag.
+Opslag accounts met gearchiveerde blobs ondersteunen de failover van het account. Zodra de failover is voltooid, moet u het account weer converteren naar GRS of RA-GRS moeten alle gearchiveerde blobs eerst worden gemigreerd naar een online laag.
 
 #### <a name="storage-resource-provider"></a>Opslagresourceprovider
 

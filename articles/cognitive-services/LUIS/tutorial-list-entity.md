@@ -1,22 +1,14 @@
 ---
 title: 'Zelf studie: lijst entiteit-LUIS'
-titleSuffix: Azure Cognitive Services
 description: Leer hoe u gegevens ophaalt die overeenkomen met een vooraf gedefinieerde lijst met items. Elk item in de lijst kan synoniemen hebben die ook exact overeenkomen
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297404"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Zelf studie: exacte tekst-overeenkomende gegevens ophalen uit een utterance met een lijst entiteit
 
@@ -42,7 +34,7 @@ Een entiteit List is een goede keuze voor dit type gegevens wanneer:
 
 * De gegevenswaarden deel uitmaken van een bekende set.
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
-* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Stammen, meervoudsvormen en andere varianten kunnen niet worden verwerkt met alleen een lijstentiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
+* De tekst in de utterance is een hoofdletter gevoelige overeenkomst met een synoniem of canonieke naam. LUIS gebruikt de lijst niet verder dan de overeenkomst. Stammen, meervoudsvormen en andere varianten kunnen niet worden verwerkt met alleen een lijstentiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
 
 > [!CAUTION]
 > Als u niet zeker weet of u een lijst entiteit of een door een machine geleerde entiteit met een woordgroepen lijst als descriptor wilt gebruiken, is de beste en meest flexibele manier om een door een machine geleerde entiteit met een woordgroepen lijst als descriptor te maken. Met deze methode kan LUIS de waarden van de gegevens die moeten worden geëxtraheerd, leren en uitbreiden.
@@ -72,7 +64,7 @@ Voor beelden van de primaire naam en synoniemen zijn:
 |Canonieke naam|Synoniemen|
 |--|--|
 |Diep gerecht|Deep<br>diepe schotel crust<br>Haas<br>dik crust|
-|Pannen|standaard<br>Origineel<br>opmaakprofiel<br>normale crust<br>oorspronkelijke crust<br>normale crust|
+|Pannen|Standaard<br>Origineel<br>opmaakprofiel<br>normale crust<br>oorspronkelijke crust<br>normale crust|
 |Knuffel|gevulde crust|
 |Dun|dunne crust<br>dun<br>smal crust|
 

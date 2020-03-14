@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282391"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Hosting model voor Azure Service Fabric
 Dit artikel bevat een overzicht van de toepassings hosting modellen van Azure Service Fabric en beschrijft de verschillen tussen de modellen **gedeeld proces** en **exclusief proces** . Hierin wordt beschreven hoe een geïmplementeerde toepassing eruitziet op een Service Fabric knoop punt en de relatie tussen replica's (of exemplaren) van de service en het proces-hostproces.

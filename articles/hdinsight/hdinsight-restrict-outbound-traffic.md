@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/11/2020
+ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646690"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370182"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
 
@@ -26,12 +26,13 @@ Er zijn verschillende afhankelijkheden waarvoor binnenkomend verkeer is vereist.
 
 De afhankelijkheden voor uitgaand verkeer van HDInsight zijn bijna volledig gedefinieerd met FQDN-adressen. Het ontbreken van statische adressen betekent dat netwerk beveiligings groepen (Nsg's) niet kunnen worden gebruikt voor het vergren delen van het uitgaande verkeer van een cluster. De adressen veranderen vaak voldoende, waardoor er geen regels kunnen worden ingesteld op basis van de huidige naam omzetting en voor het instellen van NSG-regels.
 
-De oplossing voor het beveiligen van uitgaande adressen is het gebruik van een firewall apparaat waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall kunt het uitgaande HTTP-en HTTPS-verkeer beperken op basis van de FQDN-code van de doel-of [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags).
+De oplossing voor het beveiligen van uitgaande adressen is het gebruik van een firewall apparaat waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall kunt het uitgaande HTTP-en HTTPS-verkeer beperken op basis van de FQDN-code van de doel-of [FQDN-Tags](../firewall/fqdn-tags.md).
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall configureren met HDInsight
 
 Een samen vatting van de stappen voor het vergren delen van uitgaand verkeer van uw bestaande HDInsight met Azure Firewall zijn:
 
+1. Maak een subnet.
 1. Maak een firewall.
 1. Toepassings regels toevoegen aan de firewall
 1. Voeg netwerk regels toe aan de firewall.
@@ -61,23 +62,23 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Name| FwAppRule|
+    |Naam| FwAppRule|
     |Prioriteit|200|
     |Actie|Toestaan|
 
     **Sectie FQDN-Tags**
 
-    | Name | Bron adres | FQDN-label | Opmerkingen |
+    | Naam | Bron adres | FQDN-label | Opmerkingen |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate en HDInsight | Vereist voor HDI-Services |
 
     **Sectie FQDN-doel items**
 
-    | Name | Bron adressen | Protocol: poort | Doel-FQDN-naam | Opmerkingen |
+    | Naam | Bron adressen | Protocol: poort | Doel-FQDN-naam | Opmerkingen |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
-    | Rule_4 | * | https:443,http:80 | storage_account_name. blob. core. Windows. net | Vervang `storage_account_name` door de werkelijke naam van het opslag account. Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld op het opslag account. |
+    | Rule_4 | * | https:443,http:80 | storage_account_name. blob. core. Windows. net | Vervang `storage_account_name` door de werkelijke naam van het opslag account. Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](../storage/common/storage-require-secure-transfer.md) is ingeschakeld op het opslag account. |
 
    ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -95,13 +96,13 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Name| FwNetRule|
+    |Naam| FwNetRule|
     |Prioriteit|200|
     |Actie|Toestaan|
 
     **Sectie IP-adressen**
 
-    | Name | Protocol | Bron adressen | Doel adressen | Doelpoorten | Opmerkingen |
+    | Naam | Protocol | Bron adressen | Doel adressen | Doelpoorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Time-service |
     | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal |
@@ -110,7 +111,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
     **Sectie Service Tags**
 
-    | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Opmerkingen |
+    | Naam | Protocol | Bron adressen | Service Tags | Doel poorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerk regel in het gedeelte service tags voor SQL waarmee u het SQL-verkeer kunt registreren en controleren, tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt omzeild. |
 
@@ -138,12 +139,12 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | N.V.T. |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | N.V.T. |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | N.V.T. |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | N.V.T. |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | N.V.T. |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | N.V.T. |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | N.v.t. |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | N.v.t. |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.0.2.4 |
 
 De configuratie van de route tabel volt ooien:
@@ -182,7 +183,7 @@ Zie [Dit](../azure-resource-manager/management/azure-subscription-service-limits
 
 ## <a name="access-to-the-cluster"></a>Toegang tot het cluster
 
-Nadat de firewall is ingesteld, kunt u het interne eind punt (`https://CLUSTERNAME-int.azurehdinsight.net`) gebruiken om toegang te krijgen tot de Ambari van binnen het VNET.
+Nadat de firewall is ingesteld, kunt u het interne eind punt (`https://CLUSTERNAME-int.azurehdinsight.net`) gebruiken om toegang te krijgen tot de Ambari vanuit het virtuele netwerk.
 
 Als u het open bare eind punt (`https://CLUSTERNAME.azurehdinsight.net`) of SSH-eind punt (`CLUSTERNAME-ssh.azurehdinsight.net`) wilt gebruiken, moet u ervoor zorgen dat u de juiste routes in de route tabel en NSG-regels hebt om te voor komen dat het asymmetrische routerings probleem [hier](../firewall/integrate-lb.md)wordt uitgelegd. In dit geval moet u het IP-adres van de client in de regels voor binnenkomende NSG toestaan en dit ook toevoegen aan de door de gebruiker gedefinieerde route tabel waarbij de volgende hop is ingesteld als `internet`. Als deze niet correct is ingesteld, ziet u een time-outfout.
 
@@ -201,7 +202,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 ### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten
 
-| **Endpoint** |
+| **Endpoints** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -209,9 +210,9 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 #### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
 
-| **Endpoint** | **Details** |
+| **Endpoints** | **Details** |
 |---|---|
-| \*:123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
+| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
 | [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Dit zijn de HDInsight-service |
 | Privé-IP-adressen van AAD-DS voor ESP-clusters |
 | \*: 16800 voor KMS Windows-activering |
@@ -222,7 +223,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 > [!Important]
 > De onderstaande lijst bevat alleen enkele van de belangrijkste FQDN-namen. U kunt de volledige lijst met FQDN-namen ophalen voor het configureren van uw NVA [in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
 
-| **Endpoint**                                                          |
+| **Endpoints**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

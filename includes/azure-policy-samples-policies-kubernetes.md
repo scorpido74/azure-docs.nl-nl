@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: f84e6a3992836cdc1696800e8c9aea03ac21b435
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 1a2401f9f974b1dc664552e8743e43cbe590b159
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381692"
 ---
-|Naam |Beschrijving |Effect (s) |Version |GitHub |
+|Naam |Beschrijving |Effect (s) |Versie |GitHub |
 |---|---|---|---|---|
 |[\[preview\]: \[AKS-engine\] geen geprivilegieerde containers in Kubernetes-cluster toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Dit beleid staat het maken van geprivilegieerde containers in een Kubernetes-cluster niet toe. Ga naar https://aka.ms/kubepolicydocvoor instructies over het gebruik van dit beleid. |enforceOPAConstraint, uitgeschakeld |2.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege_EnforceOPAConstraint.json)
 |[\[preview-\]: \[AKS-engine\] HTTPS-inkomend verkeer in Kubernetes-cluster af te dwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Dit beleid afdwingt HTTPS-inkomend verkeer in een Kubernetes-cluster. Ga naar https://aka.ms/kubepolicydocvoor instructies over het gebruik van dit beleid. |enforceOPAConstraint, uitgeschakeld |2.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly_EnforceOPAConstraint.json)

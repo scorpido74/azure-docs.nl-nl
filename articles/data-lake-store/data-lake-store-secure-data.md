@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260304"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
 Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Op rollen gebaseerd toegangs beheer (RBAC) en toegangs beheer lijsten (Acl's) moet zijn ingesteld om de toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.

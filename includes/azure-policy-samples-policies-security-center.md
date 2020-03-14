@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: dd26ddb4e122febc335ea60e6fcf6674eea8ebdd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0bace15356fa73eb32e8dbe35784a8ef47ed78ae
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669301"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382253"
 ---
-|Naam |Beschrijving |Effect (s) |Version |GitHub |
+|Naam |Beschrijving |Effect (s) |Versie |GitHub |
 |---|---|---|---|---|
 |[Evaluatie van beveiligings problemen voor \[\] moet worden ingeschakeld op Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Bewaakt beveiligings problemen die worden gedetecteerd door Azure Security Center beveiligingslek evaluatie op Virtual Machines |AuditIfNotExists, uitgeschakeld |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
 |[\[preview\]: er moeten geautoriseerde IP-bereiken worden gedefinieerd op Kubernetes Services](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Beperk de toegang tot de Kubernetes-Service Management-API door API-toegang alleen toe te kennen aan IP-adressen in specifieke bereiken. Het is raadzaam de toegang tot geautoriseerde IP-bereiken te beperken om ervoor te zorgen dat alleen toepassingen van toegestane netwerken toegang hebben tot het cluster. |Controle, uitgeschakeld |1.0.0-Preview |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376267"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253739"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Opties voor Azure AD Connect gebruikers aanmelding
 Met Azure Active Directory (Azure AD) Connect kunnen uw gebruikers zich aanmelden bij zowel Cloud-als on-premises resources met behulp van dezelfde wacht woorden. In dit artikel worden de belangrijkste concepten voor elk identiteits model beschreven, waarmee u de identiteit kunt kiezen die u wilt gebruiken om u aan te melden bij Azure AD.

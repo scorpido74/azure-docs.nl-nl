@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259329"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -23,7 +23,7 @@ Zie [een app herstellen in azure](web-sites-restore.md)voor meer informatie over
 App Service kunt een back-up maken van de volgende gegevens naar een Azure-opslag account en een container die u hebt geconfigureerd voor gebruik van uw app. 
 
 * App-configuratie
-* Bestands inhoud
+* Bestandsinhoud
 * Data base verbonden met uw app
 
 De volgende database oplossingen worden ondersteund met de back-upfunctie: 

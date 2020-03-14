@@ -3,89 +3,177 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 02/14/2020
+ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194292"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79200158"
 ---
-In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
+In deze stap maakt u een Azure SQL Database-Server en één data base die gebruikmaakt van AdventureWorksLT-voorbeeld gegevens. U kunt de data base maken met behulp van Azure Portal menu's en schermen, of met behulp van een Azure CLI-of Power shell-script in de Azure Cloud Shell.
 
-> [!IMPORTANT]
-> Zorg ervoor dat u firewall regels instelt voor het gebruik van het open bare IP-adres van de computer die u gebruikt om dit artikel te volt ooien.
->
-> Zie een [firewall regel op database niveau maken](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) of het IP-adres bepalen dat wordt gebruikt voor de firewall regel op server niveau voor uw computer Zie [een firewall op server niveau maken](../sql-database-server-level-firewall-rule.md)voor meer informatie.  
+Alle methoden omvatten het instellen van een firewall regel op server niveau om het open bare IP-adres van de computer die u gebruikt voor toegang tot de server toe te staan. Zie [een firewall op server niveau maken](../sql-database-server-level-firewall-rule.md)voor meer informatie over het maken van firewall regels voor servers. U kunt ook firewall regels op database niveau instellen. Zie [een firewall regel op database niveau maken](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak uw resource groep en één data base met behulp van de Azure Portal.
+Voor het maken van een resource groep, een SQL-Server en één data base in de Azure Portal:
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
-3. Selecteer **maken**:
+1. Meld u aan bij de [portal](https://portal.azure.com).
+1. Zoek in de zoek balk naar en selecteer **Azure SQL**.
+1. Selecteer op de pagina **Azure SQL** de optie **toevoegen**. 
+   
+   ![Toevoegen aan Azure SQL](../media/sql-database-single-database-get-started/sqldbportal.png)
+   
+1. Selecteer op de pagina **SQL-implementatie optie selecteren** de **tegel SQL-data bases** , met **één data base** onder het **resource type**. U kunt meer informatie over de verschillende data bases bekijken door **Details weer geven**te selecteren.
+1. Selecteer **Maken**.
+   
+   ![Individuele database maken](../media/sql-database-single-database-get-started/create-single-database.png)
+   
+1. Selecteer op het tabblad **basis beginselen** van het formulier **Create SQL database** onder **Project Details**het juiste Azure- **abonnement** als dit nog niet is geselecteerd.
+1. Onder **resource groep**selecteert u **nieuwe maken**, voert u *MyResourceGroup*in en selecteert u **OK**.
+1. Voer onder **Details van data**Base bij **database naam** *mySampleDatabase*in.
+1. Voor **Server**selecteert u **nieuwe maken**en vult u het **nieuwe server** formulier als volgt in:
+   - **Server naam**: Voer *MySqlServer*in en een aantal tekens voor uniekheid.
+   - **Aanmelding van de server beheerder**: Voer *azureuser*in.
+   - **Wacht woord**: Voer een wacht woord in dat voldoet aan de vereisten en voer het opnieuw in het veld **wacht woord bevestigen** .
+   - **Locatie**: vervolg keuzelijst en kies een locatie, zoals **(VS) vs-Oost**.
+   
+   Selecteer **OK**.
+   
+   ![Nieuwe server](../media/sql-database-single-database-get-started/new-server.png)
+   
+   Registreer de aanmeldings naam en het wacht woord van de server beheerder zodat u zich kunt aanmelden bij de server en data bases. Als u uw aanmelding of wacht woord bent verg eten, kunt u de aanmeldings naam ophalen of het wacht woord opnieuw instellen op de **SQL Server** -pagina nadat de data base is gemaakt. Als u de **SQL Server** -pagina wilt openen, selecteert u de server naam op de pagina **overzicht** van data base.
+   
+1. Als u onder **Compute + Storage**de standaard instellingen opnieuw wilt configureren, selecteert u **Data Base configureren**.
+   
+   Op de pagina **configureren** kunt u desgewenst het volgende doen:
+   - Wijzig de **Compute-laag** van **ingericht** naar **serverloos**.
+   - Controleer en wijzig de instellingen voor **vCores** en **Data maximum grootte**.
+   - Selecteer **configuratie wijzigen** om het genereren van hardware te wijzigen.
+   
+   Nadat u wijzigingen hebt aangebracht, selecteert u **Toep assen**.
+   
+1. Selecteer **volgende: netwerken** aan de onderkant van de pagina.
+   
+   ![Tabblad Nieuw SQL database-basis](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   
+1. Selecteer op het tabblad **netwerken** onder **connectiviteits methode** **open bare eind punt**. 
+1. Stel onder **firewall regels**het **huidige client-IP-adres toevoegen** in op **Ja**.
+1. Selecteer **volgende: extra instellingen** onder aan de pagina.
+   
+   ![Tabblad netwerken](../media/sql-database-single-database-get-started/networking.png)
+   
+   Zie [Azure-Services en-bronnen toestaan om toegang te krijgen tot deze server](../sql-database-networkaccess-overview.md) en [een persoonlijk eind punt toe te voegen](../../private-link/private-endpoint-overview.md)voor meer informatie over Firewall instellingen.
+   
+1. Op het tabblad **extra instellingen** , in de sectie **gegevens bron** , voor het **gebruik van bestaande gegevens**, selecteert u voor **beeld**.
+1. Selecteer onder aan de pagina **bekijken + maken** .
+   
+   ![Tabblad Extra instellingen](../media/sql-database-single-database-get-started/additional-settings.png)
+   
+1. Na het controleren van instellingen, selecteert u **maken**.
 
-   ![Individuele database maken](../media/sql-database-get-started-portal/create-single-database.png)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-4. Typ of selecteer de volgende waarden in het gedeelte **Project Details** van het tabblad **basis beginselen** :
+U kunt een Azure-resource groep, een SQL-Server en één data base maken met behulp van de Azure-opdracht regel interface (Azure CLI). Als u de Azure Cloud Shell niet wilt gebruiken, [installeert u Azure cli](/cli/azure/install-azure-cli) op uw computer.
 
-   - **Abonnement**: vervolg keuzelijst en selecteer het juiste abonnement als dit nog niet wordt weer gegeven.
-   - **Resource groep**: Selecteer **nieuwe maken**, typ `myResourceGroup`en selecteer **OK**.
+Als u het volgende code voorbeeld in Azure Cloud Shell wilt uitvoeren, selecteert u **Dit** in de voorbeeld titel balk van de code. Wanneer de Cloud Shell wordt geopend, selecteert u **kopiëren** in de titel balk van de voorbeeld code en plakt u het code voorbeeld in het venster Cloud shell. Vervang `<Subscription ID>` door de ID van uw Azure-abonnement in de code en vervang `$startip` en `$endip`door `0.0.0.0` te vervangen door het open bare IP-adres van de computer die u gebruikt.
 
-     ![Tabblad Nieuw SQL database-basis](../media/sql-database-get-started-portal/new-sql-database-basics.png)
+Volg de aanwijzingen op het scherm om u aan te melden bij Azure en de code uit te voeren. 
 
-5. Typ of selecteer de volgende waarden in de sectie **database Details** :
+U kunt ook de Azure Cloud Shell van de Azure Portal gebruiken door het pictogram Cloud Shell te selecteren in de bovenste balk. 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+De eerste keer dat u Cloud Shell in de portal gebruikt, selecteert u **bash** in het **welkomst** venster. Volgende sessies gebruiken Azure CLI in een bash-omgeving of u kunt **bash** selecteren in de Cloud shell controle balk. 
 
-   - **Database naam**: Voer `mySampleDatabase`in.
-   - **Server**: Selecteer **nieuwe maken**, voer de volgende waarden in en selecteer **selecteren**.
-       - **Server naam**: Typ `mysqlserver`; samen met enkele getallen voor uniekheid.
-       - **Aanmelding van de server beheerder**: type `azureuser`.
-       - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-       - **Locatie**: Kies een locatie in de vervolg keuzelijst, bijvoorbeeld `West US`.
+Met de volgende Azure CLI-code maakt u een Azure-resource groep, een SQL-Server, een enkele data base en een firewall regel voor toegang tot de server. Zorg ervoor dat u de gegenereerde resource groep en server namen vastlegt, zodat u deze resources later kunt beheren.
 
-         ![Nieuwe server](../media/sql-database-get-started-portal/new-server.png)
+```azurecli-interactive
+#!/bin/bash
 
-      > [!IMPORTANT]
-      > Vergeet niet de aanmeldgegevens en het wachtwoord van de server te noteren zodat u zich bij de server en databases voor deze en andere quickstarts kunt aanmelden. Als u uw aanmeldgegevens of wachtwoord vergeet, kunt u de aanmeldnaam ophalen of het wachtwoord opnieuw instellen op de pagina **SQL Server**. U kunt de pagina **SQL Server** openen door de servernaam te selecteren op de **Overzichtspagina** van de database nadat u de database hebt gemaakt.
+# Sign in to Azure and set execution context (if necessary)
+az login
+az account set --subscription <Subscription ID>
 
-   - **Elastische SQL-pool wilt gebruiken**: Selecteer de optie **Nee** .
-   - **Compute + Storage**: Selecteer **Data Base configureren**. 
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup-$RANDOM
+location=westus2
 
-     ![SQL Database Details](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567
 
-   - Selecteer **ingericht**.  U kunt ook **serverloos** selecteren om een serverloze data base te maken.
+# Set a logical server name that is unique in the system
+servername=server-$RANDOM
 
-     ![Ingerichte Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
 
-   - Controleer de instellingen voor **vCores**en de **maximale grootte**van de gegevens. Wijzig deze naar wens. 
-     - U kunt desgewenst ook **configuratie wijzigen** selecteren om het genereren van de hardware te wijzigen.
-   - Selecteer **Toepassen**.
+# Create a resource group
+az group create \
+    --name $resourceGroupName \
+    --location $location
 
-6. Selecteer het tabblad **netwerken** en beslis of u Azure- [**Services en-resources toegang wilt geven tot deze server**](../sql-database-networkaccess-overview.md)of een [persoonlijk eind punt](../../private-link/private-endpoint-overview.md)wilt toevoegen.
+# Create a logical server in the resource group
+az sql server create \
+    --name $servername \
+    --resource-group $resourceGroupName \
+    --location $location  \
+    --admin-user $adminlogin \
+    --admin-password $password
 
-   ![Tabblad netwerken](../media/sql-database-get-started-portal/create-database-networking.png)
+# Configure a firewall rule for the server
+az sql server firewall-rule create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    -n AllowYourIp \
+    --start-ip-address $startip \
+    --end-ip-address $endip
 
-7. Selecteer het tabblad **extra instellingen** . 
-8. Selecteer in de sectie **gegevens bron** onder **bestaande gegevens gebruiken**de optie `Sample`.
+# Create a gen5 2 vCore database in the server
+az sql db create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    --name mySampleDatabase \
+    --sample-name AdventureWorksLT \
+    --edition GeneralPurpose \
+    --family Gen5 \
+    --capacity 2 \
+```
 
-   ![Aanvullende SQL data base-instellingen](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
+De voor gaande code maakt gebruik van de volgende Azure CLI-opdrachten:
 
-   > [!IMPORTANT]
-   > Selecteer de gegevens uit **Voorbeeld (AdventureWorksLT)** zodat u deze en andere quickstarts voor Azure SQL Database gemakkelijk kunt volgen waarbij deze gegevens ook worden gebruikt.
+| Opdracht | Beschrijving |
+|---|---|
+| [AZ-account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. | 
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
+| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Hiermee maakt u de firewall regels van een server. | 
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | Hiermee maakt u een Data Base. | 
 
-9. Laat de rest van de waarden als standaard staan en selecteer onder aan het formulier de optie **controleren + maken** .
-10. Controleer de laatste instellingen en selecteer **maken**.
-
-11. Selecteer in het **SQL Database**-formulier de optie **Maken** om de resourcegroep, server en database te implementeren en in te richten.
+Zie [Azure cli](../sql-database-cli-samples.md)-voor beelden voor meer Azure SQL database Azure CLI-voor beelden.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+U kunt een Azure-resource groep, een SQL-Server en één data base maken met behulp van Windows Power shell. Als u de Azure Cloud Shell niet wilt gebruiken, [installeert u de module Azure PowerShell](/powershell/azure/install-az-ps).
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Maak uw resource groep en één data base met behulp van Power shell.
+Als u het volgende code voorbeeld wilt uitvoeren in de Azure Cloud Shell, selecteert u **Dit** in de titel balk van de code. Wanneer de Cloud Shell wordt geopend, selecteert u **kopiëren** in de titel balk van de voorbeeld code en plakt u het code voorbeeld in het venster Cloud shell. Vervang `<Subscription ID>` door de ID van uw Azure-abonnement in de code en vervang `$startIp` en `$endIp`door `0.0.0.0` te vervangen door het open bare IP-adres van de computer die u gebruikt. 
+
+Volg de aanwijzingen op het scherm om u aan te melden bij Azure en de code uit te voeren. 
+
+U kunt Azure Cloud Shell ook gebruiken via de Azure Portal door het pictogram Cloud Shell te selecteren in de bovenste balk. 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+De eerste keer dat u Cloud Shell uit de portal gebruikt, selecteert u **Power shell** in het **welkomst** venster. Bij volgende sessies wordt Power shell gebruikt, of u kunt deze selecteren in de Cloud Shell controle balk. 
+
+Met de volgende Power shell-code maakt u een Azure-resource groep, een SQL-Server, een enkele data base en een firewall regel voor toegang tot de server. Zorg ervoor dat u de gegenereerde resource groep en server namen vastlegt, zodat u deze resources later kunt beheren.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -93,18 +181,16 @@ Maak uw resource groep en één data base met behulp van Power shell.
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
    $location = "West US"
    $adminLogin = "azureuser"
-   $password = "PWD27!"+(New-Guid).Guid
+   $password = "Azure1234567"
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
 
    # The ip address range that you want to allow to access your server 
-   # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
    $endIp = "0.0.0.0"
 
    # Show randomized variables
    Write-host "Resource group name is" $resourceGroupName 
-   Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
 
    # Connect to Azure
@@ -147,56 +233,15 @@ Maak uw resource groep en één data base met behulp van Power shell.
    $database
    ```
 
-In dit gedeelte van het artikel worden de volgende Power shell-cmdlets gebruikt:
+De bovenstaande code maakt gebruik van de volgende Power shell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een Azure SQL Database afzonderlijke data base. | 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Maak uw resource groep en één data base met behulp van AZ CLI.
-
-   ```azurecli-interactive
-   #!/bin/bash
-   # set variables
-   $subscription = "<subscriptionID>"
-   $randomIdentifier = $(Get-Random)
-
-   $resourceGroup = "resource-$randomIdentifier"
-   $location = "East US"
-   
-   $login = "sampleLogin"
-   $password = "samplePassword123!"
-
-   $server = "server-$randomIdentifier"
-   $database = "database-$randomIdentifier"
-  
-   az login # connect to Azure
-   az account set -s $subscription # set subscription context for the Azure account
-
-   echo "Creating resource group..."
-   az group create --name $resourceGroup --location $location
-
-   echo "Creating primary logical server..."
-   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
-
-   echo "Creating a gen5 2 vCore database..."
-   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
-   ```
-
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
-
-| Opdracht | Opmerkingen |
-|---|---|
-| [AZ-account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. | 
-| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
-| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewall regels van een server. | 
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een Data Base. | 
-
+Zie Azure PowerShell-voor [beelden](../sql-database-powershell-samples.md)voor meer Azure SQL database Power shell-voor beelden.
 
 ---

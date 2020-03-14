@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355992"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259862"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
 
@@ -92,8 +92,9 @@ Zie [app service limieten](../azure-resource-manager/management/azure-subscripti
 Web-apps worden standaard uit het geheugen verwijderd als ze gedurende een bepaalde periode niet actief zijn. Op deze manier kan het systeem bronnen besparen. Het nadeel is dat de reactie op de eerste aanvraag na het verwijderen van de web-app langer is, zodat de web-app kan worden geladen en aan de slag kan met het leveren van reacties. In Basic-en Standard-service plannen kunt u de instelling **altijd op** inschakelen om de app altijd te laden. Dit elimineert langere laad tijden nadat de app niet actief is. De instelling **altijd aan** wijzigen:
 
 1. Ga in het Azure Portal naar uw web-app.
-2. Selecteer **Toepassings instellingen**.
-3. Selecteer **aan**voor **Always on**.
+2. **Configuratie** selecteren
+3. Selecteer **algemene instellingen**.
+4. Selecteer **aan**voor **Always on**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hoe kan ik tracering van mislukte aanvragen inschakelen?
 

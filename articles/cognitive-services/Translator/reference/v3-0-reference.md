@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123062"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369162"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text-API v 3.0
 
@@ -58,17 +58,74 @@ Er zijn drie kopteksten die u kunt gebruiken om uw abonnement te verifiëren. In
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
 |Autorisatie|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is de Bearer-token: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
+|Ocp-Apim-Subscription-Region|*Gebruiken met Cognitive Services multi-service en regionale Translator-resource.*<br/>De waarde is de regio van de resource voor meerdere services of regionaal Translator. Deze waarde is optioneel bij het gebruik van een Global Translator-resource.|
 
 ###  <a name="secret-key"></a>Geheime sleutel
 De eerste optie is om te verifiëren met behulp van de `Ocp-Apim-Subscription-Key`-header. Voeg de `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-header toe aan uw aanvraag.
 
-### <a name="authorization-token"></a>Autorisatietoken
+#### <a name="authenticating-with-a-global-resource"></a>Verifiëren met een globale resource
+
+Wanneer u een [Global Translator-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)gebruikt, moet u één header opnemen om de Translator-API aan te roepen.
+
+|Headers|Beschrijving|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
+
+Hier volgt een voorbeeld aanvraag voor het aanroepen van de Translator-API met behulp van de Global Translator-resource
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>Verifiëren met een regionale resource
+
+Wanneer u een [regionale Translator-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)gebruikt.
+Er zijn twee kopteksten die u nodig hebt om de Translator-API aan te roepen.
+
+|Headers|Beschrijving|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
+|Ocp-Apim-Subscription-Region| De waarde is de regio van de Translator-resource. |
+
+Hier volgt een voorbeeld aanvraag voor het aanroepen van de Translator-API met behulp van de regionale Translator-resource
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>Verificatie met een resource van meerdere services
+
+Wanneer u de resource met meerdere services van een cognitieve service gebruikt. Zo kunt u een enkele geheime sleutel gebruiken om aanvragen voor meerdere services te verifiëren. 
+
+Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verificatie headers met uw aanvraag toevoegen. Er zijn twee kopteksten die u nodig hebt om de Translator-API aan te roepen.
+
+|Headers|Beschrijving|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| De waarde is de geheime Azure-sleutel voor uw resource met meerdere services.|
+|Ocp-Apim-Subscription-Region| De waarde is de regio van de resource met meerdere services. |
+
+De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst omzetting kunt gebruiken wanneer u de sleutel voor meerdere services gebruikt en moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services via de Azure Portal.
+
+Beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`en `southafricanorth`.
+
+Als u de geheime sleutel in de query reeks doorgeeft met de para meter `Subscription-Key`, moet u de regio met de query parameter `Subscription-Region`opgeven.
+
+### <a name="authenticating-with-an-access-token"></a>Verifiëren met een toegangs token
 U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is opgenomen in elke aanvraag als de `Authorization`-header. Als u een autorisatie token wilt verkrijgen, moet u een `POST`-aanvraag indienen bij de volgende URL:
 
-| Omgeving     | URL van verificatie service                                |
+| Resourcetype     | URL van verificatie service                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Wereldwijd          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Regionaal of meerdere services | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 Hier vindt u voor beelden van aanvragen voor het verkrijgen van een token aan de hand van een geheime sleutel:
 
@@ -88,22 +145,29 @@ Authorization: Bearer <Base64-access_token>
 
 Een verificatie token is 10 minuten geldig. Het token moet opnieuw worden gebruikt bij het maken van meerdere aanroepen naar de Translator-Api's. Als uw programma echter gedurende een lange periode aanvragen voor de Translator-API maakt, moet uw programma regel matig een nieuw toegangs token aanvragen (bijvoorbeeld om de 8 minuten).
 
-### <a name="multi-service-subscription"></a>Abonnement op meerdere services
+## <a name="virtual-network-support"></a>Ondersteuning voor Virtual Network
 
-De laatste verificatie optie is het gebruik van het multi-service-abonnement van een cognitieve service. Zo kunt u een enkele geheime sleutel gebruiken om aanvragen voor meerdere services te verifiëren. 
+Translator service is nu beschikbaar met Virtual Network mogelijkheden in beperkte regio's (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`). Als u Virtual Network wilt inschakelen, raadpleegt u [Azure Cognitive Services virtuele netwerken configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
-Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verificatie headers met uw aanvraag toevoegen. In de eerste fase wordt de geheime sleutel door gegeven, de tweede geeft de regio aan die aan uw abonnement is gekoppeld. 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+Wanneer u deze functie inschakelt, moet u het aangepaste eind punt gebruiken om de Translator-API aan te roepen. U kunt het globale Translator-eind punt ("api.cognitive.microsofttranslator.com") niet gebruiken en u kunt zich niet verifiëren met een toegangs token.
 
-De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst omzetting kunt gebruiken wanneer u de sleutel voor meerdere services gebruikt en moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services via de Azure Portal.
+U kunt het aangepaste eind punt vinden wanneer u de [resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)van de vertaler hebt gemaakt.
 
-Beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`en `southafricanorth`.
+|Headers|Beschrijving|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
+|Ocp-Apim-Subscription-Region| De waarde is de regio van de Translator-resource. Deze waarde is optioneel als de resource wordt `global`|
 
-Als u de geheime sleutel in de query reeks doorgeeft met de para meter `Subscription-Key`, moet u de regio met de query parameter `Subscription-Region`opgeven.
+Hier volgt een voorbeeld aanvraag voor het aanroepen van de Translator-API met behulp van het aangepaste eind punt
 
-Als u een Bearer-token gebruikt, moet u het token ophalen uit het gebied eind punt: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
-
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
 ## <a name="errors"></a>Fouten
 
@@ -162,7 +226,7 @@ De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfe
 | 408002| Time-out bij het wachten op de inkomende stroom. De client heeft geen aanvraag gegenereerd binnen het tijdstip dat de server is voor bereid om te wachten. De client kan de aanvraag op een later tijdstip zonder wijzigingen herhalen.|
 | 415000| De content-type-header ontbreekt of is ongeldig.|
 | 429000, 429001, 429002| De server heeft de aanvraag geweigerd omdat de aanvraag limieten voor de client is overschreden.|
-| 500000| Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
+| 500.000| Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
 | 503000| Service is tijdelijk niet beschikbaar. Probeer het opnieuw. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
 
 ## <a name="metrics"></a>Metrische gegevens 

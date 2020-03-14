@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282560"
 ---
 # <a name="scaling-in-service-fabric"></a>Schalen in Service Fabric
 Azure Service Fabric maakt het eenvoudig om schaal bare toepassingen te bouwen door de services, partities en replica's op de knoop punten van een cluster te beheren. Door veel werk belastingen op dezelfde hardware uit te voeren, is het mogelijk om Maxi maal het resource gebruik te maken, maar biedt ook flexibiliteit voor het schalen van uw workloads. In deze Channel 9-video wordt beschreven hoe u schaal bare micro Services-toepassingen kunt bouwen:

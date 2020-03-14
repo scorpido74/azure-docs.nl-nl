@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 32912f0aef91bd4a7c831a82d1e83f00a1e0f131
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379562"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283106"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -289,16 +289,56 @@ U kunt ook door gaan met indexeren als er fouten optreden tijdens de verwerking,
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Incrementele indexering en detectie van verwijderingen
+
 Wanneer u een BLOB-Indexeer functie zo instelt dat deze volgens een planning wordt uitgevoerd, worden alleen de gewijzigde blobs opnieuw geïndexeerd, zoals wordt bepaald door de `LastModified` tijds tempel van de blob.
 
 > [!NOTE]
 > U hoeft geen detectie beleid voor wijzigingen op te geven: incrementele indexering is automatisch ingeschakeld voor u.
 
-Als u het verwijderen van documenten wilt ondersteunen, gebruikt u de methode ' zacht verwijderen '. Als u de blobs naar rechts verwijdert, worden de bijbehorende documenten niet verwijderd uit de zoek index. Gebruik in plaats daarvan de volgende stappen:  
+Als u het verwijderen van documenten wilt ondersteunen, gebruikt u de methode ' zacht verwijderen '. Als u de blobs naar rechts verwijdert, worden de bijbehorende documenten niet verwijderd uit de zoek index.
 
-1. Voeg een aangepaste meta gegevens eigenschap toe aan de blob om aan te geven dat de Azure-Cognitive Search logisch is verwijderd
-2. Een detectie beleid voor zacht verwijderen configureren op de gegevens bron
-3. Zodra de Indexeer functie de BLOB heeft verwerkt (zoals weer gegeven door de API van de Indexeer functie), kunt u de BLOB fysiek verwijderen
+Er zijn twee manieren om de methode voor zacht verwijderen te implementeren. Beide worden hieronder beschreven.
+
+### <a name="native-blob-soft-delete-preview"></a>Zacht verwijderen van systeem eigen BLOB (preview-versie)
+
+> [!IMPORTANT]
+> Ondersteuning voor het voorlopig verwijderen van een blob is in preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](https://docs.microsoft.com/azure/search/search-api-preview) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+
+In deze methode gebruikt u de [systeem eigen BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) -functie voor voorlopig verwijderen die wordt aangeboden door Azure Blob-opslag. Als voor de gegevens bron een systeem eigen beleid voor zacht verwijderen is ingesteld en de Indexeer functie een BLOB vindt die is overgezet naar een voorlopig verwijderde status, wordt dat document door de Indexeer functie uit de index verwijderd.
+
+Voer de volgende stappen uit:
+1. [Systeem eigen zacht verwijderen inschakelen voor Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete). We raden u aan het Bewaar beleid in te stellen op een waarde die veel hoger is dan het schema voor de indexerings interval. Als er een probleem is met het uitvoeren van de Indexeer functie of als u een groot aantal documenten hebt om te indexeren, is er genoeg tijd voor de Indexeer functie om de zachte verwijderde blobs uiteindelijk te verwerken. Met Azure Cognitive Search Indexeer functies wordt alleen een document uit de index verwijderd als het de BLOB verwerkt terwijl deze de status zacht verwijderd heeft.
+1. Configureer een systeem eigen detectie beleid voor het voorlopig verwijderen van blobs op de gegevens bron. Hieronder ziet u een voor beeld. Omdat deze functie in preview is, moet u de preview-REST API gebruiken.
+1. Voer de Indexeer functie uit of stel de Indexeer functie in op een schema. Wanneer de Indexeer functie wordt uitgevoerd en de BLOB wordt verwerkt, wordt het document uit de index verwijderd.
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>Niet-verouderde blobs opnieuw indexeren
+
+Als u een BLOB verwijdert uit Azure Blob-opslag waarvoor systeem eigen laad bare verwijdering is ingeschakeld in uw opslag account, wordt de BLOB overgezet naar een voorlopig verwijderde status, zodat u de optie hebt om de verwijdering van die BLOB ongedaan te maken binnen de retentie periode. Wanneer een Azure Cognitive Search-gegevens bron een systeem eigen BLOB voorlopig verwijderings beleid heeft en de Indexeer functie een zacht verwijderde BLOB verwerkt, wordt dat document uit de index verwijderd. Als deze BLOB later ongedaan is gemaakt, wordt die BLOB **niet** altijd opnieuw geïndexeerd met de Indexeer functie. Dit komt doordat de Indexeer functie bepaalt welke blobs worden geïndexeerd op basis van de tijds tempel van de BLOB `LastModified`. Wanneer een zachte verwijderde BLOB ongedaan is gemaakt, wordt de `LastModified` tijds tempel niet bijgewerkt, dus als de indexer al verwerkte blobs met `LastModified` tijds tempels recenter is dan de niet-verwijderde blob, wordt de niet-verwijderde BLOB niet opnieuw geïndexeerd. Om ervoor te zorgen dat een niet-verouderde BLOB opnieuw wordt geïndexeerd, moet u de meta gegevens van die BLOB opnieuw opslaan. Het is niet nodig om de meta gegevens te wijzigen, maar de meta gegevens opnieuw op te slaan, wordt de `LastModified` tijds tempel van de BLOB bijgewerkt zodat de Indexeer functie weet dat deze de BLOB opnieuw moet indexeren.
+
+### <a name="soft-delete-using-custom-metadata"></a>Zacht verwijderen met aangepaste meta gegevens
+
+In deze methode gebruikt u een aangepaste meta gegevens eigenschap om aan te geven wanneer een document uit de zoek index moet worden verwijderd.
+
+Voer de volgende stappen uit:
+
+1. Voeg een aangepaste meta gegevens eigenschap toe aan de blob om aan Azure Cognitive Search aan te geven dat deze logisch is verwijderd.
+1. Configureer een beleid voor het detecteren van een tijdelijke verwijderings kolom voor de gegevens bron. Hieronder ziet u een voor beeld.
+1. Zodra de Indexeer functie de BLOB heeft verwerkt en het document uit de index heeft verwijderd, kunt u de BLOB voor Azure Blob Storage verwijderen.
 
 Het volgende beleid beschouwt bijvoorbeeld een blob die moet worden verwijderd als deze een meta gegevens eigenschap heeft `IsDeleted` met de waarde `true`:
 
@@ -310,13 +350,17 @@ Het volgende beleid beschouwt bijvoorbeeld een blob die moet worden verwijderd a
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>Niet-verouderde blobs opnieuw indexeren
+
+Als u een voorlopig verwijderings beleid voor kolom detectie op de gegevens bron instelt, vervolgens de eigenschap aangepaste meta gegevens toevoegt aan een blob met de markerings waarde en vervolgens de Indexeer functie uitvoert, wordt dat document door de Indexeer functie uit de index verwijderd. Als u het document opnieuw wilt indexeren, wijzigt u gewoon de waarde voor voorlopig verwijderen van meta gegevens voor die Blob en voert u de Indexeer functie opnieuw uit.
 
 ## <a name="indexing-large-datasets"></a>Grote gegevens sets indexeren
 

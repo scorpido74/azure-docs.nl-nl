@@ -4,11 +4,11 @@ description: Aan de slag met Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443140"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259628"
 ---
 # <a name="get-started-with-azure-advisor"></a>Aan de slag met Azure Advisor
 
@@ -19,7 +19,7 @@ Meer informatie over het openen van Advisor via de Azure Portal, het ophalen van
 
 ## <a name="get-recommendations"></a>Aanbevelingen ophalen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Klik in het linkerdeel venster op **Advisor**.  Als u Advisor niet in het linkerdeel venster ziet, klikt u op **alle services**.  Klik in het menu venster Service, onder **bewaking en beheer**, op **Advisor**. Het Advisor-dash board wordt weer gegeven.
 

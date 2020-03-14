@@ -3,12 +3,12 @@ title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443131"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259693"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -47,9 +47,12 @@ Azure Advisor detecteert Azure Data Factory pijp lijnen die herhaaldelijk misluk
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Standaard momentopnamen gebruiken voor Managed Disks
 Sla uw momentopnamen op in Standard Storage, ongeacht het opslagtype van de bovenliggende schijf, om een kostenbesparing van 60% te realiseren. Deze optie is de standaard optie voor het Managed Disks moment opnamen. Azure Advisor worden moment opnamen geïdentificeerd die zijn opgeslagen Premium Storage en raden u aan om uw moment opname te migreren van Premium naar standaard opslag. [Meer informatie over prijzen voor beheerde schijven](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
+## <a name="utilize-lifecycle-management"></a>Levenscyclusbeheer gebruiken
+Azure Advisor maakt gebruik van informatie over het aantal Azure Blob Storage-objecten, de totale grootte en de trans acties om te detecteren of een of meer van uw opslag accounts het beste geschikt zijn om levenscyclus beheer in te scha kelen voor het laag maken van gegevens. U wordt gevraagd om levenscyclus beheer regels te maken om uw gegevens automatisch te voorzien van koud of archief om uw opslag kosten te optimaliseren en uw gegevens in Azure Blob-opslag te bewaren voor toepassings compatibiliteit.
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Toegang tot kosten aanbevelingen in Azure Advisor
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek en selecteer [**Advisor**](https://aka.ms/azureadvisordashboard) op elke pagina.
 

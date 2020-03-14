@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386915"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254363"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -43,7 +43,7 @@ Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-
 
 Verder onderzoek moet daarom gericht zijn op de toepassing.
 
-De header van de HTTP-host die vanuit de browser van de client wordt verzonden, is de meest voorkomende bron van problemen. Zorg ervoor dat de toepassing is geconfigureerd om de juiste host-header te accepteren voor de domein naam die u gebruikt. Zie [een aangepaste domein naam configureren voor een web-app in azure app service met behulp van Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md)voor eind punten met behulp van de Azure app service.
+De header van de HTTP-host die vanuit de browser van de client wordt verzonden, is de meest voorkomende bron van problemen. Zorg ervoor dat de toepassing is geconfigureerd om de juiste host-header te accepteren voor de domein naam die u gebruikt. Zie [een aangepaste domein naam configureren voor een web-app in azure app service met behulp van Traffic Manager](../app-service/configure-domain-traffic-manager.md)voor eind punten met behulp van de Azure app service.
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Wat is de invloed van de prestaties van het gebruik van Traffic Manager?
 
@@ -145,9 +145,9 @@ Apparaten voor eind gebruikers gebruiken meestal een DNS-resolver om namens u de
 
 De IP-adressen die moeten worden gekoppeld aan een eind punt kunnen op twee manieren worden opgegeven. Eerst kunt u de decimale notatie met vier punten met een begin-en eind adres gebruiken om het bereik op te geven (bijvoorbeeld 1.2.3.4-5.6.7.8 of 3.4.5.6-3.4.5.6). Ten tweede kunt u de CIDR-notatie gebruiken om het bereik op te geven (bijvoorbeeld 1.2.3.0/24). U kunt meerdere bereiken opgeven en beide notatie typen gebruiken in een bereikset. Er zijn enkele beperkingen van toepassing.
 
--   U mag geen overlappende adresbereiken hebben omdat elk IP-adres moet worden toegewezen aan slechts één eind punt
--   Het begin adres mag niet langer zijn dan het eind adres
--   In het geval van de CIDR-notatie moet het IP-adres vóór het '/' het begin adres van het bereik zijn (bijvoorbeeld 1.2.3.0/24 is geldig, maar 1.2.3.4.4/24 is niet geldig)
+-    U mag geen overlappende adresbereiken hebben omdat elk IP-adres moet worden toegewezen aan slechts één eind punt
+-    Het begin adres mag niet langer zijn dan het eind adres
+-    In het geval van de CIDR-notatie moet het IP-adres vóór het '/' het begin adres van het bereik zijn (bijvoorbeeld 1.2.3.0/24 is geldig, maar 1.2.3.4.4/24 is niet geldig)
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hoe kan ik een terugval-eind punt opgeven bij het gebruik van subnet routering?
 
@@ -382,25 +382,25 @@ Wanneer een query wordt ontvangen voor een profiel, zoekt Traffic Manager eerst 
 
 Voor profielen met een andere routerings methode dan meerdere waarden:
 
-|Binnenkomende query aanvraag|    Type eind punt|  Antwoord gegeven|
+|Binnenkomende query aanvraag|     Type eind punt|     Antwoord gegeven|
 |--|--|--|
-|IEDERE |  A/AAAA/CNAME |  Doel eindpunt| 
-|A |    A / CNAME | Doel eindpunt|
-|A |    AAAA |  Geen gegevens |
-|AAAA | AAAA/CNAME |  Doel eindpunt|
-|AAAA | A | Geen gegevens |
-|CNAME |    CNAME | Doel eindpunt|
-|CNAME  |A/AAAA | Geen gegevens |
+|IEDERE |    A/AAAA/CNAME |    Doel eindpunt| 
+|A |    A / CNAME |    Doel eindpunt|
+|A |    AAAA |    Geen gegevens |
+|AAAA |    AAAA/CNAME |    Doel eindpunt|
+|AAAA |    A |    Geen gegevens |
+|CNAME |    CNAME |    Doel eindpunt|
+|CNAME     |A/AAAA |    Geen gegevens |
 |
 
 Voor profielen waarvoor een routerings methode is ingesteld op meerdere waarden:
 
-|Binnenkomende query aanvraag|    Type eind punt | Antwoord gegeven|
+|Binnenkomende query aanvraag|     Type eind punt |    Antwoord gegeven|
 |--|--|--|
-|IEDERE |  Combi natie van A en AAAA | Doel eindpunten|
-|A |    Combi natie van A en AAAA | Alleen doel eindpunten van het type A|
-|AAAA   |Combi natie van A en AAAA|     Alleen doel eindpunten van het type AAAA|
-|CNAME |    Combi natie van A en AAAA | Geen gegevens |
+|IEDERE |    Combi natie van A en AAAA |    Doel eindpunten|
+|A |    Combi natie van A en AAAA |    Alleen doel eindpunten van het type A|
+|AAAA    |Combi natie van A en AAAA|     Alleen doel eindpunten van het type AAAA|
+|CNAME |    Combi natie van A en AAAA |    Geen gegevens |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kan ik een profiel gebruiken met door IPv4/IPv6 geadresseerde eind punten in een genest profiel?
 

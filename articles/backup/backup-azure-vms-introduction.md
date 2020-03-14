@@ -3,16 +3,22 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273213"
+ms.locfileid: "79297354"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
 In dit artikel wordt beschreven hoe de [Azure backup-service](backup-introduction-to-azure-backup.md) een back-up maakt van Azure virtual machines (vm's).
+
+Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van de gegevens op uw Vm's. Back-ups worden opgeslagen in een Recovery Services kluis met ingebouwd beheer van herstel punten. Configuratie en schalen zijn eenvoudige, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
+
+Als onderdeel van het back-upproces [wordt er een moment opname gemaakt](#snapshot-creation)en worden de gegevens overgebracht naar de Recovery Services kluis zonder dat dit van invloed is op de werk belasting van de productie. De moment opname biedt verschillende consistentie niveaus, zoals [hier](#snapshot-consistency)wordt beschreven.
+
+Azure Backup heeft ook gespecialiseerde aanbiedingen voor data base-workloads, zoals [SQL Server](backup-azure-sql-database.md) en [SAP Hana](sap-hana-db-about.md) die workload bewust zijn, 15 minuten RPO (Recovery Point Objective) bieden en back-up en herstel van afzonderlijke data bases toestaan.
 
 ## <a name="backup-process"></a>Back-upproces
 
@@ -66,7 +72,7 @@ Azure Backup maakt moment opnamen volgens het back-upschema.
   - Als de pre-scripts en post-scripts met succes worden uitgevoerd, Azure Backup het herstel punt als toepassings consistent gemarkeerd. Wanneer u echter aangepaste scripts gebruikt, bent u uiteindelijk verantwoordelijk voor de consistentie van de toepassing.
   - Meer [informatie](backup-azure-linux-app-consistent.md) over het configureren van scripts.
 
-### <a name="snapshot-consistency"></a>Consistentie van moment opnamen
+## <a name="snapshot-consistency"></a>Consistentie van moment opnamen
 
 In de volgende tabel ziet u de verschillende soorten consistentie van moment opnamen:
 

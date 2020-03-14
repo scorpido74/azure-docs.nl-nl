@@ -4,11 +4,11 @@ description: U kunt telemetrie-processors en initialisatie functies voor telemet
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666459"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276320"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetrie filteren en voor verwerking in de Application Insights SDK
 

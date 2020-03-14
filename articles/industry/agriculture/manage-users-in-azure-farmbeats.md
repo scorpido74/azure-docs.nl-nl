@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271692"
+ms.locfileid: "79298781"
 ---
 # <a name="manage-users"></a>Gebruikers beheren
 
@@ -18,7 +18,7 @@ Azure FarmBeats bevat gebruikers beheer voor personen die deel uitmaken van uw A
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Er is een installatie van Azure FarmBeats vereist. Zie [Azure FarmBeats installeren](install-azure-farmbeats.md)voor meer informatie.
+- Installatie van Azure FarmBeats is vereist. Zie [Azure FarmBeats installeren](install-azure-farmbeats.md)voor meer informatie.
 - De e-mail-Id's van de gebruikers die u wilt toevoegen aan of verwijderen uit uw Azure FarmBeats-exemplaar.
 
 ## <a name="manage-azure-farmbeats-users"></a>Azure FarmBeats-gebruikers beheren
@@ -26,6 +26,8 @@ Azure FarmBeats bevat gebruikers beheer voor personen die deel uitmaken van uw A
 Azure FarmBeats maakt gebruik van Azure AD voor verificatie, Toegangs beheer en rollen. U kunt gebruikers toevoegen aan de Azure AD-Tenant als gebruikers in azure FarmBeats.
 
 > [!NOTE]
+> Als een gebruiker geen Azure AD-Tenant gebruiker is, volgt u de instructies in de sectie **Azure AD-gebruikers toevoegen** om de installatie te volt ooien.
+
 > Als een gebruiker die u wilt toevoegen als een Azure FarmBeats-gebruiker niet aanwezig is in de Azure AD-Tenant, voltooit u de installatie door de instructies in de sectie ' Azure AD-gebruikers toevoegen ' te volgen.
 
 Azure FarmBeats ondersteunt twee typen gebruikers rollen:
@@ -63,7 +65,7 @@ Gebruikers verwijderen uit het Azure FarmBeats-systeem:
 ## <a name="add-azure-ad-users"></a>Azure AD-gebruikers toevoegen
 
 > [!NOTE]
-> Azure FarmBeats-gebruikers moeten zich in de Azure AD-Tenant bevinden voordat u ze aan toepassingen en rollen kunt toewijzen. Als een gebruiker die u wilt toevoegen aan Azure FarmBeats nog niet bestaat in de Azure AD-Tenant, volgt u de instructies in deze sectie. Als de gebruiker zich in de Azure AD-Tenant bevindt, kunt u deze instructies overs Laan.
+> Azure FarmBeats-gebruikers moeten aanwezig zijn in de Azure AD-Tenant voordat ze aan toepassingen en rollen kunnen worden toegewezen. Als een gebruiker niet aanwezig is in de Azure AD-Tenant, volgt u de instructies in deze sectie. Sla de instructies over als een gebruiker al aanwezig is in de Azure AD-Tenant.
 
 Ga als volgt te werk om gebruikers toe te voegen aan Azure AD:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246553"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367360"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Onderliggende runbooks in Azure Automation
 
@@ -35,13 +35,13 @@ Welke typen runbook kunnen elkaar aanroepen?
 
 * Een [Power shell-runbook](automation-runbook-types.md#powershell-runbooks) en een [grafisch runbook](automation-runbook-types.md#graphical-runbooks) kunnen elk ander inline aanroepen, zoals op Power shell is gebaseerd.
 * Een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks) en een grafisch Power shell werk stroom-runbook kunnen elk ander inline aanroepen, zowel op Power shell-werk stroom gebaseerd.
-* De Power shell-typen en de Power shell-werk stroom typen kunnen niet elk ander inline aanroepen en moeten **Start-AzAutomationRunbook**gebruiken.
+* De Power shell-typen en de Power shell-werk stroom typen kunnen niet elk ander inline aanroepen en moeten `Start-AzAutomationRunbook`gebruiken.
 
 Wanneer is de volg orde van publicatie belang rijk?
 
 De publicatie volgorde van runbooks is alleen van belang voor Power shell-werk stromen en grafische runbooks in Power shell-werk stromen.
 
-Als uw runbook een grafisch of een onderliggend runbook van een Power shell-werk stroom aanroept met inline-uitvoering, wordt de naam van het runbook gebruikt. De naam moet beginnen met **.\\** om op te geven dat het script zich in de lokale map bevindt.
+Als uw runbook een grafisch of een onderliggend runbook van een Power shell-werk stroom aanroept met inline-uitvoering, wordt de naam van het runbook gebruikt. De naam moet beginnen met `.\\` om op te geven dat het script zich in de lokale map bevindt.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Een onderliggend runbook starten met een cmdlet
 
 > [!IMPORTANT]
-> Als uw runbook een onderliggend runbook aanroept met de cmdlet **Start-AzAutomationRunbook** met de para meter *wait* en het onderliggende runbook een object resultaat oplevert, kan er een fout optreden in de bewerking. Als u de fout wilt omzeilen, raadpleegt u [onderliggende runbooks met object uitvoer](troubleshoot/runbooks.md#child-runbook-object) voor meer informatie over het implementeren van de logica voor het controleren van de resultaten met behulp van de cmdlet [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
+> Als uw runbook een onderliggend runbook aanroept met de `Start-AzAutomationRunbook` cmdlet met de para meter `Wait` en het onderliggende runbook een object resultaat oplevert, kan er een fout optreden in de bewerking. Als u de fout wilt omzeilen, raadpleegt u [onderliggende runbooks met object uitvoer](troubleshoot/runbooks.md#child-runbook-object) voor meer informatie over het implementeren van de logica voor het controleren van de resultaten met behulp van de cmdlet [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
-U kunt **Start-AzAutomationRunbook** gebruiken om een runbook te starten zoals beschreven in [om een runbook te starten met Windows Power shell](start-runbooks.md#start-a-runbook-with-powershell). Er zijn twee modi voor het gebruik van deze cmdlet. In de ene modus retourneert de cmdlet de taak-ID wanneer de taak voor het onderliggende runbook is gemaakt. In de andere modus, die door het script wordt ingeschakeld door het opgeven van de *wait* -para meter, wacht de cmdlet totdat de onderliggende taak is voltooid en de uitvoer van het onderliggende runbook wordt geretourneerd.
+U kunt `Start-AzAutomationRunbook` gebruiken om een runbook te starten zoals beschreven in [om een Runbook te starten met Windows Power shell](start-runbooks.md#start-a-runbook-with-powershell). Er zijn twee modi voor het gebruik van deze cmdlet. In de ene modus retourneert de cmdlet de taak-ID wanneer de taak voor het onderliggende runbook is gemaakt. In de andere modus, die door het script wordt ingeschakeld door het opgeven van de *wait* -para meter, wacht de cmdlet totdat de onderliggende taak is voltooid en de uitvoer van het onderliggende runbook wordt geretourneerd.
 
 De taak uit een onderliggend runbook dat is gestart met een cmdlet, wordt afzonderlijk van de bovenliggende runbook-taak uitgevoerd. Dit gedrag resulteert in meer taken dan bij het starten van het runbook inline en maakt het lastig om de taken bij te houden. De bovenliggende site kan meer dan een onderliggend runbook asynchroon starten zonder te wachten tot de bewerking is voltooid. Voor deze parallelle uitvoering die de onderliggende runbooks inline aanroept, moet het bovenliggende runbook het [sleutel woord parallel](automation-powershell-workflow.md#parallel-processing)gebruiken.
 
-De onderliggende runbook-uitvoer wordt niet betrouwbaar teruggestuurd naar het bovenliggende runbook vanwege een time-out. Bovendien kunnen variabelen zoals *$VerbosePreference*, *$WarningPreference*en anderen niet worden door gegeven aan de onderliggende runbooks. Als u deze problemen wilt voor komen, kunt u de onderliggende runbooks als afzonderlijke Automation-taken starten met **Start-AzAutomationRunbook** met de para meter *wait* . Deze techniek blokkeert het bovenliggende runbook tot het onderliggende runbook is voltooid.
+De onderliggende runbook-uitvoer wordt niet betrouwbaar teruggestuurd naar het bovenliggende runbook vanwege een time-out. Bovendien kunnen variabelen zoals `$VerbosePreference`, `$WarningPreference`en anderen niet worden door gegeven aan de onderliggende runbooks. Als u deze problemen wilt voor komen, kunt u de onderliggende runbooks starten als afzonderlijke automatiserings taken met behulp van `Start-AzAutomationRunbook` met de `Wait`-para meter. Deze techniek blokkeert het bovenliggende runbook tot het onderliggende runbook is voltooid.
 
-Als u niet wilt dat het bovenliggende runbook wordt geblokkeerd tijdens het wachten, kunt u het onderliggende runbook starten met **Start-AzAutomationRunbook** zonder de para meter *wait* . In dit geval moet uw runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) gebruiken om te wachten tot de taak is voltooid. Het moet ook [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) en [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) gebruiken om de resultaten op te halen.
+Als u niet wilt dat het bovenliggende runbook wordt geblokkeerd tijdens het wachten, kunt u het onderliggende runbook starten met `Start-AzAutomationRunbook` zonder de para meter `Wait`. In dit geval moet uw runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) gebruiken om te wachten tot de taak is voltooid. Het moet ook [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) en [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) gebruiken om de resultaten op te halen.
 
 Para meters voor een onderliggend runbook dat is gestart met een cmdlet, worden opgegeven als een hash-tabel, zoals beschreven in [runbook-para meters](start-runbooks.md#runbook-parameters). Alleen eenvoudige gegevens typen kunnen worden gebruikt. Als het runbook een parameter met een complex gegevenstype heeft, klikt u vervolgens het moet dit inline worden aangeroepen.
 
@@ -80,7 +80,7 @@ Als taken binnen hetzelfde Automation-account werken met meer dan één abonneme
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld wordt een onderliggend runbook met para meters gestart en wordt gewacht tot het is voltooid met de cmdlet **Start-AzAutomationRunbook** met de para meter *wait* . Zodra dit is voltooid, wordt de uitvoer van de cmdlet verzameld van het onderliggende runbook. Als u **Start-AzAutomationRunbook**wilt gebruiken, moet het script worden geverifieerd bij uw Azure-abonnement.
+In het volgende voor beeld wordt een onderliggend runbook met para meters gestart en wordt gewacht tot het is voltooid met behulp van de cmdlet `Start-AzAutomationRunbook` met de para meter `Wait`. Zodra dit is voltooid, wordt de uitvoer van de cmdlet verzameld van het onderliggende runbook. Als u `Start-AzAutomationRunbook`wilt gebruiken, moet het script worden geverifieerd bij uw Azure-abonnement.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext

@@ -4,11 +4,11 @@ description: In dit artikel wordt beschreven hoe u de prestaties van een Kuberne
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385544"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275475"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
@@ -196,7 +196,7 @@ De informatie die wordt weer gegeven wanneer u het tabblad **knoop punten** beki
 | Min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;%  | Gemiddelde knooppunt percentage is gebaseerd op percentiel tijdens de geselecteerde periode. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De gemiddelde werkelijke waarde van knoop punten op basis van percentiel tijdens de geselecteerde tijds duur. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een knoop punt. Voor peulen en containers is het de gemiddelde waarde die wordt gerapporteerd door de host. |
 | Containers | Het aantal containers. |
-| Bedrijfstijd | Geeft de tijd sinds een knooppunt is gestart of opnieuw is opgestart. |
+| Actieve tijdsduur | Geeft de tijd sinds een knooppunt is gestart of opnieuw is opgestart. |
 | Regelaar | Alleen voor containers en schillen. Hier wordt weer gegeven in welke controller het zich bevindt. Niet alle peulen bevinden zich in een controller, waardoor er mogelijk niet meer dan **n.v.t.** kan worden weer gegeven. | 
 | Trend min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;% | Staafdiagram trend geeft het gemiddelde percentiel metrische percentage van de controller. |
 
@@ -226,7 +226,7 @@ De informatie die wordt weer gegeven wanneer u controllers bekijkt, wordt beschr
 | Min, Gem, 50e, negen tigste, 95e, Max  | Totalisering van de gemiddelde CPU millicore of geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt van de CPU/geheugen die is ingesteld voor een schil gemeten. |
 | Containers | Totaal aantal containers voor de controller of de schil. |
 | Opnieuw opstarten | Updatepakket van het aantal opnieuw opstarten van containers. |
-| Bedrijfstijd | Geeft de tijd sinds een container is gestart. |
+| Actieve tijdsduur | Geeft de tijd sinds een container is gestart. |
 | Knooppunt | Alleen voor containers en schillen. Hier wordt weer gegeven in welke controller het zich bevindt. | 
 | Trend min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;% | Trend staafdiagram vertegenwoordigt de metriek gemiddelde percentiel van de controller. |
 
@@ -264,7 +264,7 @@ De informatie die wordt weer gegeven wanneer u containers bekijkt, wordt beschre
 | Pod | De container waarin de schil zich bevindt.| 
 | Knooppunt |  Het knooppunt waarin de container zich bevindt. | 
 | Opnieuw opstarten | Geeft de tijd sinds een container is gestart. |
-| Bedrijfstijd | Geeft de tijd sinds een container is gestart of opnieuw opgestart. |
+| Actieve tijdsduur | Geeft de tijd sinds een container is gestart of opnieuw opgestart. |
 | Trend min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;% | Staafdiagram trend geeft het gemiddelde percentiel metrische percentage van de container. |
 
 De pictogrammen in het veld status geven de online statussen aan, zoals wordt beschreven in de volgende tabel.

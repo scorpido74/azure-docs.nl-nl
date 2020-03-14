@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128102"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365386"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelf studie: een hostgroep maken om service-updates te valideren
 
@@ -76,7 +76,7 @@ Service-updates gebeuren maandelijks. Als er sprake is van grote problemen, word
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een groep met validatie-hosts hebt gemaakt, kunt u meer informatie over het implementeren en verbinden met een beheer programma voor het beheer van micro soft-resources voor virtuele Bureau bladen.
+Nu u een groep met validatie-hosts hebt gemaakt, kunt u leren hoe u Azure Service Health gebruikt voor het bewaken van uw Windows-implementatie voor virtueel bureau blad. 
 
 > [!div class="nextstepaction"]
-> [Zelf studie een beheer programma implementeren](./manage-resources-using-ui.md)
+> [Service waarschuwingen instellen](./set-up-service-alerts.md)

@@ -8,21 +8,15 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 710c5a780841135344d92e93a02f97963b36b09e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8d226b67c0b438ac726fc3abf6452db68fb10dce
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921387"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140702"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
-Met persoonlijke Azure-koppeling kunt u toegang krijgen tot Azure PaaS-Services, zoals:
- 
- - **Azure Storage**
- - **Azure Cosmos DB**
- - **Azure SQL Database**
-
-Met persoonlijke koppeling krijgt u toegang tot gehoste klanten-en partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk.
+Met persoonlijke Azure-koppeling kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten-partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk.
 
 Verkeer tussen uw virtuele netwerk en de service wordt het micro soft-backbone-netwerk verplaatst. Het beschikbaar maken van uw service voor het open bare Internet is niet langer nodig. U kunt uw eigen [persoonlijke koppelings service](private-link-service-overview.md) in uw virtuele netwerk maken en deze aan uw klanten leveren. Het instellen en gebruiken van een persoonlijke koppeling van Azure is consistent voor Azure PaaS-, klanten-en Shared partner services.
 

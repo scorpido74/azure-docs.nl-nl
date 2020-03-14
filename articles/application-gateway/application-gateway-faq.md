@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad3289d9b93421df6776c685325f388d552bdba4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893220"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279232"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -401,7 +401,7 @@ Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres
     
     a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535**. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
     
-    b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en bestemming en doel poort
+    b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en bestemming en doel poort **Any**
     
     c. Alle binnenkomend verkeer van de bron als de code van de **Internet** -service en de doel-en doel poort als **elk**te weigeren. Geef deze regel de *minste prioriteit* in de regels voor binnenkomende verbindingen
     

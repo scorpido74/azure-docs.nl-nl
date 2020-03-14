@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622211"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257054"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>De bron omgeving instellen voor de replicatie van VMware naar Azure
 
@@ -59,7 +59,7 @@ De volgende mappen uitsluiten van antivirus software voor soepele replicatie en 
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
 - Hulp programma C:\Program Files\Microsoft Azure Site Recovery-fout verzameling 
   - C:\thirdparty
-  - Map
+  - C:\Temp
   - C:\strawberry
   - C:\ProgramData\MySQL
   - C:\Program Files (x86) \MySQL

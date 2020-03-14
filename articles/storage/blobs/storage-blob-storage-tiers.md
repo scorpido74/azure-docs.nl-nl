@@ -9,11 +9,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368716"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255507"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische, koele en archief toegangs lagen
 
@@ -117,8 +117,8 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 
 |                                           | **Premium-prestaties**   | **Warme laag** | **Cool-laag**       | **Laag van archief**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Off line           |
-| **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Off line           |
+| **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Offline           |
+| **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Offline           |
 | **Gebruikskosten**                         | Hogere opslag kosten, lagere toegangs-en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
 | **Minimale objectgrootte**                   | N.v.t.                       | N.v.t.          | N.v.t.                 | N.v.t.               |
 | **Minimale opslagduur**              | N.v.t.                       | N.v.t.          | 30 dagen<sup>1</sup> | 180 dagen
@@ -140,7 +140,7 @@ In deze sectie worden de volgende scenario's geïllustreerd met behulp van de Az
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>De toegangslaag van het standaardaccount van een GPv2- of Blob Storage-account wijzigen
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
@@ -155,7 +155,7 @@ In deze sectie worden de volgende scenario's geïllustreerd met behulp van de Az
 
 ![Laag van opslag account wijzigen](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de account tier te wijzigen. De variabele `$rgName` moet worden geïnitialiseerd met de naam van de resource groep. De variabele `$accountName` moet worden geïnitialiseerd met de naam van uw opslag account. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -168,7 +168,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>De laag van een BLOB in een GPv2 of Blob Storage-account wijzigen
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Laag van opslag account wijzigen](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de BLOB-laag te wijzigen. De variabele `$rgName` moet worden geïnitialiseerd met de naam van de resource groep. De variabele `$accountName` moet worden geïnitialiseerd met de naam van uw opslag account. De variabele `$containerName` moet worden geïnitialiseerd met de container naam. De variabele `$blobName` moet worden geïnitialiseerd met de naam van de blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

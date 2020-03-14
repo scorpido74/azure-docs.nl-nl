@@ -1,35 +1,36 @@
 ---
 title: 'Zelf studie: ML pijp lijnen voor batch scores'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie bouwt u een machine learning-pijp lijn voor het uitvoeren van batch scoreing op een afbeeldings classificatie model in Azure Machine Learning. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op uw expertise-machine learning in plaats van op infra structuur en automatisering.
+description: In deze zelf studie bouwt u een machine learning-pijp lijn voor het uitvoeren van batch scoreing op een afbeeldings classificatie model. Met Azure Machine Learning kunt u zich richten op machine learning in plaats van infra structuur en automatisering.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: bfa39d4a508412322f0caec36d557c3fc6775090
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238648"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelf studie: een Azure Machine Learning-pijp lijn bouwen voor batch Score
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze zelf studie gebruikt u een pijp lijn in Azure Machine Learning om een batch Score taak uit te voeren. In het voor beeld wordt het convolutional Neural Network tensor flow model van het vooraf getrainde start [-v3-](https://arxiv.org/abs/1512.00567) netwerk gebruikt om niet-gelabelde afbeeldingen te classificeren. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform.
+Meer informatie over het bouwen van een pijp lijn in Azure Machine Learning om een batch Score taak uit te voeren. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op machine learning in plaats van infra structuur en automatisering. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform. 
 
-Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op uw expertise-machine learning in plaats van op infra structuur en automatisering. Meer [informatie over machine learning pijp lijnen](concept-ml-pipelines.md).
+In het voor beeld wordt gebruikgemaakt van een vooraf getraind gemaakt [-v3](https://arxiv.org/abs/1512.00567) convolutional Neural-netwerk model dat is geïmplementeerd in tensor flow om niet-gelabelde afbeeldingen te classificeren. Meer [informatie over machine learning pijp lijnen](concept-ml-pipelines.md).
 
 In deze zelfstudie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een werk ruimte configureren en voorbeeld gegevens downloaden
-> * Gegevens objecten maken om gegevens op te halen en uit te voeren
+> * Werkruimte configureren 
+> * Voorbeeld gegevens downloaden en opslaan
+> * DataSet-objecten maken om gegevens op te halen en uit te voeren
 > * Het model downloaden, voorbereiden en registreren in uw werk ruimte
 > * Berekenings doelen inrichten en een score script maken
 > * De klasse `ParallelRunStep` voor asynchrone batch scores gebruiken
@@ -57,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Een gegevens opslag voor voorbeeld installatie kopieën maken
+## <a name="create-a-datastore-for-sample-images"></a>Een gegevens opslag voor voorbeeld installatie kopieën maken
 
 Op het `pipelinedata`-account haalt u het voor beeld van de open bare gegevens van de ImageNet-evaluatie uit de open bare BLOB-container van `sampledata`. Roep `register_azure_blob_container()` aan om de gegevens beschikbaar te maken voor de werk ruimte onder de naam `images_datastore`. Vervolgens stelt u de werk ruimte standaard gegevens opslag in als uitvoer gegevens opslag. Gebruik de uitvoer gegevens opslag voor de Score van de uitvoer in de pijp lijn.
 
@@ -73,7 +74,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Gegevens objecten maken
+## <a name="create-dataset-objects"></a>DataSet-objecten maken
 
 Wanneer u pijp lijnen bouwt, worden `Dataset`-objecten gebruikt voor het lezen van gegevens uit werk ruimte-data stores en worden `PipelineData`-objecten gebruikt voor het overzetten van tussenliggende gegevens tussen pijplijn stappen.
 
@@ -259,7 +260,7 @@ def run(mini_batch):
 > [!TIP]
 > De pijp lijn in deze zelf studie heeft slechts één stap en schrijft de uitvoer naar een bestand. Voor pijp lijnen met meerdere stappen kunt u `ArgumentParser` ook gebruiken om een directory te definiëren voor het schrijven van uitvoer gegevens voor invoer naar volgende stappen. Zie het [notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)voor een voor beeld van het door geven van gegevens tussen meerdere pijplijn stappen met behulp van het `ArgumentParser` ontwerp patroon.
 
-## <a name="build-and-run-the-pipeline"></a>De pijp lijn bouwen en uitvoeren
+## <a name="build-the-pipeline"></a>De pijp lijn bouwen
 
 Voordat u de pijp lijn uitvoert, maakt u een-object dat de python-omgeving definieert en maakt u de afhankelijkheden die uw `batch_scoring.py` script nodig heeft. De vereiste belangrijkste afhankelijkheid is tensor flow, maar u installeert ook `azureml-defaults` voor achtergrond processen. Maak een `RunConfiguration`-object met behulp van de afhankelijkheden. Geef ook docker en docker-GPU-ondersteuning op.
 
@@ -324,7 +325,7 @@ batch_score_step = ParallelRunStep(
 
 Zie het [pakket stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)voor een lijst met alle klassen die u voor verschillende stap typen kunt gebruiken.
 
-### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
+## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
 Voer nu de pijp lijn uit. Maak eerst een `Pipeline`-object met behulp van uw werkruimte referentie en de door u gemaakte pijplijn stap. De para meter `steps` is een matrix met stappen. In dit geval is er slechts één stap voor batch scoreing. Als u pijp lijnen met meerdere stappen wilt maken, plaatst u de stappen in volg orde in deze matrix.
 

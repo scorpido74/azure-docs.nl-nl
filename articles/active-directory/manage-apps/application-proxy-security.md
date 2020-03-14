@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244262"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366101"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Beveiligings overwegingen voor het extern openen van apps met Azure AD-toepassingsproxy
 
@@ -81,13 +81,9 @@ Niet-gepatched software-accounts voor een groot aantal aanvallen. Azure AD-toepa
 
 Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door Azure AD-toepassingsproxy, blok keren we het robots van webcrawlers van het indexeren en archiveren van uw toepassingen. Telkens wanneer een webcrawler robot probeert de robot instellingen voor een gepubliceerde app op te halen, reageert toepassings proxy met een robots. txt-bestand dat `User-agent: * Disallow: /`bevat.
 
-### <a name="ddos-prevention"></a>DDOS voor komen
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Service
 
-Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDOS-aanvallen (Distributed Denial of service).
-
-De Application proxy-service bewaakt de hoeveelheid verkeer die probeert uw toepassingen en netwerk te bereiken. Als het aantal apparaten dat externe toegang tot uw toepassingen aanvraagt, vertraagt micro soft de toegang tot uw netwerk. 
-
-Micro soft bewaart verkeers patronen voor afzonderlijke toepassingen en voor uw hele abonnement. Als één toepassing meer dan normaal aanvragen ontvangt, worden aanvragen voor toegang tot deze toepassing gedurende korte tijd geweigerd. Als u meer dan normale aanvragen over uw hele abonnement ontvangt, worden aanvragen voor toegang tot uw apps geweigerd. Met deze preventieve maat regel blijven uw toepassings servers overbelast door RAS-aanvragen, zodat uw on-premises gebruikers de toegang tot hun apps kunnen blijven. 
+Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDoS-aanvallen (Distributed Denial of service). **Azure DDoS Protection** is een service die wordt aangeboden met het Azure-platform om uw Azure-resources te beschermen tegen denial-of-service-aanvallen. De **Basic** -servicelaag wordt automatisch ingeschakeld, waardoor er altijd verkeer wordt bewaakt en de realtime wordt beperkt van veelvoorkomende aanvallen op netwerk niveau. Er is ook een **Standard** -laag beschikbaar. deze biedt extra mogelijkheden voor risico beperking die specifiek zijn afgestemd op Azure Virtual Network-Resources. Zie [Azure DDoS Protection Standard-overzicht](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
 
 ## <a name="under-the-hood"></a>Achter de schermen
 

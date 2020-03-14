@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187815"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371372"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -60,7 +60,7 @@ Hieronder volgt een voor beeld van een overzicht van de CI/CD-levens cyclus in e
 
    ![Uw eigen sjabloon bouwen](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Selecteer **bestand laden**en selecteer vervolgens de gegenereerde Resource Manager-sjabloon.
+1. Selecteer **bestand laden**en selecteer vervolgens de gegenereerde Resource Manager-sjabloon. Dit is het **arm_template. json** -bestand dat zich bevindt in het zip-bestand dat in stap 1 is geëxporteerd.
 
    ![Sjabloon bewerken](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ Er zijn twee manieren om geheimen af te handelen:
 
     Het parameter bestand moet ook in de publicatie vertakking staan.
 
--  Voeg een [Azure Key Vault-taak](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) toe vóór de Azure Resource Manager implementatie taak die in de vorige sectie wordt beschreven:
+1. Voeg een [Azure Key Vault-taak](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) toe vóór de Azure Resource Manager implementatie taak die in de vorige sectie wordt beschreven:
 
     1.  Maak een nieuwe taak op het tabblad **taken** . Zoek naar **Azure Key Vault** en voeg deze toe.
 
@@ -179,9 +179,9 @@ Er zijn twee manieren om geheimen af te handelen:
 
     ![Een Key Vault taak toevoegen](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Machtigingen verlenen aan de Azure pipelines-agent
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Machtigingen verlenen aan de Azure pipelines-agent
 
-   De Azure Key Vault taak kan mislukken met de fout toegang geweigerd als de juiste machtigingen niet zijn ingesteld. Down load de logboeken voor de release en zoek het. ps1-bestand dat de opdracht bevat om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren. U kunt ook de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. `Get` en `List` zijn de mini maal vereiste machtigingen.
+De Azure Key Vault taak kan mislukken met de fout toegang geweigerd als de juiste machtigingen niet zijn ingesteld. Down load de logboeken voor de release en zoek het. ps1-bestand dat de opdracht bevat om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren. U kunt ook de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. `Get` en `List` zijn de mini maal vereiste machtigingen.
 
 ### <a name="update-active-triggers"></a>Actieve triggers bijwerken
 
@@ -471,7 +471,10 @@ Als u zich in de GIT-modus bevindt, kunt u de standaard eigenschappen in uw Reso
 * U gebruikt automatische CI/CD en u wilt enkele eigenschappen wijzigen tijdens de implementatie van Resource Manager, maar de eigenschappen zijn niet standaard ingesteld op para meters.
 * Uw fabriek is zo groot dat de standaard Resource Manager-sjabloon ongeldig is omdat deze meer dan de Maxi maal toegestane para meters (256) heeft.
 
-Onder deze omstandigheden kunt u de standaard sjabloon parameterisering overschrijven door een bestand te maken met de naam arm-sjabloon-para meters-definition. json in de map die is opgegeven als de hoofdmap voor de data factory Git-integratie. U moet die exacte bestands naam gebruiken. Data Factory leest dit bestand van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
+Onder deze omstandigheden kunt u de standaard sjabloon parameterisering overschrijven door een bestand te maken met de naam **arm-sjabloon-para meters-definition. json** in de map die is opgegeven als de hoofdmap voor de Data Factory Git-integratie. U moet die exacte bestands naam gebruiken. Data Factory leest dit bestand van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
+
+> [!NOTE]
+> Een aangepaste parameterisering-sjabloon wijzigt niet de limiet van de ARM-sjabloon parameters van 256. Hiermee kunt u het aantal geparametriseerde eigenschappen kiezen en verlagen.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxis van een bestand met aangepaste para meters
 
@@ -657,7 +660,7 @@ Hier volgt de huidige standaard sjabloon parameterisering. Als u slechts een paa
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

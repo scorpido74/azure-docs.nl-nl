@@ -2,20 +2,20 @@
 title: Raspberry Pi verbinden met Azure IoT Hub in de Cloud (node. js)
 description: Meer informatie over het instellen en verbinden van Raspberry Pi met Azure IoT Hub voor Raspberry pi voor het verzenden van gegevens naar het Azure-Cloud platform in deze zelf studie.
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IOT Raspberry Pi, Raspberry Pi IOT hub, Raspberry Pi gegevens verzenden naar de Cloud, Raspberry Pi naar de Cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457099"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371495"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi verbinden met Azure IoT Hub (node. js)
 
@@ -202,20 +202,20 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
 3. De voorbeeld toepassing klonen.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Installeer alle pakketten voor het voor beeld. De installatie omvat Azure IoT Device SDK, de BME280-sensor bibliotheek en de bedradings-Pi bibliotheek.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
    > [!NOTE]
    >Het kan enkele minuten duren voordat dit installatie proces is voltooid, afhankelijk van de netwerk verbinding.
 
-### <a name="configure-the-sample-application"></a>De voorbeeld toepassing configureren
+### <a name="configure-the-sample-application"></a>De voorbeeldtoepassing configureren
 
 1. Open het configuratie bestand door de volgende opdrachten uit te voeren:
 
@@ -244,9 +244,9 @@ Voer de voorbeeld toepassing uit door de volgende opdracht uit te voeren:
    > [!NOTE]
    > Zorg ervoor dat u het apparaat connection string kopieert naar de enkele aanhalings tekens.
 
-Als het goed is, ziet u de volgende uitvoer met de sensorgegevens en de berichten die naar uw IoT-hub worden verzonden.
+De volgende uitvoer wordt weer gegeven met de sensor gegevens en de berichten die worden verzonden naar uw IoT-hub.
 
-![Uitvoer: sensorgegevens die van Raspberry Pi naar uw IoT-hub worden verzonden](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Uitvoer sensor gegevens die vanuit Raspberry Pi naar uw IoT hub worden verzonden](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Lees de berichten die door uw hub zijn ontvangen
 

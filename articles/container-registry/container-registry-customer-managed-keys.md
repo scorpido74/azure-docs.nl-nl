@@ -4,12 +4,12 @@ description: Meer informatie over het versleutelen van uw Azure container Regist
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096494"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365338"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Versleuteling met door de klant beheerde sleutels
 
@@ -27,6 +27,7 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 * U kunt deze functie op dit moment alleen inschakelen wanneer u een REGI ster maakt.
 * Nadat u een door de klant beheerde sleutel in een REGI ster hebt ingeschakeld, kunt u deze niet uitschakelen.
+* [Inhouds vertrouwen](container-registry-content-trust.md) wordt momenteel niet ondersteund in een REGI ster dat is versleuteld met een door de klant beheerde sleutel.
 * In een REGI ster dat is versleuteld met een door de klant beheerde sleutel, worden logboeken voor [ACR-taken](container-registry-tasks-overview.md) alleen 24 uur bewaard. Als u logboeken gedurende een langere periode wilt bewaren, raadpleegt u richt lijnen voor het [exporteren en opslaan van Logboeken](container-registry-tasks-logs.md#alternative-log-storage)voor het uitvoeren van taken.
 
 ## <a name="prerequisites"></a>Vereisten

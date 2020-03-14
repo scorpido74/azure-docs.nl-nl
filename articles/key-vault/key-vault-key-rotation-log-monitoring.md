@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195512"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218406"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault instellen met de functie voor het draaien en controleren van sleutels
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195512"
 
 Nadat u een sleutel kluis hebt, kunt u deze gebruiken om sleutels en geheimen op te slaan. Uw toepassingen hoeven uw sleutels of geheimen niet langer op te slaan, maar kunnen ze naar wens aanvragen bij de kluis. Met een sleutel kluis kunt u sleutels en geheimen bijwerken zonder dat dit van invloed is op het gedrag van uw toepassing, waardoor er een breed scala aan mogelijkheden voor uw sleutel en uw geheime beheer wordt geopend.
 
->[!IMPORTANT]
-> De voor beelden in dit artikel zijn alleen bedoeld voor illustratie doeleinden. Ze zijn niet bedoeld voor gebruik in productie omgevingen. 
+In dit artikel vindt u instructies voor het implementeren van een geplande rotatie van sleutels voor opslag accounts, het controleren van de audit logboeken van de sleutel kluis en het activeren van waarschuwingen wanneer er onverwachte aanvragen worden gedaan. 
 
-In dit artikel wordt beschreven hoe u:
+U moet eerst een sleutel kluis maken met behulp van de methode van uw keuze:
 
-- Een voor beeld van het gebruik van Azure Key Vault voor het opslaan van een geheim. In dit artikel is het geheim opgeslagen de Azure Storage-account sleutel die wordt gebruikt door een toepassing. 
-- Het implementeren van een geplande rotatie van die sleutel voor het opslag account.
-- De controle logboeken van de sleutel kluis bewaken en waarschuwingen activeren wanneer er onverwachte aanvragen worden gedaan.
+- [Een geheim van Azure Key Vault instellen en ophalen met behulp van Azure CLI](quick-create-cli.md)
+- [Een geheim instellen en ophalen uit Azure Key Vault met behulp van Azure PowerShell](quick-create-powershell.md)
+- [Een geheim instellen en ophalen uit Azure Key Vault met behulp van Azure Portal](quick-create-portal.md)
 
-> [!NOTE]
-> In dit artikel wordt de eerste installatie van uw sleutel kluis niet gedetailleerd beschreven. Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor deze informatie. Zie [Key Vault beheren met de Azure cli](key-vault-manage-with-cli2.md)voor meer informatie over de opdracht regel interface voor meerdere platforms.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Key Vault instellen
+## <a name="store-a-secret"></a>Een geheim opslaan
 
 Als u een toepassing wilt inschakelen voor het ophalen van een geheim van Key Vault, moet u eerst het geheim maken en dit uploaden naar uw kluis.
 

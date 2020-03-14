@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906535"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370471"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt
 
 U kunt een aangepast domein toewijzen aan een BLOB service-eind punt of een [statisch website](storage-blob-static-website.md) -eind punt. 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Deze toewijzing werkt alleen voor subdomeinen (bijvoorbeeld: `www.contoso.com`). Als u wilt dat uw web-eind punt beschikbaar is in het hoofd domein (bijvoorbeeld: `contoso.com`), moet u Azure CDN gebruiken. Zie de sectie [een aangepast domein met https-functionaliteit toewijzen](#enable-https) in dit artikel voor meer informatie. Omdat u naar deze sectie van dit artikel gaat om het hoofd domein van uw aangepaste domein in te scha kelen, is de stap in die sectie voor het inschakelen van HTTPS optioneel. 
@@ -229,9 +231,9 @@ Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -co
 
 ### <a name="remove-a-custom-domain-mapping"></a>Een aangepaste domein toewijzing verwijderen
 
-Als u een aangepaste domein toewijzing wilt verwijderen, moet u de registratie van het aangepaste domein ongedaan maken. Gebruik een van de volgende procedures.
+Als u een aangepaste domein toewijzing wilt verwijderen, moet u de registratie van het aangepaste domein ongedaan maken. Gebruik één van de volgende procedures.
 
-#### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Ga als volgt te werk om de aangepaste domein instelling te verwijderen:
 
@@ -246,7 +248,7 @@ Ga als volgt te werk om de aangepaste domein instelling te verwijderen:
 
 Nadat het aangepaste domein is verwijderd, ziet u een portal melding dat uw opslag account is bijgewerkt
 
-#### <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de opdracht [AZ Storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI en geeft u een lege teken reeks (`""`) op voor de waarde van het `--custom-domain` argument.
 
@@ -268,7 +270,7 @@ Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de opdracht
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

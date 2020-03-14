@@ -4,16 +4,16 @@ description: Meer informatie over het uploaden van een VHD naar een Azure Manage
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970348"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365846"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een VHD uploaden naar Azure met behulp van Azure CLI
 
@@ -28,7 +28,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
 - Een VHD-bestand lokaal opgeslagen
-- Als u van plan bent om een VHD te uploaden van on-premises: een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden van on-premises: een VHD met een vaste grootte die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
@@ -79,8 +79,6 @@ Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-ty
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-Als uw SAS verloopt tijdens het uploaden en u `revoke-access` nog niet hebt aangeroepen, kunt u een nieuwe SAS krijgen om het uploaden met `grant-access`voort te zetten.
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 

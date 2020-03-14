@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623462"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298832"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Een nieuw type IoT-gateway apparaat in uw Azure IoT Central-toepassing definiëren
 
@@ -203,6 +203,9 @@ In deze zelfstudie heeft u het volgende geleerd:
 * Definieer een visualisatie voor de telemetrie van het apparaat.
 * Relaties toevoegen.
 * De sjabloon van het apparaat publiceren.
+
+> [!NOTE]
+> Code generatie op basis van code wordt momenteel niet ondersteund voor gateway apparaten die zijn gemodelleerd in IoT Central.
 
 U kunt nu het volgende doen:
 

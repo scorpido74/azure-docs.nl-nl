@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Ja
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357956"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276827"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
 
@@ -363,6 +363,7 @@ Het object `context.res` (Response) heeft de volgende eigenschappen:
 | _koppen_ | Een object dat de antwoord headers bevat.             |
 | _isRaw_   | Hiermee wordt aangegeven dat de opmaak voor het antwoord wordt overgeslagen.    |
 | _hebben_  | De HTTP-status code van het antwoord.                     |
+| _cookies_ | Een matrix met HTTP-cookie-objecten die in het antwoord zijn ingesteld. Een HTTP-cookie object heeft een `name`, `value`en andere cookie-eigenschappen, zoals `maxAge` of `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen 
 

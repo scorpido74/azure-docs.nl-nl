@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219278"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
@@ -54,7 +54,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 | Chinees-vereenvoudigd    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` is ook geaccepteerd                   |
 | Chinees-traditioneel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Deens                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Dutch                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Nederlands                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Nederlands               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Fins               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Frans                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |

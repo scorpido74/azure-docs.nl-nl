@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705612"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298798"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
 Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats.
 
-Neem contact met ons op farmbeatssupport@microsoft.comvoor meer hulp. Zorg ervoor dat u het bestand **deployer. log** in uw e-mail bericht opneemt.
+Neem contact met ons op farmbeatssupport@microsoft.comvoor meer hulp. Zorg ervoor dat u het bestand **deployer. log** opneemt in uw e-mail bericht.
 
 Ga als volgt te werk om het bestand **deployer. log** te downloaden:
 
@@ -51,7 +51,7 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
 
 **Corrigerende actie**:
 
-1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
+1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
 2. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt:
 
 ```json
@@ -65,11 +65,11 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,14 +119,14 @@ Dat **wil zeggen**: er zijn andere apparaten aan het apparaat gekoppeld.
 2. Het specifieke apparaat verwijderen.  
 
     > [!NOTE]
-    > U kunt een apparaat niet verwijderen als er Sens oren aan zijn gekoppeld. Meer informatie over het verwijderen van gekoppelde Sens oren vindt u in de sectie sensor verwijderen in [sensor gegevens ophalen van sensor partners](get-sensor-data-from-sensor-partner.md).
+    > U kunt een apparaat niet verwijderen als er Sens oren aan zijn gekoppeld. Voor meer informatie over het verwijderen van gekoppelde Sens oren, zie de sectie **sensor verwijderen** in [sensor gegevens ophalen van sensor partners](get-sensor-data-from-sensor-partner.md).
 
 
 ## <a name="issues-with-jobs"></a>Problemen met taken
 
 ### <a name="farmbeats-internal-error"></a>Interne FarmBeats-fout
 
-**Bericht**: ' FarmBeats interne fout ' Zie probleemoplossings gids voor meer informatie. '
+**Bericht**: FarmBeats interne fout, zie probleemoplossings gids voor meer informatie.
 
 **Corrigerende actie**: dit probleem kan het gevolg zijn van een tijdelijke fout in de gegevens pijplijn. Maak de taak opnieuw. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
 
@@ -138,13 +138,13 @@ Dat **wil zeggen**: er zijn andere apparaten aan het apparaat gekoppeld.
 
 **Bericht**: er zijn geen overeenkomende gebruikers gevonden.
 
-**Corrigerende actie**: Controleer de e-mail-id waarvoor u een roltoewijzing wilt toevoegen. De e-mail-ID moet exact overeenkomen met de geregistreerde ID voor die gebruiker in de Active Directory. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
+**Corrigerende actie**: Controleer de e-mail-id waarvoor u een roltoewijzing wilt toevoegen. De e-mail-ID moet exact overeenkomen met de ID, die is geregistreerd voor die gebruiker in de Active Directory. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Kan niet aanmelden bij de Accelerator
 
 **Bericht**: ' fout: u bent niet gemachtigd om de service aan te roepen. Neem contact op met de beheerder voor autorisatie. "
 
-**Corrigerende actie**: vraag de beheerder om u te autoriseren voor toegang tot de FarmBeats-implementatie. U kunt dit doen door een bericht te plaatsen van de RoleAssignment-Api's of via de Access Control in het deel venster **instellingen** in Accelerator.  
+**Corrigerende actie**: vraag de beheerder om u te machtigen om toegang te krijgen tot de FarmBeats-implementatie. U kunt dit doen door een bericht te plaatsen van de RoleAssignment-Api's of via de Access Control in het deel venster **instellingen** in Accelerator.  
 
 Als u al toegang hebt gekregen en deze fout ondervindt, kunt u het opnieuw proberen door de pagina te vernieuwen. Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht op het FarmBeats-forum of neemt u contact op met FarmBeatsSupport@microsoft.com.
 
@@ -163,6 +163,7 @@ Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht o
 **Probleem**: FarmBeats Accelerator geeft niet de nieuwste versie weer, zelfs nadat u FarmBeatsDeployment hebt bijgewerkt.
 
 **Corrigerende actie**: deze fout treedt op door de service medewerker-persistentie in de browser. Ga als volgt te werk:
+
 1. Sluit alle browser tabbladen met Accelerator open en sluit het browser venster.
 2. Start een nieuw exemplaar van de browser en laad de Accelerator-URI opnieuw. Met deze actie wordt de nieuwe versie van Accelerator geladen.
 
@@ -175,6 +176,7 @@ Als de fout zich blijft voordoen, voegt u het fout bericht toe aan een bericht o
 **Corrigerende actie**:
 
 Voer een van de volgende handelingen uit:
+
 - Voer het installatie programma voor het bijwerken van Datahub met de juiste gebruikers naam en wacht woord opnieuw uit.
 - Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
@@ -198,6 +200,7 @@ Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-ser
 1. Als een taak of pijp lijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in te dienen. 
 
    Voor informatie over geplande of niet-geplande verklikker onderhouds activiteiten gaat u naar de [nieuws site Copernicus Open Access hub](https://scihub.copernicus.eu/news/) .  
+
 2. Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: maximum aantal verbindingen bereikt
@@ -207,6 +210,7 @@ Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-ser
 Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde verklikker account gebruikt in een andere software-implementatie.
 
 **Corrigerende actie**: Voer een van de volgende handelingen uit:
+
 * Maak een nieuw verklikker account en voer het installatie programma opnieuw uit om Datahub bij te werken met een nieuwe Sentinel-gebruikers naam en-wacht woord.  
 * Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
@@ -218,6 +222,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 1. Als een taak of pijp lijn mislukt omdat er onderhoud wordt uitgevoerd, dient u de taak na enige tijd opnieuw in te dienen. 
 
    Voor informatie over geplande of niet-geplande verklikker onderhouds activiteiten gaat u naar de [nieuws site Copernicus Open Access hub](https://scihub.copernicus.eu/news/) .  
+
 2. Voer de mislukte taak opnieuw uit of voer een satelliet-indexen taak uit voor een datum bereik van 5 tot 7 dagen en controleer vervolgens of de taak is geslaagd.
 
 ## <a name="collect-logs-manually"></a>Logboeken hand matig verzamelen
@@ -225,7 +230,8 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 [Installeer en implementeer Azure Storage Explorer]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory-taak logboeken verzamelen in Datahub
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
 
     > [!NOTE]
@@ -243,7 +249,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-taak Logboeken in de Accelerator verzamelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
 
     > [!NOTE]
@@ -260,7 +266,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-datahub-app-service-logs"></a>Datahub app service-logboeken verzamelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
 
     > [!NOTE]
@@ -276,7 +282,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-accelerator-app-service-logs"></a>App service-logboeken voor Accelerators verzamelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
 
     > [!NOTE]
@@ -304,7 +310,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 **Betekenis**: de configuratie van de Azure AD-App-registratie is niet correct voltooid.  
 
-**Corrigerende actie**: vraag de IT-beheerder (de persoon met lees toegang voor de Tenant) om het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de registratie van de Azure AD-app. Dit script zorgt er automatisch voor dat de configuratie stappen ook worden uitgevoerd.
+**Corrigerende actie**: vraag de IT-beheerder (de persoon met lees toegang voor de Tenant) het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de registratie van de Azure AD-app. Dit script zorgt er automatisch voor dat de configuratie stappen ook worden uitgevoerd.
 
 **Fout bericht**: kan geen nieuwe Active Directory toepassing maken\<toepassings naam\>in deze Tenant: er bestaat al een ander object met dezelfde waarde voor de eigenschaps-id-uri's.
 

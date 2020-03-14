@@ -4,11 +4,11 @@ description: Meer informatie over ondersteuning voor fysieke server beoordeling 
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393325"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269521"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586288"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366237"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Functies &-hulpprogram ma's voor Azure Cloud Shell
 
@@ -69,7 +69,7 @@ Cloud Shell bevat vooraf geconfigureerde authenticatie voor open source-hulpprog
 
 ## <a name="tools"></a>Hulpprogramma's
 
-|Categorie   |Name   |
+|Category   |Naam   |
 |---|---|
 |Linux-hulpprogram ma's            |bash<br> zsh<br> &<br> tmux<br> graven<br>               |
 |Azure-hulpprogramma 's            |[Azure cli](https://github.com/Azure/azure-cli) en [Azure Classic cli](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric-CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -88,7 +88,7 @@ Cloud Shell bevat vooraf geconfigureerde authenticatie voor open source-hulpprog
 |Aan de slag         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[7.0.0-RC. 2](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 en 3,5 (standaard)|
 
 ## <a name="next-steps"></a>Volgende stappen

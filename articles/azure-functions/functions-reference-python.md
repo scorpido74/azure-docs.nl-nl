@@ -3,12 +3,12 @@ title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276684"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -394,7 +394,18 @@ Voor lokale ontwikkeling worden toepassings instellingen [onderhouden in het bes
 
 ## <a name="python-version"></a>Python-versie 
 
-Momenteel ondersteunt Azure Functions zowel python 3.6. x als 3.7. x (officiële CPython-distributies). Wanneer lokaal wordt uitgevoerd, gebruikt de runtime de beschik bare python-versie. Als u een specifieke python-versie wilt aanvragen wanneer u de functie-app in azure maakt, gebruikt u de optie `--runtime-version` van de [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) opdracht. Versie wijziging is alleen toegestaan bij het maken van functie-app.  
+Azure Functions ondersteunt de volgende python-versies:
+
+| Functie versie | Python-<sup>*</sup> versies |
+| ----- | ----- |
+| controleert | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup> Officiële CPython-distributies
+
+Als u een specifieke python-versie wilt aanvragen wanneer u de functie-app in azure maakt, gebruikt u de optie `--runtime-version` van de [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) opdracht. De runtime versie van functions wordt ingesteld met de optie `--functions-version`. De python-versie wordt ingesteld wanneer de functie-app wordt gemaakt en kan niet worden gewijzigd.  
+
+Wanneer lokaal wordt uitgevoerd, gebruikt de runtime de beschik bare python-versie. 
 
 ## <a name="package-management"></a>Pakketbeheer
 

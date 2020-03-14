@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268182"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -81,6 +81,9 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
   **Ik echt een specifieke functie wilt zien die aan Azure files is toegevoegd. Kunt u deze toevoegen?**  
     Het Azure Files-team is geïnteresseerd bij het horen van alle feedback over onze service. Stem op de functie aanvragen op [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! We hopen dat u met veel nieuwe functies op zoek bent.
 
+  **Ondersteunt Azure Files het vergren delen van bestanden?**  
+    Ja, Azure Files volledig ondersteunt SMB/Windows-stijl bestands vergrendeling. [Zie de Details voor meer informatie](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
@@ -211,6 +214,11 @@ ondersteunt **Azure files AD-verificatie de integratie met een AD-omgeving met m
 
     Ja, u kunt Azure AD DS of AD-verificatie inschakelen op een bestands share die wordt beheerd door Azure file sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
 
+* <a id="ad-aad-smb-files"></a>
+**Hoe kan ik controleren of AD-verificatie is ingeschakeld voor mijn opslag account en de gegevens van het AD-domein?**
+
+    Raadpleeg de instructies die u [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) kunt vinden om te controleren of Azure files AD-verificatie is ingeschakeld voor uw opslag account en de gegevens van het AD-domein op te halen.
+    
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestands share op rest versleuteld is?**  
 

@@ -1,19 +1,19 @@
 ---
-title: Persoonlijke koppeling voor de CLI-installatie methode van Azure Database for MariaDB (preview)
+title: Persoonlijke koppeling-Azure CLI-Azure Database for MariaDB
 description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for MariaDB van Azure CLI
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561796"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371695"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MariaDB (preview) maken en beheren met CLI
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met CLI
 
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In dit artikel leert u hoe u de Azure CLI gebruikt om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MariaDB-server met een persoonlijk Azure-eind punt.
 

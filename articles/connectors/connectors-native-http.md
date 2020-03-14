@@ -1,30 +1,47 @@
 ---
-title: HTTP-en HTTPS-eind punten aanroepen
-description: Uitgaande aanvragen verzenden naar HTTP-en HTTPS-eind punten met behulp van Azure Logic Apps
+title: Service-eind punten aanroepen met behulp van HTTP of HTTPS
+description: Uitgaande HTTP-of HTTPS-aanvragen verzenden naar service-eind punten van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297191"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Uitgaande oproepen verzenden naar HTTP-of HTTPS-eind punten met behulp van Azure Logic Apps
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eind punten aanroepen via HTTP of HTTPS vanaf Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken die regel matig aanvragen verzenden naar een HTTP-of https-eind punt. Als u in plaats daarvan binnenkomende HTTP-of HTTPS-aanroepen wilt ontvangen en hierop wilt reageren, gebruikt u de ingebouwde [aanvraag-of reactie actie](../connectors/connectors-native-reqres.md).
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken waarmee aanvragen worden verzonden naar service-eind punten via http of https. U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een specifiek schema te controleren. Wanneer de opgegeven gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de acties uitgevoerd in die werk stroom. Als u in plaats daarvan binnenkomende HTTPS-aanroepen wilt ontvangen en beantwoorden, gebruikt u de ingebouwde [aanvraag-of reactie actie](../connectors/connectors-native-reqres.md).
 
-U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een opgegeven schema te controleren. Wanneer er een specifieke gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de opgegeven acties uitgevoerd.
+> [!NOTE]
+> De HTTP-connector ondersteunt de Transport Layer Security (TLS) versies 1,0, 1,1 en 1,2, op basis van de mogelijkheid van het doel eindpunt. Logic Apps onderhandelt met het eind punt met behulp van de hoogst ondersteunde versie die mogelijk is. Als het eind punt bijvoorbeeld 1,2 ondersteunt, gebruikt de connector eerst 1,2. Anders gebruikt de connector de eerstvolgende hoogste ondersteunde versie.
 
-Als u een eind punt volgens een regel matig schema wilt controleren of *pollen* , kunt u de http-trigger als eerste stap in de werk stroom gebruiken. Bij elke controle verzendt de trigger een aanroep of *aanvraag* naar het eind punt. Het antwoord van het eind punt bepaalt of de werk stroom van uw logische app wordt uitgevoerd. De trigger geeft alle inhoud van het antwoord op de acties in uw logische app door.
+Als u een eind punt in een terugkerend schema wilt controleren of *pollen* , [voegt u de http-trigger](#http-trigger) als eerste stap in de werk stroom toe. Telkens wanneer de trigger het eind punt controleert, wordt de trigger aangeroepen of een *aanvraag* naar het eind punt verzonden. Het antwoord van het eind punt bepaalt of de werk stroom van uw logische app wordt uitgevoerd. De trigger geeft inhoud van het antwoord van het eind punt door aan de acties in uw logische app.
 
-U kunt de HTTP-actie als een andere stap in uw werk stroom gebruiken om het eind punt te bellen wanneer u wilt. Het antwoord van het eind punt bepaalt hoe de resterende acties van uw werk stroom worden uitgevoerd.
+Als u een eind punt van ergens anders in uw werk stroom wilt aanroepen, [voegt u de HTTP-actie toe](#http-action). Het antwoord van het eind punt bepaalt hoe de resterende acties van uw werk stroom worden uitgevoerd.
 
-De HTTP-connector ondersteunt de Transport Layer Security (TLS) versies 1,0, 1,1 en 1,2, op basis van de mogelijkheid van het doel eindpunt. Logic Apps onderhandelt met het eind punt met behulp van de hoogst ondersteunde versie die mogelijk is. Als het eind punt bijvoorbeeld 1,2 ondersteunt, gebruikt de connector eerst 1,2. Anders gebruikt de connector de eerstvolgende hoogste ondersteunde versie.
+> [!IMPORTANT]
+> Als een HTTP-trigger of actie deze headers bevat, verwijdert Logic Apps deze headers uit het gegenereerde aanvraag bericht zonder dat er een waarschuwing of fout wordt weer gegeven:
+>
+> * `Accept-*`
+> * `Allow`
+> * `Content-*` met deze uitzonde ringen: `Content-Disposition`, `Content-Encoding`en `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Hoewel Logic Apps niet stopt met het opslaan van logische apps die gebruikmaken van een HTTP-trigger of actie met deze headers, Logic Apps deze headers negeren.
+
+In dit artikel wordt beschreven hoe u een HTTP-trigger of actie kunt toevoegen aan de werk stroom van uw logische app.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,13 +53,15 @@ De HTTP-connector ondersteunt de Transport Layer Security (TLS) versies 1,0, 1,1
 
 * De logische app waarvan u het doel eindpunt wilt aanroepen. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met de http-trigger. Als u de HTTP-actie wilt gebruiken, start u de logische app met een wille keurige trigger. In dit voor beeld wordt de HTTP-trigger als eerste stap gebruikt.
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>Een HTTP-trigger toevoegen
 
 Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een eind punt en retourneert een antwoord.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer onder **Kies een actie**in het zoekvak ' http ' in als uw filter. Selecteer in de lijst **Triggers** de **http-** trigger.
+1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak `http` in als uw filter. Selecteer in de lijst **Triggers** de **http-** trigger.
 
    ![HTTP-trigger selecteren](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,6 +82,8 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>Een HTTP-actie toevoegen
 
 Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een eind punt gemaakt en wordt een antwoord geretourneerd.
@@ -75,7 +96,7 @@ Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een 
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak ' http ' in als uw filter. Selecteer in de lijst **acties** de **http-** actie.
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak `http` in als uw filter. Selecteer in de lijst **acties** de **http-** actie.
 
    ![HTTP-actie selecteren](./media/connectors-native-http/select-http-action.png)
 

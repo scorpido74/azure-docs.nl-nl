@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258159"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371440"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -52,6 +52,8 @@ Als u een firewall proxy op basis van een URL gebruikt voor het beheren van uitg
 login.microsoftonline.com | Vereist voor autorisatie en verificatie voor de Url's van de Site Recovery-service.
 *.hypervrecoverymanager.windowsazure.com | Vereist zodat de Site Recovery service communicatie kan worden uitgevoerd vanaf de virtuele machine.
 *.servicebus.windows.net | Vereist zodat de Site Recovery bewakings-en diagnostische gegevens van de virtuele machine kunnen worden geschreven.
+*.vault.azure.net | Hiermee staat u toegang toe om replicatie in te scha kelen voor virtuele machines met ADE-functionaliteit via de portal
+*. automation.ext.azure.com | Hiermee kunt u de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal inschakelen
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
@@ -63,6 +65,8 @@ Als u een NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze se
 - Een op NSG [(Aad)-service codes](../virtual-network/security-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
 - Maak een EventsHub op basis van een NSG-regel voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
 - Maak een AzureSiteRecovery op basis van een NSG-regel voor het toestaan van toegang tot Site Recovery service in een wille keurige regio.
+- Maak een AzureKeyVault op basis van een NSG-regel. Dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE via de portal.
+- Maak een GuestAndHybridManagement op basis van een NSG-regel. Dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal.
 - We raden u aan de vereiste NSG-regels te maken op een test-NSG en te controleren of er geen problemen zijn voordat u de regels op een productie NSG maakt.
 
 ## <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie

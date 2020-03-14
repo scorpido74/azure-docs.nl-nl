@@ -2,23 +2,17 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: 1ec761a8136d631c60a7a2021f5462dbf3d7f790
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925514"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248409"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
-Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op:
-
-* abonnements niveau (in dit artikel)
-* [niveau beheer groep](deploy-to-management-group.md)
-* [Tenant niveau](deploy-to-tenant.md)
-
-U kunt implementaties op abonnements niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals het maken van resource groepen of [het toewijzen van toegangs beheer op basis van rollen](../../role-based-access-control/overview.md).
+Om het beheer van resources in uw Azure-abonnement te vereenvoudigen, kunt u [beleids regels](../../governance/policy/overview.md) of [op rollen gebaseerde toegangs controles](../../role-based-access-control/overview.md) definiëren en toewijzen in het abonnement. Met sjablonen op abonnements niveau, past u declaratief beleid toe en wijst u rollen toe aan het abonnement. U kunt ook resource groepen maken en resources implementeren.
 
 Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, Power shell of REST API. De Azure Portal biedt geen ondersteuning voor implementatie in het abonnements niveau.
 
@@ -46,10 +40,10 @@ Voor sjablonen gebruikt u:
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-Gebruik voor parameter bestanden:
+Het schema voor een parameter bestand is hetzelfde voor alle implementatie bereiken. Gebruik voor parameter bestanden:
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
@@ -387,5 +381,4 @@ New-AzSubscriptionDeployment `
 * Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 * Zie [deployASCwithWorkspaceSettings. json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)(Engelstalig) voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
 * Voorbeeld sjablonen vindt u op [github](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
-* Zie [sjabloon functies](template-functions.md)voor een lijst met de beschik bare functies in een sjabloon.
+* U kunt ook sjablonen implementeren op het niveau van de [beheer groep](deploy-to-management-group.md) en het [Tenant niveau](deploy-to-tenant.md).

@@ -1,22 +1,22 @@
 ---
 title: Overzicht van de Azure Block Chain-Service
 description: Overzicht van de Azure Block Chain-Service
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387374"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205071"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
 De Azure Block Chain-service is een volledig beheerde grootboek service waarmee gebruikers de mogelijkheid hebben om Block chain netwerken op schaal te verg Roten of te bedienen in Azure. Door Unified Control te bieden voor zowel infrastructuur beheer als Block Chain Network governance, biedt de Azure Block Chain-service de volgende mogelijkheden:
 
 * Eenvoudige netwerk implementatie en-bewerkingen
-* Ingebouwd consortiumbeheer
+* Ingebouwd consortium beheer
 * Slimme contracten ontwikkelen met vertrouwde ontwikkel Programma's
 
 De Azure Block Chain-service is ontworpen om meerdere grootboek protocollen te ondersteunen. Dit biedt momenteel ondersteuning voor het Ethereum- [quorum](https://www.goquorum.com/) grootboek met behulp van het [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus-mechanisme.
@@ -29,7 +29,7 @@ De implementatie van de Azure Block Chain-service wordt uitgevoerd via de Azure 
 
 ### <a name="performance-and-service-tiers"></a>Prestatie-en service lagen
 
-De Azure Block Chain-service biedt twee service lagen: *Basic* en *Standard*. Elke laag biedt verschillende prestaties en mogelijkheden voor het ondersteunen van de werk belasting voor lichte ontwikkeling en tests tot een enorme schaal bare productie Block Chain-implementatie. Beide lagen bevatten ten minste één transactie knooppunt en één validator-knoop punt (Basic) of twee validatie knooppunten (standaard).
+De Azure Block Chain-service biedt twee service lagen: *Basic* en *Standard*. Elke laag biedt verschillende prestaties en mogelijkheden voor het ondersteunen van de werk belasting voor lichte ontwikkeling en tests tot een enorme schaal bare productie Block Chain-implementatie. Gebruik de *basis* -laag voor het ontwikkelen, testen en testen van concepten. De *Standard* -laag gebruiken voor implementaties van productie cijfers. Beide lagen bevatten ten minste één transactie knooppunt en één validator-knoop punt (Basic) of twee validatie knooppunten (standaard). 
 
 ![Prijscategorieën](./media/overview/pricing-tiers.png)
 
@@ -41,7 +41,7 @@ Nadat u uw eerste Block Chain-lid hebt ingericht, hebt u de mogelijkheid om extr
 
 Als beheerde service zorgt Azure Block Chain-service ervoor dat de knoop punten van uw Block Chain-lid worden bijgewerkt met het nieuwste besturings systeem van de host en de software stack-updates van het groot boek, geconfigureerd voor hoge Beschik baarheid (alleen Standard-laag), waardoor veel van de DevOps vereist voor traditionele IaaS Block Chain-knoop punten.  Zie [ondersteunde Azure Block Chain Service Ledger-versies](ledger-versions.md)voor meer informatie over patches en updates.
 
-### <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
+### <a name="monitoring-and-logging"></a>Bewaking en registratie
 
 Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via Azure Monitor service die inzichten biedt in het CPU-, geheugen-en opslag gebruik van knoop punten.  Azure Monitor biedt ook nuttige inzichten in Block chain-netwerk activiteit, zoals trans acties en blokken ook niet gebruikt, de transactie wachtrij diepte en actieve verbindingen.  Metrische gegevens kunnen worden aangepast om weer gaven te bieden in de inzichten die belang rijk zijn voor uw Block Chain-toepassing.  Daarnaast kunnen drempel waarden worden gedefinieerd via waarschuwingen, waardoor gebruikers acties activeren, zoals het verzenden van een e-mail of SMS-bericht, het uitvoeren van een logische app, een Azure function of het verzenden naar een aangepaste webhook.
 
@@ -49,7 +49,7 @@ Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via 
 
 Via Azure Log Analytics kunnen gebruikers logboeken weer geven die betrekking hebben op het quorum grootboek of andere belang rijke informatie, zoals pogingen tot verbinding met de transactie knooppunten.
 
-## <a name="built-in-consortium-management"></a>Ingebouwd consortiumbeheer
+## <a name="built-in-consortium-management"></a>Ingebouwd consortium beheer
 
 Wanneer u uw eerste Block Chain-lid implementeert, moet u lid worden van of een nieuw consortium maken.  Een consortium is een logische groep die wordt gebruikt voor het beheren van het bestuur en de connectiviteit tussen Block Chain-leden die een proces voor meerdere partijen verwerken.  De Azure Block Chain-service biedt ingebouwde besturings elementen voor beheer via vooraf gedefinieerde slimme contracten die bepalen welke acties leden van het consortium kunnen ondernemen.  Deze governance-besturings elementen kunnen zo nodig worden aangepast door de beheerder van het consortium. Wanneer u een nieuw consortium maakt, is uw Block Chain-lid de standaard beheerder van het consortium, waardoor andere partijen kunnen uitnodigen om deel te nemen aan uw consortium.  U kunt alleen lid worden van een consortium als u eerder bent uitgenodigd.  Wanneer u een consortium samenvoegt, is uw Block Chain-lid onderhevig aan de governance-besturings elementen die door de beheerder van het consortium worden geplaatst.
 
@@ -71,7 +71,7 @@ Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azur
 
 Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
 
-### <a name="community-support"></a>Ondersteuning door community
+### <a name="community-support"></a>Ondersteuning voor community
 
 Neem contact op met micro soft-technici en Azure Block Chain community-experts.
 

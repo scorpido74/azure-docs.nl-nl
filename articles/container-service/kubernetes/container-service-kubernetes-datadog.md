@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271055"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371168"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>KEUR Een Azure Container Service cluster bewaken met DataDog
 
@@ -25,8 +25,8 @@ Er wordt ook van uitgegaan dat u de `az` Azure CLI en `kubectl`-hulpprogram ma's
 
 U kunt testen of u het `az`-hulp programma hebt geïnstalleerd door uit te voeren:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Als u het hulp programma `az` niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
@@ -34,13 +34,13 @@ Als u het hulp programma `az` niet hebt geïnstalleerd, zijn er [hier](https://g
 U kunt testen of u het `kubectl`-hulp programma hebt geïnstalleerd door uit te voeren:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Als `kubectl` niet is geïnstalleerd, kunt u het volgende uitvoeren:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog

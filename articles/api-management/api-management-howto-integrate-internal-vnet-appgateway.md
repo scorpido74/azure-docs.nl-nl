@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017596"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298050"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
-## <a name="overview"></a> Overzicht
+## <a name="overview"> </a> Overzicht
 
 De API Management-service kan worden geconfigureerd in een Virtual Network in de interne modus, waardoor deze alleen toegankelijk is vanuit de Virtual Network. Azure-toepassing gateway is een PAAS-service, die een Layer-7-load balancer biedt. Het fungeert als een omgekeerde proxy service en biedt een WAF (Web Application firewall).
 
@@ -55,7 +55,7 @@ In het eerste voor beeld van Setup worden al uw Api's alleen beheerd vanuit uw V
 
 ![URL-route](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a> Voordat u begint
+## <a name="before-you-begin"> </a> Voordat u begint
 
 * Zorg ervoor dat u de nieuwste versie van Azure PowerShell gebruikt. Zie de installatie-instructies bij de [installatie Azure PowerShell](/powershell/azure/install-az-ps). 
 
@@ -69,7 +69,7 @@ In het eerste voor beeld van Setup worden al uw Api's alleen beheerd vanuit uw V
 * **Aangepaste status test:** Application Gateway maakt standaard gebruik van tests op basis van IP-adressen om erachter te komen welke servers in de BackendAddressPool actief zijn. De API Management-service reageert alleen op aanvragen met de juiste host-header, daarom mislukken de standaard tests. Er moet een aangepaste status test worden gedefinieerd om de toepassings gateway te helpen bepalen dat de service actief is en dat aanvragen worden doorgestuurd.
 * **Aangepaste domein certificaten:** Om toegang te krijgen tot API Management vanaf internet, moet u een CNAME-toewijzing van de hostnaam maken naar de Application Gateway front-end-DNS-naam. Dit zorgt ervoor dat de naam van de host-header en het certificaat die worden verzonden naar Application Gateway die naar API Management worden doorgestuurd, één APIM kan herkennen als geldig. In dit voor beeld gebruiken we twee certificaten: voor de back-end en voor de ontwikkelaars Portal.  
 
-## <a name="overview-steps"></a> Stappen die vereist zijn voor het integreren van API Management en Application Gateway
+## <a name="overview-steps"> </a> Stappen die vereist zijn voor het integreren van API Management en Application Gateway
 
 1. Maak een resourcegroep voor Resource Manager.
 2. Maak een Virtual Network, subnet en openbaar IP-adres voor de Application Gateway. Maak een ander subnet voor API Management.
@@ -84,7 +84,7 @@ In het eerste voor beeld van Setup worden al uw Api's alleen beheerd vanuit uw V
 In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor externe doel groepen via de Application Gateway. Hiervoor zijn aanvullende stappen vereist voor het maken van de listener, test, instellingen en regels van de ontwikkelaars Portal. Alle details vindt u in de verschillende stappen.
 
 > [!WARNING]
-> Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) in Application Gateway.
+> Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](../application-gateway/features.md#session-affinity) in Application Gateway.
 
 > [!WARNING]
 > Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet u de firewall regel `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`uitschakelen.
@@ -363,10 +363,10 @@ De DNS-naam van de Application Gateway moet worden gebruikt voor het maken van e
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a> Samen vatting
+## <a name="summary"> </a> Samen vatting
 Azure API Management geconfigureerd in een VNET biedt één gateway-interface voor alle geconfigureerde Api's, ongeacht of deze on-premises of in de cloud worden gehost. Het integreren van Application Gateway met API Management biedt de flexibiliteit om specifieke Api's selectief toegankelijk te maken op internet en biedt een firewall voor webtoepassingen als een front-end voor uw API Management-exemplaar.
 
-## <a name="next-steps"></a> Volgende stappen
+## <a name="next-steps"> </a> Volgende stappen
 * Meer informatie over Azure-toepassing gateway
   * [Overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md)
   * [Application Gateway Web Application firewall](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

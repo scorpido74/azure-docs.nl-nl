@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 3c4634526e1f4f7d2ef03cfbacbfc472ddb4cdff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927359"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365901"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Snelstartgids: node. js gebruiken om verbinding te maken en gegevens op te vragen uit Azure Cosmos DB SQL-API-account
 
@@ -121,7 +121,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand _app.js_.
 - Selecteer de container/verzameling items.
 
   ```javascript
-  const container = await client.databases(containerId);
+  const container = await database.container(containerId);
   ```
 
 - Selecteer alle items in de container items.
