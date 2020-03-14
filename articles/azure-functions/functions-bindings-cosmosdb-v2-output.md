@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 9360a90b457f99cb9c15deda80dce8233069100d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277763"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x
 
@@ -574,6 +574,8 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 |**partitionKey**|**PartitionKey** |Als `CreateIfNotExists` is ingesteld op True, wordt het pad van de partitie sleutel voor de gemaakte verzameling gedefinieerd.|
 |**collectionThroughput**|**CollectionThroughput**| Als `CreateIfNotExists` is ingesteld op True, wordt de [door Voer](../cosmos-db/set-throughput.md) van de gemaakte verzameling gedefinieerd.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |De naam van de app-instelling met daarin uw Azure Cosmos DB-verbindingsreeks.        |
+|**preferredLocations**| **PreferredLocations**| Beschrijving Hiermee worden voorkeurs locaties (regio's) gedefinieerd voor accounts met geo-gerepliceerde data bases in de Azure Cosmos DB-service. De waarden moeten worden gescheiden door komma's. Bijvoorbeeld ' vs-Oost, VS Zuid-Centraal, Europa-noord '. |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Beschrijving Als deze optie is ingesteld op `true` samen met `PreferredLocations`, kan het gebruikmaken van [schrijf bewerkingen in meerdere regio's](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) in de Azure Cosmos DB service. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

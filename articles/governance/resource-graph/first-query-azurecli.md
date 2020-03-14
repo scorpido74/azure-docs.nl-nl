@@ -4,11 +4,11 @@ description: In deze Snelstartgids volgt u de stappen voor het inschakelen van d
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360241"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240665"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure CLI
 

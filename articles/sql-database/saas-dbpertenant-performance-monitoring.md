@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214468"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Prestaties van Azure SQL-data bases en-Pools bewaken en beheren in een SaaS-app met meerdere tenants
 
@@ -52,11 +52,11 @@ Pools en de data bases in Pools moeten worden bewaakt om ervoor te zorgen dat ze
 * Om te voor komen dat de prestaties hand matig worden bewaakt, is het het meest effectief om waarschuwingen in te **stellen die activeren wanneer data bases of Pools uit normale bereiken**komen.
 * Als u wilt reageren op schommelingen op de korte termijn in de cumulatieve reken grootte van een pool, kan het eDTU-niveau van de **pool worden uitgebreid of omlaag worden geschaald**. Als deze fluctuatie regelmatig of op voorspelbare momenten optreedt, **kan het schalen van de pool op automatisch worden ingesteld**. U kunt bijvoorbeeld omlaag schalen wanneer de workload licht is, zoals 's nachts of tijdens het weekend.
 * U kunt ook **afzonderlijke databases naar andere pools verplaatsen** bij fluctuaties op de langere termijn of wijzigingen in het aantal databases.
-* Om te reageren op de korte termijn verhogingen van *afzonderlijke* data bases **, kunnen afzonderlijke data bases uit een pool worden gehaald en kan er een afzonderlijke reken grootte worden toegewezen**. Wanneer de load is verlaagd, kan de database naar de pool worden teruggezet. Wanneer dit vooraf bekend is, kunnen data bases worden verplaatst vóór bekend om ervoor te zorgen dat de data base altijd de benodigde resources heeft en om te voor komen dat andere data bases in de pool worden beïnvloed. Als het om een voorspelbare vereiste gaat, zoals bij een locatie die met een toename in kaartverkoop te maken krijgt voor een populair evenement, kan dit beheergedrag in de toepassing worden geïntegreerd.
+* Om te reageren op de korte termijn verhogingen van *afzonderlijke* data bases **, kunnen afzonderlijke data bases uit een pool worden gehaald en kan er een afzonderlijke reken grootte worden toegewezen**. Wanneer de load is verlaagd, kan de database naar de pool worden teruggezet. Wanneer dit vooraf bekend is, kunnen data bases worden verplaatst preventief om ervoor te zorgen dat de data base altijd de benodigde resources heeft en om de impact op andere data bases in de pool te voor komen. Als het om een voorspelbare vereiste gaat, zoals bij een locatie die met een toename in kaartverkoop te maken krijgt voor een populair evenement, kan dit beheergedrag in de toepassing worden geïntegreerd.
 
 [Azure Portal](https://portal.azure.com) biedt ingebouwde functionaliteit voor bewaking en waarschuwingen voor de meeste resources. Voor SQL Database zijn bewaking en waarschuwingen beschikbaar voor databases en pools. Deze ingebouwde bewaking en waarschuwingen zijn specifiek voor resources, dus het is handig voor kleine aantallen resources, maar is niet heel handig wanneer u met veel resources werkt.
 
-Voor scenario's met grote volumes, waar u met veel resources werkt, kunnen [Azure monitor logboeken](saas-dbpertenant-log-analytics.md) worden gebruikt. Dit is een afzonderlijke Azure-service die analyse van verzonden Diagnostische logboeken en telemetrie in een Log Analytics-werk ruimte biedt. Azure Monitor logboeken kunnen telemetrie verzamelen van veel services en worden gebruikt om waarschuwingen op te vragen en in te stellen.
+Voor scenario's met grote volumes, waar u met veel resources werkt, kunnen [Azure monitor logboeken](saas-dbpertenant-log-analytics.md) worden gebruikt. Dit is een afzonderlijke Azure-service die analyse van verzonden Logboeken biedt in een Log Analytics-werk ruimte. Azure Monitor logboeken kunnen telemetrie verzamelen van veel services en worden gebruikt om waarschuwingen op te vragen en in te stellen.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De Wingtip tickets SaaS-data base ophalen per Tenant toepassings scripts
 
@@ -74,7 +74,7 @@ Als u al een batch tenants in een vorige zelf studie hebt ingericht, gaat u naar
 
 Het script implementeert 17 tenants in minder dan vijf minuten.
 
-Het script *New-TenantBatch* maakt gebruik van een geneste of gekoppelde set [Resource Manager](../azure-resource-manager/index.yml) -sjablonen waarmee een batch tenants wordt gemaakt, die standaard de Data Base- **basetenantdb** op de catalogus server kopieert om de nieuwe Tenant databases te maken, en vervolgens registreert deze in de catalogus en initialiseert deze vervolgens met de naam en het type locatie van de Tenant. Dit is consistent met de manier waarop de app een nieuwe Tenant heeft ingericht. Alle wijzigingen die zijn aangebracht in *basetenantdb* , worden toegepast op alle nieuwe tenants die daarna worden ingericht. Raadpleeg de [zelf studie schema beheer](saas-tenancy-schema-management.md) om te zien hoe u schema wijzigingen kunt aanbrengen in *bestaande* Tenant databases (inclusief de *basetenantdb* -data base).
+In het script *New-TenantBatch* wordt gebruikgemaakt van een geneste of gekoppelde set [Resource Manager](../azure-resource-manager/index.yml) -sjablonen waarmee een batch met tenants wordt gemaakt, die standaard de Data Base- **basetenantdb** op de catalogus server kopieert om de nieuwe Tenant databases te maken, deze vervolgens registreert in de catalogus en deze vervolgens initialiseert met de naam van de Tenant en het type locatie. Dit is consistent met de manier waarop de app een nieuwe Tenant heeft ingericht. Alle wijzigingen die zijn aangebracht in *basetenantdb* , worden toegepast op alle nieuwe tenants die daarna worden ingericht. Raadpleeg de [zelf studie schema beheer](saas-tenancy-schema-management.md) om te zien hoe u schema wijzigingen kunt aanbrengen in *bestaande* Tenant databases (inclusief de *basetenantdb* -data base).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Gebruik simuleren op alle tenantdatabases
 
@@ -177,7 +177,7 @@ In plaats van de pool omhoog te schalen, kunt u ook een tweede pool maken en dat
    1. Klik op **data bases toevoegen** om een lijst met data bases op de server weer te geven die kunnen worden toegevoegd aan *Pool2*.
    1. Selecteer tien data bases om deze naar de nieuwe groep te verplaatsen en klik vervolgens op **selecteren**. Als u de load Generator hebt uitgevoerd, weet de service al dat uw prestatie profiel een grotere groep vereist dan de standaard grootte van 50 eDTU en wordt u aangeraden te beginnen met een 100-eDTU-instelling.
 
-      ![Advies](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![advies](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Voor deze zelf studie verlaat u de standaard waarde op 50 Edtu's en klikt u op opnieuw **selecteren** .
    1. Selecteer **OK** om de nieuwe groep te maken en de geselecteerde data bases ernaar te verplaatsen.
@@ -206,7 +206,7 @@ Deze oefening simuleert het effect van een hoge load voor Contoso Concert Hall w
 
 1. Inspecteer de **bewakings grafiek voor elastische Pools** en zoek naar het toegenomen gebruik van de groeps-eDTU. Na een paar minuten moet de hogere load actief worden en zou de pool snel een gebruik van 100% moeten weergeven.
 2. Inspecteer de weer gave voor **Elastic data base-bewaking** , waarin de nieuwste data bases in het afgelopen uur worden weer gegeven. De *contosoconcerthall* -data base moet binnenkort worden weer gegeven als een van de vijf nieuwste data bases.
-3. **Klik op de bewakings grafiek voor Elastic data base** en de pagina **database resource gebruik** wordt geopend, waar u de data bases kunt bewaken. Hiermee kunt u de weer gave voor de *contosoconcerthall* -data base isoleren.
+3. **Klik op de bewakings grafiek voor Elastic data base** **chart** en de pagina **database resource gebruik** wordt geopend, waar u de data bases kunt bewaken. Hiermee kunt u de weer gave voor de *contosoconcerthall* -data base isoleren.
 4. Klik in de lijst met data bases op **contosoconcerthall**.
 5. Klik op **prijs categorie (dtu's schalen)** om de pagina **prestaties configureren** te openen, waar u een zelfstandige reken grootte voor de Data Base kunt instellen.
 6. Klik op het tabblad **Standard** om de schaalopties in de categorie Standard te openen.
@@ -218,7 +218,7 @@ Zodra de hoge belasting voor de contosoconcerthall-data base-subkanten wordt wee
 
 ## <a name="other-performance-management-patterns"></a>Andere patronen voor prestatie beheer
 
-**Pre-preventieve schalen** In de bovenstaande oefening kunt u zien hoe u een geïsoleerde Data Base kunt schalen, wist u welke data base u zoekt. Als het beheer van de concert hal van Contoso heeft geknoeid met de Wingtips van de bedreigende ticket verkoop, zou de data base uit de bekend van de pool kunnen worden verwijderd. Anders was er waarschijnlijk een waarschuwing voor de pool of de database nodig geweest om te zien wat er aan de hand was. U wilt dit liever niet te weten komen doordat andere tenants in de pool klagen over verminderde prestaties. Als de tenant kan voorspellen hoe lang deze aanvullende resources nodig heeft, kunt u een Azure Automation-runbook instellen om de database uit de pool te plaatsen en later weer terug de plaatsen volgens een ingesteld schema.
+**Pre-preventieve schalen** In de bovenstaande oefening kunt u zien hoe u een geïsoleerde Data Base kunt schalen, wist u welke data base u zoekt. Als het beheer van Contoso concert hal heeft geknoeid met de Wingtips van de bedreigende ticket verkoop, kon de data base uit de groep preventief worden verplaatst. Anders was er waarschijnlijk een waarschuwing voor de pool of de database nodig geweest om te zien wat er aan de hand was. U wilt dit liever niet te weten komen doordat andere tenants in de pool klagen over verminderde prestaties. Als de tenant kan voorspellen hoe lang deze aanvullende resources nodig heeft, kunt u een Azure Automation-runbook instellen om de database uit de pool te plaatsen en later weer terug de plaatsen volgens een ingesteld schema.
 
 **Self-service schalen voor tenants** Omdat schalen een taak is die eenvoudig via de Management-API kan worden aangeroepen, kunt u gemakkelijk de mogelijkheid om tenantdatabases te schalen inbouwen in uw tenantgerichte toepassing en deze als een functie van uw SaaS-service aanbieden. Laat tenants bijvoorbeeld zelf omhoog en omlaag schalen beheren, mogelijk gekoppeld aan hun facturering.
 
@@ -238,10 +238,10 @@ In deze zelfstudie leert u het volgende:
 > * Omhoog schalen van de elastische pool als reactie op de verhoogde databaseload
 > * Een tweede elastische pool inrichten om taken te verdelen voor de databaseactiviteit
 
-[Zelfstudie Een individuele tenant herstellen](saas-dbpertenant-restore-single-tenant.md)
+[Zelfstudie Een individuele tenant terugzetten](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * Aanvullende [zelf studies die voortbouwen op de Wingtip tickets SaaS data base per Tenant toepassings implementatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische SQL-pools](sql-database-elastic-pool.md)

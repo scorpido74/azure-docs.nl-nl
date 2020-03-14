@@ -7,11 +7,11 @@ description: Meer informatie over hoe Azure dev Spaces een snelle, iteratieve Ku
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, kubectl, K8S
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393605"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240700"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Inleiding tot Azure dev Spaces
 

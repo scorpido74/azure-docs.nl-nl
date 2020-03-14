@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389340"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220631"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Taal ondersteuning van Knowledge Base-inhoud voor QnA Maker
 
@@ -46,7 +46,7 @@ Hoewel de mogelijkheden van Azure Cognitive Search op pari zijn voor ondersteund
 |--|
 |Chinees|
 |Tsjechisch|
-|Nederlands|
+|Dutch|
 |Nederlands|
 |Frans|
 |Duits|

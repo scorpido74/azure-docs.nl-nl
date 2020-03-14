@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248812"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
@@ -22,7 +22,7 @@ Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`
 
 ## <a name="top-level-resource-logs-schema"></a>Schema voor resource logboeken op het hoogste niveau
 
-| Name | Vereist/optioneel | Beschrijving |
+| Naam | Vereist/optioneel | Beschrijving |
 |---|---|---|
 | tijd | Vereist | De tijds tempel (UTC) van de gebeurtenis. |
 | resourceId | Vereist | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
@@ -68,7 +68,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | IoT Hub | [IoT Hub bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Logboek registratie voor Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
-| Load balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
@@ -86,7 +86,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 
 Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen resources. Dit is een lijst van alle beschik bare in een formulier.  Bijvoorbeeld: categorieën van micro soft. SQL/servers/data bases zijn niet beschikbaar voor alle typen data bases. Zie [informatie over SQL database diagnostische logboek registratie](../../sql-database/sql-database-metrics-diag-logging.md)voor meer informatie. 
 
-|Resourcetype|Categorie|Weergave naam categorie|
+|Resourcetype|Category|Weergave naam categorie|
 |---|---|---|
 |Micro soft. AAD/domainServices|SystemSecurity|SystemSecurity|
 |Micro soft. AAD/domainServices|AccountManagement|AccountManagement|
@@ -125,7 +125,7 @@ Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen re
 |Micro soft. Databricks/werk ruimten|dbfs|Databricks-bestandssysteem|
 |Micro soft. Databricks/werk ruimten|clusters|Databricks-clusters|
 |Micro soft. Databricks/werk ruimten|accounts|Databricks-accounts|
-|Micro soft. Databricks/werk ruimten|Functies|Databricks-taken|
+|Micro soft. Databricks/werk ruimten|functies|Databricks-taken|
 |Micro soft. Databricks/werk ruimten|notitieblok|Databricks Notebook|
 |Micro soft. Databricks/werk ruimten|SSH|Databricks SSH|
 |Micro soft. Databricks/werk ruimten|werkruimte|Databricks-werk ruimte|

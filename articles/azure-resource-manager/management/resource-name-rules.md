@@ -4,11 +4,11 @@ description: Hier worden de regels en beperkingen voor het benoemen van Azure-re
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273915"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -239,7 +239,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Functies | resourcegroep | 3-24 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens en punten. |
+> | functies | resourcegroep | 3-24 | Alfanumerieke tekens, afbreek streepjes, onderstrepings tekens en punten. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
@@ -383,7 +383,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | Functies | resourcegroep | 2-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. |
+> | functies | resourcegroep | 2-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter. |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 

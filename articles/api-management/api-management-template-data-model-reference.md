@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374362"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243937"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Naslag informatie over Azure API Management-sjabloon gegevens model
 In dit onderwerp worden de entiteits-en type representaties beschreven voor algemene items die worden gebruikt in de gegevens modellen voor de sjablonen voor de ontwikkelaars Portal in azure API Management.  

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818037"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238830"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelf studie: een enkele of gegroepeerde Data Base beveiligen
 
@@ -32,7 +32,7 @@ Azure SQL Database beveiligt gegevens in een enkelvoudige of pooldatabase door:
 - Toegang te beperken met behulp van firewallregels
 - Verificatiemechanismen die identiteit vereisen
 - Autorisatie via op rollen gebaseerde lidmaatschappen en machtigingen
-- Beveiligingsfuncties in te schakelen
+- Beveiligingsfuncties inschakelen
 
 > [!NOTE]
 > Een Azure SQL-database op een beheerd exemplaar wordt beveiligd met behulp van netwerkbeveiligingsregels en privé-eindpunten, zoals beschreven in [Beheerd exemplaar voor Azure SQL Database](sql-database-managed-instance-index.yml) en [connectiviteitsarchitectuur](sql-database-managed-instance-connectivity-architecture.md).
@@ -149,7 +149,7 @@ Zie voor informatie over het configureren van Azure AD:
 
 ## <a name="manage-database-access"></a>Databasetoegang beheren
 
-Beheer databasetoegang door gebruikers toe te voegen aan de database, of door gebruikerstoegang met beveiligde verbindingsreeksen toe te staan. Verbindingsreeksen zijn nuttig voor externe toepassingen. Zie voor meer informatie [Toegangsbeheer voor Azure SQL](sql-database-control-access.md) en [AD-verificatie](sql-database-aad-authentication.md).
+Beheer databasetoegang door gebruikers toe te voegen aan de database, of door gebruikerstoegang met beveiligde verbindingsreeksen toe te staan. Verbindingsreeksen zijn nuttig voor externe toepassingen. Zie [aanmeldingen en gebruikers accounts](sql-database-manage-logins.md) en [ad-verificatie](sql-database-aad-authentication.md)beheren voor meer informatie.
 
 Kies het databaseverificatietype om gebruikers toe te voegen:
 
@@ -229,7 +229,7 @@ Ga als volgt te werk om een beveiligde verbindingsreeks te kopiëren:
 
     ![ADO.NET-verbindingsreeks](./media/sql-database-security-tutorial/connection.png)
 
-## <a name="enable-security-features"></a>Beveiligingsfuncties in te schakelen
+## <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
 
 Azure SQL Database biedt beveiligingsfuncties die toegankelijk zijn met behulp van de Azure-portal. Deze functies zijn beschikbaar voor zowel de database als de server, behalve gegevensmaskering, wat alleen beschikbaar is op de database. Zie voor meer informatie deze artikelen over [Advanced Data Security](sql-database-advanced-data-security.md), [controle](sql-database-auditing.md), [dynamische gegevensmaskering](sql-database-dynamic-data-masking-get-started.md) en [transparante gegevensversleuteling](transparent-data-encryption-azure-sql.md).
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249501"
 ---
 # <a name="azure-api-management-template-resources"></a>Resources van Azure API Management-sjabloon
 Azure API Management biedt de volgende typen resources voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
@@ -301,7 +301,7 @@ De volgende lokalisatie opties worden ondersteund:
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De gebruikers naam van de resource-eigenaar.|  
 |OAuth2UnsupportedTokenType|Het token type{0}wordt niet ondersteund.|  
 |OAuth2InvalidState|Ongeldig antwoord van de autorisatie server|  
-|OAuth2GrantType_AuthorizationCode|Autorisatie code|  
+|OAuth2GrantType_AuthorizationCode|autorisatie code|  
 |OAuth2GrantType_Implicit|Wenst|  
 |OAuth2GrantType_ClientCredentials|Clientreferenties|  
 |OAuth2GrantType_ResourceOwnerPassword|Wacht woord van resource-eigenaar|  

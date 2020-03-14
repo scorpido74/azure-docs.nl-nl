@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360820"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248929"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Voor beelden van Azure Monitor CLI Quick Start
 In dit artikel vindt u een voor beeld van opdracht regel interface-opdrachten (CLI) om u te helpen bij het openen van Azure Monitor-functies. Met Azure Monitor kunt u Cloud Services, Virtual Machines en Web Apps automatisch schalen en waarschuwings meldingen verzenden of de Url's van websites aanroepen op basis van de waarden van geconfigureerde telemetriegegevens.

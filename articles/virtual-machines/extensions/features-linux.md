@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073749"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250515"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -83,7 +83,7 @@ Azure VM-extensies worden uitgevoerd op bestaande Vm's. Dit is handig wanneer u 
 
 U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis van een bestaande virtuele machine.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat wordt uitgevoerd (https:\//raw.githubusercontent.com/me/project/hello.sh) door uw eigen gegevens. 
 

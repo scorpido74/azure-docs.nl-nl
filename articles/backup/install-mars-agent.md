@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: cf6b332c308bb0224dbfed546f8b3ba819abcb02
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247759"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -98,6 +98,10 @@ Zie [ExpressRoute Routing requirements](https://docs.microsoft.com/azure/express
 > Open bare peering is afgeschaft voor nieuwe circuits.
 
 Alle voor gaande Url's en IP-adressen gebruiken het HTTPS-protocol op poort 443.
+
+### <a name="private-endpoints"></a>Privé-eind punten
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="download-the-mars-agent"></a>De MARS-agent downloaden
 

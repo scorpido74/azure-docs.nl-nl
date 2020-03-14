@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381448"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280532"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
@@ -92,15 +92,20 @@ Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https:/
 
 ## <a name="add-api-permissions"></a>API-machtigingen toevoegen
 
-1. Klik in de sectie **beheren** op **API-machtigingen**.
-2. Klik op **machtiging toevoegen** en selecteer **Azure Active Directory Graph** vervolgens **gedelegeerde machtigingen**. 
-3. Vouw de **gebruiker** uit op de onderstaande lijst en schakel de machtiging **gebruiker. Read** in. Als **User. Read** standaard is ingeschakeld, moet u ervoor zorgen dat het de **Azure Active Directory Graph** permission **gebruiker. Read**, *niet* de **Microsoft Graph** permission **gebruiker. Read**.
+[//]: # (Wijzig de Microsoft Graph niet. Het werkt niet met Microsoft Graph.)
+1. Klik in de sectie **beheren** op **API-machtigingen**
+2. Klik op **machtiging toevoegen** en selecteer **Azure Active Directory Graph** vervolgens **gedelegeerde machtigingen**.
+> [!NOTE]
+> Zorg ervoor dat u het Azure Active Directory Graph hebt geselecteerd en niet de tegel ' Microsoft Graph '.
+
+3. Vouw de **gebruiker** uit op de onderstaande lijst en schakel de machtiging **gebruiker. Read** in. Als **User. Read** standaard is ingeschakeld, moet u ervoor zorgen dat het de **Azure Active Directory Graph** permission **gebruiker. Read**.
 4. Schuif omhoog en selecteer **toepassings machtigingen**.
-5. Vouw **map** in de onderstaande lijst uit en Schakel **Directory. ReadAll in.**
+5. Vouw **map** in de onderstaande lijst uit en Schakel **Directory. ReadAll**in.
 6. Klik op **machtigingen toevoegen** om de wijzigingen te accepteren.
 7. In het paneel API-machtigingen moeten nu zowel *User. Read* als *Directory. ReadAll*worden weer gegeven. Let op de waarschuwing in de **beheerders vergunning vereist** kolom naast *Directory. ReadAll*.
 8. Als u de beheerder van het *Azure-abonnement*bent, klikt u op **toestemming van beheerder verlenen voor *abonnements naam***  hieronder. Als u niet de beheerder van het *Azure-abonnement*bent, vraagt u de toestemming van de beheerder aan.
-![scherm opname van het paneel API-machtigingen. Gebruiker. Read en Directory. ReadAll machtigingen toegevoegd, toestemming van de beheerder vereist voor Directory. ReadAll-](./media/howto-aad-app-configuration/permissions-required.png)
+
+![Scherm opname van het paneel API-machtigingen. Gebruiker. Read en Directory. ReadAll machtigingen toegevoegd, toestemming van de beheerder vereist voor Directory. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > De synchronisatie van de groep cluster beheerders werkt pas nadat de toestemming is verleend. U ziet een groene cirkel met een vinkje en een bericht ' verleend voor *abonnements naam*' in de kolom *vereiste beheerder* .

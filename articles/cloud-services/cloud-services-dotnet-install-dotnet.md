@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360987"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214711"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
 In dit artikel wordt beschreven hoe u versies van .NET Framework installeert die niet worden meegeleverd met het Azure-gast besturingssysteem. U kunt .NET gebruiken op het gast besturingssysteem om uw web-en werk rollen van de Cloud service te configureren.
 
-U kunt bijvoorbeeld .NET 4.6.2 installeren op de gast besturingssysteem familie 4, die niet wordt geleverd met een versie van .NET 4,6. (De gast besturingssysteem familie 5 wordt geleverd met .NET 4,6.) Zie het [Azure Guest OS release News](cloud-services-guestos-update-matrix.md)(Engelstalig) voor de meest recente informatie over de versies van het Azure-gast besturingssysteem. 
+U kunt bijvoorbeeld .NET Framework 4.6.2 installeren op de gast besturingssysteem familie 4, die niet wordt geleverd met een versie van .NET Framework 4,6. (De gast besturingssysteem familie 5 wordt geleverd met .NET Framework 4,6.) Zie het [Azure Guest OS release News](cloud-services-guestos-update-matrix.md)(Engelstalig) voor de meest recente informatie over de versies van het Azure-gast besturingssysteem. 
 
 >[!IMPORTANT]
->De Azure SDK 2,9 bevat een beperking voor het implementeren van .NET 4,6 op de gast besturingssysteem familie 4 of eerder. Er is een oplossing voor de beperking beschikbaar op de [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) -site.
+>De Azure SDK 2,9 bevat een beperking voor het implementeren van .NET Framework 4,6 op de gast besturingssysteem familie 4 of eerder. Er is een oplossing voor de beperking beschikbaar op de [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) -site.
 
 Als u .NET wilt installeren op uw web-en werk rollen, moet u de .NET Web Installer opnemen als onderdeel van uw Cloud service-project. Start het installatie programma als onderdeel van de opstart taken van de rol. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>Het .NET-installatie programma toevoegen aan uw project
 Als u het web-installatie programma voor de .NET Framework wilt downloaden, kiest u de versie die u wilt installeren:
 
-* [.NET 4,8 web installer](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 Web-installatie programma](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 Web-installatie programma](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4,8 web installer](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 web installer](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 web installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Het installatie programma voor een *webrol toevoegen* :
   1. Klik **in Solution Explorer**onder **rollen** *in uw Cloud* service project met de rechter muisknop op uw webfunctie en selecteer > **nieuwe map** **toevoegen** . Maak een map met de naam **bin**.
@@ -44,7 +44,7 @@ Het installatie programma voor een *werk* rollen toevoegen:
 Wanneer bestanden op deze manier aan de map rol inhoud worden toegevoegd, worden ze automatisch toegevoegd aan uw Cloud service pakket. De bestanden worden vervolgens geïmplementeerd op een consistente locatie op de virtuele machine. Herhaal dit proces voor elke web-en werk functie in uw Cloud service, zodat alle rollen een kopie van het installatie programma hebben.
 
 > [!NOTE]
-> U moet .NET 4.6.2 in uw Cloud service functie installeren, zelfs als uw toepassing .NET 4,6 streeft. Het gast besturingssysteem bevat de Knowledge Base [update 3098779](https://support.microsoft.com/kb/3098779) en [Update 3097997](https://support.microsoft.com/kb/3097997). Er kunnen problemen optreden wanneer u uw .NET-toepassingen uitvoert als .NET 4,6 boven op de Knowledge Base-updates wordt geïnstalleerd. Als u deze problemen wilt voor komen, installeert u .NET 4.6.2 in plaats van versie 4,6. Zie het [Knowledge Base-artikel 3118750](https://support.microsoft.com/kb/3118750) en [4340191](https://support.microsoft.com/kb/4340191)voor meer informatie.
+> U moet .NET Framework 4.6.2 in de Cloud service functie installeren, zelfs als uw toepassings doelen .NET Framework 4,6. Het gast besturingssysteem bevat de Knowledge Base [update 3098779](https://support.microsoft.com/kb/3098779) en [Update 3097997](https://support.microsoft.com/kb/3097997). Er kunnen problemen optreden wanneer u uw .NET-toepassingen uitvoert als .NET Framework 4,6 boven op de Knowledge Base-updates wordt geïnstalleerd. Als u deze problemen wilt voor komen, installeert u .NET Framework 4.6.2 in plaats van versie 4,6. Zie het [Knowledge Base-artikel 3118750](https://support.microsoft.com/kb/3118750) en [4340191](https://support.microsoft.com/kb/4340191)voor meer informatie.
 > 
 > 
 
@@ -82,7 +82,7 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
 
 2. Maak een bestand met de naam **install. cmd** en voeg het volgende installatie script toe aan het bestand.
 
-   Met het script wordt gecontroleerd of de opgegeven versie van de .NET Framework al is geïnstalleerd op de machine door het REGI ster te doorzoeken. Als de .NET-versie niet is geïnstalleerd, wordt .NET web installer geopend. Om problemen op te lossen, worden alle activiteiten door het script geregistreerd in het bestand startuptasklog-(huidige datum en tijd). txt dat is opgeslagen in **InstallLogs** lokale opslag.
+   Met het script wordt gecontroleerd of de opgegeven versie van de .NET Framework al is geïnstalleerd op de machine door het REGI ster te doorzoeken. Als de .NET Framework-versie niet is geïnstalleerd, wordt de .NET Framework web installer geopend. Om problemen op te lossen, worden alle activiteiten door het script geregistreerd in het bestand startuptasklog-(huidige datum en tijd). txt dat is opgeslagen in **InstallLogs** lokale opslag.
    
    > [!IMPORTANT]
    > Gebruik een eenvoudige tekst editor, zoals Windows Klad blok, om het bestand install. cmd te maken. Als u Visual Studio gebruikt om een tekst bestand te maken en de extensie te wijzigen in. cmd, bevat het bestand mogelijk nog een UTF-8-byte order mark. Dit merk kan een fout veroorzaken wanneer de eerste regel van het script wordt uitgevoerd. U kunt deze fout voor komen door de eerste regel van het script een REM-instructie te geven die kan worden overgeslagen door de verwerking van de byte-order. 
@@ -222,7 +222,7 @@ Met deze XML worden diagnostische gegevens geconfigureerd voor het overdragen va
 ## <a name="deploy-your-cloud-service"></a>Uw Cloud service implementeren
 Wanneer u uw Cloud service implementeert, installeren de opstart taken de .NET Framework als deze nog niet is geïnstalleerd. De Cloud service rollen zijn in de status *bezet* terwijl het Framework wordt geïnstalleerd. Als de Framework-installatie opnieuw moet worden gestart, kunnen de service rollen ook opnieuw worden gestart. 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 * [De .NET Framework installeren][Installing the .NET Framework]
 * [Bepalen welke .NET Framework versies worden geïnstalleerd][How to: Determine Which .NET Framework Versions Are Installed]
 * [Problemen met .NET Framework-installaties oplossen][Troubleshooting .NET Framework Installations]

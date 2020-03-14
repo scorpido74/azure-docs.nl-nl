@@ -4,11 +4,11 @@ description: Beschrijft hoe u gekoppelde sjablonen gebruiken in een Azure Resour
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355819"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274253"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Met behulp van gekoppelde en geneste sjablonen bij het implementeren van Azure-resources
 
@@ -160,7 +160,7 @@ In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens he
 
 De waarde van de variabele wordt gewijzigd op basis van het bereik. In de volgende tabel ziet u de resultaten voor beide bereiken.
 
-| Scope | Uitvoer |
+| Bereik | Uitvoer |
 | ----- | ------ |
 | wend | van geneste sjabloon |
 | Outer (of standaard) | van bovenliggende sjabloon |
@@ -766,7 +766,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 De volgende voorbeelden ziet veelvoorkomende toepassingen van gekoppelde sjablonen.
 
-|Belangrijkste sjabloon  |Gekoppelde sjabloon |Description  |
+|Belangrijkste sjabloon  |Gekoppelde sjabloon |Beschrijving  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert de tekenreeks van gekoppelde sjabloon. |
 |[Load Balancer met openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Openbare IP-adres van de gekoppelde sjabloon retourneert en stelt u die waarde in de load balancer. |

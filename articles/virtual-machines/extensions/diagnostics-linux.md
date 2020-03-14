@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381148"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250632"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te bewaken
 
@@ -339,7 +339,7 @@ Element | Waarde
 ------- | -----
 Wastafel | Beschrijving Een door komma's gescheiden lijst met de namen van de sinks waarnaar LAD geaggregeerde metrische resultaten verzendt. Alle geaggregeerde metrische gegevens worden gepubliceerd naar elke vermelde sink. Zie [sinksConfig](#sinksconfig). Voor beeld: `"EHsink1, myjsonsink"`.
 type | Identificeert de werkelijke provider van de metriek.
-Klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
+klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counter | Samen met "class" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counterSpecifier | Identificeert de specifieke metrische waarde binnen de metrische naam ruimte van Azure.
 condition | Beschrijving Selecteert een specifiek exemplaar van het object waarop de metriek van toepassing is of selecteert de aggregatie voor alle exemplaren van dat object. Zie de `builtin` metrische definities voor meer informatie.

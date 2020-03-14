@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241736"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6b0d967dad250b06988865cde2f4ce11367f8acb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245770"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
@@ -448,10 +448,9 @@ Azure-service: [API Management](../api-management/index.yml)
 > | Bewerking | Micro soft. ApiManagement/service/gateways/lezen | Een lijst met gateways die zijn geregistreerd bij service-exemplaar. of worden de details opgehaald van de gateway die is opgegeven door de id. |
 > | Bewerking | Micro soft. ApiManagement/service/gateways/schrijven | Hiermee wordt een gateway gemaakt of bijgewerkt die moet worden gebruikt in het API Management-exemplaar. of werkt de details bij van de gateway die is opgegeven met de id. |
 > | Bewerking | Micro soft. ApiManagement/service/gateways/verwijderen | Hiermee verwijdert u de specifieke gateway. |
-> | Bewerking | Micro soft. ApiManagement/service/gateways/sleutels/actie | Hiermee worden gateway sleutels opgehaald. |
-> | Bewerking | Micro soft. ApiManagement/service/gateways/regeneratePrimaryKey/actie | Hiermee genereert u de primaire-gateway sleutel invalidationg alle tokens die ermee zijn gemaakt. |
-> | Bewerking | Micro soft. ApiManagement/service/gateways/regenerateSecondaryKey/actie | Hiermee genereert u de secundaire gateway sleutel invalidationg alle tokens die ermee zijn gemaakt. |
-> | Bewerking | Micro soft. ApiManagement/service/gateways/token/actie | Hiermee wordt het token voor gedeelde toegangs autorisatie opgehaald voor de gateway. |
+> | Bewerking | Micro soft. ApiManagement/service/gateways/Listkeys ophalen/actie | Hiermee worden gateway sleutels opgehaald. |
+> | Bewerking | Micro soft. ApiManagement/service/gateways/regenerateKey/actie | Hiermee genereert u de opgegeven gateway sleutel invalidationg alle tokens die ermee zijn gemaakt. |
+> | Bewerking | Micro soft. ApiManagement/service/gateways/generateToken/actie | Hiermee wordt het token voor gedeelde toegangs autorisatie opgehaald voor de gateway. |
 > |  | **Service/gateways/api's** |  |
 > | Bewerking | Micro soft. ApiManagement/service/gateways/api's/lezen | Hiermee wordt een verzameling weer gegeven van de Api's die zijn gekoppeld aan een gateway. |
 > | Bewerking | Micro soft. ApiManagement/service/gateways/api's/schrijven | Hiermee voegt u een API toe aan de opgegeven gateway. |
@@ -483,7 +482,7 @@ Azure-service: [API Management](../api-management/index.yml)
 > | Bewerking | Micro soft. ApiManagement/service/namedValues/lezen | Hiermee wordt een verzameling benoemde waarden weer gegeven die zijn gedefinieerd binnen een service-exemplaar. of worden de details opgehaald van de benoemde waarde die is opgegeven door de id. |
 > | Bewerking | Micro soft. ApiManagement/service/namedValues/schrijven | Hiermee wordt een benoemde waarde gemaakt of bijgewerkt. of werkt de specifieke benoemde waarde bij. |
 > | Bewerking | Micro soft. ApiManagement/service/namedValues/verwijderen | Hiermee verwijdert u een specifieke benoemde waarde uit het API Management service-exemplaar. |
-> | Bewerking | Micro soft. ApiManagement/service/namedValues/listSecrets/actie | Hiermee worden de geheimen opgehaald van de benoemde waarde die is opgegeven door de id. |
+> | Bewerking | Micro soft. ApiManagement/service/namedValues/listValue/actie | Hiermee wordt het geheim opgehaald van de benoemde waarde die is opgegeven door de id. |
 > |  | **Service-networkstatus** |  |
 > | Bewerking | Microsoft.ApiManagement/service/networkstatus/read | Hiermee wordt de netwerk toegangs status opgehaald van de resources waarvan de service afhankelijk is. |
 > |  | **Service/meldingen** |  |
@@ -809,6 +808,18 @@ Azure-service: [automatisering](../automation/index.yml)
 > | Bewerking | Micro soft. Automation/automationAccounts/knoop punten/rapporten/inhoud/lezen | Leest Azure Automation DSC-rapport inhoud |
 > |  | **automationAccounts/objectDataTypes/velden** |  |
 > | Bewerking | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | Hiermee wordt Azure Automation TypeFields |
+> |  | **automationAccounts/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnectionProxies/lezen | Lees Azure Automation particuliere endpoint-verbindings proxy |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnectionProxies/write | Hiermee maakt u een Azure Automation verbindings proxy voor een persoonlijk eind punt |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnectionProxies/validate/Action | Een verbindings aanvraag voor een privé-eind punt valideren (groupId-validatie) |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnectionProxies/verwijderen | Een Azure Automation verbindings proxy voor een persoonlijk eind punt verwijderen |
+> |  | **automationAccounts/privateEndpointConnectionProxies/operationResults** |  |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnectionProxies/operationResults/lezen | Azure Automation resultaten van een privé-eindpunt proxy ophalen. |
+> |  | **automationAccounts/privateEndpointConnections** |  |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnections/lezen | Verbindings status van Azure Automation privé-eind punt ophalen |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateEndpointConnections/write | Een Azure Automation-verbinding met een persoonlijk eind punt goed keuren of afwijzen |
+> |  | **automationAccounts/privateLinkResources** |  |
+> | Bewerking | Micro soft. Automation/automationAccounts/privateLinkResources/lezen | Hiermee worden groeps gegevens voor persoonlijke eind punten gelezen |
 > |  | **automationAccounts/python2Packages** |  |
 > | Bewerking | Microsoft.Automation/automationAccounts/python2Packages/read | Hiermee wordt een Azure Automation python 2-pakket opgehaald |
 > | Bewerking | Microsoft.Automation/automationAccounts/python2Packages/write | Hiermee wordt een Azure Automation python 2-pakket gemaakt of bijgewerkt |
@@ -910,6 +921,8 @@ Azure-service: kern geheugen
 > | Actietype | Bewerking | Beschrijving |
 > | --- | --- | --- |
 > | Bewerking | Microsoft.AzureStack/register/action | Hiermee wordt een abonnement geregistreerd bij de resource provider micro soft. AzureStack |
+> |  | **cloudManifestFiles** |  |
+> | Bewerking | Micro soft. AzureStack/cloudManifestFiles/lezen | Hiermee wordt het Cloud manifest bestand opgehaald |
 > |  | **Bewerkingen** |  |
 > | Bewerking | Microsoft.AzureStack/Operations/read | Hiermee worden de eigenschappen van een resource provider bewerking opgehaald |
 > |  | **registraties** |  |
@@ -927,8 +940,6 @@ Azure-service: kern geheugen
 > | Bewerking | Micro soft. AzureStack/registraties/producten/getProducts/actie | Hiermee wordt een lijst met Azure Stack Marketplace-Producten opgehaald |
 > | Bewerking | Micro soft. AzureStack/registraties/producten/getProduct/actie | Hiermee wordt Azure Stack Marketplace-product opgehaald |
 > | Bewerking | Micro soft. AzureStack/registraties/producten/uploadProductLog/actie | Status en tijds tempel van de product bewerkings Azure Stack van de Marketplace vastleggen |
-> |  | **verificationKeys** |  |
-> | Bewerking | Micro soft. AzureStack/verificationKeys/getCurrentKey/Action | Hiermee wordt de huidige versie van de open bare sleutel voor Azure Stack ondertekenen opgehaald |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -1010,6 +1021,7 @@ Azure-service: [Cost Management en facturering](../cost-management-billing/index
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/schrijven |  |
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/lezen |  |
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/schrijven |  |
+> | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/schrijven |  |
 > |  | **billingAccounts/billingProfiles/billingPermissions** |  |
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/billingPermissions/lezen |  |
 > |  | **billingAccounts/billingProfiles/klanten** |  |
@@ -1019,6 +1031,7 @@ Azure-service: [Cost Management en facturering](../cost-management-billing/index
 > |  | **billingAccounts/billingProfiles/invoiceSections** |  |
 > | Bewerking | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/write |  |
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/lezen |  |
+> | Bewerking | Micro soft. billing/billingAccounts/billingProfiles/invoiceSections/write |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingPermissions** |  |
 > | Bewerking | Micro soft. facturering/billingAccounts/billingProfiles/invoiceSections/billingPermissions/lezen |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingSubscriptions** |  |
@@ -1263,14 +1276,6 @@ Azure-service: [Content Delivery Network](../cdn/index.yml)
 > | Bewerking | Microsoft.Cdn/CheckNameAvailability/action |  |
 > | Bewerking | Microsoft.Cdn/ValidateProbe/action |  |
 > | Bewerking | Microsoft.Cdn/CheckResourceUsage/action |  |
-> |  | **cdnwebapplicationfirewallmanagedrulesets** |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallmanagedrulesets/lezen |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallmanagedrulesets/schrijven |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallmanagedrulesets/verwijderen |  |
-> |  | **cdnwebapplicationfirewallpolicies** |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallpolicies/lezen |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallpolicies/schrijven |  |
-> | Bewerking | Micro soft. CDN/cdnwebapplicationfirewallpolicies/verwijderen |  |
 > |  | **edgenodes** |  |
 > | Bewerking | Microsoft.Cdn/edgenodes/read |  |
 > | Bewerking | Micro soft. CDN/edgenodes/schrijven |  |
@@ -1279,10 +1284,6 @@ Azure-service: [Content Delivery Network](../cdn/index.yml)
 > | Bewerking | Microsoft.Cdn/operationresults/read |  |
 > | Bewerking | Microsoft.Cdn/operationresults/write |  |
 > | Bewerking | Microsoft.Cdn/operationresults/delete |  |
-> |  | **operationresults/cdnwebapplicationfirewallpolicyresults** |  |
-> | Bewerking | Micro soft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/lezen |  |
-> | Bewerking | Micro soft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/schrijven |  |
-> | Bewerking | Micro soft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/verwijderen |  |
 > |  | **operationresults/profileresults** |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/read |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/write |  |
@@ -1306,6 +1307,10 @@ Azure-service: [Content Delivery Network](../cdn/index.yml)
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/delete |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/DisableCustomHttps/action |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/EnableCustomHttps/action |  |
+> |  | **operationresults/profileresults/endpointresults/origingroupresults** |  |
+> | Bewerking | Micro soft. CDN/operationresults/profileresults/endpointresults/origingroupresults/lezen |  |
+> | Bewerking | Micro soft. CDN/operationresults/profileresults/endpointresults/origingroupresults/schrijven |  |
+> | Bewerking | Micro soft. CDN/operationresults/profileresults/endpointresults/origingroupresults/verwijderen |  |
 > |  | **operationresults/profileresults/endpointresults/originresults** |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/read |  |
 > | Bewerking | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/write |  |
@@ -1335,6 +1340,10 @@ Azure-service: [Content Delivery Network](../cdn/index.yml)
 > | Bewerking | Microsoft.Cdn/profiles/endpoints/customdomains/delete |  |
 > | Bewerking | Microsoft.Cdn/profiles/endpoints/customdomains/DisableCustomHttps/action |  |
 > | Bewerking | Microsoft.Cdn/profiles/endpoints/customdomains/EnableCustomHttps/action |  |
+> |  | **profielen/eind punten/origingroups** |  |
+> | Bewerking | Micro soft. CDN/profielen/eind punten/origingroups/lezen |  |
+> | Bewerking | Micro soft. CDN/profielen/eind punten/origingroups/schrijven |  |
+> | Bewerking | Micro soft. CDN/profielen/eind punten/origingroups/verwijderen |  |
 > |  | **profielen/eind punten/oorsprong** |  |
 > | Bewerking | Microsoft.Cdn/profiles/endpoints/origins/read |  |
 > | Bewerking | Microsoft.Cdn/profiles/endpoints/origins/write |  |
@@ -1756,6 +1765,7 @@ Azure-service: [Cognitive Services](../cognitive-services/index.yml)
 > [!div class="mx-tdCol2BreakAll"]
 > | Actietype | Bewerking | Beschrijving |
 > | --- | --- | --- |
+> | Bewerking | Microsoft.CognitiveServices/register/action | Registratie actie abonnement |
 > | Bewerking | Microsoft.CognitiveServices/register/action | Registreert het abonnement voor Cognitive Services |
 > | Bewerking | Microsoft.CognitiveServices/checkDomainAvailability/action | Beschik bare Sku's voor een abonnement lezen. |
 > | Bewerking | Microsoft.CognitiveServices/register/action | Registreert het abonnement voor Cognitive Services |
@@ -2447,6 +2457,8 @@ Azure-service: [container Registry](../container-registry/index.yml)
 > | Bewerking | Microsoft.ContainerRegistry/registries/queueBuild/action | Hiermee maakt u een nieuwe build op basis van de aanvraag parameters en voegt u deze toe aan de build-wachtrij. |
 > | Bewerking | Microsoft.ContainerRegistry/registries/listBuildSourceUploadUrl/action | URL-locatie voor uploaden van bron voor een container register ophalen. |
 > | Bewerking | Microsoft.ContainerRegistry/registries/scheduleRun/action | Een uitvoering plannen op basis van een container register. |
+> |  | **registers/agentpools** |  |
+> | Bewerking | Micro soft. ContainerRegistry/registers/agentpools/listQueueStatus/Action | Alle wachtrij status van een agent pool weer geven voor een container register. |
 > |  | **registers/artefacten** |  |
 > | Bewerking | Microsoft.ContainerRegistry/registries/artifacts/delete | Artefact verwijderen in container register. |
 > |  | **registers/builds** |  |
@@ -2510,6 +2522,8 @@ Azure-service: [container Registry](../container-registry/index.yml)
 > | Bewerking | Micro soft. ContainerRegistry/registers/scopeMaps/operationStatuses/lezen | Hiermee wordt een asynchrone bewerkings status van een scope toewijzing opgehaald. |
 > |  | **registers/ondertekenen** |  |
 > | Bewerking | Micro soft. ContainerRegistry/registers/ondertekenen/schrijven | Meta gegevens van de vertrouwens relatie push/pull voor een container register. |
+> |  | **registers/taskruns** |  |
+> | Bewerking | Micro soft. ContainerRegistry/registers/taskruns/listDetails/Action | Alle details van een taskrun weer geven voor een container register. |
 > |  | **registers/taken** |  |
 > | Bewerking | Microsoft.ContainerRegistry/registries/tasks/read | Hiermee wordt een taak opgehaald voor een container register of worden alle taken weer gegeven. |
 > | Bewerking | Microsoft.ContainerRegistry/registries/tasks/write | Hiermee wordt een taak voor een container register gemaakt of bijgewerkt. |
@@ -2812,6 +2826,9 @@ Azure-service: [Azure Databricks](../azure-databricks/index.yml)
 > | Bewerking | Microsoft.Databricks/workspaces/delete | Hiermee verwijdert u een Databricks-werk ruimte. |
 > | Bewerking | Micro soft. Databricks/werk ruimten/refreshPermissions/actie | Machtigingen voor een werk ruimte vernieuwen |
 > | Bewerking | Micro soft. Databricks/werk ruimten/updateDenyAssignment/actie | Geen acties voor het weigeren van toewijzingen bijwerken voor een beheerde resource groep van een werk ruimte |
+> | Bewerking | Micro soft. Databricks/werk ruimten/refreshWorkspaces/actie | Een werk ruimte vernieuwen met nieuwe details zoals URL |
+> |  | **werk ruimten/dbWorkspaces** |  |
+> | Bewerking | Micro soft. Databricks/werk ruimten/dbWorkspaces/schrijven | Initialiseert de Databricks-werk ruimte (alleen intern) |
 > |  | **werk ruimten/providers/micro soft. Insights/diagnosticSettings** |  |
 > | Bewerking | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Hiermee stelt u de beschik bare Diagnostische instellingen voor de Databricks-werk ruimte in |
 > | Bewerking | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | Diagnostische instellingen toevoegen of wijzigen. |
@@ -3470,7 +3487,7 @@ Azure-service: [Azure database for PostgreSQL](../postgresql/index.yml)
 > | Bewerking | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Hiermee wordt de disagnostic-instelling voor de resource opgehaald |
 > | Bewerking | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Hiermee wordt de diagnostische instelling voor de resource gemaakt of bijgewerkt |
 > |  | **servers/providers/micro soft. Insights/logDefinitions** |  |
-> | Bewerking | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Hiermee worden de beschik bare logboeken voor post gres-servers opgehaald |
+> | Bewerking | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Hiermee worden de beschik bare logboeken voor PostgreSQL-servers opgehaald |
 > |  | **servers/providers/micro soft. Insights/metricDefinitions** |  |
 > | Bewerking | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Typen metrische gegevens die beschikbaar zijn voor data bases retour neren |
 > |  | **servers/queryTexts** |  |
@@ -3506,7 +3523,7 @@ Azure-service: [Azure database for PostgreSQL](../postgresql/index.yml)
 > | Bewerking | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/read | Hiermee wordt de disagnostic-instelling voor de resource opgehaald |
 > | Bewerking | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/write | Hiermee wordt de diagnostische instelling voor de resource gemaakt of bijgewerkt |
 > |  | **serversv2/providers/micro soft. Insights/logDefinitions** |  |
-> | Bewerking | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | Hiermee worden de beschik bare logboeken voor post gres-servers opgehaald |
+> | Bewerking | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | Hiermee worden de beschik bare logboeken voor PostgreSQL-servers opgehaald |
 > |  | **serversv2/providers/micro soft. Insights/metricDefinitions** |  |
 > | Bewerking | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/metricDefinitions/read | Typen metrische gegevens die beschikbaar zijn voor data bases retour neren |
 
@@ -3597,6 +3614,7 @@ Azure-service: [IOT hub](../iot-hub/index.yml), [IOT hub Device Provisioning Ser
 > | Bewerking | Microsoft.Devices/iotHubs/listkeys/Action | Alle IotHub-sleutels ophalen |
 > | Bewerking | Microsoft.Devices/iotHubs/exportDevices/Action | Apparaten exporteren |
 > | Bewerking | Microsoft.Devices/iotHubs/importDevices/Action | Apparaten importeren |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionsApproval/Action | Een persoonlijke eindpunt verbinding goed keuren of afwijzen |
 > |  | **iotHubs/certificaten** |  |
 > | Bewerking | Microsoft.Devices/iotHubs/certificates/Read | Hiermee wordt het certificaat opgehaald |
 > | Bewerking | Microsoft.Devices/iotHubs/certificates/Write | Certificaat maken of bijwerken |
@@ -3611,6 +3629,10 @@ Azure-service: [IOT hub](../iot-hub/index.yml), [IOT hub Device Provisioning Ser
 > |  | **IotHubs/diagnosticSettings** |  |
 > | Bewerking | Microsoft.Devices/IotHubs/diagnosticSettings/read | Hiermee wordt de diagnostische instelling voor de resource opgehaald |
 > | Bewerking | Microsoft.Devices/IotHubs/diagnosticSettings/write | Hiermee wordt de diagnostische instelling voor de resource gemaakt of bijgewerkt |
+> |  | **iotHubs/digitalTwinsLinks** |  |
+> | Bewerking | Micro soft. devices/iotHubs/digitalTwinsLinks/schrijven |  |
+> | Bewerking | Micro soft. devices/iotHubs/digitalTwinsLinks/lezen |  |
+> | Bewerking | Micro soft. devices/iotHubs/digitalTwinsLinks/verwijderen |  |
 > |  | **iotHubs/eventGridFilters** |  |
 > | Bewerking | Microsoft.Devices/iotHubs/eventGridFilters/Write | Een nieuw Event Grid filter maken of een bestaand item bijwerken |
 > | Bewerking | Microsoft.Devices/iotHubs/eventGridFilters/Read | Hiermee wordt het Event Grid filter opgehaald |
@@ -3631,6 +3653,21 @@ Azure-service: [IOT hub](../iot-hub/index.yml), [IOT hub Device Provisioning Ser
 > | Bewerking | Microsoft.Devices/IotHubs/metricDefinitions/read | Hiermee worden de beschik bare metrische gegevens opgehaald voor de IotHub-service |
 > |  | **iotHubs/operationresults** |  |
 > | Bewerking | Microsoft.Devices/iotHubs/operationresults/Read | Resultaat van bewerking ophalen (verouderde API) |
+> |  | **iotHubs/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionProxies/validate/Action | Valideert de invoer van de verbinding met het privé-eind punt tijdens het maken |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionProxies/lezen | Hiermee worden de eigenschappen van de opgegeven particuliere endpoint-verbindings proxy opgehaald |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionProxies/schrijven | Hiermee wordt een particuliere endpoint-verbindings proxy gemaakt of bijgewerkt |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionProxies/verwijderen | Hiermee verwijdert u een bestaande verbindings proxy voor een persoonlijk eind punt |
+> |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnectionProxies/operationResults/lezen | Het resultaat van een asynchrone bewerking op een particuliere endpoint-verbindings proxy ophalen |
+> |  | **iotHubs/privateEndpointConnections** |  |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnections/lezen | Hiermee worden de eigenschappen voor de opgegeven persoonlijke eindpunt verbinding opgehaald |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnections/verwijderen | Hiermee verwijdert u een bestaande persoonlijke eindpunt verbinding |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnections/schrijven | Hiermee wordt een verbinding met een privé-eind punt gemaakt of bijgewerkt |
+> |  | **iotHubs/privateEndpointConnections/operationResults** |  |
+> | Bewerking | Micro soft. devices/iotHubs/privateEndpointConnections/operationResults/lezen | Het resultaat van een asynchrone bewerking ophalen voor een verbinding met een privé-eind punt |
+> |  | **iotHubs/privateLinkResources** |  |
+> | Bewerking | Micro soft. devices/iotHubs/privateLinkResources/lezen | Hiermee worden persoonlijke koppelings bronnen voor IotHub opgehaald |
 > |  | **iotHubs/quotaMetrics** |  |
 > | Bewerking | Microsoft.Devices/iotHubs/quotaMetrics/Read | Quotum metrieken ophalen |
 > |  | **iotHubs/route ring** |  |
@@ -4121,6 +4158,17 @@ Azure-service: [Event grid](../event-grid/index.yml)
 > | Bewerking | Microsoft.EventGrid/domains/delete | Een domein verwijderen |
 > | Bewerking | Microsoft.EventGrid/domains/listKeys/action | Sleutels voor een domein weer geven |
 > | Bewerking | Microsoft.EventGrid/domains/regenerateKey/action | Sleutel voor een domein opnieuw genereren |
+> |  | **domeinen/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. EventGrid/domains/privateEndpointConnectionProxies/validate/Action | PrivateEndpointConnectionProxies voor domeinen valideren |
+> | Bewerking | Micro soft. EventGrid/domains/privateEndpointConnectionProxies/lezen | PrivateEndpointConnectionProxies voor domeinen lezen |
+> | Bewerking | Micro soft. EventGrid/domains/privateEndpointConnectionProxies/write | PrivateEndpointConnectionProxies voor domeinen schrijven |
+> | Bewerking | Micro soft. EventGrid/domeinen/privateEndpointConnectionProxies/verwijderen | PrivateEndpointConnectionProxies voor domeinen verwijderen |
+> |  | **domeinen/privateEndpointConnections** |  |
+> | Bewerking | Micro soft. EventGrid/domains/privateEndpointConnections/lezen | PrivateEndpointConnections voor domeinen lezen |
+> | Bewerking | Micro soft. EventGrid/domains/privateEndpointConnections/write | PrivateEndpointConnections voor domeinen schrijven |
+> | Bewerking | Micro soft. EventGrid/domeinen/privateEndpointConnections/verwijderen | PrivateEndpointConnections voor domeinen verwijderen |
+> |  | **domeinen/privateLinkResources** |  |
+> | Bewerking | Micro soft. EventGrid/domains/privateLinkResources/lezen | PrivateLinkResources voor domeinen ophalen of weer geven |
 > |  | **domeinen/providers/micro soft. Insights/logDefinitions** |  |
 > | Bewerking | Micro soft. EventGrid/domains/providers/micro soft. Insights/logDefinitions/lezen | Toegang tot Diagnostische logboeken toestaan |
 > |  | **domeinen/providers/micro soft. Insights/metricDefinitions** |  |
@@ -4160,12 +4208,56 @@ Azure-service: [Event grid](../event-grid/index.yml)
 > | Bewerking | Microsoft.EventGrid/operations/read | Lijst met EventGrid-bewerkingen. |
 > |  | **operationsStatus** |  |
 > | Bewerking | Microsoft.EventGrid/operationsStatus/read | De status van een bewerking lezen |
+> |  | **partnerNamespaces** |  |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/schrijven | Een partner naam ruimte maken of bijwerken |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/lezen | Een partner naam ruimte lezen |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/verwijderen | Een partner naam ruimte verwijderen |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/Listkeys ophalen/Action | Sleutels voor een partner naam ruimte weer geven |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/regenerateKey/Action | Sleutel voor een partner naam ruimte opnieuw genereren |
+> |  | **partnerNamespaces/eventChannels** |  |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/eventChannels/lezen | Een gebeurtenis kanaal lezen |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/eventChannels/write | Een gebeurtenis kanaal maken of bijwerken |
+> | Bewerking | Micro soft. EventGrid/partnerNamespaces/eventChannels/verwijderen | Een gebeurtenis kanaal verwijderen |
+> |  | **partnerRegistrations** |  |
+> | Bewerking | Micro soft. EventGrid/partnerRegistrations/schrijven | Een partner registratie maken of bijwerken |
+> | Bewerking | Micro soft. EventGrid/partnerRegistrations/lezen | Een partner registratie lezen |
+> | Bewerking | Micro soft. EventGrid/partnerRegistrations/verwijderen | Een partner registratie verwijderen |
+> |  | **partnerTopics** |  |
+> | Bewerking | Micro soft. EventGrid/partnerTopics/lezen | Een partner onderwerp lezen |
+> | Bewerking | Micro soft. EventGrid/partnerTopics/schrijven | Een partner onderwerp maken of bijwerken |
+> | Bewerking | Micro soft. EventGrid/partnerTopics/verwijderen | Een partner onderwerp verwijderen |
+> | Bewerking | Micro soft. EventGrid/partnerTopics/Activate/actie | Partner onderwerp activeren |
+> | Bewerking | Micro soft. EventGrid/partnerTopics/deactiveren/actie | Onderwerp van partner deactiveren |
+> |  | **SKU** |  |
+> | Bewerking | Micro soft. EventGrid/SKU/lezen | Beschik bare SKU-definities voor Event grid-resources lezen |
+> |  | **systemTopics** |  |
+> | Bewerking | Micro soft. EventGrid/systemTopics/lezen | Een systeem onderwerp lezen |
+> | Bewerking | Micro soft. EventGrid/systemTopics/schrijven | Een systeem onderwerp maken of bijwerken |
+> | Bewerking | Micro soft. EventGrid/systemTopics/verwijderen | Een systeem onderwerp verwijderen |
+> |  | **systemTopics/providers/micro soft. Insights/diagnosticSettings** |  |
+> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/diagnosticSettings/lezen | Hiermee wordt de diagnostische instelling voor systeem onderwerpen opgehaald |
+> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/diagnosticSettings/schrijven | Hiermee wordt de diagnostische instelling voor systeem onderwerpen gemaakt of bijgewerkt |
+> |  | **systemTopics/providers/micro soft. Insights/logDefinitions** |  |
+> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/logDefinitions/lezen | Toegang tot Diagnostische logboeken toestaan |
+> |  | **systemTopics/providers/micro soft. Insights/metricDefinitions** |  |
+> | Bewerking | Micro soft. EventGrid/systemTopics/providers/micro soft. Insights/metricDefinitions/lezen | Hiermee worden de beschik bare metrische gegevens opgehaald voor systeem onderwerpen |
 > |  | **onderwerp** |  |
 > | Bewerking | Microsoft.EventGrid/topics/write | Een onderwerp maken of bijwerken |
 > | Bewerking | Microsoft.EventGrid/topics/read | Een onderwerp lezen |
 > | Bewerking | Microsoft.EventGrid/topics/delete | Een onderwerp verwijderen |
 > | Bewerking | Microsoft.EventGrid/topics/listKeys/action | Sleutels voor een onderwerp weer geven |
 > | Bewerking | Microsoft.EventGrid/topics/regenerateKey/action | Sleutel voor een onderwerp opnieuw genereren |
+> |  | **onderwerpen/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnectionProxies/validate/Action | PrivateEndpointConnectionProxies voor onderwerpen valideren |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnectionProxies/lezen | PrivateEndpointConnectionProxies voor onderwerpen lezen |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnectionProxies/schrijven | PrivateEndpointConnectionProxies schrijven voor onderwerpen |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnectionProxies/verwijderen | PrivateEndpointConnectionProxies voor onderwerpen verwijderen |
+> |  | **onderwerpen/privateEndpointConnections** |  |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnections/lezen | PrivateEndpointConnections voor onderwerpen lezen |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnections/schrijven | PrivateEndpointConnections schrijven voor onderwerpen |
+> | Bewerking | Micro soft. EventGrid/topics/privateEndpointConnections/verwijderen | PrivateEndpointConnections voor onderwerpen verwijderen |
+> |  | **onderwerpen/privateLinkResources** |  |
+> | Bewerking | Micro soft. EventGrid/topics/privateLinkResources/lezen | PrivateLinkResources voor onderwerpen lezen |
 > |  | **onderwerpen/providers/micro soft. Insights/diagnosticSettings** |  |
 > | Bewerking | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | Hiermee wordt de diagnostische instelling voor onderwerpen opgehaald |
 > | Bewerking | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | Hiermee wordt de diagnostische instelling voor onderwerpen gemaakt of bijgewerkt |
@@ -4259,6 +4351,11 @@ Azure-service: [Event hubs](../event-hubs/index.yml)
 > | Bewerking | Microsoft.EventHub/namespaces/networkrulesets/delete | VNET-regel resource verwijderen |
 > |  | **naam ruimten/operationresults** |  |
 > | Bewerking | Microsoft.EventHub/namespaces/operationresults/read | De status van de naam ruimte bewerking ophalen |
+> |  | **naam ruimten/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. EventHub/naam ruimten/privateEndpointConnectionProxies/validate/Action | Particuliere endpoint-verbindings proxy valideren |
+> | Bewerking | Micro soft. EventHub/naam ruimten/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eind punt ophalen |
+> | Bewerking | Micro soft. EventHub/naam ruimten/privateEndpointConnectionProxies/schrijven | Verbinding maken met proxy voor persoonlijk eind punt |
+> | Bewerking | Micro soft. EventHub/naam ruimten/privateEndpointConnectionProxies/verwijderen | De verbindings proxy voor het particuliere eind punt verwijderen |
 > |  | **naam ruimten/providers/micro soft. Insights/diagnosticSettings** |  |
 > | Bewerking | Micro soft. EventHub/naam ruimten/providers/micro soft. Insights/diagnosticSettings/lezen | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Bewerking | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
@@ -4885,6 +4982,8 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Micro soft. Insights/myWorkbooks/lezen | Een persoonlijke werkmap lezen |
 > |  | **Bewerkingen** |  |
 > | Bewerking | Microsoft.Insights/Operations/Read | Lees bewerkingen |
+> |  | **PrivateLinkScopeOperationStatuses** |  |
+> | Bewerking | Micro soft. Insights/PrivateLinkScopeOperationStatuses/lezen | De bewerkings status van een privé-koppelings bereik lezen |
 > |  | **PrivateLinkScopes** |  |
 > | Bewerking | Micro soft. Insights/PrivateLinkScopes/lezen | Een persoonlijk koppelings bereik lezen |
 > | Bewerking | Micro soft. Insights/PrivateLinkScopes/schrijven | Een persoonlijk koppelings bereik maken of bijwerken |
@@ -5630,6 +5729,7 @@ Azure-service: kern geheugen
 > | Actietype | Bewerking | Beschrijving |
 > | --- | --- | --- |
 > | Bewerking | Microsoft.Marketplace/register/action | Hiermee wordt de resource provider micro soft. Marketplace geregistreerd in het abonnement. |
+> | Bewerking | Micro soft. Marketplace/privateStores/actie | Werkt PrivateStore. |
 > |  | **offerTypes/uitgevers/aanbiedingen/plannen/overeenkomsten** |  |
 > | Bewerking | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | Retourneert een overeenkomst. |
 > | Bewerking | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | Accepteert een ondertekende overeenkomst. |
@@ -5637,6 +5737,13 @@ Azure-service: kern geheugen
 > | Bewerking | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | Retourneert een configuratie. |
 > | Bewerking | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | Hiermee wordt een configuratie opgeslagen. |
 > | Bewerking | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | Hiermee importeert u een installatie kopie naar de ACR van de eind gebruiker. |
+> |  | **privateStores** |  |
+> | Bewerking | Micro soft. Marketplace/privateStores/schrijven | Maakt PrivateStore. |
+> | Bewerking | Micro soft. Marketplace/privateStores/verwijderen | Hiermee verwijdert u PrivateStore. |
+> | Bewerking | Micro soft. Marketplace/privateStores/aanbiedingen/actie | Update aanbieding in PrivateStore. |
+> |  | **privateStores/aanbiedingen** |  |
+> | Bewerking | Micro soft. Marketplace/privateStores/aanbiedingen/schrijven | Hiermee maakt u een aanbieding in PrivateStore. |
+> | Bewerking | Micro soft. Marketplace/privateStores/aanbiedingen/verwijderen | De aanbieding wordt uit PrivateStore verwijderd. |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -5988,6 +6095,10 @@ Azure-service [: Virtual Network](../virtual-network/index.yml), [Load Balancer]
 > | Bewerking | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Hiermee wordt een Application Gateway WAF-beleid opgehaald |
 > | Bewerking | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Hiermee maakt u een Application Gateway WAF-beleid of werkt u een Application Gateway WAF-beleid bij |
 > | Bewerking | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Hiermee wordt een Application Gateway WAF-beleid verwijderd |
+> |  | **applicationRuleCollections** |  |
+> | Bewerking | Micro soft. Network/applicationRuleCollections/lezen | Hiermee wordt Azure Firewall ApplicationRuleCollection |
+> | Bewerking | Micro soft. Network/applicationRuleCollections/schrijven | CreatesOrUpdates Azure Firewall ApplicationRuleCollection |
+> | Bewerking | Micro soft. Network/applicationRuleCollections/verwijderen | Hiermee verwijdert u Azure Firewall ApplicationRuleCollection |
 > |  | **applicationSecurityGroups** |  |
 > | Bewerking | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Voegt een IP-configuratie toe aan toepassings beveiligings groepen. Niet alertable. |
 > | Bewerking | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Er wordt een beveiligings regel toegevoegd aan toepassings beveiligings groepen. Niet alertable. |
@@ -6259,6 +6370,22 @@ Azure-service [: Virtual Network](../virtual-network/index.yml), [Load Balancer]
 > | Bewerking | Microsoft.Network/locations/usages/read | Hiermee worden de metrische gegevens over het bronnen gebruik opgehaald |
 > |  | **locaties/virtualNetworkAvailableEndpointServices** |  |
 > | Bewerking | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Hiermee wordt een lijst met beschik bare Virtual Network endpoint services opgehaald |
+> |  | **natRuleCollections** |  |
+> | Bewerking | Micro soft. Network/natRuleCollections/lezen | Hiermee wordt Azure Firewall NatRuleCollection |
+> | Bewerking | Micro soft. Network/natRuleCollections/schrijven | CreatesOrUpdates Azure Firewall NatRuleCollection |
+> | Bewerking | Micro soft. Network/natRuleCollections/verwijderen | Hiermee verwijdert u Azure Firewall NatRuleCollection |
+> |  | **networkExperimentProfiles** |  |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/lezen | Een Internet Analyzer-profiel ophalen |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/schrijven | Een Internet Analyzer-profiel maken of bijwerken |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/verwijderen | Een Internet Analyzer-profiel verwijderen |
+> |  | **networkExperimentProfiles/experimenten** |  |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/experimenten/lezen | Een Internet Analyzer-test ophalen |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/experimenten/schrijven | Een Internet Analyzer-test maken of bijwerken |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/experimenten/verwijderen | Een Internet Analyzer-test verwijderen |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/experimenten/tijds Erie/Action | De tijd reeks van een Internet Analyzer-test ophalen |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/experimenten/latencyScorecard/Action | De latentie Score Card van een Internet Analyzer-test ophalen |
+> |  | **networkExperimentProfiles/preconfiguredEndpoints** |  |
+> | Bewerking | Micro soft. Network/networkExperimentProfiles/preconfiguredEndpoints/lezen | De vooraf geconfigureerde eind punten van een Internet Analyzer-profiel ophalen |
 > |  | **networkIntentPolicies** |  |
 > | Bewerking | Microsoft.Network/networkIntentPolicies/read | Hiermee wordt een beschrijving van het beleid voor netwerk intentie opgehaald |
 > | Bewerking | Microsoft.Network/networkIntentPolicies/write | Hiermee wordt een beleid voor netwerk intentie gemaakt of een bestaand netwerk intentie beleid bijgewerkt |
@@ -6287,6 +6414,10 @@ Azure-service [: Virtual Network](../virtual-network/index.yml), [Load Balancer]
 > | Bewerking | Microsoft.Network/networkProfiles/setContainers/action | Containers instellen |
 > | Bewerking | Microsoft.Network/networkProfiles/removeContainers/action | Containers verwijderen |
 > | Bewerking | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | Netwerk interfaces voor containers instellen |
+> |  | **networkRuleCollections** |  |
+> | Bewerking | Micro soft. Network/networkRuleCollections/lezen | Hiermee wordt Azure Firewall NetworkRuleCollection |
+> | Bewerking | Micro soft. Network/networkRuleCollections/schrijven | CreatesOrUpdates Azure Firewall NetworkRuleCollection |
+> | Bewerking | Micro soft. Network/networkRuleCollections/verwijderen | Hiermee verwijdert u Azure Firewall NetworkRuleCollection |
 > |  | **networkSecurityGroups** |  |
 > | Bewerking | Microsoft.Network/networkSecurityGroups/read | Hiermee wordt een definitie van een netwerk beveiligings groep opgehaald |
 > | Bewerking | Microsoft.Network/networkSecurityGroups/write | Hiermee wordt een netwerk beveiligings groep gemaakt of een bestaande netwerk beveiligings groep bijgewerkt |
@@ -7030,6 +7161,18 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/ADFActivityRun/read | Gegevens uit de ADFActivityRun-tabel lezen |
 > |  | **werk ruimten/query/ADFPipelineRun** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/ADFPipelineRun/read | Gegevens uit de ADFPipelineRun-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISIntegrationRuntimeLogs** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISIntegrationRuntimeLogs/lezen | Gegevens uit de ADFSSISIntegrationRuntimeLogs-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISPackageEventMessageContext** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISPackageEventMessageContext/lezen | Gegevens uit de ADFSSISPackageEventMessageContext-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISPackageEventMessages** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISPackageEventMessages/lezen | Gegevens uit de ADFSSISPackageEventMessages-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISPackageExecutableStatistics** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISPackageExecutableStatistics/lezen | Gegevens uit de ADFSSISPackageExecutableStatistics-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISPackageExecutionComponentPhases** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISPackageExecutionComponentPhases/lezen | Gegevens uit de ADFSSISPackageExecutionComponentPhases-tabel lezen |
+> |  | **werk ruimten/query/ADFSSISPackageExecutionDataStatistics** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ADFSSISPackageExecutionDataStatistics/lezen | Gegevens uit de ADFSSISPackageExecutionDataStatistics-tabel lezen |
 > |  | **werk ruimten/query/ADFTriggerRun** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/ADFTriggerRun/read | Gegevens uit de ADFTriggerRun-tabel lezen |
 > |  | **werk ruimten/query/ADReplicationResult** |  |
@@ -7052,14 +7195,30 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AmlComputeJobEvent/lezen | Gegevens uit de AmlComputeJobEvent-tabel lezen |
 > |  | **werk ruimten/query/ApiManagementGatewayLogs** |  |
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/ApiManagementGatewayLogs/lezen | Gegevens uit de ApiManagementGatewayLogs-tabel lezen |
+> |  | **werk ruimten/query/AppAvailabilityResults** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppAvailabilityResults/lezen | Gegevens uit de AppAvailabilityResults-tabel lezen |
+> |  | **werk ruimten/query/AppBrowserTimings** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppBrowserTimings/lezen | Gegevens uit de AppBrowserTimings-tabel lezen |
 > |  | **werk ruimten/query/AppCenterError** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | Gegevens uit de AppCenterError-tabel lezen |
+> |  | **werk ruimten/query/AppDependencies** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppDependencies/lezen | Gegevens uit de AppDependencies-tabel lezen |
+> |  | **werk ruimten/query/AppEvents** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppEvents/lezen | Gegevens uit de AppEvents-tabel lezen |
 > |  | **werk ruimten/query/ApplicationInsights** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Gegevens uit de ApplicationInsights-tabel lezen |
+> |  | **werk ruimten/query/AppMetrics** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppMetrics/lezen | Gegevens uit de AppMetrics-tabel lezen |
+> |  | **werk ruimten/query/AppPageViews** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppPageViews/lezen | Gegevens uit de AppPageViews-tabel lezen |
+> |  | **werk ruimten/query/AppPerformanceCounters** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppPerformanceCounters/lezen | Gegevens uit de AppPerformanceCounters-tabel lezen |
 > |  | **werk ruimten/query/AppPlatformLogsforSpring** |  |
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppPlatformLogsforSpring/lezen | Gegevens uit de AppPlatformLogsforSpring-tabel lezen |
 > |  | **werk ruimten/query/AppPlatformSystemLogs** |  |
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppPlatformSystemLogs/lezen | Gegevens uit de AppPlatformSystemLogs-tabel lezen |
+> |  | **werk ruimten/query/AppRequests** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppRequests/lezen | Gegevens uit de AppRequests-tabel lezen |
 > |  | **werk ruimten/query/AppServiceAppLogs** |  |
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppServiceAppLogs/lezen | Gegevens uit de AppServiceAppLogs-tabel lezen |
 > |  | **werk ruimten/query/AppServiceAuditLogs** |  |
@@ -7072,6 +7231,10 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppServiceFileAuditLogs/lezen | Gegevens uit de AppServiceFileAuditLogs-tabel lezen |
 > |  | **werk ruimten/query/AppServiceHTTPLogs** |  |
 > | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppServiceHTTPLogs/lezen | Gegevens uit de AppServiceHTTPLogs-tabel lezen |
+> |  | **werk ruimten/query/AppSystemEvents** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppSystemEvents/lezen | Gegevens uit de AppSystemEvents-tabel lezen |
+> |  | **werk ruimten/query/AppTraces** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AppTraces/lezen | Gegevens uit de AppTraces-tabel lezen |
 > |  | **werk ruimten/query/audit logs bevat** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | Gegevens uit de audit logs bevat-tabel lezen |
 > |  | **werk ruimten/query/AutoscaleEvaluationsLog** |  |
@@ -7086,6 +7249,8 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | Gegevens uit de AzureActivity-tabel lezen |
 > |  | **werk ruimten/query/AzureAssessmentRecommendation** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | Gegevens uit de AzureAssessmentRecommendation-tabel lezen |
+> |  | **werk ruimten/query/AzureDiagnostics** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/AzureDiagnostics/lezen | Gegevens uit de AzureDiagnostics-tabel lezen |
 > |  | **werk ruimten/query/AzureMetrics** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | Gegevens uit de AzureMetrics-tabel lezen |
 > |  | **werk ruimten/query/BaiClusterEvent** |  |
@@ -7424,6 +7589,8 @@ Azure-service: [Azure monitor](../azure-monitor/index.yml)
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | Gegevens uit de SPAssessmentRecommendation-tabel lezen |
 > |  | **werk ruimten/query/SQLAssessmentRecommendation** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | Gegevens uit de SQLAssessmentRecommendation-tabel lezen |
+> |  | **werk ruimten/query/SqlDataClassification** |  |
+> | Bewerking | Micro soft. OperationalInsights/werk ruimten/query/SqlDataClassification/lezen | Gegevens uit de SqlDataClassification-tabel lezen |
 > |  | **werk ruimten/query/SQLQueryPerformance** |  |
 > | Bewerking | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Gegevens uit de SQLQueryPerformance-tabel lezen |
 > |  | **werk ruimten/query/SqlThreatProtectionLoginAudits** |  |
@@ -7784,6 +7951,21 @@ Azure-service: [site Recovery](../site-recovery/index.yml)
 > |  | **Kluizen/monitoringConfigurations** |  |
 > | Bewerking | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | Hiermee wordt de configuratie van de Recovery Services-kluis melding opgehaald. |
 > | Bewerking | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | Hiermee configureert u e-mail meldingen voor de Recovery Services-kluis. |
+> |  | **Kluizen/privateEndpointConnectionProxies** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/verwijderen | Alle Beveilig bare containers ophalen |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/lezen | Alle Beveilig bare containers ophalen |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/validate/Action | Alle Beveilig bare containers ophalen |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/schrijven | Alle Beveilig bare containers ophalen |
+> |  | **Kluizen/privateEndpointConnectionProxies/operationResults** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/operationResults/lezen | Alle Beveilig bare containers ophalen |
+> |  | **Kluizen/privateEndpointConnectionProxies/operationsStatus** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnectionProxies/operationsStatus/lezen | Alle Beveilig bare containers ophalen |
+> |  | **Kluizen/privateEndpointConnections** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnections/schrijven | Alle Beveilig bare containers ophalen |
+> |  | **Kluizen/privateEndpointConnections/operationResults** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnections/operationResults/lezen | Alle Beveilig bare containers ophalen |
+> |  | **Kluizen/privateEndpointConnections/operationsStatus** |  |
+> | Bewerking | micro soft. Recovery Services/kluizen/privateEndpointConnections/operationsStatus/lezen | Alle Beveilig bare containers ophalen |
 > |  | **Kluizen/registeredIdentities** |  |
 > | Bewerking | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | De bewerking service container registreren kan worden gebruikt om een container te registreren bij de Recovery-service. |
 > | Bewerking | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | De bewerking containers ophalen kan worden gebruikt om de containers op te halen die voor een resource zijn geregistreerd. |
@@ -8008,6 +8190,11 @@ Azure-service: [Azure relay](../service-bus-relay/relay-what-is-it.md)
 > | Bewerking | Micro soft. relay/naam ruimten/networkrulesets/verwijderen | VNET-regel resource verwijderen |
 > |  | **naam ruimten/operationresults** |  |
 > | Bewerking | Micro soft. relay/naam ruimten/operationresults/lezen | De status van de naam ruimte bewerking ophalen |
+> |  | **naam ruimten/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. relay/naam ruimten/privateEndpointConnectionProxies/validate/Action | Particuliere endpoint-verbindings proxy valideren |
+> | Bewerking | Micro soft. relay/naam ruimten/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eind punt ophalen |
+> | Bewerking | Micro soft. relay/naam ruimten/privateEndpointConnectionProxies/schrijven | Verbinding maken met proxy voor persoonlijk eind punt |
+> | Bewerking | Micro soft. relay/naam ruimten/privateEndpointConnectionProxies/verwijderen | De verbindings proxy voor het particuliere eind punt verwijderen |
 > |  | **naam ruimten/providers/micro soft. Insights/diagnosticSettings** |  |
 > | Bewerking | Micro soft. relay/naam ruimten/providers/micro soft. Insights/diagnosticSettings/lezen | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Bewerking | Micro soft. relay/naam ruimten/providers/micro soft. Insights/diagnosticSettings/schrijven | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
@@ -8043,6 +8230,8 @@ Azure-service: [Azure service Health](../service-health/index.yml)
 > | Bewerking | Microsoft.ResourceHealth/AvailabilityStatuses/read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
 > |  | **AvailabilityStatuses/actueel** |  |
 > | Bewerking | Micro soft. ResourceHealth/AvailabilityStatuses/actueel/lezen | Hiermee wordt de beschikbaarheids status opgehaald voor de opgegeven resource |
+> |  | **emergingissues** |  |
+> | Bewerking | Micro soft. ResourceHealth/emergingissues/lezen | Nieuwe problemen met de Azure-Services ophalen |
 > |  | **evenementen** |  |
 > | Bewerking | Microsoft.ResourceHealth/events/read | Service Health gebeurtenissen voor een gegeven abonnement ophalen |
 > |  | **healthevent** |  |
@@ -8216,6 +8405,9 @@ Azure-service: [Security Center](../security-center/index.yml)
 > |  | **evaluaties** |  |
 > | Bewerking | Micro soft. Security/beoordelingen/lezen | Beveiligings beoordelingen ontvangen voor uw abonnement |
 > | Bewerking | Micro soft. Security/beoordelingen/schrijven | Beveiligings beoordelingen maken of bijwerken voor uw abonnement |
+> |  | **autoProvisioningSettings** |  |
+> | Bewerking | Micro soft. Security/autoProvisioningSettings/lezen | Instelling voor automatische inrichting van beveiliging ophalen voor het abonnement |
+> | Bewerking | Micro soft. Security/autoProvisioningSettings/schrijven | Instelling voor automatische inrichting van beveiliging voor het abonnement maken of bijwerken |
 > |  | **complianceResults** |  |
 > | Bewerking | Micro soft. Security/complianceResults/lezen | Hiermee worden de compliantie resultaten voor de resource opgehaald |
 > |  | **informationProtectionPolicies** |  |
@@ -8406,6 +8598,11 @@ Azure-service: [Service Bus](../service-bus/index.md)
 > | Bewerking | Microsoft.ServiceBus/namespaces/networkrulesets/delete | VNET-regel resource verwijderen |
 > |  | **naam ruimten/operationresults** |  |
 > | Bewerking | Microsoft.ServiceBus/namespaces/operationresults/read | De status van de naam ruimte bewerking ophalen |
+> |  | **naam ruimten/privateEndpointConnectionProxies** |  |
+> | Bewerking | Micro soft. ServiceBus/naam ruimten/privateEndpointConnectionProxies/validate/Action | Particuliere endpoint-verbindings proxy valideren |
+> | Bewerking | Micro soft. ServiceBus/naam ruimten/privateEndpointConnectionProxies/lezen | Proxy voor verbinding met privé-eind punt ophalen |
+> | Bewerking | Micro soft. ServiceBus/naam ruimten/privateEndpointConnectionProxies/schrijven | Verbinding maken met proxy voor persoonlijk eind punt |
+> | Bewerking | Micro soft. ServiceBus/naam ruimten/privateEndpointConnectionProxies/verwijderen | De verbindings proxy voor het particuliere eind punt verwijderen |
 > |  | **naam ruimten/providers/micro soft. Insights/diagnosticSettings** |  |
 > | Bewerking | Micro soft. ServiceBus/naam ruimten/providers/micro soft. Insights/diagnosticSettings/lezen | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |
 > | Bewerking | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Lijst met resource beschrijvingen voor Diagnostische instellingen van naam ruimte ophalen |

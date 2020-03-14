@@ -4,11 +4,11 @@ description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of 
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274006"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergren delen om onverwachte wijzigingen te voor komen
 

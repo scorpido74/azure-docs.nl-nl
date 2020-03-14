@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258484"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric voor Visual Studio code
 
@@ -48,7 +48,7 @@ De volgende vereiste onderdelen moeten worden geïnstalleerd voor Java-ontwikkel
 De volgende vereiste onderdelen moeten worden geïnstalleerd voor .NET core/C# Development:
 
 * [.Net core](https://www.microsoft.com/net/learn/get-started) (versie 2.0.0 of hoger)
-* [voor Visual Studio code (aangedreven door OmniSharp) versus code-uitbrei ding C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Nodig voor het C# opsporen van services. U kunt dit doen door te klikken op het pictogram extensies in de **activiteiten balk** in VS code en te zoeken naar de uitbrei ding of via de VS code Marketplace.
+* [voor Visual Studio code (aangedreven door OmniSharp) versus code-uitbrei ding C# ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Nodig voor het C# opsporen van services. U kunt dit doen door te klikken op het pictogram extensies in de **activiteiten balk** in VS code en te zoeken naar de uitbrei ding of via de VS code Marketplace.
 
 ## <a name="setup"></a>Instellen
 

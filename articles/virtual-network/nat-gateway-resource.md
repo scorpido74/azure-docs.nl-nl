@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217011"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen (open bare preview)
 
@@ -31,10 +31,6 @@ NAT-gateway bronnen maken deel uit van [Virtual Network NAT](nat-overview.md) en
 </p>
 
 *Afbeelding: Virtual Network NAT voor uitgaand verkeer naar Internet*
-
-
->[!NOTE] 
->Virtual Network NAT is op dit moment beschikbaar als open bare preview. Het is momenteel alleen beschikbaar in een beperkt aantal [regio's](nat-overview.md#region-availability). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT implementeren
 
@@ -147,7 +143,7 @@ Lees deze sectie om vertrouwd te raken met overwegingen voor het ontwerpen van v
 
 ### <a name="cost-optimization"></a>Kostenoptimalisatie
 
-[Service-eind punten](virtual-network-service-endpoints-overview.md) en [privé koppeling](../private-link/private-link-overview.md) zijn twee opties waarmee u rekening moet houden voor de optimalisatie van de kosten, waarbij NAT niet nodig is.  Verkeer dat naar service-eind punten of privé koppeling wordt geleid, wordt niet verwerkt door de NAT van het virtuele netwerk.  
+[Service-eind punten](virtual-network-service-endpoints-overview.md) en [privé koppeling](../private-link/private-link-overview.md) zijn opties waarmee u rekening moet houden voor het optimaliseren van de kosten. NAT is niet nodig voor deze services. Verkeer dat is bestemd voor service-eind punten of privé koppeling, wordt niet verwerkt door de NAT van het virtuele netwerk.  
 
 Service-eind punten koppelen Azure-service resources aan uw virtuele netwerk en beheren de toegang tot uw Azure-service resources. Als u bijvoorbeeld toegang hebt tot Azure Storage, gebruikt u een service-eind punt voor opslag om te voor komen dat er NAT-kosten worden verwerkt. Service-eind punten zijn gratis.
 
@@ -335,37 +331,33 @@ Een SNAT-poort kan na vijf seconden opnieuw worden gebruikt voor hetzelfde doel-
 ## <a name="limitations"></a>Beperkingen
 
 - NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
-- De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met IPv6-voor voegsel.
+- De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voor voegsel.
 - Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 - NAT kan niet meerdere virtuele netwerken omvatten.
 
-## <a name="preview-participation"></a>Preview-deelname
-
-Volg [de instructies om uw abonnement in te scha kelen](nat-overview.md#public-preview-participation).
 
 ## <a name="feedback"></a>Feedback
 
-We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de open bare preview-versie](https://aka.ms/natfeedback) met ons.  En u kunt Voorst Ellen en stemmen op wat we moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
+We willen weten hoe we de service kunnen verbeteren. Voorst Ellen en stemmen op wat we moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over NAT voor het [virtuele netwerk](nat-overview.md).
 * Meer informatie over [metrische gegevens en waarschuwingen voor NAT-gateway bronnen](nat-metrics.md).
 * Meer informatie over het [oplossen van problemen met NAT-gateway bronnen](troubleshoot-nat.md).
-* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
-* [Feedback geven over de open bare preview](https://aka.ms/natfeedback).
 * Zelf studie voor het valideren van de NAT-gateway
-  - [Azure cli](tutorial-create-validate-nat-gateway-cli.md),
-  - [Power shell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Snelstartgids voor het implementeren van een NAT-gateway resource
-  - [Azure cli](./quickstart-create-nat-gateway-cli.md),
-  - [Power shell](./quickstart-create-nat-gateway-powershell.md),
-  - [Portal](./quickstart-create-nat-gateway-portal.md).
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Portal](./quickstart-create-nat-gateway-portal.md)
 * Meer informatie over de resource-API voor NAT-gateway
-  - [rest API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  - [Azure cli](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+  - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+
 * Meer informatie over [beschikbaarheids zones](../availability-zones/az-overview.md).
 * Meer informatie over [standaard Load Balancer](../load-balancer/load-balancer-standard-overview.md).
 * Meer informatie over [beschikbaarheids zones en standaard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md).

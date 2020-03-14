@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358023"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241316"
 ---
 > [!NOTE]
 > Microsoft Flow is nu energie automatisering. Raadpleeg dit [blog](https://aka.ms/flow-now-pa) voor meer informatie.

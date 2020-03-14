@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344176"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248253"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's
 
@@ -26,7 +26,7 @@ Een regionaal paar bestaat uit twee regio's binnen dezelfde geografie. Azure ser
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Sommige Azure-Services hebben meer voor deel van gekoppelde regio's om de bedrijfs continuïteit te waarborgen en om te voor komen dat gegevens verloren gaan.  Azure biedt verschillende [opslag oplossingen](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) die gebruikmaken van gekoppelde regio's om de beschik baarheid van gegevens te garanderen. Zo repliceren [Azure geo-redundante opslag](/storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) automatisch gegevens naar een secundaire regio, zodat de gegevens duurzaam zijn, zelfs in het geval dat de primaire regio niet kan worden hersteld. 
+Sommige Azure-Services hebben meer voor deel van gekoppelde regio's om de bedrijfs continuïteit te waarborgen en om te voor komen dat gegevens verloren gaan.  Azure biedt verschillende [opslag oplossingen](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) die gebruikmaken van gekoppelde regio's om de beschik baarheid van gegevens te garanderen. Zo repliceren [Azure geo-redundante opslag](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) automatisch gegevens naar een secundaire regio, zodat de gegevens duurzaam zijn, zelfs in het geval dat de primaire regio niet kan worden hersteld. 
 
 Houd er rekening mee dat niet alle Azure-Services gegevens automatisch repliceren, en dat alle Azure-Services automatisch van een defecte regio naar het bijbehorende paar vallen.  In dergelijke gevallen moet het herstel en de replicatie worden geconfigureerd door de klant.
 

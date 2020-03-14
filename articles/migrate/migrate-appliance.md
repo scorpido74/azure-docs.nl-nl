@@ -4,11 +4,11 @@ description: Biedt een overzicht van het Azure Migrate apparaat dat in Server ev
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388926"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269573"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 

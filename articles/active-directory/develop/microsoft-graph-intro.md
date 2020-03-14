@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304418"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136497"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
@@ -57,4 +57,4 @@ Wanneer u de Snelstartgids hebt voltooid, hebt u een app die kan worden uitgevoe
 
 Microsoft Graph Explorer is een webgebaseerd hulp programma dat u kunt gebruiken om aanvragen te bouwen en te testen met behulp van Microsoft Graph-Api's. U hebt toegang tot Microsoft Graph Explorer op: `https://developer.microsoft.com/graph/graph-explorer`.
 
-Postman is een hulp programma dat u ook kunt gebruiken om aanvragen te maken en te testen met behulp van de Microsoft Graph-Api's. U kunt postman downloaden op: `https://www.getpostman.com/`. Als u wilt werken met Microsoft Graph in Postman, gebruikt u de Microsoft Graph verzameling in postman. Zie voor meer informatie [postman gebruiken met de Microsoft Graph-API](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Postman is een hulp programma dat u ook kunt gebruiken om aanvragen te maken en te testen met behulp van de Microsoft Graph-Api's. U kunt postman downloaden op: `https://www.getpostman.com/`. Als u wilt werken met Microsoft Graph in Postman, gebruikt u de Microsoft Graph verzameling in postman. Zie voor meer informatie [postman gebruiken met de Microsoft Graph-API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 085b907b6a848fb534df63b5465948864048cc19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256482"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Problemen met SQL Analytics in azure Synapse oplossen
 Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oplossing.

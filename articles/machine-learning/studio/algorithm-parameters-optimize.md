@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218273"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Para meters kiezen voor het optimaliseren van uw algoritmen in Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In dit onderwerp wordt beschreven hoe u de juiste afstemming kunt instellen voor een algoritme in Azure Machine Learning Studio (klassiek). De meeste machine learning-algoritmen hebben parameters om in te stellen. Wanneer u een model te trainen, moet u waarden opgeven voor deze parameters. De effectiviteit van het getrainde model, is afhankelijk van de Modelparameters die u kiest. Het proces van het vinden van de optimale set para meters wordt het *model selectie*genoemd.
 
@@ -41,7 +43,7 @@ U kunt de parameter is ingesteld op de stap van de initialisatie van model defin
 
 ![Twee-class boosted-beslisboom, één parameter](./media/algorithm-parameters-optimize/fig2.png)
 
- U kunt ook de maximum-en minimum punten van het raster definiëren en het totale aantal punten dat moet worden gegenereerd met **behulp van de opbouw functie voor bereik**. Standaard worden de parameterwaarden die zijn gegenereerd op een lineaire schaal. Maar als de **logboek schaal** is ingeschakeld, worden de waarden gegenereerd in de logaritmische schaal (dat wil zeggen, de verhouding van de aangrenzende punten is constant in plaats van het verschil). Voor de parameters van geheel getal zijn, kunt u een bereik definiëren met behulp van een afbreekstreepje. Bijvoorbeeld, "1-10" betekent dat alle gehele getallen tussen 1 en 10 (zowel inclusieve) de parameterset vormen. Een gemengde modus wordt ook ondersteund. Bijvoorbeeld, de parameter ingesteld ' 1-10, 20, 50 "zijn gehele getallen van 1-10, 20, en 50.
+ U kunt ook de maximum-en minimum punten van het raster definiëren en het totale aantal punten dat moet worden gegenereerd met **behulp van de opbouw functie voor bereik**. Standaard worden de parameterwaarden die zijn gegenereerd op een lineaire schaal. Maar als de **logboek schaal** is ingeschakeld, worden de waarden gegenereerd in de logaritmische schaal (dat wil zeggen, de verhouding van de aangrenzende punten is constant in plaats van het verschil). Voor de parameters van geheel getal zijn, kunt u een bereik definiëren met behulp van een afbreekstreepje. Bijvoorbeeld: "1-10" betekent dat alle gehele getallen tussen 1 en 10 (inclusief) de ingestelde para meter vormen. Een gemengde modus wordt ook ondersteund. De para meter set ' 1-10, 20, 50 ' zou bijvoorbeeld gehele getallen 1-10, 20 en 50 bevatten.
 
 ![Twee-class boosted-beslisboom, parameter-bereik](./media/algorithm-parameters-optimize/fig3.png)
 

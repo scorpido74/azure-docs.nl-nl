@@ -3,12 +3,12 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f89d9ab3ef373ecd9a7d15ef4ec9b2109750f8de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395583"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248071"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -178,24 +178,23 @@ Volg deze stappen:
 1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete).
 2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems**en kies de voorlopig verwijderde virtuele machine.
 
-![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. Selecteer de optie **verwijderen ongedaan**maken.
 
-![Kies verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![Kies verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. Er wordt een venster weer gegeven. Selecteer **verwijderen ongedaan**maken.
 
-![Selecteer verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Selecteer verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Kies **back-upgegevens verwijderen** om de back-upgegevens permanent te verwijderen.
 
-![Back-upgegevens verwijderen kiezen](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Back-upgegevens verwijderen kiezen](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Typ de naam van het back-upitem om te bevestigen dat u de herstel punten wilt verwijderen.
 
-![Typ de naam van het back-upitem](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Typ de naam van het back-upitem](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
 
@@ -268,6 +267,10 @@ Met Azure Backup kunt u een back-up maken van Azure Virtual Machines met schijve
 ### <a name="backup-of-encrypted-vms"></a>Back-up van versleutelde Vm's
 
 U kunt met behulp van de Azure Backup-Service back-ups maken van virtuele Windows-of Linux Azure-machines (Vm's) met versleutelde schijven. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)voor instructies.
+
+## <a name="private-endpoints"></a>Privé-eind punten
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>Andere beveiligings functies
 

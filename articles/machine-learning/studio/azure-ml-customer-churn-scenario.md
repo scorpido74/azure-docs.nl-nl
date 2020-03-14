@@ -10,18 +10,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168995"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204525"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Klant verloop analyseren met behulp van Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Overzicht
 In dit artikel vindt u een referentie-implementatie van een project met klant verloop analyse dat is gebouwd met behulp van Azure Machine Learning Studio (klassiek). In dit artikel wordt besproken hoe gekoppelde algemene modellen voor het oplossen van het probleem van het verloop van industriële klanten zuinigste. We ook meet de nauwkeurigheid van modellen die zijn gebouwd met behulp van Machine Learning en richtlijnen voor de verdere ontwikkeling beoordelen.  
 
-### <a name="acknowledgements"></a>Bevestigingen
+### <a name="acknowledgements"></a>Dankbetuigingen
 Dit experiment werd ontwikkeld en getest door Serge Berger, Principal data wetenschapper bij micro soft en Roger Barga, voorheen product manager voor Microsoft Azure Machine Learning Studio (klassiek). De Azure-documentatieteam dank erkent hun ervaring en ze Bedankt voor het delen van deze whitepaper.
 
 > [!NOTE]

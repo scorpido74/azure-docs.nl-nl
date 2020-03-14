@@ -1,24 +1,24 @@
 ---
-title: Richtlijnen voor het afstemmen van prestaties
-description: Meer informatie over het gebruik van aanbevelingen om uw Azure SQL Database query prestaties hand matig af te stemmen.
+title: Richt lijnen voor het afstemmen van prestaties voor toepassingen en data bases
+description: Meer informatie over het afstemmen van database toepassingen en data bases voor prestaties in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382395"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255949"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>De prestaties van de query in Azure SQL Database hand matig afstemmen
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Toepassingen en data bases afstemmen voor prestaties in Azure SQL Database
 
 Wanneer u een prestatie probleem hebt geïdentificeerd dat u hebt gezien SQL Database, is dit artikel ontworpen om u te helpen bij het volgende:
 
@@ -232,6 +232,10 @@ U kunt **sys. resource_stats** onderzoeken om te bepalen of de resource voor een
 
 Als een werk belasting een set herhalende query's heeft, is het vaak zinvol om de optimale plannings opties vast te leggen en te valideren, omdat deze de minimale resource grootte-eenheid die is vereist voor het hosten van de data base. Nadat u het hebt gevalideerd, kunt u de plannen opnieuw onderzoeken om u ervan te verzekeren dat ze niet zijn gedegradeerd. U kunt meer te weten komen over [query hints (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
+### <a name="very-large-database-architectures"></a>Zeer grote database architecturen
+
+Vóór de release van de [grootschalige](sql-database-service-tier-hyperscale.md) -service tier voor afzonderlijke data bases in Azure SQL database, hebben klanten de capaciteits limieten voor individuele data bases bereikt. Deze capaciteits limieten bestaan nog voor gegroepeerde Data bases in elastische Pools en data base-instanties in beheerde exemplaren. In de volgende twee secties worden twee opties besproken voor het oplossen van problemen met zeer grote data bases in Azure SQL Database wanneer u de grootschalige-servicelaag niet kunt gebruiken.
+
 ### <a name="cross-database-sharding"></a>Sharding voor meerdere data bases
 
 Omdat Azure SQL Database worden uitgevoerd op grondstoffen producten, zijn de capaciteits limieten voor een afzonderlijke data base lager dan voor een traditionele on-premises SQL Server installatie. Sommige klanten gebruiken sharding-technieken om database bewerkingen te spreiden over meerdere data bases wanneer de bewerkingen niet passen binnen de limieten van een afzonderlijke data base in Azure SQL Database. De meeste klanten die sharding-technieken gebruiken in Azure SQL Database hun gegevens te splitsen op één dimensie over meerdere data bases. Voor deze aanpak moet u weten dat OLTP-toepassingen vaak trans acties uitvoeren die van toepassing zijn op één rij of op een kleine groep rijen in het schema.
@@ -243,7 +247,7 @@ Als een Data Base bijvoorbeeld de naam van de klant, de volg orde en de order ge
 
 Hoewel de sharding van de data base de totale resource capaciteit voor een oplossing niet reduceert, is deze zeer effectief bij het ondersteunen van zeer grote oplossingen die over meerdere data bases zijn verdeeld. Elke Data Base kan worden uitgevoerd met een andere reken grootte ter ondersteuning van zeer grote, ' effectief ' data bases met hoge resource vereisten.
 
-### <a name="functional-partitioning"></a>Functionele partitionering
+#### <a name="functional-partitioning"></a>Functionele partitionering
 
 SQL Server gebruikers combi neren vaak veel functies in een afzonderlijke data base. Als een toepassing bijvoorbeeld logica heeft voor het beheren van de inventarisatie voor een archief, heeft die data base mogelijk logica die is gekoppeld aan de inventarisatie, het bijhouden van inkoop orders, opgeslagen procedures en geïndexeerde of gerealiseerde weer gaven waarmee de rapportage van eind maanden wordt beheerd. Deze techniek maakt het gemakkelijker om de data base te beheren voor bewerkingen als back-up, maar u moet er ook voor zorgen dat u de grootte van de hardware verwerkt om de piek belasting over alle functies van een toepassing af te handelen.
 

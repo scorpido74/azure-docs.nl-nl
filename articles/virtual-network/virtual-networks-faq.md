@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121799"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244808"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -309,7 +309,7 @@ Ja. U kunt hetzelfde virtuele netwerk op Resource gebruiken om gespiegeld verkee
 
 Virtual Network TIKT is in preview. Tijdens de preview-periode is er geen service level agreement. De mogelijkheid mag niet worden gebruikt voor werk belastingen voor de productie. Wanneer de netwerk interface van een virtuele machine is ingeschakeld met een tik-configuratie, worden dezelfde resources op de Azure-host die is toegewezen aan de virtuele machine voor het verzenden van het productie verkeer, gebruikt om de mirroring-functie uit te voeren en de gespiegelde pakketten te verzenden. Selecteer de juiste grootte voor de virtuele [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machine om ervoor te zorgen dat er voldoende bronnen beschikbaar zijn voor de virtuele machine om het productie verkeer en het gespiegelde verkeer te verzenden.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Wordt versneld netwerken ondersteund voor [Linux](create-vm-accelerated-networking-cli.md) -of [Windows](create-vm-accelerated-networking-powershell.md) -ondersteuning met een virtueel netwerk tikken?
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>Wordt versneld netwerken ondersteund voor [Linux](create-vm-accelerated-networking-cli.md) -of [Windows](create-vm-accelerated-networking-powershell.md) -ondersteuning met een virtueel netwerk tikken?
 
 U kunt een tik-configuratie toevoegen op een netwerk interface die is gekoppeld aan een virtuele machine die is ingeschakeld met versneld netwerken. Maar de prestaties en latentie van de virtuele machine worden beïnvloed door het toevoegen van TIKT configuratie, omdat de offload van mirroring verkeer momenteel niet wordt ondersteund door Azure versneld netwerken.
 

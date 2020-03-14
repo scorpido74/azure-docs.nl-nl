@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572478"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205163"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Snelstart: Een serverfirewall configureren - Portal
 
@@ -22,7 +22,8 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 
 - Een Azure Analysis Services-server in uw abonnement. Zie [Snelstart: Een server maken - Portal](analysis-services-create-server.md) of [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md) voor meer informatie.
 - Een of meer IP-adresbereiken voor clientcomputers (indien nodig).
-- Houd er rekening mee dat het importeren van een scenario van Power BI Premium momenteel niet wordt ondersteund.
+- Sommige scenario's waarbij Power BI Premium verbinding maakt met Azure Analysis Services, met inbegrip van het importeren van gegevens (vernieuwen) en gepagineerde rapporten, worden momenteel niet ondersteund, zelfs niet wanneer toegang vanuit Power BI toestaan is ingeschakeld. Het meest voorkomende scenario voor het gebruik van Live Connect van Power BI Premium wordt ondersteund. Alle Power BI Pro scenario's worden ondersteund.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal 
 

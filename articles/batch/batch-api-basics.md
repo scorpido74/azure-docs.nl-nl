@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025942"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247681"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Grootschalige parallelle rekenoplossingen ontwikkelen met Batch
 
@@ -77,7 +77,7 @@ U kunt in één Batch-account meerdere Batch-workloads uitvoeren of uw workloads
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Azure Storage-account
+## <a name="azure-storage-account"></a>Azure-opslagaccount
 
 Bij de meeste Batch-oplossingen wordt gebruikgemaakt van Azure Storage om resourcebestanden en uitvoerbestanden op te slaan. Uw Batch-taken (inclusief standaardtaken, begintaken, jobvoorbereidingstaken en jobvrijgevingstaken) geven bijvoorbeeld gewoonlijk bronbestanden op die zich in een opslagaccount bevinden.
 
@@ -218,7 +218,7 @@ U kunt [toepassingspakketten](#application-packages) opgeven die moeten worden g
 
 U kunt het subnet van een [virtueel netwerk (VNet)](../virtual-network/virtual-networks-overview.md) van Azure opgeven waarin de rekenknooppunten van de pool moeten worden gemaakt. Zie het gedeelte 'Netwerkconfiguratie pool' voor meer informatie.
 
-## <a name="job"></a>Taak
+## <a name="job"></a>Job
 
 Een job is een verzameling taken. Deze beheert hoe de berekening door de taken op rekenknooppunten in een pool wordt uitgevoerd.
 
@@ -327,7 +327,7 @@ Batch biedt jobvoorbereidingstaken om de job in te stellen voordat deze wordt ui
 
 Met zowel jobvoorbereidingstaken als jobvrijgevingstaken kunt u een opdrachtregel opgeven die moet worden uitgevoerd wanneer de taak wordt gestart. Ze bieden functies zoals het downloaden van bestanden, uitvoering met verhoogde bevoegdheden, aangepaste omgevingsvariabelen, maximale uitvoeringsduur, aantal pogingen en bewaartijd voor bestanden.
 
-Zie [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md)  (Jobvoorbereidings- en jobvrijgevingstaken uitvoeren op Azure Batch-rekenknooppunten) voor meer informatie over jobvoorbereidings- en jobvrijgevingstaken.
+Zie [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md) (Jobvoorbereidings- en jobvrijgevingstaken uitvoeren op Azure Batch-rekenknooppunten) voor meer informatie over jobvoorbereidings- en jobvrijgevingstaken.
 
 ### <a name="multi-instance-task"></a>Taak met meerdere instanties
 
@@ -492,7 +492,7 @@ Taakfouten kunnen worden onderverdeeld in deze categorieën:
 
 * `stderr` en `stdout`
 
-    Bij het uitvoeren van een toepassing kan deze een diagnostische uitvoer produceren die handig is voor het oplossen van problemen. Zoals eerder is vermeld in [Bestanden en mappen](#files-and-directories), verzendt de Batch-service standaarduitvoer en standaardfoutuitvoer naar de bestanden `stdout.txt` en `stderr.txt` in de taakmap in het rekenknooppunt. U kunt Azure Portal of een van de Batch-SDK's gebruiken om deze bestanden te downloaden. U kunt deze en andere bestanden bijvoorbeeld ophalen om problemen op te lossen met behulp van [ComputeNode. GetNodeFile][net_getfile_node] en [CloudTask. GetNodeFile][net_getfile_task] in de batch .net-bibliotheek.
+    Bij het uitvoeren van een toepassing kan deze een diagnostische uitvoer produceren die handig is voor het oplossen van problemen. Zoals eerder is vermeld in [Bestanden en mappen](#files-and-directories), verzendt de Batch-service standaarduitvoer en standaardfoutuitvoer naar de bestanden `stdout.txt` en `stderr.txt` in de taakmap in het rekenknooppunt. U kunt de Azure Portal of een van de Batch-SDK's gebruiken om deze bestanden te downloaden. U kunt deze en andere bestanden bijvoorbeeld ophalen om problemen op te lossen met behulp van [ComputeNode. GetNodeFile][net_getfile_node] en [CloudTask. GetNodeFile][net_getfile_task] in de batch .net-bibliotheek.
 
 * **Taakafsluitcodes**
 
@@ -506,7 +506,7 @@ Het is ook mogelijk dat er een regel matig probleem optreedt waardoor een taak n
 
 ### <a name="connecting-to-compute-nodes"></a>Verbinding maken met rekenknooppunten
 
-U kunt extra foutopsporing en probleemoplossing uitvoeren door u op afstand aan te melden bij een rekenknooppunt. U kunt via de Azure Portal een RDP-bestand (Remote Desktop Protocol) downloaden voor Windows-knooppunten en SSH-verbindingsinformatie (Secure Shell) verkrijgen voor Linux-knooppunten. U kunt dit ook doen met behulp van de batch-Api's, bijvoorbeeld met [batch .net][net_rdpfile] of [batch python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+U kunt extra foutopsporing en probleemoplossing uitvoeren door u op afstand aan te melden bij een rekenknooppunt. U kunt via Azure Portal een RDP-bestand (Remote Desktop Protocol) downloaden voor Windows-knooppunten en SSH-verbindingsinformatie (Secure Shell) verkrijgen voor Linux-knooppunten. U kunt dit ook doen met behulp van de batch-Api's, bijvoorbeeld met [batch .net][net_rdpfile] of [batch python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
 > Als u via RDP of SSH verbinding wilt maken met een knooppunt, moet u in het knooppunt eerst een gebruiker maken. Hiervoor gebruikt u de Azure Portal, [voegt u een gebruikers account toe aan een knoop punt][rest_create_user] met behulp van de Batch-rest API, roept u de methode [ComputeNode. CreateComputeNodeUser][net_create_user] aan in batch .net of roept u de methode [Add_user][py_add_user] aan in de batch python-module.

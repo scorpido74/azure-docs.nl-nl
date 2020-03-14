@@ -4,11 +4,11 @@ description: Referentie documentatie voor het Azure Functions host. JSON-bestand
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276996"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 

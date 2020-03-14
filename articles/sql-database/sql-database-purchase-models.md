@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255988"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -85,6 +85,11 @@ Als u wilt omzetten van het op DTU gebaseerde aankoop model naar het op vCore ge
 
 - Voor elke 100 Dtu's in de laag standaard is ten minste één vCore in de servicelaag Algemeen vereist.
 - Voor elke 125 Dtu's in de Premium-laag is ten minste één vCore in de servicelaag Bedrijfskritiek vereist.
+
+> [!NOTE]
+> De richt lijnen voor de DTU naar vCore-grootte zijn ongeveer en zijn voorzien van de eerste schatting van de service doelstelling van de doel database. De optimale configuratie van de doel database is afhankelijk van de werk belasting. 
+> 
+> Voor het bereiken van de optimale prijs-prestatie verhouding moet u mogelijk gebruikmaken van de flexibiliteit van het vCore-model voor het aanpassen van het aantal vCores, de generatie van de [Hardware](sql-database-service-tiers-vcore.md#hardware-generations), de [service](sql-database-service-tiers-vcore.md#service-tiers) en de [reken](sql-database-service-tiers-vcore.md#compute-tiers) lagen, en het afstemmen van andere database configuratie parameters, zoals de [maximale mate van parallelle](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)uitvoering.
 
 ## <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 

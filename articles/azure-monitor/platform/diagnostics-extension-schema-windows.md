@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129164"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274708"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Uitbreidings schema voor Windows diagnostische gegevens
 Azure Diagnostics extensie is een agent in Azure Monitor die bewakings gegevens verzamelt van het gast besturingssysteem en werk belastingen van Azure Compute-resources. Dit artikel bevat informatie over het schema dat wordt gebruikt voor het configureren van de diagnostische uitbrei ding op virtuele Windows-machines en andere reken bronnen.

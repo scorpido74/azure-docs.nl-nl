@@ -1,6 +1,6 @@
 ---
 title: Ingebouwde rollen van Azure voor Azure RBAC
-description: Hierin worden de ingebouwde rollen van Azure beschreven voor toegangs beheer op basis van rollen (Azure RBAC). Een lijst met de acties, intact, DataActions en NotDataActions.
+description: In dit artikel worden de ingebouwde functies van Azure voor op rollen gebaseerd toegangs beheer (RBAC) beschreven. De lijst bevat de acties, intact, DataActions en NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205888"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281104"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
 
-[Toegangs beheer op basis van rollen (Azure RBAC) van](overview.md) Azure heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md)maken.
+[Op rollen gebaseerd toegangs beheer (RBAC) van Azure](overview.md) heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md)maken.
 
-Dit artikel bevat een overzicht van de ingebouwde rollen voor Azure-resources, die altijd in ontwikkeling zijn. Gebruik de lijst met [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) of [AZ Role definition](/cli/azure/role/definition#az-role-definition-list)om de nieuwste rollen op te halen. Als u op zoek bent naar beheerders rollen voor Azure Active Directory, raadpleegt u [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Dit artikel bevat een overzicht van de ingebouwde rollen voor Azure-resources, die altijd in ontwikkeling zijn. Gebruik de lijst met [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) of [AZ Role definition](/cli/azure/role/definition#az-role-definition-list)om de nieuwste rollen op te halen. Als u op zoek bent naar beheerders rollen voor Azure Active Directory (Azure AD), raadpleegt u [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="descriptions-and-ids"></a>Beschrijvingen en Id's
 
-De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Klik op de naam van de rol om de lijst met `Actions`, `NotActions`, `DataActions`en `NotDataActions` voor elke rol weer te geven. Zie voor meer informatie over de werking van deze acties en over de manier waarop deze worden toegepast op het beheer-en gegevens abonnement [begrijpen functie definities voor Azure-resources](role-definitions.md).
+De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Selecteer de rolnaam om de lijst met `Actions`, `NotActions`, `DataActions`en `NotDataActions` voor elke rol weer te geven. Zie voor meer informatie over de werking van deze acties en over de manier waarop deze worden toegepast op het beheer-en gegevens abonnement [begrijpen functie definities voor Azure-resources](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
@@ -1059,7 +1059,7 @@ Hiermee beheert u klassieke virtuele machines, maar kunt u niet de toegang tot z
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -2052,7 +2052,7 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3853,10 +3853,7 @@ Kan blauw drukken-definities beheren, maar niet toewijzen.
 
 ### <a name="blueprint-operator"></a>Blauw druk-operator
 
-Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw drukken maken. 
-
-> [!NOTE] 
-> Dit werkt alleen als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit.
+Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw drukken maken. Opmerking: dit werkt alleen als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan
 > | Micro soft. WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Micro soft. AlertsManagement/smartDetectorAlertRules/* |  |
+> | Micro soft. AlertsManagement/actionRules/* |  |
+> | Micro soft. AlertsManagement/smartGroups/* |  |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -4359,7 +4358,9 @@ Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -5322,7 +5323,7 @@ Kan CDN-eind punten beheren, maar kan geen toegang verlenen aan andere gebruiker
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ Kan CDN-eind punten weer geven, maar kan geen wijzigingen aanbrengen.
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ Kan CDN-profielen en de bijbehorende eind punten beheren, maar kan geen toegang 
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ Kan CDN-profielen en de bijbehorende eind punten weer geven, maar kan geen wijzi
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel-bijdrager
 > | **Acties** |  |
 > | Micro soft. SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
-> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Microsoft.OperationalInsights/workspaces/*/read | Log Analytics-gegevens weer geven |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
 > | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
@@ -5763,7 +5764,7 @@ Azure Sentinel-bijdrager
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel Reader
 > | **Acties** |  |
 > | Micro soft. SecurityInsights/*/Read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
-> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Microsoft.OperationalInsights/workspaces/*/read | Log Analytics-gegevens weer geven |
+> | Micro soft. OperationalInsights/werk ruimten/LinkedServices/lezen | Gekoppelde services onder de opgegeven werk ruimte ophalen. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
 > | Microsoft.OperationalInsights/workspaces/query/read | Query's uitvoeren voor de gegevens in de werk ruimte |
@@ -5829,7 +5831,8 @@ Azure Sentinel Reader
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel responder
 > | **Acties** |  |
 > | Micro soft. SecurityInsights/*/Read |  |
 > | Micro soft. SecurityInsights/cases/* |  |
+> | Micro soft. SecurityInsights/incidenten/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Zoek met een nieuwe engine. |
-> | Microsoft.OperationalInsights/workspaces/read | Hiermee wordt een bestaande werk ruimte opgehaald |
+> | Microsoft.OperationalInsights/workspaces/*/read | Log Analytics-gegevens weer geven |
 > | Micro soft. OperationalInsights/werk ruimten/gegevens bronnen/lezen | Gegevens bronnen onder een werk ruimte ophalen. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | Hiermee wordt een opgeslagen Zoek query opgehaald |
 > | Microsoft.OperationsManagement/solutions/read | De OMS-oplossing ophalen |
@@ -5897,8 +5901,9 @@ Azure Sentinel responder
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6655,6 +6660,7 @@ Kan back-upservices weer geven, maar kan geen wijzigingen aanbrengen
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Hiermee wordt de bewerkings status voor een bepaalde bewerking opgehaald |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Alle intenties van de back-upbeveiliging weer geven |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Hiermee worden gebruiks gegevens voor een Recovery Services kluis geretourneerd. |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | Functies valideren |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -6709,7 +6715,8 @@ Kan back-upservices weer geven, maar kan geen wijzigingen aanbrengen
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],

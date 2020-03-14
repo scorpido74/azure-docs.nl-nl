@@ -4,11 +4,11 @@ description: Uitvoerings logboeken weer geven en beheren die door ACR-taken word
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096500"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246966"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Taak uitvoer logboeken weer geven en beheren
 

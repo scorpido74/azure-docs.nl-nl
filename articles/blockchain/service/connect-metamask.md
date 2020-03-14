@@ -4,16 +4,16 @@ description: Verbinding maken met een Azure Block Chain service-netwerk met behu
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205099"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Snelstartgids: een slim masker gebruiken om verbinding te maken en een intelligent contract te implementeren
 
-In deze Quick Start gebruikt u het block chain om verbinding te maken met een Azure-service netwerk en kunt u Remix gebruiken om een slim contract te implementeren. Het-opdracht masker is een browser uitbreiding voor het beheren van een ether wallet en het uitvoeren van actie-acties voor intelligente contracten.
+In deze Snelstartgids gebruikt u het block chain om verbinding te maken met een Azure-service netwerk en kunt u Remix gebruiken om een slim contract te implementeren. Het-opdracht masker is een browser uitbreiding voor het beheren van een ether wallet en het uitvoeren van actie-acties voor intelligente contracten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,15 +25,16 @@ In deze Quick Start gebruikt u het block chain om verbinding te maken met een Az
 
 ## <a name="get-endpoint-address"></a>Eindpunt adres ophalen
 
-U hebt het Azure Block Chain service-eindpunt adres nodig om verbinding te maken met het block chain-netwerk. U vindt het eindpunt adres en toegangs sleutels in de Azure Portal.
+U hebt het Azure Block Chain service-eindpunt adres nodig om verbinding te maken met het block chain-netwerk. Het eindpunt adres en de toegangs sleutels bevinden zich in de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Navigeer naar uw Azure Block Chain service-lid.
+1. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
 
     ![Standaard transactie knooppunt selecteren](./media/connect-metamask/transaction-nodes.png)
 
 1. Selecteer **verbindings reeksen > toegangs sleutels**.
-1. Kopieer het eindpunt adres van **https (toegangs sleutel 1)** . U hebt het adres voor de volgende sectie nodig.
+1. Kopieer het eindpunt adres van **https (toegangs sleutel 1)** .
 
     ![Verbindingsreeks](./media/connect-metamask/connection-string.png)
 
@@ -44,7 +45,7 @@ U hebt het Azure Block Chain service-eindpunt adres nodig om verbinding te maken
 
     ![Aangepaste RPC](./media/connect-metamask/custom-rpc.png)
 
-1. Voer in **nieuw netwerk > nieuwe RPC-URL**het adres van het eind punt in dat u uit de vorige sectie hebt gekopieerd.
+1. Plak in **nieuw netwerk > nieuwe RPC-URL**het eindpunt adres dat u hierboven hebt gekopieerd.
 1. Selecteer **Opslaan**.
 
     Als de verbinding is geslaagd, wordt het particuliere netwerk weer gegeven in de vervolg keuzelijst netwerk.
@@ -86,7 +87,7 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
     ```
 
     Het **eenvoudige contract** declareert een status variabele met de naam **saldo**. Er zijn twee functies gedefinieerd. Met de functie **toevoegen** wordt een getal toegevoegd om te **verdelen**. De functie **Get** retourneert de waarde **saldo**.
-1. Als u het contract wilt compileren, selecteert u eerst het deel venster volheid compiler en selecteert u vervolgens **Simple. Sol compileren**. 
+1. Als u het contract wilt compileren, selecteert u eerst het deel venster volheid compiler en selecteert u vervolgens **Simple. Sol compileren**.
 
     ![Verzamelen](./media/connect-metamask/compile.png)
 
@@ -99,7 +100,7 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
     ![Implementeren](./media/connect-metamask/deploy.png)
 
 
-1. Er wordt een melding over een gemaskeerde waarschuwing weer gegeven met de melding dat er onvoldoende middelen zijn om de trans actie uit te voeren.
+1. Een-bericht van een-tekst masker waarschuwt u over onvoldoende middelen om de trans actie uit te voeren.
 
     Voor een openbaar Block chain-netwerk moet u ether hebben om de transactie kosten te betalen. Aangezien dit een privé netwerk in een consortium is, kunt u de aardgas prijs instellen op nul.
 
@@ -114,24 +115,24 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
 
     ![Geïmplementeerd contract](./media/connect-metamask/deployed-contract.png)
 
-    Er zijn twee **acties waarmee u** deze kaart kunt **toevoegen** aan de functies die in het contract zijn gedefinieerd.
+    Twee acties, **toevoegen** en **ophalen**, toewijzen aan de functies die zijn gedefinieerd in het contract.
 
-1. Als u een trans actie **toevoegen** wilt uitvoeren op de Block Chain, voert u een nummer in dat u wilt toevoegen en selecteert u vervolgens **toevoegen**. U ontvangt mogelijk een fout bericht over een gas-schatting van Remix. U stuurt de trans actie naar een persoonlijke Block chain die geen gas vereist. Selecteer **trans actie verzenden** om de trans actie af te dwingen.
-1. Net als bij het implementeren van het contract wordt er een melding over een gemaskeerde waarschuwing weer gegeven waarin u wordt gewaarschuwd dat er onvoldoende middelen zijn om de trans actie uit te voeren.
+1. Als u een trans actie **toevoegen** wilt uitvoeren op de Block Chain, voert u een nummer in dat u wilt toevoegen en selecteert u vervolgens **toevoegen**. U ontvangt mogelijk een fout bericht over het oplossen van een gas van Remix: "u stuurt de trans actie naar een privé Block chain die geen gas vereist." Selecteer **trans actie verzenden** om de trans actie af te dwingen.
+1. Net als bij het implementeren van het contract, wordt u met een informatie over een-Adresmask gewaarschuwd dat er onvoldoende middelen zijn om de trans actie uit te voeren.
 
     Aangezien dit een privé netwerk in een consortium is, kunnen we de prijs van een gas instellen op nul.
 
-1.  Selecteer de kosten voor het **gas > bewerk > Geavanceerd**, stel de **aardgas prijs** in op 0 en selecteer **Opslaan**.
+1. Selecteer de kosten voor het **gas > bewerk > Geavanceerd**, stel de **aardgas prijs** in op 0 en selecteer **Opslaan**.
 1. Selecteer **bevestigen** om de trans actie naar het block chain te verzenden.
 1. Selecteer actie **ophalen** . Dit is een aanroep voor het opvragen van knooppunt gegevens. Een trans actie is niet nodig.
-1. In het deel venster fout opsporing van Remix ziet u details over de trans acties in de Block chain.
 
-    ![Geschiedenis van fout opsporing](./media/connect-metamask/debug.png)
+Het deel venster fout opsporing van Remix toont details over de trans acties op de Block chain:
 
-    U kunt het **eenvoudige** contract maken, de trans actie **eenvoudig. toevoegen**en aanroepen naar **Simple. Get**.
+    ![Debug history](./media/connect-metamask/debug.png)
 
-1. U kunt ook de transactie geschiedenis bekijken in het gemask. Open de module voor de webmasker browser.
-1. In het gedeelte **geschiedenis** ziet u een logboek van het geïmplementeerde contract en de gedistribueerde trans acties.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+
+Als u de transactie geschiedenis in het deel venster wilt zien, opent u de module voor het indeel masker browser en zoekt u in het gedeelte **geschiedenis** naar een logboek van het geïmplementeerde contract en de gedistribueerde trans acties.
 
 ## <a name="next-steps"></a>Volgende stappen
 

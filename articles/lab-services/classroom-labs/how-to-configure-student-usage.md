@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358640"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270938"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan het lab kunt toevoegen, het aantal uren bepaalt dat ze de virtuele machine kunnen gebruiken, en nog veel meer. 
@@ -144,7 +144,7 @@ Voer hiertoe de volgende stappen uit:
 ## <a name="student-accounts"></a>Studenten accounts
 Als u studenten wilt toevoegen aan een leslokaal Lab, gebruikt u hun e-mail accounts. De volgende typen e-mail accounts kunnen worden gebruikt:
 
-- Een student-e-mail account dat wordt verschaft door de Office 365-Azure Active Directory (AAD) van uw universiteit. 
+- Een student-e-mail account dat wordt verschaft door de Office 365-Azure Active Directory van uw universiteit. 
 - Een micro soft-e-mail account, zoals `@outlook.com`, `@hotmail.com`, `@msn.com`of `@live.com`.
 - Een niet-micro soft-e-mail account, zoals het abonnement van Yahoo of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
 - Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.
@@ -173,6 +173,14 @@ Selecteer **Aanmelden met github**op de pagina **aanmeldings opties** .
 ![Aanmelden met GitHub-koppeling](../media/how-to-configure-student-usage/signin-github.png)
 
 Ten slotte wordt er gevraagd om een Microsoft-account te maken dat is gekoppeld aan het GitHub-account. Dit gebeurt automatisch wanneer de student **volgende**selecteert.  De student wordt vervolgens onmiddellijk aangemeld en is verbonden met het leslokaal Lab.
+
+## <a name="export-list-of-users-to-a-csv-file"></a>Een lijst met gebruikers exporteren naar een CSV-bestand
+
+1. Ga naar het tabblad **gebruikers** .
+2. Selecteer **...** (ellips weglatings tekens) op de werk balk en selecteer vervolgens **CSV exporteren**. 
+
+    ![Lijst met gebruikers exporteren](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

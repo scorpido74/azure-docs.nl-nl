@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358268"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240644"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Snelstartgids: Azure Portal gebruiken om een Service Bus wachtrij te maken
 In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van een Service Bus wachtrij, met behulp van de [Azure Portal][Azure portal] om een bericht naam ruimte en een wachtrij binnen die naam ruimte te maken en om de autorisatie referenties voor die naam ruimte te verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).

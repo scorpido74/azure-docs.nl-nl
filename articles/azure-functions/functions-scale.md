@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356501"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276606"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
@@ -153,12 +153,10 @@ De eenheid van de schaal voor Azure Functions is de functie-app. Wanneer de func
 Schalen kan variëren op basis van een aantal factoren en op verschillende manieren schalen, afhankelijk van de geselecteerde trigger en taal. Er zijn een aantal complexiteit waarmee u rekening moet houden:
 
 * Een app met één functie wordt alleen geschaald naar Maxi maal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.
-* Voor HTTP-triggers worden nieuwe instanties slechts elke 1 seconde toegewezen.
-* Voor niet-HTTP-triggers worden nieuwe instanties Maxi maal elke 30 seconden toegewezen.
-
-Andere triggers kunnen ook verschillende schaal limieten hebben, zoals hieronder wordt beschreven:
-
-* [Event Hub](functions-bindings-event-hubs-trigger.md#scaling)
+* Voor HTTP-triggers worden er Maxi maal één keer per seconde een nieuwe instantie toegewezen.
+* Voor niet-HTTP-triggers worden nieuwe instanties Maxi maal één keer per 30 seconden toegewezen. Het schalen verloopt sneller bij het uitvoeren van een [Premium-abonnement](#premium-plan).
+* Gebruik voor Service Bus triggers _beheer_ rechten voor bronnen voor de meest efficiënte schaal aanpassing. Met _Luister_ rechten is schalen niet zo nauw keurig omdat de lengte van de wachtrij niet kan worden gebruikt om beslissingen over het schalen te melden. Zie [beleid voor gedeelde toegang](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)voor meer informatie over het instellen van rechten in service bus toegangs beleid.
+* Zie de [richt lijnen voor schalen](functions-bindings-event-hubs-trigger.md#scaling) in het naslag artikel voor Event hub-triggers. 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Aanbevolen procedures en patronen voor schaal bare apps
 

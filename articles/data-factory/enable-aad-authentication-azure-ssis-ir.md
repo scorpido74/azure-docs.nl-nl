@@ -12,11 +12,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927448"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260707"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory authenticatie inschakelen voor Azure-SSIS Integration Runtime
 
@@ -42,7 +42,7 @@ Azure SQL Database-Server biedt ondersteuning voor het maken van een Data Base m
 
 U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken met behulp van Azure AD Power shell.
 
-1.  Installeer de [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) module.
+1.  Installeer de [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -module.
 
 2.  Meld u aan met `Connect-AzureAD`, voer de volgende cmdlet uit om een groep te maken en op te slaan in een variabele:
 

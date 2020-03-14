@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214164"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Prestaties van Shard multi-tenant Azure SQL database bewaken en beheren in een SaaS-app met meerdere tenants
 
@@ -47,11 +47,11 @@ Het beheren van de databaseprestaties bestaat uit het verzamelen en analyseren v
 * Om te voor komen dat de prestaties hand matig worden bewaakt, is het het meest effectief om waarschuwingen in te **stellen die activeren wanneer data bases uit normale bereiken ontvallen**.
 * Om te reageren op schommelingen op de korte termijn in de reken grootte van een Data Base, **kan het DTU-niveau omhoog of omlaag worden geschaald**. Als deze schommeling op een regel matige of voorspel bare basis plaatsvindt, **kan het schalen van de data base automatisch worden uitgevoerd**. U kunt bijvoorbeeld omlaag schalen wanneer de workload licht is, zoals 's nachts of tijdens het weekend.
 * **Individuele tenants kunnen worden verplaatst naar andere data bases**om te reageren op schommelingen op de langere termijn of wijzigingen in de tenants.
-* Om te reageren op de korte termijn verhogingen in de *individuele* Tenant belasting, **kunnen afzonderlijke tenants uit een Data Base worden gehaald en een afzonderlijke reken grootte worden toegewezen**. Zodra de belasting is gereduceerd, kan de Tenant vervolgens worden teruggestuurd naar de multi tenant-data base. Wanneer dit vooraf bekend is, kunnen tenants vooraf worden verplaatst, om ervoor te zorgen dat de data base altijd beschikt over de benodigde resources en om te voor komen dat andere tenants in de data base met meerdere tenants worden beïnvloed. Als het om een voorspelbare vereiste gaat, zoals bij een locatie die met een toename in kaartverkoop te maken krijgt voor een populair evenement, kan dit beheergedrag in de toepassing worden geïntegreerd.
+* Om te reageren op de korte termijn verhogingen in de *individuele* Tenant belasting, **kunnen afzonderlijke tenants uit een Data Base worden gehaald en een afzonderlijke reken grootte worden toegewezen**. Zodra de belasting is gereduceerd, kan de Tenant vervolgens worden teruggestuurd naar de multi tenant-data base. Wanneer dit vooraf bekend is, kunnen tenants worden verplaatst preventief om ervoor te zorgen dat de data base altijd de benodigde resources heeft en om te voor komen dat andere tenants in de data base met meerdere tenants worden beïnvloed. Als het om een voorspelbare vereiste gaat, zoals bij een locatie die met een toename in kaartverkoop te maken krijgt voor een populair evenement, kan dit beheergedrag in de toepassing worden geïntegreerd.
 
 [Azure Portal](https://portal.azure.com) biedt ingebouwde functionaliteit voor bewaking en waarschuwingen voor de meeste resources. Voor SQL Database zijn bewaking en waarschuwingen beschikbaar in data bases. Deze ingebouwde bewaking en waarschuwingen zijn specifiek voor resources, dus het is handig voor kleine aantallen resources, maar is niet handig wanneer u met veel resources werkt.
 
-Voor scenario's met grote volumes, waar u met veel resources werkt, kunnen [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) worden gebruikt. Dit is een afzonderlijke Azure-service die analyse van verzonden Diagnostische logboeken en telemetrie in een Log Analytics-werk ruimte biedt. Azure Monitor logboeken kunnen telemetrie verzamelen van veel services en worden gebruikt om waarschuwingen op te vragen en in te stellen.
+Voor scenario's met grote volumes, waar u met veel resources werkt, kunnen [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) worden gebruikt. Dit is een afzonderlijke Azure-service die analyse van verzonden Logboeken biedt in een Log Analytics-werk ruimte. Azure Monitor logboeken kunnen telemetrie verzamelen van veel services en worden gebruikt om waarschuwingen op te vragen en in te stellen.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>De Wingtip tickets SaaS multi-tenant database toepassings bron code en scripts ophalen
 
@@ -193,7 +193,7 @@ In deze zelfstudie leert u het volgende:
 > * De data base omhoog schalen als reactie op de verbeterde laad capaciteit van de data base
 > * Een Tenant inrichten in een Data Base met één Tenant
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 <!--* [Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 * [Azure Automation](../automation/automation-intro.md)

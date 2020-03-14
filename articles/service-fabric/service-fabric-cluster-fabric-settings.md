@@ -4,11 +4,11 @@ description: In dit artikel worden de infrastructuur instellingen en het Fabric-
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 01f8eb861a1fc53ad95a95d7695df8e4b5b8a2ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393266"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258835"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -54,7 +54,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
+|MinReplicaSetSize|Int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|  De PlacementConstraints voor de BackupRestore-service |
 |SecretEncryptionCertThumbprint|teken reeks, standaard instelling is|Dynamisch|Vinger afdruk van het x509-certificaat van de geheime versleuteling |
 |SecretEncryptionCertX509StoreName|teken reeks, standaard is ' My '|   Dynamisch|    Dit geeft het certificaat aan dat moet worden gebruikt voor het versleutelen en ontsleutelen van de cred-naam van het X. 509-certificaat archief dat wordt gebruikt voor het versleutelen van de opslag referenties die worden gebruikt door de back-upherstel service |
@@ -146,7 +146,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor de Event Store-service |
+|MinReplicaSetSize|Int, standaard is 0|Statisch|De MinReplicaSetSize voor de Event Store-service |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|  De PlacementConstraints voor de Event Store-service |
 |TargetReplicaSetSize|int, standaard is 0|Statisch| De TargetReplicaSetSize voor de Event Store-service |
 
@@ -224,9 +224,9 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |QuorumLossWaitDuration |Tijd in seconden, de standaard waarde is MaxValue |Dynamisch|Geef een tijds duur in seconden op. Dit is de maximale duur waarvoor een partitie een status van quorum verlies mag hebben. Als de partitie na deze duur nog steeds in het quorum verloren is gegaan, de partitie wordt hersteld van quorum verlies door de replica's als verloren te beschouwen. Houd er rekening mee dat dit kan leiden tot gegevens verlies. |
 |ReconfigurationTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor opnieuw configureren; waarna een waarschuwings status rapport wordt gestart |
 |ReplicaRestartWaitDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de ReplicaRestartWaitDuration voor de FMService |
-| SeedNodeQuorumAdditionalBufferNodes | int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
+| SeedNodeQuorumAdditionalBufferNodes | Int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
 |StandByReplicaKeepDuration|Time span, standaard is gebruikelijk:: time span:: FromSeconds (3600.0 \* 24 \* 7)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de StandByReplicaKeepDuration voor de FMService |
-|TargetReplicaSetSize|Int, standaard is 7|Niet toegestaan|Dit is het doel aantal FM-replica's dat Windows Fabric blijft behouden. Een hogere waarde resulteert in een grotere betrouw baarheid van de FM-gegevens; met een kleine prestatie verhouding. |
+|TargetReplicaSetSize|int, standaard is 7|Niet toegestaan|Dit is het doel aantal FM-replica's dat Windows Fabric blijft behouden. Een hogere waarde resulteert in een grotere betrouw baarheid van de FM-gegevens; met een kleine prestatie verhouding. |
 |UserMaxStandByReplicaCount |Int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
 |UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde is 60,0 \* 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
 |UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde is 3600,0 \* 24 \* 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
@@ -406,7 +406,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |SharedLogId |teken reeks, standaard instelling is |Statisch|Unieke GUID voor gedeelde logboek container. Gebruik als standaardpad gebruiken onder Fabric data root. |
 |SharedLogPath |teken reeks, standaard instelling is |Statisch|Pad-en bestands naam naar locatie voor het plaatsen van een gedeelde logboek container. Gebruik "" voor het gebruik van het standaardpad onder Fabric data root. |
 |SharedLogSizeInMB |Int, standaard waarde is 8192 |Statisch|Het aantal MB dat moet worden toegewezen in de gedeelde logboek container. |
-|SharedLogThrottleLimitInPercentUsed|int, standaard is 0 | Statisch | Het percentage van het gebruik van het gedeelde logboek dat beperking veroorzaakt. De waarde moet tussen 0 en 100. De waarde 0 betekent dat de standaard percentage waarde wordt gebruikt. De waarde 100 houdt in dat er geen beperking is. Een waarde tussen 1 en 99 geeft het percentage logboek gebruik aan waarvan de beperking wordt toegepast. Als het gedeelde logboek bijvoorbeeld 10 GB is en de waarde 90 is, treedt er een beperking op wanneer 9 GB zijn wordt gebruikt. U wordt aangeraden de standaard waarde te gebruiken.|
+|SharedLogThrottleLimitInPercentUsed|Int, standaard is 0 | Statisch | Het percentage van het gebruik van het gedeelde logboek dat beperking veroorzaakt. De waarde moet tussen 0 en 100. De waarde 0 betekent dat de standaard percentage waarde wordt gebruikt. De waarde 100 houdt in dat er geen beperking is. Een waarde tussen 1 en 99 geeft het percentage logboek gebruik aan waarvan de beperking wordt toegepast. Als het gedeelde logboek bijvoorbeeld 10 GB is en de waarde 90 is, treedt er een beperking op wanneer 9 GB zijn wordt gebruikt. U wordt aangeraden de standaard waarde te gebruiken.|
 |WriteBufferMemoryPoolMaximumInKB | Int, standaard is 0 |Dynamisch|Het aantal KB waarmee de geheugen groep voor schrijf buffers mag groeien. Gebruik 0 om aan te geven dat er geen limiet is. |
 |WriteBufferMemoryPoolMinimumInKB |Int, standaard waarde is 8388608 |Dynamisch|Het aantal KB dat in eerste instantie moet worden toegewezen voor de geheugen groep schrijf buffer. Gebruik 0 om aan te geven dat er geen limiet standaard moet overeenkomen met SharedLogSizeInMB hieronder. |
 

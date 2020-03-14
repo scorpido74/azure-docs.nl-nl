@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357194"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261136"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een Integration runtime in Azure Data Factory bewaken  
 **Integration runtime** is de reken infrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
@@ -55,7 +55,7 @@ De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 | Status | Opmerkingen/Scenario's | 
 | ------ | ------------------ |
 | Aanschaffen | Azure Integration runtime is online en klaar om te worden gebruikt. | 
-| Offline | De Azure Integration runtime is offline vanwege een interne fout. |
+| Off line | De Azure Integration runtime is offline vanwege een interne fout. |
 
 ## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
 Deze sectie bevat beschrijvingen voor eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime worden geretourneerd. 
@@ -94,7 +94,7 @@ De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration ru
 | Status | Beschrijving |
 | ------ | ------------------ | 
 | Aanschaffen | Het knoop punt is verbonden met de Data Factory-service. |
-| Offline | Het knoop punt is offline. |
+| Off line | Het knoop punt is offline. |
 | Upgrade uitvoeren | Het knoop punt wordt automatisch bijgewerkt. |
 | Aantal | Vanwege een probleem met de verbinding. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, een probleem met de Service Bus-verbinding of een probleem met de synchronisatie van referenties. |
 | Inactieve | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten. |
@@ -108,7 +108,7 @@ De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration ru
 | ------ | ----------- | 
 | Registratie vereist | Er is nog geen knoop punt geregistreerd bij deze zelf-hostende Integration runtime. |
 | Aanschaffen | Alle knoop punten zijn online. |
-| Offline | Er is geen knoop punt online. |
+| Off line | Er is geen knoop punt online. |
 | Aantal | Niet alle knoop punten in deze zelf-hostende Integration runtime hebben de status in orde. Deze status is een waarschuwing dat bepaalde knoop punten mogelijk niet actief zijn. Deze status kan worden veroorzaakt door een probleem met de synchronisatie van referenties op de verzender/het worker-knoop punt. |
 
 Gebruik de cmdlet **Get-AzDataFactoryV2IntegrationRuntimeMetric** om de JSON-nettolading op te halen met de gedetailleerde runtime-eigenschappen voor zelf-hostende Integration en de bijbehorende momentopname waarden tijdens de uitvoering van de cmdlet.

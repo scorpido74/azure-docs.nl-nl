@@ -4,7 +4,7 @@ description: Dit artikel bevat een aantal aanbevolen procedures voor gegevens be
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389958"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243495"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Best practices voor gegevensbeveiliging en -versleuteling in Azure
 In dit artikel worden aanbevolen procedures beschreven voor gegevens beveiliging en-versleuteling.
@@ -108,7 +108,7 @@ Hieronder vindt u aanbevolen procedures voor het gebruik van Azure VPN Gateway, 
 **Details**: gebruik [punt-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create).
 
 **Aanbevolen procedure**: Verplaats grotere gegevens sets over een speciale WAN-verbinding met hoge snelheid.   
-**Details**: gebruik [ExpressRoute](/azure/expressroute/expressroute-introduction). Als u ervoor kiest om ExpressRoute te gebruiken, kunt u de gegevens op toepassings niveau ook versleutelen met behulp van [SSL/TLS](https://support.microsoft.com/kb/257591) of andere protocollen voor extra beveiliging.
+**Details**: gebruik [ExpressRoute](/azure/expressroute/expressroute-introduction). Als u ervoor kiest om ExpressRoute te gebruiken, kunt u de gegevens op toepassings niveau ook versleutelen met behulp van SSL/TLS of andere protocollen voor extra beveiliging.
 
 **Best Practice**: interactie met Azure Storage via de Azure Portal.   
 **Details**: alle trans acties worden uitgevoerd via https. U kunt ook [opslag rest API](https://msdn.microsoft.com/library/azure/dd179355.aspx) over https gebruiken om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/).
