@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208786"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Verbindings problemen en andere fouten oplossen met Microsoft Azure SQL Database
 
-U ontvangt foutberichten wanneer het verbinden met Azure SQL Database mislukt. Deze verbindings problemen kunnen worden veroorzaakt door Azure SQL Database herconfiguratie, Firewall instellingen, een time-out voor de verbinding, onjuiste aanmeldings gegevens of het Toep assen van aanbevolen procedures en ontwerp richtlijnen tijdens het [toepassings ontwerp] ( sql-database-develop-overview.md-proces. Daarnaast kunt u geen verbinding maken met Azure SQL Database als de maximum limiet van sommige Azure SQL Database resources is bereikt.
+U ontvangt foutberichten wanneer het verbinden met Azure SQL Database mislukt. Deze verbindings problemen kunnen worden veroorzaakt door Azure SQL Database herconfiguratie, Firewall instellingen, een time-out voor de verbinding, onjuiste aanmeldings gegevens of het Toep assen van aanbevolen procedures en ontwerp richtlijnen tijdens het ontwerp proces van de [toepassing](sql-database-develop-overview.md) . Daarnaast kunt u geen verbinding maken met Azure SQL Database als de maximum limiet van sommige Azure SQL Database resources is bereikt.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Tijdelijke fout berichten voor fouten (40197, 40613 en andere)
 

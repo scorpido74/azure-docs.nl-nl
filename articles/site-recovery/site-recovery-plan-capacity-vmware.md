@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961361"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257613"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
 
@@ -163,7 +163,7 @@ Een hoofddoel server voor een op Windows gebaseerde virtuele machine toevoegen:
     ![Scherm opname van de locatie waar het IP-adres en de wachtwoordzin voor de configuratie server moeten worden ingevoerd](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Selecteer **Registreren**. Wanneer de registratie is voltooid, selecteert u **volt ooien**.
 
-Wanneer de registratie is voltooid, wordt de server weer gegeven in het Azure Portal op **Recovery Services kluis** > **configuratie servers**voor **site Recovery infrastructuur** > , in de hoofddoel servers van de configuratie server.
+Wanneer de registratie is voltooid, wordt de server weer gegeven in de Azure Portal op **Recovery Services kluis** > **configuratie servers**van **site Recovery infrastructuur** > op de Master doel servers van de configuratie server.
 
  > [!NOTE]
  > Down load de meest recente versie van het [Unified Setup-bestand van de Master doel server voor Windows](https://aka.ms/latestmobsvc).

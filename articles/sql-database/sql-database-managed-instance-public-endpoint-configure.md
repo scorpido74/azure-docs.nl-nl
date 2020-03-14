@@ -11,11 +11,11 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360417"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256157"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Open bare eind punt in Azure SQL Database beheerde instantie configureren
 

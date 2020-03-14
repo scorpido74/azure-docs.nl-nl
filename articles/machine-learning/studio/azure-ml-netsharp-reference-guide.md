@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168938"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218252"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Azure Machine Learning Studio (klassiek)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Net # is een door micro soft ontwikkelde taal die wordt gebruikt voor het definiëren van complexe Neural-netwerk architecturen, zoals diepe Neural netwerken of convoluties van wille keurige dimensies. U kunt complexe structuren gebruiken om het leren van gegevens zoals afbeeldingen, Video's of audio te verbeteren.
 
@@ -460,6 +462,6 @@ output Digit [10] from Hid3 all;
 + Het totale aantal knoop punten kan worden berekend met behulp van de gedeclareerde dimensionaliteit van de laag, [50, 5, 5], als volgt: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Omdat `Sharing[d]` alleen onwaar is voor `d == 0`, wordt het aantal kernels `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Bevestigingen
+## <a name="acknowledgements"></a>Dankbetuigingen
 
 De net # taal voor het aanpassen van de architectuur van Neural-netwerken is ontwikkeld door micro soft Shon Katzenberger (architect, Machine Learning) en Alexey Kamenev (software engineer, micro soft Research). Het wordt intern gebruikt voor machine learning projecten en toepassingen variërend van afbeeldings detectie tot tekst analyse. Zie [neural-netten in azure machine learning Studio-Introduction to net # (](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) Engelstalig) voor meer informatie.

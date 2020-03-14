@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3e5fd2315a5d352ed5abee9253b5c84eea3b73a9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462272"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219608"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -34,7 +34,7 @@ In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Ser
 
 Installeer de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
-```console
+```azurecli-interactive
 az login
 ```
 
@@ -99,11 +99,11 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 | Service            | type                  |
 |--------------------|-----------------------|
-| Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
+| Automatische suggesties van Bing   | `Bing.Autosuggest.v7` |
 | Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
-| Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
+| Bing-spellingcontrole   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Speech
 
@@ -156,7 +156,7 @@ az cognitiveservices account create \
 
 Als u zich wilt aanmelden bij de lokale installatie van de opdracht regel interface (CLI), gebruikt u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
-```console
+```azurecli-interactive
 az login
 ```
 

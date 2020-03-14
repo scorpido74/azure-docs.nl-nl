@@ -1,14 +1,14 @@
 ---
 title: 'Snelstartgids: Knowledge Base-QnA Maker maken, trainen en publiceren'
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base op basis van een eenvoudige Veelgestelde vragen pagina om vragen te beantwoorden QnA Maker.
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108725"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220576"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
 
@@ -154,6 +154,5 @@ Voor meer informatie:
 
 * [Indeling voor prijs verlaging in antwoorden](../reference-markdown-format.md)
 * QnA Maker [gegevens bronnen](../concepts/knowledge-base.md).
-* [Bot-bron configuratie-instellingen](../tutorials/create-qna-bot.md).
 
 

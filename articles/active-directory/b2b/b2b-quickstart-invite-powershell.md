@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377799"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240924"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Snelstart: Een gastgebruiker toevoegen met PowerShell
 
@@ -78,7 +78,7 @@ Voer uw referenties in wanneer dit wordt gevraagd.
 1. Als u een uitnodiging voor uw test-e-mail account wilt verzenden, voert u de volgende Power shell-opdracht uit (Vervang **"Sanda"** en **Sanda\@fabrikam.com** met uw test account naam en e-mail adres): 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. De opdracht verzendt een uitnodiging naar het opgegeven e-mailadres. Controleer de uitvoer, die er als volgt moet uitzien:
 

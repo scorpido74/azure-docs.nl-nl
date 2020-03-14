@@ -4,11 +4,11 @@ description: In deze zelf studie gebruikt u beleids regels voor het afdwingen va
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384510"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238949"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
 
