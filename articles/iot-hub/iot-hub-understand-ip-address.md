@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772151"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367564"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP-adressen
 
-De IP-adres voorvoegsels van IoT Hub open bare eind punten worden periodiek gepubliceerd onder het label _AzureIoTHub_ - [service](../virtual-network/service-tags-overview.md). U kunt deze IP-adres voorvoegsels gebruiken om de connectiviteit tussen IoT Hub en uw apparaten of netwerk assets te beheren, zodat u verschillende netwerk isolatie doelen kunt implementeren:
+De IP-adres voorvoegsels van IoT Hub open bare eind punten worden periodiek gepubliceerd onder het label _AzureIoTHub_ - [service](../virtual-network/service-tags-overview.md).
+
+> [!NOTE]
+> Voor apparaten die zijn geïmplementeerd in een on-premises netwerk, ondersteunt Azure IoT Hub VNET-connectiviteits integratie met persoonlijke eind punten. Zie [IOT hub ondersteuning voor VNET](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) voor meer informatie.
+
+
+U kunt deze IP-adres voorvoegsels gebruiken om de connectiviteit tussen IoT Hub en uw apparaten of netwerk assets te beheren, zodat u verschillende netwerk isolatie doelen kunt implementeren:
 
 | Doel | Toepasselijke scenario's | Methode |
 |------|-----------|----------|

@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599182"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137625"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload op door Azure virtual machine ondersteunde scenario's
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload in scenario's met virtuele Azure-machines
 Het ontwerpen van een SAP NetWeaver, Business One, `Hybris` of S/4HANA Systems Architecture in azure, opent een groot aantal verschillende mogelijkheden voor verschillende architecturen en hulpprogram ma's die u kunt gebruiken om een schaal bare, efficiënte en Maxi maal beschik bare implementatie te verkrijgen. Afhankelijk van het gebruikte besturings systeem of DBMS, zijn er beperkingen. Daarnaast worden niet alle scenario's die on-premises worden ondersteund, op dezelfde manier ondersteund in Azure. In dit document wordt gebruikgemaakt van de ondersteunde configuraties voor niet-hoge Beschik baarheid en configuraties met hoge Beschik baarheid en architecturen met alleen Azure Vm's. Raadpleeg het artikel [ondersteunde scenario's voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)voor scenario's die worden ondersteund met een [grote hoeveelheid Hana-exemplaren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
 
 
@@ -66,7 +66,8 @@ Dit type DBMS-implementatie wordt ondersteund voor:
 - SQL Server in Windows
 - IBM Db2. Meer informatie vindt u in het artikel [meerdere instanties (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
 - Voor Oracle. Raadpleeg voor meer informatie [SAP-ondersteuning opmerking #1778431](https://launchpad.support.sap.com/#/notes/1778431) en gerelateerde SAP-notities
-- Voor SAP HANA, meerdere exemplaren op één virtuele machine, SAP aanroept deze implementatie methode MCOS, wordt ondersteund. Zie het SAP [-artikel Multiple SAP Hana Systems on one host (MCOS) (Engelstalig)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html) voor meer informatie.
+- Voor SAP HANA, meerdere exemplaren op één virtuele machine, SAP aanroept deze implementatie methode MCOS, wordt ondersteund. Zie voor meer informatie het SAP-artikel [Multiple SAP HANA Systems op One host (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
 Als u meerdere data base-exemplaren op één host uitvoert, moet u ervoor zorgen dat de verschillende exemplaren niet concurreren voor resources en daardoor de fysieke resource limieten van de virtuele machine overschrijden. Dit geldt met name voor geheugen waarbij u het geheugen wilt dat iedereen kan toewijzen aan de instanties die de virtuele machine delen. Dit kan ook waar zijn voor de CPU-resources die de verschillende data base-exemplaren kunnen gebruiken. Alle vermelde DBMS hebben configuraties die het beperken van geheugen toewijzing en CPU-resources op een exemplaar niveau toestaan.
 Om ondersteuning te bieden voor een dergelijke configuratie voor virtuele Azure-machines, wordt verwacht dat de schijven of volumes die worden gebruikt voor de gegevens en logboek bestanden van de data base die worden beheerd door de verschillende instanties gescheiden zijn. Of met andere woorden gegevens of logboek bestanden/opnieuw uitvoeren van de data bases die worden beheerd door een ander DBMS-exemplaar, moeten dezelfde schijven of volumes niet worden gedeeld. 
@@ -121,6 +122,8 @@ Voor virtuele Azure-machines worden de volgende configuraties voor hoge Beschik 
 
 > [!IMPORTANT]
 > Voor geen van de hierboven beschreven scenario's ondersteunen we configuraties van meerdere DBMS-instanties in één VM. In elk van deze gevallen kan slechts één data base-exemplaar worden geïmplementeerd per VM en worden beveiligd met de beschreven methoden voor hoge Beschik baarheid. Het beveiligen van meerdere DBMS-instanties onder hetzelfde Windows-of pacemaker-failovercluster wordt op dit moment **niet** ondersteund. Oracle Data Guard wordt ook alleen ondersteund voor implementatie cases per VM. 
+
+Verschillende database systemen kunnen meerdere data bases hosten in één DBMS-exemplaar. Zoals in het geval van SAP HANA, kunnen meerdere data bases worden gehost in meerdere database containers (MDC). Voor gevallen waarin deze configuraties met meerdere data bases binnen één failoverclusterbron werken, worden deze configuraties ondersteund. Configuraties die niet worden ondersteund, zijn gevallen waarin meerdere cluster bronnen vereist zijn. Net als bij configuraties waarbij u meerdere SQL Server-beschikbaarheids groepen definieert, onder een SQL Server-exemplaar.
 
 
 ![Configuratie van DBMS-HA](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

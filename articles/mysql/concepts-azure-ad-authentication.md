@@ -1,17 +1,17 @@
 ---
-title: Active Directory-verificatie-Azure Database for MySQL-één server
-description: Meer informatie over de concepten van Azure Active Directory voor verificatie met een Azure Database for MySQL-enkele server
+title: Active Directory-verificatie-Azure Database for MySQL
+description: Meer informatie over de concepten van Azure Active Directory voor verificatie met Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706100"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299019"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -47,7 +47,7 @@ Gebruik het volgende proces om Azure Active Directory-verificatie te configurere
 
 In het volgende diagram op hoog niveau wordt een overzicht gegeven van hoe verificatie werkt met Azure AD-verificatie met Azure Database for MySQL. De pijlen geven communicatie paden aan.
 
-![verificatie stroom][1]
+![Verificatie stroom][1]
 
 ## <a name="administrator-structure"></a>Beheerder structuur
 
@@ -90,7 +90,7 @@ Zodra u hebt geverifieerd op basis van de Active Directory, haalt u een token op
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [configureren en aanmelden met Azure AD voor Azure database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)voor meer informatie over het maken en vullen van Azure AD en het configureren van Azure ad met Azure database for MySQL.
-- Zie [gebruikers maken in azure database for MySQL-één server](howto-create-users.md)voor een overzicht van aanmeldingen en database gebruikers voor Azure database for MySQL.
+- Zie [gebruikers maken in azure database for MySQL](howto-create-users.md)voor een overzicht van aanmeldingen en database gebruikers voor Azure database for MySQL.
 
 <!--Image references-->
 

@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358518"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240826"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van micro soft Identity platform (v 2.0)
 

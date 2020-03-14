@@ -1,23 +1,23 @@
 ---
-title: Aangepaste opdrachten op de client uitvoeren met de Speech SDK
+title: Opdrachten uitvoeren vanuit een client met de Speech SDK
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u activiteiten met aangepaste opdrachten op de client kunt verwerken met de spraak-SDK.
+description: In dit artikel wordt uitgelegd hoe u aangepaste opdrachten voor activiteiten op een client met de spraak-SDK kunt afhandelen.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156502"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367735"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Opdrachten uitvoeren vanuit een client met de Speech SDK (preview)
 
 Als u taken wilt volt ooien met behulp van een aangepaste opdrachten toepassing, kunt u aangepaste payloads verzenden naar een verbonden client apparaat.
 
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Probeer het
+## <a name="try-it-out"></a>Uitproberen
 
 1. De toepassing starten
 1. Selecteer microfoon inschakelen

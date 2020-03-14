@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b971176909a9956cd674116963e8ca02fa60e8b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 42888060f206c89a597a1a18783070d0a805dfb9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241302"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Snelstartgids: een Azure Functions-project maken met Visual Studio code
 
@@ -41,7 +41,7 @@ Voordat u aan de slag gaat, moet u ervoor zorgen dat u aan de volgende vereisten
 ::: zone-end  
 + [Visual Studio code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
 ::: zone pivot="programming-language-csharp"  
-+ De [ C# extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) voor Visual Studio code.  
++ De [ C# extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) voor Visual Studio code.  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + De [python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor Visual Studio code.  

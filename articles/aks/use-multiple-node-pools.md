@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b7025b896a1bd156c448ccfcd0e9001c49146be4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252842"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368278"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -93,9 +93,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 
 In de volgende voorbeeld uitvoer ziet u dat *mynodepool* is gemaakt met drie knoop punten in de knooppunt groep. Wanneer het AKS-cluster in de vorige stap is gemaakt, is een standaard *nodepool1* gemaakt met het aantal knoop punten *2*.
 
-```console
-$ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
-
+```output
 [
   {
     ...
@@ -148,9 +146,11 @@ az aks nodepool upgrade \
 
 Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *upgrade* status bevindt op *1.15.7*:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -234,9 +234,11 @@ az aks nodepool scale \
 
 Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *schaal* status bevindt met een nieuw aantal van *5* knoop punten:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -284,9 +286,11 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name myn
 
 In de volgende voorbeeld uitvoer van de opdracht [AZ AKS node pool List][az-aks-nodepool-list] wordt aangegeven dat *Mynodepool* de status *verwijderen* heeft:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -337,9 +341,11 @@ az aks nodepool add \
 
 In de volgende voorbeeld uitvoer van de opdracht [AZ AKS node pool List][az-aks-nodepool-list] wordt aangegeven dat *Gpunodepool* knoop punten *maakt* met de opgegeven *VmSize*:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...
@@ -375,8 +381,10 @@ Het duurt enkele minuten voordat de *gpunodepool* is gemaakt.
 U hebt nu twee knooppunt groepen in uw cluster: de standaard groep van het knoop punt dat oorspronkelijk is gemaakt en de op GPU gebaseerde knooppunt groep. Gebruik de opdracht [kubectl Get nodes][kubectl-get] om de knoop punten in uw cluster weer te geven. In de volgende voorbeeld uitvoer ziet u de knoop punten:
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
+```
 
+```output
 NAME                                 STATUS   ROLES   AGE     VERSION
 aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
@@ -431,8 +439,10 @@ kubectl apply -f gpu-toleration.yaml
 Het duurt een paar seconden om de Pod te plannen en de NGINX-installatie kopie op te halen. Gebruik de [kubectl pod opdracht beschrijven][kubectl-describe] om de status van de pod weer te geven. In de volgende verkorte voorbeeld uitvoer ziet u de *SKU = GPU:* de verdragen waarbij geen schema wordt toegepast. In de sectie Events heeft de scheduler de pod toegewezen aan het knoop punt *AKS-gpunodepool-28993262-vmss000000* op basis van GPU:
 
 ```console
-$ kubectl describe pod mypod
+kubectl describe pod mypod
+```
 
+```output
 [...]
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
@@ -563,9 +573,11 @@ az aks nodepool add \
 
 In de volgende voorbeeld uitvoer van de opdracht [AZ AKS nodepool List][az-aks-nodepool-list] ziet u dat *Tagnodepool* knoop punten *maakt* met de opgegeven *tag*:
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
 
+```output
 [
   {
     ...

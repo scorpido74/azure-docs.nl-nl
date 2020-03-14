@@ -4,11 +4,11 @@ description: In deze zelf studie leert u hoe u een back-up kunt beheren SAP HANA
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: 2c088c27a678a4541cbba3c4c43c9cd830c60ff0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238739"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelf studie: SAP HANA-data bases beheren in een Azure-VM met behulp van Azure CLI
 

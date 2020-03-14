@@ -1,19 +1,19 @@
 ---
-title: Methode voor het instellen van een persoonlijke koppeling voor de Azure Database for MySQL-Portal (preview)
+title: Privé-koppeling-Azure Portal-Azure Database for MySQL
 description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for MySQL van Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561660"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371916"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren (preview) met behulp van portal
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MySQL-server met een persoonlijk Azure-eind punt.
 
@@ -37,7 +37,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
@@ -59,10 +59,10 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
     | **INSTANTIEDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **Europa - west**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | Afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -113,7 +113,7 @@ In deze sectie maakt u een Azure Database for MySQL-server in Azure.
     | Gebruikers naam beheerder| Voer de naam van de beheerder van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
     | Locatie | Selecteer een Azure-regio waar u wilt dat de MySQL-server zich bevindt. |
-    |Version  | Selecteer de database versie van de MySQL-server die is vereist.|
+    |Versie  | Selecteer de database versie van de MySQL-server die is vereist.|
     | Compute + Storage| Selecteer de prijs categorie die nodig is voor de server op basis van de werk belasting. |
     |||
  
@@ -126,13 +126,13 @@ In deze sectie maakt u een Azure Database for MySQL-server in Azure.
 
 In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind punt toe. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **netwerk** > **privé koppelings centrum (preview)** .
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **netwerk** > **persoonlijke koppeling**.
 
 2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
 
     ![Overzicht van persoonlijke koppelingen](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. Voer in **een persoonlijk eind punt maken (preview)-basis beginselen**de volgende gegevens in of Selecteer deze:
+1. Voer in **een persoonlijk eind punt maken-basis beginselen**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -140,7 +140,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **Exemplaar Details** |  |
-    | Name | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Naam | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **Europa - west**.|
     |||
 
@@ -156,7 +156,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
     |Doel-subresource |*MysqlServer* selecteren|
     |||
 7. Selecteer **volgende: Configuratie**.
-8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
+8. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535325"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298611"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Naslag Gids voor identiteits-en toegangs beheer van Azure Active Directory
 
@@ -97,7 +97,7 @@ Als uw organisatie geen nood herstel-en failover-strategie heeft voor synchronis
 
 ![Een scherm opname van Azure AD Connect configuratie van de faserings modus](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Op de hoogte blijven
+#### <a name="stay-current"></a>Blijf op de hoogte
 
 Micro soft updates Azure AD Connect regel matig. Blijf op de hoogte om te profiteren van de prestatie verbeteringen, fout oplossingen en nieuwe mogelijkheden die elke nieuwe versie biedt.
 
@@ -170,7 +170,7 @@ Als u momenteel een hulp programma gebruikt, zoals [Microsoft Identity Manager](
 Resource-eigen aren kunnen van mening zijn dat de groep **alle gebruikers** alleen **werk nemers** van het bedrijf bevat wanneer ze mogelijk zowel **zakelijke mede werkers** als **gasten**bevatten. Als gevolg hiervan moet u bijzondere aandacht best denken wanneer u de groep **alle gebruikers** gebruikt voor het toewijzen van toepassingen en het verlenen van toegang tot resources, zoals share point-inhoud of-toepassingen.
 
 > [!IMPORTANT]
-> Als de groep **alle gebruikers** is ingeschakeld en wordt gebruikt voor beleid voor voorwaardelijke toegang, app of resource toewijzing, moet u [de groep beveiligen](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group) als u geen gast gebruikers wilt toevoegen. Bovendien moet u uw licentie toewijzingen oplossen door te maken en toe te wijzen aan groepen die alleen **werk nemers** van een onderneming bevatten. Als u daarentegen ziet dat de groep **alle gebruikers** is ingeschakeld, maar niet wordt gebruikt om toegang te verlenen tot resources, moet u ervoor zorgen dat de operationele richt lijnen van uw organisatie opzettelijk gebruikmaken van die groep (die zowel **zakelijke mede werkers** als **gasten**bevat).
+> Als de groep **alle gebruikers** is ingeschakeld en wordt gebruikt voor beleid voor voorwaardelijke toegang, app of resource toewijzing, moet u [de groep beveiligen](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) als u geen gast gebruikers wilt toevoegen. Bovendien moet u uw licentie toewijzingen oplossen door te maken en toe te wijzen aan groepen die alleen **werk nemers** van een onderneming bevatten. Als u daarentegen ziet dat de groep **alle gebruikers** is ingeschakeld, maar niet wordt gebruikt om toegang te verlenen tot resources, moet u ervoor zorgen dat de operationele richt lijnen van uw organisatie opzettelijk gebruikmaken van die groep (die zowel **zakelijke mede werkers** als **gasten**bevat).
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatische gebruikers inrichting voor apps
 

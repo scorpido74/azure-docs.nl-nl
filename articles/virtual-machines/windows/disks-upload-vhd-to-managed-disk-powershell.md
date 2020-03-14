@@ -3,17 +3,17 @@ title: Een VHD uploaden naar Azure met behulp van Azure PowerShell
 description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van Azure PowerShell via direct uploaden.
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459979"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369553"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Een VHD uploaden naar Azure met behulp van Azure PowerShell
 
@@ -27,7 +27,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure PowerShell-module](/powershell/azure/install-Az-ps).
-- Als u van plan bent om een VHD te uploaden van on-premises: een VHD die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden van on-premises: een VHD met een vaste grootte die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
@@ -76,8 +76,6 @@ Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-ty
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-Als uw SAS verloopt tijdens het uploaden en u `revoke-access` nog niet hebt aangeroepen, kunt u een nieuwe SAS ophalen om het uploaden met `grant-access`voort te zetten.
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 

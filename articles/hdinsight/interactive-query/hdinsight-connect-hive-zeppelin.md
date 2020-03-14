@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890396"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367921"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Snelstartgids: Apache Hive query's uitvoeren in azure HDInsight met Apache Zeppelin
 
@@ -23,7 +23,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-An HDInsight interactieve query cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) om een HDInsight-cluster te maken.  Zorg ervoor dat u het **interactieve query** cluster type kiest.
+An HDInsight interactieve query cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het **interactieve query** cluster type kiest.
 
 ## <a name="create-an-apache-zeppelin-note"></a>Een Apache Zeppelin-opmerking maken
 
@@ -70,7 +70,7 @@ An HDInsight interactieve query cluster. Zie [cluster maken](../hadoop/apache-ha
 
     Vergelijking met de traditionele component, worden de query resultaten sneller weer gegeven.
 
-### <a name="additional-examples"></a>Aanvullende voorbeelden
+### <a name="additional-examples"></a>Aanvullende voor beelden
 
 1. Een tabel maken. Voer de volgende code uit in de Zeppelin-notebook:
 

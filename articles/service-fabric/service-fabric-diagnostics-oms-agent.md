@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609941"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366735"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestatie bewaking met Azure Monitor-logboeken
 
@@ -33,17 +33,17 @@ De beste manier om de Log Analytics agent toe te voegen aan uw cluster is via de
 
 3. Klik op **Windows-servers** als u een Windows-cluster wilt maken en **Linux-servers** als u een Linux-cluster maakt. Op deze pagina ziet u uw `workspace ID` en `workspace key` (vermeld als primaire sleutel in de portal). U hebt beide nodig voor de volgende stap.
 
-4. Voer de opdracht uit om de Log Analytics agent te installeren op uw cluster met behulp van de `vmss extension set`-API in uw Cloud Shell:
+4. Voer de opdracht uit om de Log Analytics agent te installeren op uw cluster met behulp van de `vmss extension set`-API:
 
     Voor een Windows-cluster:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     Voor een Linux-cluster:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -53,7 +53,7 @@ De beste manier om de Log Analytics agent toe te voegen aan uw cluster is via de
 
 5. Dit duurt minder dan 15 minuten om de agent aan uw knoop punten toe te voegen. U kunt controleren of de agents zijn toegevoegd met behulp van de `az vmss extension list`-API:
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 

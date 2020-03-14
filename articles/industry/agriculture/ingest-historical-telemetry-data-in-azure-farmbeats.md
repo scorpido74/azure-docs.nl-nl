@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 80d8f176d3a4af82a6b93e1af430d914c47bfff6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
-ms.translationtype: HT
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137353"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298764"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -20,30 +20,29 @@ Het opnemen van historische gegevens uit Internet of Things IoT-resources zoals 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens hebt verzameld van uw IoT-apparaten.
-U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stappen.
+Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens hebt verzameld van uw IoT-apparaten. U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stappen.
 
 ## <a name="enable-partner-access"></a>Partner toegang inschakelen
 
 U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met deze stap maakt u een client die toegang heeft tot uw Azure FarmBeats-exemplaar als uw apparaat-partner en biedt u de volgende waarden die vereist zijn in de volgende stappen:
 
-- API-eind punt: dit is de Datahub-URL, bijvoorbeeld https://\<Datahub >. azurewebsites. net.
+- API-eind punt: dit is de Datahub-URL, bijvoorbeeld https://\<Datahub >. azurewebsites. net
 - Tenant-id
 - Client-id
 - Clientgeheim
 - EventHub connection string
 
-Volg deze stappen.
+Volg deze stappen:
 
 >[!NOTE]
 > U moet een beheerder zijn om de volgende stappen uit te voeren.
 
 1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en pak het uit naar uw lokale station. Er is één bestand in het zip-bestand.
-2. Meld u aan bij https://portal.azure.com/ en ga naar Azure Active Directory-> app-registraties
+2. Meld u aan bij https://portal.azure.com/ en ga naar **Azure Active Directory** > **app-registraties**.
 
-3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-Datahub.
+3. Selecteer de **app-registratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-Datahub.
 
-4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
+4. Selecteer **een API beschikbaar** maken > Selecteer **een client toepassing toevoegen** en voer **04B07795-8ddb-461A-bbee-02f9e1bf7b46** in en controleer de **Scope voor autoriseren**. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de volgende stappen uit te voeren:
 
 5. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
@@ -59,9 +58,9 @@ Volg deze stappen.
 
 8. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
 
-9. Voer het volgende script uit: Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
+9. Voer het volgende script uit: Het script vraagt om de Tenant-ID, die kan worden verkregen van **Azure Active Directory** > **overzichts pagina**.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ Volg deze stappen.
 10. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 ## <a name="create-device-or-sensor-metadata"></a>Meta gegevens van het apparaat of de sensor maken
 
- Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. Als u dit wilt doen, maakt u de meta gegevens door FarmBeats-Api's aan te roepen. Houd er rekening mee dat u de Api's moet aanroepen als de client-app die u hebt gemaakt in de bovenstaande sectie
+ Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. Als u dit wilt doen, maakt u de meta gegevens door FarmBeats-Api's aan te roepen. Zorg ervoor dat u de Api's aanroept als de client-app die u in de bovenstaande sectie hebt gemaakt.
 
- FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld. Als u toegang hebt tot een partner, kunt u alleen de meta gegevens lezen, maken en bijwerken. **Verwijderen is niet toegestaan door een partner.**
+ FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld.
+
+ > [!NOTE]
+ > Als partner hebt u alleen toegang om de meta gegevens te lezen, te maken en bij te werken. **de optie voor verwijderen is beperkt tot de partner.**
 
 - /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway ofwel een knoop punt.
 - /**apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
@@ -284,7 +286,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
-Hieronder volgt een voorbeeld code in python. Het toegangs token dat in dit voor beeld wordt gebruikt, is hetzelfde als dat we hebben ontvangen tijdens de verificatie
+Hieronder volgt een voorbeeld code in python. Het toegangs token dat in dit voor beeld wordt gebruikt, is hetzelfde als tijdens de verificatie.
 
 ```python
 import requests
@@ -347,11 +349,11 @@ Converteer de historische sensor gegevens indeling naar een canonieke indeling d
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -408,8 +410,10 @@ Hier volgt een voor beeld van een telemetrie-bericht:
 
 **Corrigerende actie**:
 
-1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
+1. Zorg ervoor dat u de juiste partner registratie hebt uitgevoerd. u kunt dit controleren door naar de datahub Swagger te gaan, naar/partner API te gaan en te controleren of de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen hier](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
+
 2. Zorg ervoor dat u de meta gegevens (DeviceModel, Device, SensorModel, sensor) hebt gemaakt met behulp van de referenties van de partner-client.
+
 3. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt (zoals hieronder is opgegeven):
 
 ```json
@@ -423,11 +427,11 @@ Hier volgt een voor beeld van een telemetrie-bericht:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }

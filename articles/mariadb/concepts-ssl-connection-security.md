@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: b7206db24c813c8f273dd57407c43974932ff110
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 03/10/2020
+ms.openlocfilehash: c03a56176a6e2cc995e74017b60747541fc843bb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772024"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371627"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>SSL-connectiviteit in Azure Database for MariaDB
 Azure Database for MariaDB ondersteunt het verbinden van uw database server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
@@ -25,6 +25,32 @@ Verbindings reeksen voor verschillende programmeer talen worden weer gegeven in 
 
 Zie [SSL configureren](howto-configure-ssl.md)voor meer informatie over het in-of uitschakelen van SSL-verbinding tijdens het ontwikkelen van een toepassing.
 
+## <a name="tls-connectivity-in-azure-database-for-mariadb"></a>TLS-connectiviteit in Azure Database for MariaDB
+
+Azure Database for MariaDB ondersteunt versleuteling voor clients die verbinding maken met uw database server met behulp van Transport Layer Security (TLS). TLS is een industrie standaard protocol dat beveiligde netwerk verbindingen tussen uw database server-en client toepassingen waarborgt, zodat u kunt voldoen aan de nalevings vereisten.
+
+### <a name="tls-settings"></a>TLS-instellingen
+
+Azure Database for MariaDB biedt de mogelijkheid om de TLS-versie voor de client verbindingen af te dwingen. Als u de optie TLS wilt gebruiken, gebruikt u de instelling **minimale TLS-versie** . De volgende waarden zijn toegestaan voor deze optie-instelling:
+
+|  Minimale TLS-instelling             | TLS-versie wordt ondersteund                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (standaard) | Geen TLS vereist                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 en hoger |
+| TLS1_1                           | TLS 1,1, TLS 1,2 en hoger          |
+| TLS1_2                           | TLS-versie 1,2 en hoger           |
+
+
+Als u bijvoorbeeld deze versie van een TLS-instelling instelt op TLS 1,0, betekent dit dat uw server verbindingen met clients toestaat die gebruikmaken van TLS 1,0, 1,1 en 1.2 +. U kunt dit ook instellen op 1,2 zodat u alleen verbindingen van clients toestaat die gebruikmaken van TLS 1,2 en alle verbindingen met TLS 1,0 en TLS 1,1 worden geweigerd.
+
+> [!Note] 
+> Azure Database for MariaDB wordt standaard ingesteld op TLS uitgeschakeld voor alle nieuwe servers.
+>
+> Momenteel worden de TLS-versies ondersteund byAzure-Data Base voor MariaDB TLS 1,0, 1,1 en 1,2.
+
+Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for MariaDB.
+
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [firewall regels voor servers](concepts-firewall-rules.md)
 - Meer informatie over het [configureren van SSL](howto-configure-ssl.md).
+- Meer informatie over het [configureren van TLS](howto-tls-configurations.md).

@@ -1,21 +1,21 @@
 ---
-title: Persoonlijke koppeling voor Azure Database for PostgreSQL-één server (preview-versie)
+title: Persoonlijke koppeling-Azure Database for PostgreSQL-één server
 description: Meer informatie over de werking van een persoonlijke koppeling voor Azure Database for PostgreSQL-één server.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898363"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371678"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>Persoonlijke koppeling voor Azure Database for PostgreSQL-één server (preview-versie)
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Persoonlijke koppeling voor Azure Database for PostgreSQL-één server
 
-Met persoonlijke koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-Services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. De PaaS-bronnen kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource in het VNet.
+Met persoonlijke koppeling kunt u privé-eind punten maken voor Azure Database for PostgreSQL-één server, zodat u Azure-Services binnen uw privé Virtual Network (VNet) brengt. Met het persoonlijke eind punt wordt een privé-IP-adres weer gegeven dat u kunt gebruiken om verbinding te maken met uw database server net als elke andere resource in het VNet.
 
 Raadpleeg de [documentatie](https://docs.microsoft.com/azure/private-link/index)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) en subnet.
 
@@ -53,14 +53,11 @@ Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind pun
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
+* [Azure-portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Goedkeurings proces
-Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de PostgreSQL-beheerder de verbinding met het privé-eind punt (PEC) beheren met Azure Database for PostgreSQL.
-
-> [!NOTE]
-> Op dit moment ondersteunt Azure Database for PostgreSQL één server alleen automatische goed keuring voor het persoonlijke eind punt.
+Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de PostgreSQL-beheerder de verbinding met het privé-eind punt (PEC) beheren met Azure Database for PostgreSQL. Deze schei ding van taken tussen de netwerk beheerder en de DBA is handig voor het beheer van de Azure Database for PostgreSQL-verbinding. 
 
 * Navigeer naar de Azure Database for PostgreSQL Server-Resource in de Azure Portal. 
     * Selecteer de verbindingen met het privé-eind punt in het linkerdeel venster
@@ -109,6 +106,19 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 * Als u openbaar verkeer of een service-eind punt configureert en u persoonlijke eind punten maakt, worden verschillende soorten binnenkomend verkeer geautoriseerd door het bijbehorende type firewall regel.
 
 * Als u geen openbaar verkeer of service-eind punt configureert en u persoonlijke eind punten maakt, is de Azure Database for PostgreSQL single-server alleen toegankelijk via de persoonlijke eind punten. Als u geen openbaar verkeer of een service-eind punt configureert, hebben geen verkeer meer toegang tot de Azure Database for PostgreSQL enkele server nadat alle goedgekeurde privé-eind punten zijn afgewezen of verwijderd.
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Open bare toegang voor Azure Database for PostgreSQL één server weigeren
+
+Als u alleen wilt vertrouwen op privé-eind punten voor toegang tot hun Azure Database for PostgreSQL één server, kunt u het instellen van alle open bare eind punten ([firewall regels](concepts-firewall-rules.md) en [VNet-service-eind punten](concepts-data-access-and-security-vnet.md)) uitschakelen door de configuratie voor het **weigeren van open bare netwerk toegang** op de database server in te stellen. 
+
+Als deze instelling is ingesteld op *Ja* , worden alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for PostgreSQL. Als deze instelling is ingesteld op *Nee* , kunnen clients geen verbinding maken met uw Azure database for PostgreSQL op basis van de instellingen van de firewall of het VNet-service-eind punt. Nadat de waarde van de particuliere netwerk toegang is ingesteld op klanten, kunnen ook bestaande firewall regels en de VNet-service-eindpunt regel worden toegevoegd en/of bijgewerkt
+
+> [!Note]
+> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.
+>
+> Deze instelling heeft geen invloed op de SSL-en TLS-configuraties voor uw Azure Database for PostgreSQL één server.
+
+Voor informatie over het instellen van de toegang voor het **weigeren van open bare netwerken** voor uw Azure database for PostgreSQL één server van Azure Portal, raadpleegt u [toegang tot open bare netwerken configureren](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

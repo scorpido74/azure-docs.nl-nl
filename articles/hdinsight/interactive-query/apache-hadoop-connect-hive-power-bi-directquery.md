@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467148"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367989"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interactieve query Apache Hive gegevens visualiseren met micro soft Power BI met behulp van directe query's in HDInsight
 
@@ -26,7 +26,7 @@ U kunt gebruikmaken van het [Apache Hive ODBC-stuur programma](../hadoop/apache-
 ## <a name="prerequisites"></a>Vereisten
 Voordat u dit artikel gaat passeren, hebt u de volgende items nodig:
 
-* **HDInsight-cluster**. Het cluster kan een HDInsight-cluster met Apache Hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)voor meer informatie over het maken van clusters.
+* **HDInsight-cluster**. Het cluster kan een HDInsight-cluster met Apache Hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van clusters.
 * **[Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/)** . U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="load-data-from-hdinsight"></a>Gegevens uit HDInsight laden

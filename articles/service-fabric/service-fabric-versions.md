@@ -3,12 +3,12 @@ title: Ondersteunde cluster versies in azure Service Fabric
 description: Meer informatie over cluster versies in azure Service Fabric, met inbegrip van een koppeling naar de nieuwste releases van de Service Fabric-team blog.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252712"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370420"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric versies
 
@@ -37,7 +37,7 @@ De volgende tabel bevat de versies van Service Fabric en de bijbehorende eind da
 | 6,3. * | 6.1.480.* |Kleiner dan of gelijk aan versie 3,2 |31 maart 2019  |
 | 6,4. * | 6.2.301.* |Kleiner dan of gelijk aan versie 3,3 |15 september 2019 |
 | 6,5. * | 6.4.617.* |Kleiner dan of gelijk aan versie 3,4 |1 mei 2020 |
-| 7,0. * | 6.4.664. # |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
+| 7,0. * | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor de ondersteunde Service Fabric versies.

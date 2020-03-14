@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830072"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382124"
 ---
 Het is belang rijk om uw virtuele machine (VM) te beveiligen voor de toepassingen die u uitvoert. Het beveiligen van uw Vm's kan bestaan uit een of meer Azure-Services en-functies die beveiligde toegang bieden tot uw Vm's en beveiligde opslag van uw gegevens. In dit artikel vindt u informatie waarmee u uw virtuele machines en toepassingen kunt beveiligen.
 
@@ -24,6 +24,20 @@ Het moderne risico landschap voor Cloud omgevingen is dynamisch, waardoor de dru
 De just-in-time-toegang van Security Center kan worden toegepast op uw VM-implementatie om inkomend verkeer naar uw Azure-Vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind en zo snel mogelijk verbinding met Vm's wordt gemaakt. Wanneer just-in-time is ingeschakeld en een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center welke machtigingen de gebruiker heeft voor de virtuele machine. Als ze over de juiste machtigingen beschikken, wordt de aanvraag goedgekeurd en Security Center wordt automatisch de netwerk beveiligings groepen (Nsg's) geconfigureerd om binnenkomend verkeer voor de geselecteerde poorten gedurende een beperkte periode toe te staan. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. 
 
 ## <a name="encryption"></a>Versleuteling
+
+Er worden twee versleutelings methoden aangeboden voor Managed disks. Versleuteling op het niveau van het besturings systeem, dat Azure Disk Encryption is en versleuteling op platform niveau, dat versleuteling aan de server zijde is.
+
+### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
+
+Met Azure Managed disks worden uw gegevens standaard automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling aan de server zijde beveiligt uw gegevens en helpt u te voldoen aan de verplichtingen voor beveiliging en naleving van uw organisatie. Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2.
+
+Versleuteling heeft geen invloed op de prestaties van Managed disks. Er zijn geen extra kosten voor het versleutelen van de versleuteling.
+
+U kunt vertrouwen op door het platform beheerde sleutels voor de versleuteling van uw beheerde schijf of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de *klant beheerde sleutel* opgeven die moet worden gebruikt voor het versleutelen en ontsleutelen van alle gegevens in Managed disks. 
+
+Raadpleeg de artikelen voor [Windows](../articles/virtual-machines/windows/disk-encryption.md) of [Linux](../articles/virtual-machines/linux/disk-encryption.md)voor meer informatie over versleuteling aan de server zijde.
+
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de [Windows-VM](../articles/virtual-machines/windows/encrypt-disks.md) en de [Linux-VM](../articles/virtual-machines/linux/disk-encryption-overview.md) . Virtuele schijven op Windows-Vm's worden op rest versleuteld met behulp van BitLocker. Virtuele schijven op Linux Vm's worden op rest versleuteld met behulp van DM-cryptografie. 
 
@@ -43,7 +57,7 @@ Een veelvoorkomende uitdaging bij het bouwen van cloud-apps is het beheren van d
 
 Dit probleem wordt opgelost met de functie Beheerde identiteiten voor Azure-resources in Azure Active Directory (Azure AD). De functie biedt Azure-services met een automatisch beheerde identiteit in Azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code.  Uw code die op een virtuele machine wordt uitgevoerd, kan een token aanvragen van twee eind punten die alleen toegankelijk zijn vanuit de virtuele machine. Raadpleeg de pagina [Managed Identities voor Azure resources](../articles/active-directory/managed-identities-azure-resources/overview.md) Overview voor meer gedetailleerde informatie over deze service.   
 
-## <a name="policies"></a>Beleidsregels
+## <a name="policies"></a>Beleid
 
 [Azure-beleid](../articles/azure-policy/azure-policy-introduction.md) kan worden gebruikt voor het definiëren van het gewenste gedrag voor de virtuele [Windows-machines](../articles/virtual-machines/windows/policy.md) en [Linux-vm's](../articles/virtual-machines/linux/policy.md)van uw organisatie. Door gebruik te maken van beleids regels kan een organisatie verschillende conventies en regels voor de hele onderneming afdwingen. Afdwinging van het gewenste gedrag kan het risico verkleinen en bijdragen aan het succes van de organisatie.
 

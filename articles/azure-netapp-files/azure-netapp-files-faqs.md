@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248539"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369740"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -60,7 +60,7 @@ Alle Azure NetApp Files volumes worden versleuteld met behulp van de FIPS 140-2-
 
 Sleutel beheer voor Azure NetApp Files wordt verwerkt door de service. Voor elk volume wordt een unieke XTS-AES-256-gegevens versleutelings sleutel gegenereerd. Een versleutelings sleutel hiërarchie wordt gebruikt om alle volume sleutels te versleutelen en te beveiligen. Deze versleutelings sleutels worden nooit weer gegeven of gerapporteerd in een niet-versleutelde indeling. Versleutelings sleutels worden direct verwijderd wanneer een volume wordt verwijderd.
 
-Op dit moment worden door de gebruiker beheerde sleutels (uw eigen sleutels meenemen) niet ondersteund.
+Ondersteuning voor door gebruikers beheerde sleutels (neem uw eigen sleutels mee) met behulp van de speciale HSM van Azure is beschikbaar op basis van een gecontroleerde toepassing in de regio's VS-Oost, VS-West2 en VS Zuid-Centraal.  De klant kan toegang vragen bij anffeedback@microsoft.com, en als capaciteit beschikbaar is, worden aanvragen goedgekeurd.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Kan ik de NFS-export beleids regels configureren om de toegang tot het Azure NetApp Files service-koppelings doel te beheren?
 

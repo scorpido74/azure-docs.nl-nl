@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378255"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136531"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
 
@@ -130,7 +130,7 @@ Zie [Aanbevolen procedures voor een pilot](https://aka.ms/deploymentplans) op de
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Authenticatie zonder wacht woord plannen met de app Microsoft Authenticator
 
-De Microsoft Authenticator-app is een gratis down load van Google Play of de Apple App Store. Meer [informatie over het downloaden van de app Microsoft Authenticator](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak). Laat gebruikers de app Microsoft Authenticator downloaden. en volg de instructies om de aanmelding via telefoon in te scha kelen. 
+De Microsoft Authenticator-app is een gratis down load van Google Play of de Apple App Store. Meer [informatie over het downloaden van de app Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Laat gebruikers de app Microsoft Authenticator downloaden. en volg de instructies om de aanmelding via telefoon in te scha kelen. 
 
 Hiermee wordt een wille keurige iOS-of Android-telefoon omgezet in een sterke, wacht woordloze referentie. Gebruikers melden zich aan bij een platform of browser door een melding te ontvangen op de telefoon, een nummer dat op het scherm wordt weer gegeven op de telefoon en vervolgens biometrie of een pincode te gebruiken om te bevestigen. [Bekijk de details van de werking van de Microsoft Authenticator-app](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
 

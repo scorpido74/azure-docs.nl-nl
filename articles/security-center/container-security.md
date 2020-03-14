@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0df2c0501dfba6311d1178703e0907090706859a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303253"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296775"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -67,7 +67,7 @@ Zie de [sectie container](recommendations-reference.md#recs-containers) in de na
 
 Security Center voorziet in realtime detectie van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 
-We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [detectie van bedreigingen voor Azure-containers](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)voor volledige informatie.
+We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [detectie van bedreigingen voor Azure-containers](threat-protection.md#azure-containers)voor volledige informatie.
 
 
 ## <a name="container-security-faq"></a>Veelgestelde vragen over container beveiliging

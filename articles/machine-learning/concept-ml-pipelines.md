@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270314"
+ms.locfileid: "79296843"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -204,6 +204,12 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 |**Bijhouden en versie beheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
 | **Modulariteit** | Het scheiden van aandachtspunten en het isoleren van wijzigingen stelt software in staat om sneller te werken met een hogere kwaliteit. | 
 |**Werking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>De juiste PipelineStep-subklasse kiezen
+
+De `PythonScriptStep` is de meest flexibele subklasse van de abstracte `PipelineStep`. Andere subklassen, zoals `EstimatorStep` subklassen en `DataTransferStep`, kunnen specifieke taken uitvoeren met minder code. Zo kan een `EstimatorStep` worden gemaakt door simpelweg een naam door te geven voor de stap, een `Estimator`en een berekenings doel. U kunt ook invoer en uitvoer, pijplijn parameters en argumenten negeren. Zie [modellen trainen met Azure machine learning met behulp van Estimator](how-to-train-ml-models.md)voor meer informatie. 
+
+Met de `DataTransferStep` kunt u eenvoudig gegevens verplaatsen tussen gegevens bronnen en Sinks. De code om dit hand matig te doen, is eenvoudig, maar herhaaldelijk. In plaats daarvan kunt u gewoon een `DataTransferStep` maken met een naam, verwijzingen naar een gegevens bron en een gegevens-sink, en een reken doel. De notebook [Azure machine learning pijp lijn met DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) toont deze flexibiliteit.
 
 ## <a name="modules"></a>Modules
 

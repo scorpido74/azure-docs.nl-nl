@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/02/2020
-ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d9b64785dbd82842479eb3f313b8394f9f25b40b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267800"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369995"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive gegevens visualiseren met micro soft Power BI met behulp van ODBC in azure HDInsight
 
@@ -32,7 +32,7 @@ De informatie is ook van toepassing op het nieuwe type [interactieve query](../i
 
 Voordat u dit artikel gaat passeren, hebt u de volgende items nodig:
 
-* HDInsight-cluster. Het cluster kan een HDInsight-cluster met hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](apache-hadoop-linux-tutorial-get-started.md#create-cluster)voor meer informatie over het maken van clusters.
+* HDInsight-cluster. Het cluster kan een HDInsight-cluster met hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van clusters.
 
 * [Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/). U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
 
@@ -58,7 +58,7 @@ De **hivesampletable** -Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Vouw in het **Navigatie** venster **ODBC-> Hive > standaard**uit, selecteer **hivesampletable**en selecteer vervolgens **laden**.
 
-## <a name="visualize-data"></a>Gegevens visualiseren
+## <a name="visualize-data"></a>Visualiseer gegevens
 
 Door gaan met de laatste procedure.
 

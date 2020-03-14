@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: 3a857c145959c1bcde169e95369ef0bea327dfaf
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238662"
+ms.locfileid: "79296979"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -168,6 +168,12 @@ Uw gegevensset heeft nog steeds ontbrekende waarden nadat u de kolom **normaled-
 
 1. Selecteer de module **clean Missing Data** .
 
+1. Selecteer in het detail venster van de module rechts van het canvas de optie **kolom bewerken**.
+
+1. Vouw in het venster **te reinigen kolommen** de vervolg keuzelijst naast **insluiting**uit. Selecteer **alle kolommen**
+
+1. Selecteer **Opslaan**
+
 1. Selecteer in het detail venster van de module rechts van het canvas de optie **hele rij verwijderen** onder **reinigings modus**.
 
 1. Selecteer in het deel venster module details rechts van het canvas het vak **Opmerking** en voer *ontbrekende rijen verwijderen*in. 
@@ -213,9 +219,11 @@ Train het model door het een gegevensset te geven die de prijs bevat. Het algori
 
 1. Selecteer **regressie** > **lineaire regressie**en sleep deze naar het pijp lijn-canvas.
 
-1. Zoek de module **Train model** en sleep deze naar het pijp lijn-canvas. 
-
 1. Koppel de uitvoer van de module **Linear Regression** aan de linkerkant van de module **Train model** .
+
+1. Vouw in het deel palet module de sectie **training van module modules**uit en sleep de module **Train model** naar het canvas.
+
+1. Selecteer de module **Train model** en sleep deze naar het pijp lijn papier.
 
 1. Verbind de resultaten van de trainings gegevens (links poort) van de module **gesplitste gegevens** met de juiste invoer van de module **Train model** .
     
@@ -224,8 +232,6 @@ Train het model door het een gegevensset te geven die de prijs bevat. Het algori
 
     ![Scherm opname van de juiste configuratie van de Train model-module. De lineaire regressie-module maakt verbinding met de linker poort van Train model module en de module voor gesplitste gegevens maakt verbinding met de juiste poort van Train model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Vouw in het deel palet module de sectie **training van module modules**uit en sleep de module **Train model** naar het canvas.
-
 1. Selecteer de module **Train model** .
 
 1. Selecteer in het detail venster van de module rechts van het canvas de optie **kolom kiezer bewerken** .
@@ -233,6 +239,9 @@ Train het model door het een gegevensset te geven die de prijs bevat. Het algori
 1. Vouw in het dialoog venster **Label kolom** de vervolg keuzelijst uit en selecteer **kolom namen**. 
 
 1. Voer in het tekstvak de *prijs* in om de waarde op te geven die uw model gaat voors pellen.
+
+    >[!IMPORTANT]
+    > Zorg ervoor dat u de kolom naam precies opgeeft. **Prijs**niet kapitaliseren. 
 
     Uw pijp lijn moet er als volgt uitzien:
 
@@ -260,7 +269,7 @@ Gebruik de module voor het **evalueren van modellen** om te evalueren hoe goed u
 
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden om uw machine learning model te trainen. U kunt op elk moment een pijplijn uitvoering verzenden terwijl u pijp lijnen in de ontwerp functie bouwt. U kunt dit doen om uw werk te controleren terwijl u de functies van uw pijp lijn naar verwachting controleert.
+Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden om uw machine learning model te trainen. U kunt op elk moment een pijplijn uitvoering verzenden terwijl u pijp lijnen in de ontwerp functie bouwt. U kunt dit doen om uw werk te controleren terwijl u gaat controleren of uw pijp lijn werkt zoals verwacht.
 
 1. Selecteer aan de bovenkant van het canvas de optie **verzenden**.
 

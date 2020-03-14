@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: eed839c277156046ff9b7d97c6e87636a0822889
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767769"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299325"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen om query's te bewaken en de prestaties van de werk belasting te verbeteren
 
@@ -34,7 +34,14 @@ Automatisch afstemmen kan worden ingeschakeld op de server of het database nivea
 
 Op server niveau kunt u kiezen voor het overnemen van de automatische afstemmings configuratie van ' Azure defaults ' of de configuratie niet overnemen. De standaard waarden van Azure zijn FORCE_LAST_GOOD_PLAN ingeschakeld, CREATE_INDEX is ingeschakeld en DROP_INDEX is uitgeschakeld.
 
-### <a name="azure-portal"></a>Azure Portal
+> [!IMPORTANT]
+> Vanaf maart worden 2020 wijzigingen in de standaard instellingen van Azure voor automatische afstemming als volgt toegepast:
+>
+> - Nieuwe standaard waarden van Azure worden FORCE_LAST_GOOD_PLAN = ingeschakeld, CREATE_INDEX = uitgeschakeld en DROP_INDEX = uitgeschakeld.
+> - Bestaande servers zonder automatisch afstemmen geconfigureerd voor keuren worden automatisch geconfigureerd om de nieuwe standaard waarden van Azure te overnemen. Dit geldt voor alle klanten die momenteel server instellingen voor automatisch afstemmen in een niet-gedefinieerde status hebben.
+> - Nieuwe servers die worden gemaakt, worden automatisch geconfigureerd voor het overnemen van de nieuwe standaard waarden van Azure (in tegens telling tot eerdere versies van de configuratie voor automatisch afstemmen bij het maken van een nieuwe server).
+
+### <a name="azure-portal"></a>Azure-portal
 
 Als u automatisch afstemmen op Azure SQL Database logische **Server**wilt inschakelen, navigeert u naar de-server in azure Portal en selecteert u vervolgens **automatisch afstemmen** in het menu.
 
@@ -60,7 +67,7 @@ Met de Azure SQL Database kunt u de automatische afstemmings configuratie voor e
 > De algemene aanbeveling is de configuratie voor automatisch afstemmen op **server niveau** te beheren, zodat dezelfde configuratie-instellingen automatisch kunnen worden toegepast op elke Data Base. Configureer automatisch afstemmen voor een afzonderlijke Data Base alleen als u die data base andere instellingen moet hebben dan andere de instellingen overnemen van dezelfde server.
 >
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Als u automatisch afstemmen wilt inschakelen voor **één data base**, gaat u naar de data base in azure Portal en selecteert u **automatisch afstemmen**.
 
@@ -72,7 +79,7 @@ Houd er rekening mee dat DROP_INDEX optie op dit moment niet compatibel is met t
 
 Wanneer u de gewenste configuratie hebt geselecteerd, klikt u op **Toep assen**.
 
-### <a name="rest-api"></a>Rest API
+### <a name="rest-api"></a>Rest-API
 
 Meer informatie over het gebruik van REST API om automatisch afstemmen in te scha kelen voor één data base, vindt u [SQL database automatisch afstemmen bijwerken en HTTP-methoden ophalen](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 

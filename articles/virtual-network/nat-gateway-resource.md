@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ms.author: allensu
-ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217011"
+ms.locfileid: "79298651"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen (open bare preview)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen
 
 NAT-gateway bronnen maken deel uit van [Virtual Network NAT](nat-overview.md) en bieden een uitgaande Internet verbinding voor een of meer subnetten van een virtueel netwerk. In het subnet van het virtuele netwerk staat welke NAT-gateway wordt gebruikt. NAT biedt bron Network Address Translation (SNAT) voor een subnet.  NAT gateway-resources geven aan welke statische IP-adressen virtuele machines gebruiken bij het maken van uitgaande stromen. Statische IP-adressen zijn afkomstig van open bare IP-adres bronnen, open bare IP-voorvoegsel bronnen of beide. Een NAT-gateway bron kan Maxi maal 16 vaste IP-adressen van beide gebruiken.
 
@@ -353,6 +353,7 @@ We willen weten hoe we de service kunnen verbeteren. Voorst Ellen en stemmen op 
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
+  - [Sjabloon](./quickstart-create-nat-gateway-template.md)
 * Meer informatie over de resource-API voor NAT-gateway
   - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)

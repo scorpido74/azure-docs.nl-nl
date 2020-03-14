@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278452"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366986"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -71,14 +71,14 @@ Down load het script **New-OnPremiseHybridWorker. ps1** van de [PowerShell Galle
 
 | Parameter | Status | Beschrijving |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Verplicht | De naam van de resource groep die is gekoppeld aan uw Automation-account. |
-| *AutomationAccountName* | Verplicht | De naam van uw Automation-account.
-| *Referentie* | Optioneel | De referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving. |
-| *HybridGroupName* | Verplicht | De naam van een Hybrid Runbook Worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen. |
-| *OMSResourceGroupName* | Optioneel | De naam van de resource groep voor de Log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt de waarde van *AAResourceGroupName* gebruikt. |
-| *Abonnements* | Verplicht | De id van het Azure-abonnement dat is gekoppeld aan uw Automation-account. |
-| *TenantID* | Optioneel | De id van de Tenant organisatie die aan uw Automation-account is gekoppeld. |
-| *WorkspaceName* | Optioneel | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
+| `AAResourceGroupName` | Verplicht | De naam van de resource groep die is gekoppeld aan uw Automation-account. |
+| `AutomationAccountName` | Verplicht | De naam van uw Automation-account.
+| `Credential` | Optioneel | De referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving. |
+| `HybridGroupName` | Verplicht | De naam van een Hybrid Runbook Worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen. |
+| `OMSResourceGroupName` | Optioneel | De naam van de resource groep voor de Log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt de waarde van `AAResourceGroupName` gebruikt. |
+| `SubscriptionID` | Verplicht | De id van het Azure-abonnement dat is gekoppeld aan uw Automation-account. |
+| `TenantID` | Optioneel | De id van de Tenant organisatie die aan uw Automation-account is gekoppeld. |
+| `WorkspaceName` | Optioneel | De naam van de Log Analytics werkruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een. |
 
 > [!NOTE]
 > Bij het inschakelen van oplossingen ondersteunt Azure Automation alleen bepaalde regio's voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
@@ -89,7 +89,7 @@ Open **Windows Power shell** vanuit het **Start** scherm in de beheerders modus.
 
 ### <a name="step-3---run-the-powershell-script"></a>Stap 3: het Power shell-script uitvoeren
 
-Blader in de Power shell-opdracht regel shell naar de map die het script bevat dat u hebt gedownload. Wijzig de waarden voor de para meters *AutomationAccountName*, *AAResourceGroupName*, *OMSResourceGroupName*, *HybridGroupName*, *SubscriptionID*en *workspacenaam*. Voer het script uit.
+Blader in de Power shell-opdracht regel shell naar de map die het script bevat dat u hebt gedownload. Wijzig de waarden voor de para meters `AutomationAccountName`, `AAResourceGroupName`, `OMSResourceGroupName`, `HybridGroupName`, `SubscriptionID`en `WorkspaceName`. Voer het script uit.
 
 Nadat u het script hebt uitgevoerd, wordt u gevraagd om te verifiëren bij Azure. U moet zich aanmelden met een account dat lid is van de rol abonnements beheerders en mede beheerder van het abonnement.
 
@@ -149,7 +149,7 @@ Gebruik de volgende stappen om de installatie van de agent en de installatie te 
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Stap 4: de runbook-omgeving installeren en verbinding maken met Azure Automation
 
-Wanneer u een agent configureert om te rapporteren aan een Log Analytics-werk ruimte, pusht de automatiserings oplossing de Power shell-module **HybridRegistration** , die de cmdlet **add-HybridRunbookWorker** bevat. Gebruik deze cmdlet om de runbook-omgeving op de computer te installeren en te registreren bij Azure Automation.
+Wanneer u een agent configureert om te rapporteren aan een Log Analytics-werk ruimte, pusht de Automation-oplossing de `HybridRegistration` Power shell-module, die de cmdlet `Add-HybridRunbookWorker` bevat. Gebruik deze cmdlet om de runbook-omgeving op de computer te installeren en te registreren bij Azure Automation.
 
 Open een Power shell-sessie in de beheerders modus en voer de volgende opdrachten uit om de module te importeren.
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-Voer nu de cmdlet **add-HybridRunbookWorker** uit met de volgende syntaxis.
+Voer nu de `Add-HybridRunbookWorker` cmdlet uit met de volgende syntaxis.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ U kunt de informatie die vereist is voor deze cmdlet, ophalen via de pagina sleu
 
 ![Pagina sleutels beheren](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* Voor de para meter *GroupName* gebruikt u de naam van de Hybrid Runbook worker groep. Als deze groep al bestaat in het Automation-account, wordt de huidige computer hieraan toegevoegd. Als deze groep niet bestaat, wordt deze toegevoegd.
-* Voor de para meter *endpoint* gebruikt u het item **URL** op de pagina sleutels beheren.
-* Voor de para meter *token* gebruikt u de **primaire toegangs sleutel** vermelding op de pagina sleutels beheren.
-* Stel, indien nodig, de *uitgebreide* para meter in om details over de installatie te ontvangen.
+* Voor de para meter `GroupName` gebruikt u de naam van de Hybrid Runbook Worker groep. Als deze groep al bestaat in het Automation-account, wordt de huidige computer hieraan toegevoegd. Als deze groep niet bestaat, wordt deze toegevoegd.
+* Gebruik voor de para meter `EndPoint` het item **URL** op de pagina sleutels beheren.
+* Voor de para meter `Token` gebruikt u de **primaire toegangs sleutel** vermelding op de pagina sleutels beheren.
+* Stel, indien nodig, de para meter `Verbose` in om details over de installatie te ontvangen.
 
 ### <a name="step-5----install-powershell-modules"></a>Stap 5: Power shell-modules installeren
 
 Runbooks kunnen gebruikmaken van de activiteiten en cmdlets die zijn gedefinieerd in de modules die in uw Azure Automation omgeving zijn geïnstalleerd. Omdat deze modules niet automatisch worden geïmplementeerd op on-premises computers, moet u ze hand matig installeren. De uitzonde ring hierop is de Azure-module. Deze module wordt standaard geïnstalleerd en biedt toegang tot cmdlets voor alle Azure-Services en-activiteiten voor Azure Automation.
 
-Omdat het primaire doel van de functie van het Hybrid Runbook Worker is om lokale bronnen te beheren, moet u waarschijnlijk de modules installeren die deze bronnen ondersteunen, met name de **PowerShellGet** -module. Zie [Windows Power shell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)voor meer informatie over het installeren van Windows Power shell-modules.
+Omdat het primaire doel van de functie van het Hybrid Runbook Worker is om lokale bronnen te beheren, moet u waarschijnlijk de modules installeren die deze bronnen ondersteunen, met name de `PowerShellGet`-module. Zie [Windows Power shell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)voor meer informatie over het installeren van Windows Power shell-modules.
 
-Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar wordt verwezen door de omgevings variabele *PSModulePath* , zodat de Hybrid worker deze automatisch kan importeren. Zie [Installing modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)(Engelstalig) voor meer informatie.
+Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar wordt verwezen door de `PSModulePath` omgevings variabele, zodat de Hybrid worker deze automatisch kan importeren. Zie [Installing modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

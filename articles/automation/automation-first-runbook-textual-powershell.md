@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b9808ddc3b61b0055642c5a0f2a82b0dc7553b33
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278907"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367309"
 ---
 # <a name="my-first-powershell-runbook"></a>Mijn eerste PowerShell-runbook
 
@@ -39,15 +39,18 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 Power shell-runbooks hebben dezelfde levens cyclus, mogelijkheden en beheer als Power shell workflow-runbooks. Er zijn echter enkele verschillen en beperkingen.
 
-* Power shell-runbooks worden snel uitgevoerd vergeleken met Power shell workflow-runbooks omdat ze geen compilatie stap gebruiken.
-* Power shell-werkmappen bieden geen ondersteuning voor controle punten die worden gebruikt in Power shell workflow-runbooks. Met behulp van controle punten kunt u met Power shell workflow-runbooks vanaf elk gewenst moment de bewerking hervatten. Uw Power shell-runbook kan de bewerking alleen vanaf het begin hervatten.
-* Power shell-runbooks kunnen alleen opdrachten serieel uitvoeren. Power shell workflow-runbooks ondersteunen zowel seriële als parallelle uitvoering.
-* Voor een Power shell-runbook wordt alles in een script in één runs Pace uitgevoerd. In een Power shell workflow-runbook kan een activiteit, een opdracht of een script blok een eigen runs Pace hebben. 
-* Power shell-runbooks hebben een aantal verschillen in de [syntaxis](https://technet.microsoft.com/magazine/dn151046.aspx) van Power shell workflow-runbooks.
+| Kenmerk  | Power shell-Runbooks | Power shell workflow-Runbooks |
+| ------ | ----- | ----- |
+| Snelheid | Snel uitvoeren omdat ze geen compilatie stap gebruiken. | Langzamer uitgevoerd. |
+| Controlepunten | Controle punten worden niet ondersteund. Een Power shell-runbook kan de bewerking alleen vanaf het begin hervatten. | Controle punten gebruiken, waarmee een werkmap vanaf elk punt kan worden hervat. |
+| Opdracht uitvoering | Alleen seriële uitvoering ondersteunen. | Ondersteuning voor zowel seriële als parallelle uitvoering.|
+| Runs | Een enkele runs Pace voert alles uit in een script. | Een afzonderlijke runs Pace kan worden gebruikt voor een activiteit, een opdracht of een script blok. |
+
+Naast deze verschillen hebben Power shell-runbooks enkele [syntaxis verschillen](https://technet.microsoft.com/magazine/dn151046.aspx) ten opzichte van Power shell workflow-runbooks.
 
 ## <a name="step-1---create-runbook"></a>Stap 1: runbook maken
 
-Begin met het maken van een eenvoudig runbook waarmee de tekst **Hallo wereld** als uitvoer wordt gegeven.
+Begin met het maken van een eenvoudig runbook waarmee de tekst `Hello World`worden uitgevoerd.
 
 1. Open uw Automation-account in Azure Portal.
 2. Selecteer **runbooks** onder **proces automatisering** om de lijst met Runbooks te openen.
@@ -74,9 +77,9 @@ Voordat u het runbook publiceert om het beschikbaar te maken in productie, moet 
 2. Klik op **Start** om de test te starten. Dit moet de enige ingeschakelde optie zijn.
 3. Houd er rekening mee dat een [runbook-taak](automation-runbook-execution.md) wordt gemaakt en dat de status ervan wordt weer gegeven in het deel venster.
 
-   De taak status wordt **in de wachtrij geplaatst**, wat aangeeft dat de taak wacht totdat een runbook worker in de Cloud beschikbaar is. De status verandert in **starten** wanneer een werk nemer de taak claimt. Ten slotte wordt de status **actief** wanneer het runbook daad werkelijk wordt uitgevoerd.
+   De taak status begint als `Queued`, wat aangeeft dat de taak wacht totdat een runbook worker in de Cloud beschikbaar is. De status wordt gewijzigd in `Starting` wanneer een werk nemer de taak claimt. Ten slotte wordt de status `Running` wanneer het runbook daad werkelijk wordt uitgevoerd.
 
-4. Wanneer de runbook-taak is voltooid, wordt de uitvoer weer gegeven in het deel venster testen. In dit geval ziet u **Hallo wereld**.
+4. Wanneer de runbook-taak is voltooid, wordt de uitvoer weer gegeven in het deel venster testen. In dit geval ziet u `Hello World`.
 
    ![Uitvoer testvenster](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
@@ -96,12 +99,12 @@ Het runbook dat u hebt gemaakt, bevindt zich nog in de concept modus. Het moet w
 
    ![Taakoverzicht](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Zodra de status van het runbook **is voltooid**, klikt u op **uitvoer** om de uitvoer pagina te openen, waar u **Hallo wereld** weer gegeven kunt zien.
+1. Zodra de status van het runbook wordt weer gegeven `Completed`, klikt u op **uitvoer** om de uitvoer pagina te openen, waar u `Hello World` weer gegeven kunt zien.
 
    ![Taakuitvoer](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. Sluit de uitvoer pagina.
-1. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. In de uitvoer stroom ziet u alleen **Hallo wereld** .
+1. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. In de uitvoer stroom ziet u alleen `Hello World`.
 
     Houd er rekening mee dat in het deel venster stromen andere stromen kunnen worden weer gegeven voor een runbook-taak, zoals uitgebreide en fout stromen, als het runbook hiernaar schrijft.
 
@@ -118,10 +121,10 @@ Het runbook dat u hebt gemaakt, bevindt zich nog in de concept modus. Het moet w
 
 U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Hiervoor moet het runbook kunnen worden geverifieerd met behulp van het run as-account dat automatisch is gemaakt tijdens het maken van uw Automation-account.
 
-Zoals u in het onderstaande voor beeld ziet, wordt de uitvoeren als-verbinding gemaakt met de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Als u resources beheert over meerdere abonnementen, moet u de para meter *AzContext* gebruiken in combi natie met [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
+Zoals u in het onderstaande voor beeld ziet, wordt de uitvoeren als-verbinding gemaakt met de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Als u resources beheert over meerdere abonnementen, moet u de para meter `AzContext` gebruiken met [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
 
 > [!NOTE]
-> Voor Power shell-runbooks zijn **add-AzAccount** en **add-AzureRMAccount** aliassen voor **Connect-AzAccount**. U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+> Voor Power shell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -149,7 +152,7 @@ Zoals u in het onderstaande voor beeld ziet, wordt de uitvoeren als-verbinding g
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 1. Open de tekst editor door te klikken op **bewerken** op de pagina **MyFirstRunbook-Power shell** .
-1. U hebt de **Write-output** regel niet langer nodig. Ga gewoon door en verwijder deze.
+1. U hebt de `Write-Output` regel niet meer nodig. Ga gewoon door en verwijder deze.
 1. Typ of kopieer en plak de volgende code, die de verificatie afhandelt met uw uitvoeren als-account voor Automation.
 
    ```powershell
@@ -181,7 +184,7 @@ Zoals u in het onderstaande voor beeld ziet, wordt de uitvoeren als-verbinding g
 
 Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren. Laten we een opdracht toevoegen om een virtuele machine te starten. U kunt een wille keurige virtuele machine in uw Azure-abonnement kiezen en alleen die naam in het runbook voorlopig hardcoderen we.
 
-1. Voeg aan het runbook-script de cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) toe om de virtuele machine te starten. Zoals hieronder wordt weer gegeven, start de cmdlet een virtuele machine met de naam **VMName** en met een resource groep met de naam **ResourceGroupName**.
+1. Voeg aan het runbook-script de cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) toe om de virtuele machine te starten. Zoals hieronder wordt weer gegeven, start de cmdlet een virtuele machine met de naam `VMName` en met een resource groep met de naam `ResourceGroupName`.
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -211,7 +214,7 @@ Nu uw runbook is geverifieerd voor uw Azure-abonnement, kunt u resources beheren
 
 Met uw runbook wordt momenteel de virtuele machine gestart die u hebt hardcoded in het runbook. Het runbook is handiger als u de virtuele machine opgeeft wanneer het runbook wordt gestart. Laten we invoer parameters toevoegen aan het runbook om deze functionaliteit te bieden.
 
-1. Wijzig in de tekst editor de cmdlet **Start-AzVM** om variabelen te gebruiken voor de para meters *VMName* en *ResourceGroupName*. 
+1. Wijzig in de tekst editor de `Start-AzVM`-cmdlet om variabelen te gebruiken voor de para meters `VMName` en `ResourceGroupName`. 
 
    ```powershell
    Param(

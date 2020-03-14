@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271075"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371151"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>KEUR Een Azure Container Service cluster met Log Analytics bewaken
 
@@ -28,8 +28,8 @@ Er wordt ook van uitgegaan dat u de `az` Azure CLI en `kubectl`-hulpprogram ma's
 
 U kunt testen of u het `az`-hulp programma hebt geïnstalleerd door uit te voeren:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Als u het hulp programma `az` niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
@@ -38,21 +38,24 @@ U kunt ook [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/over
 U kunt testen of u het `kubectl`-hulp programma hebt geïnstalleerd door uit te voeren:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Als `kubectl` niet is geïnstalleerd, kunt u het volgende uitvoeren:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Als u wilt testen of er kubernetes-sleutels zijn geïnstalleerd in uw kubectl-hulp programma, kunt u het volgende uitvoeren:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Als de bovenstaande opdracht fouten opleveren, moet u kubernetes-cluster sleutels installeren in uw kubectl-hulp programma. U kunt dit doen met de volgende opdracht:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ Dit is het [yaml-bestand van de daemonset](https://github.com/Microsoft/OMS-dock
 Zodra u uw werk ruimte-ID en-sleutel aan de Daemonset-configuratie hebt toegevoegd, kunt u de Log Analytics agent op uw cluster installeren met het `kubectl` opdracht regel programma:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>De Log Analytics-agent installeren met behulp van een Kubernetes-geheim
@@ -94,16 +97,24 @@ Als u uw Log Analytics werk ruimte-ID en-sleutel wilt beveiligen, kunt u Kuberne
   - geheime sjabloon - geheim template.yaml
     - Daemonset YAML-bestand-omsagent-DS-geheimen. yaml
 - Voer het script uit. Het script vraagt om de Log Analytics werk ruimte-ID en primaire sleutel. Voeg dit toe en het script maakt een geheim yaml-bestand zodat u het kunt uitvoeren.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Maak de geheimen pod door het volgende uit te voeren: ```kubectl create -f omsagentsecret.yaml```
+  - Maak de schil geheimen door het uitvoeren van de volgende:
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - Als u wilt controleren, voert u het volgende uit:
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Als u uw Log Analytics werk ruimte-ID en-sleutel wilt beveiligen, kunt u Kuberne
   KEY:    88 bytes
   ```
 
-  - Maken van uw omsagent-daemon-set door uit te voeren ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Maak uw omsagent-daemon-set door de volgende handelingen uit te voeren:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Conclusie
 Dat is alles. Na enkele minuten moet u de gegevens stroom naar uw Log Analytics dash board kunnen zien.

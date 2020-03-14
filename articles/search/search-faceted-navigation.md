@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390346"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283158"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -34,7 +34,7 @@ Bij het ontwikkelen van uw toepassing is het schrijven van code voor het maken v
 ## <a name="sample-code-and-demo"></a>Voorbeeld code en demo
 In dit artikel wordt een portal voor taak zoekopdrachten als voor beeld gebruikt. Het voor beeld wordt geïmplementeerd als een ASP.NET MVC-toepassing.
 
-- Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](http://azjobsdemo.azurewebsites.net/).
+- Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://aka.ms/azjobsdemo).
 
 - Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -78,7 +78,7 @@ Complexe Zoek expressies verminderen de prestaties van de query. Gebruik waar mo
 Als u beter inzicht wilt krijgen in hoe een filter nauw keuriger wordt toegevoegd, kunt u een complexe Zoek expressie vergelijken met een uitdrukking die een filter expressie bevat:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 Beide query's zijn geldig, maar de tweede is een superieure als u op zoek bent naar niet-motels met parkeren in Seattle.
 -   De eerste query is afhankelijk van de specifieke woorden die worden genoemd of die niet worden vermeld in de teken reeks velden, zoals naam, beschrijving en een ander veld dat Doorzoek bare gegevens bevat.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst worden opgegeven met `count:<integer>`, `sort:<>`, `interval:<integer>`en `values:<list>`. Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
 
-Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?* . Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?* . Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat de volgende query die door de toepassing wordt verzonden `$filter=Color eq ‘Red’`.
+Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?* . Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?* . Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat de volgende query die door de toepassing wordt verzonden `$filter=Color eq 'Red'`.
 
 Het volgende code fragment van de `JobsSearch.cs` pagina voegt de geselecteerde zakelijke titel toe aan het filter als u een waarde selecteert in het facet van de zakelijke titel.
 
@@ -371,7 +371,7 @@ U kunt filter voorbeelden vinden in de [OData-expressie syntaxis (Azure Cognitiv
 ## <a name="try-the-demo"></a>Probeer de demo
 De demo van de Azure Cognitive Search Job Portal bevat de voor beelden waarnaar in dit artikel wordt verwezen.
 
--   Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
+-   Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://aka.ms/azjobsdemo).
 
 -   Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

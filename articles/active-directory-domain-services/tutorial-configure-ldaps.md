@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9fc60549d895129af56f289c6247dcb377b973b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612767"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298670"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -68,7 +68,7 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 * **Sleutel gebruik** : het certificaat moet worden geconfigureerd voor *digitale hand tekeningen* en *sleutel codering*.
 * **Certificaat doeleinde** -het certificaat moet geldig zijn voor SSL-server authenticatie.
 
-In deze zelf studie maakt u een zelfondertekend certificaat voor secure LDAP met de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aaddscontoso.com*:
+Er zijn verschillende hulpprogram ma's beschikbaar voor het maken van een zelfondertekend certificaat, zoals OpenSSL, het hulp programma MakeCert, de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] , enzovoort. In deze zelf studie maakt u een zelfondertekend certificaat voor secure LDAP met de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Voordat u het digitale certificaat dat u in de vorige stap hebt gemaakt, kunt ge
 1. Aangezien dit certificaat wordt gebruikt om gegevens te ontsleutelen, moet u de toegang nauw keurig beheren. Een wacht woord kan worden gebruikt om het gebruik van het certificaat te beveiligen. Zonder het juiste wacht woord kan het certificaat niet worden toegepast op een service.
 
     Kies op de pagina **beveiliging** de optie voor **wacht woord** om de te beveiligen *. PFX* -certificaat bestand. Voer een wacht woord in en bevestig dit en selecteer vervolgens **volgende**. Dit wacht woord wordt in de volgende sectie gebruikt om secure LDAP in te scha kelen voor uw Azure AD DS beheerde domein.
-1. Geef op de pagina **te exporteren bestand** de bestands naam en de locatie op waarnaar u het certificaat wilt exporteren, bijvoorbeeld *C:\Users\accountname\azure-AD-DS.pfx*.
+1. Geef op de pagina **te exporteren bestand** de bestands naam en de locatie op waarnaar u het certificaat wilt exporteren, bijvoorbeeld *C:\Users\accountname\azure-AD-DS.pfx*. Houd rekening met het wacht woord en de locatie van de *. PFX* -bestand omdat deze informatie in de volgende stappen vereist is.
 1. Selecteer op de pagina controleren de optie **volt ooien** om het certificaat te exporteren naar een *. PFX* -certificaat bestand. Er wordt een bevestigings dialoogvenster weer gegeven wanneer het certificaat is geëxporteerd.
 1. Wijzig de MMC niet voor gebruik in de volgende sectie.
 
@@ -221,7 +221,7 @@ We gaan een regel maken om binnenkomende beveiligde LDAP-toegang via TCP-poort 6
     | Protocol                          | TCP          |
     | Bewerking                            | Toestaan        |
     | Prioriteit                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Naam                              | AllowLDAPS   |
 
 1. Wanneer u klaar bent, selecteert u **toevoegen** om de regel op te slaan en toe te passen.
 

@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: a2bbb646288700c5f0510a1501808100e158e5fe
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: d11107ca7c8d41c66f9336b5c1506f24777ceb4f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668470"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381598"
 ---
-|Naam |Beschrijving |Effect (s) |Version |GitHub |
+|Naam |Beschrijving |Effect (s) |Versie |GitHub |
 |---|---|---|---|---|
 |[Geavanceerde instellingen voor gegevens beveiliging voor het beheerde exemplaar van SQL moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3965c43d-b5f4-482e-b74a-d89ee0e0b3a8) |Zorg ervoor dat er een e-mail adres is ingesteld voor het veld ' waarschuwingen verzenden naar ' in de geavanceerde instellingen voor de beveiligings server van gegevens. Dit e-mail adres ontvangt waarschuwings meldingen wanneer afwijkende activiteiten worden gedetecteerd in SQL Managed instances. |AuditIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurityEmails_Audit.json)
 |[Geavanceerde instellingen voor gegevens beveiliging voor SQL Server moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9677b740-f641-4f3c-b9c5-466005c85278) |Zorg ervoor dat er een e-mail adres is ingesteld voor het veld ' waarschuwingen verzenden naar ' in de geavanceerde instellingen voor de beveiligings server van gegevens. Dit e-mail adres ontvangt waarschuwings meldingen wanneer afwijkende activiteiten worden gedetecteerd op SQL-servers. |AuditIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurityEmails_Audit.json)

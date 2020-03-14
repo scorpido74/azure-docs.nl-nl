@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245224"
+ms.locfileid: "79299342"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -122,7 +122,7 @@ Hoewel dit het basis ontwerp is van een perimeter netwerk, zijn er tal van versc
 
 Op basis van het eerder genoemde aantal vertrouwens relaties wordt u aangeraden een perimeter netwerk te gebruiken voor alle hoge beveiligings implementaties om het niveau van netwerk beveiliging en toegangs beheer voor uw Azure-resources te verbeteren. U kunt Azure of een oplossing van derden gebruiken om een extra beveiligingslaag tussen uw assets en Internet te bieden:
 
-- Systeem eigen besturings elementen van Azure. [Azure firewall](/azure/firewall/overview) en de [Web Application firewall in Application Gateway](/azure/application-gateway/overview#web-application-firewall) bieden basis beveiliging met een volledig stateful firewall als een service, ingebouwde hoge Beschik baarheid, onbeperkte Cloud schaal baarheid, FQDN-filtering, ondersteuning voor OWASP-kern regel sets en eenvoudige installatie en configuratie.
+- Systeem eigen besturings elementen van Azure. [Azure firewall](/azure/firewall/overview) en de [Web Application firewall in Application Gateway](../../application-gateway/features.md#web-application-firewall) bieden basis beveiliging met een volledig stateful firewall als een service, ingebouwde hoge Beschik baarheid, onbeperkte Cloud schaal baarheid, FQDN-filtering, ondersteuning voor OWASP-kern regel sets en eenvoudige installatie en configuratie.
 - Aanbiedingen van derden. Zoek in de [Azure Marketplace](https://azuremarketplace.microsoft.com/) naar de Next Generation firewall (NGFW) en andere aanbiedingen van derden die vertrouwde beveiligings Programma's en een aanzienlijk verbeterd niveau van netwerk beveiliging bieden. De configuratie is mogelijk complexer, maar een aanbieding van derden kan u de mogelijkheid bieden om bestaande mogelijkheden en vaardig heden te gebruiken.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Voorkom bloot stelling aan Internet met specifieke WAN-koppelingen

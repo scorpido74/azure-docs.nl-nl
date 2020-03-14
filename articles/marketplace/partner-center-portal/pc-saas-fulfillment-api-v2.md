@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c0d5deef609796501515fc9c7064a96ca1419b3a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816609"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371525"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-fulfillment-Api's, versie 2 
 
@@ -30,7 +30,7 @@ Azure SaaS beheert de volledige levens cyclus van een SaaS-abonnements aankoop. 
 
 De volgende tabel geeft een lijst van de inrichtings statussen voor een SaaS-abonnement, met inbegrip van een beschrijving en sequentie diagram voor elke (indien van toepassing). 
 
-#### <a name="provisioning"></a>Inrichten
+#### <a name="provisioning"></a>Inrichting
 
 Wanneer een klant een aankoop initieert, ontvangt de partner deze informatie in een autorisatie code op een klant-interactieve webpagina die gebruikmaakt van een URL-para meter. Een voor beeld is `https://contoso.com/signup?token=..`, terwijl de URL van de landings pagina in het partner centrum `https://contoso.com/signup`is. De autorisatie code kan worden gevalideerd en uitgewisseld voor de details van de inrichtings service door de API voor het oplossen van conflicten aan te roepen.  Wanneer een SaaS-service is ingericht, verzendt deze een activerings aanroep om aan te geven dat de uitvoering is voltooid en dat de klant kan worden gefactureerd. 
 
@@ -58,7 +58,7 @@ In het volgende diagram ziet u de acties wanneer een update wordt gestart vanuit
 
 ![API-aanroepen wanneer de update wordt gestart vanuit de SaaS-service](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Gebroken
+#### <a name="suspended"></a>Suspended
 
 Deze status geeft aan dat de betaling van een klant niet is ontvangen. Op basis van het beleid geven we de klant een respijt periode voordat ze het abonnement annuleren. Wanneer een abonnement de volgende status heeft: 
 
@@ -97,7 +97,7 @@ De volgende tabel bevat de definities voor algemene para meters en entiteiten di
 
 Met het eind punt voor omzetten kan de uitgever een Marketplace-token omzetten in een permanente Resource-ID. De resource-ID is de unieke id voor een SaaS-abonnement. Wanneer een gebruiker wordt omgeleid naar de website van een partner, bevat de URL een token in de query parameters. De partner wordt verwacht dit token te gebruiken en een aanvraag te doen om het te verhelpen. Het antwoord bevat de unieke SaaS-abonnements-ID, de naam, de aanbiedings-ID en het plan voor de resource. Dit token is slechts één uur geldig. 
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Verzenden<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -110,9 +110,9 @@ Met het eind punt voor omzetten kan de uitgever een Marketplace-token omzetten i
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-MS-aanvraag-out    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+|  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`". |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`". |
 |  x-MS-Marketplace-token  |  De token query-para meter in de URL wanneer de gebruiker wordt omgeleid naar de website van de SaaS-partner vanuit Azure (bijvoorbeeld: `https://contoso.com/signup?token=..`). *Opmerking:* De URL decodeert de token waarde uit de browser voordat u deze gebruikt.  |
 
 *Antwoord codes:*
@@ -141,7 +141,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -174,9 +174,9 @@ Een lijst met alle SaaS-abonnementen voor een uitgever.
 |                    |                   |
 |  ---------------   |  ---------------  |
 | Content-Type       |  `application/json`  |
-| x-MS-aanvraag-out     |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+| x-ms-requestid     |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 | x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-| autorisatie      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
+| authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Antwoord codes:*
 
@@ -266,7 +266,7 @@ Code: 403 <br>
 Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. 
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -277,11 +277,11 @@ Interne server fout.
 }
 ```
 
-#### <a name="get-subscription"></a>Abonnement nemen
+#### <a name="get-subscription"></a>Abonnement ophalen
 
 Hiermee wordt het opgegeven SaaS-abonnement opgehaald. Gebruik deze aanroep om licentie gegevens op te halen en informatie te plannen.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -295,9 +295,9 @@ Hiermee wordt het opgegeven SaaS-abonnement opgehaald. Gebruik deze aanroep om l
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`  |
-|  x-MS-aanvraag-out    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+|  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Antwoord codes:*
 
@@ -338,7 +338,7 @@ Code: 404<br>
 Niet gevonden.<br> 
 
 Code: 500<br>
-Interne server fout.<br>
+Interne serverfout.<br>
 
 ```json
 {
@@ -365,9 +365,9 @@ Gebruik deze aanroep om te achterhalen of er privé-of open bare aanbiedingen vo
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|   x-MS-aanvraag-out   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+|   x-ms-requestid   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid  | Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`". |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`". |
 
 *Antwoord codes:*
 
@@ -391,7 +391,7 @@ Code: 403<br>
 Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. <br> 
 
 Code: 500<br>
-Interne server fout.<br>
+Interne serverfout.<br>
 
 ```json
 { 
@@ -403,7 +403,7 @@ Interne server fout.<br>
 
 #### <a name="activate-a-subscription"></a>Een abonnement activeren
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Verzenden<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -417,9 +417,9 @@ Interne server fout.<br>
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
-|  x-MS-aanvraag-out    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
+|  x-ms-requestid    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  | Een unieke teken reeks waarde voor de bewerking op de client. Deze teken reeks correleert alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`". |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`". |
 
 *Lading van aanvraag:*
 
@@ -445,7 +445,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -460,7 +460,7 @@ Interne server fout.
 
 Werk het abonnement op de abonnementen bij.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verzenden<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -474,9 +474,9 @@ Werk het abonnement op de abonnementen bij.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-MS-aanvraag-out    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
+|  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.    |
-| autorisatie      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
+| authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Lading van aanvraag:*
 
@@ -491,7 +491,7 @@ Request Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Bewerkings locatie | De koppeling naar een resource om de status van de bewerking op te halen.   |
+| Operation-Location | De koppeling naar een resource om de status van de bewerking op te halen.   |
 
 *Antwoord codes:*
 
@@ -508,7 +508,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -540,9 +540,9 @@ Werk de hoeveelheid op het abonnement bij.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json` |
-|  x-MS-aanvraag-out    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
+|  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.    |
-| autorisatie      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
+| authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Lading van aanvraag:*
 
@@ -557,7 +557,7 @@ Request Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Bewerkings locatie | Koppeling naar een resource om de status van de bewerking op te halen.   |
+| Operation-Location | Koppeling naar een resource om de status van de bewerking op te halen.   |
 
 *Antwoord codes:*
 
@@ -575,7 +575,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -593,7 +593,7 @@ Interne server fout.
 
 Meld u af en verwijder het opgegeven abonnement.
 
-##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>Verwijderen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
+##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -607,9 +607,9 @@ Meld u af en verwijder het opgegeven abonnement.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-MS-aanvraag-out    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.   |
+|  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.   |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.   |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Antwoord codes:*
 
@@ -626,7 +626,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -660,9 +660,9 @@ Geeft een lijst van openstaande bewerkingen voor de huidige uitgever.
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     |  `application/json` |
-|  x-MS-aanvraag-out    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
+|  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Antwoord codes:*
 
@@ -694,7 +694,7 @@ Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Interne server fout.
+Interne serverfout.
 
 ```json
 {
@@ -723,9 +723,9 @@ Hiermee kan de uitgever de status van de opgegeven geactiveerde async-bewerking 
 |                    |                   |
 |  ---------------   |  ---------------  |
 |  Content-Type      |  `application/json`   |
-|  x-MS-aanvraag-out    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
+|  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Antwoord codes:*<br>
 
@@ -757,7 +757,7 @@ Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt gepr
 Code: 404<br>
 Niet gevonden.
 
-Code: 500<br> Interne server fout.
+Code: 500<br> Interne serverfout.
 
 ```json
 {
@@ -772,7 +772,7 @@ Code: 500<br> Interne server fout.
 
 Werk de status van een bewerking bij om het slagen of mislukken van de geleverde waarden aan te geven.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Verzenden<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -787,9 +787,9 @@ Werk de status van een bewerking bij om het slagen of mislukken van de geleverde
 |                    |                   |
 |  ---------------   |  ---------------  |
 |   Content-Type     | `application/json`   |
-|   x-MS-aanvraag-out   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+|   x-ms-requestid   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
-|  autorisatie     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
+|  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld: "`Bearer <access_token>`".  |
 
 *Lading van aanvraag:*
 
@@ -818,7 +818,7 @@ Niet gevonden.
 Code: 409<br>
 Conflicteren. Er is bijvoorbeeld al aan een nieuwe trans actie voldaan.
 
-Code: 500<br> Interne server fout.
+Code: 500<br> Interne serverfout.
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279219"
+ms.locfileid: "79297937"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -127,7 +127,7 @@ Kies HTTP of HTTPS:
 
 - Als u HTTP kiest, wordt het verkeer tussen de client en de toepassings gateway niet versleuteld.
 
-- Kies HTTPS als u [SSL-beëindiging](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) of [end-to-end SSL-versleuteling](https://docs.microsoft.com/azure/application-gateway/ssl-overview)wilt. Het verkeer tussen de client en de toepassings gateway is versleuteld. En de SSL-verbinding wordt beëindigd op de Application Gateway. Als u end-to-end SSL-versleuteling wilt, moet u HTTPS kiezen en de **http-instelling back-end** configureren. Dit zorgt ervoor dat verkeer wordt opnieuw versleuteld wanneer het van de toepassings gateway naar de back-end wordt verplaatst.
+- Kies HTTPS als u [SSL-beëindiging](features.md#secure-sockets-layer-ssltls-termination) of [end-to-end SSL-versleuteling](https://docs.microsoft.com/azure/application-gateway/ssl-overview)wilt. Het verkeer tussen de client en de toepassings gateway is versleuteld. En de SSL-verbinding wordt beëindigd op de Application Gateway. Als u end-to-end SSL-versleuteling wilt, moet u HTTPS kiezen en de **http-instelling back-end** configureren. Dit zorgt ervoor dat verkeer wordt opnieuw versleuteld wanneer het van de toepassings gateway naar de back-end wordt verplaatst.
 
 Als u SSL-beëindiging en end-to-end SSL-versleuteling wilt configureren, moet u een certificaat toevoegen aan de listener om de toepassings gateway in te scha kelen voor het afleiden van een symmetrische sleutel. Dit wordt bepaald door de SSL-protocol specificatie. De symmetrische sleutel wordt gebruikt voor het versleutelen en ontsleutelen van het verkeer dat naar de gateway wordt verzonden. Het gateway certificaat moet de PFX-indeling (Personal Information Exchange) hebben. Met deze indeling kunt u de persoonlijke sleutel exporteren die door de gateway wordt gebruikt voor het versleutelen en ontsleutelen van verkeer.
 

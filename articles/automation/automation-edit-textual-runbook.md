@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246407"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367275"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Het bewerken van tekst runbooks in Azure Automation
 
@@ -59,7 +59,7 @@ Gebruik de volgende procedure om een runbook te openen dat u wilt bewerken in de
 
 ### <a name="insert-an-asset-into-a-runbook"></a>Een asset in een runbook invoegen
 
-1. Plaats de cursor in het canvas van de tekst editor op de plaats waar u de code voor het onderliggende runbook wilt plaatsen.
+1. In het besturings element canvas van de tekst editor plaatst u de cursor waar u de code voor het onderliggende runbook wilt plaatsen.
 2. Vouw het knoop punt **assets** uit in het besturings element bibliotheek.
 3. Vouw het knoop punt uit voor het gewenste type activa.
 4. Klik met de rechter muisknop op de naam van de Asset die u wilt invoegen en selecteer **toevoegen aan canvas**. Voor [variabele assets](automation-variables.md)selecteert u **' variabele ophalen ' toevoegen aan canvas** of **' variabele instellen ' toevoegen aan canvas**, afhankelijk van of u de variabele wilt ophalen of instellen.
@@ -67,7 +67,7 @@ Gebruik de volgende procedure om een runbook te openen dat u wilt bewerken in de
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Een Azure Automation runbook bewerken met Windows Power shell
 
-Als u een runbook wilt bewerken met Windows Power shell, gebruikt u de editor van uw keuze en slaat u het runbook op in een. ps1-bestand. U kunt de cmdlet [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) gebruiken om de inhoud van het runbook op te halen. U kunt de cmdlet [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) gebruiken om het bestaande concept runbook te vervangen door de gewijzigde.
+Als u een runbook wilt bewerken met Windows Power shell, gebruikt u de editor van uw keuze en slaat u het runbook op in een **. ps1** -bestand. U kunt de cmdlet [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) gebruiken om de inhoud van het runbook op te halen. U kunt de cmdlet [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) gebruiken om het bestaande concept runbook te vervangen door de gewijzigde.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>De inhoud van een runbook ophalen met behulp van Windows Power shell
 

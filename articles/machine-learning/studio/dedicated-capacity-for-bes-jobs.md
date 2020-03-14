@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 618bc5719e3629d37567d8ac77594e7734f82a09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169280"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204423"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Batch-service voor Azure Machine Learning Studio (klassieke) taken
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Verwerking van machine Learning Batch-Pool voorziet schalen door de klant beheerde in de Service Azure Machine Learning Batch kan worden uitgevoerd. Klassieke batchverwerking voor machine learning vindt plaats in een omgeving met meerdere tenants, waardoor het aantal gelijktijdige taken die u kunt indienen en taken in de wachtrij op basis van first in first out. Deze onzekerheid betekent dat u kunt geen nauwkeurig te voorspellen wanneer de taak wordt uitgevoerd.
 
@@ -111,4 +113,4 @@ Het is raadzaam dat u de status van de taak om te bepalen wanneer taken zijn vol
 
 | **Verwerking van batch-pool gebruiken wanneer**    | **Gebruik klassieke batch verwerking wanneer**  |
 |---|---|
-|U moet een groot aantal taken uitvoeren<br>of<br/>U moet weten dat uw taken onmiddellijk worden uitgevoerd<br/>of<br/>U moet een gegarandeerde doorvoer. Bijvoorbeeld, moet u een aantal taken uitvoeren in een bepaalde periode en wilt uitbreiden van uw rekenresources om te voldoen aan uw behoeften.    | U worden hoeft slechts een paar taken uitgevoerd<br/>And<br/> U hoeft niet de taak direct uitvoeren |
+|U moet een groot aantal taken uitvoeren<br>of<br/>U moet weten dat uw taken onmiddellijk worden uitgevoerd<br/>of<br/>U moet een gegarandeerde doorvoer. Bijvoorbeeld, moet u een aantal taken uitvoeren in een bepaalde periode en wilt uitbreiden van uw rekenresources om te voldoen aan uw behoeften.    | U worden hoeft slechts een paar taken uitgevoerd<br/>And<br/> U hebt de taken niet nodig om direct te worden uitgevoerd |

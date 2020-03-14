@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299359"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Instructies voor Azure SQL Database-instantie groepen (preview)
 
@@ -26,7 +26,7 @@ In dit artikel vindt u informatie over het maken en beheren van [instantie groep
 
 In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemplaar groepen en hun Beschik baarheid in de Azure Portal en Power shell.
 
-|Opdracht|Azure Portal|PowerShell|
+|Opdracht|Azure-portal|PowerShell|
 |:---|:---|:---|
 |Instantie-pool maken|Nee|Ja|
 |Exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
@@ -50,7 +50,7 @@ Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/modu
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Retourneert informatie over het gebruik van Azure SQL-exemplaar groepen. |
 
 
-Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)en volgt u de instructies om [de Azure PowerShell-module te installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)en volgt u de instructies om [de Azure PowerShell-module te installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instanties gebruikt u de standaard [Managed instance-opdrachten](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), maar de eigenschap name van de *instantie groep* moet worden ingevuld wanneer u deze opdrachten gebruikt voor een instantie in een groep.
 

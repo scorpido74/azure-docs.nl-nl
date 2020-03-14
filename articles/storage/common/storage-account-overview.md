@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269118"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371547"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -33,7 +33,7 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
 - Bestanden
-- Disks
+- Schijven
 - Wachtrijen
 - Tabellen
 
@@ -50,7 +50,7 @@ V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-s
 
 - Blobs (alle typen)
 - Bestanden
-- Disks
+- Schijven
 - Wachtrijen
 - Tabellen
 
@@ -108,7 +108,7 @@ De beschik bare toegangs lagen zijn:
 
 - De **warme** Access-laag. Deze laag is geoptimaliseerd voor veelvuldige toegang tot objecten in het opslag account. Het verkrijgen van toegang tot gegevens in de warme laag is de meest rendabel, terwijl de opslag kosten hoger zijn. Nieuwe opslag accounts worden standaard in de warme laag gemaakt.
 - De laag van de **coolbar** . Deze laag is geoptimaliseerd voor het opslaan van grote hoeveel heden gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen. Het opslaan van gegevens in de cool-laag is rendabeler, maar de toegang tot die gegevens kan duurder zijn dan de toegang tot gegevens in de warme laag.
-- De laag van het **Archief** . Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs en toevoeg-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
+- De laag van het **Archief** . Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
 
 Als er een wijziging is in het gebruiks patroon van uw gegevens, kunt u op elk gewenst moment scha kelen tussen deze toegangs lagen. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 

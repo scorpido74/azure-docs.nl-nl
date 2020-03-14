@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443143"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366271"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall Manager preview?
 
@@ -80,13 +80,14 @@ Azure Firewall Manager preview heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Beperkingen van de filtering van derden|Het V2I van verkeers filters met externe providers wordt niet ondersteund met Azure Firewall B2V en V2V.|Momenteel wordt onderzocht.|
-|Splitsen van verkeer wordt momenteel niet ondersteund|Het splitsen van Office 365-en Azure open bare PaaS-verkeer wordt momenteel niet ondersteund. Als zodanig is het selecteren van een provider van een derde partij voor V2I of B2I ook alle Azure open bare PaaS-en Office 365-verkeer via de partner service verzonden.|Het splitsen van verkeer op de hub wordt momenteel onderzocht.
-|Eén beveiligde virtuele hub per regio|U kunt niet meer dan één beveiligde virtuele hub per regio hebben|Meerdere virtuele Wan's maken in een regio.|
-|Basis beleid moet zich in dezelfde regio bevinden als het lokale beleid|Maak al uw lokale beleids regels in dezelfde regio als het basis beleid. U kunt nog steeds een beleid Toep assen dat is gemaakt in een van de regio's op een beveiligde hub vanuit een andere regio.|Momenteel wordt onderzocht.|
-|Communicatie tussen de hub werkt niet met een beveiligde virtuele hub|Beveiligde virtuele hub naar beveiligde virtuele hub-communicatie wordt nog niet ondersteund.|Momenteel wordt onderzocht.|
+|Beperkingen van de filtering van derden.|Het V2I van verkeers filters met externe providers wordt niet ondersteund met Azure Firewall B2V en V2V.|Onderzoeken|
+|Het splitsen van verkeer wordt momenteel niet ondersteund.|Het splitsen van Office 365-en Azure open bare PaaS-verkeer wordt momenteel niet ondersteund. Als zodanig is het selecteren van een provider van een derde partij voor V2I of B2I ook alle Azure open bare PaaS-en Office 365-verkeer via de partner service verzonden.|Het splitsen van verkeer op de hub wordt onderzocht.
+|Eén beveiligde virtuele hub per regio.|U kunt niet meer dan één beveiligde virtuele hub per regio hebben.|Meerdere virtuele Wan's maken in een regio.|
+|Basis beleid moet zich in dezelfde regio bevinden als het lokale beleid.|Maak al uw lokale beleids regels in dezelfde regio als het basis beleid. U kunt nog steeds een beleid Toep assen dat is gemaakt in een van de regio's op een beveiligde hub vanuit een andere regio.|Onderzoeken|
+|Communicatie tussen de hub werkt niet met een beveiligde virtuele hub|Beveiligde virtuele hub naar beveiligde virtuele hub-communicatie wordt nog niet ondersteund.|Onderzoeken|
 |Alle beveiligde virtuele hubs die hetzelfde virtuele WAN delen, moeten zich in dezelfde resource groep bezitten.|Dit gedrag is vandaag afgestemd op virtuele WAN-hubs.|Maak meerdere virtuele Wan's zodat beveiligde virtuele hubs kunnen worden gemaakt in verschillende resource groepen.|
-|IP-groepen worden niet ondersteund in firewall beleid|IP-groepen bevinden zich in de open bare preview-versie en worden momenteel alleen ondersteund met traditionele firewall regels|Herstel wordt uitgevoerd
+|IP-groepen worden niet ondersteund in firewall-beleid.|IP-groepen bevinden zich in de open bare preview-versie en worden momenteel alleen ondersteund met traditionele firewall regels.|De oplossing wordt uitgevoerd.
+|Cloud Solution Provider (CSP)-abonnementen worden niet ondersteund.|CSP- [abonnementen](https://azure.microsoft.com/offers/ms-azr-0145p/) worden op dit moment niet ondersteund.|Onderzoeken
 
 ## <a name="next-steps"></a>Volgende stappen
 

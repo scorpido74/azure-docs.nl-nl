@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216974"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370811"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Virtual Network NAT?
 
@@ -135,7 +135,9 @@ De NAT-gateway wordt gefactureerd met twee afzonderlijke meters:
 Resource-uren accounts voor de duur waarin een NAT-gateway bron bestaat.
 Gegevens verwerkte accounts voor al het verkeer dat is verwerkt door een NAT-gateway resource.
 
-Tijdens de open bare preview worden prijzen gedisconteerd op 50%.
+## <a name="availability"></a>Beschikbaarheid
+
+Virtual Network NAT en de NAT-gateway resource zijn beschikbaar in alle open bare Cloud [regio's](https://azure.microsoft.com/global-infrastructure/regions/)van Azure.
 
 ## <a name="support"></a>Ondersteuning
 
@@ -148,7 +150,7 @@ We willen weten hoe we de service kunnen verbeteren. Voorst Ellen en stemmen op 
 
 ## <a name="limitations"></a>Beperkingen
 
-* NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
+* NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources. Basis bronnen, zoals basis load balancer, en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
 * De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voor voegsel.
 * Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 * NAT kan niet meerdere virtuele netwerken omvatten.

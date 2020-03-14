@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/13/2020
+ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905227"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370165"
 ---
-# <a name="release-notes"></a>Releaseopmerkingen
+# <a name="release-notes"></a>Opmerkingen bij de release
 
 Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsight-release. Zie voor meer informatie over eerdere versies het [HDInsight Release Notes-archief](hdinsight-release-notes-archive.md).
 
@@ -49,7 +49,7 @@ Er zijn geen gedrags wijzigingen voor deze versie. Zie [aanstaande wijzigingen](
 De volgende wijzigingen worden uitgevoerd in toekomstige releases. 
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Er is een mini maal 4-core VM vereist voor het hoofd knooppunt 
-Voor het hoofd knooppunt is een mini maal 4-core VM vereist om te zorgen voor hoge Beschik baarheid en betrouw baarheid van HDInsight-clusters. Vanaf 6 april 2020 kunnen klanten alleen een 4-core of een hogere VM kiezen als hoofd knooppunt voor de nieuwe HDInsight-clusters. Bestaande clusters blijven op de verwachte manier werken. 
+Voor het hoofd knooppunt is een mini maal 4-core VM vereist om te zorgen voor hoge Beschik baarheid en betrouw baarheid van HDInsight-clusters. Vanaf 6 april 2020 kunnen klanten alleen een 4-core of een hogere VM kiezen als hoofd knooppunt voor de nieuwe HDInsight-clusters. Bestaande clusters blijven op de verwachte manier worden uitgevoerd. 
 
 ### <a name="esp-spark-cluster-node-size-change"></a>Wijziging van grootte van ESP Spark-cluster knooppunt 
 In de aanstaande release wordt de mini maal toegestane knooppunt grootte voor het ESP Spark-cluster gewijzigd in Standard_D13_V2. Vm's uit de A-serie kunnen problemen met ESP-clusters veroorzaken vanwege een relatief laag CPU-en geheugen capaciteit. Vm's uit de A-serie worden afgeschaft voor het maken van nieuwe ESP-clusters.
@@ -65,38 +65,3 @@ HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren.
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
 Er is geen wijziging van de onderdeel versie voor deze versie. U vindt hier de huidige onderdeel versies voor HDInsight 4,0 AD HDInsight 3,6.
-
-## <a name="known-issues"></a>Bekende problemen
-
-Sinds 29 januari 2020 is er sprake van een actief probleem waarin wordt gemeld dat er een fout optreedt wanneer u probeert een Jupyter-notebook te gebruiken. Volg de onderstaande stappen om het probleem op te lossen. U kunt ook dit [MSDN post-bericht](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) of dit [stack overflow-bericht](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) raadplegen voor actuele informatie of aanvullende vragen stellen. Deze pagina wordt bijgewerkt wanneer het probleem is opgelost.
-
-**Bufferoverschrijdingsfouten**
-
-* ValueError: kan geen notitie blok naar V5 converteren omdat deze versie niet bestaat
-* Fout bij laden van notitie blok er is een onbekende fout opgetreden tijdens het laden van dit notitie blok. Deze versie kan notebook-indelingen v4 of eerder laden
-
-**Oorzaak** 
-
-Het bestand _version. py op het cluster is bijgewerkt naar 5. x. x in plaats van 4.4. x. # # of Ambari moet opnieuw worden gestart.
-
-**Oplossing**
-
-Als u een nieuw Jupyter-notebook maakt en een van de hierboven vermelde fouten ontvangt, voert u de volgende stappen uit om het probleem op te lossen.
-
-1. Open Ambari in een webbrowser door naar `https://CLUSTERNAME.azurehdinsight.net`te gaan, waarbij CLUSTERNAME de naam van uw cluster is.
-1. Klik in Ambari in het menu links op **Jupyter**en vervolgens op **service acties**op **stoppen**.
-1. SSH in het cluster hoofd knooppunt waarop de Jupyter-service wordt uitgevoerd.
-1. Open het volgende bestand/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. py in de sudo-modus.
-1. Controleer de waarde van version_info.
-1. Als de waarde van version_info is ingesteld op: 
-
-    version_info = (5, 0, 3)
-
-    Wijzig vervolgens de vermelding in: 
-    
-    version_info = (4, 4, 0)
-
-    En sla het bestand op. 
-
-    Als version_info al is ingesteld op (4, 4, 0), gaat u verder met de volgende stap, omdat alleen Ambari opnieuw moeten worden gestart. er zijn geen aanvullende wijzigingen nodig.
-1. Ga terug naar Ambari en klik in **service acties**op **alle opnieuw opstarten**.

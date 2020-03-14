@@ -1,21 +1,21 @@
 ---
-title: Persoonlijke koppeling voor Azure Database for MariaDB (preview-versie)
+title: Persoonlijke koppeling-Azure Database for MariaDB
 description: Meer informatie over de werking van een persoonlijke koppeling voor Azure Database for MariaDB.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/10/2020
+ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982388"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367717"
 ---
-# <a name="private-link-for-azure-database-for-mariadb-preview"></a>Persoonlijke koppeling voor Azure Database for MariaDB (preview-versie)
+# <a name="private-link-for-azure-database-for-mariadb"></a>Persoonlijke koppeling voor Azure Database for MariaDB
 
-Met persoonlijke koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-Services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. De PaaS-bronnen kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource in het VNet.
+Met persoonlijke koppeling kunt u privé-eind punten maken voor Azure Database for MariaDB en dus Azure-Services binnen uw privé Virtual Network (VNet). Met het persoonlijke eind punt wordt een privé-IP-adres weer gegeven dat u kunt gebruiken om verbinding te maken met uw Azure Database for MariaDB database server net als elke andere resource in het VNet.
 
 Raadpleeg de [documentatie](https://docs.microsoft.com/azure/private-link/index)van de privé-koppeling voor een lijst met PaaS-services die ondersteuning bieden voor persoonlijke koppelings functionaliteit. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) en subnet.
 
@@ -53,15 +53,12 @@ Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind pun
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
+* [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Goedkeurings proces
 
-Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de beheerder de verbinding met het privé-eind punt (PEC) met Azure Database for MariaDB beheren.
-
-> [!NOTE]
-> Momenteel ondersteunt Azure Database for MariaDB alleen automatische goed keuring voor het persoonlijke eind punt.
+Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de beheerder de verbinding met het privé-eind punt (PEC) met Azure Database for MariaDB beheren. Deze schei ding van taken tussen de netwerk beheerder en de DBA is handig voor het beheer van de Azure Database for MariaDB-verbinding. 
 
 * Navigeer naar de Azure Database for MariaDB Server-Resource in de Azure Portal. 
     * Selecteer de verbindingen met het privé-eind punt in het linkerdeel venster
@@ -110,6 +107,19 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 * Als u openbaar verkeer of een service-eind punt configureert en u persoonlijke eind punten maakt, worden verschillende soorten binnenkomend verkeer geautoriseerd door het bijbehorende type firewall regel.
 
 * Als u geen openbaar verkeer of service-eind punt configureert en u persoonlijke eind punten maakt, is de Azure Database for MariaDB alleen toegankelijk via de persoonlijke eind punten. Als u geen openbaar verkeer of een service-eind punt configureert, hebben geen verkeer meer toegang tot de Azure Database for MariaDB nadat alle goedgekeurde privé-eind punten zijn afgewezen of verwijderd.
+
+## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Open bare toegang weigeren voor Azure Database for MariaDB
+
+Als u volledig alleen wilt vertrouwen op privé-eind punten voor toegang tot hun Azure Database for MariaDB, kunt u het instellen van alle open bare eind punten ([firewall regels](concepts-firewall-rules.md) en [VNet-service-eind punten](concepts-data-access-security-vnet.md)) uitschakelen door de configuratie voor het **weigeren van open bare netwerk toegang** op de database server in te stellen. 
+
+Als deze instelling is ingesteld op *Ja*, zijn alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for MariaDB. Als deze instelling is ingesteld op *Nee*, kunnen clients verbinding maken met uw Azure database for MariaDB op basis van de instellingen van uw firewall of VNet-service-eind punten. Wanneer de waarde van de toegang tot het particuliere netwerk eenmaal is ingesteld, kunt u ook bestaande firewall-en VNet-service-eindpunt regels toevoegen en/of bijwerken.
+
+> [!Note]
+> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.
+>
+> Deze instelling heeft geen invloed op de SSL-en TLS-configuraties voor uw Azure Database for MariaDB.
+
+Zie voor meer informatie over het instellen van de **toegang van open bare netwerk** voor uw Azure Database for MariaDB van Azure portal voor het [configureren van open bare netwerk toegang weigeren](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

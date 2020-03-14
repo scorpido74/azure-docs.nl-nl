@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Documentatie hosten
+title: Documentatie over hosting
 summary: Er zijn spraakherkennings-service containers beschikbaar voor scenario's die zijn afgestemd op tekst en tekst naar spraak en die standaard of aangepaste modellen omvatten.
 metadata:
   title: Documentatie voor hosting-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
@@ -10,32 +10,32 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920872"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79366697"
 landingContent:
-- title: Aan de slag
+- title: Over het hosten van
   linkLists:
   - linkListType: concept
     links:
-    - text: Spraak service containers
+    - text: Spraak containers installeren en uitvoeren
       url: speech-container-howto.md
-    - text: Speech Service-containers met Kubernetes
+    - text: Spraak containers met Kubernetes en helm
       url: speech-container-howto-on-premises.md
-    - text: Speech Service-containers op Azure Container Instances
+    - text: Spraak containers op Azure container instances
       url: deploy-speech-on-container-instances.md
-- title: Stapsgewijze handleidingen
+- title: Maken en configureren
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Een Azure-spraak resource maken
       url: get-started.md#new-resource
-    - text: Containers configureren
+    - text: Spraak containers configureren
       url: speech-container-configuration.md
 - title: Naslaginformatie
   linkLists:
@@ -43,5 +43,5 @@ landingContent:
     links:
     - text: Ondersteunde regio’s
       url: regions.md
-    - text: Soevereine Clouds
+    - text: Onafhankelijke clouds
       url: sovereign-clouds.md

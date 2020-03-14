@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 9931c752d5ce33beb41dc00194c27d06b9469807
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595890"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368465"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -118,9 +118,11 @@ az ad sp create-for-rbac --skip-assignment
 
 In de volgende voorbeeld uitvoer ziet u de toepassings-ID en het wacht woord voor uw service-principal. Deze waarden worden gebruikt in extra stappen om een rol toe te wijzen aan de Service-Principal en vervolgens het AKS-cluster te maken:
 
-```console
-$ az ad sp create-for-rbac --skip-assignment
+```azurecli
+az ad sp create-for-rbac --skip-assignment
+```
 
+```output
 {
   "appId": "476b3636-5eda-4c0e-9751-849e70b5cfad",
   "displayName": "azure-cli-2019-01-09-22-29-24",

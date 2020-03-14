@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299492"
 ---
 ### <a name="portal"></a>Portal
 
@@ -49,9 +49,14 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Uw schijf versleutelings instellen
 
-Als u schijf versleutelings sets wilt maken en configureren, moet u de volgende koppeling gebruiken: https://aka.ms/diskencryptionsets. Het maken van de schijf versleuteling is nog niet beschikbaar in de globale Azure Portal.
+Als u schijf versleutelings sets wilt maken en configureren, moet u de volgende koppeling gebruiken: https://aka.ms/diskencryptionsets. Als u zich in de Microsoft Azure Government regio's bevindt, moet u in plaats daarvan deze koppeling gebruiken: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff). Het maken van de schijf versleuteling is nog niet beschikbaar in de globale Azure Portal.
 
-1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
+1. Open de juiste koppeling voor de schijf versleutelings sets voor uw regio:
+
+    Open bare regio's: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government regio's: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. Selecteer **+ toevoegen**.
 
     ![Scherm afbeelding van het hoofd scherm van de portal voor schijf versleuteling. De knop toevoegen markeren](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
@@ -77,7 +82,12 @@ Er worden twee meldingen over de pop-up en geslaagd. Als u dit doet, kunt u de s
 Nu u de sleutel kluis en de schijf versleutelings hebt gemaakt en ingesteld, kunt u een virtuele machine implementeren met behulp van de versleuteling.
 Het implementatie proces van de VM is vergelijkbaar met het standaard implementatieproces, maar de enige verschillen zijn dat u de virtuele machine in dezelfde regio als uw andere resources moet implementeren en u ervoor kiest om een door de klant beheerde sleutel te gebruiken.
 
-1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
+1. Open de juiste koppeling voor de schijf versleutelings sets voor uw regio:
+
+    Open bare regio's: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government regio's: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+
 1. Zoek naar **virtual machines** en selecteer **+ toevoegen** om een virtuele machine te maken.
 1. Op het tabblad **basis** selecteert u dezelfde regio als uw schijf versleutelings en Azure Key Vault.
 1. Vul op het tabblad **basis** de andere waarden in zoals u wilt.
@@ -97,7 +107,12 @@ Als u schijf versleuteling op uw bestaande schijven wilt beheren en configureren
 > [!CAUTION]
 > Als u schijf versleuteling wilt inschakelen op schijven die zijn gekoppeld aan een VM, moet u de virtuele machine stoppen.
 
-1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
+1. Open de juiste koppeling voor de schijf versleutelings sets voor uw regio:
+
+    Open bare regio's: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government regio's: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. Ga naar een virtuele machine die zich in dezelfde regio bevindt als een van de schijf versleutelings sets.
 1. Open de virtuele machine en selecteer **stoppen**.
 

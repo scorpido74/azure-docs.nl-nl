@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390962"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270795"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Bewering bare Vm's maken en beheren in Azure DevTest Labs
 U voegt een claim bare virtuele machine toe aan een lab op ongeveer dezelfde manier om [een standaard-VM toe te voegen](devtest-lab-add-vm.md) : van een *basis* die een [aangepaste afbeelding](devtest-lab-create-template.md), [formule](devtest-lab-manage-formulas.md)of [Marketplace-installatie kopie](devtest-lab-configure-marketplace-images.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een claim bare virtuele machine toe te voegen aan een lab in DevTest Labs en worden de processen weer gegeven die een gebruiker volgt om de virtuele machine te claimen en te claimen.

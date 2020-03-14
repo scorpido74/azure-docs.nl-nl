@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268199"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298951"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Aanbevolen on-premises live streaming encoders
+# <a name="tested-on-premises-live-streaming-encoders"></a>Geteste on-premises live streaming encoders
 
 In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) (kanaal) een pijp lijn voor het verwerken van live-streaming-inhoud. De live-gebeurtenis ontvangt Live invoer stromen op een van de volgende twee manieren.
 
@@ -24,10 +24,12 @@ In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.mic
 
     Als u multi-bitrate streams gebruikt voor de Pass-through live-gebeurtenis, moeten de grootte van de video-GOP terug en de video fragmenten op verschillende bitsnelheden worden gesynchroniseerd om onverwacht gedrag bij het afspelen te voor komen.
 
-  > [!NOTE]
+  > [!TIP]
   > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
  
 * Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar de live gebeurtenis die is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De live-gebeurtenis voert vervolgens Live encoding uit van de inkomende single-bitrate stream naar een multi-bitrate-video stroom (adaptief).
+
+In dit artikel worden de geteste on-premises live streaming encoders besproken. Zie [uw on-premises encoder controleren](become-on-premises-encoder-partner.md) voor instructies voor het controleren van uw on-premises Live coderings programma
 
 Zie voor gedetailleerde informatie over Live encoding met Media Services [live streamen met Media Services v3](live-streaming-overview.md).
 
@@ -99,8 +101,8 @@ Als u de inhoud wilt afspelen, moet zowel een audio-als een video stroom aanwezi
 
 ## <a name="see-also"></a>Zie ook
 
-[Een on-premises coderings partner worden](become-on-premises-encoder-partner.md)
+[Live streamen met Media Services v3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Live streamen met Media Services v3](live-streaming-overview.md)
+[Uw coderings programma verifiëren](become-on-premises-encoder-partner.md)

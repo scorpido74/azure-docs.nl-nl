@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197518"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268806"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
 
@@ -44,7 +44,7 @@ De volgende tabel toont scenario's voor herstel naar een bepaald tijdstip voor b
 
 |           |Bestaande Data Base naar hetzelfde beheerde exemplaar herstellen| Een bestaande data base herstellen naar een ander beheerd exemplaar|Verwijderde data base naar hetzelfde beheerde exemplaar herstellen|Verwijderde data base herstellen naar een ander beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Ja|Nee |Ja|Nee|
+|**Azure-portal**| Ja|Nee |Ja|Nee|
 |**Azure CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 

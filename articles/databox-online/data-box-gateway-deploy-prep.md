@@ -8,23 +8,23 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7de14dec4d282116b71a5800f2cf51afad0ee8a4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303202"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370250"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Zelf studie: de implementatie van Azure Data Box Gateway voorbereiden
 
-
-Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie, die noodzakelijk zijn voor het voltooien van de implementatie van uw Azure Data Box Gateway. In deze zelfstudie wordt beschreven hoe u Azure Portal voorbereidt voor de implementatie van de Data Box Gateway-resource. 
+Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie, die noodzakelijk zijn voor het voltooien van de implementatie van uw Azure Data Box Gateway. In deze zelfstudie wordt beschreven hoe u Azure Portal voorbereidt voor de implementatie van de Data Box Gateway-resource.
 
 U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. Het voorbereiden van de portal duurt minder dan 10 minuten.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Een nieuwe resource maken
 > * De installatiekopie voor het virtuele apparaat downloaden
 > * De activeringssleutel ophalen
@@ -50,13 +50,13 @@ Hier vindt u de configuratievereisten voor uw Data Box Gateway-resource, uw Data
 
 Zorg voordat u begint voor het volgende:
 
-- Uw Microsoft Azure-abonnement moet worden ondersteund voor Data Box Gateway resource. Betalen per gebruik-abonnementen worden ook ondersteund.
-- U hebt toegang tot de eigenaar of de Inzender op het niveau van de resource groep voor de resources Data Box Edge/Data Box Gateway, IoT Hub en Azure Storage.
+* Uw Microsoft Azure-abonnement is ingeschakeld voor een Azure Stack Edge-resource. Zorg ervoor dat u een ondersteund abonnement hebt gebruikt, zoals [micro soft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)of [Microsoft Azure sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* U hebt toegang tot de eigenaar of de Inzender op het niveau van de resource groep voor de resources Data Box Edge/Data Box Gateway, IoT Hub en Azure Storage.
 
-    - Als u een Data Box Edge/Data Box Gateway resource wilt maken, moet u machtigingen hebben als Inzender (of hoger) op het niveau van de resource groep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Voor informatie over het registreren gaat u naar [registreren resource provider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Als u een opslag account resource wilt maken, moet u op het niveau van de resource groep opnieuw een Inzender of een hogere toegangs scope hebben. Azure Storage is standaard een geregistreerde resource provider.
-- U hebt beheerder-of gebruikers toegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)voor meer informatie.
-- U hebt een Microsoft Azure Storage-account met toegangsreferenties.
+  * Als u een Data Box Edge/Data Box Gateway resource wilt maken, moet u machtigingen hebben als Inzender (of hoger) op het niveau van de resource groep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Voor informatie over het registreren gaat u naar [registreren resource provider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Als u een opslag account resource wilt maken, moet u op het niveau van de resource groep opnieuw een Inzender of een hogere toegangs scope hebben. Azure Storage is standaard een geregistreerde resource provider.
+* U hebt beheerder-of gebruikers toegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)voor meer informatie.
+* U hebt een Microsoft Azure Storage-account met toegangsreferenties.
 
 ### <a name="for-the-data-box-gateway-device"></a>Voor het Data Box Gateway-apparaat
 

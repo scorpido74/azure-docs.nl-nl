@@ -5,35 +5,38 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 3/9/2020
+ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191152"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296741"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure Database for MariaDB
 De volgende secties beschrijven capaciteit, ondersteuning voor de opslag-engine, bevoegdheden ondersteuning, gegevens manipuleren instructie ondersteuning en functionele limieten in de database-service.
 
-## <a name="maximum-connections"></a>Maximum aantal verbindingen
-Het maximum aantal verbindingen per prijscategorie en vCores zijn als volgt:
+## <a name="server-parameters"></a>Server parameters
 
-|**Prijscategorie**|**vCore (s)**| **Maximum aantal verbindingen**|
-|---|---|---|
-|Basic| 1| 50|
-|Basic| 2| 100|
-|Algemeen gebruik| 2| 600|
-|Algemeen gebruik| 4| 1250|
-|Algemeen gebruik| 8| 2500|
-|Algemeen gebruik| 16| 5000|
-|Algemeen gebruik| 32| 10.000|
-|Algemeen gebruik| 64| 20000|
-|Geoptimaliseerd geheugen| 2| 800|
-|Geoptimaliseerd geheugen| 4| 2500|
-|Geoptimaliseerd geheugen| 8| 5000|
-|Geoptimaliseerd geheugen| 16| 10.000|
-|Geoptimaliseerd geheugen| 32| 20000|
+De minimum-en maximum waarden van verschillende populaire server parameters worden bepaald door de prijs categorie en vCores. Raadpleeg de onderstaande tabellen voor limieten.
+
+### <a name="max_connections"></a>max_connections
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
+|Algemeen gebruik|2|300|10|600|
+|Algemeen gebruik|4|625|10|1250|
+|Algemeen gebruik|8|1250|10|2500|
+|Algemeen gebruik|16|2500|10|5000|
+|Algemeen gebruik|32|5000|10|10.000|
+|Algemeen gebruik|64|10.000|10|20.000|
+|Geoptimaliseerd geheugen|2|600|10|800|
+|Geoptimaliseerd geheugen|4|1250|10|2500|
+|Geoptimaliseerd geheugen|8|2500|10|5000|
+|Geoptimaliseerd geheugen|16|5000|10|10.000|
+|Geoptimaliseerd geheugen|32|10.000|10|20.000|
 
 Wanneer verbindingen de limiet overschrijdt, wordt de volgende fout:
 > Fout 1040 (08004): Te veel verbindingen
@@ -42,6 +45,108 @@ Wanneer verbindingen de limiet overschrijdt, wordt de volgende fout:
 > Voor de beste ervaring raden we u aan een Pooler voor verbindingen te gebruiken zoals ProxySQL om verbindingen efficiënt te beheren.
 
 Het maken van nieuwe client verbindingen met MariaDB kost tijd en wanneer de verbinding tot stand is gebracht, nemen deze verbindingen database bronnen in beslag, zelfs wanneer ze niet actief zijn De meeste toepassingen aanvragen een groot aantal korte, langdurige verbindingen, waardoor deze situatie wordt beperkt. Het resultaat is minder beschik bare resources voor uw werkelijke workload, waardoor de prestaties afnemen. Een verbindings groep waarmee niet-actieve verbindingen worden verminderd en bestaande verbindingen opnieuw worden gebruikt, kunt u dit voor komen. Ga naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)voor meer informatie over het instellen van ProxySQL.
+
+## <a name="query_cache_size"></a>query_cache_size
+
+De query cache is standaard uitgeschakeld. Configureer de para meter `query_cache_type` om de query-cache in te scha kelen. 
+
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) voor meer informatie over deze para meter.
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Algemeen gebruik|2|0|0|16777216|
+|Algemeen gebruik|4|0|0|33554432|
+|Algemeen gebruik|8|0|0|67108864|
+|Algemeen gebruik|16|0|0|134217728|
+|Algemeen gebruik|32|0|0|134217728|
+|Algemeen gebruik|64|0|0|134217728|
+|Geoptimaliseerd geheugen|2|0|0|33554432|
+|Geoptimaliseerd geheugen|4|0|0|67108864|
+|Geoptimaliseerd geheugen|8|0|0|134217728|
+|Geoptimaliseerd geheugen|16|0|0|134217728|
+|Geoptimaliseerd geheugen|32|0|0|134217728|
+
+## <a name="sort_buffer_size"></a>sort_buffer_size
+
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) voor meer informatie over deze para meter.
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Algemeen gebruik|2|524288|32768|4194304|
+|Algemeen gebruik|4|524288|32768|8388608|
+|Algemeen gebruik|8|524288|32768|16777216|
+|Algemeen gebruik|16|524288|32768|33554432|
+|Algemeen gebruik|32|524288|32768|33554432|
+|Algemeen gebruik|64|524288|32768|33554432|
+|Geoptimaliseerd geheugen|2|524288|32768|8388608|
+|Geoptimaliseerd geheugen|4|524288|32768|16777216|
+|Geoptimaliseerd geheugen|8|524288|32768|33554432|
+|Geoptimaliseerd geheugen|16|524288|32768|33554432|
+|Geoptimaliseerd geheugen|32|524288|32768|33554432|
+
+## <a name="join_buffer_size"></a>join_buffer_size
+
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) voor meer informatie over deze para meter.
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Algemeen gebruik|2|262144|128|268435455|
+|Algemeen gebruik|4|262144|128|536870912|
+|Algemeen gebruik|8|262144|128|1073741824|
+|Algemeen gebruik|16|262144|128|2147483648|
+|Algemeen gebruik|32|262144|128|4294967295|
+|Algemeen gebruik|64|262144|128|4294967295|
+|Geoptimaliseerd geheugen|2|262144|128|536870912|
+|Geoptimaliseerd geheugen|4|262144|128|1073741824|
+|Geoptimaliseerd geheugen|8|262144|128|2147483648|
+|Geoptimaliseerd geheugen|16|262144|128|4294967295|
+|Geoptimaliseerd geheugen|32|262144|128|4294967295|
+
+## <a name="max_heap_table_size"></a>max_heap_table_size
+
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) voor meer informatie over deze para meter.
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Algemeen gebruik|2|16777216|16384|268435455|
+|Algemeen gebruik|4|16777216|16384|536870912|
+|Algemeen gebruik|8|16777216|16384|1073741824|
+|Algemeen gebruik|16|16777216|16384|2147483648|
+|Algemeen gebruik|32|16777216|16384|4294967295|
+|Algemeen gebruik|64|16777216|16384|4294967295|
+|Geoptimaliseerd geheugen|2|16777216|16384|536870912|
+|Geoptimaliseerd geheugen|4|16777216|16384|1073741824|
+|Geoptimaliseerd geheugen|8|16777216|16384|2147483648|
+|Geoptimaliseerd geheugen|16|16777216|16384|4294967295|
+|Geoptimaliseerd geheugen|32|16777216|16384|4294967295|
+
+## <a name="tmp_table_size"></a>tmp_table_size
+
+Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) voor meer informatie over deze para meter.
+
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|---|---|---|---|---|
+|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Algemeen gebruik|2|16777216|1024|67108864|
+|Algemeen gebruik|4|16777216|1024|134217728|
+|Algemeen gebruik|8|16777216|1024|268435456|
+|Algemeen gebruik|16|16777216|1024|536870912|
+|Algemeen gebruik|32|16777216|1024|1073741824|
+|Algemeen gebruik|64|16777216|1024|1073741824|
+|Geoptimaliseerd geheugen|2|16777216|1024|134217728|
+|Geoptimaliseerd geheugen|4|16777216|1024|268435456|
+|Geoptimaliseerd geheugen|8|16777216|1024|536870912|
+|Geoptimaliseerd geheugen|16|16777216|1024|1073741824|
+|Geoptimaliseerd geheugen|32|16777216|1024|1073741824|
 
 ## <a name="storage-engine-support"></a>Ondersteuning voor de opslag-engine
 

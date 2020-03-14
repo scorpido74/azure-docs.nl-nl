@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Virtual Network NAT-connectiviteit oplossen
-titleSuffix: Azure Virtual Network NAT troubleshooting
+title: Problemen met Azure Virtual Network NAT-verbinding oplossen
+titleSuffix: Azure Virtual Network
 description: Problemen met Virtual Network NAT oplossen.
 services: virtual-network
 documentationcenter: na
@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202158"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Problemen met Azure Virtual Network NAT-connectiviteit oplossen
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problemen met Azure Virtual Network NAT-verbinding oplossen
 
 Dit artikel helpt beheerders bij het vaststellen en oplossen van verbindings problemen bij het gebruik van Virtual Network NAT.
-
->[!NOTE] 
->Virtual Network NAT is op dit moment beschikbaar als open bare preview. Het is momenteel alleen beschikbaar in een beperkt aantal [regio's](nat-overview.md#region-availability). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Problemen
 
@@ -54,7 +51,7 @@ De hoofd oorzaak van de SNAT-uitputting is vaak een anti patroon voor de manier 
 
 #### <a name="design-patterns"></a>Ontwerppatronen
 
-Maak waar mogelijk altijd gebruik van verbindings hergebruik en verbindings Pools.  Deze patronen voor komen problemen met de bron uitputting en leiden tot voorspelbaar, betrouwbaar en schaalbaar gedrag. Primitieven voor deze patronen vindt u in veel ontwikkel bibliotheken en frameworks.
+Maak waar mogelijk altijd gebruik van verbindings hergebruik en verbindings Pools.  Deze patronen voor komen problemen met bron uitputting en leiden tot voorspelbaar gedrag. Primitieven voor deze patronen vindt u in veel ontwikkel bibliotheken en frameworks.
 
 _**Oplossing:**_ Juiste patronen gebruiken
 
@@ -90,7 +87,7 @@ De volgende tabel kan worden gebruikt als uitgangs punt voor de hulpprogram ma's
 
 ### <a name="connectivity-failures"></a>Connectiviteits fouten
 
-Connectiviteits problemen met [Virtual Network NAT](nat-overview.md) kunnen worden veroorzaakt door verschillende problemen:
+Verbindings problemen met [Virtual Network NAT](nat-overview.md) kunnen worden veroorzaakt door verschillende problemen:
 
 * tijdelijke of permanente [SNAT-uitputting](#snat-exhaustion) van de NAT-gateway,
 * tijdelijke fouten in de Azure-infra structuur, 
@@ -110,7 +107,7 @@ Raadpleeg de sectie over de [SNAT-uitputting](#snat-exhaustion) in dit artikel.
 
 #### <a name="azure-infrastructure"></a>Azure-infrastructuur
 
-Hoewel Azure de infra structuur met fantastische controle bewaakt en exploiteert, kunnen er tijdelijke fouten optreden omdat er geen garantie is dat de verzen ding zonder verlies is.  Gebruik ontwerp patronen waarmee SYN-herverzendingen voor TCP-toepassingen worden toegestaan. Gebruik verbindingstime-outs groot genoeg om het opnieuw verzenden van TCP SYN toe te staan om tijdelijke gevolgen te beperken die worden veroorzaakt door een verloren SYN-pakket.
+Azure bewaakt de infra structuur en werkt deze met geweldige zorg. Tijdelijke fouten kunnen optreden, er is geen garantie dat de verzen ding zonder verlies is.  Gebruik ontwerp patronen waarmee SYN-herverzendingen voor TCP-toepassingen worden toegestaan. Gebruik verbindingstime-outs groot genoeg om het opnieuw verzenden van TCP SYN toe te staan om tijdelijke gevolgen te beperken die worden veroorzaakt door een verloren SYN-pakket.
 
 _**Oplossen**_
 
@@ -118,24 +115,24 @@ _**Oplossen**_
 * De configuratie parameter in een TCP-stack waarmee het gedrag van SYN-verzen ding wordt beheerd, wordt RTO ([time-out voor herverzending](https://tools.ietf.org/html/rfc793)) genoemd. De RTO-waarde is aanpasbaar maar meestal 1 seconde of hoger, standaard met exponentiële back-out.  Als de verbindingstime-out van uw toepassing te kort is (bijvoorbeeld 1 seconde), ziet u mogelijk sporadische verbindingstime-outs.  Verhoog de time-out voor de verbinding van de toepassing.
 * Als u meer wilt weten, onverwachte time-outs met standaard gedrag van toepassingen, opent u een ondersteunings aanvraag voor verdere probleem oplossing.
 
-Het wordt niet aanbevolen om de time-out voor de TCP-verbinding kunst matig te verlagen of de RTO-para meter af te stemmen.
+Het wordt niet aanbevolen om de time-out van de TCP-verbinding kunst matig te verlagen of de para meter RTO af te stemmen.
 
 #### <a name="public-internet-transit"></a>openbaar Internet doorvoer
 
-De kans op tijdelijke fouten neemt toe met een langer pad naar het doel en meer tussenliggende systemen. Er wordt verwacht dat tijdelijke storingen de frequentie van [Azure-infra structuur](#azure-infrastructure)kunnen verhogen. 
+De kans op tijdelijke fouten neemt toe met een langer pad naar het doel en meer tussenliggende systemen. Er wordt verwacht dat tijdelijke fouten de frequentie van Azure- [infra structuur](#azure-infrastructure)kunnen verhogen. 
 
 Volg dezelfde richt lijnen als voor gaande [Azure-infrastructuur](#azure-infrastructure) sectie.
 
 #### <a name="internet-endpoint"></a>Internet-eind punt
 
-De voor gaande secties zijn van toepassing naast overwegingen met betrekking tot het Internet-eind punt waarmee uw communicatie tot stand is gebracht. Andere factoren die invloed kunnen hebben op succes van de verbinding zijn:
+De vorige secties zijn van toepassing, samen met het Internet-eind punt waarmee communicatie tot stand is gebracht. Andere factoren die invloed kunnen hebben op succes van de verbinding zijn:
 
 * verkeers beheer aan de kant van de bestemming, inclusief
 - Beperking van API-frequentie die is opgelegd door de doel zijde
 - Volumetrische DDoS-oplossingen of trans port Layer Traffic Shaping
 * firewall of andere onderdelen op het doel 
 
-Normaal gesp roken worden pakket opnames bij de bron en de bestemming (indien beschikbaar) vereist om te bepalen wat er gebeurt.
+Doorgaans worden pakket opnames bij de bron en de bestemming (indien beschikbaar) vereist om te bepalen wat er gebeurt.
 
 _**Oplossen**_
 
@@ -147,9 +144,11 @@ _**Oplossen**_
 
 #### <a name="tcp-resets-received"></a>TCP-opnieuw instellen ontvangen
 
-Als u TCP-opnieuw instellen (eerste TCP-pakketten) bekijkt die op de bron-VM zijn ontvangen, kunnen deze worden gegenereerd door de NAT-gateway op de privé zijde voor stromen die niet worden herkend als in uitvoering.  Een mogelijke reden is dat er een time-out is opgetreden voor de TCP-verbinding.  U kunt de time-out voor inactiviteit aanpassen van 4 minuten tot 120 minuten.
+De NAT-gateway genereert TCP-resets op de bron-VM voor verkeer dat niet wordt herkend als in uitvoering.
 
-TCP-opnieuw instellen worden niet gegenereerd aan de open bare kant van NAT gateway-resources. Als u TCP-opnieuw instellen op de doel zijde ontvangt, worden deze gegenereerd door de stack van de bron-VM en niet door de NAT-gateway bron.
+Een mogelijke reden is dat er een time-out is opgetreden voor de TCP-verbinding.  U kunt de time-out voor inactiviteit aanpassen van 4 minuten tot 120 minuten.
+
+TCP-resets worden niet gegenereerd aan de open bare kant van NAT-gateway bronnen. TCP-resets aan de doel zijde worden gegenereerd door de bron-VM, niet via de gateway bron van de NAT.
 
 _**Oplossen**_
 
@@ -158,7 +157,7 @@ _**Oplossen**_
 
 ### <a name="ipv6-coexistence"></a>IPv6-samen werking
 
-[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP-en TCP-protocollen en implementatie in een [subnet met IPv6-voor voegsel wordt niet ondersteund](nat-overview.md#limitations).
+[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP-en TCP-protocollen en implementatie op een [subnet met een IPv6-voor voegsel wordt niet ondersteund](nat-overview.md#limitations).
 
 _**Oplossing:**_ Implementeer NAT gateway op een subnet zonder IPv6-voor voegsel.
 

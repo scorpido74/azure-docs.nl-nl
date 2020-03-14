@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917030"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368516"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten in azure Kubernetes service (AKS) draaien
 
@@ -37,7 +37,7 @@ AKS genereert en gebruikt de volgende certificaten, certificerings instanties en
 * De `kubectl`-client heeft een certificaat voor communicatie met het AKS-cluster.
 
 > [!NOTE]
-> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat is gemaakt na 2019 maart of een cluster met de geroteerde certificaten heeft certificaten die na 30 jaar verlopen. Als u wilt controleren wanneer het cluster is gemaakt, gebruikt u `kubectl get nodes` om de *leeftijd* van uw knooppunt groepen te zien.
+> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat is gemaakt na 2019 maart of een cluster met de geroteerde certificaten heeft cluster-CA-certificaten die na 30 jaar verlopen. Alle andere certificaten verlopen na twee jaar. Als u wilt controleren wanneer het cluster is gemaakt, gebruikt u `kubectl get nodes` om de *leeftijd* van uw knooppunt groepen te zien.
 > 
 > Daarnaast kunt u de verval datum van het certificaat van uw cluster controleren. Met de volgende opdracht worden bijvoorbeeld de certificaat gegevens voor het *myAKSCluster* -cluster weer gegeven.
 > ```console
@@ -52,13 +52,13 @@ AKS genereert en gebruikt de volgende certificaten, certificerings instanties en
 
 Gebruik [AZ AKS Get-referenties][az-aks-get-credentials] om u aan te melden bij uw AKS-cluster. Met deze opdracht wordt ook het `kubectl`-client certificaat op uw lokale computer gedownload en geconfigureerd.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 Gebruik `az aks rotate-certs` om alle certificaten, Ca's en Sa's in uw cluster te draaien.
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 Werk het certificaat dat door `kubectl` wordt gebruikt bij door `az aks get-credentials`uit te voeren.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080873"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137191"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>De Azure Portal gebruiken om een Media Services-account te maken
 
@@ -54,8 +54,6 @@ U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proe
     
 1. Selecteer **Vastmaken aan dashboard** om de voortgang van de implementatie van het account te bekijken.
 1. Klik op **Maken** onder in het formulier.
-   
-    Wanneer het account is gemaakt, worden de overzichtspagina's geladen. In de tabel met het streaming-eind punt heeft het account een standaard streaming-eind punt met de status **gestopt** . 
 
     Wanneer uw Media Services-account is gemaakt, wordt er een **standaard** streaming-eindpunt met de status **Gestopt** aan uw account toegevoegd. Als u de inhoud wilt streamen en gebruik wilt maken van [dynamische pakketten](dynamic-packaging-overview.md) en [dynamische versleuteling](content-protection-overview.md), moet het streaming-eind punt van waar u inhoud wilt streamen, de status **wordt uitgevoerd** hebben. 
 

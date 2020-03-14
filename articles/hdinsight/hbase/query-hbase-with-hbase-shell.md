@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Query Apache HBase in azure HDInsight-HBase shell'
+title: 'Snelstartgids: query Apache HBase in azure HDInsight-HBase shell'
 description: In deze Quick Start leert u hoe u Apache HBase shell kunt gebruiken om Apache HBase-query's uit te voeren.
 keywords: hdinsight,hadoop,HBase
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076434"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371066"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Quickstart: Query Apache HBase in azure HDInsight met HBase shell
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Snelstartgids: query Apache HBase in azure HDInsight met HBase shell
 
 In deze Quick Start leert u hoe u Apache HBase shell kunt gebruiken om een HBase-tabel te maken, gegevens in te voegen en vervolgens een query uit te voeren op de tabel.
 
@@ -24,7 +24,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache HBase-cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) om een HDInsight-cluster te maken.  Zorg ervoor dat u het cluster type **HBase** kiest.
+* Een Apache HBase-cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het cluster type **HBase** kiest.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -40,31 +40,31 @@ In HBase (een implementatie van [Bigtable](https://cloud.google.com/bigtable/)),
 
 U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache HBase shell gebruiken om HBase-tabellen te maken, gegevens in te voegen en gegevens op te vragen.
 
-1. Gebruik `ssh` de opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van uw cluster te vervangen en voer de volgende opdracht in:
+1. Gebruik `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Gebruik `hbase shell` de opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
+2. Gebruik `hbase shell` opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
 
     ```bash
     hbase shell
     ```
 
-3. Gebruik `create` de opdracht om een HBase-tabel met twee kolom families te maken. Voer de volgende opdracht in:
+3. Gebruik `create` opdracht om een HBase-tabel met twee kolom families te maken. Voer de volgende opdracht in:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Gebruik `list` de opdracht om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
+4. Gebruik `list` opdracht om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
 
     ```hbase
     list
     ```
 
-5. Gebruik `put` de opdracht om waarden in een opgegeven kolom in een opgegeven rij in een bepaalde tabel in te voegen. Voer de volgende opdracht in:
+5. Gebruik `put` opdracht om in een opgegeven rij in een bepaalde tabel waarden in te voegen voor een opgegeven kolom. Voer de volgende opdracht in:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,39 +73,39 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Gebruik `scan` de opdracht om de `Contacts` tabel gegevens te scannen en te retour neren. Voer de volgende opdracht in:
+6. Gebruik `scan` opdracht om de `Contacts` tabel gegevens te scannen en te retour neren. Voer de volgende opdracht in:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Gebruik `get` de opdracht om de inhoud van een rij op te halen. Voer de volgende opdracht in:
+7. Gebruik `get` opdracht om de inhoud van een rij op te halen. Voer de volgende opdracht in:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    U ziet vergelijk bare resultaten als met `scan` de opdracht omdat er slechts één rij is.
+    U ziet vergelijk bare resultaten als met de `scan` opdracht omdat er slechts één rij is.
 
-8. Gebruik `delete` de opdracht voor het verwijderen van een celwaarde in een tabel. Voer de volgende opdracht in:
+8. Gebruik `delete` opdracht voor het verwijderen van een celwaarde in een tabel. Voer de volgende opdracht in:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Gebruik `disable` de opdracht om de tabel uit te scha kelen. Voer de volgende opdracht in:
+9. Gebruik `disable` opdracht om de tabel uit te scha kelen. Voer de volgende opdracht in:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Gebruik `drop` de opdracht om een tabel uit HBase te verwijderen. Voer de volgende opdracht in:
+10. Gebruik `drop` opdracht om een tabel uit HBase te verwijderen. Voer de volgende opdracht in:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. Gebruik `exit` de opdracht om de HBase-interactieve shell te stoppen. Voer de volgende opdracht in:
+11. Gebruik `exit` opdracht om de HBase-interactieve shell te stoppen. Voer de volgende opdracht in:
 
     ```hbase
     exit

@@ -1,5 +1,5 @@
 ---
-title: Over de conversatie transcriptie (preview)-Speech Service
+title: 'Gesprek transcriptie (preview): Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Conversation transcriptie is een oplossing voor spraak naar tekst waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als diarization) worden gecombineerd om te voorzien in realtime en/of asynchroon transcriptie van een gesprek.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561065"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367819"
 ---
-# <a name="about-conversation-transcription-preview"></a>Over de conversatie transcriptie (preview-versie)
+# <a name="what-is-conversation-transcription-preview"></a>Wat is een conversatie transcriptie (preview)?
 
 Conversation transcriptie is een oplossing [voor spraak naar tekst](speech-to-text.md) waarmee spraak herkenning, de identificatie van de spreker en de toewijzing van zinnen aan elke spreker (ook wel bekend als _diarization_) worden gecombineerd om te voorzien in realtime en/of asynchroon transcriptie van een gesprek. Conversatie transcriptie onderscheidt sprekers in een gesprek om te bepalen wie wat en wanneer en wanneer, en maakt het gemakkelijk voor ontwikkel aars om spraak-naar-tekst toe te voegen aan hun toepassingen die Multi-Speaker diarization uitvoeren.
 

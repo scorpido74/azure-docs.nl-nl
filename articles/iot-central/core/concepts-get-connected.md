@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026859"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298815"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
@@ -193,6 +193,9 @@ Wanneer een echt apparaat verbinding maakt met uw IoT Central-toepassing, verand
     - Er wordt een set apparaten toegevoegd met behulp van **importeren** op de pagina **apparaten** zonder de sjabloon voor het apparaat op te geven
     - Apparaten die niet hand matig zijn geregistreerd op de pagina **apparaten** die zijn verbonden met geldige referenties, maar zonder de sjabloon-id op te geven tijdens de registratie.  
 De operator kan een apparaat koppelen aan een sjabloon op de pagina **apparaten** met behulp van de knop **migreren** .
+
+## <a name="best-practices"></a>Aanbevolen procedures 
+1.  Wanneer u DPS gebruikt om apparaten te verbinden met IoT Central, moet u ervoor zorgen dat het apparaat (IoT Hub) connection string niet persistent is of in de cache wordt opgeslagen. Als u opnieuw verbinding wilt maken met apparaten, gaat u naar de normale registratie stroom voor DPS-apparaten om de juiste connection string van het apparaat te verkrijgen. Als de connection string wordt opgeslagen in de cache van het apparaat, wordt het risico van een verouderde connection string in de scenario's waarin IoT Central de onderliggende Azure-IoT Hub heeft bijgewerkt. 
 
 ## <a name="sdk-support"></a>SDK-ondersteuning
 

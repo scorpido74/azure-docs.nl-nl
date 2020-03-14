@@ -2,13 +2,13 @@
 title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: 64c1d3c6f30a4f817abbea5001852df3eeeb9327
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 03/12/2020
+ms.openlocfilehash: f419cc766b7886297ae5d63e6b2ff01cf6e95181
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297642"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers voor Azure-Services
 
@@ -26,10 +26,12 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft.ApiManagement | [API Management](../../api-management/index.yml) |
 | Microsoft.AppConfiguration | baan |
+| Micro soft. AppPlatform | [Azure lente-Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Attestation | Azure Attestation-service |
 | Microsoft.Authorization | [Azure Resource Manager](../index.yml) |
 | Microsoft.Automation | [Automation](../../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
+| Micro soft. Azureworden | SQL Server REGI ster |
 | Microsoft.AzureStack | baan |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft.Billing | [Cost Management en facturering](/azure/billing/) |
@@ -59,12 +61,12 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.CustomerLockbox | Klanten-lockbox voor Microsoft Azure |
 | Microsoft.CustomProviders | [Aangepaste Azure-providers](../custom-providers/overview.md) |
 | Microsoft.DataBox | [Azure Data Box](/azure/databox-family/) |
-| Microsoft.DataBoxEdge | [Azure Data Box Edge](../../databox-online/data-box-edge-overview.md) |
+| Microsoft.DataBoxEdge | [Azure Stack rand](../../databox-online/data-box-edge-overview.md) |
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [Data Catalog](/azure/data-catalog/) |
 | Microsoft.DataFactory | [Data Factory](/azure/data-factory/) |
 | Microsoft.DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
-| Microsoft.DataLakeStore | [Azure Data Lake Store](../../storage/blobs/data-lake-storage-introduction.md) |
+| Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
 | Microsoft.DataMigration | [Azure Database Migration Service](/azure/dms/) |
 | Micro soft. DataShare | [Azure-gegevens share](/azure/data-share/) |
 | Microsoft.DBforMariaDB | [Azure Database for MariaDB](/azure/mariadb/) |
@@ -72,19 +74,19 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](/azure/postgresql/) |
 | Micro soft. DesktopVirtualization | [Virtueel bureau blad van Windows](/azure/virtual-desktop/) |
 | Microsoft.DeploymentManager | [Azure Deployment Manager](../templates/deployment-manager-overview.md) |
-| Microsoft.Devices | [IoT Hub](/azure/iot-hub/)<br />[IoT Hub Device Provisioning Service](/azure/iot-dps/) |
+| Microsoft.Devices | [Azure IoT Hub](/azure/iot-hub/)<br />[Azure IoT Hub Device Provisioning Service](/azure/iot-dps/) |
 | Micro soft. DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft.DevSpaces | [Azure dev Spaces](/azure/dev-spaces/) |
 | Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
+| Micro soft. DigitalTwins | [Azure Digital Twins](../../digital-twins/about-digital-twins.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Microsoft.DomainRegistration | [App Service](/azure/app-service/) |
 | Micro soft. EnterpriseKnowledgeGraph | Enter prise-kennis grafiek |
 | Microsoft.EventGrid | [Event Grid](/azure/event-grid/) |
 | Microsoft.EventHub | [Event Hubs](../../event-hubs/index.yml) |
 | Microsoft.Features | [Azure Resource Manager](../index.yml) |
-| Microsoft.Genomics | [Microsoft Genomics](/azure/genomics/) |
 | Micro soft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft.HanaOnAzure | [SAP HANA op Azure](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
+| Microsoft.HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Specifieke HSM van Azure](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
@@ -92,14 +94,16 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.HybridData | [StorSimple](/azure/storsimple/) |
 | Microsoft.ImportExport | [Azure import/export](../../storage/common/storage-import-export-service.md) |
 | microsoft.insights | [Azure Monitor](../../azure-monitor/index.yml) |
-| Microsoft.IoTCentral | [IoT Central](/azure/iot-central/) |
+| Microsoft.IoTCentral | [Azure IoT Central](/azure/iot-central/) |
 | Microsoft.IoTSpaces | [Azure Digital Apparaatdubbels](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
+| Micro soft. Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft.Kusto | [Azure Data Explorer](../../data-explorer/index.yml) |
 | Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
-| Microsoft.MachineLearningServices | [Machine Learning-service](../../machine-learning/index.yml) |
+| Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
+| Micro soft. onderhoud | [Onderhoud van Azure](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft.ManagedIdentity | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Micro soft. ManagedServices | [Azure Lighthouse](/azure/lighthouse/) |
 | Microsoft.Management | [Beheergroepen](/azure/governance/management-groups/) |
@@ -116,42 +120,44 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
-| Microsoft.Peering | Microsoft Azure peering-service |
+| Microsoft.Peering | [Azure peering-service](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft.Portal | [Azure-portal](/azure/azure-portal/) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
-| Microsoft.RecoveryServices | [Site Recovery](../../site-recovery/index.yml) |
+| Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
+| Micro soft. RedHatOpenShift | [Azure Red Hat open Shift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure-resource grafiek](/azure/governance/resource-graph/) |
 | Microsoft.ResourceHealth | [Azure Service Health](../../service-health/index.yml)|
 | Microsoft.Resources | [Azure Resource Manager](../index.yml) |
 | Microsoft.SaaS | baan |
 | Microsoft.Scheduler | [Scheduler](/azure/scheduler/) |
-| Microsoft.Search | [Azure Search](../../search/index.yml) |
+| Microsoft.Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft.Security | [Security Center](../../security-center/index.yml) |
 | Micro soft. SecurityInsights | [Azure-Sentinel](/azure/sentinel/) |
-| Micro soft. SerialConsole | [Azure-seriële console](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Micro soft. SerialConsole | [Azure Serial console voor Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric net](../../service-fabric-mesh/index.yml) |
 | Microsoft.SignalRService | [Azure signalerings service](../../azure-signalr/index.yml) |
-| Microsoft.SiteRecovery | [Site Recovery](../../site-recovery/index.yml) |
+| Micro soft. SoftwarePlan | Licentie |
 | Microsoft.Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[SQL Data Warehouse](/azure/sql-data-warehouse/) |
+| Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [SQL Server op virtuele machines in Azure](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC-cache](/azure/hpc-cache/) |
 | Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
-| Microsoft.StreamAnalytics | [Stream Analytics](../../stream-analytics/index.yml) |
+| Microsoft.StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | baan |
 | microsoft.support | baan |
-| Microsoft.TimeSeriesInsights | [Time Series Insights](../../time-series-insights/index.yml) |
+| Micro soft. Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
+| Microsoft.TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure-DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.VMwareCloudSimple | [Azure VMware-oplossing op CloudSimple](/azure/vmware-cloudsimple/) |
-| Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Functies](../../azure-functions/index.yml) |
+| Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |
 

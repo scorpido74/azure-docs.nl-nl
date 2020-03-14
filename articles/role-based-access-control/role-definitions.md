@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283223"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Functie definities voor Azure-resources begrijpen
 
@@ -56,7 +56,7 @@ Het `{action}` gedeelte van een bewerkings reeks geeft u het type bewerkingen op
 | `action` | Hiermee schakelt u aangepaste bewerkingen in, zoals het opnieuw opstarten van virtuele machines (POST). |
 | `delete` | Hiermee worden Verwijder bewerkingen (verwijderen) ingeschakeld. |
 
-Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
+Hier volgt de rol van [Inzender](built-in-roles.md#contributor) in JSON-indeling. De Joker bewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen, alle acties kan uitvoeren, of met andere woorden, het kan alles beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, aangezien Azure nieuwe resource typen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol [Inzender](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze functie om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
 
 ```json
 {
@@ -92,10 +92,10 @@ De toegang tot het beheer wordt niet overgenomen van uw gegevens omdat de contai
 
 Voorheen werd op rollen gebaseerd toegangs beheer niet gebruikt voor gegevens bewerkingen. Autorisatie voor gegevens bewerkingen varieerden van alle resource providers. Hetzelfde op rollen gebaseerde toegangs beheer autorisatie model dat wordt gebruikt voor beheer bewerkingen, is uitgebreid naar gegevens bewerkingen.
 
-Voor het ondersteunen van gegevens bewerkingen zijn er nieuwe gegevens eigenschappen aan de roldefinitie structuur toegevoegd. Gegevensbewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevens eigenschappen toe te voegen, wordt de schei ding tussen beheer en gegevens gehandhaafd. Hiermee voorkomt u dat huidige roltoewijzingen met jokertekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevensbewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
+Voor het ondersteunen van gegevens bewerkingen zijn er nieuwe gegevens eigenschappen aan de roldefinitie structuur toegevoegd. Gegevens bewerkingen worden opgegeven in de eigenschappen `DataActions` en `NotDataActions`. Door deze gegevens eigenschappen toe te voegen, wordt de schei ding tussen beheer en gegevens gehandhaafd. Dit voor komt dat huidige roltoewijzingen met Joker tekens (`*`) plotseling toegang hebben tot gegevens. Hier volgen enkele gegevens bewerkingen die kunnen worden opgegeven in `DataActions` en `NotDataActions`:
 
 - Een lijst met blobs in een container lezen
-- Een opslag-blob in een container schrijven
+- Een opslag-Blob in een container schrijven
 - Een bericht in een wachtrij verwijderen
 
 Hier volgt de definitie van de rol van [BLOB-gegevens lezer voor opslag](built-in-roles.md#storage-blob-data-reader) , die bewerkingen bevat in de eigenschappen `Actions` en `DataActions`. Met deze rol kunt u de BLOB-container en ook de onderliggende BLOB-gegevens lezen.
@@ -120,7 +120,7 @@ Hier volgt de definitie van de rol van [BLOB-gegevens lezer voor opslag](built-i
 }
 ```
 
-Alleen gegevensbewerkingen kunnen worden toegevoegd aan de eigenschappen `DataActions` en `NotDataActions`. Resource providers bepalen welke bewerkingen gegevens bewerkingen zijn, door de eigenschap `isDataAction` in te stellen op `true`. Zie voor een overzicht van de bewerkingen waarbij `isDataAction` is `true`de bewerkingen van de [resource provider](resource-provider-operations.md). Rollen die geen gegevens bewerkingen hebben, hoeven geen `DataActions`-en `NotDataActions`-eigenschappen te hebben binnen de roldefinitie.
+Alleen gegevens bewerkingen kunnen worden toegevoegd aan de eigenschappen `DataActions` en `NotDataActions`. Resource providers bepalen welke bewerkingen gegevens bewerkingen zijn, door de eigenschap `isDataAction` in te stellen op `true`. Zie voor een overzicht van de bewerkingen waarbij `isDataAction` is `true`de bewerkingen van de [resource provider](resource-provider-operations.md). Rollen die geen gegevens bewerkingen hebben, hoeven geen `DataActions`-en `NotDataActions`-eigenschappen te hebben binnen de roldefinitie.
 
 Autorisatie voor alle beheer bewerkingen-API-aanroepen wordt afgehandeld door Azure Resource Manager. Autorisatie voor data Operation-API-aanroepen wordt verwerkt door een resource provider of Azure Resource Manager.
 
@@ -158,10 +158,10 @@ Zie de [Azure Storage-beveiligings handleiding](../storage/blobs/security-recomm
 
 Als u gegevens bewerkingen wilt bekijken en gebruiken, moet u beschikken over de juiste versies van de hulpprogram ma's of Sdk's:
 
-| Hulpprogramma  | Versie  |
+| Hulpprogramma  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 of hoger |
-| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
+| [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
 | [Azure voor .NET](/dotnet/azure/) | 2.8.0-Preview of hoger |
 | [Azure SDK voor Go](/azure/go/azure-sdk-go-install) | 15.0.0 of hoger |
 | [Azure voor Java](/java/azure/) | 1.9.0 of hoger |
@@ -184,7 +184,7 @@ Met de machtiging `Actions` geeft u de beheer bewerkingen op die door de functie
 | `Microsoft.Compute/virtualMachines/*` | Verleent toegang tot alle bewerkingen van virtuele machines en de bijbehorende onderliggende resource typen.|
 | `microsoft.web/sites/restart/Action` | Hiermee wordt toegang verleend om een web-app opnieuw op te starten.|
 
-## <a name="notactions"></a>NotActions
+## <a name="notactions"></a>Intact
 
 Met de machtiging `NotActions` geeft u de beheer bewerkingen op die zijn uitgesloten van de toegestane `Actions`. Gebruik de `NotActions` machtiging als de set bewerkingen die u wilt toestaan eenvoudiger is gedefinieerd door beperkte bewerkingen uit te sluiten. De toegang die wordt verleend door een rol (efficiënte machtigingen) wordt berekend door de `NotActions` bewerkingen uit te trekken van de `Actions` bewerkingen.
 

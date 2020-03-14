@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: asrastog
-ms.openlocfilehash: 1bb55d593878026bb3e57014a317b4fc0158d734
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913132"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370573"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Versleuteling van gegevens in rust met door de klant beheerde sleutels voor IoT Hub
 
 IoT Hub ondersteunt versleuteling van gegevens in rust met door de klant beheerde sleutels (CMK), ook wel bekend als uw eigen sleutel (BYOK), ondersteuning voor Azure IoT Hub. Azure IoT Hub voorziet in het versleutelen van gegevens in rust en onderweg. IoT Hub maakt standaard gebruik van door micro soft beheerde sleutels om de gegevens te versleutelen. Met CMK-ondersteuning hebben klanten nu de keuze om de gegevens in rust te versleutelen met een sleutel coderings sleutel, die wordt beheerd door de klanten, met behulp van de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Voor deze functie is het maken van een nieuwe IoT Hub (Basic-of Standard-laag) vereist in een van de volgende regio's: VS-Oost, VS-West 2 of Zuid-Centraal vs. Neem contact met ons op via [micro soft ondersteuning](https://azure.microsoft.com/support/create-ticket/)als u deze mogelijkheid wilt proberen. Deel uw bedrijfs naam en abonnements-ID wanneer u contact opneemt met micro soft ondersteuning.
+Voor deze functie is het maken van een nieuwe IoT Hub (Basic-of Standard-laag) vereist in een van de volgende regio's: VS-Oost, VS-West 2, Zuid-Centraal VS of US Gov. Neem contact met ons op via [micro soft ondersteuning](https://azure.microsoft.com/support/create-ticket/)als u deze mogelijkheid wilt proberen. Deel uw bedrijfs naam en abonnements-ID wanneer u contact opneemt met micro soft ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 

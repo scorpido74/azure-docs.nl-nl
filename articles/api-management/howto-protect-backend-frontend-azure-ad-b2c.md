@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967633"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136343"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
 
@@ -250,7 +250,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 
    > [!NOTE]
    > De volgende sectie is optioneel en is niet van toepassing op de laag **verbruik** , die geen ondersteuning biedt voor de ontwikkelaars Portal.
-   > Als u de ontwikkelaars Portal niet wilt gebruiken of niet kunt gebruiken omdat u de laag verbruik gebruikt, slaat u deze stap over en gaat u direct naar [' de Java script Spa maken om de API te gebruiken '](##build-the-javascript-spa-to-consume-the-api).
+   > Als u de ontwikkelaars Portal niet wilt gebruiken of niet kunt gebruiken omdat u de laag verbruik gebruikt, slaat u deze stap over en gaat u direct naar [' de Java script Spa maken om de API te gebruiken '](#build-the-javascript-spa-to-consume-the-api).
 
 ## <a name="optional-configure-the-developer-portal"></a>Beschrijving De ontwikkelaars Portal configureren
 

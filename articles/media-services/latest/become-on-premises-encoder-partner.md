@@ -1,6 +1,6 @@
 ---
 title: Word een on-premises encoder partner-Azure Media Services
-description: Word een on-premises coderings partner met Azure Media Services.
+description: In dit artikel wordt beschreven hoe u on-premises live streaming encoders kunt controleren.
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252972"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298628"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>Een on-premises coderings partner worden
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Uw on-premises live streaming encoder controleren
 
 Als Azure Media Services on-premises encoder-partner Media Services propageert u uw product door uw Codeer aan te bevelen voor zakelijke klanten. Als u een on-premises encoder partner wilt worden, moet u de compatibiliteit van uw on-premises encoder controleren met Media Services. Voer hiervoor de volgende verificaties uit.
 
-### <a name="pass-through-live-event-verification"></a>Geslaagde live gebeurtenis verificatie
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>Geslaagde live gebeurtenis verificatie
 
 1. Controleer of het **streaming-eind punt** wordt uitgevoerd In uw Media Services-account. 
 2. Maak en start de gebeurtenis **Pass-Through** Live. <br/> Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
@@ -38,7 +40,7 @@ Als Azure Media Services on-premises encoder-partner Media Services propageert u
 15. Stel de status van de live-gebeurtenis na het maken van elk voor beeld opnieuw in.
 16. Herhaal stap 5 tot en met 15 voor alle configuraties die worden ondersteund door uw coderings programma (met en zonder AD-Signa lering, bijschriften of verschillende coderings snelheden).
 
-### <a name="live-encoding-live-event-verification"></a>Live-gebeurtenis verificatie voor Live-code ring
+## <a name="live-encoding-live-event-verification"></a>Live-gebeurtenis verificatie voor Live-code ring
 
 1. Controleer of het **streaming-eind punt** wordt uitgevoerd In uw Media Services-account. 
 2. De live-gebeurtenis voor het **coderen** van Live maken en starten. <br/> Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
@@ -57,17 +59,17 @@ Als Azure Media Services on-premises encoder-partner Media Services propageert u
 15. Stel de status van de live-gebeurtenis na het maken van elk voor beeld opnieuw in.
 16. Herhaal stap 5 tot en met 15 voor alle configuraties die worden ondersteund door uw coderings programma (met en zonder AD-Signa lering, bijschriften of verschillende coderings snelheden).
 
-### <a name="longevity-verification"></a>Duurzaamheids verificatie
+## <a name="longevity-verification"></a>Duurzaamheids verificatie
 
 Volg dezelfde stappen als in [Pass-through live-gebeurtenis verificatie](#pass-through-live-event-verification) , met uitzonde ring van stap 11. <br/>Voer in plaats van tien minuten uw Live coderings programma uit gedurende een week of langer. Gebruik een speler zoals [Azure Media Player](https://aka.ms/azuremediaplayer) om de live-streaming van tijd tot tijd (of een gearchiveerde Asset) te bekijken om ervoor te zorgen dat het afspelen geen zicht bare storingen heeft.
 
-### <a name="email-your-recorded-settings"></a>Uw vastgelegde instellingen per e-mail verzenden
+## <a name="email-your-recorded-settings"></a>Uw vastgelegde instellingen per e-mail verzenden
 
 Ten slotte moet u uw vastgelegde instellingen en de para meters van uw Live-Archief per e-mail naar Azure Media Services op amshelp@microsoft.com als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
 
 ## <a name="see-also"></a>Zie ook
 
-[Aanbevolen on-premises Live coderings Programma's](recommended-on-premises-live-encoders.md)
+[Geteste on-premises encoders](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

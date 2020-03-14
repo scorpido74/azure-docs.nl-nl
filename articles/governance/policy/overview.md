@@ -5,11 +5,11 @@ ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937817"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241526"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -107,7 +107,7 @@ Neem bijvoorbeeld een scenario met initiatiefdefinitie **initiativeC**, waarbij 
 | Beleid | Naam van parameter |Type parameter  |Opmerking |
 |---|---|---|---|
 | policyA | allowedLocations | matrix  |Op basis van deze parameter wordt een lijst met tekenreeksen verwacht voor een waarde, omdat het parametertype is gedefinieerd als een matrix |
-| policyB | allowedSingleLocation |string |Op basis van deze parameter wordt één woord verwacht voor een waarde, omdat het parametertype is gedefinieerd als een tekenreeks |
+| policyB | allowedSingleLocation |tekenreeks |Op basis van deze parameter wordt één woord verwacht voor een waarde, omdat het parametertype is gedefinieerd als een tekenreeks |
 
 In dit scenario hebt u, bij het definiëren van de initiatiefparameters voor **initiativeC**, drie opties:
 

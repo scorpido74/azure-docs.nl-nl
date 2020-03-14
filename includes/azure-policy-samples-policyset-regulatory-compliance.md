@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: a229d3d3ba89b4bafd4b0b45a143e29d3d5f7ede
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668530"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381859"
 ---
-|Naam |Beschrijving |Beleidsregels |Version |
+|Naam |Beschrijving |Beleid |Versie |
 |---|---|---|---|
 |[\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van Canada Federal PBMM-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/canadafederalPBMM-blueprint |67 |2.0.0-Preview |
 |[\[preview-\]: controle van CIS Microsoft Azure Stichting 1.1.0-aanbevelingen en implementeer specifieke ondersteunende VM-extensies](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Dit initiatief omvat audit en implementatie beleid voor VM-extensies die een subset van CIS-Microsoft Azure basis benchmark aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/cisazure-blueprintvoor meer informatie. |83 |2.0.0-Preview |
@@ -23,7 +23,7 @@ ms.locfileid: "78668530"
 |[\[preview\]: Bekijk SWIFT CSP-CSCF v2020 Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van de SWIFT CSP-CSCF v2020-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/SWIFT-blueprintvoor meer informatie. |71 |1.0.0-Preview |
 |[\[preview\]: audit UK officiële en UK NHS Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Dit initiatief omvat beleids regels die een subset van de UK officiële en UK NHS-besturings elementen verpakken. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/ukofficial-blueprint en https://aka.ms/uknhs-blueprint |66 |2.0.0-Preview |
 |[Aanbevelingen voor Azure Security Bench Mark controleren en specifieke ondersteunende VM-extensies implementeren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleidsregels die een subset van Azure Security Bench Mark-aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/azsecbmvoor meer informatie. |148 |2.0.0-Preview |
+|[Controleren op installatie van invloed op niveau 4-besturings elementen en implementeren van specifieke VM-extensies ter ondersteuning van controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleidsregels die een subset van de besturings elementen van installatie van invloed op het niveau 4 aanpakken. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/DoDIL4-blueprintvoor meer informatie. |108 |3.0.0-Preview |
 |[Audit FedRAMP High Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Dit initiatief omvat audit-en VM-extensie-implementatie beleid voor een subset van FedRAMP H-besturings elementen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/fedramph-blueprintvoor meer informatie. |80 |2.0.0-Preview |
 |[Audit HITRUST/HIPAA-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Dit initiatief omvat beleids regels waarmee een subset van HITRUST/HIPAA-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Audit Motion Picture Association of America (MPAA) Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Dit initiatief omvat beleids regels die een subset van MPAA-beveiligings-en richt lijnen voor het beheren van de werking van een Motion Picture Association of America-besturings element oplossen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/mpaa-blueprint |45 |1.0.0-Preview |
-|[DoD Impact Level 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Hiermee wordt beleid toegewezen om specifieke IL4-besturings elementen voor de DoD-impact niveau 4 te adresseren. Meer informatie- https://aka.ms/DoDIL4-blueprint. |80 |2.0.0-Preview |

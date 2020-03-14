@@ -10,66 +10,54 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943334"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365556"
 landingContent:
-- title: Aan de slag
+- title: Over spraak assistenten
   linkLists:
   - linkListType: overview
     links:
-    - text: Oplossingen voor spraak assistenten
+    - text: Wat is een spraakassistent?
       url: voice-assistants.md
-    - text: Aangepaste opdrachten
+    - text: Wat is een app voor aangepaste opdrachten?
       url: custom-commands.md
-    - text: Over directe lijn spraak
+    - text: Wat is Direct Line-spraak?
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: Prijzen
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Veelgestelde vragen over spraakassistenten
       url: faq-voice-assistants.md
-- title: Aangepast tref woord
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Aangepast tref woord
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: Richt lijnen voor naamgeving van aangepaste tref woorden
-      url: speech-devices-sdk-kws-guidelines.md
-- title: Aangepaste opdrachten
+    - text: Prijs informatie voor spraak assistenten
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Ontwikkelen met aangepaste opdrachten
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Een aangepaste opdracht maken (preview)
+    - text: Een app voor aangepaste opdrachten maken
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Een aangepaste opdracht maken met parameters (preview)
+    - text: Een aangepaste opdracht met para meters maken
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Aangepaste opdrachten gebruiken met Custom Voice (preview-versie)
+    - text: Aangepaste opdrachten met aangepaste spraak gebruiken
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Aangepaste opdrachten gebruiken met de Speech-SDK (preview)
+    - text: Aangepaste opdrachten gebruiken met de Speech SDK
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Aangepaste opdrachten met de Speech SDK
+    - text: Opdrachten uitvoeren vanuit een client
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Aangepaste opdrachten uitvoeren met de Speech-SDK
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Parametervalidatie toevoegen aan een aangepaste opdracht
+    - text: Parameter validatie toevoegen
       url: how-to-custom-speech-commands-validations.md
-    - text: Een bevestiging toevoegen aan een aangepaste opdracht
+    - text: Een bevestiging toevoegen
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Een correctie met één stap toevoegen aan een aangepaste opdracht
+    - text: Een correctie met één stap toevoegen
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line-spraak
+- title: Ontwikkelen met directe lijn spraak
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +71,13 @@ landingContent:
     links:
     - text: Spraak inschakelen voor uw bot met Speech-SDK
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Ontwikkelen met aangepast tref woord
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een aangepast tref woord maken
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Richt lijnen voor naamgeving van aangepaste tref woorden
+      url: speech-devices-sdk-kws-guidelines.md

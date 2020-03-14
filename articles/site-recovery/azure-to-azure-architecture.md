@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759803"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371610"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -97,13 +97,13 @@ In de volgende tabel worden verschillende soorten consistentie beschreven.
 
 ### <a name="crash-consistent"></a>Crash-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Beschrijving** | **Details** | **Advies**
 --- | --- | ---
 Een crash consistente moment opname legt gegevens vast die zich op de schijf bevonden toen de moment opname werd gemaakt. Het bevat niets in het geheugen.<br/><br/> Het bevat het equivalent van de gegevens op de schijf die aanwezig zouden zijn als de virtuele machine is vastgelopen of het netsnoer van de server is opgehaald op het moment dat de moment opname werd gemaakt.<br/><br/> Een crash consistent garandeert geen gegevens consistentie voor het besturings systeem of voor apps op de virtuele machine. | Met Site Recovery worden standaard crash consistente herstel punten in elke vijf minuten gemaakt. Deze instelling kan niet worden gewijzigd.<br/><br/>  | Vandaag kunnen de meeste apps goed worden hersteld met crash-consistente punten.<br/><br/> Crash-consistente herstel punten zijn doorgaans voldoende voor de replicatie van besturings systemen en apps, zoals DHCP-servers en afdruk servers.
 
 ### <a name="app-consistent"></a>App-consistent
 
-**Beschrijving** | **Details** | **Aanbeveling**
+**Beschrijving** | **Details** | **Advies**
 --- | --- | ---
 App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) wanneer een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van kopieën uit op het volume.<br/><br/>   2) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   3) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
@@ -135,6 +135,8 @@ Als uitgaande toegang voor virtuele machines wordt beheerd met Url's, kunt u dez
 | login.microsoftonline.com | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
 | *.hypervrecoverymanager.windowsazure.com | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
 | *.servicebus.windows.net | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
+| *.vault.azure.net | Hiermee staat u toegang toe om replicatie in te scha kelen voor virtuele machines met ADE-functionaliteit via de portal
+| *. automation.ext.azure.com | Hiermee kunt u de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal inschakelen
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
@@ -149,6 +151,8 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opsl
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD)  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de doel regio. | EventsHub.\<regio-naam >
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Key Vault (dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE-functionaliteit via de portal) | AzureKeyVault
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Automation Controller (dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Doel regio regels
 
@@ -158,6 +162,8 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opsl
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de bron regio. | EventsHub.\<regio-naam >
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Key Vault (dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE-functionaliteit via de portal) | AzureKeyVault
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Automation Controller (dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>Toegang beheren met NSG-regels

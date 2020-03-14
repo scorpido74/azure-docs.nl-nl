@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562527"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367802"
 ---
-# <a name="about-direct-line-speech"></a>Over directe lijn spraak
+# <a name="what-is-direct-line-speech"></a>Wat is Direct Line-spraak?
 
 **Direct line speech** is een robuuste, end-to-end oplossing voor het maken van een flexibele, uitbreid bare spraak assistent. Het wordt mogelijk gemaakt door het bot-Framework en het directe-lijn spraak kanaal dat is geoptimaliseerd voor spraak-in-en spraak-interactie met bots.
 

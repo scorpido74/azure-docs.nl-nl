@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547656"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248487"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Een ondersteuningsaanvraag maken voor Azure
 
 ## <a name="overview"></a>Overzicht
 
-Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de [Azure Portal](https://portal.azure.com).
+Met Azure kunt u ondersteunings aanvragen maken en beheren, ook wel ondersteunings tickets genoemd. U kunt aanvragen maken en beheren in de [Azure Portal](https://portal.azure.com), die in dit artikel worden besproken. U kunt ook via een programma aanvragen maken en beheren met behulp van de [ondersteunings ticket rest API van Azure](/rest/api/support).
 
 > [!NOTE]
 > De Azure Portal-URL is specifiek voor de Azure-Cloud waar uw organisatie is geïmplementeerd.
@@ -41,15 +41,15 @@ Op basis van feedback van klanten hebben we de ervaring voor ondersteunings aanv
 
 U krijgt hulp en **ondersteuning** in de Azure Portal. Deze is beschikbaar via het Azure Portal menu, de globale koptekst of het resource menu voor een service. Voordat u een ondersteunings aanvraag kunt indienen, moet u de juiste machtigingen hebben.
 
-### <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Als u een ondersteunings aanvraag wilt maken, moet u een beheerder zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) .
+Als u een ondersteunings aanvraag wilt maken, moet u een beheerder zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnements niveau.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Ga naar Help en ondersteuning vanuit de Global header
 
 Als u een ondersteunings aanvraag wilt starten vanaf elke locatie in de Azure Portal:
 
-1. Het pictogram **?** in de globale header. Selecteer vervolgens **Help + ondersteuning**.
+1. Selecteer de **?** in de globale header. Selecteer vervolgens **Help + ondersteuning**.
 
    ![Help en ondersteuning](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -98,7 +98,7 @@ Nadat u alle informatie over het probleem hebt, kiest u hoe u ondersteuning kunt
 
 Vul vervolgens de sectie **contact gegevens** in zodat we weten hoe ze contact met u kunnen opnemen.
 
-### <a name="review--create"></a>Beoordelen en maken
+### <a name="review--create"></a>Controleren en maken
 
 Vul alle vereiste gegevens op elk tabblad in en selecteer vervolgens **controleren + maken**. Controleer de details die u gaat verzenden naar ondersteuning. Ga terug naar een tabblad om zo nodig een wijziging aan te brengen. Wanneer u hebt nagevraagd of het ondersteunings verzoek is voltooid, selecteert u **maken**.
 

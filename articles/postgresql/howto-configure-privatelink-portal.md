@@ -1,19 +1,19 @@
 ---
-title: Persoonlijke koppeling voor de installatie methode van de portal voor Azure Database for PostgreSQL-één server (preview-versie)
+title: Persoonlijke koppeling-Azure Portal-Azure Database for PostgreSQL-één server
 description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for PostgreSQL-één server van Azure Portal
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562595"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370913"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server (preview) met behulp van de portal
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server met behulp van portal
 
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.  In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for PostgreSQL enkele server met een persoonlijk Azure-eind punt.
 
@@ -37,7 +37,7 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
@@ -59,10 +59,10 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
     | **INSTANTIEDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **Europa - west**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | Afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -113,7 +113,7 @@ In deze sectie maakt u een Azure Database for PostgreSQL-server in Azure.
     | Gebruikers naam beheerder| Voer de naam van de beheerder van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
     | Locatie | Selecteer een Azure-regio waar u wilt dat uw PostgreSQL-server zich bevindt. |
-    |Version  | Selecteer de database versie van de PostgreSQL-server die vereist is.|
+    |Versie  | Selecteer de database versie van de PostgreSQL-server die vereist is.|
     | Compute + Storage| Selecteer de prijs categorie die nodig is voor de server op basis van de werk belasting. |
     |||
  
@@ -126,12 +126,12 @@ In deze sectie maakt u een Azure Database for PostgreSQL-server in Azure.
 
 In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk eind punt toe. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **netwerk** > **privé koppelings centrum (preview)** .
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **netwerk** > **persoonlijke koppeling**.
 2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
 
     ![Overzicht van persoonlijke koppelingen](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. Voer in **een persoonlijk eind punt maken (preview)-basis beginselen**de volgende gegevens in of Selecteer deze:
+1. Voer in **een persoonlijk eind punt maken-basis beginselen**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -139,7 +139,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **Exemplaar Details** |  |
-    | Name | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Naam | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **Europa - west**.|
     |||
 5. Selecteer **volgende: resource**.
@@ -154,7 +154,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
     |Doel-subresource |*PostgresqlServer* selecteren|
     |||
 7. Selecteer **volgende: Configuratie**.
-8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
+8. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a677aaa891e21f4c9eeda02eebcb94e9d79a55ad
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771629"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368822"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>machine learning pijp lijnen definiëren in YAML
 
@@ -32,7 +32,7 @@ De volgende tabel bevat een overzicht van wat is en wordt momenteel niet onderst
 | DataTransferStep | Ja |
 | AutoMLStep | Nee |
 | HyperDriveStep | Nee |
-| ModuleStep | Nee |
+| ModuleStep | Ja |
 | MPIStep | Nee |
 | EstimatorStep | Nee |
 
@@ -76,7 +76,7 @@ pipeline:
             default: 4
 ```
 
-## <a name="data-reference"></a>Gegevens verwijzing
+## <a name="data-reference"></a>Verwijzing naar gegevens
 
 In het gedeelte `data_references` worden de volgende sleutels gebruikt, die overeenkomen met de [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
 
@@ -363,7 +363,7 @@ pipeline:
                     bind_mode: mount
 ```
 
-## <a name="schedules"></a>Schema's
+## <a name="schedules"></a>Planningen
 
 Bij het definiëren van het schema voor een pijp lijn kan het gegevens archief worden geactiveerd of terugkerend op basis van een tijds interval. Hieronder vindt u de sleutels die worden gebruikt voor het definiëren van een planning:
 

@@ -8,24 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79218420"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371576"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub apparaat-id's in bulk importeren en exporteren
 
 Elke IoT-hub beschikt over een id-REGI ster dat u kunt gebruiken voor het maken van resources per apparaat in de service. Met het id-REGI ster kunt u ook de toegang tot de eind punten van het apparaat beheren. In dit artikel wordt beschreven hoe u apparaat-id's in bulk kunt importeren en exporteren naar een identiteits register. Zie [een IOT hub klonen](iot-hub-how-to-clone.md)om C# een werkend voor beeld in te bekijken en te leren hoe u deze mogelijkheid kunt gebruiken bij het klonen van een hub naar een andere regio.
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub heeft onlangs ondersteuning voor het virtuele netwerk in een beperkt aantal regio's toegevoegd. Deze functie beveiligt import-en export bewerkingen en elimineert de nood zaak om sleutels voor verificatie uit te voeren.  De ondersteuning voor het virtuele netwerk is in eerste instantie alleen beschikbaar in deze regio's: *WestUS2*, *eastus*en *SouthCentralUS*. Zie [IOT hub-ondersteuning voor virtuele netwerken](virtual-network-support.md)voor meer informatie over ondersteuning voor virtuele netwerken en de API-aanroepen om deze te implementeren.
 
 Import-en export bewerkingen worden uitgevoerd in de context van *taken* waarmee u bulksgewijze service bewerkingen kunt uitvoeren op een IOT-hub.
 
 De **RegistryManager** -klasse bevat de methoden **ExportDevicesAsync** en **ImportDevicesAsync** die gebruikmaken van het **project** Framework. Met deze methoden kunt u het geheel van een IoT hub-identiteits register exporteren, importeren en synchroniseren.
 
 In dit onderwerp wordt beschreven hoe u de **RegistryManager** -klasse en het **taak** systeem gebruikt voor het uitvoeren van bulksgewijs importeren en exporteren van apparaten naar en van het identiteits register van een IOT-hub. U kunt ook de Azure IoT Hub Device Provisioning Service gebruiken voor het inschakelen van Zero-Touch, just-in-time inrichting naar een of meer IoT-hubs zonder menselijke tussen komst. Zie de documentatie van de [inrichtings service](/azure/iot-dps)voor meer informatie.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Wat zijn taken?
 
@@ -83,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Als uw opslag account firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) te gebruiken (beschikbaar in geselecteerde regio's voor IOT-hubs met een beheerde service-identiteit).
+
 
 ## <a name="device-importexport-job-limits"></a>Taak limieten voor importeren/exporteren van apparaten
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566346"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367581"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
 
@@ -25,7 +25,10 @@ In dit artikel bevat een inleiding tot de functionaliteit van georuimtelijke in 
 
 Ruimtelijke gegevens beschrijft de positie en de vorm van objecten in de ruimte. In de meeste toepassingen, deze komen overeen met de objecten op de aarde en georuimtelijke gegevens. Ruimtelijke gegevens kunnen worden gebruikt om weer te geven van de locatie van een persoon, een plaats van belang of de grens van een plaats of een meer. Veelgebruikte toepassingsgebieden vaak betrekking hebben op nabijheidsquery's, bijvoorbeeld, "alle in internetcafés vinden in de buurt van mijn huidige locatie."
 
-De SQL-API van Azure Cosmos DB ondersteunt het **geografie** -gegevens type. Het **geografie** type staat voor gegevens in een coördinaten systeem met round-Earth.
+De SQL-API van Azure Cosmos DB ondersteunt twee ruimtelijke gegevens typen: het gegevens type **geometrie** en het gegevens type **geografie** .
+
+- Het type **geometrie** vertegenwoordigt gegevens in een Euclidean-coördinaten systeem (plat)
+- Het **geografie** type staat voor gegevens in een coördinaten systeem met round-Earth.
 
 ## <a name="supported-data-types"></a>Ondersteunde gegevens typen
 
@@ -70,7 +73,11 @@ Ruimtelijke gegevens typen kunnen worden inge sloten in een Azure Cosmos DB-docu
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Punten in geografisch coördinaten systeem
+### <a name="points-in-a-geometry-coordinate-system"></a>Punten in een geometrie coördinaten systeem
+
+Voor het gegevens type **Geometry** specificeert geojson-specificatie de horizontale as en de verticale as seconde.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Punten in een geografisch coördinaten systeem
 
 Voor het **geografische** gegevens type geeft de geojson-specificatie de lengte graad en de tweede breedte aan. Net als in andere toepassingen toewijzing lengtegraad en breedtegraad zijn hoeken en weergegeven in termen van graden. Waarden voor lengtegraad van de nulmeridiaan worden gemeten en tussen-180 graden en 180.0 graden en waarden voor breedtegraad van de evenaar worden gemeten en tussen-90.0 graden en 90.0 graden zijn.
 
@@ -125,20 +132,20 @@ Een **multiveelhoek** is een matrix met nul of meer veelhoeken. **Multiveelhoeke
 ```json
 {
     "type":"MultiPolygon",
-    "coordinates":[ [
+    "coordinates":[[[
         [52.0, 12.0],
         [53.0, 12.0],
         [53.0, 13.0],
         [52.0, 13.0],
         [52.0, 12.0]
-    ],
-    [
+        ]],
+        [[
         [50.0, 0.0],
         [51.0, 0.0],
         [51.0, 5.0],
         [50.0, 5.0],
         [50.0, 0.0]
-    ] ]
+        ]]]
 }
 ```
 

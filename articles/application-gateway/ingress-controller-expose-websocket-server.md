@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795972"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297829"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Een WebSocket-server beschikbaar maken voor Application Gateway
 
-Zoals beschreven in de documentatie over Application Gateway v2, biedt het [systeem eigen ondersteuning voor de WebSocket-en http/2-protocollen](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic). Houd er rekening mee dat voor zowel Application Gateway als de Kubernetes-inkomend is, er geen door de gebruiker geconfigureerde instelling is om WebSocket-ondersteuning selectief in of uit te scha kelen.
+Zoals beschreven in de documentatie over Application Gateway v2, biedt het [systeem eigen ondersteuning voor de WebSocket-en http/2-protocollen](features.md#websocket-and-http2-traffic). Houd er rekening mee dat voor zowel Application Gateway als de Kubernetes-inkomend is, er geen door de gebruiker geconfigureerde instelling is om WebSocket-ondersteuning selectief in of uit te scha kelen.
 
 De Kubernetes-implementatie YAML hieronder toont de minimale configuratie die wordt gebruikt voor het implementeren van een WebSocket-server. Dit is hetzelfde als het implementeren van een reguliere webserver:
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-Als aan alle vereisten wordt voldaan en u een Application Gateway hebt die wordt beheerd door een Kubernetes in uw AKS, zou de bovenstaande implementatie ertoe leiden dat een websockets-server wordt weer gegeven op poort 80 van het open bare IP-adres van de Application Gateway en de `ws.contoso.com` domeinen.
+Als aan alle vereisten wordt voldaan en u een Application Gateway hebt die wordt beheerd door een Kubernetes in uw AKS, resulteert de bovenstaande implementatie in een websockets-server op poort 80 van het open bare IP-adres van de Application Gateway en het `ws.contoso.com` domein.
 
 Met de volgende krul opdracht wordt de WebSocket-Server implementatie getest:
 ```sh

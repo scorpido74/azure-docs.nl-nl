@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 407a90827e856471fda33d57a14f56aefaedafc0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765733"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370777"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Zelf studie: uitvoer toevoegen aan uw Resource Manager-sjabloon
 
@@ -52,7 +52,7 @@ U bent klaar om de sjabloon te implementeren en de geretourneerde waarde te beki
 
 Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -94,7 +94,7 @@ U hebt in de laatste zes zelf studies een hoop gemaakt. Laten we even eens kijke
 
 Nu gaan we kijken naar de resource groep en de implementatie geschiedenis.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. Afhankelijk van de stappen die u hebt uitgevoerd, moet u ten minste één en mogelijk meerdere opslag accounts in de resource groep hebben.

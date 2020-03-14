@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298747"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive query's uitvoeren met Apache Hadoop in HDInsight met behulp van REST
 
@@ -33,7 +33,7 @@ Meer informatie over het gebruik van de WebHCat REST API om Apache Hive query's 
 
 De basis-URI (Uniform Resource Identifier) voor de REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI (`CLUSTERNAME.azurehdinsight.net`) is niet hoofdletter gevoelig, maar andere instanties in de URI zijn hoofdletter gevoelig.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Wanneer u een krul of andere REST-communicatie met WebHCat gebruikt, moet u de aanvragen verifiëren door de gebruikers naam en het wacht woord op te geven voor de HDInsight-cluster beheerder. De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Basic_access_authentication). Om ervoor te zorgen dat uw referenties veilig worden verzonden naar de server, moet u altijd aanvragen doen met behulp van beveiligde HTTP (HTTPS).
 
@@ -185,7 +185,7 @@ $clusterName
 
 1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query, bevat de locatie van het uitvoer bestand. in dit geval `/example/rest`. Dit adres slaat de uitvoer op in de map `example/curl` in de standaard opslag voor clusters.
 
-    U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli). Zie voor meer informatie over het gebruik van de Azure CLI met Azure Storage het document [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) .
+    U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli). Zie voor meer informatie over het gebruik van de Azure CLI met Azure Storage het document [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

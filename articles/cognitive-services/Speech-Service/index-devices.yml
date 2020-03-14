@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Documentatie voor spraak apparaten
+title: Documentatie over Speech Devices
 summary: De spraak-apparaten-SDK is een pretuned bibliotheek die gekoppeld met speciaal ontwikkelde, microfoon SDK in de matrix.
 metadata:
   title: Documentatie voor spraak apparaten-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
@@ -10,20 +10,20 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562854"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79369247"
 landingContent:
-- title: Aan de slag
+- title: Over de speech-apparaten SDK
   linkLists:
   - linkListType: overview
     links:
-    - text: Over de Speech Devices SDK
+    - text: Wat is de SDK voor spraak apparaten?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
@@ -31,9 +31,9 @@ landingContent:
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
     - text: De SDK voor spraak apparaten gebruiken (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: De SDK voor spraak apparaten gebruiken (Android)
+    - text: Speech apparaten SDK (Android) gebruiken
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Stapsgewijze handleidingen
+- title: Ontwikkelen met de SDK voor spraak apparaten
   linkLists:
   - linkListType: how-to-guide
     links:

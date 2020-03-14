@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a9dbd0d7a3b8dde45e317b624303082465f93bc9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119920"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369485"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
 De speech-service is het combineert van spraak naar tekst, tekst naar spraak en spraak omzetting in één Azure-abonnement. Het is eenvoudig om uw toepassingen, hulpprogram ma's en apparaten met de spraak- [SDK](speech-sdk-reference.md), [Speech-apparaten SDK](https://aka.ms/sdsdk-quickstart)of [rest api's](rest-apis.md)in te scha kelen.
 
 > [!IMPORTANT]
-> De speech-service is Bing Speech-API, Translator Speech en Custom Speech vervangen. Raadpleeg de _hand leidingen > migratie_ voor migratie-instructies.
+> De speech-service is vervangen Bing Speech-API en Translator Speech. Raadpleeg de _hand leidingen > migratie_ voor migratie-instructies.
 
 Deze functies vormen de spraak service. Gebruik de koppelingen in deze tabel voor meer informatie over veelvoorkomende use cases voor elke functie of blader door de API-verwijzing.
 
 | Service | Functie | Beschrijving | SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
+|---------|---------|-------------|-----|------|
 | [Spraak naar tekst](speech-to-text.md) | Spraak naar tekst | Met spraak naar tekst worden audio stromen naar tekst getranscribeerd in realtime die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Gebruik spraak-naar-tekst met [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) om gebruikers intentie af te leiden van transcribed speech en Act on Voice Commands. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Batch-transcriptie](batch-transcription.md) | Batch transcriptie maakt asynchrone spraak-naar-tekst-transcriptie met grote hoeveel heden gegevens mogelijk. Dit is een REST-gebaseerde service, die hetzelfde eind punt gebruikt als aanpassing en model beheer. | Nee | [Ja](https://westus.cris.ai/swagger/ui/index) |
 | | [Conversatie met meerdere apparaten](multi-device-conversation.md) | Meerdere apparaten of clients in een conversatie verbinden om spraak-of tekst berichten te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling| Ja | Nee |
@@ -43,7 +43,7 @@ Deze functies vormen de spraak service. Gebruik de koppelingen in deze tabel voo
 We bieden Quick starts in de populairste programmeer talen, die allemaal ontworpen zijn voor het uitvoeren van code in minder dan 10 minuten. Deze tabel bevat de populairste Quick starts voor elke functie. Gebruik de linkernavigatiebalk om extra talen en platformen te verkennen.
 
 | Spraak naar tekst (SDK) | Tekst-naar-spraak (SDK) | Vertaling (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Spraak herkennen vanuit een audio bestand](quickstarts/speech-to-text-from-file.md) | [Spraak samen te brengen in een audio bestand](quickstarts/text-to-speech-audio-file.md) | [Spraak omzetten naar tekst](quickstarts/translate-speech-to-text.md) |
 | [Spraak herkennen met een microfoon](quickstarts/speech-to-text-from-microphone.md) | [Spraak op een spreker bekunsten](quickstarts/text-to-speech.md) | [Spraak omzetten naar meerdere doel talen](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [Spraak herkennen die zijn opgeslagen in Blob Storage](quickstarts/from-blob.md) | [Asynchrone synthese voor lange-vorm audio](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Spraak-naar-spraak omzetten](quickstarts/translate-speech-to-speech.md) |

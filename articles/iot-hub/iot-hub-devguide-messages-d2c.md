@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748054"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370454"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -45,7 +45,7 @@ U kunt standaard [Event hubs integratie en sdk's](iot-hub-devguide-messages-read
 
 Er zijn twee opslag Services IoT Hub kunnen berichten verzenden naar-- [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) -en [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -accounts (ADLS Gen2). Azure Data Lake Storage accounts zijn [hiërarchische](../storage/blobs/data-lake-storage-namespace.md)opslag accounts met naam ruimten die boven op de Blob-opslag zijn gebouwd. Beide gebruiken blobs voor hun opslag.
 
-IoT Hub ondersteunt het schrijven van gegevens naar Azure Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De standaard waarde is AVRO. De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden bewerkt voor een bestaand eind punt. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide waarden zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring. U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure cli](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure Power shell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). In het volgende diagram ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
+IoT Hub ondersteunt het schrijven van gegevens naar Azure Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De standaard waarde is AVRO. De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden bewerkt voor een bestaand eind punt. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide waarden zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring. U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). In het volgende diagram ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
 
 ![Eindpunt codering van Blob-opslag](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> Als uw opslag account firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) te gebruiken (beschikbaar in geselecteerde regio's voor IOT-hubs met een beheerde service-identiteit).
+
 Als u een met Azure Data Lake Gen2 compatibel opslag account wilt maken, maakt u een nieuw v2-opslag account en selecteert u *ingeschakeld* op het veld *hiërarchische naam ruimte* op het tabblad **Geavanceerd** , zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Azure date Lake Gen2-opslag selecteren](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ Als u een met Azure Data Lake Gen2 compatibel opslag account wilt maken, maakt u
 
 Service Bus-wacht rijen en-onderwerpen die als IoT Hub-eind punten worden gebruikt, mogen geen **sessies** of **Duplicaten detectie** zijn ingeschakeld. Als een van deze opties is ingeschakeld, wordt het eind punt weer gegeven als **onbereikbaar** in de Azure Portal.
 
+> [!NOTE]
+> Als uw service bus-resource firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen om [micro soft vertrouwde eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) te gebruiken (beschikbaar in regio's selecteren voor IOT-hubs met een beheerde service-identiteit).
+
+
 ### <a name="event-hubs"></a>Event Hubs
 
 Naast het ingebouwde Event Hubs compatibele eind punt, kunt u ook gegevens routeren naar aangepaste eind punten van het type Event Hubs. 
+
+> [!NOTE]
+> Als uw event hubs-bron firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) te gebruiken (beschikbaar in bepaalde regio's voor IOT-hubs met een beheerde service-identiteit).
+
 
 ## <a name="reading-data-that-has-been-routed"></a>Gegevens lezen die zijn doorgestuurd
 
@@ -104,6 +115,7 @@ Gebruik de volgende zelf studies voor meer informatie over het lezen van een ber
 
 * Lezen uit [Service Bus onderwerpen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
 
+
 ## <a name="fallback-route"></a>Terugval route
 
 De terugval route verzendt alle berichten die niet voldoen aan de query voorwaarden voor een van de bestaande routes naar de ingebouwde Event Hubs (**berichten/gebeurtenissen**) die compatibel zijn met [Event hubs](/azure/event-hubs/). Als bericht routering is ingeschakeld, kunt u de mogelijkheid om de terugval route te gebruiken in te scha kelen. Zodra een route is gemaakt, stopt de gegevens stroom naar het ingebouwde eind punt, tenzij er een route naar dat eind punt wordt gemaakt. Als er geen routes naar het ingebouwde eind punt en een terugval route zijn ingeschakeld, worden alleen berichten die niet overeenkomen met de query voorwaarden op routes, verzonden naar het ingebouwde eind punt. Als alle bestaande routes worden verwijderd, moet er ook een terugval route worden ingeschakeld om alle gegevens bij het ingebouwde eind punt te ontvangen.
@@ -112,7 +124,7 @@ U kunt de terugval route in-of uitschakelen op de Blade voor de Azure Portal-> b
 
 ## <a name="non-telemetry-events"></a>Niet-telemetrie-gebeurtenissen
 
-Naast de telemetrie van apparaten kunnen ook bericht routering het verzenden van dubbele wijzigings gebeurtenissen, levens cyclus gebeurtenissen en gebeurtenissen voor digitale dubbele wijzigingen (in open bare preview). Als er bijvoorbeeld een route is gemaakt met een gegevens bron die is ingesteld op **dubbele wijzigings gebeurtenissen**van het apparaat, IOT hub stuurt berichten naar het eind punt dat de wijziging in het dubbele apparaat bevat. Als er een route is gemaakt met een gegevens bron die is ingesteld op **levens cyclus gebeurtenissen van apparaten**, IOT hub een bericht verzenden dat aangeeft of het apparaat is verwijderd of gemaakt. Ten slotte kan een ontwikkelaar, als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md), routes maken met een gegevens bron die is ingesteld op **digitale dubbele wijzigings gebeurtenissen** en IOT hub berichten verzendt wanneer een digitale dubbele [eigenschap](../iot-pnp/iot-plug-and-play-glossary.md) is ingesteld of gewijzigd, een [digitale dubbele ](../iot-pnp/iot-plug-and-play-glossary.md)wordt vervangen of wanneer een wijzigings gebeurtenis plaatsvindt voor het onderliggende apparaat dubbele.
+Naast de telemetrie van apparaten kunnen ook bericht routering het verzenden van dubbele wijzigings gebeurtenissen, levens cyclus gebeurtenissen en gebeurtenissen voor digitale dubbele wijzigingen (in open bare preview). Als er bijvoorbeeld een route is gemaakt met een gegevens bron die is ingesteld op **dubbele wijzigings gebeurtenissen**van het apparaat, IOT hub stuurt berichten naar het eind punt dat de wijziging in het dubbele apparaat bevat. Als er een route is gemaakt met een gegevens bron die is ingesteld op **levens cyclus gebeurtenissen van apparaten**, IOT hub een bericht verzenden dat aangeeft of het apparaat is verwijderd of gemaakt. Ten slotte kan een ontwikkelaar, als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md), routes maken met een gegevens bron die is ingesteld op **digitale dubbele wijzigings gebeurtenissen** en IOT hub berichten verzendt wanneer een digitale dubbele [eigenschap](../iot-pnp/iot-plug-and-play-glossary.md) is ingesteld of gewijzigd, een [digitaal](../iot-pnp/iot-plug-and-play-glossary.md) dubbel punt wordt vervangen of wanneer een wijzigings gebeurtenis plaatsvindt voor het onderliggende apparaat dubbele.
 
 [IOT hub integreert ook met Azure Event grid](iot-hub-event-grid.md) voor het publiceren van faxgebeurtenissen om realtime integraties en automatisering van werk stromen te ondersteunen op basis van deze gebeurtenissen. Bekijk de belangrijkste [verschillen tussen bericht Routering en Event grid](iot-hub-event-grid-routing-comparison.md) om te leren welke het beste werkt voor uw scenario.
 

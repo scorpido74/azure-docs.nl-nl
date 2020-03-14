@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297081"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -72,7 +72,7 @@ Er zijn twee ondersteunde typen streaming-opname:
 
 ## <a name="limitations"></a>Beperkingen
 
-* Streaming-opname ondersteunt geen [database cursors](/azure/kusto/management/databasecursor) of [gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/tables#create-ingestion-mapping) gegevens toewijzing wordt ondersteund. 
+* Streaming-opname ondersteunt geen [database cursors](/azure/kusto/management/databasecursor) of [gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/create-ingestion-mapping-command) gegevens toewijzing wordt ondersteund. 
 * Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Gelijktijdige opname is beperkt tot zes opname per kern. Bijvoorbeeld: voor 16 kern Sku's, zoals D14 en L16, is de Maxi maal ondersteunde belasting 96 gelijktijdige opname. Voor twee kern-Sku's, zoals D11, is de Maxi maal ondersteunde belasting 12 gelijktijdige opname.
 * De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.

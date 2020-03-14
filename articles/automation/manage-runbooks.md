@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278374"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366833"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -33,7 +33,7 @@ U kunt een nieuw runbook maken in Azure Automation met behulp van een van de Azu
 
 ### <a name="create-a-runbook-with-powershell"></a>Een runbook maken met Power shell
 
-U kunt de cmdlet [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) gebruiken om een leeg [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks)te maken. Gebruik de para meter *type* om een van de typen runbook op te geven die zijn gedefinieerd voor **New-AzAutomationRunbook**.
+U kunt de cmdlet [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) gebruiken om een leeg [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks)te maken. Gebruik de para meter `Type` om een van de typen runbook op te geven die zijn gedefinieerd voor `New-AzAutomationRunbook`.
 
 In het volgende voor beeld ziet u hoe u een nieuw leeg runbook maakt.
 
@@ -75,7 +75,7 @@ U kunt de volgende procedure gebruiken om een script bestand te importeren in Az
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>Een runbook importeert uit een scriptbestand met Windows PowerShell
 
-Gebruik de cmdlet [import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) om een script bestand te importeren als een concept Power shell workflow-runbook. Als het runbook al bestaat, mislukt het importeren tenzij u de para meter *Force* gebruikt met de cmdlet.
+Gebruik de cmdlet [import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) om een script bestand te importeren als een concept Power shell workflow-runbook. Als het runbook al bestaat, mislukt het importeren tenzij u de para meter `Force` gebruikt met de cmdlet.
 
 In het volgende voor beeld ziet u hoe u een script bestand importeert in een runbook.
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Een runbook testen
 
-Wanneer u een runbook test, wordt de [concept versie](#publish-a-runbook) uitgevoerd en de acties die worden uitgevoerd, worden voltooid. Er is geen taak geschiedenis gemaakt, maar de [uitvoer](automation-runbook-output-and-messages.md#output-stream) -en [waarschuwings-en fout](automation-runbook-output-and-messages.md#message-streams) stromen worden weer gegeven in het deel venster test uitvoer. Berichten naar de [uitgebreide stroom](automation-runbook-output-and-messages.md#message-streams) worden alleen weer gegeven in het deel venster uitvoer als de variabele *VerbosePreference* ] (Automation-runbook-output-and-messages. MD # Preferences-Varia bles) is ingesteld om **door te gaan**.
+Wanneer u een runbook test, wordt de [concept versie](#publish-a-runbook) uitgevoerd en de acties die worden uitgevoerd, worden voltooid. Er is geen taak geschiedenis gemaakt, maar de [uitvoer](automation-runbook-output-and-messages.md#output-stream) -en [waarschuwings-en fout](automation-runbook-output-and-messages.md#message-streams) stromen worden weer gegeven in het deel venster test uitvoer. Berichten naar de [uitgebreide stroom](automation-runbook-output-and-messages.md#message-streams) worden alleen in het deel venster uitvoer weer gegeven als de `VerbosePreference` variabele] (Automation-runbook-output-and-messages. MD # voorkeurs variabelen) is ingesteld om door te gaan.
 
 Hoewel de concept versie wordt uitgevoerd, wordt het runbook nog steeds normaal uitgevoerd en worden alle acties uitgevoerd voor resources in de omgeving. Daarom moet u runbooks alleen testen op niet-productie resources.
 

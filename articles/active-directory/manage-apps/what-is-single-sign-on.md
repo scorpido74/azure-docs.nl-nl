@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24a4209869d4c47f8ac73e250699ec55d006296
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253401"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366067"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Eenmalige aanmelding voor toepassingen in Azure Active Directory
 
@@ -46,7 +46,7 @@ De volgende tabel geeft een overzicht van de methoden voor eenmalige aanmelding,
 | [SSO](#saml-sso) | cloud en on-premises | Kies indien mogelijk SAML voor bestaande toepassingen die geen gebruikmaken van OpenID Connect Connect of OAuth. SAML werkt voor toepassingen die worden geverifieerd met een van de SAML-protocollen.|
 | [Op basis van wacht woorden](#password-based-sso) | cloud en on-premises | Kies een wacht woord op basis van het tijdstip waarop de toepassing wordt geverifieerd met de gebruikers naam en het wacht woord. Wachtwoord gebaseerde eenmalige aanmelding kunt u beveiligde toepassingen wachtwoorden worden opgeslagen en opnieuw afspelen met behulp van een uitbreiding van web browser of mobiele app. Deze methode maakt gebruik van het bestaande aanmeldingsproces geleverd door de toepassing, maar Hiermee kan een beheerder om de wachtwoorden te beheren. |
 | [Btrieve](#linked-sign-on) | cloud en on-premises | Kies gekoppelde aanmelding wanneer de toepassing is geconfigureerd voor eenmalige aanmelding in een andere ID-provider service. Deze optie toevoegen niet eenmalige aanmelding aan de toepassing. De toepassing mogelijk echter al eenmalige aanmelding geïmplementeerd met behulp van een andere service, zoals Active Directory Federation Services.|
-| [Uitgeschakeld](#disabled-sso) | cloud en on-premises | Kies uitgeschakelde eenmalige aanmelding wanneer de app niet gereed is om te worden geconfigureerd voor eenmalige aanmelding. Gebruikers moeten hun gebruikersnaam en wachtwoord invoeren telkens wanneer ze deze toepassing starten.|
+| [Uitgeschakeld](#disabled-sso) | cloud en on-premises | Kies uitgeschakelde eenmalige aanmelding wanneer de app niet gereed is om te worden geconfigureerd voor eenmalige aanmelding. Deze modus is de standaard instelling bij het maken van de app.|
 | [Geïntegreerde Windows-verificatie (IWA)](#integrated-windows-authentication-iwa-sso) | alleen on-premises | Kies IWA eenmalige aanmelding voor toepassingen die gebruikmaken van [geïntegreerde Windows-authenticatie (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)of claim bewuste toepassingen. Voor IWA gebruiken de connectors van de toepassings proxy Kerberos-beperkte delegering (KCD) om gebruikers te verifiëren voor de toepassing. |
 | [Op basis van koptekst](#header-based-sso) | alleen on-premises | Gebruik op basis van een koptekst van eenmalige aanmelding wanneer de toepassing headers voor verificatie gebruikt. Voor eenmalige aanmelding op basis van een header is PingAccess voor Azure AD vereist. Application Proxy maakt gebruik van Azure AD de gebruiker te verifiëren en vervolgens doorgegeven verkeer via de connector-service.  |
 
@@ -146,6 +146,8 @@ Gebruik uitgeschakeld modus voor eenmalige aanmelding:
 - Als u niet klaar bent om deze toepassing integreren met Azure AD eenmalige aanmelding, of
 - Als u andere aspecten van de toepassing test of
 - Als een beveiligingslaag aan een on-premises toepassing die zijn vereist om gebruikers te verifiëren. En is uitgeschakeld, wordt de gebruiker moet worden geverifieerd.
+
+Houd er rekening mee dat als u de toepassing voor met SP geïnitieerde op SAML gebaseerde eenmalige aanmelding hebt geconfigureerd en u de SSO-modus wijzigt in uitschakelen, niet stopt dat gebruikers zich niet meer kunnen aanmelden bij de toepassing buiten de MyApps-Portal. Als u dit wilt doen, moet u [de mogelijkheid voor gebruikers om zich aan te melden, uitschakelen](disable-user-sign-in-portal.md)
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>Geïntegreerde Windows-verificatie (IWA) eenmalige aanmelding
 

@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651335"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369774"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
 
 > [!IMPORTANT] 
 > Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
@@ -38,9 +38,9 @@ Para meters zijn hoofdletter gevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| entitiesDefinitionUri | Pad naar een JSON-of CSV-bestand met alle doel tekst die moet worden vergeleken. Deze entiteits definitie wordt gelezen aan het begin van het uitvoeren van een Indexeer functie. eventuele updates van dit bestand worden uitgevoerd totdat de volgende keer wordt uitgevoerd. Deze configuratie moet toegankelijk zijn via HTTPS. Zie de aangepaste indeling voor de [entiteits definitie](#custom-entity-definition-format) hieronder voor het verwachte CSV-of JSON-schema.|
+| entitiesDefinitionUri    | Pad naar een JSON-of CSV-bestand met alle doel tekst die moet worden vergeleken. Deze entiteits definitie wordt gelezen aan het begin van het uitvoeren van een Indexeer functie. eventuele updates van dit bestand worden uitgevoerd totdat de volgende keer wordt uitgevoerd. Deze configuratie moet toegankelijk zijn via HTTPS. Zie de aangepaste indeling voor de [entiteits definitie](#custom-entity-definition-format) hieronder voor het verwachte CSV-of JSON-schema.|
 |inlineEntitiesDefinition | Definities van de inline JSON-entiteit. Deze para meter vervangt de para meter entitiesDefinitionUri indien aanwezig. Er kan niet meer dan 10 KB aan configuratie worden meegeleverd. Zie de definitie van de [aangepaste entiteit](#custom-entity-definition-format) hieronder voor het verwachte JSON-schema. |
-|defaultLanguageCode |  Beschrijving De taal code van de invoer tekst die wordt gebruikt voor het Tokenize en afbakenen van invoer tekst. De volgende talen worden ondersteund: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is Engels (`en`). Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.  |
+|defaultLanguageCode |    Beschrijving De taal code van de invoer tekst die wordt gebruikt voor het Tokenize en afbakenen van invoer tekst. De volgende talen worden ondersteund: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is Engels (`en`). Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.  |
 
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
@@ -48,13 +48,13 @@ Para meters zijn hoofdletter gevoelig.
 | Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | tekst          | De tekst die moet worden geanalyseerd.          |
-| languageCode  | Optioneel. De standaardwaarde is `"en"`.  |
+| languageCode    | Optioneel. De standaardwaarde is `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
 
-| Uitvoer naam     | Beschrijving                   |
+| Uitvoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | Rijg | Een matrix met objecten die informatie bevatten over de gevonden overeenkomsten en gerelateerde meta gegevens. Elk van de geïdentificeerde entiteiten bevat mogelijk de volgende velden:  <ul> <li> *naam*: de entiteit op het hoogste niveau dat is geïdentificeerd. De entiteit vertegenwoordigt het ' genormaliseerde ' formulier. </li> <li> *id*: een unieke id voor de entiteit zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *Beschrijving*: beschrijving van de entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit. </li> <li> *type:* Entiteits type zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *subtype:* Subtype van entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit.</li>  <li> *matchs*: verzameling waarmee de overeenkomsten voor die entiteit worden beschreven op de bron tekst. Elke overeenkomst heeft de volgende leden: </li> <ul> <li> *tekst*: de onbewerkte tekst komt overeen met het bron document. </li> <li> *Offset*: de locatie waar de overeenkomst is gevonden in de tekst. </li> <li> *Length*: de lengte van de overeenkomende tekst. </li> <li> *matchDistance*: het aantal tekens dat anders is dan dit komt overeen met de oorspronkelijke entiteits naam of-alias.  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ De onderstaande tabellen bevatten meer informatie over de verschillende configur
 In sommige gevallen is het handiger om de lijst met aangepaste entiteiten op te geven, zodat deze rechtstreeks overeenkomt met de vaardigheids definitie. In dat geval kunt u een vergelijk bare JSON-indeling gebruiken die hierboven wordt beschreven, maar deze wordt in de vaardigheids definitie aangegeven.
 Alleen configuraties met een grootte van minder dan 10 KB (geserialiseerde grootte) kunnen inline worden gedefinieerd. 
 
-##  <a name="sample-definition"></a>Voorbeeld definitie
+##    <a name="sample-definition"></a>Voorbeeld definitie
 
 Een voor beeld van een vaardigheids definitie die gebruikmaakt van een inline-indeling, wordt hieronder weer gegeven:
 
@@ -231,7 +231,7 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
 
 ```
 
-##  <a name="sample-input"></a>Voorbeeld invoer
+##    <a name="sample-input"></a>Voorbeeld invoer
 
 ```json
 {
@@ -248,7 +248,7 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
 }
 ```
 
-##  <a name="sample-output"></a>Voorbeelduitvoer
+##    <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
   { 
@@ -295,6 +295,12 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>Fouten en waarschuwingen
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Waarschuwing: de maximale capaciteit voor treffers is bereikt. alle andere dubbele treffers worden overgeslagen.
+
+Deze waarschuwing wordt verzonden als het aantal gedetecteerde overeenkomsten groter is dan het toegestane maximum. In dit geval worden er ook dubbele overeenkomsten beëindigd. Als dit niet acceptabel is, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat we u kunnen helpen met uw individuele use-case.
 
 ## <a name="see-also"></a>Zie ook
 

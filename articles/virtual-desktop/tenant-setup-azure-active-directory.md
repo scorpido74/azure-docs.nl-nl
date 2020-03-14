@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a70e52771828de6cc9fad7998097d70c28a64fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9f9f7f709d31967e892900ccb25657a5963c0379
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238816"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370216"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelf studie: een Tenant maken in Windows Virtual Desktop
 
@@ -82,7 +82,7 @@ De toepassingsrol van de TenantCreator toewijzen:
 3. Selecteer **Gebruikers en groepen**. U ziet mogelijk dat de beheerder die toestemming heeft verleend voor de toepassing, al wordt vermeld met de **standaard Access** -rol toegewezen. Dit is niet voldoende voor het maken van een virtuele bureau blad-Tenant van Windows. Ga door met de volgende instructies om de rol **TenantCreator** toe te voegen aan een gebruiker.
    
    ![Een scherm opname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfs toepassing Windows Virtual Desktop. In de scherm opname ziet u slechts één toewijzing, die is ingesteld op standaard toegang.](media/tenant-default-access.png)
-4. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** op de Blade **toewijzing toevoegen** .
+4. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** op het tabblad **toewijzing toevoegen** .
 5. Zoek naar een gebruikers account dat uw Windows Virtual Desktop-Tenant maakt. Voor de eenvoud kan dit het account van de globale beheerder zijn.
    - Als u een micro soft-ID-provider gebruikt, zoals contosoadmin@live.com of contosoadmin@outlook.com, kunt u zich mogelijk niet aanmelden bij Windows virtueel bureau blad. U kunt het beste een domein-specifiek account gebruiken, zoals admin@contoso.com of admin@contoso.onmicrosoft.com.
 

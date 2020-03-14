@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d9650db601426cef195c27e6eb874ec26cf13bb8
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 17cd57fbcf9b1c14fb275a070bdefdd1282c4d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137676"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370522"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Een BLOB-moment opname maken en beheren in .NET
 
 Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt uitgevoerd. Moment opnamen zijn handig voor het maken van back-ups van blobs. In dit artikel wordt beschreven hoe u BLOB-moment opnamen maakt en beheert met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="about-blob-snapshots"></a>Over blob-moment opnamen
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Een moment opname van een blob is identiek aan de basis-blob, behalve dat de BLOB-URI een **datum/tijd** -waarde heeft toegevoegd aan de BLOB-URI om het tijdstip aan te geven waarop de moment opname is gemaakt. Als er bijvoorbeeld een URI voor de pagina-blob is `http://storagesample.core.blob.windows.net/mydrives/myvhd`, is de moment opname-URI vergelijkbaar met `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
 

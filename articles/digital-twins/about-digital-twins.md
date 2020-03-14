@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863237"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370896"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Overzicht van Azure Digital Twins
+# <a name="overview-of-azure-digital-twins-preview"></a>Overzicht van Azure Digital Apparaatdubbels preview
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Apparaatdubbels preview is een Azure IoT-service waarmee u uitgebreide modellen van de fysieke omgeving kunt maken. Er kunnen grafieken voor ruimtelijke intelligentie mee worden gemaakt voor het modelleren van de relaties en interacties tussen personen, ruimten en apparaten.
 
@@ -51,7 +53,7 @@ Denk eens aan een slimme app voor nutsvoorzieningen waarbij verschillende elektr
 
 ### <a name="digital-twin-object-models"></a>Digital Twin-objectmodellen
 
-[Digital Twin-objectmodellen](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) zijn vooraf gedefinieerde apparaatprotocollen en gegevensschema's. Hiermee worden de domeinspecifieke behoeften van uw oplossing met elkaar in overeenstemming gebracht om het ontwikkelen te versnellen en vereenvoudigen.
+[Digital Twin-objectmodellen](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) zijn vooraf gedefinieerde apparaatprotocollen en gegevensschema's. Ze uitlijnen de domein-specifieke behoeften van uw oplossing om de ontwikkeling te versnellen en te vereenvoudigen.
 
 Een room-toepassing kan bijvoorbeeld gebruikmaken van vooraf gedefinieerde ruimte typen zoals campus, gebouw, vloer en kamer.
 

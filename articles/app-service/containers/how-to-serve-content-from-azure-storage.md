@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121410"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297914"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Inhoud van Azure Storage in App Service in Linux verzenden
 
@@ -25,7 +25,7 @@ In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan App S
 - [Azure cli](/cli/azure/install-azure-cli) (2.0.46 of hoger).
 - Een bestaande [app service in de Linux-app](https://docs.microsoft.com/azure/app-service/containers/).
 - Een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- Een [Azure-bestands share en-map](https://docs.microsoft.com/azure/storage/common/storage-azure-cli#create-and-manage-file-shares).
+- Een [Azure-bestands share en-map](../../storage/files/storage-how-to-use-files-cli.md).
 
 
 ## <a name="limitations-of-azure-storage-with-app-service"></a>Beperkingen van Azure Storage met App Service

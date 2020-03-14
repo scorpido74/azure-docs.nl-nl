@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253736"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368805"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
 
@@ -33,10 +33,10 @@ Azure Automation ondersteunt drie typen broncode beheer:
 
 * Een broncode beheer bibliotheek (GitHub of Azure opslag plaatsen)
 * Een [uitvoeren als-account](manage-runas-account.md)
-* De [meest recente Azure-modules](automation-update-azure-modules.md) in uw Automation-account, met inbegrip van de module **AZ. accounts** (AZ module equivalent van AzureRM. profile)
+* De [meest recente Azure-modules](automation-update-azure-modules.md) in uw Automation-account, met inbegrip van de module `Az.Accounts` (AZ module equivalent van `AzureRM.Profile`)
 
 > [!NOTE]
-> Synchronisatie taken van broncode beheer worden uitgevoerd onder het Automation-account van de gebruiker en worden gefactureerd tegen hetzelfde aantal als andere Automation-taken.
+> Synchronisatie taken voor broncode beheer worden uitgevoerd onder het Automation-account van de gebruiker en worden gefactureerd tegen hetzelfde aantal als andere Automation-taken.
 
 ## <a name="configuring-source-control"></a>Broncode beheer configureren
 
@@ -54,15 +54,15 @@ Gebruik deze procedure voor het configureren van broncode beheer met behulp van 
 
 3. Er wordt een browser venster geopend en u wordt gevraagd om u aan te melden. Volg de aanwijzingen om de verificatie te volt ooien.
 
-4. Op de pagina **overzicht van broncode beheer** gebruikt u de velden om de eigenschappen van de bron besturing die hieronder zijn gedefinieerd, in te vullen. Klik op **Opslaan** wanneer u klaar bent. 
+4. Op de pagina overzicht van broncode beheer gebruikt u de velden om de eigenschappen van de bron besturing die hieronder zijn gedefinieerd, in te vullen. Klik op **Opslaan** wanneer u klaar bent. 
 
     |Eigenschap  |Beschrijving  |
     |---------|---------|
     |Naam van broncode beheer     | Een beschrijvende naam voor het broncode beheer. Deze naam mag alleen letters en cijfers bevatten.        |
-    |Type broncode beheer     | Type broncode beheer mechanisme. De volgende opties zijn beschikbaar:</br> GitHub</br>Azure-opslag plaatsen (Git)</br> Azure Repos (TFVC)        |
+    |Type broncode beheer     | Type broncode beheer mechanisme. De volgende opties zijn beschikbaar:</br> * GitHub</br>* Azure opslag plaatsen (Git)</br> * Azure opslag plaatsen (TFVC)        |
     |Opslagplaats     | De naam van de opslag plaats of het project. De eerste 200-opslag plaatsen worden opgehaald. Als u wilt zoeken naar een opslag plaats, typt u de naam in het veld en klikt u op **zoeken op github**.|
     |Branche     | Vertakking waaruit de bron bestanden moeten worden gehaald. Vertakkings doelen zijn niet beschikbaar voor het TFVC-broncode beheer type.          |
-    |Mappad     | Map die de runbooks bevat die moeten worden gesynchroniseerd, bijvoorbeeld/Runbooks. Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.        |
+    |Mappad     | De map die de runbooks bevat die moeten worden gesynchroniseerd, bijvoorbeeld **/Runbooks**. Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.        |
     |Automatische synchronisatie<sup>1</sup>     | Instelling waarmee automatische synchronisatie wordt in-of uitgeschakeld wanneer een door Voer in de bron beheer opslagplaats wordt gemaakt.        |
     |Runbook publiceren     | Instelling van op als runbooks automatisch worden gepubliceerd na synchronisatie vanuit broncode beheer, en anders uit.           |
     |Beschrijving     | Tekst waarin aanvullende details over het broncode beheer worden opgegeven.        |
@@ -72,7 +72,7 @@ Gebruik deze procedure voor het configureren van broncode beheer met behulp van 
    ![Samen vatting van broncode beheer](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Uw aanmelding voor uw opslag plaats voor broncode beheer kan afwijken van uw aanmelding voor de Azure Portal. Zorg ervoor dat u bent aangemeld met het juiste account voor de bron beheer opslagplaats bij het configureren van broncode beheer. Als er een twijfel is, opent u een nieuw tabblad in uw browser, meldt u zich af bij visualstudio.com of github.com en probeert u opnieuw verbinding te maken met broncode beheer.
+> De aanmelding voor uw opslag plaats voor broncode beheer kan afwijken van uw aanmeldings gegevens voor de Azure Portal. Zorg ervoor dat u bent aangemeld met het juiste account voor de bron beheer opslagplaats bij het configureren van broncode beheer. Als er een twijfel is, opent u een nieuw tabblad in uw browser, meldt u zich af bij **VisualStudio.com** of **github.com**en probeert u opnieuw verbinding te maken met broncode beheer.
 
 ### <a name="configure-source-control----powershell"></a>Broncode beheer configureren--Power shell
 
@@ -109,13 +109,13 @@ In de volgende tabel worden de minimale machtigingen voor PAT gedefinieerd die z
 
 |Bereik  |Beschrijving  |
 |---------|---------|
-|**opslagplaats**     |         |
-|opslag plaats: status     | Toegangs status voor door voeren         |
-|repo_deployment      | Toegangs implementatie status         |
-|public_repo     | Open bare opslag plaatsen openen         |
-|**beheerder: repo_hook**     |         |
-|schrijven: repo_hook     | Opslag plaats-hooks schrijven         |
-|lezen: repo_hook|Opslag plaats hooks lezen|
+|**`repo`**     |         |
+|`repo:status`     | Toegangs status voor door voeren         |
+|`repo_deployment`      | Toegangs implementatie status         |
+|`public_repo`     | Open bare opslag plaatsen openen         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | Opslag plaats-hooks schrijven         |
+|`read:repo_hook`|Opslag plaats hooks lezen|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimale machtigingen voor PAT voor Azure opslag plaatsen
 
@@ -134,9 +134,9 @@ In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die z
 
 ## <a name="synchronizing"></a>Momenteel
 
-Ga als volgt te werk om te synchroniseren met broncode beheer. 
+Volg deze stappen om te synchroniseren met broncode beheer. 
 
-1. Selecteer de bron in de tabel op de pagina **broncode beheer** . 
+1. Selecteer de bron in de tabel op de pagina broncode beheer. 
 
 2. Klik op **synchronisatie starten** om het synchronisatie proces te starten. 
 
@@ -178,7 +178,7 @@ Ga als volgt te werk om te synchroniseren met broncode beheer.
 
     ```
 
-6. Aanvullende logboek registratie is beschikbaar door **alle logboeken** te selecteren op de pagina overzicht van de **synchronisatie taak van broncode beheer** . Deze aanvullende logboek vermeldingen kunnen u helpen bij het oplossen van problemen die zich kunnen voordoen bij het gebruik van broncode beheer.
+6. Aanvullende logboek registratie is beschikbaar door **alle logboeken** te selecteren op de pagina overzicht van de synchronisatie taak van broncode beheer. Deze aanvullende logboek vermeldingen kunnen u helpen bij het oplossen van problemen die zich kunnen voordoen bij het gebruik van broncode beheer.
 
 ## <a name="disconnecting-source-control"></a>Verbinding met broncode beheer verbreken
 
@@ -188,11 +188,11 @@ De verbinding met een broncode beheer bibliotheek verbreken:
 
 2. Selecteer het bron beheer mechanisme dat u wilt verwijderen. 
 
-3. Klik op de pagina **overzicht van broncode beheer** op **verwijderen**.
+3. Klik op de pagina overzicht van broncode beheer op **verwijderen**.
 
 ## <a name="handling-encoding-issues"></a>Coderings problemen verwerken
 
-Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie [algemene oorzaken van coderings problemen](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues) voor meer informatie over deze situatie
+Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="updating-the-pat"></a>De PAT bijwerken
 

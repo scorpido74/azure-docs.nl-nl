@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283522"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368193"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -154,15 +154,30 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
 
 1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully QUALIFIED domain name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang in het voor beeld \<FQDN-> met de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<gebruikers naam > en \<wacht woord > door de SSH-gebruikers naam en het wacht woord voor de virtuele machine.
 
+    > [!IMPORTANT]
+    > De volgende Azure-regio's bieden geen ondersteuning voor het koppelen van een virtuele machine met behulp van het open bare IP-adres van de VM. Gebruik in plaats daarvan de Azure Resource Manager-ID van de virtuele machine met de para meter `resource_id`:
+    >
+    > * US - oost
+    > * US - west 2
+    > * US - zuid-centraal
+    >
+    > De resource-ID van de virtuele machine kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en de naam van de virtuele machine met de volgende teken reeks notatie: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`.
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -198,6 +213,15 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
 
 1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. Het volgende voorbeeld wordt de SDK te koppelen van een cluster aan uw werkruimte. Vervang in het voor beeld \<clustername > door de naam van uw cluster. Vervang \<gebruikers naam > en \<wacht woord > door de SSH-gebruikers naam en het wacht woord voor het cluster.
 
+    > [!IMPORTANT]
+    > De volgende Azure-regio's bieden geen ondersteuning voor het koppelen van een HDInsight-cluster met behulp van het open bare IP-adres van het cluster. Gebruik in plaats daarvan de Azure Resource Manager-ID van het cluster met de para meter `resource_id`:
+    >
+    > * US - oost
+    > * US - west 2
+    > * US - zuid-centraal
+    >
+    > De resource-ID van het cluster kan worden samengesteld met de abonnements-ID, de naam van de resource groep en de cluster naam met de volgende teken reeks notatie: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`.
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -234,9 +263,9 @@ Azure Batch wordt gebruikt voor het efficiënt uitvoeren van grootschalige paral
 
 Als u Azure Batch als een reken doel wilt koppelen, moet u de Azure Machine Learning SDK gebruiken en de volgende informatie opgeven:
 
--   **Azure batch Compute name**: een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
--   **Azure batch account naam**: de naam van het Azure batch account
--   **Resource groep**: de resource groep die het Azure batch-account bevat.
+-    **Azure batch Compute name**: een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
+-    **Azure batch account naam**: de naam van het Azure batch account
+-    **Resource groep**: de resource groep die het Azure batch-account bevat.
 
 De volgende code laat zien hoe u Azure Batch als een reken doel koppelt:
 

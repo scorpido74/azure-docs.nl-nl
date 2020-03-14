@@ -1,22 +1,22 @@
 ---
-title: 'Zelf studie: WAF-beleid maken voor Azure front-deur-Azure Portal'
-description: In deze zelf studie leert u hoe u een WAF-beleid (Web Application firewall) kunt maken met behulp van de Azure Portal.
+title: 'Zelf studie: WAF-beleid (Web Application firewall) maken voor Azure front-deur-Azure Portal'
+description: In deze zelf studie leert u hoe u een WAF-beleid kunt maken met behulp van de Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2e4987273d0ecdc258a3134b89ffc3406e25e97c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186730"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137574"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Zelf studie: een firewall beleid voor webtoepassingen maken op de voor deur van Azure met behulp van de Azure Portal
 
-In deze zelf studie leert u hoe u een basis beleid voor Azure Web Application firewall (WAF) maakt en dit toepast op een front-end-host op Azure front deur.
+In deze zelf studie leert u hoe u een basis beleid voor Azure Web Application firewall (WAF) maakt en hoe u het beleid toepast op een front-end-host op Azure front deur.
 
 In deze zelfstudie leert u het volgende:
 
@@ -27,20 +27,21 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md). 
+Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md).
 
 ## <a name="create-a-web-application-firewall-policy"></a>Een firewall beleid voor webtoepassingen maken
 
-Maak eerst een basis-WAF-beleid met beheerde standaard regelset (DRS) met behulp van de portal. 
+Maak eerst een basis-WAF-beleid met beheerde standaard regelset (DRS) met behulp van de portal.
 
-1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken**> zoek naar **WAF**> Selecteer **Web application firewall (preview)** > Selecteer **Create**.
+1. Selecteer in de linkerbovenhoek van het scherm **een resource maken**> zoek naar **WAF**> Selecteer * * Web application firewall * * > Selecteer **Create**.
 2. Voer op het tabblad **basis beginselen** van de pagina **een WAF-beleid maken** de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer vervolgens **controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
+    | Beleid voor            |Selecteer globale WAF (front-deur).|
     | Abonnement            |Selecteer de naam van uw front-deur abonnement.|
     | Resourcegroep          |Selecteer de naam van de resource groep voor de voor deur.|
-    | Beleids naam             |Voer een unieke naam in voor uw WAF-beleid.|
+    | Naam van beleid             |Voer een unieke naam in voor uw WAF-beleid.|
 
    ![Een WAF-beleid maken](../media/waf-front-door-create-portal/basic.png)
 

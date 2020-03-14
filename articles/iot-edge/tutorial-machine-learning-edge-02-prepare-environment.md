@@ -4,16 +4,16 @@ description: 'Zelf studie: uw omgeving voorbereiden voor het ontwikkelen en impl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944283"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296796"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelf studie: een omgeving instellen voor machine learning op IoT Edge
 
@@ -189,12 +189,13 @@ Als onderdeel van het maken van de IoT-hub, heeft het script dat we in de vorige
 
 1. Vouw de sectie **opslag** uit:
 
-   ![Controleren of de turbofandevicestorage is in de lijst met aangepaste eind punten](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Controleren of de turbofanDeviceStorage is in de lijst met aangepaste eind punten](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   We zien **turbofandevicestorage** in de lijst met aangepaste eind punten. Houd rekening met de volgende kenmerken over dit eind punt:
+   We zien **turbofanDeviceStorage** in de lijst met aangepaste eind punten. Houd rekening met de volgende kenmerken over dit eind punt:
 
    * Deze verwijst naar de BLOB storage-container die u hebt gemaakt met de naam `devicedata`, zoals aangegeven door de **container naam**.
    * De **filename-indeling** heeft partitie als laatste element in de naam. Deze indeling is handiger voor de bestands bewerkingen die we gaan uitvoeren met Azure Notebooks verderop in de zelf studie.
+   * De **status** ervan moet in orde zijn.
 
 1. Selecteer het tabblad **routes** .
 

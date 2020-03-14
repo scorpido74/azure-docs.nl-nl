@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299274"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
@@ -163,7 +163,7 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 Nu kunt u een verbinding tot stand brengen met Azure Database for PostgreSQL zoals u gewend bent:
 
 ```shell
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres"
+psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
 U bent nu geverifieerd voor uw PostgreSQL-server met behulp van Azure AD-verificatie.

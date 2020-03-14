@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264947"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370373"
 ---
 # <a name="public-preview-service-limits"></a>Servicebeperkingen van de openbare preview
 
-Tijdens de open bare preview heeft Azure Digital Apparaatdubbels het volgende tijdelijke abonnement, exemplaar en frequentie limieten.
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Deze beperkingen bestaan om het leren van de nieuwe service en de vele functies te vereenvoudigen.
-
-> [!NOTE]
-> Deze limieten worden verhoogd of verwijderd door algemene Beschik baarheid (GA).
+Tijdens de open bare preview heeft Azure Digital Apparaatdubbels het volgende tijdelijke abonnement, exemplaar en frequentie limiet voor bestaande klanten. Deze beperkingen bestaan voor het vereenvoudigen van het leren over de nieuwe service en de vele functies en worden verhoogd of verwijderd door algemene Beschik baarheid (GA).
 
 ## <a name="per-subscription-limits"></a>Limieten per abonnement
 
-Tijdens de open bare preview-periode kan elk Azure-abonnement slechts één Azure Digital Apparaatdubbels-exemplaar tegelijk maken of uitvoeren.
-
-> [!TIP]
-> Als u uw exemplaar verwijdert, kunt u een nieuwe maken.
+Tijdens de open bare preview-periode kan elk Azure-abonnement slechts één Azure Digital Apparaatdubbels-exemplaar tegelijk maken of uitvoeren. Als u uw exemplaar verwijdert, kunt u een nieuwe maken.
 
 ## <a name="per-instance-limits"></a>Limieten per exemplaar
 
@@ -71,7 +65,7 @@ Met de volgende limieten stelt u het totale aantal door de gebruiker gedefinieer
 De volgende limieten zijn het totaal aantal berichten dat uw apparaten kunnen verzenden naar uw Azure Digital Apparaatdubbels-exemplaar:
 
 - 100 berichten per seconde op alle apparaten
--   25 berichten per seconde per apparaat
+-    25 berichten per seconde per apparaat
 
 ## <a name="next-steps"></a>Volgende stappen
 

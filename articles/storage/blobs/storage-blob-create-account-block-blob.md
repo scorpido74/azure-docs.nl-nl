@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6dd5d98b559d49656c44b75e86398a017d923203
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933188"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371083"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
 Met het soort BlockBlobStorage-account kunt u blok-blobs maken met Premium-prestatie kenmerken. Dit type opslag account is geoptimaliseerd voor workloads met hoge transactie tarieven of voor zeer snelle toegangs tijden. In dit artikel wordt beschreven hoe u een BlockBlobStorage-account maakt met behulp van de Azure Portal, de Azure CLI of Azure PowerShell.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Zie [overzicht van Azure-opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over BlockBlobStorage-accounts.
 
@@ -25,15 +27,15 @@ Zie [overzicht van Azure-opslag accounts](https://docs.microsoft.com/azure/stora
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Geen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Voor dit procedure-artikel is de Azure PowerShell AZ versie 1.2.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om uw huidige versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt zich aanmelden bij Azure en Azure CLI-opdrachten uitvoeren op een van de volgende twee manieren:
 
@@ -58,11 +60,11 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount`-opdracht en volg de instructies op het scherm om te verifiëren.
 
@@ -70,7 +72,7 @@ Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount`-opdracht en volg d
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
@@ -84,7 +86,7 @@ az login
 
 ## <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azure Portal:
 
 1. Selecteer in de Azure Portal **alle services** > de **opslag** categorie > **opslag accounts**.
@@ -108,7 +110,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    |Veld     |Waarde  |
    |---------|---------|
    |**Prestaties**    |  Selecteer **Premium**.   |
-   |**Type account**    | Selecteer **BlockBlobStorage**.      |
+   |**Soort account**    | Selecteer **BlockBlobStorage**.      |
    |**Replicatie**    |  Behoud de standaard instelling van **lokaal redundante opslag (LRS)** .      |
 
    ![Geeft een portal-gebruikers interface weer voor het maken van een blok-Blob-opslag account](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
@@ -117,7 +119,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
 
 1. Selecteer **Maken**.
 
-## <a name="azure-powershelltabazure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -153,7 +155,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moet u eerst Azure CLI v installeren. 2.0.46 of een latere versie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 

@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van Azure Portal of CLI om metrisc
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249007"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369383"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
@@ -136,7 +136,7 @@ In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Maak metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-enable-template.md).
+- [Maak metrische waarschuwingen met behulp van Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md).
 - [Begrijpen hoe metrische waarschuwingen werken](alerts-metric-overview.md).
 - [Begrijpen hoe metrische waarschuwingen met dynamische drempel waarden werken](alerts-dynamic-thresholds.md).
 - [Informatie over het web Hook-schema voor metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

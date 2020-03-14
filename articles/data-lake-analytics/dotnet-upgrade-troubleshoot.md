@@ -1,6 +1,6 @@
 ---
-title: Problemen met de Azure Data Lake Analytics U-SQL-taak fouten oplossen vanwege een upgrade van .NET 4.7.2
-description: Problemen met U-SQL-taak fouten oplossen vanwege de upgrade naar .NET 4.7.2.
+title: Problemen met de Azure Data Lake Analytics U-SQL-taak fouten oplossen vanwege .NET Framework 4.7.2-upgrade
+description: Problemen met U-SQL-taak fouten oplossen vanwege de upgrade naar .NET Framework 4.7.2.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873230"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213588"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wordt bijgewerkt naar de .NET Framework v-4.7.2
 
@@ -22,12 +22,12 @@ De Azure Data Lake Analytics standaard runtime wordt bijgewerkt van .NET Framewo
 
 Deze upgrade van .NET Framework 4.5.2 naar versie 4.7.2 betekent dat de .NET Framework geïmplementeerd in een U-SQL-runtime (de standaard runtime) nu altijd 4.7.2 is. Er is geen side-by-side optie voor .NET Framework versies.
 
-Nadat deze upgrade naar .NET 4.7.2 is voltooid, wordt de beheerde code van het systeem uitgevoerd als versie 4.7.2. door de gebruiker geleverde Bibliotheken, zoals de U-SQL-assembly's, worden uitgevoerd in de neerwaarts compatibele modus die geschikt is voor de versie die de assembly heeft gegenereerd. zo.
+Nadat deze upgrade naar .NET Framework 4.7.2 is voltooid, wordt de beheerde code van het systeem uitgevoerd als versie 4.7.2. de door de gebruiker verschafte Bibliotheken, zoals de U-SQL-assembly's, worden uitgevoerd in de neerwaarts compatibele modus die geschikt is voor de versie die de assembly heeft gegenereerd voor.
 
 - Als uw assembly-Dll's worden gegenereerd voor versie 4.5.2, behandelt het geïmplementeerde Framework deze als 4.5.2-Bibliotheken, voorzien van (met enkele uitzonde ringen) 4.5.2 semantiek.
 - U kunt nu aangepaste U-SQL-assembly's gebruiken die gebruikmaken van versie 4.7.2-functies, als u de .NET Framework 4.7.2 richt.
 
-Vanwege deze upgrade naar .NET 4.7.2 is het mogelijk om uw U-SQL-taken die gebruikmaken van aangepaste .NET-assembly's te verbreken. U wordt aangeraden te controleren of er problemen zijn met de compatibiliteit met behulp van de onderstaande procedure.
+Als gevolg van deze upgrade naar .NET Framework 4.7.2 is het mogelijk om belang rijke wijzigingen aan te brengen in uw U-SQL-taken die gebruikmaken van aangepaste .NET-assembly's. U wordt aangeraden te controleren of er problemen zijn met de compatibiliteit met behulp van de onderstaande procedure.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>Controleren op achterwaartse compatibiliteits problemen
 
@@ -57,7 +57,7 @@ U kunt uw taak verzenden op basis van de oude runtime versie (die is opgebouwd i
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Wat zijn de meest voorkomende problemen met betrekking tot de compatibiliteit die u kunt tegen komen
 
-De meest voorkomende achterwaartse incompatibiliteiten die de controle waarschijnlijk zal identificeren, zijn (we hebben deze lijst gegenereerd door de controle uit te voeren op onze eigen interne ADLA-taken), waardoor de tape wisselaars worden beïnvloed (Opmerking: u kunt de bibliotheken alleen indirect aanroepen, dus het is het is belang rijk om de vereiste actie #1 uit te voeren om te controleren of uw taken worden beïnvloed) en mogelijke acties te verhelpen. Opmerking: in bijna alle gevallen voor onze eigen taken is de waarschuwing ingesteld op valse positieven als gevolg van de smalle veranderingen van de meeste breuk.
+De meest voorkomende achterwaartse incompatibiliteiten die de controle waarschijnlijk zal identificeren, zijn (we hebben deze lijst gegenereerd door de controle uit te voeren op onze eigen interne ADLA-taken), waardoor de tape wisselaars worden beïnvloed (Opmerking: u kunt de bibliotheken alleen indirect aanroepen. het is dus belang rijk om de vereiste actie te ondernemen #1 om te controleren of uw taken worden beïnvloed) en mogelijke acties Opmerking: in bijna alle gevallen voor onze eigen taken is de waarschuwing ingesteld op valse positieven als gevolg van de smalle veranderingen van de meeste breuk.
 
 - De eigenschap IAsyncResult. CompletedSynchronously moet correct zijn voor het volt ooien van de resulterende taak
   - Bij het aanroepen van TaskFactory. FromAsync moet de implementatie van de eigenschap IAsyncResult. CompletedSynchronously juist zijn voor het volt ooien van de resulterende taak. Dat wil zeggen dat de eigenschap alleen waar retourneert als en alleen als de implementatie synchroon is voltooid. Voorheen werd de eigenschap niet ingecheckt.

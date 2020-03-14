@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 5c5e1a8cee8cdad0659ae00829d170bf3fa7bf87
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 03/10/2020
+ms.openlocfilehash: c235562834ae78a12b690fcd1b96d6a3640e0c66
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941412"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371661"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>SSL-connectiviteit configureren in Azure Database for PostgreSQL-één server
 
@@ -28,9 +28,6 @@ De verbindings reeksen die vooraf zijn gedefinieerd in de instellingen voor verb
 ## <a name="configure-enforcement-of-ssl"></a>Afdwinging van SSL configureren
 
 U kunt eventueel het afdwingen van SSL-connectiviteit uitschakelen. Microsoft Azure wordt aanbevolen SSL- **verbindings instelling afdwingen** altijd in te scha kelen voor verbeterde beveiliging.
-
-> [!NOTE]
-> Op dit moment wordt de TLS-versie die wordt ondersteund voor Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
@@ -68,6 +65,31 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 > [!TIP]
 > Controleer of de waarde die is door gegeven aan `sslrootcert` overeenkomt met het bestandspad voor het certificaat dat u hebt opgeslagen.
+
+## <a name="tls-connectivity-in-azure-database-for-postgresql-single-server"></a>TLS-connectiviteit in Azure Database for PostgreSQL één server
+
+Azure Database for PostgreSQL-één server ondersteunt versleuteling voor clients die verbinding maken met uw database server met behulp van Transport Layer Security (TLS). TLS is een industrie standaard protocol dat beveiligde netwerk verbindingen tussen uw database server-en client toepassingen waarborgt, zodat u kunt voldoen aan de nalevings vereisten.
+
+### <a name="tls-settings"></a>TLS-instellingen
+
+Klanten kunnen nu de TLS-versie afdwingen voor de client die verbinding maakt met hun Azure Database for PostgreSQL één server. Als u de optie TLS wilt gebruiken, gebruikt u de instelling **minimale TLS-versie** . De volgende waarden zijn toegestaan voor deze optie-instelling:
+
+|  Minimale TLS-instelling             | TLS-versie wordt ondersteund                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (standaard) | Geen TLS vereist                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 en hoger |
+| TLS1_1                           | TLS 1,1, TLS 1,2 en hoger          |
+| TLS1_2                           | TLS-versie 1,2 en hoger           |
+
+
+Als u bijvoorbeeld deze versie van een TLS-instelling instelt op TLS 1,0, betekent dit dat uw server verbindingen met clients toestaat die gebruikmaken van TLS 1,0, 1,1 en 1.2 +. U kunt dit ook instellen op 1,2 zodat u alleen verbindingen van clients toestaat die gebruikmaken van TLS 1,2 en alle verbindingen met TLS 1,0 en TLS 1,1 worden geweigerd.
+
+> [!Note] 
+> Azure Database for PostgreSQL van één server wordt standaard TLS uitgeschakeld voor alle nieuwe servers.
+>
+> Momenteel worden de TLS-versies ondersteund byAzure-Data Base voor PostgreSQL TLS 1,0, 1,1 en 1,2.
+
+Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for PostgreSQL één server.
 
 ## <a name="next-steps"></a>Volgende stappen
 

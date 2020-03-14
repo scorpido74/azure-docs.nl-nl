@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299611"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Veelgestelde vragen over Windows Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Windows-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Linux-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Linux virtual machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -41,7 +41,7 @@ Een externe verbinding tot stand brengen met behulp van Verbinding met extern bu
 
 Als u problemen ondervindt met Extern bureaublad, raadpleegt u [extern bureaublad verbindingen met een op Windows gebaseerde Azure Virtual Machine oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Als u bekend bent met Hyper-V, verwacht u misschien een hulpprogramma zoals VMConnect. Azure biedt echter geen vergelijkbaar hulpprogramma omdat consoletoegang tot een virtuele machine niet wordt ondersteund.
+Als u bekend bent met Hyper-V, is het mogelijk dat u op zoek bent naar een hulp programma dat lijkt op VMConnect. Azure biedt geen vergelijkbaar hulp programma omdat console toegang tot een virtuele machine niet wordt ondersteund.
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Kan ik de tijdelijke schijf (standaard D: station) gebruiken om gegevens op te slaan?
 Gebruik niet de tijdelijke schijf om gegevens op te slaan. Het is alleen tijdelijke opslag, waardoor het risico bestaat dat er gegevens verloren gaan die niet kunnen worden hersteld. Gegevens verlies kan optreden wanneer de virtuele machine naar een andere host wordt verplaatst. Hiervoor zijn verschillende redenen te bedenken, zoals het aanpassen van de grootte van een virtuele machine, het bijwerken van de host of een hardwarefout op de host.
@@ -75,7 +75,7 @@ Ja. Zie [een virtuele Linux-machine in azure maken met behulp van de portal](../
 Ja, dit is nu mogelijk. De virtuele machine moet eerst worden gestopt met het ongedaan maken van de toewijzing. Vervolgens kunt u een NIC toevoegen of verwijderen (tenzij dit de laatste NIC op de VM is). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Zijn er computer naam vereisten?
-Ja. De computer naam mag Maxi maal 15 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) voor meer informatie over het benoemen van uw resources.
+Ja. De computer naam mag Maxi maal 15 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) voor meer informatie over het benoemen van uw resources.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Zijn er vereisten voor de naam van de resource groep?
 Ja. De naam van de resource groep mag Maxi maal 90 tekens lang zijn. Zie [regels en beperkingen voor naam conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) voor meer informatie over resource groepen.

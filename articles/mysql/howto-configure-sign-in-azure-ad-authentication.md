@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory-Azure Database for MySQL-één server gebruiken
-description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor verificatie met Azure Database for MySQL-één server
+title: Azure Active Directory-Azure Database for MySQL gebruiken
+description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor verificatie met Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110609"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299002"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -46,7 +46,7 @@ Nadat u de beheerder hebt geconfigureerd, kunt u zich nu aanmelden:
 
 In het volgende diagram op hoog niveau wordt een overzicht gegeven van de werk stroom van het gebruik van Azure AD-verificatie met Azure Database for MySQL:
 
-![verificatie stroom][1]
+![Verificatie stroom][1]
 
 We hebben de integratie van Azure AD ontworpen om te werken met algemene MySQL-hulpprogram ma's zoals de MySQL CLI, die niet bekend zijn met Azure AD en die alleen ondersteuning bieden voor het opgeven van de gebruikers naam en het wacht woord wanneer er verbinding wordt gemaakt met MySQL. De Azure AD-token wordt als wacht woord door gegeven, zoals in de bovenstaande afbeelding.
 
@@ -205,7 +205,7 @@ De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de algemene concepten voor [Azure Active Directory verificatie met Azure database for MySQL-enkele server](concepts-azure-ad-authentication.md)
+* Bekijk de algemene concepten voor [Azure Active Directory verificatie met Azure database for MySQL](concepts-azure-ad-authentication.md)
 
 <!--Image references-->
 

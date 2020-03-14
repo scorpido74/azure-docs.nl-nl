@@ -1,25 +1,18 @@
 ---
 title: Entiteits type van lijst-LUIS
-titleSuffix: Azure Cognitive Services
 description: Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de functie aanbevolen om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 03/12/2020
+ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297234"
 ---
 # <a name="list-entity"></a>Lijstentiteit
 
-Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de **raden** functie om te bekijken van suggesties voor nieuwe woorden op basis van de huidige lijst. Als er meer dan één lijst entiteit met dezelfde waarde, wordt elke entiteit in de query eindpunt geretourneerd.
+Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor de lijst met entiteiten. Gebruik de functie **Aanbevolen** om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken. Als er meer dan één lijst entiteit met dezelfde waarde, wordt elke entiteit in de query eindpunt geretourneerd.
 
 Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exact overeenkomende tekst. LUIS markeert een overeenkomst aan een item in een lijst als een entiteit in het antwoord.
 
@@ -28,7 +21,7 @@ Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exac
 * Zijn een bekende set.
 * Verandert niet vaak. Als u de lijst vaak wilt wijzigen of de lijst zelf wilt uitbreiden, is een eenvoudige entiteit met een woordgroepen lijst een betere keuze.
 * De set maximale [begrenzingen](luis-boundaries.md) van LUIS voor dit entiteitstype niet overschrijdt.
-* De tekst in de utterance is een exact overeenkomst met een synoniem of de canonieke naam. LUIS gebruikt de lijst alleen voor exact tekstovereenkomsten. Fuzzy matching, hoofdletter ongevoeligheid, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
+* De tekst in de utterance is een hoofdletter gevoelige overeenkomst met een synoniem of canonieke naam. LUIS gebruikt de lijst niet verder dan de overeenkomst. Fuzzy matching, ontleding, meervouden en andere variaties worden niet opgelost met een lijst entiteit. Hiervoor kunt u overwegen een [patroon](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) met de optionele tekstsyntaxis te gebruiken.
 
 ![lijst met entiteiten](./media/luis-concept-entities/list-entity.png)
 
@@ -59,7 +52,7 @@ Een lijst entiteit is niet door de machine geleerd. Het is een overeenkomst exac
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Stel dat de app heeft een lijst met de naam `Cities`, zodat voor variaties in plaats van luchthaven (Sea-tac), luchthaven code (SEA), postcode (98101) en het netnummer telefoon (206) zoals plaatsnamen.
+Stel dat de app een lijst bevat met de naam `Cities`, waarmee u namen van steden kunt variëren, waaronder de plaats van de lucht haven (Sea-TAC), luchthaven code (zee), post code (98101) en telefoon gebied (206).
 
 |Lijstitem|Item synoniemen|
 |---|---|
@@ -68,9 +61,9 @@ Stel dat de app heeft een lijst met de naam `Cities`, zodat voor variaties in pl
 
 `book 2 tickets to paris`
 
-In de vorige utterance, het woord `paris` is toegewezen aan het item Parijs als onderdeel van de `Cities` lijst van de entiteit. De entiteit lijst komt overeen met zowel genormaliseerde naam van het item als het item synoniemen.
+In de vorige utterance wordt het woord `paris` toegewezen aan het item Parijs als onderdeel van de entiteit `Cities` lijst. De entiteit lijst komt overeen met zowel genormaliseerde naam van het item als het item synoniemen.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
 ```JSON
   "entities": [
@@ -88,7 +81,7 @@ In de vorige utterance, het woord `paris` is toegewezen aan het item Parijs als 
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
 
 Dit is de JSON als `verbose=false` is ingesteld in de query reeks:
@@ -132,7 +125,7 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 
 * * *
 
-|Data-object|Naam van de entiteit|Waarde|
+|Data-object|De naam van de entiteit|Waarde|
 |--|--|--|
 |Entiteit weer geven|`Cities`|`paris`|
 

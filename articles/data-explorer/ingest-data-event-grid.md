@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096416"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370437"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobs opnemen in azure Data Explorer door zich te abonneren op Event Grid meldingen
 
@@ -69,7 +69,7 @@ Een tabel maken in azure Data Explorer waar Event Hubs gegevens verzendt. Maak d
 
 1. Kopieer de volgende opdracht in het venster en selecteer **uitvoeren** om de tabel (TestTable) te maken waarin de opgenomen gegevens worden ontvangen.
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Een tabel maken in azure Data Explorer waar Event Hubs gegevens verzendt. Maak d
 
 1. Kopieer de volgende opdracht in het venster en selecteer **Uitvoeren** om de binnenkomende JSON-gegevens toe te wijzen aan de kolomnamen en gegevenstypen van de tabel (TestTable).
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ U werkt met een klein shellscript dat een paar eenvoudige Azure CLI-opdrachten o
 
 Sla de gegevens op in een bestand en upload het met dit script:
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -195,14 +195,14 @@ Zo nodig kunt u het beleid op een later tijdstip wijzigen. In dit artikel kunt u
 
 1. Als u wilt controleren hoeveel berichten er op dat moment de database hebben bereikt, voert u de volgende query uit in de testdatabase.
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. Voer de volgende query in uw testdatabase uit om de inhoud van de berichten te bekijken.
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

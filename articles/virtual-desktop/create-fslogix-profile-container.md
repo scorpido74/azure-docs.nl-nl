@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128167"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370199"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -73,7 +73,7 @@ Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 7. Selecteer **Azure NetApp files** in de zoek resultaten en selecteer vervolgens **maken**.
 
 8. Selecteer de knop **Add**.
-9. Wanneer de Blade **Nieuw NetApp-account** wordt geopend, voert u de volgende waarden in:
+9. Wanneer het tabblad **Nieuw NetApp-account** wordt geopend, voert u de volgende waarden in:
 
     - Voer bij **naam**de naam van uw NetApp-account in.
     - Selecteer bij **abonnement**het abonnement voor het opslag account dat u in stap 4 hebt ingesteld in de vervolg keuzelijst.
@@ -92,7 +92,7 @@ Maak vervolgens een nieuwe capaciteits groep:
 1. Ga naar het menu Azure NetApp Files en selecteer uw nieuwe account.
 2. Selecteer in uw account menu de optie **capaciteits Pools** onder Storage service.
 3. Selecteer **groep toevoegen**.
-4. Wanneer de Blade **nieuwe capaciteits groep** wordt geopend, voert u de volgende waarden in:
+4. Wanneer het tabblad **nieuwe capaciteits groep** wordt geopend, voert u de volgende waarden in:
 
     - Voer bij **naam**een naam in voor de nieuwe capaciteits groep.
     - Selecteer voor **service niveau**de gewenste waarde in de vervolg keuzelijst. We raden **Premium** aan voor de meeste omgevingen.
@@ -127,7 +127,7 @@ Vervolgens moet u een nieuw volume maken.
 
 1. Selecteer **volumes**en selecteer vervolgens **volume toevoegen**.
 
-2. Wanneer de Blade **een volume maken** wordt geopend, voert u de volgende waarden in:
+2. Wanneer het tabblad **een volume maken** wordt geopend, voert u de volgende waarden in:
 
     - Voer voor **volume naam**een naam in voor het nieuwe volume.
     - Voor de **capaciteits pool**selecteert u de capaciteits groep die u zojuist hebt gemaakt in de vervolg keuzelijst.

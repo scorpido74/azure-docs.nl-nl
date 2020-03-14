@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
+title: Gegevens versleuteling met door de klant beheerde sleutel-Azure Database for PostgreSQL-één server
 description: Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198697"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297019"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -32,9 +32,9 @@ Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het i
 Gegevens versleuteling voor Azure Database for PostgreSQL één server biedt de volgende voor delen:
 
 * Gegevens toegang wordt volledig beheerd door u door de mogelijkheid om de sleutel te verwijderen en de data base ontoegankelijk te maken. 
-*   Volledige controle over de levens cyclus van de sleutel, inclusief het draaien van de sleutel die moet worden uitgelijnd met bedrijfs beleid
-*   Centraal beheer en organisatie van sleutels in Azure Key Vault
-*   Mogelijkheid om schei ding van taken te implementeren tussen beveiligings ambtenaren en DBA en systeem beheerders
+*    Volledige controle over de levens cyclus van de sleutel, inclusief het draaien van de sleutel die moet worden uitgelijnd met bedrijfs beleid
+*    Centraal beheer en organisatie van sleutels in Azure Key Vault
+*    Mogelijkheid om schei ding van taken te implementeren tussen beveiligings ambtenaren en DBA en systeem beheerders
 
 ## <a name="terminology-and-description"></a>Terminologie en beschrijving
 

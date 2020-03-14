@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 147a131eb79c74dc38c4217d167c7d65ee8a9274
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046463"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366169"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Het verloop beleid voor Office 365-groepen configureren
 
@@ -42,7 +42,7 @@ Zie [Azure Active Directory Power shell for graph 2.0.0.137](https://www.powersh
 
 ## <a name="activity-based-automatic-renewal"></a>Automatische verlenging op basis van activiteit
 
-Met Azure AD Intelligence worden groepen nu automatisch vernieuwd op basis van het feit of ze onlangs zijn gebruikt. Deze functie elimineert de nood zaak voor hand matige actie door groeps eigenaren, omdat deze is gebaseerd op gebruikers activiteit in groepen tussen Office 365-services zoals Outlook, share point, teams of Yammer. Als een eigenaar of een groepslid bijvoorbeeld een document uploadt in share point, gaat u naar een teams-kanaal of stuurt u een e-mail naar de groep in Outlook, wordt de groep automatisch vernieuwd en worden er geen meldingen over verlenging ontvangen.
+Met Azure AD Intelligence worden groepen nu automatisch vernieuwd op basis van het feit of ze onlangs zijn gebruikt. Deze functie elimineert de nood zaak voor hand matige actie door groeps eigenaren, omdat deze is gebaseerd op gebruikers activiteit in groepen tussen Office 365-services zoals Outlook, share point of teams. Als een eigenaar of een groepslid bijvoorbeeld een document uploadt in share point, gaat u naar een teams-kanaal of stuurt u een e-mail naar de groep in Outlook, wordt de groep automatisch vernieuwd en worden er geen meldingen over verlenging ontvangen.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Activiteiten die het verlopen van groepen automatisch vernieuwen
 

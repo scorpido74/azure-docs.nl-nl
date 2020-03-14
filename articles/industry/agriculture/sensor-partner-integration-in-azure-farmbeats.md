@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132835"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298730"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
 Dit artikel bevat informatie over het onderdeel Azure FarmBeats **Translator** , waarmee sensor-partner integratie mogelijk wordt.
 
-Met dit onderdeel kunnen partners worden geïntegreerd met FarmBeats met behulp van FarmBeats data hub-Api's en gegevens en telemetrie van klant apparaten verzenden naar FarmBeats data hub. Zodra de gegevens beschikbaar zijn in FarmBeats, wordt deze gevisualiseerd met behulp van de FarmBeats-Accelerator en kunnen ze worden gebruikt voor gegevens fusie en voor het bouwen van machine learning/kunst matige intelligentie modellen.
+Met dit onderdeel kunnen partners worden geïntegreerd met FarmBeats met behulp van FarmBeats Datahub-Api's en apparaatgegevens en telemetrie van de klant verzenden naar FarmBeats Datahub. Zodra de gegevens beschikbaar zijn in FarmBeats, wordt deze gevisualiseerd met behulp van de FarmBeats-Accelerator en kunnen ze worden gebruikt voor gegevens fusie en voor het bouwen van machine learning/kunst matige intelligentie modellen.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -50,7 +50,7 @@ FarmBeats maakt gebruik van Microsoft Azure Active Directory-verificatie. Azur
 
 Zie [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)voor meer informatie.
 
-De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
+FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
    - Client-id
    - Clientgeheim
    - Tenant-id
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP-aanvraag headers**
 
-Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep naar FarmBeats data hub maakt.
+Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep maakt naar FarmBeats Datahub.
 
 
 **Header** | **Beschrijving en voor beeld**
 --- | ---
-Content-Type | De aanvraag indeling (content-type: Application/<format>). Voor FarmBeats data hub-Api's wordt de indeling JSON. Content-type: Application/JSON
+Content-Type | De aanvraag indeling (content-type: Application/<format>). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer < Access-token >
-Accepteren | De antwoord indeling. Voor FarmBeats data hub-Api's wordt de indeling JSON. Accepteren: toepassing/JSON
+Accepteren | De antwoord indeling. Voor FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
 **API-aanvragen**
 
@@ -119,7 +119,7 @@ JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een ee
 
 ## <a name="metadata-specifications"></a>Specificaties van meta gegevens
 
-FarmBeats data hub beschikt over de volgende Api's waarmee apparaat-partners apparaat-of sensor-meta gegevens kunnen maken en beheren.
+FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-of sensor-meta gegevens kunnen maken en beheren.
 
 - /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat. Dit is een gateway of knoop punt.
 - /**apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
@@ -230,11 +230,11 @@ De canonieke bericht indeling is als volgt:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ Nadat klanten apparaten of Sens oren hebben gekocht en geïmplementeerd, hebben 
 
 ## <a name="unlink-farmbeats"></a>FarmBeats ontkoppelen
 
-Met apparaat-partners kunnen klanten een bestaande FarmBeats-integratie ontkoppelen. Het ontkoppelen van FarmBeats mag geen apparaat-of sensor-meta gegevens verwijderen die zijn gemaakt in FarmBeats data hub. Het ontkoppelen gaat als volgt:
+Met apparaat-partners kunnen klanten een bestaande FarmBeats-integratie ontkoppelen. Het ontkoppelen van FarmBeats mag geen apparaat-of sensor-meta gegevens verwijderen die zijn gemaakt in FarmBeats Datahub. Het ontkoppelen gaat als volgt:
 
    - Hiermee wordt de telemetrische stroom gestopt.
    - Hiermee verwijdert en wist u de integratie referenties op de partner van het apparaat.

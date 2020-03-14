@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773173"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368890"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
 
@@ -32,17 +32,17 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 
 ## <a name="create-app-service-plan"></a>Een App Service-plan maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Een resource maken**.
 1. In **de Marketplace doorzoeken**voert u **app service plan**in en selecteert u vervolgens **app service plan**.  Selecteer geen **app service plan (klassiek)**
 1. Selecteer **Maken**.
-1. Voer
+1. voer het volgende in:
 
     - **Abonnement**: selecteer uw Azure-abonnement.
     - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op. Geef een andere naam op voor de resource groep dan het account dat u in deze zelfstudie reeks hebt gebruikt.
     - **Naam**: Voer een naam in voor het app service-plan.
     - **Besturings systeem**: Selecteer **Linux**.
-    - **Regio**: Selecteer een Azure-locatie. Bijvoorbeeld **US - centraal**.
+    - **Regio**: Selecteer een Azure-locatie. Bijvoorbeeld **VS - centraal**.
     - **Prijs categorie**: als u kosten wilt besparen, wijzigt u de SKU in **Basic B1** (onder dev/test).
 
     ![Sjabloon portal voor het exporteren van Resource Manager-sjablonen](./media/template-tutorial-export-template/resource-manager-template-export.png)
@@ -84,7 +84,7 @@ Gebruik Azure CLI of Azure PowerShell voor het implementeren van een sjabloon.
 
 Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -111,7 +111,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. De resource groep bevat een opslag account en een App Service plan.

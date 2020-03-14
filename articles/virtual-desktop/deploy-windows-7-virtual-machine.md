@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127995"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366680"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
@@ -35,7 +35,7 @@ Een Windows 7-VM instellen op het virtuele bureau blad van Windows:
 4. Voeg het account dat u hebt gebruikt bij het maken van een verbinding met de host met RDP toe aan de groep Extern bureaublad gebruiker. Als u dit niet doet, kunt u mogelijk geen verbinding maken met de virtuele machine nadat u deze hebt toegevoegd aan uw Active Directory domein.
 5. Ga naar Windows Update op uw VM.
 6. Installeer alle Windows-updates in de belang rijke categorie.
-7. Installeer alle Windows-updates in de optionele categorie (exclusief taal pakketten). Hiermee installeert u de Remote Desktop Protocol 8,0-update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) die u nodig hebt om deze instructies te volt ooien.
+7. Installeer alle Windows-updates in de optionele categorie (exclusief taal pakketten). Hiermee installeert u de Remote Desktop Protocol 8,0-update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) die u nodig hebt om deze instructies te volt ooien.
 8. Open de Lokale groepsbeleidsobjecteditor en navigeer naar **computer configuratie** > **Beheersjablonen** > **Windows** -onderdelen ** > extern bureaublad-services > extern bureaublad** **sessie host** > **externe sessie omgeving**.
 9. Schakel het beleid voor Remote Desktop Protocol 8,0 in.
 10. Voeg deze VM toe aan uw Active Directory domein.
