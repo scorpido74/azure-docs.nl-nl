@@ -28,6 +28,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPSec-beleid
       href: virtual-wan-ipsec.md
+    - name: VPN-overzicht voor punt-naar-site
+      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Instructiegidsen
   items:
     - name: Virtuele netwerkgateway verbinden met een virtual WAN
@@ -56,6 +58,10 @@
           href: certificates-point-to-site.md
         - name: Azure AD-tenant configureren voor een gebruikers-VPN
           href: openvpn-azure-ad-tenant.md
+        - name: AlwaysOn-VPN-gebruikerstunnel configureren
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: AlwaysOn-VPN-apparaattunnel configureren
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: Meervoudige verificatie (MFA) inschakelen voor een gebruikers-VPN
           href: openvpn-azure-ad-mfa.md
         - name: Azure AD-verificatie configureren voor gebruikers-VPN
@@ -91,7 +97,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Abonnements- en servicebeperkingen
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Prijscalculator

@@ -8,12 +8,12 @@
       displayName: release notes
       href: release-notes.md
 - name: Snelstartgidsen
+  expanded: true
   items:
     - name: Livegebeurtenis met portal en Wirecast
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
 - name: Zelfstudies
-  expanded: true
   items:
     - name: Externe bestanden coderen en video streamen
       items:
@@ -42,7 +42,7 @@
       href: protect-with-drm.md
 - name: Voorbeelden
   items:
-    - name: Voorbeelden voor Media Services
+    - name: Voorbeelden van Media Services v3
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
     - name: REST-voorbeelden voor Media Services v3
@@ -71,8 +71,6 @@
         - name: Transformaties en taken
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
-        - name: Foutcodes
-          href: job-error-codes.md
     - name: Inhoud versleutelen
       items:
         - name: Overzicht
@@ -92,8 +90,6 @@
           displayName: 'analyzing, presets, jobs'
         - name: Transformaties en taken
           href: transforms-jobs-concept.md
-        - name: Foutcodes in taak
-          href: job-error-codes.md
     - name: Live streamen
       items:
         - name: Overzicht
@@ -101,7 +97,7 @@
         - name: Live gebeurtenissen en live uitvoer
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
-        - name: Aanbevolen live-encoders
+        - name: 'Geteste, on-premises live coderingsprogramma''s'
           href: recommended-on-premises-live-encoders.md
         - name: Tijdsverschuiving en live-naar-VOD
           displayName: 'archive, dvr'
@@ -114,10 +110,6 @@
           href: live-event-states-billing.md
         - name: Latentie
           href: live-event-latency.md
-        - name: Een on-premises coderingspartner worden
-          href: become-on-premises-encoder-partner.md
-        - name: Foutcodes voor Live-gebeurtenissen
-          href: live-event-error-codes.md
     - name: Verpakking en levering
       items:
         - name: Dynamische verpakking
@@ -138,8 +130,6 @@
           href: streaming-locators-concept.md
         - name: Beleid voor streaming
           href: streaming-policy-concept.md
-        - name: Foutcodes voor streaming-eindpunten
-          href: streaming-endpoint-error-codes.md
     - name: Inhoudsbeveiliging
       items:
         - name: Dynamische versleuteling en sleutellevering
@@ -211,20 +201,24 @@
   items:
     - name: Aan de slag
       items:
-        - name: Een account maken - portal
-          href: create-account-portal.md
-        - name: Een account maken - CLI
-          href: create-account-cli-how-to.md
-          displayName: storage
-        - name: De referenties voor het account opnieuw instellen - CLI
+        - name: Een account maken
+          items:
+            - name: Met portal
+              href: create-account-portal.md
+            - name: Met CLI
+              href: create-account-cli-how-to.md
+              displayName: storage
+        - name: De referenties voor het account opnieuw instellen
           href: cli-reset-account-credentials.md
-        - name: Toegang tot API's - portal
-          href: access-api-portal.md
-        - name: Toegang tot API's - CLI
-          href: access-api-cli-how-to.md
-        - name: Gereserveerde media-eenheden schalen - CLI
+        - name: Toegang tot API's
+          items:
+            - name: Met portal
+              href: access-api-portal.md
+            - name: Met CLI
+              href: access-api-cli-how-to.md
+        - name: Gereserveerde media-eenheden schalen
           href: media-reserved-units-cli-how-to.md
-        - name: Een asset maken - CLI
+        - name: Een Asset maken
           href: cli-create-asset.md
     - name: Handleidingen voor ontwikkelaars
       items:
@@ -244,31 +238,33 @@
               href: configure-connect-python-howto.md
     - name: Inhoud uploaden
       items:
-        - name: Van HTTPS - .NET
+        - name: Uit HTTPS
           displayName: upload
           href: job-input-from-http-how-to.md
-        - name: Uit een lokaal bestand - .NET
-          displayName: upload
-          href: job-input-from-local-file-how-to.md
-        - name: Uit een lokaal bestand - REST
-          displayName: upload
-          href: upload-files-rest-how-to.md
-        - name: Uit een lokaal bestand - CLI
-          href: cli-upload-file-asset.md
+        - name: Uit een lokaal bestand
+          items:
+            - name: Met .NET
+              displayName: upload
+              href: job-input-from-local-file-how-to.md
+            - name: Met REST
+              displayName: upload
+              href: upload-files-rest-how-to.md
+            - name: Met CLI
+              href: cli-upload-file-asset.md
     - name: Transformaties en taken maken
       items:
-        - name: Transformaties maken - CLI
+        - name: Transformaties maken
           href: cli-create-transform.md
-        - name: Taken maken - CLI
+        - name: Taken maken
           href: cli-create-jobs.md
         - name: Taken met meerdere typen transformatie-uitvoer
           href: job-multiple-transform-outputs.md
     - name: Inhoud coderen
       items:
-        - name: HTTPS als taakinvoer - .NET
+        - name: HTTPS als taakinvoer
           displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
-        - name: Lokaal bestand als taakinvoer - .NET
+        - name: Lokaal bestand als taakinvoer
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Coderen met een aangepaste transformatie
@@ -290,6 +286,16 @@
             - name: Met REST
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Foutcodes in taak
+          href: job-error-codes.md
+    - name: Live streamen
+      items:
+        - name: Livegebeurtenis met portal en Wirecast
+          href: live-events-wirecast-quickstart.md
+        - name: Uw on-premises encoder controleren
+          href: become-on-premises-encoder-partner.md
+        - name: Foutcodes voor Live-gebeurtenissen
+          href: live-event-error-codes.md
     - name: Event Grid gebruiken
       items:
         - name: Gebeurtenissen bewaken - Portal
@@ -304,7 +310,7 @@
           href: media-services-diagnostic-logs-howto.md
     - name: Inhoud beveiligen
       items:
-        - name: Beleid voor inhoudssleutels ophalen - .NET
+        - name: Beleid voor inhoudssleutels ophalen
           href: get-content-key-policy-dotnet-howto.md
         - name: Offline FairPlay voor iOS
           href: offline-fairplay-for-ios.md
@@ -325,7 +331,9 @@
           displayName: filters
     - name: Inhoud leveren
       items:
-        - name: Een asset publiceren - CLI
+        - name: Streaming-eindpunten beheren
+          href: manage-streaming-endpoints-howto.md
+        - name: Een asset publiceren
           href: cli-publish-asset.md
         - name: Een streaming-locator maken en URL's bouwen
           href: create-streaming-locator-build-url.md

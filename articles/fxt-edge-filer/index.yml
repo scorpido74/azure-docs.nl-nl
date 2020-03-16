@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure FXT Edge Filer
+summary: De hybride opslagcache van Azure FXT Edge Filer is een hybride hardware-/softwaresysteem dat zorgt voor snellere gegevenstoegang voor lees-intensieve high performance computing (HPC)-werkstromen op basis van bestanden.
 metadata:
   title: Documentatie voor Azure FXT Edge Filer
-  description: Azure FXT Edge Filer gebruiken als een cachelaag voor lees-intensieve high performance computing (HPC)-taken
-  author: ekpgh
+  description: Azure FXT Edge Filer gebruiken als een cachelaag voor lees-intensieve high performance computing (HPC)-taken.
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'De hybride opslagcache van Azure FXT Edge Filer is een hybride hardware-/softwaresysteem dat zorgt voor snellere gegevenstoegang voor lees-intensieve high performance computing (HPC)-werkstromen op basis van bestanden. Een cluster met drie of meer Azure FXT Edge Filer-apparaten kan de opslagprestaties versnellen van on-premises NAS-systemen (NetApp of Dell EMC Isilon), van cloudopslag of van een combinatie van oplossingen.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Azure FXT Edge Filer-hardware installeren</a>
-          - html: <a href="fxt-network-power">Netwerkverbindingen maken voor de Azure FXT Edge Filer</a>
-          - html: <a href="fxt-node-password">Hoofdwachtwoorden instellen voor de hardwareknooppunten</a>
-          - html: <a href="fxt-cluster-create">Het hybride opslagcachecluster maken</a>
-          - html: <a href="fxt-add-nodes">Clusterknooppunten toevoegen</a>
-          - html: <a href="fxt-add-storage">Back-endopslag toevoegen en virtuele naamruimte configureren</a>
-          - html: <a href="fxt-configure-network">De netwerkinstellingen van het cluster configureren</a>
-  - title: Handleidingen
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Clients verbinden met het Azure FXT Edge Filer-cluster</a>
-          - html: <a href="fxt-monitor">Azure FXT Edge Filer bewaken</a>
-          - html: <a href="fxt-power-off">Een hardwareknooppunt veilig uitschakelen</a>
-  - title: Resources
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Hardwarespecificaties</a>
-          - html: <a href="fxt-additional-doc">Aanvullende documentatie</a>
-          - html: <a href="fxt-support-ticket">Een ondersteuningsticket openen</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298849"
+landingContent:
+- title: Over Azure FXT Edge Filer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure FXT Edge Filer?
+      url: fxt-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: '1: Hardware installeren'
+      url: fxt-install.md
+    - text: '2: Kabels aansluiten'
+      url: fxt-network-power.md
+    - text: '3: Hardware-wachtwoorden instellen'
+      url: fxt-node-password.md
+    - text: '4: Een cluster maken'
+      url: fxt-cluster-create.md
+    - text: '5: Clusterknooppunten toevoegen'
+      url: fxt-add-nodes.md
+    - text: '6: Back-endopslag toevoegen en de virtuele naamruimte configureren'
+      url: fxt-add-storage.md
+    - text: '7: De netwerkinstellingen van het cluster configureren'
+      url: fxt-configure-network.md
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Clients in het cluster koppelen
+      url: fxt-mount-clients.md
+    - text: Hardwarestatus bewaken
+      url: fxt-monitor.md
+    - text: De hardware veilig uitschakelen
+      url: fxt-power-off.md
+- title: Resources
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Hardwarespecificaties
+      url: fxt-specs.md
+    - text: Aanvullende documentatie
+      url: fxt-additional-doc.md

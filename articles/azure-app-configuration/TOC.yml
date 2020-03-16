@@ -64,8 +64,6 @@
   items:
     - name: Sleutel-waardearchief
       href: concept-key-value.md
-    - name: Versleutelen met door de klant beheerde sleutels
-      href: concept-customer-managed-keys.md
     - name: Point-in-time-snapshot
       href: concept-point-time-snapshot.md
     - name: Functiebeheer
@@ -74,8 +72,12 @@
       href: concept-github-action.md
     - name: Gebeurtenisverwerking
       href: concept-app-configuration-event.md
-    - name: Verificatie
+    - name: Beveiliging
       items:
+        - name: Versleutelen met door de klant beheerde sleutels
+          href: concept-customer-managed-keys.md
+        - name: Uw configuratiearchief beveiligen met privé-eindpunten
+          href: concept-private-endpoint.md
         - name: Integreren met beheerde Azure-identiteit
           href: howto-integrate-azure-managed-service-identity.md
         - name: Toegang met Azure Active Directory inschakelen

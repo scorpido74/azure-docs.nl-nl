@@ -648,8 +648,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage reserveren
           href: disks-reserved-capacity.md
-        - name: Een incrementele momentopname maken
+        - name: Een incrementele momentopname maken - CLI
           href: disks-incremental-snapshots.md
+        - name: Een incrementele momentopname maken - Portal
+          href: disks-incremental-snapshots-portal.md
         - name: Back-up maken van niet-beheerde schijven
           href: incremental-snapshots.md
         - name: Migratie en conversie

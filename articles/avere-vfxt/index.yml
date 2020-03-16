@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Avere vFXT for Azure
+summary: Avere vFXT for Azure biedt een cloud-cachelaag voor gegevensintensieve HPC-taken (High Performance Computing).
 metadata:
   title: Documentatie voor Avere vFXT for Azure
-  description: Avere vFXT gebruiken als een cachelaag voor lees-intensieve high performance computing (HPC)-taken
-  services: avere-vfxt
-  author: ekpgh
+  description: Avere vFXT gebruiken als een cachelaag voor lees-intensieve high performance computing (HPC)-taken.
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Avere vFXT for Azure biedt een cloud-cachelaag voor gegevensintensieve HPC-taken (High Performance Computing). Door bestanden dichtbij uw rekenknooppunten in cache op te slaan, verhoogt Avere vFXT de leessnelheden en kunt u zelfs bij piekbelasting ongehinderd werken. Avere vFXT werkt het beste met systemen die tussen 1000 en 40.000 clientkernen hebben. <p>Avere vFXT werkt samen met uw bestaande gegevensopslag om bestanden in de buurt te brengen van op Azure-gebaseerde rekenresources. Actieve bestanden worden nog steeds voor de lange termijn opgeslagen in uw datacenter.'
-sections:
-  - title: Aan de slag met Avere vFXT for Azure
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">Uw Avere vFXT for Azure-systeem plannen</a>
-          - html: <a href="avere-vfxt-deploy-overview">Informatie over Avere vFXT-implementatie</a>
-          - html: <a href="avere-vfxt-prereqs">Aan vereisten voldoen</a>
-          - html: <a href="avere-vfxt-deploy">Het Avere vFXT-cluster implementeren</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297778"
+landingContent:
+- title: Over Avere vFXT for Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Avere vFXT for Azure?
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: Veelgestelde vragen
+      url: avere-vfxt-faq.md
+- title: Plannen en voorbereiden
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Uw Avere vFXT-systeem plannen
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: Voorbereiden op het maken van de Avere vFXT
+      url: avere-vfxt-prereqs.md
+- title: Maken en implementeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Implementatieoverzicht
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Het vFXT-cluster implementeren
+      url: avere-vfxt-deploy.md
+- title: Verbinding maken en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Toegang tot het vFXT-cluster
+      url: avere-vfxt-cluster-gui.md
+    - text: Ondersteuningsuploads inschakelen
+      url: avere-vfxt-enable-support.md
+    - text: Opslag configureren
+      url: avere-vfxt-add-storage.md
+    - text: Het Avere vFXT-cluster koppelen
+      url: avere-vfxt-mount-clients.md
+    - text: Gegevens verplaatsen naar het vFXT-cluster
+      url: avere-vfxt-data-ingest.md
+    - text: Het Avere vFXT-cluster beheren
+      url: avere-vfxt-manage-cluster.md
