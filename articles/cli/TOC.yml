@@ -1,9 +1,0 @@
-- name: 'Opdrachtregelinterface (Command-line Interface, CLI)'
-  href: index.yml
-  items:
-    - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure-opdrachtregelinterface (CLI)
-      href: /cli/azure
-    - name: PowerShell-hulpprogramma's voor Visual Studio 2015
-      href: 'https://adamdriscoll.gitbooks.io/powershell-tools-documentation/content/'
