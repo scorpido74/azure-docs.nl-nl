@@ -1,52 +1,53 @@
 ---
-title: 'Snelstartgids: Text Analytics v3-client bibliotheek voor Java | Microsoft Docs'
-description: Ga aan de slag met de V3-Text Analytics-client bibliotheek voor Java.
+title: 'Quickstart: Text Analytics v3-clientbibliotheek voor Java | Microsoft Docs'
+description: Aan de slag met de v3 Text Analytics-clientbibliotheek voor Java.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/12/2020
 ms.author: aahi
-ms.reviewer: tasharm, assafi
-ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.reviewer: tasharm, assafi, sumeh
+ms.openlocfilehash: 11092b74c0256d298dece0f909d8d7dd241e7b13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155401"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371314"
 ---
 <a name="HOLTop"></a>
 
-[Referentie documentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [pakket (Maven)](https://oss.sonatype.org/#nexus-search;quick~com.azure) | -voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referentiedocumentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) met versie 8 of hoger
-* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
-    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Een Text Analytics-resource maken"  target="_blank">maakt u een Text Analytics-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. 
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Text Analytics-API. U doet dit later in de quickstart.
+    * U kunt de gratis prijscategorie gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-new-maven-project"></a>Een nieuw Maven-project maken
+### <a name="add-the-client-library"></a>De clientbibliotheek toevoegen
 
-Voeg de volgende tekst analyse afhankelijkheid toe aan uw project. Deze versie van de afhankelijkheid maakt gebruik van versie `3.0-preview` van de Text Analytics-API. 
+Maak een Maven-project in uw favoriete IDE of ontwikkelomgeving. Voeg vervolgens de volgende afhankelijkheid toe aan het *pom.xml*-bestand van uw project. U kunt de implementatiesyntaxis [voor andere compilatieprogramma's](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) online vinden.
 
 ```xml
 <dependencies>
-    <dependency>
+     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.2</version>
+        <version>1.0.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
 
-Maak een nieuw Java-bestand in de volgende map: `\src\main\java`.
+> [!TIP]
+> Wilt u het volledige quickstartcodebestand ineens weergeven? U kunt het vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), dat de codevoorbeelden in deze quickstart bevat. 
 
-Open het Java-bestand en voeg de volgende `import`-instructies toe:
+Maak een Java-bestand met de naam `TextAnalyticsSamples.java`. Open het bestand en voeg de volgende `import`-instructies toe:
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -54,7 +55,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-Voeg in het Java-bestand een nieuwe klasse toe en voeg de sleutel en het eind punt van uw Azure-resource toe zoals hieronder wordt weer gegeven.
+Voeg in het Java-bestand een nieuwe klasse toe en voeg de sleutel en het eindpunt van uw Azure-resource toe, zoals hieronder wordt weergegeven.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -65,11 +66,11 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Voeg de volgende hoofd methode toe aan de klasse. U definieert de methoden die hier later worden genoemd.
+Voeg de volgende hoofdmethode aan de klasse toe. U definieert de methoden die hier later worden aangeroepen.
 
 ```java
 public static void main(String[] args) {
-
+    //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
 
     sentimentAnalysisExample(client);
@@ -81,22 +82,22 @@ public static void main(String[] args) {
 }
 ```
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-De Text Analytics-client is een `TextAnalyticsClient`-object dat wordt geverifieerd bij Azure met behulp van uw sleutel, en biedt functies om tekst als afzonderlijke teken reeksen of als batch te accepteren. U kunt tekst synchroon of asynchroon verzenden naar de API. Het antwoord object bevat de analyse-informatie voor elk document dat u verzendt. 
+De Text Analytics-client is een `TextAnalyticsClient`-object dat wordt geverifieerd bij Azure met behulp van uw sleutel, en biedt functies om tekst als afzonderlijke tekenreeksen of als een batch te accepteren. U kunt tekst synchroon of asynchroon naar de API verzenden. Het antwoordobject bevat de analyse-informatie voor elk document dat u verzendt. 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 * [De client verifiëren](#authenticate-the-client)
 * [Sentimentanalyse](#sentiment-analysis) 
-* [Taal detectie](#language-detection)
+* [Taaldetectie](#language-detection)
 * [Herkenning van benoemde entiteiten](#named-entity-recognition-ner) 
-* [Entiteit koppelen](#entity-linking)
-* [Extractie van sleutel woorden](#key-phrase-extraction)
+* [Entiteiten koppelen](#entity-linking)
+* [Sleuteltermextractie](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak een methode om het `TextAnalyticsClient`-object te instantiëren met uw `KEY` en `ENDPOINT` eerder gemaakt.
+Maak een methode voor het instantiëren van het `TextAnalyticsClient`-object met de sleutel en het eindpunt voor uw Text Analytics-resource.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -107,11 +108,11 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 }
 ```
 
-In de `main()` methode van uw programma roept u de verificatie methode op om de client te instantiëren.
+In de `main()`-methode van uw programma roept u de verificatiemethode op om de client te instantiëren.
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-Maak een nieuwe functie met de naam `sentimentAnalysisExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `analyzeSentiment()`-functie aan. Het geretourneerde `AnalyzeSentimentResult`-object bevat `documentSentiment` en `sentenceSentiments` als dit is geslaagd, of een `errorMessage` als dat niet het geval is. 
+Maak een nieuwe functie met de naam `sentimentAnalysisExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `analyzeSentiment()`-functie aan. Het geretourneerde `AnalyzeSentimentResult`-object bevat `documentSentiment` en `sentenceSentiments` indien succesvol, of een `errorMessage` als dat niet het geval is. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -120,37 +121,38 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
     String text = "I had the best day of my life. I wish you were there with me.";
 
     DocumentSentiment documentSentiment = client.analyzeSentiment(text);
-        System.out.printf(
-            "Recognized document sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-            documentSentiment.getSentiment(),
-            documentSentiment.getSentimentScores().getPositive(),
-            documentSentiment.getSentimentScores().getNeutral(),
-            documentSentiment.getSentimentScores().getNegative());
+    System.out.printf(
+        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+        documentSentiment.getSentiment(),
+        documentSentiment.getConfidenceScores().getPositive(),
+        documentSentiment.getConfidenceScores().getNeutral(),
+        documentSentiment.getConfidenceScores().getNegative());
 
-        for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
-            System.out.printf(
-                "Recognized sentence sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
-                sentenceSentiment.getSentiment(),
-                sentenceSentiment.getSentimentScores().getPositive(),
-                sentenceSentiment.getSentimentScores().getNeutral(),
-                sentenceSentiment.getSentimentScores().getNegative());
-        }
+    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
+        System.out.printf(
+            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+            sentenceSentiment.getSentiment(),
+            sentenceSentiment.getConfidenceScores().getPositive(),
+            sentenceSentiment.getConfidenceScores().getNeutral(),
+            sentenceSentiment.getConfidenceScores().getNegative());
+    }
 }
 ```
 
 ### <a name="output"></a>Uitvoer
 
 ```console
-Recognized document sentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
-Recognized sentence sentiment: positive, positive score: 1.00, neutral score: 0.00, negative score: 0.00.
+Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
+Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
+
 ## <a name="language-detection"></a>Taaldetectie
 
-Maak een nieuwe functie met de naam `detectLanguageExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `detectLanguage()`-functie aan. Het geretourneerde `DetectLanguageResult`-object bevat een primaire taal gedetecteerd, een lijst met andere talen die zijn gedetecteerd als dit is geslaagd, of een `errorMessage` als dat niet het geval is.
+Maak een nieuwe functie met de naam `detectLanguageExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `detectLanguage()`-functie aan. Het geretourneerde `DetectLanguageResult`-object bevat een primaire taal, een lijst met andere talen die zijn gedetecteerd, indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 > [!Tip]
-> In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis van de invoer. U kunt de para meter `countryHint` gebruiken om een land nummer van twee letters op te geven. Standaard gebruikt de API de standaard countryHint om dit gedrag te verwijderen, kunt u deze para meter opnieuw instellen door deze waarde in te stellen op een lege teken reeks `countryHint = ""`. Als u een andere standaard instelling wilt instellen, stelt u de eigenschap `TextAnalyticsClientOptions.DefaultCountryHint` in en geeft u deze door tijdens de initialisatie van de client.
+> In sommige gevallen kan het lastig zijn om talen ondubbelzinnig te karakteriseren op basis van de invoer. U kunt parameter `countryHint` gebruiken om een landnummer van twee letters op te geven. Standaard gebruikt de API de standaard-countryHint US. Als u dit gedrag wilt verwijderen, kunt u deze parameter opnieuw instellen door deze waarde in te stellen op de lege tekenreeks `countryHint = ""`. Als u een andere standaardwaarde wilt instellen, stelt u eigenschap `TextAnalyticsClientOptions.DefaultCountryHint` in en geeft u deze door tijdens de initialisatie van de client.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -175,10 +177,10 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 
 > [!NOTE]
 > In versie `3.0-preview`:
-> * NER bevat afzonderlijke methoden voor het detecteren van persoonlijke gegevens. 
-> * Entiteits koppeling is een afzonderlijke aanvraag dan NER.
+> * NER omvat afzonderlijke methoden voor het detecteren van persoonlijke gegevens. 
+> * Entiteitskoppeling is een aanvraag die los staat van NER.
 
-Maak een nieuwe functie met de naam `recognizeEntitiesExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `recognizeEntities()`-functie aan. Het geretourneerde `RecognizeEntitiesResult`-object bevat een lijst met `NamedEntity` als dit lukt, of een `errorMessage` als dat niet het geval is.
+Maak een nieuwe functie met de naam `recognizeEntitiesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `recognizeEntities()`-functie aan. Het geretourneerde `RecognizeEntitiesResult`-object bevat een lijst met `NamedEntity` indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -188,13 +190,11 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 
     for (CategorizedEntity entity : client.recognizeEntities(text)) {
         System.out.printf(
-            "Recognized entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -202,13 +202,13 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Uitvoer
 
 ```console
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, offset: 26, length: 7, score: 0.92.
-Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, offset: 34, length: 9, score: 0.80.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
+Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
 ## <a name="using-ner-to-recognize-personal-information"></a>NER gebruiken om persoonlijke gegevens te herkennen
 
-Maak een nieuwe functie met de naam `recognizePIIEntitiesExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `recognizePiiEntities()`-functie aan. Het geretourneerde `RecognizePiiEntitiesResult`-object bevat een lijst met `NamedEntity` als dit lukt, of een `errorMessage` als dat niet het geval is. 
+Maak een nieuwe functie met de naam `recognizePIIEntitiesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `recognizePiiEntities()`-functie aan. Het geretourneerde `RecognizePiiEntitiesResult`-object bevat een lijst met `NamedEntity` indien succesvol, of een `errorMessage` als dat niet het geval is. 
 
 ```java
 static void recognizePIIEntitiesExample(TextAnalyticsClient client)
@@ -218,13 +218,11 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 
     for (PiiEntity entity : client.recognizePiiEntities(text)) {
         System.out.printf(
-            "Recognized personal identifiable information entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
+            "Recognized personal identifiable information entity: %s, entity category: %s, %nentity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
-            entity.getOffset(),
-            entity.getLength(),
-            entity.getScore());
+            entity.getSubCategory(),
+            entity.getConfidenceScore());
     }
 }
 ```
@@ -232,12 +230,13 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Uitvoer
 
 ```console
-Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), entity sub-category: N/A, offset: 33, length: 11, score: 0.85.
+Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), 
+entity sub-category: null, score: 0.85.
 ```
 
-## <a name="entity-linking"></a>Entiteit koppelen
+## <a name="entity-linking"></a>Entiteiten koppelen
 
-Maak een nieuwe functie met de naam `recognizeLinkedEntitiesExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `recognizeLinkedEntities()`-functie aan. Het geretourneerde `RecognizeLinkedEntitiesResult`-object bevat een lijst met `LinkedEntity` als dit lukt, of een `errorMessage` als dat niet het geval is. Aangezien gekoppelde entiteiten uniek worden geïdentificeerd, worden exemplaren van dezelfde entiteit gegroepeerd onder een `LinkedEntity`-object als een lijst van `LinkedEntityMatch`-objecten.
+Maak een nieuwe functie met de naam `recognizeLinkedEntitiesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `recognizeLinkedEntities()`-functie aan. Het geretourneerde `RecognizeLinkedEntitiesResult`-object bevat een lijst met `LinkedEntity` indien succesvol, of een `errorMessage` als dat niet het geval is. Aangezien gekoppelde entiteiten uniek worden geïdentificeerd, worden exemplaren van dezelfde entiteit gegroepeerd onder een `LinkedEntity`-object als een lijst met `LinkedEntityMatch`-objecten.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -253,16 +252,14 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
     for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
                 linkedEntity.getName(),
-                linkedEntity.getId(),
+                linkedEntity.getDataSourceEntityId(),
                 linkedEntity.getUrl(),
                 linkedEntity.getDataSource());
         System.out.printf("Matches:%n");
         for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
-            System.out.printf("Text: %s, Offset: %s, Length: %s, Score: %.2f.%n",
+            System.out.printf("Text: %s, Score: %.2f%n",
                     linkedEntityMatch.getText(),
-                    linkedEntityMatch.getOffset(),
-                    linkedEntityMatch.getLength(),
-                    linkedEntityMatch.getScore());
+                    linkedEntityMatch.getConfidenceScore());
         }
     }
 }
@@ -274,28 +271,28 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
 Matches:
-Text: Altair 8800, Offset: 11, Length: 116, Score: 0.78.
+Text: Altair 8800, Score: 0.78
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
 Matches:
-Text: Bill Gates, Offset: 10, Length: 25, Score: 0.55.
-Text: Gates, Offset: 5, Length: 161, Score: 0.55.
+Text: Bill Gates, Score: 0.55
+Text: Gates, Score: 0.55
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
 Matches:
-Text: Paul Allen, Offset: 10, Length: 40, Score: 0.53.
+Text: Paul Allen, Score: 0.53
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
 Matches:
-Text: Microsoft, Offset: 9, Length: 0, Score: 0.47.
-Text: Microsoft, Offset: 9, Length: 150, Score: 0.47.
+Text: Microsoft, Score: 0.47
+Text: Microsoft, Score: 0.47
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
 Matches:
-Text: April 4, Offset: 7, Length: 54, Score: 0.25.
+Text: April 4, Score: 0.25
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
 Matches:
-Text: BASIC, Offset: 5, Length: 89, Score: 0.28.
+Text: BASIC, Score: 0.28
 ```
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-Maak een nieuwe functie met de naam `extractKeyPhrasesExample()` die de client gaat gebruiken die u eerder hebt gemaakt en roep de `extractKeyPhrases()`-functie aan. Het geretourneerde `ExtractKeyPhraseResult`-object bevat een lijst met belang rijke woord groepen als dit is geslaagd, of een `errorMessage` als dat niet het geval is.
+Maak een nieuwe functie met de naam `extractKeyPhrasesExample()`, waarvoor de client wordt gebruikt die u eerder hebt gemaakt en roep de bijbehorende `extractKeyPhrases()`-functie aan. Het geretourneerde `ExtractKeyPhraseResult`-object bevat een lijst met sleuteltermen indien succesvol, of een `errorMessage` als dat niet het geval is.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)
