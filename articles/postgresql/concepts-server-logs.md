@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359577"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280493"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -108,9 +108,9 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | Resource | Naam van de server |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| Gelijk | Logboek registratie niveau, voor beeld: logboek, fout, kennisgeving |
-| Bericht | Primair logboek bericht | 
-| Domain | Server versie, voor beeld: post gres-10 |
+| Gelijk | Logboek registratie niveau, voor beeld: LOGBOEK, FOUT, KENNISGEVING |
+| Message | Primair logboek bericht | 
+| Domein | Server versie, voor beeld: post gres-10 |
 | Details | Secundair logboek bericht (indien van toepassing) |
 | ColumnName | De naam van de kolom (indien van toepassing) |
 | SchemaName | De naam van het schema (indien van toepassing) |

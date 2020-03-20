@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126809"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136139"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>E-mail verificatie uitschakelen tijdens de aanmelding van een klant met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -28,8 +28,11 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>De meta gegevens toevoegen aan het zelf-bebevestigde technische profiel
 
-Het technische profiel voor **LocalAccountSignUpWithLogonEmail** is een [zelfbevestigend](self-asserted-technical-profile.md), dat wordt aangeroepen tijdens de registratie stroom. Als u de e-mail verificatie wilt uitschakelen, stelt u de `EnforceEmailVerification` meta gegevens in op false. Overschrijf de technische profielen van LocalAccountSignUpWithLogonEmail in het extensie bestand. Zoek het `ClaimsProviders`-element. Voeg de volgende claim provider toe aan het `ClaimsProviders`-element:
+Het technische profiel voor **LocalAccountSignUpWithLogonEmail** is een [zelfbevestigend](self-asserted-technical-profile.md), dat wordt aangeroepen tijdens de registratie stroom. Als u de e-mail verificatie wilt uitschakelen, stelt u de `EnforceEmailVerification` meta gegevens in op false. Overschrijf de technische profielen van LocalAccountSignUpWithLogonEmail in het extensie bestand. 
 
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+1. Zoek het `ClaimsProviders`-element. Als het element niet bestaat, voegt u het toe.
+1. Voeg de volgende claim provider toe aan het `ClaimsProviders`-element:
 
 ```XML
 <ClaimsProvider>
@@ -46,7 +49,7 @@ Het technische profiel voor **LocalAccountSignUpWithLogonEmail** is een [zelfbev
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 4. Selecteer een **Framework voor identiteits ervaring**.

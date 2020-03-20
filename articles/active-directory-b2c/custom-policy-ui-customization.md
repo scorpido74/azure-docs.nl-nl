@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374853"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245991"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -30,11 +30,11 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. het extensie bestand wijzigen
+## <a name="4-modify-the-extensions-file"></a>4. Het extensie bestand wijzigen
 
 Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en de onderliggende elementen van het basis bestand naar het extensie bestand.
 
-1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Dit basis bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Dit basis bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Zoek en kopieer de volledige inhoud van het **ContentDefinitions** -element.
 1. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions. XML*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
 1. Plak de volledige inhoud van het **ContentDefinitions** -element dat u hebt gekopieerd als onderliggend element van het **Building Blocks** -object.
@@ -60,7 +60,7 @@ Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en
 
 1. Sla het bestand met extensies op.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. uw bijgewerkte aangepaste beleid uploaden en testen
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Uw bijgewerkte aangepaste beleid uploaden en testen
 
 ### <a name="51-upload-the-custom-policy"></a>5,1 het aangepaste beleid uploaden
 
