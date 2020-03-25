@@ -35,7 +35,7 @@
   items:
     - name: Codevoorbeelden
       href: /samples/browse/?products=azure-functions&term=durable
-    - name: Azure-CLI
+    - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: Concepten
   items:
@@ -83,7 +83,7 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Ontwikkelen
       items:
@@ -107,7 +107,7 @@
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Implementeren met nul uitvaltijd
           href: durable-functions-zero-downtime-deployment.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Diagnostiek
           href: durable-functions-diagnostics.md
@@ -115,9 +115,9 @@
           href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Prijzen
           href: durable-functions-billing.md
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/?products=azure-functions
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

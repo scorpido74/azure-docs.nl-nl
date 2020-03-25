@@ -10,7 +10,7 @@
       href: internet-analyzer-create-test-portal.md
     - name: Een Internet Analyzer-test maken met behulp van CLI
       href: internet-analyzer-cli.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Client insluiten
       href: internet-analyzer-embed-client.md
@@ -18,7 +18,7 @@
       href: internet-analyzer-custom-endpoint.md
     - name: Uw scorecard interpreteren
       href: internet-analyzer-scorecard.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen over Internet Analyzer
       href: internet-analyzer-faq.md

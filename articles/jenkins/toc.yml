@@ -65,7 +65,7 @@
   items:
     - name: Voorbeeldtaken en -scripts
       href: 'https://github.com/azure/jenkins'
-- name: Resources
+- name: Bronnen
   items:
     - name: Jenkins-invoegtoepassingen voor Azure
       href: jenkins-plugins.md

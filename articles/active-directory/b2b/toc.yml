@@ -103,7 +103,7 @@
       items:
         - name: API voor uitnodigingenbeheer
           href: customize-invitation-api.md
-    - name: Resources
+    - name: Bronnen
       items:
         - name: Veelgestelde vragen
           href: faq.md

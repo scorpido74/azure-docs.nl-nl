@@ -10,10 +10,10 @@ ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
 ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77586645"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Meer informatie over het toepassen van reserveringskorting op Azure Disk Storage
@@ -50,7 +50,7 @@ Stel dat u in een bepaald uur binnen uw reserveringsperiode in totaal 200 P30 Pr
 
 ![Voorbeeld van onderbenutting, overbenutting of gestaffeld gebruik](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

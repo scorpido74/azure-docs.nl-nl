@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199514"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Uw Azure-abonnement wijzigen in een andere aanbieding
@@ -94,7 +94,7 @@ Er is geen servicedowntime voor gebruikers die zijn gekoppeld aan het abonnement
 
 Als u overschakelt naar een andere aanbieding, worden alle eventuele [limiet- of quotumverhogingen boven de standaardlimiet](../../azure-portal/supportability/resource-manager-core-quotas-request.md) opnieuw ingesteld. Er is geen servicedowntime, zelfs niet als u meer resources hebt dan de standaardlimiet. Als u bijvoorbeeld 200 kernen gebruikt in uw abonnement, wordt uw kernquotum weer opnieuw ingesteld op de standaard van 20 kernen. De VM's die gebruikmaken van de 200 kernen, worden niet beïnvloed en blijven actief. Als u echter niet nog een aanvraag indient voor quotumverhoging, kunt u niet meer kernen inrichten.
 
-#### <a name="billing"></a>Billing
+#### <a name="billing"></a>Facturering
 
 Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaande kosten. Uw abonnement wordt vervolgens gefactureerd volgens de prijsvoorwaarden van de nieuwe aanbieding. De factureringsdatum van uw abonnement wordt gewijzigd in de datum waarop u de aanbieding hebt gewijzigd. Gebruiks- en factureringsgegevens van vóór de wijziging, worden niet bewaard, daarom raden we u aan een kopie te maken voordat u overschakelt.
 
@@ -108,7 +108,7 @@ Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaand
 * U kunt de resources rechtstreeks naar het nieuwe abonnement migreren. Zie [resources verplaatsen naar een nieuwe resourcegroep of naar een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 * Zie [Eigendom van een Azure-abonnement overdragen](billing-subscription-transfer.md) voor meer informatie over het overdragen van het eigendom van een Azure-abonnement
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

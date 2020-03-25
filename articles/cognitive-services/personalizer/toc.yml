@@ -6,7 +6,7 @@
     - name: Wat is Personalizer?
       href: what-is-personalizer.md
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
-    - name: Nieuwe functies
+    - name: Wat is er nieuw
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
 - name: Snelstartgidsen
@@ -73,7 +73,7 @@
   items:
     - name: Voorbeelden
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
-    - name: Naslaginformatie over REST-API
+    - name: Naslaginformatie over REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: SDK's
       items:
@@ -99,7 +99,7 @@
               href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
             - name: Pypi-pakket
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
-- name: Resources
+- name: Bronnen
   items:
     - name: Problemen oplossen
       href: troubleshooting.md
@@ -107,6 +107,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Versleuteling
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure-roadmap
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Prijzen

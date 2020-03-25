@@ -70,7 +70,7 @@
   items:
     - name: Azure CLI-invoegtoepassing
       href: spring-cloud-cli-reference.md
-    - name: Resources
+    - name: Bronnen
       href: spring-cloud-resources.md
     - name: Veelgestelde vragen
       href: spring-cloud-faq.md

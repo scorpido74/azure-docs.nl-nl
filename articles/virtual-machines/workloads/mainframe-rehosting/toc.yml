@@ -40,7 +40,7 @@
           href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: IBM Db2 pureScale implementeren
           href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-    - name: Resources
+    - name: Bronnen
       items:
         - name: Technische documenten
           href: mainframe-white-papers.md

@@ -76,7 +76,7 @@
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Gelaagde beveiliging gebruiken
           href: app-service-app-service-environment-layered-security.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

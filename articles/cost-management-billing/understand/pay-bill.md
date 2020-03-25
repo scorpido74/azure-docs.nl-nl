@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200143"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Uw factuur voor Microsoft Azure betalen
@@ -30,7 +30,7 @@ Als uw standaardbetalingsmethode een creditcard is, worden kosten elke factureri
 
 U moet eigenaar van een factureringsprofiel, inzender of factuurbeheerder zijn om facturen te kunnen betalen in Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **kostenbeheer en facturering**.
 1. Selecteer **Facturen** onder Facturering in het menu aan de linkerkant.
 1. Als een van de facturen vervallen of achterstallig is, ziet u een blauwe koppeling **Nu betalen** voor die factuur. Selecteer **Nu betalen**.

@@ -1,25 +1,25 @@
 ---
 title: 'Zelfstudie: kosten van gereserveerde instanties optimaliseren met Cloudyn in Azure'
 description: In deze zelfstudie leert u hoe u de kosten van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 22a435a63c4ff649fe428e031bca7beecdbc46d1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201115"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463710"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: Gereserveerde instanties optimaliseren
+# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: gereserveerde instanties optimaliseren
 
 In deze zelfstudie leert u hoe u de kosten en het gebruik van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren met Cloudyn. Een gereserveerde instantie bij een provider van cloudservices is een verplichting tot een langetermijncontract waarbij u zich vooraf verplicht tot toekomstig gebruik van de virtuele machine. Dit kan mogelijk aanzienlijke besparingen bieden in vergelijking met het prijsmodel voor virtuele machines waarbij u betaalt op basis van gebruik. Mogelijke besparingen worden alleen gerealiseerd wanneer u de capaciteit van uw gereserveerde instanties volledig gebruikt.
 
@@ -35,7 +35,9 @@ In deze zelfstudie wordt uitgelegd hoe gereserveerde instanties van Azure en AWS
 > * Aanbevolen gereserveerde instanties aanschaffen
 > * Niet-gebruikte gereserveerde instanties aanpassen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200211"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237901"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Terminologie in uw factuur voor een Microsoft-klantovereenkomst
 
@@ -33,7 +33,7 @@ De volgende secties bevatten belangrijke termen die op uw factuur worden gebruik
 
 Het **factureringsoverzicht** ziet u bovenaan de eerste pagina en bevat informatie over uw factureringsprofiel en hoe u betaalt.
 
-![Gedeelte Factureringsoverzicht](./media/mca-understand-your-invoice/invoicesummary.png)
+![Sectie factuuroverzicht](./media/mca-understand-your-invoice/invoicesummary.png)
 
 | Termijn | Beschrijving |
 | --- | --- |
@@ -96,7 +96,7 @@ Als er services van derden op uw factuur worden vermeld, worden de naam en het a
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

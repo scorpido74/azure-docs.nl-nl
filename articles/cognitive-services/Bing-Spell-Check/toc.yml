@@ -32,7 +32,7 @@
   items:
     - name: Een spellingcontrole-web-app bouwen
       href: tutorials/spellcheck.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Upgrade uitvoeren van v5 naar v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -67,7 +67,7 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Resources
+- name: Bronnen
   items:
     - name: Analytische gegevens voor Bing Spellingcontrole-API
       maintainContext: true

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e885abcd997a4764090c5e8c8ce7ad14c0963220
-  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79086717"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80129811"
 highlightedContent:
   items:
   - title: Introductiehandleiding voor Azure-ontwikkelaars
@@ -30,7 +30,7 @@ highlightedContent:
   - title: Uw organisatie voorbereiden met het Cloud Adoption Framework
     itemType: overview
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
+  - title: Ontwikkel uw vaardigheden met Microsoft Learn
     itemType: learn
     url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
@@ -304,7 +304,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: sql-data-warehouse/index.yml
+    url: synapse-analytics/sql-data-warehouse/index.yml
   - title: Data Catalog
     summary: Meer waarde halen uit uw bedrijfsspecifieke gegevensassets
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
@@ -389,7 +389,7 @@ productDirectory:
     - integration
     - iot
     url: logic-apps/index.yml
-  - title: API Apps
+  - title: API-apps
     summary: Eenvoudig cloud-API's bouwen en gebruiken
     imageSrc: https://static.docs.com/ui/media/product/azure/api-apps.svg
     azureCategories:
@@ -490,8 +490,8 @@ productDirectory:
     azureCategories:
     - compute
     url: virtual-machines/workloads/sap/hana-overview-architecture.md
-  - title: Service Fabric
-    summary: Microservices ontwikkelen en containers indelen in Windows of Linux
+  - title: Infrastructuur van service
+    summary: Microservices ontwikkelen en containers indelen op Windows of Linux
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
     azureCategories:
     - compute
@@ -779,7 +779,7 @@ productDirectory:
     - identity
     - security
     url: https://docs.microsoft.com/azure/information-protection/
-  - title: API Management
+  - title: API-beheer
     summary: API's veilig en op schaal publiceren naar ontwikkelaars, partners en werknemers
     imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
     azureCategories:
@@ -800,7 +800,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
     azureCategories:
     - integration
-    url: service-bus/index.md
+    url: service-bus-messaging/index.yml
   - title: Azure Digital Twins (preview)
     summary: Bouw IoT-oplossingen van de volgende generatie voor ruimtelijke intelligentie
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
@@ -846,7 +846,7 @@ productDirectory:
     azureCategories:
     - iot
     url: time-series-insights/index.yml
-  - title: Notification Hubs
+  - title: Meldingshubs
     summary: Pushmeldingen verzenden naar elk platform, vanuit elke back-end
     imageSrc: https://static.docs.com/ui/media/product/azure/notification-hubs.svg
     azureCategories:
@@ -867,7 +867,7 @@ productDirectory:
     - iot
     - security
     url: asc-for-iot/index.yml
-  - title: Automation
+  - title: Automatisering
     summary: Cloudbeheer vereenvoudigen met procesautomatisering
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
     azureCategories:
@@ -911,7 +911,7 @@ productDirectory:
     - management-and-governance
     - migration
     url: migrate/index.yml
-  - title: Azure Policy
+  - title: Beleid van Azure
     summary: Op grote schaal corporate governance en standaarden implementeren voor Azure-resources
     imageSrc: https://static.docs.com/ui/media/product/azure/policy.svg
     azureCategories:
@@ -1058,7 +1058,7 @@ productDirectory:
     - networking
     url: bastion/index.yml
   - title: Azure DDoS Protection
-    summary: Toepassingen beveiligen tegen DDoS-aanvallen (gedistribueerde Denial-of-Service)
+    summary: Beveilig toepassingen tegen DDoS-aanvallen (gedistribueerde Denial-of-Service)
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
     azureCategories:
     - networking
@@ -1106,7 +1106,7 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
-  - title: Virtual Network
+  - title: Virtueel netwerk
     summary: Privénetwerken inrichten, optioneel verbinding maken met on-premises datacenters
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
     azureCategories:
@@ -1203,7 +1203,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: Storage
+  - title: Opslag
     summary: Maak een veilige, zeer schaalbare cloudopslag voor uw gegevens, apps en workloads
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -1220,7 +1220,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
     azureCategories:
     - storage
-    url: storsimple/index.md
+    url: storsimple/index.yml
   - title: Azure SignalR Service
     summary: Voeg eenvoudig realtime webfuncties toe
     imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg

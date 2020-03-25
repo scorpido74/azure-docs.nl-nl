@@ -1,5 +1,5 @@
 ---
-title: Bestedingslimiet van Azure | Microsoft Docs
+title: Bestedingslimiet voor Azure
 description: In dit artikel wordt beschreven hoe een bestedingslimiet van Azure werkt en hoe u deze kunt verwijderen.
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361015"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238054"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
 
@@ -39,8 +39,8 @@ Als u een gratis Azure-account hebt, raadpleegt u [Uw Azure-abonnement upgraden]
 
 <a id="remove"></a>
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
 
@@ -83,8 +83,8 @@ De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en servi
 Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden. U kunt deze functie gebruiken om uw bestedingslimiet automatisch aan het begin van de volgende factureringsperiode in te schakelen.
 
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
 
@@ -107,7 +107,7 @@ Aangepaste bestedingslimieten zijn niet beschikbaar.
 
 ![Waarschuwing Marketplace-aankoop](./media/spending-limit/marketplace-warning01.png)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

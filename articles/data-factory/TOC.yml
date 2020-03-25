@@ -481,7 +481,7 @@
           href: control-flow-validation-activity.md
         - name: Wachtactiviteit
           href: control-flow-wait-activity.md
-        - name: Web Activity
+        - name: Webactiviteit
           href: control-flow-web-activity.md
         - name: Webhook-activiteit
           href: control-flow-webhook-activity.md
@@ -651,7 +651,7 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Pakketten uitvoeren in Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Scenario's
+- name: Scenario 's
   items:
     - name: Gegevensmigratie voor data lake en EDW
       items:
@@ -689,7 +689,7 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory?view=azure-python
-- name: Resources
+- name: Bronnen
   items:
     - name: Whitepapers
       href: whitepapers.md

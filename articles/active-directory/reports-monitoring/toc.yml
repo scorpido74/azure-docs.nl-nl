@@ -45,7 +45,7 @@
       href: concept-reporting-api.md
     - name: Azure AD-logboeken in Azure Monitor
       href: concept-activity-logs-azure-monitor.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Rapporten

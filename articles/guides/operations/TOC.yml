@@ -50,7 +50,7 @@
       items:
         - name: Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden
           href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-    - name: Resources
+    - name: Bronnen
       items:
         - name: Azure-productcatalogus
           href: 'https://docs.microsoft.com/azure/#pivot=products'

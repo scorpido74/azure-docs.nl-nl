@@ -19,7 +19,7 @@
       href: /azure/virtual-machines/linux/docker-machine
     - name: Docker-containerregister
       href: /azure/container-registry/container-registry-get-started-portal
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

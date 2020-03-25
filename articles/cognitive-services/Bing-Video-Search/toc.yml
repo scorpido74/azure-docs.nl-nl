@@ -43,7 +43,7 @@
   items:
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Meer inzicht krijgen dankzij video
       href: video-insights.md
@@ -84,7 +84,7 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'

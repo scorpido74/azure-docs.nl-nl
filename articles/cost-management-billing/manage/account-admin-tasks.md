@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200996"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Taken van accountbeheerders in de Azure-portal
@@ -26,9 +26,9 @@ U moet de accountbeheerder zijn om deze taken te kunnen uitvoeren.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Naar de betalingswijzen voor uw abonnement navigeren
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
@@ -61,7 +61,7 @@ U kunt de actieve betalingswijze wijzigen door een nieuwe creditcard toe te voeg
 
     ![Schermopname van het selectievakje waarmee een kaart kan worden ingesteld als de actieve betalingswijze.](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 Als u de creditcard die al is opgeslagen, wilt toevoegen om uw actieve betalingswijze te wijzigen, gaat u als volgt te werk:
 
@@ -116,8 +116,8 @@ Met de bestedingslimiet in Azure voorkomt u dat u uw tegoed overschrijdt. U kunt
 
 De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen en tarieven voor betalen per gebruik. Zie de [volledige lijst met Azure-abonnementstypen en de beschikbaarheid van de bestedingslimiet](https://azure.microsoft.com/support/legal/offer-details/).
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
@@ -144,8 +144,8 @@ De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen
 
 Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-portal tegoed aan uw abonnement toevoegen door een productcode in te wisselen of tegoed te kopen met een creditcard.
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 

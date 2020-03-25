@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: tamram
 ms.openlocfilehash: b6360619b7666ab7836a751491e05e379df32d93
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199191"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>Leer hoe de reserveringskorting wordt toegepast op Azure Storage
@@ -47,7 +47,7 @@ Stel dat u in een bepaald uur binnen de reserveringsperiode slechts 80 TB van uw
 
 Stel dat u in een bepaald uur binnen de reserveringsperiode 101 TB aan opslagcapaciteit hebt gebruikt. Op 100 TB aan gegevens is de reserveringskorting van toepassing en voor de resterende 1 TB gelden betalen-per-gebruiktarieven. Verandert uw gebruik het volgende uur in 100 TB, dan wordt al het gebruik door de reservering gedekt.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

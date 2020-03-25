@@ -45,7 +45,7 @@
       href: service-fabric-mesh-networks-and-gateways.md
     - name: Schaalbaarheid van service
       href: service-fabric-mesh-scalability.md
-    - name: Controle en diagnose
+    - name: Bewaking en diagnose
       href: service-fabric-mesh-monitoring-diagnostics.md
     - name: Status opslaan
       href: service-fabric-mesh-storing-state.md
@@ -87,7 +87,7 @@
       href: service-fabric-mesh-reference-maven.md
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.servicefabricmesh/allversions
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: service-fabric-mesh-faq.md

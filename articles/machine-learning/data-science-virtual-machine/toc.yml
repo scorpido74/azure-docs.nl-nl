@@ -55,7 +55,7 @@
       href: dsvm-common-identity.md
     - name: Referenties voor resourcetoegang beveiligen
       href: dsvm-secure-access-keys.md
-- name: Resources
+- name: Bronnen
   items:
     - name: MSDN-forum
       href: 'https://social.microsoft.com/Forums/home?forum=dsvm'

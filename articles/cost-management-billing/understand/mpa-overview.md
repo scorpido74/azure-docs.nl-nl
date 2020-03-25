@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 45dbf43966b71d7db7ada8be7704f6b3b37aab25
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199174"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Aan de slag met uw factureringsrekening voor Microsoft Partner-overeenkomst
@@ -73,7 +73,7 @@ Indirecte providers in het CSP-[model met twee lagen](https://docs.microsoft.com
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Toegang tot een Microsoft Partner-overeenkomst controleren
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 

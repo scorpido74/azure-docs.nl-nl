@@ -50,7 +50,7 @@
       href: how-to-migrate-ssis-packages.md
     - name: SSIS-pakketten opnieuw implementeren in een beheerd exemplaar van Azure SQL DB
       href: how-to-migrate-ssis-packages-managed-instance.md
-- name: Resources
+- name: Bronnen
   expanded: true
   items:
     - name: Status van het databasemigratiescenario

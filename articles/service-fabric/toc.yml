@@ -1,4 +1,4 @@
-- name: Documentatie over Service Fabric
+- name: Documentatie voor Service Fabric
   href: index.yml
 - name: Overzicht
   items:
@@ -99,7 +99,7 @@
       href: service-fabric-best-practices-capacity-scaling.md
     - name: Infrastructure als code
       href: service-fabric-best-practices-infrastructure-as-code.md
-    - name: Controle en diagnose
+    - name: Bewaking en diagnose
       href: service-fabric-best-practices-monitoring.md
     - name: Toepassingsontwerp
       href: service-fabric-best-practices-applications.md
@@ -316,15 +316,13 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Een cluster in balans brengen
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Subclusters
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Beperking
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Servicebeweging
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: Services voor automatisch schalen
               href: service-fabric-cluster-resource-manager-autoscaling.md
-    - name: Controle en diagnose
+    - name: Bewaking en diagnose
       items:
         - name: Bewakingsoverzicht
           href: service-fabric-diagnostics-overview.md
@@ -872,7 +870,7 @@
           href: service-fabric-service-model-schema-element-groups.md
     - name: Omgevingsvariabelen
       href: service-fabric-environment-variables-reference.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -1,16 +1,16 @@
 ---
 title: 'Een extra Azure-abonnement maken:'
-description: Lees hier meer over het toevoegen van een nieuw Azure-abonnement in de Azure-portal.
+description: Meer informatie over het toevoegen van een nieuw Azure-abonnement in de Azure-portal.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200843"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
@@ -50,7 +50,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 
 |Veld  |Definitie  |
 |---------|---------|
-|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 |Aanbieding     | Selecteer EA Dev/Test als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Enterprise. De DevTest-aanbieding moet zijn ingeschakeld voor uw inschrijvingsaccount om EA Dev/Test-abonnementen te maken.|
 
 **Microsoft-klantovereenkomst**
@@ -60,7 +60,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |Factureringsprofiel     | De kosten voor uw abonnement worden gefactureerd op het factureringsprofiel dat u selecteert. Als u toegang hebt tot slechts één factureringsprofiel, wordt de selectie grijs weergegeven.     |
 |Factuursectie     | De kosten voor uw abonnement worden weergegeven in deze factuursectie van het factureringsprofiel. Als u toegang hebt tot slechts één factuursectie, wordt de selectie grijs weergegeven.  |
 |Plannen     | Selecteer Microsoft Azure Plan for DevTest als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Plan. Als er slechts één plan is ingeschakeld voor het factureringsprofiel, wordt de selectie grijs weergegeven.  |
-|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 
 **Microsoft Partner-overeenkomst**
 
@@ -68,7 +68,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |---------|---------|
 |Klant    | Het abonnement wordt gemaakt voor de klant die u selecteert. Als u slechts één klant hebt, wordt de selectie grijs weergegeven.  |
 |Reseller    | De reseller die services levert aan de klant. Dit is een optioneel veld dat alleen van toepassing is op indirecte providers in het CSP-model met twee lagen. |
-|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programmatisch een extra Azure-abonnement maken
 
@@ -81,6 +81,6 @@ U kunt ook programmatisch extra abonnementen maken. Zie [Programmatisch Azure-ab
 - [Beheergroepen maken voor resource-organisatie en -beheer](../../governance/management-groups/create.md)
 - [Uw Azure-abonnement opzeggen](cancel-azure-subscription.md)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

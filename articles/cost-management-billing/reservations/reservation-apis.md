@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c2e590f011c92df6aa942e8e1fc799023f15750f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200347"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237578"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API's voor automatisering van Azure-reserveringen
 
@@ -113,5 +113,5 @@ Gebruik de API [Reservering - Bijwerken](/rest/api/reserved-vm-instances/reserva
 - [Inzicht in de manier waarop andere reserveringskortingen worden toegepast](understand-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
-- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](reserved-instance-windows-software-costs.md)
 - [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

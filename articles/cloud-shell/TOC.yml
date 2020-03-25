@@ -20,7 +20,7 @@
       items:
         - name: Een uitvoeringsplan maken
           href: example-terraform-bash.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: PowerShell Cloud Shell voor Windows-gebruikers
       href: cloud-shell-windows-users.md
@@ -38,11 +38,11 @@
   href: troubleshooting.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure
     - name: Azure PowerShell
       href: /powershell/azure
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'

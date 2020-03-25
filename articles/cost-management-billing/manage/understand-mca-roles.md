@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199497"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238037"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure
 
@@ -178,7 +178,7 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Kostenbeheer en facturering**.
+2. Zoek naar **Cost Management en facturering**.
 
    ![Schermopname van de zoekopdracht in de Azure-portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
@@ -199,12 +199,12 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over uw factureringsrekening:
+Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
 
 - [Aan de slag met uw factureringsrekening voor een Microsoft-klantovereenkomst](../understand/mca-overview.md)
 - [Een Azure-abonnement voor uw factureringsrekening voor een Microsoft-klantovereenkomst maken](create-subscription.md)

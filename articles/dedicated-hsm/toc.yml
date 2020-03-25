@@ -22,11 +22,11 @@
       href: physical-security.md
     - name: Ondersteuning
       href: supportability.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een implementatie-architectuur kiezen
       href: deployment-architecture.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: faq.md

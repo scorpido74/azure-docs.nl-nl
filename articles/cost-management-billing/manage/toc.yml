@@ -83,11 +83,9 @@
       items:
         - name: Aan de slag in de Azure EA-portal
           href: ea-portal-get-started.md
-        - name: Meer informatie over uw EA-factuur
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: EA-rollen in Azure
           href: understand-ea-roles.md
-        - name: Beheer van Azure EA Portal
+        - name: Beheer van Azure EA-portal
           href: ea-portal-administration.md
         - name: EA-taken in Microsoft-klantovereenkomst
           href: mca-enterprise-operations.md

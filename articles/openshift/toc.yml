@@ -41,6 +41,8 @@
           href: howto-azure-monitor-v4.md
     - name: Een zelfstandige Prometheus implementeren in een Azure Red Hat OpenShift-cluster
       href: howto-deploy-prometheus.md
+    - name: Projecten beheren in een Azure Red Hat OpenShift-cluster
+      href: howto-manage-projects.md
     - name: Een Azure Red Hat OpenShift-privécluster maken
       href: howto-create-private-cluster.md
     - name: Bewaking en registratie
@@ -61,7 +63,7 @@
       href: /cli/azure/openshift
     - name: REST API's voor Azure Red Hat OpenShift
       href: /rest/api/openshift
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: openshift-faq.md

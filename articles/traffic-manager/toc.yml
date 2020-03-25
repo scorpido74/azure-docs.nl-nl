@@ -59,7 +59,7 @@
       href: traffic-manager-how-it-works.md
     - name: Veelgestelde vragen
       href: traffic-manager-FAQs.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Prestatieroutering configureren in Traffic Manager
       href: traffic-manager-configure-performance-routing-method.md
@@ -119,15 +119,7 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: Verwant
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

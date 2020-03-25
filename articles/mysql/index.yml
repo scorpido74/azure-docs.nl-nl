@@ -9,10 +9,10 @@ metadata:
   ms.service: mysql
   ms.topic: landing-page
   ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/04/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "70309289"
 landingContent:
 - title: Over Azure Database for MySQL
@@ -99,21 +99,21 @@ landingContent:
     links:
     - text: Verbinding maken met MySQL Workbench
       url: connect-workbench.md
-    - text: Verbinding maken met PHP
+    - text: Verbinding maken met behulp van PHP
       url: connect-php.md
-    - text: Verbinding maken met Java
+    - text: Verbinding maken met behulp van Java
       url: connect-java.md
-    - text: Verbinding maken met .NET
+    - text: Verbinding maken met behulp van .NET
       url: connect-csharp.md
-    - text: Verbinding maken met Python
+    - text: Verbinding maken met behulp van Python
       url: connect-python.md
     - text: Verbinding maken met Node.js
       url: connect-nodejs.md
-    - text: Verbinding maken met Ruby
+    - text: Verbinding maken met behulp van Ruby
       url: connect-ruby.md
     - text: Verbinding maken met C++
       url: connect-cpp.md
-    - text: Verbinding maken met Go
+    - text: Verbinding maken met behulp van Go
       url: connect-go.md
 - title: Gegevens repliceren
   linkLists:
@@ -129,17 +129,17 @@ landingContent:
       url: howto-data-in-replication.md
     - text: Een leesreplica maken met de Azure-portal
       url: howto-read-replicas-portal.md
-- title: Code met programmeer-API's
+- title: Coderen met programmeer-API's
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure CLI-scripts voor algemen taken
+    - text: Azure CLI-scripts voor algemene taken
       url: /azure/mysql/sample-scripts-azure-cli
   - linkListType: reference
     links:
-    - text: Azure CLI-ontwikkelaarsreferentie
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
       url: /rest/api/mysql/
-    - text: REST API-ontwikkelaarsreferentie
+    - text: Naslaginformatie voor REST API-ontwikkelaars
       url: /cli/azure/mysql
     - text: Azure Resource Manager-sjablonen
       url: /azure/templates/microsoft.dbformysql/allversions

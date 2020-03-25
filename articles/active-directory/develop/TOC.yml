@@ -433,7 +433,7 @@
       items:
         - name: Overzicht
           href: authentication-national-cloud.md
-        - name: Verificatie
+        - name: Authentication
           href: msal-national-cloud.md
     - name: Automatisch gebruikers inrichten (SCIM)
       items:
@@ -443,7 +443,7 @@
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
 - name: Instructiegidsen
   items:
-    - name: Verificatie
+    - name: Authentication
       items:
         - name: Rolclaim configureren
           href: active-directory-enterprise-app-role-management.md
@@ -563,7 +563,7 @@
       href: reference-aadsts-error-codes.md
     - name: Wijzigingen die fouten veroorzaken
       href: reference-breaking-changes.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Woordenlijst
       href: developer-glossary.md

@@ -108,7 +108,7 @@
       href: 'https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
     - name: Bronnen en objectlimieten
       href: analysis-services-capacity-limits.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Voorbeelden
       href: analysis-services-samples.md

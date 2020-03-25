@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 3480f60b354de94f604dab1ea1f16d3b0ad59379
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199344"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Kosten van software zijn niet inbegrepen in Azure Reserved Virtual Machine Instances
@@ -72,6 +72,6 @@ Raadpleeg voor meer informatie over reserveringen voor Azure de volgende artikel
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

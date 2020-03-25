@@ -17,7 +17,7 @@
           href: troubleshoot-deployment-new-vm-linux.md
         - name: Windows
           href: troubleshoot-deployment-new-vm-windows.md
-    - name: Een virtuele machine opnieuw implementeren
+    - name: Een VM opnieuw implementeren
       items:
         - name: Linux
           href: redeploy-to-new-node-linux.md
@@ -156,13 +156,13 @@
           items:
             - name: PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: Azure Portal
+            - name: Azure-portal
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: CLI
               href: troubleshoot-recovery-disks-linux.md
-            - name: Azure Portal
+            - name: Azure-portal
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Apparaatnamen zijn gewijzigd
           href: troubleshoot-device-names-problems.md

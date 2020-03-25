@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199854"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
@@ -38,8 +38,8 @@ U kunt het standaardtegoed van uw Azure-abonnement wijzigen in een nieuwe credit
 
 U kunt de standaardcreditcard van uw abonnement als volgt vervangen door een andere:
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -55,14 +55,14 @@ U kunt de standaardcreditcard van uw abonnement als volgt vervangen door een and
 
 1. Schakel het selectievakje naast **Instellen als mijn actieve betalingswijze** boven het formulier in zodat deze creditcard de actieve betalingswijze wordt. Deze kaart wordt de actieve betalingswijze voor alle abonnementen waarvoor dezelfde kaart wordt gebruikt als voor het geselecteerde abonnement.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 Als u een foutmelding krijgt nadat u de creditcard hebt toegevoegd, raadpleegt u [Creditcard is geweigerd tijdens de registratie](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
 U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard die al in uw account is opgeslagen door de volgende stappen uit te voeren:
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -79,8 +79,8 @@ U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard d
 
 Als uw creditcard wordt vernieuwd en het nummer blijft hetzelfde, werkt u de bestaande creditcardgegevens bij , zoals de verloopdatum. Als uw creditcardnummer is gewijzigd, omdat de creditcard is verloren, gestolen of verlopen, volgt u de stappen in de sectie [Een creditcard toevoegen als betalingswijze](#addcard). U hoeft de CVV niet bij te werken.
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -97,7 +97,7 @@ Als uw creditcard wordt vernieuwd en het nummer blijft hetzelfde, werkt u de bes
 
 ### <a name="delete-a-credit-card-from-the-account"></a>Een creditcard verwijderen uit het account
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Kostenbeheer en facturering** aan de linkerkant van de pagina.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
@@ -191,7 +191,7 @@ Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het 
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

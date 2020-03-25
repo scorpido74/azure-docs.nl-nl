@@ -5,7 +5,7 @@
   items:
     - name: Wat is Custom Vision?
       href: home.md
-    - name: Nieuwe functies
+    - name: Wat is er nieuw
       href: whats-new.md
 - name: Snelstartgidsen
   items:
@@ -97,7 +97,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
         - name: Go - Voorspelling
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
-- name: Resources
+- name: Bronnen
   items:
     - name: Voorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'

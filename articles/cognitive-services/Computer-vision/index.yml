@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: e7c04f587f900342031f25210f6640b46fbc358b
-  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+  ms.openlocfilehash: 428ff52a94c41a564e023d859f70af6eb56df7fa
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/01/2020
-  ms.locfileid: "78207078"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80131689"
 landingContent:
 - title: Over Computer Vision
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
       url: Home.md
   - linkListType: whats-new
     links:
-    - text: Nieuwe functies
+    - text: Wat is er nieuw
       url: whats-new.md
   - linkListType: video
     links:
@@ -41,15 +41,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: De .NET SDK gebruiken
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: De Python-SDK gebruiken
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: De Java-SDK gebruiken
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: De Node-SDK gebruiken
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go-SDK gebruiken
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Objecten in afbeeldingen detecteren
   linkLists:
   - linkListType: concept
@@ -59,15 +59,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: De .NET SDK gebruiken
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: De Python-SDK gebruiken
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: De Java-SDK gebruiken
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: De Node-SDK gebruiken
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go-SDK gebruiken
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Inhoudstags toepassen op afbeeldingen
   linkLists:
   - linkListType: concept
@@ -77,15 +77,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: De .NET SDK gebruiken
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: De Python-SDK gebruiken
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: De Java-SDK gebruiken
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: De Node-SDK gebruiken
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go-SDK gebruiken
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Containers gebruiken
   linkLists:
   - linkListType: get-started
@@ -111,15 +111,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: De .NET SDK gebruiken
-      url: quickstarts-sdk/csharp-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
     - text: De Python-SDK gebruiken
-      url: quickstarts-sdk/python-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
     - text: De Java-SDK gebruiken
-      url: quickstarts-sdk/java-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
     - text: De Node-SDK gebruiken
-      url: quickstarts-sdk/node-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go-SDK gebruiken
-      url: quickstarts-sdk/go-sdk.md
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
 - title: Naslaginformatie
   linkLists:
   - linkListType: reference

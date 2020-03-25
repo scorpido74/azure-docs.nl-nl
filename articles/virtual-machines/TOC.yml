@@ -24,9 +24,9 @@
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
     - name: Windows-VM's met klassieke implementatie
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

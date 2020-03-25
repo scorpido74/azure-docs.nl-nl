@@ -8,7 +8,7 @@
       href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
     - name: Ondersteunde producten
       href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Virtuele Linux-machines beheren
       items:
@@ -61,7 +61,7 @@
       href: ./cloud-partner-portal-manage-users.md
     - name: Ondersteuning krijgen
       href: ./cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

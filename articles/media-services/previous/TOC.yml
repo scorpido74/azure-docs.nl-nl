@@ -33,7 +33,7 @@
           href: media-services-powershell-create-and-configure-aad-app.md
     - name: Video op aanvraag leveren
       items:
-        - name: Azure Portal
+        - name: Azure-portal
           href: media-services-portal-vod-get-started.md
         - name: .NET SDK
           href: media-services-dotnet-get-started.md
@@ -43,11 +43,11 @@
           href: media-services-rest-get-started.md
     - name: Live streamen
       items:
-        - name: Azure Portal
+        - name: Azure-portal
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Verouderde onderdelen
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
@@ -75,11 +75,11 @@
         - name: Streaming-eindpunten
           href: media-services-streaming-endpoints-overview.md
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-manage-streaming-endpoints.md
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
-        - name: Storage
+        - name: Opslag
           items:
             - name: Media Services bijwerken na gebruik toegangssleutels voor opslag
               href: media-services-roll-storage-access-keys.md
@@ -100,7 +100,7 @@
       items:
         - name: Bestanden uploaden in een account
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
@@ -127,7 +127,7 @@
               href: media-services-autogen-bitrate-ladder-with-mes.md
             - name: Coderen met Media Encoder Standard
               items:
-                - name: Azure Portal
+                - name: Azure-portal
                   href: media-services-portal-encode.md
                 - name: .NET
                   href: media-services-dotnet-encode-with-media-encoder-standard.md
@@ -241,14 +241,14 @@
           items:
             - name: Aanbevolen on-premises coderingsprogramma's
               href: media-services-recommended-encoders.md
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-live-passthrough-get-started.md
             - name: .NET
               href: media-services-dotnet-live-encode-with-onpremises-encoders.md
         - name: Live streamen met cloudcoderingsprogramma’s
           href: media-services-manage-live-encoder-enabled-channels.md
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-creating-live-encoder-enabled-channel.md
             - name: .NET
               href: media-services-dotnet-creating-live-encoder-enabled-channel.md
@@ -306,7 +306,7 @@
               href: media-services-rest-configure-asset-delivery-policy.md
         - name: Autorisatiebeleid voor inhoudssleutels configureren
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-configure-content-key-auth-policy.md
             - name: .NET
               href: media-services-dotnet-configure-content-key-auth-policy.md
@@ -359,13 +359,13 @@
         - name: Mediaverwerking
           href: media-services-scale-media-processing-overview.md
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-scale-media-processing.md
             - name: .NET
               href: media-services-dotnet-encoding-units.md
         - name: Streaming-eindpunten
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-scale-streaming-endpoints.md
     - name: Inhoud leveren
       href: media-services-deliver-content-overview.md
@@ -383,7 +383,7 @@
           href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
         - name: Inhoud publiceren
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-publish.md
             - name: .NET
               href: media-services-deliver-streaming-content.md
@@ -416,13 +416,13 @@
           href: media-services-dotnet-how-to-use-azure-functions.md
         - name: Voorbeelden van Azure Functions met Media Services
           href: 'https://github.com/Azure-Samples/media-services-dotnet-functions-integration'
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Taakvoortgang controleren
           items:
             - name: REST
               href: media-services-rest-check-job-progress.md
-            - name: Azure Portal
+            - name: Azure-portal
               href: media-services-portal-check-job-progress.md
             - name: .NET
               href: media-services-check-job-progress.md
@@ -463,7 +463,7 @@
     - name: Verouderde onderdelen
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure Media Services-community
       href: media-services-community.md

@@ -33,7 +33,7 @@
     - name: Een pijplijn maken voor het transformeren van gegevens
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Azure Portal
+        - name: Azure-portal
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
@@ -47,7 +47,7 @@
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: Veelgestelde vragen
       href: data-factory-faq.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Gegevens verplaatsen
       items:
@@ -193,7 +193,7 @@
       href: /rest/api/datafactory/
     - name: JSON
       href: data-factory-json-scripting-reference.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

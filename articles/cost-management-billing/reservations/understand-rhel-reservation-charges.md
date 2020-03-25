@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 173967356c17150d5694b48e6ed2acd78155ca4b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199225"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Meer informatie over hoe de abonnementskorting voor Red Hat Linux Enterprise-softwarereservering wordt toegepast voor Azure
@@ -151,13 +151,13 @@ Namen op Marketplace van Azure-portal:
 
 Raadpleeg voor meer informatie over reserveringen de volgende artikelen:
 
-- [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)
+- [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Red Hat-softwareabonnementen met Azure-reserveringen](../../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Reserveringen voor Azure beheren](manage-reserved-vm-instance.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: banders
 ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78272189"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Enterprise Agreement-taken uitvoeren in uw factureringsaccount voor een Microsoft-klantovereenkomst
@@ -28,7 +28,7 @@ In het volgende diagram wordt beschreven hoe facturering is georganiseerd in het
 |------------------------|--------------------------------------------------------|
 | Registratie            | U gebruikt een factureringsprofiel om de facturering voor uw organisatie te beheren, vergelijkbaar met uw Enterprise Agreement-inschrijving. Ondernemingsbeheerders worden eigenaar van het factureringsprofiel. Raadpleeg [Factureringsprofielen](../understand/mca-overview.md#billing-profiles) voor meer informatie over factureringsprofielen.
 | Afdeling            | U gebruikt een factuursectie om uw kosten te ordenen, vergelijkbaar met afdelingen in uw Enterprise Agreement-inschrijving. Afdelingen worden factuursecties en afdelingsbeheerders worden eigenaar van de respectieve factuursecties. Raadpleeg [Factuursecties](../understand/mca-overview.md#invoice-sections) voor meer informatie over factuursecties. |
-| Account               | De accounts die in uw Enterprise Agreement zijn gemaakt, worden niet ondersteund in het nieuwe factureringsaccount. De abonnementen van het account horen bij de respectieve factuursectie voor hun afdeling. Accounteigenaren kunnen abonnementen voor hun factuursecties maken en beheren. |
+| Account               | De accounts die in uw Enterprise Agreement zijn gemaakt, worden niet ondersteund in de nieuwe factureringsrekening. De abonnementen van het account horen bij de respectieve factuursectie voor hun afdeling. Accounteigenaren kunnen abonnementen voor hun factuursecties maken en beheren. |
 
 ## <a name="changes-for-enterprise-administrators"></a>Wijzigingen voor ondernemingsbeheerders
 
@@ -55,7 +55,7 @@ Zie [Informatie over de kosten op uw factuur voor Microsoft-klantovereenkomst](.
 
 ### <a name="view-charges-for-a-department"></a>Kosten voor een afdeling weergeven
 
-Er wordt een factuursectie gemaakt voor elke afdeling uit uw Enterprise Agreement. U kunt de kosten voor een factuursectie bekijken in de Azure-portal. Zie [Transacties per factuursectie weergeven](../understand/review-customer-agreement-bill.md#view-transactions-by-invoice-sections) voor meer informatie.
+Er wordt een factuursectie gemaakt voor elke afdeling uit uw Enterprise Agreement. U kunt de kosten voor een factuursectie bekijken in de Azure-portal. Voor meer informatie, zie [Transacties per factuursectie weergeven](../understand/review-customer-agreement-bill.md#view-transactions-by-invoice-sections).
 
 ### <a name="view-charges-for-an-account"></a>Kosten voor een account weergeven
 
@@ -139,7 +139,7 @@ Als u de kosten wilt weergeven voor abonnementen die bij een account horen, gaat
 
 U kunt de kosten voor een abonnement bekijken op de pagina [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) of in Azure Kostenanalyse. Zie [Kosten verkennen en analyseren met Kostenanalyse](../costs/quick-acm-cost-analysis.md) voor meer informatie over Azure Kostenanalyse.
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 

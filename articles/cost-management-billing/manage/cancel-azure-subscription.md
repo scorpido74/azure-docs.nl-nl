@@ -1,5 +1,5 @@
 ---
-title: Uw Azure-abonnement opzeggen | Microsoft Docs
+title: Uw Azure-abonnement opzeggen
 description: Hier wordt beschreven hoe u een Azure-abonnement, zoals het gratis proefabonnement, kunt opzeggen
 author: bandersmsft
 ms.reviewer: amberb
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 738eb860857d15f920a7552629c7d83ae6e2c3f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4cc3c1bcfe5f153e76f3bd37fbefa79fca4d541a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199820"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237731"
 ---
 # <a name="cancel-your-azure-subscription"></a>Uw Azure-abonnement opzeggen
 
@@ -62,6 +62,6 @@ Als u per ongeluk uw abonnement met tarieven voor betalen per gebruik opzegt, ku
 
 Als uw abonnement geen abonnement is met tarieven voor betalen per gebruik, neemt u binnen 90 dagen na opzegging contact op met het ondersteuningsteam om uw abonnement opnieuw te activeren.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

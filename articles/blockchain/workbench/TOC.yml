@@ -53,7 +53,7 @@
       href: messages-overview.md
     - name: REST-API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
-- name: Resources
+- name: Bronnen
   items:
     - name: Codevoorbeelden
       href: 'https://github.com/Azure-Samples/blockchain'

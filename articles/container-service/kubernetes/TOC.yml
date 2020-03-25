@@ -29,7 +29,7 @@
   items:
     - name: Service-principal - Kubernetes
       href: container-service-kubernetes-service-principal.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Kubernetes met Windows
       href: container-service-kubernetes-windows-walkthrough.md
@@ -43,7 +43,7 @@
       href: container-service-draft-up.md
     - name: Schaal cluster aanpassen
       href: container-service-scale.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Bewaken met Log Analytics
           href: container-service-kubernetes-oms.md
@@ -63,13 +63,13 @@
           href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/acs
     - name: PowerShell
       href: /powershell/module/az.compute
     - name: REST
       href: /rest/api/container-service
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

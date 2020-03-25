@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: a3bf55bef0f6fc25f98b362b4a22e22471a031f1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199055"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>De voorwaarden op uw Microsoft Azure-factuur begrijpen
 
-De factuur bevat een overzicht van uw kosten en instructies voor de betaling. Het is beschikbaar als download in het Portable Document Format (.pdf) van de [Azure-portal](https://portal.azure.com/) of kan via e-mail worden verzonden. Voor meer informatie bekijkt u [Uw Azure-factuur en dagelijkse gebruiksgegevens ophalen](../manage/download-azure-invoice-daily-usage-date.md).
+De factuur bevat een overzicht van uw kosten en instructies voor de betaling. De factuur kan als PDF worden gedownload uit de [Azure-portal](https://portal.azure.com/) of kan per e-mail worden verzonden. Voor meer informatie bekijkt u [Uw Azure-factuur en dagelijkse gebruiksgegevens ophalen](../manage/download-azure-invoice-daily-usage-date.md).
 
 Enkele opmerkingen:
 
@@ -93,7 +93,7 @@ De volgende tabel beschrijft de kolomkoppen voor gebruikskosten die op uw factuu
 
 | Termijn |Beschrijving |
 | --- | --- |
-| Naam |Identificeert de service op het hoogste niveau voor het gebruik |
+| Name |Identificeert de service op het hoogste niveau voor het gebruik |
 | Type |Hiermee definieert u het type Azure-service dat van invloed kan zijn op het tarief |
 | Resource |Identificeert de maateenheid voor de meter die wordt verbruikt |
 | Regio |Identificeert de datacentrumlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacentrumlocatie |
@@ -108,6 +108,6 @@ De volgende tabel beschrijft de kolomkoppen voor gebruikskosten die op uw factuu
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Hoe weet ik zeker dat de kosten in mijn factuur correct zijn?
 Als er kosten in rekening worden gebracht voor uw factuur waarover u meer informatie wilt, raadpleegt u [Uw factuur voor Microsoft Azure begrijpen.](review-individual-bill.md)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

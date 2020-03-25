@@ -77,7 +77,7 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.netapp/allversions
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/netapp/'

@@ -85,7 +85,7 @@
           href: logic-apps-exception-handling.md
         - name: Grote berichten verwerken
           href: logic-apps-handle-large-messages.md
-        - name: Beveiligen
+        - name: Beveiligd
           items:
             - name: Beveiliging verbeteren voor logische apps
               href: logic-apps-securing-a-logic-app.md
@@ -327,7 +327,7 @@
           href: logic-apps-create-azure-resource-manager-templates.md
         - name: Sjablonen voor logische app gebruiken
           href: logic-apps-deploy-azure-resource-manager-templates.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Logische apps bewaken
           href: monitor-logic-apps.md
@@ -387,9 +387,9 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: Aangepaste volgschema's
           href: logic-apps-track-integration-account-custom-tracking-schema.md
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Roadmap voor Azure Logic Apps
       href: 'https://aka.ms/logicappsroadmap/'

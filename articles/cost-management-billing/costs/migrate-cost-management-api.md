@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201030"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren vanuit Enterprise Agreement naar API’s voor Microsoft-klantovereenkomst
@@ -175,26 +175,26 @@ De naam van de eigenschap die de matrix met gebruiksrecords bevat, is gewijzigd 
 | ChargesBilledSeparately | isAzureCreditEligible | Houd er rekening mee dat deze eigenschappen tegenovergesteld aan elkaar zijn. Als isAzureCreditEnabled is ingesteld op waar, wordt ChargesBilledSeparately onwaar. |
 | ConsumedQuantity | quantity | &nbsp; |
 | ConsumedService | consumedService | De exacte tekenreekswaarden kunnen verschillen. |
-| ConsumedServiceId | Geen | &nbsp; |
+| ConsumedServiceId | None | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date en usageStartDate | date | &nbsp;  |
-| Day | Geen | Begindatum van parseren dag. |
+| Day | None | Begindatum van parseren dag. |
 | DepartmentId | invoiceSectionId | De exacte waarden verschillen. |
 | DepartmentName | invoiceSectionName | De exacte tekenreekswaarden kunnen verschillen. Zo nodig kunt u factuursecties configureren, zodat deze overeenkomen met afdelingen. |
 | ExtendedCost en Cost | CostInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Zijn terugkerende kosten | Geen | &nbsp;  |
-| Locatie | location | &nbsp;  |
+| Zijn terugkerende kosten | None | &nbsp;  |
+| Locatie | locatie | &nbsp;  |
 | MeterCategory | meterCategory | De exacte tekenreekswaarden kunnen verschillen. |
 | MeterId | meterId | De exacte tekenreekswaarden verschillen. |
 | MeterName | meterName | De exacte tekenreekswaarden kunnen verschillen. |
 | MeterRegion | meterRegion | De exacte tekenreekswaarden kunnen verschillen. |
 | MeterSubCategory | meterSubCategory | De exacte tekenreekswaarden kunnen verschillen. |
-| Month | Geen | Begindatum van parseren maand. |
-| Naam van aanbieding | Geen | Gebruik publisherName en productOrderName. |
-| OfferID | Geen | &nbsp;  |
-| Bestelnummer | Geen | &nbsp;  |
-| PartNumber | Geen | Gebruik meterId en productOrderName om prijzen uniek aan te duiden. |
+| Maand | None | Begindatum van parseren maand. |
+| Naam van aanbieding | None | Gebruik publisherName en productOrderName. |
+| OfferID | None | &nbsp;  |
+| Bestelnummer | None | &nbsp;  |
+| PartNumber | None | Gebruik meterId en productOrderName om prijzen uniek aan te duiden. |
 | Naam van het plan | productOrderName | &nbsp;  |
 | Product | Product |   |
 | ProductId | productId | De exacte tekenreekswaarden verschillen. |
@@ -202,7 +202,7 @@ De naam van de eigenschap die de matrix met gebruiksrecords bevat, is gewijzigd 
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | De exacte tekenreekswaarden verschillen. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | Geen | &nbsp;  |
+| ResourceLocationId | None | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | ServiceAdministratorId | N.v.t. | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
@@ -216,7 +216,7 @@ De naam van de eigenschap die de matrix met gebruiksrecords bevat, is gewijzigd 
 | Tags | tags | De eigenschap van de tag is van toepassing op het hoofdobject, niet op de eigenschap van geneste eigenschappen. |
 | UnitOfMeasure | unitOfMeasure | De exacte tekenreekswaarden verschillen. |
 | usageEndDate | date | &nbsp;  |
-| Year | Geen | Begindatum van parseren jaar. |
+| Year | None | Begindatum van parseren jaar. |
 | (nieuw) | billingCurrency | De valuta die wordt gebruikt voor de kosten. |
 | (nieuw) | billingProfileId | De unieke id voor het factureringsprofiel (hetzelfde als inschrijving). |
 | (nieuw) | billingProfileName | Naam van het factureringsprofiel (hetzelfde als inschrijving). |

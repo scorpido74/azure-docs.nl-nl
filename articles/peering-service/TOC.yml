@@ -14,15 +14,15 @@
       href: connection-telemetry.md
     - name: Onboardingmodel
       href: onboarding-model.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Peering Service registreren
       items:
-        - name: Azure Portal
+        - name: Azure-portal
           href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: cli.md
     - name: Telemetrie van verbinding meten
       href: measure-connection-telemetry.md
@@ -30,9 +30,9 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.peering
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/ext/peering/peering
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'

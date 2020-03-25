@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: Live chat in-/uitschakelen
               href: howto-show-hide-chat.md
-- name: Verwant
+- name: Bronnen
   items:
+    - name: Opties voor ondersteuning en hulp
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Toepassingssjablonen uit de branche
       items:
         - name: Retail
@@ -139,35 +141,35 @@
           href: ../government/overview-iot-central-government.md
         - name: Gezondheidszorg
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: Platformservices
+    - name: Azure IoT-services
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Plug en Play
-          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Kaarten
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-oplossingsversnellers
+          href: /azure/iot-accelerators
+        - name: IoT Plug en Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Randoplossingen
+    - name: SDK's voor Azure IoT
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: IoT Service-SDK's
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT Device-SDK's
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: Resources
-  items:
-    - name: Opties voor ondersteuning en hulp
-      href: /azure/iot-fundamentals/iot-support-help
     - name: Naslaginformatie over de IoT Central-API
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Aanvragen van klantgegevens
       href: iot-central-customer-data-requests.md
     - name: Ondersteunde browsers
       href: iot-central-supported-browsers.md
-    - name: Azure IoT Central (verouderde sjablonen)
+    - name: Azure-IoT Central (verouderde sjablonen)
       href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'

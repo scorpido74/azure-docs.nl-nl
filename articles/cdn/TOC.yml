@@ -171,7 +171,7 @@
       href: /java/api/com.microsoft.azure.management.cdn
     - name: REST
       href: /rest/api/cdn/
-- name: Resources
+- name: Bronnen
   items:
     - name: POP-locaties van Azure CDN
       items:

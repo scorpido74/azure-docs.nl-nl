@@ -77,7 +77,7 @@
       href: 'https://registry.terraform.io/modules/Azure'
     - name: Terraform Azure-provider
       href: 'https://aka.ms/terraform'
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure en Terraform
       href: 'https://azure.microsoft.com/solutions/devops/terraform/'

@@ -245,7 +245,7 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.apimanagement/allversions
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: api-management-faq.md

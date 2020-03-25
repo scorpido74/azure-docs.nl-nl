@@ -26,7 +26,7 @@
   items:
     - name: Azure Chef-extensie
       href: 'https://docs.chef.io/azure_portal.html#azure-chef-extension'
-- name: Resources
+- name: Bronnen
   items:
     - name: Chef Automate
       items:

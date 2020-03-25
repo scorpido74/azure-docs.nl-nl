@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Beheerde Azure-werkstations
       href: concept-azure-managed-workstation.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: false
   items:
     - name: Uw implementatie van Azure AD-deelname plannen
@@ -77,7 +77,7 @@
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Windows-instellingen voor Enterprise State Roaming
       href: enterprise-state-roaming-windows-settings-reference.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

@@ -138,7 +138,7 @@
       href: /javascript/api/ms-rest-azure
     - name: Aan de slag
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen en bekende problemen
       href: known-issues.md

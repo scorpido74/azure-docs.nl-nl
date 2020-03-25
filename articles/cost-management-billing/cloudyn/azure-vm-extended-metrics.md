@@ -1,20 +1,20 @@
 ---
-title: Uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen | Microsoft Docs
+title: Uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen
 description: Dit artikel helpt u bij het inschakelen en configureren van uitgebreide diagnostische metrische gegevens voor uw Azure-VM's.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082911"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481616"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Uitgebreide metrische gegevens voor virtuele Azure-machines toevoegen
 
@@ -30,7 +30,9 @@ Nadat u het verzamelen van metrische gegevens hebt ingeschakeld, kunt u het volg
 U kunt bijvoorbeeld het CPU-percentage en het percentage geheugengebruik van uw virtuele Azure-machines bewaken. De metrische gegevens van de Azure-VM komen overeen met _Percentage CPU_ en _\Geheugen\% Percentage toegewezen bytes in gebruik_.
 
 > [!NOTE]
-> Het verzamelen van uitgebreide metrische gegevens wordt alleen ondersteund met Azure-bewaking op gastniveau. Cloudyn is niet compatibel met de [Log Analytics agent](../../azure-monitor/platform/agents-overview.md). 
+> Het verzamelen van uitgebreide metrische gegevens wordt alleen ondersteund met Azure-bewaking op gastniveau. Cloudyn is niet compatibel met de [Log Analytics agent](../../azure-monitor/platform/agents-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bepalen of uitgebreide metrische gegevens zijn ingeschakeld
 

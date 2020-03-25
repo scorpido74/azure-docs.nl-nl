@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200228"
 ---
 # <a name="azure-software-plan-discount"></a>Korting voor abonnement op Azure-software
@@ -26,7 +26,7 @@ U kunt alleen het juiste abonnement kopen als u een goed beeld hebt van het VM-g
 
 Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.
 
-Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
+Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomende resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
 ## <a name="review-redhat-vm-usage-before-you-buy"></a>Gebruik van Red Hat-VM's controleren voordat u een aankoop doet
 
@@ -52,7 +52,7 @@ De korting is afhankelijk van de verhouding die in de volgende tabellen wordt we
 
 Als u bijvoorbeeld een abonnement voor SUSE Linux Enterprise Server for HPC Priority koopt voor een VM met 3 of 4 vCPU's, is de verhouding voor die reservering 2. De korting dekt de kosten van de SUSE-software voor:
 
-- 2 geïmplementeerde VM's met 1 of 2 vCPU's
+- 2 geïmplementeerde VM's met 1 of 2 vCPU's,
 - 1 geïmplementeerde VM met 3 of 4 vCPU's
 - of 0,77 of ongeveer 77% van een VM machine met 5 of meer vCPU's
 
@@ -138,13 +138,13 @@ Namen op Marketplace van Azure-portal:
 |SLES 3-4 cores vCPUs |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
 |SLES 5+ vCPUs |7b349b65-d906-42e5-833f-b2af38513468|2,30769| D8s_v3|
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over reserveringen:
+Raadpleeg voor meer informatie over reserveringen de volgende artikelen:
 
 - [Wat zijn Azure-reserveringen?](save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Azure-softwareabonnementen](../../virtual-machines/linux/prepay-suse-software-charges.md)

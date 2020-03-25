@@ -12,7 +12,7 @@
       href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
     - name: De wizard uitvoeren
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
-- name: Procedures
+- name: Procedure
   items:
     - name: Inschakelen
       items:
@@ -40,7 +40,7 @@
   items:
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=sql-server-database'
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

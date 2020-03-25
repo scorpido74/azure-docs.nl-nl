@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200602"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Verschuldigd bedrag betalen voor uw Azure-abonnement
@@ -28,7 +28,7 @@ Als uw betaling niet is ontvangen of als de betaling niet kan worden verwerkt, o
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Verschuldigd bedrag betalen in de Azure-portal
 
 1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Zoek naar **Cost Management en facturering**.
 1. Selecteer het abonnement met de achterstallige betaling op de pagina **Overzicht**.
 1. Klik op de pagina **Abonnementsoverzicht** op de rode banner bij de achterstallige betaling om het saldo te vereffenen.
     > [!NOTE]
@@ -62,6 +62,6 @@ Als u weet dat uw betaling is verwerkt, maar uw abonnement nog steeds is uitgesc
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -5,7 +5,7 @@
   items:
     - name: Wat is Form Recognizer?
       href: overview.md
-    - name: Nieuwe functies
+    - name: Wat is er nieuw
       href: whats-new.md
 - name: Snelstartgidsen
   expaned: true
@@ -68,7 +68,7 @@
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen en beperkingen
       href: 'https://go.microsoft.com/fwlink/?linkid=2087258'

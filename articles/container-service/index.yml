@@ -3,7 +3,7 @@ documentType: LandingData
 title: Documentatie voor Azure Container Service
 metadata:
   title: 'Documentatie voor Azure Container Service - zelfstudies, API-verwijzing | Microsoft Docs'
-  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  meta.description: 'Azure Container Service allows you to deploy production ready Kubernetes, DC/OS, or Docker Swarm clusters. Learn how with quickstarts, tutorials, and samples.'
   services: container-service
   author: georgewallace
   manager: gwallace
@@ -30,7 +30,7 @@ sections:
             image:
               src: media/index/get-started.svg
               href: /azure/container-service/dcos-swarm
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
+  - title: Ontwikkel uw vaardigheden met Microsoft Learn
     items:
       - type: list
         style: cards

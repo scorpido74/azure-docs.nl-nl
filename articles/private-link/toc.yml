@@ -24,7 +24,7 @@
       href: private-endpoint-overview.md
     - name: Private Link-service
       href: private-link-service-overview.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Privé verbinding maken met een opslagaccount
       href: create-private-endpoint-storage-portal.md
@@ -64,9 +64,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'

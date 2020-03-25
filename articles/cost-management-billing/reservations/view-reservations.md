@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199242"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure-reserveringen weergeven in de Azure-portal
@@ -44,7 +44,7 @@ Als u het bereik van een reservering moet wijzigen, een reservering wilt splitse
 Reserveringstransacties weergeven in de Azure-portal:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Zoek naar **Cost Management en facturering**.
 
     ![Schermopname van de zoekopdracht in de Azure-portal](./media/view-reservations/portal-cm-billing-search.png)
 
@@ -80,6 +80,6 @@ Inzicht in het gebruik:
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
 - [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -40,7 +40,7 @@
           href: service-bus-relay-security-controls.md
     - name: Protocol hybride verbindingen
       href: relay-hybrid-connections-protocol.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
@@ -75,7 +75,7 @@
       href: relay-exceptions.md
     - name: Poortinstellingen
       href: relay-port-settings.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'

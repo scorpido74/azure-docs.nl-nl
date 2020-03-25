@@ -17,7 +17,7 @@
       href: tutorial-sync-data-factory.md
     - name: Gegevens synchroniseren met SQL Data Sync
       href: tutorial-sync-data-sync.md
-- name: Procedures
+- name: Procedure
   items:
     - name: DAC-pakketten en Stream Analytics-taken
       href: stream-analytics.md

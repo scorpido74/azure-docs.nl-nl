@@ -24,7 +24,7 @@
       href: 'https://msdn.microsoft.com/library/mt654049.aspx'
     - name: REST
       href: /rest/api/
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: sql-server-linux-faq.md

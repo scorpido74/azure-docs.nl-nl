@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200945"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermijd kosten met uw gratis Azure-account
@@ -52,7 +52,7 @@ Uw gratis services en hoeveelheden verlopen na van 12 maanden. U kunt nagaan wan
 
 Zodra uw gratis services en hoeveelheden zijn verlopen, worden er betalen-per-gebruik-tarieven in rekening gebracht voor alle services die u gebruikt. U kunt de Azure-portal gebruiken om de resources te verwijderen voor de services die u niet gebruikt. Als u geen Azure-service wilt gebruiken, kunt u [uw abonnement annuleren](cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
