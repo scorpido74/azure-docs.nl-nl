@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Daemon- of servertoepassing
           href: service-to-service.md
-    - name: Verificatie
+    - name: Authentication
       items:
         - name: Basisbeginselen van verificatie
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Instructiegidsen
   items:
-    - name: Verificatie
+    - name: Authentication
       items:
         - name: Eenmalige aanmelding configureren
           displayName: SSO
@@ -172,7 +172,7 @@
       href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Wijzigingen die fouten veroorzaken
       href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-- name: Resources
+- name: Bronnen
   items:
     - name: Woordenlijst
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json

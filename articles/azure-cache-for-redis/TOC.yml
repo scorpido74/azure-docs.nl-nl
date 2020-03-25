@@ -33,6 +33,10 @@
       href: cli-samples.md
 - name: Concepten
   items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Failover en patching
       href: cache-failover.md
     - name: Aanbevolen procedures
@@ -44,7 +48,7 @@
     - name: Plannen
       items:
         - name: Een cachelaag selecteren
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: Uw cache distribueren via clustering
           href: cache-how-to-premium-clustering.md
         - name: Uw cache behouden met Redis-gegevenspersistentie
@@ -93,7 +97,7 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 en 1.1 verwijderen
           href: cache-remove-tls-10-11.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Bewaken in Azure Portal
           href: cache-how-to-monitor.md
@@ -135,9 +139,9 @@
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.cache/allversions
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/?products=azure-redis-cache
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=databases'

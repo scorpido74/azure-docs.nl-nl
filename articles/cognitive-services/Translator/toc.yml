@@ -32,7 +32,7 @@
           href: customization.md
         - name: Hoe tekens door de API worden geteld
           href: character-counts.md
-    - name: Handleidingen
+    - name: Instructiegidsen
       items:
         - name: Aanmelden voor Translator Text-API
           href: translator-text-how-to-signup.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: De dynamische woordenlijstfunctie gebruiken
           href: dynamic-dictionary.md
-        - name: Containers gebruiken
-          items:
-            - name: Containers installeren en uitvoeren
-              href: how-to-install-containers.md
-            - name: Containers configureren
-              href: translator-text-container-config.md
         - name: Vertalen achter firewalls
           href: firewalls.md
     - name: Voorbeelden
@@ -98,7 +92,7 @@
               href: ctf-reporting.md
             - name: N beste vertalingen retourneren
               href: return-n-best-translations.md
-    - name: Resources
+    - name: Bronnen
       items:
         - name: Codevoorbeelden op GitHub
           href: 'https://aka.ms/TranslatorGitHub'
@@ -144,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-score
           href: custom-translator/what-is-bleu-score.md
-    - name: Handleidingen
+    - name: Instructiegidsen
       items:
         - name: Een project maken
           href: custom-translator/how-to-create-project.md
@@ -166,7 +160,7 @@
           href: custom-translator/how-to-migrate.md
         - name: Implementaties in niet-ondersteunde talen
           href: custom-translator/unsupported-language-deployments.md
-    - name: Resources
+    - name: Bronnen
       items:
         - name: Taalondersteuning
           href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
@@ -178,5 +172,7 @@
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Naleving
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: Versleuteling
+          href: translator-encryption-of-data-at-rest.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

@@ -9,7 +9,7 @@
   items:
     - name: Een voorbeeldwerkstroom in Genomics uitvoeren
       href: quickstart-run-genomics-workflow-portal.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Diverse bestandsindelingen als invoer gebruiken
       items:
@@ -21,7 +21,7 @@
           href: quickstart-input-multiple.md
     - name: Een SAS-token in plaats van een accountsleutel invoeren
       href: quickstart-input-sas.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: frequently-asked-questions-genomics.md

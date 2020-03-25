@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: Voor DevOps
       href: team-data-science-process-for-devops.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Gegevenswetenschapomgevingen instellen
       href: environment-setup.md
@@ -206,7 +206,7 @@
           href: predictive-maintenance-architecture.md
         - name: Technische handleiding
           href: predictive-maintenance-technical-guide.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Organisaties die TDSP gebruiken
       items:

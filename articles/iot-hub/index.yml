@@ -90,8 +90,8 @@ sections:
         className: cardsD
         items:
           - title: Opdrachtregel
-            html: <p><a href="/cli/azure/iot">Azure-CLI</a></p>
+            html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
           - title: Talen
             html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET (service)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (apparaten)</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C (SDK-apparaat)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (service)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (apparaten)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (service)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (apparaten)</a></p>'
           - title: REST
-            html: <p><a href="/rest/api/iothub/device">REST (apparaat)</a></p><p><a href="/rest/api/iothub/service">REST (service)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub-resource)</a></p><p><a href="/rest/api/iothub/certificates">REST (certificaten)</a></p>
+            html: <p><a href="/rest/api/iothub/device">REST (apparaat)</a></p><p><a href="/rest/api/iothub/service/configuration">REST (service)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub-resource)</a></p><p><a href="/rest/api/iothub/certificates">REST (certificaten)</a></p>

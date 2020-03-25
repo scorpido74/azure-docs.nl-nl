@@ -63,7 +63,7 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Uitgaande verbindingsproblemen vaststellen
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
@@ -75,7 +75,7 @@
           items:
             - name: Een pakketopname beheren
               items:
-                - name: Azure Portal
+                - name: Azure-portal
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
@@ -176,7 +176,7 @@
       href: /javascript/api/azure-arm-network
     - name: REST
       href: /rest/api/network-watcher/
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen over Network Watcher
       href: frequently-asked-questions.md

@@ -42,12 +42,12 @@
           href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image'
         - name: Zelfstudie - Een app met meerdere containers
           href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app'
-    - name: Service Fabric
+    - name: Infrastructuur van service
       href: 'https://docs.microsoft.com/azure/service-fabric/'
       items:
         - name: Overzicht - Service Fabric en containers
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
-        - name: Procedures
+        - name: Procedure
           items:
             - name: Een containertoepassing maken in Windows
               href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'

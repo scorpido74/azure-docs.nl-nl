@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200585"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
@@ -43,8 +43,8 @@ Voor meer informatie raadpleegt u [Creditcard toevoegen, bijwerken of verwijdere
 
 Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Azure-portal in **Achterstallig**. U kunt de status van uw account controleren door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
-2. Zoek op **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
+2. Zoek naar **Kostenbeheer en facturering**.
 3. Ga op de pagina **Overzicht** van **Kostenbeheer + facturering** naar het raster **Mijn abonnementen** en bekijk de statuskolom.
 4. Als uw abonnement de status **Achterstallig** heeft, klikt u op **Saldo vereffenen**. U wordt gevraagd om tijdens het proces meervoudige verificatie te doorlopen.
 
@@ -52,7 +52,7 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 
 Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, krijgt uw factuur de status achterstallig en wordt in de Azure-portal de optie **Nu betalen** weergegeven. U kunt achterstallige Marketplace- en reserveringsfacturen betalen door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zoek naar **Kostenbeheer en facturering**.
 3. Onder Facturering selecteert u **Facturen**.
 5. Selecteer in de vervolgkeuzelijst van het filter voor abonnementen het abonnement dat is gekoppeld aan uw Marketplace- of reserveringsaankoop.

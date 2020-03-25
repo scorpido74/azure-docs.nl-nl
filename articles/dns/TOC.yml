@@ -71,7 +71,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Veelgestelde vragen
           href: dns-faq-private.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Openbare DNS
       items:
@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: DNS-zones beheren
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: DNS-records beheren
           items:
-            - name: Azure Portal
+            - name: Azure-portal
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -157,23 +157,7 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: Verwant
-  items:
-    - name: Private Link
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: Virtuele machine
-      href: /azure/virtual-machines/
-    - name: Load balancer
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Web-apps
-      href: /azure/app-service/
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'

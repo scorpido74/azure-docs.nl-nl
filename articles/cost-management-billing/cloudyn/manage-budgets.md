@@ -1,20 +1,20 @@
 ---
 title: Cloudyn-budgetten beheren in Azure
 description: Dit artikel helpt u om snel budgetten te maken en deze te beheren in Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201132"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464152"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Azure-budgetten beheren met Cloudyn
 
@@ -27,6 +27,8 @@ Op basis van toegewezen budgetten kunt u drempelwaarschuwingen instellen afhanke
 Budgetrapporten laten het toegewezen budget zien. Gebruikers kunnen zien wanneer hun uitgaven hoger, lager of gelijk zijn dan hun verbruik in de loop van de tijd. Wanneer u bovenaan een budgetrapport **Velden weergeven/verbergen** selecteert, kunt u ervoor kiezen om de kosten, het budget, de samengevoegde kosten of het totale budget weer te geven.
 
 Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie [Budgetten maken en beheren](../costs/tutorial-acm-create-budgets.md)voor meer informatie over budgetten in Cost Management.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>Budgetten maken
 

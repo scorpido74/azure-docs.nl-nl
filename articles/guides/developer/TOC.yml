@@ -18,7 +18,7 @@
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function'
     - name: Microservices
       items:
-        - name: Service Fabric
+        - name: Infrastructuur van service
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
@@ -132,7 +132,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Microservice-apps
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: Beveiligen
+    - name: Beveiligd
       items:
         - name: Web- en mobiele apps
           href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
@@ -142,7 +142,7 @@
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
         - name: Virtuele machines
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Web- en mobiele apps
           href: 'https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs'
@@ -184,9 +184,9 @@
           href: 'https://docs.microsoft.com/cli/azure/'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/'
-    - name: Billing
+    - name: Facturering
       href: 'https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview'
-- name: Resources
+- name: Bronnen
   items:
     - name: Limieten en quota in Azure
       href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json

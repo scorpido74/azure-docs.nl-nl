@@ -127,7 +127,7 @@
       href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
     - name: REST
       href: /rest/api/
-- name: Resources
+- name: Bronnen
   items:
     - name: Veelgestelde vragen
       href: virtual-machines-windows-sql-server-iaas-faq.md

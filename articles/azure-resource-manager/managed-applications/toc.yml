@@ -120,13 +120,13 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtueelNetwerkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Storage
+        - name: Opslag
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

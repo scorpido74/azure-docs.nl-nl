@@ -305,11 +305,11 @@
 - name: Gedeelde resources beheren
   items:
     - name: Certificaten
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: Verbindingen
       href: automation-connections.md
     - name: Referenties
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: PowerShell-modules
       items:
         - name: Modules
@@ -319,9 +319,9 @@
         - name: Azure PowerShell-modules bijwerken
           href: automation-update-azure-modules.md
     - name: Planningen
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: Variabelen
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: Python 2-pakketten beheren
       href: python-packages.md
     - name: Problemen met gedeelde resources oplossen
@@ -345,7 +345,7 @@
       href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
     - name: Azure Automation-runbook maken en plannen waarmee Azure-SSIS IR wordt gestart/gestopt
       href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
-- name: Controleren
+- name: Bewaken
   items:
     - name: Azure Automation-taakgegevens doorsturen naar Log Analytics
       href: automation-manage-send-joblogs-log-analytics.md
@@ -364,7 +364,7 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-- name: Resources
+- name: Bronnen
   items:
     - name: Introductievideo over Automation
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'

@@ -17,7 +17,7 @@
       href: concept-identity-protection-user-experience.md
     - name: Identiteitsbeveiliging en B2B-gebruikers
       href: concept-identity-protection-b2b.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Meldingen configureren
@@ -46,7 +46,7 @@
   items:
     - name: Woordenlijst
       href: reference-identity-protection-glossary.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

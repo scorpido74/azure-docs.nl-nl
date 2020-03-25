@@ -13,10 +13,10 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.
   ms.openlocfilehash: c703673ec85cadb57e2cc69d1ee1a0d023d53436
-  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/21/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "77525020"
 landingContent:
 - title: Over Personalizer
@@ -27,7 +27,7 @@ landingContent:
       url: what-is-personalizer.md
   - linkListType: whats-new
     links:
-    - text: Nieuwe functies
+    - text: Wat is er nieuw
       url: whats-new.md
   - linkListType: concept
     links:
@@ -79,7 +79,7 @@ landingContent:
     links:
     - text: Codevoorbeelden
       url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
-    - text: REST-API’s
+    - text: REST API’s
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
 - title: Over reinforcement learning
   linkLists:

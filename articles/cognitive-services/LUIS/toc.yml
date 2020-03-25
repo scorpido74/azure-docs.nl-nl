@@ -5,7 +5,7 @@
   items:
     - name: Wat is Language Understanding?
       href: what-is-luis.md
-    - name: Nieuwe functies
+    - name: Wat is er nieuw
       href: whats-new.md
 - name: Snelstartgidsen
   items:
@@ -300,7 +300,7 @@
           href: reference-entity-simple.md
     - name: Patroonsyntaxis
       href: reference-pattern-syntax.md
-    - name: Sentiment
+    - name: Stemming
       href: luis-reference-prebuilt-sentiment.md
 - name: Naslaginformatie voor ontwikkelaars
   items:
@@ -311,7 +311,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: PowerShell voor Azure RM
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
-    - name: REST-API’s
+    - name: REST API’s
       items:
         - name: REST API's voor V3-creatie (preview)
           href: 'https://aka.ms/luis-apim-v3-authoring'
@@ -388,7 +388,7 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
     - name: Intelligent Kiosk
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
-- name: Resources
+- name: Bronnen
   items:
     - name: Codevoorbeelden
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
@@ -408,11 +408,13 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Versleuteling
+      href: luis-encryption-of-data-at-rest.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
-    - name: Search
+    - name: Zoeken
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'

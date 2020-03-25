@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200877"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Services maken die zijn inbegrepen bij een gratis Azure-account
@@ -30,7 +30,7 @@ Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/servic
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>Meerdere service-instanties maken binnen toegestane limieten
 U kunt gratis meerdere service-instanties maken, zolang de som van het gebruik binnen de gebruikslimiet valt. U krijgt bijvoorbeeld elke maand 750 uur gratis voor een virtuele B1S Windows-machine bij uw gratis Azure-account. U kunt die 750 uur in elke gewenste combinatie gebruiken. U kunt bijvoorbeeld vijf virtuele B1S Windows-machines maken en elk daarvan 150 uur gebruiken.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

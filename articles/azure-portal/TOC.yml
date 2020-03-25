@@ -70,11 +70,11 @@
       href: azure-portal-safelist-urls.md
     - name: Structuur van Azure-dashboards
       href: azure-portal-dashboards-structure.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/updates/'
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/?products=azure-portal
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/'

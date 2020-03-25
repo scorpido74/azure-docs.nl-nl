@@ -25,7 +25,7 @@
   items:
     - name: 'Een serverloze, realtime app met verificatie bouwen'
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Diagnostische logboeken gebruiken om de SignalR-service te bewaken
           href: signalr-tutorial-diagnostic-logs.md
@@ -57,7 +57,7 @@
       href: signalr-concept-messages-and-connections.md
     - name: Prestatieoverwegingen
       href: signalr-concept-performance.md
-    - name: Verificatie
+    - name: Authentication
       href: signalr-concept-authenticate-oauth.md
     - name: Gebeurtenisverwerking
       href: signalr-concept-event-grid-integration.md
@@ -69,7 +69,7 @@
           href: signalr-howto-scale-signalr.md
         - name: Meerdere exemplaren
           href: signalr-howto-scale-multi-instances.md
-    - name: Beveiligen
+    - name: Beveiligd
       items:
         - name: Toegangssleutelroulatie
           href: signalr-howto-key-rotation.md
@@ -89,7 +89,7 @@
       href: 'https://docs.microsoft.com/aspnet/core/signalr'
     - name: Protocol voor Azure SignalR Service
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
-- name: Resources
+- name: Bronnen
   items:
     - name: Oplossingen
       href: 'https://docs.microsoft.com/azure/architecture/'

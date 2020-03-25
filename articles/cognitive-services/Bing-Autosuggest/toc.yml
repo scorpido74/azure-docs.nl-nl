@@ -61,7 +61,7 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'

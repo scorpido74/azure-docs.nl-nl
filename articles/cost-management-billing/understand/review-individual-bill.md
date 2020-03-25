@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199123"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Zelfstudie: Inzicht in uw Azure-factuur
@@ -120,7 +120,7 @@ De kosten die worden weergegeven in Kostenanalyse moeten exact overeenkomen met 
 
 ![Factuur gebruikskosten](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>Externe services worden afzonderlijk gefactureerd
+## <a name="external-services-billed-separately"></a><a name="external"></a>Externe services worden afzonderlijk gefactureerd
 
 Externe services of Marketplace-kosten zijn voor resources die zijn gemaakt door externe softwareleveranciers. Deze resources zijn beschikbaar voor gebruik via Azure Marketplace. Een Barracuda-firewall is bijvoorbeeld een Azure Marketplace-resource die wordt aangeboden door een externe partij. Alle kosten voor de firewall en de bijbehorende meters worden als externe servicekosten weergegeven.
 
@@ -149,7 +149,7 @@ Wanneer de virtuele machine wordt gemaakt, begint elke meter gebruiksrecords te 
 
 In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het berekenen van uw factuur.
 
-## <a name="payment"></a>Uw factuur betalen
+## <a name="pay-your-bill"></a><a name="payment"></a>Uw factuur betalen
 
 Als u een creditcard hebt ingesteld als uw betalingswijze, wordt het bedrag automatisch binnen 10 dagen na het einde van de factureringsperiode in rekening gebracht. Op uw creditcardoverzicht wordt het regelitem weergegeven als **MSFT Azure**.
 

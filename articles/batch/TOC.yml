@@ -229,7 +229,7 @@
           href: batch-task-complete-event.md
         - name: Gebeurtenis taak mislukt
           href: batch-task-fail-event.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-updates
       href: 'https://azure.microsoft.com/updates/'

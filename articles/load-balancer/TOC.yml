@@ -62,7 +62,7 @@
       href: load-balancer-standard-availability-zones.md
     - name: Ingebouwde beveiligingsmaatregelen
       href: load-balancer-security-controls.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Een load balancer upgraden van het type Basic naar het type Standard
       items:
@@ -74,7 +74,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Regels voor uitgaand verkeer configureren
       items:
-        - name: Azure Portal
+        - name: Azure-portal
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -148,9 +148,9 @@
     - name: Resource Manager-sjabloon
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
       displayName: ARM
-- name: Resources
+- name: Bronnen
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+    - name: Ontwikkel uw vaardigheden met Microsoft Learn
       href: /learn/browse/?products=azure-load-balancer
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'

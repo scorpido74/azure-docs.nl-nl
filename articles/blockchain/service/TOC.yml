@@ -59,7 +59,7 @@
       href: ethereum-logic-app.md
     - name: Azure Blockchain Service bewaken
       href: monitor-azure-blockchain-service.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure Blockchain Dev Kit
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'

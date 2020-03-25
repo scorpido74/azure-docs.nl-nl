@@ -9,10 +9,10 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 02/23/2020
 ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78898608"
 ---
 # <a name="scheduler-documentation"></a>Documentatie over Scheduler
@@ -103,7 +103,7 @@ Meer informatie over geautomatiseerde, terugkerende taken maken, plannen, uitvoe
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/scheduler">Naslaginformatie over REST-API</a></p>
+                        <p><a href="/rest/api/scheduler">Naslaginformatie over REST API</a></p>
                     </div>
                 </div>
             </div>

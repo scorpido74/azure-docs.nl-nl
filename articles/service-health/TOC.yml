@@ -16,7 +16,7 @@
       href: service-health-overview.md
     - name: Status van resources
       href: resource-health-overview.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Waarschuwingen voor servicestatusgebeurtenissen configureren
       href: alerts-activity-log-service-notifications.md
@@ -42,7 +42,7 @@
       href: resource-health-checks-resource-types.md
     - name: Veelgestelde vragen over Resource Health
       href: resource-health-faq.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

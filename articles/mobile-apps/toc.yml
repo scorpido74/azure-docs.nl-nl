@@ -8,7 +8,7 @@
       href: front-end-development-platform.md
     - name: Een mobiele app met back-endservices plannen en ontwerpen
       items:
-        - name: Verificatie
+        - name: Authentication
           href: authentication.md
         - name: Gegevensopslag
           href: data-storage.md

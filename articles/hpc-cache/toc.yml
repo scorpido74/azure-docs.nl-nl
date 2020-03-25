@@ -36,7 +36,7 @@
       href: hpc-cache-mount.md
     - name: De cache beheren
       href: hpc-cache-manage.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Een ondersteuningsticket openen
       href: hpc-cache-support-ticket.md

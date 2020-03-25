@@ -96,7 +96,7 @@
       items:
         - name: Problemen met het hulpprogramma What If oplossen
           href: troubleshoot-conditional-access-what-if.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

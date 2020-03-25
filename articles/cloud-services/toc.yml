@@ -12,7 +12,7 @@
       href: cloud-services-dotnet-get-started.md
     - name: Voorbeeld van Python voor Visual Studio-cloudservice
       href: cloud-services-python-ptvs.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Plannen
       items:
@@ -102,7 +102,7 @@
           href: cloud-services-certs-create.md
         - name: SSL configureren
           href: cloud-services-configure-ssl-certificate-portal.md
-    - name: Controleren
+    - name: Bewaken
       items:
         - name: Een cloudservice bewaken
           href: cloud-services-how-to-monitor.md
@@ -139,6 +139,8 @@
           href: cloud-services-allocation-failures.md
         - name: Veelvoorkomende oorzaken voor het recyclen van cloudservicerollen
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: Toepassing biedt geen ondersteuning voor TLS 1.2
+          href: applications-dont-support-tls-1-2.md
         - name: Standaard-TEMP-map is te klein voor de rol
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: Veelvoorkomende implementatieproblemen
@@ -183,7 +185,7 @@
           href: schema-cscfg-networkconfiguration.md
     - name: REST
       href: /rest/api/compute/cloudservices/
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

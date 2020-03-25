@@ -261,7 +261,7 @@
       href: 'https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint'
     - name: Blueprint-functies
       href: ./reference/blueprint-functions.md
-- name: Resources
+- name: Bronnen
   items:
     - name: GitHub - Azure Blueprints-voorbeelden
       href: 'https://github.com/Azure/azure-blueprints'

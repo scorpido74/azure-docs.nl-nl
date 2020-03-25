@@ -91,7 +91,7 @@
       items:
         - name: Versiegeschiedenis van de inrichtingsagent
           href: provisioning-agent-release-version-history.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Ondersteunings- en Help-opties voor ontwikkelaars
       href: /azure/active-directory/develop/developer-support-help-options
