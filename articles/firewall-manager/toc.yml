@@ -49,7 +49,7 @@
       href: /rest/api/firewall
     - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Auteursjablonen
       href: ../azure-resource-manager/templates/template-syntax.md

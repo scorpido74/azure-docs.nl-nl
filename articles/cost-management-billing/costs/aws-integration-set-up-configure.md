@@ -1,20 +1,18 @@
 ---
 title: AWS-integratie met Azure Cost Management instellen
 description: Dit artikel begeleidt u bij het instellen en configureren van AWS voor de integratie van kosten- en gebruiksrapporten met Azure Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199990"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203080"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS-integratie van kosten- en gebruiksrapporten instellen en configureren
 
@@ -39,11 +37,11 @@ Gebruik de pagina **Kosten- & gebruiksrapporten** van de console Facturering en 
 9. Als u het dialoogvenster S3-bucket configureren wilt openen, voert u een van de volgende handelingen uit:
     1. Selecteer een bestaande bucket in de vervolgkeuzelijst en kies **Volgende**.
     2. Voer de naam van een bucket in en de regio waar u een nieuwe bucket wilt maken en kies **Volgende**.
-10. Selecteer **Ik heb bevestigd dat dit beleid juist is**en klik vervolgens op **Opslaan**.
-11. (Optioneel) Voer voor het voorvoegsel van het rapportpad, het padvoorvoegsel naar het rapport in dat u wilt toevoegen aan de naam van het rapport.
+10.    Selecteer **Ik heb bevestigd dat dit beleid juist is**en klik vervolgens op **Opslaan**.
+11.    (Optioneel) Voer voor het voorvoegsel van het rapportpad, het padvoorvoegsel naar het rapport in dat u wilt toevoegen aan de naam van het rapport.
 Als u geen voorvoegsel opgeeft, is het standaard voorvoegsel de naam die u voor het rapport hebt opgegeven. Het datumbereik heeft de `/report-name/date-range/`-indeling.
 12. Voor **Tijdseenheid**kiest u **Elk uur**.
-13. Voor **Rapportversie**kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft of dat u aanvullende nieuwe rapporten wilt.
+13.    Voor **Rapportversie**kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft of dat u aanvullende nieuwe rapporten wilt.
 14. Voor **Gegevensintegratie voor** is geen selectie vereist.
 15. Selecteer **GZIP** voor **compressie**.
 16. Selecteer **Next**.
@@ -124,8 +122,8 @@ De JSON van het beleid moet eruitzien als in het volgende voorbeeld. Vervang _bu
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

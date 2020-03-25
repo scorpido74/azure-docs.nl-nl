@@ -1,5 +1,5 @@
 ---
-title: De profielgegevens voor uw Azure-account wijzigen | Microsoft Docs
+title: De profiel gegevens voor uw Azure-account wijzigen
 description: Hierin wordt beschreven hoe u het profiel van uw Azure-beheersaccount en het e-mailadres van een contactpersoon wijzigt.
 author: genlin
 ms.reviewer: dcscontentpm
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46f2645b640224a9dfd68775574653c35da8652d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1a53dd6e6682d0237793c4afcdea25370f9cc17c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199871"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202978"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>De profiel gegevens voor uw Azure-account wijzigen
 

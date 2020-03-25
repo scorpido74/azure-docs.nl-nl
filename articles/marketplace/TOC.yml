@@ -132,7 +132,7 @@
           items:
             - name: Aan de slag
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Nieuwe functies
+            - name: Wat is er nieuw
               href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webanalyse
               href: ./cloud-partner-portal-orig/web-analytics.md

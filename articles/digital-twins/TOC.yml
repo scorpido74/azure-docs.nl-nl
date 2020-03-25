@@ -71,10 +71,10 @@
   items:
     - name: Bibliotheek met door de gebruiker gedefinieerde functies
       href: reference-user-defined-functions-client-library.md
-- name: Resources
+- name: Bronnen
   expanded: true
   items:
-    - name: Bronnen voor ontwikkelaars
+    - name: Resources voor ontwikkelaars
       items:
         - name: Graph Viewer voor Azure Digital Twins
           href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'

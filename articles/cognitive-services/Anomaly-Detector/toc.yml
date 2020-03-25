@@ -30,7 +30,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Afwijkingen in uw gegevens identificeren
       href: how-to/identify-anomalies.md
@@ -50,7 +50,7 @@
       href: concepts/anomaly-detection-best-practices.md
 - name: Naslaginformatie
   items:
-    - name: Naslaginformatie over REST-API
+    - name: Naslaginformatie over REST API
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: SDK's
       items:
@@ -76,7 +76,7 @@
           href: 'https://aka.ms/adNotebook'
     - name: Publicatie over SR-CNN in KDD 2019
       href: 'https://arxiv.org/abs/1906.03821'
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen
       href: 'https://aka.ms/adpricing'

@@ -1,6 +1,6 @@
 - name: Documentatie voor Sitebetrouwbaarheidsengineering
   href: ../index.yml
-- name: Resources
+- name: Bronnen
   expanded: true
   items:
     - name: SRE-boeken

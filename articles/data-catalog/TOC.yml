@@ -24,7 +24,7 @@
       href: data-catalog-prerequisites.md
     - name: Veelgestelde vragen
       href: data-catalog-frequently-asked-questions.md
-- name: Procedures
+- name: Procedure
   items:
     - name: Gegevensbronnen registreren
       href: data-catalog-how-to-register.md
@@ -62,7 +62,7 @@
       href: /rest/api/datacatalog/data-catalog-search-syntax-reference
     - name: Concepten van ontwikkelaars
       href: data-catalog-developer-concepts.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

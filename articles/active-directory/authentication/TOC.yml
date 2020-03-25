@@ -38,7 +38,7 @@
           href: concept-sspr-licensing.md
         - name: On-premises integratie
           href: concept-sspr-writeback.md
-    - name: Multi-Factor Authentication
+    - name: Meervoudige verificatie
       items:
         - name: Hoe MFA werkt
           href: concept-mfa-howitworks.md
@@ -179,7 +179,7 @@
           href: howto-mfaserver-iis.md
         - name: Adreslijstintegratie
           items:
-            - name: LDAP-verificatie
+            - name: LDAP-authenticatie
               href: howto-mfaserver-dir-ldap.md
             - name: RADIUS-verificatie
               href: howto-mfaserver-dir-radius.md
@@ -219,7 +219,7 @@
       href: /powershell/azure/overview
     - name: Servicelimieten en -beperkingen
       href: ../users-groups-roles/directory-service-limits-restrictions.md
-- name: Resources
+- name: Bronnen
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

@@ -1,26 +1,28 @@
 ---
-title: Azure-abonnementen en -accounts activeren | Microsoft Docs
+title: Azure-abonnementen en -accounts activeren
 description: Toegang met Azure Resource Manager-API's mogelijk maken voor nieuwe en bestaande accounts en oplossen van algemene accountproblemen.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301366"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474659"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-abonnementen en -accounts activeren met Cloudyn
 
 Door het toevoegen of bijwerken van uw referenties van Azure Resource Manager kan Cloudyn alle accounts en abonnementen binnen uw Azure-Tenant detecteren. Als ook uw Azure Diagnostics-extensie is ingeschakeld op uw virtuele machines, kan Cloudyn uitgebreide metrische gegevens zoals CPU en geheugen verzamelen. In dit artikel wordt beschreven hoe u toegang met Azure Resource Manager-API's mogelijk maakt voor nieuwe en bestaande accounts. Ook wordt beschreven hoe u algemene accountproblemen kunt oplossen.
 
 Cloudyn heeft geen toegang tot de meeste gegevens van uw Azure-abonnement wanneer het abonnement _niet geactiveerd_ is. U moet _niet-geactiveerde_ accounts bewerken zodat Cloudyn er toegang toe heeft.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>Vereiste machtigingen voor Azure
 

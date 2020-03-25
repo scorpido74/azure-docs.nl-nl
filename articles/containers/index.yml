@@ -62,7 +62,7 @@ sections:
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Containerinstallatiekopieën bouwen met Azure Container Registry-taken</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Een container bouwen en implementeren in Azure Container Instances</a>
           - html: <a href="/azure/openshift/tutorial-create-cluster">Een Azure Red Hat OpenShift-cluster maken</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
+  - title: Ontwikkel uw vaardigheden met Microsoft Learn
     items:
       - type: list
         style: cards

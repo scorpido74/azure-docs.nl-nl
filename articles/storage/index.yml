@@ -31,7 +31,7 @@ sections:
               text: PowerShell
           - image:
               src: media/index/cli.svg
-              text: Azure-CLI
+              text: Azure CLI
           - image:
               src: media/index/logo_net.svg
           - image:
@@ -77,7 +77,7 @@ sections:
           - title: Blobs
             html: <p>Installatiekopiegegevens in de cloud uploaden en verwerken</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Installatiekopiegegevens uploaden en ophalen in de cloud</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions activeren om blobs te verwerken</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Toepassingsgegevens beveiligen</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Opslag controleren en problemen oplossen</a></li></ul><p>Een toepassing voor hoge beschikbaarheid ontwerpen</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Uw toepassingsgegevens maximaal beschikbaar maken</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Een fout simuleren bij het lezen van gegevens uit de primaire regio</a></li></ul>
           - title: Data Lake Storage Gen2
-            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Gegevens uitpakken, transformeren en laden met Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Toegang tot Azure Data Lake Storage Gen2-gegevens met DataBricks met behulp van Spark</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Gegevens extraheren, transformeren en laden met Apache Hive in Azure HDInsight</a></p>'
+            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Gegevens uitpakken, transformeren en laden met Azure Databricks</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Toegang tot Azure Data Lake Storage Gen2-gegevens met DataBricks met behulp van Spark</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Gegevens uitpakken, transformeren en laden met Apache Hive in Azure HDInsight</a></p>'
   - title: Voorbeelden
     items:
       - type: paragraph
@@ -89,8 +89,8 @@ sections:
           - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blobs</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Queues</a>'
           - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobs</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Queues</a>'
           - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure-CLI</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+  - title: Ontwikkel uw vaardigheden met Microsoft Learn
     items:
       - type: list
         style: cards
@@ -136,6 +136,6 @@ sections:
         className: cardsD
         items:
           - title: Opdrachtregel
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure-CLI</a></p>
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
           - title: REST
             html: '<p><a href="/rest/api/storageservices">API voor blobs, wachtrijen, tabellen en bestanden</a></p><p><a href="/rest/api/storagerp">Opslagresourceprovider-API</a></p><p><a href="/rest/api/storageimportexport">Import-/export-service-API</a></p>'

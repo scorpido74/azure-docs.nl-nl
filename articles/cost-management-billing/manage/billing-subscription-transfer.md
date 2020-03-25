@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245389"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238156"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -124,7 +124,7 @@ De onderstaande typen abonnementen kunnen in Azure Portal worden overgedragen. M
 
 Deze veelgestelde vragen zijn van toepassing op gebruikers die het eigendom van de facturering voor een Azure-abonnement overdragen naar een ander account.
 
-### <a name="whoisaa"></a> Wie is een factureringsbeheerder van een account?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Wie is een factureringsbeheerder van een account?
 
 Een factureringsbeheerder is een persoon die gemachtigd is om de facturering voor een account te beheren. Ze hebben toegang tot de facturering in de [Azure-portal](https://portal.azure.com) en kunnen diverse factureringstaken uitvoeren. Ze kunnen bijvoorbeeld abonnementen maken, facturen weergeven en betalen van facturen of betalingswijzen bijwerken.
 
@@ -206,15 +206,15 @@ De Enterprise-beheerder kan het eigendom voor elk account bijwerken, zelfs nadat
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a id="no-button"></a> Waarom zie ik de knop Abonnement overdragen niet?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Waarom zie ik de knop Abonnement overdragen niet?
 
 De overdracht van selfserviceabonnementen is niet beschikbaar voor uw factureringsaccount. Het is momenteel niet mogelijk om het eigendom van de facturering van abonnementen in EA-accounts (Enterprise Agreement) in Azure Portal te verplaatsen. Bovendien bieden Microsoft Customer Agreement-accounts die zijn gemaakt in samenwerking met een vertegenwoordiger van Microsoft, geen ondersteuning voor de overdracht van het eigendom van de facturering.
 
-### <a id="no-button"></a> Waarom biedt mijn type abonnement geen ondersteuning voor overdrachten?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Waarom biedt mijn type abonnement geen ondersteuning voor overdrachten?
 
 Niet alle typen abonnementen bieden ondersteuning voor de overdracht van het eigendom van de facturering. Zie [Ondersteunde typen abonnementen](#supported-subscription-types) voor een overzicht van typen abonnementen die overdrachten ondersteunen
 
-### <a id="no-button"></a> Waarom ontvang ik een foutbericht dat de toegang is geweigerd wanneer ik het eigendom van een abonnement wil overdragen?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Waarom ontvang ik een foutbericht dat de toegang is geweigerd wanneer ik het eigendom van een abonnement wil overdragen?
 
 Deze fout wordt weergegeven wanneer u een Microsoft Azure Plan-abonnement probeert over te dragen en u niet over de benodigde machtigingen beschikt. Als u een Microsoft Azure Plan-abonnement wilt overdragen, moet u een eigenaar of bijdrager zijn in de factuursectie waarnaar het abonnement wordt gefactureerd. Zie [Abonnementen beheren voor de factuursectie](understand-mca-roles.md#manage-subscriptions-for-invoice-section) voor meer informatie.
 

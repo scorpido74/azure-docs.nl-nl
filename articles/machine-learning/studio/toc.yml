@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: Excel-invoegtoepassing gebruiken
           href: excel-add-in-for-web-services.md
-        - name: Een Batch-pool gebruiken
-          href: dedicated-capacity-for-bes-jobs.md
     - name: Gebruiksvoorbeelden
       items:
         - name: Klantverloop

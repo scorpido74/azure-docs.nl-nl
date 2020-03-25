@@ -38,13 +38,13 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
     - name: PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Taalondersteuning
       href: language-support.md
     - name: Regio's
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-- name: Resources
+- name: Bronnen
   items:
     - name: Prijzen en beperkingen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'

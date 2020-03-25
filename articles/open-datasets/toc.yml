@@ -27,7 +27,7 @@
     - name: Jupyter-notebooks
       displayName: python notebooks
       href: 'https://github.com/Azure/OpenDatasetsNotebooks'
-- name: Resources
+- name: Bronnen
   items:
     - name: Catalogus Azure Open Datasets
       href: 'https://azure.microsoft.com/services/open-datasets/catalog/'

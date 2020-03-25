@@ -120,7 +120,7 @@
         - name: Gegevenstoegang GA
           href: /rest/api/time-series-insights/ga
           items:
-            - name: Query’s uitvoeren
+            - name: Query's uitvoeren
               href: /rest/api/time-series-insights/ga-query
               items:
                 - name: API
@@ -135,12 +135,12 @@
       items:
         - name: JavaScript-client-SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
-- name: Resources
+- name: Bronnen
   expanded: true
   items:
     - name: Aanvragen van klantgegevens
       href: time-series-insights-customer-data-requests.md
-    - name: Bronnen voor ontwikkelaars
+    - name: Resources voor ontwikkelaars
       items:
         - name: Codevoorbeelden voor Azure Time Series Insights
           href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
