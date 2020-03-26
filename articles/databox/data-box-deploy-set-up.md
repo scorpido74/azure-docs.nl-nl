@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76514133"
 ---
 ::: zone target="docs"
@@ -42,7 +42,7 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de zelfstudie [ Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
+1. U hebt de [zelfstudie: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is bijgewerkt naar **Geleverd**. 
     - Er zit een verzendlabel in het doorzichtige hoesje op het apparaat, onder het stroometiket. Bewaar dit label zorgvuldig aangezien u het nodig hebt voor retourverzending.
     - In sommige regio's in Europa wordt het apparaat in een doos geleverd. Zorg bij het uitpakken van het apparaat dat u de doos bewaart voor retourzending.
@@ -55,7 +55,7 @@ Zorg voordat u begint voor het volgende:
 7. U hebt de volgende kabels aangeschaft om de Data Box aan te sluiten op de hostcomputer.
     - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Data Box heeft de Mellanox ConnectX®-3 Pro EN Dual Port 10GBASE-T Adapters met PCI Express 3.0 netwerkinterface. Kabels die compatibel zijn met deze interface moeten dus werken. Voor interne testdoeleinden is bijvoorbeeld een CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M-kabel gebruikt. Zie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) voor meer informatie.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
-    - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
+    - Eén RJ-45 CAT 6A- OF één RJ-45 CAT 6-netwerkkabel (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
 ## <a name="cable-your-device"></a>Uw apparaat bekabelen
 
@@ -91,7 +91,7 @@ Nadat u het apparaat hebt ontvangen, moet u het apparaat aansluiten en er verbin
     - (Meegeleverd) geaard netsnoer met een vermogen van 10 A of hoger met een IEC60320 C-13-connector aan één eind om het apparaat te koppelen.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
     - Twee koperen 10 GbE-kabels van het type SFP+ Twinax (gebruiken met 10 Gbps DATA 1-, DATA 2-netwerkinterfaces)
-    - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
+    - Eén RJ-45 CAT 6A- OF één RJ-45 CAT 6-netwerkkabel (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
 3. Haal het apparaat uit de doos en plaats het op een plat oppervlak. 
     
@@ -120,7 +120,7 @@ Voer de volgende stappen uit om uw apparaat in te stellen met behulp van de loka
    ![Verbinding maken met de lokale webgebruikersinterface](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. U ziet een pagina **Aanmelden** voor de lokale webgebruikersinterface. Zorg ervoor dat het serienummer van het apparaat overeenkomt in zowel de gebruikersinterface van de portal als de lokale webgebruikersinterface. Het apparaat is op dit moment vergrendeld.
-5. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+5. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 6. Download de referenties van het apparaat vanuit de portal. Ga naar **Algemeen > Apparaatdetails**. Kopieer het **Apparaatwachtwoord**. Het wachtwoord van het apparaat is aan een specifieke volgorde gekoppeld in de portal. 
 
     ![Apparaatreferenties ophalen](media/data-box-deploy-set-up/data-box-device-credentials.png)

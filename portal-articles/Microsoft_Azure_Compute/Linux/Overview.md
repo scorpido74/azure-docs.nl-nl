@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77603003"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Documentatie voor virtuele Linux-machines
@@ -25,7 +25,7 @@ Meer informatie over het implementeren van een NGINX-webserver binnen een virtue
 
 - [Azure Portal](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure-CLI](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>Zelfstudies met stapsgewijze instructies
 
@@ -52,7 +52,7 @@ Meer informatie over het implementeren, beheren en schalen van virtuele Linux-ma
 
 Implementeer uw eerste toepassing in Azure.
 
-- [Azure-CLI](/azure/virtual-machines/virtual-machines-linux-cli-samples)
+- [Azure CLI](/azure/virtual-machines/virtual-machines-linux-cli-samples)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-powershell-samples)
 
 ## <a name="more"></a>Meer
