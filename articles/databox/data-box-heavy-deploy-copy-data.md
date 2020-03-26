@@ -10,15 +10,15 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380390"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214204"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Zelf studie: gegevens kopiëren naar Azure Data Box Heavy via SMB
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box Heavy via SMB
 
 ::: zone-end
 
@@ -54,7 +54,7 @@ Zorg er altijd voor dat de namen van shares en mappen, en de gegevensgrootte, de
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de [zelf studie voltooid: stel Azure data Box Heavy](data-box-deploy-set-up.md)in.
+1. U hebt de zelfstudie [ Azure Data Box Heavy instellen](data-box-deploy-set-up.md) voltooid.
 2. U hebt de Data Box Heavy ontvangen en de orderstatus in de portal is **Geleverd**.
 3. U beschikt over een hostcomputer waarop de gegevens staan die u naar de Data Box Heavy wilt kopiëren. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
@@ -296,7 +296,7 @@ Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box Heavy naar Microsof
 
 3. Gebruik een programma voor het kopiëren van bestanden dat compatibel is met SMB, zoals Robocopy, om gegevens naar shares te kopiëren.
 
-Voor stapsgewijze instructies gaat u naar de [zelf studie: gegevens kopiëren naar Azure data box via SMB](data-box-heavy-deploy-copy-data.md).
+Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens naar Azure Data Box Disk kopiëren via SMB](data-box-heavy-deploy-copy-data.md).
 
 ### <a name="copy-data-via-nfs"></a>Gegevens kopiëren via NFS
 
@@ -308,7 +308,7 @@ Voor stapsgewijze instructies gaat u naar de [zelf studie: gegevens kopiëren na
 3. Gebruik de opdracht `cp` of `rsync` om de gegevens te kopiëren. 
 4. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knooppunt van uw Data Box Heavy.
 
-Voor stapsgewijze instructies gaat u naar de [zelf studie: gegevens kopiëren naar Azure data box via NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
+Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
 
 ### <a name="copy-data-via-rest"></a>Gegevens kopiëren via REST
 
@@ -316,7 +316,7 @@ Voor stapsgewijze instructies gaat u naar de [zelf studie: gegevens kopiëren na
 2. Als u gegevens wilt kopiëren naar Data Box-Blob-opslag, kunt u AzCopy gebruiken.
 3. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knooppunt van uw Data Box Heavy.
 
-Voor stapsgewijze instructies gaat u naar [zelf studie: gegevens kopiëren naar Azure data Box Blob-opslag via rest-api's](data-box-heavy-deploy-copy-data-via-rest.md).
+Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens kopiëren naar Azure Data Box-Blob-opslag via REST API's](data-box-heavy-deploy-copy-data-via-rest.md).
 
 ### <a name="copy-data-via-data-copy-service"></a>Gegevens kopiëren via een gegevenskopieerservice
 
@@ -324,7 +324,7 @@ Voor stapsgewijze instructies gaat u naar [zelf studie: gegevens kopiëren naar 
 2. Vul de parameters in en maak een taak.
 3. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knooppunt van uw Data Box Heavy.
 
-Voor stapsgewijze instructies gaat u naar [zelf studie: de Data Copy-service gebruiken om gegevens te kopiëren naar Azure data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
+Ga voor stapsgewijze instructies naar [Zelfstudie: De gegevenskopieerservice gebruiken om gegevens te kopiëren naar Azure Data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
 
 ### <a name="copy-data-to-managed-disks"></a>Gegevens kopiëren naar beheerde schijven
 
@@ -333,7 +333,7 @@ Voor stapsgewijze instructies gaat u naar [zelf studie: de Data Copy-service geb
 3. Vervolgens kunt u gegevens kopiëren via SMB- of NFS-hulpprogramma's.
 4. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knooppunt van uw Data Box Heavy.
 
-Voor stapsgewijze instructies gaat u naar [zelf studie: gebruik data Box Heavy om gegevens te importeren als managed disks in azure](data-box-heavy-deploy-copy-data-from-vhds.md).
+Ga voor stapsgewijze instructies naar [Zelfstudie: Data Box Heavy gebruiken om gegevens als beheerde schijven in Azure te importeren](data-box-heavy-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 

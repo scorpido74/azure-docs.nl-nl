@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380472"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214323"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Zelfstudie: gegevens kopiëren naar de Azure Data Box-schijf en deze gegevens controleren
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box Disk en deze gegevens controleren
 
 ::: zone-end
 
@@ -43,7 +43,7 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg voordat u begint voor het volgende:
-- U hebt de [zelfstudie: Uw Azure Data Box-schijf installeren en configureren](data-box-disk-deploy-set-up.md) voltooid.
+- U hebt de zelfstudie [ uw Azure Data Box Disk installeren en configureren](data-box-disk-deploy-set-up.md) voltooid.
 - Uw schijven worden ontgrendeld en verbonden met een clientcomputer.
 - Er moet een [ondersteund besturingssysteem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) worden uitgevoerd op de clientcomputer die wordt gebruikt om gegevens naar de schijven te kopiëren.
 - Zorg ervoor dat het beoogde opslagtype voor uw gegevens overeenkomt met [Ondersteunde opslagtypen](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
@@ -106,8 +106,8 @@ Voer de volgende stappen uit om verbinding te maken en gegevens van uw computer 
     |Doel       | Hiermee geeft u het pad naar de doelmap op.        |
     |/E                  | Hiermee kopieert u submappen, met inbegrip van lege mappen. |
     |/MT[:N]             | Hiermee maakt u kopieën met meerdere (N) threads, waarbij N een geheel getal tussen 1 en 128 is. <br>De standaardwaarde voor N is 8.        |
-    |/R: \<N >             | Hiermee geeft u het aantal nieuwe pogingen bij mislukte kopieerbewerkingen op. De standaardwaarde van N is 1.000.000 (één miljoen nieuwe pogingen).        |
-    |/W: \<N >             | Hiermee geeft u de wachttijd tussen nieuwe pogingen op in seconden. De standaardwaarde van N is 30 (wachttijd 30 seconden).        |
+    |/R: \<N>             | Hiermee geeft u het aantal nieuwe pogingen bij mislukte kopieerbewerkingen op. De standaardwaarde van N is 1.000.000 (één miljoen nieuwe pogingen).        |
+    |/W: \<N>             | Hiermee geeft u de wachttijd tussen nieuwe pogingen op in seconden. De standaardwaarde van N is 30 (wachttijd 30 seconden).        |
     |/NFL                | Hiermee geeft u op dat bestandsnamen niet moeten worden vastgelegd.        |
     |/NDL                | Hiermee geeft u op dat mapnamen niet moeten worden vastgelegd.        |
     |/FFT                | Hiermee wordt uitgegaan van FAT-bestandstijden (precisie van twee seconden).        |
@@ -291,7 +291,7 @@ Als tijdens de validatie fouten optreden, raadpleegt u [problemen met validatief
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot de Azure Data Box-schijf, zoals:
+In deze zelfstudie zijn verschillende onderwerpen besproken over de Azure Data Box-schijf, zoals:
 
 > [!div class="checklist"]
 > * Gegevens kopiëren naar de Data Box-schijf

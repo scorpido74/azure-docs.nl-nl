@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380251"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214187"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zelf studie: retour Azure Data Box Heavy en controleer het uploaden van gegevens naar Azure
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zelfstudie: De Azure Data Box Heavy terugsturen en de gegevens controleren die u naar Azure hebt geüpload
 
 ::: zone-end
 
@@ -45,7 +45,7 @@ In deze zelfstudie vindt u informatie over onderwerpen als:
 
 Zorg voordat u begint voor het volgende:
 
-- U hebt de [zelf studie voltooid: gegevens kopiëren naar Azure data box en verifiëren](data-box-heavy-deploy-copy-data.md).
+- U hebt de zelfstudie [ Gegevens kopiëren naar Azure Data Box en deze gegevens controleren](data-box-heavy-deploy-copy-data.md).
 - Kopieertaken zijn voltooid. Voorbereiding voor verzending kan niet worden uitgevoerd als er nog kopieertaken worden uitgevoerd.
 
 
