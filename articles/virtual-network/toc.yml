@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Virtuele netwerken verbinden
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: NAT-gateway maken - Portal
-          href: quickstart-create-nat-gateway-portal.md
-        - name: NAT-gateway maken - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT-gateway maken - CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: NAT-gateway maken - ARM-sjabloon
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: NAT-gateway maken en valideren - Portal
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: NAT-gateway maken en valideren - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: NAT-gateway maken en valideren - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: NAT-gateway maken
+      href: quickstart-create-nat-gateway-portal.md
+    - name: NAT-gateway maken en valideren
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: Voorbeelden
   items:
     - name: Azure CLI
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: Openbare IP-adressen - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: NAT-gateway maken - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: NAT-gateway maken - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT-gateway maken - ARM-sjabloon
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: NAT-gateway maken en valideren - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: NAT-gateway maken en valideren - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Problemen oplossen
       items:
         - name: Peering-problemen van virtueel netwerk oplossen

@@ -5,20 +5,25 @@
   items:
     - name: Wat is de Speech-service?
       href: overview.md
-    - name: Spraakservice gratis uitproberen
+    - name: Speech Service gratis uitproberen
       href: get-started.md
-    - name: Ondersteuning voor taal en regio
+    - name: Taal- en spraakondersteuning
+      displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
+    - name: Ondersteuning voor regio
+      href: regions.md
 - name: Spraak naar tekst
-  expanded: false
   items:
     - name: Documentatie over spraak naar tekst
       href: index-speech-to-text.yml
     - name: Overzicht
       items:
-        - name: Wat is spraak-naar-tekst?
+        - name: Wat is spraak naar tekst in realtime?
           href: speech-to-text.md
+        - name: Wat is batchgewijze spraak naar tekst?
+          href: batch-transcription.md
+        - name: Basisbeginselen van spraakherkenning
+          href: speech-to-text-basics.md
     - name: Snelstartgids
       items:
         - name: Spraak herkennen met microfooninvoer
@@ -29,31 +34,34 @@
           href: quickstarts/from-blob.md
     - name: Instructiegidsen
       items:
-        - name: Brontaal voor spraakherkenning wijzigen
-          href: how-to-specify-source-language.md
         - name: Spraakherkenningsmodus kiezen
           href: how-to-choose-recognition-mode.md
+        - name: Brontaal voor spraakherkenning wijzigen
+          href: how-to-specify-source-language.md
         - name: Nauwkeurigheid verbeteren met Custom Speech
           href: how-to-custom-speech.md
+        - name: Gecomprimeerde audio-invoerindelingen gebruiken
+          href: how-to-use-codec-compressed-audio-input-streams.md
+          displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
         - name: Nauwkeurigheid verbeteren met Frasenlijsten
           href: how-to-phrase-lists.md
-        - name: Nauwkeurigheid verbeteren met tenantmodellen
-          href: tutorial-tenant-model.md
         - name: Een specifiek apparaat voor microfooninvoer selecteren
           href: how-to-select-audio-input-devices.md
         - name: Automatische detectie van de brontaal gebruiken
           href: how-to-automatic-language-detection.md
-        - name: Gecomprimeerde audio-invoerindelingen gebruiken
-          href: how-to-use-codec-compressed-audio-input-streams.md
+    - name: Zelfstudies
+      items:
+        - name: Nauwkeurigheid verbeteren met tenantmodellen
+          href: tutorial-tenant-model.md
     - name: Aanpassing
       items:
-        - name: Gegevens voorbereiden
+        - name: Gegevens voorbereiden voor Custom Speech
           href: how-to-custom-speech-test-data.md
-        - name: Gegevens inspecteren
+        - name: Custom Speech-gegevens controleren
           href: how-to-custom-speech-inspect-data.md
-        - name: Nauwkeurigheid evalueren
+        - name: Nauwkeurigheid van Custom Speech evalueren
           href: how-to-custom-speech-evaluate-data.md
-        - name: Aangepast model trainen
+        - name: Een model trainen voor Custom Speech
           href: how-to-custom-speech-train-model.md
         - name: Aangepaste model implementeren
           href: how-to-custom-speech-deploy-model.md
@@ -68,39 +76,40 @@
         - name: Speech-SDK API's
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
             - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
             - name: Releaseopmerkingen
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
         - name: REST-API’s
           items:
             - name: REST API voor spraak-naar-tekst
               href: rest-speech-to-text.md
-            - name: REST API voor batchtranscriptie
-              href: batch-transcription.md
     - name: Resources
       items:
+        - name: Taalondersteuning
+          href: 'language-support.md#speech-to-text'
+        - name: Ondersteuning voor regio
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
         - name: Veelgestelde vragen over spraak naar tekst
-          href: faq-stt.md
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
+          href: faq-stt.md
 - name: Tekst naar spraak
-  expanded: false
   items:
     - name: Documentatie over tekst naar spraak
       href: index-text-to-speech.yml
@@ -120,9 +129,6 @@
       items:
         - name: Synthese verbeteren met SSML
           href: speech-synthesis-markup.md
-        - name: Synthese verbeteren met Custom Voice
-          href: how-to-custom-voice.md
-          displayName: custom voice
         - name: Spraaksynthese met API voor lange audio
           href: long-audio-api.md
         - name: Een lijst met stemmen ophalen met REST (Python)
@@ -148,8 +154,8 @@
         - name: Custom Voice-portal
           items:
             - name: Aan de slag met Custom Voice
-              href: how-to-custom-voice.md
               displayName: 'custom voice, neural voice'
+              href: how-to-custom-voice.md
             - name: Gegevens voorbereiden
               href: how-to-custom-voice-prepare-data.md
             - name: Custom Voice-modellen maken en gebruiken
@@ -165,39 +171,44 @@
         - name: Speech-SDK
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
             - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
             - name: Releaseopmerkingen
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
         - name: REST-API’s
           items:
             - name: REST API voor tekst-naar-spraak
               href: rest-text-to-speech.md
-        - name: Fonetische SSML-sets
-          href: speech-ssml-phonetic-sets.md
     - name: Resources
       items:
+        - name: Standaardspraakondersteuning
+          href: 'language-support.md#standard-voices'
+        - name: Ondersteuning voor neurale stem
+          href: 'language-support.md#neural-voices'
+        - name: Ondersteuning voor regio
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+        - name: Fonetische SSML-sets
+          href: speech-ssml-phonetic-sets.md
         - name: Veelgestelde vragen over tekst naar spraak
-          href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
+          href: faq-text-to-speech.md
 - name: Spraakomzetting
-  expanded: false
   items:
     - name: Documentatie over spraakomzetting
       href: index-speech-translation.yml
@@ -215,47 +226,50 @@
           href: quickstarts/translate-speech-to-speech.md
     - name: Zelfstudies
       items:
-        - name: Een Flask-app bouwen om tekst om te zetten en samen te stellen met REST API's
+        - name: Tekst omzetten en samenstellen met REST API's
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
     - name: Naslaginformatie
       items:
         - name: Speech-SDK
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
             - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
             - name: Releaseopmerkingen
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
     - name: Resources
       items:
+        - name: Taalondersteuning
+          href: 'language-support.md#speech-translation'
+        - name: Ondersteuning voor regio
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
         - name: Veelgestelde vragen over spraakomzetting
           href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Intentieherkenning
-  expanded: false
   items:
     - name: Documentatie over intentieherkenning
       href: index-intent-recognition.yml
     - name: Snelstartgids
       items:
         - name: 'Spraak, intenties en entiteiten herkennen'
-          href: quickstarts/intent-recognition.md
           displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+          href: quickstarts/intent-recognition.md
     - name: Instructiegidsen
       items:
         - name: 'Spraakintenties herkennen met LUIS, C#'
@@ -265,47 +279,53 @@
         - name: Speech-SDK
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
             - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
             - name: Releaseopmerkingen
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
         - name: LUIS-service
           items:
             - name: Resources voor LUIS-ontwikkelaars
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
+    - name: Resources
+      items:
+        - name: Taalondersteuning
+          href: ../luis/luis-language-support.md
+        - name: Ondersteuning voor regio
+          href: 'regions.md#intent-recognition'
 - name: Gespreksscenario's
-  expanded: false
   items:
     - name: Documentatie over gespreksscenario's
+      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
       href: index-conversation-scenarios.yml
     - name: Gesprektranscriptie
       items:
         - name: Overzicht
           items:
-            - name: Over gesprektranscriptie
+            - name: Wat is gesprektranscriptie?
               href: conversation-transcription.md
         - name: Instructiegidsen
           items:
             - name: Omgaan met callcenterscenario's
-              href: call-center-transcription.md
               displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-            - name: Realtime gesprektranscriptie
+              href: call-center-transcription.md
+            - name: Gesprektranscriptie in realtime
               href: how-to-use-conversation-transcription.md
             - name: Asynchrone gesprektranscriptie
               href: how-to-async-conversation-transcription.md
@@ -314,26 +334,26 @@
             - name: Speech-SDK
               items:
                 - name: C++
-                  href: 'https://aka.ms/csspeech/cppref'
                   displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/cppref'
                 - name: 'C#'
-                  href: 'https://aka.ms/csspeech/csharpref'
                   displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/csharpref'
                 - name: Java
-                  href: 'https://aka.ms/csspeech/javaref'
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/javaref'
                 - name: Javascript
+                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
-                  displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                 - name: Objective-C
-                  href: 'https://aka.ms/csspeech/objectivecref'
                   displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/objectivecref'
                 - name: Python
-                  href: 'https://aka.ms/csspeech/pythonref'
                   displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/pythonref'
                 - name: Releaseopmerkingen
-                  href: releasenotes.md
                   displayName: 'release notes,updates,what''s new,what is new,changes'
+                  href: releasenotes.md
             - name: REST-API’s
               items:
                 - name: REST API's voor gesprektranscriptie
@@ -342,7 +362,7 @@
       items:
         - name: Overzicht
           items:
-            - name: Over gesprekken via meerdere apparaten
+            - name: Wat is een gesprek via meerdere apparaten?
               href: multi-device-conversation.md
         - name: Snelstartgids
           items:
@@ -357,7 +377,6 @@
                 - name: 'C#'
                   href: 'https://aka.ms/csspeech/csharpref'
 - name: Spraakassistenten
-  expanded: false
   items:
     - name: Documentatie over spraakassistenten
       href: index-voice-assistants.yml
@@ -367,27 +386,27 @@
           href: voice-assistants.md
     - name: Aangepaste opdrachten (preview)
       items:
-        - name: Wat zijn aangepaste opdrachten?
+        - name: Wat de app voor aangepaste opdrachten?
           href: custom-commands.md
         - name: Snelstartgidsen
           items:
-            - name: Een aangepaste opdracht maken (preview)
+            - name: Een app voor aangepaste opdrachten maken
               href: quickstart-custom-speech-commands-create-new.md
-            - name: Een aangepaste opdracht maken met parameters (preview)
+            - name: Een aangepaste opdracht maken met parameters
               href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Aangepaste opdrachten gebruiken met Custom Voice (preview-versie)
+            - name: Aangepaste opdrachten gebruiken met Custom Voice
               href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Aangepaste opdrachten gebruiken met de Speech-SDK (preview)
+            - name: Aangepaste opdrachten gebruiken met de Speech-SDK
               href: quickstart-custom-speech-commands-speech-sdk.md
         - name: Instructiegidsen
           items:
-            - name: Aangepaste opdrachten uitvoeren met de Speech-SDK
+            - name: Opdrachten uitvoeren vanuit een client
               href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Parametervalidatie toevoegen aan een aangepaste opdracht
+            - name: Validatie van parameter toevoegen
               href: how-to-custom-speech-commands-validations.md
-            - name: Een bevestiging toevoegen aan een aangepaste opdracht
+            - name: Een bevestiging toevoegen
               href: how-to-custom-speech-commands-confirmations.md
-            - name: Een correctie met één stap toevoegen aan een aangepaste opdracht
+            - name: Een correctie met één stap toevoegen
               href: how-to-custom-speech-commands-one-step-correction.md
     - name: Direct Line-spraak
       items:
@@ -395,12 +414,8 @@
           href: direct-line-speech.md
         - name: Snelstartgidsen
           items:
-            - name: 'C# (UWP)'
-              href: quickstart-voice-assistant-csharp-uwp.md
-            - name: 'Java (Windows, macOS, Linux)'
-              href: quickstart-voice-assistant-java-jre.md
-            - name: Java (Android)
-              href: quickstart-voice-assistant-java-android.md
+            - name: Een Custom Voice-assistent maken
+              href: quickstarts/voice-assistants.md
         - name: Zelfstudies
           items:
             - name: Spraak inschakelen voor uw bot met Speech-SDK
@@ -416,26 +431,24 @@
         - name: Aangepaste herkenning van trefwoorden
           href: speech-devices-sdk-create-kws.md
 - name: Hosting
-  expanded: false
   items:
     - name: Documentatie over hosting
       href: index-hosting.yml
     - name: Instructiegidsen
       items:
-        - name: Containers installeren en uitvoeren
-          href: speech-container-howto.md
+        - name: Spraakcontainers installeren en uitvoeren
           displayName: 'containers,install container,run container'
-        - name: Containers configureren
-          href: speech-container-configuration.md
+          href: speech-container-howto.md
+        - name: Spraakcontainers configureren
           displayName: 'containers,configure containers,container config,configuration'
-        - name: Kubernetes en Helm
-          href: speech-container-howto-on-premises.md
+          href: speech-container-configuration.md
+        - name: Spraakcontainers met Kubernetes en Helm
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-        - name: Azure Container Instances
-          href: deploy-speech-on-container-instances.md
+          href: speech-container-howto-on-premises.md
+        - name: Spraakcontainers in Azure-containerinstanties
           displayName: 'ACI,azure container instances,container instances,containers'
+          href: deploy-speech-on-container-instances.md
 - name: Speech-SDK
-  expanded: false
   items:
     - name: Overzicht
       items:
@@ -448,8 +461,8 @@
     - name: Snelstartgids
       items:
         - name: Speech-SDK instellen
-          href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+          href: quickstarts/setup-platform.md
     - name: Instructiegidsen
       items:
         - name: Logboekregistratie inschakelen
@@ -457,13 +470,13 @@
         - name: Geheugenverbruik bijhouden
           href: how-to-track-speech-sdk-memory-usage.md
         - name: OpenSSL voor Linux configureren
-          href: how-to-configure-openssl-linux.md
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+          href: how-to-configure-openssl-linux.md
     - name: Voorbeelden
       items:
         - name: Voorbeelden van Speech-SDK (GitHub)
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Voorbeelden van Speech Device-SDK (GitHub)
+        - name: Voorbeelden van de Speech Devices SDK (GitHub)
           href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Naslaginformatie
       items:
@@ -482,13 +495,12 @@
         - name: Releaseopmerkingen bij Speech SDK
           href: releasenotes.md
 - name: Apparaten
-  expanded: false
   items:
     - name: Documentatie over Speech Devices
       href: index-devices.yml
     - name: Overzicht
       items:
-        - name: Over de Speech Devices SDK
+        - name: Wat is de Speech Devices SDK?
           href: speech-devices-sdk.md
         - name: De Speech Devices SDK ophalen
           href: get-speech-devices-sdk.md
@@ -506,38 +518,36 @@
           href: speech-devices-sdk-quickstart.md
     - name: Resources
       items:
-        - name: Probleem oplossen met de Speech Devices-SDK
+        - name: Probleem met de Speech Devices SDK oplossen
           href: speech-devices-sdk-troubleshooting.md
     - name: Naslaginformatie
       items:
-        - name: Releaseopmerkingen bij Speech Devices-SDK
+        - name: Releaseopmerkingen bij de Speech Devices SDK
           href: devices-sdk-release-notes.md
 - name: Migratie
-  expanded: false
   items:
     - name: Vanuit Bing Speech
       href: how-to-migrate-from-bing-speech.md
-    - name: Vanuit de Custom Speech Service
-      href: how-to-migrate-from-custom-speech-service.md
     - name: Vanuit de Translator Speech-API
       href: how-to-migrate-from-translator-speech-api.md
 - name: Resources
-  expanded: false
   items:
     - name: Ondersteuning
-      href: support.md
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
+      href: support.md
     - name: Regio's
       href: regions.md
     - name: Documentatie voor Swagger
       href: swagger-documentation.md
     - name: Onafhankelijke clouds
-      href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
+      href: sovereign-clouds.md
     - name: Prijzen en beperkingen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Versleuteling
+      href: speech-encryption-of-data-at-rest.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Privacy en cookies

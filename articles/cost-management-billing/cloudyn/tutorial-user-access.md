@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Toegang beheren met Cloudyn in Azure | Microsoft Docs'
+title: 'Zelfstudie: Toegang beheren met Cloudyn in Azure'
 description: In deze zelfstudie leest u hoe u de toegang tot gegevens van Cloudyn kunt beheren met behulp van gebruikersaccounts die toegangsniveaus voor entiteiten bepalen.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774007"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463608"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Zelfstudie: toegang tot Cloudyn-gegevens toewijzen
 
@@ -33,6 +33,8 @@ Op het moment dat u uw Azure overeenkomst of -account registreert, wordt er een 
 
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,9 +70,9 @@ U kunt zichzelf niet als gebruiker verwijderen.
 > [!WARNING]
 > Wanneer u een gebruiker verwijdert, kan dit niet worden hersteld.
 
-1.  Klik in de rechterbovenhoek van de portal van Cloudyn op het tandwielpictogram en selecteer vervolgens **User Management**.
-2.  Selecteer in de lijst met gebruikers de gebruiker die u wilt verwijderen en klik vervolgens op **Gebruiker verwijderen** (prullenbaksymbool).
-3.  Klik in het vak Gebruiker verwijderen op **Ja** en klik vervolgens op **OK**.
+1.    Klik in de rechterbovenhoek van de portal van Cloudyn op het tandwielpictogram en selecteer vervolgens **User Management**.
+2.    Selecteer in de lijst met gebruikers de gebruiker die u wilt verwijderen en klik vervolgens op **Gebruiker verwijderen** (prullenbaksymbool).
+3.    Klik in het vak Gebruiker verwijderen op **Ja** en klik vervolgens op **OK**.
 
 
 ## <a name="delete-or-export-personal-data"></a>Persoonlijke gegevens verwijderen of exporteren

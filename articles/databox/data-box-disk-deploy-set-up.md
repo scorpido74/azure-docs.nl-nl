@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ef6f342ec2308897d8c2221250ce92f81ce66863
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514099"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214357"
 ---
 ::: zone target="docs"
 
@@ -54,49 +54,49 @@ Zorg voordat u begint voor het volgende:
 
  Voer de volgende stappen uit om uw schijven uit te pakken.
 
-1. De Data Box-schijven worden verzonden in een kleine verzenddoos. Open de doos en haal de inhoud eruit. Controleer of de doos één tot vijf SSD-schijven (Solid-State Disks) en een USB-kabel per schijf bevat. Bekijk of er aan de doos is gerommeld en of deze is beschadigd. 
+1. De Data Box-schijven worden verzonden in een kleine verzenddoos. Open de doos en haal de inhoud eruit. Controleer of de doos één tot vijf SSD-schijven (Solid-State Disks) en een USB-kabel per schijf bevat. Bekijk of er aan de doos is gerommeld en of deze is beschadigd.
 
     ![Verzenddoos voor de Data Box-schijf](media/data-box-disk-deploy-set-up/data-box-disk-ship-package1.png)
 
 2. Als er aan de verzenddoos is gerommeld of als deze ernstig is beschadigd, moet u de doos niet openen. Neem in dat geval contact op met Microsoft Ondersteuning om te bepalen of de schijven in een goede staat zijn of dat er vervangende schijven moeten worden verzonden.
-3. Controleer of er op de doos een doorzichtige plastic hoes zit met daarin een verzendlabel (onder het huidige label) dat voor een retourzending kan worden gebruikt. Als dit label is zoekgeraakt of is beschadigd, kunt u in Azure Portal altijd een nieuw label downloaden en afdrukken. 
+3. Controleer of er op de doos een doorzichtige plastic hoes zit met daarin een verzendlabel (onder het huidige label) dat voor een retourzending kan worden gebruikt. Als dit label is zoekgeraakt of is beschadigd, kunt u in Azure Portal altijd een nieuw label downloaden en afdrukken.
 
     ![Verzendlabel voor de Data Box-schijf](media/data-box-disk-deploy-set-up/data-box-disk-package-ship-label.png)
 
 4. Bewaar de doos en het verpakkingsschuim voor de retourzending van de schijven.
 
-## <a name="connect-to-disks-and-get-the-passkey"></a>Schijven aansluiten en de wachtwoordcode opzoeken 
+## <a name="connect-to-disks-and-get-the-passkey"></a>Schijven aansluiten en de wachtwoordcode opzoeken
 
-1. Gebruik de meegeleverde kabel om de schijf aan te sluiten op de clientcomputer met een ondersteund besturingssysteem, zoals wordt aangegeven in de vereisten. 
+1. Gebruik de meegeleverde kabel om de schijf aan te sluiten op de clientcomputer met een ondersteund besturingssysteem, zoals wordt aangegeven in de vereisten.
 
-    ![De Data Box-schijf aansluiten](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)    
-    
-2. Ga in Azure Portal naar **Algemeen > Apparaatdetails**. Gebruik het kopieerpictogram om de wachtwoordcode te kopiëren. Deze code wordt gebruikt voor het ontgrendelen van de schijven.
+    ![De Data Box-schijf aansluiten](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)
 
-    ![Wachtwoordcode voor ontgrendelen van Data Box-schijf](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png) 
+2. Navigeer in de Azure-portal naar uw Data Box Disk-bestelling. Zoek ernaar door te navigeren naar **Algemeen > Alle resources** en selecteer vervolgens uw Data Box Disk-bestelling. Gebruik het kopieerpictogram om de wachtwoordcode te kopiëren. Deze code wordt gebruikt voor het ontgrendelen van de schijven.
+
+    ![Wachtwoordcode voor ontgrendelen van Data Box-schijf](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png)
 
 De stappen voor het ontgrendelen van de schijven verschillen voor clients met Windows of met Linux.
 
 ## <a name="unlock-disks-on-windows-client"></a>Schijven ontgrendelen op Windows-client
 
 Voer de volgende stappen uit om uw schijven aan te sluiten en te ontgrendelen.
-     
-1. Ga in Azure Portal naar **Algemeen > Apparaatdetails**. 
-2. Download de toolset van Data Box Data Box Disk voor Windows-clients. Deze toolset bevat drie hulpprogramma's: Data Box Disk Unlock, Data Box Disk Validation en Data Box Disk Split Copy. 
+
+1. Navigeer in de Azure-portal naar uw Data Box Disk-bestelling. Zoek ernaar door te navigeren naar **Algemeen > Alle resources** en selecteer vervolgens uw Data Box Disk-bestelling.
+2. Download de toolset van Data Box Data Box Disk voor Windows-clients. Deze toolset bevat drie hulpprogramma's: Data Box Disk Unlock, Data Box Disk Validation en Data Box Disk Split Copy.
 
     In deze procedure gebruikt u alleen het hulpprogramma Data Box Disk Unlock. De andere twee hulpprogramma's worden later gebruikt.
 
     > [!div class="nextstepaction"]
-    > [Data Box Disk-toolset voor Windows downloaden](https://aka.ms/databoxdisktoolswin)         
+    > [Data Box Disk-toolset voor Windows downloaden](https://aka.ms/databoxdisktoolswin)
 
-3. Pak de toolset uit op de computer die u gaat gebruiken om de gegevens te kopiëren. 
+3. Pak de toolset uit op de computer die u gaat gebruiken om de gegevens te kopiëren.
 4. Open op dezelfde computer een opdrachtpromptvenster of voer hierop Windows PowerShell uit als beheerder.
-5. (Optioneel) Voer de opdracht voor systeemcontrole uit om na te gaan of de computer die u gebruikt voor het ontgrendelen van de schijf voldoet aan de besturingssysteemvereisten. Hieronder ziet u een voorbeeld van de uitvoer. 
+5. (Optioneel) Voer de opdracht voor systeemcontrole uit om na te gaan of de computer die u gebruikt voor het ontgrendelen van de schijf voldoet aan de besturingssysteemvereisten. Hieronder ziet u een voorbeeld van de uitvoer.
 
     ```powershell
     Windows PowerShell
     Copyright (C) Microsoft Corporation. All rights reserved.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /SystemCheck
     Successfully verified that the system can run the tool.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
@@ -109,50 +109,51 @@ Voer de volgende stappen uit om uw schijven aan te sluiten en te ontgrendelen.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe
     Enter the passkey :
     testpasskey1
-    
+
     Following volumes are unlocked and verified.
     Volume drive letters: D:
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```
 
-7. Herhaal de ontgrendelingsstappen voor alle schijven die in de toekomst worden geplaatst. Gebruik de opdracht `help` als u hulp nodig hebt met het ontgrendelingsprogramma van Data Box Disk.   
+7. Herhaal de ontgrendelingsstappen voor alle schijven die in de toekomst worden geplaatst. Gebruik de opdracht `help` als u hulp nodig hebt met het ontgrendelingsprogramma van Data Box Disk.
 
     ```powershell
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /help
     USAGE:
     DataBoxUnlock /PassKey:<passkey_from_Azure_portal>
-    
+
     Example: DataBoxUnlock /PassKey:<your passkey>
     Example: DataBoxUnlock /SystemCheck
     Example: DataBoxUnlock /Help
-    
+
     /PassKey:        Get this passkey from Azure DataBox Disk order. The passkey unlocks your disks.
     /SystemCheck:    This option checks if your system meets the requirements to run the tool.
     /Help:           This option provides help on cmdlet usage and examples.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```  
-8. Wanneer de schijf is ontgrendeld, kunt u de inhoud van de schijf bekijken.    
+
+8. Wanneer de schijf is ontgrendeld, kunt u de inhoud van de schijf bekijken.
 
     ![Inhoud van de Data Box-schijf](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als er problemen zijn bij het ontgrendelen van de schijven. 
+Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als er problemen zijn bij het ontgrendelen van de schijven.
 
 ## <a name="unlock-disks-on-linux-client"></a>Schijven ontgrendelen op Linux-client
 
-1. Ga in Azure Portal naar **Algemeen > Apparaatdetails**. 
+1. Ga in Azure Portal naar **Algemeen > Apparaatdetails**.
 2. Download de toolset van Data Box Data Box Disk voor Linux-clients.  
 
     > [!div class="nextstepaction"]
-    > [Data Box Disk-toolset voor Linux downloaden](https://aka.ms/databoxdisktoolslinux) 
+    > [Data Box Disk-toolset voor Linux downloaden](https://aka.ms/databoxdisktoolslinux)
 
-3. Open een terminal op uw Linux-client. Ga naar de map waar u de software hebt gedownload. Wijzig de bestandsmachtigingen zodat u deze bestanden kunt uitvoeren. Typ de volgende opdracht: 
+3. Open een terminal op uw Linux-client. Ga naar de map waar u de software hebt gedownload. Wijzig de bestandsmachtigingen zodat u deze bestanden kunt uitvoeren. Typ de volgende opdracht:
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
-    
+
     `chmod +x DataBoxDiskUnlock_Prep.sh` 
- 
+
     Hieronder ziet u een voorbeeld van de uitvoer. Zodra de opdracht chmod is voltooid, kunt u controleren of de bestandsmachtigingen zijn gewijzigd door de opdracht `ls` uit te voeren. 
  
     ```
@@ -162,6 +163,7 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
         -rwxrwxr-x. 1 user user 1152664 Aug 10 17:26 DataBoxDiskUnlock_x86_64  
         -rwxrwxr-x. 1 user user 795 Aug 5 23:26 DataBoxDiskUnlock_Prep.sh
     ```
+
 4. Voer het script uit om alle binaire bestanden te installeren die nodig zijn voor de ontgrendelingssoftware van Data Box Disk. Gebruik `sudo` om de opdracht als root uit te voeren. Als de binaire bestanden zijn geïnstalleerd, wordt dit gemeld in de terminal.
 
     `sudo ./DataBoxDiskUnlock_Prep.sh`
@@ -173,7 +175,7 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
         OS = CentOS Version = 6.9 
         Release = CentOS release 6.9 (Final) 
         Architecture = x64 
-    
+
         The script will install the following packages and dependencies. 
         epel-release 
         dislocker 
@@ -181,7 +183,7 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
         fuse-dislocker 
         Do you wish to continue? y|n :|
     ```
-    
+
  
 5. Typ `y` om verder te gaan met de installatie. Het script installeert de volgende pakketten: 
    - **epel-release**: opslagplaats met de volgende drie pakketten. 
@@ -222,12 +224,12 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
 
     Typ de volgende opdracht.
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
 
     Hieronder ziet u een voorbeeld van de uitvoer. 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 
@@ -249,10 +251,10 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
     [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Help  
     START: Mon Aug 13 14:29:20 2018 
     USAGE: 
-    sudo DataBoxDiskUnlock /PassKey:’<passkey from Azure_portal>’ 
+    sudo DataBoxDiskUnlock /PassKey:'<passkey from Azure_portal>' 
     
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ 
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ /Volumes:’/dev/sdbl’ 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' /Volumes:'/dev/sdbl' 
     Example: sudo DataBoxDiskUnlock /Help Example: sudo DataBoxDiskUnlock /Clean 
     
     /PassKey: This option takes a passkey as input and unlocks all of your disks. 
@@ -307,7 +309,7 @@ Zie [Ontgrendelingsproblemen oplossen](data-box-disk-troubleshoot-unlock.md) als
     Voer het ontgrendelingsprogramma van Data Box Disk uit. Haal de wachtwoordsleutel op uit **Algemeen > Apparaatgegevens** in de Azure-portal en geef de sleutel hier op. Geef eventueel een lijst van met BitLocker versleutelde volumes op die u wilt ontgrendelen. Zet de volumenamen tussen enkele aanhalingstekens.
 
     ```
-    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
+    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
     ```      
 5. Herhaal de ontgrendelingsstappen voor alle schijven die in de toekomst worden geplaatst. Gebruik de Help-opdracht als u hulp nodig hebt met het ontgrendelingsprogramma voor Data Box-schijven.
 

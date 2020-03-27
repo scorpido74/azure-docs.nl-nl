@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Data Lake Storage Gen1
+summary: Leer hoe u een grootschalige, met Hadoop compatibele Data Lake-opslagplaats kunt instellen, beheren en openen voor analyse van gegevens van elke grootte, soort en opnamesnelheid. Azure Data Lake Storage Gen2 is overal algemeen beschikbaar. We raden aan vandaag nog hierop over te stappen.
+metadata:
+  title: Documentatie voor Azure Data Lake Storage Gen1
+  description: Leer hoe u een grootschalige, met Hadoop compatibele Data Lake-opslagplaats kunt instellen, beheren en openen voor analyse van gegevens van elke grootte, soort en opnamesnelheid.
+  ms.service: data-lake-store
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf688b1230c8fd4eecba08ce361e92b9030a241f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79410088"
+landingContent:
+- title: Over Azure Data Lake Storage Gen1
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Data Lake Storage Gen1
+      url: data-lake-store-overview.md
+    - text: Vergelijken met Azure Storage
+      url: data-lake-store-comparison-with-blob-storage.md
+    - text: Overschakelen naar documentatie van Data Lake Storage Gen2
+      url: ../storage/data-lake-storage/introduction.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Portal
+      url: data-lake-store-get-started-portal.md
+    - text: Azure PowerShell
+      url: data-lake-store-get-started-powershell.md
+    - text: Azure CLI
+      url: data-lake-store-get-started-cli-2.0.md
+- title: Gegevens laden en verplaatsen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Factory gebruiken
+      url: ../data-factory/load-azure-data-lake-store.md
+    - text: Storage Explorer gebruiken
+      url: data-lake-store-in-storage-explorer.md
+    - text: AdlCopy gebruiken
+      url: data-lake-store-copy-data-azure-storage-blob.md
+    - text: DistCp gebruiken
+      url: data-lake-store-copy-data-wasb-distcp.md
+    - text: Sqoop gebruiken
+      url: data-lake-store-data-transfer-sql-sqoop.md
+- title: Beveiligde gegevens
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Beveiligingsoverzicht
+      url: data-lake-store-security-overview.md
+    - text: Toegangsbeheer
+      url: data-lake-store-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Opgeslagen gegevens beveiligen
+      url: data-lake-store-secure-data.md
+    - text: Versleuteling
+      url: data-lake-store-encryption.md
+    - text: Integratie van virtueel netwerk
+      url: data-lake-store-network-security.md
+- title: Verificatie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Verificatieopties
+      url: data-lakes-store-authentication-using-azure-active-directory.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verificatie van de eindgebruiker
+      url: data-lake-store-end-user-authenticate-using-active-directory.md
+    - text: Verificatie van service-tot-service
+      url: data-lake-store-service-to-service-authenticate-using-active-directory.md
+- title: Bestandssysteembewerkingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-data-operations-net-sdk.md
+    - text: Java-SDK
+      url: data-lake-store-get-started-java-sdk.md
+    - text: REST-API
+      url: data-lake-store-data-operations-rest-api.md
+    - text: Python
+      url: data-lake-store-data-operations-python.md
+- title: Accountbeheerbewerkingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-get-started-net-sdk.md
+    - text: REST-API
+      url: data-lake-store-get-started-rest-api.md
+    - text: Python
+      url: data-lake-store-get-started-python.md

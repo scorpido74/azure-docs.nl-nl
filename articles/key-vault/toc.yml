@@ -129,7 +129,7 @@
       href: tutorial-rotation.md
     - name: Integreren met Azure Policy
       href: azure-policy.md
-    - name: Integreren met de Azure Private Link-service (preview)
+    - name: Integreren met de Azure Private Link-service
       href: private-link-service.md
     - name: Logboekregistratie voor Azure Key Vault
       href: key-vault-logging.md

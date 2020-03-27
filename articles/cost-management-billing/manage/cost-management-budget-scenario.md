@@ -1,20 +1,19 @@
 ---
-title: Budgetscenario voor Azure-facturering en kostenbeheer | Microsoft Docs
+title: Budgetscenario voor Azure-facturering en kostenbeheer
 description: Meer informatie over hoe u Azure-automatisering gebruikt om VM's af te sluiten op basis van specifieke budgetdrempelwaarden.
 author: bandersmsft
 ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ae17ecc72bb1e6af1b79d4a2952c2f78dce4b5bd
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7866ae0ae5c56220c335f2ec8635434c1a651f9e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200979"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79297132"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
 
@@ -50,16 +49,16 @@ Met de acties in deze zelfstudie kunt u het volgende doen:
 
 Importeer met een [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) uit de galerie.
 
-1.  Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com/).
-2.  Open uw Automation-account door **Alle services** > **Automation-accounts** te selecteren. Selecteer vervolgens uw Automation-account.
-3.  Klik op **Runbookgalerie** in de sectie **Procesautomatisering**.
-4.  Stel de **Galeriebron** in op **Scriptcentrum** en selecteer **Ok**.
-5.  Zoek en selecteer het galerie-item [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) in de Azure-portal.
-6.  Klik op de knop **Importeren** om de blade **Importeren** weer te geven en selecteer **Ok**. De blade runbookoverzicht wordt weergegeven.
-7.  Nadat het runbook het importeerproces heeft afgerond, selecteert u **Bewerken** om de editor voor grafische runbooks en een publicatie-optie weer te geven.
+1.    Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com/).
+2.    Open uw Automation-account door **Alle services** > **Automation-accounts** te selecteren. Selecteer vervolgens uw Automation-account.
+3.    Klik op **Runbookgalerie** in de sectie **Procesautomatisering**.
+4.    Stel de **Galeriebron** in op **Scriptcentrum** en selecteer **Ok**.
+5.    Zoek en selecteer het galerie-item [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) in de Azure-portal.
+6.    Klik op de knop **Importeren** om de blade **Importeren** weer te geven en selecteer **Ok**. De blade runbookoverzicht wordt weergegeven.
+7.    Nadat het runbook het importeerproces heeft afgerond, selecteert u **Bewerken** om de editor voor grafische runbooks en een publicatie-optie weer te geven.
 
     ![Azure - Grafisch runbook bewerken](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
-8.  Klik op de knop **Publiceren** om het runbook te publiceren en selecteer vervolgens **Ja** wanneer daar om wordt gevraagd. Wanneer u een runbook publiceert, overschrijft u een bestaande gepubliceerde versie met de conceptversie. In dit geval hebt u nog geen gepubliceerde versie, omdat u het runbook hebt gemaakt.
+8.    Klik op de knop **Publiceren** om het runbook te publiceren en selecteer vervolgens **Ja** wanneer daar om wordt gevraagd. Wanneer u een runbook publiceert, overschrijft u een bestaande gepubliceerde versie met de conceptversie. In dit geval hebt u nog geen gepubliceerde versie, omdat u het runbook hebt gemaakt.
 
     Raadpleeg [Een grafisch runbook maken](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical) voor meer informatie over de publicatie van een runbook.
 
@@ -67,10 +66,10 @@ Importeer met een [Azure Automation-runbook](https://docs.microsoft.com/azure/au
 
 Aan de hand van het grafische runbook [Stop Azure V2-VM's](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) maakt u twee webhooks om het runbook in Azure Automation met één HTTP-aanvraag te beginnen. De eerste webhook activeert het runbook wanneer de budgetdrempelwaarde op 80% is met de resourcegroepnaam als parameter, waardoor optionele VM's worden gestopt. Vervolgens activeert een tweede webhook het runbook zonder parameters (bij 100%), waardoor alle resterende VM-exemplaren worden gestopt.
 
-1. Op de pagina **Runbooks** in de [Azure-portal](https://portal.azure.com/) klikt u op het runbook **StopAzureV2Vm** dat de overzichtsblade van het runbook weergeeft.
+1. Klik op de pagina **Runbooks** in de [Azure-portal](https://portal.azure.com/) op het runbook **StopAzureV2Vm** dat de overzichtsblade van het runbook weergeeft.
 2. Klik bovenaan de pagina op **Webhook** om de blade **Webhook toevoegen** te openen.
 3. Klik op **Nieuwe webhook maken** om de blade **Een nieuwe webhook maken** te openen.
-4. Stel de **Naam** van de webhook in op **Optioneel**. De eigenschap **Ingeschakeld** moet **Ja** zijn. De waarde **Verloopt** hoeft niet te worden gewijzigd. Voor meer informatie over webhookeigenschappen, raadpleegt u [Details van een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook).
+4. Stel de **Naam** van de webhook in op **Optioneel**. De eigenschap **Ingeschakeld** moet **Ja** zijn. De waarde **Verloopt** hoeft niet te worden gewijzigd. Raadpleeg [Webhookeigenschappen](../../automation/automation-webhooks.md#webhook-properties) voor meer informatie over webhookeigenschappen.
 5. Klik naast de URL-waarde op het pictogram kopiëren om de URL van de webhook te kopiëren.
    > [!IMPORTANT]
    > Sla de URL van de webhook met de naam **Optioneel** in een veiligere plek op. U gebruikt de URL later in deze zelfstudie. Nadat u de webhook hebt gemaakt kunt u de URL om veiligheidsreden niet nog eens bekijken of ophalen.
@@ -80,7 +79,7 @@ Aan de hand van het grafische runbook [Stop Azure V2-VM's](https://gallery.techn
    > Als het runbook verplichte parameters heeft, kunt u de webhook niet maken, tenzij de waarden worden opgegeven.
 8. Klik op **Ok** om de parameterwaarden van de webhook te accepteren.
 9. Klik op **Maken** om de webhook te maken.
-10. Volg vervolgens de bovenstaande stappen om een tweede webhook met de naam **Volledig** te maken.
+10.    Volg vervolgens de bovenstaande stappen om een tweede webhook met de naam **Volledig** te maken.
     > [!IMPORTANT]
     > Zorg ervoor dat u de URL van beide webhooks bewaart om later in deze zelfstudie te gebruiken. Nadat u de webhook hebt gemaakt kunt u de URL om veiligheidsreden niet nog eens bekijken of ophalen.
 
@@ -110,10 +109,10 @@ De logische app voert verschillende acties uit. De volgende lijst biedt een set 
 
 De volgende stappen zijn nodig om de logische app te maken die de bovenstaande stappen uitvoert:
 
-1.  Selecteer in [Azure Portal](https://portal.azure.com/)**Een resource maken** > **Integratie** > **Logische app**.
+1.    Selecteer in [Azure Portal](https://portal.azure.com/)**Een resource maken** > **Integratie** > **Logische app**.
 
     ![Azure - Selecteer de Logic App-resource](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  In de blade **Logische app maken** geeft u de details op die nodig zijn om uw logische app te maken, selecteert u **Vastmaken aan dashboard** en klikt u op **Maken**.
+2.    In de blade **Logische app maken** geeft u de details op die nodig zijn om uw logische app te maken, selecteert u **Vastmaken aan dashboard** en klikt u op **Maken**.
 
     ![Azure - Een logische app maken](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
@@ -123,78 +122,78 @@ Nadat Azure uw logische app heeft geïmplementeerd, wordt de **Ontwerper van log
 
 Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert. acties zijn alle stappen die na de trigger plaatsvinden.
 
-1.  Onder **Sjablonen** in de blade **Ontwerper van logische apps** kiest u **Lege logische app**.
-2.  Voeg een [trigger](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) toe door 'http-aanvraag' in te voeren in het zoekvak van de **Ontwerper van logische apps** om de trigger met de naam **Aanvraag - Wanneer een HTTP-aanvraag is ontvangen** te zoeken.
+1.    Onder **Sjablonen** in de blade **Ontwerper van logische apps** kiest u **Lege logische app**.
+2.    Voeg een [trigger](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) toe door 'http-aanvraag' in te voeren in het zoekvak van de **Ontwerper van logische apps** om de trigger met de naam **Aanvraag - Wanneer een HTTP-aanvraag is ontvangen** te zoeken.
 
     ![Azure - Logische app - HTTP-trigger](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
-3.  Selecteer **Nieuwe stap** > **Een actie toevoegen**.
+3.    Selecteer **Nieuwe stap** > **Een actie toevoegen**.
 
     ![Azure - Nieuwe stap - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Zoek naar 'JSON parseren' in het zoekvak van **Ontwerp van logische apps** om de [actie](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Gegevensbewerkingen - JSON parseren** te zoeken.
+4.    Zoek naar 'JSON parseren' in het zoekvak van **Ontwerp van logische apps** om de [actie](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Gegevensbewerkingen - JSON parseren** te zoeken.
 
     ![Azure - Logische app - De actie JSON parseren toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
-5.  Voer 'Nettolading' in als de naam voor de **Inhoud** van de nettolading JSON parseren, of gebruik de tag 'Hoofdtekst' voor dynamische inhoud.
-6.  Selecteer de optie **Voorbeeldnettolading gebruiken om een schema te genereren** in het vak **JSON parseren**.
+5.    Voer 'Nettolading' in als de naam voor de **Inhoud** van de nettolading JSON parseren, of gebruik de tag 'Hoofdtekst' voor dynamische inhoud.
+6.    Selecteer de optie **Voorbeeldnettolading gebruiken om een schema te genereren** in het vak **JSON parseren**.
 
     ![Azure - Logische app - Voorbeeld-JSON-gegevens gebruiken om een schema te genereren](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
-7.  Plak de volgende JSON-voorbeeldnettolading in het tekstvak: `{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
+7.    Plak de volgende JSON-voorbeeldnettolading in het tekstvak: `{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
 
     Het tekstvak ziet er dan als volgt uit:
 
     ![Azure - Logische app - De voorbeeld-JSON-nettolading](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
-8.  Klik op **Gereed**.
+8.    Klik op **Gereed**.
 
 ### <a name="add-the-first-conditional-action"></a>De eerste voorwaardelijke actie toevoegen
 
 Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80% of meer van het budgetbereik heeft bereikt, maar niet groter is dan of gelijk is aan 100%. Als deze drempelwaarde is bereikt, stuurt u een HTTP POST met de webhook met de naam **Optioneel**. Met deze actie worden de VM's in de groep **Optioneel** afgesloten.
 
-1.  Selecteer **Nieuwe stap** > **Een voorwaarde toevoegen**.
+1.    Selecteer **Nieuwe stap** > **Een voorwaarde toevoegen**.
 
     ![Azure - Logische app - Een voorwaarde toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
-2.  In het vak **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen** om een lijst beschikbare waarden weer te geven.
+2.    In het vak **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen** om een lijst beschikbare waarden weer te geven.
 
     ![Azure - Logische app - Voorwaardevak](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
 
-3.  Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
+3.    Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
 
     ![Azure - Logische app - Floatexpressie](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
 
-4.  Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
+4.    Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
 
     De expressie ziet er als volgt uit:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  Selecteer **Ok** om de expressie in te stellen.
-6.  Select **is groter dan of gelijk aan** in de vervolgkeuzelijst van de **Voorwaarde**.
-7.  Voer in het vak **Een waarde kiezen** de voorwaarde `.8` in.
+5.    Selecteer **Ok** om de expressie in te stellen.
+6.    Select **is groter dan of gelijk aan** in de vervolgkeuzelijst van de **Voorwaarde**.
+7.    Voer in het vak **Een waarde kiezen** de voorwaarde `.8` in.
 
     ![Azure - Logische app - Floatexpressie met een waarde](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 
-8.  Klik op **Toevoegen** > **Rij toevoegen** binnen het voorwaardevak om een aanvullend deel van de voorwaarde toe te voegen.
-9.  In het venster **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen**.
-10. Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
-11. Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
-12. Selecteer **Ok** om de expressie in te stellen.
-13. Selecteer **is kleiner dan** in de vervolgkeuzelijst van **Voorwaarde**.
-14. Voer in het vak **Een waarde kiezen** de voorwaarde `1` in.
+8.    Klik op **Toevoegen** > **Rij toevoegen** binnen het voorwaardevak om een aanvullend deel van de voorwaarde toe te voegen.
+9.    In het venster **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen**.
+10.    Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
+11.    Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
+12.    Selecteer **Ok** om de expressie in te stellen.
+13.    Selecteer **is kleiner dan** in de vervolgkeuzelijst van **Voorwaarde**.
+14.    Voer in het vak **Een waarde kiezen** de voorwaarde `1` in.
 
     ![Azure - Logische app - Floatexpressie met een waarde](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 
-15. In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie toe die de optionele VM's afsluit.
+15.    In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie toe die de optionele VM's afsluit.
 
     ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 
-16. Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.
+16.    Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.
 
     ![Azure - Logische app - HTTP-actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
 
-17. Selecteer **Posten** voor de waarde **Methode**.
-18. Voer voor de waarde **URI** de URL in van de webhook met de naam **Optioneel** die u eerder in deze zelfstudie hebt gemaakt.
+17.    Selecteer **Posten** voor de waarde **Methode**.
+18.    Voer voor de waarde **URI** de URL in van de webhook met de naam **Optioneel** die u eerder in deze zelfstudie hebt gemaakt.
 
     ![Azure - Logische app - URI van HTTP-actie](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
 
-19. Selecteer **Een actie toevoegen** in het vak **Indien waar**. U voegt een e-mailactie toe die een e-mail stuurt naar de ontvanger met de melding dat de optionele VM's zijn afgesloten.
-20. Zoek naar 'E-mail verzenden' en selecteer de actie *E-mail verzenden* op basis van de e-mailservice waarvan u gebruikmaakt.
+19.    Selecteer **Een actie toevoegen** in het vak **Indien waar**. U voegt een e-mailactie toe die een e-mail stuurt naar de ontvanger met de melding dat de optionele VM's zijn afgesloten.
+20.    Zoek naar 'E-mail verzenden' en selecteer de actie *E-mail verzenden* op basis van de e-mailservice waarvan u gebruikmaakt.
 
     ![Azure - Logische app - Actie E-mail verzenden](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
 
@@ -204,7 +203,7 @@ Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80
 
     ![Azure - Logische app - Toegangskennisgeving](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
 
-21. Voeg de tekst **Aan**, **Onderwerp** en **Tekst** toe aan de e-mail die de ontvanger op de hoogte stelt dat de optionele VM is afgesloten. Gebruik de dynamische inhoud **BudgetName** en **NotificationThresholdAmount** om het onderwerp- en tekstveld in te vullen.
+21.    Voeg de tekst **Aan**, **Onderwerp** en **Tekst** toe aan de e-mail die de ontvanger op de hoogte stelt dat de optionele VM is afgesloten. Gebruik de dynamische inhoud **BudgetName** en **NotificationThresholdAmount** om het onderwerp- en tekstveld in te vullen.
 
     ![Azure - Logische app - E-mailgegevens](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
 
@@ -212,48 +211,48 @@ Gebruikt een voorwaardelijke instructie om te controleren of de drempelwaarde 80
 
 Gebruik een voorwaardelijke instructie om te controleren of de drempelwaarde 100% van de budgetwaarde heeft bereikt of overschreden. Als de drempelwaarde is bereikt, stuurt u een HTTP POST met de webhook met de naam **Volledig**. Met deze actie worden alle resterende VM's afgesloten.
 
-1.  Selecteer **Nieuwe stap** > **Een voorwaarde toevoegen**.
+1.    Selecteer **Nieuwe stap** > **Een voorwaarde toevoegen**.
 
     ![Azure - Logische app - Actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 
-2.  In het vak **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen** om een lijst beschikbare waarden weer te geven.
-3.  Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
-4.  Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
+2.    In het vak **Voorwaarde** klikt u op het tekstvak met **Een waarde kiezen** om een lijst beschikbare waarden weer te geven.
+3.    Klik bovenaan de lijst op **Expressie** en voer de volgende expressies in Expressie bewerken in: `float()`
+4.    Selecteer **Dynamische inhoud**, plaats de cursor tussen de haakjes () en selecteer **NotificationThresholdAmount** uit de lijst om de volledige expressie in te vullen.
 
     De expressie ziet er als volgt uit:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  Selecteer **Ok** om de expressie in te stellen.
-6.  Select **is groter dan of gelijk aan** in de vervolgkeuzelijst van de **Voorwaarde**.
-7.  Voer in het vak **Een waarde kiezen** de voorwaarde `1` in.
+5.    Selecteer **Ok** om de expressie in te stellen.
+6.    Select **is groter dan of gelijk aan** in de vervolgkeuzelijst van de **Voorwaarde**.
+7.    Voer in het vak **Een waarde kiezen** de voorwaarde `1` in.
 
     ![Azure - Logische app - Waarde van voorwaarde instellen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 
-8.  In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie toe die alle resterende VM's afsluit.
+8.    In het vak **Indien waar** selecteert u **Een actie toevoegen**. U voegt een HTTP POST-actie toe die alle resterende VM's afsluit.
 
     ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 
-9.  Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.
-10. Selecteer **Posten** voor de waarde **Methode**.
-11. Voer voor de waarde **URI** de URL in van de webhook met de naam **Volledig** die u eerder in deze zelfstudie hebt gemaakt.
+9.    Voer **HTTP** in om te zoeken naar de HTTP-actie en selecteer vervolgens de actie **HTTP – HTTP**.
+10.    Selecteer **Posten** voor de waarde **Methode**.
+11.    Voer voor de waarde **URI** de URL in van de webhook met de naam **Volledig** die u eerder in deze zelfstudie hebt gemaakt.
 
     ![Azure - Logische app - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 
-12. Selecteer **Een actie toevoegen** in het vak **Indien waar**. U voegt een e-mailactie toe die een e-mail stuurt naar de ontvanger met de melding dat de resterende VM's zijn afgesloten.
-13. Zoek naar 'E-mail verzenden' en selecteer de actie *E-mail verzenden* op basis van de e-mailservice waarvan u gebruikmaakt.
-14. Voeg de tekst **Aan**, **Onderwerp** en **Tekst** toe aan de e-mail die de ontvanger op de hoogte stelt dat de optionele VM is afgesloten. Gebruik de dynamische inhoud **BudgetName** en **NotificationThresholdAmount** om het onderwerp- en tekstveld in te vullen.
+12.    Selecteer **Een actie toevoegen** in het vak **Indien waar**. U voegt een e-mailactie toe die een e-mail stuurt naar de ontvanger met de melding dat de resterende VM's zijn afgesloten.
+13.    Zoek naar 'E-mail verzenden' en selecteer de actie *E-mail verzenden* op basis van de e-mailservice waarvan u gebruikmaakt.
+14.    Voeg de tekst **Aan**, **Onderwerp** en **Tekst** toe aan de e-mail die de ontvanger op de hoogte stelt dat de optionele VM is afgesloten. Gebruik de dynamische inhoud **BudgetName** en **NotificationThresholdAmount** om het onderwerp- en tekstveld in te vullen.
 
     ![Azure - Logische app - Gegeven van E-mail verzenden](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
 
-15. Klik op **Opslaan** bovenaan de blade **Ontwerper van logische app**.
+15.    Klik op **Opslaan** bovenaan de blade **Ontwerper van logische app**.
 
 ### <a name="logic-app-summary"></a>Overzicht van logische app
 
-Zo ziet uw logische app eruit wanneer u klaar bent. In de eenvoudigste scenario's waar u geen op drempelwaarden gebaseerde indeling nodig hebt, kunt u het automatiseringsscript rechtstreeks aanroepen vanuit **Monitor** en de stap **Logische app** overslaan.
+Zo ziet de logische app eruit wanneer u klaar bent. In de eenvoudigste scenario's waar u geen op drempelwaarden gebaseerde indeling nodig hebt, kunt u het automatiseringsscript rechtstreeks aanroepen vanuit **Monitor**. U kunt de stap **Logische app** overslaan.
 
    ![Azure - Logische app - Volledige weergave](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
 
-Toen u uw logische app opsloeg, is er een URL gegenereerd die u kunt aanroepen. U ziet deze URL in de volgende sectie van deze zelfstudie.
+Toen u uw logische app opsloeg, is er een URL gegenereerd die u kunt aanroepen. U gebruikt deze URL in de volgende sectie van deze zelfstudie.
 
 ## <a name="create-an-azure-monitor-action-group"></a>Een Azure Monitor-actiegroep maken
 
@@ -265,10 +264,10 @@ Actiegroepen zijn het enige eindpunt dat u in uw budget integreert. U kunt in ee
 
 Wanneer u een actiegroep maakt, verwijst u naar de logische app die u eerder in deze zelfstudie hebt gemaakt.
 
-1.  Als u zich nog niet hebt aangemeld bij de [Azure-portal](https://portal.azure.com/), meldt u zich aan en selecteert u **Alle services** > **Monitor**.
-2.  Selecteer **Waarschuwingen** en vervolgens **Acties beheren**.
-3.  Selecteer **Een actiegroep toevoegen** uit de blade **Actiegroepen**.
-4.  Voeg de volgende items toe en verifieer die:
+1.    Als u zich nog niet hebt aangemeld bij de [Azure-portal](https://portal.azure.com/), meldt u zich aan en selecteert u **Alle services** > **Monitor**.
+2.    Selecteer **Waarschuwingen** en vervolgens **Acties beheren**.
+3.    Selecteer **Een actiegroep toevoegen** uit de blade **Actiegroepen**.
+4.    Voeg de volgende items toe en verifieer die:
     - Naam van actiegroep
     - Korte naam
     - Abonnement
@@ -276,8 +275,8 @@ Wanneer u een actiegroep maakt, verwijst u naar de logische app die u eerder in 
 
     ![Azure - Logische app - Een actiegroep toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 
-5.  Voeg binnen het venster **Actiegroep toevoegen** een LogicApp-actie toe. Noem de actie **Budget-BudgetLA**. In het venster **Logische app** selecteert u het **Abonnement** en de **Resourcegroep**. Selecteer vervolgens de **Logische app** die u eerder in deze zelfstudie hebt gemaakt.
-6.  Klik op **Ok** om de logische app in te stellen. Selecteer vervolgens **Ok** in het venster **Actiegroep toevoegen** om de actiegroep te maken.
+5.    Voeg binnen het venster **Actiegroep toevoegen** een LogicApp-actie toe. Noem de actie **Budget-BudgetLA**. In het venster **Logische app** selecteert u het **Abonnement** en de **Resourcegroep**. Selecteer vervolgens de **Logische app** die u eerder in deze zelfstudie hebt gemaakt.
+6.    Klik op **Ok** om de logische app in te stellen. Selecteer vervolgens **Ok** in het venster **Actiegroep toevoegen** om de actiegroep te maken.
 
 U bent klaar met alle ondersteunende onderdelen die nodig zijn om uw budget effectief in te richten. Alles wat u nu moet doen, is het budget maken en zo configureren dat het de actiegroep gebruikt die u hebt gemaakt.
 
@@ -287,42 +286,42 @@ U kunt een budget maken in de Azure-portal met de [Budgetfunctie](../costs/tutor
 
 ### <a name="create-an-authentication-token"></a>Een verificatietoken maken
 
-1.  Navigeer naar het project [ARMClient](https://github.com/projectkudu/ARMClient) op GitHub.
-2.  Kloon de opslagplaats voor een lokale kopie.
-3.  Open het project in Visual Studio en bouw het.
-4.  Nadat de build is geslaagd, moet het uitvoerbare bestand zich in de map *\bin\debug* bevinden.
-5.  Voer de ARMClient uit. Open een opdrachtprompt en navigeer naar de map *\bin\debug* in de hoofdmap van het project.
-6.  Voer de volgende opdracht in het opdrachtprompt in om u aan te melden en te verifiëren:<br>
+1.    Navigeer naar het project [ARMClient](https://github.com/projectkudu/ARMClient) op GitHub.
+2.    Kloon de opslagplaats voor een lokale kopie.
+3.    Open het project in Visual Studio en bouw het.
+4.    Nadat de build is geslaagd, moet het uitvoerbare bestand zich in de map *\bin\debug* bevinden.
+5.    Voer de ARMClient uit. Open een opdrachtprompt en navigeer naar de map *\bin\debug* in de hoofdmap van het project.
+6.    Voer de volgende opdracht in het opdrachtprompt in om u aan te melden en te verifiëren:<br>
     `ARMClient login prod`
-7.  Kopieer de **subscription guid** uit de uitvoer.
-8.  Als u een verificatietoken wilt kopiëren naar uw klembord, voert u de volgende opdracht uit in het opdrachtprompt, maar zorg ervoor dat u het abonnements-id hebt gekopieerd in de bovenstaande stap: <br>
+7.    Kopieer de **subscription guid** uit de uitvoer.
+8.    Als u een verificatietoken wilt kopiëren naar uw klembord, voert u de volgende opdracht uit in het opdrachtprompt, maar zorg ervoor dat u het abonnements-id hebt gekopieerd in de bovenstaande stap: <br>
     `ARMClient token <subscription GUID from previous step>`
 
     Nadat u de bovenstaande stappen hebt doorlopen, ziet u het volgende:<br>
     **Het token is gekopieerd naar het klembord.**
-9.  Sla het token op, want het wordt gebruikt in de stappen in het volgende deel van deze zelfstudie.
+9.    Sla het token op, want het wordt gebruikt in de stappen in het volgende deel van deze zelfstudie.
 
 ### <a name="create-the-budget"></a>Het budget maken
 
 U gaat verder met de configuratie van **Postman** om een budget te maken door de REST API's voor Azure-verbruik aan te roepen. Postman is een API-ontwikkelomgeving. U importeert omgevings- en verzamelingsbestanden in Postman. De verzameling bevat gegroepeerde definities van HTTP-aanvragen die de REST API's van Azure-verbruik aanroepen. Het omgevingsbestand bevat variabelen die worden gebruikt door de verzameling.
 
-1.  Download en open de [Postman REST-client](https://www.getpostman.com/) om de REST API's uit te voeren.
-2.  Maak in Postman een nieuwe aanvraag.
+1.    Download en open de [Postman REST-client](https://www.getpostman.com/) om de REST API's uit te voeren.
+2.    Maak in Postman een nieuwe aanvraag.
 
     ![Postman - Een nieuwe aanvraag maken](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
 
-3.  Sla de nieuwe aanvraag op als verzameling, zodat de nieuwe aanvraag niets bevat.
+3.    Sla de nieuwe aanvraag op als verzameling, zodat de nieuwe aanvraag niets bevat.
 
     ![Postman - De nieuwe aanvraag opslaan](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
 
-4.  Wijzig de aanvraag van een `Get`-actie in een `Put`-actie.
-5.  Bewerk de volgende URL door `{subscriptionId}` te vervangen door het **Abonnements-id** dat u hebt gebruikt in het vorige gedeelte van deze zelfstudie. Bewerk ook de URL door 'SampleBudget' op te nemen als de waarde voor `{budgetName}`: `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
-6.  Selecteer in Postman het tabblad **Headers**.
-7.  Voeg een nieuwe **Sleutel** toe met de naam 'Verificatie'.
-8.  Stel de **Waarde** in op de token die aan het einde van het vorige gedeelte is gemaakt met de ARMClient.
-9.  Selecteer in Postman het tabblad **Hoofdtekst**.
-10. Selecteer de knop **onbewerkt**.
-11. Plak het onderstaande voorbeeldbudget in het tekstvak. U moet echter de parameters **subscriptionid**, **budgetname** en **actiongroupname** vervangen door uw eigen abonnements-id, een unieke naam voor uw budget en de naam van de actiegroep die u hebt gemaakt in zowel de URL als de aanvraagbody:
+4.    Wijzig de aanvraag van een `Get`-actie in een `Put`-actie.
+5.    Bewerk de volgende URL door `{subscriptionId}` te vervangen door het **Abonnements-id** dat u hebt gebruikt in het vorige gedeelte van deze zelfstudie. Bewerk ook de URL door 'SampleBudget' op te nemen als de waarde voor `{budgetName}`: `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
+6.    Selecteer in Postman het tabblad **Headers**.
+7.    Voeg een nieuwe **Sleutel** toe met de naam 'Verificatie'.
+8.    Stel de **Waarde** in op de token die aan het einde van het vorige gedeelte is gemaakt met de ARMClient.
+9.    Selecteer in Postman het tabblad **Hoofdtekst**.
+10.    Selecteer de knop **onbewerkt**.
+11.    Plak het onderstaande voorbeeldbudget in het tekstvak. U moet echter de parameters **subscriptionid**, **budgetname** en **actiongroupname** vervangen door uw eigen abonnements-id, een unieke naam voor uw budget en de naam van de actiegroep die u hebt gemaakt in zowel de URL als de aanvraagbody:
 
     ```
         {
@@ -359,7 +358,7 @@ U gaat verder met de configuratie van **Postman** om een budget te maken door de
             }
         }
     ```
-12. Druk op **Verzenden** om het verzoek te verzenden.
+12.    Druk op **Verzenden** om het verzoek te verzenden.
 
 U hebt nu alle stukken die nodig zijn om de [budget-API](https://docs.microsoft.com/rest/api/consumption/budgets) aan te roepen. De budget-API-verwijzing bevat aanvullende gegevens over de specifieke aanvragen, waaronder de volgende:
     - **budgetName**: er worden meerdere budgetten ondersteund.  Budgetnamen moeten uniek zijn.

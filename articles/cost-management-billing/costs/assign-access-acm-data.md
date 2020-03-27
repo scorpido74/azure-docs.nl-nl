@@ -1,24 +1,23 @@
 ---
 title: Toegang tot gegevens van Azure Cost Management toewijzen
 description: In dit artikel vindt u informatie over het toewijzen van machtigingen voor gegevens van Azure Cost Management voor verschillende toegangsbereiken.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 84637f74408724fec300a2a5cb49cd9f460ed395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201081"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065844"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Toegang tot gegevens van Cost Management toewijzen
 
-Voor gebruikers met Azure Enterprise-overeenkomsten wordt het toegangsniveau van gebruikers tot gegevens van Azure Cost Management bepaald door een combinatie van machtigingen die in de Azure-portal en de Enterprise-portal (EA) worden verleend. Voor gebruikers met andere typen Azure-accounts kunt u het toegangsniveau van gebruikers tot gegevens van Cost Management eenvoudiger definiëren met behulp van op rollen gebaseerd toegangsbeheer. In dit artikel wordt uitgelegd hoe u toegang tot gegevens van Cost Management toewijst. Nadat de combinatie van machtigingen is toegewezen, kunnen de gebruikers gegevens in Cost Management weergeven op basis van het bereik waartoe ze toegang hebben en het bereik dat ze in de Azure-portal selecteren.
+Voor gebruikers met Azure Enterprise-overeenkomsten wordt het toegangsniveau van gebruikers tot gegevens van Azure Cost Management bepaald door een combinatie van machtigingen die in de Azure-portal en de Enterprise-portal (EA) worden verleend. Voor gebruikers met andere typen Azure-accounts kunt u het toegangsniveau van gebruikers tot gegevens van Cost Management eenvoudiger definiëren met behulp van op rollen gebaseerd toegangsbeheer. In dit artikel wordt uitgelegd hoe u toegang tot gegevens van Cost Management toewijst. Nadat de combinatie van machtigingen is toegewezen, kunnen de gebruikers gegevens in Cost Management weergeven op basis van hun toegangsbereik en het bereik dat ze selecteren in de Azure-portal.
 
 Het bereik dat een gebruiker selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u bereiken gebruikt, kunnen gebruikers er niet meerdere selecteren. In plaats daarvan selecteren gebruikers een groter bereik waarin onderliggende bereiken worden getotaliseerd en filteren ze het bereik op wat ze willen weergeven. Het is belangrijk om te begrijpen hoe gegevens worden gebundeld, omdat bepaalde personen geen toegang mogen hebben tot een bovenliggend bereik waartoe een onderliggend bereik behoort.
 
@@ -58,11 +57,26 @@ U moet minimaal leestoegang hebben tot een of meer van de volgende bereiken om k
 
 Er zijn verschillende bereiken beschikbaar nadat partners onboarding van klanten voor een Microsoft-klantovereenkomst hebben uitgevoerd. CSP-klanten kunnen vervolgens Cost Management-functies gebruiken wanneer deze zijn ingeschakeld door hun CSP-partner. Zie [Aan de slag met Azure Cost Management voor partners](get-started-partners.md) voor meer informatie.
 
+## <a name="enable-access-to-costs-in-the-azure-portal"></a>Toegang tot kosten in de Azure-portal inschakelen
+
+Voor het afdelingsbereik moet de optie **Afdelingsbeheerders kunnen kosten weergeven** (DA-kosten weergeven) zijn ingesteld op **Aan**. Configureer de optie in de Azure-portal of in de EA-portal. Voor alle andere bereiken moet de optie **Accounteigenaars kunnen kosten weergeven** (AO-kosten weergeven) zijn ingesteld op **Aan**.
+
+Een optie inschakelen in de Azure-portal:
+
+1. Meld u aan bij de Azure-portal op https://portal.azure.com met een ondernemingsbeheerdersaccount.
+1. Selecteer het menu-item **Kostenbeheer en facturering**.
+1. Selecteer **Factureringsbereiken** om een lijst met beschikbare factureringsbereiken en factureringsaccounts weer te geven.
+1. Selecteer uw **Factureringsaccount** in de lijst met beschikbare factureringsaccounts.
+1. Selecteer onder **Instellingen** het menu-item **Beleid**, en configureer vervolgens de instelling.  
+    ![Beleid voor factureringsbereik met opties voor weergavekosten](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
+
+Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de meeste bereiken ook de machtiging voor op rollen gebaseerd toegangsbeheer (RBAC) worden geconfigureerd in de Azure-portal.
+
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Toegang tot kosten in de EA-portal inschakelen
 
-Voor het afdelingsbereik moet de optie **DA-kosten weergeven** zijn **ingeschakeld** in de EA-portal. Voor alle andere bereiken moet de optie **OA-kosten weergeven** zijn **ingeschakeld** in de EA-portal.
+Voor het afdelingsbereik moet de optie **DA-kosten weergeven** zijn **ingeschakeld** in de EA-portal. Configureer de optie in de Azure-portal of in de EA-portal. Voor alle andere bereiken moet de optie **OA-kosten weergeven** zijn **ingeschakeld** in de EA-portal.
 
-Een optie inschakelen:
+Een optie inschakelen in de EA-portal:
 
 1. Meld u aan bij de EA-portal op [https://ea.azure.com](https://ea.azure.com) met een ondernemingsbeheerdersaccount.
 2. Selecteer **Beheren** in het linkerdeelvenster.
@@ -73,36 +87,36 @@ Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de me
 
 ## <a name="enterprise-administrator-role"></a>Rol van ondernemingsbeheerder
 
-Een ondernemingsbeheerder heeft standaard toegang tot de factureringsrekening (Enterprise Agreement/inschrijving) en alle andere bereiken, die onderliggende bereiken zijn. De ondernemingsbeheerder wijst toegangsrechten voor bereiken toe aan andere gebruikers. Als best practice voor bedrijfscontinuïteit moet u altijd twee gebruikers met toegangsrechten als ondernemingsbeheerder hebben. In de volgende secties worden voorbeelden gegeven van een ondernemingsbeheerder die toegangsrechten voor bereiken aan andere gebruikers toewijst.
+Een ondernemingsbeheerder heeft standaard toegang tot het factureringsaccount (Enterprise Overeenkomst/inschrijving) en alle andere bereiken, die onderliggende bereiken zijn. De ondernemingsbeheerder wijst toegangsrechten voor bereiken toe aan andere gebruikers. Als best practice voor bedrijfscontinuïteit moet u altijd twee gebruikers met toegangsrechten als ondernemingsbeheerder hebben. In de volgende secties worden voorbeelden gegeven van een ondernemingsbeheerder die toegangsrechten voor bereiken aan andere gebruikers toewijst.
 
 ## <a name="assign-billing-account-scope-access"></a>Toegang tot factureringsrekeningbereik toewijzen
 
-Voor toegang tot het factureringsrekeningbereik is de machtiging Ondernemingsbeheerder in de EA-portal vereist. De ondernemingsbeheerder heeft toegangsrechten voor het weergeven van de kosten voor de volledige EA-inschrijving of meerdere inschrijvingen. Er is geen actie vereist in de Azure-portal voor het bereik van de factureringsrekening.
+Voor toegang tot het factureringsrekeningbereik is de machtiging Ondernemingsbeheerder in de EA-portal vereist. De ondernemingsbeheerder kan kosten weergeven voor de volledige EA-inschrijving of meerdere inschrijvingen. Er is geen actie vereist in de Azure-portal voor het bereik van de factureringsrekening.
 
 1. Meld u aan bij de EA-portal op [https://ea.azure.com](https://ea.azure.com) met een ondernemingsbeheerdersaccount.
 2. Selecteer **Beheren** in het linkerdeelvenster.
 3. Selecteer op het tabblad **Inschrijving** de inschrijving die u wilt beheren.  
     ![uw inschrijving selecteren in de EA-portal](./media/assign-access-acm-data/ea-portal.png)
-4. Klik op **+ Beheerder toevoegen**.
+4. Select **+ Beheerder toevoegen**.
 5. Selecteer in het vak Beheerder toevoegen het verificatietype en typ het e-mailadres van de gebruiker.
 6. Als de gebruiker alleen-lezentoegang moet hebben tot kosten- en gebruiksgegevens, selecteert u **Ja** onder **Alleen-lezen**.  Anders selecteert u **Nee**.
-7. Klik op **Toevoegen** om het account te maken.  
+7. Selecteer **Toevoegen** om het account te maken.  
     ![voorbeeld van informatie die wordt weergegeven in het vak Beheerder toevoegen](./media/assign-access-acm-data/add-admin.png)
 
 Het kan tot 30 minuten duren voordat de nieuwe gebruiker toegang heeft tot gegevens in Cost Management.
 
 ### <a name="assign-department-scope-access"></a>Toegang tot het afdelingsbereik toewijzen
 
-Voor toegang tot het afdelingsbereik is toegang als afdelingsbeheerder (DA-kosten weergeven) in de EA-Portal vereist. De afdelingsbeheerder heeft toegangsrechten voor het weergeven van kosten- en gebruiksgegevens die zijn gekoppeld aan een of meer afdelingen. De afdelingsgegevens omvatten ook alle abonnementen die horen bij een inschrijvingsaccount dat is gekoppeld aan de afdeling. Er is geen actie vereist in de Azure-portal.
+Voor toegang tot het afdelingsbereik is toegang als afdelingsbeheerder (DA-kosten weergeven) in de EA-Portal vereist. De afdelingsbeheerder kan kosten- en gebruiksgegevens weergeven die zijn gekoppeld aan een of meer afdelingen. De afdelingsgegevens omvatten ook alle abonnementen die horen bij een inschrijvingsaccount dat is gekoppeld aan de afdeling. Er is geen actie vereist in de Azure-portal.
 
 1. Meld u aan bij de EA-portal op [https://ea.azure.com](https://ea.azure.com) met een ondernemingsbeheerdersaccount.
 2. Selecteer **Beheren** in het linkerdeelvenster.
 3. Selecteer op het tabblad **Inschrijving** de inschrijving die u wilt beheren.
-4. Klik op het tabblad **Afdeling** en klik vervolgens op **Beheerder toevoegen**.
+4. Selecteer het tabblad **Afdeling** en selecteer vervolgens **Beheerder toevoegen**.
 5. Selecteer in het vak Afdelingsbeheerder toevoegen het verificatietype en typ vervolgens het e-mailadres van de gebruiker.
 6. Als de gebruiker alleen-lezentoegang moet hebben tot kosten- en gebruiksgegevens, selecteert u **Ja** onder **Alleen-lezen**.  Anders selecteert u **Nee**.
 7. Selecteer de afdelingen waaraan u afdelingsbeheerdersmachtigingen wilt verlenen.
-8. Klik op **Toevoegen** om het account te maken.  
+8. Selecteer **Toevoegen** om het account te maken.  
     ![vereiste gegevens invoeren in het vak Afdelingsbeheerder toevoegen](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>Toegang tot inschrijvingsaccountbereik toewijzen
@@ -112,11 +126,11 @@ Voor toegang tot het inschrijvingsaccountbereik is toegang als accounteigenaar (
 1. Meld u aan bij de EA-portal op [https://ea.azure.com](https://ea.azure.com) met een ondernemingsbeheerdersaccount.
 2. Selecteer **Beheren** in het linkerdeelvenster.
 3. Selecteer op het tabblad **Inschrijving** de inschrijving die u wilt beheren.
-4. Klik op het tabblad **Account** en klik vervolgens op **Account toevoegen**.
+4. Selecteer het tabblad **Account** en selecteer vervolgens **Account toevoegen**.
 5. Selecteer in het vak Account toevoegen de **afdeling** waaraan u het account wilt koppelen, of laat het niet-toegewezen.
 6. Selecteer het verificatietype en typ de accountnaam.
 7. Typ het e-mailadres van de gebruiker en typ desgewenst de kostenplaats.
-8. Klik op **Toevoegen** om het account te maken.  
+8. Selecteer **Toevoegen** om het account te maken.  
     ![de vereiste gegevens invoeren in het vak Account toevoegen voor een inschrijvingsaccount](./media/assign-access-acm-data/add-account.png)
 
 Nadat u de bovenstaande stappen hebt voltooid, wordt het gebruikersaccount een inschrijvingsaccount in de Enterprise-portal en kunnen abonnementen worden gemaakt. De gebruiker heeft toegang tot kosten- en gebruiksgegevens van de abonnementen die hij of zij maakt.
@@ -128,13 +142,13 @@ Voor toegangsrechten voor het weergeven van het beheergroepsbereik is ten minste
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Selecteer **Alle services** in de zijbalk, zoek naar _beheergroepen_ en selecteer vervolgens **beheergroepen**.
 3. Selecteer de beheergroep in de hiërarchie.
-4. Klik op **Details** naast de naam van uw beheergroep.
+4. Selecteer **Details** naast de naam van de beheergroep.
 5. Selecteer **Toegangsbeheer (IAM)** in het linkerdeelvenster.
-6. Klik op **Add**.
+6. Selecteer **Toevoegen**.
 7. Selecteer **Lezer Cost Management** onder **Rol**.
 8. Selecteer **Azure AD-gebruiker, -groep of -toepassing** onder **Toegang toewijzen aan**.
 9. Om toegang toe te wijzen, zoekt u de gebruiker en selecteert u deze.
-10. Klik op **Opslaan**.  
+10. Selecteer **Opslaan**.  
     ![voorbeeld van informatie in het vak Machtigingen toevoegen voor een beheergroep](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Toegang tot een abonnementsbereik toewijzen
@@ -145,11 +159,11 @@ Voor toegang tot een abonnement is ten minste de machtiging Lezer Cost Managemen
 2. Selecteer **Alle services** in de zijbalk, zoek naar _abonnementen_ en selecteer vervolgens **Abonnementen**.
 3. Selecteer uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** in het linkerdeelvenster.
-5. Klik op **Add**.
+5. Selecteer **Toevoegen**.
 6. Selecteer **Lezer Cost Management** onder **Rol**.
 7. Selecteer **Azure AD-gebruiker, -groep of -toepassing** onder **Toegang toewijzen aan**.
 8. Om toegang toe te wijzen, zoekt u de gebruiker en selecteert u deze.
-9. Klik op **Opslaan**.
+9. Selecteer **Opslaan**.
 
 ## <a name="assign-resource-group-scope-access"></a>Toegang tot een resourcegroepsbereik toewijzen
 
@@ -159,11 +173,11 @@ Voor toegang tot een resourcegroep is ten minste de machtiging Lezer Cost Manage
 2. Selecteer **Alle services** in de zijbalk, zoek naar _resourcegroepen_ en selecteer vervolgens **Resourcegroepen**.
 3. Selecteer uw resourcegroep.
 4. Selecteer **Toegangsbeheer (IAM)** in het linkerdeelvenster.
-5. Klik op **Add**.
+5. Selecteer **Toevoegen**.
 6. Selecteer **Lezer Cost Management** onder **Rol**.
 7. Selecteer **Azure AD-gebruiker, -groep of -toepassing** onder **Toegang toewijzen aan**.
 8. Om toegang toe te wijzen, zoekt u de gebruiker en selecteert u deze.
-9. Klik op **Opslaan**.
+9. Selecteer **Opslaan**.
 
 ## <a name="cross-tenant-authentication-issues"></a>Problemen met verificatie tussen tenants
 

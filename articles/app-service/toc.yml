@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway met service-eindpunten
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Privé-eindpunt
+          href: networking/private-endpoint.md
     - name: Inkomende en uitgaande IP-adressen
       href: overview-inbound-outbound-ips.md
     - name: Integratie van virtueel netwerk
@@ -175,6 +177,8 @@
           href: configure-ssl-certificate-in-code.md
         - name: Wederzijdse TLS-verificatie configureren
           href: app-service-web-configure-tls-mutual-auth.md
+        - name: Sitegegevens versleutelen
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: App schalen
       items:
         - name: Servercapaciteit omhoog schalen
@@ -210,7 +214,7 @@
         - name: Schakelen tussen regio's
           href: manage-move-across-regions.md
         - name: Abonnementen verplaatsen
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
     - name: Achtergrondtaken uitvoeren
       items:
         - name: WebJobs maken

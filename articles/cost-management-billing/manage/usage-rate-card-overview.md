@@ -1,5 +1,5 @@
 ---
-title: Azure-gebruik met Azure Billing-API's | Microsoft Docs
+title: Azure-gebruik ophalen met Azure Billing-API's
 description: Informatie over Azure Billing Usage en RateCard-API's, die worden gebruikt om inzicht te krijgen in het gebruik en trends van Azure-resources.
 author: tonguyen
 ms.reviewer: mumami
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 2765a1acca21081a696bb165b75a96e1a668aa40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395828"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237629"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
 Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als resourceprovider en maken deel uit van de API-familie die beschikbaar wordt gesteld door Azure Resource Manager.  
@@ -22,7 +22,7 @@ Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens i
 ## <a name="azure-invoice-download-api-preview"></a>API Azure-factuur downloaden (preview)
 Nadat het [aanmelden is voltooid](manage-billing-access.md#opt-in), kunt u facturen downloaden met behulp van de preview-versie van de [Factuur-API](/rest/api/billing). De functies zijn onder andere:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 * **Datumfilters**: gebruik de parameter `$filter` om alle facturen in omgekeerde chronologische volgorde op te halen op basis van de einddatum van de factuurperiode.
 
 > [!NOTE]
@@ -43,7 +43,7 @@ Gebruik de[Azure Resource RateCard-API](/previous-versions/azure/reference/mt219
 * **Op rollen gebaseerd toegangsbeheer van Azure**: configureer uw toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een bepaald Azure-abonnement.
 * **Ondersteuning voor de aanbiedingstypen betalen per gebruik, MSDN, monetaire toezegging en geldtegoed (EA en [CSP](https://docs.microsoft.com/partner-center) worden niet ondersteund)** : deze API biedt informatie over de tarieven voor Azure.  De aanroeper van deze API moet de aanbiedingsgegevens invoeren om de resourcedetails en-tarieven op te halen. We kunnen momenteel geen EA-tarieven verstrekken omdat EA-aanbiedingen aangepaste tarieven per inschrijving hebben.
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 Hier volgen enkele van de scenario's die mogelijk worden gemaakt met de combinatie van de gebruiks- en de RateCard-API:
 
 * **Azure-uitgaven gedurende de maand**: gebruik de combinatie van de API's voor gebruik en RateCard om in de loop van de maand beter inzicht te krijgen in uw clouduitgaven. U kunt het gebruik en de kostenramingen per uur en per dag analyseren.

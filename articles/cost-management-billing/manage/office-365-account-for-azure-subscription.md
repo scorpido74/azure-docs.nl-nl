@@ -1,5 +1,5 @@
 ---
-title: Registreren voor Azure met Office 365-account | Microsoft Docs
+title: Registreren voor Azure met Office 365-account
 description: Meer informatie over het maken van een Azure-abonnement met behulp van een Office 365-account
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199582"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238105"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registreren voor een Azure-abonnement met uw Office 365-account
 Als u een Office 365-abonnement hebt, kunt u uw Office 365-account gebruiken om een Azure-abonnement te maken. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met uw Office 365-gebruikersnaam en -wachtwoord. Als u virtuele machines wilt instellen of andere Azure-services wilt gebruiken, moet u zich aanmelden voor een Azure-abonnement. U kunt uw Azure-abonnement delen met anderen en [Op rollen gebaseerd toegangsbeheer gebruiken om de toegang tot uw Azure-abonnement en -resources te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ Bespaar tijd en voorkom extra accounts door u te registreren voor Azure met behu
 
 - Als u andere personen in uw organisatie wilt toevoegen aan het Azure-abonnement, raadpleegt u [Aan de slag met toegangsbeheer in het Azure-portal.](../../role-based-access-control/overview.md)
 
-## <a id="more-about-subs">Meer informatie over Azure en Office 365-abonnementen</a>
+## <a name=""></a><a id="more-about-subs">Meer informatie over Azure en Office 365-abonnementen</a>
 Office 365 en Azure gebruiken de Azure Active Directory-service voor het beheren van gebruikers en abonnementen. De Azure-map is een container waarin u gebruikers en abonnementen kunt groeperen. Als u dezelfde gebruikersaccounts wilt gebruiken voor uw Azure- en Office 365-abonnementen, moet u ervoor zorgen dat de Azure-abonnementen worden gemaakt in dezelfde map als de Office 365-abonnementen. Houd rekening met de volgende belangrijke punten:
 
 * Er wordt een abonnement gemaakt onder een map

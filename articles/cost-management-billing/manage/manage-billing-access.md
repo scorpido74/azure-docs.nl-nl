@@ -1,5 +1,5 @@
 ---
-title: Toegang tot Azure-facturering beheren | Microsoft Docs
+title: Toegang tot Azure-facturering beheren
 description: Meer informatie over het verlenen van toegang tot uw Azure-factureringsgegevens voor leden van uw team.
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344593"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237663"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Toegang tot factureringsgegevens beheren voor Azure
 
@@ -44,7 +44,7 @@ Zie [Toegang beheren met RBAC en de Azure-portal](../../role-based-access-contro
 **Als u een EA-klant bent, kan een accounteigenaar de bovenstaande rol toewijzen aan andere gebruikers van zijn team. Maar als u wilt dat deze gebruikers factureringsgegevens kunnen inzien, moet de Enterprise-beheerder de accounteigenaar toestaan om rekeningen in het Enterprise-portal in te zien.
 
 
-### <a name="opt-in"></a>Gebruikers toestaan facturen te downloaden
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a>Gebruikers toestaan facturen te downloaden
 
 Nadat een accountbeheerder de juiste rollen aan andere gebruikers heeft toegewezen, moet hij toegang inschakelen om facturen te downloaden in de Azure-portal. Facturen ouder dan december 2016 zijn alleen beschikbaar voor de accountbeheerder.
 

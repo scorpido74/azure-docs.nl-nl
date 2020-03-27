@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199157"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065690"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminologie in het bestand met Azure-gebruik en -kosten voor een Microsoft-klantovereenkomst
 
@@ -21,7 +21,7 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
 Het CSV-bestand met gegevens van Azure-gebruik en -kosten bevat dagelijks gebruikskosten en gebruikskosten op meterniveau voor de huidige factureringsperiode.
 
-Zie [Uw Azure-gebruik en -kosten weergeven en downloaden](download-azure-daily-usage.md) om dit bestand te downloaden. Het is beschikbaar in een bestandsindeling met door komma's gescheiden waarden (.csv) die u kunt openen in een spreadsheetprogramma.
+Zie [Uw Azure-gebruik en -kosten weergeven en downloaden](download-azure-daily-usage.md) om dit bestand te downloaden. Het is beschikbaar in de CSV-bestandsindeling (met door komma's gescheiden waarden) die u kunt openen in een werkbladtoepassing.
 
 Gebruikskosten zijn de totale **maandelijkse** kosten voor een abonnement. In de gebruikskosten wordt geen rekening gehouden met eventuele tegoeden of kortingen.
 
@@ -88,6 +88,8 @@ meterCategory | Naam van de classificatiecategorie voor de meter. Bijvoorbeeld *
 meterSubCategory | Naam van de sub-classificatiecategorie voor de meter
 meterRegion | Naam van de regio waar de meter voor de service beschikbaar is. Identificeert de locatie van het datacenter voor bepaalde services waarbij de prijs is gebaseerd op de locatie van het datacenter.
 offer | Naam van de aangeschafte aanbieding
+PayGPrice | Verkoopprijs voor de resource.
+PricingModel | Id die aangeeft hoe de meter is geprijsd (waarden: op aanvraag, reservering, spot)
 productId | Unieke id voor het product waarop de kosten betrekking hebben
 product | Naam van het product waarop de kosten betrekking hebben
 subscription ID | Unieke id voor het abonnement waarop de kosten betrekking hebben

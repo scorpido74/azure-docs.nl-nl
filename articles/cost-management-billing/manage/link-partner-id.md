@@ -1,5 +1,5 @@
 ---
-title: Een Azure-account aan een partner-id koppelen | Microsoft Docs
+title: Een Azure-account koppelen aan een partner-id
 description: Volg afspraken met Azure-klanten door een partner-id aan het gebruikersaccount dat u voor het beheer van de resources van de klant gebruikt, te koppelen.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651352"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204797"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
-Microsoft-partners bieden services waarmee klanten bedrijfs- en missiedoelen kunnen bereiken met behulp van Microsoft-producten. Wanneer partnergebruikers namens de klant Azure-services beheren, configureren en ondersteunen, hebben ze toegang tot de omgeving van de klant nodig. Met behulp van Partner Admin Link kunnen partners hun partnernetwerk-id koppelen aan de referenties die zijn gebruikt voor het leveren van de service.
+Microsoft-partners bieden services waarmee klanten bedrijfs- en missiedoelen kunnen bereiken met behulp van Microsoft-producten. Wanneer partnergebruikers namens de klant Azure-services beheren, configureren en ondersteunen, hebben ze toegang tot de omgeving van de klant nodig. Met behulp van PAL (Partner Admin Link) kunnen partners hun partnernetwerk-id koppelen aan de referenties die zijn gebruikt voor het leveren van de service.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+PAL stelt Microsoft in staat om partners te identificeren en te herkennen die Azure-klanten helpen succes te boeken. Microsoft kan invloed en in Azure verbruikte omzet toerekenen aan uw organisatie, op basis van de machtigingen (RBAC-rol) en het bereik (abonnement, resourcegroep, resource) van het account.
 
 ## <a name="get-access-from-your-customer"></a>Toegang van uw klant krijgen
 

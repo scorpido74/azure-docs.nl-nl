@@ -1,77 +1,154 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Data Explorer
+summary: Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Gebruik Azure Data Explorer om verschillende soorten gegevens te verzamelen, bewaren en analyseren om producten en de klantervaring te verbeteren, apparaten te bewaken en werkzaamheden een boost te geven.
 metadata:
-  title: 'Quickstarts, zelfstudies, query-taal en API-documentatie voor Azure Data Explorer'
+  title: Documentatie voor Azure Data Explorer
   description: Azure Data Explorer is een cloudplatform voor logboekanalyses dat is geoptimaliseerd voor ad-hoc big data-query's.
-  author: orspod
-  ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
-  ms.date: 03/24/2019
-abstract:
-  description: '<p>Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Gebruik Azure Data Explorer om verschillende soorten gegevens te verzamelen, bewaren en analyseren om producten en de klantervaring te verbeteren, apparaten te bewaken en werkzaamheden een boost te geven.</p><p>Ontdek hoe u Azure Data Explorer gebruikt met onze snelstarts, zelfstudies en referenties.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Wat is Azure Data Explorer? (19:47)'
-    href: 'https://youtu.be/D_AJk2lAepw'
-    width: 250
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u Azure Data Explorer inricht en gebruikt:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Een cluster en database maken
-            href: /azure/data-explorer/create-cluster-database-portal
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Stroomgegevens van Event Hubs opnemen
-            href: /azure/data-explorer/ingest-data-event-hub
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Query's uitvoeren op gegevens met de webinterface
-            href: /azure/data-explorer/web-query-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Gegevens in de wachtrij opnemen met Python
-            href: /azure/data-explorer/python-ingest-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Query's uitvoeren op gegevens met Python
-            href: /azure/data-explorer/python-query-data
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Meer informatie over hoe u end-to-end-oplossingen maakt:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/data-explorer/visualize-power-bi">Gegevens visualiseren van Azure Data Explorer in Power BI</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Querytaal voor Azure Data Explorer
-            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-            image:
-              src: /azure/data-explorer/media/index/logo-pluralsight.svg
-              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Talen en API
-            html: '<p><a href="https://aka.ms/kustolangref">Querytaal, beheeropdrachten en API''s</a>'
+  author: orspod
+  ms.author: orspodek
+  ms.date: 03/19/2020
+  ms.openlocfilehash: f00722d273ed95d82d433b66750e0a2211f04ee3
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80065633"
+landingContent:
+- title: Over Azure Data Explorer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Data Explorer?
+      url: data-explorer-overview.md
+  - linkListType: video
+    links:
+    - text: Wat is Azure Data Explorer? (19:47)
+      url: https://youtu.be/D_AJk2lAepw
+    - text: 'Pluralsight: Beginnen met de Kusto-querytaal (KQL)'
+      url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
+- title: Cluster en database maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een cluster en database maken
+      url: create-cluster-database-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Python
+      url: create-cluster-database-python.md
+    - text: Azure Resource Manager-sjabloon
+      url: create-cluster-database-resource-manager.md
+    - text: C#
+      url: create-cluster-database-csharp.md
+    - text: PowerShell
+      url: create-cluster-database-powershell.md
+    - text: Azure CLI
+      url: create-cluster-database-cli.md
+- title: Gegevens opnemen in Azure Data Explorer
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht van gegevensopname
+      url: ingest-data-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Voorbeeldgegevens opnemen
+      url: ingest-sample-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Opname met één klik
+      url: ingest-data-one-click.md
+    - text: Stroomopname
+      url: ingest-data-streaming.md
+    - text: Python
+      url: python-ingest-data.md
+    - text: Event Hub met behulp van de Azure-portal
+      url: ingest-data-event-hub.md
+    - text: Event Grid met behulp van de Azure-portal
+      url: ingest-data-event-grid.md
+    - text: LightIngest installeren en gebruiken
+      url: lightingest.md
+- title: Querygegevens
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Query's uitvoeren op gegevens met de webinterface
+      url: web-query-data.md
+  - linkListType: tutorial
+    links:
+    - text: KQL-query's schrijven
+      url: write-queries.md
+  - linkListType: how-to-guide
+    links:
+    - text: Query's uitvoeren op gegevens in Azure Data Lake
+      url: data-lake-query-data.md
+    - text: Query's uitvoeren op gegevens met Python
+      url: python-query-data.md
+    - text: Tijdreeksanalyse
+      url: time-series-analysis.md
+  - linkListType: reference
+    links:
+    - text: KQL-snelzoekgids
+      url: kql-quick-reference.md
+    - text: Kusto-querytaal
+      url: https://docs.microsoft.com/azure/kusto/query/
+- title: Gegevens visualiseren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht van gegevensvisualisatie
+      url: viz-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Power BI-connector
+      url: power-bi-connector.md
+    - text: Grafana
+      url: grafana.md
+    - text: ODBC-connector
+      url: connect-odbc.md
+    - text: Tableau
+      url: tableau.md
+    - text: Kibana (K2Bridge-connector)
+      url: k2bridge.md
+    - text: Redash
+      url: redash.md
+    - text: Sisense
+      url: sisense.md
+- title: Integreren met andere hulpprogramma's
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Integratie met Data Factory
+      url: data-factory-integration.md
+    - text: Apache Spark-connector
+      url: spark-connector.md
+    - text: Microsoft Flow-connector
+      url: flow.md
+    - text: Azure DevOps
+      url: devops.md
+- title: Resources en gegevens beheren en bewaken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Horizontaal schalen van cluster beheren
+      url: manage-cluster-horizontal-scaling.md
+    - text: Verticaal schalen van cluster beheren
+      url: manage-cluster-vertical-scaling.md
+    - text: Follower-databases
+      url: follower.md
+    - text: Databasemachtigingen beheren
+      url: manage-database-permissions.md
+    - text: Metrische gegevens gebruiken om clusterstatus te bewaken
+      url: using-metrics.md
+    - text: Diagnostische logboeken gebruiken om opname te bewaken
+      url: using-diagnostic-logs.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Opdrachten voor beheer
+      url: https://docs.microsoft.com/azure/kusto/management/
+    - text: Azure Data Explorer API
+      url: https://docs.microsoft.com/azure/kusto/api/

@@ -1,19 +1,19 @@
 ---
-title: Quickstart - verken de kosten van Azure met kostenanalyse | Microsoft Docs
+title: 'Quickstart: Azure-kosten verkennen met kostenanalyse'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649293"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155950"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -27,12 +27,13 @@ In deze snelstart leert u de volgende zaken:
 - Kostenweergaven aanpassen
 - Gegevens van kostenanalyse downloaden
 
-
 ## <a name="prerequisites"></a>Vereisten
 
 Kostenanalyse biedt ondersteuning voor verschillende typen Azure-accounts. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). Als u kostengegevens wilt weergeven, hebt u minimaal leestoegang voor uw Azure-account nodig.
 
 Zie [Toegang tot gegevens toewijzen](../../cost-management/assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens in Azure Cost Management.
+
+Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -43,6 +44,10 @@ Zie [Toegang tot gegevens toewijzen](../../cost-management/assign-access-acm-dat
 Als u de kosten in kostenanalyse wilt controleren, opent u het bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 
 Het bereik dat u selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u gebruikmaakt van bereiken, moet u geen meervoudige selectie maken. In plaats daarvan selecteert u een groter bereik dat de andere bereiken omvat en filtert u vervolgens zodat alleen de geneste bereiken die u nodig hebt, overblijven. Het is belangrijk dat u deze aanpak begrijpt omdat mogelijk niet iedereen toegang heeft tot één enkel bovenliggend bereik, waarin meerdere bereiken zijn genest.
+
+Bekijk de video [Cost Management gebruiken in de Azure-portal](https://www.youtube.com/watch?v=mfxysF-kTFA) voor meer informatie over het gebruik van Kostenanalyse.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 De initiële kostenanalyseweergave omvat de volgende gebieden.
 
@@ -65,7 +70,6 @@ De initiële kostenanalyseweergave omvat de volgende gebieden.
 In de kostenprognose wordt een schatting van de kosten voor de geselecteerde periode weergegeven. Het model is gebaseerd op een regressiemodel met tijdreeksen. Er zijn ten minste tien dagen van recente kosten- en gebruiksgegevens nodig om kosten nauwkeurig te kunnen schatten. Voor een bepaalde periode vereist het prognosemodel gelijke delen van trainingsgegevens voor de prognoseperiode. Voor een prognose van drie maanden bijvoorbeeld zijn ten minste drie maanden aan recente kosten- en gebruiksgegevens vereist.
 
 Het model gebruikt een maximum van zes maanden aan trainingsgegevens om kosten voor een heel jaar te schatten. Er zijn minimaal zeven dagen aan trainingsgegevens nodig om de voorspelling te wijzigen. De voorspelling is gebaseerd op opvallende wijzigingen, zoals pieken en dalen, in kosten- en gebruikspatronen. De prognose genereert geen afzonderlijke schattingen voor elk item in **Groeperen op**-eigenschappen. Er wordt alleen een schatting gegeven van het totaal aan samengevoegde kosten. Als u meerdere valuta's gebruikt, geeft het model prognoses voor de kosten alleen in Amerikaanse dollars.
-
 
 ## <a name="customize-cost-views"></a>Kostenweergaven aanpassen
 
@@ -174,11 +178,17 @@ Zie [Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebrui
 
 Sla aangepaste weergaven op en deel ze met anderen door een kostenanalyses vast te maken aan het dashboard in de Azure-portal of door een koppeling naar een kostenanalyse te kopiëren.
 
+Bekijk de video [Sharing and saving views in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) (Weergaven delen en opslaan in Azure Cost Management) voor meer informatie over het gebruik van de portal om kennis over kosten te delen in uw organisatie.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 Als u de kostenanalyse wilt vastmaken, selecteert u de speld in de rechterbovenhoek. Als u de kostenanalyse vastmaakt, wordt alleen de hoofdgrafiek of de tabelweergave opgeslagen. Deel het dashboard zodat anderen toegang tot de tegel hebben. Houd er wel rekening mee dat hiermee alleen de dashboardconfiguratie wordt gedeeld en dat andere gebruikers geen toegang tot de onderliggende gegevens krijgen. Als u geen toegang hebt tot kosten maar wel toegang hebt tot een gedeeld dashboard, wordt een bericht weergegeven met de strekking dat toegang is geweigerd.
 
 Als u een koppeling naar de kostenanalyse wilt delen, selecteert u **Delen** boven aan de blade. Er wordt een aangepaste URL weergegeven, waarmee deze specifieke weergave voor dit specifieke bereik kan worden geopend. Als u geen toegang tot de kosten hebt en deze URL ontvangt, wordt er een bericht weergegeven dat aangeeft dat toegang is geweigerd.
 
 Als u meer wilt weten over het verlenen van toegang tot kosten voor elk ondersteund bereik, raadpleegt u [Understand and work with scopes](understand-work-scopes.md) (Engelstalig).
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Automatiseren en offline analyses maken
 

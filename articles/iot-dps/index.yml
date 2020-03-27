@@ -1,51 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie over de Azure IoT Hub Device Provisioning Service
+### YamlMime:Landing
+title: Documentatie voor de Azure IoT Hub DPS (Device Provisioning Service)
+summary: De IoT Hub Device Provisioning Service (DPS) is een helper-service voor IoT Hub die zero-touch, just-in-time inrichting naar de juiste IoT-hub biedt zonder menselijke tussenkomst, zodat gebruikers miljoenen apparaten op een veilige en schaalbare manier kunnen inrichten. Leer hoe u apparaten naar uw IoT-hub(s) kunt inrichten met onze snelstartgidsen, zelfstudies en voorbeelden.
 metadata:
-  title: Documentatie over de Azure IoT Hub Device Provisioning Service
-  description: 'Azure IoT Hub Device Provisioning Service - Zelfstudies, quickstarts, handleidingen en API-naslaginformatie'
-  author: nberdy
+  title: Documentatie voor de Azure IoT Hub DPS (Device Provisioning Service)
+  description: Azure IoT Hub DSP (Device Provisioning Service) - Zelfstudies, quickstarts, handleidingen en API-naslaginformatie
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: 'De IoT Hub Device Provisioning Service (DPS) is een helper-service voor IoT Hub die zero-touch, just-in-time inrichting naar de juiste IoT-hub biedt zonder menselijke tussenkomst, zodat gebruikers miljoenen apparaten op een veilige en schaalbare manier kunnen inrichten. Leer hoe u apparaten naar uw IoT-hub(s) kunt inrichten met onze snelstartgidsen, zelfstudies en voorbeelden.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u uw eerste Device Provisioning Service-exemplaar kunt instellen en richt een gesimuleerd apparaat in voor uw IoT-hub.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Automatische inrichting instellen
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Een gesimuleerd apparaat maken
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Leer hoe u de IoT Hub Device Provisioning Service kunt gebruiken voor het automatisch inrichten van apparaten met ingeschakelde beveiliging naar één of meerdere IoT-hubs.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Cloudresources configureren</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Uw apparaat instellen om verbinding te maken met Azure</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Apparaten inrichten naar een enkele IoT-hub</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Apparaten inrichten naar meerdere IoT-hubs met taakverdeling</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: SDK's voor Azure IoT
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133258"
+landingContent:
+- title: Over Azure IoT Hub DPS (Device Provisioning Service)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is DPS?
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Concepten voor automatische inrichting voor Azure IoT
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: Demo met IoT Hub DPS
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een DPS instellen met behulp van de Azure-portal
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: Een gesimuleerd apparaat met symmetrische sleutel inrichten met behulp van C
+      url: quick-create-simulated-device-symm-key.md
+    - text: Een gesimuleerd apparaat met symmetrische sleutel inrichten met behulp van C
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: Inrichten voor multitenancy
+      url: how-to-provision-multitenant.md
+    - text: Aangepast toewijzingsbeleid gebruiken
+      url: how-to-use-custom-allocation-policies.md
+- title: Toegang beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Apparaatinschrijvingen beheren
+      url: how-to-manage-enrollments.md
+    - text: Toegang tot Azure IoT Hub Device Provisioning Service beheren
+      url: how-to-control-access.md
+- title: Een IoT-oplossing ontwikkelen met DPS
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure IoT-SDK voor C
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: Azure IoT-SDK voor Python
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: Azure IoT-SDK voor Node.js
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: Azure IoT-SDK voor Java
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: Azure IoT-SDK voor .NET
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST-API
+      url: /rest/api/iot-dps

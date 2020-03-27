@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: Clusters maken met Runbooks
           href: ./manage-clusters-runbooks.md
+        - name: E-mailmeldingen voor Apache Ambari
+          href: ./apache-ambari-email.md
         - name: Een ETL-pijplijn bouwen
           href: ./hdinsight-sales-insights-etl.md
     - name: Voorbeelden
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: Een Apache Spark-cluster maken - Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: Een Apache Spark-cluster maken - sjabloon
+        - name: Een Apache Spark-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: Zelfstudies
       items:
@@ -416,8 +419,8 @@
       items:
         - name: Een Apache Hadoop-cluster maken - Portal
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: Een Apache Hadoop-cluster maken - sjabloon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Een Apache Hadoop-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: Zelfstudies
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: Ontwikkelen
           items:
-            - name: Lege edge-knooppunten gebruiken
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: MapReduce gebruiken met Apache Hadoop
+              items:
+                - name: Overzicht van MapReduce
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: SSH gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: cURL gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: SDK voor .NET gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: De MapReduce-voorbeelden uitvoeren
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: Aangepaste Apache Hadoop MapReduce-programma's uitvoeren
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'Streaming C# MapReduce-programma''s ontwikkelen'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce-programma's ontwikkelen
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 'Apache Hive gebruiken als hulpprogramma voor uitpakken, transformeren en laden (ETL)'
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 'Uitpakken, transformeren en laden op de juiste schaal'
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: Toepassingen zonder interactieve verificatie voor .NET HDInsight maken
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: Big data analyseren
+              items:
+                - name: Analyseren met Power Query
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Power BI verbinden met Interactive Query
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Power BI verbinden met Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Excel verbinden met Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Verbinding maken met het Apache Hive JDBC-stuurprogramma
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: Opgeslagen tweets analyseren
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Aanbevelingen genereren met Apache Mahout
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: Geavanceerde analyse voor HDInsight
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: Beheren
+              items:
+                - name: Lege edge-knooppunten gebruiken
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: Problemen oplossen
           items:
             - name: Algemene problemen
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: Een Apache Kafka-cluster maken - PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: Een Apache Kafka-cluster maken - sjabloon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Een Apache Kafka-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Zelfstudies
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: Snelstartgidsen
       items:
+        - name: Een Apache HBase-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: Query uitvoeren op Apache HBase - Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Query uitvoeren op Apache HBase - HBase-Shell
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: Snelstartgidsen
       items:
+        - name: Een Interactive Query-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: Apache Hive-query's uitvoeren - Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: Zelfstudies
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: Snelstartgidsen
       items:
+        - name: Een ML Services-cluster maken - ARM-sjabloon
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: Voorbeeldtaak - RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: Voorbeeldtaak - R-console
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: Zelfstudies
       items:
-        - name: Firewall gebruiken om uitgaand verkeer te beperken
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: RBAC voor Apache HBase met Apache Ranger
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: RBAC voor Apache Hive met Apache Ranger
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: Gegevens beveiligen
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: Firewall gebruiken om uitgaand verkeer te beperken
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Problemen oplossen
           items:
             - name: ESP-verificatieproblemen

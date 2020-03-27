@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Documentatie voor StorSimple
+summary: Meer informatie over het gebruik van Azure StorSimple, een geïntegreerde opslagoplossing voor het beheer van opslagtaken tussen on-premises apparaten en Azure-cloudopslag.
+metadata:
+  title: Documentatie voor StorSimple
+  description: Meer informatie over het gebruik van Azure StorSimple, een geïntegreerde opslagoplossing voor het beheer van opslagtaken tussen on-premises apparaten en Azure-cloudopslag.
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540303"
+landingContent:
+- title: Over StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: StorSimple vergelijken met Azure File Sync en Data Box Edge
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple Virtual Array
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is StorSimple Virtual Array?
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: Vereisten beoordelen
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000-serie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is StorSimple 8000-serie?
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: Vereisten beoordelen
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple-gegevensbeheer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is StorSimple Data Manager?
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: Beheren in de Azure-portal
+      url: storsimple-data-manager-ui.md
+- title: StorSimple voor het Cloud Solutions Providers-programma
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is het StorSimple voor het Cloud Solutions Providers-programma?
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: Implementeren
+      url: storsimple-partner-csp-deploy.md

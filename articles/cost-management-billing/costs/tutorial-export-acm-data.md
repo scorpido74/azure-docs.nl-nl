@@ -3,23 +3,25 @@ title: 'Zelfstudie: Gegevensexports uit Azure Cost Management instellen en beher
 description: In dit artikel leest u hoe u gegevensexports uit Azure Cost Management instelt en beheert, zodat u deze kunt gebruiken in externe systemen.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b950235eccbd41b1dfa46c23985e804212d9e8f2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251141"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155899"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Geëxporteerde gegevens maken en beheren
 
 Als u de zelfstudie over kostenanalyse hebt doorgenomen, bent u al bekend met het handmatig downloaden van gegevens uit Cost Management. U kunt echter ook een terugkerende taak instellen om uw Cost Management-gegevens automatisch dagelijks, wekelijks of maandelijks naar uw Azure-opslag te exporteren. De gegevens worden in CSV-indeling geëxporteerd en bevatten alle informatie die door Cost Management is verzameld. U kunt de geëxporteerde gegevens in uw Azure-opslag vervolgens in externe systemen laden en combineren met uw eigen gegevens. Externe systemen waarin de geëxporteerde gegevens kunnen worden gebruikt, zijn bijvoorbeeld dashboards of andere financiële systemen.
 
 Bekijk de video [How to schedule exports to storage with Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) (Exports naar opslag plannen met Azure Cost Management) over het maken van een geplande export van uw Azure-kostengegevens naar Azure Storage.
+
+>[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 
 De voorbeelden in deze zelfstudie laten u stapsgewijs zien hoe u uw Cost Management-gegevens exporteert en vervolgens controleert of de export is gelukt.
 
@@ -40,7 +42,7 @@ Voor Azure-opslagaccounts:
 - Voor het wijzigen van een geconfigureerd opslagaccount zijn schrijfmachtigingen vereist, ongeacht de machtiging voor het exporteren.
 - Uw Azure-opslagaccount moet zijn geconfigureerd voor blob- of bestandsopslag.
 
-Als u een nieuw abonnement hebt, kunt u niet direct de Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
+Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
@@ -50,7 +52,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 Als u een gegevensexport wilt maken of weergeven, of een export wilt plannen, opent u het gewenste bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Selecteer bovenaan de pagina Kostenanalyse **Exporteren** en kies vervolgens een exportoptie. Selecteer bijvoorbeeld **Export plannen**.  
 
 > [!NOTE]
-> - Naast abonnementen kunt u exports maken voor resourcegroepen, accounts, afdelingen en registraties. Zie [Bereiken begrijpen en gebruiken](understand-work-scopes.md) voor meer informatie over bereiken
+> - Naast abonnementen kunt u exports maken voor resourcegroepen, accounts, afdelingen en registraties. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 >- Wanneer u als partner bent aangemeld bij het bereik van het factureringsaccount of bij de tenant van een klant, kunt u gegevens exporteren naar een Azure Storage-account dat is gekoppeld aan uw partneropslagaccount. U moet hiervoor wel een actief abonnement hebben in uw CSP-tenant.
 >
 

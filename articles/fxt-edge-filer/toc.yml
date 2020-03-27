@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: '7: De netwerkinstellingen van het cluster configureren'
       href: fxt-configure-network.md
-- name: Handleidingen
-  items:
-    - name: Clients koppelen
+    - name: 8 - Clients koppelen
       href: fxt-mount-clients.md
+- name: Instructiegidsen
+  items:
     - name: De Azure FXT Edge Filer-hardware bewaken
       href: fxt-monitor.md
     - name: Een hardwareknooppunt veilig uitschakelen

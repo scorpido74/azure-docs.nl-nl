@@ -35,6 +35,10 @@
     - name: Concepten
       expanded: false
       items:
+        - name: Beveiliging
+          items:
+            - name: Beveiligingsbasislijn
+              href: security-baseline.md
         - name: Containerregister-SKU's en -limieten
           href: container-registry-skus.md
         - name: 'Registers, opslagplaatsen en installatiekopieën'
@@ -120,7 +124,7 @@
         - name: Controleren
           expanded: false
           items:
-            - name: Diagnostische en auditlogboeken (preview)
+            - name: Diagnostische en auditlogboeken
               href: container-registry-diagnostics-audit-logs.md
             - name: Controleren op naleving met Azure Policy (preview)
               href: container-registry-azure-policy.md

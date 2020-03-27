@@ -45,8 +45,11 @@
       items:
         - name: Aanbevelingen voor beveiliging
           href: security-recommendations.md
-        - name: Azure-opslagversleuteling
+        - name: Versleuteling-at-rest in Azure Storage
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Door de klant beheerde sleutels met Azure Key Vault
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Gegevensbewerkingen autoriseren
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

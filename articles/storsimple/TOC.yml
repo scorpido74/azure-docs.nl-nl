@@ -1,5 +1,5 @@
 - name: Documentatie voor StorSimple
-  href: index.md
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: Overzicht
@@ -325,7 +325,7 @@
                   href: storsimple-5000-7000-afs-migration.md
             - name: Vanaf andere opslagapparaten
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
-        - name: Update
+        - name: Bijwerken
           items:
             - name: Update 5 (actueel) installeren
               href: storsimple-8000-install-update-5.md

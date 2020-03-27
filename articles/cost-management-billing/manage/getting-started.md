@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199701"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238139"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
 
@@ -25,6 +25,8 @@ Wanneer u zich aanmeldt voor Azure, zijn er een aantal zaken die u kunt doen om 
 - Integreer facturerings- en kostengegevens met uw eigen rapportagesysteem met behulp van de [Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's.
 - Gebruik aanvullende bronnen en hulpprogramma's voor Enterprise Agreement- (EA), Cloud Solution Provider- (CSP) en Azure Sponsorship-klanten.
 - Maak [gratis gebruik van een aantal populaire Azure-services gedurende 12 maanden](create-free-services.md) die beschikbaar zijn bij het [gratis Azure-account](https://azure.microsoft.com/free/). Naast de aanbevelingen die hieronder worden vermeld, zie [Voorkomen dat u moet betalen voor een gratis account](avoid-charges-free-account.md).
+
+Raadpleeg [Uw Azure-abonnement annuleren](cancel-azure-subscription.md) als u uw Azure-abonnement wilt annuleren.
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Geschatte kosten ontvangen voordat u Azure-services toevoegt
 
@@ -67,7 +69,7 @@ U kunt kosten bewaken met de volgende hulpprogramma's:
 
 Maak [budgetten](../costs/tutorial-acm-create-budgets.md) om kosten te beheren maak en [meldingen](../costs/cost-mgt-alerts-monitor-usage-spending.md) waarmee belanghebbenden automatisch worden geïnformeerd over afwijkende en te hoge uitgaven.
 
-### <a name="costs"></a> Kosten verkennen en analyseren met Kostenanalyse
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> Kosten verkennen en analyseren met Kostenanalyse
 
 Nadat u uw Azure-services bent gaan uitvoeren, moet u de kosten regelmatig controleren om uw Azure-uitgaven bij te houden. U kunt Kostenanalyse gebruiken om inzicht te krijgen in de kosten van uw Azure-gebruik.
 
@@ -120,7 +122,7 @@ Als u Azure gebruikt via een Microsoft-klantovereenkomst (MCA), kunt u ook [uw f
 
 Gebruik de Azure [Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's om programmatisch facturerings-en kostengegevens op te halen. Gebruik zowel de RateCard-API als de gebruik-API om uw gefactureerde gebruik op te halen. Zie [Inzicht verkrijgen in het gebruik van Microsoft Azure-resources](usage-rate-card-overview.md)voor meer informatie.
 
-## <a name="other-offers"></a> Aanvullende resources en speciale gevallen
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Aanvullende resources en speciale gevallen
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- en Sponsorship-klanten
 Ga in gesprek met uw accountbeheerder of Azure-partner om aan de slag te gaan.
@@ -133,7 +135,7 @@ Ga in gesprek met uw accountbeheerder of Azure-partner om aan de slag te gaan.
 
 Als u IT voor een grote organisatie beheert, wordt aanbevolen de [zakelijke ondersteuning voor Azure](/azure/architecture/cloud-adoption-guide/subscription-governance) en het [zakelijke technische document voor IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) te lezen (PDF-downloads, alleen in het Engels).
 
-### <a name="EA"></a> Enterprise Agreement-kostenweergaven in Azure Portal
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Enterprise Agreement-kostenweergaven in Azure Portal
 
 Zakelijke kostenweergaven zijn momenteel als openbare preview-versie beschikbaar. Aandachtspunten:
 
@@ -167,7 +169,7 @@ U kunt als volgt een tegoed aanvragen:
 2. Maak een nieuwe ondersteuningsaanvraag.
 3. Onder **Probleemtype** selecteert u **Facturering**.
 4. Onder **Probleemtype** selecteert u **Restitutieaanvraag**.
-5. Voeg details toe om op te geven dat u een aanvraag indient voor een SLA-tegoed en noem zowel de datum/tijd/tijdzone als de betrokken services (virtuele machines, websites, enzovoort)
+5. Voeg details toe om op te geven dat u een aanvraag indient voor een SLA-tegoed, en noem zowel de datum/tijd/tijdzone als de betrokken services (virtuele machines, websites, enzovoort)
 6. Controleer uw contactgegevens en selecteer **Maken** om uw aanvraag in te dienen.
 
 SLA-drempelwaarden variëren per service. De SQL-laag Web heeft bijvoorbeeld een SLA van 99,9%, virtuele machines hebben een SLA van 99,95% en de SQL-laag Standard heeft een SLA van 99,99%.

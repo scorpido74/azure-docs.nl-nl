@@ -8,7 +8,7 @@
   items:
     - name: Aan de slag met Advisor
       href: advisor-get-started.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Beschikbaarheid van Azure-toepassingen verbeteren
       href: advisor-high-availability-recommendations.md
@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Waarschuwingen voor aanbevelingen configureren
       href: advisor-alerts.md
+    - name: Bulkherstel voor aanbevelingen
+      href: advisor-quick-fix.md
+    - name: Advisor-gegevens in Azure Resource Graph
+      href: advisor-azure-resource-graph.md
 - name: Naslaginformatie
   items:
     - name: Security Center

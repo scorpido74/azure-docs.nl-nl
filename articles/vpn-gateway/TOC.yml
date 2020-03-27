@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: Concepten
   items:
+    - name: Ondersteuning voor op afstand werken
+      items:
+        - name: Op afstand werken
+          href: work-remotely-support.md
+        - name: NVA-configuraties en werken op afstand
+          href: nva-work-remotely-support.md
     - name: Over instellingen voor VPN Gateway
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: Over VPN-apparaten
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN-clients configureren
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: Verplaatsen naar het OpenVPN-protocol of IKEv2 vanuit SSTP
+          href: ikev2-openvpn-from-sstp.md
         - name: Overgaan naar een openbaar CA-gatewaycertificaat voor een punt-naar-site-verbinding
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Een AlwaysOn-VPN-apparaattunnel configureren
@@ -217,7 +225,7 @@
           items:
             - name: Problemen met een punt-naar-site-verbinding
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Problemen met een punt-naar-site-verbinding - Mac OS X-VPN-client
+            - name: Problemen met een punt-naar-site-verbinding - macOS X-VPN-client
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: Punt-naar-site - Azure Active Directory-verificatie
               href: troubleshoot-ad-vpn-client.md

@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Tekst voorverwerken
       href: preprocess-text.md
+    - name: Latente Dirichlet-toewijzing
+      href: latent-dirichlet-allocation.md
 - name: Aanbeveling
   items:
     - name: Aanbevelingsfunctie voor evaluatie
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: Aanbevelingsfunctie van SVD-training
       href: train-svd-recommender.md
+- name: Anomaliedetectie
+  items:
+    - name: Anomaliedetectie op basis van PCA
+      href: pca-based-anomaly-detection.md
+    - name: Anomaliedetectiemodel trainen
+      href: train-anomaly-detection-model.md
 - name: Fouten en probleemoplossing voor module
   href: designer-error-codes.md

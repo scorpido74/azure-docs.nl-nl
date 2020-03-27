@@ -1,18 +1,18 @@
 ---
 title: Overzicht van DoD Impact Level 4-blauwdrukvoorbeeld
 description: Overzicht van het DoD Impact Level 4-voorbeeld. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van DoD Impact Level 4 bekijken.
-ms.date: 02/09/2020
+ms.date: 03/12/2020
 ms.topic: sample
-ms.openlocfilehash: faac024a0bd18f6a2f10e441ca9e44526463e435
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a67dae5399d3e2e24c226c53f915b91e2524e735
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154604"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "79415373"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>Overzicht van het DoD Impact Level 4-blauwdrukvoorbeeld
 
-Het blauwdrukvoorbeeld Department of Defense Impact Level 4 (DoD IL4) biedt handvatten voor governance met [Azure Policy](../../../policy/overview.md), waarmee u bepaalde DoD Impact Level 4-beheeropties kunt evalueren. Deze blauwdruk helpt klanten een kernset met beleid te implementeren voor architectuur die in Azure is geïmplementeerd en waarin DoD Impact Level 4-beheeropties moeten worden geïmplementeerd.
+Het blauwdrukvoorbeeld Department of Defense Impact Level 4 (DoD IL4) biedt handvatten voor governance met [Azure Policy](../../../policy/overview.md), waarmee u bepaalde DoD Impact Level 4-beheeropties kunt evalueren. Deze blauwdruk helpt klanten een kernset met beleid te implementeren voor architectuur die in Azure is geïmplementeerd en waarin DoD Impact Level 4-beheeropties moeten worden geïmplementeerd. Zie [Azure-services van FedRAMP en DoD CC SRG-controlebereik](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) voor de meest recente informatie over welke Azure-clouds en -services voldoen aan DoD Impact Level 4-verificatie.
 
 ## <a name="control-mapping"></a>Toewijzing van beheeropties
 

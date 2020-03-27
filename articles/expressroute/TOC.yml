@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Concepten
   items:
+    - name: Op afstand werken
+      href: work-remotely-support.md
     - name: Connectiviteitsmodellen
       href: expressroute-connectivity-models.md
     - name: Circuits en peering

@@ -1,8 +1,8 @@
-- name: Documentatie voor Front Door Service
+- name: Documentatie voor Azure Front Door
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat is Azure Front Door Service?
+    - name: Wat is Azure Front Door?
       href: front-door-overview.md
 - name: Snelstartgidsen
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Opslaan in cache met Front Door
       href: front-door-caching.md
+    - name: Veelgestelde vragen over Front Door
+      href: front-door-faq.md
     - name: Geo-filteren
       href: front-door-geo-filtering.md
     - name: Statuscontroles
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL-omleiding
       href: front-door-url-redirect.md
+    - name: Wildcard-domein
+      href: front-door-wildcard-domain.md
 - name: Instructiegidsen
   items:
     - name: Verkeer omleiden
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: Toegestane certificeringsinstanties
           href: front-door-troubleshoot-allowed-ca.md
-- name: Veelgestelde vragen
-  items:
-    - name: Veelgestelde vragen over Front Door
-      href: front-door-faq.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

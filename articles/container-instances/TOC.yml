@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: Implementeren vanuit Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Implementeren met GitHub Actions (preview)
+          href: container-instances-github-action.md
         - name: Implementatiegegevens versleutelen
           href: container-instances-encrypt-data.md
         - name: Implementeren op toegewezen hosts
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: SSL-eindpunt in sidecar inschakelen
           href: container-instances-container-group-ssl.md
+        - name: Statisch IP-adres beschikbaar maken
+          href: container-instances-application-gateway.md
     - name: Gegevensvolumes koppelen
       items:
         - name: Azure-bestandsshare

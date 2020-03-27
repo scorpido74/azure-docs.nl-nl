@@ -1,91 +1,73 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Spatial Anchors
+summary: Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden.
 metadata:
   title: Documentatie voor Azure Spatial Anchors
-  meta.description: Learn how to use Azure Spatial Anchors to build apps with durable spatial anchors.
+  description: Gebruik Azure Spatial Anchors voor apps met duurzame ruimtelijke ankers. Meer informatie over verificatie, wegwijzers, ervaring, logboekregistratie, en coarse-relokalisatie.
   services: azure-spatial-anchors
-  author: craigktreasure
-  manager: aliemami
   ms.service: azure-spatial-anchors
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 02/24/2019
+  author: craigktreasure
   ms.author: crtreasu
-abstract:
-  description: Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden.
-sections:
-  - title: Concepten
-    items:
-      - type: paragraph
-        text: 'Informatie over belangrijke concepten om u aan de slag te helpen met Azure Spatial Anchors:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/spatial-anchors/concepts/authentication">Verificatie.</a>
-          - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Relaties tussen ankers en wegwijzers.</a>
-          - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Richtlijnen voor ervaringen.</a>
-          - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Logboekregistratie en diagnostische gegevens.</a>
-          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">Coarse-relokalisatie.</a>
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Leer hoe u uw eerste toepassing maakt met Azure Spatial Anchors:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: Unity HoloLens
-            href: quickstarts/get-started-unity-hololens.md
-          - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Unity Android
-            href: quickstarts/get-started-unity-android.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: Unity iOS
-            href: quickstarts/get-started-unity-ios.md
-          - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: HoloLens
-            href: quickstarts/get-started-hololens.md
-          - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Android
-            href: quickstarts/get-started-android.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: iOS
-            href: quickstarts/get-started-ios.md
-          - image:
-              src: /media/logos/logo_xamarin.svg
-              alt: null
-            text: Xamarin Android
-            href: quickstarts/get-started-xamarin-android.md
-          - image:
-              src: /media/logos/logo_xamarin.svg
-              alt: null
-            text: Xamarin iOS
-            href: quickstarts/get-started-xamarin-ios.md
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u een app bouwt, instelt, implementeert en beheert met behulp van Azure Spatial Anchors:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Delen in sessies en apparaten.</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Permanent delen met Azure Cosmos DB.</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Een nieuwe HoloLens Unity-app starten.</a>
-          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Een nieuwe app voor Android starten.</a>
-  - title: Releaseopmerkingen
-    items:
-      - type: paragraph
-        text: '<a href="https://github.com/Azure/azure-spatial-anchors-samples/releases">Opmerkingen bij de release op GitHub bekijken.</a>'
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9a5d087416f29f0e4a15ae749453438a05f8ee9d
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79471231"
+landingContent:
+- title: Over Azure Spatial Anchors
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Spatial Anchors?
+      url: overview.md
+    - text: Opmerkingen bij de release op GitHub bekijken
+      url: https://github.com/Azure/azure-spatial-anchors-samples/releases
+- title: Informatie over belangrijkste concepten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verificatie
+      url: ./concepts/authentication.md
+    - text: Relaties tussen ankers en wegwijzers
+      url: ./concepts/anchor-relationships-way-finding.md
+    - text: Richtlijnen voor ervaringen
+      url: ./concepts/guidelines-effective-anchor-experiences.md
+    - text: Logboekregistratie en diagnostische gegevens
+      url: ./concepts/logging-diagnostics.md
+    - text: Coarse-relokalisatie
+      url: ./concepts/coarse-reloc.md
+- title: Uw eerste app maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: Unity Android
+      url: ./quickstarts/get-started-unity-android.md
+    - text: Unity iOS
+      url: ./quickstarts/get-started-unity-ios.md
+    - text: HoloLens
+      url: ./quickstarts/get-started-hololens.md
+    - text: Android
+      url: ./quickstarts/get-started-android.md
+    - text: iOS
+      url: ./quickstarts/get-started-ios.md
+    - text: Xamarin Android
+      url: ./quickstarts/get-started-xamarin-android.md
+    - text: Xamarin iOS
+      url: ./quickstarts/get-started-xamarin-ios.md
+- title: Een app installeren, beheren, bouwen en implementeren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Delen in sessies en apparaten
+      url: ./tutorials/tutorial-share-anchors-across-devices.md
+    - text: Permanent delen met Azure Cosmos DB
+      url: ./tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - text: Een nieuwe HoloLens Unity-app starten
+      url: ./tutorials/tutorial-new-unity-hololens-app.md
+    - text: Een nieuwe app voor Android starten
+      url: ./tutorials/tutorial-new-android-app.md

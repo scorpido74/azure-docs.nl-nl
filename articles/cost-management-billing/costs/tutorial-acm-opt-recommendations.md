@@ -3,21 +3,25 @@ title: 'Zelfstudie: Azure-kosten verlagen met behulp van aanbevelingen'
 description: Deze zelfstudie helpt u bij het verlagen van de kosten van Azure door aanbevelingen voor optimalisatie uit te voeren.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245399"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155916"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Zelfstudie: Kosten optimaliseren op basis van aanbevelingen
 
 Azure Cost Management werkt met Azure Advisor voor aanbevelingen om kosten te optimaliseren. Azure Advisor helpt u om de efficiëntie te optimaliseren en te verbeteren door inactieve en onderbenutte resources te identificeren. In deze zelfstudie identificeert u onderbenutte Azure-resources waarna u actie onderneemt om de bijbehorende kosten te verlagen.
+
+Bekijk de video [Optimizing cloud investments in Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) (Investeringen in de cloud optimaliseren in Azure Cost Management) voor meer informatie over het gebruik van Advisor om uw kosten te optimaliseren.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,7 +36,7 @@ Er zijn aanbevelingen beschikbaar voor diverse bereiken en typen Azure-accounts.
 - Abonnement
 - Resourcegroep
 
-Als u een nieuw abonnement hebt, kunt u niet direct de Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken. U moet tevens actieve virtuele machines hebben met ten minste 14 dagen aan activiteit.
+Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken. U moet tevens actieve virtuele machines hebben met ten minste 14 dagen aan activiteit.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).

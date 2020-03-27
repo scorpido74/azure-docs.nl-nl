@@ -1,17 +1,17 @@
 ---
-title: Inzicht in korting voor gereserveerde VM-instanties in Azure | Microsoft Docs
+title: Inzicht in korting voor gereserveerde VM-instanties in Azure
 description: Meer informatie over hoe korting voor gereserveerde VM-instanties in Azure wordt toegepast op het gebruik van virtuele machines.
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 89b1e22419564e4cc46124a9d3e6ca26f81defa0
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ca54d5a0d196cbc39256668f21e19bdf9162dfbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200449"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202787"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
 

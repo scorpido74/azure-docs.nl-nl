@@ -30,12 +30,16 @@
   items:
     - name: Beheerdershandleiding
       href: administrator-guide.md
+    - name: Handleiding voor versneld instellen van labaccount
+      href: account-setup-guide.md
+    - name: Handleiding voor versneld instellen van lab
+      href: setup-guide.md
     - name: Leslokaallabs - klastypen
       items:
         - name: Overzicht van klastypen
           href: class-types.md
-        - name: Deep Learning in natuurlijke verwerking
-          href: class-type-deep-learning-natural-processing.md
+        - name: Deep Learning in natuurlijke taalverwerking
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Shell-scripts in Linux
           href: class-type-shell-scripting-linux.md
         - name: Ethisch hacken
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: Marketplace-installatiekopieën voor labs opgeven
           href: specify-marketplace-images.md
+        - name: Ondersteuningsinformatie opgeven (labaccounteigenaar)
+          href: lab-account-owner-support-information.md
     - name: Leslokaallabs maken en configureren (docent)
       items:
         - name: Leslokaallabs maken en beheren
@@ -87,17 +93,29 @@
         - name: De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen
           href: how-to-enable-shutdown-disconnect.md
         - name: Geneste virtualisatie inschakelen in een sjabloon-VM
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: Overzicht van geneste virtualisatie inschakelen in een sjabloon-VM
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: Geneste virtualisatie inschakelen in een sjabloon-VM met behulp van de gebruikersinterface
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: Geneste virtualisatie inschakelen in een sjabloon-VM met behulp van een script
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Een VM met Windows-sjabloon voorbereiden
           href: how-to-prepare-windows-template.md
+        - name: Ondersteuningsinformatie weergeven (docent)
+          href: lab-creator-support-information.md
     - name: Verbinding maken met VM's in leslokaallabs (student)
       items:
         - name: Leslokaallabs openen
           href: how-to-use-classroom-lab.md
         - name: Verbinding met Extern bureaublad gebruiken voor Linux-VM's
           href: how-to-use-remote-desktop-linux-student.md
+        - name: Verbinding maken met een VM vanaf Mac met behulp van RDP
+          href: connect-virtual-machine-mac-rdp.md
         - name: Wachtwoorden voor virtuele machines instellen of opnieuw instellen
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: Ondersteuningsinformatie weergeven (leerling/student)
+          href: lab-user-support-information.md
 - name: Naslaginformatie
   items:
     - name: REST-API

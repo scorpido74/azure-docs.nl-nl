@@ -58,7 +58,21 @@
     - name: Concepten
       items:
         - name: Hoe Dev Spaces werkt
-          href: how-dev-spaces-works.md
+          items:
+            - name: Overzicht
+              href: how-dev-spaces-works.md
+            - name: Een cluster instellen
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Een project voorbereiden
+              href: how-dev-spaces-works-prep.md
+            - name: Uw code uitvoeren
+              href: how-dev-spaces-works-up.md
+            - name: Routering tussen Dev Spaces
+              href: how-dev-spaces-works-routing.md
+            - name: Foutopsporing op afstand
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: Uw ontwikkelcomputer verbinden met AKS
+              href: how-dev-spaces-works-connect.md
         - name: Hoe VS Code werkt met Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Netwerkconfiguratie in verschillende netwerktopologieën
@@ -93,7 +107,7 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Traefik gebruiken voor aangepaste opname en HTTPS
           href: how-to/ingress-https-traefik.md
-        - name: Traefik gebruiken voor aangepaste opname en HTTPS
+        - name: NGINX gebruiken voor aangepaste opname en HTTPS
           href: how-to/ingress-https-nginx.md
         - name: Uw ontwikkelmachine verbinden met een AKS-cluster (preview)
           href: how-to/connect.md

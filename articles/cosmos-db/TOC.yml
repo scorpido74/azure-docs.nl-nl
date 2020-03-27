@@ -53,7 +53,7 @@
               href: mobile-apps-with-xamarin.md
     - name: 2 - Gegevens migreren
       items:
-        - name: Gegevensmigratieprogramma gebruiken
+        - name: Het hulpprogramma voor gegevensmigratie gebruiken
           href: import-data.md
         - name: .NET-bulkondersteuning gebruiken
           href: tutorial-sql-api-dotnet-bulk-import.md
@@ -85,7 +85,7 @@
       href: resource-manager-samples.md
 - name: Concepten
   items:
-    - name: No SQL-databases versus relationele databases
+    - name: NoSQL-databases versus relationele databases
       href: relational-nosql.md
     - name: Wereldwijde distributie
       items:
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Geavanceerde beveiliging tegen bedreigingen
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: cosmos-db-security-controls.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Gereedheid voor bedrijven
       items:
         - name: Online back-ups maken en on-demand herstellen
@@ -600,7 +600,7 @@
             - name: Feed wijzigen
               href: cassandra-change-feed.md
             - name: Spring-gegevens opslaan en beheren
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra en Spark
               items:
                 - name: Inleiding
@@ -709,7 +709,7 @@
             - name: Gegevensindexering beheren
               href: mongodb-indexing.md
             - name: Spring-gegevens opslaan en beheren
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Extensieopdrachten voor MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: Grafiekgegevens visualiseren
               href: graph-visualization.md
             - name: Spring-gegevens opslaan en beheren
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Beheren met behulp van Resource Manager-sjablonen
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -1073,9 +1073,9 @@
         - name: Azure Event Hubs en Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter gebruiken
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Ontwikkelaarsgids voor Spring-gegevens
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC-stuurprogramma
           href: odbc-driver.md
     - name: Gegevens migreren naar Cosmos DB

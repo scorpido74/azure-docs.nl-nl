@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970126"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474523"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Wat is Azure Kostenbeheer en facturering?
 
@@ -89,13 +89,13 @@ Aanbevelingen tonen hoe u de efficiëntie kunt optimaliseren en verbeteren door 
 
 Als u externe systemen gebruikt om kostenbeheergegevens te zien of te controleren, kunt u de gegevens van Azure eenvoudig exporteren. En u kunt een dagelijks geplande export in CSV-indeling instellen en de gegevensbestanden opslaan in Azure-opslag. Zo kunt u de gegevens vanaf uw externe systeem benaderen.
 
-### <a name="consider-cloudyn"></a>Overweeg het gebruik van Cloudyn
+### <a name="cloudyn-deprecation"></a>Afschaffing van Cloudyn
 
-[Cloudyn](./cloudyn/overview.md) is een Azure-service gerelateerd aan Cost Management. Met Cloudyn kunt u het cloudgebruik en uitgaven voor uw Azure-resources volgen. Ook andere cloudproviders, inclusief AWS en Google worden hierdoor ondersteund. Aan de hand van eenvoudige dashboard-rapporten krijgt u inzicht in de toewijzing van kosten en tevens factureringen en teruggaven. Momenteel ondersteunt Cost Management geen facturering/terugstorting of andere cloudserviceproviders. Maar Cloudyn is een optie die dat _wel_ ondersteunt. Momenteel ondersteunt Cost Management geen Microsoft CSP-accounts (Cloud Service Provider), maar Cloudyn wel. Als u CSP-accounts hebt of als u showback/terugstorting wilt gebruiken, kunt u Cloudyn gebruiken om uw kosten te beheren.
-
-Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) om aanbevelingen te zien voor het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften.
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
+[Cloudyn](./cloudyn/overview.md) is een Azure-service met betrekking tot Cost Management, die eind 2020 wordt afgeschaft. Waar mogelijk worden bestaande Cloudyn-functies rechtstreeks geïntegreerd in de Azure-portal. Er wordt op dit moment geen onboarding uitgevoerd voor nieuwe klanten, maar de ondersteuning voor het product blijft bestaan totdat dit volledig is afgeschaft.
+ 
+Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=15DzKPMBRxM) voor meer informatie over het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften.
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ### <a name="additional-azure-tools"></a>Aanvullende Azure-hulpprogramma’s
 

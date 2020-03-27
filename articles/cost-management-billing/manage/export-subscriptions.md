@@ -1,7 +1,6 @@
 ---
-title: De gegevens op het hoogste niveau van uw Azure-abonnement exporteren | Microsoft Docs
+title: Gegevens op het hoogste niveau van uw Azure-abonnement exporteren
 description: Hierin wordt beschreven hoe u alle Azure-abonnements-id's kunt weergeven die zijn gekoppeld aan uw account.
-keywords: ''
 author: bandersmsft
 ms.reviewer: matrive
 tags: billing
@@ -9,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 83b6a9db0107cb35448aec491c81c2630e87ddd7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 87135b309f0406528bcada1cd906dd2f8535d1ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199718"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202893"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Uw abonnementsgegevens op het hoogste niveau exporteren en weergeven
 Als u de set met abonnements-id's wilt weergeven die zijn gekoppeld aan uw gebruikersreferenties, [downloadt u een .json-bestand met uw abonnementsgegevens in het Azure-accountcentrum](https://account.azure.com/subscriptions/download).

@@ -22,6 +22,8 @@
       items:
         - name: Best practices voor Azure Cost Management
           href: cost-mgt-best-practices.md
+        - name: Kiezen tussen Cost Management en Cloudyn
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: Inzicht in gegevens van Cost Management
           href: understand-cost-mgt-data.md
         - name: Bereiken begrijpen en gebruiken

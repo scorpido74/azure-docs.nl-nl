@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: Samenwerken
           href: How-To/collaborate-knowledge-base.md
+        - name: Actief leren inschakelen
+          href: How-To/use-active-learning.md
     - name: Knowledge base beheren
       items:
         - name: Een knowledge base maken
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: Taal selecteren
           href: How-To/language-knowledge-base.md
         - name: Chit-chat toevoegen
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: Q&A-sets beheren
       items:
-        - name: Knowledge base bewerken
+        - name: QnA-set bewerken
           href: How-To/edit-knowledge-base.md
         - name: Opvolgingsaanwijzingen toevoegen
           href: How-To/multiturn-conversation.md

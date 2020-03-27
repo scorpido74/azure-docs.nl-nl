@@ -113,8 +113,13 @@
           items:
             - name: Aanbevelingen voor beveiliging
               href: security-recommendations.md
-            - name: Azure-opslagversleuteling
+            - name: Versleuteling-at-rest in Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Door de klant beheerde sleutels met Azure Key Vault
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Door de klant geleverde sleutels voor de aanvraag
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Gegevensbewerkingen autoriseren
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -198,6 +203,8 @@
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Uitleg
                   items:
+                    - name: Door de klant beheerde sleutel gebruiken
+                      href: ../common/storage-import-export-encryption-key-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Status van station weergeven
                       href: ../common/storage-import-export-view-drive-status.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Taakstatus controleren
@@ -658,8 +665,13 @@
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Toegangsbeheer (mappen en bestanden)
               href: data-lake-storage-access-control.md
-            - name: Azure-opslagversleuteling
+            - name: Versleuteling-at-rest in Azure Storage
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Door de klant beheerde sleutels met Azure Key Vault
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Door de klant geleverde sleutels voor de aanvraag
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Geavanceerde beveiliging tegen bedreigingen
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure-privé-eindpunten gebruiken

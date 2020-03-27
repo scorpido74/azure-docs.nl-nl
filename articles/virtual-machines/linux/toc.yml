@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Schijfversleuteling op een geïsoleerd netwerk
               href: disk-encryption-isolated-network.md
+            - name: De versleutelingsstatus controleren
+              href: how-to-verify-encryption-status.md
+            - name: LVM RAID configureren op crypt
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Problemen met schijfversleuteling oplossen
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Een installatiekopie maken met Packer
           href: build-image-with-packer.md
-        - name: RHEL-installatiekopieën in Azure
-          href: rhel-images.md
         - name: Een bestaande schijf downloaden
           href: download-vhd.md
     - name: Beschikbaarheid en schaal
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Automation-hulpprogramma's gebruiken
       items:
+        - name: Aangepaste gegevens
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Installeren en configureren

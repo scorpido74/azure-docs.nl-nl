@@ -1,55 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over virtuele-machineschaalsets
+summary: Met schaalsets van virtuele Azure-machines kunt u een groep identieke, automatisch schalende VM's met gelijke taakverdeling maken en beheren.
 metadata:
-  title: 'Met schaalsets van virtuele Azure-machines kunt u een groep identieke, automatisch schalende VM''s met gelijke taakverdeling maken en beheren. Ontdek met onze snelstarts, zelfstudies en voorbeelden hoe u virtuele-machinesschaalsets maakt, configureert, beheert en automatisch schaalt.'
-  services: virtual-machine-scale-sets
-  author: georgewallace
-  manager: gwallace
+  title: Documentatie over virtuele-machineschaalsets
+  description: Ontdek met onze snelstarts, zelfstudies en voorbeelden hoe u virtuele-machinesschaalsets maakt, configureert, beheert en automatisch schaalt.
   ms.service: virtual-machine-scale-sets
   ms.topic: landing-page
-  ms.date: 03/14/2018
-  ms.author: gwallace
-  description: Met schaalsets van virtuele Azure-machines kunt u een groep automatisch schalende VM's met gelijke taakverdeling maken en beheren.
-sections:
-  - title: Snelstartgidsen
-    items:
-      - type: paragraph
-        text: Ontdek hoe u een webserver in een virtuele-machineschaalset implementeert.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure-portal
-            href: /azure/virtual-machine-scale-sets/quick-create-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Azure-CLI
-            href: /azure/virtual-machine-scale-sets/quick-create-cli
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/virtual-machine-scale-sets/quick-create-powershell
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Ontdek hoe u virtuele-machineschaalsets in Azure implementeert, beheert en automatisch schaalt.'
-      - type: list
-        style: ordered
-        items:
-          - html: Een schaalset maken en beheren met de <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">Azure CLI</a> of <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">Azure PowerShell</a>
-          - html: Gegevensschijven gebruiken met de <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">Azure CLI</a> of <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">Azure PowerShell</a>
-          - html: Een aangepaste VM-installatiekopie gebruiken met de <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI</a> of <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a>
-          - html: Apps implementeren in een schaalset met de <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI</a> of <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a>
-          - html: Een schaalset automatisch schalen met de <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI</a> of <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Voorbeeldimplementaties van virtuele-machineschaalsets.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Azure-CLI</a>
-          - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>
+  author: ju-shim
+  ms.author: jushiman
+  manager: gwallace
+  ms.date: 03/16/2020
+  ms.openlocfilehash: 046d3d87a06c817044f7b07386bdfc03f65b1afb
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80123385"
+landingContent:
+- title: Over virtuele-machineschaalsets
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn schaalsets voor virtuele machines?
+      url: overview.md
+    - text: Veelgestelde vragen
+      url: virtual-machine-scale-sets-faq.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal
+      url: quick-create-portal.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Azure CLI
+      url: disk-encryption-cli.md
+- title: Recentste functies
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Inschalingsbeleid
+      url: virtual-machine-scale-sets-scale-in-policy.md
+    - text: Meldingen over beëindigen
+      url: virtual-machine-scale-sets-terminate-notification.md
+    - text: Exemplaarbescherming
+      url: virtual-machine-scale-sets-instance-protection.md
+- title: Stapsgewijze handleidingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een schaalset maken en beheren met de Azure CLI
+      url: tutorial-create-and-manage-cli.md
+    - text: Een schaalset maken en beheren met Azure PowerShell
+      url: tutorial-create-and-manage-powershell.md
+    - text: Gegevensschijven gebruiken met de Azure CLI
+      url: tutorial-use-disks-cli.md
+    - text: Gegevensschijven gebruiken met Azure PowerShell
+      url: tutorial-use-disks-powershell.md
+    - text: Een aangepaste VM-installatiekopie gebruiken met de Azure CLI
+      url: tutorial-use-custom-image-cli.md
+    - text: Een aangepaste VM-installatiekopie gebruiken met Azure PowerShell
+      url: tutorial-use-custom-image-powershell.md
+    - text: Apps implementeren in een schaalset met de Azure CLI
+      url: tutorial-install-apps-cli.md
+    - text: Apps implementeren in een schaalset met Azure PowerShell
+      url: tutorial-install-apps-powershell.md
+    - text: Een schaalset automatisch schalen met de Azure CLI
+      url: tutorial-autoscale-cli.md
+    - text: Een schaalset automatisch schalen met Azure PowerShell
+      url: tutorial-autoscale-powershell.md
+- title: Voorbeelden
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Voorbeeld van implementie voor virtuele-machineschaalsets met Azure CLI
+      url: cli-samples.md
+    - text: Voorbeeld van implementie voor virtuele-machineschaalsets met Azure PowerShell
+      url: powershell-samples.md
+- title: Training in eigen tempo
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Een schaalbare toepassing bouwen met virtuele-machineschaalsets
+      url: https://docs.microsoft.com/learn/modules/build-app-with-scale-sets/
+    - text: " Een virtuele Windows-machine maken in Azure"
+      url: https://docs.microsoft.com/learn/modules/create-windows-virtual-machine-in-azure/

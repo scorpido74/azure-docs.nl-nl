@@ -1,24 +1,26 @@
 ---
-title: Belangrijke metrische gegevens weergeven met Cloudyn-dashboards in Azure | Microsoft Docs
+title: Belangrijke metrische gegevens weergeven met Cloudyn-dashboards in Azure
 description: In dit artikel wordt beschreven hoe u belangrijke metrische gegevens kunt weergeven met dashboards in Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770132"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464220"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Belangrijke kosten voor metrische gegevens weergeven met dashboards
 
 Dashboards in Cloudyn bieden rapportweergaven op hoog niveau. Met dashboards kunt u metrische kosten voor sleutels weergeven in één weergave. Ze bieden ook highlights van zakelijke trends waarmee u belangrijke zakelijke beslissingen kunt nemen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 Dashboards worden ook gebruikt voor het maken van weergaven voor personen met verschillende verantwoordelijkheden in uw organisatie. Dit kan onder andere het volgende omvatten:
 

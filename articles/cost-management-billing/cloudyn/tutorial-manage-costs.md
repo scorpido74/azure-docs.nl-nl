@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: kosten beheren met Cloudyn in Azure | Microsoft Docs'
+title: 'Zelfstudie: Kosten beheren met Cloudyn in Azure'
 description: In deze zelfstudie leest u hoe u kosten kunt beheren met behulp van kostentoewijzing en rapporten over showback en chargeback.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769913"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474574"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Zelfstudie: kosten beheren met Cloudyn
 
@@ -32,6 +32,8 @@ In deze zelfstudie leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet een Azure-account hebben.
@@ -46,7 +48,7 @@ Cloudyn ontvangt taggegevens van resourcegroepen van Azure en vult taggegevens a
 
 Met het Cost Allocation-model definieert u categorieën (tags) die intern worden toegepast op niet-gecategoriseerde (niet-getagde) resources. Zo kunnen uw kosten worden gegroepeerd en kunnen er regels worden opgegeven voor het verwerken van de niet-getagde kosten. De Cost Allocation-regels zijn opgeslagen instructies op basis waarvan kosten voor een specifieke service worden gedistribueerd naar andere services. Daarna worden voor de resources tags/categorieën weergegeven in *Cost Allocation*-rapporten. Selecteer hiervoor het model dat u hebt gemaakt.
 
-Houd er rekening mee dat de taggegevens van die resources niet worden weergegeven in de *Cost Analysis*-rapporten. Daarnaast worden de tags die worden toegepast in Cloudyn (met Cost Allocation) niet naar Azure verzonden, dus u ziet ze niet in de Azure-portal.
+Houd er rekening mee dat de taggegevens van deze resources niet worden weergegeven in de *Cost Analysis*-rapporten. Bovendien worden de tags die met behulp van kostentoewijzing worden toegepast in Cloudyn, niet verzonden naar Azure. U ziet deze dus niet in de Azure-portal.
 
 Wanneer u kostentoewijzing start, is het eerste wat u doet het definiëren van het bereik met behulp van een kostenmodel. Het kostenmodel heeft geen invloed op de kosten, maar zorgt alleen voor de verdeling ervan. Wanneer u een kostenmodel maakt, kunt u uw gegevens segmenteren op kostenentiteit, rekening of abonnement, en op meerdere tags. Voorbeelden van veelgebruikte tags zijn een factureringstag, kostenplaats of groepsnaam. Tags kunnen ook helpen bij het uitvoeren van showback of chargeback naar andere onderdelen van uw organisatie.
 

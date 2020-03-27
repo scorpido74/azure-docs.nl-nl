@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: Beveiligingscontrolegebeurtenissen inschakelen
           href: security-audit-events.md
+        - name: Controlegebeurtenissen analyseren met Azure Monitor Workbooks
+          href: use-azure-monitor-workbooks.md
     - name: Deelnemen aan domeinen van VM's
       items:
         - name: Windows Server-VM op basis van sjabloon

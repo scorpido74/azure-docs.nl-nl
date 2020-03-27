@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604776"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159299"
 landingContent:
 - title: Over Security Center
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: Uw containers beveiligen
       url: container-security.md
-    - text: Dynamische nalevingspakketten toevoegen
-      url: update-regulatory-compliance-packages.md
-    - text: Integreren met Windows Admin Center
-      url: windows-admin-center-integration.md
+    - text: Geïntegreerde evaluatie van beveiligingsproblemen voor VM's
+      url: built-in-vulnerability-assessment.md
+    - text: De schema's voor beveiligingswaarschuwingen controleren
+      url: alerts-schemas.md
     - text: Reacties op waarschuwingen en aanbevelingen automatiseren
       url: workflow-automation.md
     - text: Beveiligingswaarschuwingen en aanbevelingen exporteren
       url: continuous-export.md
-    - text: Advanced beveiliging tegen bedreigingen instellen voor Azure Key Vault
+    - text: Bedreigingsbeveiliging instellen voor Azure Key Vault
       url: advanced-threat-protection-key-vault.md
 - title: Aan de slag
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Wat is een veiligheidsscore?
-      url: security-center-secure-score.md
+    - text: Inzicht in Secure Score
+      url: secure-score-security-controls.md
     - text: Beveiligingsaanbevelingen opvolgen
       url: security-center-remediate-recommendations.md
     - text: Uw beveiligingsaanbevelingen aanpassen

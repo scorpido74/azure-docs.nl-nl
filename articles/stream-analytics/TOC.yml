@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2 - Azure Functions uitvoeren
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - Een JavaScript-UDF uitvoeren
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 - Implementeren met CI/CD in Azure-pijplijnen
+    - name: 3 - Implementeren met CI/CD in Azure-pijplijnen
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 - Een C#-UDF uitvoeren'
+    - name: '4 - Een C#-UDF uitvoeren'
       href: stream-analytics-edge-csharp-udf.md
-    - name: 6 - Aangepaste .NET-deserialisatie maken
+    - name: 5 - Aangepaste .NET-deserialisatie maken
       href: custom-deserializer.md
 - name: Voorbeelden
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: Aangepaste Blob-padpatronen
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Door de gebruiker gedefinieerde functies
+      items:
+        - name: UDF van Machine Learning
+          href: machine-learning-udf.md
+        - name: 'C#-UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: JavaScript UDF
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Uw Stream Analytics-taak optimaliseren
       items:
         - name: Streaming-eenheden begrijpen en aanpassen
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Een CI/CD-pijplijn instellen
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: .NET-UDF schrijven
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: Lokaal testen met voorbeeldgegevens

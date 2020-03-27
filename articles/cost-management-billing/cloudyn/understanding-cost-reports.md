@@ -1,24 +1,26 @@
 ---
-title: Inzicht in Cloudyn-rapporten voor kostenbeheer in Azure | Microsoft Docs
+title: Inzicht in Cloudyn-rapporten voor kostenbeheer in Azure
 description: Dit artikel helpt u inzicht te krijgen in de basisstructuur en functies van Cloudyn-rapporten voor kostenbeheer.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773989"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474540"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Inzicht in Cloudyn-rapporten voor kostenbeheer
 
 Dit artikel helpt u inzicht te krijgen in de basisstructuur en functies van Cloudyn-rapporten voor kostenbeheer. De meeste Cloudyn-rapporten zijn intuïtief en hebben een uniforme vormgeving. Nadat u dit artikel hebt gelezen, kunt u alle rapporten voor kostenbeheer gebruiken. Veel standaardfuncties zijn beschikbaar in de verschillende rapporten, zodat u gemakkelijk door de rapporten kunt navigeren. Rapporten kunnen worden aangepast, en u kunt kiezen uit verschillende opties om de resultaten te berekenen en weer te geven.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>Rapportvelden en -opties
 

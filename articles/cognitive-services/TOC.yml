@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Cognitive Services en machine learning
       href: cognitive-services-and-machine-learning.md
-    - name: Virtuele netwerken voor Cognitive Services
-      href: cognitive-services-virtual-networks.md
     - name: Aangepaste subdomeinen voor Cognitive Services
       href: cognitive-services-custom-subdomains.md
     - name: Taalondersteuning
       href: language-support.md
+- name: Snelstartgidsen
+  items:
+    - name: Een nieuwe resource maken met de Azure-portal
+      href: cognitive-services-apis-create-account.md
+    - name: Een nieuwe resource maken met de Azure CLI
+      href: cognitive-services-apis-create-account-cli.md
+    - name: Diagnostische logboeken
+      href: diagnostic-logging.md
+- name: Beveiliging
+  items:
+    - name: Cognitive Services-beveiliging
+      href: cognitive-services-security.md
+    - name: Virtuele netwerken voor Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Door de klant beheerde sleutels configureren
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: Aanvragen verifiëren bij Cognitive Services
+      href: authentication.md
 - name: Ondersteuning voor containers
   items:
     - name: Ondersteuning voor containers
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: Snelstartgidsen
-  items:
-    - name: Een nieuwe resource maken met de Azure-portal
-      href: cognitive-services-apis-create-account.md
-    - name: Een nieuwe resource maken met de Azure CLI
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Verificatie
-      href: authentication.md
-    - name: Diagnostische logboeken
-      href: diagnostic-logging.md
 - name: Resources
   items:
     - name: Azure-roadmap

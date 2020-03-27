@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199021"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065646"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten
 
@@ -74,10 +74,12 @@ MeterName | Alle | De naam van de meter.
 MeterRegion | Alle | De naam van de datacenterlocatie voor services waarvan de prijs wordt bepaald aan de hand van de locatie. Zie Locatie.
 MeterSubCategory | Alle | De naam van de subclassificatiecategorie voor de meter.
 OfferId<sup>1</sup> | Alle | De naam van de aangeschafte aanbieding.
+PayGPrice | Alle | Verkoopprijs voor de resource.
 PartNumber<sup>1</sup> | EA, PAYG | De id die wordt gebruikt om prijzen voor specifieke meters op te halen.
 PlanName | EA, PAYG | De naam van het Marketplace-abonnement.
 PreviousInvoiceId | MCA | Verwijzing naar de oorspronkelijke factuur als dit regelitem een restitutie is.
 PricingCurrency | MCA | De valuta die wordt gebruikt bij beoordeling op basis van overeengekomen prijzen.
+PricingModel | Alle | De id die aangeeft hoe de meter is geprijsd. (Waarden: op aanvraag, reservering, spot)
 Product | Alle | De naam van het product.
 ProductId<sup>1</sup> | MCA | De unieke id voor het product.
 ProductOrderId | Alle | De unieke id voor de productorder.

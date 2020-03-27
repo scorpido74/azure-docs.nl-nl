@@ -145,6 +145,8 @@
       href: functions-networking-options.md
     - name: IP-adressen
       href: ip-addresses.md
+    - name: Aangepaste handlers
+      href: functions-custom-handlers.md
 - name: Instructiegidsen
   items:
     - name: Ontwikkelen
@@ -288,6 +290,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Naar geheimen uit Key Vault verwijzen
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Sitegegevens versleutelen
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: Integreren
       items:
         - name: Bindingen toevoegen

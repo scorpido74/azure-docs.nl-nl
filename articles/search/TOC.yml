@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: Relevantie afstemmen (scoreprofielen)
           href: index-add-scoring-profiles.md
+        - name: Relevantie afstemmen (vergelijkbaarheidsalgoritme)
+          href: index-ranking-similarity.md
     - name: Plannen
       items:
         - name: Een laag kiezen

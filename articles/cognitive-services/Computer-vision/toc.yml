@@ -9,18 +9,8 @@
       href: whats-new.md
 - name: Snelstartgidsen
   items:
-    - name: De client-SDK gebruiken
-      items:
-        - name: .NET SDK
-          href: quickstarts-sdk/csharp-sdk.md
-        - name: Python-SDK
-          href: quickstarts-sdk/python-sdk.md
-        - name: Java-SDK
-          href: quickstarts-sdk/java-sdk.md
-        - name: Node.js SDK
-          href: quickstarts-sdk/node-sdk.md
-        - name: Go-SDK
-          href: quickstarts-sdk/go-sdk.md
+    - name: De clientbibliotheek gebruiken
+      href: quickstarts-sdk/client-library.md
     - name: Met behulp van de REST API
       items:
         - name: Een externe afbeelding analyseren

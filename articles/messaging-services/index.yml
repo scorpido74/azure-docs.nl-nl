@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Documentatie voor Azure-berichtenservice
+summary: Meer informatie over het gebruik van Azure Event Grid, Azure Event Hubs, Azure Service Bus en Azure Relay voor het bezorgen van gebeurtenisberichten.
+brand: azure
+metadata:
+  title: Documentatie voor Azure-berichtenservice
+  description: Meer informatie over het gebruik van Azure Event Grid, Azure Event Hubs, Azure Service Bus en Azure Relay voor het bezorgen van gebeurtenisberichten.
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79472251"
+highlightedContent:
+  items:
+  - title: Kiezen tussen Azure-berichtenservices
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: Wat is Event Grid?
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: Wat is Event Hubs?
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: Wat is Service Bus?
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: Wat is Relay?
+    itemType: overview
+    url: ../service-bus-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: Gebeurtenissen routeren
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: Blob Storage-gebeurtenissen routeren naar een webeindpunt met Azure Portal
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: Aangepaste gebeurtenissen routeren naar een Azure-functie met Event Grid
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: Aangepaste gebeurtenissen routeren naar het webeindpunt met behulp van Azure Portal en Event Grid
+    footerLink:
+      url: ../event-grid/index.yml
+      text: Meer informatie
+  - title: Een Event Hub maken
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: Een event hub maken met behulp van Azure Portal
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: Een event hub maken met behulp van Azure CLI
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Meer informatie
+  - title: Integreren met Apache Kafka
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: Wat is Event Hubs voor Apache Kafka?
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: Streamen naar Azure Event Hubs voor Apache Kafka
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Meer informatie
+  - title: Gebeurtenissen verzenden en ontvangen
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: Gebeurtenissen verzenden en ontvangen van Azure Event Hubs met behulp van .NET Core
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: Java gebruiken om gebeurtenissen te verzenden of gebeurtenissen te ontvangen uit Azure Event Hubs
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: Gebeurtenissen verzenden of gebeurtenissen ontvangen uit Event Hubs met behulp van Python
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Meer informatie
+  - title: Gebeurtenissen vastleggen
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: Gebeurtenissen vastleggen in Azure Blob Storage of Azure Data Lake Storage
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: Vastleggen van streaming-gebeurtenissen via Azure Event Hubs inschakelen
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Meer informatie
+  - title: Evenementen verwerken
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: Apache Kafka voor Event Hubs-gebeurtenissen verwerken met behulp van Stream Analytics
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Meer informatie
+  - title: Een wachtrij maken
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: De Azure-portal gebruiken om een Service Bus-wachtrij te maken
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: De Azure-CLI gebruiken om een Service Bus-wachtrij te maken
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Meer informatie
+  - title: Onderwerpen en abonnementen maken
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: Maak een Service Bus-naamruimte met een onderwerp en abonnement met behulp van een sjabloon
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Meer informatie
+  - title: Berichten verzenden en ontvangen - wachtrijen
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Azure Storage- en Service Bus-wachtrijen vergelijken
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: Aan de slag met Service Bus-wachtrijen
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: Azure Service Bus-wachtrijen met Java gebruiken om berichten te verzenden en te ontvangen
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Meer informatie
+  - title: Publiceren en abonneren op berichten
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Aan de slag met Service Bus-onderwerpen
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Service Bus-onderwerpen en -abonnementen met Java gebruiken
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Service Bus-onderwerpen en -abonnementen met Python gebruiken
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Meer informatie
+  - title: Hybride verbindingen
+    links:
+    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: Aan de slag met websockets voor hybride verbindingen in Azure Relay in .NET
+    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: Aan de slag met HTTP-aanvragen voor hybride verbindingen van Relay in .NET
+    footerLink:
+      url: ../service-bus-relay/index.yml
+      text: Meer informatie

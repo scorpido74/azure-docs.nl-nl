@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK
       items:
-        - name: 'C# gebruiken'
-          href: news-search-sdk-quickstart.md
-        - name: Node.js gebruiken
-          href: news-search-sdk-node-quickstart.md
-        - name: Python gebruiken
-          href: news-sdk-python-quickstart.md
-        - name: Java gebruiken
-          href: news-sdk-java-quickstart.md
+        - name: Bing Nieuws zoeken-clientbibliotheken
+          href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: Een web-app met één pagina maken

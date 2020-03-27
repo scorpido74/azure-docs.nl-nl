@@ -1,5 +1,5 @@
 ---
-title: Facturerings-API's voor Azure Enterprise-klanten | Microsoft Docs
+title: Azure Billing-API's voor Enterprise-klanten
 description: Lees hier alles over de rapportage-API's waarmee klanten met een Azure Enterprise Agreement verbruiksgegevens programmatisch kunnen ophalen.
 author: mumami
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560538"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202910"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Overzicht van rapportage-API's voor Enterprise-klanten
 Met de rapportage-API's kunnen klanten van Azure Enterprise programmatisch verbruiks-en factureringsgegevens ophalen en gebruiken in de tools voor gegevensanalyse van hun voorkeur. Enterprise-klanten hebben een [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ondertekend met Azure om overeengekomen monetaire toezeggingen te doen en toegang te krijgen tot aangepaste prijzen voor Azure-resources.

@@ -1,5 +1,5 @@
-- name: Documentatie van Data Lake Storage Gen1
-  href: index.md
+- name: Documentatie voor Data Lake Storage Gen1
+  href: index.yml
 - name: Overschakelen naar documentatie van Data Lake Storage Gen2
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Overzicht
@@ -170,7 +170,7 @@
       href: /rest/api/datalakestore
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.datalakestore/allversions
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
 - name: Resources
   items:

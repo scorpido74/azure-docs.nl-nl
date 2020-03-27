@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager-sjabloon
+            - name: ARM-sjabloon
               href: service-bus-resource-manager-namespace-queue.md
         - name: Berichten verzenden en ontvangen
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager-sjabloon
+            - name: ARM-sjabloon
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publiceren en abonneren op berichten
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Inventaris bijwerken - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Reageren op gebeurtenissen via Event Grid
+      href: service-bus-to-event-grid-integration-example.md
 - name: Voorbeelden
   items:
     - name: Voorbeelden van Service Bus
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: service-bus-messaging-security-controls.md
+        - name: Netwerkbeveiliging
+          href: network-security.md
 - name: Instructiegidsen
   items:
     - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Afhandeling van berichten met behulp van Azure Event Grid
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Voorbeelden van Azure Event Grid
-              href: service-bus-to-event-grid-integration-example.md
         - name: Onderwerpfilters en acties
           href: topic-filters.md
         - name: Migreren van Standard- naar Premium-naamruimten
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Geavanceerde functies
           items:
-            - name: Gebruik firewalls
-              href: service-bus-ip-filtering.md
-            - name: Service-eindpunten voor virtueel netwerk
-              href: service-bus-service-endpoints.md
             - name: Wachtrijen voor onbestelbare berichten
               href: service-bus-dead-letter-queues.md
             - name: Berichten vooraf ophalen
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Bericht-entiteiten onderbreken en opnieuw activeren
           href: entity-suspend.md
-        - name: Azure Resource Manager-sjablonen gebruiken
+        - name: ARM-sjabloon gebruiken
           href: service-bus-resource-manager-overview.md
           items:
             - name: Een naamruimte maken
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Beveiligen
       items:
-        - name: Door de klant beheerde sleutels configureren voor versleuteling-at-rest
+        - name: Firewalls configureren
+          href: service-bus-ip-filtering.md
+        - name: Service-eindpunten voor virtuele netwerken configureren
+          href: service-bus-service-endpoints.md
+        - name: Privé-eindpunten configureren (preview)
+          href: private-link-service.md
+        - name: Door de klant beheerde sleutels configureren
           href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:

@@ -1,26 +1,28 @@
 ---
-title: Cloudyn-rapporten gebruiken in Azure | Microsoft Docs
+title: Cloudyn-rapporten gebruiken in Azure
 description: In dit artikel wordt het doel beschreven van de Cloudyn-rapporten die deel uitmaken van de Cloudyn-portal, zodat u ze effectief kunt gebruiken.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200007"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463540"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Rapporten die beschikbaar zijn in de Cloudyn-portal
 
 In dit artikel wordt het doel beschreven van de Cloudyn-rapporten die deel uitmaken van de Cloudyn-portal. Ook wordt beschreven hoe u de rapporten effectief kunt gebruiken. De meeste rapporten zijn intuïtief en hebben een uniforme vormgeving. De meeste acties die u in één rapport kunt uitvoeren, kunt u ook in andere rapporten uitvoeren. Raadpleeg [Begrip van kostenrapporten](understanding-cost-reports.md) voor een overzicht van het gebruik van Cloudyn-rapporten, onder andere hoe u planningsrapporten kunt aanpassen of opslaan.
 
 Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie [Azure Cost Management](../cost-management-billing-overview.md) voor meer informatie.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>Rapporttypen
 

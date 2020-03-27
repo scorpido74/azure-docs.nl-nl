@@ -1,20 +1,18 @@
 ---
-title: Inzicht in gegevens van Azure Cost Management | Microsoft Docs
+title: Inzicht in het werken met Azure Cost Management-gegevens
 description: Dit artikel helpt u om een beter beeld te krijgen van gegevens die worden opgenomen in Azure Cost Management en hoe vaak deze worden verwerkt, verzameld, weergegeven en afgesloten.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245378"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203012"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -22,7 +20,7 @@ Dit artikel helpt u beter inzicht te krijgen in de kosten en gebruiksgegevens va
 
 Cost Management omvat alle gebruik en aankopen, inclusief reserveringen en aanbiedingen van derden voor EA-accounts (Enterprise Agreement). Accounts van een Microsoft-gebruikersovereenkomst en individuele abonnementen met betalen per gebruik-tarieven omvatten alleen verbruik van Azure- en Marketplace-services. Ondersteuning en andere kosten zijn niet inbegrepen. Kosten worden geschat totdat er een factuur wordt gegenereerd en er wordt geen rekening gehouden met tegoeden.
 
-Als u een nieuw abonnement hebt, kunt u niet direct de Cost Management-functies gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
+Als u een nieuw abonnement hebt, kunt u de Cost Management-functies niet meteen gebruiken. Het kan tot 48 uur duren voordat u alle Cost Management-functies kunt gebruiken.
 
 ## <a name="supported-microsoft-azure-offers"></a>Ondersteunde Microsoft Azure-aanbiedingen
 
@@ -165,9 +163,9 @@ Ongeacht of u gegevens ophaalt met behulp van de [API's van Cost Management](../
 De in Cost Management weergegeven kosten worden afgerond. Kosten die worden geretourneerd met de query-API, worden niet afgerond. Bijvoorbeeld:
 
 - Kostenanalyse in de Azure-portal: kosten worden afgerond met behulp van de standaardregels voor afronding, dat wil zeggen dat waarden boven 0,5 naar boven worden afgerond, en dat in andere gevallen naar beneden wordt afgerond. Afronden gebeurt alleen wanneer waarden worden weergegeven. Er wordt niet afgerond tijdens het verwerken en samenvoegen van gegevens. Voor kostenanalyse worden kosten bijvoorbeeld als volgt samengevoegd:
-  - Kosten 1: $ 0,004
+  -    Kosten 1: $ 0,004
   - Kosten 2: $ 0,004
-  - Weergegeven samengevoegde kosten: 0,004 + 0,004 = 0,008. De weergegeven kosten zijn $ 0,01.
+  -    Weergegeven samengevoegde kosten: 0,004 + 0,004 = 0,008. De weergegeven kosten zijn $ 0,01.
 - Query-API: de kosten worden weergegeven met acht decimalen en worden niet afgerond.
 
 

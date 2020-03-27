@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure NetApp Files
+summary: Informatie over hoe u met Azure NetApp Files NetApp-accounts, capaciteitspools en volumes maakt en beheert, exportbeleid configureert, een volume koppelt voor een virtuele machine en momentopnamen beheert.
 metadata:
   title: Documentatie voor Azure NetApp Files
-  description: 'Informatie over hoe u volumes instelt, opent en beheert met de Azure NetApp Files-service.'
-  author: b-juche
-  ms.author: b-juche
+  description: Informatie over hoe u volumes instelt, opent en beheert met de Azure NetApp Files-service.
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Informatie over hoe u met Azure NetApp Files NetApp-accounts, capaciteitspools en volumes maakt en beheert, exportbeleid configureert, een volume koppelt voor een virtuele machine en momentopnamen beheert. <p>Als u Azure NetApp Files wilt gebruiken, hebt u toegang nodig tot de Azure NetApp Files-service. Raadpleeg <a href="azure-netapp-files-register#waitlist"> Een wachtlijstverzoek indienen</a> om toegang te vragen.</p>'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Uitleg over het instellen van Azure NetApp Files en een volume maken met behulp van:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure Portal
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager-sjablonen</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369049"
+landingContent:
+- title: Over Azure NetApp Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure NetApp Files?
+      url: azure-netapp-files-introduction.md
+    - text: Inzicht in de opslaghiërarchie
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: Serviceniveaus
+      url: azure-netapp-files-service-levels.md
+    - text: Prestatieoverwegingen
+      url: azure-netapp-files-performance-considerations.md
+    - text: Richtlijnen voor netwerkplanning
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Azure NetApp Files-video’s
+      url: azure-netapp-files-videos.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een wachtlijstaanvraag indienen
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Azure NetApp Files instellen en een NFS-volume maken
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: Maken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een NetApp-account maken
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Een capaciteitspool instellen
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: Een subnet delegeren aan Azure NetApp Files
+      url: azure-netapp-files-delegate-subnet.md
+    - text: Een SMB-volume maken voor Azure NetApp Files
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Een NFS-volume maken voor Azure NetApp Files
+      url: azure-netapp-files-create-volumes.md
+- title: Ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST-API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: SDK's en CLI-hulpprogramma's voor Azure NetApp Files
+      url: azure-netapp-files-sdk-cli.md

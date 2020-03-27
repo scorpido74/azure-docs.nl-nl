@@ -1,5 +1,5 @@
 ---
-title: Azure-factuur en dagelijkse gebruiksgegevens downloaden | Microsoft Docs
+title: Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden
 description: In dit artikel wordt beschreven hoe u uw Azure-factuur en de dagelijkse gebruiksgegevens kunt downloaden of weergeven.
 keywords: factuur,factuur downloaden,azure-factuur,azure-gebruik
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125629"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237680"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden of weergeven
 
@@ -62,7 +62,7 @@ Voor elk [factureringsprofiel](../understand/mca-overview.md#billing-profiles) i
 6. Selecteer **Factuur** in het contextmenu voor downloaden.
 
 Als u geen factuur voor de laatste factureringsperiode ziet, raadpleegt u **Aanvullende informatie.** <!-- Fix this -->
-### <a name="noinvoice"></a>Waarom zie ik geen factuur voor de laatste factureringsperiode?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a>Waarom zie ik geen factuur voor de laatste factureringsperiode?
 
 Er kunnen verschillende redenen voor zijn dat u geen factuur ziet:
 

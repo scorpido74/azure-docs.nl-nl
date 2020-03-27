@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Documentatie voor Azure Front Door Service
+title: Documentatie voor Azure Front Door
 summary: Azure Front Door is een schaalbaar en beveiligd toegangspunt voor een snelle levering van uw globale webtoepassingen.
 metadata:
-  title: Documentatie voor Azure Front Door Service
-  description: Azure Front Door Service biedt een schaalbaar en veilig ingangspunt voor een snelle levering van wereldwijde webtoepassingen. Leer hoe u Front Door gebruikt met onze snelstarts, zelfstudies en voorbeelden.
+  title: Documentatie voor Azure Front Door
+  description: Azure Front Door biedt een schaalbaar en veilig ingangspunt voor een snelle levering van wereldwijde webtoepassingen. Leer hoe u Front Door gebruikt met onze snelstarts, zelfstudies en voorbeelden.
   services: frontdoor
   ms.service: frontdoor
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
   ms.date: 03/03/2020
-  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
-  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.openlocfilehash: 396b416d2c2fae101fee4ba64d85375e6d3da794
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/04/2020
-  ms.locfileid: "78273276"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79471435"
 landingContent:
 - title: Meer informatie over Azure Front Door
   linkLists:
