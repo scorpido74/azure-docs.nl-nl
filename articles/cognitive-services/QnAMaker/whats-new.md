@@ -10,56 +10,60 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 02/14/2020
 ms.author: diberry
-ms.openlocfilehash: 4dca8ef9381096d83cd63a9f9a4449d9c8750933
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368331"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80155984"
 ---
-# <a name="whats-new-in-qna-maker"></a>Wat is er nieuw in QnA Maker
+# <a name="whats-new-in-qna-maker"></a>Nieuw in QnA Maker
 
-Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over wat er nieuw is in de service. Deze items kunnen notities, video's, blogberichten en andere soorten informatie vrijgeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-Meer informatie over de nieuwe functies van QnA Maker.
+Ontdek wat er nieuw is met QnA Maker.
+
+### <a name="march-2020"></a>Maart 2020
+
+* TLS 1.2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services-beveiliging](../cognitive-services-security.md)voor meer informatie.
 
 ### <a name="february-2020"></a>Februari 2020
 
-* [NPM-pakket](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) met GENERATEANSWER-API
+* [NPM-pakket](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) met GenerateAnswer API
 
 ### <a name="november-2019"></a>November 2019
 
-* [Cloud ondersteuning voor de Amerikaanse overheid](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) voor QnA Maker
-* Functie voor [meerdere scha kelen](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) in Ga
-* [Chit: chat ondersteuning](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) beschikbaar in laag-1 talen
+* [Cloudondersteuning van de Amerikaanse overheid](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) voor QnA Maker
+* [Multi-turn-functie](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) in GA
+* [Chit-chat-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) beschikbaar in tier-1-talen
 
 ### <a name="october-2019"></a>Oktober 2019
 
-* [De taal expliciet instellen](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) voor alle Knowledge bases in de QnA Maker-service.
+* [Expliciet de taal instellen](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) voor alle kennisbanken in de QnA Maker-service.
 
 ### <a name="september-2019"></a>September 2019
 
-* Importeren en exporteren met de [xls-bestands indeling](concepts/content-types.md)
+* Importeren en exporteren met [XLS-bestandsindeling](concepts/content-types.md)
 
 ### <a name="june-2019"></a>Juni 2019
 
-* Verbeterd [rangord model](concepts/query-knowledge-base.md#ranker-process) voor Frans, Italiaans, Duits, Spaans, Portugees
+* Verbeterd [rankermodel](concepts/query-knowledge-base.md#ranker-process) voor Frans, Italiaans, Duits, Spaans, Portugees
 
 ### <a name="april-2019"></a>April 2019
 
-* Inhouds extractie voor websites ondersteunen
-* [Share point-document](how-to/add-sharepoint-datasources.md) ondersteuning van geverifieerde toegang
+* Website-inhoudsextractie ondersteunen
+* [SharePoint-documentondersteuning](how-to/add-sharepoint-datasources.md) vanaf geverifieerde toegang
 
 ### <a name="march-2019"></a>Maart 2019
 
-* [Actief onderwijs](how-to/improve-knowledge-base.md) biedt suggesties voor nieuwe vraag alternatieven op basis van echte gebruikers vragen
-* Verbeterd NLP [-model (](concepts/query-knowledge-base.md#ranker-process) natuurlijke taal verwerking) voor het Engels
+* [Actief leren](how-to/improve-knowledge-base.md) biedt suggesties voor nieuwe vraagalternatieven op basis van echte gebruikersvragen
+* Verbeterde natuurlijke taal verwerking (NLP) [ranker](concepts/query-knowledge-base.md#ranker-process) model voor engels
 
 > [!div class="nextstepaction"]
 > [Een QnA Maker-service maken](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>Updates van de cognitieve service
+## <a name="cognitive-service-updates"></a>Updates voor cognitieve service
 
-[Meldingen voor Azure update voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure-update-aankondigingen voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

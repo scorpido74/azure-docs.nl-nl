@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082700"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -29,12 +29,12 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in dit nieuwe bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van de Speech-service.
 
-1. Vervang de teken reeks `YourServiceRegion` door de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proef abonnement).
+1. Vervang de `YourServiceRegion` tekenreeks door de **regio-id** van [regio](https://aka.ms/speech/sdkregion) die is gekoppeld aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Vervang de teken reeks `whatstheweatherlike.wav` door uw eigen bestands naam.
+1. Vervang de `whatstheweatherlike.wav` tekenreeks door uw eigen bestandsnaam.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 ## <a name="build-the-app"></a>De app bouwen
 
@@ -53,13 +53,13 @@ Voordat u aan de slag gaat, moet u het volgende doen:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+* Voer op een **ARM64-systeem** (64-bits) de volgende opdracht uit om de toepassing te bouwen.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 1. Configureer het bibliotheekpad van het laadprogramma om te verwijzen naar de bibliotheek van de Speech SDK.
 
@@ -75,7 +75,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
+   * Voer op een **ARM64-systeem** (64-bits) de volgende opdracht in.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -87,7 +87,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
    ./helloworld
    ```
 
-1. Uw audio bestand wordt verzonden naar de speech-service en de eerste utterance in het bestand wordt naar tekst getranscribeerd, die in hetzelfde venster wordt weer gegeven.
+1. Uw audiobestand wordt verzonden naar de spraakservice en de eerste uiting in het bestand wordt getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
 
    ```text
    Recognizing first result...

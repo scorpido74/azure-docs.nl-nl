@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: zelf studie samengestelde entiteit-LUIS'
+title: 'Zelfstudie: Zelfstudie van samengestelde entiteit - LUIS'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie voegt u een samengestelde entiteit die u wilt de opgehaalde gegevens van verschillende typen in een enkele containerentiteit bundelen. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
+description: Voeg in deze zelfstudie een samengestelde entiteit toe om geëxtraheerde gegevens van verschillende typen te bundelen in één entiteit die bevat. Door de gegevens te bundelen, kan de clientapplicatie eenvoudig gerelateerde gegevens in verschillende gegevenstypen extraheren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,21 +12,21 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447953"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Zelf studie: gerelateerde gegevens groeperen en extra heren
-In deze zelfstudie voegt u een samengestelde entiteit die u wilt de opgehaalde gegevens van verschillende typen in een enkele containerentiteit bundelen. De clienttoepassing kan door de gegevens bundeling, gerelateerde gegevens in verschillende gegevenstypen eenvoudig extraheren.
+# <a name="tutorial-group-and-extract-related-data"></a>Zelfstudie: Gerelateerde gegevens groeperen en extraheren
+Voeg in deze zelfstudie een samengestelde entiteit toe om geëxtraheerde gegevens van verschillende typen te bundelen in één entiteit die bevat. Door de gegevens te bundelen, kan de clientapplicatie eenvoudig gerelateerde gegevens in verschillende gegevenstypen extraheren.
 
-Het doel van de samengestelde entiteit is het groeperen van gerelateerde entiteiten in een entiteit van bovenliggende categorie. De informatie bestaat als afzonderlijke entiteiten voordat een samengestelde wordt gemaakt.
+Het doel van de samengestelde entiteit is om verwante entiteiten te groeperen in een bovenliggende categorieentiteit. De informatie bestaat als afzonderlijke entiteiten voordat een composiet wordt gemaakt.
 
-De samengestelde entiteit is geschikt voor dit type gegevens omdat de gegevens:
+De samengestelde entiteit past goed bij dit type gegevens, omdat de gegevens:
 
-* Aan elkaar zijn gerelateerd.
-* Verschillende Entiteitstypen gebruiken.
+* Zijn met elkaar verbonden.
+* Gebruik verschillende entiteitstypen.
 * Moet als eenheid informatie worden gegroepeerd en verwerkt door de client-app.
 
 **In deze zelfstudie leert u het volgende:**
@@ -44,67 +44,67 @@ De samengestelde entiteit is geschikt voor dit type gegevens omdat de gegevens:
 
 ## <a name="import-example-app"></a>Voorbeeld-app importeren
 
-1.  Down load en sla het [JSON-bestand](
-https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) van de app op in de zelf studie voor de lijst-entiteit.
+1.  Download en sla het [JSON-bestand](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) van de app op uit de zelfstudie van de entiteit List.
 
-2. Importeer de JSON in een nieuwe app met behulp van de [Luis-Portal](https://www.luis.ai).
+2. Importeer de JSON in een nieuwe app via de [LUIS-portal.](https://www.luis.ai)
 
 3. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `composite`. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
 
 ## <a name="composite-entity"></a>Samengestelde entiteit
 
-In deze app wordt de afdelings naam gedefinieerd in de **afdeling** lijst entiteit en bevat synoniemen.
+In deze app wordt de afdelingsnaam gedefinieerd in de entiteit van de **afdelingslijst** en bevat het synoniemen.
 
-De **TransferEmployeeToDepartment** -intentie heeft voor beeld uitingen om aan te vragen dat een werk nemer wordt verplaatst naar een nieuwe afdeling.
+De intentie **TransferEmployeeToDepartment** heeft voorbeelduitingen om een werknemer te vragen naar een nieuwe afdeling te worden verplaatst.
 
-Voor beelden van uitingen voor deze intentie zijn:
+Voorbeelduitingen voor deze intentie zijn:
 
 |Voorbeelden van utterances|
 |--|
 |move John W. Smith to the accounting department|
 |transfer Jill Jones from to R&D|
 
-De verplaatsings aanvraag moet de afdelings naam en de naam van de werk nemer bevatten.
+De verhuisaanvraag moet de naam van de afdeling en de naam van de werknemer bevatten.
 
-## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Voeg de vooraf samengestelde entiteit van de Persoonnaam toe om te helpen bij het ophalen van common data type
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>De voorgebouwde entiteit PersonName toevoegen om te helpen bij algemene gegevenstypeextractie
 
 LUIS biedt verschillende vooraf gemaakte entiteiten voor het ophalen van algemene gegevens.
 
-1. Selecteer **samen stellen** in de bovenste navigatie en selecteer vervolgens **entiteiten** in het navigatie menu links.
+1. Selecteer **Bouwen** in de bovenste navigatie en selecteer **Entiteiten** in het linkernavigatiemenu.
 
 1. Selecteer de knop **Manage prebuilt entity**.
 
-1. Selecteer **[persoons](luis-reference-prebuilt-person.md)** namen in de lijst met vooraf gemaakte entiteiten en selecteer vervolgens **gereed**.
+1. Selecteer **[PersonName](luis-reference-prebuilt-person.md)** in de lijst met vooraf gebouwde entiteiten en selecteer **Gereed**.
 
     ![Schermopname van het selecteren van een nummer in het dialoogvenster met de vooraf gedefinieerde entiteiten](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-    Deze entiteit helpt u naam herkenning toe te voegen aan uw client toepassing.
+    Met deze entiteit u naamsbekendheid toevoegen aan uw clienttoepassing.
 
-## <a name="create-composite-entity-from-example-utterances"></a>Samengestelde entiteit maken van voor beeld uitingen
+## <a name="create-composite-entity-from-example-utterances"></a>Samengestelde entiteit maken op uit voorbeelduitingen
 
 1. Selecteer **Intents** in de linkernavigatie.
 
-1. Selecteer **TransferEmployeeToDepartment** in de lijst intenties.
+1. Selecteer **TransferEmployeeToDepartment** in de lijst met intenties.
 
-1. Selecteer in het `place John Jackson in engineering`utterance de entiteit persoons waarde `John Jackson`en selecteer vervolgens **omloop in samengestelde entiteit** in de pop-upmenu lijst voor de volgende utterance.
+1. Selecteer in `place John Jackson in engineering`de utterance de `John Jackson`entiteit personName en selecteer **Vervolgens Wrap in samengestelde entiteit** in de lijst met pop-upmenu's voor de volgende utterance.
 
-    ![Scherm opname van het selecteren van verlopende tekst in de vervolg keuzelijst](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![Schermafbeelding van het selecteren van wrap composite in vervolgkeuzedialoogvenster](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Selecteer vervolgens de laatste entiteit onmiddellijk `engineering` in de utterance. Een groene menubalk wordt onder de geselecteerde woorden die wijzen op een samengestelde entiteit getekend. Voer in het pop-upmenu, de naam van de samengestelde `TransferEmployeeInfo` en selecteer enter.
+1. Selecteer vervolgens onmiddellijk de `engineering` laatste entiteit in de utterance. Er wordt een groene balk getekend onder de geselecteerde woorden die een samengestelde entiteit aangeven. Voer in het pop-upmenu `TransferEmployeeInfo` de samengestelde naam in en selecteer enter.
 
-    ![Scherm opname van het invoeren van een samengestelde naam in het dialoog venster vervolg keuzelijst](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![Schermafbeelding van het invoeren van samengestelde naam in vervolgkeuzedialoogvenster](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. In **welk type entiteit wilt u maken?** alle vereiste velden bevinden zich in de lijst: `personName` en `Department`. Selecteer **Done**. U ziet dat de vooraf samengestelde entiteit, persoonnaam, is toegevoegd aan de samengestelde entiteit. Als u een vooraf gedefinieerde entiteit weergegeven tussen het begin en einde van de tokens van een samengestelde entiteit hebt kan, moet de samengestelde entiteit die vooraf gemaakte entiteiten bevatten. Als de vooraf gemaakte entiteiten niet opgenomen zijn, de samengestelde entiteit niet correct wordt voorspeld, maar elk afzonderlijk element is.
+1. In **Welk type entiteit wilt u maken?** `personName` `Department` Selecteer **Done**. Merk op dat de vooraf gebouwde entiteit, personName, is toegevoegd aan de samengestelde entiteit. Als u een vooraf gebouwde entiteit laten verschijnen tussen de begin- en eindtokens van een samengestelde entiteit, moet de samengestelde entiteit deze vooraf gebouwde entiteiten bevatten. Als de vooraf gebouwde entiteiten niet zijn opgenomen, wordt de samengestelde entiteit niet correct voorspeld, maar elk afzonderlijk element wel.
 
-    ![Scherm opname van het invoeren van een samengestelde naam in het dialoog venster vervolg keuzelijst](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![Schermafbeelding van het invoeren van samengestelde naam in vervolgkeuzedialoogvenster](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Label voorbeeld uitingen met samengestelde entiteit
+## <a name="label-example-utterances-with-composite-entity"></a>Voorbeelduitingen labelen met samengestelde entiteit
 
-1. Selecteer de meest linkse-entiteit die in de samengestelde worden moet in elke utterance voorbeeld. Selecteer vervolgens **verpakken in samengestelde entiteit**.
+1. Selecteer in elk voorbeeldutterance de meest linkse entiteit die zich in de compositie moet bevindt. Selecteer vervolgens **Wrap in samengestelde entiteit**.
 
-1. Selecteer het laatste woord in de samengestelde entiteit en selecteer vervolgens **TransferEmployeeInfo** in het pop-upmenu.
+1. Selecteer het laatste woord in de samengestelde entiteit en selecteer **TransferEmployeeInfo** in het pop-upmenu.
 
-1. Controleer of dat alle uitingen in het doel zijn gelabeld met de samengestelde entiteit.
+1. Controleer of alle uitingen in de intentie zijn gelabeld met de samengestelde entiteit.
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>De app trainen zodat de wijzigingen aan de intentie kunnen worden getest
 
@@ -118,9 +118,9 @@ LUIS biedt verschillende vooraf gemaakte entiteiten voor het ophalen van algemen
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Ga naar het einde van de URL in het adres en voer `Move Jill Jones to DevOps` in. De laatste querystring-parameter is `q`, de query utterance.
+2. Ga naar het einde van de URL in het adres en voer `Move Jill Jones to DevOps` in. De laatste parameter van de queryreeks is `q`, de utterance query.
 
-    Omdat deze test om te controleren of dat de samengestelde correct wordt opgehaald, kan een test ofwel een bestaande voorbeeld-utterance of een nieuwe utterance bevatten. Er is een goede test om op te nemen van de onderliggende entiteiten in de samengestelde entiteit.
+    Aangezien deze test is om te controleren of de composiet correct is geëxtraheerd, kan een test een bestaande voorbeeldutterance of een nieuwe utterance bevatten. Een goede test is om alle onderliggende entiteiten op te nemen in de samengestelde entiteit.
 
     ```json
     {
@@ -184,7 +184,7 @@ LUIS biedt verschillende vooraf gemaakte entiteiten voor het ophalen van algemen
     }
     ```
 
-   Deze utterance retourneert een matrix samengestelde entiteiten. Elke entiteit is een type en de waarde opgegeven. Ga voor meer precisie voor elke onderliggende entiteit, gebruiken de combinatie van het type en de waarde van het matrixitem samengestelde aan het bijbehorende item niet vinden in de matrix entiteiten.
+   Met deze utterance wordt een samengestelde array met entiteiten geretourneerd. Elke entiteit krijgt een type en waarde. Als u meer precisie voor elke onderliggende entiteit wilt vinden, gebruikt u de combinatie van type en waarde uit het samengestelde arrayitem om het overeenkomstige item in de array entiteiten te vinden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -192,8 +192,8 @@ LUIS biedt verschillende vooraf gemaakte entiteiten voor het ophalen van algemen
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [Zelf studie voor lijst entiteit](luis-quickstart-intents-only.md)
-* Conceptuele informatie van [samengestelde entiteit](luis-concept-entity-types.md)
+* [Zelfstudie van de entiteit van de lijst](luis-quickstart-intents-only.md)
+* [Conceptuele informatie van samengestelde entiteit](luis-concept-entity-types.md)
 * [Trainen](luis-how-to-train.md)
 * [Hoe u kunt publiceren](luis-how-to-publish-app.md)
 * [Testen in de LUIS-portal](luis-interactive-test.md)
@@ -201,7 +201,7 @@ LUIS biedt verschillende vooraf gemaakte entiteiten voor het ophalen van algemen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt gemaakt van een samengestelde entiteit om in te kapselen bestaande entiteiten. Hiermee wordt de clienttoepassing een reeks gerelateerde gegevens zoeken in verschillende gegevenstypen om door te gaan van de conversatie. Een clienttoepassing voor deze app Human Resources vragen welke dag en tijd het verplaatsen moet beginnen en eindigen. Het kan ook vragen over andere logistiek van de verplaatsing, zoals een fysiek telefoon nummer.
+Met deze zelfstudie is een samengestelde entiteit gemaakt om bestaande entiteiten in te kapselen. Hierdoor kan de clienttoepassing een groep gerelateerde gegevens in verschillende gegevenstypen vinden om het gesprek voort te zetten. Een clienttoepassing voor deze Human Resources-app kan vragen welke dag en tijd de verhuizing moet beginnen en beëindigen. Het kan ook vragen over andere logistiek van de verhuizing, zoals een fysieke telefoon.
 
 > [!div class="nextstepaction"]
-> [Herstel onzekere voor spellingen door eind punt uitingen te controleren](luis-tutorial-review-endpoint-utterances.md)
+> [Onzekere voorspellingen herstellen door eindpuntuitingen te controleren](luis-tutorial-review-endpoint-utterances.md)

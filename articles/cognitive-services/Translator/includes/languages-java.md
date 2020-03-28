@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 34ff0e792fc388f3083e2d490b2658822793988f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906939"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -79,7 +79,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U moet eerst een openbare klasse maken voor het project:
+U moet eerst een openbare klasse voor uw project maken:
 
 ```java
 public class GetLanguages {
@@ -87,7 +87,7 @@ public class GetLanguages {
 }
 ```
 
-Voeg deze regels toe aan de klasse `GetLanguages`. U ziet dat de abonnements sleutel en het eind punt worden gelezen van omgevings variabelen:
+Voeg deze regels toe aan de klasse `GetLanguages`. U zult merken dat de abonnementssleutel en het eindpunt worden afgelezen aan de uitomgevingsvariabelen:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -95,7 +95,7 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/languages?api-version=3.0";
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Een client maken en een aanvraag samenstellen
 
@@ -165,7 +165,7 @@ gradle run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u in het volgende voorbeeld kunt zien:
 
@@ -255,7 +255,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u in het vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

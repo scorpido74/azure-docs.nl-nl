@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Speech SDK for C# universeel Windows-platform (UWP) platform Setup-Speech Service'
+title: 'Quickstart: SpraakSDK voor De p-platforminstelling (Universal Windows Platform) van C# Universal Windows Platform - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te C# stellen voor onder universeel Windows-platform (UWP) met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform voor C# in te stellen onder Universal Windows Platform (UWP) met de Spraakservice SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: f95fd8aa66e83e6be8f4b0eef9635750d83ce55e
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925906"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor C# universeel Windows-platform (UWP) installeert. Als u alleen de naam van het pakket wilt gebruiken om aan de slag te gaan, voert u `Install-Package Microsoft.CognitiveServices.Speech` uit in de NuGet-console.
+In deze handleiding ziet u hoe u de [SpraakSDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor C# Universal Windows Platform (UWP) installeert. Als je alleen wilt dat de naam van `Install-Package Microsoft.CognitiveServices.Speech` het pakket alleen aan de slag gaat, voer je uit in de NuGet-console.
 
 > [!NOTE]
 > Het Universal Windows Platform stelt u in staat om apps te ontwikkelen die kunnen worden uitgevoerd op elk apparaat dat ondersteuning biedt voor Windows 10, met inbegrip van pc's, Xbox, Surface Hub en andere apparaten.
@@ -28,13 +28,13 @@ In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (alle edities)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (elke editie)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Een Visual Studio-project maken en de spraak-SDK installeren
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Een Visual Studio-project maken en de Speech SDK installeren
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-U kunt nu door gaan naar de [volgende stappen](#next-steps) .
+U nu verder gaan naar [Volgende stappen](#next-steps) hieronder.
 
 ## <a name="next-steps"></a>Volgende stappen
 

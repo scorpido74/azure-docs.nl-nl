@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: Speech C++ SDK (Linux) platform Setup-Speech Service'
+title: 'Quickstart: Speech SDK C++ (Linux) platform setup - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te C++ stellen voor op Linux met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform voor C++ op Linux in te stellen met de Spraakservice SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383948"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Linux installeert
+Deze handleiding laat zien hoe je de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Linux installeert
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Systeemvereisten
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
+Om deze snelle start te voltooien, heb je het:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-* Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd (`libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor geluids ondersteuning). Raadpleeg de onderstaande distributie voor de opdrachten die nodig zijn om de juiste versies van deze bibliotheken te installeren.
+* Ondersteunde Linux-platforms vereisen bepaalde geïnstalleerde`libssl` bibliotheken (voor ondersteuning `libasound2` van beveiligde sockets laag en voor geluidsondersteuning). Raadpleeg hieronder uw distributie voor de opdrachten die nodig zijn om de juiste versies van deze bibliotheken te installeren.
 
    * Op Ubuntu:
 
@@ -56,7 +56,7 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
      ```
 
 > [!NOTE]
-> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Volg op RHEL/CentOS 8 de instructies voor [het configureren van OpenSSL voor Linux.](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)
 
 ## <a name="install-speech-sdk"></a>Speech SDK installeren
 
@@ -93,7 +93,7 @@ Download en installeer de SDK als volgt:
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-U kunt nu door gaan naar de [volgende stappen](#next-steps) .
+U nu verder gaan naar [Volgende stappen](#next-steps) hieronder.
 
 ## <a name="next-steps"></a>Volgende stappen
 

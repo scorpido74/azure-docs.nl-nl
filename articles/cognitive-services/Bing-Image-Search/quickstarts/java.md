@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Java gebruiken om de Bing Image Search aan te roepen REST API'
+title: 'Snelstart: Gebruik Java om de Bing Image Search REST API aan te roepen'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Java en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -13,21 +13,21 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928144"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Snelstartgids: zoeken naar installatie kopieën met de Bing Afbeeldingen zoeken-API, een Azure cognitieve service 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Snelstart: zoeken naar afbeeldingen met de Bing Image Search API, een Azure-cognitieve service 
 
-Gebruik deze Quick Start om Zoek aanvragen te verzenden naar de Bing Afbeeldingen zoeken-API in azure Cognitive Services. Deze Java-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze snelstart om zoekaanvragen naar de Bing Image Search API in Azure Cognitive Services te verzenden. Deze Java-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) met extra foutafhandeling en aantekeningen.
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) met extra foutafhandeling en annotaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* De [Java Development Kit(JDK)](https://aka.ms/azure-jdks)
 
 * De [Gson-bibliotheek](https://github.com/google/gson)
 
@@ -48,7 +48,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
     import com.google.gson.JsonParser;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. `host` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. `host`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -107,7 +107,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
+Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
 
 ```json
 {
@@ -164,5 +164,5 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretou
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
 * [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
 * [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Azure Cognitive Services-documentatie](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977910"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face-REST API en Python
@@ -23,7 +23,7 @@ In deze snelstart gebruikt u de Azure Face REST API met Python om menselijke gez
 
 ![Een vrouw en een man, elk met rechthoeken getekend rond de gezichten, en met de leeftijd en het geslacht op de afbeelding weergegeven](../images/labelled-faces-python.png)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -38,12 +38,12 @@ U kunt deze snelstart als Jupyter-notebook uitvoeren op [MyBinder](https://mybin
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
-U kunt deze Snelstartgids ook uitvoeren vanaf de opdracht regel met de volgende stappen:
+U deze quickstart ook snel starten vanaf de opdrachtregel met de volgende stappen:
 
-1. Kopieer de volgende code in een teksteditor.
+1. Kopieer de volgende code naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in code aan:
     1. Vervang de waarde van `subscription_key` door uw abonnementssleutel.
-    1. Bewerk de waarde van `face_api_url` om de eind punt-URL voor uw Face-API resource op te neemt.
+    1. Bewerk de `face_api_url` waarde om de URL van het eindpunt voor uw Face API-bron op te nemen.
     1. Vervang eventueel de waarde van `image_url` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `detect-face.py`.
 1. Open een opdrachtpromptvenster.

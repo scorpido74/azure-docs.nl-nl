@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een externe installatie kopie analyseren-REST, go'
+title: 'Snelstart: analyseer een externe afbeelding - REST, Go'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een afbeelding met behulp van de Computer Vision-API met Go.
 services: cognitive-services
@@ -12,28 +12,28 @@ ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8c0b245575819ce062999dda8deb7e76cb1ee1bf
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772479"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Snelstartgids: een externe installatie kopie analyseren met behulp van de Computer Vision REST API met Go
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Snelstart: een externe afbeelding analyseren met de Computer Vision REST API met Go
 
-In deze Quick Start kunt u een extern opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
+In deze quickstart analyseert u een op afstand opgeslagen afbeelding om visuele functies te extraheren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) u visuele functies extraheren op basis van afbeeldingsinhoud.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * De nieuwste versie van [Go](https://golang.org/dl/)
-* Een Computer Vision-abonnements sleutel. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+* Een Computer Vision-abonnementssleutel. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Kopieer de onderstaande code naar een tekst editor.
+1. Kopieer de onderstaande code naar een teksteditor.
 1. Vervang eventueel de waarde van `imageUrl` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.go`. Bijvoorbeeld `analyze-image.go`.
 1. Open een opdrachtpromptvenster.

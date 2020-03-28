@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht voor nieuws met python en de Bing News Search uitvoeren REST API'
+title: 'Snelstart: Een nieuwszoekopdracht uitvoeren met Python en de Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Python en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448498"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht uitvoeren met behulp van python en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Snelstart: een nieuwszoekopdracht uitvoeren met Python en de Bing News Search REST API
 
 Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Met deze eenvoudige JavaScript-toepassing wordt een zoekquery naar de API verzonden en worden de resultaten verwerkt. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -34,7 +34,7 @@ De broncode voor dit voorbeeld is ook beschikbaar op [GitHub](https://github.com
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de aanvraagmodule. Maak variabelen voor uw abonnementssleutel, eindpunt en zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de aanvraagmodule. Maak variabelen voor uw abonnementssleutel, eindpunt en zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
 ```python
 import requests
@@ -83,4 +83,4 @@ HTML("<table>"+rows+"</table>")
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app voor één pagina maken](tutorial-bing-news-search-single-page-app.md)

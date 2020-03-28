@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht naar de REST API verzenden met behulp van PHP-Bing Entity Search'
+title: 'Snelstart: een zoekaanvraag naar de REST-API verzenden met PHP - Zoeken naar Bing-entiteiten'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de Bing Entity Search REST-API te verzenden via PHP en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383938"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met PHP
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Snelstart: stuur een zoekverzoek naar de Bing Entity Search REST API met PHP
 
 Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige PHP-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. 
 
@@ -25,7 +25,7 @@ Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice di
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [PHP 5.6.x](https://php.net/downloads.php) of later
+* [PHP 5.6.x](https://php.net/downloads.php) of hoger
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -36,7 +36,7 @@ Volg deze stappen om deze toepassing uit te voeren.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 2. Voeg de onderstaande code toe.
 3. Vervang de waarde `key` door een geldige toegangssleutel voor uw abonnement.
-4. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+4. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 5. Voer het programma uit.
 
 ```php
@@ -83,7 +83,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Antwoord**
+**Reactie**
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld: 
 

@@ -7,19 +7,19 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925606"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Installeer de Speech-SDK voor uw ontwikkel omgeving een voorbeeld project<span class="docon docon-navigate-external x-hidden-focus"></span>maken en leegmaken</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Installeer de SpraakSDK voor uw ontwikkelomgeving<span class="docon docon-navigate-external x-hidden-focus"></span>een voorbeeldproject maken en leegmaken.</a>
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor de intentie herkenning
+## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor intentieherkenning
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
@@ -28,81 +28,81 @@ Voordat u aan de slag gaat:
 Open vervolgens uw project in Visual Studio.
 
 1. Start Visual Studio 2019.
-2. Laad uw project en open `Program.cs`.
+2. Laad uw project `Program.cs`en open .
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
 
-Laten we een code toevoegen die als een skelet voor het project werkt. Houd er rekening mee dat u een async-methode met de naam `RecognizeIntentAsync()`hebt gemaakt.
+Laten we wat code toevoegen die werkt als een skelet voor ons project. Houd er rekening mee dat u `RecognizeIntentAsync()`een async-methode hebt gemaakt met de naam .
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-17,77-86)]
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt.
+Voordat u een `IntentRecognizer` object initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-voorspellingsbron gebruikt.
 
 > [!IMPORTANT]
-> Uw start sleutel-en ontwerp sleutels werken niet. U moet uw Voorspellings sleutel en-locatie gebruiken die u eerder hebt gemaakt. Zie voor meer informatie [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
+> Uw startsleutel en authoring keys werken niet. U moet uw voorspellingssleutel en locatie gebruiken die u eerder hebt gemaakt. Zie [Een LUIS-app maken voor intentieherkenning voor](#create-a-luis-app-for-intent-recognition)meer informatie.
 
-Voeg deze code in de methode `RecognizeIntentAsync()` toe. Zorg ervoor dat u deze waarden bijwerkt:
+Voeg deze code `RecognizeIntentAsync()` in de methode in. Zorg ervoor dat u deze waarden bijwerkt:
 
-* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel.
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. Gebruik de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion).
+* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door uw LUIS-voorspellingssleutel.
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door uw LUIS-locatie. **Regio-id** gebruiken vanuit [regio](https://aka.ms/speech/sdkregion).
 
 >[!TIP]
-> Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
+> Zie [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition)als u hulp nodig hebt bij het vinden van deze waarden.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
 
-In dit voor beeld wordt de `FromSubscription()` methode gebruikt om de `SpeechConfig`te bouwen. Zie [SpeechConfig-klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)voor een volledige lijst met beschik bare methoden.
+Dit voorbeeld `FromSubscription()` gebruikt de `SpeechConfig`methode om de . Zie [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)voor een volledige lijst met beschikbare methoden.
 
-De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
-## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizer initialiseren
+## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizeer initialiseren
 
-Nu gaan we een `IntentRecognizer`maken. Dit object wordt gemaakt in een using-instructie om ervoor te zorgen dat onbeheerde bronnen goed worden vrijgegeven. Voeg deze code in de `RecognizeIntentAsync()` methode toe, rechts onder uw spraak configuratie.
+Laten we nu een. `IntentRecognizer` Dit object wordt gemaakt in een gebruiksinstructie om ervoor te zorgen dat onbeheerde resources correct worden vrijgegeven. Voeg deze code `RecognizeIntentAsync()` in de methode in, direct onder uw spraakconfiguratie.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=29-30,76)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intents toevoegen
 
-U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation. Voeg deze code toe in de instructie using uit de vorige sectie. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app.
+U moet een `LanguageUnderstandingModel` gekoppeld aan de intentieherkenning en de gewenste intenties toevoegen die u wilt herkennen. We gaan intents uit het vooraf gebouwde domein gebruiken voor domotica. Voeg deze code in de gebruiksinstructie uit de vorige sectie in. Zorg ervoor dat `"YourLanguageUnderstandingAppId"` u uw LUIS-app-id vervangt.
 
 >[!TIP]
-> Als u hulp nodig hebt bij het vinden van deze waarde, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
+> Zie [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition)als u hulp nodig hebt bij het vinden van deze waarde.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
-Vanuit het `IntentRecognizer`-object roept u de `RecognizeOnceAsync()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Van `IntentRecognizer` het object, ga je `RecognizeOnceAsync()` de methode aanroepen. Met deze methode kan de spraakservice weten dat u één woordgroep verzendt voor herkenning en dat wanneer de woordgroep is geïdentificeerd om te stoppen met het herkennen van spraak.
 
-In de instructie using voegt u deze code toe onder uw model.
+Voeg deze code onder uw model toe in de instructie met gebruik.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
-## <a name="display-recognition-results-or-errors"></a>Herkennings resultaten (of fouten) weer geven
+## <a name="display-recognition-results-or-errors"></a>Herkenningsresultaten weergeven (of fouten)
 
-Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wilt u er iets mee doen. We gaan het eenvoudig opslaan en de resultaten afdrukken naar de console.
+Wanneer het herkenningsresultaat wordt geretourneerd door de spraakservice, wilt u er iets mee doen. We houden het simpel en printen de resultaten af op de console.
 
-Voeg in de instructie using onder `RecognizeOnceAsync()`de volgende code toe:
+Voeg in de `RecognizeOnceAsync()`instructie met behulp hieronder deze code toe:
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=49-75)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien:
+Op dit punt moet uw code er als volgt uitzien:
 
 > [!NOTE]
-> Er zijn enkele opmerkingen toegevoegd aan deze versie.
+> We hebben een aantal opmerkingen toegevoegd aan deze versie.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-86)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
+Nu bent u klaar om uw app te bouwen en onze spraakherkenning te testen met behulp van de Spraakservice.
 
-1. **De code compileren** : Kies in de menu balk van Visual Studio **Build** > **Build-oplossing**.
-2. **Start uw app** -vanuit de menu balk, kies **fout opsporing** > **fout opsporing starten** of druk op <kbd>F5</kbd>.
-3. **Herkenning starten** : u wordt gevraagd om een woord groep in het Engels te spreken. Uw spraak wordt verzonden naar de spraak service, getranscribeerd als tekst en weer gegeven in de-console.
+1. **Compileer de code** - Kies op de menubalk van Visual Studio **Build** > **Solution**.
+2. **Start uw app** - Kies op de menubalk Debug**genfout opsporing van** **foutopsporing debuggen** > of druk op <kbd>F5</kbd>.
+3. **Start herkenning** - Het zal u vragen om een zin in het Engels te spreken. Uw toespraak wordt verzonden naar de spraakservice, getranscribeerd als tekst en weergegeven in de console.
 
 ## <a name="next-steps"></a>Volgende stappen
 

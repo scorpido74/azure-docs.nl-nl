@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837531"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>De hoofdfunctie toevoegen
 
-In dit voor beeld wordt geprobeerd de Translator Text-abonnements sleutel en het eind punt van deze omgevings variabelen te lezen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd uw abonnementssleutel voor vertalerstekst `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`eindpunt te lezen uit deze omgevingsvariabelen: en . Als u niet bekend bent met omgevingsvariabelen, u instellen `subscriptionKey` en `endpoint` als tekenreeksen en commentaar geven op de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -90,7 +90,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Zie [Translator Text-API 3.0: detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) voor meer informatie over eindpunten, routes en aanvraagparameters.
 
 ## <a name="create-a-struct-for-your-request-body"></a>Een structuur maken voor de aanvraagbody
 
@@ -127,7 +127,7 @@ if err != nil {
 }
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="handle-and-print-the-response"></a>Het antwoord verwerken en afdrukken
 
@@ -156,10 +156,10 @@ Als u uw code graag wilt vergelijken met de onze, kunt u het volledige voorbeeld
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het monster hebt uitgevoerd, ziet u het volgende afgedrukt op de terminal:
 
 > [!NOTE]
-> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 
 ```json
@@ -189,7 +189,7 @@ Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Termina
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in de Blob Storage-Speech-Service'
+title: 'Snelstart: spraak herkennen die is opgeslagen in blobopslag - Spraakservice'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 95ff115cfc2cc70deabf66d984bb02991239c2a7
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931966"
 ---
 U moet de volgende waarden vervangen:
 
- - `YourSubscriptionKey`: gevonden op de pagina **sleutels** van de Azure portal voor de spraak resource
- - `YourServiceRegion`: gevonden op de pagina **overzicht** van de Azure portal voor de spraak resource
- - `YourFileUrl`: gevonden op op de pagina **BLOB service/containers** van de Azure portal voor de bron van het opslag account
-     - Selecteer de juiste container
-     - Selecteer de gewenste BLOB
-     - Kopieer de **URL** onder de pagina **Eigenschappen**
+ - `YourSubscriptionKey`: gevonden op de pagina **Sleutels** van de Azure-portal voor de spraakbron
+ - `YourServiceRegion`: gevonden op de **overzichtspagina** van de Azure-portal voor de spraakbron
+ - `YourFileUrl`: gevonden onder de **blobservice / containerspagina** van de Azure-portal voor de bron van het opslagaccount
+     - De juiste container selecteren
+     - De gewenste blob selecteren
+     - De **URL onder** de pagina **Eigenschappen kopiëren**

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een microfoon, python-Speech-Service'
+title: 'Snelstart: spraak herkennen van een microfoon, Python - Spraakservice'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze handleiding om een consoletoepassing voor spraak-naar-tekst te maken met de Speech-SDK voor Python. Als u klaar bent, kunt u de microfoon van de computer gebruiken om in realtime spraak naar tekst te transcriberen.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: a2d5614aeeedb88cd9b2c41baed317761443d17c
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925248"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -22,9 +22,9 @@ ms.locfileid: "78925248"
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
 
 ## <a name="support-and-updates"></a>Ondersteuning en updates
 
@@ -49,15 +49,15 @@ Of u kunt deze quickstart-zelfstudie downloaden als een [Jupyter](https://jupyte
 ### <a name="sample-code"></a>Voorbeeldcode
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/from-microphone/quickstart.py#code)]
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>De Speech-SDK installeren en gebruiken met Visual Studio Code
 
-1. Down load en installeer een 64-bits versie van [python](https://www.python.org/downloads/), 3,5 tot 3,8 op uw computer.
+1. Download en installeer een 64-bits versie van [Python](https://www.python.org/downloads/), 3,5 tot 3,8, op uw computer.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Open Visual Studio Code en installeer de Python-extensie. Selecteer **Bestand** > **Voorkeuren** > **Extensies** in het menu. Zoek naar **Python**.
+1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**Extensies** **voor bestandsvoorkeuren** > **Preferences** > in het menu. Zoek naar **Python**.
 
    ![De Python-extensie installeren](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -73,9 +73,9 @@ Of u kunt deze quickstart-zelfstudie downloaden als een [Jupyter](https://jupyte
 1. Kopieer en plak de [Python-code](#sample-code) en sla deze op in het zojuist gemaakte bestand.
 1. Voeg de gegevens van uw Speech Service-abonnement in.
 1. Als er een Python-interpreter is geselecteerd, wordt deze onder aan het venster weergegeven, links van de statusbalk.
-   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdracht palet (CTRL + SHIFT + P) en voer **python in: Select interpreter**. Kies de juiste versie.
+   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdrachtpalet (Ctrl+Shift+P) en voer **Python in: Selecteer Tolk**. Kies de juiste versie.
 1. U kunt het Python Speech-SDK-pakket installeren vanuit Visual Studio Code. Doe dat als het pakket nog niet is geïnstalleerd voor de Python-interpreter die u hebt geselecteerd.
-   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdracht palet opnieuw aan (CTRL + SHIFT + P) en voer de **volgende Terminal in: nieuwe geïntegreerde terminal maken**.
+   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdrachtpalet opnieuw naar boven (Ctrl+Shift+P) en voer **Terminal in: Nieuwe geïntegreerde terminal maken**.
    Voer in de terminal die wordt geopend, de opdracht `python -m pip install azure-cognitiveservices-speech` in, of de juiste opdracht voor uw systeem.
 1. Als u de voorbeeldcode wilt uitvoeren, klikt u met de rechtermuisknop ergens in de editor. Selecteer **Python-bestand uitvoeren in de Terminal**.
    Zeg enkele woorden wanneer u daarom wordt gevraagd. De getranscribeerde tekst wordt kort daarna weergegeven.

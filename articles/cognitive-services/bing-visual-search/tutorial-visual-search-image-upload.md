@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: scottwhi
 ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74689183"
 ---
-# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Zelf studie: afbeeldingen uploaden naar de Bing Visual Search-API
+# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Zelfstudie: Afbeeldingen uploaden naar de Bing Visual Search API
 
 Met de Bing Visual Search-API kunt u op internet zoeken naar afbeeldingen die overeenkomen met de afbeeldingen die u uploadt. Gebruik deze zelfstudie om een webtoepassing te maken waarmee een afbeelding naar de API kan worden verzonden en waarmee de inzichten die worden geretourneerd op de webpagina worden weergegeven. Deze toepassing voldoet niet aan alle [vereisten voor gebruik en weergave van Bing](../bing-web-search/use-display-requirements.md) voor het gebruik van de API.
 
-U kunt de volledige bron code voor dit voor beeld vinden met extra fout afhandeling en annotaties op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html).
+U vindt de volledige broncode voor dit voorbeeld met extra foutafhandeling en annotaties op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html)
 
-In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
+In de zelfstudie-app leert u het volgende:
 
 > [!div class="checklist"]
 > * Een afbeelding uploaden naar de Bing Visual Search-API
@@ -36,7 +36,7 @@ In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
 
 ## <a name="create-and-structure-the-webpage"></a>De webpagina maken en structureren
 
-Maak een HTML-pagina die een afbeelding naar het Bing Visual Search-API stuurt, inzichten ontvangt en deze weergeeft. Maak in uw favoriete editor of IDE een bestand met de naam ' uploaddemo. html '. Voeg de volgende basis-HTML-structuur toe aan het bestand:
+Maak een HTML-pagina die een afbeelding naar de Bing Visual Search API stuurt, inzichten ontvangt en weergeeft. Maak in uw favoriete editor of IDE een bestand met de naam "uploaddemo.html". Voeg de volgende basis-HTML-structuur toe aan het bestand:
 
 ```html
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ Maak een HTML-pagina die een afbeelding naar het Bing Visual Search-API stuurt, 
 </html>
 ```
 
-Splits de pagina in een aanvraag sectie, waarbij de gebruiker alle informatie bevat die nodig is voor de aanvraag, en een antwoord gedeelte waarin de inzichten worden weer gegeven. Voeg de volgende `<div>`-tags toe aan de `<body>`. De `<hr>`-tag scheidt de aanvraag sectie visueel van de sectie Response:
+Verdeel de pagina in een aanvraagsectie, waarin de gebruiker alle informatie verstrekt die nodig is voor de aanvraag en een antwoordsectie waarin de inzichten worden weergegeven. Voeg de volgende `<div>`-tags toe aan de `<body>`. De `<hr>` tag scheidt de aanvraagsectie visueel van de sectie respons:
 
 ```html
 <div id="requestSection"></div>
@@ -58,7 +58,7 @@ Splits de pagina in een aanvraag sectie, waarbij de gebruiker alle informatie be
 <div id="responseSection"></div>
 ```
 
-Voeg een `<script>` tag toe aan de `<head>`-tag om Java script voor de toepassing te bevatten:
+Voeg `<script>` een tag `<head>` toe aan de tag om het JavaScript voor de toepassing te bevatten:
 
 ```html
 <script>
@@ -69,9 +69,9 @@ Voeg een `<script>` tag toe aan de `<head>`-tag om Java script voor de toepassin
 
 De toepassing gebruikt de `<input>`-tag met het kenmerk 'type' ingesteld op `file` om de gebruiker de te uploaden afbeelding te laten selecteren. De gebruikersinterface moet duidelijk maken dat de toepassing Bing gebruikt om de zoekresultaten te krijgen.
 
-Voeg de volgende `<div>` toe aan de `requestSection` `<div>`. De bestandsinvoer accepteert één bestand, van elk afbeeldingstype (bijvoorbeeld .jpg, .gif, .png). De `onchange`-gebeurtenis geeft de handler aan die wordt aangeroepen wanneer een gebruiker een bestand selecteert.
+Voeg het `<div>` volgende `requestSection` `<div>`toe aan de . De bestandsinvoer accepteert één bestand, van elk afbeeldingstype (bijvoorbeeld .jpg, .gif, .png). De `onchange`-gebeurtenis geeft de handler aan die wordt aangeroepen wanneer een gebruiker een bestand selecteert.
 
-De label `<output>` wordt gebruikt om een miniatuur van de geselecteerde installatie kopie weer te geven:
+De `<output>` tag wordt gebruikt om een miniatuur van de geselecteerde afbeelding weer te geven:
 
 ```html
 <div>
@@ -85,7 +85,7 @@ De label `<output>` wordt gebruikt om een miniatuur van de geselecteerde install
 
 ## <a name="create-a-file-handler"></a>Een bestandshandler maken
 
-Maak een handlerfunctie die kan worden gelezen in de afbeelding die u wilt uploaden. Tijdens het doorlopen van de bestanden in het `FileList`-object moet de handler ervoor zorgen dat het geselecteerde bestand een afbeeldingsbestand is van 1 MB of minder. Als de afbeelding groter is, moet u de grootte ervan verkleinen voordat u deze uploadt. Ten slotte wordt in de handler een miniatuur van de afbeelding weer gegeven:
+Maak een handlerfunctie die kan worden gelezen in de afbeelding die u wilt uploaden. Tijdens het doorlopen van de bestanden in het `FileList`-object moet de handler ervoor zorgen dat het geselecteerde bestand een afbeeldingsbestand is van 1 MB of minder. Als de afbeelding groter is, moet u de grootte ervan verkleinen voordat u deze uploadt. Ten slotte geeft de handler een miniatuur van de afbeelding weer:
 
 ```javascript
 function handleFileSelect(selector) {
@@ -135,7 +135,7 @@ function handleFileSelect(selector) {
 
 ## <a name="add-and-store-a-subscription-key"></a>Een abonnementssleutel toevoegen en opslaan
 
-Voor de toepassing is een abonnements sleutel vereist voor het aanroepen van de Bing Visual Search-API. In deze zelfstudie geeft u deze op in de gebruikersinterface. Voeg de volgende `<input>`-tag (met het kenmerk type ingesteld op tekst) toe aan de `<body>` net onder het `<output>` label van het bestand:
+De toepassing vereist een abonnementssleutel om aan te bellen naar de Bing Visual Search API. In deze zelfstudie geeft u deze op in de gebruikersinterface. Voeg de `<input>` volgende tag (met het typekenmerk `<body>` ingesteld op tekst) toe aan de tag net onder de tag van `<output>` het bestand:
 
 ```html
     <div>
@@ -145,9 +145,9 @@ Voor de toepassing is een abonnements sleutel vereist voor het aanroepen van de 
     </div>
 ```
 
-Aan de hand van de afbeelding en de abonnementssleutel kunt u Bing Visual Search aanroepen om inzicht te krijgen in de afbeelding. In deze zelf studie gebruikt de aanroep de standaard markt (`en-us`) en de veilige Zoek waarde (`moderate`).
+Aan de hand van de afbeelding en de abonnementssleutel kunt u Bing Visual Search aanroepen om inzicht te krijgen in de afbeelding. In deze zelfstudie gebruikt de`en-us`aanroep de standaardmarkt ( ) en veilige zoekwaarde (`moderate`).
 
-Deze waarden kunnen in deze toepassing worden gewijzigd. Voeg de volgende `<div>` toe onder de sleutel van het abonnement `<div>`. De toepassing gebruikt een `<select>`-tag om een ​​vervolgkeuzelijst te bieden voor de waarden voor de markt en Veilig Zoeken. In beide lijsten wordt de standaardwaarde weergegeven.
+Deze waarden kunnen in deze toepassing worden gewijzigd. Voeg het `<div>` volgende toe `<div>`onder de abonnementssleutel . De toepassing gebruikt een `<select>`-tag om een ​​vervolgkeuzelijst te bieden voor de waarden voor de markt en Veilig Zoeken. In beide lijsten wordt de standaardwaarde weergegeven.
 
 ```html
 <div>
@@ -211,7 +211,7 @@ Deze waarden kunnen in deze toepassing worden gewijzigd. Voeg de volgende `<div>
 
 ## <a name="add-search-options-to-the-webpage"></a>Zoekopties doorgeven aan de webpagina
 
-De toepassing verbergt de lijsten in een samenvouw bare `<div>` die wordt beheerd door de koppeling voor query opties. Wanneer u op de koppeling query opties klikt, wordt de `<div>` uitgebreid, zodat u de query opties kunt zien en wijzigen. Als u nogmaals op de koppeling query opties klikt, wordt de `<div>` samengevouwen en verborgen. Het volgende code fragment toont de `onclick`-handler van de koppeling van de query opties. De handler bepaalt of de `<div>` is uitgevouwen of samengevouwen. Voeg deze handler toe aan de `<script>`-sectie. De handler wordt gebruikt door alle samenvouw bare `<div>` secties in de demo.
+De toepassing verbergt de lijsten `<div>` in een opvouwbare die wordt beheerd door de koppeling Queryopties. Wanneer u op de koppeling `<div>` Queryopties klikt, wordt de optie uitgevouwen, zodat u de queryopties zien en wijzigen. Als u opnieuw op de `<div>` koppeling Queryopties klikt, wordt het samenvouwen en verborgen. In het volgende fragment wordt `onclick` de handler van de koppeling Queryopties weergegeven. De handler bepaalt `<div>` of de handler is uitgevouwen of samengevouwen. Voeg deze handler toe aan de `<script>`-sectie. De handler wordt gebruikt `<div>` door alle opvouwbare secties in de demo.
 
 ```javascript
 // Contains the toggle state of divs.
@@ -233,19 +233,19 @@ function expandCollapse(divToToggle) {
 }
 ```
 
-## <a name="call-the-onclick-handler"></a>De `onclick`-handler aanroepen
+## <a name="call-the-onclick-handler"></a>De `onclick` handler bellen
 
-Voeg de volgende `"Get insights"` knop onder de opties `<div>` in de hoofd tekst. Met deze knop kunt u de aanroep initiëren. Wanneer op de knop wordt geklikt, wordt de cursor gewijzigd in de draaiende wacht cursor en wordt de `onclick`-handler aangeroepen.
+Voeg de `"Get insights"` volgende knop `<div>` onder de opties in het lichaam. Met deze knop kunt u de aanroep initiëren. Wanneer op de knop wordt geklikt, wordt de cursor `onclick` gewijzigd in de draaiende wachtcursor en wordt de handler aangeroepen.
 
 ```html
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Voeg de `onclick` handler van de knop toe, `handleQuery()` aan de `<script>`-tag.
+Voeg de handler `onclick` van `handleQuery()` de `<script>` knop toe aan de tag.
 
 ## <a name="handle-the-query"></a>De query verwerken
 
-De handler `handleQuery()` zorgt ervoor dat de abonnements sleutel aanwezig is en 32 tekens lang is, en dat er een afbeelding is geselecteerd. Verder worden eventuele inzichten uit een eerdere query gewist. Daarna wordt de `sendRequest()`-functie aangeroepen om de aanroep uit te voeren.
+De `handleQuery()` handler zorgt ervoor dat de abonnementssleutel aanwezig is en 32 tekens lang is en dat een afbeelding is geselecteerd. Verder worden eventuele inzichten uit een eerdere query gewist. Daarna wordt de `sendRequest()`-functie aangeroepen om de aanroep uit te voeren.
 
 ```javascript
 function handleQuery() {
@@ -284,7 +284,7 @@ function handleQuery() {
 
 ## <a name="send-the-search-request"></a>De zoekaanvraag verzenden
 
-Met de functie `sendRequest()` wordt de eind punt-URL opgemaakt, wordt de `Ocp-Apim-Subscription-Key`-header ingesteld op de abonnements sleutel, wordt het binaire bestand van de afbeelding toegevoegd voor het uploaden, wordt de reactie-handler opgegeven en wordt de aanroep uitgevoerd:
+De `sendRequest()` functie maakt de URL `Ocp-Apim-Subscription-Key` van het eindpunt op, stelt de koptekst in op de abonnementstoets, voegt de binaire van de afbeelding toe om te uploaden, geeft de antwoordhandler op en voert de aanroep:
 
 ```javascript
 function sendRequest(file, key) {
@@ -306,7 +306,7 @@ function sendRequest(file, key) {
 
 ## <a name="get-and-handle-the-api-response"></a>De API-reactie ophalen en behandelen
 
-De `handleResponse()`-functie behandelt het antwoord van de aanroep van Bing Visual Search. Als de aanroep slaagt, parseert deze functie de JSON-reactie in de afzonderlijke tags, die de inzichten bevatten. Vervolgens wordt de lijst met zoekresultaten toegevoegd aan de pagina. De toepassing maakt vervolgens een inklap bare `<div>` voor elke tag om te beheren hoeveel gegevens er worden weer gegeven. Voeg de handler toe aan de `<script>`-sectie.
+De `handleResponse()`-functie behandelt het antwoord van de aanroep van Bing Visual Search. Als de aanroep slaagt, parseert deze functie de JSON-reactie in de afzonderlijke tags, die de inzichten bevatten. Vervolgens wordt de lijst met zoekresultaten toegevoegd aan de pagina. De toepassing maakt `<div>` vervolgens een opvouwbare voor elke tag om te beheren hoeveel gegevens worden weergegeven. Voeg de handler toe aan de `<script>`-sectie.
 
 ```javascript
 function handleResponse() {
@@ -351,7 +351,7 @@ function parseResponse(json) {
 
 ### <a name="build-a-tag-section"></a>Een tagsectie bouwen
 
-De functie `buildTagSections()` doorloopt de geparseerde JSON-Tags en roept de `buildDiv()`-functie aan om een `<div>` voor elke tag te maken. Elke tag wordt weergegeven als een koppeling. Wanneer de gebruiker op de koppeling klikt, wordt de tag uitgevouwen en worden de inzichten weergegeven die aan de tag zijn gekoppeld. Als u nogmaals op de koppeling klikt, wordt de sectie samengevouwen.
+De `buildTagSections()` functie wordt door de geparseerde JSON-tags geïsperd en roept de `buildDiv()` functie aan om een `<div>` voor elke tag te bouwen. Elke tag wordt weergegeven als een koppeling. Wanneer de gebruiker op de koppeling klikt, wordt de tag uitgevouwen en worden de inzichten weergegeven die aan de tag zijn gekoppeld. Als u opnieuw op de koppeling klikt, wordt de sectie samengevouwen.
 
 ```javascript
 function buildTagSections(tags) {
@@ -390,11 +390,11 @@ function buildDiv(tags, tag) {
 
 ## <a name="display-the-search-results-in-the-webpage"></a>De zoekresultaten in de webpagina weergeven
 
-De functie `buildDiv()` roept de `addDivContent`-functie aan om de inhoud van de samenvouw bare `<div>`van elke tag samen te stellen.
+De `buildDiv()` functie `addDivContent` roept de functie aan om de `<div>`inhoud van de inklapbare inhoud van elke tag te bouwen.
 
-De inhoud van een tag omvat de JSON uit het antwoord voor de tag. In eerste instantie worden alleen de eerste 100 tekens van de JSON weer gegeven, maar u kunt op de JSON-teken reeks klikken om alle JSON weer te geven. Als u hier nogmaals op klikt, wordt de JSON-tekenreeks weer samengevouwen tot 100 tekens.
+De inhoud van een tag omvat de JSON uit het antwoord voor de tag. In eerste instantie worden alleen de eerste 100 tekens van de JSON weergegeven, maar u op de JSON-tekenreeks klikken om alle JSON weer te geven. Als u hier nogmaals op klikt, wordt de JSON-tekenreeks weer samengevouwen tot 100 tekens.
 
-Voeg vervolgens de in de tag gevonden actietypen toe. Voor elk actie type roept u de juiste functies aan om zijn inzichten toe te voegen:
+Voeg vervolgens de in de tag gevonden actietypen toe. Bel voor elk actietype de juiste functies om de inzichten toe te voegen:
 
 ```javascript
 function addDivContent(div, tag, json) {
@@ -471,14 +471,14 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Inzichten voor verschillende acties weergeven
 
-De volgende functies geven inzichten voor verschillende acties weer. De functies bieden een afbeelding of koppeling waarop kan worden geklikt om naar een webpagina te gaan met meer informatie over de afbeelding. Deze pagina wordt gehost door Bing.com of de oorspronkelijke website van de afbeelding. Niet alle gegevens van de inzichten worden in deze toepassing weergegeven. Zie de naslag informatie over [installatie kopieën-Visual Search](https://aka.ms/bingvisualsearchreferencedoc) voor een overzicht van alle beschik bare velden voor een inzicht.
+De volgende functies geven inzichten voor verschillende acties weer. De functies bieden een afbeelding of koppeling waarop kan worden geklikt om naar een webpagina te gaan met meer informatie over de afbeelding. Deze pagina wordt gehost door Bing.com of de oorspronkelijke website van de afbeelding. Niet alle gegevens van de inzichten worden in deze toepassing weergegeven. Zie de referentie Afbeeldingen - Visueel [zoeken](https://aka.ms/bingvisualsearchreferencedoc) om alle beschikbare velden voor een inzicht te bekijken.
 
 > [!NOTE]
-> Op de pagina moet een minimale hoeveelheid inzichtgegevens worden weergegeven. Raadpleeg het [Bing Search-API-gebruik en de weergave vereisten](../bing-web-search/use-display-requirements.md) voor meer informatie.
+> Op de pagina moet een minimale hoeveelheid inzichtgegevens worden weergegeven. Zie de [gebruiks- en weergavevereisten voor Bing Search API](../bing-web-search/use-display-requirements.md) voor meer informatie.
 
 ### <a name="relatedimages-insights"></a>RelatedImages-inzichten
 
-Met de functie `addRelatedImages()` maakt u een titel voor elke website die als host fungeert voor de gerelateerde installatie kopie door de lijst met `RelatedImages` acties te herhalen en een `<img>`-tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addRelatedImages()` functie maakt een titel voor elk van de websites die `RelatedImages` de gerelateerde afbeelding `<img>` hosten door `<div>` door de lijst met acties te herhalen en een tag aan de buitenkant toe te schrijven voor elk:
 
 ```javascript
     function addRelatedImages(div, images) {
@@ -509,7 +509,7 @@ Met de functie `addRelatedImages()` maakt u een titel voor elke website die als 
 
 ### <a name="pagesincluding-insights"></a>PagesIncluding-inzichten
 
-De functie `addPagesIncluding()` maakt een koppeling voor elke website die als host fungeert voor de geüploade installatie kopie door de lijst met `PagesIncluding` acties te herhalen en een `<img>` tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addPagesIncluding()` functie maakt een link voor elk van de websites die de `PagesIncluding` geüploade `<img>` afbeelding hosten `<div>` door door de lijst met acties te herhalen en een tag aan de buitenkant toe te koppelen voor elk:
 
 ```javascript
 
@@ -533,7 +533,7 @@ De functie `addPagesIncluding()` maakt een koppeling voor elke website die als h
 
 ### <a name="relatedsearches-insights"></a>RelatedSearches-inzichten
 
-De functie `addRelatedSearches()` maakt een koppeling voor de website die als host fungeert voor de installatie kopie door de lijst met `RelatedSearches` acties te herhalen en een `<img>` tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addRelatedSearches()` functie maakt een link voor de website die de `RelatedSearches` afbeelding host, `<img>` door de `<div>` lijst met acties te herhalen en een tag aan de buitenkant toe te koppelen voor elk:
 
 ```javascript
 
@@ -566,7 +566,7 @@ De functie `addRelatedSearches()` maakt een koppeling voor de website die als ho
 
 ### <a name="recipes-insights"></a>Recepten-inzichten
 
-De functie `addRecipes()` maakt een koppeling voor elke geretourneerde recepten door de lijst met `Recipes` acties te herhalen en een `<img>`-tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addRecipes()` functie maakt een koppeling voor elk van de `Recipes` recepten die worden `<img>` geretourneerd door `<div>` de lijst met acties te herhalen en een tag aan de buitenkant toe te koppelen voor elk:
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
@@ -598,7 +598,7 @@ De functie `addRecipes()` maakt een koppeling voor elke geretourneerde recepten 
 
 ### <a name="shopping-insights"></a>Winkel-inzichten
 
-De functie `addShopping()` maakt een koppeling voor alle geretourneerde resultaten van de winkel door de lijst met `RelatedImages` acties te herhalen en een `<img>` tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addShopping()` functie maakt een koppeling voor geretourneerde winkelresultaten `RelatedImages` door door de `<img>` lijst met `<div>` acties te herhalen en een tag aan de buitenkant toe te koppelen voor elk:
 
 ```javascript
     // Display links for the first 10 shopping offers.
@@ -627,7 +627,7 @@ De functie `addShopping()` maakt een koppeling voor alle geretourneerde resultat
 
 ### <a name="products-insights"></a>Product-inzichten
 
-De functie `addProducts()` maakt een koppeling voor de resultaten van geretourneerde producten door de lijst met `Products` acties te herhalen en een `<img>`-tag toe te voegen aan de buitenste `<div>` voor elk:
+De `addProducts()` functie maakt een koppeling voor geretourneerde producten resultaten `Products` door te herhalen `<img>` door middel `<div>` van de lijst met acties, en het toevoegen van een tag aan de buitenkant voor elk:
 
 ```javascript
 
@@ -691,7 +691,7 @@ De functie `addProducts()` maakt een koppeling voor de resultaten van geretourne
 
 ### <a name="textresult-insights"></a>TextResult-inzichten
 
-De functie `addTextResult()` geeft een tekst weer die in de afbeelding is herkend:
+De `addTextResult()` functie geeft alle tekst weer die in de afbeelding is herkend:
 
 ```javascript
 
@@ -702,7 +702,7 @@ De functie `addTextResult()` geeft een tekst weer die in de afbeelding is herken
     }
 ```
 
-Met de functie `addEntity()` wordt een koppeling weer gegeven waarmee de gebruiker naar Bing.com wordt geleid, waar ze Details over het entiteits type in de installatie kopie kunnen ophalen, indien aanwezig.
+De `addEntity()` functie geeft een koppeling weer die de gebruiker naar Bing.com brengt waar hij details kan krijgen over het entiteitstype in de afbeelding, indien deze is gedetecteerd:
 
 ```javascript
     // If the image is of a person, the tag might include an entity
@@ -718,7 +718,7 @@ Met de functie `addEntity()` wordt een koppeling weer gegeven waarmee de gebruik
     }
 ```
 
-Met de functie `addImageWithWebSearchUrl()` wordt een klik bare afbeelding weer gegeven aan de `<div>` die de gebruiker in de zoek resultaten op Bing.com kan zoeken:
+De `addImageWithWebSearchUrl()` functie geeft een klikbare afbeelding weer aan de `<div>` afbeelding die de gebruiker naar de zoekresultaten brengt op Bing.com:
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {
@@ -737,7 +737,7 @@ Met de functie `addImageWithWebSearchUrl()` wordt een klik bare afbeelding weer 
 
 ## <a name="add-a-css-style"></a>Een CSS-stijl toevoegen
 
-Voeg de volgende `<style>` sectie toe aan het `<head>`-label om de lay-out van de webpagina te ordenen:
+Voeg de `<style>` volgende `<head>` sectie toe aan de tag om de indeling van de webpagina te ordenen:
 
 ```html
         <style>
@@ -773,4 +773,4 @@ Voeg de volgende `<style>` sectie toe aan het `<head>`-label om de lay-out van d
 ## <a name="next-steps"></a>Volgende stappen
 
 >[!div class="nextstepaction"]
-> [Zelf studie: vergelijk bare afbeeldingen uit eerdere Zoek opdrachten zoeken met ImageInsightsToken](./tutorial-visual-search-insights-token.md)
+> [Zelfstudie: vergelijkbare afbeeldingen van eerdere zoekopdrachten zoeken met ImageInsightsToken](./tutorial-visual-search-insights-token.md)

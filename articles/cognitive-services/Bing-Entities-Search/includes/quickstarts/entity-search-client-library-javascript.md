@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Entity Search java script-client bibliotheek
+title: Bing Entity Search JavaScript-clientbibliotheek snel start
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79136765"
 ---
-Gebruik deze Quick Start om te beginnen met zoeken naar entiteiten met de Bing Entity Search-client bibliotheek voor Java script. Hoewel Bing Entity Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
+Gebruik deze snelstart om te beginnen met zoeken naar entiteiten met de Bing Entity Search-clientbibliotheek voor JavaScript. Hoewel Bing Entity Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,6 +68,6 @@ De Bing Entiteiten zoeken-SDK installeren:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app met één pagina maken](../../tutorial-bing-entities-search-single-page-app.md)
+> [Een web-app voor één pagina maken](../../tutorial-bing-entities-search-single-page-app.md)
 
 * [Wat is de Bing Entiteiten zoeken-API?](../../overview.md)

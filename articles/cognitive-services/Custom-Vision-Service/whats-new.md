@@ -11,22 +11,22 @@ ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
 ms.openlocfilehash: 82318df08ffc9ec47b1ed40171f79163bbdd600f
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78207636"
 ---
-# <a name="whats-new-in-custom-vision"></a>Wat is er nieuw in Custom Vision
+# <a name="whats-new-in-custom-vision"></a>Nieuw in Custom Vision
 
-Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over wat er nieuw is in de service. Deze items kunnen notities, video's, blogberichten en andere soorten informatie vrijgeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="september-2019"></a>September 2019
 
-### <a name="suggested-tags"></a>Voorgestelde labels
+### <a name="suggested-tags"></a>Voorgestelde tags
 
-* Het Smart Labeler-hulp programma op de [website van Custom Vision](https://www.customvision.ai/) genereert voorgestelde Tags voor uw trainings installatie kopieën. Zo kunt u een groot aantal installatie kopieën sneller labelen bij het trainen van een Custom Vision model. Zie [Aanbevolen Tags](./suggested-tags.md)voor instructies over het gebruik van deze functie.
+* De Smart Labeler-tool op de [Custom Vision-website](https://www.customvision.ai/) genereert voorgestelde tags voor uw trainingsafbeeldingen. Hiermee u een groot aantal afbeeldingen sneller labelen bij het trainen van een Custom Vision-model. Zie [Aanbevolen tags voor](./suggested-tags.md)instructies over het gebruik van deze functie.
 
-## <a name="cognitive-service-updates"></a>Updates van de cognitieve service
+## <a name="cognitive-service-updates"></a>Updates voor cognitieve service
 
-[Meldingen voor Azure update voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure-update-aankondigingen voor Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

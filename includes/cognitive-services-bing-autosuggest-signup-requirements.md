@@ -5,25 +5,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2019
 ms.openlocfilehash: a678603d19b8da9ace8b519e19fc8ef2673621fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75384712"
 ---
-## <a name="create-an-azure-resource"></a>Een Azure-resource maken
+## <a name="create-an-azure-resource"></a>Een Azure-bron maken
 
-Begin met het gebruik van de Automatische suggestie-API voor Bing door een van de onderstaande Azure-resources te maken.
+Begin met het gebruik van de Bing Autosuggest API door een van de onderstaande Azure-bronnen te maken.
 
-* [Een proef resource maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+* [Maak een proefbron:](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
     * Er is geen Azure-abonnement nodig.
-    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+    * Geldig voor zeven dagen, gratis. Na het aanmelden zijn een proefsleutel en eindpunt beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)
 
-* [Een Bing automatische suggesties resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7):
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
-    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
-    * Bing Automatische suggesties wordt ook aangeboden in betaalde lagen van de [Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
+* [Een Bing Autosuggest-bron maken:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)
+    * Beschikbaar via de Azure-portal totdat u de bron verwijdert.
+    * Gebruik de gratis prijscategorie om de service uit te proberen en upgrade later naar een betaalde laag voor productie.
+    * Bing Autosuggest wordt ook aangeboden in betaalde lagen van de [Bing Search v7 bron.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
 
-* [Een resource met meerdere services maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
-    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.
+* [Een Multi-Service resource maken:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+    * Beschikbaar via de Azure-portal totdat u de bron verwijdert.  
+    * Gebruik hetzelfde sleutel- en eindpunt voor uw toepassingen voor meerdere cognitive services.

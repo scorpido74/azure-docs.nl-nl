@@ -1,7 +1,7 @@
 ---
-title: Model versie beheer
+title: Modelversiebeheer
 titleSuffix: Azure Cognitive Services
-description: Model versies opgeven in de V3-eind punten
+description: Modelversies opgeven in de V3-eindpunten
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,21 +10,21 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77088992"
 ---
-Met versie 3 van de Text Analytics-API kunt u de model versie kiezen die het meest actueel is voor uw gegevens. Gebruik de optionele para meter `model-version` om de versie van het model te selecteren die voor uw aanvragen gewenst is. Als deze para meter niet is opgegeven, wordt de API standaard `latest`, de laatste stabiele versie. Hoewel u de nieuwste versie van het model kunt gebruiken in elke aanvraag, worden slechts enkele functies bijgewerkt in elke versie. In de volgende tabel wordt beschreven welke onderdelen zijn bijgewerkt in elke model versie:
+Met versie 3 van de Text Analytics API u de modelversie kiezen die het meest actueel is voor uw gegevens. Gebruik de `model-version` optionele parameter om de gewenste versie van het model te selecteren voor uw aanvragen. Als deze parameter niet is opgegeven, `latest`wordt de API standaard gebruikt voor de nieuwste stabiele versie. Hoewel u de nieuwste modelversie in elk verzoek gebruiken, worden in elke versie slechts enkele functies bijgewerkt. In de onderstaande tabel wordt beschreven welke functies in elke modelversie zijn bijgewerkt:
 
-| Model versie           | Bijgewerkte onderdelen         | Nieuwste versie voor:           |
+| Modelversie           | Functies bijgewerkt         | Nieuwste versie voor:           |
 |-------------------------|--------------------------|--------------------------|
 | `2020-02-01`            | Herkenning van entiteiten                      | Herkenning van entiteiten                      |
-| `2019-10-01`            | Entiteits herkenning, sentiment analyse  | Taal detectie, extractie van sleutel zinnen, sentiment analyse|
+| `2019-10-01`            | Entiteitsherkenning, Sentimentanalyse  | Taaldetectie, Sleutelzinextractie, Sentimentanalyse|
 
 
-Elke reactie van de V3-eind punten bevat een `model-version` veld waarin de gebruikte model versie wordt opgegeven.
+Elk antwoord van de v3-eindpunten bevat een `model-version` veld waarin de modelversie wordt opgegeven die is gebruikt.
 
 ```json
 {
@@ -33,4 +33,4 @@ Elke reactie van de V3-eind punten bevat een `model-version` veld waarin de gebr
     "model-version": "2019-10-01"
 }
 ```
-Bekijk [wat er nieuw is](../whats-new.md) voor meer informatie over de updates voor deze model versies.
+Zie [Nieuw](../whats-new.md) voor meer informatie over de updates voor deze modelversies.

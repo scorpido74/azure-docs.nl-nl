@@ -1,7 +1,7 @@
 ---
-title: Zelf studie over het ontwerpen van een project-unit-eenheid
+title: Project Acoustics Unity Design Zelfstudie
 titlesuffix: Azure Cognitive Services
-description: In deze zelf studie wordt de ontwerp werk stroom voor project akoestische in eenheid beschreven.
+description: Deze zelfstudie beschrijft de ontwerpworkflow voor Project Acoustics in Unity.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,85 +12,85 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854265"
 ---
-# <a name="project-acoustics-unity-design-tutorial"></a>Zelf studie over het ontwerpen van een project-unit-eenheid
-In deze zelf studie worden de ontwerp hulpprogramma's en werk stroom voor project akoestische in eenheid beschreven.
+# <a name="project-acoustics-unity-design-tutorial"></a>Project Acoustics Unity Design Zelfstudie
+Deze zelfstudie beschrijft de ontwerptools en workflow voor Project Acoustics in Unity.
 
 Vereisten:
-* Unity 2018.2 + voor Windows
-* Een eenheids scène met een geïntegreerde akoestische activa
+* Unity 2018.2+ voor Windows
+* Een scène van de Eenheid met een gebakken akoestiekbezit
 
-Voor deze zelf studie kunt u op twee manieren een eenheids scène met een geïntegreerde geluids activum verkrijgen:
-* [Voeg het project toe aan uw eenheids project](unity-integration.md), ga vervolgens [een Azure batch account](create-azure-account.md)en [maken uw eenheids scène](unity-baking.md)
-* U kunt ook de [voorbeeld inhoud van de project akoestische-eenheid](unity-quickstart.md)gebruiken.
+Voor deze tutorial kun je op twee manieren een Unity-scène met een gebakken akoestiekactief krijgen:
+* [Projectakoestiek toevoegen aan uw Unity-project,](unity-integration.md) [en vervolgens een Azure Batch-account krijgen](create-azure-account.md)en vervolgens uw [Unity-scène bakken](unity-baking.md)
+* Of gebruik de [samplecontent van Project Acoustics Unity.](unity-quickstart.md)
 
-## <a name="review-design-process-concepts"></a>Concepten van het ontwerp proces controleren
-In Project akoestische worden de DSP-methoden (common audio Digital signalering processing) gebruikt voor het verwerken van uw bronnen en hebt u de controle over bekende akoestische eigenschappen, waaronder bedekking, natte/droge mix, en reverberation staart lengte (RT60). Maar het [concept ontwerp proces](design-process.md) van het belangrijkste project is dat in plaats van deze eigenschappen rechtstreeks in te stellen, u kunt bepalen hoe simulatie resultaten worden gebruikt om deze eigenschappen te best uren. De standaard instellingen voor elk besturings element vertegenwoordigen fysiek nauw keurige akoestische.
+## <a name="review-design-process-concepts"></a>Concepten voor ontwerpprocessen herzien
+Project Acoustics maakt gebruik van gemeenschappelijke audio digitale signaal verwerking (DSP) methoden om uw bronnen te verwerken, en geeft u controle over bekende akoestiek eigenschappen, waaronder occlusie, nat / droog mix, en nagalm staart lengte (RT60). Maar de kern [Project Acoustics ontwerp proces concept](design-process.md) is dat in plaats van het instellen van deze eigenschappen direct, u bepalen hoe simulatie resultaten worden gebruikt om deze eigenschappen rijden. De standaardinstellingen voor elk besturingselement vertegenwoordigen fysiek nauwkeurige akoestiek.
 
-## <a name="design-acoustics-for-each-source"></a>Ontwerp akoestische ontwerpen voor elke bron
-De geluids elementen van het project bieden een aantal apparaatspecifieke ontwerpen voor akoestische ontwerp. Zo kunt u de mix in een scène beheren door bepaalde bronnen te benadrukken en anderen te benadrukken.
+## <a name="design-acoustics-for-each-source"></a>Ontwerp akoestiek voor elke bron
+Project Acoustics biedt een aantal bronspecifieke akoestiekontwerpregelaars. Hiermee u de mix in een scène controleren door bepaalde bronnen te benadrukken en anderen te de-benadrukken.
 
-### <a name="adjust-distance-based-attenuation"></a>Afzwakking op afstand aanpassen
-De audio-DSP die wordt verschaft door de spatializer-invoeg toepassing voor de **project geluids** eenheid, respecteert de op afstand gebaseerde verzwakking die is ingebouwd in de Unity-editor. Besturings elementen voor verzwakking op afstand bevinden zich in het **audio bron** onderdeel dat is gevonden in het deel venster **Inspector** van geluids bronnen, onder **3D-geluids instellingen**:
+### <a name="adjust-distance-based-attenuation"></a>Demping op afstand aanpassen
+De audio DSP van de **Project Acoustics** Unity spatializer plugin respecteert de op afstand gebaseerde demping per bron die is ingebouwd in de Unity Editor. Besturingselementen voor demping op afstand bevinden zich in de component **Audiobron** in het **deelvenster Inspector** van geluidsbronnen onder **3D-geluidsinstellingen:**
 
-![Scherm afbeelding van het deel venster Opties voor afstands verzwakking](media/distance-attenuation.png)
+![Schermafbeelding van het deelvenster Opties voor afstandsdemping van Unity](media/distance-attenuation.png)
 
-Akoestische handelingen voeren een berekening uit in het vak simulatie regio, gecentreerd rond de locatie van de speler. Als een geluids bron zich buiten deze simulatie regio bevindt, heeft alleen de geometrie in het vak invloed op de geluids doorgifte (zoals bedekking) die redelijkerwijs goed werkt wanneer occluders zich in de buurt van de speler bevinden. In het geval dat de speler zich in open ruimte bevindt, maar de occluders zich in de buurt van de geluids bron van de afstand bevinden, kan het geluid onrealistisch worden disoccluded. Onze voorgestelde tijdelijke oplossing is om ervoor te zorgen dat de geluids verzwakking op 0 bij ongeveer 45 m is uitgeschakeld, de horizontale afstand van de speler tot aan de rand van het vak.
+Akoestiek voert berekeningen uit in een vak "simulatiegebied" gecentreerd rond de locatie van de speler. Als een geluidsbron ver van de speler verwijderd is, zich buiten dit simulatiegebied bevindt, heeft alleen de geometrie in de doos invloed op de geluidsvoortplanting (zoals het veroorzaken van occlusie) die redelijk goed werkt wanneer occluders zich in de buurt van de speler bevinden. Echter, in gevallen waarin de speler zich in de open ruimte bevindt, maar de occluders zich in de buurt van de verre geluidsbron bevinden, kan het geluid onrealistisch worden. Onze voorgestelde oplossing is om ervoor te zorgen in dergelijke gevallen dat het geluid demping valt af tot 0 op ongeveer 45 m, de standaard horizontale afstand van de speler tot de rand van de doos.
 
-![Scherm opname van het SpeakerMode-optie paneel](media/speaker-mode.png)
+![Schermafbeelding van het optiepaneel Unity SpeakerMode](media/speaker-mode.png)
 
-### <a name="adjust-occlusion-and-transmission"></a>Bedekking en overdracht aanpassen
-Als u het **AcousticsAdjust** -script aan een bron koppelt, worden afstemmings parameters voor die bron ingeschakeld. Als u het script wilt koppelen, klikt u op **onderdeel toevoegen** onder aan het deel venster **Inspector** en navigeert u naar **scripts > akoestische aanpassingen**. Het script heeft zes besturings elementen:
+### <a name="adjust-occlusion-and-transmission"></a>Occlusie en transmissie aanpassen
+Als u het **script AcousticsAdjust** aan een bron koppelt, kunnen afstemmingsparameters voor die bron worden aangepast. Als u het script wilt koppelen, klikt u op **Component toevoegen** onder in het deelvenster **Inspector** en navigeert u naar Scripts > **akoestiek aanpassen**. Het script heeft zes besturingselementen:
 
-![Scherm opname van Unity AcousticsAdjust-script](media/acoustics-adjust.png)
+![Schermafbeelding van het script Unity AcousticsAdjust](media/acoustics-adjust.png)
 
-* **Akoestische functies inschakelen** : Hiermee bepaalt u of er geluids elementen worden toegepast op deze bron. Als u dit selectie vakje uitschakelt, wordt de bron ruimtelijk met HRTFs of pannen, maar er is geen akoestische. Dit betekent dat er geen obstakel-, bedekking-of dynamische reverberation-para meters zoals niveau en verval tijd. Reverberation wordt nog steeds toegepast met een vast niveau en een verval tijd.
-* **Bedekking** : een vermenigvuldiger Toep assen op het niveau van de bedekking DB berekend door het akoestische systeem. Als deze vermenigvuldiger groter is dan 1, wordt bedekking exaggerated, terwijl waarden kleiner dan 1 het bedekking effect op subtieler maken en met een waarde van 0 bedekking wordt uitgeschakeld.
-* **Trans Mission (DB)** : Stel de verzwakking (in dB) in die door trans missie via geometrie wordt veroorzaakt. Stel deze schuif regelaar in op het laagste niveau om de verzen ding uit te scha kelen. Akoestische spatializes de eerste droge audio als een scène geometrie (Portal). Verzen ding biedt een extra droge aankomst die in de richting van het gezichts vermogen wordt ruimtelijk. Houd er rekening mee dat de curve voor het afzwakken van afstand voor de bron ook wordt toegepast.
+* **Akoestiek inschakelen** - Bepaalt of de akoestiek op deze bron wordt toegepast. Wanneer niet aangevinkt, zal de bron worden gespatialiseerd met HRTFs of panning, maar er zal geen akoestiek. Dit betekent geen obstructie, occlusie, of dynamische nagalm parameters zoals niveau en verval tijd. Nagalm wordt nog steeds toegepast met een vast niveau en vervaltijd.
+* **Occlusie** - Breng een multiplier aan op het occlusie dB-niveau berekend door het akoestieksysteem. Als deze multiplier groter is dan 1, zal occlusie worden overdreven, terwijl waarden minder dan 1 het occlusie-effect subtieler maken en een waarde van 0 occlusie uitschakelt.
+* **Transmissie (dB)** - Stel de demping (in dB) in die wordt veroorzaakt door transmissie door geometrie. Stel deze schuifregelaar in op het laagste niveau om de transmissie uit te schakelen. Akoestiek ruimtelijk de eerste droge audio als aankomst rond scène geometrie (portaling). Transmissie zorgt voor een extra droge aankomst die ruimtelijk is in de lijn-van-zicht richting. Houd er rekening mee dat de afstandsdempingscurve voor de bron ook wordt toegepast.
 
-### <a name="adjust-reverberation"></a>Reverberation aanpassen
-* **Wetness (DB)** : Hiermee past u de galm kracht in dB aan op basis van de afstand van de bron. Positieve waarden maken een geluid meer reverberant, terwijl negatieve waarden een geluid droger maken. Klik op het besturings element curve (groene lijn) om de curve-editor weer te geven. Wijzig de curve door met de rechter muisknop te klikken om punten toe te voegen en deze punten te slepen om de gewenste functie te maken. De x-as is de afstand tussen de bron en de y-as is aanpassing van galm in dB. Zie deze [Unit-hand leiding](https://docs.unity3d.com/Manual/EditingCurves.html)voor meer informatie over het bewerken van curven. Klik met de rechter muisknop op **Wetness** en selecteer **opnieuw instellen**om de curve terug te zetten naar de standaard waarde.
-* **Schaal van de verval tijd** : Hiermee wordt een vermenigvuldiger voor de verval tijd aangepast. Als het resultaat van de maken bijvoorbeeld een verval tijd van 750 milliseconden aangeeft, maar deze waarde is ingesteld op 1,5, is de verval tijd die wordt toegepast op de bron 1.125 milliseconden.
-* **Buitenshuis** : een additief aanpassing aan de soliditeit van het akoestische systeem van de manier waarop de reverberation van een bron moet worden geschat. Als u deze waarde instelt op 1, wordt een bron altijd volledig geklankd en wordt deze ingesteld op-1 en wordt een bron geluid helemaal niet in de lucht.
+### <a name="adjust-reverberation"></a>Nagalm aanpassen
+* **Nattigheid (dB)** - Past de nagalmkracht, in dB, aan op afstand van de bron. Positieve waarden maken een geluid meer galmen, terwijl negatieve waarden maken een geluid meer droog. Klik op het curvebesturingselement (groene lijn) om de curveeditor naar boven te halen. Wijzig de curve door links te klikken om punten toe te voegen en deze punten te slepen om de gewenste functie te vormen. De x-as is afstand tot de bron en de y-as is reverb aanpassing in dB. Zie deze [Eenheidshandleiding](https://docs.unity3d.com/Manual/EditingCurves.html)voor meer informatie over het bewerken van curven. Als u de curve terug wilt zetten naar standaard, klikt u met de rechtermuisknop op **Nattigheid** en selecteert u **Opnieuw instellen**.
+* **Decay Time Scale** - Past een multiplier voor het verval tijd. Als het bakresultaat bijvoorbeeld een vervaltijd van 750 milliseconden opgeeft, maar deze waarde is ingesteld op 1,5, is de vervaltijd die op de bron wordt toegepast 1.125 milliseconden.
+* **Outdoorness** - Een additieve aanpassing op de schatting van het akoestieksysteem van hoe "buiten" de nagalm op een bron moet klinken. Als u deze waarde op 1 instelt, klinkt een bron altijd volledig buiten, terwijl deze volledig binnen -1 wordt ingesteld.
 
-Als u het **AcousticsAdjustExperimental** -script aan een bron koppelt, worden extra experimentele afstemmings parameters voor die bron ingeschakeld. Als u het script wilt koppelen, klikt u op **onderdeel toevoegen** onder aan het deel venster **Inspector** en navigeert u naar **scripts > akoestische het experiment**aan te passen. Er bevindt zich momenteel één experimenteel besturings element:
+Als u het **script AcousticsAdjustExperimental** aan een bron koppelt, kunnen extra experimentele afstemmingsparameters voor die bron worden toegevoegd. Als u het script wilt koppelen, klikt u op **Component toevoegen** onder in het deelvenster **Inspector** en navigeert u naar Scripts > Akoestiek **Aanpassen experimenteel**. Er is momenteel één experimentele controle:
 
-![Scherm opname van Unity AcousticsAdjustExperimental-script](media/acoustics-adjust-experimental.png)
+![Schermafbeelding van het script van Unity AcousticsAdjustExperimental](media/acoustics-adjust-experimental.png)
 
-* **Perceptueel, afstand kromie** : pas een exponentiële verdraaiing toe op de afstand die wordt gebruikt om de droge verhouding te berekenen. Het akoestische systeem berekent de natte niveaus gedurende de gehele ruimte, wat soepel en op afstand afwijkt van waarnemingen op afstand. Het verdraaien van waarden die groter zijn dan 1 exaggerate dit effect door de reverberation op afstand te verhogen, waardoor het geluid ' afstand ' wordt. Als u waarden kleiner dan 1 maakt, wordt de op afstand gebaseerde reverberation subtieler gewijzigd, waardoor het geluid ' Prest '.
+* **Perceptuele Distance Warp** - Breng een exponentiële kromtrekken aan op de afstand die wordt gebruikt om de droge-natte verhouding te berekenen. Het akoestieksysteem berekent natte niveaus in de ruimte, die soepel variëren met afstand en bieden perceptuele afstand signalen. Kromtrekkenwaarden groter dan 1 overdrijven dit effect door afstandsgerelateerde nagalmniveaus te verhogen, waardoor het geluid "afstandelijk" wordt. Kromtrekkenwaarden van minder dan 1 maken de op afstand gebaseerde nagalm subtieler, waardoor het geluid meer "aanwezig" wordt.
 
-## <a name="design-acoustics-for-all-sources"></a>Ontwerp akoestische ontwerpen voor alle bronnen
-Als u de para meters voor alle bronnen wilt aanpassen, klikt u op de kanaal strook in de **audio mixer**van Unity en past u de para meters aan op het mixer effect van het **project akoestische** .
+## <a name="design-acoustics-for-all-sources"></a>Ontwerp akoestiek voor alle bronnen
+Als u parameters voor alle bronnen wilt aanpassen, klikt u op de kanaalstrip in Unity's **Audio Mixer**en past u de parameters aan op het effect Project **Acoustics Mixer.**
 
-![Scherm opname van het deel venster voor het aanpassen van het mixer voor project akoestische unit](media/mixer-parameters.png)
+![Schermafbeelding van het aanpassingspaneel van Project Acoustics Unity Mixer](media/mixer-parameters.png)
 
-* **Wetness aanpassen** : Hiermee past u de galm kracht in dB aan voor alle bronnen in de scène op basis van de afstand van de bron-listener. Positieve waarden maken een geluid meer reverberant, terwijl negatieve waarden een geluid droger maken.
-* **RT60 Scale** -multiplicative scalair voor galm tijd.
-* **Gebruik pannen om** te bepalen of audio wordt uitgevoerd als Binaural (0) of meerkanaalse panning (1). Een waarde van meer dan 1 geeft aan binaural. De binaural-uitvoer wordt ruimtelijk met HRTFs voor gebruik met een hoofd telefoon en meerkanaals uitvoer is ruimtelijk met VBAP voor gebruik met een meerkanaals surround-luidspreker systeem. Als u de multi kanaal-panner gebruikt, moet u ervoor zorgen dat u de luidspreker modus selecteert die overeenkomt met de apparaatinstellingen, die u vindt onder **project instellingen** > **Audio**.
+* **Wetheid aanpassen** - Past de nagalmkracht, in dB, aan op alle bronnen in de scène op basis van de afstand bron-luisteraar. Positieve waarden maken een geluid meer galmen, terwijl negatieve waarden maken een geluid meer droog.
+* **RT60 Schaal** - Multiplicative scalar voor reverb tijd.
+* **Panning gebruiken** - Hiermee bepaalt u of audio wordt uitgevoerd als binaurale (0) of multikanaals pannen (1). Elke waarde naast 1 geeft binauraal aan. Binaurale output is ruimtelijk met HRTF's voor gebruik met hoofdtelefoons en multichannel output is ruimtelijk met VBAP voor gebruik met multichannel surround luidsprekersystemen. Als u de multichannel-panner gebruikt, moet u de luidsprekermodus selecteren die overeenkomt met de instellingen van uw apparaat, gevonden onder **Project Instellingen** > **Audio**.
 
-## <a name="check-proper-sound-source-placement"></a>Controleer de juiste positie van de geluids bron
-Geluids bronnen die in de bezette voxels worden geplaatst, krijgen geen akoestische behandeling. Omdat voxels voorbij de zicht bare scène geometrie breidt, is het mogelijk om een bron in een Voxel te plaatsen terwijl deze unoccluded wordt weer gegeven op visuele geometrie. U kunt de voxels van het project weer geven door het selectie vakje Voxel raster in het menu **Gizmos** in de rechter bovenhoek van de **scène** weergave in te scha kelen.
+## <a name="check-proper-sound-source-placement"></a>De juiste plaatsing van de geluidsbron controleren
+Geluidsbronnen die in bezette voxels worden geplaatst, krijgen geen akoestische behandeling. Omdat voxels zich uitstrekken langs de zichtbare scènegeometrie, is het mogelijk om een bron in een voxel te plaatsen terwijl deze niet wordt afgesloten door visuele geometrie. U Project Acoustics voxels bekijken door het voxel-rasterselectievakje te omdraaien in het **gizmo's-menu,** rechtsboven in de **scèneweergave.**
 
-![Scherm opname van het Gizmos-menu](media/gizmos-menu.png)  
+![Schermafbeelding van het menu Unity Gizmos](media/gizmos-menu.png)  
 
-De Voxel-weer gave kan ook helpen bepalen of er op visuele onderdelen in het spel een trans formatie wordt toegepast. Als dit het geval is, past u dezelfde trans formatie toe op de GameObject die als host fungeert voor de **akoestische Manager**.
+De voxel display kan ook helpen bepalen of visuele componenten in het spel hebben een transformatie toegepast op hen. Als dat het zo is, past u dezelfde transformatie toe op de GameObject die de **Akoestiekmanager**host.
 
-### <a name="bake-time-vs-run-time-voxels"></a>Maken tijd versus uitvoerings tijd voxels
-Het is mogelijk om voxels in het venster Editor weer te geven tijdens de ontwerp fase en in het spel venster tijdens de uitvoering. De grootte van de voxels verschilt in deze weer gaven. Dit komt doordat de interpolatie van de akoestische runtime een fijn Voxel raster gebruikt voor vloeiende interpolatie resultaten. De plaatsing van de geluids bron moet worden gecontroleerd met behulp van de runtime-voxels.
+### <a name="bake-time-vs-run-time-voxels"></a>Bak tijd vs. run time voxels
+Het is mogelijk om voxels te bekijken in het editor venster op game design tijd en in het spel venster op runtime. De grootte van de voxels is verschillend in deze opvattingen. Dit komt omdat de akoestiek runtime interpolatie maakt gebruik van een fijnere voxel raster voor soepeler interpolatie resultaten. Geluidsbronplaatsing moet worden geverifieerd met behulp van de runtime voxels.
 
 Ontwerp tijd voxels:
 
-![Scherm afbeelding van akoestische voxels tijdens de ontwerp fase](media/voxels-design-time.png)
+![Schermafbeelding van Project Acoustics voxels tijdens ontwerptijd](media/voxels-design-time.png)
 
-Runtime-voxels:
+Runtime voxels:
 
-![Scherm afbeelding van akoestische voxels tijdens runtime](media/voxels-runtime.png)
+![Schermafbeelding van Project Acoustics-voxels tijdens de run](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk Case-study's die de concepten achter het [ontwerp proces](design-process.md) markeren
+* Ontdek casestudies waarin de concepten achter het [ontwerpproces](design-process.md) worden belicht
 

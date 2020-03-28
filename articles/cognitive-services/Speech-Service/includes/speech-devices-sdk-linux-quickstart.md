@@ -6,34 +6,34 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
 ms.openlocfilehash: 81c77b2f6ae0c4f8497716c168a937657ceb57dd
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383931"
 ---
-In deze Quick Start leert u hoe u de speech apparaten SDK voor Linux kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](../conversation-transcription-service.md) -apparaat. Momenteel wordt alleen [Azure KINECT DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund.
+In deze quickstart leert u hoe u de Spraakapparaten SDK voor Linux gebruiken om een spraakproduct te bouwen of te gebruiken als [een gesprekstranscriptieapparaat.](../conversation-transcription-service.md) Momenteel wordt alleen de [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund.
 
-De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
+De applicatie is gebouwd met het Speech SDK pakket en de Eclipse Java IDE (v4) op 64-bits Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
-Deze hand leiding vereist een [Azure Cognitive Services](../get-started.md) -account met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Deze handleiding vereist een [Azure Cognitive Services-account](../get-started.md) met een Spraakservicebron. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
-De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op github](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+De broncode voor de [voorbeeldtoepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de Spraakapparaten SDK. Het is ook [beschikbaar op GitHub.](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* Besturings systeem: 64-bits Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+* Besturingssysteem: 64-bits Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
-* Alleen [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) of [jdk 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
+* [Alleen Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) of [JDK 8.](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Een Azure-abonnementssleutel voor de Spraakservice. [Gratis downloaden](../get-started.md).
-* Down load de nieuwste versie van de [Speech apparaten SDK](https://aka.ms/sdsdk-download-JRE) voor Java en pak het. zip-bestand uit in uw werkmap.
+* Download de nieuwste versie van de [SpraakherkenningsSDK](https://aka.ms/sdsdk-download-JRE) voor Java en haal de .zip naar uw werkmap.
    > [!NOTE]
-   > In deze Snelstartgids wordt ervan uitgegaan dat de app is geëxtraheerd naar/home/wcaltest/JRE-Sample-Release
+   > Deze quickstart gaat ervan uit dat de app wordt geëxtraheerd naar /home/wcaltest/JRE-Sample-Release
 
-Zorg ervoor dat deze afhankelijkheden zijn geïnstalleerd voordat u de intereclips start.
+Zorg ervoor dat deze afhankelijkheden zijn geïnstalleerd voordat eclipse wordt gestart.
 
 * Op Ubuntu:
 
@@ -57,35 +57,35 @@ Op RHEL/CentOS 8:
   ```
 
 > [!NOTE]
-> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Volg op RHEL/CentOS 8 de instructies voor [het configureren van OpenSSL voor Linux.](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)
 
-De conversatie transcriptie is momenteel alleen beschikbaar voor ' nl-US ' en ' zh-CN ' in de regio's ' midden ' en ' EastAsia '. U moet een spraak sleutel hebben in een van deze regio's om conversatie transcriptie te kunnen gebruiken.
+Conversation Transcription is momenteel alleen beschikbaar voor "en-US" en "zh-CN", in de "centralus" en "eastasia" regio's. U moet in een van die regio's een spraaksleutel hebben om gesprekstranscriptie te kunnen gebruiken.
 
-Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnement (Language Understanding service)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) nodig. Zie voor meer informatie over LUIS en intentie herkenning [spraak intentie herkennen met Luis, C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Er is een voor beeld van een [Luis-model](https://aka.ms/sdsdk-luis) beschikbaar voor deze app.
+Als u van plan bent de intenties te gebruiken, hebt u een [LUIS-abonnement (Language Understanding Service)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) nodig. Zie [Spraakintenties herkennen met LUIS, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)voor meer informatie over LUIS en intentieherkenning. Voor deze app is [een voorbeeld LUIS-model](https://aka.ms/sdsdk-luis) beschikbaar.
 
 ## <a name="create-and-configure-the-project"></a>Het project maken en configureren
 
 1. Start Eclipse.
 
-1. Voer in het **Start programma voor de eclips IDE**in het veld **werk ruimte** de naam in van een nieuwe map voor de werk ruimte. Selecteer vervolgens **Starten**.
+1. Voer in de **Eclipse IDE Launcher**in het veld **Werkruimte** de naam in van een nieuwe werkruimtemap. Selecteer vervolgens **Starten**.
 
    ![Schermopname van Eclipse Launcher](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het welkomstscherm als dit verschijnt.
 
-1. Maak in de menu balk voor eclips een nieuw project door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
+1. Maak in de menubalk Eclipse een nieuw project door **Bestand** > **New** > **Java Project**te kiezen. Als niet beschikbaar kiest u **Project** en vervolgens **Java Project**.
 
-1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Voltooien**.
+1. De wizard **New Java Project** wordt gestart. **Blader naar** de locatie van het voorbeeldproject. Selecteer **Finish**.
 
    ![Schermopname van de wizard Nieuw Java-project](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Voltooien**.
+1. Klik in de **pakketverkenner**met de rechtermuisknop op uw project. Kies**Converteren naar Maven-project** **configureren** > in het contextmenu. Selecteer **Finish**.
 
    ![Schermopname van Package explorer](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. Open het bestand pom. XML en bewerk dit.
+1. Open het bestand pom.xml en bewerk dit.
 
-    Maak aan het einde van het bestand, vóór de afsluit code `</project>`, `repositories` en `dependencies` elementen, zoals hier wordt weer gegeven, en zorg ervoor dat de `version` overeenkomt met uw huidige versie:
+    Aan het einde van het bestand, vóór de afsluitende tag, `</project>` `repositories` maken en `dependencies` elementen, zoals hier weergegeven, en zorg ervoor dat de `version` overeenkomt met uw huidige versie:
     ```xml    
     <repositories>
          <repository>
@@ -104,24 +104,24 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
     </dependencies>
    ```
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **Eigenschappen**en **Voer de instellingen voor uitvoeren/fout opsporing** > **nieuwe...** > **Java-toepassing**. 
+1. Klik in de **pakketverkenner**met de rechtermuisknop op uw project. Kies **Eigenschappen**en voer de instellingen > voor **uitvoeren/foutopsporing****nieuw uit...** > **Java-toepassing**. 
 
-1. Het venster **configuratie bewerken** wordt weer gegeven. In het veld **naam** voert u **Main**in en gebruikt u **zoeken** naar de **hoofd klasse** om **com. micro soft. cognitiveservices. speech. samples. FunctionsList**te zoeken en te selecteren.
+1. Het venster **Configuratie bewerken** wordt weergegeven. Voer in het veld **Naam** **Hoofd in**en gebruik Zoeken **naar** de **hoofdklasse** om **com.microsoft.cognitiveservices.speech.samples.FunctionsList**te zoeken en te selecteren.
 
-   ![Scherm afbeelding van de configuratie voor het starten van bewerkingen](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
+   ![Schermafbeelding van Startconfiguratie bewerken](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. Kopieer de binaire audio bestanden voor uw doel architectuur, van **Linux-arm** of **Linux-x64**naar de locatie van het Java-project, bijvoorbeeld **/Home/wcaltest/jre-sample-release**
+1. Kopieer de audiobinaries voor uw doelarchitectuur, van **Linux-arm** of **Linux-x64**, naar de Locatie van het Java Project, bijvoorbeeld **/home/wcaltest/JRE-Sample-Release**
 
-1. Selecteer ook in het venster **configuratie bewerken** de pagina **omgeving** en **Nieuw**. Het venster **nieuwe omgevings variabele** wordt weer gegeven. Voer in het veld naam **LD_LIBRARY_PATH** in en voer in het veld **waarde** de map met de bestanden *. so in, bijvoorbeeld **/Home/wcaltest/jre-sample-release**
+1. Selecteer in het venster **Configuratie bewerken** ook de pagina **Omgeving** en **Nieuw**. Het venster **Nieuwe omgevingsvariabele** wordt weergegeven. Voer in het veld **Naam** **LD_LIBRARY_PATH** in en voer in het **waardeveld** de map in met de *.so-bestanden, bijvoorbeeld **/home/wcaltest/JRE-Sample-Release**
 
-1. `kws.table` en `participants.properties` naar de projectmap kopiëren **doel/klassen** van het project
+1. Doel/klassen `kws.table` van de projectmap kopiëren `participants.properties` **en naar de projectmap**
 
 
 ## <a name="configure-the-sample-application"></a>De voorbeeldtoepassing configureren
 
-1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
+1. Voeg uw spraakabonnementssleutel toe aan de broncode. Als u intentieherkenning wilt proberen, voegt u ook de abonnementssleutel [voor taalverstaanservice](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) en toepassings-id toe.
 
-   Voor spraak-en LUIS-informatie gaat u naar `FunctionsList.java`:
+   Voor spraak en LUIS gaat `FunctionsList.java`uw informatie in:
 
    ```java
     // Subscription
@@ -132,54 +132,54 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en de regio gegevens ook nodig in `Cts.java`:
+    Als u gesprekstranscriptie gebruikt, zijn uw spraaksleutel `Cts.java`en regio-informatie ook nodig in:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Het sleutel woord default (sleutel woord) is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. `/home/wcaltest/JRE-Sample-Release/keyword/Computer` bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
+1. Het standaardtrefwoord (trefwoord) is 'Computer'. U ook een van de andere opgegeven zoekwoorden proberen, zoals 'Machine' of 'Assistent'. De bronbestanden voor deze alternatieve zoekwoorden bevinden zich in de SDK spraakapparaten in de trefwoordmap. Bevat bijvoorbeeld `/home/wcaltest/JRE-Sample-Release/keyword/Computer` de bestanden die worden gebruikt voor het zoekwoord "Computer".
 
    > [!TIP]
-   > U kunt ook [een aangepast tref woord maken](../speech-devices-sdk-create-kws.md).
+   > U ook [een aangepast zoekwoord maken.](../speech-devices-sdk-create-kws.md)
 
-    Als u een nieuw tref woord wilt gebruiken, werkt u de volgende regel in `FunctionsList.java`en kopieert u het tref woord naar uw app. Als u bijvoorbeeld het tref woord ' machine ' van het trefwoord pakket `machine.zip`wilt gebruiken:
+    Als u een nieuw zoekwoord `FunctionsList.java`wilt gebruiken, werkt u de volgende regel in en kopieert u het zoekwoord naar uw app. Bijvoorbeeld om het trefwoord 'Machine' uit `machine.zip`het trefwoordpakket te gebruiken:
 
-   * Kopieer het `kws.table`-bestand vanuit het zip-pakket naar de projectmap **/klassen**van het project.
+   * Kopieer `kws.table` het bestand vanuit het zip-pakket naar het **doel/de doelklassen**van de projectmap.
 
-   * Werk de `FunctionsList.java` bij met de naam van het tref woord:
+   * Update `FunctionsList.java` de met de trefwoordnaam:
 
      ```java
      private static final String Keyword = "Machine";
      ```
 
-## <a name="run-the-sample-application-from-eclipse"></a>De voorbeeld toepassing vanuit een eclips uitvoeren
+## <a name="run-the-sample-application-from-eclipse"></a>De voorbeeldtoepassing uitvoeren vanuit Eclipse
 
-1. **Voer** in de menu balk voor eclips > **uitvoeren** uit 
+1. In de menubalk Van de Eclipse **u** > **uitvoeren** 
 
-1. De voorbeeldtoepassing met spraak Devices SDK wordt gestart en worden de volgende opties weergegeven:
+1. De SDK-voorbeeldtoepassing Spraakapparaten start en geeft de volgende opties weer:
 
-   ![Voorbeeld van de voorbeeldtoepassing spraak Devices SDK en opties](../media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Voorbeeld van voorbeeldspraakapparaten SDK-voorbeeldtoepassing en -opties](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Probeer de nieuwe **transcriptie** -demo van de conversatie. Begin met transcriberen met **sessie** > **starten**. Standaard is iedereen een gast. Als u echter spraak handtekeningen van deel nemers hebt, kunnen ze in `participants.properties` worden geplaatst in de **projectmap van het project.** Als u de spraak handtekening wilt genereren, kijkt u naar [Transcribe-gesprekken (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Probeer de nieuwe **conversation transcription** demo. Begin met transcriberen met > **sessiestart**. **Session** Standaard is iedereen te gast. Als u echter de stemhandtekeningen van de deelnemer `participants.properties` hebt, kunnen ze worden geplaatst in de **doel/klassen**van de projectmap. Als u de spraakhandtekening wilt genereren, bekijkt u [Transcribe-gesprekken (SDK).](../how-to-use-conversation-transcription-service.md)
 
-   ![Transcriptie-toepassing voor demo gesprekken](../media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![Demo Conversation Transcriptie applicatie](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
-## <a name="create-and-run-standalone-the-application"></a>Zelfstandige toepassing maken en uitvoeren
+## <a name="create-and-run-standalone-the-application"></a>Zelfstandig de toepassing maken en uitvoeren
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **exporteren**. 
-1. Het venster **exporteren** wordt weer gegeven. Vouw **Java** uit en selecteer het **uitvoer bare jar-bestand** en selecteer vervolgens **volgende**.
+1. Klik in de **pakketverkenner**met de rechtermuisknop op uw project. Kies **Exporteren**. 
+1. Het venster **Exporteren** wordt weergegeven. Vouw **Java** uit en selecteer **Het JAR-bestand voor uitbreidbaar** en selecteer **Volgende**.
 
-   ![Scherm opname van het venster exporteren](../media/speech-devices-sdk/eclipse-export-linux.png) 
+   ![Schermafbeelding van het venster Exporteren](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Het venster **uitvoer bare JAR file export** wordt weer gegeven. Kies een **export doel** voor de toepassing en selecteer vervolgens **volt ooien**.
+1. Het venster **Runnable JAR File Export** wordt weergegeven. Kies een **exportbestemming** voor de toepassing en selecteer **Voltooien**.
  
-   ![Scherm opname van uitvoer bare JAR-bestand exporteren](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![Schermafbeelding van runnable JAR-bestandsexport](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
-1. Plaats `kws.table` en `participants.properties` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
+1. Gelieve `kws.table` en `participants.properties` in de bovenstaande bestemming map als deze bestanden nodig zijn door de toepassing.
 
-1. Stel de LD_LIBRARY_LIB in op de map met de bestanden *. so
+1. De LD_LIBRARY_LIB instellen op de map met de *.so-bestanden
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release

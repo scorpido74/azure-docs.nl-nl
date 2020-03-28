@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: tekst-naar-spraak stemmen, node. js-Speech-Service vermelden'
+title: 'Snelstart: tekst-naar-spraakstemmen, Node.js - Spraakservice weergeven'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de volledige lijst met standaard-en Neural-stemmen kunt verkrijgen voor een regio/eind punt met behulp van node. js. De lijst wordt geretourneerd als JSON en de beschik baarheid van de spraak varieert per regio.
+description: In deze quickstart leer je hoe je de volledige lijst met standaard- en neurale stemmen voor een regio/eindpunt krijgen met Behulp van Node.js. De lijst wordt geretourneerd als JSON en de beschikbaarheid van spraak verschilt per regio.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976567"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Snelstartgids: de lijst met tekst-naar-spraak-stemmen ophalen met behulp van node. js
+# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Snelstart: de lijst met tekst-naar-spraakstemmen gebruiken Node.js
 
-In deze Quick Start leert u hoe u de volledige lijst met standaard-en Neural-stemmen kunt verkrijgen voor een regio/eind punt met behulp van node. js. De lijst wordt geretourneerd als JSON en de beschik baarheid van de spraak varieert per regio. Zie [regio's](regions.md)voor een lijst met ondersteunde regio's.
+In deze quickstart leer je hoe je de volledige lijst met standaard- en neurale stemmen voor een regio/eindpunt krijgen met Behulp van Node.js. De lijst wordt geretourneerd als JSON en de beschikbaarheid van spraak verschilt per regio. Zie regio's voor een lijst met ondersteunde [regio's](regions.md).
 
-Deze Snelstartgids vereist een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](get-started.md) gebruiken om een abonnementssleutel op te halen.
+Voor deze quickstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Spraakservicebron vereist. Als u geen account hebt, kunt u de [gratis proefversie](get-started.md) gebruiken om een abonnementssleutel op te halen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,11 +29,11 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 * [Node 8.12.x of hoger](https://nodejs.org/en/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) of uw favoriete teksteditor
-* Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang er gratis een](get-started.md).
+* Een Azure-abonnementssleutel voor de Spraakservice. [Ontvang er een gratis!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Een project maken en afhankelijkheden vereisen
 
-Maak een nieuw node. js-project met uw favoriete IDE of editor. Kopieer dit codefragment naar uw project in een bestand met de naam `get-voices.js`.
+Maak een nieuw Node.js-project met uw favoriete IDE- of editor. Kopieer dit codefragment naar uw project in een bestand met de naam `get-voices.js`.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-De Text to Speech REST-API is een toegangstoken voor verificatie vereist. Als u een toegangstoken, is een exchange vereist. Met deze functie wordt de abonnements sleutel van uw spraak service voor een toegangs token voor het `issueToken`-eind punt uitgewisseld.
+De rest-to-speech REST API vereist een toegangstoken voor verificatie. Om een toegangstoken te krijgen, is een uitwisseling vereist. Met deze functie wordt uw abonnementssleutel voor `issueToken` spraakservice uitgewisseld voor een toegangstoken met behulp van het eindpunt.
 
-In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio, werk de waarde voor `uri`. Zie voor een volledige lijst [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+In dit voorbeeld wordt ervan uitgegaan dat uw spraakserviceabonnement zich in de regio West-VS bevindt. Als u een ander gebied gebruikt, `uri`werkt u de waarde bij voor . Zie [Regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst .
 
 Kopieer deze code naar uw project:
 
@@ -69,15 +69,15 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> Zie [verifiëren met een toegangs token](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)voor meer informatie over verificatie.
+> Zie [Verifiëren met een toegangstoken voor](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)meer informatie over verificatie.
 
-In de volgende sectie maken we de functie om de lijst met stemmen op te halen en de JSON-uitvoer naar het bestand op te slaan.
+In het volgende gedeelte maken we de functie om de lijst met stemmen op te halen en de JSON-uitvoer op te slaan in bestand.
 
-## <a name="make-a-request-and-save-the-response"></a>Een aanvraag indienen en het antwoord opslaan
+## <a name="make-a-request-and-save-the-response"></a>Een verzoek indienen en het antwoord opslaan
 
-Hier gaat u de aanvraag maken en de lijst met geretourneerde stemmen opslaan. In dit voorbeeld wordt ervan uitgegaan dat u het eindpunt van de VS-West. Als de bron naar een andere regio is geregistreerd, moet u bijwerken de `uri`. Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
+Hier ga je het verzoek bouwen en de lijst met geretourneerde stemmen opslaan. In dit voorbeeld wordt ervan uitgegaan dat u het Eindpunt van west-VS gebruikt. Als uw resource is geregistreerd in een andere `uri`regio, moet u de . Zie [Spraakserviceregio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)voor meer informatie .
 
-Voeg vervolgens de vereiste headers voor de aanvraag toe. Ten slotte maakt u een aanvraag naar de service. Als de aanvraag is gelukt en er een 200-status code wordt geretourneerd, wordt het antwoord naar het bestand geschreven.
+Voeg vervolgens vereiste kopteksten voor de aanvraag toe. Tot slot doet u een verzoek aan de service. Als de aanvraag is geslaagd en een statuscode van 200 wordt geretourneerd, wordt het antwoord naar bestand geschreven.
 
 ```javascript
 function textToSpeech(accessToken) {
@@ -104,9 +104,9 @@ function textToSpeech(accessToken) {
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-U bent bijna klaar. De laatste stap is het maken van een asynchrone functie. Met deze functie wordt uw abonnements sleutel van een omgevings variabele gelezen, wordt een token opgehaald, wordt gewacht tot de aanvraag is voltooid en wordt vervolgens het JSON-antwoord naar het bestand geschreven.
+U bent bijna klaar. De laatste stap is het maken van een asynchrone functie. Deze functie leest uw abonnementssleutel uit een omgevingsvariabele, krijgt een token, wacht tot het verzoek is voltooid en schrijft vervolgens het JSON-antwoord op het bestand.
 
-Als u niet bekend bent met omgevings variabelen of als u wilt testen met uw abonnements sleutel als een teken reeks, vervangt u `process.env.SPEECH_SERVICE_KEY` door uw abonnements sleutel als teken reeks.
+Als u niet bekend bent met omgevingsvariabelen of de voorkeur geeft aan `process.env.SPEECH_SERVICE_KEY` een proef met uw abonnementssleutel die als tekenreeks is gehard, vervangt u uw abonnementssleutel als tekenreeks.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -150,6 +150,6 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslaginformatie voor de Text to Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Het maken van aangepaste spraakstijlen](how-to-customize-voice-font.md)
-* [Record stem voorbeelden voor het maken van een aangepaste spraak](record-custom-voice-samples.md)
+* [API-verwijzing naar tekst naar spraak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Aangepaste spraaklettertypen maken](how-to-customize-voice-font.md)
+* [Spraakvoorbeelden opnemen om een aangepaste stem te maken](record-custom-voice-samples.md)

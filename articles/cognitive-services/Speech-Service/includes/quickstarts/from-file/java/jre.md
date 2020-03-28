@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 4e0959155b3f3e0821ffece9de0faba92486d503
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082136"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Om een nieuwe lege klasse aan uw Java-project toe te voegen, selecteert u **Bestand** > **Nieuw** > **Klasse**.
+1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **Bestand** > **Nieuwe** > **klasse**.
 
-1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam** **Main** in.
+1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam****Main** in.
 
    ![Schermopname van het venster Nieuwe Java-klasse](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -109,19 +109,19 @@ ms.locfileid: "79082136"
 
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Vervang de teken reeks `whatstheweatherlike.wav` door uw eigen bestands naam.
+1. Vervang de `whatstheweatherlike.wav` tekenreeks door uw eigen bestandsnaam.
 
-1. Sla de wijzigingen aan het project op.
+1. Sla de wijzigingen in het project op.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
-De eerste 15 seconden van de spraak invoer van uw audio bestand wordt herkend en geregistreerd in het console venster.
+Druk op F11 of selecteer **Foutopsporing** > **uitvoeren**.
+De eerste 15 seconden spraakinvoer uit uw audiobestand worden herkend en aangemeld in het consolevenster.
 
    ```text
    Recognizing first result...

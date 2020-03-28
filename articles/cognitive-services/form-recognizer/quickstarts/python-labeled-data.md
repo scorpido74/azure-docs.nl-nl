@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: trainen met labels met behulp van de REST API en python-formulier herkenner'
+title: 'Snelstart: trainen met labels met de REST API en Python - Form Recognizer'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de functie gelabelde gegevens van de formulier Recognizer met de REST API en python voor het trainen van een aangepast model.
+description: Meer informatie over het gebruik van de functie Formulierherkenning met de functie Formulierherkenning met de REST API en Python om een aangepast model te trainen.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,60 +10,60 @@ ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
 ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482314"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van REST API en python
+# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een formulierherkenningsmodel trainen met labels met REST API en Python
 
-In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het trainen van een aangepast model met hand matig gelabelde gegevens. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
+In deze quickstart gebruikt u de Form Recognizer REST API met Python om een aangepast model te trainen met handmatig gelabelde gegevens. Bekijk het gedeelte [Trainen met labels](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
-- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
-- Een set van ten minste zes soorten van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
+Om deze snelle start te voltooien, moet u het:
+- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
+- Een set van ten minste zes vormen van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U een [voorbeeldgegevensset](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken voor deze quickstart. Upload de trainingsbestanden naar de hoofdmap van een blobopslagcontainer in een Azure Storage-account.
 
-## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een bron voor formulierherkenning maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="set-up-training-data"></a>Trainings gegevens instellen
+## <a name="set-up-training-data"></a>Trainingsgegevens instellen
 
-Vervolgens moet u de vereiste invoer gegevens instellen. De functie voor gelabelde gegevens heeft speciale invoer vereisten dan die nodig zijn voor het trainen van een aangepast model. 
+Vervolgens moet u de vereiste invoergegevens instellen. De gelabelde gegevensfunctie heeft speciale invoervereisten die verder gaan dan die welke nodig zijn om een aangepast model te trainen. 
 
-Zorg ervoor dat alle trainings documenten dezelfde indeling hebben. Als u formulieren in meerdere indelingen hebt, kunt u deze indelen in submappen op basis van de algemene indeling. Wanneer u traint, moet u de API naar een submap sturen.
+Zorg ervoor dat alle trainingsdocumenten van hetzelfde formaat zijn. Als u formulieren in meerdere indelingen hebt, ordeert u deze in submappen op basis van een algemene indeling. Wanneer u traint, moet u de API naar een submap leiden.
 
-Als u een model wilt trainen met behulp van gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u informatie over het maken van dit bestand.
+Als u een model wilt trainen met gelabelde gegevens, hebt u de volgende bestanden nodig als invoer in de submap. Hieronder vindt u meer informatie over het maken van deze bestanden.
 
-* **Bron formulieren** : de formulieren waaruit gegevens moeten worden opgehaald. Ondersteunde typen zijn JPEG, PNG, BMP, PDF of TIFF.
-* **OCR-indelings bestanden** : json-bestanden waarin de grootte en positie van alle Lees bare tekst in elk bron formulier worden beschreven. U gebruikt de indelings-API voor formulier herkenning om deze gegevens te genereren. 
-* **Label bestanden** : json-bestanden met een beschrijving van gegevenslabels die een gebruiker hand matig heeft ingevoerd.
+* **Bronformulieren** – de formulieren om gegevens uit te extraheren. Ondersteunde typen zijn JPEG, PNG, BMP, PDF of TIFF.
+* **OCR-indelingsbestanden** - JSON-bestanden die de grootte en posities van alle leesbare tekst in elk bronformulier beschrijven. U gebruikt de API voor formulierindeling smeedinrichting om deze gegevens te genereren. 
+* **Labelbestanden** - JSON-bestanden die gegevenslabels beschrijven die een gebruiker handmatig heeft ingevoerd.
 
-Al deze bestanden moeten dezelfde submap innemen en de volgende indeling hebben:
+Al deze bestanden moeten dezelfde submap innemen en in de volgende indeling zijn:
 
-* input_file1. PDF 
-* input_file1. PDF. OCR. json
-* input_file1. PDF. labels. json 
-* input_file2. PDF 
-* input_file2. PDF. OCR. json
-* input_file2. PDF. labels. json
+* input_file1.pdf 
+* input_file1.pdf.ocr.json
+* input_file1.pdf.labels.json 
+* input_file2.pdf 
+* input_file2.pdf.ocr.json
+* input_file2.pdf.labels.json
 * ...
 
 > [!TIP]
-> Wanneer u formulieren labelt met behulp van het voor [beeld labelen](./label-tool.md)van de formulier Recognizer, maakt het hulp programma automatisch dit label en OCR-indelings bestanden.
+> Wanneer u formulieren labelt met het [voorbeeldlabelingsgereedschap](./label-tool.md)Formulierherkenning, maakt het hulpprogramma deze label- en OCR-indelingsbestanden automatisch.
 
-### <a name="create-the-ocr-output-files"></a>De OCR-uitvoer bestanden maken
+### <a name="create-the-ocr-output-files"></a>De OCR-uitvoerbestanden maken
 
-U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bijbehorende invoer bestanden voor gelabelde training. Volg de onderstaande stappen om OCR-resultaten voor een bepaald bron formulier te verkrijgen:
+U hebt OCR-resultaatbestanden nodig om de service rekening te kunnen houden met de bijbehorende invoerbestanden voor gelabelde training. Volg de onderstaande stappen om OCR-resultaten voor een bepaald bronformulier te verkrijgen:
 
-1. Roep de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API voor analyse op de container Lees indeling aan met het invoer bestand als onderdeel van de hoofd tekst van de aanvraag. Sla de ID op die is gevonden in de koptekst van de **bewerkings locatie** van de reactie.
-1. Roep de resultaat-API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan met behulp van de bewerkings-id uit de vorige stap.
-1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bron formulier moet het bijbehorende OCR-bestand de oorspronkelijke bestands naam toevoegen met `.ocr.json`. De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [OCR-voorbeeld bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voor beeld. 
+1. Roep de **[API Voor lay-out analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** aan op de lees-indelingscontainer met het invoerbestand als onderdeel van de aanvraaginstantie. Sla de id op die is gevonden in de **koptekst Operation-Location** van het antwoord.
+1. Roep de API **[voor het analysevan indelingsresultaat](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan met de bewerkings-id van de vorige stap.
+1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bronformulier moet het bijbehorende OCR-bestand `.ocr.json`de oorspronkelijke bestandsnaam hebben toegevoegd aan . De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [voorbeeld van het OCR-bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voorbeeld. 
 
     ```json
     {
@@ -114,13 +114,13 @@ U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bi
                     ...
     ```
 
-### <a name="create-the-label-files"></a>De label bestanden maken
+### <a name="create-the-label-files"></a>De labelbestanden maken
 
-Label bestanden bevatten koppelingen naar sleutel waarden die een gebruiker hand matig heeft ingevoerd. Ze zijn nodig voor gelabelde gegevens training, maar niet elk bron bestand moet een bijbehorend label bestand hebben. Bron bestanden zonder labels worden behandeld als gewone trainings documenten. We raden vijf of meer gelabelde bestanden aan voor een betrouw bare training.
+Labelbestanden bevatten associaties met sleutelwaarde die een gebruiker handmatig heeft ingevoerd. Ze zijn nodig voor gelabelde gegevenstraining, maar niet elk bronbestand hoeft een bijbehorend labelbestand te hebben. Bronbestanden zonder labels worden behandeld als gewone trainingsdocumenten. Wij raden vijf of meer gelabelde bestanden aan voor een betrouwbare training.
 
-Wanneer u een label bestand maakt, kunt u desgewenst regio's opgeven&mdash;exacte posities van waarden in het document. Hiermee krijgt de training nog nauw keuriger. Regio's worden ingedeeld als een set van acht waarden die overeenkomen met vier X, Y-coördinaten: linksboven, rechtsboven, rechtsonder en linksonder. Coördinaat waarden liggen tussen nul en één, geschaald naar de afmetingen van de pagina.
+Wanneer u een labelbestand maakt, kunt&mdash;u optioneel gebieden exacte posities van waarden op het document opgeven. Dit geeft de training nog meer nauwkeurigheid. Regio's worden opgemaakt als een set van acht waarden die overeenkomen met vier X-, Y-coördinaten: linksboven, rechtsboven, rechtsonder en linksonder. De coördinatenwaarden liggen tussen nul en één, geschaald naar de afmetingen van de pagina.
 
-Voor elk bron formulier moet het bijbehorende label bestand de oorspronkelijke bestands naam hebben die is toegevoegd aan `.labels.json`. Het label bestand moet de volgende indeling hebben. Zie het [voorbeeld label bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) voor een volledig voor beeld.
+Voor elk bronformulier moet de oorspronkelijke bestandsnaam bij `.labels.json`het bijbehorende labelbestand zijn toegevoegd aan . Het labelbestand moet de volgende indeling hebben. Zie het [voorbeeldlabelbestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) voor een volledig voorbeeld.
 
 ```json
 {
@@ -188,16 +188,16 @@ Voor elk bron formulier moet het bijbehorende label bestand de oorspronkelijke b
 ```
 
 > [!NOTE]
-> U kunt slechts één label Toep assen op elk tekst element en elk label kan slechts eenmaal per pagina worden toegepast. U kunt momenteel geen label op meerdere pagina's Toep assen.
+> U slechts één label toepassen op elk tekstelement en elk label kan slechts één keer per pagina worden toegepast. U momenteel geen label toepassen op meerdere pagina's.
 
 
-## <a name="train-a-model-using-labeled-data"></a>Een model trainen met behulp van gelabelde gegevens
+## <a name="train-a-model-using-labeled-data"></a>Een model trainen met gelabelde gegevens
 
-Als u een model met gelabelde gegevens wilt trainen, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u een model wilt trainen met gelabelde gegevens, roept u de **[API voor het aangepaste model train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Breng de volgende wijzigingen aan voordat u de code uitvoert:
 
-1. Vervang `<Endpoint>` door de URL van het eind punt voor de resource voor uw formulier herkenning.
-1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Vervang `<Blob folder name>` door de naam van de map in de BLOB-container waar de invoer gegevens zich bevinden. Als uw gegevens zich in de hoofdmap bevindt, laat u deze leeg en verwijdert u het `"prefix"` veld uit de hoofd tekst van de HTTP-aanvraag.
+1. Vervang `<Endpoint>` de URL van het eindpunt voor uw bron voor formulierherkenning.
+1. Vervang `<SAS URL>` de SAS-URL (Shared Access Signature) van de Azure Blob-opslagcontainer. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert **u Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de **sectie URL.** Het zou de `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`vorm moeten hebben: .
+1. Vervang `<Blob folder name>` de mapnaam in de blobcontainer waar de invoergegevens zich bevinden. Of als uw gegevens bij de wortel staan, `"prefix"` laat u dit leeg en verwijdert u het veld uit de hoofdtekst van het HTTP-verzoek.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -240,9 +240,9 @@ except Exception as e:
     quit() 
 ```
 
-## <a name="get-training-results"></a>Trainings resultaten ophalen
+## <a name="get-training-results"></a>Krijg trainingsresultaten
 
-Nadat u de trein bewerking hebt gestart, gebruikt u de geretourneerde ID om de status van de bewerking op te halen. Voeg de volgende code toe onder aan het python-script. Dit maakt gebruik van de ID-waarde van de trainings oproep in een nieuwe API-oproep. De trainings bewerking is asynchroon, waardoor dit script de API regel matig aanroept totdat de trainings status is voltooid. We raden een interval van één seconde of meer aan.
+Nadat u de treinbewerking hebt gestart, gebruikt u de geretourneerde id om de status van de bewerking te krijgen. Voeg de volgende code toe aan de onderkant van uw Python-script. Hiermee wordt de ID-waarde van de trainingsaanroep in een nieuwe API-aanroep gebruikt. De trainingsbewerking is asynchroon, dus dit script roept de API regelmatig aan totdat de trainingsstatus is voltooid. We raden een interval van een seconde of meer aan.
 
 ```python 
 n_tries = 15
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Wanneer het trainings proces is voltooid, ontvangt u een `201 (Success)` antwoord met JSON-inhoud zoals hieronder wordt weer gegeven. Het antwoord is verkort voor eenvoud.
+Wanneer het trainingsproces is voltooid, `201 (Success)` ontvangt u een antwoord met JSON-inhoud zoals de volgende. Het antwoord is ingekort voor eenvoud.
 
 ```json
 { 
@@ -342,11 +342,11 @@ Wanneer het trainings proces is voltooid, ontvangt u een `201 (Success)` antwoor
 }
 ```
 
-Kopieer de `"modelId"` waarde voor gebruik in de volgende stappen.
+Kopieer `"modelId"` de waarde voor gebruik in de volgende stappen.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Wanneer het proces is voltooid, ontvangt u een `202 (Success)` antwoord met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De hoofd sleutel/waarde-koppelingen bevinden zich in het knoop punt `"documentResults"`. De resultaten van de lay-out van de API (de inhoud en posities van alle tekst in het document) bevinden zich in het knoop punt `"readResults"`.
+Wanneer het proces is voltooid, `202 (Success)` ontvangt u een antwoord met JSON-inhoud in de volgende indeling. Het antwoord is ingekort voor eenvoud. De belangrijkste sleutel/waardeverenigingen `"documentResults"` zijn in het knooppunt. De resultaten van de Layout API (de inhoud en posities `"readResults"` van alle tekst in het document) bevinden zich in het knooppunt.
 
 ```json
 { 
@@ -551,16 +551,16 @@ Wanneer het proces is voltooid, ontvangt u een `202 (Success)` antwoord met JSON
 
 ## <a name="improve-results"></a>Resultaten verbeteren
 
-Controleer de `"confidence"` waarden voor elke sleutel/waarde resultaat onder het knoop punt `"documentResults"`. U moet ook de betrouwbaarheids scores in het `"readResults"` knoop punt bekijken, die overeenkomen met de lay-outbewerking. Het vertrouwen van de lay-outresultaten heeft geen invloed op het vertrouwen van de resultaten van de extractie van sleutel/waarde, dus u moet beide controleren.
-* Als de betrouwbaarheids scores voor de lay-outbewerking laag zijn, probeert u de kwaliteit van uw invoer documenten te verbeteren (Zie [invoer vereisten](../overview.md#input-requirements)).
-* Als de betrouwbaarheids scores voor de extractie bewerking voor sleutel/waarde laag zijn, moet u ervoor zorgen dat de documenten die worden geanalyseerd van hetzelfde type zijn als documenten die worden gebruikt in de Trainingsset. Als de documenten in de Trainingsset variaties in de weer gave hebben, kunt u overwegen deze te splitsen in verschillende mappen en een model voor elke variatie te trainen.
+Controleer `"confidence"` de waarden voor elk sleutel-/waarderesultaat onder het `"documentResults"` knooppunt. U moet ook kijken naar `"readResults"` de vertrouwensscores in het knooppunt, die overeenkomen met de indelingsbewerking. Het vertrouwen van de lay-outresultaten heeft geen invloed op het vertrouwen van de belangrijkste/waardeextractieresultaten, dus u moet beide controleren.
+* Als de betrouwbaarheidsscores voor de indelingsbewerking laag zijn, probeert u de kwaliteit van uw invoerdocumenten te verbeteren (zie [Invoervereisten).](../overview.md#input-requirements)
+* Als de betrouwbaarheidsscores voor de toets-/waardeextractiebewerking laag zijn, moet u ervoor zorgen dat de documenten die worden geanalyseerd van hetzelfde type zijn als documenten die in de trainingsset worden gebruikt. Als de documenten in de trainingsset variaties in uiterlijk hebben, u overwegen deze in verschillende mappen op te splitsen en één model voor elke variant op te zetten.
 
-### <a name="avoid-cluttered-labels"></a>Geen wirwar van labels
+### <a name="avoid-cluttered-labels"></a>Voorkom rommelige labels
 
-Wanneer u verschillende labels op dezelfde tekst regel toepast, kan de service deze labels soms samen voegen in één veld. U kunt bijvoorbeeld in een adres de plaats, de provincie en de post code als verschillende velden labelen, maar tijdens de voor spelling worden deze velden niet afzonderlijk herkend.
+Soms wanneer u verschillende labels binnen dezelfde regel tekst toepast, kan de service deze labels samenvoegen tot één veld. In een adres u bijvoorbeeld de plaats, de status en de postcode als verschillende velden labelen, maar tijdens het voorspellen worden deze velden niet afzonderlijk herkend.
 
-We begrijpen dat dit scenario essentieel is voor onze klanten en we werken eraan om dit in de toekomst te verbeteren. Momenteel raden we aan dat onze gebruikers meerdere overzichtelijke velden als één veld labelen en de voor waarden vervolgens scheiden in een naverwerking van de extractie resultaten.
+We begrijpen dat dit scenario essentieel is voor onze klanten en we werken eraan om dit in de toekomst te verbeteren. Momenteel raden we onze gebruikers aan om meerdere rommelige velden als één veld te labelen en vervolgens de termen te scheiden in een nabewerking van de extractieresultaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u de formulier Recognizer REST API met python kunt gebruiken om een model te trainen met hand matig gelabelde gegevens. Bekijk vervolgens de [API-referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) om de formulier Recognizer API te verkennen.
+In deze quickstart hebt u geleerd hoe u de Form Recognizer REST API met Python gebruiken om een model te trainen met handmatig gelabelde gegevens. Zie vervolgens de [API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) om de API voor formulierherkenning verder te verkennen.

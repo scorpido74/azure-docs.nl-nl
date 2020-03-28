@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte tekst extra heren-REST, ga'
+title: 'Snelstart: gedrukte tekst extraheren - REST, Go'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met Go.
 services: cognitive-services
@@ -12,31 +12,31 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 0522d0a6904a5f52269345db08e216eafeeebc4f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74961689"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API met Go
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Snelstart: afgedrukte tekst (OCR) extraheren met de Computer Vision REST API met Go
 
 > [!NOTE]
-> Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken. Er is een [Go-Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts-sdk/go-sdk#call-the-read-api) beschikbaar.
+> Als u Tekst in de Engelse taal extraheert, u overwegen de nieuwe [bewerking Lezen te](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)gebruiken. Er is een [Go quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts-sdk/go-sdk#call-the-read-api) beschikbaar.
 
-In deze Quick Start kunt u gedrukte tekst met behulp van de Computer Vision REST API extra heren met optische teken herkenning (OCR) van een afbeelding. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze quickstart haalt u afgedrukte tekst met optische tekenherkenning (OCR) uit een afbeelding met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) u afgedrukte tekst in een afbeelding detecteren en herkende tekens extraheren in een machinebruikbare tekenstroom.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Go](https://golang.org/dl/) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Kopieer de volgende code in een teksteditor.
+1. Kopieer de volgende code naar een teksteditor.
 1. Vervang eventueel de waarde van `imageUrl` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.go`. Bijvoorbeeld `get-printed-text.go`.
 1. Open een opdrachtpromptvenster.

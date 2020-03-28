@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906809"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -80,7 +80,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U moet eerst een openbare klasse maken voor het project:
+U moet eerst een openbare klasse voor uw project maken:
 
 ```java
 public class BreakSentence {
@@ -88,14 +88,14 @@ public class BreakSentence {
 }
 ```
 
-Voeg deze regels toe aan de klasse `BreakSentence`. Eerst worden de abonnements sleutel en het eind punt gelezen van omgevings variabelen. Vervolgens ziet u dat u samen met de de `api-version`invoer taal kunt definiëren. In dit voorbeeld is het Engels.
+Voeg deze regels toe aan de klasse `BreakSentence`. Ten eerste worden de abonnementssleutel en het eindpunt afgelezen op basis van omgevingsvariabelen. Dan zult u merken dat `api-version`samen met de, u de invoertaal te definiëren. In dit voorbeeld is het Engels.
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
 private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Een client maken en een aanvraag samenstellen
 
@@ -189,7 +189,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u in het vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

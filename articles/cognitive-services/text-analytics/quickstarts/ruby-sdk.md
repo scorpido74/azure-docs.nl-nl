@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Text Analytics-client bibliotheek voor ruby | Microsoft Docs'
+title: 'Snelstart: Text Analytics-clientbibliotheek voor Ruby | Microsoft Documenten'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start wordt taal gedetecteerd met behulp van de ruby Text Analytics-client bibliotheek van Azure Cognitive Services.
+description: Detecteer in deze quickstart taal met behulp van de Ruby Text Analytics-clientbibliotheek van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77919665"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Snelstartgids: de Text Analytics-client bibliotheek voor ruby gebruiken
+# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Snelstart: gebruik de text analytics-clientbibliotheek voor Ruby
 
-Aan de slag met de Text Analytics-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+Ga aan de slag met de text analytics-clientbibliotheek. Volg deze stappen om het pakket te installeren en probeer de voorbeeldcode voor basistaken uit.
 
-De Text Analytics-client bibliotheek gebruiken om uit te voeren:
+Gebruik de clientbibliotheek Text Analytics om uit te voeren:
 
 * Sentimentanalyse
 * Taaldetectie
@@ -29,42 +29,42 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 * Sleuteltermextractie
 
 > [!NOTE]
-> Deze Quick start is alleen van toepassing op Text Analytics versie 2,1. Op dit moment is er geen v3-client bibliotheek voor ruby beschikbaar.
+> Deze quickstart is alleen van toepassing op Text Analytics versie 2.1. Momenteel is een v3-clientbibliotheek voor Ruby niet beschikbaar.
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [pakket (rubygems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Bibliotheekbroncodepakket](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [(RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* De huidige versie van [ruby](https://www.ruby-lang.org/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
-    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
+* De huidige versie van [Ruby](https://www.ruby-lang.org/)
+* Zodra u uw Azure-abonnement <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hebt,"  target="_blank">maakt u <span class="docon docon-navigate-external x-hidden-focus"></span> </a> een Text Analytics-bron en maakt u een Text Analytics-bron in de Azure-portal om uw sleutel en eindpunt op te halen. 
+    * U hebt de sleutel en het eindpunt van de resource die u maakt nodig om uw toepassing te verbinden met de Text Analytics API. Je doet dit later in de snelle start.
+    * U de gratis prijscategorie gebruiken om de service uit te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-new-ruby-application"></a>Een nieuwe ruby-toepassing maken
+### <a name="create-a-new-ruby-application"></a>Een nieuwe Ruby-toepassing maken
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. Maak vervolgens een bestand met de naam `GemFile`en een ruby-bestand voor uw code.
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor uw app en navigeer ernaar. Maak vervolgens een `GemFile`bestand met de naam en een Ruby-bestand voor uw code.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voeg in uw `GemFile`de volgende regels toe om de client bibliotheek toe te voegen als een afhankelijkheid.
+Voeg `GemFile`in uw, voeg de volgende regels toe om de clientbibliotheek toe te voegen als een afhankelijkheid.
 
 ```ruby
 source 'https://rubygems.org'
 gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
 ```
 
-Importeer in uw ruby-bestand de volgende pakketten.
+Importeer in uw Ruby-bestand de volgende pakketten.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. 
+Maak variabelen voor het Azure-eindpunt en de sleutel van uw resource. 
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
@@ -73,27 +73,27 @@ const subscription_key = '<paste-your-text-analytics-key-here>'
 const endpoint = `<paste-your-text-analytics-endpoint-here>`
 ```
 
-## <a name="object-model"></a>Object model 
+## <a name="object-model"></a>Objectmodel 
 
-De Text Analytics-client wordt met uw sleutel geverifieerd bij Azure. De-client biedt verschillende methoden voor het analyseren van tekst, als één teken reeks of een batch. 
+De Text Analytics-client verifieert naar Azure met behulp van uw sleutel. De client biedt verschillende methoden voor het analyseren van tekst, als één tekenreeks of als batch. 
 
-Tekst wordt naar de API verzonden als een lijst met `documents`. Dit zijn `dictionary` objecten die een combi natie van `id`, `text`en `language` kenmerken bevatten, afhankelijk van de gebruikte methode. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd in het oorspronkelijke `language`en de `id` kan een wille keurige waarde zijn. 
+Tekst wordt naar de API `documents`verzonden `dictionary` als een lijst `id`van `text`, `language` die objecten zijn die een combinatie van , en kenmerken bevatten, afhankelijk van de gebruikte methode. Het `text` kenmerk slaat de tekst op `language`die moet `id` worden geanalyseerd in de oorsprong en deze kan elke waarde zijn. 
 
-Het antwoord object is een lijst met de analyse-informatie voor elk document. 
+Het antwoordobject is een lijst met de analysegegevens voor elk document. 
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u het volgende kunt doen met de Text Analytics-client bibliotheek voor python:
+Deze codefragmenten laten zien hoe u het volgende doen met de Text Analytics-clientbibliotheek voor Python:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Sentimentanalyse](#sentiment-analysis)
-* [Taal detectie](#language-detection)
-* [Entiteit herkenning](#entity-recognition)
-* [Extractie van sleutel woorden](#key-phrase-extraction)
+* [Taaldetectie](#language-detection)
+* [Herkenning van entiteiten](#entity-recognition)
+* [Trefwoordextractie](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak een klasse met de naam `TextAnalyticsClient`. 
+Een klasse `TextAnalyticsClient`maken met de naam . 
 
 ```ruby
 class TextAnalyticsClient
@@ -102,11 +102,11 @@ class TextAnalyticsClient
 end
 ```
 
-Maak in deze klasse een functie met de naam `initialize` om de client te verifiëren met behulp van uw sleutel en eind punt. 
+Maak in deze klasse `initialize` een functie die wordt aangeroepen om de client te verifiëren met behulp van uw sleutel en eindpunt. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
-Buiten de-klasse gebruikt u de `new()` functie van de client om deze te instantiëren.
+Buiten de klasse gebruikt u `new()` de functie van de client om deze te instantiëren.
 
 [!code-ruby[client creation](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=clientCreation)] 
 
@@ -114,11 +114,11 @@ Buiten de-klasse gebruikt u de `new()` functie van de client om deze te instanti
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-Maak in het client object een functie met de naam `AnalyzeSentiment()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `sentiment()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en sentiment Score af. Een score dichter bij 0 geeft aan dat er een negatieve sentiment is, terwijl een score dichter bij 1 wijst op een positieve sentiment.
+Maak in het clientobject `AnalyzeSentiment()` een functie die wordt aangeroepen met een lijst met invoerdocumenten die later worden gemaakt. Bel de functie `sentiment()` van de klant en krijg het resultaat. Vervolgens herhalen door de resultaten, en print elk document ID, en sentiment score. Een score dichter bij 0 duidt op een negatief sentiment, terwijl een score dichter bij 1 wijst op een positief sentiment.
 
 [!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 
-Maak buiten de client functie een nieuwe functie met de naam `SentimentAnalysisExample()` die het `TextAnalyticsClient` object dat u eerder hebt gemaakt. Maak een lijst met `MultiLanguageInput` objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id`, `Language` en een `text` kenmerk. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` de taal van het document is en de `id` een wille keurige waarde kan zijn. Roep vervolgens de `AnalyzeSentiment()`-functie van de client aan.
+Maak buiten de clientfunctie een `SentimentAnalysisExample()` nieuwe functie `TextAnalyticsClient` die wordt aangeroepen om het eerder gemaakte object te maken. Maak een `MultiLanguageInput` lijst met objecten met de documenten die u wilt analyseren. Elk object bevat `id` `Language` een `text` , en een attribuut. Het `text` kenmerk slaat de te `language` analyseren tekst op, is `id` de taal van het document en het kan elke waarde zijn. Bel dan de `AnalyzeSentiment()` functie van de klant.
 
 [!code-ruby[sentiment analysis document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=sentimentCall)] 
 
@@ -142,11 +142,11 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Taaldetectie
 
-Maak in het client object een functie met de naam `DetectLanguage()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `detect_language()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en de gedetecteerde taal af.
+Maak in het clientobject `DetectLanguage()` een functie die wordt aangeroepen met een lijst met invoerdocumenten die later worden gemaakt. Bel de functie `detect_language()` van de klant en krijg het resultaat. Vervolgens herhalen door de resultaten, en print de ID van elk document, en gedetecteerde taal.
 
 [!code-ruby[client method for language detection](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguage)] 
 
-Maak buiten de client functie een nieuwe functie met de naam `DetectLanguageExample()` die het `TextAnalyticsClient` object dat u eerder hebt gemaakt. Maak een lijst met `LanguageInput` objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id`en een `text` kenmerk. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd en de `id` kan een wille keurige waarde zijn. Roep vervolgens de `DetectLanguage()`-functie van de client aan.
+Maak buiten de clientfunctie een `DetectLanguageExample()` nieuwe functie `TextAnalyticsClient` die wordt aangeroepen om het eerder gemaakte object te maken. Maak een `LanguageInput` lijst met objecten met de documenten die u wilt analyseren. Elk object bevat `id`een `text` , en een attribuut. Het `text` kenmerk slaat de te analyseren `id` tekst op en deze kan elke waarde zijn. Bel dan de `DetectLanguage()` functie van de klant.
 
 [!code-ruby[language detection document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguageCall)] 
 
@@ -169,11 +169,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Herkenning van entiteiten
 
-Maak in het client object een functie met de naam `RecognizeEntities()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `entities()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de ID van elk document af en de herkende entiteiten.
+Maak in het clientobject `RecognizeEntities()` een functie die wordt aangeroepen met een lijst met invoerdocumenten die later worden gemaakt. Bel de functie `entities()` van de klant en krijg het resultaat. Vervolgens doordeeren van de resultaten, en druk de ID van elk document, en de erkende entiteiten af.
 
 [!code-ruby[client method for entity recognition](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntities)]
 
-Maak buiten de client functie een nieuwe functie met de naam `RecognizeEntitiesExample()` die het `TextAnalyticsClient` object dat u eerder hebt gemaakt. Maak een lijst met `MultiLanguageInput` objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id`, een `language`en een `text` kenmerk. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` de taal van de tekst is en de `id` een wille keurige waarde kan zijn. Roep vervolgens de `RecognizeEntities()`-functie van de client aan.
+Maak buiten de clientfunctie een `RecognizeEntitiesExample()` nieuwe functie `TextAnalyticsClient` die wordt aangeroepen om het eerder gemaakte object te maken. Maak een `MultiLanguageInput` lijst met objecten met de documenten die u wilt analyseren. Elk object bevat `id`een `language`, `text` een , en een attribuut. Het `text` kenmerk slaat de te `language` analyseren tekst op, is `id` de taal van de tekst en de tekst kan elke waarde zijn. Bel dan de `RecognizeEntities()` functie van de klant.
 
 [!code-ruby[entity recognition documents and method call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntitiesCall)] 
 
@@ -227,11 +227,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-Maak in het client object een functie met de naam `ExtractKeyPhrases()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `key_phrases()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en de geëxtraheerde sleutel zinnen af.
+Maak in het clientobject `ExtractKeyPhrases()` een functie die wordt aangeroepen met een lijst met invoerdocumenten die later worden gemaakt. Bel de functie `key_phrases()` van de klant en krijg het resultaat. Vervolgens herhalen door de resultaten, en druk elk document ID, en de uitgepakte sleutelzinnen.
 
 [!code-ruby[key phrase extraction client method](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=extractKeyPhrases)] 
 
-Maak buiten de client functie een nieuwe functie met de naam `KeyPhraseExtractionExample()` die het `TextAnalyticsClient` object dat u eerder hebt gemaakt. Maak een lijst met `MultiLanguageInput` objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id`, een `language`en een `text` kenmerk. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` de taal van de tekst is en de `id` een wille keurige waarde kan zijn. Roep vervolgens de `ExtractKeyPhrases()`-functie van de client aan.
+Maak buiten de clientfunctie een `KeyPhraseExtractionExample()` nieuwe functie `TextAnalyticsClient` die wordt aangeroepen om het eerder gemaakte object te maken. Maak een `MultiLanguageInput` lijst met objecten met de documenten die u wilt analyseren. Elk object bevat `id`een `language`, `text` een , en een attribuut. Het `text` kenmerk slaat de te `language` analyseren tekst op, is `id` de taal van de tekst en de tekst kan elke waarde zijn. Bel dan de `ExtractKeyPhrases()` functie van de klant.
 
 [!code-ruby[key phrase document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=keyPhrasesCall)]
 

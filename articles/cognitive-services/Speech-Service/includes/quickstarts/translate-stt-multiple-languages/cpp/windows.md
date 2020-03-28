@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak vertalen naar meerdere talen C++ , (Windows)-spraak service'
+title: 'Snelstart: spraak vertalen naar meerdere talen, C++ (Windows) - Spraakservice'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b2f0bbe56d31d583f1a4328460c55591261a2aeb
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78926001"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -105,17 +105,17 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
+1. Kies Alles**opslaan** **op** > de menubalk .
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Selecteer in de menu balk de optie **build** > **Build** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout opsporing** > **fout opsporing starten** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
+1. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
 
-1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Frans en Duits). De spraak service verzendt vervolgens de tekst terug naar de toepassing om weer te geven.
+1. Spreek een Engelse woordgroep of zin in. De applicatie stuurt uw toespraak naar de Spraakdienst, die vertaalt en transcribeert naar tekst (in dit geval naar het Frans en Duits). De spraakservice stuurt de tekst vervolgens terug naar de toepassing voor weergave.
 
 ````
 Say something...

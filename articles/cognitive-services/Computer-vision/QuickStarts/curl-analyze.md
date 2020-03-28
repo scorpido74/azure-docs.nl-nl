@@ -12,22 +12,22 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 899d7780265366698feb35f2a890a51f61536a80
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978063"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Snelstartgids: een externe installatie kopie analyseren met behulp van de Computer Vision REST API en krul
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Snelstart: een externe afbeelding analyseren met behulp van de Computer Vision REST API en cURL
 
-In deze Snelstartgids gaat u een op afstand opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
+In deze quickstart analyseert u een op afstand opgeslagen afbeelding om visuele functies te extraheren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) u visuele functies extraheren op basis van afbeeldingsinhoud.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [cURL](https://curl.haxx.se/windows) hebben.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. 
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. 
 
 ## <a name="create-and-run-the-sample-command"></a>Een voorbeeldopdracht maken en uitvoeren
 
@@ -36,7 +36,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Kopieer de volgende opdracht naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in de opdracht aan:
     1. Vervang de waarde van `<subscriptionKey>` door uw abonnementssleutel.
-    1. Vervang het eerste deel van de aanvraag-URL (`westcentralus`) door de tekst in uw eigen eind punt-URL.
+    1. Vervang het eerste deel van`westcentralus`de aanvraag-URL ( ) door de tekst in uw eigen eindpunt-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Wijzig eventueel de taalparameter van de aanvraag-URL (`language=en`) om een andere ondersteunde taal te gebruiken.
     1. Wijzig eventueel de afbeeldings-URL in de aanvraagtekst (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) naar de URL van een andere afbeelding die u wilt analyseren.

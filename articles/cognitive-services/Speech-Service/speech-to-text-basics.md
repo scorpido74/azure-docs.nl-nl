@@ -1,7 +1,7 @@
 ---
-title: Basis beginselen van spraak herkenning-spraak service
+title: Basics voor spraakherkenning - Spraakservice
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Speech SDK voor het converteren van spraak naar tekst. In dit artikel leert u meer over object constructie, ondersteunde audio-invoer indelingen en configuratie opties voor spraak herkenning.
+description: Meer informatie over het gebruik van de Spraak-SDK om spraak-naar-tekst te converteren. In dit artikel leert u over objectconstructie, ondersteunde audio-invoerindelingen en configuratieopties voor spraakherkenning.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/13/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 6e1b366ee23f472489eeaa6c08df99bdfc892f00
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372828"
 ---
-# <a name="learn-the-basics-of-speech-recognition"></a>Meer informatie over de basis beginselen van spraak herkenning
+# <a name="learn-the-basics-of-speech-recognition"></a>Leer de basisprincipes van spraakherkenning
 
-Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijk speech te herkennen en te transcriberen (dit wordt ook wel spraak naar tekst genoemd). In dit artikel leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken voor het uitvoeren van spraak herkenning van hoge kwaliteit.
+Een van de belangrijkste kenmerken van de Spraakdienst is de mogelijkheid om menselijke spraak te herkennen en te transcriberen (vaak aangeduid als spraak naar tekst). In dit artikel leert u hoe u de Spraak-SDK gebruiken in uw apps en producten om spraakherkenning van hoge kwaliteit uit te voeren.
 
 > [!TIP]
-> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en de spraak herkenning zelf uit te proberen.
-> * [Spraak van een microfoon herkennen](quickstarts/speech-to-text-from-microphone.md)
+> Als je nog geen kans hebt gehad om een van onze quickstarts te voltooien, raden we je aan om de banden te schoppen en zelf spraakherkenning uit te proberen.
+> * [Spraak herkennen vanuit een microfoon](quickstarts/speech-to-text-from-microphone.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-csharp.md)]
@@ -48,4 +48,4 @@ Een van de belangrijkste functies van de speech-service is de mogelijkheid om me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gecomprimeerde audio-indelingen van codec gebruiken](how-to-use-codec-compressed-audio-input-streams.md)
+* [Codec gecomprimeerde audio-indelingen gebruiken](how-to-use-codec-compressed-audio-input-streams.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een web-app met één pagina maken met behulp van de Bing Nieuws zoeken-API'
+title: 'Zelfstudie: Een web-app met één pagina maken met de Bing News Search API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze zelfstudie om een webtoepassing van één pagina te bouwen waarmee zoekquery's naar de API voor Bing News kunnen worden verzonden. De resultaten worden dan op de webpagina weergegeven.
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943120"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Zelf studie: een web-app met één pagina maken
+# <a name="tutorial-create-a-single-page-web-app"></a>Zelfstudie: een web-app met één pagina maken
 
-Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen van het type nieuws dat relevant is voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Nieuws zoeken-API om zoekresultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
+Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen van het type nieuws dat relevant is voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Nieuws zoeken-API om zoekresultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen. De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -29,7 +29,7 @@ Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen va
 > [!NOTE]
 > Als u klikt op de JSON- en HTTP-headers onderaan de pagina, worden het JSON-antwoord en de gegevens voor de HTTP-aanvraag weergegeven. Deze gegevens kunnen handig zijn bij het verkennen van de service.
 
-In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
+In de zelfstudie-app leert u het volgende:
 > [!div class="checklist"]
 > * Een Bing Nieuws zoeken-API-aanroep uitvoeren in JavaScript
 > * Zoekopties doorgeven aan de Bing Nieuws zoeken-API
@@ -43,7 +43,7 @@ De zelfstudiepagina staat volledig op zichzelf. Er worden geen externe framework
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
+Om mee te gaan met de zelfstudie hebt u abonnementssleutels nodig voor de Bing Search API. Als u ze niet hebt, u een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-toets gebruiken.](https://www.microsoft.com/maps/create-a-bing-maps-key)
 
 
 ## <a name="app-components"></a>App-onderdelen
@@ -67,7 +67,7 @@ De HTML bevat ook de delen (HTML-`<div>`-tags) waar de zoekresultaten worden wee
 
 De abonnementssleutel voor de Bing Search-API wordt opgeslagen in de permanente opslag van de browser om te voorkomen dat deze moet worden opgenomen in de code. Voordat de sleutel wordt opgeslagen, vragen we om de sleutel van de gebruiker. Als de sleutel later wordt geweigerd in de API, wordt de opgeslagen sleutel ongeldig en wordt de gebruiker opnieuw om een sleutel gevraagd.
 
-De functies `storeValue` en `retrieveValue` worden gedefinieerd. Deze maken gebruik van het `localStorage`-object (dat niet in alle browsers wordt ondersteund) of van een cookie. De functie `getSubscriptionKey()` gebruikt deze functies om de sleutel van de gebruiker op te slaan en op te halen. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+De functies `storeValue` en `retrieveValue` worden gedefinieerd. Deze maken gebruik van het `localStorage`-object (dat niet in alle browsers wordt ondersteund) of van een cookie. De functie `getSubscriptionKey()` gebruikt deze functies om de sleutel van de gebruiker op te slaan en op te halen. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
 ``` javascript
 // Cookie names for data we store
@@ -319,14 +319,14 @@ function renderResults(items) {
     return html.join("\n\n");
 }
 ```
-Met de Bing Nieuws zoeken-API worden maximaal vier verschillende soorten gerelateerde resultaten geretourneerd, elk in een eigen object op het hoogste niveau. Dit zijn:
+Met de Bing News Search-API worden maximaal vier verschillende soorten gerelateerde resultaten geretourneerd, elk in een eigen object op het hoogste niveau. Dit zijn:
 
 |Relatie|Beschrijving|
 |-|-|
-|`pivotSuggestions`|Query’s waarmee een beschrijvend woord in de oorspronkelijke zoekopdracht wordt vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie.|
+|`pivotSuggestions`|Query’s die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie.|
 |`queryExpansions`|Query's die de oorspronkelijke zoekopdracht verfijnen door meer zoektermen toe te voegen. Als u bijvoorbeeld zoekt naar ‘Microsoft Surface', is ‘Microsoft Surface Pro' een mogelijke uitbreiding van de query.|
 |`relatedSearches`|Query's die ook zijn ingevoerd door andere gebruikers die de oorspronkelijke zoekopdracht hebben ingevoerd. Als u bijvoorbeeld zoekt naar ‘Mount Rainier', is ‘Mt. Saint Helens' een gerelateerde zoekopdracht.|
-|`similarTerms`|Query’s die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar ‘scholen', is ‘onderwijs' een vergelijkbare term.|
+|`similarTerms`|Query's die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar ‘scholen', is ‘onderwijs' een vergelijkbare term.|
 
 Zoals eerder aangetoond in `renderSearchResults()` worden alleen de `relatedItems`-suggesties weergegeven en zijn de resulterende koppelingen zichtbaar in de zijbalk van de pagina.
 
@@ -387,23 +387,23 @@ Met de renderer voor nieuws worden de volgende handelingen uitgevoerd:
 > * De HTML-`<a>`-tags worden gebouwd die zijn gekoppeld aan de afbeelding en aan de pagina die de afbeelding bevat.
 > * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 
-De miniatuurgrootte wordt gebruik in de `<img>`-code en in de velden `h` en `w` in de URL van de miniatuur. Met de [Bing-miniatuurservice](../bing-web-search/resize-and-crop-thumbnails.md) wordt vervolgens een miniatuur van deze exacte grootte gegenereerd.
+De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. Met de [Bing-miniatuurservice](../bing-web-search/resize-and-crop-thumbnails.md) wordt vervolgens een miniatuur van deze exacte grootte gegenereerd.
 
 ## <a name="persisting-client-id"></a>Permanente client-id
 Antwoorden van de Bing Search-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
 
 Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit heeft twee belangrijke voordelen.
 
-Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
+Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
-Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-ClientID`-header niet beschikbaar is in JavaScript. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 
 > [!NOTE]
-> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Zoeken-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
+> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een `Access-Control-Expose-Headers` dergelijke proxy heeft een header die antwoordkoppen mogelijk maakt en beschikbaar maakt voor JavaScript.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

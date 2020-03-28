@@ -12,22 +12,22 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 01dd03eb0ed17fc43e62c8f749dfa2de78e38f69
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974577"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en Java
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Snelstart: een miniatuur genereren met de Computer Vision REST API en Java
 
-In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op. Deze mag afwijken van de hoogte-breedteverhouding van de ingevoerde afbeelding. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
+In deze quickstart genereert u een miniatuur van een afbeelding met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op. Deze mag afwijken van de hoogte-breedteverhouding van de ingevoerde afbeelding. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Java&trade; Platform, Standard Edition Development Kit 7 of 8](https://aka.ms/azure-jdks) (JDK 7 of 8) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -58,7 +58,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
    import org.json.JSONObject;
    ```
 
-1. Vervang de `Main` open bare klasse door de volgende code.
+1. Vervang `Main` de openbare klasse door de volgende code.
 1. Vervang optioneel de waarde van `imageToAnalyze` door de URL van een andere afbeelding waar u een miniatuur van wilt maken.
 1. Sla vervolgens het Java-project op en bouw het.
 1. Als u een IDE gebruikt, voert u `Main` uit. Open anders een opdrachtpromptvenster en gebruik de opdracht `java` om de compilatieklasse uit te voeren. Bijvoorbeeld `java Main`.

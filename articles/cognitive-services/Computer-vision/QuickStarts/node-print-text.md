@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte tekst extra heren-REST, node. js'
+title: 'Snelstart: afgedrukte tekst extraheren- REST, Node.js'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met Node.js.
 services: cognitive-services
@@ -12,32 +12,32 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: d0327c05119af76bd6e056df6796392967d456d5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973914"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en node. js
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Snelstart: gedrukte tekst (OCR) extraheren met de Computer Vision REST API en Node.js
 
 > [!NOTE]
-> Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken.
+> Als u Tekst in de Engelse taal extraheert, u overwegen de nieuwe [bewerking Lezen te](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)gebruiken.
 
-In deze Quick Start kunt u gedrukte tekst met behulp van de Computer Vision REST API extra heren met optische teken herkenning (OCR) van een afbeelding. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze quickstart haalt u afgedrukte tekst met optische tekenherkenning (OCR) uit een afbeelding met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) u afgedrukte tekst in een afbeelding detecteren en herkende tekens extraheren in een machinebruikbare tekenstroom.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [Node.js](https://nodejs.org) 4.x of later hebben geïnstalleerd.
 - U moet [npm](https://www.npmjs.com/) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Installeer het npm-pakket [`request`](https://www.npmjs.com/package/request).
+1. Installeer het [`request`](https://www.npmjs.com/package/request) npm-pakket.
    1. Open een opdrachtpromptvenster als beheerder.
    1. Voer de volgende opdracht uit:
 
@@ -47,7 +47,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
    1. Sluit het opdrachtpromptvenster nadat het pakket is geïnstalleerd.
 
-1. Kopieer de volgende code in een teksteditor.
+1. Kopieer de volgende code naar een teksteditor.
 1. Vervang optioneel de waarde van `imageUrl` door de URL van een andere afbeelding waaruit u gedrukte tekst wilt extraheren.
 1. Sla de code op als een bestand met de extensie `.js`. Bijvoorbeeld `get-printed-text.js`.
 1. Open een opdrachtpromptvenster.

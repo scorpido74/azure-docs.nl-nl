@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837507"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -29,9 +29,9 @@ import os, requests, uuid, json
 
 Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. De vereiste modules worden dan geïmporteerd voor het lezen van uw abonnementssleutel uit een omgevingsvariabele, voor het opstellen van de HTTP-aanvraag, voor het maken van een unieke id en voor het verwerken van het JSON-antwoord dat door de Translator Text-API wordt geretourneerd.
 
-## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnements sleutel, het eind punt en het pad instellen
+## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnementssleutel, het eindpunt en het pad instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-abonnements sleutel en-eind punt te lezen uit de omgevings variabelen: `TRANSLATOR_TEXT_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd uw abonnementssleutel voor vertalerstekst `TRANSLATOR_TEXT_KEY` en `TRANSLATOR_TEXT_ENDPOINT`eindpunt te lezen uit de omgevingsvariabelen: en . Als u niet bekend bent met omgevingsvariabelen, u instellen `subscription_key` en `endpoint` als een tekenreeks en commentaar op de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -50,7 +50,7 @@ endpoint = os.environ[endpoint_var_name]
 Het globaal eindpunt voor de Translator Text is ingesteld als de `endpoint`. Met `path` wordt de `detect`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
 
 >[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: Detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Zie [Translator Text-API 3.0: detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) voor meer informatie over eindpunten, routes en aanvraagparameters.
 
 ```python
 path = '/detect?api-version=3.0'
@@ -71,7 +71,7 @@ headers = {
 }
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-detect-text-language"></a>Een aanvraag maken om teksttaal te detecteren
 
@@ -112,10 +112,10 @@ Als u uw code graag wilt vergelijken met de onze, kunt u het volledige voorbeeld
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het monster hebt uitgevoerd, ziet u het volgende afgedrukt op de terminal:
 
 > [!NOTE]
-> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -148,7 +148,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

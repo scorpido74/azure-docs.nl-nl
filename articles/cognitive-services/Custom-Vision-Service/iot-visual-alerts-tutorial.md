@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: voor beeld van IoT Visual Alerts'
+title: 'Zelfstudie: Voorbeeld van IoT-visuele waarschuwingen'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie gebruikt u Custom Vision met een IoT-apparaat om visuele statussen van de video-feed van een camera te herkennen en te rapporteren.
+description: In deze zelfstudie gebruikt u Aangepaste visie met een IoT-apparaat om visuele toestanden te herkennen en te rapporteren uit de videofeed van een camera.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,136 +11,136 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978029"
 ---
-# <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelf studie: Custom Vision gebruiken met een IoT-apparaat om de visuele statussen te melden
+# <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelfstudie: Aangepaste visie gebruiken met een IoT-apparaat om visuele statussen te rapporteren
 
-In deze voor beeld-app ziet u hoe u Custom Vision kunt gebruiken om een apparaat met een camera te trainen om visuele statussen te detecteren. U kunt dit detectie scenario uitvoeren op een IoT-apparaat met behulp van een ONNX-model dat is geëxporteerd uit de Custom Vision-service.
+Deze voorbeeld-app illustreert hoe u Custom Vision gebruiken om een apparaat met een camera te trainen om visuele toestanden te detecteren. U dit detectiescenario uitvoeren op een IoT-apparaat met behulp van een ONNX-model dat is geëxporteerd vanuit de Custom Vision-service.
 
-Een visuele status beschrijft de inhoud van een afbeelding: een lege ruimte of een kamer met mensen, een lege driveway of een driveway met een truck, enzovoort. In de onderstaande afbeelding ziet u dat de app detecteert wanneer een bananen of een Apple vóór de camera wordt geplaatst.
+Een visuele toestand beschrijft de inhoud van een afbeelding: een lege kamer of een kamer met mensen, een lege oprit of een oprit met een vrachtwagen, enzovoort. In de afbeelding hieronder zie je de app detecteren wanneer een banaan of een appel voor de camera wordt geplaatst.
 
-![Animatie van een gebruikers interface die aan de voor zijde van de camera is gelabeld](./media/iot-visual-alerts-tutorial/scoring.gif)
+![Animatie van een UI die fruit voor de camera etikettaand t.o.v.](./media/iot-visual-alerts-tutorial/scoring.gif)
 
 In deze zelfstudie leert u hoe u het volgende kunt doen:
 > [!div class="checklist"]
-> * Configureer de voor beeld-app om uw eigen Custom Vision en IoT Hub resources te gebruiken.
-> * Gebruik de app voor het trainen van uw Custom Vision-project.
+> * Configureer de voorbeeld-app om uw eigen Aangepaste Visie- en IoT Hub-bronnen te gebruiken.
+> * Gebruik de app om uw Custom Vision-project te trainen.
 > * Gebruik de app om nieuwe afbeeldingen in realtime te scoren en de resultaten naar Azure te verzenden.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
-    > Dit project moet een **compact** installatie kopie-project zijn, omdat het model later naar ONNX wordt geëxporteerd.
-* U moet ook [een IOT hub resource maken](https://ms.portal.azure.com/#create/Microsoft.IotHub) in Azure.
+    > Dit project moet een **Compact** image classification project zijn, omdat we het model later naar ONNX exporteren.
+* U moet ook [een IoT Hub-bron maken](https://ms.portal.azure.com/#create/Microsoft.IotHub) op Azure.
 * [Visual Studio 2015 of hoger](https://www.visualstudio.com/downloads/)
-* Optioneel een IoT-apparaat met Windows 10 IoT core versie 17763 of hoger. U kunt de app ook rechtstreeks vanaf uw PC uitvoeren.
-   * Voor Raspberry pi 2 en 3 kunt u Windows 10 rechtstreeks vanuit de IoT-dashboard toepassing instellen. Voor andere apparaten, zoals DrangonBoard, moet u deze flashen met behulp van de [methode eMMC](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices). Als u hulp nodig hebt bij het instellen van een nieuw apparaat, raadpleegt u [het instellen van uw apparaat](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) in de Windows IOT-documentatie.
+* Optioneel een IoT-apparaat met Windows 10 IoT Core-versie 17763 of hoger. U de app ook rechtstreeks vanaf uw pc uitvoeren.
+   * Voor Raspberry Pi 2 en 3 u Windows 10 rechtstreeks instellen vanuit de IoT Dashboard-app. Voor andere apparaten, zoals DrangonBoard, moet u het flashen met behulp van de [eMMC-methode.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices) Zie [Uw apparaat instellen](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) in de Windows IoT-documentatie als u hulp nodig hebt bij het instellen van een nieuw apparaat.
 
-## <a name="about-the-visual-alerts-app"></a>Over de app Visual Alerts
+## <a name="about-the-visual-alerts-app"></a>Informatie over de app Visuele waarschuwingen
 
-De app IoT Visual Alerts wordt uitgevoerd in een doorlopende lus en zo nodig overschakelen tussen vier verschillende statussen:
+De IoT Visual Alerts-app wordt continu uitgevoerd en schakelt zo nodig tussen vier verschillende toestanden:
 
-* **Geen model**: er is geen status. De app slaapt voortdurend één seconde en de camera wordt gecontroleerd.
-* **Trainings afbeeldingen vastleggen**: in deze status legt de app een afbeelding vast en uploadt deze als een trainings afbeelding naar het doel Custom Vision project. De app wordt vervolgens in slaap stand gezet voor 500 MS en de bewerking wordt herhaald totdat het ingestelde doel aantal installatie kopieën wordt vastgelegd. Vervolgens wordt de training van het Custom Vision model geactiveerd.
-* **Wachten op getraind model**: in deze staat roept de app de Custom Vision-API elke seconde aan om te controleren of het doel project een getrainde iteratie bevat. Wanneer er een wordt gevonden, wordt het bijbehorende ONNX-model gedownload naar een lokaal bestand en wordt overgeschakeld naar de **Score** status.
-* **Score**: in deze status gebruikt de app Windows ml om één frame van de camera te evalueren op basis van het lokale ONNX-model. De resulterende afbeeldings classificatie wordt weer gegeven op het scherm en verzonden als een bericht naar de IoT Hub. De app wordt vervolgens één seconde geslapend voordat een nieuwe afbeelding wordt gewaarderingt.
+* **Geen model:** een no-op staat. De app zal voortdurend slapen voor een seconde en controleer de camera.
+* **Trainingsafbeeldingen vastleggen:** In deze toestand legt de app een afbeelding vast en uploadt deze als trainingsafbeelding naar het doel-Custom Vision-project. De app slaapt vervolgens 500 ms en herhaalt de bewerking totdat het ingestelde doelaantal afbeeldingen is vastgelegd. Dan activeert de training van de Custom Vision model.
+* **Wachten op getraind model:** In deze toestand roept de app elke seconde de Custom Vision API aan om te controleren of het doelproject een getrainde iteratie bevat. Wanneer het een wordt gevonden, downloadt het het bijbehorende ONNX-model naar een lokaal bestand en schakelt het over naar de **scorestatus.**
+* **Scoren:** In deze toestand gebruikt de app Windows ML om een enkel frame van de camera te evalueren ten opzichte van het lokale ONNX-model. De resulterende beeldclassificatie wordt op het scherm weergegeven en als bericht naar de IoT Hub verzonden. De app slaapt vervolgens een seconde voordat u een nieuwe afbeelding scoort.
 
-## <a name="understand-the-code-structure"></a>De code structuur begrijpen
+## <a name="understand-the-code-structure"></a>De codestructuur begrijpen
 
-De volgende bestanden verwerken de belangrijkste functionaliteit van de app.
+De volgende bestanden behandelen de hoofdfunctionaliteit van de app.
 
-| Bestand | Beschrijving |
+| File | Beschrijving |
 |-------------|-------------|
-| [MainPage. xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Dit bestand definieert de XAML-gebruikers interface. Het hosten het besturings element webcamera en bevat de labels die worden gebruikt voor status updates.|
-| [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Deze code bepaalt het gedrag van de XAML-gebruikers interface. Het bevat de verwerkings code van de status machine.|
-| [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Deze klasse is een wrapper waarmee de integratie met de Custom Vision Service wordt afgehandeld.|
-| [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Deze klasse is een wrapper die de integratie afhandelt met Windows ML voor het laden van het ONNX-model en het scoren van afbeeldingen.|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Deze klasse is een wrapper waarmee de integratie met IoT Hub voor het uploaden van Score resultaten naar Azure wordt verwerkt.|
+| [MainPage.xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Dit bestand definieert de XAML-gebruikersinterface. Het host het webcamerabesturingselement en bevat de labels die worden gebruikt voor statusupdates.|
+| [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Deze code bepaalt het gedrag van de XAML-gebruikersinterface. Het bevat de code voor het verwerken van de statusmachine.|
+| [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Deze klasse is een wrapper die de integratie met de Custom Vision Service verwerkt.|
+| [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Deze klasse is een wrapper die de integratie met Windows ML verwerkt voor het laden van het ONNX-model en het scoren van afbeeldingen ertegen.|
+| [IoTHub\iotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Deze klasse is een wrapper die de integratie met IoT Hub verwerkt voor het uploaden van scoreresultaten naar Azure.|
 
-## <a name="set-up-the-visual-alerts-app"></a>De app Visual Alerts instellen
+## <a name="set-up-the-visual-alerts-app"></a>De app Visuele waarschuwingen instellen
 
-Volg deze stappen om de app IoT Visual Alerts op uw PC of IoT-apparaat op te halen.
+Voer deze stappen uit om de IoT Visual Alerts-app te laten draaien op uw pc of IoT-apparaat.
 
-1. Kloon of down load het IoTVisualAlerts-voor [beeld](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) op github.
-1. Open de oplossing _IoTVisualAlerts. SLN_ in Visual Studio
-1. Uw Custom Vision project integreren:
-    1. Werk in het script _CustomVision\CustomVisionServiceWrapper.cs_ de variabele `ApiKey` met uw trainings sleutel bij.
-    1. Werk vervolgens de `Endpoint` variabele bij met de eind punt-URL die aan uw sleutel is gekoppeld.
-    1. Werk de `targetCVSProjectGuid` variabele bij met de corresponderende ID van het Custom Vision project dat u wilt gebruiken. 
-1. Stel de IoT Hub resource in:
-    1. Werk in het script _IoTHub\IotHubWrapper.cs_ de `s_connectionString` variabele met de juiste Connection String voor uw apparaat. 
-    1. Op de Azure Portal, laadt u uw IoT Hub-exemplaar, klikt u op **IOT-apparaten** onder **Explorers**, selecteert u op uw doel apparaat (of maakt u een indien nodig) en zoekt u de Connection String onder **primaire verbindings reeks**. De teken reeks bevat uw IoT Hub naam, apparaat-ID en gedeelde toegangs sleutel. het heeft de volgende indeling: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
+1. Kloon of download het [IoTVisualAlerts-voorbeeld](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) op GitHub.
+1. Open de oplossing _IoTVisualAlerts.sln_ in Visual Studio
+1. Integreer uw Custom Vision project:
+    1. Werk in het _script CustomVision\CustomVisionServiceWrapper.cs_ de `ApiKey` variabele bij met uw trainingssleutel.
+    1. Werk vervolgens `Endpoint` de variabele bij met de URL van het eindpunt die aan uw sleutel is gekoppeld.
+    1. Werk `targetCVSProjectGuid` de variabele bij met de bijbehorende ID van het Aangepaste Visie-project dat u wilt gebruiken. 
+1. De IoT Hub-bron instellen:
+    1. Werk in het _IoTHub\IotHubWrapper.cs-script_ de `s_connectionString` variabele bij met de juiste verbindingstekenreeks voor uw apparaat. 
+    1. Laad op de Azure-portal uw IoT Hub-exemplaar, klik op **IoT-apparaten** onder **Explorers,** selecteer op uw doelapparaat (of maak er indien nodig een) en zoek de verbindingstekenreeks onder **Primaire verbindingstekenreeks**. De tekenreeks bevat de naam van de IoT-hub, de apparaat-id en de gedeelde toegangssleutel. het heeft de `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`volgende indeling: .
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
-Als u de app op uw PC uitvoert, selecteert u **lokale computer** voor het doel apparaat in Visual Studio en selecteert u **x64** of **x86** voor het doel platform. Druk vervolgens op F5 om het programma uit te voeren. De app moet worden gestart en de live-feed van de camera en een status bericht worden weer gegeven.
+Als u de app op uw pc uitvoert, selecteert u **Lokale machine** voor het doelapparaat in Visual Studio en selecteert u **x64** of **x86** voor het doelplatform. Druk vervolgens op F5 om het programma uit te voeren. De app moet de live feed van de camera en een statusbericht starten en weergeven.
 
-Als u implementeert op een IoT-apparaat met een ARM-processor, moet u **arm** als het doel platform en de **externe computer** als doel apparaat selecteren. Geef het IP-adres van uw apparaat op wanneer u hierom wordt gevraagd (het moet zich op hetzelfde netwerk bevinden als uw PC). U kunt het IP-adres ophalen uit de Windows IoT-standaard-app nadat u het apparaat hebt opgestart en verbinding hebt gemaakt met het netwerk. Druk op F5 om het programma uit te voeren.
+Als u implementeert op een IoT-apparaat met een ARM-processor, moet u **ARM** selecteren als doelplatform en **Externe machine** als doelapparaat. Geef het IP-adres van uw apparaat op wanneer dit wordt gevraagd (het moet zich op hetzelfde netwerk als uw pc bevinden). U het IP-adres ophalen van de standaard-app van Windows IoT zodra u het apparaat opstart en het aansluit op het netwerk. Druk op F5 om het programma uit te voeren.
 
-Wanneer u de app voor de eerste keer uitvoert, heeft deze geen kennis van de visuele status. Er wordt een status bericht weer gegeven dat er geen model beschikbaar is. 
+Wanneer u de app voor de eerste keer uitvoert, heeft deze geen kennis van visuele toestanden. Er wordt een statusbericht weergegeven dat er geen model beschikbaar is. 
 
-## <a name="capture-training-images"></a>Trainings afbeeldingen vastleggen
+## <a name="capture-training-images"></a>Trainingsbeelden vastleggen
 
-Als u een model wilt instellen, moet u de app in de status van de **trainings afbeeldingen vastleggen** opnemen. Voer een van de volgende stappen uit:
-* Als u de app op de PC uitvoert, gebruikt u de knop in de rechter bovenhoek van de gebruikers interface.
-* Als u de app uitvoert op een IoT-apparaat, roept u de `EnterLearningMode`-methode op het apparaat aan via de IoT Hub. U kunt deze aanroepen via de vermelding apparaat in het menu IoT Hub op het Azure Portal of met een hulp programma zoals [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+Als u een model wilt instellen, moet u de app in de status **Trainingsafbeeldingen vastleggen** plaatsen. Een van de volgende stappen uitvoeren:
+* Als u de app op de pc gebruikt, gebruikt u de knop in de rechterbovenhoek van de gebruikersinterface.
+* Als u de app op een IoT-apparaat uitvoert, belt u de `EnterLearningMode` methode op het apparaat via de IoT-hub. U het aanroepen via de apparaatinvoer in het menu IoT Hub op de Azure-portal of met een hulpprogramma zoals [IoT Hub Device Explorer.](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
  
-Wanneer de app de status van de **trainings afbeeldingen voor vastleggen** opgeeft, worden de twee installatie kopieën elke seconde vastgelegd totdat het doel aantal installatie kopieën is bereikt. Standaard is dit 30 installatie kopieën, maar u kunt deze para meter instellen door het gewenste nummer als argument door te geven aan de methode `EnterLearningMode` IoT Hub. 
+Wanneer de app de status **Trainingsafbeeldingen vastleggen** invoert, worden ongeveer twee afbeeldingen per seconde vastgelegd totdat het doelaantal afbeeldingen is bereikt. Standaard gaat het om 30 afbeeldingen, maar u deze parameter instellen `EnterLearningMode` door het gewenste getal door te geven als argument voor de IoT Hub-methode. 
 
-Terwijl de app afbeeldingen vastlegt, moet u de camera zichtbaar maken voor de typen visuele statussen die u wilt detecteren (bijvoorbeeld een lege ruimte, een kamer met mensen, een lege Desk, een bureau met een speelgoed truck, enzovoort).
+Terwijl de app beelden vastlegt, moet u de camera blootstellen aan de typen visuele toestanden die u wilt detecteren (bijvoorbeeld een lege kamer, een kamer met mensen, een leeg bureau, een bureau met een speelgoedtruck, enzovoort).
 
-## <a name="train-the-custom-vision-model"></a>Het Custom Vision model trainen
+## <a name="train-the-custom-vision-model"></a>Train het Custom Vision-model
 
-Zodra de app klaar is met het vastleggen van installatie kopieën, worden deze geüpload en wordt vervolgens overgeschakeld naar de status **wachten op opgeleid model** . Op dit moment moet u naar de [Custom Vision-Portal](https://www.customvision.ai/) gaan en een model bouwen op basis van de nieuwe trainings installatie kopieën. In de volgende animatie ziet u een voor beeld van dit proces.
+Zodra de app klaar is met het vastleggen van afbeeldingen, wordt deze geüpload en vervolgens overgeschakeld naar de status **Wachten op getraind model.** Op dit punt moet je naar de [Custom Vision portal](https://www.customvision.ai/) gaan en een model bouwen op basis van de nieuwe trainingsafbeeldingen. De volgende animatie toont een voorbeeld van dit proces.
 
-![Animatie: meerdere afbeeldingen van bananen coderen](./media/iot-visual-alerts-tutorial/labeling.gif)
+![Animatie: het taggen van meerdere afbeeldingen van bananen](./media/iot-visual-alerts-tutorial/labeling.gif)
 
-Als u dit proces wilt herhalen met uw eigen scenario:
+Ga als volgt te werk om dit proces te herhalen met uw eigen scenario:
 
-1. Meld u aan bij de [Custom Vision Portal](http://customvision.ai).
-1. Zoek uw doel project, dat nu alle trainings afbeeldingen moet hebben die de app heeft geüpload.
-1. Selecteer de juiste installatie kopieën voor elke visuele status die u wilt identificeren en pas de tag hand matig toe.
-    * Als uw doel bijvoorbeeld onderscheid moet maken tussen een lege ruimte en een ruimte met mensen daarin, raden we u aan om vijf of meer afbeeldingen te voorzien van een nieuwe klasse, **personen**en het labelen van vijf of meer afbeeldingen zonder mensen als de **negatieve** tag. Dit helpt het model onderscheid te maken tussen de twee statussen.
-    * Een ander voor beeld: als het doel is om te benaderen hoe vol een plank is, kunt u Tags gebruiken zoals **EmptyShelf**, **PartiallyFullShelf**en **FullShelf**.
-1. Wanneer u klaar bent, selecteert u de **trein** knop.
-1. Zodra de training is voltooid, detecteert de app dat er een getrainde iteratie beschikbaar is. Het proces voor het exporteren van het getrainde model wordt gestart naar ONNX en gedownload naar het apparaat.
+1. Meld u aan bij de [Portal Aangepast zicht](http://customvision.ai).
+1. Zoek uw doelproject, dat nu alle trainingsafbeeldingen moet hebben die de app heeft geüpload.
+1. Selecteer voor elke visuele status die u wilt identificeren de juiste afbeeldingen en pas de tag handmatig toe.
+    * Als je bijvoorbeeld doel hebt om onderscheid te maken tussen een lege ruimte en een kamer met mensen erin, raden we je aan om vijf of meer afbeeldingen te taggen met mensen als een nieuwe klasse, **Personen**en vijf of meer afbeeldingen te taggen zonder dat mensen de negatieve tag **zijn.** Dit zal helpen het model onderscheid te maken tussen de twee staten.
+    * Als een ander voorbeeld, als je doel is om bij benadering hoe volledig een plank is, dan u gebruik maken van tags zoals **EmptyShelf**, **GedeeltelijkFullShelf**, en **FullShelf**.
+1. Als u klaar bent, selecteert u de knop **Trein.**
+1. Zodra de training is voltooid, detecteert de app of er een getrainde iteratie beschikbaar is. Het zal het proces van het exporteren van het getrainde model naar ONNX en het downloaden naar het apparaat te starten.
 
 ## <a name="use-the-trained-model"></a>Het getrainde model gebruiken
 
-Zodra de app het getrainde model downloadt, wordt er overgeschakeld naar de **Score** status en wordt het Score beeld van de camera in een doorlopende lus gestart.
+Zodra de app het getrainde model downloadt, schakelt deze over naar de **scorestatus** en begint het in een doorlopende lus met het scoren van afbeeldingen van de camera.
 
-Voor elke vastgelegde installatie kopie wordt de bovenste tag weer gegeven op het scherm. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten**weer gegeven. De app verzendt deze berichten ook naar de IoT Hub. als er een klasse wordt gedetecteerd, bevat het bericht het label, de betrouwbaarheids Score en een eigenschap met de naam `detectedClassAlert`, die kan worden gebruikt door IoT Hub-clients die zijn geïnteresseerd in een snelle bericht routering op basis van eigenschappen.
+Voor elke vastgelegde afbeelding geeft de app de bovenste tag op het scherm weer. Als de visuele status niet wordt herkend, worden **er geen overeenkomsten weergegeven.** De app stuurt deze berichten ook naar de IoT Hub, en als er een klasse wordt gedetecteerd, bevat `detectedClassAlert`het bericht het label, de betrouwbaarheidsscore en een eigenschap die wordt genoemd , die kan worden gebruikt door IoT Hub-clients die geïnteresseerd zijn in het doen van snelle berichtroutering op basis van eigenschappen.
 
-Daarnaast gebruikt het voor beeld een [Sense-Hat-bibliotheek](https://github.com/emmellsoft/RPi.SenseHat) om te detecteren wanneer deze wordt uitgevoerd op een Raspberry Pi met een Sense Hat-eenheid, zodat deze kan worden gebruikt als een uitvoer weergave door alle weergave lichten op rood in te stellen wanneer er een klasse wordt gedetecteerd en deze leeg is wanneer er niets wordt gedetecteerd.
+Bovendien maakt het voorbeeld gebruik van een [Sense HAT-bibliotheek](https://github.com/emmellsoft/RPi.SenseHat) om te detecteren wanneer deze wordt uitgevoerd op een Raspberry Pi met een Sense HAT-eenheid, zodat het kan worden gebruikt als een uitvoerweergave door alle lampjes op rood in te stellen wanneer het een klasse detecteert en leeg wanneer het niets detecteert.
 
 ## <a name="reuse-the-app"></a>De app opnieuw gebruiken
 
-Als u de oorspronkelijke staat van de app opnieuw wilt instellen, kunt u dit doen door te klikken op de knop in de rechter bovenhoek van de gebruikers interface of door de methode `DeleteCurrentModel` via de IoT Hub aan te roepen.
+Als u de app terug wilt zetten naar de oorspronkelijke staat, u dit doen door op de knop rechtsboven `DeleteCurrentModel` in de gebruikersinterface te klikken of door de methode aan te roepen via de IoT Hub.
 
-U kunt op elk gewenst moment de stap voor het uploaden van trainings afbeeldingen herhalen door te klikken op de knop rechtsboven op de gebruikers interface of door de `EnterLearningMode`-methode opnieuw aan te roepen.
+Op elk moment u de stap herhalen van het uploaden van trainingsafbeeldingen `EnterLearningMode` door op de ui-knop rechtsboven te klikken of de methode opnieuw aan te roepen.
 
-Als u de app op een apparaat uitvoert en het IP-adres opnieuw moet ophalen (bijvoorbeeld om een externe verbinding te maken via de [Windows IOT-externe client](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)), kunt u de `GetIpAddress` methode aanroepen via IOT hub.
+Als u de app op een apparaat uitvoert en het IP-adres opnieuw moet ophalen (om bijvoorbeeld een externe verbinding via de [Windows IoT Remote Client](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)tot stand te brengen), u de `GetIpAddress` methode bellen via IoT Hub.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder het Custom Vision-project als u het niet meer wilt behouden. Navigeer op de [website Custom Vision](https://customvision.ai)naar **projecten** en selecteer de prullen mand onder het nieuwe project.
+Verwijder uw Custom Vision-project als u het project niet meer wilt onderhouden. Ga op de [website van Custom Vision](https://customvision.ai)naar **Projecten** en selecteer de prullenbak onder uw nieuwe project.
 
-![Scherm afbeelding van een paneel met het label mijn nieuwe project met een prullenbak pictogram](./media/csharp-tutorial/delete_project.png)
+![Schermafbeelding van een deelvenster met het label Mijn nieuwe project met een prullenbakpictogram](./media/csharp-tutorial/delete_project.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie kunt u een toepassing instellen en uitvoeren die informatie over de visuele status op een IoT-apparaat detecteert en de resultaten naar de IoT Hub verzendt. Bekijk vervolgens de bron code verder of maak een van de voorgestelde wijzigingen hieronder.
+In deze zelfstudie stelt u een toepassing in en die visuele statusgegevens op een IoT-apparaat detecteert en de resultaten naar de IoT-hub verzendt. Verken vervolgens de broncode verder of maak een van de voorgestelde wijzigingen hieronder.
 
 > [!div class="nextstepaction"]
-> [IoTVisualAlerts-voor beeld (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
+> [Voorbeeld van IoTVisualAlerts (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
-* Voeg een IoT Hub methode toe om de app direct over te scha kelen naar de status **van getrainde modellen** . Op deze manier kunt u het model trainen met installatie kopieën die niet worden vastgelegd door het apparaat zelf en vervolgens het nieuwe model naar het apparaat pushen.
-* Volg de zelf studie voor het [visualiseren van de real-time sensor gegevens](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) om een Power bi dash board te maken voor het visualiseren van de IOT hub waarschuwingen die door het voor beeld worden verzonden.
-* Volg de zelf studie voor [IOT-externe controle](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) voor het maken van een logische app die reageert op de IOT hub-waarschuwingen wanneer visuele statussen worden gedetecteerd.
+* Voeg een IoT Hub-methode toe om de app rechtstreeks over te schakelen naar de status **Wachten op getraind model.** Op deze manier u het model trainen met afbeeldingen die niet door het apparaat zelf zijn vastgelegd en vervolgens het nieuwe model op commando naar het apparaat duwen.
+* Volg de zelfstudie [Voor realtime sensorgegevens visualiseren](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) om een Power BI-dashboard te maken om de IoT Hub-waarschuwingen te visualiseren die door het voorbeeld worden verzonden.
+* Volg de [zelfstudie voor het monitoren van IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) op afstand om een Logic-app te maken die reageert op de IoT Hub-waarschuwingen wanneer visuele statussen worden gedetecteerd.

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Computer Vision 2,0 en 2,1-pak gedrukte en handgeschreven tekst-REST, python'
+title: 'Snelstart: Computer Vision 2.0 en 2.1 - Haal gedrukte en handgeschreven tekst - REST, Python'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met python.
+description: In deze quickstart haalt u afgedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision API met Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f0b8cac2cc26b2fab7255a7e7587985a5425485
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566196"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244798"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision 2,0 en 2,1 REST API en python
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Snelstart: gedrukte en handgeschreven tekst extraheren met de Computer Vision 2.0 en 2.1 REST API en Python
 
-In deze Quick Start haalt u gedrukte en/of handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de methode voor het lezen en lezen van een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) - [bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) kunt u tekst in een afbeelding detecteren en herkende tekens in een door een machine Lees bare teken stroom uitpakken. De API bepaalt welk herkennings model voor elke tekst regel moet worden gebruikt, zodat het afbeeldingen ondersteunt met zowel gedrukte als handgeschreven tekst.
+In deze quickstart haalt u gedrukte en/of handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) u tekst in een afbeelding detecteren en herkende tekens extraheren in een machineleesbare tekenstroom. De API bepaalt welk herkenningsmodel voor elke regel tekst moet worden gebruikt, zodat deze afbeeldingen ondersteunt met zowel afgedrukte als handgeschreven tekst.
 
-Vergeleken met Computer Vision 2,0 en 2,1 biedt de Computer Vision 3,0 open bare preview-versie:
+In vergelijking met Computer Vision 2.0 en 2.1 biedt de Computer Vision 3.0 Public Preview:
 
-* nog betere nauw keurigheid
-* een gewijzigde uitvoer indeling
-* Betrouwbaarheids score voor woorden
-* ondersteuning van Spaanse en Engelse talen met de para meter extra taal
+* nog nauwkeuriger
+* een gewijzigde uitvoerindeling
+* betrouwbaarheidsscore voor woorden
+* ondersteuning van zowel de Spaanse als de Engelse taal met de aanvullende taalparameter
 
 #### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 > [!IMPORTANT]
-> De methode voor het [lezen van batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+> De [methode Batch read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode `Operation-Location` Batch read een URI in de waarde van het veld responskoptekst. U deze URI, die de API voor het [resultaat van de bewerking lezen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) vertegenwoordigt, aanroepen om zowel de status te controleren als de resultaten van de aanroep batchleesmethode te retourneren.
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 > [!IMPORTANT]
-> De methode voor het [lezen van batch](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+> De [methode Batch read](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode `Operation-Location` Batch read een URI in de waarde van het veld responskoptekst. U deze URI, die de API voor het [resultaat van de bewerking lezen](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) vertegenwoordigt, aanroepen om zowel de status te controleren als de resultaten van de aanroep batchleesmethode te retourneren.
 
 ---
 
-U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter-notitieblok op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
+U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
 
-[De knop Binder starten ![](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![De knop Binder starten](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 - [Python](https://www.python.org/downloads/) moet geïnstalleerd zijn als u het voorbeeld lokaal wilt uitvoeren.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
@@ -58,13 +58,15 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Kopieer de volgende code in een teksteditor.
-1. U kunt eventueel de waarde van `image_url` vervangen door de URL van een andere afbeelding waaruit u tekst wilt extra heren.
+1. Kopieer de volgende code naar een teksteditor.
+1. Vervang eventueel de waarde `image_url` van de URL van een andere afbeelding waaruit u tekst wilt extraheren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `get-text.py`.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python get-text.py`.
 
 ```python
+import os
+import sys
 import requests
 import time
 # If you are using a Jupyter notebook, uncomment the following line.
@@ -134,12 +136,12 @@ for polygon in polygons:
     plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
 ```
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Kopieer de volgende code in een teksteditor.
-1. U kunt eventueel de waarde van `image_url` vervangen door de URL van een andere afbeelding waaruit u tekst wilt extra heren.
+1. Kopieer de volgende code naar een teksteditor.
+1. Vervang eventueel de waarde `image_url` van de URL van een andere afbeelding waaruit u tekst wilt extraheren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `get-text.py`.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python get-text.py`.
@@ -516,7 +518,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 ```json
 {

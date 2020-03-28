@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht voor nieuws met PHP en de Bing News Search uitvoeren REST API'
+title: 'Quickstart: Voer een nieuwszoekopdracht uit met PHP en de Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via PHP en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383083"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht voor nieuws uitvoeren met behulp van PHP en het Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Snelstart: Voer een nieuwszoekopdracht uit met PHP en de Bing News Search REST API
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Deze eenvoudige JavaScript-toepassing stuurt een zoekquery naar de API en toont de onbewerkte resultaten.
 
@@ -40,7 +40,7 @@ Met de [Bing Nieuws zoeken-API](https://docs.microsoft.com/rest/api/cognitiveser
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
 4. Vervang de waarde `accessKey` door een geldige toegangssleutel voor uw abonnement.
-5. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+5. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 5. Voer het programma uit.
 
 ```php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Antwoord**
+**Reactie**
 
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld: 
 
@@ -201,4 +201,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app voor één pagina maken](tutorial-bing-news-search-single-page-app.md)

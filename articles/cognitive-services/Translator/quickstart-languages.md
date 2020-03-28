@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een lijst met ondersteunde talen ophalen-Translator Text-API'
+title: 'Snelstart: download de lijst met ondersteunde talen - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: In deze quickstart haalt u een lijst met ondersteunde talen op voor vertaling, transcriptie en het opzoeken in woordenlijsten met behulp van de Translator Text-API.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525138"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Snelstartgids: gebruik de Translator Text-API om een lijst met ondersteunde talen op te halen
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Snelstart: gebruik de Translator Text API om een lijst met ondersteunde talen te krijgen
 
 In deze quickstart haalt u een lijst met ondersteunde talen op voor vertaling, transcriptie en het opzoeken in woordenlijsten met behulp van de Translator Text-API.
 

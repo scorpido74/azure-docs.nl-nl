@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906967"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -43,9 +43,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="get-endpoint-information-from-an-environment-variable"></a>Eindpunt gegevens ophalen van een omgevings variabele
+## <a name="get-endpoint-information-from-an-environment-variable"></a>Eindpuntinformatie ophalen uit een omgevingsvariabele
 
-Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende `Program` regels toe aan de klasse. Deze regels lezen uw abonnementssleutel en eindpunt uit omgevingsvariabelen en er wordt een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
@@ -62,7 +62,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Een functie maken om een lijst met talen te verkrijgen
 
-Maak in `Program` de-klasse een functie met `GetLanguages`de naam. Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
+Maak `Program` in de klasse `GetLanguages`een functie met de naam . Deze klasse bevat de code die wordt gebruikt om de resource Languages aan te roepen en het resultaat weer te geven op de console.
 
 ```csharp
 static void GetLanguages()
@@ -119,9 +119,9 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-Als u het antwoord wilt afdrukken met ' mooie afdruk ' (opmaak voor het antwoord), voegt u deze functie toe aan de klasse Program:
+Als u het antwoord wilt afdrukken met 'Vrij afdrukken' (opmaak voor het antwoord), voegt u deze functie toe aan de klasse Programma:
 
 ```csharp
 static string PrettyPrint(string s)
@@ -149,7 +149,7 @@ dotnet run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 {
@@ -241,7 +241,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

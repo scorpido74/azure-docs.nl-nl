@@ -1,21 +1,21 @@
 ---
 title: 'Snelstartgids: Uw eerste exemplaar voor Bing Custom Search maken'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om een aangepast Bing-exemplaar te maken dat kan zoeken naar domeinen en webpagina's die u definieert.
+description: Gebruik deze snelstart om een aangepaste Bing-instantie te maken waarmee domeinen en webpagina's kunnen worden doorzocht die u definieert.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384743"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238859"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Snelstartgids: Uw eerste exemplaar voor Bing Custom Search maken
 
@@ -46,10 +46,10 @@ Een exemplaar voor aangepaste zoekopdrachten met Bing maken:
 
 5. Klik op **Publiceren** om uw wijzigingen naar de productieomgeving te publiceren, en werk de eindpunten van het exemplaar bij.
 
-6.  Klik op het tabblad **productie** onder **eind punten**en kopieer uw **aangepaste configuratie-ID**. U hebt deze id nodig om de Custom Search-API aan te roepen waarbij u de id aan de queryparameter `customconfig=` in uw aanroepen moet toevoegen.
+6.  Klik op het tabblad **Productie** onder **Eindpunten**en kopieer uw **aangepaste configuratie-id**. U hebt deze id nodig om de Custom Search-API aan te roepen waarbij u de id aan de queryparameter `customconfig=` in uw aanroepen moet toevoegen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen](./call-endpoint-csharp.md)
+> [Snelstart: bel uw Bing Custom Search-eindpunt](./call-endpoint-csharp.md)

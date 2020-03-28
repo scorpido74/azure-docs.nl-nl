@@ -1,5 +1,5 @@
 ---
-title: Doel intentie met REST-aanroep in node. js
+title: Intent krijgen met REST-oproep in Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,40 +9,40 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987762"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 * [Node.js](https://nodejs.org/)-programmeertaal
-* [Visual Studio Code](https://code.visualstudio.com/)
-* ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* [Visual Studio-code](https://code.visualstudio.com/)
+* Openbare app-id:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Een LUIS-runtime sleutel maken voor voor spellingen
+## <a name="create-luis-runtime-key-for-predictions"></a>Luis-runtime-sleutel maken voor voorspellingen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
-1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor de **runtime** sleutel in:
+1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
+1. Klik [op **Taalverstaan maken** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Voer alle vereiste instellingen voor **Runtime-toets** in:
 
     |Instelling|Waarde|
     |--|--|
     |Name|Gewenste naam (2-64 tekens)|
-    |Abonnement|Selecteer het juiste abonnement|
-    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
-    |Prijsniveau|`F0`-de minimale prijs categorie|
-    |Resourcegroep|Een beschik bare resource groep selecteren|
+    |Abonnement|Passend abonnement selecteren|
+    |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
+    |Prijscategorie|`F0`- de minimale prijscategorie|
+    |Resourcegroep|Een beschikbare resourcegroep selecteren|
 
-1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina resource.
-1. Geconfigureerde `endpoint` en een `key`verzamelen.
+1. Klik **op Maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, navigeert u naar de resourcepagina.
+1. Verzamel geconfigureerd `endpoint` en `key`een .
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Gebruik node. js om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) te doorzoeken en een Voorspellings resultaat te krijgen.
+Gebruik Node.js om het [voorspellingseindpunt](https://aka.ms/luis-apim-v3-prediction) op te vragen en een voorspellingsresultaat te krijgen.
 
-1. Kopieer het volgende code fragment naar een bestand met de naam `predict.js`:
+1. Kopieer het volgende codefragment `predict.js`naar een bestand met de naam :
 
     ```javascript
     var request = require('request');
@@ -89,32 +89,32 @@ Gebruik node. js om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-pre
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings **runtime** sleutel en-eind punt.
+1. Vervang `YOUR-KEY` de `YOUR-ENDPOINT` waarden en waarden door uw eigen voorspelling **Runtime-toets** en eindpunt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|De **runtime** -sleutel voor de voor spelling van 32-tekens.|
-    |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Uw 32-tekenvoorspelling **Runtime-toets.**|
+    |`YOUR-ENDPOINT`| Uw voorspelling URL eindpunt. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Installeer de `request`, `request-promise`en `querystring` afhankelijkheden met deze opdracht:
+1. Installeer `request`de `request-promise`afhankelijkheden en `querystring` afhankelijkheden met deze opdracht:
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. Voer uw app uit met de volgende opdracht:
+1. Voer uw app uit met deze opdracht:
 
     ```console
     node predict.js
     ```
 
- 1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
+ 1. Bekijk de voorspellingsrespons, die wordt geretourneerd als JSON:
 
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid:
+    De JSON-respons die is opgemaakt voor leesbaarheid:
 
     ```JSON
     {
@@ -159,9 +159,9 @@ Gebruik node. js om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-pre
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u het bestand uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)
+> [Uitingen toevoegen en trainen](../get-started-get-model-rest-apis.md)

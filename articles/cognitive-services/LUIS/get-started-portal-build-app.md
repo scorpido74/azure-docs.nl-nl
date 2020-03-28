@@ -1,173 +1,170 @@
 ---
-title: 'Snelstartgids: een nieuwe app maken in de LUIS-Portal'
-titleSuffix: Azure Cognitive Services
-description: In deze Quick Start maakt u de basis onderdelen van een app, intenties en entiteiten, evenals de test met voorbeeld utterance in de LUIS-Portal.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
+title: 'Snelstart: een nieuwe app maken in de LUIS-portal'
+description: In deze quickstart maakt u de basisonderdelen van een app, intenties en entiteiten en test u met voorbeeldutterance in de LUIS-portal.
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381984"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244611"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstart: een nieuwe app maken in de LUIS-portal
 
-In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
-
-Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer u klaar bent om uw app te implementeren, raadpleegt u de [Snelstartgids voor het implementeren van een app](get-started-portal-deploy-app.md). U ziet hoe u een Azure cognitieve service-resource maakt en deze aan de app toewijst.
+In deze quickstart bouwt u een nieuwe app in de LUIS-portal. Maak eerst de basisonderdelen van een app, **intenties**en **entiteiten**. Test vervolgens de app door een voorbeeldvan gebruiker uiting in het interactieve testpaneel om de voorspelde intentie te krijgen.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Een app maken
 
-1. Selecteer **+ maken** op de context werkbalk.
+1. Selecteer **+ Nieuwe app voor een gesprek** op de contextwerkbalk en selecteer Vervolgens Nieuwe app voor een **gesprek**.
 
-   [![nieuwe app maken in LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![Nieuwe app maken in LUIS-portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
-1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **gereed**.
+1. Configureer de app in het pop-upvenster met de volgende instellingen en selecteer **Gereed**.
 
    |Naam van instelling| Waarde | Doel|
    |--|--|--|
-   |Name|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
-   |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>vereist|
+   |Name|`myEnglishApp`|Unieke luis-app-naam<br>vereist|
+   |Cultuur|**Engels**|Taal van uitingen van gebruikers, **en-us**<br>vereist|
    |Beschrijving (optioneel)|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
-   |Voorspellings bron (optioneel) |-  |Niet selecteren. LUIS biedt u een begin sleutel die gratis kan worden gebruikt voor het maken van bewerkings eindpunt aanvragen voor ontwerpen en 1.000. |
+   |Voorspellingsbron (optioneel) |-  |Niet selecteren. LUIS geeft u een Starter-sleutel om gratis te gebruiken voor het maken van auteur en 1.000 voorspellingseindpuntaanvragen. |
 
    ![Nieuwe app-instellingen invoeren](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>Intents maken
 
-Nadat de LUIS-app is gemaakt, moet u intenties maken. Met bedingen kunt u tekst van gebruikers categoriseren. Een Human resources-app kan bijvoorbeeld twee functies hebben. Om mensen te helpen:
+Nadat de LUIS-app is gemaakt, moet u intenties maken. Intents zijn een manier om tekst van gebruikers te categoriseren. Een personeelsapp kan bijvoorbeeld twee functies hebben. Om mensen te helpen:
 
- 1. Taken zoeken en Toep assen
- 1. Formulieren zoeken die moeten worden toegepast op taken
+ 1. Vacatures zoeken en solliciteren
+ 1. Formulieren zoeken om te solliciteren naar vacatures
 
-De twee verschillende _bedoelingen_ van de app worden uitgelijnd op de volgende intenties:
+De twee verschillende _intenties_ van de app sluiten aan bij de volgende intenties:
 
-|Intentie|Voorbeeld tekst van gebruiker<br>ook wel bekend als een _utterance_|
+|Intentie|Voorbeeldtekst van de gebruiker<br>bekend als een _utterance_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
-|FindForm|`Where is the job transfer form hrf-123456?`|
+|Zoekformulier|`Where is the job transfer form hrf-123456?`|
 
-Voer de volgende stappen uit om intenties te maken:
+Voer de volgende stappen uit om intents te maken:
 
-1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Maken**.
+1. Nadat de app is gemaakt, bevindt u zich op de pagina **Intents** van de sectie **Bouwen.** Selecteer **Maken**.
 
-   [![Selecteer maken om nieuwe intentie te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Selecteer Maken om nieuwe intenties te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Voer de naam van de doel groep in, `FindForm`en selecteer vervolgens **gereed**.
+1. Voer de intentienaam `FindForm`in en selecteer **Gereed**.
 
-## <a name="add-an-example-utterance"></a>Een voorbeeld-utterance toevoegen
+## <a name="add-an-example-utterance"></a>Een voorbeeldutterance toevoegen
 
-U kunt bijvoorbeeld uitingen toevoegen nadat u intenties hebt gemaakt. Voor beelden van uitingen zijn tekst die een gebruiker invoert in een chat-bot of een andere client toepassing. Ze wijzen de bedoeling van de tekst van de gebruiker toe aan een LUIS intentie.
+U voegt voorbeelduitingen toe nadat u intents hebt gemaakt. Voorbeelduitingen zijn tekst die een gebruiker invoert in een chatbot of andere clienttoepassing. Ze brengen de intentie van de tekst van de gebruiker in kaart met een LUIS-intentie.
 
-Voor dit voor beeld is het `FindForm` opzet van de toepassing, bijvoorbeeld uitingen, zoals het formulier nummer. De client toepassing heeft het formulier nummer nodig om te voldoen aan de aanvraag van de gebruiker. het is dus belang rijk dat u deze opneemt in de utterance.
+Voor de intentie `FindForm` van deze voorbeeldtoepassing bevatten voorbeelduitingen het formuliernummer. De clienttoepassing heeft het formuliernummer nodig om aan het verzoek van de gebruiker te voldoen, dus het is belangrijk om het in de utterance op te nemen.
 
-[![Voer voor beeld uitingen in voor de FindForm intentie](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![Voorbeelduitingen invoeren voor de intentie FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Voeg het volgende 15-voor beeld uitingen toe aan de `FindForm` intentie.
+Voeg de volgende 15 voorbeelduitingen toe aan de `FindForm` intentie.
 
 |#|Voorbeelden van utterances|
 |--|--|
-|1|Zoeken naar HRF-123456|
-|2|Waar bevindt het Human Resources-formulier zich HRF-234591?|
-|3|HRF-345623, waar is het|
-|4|Is het mogelijk me HRF-345794 te sturen|
-|5|Heb ik HRF-234695 nodig om een interne taak uit te voeren?|
-|6|Moet mijn manager weten wat ik toepas voor een taak met HRF-234091|
-|7|Waar kan ik HRF-234918 verzenden? Ontvang ik een e-mail antwoord dat is ontvangen?|
+|1|Op zoek naar hrf-123456|
+|2|Waar is de human resources vorm hrf-234591?|
+|3|hrf-345623, waar is het|
+|4|Is het mogelijk om mij hrf-345794 te sturen|
+|5|Heb ik hrf-234695 nodig om te solliciteren naar een interne baan?|
+|6|Moet mijn manager weten dat ik solliciteer bij hrf-234091|
+|7|Waar stuur ik hrf-234918? Krijg ik een e-mailantwoord dat is ontvangen?|
 |8|hrf-234555|
-|9|Wanneer is HRF-234987 bijgewerkt?|
-|10|Gebruik Form HRF-876345 om te worden toegepast op technische posities|
-|11|Was er een nieuwe versie van HRF-765234 ingediend voor mijn open-aanvraag?|
-|12|Moet ik HRF-234234 gebruiken voor internationale taken?|
-|13|HRF-234598-spel fout|
-|14|zullen HRF-234567 worden bewerkt voor nieuwe vereisten|
-|15|HRF-123456, HRF-123123, HRF-234567|
+|9|Wanneer is hrf-234987 bijgewerkt?|
+|10|Gebruik ik form hrf-876345 om te solliciteren op technische functies|
+|11|Was een nieuwe versie van hrf-765234 ingediend voor mijn open req?|
+|12|Gebruik ik hrf-234234 voor internationale banen?|
+|13|hrf-234598 spelfout|
+|14|zal hrf-234567 worden bewerkt voor nieuwe eisen|
+|15|hrf-123456, hrf-123123, hrf-234567|
 
-Het ontwerp van dit voor beeld kan er als volgt uitzien:
+Volgens het ontwerp variëren deze voorbeelduitingen op de volgende manieren:
 
-* lengte van utterance
-* interpunctie
-* woorden keuze
-* werkwoordsvormen (is, was, is)
-* woord volgorde
+* utterancelengte
+* Interpunctie
+* woordkeuze
+* werkwoord gespannen (is, was, zal zijn)
+* woordvolgorde
 
 
 
-## <a name="create-a-regular-expression-entity"></a>Een reguliere expressie-entiteit maken
+## <a name="create-a-regular-expression-entity"></a>Een entiteit met reguliere expressiemaken
 
-Het formulier moet worden gemarkeerd als een entiteit om het formulier nummer te retour neren in het runtime-Voorspellings antwoord. Omdat de tekst van het formulier nummer zeer gestructureerd is, kunt u deze markeren met behulp van een reguliere expressie-entiteit. Maak de entiteit met de volgende stappen:
+Als u het formuliernummer wilt retourneren in het antwoord op de voorspelling van runtime, moet het formulier als een entiteit worden gemarkeerd. Omdat de tekst van het formuliernummer sterk gestructureerd is, u deze markeren met behulp van een entiteit met reguliere expressie. Maak de entiteit met de volgende stappen:
 
-1. Selecteer **entiteiten** in het menu aan de linkerkant.
+1. Selecteer **Entiteiten in** het menu aan de linkerkant.
 
-1. Selecteer **maken** op de pagina **entiteiten** .
+1. Selecteer **Maken** op de pagina **Entiteiten.**
 
-1. Voer de naam `Human Resources Form Number`, selecteer het type **regex** -entiteit en selecteer vervolgens **volgende**.
+1. Voer de `Human Resources Form Number`naam in, selecteer het **entiteitstype Regex** en selecteer **Volgende**.
 
-   ![Entiteit reguliere expressie maken](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Entiteit met reguliere expressie maken](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. Voer de expressie voor reguliere expressies (**regex**) in `hrf-[0-9]{6}`. Deze vermelding komt overeen met de letterlijke tekens, `hrf-`, en staat precies zes cijfers toe, en selecteer vervolgens **maken**.
+1. Voer de expressie reguliere expressie `hrf-[0-9]{6}`**RegEx**in . Dit item komt overeen met de letterlijke tekens `hrf-`en biedt precies 6 cijfers de optie **Maken**.
 
    ![Reguliere expressie voor entiteit invoeren](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
 
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None
 
-**Geen** intentie is de terugval intentie en mag niet leeg blijven. Deze intentie moet één utterance bevatten voor elke 10 voorbeeld uitingen die u hebt toegevoegd voor de andere intentie van de app.
+De **intentie Geen** is de terugvalintentie en mag niet leeg blijven. Deze intentie moet één utterance bevatten voor elke 10 voorbeelduitingen die u hebt toegevoegd voor de andere intents van de app.
 
-De voor beeld-uitingen van **geen** intentie moet zich buiten uw client toepassings domein bevinden.
+De voorbeelduitingen van de intentie **geen** moeten zich buiten het domein van uw clienttoepassings bevinden.
 
-1. Selecteer **intenties** in het menu links en selecteer vervolgens **geen** in de lijst intenties.
+1. Selecteer **Intents** in het linkermenu en selecteer **Geen** in de lijst met intenties.
 
-1. Voeg het volgende voor beeld uitingen toe aan de bedoeling:
+1. Voeg de volgende voorbeelduitingen toe aan de intentie:
 
-   |Voor beeld van geen intentie-uitingen|
+   |None|
    |--|
    |Blaffende honden zijn irritant|
    |Bestel een pizza voor me|
    |Pinguïns in de oceaan|
 
-   Voor deze app zijn dit voor beeld-uitingen buiten het domein. Als uw domein dieren, levens middelen of de oceaan bevat, moet u een ander voor beeld uitingen gebruiken voor de **geen** intentie.
+   Voor deze app bevinden deze voorbeelduitingen zich buiten het domein. Als uw domein dieren, voedsel of de oceaan bevat, moet u verschillende voorbeelduitingen gebruiken voor de **intentie Geen.**
 
 ## <a name="train-the-app"></a>De app trainen
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Bekijk de entiteit reguliere expressie in het voor beeld uitingen
+## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Bekijk de entiteit met reguliere expressie in de voorbeelduitingen
 
-1. Controleer of de entiteit is gevonden in de **FindForm** -intentie door **intenties** te selecteren in het menu links. Selecteer vervolgens **FindForm** intentie.
+1. Controleer of de entiteit wordt gevonden in de intentie **FindForm** door **Intents** te selecteren in het linkermenu. Selecteer vervolgens De intentie **Zoekvorm.**
 
-   De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen. Als u de oorspronkelijke tekst wilt zien in plaats van de naam van de entiteit, schakelt u in de werk balk **weer gave entiteiten** in.
+   De entiteit wordt gemarkeerd wanneer deze wordt weergegeven in de voorbeelduitingen. Als u de oorspronkelijke tekst wilt zien in plaats van de entiteitsnaam, schakelt u **de weergave Entiteiten** in vanaf de werkbalk.
 
-   [![alle voor beeld-uitingen die zijn gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![Alle voorbeelduitingen die zijn gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
-## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve test venster
+## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve testvenster
 
-Gebruik het interactieve **test** venster in de Luis-Portal om te controleren of de entiteit is geëxtraheerd uit nieuwe uitingen de app nog niet is gedetecteerd.
+Gebruik het interactieve **testvenster** in de LUIS-portal om te valideren dat de entiteit is geëxtraheerd uit nieuwe uitingen die de app nog niet heeft gezien.
 
-1. Selecteer **testen** in het menu in de rechter bovenhoek.
+1. Selecteer **Testen** in het menu rechtsboven.
 
-1. Voeg een nieuwe utterance toe en druk vervolgens op ENTER:
+1. Voeg een nieuwe utterance toe en druk op Enter:
 
    ```Is there a form named hrf-234098```
 
-   ![Nieuwe utterance testen in het test venster](./media/get-started-portal-build-app/test-new-utterance.png)
+    Selecteer **Inspecteren** om entiteitsvoorspellingen te bekijken.
 
-   De eerste voorspelde intentie is op de juiste manier **FindForm** met meer dan 90% betrouw baarheid (0,977). Het **faxnummer van het formulier Human Resources** wordt geëxtraheerd met de waarde hrf-234098.
+   > [!div class="mx-imgBorder"]
+   > ![Nieuwe utterance testen in testvenster](./media/get-started-portal-build-app/test-new-utterance.png)
+
+   De top voorspelde intentie is correct **FindForm** met meer dan 90% vertrouwen (0.977). De entiteit **Human Resources Form Number** wordt geëxtraheerd met een waarde van hrf-234098.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Snelstartgids en niet naar de volgende Snelstartgids gaat, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel vervolgens het selectie vakje van de app naar links in de lijst in en selecteer **verwijderen** in de context werkbalk boven de lijst.
+Wanneer u klaar bent met deze quickstart en niet naar de volgende quickstart gaat, selecteert u **Mijn apps** in het bovenste navigatiemenu. Schakel vervolgens het linkerselectievakje van de app in de lijst in en selecteer **Verwijderen op** de contextwerkbalk boven de lijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [2. een app implementeren](get-started-portal-deploy-app.md)
+> [2. Een app implementeren](get-started-portal-deploy-app.md)

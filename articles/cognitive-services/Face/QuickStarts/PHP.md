@@ -1,7 +1,7 @@
 ---
 title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids detecteert u gezichten van een afbeelding met behulp van het gezichts REST API met PHP.
+description: In deze quickstart detecteert u gezichten van een afbeelding met behulp van de Face REST API met PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169744"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP
@@ -23,10 +23,10 @@ In deze quickstart gebruikt u de Azure Face REST API met PHP om menselijke gezic
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen.
-- Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/download).
-- Het PHP- [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakket.
-- Een webbrowser met PHP-functionaliteit. Als u dit niet hebt ingesteld, kunt u dit doen door [XAMPP](https://www.apachefriends.org/) op uw computer te installeren en in te stellen.
+- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen.
+- Een codeeditor zoals [Visual Studio Code](https://code.visualstudio.com/download).
+- Het [PHP-HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakket.
+- Een webbrowser met PHP-ingeschakelde webbrowser. Als u dit niet hebt ingesteld, u dit doen door [XAMPP](https://www.apachefriends.org/) op uw machine te installeren en in te stellen.
 
 ## <a name="initialize-the-html-file"></a>Het HTML-bestand initialiseren
 
@@ -43,7 +43,7 @@ Maak een nieuw HTML-bestand, *detectFaces.html*, en voeg de volgende code toe.
 
 ## <a name="write-the-php-script"></a>Het PHP-script schrijven
 
-Voeg de volgende code toe in het element `body` van het document. Met deze code wordt een basis gebruikers interface ingesteld met een URL-veld, een knop **vlak analyseren** , een antwoord venster en een afbeeldings weergave deel venster.
+Voeg de volgende code toe in het element `body` van het document. Met deze code wordt een basisgebruikersinterface ingesteld met een URL-veld, een **knop Gezicht analyseren,** een reactievenster en een afbeeldingsweergavevenster.
 
 ```php
 <?php
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de teken reeks van de `uriBase` wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnementssleutel `uriBase` en u moet de tekenreeks wijzigen zodat deze de juiste eindpunttekenreeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -288,7 +288,7 @@ Open het bestand in een webbrowser waarvoor PHP is ingeschakeld. U zou een JSON-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken de Face-API die worden gebruikt voor het detecteren van menselijke gezichten in een afbeelding, afbaken de gezichten met rechthoeken en retour neer kenmerken zoals leeftijd en geslacht.
+Verken de Face API die wordt gebruikt om menselijke gezichten in een afbeelding te detecteren, de gezichten af te bakenen met rechthoeken en kenmerken zoals leeftijd en geslacht terug te geven.
 
 > [!div class="nextstepaction"]
 > [Face-API's](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

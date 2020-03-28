@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: reguliere expressie entiteit-LUIS'
+title: 'Zelfstudie: Entiteit met reguliere expressies - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Extraheer consistente, opgemaakte gegevens van een utterance met behulp van de reguliere expressie-entiteit.
+description: Extraheren consistent opgemaakte gegevens uit een utterance met behulp van de entiteit Reguliere expressie.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75381509"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Zelf studie: goed opgemaakte gegevens ophalen uit de utterance
-In deze zelf studie maakt u een reguliere expressie-entiteit om consistent opgemaakte gegevens te halen uit een utterance.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Zelfstudie: Goed opgemaakte gegevens uit de utterance halen
+Maak in deze zelfstudie een entiteit met regelmatige expressies om consistent opgemaakte gegevens uit een utterance te extraheren.
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -28,29 +28,29 @@ In deze zelf studie maakt u een reguliere expressie-entiteit om consistent opgem
 > * App importeren
 > * Intentie toevoegen
 > * Een entiteit in de vorm van een reguliere expressie toevoegen
-> * App trainen, publiceren en doorzoeken om geëxtraheerde gegevens op te halen
+> * Trainen, publiceren en query-app om geëxtraheerde gegevens te krijgen
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="regular-expression-entities"></a>Entiteiten in de vorm van reguliere expressies
 
-Gebruik de entiteit reguliere expressie om goed opgemaakte tekst uit een utterance op te halen. Hoewel de intentie van een uiting altijd wordt bepaald aan de hand van machine learning, wordt voor dit specifieke type entiteit geen machine learning gebruikt. Een goed gebruik voor de entiteit reguliere expressie is tekst die consistent kan worden weer gegeven met een [reguliere expressie](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
+Gebruik de entiteit met reguliere expressie om goed opgemaakte tekst uit een utterance te halen. Hoewel de intentie van een uiting altijd wordt bepaald aan de hand van machine learning, wordt voor dit specifieke type entiteit geen machine learning gebruikt. Een goed gebruik voor de entiteit met reguliere expressie is elke tekst die consistent kan worden weergegeven door een [reguliere expressie](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
 `Send pizza delivery time to x123432`
 
-In dit voor beeld wordt een _korte code_ gebruikt voor het verzenden van tekst berichten. Deze korte code is een numerieke code van vijf of 6 cijfers, voorafgegaan door een x en kan worden beschreven met de reguliere expressie `x\d{5,6}`.
+In dit voorbeeld wordt een _korte code_ gebruikt voor het verzenden van tekstberichten. Deze korte code is een 5 of 6-cijferige numerieke code, vooraf bevestigd `x\d{5,6}`met een x, en kan worden beschreven met de reguliere expressie .
 
-Wanneer u een reguliere expressie-entiteit toevoegt aan een LUIS-app, hoeft u geen [Label](label-entity-example-utterance.md) te plaatsen voor de tekst met de reguliere Express-entiteit. Deze wordt toegepast op alle uitingen in alle intenties.
+Wanneer u een entiteit met reguliere expressie toevoegt aan een LUIS-app, hoeft u de tekst niet te [labelen](label-entity-example-utterance.md) met de reguliere expresentiteit. Het wordt toegepast op alle uitingen in alle opzichten.
 
-## <a name="import-example-json-to-begin-app"></a>Voor beeld van import. json voor het starten van de app
+## <a name="import-example-json-to-begin-app"></a>Voorbeeld .json importeren om app te starten
 
-1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
+1.  Download en sla het [JSON-bestand van](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)de app op.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="create-intent-for-sending-confirmation-text-messages"></a>Intentie maken voor het verzenden van bevestigings tekst berichten
+## <a name="create-intent-for-sending-confirmation-text-messages"></a>Intentie maken voor het verzenden van bevestigingstekstberichten
 
-1. Selecteer **+ maken** om een nieuwe intentie te maken voor het classificeren van de intentie van een utterance voor het verzenden van een bevestigings tekst.
+1. Selecteer **+ Maak een** nieuwe intentie om de intentie van een utterance voor het verzenden van een bevestigingstekst te classificeren.
 
 1. Voer in het pop-updialoogvenster `ConfirmationText` in en selecteer vervolgens **Done**.
 
@@ -58,35 +58,35 @@ Wanneer u een reguliere expressie-entiteit toevoegt aan een LUIS-app, hoeft u ge
 
     |Voorbeelden van utterances|
     |--|
-    |Pizza-leverings tijd verzenden naar x123432|
+    |Pizza levertijd naar x123432 verzenden|
     |Txt x234567 voor tijd|
-    |x23987 voor de kennisgeving|
+    |x23987 voor de aankondiging|
 
-    Als u door machines geleerde entiteiten wilt extra heren, geeft u voor beelden op die de entiteit bevatten in verschillende uitingen, maar met deze niet-door machines geleerde entiteit, is de variatie niet belang rijk. Zolang de tekst overeenkomt met de reguliere expressie, wordt deze geëxtraheerd.
+    Als u door machines geleerde entiteiten wilt extraheren, moet u voorbeelden geven die de entiteit in verschillende uitingen opnemen, maar met deze niet-machine-geleerde entiteit is de variatie niet belangrijk. Zolang tekst overeenkomt met de reguliere expressie, wordt deze geëxtraheerd.
 
 ## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>De entiteit in de vorm van een gewone expressie gebruiken voor correct opgemaakte gegevens
-Maak een reguliere expressie-entiteit die overeenkomt met het tekst nummer. Deze reguliere expressie komt overeen met tekst, maar negeert hoofdletter-en cultuur varianten.
+Maak een entiteit met een reguliere expressie die overeenkomt met het tekstnummer. Deze reguliere expressie komt overeen met tekst, maar negeert case- en cultuurvarianten.
 
 1. Selecteer **Entities** in het linkerpaneel.
 
-1. Selecteer **+ maken** op de lijst pagina met entiteiten.
+1. Selecteer **+ Maak op** de lijstpagina Entiteiten.
 
-1. Voer in het pop-updialoogvenster de nieuwe entiteits naam `ConfirmationTextRegEx`, selecteer **regex** als het entiteits type en selecteer vervolgens **volgende**.
-
-    > [!div class="mx-imgBorder"]
-    > ![beginnen met het maken van entiteits stappen voor een reguliere expressie-entiteit](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
-
-1. Voer in de **entiteit Create a regex**`x\d{5,6}` als de **regex** -waarde in en selecteer vervolgens **maken**.
+1. Voer in het pop-updialoogvenster de `ConfirmationTextRegEx`nieuwe entiteitsnaam in, selecteer **RegEx** als entiteitstype en selecteer **Volgende**.
 
     > [!div class="mx-imgBorder"]
-    > ![reguliere expressie invoeren om gegevens op te halen uit het voor beeld utterance](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
+    > ![Stappen voor het maken van entiteiten voor reguliere expressies starten](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
 
-1. Selecteer **intenties** in het linkermenu en klik vervolgens op de **ConfirmationText** voor een overzicht van de reguliere expressie in de uitingen.
+1. Voer op **de entiteit Een regex maken**in `x\d{5,6}` als de **Regex-waarde** en selecteer **Vervolgens Maken**.
 
     > [!div class="mx-imgBorder"]
-    > ![reguliere expressie weer geven met het label in voor beeld uitingen](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+    > ![Reguliere expressie invoeren om gegevens uit voorbeeldutterance te extraheren](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
 
-    Omdat de entiteit geen door de machine geleerde entiteit is, wordt de entiteit toegepast op de uitingen en weer gegeven in de LUIS-Portal zodra deze wordt gemaakt.
+1. Selecteer **Intents** in het linkermenu en vervolgens de intentie **ConfirmationText** om de reguliere expressie te zien die in de uitingen is gelabeld.
+
+    > [!div class="mx-imgBorder"]
+    > ![Reguliere expressie weergeven die is gelabeld in voorbeelduitingen](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+
+    Omdat de entiteit geen door de machine geleerde entiteit is, wordt de entiteit toegepast op de uitingen en weergegeven in de LUIS-portal zodra deze is gemaakt.
 
 ## <a name="train-the-app-before-testing-or-publishing"></a>De app trainen voordat u gaat testen of publiceren
 
@@ -104,7 +104,7 @@ Maak een reguliere expressie-entiteit die overeenkomt met het tekst nummer. Deze
 
     `Text my pizza delivery to x23456 x234567 x12345`
 
-    De laatste parameter van de queryreeks is `query`, de utterance **query**.
+    De laatste querytekenreeksparameter is `query`de **utterancequery**.
 
     ```json
     {
@@ -189,9 +189,9 @@ Maak een reguliere expressie-entiteit die overeenkomt met het tekst nummer. Deze
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [Concept-entiteiten](luis-concept-entity-types.md)
-* [JSON-verwijzing van de entiteit van de reguliere expressie](reference-entity-regular-expression.md?tabs=V3)
-* [Entiteiten toevoegen om gegevens te extra heren](luis-how-to-add-entities.md)
+* [Concept - entiteiten](luis-concept-entity-types.md)
+* [JSON-referentie van entiteit voor reguliere expressie](reference-entity-regular-expression.md?tabs=V3)
+* [Entiteiten toevoegen om gegevens te extraheren](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u een nieuwe intentie gemaakt, voorbeelduitingen toegevoegd en een entiteit in de vorm van een reguliere expressie gemaakt om goed opgemaakte gegevens te extraheren uit de uitingen. Na het trainen en het publiceren van de app is met een query naar het eindpunt de intentie achterhaald. Vervolgens zijn de geëxtraheerde gegevens geretourneerd.

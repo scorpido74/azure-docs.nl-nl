@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte tekst extra heren-REST, python'
+title: 'Snelstart: Gedrukte tekst extraheren - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met Python.
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d89c50867b8c66c0dfb40021982b201078fa67d1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af755af9404cc98c650164e5f891661f2530f77b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774312"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244770"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en python
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Snelstart: gedrukte tekst (OCR) extraheren met de Computer Vision REST API en Python
 
 > [!NOTE]
-> Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken. Een [python-Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) is beschikbaar. 
+> Als u Tekst in de Engelse taal extraheert, u overwegen de nieuwe [bewerking Lezen te](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)gebruiken. Er is [een Python quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) beschikbaar. 
 
-In deze Quick Start kunt u gedrukte tekst met behulp van de Computer Vision REST API extra heren met optische teken herkenning (OCR) van een afbeelding. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze quickstart haalt u afgedrukte tekst met optische tekenherkenning (OCR) uit een afbeelding met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) u afgedrukte tekst in een afbeelding detecteren en herkende tekens extraheren in een machinebruikbare tekenstroom.
 
-U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter-notitieblok op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
+U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/try/cognitive-services/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Python](https://www.python.org/downloads/) moet geïnstalleerd zijn als u het voorbeeld lokaal wilt uitvoeren.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
@@ -47,6 +47,8 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python get-printed-text.py`.
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -104,9 +106,9 @@ plt.show()
 plt.axis("off")
 ```
 
-## <a name="upload-image-from-local-storage"></a>Afbeelding uploaden van lokale opslag
+## <a name="upload-image-from-local-storage"></a>Afbeelding uploaden vanuit lokale opslag
 
-Als u een lokale installatie kopie wilt analyseren, stelt u de content-type-header in op application/octet-stream en stelt u de hoofd tekst van de aanvraag in op een byte matrix in plaats van JSON-gegevens.
+Als u een lokale afbeelding wilt analyseren, stelt u de header Content-Type in op toepassing/octetstream en stelt u de aanvraaginstantie in op een bytearray in plaats van JSON-gegevens.
 
 ```python
 image_path = "<path-to-local-image-file>"

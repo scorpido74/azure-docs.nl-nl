@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 07e7cc991f127bf4bb4f466c0108962786e45bce
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68423559"
 ---
-Let op de schuif regelaar voor de **waarschijnlijkheids drempelwaarde** in het linkerdeel venster van het tabblad **prestaties** . Dit is het betrouwbaarheids niveau dat een voor spelling moet hebben om als correct te worden beschouwd (met het oog op de berekening van de precisie en het terughalen). 
+Let op de schuifregelaar **Waarschijnlijkheidsdrempel** in het linkerdeelvenster van het tabblad **Prestaties.** Dit is het niveau van vertrouwen dat een voorspelling moet hebben om als correct te worden beschouwd (met het oog op de berekening van precisie en terugroeping). 
 
-Wanneer u Voorspellings aanroepen met een hoge drempel waarde interpreteert, retour neren ze doorgaans resultaten met een hoge precisie op&mdash;basis van de kosten voor het intrekken van de gedetecteerde classificaties, maar veel blijven niet gedetecteerd. Een lage waarschijnlijkheids drempel waarde wordt het&mdash;tegenovergestelde van de werkelijke classificaties gedetecteerd, maar er zijn meer valse positieven in die set. Daarom moet u de drempel waarde voor de kans instellen op basis van de specifieke behoeften van uw project. Later, wanneer u de resultaten van de voor spelling op de client ontvangt, moet u dezelfde drempel waarde voor de kans gebruiken als u hier gebruikt.
+Wanneer u voorspellingsoproepen interpreteert met een hoge waarschijnlijkheidsdrempel, hebben&mdash;ze de neiging om resultaten met hoge precisie terug te sturen ten koste van het terugroepen van de gedetecteerde classificaties correct zijn, maar veel blijven onopgemerkt. Een lage waarschijnlijkheidsdrempel&mdash;doet het tegenovergestelde van de meeste daadwerkelijke classificaties worden ontdekt, maar er zijn meer valse positieven binnen die reeks. Met dit in gedachten moet u de waarschijnlijkheidsdrempel instellen op basis van de specifieke behoeften van uw project. Wanneer u later voorspellingsresultaten ontvangt aan de clientzijde, moet u dezelfde waarschijnlijkheidsdrempelwaarde gebruiken als u hier hebt gebruikt.

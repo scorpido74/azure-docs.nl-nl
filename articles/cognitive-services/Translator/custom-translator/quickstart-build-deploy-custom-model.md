@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446750"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370210"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
 
@@ -26,7 +26,21 @@ Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsystee
 
 2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Als u beide bovenstaande dingen hebt, meldt u zich aan bij de [Custom Translator](https://portal.customtranslator.azure.ai)-portal. Ga in de Custom Translator-portal naar de pagina Instellingen, waar u de Microsoft Translator Text-API-abonnementssleutel kunt koppelen aan uw werkruimte.
+3. Wanneer u beide bovenstaande hebt, meldt u zich aan bij de portal [Voor aangepaste vertalers](https://portal.customtranslator.azure.ai) om werkruimten, projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
+
+## <a name="create-a-workspace"></a>Een werkruimte maken
+
+Als u de eerste keer gebruiker bent, wordt u gevraagd akkoord te gaan met de Servicevoorwaarden, een werkruimte te maken en uw werkruimte te koppelen aan een Microsoft Translator Text API-abonnement.
+
+![Werkruimte](media/quickstart/terms-of-service.png)
+![maken](media/quickstart/create-workspace-1.png)
+![Werkruimte](media/quickstart/create-workspace-2.png)
+![maken](media/quickstart/create-workspace-3.png)
+![Werkruimte](media/quickstart/create-workspace-4.png)
+![maken](media/quickstart/create-workspace-5.png)
+![Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken](media/quickstart/create-workspace-6.png)
+
+Ga bij volgende bezoeken aan de portal Aangepaste vertaler naar de pagina Instellingen waar u uw werkruimte beheren, meer werkruimten maken, uw Microsoft Translator Text API-abonnementssleutel koppelen aan uw werkruimten, mede-eigenaren toevoegen en een abonnementssleutel.
 
 ## <a name="create-a-project"></a>Een project maken
 

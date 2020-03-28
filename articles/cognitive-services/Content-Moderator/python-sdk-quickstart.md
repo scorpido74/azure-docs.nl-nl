@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Content Moderator-client bibliotheek voor python'
+title: 'Snelstart: contentmoderator-clientbibliotheek voor Python'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u aan de slag kunt gaan met de Azure Cognitive Services Content Moderator-client bibliotheek voor python.
+description: In deze quickstart leert u hoe u aan de slag met de azure Cognitive Services Content Moderator-clientbibliotheek voor Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,313 +11,313 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 31cdc9663283b580acc10e7ac8d5a77f9036a7a8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772361"
 ---
-# <a name="quickstart-content-moderator-client-library-for-python"></a>Snelstartgids: Content Moderator-client bibliotheek voor python
+# <a name="quickstart-content-moderator-client-library-for-python"></a>Snelstart: contentmoderator-clientbibliotheek voor Python
 
-Ga aan de slag met de Content Moderator-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Content Moderator is een cognitieve service waarmee tekst-, afbeeldings-en video-inhoud wordt gecontroleerd op materiaal dat mogelijk aanstootgevend, riskant of anderszins ongewenst is. Wanneer dergelijk materiaal wordt gevonden, past de service de relevante labels (vlaggen) op de inhoud toe. Uw app kan gelabelde inhoud vervolgens afhandelen om te voldoen aan de regelgeving of om een beoogde omgeving voor gebruikers te beheren.
+Ga aan de slag met de contentmoderator-clientbibliotheek voor Python. Volg deze stappen om het pakket te installeren en probeer de voorbeeldcode voor basistaken uit. Content Moderator is een cognitieve service die tekst-, beeld- en video-inhoud controleert op materiaal dat mogelijk aanstootgevend, riskant of anderszins ongewenst is. Wanneer dergelijk materiaal wordt gevonden, past de service de relevante labels (vlaggen) op de inhoud toe. Uw app kan gelabelde inhoud vervolgens afhandelen om te voldoen aan de regelgeving of om een beoogde omgeving voor gebruikers te beheren.
 
-Gebruik de Content Moderator-client bibliotheek voor python voor het volgende:
+Gebruik de clientbibliotheek Inhoudsmoderator voor Python om:
 
-* [Gemiddelde tekst](#moderate-text)
-* [Een lijst met aangepaste voor waarden gebruiken](#use-a-custom-terms-list)
-* [Gemiddelde afbeeldingen](#moderate-images)
-* [Een aangepaste installatie kopie lijst gebruiken](#use-a-custom-image-list)
+* [Matige tekst](#moderate-text)
+* [Een aangepaste lijst met termen gebruiken](#use-a-custom-terms-list)
+* [Matige afbeeldingen](#moderate-images)
+* [Een aangepaste afbeeldingslijst gebruiken](#use-a-custom-image-list)
 * [Een beoordeling maken](#create-a-review)
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Voorbeeld van broncode](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) |  | van[naslagdocumentatieBibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)[(PiPy)-voorbeelden](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Azure-abonnement - [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-content-moderator-azure-resource"></a>Een Content Moderator Azure-resource maken
+### <a name="create-a-content-moderator-azure-resource"></a>Een Azure-bron voor inhoudsmoderator maken
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Content Moderator met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Inhoudsmoderator met behulp van de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
-* Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/)
+* Ontvang een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
+* Uw bron weergeven op de [Azure-portal](https://portal.azure.com/)
 
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, moet u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en eind punt-URL, respectievelijk met de naam `CONTENT_MODERATOR_SUBSCRIPTION_KEY` en `CONTENT_MODERATOR_ENDPOINT`.
+Nadat u een sleutel uit uw proefabonnement of resource hebt opgehaald, maakt `CONTENT_MODERATOR_SUBSCRIPTION_KEY` u `CONTENT_MODERATOR_ENDPOINT` [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor respectievelijk de naam van de sleutel- en eindpunt-URL.
  
 ### <a name="create-a-python-script"></a>Een python-script maken
 
-Maak een nieuw python-script en open het in uw voorkeurs editor of IDE. Voeg boven aan het bestand de volgende `import`-instructies toe.
+Maak een nieuw Python-script en open het in uw voorkeurseditor of IDE. Voeg vervolgens `import` de volgende instructies toe aan de bovenkant van het bestand.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Maak vervolgens variabelen voor de eindpunt locatie en-sleutel van uw resource als omgevings variabelen. 
+Maak vervolgens variabelen voor de eindpuntlocatie en sleutel van uw resource als omgevingsvariabelen. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
 > [!NOTE]
-> Als u de omgevings variabelen hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabelen.
+> Als u de omgevingsvariabelen hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabelen.
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-U kunt de Content Moderator-client bibliotheek met de volgende opdracht installeren:
+U de clientbibliotheek Inhoudsmoderator installeren met de volgende opdracht:
 
 ```console
 pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 ```
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-De volgende klassen verwerken enkele van de belangrijkste functies van de Content Moderator python SDK.
+De volgende klassen behandelen enkele van de belangrijkste functies van de Content Moderator Python SDK.
 
 |Name|Beschrijving|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Deze klasse is nodig voor alle Content Moderator functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken.|
-|[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Deze klasse biedt de functionaliteit voor het analyseren van installatie kopieën voor inhoud voor volwassenen, persoonlijke gegevens of menselijke gezichten.|
-|[TextModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Deze klasse biedt de functionaliteit voor het analyseren van tekst voor taal-, Grove-, fout-en persoonlijke gegevens.|
-[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Deze klasse biedt de functionaliteit van de controle-Api's, met inbegrip van de methoden voor het maken van taken, aangepaste werk stromen en mensen Beoordelingen.|
+|[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Deze klasse is nodig voor alle functionaliteit van Content Moderator. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren.|
+|[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Deze klasse biedt de functionaliteit voor het analyseren van afbeeldingen voor inhoud voor volwassenen, persoonlijke informatie of menselijke gezichten.|
+|[TextModerationOperations TextModerationOperations TextModerationOperations TextModerati](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Deze klasse biedt de functionaliteit voor het analyseren van tekst voor taal, godslastering, fouten en persoonlijke informatie.|
+[BeoordelingenOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Deze klasse biedt de functionaliteit van de Beoordelingens-API's, inclusief de methoden voor het maken van taken, aangepaste werkstromen en menselijke beoordelingen.|
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Content Moderator-client bibliotheek voor python:
+Deze codefragmenten laten zien hoe u de volgende taken uitvoeren met de clientbibliotheek voor inhoudsmoderator voor Python:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Gemiddelde tekst](#moderate-text)
-* [Een lijst met aangepaste voor waarden gebruiken](#use-a-custom-terms-list)
-* [Gemiddelde afbeeldingen](#moderate-images)
-* [Een aangepaste installatie kopie lijst gebruiken](#use-a-custom-image-list)
+* [Matige tekst](#moderate-text)
+* [Een aangepaste lijst met termen gebruiken](#use-a-custom-terms-list)
+* [Matige afbeeldingen](#moderate-images)
+* [Een aangepaste afbeeldingslijst gebruiken](#use-a-custom-image-list)
 * [Een beoordeling maken](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) voor de content moderator sleutel en het eind punt.
+> In deze quickstart wordt ervan uitgegaan dat u [omgevingsvariabelen](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) hebt gemaakt voor de sleutel en eindpunt van inhoudsmoderator.
 
-Exemplaar een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) -object te maken.
+Instantiate een klant met uw eindpunt en sleutel. Maak een [Object CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) met uw sleutel en gebruik het met uw eindpunt om een [ContentModeratorClient-object](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) te maken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
-## <a name="moderate-text"></a>Gemiddelde tekst
+## <a name="moderate-text"></a>Matige tekst
 
-De volgende code gebruikt een Content Moderator-client om een tekst hoofdtekst te analyseren en de resultaten in de-console af te drukken. Maak eerst een **text_files/** map in de hoofdmap van het project en voeg een *content_moderator_text_moderation. txt* -bestand toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeld tekst:
+De volgende code gebruikt een Content Moderator-client om een teksttekst te analyseren en de resultaten op de console af te drukken. Maak eerst een **text_files/map** aan de basis van uw project en voeg een *bestand van content_moderator_text_moderation.txt* toe. Voeg uw eigen tekst toe aan dit bestand of gebruik de volgende voorbeeldtekst:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
 Crap is the profanity here. Is this information PII? phone 2065550111
 ```
 
-Voeg een verwijzing naar de nieuwe map toe.
+Voeg een verwijzing toe aan de nieuwe map.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-Voeg vervolgens de volgende code toe aan het python-script.
+Voeg vervolgens de volgende code toe aan uw Python-script.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textmod)]
 
-## <a name="use-a-custom-terms-list"></a>Een lijst met aangepaste voor waarden gebruiken
+## <a name="use-a-custom-terms-list"></a>Een aangepaste lijst met termen gebruiken
 
-De volgende code laat zien hoe u een lijst met aangepaste voor waarden voor tekst toezicht beheert. U kunt de [ListManagementTermListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) -klasse gebruiken om een lijst met termen te maken, de afzonderlijke voor waarden te beheren en andere tekst teksten ermee te schermen.
+In de volgende code ziet u hoe u een lijst met aangepaste termen voor tekstbeheer beheert. U de klasse [ListManagementTermListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) gebruiken om een lijst met termen te maken, de afzonderlijke voorwaarden te beheren en andere tekstlichamen ertegen te screenen.
 
-### <a name="get-sample-text"></a>Voorbeeld tekst ophalen
+### <a name="get-sample-text"></a>Voorbeeldtekst opmaken
 
-Als u dit voor beeld wilt gebruiken, moet u een **text_files/** map maken in de hoofdmap van het project en een *content_moderator_term_list. txt* -bestand toevoegen. Dit bestand moet een organieke tekst bevatten die wordt gecontroleerd aan de hand van de lijst met voor waarden. U kunt de volgende voorbeeld tekst gebruiken:
+Als u dit voorbeeld wilt gebruiken, moet u een **text_files/map** aan de hoofdmap van uw project maken en een *content_moderator_term_list.txt-bestand* toevoegen. Dit bestand moet organische tekst bevatten die wordt gecontroleerd aan de hand van de lijst met termen. U de volgende voorbeeldtekst gebruiken:
 
 ```
 This text contains the terms "term1" and "term2".
 ```
 
-Voeg een verwijzing naar de map toe als u deze nog niet hebt gedefinieerd.
+Voeg een verwijzing toe aan de map als u er nog geen hebt gedefinieerd.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
 ### <a name="create-a-list"></a>Een lijst maken
 
-Voeg de volgende code toe aan het python-script om een lijst met aangepaste voor waarden te maken en de ID-waarde op te slaan.
+Voeg de volgende code toe aan uw Python-script om een aangepaste lijst met termen te maken en de id-waarde op te slaan.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_create)]
 
-### <a name="define-list-details"></a>Lijst Details definiëren
+### <a name="define-list-details"></a>Lijstgegevens definiëren
 
-U kunt de ID van een lijst gebruiken om de naam en beschrijving te bewerken.
+U de id van een lijst gebruiken om de naam en beschrijving ervan te bewerken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_details)]
 
 ### <a name="add-a-term-to-the-list"></a>Een term toevoegen aan de lijst
 
-Met de volgende code worden de voor waarden `"term1"` en `"term2"` aan de lijst toegevoegd.
+De volgende code `"term1"` voegt `"term2"` de voorwaarden en aan de lijst toe.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_add)]
 
-### <a name="get-all-terms-in-the-list"></a>Alle voor waarden in de lijst ophalen
+### <a name="get-all-terms-in-the-list"></a>Alle termen in de lijst opmaken
 
-U kunt de lijst-ID gebruiken om alle voor waarden in de lijst te retour neren.
+U de lijst-id gebruiken om alle termen in de lijst terug te sturen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_getterms)]
 
-### <a name="refresh-the-list-index"></a>De lijst index vernieuwen
+### <a name="refresh-the-list-index"></a>De lijstindex vernieuwen
 
-Wanneer u voor waarden in de lijst toevoegt of verwijdert, moet u de index vernieuwen voordat u de bijgewerkte lijst kunt gebruiken.
+Wanneer u termen toevoegt of uit de lijst verwijdert, moet u de index vernieuwen voordat u de bijgewerkte lijst gebruiken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_refresh)]
 
-### <a name="screen-text-against-the-list"></a>Scherm tekst in de lijst
+### <a name="screen-text-against-the-list"></a>Tekst op schermen tegen de lijst
 
-De belangrijkste functionaliteit van de lijst met aangepaste voor waarden is het vergelijken van een hoofd tekst van de lijst en om te zien of er overeenkomende voor waarden zijn. 
+De belangrijkste functionaliteit van de lijst met aangepaste termen is om een teksttekst te vergelijken met de lijst en te vinden of er overeenkomende termen zijn. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_screen)]
 
 ### <a name="remove-a-term-from-a-list"></a>Een term uit een lijst verwijderen
 
-Met de volgende code wordt de term `"term1"` verwijderd uit de lijst.
+Met de volgende `"term1"` code wordt de term uit de lijst verwijderd.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_remove)]
 
-### <a name="remove-all-terms-from-a-list"></a>Alle voor waarden uit een lijst verwijderen
+### <a name="remove-all-terms-from-a-list"></a>Alle termen uit een lijst verwijderen
 
-Gebruik de volgende code om een lijst met alle voor waarden te wissen.
+Gebruik de volgende code om een lijst met alle voorwaarden te wissen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_removeall)]
 
 ### <a name="delete-list"></a>Lijst verwijderen
 
-Gebruik de volgende code om een lijst met aangepaste voor waarden te verwijderen.
+Gebruik de volgende code om een aangepaste lijst met termen te verwijderen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_deletelist)]
 
-## <a name="moderate-images"></a>Gemiddelde afbeeldingen
+## <a name="moderate-images"></a>Matige afbeeldingen
 
-De volgende code gebruikt een Content Moderator-client, samen met een [ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) -object, voor het analyseren van afbeeldingen voor inhoud voor volwassenen en ongepaste.
+De volgende code maakt gebruik van een Content Moderator client, samen met een [ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) object, om afbeeldingen te analyseren voor volwassen en pikante inhoud.
 
-### <a name="get-images"></a>Installatie kopieën ophalen
+### <a name="get-images"></a>Afbeeldingen ophalen
 
-Definieer een verwijzing naar sommige te analyseren installatie kopieën.
+Definieer een verwijzing naar een aantal afbeeldingen die u wilt analyseren.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagemodvars)]
 
-Voeg vervolgens de volgende code toe om uw afbeeldingen door te laten lopen. De rest van de code in deze sectie gaat in deze lus.
+Voeg vervolgens de volgende code toe om door uw afbeeldingen te herhalen. De rest van de code in deze sectie zal gaan in deze lus.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagemod_iterate)]
 
-### <a name="check-for-adultracy-content"></a>Controleren op inhoud voor volwassenen/ongepaste
+### <a name="check-for-adultracy-content"></a>Controleer op inhoud voor volwassenen/racy
 
-Met de volgende code wordt de installatie kopie op de opgegeven URL gecontroleerd op inhoud voor volwassenen of ongepaste en worden de resultaten in de console afgedrukt. Zie de [concepten handleiding voor afbeeldings toezicht](./image-moderation-api.md) voor informatie over de betekenis van deze termen.
+De volgende code controleert de afbeelding op de opgegeven URL op inhoud voor volwassenen of racy en drukt resultaten af op de console. Zie de handleiding [voor beeldmatigingsconcepten](./image-moderation-api.md) voor informatie over wat deze termen betekenen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagemod_ar)]
 
-### <a name="check-for-visible-text"></a>Controleren op zicht bare tekst
+### <a name="check-for-visible-text"></a>Controleren op zichtbare tekst
 
-Met de volgende code wordt de afbeelding gecontroleerd op zicht bare tekst inhoud en worden de resultaten weer gegeven in de console.
+Met de volgende code wordt de afbeelding gecontroleerd op zichtbare tekstinhoud en worden resultaten afgedrukt op de console.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagemod_text)]
 
 ### <a name="check-for-faces"></a>Controleren op gezichten
 
-Met de volgende code wordt de afbeelding voor menselijke gezichten gecontroleerd en worden de resultaten naar de console afgedrukt.
+De volgende code controleert de afbeelding op menselijke gezichten en drukt resultaten af op de console.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagemod_face)]
 
-## <a name="use-a-custom-image-list"></a>Een aangepaste installatie kopie lijst gebruiken
+## <a name="use-a-custom-image-list"></a>Een aangepaste afbeeldingslijst gebruiken
 
-De volgende code laat zien hoe u een aangepaste lijst met installatie kopieën voor afbeeldings toezicht beheert. Deze functie is handig als uw platform vaak exemplaren van dezelfde set installatie kopieën ontvangt die u wilt uitschermen. U kunt de prestaties verbeteren door een lijst met deze specifieke installatie kopieën te onderhouden. Met de [ListManagementImageListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) -klasse kunt u een lijst met installatie kopieën maken, de afzonderlijke installatie kopieën in de lijst beheren en andere afbeeldingen vergelijken.
+In de volgende code ziet u hoe u een aangepaste lijst met afbeeldingen beheert voor beeldbeheer. Deze functie is handig als uw platform regelmatig exemplaren ontvangt van dezelfde set afbeeldingen die u wilt screenen. Door een lijst met deze specifieke afbeeldingen bij te houden, u de prestaties verbeteren. Met de klasse [ListManagementImageImagesOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) u een afbeeldingslijst maken, de afzonderlijke afbeeldingen in de lijst beheren en andere afbeeldingen hiermee vergelijken.
 
-Maak de volgende tekst variabelen om de afbeeldings-Url's op te slaan die u in dit scenario gebruikt.
+Maak de volgende tekstvariabelen om de afbeeldings-URL's op te slaan die u in dit scenario zult gebruiken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelistvars)]
 
 > [!NOTE]
-> Dit is niet de juiste lijst zelf, maar een informele lijst met installatie kopieën die worden toegevoegd in de sectie `add images` van de code.
+> Dit is niet de juiste lijst zelf, maar een informele `add images` lijst van afbeeldingen die zullen worden toegevoegd in het gedeelte van de code.
 
 
-### <a name="create-an-image-list"></a>Een lijst met installatie kopieën maken
+### <a name="create-an-image-list"></a>Een afbeeldingslijst maken
 
-Voeg de volgende code toe om een lijst met installatie kopieën te maken en sla een verwijzing op naar de bijbehorende ID.
+Voeg de volgende code toe om een afbeeldingslijst te maken en sla een verwijzing naar de id op.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_create)]
 
 ### <a name="add-images-to-a-list"></a>Afbeeldingen toevoegen aan een lijst
 
-Met de volgende code worden al uw installatie kopieën aan de lijst toegevoegd.
+De volgende code voegt al uw afbeeldingen toe aan de lijst.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_add)]
 
-Definieer de **add_images** helper-functie elders in het script.
+Definieer de **add_images** helperfunctie elders in uw script.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_addhelper)]
 
-### <a name="get-images-in-list"></a>Afbeeldingen in lijst ophalen
+### <a name="get-images-in-list"></a>Afbeeldingen in de lijst opmaken
 
-Met de volgende code worden de namen van alle afbeeldingen in uw lijst afgedrukt.
+De volgende code drukt de namen van alle afbeeldingen in uw lijst af.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_getimages)]
 
-### <a name="update-list-details"></a>Details van update lijst
+### <a name="update-list-details"></a>Lijstgegevens bijwerken
 
-U kunt de lijst-ID gebruiken om de naam en beschrijving van de lijst bij te werken.
+U de lijst-id gebruiken om de naam en beschrijving van de lijst bij te werken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_updatedetails)]
 
-### <a name="get-list-details"></a>Details van lijst ophalen
+### <a name="get-list-details"></a>Lijstgegevens opvragen
 
-Gebruik de volgende code om de huidige Details van de lijst af te drukken.
+Gebruik de volgende code om de huidige details van uw lijst af te drukken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_getdetails)]
 
-### <a name="refresh-the-list-index"></a>De lijst index vernieuwen
+### <a name="refresh-the-list-index"></a>De lijstindex vernieuwen
 
-Nadat u installatie kopieën hebt toegevoegd of verwijderd, moet u de lijst index vernieuwen voordat u deze kunt gebruiken om andere installatie kopieën te schermmen.
+Nadat u afbeeldingen hebt toegevoegd of verwijderd, moet u de lijstindex vernieuwen voordat u deze gebruiken om andere afbeeldingen weer te geven.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_refresh)]
 
-### <a name="match-images-against-the-list"></a>Afbeeldingen vergelijken met de lijst
+### <a name="match-images-against-the-list"></a>Afbeeldingen afstemmen op de lijst
 
-De belangrijkste functie van lijsten met installatie kopieën is om nieuwe afbeeldingen te vergelijken en te controleren of er overeenkomsten zijn.
+De belangrijkste functie van afbeeldingslijsten is om nieuwe afbeeldingen te vergelijken en te zien of er overeenkomsten zijn.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_match)]
 
-### <a name="remove-an-image-from-the-list"></a>Een installatie kopie verwijderen uit de lijst
+### <a name="remove-an-image-from-the-list"></a>Een afbeelding uit de lijst verwijderen
 
-Met de volgende code wordt een item uit de lijst verwijderd. In dit geval is het een afbeelding die niet overeenkomt met de categorie lijst.
+Met de volgende code wordt een item uit de lijst verwijderd. In dit geval is het een afbeelding die niet overeenkomt met de lijstcategorie.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_remove)]
 
-### <a name="remove-all-images-from-a-list"></a>Alle installatie kopieën verwijderen uit een lijst
+### <a name="remove-all-images-from-a-list"></a>Alle afbeeldingen uit een lijst verwijderen
 
-Gebruik de volgende code om een lijst met installatie kopieën te wissen.
+Gebruik de volgende code om een afbeeldingslijst uit te wissen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_removeall)]
 
-### <a name="delete-the-image-list"></a>De lijst met afbeeldingen verwijderen
+### <a name="delete-the-image-list"></a>De afbeeldingslijst verwijderen
 
-Gebruik de volgende code om een gegeven lijst met installatie kopieën te verwijderen.
+Gebruik de volgende code om een bepaalde afbeeldingslijst te verwijderen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_delete)]
 
 ## <a name="create-a-review"></a>Een beoordeling maken
 
-U kunt de Content Moderator python SDK gebruiken om inhoud in te voeren in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) , zodat menselijke moderators deze kunnen beoordelen. Zie de [conceptuele hand leiding voor het beoordelings programma](./review-tool-user-guide/human-in-the-loop.md)voor meer informatie over het hulp programma.
+U de Python SDK voor inhoudsmoderator gebruiken om inhoud in de [beoordelingstool](https://contentmoderator.cognitive.microsoft.com) te integreren, zodat menselijke moderators deze kunnen bekijken. Zie de conceptgids Voor het controleren van [de tool.](./review-tool-user-guide/human-in-the-loop.md)
 
-De volgende code maakt gebruik van de [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) -klasse om een beoordeling te maken, de id op te halen en de details te controleren nadat hij de menselijke invoer heeft ontvangen via de webportal van het controle programma.
+De volgende code gebruikt de klasse [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) om een beoordeling te maken, de id op te halen en de gegevens ervan te controleren nadat ze menselijke invoer hebben ontvangen via de webportal van de tool Review.
 
-### <a name="get-review-credentials"></a>Controle referenties ophalen
+### <a name="get-review-credentials"></a>Referenties bekijken
 
-Meld u eerst aan bij het beoordelings programma en haal uw team naam op. Wijs deze vervolgens toe aan de juiste variabele in de code. U kunt desgewenst een call back-eind punt instellen om updates te ontvangen over de activiteit van de beoordeling.
+Meld u eerst aan bij het gereedschap Controleren en haal uw teamnaam op. Wijs het vervolgens toe aan de juiste variabele in de code. Optioneel u een callback-eindpunt instellen om updates te ontvangen over de activiteit van de beoordeling.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_vars)]
 
-### <a name="create-an-image-review"></a>Een afbeeldings beoordeling maken
+### <a name="create-an-image-review"></a>Een afbeeldingsbeoordeling maken
 
-Voeg de volgende code toe om een beoordeling te maken en te plaatsen voor de opgegeven afbeeldings-URL. Met de code wordt een verwijzing naar de beoordelings-ID opgeslagen. 
+Voeg de volgende code toe om een beoordeling voor de opgegeven afbeeldings-URL te maken en te plaatsen. De code slaat een verwijzing naar de controle-id op. 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_create)]
 
-### <a name="get-review-details"></a>Details van controle ophalen
+### <a name="get-review-details"></a>Lees meer details van de beoordeling
 
-Gebruik de volgende code om de details van een bepaalde beoordeling te controleren. Nadat u de beoordeling hebt gemaakt, kunt u zelf naar het hulp programma controleren gaan en de inhoud gebruiken. Voor informatie over hoe u dit doet, raadpleegt u de [hand leiding voor recensies](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Wanneer u klaar bent, kunt u deze code opnieuw uitvoeren en worden de resultaten van het controle proces opgehaald.
+Gebruik de volgende code om de details van een bepaalde beoordeling te controleren. Nadat u de beoordeling hebt gemaakt, u zelf naar de tool Controleren gaan en communiceren met de inhoud. Voor informatie over hoe dit te doen, zie de [reviews how-to guide](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Wanneer u klaar bent, u deze code opnieuw uitvoeren en worden de resultaten van het beoordelingsproces opgehaald.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 
-Als u in dit scenario een call back-eind punt hebt gebruikt, wordt er een gebeurtenis in deze indeling weer gegeven:
+Als u in dit scenario een callback-eindpunt hebt gebruikt, moet het een gebeurtenis in deze indeling ontvangen:
 
 ```console
 {'callback_endpoint': 'https://requestb.in/qmsakwqm',
@@ -335,7 +335,7 @@ Als u in dit scenario een call back-eind punt hebt gebruikt, wordt er een gebeur
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de opdracht `python` in uw Quick Start-bestand.
+Voer de toepassing `python` uit met de opdracht voor uw quickstartbestand.
 
 ```console
 python quickstart-file.py
@@ -343,17 +343,17 @@ python quickstart-file.py
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de bron- of brongroep verwijderen. Als u de brongroep verwijdert, worden ook andere bronnen verwijderd die eraan zijn gekoppeld.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u de Content Moderator python-bibliotheek kunt gebruiken om beheer taken uit te voeren. Lees vervolgens een conceptuele hand leiding voor meer informatie over de toezicht op installatie kopieën of andere media.
+In deze quickstart heb je geleerd hoe je de Python-bibliotheek voor inhoudsmoderator gebruiken om moderatietaken uit te voeren. Leer vervolgens meer over de moderatie van afbeeldingen of andere media door een conceptuele handleiding te lezen.
 
 > [!div class="nextstepaction"]
->[Concepten van afbeeldings toezicht](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+>[Beeldmoderatieconcepten](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Wat is Azure Content Moderator?](./overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).
+* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)

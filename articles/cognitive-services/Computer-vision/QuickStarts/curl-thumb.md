@@ -12,26 +12,26 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977298"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en krul
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Snelstart: een miniatuur genereren met de Computer Vision REST API en cURL
 
-In deze Quick Start genereert u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de gewenste hoogte en breedte op. deze kunnen verschillen van het aspect rantsoen van de invoer afbeelding. Computer Vision maakt gebruik van slimme bijsnijding om het interesse gebied op intelligente wijze te identificeren en om de coördinaten rond die regio te genereren.
+In deze quickstart genereert u een miniatuur uit een afbeelding met behulp van de Computer Vision REST API. U geeft de gewenste hoogte en breedte op, die kunnen verschillen in aspectrantsoen van de invoerafbeelding. Computer Vision maakt gebruik van slimme bijsnijden om intelligent te identificeren het gebied van belang en het genereren van bijsnijden coördinaten rond die regio.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [cURL](https://curl.haxx.se/windows) hebben.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen.
 
 ## <a name="get-thumbnail-request"></a>Get Thumbnail-aanvraag
 
-Met de methode [Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) (miniatuur ophalen) kunt u een miniatuur van een afbeelding genereren.
+Met de [methode Miniatuur genereren](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)u een miniatuur van een afbeelding genereren.
 
 U kunt het voorbeeld uitvoeren aan de hand van de volgende stappen:
 
@@ -54,7 +54,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Breng waar nodig de volgende wijzigingen in de opdracht aan:
     1. Vervang de waarde van `<subscriptionKey>` door uw abonnementssleutel.
     1. Vervang de waarde van `<thumbnailFile>` door het pad en de naam van het bestand waarin u de miniatuur opslaat.
-    1. Vervang het eerste deel van de aanvraag-URL (`westcentralus`) door de tekst in uw eigen eind punt-URL.
+    1. Vervang het eerste deel van`westcentralus`de aanvraag-URL ( ) door de tekst in uw eigen eindpunt-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Wijzig eventueel de afbeeldings-URL in de aanvraagtekst (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) in een URL van een andere afbeelding van waaruit u de miniatuur genereert.
 1. Open een opdrachtpromptvenster.
@@ -66,11 +66,11 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
 ## <a name="examine-the-response"></a>Het antwoord bekijken
 
-Een geslaagd antwoord schrijft de miniatuurafbeelding naar het bestand dat is opgegeven in `<thumbnailFile>`. Als de aanvraag mislukt, bevat het antwoord een foutcode en een bericht om u te helpen bepalen wat er mis is gegaan. Als de aanvraag lijkt te slagen, maar de gemaakte miniatuur geen geldig afbeeldings bestand is, kan het zijn dat uw abonnements sleutel ongeldig is.
+Een geslaagd antwoord schrijft de miniatuurafbeelding naar het bestand dat is opgegeven in `<thumbnailFile>`. Als de aanvraag mislukt, bevat het antwoord een foutcode en een bericht om u te helpen bepalen wat er mis is gegaan. Als de aanvraag lijkt te slagen, maar de gemaakte miniatuur geen geldig afbeeldingsbestand is, kan het zijn dat uw abonnementssleutel niet geldig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken de Computer Vision-API voor het analyseren van een afbeelding, het detecteren van beroemdheden en bezienswaardigheden, het maken van een miniatuur en het extra heren van gedrukte en handgeschreven tekst. Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Verken de Computer Vision API om een afbeelding te analyseren, beroemdheden en oriëntatiepunten te detecteren, een miniatuur te maken en gedrukte en handgeschreven tekst te extraheren. Als u snel wilt experimenteren met de Computer Vision-API, gebruikt u de [Open API-testconsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [De Computer Vision-API verkennen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

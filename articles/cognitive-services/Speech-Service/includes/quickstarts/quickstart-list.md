@@ -1,15 +1,16 @@
 ---
-ms.openlocfilehash: 1e329e71298d5fc357f0a4cb7562883bfb742c6b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1bc7d5e4b895f451b1680408f6cd7d17d76019e7
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73990248"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80243634"
 ---
-- [Snelstartgids: spraak van een microfoon herkennen](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
-- [Quick Start: spraak herkennen vanuit een bestand](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
-- [Quick Start: spraak herkennen vanuit een Azure-Blob](~/articles/cognitive-services/speech-service/quickstarts/from-blob.md)
-- [Snelstartgids: vertalen van spraak naar tekst](~/articles/cognitive-services/speech-service/quickstarts/translate-speech-to-text.md)
-- [Snelstartgids: tekst op een audio apparaat synthesizer](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
-- [Quick Start: tekst in een bestand synthesizer](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
-- [Quick Start: intenties herkennen](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [Snelstart: spraak herkennen vanuit een microfoon](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
+- [Snelstart: spraak uit een bestand herkennen](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
+- [Snelstart: spraak herkennen van een Azure Blob](~/articles/cognitive-services/speech-service/quickstarts/from-blob.md)
+- [Snelstart: spraak naar tekst vertalen](~/articles/cognitive-services/speech-service/quickstarts/translate-speech-to-text.md)
+- [Snelstart: tekst synthetiseren naar een audioapparaat](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
+- [Snelstart: tekst synthetiseren naar een bestand](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
+- [Snelstart: Intents herkennen](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [Snelstart: een aangepaste spraakassistent maken](~/articles/cognitive-services/speech-service/quickstarts/voice-assistants.md)

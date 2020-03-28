@@ -11,21 +11,21 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67438445"
 ---
 ## <a name="more-information-about-bots"></a>Meer informatie over bots
 
-Beginnen met de volgende bronnen voor meer informatie over het gebruik van deze service met bots:
+Voor meer informatie over het gebruik van deze service met bots, beginnen met de volgende bronnen:
 
 |Resource|Doel|
 |--|--|
-|[Azure botservice](https://dev.botframework.com/)|De Azure Bot service biedt een volledige webtoepassing cloud gehoste service met een bot-eindpunt. De services gebruikt [botframework](https://github.com/Microsoft/botframework), die beschikbaar is in verschillende talen.|
-|[Bot Framework](https://github.com/Microsoft/botframework)|Microsoft Bot Framework is een uitgebreid platform voor het bouwen van geavanceerde conversatie AI-ervaringen.|
-|[Bot Framework Emulator](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|De Bot Framework-Emulator is een platformoverschrijdende-bureaubladtoepassing waarmee bot testen en foutopsporing van bots die zijn gebouwd met behulp van de Bot Framework SDK-ontwikkelaars. U kunt de Bot Framework-Emulator gebruiken voor het testen van bots die lokaal wordt uitgevoerd op uw computer of verbinding maken met bots die op afstand worden uitgevoerd.|
-|[Bot-hulpprogramma 's](https://github.com/Microsoft/botbuilder-tools)|De Bot Framework-hulpprogramma's omvatten een verzameling van platformoverschrijdende opdrachtregel-hulpprogramma's die zijn ontworpen om end-to-end-bot ontwikkelingswerkstroom. |
-|[Bot builder-voorbeelden](https://github.com/Microsoft/BotBuilder-Samples)|Volledig ontwikkelde bot voorbeelden zijn ontworpen om te illustreren scenario's u moet, voor het bouwen van geweldige bots implementeren.|
+|[Azure Bot-service](https://dev.botframework.com/)|De Azure Bot-service biedt een complete webservice die door de cloud wordt gehost met een boteindpunt. De diensten maken gebruik van [Bot framework](https://github.com/Microsoft/botframework), dat beschikbaar is in verschillende talen.|
+|[Bot Framework](https://github.com/Microsoft/botframework)|Het Microsoft Bot Framework is een uitgebreid platform voor het bouwen van zakelijke conversationele AI-ervaringen.|
+|[Bot Framework Emulator](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|De Bot Framework Emulator is een cross-platform desktop applicatie waarmee bot ontwikkelaars te testen en debug bots gebouwd met behulp van de Bot Framework SDK. U de Bot Framework Emulator gebruiken om bots te testen die lokaal op uw machine worden uitgevoerd of om verbinding te maken met bots die op afstand worden uitgevoerd.|
+|[Hulpmiddelen voor Bot](https://github.com/Microsoft/botbuilder-tools)|De Bot Framework-tools zijn een verzameling cross-platform command line tools die zijn ontworpen om end-to-end bot ontwikkeling workflow te dekken. |
+|[Bot bouwer monsters](https://github.com/Microsoft/BotBuilder-Samples)|Volledig ontwikkelde botmonsters zijn ontworpen om scenario's te illustreren die u moet implementeren om geweldige bots te bouwen.|
 |||

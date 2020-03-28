@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een audio bestand C++ ,-Speech-Service'
+title: 'Snelstart: spraak herkennen uit een audiobestand, C++ - Spraakservice'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 0d4a051411c879bf4edeeaffad25c9106693401b
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75927778"
 ---
-Als u liever meteen naar rechts gaat, kunt u alle <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ </a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
+Als u liever meteen in springt, alle <a href="https://aka.ms/speech/github-cpp">SpraakSDK C++ Samples</a> op GitHub bekijkt of downloadt. Anders, laten we beginnen.

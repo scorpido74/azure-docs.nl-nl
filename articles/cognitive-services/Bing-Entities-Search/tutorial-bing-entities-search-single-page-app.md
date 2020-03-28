@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Web-app met één pagina maken met Bing Entiteiten zoeken'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie ziet u hoe u de Bing Entiteiten zoeken-API gebruikt in een webtoepassing met één pagina.
+description: In deze zelfstudie ziet u hoe u de Bing Entity Search API gebruiken in een webtoepassing met één pagina.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943138"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
@@ -39,7 +39,7 @@ Onze app roept daarom de Bing Kaarten-service aan om de breedtegraad en lengtegr
 > [!NOTE]
 > Als u klikt op de JSON- en HTTP-koppen onder aan de pagina worden het JSON-antwoord en de gegevens voor de HTTP-aanvraag weergegeven. Deze gegevens zijn handig zijn bij het verkennen van de service.
 
-In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
+In de zelfstudie-app leert u het volgende:
 
 > [!div class="checklist"]
 > * Een aanroep versturen naar de Bing Entiteiten zoeken-API in JavaScript
@@ -58,7 +58,7 @@ In deze zelfstudie bespreken we alleen bepaalde gedeelten van de broncode. De vo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API en de Bing Maps-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
+Als u de zelfstudie wilt volgen, hebt u abonnementssleutels nodig voor de Bing Search API en de Bing Maps API. Als u ze niet hebt, u een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-toets gebruiken.](https://www.microsoft.com/maps/create-a-bing-maps-key)
 
 ## <a name="app-components"></a>App-onderdelen
 
@@ -71,7 +71,7 @@ Net zoals elke andere web-app met één pagina, bestaat de toepassing in deze ze
 
 In deze zelfstudie wordt niet uitvoerig ingegaan op het merendeel van de HTML of CSS, aangezien deze heel duidelijk zijn.
 
-De HTML bevat het zoekformulier waarin de gebruiker een query invoert en zoekopties kiest. Het formulier is via het kenmerk `<form>` van de tag `onsubmit` van het formulier verbonden met de JavaScript:
+De HTML bevat het zoekformulier waarin de gebruiker een query invoert en zoekopties kiest. Het formulier is via het kenmerk `onsubmit` van de tag `<form>` van het formulier verbonden met de JavaScript:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
@@ -90,7 +90,7 @@ De HTML bevat ook de delen (HTML-`<div>`-tags) waar de zoekresultaten worden wee
 
 Om te voorkomen dat de abonnementssleutels van de Bing Zoeken- en Bing Kaarten-API's moeten worden opgenomen in de code, gebruiken we de permanente opslag van de browser om de sleutels op te slaan. Als een van beide sleutels niet is opgeslagen, wordt de sleutel opgevraagd en opgeslagen voor later gebruik. Als de sleutel later wordt geweigerd door de API, wordt de opgeslagen sleutel ongeldig gemaakt zodat de gebruiker bij de volgende zoekopdracht om een sleutel wordt gevraagd.
 
-We definiëren de functies `storeValue` en `retrieveValue` voor gebruik met het `localStorage`-object (als de browser dit ondersteunt) of een cookie. Onze functie `getSubscriptionKey()` gebruikt deze functies voor het opslaan en ophalen van de sleutel van de gebruiker. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+We definiëren de functies `storeValue` en `retrieveValue` voor gebruik met het `localStorage`-object (als de browser dit ondersteunt) of een cookie. Onze functie `getSubscriptionKey()` gebruikt deze functies voor het opslaan en ophalen van de sleutel van de gebruiker. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
 ```javascript
 // cookie names for data we store
@@ -167,7 +167,7 @@ Het veld `mapquery` wordt niet verwerkt in `bingSearchOptions()` omdat dit wordt
 
 ## <a name="obtaining-a-location"></a>Een locatie ophalen
 
-De Bing Kaarten-API biedt een [`locationQuery`-methode](//msdn.microsoft.com/library/ff701711.aspx), die we gebruiken om de breedtegraad en lengtegraad te vinden van de locatie die de gebruiker invoert. Deze coördinaten worden vervolgens met de aanvraag van de gebruiker doorgegeven aan de Bing Entiteiten zoeken-API. In de lijst met zoekresultaten hebben entiteiten en plaatsen die zich dicht bij de opgegeven locatie bevinden prioriteit.
+De Bing Maps API biedt een [ `locationQuery` methode,](//msdn.microsoft.com/library/ff701711.aspx)die we gebruiken om de breedte- en lengtegraad van de locatie die de gebruiker invoert te vinden. Deze coördinaten worden vervolgens met de aanvraag van de gebruiker doorgegeven aan de Bing Entiteiten zoeken-API. In de lijst met zoekresultaten hebben entiteiten en plaatsen die zich dicht bij de opgegeven locatie bevinden prioriteit.
 
 De Bing Kaarten-API is niet toegankelijk met een gewone `XMLHttpRequest`-query in een web-app omdat de service geen ondersteuning biedt voor cross-origin-query's. Gelukkig ondersteunt de service wel JSONP (de 'P' staat voor 'padded' of opgevuld). Een JSONP-antwoord is een gewoon JSON-antwoord dat is verpakt in een functieaanroep. De aanvraag wordt gedaan door een tag `<script>` in te voegen in het document. (Het laden van scripts is niet onderhevig aan het beveiligingsbeleid van browsers.)
 
@@ -455,7 +455,7 @@ Een rendererfunctie kan de volgende parameters accepteren:
 
 De parameters `index` en `count` kunnen worden gebruikt om resultaten te nummeren, speciale HTML te genereren voor het begin en einde van een verzameling, regeleinden in te voegen na een bepaald aantal items, enzovoort. Als een renderer deze functionaliteit niet nodig heeft, hoeven deze twee parameters niet te worden geaccepteerd. We gebruiken ze dan ook niet in de renderers voor onze zelfstudie-app.
 
-Laten we de renderer `entities` eens wat beter bekijken:
+Laten we de `entities`-renderer eens beter bekijken:
 
 ```javascript
     entities: function(item) {
@@ -510,7 +510,7 @@ Met onze rendererfunctie worden de volgende handelingen uitgevoerd:
 
 > [!div class="checklist"]
 > * De HTML-tag `<img>` bouwen om de miniatuur van de afbeelding weer te geven, indien beschikbaar. 
-> * De HTML-tag `<a>` bouwen die wordt gekoppeld aan de pagina die de afbeelding bevat.
+> * Hiermee wordt de HTML-`<a>`-tag gebouwd die is gekoppeld aan de pagina die de afbeelding bevat.
 > * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 > * De classificatie van de entiteit opnemen met behulp van de weergavehints, indien beschikbaar.
 > * Een koppeling opnemen naar een zoekopdracht met Bing om meer informatie over de entiteit op te vragen.
@@ -518,18 +518,18 @@ Met onze rendererfunctie worden de volgende handelingen uitgevoerd:
 
 ## <a name="persisting-client-id"></a>Permanente client-id
 
-Antwoorden van de Bing Zoeken-API kunnen een `X-MSEdge-ClientID`-header bevatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
+Antwoorden van de Bing Zoeken-API’s kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
 
 Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit heeft twee belangrijke voordelen.
 
 Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
-Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-ClientID`-header niet beschikbaar is in JavaScript. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 
 > [!NOTE]
-> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Zoeken-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
+> In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
 Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
 
@@ -550,7 +550,7 @@ Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaghandleiding Bing Entiteiten zoeken-API](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Verwijzing naar de zoek-API van Bing-entiteit](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
 
 > [!div class="nextstepaction"]
 > [Documentatie Bing Kaarten-API](//msdn.microsoft.com/library/dd877180.aspx)

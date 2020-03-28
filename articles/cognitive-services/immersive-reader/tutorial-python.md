@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: de insluitende lezer starten met behulp van python'
+title: 'Zelfstudie: Start de meeslepende lezer met Python'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie maakt u een python-toepassing waarmee de insluitende lezer wordt gestart.
+description: In deze zelfstudie maak je een Python-applicatie die de Immersive Reader lanceert.
 services: cognitive-services
 author: dylankil
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844357"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelf studie: de insluitende lezer starten met behulp van het python-voorbeeld project
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelfstudie: De meeslepende lezer starten met het Voorbeeldproject Python
 
-In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In deze zelf studie wordt beschreven hoe u een python-webtoepassing maakt waarmee de insluitende lezer wordt gestart. In deze zelfstudie leert u het volgende:
+In het [overzicht](./overview.md)leerde je over wat de Immersive Reader is en hoe het bewezen technieken implementeert om het begrijpend lezen te verbeteren voor taalstudenten, opkomende lezers en studenten met leerverschillen. Deze zelfstudie gaat over het maken van een Python-webtoepassing die de Immersive Reader lanceert. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Python-web-app maken met PIP, fles, jinja en virtualenv met behulp van een voorbeeld project
+> * Een Python-web-app maken met Pip, Flask, Jinja en virtualenv met behulp van een voorbeeldproject
 > * Een toegangstoken verkrijgen
-> * De insluitende lezer starten met voorbeeld inhoud
+> * Start de meeslepende lezer met voorbeeldinhoud
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
+* Een Immersive Reader-bron die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](./how-to-create-immersive-reader.md) om je op te stellen. U hebt een aantal waarden nodig die hier zijn gemaakt bij het configureren van de omgevingseigenschappen. Sla de uitvoer van uw sessie op in een tekstbestand voor toekomstige verwijzingen.
 * [Git](https://git-scm.com/)
-* [Insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Python](https://www.python.org/downloads/) en [PIP](https://docs.python.org/3/installing/index.html). Vanaf python 3,4 is PIP standaard opgenomen in de binaire python-installatie Programma's.
-* [Erlenmeyer](https://flask.palletsprojects.com/en/1.0.x/)
+* [Meeslepende Reader SDK](https://github.com/microsoft/immersive-reader-sdk)
+* [Python](https://www.python.org/downloads/) en [pip.](https://docs.python.org/3/installing/index.html) Beginnend met Python 3.4, is pip standaard inbegrepen bij de Binaire Installateurs van Python.
+* [Kolf](https://flask.palletsprojects.com/en/1.0.x/)
 * [Jinja](http://jinja.pocoo.org/docs/2.10/)
 * [virtualenv](https://virtualenv.pypa.io/en/latest/) en [virtualenvwrapper-win voor Windows](https://pypi.org/project/virtualenvwrapper-win/) of [virtualenvwrapper voor OSX](https://virtualenvwrapper.readthedocs.io/en/latest/)
 * [module aanvragen](https://pypi.org/project/requests/2.7.0/)
-* Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
+* Een IDE zoals [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="configure-authentication-credentials"></a>Verificatie referenties configureren
+## <a name="configure-authentication-credentials"></a>Verificatiereferenties configureren
 
-Maak een nieuw bestand met de naam _. env_en plak de volgende code hierin en geef de waarden op die zijn opgegeven bij het maken van uw insluitende lezer-resource.
+Maak een nieuw bestand genaamd _.env_en plak de volgende code erin, met de waarden die worden gegeven toen u uw Immersive Reader-bron maakte.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -51,91 +51,91 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt.
+Zorg ervoor dat u dit bestand niet in bronbeheer verbindt, omdat het geheimen bevat die niet openbaar mogen worden gemaakt.
 
-Het **getimmersivereadertoken** -API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering; Dit werk valt buiten het bereik van deze zelf studie.
+Het **getimmersivereadertoken** API-eindpunt moet worden beveiligd achter een of andere vorm van authenticatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voorkomen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken tegen uw Immersive Reader-service en facturering; dat werk valt buiten het bereik van deze tutorial.
 
 ## <a name="create-a-python-web-app-on-windows"></a>Een Python-web-app maken in Windows
 
-Een Python-web-app maken met behulp van `flask` in Windows.
+Maak een Python-web-app met `flask` behulp van Windows.
 
 Installeer [Git](https://git-scm.com/).
 
-Nadat Git is geïnstalleerd, opent u een opdracht prompt en kloont u de insluitende lezer SDK Git-opslag plaats naar een map op uw computer
+Nadat Git is geïnstalleerd open een Opdrachtprompt en 'kloon' de Immersive Reader SDK Git repository naar een map op uw computer
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
 ```
 
-Installeer [Python](https://www.python.org/downloads/).
+Python [Python](https://www.python.org/downloads/)installeren .
 
-Schakel het selectie vakje python toevoegen aan pad in.
+Schakel het selectievakje Python toevoegen aan PAD in.
 
-![Installatie dialoogvenster van python Windows stap 1](./media/pythoninstallone.jpg)
+![Dialoogvenster Python Windows installeren Stap 1](./media/pythoninstallone.jpg)
 
-Voeg optionele functies toe door de selectie vakjes in te scha kelen en op de knop volgende te klikken.
+Voeg optionele functies toe door de vakjes aan te vinken en klik vervolgens op de knop 'Volgende'.
 
-![Installatie dialoogvenster van python Windows-stap 2](./media/pythoninstalltwo.jpg)
+![Dialoogvenster Python Windows installeren Stap 2](./media/pythoninstalltwo.jpg)
 
-Kies aangepaste installatie en stel het installatiepad in als uw hoofdmap, bijvoorbeeld `C:\Python37-32\` klik vervolgens op de knop installeren.
+Kies 'Aangepaste installatie' en stel het installatiepad in `C:\Python37-32\` als uw hoofdmap, bijvoorbeeld klik op de knop 'Installeren'.
 
-![Installatie dialoogvenster van python Windows-stap 3](./media/pythoninstallthree.jpg)
+![Dialoogvenster Python Windows installeren Stap 3](./media/pythoninstallthree.jpg)
 
-Nadat de installatie van python is voltooid, opent u een opdracht prompt en `cd` u naar de map python-scripts.
+Nadat python-installatie is voltooid, `cd` opent u een opdrachtprompt en naar de map Python Scripts.
 
 ```cmd
 cd C:\Python37-32\Scripts
 ```
 
-Installatie kolf.
+Installeer Flask.
 
 ```cmd
 pip install flask
 ```
 
-Installeer Jinja2. Een volledig functionele sjabloon engine voor python.
+Installeer Jinja2. Een volledig uitgeruste sjabloonengine voor Python.
 
 ```cmd
 pip install jinja2
 ```
 
-Installeer virtualenv. Een hulp programma voor het maken van geïsoleerde python-omgevingen.
+Installeer virtualenv. Een tool om geïsoleerde Python-omgevingen te maken.
 
 ```cmd
 pip install virtualenv
 ```
 
-Installeer virtualenvwrapper-Win. Het idee achter virtualenvwrapper is om het gebruik van virtualenv te vereenvoudigen.
+Installeer virtualenvwrapper-win. Het idee achter virtualenvwrapper is om het gebruik van virtualenv te vergemakkelijken.
 
 ```cmd
 pip install virtualenvwrapper-win
 ```
 
-Installeer de module aanvragen. Aanvragen is een apache2-gelicentieerde HTTP-bibliotheek, geschreven in python.
+Installeer de module aanvragen. Aanvragen is een HTTP-bibliotheek met Apache2-licentie, geschreven in Python.
 
 ```cmd
 pip install requests
 ```
 
-Installeer de python-dotenv-module. Deze module leest het sleutel-waardepaar van het. env-bestand en voegt deze toe aan de omgevings variabele.
+Installeer de python-dotenv module. Deze module leest het sleutelwaardepaar uit .env-bestand en voegt deze toe aan omgevingsvariabele.
 
 ```cmd
 pip install python-dotenv
 ```
 
-Een virtuele omgeving maken
+Maak een virtuele omgeving
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-`cd` naar de hoofdmap van het voorbeeld project.
+`cd`naar de hoofdmap van het voorbeeldproject.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-Verbind het voorbeeld project met de omgeving. Hiermee wordt de zojuist gemaakte virtuele omgeving toegewezen aan de basismap van het voorbeeld project.
+Sluit het voorbeeldproject aan op de omgeving. Hiermee wordt de nieuw gemaakte virtuele omgeving toegewezen aan de hoofdmap van het voorbeeldproject.
 
 ```cmd
 setprojectdir .
@@ -147,7 +147,7 @@ Activeer de virtuele omgeving.
 activate
 ```
 
-Het project moet nu actief zijn en u ziet iets als `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` in de opdracht prompt.
+Het project moet nu actief zijn en `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` u ziet iets als in de opdrachtprompt.
 
 Deactiveer de omgeving.
 
@@ -155,41 +155,41 @@ Deactiveer de omgeving.
 deactivate
 ```
 
-Het voor voegsel van `(advanced-python)` moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
+Het `(advanced-python)` voorvoegsel moet nu worden verdwenen als de omgeving is nu gedeactiveerd.
 
-Voer `workon advanced-python` uit vanuit de hoofdmap van het voorbeeld project om de omgeving opnieuw uit te voeren.
+Als u de `workon advanced-python` omgeving opnieuw wilt activeren, wordt deze uitgevoerd vanuit de hoofdmap van het voorbeeldproject.
 
 ```cmd
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
+### <a name="launch-the-immersive-reader-with-sample-content"></a>Start de meeslepende lezer met voorbeeldinhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` vanuit de hoofdmap van het voorbeeld project in te voeren.
+Wanneer de omgeving actief is, voert `flask run` u het voorbeeldproject uit door in te voeren vanuit de hoofdmap van het voorbeeldproject.
 
 ```cmd
 flask run
 ```
 
-Open uw browser en ga naar _http://localhost:5000_ .
+Open uw browser _http://localhost:5000_en navigeer naar .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Een Python-web-app maken op OSX
 
-Maak een Python-web-app met behulp van `flask` op OSX.
+Maak een Python-web-app met `flask` osx.
 
 Installeer [Git](https://git-scm.com/).
 
-Nadat Git is geïnstalleerd, opent u Terminal en ' Clone ' de insluitende lezer SDK Git-opslag plaats naar een map op uw computer
+Nadat Git is geïnstalleerd open Terminal en 'kloon' de Immersive Reader SDK Git repository naar een map op uw computer
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
 ```
 
-Installeer [Python](https://www.python.org/downloads/).
+Python [Python](https://www.python.org/downloads/)installeren .
 
-De python-basismap, bijvoorbeeld `Python37-32`, moet zich nu in de map toepassingen bevindt.
+De map Python-root `Python37-32` moet zich bijvoorbeeld nu in de map Toepassingen bevinden.
 
-Nadat de python-installatie is voltooid, opent u Terminal en `cd` naar de map python-scripts.
+Nadat Python-installatie is voltooid, opent u Terminal en `cd` de map Python Scripts.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -201,7 +201,7 @@ Installeer pip.
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
 
-Voer vervolgens de volgende handelingen uit om pip te installeren voor de gebruiker die momenteel is aangemeld om machtigingen te voor komen.
+Voer vervolgens het volgende uit om pip te installeren voor de momenteel aangemelde gebruiker om problemen met machtigingen te voorkomen.
 
 ```bash
 python get-pip.py --user
@@ -211,68 +211,68 @@ python get-pip.py --user
 sudo nano /etc/paths
 ```
 
-- Voer uw wacht woord in als u hierom wordt gevraagd.
-- Voeg het pad van de PIP-installatie toe aan de padvariabele.
-- Ga naar de onderkant van het bestand en geef het pad op dat u wilt toevoegen als laatste item in de lijst, bijvoorbeeld `PATH=$PATH:/usr/local/bin`.
-- Druk op Control-x om af te sluiten.
+- Voer uw wachtwoord in wanneer u daarom wordt gevraagd.
+- Voeg het pad van uw pip-installatie toe aan de VARIABELE PATH.
+- Ga naar de onderkant van het bestand en voer het pad in dat u `PATH=$PATH:/usr/local/bin`wilt toevoegen als het laatste item van de lijst, bijvoorbeeld .
+- Druk op control-x om te stoppen.
 - Voer `Y` in om de gewijzigde buffer op te slaan.
-- Dat is alles. U kunt dit testen door in nieuw terminal venster het volgende te typen: `echo $PATH`.
+- Dat is alles. Om het te testen, typt `echo $PATH`u in het nieuwe terminalvenster: .
 
-Installatie kolf.
+Installeer Flask.
 
 ```bash
 pip install flask --user
 ```
 
-Installeer Jinja2. Een volledig functionele sjabloon engine voor python.
+Installeer Jinja2. Een volledig uitgeruste sjabloonengine voor Python.
 
 ```bash
 pip install Jinja2 --user
 ```
 
-Installeer virtualenv. Een hulp programma voor het maken van geïsoleerde python-omgevingen.
+Installeer virtualenv. Een tool om geïsoleerde Python-omgevingen te maken.
 
 ```bash
 pip install virtualenv --user
 ```
 
-Installeer virtualenvwrapper. Het idee achter virtualenvwrapper is om het gebruik van virtualenv te vereenvoudigen.
+Installeer virtualenvwrapper. Het idee achter virtualenvwrapper is om het gebruik van virtualenv te vergemakkelijken.
 
 ```bash
 pip install virtualenvwrapper --user
 ```
 
-Installeer de module aanvragen. Aanvragen is een apache2-gelicentieerde HTTP-bibliotheek, geschreven in python.
+Installeer de module aanvragen. Aanvragen is een HTTP-bibliotheek met Apache2-licentie, geschreven in Python.
 
 ```bash
 pip install requests --user
 ```
 
-Installeer de python-dotenv-module. Deze module leest het sleutel-waardepaar van het. env-bestand en voegt deze toe aan de omgevings variabele.
+Installeer de python-dotenv module. Deze module leest het sleutelwaardepaar uit .env-bestand en voegt deze toe aan omgevingsvariabele.
 
 ```bash
 pip install python-dotenv --user
 ```
 
-Kies een map waar u uw virtuele omgevingen wilt opslaan en voer deze opdracht uit
+Kies een map waar u uw virtuele omgevingen wilt behouden en voer deze opdracht uit
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-`cd` naar de map insluitende Reader SDK python voor beeld van toepassing.
+`cd`naar de voorbeeldmap van Immersive Reader SDK Python.to the Immersive Reader SDK Python sample application folder.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-Een virtuele omgeving maken
+Maak een virtuele omgeving
 
 ```bash
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-Verbind het voorbeeld project met de omgeving. Hiermee wordt de zojuist gemaakte virtuele omgeving toegewezen aan de basismap van het voorbeeld project.
+Sluit het voorbeeldproject aan op de omgeving. Hiermee wordt de nieuw gemaakte virtuele omgeving toegewezen aan de hoofdmap van het voorbeeldproject.
 
 ```bash
 setprojectdir .
@@ -284,7 +284,7 @@ Activeer de virtuele omgeving.
 activate
 ```
 
-Het project moet nu actief zijn en u ziet iets als `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` in de opdracht prompt.
+Het project moet nu actief zijn en `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` u ziet iets als in de opdrachtprompt.
 
 Deactiveer de omgeving.
 
@@ -292,25 +292,25 @@ Deactiveer de omgeving.
 deactivate
 ```
 
-Het voor voegsel van `(advanced-python)` moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
+Het `(advanced-python)` voorvoegsel moet nu worden verdwenen als de omgeving is nu gedeactiveerd.
 
-Voer `workon advanced-python` uit vanuit de hoofdmap van het voorbeeld project om de omgeving opnieuw uit te voeren.
+Als u de `workon advanced-python` omgeving opnieuw wilt activeren, wordt deze uitgevoerd vanuit de hoofdmap van het voorbeeldproject.
 
 ```bash
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Start de meeslepende lezer met voorbeeldinhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` vanuit de hoofdmap van het voorbeeld project in te voeren.
+Wanneer de omgeving actief is, voert `flask run` u het voorbeeldproject uit door in te voeren vanuit de hoofdmap van het voorbeeldproject.
 
 ```bash
 flask run
 ```
 
-Open uw browser en ga naar _http://localhost:5000_ .
+Open uw browser _http://localhost:5000_en navigeer naar .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
-* Code voorbeelden weer geven op [github](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)
+* Ontdek de [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) en de [Immersive Reader SDK Reference](./reference.md)
+* Codevoorbeelden weergeven op [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)

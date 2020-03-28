@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht verzenden naar de REST API met behulp van python-Bing Entity Search'
+title: 'Snelstart: een zoekverzoek naar de REST-API verzenden met Python - Zoeken naar bing-entiteiten'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met Python een aanvraag te verzenden naar de REST-API van Bing Entiteiten zoeken en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448621"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met behulp van python
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Snelstart: stuur een zoekverzoek naar de Bing Entity Search REST API met Python
 
-Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
 Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python](https://www.python.org/downloads/) 2.x of 3.x
+* [Python (Python)](https://www.python.org/downloads/) 2.x of 3.x
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnementssleutel, eindpunt, markt en zoekquery. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnementssleutel, eindpunt, markt en zoekquery. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```python
     import http.client, urllib.parse
@@ -143,5 +143,5 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [!div class="nextstepaction"]
 > [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
-* [Wat is de Bing Entiteiten zoeken-API?](../search-the-web.md)
+* [Wat is de Bing Entity Search API](../search-the-web.md)
 * [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

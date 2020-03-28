@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906720"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906720"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer dit codefragment naar uw project in een bestand met de naam `translate-text.py`. Zorg ervoor dat de interpreter van uw IDE verwijst naar de juiste versie van python om te voor komen dat bibliotheken worden herkend.
+Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer dit codefragment naar uw project in een bestand met de naam `translate-text.py`. Zorg ervoor dat de tolk van uw IDE verwijst naar de juiste versie van Python om te voorkomen dat bibliotheken niet worden herkend.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -29,9 +29,9 @@ import os, requests, uuid, json
 
 Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. De vereiste modules worden dan geïmporteerd voor het lezen van uw abonnementssleutel uit een omgevingsvariabele, voor het opstellen van de HTTP-aanvraag, voor het maken van een unieke id en voor het verwerken van het JSON-antwoord dat door de Translator Text-API wordt geretourneerd.
 
-## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnements sleutel, het eind punt en het pad instellen
+## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnementssleutel, het eindpunt en het pad instellen
 
-In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`de omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd uw abonnementssleutel voor vertalerstekst `TRANSLATOR_TEXT_KEY` en `TRANSLATOR_TEXT_ENDPOINT`eindpunt te lezen uit de omgevingsvariabelen: en . Als u niet bekend bent met omgevingsvariabelen, u instellen `subscription_key` en `endpoint` als een tekenreeks en commentaar op de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -52,7 +52,7 @@ Het globaal eindpunt voor de Translator Text is ingesteld als de `endpoint`. Met
 De `params` worden gebruikt voor het instellen van de uitvoertalen. In dit voorbeeld vertalen we van het Engels naar het Italiaans en het Duits: `it` en `de`.
 
 >[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: Vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Zie [Translator Text-API 3.0: vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) voor meer informatie over eindpunten, routes en aanvraagparameters.
 
 ```python
 path = '/translate?api-version=3.0'
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-translate-text"></a>Een aanvraag maken om tekst te vertalen
 
@@ -141,7 +141,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

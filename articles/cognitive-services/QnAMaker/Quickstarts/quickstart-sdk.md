@@ -1,19 +1,19 @@
 ---
-title: 'Snelstartgids: SDK gebruiken om Knowledge Base-QnA Maker te maken en te beheren'
-description: In deze Quick start ziet u hoe u uw Knowledge Base maakt en beheert met behulp van de client-SDK.
+title: 'Quickstart: gebruik SDK om kennisbank te creëren en te beheren - QnA Maker'
+description: Deze quickstart laat u zien hoe u uw kennisbank maken en beheren met behulp van de client SDK.
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
 ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79241764"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Snelstartgids: Knowledge Base maken en beheren
+# <a name="quickstart-create-and-manage-knowledge-base"></a>Quickstart: kennisbank creëren en beheren
 
-Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
+Ga aan de slag met de QnA Maker-clientbibliotheek. Volg deze stappen om het pakket te installeren en probeer de voorbeeldcode voor basistaken uit.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -30,8 +30,8 @@ Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Zelf studie: uw Knowledge Base testen met een batch-bestand](./batch-testing.md)
+>[Zelfstudie: Test je kennisbank met een batchbestand](./batch-testing.md)
 
-* [Wat is de QnA Maker-API?](../Overview/overview.md)
-* [Een kennis database bewerken](../how-to/edit-knowledge-base.md)
-* [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
+* [Wat is de QnA Maker API?](../Overview/overview.md)
+* [Een knowledge base bewerken](../how-to/edit-knowledge-base.md)
+* [Gebruiksanalyses bekijken](../how-to/get-analytics-knowledge-base.md)

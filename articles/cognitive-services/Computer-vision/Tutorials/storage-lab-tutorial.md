@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: meta gegevens voor Azure-installatie kopieën genereren'
+title: 'Zelfstudie: Metagegevens genereren voor Azure-afbeeldingen'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie leert u hoe u de Azure Computer Vision-service integreert in een web-app voor het genereren van meta gegevens voor installatie kopieën.
+description: In deze zelfstudie leert u hoe u de Azure Computer Vision-service integreren in een web-app om metagegevens voor afbeeldingen te genereren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973710"
 ---
-# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelf studie: Computer Vision gebruiken voor het genereren van meta gegevens voor afbeeldingen in Azure Storage
+# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelfstudie: Computer Vision gebruiken om metagegevens van afbeeldingen te genereren in Azure Storage
 
-In deze zelf studie leert u hoe u de Azure Computer Vision-service integreert in een web-app om meta gegevens te genereren voor geüploade installatie kopieën. Dit is nuttig voor de [dam-scenario's (Digital Asset Management)](../Home.md#computer-vision-for-digital-asset-management) , bijvoorbeeld als een bedrijf snel beschrijvende bijschriften of Doorzoek bare tref woorden wil genereren voor alle installatie kopieën.
+In deze zelfstudie leert u hoe u de Azure Computer Vision-service integreren in een web-app om metagegevens voor geüploade afbeeldingen te genereren. Dit is handig voor dam-scenario's [(digital asset management),](../Home.md#computer-vision-for-digital-asset-management) zoals als een bedrijf snel beschrijvende bijschriften of doorzoekbare zoekwoorden voor al zijn afbeeldingen wil genereren.
 
-De volledige app-handleiding vindt u in het [Azure Storage- en Cognitive Services-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) op GitHub. In deze zelfstudie wordt alleen oefening 5 uit het lab behandeld. U kunt de volledige toepassing maken door elke stap te volgen, maar als u alleen wilt weten hoe u Computer Vision integreert in een bestaande web-app, leest u hier.
+De volledige app-handleiding vindt u in het [Azure Storage- en Cognitive Services-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) op GitHub. In deze zelfstudie wordt alleen oefening 5 uit het lab behandeld. Misschien wilt u de volledige toepassing maken door elke stap te volgen, maar als u alleen wilt leren hoe u Computer Vision integreren in een bestaande web-app, leest u hier mee.
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Een Computer Vision-resource maken in Azure
@@ -31,37 +31,37 @@ In deze zelfstudie ontdekt u hoe u:
 > * Metagegevens koppelen aan Azure Storage-afbeeldingen
 > * Afbeeldingsmetagegevens controleren met Azure Storage Explorer
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) of hoger, met de workloads 'ASP.NET and web development' en 'Azure development' geïnstalleerd.
-- Een Azure Storage-account met een BLOB-container die is ingesteld voor installatie kopie opslag (Volg [de oefeningen 1 van het Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) als u hulp nodig hebt bij deze stap).
+- Een Azure Storage-account met een blobcontainer die is ingesteld voor imageopslag (volg [oefeningen 1 van het Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) als u hulp nodig hebt bij deze stap).
 - Het Azure Storage Explorer-hulpprogramma (volg [oefening 2 van het Azure Storage-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) als u hulp nodig hebt met deze stap).
 - Een ASP.NET-webtoepassing met toegang tot Azure Storage (volg [oefening 3 van het Azure Storage-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) om snel een dergelijke app te maken).
 
 ## <a name="create-a-computer-vision-resource"></a>Een Computer Vision-resource maken
 
-U moet een Computer Vision resource maken voor uw Azure-account. met deze resource wordt uw toegang tot de Computer Vision-service van Azure beheerd. 
+U moet een Computer Vision-bron maken voor uw Azure-account. deze bron beheert uw toegang tot de Computer Vision-service van Azure. 
 
-1. Volg de instructies in [een Azure Cognitive Services-resource maken](../../cognitive-services-apis-create-account.md) om een computer vision resource te maken.
+1. Volg de instructies in [Een Azure Cognitive Services-bron maken](../../cognitive-services-apis-create-account.md) om een Computer Vision-bron te maken.
 
-1. Ga vervolgens naar het menu voor de resource groep en klik op het Computer Vision-API abonnement dat u zojuist hebt gemaakt. Kopieer de URL onder **Eindpunt** naar een plaats waar u de URL eenvoudig en snel weer kunt ophalen. Klik vervolgens op **Toegangssleutels weergeven**.
+1. Ga vervolgens naar het menu voor uw brongroep en klik op het Computer Vision API-abonnement dat u zojuist hebt gemaakt. Kopieer de URL onder **Eindpunt** naar een plaats waar u de URL eenvoudig en snel weer kunt ophalen. Klik vervolgens op **Toegangssleutels weergeven**.
 
-    ![Azure Portal pagina met de koppeling naar de eind punt-URL en toegangs sleutels](../Images/copy-vision-endpoint.png)
+    ![Azure-portalpagina met de koppeling URL en toegangssleutels van eindpunten](../Images/copy-vision-endpoint.png)
     
     [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 
 1. In het volgende venster kopieert u de waarde van **sleutel 1** naar het klembord.
 
-    ![Het dialoog venster sleutels beheren met de knop kopiëren](../Images/copy-vision-key.png)
+    ![Dialoogvenster Sleutels beheren, met de kopieerknop omgetrokken](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Computer Vision-referenties toevoegen
 
-Vervolgens voegt u de vereiste referenties toe aan uw app zodat deze toegang kan krijgen tot Computer Vision-resources
+Vervolgens voegt u de vereiste referenties toe aan uw app, zodat deze toegang heeft tot computervision-bronnen
 
-Open de ASP.NET-webtoepassing in Visual Studio en ga naar het bestand **Web.config** in de hoofdmap van het project. Voeg de volgende-instructies toe aan de sectie `<appSettings>` van het bestand, waarbij u `VISION_KEY` vervangt door de sleutel die u in de vorige stap hebt gekopieerd en `VISION_ENDPOINT` met de URL die u in de stap eerder hebt opgeslagen.
+Open de ASP.NET-webtoepassing in Visual Studio en ga naar het bestand **Web.config** in de hoofdmap van het project. Voeg de volgende `<appSettings>` instructies toe aan het `VISION_KEY` gedeelte van het bestand, ter `VISION_ENDPOINT` vervanging van de sleutel die u in de vorige stap hebt gekopieerd en met de URL die u in de stap ervoor hebt opgeslagen.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
@@ -72,7 +72,7 @@ Klik vervolgens in Solution Explorer met de rechtermuisknop op het project en ge
 
 ## <a name="add-metadata-generation-code"></a>Code voor het genereren van metagegevens toevoegen
 
-Vervolgens voegt u de code toe die de Computer Vision-service gebruikt om meta gegevens voor installatie kopieën te maken. Deze stappen zijn van toepassing op de ASP.NET-app in het lab, maar u kunt ze ook aanpassen aan uw eigen app. Het is op dit punt belangrijk dat u over een ASP.NET-webtoepassing beschikt waarmee u afbeeldingen kunt uploaden naar een Azure Storage-container, waarmee u er afbeeldingen uit kunt lezen en waarmee u deze kunt weergeven. Als u niet zeker weet wat deze stap is, kunt u het beste [de oefening 3 van de Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)volgen. 
+Vervolgens voegt u de code toe die daadwerkelijk gebruik maakt van de Computer Vision-service om metagegevens voor afbeeldingen te maken. Deze stappen zijn van toepassing op de ASP.NET-app in het lab, maar u kunt ze ook aanpassen aan uw eigen app. Het is op dit punt belangrijk dat u over een ASP.NET-webtoepassing beschikt waarmee u afbeeldingen kunt uploaden naar een Azure Storage-container, waarmee u er afbeeldingen uit kunt lezen en waarmee u deze kunt weergeven. Als u niet zeker bent over deze stap, u het beste [oefening 3 van het Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)volgen. 
 
 1. Open het bestand *HomeController.cs* in de map **Controllers** van het project en voeg de volgende `using` instructies toe aan de bovenzijde van het bestand:
 
@@ -105,7 +105,7 @@ Vervolgens voegt u de code toe die de Computer Vision-service gebruikt om meta g
     await photo.SetMetadataAsync();
     ```
 
-1. Ga vervolgens naar de **index** -methode in hetzelfde bestand. Met deze methode worden de opgeslagen afbeeldings-blobs in de doel-BLOB-container (als **IListBlobItem** -instanties) opgesomd en door gegeven aan de weer gave van de toepassing. Vervang het blok `foreach` in de methode door de volgende code. Deze code roept **CloudBlockBlob.FetchAttributes** aan om de metagegevens die aan elke blob zijn gekoppeld op te halen. De door de computer gegenereerde beschrijving (`caption`) wordt opgehaald uit de metagegevens en toegevoegd aan het object **BlobInfo**; dit wordt vervolgens doorgegeven aan de weergave.
+1. Ga vervolgens naar de **methode Index** in hetzelfde bestand. Met deze methode worden de opgeslagen afbeeldingsblobs in de beoogde blobcontainer (als **IListBlobItem-instanties)** opgesomd en wordt deze doorgegeven aan de toepassingsweergave. Vervang het blok `foreach` in de methode door de volgende code. Deze code roept **CloudBlockBlob.FetchAttributes** aan om de metagegevens die aan elke blob zijn gekoppeld op te halen. De door de computer gegenereerde beschrijving (`caption`) wordt opgehaald uit de metagegevens en toegevoegd aan het object **BlobInfo**; dit wordt vervolgens doorgegeven aan de weergave.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -135,17 +135,17 @@ Sla de wijzigingen in Visual Studio op en druk op **Ctrl+F5** om de toepassing i
 
 Als u alle gekoppelde metagegevens wilt bekijken, gebruikt u Azure Storage Explorer om de opslagcontainer te gebruiken die u voor afbeeldingen gebruikt. Klik met de rechtermuisknop op een van de blobs in de container en selecteer **Eigenschappen**. In het dialoogvenster ziet u een lijst met sleutel-waardeparen. De door de computer gegenereerde afbeeldingsbeschrijving wordt opgeslagen in het item Bijschrift en de zoektrefwoorden worden opgeslagen in Tag0, Tag1, enzovoort. Wanneer u klaar bent, klikt u op **Annuleren** om het dialoogvenster te sluiten.
 
-![Dialoog venster Eigenschappen van afbeelding, met de opgegeven labels voor meta gegevens](../Images/blob-metadata.png)
+![Dialoogvenster afbeeldingseigenschappen, met metagegevenstags weergegeven](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u aan de web-app wilt blijven werken, ziet u het gedeelte [Volgende stappen](#next-steps). Als u deze toepassing niet wilt blijven gebruiken, verwijdert u alle app-specifieke resources. Als u resources wilt verwijderen, kunt u de resource groep met uw Azure Storage-abonnement en Computer Vision resource verwijderen. Hiermee worden het opslagaccount, de ernaar geüploade blobs en de App Service-resource die nodig is om verbinding te maken met de ASP.NET-web-app verwijderd. 
+Als u aan de web-app wilt blijven werken, ziet u het gedeelte [Volgende stappen](#next-steps). Als u deze toepassing niet wilt blijven gebruiken, verwijdert u alle app-specifieke resources. Als u resources wilt verwijderen, u de brongroep verwijderen die uw Azure Storage-abonnement en Computer Vision-bron bevat. Hiermee worden het opslagaccount, de ernaar geüploade blobs en de App Service-resource die nodig is om verbinding te maken met de ASP.NET-web-app verwijderd. 
 
-Als u de resource groep wilt verwijderen, opent u het tabblad **resource groepen** in de portal, navigeert u naar de resource groep die u hebt gebruikt voor dit project en klikt u op **resource groep verwijderen** boven aan de weer gave. U wordt gevraagd de naam van de resource groep te typen om te bevestigen dat u deze wilt verwijderen omdat een resource groep niet meer kan worden hersteld.
+Als u de brongroep wilt verwijderen, opent u het tabblad **Resourcegroepen** in de portal, navigeert u naar de resourcegroep die u voor dit project hebt gebruikt en klikt u boven aan de weergave op **Brongroep verwijderen.** U wordt gevraagd de naam van de brongroep te typen om te bevestigen dat u deze wilt verwijderen, omdat een brongroep na verwijdering niet kan worden hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie stelt u de Computer Vision-service van Azure in een bestaande web-app in voor het automatisch genereren van bijschriften en tref woorden voor BLOB-installatie kopieën die worden geüpload. Zie nu oefening 6 uit het Azure Storage-lab om te ontdekken hoe u zoekfunctionaliteit toevoegt aan uw web-app. Hierbij wordt gebruikgemaakt van de zoektrefwoorden die de Computer Vision-service genereert.
+In deze zelfstudie stelt u de Computer Vision-service van Azure in een bestaande web-app in om automatisch bijschriften en zoekwoorden voor blobafbeeldingen te genereren wanneer deze worden geüpload. Zie nu oefening 6 uit het Azure Storage-lab om te ontdekken hoe u zoekfunctionaliteit toevoegt aan uw web-app. Hierbij wordt gebruikgemaakt van de zoektrefwoorden die de Computer Vision-service genereert.
 
 > [!div class="nextstepaction"]
 > [Zoekfunctionaliteit toevoegen aan uw app](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6)

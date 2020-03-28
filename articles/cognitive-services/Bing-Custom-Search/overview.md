@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448727"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Wat is de Bing Aangepaste zoekopdracht-API?
@@ -28,7 +28,7 @@ Met de Bing Aangepaste zoekopdrachten-API kunt u op maat gemaakte zoekervaringen
 |[Aangepaste zoeksuggesties in realtime](define-custom-suggestions.md)     | Geef zoeksuggesties op die kunnen worden weergegeven als een vervolgkeuzelijst wanneer gebruikers beginnen te typen.       | 
 |[Ervaringen voor aangepast afbeeldingen zoeken](get-images-from-instance.md)     | Stel gebruikers in staat om naar afbeeldingen te zoeken vanuit de domeinen en websites die zijn opgegeven in het exemplaar voor aangepaste zoekopdrachten.        |        
 |[Ervaringen voor aangepast video's zoeken](get-videos-from-instance.md)     | Stel gebruikers in staat om naar video's te zoeken vanuit de domeinen en sites die zijn opgegeven in het exemplaar voor aangepaste zoekopdrachten.        |    
-|[Uw exemplaar voor aangepaste zoekopdrachten delen](share-your-custom-search.md)     | Bewerk en test samen uw exemplaar voor zoekopdrachten door het te delen met leden van uw team.        | 
+|[Uw aangepaste zoekopdrachtexemplaar delen](share-your-custom-search.md)     | Bewerk en test samen uw exemplaar voor zoekopdrachten door het te delen met leden van uw team.        | 
 |[Een gebruikersinterface configureren voor uw toepassingen en websites](hosted-ui.md)     | Bewerk en test samen uw exemplaar voor zoekopdrachten door het te delen met leden van uw team.        | 
 ## <a name="workflow"></a>Werkstroom
 
@@ -36,7 +36,7 @@ U kunt een exemplaar voor aangepaste zoekopdrachten maken met behulp van de [por
 
 Nadat u uw exemplaar voor zoekopdrachten hebt gemaakt, kunt u dit (en optioneel ook een gebruikersinterface) integreren op uw website of in uw toepassing door de Bing Aangepaste zoekopdrachten-API aan te roepen:
 
-![Afbeelding die laat zien dat u via de API verbinding kunt maken met Bing aangepaste zoek opdrachten](media/BCS-Overview.png "Hoe Bing Aangepaste zoekopdrachten werkt.")
+![Afbeelding waaruit blijkt dat u verbinding maken met bing aangepaste zoekopdracht via de API](media/BCS-Overview.png "Hoe Bing Custom Search werkt.")
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -47,7 +47,7 @@ Zie [Een exemplaar voor aangepast zoeken definiëren](define-your-custom-view.md
 
 Lees eerst [Vereisten voor gebruik en weergave in Bing](./use-and-display-requirements.md) voor het gebruik van zoekresultaten in uw services en toepassingen.
 
-Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.
+Ga naar de [hubpagina van bing Search API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
 
 Lees u in in de referentie-inhoud van alle aangepaste zoekeindpunten. De handleiding bevat de eindpunten, headers en queryparameters die u nodig hebt om zoekresultaten op te vragen. Daarnaast vindt u hier definities van de responsobjecten.
 

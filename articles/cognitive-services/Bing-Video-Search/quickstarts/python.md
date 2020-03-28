@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en python-Bing Video Search"
+title: "Snelstart: zoeken naar video's met behulp van de REST API en Python - Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST-API te verzenden via Python.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382681"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en python
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Snelstart: zoeken naar video's met behulp van de Bing Video Search REST API en Python
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) met extra foutafhandeling en codeaantekeningen.
 
@@ -40,7 +40,7 @@ U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://my
     import requests
     from IPython.display import HTML
     ```
-2.  Maak variabelen voor uw abonnementssleutel, zoekeindpunt en een zoekterm. `search_url` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2.  Maak variabelen voor uw abonnementssleutel, zoekeindpunt en een zoekterm. `search_url`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
     
     ```python
     subscription_key = None

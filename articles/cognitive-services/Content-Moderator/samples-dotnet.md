@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 930571c841146e0b12efbf7325915ba2b23a7efa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73744340"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK-voorbeelden
@@ -23,15 +23,15 @@ De volgende lijst bevat koppelingen naar de codevoorbeelden die zijn gecompileer
 
 ## <a name="moderation"></a>Toezicht
 
-- **Beheer van afbeeldingen**: [Een afbeelding controleren op erotische en ongepaste inhoud, tekst en gezichten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageModeration/Program.cs). Zie de [Snelstartgids voor .NET SDK](dotnet-sdk-quickstart.md).
-- **Aangepaste afbeeldingen**: [Toezicht houden met aangepaste afbeeldingslijsten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageListManagement/Program.cs). Zie de[Snelstartgids voor .NET SDK](dotnet-sdk-quickstart.md).
+- **Beheer van afbeeldingen**: [Een afbeelding controleren op erotische en ongepaste inhoud, tekst en gezichten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageModeration/Program.cs). Zie de [.NET SDK quickstart](dotnet-sdk-quickstart.md).
+- **Aangepaste afbeeldingen**: [Toezicht houden met aangepaste afbeeldingslijsten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ImageListManagement/Program.cs). Zie de[.NET SDK quickstart](dotnet-sdk-quickstart.md).
 
 > [!NOTE]
 > Er is een maximumlimiet van **5 afbeeldingslijsten** waarbij elke lijst **niet meer dan 10.000 afbeeldingen mag bevatten**.
 >
 
-- **Tekst toezicht**: [scherm tekst voor groveheid en persoonlijke gegevens](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Zie de[Snelstartgids voor .NET SDK](dotnet-sdk-quickstart.md).
-- **Aangepaste terminologie**: [Toezicht houden met aangepaste terminologielijsten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Zie de [Snelstartgids voor .NET SDK](dotnet-sdk-quickstart.md).
+- **Tekstmatigheid**: [Schermtekst voor godslastering en persoonlijke gegevens](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Zie de[.NET SDK quickstart](dotnet-sdk-quickstart.md).
+- **Aangepaste terminologie**: [Toezicht houden met aangepaste terminologielijsten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Zie de [.NET SDK quickstart](dotnet-sdk-quickstart.md).
 
 > [!NOTE]
 > Er is een maximumlimiet van **5 terminologielijsten** waarbij elke lijst **niet meer dan 10.000 termen mag bevatten**.

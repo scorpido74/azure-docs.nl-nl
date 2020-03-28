@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld: realtime video analyse-face'
+title: 'Voorbeeld: Real-time video-analyse - Face'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de face-service om bijna realtime analyses uit te voeren op frames die zijn gemaakt met een live video stroom.
+description: Gebruik de Face-service om bijna realtime analyses uit te voeren op frames die zijn genomen uit een live videostream.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169888"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: video's in realtime analyseren
@@ -26,7 +26,7 @@ In deze handleiding wordt uitgelegd hoe u bijna in realtime een analyse kunt uit
 - Deze frames verzenden naar de API
 - De analyseresultaten verbruiken die worden geretourneerd door de API-aanroep
 
-Deze voorbeelden zijn geschreven in C# en de code vindt u hier op GitHub: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+Deze voorbeelden zijn geschreven in C # en de code [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)kan worden gevonden op GitHub hier: .
 
 ## <a name="the-approach"></a>De benadering
 
@@ -138,11 +138,11 @@ while (true)
 
 ### <a name="getting-started"></a>Aan de slag
 
-Om uw app zo snel mogelijk aan de praat te krijgen, gebruikt u een flexibele implementatie van het hierboven beschreven systeem. Ga voor toegang tot de code naar [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
+Om uw app zo snel mogelijk aan de praat te krijgen, gebruikt u een flexibele implementatie van het hierboven beschreven systeem. Als u toegang wilt [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis)krijgen tot de code, gaat u naar .
 
 De bibliotheek bevat de klasse FrameGrabber, waarmee het hierboven beschreven systeem van producers en consumers wordt geïmplementeerd voor het verwerken van videoframes van een webcam. De gebruiker kan de exacte vorm van de API-aanroep opgeven. De klasse maakt tevens gebruik van gebeurtenissen om aan de aanroepende code door te geven wanneer er een nieuw frame is verkregen of een nieuw analyseresultaat beschikbaar is.
 
-Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. Er worden frames van de standaard webcam geplaatst en verzonden naar de gezichts service voor gezichts detectie.
+Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. Het grijpt frames van de standaard webcam, en legt ze naar de Face-service voor gezichtsherkenning.
 
 ```csharp
 using System;
@@ -208,7 +208,7 @@ Als u met dit voorbeeld aan de slag wilt, volgt u deze stappen:
 2. Kloon de GitHub-opslagplaats [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)
 
 3. Open het voorbeeld in Visual Studio 2015, bouw de voorbeeldtoepassingen en voer ze uit:
-    - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - Voor BasicConsoleSample is de Face-toets rechtstreeks in [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)hard gecodeerd.
     - Voor LiveCameraSample moeten de sleutels worden ingevoerd in het instellingenvenster van de app. De sleutels worden als gebruikersgegevens gehandhaafd tussen sessies.
         
 

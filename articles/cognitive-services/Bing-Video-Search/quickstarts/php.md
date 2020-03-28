@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en PHP-Bing Video Search"
+title: "Snelstart: zoek naar video's met de REST API en PHP - Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via PHP.
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448366"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en PHP
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstart: zoek naar video's met de Bing Video Search REST API en PHP
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in JavaScript is geschreven en maakt gebruik van Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 De voorbeeldcode is geschreven om te werken met PHP 5.6.
 
-Raadpleeg de [API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) voor technische informatie over de API's.
+Raadpleeg de [API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) voor technische details over de API's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +37,7 @@ Met de [Bing Video’s zoeken-API](https://docs.microsoft.com/rest/api/cognitive
 1. Zorg ervoor dat beveiligde HTTP-ondersteuning is ingeschakeld in uw `php.ini` zoals beschreven in het commentaar bij de code.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
-4. Vervang de waarde `$accessKey` door een geldige toegangssleutel voor uw abonnement. `$endpoint` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+4. Vervang de waarde `$accessKey` door een geldige toegangssleutel voor uw abonnement. `$endpoint`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 5. Voer het programma uit.
 
 ```php

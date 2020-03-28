@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: lengtes van de zinnen ophalen-Translator Text-API'
+title: 'Snelstart: Regellengten - Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de lengte van de zin kunt bepalen met behulp van de Translator Text-API.
+description: In deze snelstart leert u hoe u de lengte van de zin bepalen met behulp van de Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525106"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Snelstartgids: de Translator Text-API gebruiken om de lengte van de zin te bepalen
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Snelstart: de API voor vertalertekst gebruiken om de lengte van de zin te bepalen
 
-In deze Quick Start leert u hoe u de lengte van zinnen kunt bepalen met behulp van de Translator Text-API.
+In deze quickstart leert u hoe u de lengte van zinnen bepalen met behulp van de Translator Text API.
 
 Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 

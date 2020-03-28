@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een lokale installatie kopie analyseren-REST,C#'
+title: 'Snelstart: analyseer een lokaal beeld - REST, C #'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een lokale afbeelding met behulp van de Computer Vision-API met C#.
 services: cognitive-services
@@ -12,28 +12,28 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 0344ba8263fe9d14c6939124f09adc104f0c611d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770387"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Snelstartgids: een lokale installatie kopie analyseren met behulp van de Computer Vision REST API enC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Snelstart: een lokale afbeelding analyseren met behulp van de Computer Vision REST API en C #
 
-In deze Quick start gaat u een lokaal opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u informatie over de visuele onderdelen uit de afbeeldings inhoud extra heren.
+In deze quickstart analyseert u een lokaal opgeslagen afbeelding om visuele functies te extraheren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) u visuele functie-informatie uit afbeeldingsinhoud extraheren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U hebt [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger nodig.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
 Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
 
-1. Maak een nieuwe Visual Studio-oplossing in Visual Studio met behulp C# van de sjabloon Visual console App (.NET Framework).
+1. Maak een nieuwe Visual Studio-oplossing in Visual Studio met de sjabloon Visual C# Console App (.NET Framework).
 1. Installeer het pakket Newtonsoft.Json NuGet.
     1. Klik in het menu op **Extra**, selecteer **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**.
     1. Klik op het tabblad **Bladeren** en typ 'Newtonsoft.Json' in het vak **Zoeken**.

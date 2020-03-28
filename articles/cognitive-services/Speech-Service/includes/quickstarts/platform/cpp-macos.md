@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: Speech C++ -platform Setup (macOS)-spraak service'
+title: 'Snelstart: setup van het SpraakSDK C++ (macOS) platform - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te C++ stellen voor macOS met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform voor C++ in te stellen op macOS met de Spraakservice SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468375"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) installeert voor C++ macOS 10,13 en hoger.
+In deze handleiding ziet u hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor C++ installeren op macOS 10.13 en hoger.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Systeemvereisten
 
-macOS 10,13 en hoger
+macOS 10.13 en hoger
 
 ## <a name="install-speech-sdk"></a>Speech SDK installeren
 
@@ -39,7 +39,7 @@ macOS 10,13 en hoger
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Down load en pak het `.zip` archief met het Speech SDK Framework:
+1. Download en `.zip` haal het archief met het Speech SDK-framework:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -52,9 +52,9 @@ macOS 10,13 en hoger
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   De mapweergave moet de kennisgevings-en licentie bestanden van derden bevatten, evenals een `MicrosoftCognitiveServicesSpeech.framework` Directory.
+   De directory vermelding moet de kennisgeving en licentiebestanden van `MicrosoftCognitiveServicesSpeech.framework` derden bevatten, evenals een directory.
 
-U kunt nu door gaan naar de [volgende stappen](#next-steps) .
+U nu verder gaan naar [Volgende stappen](#next-steps) hieronder.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Image Insights ophalen met behulp van de SDK voor node. js-Bing Visual Search'
+title: 'Snelstart: informatie over afbeeldingen met de SDK voor Node.js - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart leert u hoe u met de Node.js-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: d99aa2d2827716b2b04d059e47d9768eef8cd690
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77485094"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search SDK voor node. js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Snelstart: krijg beeldinzichten met de Bing Visual Search SDK voor Node.js
 
-In deze snelstart leert u hoe u met de Node.js-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
+In deze snelstart leert u hoe u met de Node.js-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
 
 ## <a name="prerequisites"></a>Vereisten
 * [Node.js](https://www.nodejs.org/)

@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2a5fb6d72ab2259b2c11d1d71e93aa635da36946
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446551"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search SDK voor python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Snelstart: krijg beeldinzichten met de Bing Visual Search SDK voor Python
 
 In deze snelstart leert u hoe u met de Python-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python](https://www.python.org/) 2.x of 3.x
+* [Python (Python)](https://www.python.org/) 2.x of 3.x
 * U kunt het best een [virtuele omgeving](https://docs.python.org/3/tutorial/venv.html) gebruiken. Installeer en initialiseer de virtuele omgeving met de [venv-module](https://pypi.python.org/pypi/virtualenv).
 * De Bing Visual Search SDK voor Python. U kunt deze installeren met de volgende opdrachten:
     1. `cd mytestenv`

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Image Insights ophalen met behulp van de REST API en node. js-Bing Visual Search'
+title: 'Snelstart: verkrijg afbeeldingsinzichten met behulp van de REST API en Node.js - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379705"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en node. js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Snelstart: krijg beeldinzichten met behulp van de Bing Visual Search REST API en Node.js
 
 Gebruik deze snelstart om voor het eerst de Bing Visual Search-API aan te roepen en de zoekresultaten te bekijken. Met deze eenvoudige JavaScript-toepassing wordt er een afbeelding naar de API geüpload, waarna de geretourneerde gegevens van de afbeelding worden weergegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Node.js](https://nodejs.org/en/download/)
-* De aanvraag module voor Java script. U kunt `npm install request` opdracht gebruiken om de module te installeren.
-* De module form-data. U kunt de-opdracht `npm install form-data` gebruiken om de module te installeren. 
+* De module Aanvragen voor JavaScript. U kunt `npm install request` de opdracht gebruiken om de module te installeren.
+* De formuliergegevensmodule. U `npm install form-data` de opdracht gebruiken om de module te installeren. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een Java script-bestand in uw favoriete IDE of editor en stel de volgende vereisten in:
+1. Maak een JavaScript-bestand in uw favoriete IDE of editor en stel de volgende vereisten in:
 
     ```javascript
     var request = require('request');
@@ -39,7 +39,7 @@ Gebruik deze snelstart om voor het eerst de Bing Visual Search-API aan te roepen
     var fs = require('fs');
     ```
 
-2. Maak variabelen voor uw API-eindpunt, abonnementssleutel en het pad naar uw afbeelding. `baseUri` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource:
+2. Maak variabelen voor uw API-eindpunt, abonnementssleutel en het pad naar uw afbeelding. `baseUri`kan het algemene eindpunt hieronder zijn of het [aangepaste eindpunt voor subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ Gebruik deze snelstart om voor het eerst de Bing Visual Search-API aan te roepen
     var imagePath = "path-to-your-image";
     ```
 
-3. Maak een functie met de naam `requestCallback()` om het antwoord vanuit de API af te drukken:
+3. Maak een `requestCallback()` functie met de naam om de respons vanuit de API af te drukken:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -57,7 +57,7 @@ Gebruik deze snelstart om voor het eerst de Bing Visual Search-API aan te roepen
 
 ## <a name="construct-and-send-the-search-request"></a>De zoekaanvraag samenstellen en verzenden
 
-Bij het uploaden van een lokale installatie kopie moeten de formulier gegevens de `Content-Disposition`-header bevatten. U moet de para meter `name` instellen op "afbeelding" en de `filename`-para meter kan worden ingesteld op een wille keurige teken reeks. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldingsgrootte die u kunt uploaden is 1 MB.
+Bij het uploaden van een lokale `Content-Disposition` afbeelding moeten de formuliergegevens de koptekst bevatten. U moet `name` de parameter instellen op `filename` 'afbeelding' en de parameter kan op elke tekenreeks worden ingesteld. De inhoud van het formulier bevat de binaire gegevens van de afbeelding. De maximale afbeeldingsgrootte die u kunt uploaden is 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -68,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-1. Maak een nieuw **FormData** -object met `FormData()`en voeg het pad naar de afbeelding toe met behulp van `fs.createReadStream()`:
+1. Maak een nieuw **FormData-object** met `FormData()`en app uw `fs.createReadStream()`afbeeldingspad eraan toe met :
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Gebruik de bibliotheek voor aanvragen om de installatie kopie te uploaden en roep `requestCallback()` aan om het antwoord af te drukken. Zorg ervoor dat u uw abonnements sleutel toevoegt aan de aanvraag header:
+2. Gebruik de aanvraagbibliotheek om de `requestCallback()` afbeelding te uploaden en bel om het antwoord af te drukken. Zorg ervoor dat u uw abonnementssleutel toevoegt aan de aanmeldingskop:
 
     ```javascript
     form.getLength(function(err, length){
@@ -91,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een Visual Search Web-app met één pagina bouwen](../tutorial-bing-visual-search-single-page-app.md)
+> [Een web-app voor visueel zoeken met één pagina maken](../tutorial-bing-visual-search-single-page-app.md)

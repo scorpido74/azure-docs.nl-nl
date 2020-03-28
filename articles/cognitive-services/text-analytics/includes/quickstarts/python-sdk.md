@@ -2,49 +2,49 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203401"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240116"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-[v3-referentiedocumentatie](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [Broncode voor v3-bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3-pakket (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3-voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 Referentiedocumentatie](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 Bibliotheek broncode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 Package (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-[v2-referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Broncode voor v2-bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2-pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[v2 Referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [v2 Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2-pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2-voorbeelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Azure-abonnement - [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Een Text Analytics-resource maken"  target="_blank">maakt u een Text Analytics-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. 
-    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Text Analytics-API. U doet dit later in de quickstart.
-    * U kunt de gratis prijscategorie gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* Zodra u uw Azure-abonnement <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hebt,"  target="_blank">maakt u <span class="docon docon-navigate-external x-hidden-focus"></span> </a> een Text Analytics-bron en maakt u een Text Analytics-bron in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat deze is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt van de resource die u maakt nodig om uw toepassing te verbinden met de Text Analytics API. U plakt uw sleutel en eindpunt later in de quickstart in de onderstaande code.
+    * U de gratis`F0`prijscategorie () gebruiken om de service uit te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Na de installatie van Python kunt u de clientbibliotheek installeren met:
+Na het installeren van Python u de clientbibliotheek installeren met:
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
 ```
 
 > [!TIP]
-> Wilt u het codebestand voor de quickstart in één keer weergeven? Ga dan naar [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py), waar u de codevoorbeelden uit deze quickstart kunt vinden. 
+> Wilt u het hele quickstart-codebestand in één keer bekijken? U het [vinden op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py), die de code voorbeelden in deze quickstart bevat. 
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
@@ -53,13 +53,13 @@ pip install --upgrade azure-cognitiveservices-language-textanalytics
 ```
 
 > [!TIP]
-> Wilt u het codebestand voor de quickstart in één keer weergeven? Ga dan naar [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py), waar u de codevoorbeelden uit deze quickstart kunt vinden. 
+> Wilt u het hele quickstart-codebestand in één keer bekijken? U het [vinden op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py), die de code voorbeelden in deze quickstart bevat. 
 
 ---
 
-### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
+### <a name="create-a-new-python-application"></a>Een nieuwe python-toepassing maken
 
-Maak een nieuw Python-bestand en maak variabelen voor het eindpunt en de abonnementssleutel in Azure van uw resource.
+Maak een nieuw Python-bestand en maak variabelen voor de Azure-eindpunt- en abonnementssleutel van uw bron.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -71,38 +71,38 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Objectmodel
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-De Text Analytics-client is een `TextAnalyticsClient`-object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De client biedt verschillende methoden voor het analyseren van tekst als een batch. 
+De Text Analytics-client is een `TextAnalyticsClient` object dat met uw sleutel naar Azure wordt geverifieerd. De client biedt verschillende methoden voor het analyseren van tekst als een batch. 
 
-Bij batchverwerking wordt tekst als een lijst met `documents` naar de API verzonden. De lijst bestaat uit `dictionary`-objecten die een combinatie van de kenmerken `id`, `text` en `language` bevatten, afhankelijk van de gebruikte methode. Met het kenmerk `text` wordt de tekst die moet worden geanalyseerd, opgeslagen in de oorsprong `language`, en `id` kan elke waarde hebben. 
+Wanneer batchverwerkingtekst naar de API wordt `documents`verzonden `dictionary` als een lijst `id` `text`van `language` objecten die een combinatie van , en kenmerken bevatten, afhankelijk van de gebruikte methode. Het `text` kenmerk slaat de tekst op `language`die moet `id` worden geanalyseerd in de oorsprong en deze kan elke waarde zijn. 
 
-Het antwoordobject is een lijst met de analyse-informatie voor elk document. 
+Het antwoordobject is een lijst met de analysegegevens voor elk document. 
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-De Text Analytics-client is een [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python)-object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De client biedt verschillende methoden voor het analyseren van tekst, zoals één tekenreeks of een batch. 
+De Text Analytics-client is een [TextAnalyticsClient-object](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) dat met uw sleutel naar Azure wordt geverifieerd. De client biedt verschillende methoden voor het analyseren van tekst, als één tekenreeks of als batch. 
 
-Tekst wordt naar de API verzonden als een lijst met `documents`. Dit zijn `dictionary`-objecten die een combinatie van de kenmerken `id`, `text` en `language` bevatten, afhankelijk van de gebruikte methode. Met het kenmerk `text` wordt de tekst die moet worden geanalyseerd, opgeslagen in de oorsprong `language`, en `id` kan elke waarde hebben. 
+Tekst wordt naar de API `documents`verzonden `dictionary` als een lijst `id`van `text`, `language` die objecten zijn die een combinatie van , en kenmerken bevatten, afhankelijk van de gebruikte methode. Het `text` kenmerk slaat de tekst op `language`die moet `id` worden geanalyseerd in de oorsprong en deze kan elke waarde zijn. 
 
 ---
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Text Analytics-clientbibliotheek voor Python:
+Deze codefragmenten laten zien hoe u de volgende taken uitvoeren met de Text Analytics-clientbibliotheek voor Python:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Sentimentanalyse](#sentiment-analysis)
 * [Taaldetectie](#language-detection)
-* [Herkenning van benoemde entiteiten](#named-entity-recognition-ner) 
-* [Entiteiten koppelen](#entity-linking)
-* [Sleuteltermextractie](#key-phrase-extraction)
+* [Benoemde entiteitsherkenning](#named-entity-recognition-ner) 
+* [Koppeling van entiteiten](#entity-linking)
+* [Trefwoordextractie](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-Maak een functie om het `TextAnalyticsClient`-object te instantiëren met uw `key` EN `endpoint` die hierboven zijn gemaakt. Maak vervolgens een nieuwe client. 
+Maak een functie om het `TextAnalyticsClient` object `key` te `endpoint` instantiëren met uw en hierboven gemaakt. Maak vervolgens een nieuwe klant. 
 
 ```python
 from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
@@ -120,7 +120,7 @@ client = authenticate_client()
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-Maak een functie om het `TextAnalyticsClient`-object te instantiëren met uw `key` EN `endpoint` die hierboven zijn gemaakt. Maak vervolgens een nieuwe client. 
+Maak een functie om het `TextAnalyticsClient` object `key` te `endpoint` instantiëren met uw en hierboven gemaakt. Maak vervolgens een nieuwe klant. 
 
 [!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
@@ -128,9 +128,9 @@ Maak een functie om het `TextAnalyticsClient`-object te instantiëren met uw `ke
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-Maak een nieuwe functie met de naam `sentiment_analysis_example()` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `analyze_sentiment()` aanroept. Het geretourneerde responsobject bevat het sentimentlabel en de score van het volledige invoerdocument, evenals een sentimentanalyse voor elke zin.
+Maak een nieuwe `sentiment_analysis_example()` functie genaamd die de client `analyze_sentiment()` als argument neemt en vervolgens de functie aanroept. Het geretourneerde antwoordobject bevat het sentimentslabel en de score van het volledige invoerdocument, evenals een sentimentanalyse voor elke zin.
 
 
 ```python
@@ -180,7 +180,7 @@ Negative=0.02
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Verifieer een clientobject en roep de functie [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan. Herhaal de lijst met resultaten en geef voor elk document de id en gevoelsscore weer. Een score dichter bij 0 wijst op een negatief gevoel, terwijl een score dichter bij 1 op een positief gevoel wijst.
+Verifieer een clientobject en roep de functie [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan. Doordeins de resultaten en druk de id van elk document en de sentimentscore af. Een score dichter bij 0 duidt op een negatief sentiment, terwijl een score dichter bij 1 wijst op een positief sentiment.
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -197,12 +197,12 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Taaldetectie
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-Maak een nieuwe functie met de naam `language_detection_example()` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `detect_language()` aanroept. Het geretourneerde responsobject bevat de gedetecteerde taal in `primary_language` als de aanroep is gelukt en een `error` als dat niet het geval is.
+Maak een nieuwe `language_detection_example()` functie genaamd die de client `detect_language()` als argument neemt en vervolgens de functie aanroept. Het geretourneerde antwoordobject bevat de `primary_language` gedetecteerde taal `error` in indien dit is geslaagd en een zo niet.
 
 > [!Tip]
-> In sommige gevallen kan het lastig zijn om talen ondubbelzinnig te karakteriseren op basis van de invoer. U kunt de parameter `country_hint` gebruiken om een landnummer van twee letters op te geven. Standaard gebruikt de API de standaard-countryHint US. Als u dit gedrag wilt verwijderen, kunt u deze parameter opnieuw instellen door deze waarde in te stellen op de lege tekenreeks `country_hint : ""`. 
+> In sommige gevallen kan het moeilijk zijn om talen te disambiguate op basis van de input. U `country_hint` de parameter gebruiken om een landcode van 2 letters op te geven. Standaard gebruikt de API de 'US' als standaardlandHint, om dit gedrag te verwijderen kunt `country_hint : ""`u deze parameter opnieuw instellen door deze waarde in te stellen op lege tekenreeks. 
 
 ```python
 def language_detection_example(client):
@@ -225,7 +225,7 @@ Language:  French
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Roep [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan met behulp van de client die u eerder hebt gemaakt en geef het resultaat weer. Herhaal vervolgens de resultaten en geef voor elk document de id en de eerste geretourneerde taal weer.
+Met behulp van de client die eerder is gemaakt, bel [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) en krijg het resultaat. Vervolgens herhalen door de resultaten, en druk elk document ID, en de eerste geretourneerde taal.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -240,16 +240,16 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
+## <a name="named-entity-recognition-ner"></a>Benoemde entiteitsherkenning (NER)
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
 > [!NOTE]
-> In versie `3.0-preview`:
-> * NER omvat afzonderlijke methoden voor het detecteren van persoonlijke gegevens. 
-> * Entiteitskoppeling is een aanvraag die los staat van NER.
+> In `3.0-preview`versie :
+> * NER bevat aparte methoden voor het detecteren van persoonlijke informatie. 
+> * Entiteitkoppelen is een afzonderlijke aanvraag dan NER.
 
-Maak een nieuwe functie met de naam `entity_recognition_example` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `recognize_entities()` aanroept en de resultaten herhaalt. Het geretourneerde responsobject bevat de lijst met gedetecteerde entiteiten in `entity` als de aanroep is gelukt en een `error` als dat niet het geval is. Geef voor elke gedetecteerde entiteit de categorie en subcategorie weer, indien aanwezig.
+Maak een nieuwe `entity_recognition_example` functie genaamd die de client `recognize_entities()` als argument neemt, vervolgens de functie aanroept en door de resultaten heen wordt getint. Het geretourneerde antwoordobject bevat de lijst `entity` met gedetecteerde `error` entiteiten in indien succesvol, en een zo niet. Print voor elke gedetecteerde entiteit de categorie en subcategorie indien deze bestaat.
 
 ```python
 def entity_recognition_example(client):
@@ -282,7 +282,7 @@ Named Entities:
 
 ## <a name="using-ner-to-detect-personal-information"></a>NER gebruiken om persoonlijke gegevens te detecteren
 
-Maak een nieuwe functie met de naam `entity_pii_example()` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `recognize_pii_entities()` aanroept en het resultaat weergeeft. Herhaal vervolgens de resultaten en geef de entiteiten weer.
+Maak een nieuwe `entity_pii_example()` functie genaamd die de client `recognize_pii_entities()` als argument neemt, roept vervolgens de functie aan en krijgt het resultaat. Vervolgens herhalen door de resultaten en druk de entiteiten.
 
 ```python
 def entity_pii_example(client):
@@ -311,7 +311,7 @@ Personally Identifiable Information Entities:
 
 ## <a name="entity-linking"></a>Entiteiten koppelen
 
-Maak een nieuwe functie met de naam `entity_linking_example()` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `recognize_linked_entities()` aanroept en de resultaten herhaalt. Het geretourneerde responsobject bevat de lijst met gedetecteerde entiteiten in `entities` als de aanroep is gelukt en een `error` als dat niet het geval is. Aangezien gekoppelde entiteiten uniek worden geïdentificeerd, worden exemplaren van dezelfde entiteit gegroepeerd onder een `entity`-object als een lijst met `match`-objecten.
+Maak een nieuwe `entity_linking_example()` functie genaamd die de client `recognize_linked_entities()` als argument neemt, vervolgens de functie aanroept en door de resultaten heen wordt getint. Het geretourneerde antwoordobject bevat de lijst `entities` met gedetecteerde `error` entiteiten in indien succesvol, en een zo niet. Aangezien gekoppelde entiteiten uniek zijn geïdentificeerd, worden gebeurtenissen van `entity` dezelfde entiteit gegroepeerd `match` onder een object als een lijst met objecten.
 
 ```python
 def entity_linking_example(client):
@@ -390,9 +390,9 @@ Linked Entities:
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
 > [!NOTE]
-> In versie 2.1 wordt entiteitskoppeling opgenomen in het NER-antwoord.
+> In versie 2.1 is entiteitskoppeling opgenomen in het NER-antwoord.
 
-Roep de functie [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan met behulp van de client die u eerder hebt gemaakt en geef het resultaat weer. Herhaal vervolgens de resultaten en geef voor elk document de id weer en de entiteiten uit het document.
+Als u de client gebruikt die eerder is gemaakt, belt u de functie [entiteiten()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan en krijgt u het resultaat. Vervolgens herhalen door de resultaten, en druk elk document ID, en de entiteiten in het.
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -440,9 +440,9 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
 
-#### <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-Maak een nieuwe functie met de naam `key_phrase_extraction_example()` waaraan de client via een argument wordt doorgegeven en die vervolgens de functie `extract_key_phrases()` aanroept. Het resultaat bevat de lijst met gedetecteerde sleuteltermen in `key_phrases` als de aanroep is gelukt en een `error` als dat niet het geval is. Geef alle gedetecteerde sleuteltermen weer.
+Maak een nieuwe `key_phrase_extraction_example()` functie genaamd die de client `extract_key_phrases()` als argument neemt en vervolgens de functie aanroept. Het resultaat bevat de lijst met gedetecteerde sleutelzinnen `key_phrases` `error` in indien succesvol, en een zo niet. Alle gedetecteerde sleutelzinnen afdrukken.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -476,7 +476,7 @@ key_phrase_extraction_example(client)
 
 #### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-Roep de functie [key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) aan met behulp van de client die u eerder hebt gemaakt en geef het resultaat weer. Herhaal vervolgens de resultaten en geef voor elk document de id weer en de entiteiten uit het document.
+Als u de client gebruikt die eerder is gemaakt, belt u de [functie key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) en krijgt u het resultaat. Vervolgens herhalen door de resultaten, en druk elk document ID, en de belangrijkste zinnen in het.
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak samen te brengen in audio bestand-Speech-Service'
+title: 'Snelstart: spraak synthetiseren in audiobestand - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: cd208dc9d8d9174830de18c2a8b2a38bb595342b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466677"
 ---
-Bekijk of down load alle <a href="https://aka.ms/speech/github">Speech SDK</a> -voor beelden op github.
+Bekijk of download alle <a href="https://aka.ms/speech/github">Speech SDK Samples</a> op GitHub.

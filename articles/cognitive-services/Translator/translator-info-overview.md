@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78331039"
 ---
 # <a name="what-is-the-translator-text-api"></a>Wat is de Translator Text-API?
@@ -28,7 +28,7 @@ De Translator Text-API is onderdeel van de Azure [Cognitive Services API](https:
 
 Microsoft Translator is een cloudservice voor machinevertaling. De basis van deze service is de Translator Text-API, die een aantal Microsoft-producten en -services aanstuurt en die door duizenden bedrijven over de hele wereld wordt gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
 
-Spraakomzetting, mogelijk gemaakt door de Translator Text-API, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert de functionaliteit van de Translator Speech-API en de Custom Speech Service in een geïntegreerde en volledig aanpas bare service. De spraak service vervangt de Translator Speech-API, die wordt buiten gebruik gesteld op 15 oktober 2019.
+Spraakomzetting, mogelijk gemaakt door de Translator Text-API, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Het combineert functionaliteit van de Translator Speech API en de Custom Speech Service in een uniforme en volledig aanpasbare service.Speech Service vervangt de Translator Speech-API, die buiten bedrijf wordt genomen op 15 oktober 2019.
 
 ## <a name="language-support"></a>Taalondersteuning
 
@@ -54,6 +54,6 @@ Meer informatie over [taalaanpassing](customization.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Registreer](translator-text-how-to-signup.md) u voor een toegangssleutel.
+- [Meld u aan](translator-text-how-to-signup.md) voor een toegangssleutel.
 - [API-naslag](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) bevat de technische documentatie voor de API's.
 - [Prijsdetails](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

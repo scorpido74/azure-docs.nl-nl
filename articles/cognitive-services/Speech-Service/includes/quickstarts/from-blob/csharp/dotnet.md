@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dapine
 ms.openlocfilehash: 230a2328a2d03d2167cb1312eb2f02d4b2cedd64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79296283"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Een bronbestand uploaden naar een Azure-blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
-De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend.
+De eerste stap is ervoor te zorgen dat u uw project open hebt in Visual Studio.
 
 1. Start Visual Studio 2019.
-2. Laad uw project en open `Program.cs`.
+2. Laad uw project `Program.cs`en open .
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Een verwijzing naar Newton soft. json toevoegen
+## <a name="add-a-reference-to-newtonsoftjson"></a>Voeg een verwijzing naar Newtonsoft.Json toe
 
-1. Klik in de Solution Explorer met de rechter muisknop op het project **HelloWorld** en selecteer vervolgens **NuGet-pakketten beheren** om de NuGet-pakket manager weer te geven.
-1. Zoek in de rechter bovenhoek de vervolg keuzelijst **pakket bron** en zorg ervoor dat **`nuget.org`** is geselecteerd.
-1. Selecteer in de linkerbovenhoek de optie **Bladeren**.
-1. Typ *Newton soft. json* in het zoekvak en selecteer **Enter**.
-1. Selecteer in de zoek resultaten het pakket [**Newton soft. json**](https://www.nuget.org/packages/Newtonsoft.Json) en selecteer vervolgens **installeren** om de nieuwste stabiele versie te installeren.
+1. Klik in de Solution Explorer met de rechtermuisknop op het **helloworld-project** en selecteer **NuGet-pakketten beheren** om de NuGet-pakketbeheer weer te geven.
+1. Zoek in de rechterbovenhoek het vervolgkeuzeveld **Package Source** en **`nuget.org`** controleer of dit is geselecteerd.
+1. Selecteer **Bladeren**in de linkerbovenhoek.
+1. Typ *newtonsoft.json* in het zoekvak en selecteer **Enter**.
+1. Selecteer in de zoekresultaten het [**Newtonsoft.Json-pakket**](https://www.nuget.org/packages/Newtonsoft.Json) en selecteer **Vervolgens Installeren** om de nieuwste stabiele versie te installeren.
 1. Accepteer alle overeenkomsten en licenties om de installatie te starten.
-   Nadat het pakket is geïnstalleerd, wordt er een bevestiging weer gegeven in het console venster van **Package Manager** .
+   Nadat het pakket is geïnstalleerd, wordt een bevestiging weergegeven in het venster **Package Manager Console.**
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+Laten we wat code toevoegen die werkt als een skelet voor ons project.
 
 ```csharp
 class Program
@@ -79,12 +79,12 @@ class Program
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON-wrappers
+## <a name="json-wrappers"></a>JSON Wikkels
 
-Als de aanvragen van de REST API in JSON-indeling worden uitgevoerd en de resultaten worden geretourneerd in JSON, kunnen ze met alleen teken reeksen communiceren, maar dit wordt niet aanbevolen.
-Om de aanvragen en reacties gemakkelijker te kunnen beheren, declareren we een aantal klassen die moeten worden gebruikt voor het serialiseren/deserialiseren van de JSON.
+Aangezien de REST API's aanvragen in JSON-formaat aannemen en ook resultaten in JSON retourneren, konden we met hen communiceren met alleen tekenreeksen, maar dat wordt niet aanbevolen.
+Om de aanvragen en reacties gemakkelijker te beheren, verklaren we een paar klassen te gebruiken voor het serialiseren / deserialiseren van de JSON.
 
-Ga verder en plaats de aangiften na `TranscribeAsync`.
+Ga je gang en `TranscribeAsync`zet hun verklaringen na .
 
 ```csharp
 public class ModelIdentity
@@ -185,9 +185,9 @@ public class TranscriptionDefinition
 }
 ```
 
-## <a name="create-and-configure-an-http-client"></a>Een HTTP-client maken en configureren
-Het eerste wat u nodig hebt, is een HTTP-client waarvoor een juiste basis-URL en verificatieset is ingesteld.
-Voeg deze code in `TranscribeAsync`.
+## <a name="create-and-configure-an-http-client"></a>Een Http-client maken en configureren
+Het eerste wat we nodig hebben is een Http-client met een juiste basis-URL en verificatieset.
+Deze code `TranscribeAsync`invoegen in .
 
 ```csharp
 var client = new HttpClient
@@ -201,8 +201,8 @@ var client = new HttpClient
 };
 ```
 
-## <a name="generate-a-transcription-request"></a>Een transcriptie-aanvraag genereren
-Vervolgens genereren we de transcriptie-aanvraag. Voeg deze code toe aan `TranscribeAsync`.
+## <a name="generate-a-transcription-request"></a>Een transcriptieaanvraag genereren
+Vervolgens genereren we het transcriptieverzoek. Voeg deze `TranscribeAsync`code toe aan .
 
 ```csharp
 var transcriptionDefinition =
@@ -217,8 +217,8 @@ var sc = new StringContent(res);
 sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
 ```
 
-## <a name="send-the-request-and-check-its-status"></a>De aanvraag verzenden en de status controleren
-Nu gaan we de aanvraag verzenden naar de speech-service en de eerste respons code controleren. Deze antwoord code geeft eenvoudigweg aan of de service de aanvraag heeft ontvangen. De service retourneert een URL in de antwoord headers die de locatie is waar de transcriptie-status wordt opgeslagen.
+## <a name="send-the-request-and-check-its-status"></a>Stuur het verzoek en controleer de status
+Nu plaatsen we het verzoek bij de Spraakservice en controleren we de initiële reactiecode. Deze antwoordcode geeft eenvoudig aan of de service het verzoek heeft ontvangen. De service retourneert een url in de antwoordkoppen, dat is de locatie waar de transcriptiestatus wordt opgeslagen.
 
 ```csharp
 Uri transcriptionLocation = null;
@@ -234,12 +234,12 @@ using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcripti
 }
 ```
 
-## <a name="wait-for-the-transcription-to-complete"></a>Wacht tot de transcriptie is voltooid
-Omdat de transcriptie asynchroon wordt verwerkt, moeten we elke regel vaak de status van de service controleren. We controleren elke vijf seconden.
+## <a name="wait-for-the-transcription-to-complete"></a>Wachten tot de transcriptie is voltooid
+Aangezien de service de transcriptie asynchroon verwerkt, moeten we om de zoveel tijd peilen voor de status ervan. We controleren elke 5 seconden.
 
-We kunnen de status controleren door de inhoud op te halen bij de URL die we hebben ontvangen toen de aanvraag werd verzonden. Wanneer de inhoud weer wordt opgehaald, deserialiseren we deze in een van onze helperklasse om gemakkelijker te kunnen communiceren met.
+We kunnen de status controleren door de inhoud op te halen op de Url die we kregen toen het verzoek werd geplaatst. Wanneer we de inhoud terugkrijgen, deserialiseren we deze in een van onze helperklassen om het gemakkelijker te maken om ermee om te gaan.
 
-Dit is de polling code met status weergave voor alles, behalve een geslaagde voltooiing, we doen dat nu.
+Hier is de polling code met status weergave voor alles behalve een succesvolle voltooiing, zullen we dat nu doen.
 
 ```csharp
 Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
@@ -292,9 +292,9 @@ Console.WriteLine("Press any key...");
 Console.ReadKey();
 ```
 
-## <a name="display-the-transcription-results"></a>De transcriptie-resultaten weer geven
-Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere URL die we vanaf het status antwoord kunnen ontvangen. Hier maken we een aanvraag om deze resultaten te downloaden naar een tijdelijk bestand voordat ze worden gelezen en gedeserialiseerd.
-Zodra de resultaten zijn geladen, kunnen ze worden afgedrukt op de-console. Voeg de volgende code toe aan het label `case "Succeeded":`.
+## <a name="display-the-transcription-results"></a>De transcriptieresultaten weergeven
+Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere url die we kunnen krijgen van de statusrespons. Hier doen we een verzoek om deze resultaten te downloaden in een tijdelijk bestand voor het lezen en deserialiseren van hen.
+Zodra de resultaten zijn geladen kunnen we ze afdrukken op de console. Voeg de volgende `case "Succeeded":` code toe aan het label.
 
 ```csharp
 completed = true;
@@ -307,7 +307,7 @@ File.Delete(filename);
 ```
 
 ## <a name="check-your-code"></a>Controleer uw code
-Op dit moment moet uw code er als volgt uitzien: (er zijn enkele opmerkingen aan deze versie toegevoegd)
+Op dit punt moet uw code er als volgt uitzien: (We hebben een aantal opmerkingen toegevoegd aan deze versie)
 
 ```csharp
 using Newtonsoft.Json;
@@ -549,11 +549,11 @@ namespace BatchClient
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
+Nu bent u klaar om uw app te bouwen en onze spraakherkenning te testen met behulp van de Spraakservice.
 
-1. **De code compileren** : Kies in de menu balk van Visual Studio **Build** > **Build-oplossing**.
-2. **Start uw app** -vanuit de menu balk, kies **fout opsporing** > **fout opsporing starten** of druk op **F5**.
-3. **Herkenning starten** : u wordt gevraagd om een woord groep in het Engels te spreken. Uw spraak wordt verzonden naar de spraak service, getranscribeerd als tekst en weer gegeven in de-console.
+1. **Compileer de code** - Kies op de menubalk van Visual Studio **Build** > **Solution**.
+2. **Start uw app** - Kies op de menubalk Debug**genfout opsporing van** **foutopsporing debuggen** > of druk op **F5**.
+3. **Start herkenning** - Het zal u vragen om een zin in het Engels te spreken. Uw toespraak wordt verzonden naar de spraakservice, getranscribeerd als tekst en weergegeven in de console.
 
 ## <a name="next-steps"></a>Volgende stappen
 

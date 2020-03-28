@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: woorden opzoeken met tweetalige woorden lijst-Translator Text-API'
+title: 'Snelstart: woorden opzoeken met tweetalig woordenboek - Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
+description: In deze quickstart leert u hoe u alternatieve vertalingen voor een term krijgen, en ook gebruiksvoorbeelden van die alternatieve vertalingen, met behulp van de Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525155"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Snelstartgids: woorden opzoeken met tweetalige woorden lijst
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Snelstart: woorden opzoeken met tweetalig woordenboek
 
-In deze Quick Start leert u hoe u alternatieve vertalingen kunt ophalen voor een periode, en kunt u de voor beelden van gebruik van deze alternatieve vertalingen gebruiken met behulp van de Translator Text-API.
+In deze quickstart leert u hoe u alternatieve vertalingen voor een term krijgen, en ook gebruiksvoorbeelden van die alternatieve vertalingen, met behulp van de Translator Text API.
 
 Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 

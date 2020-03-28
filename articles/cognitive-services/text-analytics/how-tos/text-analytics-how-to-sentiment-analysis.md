@@ -1,7 +1,7 @@
 ---
-title: Sentiment-analyse uitvoeren met Text Analytics REST API
+title: Sentimentanalyse uitvoeren met Text Analytics REST API
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u sentiment in tekst kunt detecteren met de Azure Cognitive Services Text Analytics REST API.
+description: In dit artikel ziet u hoe u sentiment in tekst detecteren met de Azure Cognitive Services Text Analytics REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,126 +11,126 @@ ms.topic: sample
 ms.date: 03/09/2020
 ms.author: aahi
 ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79203454"
 ---
-# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: sentiment detecteren met behulp van de Text Analytics-API
+# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Hoe: Sentiment detecteren met behulp van de Text Analytics API
 
-De functie Sentimentanalyse van Text Analytics-API evalueert tekst en retourneert sentiment-scores en-labels voor elke zin. Dit is handig voor het detecteren van positieve en negatieve sentiment in sociale media, beoordelingen van klanten, discussie forums en meer. De AI-modellen die door de API worden gebruikt, worden door de service verschaft, maar u hoeft alleen inhoud voor analyse te verzenden.
+De functie Sentiment Analysis van de Text Analytics-api evalueert tekst en retourneert sentimentscores en labels voor elke zin. Dit is handig voor het detecteren van positief en negatief sentiment in sociale media, recensies van klanten, discussiefora en meer. De AI-modellen die door de API worden gebruikt, worden geleverd door de service, u hoeft alleen maar inhoud te verzenden voor analyse.
 
 > [!TIP]
 > Text Analytics biedt ook een Docker-containerinstallatiekopie op basis van Linux voor taaldetectie. U kunt de [Text Analytics-container dus dicht bij uw gegevens installeren en uitvoeren](text-analytics-how-to-install-containers.md).
 
-Sentimentanalyse ondersteunt een breed scala aan talen, met meer in preview-versie. Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-languages.md).
+Sentiment Analysis ondersteunt een breed scala aan talen, met meer in preview. Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-languages.md).
 
 ## <a name="concepts"></a>Concepten
 
-De Text Analytics-API maakt gebruik van een machine learning classificatie algoritme voor het genereren van een sentiment-score tussen 0 en 1. Scores dicht bij 1 wijzen op een positief gevoel, terwijl scores dicht bij 0 op een negatief gevoel wijzen. Sentiment analyse wordt uitgevoerd op het hele document, in plaats van afzonderlijke entiteiten in de tekst. Dit betekent dat sentiment-scores worden geretourneerd op het niveau van een document of zin. 
+De Text Analytics API maakt gebruik van een machine learning classificatiealgoritme om een sentimentscore tussen 0 en 1 te genereren. Scores dicht bij 1 wijzen op een positief gevoel, terwijl scores dicht bij 0 op een negatief gevoel wijzen. Sentimentanalyse wordt uitgevoerd op het hele document, in plaats van afzonderlijke entiteiten in de tekst. Dit betekent dat sentimentscores worden geretourneerd op document- of zinsniveau. 
 
-Het gebruikte model is vooraf getraind met een uitgebreide verzameling tekst-en sentiment-koppelingen. Er wordt gebruikgemaakt van een combi natie van technieken voor analyse, waaronder tekst verwerking, analyse van een deel van spraak, woord plaatsing en woord koppelingen. Zie voor meer informatie over het algoritme [Introductie Text Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Het is momenteel niet mogelijk om uw eigen trainings gegevens op te geven. 
+Het gebruikte model is vooraf opgeleid met een uitgebreid corpus van tekst- en sentimentsassociaties. Het maakt gebruik van een combinatie van technieken voor analyse, met inbegrip van tekstverwerking, deel-van-spraak analyse, tekstplaatsing, en tekst associaties. Zie voor meer informatie over het algoritme [Introductie Text Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Op dit moment is het niet mogelijk om uw eigen trainingsgegevens te verstrekken. 
 
-Er is een tendens voor de nauw keurigheid van scores om te verbeteren wanneer documenten minder zinnen bevatten in plaats van een groot tekst blok. Tijdens een fase van de evaluatie objectiviteit bepaalt het model of een document als geheel objectief is of gevoel bevat. Een document dat voornamelijk doel gericht is, wordt niet in de sentiment-detectie fase uitgevoerd, wat resulteert in een 0,50-Score, zonder verdere verwerking. Voor documenten die in de pijp lijn worden voortgezet, genereert de volgende fase een score boven of onder 0,50. De score is afhankelijk van de mate van sentiment die in het document is gedetecteerd.
+Er is een tendens voor het noteren nauwkeurigheid om te verbeteren wanneer documenten minder zinnen eerder dan een groot blok van tekst bevatten. Tijdens een fase van de evaluatie objectiviteit bepaalt het model of een document als geheel objectief is of gevoel bevat. Een document dat meestal objectief is, gaat niet door naar de sentimentdetectiefase, wat resulteert in een score van 0,50, zonder verdere verwerking. Voor documenten die in de pijplijn worden voortgezet, genereert de volgende fase een score boven of onder 0,50. De score is afhankelijk van de mate van sentiment die in het document wordt gedetecteerd.
 
-## <a name="sentiment-analysis-versions-and-features"></a>Sentimentanalyse versies en onderdelen
+## <a name="sentiment-analysis-versions-and-features"></a>Sentiment Analysis-versies en -functies
 
-De Text Analytics-API biedt twee versies van Sentimentanalyse v2 en v3. Sentimentanalyse v3 (open bare preview) biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API.
+De Text Analytics API biedt twee versies van Sentiment Analysis - v2 en v3. Sentiment Analysis v3 (Public preview) biedt aanzienlijke verbeteringen in de nauwkeurigheid en details van de tekstcategorisering en -score van de API.
 
 > [!NOTE]
-> * De Sentimentanalyse v3-aanvraag indeling en- [gegevens limieten](../overview.md#data-limits) zijn hetzelfde als de vorige versie.
-> * Sentimentanalyse v3 is beschikbaar in de volgende regio's: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`en `West US 2`.
+> * De v3-aanvraagindeling voor sentimentanalyse en [gegevenslimieten](../overview.md#data-limits) zijn hetzelfde als de vorige versie.
+> * Sentiment Analysis v3 is beschikbaar `Australia East`in `Central Canada` `Central US`de `East Asia` `East US`volgende `East US 2` `North Europe`regio's: , , , , , , `Southeast Asia` `South Central US`, , , `UK South`, `West Europe`en `West US 2`.
 
-| Functie                                   | Sentimentanalyse v2 | Sentimentanalyse v3 |
+| Functie                                   | Sentiment Analyse v2 | Sentiment Analyse v3 |
 |-------------------------------------------|-----------------------|-----------------------|
-| Methoden voor enkelvoudige en batch-aanvragen    | X                     | X                     |
-| Sentiment-scores voor het hele document  | X                     | X                     |
-| Sentimente scores voor afzonderlijke zinnen |                       | X                     |
-| Sentiment labelen                        |                       | X                     |
-| Model versie beheer                   |                       | X                     |
+| Methoden voor enkele aanvragen en batchaanvragen    | X                     | X                     |
+| Sentimentscores voor het hele document  | X                     | X                     |
+| Sentimentscores voor individuele zinnen |                       | X                     |
+| Sentiment labeling                        |                       | X                     |
+| Modelversiebeheer                   |                       | X                     |
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-### <a name="sentiment-scoring"></a>Sentiment Score
+### <a name="sentiment-scoring"></a>Sentiment scoren
 
-Sentimentanalyse v3 tekst classificeert met sentiment-labels (zie hieronder). De geretourneerde scores vertegenwoordigen het vertrouwen van het model dat de tekst positief, negatief of neutraal is. Hogere waarden duiden hogere betrouw baarheid aan. 
+Sentiment Analysis v3 classificert tekst met sentimentlabels (hieronder beschreven). De geretourneerde scores geven het vertrouwen van het model weer dat de tekst positief, negatief of neutraal is. Hogere waarden betekenen een hoger vertrouwen. 
 
-### <a name="sentiment-labeling"></a>Sentiment labelen
+### <a name="sentiment-labeling"></a>Sentiment labeling
 
-Sentimentanalyse v3 kan scores en labels in een zin en document niveau retour neren. De scores en labels zijn `positive`, `negative`en `neutral`. Op document niveau kan het label `mixed` sentiment ook zonder een score worden geretourneerd. De sentiment van het document wordt hieronder bepaald:
+Sentiment Analysis v3 kan scores en labels op zins- en documentniveau retourneren. De scores en `positive` `negative`labels `neutral`zijn , en . Op documentniveau kan `mixed` het sentimentlabel ook zonder score worden geretourneerd. Het sentiment van het document wordt hieronder bepaald:
 
-| Zin sentiment                                                                            | Label van geretourneerd document |
+| Zinssentiment                                                                            | Geretourneerd documentlabel |
 |-----------------------------------------------------------------------------------------------|-------------------------|
-| Er bevindt zich ten minste één `positive` zin in het document. De rest van de zinnen zijn `neutral`. | `positive`              |
-| Er bevindt zich ten minste één `negative` zin in het document. De rest van de zinnen zijn `neutral`. | `negative`              |
-| Ten minste één `negative` zin en ten minste één `positive` zin in het document.    | `mixed`                 |
-| Alle zinnen in het document zijn `neutral`.                                                  | `neutral`               |
+| Ten minste `positive` één zin staat in het document. De rest van `neutral`de zinnen zijn. | `positive`              |
+| Ten minste `negative` één zin staat in het document. De rest van `neutral`de zinnen zijn. | `negative`              |
+| Ten minste `negative` één zin `positive` en ten minste één zin staan in het document.    | `mixed`                 |
+| Alle zinnen in `neutral`het document zijn .                                                  | `neutral`               |
 
-### <a name="model-versioning"></a>Model versie beheer
+### <a name="model-versioning"></a>Modelversiebeheer
 
 > [!NOTE]
-> Model versie voor sentiment analyse is beschikbaar vanaf versie `v3.0-preview.1`.
+> Modelversiewerk voor sentimentanalyse is `v3.0-preview.1`beschikbaar vanaf versie.
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-### <a name="example-c-code"></a>Voorbeeld C# code
+### <a name="example-c-code"></a>Voorbeeld C#-code
 
-U kunt een voorbeeld C# toepassing vinden die deze versie van sentimentanalyse aanroept op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs).
+U een voorbeeld C#-toepassing vinden die deze versie van Sentiment Analysis aanroept op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)
 
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-### <a name="sentiment-scoring"></a>Sentiment Score
+### <a name="sentiment-scoring"></a>Sentiment scoren
 
-De sentiment Analyzer classificeert de tekst als een hoofd zakelijk positief of negatief. Er wordt een score in het bereik van 0 tot 1 toegewezen. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een teken reeks niet kan worden geanalyseerd voor sentiment of geen sentiment heeft, is de Score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
+De sentimentanalyzer classificert tekst als overwegend positief of negatief. Het wijst een score toe in het bereik van 0 tot 1. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een tekenreeks niet kan worden geanalyseerd op sentiment of geen sentiment heeft, is de score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>Een REST API aanvraag verzenden 
+## <a name="sending-a-rest-api-request"></a>Een REST API-aanvraag verzenden 
 
 ### <a name="preparation"></a>Voorbereiding
 
-Sentiment-analyse levert een hogere kwaliteit op wanneer u een kleiner aantal aan tekst kunt gebruiken. Dit is het tegenovergestelde van sleuteltermextractie, wat beter presteert op grotere blokken tekst. Overweeg dienovereenkomstig herstructurering van de invoer voor de beste resultaten uit beide bewerkingen.
+Sentimentanalyse levert een resultaat van hogere kwaliteit op wanneer u het kleinere hoeveelheden tekst geeft om aan te werken. Dit is het tegenovergestelde van sleuteltermextractie, wat beter presteert op grotere blokken tekst. Overweeg dienovereenkomstig herstructurering van de invoer voor de beste resultaten uit beide bewerkingen.
 
-U moet JSON-documenten hebben met de volgende indeling: ID, tekst en taal.
+U moet JSON-documenten in deze indeling hebben: ID, tekst en taal.
 
-De document grootte moet kleiner zijn dan 5.120 tekens per document. U kunt Maxi maal 1.000 items per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend.
+De documentgrootte moet minder dan 5.120 tekens per document bevatten. U maximaal 1.000 items (ID's) per collectie hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend.
 
 ## <a name="structure-the-request"></a>Structureer de aanvraag
 
-Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of de **API-test console** in de volgende referentie koppelingen gebruiken om een snelle structuur en verzen ding te sturen. 
+Maak een POST-aanvraag. U [Postman](text-analytics-how-to-call-api.md) of de **API-testconsole** in de volgende referentiekoppelingen gebruiken om er snel een te structureren en te verzenden. 
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-[Sentimentanalyse v3-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+[Sentiment analyse v3 referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-[Naslag informatie over Sentimentanalyse v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+[Sentiment analyse v2 referentie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
-Stel het HTTPS-eind punt voor sentiment analyse in met behulp van een Text Analytics resource in azure of een geïnstantieerd [Text Analytics-container](text-analytics-how-to-install-containers.md). U moet de juiste URL toevoegen voor de versie die u wilt gebruiken. Bijvoorbeeld:
+Stel het HTTPS-eindpunt in voor sentimentanalyse met behulp van een Text Analytics-bron op Azure of een geinstantieerde [Text Analytics-container](text-analytics-how-to-install-containers.md). U moet de juiste URL opgeven voor de versie die u wilt gebruiken. Bijvoorbeeld:
 
 > [!NOTE]
-> U vindt de sleutel en het eind punt voor uw Text Analytics-resource in azure Portal. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**. 
+> U uw sleutel en eindpunt voor uw Text Analytics-bron vinden op de azure-portal. Ze bevinden zich op de **startpagina snel van** de resource, onder **resourcebeheer.** 
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
-Stel een aanvraag header in om uw Text Analytics-API sleutel toe te voegen. Verstrek in de hoofdtekst van de aanvraag de JSON-documentenverzameling die u hebt voorbereid voor deze analyse.
+Stel een aanvraagkop in om uw Text Analytics API-sleutel op te nemen. Verstrek in de hoofdtekst van de aanvraag de JSON-documentenverzameling die u hebt voorbereid voor deze analyse.
 
-### <a name="example-sentiment-analysis-request"></a>Voor beeld Sentimentanalyse aanvraag 
+### <a name="example-sentiment-analysis-request"></a>Voorbeeld sentimentanalyseaanvraag 
 
-Hier volgt een voorbeeld van de inhoud die u voor gevoelsanalyse kan indienen. De aanvraag indeling is hetzelfde voor beide versies van de API.
+Hier volgt een voorbeeld van de inhoud die u voor gevoelsanalyse kan indienen. De aanvraagindeling is hetzelfde voor beide versies van de API.
     
 ```json
 {
@@ -151,22 +151,22 @@ Hier volgt een voorbeeld van de inhoud die u voor gevoelsanalyse kan indienen. D
 
 ### <a name="post-the-request"></a>Plaats de aanvraag
 
-Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor meer informatie over de grootte en het aantal aanvragen dat u per minuut en seconde kunt verzenden.
+Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevenslimieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut en seconde verzenden.
 
-De Text Analytics-API is stateless. Er worden geen gegevens in uw account opgeslagen en de resultaten worden onmiddellijk in het antwoord geretourneerd.
+De Text Analytics API is stateloos. Er worden geen gegevens opgeslagen in uw account en de resultaten worden onmiddellijk geretourneerd in het antwoord.
 
 
 ### <a name="view-the-results"></a>De resultaten bekijken
 
-De sentiment Analyzer classificeert de tekst als een hoofd zakelijk positief of negatief. Er wordt een score in het bereik van 0 tot 1 toegewezen. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een teken reeks niet kan worden geanalyseerd voor sentiment of geen sentiment heeft, is de Score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
+De sentimentanalyzer classificert tekst als overwegend positief of negatief. Het wijst een score toe in het bereik van 0 tot 1. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een tekenreeks niet kan worden geanalyseerd op sentiment of geen sentiment heeft, is de score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
 
-Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer opslaan in een bestand op het lokale systeem. Importeer vervolgens de uitvoer in een toepassing die u kunt gebruiken om de gegevens te sorteren, te zoeken en te bewerken. Vanwege meertalige en Emoji-ondersteuning kan het antwoord tekst verschuivingen bevatten. Zie [offsets verwerken](../concepts/text-offsets.md) voor meer informatie.
+Uitvoer wordt onmiddellijk geretourneerd. U de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer opslaan in een bestand op het lokale systeem. Importeer vervolgens de uitvoer in een toepassing die u gebruiken om de gegevens te sorteren, zoeken en manipuleren. Vanwege ondersteuning voor meertaligen en emoji's kan het antwoord tekstverschuivingen bevatten. Zie [hoe u compensaties verwerkt](../concepts/text-offsets.md) voor meer informatie.
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Versie 3.0-voorbeeld](#tab/version-3)
 
-### <a name="sentiment-analysis-v3-example-response"></a>Sentimentanalyse v3-voorbeeld antwoord
+### <a name="sentiment-analysis-v3-example-response"></a>Sentiment Analyse v3 voorbeeld reactie
 
-Antwoorden van Sentimentanalyse v3 bevatten sentiment labels en scores voor elke geanalyseerde zin en document. `documentScores` wordt niet geretourneerd als het sentiment label van het document `mixed`is.
+Reacties van Sentiment Analysis v3 bevatten sentimentlabels en scores voor elke geanalyseerde zin en document. `documentScores`wordt niet geretourneerd als het `mixed`documentsentimentlabel is .
 
 ```json
 {
@@ -238,11 +238,11 @@ Antwoorden van Sentimentanalyse v3 bevatten sentiment labels en scores voor elke
 }
 ```
 
-#### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
-### <a name="sentiment-analysis-v2-example-response"></a>Voorbeeld reactie van Sentimentanalyse v2
+### <a name="sentiment-analysis-v2-example-response"></a>Sentiment Analyse v2 voorbeeld reactie
 
-Antwoorden van Sentimentanalyse v2 bevatten sentiment scores voor elk verzonden document.
+Reacties van Sentiment Analysis v2 bevatten sentimentscores voor elk verzonden document.
 
 ```json
 {
@@ -261,15 +261,15 @@ Antwoorden van Sentimentanalyse v2 bevatten sentiment scores voor elk verzonden 
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werk stromen geleerd voor sentiment analyse met behulp van de Text Analytics-API. Samenvatting:
+In dit artikel hebt u concepten en werkstroom geleerd voor sentimentanalyse met behulp van de Text Analytics API. Samenvatting:
 
-+ Sentimentanalyse is beschikbaar voor geselecteerde talen in twee versies.
-+ JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID, tekst en taal code.
-+ De POST-aanvraag is een `/sentiment`-eind punt met behulp van een aangepaste [toegangs sleutel en een eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
-+ De uitvoer van antwoorden, die bestaat uit een sentiment-score voor elke document-ID, kan worden gestreamd naar elke app die JSON accepteert. Bijvoorbeeld Excel en Power BI.
++ Sentiment Analyse is beschikbaar voor geselecteerde talen in twee versies.
++ JSON-documenten in de aanvraaginstantie bevatten een ID, tekst en taalcode.
++ Het POST-verzoek `/sentiment` is een eindpunt met behulp van een gepersonaliseerde [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
++ Responsuitvoer, die bestaat uit een gevoelsscore voor elke document-id, kan worden gestreamd naar elke app die JSON accepteert. Bijvoorbeeld Excel en Power BI.
 
 ## <a name="see-also"></a>Zie ook
 
 * [Overzicht van Text Analytics](../overview.md)
-* [De Text Analytics-client bibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
-* [Nieuwe functies](../whats-new.md)
+* [De tekstanalyse-clientbibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
+* [Wat is er nieuw](../whats-new.md)

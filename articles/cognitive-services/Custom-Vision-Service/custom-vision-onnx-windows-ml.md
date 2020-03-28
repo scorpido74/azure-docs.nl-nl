@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 3b56cd12aec21cffd98a0143f5cf3f083ec55e94
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74960550"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Zelfstudie: Een ONNX-model uit Custom Vision gebruiken met Windows ML (preview)
@@ -33,7 +33,7 @@ De informatie in dit document laat zien hoe u een ONNX-bestand gebruikt dat is g
 
 * Windows 10 versie 1809 of hoger
 
-* Windows SDK voor Build 17763 of hoger
+* Windows SDK voor build 17763 of hoger
 
 * Visual Studio 2017 versie 15.7 of later waarbij de __ontwikkelworkload van Universal Windows Platform__ is ingeschakeld.
 
@@ -45,7 +45,7 @@ De toepassing is een generieke Windows UWP-toepassing. Hiermee kunt u een afbeel
 
 ## <a name="get-the-example-code"></a>De voorbeeldcode halen
 
-De voorbeeldtoepassing is beschikbaar op [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
+De voorbeeldtoepassing is [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample)beschikbaar op .
 
 ## <a name="run-the-example"></a>Het voorbeeld uitvoeren
 
@@ -57,9 +57,9 @@ De voorbeeldtoepassing is beschikbaar op [https://github.com/Azure-Samples/cogni
 
 Als u uw eigen model wilt gebruiken, volgt u de volgende stappen:
 
-1. [Maak en train](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) een classificatie met de Custom Vision Service. Om het model te exporteren, selecteert u een __compact__ domein, zoals **Algemeen (compact)** . Om een bestaande classificatie te exporteren, converteert u het domein naar compact door het tandwielpictogram in de rechterbovenhoek te selecteren. Kies in __Instellingen__ een compact model, sla op en train uw project.  
+1. [Maak en train](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) een classificatie met de Custom Vision Service. Om het model te exporteren, selecteert u een __compact__ domein, zoals **Algemeen (compact)**. Om een bestaande classificatie te exporteren, converteert u het domein naar compact door het tandwielpictogram in de rechterbovenhoek te selecteren. Kies in __Instellingen__ een compact model, sla op en train uw project.  
 
-1. [Exporteer uw model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) door naar het tabblad prestaties te gaan. Selecteer een iteratie die is getraind met een compact domein, de knop exporteren wordt weer gegeven. Selecteer *exporteren*, *ONNX*en vervolgens *exporteren*. Zodra het bestand gereed is, selecteert u de knop *Downloaden*.
+1. [Exporteer uw model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) door naar het tabblad Prestaties te gaan. Selecteer een iteratie die is getraind met een compact domein en er verschijnt een knop 'Exporteren'. Selecteer *Exporteren*, *ONNX*en vervolgens *Exporteren*. Zodra het bestand gereed is, selecteert u de knop *Downloaden*.
 
 1. Zet het bestand ONNX neer in de map __Assets__ van uw project. 
 
@@ -67,8 +67,8 @@ Als u uw eigen model wilt gebruiken, volgt u de volgende stappen:
 
 1. Selecteer in Solution Explorer het ONNX-bestand in de map Assets. Wijzig de volgende eigenschappen voor het bestand:
 
-    * __Buildactie__ -> __Inhoud__
-    * __Naar uitvoermap kopiëren__ -> __Kopiëren indien nieuwer__
+    * __Actie-inhoud__ -> __maken__
+    * __Kopiëren naar uitvoermapkopiëren__ -> __als nieuwere__
 
 1. Wijzig de variabele `_onnxFileNames` in de naam van het ONNX-bestand. Wijzig ook `ClassLabel` in het aantal labels dat het model bevat.
 

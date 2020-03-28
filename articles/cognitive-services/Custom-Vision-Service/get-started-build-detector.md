@@ -1,7 +1,7 @@
 ---
-title: Quick Start een object detector-Custom Vision Service bouwen
+title: Snelstart Een objectdetector bouwen - Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de Custom Vision-website kunt gebruiken om een installatie kopie classificatie model te maken.
+description: In deze quickstart leert u hoe u de Custom Vision-website gebruiken om een afbeeldingsclassificatiemodel te maken.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -11,108 +11,108 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169990"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quick Start: een object detector bouwen met Custom Vision
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Snelstart: Een objectdetector bouwen met Custom Vision
 
-In deze Quick Start leert u hoe u een object detector kunt bouwen via de Custom Vision-website. Wanneer u een detector model bouwt, kunt u de Custom Vision-service gebruiken voor object detectie.
+In deze quickstart leer je hoe je een objectdetector bouwen via de Custom Vision-website. Zodra u een detectormodel hebt gemaakt, u de Custom Vision-service gebruiken voor objectdetectie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een set installatie kopieën waarmee uw detector model kan worden getraind. U kunt de set [voorbeeld afbeeldingen](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) gebruiken op github. U kunt ook uw eigen installatie kopieën kiezen met behulp van de onderstaande tips.
+- Een set afbeeldingen waarmee u uw detectormodel trainen. U de set [voorbeeldafbeeldingen](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) op GitHub gebruiken. Of u uw eigen afbeeldingen kiezen met behulp van de onderstaande tips.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision resources maken in de Azure Portal
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Aangepaste vision-resources maken in de Azure-portal
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
-Navigeer in uw webbrowser naar de webpagina van [Custom Vision](https://customvision.ai) en selecteer __Aanmelden__. Meld u aan met hetzelfde account dat u hebt gebruikt om u aan te melden bij de Azure Portal.
+Navigeer in uw webbrowser naar de [webpagina Aangepast zicht](https://customvision.ai) en selecteer __Aanmelden.__ Meld u aan met hetzelfde account dat u hebt gebruikt om u aan te melden bij de Azure-portal.
 
-![Afbeelding van de aanmeldings pagina](./media/browser-home.png)
+![Afbeelding van de aanmeldingspagina](./media/browser-home.png)
 
 
-1. Als u uw eerste project wilt maken, selecteert u **Nieuw project**. Het dialoog venster **Nieuw project maken** wordt weer gegeven.
+1. Als u uw eerste project wilt maken, selecteert u **Nieuw project**. Het dialoogvenster **Nieuw project maken** wordt weergegeven.
 
-    ![Het dialoog venster Nieuw project bevat velden voor naam, beschrijving en domeinen.](./media/get-started-build-detector/new-project.png)
+    ![Het dialoogvenster Nieuw project heeft velden voor naam, beschrijving en domeinen.](./media/get-started-build-detector/new-project.png)
 
-1. Voer een naam en een beschrijving in voor het project. Selecteer vervolgens een resource groep. Als uw aangemelde account is gekoppeld aan een Azure-account, worden in de vervolg keuzelijst voor de resource groep al uw Azure-resource groepen weer gegeven die een Custom Vision Service Resource bevatten. 
+1. Voer een naam en een beschrijving voor het project in. Selecteer vervolgens een resourcegroep. Als uw aangemelde account is gekoppeld aan een Azure-account, worden in de vervolgkeuzelijst Resourcegroep al uw Azure ResourceGroepen weergegeven die een Aangepaste Vision-servicebron bevatten. 
 
    > [!NOTE]
-   > Als er geen resource groep beschikbaar is, bevestigt u dat u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account als u hebt gebruikt om u aan te melden bij de [Azure Portal](https://portal.azure.com/). Zorg er ook voor dat u dezelfde map hebt geselecteerd in de Custom Vision portal als de map in de Azure Portal waar uw Custom Vision-resources zich bevinden. In beide sites kunt u uw map selecteren in het menu van de vervolg keuzelijst in de rechter bovenhoek van het scherm. 
+   > Als er geen resourcegroep beschikbaar is, bevestig dan dat u zich hebt aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account als u hebt gebruikt om u aan te melden bij de [Azure-portal.](https://portal.azure.com/) Bevestig ook dat u dezelfde 'Directory' hebt geselecteerd in de Portal voor Aangepaste Visie als de map in de Azure-portal waar uw Aangepaste Visie-bronnen zich bevinden. Op beide sites u uw map selecteren in het vervolgkeuzemenu in de rechterbovenhoek van het scherm. 
 
-1. Selecteer __object detectie__ onder __project typen__.
+1. Selecteer __Objectdetectie__ onder __Projecttypen__.
 
-1. Selecteer vervolgens een van de beschik bare domeinen. Elk domein optimaliseert de detector voor specifieke typen installatie kopieën, zoals beschreven in de volgende tabel. U kunt het domein later indien gewenst wijzigen.
+1. Selecteer vervolgens een van de beschikbare domeinen. Elk domein optimaliseert de detector voor specifieke typen afbeeldingen, zoals beschreven in de volgende tabel. U het domein later wijzigen als u dat wenst.
 
     |Domain|Doel|
     |---|---|
-    |__Algemeen__| Geoptimaliseerd voor een breed scala aan object detectie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein. |
-    |__Logo__|Geoptimaliseerd voor het vinden van merk logo's in afbeeldingen.|
-    |__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time object detectie op mobiele apparaten. De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal uit te voeren.|
+    |__Algemeen__| Geoptimaliseerd voor een breed scala aan objectdetectietaken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u moet kiezen, selecteert u het algemene domein. |
+    |__Logo__|Geoptimaliseerd voor het vinden van merklogo's in afbeeldingen.|
+    |__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time objectdetectie op mobiele apparaten. De modellen die worden gegenereerd door compacte domeinen kunnen worden geëxporteerd om lokaal te worden uitgevoerd.|
 
-1. Selecteer ten slotte __project maken__.
+1. Selecteer tot slot __Project maken__.
 
-## <a name="choose-training-images"></a>Trainings afbeeldingen kiezen
+## <a name="choose-training-images"></a>Trainingsafbeeldingen kiezen
 
 [!INCLUDE [choose training images](includes/choose-training-images.md)]
 
-## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
+## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en coderen
 
-In deze sectie gaat u afbeeldingen uploaden en hand matig labelen om de detector te helpen trainen. 
+In deze sectie upload je afbeeldingen en tag je handmatig om de detector te trainen. 
 
-1. Als u installatie kopieën wilt toevoegen, klikt u op de knop __afbeeldingen toevoegen__ en selecteert u __lokale bestanden zoeken__. Selecteer __openen__ om de installatie kopieën te uploaden.
+1. Als u afbeeldingen wilt toevoegen, klikt u op de knop __Afbeeldingen toevoegen__ en selecteert u Bladeren door __lokale bestanden__. Selecteer __Openen__ om de afbeeldingen te uploaden.
 
-    ![Het besturings element afbeeldingen toevoegen wordt weer gegeven in de linkerbovenhoek en als een knop onderaan in het midden.](./media/get-started-build-detector/add-images.png)
+    ![Het besturingselement Afbeeldingen toevoegen wordt linksboven en als knop onder in het midden weergegeven.](./media/get-started-build-detector/add-images.png)
 
-1. U ziet de geüploade installatie kopieën in de sectie niet- **gelabeld** van de gebruikers interface. De volgende stap is het hand matig labelen van de objecten die u door de detector wilt laten herkennen. Klik op de eerste afbeelding om het dialoog venster labelen te openen. 
+1. Je ziet je geüploade afbeeldingen in het gedeelte **Niet-gelabelde** gebruikersinterface. De volgende stap is om handmatig tag de objecten die u wilt dat de detector te leren herkennen. Klik op de eerste afbeelding om het dialoogvenster tagging te openen. 
 
-    ![Afbeeldingen die zijn geüpload, in de sectie zonder Tags](./media/get-started-build-detector/images-untagged.png)
+    ![Afbeeldingen geüpload in de sectie Niet-gelabeld](./media/get-started-build-detector/images-untagged.png)
 
-1. Klik en sleep een rechthoek rond het object in uw afbeelding. Voer vervolgens een nieuwe label naam in met de knop **+** of selecteer een bestaande tag in de vervolg keuzelijst. Het is belang rijk dat u alle exemplaren van de object (en) die u wilt detecteren, labelt, omdat de detector het ongecodeerde achtergrond gebied als een negatief voor beeld in de training gebruikt. Wanneer u klaar bent met Tags maken, klikt u op de pijl aan de rechter kant om uw tags op te slaan en naar de volgende afbeelding te gaan.
+1. Klik en sleep een rechthoek rond het object in de afbeelding. Voer vervolgens een nieuwe tagnaam in met de **+** knop of selecteer een bestaande tag in de vervolgkeuzelijst. Het is erg belangrijk om elke instantie van het object(en) dat u wilt detecteren te taggen, omdat de detector het niet-gelabelde achtergrondgebied als negatief voorbeeld gebruikt in de training. Wanneer u klaar bent met taggen, klikt u op de pijl rechts om uw tags op te slaan en door te gaan naar de volgende afbeelding.
 
-    ![Een object met een rechthoekige selectie labelen](./media/get-started-build-detector/image-tagging.png)
+    ![Een object taggen met een rechthoekige selectie](./media/get-started-build-detector/image-tagging.png)
 
-Als u nog een aantal installatie kopieën wilt uploaden, gaat u terug naar het begin van deze sectie en herhaalt u de stappen.
+Als u een andere set afbeeldingen wilt uploaden, gaat u terug naar de bovenkant van deze sectie en herhaalt u de stappen.
 
-## <a name="train-the-detector"></a>De detector trainen
+## <a name="train-the-detector"></a>Train de detector
 
-Selecteer de **trein** knop om het detector model te trainen. De detector gebruikt alle huidige installatie kopieën en de bijbehorende tags om een model te maken dat elk gelabeld object identificeert.
+Als u het detectormodel wilt trainen, selecteert u de **knop Trein.** De detector gebruikt alle huidige afbeeldingen en hun tags om een model te maken dat elk gelabeld object identificeert.
 
-![De trein knop in de rechter bovenhoek van de koptekst werkbalk van de webpagina](./media/getting-started-build-a-classifier/train01.png)
+![De treinknop rechtsboven op de werkbalk van de webpagina](./media/getting-started-build-a-classifier/train01.png)
 
-Het trainings proces kan slechts enkele minuten duren. Gedurende deze periode wordt informatie over het trainings proces weer gegeven op het tabblad **prestaties** .
+Het trainingsproces duurt slechts enkele minuten. Gedurende deze periode wordt informatie over het trainingsproces weergegeven op het tabblad **Prestaties.**
 
-![Het browser venster met een dialoog venster voor training in de hoofd sectie](./media/get-started-build-detector/training.png)
+![Het browservenster met een trainingsdialoogvenster in het hoofdgedeelte](./media/get-started-build-detector/training.png)
 
-## <a name="evaluate-the-detector"></a>De detector evalueren
+## <a name="evaluate-the-detector"></a>Evalueer de detector
 
-Nadat de training is voltooid, worden de prestaties van het model berekend en weer gegeven. De Custom Vision-service gebruikt de installatie kopieën die u hebt ingediend voor training om de precisie, het terughalen en gemiddelde precisie te berekenen. Nauw keurigheid en intrekken zijn twee verschillende metingen van de effectiviteit van een detector:
+Nadat de training is voltooid, worden de prestaties van het model berekend en weergegeven. De aangepaste vision-service gebruikt de afbeeldingen die u hebt ingediend voor training om precisie, terugroepinformatie en gemiddelde gemiddelde precisie te berekenen. Precisie en terugroeping zijn twee verschillende metingen van de effectiviteit van een detector:
 
-- **Precisie** geeft de Fractie van geïdentificeerde classificaties aan die juist zijn. Als het model bijvoorbeeld 100 installatie kopieën heeft geïdentificeerd als honden en 99 van de afbeeldingen daad werkelijk van honden, zou de precisie 99% zijn.
-- Bij **intrekken** wordt het gedeelte van de werkelijke classificaties aangegeven die juist zijn geïdentificeerd. Als er bijvoorbeeld daad werkelijk 100 installatie kopieën van Apples waren en het model 80 als Apple heeft geïdentificeerd, is het intrekken 80%.
+- **Precisie** geeft de fractie van geïdentificeerde classificaties aan die juist waren. Bijvoorbeeld, als het model geïdentificeerd 100 beelden als honden, en 99 van hen waren eigenlijk van honden, dan is de precisie zou 99%.
+- **Recall** geeft de fractie aan van de werkelijke classificaties die correct zijn geïdentificeerd. Bijvoorbeeld, als er eigenlijk 100 beelden van appels, en het model geïdentificeerd 80 als appels, zou de recall 80%.
 
-![De resultaten van de training tonen de algemene precisie en terugroeping en gemiddelde nauw keurigheid.](./media/get-started-build-detector/trained-performance.png)
+![De trainingsresultaten tonen de algehele precisie en terugroep, en betekenen gemiddelde gemiddelde precisie.](./media/get-started-build-detector/trained-performance.png)
 
 ### <a name="probability-threshold"></a>Drempelwaarde waarschijnlijkheid
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
-## <a name="manage-training-iterations"></a>Trainings herhalingen beheren
+## <a name="manage-training-iterations"></a>Trainingsiteraties beheren
 
-Telkens wanneer u uw detector traint, maakt u een nieuwe _iteratie_ met de eigen bijgewerkte metrische gegevens voor prestaties. U kunt al uw iteraties bekijken in het linkerdeel venster van het tabblad **prestaties** . In het linkerdeel venster ziet u ook de knop **verwijderen** , die u kunt gebruiken om een herhaling te verwijderen als deze verouderd is. Wanneer u een herhaling verwijdert, verwijdert u alle installatie kopieën die uniek zijn gekoppeld.
+Elke keer dat u uw detector traint, maakt u een nieuwe _iteratie_ met zijn eigen bijgewerkte prestatiestatistieken. U al uw iteraties bekijken in het linkerdeelvenster van het tabblad **Prestaties.** In het linkerdeelvenster vindt u ook de knop **Verwijderen,** die u gebruiken om een iteratie te verwijderen als deze verouderd is. Wanneer u een iteratie verwijdert, verwijdert u afbeeldingen die er uniek aan zijn gekoppeld.
 
-Zie [uw model gebruiken met de Voorspellings-API](./use-prediction-api.md) om te leren hoe u via een programma toegang hebt tot uw getrainde modellen.
+Zie [Uw model gebruiken met de voorspellings-API](./use-prediction-api.md) om te leren hoe u programmatisch toegang krijgt tot uw getrainde modellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een object detector model maakt en traint met behulp van de Custom Vision-website. Vervolgens krijgt u meer informatie over het iteratieve proces van het verbeteren van uw model.
+In deze quickstart heb je met behulp van de Custom Vision-website geleerd hoe je een objectdetectormodel maken en trainen. Vervolgens krijgt u meer informatie over het iteratieve proces van het verbeteren van uw model.
 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](test-your-model.md)

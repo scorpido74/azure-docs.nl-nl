@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: ontvangst gegevens ophalen met behulp van krul-Recognizer'
+title: 'Snelstart: ontvangstgegevens extraheren met behulp van cURL - Formulierherkenning'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de formulier Recognizer REST API met krul om gegevens te extra heren uit installatie kopieën van Amerikaanse verkoop kwitanties.
+description: In deze quickstart gebruikt u de FORM Recognizer REST API met cURL om gegevens uit afbeeldingen van amerikaanse verkoopbonnen te extraheren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,52 +10,52 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118484"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met krul
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Snelstart: ontvangstgegevens extraheren met behulp van de API Voor formulierherkenningrest met cURL
 
-In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie in Amerikaanse verkoop ontvangsten te extra heren en te identificeren.
+In deze quickstart gebruikt u de Azure Form Recognizer REST API met cURL om relevante informatie in verkoopbevestigingen in de VS te extraheren en te identificeren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
-- [krul](https://curl.haxx.se/windows/) geïnstalleerd.
-- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze Quick Start.
+Om deze snelle start te voltooien, moet u het:
+- [cURL](https://curl.haxx.se/windows/) geïnstalleerd.
+- Een URL voor een afbeelding van een ontvangstbewijs. U een [voorbeeldafbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze quickstart.
 
-## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een bron voor formulierherkenning maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Een kwitantie analyseren
+## <a name="analyze-a-receipt"></a>Een ontvangstbewijs analyseren
 
-Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **[analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** van de ontvangst aan met behulp van de onderstaande krul opdracht. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u wilt beginnen met het analyseren van een ontvangstbewijs, belt u de **[API Voor ontvangst analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** met de onderstaande cURL-opdracht. Voer de opdracht aan voordat u de opdracht uitvoert:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
-1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
-1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
+1. Vervang `<your receipt URL>` door het URL-adres van een ontvangstafbeelding.
+1. Vervang `<subscription key>` de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-U ontvangt een `202 (Success)` antwoord met de kopregel ' **bewerkings locatie** '. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken reeks na `operations/` de bewerkings-ID.
+Je ontvangt een `202 (Success)` antwoord met de koptekst Am **Operation-Location.** De waarde van deze koptekst bevat een bewerkings-id die u gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voorbeeld `operations/` is de tekenreeks erna de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>De ontvangst resultaten ophalen
+## <a name="get-the-receipt-results"></a>De ontvangstresultaten opmaken
 
-Nadat u de API voor het analyseren van de **kwitantie** hebt aangeroepen, roept u de API **[analyse van ontvangst resultaten ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
+Nadat u de **API Voor ontvangstanalyse** hebt aangeroepen, roept u de API Voor het analyseren van **[ontvangstresultaten](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** aan om de status van de bewerking en de geëxtraheerde gegevens te verkrijgen. Voer de opdracht aan voordat u de opdracht uitvoert:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<operationId>` door de bewerkings-ID uit de vorige stap.
+1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen door de abonnementssleutel Voor formulierherkenning. U het vinden op het tabblad Overzicht van **formulierherkenningsbronnen.**
+1. Vervang `<operationId>` de bewerkings-id van de vorige stap.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
@@ -64,13 +64,13 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat het veld `"recognitionResults"` elke regel tekst die is geëxtraheerd uit de ontvangst, en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst. Als de bewerking niet is voltooid, wordt de waarde van `"status"` `"running"` of `"notStarted"`. u moet de API opnieuw aanroepen, hetzij hand matig of via een script. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
+U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste `"status"`veld geeft de status van de bewerking aan. Als de bewerking is `"recognitionResults"` voltooid, bevat het veld elke regel tekst `"understandingResults"` die uit de ontvangst is geëxtraheerd en bevat het veld sleutel-/waarde-informatie voor de meest relevante delen van het ontvangstbewijs. Als de bewerking niet is `"status"` voltooid, `"running"` `"notStarted"`is de waarde van de API of , en moet u de API opnieuw aanroepen, handmatig of via een script. We raden een interval van één seconde of meer tussen gesprekken aan.
 
-Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is inge kort voor de Lees baarheid.
+Zie de volgende ontvangstafbeelding en de bijbehorende JSON-uitvoer. De output is ingekort voor leesbaarheid.
 
-![Een ontvangst bewijs van Contoso Store](../media/contoso-allinone.jpg)
+![Een ontvangstbewijs van Contoso store](../media/contoso-allinone.jpg)
 
-Het knoop punt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knoop punt `"understandingResults"` bevat de ontvangstbewijs waarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfs adres, enzovoort.
+Het `"recognitionResults"` knooppunt bevat alle herkende tekst. Tekst wordt georganiseerd op pagina, vervolgens op regel, vervolgens op individuele woorden. Het `"understandingResults"` knooppunt bevat de ontvangstspecifieke waarden die het model heeft ontdekt. Hier vindt u nuttige sleutel-/waardeparen zoals de belasting, het totaal, het handelsadres, enzovoort.
 
 ```json
 { 
@@ -399,7 +399,7 @@ Het knoop punt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de formulier Recognizer REST API met krul gebruikt om de inhoud van een verkoop ontvangst te extra heren. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
+In deze quickstart hebt u de API Voor formulierherkenningrest met cURL gebruikt om de inhoud van een verkoopontvangstbewijs te extraheren. Zie vervolgens de referentiedocumentatie om de API voor formulierherkenning verder te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

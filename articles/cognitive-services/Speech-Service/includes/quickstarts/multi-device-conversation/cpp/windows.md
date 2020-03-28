@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: e2c4530dbd5fa8b65e149e7467ce0f27adc15782
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78926093"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open in Visual Studio het bron bestand **HelloWorld. cpp**.
+1. Open vanuit Visual Studio het bronbestand **helloworld.cpp.**
 
 1. Vervang alle code door het volgende fragment:
 
@@ -199,29 +199,29 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
+1. Kies Alles**opslaan** **op** > de menubalk .
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing bouwen en uitvoeren om een nieuwe conversatie te maken
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing bouwen en uitvoeren om een nieuw gesprek te maken
 
-1. Selecteer in de menu balk de optie **build** > **Build** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout opsporing** > **fout opsporing starten** (of druk op <kbd>F5</kbd>) om de toepassing **HelloWorld** te starten.
+1. Kies **Foutopsporing debuggen** > **(of** druk op <kbd>F5)</kbd>om de **helloworld-toepassing** te starten.
 
-1. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties worden weer gegeven terwijl u spreekt
-    - Als u de conversatie code deelt met de andere en deze deel nemen aan het gesprek, ziet u ook hun transcripties.
+1. Zodra u `Started transcribing` het bericht ziet verschijnen, u beginnen met spreken. U ziet de transcripties verschijnen terwijl u spreekt
+    - Als je de gesprekscode deelt met de anderen en ze deelnemen aan het gesprek, zie je ook hun transcripties.
 
-1. Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> op het toetsen bord om de audio-opname te stoppen.
+1. Zodra u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> op het toetsenbord om audio-opname te stoppen.
 
     > [!NOTE]
-    > U ziet mogelijk een bericht van Visual Studio over een uitzonde ring die vergelijkbaar is met: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` u dit veilig kunt negeren.
+    > Mogelijk ziet u een bericht van Visual `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Studio over een uitzondering die vergelijkbaar is met: U dit veilig negeren.
     > <br/> <br/>
     > Druk op <kbd>F5</kbd> om verder te gaan.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing bouwen en uitvoeren om lid te worden van een bestaand gesprek
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing bouwen en uitvoeren om deel te nemen aan een bestaand gesprek
 
-1. Kopieer de volgende functie en plak deze in uw **HelloWorld. cpp** net vóór de functie `int main()`:
+1. Kopieer en plak de volgende functie in uw `int main()` **helloworld.cpp** vlak voor de functie:
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
     }
     ```
 
-2. Vervang `StartNewConversation();` in uw `int main()` functie met:
+2. Vervang `StartNewConversation();` in `int main()` uw functie door:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,23 +283,23 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Ga terug naar Visual Studio en vervang `YourConversationId` in uw `int main()`-functie door de conversatie-ID uit de vorige stap.
+4. Ga terug naar Visual `YourConversationId` Studio `int main()` en vervang in uw functie de gespreks-ID van de vorige stap.
 
-5. Selecteer in de menu balk de optie **build** > **Build** om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
+5. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
 
-6. Kies **fout opsporing** > **fout opsporing starten** (of druk op <kbd>F5</kbd>) om de toepassing **HelloWorld** te starten.
+6. Kies **Foutopsporing debuggen** > **(of** druk op <kbd>F5)</kbd>om de **helloworld-toepassing** te starten.
 
-7. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties wordt weer gegeven terwijl u spreekt.
-    - Als u teruggaat naar uw browser, ziet u dat uw transcripties eruitziet zoals u ook spreekt.
+7. Zodra u `Started transcribing` het bericht ziet verschijnen, u beginnen met spreken. U ziet de transcripties verschijnen terwijl u spreekt.
+    - Als u terug gaat naar uw browser, moet u zien uw transcripties verschijnen er als je spreekt ook.
 
-8.  Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> om audio-opname te stoppen en de conversatie te beëindigen.
+8.  Zodra u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> om audio-opname te stoppen en beëindigt u het gesprek.
 
     > [!NOTE]
-    > U ziet mogelijk een bericht van Visual Studio over een uitzonde ring die vergelijkbaar is met: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` u dit veilig kunt negeren.
+    > Mogelijk ziet u een bericht van Visual `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Studio over een uitzondering die vergelijkbaar is met: U dit veilig negeren.
     > <br/> <br/>
     > Druk op <kbd>F5</kbd> om verder te gaan.
 
-9. Ga terug naar uw browser en sluit de conversatie af met de knop Afsluiten in de rechter bovenhoek.
+9. Ga terug naar uw browser en sluit het gesprek af met de exit-knop in de rechterbovenhoek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382996"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Wat is de Bing Spellingcontrole-API?
@@ -35,7 +35,7 @@ Met de Bing Spellingcontrole-API kunt u contextuele grammatica- en spellingcontr
 
 De Bing Spellingcontrole-API kan eenvoudig worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. De service is toegankelijk via de REST-API of de Bing Spellingcontrole-SDK's. 
 
-1. Maak een [Account voor Cognitive Services-API](../cognitive-services-apis-create-account.md) met toegang tot de Bing Zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een gratis account maken. 
+1. Maak een [API-account voor Cognitive Services](../cognitive-services-apis-create-account.md) met toegang tot de Bing Search API's. Als u geen Azure-abonnement hebt, kunt u een gratis account maken. 
 2. Verzend een aanvraag naar de Bing Webzoekopdrachten-API.
 3. Het JSON-antwoord parseren
 
@@ -43,6 +43,6 @@ De Bing Spellingcontrole-API kan eenvoudig worden aangeroepen vanuit elke progra
 
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/spell-check/) van de Bing Spellingcontrole-API om te zien hoe u snel een grote verscheidenheid aan teksten kunt controleren.
 
-Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, u gratis [een account aanmaken.](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
 
-U kunt ook de pagina van de [Bing Search API-hub](../bing-web-search/search-the-web.md) bezoeken om de andere beschik bare api's te verkennen.
+U ook de [hubpagina van bing Search API-hub](../bing-web-search/search-the-web.md) bezoeken om de andere beschikbare API's te bekijken.

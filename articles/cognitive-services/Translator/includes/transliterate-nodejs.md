@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906558"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906558"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw project met behulp van uw favoriete IDE of editor of een nieuwe map met een `translate-text.js` bestand met de naam op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/bestand:
+Maak een nieuw project met uw favoriete IDE of editor `translate-text.js` of een nieuwe map met een bestand met de naam op uw bureaublad. Kopieer dit codefragment vervolgens naar uw project/bestand:
 
 ```javascript
 const request = require('request');
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor de `'X-ClientTraceId'`-header te maken.
 
-## <a name="set-the-subscription-key-and-endpoint"></a>De abonnements sleutel en het eind punt instellen
+## <a name="set-the-subscription-key-and-endpoint"></a>De abonnementssleutel en het eindpunt instellen
 
-In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`deze omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd uw abonnementssleutel voor vertalerstekst `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`eindpunt te lezen uit deze omgevingsvariabelen: en . Als u niet bekend bent met omgevingsvariabelen, u instellen `subscriptionKey` en `endpoint` als tekenreeksen en commentaar geven op de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -50,10 +50,10 @@ var endpoint = process.env[endpoint_var];
 
 ## <a name="configure-the-request"></a>Aanvraag configureren
 
-Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert u de aanvraag:
+Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
 
 >[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: Transliteratie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Zie [Translator Text-API 3.0: Omzetten](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate) voor meer informatie over eindpunten, routes en aanvraagparameters.
 
 ```javascript
 let options = {
@@ -80,11 +80,11 @@ let options = {
 
 U kunt aanvragen het eenvoudigst verifiëren door uw abonnementssleutel op te geven als `Ocp-Apim-Subscription-Key`-header. Dat doen we in dit voorbeeld dan ook. Als alternatief kunt u in plaats van uw abonnementssleutel een toegangstoken gebruiken en het toegangstoken opgeven als `Authorization`-header voor het valideren van uw aanvraag.
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag headers toevoegen.
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` headers in uw aanvraag opnemen.
 
 Zie [Verificatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) voor meer informatie.
 
-## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord afdrukken
+## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord weergeven
 
 Vervolgens maakt u de aanvraag via de methode `request()`. Deze gebruikt het `options`-object dat in de vorige sectie als eerste argument is gemaakt, waarna het opgemaakte JSON-antwoord wordt afgedrukt.
 
@@ -124,7 +124,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

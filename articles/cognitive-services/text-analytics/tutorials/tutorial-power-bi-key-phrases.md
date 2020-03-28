@@ -1,7 +1,7 @@
 ---
 title: Zelfstudie Integreer Power BI Desktop met de Text Analytics Cognitive service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Text Analytics-API om sleutel zinnen te extra heren uit tekst die is opgeslagen in Power BI.
+description: Meer informatie over het gebruik van de Text Analytics API om belangrijke zinnen te extraheren uit tekst die is opgeslagen in Power BI.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378531"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Zelfstudie Integreer Power BI Desktop met de Text Analytics Cognitive service
@@ -78,7 +78,7 @@ Selecteer nu zowel de kolom `subject` als `comment` in de tabel. U moet mogelijk
 
 ![[Samen te voegen velden selecteren]](../media/tutorials/power-bi/select-columns.png)
 
-Selecteer het **Transformeren**-lint. Klik op **Tekstkolommen** -groep in het lint, klik **Tekstkolommen samenvoegen**. Het dialoogvenster Kolommen samenvoegen verschijnt.
+Selecteer het **Transformeren**-lint. Klik op **Tekstkolommen **-groep in het lint, klik **Tekstkolommen samenvoegen**. Het dialoogvenster Kolommen samenvoegen verschijnt.
 
 ![[Velden samenvoegen via het dialoogvenster Kolommen samenvoegen]](../media/tutorials/power-bi/merge-columns.png)
 
@@ -114,7 +114,7 @@ Er verschijnt een nieuwe query met de initiële naam `Query1` in de lijst met qu
 In het **Start**-lint, in de groep **Query**, klik op de **Geavanceerde editor** om het venster Geavanceerde editor te openen. Verwijder de code die al in dat venster staat, en plak de volgende code. 
 
 > [!NOTE]
-> Vervang het onderstaande voor beeld-eind punt (met `<your-custom-subdomain>`) door het eind punt dat voor uw Text Analytics resource is gegenereerd. U kunt dit eind punt vinden door u aan te melden bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/), uw Text Analytics-abonnement te selecteren en `Quick start`te selecteren.
+> Vervang het voorbeeldeindpunt hieronder `<your-custom-subdomain>`(met ) door het eindpunt dat is gegenereerd voor uw Text Analytics-bron. U dit eindpunt vinden door u aan te melden bij `Quick start`de [Azure-portal,](https://azure.microsoft.com/features/azure-portal/)uw Text Analytics-abonnement te selecteren en.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ In Power BI Desktop, in het venster Query-Editor gaat u terug naar de `FabrikamC
 
 Het dialoogvenster aangepaste functie aanroepen wordt weergegeven. In **Nieuwe kolomnaam**, voert u `keyphrases` in. In **Functie query**, selecteert u de aangepaste functie die u hebt gemaakt, `KeyPhrases`.
 
-Een nieuw veld wordt weergegeven in het dialoogvenster **tekst (optioneel)** . Dit veld vraagt welke kolom we willen gebruiken voor de waarden van de `text` parameter van de Sleuteltermen-API. (Houd er rekening mee dat u de waarden voor de para meters `language` en `id` al hebt vastgelegd.) Selecteer `Merged` (de kolom die u [eerder](#PreparingData) hebt gemaakt door het onderwerp en de bericht velden samen te voegen) in de vervolg keuzelijst.
+Een nieuw veld wordt weergegeven in het dialoogvenster **tekst (optioneel)**. Dit veld vraagt welke kolom we willen gebruiken voor de waarden van de `text` parameter van de Sleuteltermen-API. (Vergeet niet dat u de waarden `language` `id` voor de parameters al hard gecodeerd hebt.) Selecteer `Merged` (de kolom die u [eerder](#PreparingData) hebt gemaakt door het onderwerp en de berichtvelden samen te voegen) in het vervolgkeuzemenu.
 
 ![[Een aangepaste functie aanroepen]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -160,7 +160,7 @@ Nadat u het dialoogvenster Aangepaste functie aanroepen hebt gesloten, verschijn
 
 ![[referentiebanner]](../media/tutorials/power-bi/credentials-banner.png)
 
-Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het dialoogvenster en klik vervolgens op **Verbinding maken.** . 
+Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het dialoogvenster en klik vervolgens op **Verbinding maken.**. 
 
 > [!NOTE]
 > U kiest `Anonymous` omdat de Text Analytics-service u verifieert met behulp van de toegangssleutel, zodat Power BI zelf geen referenties voor de HTTP-aanvraag hoeft te bieden.
@@ -168,13 +168,13 @@ Klik op **Referenties bewerken**, zorg dat `Anonymous` is geselecteerd in het di
 > [!div class="mx-imgBorder"]
 > ![[verificatie instellen op anoniem]](../media/tutorials/power-bi/access-web-content.png)
 
-Als u het span doek voor het bewerken van referenties hebt gekozen, kunt u uw Text Analytics toegangs sleutel wellicht verg eten in de code in de [aangepaste functie](#CreateCustomFunction)`KeyPhrases`.
+Als u de banner ‘Referenties bewerken’ ziet nadat u anonieme toegang hebt gekozen, bent u mogelijk vergeten uw Text Analytics-sleutel in de code te plakken in de `KeyPhrases` [Aangepaste functie](#CreateCustomFunction).
 
 Vervolgens verschijnt er mogelijk een banner waarin u wordt gevraagd informatie op te geven over de privacy van uw gegevensbronnen. 
 
 ![[privacybanner]](../media/tutorials/power-bi/privacy-banner.png)
 
-Klik op **Doorgaan** en kies `Public` voor elk van de gegevensbronnen in het dialoogvenster. Klik vervolgens op **Opslaan**.
+Klik op **Doorgaan** en kies `Public` voor elk van de gegevensbronnen in het dialoogvenster. Klik vervolgens op **Opslaan.**
 
 ![[privacy van gegevensbronnen instellen]](../media/tutorials/power-bi/privacy-dialog.png)
 
@@ -190,7 +190,7 @@ Nu gebruikt u deze kolom gebruiken om een woordwolk te genereren. Om aan de slag
 > [!NOTE]
 > Waarom zou u geëxtraheerde belangrijke woordgroepen gebruiken om een woordwolk te genereren, in plaats van de volledige tekst van elke opmerking? De belangrijke woordgroepen bieden ons de *belangrijke* woorden uit onze klantopmerkingen, niet alleen de *meest voorkomende* woorden. Bovendien is de woordgrootte in de resulterende wolk niet vertekend door het veelvuldig gebruik van een woord in een relatief klein aantal opmerkingen.
 
-Als de aangepaste visual Word Cloud nog niet is geïnstalleerd, installeer deze dan. Klik in het deelvenster Visualisaties rechts van de werkruimte op de drie puntjes ( **...** ) en kies **Importeren vanuit Marketplace**. Zoek vervolgens naar ‘cloud’ en klik op de knop **Toevoegen** naast de Word Cloud-visual. Power BI installeert de Word Cloud-visual en laat u weten dat deze succesvol is geïnstalleerd.
+Als de aangepaste visual Word Cloud nog niet is geïnstalleerd, installeer deze dan. Klik in het deelvenster Visualisaties rechts van de werkruimte op de drie puntjes (**...**) en kies **Importeren vanuit Marketplace**. Zoek vervolgens naar ‘cloud’ en klik op de knop **Toevoegen** naast de Word Cloud-visual. Power BI installeert de Word Cloud-visual en laat u weten dat deze succesvol is geïnstalleerd.
 
 ![[een aangepaste visual toevoegen]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -217,7 +217,7 @@ Klik op het hulpmiddel Focusmodus in het rapport om onze woordwolk beter te beki
 
 De Text Analytics-service, een van de Cognitive Services die worden aangeboden door Microsoft Azure, biedt ook sentimentanalyse en taaldetectie. Met name de taaldetectie is handig als uw klantenfeedback niet allemaal in het Engels is.
 
-Deze andere API's lijken allebei heel erg op de Sleuteltermen-API. Dit betekent dat u ze kan integreren met Power BI Desktop met behulp van aangepaste functies die bijna identiek zijn aan de functies die u in deze zelfstudie hebt gemaakt. Maak gewoon een lege query en plak de toepasselijke code hieronder in de Geavanceerde editor, net zoals u eerder hebt gedaan. (Vergeet niet uw toegangs sleutel.) Daarna kunt u, net als voorheen, de functie gebruiken om een nieuwe kolom toe te voegen aan de tabel.
+Deze andere API's lijken allebei heel erg op de Sleuteltermen-API. Dit betekent dat u ze kan integreren met Power BI Desktop met behulp van aangepaste functies die bijna identiek zijn aan de functies die u in deze zelfstudie hebt gemaakt. Maak gewoon een lege query en plak de toepasselijke code hieronder in de Geavanceerde editor, net zoals u eerder hebt gedaan. (Vergeet je toegangssleutel niet!) Gebruik vervolgens, net als voorheen, de functie om een nieuwe kolom aan de tabel toe te voegen.
 
 De functie Sentimentanalyse hieronder retourneert een score die aangeeft hoe positief het in de tekst uitgedrukte sentiment is.
 
@@ -296,7 +296,7 @@ Leer meer over de Text Analytics-service, de formuletaal Power Query M of Power 
 > [Naslaginformatie over de Text Analytics-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M-verwijzing](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Documentatie voor Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

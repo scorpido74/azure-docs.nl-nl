@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van C# de rest API en-Bing Video Search"
+title: "Snelstart: zoeken naar video's met behulp van de REST API en C# - Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met C# zoekaanvragen voor video's te verzenden naar de REST-API van Bing Video's zoeken.
 services: cognitive-services
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382698"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API enC#
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Snelstart: zoeken naar video's met behulp van de Bing Video Search REST API en C #
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een HTTP-query naar de API om nieuws te zoeken en geeft vervolgens het antwoord weer. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) met extra foutafhandeling, functies en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
-* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
+* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Het [Json.NET](https://www.newtonsoft.com/json) framework, beschikbaar als NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
@@ -42,7 +42,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     using System.Collections.Generic;
     ```
 
-2. Voeg variabelen voor uw abonnementssleutel, eindpunt en zoekterm toe. `uriBase` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Voeg variabelen voor uw abonnementssleutel, eindpunt en zoekterm toe. `uriBase`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```csharp
     const string accessKey = "enter your key here";

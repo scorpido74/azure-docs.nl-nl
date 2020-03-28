@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een synthese van de C++ spraak, (Windows)-spraak service'
+title: 'Snelstart: spraak synthetiseren, C++ (Windows) - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het in-en C++ uitspreken van spraak in het Windows-bureau blad met behulp van de Speech SDK
+description: Meer informatie over het synthetiseren van spraak in C++ op Windows Desktop met de SpraakSDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 08/24/2019
 ms.author: yinhew
 ms.openlocfilehash: ab2193a1ea34b176e5f97806f0099dfc86d75965
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925732"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -35,19 +35,19 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
+1. Kies Alles**opslaan** **op** > de menubalk .
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Selecteer in de menu balk de optie **build** > **Build** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout opsporing** > **fout opsporing starten** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
+1. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
 
-1. Typ een Engelse zin of zin. De toepassing verzendt uw tekst naar de spraak service, waarmee gesynthesizerde spraak naar de toepassing wordt verzonden om op uw spreker af te spelen.
+1. Typ een Engelse zin of zin. De toepassing verzendt uw tekst naar de spraakservice, die gesynthetiseerde spraak naar de toepassing verzendt om op uw luidspreker af te spelen.
 
-   ![Console-uitvoer na geslaagde spraak-synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![Console-uitvoer na succesvolle spraaksynthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -56,4 +56,4 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

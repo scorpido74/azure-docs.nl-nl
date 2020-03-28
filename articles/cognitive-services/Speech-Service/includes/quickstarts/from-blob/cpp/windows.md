@@ -5,33 +5,33 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 20dfc49acdaa30bea6f0652640e007c16f08c572
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925597"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Een bronbestand uploaden naar een Azure-blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
-De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend.
+De eerste stap is ervoor te zorgen dat u uw project open hebt in Visual Studio.
 
 1. Start Visual Studio 2019.
-2. Laad uw project en open `helloworld.cpp`.
+2. Laad uw project `helloworld.cpp`en open .
 
-## <a name="add-a-references"></a>Een verwijzing toevoegen
+## <a name="add-a-references"></a>Een referenties toevoegen
 
-Om onze code ontwikkeling te versnellen, gebruiken we een aantal externe onderdelen:
-* [Cpp rest SDK](https://github.com/microsoft/cpprestsdk) Een client bibliotheek voor het aanbrengen van REST-aanroepen naar een REST-service.
-* [nlohmann/JSON](https://github.com/nlohmann/json) Handige JSON-parsering/serialisatie/deserialisatie bibliotheek.
+Om onze codeontwikkeling te versnellen, gebruiken we een paar externe componenten:
+* [CPP Rest SDK](https://github.com/microsoft/cpprestsdk) Een clientbibliotheek voor het maken van REST-gesprekken naar een REST-service.
+* [nlohmann/json](https://github.com/nlohmann/json) Handige JSON Parsing / Serialization / Deserialization library.
 
 Beide kunnen worden geïnstalleerd met behulp van [vcpkg](https://github.com/Microsoft/vcpkg/).
 
@@ -40,62 +40,62 @@ vcpkg install cpprestsdk cpprestsdk:x64-windows
 vcpkg install nlohmann-json
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+Laten we wat code toevoegen die werkt als een skelet voor ons project.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON-wrappers
+## <a name="json-wrappers"></a>JSON Wikkels
 
-Als de aanvragen van de REST API in JSON-indeling worden uitgevoerd en de resultaten worden geretourneerd in JSON, kunnen ze met alleen teken reeksen communiceren, maar dit wordt niet aanbevolen.
-Om ervoor te zorgen dat de aanvragen en antwoorden gemakkelijker te beheren zijn, declareren we een aantal klassen die moeten worden gebruikt voor het serialiseren/deserialiseren van de JSON en een aantal methoden om nlohmann/JSON te helpen.
+Aangezien de REST API's aanvragen in JSON-formaat aannemen en ook resultaten in JSON retourneren, konden we met hen communiceren met alleen tekenreeksen, maar dat wordt niet aanbevolen.
+Om de aanvragen en reacties gemakkelijker te beheren, verklaren we een paar klassen te gebruiken voor het serialiseren / deserialiseren van de JSON en een aantal methoden om nlohmann / json te helpen.
 
-Plaats de declaraties vóór `recognizeSpeech`.
+Ga je gang en `recognizeSpeech` zet hun verklaringen voor .
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
-## <a name="create-and-configure-an-http-client"></a>Een HTTP-client maken en configureren
-Het eerste wat u nodig hebt, is een HTTP-client waarvoor een juiste basis-URL en verificatieset is ingesteld.
-Deze code invoegen in `recognizeSpeech`
+## <a name="create-and-configure-an-http-client"></a>Een Http-client maken en configureren
+Het eerste wat we nodig hebben is een Http-client met een juiste basis-URL en verificatieset.
+Deze code invoegen in`recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
-## <a name="generate-a-transcription-request"></a>Een transcriptie-aanvraag genereren
-Vervolgens genereren we de transcriptie-aanvraag. Voeg deze code toe aan `recognizeSpeech`
+## <a name="generate-a-transcription-request"></a>Een transcriptieaanvraag genereren
+Vervolgens genereren we het transcriptieverzoek. Deze code toevoegen aan`recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 
-## <a name="send-the-request-and-check-its-status"></a>De aanvraag verzenden en de status controleren
-Nu gaan we de aanvraag verzenden naar de speech-service en de eerste respons code controleren. Deze antwoord code geeft eenvoudigweg aan of de service de aanvraag heeft ontvangen. De service retourneert een URL in de antwoord headers die de locatie is waar de transcriptie-status wordt opgeslagen.
+## <a name="send-the-request-and-check-its-status"></a>Stuur het verzoek en controleer de status
+Nu plaatsen we het verzoek bij de Spraakservice en controleren we de initiële reactiecode. Deze antwoordcode geeft eenvoudig aan of de service het verzoek heeft ontvangen. De service retourneert een url in de antwoordkoppen, dat is de locatie waar de transcriptiestatus wordt opgeslagen.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Wacht tot de transcriptie is voltooid
-Omdat de transcriptie asynchroon wordt verwerkt, moeten we elke regel vaak de status van de service controleren. We controleren elke vijf seconden.
+## <a name="wait-for-the-transcription-to-complete"></a>Wachten tot de transcriptie is voltooid
+Aangezien de service de transcriptie asynchroon verwerkt, moeten we om de zoveel tijd peilen voor de status ervan. We controleren elke 5 seconden.
 
-We kunnen de status controleren door de inhoud op te halen bij de URL die we hebben ontvangen toen de aanvraag werd verzonden. Wanneer de inhoud weer wordt opgehaald, deserialiseren we deze in een van onze helperklasse om gemakkelijker te kunnen communiceren met.
+We kunnen de status controleren door de inhoud op te halen op de Url die we kregen toen het verzoek werd geplaatst. Wanneer we de inhoud terugkrijgen, deserialiseren we deze in een van onze helperklassen om het gemakkelijker te maken om ermee om te gaan.
 
-Dit is de polling code met status weergave voor alles, behalve een geslaagde voltooiing, we doen dat nu.
+Hier is de polling code met status weergave voor alles behalve een succesvolle voltooiing, zullen we dat nu doen.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
-## <a name="display-the-transcription-results"></a>De transcriptie-resultaten weer geven
-Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere URL die we vanaf het status antwoord kunnen ontvangen.
+## <a name="display-the-transcription-results"></a>De transcriptieresultaten weergeven
+Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere url die we kunnen krijgen van de statusrespons.
 
-De inhoud van de URL wordt gedownload, de JSON gedeserialiseerd en de resultaten door lopen die worden afgedrukt op de weergave tekst.
+We downloaden de inhoud van die URL, deserialiseren de JSON en doorlopen de resultaten die de weergavetekst afdrukken.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
 ## <a name="check-your-code"></a>Controleer uw code
-Op dit moment moet uw code er als volgt uitzien: (er zijn enkele opmerkingen aan deze versie toegevoegd)
+Op dit punt moet uw code er als volgt uitzien: (We hebben een aantal opmerkingen toegevoegd aan deze versie)
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
+Nu bent u klaar om uw app te bouwen en onze spraakherkenning te testen met behulp van de Spraakservice.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,10 +10,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
 ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982692"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
@@ -40,7 +40,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 
 [Neurale machinevertalingen (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) van Microsoft Translator is uitgebracht in 2016. NMT biedt belangrijke voordelen in de vertaalkwaliteit ten opzichte van de industriestandaardtechnologie van [statistische machinevertalingen (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation). Omdat NMT beter in staat is de context van volledige zinnen te begrijpen alvorens ze te vertalen, levert NMT vertalingen van hogere kwaliteit, die menselijker klinken en vloeiender lopen. [Custom Translator](https://portal.customtranslator.azure.ai) maakt gebruik van NMT voor uw aangepaste modellen, hetgeen resulteert in vertalingen van betere kwaliteit.
 
-U kunt een vertaalsysteem opbouwen met behulp van eerder vertaalde documenten. Deze documenten bevatten specifieke terminologie en stijl van een domein, beter dan een standaard Vertaal systeem. Gebruikers kunnen ALIGN-, PDF-, LCL-, HTML-, HTM-, XLF-, TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.
+U kunt een vertaalsysteem opbouwen met behulp van eerder vertaalde documenten. Deze documenten bevatten domeinspecifieke terminologie en stijl, beter dan een standaard vertaalsysteem. Gebruikers kunnen ALIGN-, PDF-, LCL-, HTML-, HTM-, XLF-, TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.
 
 Custom Translator accepteert ook parallelle gegevens op documentniveau om gegevens effectiever te kunnen verzamelen en voorbereiden. Als gebruikers toegang hebben tot versies van dezelfde inhoud in meerdere talen, maar wel in afzonderlijke documenten, is Custom Translator in staat om zinnen uit verschillende documenten automatisch te matchen.
 

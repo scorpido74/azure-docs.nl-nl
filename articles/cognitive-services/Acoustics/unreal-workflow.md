@@ -1,7 +1,7 @@
 ---
-title: Zelf studie voor project akoestische Unreal-ontwerp
+title: Project Acoustics Unreal Design Zelfstudie
 titlesuffix: Azure Cognitive Services
-description: In deze zelf studie wordt de ontwerp werk stroom voor project akoestische in Unreal en WWise beschreven.
+description: Deze zelfstudie beschrijft de ontwerpworkflow voor Project Acoustics in Unreal en Wwise.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,135 +12,135 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854252"
 ---
-# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Unreal/WWise ontwerp zelf studie voor project akoestische
-In deze zelf studie worden de ontwerp instellingen en werk stromen voor project akoestische in Unreal en WWise beschreven.
+# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Acoustics Unreal/Wwise Ontwerp Tutorial
+Deze zelfstudie beschrijft de ontwerpinstelling en workflow voor Project Acoustics in Unreal en Wwise.
 
-Software vereisten:
-* Een Unreal-project met het project akoestische WWise-en Unreal-invoeg toepassingen
+Vereisten voor software:
+* Een Unreal project met de Project Acoustics Wwise en Unreal plugins
 
-Als u een Unreal-project wilt ophalen met project akoestische, kunt u het volgende doen:
-* Volg de [Unreal-integratie](unreal-integration.md) instructies van het project voor het toevoegen van project akoestische aan uw Unreal-project
-* Of gebruik het project [akoestische voor beeld](unreal-quickstart.md)van het project.
+Om een Unreal project met Project Acoustics te krijgen, u:
+* Volg de [Project Acoustics Unreal integratie-instructies](unreal-integration.md) om Project Acoustics toe te voegen aan uw Unreal project
+* Of gebruik het [project Project Acoustics voorbeeldproject](unreal-quickstart.md).
 
-## <a name="setup-project-wide-wwise-properties"></a>Eigenschappen voor het project Wide WWise instellen
-WWise heeft wereld wijde obstructie-en bedekking-curven die van invloed zijn op hoe de invoeg toepassing project akoestische de WWise-audio-DSP bewaart.
+## <a name="setup-project-wide-wwise-properties"></a>Projectbrede Wwise-eigenschappen instellen
+Wwise heeft globale obstructie en occlusie curven die van invloed zijn op hoe de Project Acoustics plugin rijdt de Wwise audio DSP.
 
-### <a name="design-wwise-occlusion-curves"></a>WWise bedekking-curven ontwerpen
-Wanneer het project is ingesteld op actief, reageert dit op de bedekking-volume, low-pass filter (LPF) en HPF-curven (high-pass filter) die u in WWise hebt ingesteld. We raden u aan om uw volume curve type in te stellen op lineair met de waarde-100 dB voor een bedekking-waarde van 100.
+### <a name="design-wwise-occlusion-curves"></a>Ontwerp Wwise occlusie curven
+Wanneer Project Acoustics actief is, reageert het op de occlusievolume, low-pass filter (LPF) en high-pass filter (HPF) curves die u in Wwise instelt. We raden u aan uw volumecurvetype in te stellen op lineair met een waarde van -100 dB voor een occlusiewaarde van 100.
 
-Als deze instelling is ingesteld, wordt door de simulatie van het project akoestische een bedekking van-18 dB berekend op basis van de onderstaande curve op X = 18 en de bijbehorende Y-waarde is de verzwakking toegepast. Als u half bedekking wilt uitvoeren, stelt u het eind punt in op-50 dB in plaats van-100 dB of op-200 dB tot exaggerate bedekking. U kunt elke curve die het beste geschikt is voor uw game aanpassen en verfijnen.
+Met deze instelling, als de Project Acoustics simulatie berekent een occlusie van -18 dB, zal het input aan de onderstaande curve op X = 18, en de bijbehorende Y-waarde is de demping toegepast. Om half occlusie te doen, stelt u het eindpunt in op -50 dB in plaats van -100 dB, of op -200 dB om occlusie te overdrijven. U elke curve die het beste werkt voor uw spel op maat maken en verfijnen.
  
-![Scherm opname van WWise bedekking curve-editor](media/wwise-occlusion-curve.png)
+![Schermafbeelding van wwise occlusioncurve-editor](media/wwise-occlusion-curve.png)
 
-### <a name="disable-wwise-obstruction-curves"></a>WWise obstructie-curven uitschakelen
-De WWise obstructie-curven zijn van invloed op het droog niveau in isolatie, maar de geluids elementen van het project maakt gebruik van ontwerp controles en simulatie om natte/droge ratio's af te dwingen. Het is raadzaam om de volume curve voor obstructies uit te scha kelen. Als u de wetness wilt ontwerpen, gebruikt u het besturings element Wetness aanpassen dat later wordt beschreven.
+### <a name="disable-wwise-obstruction-curves"></a>Wwise obstructiecurven uitschakelen
+De Wwise obstructiecurves beïnvloeden het droge niveau geïsoleerd, maar Project Acoustics gebruikt ontwerpcontroles en simulatie om natte/droge verhoudingen af te dwingen. We raden u aan de volumecurve uit te schakelen. Om de nattigheid te ontwerpen, gebruikt u de besturingselement Wetness Adjust die later wordt beschreven.
  
-Als u obstructie LPF/HPF-curven voor andere doel einden gebruikt, moet u ervoor zorgen dat u ze hebt ingesteld op Y = 0 bij X = 0 (dat wil zeggen: er is geen LPF of HPF wanneer er geen obstakels zijn).
+Als u obstructie LPF/HPF-curven voor andere doeleinden gebruikt, moet u ervoor zorgen dat u ze op Y=0 op X=0 hebt ingesteld (dat wil zeggen dat er geen LPF of HPF is wanneer er geen obstructie is).
 
-![Scherm opname van de WWise-obstructie curve-editor](media/wwise-obstruction-curve.png)
+![Schermafbeelding van wwise obstructiecurve-editor](media/wwise-obstruction-curve.png)
 
-### <a name="design-project-acoustics-mixer-parameters"></a>Mixer parameters voor het ontwerp van het project
-U kunt algemene galm eigenschappen beheren door naar het tabblad invoeg toepassing van de project akoestische bus te gaan. Dubbel klik op ' project Akoestisches mixer (aangepast) ' om het deel venster instellingen van de mixer-invoeg toepassing te openen.
+### <a name="design-project-acoustics-mixer-parameters"></a>Ontwerp projectakoestiek mixerparameters
+U globale reverb-eigenschappen beheren door het tabblad mixerplug-in van de Project Acoustics Bus te bezoeken. Dubbelklik op "Project Acoustics Mixer (Custom)" om het instellingenpaneel van de mixerplug-in te openen.
 
-U kunt ook zien dat de mixer-invoeg toepassing een "spatialization uitvoeren"-optie heeft. Als u liever de ingebouwde spatialization van het akoestische project wilt gebruiken, schakelt u het selectie vakje ' spatialization uitvoeren ' in en kiest u van HRTF of pannen. Zorg ervoor dat u eventuele droge aux-Busses die u hebt ingesteld, uitschakelt. als dat niet het geval is, hoort u het directe pad twee keer. Gebruik het ' Wetness-aanpassings niveau ' en ' galm tijd schaal factor ' om wereld wijde controle uit te oefenen op de galm mix. Opmerking: u moet Unreal opnieuw starten, vervolgens soundbanks opnieuw genereren voordat u op PLAY drukt om de configuratie wijzigingen voor de invoeg toepassing op te halen, zoals het selectie vakje spatialization uitvoeren.
+U ook zien dat de mixer plugin heeft een Perform Spatialization optie. Als u liever de ingebouwde spatialisatie van Project Acoustic gebruikt, schakelt u het selectievakje 'Spatialisatie uitvoeren' in en kiest u uit HRTF of Panning. Zorg ervoor dat u alle Dry Aux-bussen uitschakelt die u hebt ingesteld, anders hoort u het directe pad twee keer. Gebruik de "Wetness Adjust" en "Reverb Time Scale Factor" om wereldwijde controle uit te oefenen op de reverb mix. Let op: je moet Unreal opnieuw opstarten en vervolgens geluidsbanken regenereren voordat je op play drukt om mixerplug-config-wijzigingen op te pikken, zoals het selectievakje 'Spatialization uitvoeren'.
 
-![Scherm opname van de opties voor de invoeg toepassing WWise mixer van project akoestische](media/mixer-plugin-global-settings.png)
+![Schermafbeelding van de plug-insopties van Project Acoustics Wwise-mixer](media/mixer-plugin-global-settings.png)
 
-## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Ontwerp besturings elementen voor project akoestische sets instellen in de WWise actor-mixer-hiërarchie
-Als u de para meters van een afzonderlijke actor-mixer wilt beheren, dubbelklikt u op de actor-mixer en klikt u vervolgens op het tabblad invoeg toepassing voor de mixer. Hier kunt u de para meters per geluids niveau wijzigen. Deze waarden worden gecombineerd met de instellingen van de Unreal (zie hieronder). Als de Unreal-invoeg toepassing van het project bijvoorbeeld de aanpassing van de onderdrukking van een object op 0,5 instelt en WWise instelt op-0,25, is de resulterende aanpassing van de degelijkings kracht op dat geluid 0,25.
+## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Ontwerpbesturingselementen voor Project Acoustics instellen in de wwise-actormixerhiërarchie
+Als u parameters van een afzonderlijke actormixer wilt beheren, dubbelklikt u op de Actor-Mixer en klikt u vervolgens op het tabblad Mixer-invoegtoepassing. Hier u alle parameters op het niveau per geluid wijzigen. Deze waarden worden gecombineerd met de waarden die zijn ingesteld vanaf de Onwerkelijke kant (hieronder beschreven). Als de Project Acoustics Unreal-plug-in bijvoorbeeld Aanpassing buitenheid op een object instelt op 0,5 en Wwise deze instelt op -0,25, is de resulterende aanpassing buitenheid die op dat geluid wordt toegepast 0,25.
 
-![Scherm opname van instellingen per geluids mixer in de WWise actor-mixer-hiërarchie](media/per-sound-mixer-settings.png)
+![Schermafbeelding van de instellingen per geluidsmixer in de wwise-actormixerhiërarchie](media/per-sound-mixer-settings.png)
 
-### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Zorg ervoor dat de aux-bus droog verzenden heeft en dat de uitvoer bus natte Send is
-Houd er rekening mee dat de vereiste actor-mixer-instelling de gebruikelijke droge en natte route ring verwisselt in WWise. Er wordt een galm signaal gegenereerd op de uitvoer bus van de actor-mixer (ingesteld op de geluids bus van het project) en het droge signaal langs de door de gebruiker gedefinieerde aux-bus. Deze route ring is vereist vanwege functies van de API van de WWise-mixer die door het project akoestische WWise-invoeg toepassing wordt gebruikt.
+### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Zorg ervoor dat de aux-bus heeft droge verzenden, en output bus heeft nat verzenden
+Vergeet niet dat de vereiste actor-mixer setup de gebruikelijke droge en natte routing in Wwise wisselt. Het produceert galmsignaal op de uitgangsbus van de actor-mixer (ingesteld op Project Acoustics Bus) en droog signaal langs de door de gebruiker gedefinieerde aux-bus. Deze routing is vereist vanwege de functies van de Wwise mixer plugin API die de Project Acoustics Wwise plugin gebruikt.
 
-![Scherm opname van de WWise-editor voor de ontwerp richtlijnen voor project akoestische](media/voice-design-guidelines.png)
+![Schermafbeelding van wwise-editor met richtlijnen voor spraakontwerp voor Project Acoustics](media/voice-design-guidelines.png)
  
-### <a name="set-up-distance-attenuation-curves"></a>Curven voor afstands verzwakking instellen
-Zorg ervoor dat een verzwakkings curve die wordt gebruikt door actor-mixers met behulp van project akoestische, door de gebruiker gedefinieerde aux-verzen ding is ingesteld op het uitvoer-bus volume. WWise doet dit standaard voor nieuwe verzwakkings curven. Als u een bestaand project wilt migreren, controleert u de instellingen van de curve.
+### <a name="set-up-distance-attenuation-curves"></a>Afstandsdempingscurven instellen
+Zorg ervoor dat elke dempingscurve die wordt gebruikt door actormixers met Project Acoustics door de gebruiker is gedefinieerd, aux-send set is ingesteld op 'output busvolume'. Wwise doet dit standaard voor nieuw gemaakte dempingscurven. Als u een bestaand project migreert, controleert u de curve-instellingen.
 
-De geluids simulatie van het project heeft standaard een straal van 45 meters rond de locatie van de speler. U wordt aangeraden uw verzwakkings curve in te stellen op-200 dB rond die afstand. Deze afstand is geen harde beperking. Voor sommige klanken, zoals wapens, wilt u mogelijk een grotere straal. In dergelijke gevallen is het voor behoud dat alleen de geometrie binnen 45 m van de locatie van de speler deel zal uitmaken. Als de speler zich in een ruimte bevindt en een geluids bron zich buiten de ruimte bevindt en 100 miljoent, wordt de juiste occluded. Als de bron zich in een ruimte bevindt en de speler buiten en 100 m is, is deze niet correct occluded.
+Standaard heeft de Project Acoustics simulatie een straal van 45 meter rond de locatie van de speler. We raden over het algemeen aan om uw dempingscurve in te stellen op -200 dB rond die afstand. Deze afstand is geen harde beperking. Voor sommige geluiden als wapens wil je misschien een grotere straal. In dergelijke gevallen is het voorbehoud dat alleen geometrie binnen 45 m van de locatie van de speler zal deelnemen. Als de speler zich in een kamer bevindt en er een geluidsbron buiten de kamer is en 100 meter verderop, wordt deze goed afgesloten. Als de bron zich in een kamer bevindt en de speler zich buiten en op 100 m afstand bevindt, wordt deze niet goed afgesloten.
 
-![Scherm opname van WWise-verzwakkings curven](media/atten-curve.png)
+![Schermafbeelding van wwise-dempingscurven](media/atten-curve.png)
 
-### <a name="post-mixer-equalization"></a>Nabewerking van mixer ###
- U kunt ook een post mixer-equalizer toevoegen. U kunt de project akoestische bus beschouwen als een typische galm bus (in de standaard modus galm) en een filter hierop plaatsen om de egalisatie uit te voeren. U ziet een voor beeld van dit in het project akoestische WWise-voorbeeld project.
+### <a name="post-mixer-equalization"></a>Egalisatie na mixer ###
+ Een ander ding dat je zou willen doen is het toevoegen van een post mixer equalizer. U de Project Acoustics-bus behandelen als een typische reverb-bus (in de standaardgalmmodus) en er een filter op zetten om egalisatie uit te brengen. U een voorbeeld hiervan zien in het Project Acoustics Wwise Sample Project.
 
-![Scherm opname van WWise na mixer EQ](media/wwise-post-mixer-eq.png)
+![Schermafbeelding van Wwise-eq na de mixer](media/wwise-post-mixer-eq.png)
 
-Zo kunt u met een filter voor hoge controle de bas afhandelen van near-veld opnamen die een bekeer bare galm van de klank leveren. U kunt ook meer controle over het post-maken bereiken door de EQ via RTPCs aan te passen, zodat u de kleur van galm kunt wijzigen tijdens game tijd.
+Een high pass-filter kan bijvoorbeeld helpen om de bas te verwerken van near-field opnames die boomy, onrealistische reverb opleveren. U ook meer post-bake controle bereiken door het aanpassen van de EQ via RTPC's, zodat u de kleur van de galm te veranderen in het spel.
 
-## <a name="set-up-scene-wide-project-acoustics-properties"></a>Eigenschappen van het project akoestische scène-breed instellen
+## <a name="set-up-scene-wide-project-acoustics-properties"></a>Scènebrede Project Acoustics-eigenschappen instellen
 
-De functie voor akoestische ruimte-actor biedt veel besturings elementen waarmee het gedrag van het systeem wordt gewijzigd en kan worden gebruikt bij het opsporen van fouten.
+De actor Acoustics Space legt veel besturingselementen bloot die het gedrag van het systeem wijzigen en nuttig zijn bij het debuggen.
 
-![Scherm opname van besturings elementen voor Unreal akoestische-ruimte](media/acoustics-space-controls.png)
+![Schermafbeelding van unreal acoustics-ruimtebesturingselementen](media/acoustics-space-controls.png)
 
-* **Akoestische gegevens:** Aan dit veld moet een geïntegreerde-geluids activum worden toegewezen vanuit de map Content/akoestische. De invoeg toepassing voor project akoestische voegt automatisch de map Content/akoestische toe aan de pakket mappen van uw project.
-* **Grootte van tegel:** De gebieden van de regio rond de listener die u wilt dat akoestische gegevens in het RAM-geheugen worden geladen. Zolang listener-tests direct rond de speler worden geladen in, zijn de resultaten hetzelfde als het laden van akoestische gegevens voor alle tests. Grotere tegels gebruiken meer RAM-geheugen, maar beperk de schijf-I/O
-* **Automatische stroom:** Wanneer deze functie is ingeschakeld, wordt automatisch in nieuwe tegels geladen omdat de listener de rand van een geladen regio bereikt. Als deze is uitgeschakeld, moet u nieuwe tegels hand matig laden via code of blauw drukken
-* **Cache schaal:** Hiermee bepaalt u de grootte van de cache die wordt gebruikt voor akoestische query's. Een kleinere cache maakt gebruik van minder RAM, maar kan het CPU-gebruik voor elke query verhogen.
-* **Geluids voorzieningen ingeschakeld:** Een debug-controle voor het snel A/B inschakelen van de akoestische simulatie. Dit besturings element wordt genegeerd bij de configuratie van de verzen ding. Het besturings element is handig om te vinden of een bepaalde audio fout afkomstig is van de geluids berekeningen of een ander probleem in het WWise-project.
-* **Update-afstanden:** Gebruik deze optie als u de pre-geïntegreerde akoestische informatie wilt gebruiken voor afstands query's. Deze query's zijn vergelijkbaar met Ray-casts, maar ze zijn vooraf berekend, waardoor het veel minder CPU vergt. Een voor beeld van een gebruik is voor discrete reflecties van het dichtstbijzijnde Opper vlak voor de listener. Als u dit volledig wilt benutten, moet u code of blauw drukken gebruiken om de afstanden op te vragen.
-* **Statistieken tekenen:** Hoewel UE `stat Acoustics` u CPU-informatie kan bieden, wordt in deze status weergave de momenteel geladen ACE-bestand, het RAM-gebruik en andere status informatie weer gegeven in de linkerbovenhoek van het scherm.
-* **Voxels tekenen:** Overlay voxels dicht bij de listener die het Voxel Raster weergeeft dat tijdens runtime interpolatie wordt gebruikt. Als een zender zich in een runtime-Voxel bevindt, mislukt het uitvoeren van akoestische query's.
-* **Teken sondes:** Alle tests voor deze scène weer geven. Ze zijn verschillende kleuren, afhankelijk van hun laad status.
-* **Afstanden tekenen:** Als update afstanden is ingeschakeld, wordt in het dichtstbijzijnde Opper vlak een vak weer gegeven met de listener in afspiegelende richtingen rond de listener.
+* **Akoestiek Gegevens:** Aan dit veld moet een gebakken akoestiekactief van de map Inhoud/Akoestiek worden toegewezen. De Project Acoustics-plug-in voegt automatisch de content/acoustics-map toe aan de verpakte mappen van uw project.
+* **Tegelgrootte:** De omvang van de regio rond de luisteraar die u wilt akoestiek gegevens geladen in RAM. Zolang de luisteraarsondes onmiddellijk rond de speler binnen worden geladen, zijn de resultaten zelfde als het laden van akoestische gegevens voor alle sondes. Grotere tegels gebruiken meer RAM, maar verminderen schijf I/O
+* **Automatisch streamen:** Wanneer ingeschakeld, laadt u automatisch nieuwe tegels wanneer de listener de rand van een geladen gebied bereikt. Wanneer uitgeschakeld, moet u nieuwe tegels handmatig laden via code of blauwdrukken
+* **Cacheschaal:** hiermee bepaalt u de grootte van de cache die wordt gebruikt voor akoestische query's. Een kleinere cache verbruikt minder RAM, maar kan het CPU-gebruik voor elke query verhogen.
+* **Akoestiek ingeschakeld:** Een foutopsporingsbesturingselement om snel A/B-toggling van de Akoestieksimulatie mogelijk te maken. Dit besturingselement wordt genegeerd in verzendconfiguraties. De besturingselement is handig om te bepalen of een bepaalde audiobug afkomstig is van de akoestiekberekeningen of een ander probleem in het Wwise-project.
+* **Afstanden bijwerken:** Gebruik deze optie als u de voorgebakken akoestiekinformatie wilt gebruiken voor afstandsquery's. Deze query's zijn vergelijkbaar met ray casts, maar ze zijn vooraf berekend dus neem veel minder CPU. Een voorbeeld gebruik is voor discrete reflecties uit het dichtst oppervlak aan de luisteraar. Om dit volledig te benutten, moet u code of blauwdrukken gebruiken om afstanden te bevragen.
+* **Statistieken tekenen:** Hoewel UE's `stat Acoustics` u cpu-informatie kunnen geven, wordt in deze statusweergave het momenteel geladen ACE-bestand, RAM-gebruik en andere statusgegevens linksboven in het scherm weergegeven.
+* **Teken Voxels:** Overlay voxels dicht bij de luisteraar met het voxel raster gebruikt tijdens runtime interpolatie. Als een zender zich in een runtime voxel bevindt, mislukt deze niet in akoestische query's.
+* **Sondes tekenen:** Laat alle sondes voor deze scène zien. Ze zullen verschillende kleuren, afhankelijk van hun belasting staat.
+* **Afstanden tekenen:** Als Updateafstanden is ingeschakeld, wordt een vak op het dichtstbijzijnde oppervlak weergegeven in gekwantificeerde richtingen rond de listener.
 
-## <a name="actor-specific-acoustics-design-controls"></a>Actor-specifieke akoestische ontwerp besturings elementen
-Deze ontwerp besturings elementen bevinden zich in een afzonderlijk audio onderdeel in Unreal.
+## <a name="actor-specific-acoustics-design-controls"></a>Actor-specifieke akoestiek ontwerpcontroles
+Deze ontwerpbesturingselementen zijn beperkt tot een afzonderlijke audiocomponent in Unreal.
 
-![Scherm afbeelding van de besturings elementen van het Unreal-audio onderdeel](media/audio-component-controls.png)
+![Schermafbeelding van besturingselementen voor onwerkelijke audiocomponenten](media/audio-component-controls.png)
 
-* **Bedekking vermenigvuldiger:** Hiermee wordt het bedekking-effect bepaald. Met de waarden > 1 wordt de bedekking. Met de waarden < 1 wordt deze geminimaliseerd.
-* **Wetness-aanpassing:** Extra galm-dB
-* **Vermenigvuldigings tijd van het verval tijdstip:** Hiermee bepaalt u de RT60 multiplicatively op basis van de uitvoer van de akoestische simulatie
-* **Aanpassing van de klep:** Hiermee bepaalt u hoe de reverberation buiten gaat. Waarden dichter bij 0 zijn meer binnenshuis, dichter bij 1 zijn meer buitenshuis. Deze aanpassing is additief, dus als u deze instelt op-1, wordt de indeur afgedwongen. Als u deze instelt op + 1, worden er buitenshuis afgedwongen.
-* **Data Base voor verzen ding:** Genereer een extra via-the-Wall-geluids fragment met deze LOUDNESS gecombineerd met de afstands afzwakking op basis van het gezichts vermogen.
-* **Natte ratio afstands verdraaien:** Hiermee past u de reverberation-kenmerken van de bron aan alsof deze dichter/verder weg waren, zonder dat dit van invloed is op het directe pad.
-* **Afspelen bij starten:** Wissel knop om op te geven of het geluid automatisch moet worden afgespeeld bij het starten van de scène. Standaard ingeschakeld.
-* **Akoestische para meters weer geven:** Fout opsporingsgegevens direct boven op het onderdeel weer geven. (alleen voor niet-verzend configuraties)
+* **Occlusie multiplier:** Hiermee bepaalt u het occlusie-effect. Waarden > 1 versterken de occlusie. Waarden <1 minimaliseren deze.
+* **Aanpassing nattigheid:** Extra reverb dB
+* **Decay Time Multiplier:** Hiermee regelt u de RT60 op vermenigvuldigende wijze, op basis van de output van de akoestieksimulatie
+* **Aanpassing buitenheid:** Bepaalt hoe buiten de nagalm is. Waarden dichter bij 0 zijn meer binnenshuis, dichter bij 1 zijn meer buiten. Deze aanpassing is additief, dus het instellen van het op -1 zal binnenshuis af te dwingen, het instellen van het op +1 zal buiten af te dwingen.
+* **Transmissie Db:** Maak een extra door-de-muur geluid met deze luidheid in combinatie met line-of-sight gebaseerde afstand demping.
+* **Wet Ratio Distance Warp:** Hiermee past u de nagalmkenmerken op de bron aan alsof deze dichter/verder weg is, zonder het directe pad te beïnvloeden.
+* **Spelen op het startscherm:** Schakel in om op te geven of het geluid automatisch moet worden afgespeeld tijdens het starten van de scène. Standaard ingeschakeld.
+* **Akoestische parameters weergeven:** Geef foutopsporingsinformatie direct boven op de component in de game weer. (alleen voor niet-verzendconfiguraties)
 
-## <a name="blueprint-functionality"></a>Blauw druk-functie
-De functie voor het maken van akoestische ruimte is toegankelijk via blauw drukken, waardoor er functionaliteit wordt geboden, zoals het laden van een kaart of het wijzigen van instellingen via niveau-scripting. Hier vindt u twee voor beelden.
+## <a name="blueprint-functionality"></a>Blauwdrukfunctionaliteit
+De Acoustics Space-actor is toegankelijk via een blauwdruk en biedt functionaliteit zoals het laden van een kaart of het wijzigen van instellingen via level scripting. We geven hier twee voorbeelden.
 
-### <a name="add-finer-grained-control-over-streaming-load"></a>Nauw keurige controle over streaming-belasting toevoegen
-U kunt de functie voor het streamen van akoestische gegevens zelf in plaats van streaming automatisch laten beheren op basis van de positie van de speler, met behulp van de blauw druk tegel van de taak
+### <a name="add-finer-grained-control-over-streaming-load"></a>Fijnere-grained controle over streaming belasting toevoegen
+Als u de akoestische gegevensstreaming zelf wilt beheren in plaats van automatisch te streamen op basis van de positie van de speler, u de blauwdrukfunctie Force Load Tile gebruiken:
 
-![Scherm afbeelding van de opties voor het streamen van blauw drukken in Unreal](media/blueprint-streaming.png)
+![Schermafbeelding van blueprintstreamingopties in Unreal](media/blueprint-streaming.png)
 
-* **Stemming** De AcousticsSpace actor
-* **Positie van Midden:** Het midden van de regio waarvoor gegevens moeten worden geladen
-* **Ongedaan maken van het laden buiten de tegel:** Als u dit selectie vakje inschakelt, worden alle tests die geen deel uitmaken van de nieuwe regio, uit het RAM-geheugen verwijderd. Als u dit selectie vakje uitschakelt, wordt de nieuwe regio in het geheugen geladen terwijl de bestaande tests ook in het geheugen worden geladen
-* **Blok keren bij voltooiing:** Hiermee wordt een synchrone bewerking door de tegel geladen
+* **Doel:** De AkoestiekSpace-acteur
+* **Middelste positie:** Het centrum van de regio dat gegevens moet laden
+* **Probes buiten uitladen:** Indien aangevinkt, worden alle sondes die niet in de nieuwe regio zijn, gelost van HET RAM-geheugen. Als het nieuwe gebied niet is ingeschakeld, wordt het in het geheugen geladen terwijl de bestaande sondes ook in het geheugen worden geladen
+* **Blok bij voltooiing:** Maakt de tegel laden een synchrone bewerking
 
-De tegel grootte moet al zijn ingesteld voordat de tegel geforceerde belasting aanroept. U kunt bijvoorbeeld het volgende doen om een ACE-bestand te laden, de tegel grootte en de stroom in een regio in te stellen:
+De tegelgrootte moet al zijn ingesteld voordat u Force Load Tile aanroept. U bijvoorbeeld zoiets doen om een ACE-bestand te laden, uw tegelgrootte in te stellen en te streamen in een regio:
 
-![Scherm opname van opties voor het instellen van streaming in Unreal](media/streaming-setup.png)
+![Schermafbeelding van opties voor streaminginstellingen in Unreal](media/streaming-setup.png)
 
-De functie voor het maken van een blauw druk in dit voor beeld bevat de volgende para meters:
+De blauwdrukfunctie Load Acoustics Data die in dit voorbeeld wordt gebruikt, heeft de volgende parameters:
 
-* **Stemming** De AcousticsSpace actor.
-* **Nieuwe maken:** De akoestische gegevens activa die moeten worden geladen. Als u dit leeg laat of instelt op NULL, wordt de huidige maken verwijderd zonder dat er een nieuw bestand wordt geladen.
+* **Doel:** De AcousticsSpace acteur.
+* **Nieuwe Bake:** De akoestiek data asset te laden. Het verlaten van deze blanco / instelling op null zal de huidige bak te lossen zonder het laden van een nieuwe.
 
-### <a name="optionally-query-for-surface-proximity"></a>Optioneel query voor oppervlakte nabijheid
-Als u wilt zien hoe close-Opper vlakken zich in een bepaalde richting rond de listener bevinden, kunt u de functie voor query afstand gebruiken. Deze functie kan nuttig zijn bij het oplopen van gerichte reflecties of voor andere spel logica die wordt aangedreven door Surface nabijheid. De query is minder duur dan een Ray-cast, omdat de resultaten worden opgehaald uit de opzoek tabel van akoestische waarden.
+### <a name="optionally-query-for-surface-proximity"></a>Optioneel query voor oppervlaktenabijheid
+Als u wilt zien hoe dicht oppervlakken zich in een bepaalde richting rond de listener bevinden, u de functie Queryafstand gebruiken. Deze functie kan nuttig zijn voor het besturen van directionele vertraagde reflecties, of voor andere spellogica die wordt aangedreven door de nabijheid van het oppervlak. De query is minder duur dan een ray-cast, omdat de resultaten worden getrokken uit de akoestiek opzoektabel.
 
-![Scherm afbeelding van de voor beeld-blauw druk op de query](media/distance-query.png)
+![Schermafbeelding van voorbeeld query Blauwdrukafstand](media/distance-query.png)
 
-* **Stemming** De AcousticsSpace actor
-* **Kijk richting:** De richting van de query in, gecentreerd bij de listener
-* **Tussen** Als de query is geslaagd, wordt de afstand naar het dichtstbijzijnde Opper vlak
-* **Retour waarde:** Booleaanse waarde: True als de query is geslaagd, anders onwaar
+* **Doel:** De AkoestiekSpace-acteur
+* **Kijk richting:** De richting waarin u moet invragen, gecentreerd op de listener
+* **Afstand:** Als query slaagt, is de afstand tot het dichtstbijzijnde oppervlak
+* **Retourwaarde:** Booleaan - true als query geslaagd, anders onwaar
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk de concepten achter het [ontwerp proces](design-process.md)
-* [Een Azure-account maken](create-azure-account.md) om uw eigen scène te maken
+* Ontdek de concepten achter het [ontwerpproces](design-process.md)
+* [Een Azure-account maken](create-azure-account.md) om uw eigen scène te bakken
 
 

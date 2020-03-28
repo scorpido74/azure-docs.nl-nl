@@ -1,26 +1,20 @@
 ---
-title: Audio-invoer indeling
+title: Indeling voor audioinvoer
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/10/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 114aaa6a1e7e09756bb2d55fcdbf05507a191f22
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: ea9c6b9deed4b95402973c2b72b13c940662b29b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082424"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79486069"
 ---
-## <a name="supported-audio-input-format"></a>Ondersteunde audio-invoer indeling
-
-De Speech SDK gebruikt de volgende indeling voor audio-invoer.
-
-| Indeling | Codec | Bitrate | Samplefrequentie     | Kanalen |
-|--------|-------|---------|-----------------|----------|
-| WAV    | PCM   | 16-bits  | 8 kHz of 16 kHz | 1 (mono) |
+## <a name="supported-audio-input-format"></a>Ondersteunde audio-invoerindeling
 
 [!INCLUDE [supported-audio-formats](supported-audio-formats.md)]

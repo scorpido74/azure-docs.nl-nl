@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/21/2019
 ms.openlocfilehash: 5892b16c37272229e93c2f01cd1b5b23f1184697
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68362489"
 ---
-U moet een [Cognitive Services-API-account](../articles/cognitive-services/cognitive-services-apis-create-account.md) hebben met toegang tot de anomalie detectie-API. U kunt uw abonnements sleutel ophalen uit de [Azure Portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) nadat u uw account hebt gemaakt.
+U moet een [API-account voor Cognitive Services](../articles/cognitive-services/cognitive-services-apis-create-account.md) hebben met toegang tot de Api voor anomaliedetector. U uw abonnementssleutel ophalen van de [Azure-portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) nadat u uw account hebt gemaakt.

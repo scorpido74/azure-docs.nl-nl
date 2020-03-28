@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: zoeken naar afbeeldingen REST API en Ruby-Bing Image Search'
+title: 'Quickstart: Zoek naar afbeeldingen REST API en Ruby - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Ruby en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -13,19 +13,19 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 97b05327b2de4daa43f5f1fa3e4a22ecd79a9085
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930718"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en ruby
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Snelstart: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en Ruby
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Deze eenvoudige Ruby-toepassing stuurt een zoekquery naar de API en toont de onbewerkte resultaten.
 
 Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb).
+De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb)
 ## <a name="prerequisites"></a>Vereisten
 
 * [Nieuwste versie van Ruby](https://www.ruby-lang.org/en/downloads/).
@@ -44,7 +44,7 @@ Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.mic
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en de zoekterm. `uri` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm. `uri`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -90,7 +90,7 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
+Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
 
 ```json
 {
@@ -147,5 +147,5 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretou
 * [Wat is Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Azure Cognitive Services-documentatie](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

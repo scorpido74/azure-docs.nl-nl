@@ -1,5 +1,5 @@
 ---
-title: Quick start voor python-client bibliotheek Bing Aangepaste zoekopdrachten
+title: Bing Custom Search Python-clientbibliotheek snel aan de slag
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,31 +9,31 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: ec0ffdcf86e67a7126a3100c1e20b6e5c3474e35
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78252882"
 ---
-Ga aan de slag met de Bing Aangepaste zoekopdrachten-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Met de Bing Custom Search-API kunt u op maat gemaakte, advertenties gratis zoek functies maken voor onderwerpen die u vindt. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py).
+Ga aan de slag met de Bing Custom Search-clientbibliotheek voor Python. Volg deze stappen om het pakket te installeren en probeer de voorbeeldcode voor basistaken uit. Met de Bing Custom Search API u op maat gemaakte, advertentievrije zoekervaringen maken voor onderwerpen die u belangrijk vindt. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py)
 
-Gebruik de Bing Aangepaste zoekopdrachten-client bibliotheek voor python voor het volgende:
-* Zoek resultaten zoeken op Internet vanuit uw Bing Aangepaste zoekopdrachten-exemplaar.
+Gebruik de bing Custom Search-clientbibliotheek voor Python om:
+* Zoek zoekresultaten op internet in uw instantie Bing Custom Search.
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [pakket (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Voorbeeld van broncode](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python) |  | van[naslagdocumentatieBibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)[(PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | [Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](../../quick-start.md) voor meer informatie.
+- Een Bing Custom Search-exemplaar. Zie [Snelstart: Maak uw eerste voorbeeld van Bing Custom Search](../../quick-start.md) voor meer informatie.
 - Python [2.x of 3.x](https://www.python.org/) 
-- De [Bing aangepaste zoekopdrachten SDK voor python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
+- De [Bing Custom Search SDK voor Python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](~/includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-## <a name="install-the-python-client-library"></a>De python-client bibliotheek installeren
+## <a name="install-the-python-client-library"></a>De Python-clientbibliotheek installeren
 
-Installeer de Bing Aangepaste zoekopdrachten-client bibliotheek met de volgende opdracht.
+Installeer de bing Custom Search-clientbibliotheek met de volgende opdracht.
 
 ```Console
 python -m pip install azure-cognitiveservices-search-customsearch
@@ -42,37 +42,37 @@ python -m pip install azure-cognitiveservices-search-customsearch
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-Maak een nieuw python-bestand in uw favoriete editor of IDE en voeg de volgende import bewerkingen toe.
+Maak een nieuw Python-bestand in uw favoriete editor of IDE en voeg de volgende importen toe.
 
 ```python
 from azure.cognitiveservices.search.customsearch import CustomSearchClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="create-a-search-client-and-send-a-request"></a>Een zoek-client maken en een aanvraag verzenden
+## <a name="create-a-search-client-and-send-a-request"></a>Een zoekclient maken en een aanvraag verzenden
 
-1. Maak een variabele voor de abonnements sleutel en het eind punt.
+1. Maak een variabele voor uw abonnementssleutel en eindpunt.
 
     ```python
     subscription_key = 'your-subscription-key'
     endpoint = 'your-endpoint'
     ```
 
-2. Maak een instantie van `CustomSearchClient`met behulp van een `CognitiveServicesCredentials`-object met de abonnements sleutel. 
+2. Een instantie `CustomSearchClient`van , `CognitiveServicesCredentials` maken met behulp van een object met de abonnementssleutel. 
 
     ```python
     client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Een zoek opdracht met `client.custom_instance.search()`verzenden. Voeg uw zoek term toe aan de para meter `query` en stel `custom_config` in op uw aangepaste configuratie-ID om uw zoek exemplaar te gebruiken. U kunt uw ID ophalen via de [Bing aangepaste zoekopdrachten Portal](https://www.customsearch.ai/)door te klikken op het tabblad **productie** .
+3. Stuur een zoekverzoek met `client.custom_instance.search()`. Sluit uw zoekterm `query` toe aan `custom_config` de parameter en stel uw aangepaste configuratie-id in om uw zoekexemplaar te gebruiken. U uw id ophalen via de [bing-portal voor aangepast zoeken](https://www.customsearch.ai/)door op het tabblad **Productie** te klikken.
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")
     ```
 
-## <a name="view-the-search-results"></a>De zoek resultaten weer geven
+## <a name="view-the-search-results"></a>Bekijk de zoekresultaten
 
-Als er Zoek resultaten voor webpagina's zijn gevonden, de eerste ophalen en de naam, URL en het totale aantal gevonden webpagina's afdrukken.
+Als er zoekresultaten van webpagina's zijn gevonden, krijgt u de eerste en drukt u de gevonden naam, URL en totaal aantal webpagina's af.
 
 ```python
 if web_data.web_pages.value:

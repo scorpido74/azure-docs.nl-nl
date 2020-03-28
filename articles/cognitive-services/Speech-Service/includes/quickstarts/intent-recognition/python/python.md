@@ -7,96 +7,96 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925619"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installeer de Speech-SDK voor uw ontwikkel omgeving en maak een leeg voorbeeld<span class="docon docon-navigate-external x-hidden-focus"></span>project</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installeer de Speech SDK voor uw ontwikkelomgeving<span class="docon docon-navigate-external x-hidden-focus"></span>en maak een leeg voorbeeldproject.</a>
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor de intentie herkenning
+## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor intentieherkenning
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
 ## <a name="open-your-project"></a>Uw project openen
 
-1. Open de IDE van uw voor keur.
-2. Maak een nieuw project en maak een bestand met de naam `quickstart.py`en open het.
+1. Open uw favoriete IDE.
+2. Maak een nieuw project `quickstart.py`en maak een bestand genaamd, open het vervolgens.
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+Laten we wat code toevoegen die werkt als een skelet voor ons project.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-7)]
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt.
+Voordat u een `IntentRecognizer` object initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-voorspellingsbron gebruikt.
 
-Voeg deze code in `quickstart.py`. Zorg ervoor dat u deze waarden bijwerkt:
+Deze code `quickstart.py`invoegen in . Zorg ervoor dat u deze waarden bijwerkt:
 
-* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel.
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. **Regio-id** uit [regio](https://aka.ms/speech/sdkregion) gebruiken
+* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door uw LUIS-voorspellingssleutel.
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door uw LUIS-locatie. **Regio-id** gebruiken vanuit [regio](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
-> Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
+> Zie [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition)als u hulp nodig hebt bij het vinden van deze waarden.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-Met dit voor beeld wordt het `SpeechConfig`-object gebouwd met behulp van LUIS-sleutel en-regio. Zie [SpeechConfig-klasse](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)voor een volledige lijst met beschik bare methoden.
+In dit voorbeeld `SpeechConfig` wordt het object opgebouwd met LUIS-toets en -gebied. Zie [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)voor een volledige lijst met beschikbare methoden.
 
-De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
-## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizer initialiseren
+## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizeer initialiseren
 
-Nu gaan we een `IntentRecognizer`maken. Voeg deze code toe aan de rechter kant onder uw spraak configuratie.
+Laten we nu een. `IntentRecognizer` Plaats deze code direct onder uw spraakconfiguratie.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en Intents toevoegen
 
-U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation.
+U moet een `LanguageUnderstandingModel` medewerker van een intentieherkenning koppelen en de gewenste intenties toevoegen die u wilt herkennen. We gaan intents uit het vooraf gebouwde domein gebruiken voor domotica.
 
-Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app. 
+Voeg deze code `IntentRecognizer`in onder uw . Zorg ervoor dat `"YourLanguageUnderstandingAppId"` u uw LUIS-app-id vervangt. 
 
 >[!TIP]
-> Als u hulp nodig hebt bij het vinden van deze waarde, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
+> Zie [Een LUIS-app maken voor intentieherkenning](#create-a-luis-app-for-intent-recognition)als u hulp nodig hebt bij het vinden van deze waarde.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
-Vanuit het `IntentRecognizer`-object roept u de `recognize_once()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Van `IntentRecognizer` het object, ga je `recognize_once()` de methode aanroepen. Met deze methode kan de spraakservice weten dat u één woordgroep verzendt voor herkenning en dat wanneer de woordgroep is geïdentificeerd om te stoppen met het herkennen van spraak.
 
-Voeg deze code toe onder uw model.
+Voeg deze code onder uw model in.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
-## <a name="display-the-recognition-results-or-errors"></a>De herkennings resultaten (of fouten) weer geven
+## <a name="display-the-recognition-results-or-errors"></a>De herkenningsresultaten weergeven (of fouten)
 
-Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wilt u er iets mee doen. We gaan het eenvoudig opslaan en het resultaat afdrukken naar de console.
+Wanneer het herkenningsresultaat wordt geretourneerd door de spraakservice, wilt u er iets mee doen. We houden het simpel en printen het resultaat af op de console.
 
-Voeg deze code toe onder de aanroep van `recognize_once()`.
+Onder uw `recognize_once()`oproep om , voeg deze code.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien.
+Op dit punt moet je code er zo uitzien.
 
 > [!NOTE]
-> Er zijn enkele opmerkingen toegevoegd aan deze versie.
+> We hebben een aantal opmerkingen toegevoegd aan deze versie.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Voer het voor beeld uit vanaf de-console of in uw IDE:
+Voer het voorbeeld uit vanaf de console of in uw IDE:
 
 ```
 python quickstart.py

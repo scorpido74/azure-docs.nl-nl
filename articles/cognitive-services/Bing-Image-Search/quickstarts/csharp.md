@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: zoeken naar afbeeldingen-Bing Image Search REST API enC#'
+title: 'Snelstart: zoeken naar afbeeldingen - Bing Image Search REST API en C #'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met C# en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: e52101b873e03cd6fcd847e9aa2a2d801f8f583d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74918849"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API enC#
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Snelstart: zoeken naar afbeeldingen met de Bing Image Search REST API en C #
 
-Gebruik deze quickstart om zoekaanvragen naar de Bing Image Search API te leren sturen. Deze C#-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om zoekaanvragen naar de Bing Afbeeldingen zoeken-API te leren sturen. Deze C#-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) met extra foutafhandeling en aantekeningen.
+De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) met extra foutafhandeling en annotaties.
 
 ## <a name="prerequisites"></a>Vereisten
-* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
+* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Het [Json.NET](https://www.newtonsoft.com/json) framework, beschikbaar als NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
@@ -42,7 +42,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
     using Newtonsoft.Json.Linq;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. `uriBase` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. `uriBase`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```csharp
     //...
@@ -155,7 +155,7 @@ Voer in de methode `BingImageSearch` de volgende stappen uit.
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
+Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
 
 ```json
 {
@@ -212,5 +212,5 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretou
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
 * [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
 * [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Azure Cognitive Services-documentatie](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

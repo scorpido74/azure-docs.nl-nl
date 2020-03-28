@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906933"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor de `'X-ClientTraceId'`-header te maken.
 
-## <a name="set-the-endpoint"></a>Het eind punt instellen
+## <a name="set-the-endpoint"></a>Het eindpunt instellen
 
-In dit voor beeld wordt geprobeerd uw Translator Text-eind punt te lezen op `TRANSLATOR_TEXT_ENDPOINT`basis van een omgevings variabele:. Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
+In dit voorbeeld wordt geprobeerd uw eindpunt van `TRANSLATOR_TEXT_ENDPOINT`de vertalerstekst te lezen aan de basis van een omgevingsvariabele: . Als u niet bekend bent met omgevingsvariabelen, kunt u `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
 
 ```javascript
 lorum ipsum
@@ -39,10 +39,10 @@ lorum ipsum
 
 ## <a name="configure-the-request"></a>Aanvraag configureren
 
-Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert u de aanvraag:
+Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
 
 >[!NOTE]
-> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Zie [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) voor meer informatie over eindpunten, routes en aanvraagparameters.
 
 ```javascript
 let options = {
@@ -60,9 +60,9 @@ let options = {
 };
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord afdrukken
+## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord weergeven
 
 Vervolgens maakt u de aanvraag via de methode `request()`. Deze gebruikt het `options`-object dat in de vorige sectie als eerste argument is gemaakt, waarna het opgemaakte JSON-antwoord wordt afgedrukt.
 
@@ -87,7 +87,7 @@ Als u uw code graag wilt vergelijken met de onze, kunt u het volledige voorbeeld
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Dit voorbeeld is ingekort en u ziet een fragment van het resultaat:
 
@@ -181,7 +181,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Image Insights ophalen met de SDK voor C# -Bing Visual Search'
+title: 'Snelstart: krijg beeldinzichten met de SDK voor C# - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het uploaden van een installatie kopie met behulp van de Bing Visual Search SDK en krijg inzicht in deze Snelstartgids.
+description: Meer informatie over het uploaden van een afbeelding met de Bing Visual Search SDK en krijg er inzicht in met deze quickstart.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: b1f5274bcae1f6e59f6dea94beee810a4613d739
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446613"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search SDK voorC#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Snelstart: inzicht krijgen in afbeeldingsinzichten met de Bing Visual Search SDK voor C #
 
-In deze quickstart leert u hoe u met de C#-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch).
+In deze quickstart leert u hoe u met de C#-SDK afbeeldingsinzichten krijgt uit de Bing Visual Search-service. Hoewel Bing Visual Search een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)
 
 ## <a name="prerequisites"></a>Vereisten
 

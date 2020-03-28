@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Computer Vision 2,0 en 2,1-pak gedrukte en handgeschreven tekst-REST,C#'
+title: 'Snelstart: Computer Vision 2.0 en 2.1 - Uittreksel gedrukte en handgeschreven tekst - REST, C #'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst van een afbeelding met behulp C#van de computer vision-API with.
+description: In deze quickstart haalt u afgedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision API met C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,42 +12,42 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: b47c0a87f2b7e4f3fea2d5ed088372cabce2a994
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566094"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-c"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision 2,0 en 2,1 REST API enC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-c"></a>Snelstart: gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision 2.0 en 2.1 REST API en C #
 
-In deze Quick Start haalt u gedrukte en/of handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de methode voor het lezen en lezen van een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) - [bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) kunt u tekst in een afbeelding detecteren en herkende tekens in een door een machine Lees bare teken stroom uitpakken. De API bepaalt welk herkennings model voor elke tekst regel moet worden gebruikt, zodat het afbeeldingen ondersteunt met zowel gedrukte als handgeschreven tekst.
+In deze quickstart haalt u gedrukte en/of handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) and Read [Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) u tekst in een afbeelding detecteren en herkende tekens extraheren in een machineleesbare tekenstroom. De API bepaalt welk herkenningsmodel voor elke regel tekst moet worden gebruikt, zodat deze afbeeldingen ondersteunt met zowel afgedrukte als handgeschreven tekst.
 
-Vergeleken met Computer Vision 2,0 en 2,1 biedt de Computer Vision 3,0 open bare preview-versie:
+In vergelijking met Computer Vision 2.0 en 2.1 biedt de Computer Vision 3.0 Public Preview:
 
-* nog betere nauw keurigheid
-* een gewijzigde uitvoer indeling
-* Betrouwbaarheids score voor woorden
-* ondersteuning van Spaanse en Engelse talen met de para meter extra taal
+* nog nauwkeuriger
+* een gewijzigde uitvoerindeling
+* betrouwbaarheidsscore voor woorden
+* ondersteuning van zowel de Spaanse als de Engelse taal met de aanvullende taalparameter
 
 #### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 > [!IMPORTANT]
-> De methode voor het [lezen van batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+> De [methode Batch read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode `Operation-Location` Batch read een URI in de waarde van het veld responskoptekst. U deze URI, die de API voor het [resultaat van de bewerking lezen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) vertegenwoordigt, aanroepen om zowel de status te controleren als de resultaten van de aanroep batchleesmethode te retourneren.
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 > [!IMPORTANT]
-> De methode voor het [lezen van batch](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+> De [methode Batch read](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode `Operation-Location` Batch read een URI in de waarde van het veld responskoptekst. U deze URI, die de API voor het [resultaat van de bewerking lezen](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) vertegenwoordigt, aanroepen om zowel de status te controleren als de resultaten van de aanroep batchleesmethode te retourneren.
 
 ---
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
 
-- U moet beschikken over [Visual Studio 2015 of hoger](https://visualstudio.microsoft.com/downloads/).
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
+- U moet [Visual Studio 2015 of hoger](https://visualstudio.microsoft.com/downloads/)hebben.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
@@ -224,7 +224,7 @@ namespace CSHttpClientSample
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
 
@@ -234,7 +234,7 @@ Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
     1. Klik op het tabblad **Bladeren** en typ 'Newtonsoft.Json' in het vak **Zoeken**.
     1. Selecteer **Newtonsoft.Json** wanneer dit wordt weergegeven en klik vervolgens op het selectievakje naast uw projectnaam en op **Installeren**.
 1. Voer het programma uit.
-1. Voer bij de prompt het pad in naar een lokale installatie kopie en de taal die u wilt herkennen.
+1. Voer bij de prompt het pad naar een lokale afbeelding en de taal in die u wilt herkennen.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -555,7 +555,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldtoepassi
 }
 ```
 
-#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-3-public-preview"></a>[Versie 3 (openbare preview)](#tab/version-3)
 
 
 ```json

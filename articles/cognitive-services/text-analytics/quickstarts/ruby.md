@@ -1,7 +1,7 @@
 ---
 title: 'Snelstart: Ruby gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: Deze Quick Start laat zien hoe u informatie en code voorbeelden kunt ophalen om snel aan de slag te gaan met behulp van de Text Analytics-API in azure Cognitive Services.
+description: In deze quickstart u informatie en codevoorbeelden opvragen om u snel aan de slag te helpen met de Text Analytics API in Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 0e43d6c3565ea8ae019ab624cbc85965678ea3b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378463"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Snelstart: Ruby gebruiken om de Text Analytics Cognitive Service aan te roepen
@@ -36,7 +36,7 @@ Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd m
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
 1. Voer het programma uit.
 
 ```ruby
@@ -127,7 +127,7 @@ Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
 1. Voer het programma uit.
 
 ```ruby
@@ -191,7 +191,7 @@ Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdoc
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
 1. Voer het programma uit.
 
 
@@ -276,7 +276,7 @@ De Entities-API extraheert entiteiten uit een tekstdocument met behulp van de [m
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
 1. Voer het programma uit.
 
 ```ruby
@@ -363,9 +363,9 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Text Analytics met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Tekstanalyse met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Zie ook 
 
  [Overzicht van Text Analytics](../overview.md)  
- [Veelgestelde vragen](../text-analytics-resource-faq.md)
+ [Veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md)

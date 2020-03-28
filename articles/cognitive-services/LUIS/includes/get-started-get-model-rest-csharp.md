@@ -1,5 +1,5 @@
 ---
-title: Model met REST-aanroep ophalen inC#
+title: 'Model krijgen met REST-oproep in C #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,35 +8,35 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368478"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80151044"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure Language Understanding: resource 32-teken sleutel en bewerkings eind punt-URL ontwerpen. Maken met de [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Importeer de [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) -app uit de cognitieve-Services-Language-Standing github-opslag plaats.
-* De LUIS-toepassings-ID voor de geïmporteerde TravelAgent-app. De toepassings-id wordt weergegeven op het toepassingsdashboard.
-* De versie-ID in de toepassing die de uitingen ontvangt. De standaard-id is '0.1'.
-* [.NET core V 2.2 +](https://dotnet.microsoft.com/download)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* Azure Language Understanding - Authoring resource 32 tekensleutel en url voor het schrijven van eindpunten. Maken met de [Azure-portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
+* Importeer de [TravelAgent-app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) vanuit de GitHub-repository die gebruik maakt van de GitHub-opslagplaats voor cognitieve services.
+* De LUIS toepassings-ID voor de geïmporteerde TravelAgent-app. De toepassings-id wordt weergegeven op het toepassingsdashboard.
+* De versie-id in de toepassing die de utterances ontvangt. De standaard-id is '0.1'.
+* [.NET Core 3.1](https://dotnet.microsoft.com/download)
+* [Visual Studio-code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>JSON-bestand met voorbeeldutterances
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Model via een programma wijzigen
+## <a name="change-model-programmatically"></a>Model programmatisch wijzigen
 
-1. Maak een nieuwe console toepassing die is gericht C# op de taal, met de naam van het project en de map van `model-with-rest`.
+1. Maak een nieuwe consoletoepassing die is gericht op de `model-with-rest`C#-taal, met een project- en mapnaam van .
 
     ```console
     dotnet new console -lang C# -n model-with-rest
     ```
 
-1. Installeer de vereiste afhankelijkheden met de volgende DotNet CLI-opdrachten.
+1. Installeer vereiste afhankelijkheden met de volgende dotnet CLI-opdrachten.
 
     ```console
     dotnet add package System.Net.Http
@@ -164,15 +164,15 @@ ms.locfileid: "77368478"
     }
     ```
 
-1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
+1. Vervang de waarden `YOUR-` die beginnen met uw eigen waarden.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|De bewerkings sleutel voor uw 32-teken.|
-    |`YOUR-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
-    |`YOUR-APP-ID`| De ID van uw LUIS-app. |
+    |`YOUR-KEY`|Uw 32 teken authoring toets.|
+    |`YOUR-ENDPOINT`| Uw URL-eindpunt voor het ontwerpen. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`. U stelt uw resourcenaam in toen u de resource maakte.|
+    |`YOUR-APP-ID`| Uw LUIS-app-id. |
 
-    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
+    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-portal in de sectie Beheren op de pagina **Azure-bronnen.** De app-id is beschikbaar in dezelfde sectie Beheren, op de pagina **Toepassingsinstellingen.**
 
 1. Bouw de consoletoepassing.
 
@@ -180,7 +180,7 @@ ms.locfileid: "77368478"
     dotnet build
     ```
 
-1. Voer de consoletoepassing uit. De console-uitvoer bevat dezelfde JSON die u eerder hebt gezien in het browser venster.
+1. Voer de consoletoepassing uit. De console-uitvoer geeft dezelfde JSON weer die u eerder in het browservenster hebt gezien.
 
     ```console
     dotnet run
@@ -188,7 +188,7 @@ ms.locfileid: "77368478"
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u het bestand uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

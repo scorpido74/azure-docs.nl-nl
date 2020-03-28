@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een microfoon-Speech-Service'
+title: 'Snelstart: spraak herkennen vanuit een microfoon - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 11/20/2019
 ms.author: erhopf
 ms.openlocfilehash: ab51fe0323ea23c16cb52aa7a0570f8d51d40b2f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468485"
 ---
-In deze Quick Start gebruikt u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) om spraak op een microfoon invoer interactief te herkennen en de tekst transcriptie van vastgelegde audio op te halen. Het is eenvoudig om deze functie te integreren in uw apps of apparaten voor algemene herkennings taken, zoals het transcriberen van gesp rekken. Het kan ook worden gebruikt voor complexere integraties, zoals het gebruik van het bot-Framework met de Speech SDK om spraak assistenten te bouwen.
+In deze quickstart gebruikt u de [Spraak-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) om spraak interactief te herkennen van een microfooningang en de teksttranscriptie te halen uit vastgelegde audio. Het is eenvoudig om deze functie te integreren in uw apps of apparaten voor algemene herkenningstaken, zoals het transcriberen van gesprekken. Het kan ook worden gebruikt voor complexere integraties, zoals het gebruik van het Bot Framework met de Speech SDK om spraakassistenten te bouwen.
 
-Nadat u aan enkele vereisten hebt voldaan, heeft het herkennen van spraak van een microfoon slechts vier stappen:
+Na het voldoen aan een paar voorwaarden, het herkennen van spraak van een microfoon duurt slechts vier stappen:
 
 > [!div class="checklist"]
-> * Een `SpeechConfig`-object maken op basis van uw abonnements sleutel en-regio.
-> * Maak een `SpeechRecognizer`-object met behulp van het `SpeechConfig`-object.
-> * Gebruik het `SpeechRecognizer`-object om het herkennings proces voor één utterance te starten.
-> * Controleer de geretourneerde `SpeechRecognitionResult`.
+> * Maak `SpeechConfig` een object op basis van uw abonnementssleutel en regio.
+> * Maak `SpeechRecognizer` een object `SpeechConfig` met het object van bovenaf.
+> * Start `SpeechRecognizer` het herkenningsproces voor één utterance met het object.
+> * Inspecteer de `SpeechRecognitionResult` teruggekeerden.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 3d92d3f959e2ad44daa82d6b609b9357cee969c9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906890"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -32,11 +32,11 @@ Daarna moet u Json.Net installeren. Voer vanuit de map van het project het volge
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
-## <a name="select-the-c-language-version"></a>Selecteer de C# taalversie
+## <a name="select-the-c-language-version"></a>De C#-taalversie selecteren
 
-Deze snelstartgids moet C# 7.1 of hoger. Er zijn een aantal manieren om te wijzigen de C# versie voor uw project. In deze handleiding leert u hoe u aan te passen de `sentences-sample.csproj` bestand. Voor alle beschikbare opties, zoals het wijzigen van de taal van Visual Studio, Zie [selecteert u de C# taalversie](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+Deze quickstart vereist C# 7.1 of hoger. Er zijn een paar manieren om de C#-versie voor uw project te wijzigen. In deze handleiding laten we u zien `sentences-sample.csproj` hoe u het bestand aanpassen. Zie [De C#-taalversie selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version)voor alle beschikbare opties, zoals het wijzigen van de taal in Visual Studio.
 
-Open het project en open vervolgens `sentences-sample.csproj`. Zorg ervoor dat `LangVersion` is ingesteld op 7.1 of hoger. Als er geen een groep met eigenschappen voor de taalversie, voegt u deze regels toe:
+Open uw project `sentences-sample.csproj`en open . Zorg ervoor `LangVersion` dat dit is ingesteld op 7.1 of hoger. Als er geen eigenschapsgroep voor de taalversie is, voegt u de volgende regels toe:
 
 ```xml
 <PropertyGroup>
@@ -57,9 +57,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-classes-for-the-json-response"></a>Klassen maken voor het JSON-antwoord
+## <a name="create-classes-for-the-json-response"></a>Klassen maken voor de JSON-respons
 
-We gaan nu een klasse maken die wordt gebruikt bij het deserialiseren van het JSON-antwoord dat door de Translator Text-API is geretourneerd.
+Vervolgens gaan we een klasse maken die wordt gebruikt bij het deserialiseren van de JSON-respons die wordt geretourneerd door de Translator Text API.
 
 ```csharp
 /// <summary>
@@ -78,9 +78,9 @@ public class DetectedLanguage
 }
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
+## <a name="get-subscription-information-from-environment-variables"></a>Abonnementsinformatie ophalen uit omgevingsvariabelen
 
-Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende `Program` regels toe aan de klasse. Deze regels lezen uw abonnementssleutel en eindpunt uit omgevingsvariabelen en er wordt een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -105,7 +105,7 @@ static Program()
 
 ## <a name="create-a-function-to-determine-sentence-length"></a>Een functie maken om de zinlengte te bepalen
 
-Maak in `Program` de-klasse een nieuwe functie met `BreakSentenceRequest()`de naam. Deze functie heeft vier argumenten: `subscriptionKey`, `endpoint`, `route` `inputText`en.
+Maak `Program` in de klasse een `BreakSentenceRequest()`nieuwe functie genaamd . Deze functie heeft `subscriptionKey`vier `endpoint` `route`argumenten `inputText`nodig: , , en .
 
 ```csharp
 static public async Task BreakSentenceRequest(string subscriptionKey, string endpoint, string route, string inputText)
@@ -117,7 +117,7 @@ static public async Task BreakSentenceRequest(string subscriptionKey, string end
 }
 ```
 
-## <a name="serialize-the-break-sentence-request"></a>De aanvraag voor het kraken van een zin serialiseren
+## <a name="serialize-the-break-sentence-request"></a>Serialiseer de break sentence request
 
 Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat. Onthoud dat u meerdere objecten kunt doorgeven in de matrix `body`.
 
@@ -173,11 +173,11 @@ foreach (BreakSentenceResult o in deserializedOutput)
 }
 ```
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-In de laatste stap roept u `BreakSentenceRequest()` aan in de functie `Main`. Zoek `static void Main(string[] args)` en vervang deze door de volgende code:
+In de laatste stap roept u `BreakSentenceRequest()` aan in de functie `Main`. Zoek `static void Main(string[] args)` en vervang deze door deze code:
 
 ```csharp
 static async Task Main(string[] args)
@@ -194,7 +194,7 @@ static async Task Main(string[] args)
 }
 ```
 
-`Main`U ziet dat in, u `subscriptionKey`declareert `endpoint` `route`,, en de tekst die moet worden geëvalueerd `breakSentenceText`.
+U zult merken `Main`dat in , `subscriptionKey`je `endpoint` `route`verklaart , , `breakSentenceText`en de tekst te evalueren .
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
@@ -206,14 +206,14 @@ dotnet run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het monster hebt uitgevoerd, ziet u het volgende afgedrukt op de terminal:
 
 ```bash
 The detected language is \'en\'. Confidence is: 1.
 The first sentence length is: 25
 ```
 
-Dit bericht is gebaseerd op de onbewerkte JSON, die er als volgt uitziet:
+Dit bericht is opgebouwd uit de ruwe JSON, die er als volgt uit zal zien:
 
 ```json
 [
@@ -234,7 +234,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

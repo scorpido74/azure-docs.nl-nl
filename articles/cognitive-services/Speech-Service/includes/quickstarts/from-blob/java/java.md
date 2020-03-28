@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage, Java spraak service'
+title: 'Snelstart: spraak herkennen die is opgeslagen in blobopslag, Java - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 13dc7a7766158a84a515a4b986ac6d34cd97114a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467793"
 ---
 [!INCLUDE [jre](./jre.md)]

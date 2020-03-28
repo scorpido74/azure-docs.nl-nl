@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: aangepaste logo detector gebruiken om Azure-Services te herkennen-Custom Vision'
+title: 'Zelfstudie: Gebruik aangepaste logodetector om Azure-services te herkennen - Aangepaste visie'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie gaat u een voor beeld-app door lopen die gebruikmaakt van Custom Vision als onderdeel van een logo-detectie scenario. Leer hoe Custom Vision wordt gebruikt met andere onderdelen om een end-to-end-toepassing te bieden.
+description: In deze zelfstudie stapt u door een voorbeeld-app die Aangepaste visie gebruikt als onderdeel van een scenario voor logodetectie. Leer hoe Custom Vision wordt gebruikt met andere onderdelen om een end-to-end-toepassing te bieden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78398991"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Zelf studie: Azure service-logo's herkennen in camera afbeeldingen
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Zelfstudie: Azure-servicelogo's herkennen in camerabeelden
 
-In deze zelf studie gaat u een voor beeld-app verkennen die gebruikmaakt van Custom Vision als onderdeel van een groter scenario. Met de AI Visual Provision-app, een Xamarin.Forms-app voor mobiele platforms, worden camera-afbeeldingen van Azure-servicelogo’s geanalyseerd. Vervolgens worden de werkelijke services geïmplementeerd in het Azure-account van de gebruiker. Hier leert u hoe de app Custom Vision gebruikt met andere onderdelen om een nuttige end-to-end-toepassing te bieden. U kunt het hele app-scenario voor uzelf uitvoeren, maar u kunt alleen het Custom Vision onderdeel van de installatie volt ooien en verkennen hoe de app dit gebruikt.
+In deze zelfstudie verken je een voorbeeld-app die Aangepaste visie gebruikt als onderdeel van een groter scenario. Met de AI Visual Provision-app, een Xamarin.Forms-app voor mobiele platforms, worden camera-afbeeldingen van Azure-servicelogo’s geanalyseerd. Vervolgens worden de werkelijke services geïmplementeerd in het Azure-account van de gebruiker. Hier leert u hoe de app Custom Vision gebruikt met andere onderdelen om een nuttige end-to-end-toepassing te bieden. U het hele app-scenario voor uzelf uitvoeren, of u alleen het aangepaste visiegedeelte van de installatie voltooien en onderzoeken hoe de app deze gebruikt.
 
 In deze zelfstudie leert u hoe u het volgende kunt doen:
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u hoe u het volgende kunt doen:
 > - Uw app verbinden met Azure Computer Vision en Custom Vision.
 > - Een service-principal-account in Azure maken om Azure-services te implementeren vanuit de app.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,11 +47,11 @@ Meld u aan bij de [Custom Vision-website](https://customvision.ai/) en maak een 
 
 ![Nieuw projectvenster op de Custom Vision-website in de browser Chrome](media/azure-logo-tutorial/new-project.png)
 
-## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
+## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en coderen
 
-Vervolgens moet u het algoritme voor logodetectie trainen door afbeeldingen van Azure-servicelogo’s te uploaden en deze handmatig te labelen. De AIVisualProvision-opslagplaats bevat een set trainingsafbeeldingen die u kunt gebruiken. Op de website selecteert u de knop **afbeeldingen toevoegen** op het tabblad **trainings afbeeldingen** . Ga vervolgens naar de map **Documents/images/Training_DataSet** van de opslag plaats. U moet de logo’s in elke afbeelding handmatig labelen. Als u dit project alleen maar wilt testen, kunt u daarom beter slechts een subset van de afbeeldingen uploaden. Upload ten minste 15 exemplaren van elke tag die u wilt gebruiken.
+Vervolgens moet u het algoritme voor logodetectie trainen door afbeeldingen van Azure-servicelogo’s te uploaden en deze handmatig te labelen. De AIVisualProvision-opslagplaats bevat een set trainingsafbeeldingen die u kunt gebruiken. Selecteer op de website de knop **Afbeeldingen toevoegen** op het tabblad **Trainingsafbeeldingen.** Ga vervolgens naar de map **Documenten/Afbeeldingen/Training_DataSet** van de opslagplaats. U moet de logo’s in elke afbeelding handmatig labelen. Als u dit project alleen maar wilt testen, kunt u daarom beter slechts een subset van de afbeeldingen uploaden. Upload ten minste 15 exemplaren van elke tag die u wilt gebruiken.
 
-Nadat u de trainingsafbeeldingen hebt geüpload, selecteert u de eerste afbeelding in de weergave. Het venster Tags toevoegen wordt weer gegeven. Teken vakken en wijs labels toe voor elk logo in elke afbeelding. 
+Nadat u de trainingsafbeeldingen hebt geüpload, selecteert u de eerste afbeelding in de weergave. Het tagvenster wordt weergegeven. Teken vakken en wijs labels toe voor elk logo in elke afbeelding. 
 
 ![Labellen van logo’s op de website van Custom Vision](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,17 +63,17 @@ Nadat u een afbeelding heeft gelabeld, gaat u naar rechts om de volgende te labe
 
 ## <a name="train-the-object-detector"></a>De objectdetector trainen
 
-Stel in het linkerdeelvenster **Labels** in op **Gelabeld**. Als het goed is, ziet u nu al uw afbeeldingen. Klik vervolgens op de groene knop boven aan de pagina om het model te trainen. Het algoritme traint om dezelfde tags te herkennen in nieuwe installatie kopieën. Het model wordt ook getest op een aantal bestaande afbeeldingen om nauwkeurigheidsscores te genereren.
+Stel in het linkerdeelvenster **Labels** in op **Gelabeld**. Als het goed is, ziet u nu al uw afbeeldingen. Klik vervolgens op de groene knop boven aan de pagina om het model te trainen. Het algoritme zal trainen om dezelfde tags in nieuwe afbeeldingen te herkennen. Het model wordt ook getest op een aantal bestaande afbeeldingen om nauwkeurigheidsscores te genereren.
 
-![De Custom Vision-website op het tabblad trainings afbeeldingen. In deze scherm afbeelding ziet u een overzicht van de trein knop](media/azure-logo-tutorial/train-model.png)
+![De website van Custom Vision, op het tabblad Trainingsafbeeldingen. In deze schermafbeelding wordt de knop Trein](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>De voorspellings-URL ophalen
 
-Zodra dit model is getraind, kunt u het integreren in de app. U moet de eind punt-URL (het adres van uw model, die door de app wordt opgevraagd) en de Voorspellings sleutel ophalen (om de app toegang te geven tot Voorspellings aanvragen). Klik op het tabblad **Prestatie** op de knop **Voorspellings-URL** boven aan de pagina.
+Zodra dit model is getraind, kunt u het integreren in de app. U moet de URL van het eindpunt (het adres van uw model, dat de app opvraagt) en de voorspellingssleutel (om de app toegang te verlenen tot voorspellingsverzoeken) krijgen. Klik op het tabblad **Prestatie** op de knop **Voorspellings-URL** boven aan de pagina.
 
 ![De Custom Vision-website met een Voorspellings-API-scherm waarop een URL-adres en API-sleutel worden weergegeven](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Kopieer de eind punt-URL en de waarde voor de voor **Spellings sleutel** naar de juiste velden in het *Source\VisualProvision\AppSettings.cs* -bestand:
+Kopieer de URL van het eindpunt en de waarde **Voorspelling-sleutel** naar de juiste velden in het bestand *Source\VisualProvision\AppSettings.cs:*
 
 [!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
@@ -95,7 +95,7 @@ Het Custom Vision-gedeelte van de zelfstudie is voltooid. Als u de app wilt uitv
 
 Abonneer u eenvoudig op de Computer Vision-service om een sleutel en eindpunt-URL op te halen. Zie [Hoe u abonnementssleutels kunt verkrijgen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe) als u hulp nodig hebt bij deze stap.
 
-![De Computer Vision-service in de Azure Portal, met het menu Quick Start geselecteerd. Een link voor sleutels wordt gemarkeerd, net als de API-eindpunt-URL](media/azure-logo-tutorial/comvis-keys.png)
+![De service Computer Vision in de Azure-portal is geselecteerd met het menu Snelstart. Een link voor sleutels wordt gemarkeerd, net als de API-eindpunt-URL](media/azure-logo-tutorial/comvis-keys.png)
 
 Open vervolgens het bestand *Source\VisualProvision\AppSettings.cs* en vul de variabelen `ComputerVisionEndpoint` en `ComputerVisionKey` met de juiste waarden.
 
@@ -135,7 +135,7 @@ Noteer de waarden `clientId` en `tenantId`. Voeg deze waarden toe aan de juiste 
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 Hier aangekomen hebt u de app toegang gegeven tot:
 
@@ -160,7 +160,7 @@ Volg deze stappen om de app uit te voeren:
     
     ![Het app-scherm met velden voor de referenties van de service-principal](media/azure-logo-tutorial/app-credentials.png)
 
-1. Selecteer in de vervolgkeuzelijst in het volgende scherm het Azure-abonnement dat u hebt. (Dit menu moet alle abonnementen bevatten waartoe uw Service-Principal toegang heeft.) Selecteer de knop **door gaan** . Op dit moment wordt u in de app mogelijk gevraagd om de apparaten toegang te verlenen tot de camera en de fotobibliotheek. Verleen de toegangsmachtigingen.
+1. Selecteer in de vervolgkeuzelijst in het volgende scherm het Azure-abonnement dat u hebt. (Dit menu bevat alle abonnementen waartoe uw serviceprincipal toegang heeft.) Selecteer de knop **Doorgaan.** Op dit moment wordt u in de app mogelijk gevraagd om de apparaten toegang te verlenen tot de camera en de fotobibliotheek. Verleen de toegangsmachtigingen.
 
     ![Het app-scherm met een vervolgkeuzelijst voor het abonnement in Target Azure](media/azure-logo-tutorial/app-az-subscription.png)
 

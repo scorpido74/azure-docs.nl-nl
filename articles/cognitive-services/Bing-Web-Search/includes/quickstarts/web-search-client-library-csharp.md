@@ -1,5 +1,5 @@
 ---
-title: Quick C# start voor client bibliotheek Bing Web Search
+title: Bing Web Search C# clientbibliotheek snel aan de slag
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925774"
 ---
-Met de Bing Web Search-client bibliotheek kunt u Bing Web Search eenvoudig integreren in C# uw toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
+De Bing Web Search-clientbibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw C#-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
-Wilt u de code nu zien? Voor beelden voor de [Bing Search-client bibliotheken voor .net](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) zijn beschikbaar op github.
+Wilt u de code nu zien? Voorbeelden voor de [Bing Search-clientbibliotheken voor .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) zijn beschikbaar op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
-U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
+Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) of
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
@@ -33,9 +33,9 @@ U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 ## <a name="create-a-project-and-install-dependencies"></a>Een project maken en afhankelijkheden installeren
 
 > [!TIP]
-> Haal de nieuwste code als Visual Studio-oplossing op uit [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Ontvang de nieuwste code als Visual Studio-oplossing van [GitHub.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
-De eerste stap bestaat uit het maken van een nieuw consoleproject. Zie [Hallo wereld--uw eerste programma (C# programmeer handleiding)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)als u hulp nodig hebt bij het instellen van een console project. Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
+De eerste stap bestaat uit het maken van een nieuw consoleproject. Als u hulp nodig hebt bij het opzetten van een consoleproject, raadpleegt u [Hello World - Uw eerste programma (C# Programmeergids).](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) Als u de Bing Web Search SDK wilt gebruiken in uw toepassing, moet u `Microsoft.Azure.CognitiveServices.Search.WebSearch` installeren met behulp van NuGet Package Manager.
 
 Met het [Web Search SDK-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) wordt ook het volgende geïnstalleerd:
 
@@ -350,7 +350,7 @@ In dit voorbeeld wordt de parameter `response_filter` gebruikt om zoekresultaten
 
 3. Voer de toepassing uit.
 
-### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en de filter voor het promoten van zoekresultaten
+### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en het filter voor het promoten van zoekresultaten
 
 In dit voorbeeld worden de parameters `answer_count`, `promote`, en `safe_search` gebruikt om de zoekresultaten voor 'muziekvideo's' te filteren. De `Name` en `ContentUrl` voor het eerste resultaat worden weergegeven.
 

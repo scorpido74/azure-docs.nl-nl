@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c180a5d751b44346760706b1bd3d1e8acb70099d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837534"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor de `'X-ClientTraceId'`-header te maken.
 
-## <a name="set-the-subscription-key-and-endpoint"></a>De abonnements sleutel en het eind punt instellen
+## <a name="set-the-subscription-key-and-endpoint"></a>De abonnementssleutel en het eindpunt instellen
 
-In dit voor beeld wordt geprobeerd de Translator Text-abonnements sleutel en het eind punt van deze omgevings variabelen te lezen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd uw abonnementssleutel voor vertalerstekst `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`eindpunt te lezen uit deze omgevingsvariabelen: en . Als u niet bekend bent met omgevingsvariabelen, u instellen `subscriptionKey` en `endpoint` als tekenreeksen en commentaar geven op de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -50,7 +50,7 @@ var endpoint = process.env[endpoint_var];
 
 ## <a name="configure-the-request"></a>Aanvraag configureren
 
-Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert u de aanvraag:
+Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
 
 ```javascript
 let options = {
@@ -73,11 +73,11 @@ let options = {
 ```
 U kunt aanvragen het eenvoudigst verifiëren door uw abonnementssleutel op te geven als `Ocp-Apim-Subscription-Key`-header. Dat doen we in dit voorbeeld dan ook. Als alternatief kunt u in plaats van uw abonnementssleutel een toegangstoken gebruiken en het toegangstoken opgeven als `Authorization`-header voor het valideren van uw aanvraag.
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in de aanvraag headers toevoegen.
+Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` headers in uw aanvraag opnemen.
 
 Zie [Verificatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) voor meer informatie.
 
-## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord afdrukken
+## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord weergeven
 
 Vervolgens maakt u de aanvraag via de methode `request()`. Deze gebruikt het `options`-object dat in de vorige sectie als eerste argument is gemaakt, waarna het opgemaakte JSON-antwoord wordt afgedrukt.
 
@@ -100,10 +100,10 @@ node detect.js
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
+Nadat u het monster hebt uitgevoerd, ziet u het volgende afgedrukt op de terminal:
 
 > [!NOTE]
-> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [
@@ -136,7 +136,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
+Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
 
 > [!div class="nextstepaction"]
-> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

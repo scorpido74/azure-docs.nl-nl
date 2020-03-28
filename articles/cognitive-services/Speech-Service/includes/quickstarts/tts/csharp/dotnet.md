@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een synthese van de C# spraak, (Windows)-spraak service'
+title: 'Snelstart: spraak synthetiseren, C# (Windows) - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding voor het maken van een tekst-naar-spraak-console toepassing met behulp van .NET Framework voor Windows en de spraak-SDK. Wanneer u klaar bent, kunt u spraak van tekst verwerken en de spraak op uw spreker in realtime belui Steren.
+description: Gebruik deze handleiding om een tekst-naar-spraakconsoletoepassing te maken met behulp van het .NET-framework voor Windows en de SpraakSDK. Wanneer u klaar bent, u spraak uit tekst synthetiseren en de spraak op uw spreker in realtime horen.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
 ms.openlocfilehash: b615ba8085650e9aa686fb4a229d9752c4f6e2ce
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925124"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open **Program.cs** en vervang de automatisch gegenereerde code door dit voor beeld:
+1. Open **Program.cs** en vervang de automatisch gegenereerde code door dit voorbeeld:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Zoek de teken reeks `YourSubscriptionKey`en vervang deze door de abonnements sleutel van uw speech-service.
+1. Zoek de `YourSubscriptionKey`tekenreeks en vervang deze door uw abonnementssleutel voor spraakservice.
 
-1. Zoek de teken reeks `YourServiceRegion`en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld het gratis proef abonnement gebruikt, is de regio `westus`.
+1. Zoek de `YourServiceRegion`tekenreeks en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld het gratis proefabonnement gebruikt, is `westus`de regio .
 
-1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
+1. Kies Alles**opslaan** **op** > de menubalk .
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Kies in de menu balk de optie **build** > **Build** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. Kies**build-oplossing** **bouwen** > om de toepassing te bouwen op de menubalk. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout opsporing** > **fout opsporing starten** (of selecteer **F5**) om de toepassing **HelloWorld** te starten.
+1. Kies **Foutopsporing debuggen** > **(of** selecteer **F5)** om de **helloworld-toepassing** te starten.
 
-1. Voer een Engelse woord groep of zin in. De toepassing verzendt uw tekst naar de spraak service, waarmee gesynthesizerde spraak naar de toepassing wordt verzonden om op uw spreker af te spelen.
+1. Voer een Engelse zin of zin in. De toepassing verzendt uw tekst naar de spraakservice, die gesynthetiseerde spraak naar de toepassing verzendt om op uw luidspreker af te spelen.
 
-   ![Gebruikers interface voor spraak synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
+   ![Gebruikersinterface voor spraaksynthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -54,4 +54,4 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

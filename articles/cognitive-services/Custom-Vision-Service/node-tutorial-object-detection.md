@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een object detectie project maken met de Custom Vision SDK voor node. js'
+title: 'Snelstart: een objectdetectieproject maken met de Custom Vision SDK voor Node.js'
 titleSuffix: Azure Cognitive Services
 description: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de SDK voor Node.js.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705714"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Snelstartgids: een object detectie project maken met de Custom Vision node. js SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Snelstart: een objectdetectieproject maken met de Custom Vision Node.js SDK
 
-In dit artikel leest u hoe u aan de slag kunt met de Custom Vision SDK met node. js om een object detectie model te bouwen. Nadat u deze hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken.
+In dit artikel ziet u hoe u aan de slag met de Custom Vision SDK met Node.js om een objectdetectiemodel te bouwen. Nadat het is gemaakt, u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde prognose-eindpunt-URL van het project verkrijgen en het eindpunt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ In dit artikel leest u hoe u aan de slag kunt met de Custom Vision SDK met node.
 
 ## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
 
-Als u de Custom Vision service-Sdk's voor node. js in uw project wilt installeren, voert u de volgende opdrachten uit:
+Voer de volgende opdrachten uit om de SDKs voor Aangepaste Vision-service voor Node.js in uw project te installeren:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -47,7 +47,7 @@ Maak een nieuw bestand met de naam *sample.js* in uw projectmap.
 
 ### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnements sleutels in de juiste definities in en stel de sampleDataRoot in op het pad naar de map met installatie kopieën. Zorg ervoor dat de eindpunt waarde overeenkomt met de trainings-en Voorspellings eindpunten die u hebt gemaakt op [Customvision.ai](https://www.customvision.ai/). Houd er rekening mee dat het verschil tussen het maken van een object detectie-en afbeeldings classificatie project het domein is dat is opgegeven in de **createProject** -aanroep.
+Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in en stel de pathwaarde van sampleDataRoot in op het pad van uw afbeeldingsmap. Controleer of de endPoint-waarde overeenkomt met de trainings- en voorspellingseindpunten die u hebt gemaakt op [Customvision.ai](https://www.customvision.ai/). Houd er rekening mee dat het verschil tussen het maken van een objectdetectie- en beeldclassificatieproject het domein is dat is opgegeven in de **createProject-aanroep.**
 
 ```javascript
 const fs = require('fs');
@@ -93,14 +93,14 @@ Voeg de volgende code toe aan het eind van *sample.js* om classificatielabels vo
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
+### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en coderen
 
-Als u afbeeldingen labelt in objectdetectieprojecten, dient u de regio van elk gelabeld object op te geven met behulp van genormaliseerde coördinaten. 
+Wanneer u afbeeldingen in object detectie projecten labelt, moet u de regio van elk gelabeld object opgeven met behulp van genormaliseerde coördinaten. 
 
 > [!NOTE]
-> Als u geen hulp programma voor klikken en slepen hebt om de coördinaten van regio's te markeren, kunt u de Web-UI gebruiken op [Customvision.ai](https://www.customvision.ai/). In dit voor beeld zijn de coördinaten al opgenomen.
+> Als u geen gebruik hebt van klikken en slepen om de coördinaten van regio's te markeren, u de webgebruikersinterface op [Customvision.ai](https://www.customvision.ai/)gebruiken. In dit voorbeeld zijn de coördinaten al verstrekt.
 
-Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. Houd er rekening mee dat voor deze zelfstudie de regio's inline zijn vastgelegd door de code. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte. U kunt Maxi maal 64 installatie kopieën uploaden in één batch.
+Als u de afbeeldingen, labels en regio's aan het project wilt toevoegen, voegt u de volgende code in nadat u het label hebt gemaakt. Houd er rekening mee dat voor deze zelfstudie de regio's inline zijn vastgelegd door de code. Door de regio's wordt het begrenzingsvak opgegeven in genormaliseerde coördinaten. De coördinaten worden gegeven in de volgorde links, boven, breedte, hoogte. U maximaal 64 afbeeldingen uploaden in één batch.
 
 ```javascript
 const forkImageRegions = {
@@ -179,9 +179,9 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Het project trainen en publiceren
+### <a name="train-the-project-and-publish"></a>Train het project en publiceer
 
-Deze code maakt de eerste iteratie van het Voorspellings model en publiceert die iteratie vervolgens naar het Voorspellings eindpunt. De naam die is opgegeven voor de gepubliceerde herhaling kan worden gebruikt voor het verzenden van voorspellings aanvragen. Er is geen iteratie beschikbaar in het Voorspellings eindpunt totdat het is gepubliceerd.
+Deze code maakt de eerste iteratie van het voorspellingsmodel en publiceert die iteratie vervolgens naar het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde herhaling kan worden gebruikt voor het verzenden van voorspellings aanvragen. Een iteratie is pas beschikbaar in het voorspellingseindpunt nadat deze is gepubliceerd.
 
 ```javascript
 console.log("Training...");
@@ -201,7 +201,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie op het Voorspellings eindpunt ophalen en gebruiken
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie op het voorspellingseindpunt oppakken en gebruiken
 
 Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan het einde van het bestand:
 

@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925268"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Om een nieuwe lege klasse aan uw Java-project toe te voegen, selecteert u **Bestand** > **Nieuw** > **Klasse**.
+1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **Bestand** > **Nieuwe** > **klasse**.
 
-1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam** **Main** in.
+1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam****Main** in.
 
    ![Schermopname van het venster Nieuwe Java-klasse](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -102,18 +102,18 @@ ms.locfileid: "78925268"
 
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Vervang de teken reeks `helloworld.wav` door uw eigen bestands naam.
+1. Vervang de `helloworld.wav` tekenreeks door uw eigen bestandsnaam.
 
-1. Vervang de teken reeks `Hello world!` door uw eigen tekst.
+1. Vervang de `Hello world!` tekenreeks door uw eigen tekst.
 
-1. Sla de wijzigingen aan het project op.
+1. Sla de wijzigingen in het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
-Uw tekst wordt geconverteerd naar spraak en opgeslagen in de opgegeven audio gegevens.
+Druk op F11 of selecteer **Foutopsporing** > **uitvoeren**.
+Uw tekst wordt omgezet in spraak en opgeslagen in de opgegeven audiogegevens.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -126,4 +126,4 @@ Uw tekst wordt geconverteerd naar spraak en opgeslagen in de opgegeven audio geg
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

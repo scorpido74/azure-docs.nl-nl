@@ -1,45 +1,45 @@
 ---
-title: 'Snelstartgids: gebruik krul & REST om de Knowledge Base te beheren QnA Maker'
-description: In deze Quick start ziet u hoe u uw Knowledge Base maakt, publiceert en er query's op uitvoert met behulp van de REST Api's.
+title: 'Snelstart: gebruik cURL & REST om kennisbank te beheren - QnA Maker'
+description: Deze quickstart laat u zien hoe u uw kennisbank maken, publiceren en opvragen met behulp van de REST API's.
 ms.date: 02/27/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
 ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78851204"
 ---
-# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Snelstartgids: gebruik krul en REST om de Knowledge Base te beheren
+# <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Snelstart: gebruik cURL en REST om kennisbank te beheren
 
-In deze Snelstartgids leert u hoe u uw Knowledge Base maakt, publiceert en er query's op uitvoert. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/knowledge-base.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
+Deze quickstart leidt u door het maken, publiceren en opvragen van uw kennisbank. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/knowledge-base.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De huidige versie van [krul](https://curl.haxx.se/). In de Quick starts worden verschillende opdracht regel opties gebruikt, die in de [krul documentatie](https://curl.haxx.se/docs/manpage.html)worden vermeld.
-* U moet een [QnA Maker resource](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en de resource naam wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal. De resource naam is het eerste deel van de eind punt-URL:
+* De huidige versie van [cURL](https://curl.haxx.se/). Verschillende command-line switches worden gebruikt in de quickstarts, die worden opgemerkt in de [cURL documentatie](https://curl.haxx.se/docs/manpage.html).
+* U moet een [QnA Maker-bron](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de naam van uw sleutel en bron wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal. De naam van de resource is het eerste deel van de URL van het eindpunt:
 
     `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
-> De volgende BASH-voor beelden gebruiken het `\` regel voortzettings teken. Als u de console of Terminal een ander regel vervolg teken gebruikt, gebruikt u dit teken.
+> In de volgende BASH-voorbeelden wordt het teken van de `\` lijnvoortzetting gebruikt. Als u een ander regelvervolgteken gebruikt, gebruikt u dit teken.
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
-Als u een Knowledge Base wilt maken met de REST Api's en krul, hebt u de volgende informatie nodig:
+Als u een kennisbank wilt maken met de REST API's en cURL, moet u over de volgende informatie beschikken:
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Bron sleutel QnA Maker|`-h` para meter voor `Ocp-Apim-Subscription-Key` koptekst|Verifiëren bij QnA Maker-service|
-|JSON met een beschrijving van de kennis database|`-d` param|[Voor beelden](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) van JSON|
-|Grootte van de JSON in bytes|`-h` para meter voor `Content-Size` koptekst||
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|QnA Maker-resourcesleutel|`-h`param `Ocp-Apim-Subscription-Key` voor koptekst|Verifiëren naar QnA Maker-service|
+|JSON beschrijft kennisbank|`-d`Param|[Voorbeelden](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) van JSON|
+|Grootte van de JSON in bytes|`-h`param `Content-Size` voor koptekst||
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel en JSON-waarden en grootte van JSON.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel en JSON-waarden en de grootte van JSON.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/create \
@@ -50,7 +50,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -d '{ name: "QnA Maker FAQ",urls: [ "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs"]}'
 ```
 
-De krul reactie van QnA Maker bevat de `operationId`, die vereist is om de [status van de bewerking](#get-status-of-operation)op te halen.
+Het cURL-antwoord van QnA Maker omvat het , dat nodig is om `operationId` de [status van de bewerking](#get-status-of-operation)te krijgen .
 
 ```json
 {
@@ -62,17 +62,17 @@ De krul reactie van QnA Maker bevat de `operationId`, die vereist is om de [stat
 }
 ```
 
-## <a name="get-status-of-operation"></a>De status van de bewerking ophalen
+## <a name="get-status-of-operation"></a>Status van de bewerking opdoen
 
-Wanneer u een Knowledge Base maakt, omdat de bewerking async is, bevat het antwoord informatie om de status te bepalen.
+Wanneer u een kennisbasis maakt, omdat de bewerking async is, bevat het antwoord informatie om de status te bepalen.
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Bewerkings-id|URL-route|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
-|Bron sleutel QnA Maker|`-h` para meter voor `Ocp-Apim-Subscription-Key` koptekst|Verifiëren bij QnA Maker-service|
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|Bedrijfs-id|URL-route|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
+|QnA Maker-resourcesleutel|`-h`param `Ocp-Apim-Subscription-Key` voor koptekst|Verifiëren naar QnA Maker-service|
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel en bewerkings-ID.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel en bewerkings-id.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/operations/REPLACE-WITH-YOUR-OPERATION-ID \
@@ -80,7 +80,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Het krul antwoord bevat de status. Als de bewerkings status is geslaagd, bevat de `resourceLocation` de Knowledge Base-ID.
+Het cURL-antwoord bevat de status. Als de bewerkingsstatus is geslaagd, bevat deze `resourceLocation` de kennisbasis-ID.
 
 ```json
 {
@@ -95,19 +95,19 @@ Het krul antwoord bevat de status. Als de bewerkings status is geslaagd, bevat d
 
 ## <a name="publish-knowledge-base"></a>Knowledge base publiceren
 
-Voordat u een query uitvoert op de Knowledge Base, moet u het volgende doen:
+Voordat u de kennisbank opvraagt, moet u:
 * Knowledge base publiceren
-* De runtime-eindpunt sleutel ophalen
+* De eindpunttoets runtime oppakken
 
-Met deze taak wordt de Knowledge Base gepubliceerd. Het ophalen van de runtime-eindpunt sleutel is een [afzonderlijke taak](#get-published-knowledge-bases-runtime-endpoint-key).
+Deze taak publiceert de kennisbank. Het verkrijgen van de runtime-eindpuntsleutel is een [afzonderlijke taak](#get-published-knowledge-bases-runtime-endpoint-key).
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Bron sleutel QnA Maker|`-h` para meter voor `Ocp-Apim-Subscription-Key` koptekst|Verifiëren bij QnA Maker-service|
-|Knowledge Base-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|QnA Maker-resourcesleutel|`-h`param `Ocp-Apim-Subscription-Key` voor koptekst|Verifiëren naar QnA Maker-service|
+|Kennisbank-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel en Knowledge Base-ID.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel en knowledge base-id.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -117,24 +117,24 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 --data-raw ''
 ```
 
-De antwoord status is 204 zonder resultaten. Gebruik de opdracht regel parameter `-v` om uitgebreide uitvoer voor de opdracht krul weer te geven. Dit geldt ook voor de HTTP-status.
+De responsstatus is 204 zonder resultaat. Gebruik `-v` de parameter commandline om de uitvoer van verbose voor de cURL-opdracht te bekijken. Dit omvat de HTTP-status.
 
-## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>De runtime-eindpunt sleutel van de gepubliceerde kennis basis ophalen
+## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Download de runtime-eindpuntsleutel van de gepubliceerde knowledgebase
 
-Voordat u een query uitvoert op de Knowledge Base, moet u het volgende doen:
+Voordat u de kennisbank opvraagt, moet u:
 * Knowledge base publiceren
-* De runtime-eindpunt sleutel ophalen
+* De eindpunttoets runtime oppakken
 
-Met deze taak wordt de runtime-eindpunt sleutel opgehaald. Het publiceren van de Knowledge Base is een [afzonderlijke taak](#publish-knowledge-base).
+Met deze taak wordt de eindpuntsleutel runtime uitgevoerd. Het publiceren van de kennisbank is een [aparte taak.](#publish-knowledge-base)
 
-De runtime-eindpunt sleutel is dezelfde sleutel voor alle kennis grondslagen met behulp van de QnA Maker resource.
+De runtime endpoint-toets is dezelfde sleutel voor alle kennisbanken met behulp van de QnA Maker-bron.
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Bron sleutel QnA Maker|`-h` para meter voor `Ocp-Apim-Subscription-Key` koptekst|Verifiëren bij QnA Maker-service|
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|QnA Maker-resourcesleutel|`-h`param `Ocp-Apim-Subscription-Key` voor koptekst|Verifiëren naar QnA Maker-service|
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/endpointkeys \
@@ -143,7 +143,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 ```
 
 
-Het krul antwoord bevat de runtime-eindpunt sleutels. Gebruik slechts één van de sleutels bij het opvragen van een antwoord uit de Knowledge Base.
+Het cURL-antwoord bevat de eindpunttoetsen voor runtime. Gebruik slechts een van de sleutels bij het opvragen om een antwoord te krijgen van de kennisbank.
 
 ```json
 {
@@ -154,19 +154,19 @@ Het krul antwoord bevat de runtime-eindpunt sleutels. Gebruik slechts één van 
 }
 ```
 
-## <a name="query-for-answer-from-published-knowledge-base"></a>Query voor antwoord van gepubliceerde kennis basis
+## <a name="query-for-answer-from-published-knowledge-base"></a>Vraag naar antwoord van gepubliceerde kennisbank
 
-Het verkrijgen van een antwoord van de kennis geschiedt vanuit een afzonderlijke runtime dan het beheer van de Knowledge Base. Omdat het een afzonderlijke runtime is, moet u verifiëren met een runtime sleutel.
+Het krijgen van een antwoord van de kennis wordt gedaan vanuit een aparte runtime dan het beheren van de kennisbank. Omdat het een aparte runtime is, moet u zich verifiëren met een runtime-sleutel.
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Runtime sleutel QnA Maker|`-h` para meter voor `Authorization` koptekst|De sleutel maakt deel uit van een teken reeks die het woord `Endpointkey `bevat. Verifiëren bij QnA Maker-service|
-|Knowledge Base-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|JSON-beschrijving van query|`-d` param|[Aanvraag hoofdtekst parameters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) en [voor beelden](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples) van JSON|
-|Grootte van de JSON in bytes|`-h` para meter voor `Content-Size` koptekst||
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|Runtime-toets QnA Maker|`-h`param `Authorization` voor koptekst|De sleutel maakt deel uit van `Endpointkey `een tekenreeks die het woord bevat. Verifiëren naar QnA Maker-service|
+|Kennisbank-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|JSON beschrijft query|`-d`Param|[Hoofdparameters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) en [voorbeelden](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples) van JSON aanvragen|
+|Grootte van de JSON in bytes|`-h`param `Content-Size` voor koptekst||
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel en Knowledge Base-ID.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel en knowledge base-id.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID/generateAnswer \
@@ -177,19 +177,19 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 -d '{"question": "How are QnA Maker and LUIS used together?","top": 6,"isTest": true,  "scoreThreshold": 20, "strictFilters": [], "userId": "sd53lsY="}'
 ```
 
-Een geslaagd antwoord omvat het beste antwoord samen met andere informatie over een client toepassing, zoals een bot, moet een antwoord op de gebruiker weer geven.
+Een succesvol antwoord bevat het bovenste antwoord, samen met andere informatie die een clienttoepassing, zoals een chatbot, nodig heeft om een antwoord aan de gebruiker weer te geven.
 
-## <a name="delete-knowledge-base"></a>Knowledge Base verwijderen
+## <a name="delete-knowledge-base"></a>Kennisbank verwijderen
 
-Wanneer u klaar bent met de Knowledge Base, verwijdert u deze.
+Wanneer u klaar bent met de kennisbank, verwijder deze dan.
 
-|Informatie|Krul configuratie|Doel|
+|Informatie|cURL-configuratie|Doel|
 |--|--|--|
-|Resource naam QnA Maker|URL|gebruikt voor het maken van een URL|
-|Bron sleutel QnA Maker|`-h` para meter voor `Ocp-Apim-Subscription-Key` koptekst|Verifiëren bij QnA Maker-service|
-|Knowledge Base-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
+|QnA Maker-bronnaam|URL|gebruikt om URL te construeren|
+|QnA Maker-resourcesleutel|`-h`param `Ocp-Apim-Subscription-Key` voor koptekst|Verifiëren naar QnA Maker-service|
+|Kennisbank-id|URL-route|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
-De krul opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resource naam, resource sleutel en Knowledge Base-ID.
+De cURL-opdracht wordt uitgevoerd vanuit een BASH-shell. Bewerk deze opdracht met uw eigen resourcenaam, resourcesleutel en knowledge base-id.
 
 ```bash
 curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
@@ -198,15 +198,15 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-De antwoord status is 204 zonder resultaten. Gebruik de opdracht regel parameter `-v` om uitgebreide uitvoer voor de opdracht krul weer te geven. Dit geldt ook voor de HTTP-status.
+De responsstatus is 204 zonder resultaat. Gebruik `-v` de parameter commandline om de uitvoer van verbose voor de cURL-opdracht te bekijken. Dit omvat de HTTP-status.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Ontwerpen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referentie documentatie
-* [Runtime](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referentie documentatie
-* [Voor beelden van BASH-scripts met krul](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
+* [Ontwerpen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referentiedocumentatie
+* [Runtime](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referentiedocumentatie
+* [Voorbeeld van BASH-scripts met behulp van cURL](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: gebruik URL-hulp programma voor het verkrijgen van antwoorden in de Knowledge Base-QnA Maker'
+title: 'Snelstart: Gebruik URL tool om antwoord te krijgen van knowledge base - QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Deze Snelstartgids helpt u bij het ophalen van een antwoord uit uw Knowledge Base met behulp van een URL-test programma zoals krul of postman.
+description: Deze quickstart leidt u door het krijgen van een antwoord van uw kennisbank met behulp van een URL-testtool zoals cURL of Postbode.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 09337ce599b0044ab38bb0ad0b0383ee90bfcbd8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77109657"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Quick Start: een antwoord verkrijgen van de Knowledge Base
+# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Quickstart: Krijg een antwoord van knowledge base
 
 
 ::: zone pivot="url-test-tool-curl"
@@ -37,4 +37,4 @@ ms.locfileid: "77109657"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Kennis basis testen met batch bestand](batch-testing.md)
+> [Knowledge Base testen met batchbestand](batch-testing.md)

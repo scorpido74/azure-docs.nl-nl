@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: eind punt uitingen-LUIS controleren'
+title: 'Zelfstudie: Eindpuntuitingen controleren - LUIS'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie kunt u app-voor spellingen verbeteren door uitingen te verifiëren of corrigeren die zijn ontvangen via het LUIS HTTP-eind punt waarvan LUIS niet zeker is. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
+description: Verbeter in deze zelfstudie app-voorspellingen door uitingen die zijn ontvangen via het LUIS HTTP-eindpunt waarvan LUIS niet zeker is, te verifiëren of te corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843970"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelf studie: herstel onzekere voor spellingen door eind punt uitingen te controleren
-In deze zelf studie kunt u app-voor spellingen verbeteren door uitingen te verifiëren of corrigeren, ontvangen via het HTTPS-eind punt van LUIS, dat LUIS niet zeker is van. U moet eind punt uitingen bekijken als een standaard onderdeel van uw geplande LUIS onderhoud.
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelfstudie: Herstel van onzekere voorspellingen door eindpuntuitingen te bekijken
+Verbeter in deze zelfstudie app-voorspellingen door uitingen te verifiëren of te corrigeren die zijn ontvangen via het LUIS HTTPS-eindpunt waarvan LUIS niet zeker is. U moet eindpuntuitingen controleren als een regelmatig onderdeel van uw geplande LUIS-onderhoud.
 
-Dit controle proces stelt LUIS in staat om uw app-domein te leren. LUIS selecteert de uitingen die in de controle lijst worden weer gegeven. Deze lijst:
+Met dit beoordelingsproces kan LUIS uw app-domein leren. LUIS selecteert de uitingen die in de beoordelingslijst worden weergegeven. Deze lijst:
 
 * is specifiek voor deze app;
 * is bedoeld om de nauwkeurigheid van de app te verbeteren;
@@ -46,29 +46,29 @@ Gebruik de volgende stappen om een app te importeren.
 
 1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) en sla het op.
 
-1. Importeer het JSON-bestand in een nieuwe app in de LUIS-portal van de [Preview-versie](https://preview.luis.ai).
+1. Importeer het JSon-bestand in een nieuwe app in de [preview LUIS-portal.](https://preview.luis.ai)
 
 1. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `review`.
 
     > [!TIP]
-    > Het klonen van een nieuwe versie is een best practice voordat u uw app wijzigt. Wanneer u klaar bent met het volt ooien van een versie, exporteert u de versie (als een. json-of. lu-bestand) en controleert u het bestand in uw bron beheersysteem.
+    > Klonen in een nieuwe versie is een aanbevolen manier voordat u uw app wijzigt. Wanneer u een versie voltooit, exporteert u de versie (als een .json- of .lu-bestand) en controleert u het bestand in uw bronbesturingssysteem.
 
 
-1. Als u de app wilt trainen, selecteert u **trainen**.
+1. Als u de app wilt trainen, selecteert u **Trainen**.
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>De app publiceren voor toegang tot het HTTP-eind punt
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>De app publiceren om deze te openen vanaf het HTTP-eindpunt
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="add-utterances-at-the-endpoint"></a>Uitingen toevoegen aan het eind punt
+## <a name="add-utterances-at-the-endpoint"></a>Uitingen toevoegen aan het eindpunt
 
-In deze app hebt u intenties en entiteiten, maar u hebt geen eindpunt gebruik. Dit eindpunt gebruik is vereist om de app te verbeteren met de controle van het eind punt utterance.
+In deze app hebt u intents en entiteiten, maar hebt u geen eindpuntgebruik. Dit eindpuntgebruik is vereist om de app te verbeteren met de utterancereview van eindpunten.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 1. Gebruik het eindpunt om de volgende uitingen toe te voegen.
 
-    |Eind punt utterance|Uitgelijnde intentie|
+    |Eindpuntutterance|Uitgelijnde intentie|
     |--|--|
     |`I'm looking for a job with Natural Language Processing`|`GetJobInformation`|
     |`I want to cancel on March 3`|`Utilities.Cancel`|
@@ -84,35 +84,35 @@ In deze app hebt u intenties en entiteiten, maar u hebt geen eindpunt gebruik. D
 
 ## <a name="review-endpoint-utterances"></a>Eindpuntuitingen controleren
 
-Controleer de uitingen van het eind punt voor een juiste, afgestemde intentie. Hoewel er één groep uitingen is om te controleren in alle versies, voegt het proces van het correct uitlijnen van het voor beeld utterance toe aan het huidige _actieve model_ .
+Controleer de eindpuntuitingen op correct uitgelijnde intentie. Hoewel er één groep uitingen is die in alle versies moeten worden beoordeeld, wordt met het proces om de intentie correct uit te lijnen, alleen de voorbeeldutterance toegevoegd aan het huidige _actieve model._
 
-1. Ga naar de sectie **Build** van de portal en selecteer **eind punt uitingen** in het navigatie venster aan de linkerkant. De lijst is gefilterd voor de intentie **ApplyForJob**.
-
-    > [!div class="mx-imgBorder"]
-    > ![scherm opname van de knop eind punt uitingen in de linkernavigatiebalk bekijken](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
-
-    Deze utterance, `I'm looking for a job with Natural Language Processing`, bevindt zich niet in de juiste intentie.
-
-1.  Als u deze utterance wilt uitlijnen, selecteert u op de rij utterance de juiste **uitgelijnde intentie** van `GetJobInformation`. Voeg het gewijzigde utterance toe aan de app door het selectie vakje in te scha kelen.
+1. Selecteer **Eindpuntuitingen controleren** via de linkernavigatie in het gedeelte **Bouwen** van de portal. De lijst is gefilterd voor de intentie **ApplyForJob**.
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van de knop eind punt uitingen in de linkernavigatiebalk bekijken](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+    > ![Schermafbeelding van de knop Eindpuntuitingen beoordelen in de navigatiebalk aan de linkerkant](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Bekijk de resterende uitingen in dit voor behoud en corrigeer zo nodig de uitgelijnde intentie. Gebruik de eerste utterance-tabel in deze zelf studie om de uitgelijnde intentie weer te geven.
+    Deze uiting, `I'm looking for a job with Natural Language Processing`, is niet in de juiste bedoeling.
 
-    De uitingen-lijst van het **controle-eind punt** mag niet langer de gecorrigeerde uitingen hebben. Als er meer uitingen worden weer gegeven, gaat u door met de lijst en corrigeert u uitgelijnde intenten totdat de lijst leeg is.
+1.  Als u deze utterance wilt uitlijnen, selecteert u `GetJobInformation`op de utterancerij de juiste **uitgelijnde intentie** van . Voeg de gewijzigde utterance toe aan de app door het vinkje te selecteren.
 
-    Een correctie van entiteit labeling wordt uitgevoerd nadat de intentie is uitgelijnd, op de pagina Details van het doel.
+    > [!div class="mx-imgBorder"]
+    > ![Schermafbeelding van de knop Eindpuntuitingen beoordelen in de navigatiebalk aan de linkerkant](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+
+    Controleer de resterende uitingen in deze intentie en corrigeer de uitgelijnde intentie indien nodig. Gebruik de eerste utterancetabel in deze zelfstudie om de uitgelijnde intentie weer te geven.
+
+    De lijst **Eindpuntuitingen controleren** mag niet langer de gecorrigeerde uitingen hebben. Als er meer uitingen worden weergegeven, blijft u door de lijst werken en uitgelijnde intenties corrigeren totdat de lijst leeg is.
+
+    Elke correctie van entiteitsetikettering gebeurt nadat de intentie is uitgelijnd, vanaf de pagina Intentiedetails.
 
 1. De app opnieuw trainen en publiceren.
 
-## <a name="get-intent-prediction-from-endpoint"></a>Intentie van het eind punt ophalen
+## <a name="get-intent-prediction-from-endpoint"></a>Intent-voorspelling ophalen vanaf eindpunt
 
-Als u wilt controleren of het correct uitgelijnde voor beeld uitingen de voor spelling van de app heeft verbeterd, probeert u een utterance te sluiten op de gecorrigeerde utterance.
+Als u wilt controleren of de correct uitgelijnde voorbeelduitingen de voorspelling van de app hebben verbeterd, probeert u een uiting in de buurt van de gecorrigeerde utterance.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in het adres en voer `Are there any natural language processing jobs in my department right now?` in. De laatste parameter van de queryreeks is `q`, de utterance **query**.
+1. Ga naar het einde van de URL in het adres en voer `Are there any natural language processing jobs in my department right now?` in. De laatste querytekenreeksparameter is `q`de **utterancequery**.
 
    ```json
     {
@@ -218,7 +218,7 @@ Als u wilt controleren of het correct uitgelijnde voor beeld uitingen de voor sp
     }
    ```
 
-   Nu de onzekere uitingen goed zijn afgestemd, is de juiste opzet gedicteerd met een **hoge score**.
+   Nu de onzekere uitingen correct zijn uitgelijnd, werd de juiste intentie voorspeld met een **hoge score**.
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Kan de beoordeling worden vervangen door meer uitingen toe te voegen?
 U vraagt zich misschien af waarom we niet meer voorbeelduitingen toevoegen. Wat is het doel van de beoordeling van eindpuntuitingen? In een echte LUIS-app zijn de eindpuntuitingen van gebruikers met een woordkeuze en indeling die u nog niet hebt gebruikt. Als u de dezelfde woordkeuze en rangschikking had gebruikt, zou de oorspronkelijke voorspelling een hoger percentage hebben gehad.

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met Ruby-Bing Webzoekopdrachten-API'
+title: 'Snelstart: Een zoekopdracht op het web uitvoeren met Ruby - Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Ruby en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -12,19 +12,19 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169536"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Snelstartgids: Ruby gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze ruby-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze Ruby-toepassing stuurt een zoekverzoek naar de API en toont het antwoord. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
+Voordat u verdergaat met deze snelstart moet u beschikken over:
 
 * [Ruby 2.4 of hoger](https://www.ruby-lang.org/en/downloads/)
 * Een abonnementssleutel
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `uri` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of `uri` en `path` geldig zijn en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `term` te vervangen.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `uri`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron. Controleer of `uri` en `path` geldig zijn en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `term` te vervangen.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"

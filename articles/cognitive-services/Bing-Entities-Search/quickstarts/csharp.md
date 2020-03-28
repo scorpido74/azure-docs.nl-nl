@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht naar de REST API verzenden met C# -Bing entity Search'
+title: 'Snelstart: een zoekaanvraag naar de REST-API verzenden met C# - Zoeken naar Bing-entiteiten'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de Bing Entiteiten zoeken-REST API te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: c343c160f67eda2dd390ffc39f3b4f1ff49cacb6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448673"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met behulp vanC#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Snelstart: een zoekaanvraag verzenden naar de Bing Entity Search REST API met C #
 
-Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor deze toepassing is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs)
 
 Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+- Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
 
-- Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket. Het NuGet-pakket installeren in Visual Studio:
+- Het [Json.NET](https://www.newtonsoft.com/json) framework, beschikbaar als NuGet-pakket. Ga als bedoeld als het nuget-pakket installeren in Visual Studio:
 
-   1. Klik met de rechter muisknop op uw project in **Solution Explorer**.
+   1. Klik met de rechtermuisknop op uw project in **Solution Explorer.**
    2. Selecteer **NuGet-pakketten beheren**.
-   3. Zoek naar *Newton soft. json* en installeer het pakket.
+   3. Zoek naar *Newtonsoft.Json* en installeer het pakket.
 
-- Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [mono](https://www.mono-project.com/).
+- Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met [Mono](https://www.mono-project.com/).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -50,7 +50,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
     using System.Text;
     ```
 
-2. Maak een nieuwe klasse, en voeg variabelen toe voor het API-eindpunt, uw abonnementssleutel en de zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak een nieuwe klasse, en voeg variabelen toe voor het API-eindpunt, uw abonnementssleutel en de zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 
     ```csharp
     namespace EntitySearchSample
@@ -77,7 +77,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
    1. Maak de URI voor uw aanvraag door de host en het pad te combineren. Voeg vervolgens uw markt toe en pas URL-codering toe op uw query.
    2. Await op `client.GetAsync()` voor een HTTP-antwoord heeft opgehaald en sla vervolgens het json-antwoord op via een await op `ReadAsStringAsync()`.
-   3. De JSON-teken reeks met `JsonConvert.DeserializeObject()` Format teren en afdrukken naar de-console.
+   3. Maak de JSON-tekenreeks op `JsonConvert.DeserializeObject()` en print deze op de console.
 
       ```csharp
       async static void Search()

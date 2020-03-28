@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Speech SDK voor python platform Setup-Speech Service'
+title: 'Snelstart: SpraakSDK voor Python-platformsetup - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te stellen voor het gebruik van python met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform in te stellen voor het gebruik van Python met de Spraakservice SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925227"
 ---
-In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor python installeert. Als u alleen de naam van het pakket wilt gebruiken om aan de slag te gaan, voert u `pip install azure-cognitiveservices-speech`uit.
+In deze handleiding ziet u hoe u de [SpraakSDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Python installeert. Als je gewoon wilt dat de naam van `pip install azure-cognitiveservices-speech`het pakket zelf aan de slag gaat, voer dan uit.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -25,12 +25,12 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
 
 - Het Python Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
   - Windows: x64 en x86
-  - Mac: macOS X versie 10,12 of hoger
-  - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8 op x64
+  - Mac: macOS X versie 10.12 of hoger
+  - Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 op x64
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd (`libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor geluids ondersteuning). Raadpleeg de onderstaande distributie voor de opdrachten die nodig zijn om de juiste versies van deze bibliotheken te installeren.
+- Ondersteunde Linux-platforms vereisen bepaalde geïnstalleerde`libssl` bibliotheken (voor ondersteuning `libasound2` van beveiligde sockets laag en voor geluidsondersteuning). Raadpleeg hieronder uw distributie voor de opdrachten die nodig zijn om de juiste versies van deze bibliotheken te installeren.
 
   - Voer op Ubuntu de volgende opdrachten uit om de vereiste pakketten te installeren:
 
@@ -54,45 +54,45 @@ In deze hand leiding wordt beschreven hoe u de [Speech SDK](~/articles/cognitive
         ```
 
 > [!NOTE]
-> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Volg op RHEL/CentOS 8 de instructies voor [het configureren van OpenSSL voor Linux.](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)
 
-- In Windows hebt u [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) voor uw platform nodig. Houd er rekening mee dat als u dit voor de eerste keer installeert, Windows opnieuw moet worden opgestart voordat u doorgaat met deze hand leiding.
-- En ten slotte hebt u [Python 3,5 tot 3,8](https://www.python.org/downloads/)nodig. Als u de installatie wilt controleren, opent u een opdracht prompt en typt u de opdracht `python --version` en controleert u het resultaat. Als de toepassing correct is geïnstalleerd, ontvangt u een antwoord "python 3.5.1" of soortgelijk.
+- In Windows heb je de [Microsoft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) nodig voor je platform. Houd er rekening mee dat het installeren van deze voor de eerste keer kan vereisen dat u Windows opnieuw opstart voordat u verder gaat met deze handleiding.
+- En tot slot heb je [Python 3,5 tot 3,8](https://www.python.org/downloads/)nodig. Als u uw installatie wilt controleren, `python --version` opent u een opdrachtprompt en typt u de opdracht en controleert u het resultaat. Als het goed is geïnstalleerd, krijg je een antwoord "Python 3.5.1" of iets dergelijks.
 
-## <a name="install-the-speech-sdk-from-pypi"></a>De Speech SDK installeren vanuit PyPI
+## <a name="install-the-speech-sdk-from-pypi"></a>De SpraakSDK van PyPI installeren
 
-Als u uw eigen omgeving gebruikt of hulpprogram ma's bouwt, voert u de volgende opdracht uit om de Speech SDK te installeren vanuit [PyPI](https://pypi.org/). Voor gebruikers van Visual Studio code gaat u naar de volgende Subsectie voor de begeleide installatie.
+Als u uw eigen omgeving gebruikt of hulpprogramma's bouwt, voert u de volgende opdracht uit om de SpraakSDK van [PyPI](https://pypi.org/)te installeren. Voor gebruikers van Visual Studio Code gaat u naar de volgende subsectie voor begeleide installatie.
 
 ```sh
 pip install azure-cognitiveservices-speech
 ```
 
-Als u zich in macOS bevindt, moet u mogelijk de volgende opdracht uitvoeren om de bovenstaande `pip`-opdracht te laten werken:
+Als u macOS bevindt, moet u mogelijk de `pip` volgende opdracht uitvoeren om de bovenstaande opdracht te laten werken:
 
 ```sh
 python3 -m pip install --upgrade pip
 ```
 
-Wanneer u `pip` hebt gebruikt om `azure-cognitiveservices-speech`te installeren, kunt u de Speech SDK gebruiken door de naam ruimte in uw python-projecten te importeren.
+Zodra u de `pip` spraaksdk `azure-cognitiveservices-speech`hebt geïnstalleerd, u de SpraakSDK gebruiken door de naamruimte in uw Python-projecten te importeren.
 
 ```py
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="install-the-speech-sdk-using-visual-studio-code"></a>De Speech SDK installeren met Visual Studio code
+## <a name="install-the-speech-sdk-using-visual-studio-code"></a>De SpraakSDK installeren met Visual Studio Code
 
-1. Down load en installeer de meest recente ondersteunde versie van [python](https://www.python.org/downloads/) voor uw platform 3,5 tot 3,8.
-   - Windows-gebruikers moeten tijdens het installatie proces ' python toevoegen aan uw pad ' selecteren.
+1. Download en installeer de nieuwste ondersteunde versie van [Python](https://www.python.org/downloads/) voor uw platform, 3,5 tot 3,8.
+   - Windows-gebruikers zorgen ervoor dat u tijdens het installatieproces 'Python toevoegen aan uw PATH' selecteert.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Open Visual Studio Code en installeer de Python-extensie. Selecteer **Bestand** > **Voorkeuren** > **Extensies** in het menu. Zoek **python** en klik op **installeren**.
+1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**Extensies** **voor bestandsvoorkeuren** > **Preferences** > in het menu. Zoek naar **Python** en klik op **Installeren**.
 
    ![De Python-extensie installeren](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
-1. Ook vanuit Visual Studio code installeert u het pakket speech SDK python vanaf de geïntegreerde opdracht regel:
-   1. Open een Terminal (in de vervolg keuzelijsten **terminal** > **nieuwe terminal**)
-   1. Voer in de terminal die wordt geopend de opdracht in `python -m pip install azure-cognitiveservices-speech`
+1. Installeer ook vanuit Visual Studio Code het Speech SDK Python-pakket vanaf de geïntegreerde opdrachtregel:
+   1. Open een terminal (vanuit de vervolgkeuzemenu's, **Terminal** > **New Terminal)**
+   1. Voer in de terminal die wordt geopend, de opdracht in`python -m pip install azure-cognitiveservices-speech`
 
-Als u niet bekend bent met Visual Studio code, raadpleegt u de uitgebreide [documentatie over Visual Studio code](https://code.visualstudio.com/docs). Zie [Visual Studio code python-zelf studie](https://code.visualstudio.com/docs/python/python-tutorial)voor meer informatie over Visual Studio code en python.
+Als u nieuw bent in Visual Studio Code, raadpleegt u de uitgebreidere Documentatie van de [Visuele StudioCode](https://code.visualstudio.com/docs). Zie [Visual Studio Code Python-zelfstudie](https://code.visualstudio.com/docs/python/python-tutorial)voor meer informatie over Visual Studio Code en Python.
 
 ## <a name="support-and-updates"></a>Ondersteuning en updates
 

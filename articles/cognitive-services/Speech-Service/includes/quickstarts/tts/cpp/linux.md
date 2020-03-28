@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een synthese van C++ de spraak, (Linux)-spraak service'
+title: 'Quickstart: Synthetiseren spraak, C++ (Linux) - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het maken van spraak C++ in Linux met behulp van de Speech SDK
+description: Meer informatie over het synthetiseren van spraak in C++ op Linux met behulp van de Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
 ms.openlocfilehash: 40befc98c2280418a443ff80e4d246b6e2957e56
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925299"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u het volgende doen:
+Voordat u aan de slag gaat, moet u:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Een Azure-spraakbron maken](../../../../get-started.md)
+> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -33,7 +33,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in dit nieuwe bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van de Speech-service.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 ## <a name="build-the-app"></a>De app bouwen
 
@@ -52,13 +52,13 @@ Voordat u aan de slag gaat, moet u het volgende doen:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+* Voer op een **ARM64-systeem** (64-bits) de volgende opdracht uit om de toepassing te bouwen.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 1. Configureer het bibliotheekpad van het laadprogramma om te verwijzen naar de bibliotheek van de Speech SDK.
 
@@ -74,7 +74,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
+   * Voer op een **ARM64-systeem** (64-bits) de volgende opdracht in.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -86,7 +86,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
    ./helloworld
    ```
 
-1. In het console venster wordt een prompt weer gegeven waarin u wordt gevraagd om tekst te typen. Typ enkele woorden of een zin. De tekst die u hebt getypt, wordt verzonden naar de speech-service en gesynthesizerd naar spraak, die op uw spreker wordt afgespeeld.
+1. In het consolevenster verschijnt een prompt waarin u wordt gevraagd tekst te typen. Typ een paar woorden of een zin. De tekst die u hebt getypt, wordt naar de spraakservice verzonden en gesynthetiseerd naar spraak, die op uw luidspreker wordt afgespeeld.
 
    ```text
    Type some text that you want to speak...
@@ -102,4 +102,4 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

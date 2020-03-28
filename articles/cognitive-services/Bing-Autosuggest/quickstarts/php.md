@@ -1,29 +1,29 @@
 ---
-title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP"
+title: 'Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en PHP'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel aan de slag kunt met de Automatische suggestie-API voor Bing.
+description: Meer informatie over hoe u snel beginnen met het voorstellen van zoektermen in realtime met de Bing Autosuggest API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aa309ba34abdfbe91493498ae6ec49785e0e0d4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384713"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238987"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en PHP
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en PHP
 
-Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische suggestie-API voor Bing en het verkrijgen van het JSON-antwoord. Met deze eenvoudige PHP-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest API en het krijgen van de JSON-reactie. Deze eenvoudige PHP-toepassing stuurt een gedeeltelijke zoekopdracht naar de API en retourneert suggesties voor zoekopdrachten. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [PHP 5.6.x](https://php.net/downloads.php) of later
+* [PHP 5.6.x](https://php.net/downloads.php) of hoger
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
@@ -32,7 +32,7 @@ Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische su
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 2. Voeg de onderstaande code toe.
 3. Vervang de waarde `subscriptionKey` door een geldige toegangssleutel voor uw abonnement.
-4. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+4. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
 5. Voer het programma uit.
 
 ```php

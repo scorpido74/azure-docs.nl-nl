@@ -1,31 +1,27 @@
 ---
-title: Pizza-app-stappen maken
-description: Stappen voor het maken van een LUIS pizza-app.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.date: 02/14/2020
-ms.subservice: language-understanding
+title: Stappen van de pizza-app maken
+description: Stappen om een LUIS-pizza-app te maken.
+ms.date: 03/25/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 77d809a8bf4d49ead169c1a4b6798d98f7fcddfe
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 05a7b15aeae8cd2939cf594c272e847c7411b735
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279592"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286724"
 ---
-1. Meld u aan bij de preview-LUIS Portal met de URL van [https://preview.luis.ai](https://preview.luis.ai).
+1. Meld u aan bij de preview [https://preview.luis.ai](https://preview.luis.ai)LUIS-portal met de URL van .
 
 1. Selecteer **Create new app**.
 
-    [![Scherm opname van Language Understanding-pagina mijn apps (LUIS)](../media/create-app-in-portal.png "Scherm opname van Language Understanding-pagina mijn apps (LUIS)")](../media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![Schermafbeelding van de pagina My Apps van Language Understanding (LUIS)](../media/create-app-in-portal.png "Schermafbeelding van de pagina My Apps van Language Understanding (LUIS)")](../media/create-app-in-portal.png#lightbox)
 
-1. Typ de naam in het pop-updialoogvenster `Pizza tutorial` en houd de standaardcultuur, **Engels**, aan. De andere velden zijn optioneel, niet instellen. Selecteer **Done**.
+1. Typ de naam in het pop-updialoogvenster `Pizza tutorial` en houd de standaardcultuur, **Engels**, aan. De andere velden zijn optioneel, stel ze niet in. Selecteer **Done**.
 
-    ![Voer de naam van de nieuwe LUIS-app in](../media/create-pizza-tutorial-app-in-portal.png)
+    ![De naam van de nieuwe LUIS-app invoeren](../media/create-pizza-tutorial-app-in-portal.png)
 
 
 

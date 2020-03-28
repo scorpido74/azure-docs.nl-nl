@@ -12,21 +12,21 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169733"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Snelstart: PHP gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze node.js-toepassing stuurt een zoekverzoek naar de API en geeft het antwoord weer. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
+Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [PHP 5.6.x](https://php.net/downloads.php) of later
+* [PHP 5.6.x](https://php.net/downloads.php) of hoger
 * Een abonnementssleutel  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -43,7 +43,7 @@ Voordat we aan de slag gaan, gaat u eerst naar `php.ini` en haalt u de opmerking
 
 Maak een nieuw PHP-project in uw favoriete IDE of editor. Vergeet niet om de tags voor openen en sluiten `<?php` en `?>` toe te voegen.
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `$endpoint` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of `$endpoint` juist is en vervang de waarde `$accesskey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `$term` te vervangen.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan. `$endpoint`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron. Controleer of `$endpoint` juist is en vervang de waarde `$accesskey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `$term` te vervangen.
 
 ```php
 $accessKey = 'enter key here';

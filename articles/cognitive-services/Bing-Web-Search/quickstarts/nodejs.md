@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met behulp van node. js-Bing Web Search REST API'
+title: 'Snelstart: een zoekopdracht op het web uitvoeren met Node.js - Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Node.js en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -12,21 +12,21 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76168807"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en node. js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Snelstart: zoek op het web met de Bing Web Search REST API en Node.js
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze node.js-toepassing stuurt een zoekverzoek naar de API en geeft het antwoord weer. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
+Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [Node.js 6](https://nodejs.org/en/download/) of later
+* [Node.js 6](https://nodejs.org/en/download/) of hoger
 * Een abonnementssleutel
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -44,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonnementssleutel instellen
 
-Dit codefragment gebruikt de omgevingsvariabele `AZURE_SUBSCRIPTION_KEY` voor het opslaan van de abonnementssleutel, een goede gewoonte om te voorkomen dat uw sleutels per ongeluk worden weergegeven wanneer u code implementeert. Ga naar de [pagina uw api's](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) om uw abonnements sleutel op te zoeken.
+Dit codefragment gebruikt de omgevingsvariabele `AZURE_SUBSCRIPTION_KEY` voor het opslaan van de abonnementssleutel, een goede gewoonte om te voorkomen dat uw sleutels per ongeluk worden weergegeven wanneer u code implementeert. Ga naar de [pagina Uw API's](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) om uw abonnementssleutel op te zoeken.
 
 Als u niet bekend bent met het gebruik van omgevingsvariabelen, of als u deze app zo snel mogelijk wilt uitvoeren, kunt u `process.env['AZURE_SUBSCRIPTION_KEY']` vervangen door uw abonnementssleutel die is ingesteld als een tekenreeks.
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Een functie maken voor het versturen van de aanvraag
 
-Met deze functie maakt u een beveiligde GET-aanvraag, waarbij de zoekopdracht als een queryparameter wordt opgeslagen in het pad. `hostname` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.  `encodeURIComponent` wordt gebruikt als escape voor ongeldige tekens, en de abonnementssleutel wordt doorgegeven in een header. De callback ontvangt een [respons](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) die zich abonneert op de gebeurtenis `data` om de JSON-hoofdtekst te aggregeren, op `error` om eventuele problemen vast te leggen en op `end` om te weten wanneer het bericht moet worden beschouwd als voltooid. Als de aanroep is voltooid, worden de interessante headers en hoofdtekst weergegeven door de app. U kunt experimenteren met de kleuren en de diepte instellen op basis van uw voorkeur. Een diepte van `1` biedt een goed overzicht van het antwoord.
+Met deze functie maakt u een beveiligde GET-aanvraag, waarbij de zoekopdracht als een queryparameter wordt opgeslagen in het pad. `hostname`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.  `encodeURIComponent` wordt gebruikt als escape voor ongeldige tekens, en de abonnementssleutel wordt doorgegeven in een header. De callback ontvangt een [respons](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) die zich abonneert op de gebeurtenis `data` om de JSON-hoofdtekst te aggregeren, op `error` om eventuele problemen vast te leggen en op `end` om te weten wanneer het bericht moet worden beschouwd als voltooid. Als de aanroep is voltooid, worden de interessante headers en hoofdtekst weergegeven door de app. U kunt experimenteren met de kleuren en de diepte instellen op basis van uw voorkeur. Een diepte van `1` biedt een goed overzicht van het antwoord.
 
 ```javascript
 function bingWebSearch(query) {

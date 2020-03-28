@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77279700"
 ---
-Het voor beeld uitingen volgt een specifieke indeling.
+De voorbeelduitingen volgen een specifieke indeling.
 
 Het veld `text` bevat de tekst van de voorbeeldutterance. Het veld `intentName` moet overeenkomen met de naam van een bestaande intentie in de LUIS-app. Het veld `entityLabels` is vereist. Als u niet alle entiteiten een label wilt geven, geeft u een lege matrix op.
 

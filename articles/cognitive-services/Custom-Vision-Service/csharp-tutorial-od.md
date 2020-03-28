@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een object detectie project maken met de SDK voor C# -Custom Vision'
+title: Snelstartgids Een object detectie project maken met de SDK voor C# -Custom Vision
 titleSuffix: Azure Cognitive Services
-description: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de .NET SDK met C#.
+description: Maak een project, voeg tags toe, upload installatie kopieën, Train uw project en Detecteer objecten met behulp van C#de .NET SDK met.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: c6aaf69ba3ed682a00a203079b024a47121334e3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170070"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Snelstart: een objectdetectieproject maken met de .NET SDK van Custom Vision
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Snelstartgids Een object detectie project maken met de Custom Vision .NET SDK
 
-In dit artikel wordt beschreven hoe u met behulp van de Custom Vision C# SDK aan de slag gaat met het maken van een object detectie model. Wanneer u het project hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen .NET-toepassing te maken. 
+In dit artikel wordt beschreven hoe u met behulp van de Custom Vision C# SDK aan de slag gaat met het maken van een object detectie model. Nadat u deze hebt gemaakt, kunt u gelabelde regio's toevoegen, afbeeldingen uploaden, het project trainen, de standaard eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voor beeld als een sjabloon voor het maken van uw eigen .NET-toepassing. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision-SDK en voorbeeldcode ophalen
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision SDK en voorbeeld code ophalen
 
-Als u een .NET-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de NuGet-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt deze afzonderlijk openen.
+Als u een .NET-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de Custom Vision NuGet-pakketten nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt deze afzonderlijk openen.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Kloon of download het project [.NET-voorbeelden van Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples). Ga naar de map **CustomVision/ObjectDetection** en open _ObjectDetection.csproj_ in Visual Studio.
+Kloon of download het project [.NET-voorbeelden van Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples). Navigeer naar de map **CustomVision/ObjectDetection** en open _ObjectDetection.csproj_ in Visual Studio.
 
 Met dit Visual Studio-project wordt een nieuw Custom Vision-project gemaakt met de naam __My New Project__. Dit kan worden geopend via de [Custom Vision-website](https://customvision.ai/). Vervolgens worden afbeeldingen geüpload om een objectdetectiemodel te trainen en te testen. In dit project wordt het model getraind om vorken en scharen in afbeeldingen te detecteren.
 
@@ -41,7 +41,7 @@ Met dit Visual Studio-project wordt een nieuw Custom Vision-project gemaakt met 
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-Open het bestand _Program.cs_ en inspecteer de code. [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw trainings-en Voorspellings sleutels met de naam `CUSTOM_VISION_TRAINING_KEY` en `CUSTOM_VISION_PREDICTION_KEY`. Het script zoekt naar deze variabelen.
+Open het bestand _Program.cs_ en inspecteer de code. [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw trainings- `CUSTOM_VISION_TRAINING_KEY` `CUSTOM_VISION_PREDICTION_KEY`en voorspellingssleutels met de naam en , respectievelijk. Het script zal zoeken naar deze variabelen.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 
@@ -49,27 +49,27 @@ U kunt ook uw eind punt-URL ophalen via de pagina instellingen van de website va
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_endpoint)]
 
-### <a name="create-a-new-custom-vision-service-project"></a>Een nieuw Custom Vision Service-project maken
+### <a name="create-a-new-custom-vision-service-project"></a>Een nieuw Custom Vision Service project maken
 
-Met het volgende deel van de code maakt u een objectdetectieproject. Het project wordt weergegeven op de [Custom Vision-website](https://customvision.ai/), die u eerder hebt bezocht. Raadpleeg de [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) -methode om andere opties op te geven wanneer u uw project maakt (Zie de hand leiding voor het [bouwen van een detector](get-started-build-detector.md) -webportal).  
+Met het volgende deel van de code maakt u een objectdetectieproject. Het project wordt weergegeven op de [Custom Vision-website](https://customvision.ai/), die u eerder hebt bezocht. Zie de methode [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) om andere opties op te geven wanneer u uw project maakt (uitgelegd in de webportalhandleiding [Voor een detector](get-started-build-detector.md) maken).  
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
 
-### <a name="add-tags-to-the-project"></a>Label aan het project toevoegen
+### <a name="add-tags-to-the-project"></a>Tags toevoegen aan het project
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
+### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en coderen
 
-Als u afbeeldingen labelt in objectdetectieprojecten, dient u de regio van elk gelabeld object op te geven met behulp van genormaliseerde coördinaten. Met de volgende code wordt elk voorbeeld van een afbeelding aan de bijbehorende gelabelde regio gekoppeld.
+Wanneer u afbeeldingen in object detectie projecten labelt, moet u de regio van elk gelabeld object opgeven met behulp van genormaliseerde coördinaten. Met de volgende code wordt elk van de voorbeeld afbeeldingen gekoppeld aan de gelabelde regio.
 
 > [!NOTE]
-> Als u geen hulp programma voor klikken en slepen hebt om de coördinaten van regio's te markeren, kunt u de Web-UI gebruiken op [Customvision.ai](https://www.customvision.ai/). In dit voor beeld zijn de coördinaten al opgenomen.
+> Als u geen gebruik hebt van klikken en slepen om de coördinaten van regio's te markeren, u de webgebruikersinterface op [Customvision.ai](https://www.customvision.ai/)gebruiken. In dit voorbeeld zijn de coördinaten al verstrekt.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload_regions)]
 
-Vervolgens wordt deze kaart met koppelingen gebruikt om elke voorbeeldafbeelding met de bijbehorende regiocoördinaten te uploaden. U kunt Maxi maal 64 installatie kopieën uploaden in één batch.
+Vervolgens wordt deze kaart met koppelingen gebruikt om elke voorbeeldafbeelding met de bijbehorende regiocoördinaten te uploaden. U maximaal 64 afbeeldingen uploaden in één batch.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
@@ -77,7 +77,7 @@ U hebt nu alle voor beelden van afbeeldingen geüpload en elke afbeelding (**For
 
 ### <a name="train-the-project"></a>Het project trainen
 
-Met deze code wordt de eerste trainingsiteratie in het project gemaakt.
+Deze code maakt de eerste trainings herhaling in het project.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_train)]
 
@@ -87,19 +87,19 @@ De naam die is opgegeven voor de gepubliceerde herhaling kan worden gebruikt voo
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 
-### <a name="create-a-prediction-endpoint"></a>Een voorspellingseindpunt maken
+### <a name="create-a-prediction-endpoint"></a>Een Voorspellings eindpunt maken
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction_endpoint)]
 
-### <a name="use-the-prediction-endpoint"></a>Voorspellingseindpunt gebruiken
+### <a name="use-the-prediction-endpoint"></a>Het Voorspellings eindpunt gebruiken
 
-In dit deel van het script wordt de testafbeelding geladen, wordt een query op het eindpunt van het model uitgevoerd en worden de gegevens van de voorspelling op de console weergegeven.
+Dit deel van het script laadt de test installatie kopie, voert een query uit op het eind punt van het model en voert Voorspellings gegevens uit naar de-console.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Terwijl de toepassing wordt uitgevoerd, wordt een consolevenster geopend en wordt de volgende uitvoer geschreven:
+Wanneer de toepassing wordt uitgevoerd, moet deze een console venster openen en de volgende uitvoer schrijven:
 
 ```console
 Creating new project:
@@ -111,13 +111,13 @@ Making a prediction:
         scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
 
-Vervolgens kunt u controleren of de testafbeelding (gevonden in **Images/Test/** ) op de juiste wijze wordt gelabeld en of de detectieregio juist is. Druk nu op een willekeurige toets om de toepassing af te sluiten.
+U kunt vervolgens controleren of de test installatie kopie (gevonden in **installatie kopieën/test/** ) juist is gelabeld en of de detectie regio correct is. Op dit moment kunt u op een wille keurige toets drukken om de toepassing af te sluiten.
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu gezien hoe u elke stap van het object detectie proces in code kunt uitvoeren. In dit voor beeld wordt één trainings iteratie uitgevoerd, maar vaak moet u het model meerdere keren trainen en testen om het nauw keuriger te maken. In de volgende handleiding wordt classificatie van afbeeldingen behandeld. De principes zijn soortgelijk aan die van objectdetectie.
+Nu hebt u gezien hoe u elke stap van het objectdetectieproces in code doen. Dit voorbeeld voert één trainingsiteratie uit, maar vaak moet u uw model meerdere keren trainen en testen om het nauwkeuriger te maken. In de volgende handleiding wordt classificatie van afbeeldingen behandeld. De principes zijn soortgelijk aan die van objectdetectie.
 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](test-your-model.md)

@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Go gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: Informatie en code voorbeelden ophalen zodat u snel aan de slag kunt met de Text Analytics-API in azure Cognitive Services.
+description: Ontvang informatie en codevoorbeelden om u te helpen snel aan de slag te gaan met de Text Analytics API in Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378756"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Snelstartgids: Go gebruiken om de Text Analytics Cognitive Service aan te roepen 
@@ -39,11 +39,11 @@ Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd m
 
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics-API sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics API-toets en eindpunt naar de code.
 1. Sla het bestand op met de extensie .go.
-1. Open een opdracht prompt op een computer met Go die vanuit de hoofdmap wordt geïnstalleerd.
+1. Open een opdrachtprompt op een computer waarop Go vanuit uw hoofdmap is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build detect.go`.
-1. Voer het bestand uit, bijvoorbeeld: `go run detect.go`.
+1. Voer het bestand uit, bijvoorbeeld met: `go run detect.go`.
 
 ```golang
 package main
@@ -172,11 +172,11 @@ Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp
 
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
 1. Sla het bestand op met de extensie .go.
-1. Open een opdracht prompt op een computer met Go die vanuit de hoofdmap wordt geïnstalleerd.
+1. Open een opdrachtprompt op een computer waarop Go vanuit uw hoofdmap is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build sentiment.go`.
-1. Voer het bestand uit, bijvoorbeeld: `go run sentiment.go`.
+1. Voer het bestand uit, bijvoorbeeld met: `go run sentiment.go`.
 
 ```golang
 package main
@@ -253,7 +253,7 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Sentiment analyseren-antwoord
 
-Het resultaat wordt gemeten als positief als het dichter bij 1,0 en negatief is als de Score dichter bij 0,0 ligt.
+Het resultaat wordt als positief gemeten als het dichter bij 1.0 en negatief wordt gescoord als het dichter bij 0.0 wordt gescoord.
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld:
 
 ```json
@@ -280,11 +280,11 @@ Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdoc
 
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdrachtprompt op een computer waarop Go is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build key-phrases.go`.
-1. Voer het bestand uit, bijvoorbeeld: `go run key-phrases.go`.
+1. Voer het bestand uit, bijvoorbeeld met: `go run key-phrases.go`.
 
 ```golang
 package main
@@ -404,14 +404,14 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor "Verenigde Staten" is `location`, terwijl de koppeling naar Wikipedia `https://en.wikipedia.org/wiki/United_States`is.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden uit tekst, zoals 'Verenigde Staten', en geven u vervolgens het type en/of wikipedia-koppeling voor dit woord(en). Het type voor "Verenigde `location`Staten" is , `https://en.wikipedia.org/wiki/United_States`terwijl de link naar Wikipedia is .  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdrachtprompt op een computer waarop Go is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build entities.go`.
-1. Voer het bestand uit, bijvoorbeeld: `go run entities.go`.
+1. Voer het bestand uit, bijvoorbeeld met: `go run entities.go`.
 
 ```golang
 package main
@@ -538,9 +538,9 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Text Analytics met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Tekstanalyse met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Zie ook
 
  [Overzicht van Text Analytics](../overview.md)  
- [Veelgestelde vragen](../text-analytics-resource-faq.md)
+ [Veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md)

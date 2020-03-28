@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een audio bestand-spraak service'
+title: 'Snelstart: spraak herkennen uit een audiobestand - Spraakservice'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 08a8df8382cc0e513916a802eb1b383124107393
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75928029"
 ---
-Bekijk of down load alle <a href="https://aka.ms/speech/github">Speech SDK</a> -voor beelden op github.
+Bekijk of download alle <a href="https://aka.ms/speech/github">Speech SDK Samples</a> op GitHub.

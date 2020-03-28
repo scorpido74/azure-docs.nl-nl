@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de Bing Aangepaste zoekopdrachten-client bibliotheek gebruiken'
+title: 'Snelstart: de clientbibliotheek Bing Custom Search gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Aangepaste zoekopdrachten-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
+description: De Custom Search API biedt clientbibliotheken waarmee u eenvoudig zoekmogelijkheden in uw toepassingen integreren. Gebruik deze snelstart om zoekverzoeken te verzenden en resultaten terug te krijgen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78270949"
 ---
-# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Snelstartgids: de Bing Aangepaste zoekopdrachten-client bibliotheek gebruiken
+# <a name="quickstart-use-the-bing-custom-search-client-library"></a>Snelstart: de clientbibliotheek Bing Custom Search gebruiken
 
 ::: zone pivot="programming-language-csharp"
 
