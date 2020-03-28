@@ -1,27 +1,27 @@
 ---
 title: Een aangepaste provider maken en gebruiken
-description: Deze zelf studie laat zien hoe u een aangepaste Azure-provider maakt en gebruikt. Aangepaste providers gebruiken om werk stromen in azure te wijzigen.
+description: In deze zelfstudie ziet u hoe u een Azure Custom Provider maakt en gebruikt. Gebruik aangepaste providers om werkstromen op Azure te wijzigen.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650028"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Een aangepaste provider maken en gebruiken
 
-Een aangepaste provider is een contract tussen Azure en een eind punt. Met aangepaste providers kunt u werk stromen wijzigen in Azure. In deze zelf studie wordt het proces voor het maken van een aangepaste provider weer gegeven. Als u niet bekend bent met aangepaste Azure-providers, raadpleegt u [het overzicht van Azure Custom resource providers](overview.md).
+Een aangepaste provider is een contract tussen Azure en een eindpunt. Met aangepaste providers u werkstromen op Azure wijzigen. In deze zelfstudie wordt het proces van het maken van een aangepaste provider weergegeven. Als u niet bekend bent met Azure Custom Providers, raadpleegt u [het overzicht van Azure Custom Resource Providers](overview.md).
 
 ## <a name="create-a-custom-provider"></a>Een aangepaste provider maken
 
 > [!NOTE]
-> In deze zelf studie wordt niet weer gegeven hoe u een eind punt kunt ontwerpen. Als u geen REST-eind punt hebt, volgt u de [zelf studie over het ontwerpen van rest-eind punten](./tutorial-custom-providers-function-authoring.md). Dit is de basis van de huidige zelf studie.
+> In deze zelfstudie wordt niet weergegeven hoe u een eindpunt maakt. Als u geen RESTFUL-eindpunt hebt, volgt u de [zelfstudie over het ontwerpen van RESTful-eindpunten](./tutorial-custom-providers-function-authoring.md), wat de basis is voor de huidige zelfstudie.
 
-Nadat u een eind punt hebt gemaakt, kunt u een aangepaste provider maken om een contract tussen de provider en het eind punt te genereren. Met een aangepaste provider kunt u een lijst met eindpunt definities opgeven:
+Nadat u een eindpunt hebt gemaakt, u een aangepaste provider maken om een contract tussen de provider en het eindpunt te genereren. Met een aangepaste provider u een lijst met eindpuntdefinities opgeven:
 
 ```JSON
 {
@@ -31,17 +31,17 @@ Nadat u een eind punt hebt gemaakt, kunt u een aangepaste provider maken om een 
 }
 ```
 
-Eigenschap | Verplicht | Beschrijving
+Eigenschap | Vereist | Beschrijving
 ---|---|---
-**De naam** | Ja | De naam van de eindpunt definitie. Deze naam wordt door Azure weer gegeven via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | Nee | Het type eindpunt contract. Als de waarde niet is opgegeven, wordt standaard ' proxy ' gebruikt.
-**endpoints** | Ja | Het eind punt waarnaar de aanvragen worden gerouteerd. Dit eind punt verwerkt het antwoord en eventuele neven effecten van de aanvraag.
+**Naam** | Ja | De naam van de eindpuntdefinitie. Azure onthult deze naam via de API onder /abonnementen/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**routingType** | Nee | Het type eindpuntcontract. Als de waarde niet is opgegeven, wordt deze standaard weergegeven als 'Proxy'.
+**Eindpunt** | Ja | Het eindpunt om de aanvragen naar te leiden. Dit eindpunt verwerkt het antwoord en eventuele bijwerkingen van de aanvraag.
 
-De waarde van het **eind punt** is de trigger-URL van de Azure function-app. De tijdelijke aanduidingen `<yourapp>`, `<funcname>`en `<functionkey>` moeten worden vervangen door waarden voor de gemaakte functie-app.
+De waarde van **eindpunt** is de trigger-URL van de Azure-functie-app. De `<yourapp>` `<funcname>`tijdelijke `<functionkey>` aanduidingen en tijdelijke aanduidingen moeten worden vervangen door waarden voor de gemaakte functie-app.
 
 ## <a name="define-custom-actions-and-resources"></a>Aangepaste acties en resources definiëren
 
-De aangepaste provider bevat een lijst met eindpunt definities die zijn gemodelleerd onder de eigenschappen **Actions** en **resourceTypes** . De eigenschap **Actions** wordt toegewezen aan de aangepaste acties die worden weer gegeven door de aangepaste provider en de eigenschap **resourceTypes** is de aangepaste resources. In deze zelf studie heeft de aangepaste provider een **actie** -eigenschap met de naam `myCustomAction` en een eigenschap **resourceTypes** met de naam `myCustomResources`.
+De aangepaste provider bevat een lijst met eindpuntdefinities die zijn gemodelleerd onder de eigenschappen **acties** en **resourceTypes.** De eigenschap **acties** worden toegewezen aan de aangepaste acties die door de aangepaste provider zijn blootgesteld en de eigenschap **resourceTypes** zijn de aangepaste resources. In deze zelfstudie heeft de aangepaste `myCustomAction` provider een eigenschap **acties** met de naam en een eigenschap **resourceTypes** met de naam `myCustomResources`.
 
 ```JSON
 {
@@ -68,9 +68,9 @@ De aangepaste provider bevat een lijst met eindpunt definities die zijn gemodell
 ## <a name="deploy-the-custom-provider"></a>De aangepaste provider implementeren
 
 > [!NOTE]
-> U moet de **eindpunt** waarden vervangen door de trigger-URL uit de functie-app die u in de vorige zelf studie hebt gemaakt.
+> U moet de **eindpuntwaarden** vervangen door de trigger-URL van de functie-app die in de vorige zelfstudie is gemaakt.
 
-U kunt de vorige aangepaste provider implementeren met behulp van een Azure Resource Manager sjabloon:
+U de vorige aangepaste provider implementeren met behulp van een Azure Resource Manager-sjabloon:
 
 ```JSON
 {
@@ -105,14 +105,14 @@ U kunt de vorige aangepaste provider implementeren met behulp van een Azure Reso
 
 ## <a name="use-custom-actions-and-resources"></a>Aangepaste acties en resources gebruiken
 
-Nadat u een aangepaste provider hebt gemaakt, kunt u de nieuwe Azure-Api's gebruiken. In de volgende tabbladen wordt uitgelegd hoe u een aangepaste provider aanroept en gebruikt.
+Nadat u een aangepaste provider hebt gemaakt, u de nieuwe Azure API's gebruiken. In de volgende tabbladen wordt uitgelegd hoe u een aangepaste provider bellen en gebruiken.
 
 ### <a name="custom-actions"></a>Aangepaste acties
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 > [!NOTE]
-> U moet de tijdelijke aanduidingen `{subscriptionId}` en `{resourceGroupName}` vervangen door het abonnement en de resource groep waar u de aangepaste provider hebt geïmplementeerd.
+> U moet `{subscriptionId}` de `{resourceGroupName}` tijdelijke aanduidingen en tijdelijke aanduidingen vervangen door de abonnements- en resourcegroep van waar u de aangepaste provider hebt geïmplementeerd.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -123,13 +123,13 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-*optreden* | Ja | De naam van de actie die is gedefinieerd in de aangepaste provider
-*id's* | Ja | De resource-ID van de aangepaste provider
-*aanvraag-hoofd tekst* | Nee | De hoofd tekst van de aanvraag die naar het eind punt wordt verzonden
+*Actie* | Ja | De naam van de actie die is gedefinieerd in de aangepaste provider
+*Ids* | Ja | De resource-id van de aangepaste provider
+*aanvraag-lichaam* | Nee | De aanvraaginstantie die naar het eindpunt wordt verzonden
 
-# <a name="templatetabtemplate"></a>[Sjabloon](#tab/template)
+# <a name="template"></a>[Sjabloon](#tab/template)
 
 Geen.
 
@@ -137,10 +137,10 @@ Geen.
 
 ### <a name="custom-resources"></a>Aangepaste resources
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 > [!NOTE]
-> U moet de tijdelijke aanduidingen `{subscriptionId}` en `{resourceGroupName}` vervangen door het abonnement en de resource groep waar u de aangepaste provider hebt geïmplementeerd.
+> U moet `{subscriptionId}` de `{resourceGroupName}` tijdelijke aanduidingen en tijdelijke aanduidingen vervangen door de abonnements- en resourcegroep van waar u de aangepaste provider hebt geïmplementeerd.
 
 #### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 
@@ -156,21 +156,21 @@ az resource create --is-full-object \
                     }'
 ```
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-*is-Full-object* | Ja | Hiermee wordt aangegeven of het eigenschappen object andere opties bevat zoals locatie, tags, SKU of plan.
-*id* | Ja | De resource-ID van de aangepaste resource. Deze ID is een uitbrei ding van de resource-ID van de aangepaste provider.
-*Eigenschappen* | Ja | De hoofd tekst van de aanvraag die naar het eind punt wordt verzonden.
+*is-full-object* | Ja | Hiermee geeft u aan of het eigenschappenobject andere opties bevat, zoals locatie, tags, SKU of plan.
+*id* | Ja | De resource-id van de aangepaste resource. Deze ID is een uitbreiding van de resource-id van de aangepaste provider.
+*Eigenschappen* | Ja | De aanvraaginstantie die naar het eindpunt wordt verzonden.
 
-#### <a name="delete-a-custom-resource"></a>Een aangepaste resource verwijderen
+#### <a name="delete-a-custom-resource"></a>Een aangepaste bron verwijderen
 
 ```azurecli-interactive
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-*id* | Ja | De resource-ID van de aangepaste resource. Deze ID is een uitbrei ding van de resource-ID van de aangepaste provider.
+*id* | Ja | De resource-id van de aangepaste resource. Deze ID is een uitbreiding van de resource-id van de aangepaste provider.
 
 #### <a name="retrieve-a-custom-resource"></a>Een aangepaste resource ophalen
 
@@ -178,13 +178,13 @@ Parameter | Verplicht | Beschrijving
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-*id* | Ja | De resource-ID van de aangepaste resource. Deze ID is een uitbrei ding van de resource-ID van de aangepaste provider.
+*id* | Ja | De resource-id van de aangepaste resource. Deze ID is een uitbreiding van de resource-id van de aangepaste provider.
 
-# <a name="templatetabtemplate"></a>[Sjabloon](#tab/template)
+# <a name="template"></a>[Sjabloon](#tab/template)
 
-Een voor beeld van een resource manager-sjabloon:
+Een voorbeeld van resourcemanagersjabloon:
 
 ```JSON
 {
@@ -204,20 +204,20 @@ Een voor beeld van een resource manager-sjabloon:
 }
 ```
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-*resourceTypeName* | Ja | De `name` waarde van de eigenschap **resourceTypes** die in de aangepaste provider is gedefinieerd.
-*resourceProviderName* | Ja | De naam van het aangepaste provider exemplaar.
-*customResourceName* | Ja | De aangepaste resource naam.
+*resourceTypeName* | Ja | De `name` waarde van de eigenschap **resourceTypes** gedefinieerd in de aangepaste provider.
+*resourceProviderName* | Ja | De naam van de aangepaste providerinstantie.
+*aangepaste ResourceName* | Ja | De aangepaste resourcenaam.
 
 ---
 
 > [!NOTE]
-> Wanneer u klaar bent met het implementeren en gebruiken van de aangepaste provider, moet u alle gemaakte resources opschonen, inclusief de Azure-functie-app.
+> Nadat u klaar bent met het implementeren en gebruiken van de aangepaste provider, moet u ervoor zorgen dat alle gemaakte resources, waaronder de Azure-functie-app, worden opgeschoond.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over aangepaste providers. Zie voor meer informatie:
+In dit artikel leerde u over aangepaste providers. Zie voor meer informatie:
 
-- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Procedure: aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [How to: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [How to: Aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)

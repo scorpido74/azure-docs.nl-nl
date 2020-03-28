@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
-description: Deze zelf studie laat zien hoe u Spark-query's uitvoert op een Azure Databricks cluster om toegang te krijgen tot gegevens in een Azure Data Lake Storage Gen2 Storage-account.
+title: 'Zelfstudie: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Documenten'
+description: In deze zelfstudie ziet u hoe u Spark-query's uitvoert op een Azure Databricks-cluster om toegang te krijgen tot gegevens in een Azure Data Lake Storage Gen2-opslagaccount.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,13 +9,13 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303236"
 ---
-# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Zelf studie: Azure Data Lake Storage Gen2, Azure Databricks & Spark
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Zelfstudie: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
 In deze zelfstudie ziet u hoe u een Azure Databricks-cluster kunt verbinden met gegevens die zijn opgeslagen in een Azure-opslagaccount waarvoor Azure Data Lake Storage Gen2 is ingeschakeld. Deze verbinding stelt u in staat om systeemeigen query’s en analyses van uw cluster uit te voeren op uw gegevens.
 
@@ -26,28 +26,28 @@ In deze zelfstudie leert u het volgende:
 > * Niet-gestructureerde gegevens opnemen in een opslagaccount
 > * Analyse uitvoeren op gegevens in Blob-opslag
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Data Lake Storage Gen2-account maken.
 
-  Zie [een Azure data Lake Storage Gen2-account maken](data-lake-storage-quickstart-create-account.md).
+  Zie [Een Azure Data Lake Storage Gen2-account maken](data-lake-storage-quickstart-create-account.md).
 
 * Zorg ervoor dat aan uw gebruikersaccount de [rol van Gegevensbijdrager voor opslagblob](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) is toegewezen.
 
 * Installeer AzCopy v10. Zie [Gegevens overdragen met AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Een service-principal maken. Zie [Hoe: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang hebben tot bronnen.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 
   Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
+  :heavy_check_mark: Wanneer u de stappen uitvoert in de [toepassing Toewijzen aan een rolsectie](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u de rol **Opslagblobgegevensinzender** toewijzen aan de serviceprincipal.
 
   > [!IMPORTANT]
   > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
-  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
+  :heavy_check_mark: Wanneer u de stappen uitvoert in het gedeelte [Waarden opvragen voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en wachtwoordwaarden in een tekstbestand. U hebt deze binnenkort nodig.
 
 ### <a name="download-the-flight-data"></a>De vluchtgegevens downloaden
 
@@ -55,7 +55,7 @@ In deze zelfstudie worden vluchtgegevens van het Bureau of Transport Statistics 
 
 1. Ga naar [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Schakel het selectievakje **Prezipped file** in om alle gegevensvelden te selecteren.
+2. Schakel het selectievakje **Prezipped File** in om alle gegevensvelden in te schakelen.
 
 3. Selecteer de knop **Download** en sla de resultaten op uw computer op. 
 
@@ -65,9 +65,9 @@ In deze zelfstudie worden vluchtgegevens van het Bureau of Transport Statistics 
 
 In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azure-portal.
 
-1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
+1. Selecteer in de Azure-portal de optie **Een resource** > **Analytics** > **Azure Databricks maken**.
 
-    ![Databricks op Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks op Azure Portal")
+    ![Databricks op Azure-portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks op Azure-portal")
 
 2. Geef bij **Azure Databricks Service** de volgende waarden op voor het maken van een Databricks-service:
 
@@ -77,9 +77,9 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **VS - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.       |
-    |**Prijscategorie**     |  selecteer **Standaard**.     |
+    |**Prijsniveau**     |  Selecteer **Standaard**.     |
 
-    ![Een Azure Databricks-werk ruimte maken](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Een Azure Databricks-service maken")
+    ![Een Azure Databricks-werkruimte maken](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Een Azure Databricks-service maken")
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -95,7 +95,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
+    ![Databricks Spark-cluster maken op Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Databricks Spark-cluster maken op Azure")
 
     Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
 
@@ -117,7 +117,7 @@ Gebruik AzCopy om gegevens uit uw *csv*-bestand te kopiëren naar uw Data Lake S
    azcopy login
    ```
 
-   Volg de instructies die worden weer gegeven in het opdracht prompt venster om uw gebruikers account te verifiëren.
+   Volg de instructies die in het opdrachtpromptvenster worden weergegeven om uw gebruikersaccount te verifiëren.
 
 2. Voer de volgende opdracht in om gegevens kopiëren vanuit het *csv*-account.
 
@@ -125,21 +125,21 @@ Gebruik AzCopy om gegevens uit uw *csv*-bestand te kopiëren naar uw Data Lake S
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Vervang de waarde van de tijdelijke aanduiding `<csv-folder-path>` door het pad naar het *CSV* -bestand.
+   * Vervang `<csv-folder-path>` de tijdelijke aanduidingswaarde door het pad naar het *CSV-bestand.*
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de tijdelijke aanduiding `<container-name>` door de naam van een container in uw opslag account.
+   * Vervang `<container-name>` de tijdelijke aanduiding door de naam van een container in uw opslagaccount.
 
-## <a name="create-a-container-and-mount-it"></a>Een container maken en koppelen
+## <a name="create-a-container-and-mount-it"></a>Een container maken en monteren
 
-In deze sectie maakt u een container en een map in uw opslag account.
+In deze sectie maakt u een container en een map in uw opslagaccount.
 
-1. Ga in de [Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
+1. Ga in de [Microsoft Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
 
 2. Selecteer aan de linkerkant **Werkruimte**. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitie blok maken in Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Een notitie blok maken in Databricks")
+    ![Een notitieblok maken in Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 3. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Python** als taal en selecteer vervolgens het Apache Spark-cluster dat u eerder hebt gemaakt.
 
@@ -161,7 +161,7 @@ In deze sectie maakt u een container en een map in uw opslag account.
     extra_configs = configs)
     ```
 
-18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de waarde van de tijdelijke aanduiding `container-name` door de naam van de container.
+18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang `container-name` de tijdelijke aanduidingswaarde door de naam van de container.
 
 19. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -209,7 +209,7 @@ Hierna kunt u beginnen met het doorzoeken van de gegevens die u hebt geüpload i
 
 Als u dataframes wilt maken voor uw gegevensbronnen, voert u het volgende script uit:
 
-* Vervang de waarde van de tijdelijke aanduiding `<csv-folder-path>` door het pad naar het *CSV* -bestand.
+* Vervang `<csv-folder-path>` de tijdelijke aanduidingswaarde door het pad naar het *CSV-bestand.*
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -277,4 +277,4 @@ Verwijder de resourcegroep en alle gerelateerde resources, wanneer u deze niet m
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Gegevens uitpakken, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+> [Gegevens extraheren, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

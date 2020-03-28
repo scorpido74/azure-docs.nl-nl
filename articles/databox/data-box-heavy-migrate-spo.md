@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Heavy gebruiken om de inhoud van een bestands share naar share point online te verplaatsen
-description: Gebruik deze zelf studie om te leren hoe u de inhoud van een bestands share naar share point online kunt migreren met behulp van uw Azure Data Box Heavy
+title: Azure Data Box Heavy gebruiken om inhoud voor bestandsshare naar SharePoint Online te verplaatsen
+description: Gebruik deze zelfstudie voor meer informatie over het migreren van inhoud voor het delen van bestanden naar Share Point Online met behulp van uw Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,87 +9,87 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
 ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77560045"
 ---
-# <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>De Azure Data Box Heavy gebruiken om de inhoud van de bestands share te migreren naar share point online
+# <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>De Azure Data Box Heavy gebruiken om de inhoud van het delen van bestanden te migreren naar SharePoint Online
 
-Gebruik uw Azure Data Box Heavy en het hulp programma voor migratie van share point (SPMT) om uw bestands share-inhoud eenvoudig te migreren naar share point online en OneDrive. Met behulp van Data Box Heavy kunt u de afhankelijkheid van uw WAN-koppeling (Wide Area Network) verwijderen om de gegevens over te dragen.
+Gebruik uw Azure Data Box Heavy en het SharePoint Migration Tool (SPMT) om uw inhoud voor bestandsshare eenvoudig te migreren naar SharePoint Online en OneDrive. Door Data Box Heavy te gebruiken, u de afhankelijkheid van uw WAN-koppeling (Wide-area Network) verwijderen om de gegevens over te dragen.
 
-De Microsoft Azure Data Box is een service waarmee u een apparaat vanuit de Microsoft Azure-portal kunt best Ellen. U kunt vervolgens terabytes aan gegevens van uw servers naar het apparaat kopiëren. Nadat het is teruggestuurd naar micro soft, worden uw gegevens naar Azure gekopieerd. Afhankelijk van de grootte van de gegevens die u wilt overdragen, kunt u kiezen uit:
+De Microsoft Azure Data Box is een service waarmee u een apparaat bestellen via de Microsoft Azure-portal. U vervolgens terabytes aan gegevens van uw servers naar het apparaat kopiëren. Nadat u het terugnaar Microsoft hebt verzonden, worden uw gegevens gekopieerd naar Azure. Afhankelijk van de grootte van de gegevens die u wilt overdragen, u kiezen uit:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) met 35-TB bruikbare capaciteit per bestelling voor kleine tot middel grote gegevens sets.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) met 80-TB bruikbare capaciteit per apparaat voor gemiddeld tot grote gegevens sets.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) met 770-TB bruikbare capaciteit per apparaat voor grote gegevens sets.
+- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) met 35 TB bruikbare capaciteit per bestelling voor kleine tot middelgrote datasets.
+- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) met 80 TB bruikbare capaciteit per apparaat voor middelgrote tot grote datasets.
+- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) met 770 TB bruikbare capaciteit per apparaat voor grote datasets.
 
-In dit artikel wordt uitgelegd hoe u de Data Box Heavy kunt gebruiken om de bestands share-inhoud naar share point online te migreren.
+In dit artikel wordt specifiek gesproken over hoe u de Gegevensvak Zwaar gebruiken om de inhoud van het delen van bestanden te migreren naar SharePoint Online.
 
-## <a name="requirements-and-costs"></a>Vereisten en kosten
+## <a name="requirements-and-costs"></a>Eisen en kosten
 
 ### <a name="for-data-box-heavy"></a>Voor Data Box Heavy
 
-- Data Box Heavy is alleen beschikbaar voor Enterprise Agreement (EA), Cloud Solution Provider (CSP) of Azure sponsoring-aanbiedingen. Als uw abonnement geen van de bovenstaande typen bevat, neemt u contact op met Microsoft Ondersteuning om uw abonnement bij te werken of de [prijzen van Azure-abonnementen](https://azure.microsoft.com/pricing/)te bekijken.
-- Er zijn kosten verbonden aan het gebruik van Data Box Heavy. Zorg ervoor dat u de [Data Box Heavy prijzen](https://azure.microsoft.com/pricing/details/databox/heavy/)bekijkt.
+- Data Box Heavy is alleen beschikbaar voor Enterprise Agreement (EA), Cloud solution provider (CSP) of Azure-sponsoraanbiedingen. Als uw abonnement niet in een van de bovenstaande typen valt, neemt u contact op met Microsoft Support om uw abonnement te upgraden of [azure-abonnementsprijzen te bekijken.](https://azure.microsoft.com/pricing/)
+- Er zijn kosten verbonden aan het gebruik van Data Box Heavy. Controleer de [prijzen van Data Box Heavy.](https://azure.microsoft.com/pricing/details/databox/heavy/)
 
 
-### <a name="for-sharepoint-online"></a>Voor share point online
+### <a name="for-sharepoint-online"></a>Voor SharePoint Online
 
-- Bekijk de [minimale vereisten voor het hulp programma voor migratie van share point (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Bekijk de [minimumvereisten voor het SharePoint Migration Tool (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
-## <a name="workflow-overview"></a>Overzicht werk stroom
+## <a name="workflow-overview"></a>Overzicht van werkstroom
 
-Voor deze werk stroom moet u de stappen uitvoeren op Azure Data Box Heavy, evenals op share point online.
+Voor deze werkstroom moet u stappen uitvoeren op Azure Data Box Heavy en op SharePoint Online.
 De volgende stappen hebben betrekking op uw Azure Data Box Heavy.
 
-1. Volg orde Azure Data Box Heavy.
-2. Uw apparaat ontvangen en instellen.
-3. Kopieer gegevens van uw on-premises bestands share naar een map voor Azure Files op het apparaat.
-4. Nadat de Kopieer bewerking is voltooid, moet u het apparaat terugsturen volgens de instructies.
+1. Bestel Azure Data Box Heavy.
+2. Ontvang en stel uw apparaat in.
+3. Kopieer gegevens uit uw on-premises bestandsshare naar de map voor Azure-bestanden op uw apparaat.
+4. Nadat de kopie is voltooid, verzendt u het apparaat terug volgens de instructies.
 5. Wacht tot de gegevens volledig zijn geüpload naar Azure.
 
-De volgende stappen hebben betrekking op share point online.
+De volgende stappen hebben betrekking op SharePoint Online.
 
-6. Maak een virtuele machine in de Azure Portal en koppel de Azure-bestands share erop.
-7. Installeer het SPMT-hulp programma op de virtuele Azure-machine.
-8. Voer het SPMT-hulp programma uit met behulp van de Azure-bestands share als *bron*.
-9. Voer de laatste stappen van het hulp programma uit.
-10. Controleer en bevestig uw gegevens.
+6. Maak een VM in de Azure-portal en monteer de Azure-bestandsshare erop.
+7. Installeer het spmt-gereedschap op de Azure VM.
+8. Voer het SPMT-gereedschap uit met de Azure-bestandsshare als *bron*.
+9. Voer de laatste stappen van het gereedschap uit.
+10. Verifieer en bevestig uw gegevens.
 
-## <a name="use-data-box-heavy-to-copy-data"></a>Data Box Heavy gebruiken om gegevens te kopiëren
+## <a name="use-data-box-heavy-to-copy-data"></a>Gegevensvak Zwaar gebruiken om gegevens te kopiëren
 
-Voer de volgende stappen uit om gegevens te kopiëren naar uw Data Box Heavy.
+Volg de volgende stappen om gegevens naar uw Data Box Heavy te kopiëren.
 
-1. [Bestel uw data Box Heavy](data-box-heavy-deploy-ordered.md).
-2. Nadat u uw Data Box Heavy hebt ontvangen, [stelt u de data Box Heavy](data-box-heavy-deploy-set-up.md)in. U kunt zowel de knoop punten op het apparaat bekabelen en configureren.
-3. [Gegevens kopiëren naar Azure data Box Heavy](data-box-heavy-deploy-copy-data.md). Zorg ervoor dat u tijdens het kopiëren de volgende handelingen uitvoert:
+1. [Bestel uw Data Box Heavy.](data-box-heavy-deploy-ordered.md)
+2. Nadat u uw Data Box Heavy hebt ontvangen, [stelt u de Data Box Heavy in.](data-box-heavy-deploy-set-up.md) U bekabelt en configureert beide knooppunten op uw apparaat.
+3. [Gegevens kopiëren naar Azure Data Box Heavy](data-box-heavy-deploy-copy-data.md). Zorg er tijdens het kopiëren voor:
 
-    - Gebruik alleen de map *StorageAccountName_AzFile* in het data Box Heavy om de gegevens te kopiëren. Dit is omdat u wilt dat de gegevens eindigen in een Azure-bestands share, niet in blok-blobs of pagina-blobs.
-    - Bestanden kopiëren naar een map in *StorageAccountName_AzFile* map. Een submap in *StorageAccountName_AzFile* map maakt een bestands share. Bestanden die rechtstreeks naar *StorageAccountName_AzFile* map worden gekopieerd, mislukken en worden geüpload als blok-blobs. Dit is de bestands share die u in de volgende stap op uw virtuele machine gaat koppelen.
-    - Gegevens kopiëren naar beide knoop punten van uw Data Box Heavy.
-3. Voer [voorbereiding voor verzending](data-box-heavy-deploy-picked-up.md#prepare-to-ship) uit op het apparaat. Een succes volle voor bereiding op verzen ding zorgt ervoor dat bestanden naar Azure kunnen worden geüpload.
-4. [Het apparaat retour neren](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).
-5. [Controleer of de gegevens uploadt naar Azure](data-box-heavy-deploy-picked-up.md#verify-data-upload-to-azure).
+    - Gebruik alleen de *map StorageAccountName_AzFile* in de gegevensvak Zwaar om de gegevens te kopiëren. Dit komt omdat u wilt dat de gegevens in een Azure-bestandsshare terechtkomen, niet in blokblobs of paginablobs.
+    - Bestanden kopiëren naar een map in *StorageAccountName_AzFile* map. Een submap in *StorageAccountName_AzFile* map maakt een bestandsshare. Bestanden die rechtstreeks naar *StorageAccountName_AzFile* map worden gekopieerd, mislukken en worden geüpload als blokblobs. Dit is het bestandsaandeel dat u in de volgende stap op uw VM monteert.
+    - Kopieer gegevens naar beide knooppunten van uw Data Box Heavy.
+3. Voer [Voorbereiden uit om](data-box-heavy-deploy-picked-up.md#prepare-to-ship) op uw apparaat te verzenden. Een succesvolle voorbereiding op het verzenden zorgt voor een succesvolle upload van bestanden naar Azure.
+4. [Breng het apparaat terug.](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back)
+5. [Controleer de gegevens uploaden naar Azure](data-box-heavy-deploy-picked-up.md#verify-data-upload-to-azure).
 
 ## <a name="use-spmt-to-migrate-data"></a>SPMT gebruiken om gegevens te migreren
 
-Nadat u een bevestiging van het Azure-gegevens team hebt ontvangen dat het kopiëren van de gegevens is voltooid, gaat u door met het migreren van uw gegevens naar share point online.
+Nadat u een bevestiging hebt ontvangen van het Azure-gegevensteam dat uw gegevenskopie is voltooid, migreert u uw gegevens naar SharePoint Online.
 
-Voor de beste prestaties en connectiviteit wordt u aangeraden een virtuele Azure-machine (VM) te maken.
+Voor de beste prestaties en connectiviteit raden we u aan een Azure Virtual Machine (VM) te maken.
 
-1. Meld u aan bij de Azure Portal en [Maak een virtuele machine](../virtual-machines/windows/quick-create-portal.md).
-2. [Koppel de Azure-bestands share aan de VM](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Down load het hulp programma voor migratie van share point](https://spmtreleasescus.blob.core.windows.net/install/default.htm) en installeer het op uw virtuele Azure-machine.
-4. Start het hulp programma voor migratie van share point. Klik op aanmelden en voer uw Office 365-gebruikers naam en-wacht woord **in** .
-5. Wanneer u wordt gevraagd **waar uw gegevens zijn?** , selecteert u **Bestands share**. Geef het pad op naar uw Azure-bestands share waar uw gegevens zich bevinden.
-6. Volg de resterende vragen als normaal, inclusief de doel locatie. Ga voor meer informatie naar [het gebruik van het hulp programma voor migratie van share point](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+1. Meld u aan bij de Azure-portal en [maak vervolgens een virtuele machine](../virtual-machines/windows/quick-create-portal.md).
+2. [Monteer de Azure-bestandsshare op de VM](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
+3. [Download het SharePoint-migratiehulpprogramma](https://spmtreleasescus.blob.core.windows.net/install/default.htm) en installeer het op uw Azure VM.
+4. Start het SharePoint-migratiehulpprogramma. Klik **op Aanmelden** en voer uw gebruikersnaam en wachtwoord in voor Office 365.
+5. Wanneer gevraagd Waar worden uw **File share** **gegevens?** Voer het pad naar uw Azure-bestandsshare in waar uw gegevens zich bevinden.
+6. Volg de resterende aanwijzingen als normaal, inclusief uw doellocatie. Ga voor meer informatie naar [Hoe u het SharePoint-migratiehulpprogramma wilt gebruiken.](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)
 
 > [!IMPORTANT]
-> - De snelheid waarmee gegevens worden opgenomen in share point online, wordt beïnvloed door verschillende factoren, ongeacht of uw gegevens al in azure zijn. Als u deze factoren begrijpt, kunt u de efficiëntie van uw migratie plannen en maximaliseren.  Ga naar de [migratie snelheid van share point online en OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)voor meer informatie.
-> - Er is een risico dat bestaande machtigingen voor bestanden verloren gaan wanneer de gegevens naar share point online worden gemigreerd. U kunt ook bepaalde meta gegevens kwijt raken, zoals *gemaakt door* en de *datum gewijzigd door*.
+> - De snelheid waarmee gegevens worden ingenomen in SharePoint Online wordt beïnvloed door verschillende factoren, ongeacht of u uw gegevens al in Azure hebt. Als u deze factoren begrijpt, u de efficiëntie van uw migratie plannen en maximaliseren.  Ga voor meer informatie naar [SharePoint Online en OneDrive-migratiesnelheid](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
+> - Het risico bestaat dat bestaande machtigingen voor bestanden verloren gaan bij het migreren van de gegevens naar SharePoint Online. U ook bepaalde metagegevens verliezen, zoals *Gemaakt door* en *Datum gewijzigd door*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw Data Box Heavy best Ellen](./data-box-heavy-deploy-ordered.md)
+[Bestel uw Data Box Heavy](./data-box-heavy-deploy-ordered.md)

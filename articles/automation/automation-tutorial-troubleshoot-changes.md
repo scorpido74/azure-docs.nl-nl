@@ -8,10 +8,10 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75420641"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problemen met wijzigingen in uw omgeving oplossen
@@ -34,8 +34,8 @@ In deze zelfstudie leert u het volgende:
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een [Automation-account](automation-offering-get-started.md) voor opslag van de Watcher- en actie-runbooks en de Watcher-taak.
+* Een Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Een [Automatiseringsaccount](automation-offering-get-started.md) om de wacht- en actiebeheerboeken en de Watcher-taak vast te houden.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) voor de onboarding.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -47,7 +47,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 U moet voor deze zelfstudie eerst Wijzigingen bijhouden en Inventaris voor uw virtuele machine inschakelen. Als u eerder een andere automatiseringsoplossing voor een VM hebt ingeschakeld, is deze stap niet nodig.
 
 1. Selecteer in het menu links **Virtuele machines** en selecteer een virtuele machine in de lijst.
-1. Klik in het menu links in de sectie **Bewerkingen** op **Inventaris**. De pagina **Wijzigingen bijhouden** wordt geopend.
+1. Klik in het linkermenu onder de sectie **BEWERKINGEN** op **Inventaris**. De pagina **Wijzigingen bijhouden** wordt geopend.
 
 Als u ![Wijzigingen bijhouden inschakelt](./media/automation-tutorial-troubleshoot-changes/enableinventory.png), wordt het scherm **Wijzigingen bijhouden** weergegeven. Configureer de locatie, de Log Analytics-werkruimte en het Automation-account dat moet worden gebruikt, en klik op **Inschakelen**. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
 
@@ -191,9 +191,9 @@ Voer onder **Waarschuwingslogica** voor **Drempelwaarde** het volgende in: **0**
 
 ![Signaallogica configureren](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-Selecteer onder **Actiegroepen** de optie **Nieuwe maken**. Een actiegroep is een groep acties die u op meerdere waarschuwingen kunt toepassen. Deze acties kunnen bestaan uit, maar zijn niet beperkt tot, e-mailmeldingen, runbooks, webhooks en nog veel meer. Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
+Selecteer onder **Actiegroepen** de optie **Nieuwe maken**. Een actiegroep is een groep acties die u op meerdere waarschuwingen kunt toepassen. Deze acties kunnen bestaan uit, maar zijn niet beperkt tot, e-mailmeldingen, runbooks, webhooks en nog veel meer. Zie Actiegroepen maken en beheren voor meer informatie over [actiegroepen.](../azure-monitor/platform/action-groups.md)
 
-Voer onder **Waarschuwingsdetails definiëren** een naam en beschrijving voor de waarschuwing in. Stel **Ernst** in op **Informatie (Sev 2)** , **Waarschuwing (Sev 1)** of **Kritiek (Sev 0)** .
+Voer onder **Waarschuwingsdetails definiëren** een naam en beschrijving voor de waarschuwing in. Stel **Ernst** in op **Informatie (Sev 2)**, **Waarschuwing (Sev 1)** of **Kritiek (Sev 0)**.
 
 Voer in het vak **Naam van actiegroep** een naam in voor de waarschuwing en een korte naam. De korte naam wordt gebruikt in plaats van een volledige naam voor de actiegroep als er meldingen worden verzonden door deze groep te gebruiken.
 

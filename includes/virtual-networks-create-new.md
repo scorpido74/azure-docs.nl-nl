@@ -9,48 +9,48 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78244986"
 ---
 ## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie maakt u een virtueel netwerk en een subnet.
+In deze sectie maakt u een virtueel netwerk en subnet.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource maken > netwerk > virtueel netwerk** of zoek naar **virtueel netwerk** in het zoekvak.
+1. Selecteer linksboven in het scherm **de** optie Een bron maken > netwerken > virtueel netwerk of zoek naar virtueel **netwerk** in het zoekvak.
 
-2. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad **basis beginselen** :
+2. Voer in **Virtueel netwerk maken**deze informatie in of selecteer deze op het tabblad **Basisbeginselen:**
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
-    | **Project Details**  |                                                                 |
-    | Abonnement     | Uw Azure-abonnement selecteren                                  |
-    | Resourcegroep   | Selecteer **Nieuw maken**, Voer **\<resource-group-name >** in, selecteer OK of selecteer een bestaande **\<resource-group-name >** op basis van para meters. |
-    | **Exemplaar Details** |                                                                 |
-    | Naam             | Voer **\<virtuele-netwerk naam in >**                                    |
-    | Regio           | **\<regio selecteren-naam >** |
+    | **Projectgegevens**  |                                                                 |
+    | Abonnement     | selecteer uw Azure-abonnement                                  |
+    | Resourcegroep   | Selecteer **Nieuw maken,**>** \<brongroepnaam **invoeren, selecteer OK of selecteer een bestaande ** \<resourcegroepnaam>** op basis van parameters. |
+    | **Instantiedetails** |                                                                 |
+    | Name             | Voer ** \<>voor virtuele netwerken in**                                    |
+    | Regio           | Regionaam ** \<>selecteren** |
 
-3. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
+3. Selecteer het tabblad **IP-adressen** of selecteer de knop **Volgende: IP-adressen** onder aan de pagina.
 
-4. Voer de volgende gegevens in op het tabblad **IP-adressen** :
-
-    | Instelling            | Waarde                      |
-    |--------------------|----------------------------|
-    | IPv4-adres ruimte | Voer **\<IPv4-adres ruimte in >** |
-
-5. Selecteer bij **subnetnaam**het woord **standaard**.
-
-6. Voer in **subnet bewerken**de volgende gegevens in:
+4. Voer op het tabblad **IP-adressen** de tekst in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Subnetnaam | Voer **\<subnet naam in >** |
-    | Subnetadresbereik | Voer **\<subnet-adres bereik in >**
+    | IPv4-adresruimte | Voer ** \<>IPv4-adresruimte in** |
+
+5. Selecteer **onder Subnetnaam**het woord **standaard**.
+
+6. Voer in **Subnet Bewerken**deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Subnetnaam | Voer ** \<>subnetnaam in** |
+    | Subnetadresbereik | Vul ** \<>subnet-adresbereik in**
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer het tabblad **controleren + maken** of selecteer de knop **beoordeling + maken** .
+8. Selecteer het tabblad **Controleren + maken** of selecteer de knop Controleren + **maken.**
 
 9. Selecteer **Maken**.

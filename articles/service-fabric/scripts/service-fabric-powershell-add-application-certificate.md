@@ -1,5 +1,5 @@
 ---
-title: Een toepassings certificaat toevoegen aan een cluster in Power shell
+title: Toepassingscertificaat toevoegen aan een cluster in Powershell
 description: 'Azure PowerShell-voorbeeldscript: een toepassingscertificaat toevoegen aan een Service Fabric-cluster.'
 services: service-fabric
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77114338"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Een toepassingscertificaat toevoegen aan een Service Fabric-cluster
 
-In dit voorbeeld script wordt uitgelegd hoe u een certificaat in Key Vault maakt en hoe u het implementeert op een van de virtuele-machine schaal sets waarop uw cluster wordt uitgevoerd. Dit scenario maakt geen gebruik van Service Fabric rechtstreeks, maar is afhankelijk van Key Vault en virtuele-machine schaal sets.
+Dit voorbeeldscript doorloopt hoe u een certificaat maakt in Key Vault en implementeert het vervolgens naar een van de virtuele machineschaalsets waarop uw cluster wordt uitgevoerd. Dit scenario maakt geen gebruik van Service Fabric rechtstreeks, maar is eerder afhankelijk van Key Vault en van virtuele machineschaalsets.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding maken met Azure. 
+Installeer indien nodig de Azure PowerShell met de instructie in `Connect-AzAccount` de [Azure PowerShell-handleiding](/powershell/azure/overview) en voer deze uit om een verbinding met Azure te maken. 
 
 ## <a name="create-a-certificate-in-key-vault"></a>Een certificaat maken in Key Vault
 
@@ -40,7 +40,7 @@ $policy = New-AzKeyVaultCertificatePolicy -SubjectName $SubjectName -IssuerName 
 Add-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName -CertificatePolicy $policy
 ```
 
-## <a name="or-upload-an-existing-certificate-into-key-vault"></a>Of een bestaand certificaat uploaden naar Key Vault
+## <a name="or-upload-an-existing-certificate-into-key-vault"></a>Of upload een bestaand certificaat naar Key Vault
 
 ```powershell
 $VaultName= ""
@@ -67,7 +67,7 @@ $Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValu
 
 ```
 
-## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Profiel voor virtuele-machine schaal sets bijwerken met certificaat
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Profiel van virtuele machineschaalsets bijwerken met certificaat
 
 ```powershell
 $ResourceGroupName = ""
@@ -84,12 +84,12 @@ $VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConf
 $VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
 ```
 
-## <a name="update-the-virtual-machine-scale-set"></a>De schaalset voor de virtuele machine bijwerken
+## <a name="update-the-virtual-machine-scale-set"></a>De virtuele machineschaalset bijwerken
 ```powershell
 Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
 ```
 
-> Als u het certificaat op meerdere knooppunt typen in uw cluster wilt plaatsen, moeten de tweede en derde delen van dit script worden herhaald voor elk knooppunt type dat het certificaat moet bevatten.
+> Als u wilt dat het certificaat op meerdere knooppunttypen in uw cluster wordt geplaatst, moeten de tweede en derde delen van dit script worden herhaald voor elk knooppunttype dat het certificaat moet hebben.
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
@@ -97,12 +97,12 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Hiermee maakt u een beleid in het geheugen dat het certificaat vertegenwoordigt |
-| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Hiermee wordt het beleid geïmplementeerd op Key Vault |
-| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Hiermee maakt u een configuratie in het geheugen die het certificaat in een VM vertegenwoordigt |
+| [Nieuw-AzKeyVaultCertificateBeleid](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Hiermee maakt u een in-memorybeleid dat het certificaat vertegenwoordigt |
+| [Add-AzKeyVaultCertificaat](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Implementeert het beleid naar Key Vault |
+| [Nieuw-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Hiermee maakt u een in-memory config die het certificaat in een vm weergeeft |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
-| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Voegt het certificaat toe aan de definitie in het geheugen van de schaalset voor virtuele machines |
-| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Hiermee wordt de nieuwe definitie van de schaalset voor virtuele machines geïmplementeerd |
+| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Hiermee voegt u het certificaat toe aan de in-memory definitie van de virtuele machineschaalset |
+| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Implementeert de nieuwe definitie van de virtuele machineschaalset |
 
 ## <a name="next-steps"></a>Volgende stappen
 

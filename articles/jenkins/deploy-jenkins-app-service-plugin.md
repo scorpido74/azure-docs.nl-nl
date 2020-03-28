@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251463"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Implementeren naar Azure App Service met behulp van de Jenkins-invoegtoepassing 
@@ -31,7 +31,7 @@ Als u nog geen Jenkins-master hebt, begint u met de [oplossingssjabloon](install
 * [Azure Credentials](https://plugins.jenkins.io/azure-credentials) versie 1.2
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) versie 0.1
 
-U kunt de Jenkins-invoeg toepassing gebruiken om een web-app te implementeren in elke taal die wordt ondersteund door C#web apps, zoals PHP, Python, Java en node. js. In deze zelfstudie gebruiken we een [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample). Om de opslagplaats naar uw eigen GitHub-account te vertakken, selecteert u de knop **Fork** in de rechterbovenhoek van de GitHub-interface.  
+U de Jenkins-plug-in gebruiken om een web-app te implementeren in elke taal die wordt ondersteund door Web Apps, zoals C#, PHP, Python, Java en Node.js. In deze zelfstudie gebruiken we een [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample). Om de opslagplaats naar uw eigen GitHub-account te vertakken, selecteert u de knop **Fork** in de rechterbovenhoek van de GitHub-interface.  
 
 > [!NOTE]
 > De Java JDK en Maven zijn vereist om de build van het Java-project uit te voeren. Installeer deze onderdelen op de Jenkins-master, of op de VM-agent als u de agent gebruikt voor continue integratie. Als u een Java SE-toepassing implementeert, is ook ZIP nodig op de build-server.
@@ -46,13 +46,13 @@ sudo apt-get install -y maven
 
 Om te implementeren naar Web App voor Containers, installeert u Docker op de Jenkins-master of op de VM-agent die voor de build wordt gebruikt. Zie [Docker installeren op Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) voor instructies.
 
-## <a name="service-principal"></a> Een Azure-service-principal toevoegen aan de Jenkins-referenties
+## <a name="add-an-azure-service-principal-to-the-jenkins-credentials"></a><a name="service-principal"></a> Een Azure-service-principal toevoegen aan de Jenkins-referenties
 
 U hebt een Azure-service-principal nodig om te kunnen implementeren naar Azure. 
 
 
-1. Gebruik de [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) of de [Azure-portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal) om een Azure-service-principal te maken.
-2. Selecteer **Referenties** > **Systeem** op het Jenkins-dashboard. Selecteer vervolgens **Algemene referenties (onbeperkt)** .
+1. Als u een Azure-serviceprincipal wilt maken, gebruikt u de Azure CLI of de  [Azure-portal.](/azure/azure-resource-manager/resource-group-create-service-principal-portal) [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+2. Selecteer op het Jenkins-dashboard **het systeem voor referenties** > **.** Selecteer vervolgens **Algemene referenties (onbeperkt)**.
 3. Selecteer **Referenties toevoegen** om een Microsoft Azure-service-principal toe te voegen. Geef waarden op voor de velden **Abonnements-ID**, **Client-ID**, **Clientgeheim** en **OAuth 2.0-tokeneindpunt**. Stel het veld **ID** in op **mySp**. We gebruiken deze ID in volgende stappen in dit artikel.
 
 
@@ -67,7 +67,7 @@ Als u uw project wilt implementeren in Web Apps, kunt u uw build-artefacten uplo
 Voordat u de taak in Jenkins instelt, hebt u een Azure App Service-plan en een web-app nodig om de Java-app uit te voeren.
 
 
-1. Maak een Azure App Service plan met de prijs categorie **gratis** met behulp van de `az appservice plan create` [Azure cli-opdracht](/cli/azure/appservice/plan#az-appservice-plan-create). Het App Service-plan definieert de fysieke resources die worden gebruikt voor het hosten van uw apps. Alle toepassingen die zijn toegewezen aan een App Service-plan, delen deze resources. Gedeelde resources helpen u kosten te besparen wanneer meerdere apps worden gehost.
+1. Maak een Azure App Service-plan met de prijscategorie **GRATIS** met behulp van de `az appservice plan create` [Azure CLI-opdracht](/cli/azure/appservice/plan#az-appservice-plan-create). Het App Service-plan definieert de fysieke resources die worden gebruikt voor het hosten van uw apps. Alle toepassingen die zijn toegewezen aan een App Service-plan, delen deze resources. Gedeelde resources helpen u kosten te besparen wanneer meerdere apps worden gehost.
 2. Maak een web-app. U kunt de [Azure-portal](/azure/app-service/configure-common) of de volgende `az` Azure CLI-opdracht gebruiken:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -86,7 +86,7 @@ Voordat u de taak in Jenkins instelt, hebt u een Azure App Service-plan en een w
 ### <a name="set-up-the-jenkins-job"></a>De Jenkins-taak instellen
 
 1. Maak een nieuw **Freestyle**-project op het Jenkins-dashboard.
-2. Configureer het veld **Broncodebeheer** om uw lokale fork van de [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample) te gebruiken. Geef een waarde op bij **URL van opslagplaats**. Bijvoorbeeld: http:\//github.com/&lt;your_ID >/javawebappsample.
+2. Configureer het veld **Broncodebeheer** om uw lokale fork van de [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample) te gebruiken. Geef een waarde op bij **URL van opslagplaats**. Bijvoorbeeld: http:\//github.com/&lt;your_ID>/javawebappsample.
 3. Voeg een stap toe om de build van het project uit te voeren met behulp van Maven door de opdracht **Shell uitvoeren** toe te voegen. Voor dit voorbeeld hebben we een aanvullende opdracht nodig om de naam van het \*.war-bestand in de doelmap te wijzigen in **ROOT.war**:   
     ```bash
     mvn clean package
@@ -139,7 +139,7 @@ Voordat u de taak in Jenkins instelt, hebt u een web-app op Linux nodig. U hebt 
 ### <a name="set-up-the-jenkins-job-for-docker"></a>De Jenkins-taak instellen voor Docker
 
 1. Maak een nieuw **Freestyle**-project op het Jenkins-dashboard.
-2. Configureer het veld **Broncodebeheer** om uw lokale fork van de [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample) te gebruiken. Geef een waarde op bij **URL van opslagplaats**. Bijvoorbeeld: http:\//github.com/&lt;your_ID >/javawebappsample.
+2. Configureer het veld **Broncodebeheer** om uw lokale fork van de [eenvoudige Java-web-app voor Azure](https://github.com/azure-devops/javawebappsample) te gebruiken. Geef een waarde op bij **URL van opslagplaats**. Bijvoorbeeld: http:\//github.com/&lt;your_ID>/javawebappsample.
 3. Voeg een stap toe om de build van het project uit te voeren met behulp van Maven door de opdracht **Shell uitvoeren** toe te voegen. Neem de volgende regel in de opdracht op:
     ```bash
     mvn clean package
@@ -159,7 +159,7 @@ Geef bij **Docker-register-URL** de URL op in de indeling https://&lt;uwRegister
 
 10. De naam en tagwaarde van de Docker-installatiekopie op het tabblad **Geavanceerd** zijn optioneel. De waarde voor de installatiekopienaam wordt standaard opgehaald uit de installatiekopienaam die u in de Azure-portal in de instelling **Docker-container** hebt geconfigureerd. De tag wordt gegenereerd uit $BUILD_NUMBER.
     > [!NOTE]
-    > Zorg ervoor dat u de naam van de installatie kopie opgeeft in de Azure Portal of geef een **docker-installatie kopie** op op het tabblad **Geavanceerd** . Voor dit voor beeld stelt u de waarde van de **docker-installatie kopie** in op &lt;your_Registry >. azurecr. io/Calculator en laat u de waarde van de **docker-tag** leeg.
+    > Zorg ervoor dat u de afbeeldingsnaam opgeeft in de Azure-portal of een **dockerafbeeldingswaarde** levert op het tabblad **Geavanceerd.** Stel in dit voorbeeld de waarde &lt;van de **Docker-afbeelding** in op your_Registry>.azurecr.io/calculator en laat de waarde van de **Docker-afbeeldingstag** leeg.
 
 11. De implementatie mislukt als u een ingebouwde instelling voor de Docker-installatiekopie gebruikt. Wijzig de Docker-configuratie zodanig dat er een aangepaste installatiekopie wordt gebruikt in de instelling **Docker-container** in de Azure-portal. Voor een ingebouwde installatiekopie gebruikt u de bestandsuploadbenadering voor de implementatie.
 12. Net zoals bij de bestandsuploadbenadering kunt u een andere **Site**-naam dan **productie** kiezen.
@@ -228,7 +228,7 @@ Geef bij **Docker-register-URL** de URL op in de indeling https://&lt;uwRegister
     
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problemen met de Jenkins-invoegtoepassing oplossen
 
-Als u problemen ondervindt met de Jenkins-invoegtoepassingen, kunt u in [Jenkins JIRA](https://issues.jenkins-ci.org/) een ticket openen voor het specifieke onderdeel.
+Als u bugs tegenkomt met de Jenkins-plug-ins, dient u een probleem op in de [Jenkins JIRA](https://issues.jenkins-ci.org/) voor de specifieke component.
 
 ## <a name="next-steps"></a>Volgende stappen
 

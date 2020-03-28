@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met PureCloud door Genesys | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met PureCloud by Genesys | Microsoft Documenten'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en PureCloud by Genesys.
 services: active-directory
 documentationCenter: na
@@ -17,75 +17,75 @@ ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897770"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met PureCloud door Genesys
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met PureCloud by Genesys
 
-In deze zelf studie leert u hoe u PureCloud kunt integreren met behulp van Genesys met Azure Active Directory (Azure AD). Nadat u dit hebt gedaan, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u PureCloud by Genesys integreren met Azure Active Directory (Azure AD). Nadat je dat hebt gedaan, kun je:
 
-* Gebruik Azure AD om te bepalen welke gebruikers toegang hebben tot PureCloud door Genesys.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij PureCloud door Genesys met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Gebruik Azure AD om te bepalen welke gebruikers toegang hebben tot PureCloud by Genesys.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij PureCloud door Genesys met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u er nog geen hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Een PureCloud door Genesys-abonnement met eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen account hebt kun je je [gratis](https://azure.microsoft.com/free/)registreren.
+* Een PureCloud van Genesys single sign-on (SSO)-enabled abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* PureCloud door Genesys ondersteunt **SP-en IDP**-geïnitieerde SSO.
+* PureCloud by Genesys ondersteunt **SP en IDP**–geïnitieerd SSO.
 
 > [!NOTE]
-> Omdat de ID voor deze toepassing een waarde met een vaste teken reeks is, kan slechts één exemplaar in één Tenant worden geconfigureerd.
+> Omdat de id voor deze toepassing een waarde met vaste tekenreeksen is, kan slechts één instantie in één tenant worden geconfigureerd.
 
 ## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>PureCloud by Genesys toevoegen vanuit de galerie
 
-Als u de integratie van PureCloud door Genesys wilt configureren in azure AD, moet u PureCloud toevoegen door Genesys vanuit de galerie aan uw lijst met beheerde SaaS-apps. Voer de volgende stappen uit om dit te doen:
+Als u de integratie van PureCloud by Genesys in Azure AD wilt configureren, moet u PureCloud by Genesys uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps. Voer de volgende stappen uit om dit te doen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of met een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ **PureCloud by Genesys** in het zoekvak van de sectie **toevoegen vanuit de galerie** .
-1. Selecteer **PureCloud by Genesys** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of met een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Ga naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **PureCloud by Genesys** in het zoekvak in de sectie **Toevoegen vanuit de galerie.**
+1. Selecteer **PureCloud by Genesys** in het resultatenpaneel en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor PureCloud door Genesys
+## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>Azure AD-singlesign-on voor PureCloud by Genesys configureren en testen
 
-Azure AD SSO configureren en testen met PureCloud door Genesys met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in PureCloud door Genesys.
+Azure AD SSO configureren en testen met PureCloud van Genesys met behulp van een testgebruiker met de naam **B.Simon**. Als SSO wil werken, moet u een koppeling smaken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in PureCloud by Genesys.
 
-Als u Azure AD SSO wilt configureren en testen met PureCloud door Genesys, voert u de volgende bouw stenen uit:
+Als u Azure AD SSO wilt configureren en testen met PureCloud by Genesys, voert u de volgende bouwstenen uit:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
-1. **[Configureer PureCloud door GENESYS SSO](#configure-purecloud-by-genesys-sso)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
-    1. **[Maak een PureCloud door Genesys-test gebruiker](#create-purecloud-by-genesys-test-user)** een tegen hanger van B. Simon in PureCloud te hebben door Genesys dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om Azure AD-enkele aanmelding met B.Simon te testen.
+    1. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer PureCloud by Genesys SSO](#configure-purecloud-by-genesys-sso)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    1. **[Maak een PureCloud by Genesys-testgebruiker](#create-purecloud-by-genesys-test-user)** om een tegenhanger van B.Simon te hebben in PureCloud van Genesys die is gekoppeld aan de Azure AD-weergave van de gebruiker.
 1. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal:
+Voer de volgende stappen uit om Azure AD SSO in te schakelen in de Azure-portal:
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **PureCloud by Genesys** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Op de pagina **eenmalige aanmelding met SAML instellen** selecteert u het pictogram voor de pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **PureCloud by Genesys-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding.**
+1. Selecteer SAML op de pagina **Een malige aanmeldingsmethode** selecteren . **SAML**
+1. Selecteer op de pagina **Eén aanmelding instellen met SAML** het penpictogram voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de door **IDP**gestarte modus wilt configureren, voert u de waarden voor de volgende velden in in de sectie **basis configuratie van SAML** :
+1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden in als u de toepassing in **de IDP-modus**wilt configureren:
 
-    a. Voer in het vak **id** een URL in die overeenkomt met uw regio:
+    a. Voer in het vak **Id** een URL in die overeenkomt met uw regio:
 
     | |
     |--|
@@ -95,7 +95,7 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
     | `https://login.mypurecloud.ie/saml` |
     | `https://login.mypurecloud.au/saml` |
 
-    b. Voer in het vak **antwoord-URL** een URL in die overeenkomt met uw regio:
+    b. Voer in het vak **URL beantwoorden** een URL in die overeenkomt met uw regio:
 
     | |
     |--|
@@ -105,9 +105,9 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
     | `https://login.mypurecloud.ie/saml` |
     | `https://login.mypurecloud.com.au/saml`|
 
-1. Selecteer **extra Url's instellen** en volg de volgende stap als u de toepassing in de modus door **SP** gestart wilt configureren:
+1. Selecteer **Extra URL's instellen** en neem de volgende stap als u de toepassing wilt configureren in de gestarte **SP-modus:**
 
-    Voer in het vak **aanmeld-URL** een URL in die overeenkomt met uw regio:
+    Voer in het vak **AANmeldings-URL** een URL in die overeenkomt met uw regio:
     
     | |
     |--|
@@ -117,74 +117,74 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
     | `https://login.mypurecloud.ie` |
     | `https://login.mypurecloud.com.au` |
 
-1. In de PureCloud by Genesys-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. De volgende scherm afbeelding ziet u de lijst met standaard kenmerken:
+1. In de PureCloud by Genesys-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven:
 
-    ![image](common/default-attributes.png)
+    ![installatiekopie](common/default-attributes.png)
 
-1. Daarnaast verwacht PureCloud van Genesys-toepassing nog enkele kenmerken die in het SAML-antwoord worden door gegeven, zoals wordt weer gegeven in de volgende tabel. Deze kenmerken zijn ook vooraf ingevuld, maar u kunt ze naar behoefte bekijken.
+1. Daarnaast verwacht purecloud by Genesys applicatie dat er nog een paar attributen worden teruggegeven in de SAML-respons, zoals in de volgende tabel wordt weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze naar behoefte bekijken.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     | ---------------| --------------- |
     | Email | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **PureCloud by Genesys instellen** de juiste URL (of url's) op basis van uw vereisten.
+1. Kopieer in de sectie **PureCloud by Genesys instellen** de juiste URL (of URL's) op basis van uw vereisten.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker met de naam B. Simon in de Azure Portal:
+In deze sectie maakt u een testgebruiker met de naam B.Simon in de Azure-portal:
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory**, selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de gebruikers naam in de volgende indeling in: username@companydomain.extension. Bijvoorbeeld: `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Voer **in** het veld Gebruikersnaam de gebruikersnaam in username@companydomain.extensionde volgende indeling in: . Bijvoorbeeld: `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
    1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan PureCloud door Genesys.
+In deze sectie stelt u B.Simon in om Azure single sign-on te gebruiken door toegang te verlenen tot PureCloud door Genesys.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 1. Selecteer **PureCloud by Genesys** in de lijst met toepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst met gebruikers en kies vervolgens de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en kiest u vervolgens de knop **selecteren** onder aan het scherm.
-1. Selecteer de knop **toewijzen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en kies de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en kiest u de knop **Selecteren** onder aan het scherm.
+1. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen.**
 
-## <a name="configure-purecloud-by-genesys-sso"></a>PureCloud configureren via Genesys SSO
+## <a name="configure-purecloud-by-genesys-sso"></a>PureCloud configureren door Genesys SSO
 
-1. Meld u in een ander browser venster aan bij PureCloud door Genesys als beheerder.
+1. Meld je in een ander browservenster aan bij PureCloud van Genesys als beheerder.
 
-1. Selecteer **beheerder** bovenaan en ga naar **eenmalige aanmelding** onder **integraties**.
+1. Selecteer **Beheerder** bovenaan en ga vervolgens naar **Eén aanmelding** onder **Integraties**.
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure01.png)
 
-1. Ga naar het tabblad **ADFS/Azure AD (Premium)** en voer vervolgens de volgende stappen uit:
+1. Ga naar het tabblad **ADFS/Azure AD(Premium)** en voer de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure02.png)
 
-    a. Selecteer **Bladeren** om het door base-64 gecodeerde certificaat dat u hebt gedownload van de Azure Portal naar het **ADFS-certificaat**te uploaden.
+    a. Selecteer **Bladeren** om het basis-64 gecodeerde certificaat dat u hebt gedownload van de Azure-portal te uploaden naar het **ADFS-certificaat.**
 
-    b. Plak in het vak **URI van ADFS-Uitgever** de waarde van de **Azure ad-id** die u hebt gekopieerd uit de Azure Portal.
+    b. Plak in het vak **Uri van ADFS-uitgever** de waarde van **azure AD-id** die u hebt gekopieerd van de Azure-portal.
 
-    c. Plak in het vak **doel-URI** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Azure Portal.
+    c. Plak in het vak **Doel-URI** de waarde van **de aanmeldings-URL** die u hebt gekopieerd vanuit de Azure-portal.
 
-    d. Voor de waarde van de **relying** Party-id gaat u naar de Azure Portal en selecteert u op de pagina **PureCloud by Genesys** Application Integration het tabblad **Eigenschappen** en kopieert u de waarde van de **toepassings-id** . Plak deze in het vak **Relying Party Identifier** .
+    d. Ga voor de waarde **relying party-id** naar de Azure-portal en selecteer vervolgens op de pagina **PureCloud by Genesys-toepassingsintegratie** het tabblad **Eigenschappen** en kopieer de waarde **toepassings-id.** Plak deze in het vak **Relying Party Identifier.**
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure06.png)
 
@@ -192,42 +192,42 @@ In deze sectie stelt u B. Simon in om eenmalige aanmelding van Azure te gebruike
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>PureCloud by Genesys-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij PureCloud door Genesys, moeten ze worden ingericht in PureCloud van Genesys. In het geval van PureCloud by Genesys is dat een handmatige taak.
+Om Azure AD-gebruikers in staat te stellen zich aan te melden bij PureCloud door Genesys, moeten ze door Genesys in PureCloud worden ingericht. In het geval van PureCloud by Genesys is dat een handmatige taak.
 
-**Voer de volgende stappen uit om een gebruikers account in te richten:**
+**Voer de volgende stappen uit om een gebruikersaccount in te richten:**
 
-1. Meld u als beheerder aan bij PureCloud door Genesys.
+1. Log in bij PureCloud by Genesys als beheerder.
 
-1. Selecteer bovenaan **beheer** en ga naar **personen** onder **personen & machtigingen**.
+1. Selecteer **Beheerder** bovenaan en ga naar **Personen** onder Personen **& machtigingen**.
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure03.png)
 
-1. Selecteer **persoon toevoegen**op de pagina **personen** .
+1. Selecteer persoon **toevoegen**op de pagina **Personen** .
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure04.png)
 
-1. Voer in het dialoog venster **personen toevoegen aan de organisatie de** volgende stappen uit:
+1. Voer **in het** dialoogvenster Personen toevoegen aan de organisatie de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. Voer in het vak **volledige naam** de naam van een gebruiker in. Bijvoorbeeld: **B. Simon**.
+    a. Voer in het vak **Volledige naam** de naam van een gebruiker in. Bijvoorbeeld: **B.simon**.
 
-    b. Voer in het vak **e-mail** het e-mail adres van de gebruiker in. Bijvoorbeeld: **b. simon\@contoso.com**.
+    b. Voer in het vak **E-mail** de e-mail van de gebruiker in. Bijvoorbeeld: **b.simon\@contoso.com**.
 
     c. Selecteer **Maken**.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel **PureCloud by Genesys** in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de PureCloud op Genesys-account waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel **PureCloud by Genesys** selecteert in het Access Panel, moet u automatisch worden aangemeld bij het PureCloud by Genesys-account waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Wat is voorwaardelijke toegang in azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer PureCloud door Genesys met Azure AD](https://aad.portal.azure.com/)
+- [Probeer PureCloud by Genesys met Azure AD](https://aad.portal.azure.com/)

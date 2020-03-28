@@ -1,6 +1,6 @@
 ---
-title: Zelf studie incident respons-Azure Security Center
-description: In deze zelf studie leert u hoe u beveiligings waarschuwingen kunt sorterenen, hoe u de hoofd oorzaak & bereik van een incident kunt bepalen en hoe u beveiligings gegevens zoekt.
+title: Zelfstudie voor incidentresponse - Azure Security Center
+description: In deze zelfstudie leert u hoe u beveiligingswaarschuwingen triageren, de hoofdoorzaak & bereik van een incident bepalen en beveiligingsgegevens doorzoeken.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74559184"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
@@ -29,7 +29,7 @@ Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met
 > * Verder onderzoek uitvoeren om de oorzaak en het bereik van een beveiligingsincident te bepalen
 > * Zoek beveiligingsgegevens die bij het onderzoek kunnen helpen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 Om de functies in deze zelfstudie te doorlopen, moet u zich in de Standard-prijscategorie van Security Center bevinden. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. In de snelstartgids [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) wordt u begeleid bij het upgraden naar Standard.
@@ -43,12 +43,12 @@ Voor dit scenario gaan we ons richten op de rollen van de volgende personen die 
 
 ![Levenscyclus van reacties op incidenten](./media/tutorial-security-incident/security-center-incident-response.png)
 
-Judy houdt zich bezig met beveiligingsbewerkingen. Hun verantwoordelijkheden zijn onder andere:
+Judy houdt zich bezig met beveiligingsbewerkingen. Hun verantwoordelijkheden omvatten:
 
 * Het ononderbroken bewaken van en reageren op bedreigingen.
 * Indien nodig een probleem doorverwijzen naar de eigenaar van de workloads in de cloud of naar de beveiligingsanalist.
 
-Sam is een beveiligings analist en hun verantwoordelijkheden zijn:
+Sam is een security analist en hun verantwoordelijkheden omvatten:
 
 * Het onderzoeken van aanvallen.
 * Het oplossen van problemen die worden vermeld in beveiligingswaarschuwingen.
@@ -108,7 +108,7 @@ Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze
 
 Als u automatisch inrichten wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
+1. Ga terug naar het hoofdmenu van het Beveiligingscentrum en selecteer **Beveiligingsbeleid**.
 2. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
 3. Ga naar **Beveiligingsbeleid – Gegevensverzameling** en selecteer onder **Onboarding** de optie **Uit** om automatisch inrichten uit te schakelen.
 4. Selecteer **Opslaan**.

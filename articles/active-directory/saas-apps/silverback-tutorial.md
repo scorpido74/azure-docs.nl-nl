@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Silverback | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Silverback.
+title: 'Zelfstudie: Azure Active Directory-integratie met Silverback | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Silverback.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Zelfstudie: Azure Active Directory-integratie met Silverback
 
-In deze zelfstudie leert u hoe u Silverback integreren met Azure Active Directory (Azure AD).
-Silverback integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Silverback integreert met Azure Active Directory (Azure AD).
+De integratie van Silverback met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Silverback heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Silverback (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot Silverback.
+* U uw gebruikers automatisch laten aanmelden bij Silverback (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Silverback, moet u de volgende items:
+Als u azure AD-integratie met Silverback wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding silverback ingeschakeld abonnement
+* Abonnement met één aanmelding in Silverback
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor silverback **SP** gestart door SSO
+* Silverback steunt **SP** geïnitieerde SSO
 
-## <a name="adding-silverback-from-the-gallery"></a>Silverback uit de galerie toe te voegen
+## <a name="adding-silverback-from-the-gallery"></a>Silverback toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Silverback in Azure AD, moet u Silverback uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Silverback in Azure AD wilt configureren, moet u Silverback uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Silverback uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Silverback uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Silverback in Azure AD, moet u Silve
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Silverback**, selecteer **Silverback** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Silverback**in het zoekvak , selecteer **Silverback** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Silverback in de lijst met resultaten](common/search-new-app.png)
+     ![Silverback in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Silverback op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Silverback tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Silverback op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Silverback.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Silverback, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-singlesign-aan met Silverback wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Silverback](#configure-silverback-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Silverback](#create-silverback-test-user)**  : als u wilt een equivalent van Britta Simon in Silverback die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Silverback Single Sign-On](#configure-silverback-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Silverback-testgebruiker](#create-silverback-test-user)** - om een tegenhanger van Britta Simon in Silverback te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Silverback, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Silverback te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Silverback** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Silverback-toepassingsintegratie** de optie **Eén aanmelding .**
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,46 +103,46 @@ Voor het configureren van Azure AD eenmalige aanmelding met Silverback, moet u d
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Silverback domein en URL's, eenmalige aanmelding informatie](common/sp-identifier-reply.png)
+    ![Informatie over silverback-domeinen en URL's met eenmalige aanmelding](common/sp-identifier-reply.png)
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YOURSILVERBACKURL>.com/ssp`
+    a. Typ in het tekstvak **AANmeldings-URL** een URL met het volgende patroon:`https://<YOURSILVERBACKURL>.com/ssp`
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon: `<YOURSILVERBACKURL>.com`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met [Silverback Client ondersteuningsteam](mailto:helpdesk@matrix42.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [silverback client support team](mailto:helpdesk@matrix42.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-silverback-single-sign-on"></a>Configureer Silverback Single Sign-On
+### <a name="configure-silverback-single-sign-on"></a>Silverback-aanmelding configureren
 
-1. In een andere webbrowser, meld u aan bij uw Silverback-Server als beheerder.
+1. Log in een andere webbrowser in bij uw Silverback Server als beheerder.
 
-2. Navigeer naar **Admin** > **verificatieprovider**.
+2. Navigeer naar de > **beheerderverificatieprovider**. **Admin**
 
-3. Op de **verificatie-instellingen voor Provider** pagina, voert u de volgende stappen uit:
+3. Voer op de pagina **Instellingen van verificatieprovider** de volgende stappen uit:
 
     ![De beheerder](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
-    a.  Klik op **importeren vanaf URL**.
+    a.  Klik op **Importeren van URL**.
 
-    b.  Plak de gekopieerde metagegevens-URL en klik op **OK**.
+    b.  Plak de url van gekopieerde metagegevens en klik op **OK**.
 
-    c.  Controleer of met **OK** en vervolgens de waarden worden automatisch ingevuld.
+    c.  Bevestig met **OK** en de waarden worden automatisch ingevuld.
 
-    d.  Schakel **weergeven op de aanmeldingspagina**.
+    d.  **Weergeven inschakelen op aanmeldingspagina**.
 
-    e.  Schakel **dynamische maken door gebruiker** als u wilt met Azure AD gemachtigde gebruikers automatisch toevoegen (optioneel).
+    e.  **Dynamische gebruikers maken** inschakelen als u automatisch geautoriseerde gebruikers van Azure AD wilt toevoegen (optioneel).
 
-    f.  Maak een **titel** voor de knop op de selfserviceportal.
+    f.  Maak een **titel** voor de knop op de Self Service Portal.
 
-    g.  Upload een **pictogram** door te klikken op **bestand kiezen**.
+    g.  Upload een **pictogram** door op **Bestand kiezen**te klikken .
 
-    h.  Selecteer de achtergrond **kleur** voor de knop.
+    h.  Selecteer de **achtergrondkleur** voor de knop.
 
     i.  Klik op **Opslaan**.
 
@@ -162,26 +162,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Silverback.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Silverback.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Silverback**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Silverback**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Silverback**.
+2. Selecteer **Silverback**in de lijst met toepassingen .
 
-    ![De koppeling Silverback in de lijst met toepassingen](common/all-applications.png)
+    ![De Silverback-koppeling in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -191,54 +191,54 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-silverback-test-user"></a>Silverback testgebruiker maken
+### <a name="create-silverback-test-user"></a>Silverback-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers zich aanmelden bij Silverback, moeten ze worden ingericht voor Silverback. In Silverback is inrichten een handmatige taak.
+Als u Azure AD-gebruikers in staat wilt stellen zich aan te melden bij Silverback, moeten ze zijn ingericht in Silverback. In Silverback is inrichten een handmatige taak.
 
-**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
-1. Meld u aan met uw Silverback-Server als beheerder.
+1. Log in bij uw Silverback Server als beheerder.
 
-2. Navigeer naar **gebruikers** en **toevoegen van een nieuwe apparaatgebruiker**.
+2. Navigeer naar **gebruikers** en **voeg een nieuwe apparaatgebruiker toe.**
 
-3. Op de **Basic** pagina, voert u de volgende stappen uit:
+3. Voer **op de** pagina Basis de volgende stappen uit:
 
     ![Gebruiker](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. In **gebruikersnaam** tekst voert u de naam van gebruiker, zoals **Julia**.
+    a. Voer **in het** tekstvak Gebruikersnaam de naam van de gebruiker in, zoals **Britta.**
 
     b. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta**.
 
-    c. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
+    c. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in, zoals **Simon**.
 
-    d. In **e-mailadres** tekst vak, voer het e-mailadres van gebruiker, zoals **Brittasimon@contoso.com** .
+    d. Voer in het tekstvak **E-mailadres** de **Brittasimon@contoso.com**e-mail van de gebruiker in, zoals .
 
-    e. In de **wachtwoord** tekst vak, Voer uw wachtwoord.
+    e. Voer in het tekstvak **Wachtwoord** uw wachtwoord in.
 
-    f. In de **wachtwoord bevestigen** tekstvak, uw wachtwoord opnieuw invoeren en bevestigen.
+    f. Voer in het tekstvak **Wachtwoord bevestigen** opnieuw uw wachtwoord in en bevestig deze.
 
     g. Klik op **Opslaan**.
 
 > [!NOTE]
-> Als u niet wilt dat elke gebruiker handmatig maken inschakelen de **dynamische maken door gebruiker** selectievakje onder **Admin** > **verificatieprovider**.
+> Als u niet elke gebruiker handmatig wilt maken Schakel het selectievakje **Dynamische gebruikerscreatie** in onder **Admin** > **Authentication Provider**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Silverback in het toegangsvenster, moet u worden automatisch aangemeld bij de Silverback waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de silverback-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Silverback waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

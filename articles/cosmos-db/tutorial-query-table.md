@@ -1,6 +1,6 @@
 ---
 title: Tabelgegevens opvragen in Azure Cosmos DB
-description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in de Azure Cosmos DB Table-API-account met behulp van OData-filters en LINQ-query's
+description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in het Azure Cosmos DB Table API-account met OData-filters en LINQ-query's
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770490"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de tabel-API
@@ -26,7 +26,7 @@ Dit artikel behandelt de volgende taken:
 
 In de query's in dit artikel wordt de volgende voorbeeldtabel `People` gebruikt:
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -48,9 +48,9 @@ Omdat de eigenschappen PartitionKey en RowKey de primaire sleutel van een entite
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
-**Results**
+**Resultaten**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -74,9 +74,9 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 Zie [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities) (Tabellen en entiteiten opvragen) voor meer informatie over het samenstellen van filterexpressies voor verschillende soorten gegevens.
 
-**Results**
+**Resultaten**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

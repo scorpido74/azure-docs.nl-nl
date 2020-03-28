@@ -1,31 +1,31 @@
 ---
-title: 'Zelf studie: een aangepaste installatie kopie maken en uitvoeren'
-description: Meer informatie over het bouwen van een aangepaste Linux-installatie kopie die kan worden uitgevoerd op Azure App Service, deze implementeren in azure-container registers en deze uitvoeren in App Service.
+title: 'Zelfstudie: Een aangepaste afbeelding maken en uitvoeren'
+description: Meer informatie over het maken van een aangepaste Linux-afbeelding die kan worden uitgevoerd op Azure App Service, deze implementeren in Azure Container Registries en deze uitvoeren in App Service.
 keywords: azure-app-service, web-app, linux, docker, container
 author: msangapu-msft
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a6c9eb354bce09a5f652895f4af34df1f6750bec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239264"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045745"
 ---
-# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelf studie: een aangepaste installatie kopie maken en uitvoeren in App Service vanuit een persoonlijk REGI ster
+# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelfstudie: Een aangepaste afbeelding maken en uitvoeren in App-service vanuit een privéregister
 
-[App service](app-service-linux-intro.md) biedt ingebouwde docker-installatie kopieën op Linux met ondersteuning voor specifieke versies, zoals PHP 7,3 en node. js 10,14. App Service maakt gebruik van de docker-container technologie voor het hosten van zowel ingebouwde installatie kopieën als aangepaste installatie kopieën als een platform als een service. In deze zelf studie leert u hoe u een aangepaste installatie kopie maakt en deze uitvoert in App Service. Dit patroon is handig als de taal van keuze niet is inbegrepen in de ingebouwde installatiekopieën, of wanneer uw toepassing een specifieke configuratie vereist die niet door de ingebouwde installatiekopieën wordt verschaft.
+[App Service](app-service-linux-intro.md) biedt ingebouwde Docker-afbeeldingen op Linux met ondersteuning voor specifieke versies, zoals PHP 7.3 en Node.js 10.14. App Service maakt gebruik van de Docker container technologie om zowel ingebouwde afbeeldingen als aangepaste afbeeldingen te hosten als een platform als een service. In deze zelfstudie leert u hoe u een aangepaste afbeelding maken en deze uitvoeren in App-service. Dit patroon is handig als de taal van keuze niet is inbegrepen in de ingebouwde installatiekopieën, of wanneer uw toepassing een specifieke configuratie vereist die niet door de ingebouwde installatiekopieën wordt verschaft.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een aangepaste installatie kopie implementeren in een persoonlijk container register
-> * De aangepaste installatie kopie uitvoeren in App Service
+> * Een aangepaste afbeelding implementeren in een privécontainerregister
+> * De aangepaste afbeelding uitvoeren in App-service
 > * Omgevingsvariabelen configureren
-> * De installatie kopie bijwerken en opnieuw implementeren
+> * De afbeelding bijwerken en opnieuw implementeren
 > * Toegang tot diagnostische logboeken
 > * Verbinding maken met de container via SSH
 
@@ -47,9 +47,9 @@ git clone https://github.com/Azure-Samples/docker-django-webapp-linux.git --conf
 cd docker-django-webapp-linux
 ```
 
-## <a name="build-the-image-from-the-docker-file"></a>De installatiekopie maken op basis van het Docker-bestand
+## <a name="build-the-image-from-the-docker-file"></a>De installatiekopie maken van het Docker-bestand
 
-Bekijk in de Git-opslagplaats het _Docker-bestand_. Dit bestand beschrijft de Python-omgeving die vereist is om uw toepassing uit te voeren. De installatiekopie stelt bovendien een [SSH](https://www.ssh.com/ssh/protocol/)-server in voor veilige communicatie tussen de container en de host.
+Bekijk in de Git-opslagplaats het _Docker-bestand_. Dit bestand beschrijft de Python-omgeving die vereist is om uw toepassing uit te voeren. De installatiekopie stelt bovendien een [SSH](https://www.ssh.com/ssh/protocol/)-server in voor veilige communicatie tussen de container en de host. De laatste regel in het _Dockerfile_, `ENTRYPOINT ["init.sh"]`roept `init.sh` op om de SSH-service en Python-server te starten.
 
 ```Dockerfile
 FROM python:3.4
@@ -73,17 +73,19 @@ COPY init.sh /usr/local/bin/
     
 RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 8000 2222
+
+#service SSH start
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 ENTRYPOINT ["init.sh"]
 ```
 
-Bouw de docker-installatie kopie met de opdracht `docker build`.
+Bouw de Docker-afbeelding met de `docker build` opdracht.
 
 ```bash
 docker build --tag mydockerimage .
 ```
 
-Test of de build werkt door de Docker-container uit te voeren. Geef de opdracht [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de afbeelding door. Zorg ervoor dat u de poort opgeeft met behulp van het argument `-p`.
+Test of de build werkt door de Docker-container uit te voeren. Geef [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) de opdracht uit en geef de naam en tag van de afbeelding aan de opdracht door. Zorg ervoor dat u de poort specificeert met behulp van het argument `-p`.
 
 ```bash
 docker run -p 8000:8000 mydockerimage
@@ -97,7 +99,7 @@ Controleer of de web-app en de container goed werken door naar `http://localhost
 
 ## <a name="deploy-app-to-azure"></a>App in Azure implementeren
 
-Als u een app wilt maken die gebruikmaakt van de installatie kopie die u zojuist hebt gemaakt, voert u Azure CLI-opdrachten uit waarmee een resource groep wordt gemaakt, wordt de installatie kopie gepusht en wordt vervolgens de web-app voor het App Service plan gemaakt om deze uit te voeren.
+To create an app that uses the image you just created, you run Azure CLI commands that create a resource group, pushes the image, and then creates the App Service plan web app to run it.
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -105,7 +107,7 @@ Als u een app wilt maken die gebruikmaakt van de installatie kopie die u zojuist
 
 ### <a name="create-an-azure-container-registry"></a>Een Azure Container Registry maken
 
-Gebruik in de Cloud Shell de opdracht [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) voor het maken van een Azure Container Registry.
+Gebruik de [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) opdracht om in de Cloud Shell een Azure Container Registry te maken.
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
@@ -113,13 +115,13 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 ### <a name="sign-in-to-azure-container-registry"></a>Aanmelden bij Azure Container Registry
 
-Als u een installatie kopie naar het REGI ster wilt pushen, moet u zich verifiëren met het persoonlijke REGI ster. Gebruik in de Cloud Shell de [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) opdracht om de referenties op te halen uit het REGI ster dat u hebt gemaakt.
+Als u een afbeelding naar het register wilt pushen, moet u verifiëren bij het privéregister. Gebruik de opdracht om [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) in de Cloud Shell de referenties op te halen uit het register dat u hebt gemaakt.
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
 ```
 
-De uitvoer toont twee wacht woorden samen met de gebruikers naam.
+De uitvoer onthult twee wachtwoorden samen met de gebruikersnaam.
 
 ```json
 {
@@ -137,17 +139,17 @@ De uitvoer toont twee wacht woorden samen met de gebruikers naam.
 }
 ```
 
-Meld u vanuit uw lokale terminal venster aan bij de Azure Container Registry met behulp van de `docker login` opdracht, zoals wordt weer gegeven in het volgende voor beeld. Vervang *\<Azure-container-Registry-name >* en *\<registry-username >* door waarden voor het REGI ster. Wanneer u hierom wordt gevraagd, typt u een van de wacht woorden uit de vorige stap.
+Meld u vanuit uw lokale terminalvenster aan `docker login` bij het Azure Container Registry met de opdracht, zoals in het volgende voorbeeld wordt weergegeven. Vervang * \<de naam azure-container-registry>* en * \<registergebruikersnaam>* door waarden voor uw register. Wanneer u daarom wordt gevraagd, typt u een van de wachtwoorden uit de vorige stap in.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
 ```
 
-Bevestig dat de aanmelding is geslaagd.
+Controleer of de aanmelding slaagt.
 
 ### <a name="push-image-to-azure-container-registry"></a>Installatiekopie pushen naar Azure Container Registry
 
-Label uw lokale installatie kopie voor de Azure Container Registry. Bijvoorbeeld:
+Tag uw lokale afbeelding voor het Azure Container Registry. Bijvoorbeeld:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -158,13 +160,13 @@ Push de installatiekopie met behulp van de opdracht `docker push`. Tag de instal
 docker push <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
-Ga terug naar de Cloud Shell en controleer of de push is geslaagd.
+Terug in de Cloud Shell, controleren of de push succesvol is.
 
 ```azurecli-interactive
 az acr repository list -n <azure-container-registry-name>
 ```
 
-U moet de volgende uitvoer ophalen.
+U moet de volgende uitvoer krijgen.
 
 ```json
 [
@@ -178,7 +180,7 @@ U moet de volgende uitvoer ophalen.
 
 ### <a name="create-web-app"></a>Een web-app maken
 
-Maak in Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan` App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vervang _\<app-naam >_ door een unieke app-naam en _\<Azure-container-registry-name >_ met de register naam.
+Maak in de Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vervang _ \<app-naam>_ door een unieke _ \<app-naam en de naam azure-container-registry>_ door uw registernaam.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -201,23 +203,23 @@ Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in he
 }
 ```
 
-### <a name="configure-registry-credentials-in-web-app"></a>Register referenties configureren in de web-app
+### <a name="configure-registry-credentials-in-web-app"></a>Registerreferenties configureren in web-app
 
-Als App Service de persoonlijke installatie kopie wilt ophalen, heeft deze informatie nodig over het REGI ster en de installatie kopie. Geef in de Cloud Shell de [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) -opdracht op. Vervang *\<-app-naam >* , *\<Azure-container-registry-name >* , _\<Registry-gebruikers naam >_ en _\<wachtwoord >_ .
+Als U de privéafbeelding wilt opvragen, heeft deze informatie nodig over uw register en afbeelding. Geef ze in de Cloud [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) Shell de opdracht. Vervang * \<>, * * \<de naam van Azure-container-registry>*, _ \<>_ en _ \<wachtwoord>_.
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
 ```
 
 > [!NOTE]
-> Wanneer u een ander REGI ster dan docker hub gebruikt, moet `--docker-registry-server-url` worden geformatteerd als `https://` gevolgd door de Fully Qualified Domain Name van het REGI ster.
+> Wanneer u een ander register `--docker-registry-server-url` dan Docker `https://` Hub gebruikt, moet deze worden opgemaakt, gevolgd door de volledig gekwalificeerde domeinnaam van het register.
 >
 
 ### <a name="configure-environment-variables"></a>Omgevingsvariabelen configureren
 
-De meeste docker-installatie kopieën gebruiken aangepaste omgevings variabelen, zoals een andere poort dan 80. U vertelt App Service over de poort die wordt gebruikt door de installatie kopie met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_.
+De meeste Docker-afbeeldingen gebruiken aangepaste omgevingsvariabelen, zoals een andere poort dan 80. U vertelt App Service over de poort `WEBSITES_PORT` die uw afbeelding gebruikt met behulp van de app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_.
 
-Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
+Als u app-instellingen [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) wilt instellen, gebruikt u de opdracht in de Cloud Shell. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_PORT=8000
@@ -228,7 +230,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 Controleer of de web-app werkt door erheen te bladeren (`http://<app-name>.azurewebsites.net`).
 
 > [!NOTE]
-> De eerste keer dat u de app opent, kan het enige tijd duren omdat App Service de hele afbeelding moet ophalen. Als er een time-out optreedt voor de browser, vernieuwt u gewoon de pagina.
+> De eerste keer dat u de app opent, kan het enige tijd duren omdat App Service de hele afbeelding moet trekken. Als de browser een keer uitvalt, vernieuwt u de pagina.
 
 ![Poortconfiguratie voor web-app testen](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -246,7 +248,7 @@ Open in uw lokale Git-opslagplaats app/templates/app/index.html. Zoek naar het e
   </nav>
 ```
 
-Nadat u het Python-bestand hebt gewijzigd en dit hebt opgeslagen, moet u de nieuwe Docker-installatiekopie opnieuw opbouwen en pushen. Start de web-app opnieuw om de wijzigingen door te voeren. Gebruik dezelfde opdrachten die u eerder in deze zelfstudie hebt gebruikt. U kunt [de installatie kopie bouwen vanuit het docker-bestand](#build-the-image-from-the-docker-file) en de [push-installatie kopie naar Azure container Registry](#push-image-to-azure-container-registry). De web-app testen door de instructies te volgen in [De web-app testen](#test-the-web-app).
+Nadat u het Python-bestand hebt gewijzigd en dit hebt opgeslagen, moet u de nieuwe Docker-installatiekopie opnieuw opbouwen en pushen. Start de web-app opnieuw om de wijzigingen door te voeren. Gebruik dezelfde opdrachten die u eerder in deze zelfstudie hebt gebruikt. U verwijzen naar [De afbeelding bouwen vanuit het Docker-bestand](#build-the-image-from-the-docker-file) en De afbeelding [pushen naar Azure Container Registry.](#push-image-to-azure-container-registry) De web-app testen door de instructies te volgen in [De web-app testen](#test-the-web-app).
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
@@ -254,9 +256,9 @@ Nadat u het Python-bestand hebt gewijzigd en dit hebt opgeslagen, moet u de nieu
 
 ## <a name="enable-ssh-connections"></a>SSH-verbindingen inschakelen
 
-SSH maakt veilige communicatie tussen een container en een client mogelijk. Als u SSH-verbinding met uw container wilt inschakelen, moet uw aangepaste installatie kopie hiervoor worden geconfigureerd. Laten we eens kijken naar de voorbeeld opslagplaats die al de benodigde configuratie heeft.
+SSH maakt veilige communicatie tussen een container en een client mogelijk. Als u de SSH-verbinding met uw container wilt inschakelen, moet uw aangepaste afbeelding hiervoor zijn geconfigureerd. Laten we eens kijken naar de voorbeeldrepository die al de benodigde configuratie heeft.
 
-* In de [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile)wordt de SSH-server geïnstalleerd met de volgende code en worden ook de aanmeldings referenties ingesteld.
+* In het [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile)installeert de volgende code de SSH-server en stelt u ook de aanmeldingsreferenties in.
 
     ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
@@ -268,21 +270,21 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     ```
 
     > [!NOTE]
-    > Deze configuratie staat geen externe verbindingen naar de container toe. SSH is alleen beschikbaar via de Kudu/SCM-Site. De kudu/SCM-site wordt geverifieerd met uw Azure-account.
+    > Deze configuratie staat geen externe verbindingen naar de container toe. SSH is alleen beschikbaar via de Kudu/SCM-Site. De Kudu/SCM-site is geverifieerd met uw Azure-account.
 
-* De [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopieert het [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) -bestand in de opslag plaats naar de */etc/ssh/* -map.
+* Het [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopieert het [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) bestand in de repository naar de */etc/ssh/directory.*
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
-* De [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L22) geeft poort 2222 weer in de container. Het is een interne poort die alleen toegankelijk is voor containers in het brugnetwerk van een particulier virtueel netwerk. 
+* Het [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L22) legt poort 2222 in de container bloot. Het is een interne poort die alleen toegankelijk is voor containers in het brugnetwerk van een particulier virtueel netwerk. 
 
     ```Dockerfile
     EXPOSE 8000 2222
     ```
 
-* Met het script voor de [invoer](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) wordt de SSH-server gestart.
+* Het [invoerscript](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) start de SSH-server.
 
     ```bash
     #!/bin/bash
@@ -291,7 +293,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
 
 ### <a name="open-ssh-connection-to-container"></a>SSH-verbinding met de container openen
 
-SSH-verbinding is alleen beschikbaar via de kudu-site, die toegankelijk is op `https://<app-name>.scm.azurewebsites.net`.
+SSH-verbinding is alleen beschikbaar via de Kudu-site, die toegankelijk is op `https://<app-name>.scm.azurewebsites.net`.
 
 Als u wilt verbinden, bladert u naar `https://<app-name>.scm.azurewebsites.net/webssh/host` en meldt u zich aan met uw Azure-account.
 
@@ -320,7 +322,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Gefeliciteerd. U hebt een aangepaste Linux-container geconfigureerd in App Service.
+Gefeliciteerd! U hebt een aangepaste Linux-container geconfigureerd in App Service.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
@@ -329,22 +331,22 @@ Gefeliciteerd. U hebt een aangepaste Linux-container geconfigureerd in App Servi
 Wat u hebt geleerd:
 
 > [!div class="checklist"]
-> * Een aangepaste installatie kopie implementeren in een persoonlijk container register
-> * De aangepaste installatie kopie uitvoeren in App Service
+> * Een aangepaste afbeelding implementeren in een privécontainerregister
+> * De aangepaste afbeelding uitvoeren in App-service
 > * Omgevingsvariabelen configureren
-> * De installatie kopie bijwerken en opnieuw implementeren
+> * De afbeelding bijwerken en opnieuw implementeren
 > * Toegang tot diagnostische logboeken
 > * Verbinding maken met de container via SSH
 
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelfstudie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
-U kunt ook andere resources bekijken:
-
-> [!div class="nextstepaction"]
-> [Aangepaste container configureren](configure-custom-container.md)
+Of bekijk andere bronnen:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)
+> [Een aangepaste container configureren](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [Zelfstudie: WordPress-app voor meerdere containers](tutorial-multi-container-app.md)

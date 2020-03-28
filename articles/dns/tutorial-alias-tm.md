@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een alias record maken ter ondersteuning van domein Apex-namen-Traffic Manager'
+title: 'Zelfstudie: Een aliasrecord maken ter ondersteuning van domeinnamen - Traffic Manager'
 titleSuffix: Azure DNS
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure DNS-aliasrecord kunt configureren om het gebruik van uw hoofddomeinnaam met Traffic Manager te ondersteunen.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77149946"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen 
@@ -24,12 +24,12 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een host-VM en netwerkinfrastructuur maken
-> * Een Traffic Manager-profiel maken
-> * Een aliasrecord maken
+> * Een Traffic Manager-profiel maken.
+> * Een aliasrecord maken.
 > * De aliasrecord testen.
 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
@@ -40,18 +40,18 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar
 
 ## <a name="create-the-network-infrastructure"></a>De netwerkinfrastructuur maken
 Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevoegen.
-1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 2. Selecteer helemaal linksboven in de portal **Een resource maken**. Typ *resourcegroep* in het zoekvak en maak een resourcegroep met de naam **RG-DNS-Alias-TM**.
-3. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+3. Selecteer**Networking** > Een **virtueel netwerknetwerk voor bronnen** > **maken**.
 4. Maak een virtueel netwerk met de naam **VNet-Servers**. Plaats het in de resourcegroep **RG-DNS-Alias-TM** en geef het subnet de naam **SN-Web**.
 
 ## <a name="create-two-web-server-virtual-machines"></a>Maak twee virtuele machines die als webserver dienen
-1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
+1. Selecteer **Een bron** > **Windows Server 2016 VM maken**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
-3. Voor **grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
+3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
 4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**.
 5. Selecteer **Openbaar IP-adres**. Bij **Toewijzing** selecteer t u **Statisch** en selecteert u vervolgens **OK**.
-6. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
+6. Selecteer **HTTP** > **HTTPS** > **RDP (3389)** en selecteer **OK**voor openbare binnenkomende poorten.
 7. Op de pagina**Overzicht** selecteert u **Maken**. Deze procedure duurt een paar minuten.
 
 Herhaal dit proces om nog een virtuele machine te maken, genaamd **Web-02**.
@@ -69,9 +69,9 @@ Herhaal deze procedure voor het openbare IP-adres **Web-02-ip** en gebruik daarv
 
 Installeer IIS op zowel **Web-01** als **Web-02**.
 
-1. Maak verbinding met **Web-01** en meld u aan.
+1. Maak verbinding met **Web-01**en meld u aan.
 2. Selecteer op het dashboard **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
-3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)** .
+3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)**.
 4. Selecteer **Onderdelen toevoegen** en selecteer **Volgende**.
 5. Selecteer vier keer **Volgende**. Selecteer vervolgens **Installeren**. Deze procedure duurt een paar minuten.
 6. Als de installatie is voltooid, selecteert u **Sluiten**.
@@ -83,11 +83,11 @@ Herhaal deze procedure om IIS te installeren op **Web-02**.
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
 1. Open de resourcegroep **RG-DNS-Alias-TM** en selecteer het openbare IP-adres **Web-01-ip**. Noteer het IP-adres voor later gebruik. Herhaal deze stap voor het openbare IP-adres **Web-02-ip**.
-1. Selecteer **Een resource maken** > **Netwerken** > **Traffic Manager-profiel**.
+1. Selecteer **Een resource** > **Netwerkverkeersbeheerprofiel****Networking** > maken .
 2. Voer **TM-alias-test** in als naam. Plaats dit in de resourcegroep **RG-DNS-Alias-TM**.
 3. Selecteer **Maken**.
 4. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
-5. Selecteer op de Traffic Manager-profielpagina bij **Instellingen** **Eindpunten**.
+5. Selecteer op de Traffic Manager-profielpagina bij **Instellingen****Eindpunten**.
 6. Selecteer **Toevoegen**.
 7. Selecteer **Extern eindpunt** voor **Type** en typ **EP-Web01** als **naam**.
 8. Voer in het tekstvak **Fully-qualified domain name (FQDN) of IP** het IP-adres voor **Web-01-ip** in dat u eerder hebt genoteerd.
@@ -103,10 +103,10 @@ Maak een aliasrecord dat naar het Traffic Manager-profiel verwijst.
 2. Selecteer **Recordset**.
 3. Laat het tekstvak **Naam** leeg om de hoofddomeinnaam te vertegenwoordigen. Bijvoorbeeld: contoso.com.
 4. Laat het **Type** een **A**-record.
-5. Schakel het selectievakje **Alias recordset** in.
+5. Schakel het selectievakje **Alias Record Set** in.
 6. Selecteer **Azure-service kiezen** en selecteer het Traffic Manager-profiel **TM-alias-test**.
 
-## <a name="test-the-alias-record"></a>De aliasrecord testen
+## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
 1. Blader in een webbrowser naar uw hoofddomeinnaam. Bijvoorbeeld: contoso.com. De IIS-standaardwebpagina wordt nu weergegeven. Sluit de webbrowser.
 2. Sluit de virtuele machine **Web-01**. Wacht een paar minuten totdat deze volledig is afgesloten.

@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68721952"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Voorbeelden van Azure CLI voor Azure Blob-opslag
@@ -22,6 +22,6 @@ De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behul
 |---|---|
 |**Opslagaccounts**||
 | [Een opslagaccount maken en de toegangssleutels ophalen/draaien](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Hier wordt een Azure-opslagaccount gemaakt en de toegangssleutels opgehaald en gedraaid. |
-|**Blob Storage**||
+|**Blob-opslag**||
 | [De totale grootte van een Blob-opslagcontainer berekenen](../scripts/storage-blobs-container-calculate-size-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Hier wordt de totale grootte van een Blob-opslagcontainer berekend. |
 | [Containers met een specifiek voorvoegsel verwijderen](../scripts/storage-blobs-container-delete-by-prefix-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Hier worden containers verwijderd die een specifieke tekenreeks bevatten. |

@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met het opnieuw afdrukken van Bureau-artikel Galaxy | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en het opnieuw afdrukken van Bureau-artikel Galaxy.
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Reprints Desk - Artikel Galaxy | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Reprints Desk - Artikel Galaxy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,150 +16,150 @@ ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d94fc0bc736d2136d4711ab02ae554605deeb35
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76761264"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met het opnieuw afdrukken van Bureau-artikel Galaxy
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Reprints Desk - Artikel Galaxy
 
-In deze zelf studie leert u hoe u het opnieuw afdrukken van Bureau-artikel Galaxy integreert met Azure Active Directory (Azure AD). Wanneer u het opnieuw afdrukken van Bureau-artikel Galaxy integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Reprints Desk - Article Galaxy integreert met Azure Active Directory (Azure AD). Wanneer u Reprints Desk - Article Galaxy integreert met Azure AD, u het als:
 
-* Controle in azure AD die toegang heeft tot het opnieuw afdrukken van Bureau-artikel Galaxy.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld om Bureau-artikel Galaxy opnieuw af te drukken met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Reprints Desk - Artikel Galaxy.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Reprints Desk - Article Galaxy met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Opnieuw afdrukken van Bureau-artikel Galaxy eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Reprints Desk - Article Galaxy single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* Opnieuw afdrukken Bureau-artikel Galaxy ondersteunt **IDP** GEÏNITIEERDe SSO
+* Reprints Desk - Artikel Galaxy ondersteunt **IDP** geïnitieerde SSO
 
-* Opnieuw afdrukken Bureau-artikel Galaxy ondersteunt **just-in-time** -gebruikers inrichting
+* Herdrukken Desk - Artikel Galaxy ondersteunt **Just In Time** gebruikersinrichting
 
-* [Als u het artikel Galaxy opnieuw afdrukken hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* [Zodra u de Reprints Desk - Article Galaxy hebt geconfigureerd, u sessiecontroles afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebesturingselementen zijn van voorwaardelijke toegang. Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-reprints-desk---article-galaxy-from-the-gallery"></a>Opnieuw afdrukken Bureau-artikel Galaxy toevoegen vanuit de galerie
+## <a name="adding-reprints-desk---article-galaxy-from-the-gallery"></a>Herdrukken desk toevoegen - Artikel Galaxy vanuit de galerij
 
-Als u de integratie van Bureau-artikel Galaxy in azure AD wilt configureren, moet u het bureau blad van de galerie opnieuw afdrukken met een lijst met beheerde SaaS-apps.
+Om de integratie van Reprints Desk - Article Galaxy in Azure AD te configureren, moet u Reprints Desk - Article Galaxy vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **Bureau-artikel Galaxy opnieuw afdrukken** in het zoekvak.
-1. Selecteer **Bureau opnieuw afdrukken-artikel Galaxy** van het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ In de sectie **Toevoegen van de galerie** het type **Herdrukken Bureau - Artikel Melkweg** in het zoekvak.
+1. Selecteer **Bureau opnieuw afdrukken - Artikel Galaxy** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-reprints-desk---article-galaxy"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor het opnieuw afdrukken van Bureau-artikel Galaxy
+## <a name="configure-and-test-azure-ad-single-sign-on-for-reprints-desk---article-galaxy"></a>Azure AD-eenmalige aanmelding configureren en testen voor Herdrukken desk - Artikel Galaxy
 
-Azure AD SSO configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor eenmalige aanmelding moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker bij het opnieuw afdrukken van Bureau-artikel Galaxy.
+Azure AD SSO configureren en testen met Reprints Desk - Artikel Galaxy met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Reprints Desk - Artikel Galaxy.
 
-Voer de volgende bouw stenen uit om Azure AD SSO te configureren en te testen met het opnieuw afdrukken van Bureau-artikel Galaxy:
+Als u Azure AD SSO wilt configureren en testen met Reprints Desk - Artikel Galaxy, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Configureren opnieuw afdrukken Bureau artikel Galaxy SSO](#configure-reprints-desk-article-galaxy-sso)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Opnieuw afdrukken Bureau artikel Galaxy test gebruiker](#create-reprints-desk-article-galaxy-test-user)** : om een tegen hanger te hebben van B. Simon in opnieuw afdrukken Bureau-artikel Galaxy dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Reprints Desk Article Galaxy SSO](#configure-reprints-desk-article-galaxy-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Reprints Desk Artikel Galaxy test gebruiker](#create-reprints-desk-article-galaxy-test-user)** - om een tegenhanger van B.Simon in Reprints Desk - Artikel Galaxy dat is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Ga in de [Azure Portal](https://portal.azure.com/)op de pagina **opnieuw afdrukken Bureau-artikel Galaxy** Application Integration de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Herdrukken desk - Artikel** Galaxy-toepassingsintegratie de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. In de sectie **BasisSAML-configuratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
 
-1. Opnieuw afdrukken van Bureau-artikel Galaxy toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Reprints Desk - Article Galaxy-toepassing verwacht de SAML-beweringen in een specifiek formaat, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. In aanvulling op het bovenstaande wordt het Bureau-artikel Galaxy-toepassing opnieuw afgedrukt, maar nog weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Naast bovenstaande, Reprints Desk - Artikel Galaxy applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
 
     | Name | Bronkenmerk|
     | ------------ | --------- |
     | firstname | user.givenname |
     | lastname | user.surname |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de sectie **Stel opnieuw afdrukken Bureau-artikel Galaxy** in.
+1. Kopieer in de sectie **Herdrukken van het instellen van herdrukken - artikel Galaxy** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door het verlenen van toegang tot het opnieuw afdrukken van het Bureau artikel Galaxy.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Reprints Desk - Artikel Galaxy.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. In de lijst toepassingen selecteert u **Bureau-artikel Galaxy opnieuw afdrukken**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer in de lijst met toepassingen de optie **Herdrukken Desk - Artikel Melkweg**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-reprints-desk-article-galaxy-sso"></a>Opnieuw afdrukken Bureau artikel Galaxy SSO configureren
+## <a name="configure-reprints-desk-article-galaxy-sso"></a>Herdrukken deskartikel Galaxy SSO configureren
 
-Als u eenmalige aanmelding wilt configureren voor het opnieuw **afdrukken van Bureau-artikel Galaxy** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal om het [Bureau artikel Galaxy-ondersteunings team opnieuw af te drukken](mailto:customersupport@reprintsdesk.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **de kant van Herdrukken desk - Artikel Galaxy,** moet u de gedownloade **Federation Metadata XML** en de juiste gekopieerde URL's van Azure portal naar [Reprints Desk - Artikel Galaxy support team](mailto:customersupport@reprintsdesk.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-reprints-desk-article-galaxy-test-user"></a>Opnieuw afdrukken Bureau artikel Galaxy test gebruiker
+### <a name="create-reprints-desk-article-galaxy-test-user"></a>Reprints Desk Artikel Galaxy test gebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt op het opnieuw afdrukken van Bureau-artikel Galaxy. Opnieuw afdrukken Bureau-artikel Galaxy ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker aanwezig is in het opnieuw afdrukken van Bureau-artikel Galaxy, wordt er na verificatie een nieuw item gemaakt.
+In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Reprints Desk - Article Galaxy. Reprints Desk - Article Galaxy ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Reprints Desk - Article Galaxy, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Test SSO 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Bureau-artikel Galaxy opnieuw afdrukken klikt in het toegangs venster, moet u automatisch worden aangemeld bij het Bureau voor het opnieuw afdrukken van artikelen Galaxy waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Herdrukken van de balie klikt - artikel Galaxy-tegel in het toegangspaneel, moet u automatisch worden aangemeld bij de Herdrukkendesk - Artikel Galaxy waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Bureau-artikel Galaxy opnieuw af te drukken met Azure AD](https://aad.portal.azure.com/)
+- [Herdrukken desk proberen - Artikel Galaxy met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Het beveiligen van bureau blad-artikel Galaxy met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Herdrukken Desk beschermen - Artikel Galaxy met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

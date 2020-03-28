@@ -1,6 +1,6 @@
 ---
-title: Bericht routering voor Azure IoT Hub configureren met behulp van Azure CLI
-description: Configureer bericht routering voor Azure IoT Hub met behulp van de Azure CLI. Route naar een opslag account of een Service Bus wachtrij, afhankelijk van de eigenschappen in het bericht.
+title: Berichtroutering configureren voor Azure IoT Hub met de Azure CLI
+description: Berichtroutering configureren voor Azure IoT Hub met de Azure CLI. Afhankelijk van de eigenschappen in het bericht, route naar een opslagaccount of een Service Bus wachtrij.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,13 +10,13 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 056dac7977115f97892d8dbfde0710e00237804e
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674347"
 ---
-# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Zelf studie: de Azure CLI gebruiken om IoT Hub bericht routering te configureren
+# <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Zelfstudie: De Azure CLI gebruiken om de routeringsroute van iot-hubberichten te configureren
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -24,22 +24,22 @@ ms.locfileid: "78674347"
 
 ## <a name="download-the-script-optional"></a>Het script downloaden (optioneel)
 
-Voor het tweede deel van deze zelf studie downloadt en voert u een Visual Studio-toepassing uit om berichten naar de IoT Hub te verzenden. Er is een map in de down load die de Azure Resource Manager sjabloon en het parameter bestand bevat, evenals de Azure CLI-en Power shell-scripts.
+Voor het tweede deel van deze zelfstudie download t u een Visual Studio-toepassing om berichten naar de IoT-hub te verzenden. Er is een map in de download die de Azure Resource Manager-sjabloon en parametersbestand bevat, evenals de Azure CLI- en PowerShell-scripts.
 
-Als u het voltooide script wilt weer geven, downloadt u de [Azure C# IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het zip-bestand master. Het Azure CLI-script bevindt zich in/iot-hub/Tutorials/Routing/SimulatedDevice/resources/als **iothub_routing_cli. azcli**.
+Als u het voltooide script wilt bekijken, downloadt u de [Azure IoT C#-voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rits het bestand master.zip uit. Het Azure CLI-script bevindt zich in /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ als **iothub_routing_cli.azcli**.
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>De Azure CLI gebruiken om uw resources te maken
 
-Kopieer en plak het onderstaande script in Cloud Shell en druk op ENTER. Het script wordt één regel per keer uitgevoerd. In dit eerste gedeelte van het script worden de basis resources voor deze zelf studie gemaakt, met inbegrip van het opslag account, het IoT Hub, de Service Bus naam ruimte en de Service Bus wachtrij. Als u de rest van de zelf studie doorloopt, kopieert u elk script blok en plakt u het in Cloud Shell om het uit te voeren.
+Kopieer en plak het onderstaande script in Cloud Shell en druk op Enter. Het loopt het script een regel tegelijk. In dit eerste gedeelte van het script worden de basisbronnen voor deze zelfstudie gemaakt, waaronder het opslagaccount, iot-hub, servicebusnaamruimte en de wachtrij servicebus. Terwijl u door de rest van de zelfstudie gaat, kopieert u elk blok script en plakt u het in Cloud Shell om het uit te voeren.
 
 > [!TIP]
-> Een tip over fout opsporing: dit script maakt gebruik van het vervolg symbool (de back slash `\`) om het script beter leesbaar te maken. Als u een probleem hebt met het uitvoeren van het script, controleert u of uw Cloud Shell-sessie wordt uitgevoerd `bash` en of er geen spaties na een van de backslashes staan.
+> Een tip over foutopsporing: dit script gebruikt het `\`vervolgsymbool (de backslash) om het script leesbaarder te maken. Als u een probleem hebt met het uitvoeren van `bash` het script, controleert u of uw Cloud Shell-sessie wordt uitgevoerd en dat er geen spaties zijn na een van de backslashes.
 > 
 
-Er zijn verschillende resource namen die wereld wijd uniek moeten zijn, zoals de naam van de IoT Hub en de naam van het opslag account. Om dit eenvoudiger te maken, worden deze resource namen toegevoegd met een wille keurige alfanumerieke waarde met de naam *randomValue*. De randomValue wordt eenmaal aan het begin van het script gegenereerd en aan de resource namen toegevoegd, zoals nodig is in het script. Als u niet wilt dat deze wille keurig worden ingesteld, kunt u deze instellen op een lege teken reeks of op een specifieke waarde. 
+Er zijn verschillende resourcenamen die wereldwijd uniek moeten zijn, zoals de naam IoT Hub en de naam van het opslagaccount. Om dit gemakkelijker te maken, worden deze resourcenamen toegevoegd met een willekeurige alfanumerieke waarde genaamd *randomValue*. De randomValue wordt eenmaal gegenereerd aan de bovenkant van het script en toegevoegd aan de resource namen indien nodig in het script. Als u niet wilt dat het willekeurig is, u het instellen op een lege tekenreeks of op een specifieke waarde. 
 
 > [!IMPORTANT]
-> De variabelen die in het eerste script zijn ingesteld, worden ook gebruikt door het routerings script, dus voer alle scripts uit in dezelfde Cloud Shell sessie. Als u een nieuwe sessie opent om het script voor het instellen van de route ring uit te voeren, ontbreken er waarden in verschillende variabelen.
+> De variabelen die in het oorspronkelijke script zijn ingesteld, worden ook gebruikt door het routeringsscript, dus voer alle scripts uit in dezelfde Cloud Shell-sessie. Als u een nieuwe sessie opent om het script uit te voeren voor het instellen van de routering, ontbreken verschillende variabelen waarden.
 >
 
 ```azurecli-interactive
@@ -141,45 +141,45 @@ az iot hub device-identity show --device-id $iotDeviceName \
     --hub-name $iotHubName
 ```
 
-Nu de basis bronnen zijn ingesteld, kunt u de route ring van berichten configureren.
+Nu de basisresources zijn ingesteld, u de berichtroutering configureren.
 
 ## <a name="set-up-message-routing"></a>Berichtroutering instellen
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Gebruik [AZ IOT hub Routing-endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)om een routerings eindpunt te maken. Gebruik [AZ IOT hub route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)om de bericht route voor het eind punt te maken.
+Als u een routeringseindpunt wilt maken, gebruikt u [het leiden van az-hubrouting-endpoint.](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create) Als u de berichtroute voor het eindpunt wilt maken, gebruikt u [az iot-hubroute maken](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
 
-### <a name="route-to-a-storage-account"></a>Een opslag account door sturen
+### <a name="route-to-a-storage-account"></a>Route naar een opslagaccount
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-Stel eerst het eind punt in voor het opslag account en stel vervolgens de route in. 
+Stel eerst het eindpunt in voor het opslagaccount en stel vervolgens de route in. 
 
-Dit zijn de variabelen die worden gebruikt door het script dat moet worden ingesteld binnen uw Cloud Shell-sessie:
+Dit zijn de variabelen die worden gebruikt door het script die moeten worden ingesteld binnen uw Cloud Shell-sessie:
 
-**storageConnectionString**: deze waarde wordt opgehaald uit het opslag account dat in het vorige script is ingesteld. Het wordt gebruikt door de bericht routering om toegang te krijgen tot het opslag account.
+**storageConnectionString**: Deze waarde wordt opgehaald uit het opslagaccount dat in het vorige script is ingesteld. Het wordt gebruikt door de berichtroutering om toegang te krijgen tot het opslagaccount.
 
-  **resourceGroup**: er zijn twee exemplaren van de resource groep. Stel ze in voor de resource groep.
+  **resourceGroep**: Er zijn twee exemplaren van resourcegroep - stel deze in op uw resourcegroep.
 
-**eind punt-subscriptionid**: dit veld wordt ingesteld op de Azure subscriptionID voor het eind punt. 
+**endpointsubscriptionID**: dit veld is ingesteld op de Azure-abonnements-ID voor het eindpunt. 
 
-**endpointType**: dit veld is het type eind punt. Deze waarde moet worden ingesteld op `azurestoragecontainer`, `eventhub`, `servicebusqueue`of `servicebustopic`. Stel deze in op `azurestoragecontainer`voor uw doel einden.
+**endpointType:** dit veld is het type eindpunt. Deze waarde moet `azurestoragecontainer`worden `eventhub` `servicebusqueue`ingesteld `servicebustopic`op , , of . Voor uw doeleinden hier, `azurestoragecontainer`stel het in op.
 
-**iotHubName**: dit veld is de naam van de hub die de route ring gaat uitvoeren.
+**iotHubName**: Dit veld is de naam van de hub die de routering zal doen.
 
-**containerName**: dit veld bevat de naam van de container in het opslag account waarnaar de gegevens worden geschreven.
+**containerNaam**: Dit veld is de naam van de container in het opslagaccount waarop gegevens worden geschreven.
 
-**Encoding**: dit veld wordt `avro` of `json`. Dit geeft de indeling van de opgeslagen gegevens aan.
+**codering**: Dit veld `avro` is `json`een van beide of . Dit geeft de indeling van de opgeslagen gegevens aan.
 
-**route**naam: dit veld bevat de naam van de route die u instelt. 
+**routeNaam:** Dit veld is de naam van de route die u instelt. 
 
-**eind punt**: dit veld is de naam die het eind punt aangeeft. 
+**endpointName:** Dit veld is de naam die het eindpunt identificeert. 
 
-**ingeschakeld**: dit veld wordt standaard ingesteld op `true`, wat aangeeft dat de bericht route moet worden ingeschakeld nadat deze is gemaakt.
+**ingeschakeld**: Dit veld `true`geeft standaard aan , zodat de berichtroute moet worden ingeschakeld nadat deze is gemaakt.
 
-**voor waarde**: dit veld is de query die wordt gebruikt om te filteren op berichten die naar dit eind punt worden verzonden. De query voorwaarde voor de berichten die naar de opslag worden doorgestuurd, is `level="storage"`.
+**voorwaarde:** dit veld is de query die wordt gebruikt om te filteren op de berichten die naar dit eindpunt worden verzonden. De queryvoorwaarde voor de berichten die `level="storage"`naar de opslag worden doorgestuurd, is .
 
-Kopieer dit script en plak het in het Cloud Shell venster en voer dit uit.
+Kopieer dit script en plak het in uw Cloud Shell-venster en voer het uit.
 
 ```azurecli
 ##### ROUTING FOR STORAGE ##### 
@@ -195,7 +195,7 @@ storageConnectionString=$(az storage account show-connection-string \
   --name $storageAccountName --query connectionString -o tsv)
 ```
 
-De volgende stap is het maken van het eind punt van de route ring voor het opslag account. U geeft ook de container op waarin de resultaten worden opgeslagen. De container is eerder gemaakt toen het opslag account werd gemaakt.
+De volgende stap is het maken van het routeringseindpunt voor het opslagaccount. U geeft ook de container op waarin de resultaten worden opgeslagen. De container is eerder gemaakt toen het opslagaccount werd gemaakt.
 
 ```azurecli
 # Create the routing endpoint for storage.
@@ -211,7 +211,7 @@ az iot hub routing-endpoint create \
   --encoding avro
 ```
 
-Maak vervolgens de route voor het eind punt van de opslag. De bericht route geeft aan waar de berichten moeten worden verzonden die voldoen aan de query specificatie. 
+Maak vervolgens de route voor het opslageindpunt. De berichtroute geeft aan waar u de berichten moet verzenden die voldoen aan de queryspecificatie. 
 
 ```azurecli
 # Create the route for the storage endpoint.
@@ -225,9 +225,9 @@ az iot hub route create \
   --condition $condition
 ```
 
-### <a name="route-to-a-service-bus-queue"></a>Een Service Bus wachtrij omleiden
+### <a name="route-to-a-service-bus-queue"></a>Route naar een wachtrij voor servicebussen
 
-Stel nu de routering in voor de Service Bus-wachtrij. Als u de connection string voor de Service Bus wachtrij wilt ophalen, moet u een autorisatie regel maken waarvoor de juiste rechten zijn gedefinieerd. Met het volgende script maakt u een autorisatie regel voor de Service Bus wachtrij met de naam `sbauthrule`, en stelt u de rechten in voor `Listen Manage Send`. Zodra deze autorisatie regel is gedefinieerd, kunt u deze gebruiken om de connection string voor de wachtrij op te halen.
+Stel nu de routering in voor de Service Bus-wachtrij. Als u de verbindingstekenreeks voor de wachtrij servicebus wilt ophalen, moet u een autorisatieregel maken waarop de juiste rechten zijn gedefinieerd. In het volgende script wordt een autorisatieregel gemaakt voor de wachtrij Servicebus die wordt aangeroepen `sbauthrule`en worden de rechten ingesteld op `Listen Manage Send`. Zodra deze autorisatieregel is gedefinieerd, u deze gebruiken om de verbindingstekenreeks voor de wachtrij op te halen.
 
 ```azurecli
 # Create the authorization rule for the Service Bus queue.
@@ -240,7 +240,7 @@ az servicebus queue authorization-rule create \
   --subscription $subscriptionID
 ```
 
-Gebruik nu de autorisatie regel om de connection string op te halen voor de Service Bus wachtrij.
+Gebruik nu de autorisatieregel om de verbindingstekenreeks op te halen in de wachtrij servicebus.
 
 ```azurecli
 # Get the Service Bus queue connection string.
@@ -257,17 +257,17 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-Stel nu het eind punt van de route ring in en de bericht route voor de Service Bus wachtrij. Dit zijn de variabelen die worden gebruikt door het script dat moet worden ingesteld binnen uw Cloud Shell-sessie:
+Stel nu het routeeindpunt en de berichtroute in voor de wachtrij servicebus. Dit zijn de variabelen die worden gebruikt door het script die moeten worden ingesteld binnen uw Cloud Shell-sessie:
 
-**eind punt**: dit veld is de naam die het eind punt aangeeft. 
+**endpointName:** Dit veld is de naam die het eindpunt identificeert. 
 
-**endpointType**: dit veld is het type eind punt. Deze waarde moet worden ingesteld op `azurestoragecontainer`, `eventhub`, `servicebusqueue`of `servicebustopic`. Stel deze in op `servicebusqueue`voor uw doel einden.
+**endpointType:** dit veld is het type eindpunt. Deze waarde moet `azurestoragecontainer`worden `eventhub` `servicebusqueue`ingesteld `servicebustopic`op , , of . Voor uw doeleinden hier, `servicebusqueue`stel het in op.
 
-**route**naam: dit veld bevat de naam van de route die u instelt. 
+**routeNaam:** Dit veld is de naam van de route die u instelt. 
 
-**voor waarde**: dit veld is de query die wordt gebruikt om te filteren op berichten die naar dit eind punt worden verzonden. De query voorwaarde voor de berichten die naar de Service Bus wachtrij worden doorgestuurd, is `level="critical"`.
+**voorwaarde:** dit veld is de query die wordt gebruikt om te filteren op de berichten die naar dit eindpunt worden verzonden. De queryvoorwaarde voor de berichten die worden doorgestuurd `level="critical"`naar de wachtrij servicebus is .
 
-Dit is de Azure CLI voor het eind punt van de route ring en de bericht route voor de Service Bus wachtrij.
+Hier vindt u het Azure CLI voor het routeringseindpunt en de berichtroute voor de wachtrij servicebus.
 
 ```azurecli
 endpointName="ContosoSBQueueEndpoint"
@@ -296,13 +296,13 @@ az iot hub route create --name $routeName \
   --condition $condition
   ```
 
-### <a name="view-message-routing-in-the-portal"></a>Bericht routering weer geven in de portal
+### <a name="view-message-routing-in-the-portal"></a>Berichtroutering weergeven in de portal
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de resources hebt ingesteld en de bericht routes hebt geconfigureerd, gaat u naar de volgende zelf studie om te leren hoe u berichten verzendt naar de IoT-hub en hoe deze worden doorgestuurd naar de verschillende bestemmingen. 
+Nu u de resources hebt ingesteld en de berichtroutes hebt geconfigureerd, gaat u door naar de volgende zelfstudie om te leren hoe u berichten naar de IoT-hub verzenden en ze naar de verschillende bestemmingen laten worden doorgestuurd. 
 
 > [!div class="nextstepaction"]
-> [Deel 2: de routerings resultaten van het bericht weer geven](tutorial-routing-view-message-routing-results.md)
+> [Deel 2 - Bekijk de resultaten van de routeringsresultaten van het bericht](tutorial-routing-view-message-routing-results.md)

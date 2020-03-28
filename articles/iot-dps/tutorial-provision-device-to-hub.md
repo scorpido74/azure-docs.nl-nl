@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service
-description: Deze zelf studie laat zien hoe u uw apparaat kunt inrichten voor één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service (DPS)
+title: Zelfstudie - Apparaat inrichten met Azure IoT Hub Device Provisioning Service
+description: In deze zelfstudie ziet u hoe u uw apparaat inrichten op één IoT-hub met de DPS (Azure IoT Hub Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,15 +9,15 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74975037"
 ---
-# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: het apparaat inrichten voor een IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelfstudie: Het apparaat inrichten op een IoT-hub met de Azure IoT Hub Device Provisioning Service
 
-In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_** . In deze zelfstudie ontdekt u hoe u:
+In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor automatische inrichting **_inschrijvingslijsten_**. In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven
@@ -42,21 +42,21 @@ In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd
       [![Inschrijvingsgegevens voor TPM in de portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Voor X.509-apparaten hebt u het volgende nodig:
-    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. Voor afzonderlijke inschrijving moet u het *certificaat* per apparaat gebruiken voor uw X. 509-systeem, terwijl u voor inschrijvings groepen het *basis certificaat*moet gebruiken. 
+    - Het [certificaat dat is verleend aan de X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)-chip of -simulatie, in de vorm van een *.pem*- of *.cer*-bestand. Voor individuele inschrijving moet u het *ondertekende certificaat* per apparaat voor uw X.509-systeem gebruiken, terwijl u voor inschrijvingsgroepen het *basiscertificaat*moet gebruiken. 
 
-      [![Afzonderlijke inschrijving voor X.509-attestation toevoegen in de portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![Individuele inschrijving voor X.509-attest toevoegen in de portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Service:
 
 - **Inschrijvingsgroepen**: dit is een groep apparaten die een specifiek attestation-mechanisme delen. We raden u aan om een inschrijvingsgroep te gebruiken bij een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal zijn verbonden met dezelfde tenant. Raadpleeg [Beveiliging](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie over identiteit-attestation voor registratiegroepen.
 
-    [![Groepsinschrijving voor attestation X.509 toevoegen in de portal](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
+    [![Groepsinschrijving voor X.509-attest toevoegen in de portal](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
 - **Afzonderlijke inschrijvingen**: dit is een vermelding voor een enkel apparaat dat kan worden geregistreerd met Device Provisioning Service. Afzonderlijke inschrijvingen kunnen X509-certificaten of SAS-tokens (in een echt of virtueel TPM) gebruiken als attestation-mechanismen. We raden u aan om afzonderlijke inschrijvingen te gebruiken bij apparaten die unieke initiële configuraties vereisen, en voor apparaten die alleen SAS-tokens via TPM of virtuele TPM kunnen gebruiken als het attestation-mechanisme. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
 
 Nu schrijft u het apparaat in met uw Device Provisioning Service-instantie, met behulp van de vereiste beveiligingsartefacten op basis van het attestation-mechanisme van het apparaat: 
 
-1. Meld u aan bij Azure Portal, klik in het linkermenu op de knop **Alle bronnen** en open Device Provisioning Service.
+1. Meld u aan bij de Azure-portal, klik op de knop **Alle bronnen** in het linkermenu en open de service Apparaatvoorziening.
 
 2. Selecteer **Manage enrollments** in de overzichtsblade van Device Provisioning Service. Selecteer het tabblad **Afzonderlijke inschrijvingen** of het tabblad **Inschrijvingsgroepen** afhankelijk van de gekozen installatie voor het apparaat. Klik bovenaan op de knop **Toevoegen**. Selecteer **TPM** of **X.509** als het attestation-*mechanisme*, en voer de juiste beveiligingsartefacten toe, zoals eerder besproken. U kunt een nieuwe **apparaat-id voor IoT Hub** invoeren. Klik op de knop **Save** als u klaar bent. 
 

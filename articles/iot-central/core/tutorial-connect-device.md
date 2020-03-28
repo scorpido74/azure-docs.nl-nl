@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een algemene node. js-client-app verbinden met Azure IoT Central | Microsoft Docs'
-description: In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een apparaat met een node. js-client-app verbindt met uw Azure IoT Central-toepassing. U maakt een sjabloon voor een apparaat door een mogelijkheidsprofiel te importeren en weer gaven toe te voegen waarmee u kunt communiceren met een verbonden apparaat
+title: Zelfstudie - Een algemene client-app Node.js verbinden met Azure IoT Central | Microsoft Documenten
+description: In deze zelfstudie ziet u hoe u als apparaatontwikkelaar een apparaat met een Node.js-client-app verbinden met uw Azure IoT Central-toepassing. U maakt een apparaatsjabloon door een apparaatcapaciteitsmodel te importeren en weergaven toe te voegen waarmee u communiceren met een verbonden apparaat
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/26/2020
@@ -8,122 +8,122 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624541"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelf studie: een node. js-client toepassing maken en verbinden met uw Azure IoT Central-toepassing (node. js)
+# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelfstudie: Een Clienttoepassing Node.js maken en verbinden met uw Azure IoT Central-toepassing (Node.js)
 
-In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een node. js-client toepassing verbindt met uw Azure IoT Central-toepassing. Met de node. js-toepassing wordt het gedrag van een echt apparaat gesimuleerd. U gebruikt een voor beeld van een _apparaat_ voor het maken van een _sjabloon_ voor een omgevings sensor in IOT Central. U kunt weer gaven toevoegen aan de sjabloon voor het apparaat om telemetrie van apparaten te visualiseren, apparaateigenschappen te beheren en opdrachten te gebruiken voor het beheren van uw apparaten.
+In deze zelfstudie ziet u hoe u als apparaatontwikkelaar een Clienttoepassing Node.js verbinden met uw Azure IoT Central-toepassing. De Node.js applicatie simuleert het gedrag van een echt apparaat. U gebruikt een model voor _voorbeeldapparaten_ voor een omgevingssensorom een _apparaatsjabloon_ te maken in IoT Central. U voegt weergaven toe aan de apparaatsjabloon om apparaattelemetrie te visualiseren, apparaateigenschappen te beheren en opdrachten te gebruiken om uw apparaten te bedienen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Importeer een mogelijkheidsprofiel om een sjabloon voor een apparaat te maken.
-> * Standaard-en aangepaste weer gaven toevoegen aan een sjabloon voor een apparaat.
-> * Een sjabloon voor een apparaat publiceren en een echt apparaat toevoegen aan uw IoT Central-toepassing.
-> * Maak de apparaatcode van node. js en voer deze uit om verbinding te maken met uw IoT Central-toepassing.
-> * De gesimuleerde telemetrie weer geven die het apparaat verzendt.
-> * Gebruik een weer gave om apparaateigenschappen te beheren.
-> * Roep opdrachten aan om het apparaat te beheren.
+> * Importeer een apparaatcapaciteitsmodel om een apparaatsjabloon te maken.
+> * Standaardweergaven en aangepaste weergaven toevoegen aan een apparaatsjabloon.
+> * Publiceer een apparaatsjabloon en voeg een echt apparaat toe aan uw IoT Central-toepassing.
+> * Maak en voer de node.js-apparaatcode uit en zie deze verbinding maken met uw IoT Central-toepassing.
+> * Bekijk de gesimuleerde telemetrie die het apparaat verzendt.
+> * Gebruik een weergave om apparaateigenschappen te beheren.
+> * Oproepopdrachten om het apparaat te bedienen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
-* Een Azure IoT Central-toepassing gemaakt met de sjabloon * * aangepaste toepassing * *. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-* Een ontwikkelings machine waarop de [node. js](https://nodejs.org/) -versie 10.0.0 of hoger is geïnstalleerd. U kunt `node --version` uitvoeren op de opdracht regel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen. In de instructies in deze zelf studie wordt ervan uitgegaan dat u de **knoop punt** opdracht uitvoert vanaf de Windows-opdracht prompt. U kunt node. js gebruiken op verschillende besturings systemen.
+* Een Azure IoT Central-toepassing die is gemaakt met de sjabloon **Aangepaste toepassing **. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+* Een ontwikkelmachine met [Node.js](https://nodejs.org/) versie 10.0.0 of hoger geïnstalleerd. U kunt `node --version` in de opdrachtregel worden uitgevoerd om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen. De instructies in deze zelfstudie gaan ervan uit dat u de opdracht **knooppunt** uitvoert bij de opdrachtprompt van Windows. U Node.js gebruiken op verschillende besturingssystemen.
 
-## <a name="create-a-device-template"></a>Een sjabloon voor een apparaat maken
+## <a name="create-a-device-template"></a>Een apparaatsjabloon maken
 
-Maak een map met de naam `environmental-sensor` op uw lokale machine.
+Maak een `environmental-sensor` map die op uw lokale machine wordt aangeroepen.
 
-Down load het JSON-bestand van het [Environmental Capability model](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) en sla dit op in de map `environmental-sensor`.
+Download het [JSON-bestand met omgevingssensormogelijkheden](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) `environmental-sensor` en sla het op in de map.
 
-Gebruik een tekst editor om de twee exemplaren van `{YOUR_COMPANY_NAME_HERE}` te vervangen door de naam van uw bedrijf in het `EnvironmentalSensorInline.capabilitymodel.json` bestand dat u hebt gedownload.
+Gebruik een teksteditor om de `{YOUR_COMPANY_NAME_HERE}` twee exemplaren van `EnvironmentalSensorInline.capabilitymodel.json` uw bedrijfsnaam te vervangen door uw bedrijfsnaam in het bestand dat u hebt gedownload.
 
-Maak in uw Azure IoT Central-toepassing een Device-sjabloon met de naam *omgevings sensor* door het bestand met het capaciteits model van `EnvironmentalSensorInline.capabilitymodel.json` te importeren:
+Maak in uw Azure IoT Central-toepassing een apparaatsjabloon `EnvironmentalSensorInline.capabilitymodel.json` met de naam *Omgevingssensor* door het modelbestand voor apparaatmogelijkheden te importeren:
 
-![De sjabloon apparaat met het model voor het importeren van het apparaat](./media/tutorial-connect-device/device-template.png)
+![Apparaatsjabloon met geïmporteerd apparaatcapaciteitsmodel](./media/tutorial-connect-device/device-template.png)
 
-Het functionaliteits model van het apparaat bevat twee interfaces: de standaard interface voor **apparaatgegevens** en de interface voor aangepaste **omgevings sensor** . De **omgevings sensor** interface definieert de volgende mogelijkheden:
+Het apparaatvermogenmodel bevat twee interfaces: de standaard **interface voor apparaatinformatie** en de aangepaste **interface voor omgevingssensoren.** De **interface omgevingssensor** definieert de volgende mogelijkheden:
 
 | Type | Weergavenaam | Beschrijving |
 | ---- | ------------ | ----------- |
-| Eigenschap | Apparaatstatus     | De status van het apparaat. Er zijn twee statussen online/offline beschikbaar. |
-| Eigenschap | Klant naam    | De naam van de klant die momenteel op het apparaat wordt uitgevoerd. |
-| Eigenschap | Helderheids niveau | Het helderheids niveau voor het licht op het apparaat. Kan worden opgegeven als 1 (hoog), 2 (gemiddeld), 3 (laag). |
-| Telemetrie | Temperatuur | Huidige Tempe ratuur op het apparaat. |
+| Eigenschap | Apparaatstatus     | De toestand van het apparaat. Twee staten online / offline zijn beschikbaar. |
+| Eigenschap | Naam van de klant    | De naam van de klant die momenteel het apparaat gebruikt. |
+| Eigenschap | Helderheidsniveau | Het helderheidsniveau voor het licht op het apparaat. Kan worden opgegeven als 1 (hoog), 2 (medium), 3 (laag). |
+| Telemetrie | Temperatuur | Huidige temperatuur op het apparaat. |
 | Telemetrie | Vochtigheid    | Huidige vochtigheid op het apparaat. |
-| Opdracht | gaat          | De LED voor het opgegeven tijds interval laten knip peren. |
+| Opdracht | Knipperen          | Begin met het knipperen van de LED voor een bepaald tijdsinterval. |
 | Opdracht | turnon         | Schakel het LED-lampje op het apparaat in. |
-| Opdracht | turnoff        | Schakel het LED-lampje op het apparaat uit. |
-| Opdracht | rundiagnostics | Met deze opdracht wordt een diagnostische uitvoering gestart. |
+| Opdracht | Afslag        | Schakel het LED-lampje op het apparaat uit. |
+| Opdracht | rundiagnostics | Met deze opdracht wordt een diagnostische run gestart. |
 
-Als u wilt aanpassen hoe de eigenschap **Apparaatstatus** wordt weer gegeven in uw IOT Central-toepassing, selecteert u **aanpassen** in de sjabloon voor het apparaat. Vouw de vermelding voor de **apparaats status** uit en voer _online_ in als de **werkelijke naam** en _offline_ als de **naam onwaar**. Sla de wijzigingen vervolgens op:
+Als u wilt aanpassen hoe de eigenschap **Apparaatstatus** wordt weergegeven in uw IoT Central-toepassing, selecteert u **Aanpassen** in de apparaatsjabloon. Vouw de **vermelding apparaatstatus** uit, voer _Online_ in als **de echte naam** en _Offline_ als de **valse naam**. Sla vervolgens de wijzigingen op:
 
-![De sjabloon voor het apparaat aanpassen](media/tutorial-connect-device/customize-template.png)
+![De apparaatsjabloon aanpassen](media/tutorial-connect-device/customize-template.png)
 
-## <a name="create-views"></a>Weergaven aanmaken
+## <a name="create-views"></a>Weergaven maken
 
-Met weer gaven kunt u communiceren met apparaten die zijn verbonden met uw IoT Central-toepassing. U kunt bijvoorbeeld weer gaven hebben waarin telemetrie wordt weer gegeven, weer gaven die eigenschappen weer geven en weer gaven waarmee u Beschrijf bare en Cloud eigenschappen kunt bewerken. Weer gaven maken deel uit van een sjabloon voor een apparaat.
+Met weergaven u communiceren met apparaten die zijn verbonden met uw IoT Central-toepassing. U bijvoorbeeld weergaven hebben die telemetrie weergeven, weergaven die eigenschappen weergeven en weergaven waarmee u schrijfbare en cloudeigenschappen bewerken. Weergaven maken deel uit van een apparaatsjabloon.
 
-Als u een aantal standaard weergaven wilt toevoegen aan de sjabloon **omgevings sensor** apparaat, gaat u naar de sjabloon voor het apparaat, selecteert u **weer gaven**en selecteert u de tegel **Standaard weergaven genereren** . Zorg ervoor dat **overzicht** en **over** zijn **ingeschakeld**en selecteer **standaard dashboard weergaven genereren**. U hebt nu twee standaard weergaven gedefinieerd in uw sjabloon.
+Als u een aantal standaardweergaven wilt toevoegen aan de apparaatsjabloon **voor de omgevingssensor,** navigeert u naar de apparaatsjabloon, selecteert u **Weergaven**en selecteert u de tegel **Standaardweergaven genereren.** Controleer of **Overzicht** en **Informatie** **aan**staan en selecteer **vervolgens Standaarddashboardweergaven genereren**. Er zijn nu twee standaardweergaven gedefinieerd in uw sjabloon.
 
-De **omgevings sensor** interface bevat twee Beschrijf bare eigenschappen: **klant naam** en **helderheids niveau**. Als u een weer gave wilt maken, kunt u deze gebruiken om deze eigenschappen te bewerken:
+De **interface omgevingssensor** bevat twee schrijfbare eigenschappen - **klantnaam** en **helderheidsniveau**. Als u een weergave wilt maken, u deze eigenschappen bewerken:
 
-1. Selecteer **weer gaven** en selecteer vervolgens de tegel **apparaat en Cloud gegevens bewerken** .
+1. Selecteer **Weergaven** en selecteer vervolgens het bewerkingsapparaat en de **tegel cloudgegevens.**
 
-1. Geef _Eigenschappen_ op als formulier naam.
+1. Voer _Eigenschappen_ in als formuliernaam.
 
-1. Selecteer de eigenschappen van het **niveau helderheid** en de naam van de **klant** . Selecteer vervolgens **sectie toevoegen**.
+1. Selecteer de eigenschappen **Helderheidsniveau** en **klantnaam.** Selecteer vervolgens **Sectie Toevoegen**.
 
 1. Sla uw wijzigingen op.
 
-![Een weer gave toevoegen om het bewerken van eigenschappen in te scha kelen](media/tutorial-connect-device/properties-view.png)
+![Een weergave toevoegen om eigenschapsbewerking in te schakelen](media/tutorial-connect-device/properties-view.png)
 
 ## <a name="publish-the-template"></a>De sjabloon publiceren
 
-Voordat u een apparaat toevoegt aan uw IoT Central-toepassing die gebruikmaakt van de sjabloon voor de **omgevings sensor** , moet u de sjabloon publiceren.
+Voordat u een apparaat toevoegt aan uw IoT Central-toepassing die gebruikmaakt van de sjabloon **omgevingssensorapparaat,** moet u de sjabloon publiceren.
 
-Selecteer in de sjabloon voor het apparaat **publiceren**. Selecteer in het deel venster waarin de wijzigingen worden weer gegeven die moeten worden gepubliceerd, de optie **publiceren**.
+Selecteer **Publiceren**in de apparaatsjabloon . Selecteer **Publiceren**in het deelvenster met de te publiceren wijzigingen .
 
-Als u wilt controleren of de sjabloon klaar is voor gebruik, gaat u naar de pagina **apparaten** in uw IOT Central-toepassing. De sectie **apparaten** bevat een lijst van de gepubliceerde apparaten in de toepassing:
+Als u wilt controleren of de sjabloon klaar is voor gebruik, navigeert u naar de pagina **Apparaten** in uw IoT Central-toepassing. In de sectie **Apparaten** wordt een lijst weergegeven met de gepubliceerde apparaten in de toepassing:
 
 ![Gepubliceerde sjablonen op de pagina apparaten](media/tutorial-connect-device/published-templates.png)
 
 ## <a name="add-a-real-device"></a>Echt apparaat toevoegen
 
-Voeg in uw Azure IoT Central-toepassing een echt apparaat toe aan de Device-sjabloon die u in de vorige sectie hebt gemaakt:
+Voeg in uw Azure IoT Central-toepassing een echt apparaat toe aan de apparaatsjabloon die u in de vorige sectie hebt gemaakt:
 
-1. Selecteer op de pagina **apparaten** de sjabloon **omgevings sensor** .
+1. Selecteer **op** de pagina Apparaten de sjabloon **omgevingssensor.**
 
 1. Selecteer **+ Nieuw**.
 
-1. Zorg ervoor dat **gesimuleerd** is **uitgeschakeld**. Selecteer vervolgens **Maken**.
+1. Zorg ervoor dat **gesimuleerd** is **uitgeschakeld.** Selecteer vervolgens **Maken**.
 
-Klik op de naam van het apparaat en selecteer vervolgens **verbinding maken**. Noteer de verbindings gegevens van het apparaat op de pagina met de verbindings- **id**van het **apparaat** , de **apparaat-id**en de **primaire sleutel**. U hebt deze waarden nodig wanneer u uw apparaatcode maakt:
+Klik op de naam van het apparaat en selecteer **Verbinding maken**. Noteer de apparaatverbindingsgegevens op de pagina **Apparaatverbinding** - **ID-bereik,** **apparaat-id**en **primaire sleutel**. U hebt deze waarden nodig wanneer u uw apparaatcode maakt:
 
-![Verbindings gegevens apparaat](./media/tutorial-connect-device/device-connection.png)
+![Apparaatverbindingsgegevens](./media/tutorial-connect-device/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
 
-De volgende stappen laten zien hoe u een node. js-client toepassing maakt die het echte apparaat implementeert dat u aan de toepassing hebt toegevoegd. Met deze node. js-toepassing wordt het gedrag van een echt apparaat gesimuleerd.
+In de volgende stappen ziet u hoe u een Clienttoepassing Node.js maakt die het echte apparaat implementeert dat u aan de toepassing hebt toegevoegd. Deze Node.js applicatie simuleert het gedrag van een echt apparaat.
 
-1. Ga in de opdracht regel omgeving naar de map `environmental-sensor` die u eerder hebt gemaakt.
+1. Navigeer in de opdrachtregelomgeving `environmental-sensor` naar de map die u eerder hebt gemaakt.
 
-1. Als u het node. js-project wilt initialiseren en de vereiste afhankelijkheden wilt installeren, voert u de volgende opdrachten uit: accepteer alle standaard opties wanneer u `npm init`uitvoert.
+1. Als u uw Node.js-project wilt initialiseren en de vereiste afhankelijkheden wilt installeren, `npm init`voert u de volgende opdrachten uit - accepteert u alle standaardopties wanneer u dit uitvoert:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Maak een bestand met de naam **environmentalSensor. js** in de map `environmental-sensor`.
+1. Maak een bestand met de `environmental-sensor` naam **environmentalSensor.js** in de map.
 
-1. Voeg de volgende `require`-instructies toe aan het begin van het bestand **environmentalSensor. js** :
+1. Voeg de `require` volgende instructies toe aan het begin van het **bestand environmentalSensor.js:**
 
     ```javascript
     "use strict";
@@ -151,7 +151,7 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die he
     var ledOn = true;
     ```
 
-    De tijdelijke aanduidingen `{your Scope ID}`, `{your Device ID}`en `{your Primary Key}` bijwerken met de waarden die u eerder hebt genoteerd. In dit voor beeld initialiseert u `targetTemperature` op nul, kunt u de huidige lees bewerking van het apparaat of een waarde van het apparaat dubbele gebruiken.
+    Werk de `{your Scope ID}`tijdelijke `{your Device ID}`aanduidingen en `{your Primary Key}` met de waarden waar u eerder een notitie van hebt gemaakt. In dit voorbeeld `targetTemperature` u tot nul initialiseren, u de huidige meting van het apparaat of een waarde van de apparaattweeling gebruiken.
 
 1. Als u telemetrie naar uw Azure IoT Central-toepassing wilt verzenden, voegt u de volgende functie toe aan het bestand:
 
@@ -171,7 +171,7 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die he
     }
     ```
 
-1. Als u apparaateigenschappen wilt verzenden naar uw Azure IoT Central-toepassing, voegt u de volgende functie toe aan het bestand:
+1. Als u apparaateigenschappen naar uw Azure IoT Central-toepassing wilt verzenden, voegt u de volgende functie toe aan uw bestand:
 
     ```javascript
     // Send device reported properties.
@@ -181,7 +181,7 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die he
     }
     ```
 
-1. Voeg de volgende code toe om de Beschrijf bare eigenschappen te definiëren en te verwerken waarop uw apparaat reageert:
+1. Als u de schrijfbare eigenschappen wilt definiëren en verwerken waarop uw apparaat reageert, voegt u de volgende code toe:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -222,7 +222,7 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die he
     }
     ```
 
-1. Voeg de volgende code toe om de opdrachten te verwerken die zijn verzonden vanuit de IoT Central-toepassing:
+1. Voeg de volgende code toe om de opdrachten te verwerken die vanuit de IoT Central-toepassing worden verzonden:
 
     ```javascript
     // Handle blink command
@@ -325,43 +325,43 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die he
     });
     ```
 
-## <a name="run-your-nodejs-application"></a>Uw node. js-toepassing uitvoeren
+## <a name="run-your-nodejs-application"></a>De Node.js-toepassing uitvoeren
 
-Voer de volgende opdracht uit in de opdracht regel omgeving om de client toepassing van het apparaat te starten:
+Als u de apparaatclienttoepassing wilt starten, voert u de volgende opdracht uit in de opdrachtregelomgeving:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-U kunt zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en dat telemetrie wordt verzonden:
+U zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en telemetrie gaat verzenden:
 
-![De client toepassing uitvoeren](media/tutorial-connect-device/run-application.png)
+![De clienttoepassing uitvoeren](media/tutorial-connect-device/run-application.png)
 
-Als operator in uw Azure IoT Central-toepassing kunt u het volgende doen:
+Als operator in uw Azure IoT Central-toepassing u:
 
-* De telemetrie weer geven die is verzonden door het apparaat op de pagina **overzicht** :
+* Bekijk de telemetrie die door het apparaat wordt verzonden op de **overzichtspagina:**
 
     ![Telemetrie bekijken](media/tutorial-connect-device/view-telemetry.png)
 
-* Schrijf bare eigenschaps waarden bijwerken op de pagina **Eigenschappen** :
+* Schrijfbare eigenschapswaarden bijwerken op de pagina **Eigenschappen:**
 
     ![Eigenschappen bijwerken](media/tutorial-connect-device/update-properties.png)
 
-    ![Apparaat voor update-eigenschappen](media/tutorial-connect-device/update-properties-device.png)
+    ![Apparaat eigenschappen bijwerken](media/tutorial-connect-device/update-properties-device.png)
 
-* Roep de opdrachten op de pagina **opdrachten** :
+* Roep de opdrachten aan op de pagina **Opdrachten:**
 
-    ![Opdracht Blink aanroepen](media/tutorial-connect-device/call-command.png)
+    ![Oproep knipperen, opdracht](media/tutorial-connect-device/call-command.png)
 
-    ![Apparaat voor knipperend opdracht gesprek](media/tutorial-connect-device/call-command-device.png)
+    ![Opdrachtapparaat voor knipperen bellen](media/tutorial-connect-device/call-command-device.png)
 
-* De apparaateigenschappen weer geven op de pagina **over** :
+* Bekijk de apparaateigenschappen op de pagina **Info:**
 
     ![Eigenschappen weergeven](media/tutorial-connect-device/about-properties.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over apparaatfuncties en het maken van uw eigen Device-sjablonen gaat u verder met de hand leiding:
+Ga voor meer informatie over apparaatcapaciteitsmodellen en het maken van uw eigen apparaatsjablonen verder naar de handleiding:
 
 > [!div class="nextstepaction"]
 > [Een nieuw IoT-apparaattype definiëren](./howto-set-up-template.md)

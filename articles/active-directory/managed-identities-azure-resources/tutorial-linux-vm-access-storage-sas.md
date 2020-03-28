@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: toegang tot Azure Storage met een SAS-referentie-Linux-Azure AD'
+title: 'Zelfstudie: Toegang tot Azure Storage met een SAS-referentie - Linux - Azure AD'
 description: Deze zelfstudie laat zien hoe u een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM) gebruikt om toegang tot Azure Storage te krijgen met behulp van een SAS-referentie in plaats van een toegangssleutel voor een opslagaccount.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74183198"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Zelfstudie: Toegang krijgen tot Azure Storage via SAS-referenties met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM)
@@ -29,7 +29,7 @@ ms.locfileid: "74183198"
 Deze zelfstudie laat zien hoe u referenties voor een gedeelde handtekening (SAS) ophaalt voor Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Een [service-SAS-referentie](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures), om precies te zijn. 
 
 > [!NOTE]
-> De SAS-sleutel die in deze zelf studie wordt gegenereerd, wordt niet beperkt/gebonden aan de virtuele machine.  
+> De SAS-sleutel die in deze zelfstudie wordt gegenereerd, wordt niet beperkt/gekoppeld aan de VM.  
 
 Een service-SAS biedt de mogelijkheid om beperkte toegang tot objecten in een opslagaccount te verlenen voor een beperkte tijdsduur en een specifieke service (in ons geval de blobservice), zonder een toegangssleutel voor het account beschikbaar te stellen. U kunt een SAS-referentie gebruiken zoals u gewend bent bij opslagbewerkingen, bijvoorbeeld bij het gebruik van de Storage-SDK. Voor deze zelfstudie demonstreren we het uploaden en downloaden van een blob met behulp van de opdrachtregelinterface (CLI) van Azure Storage. U leert het volgende:
 
@@ -50,10 +50,10 @@ Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook over
 
 1. Klik op de knop **+/Nieuwe service maken** in de linkerbovenhoek van Azure Portal.
 2. Klik op **Opslag** en vervolgens op **Opslagaccount**. Het paneel Opslagaccount maken wordt weergegeven.
-3. Voer in **Naam** een naam voor het opslagaccount in. U gaat deze gegevens later gebruiken.  
+3. Voer een **naam in** voor het opslagaccount, dat u later zult gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **Create**.
+6. Klik **op Maken**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

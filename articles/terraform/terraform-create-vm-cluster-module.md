@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register'
-description: In deze zelf studie gebruikt u terraform-modules voor het maken van een virtuele Windows-machine cluster in azure
-keywords: Azure devops terraform VM virtuele machine cluster module REGI ster
+title: Zelfstudie - Een Azure VM-cluster maken met Terraform met behulp van het moduleregister
+description: In deze zelfstudie gebruikt u Terraform-modules om een Windows-cluster voor virtuele machines in Azure te maken
+keywords: azure devops terraform vm virtual machine cluster module registry azure devops terraform vm virtual machine cluster module registry azure devops terraform vm virtual machine cluster module registry azure de
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945277"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Zelfstudie: Een Azure VM-cluster maken met Terraform met behulp van het moduleregister
 
 Dit artikel begeleidt u bij het maken van een klein VM-cluster met de [Azure compute module](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2) van Terraform. In deze zelfstudie leert u het volgende: 
 
@@ -103,4 +103,4 @@ Voer `terraform apply` uit om de virtuele machines in te richten in Azure.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Blader door de lijst met Azure terraform-modules](https://registry.terraform.io/modules/Azure)
+> [Blader door de lijst met Azure Terraform-modules](https://registry.terraform.io/modules/Azure)

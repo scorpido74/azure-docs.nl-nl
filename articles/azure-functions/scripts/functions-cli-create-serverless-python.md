@@ -1,22 +1,22 @@
 ---
-title: Een serverloze python-functie-app maken-Azure CLI
-description: Een serverloze python-functie-app maken met behulp van Azure CLI
+title: Een serverloze Python-functie-app maken - Azure CLI
+description: Een serverloze Python-functie-app maken met de Azure CLI
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
 ms.openlocfilehash: c55934c42db6bb7248db107b97fb8998163fae8b
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922628"
 ---
-# <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Een serverloze python-functie-app maken met behulp van Azure CLI
+# <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Een serverloze Python-functie-app maken met Azure CLI
 
 Met dit voorbeeldscript voor Azure Functions maakt u een functie-app die een container vormt voor uw functies. 
 
 >[!NOTE]
->De functie-app die wordt gemaakt, wordt uitgevoerd op python versie 3,6. Python-versie 3,7 wordt ook ondersteund door Azure Functions.
+>De functie-app die is gemaakt, draait op Python-versie 3.6. Python versie 3.7 wordt ook ondersteund door Azure Functions.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,7 +26,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-Met dit script maakt u een Azure-functie-app met behulp van het [verbruiks abonnement](../functions-scale.md#consumption-plan).
+Met dit script wordt een Azure-functie-app gemaakt met behulp van het [verbruiksplan](../functions-scale.md#consumption-plan).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption-python/create-function-app-consumption-python.sh "Create an Azure Function on a Consumption plan")]
 

@@ -1,6 +1,6 @@
 ---
-title: "Zelf studie: query's uitvoeren met SQL in Azure Cosmos DB?"
-description: "Zelf studie: informatie over het opvragen van query's met SQL-query's in Azure Cosmos DB met behulp van Thw-query Playground"
+title: 'Zelfstudie: Hoe query met SQL in Azure Cosmos DB?'
+description: "Zelfstudie: Meer informatie over query's met SQL-query's in Azure Cosmos DB met behulp van thw-queryspeeltuin"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870068"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API
@@ -77,7 +77,7 @@ Op basis van het bovenstaand voorbeelddocument van een familie retourneert de vo
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Results**
+**Resultaten**
 
 ```json
 {
@@ -119,7 +119,7 @@ De volgende query retourneert alle opgegeven namen van kinderen in de familie wa
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
 
-**Results**
+**Resultaten**
 
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 

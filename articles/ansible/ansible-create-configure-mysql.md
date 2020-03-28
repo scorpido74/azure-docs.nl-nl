@@ -1,32 +1,32 @@
 ---
-title: 'Zelf studie: data bases configureren in Azure Database for MySQL met behulp van Ansible'
+title: Zelfstudie - Databases configureren in Azure Database voor MySQL met Ansible
 description: Ontdek hoe u Ansible gebruikt om een Azure Database for MySQL-server te maken en configureren
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247870"
 ---
-# <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Zelf studie: data bases configureren in Azure Database for MySQL met behulp van Ansible
+# <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Zelfstudie: Databases configureren in Azure Database voor MySQL met Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure database for MySQL](/azure/mysql/overview) is een relationele database service op basis van de MySQL Community Edition. Met Azure Database for MySQL kunt u MySQL-data bases in uw web-apps beheren.
+[Azure Database voor MySQL](/azure/mysql/overview) is een relationele databaseservice op basis van de MySQL Community Edition. Met Azure Database voor MySQL u MySQL-databases beheren in uw web-apps.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Een MySql-server maken
-> * Een MySql-data base maken
-> * Een firewall regel configureren zodat een externe app verbinding kan maken met uw server
+> * Een MySql-database maken
+> * Een firewallregel configureren zodat een externe app verbinding kan maken met uw server
 > * Verbinding maken met uw MySql-server vanuit de Azure Cloud Shell
-> * Een query uitvoeren op uw beschik bare MySQL-servers
-> * Alle data bases in de verbonden servers weer geven
+> * Uw beschikbare MySQL-servers opvragen
+> * Alle databases in uw verbonden servers weergeven
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ ms.locfileid: "78247870"
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Met de Playbook-code in deze sectie maakt u een Azure-resource groep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.  
+Met de playbook-code in deze sectie wordt een Azure-brongroep geveld. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.  
 
 Sla het volgende playbook op als `rg.yml`:
 
@@ -51,12 +51,12 @@ Sla het volgende playbook op als `rg.yml`:
         location: "{{ location }}"
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-* Er wordt een resource groep met de naam `myResourceGroup` gemaakt.
-* De resource groep wordt gemaakt op de locatie van de `eastus`:
+* Er wordt `myResourceGroup` een resourcegroep met de naam gemaakt.
+* De resourcegroep wordt `eastus` gemaakt op de locatie:
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook rg.yml
@@ -64,9 +64,9 @@ ansible-playbook rg.yml
 
 ## <a name="create-a-mysql-server-and-database"></a>Een MySQL-server en -database maken
 
-Met de Playbook-code in deze sectie maakt u een MySQL-server en een Azure Database for MySQL-exemplaar. De nieuwe MySQL-server is een algemene doel server van generatie 5 met één vCore en heeft de naam `mysqlserveransible`. Het data base-exemplaar heeft de naam `mysqldbansible`.
+De playbook-code in deze sectie maakt een MySQL-server en een Azure Database voor MySQL-instantie. De nieuwe MySQL server is een Gen 5 Basic `mysqlserveransible`Purpose server met één vCore en heeft de naam . De database-instantie `mysqldbansible`heeft de naam .
 
-Zie [Azure database for MySQL prijs categorieën](/azure/mysql/concepts-pricing-tiers)voor meer informatie over prijs categorieën. 
+Zie [Azure Database for MySQL-prijslagen voor](/azure/mysql/concepts-pricing-tiers)meer informatie over prijsniveaus. 
 
 Sla het volgende playbook op als `mysql_create.yml`:
 
@@ -100,12 +100,12 @@ Sla het volgende playbook op als `mysql_create.yml`:
         name: "{{ mysqldb_name }}"
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-* In de sectie `vars` moet de waarde van `mysqlserver_name` uniek zijn.
-* Vervang in het gedeelte `vars` `<server_admin_password>` door een wacht woord.
+* In `vars` de sectie moet `mysqlserver_name` de waarde van moet uniek zijn.
+* Vervang `vars` in `<server_admin_password>` de sectie een wachtwoord.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook mysql_create.yml
@@ -113,9 +113,9 @@ ansible-playbook mysql_create.yml
 
 ## <a name="configure-a-firewall-rule"></a>Een firewallregel configureren
 
-Met een firewall regel op server niveau kan een externe app verbinding maken met uw server via de Azure MySQL-service Firewall. Voor beelden van externe apps zijn het `mysql` opdracht regel programma en de MySQL Workbench.
+Met een firewallregel op serverniveau kan een externe app verbinding maken met uw server via de Azure MySQL-servicefirewall. Voorbeelden van externe apps `mysql` zijn het opdrachtregelgereedschap en de MySQL Workbench.
 
-Met de Playbook-code in deze sectie maakt u een firewall regel met de naam `extenalaccess` die verbindingen van elk extern IP-adres toestaat. 
+De playbook-code in deze sectie `extenalaccess` maakt een firewallregel met de naam verbindingen vanaf elk extern IP-adres. 
 
 Sla het volgende playbook op als `mysql_firewall.yml`:
 
@@ -141,13 +141,13 @@ Sla het volgende playbook op als `mysql_firewall.yml`:
           endIpAddress: "255.255.255.255"
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-* Vervang `startIpAddress` en `endIpAddress`in het gedeelte variabelen. Gebruik het bereik van IP-adressen die overeenkomen met het bereik van waaruit u verbinding wilt maken.
+* Vervang `startIpAddress` en `endIpAddress`. Gebruik het bereik van IP-adressen dat overeenkomt met het bereik van waaruit u verbinding maakt.
 * Verbindingen met Azure Database voor MySQL communiceren via poort 3306. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 3306 mogelijk niet toegestaan. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 3306 openstelt.
-* De Playbook maakt gebruik van de module `azure_rm_resource`, waarmee de REST API direct kan worden gebruikt.
+* Het playbook `azure_rm_resource` maakt gebruik van de module, die direct gebruik van de REST API mogelijk maakt.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook mysql_firewall.yml
@@ -159,7 +159,7 @@ In deze sectie gebruikt u de Azure Cloud Shell om verbinding te maken met de ser
 
 1. Open shell.azure.com door hieronder te selecteren.
 
-   [![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+   [![Start insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
 
 1. Voer de volgende code in:
 
@@ -167,13 +167,13 @@ In deze sectie gebruikt u de Azure Cloud Shell om verbinding te maken met de ser
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
-1. Voer bij de prompt de volgende opdracht in om een query uit te voeren op de server status:
+1. Voer bij de prompt de volgende opdracht in om de serverstatus op te vragen:
 
     ```sql
     mysql> status
     ```
     
-    Als alles goed gaat, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+    Als alles goed gaat, ziet u uitvoer vergelijkbaar met de volgende resultaten:
     
     ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
@@ -215,9 +215,9 @@ In deze sectie gebruikt u de Azure Cloud Shell om verbinding te maken met de ser
     --------------
     ```
     
-## <a name="query-mysql-servers"></a>Een query uitvoeren op MySQL-servers
+## <a name="query-mysql-servers"></a>MySQL-servers query
 
-Met de Playbook-code in deze sectie wordt een query uitgevoerd op MySQL-servers in `myResourceGroup` en worden de data bases op de gevonden servers weer gegeven.
+De playbook-code in deze sectie `myResourceGroup` query's MySQL servers in en geeft een lijst van de databases op de gevonden servers.
 
 Sla het volgende playbook op als `mysql_query.yml`:
 
@@ -247,13 +247,13 @@ Sla het volgende playbook op als `mysql_query.yml`:
         var: mysqldatabasefacts
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook mysql_query.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```json
 "servers": [
@@ -278,7 +278,7 @@ Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volg
 ]
 ```
 
-U ziet ook de volgende uitvoer voor de MySQL-Data Base:
+U ziet ook de volgende uitvoer voor de MySQL-database:
 
 ```json
 "databases": [
@@ -315,7 +315,7 @@ U ziet ook de volgende uitvoer voor de MySQL-Data Base:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
 Sla het volgende playbook op als `cleanup.yml`:
 
@@ -330,7 +330,7 @@ Sla het volgende playbook op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

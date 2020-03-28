@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67176627"
 ---
 1. Navigeer naar [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) en meld u aan met de referenties voor uw Google-account. 
@@ -20,7 +20,7 @@ ms.locfileid: "67176627"
    
     ![Nieuw project maken](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Geef bij **Projectnaam** een naam op voor het project en klik op **Maken**.
-4. Selecteer de knop **waarschuwingen** op de werkbalk en selecteer uw project in de lijst. U ziet het dashboard voor uw project. U kunt ook rechtstreeks naar het dashboard navigeren met behulp van de URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
+4. Selecteer de knop **waarschuwingen** op de werkbalk en selecteer uw project in de lijst. U ziet het dashboard voor uw project. U kunt ook rechtstreeks naar het dashboard gaan met behulp van de URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![Uw project selecteren in waarschuwingen](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Noteer het **projectnummer** dat wordt vermeld op de tegel **Projectgegevens** van het dashboard. 
@@ -51,5 +51,5 @@ ms.locfileid: "67176627"
 
     ![API-sleutel kopiëren](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Deze API-sleutelwaarde wordt door Azure gebruikt om zich bij GCM te verifiëren en om namens uw app pushmeldingen te verzenden. Ga terug naar het projectdashboard, gebruikt u de URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
+    Deze API-sleutelwaarde wordt door Azure gebruikt om zich bij GCM te verifiëren en om namens uw app pushmeldingen te verzenden. Als u terug wilt naar het dashboard van het project, gebruikt u deze URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

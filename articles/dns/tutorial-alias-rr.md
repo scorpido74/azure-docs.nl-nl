@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een alias record maken om te verwijzen naar een bron record in een zone'
+title: 'Zelfstudie: Een aliasrecord maken om te verwijzen naar een resourcerecord in een zone'
 titleSuffix: Azure DNS
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze verwijst naar een resourcerecord in de zone.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939253"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Zelfstudie: Een aliasrecord maken dat naar een resourcerecord voor een zone verwijst
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 > * De aliasrecord testen.
 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
@@ -41,15 +41,15 @@ Een aliasrecord maken dat verwijst naar een resourcerecord in de zone.
 ### <a name="create-the-target-resource-record"></a>De doelresourcerecord maken
 1. Selecteer uw Azure DNS-zone om de zone te openen.
 2. Selecteer **Recordset**.
-3. Typ in het tekstvak **Naam** **server**.
+3. Typ in het tekstvak **Naam****server**.
 4. Selecteer voor het **Type** de optie **A**.
-5. Typ in het tekstvak **IP-ADRES** **10.10.10.10**.
+5. Typ in het tekstvak **IP-ADRES****10.10.10.10**.
 6. Selecteer **OK**.
 
 ### <a name="create-the-alias-record"></a>De aliasrecord maken
 1. Selecteer uw Azure DNS-zone om de zone te openen.
 2. Selecteer **Recordset**.
-3. Typ in het tekstvak **Naam** **test**.
+3. Typ in het tekstvak **Naam****test**.
 4. Selecteer voor het **Type** de optie **A**.
 5. Selecteer **Ja** bij het selectievakje **Aliasrecordset**. Selecteer vervolgens de optie **Zonerecordset**.
 6. Selecteer voor de **Zonerecordset** de record **server**.
@@ -57,8 +57,8 @@ Een aliasrecord maken dat verwijst naar een resourcerecord in de zone.
 
 ## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
-1. Start uw favoriete nslookup-hulpprogramma. U kunt ook naar [https://network-tools.com/nslook](https://network-tools.com/nslook) bladeren.
-2. Stel het querytype voor A-records in en zoek **test.\<uw domeinnaam\>** . Het antwoord is **10.10.10.10**.
+1. Start uw favoriete nslookup-hulpprogramma. Een optie is [https://network-tools.com/nslook](https://network-tools.com/nslook)om te bladeren naar .
+2. Stel het querytype voor A-records in en zoek **test.\<uw domeinnaam\>**. Het antwoord is **10.10.10.10**.
 3. Wijzig de A-record van de **server** in de Azure Portal naar **10.11.11.11**.
 4. Wacht een paar minuten en gebruik nslookup daarna opnieuw voor de **test**-record. Het antwoord is **10.11.11.11**.
 

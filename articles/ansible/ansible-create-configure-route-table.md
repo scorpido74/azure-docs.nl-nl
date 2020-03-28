@@ -1,27 +1,27 @@
 ---
-title: Zelf studie-Azure-route tabellen configureren met Ansible
-description: Meer informatie over het maken, beheren en verwijderen van Azure-route tabellen met behulp van Ansible. Meer informatie over het maken en verwijderen van routes.
+title: Zelfstudie - Azure-routetabellen configureren met Ansible
+description: Meer informatie over het maken, beheren en verwijderen van Azure-routetabellen met Ansible. Lees ook hoe u routes maken en verwijderen.
 keywords: ansible, azure, devops, bash, playbook, networking, route, route table
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659794"
 ---
-# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Zelf studie: Azure-route tabellen configureren met behulp van Ansible
+# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Zelfstudie: Azure-routetabellen configureren met Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
-Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en on-premises netwerken. Als u meer controle nodig hebt over de route ring van uw omgeving, kunt u een [route tabel](/azure/virtual-network/virtual-networks-udr-overview)maken. 
+Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en on-premises netwerken. Als u meer controle nodig hebt over de routering van uw omgeving, u een [routetabel maken.](/azure/virtual-network/virtual-networks-udr-overview) 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> Een route tabel maken een virtueel netwerk en subnet verbinden een route tabel koppelen aan een subnet een route tabel loskoppelen van een subnet de koppeling maken en verwijderen routes query a route tabel een route tabel verwijderen
+> Een routetabel maken Een virtueel netwerk maken en een routetabel koppelen aan een subnet Een routetabel loskoppelen van een subnet Routes maken en verwijderen Query een routetabel Een routetabel verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en
 
 ## <a name="create-a-route-table"></a>Een routetabel maken
 
-Met de Playbook-code in deze sectie maakt u een route tabel. Zie [Azure-limieten](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits)voor meer informatie over route tabel limieten. 
+De playbook-code in deze sectie maakt een routetabel. Zie [Azure-limieten](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits)voor informatie over routetabellimieten. 
 
 Sla het volgende playbook op als `route_table_create.yml`:
 
@@ -46,7 +46,7 @@ Sla het volgende playbook op als `route_table_create.yml`:
         resource_group: "{{ resource_group }}"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -54,25 +54,25 @@ ansible-playbook route_table_create.yml
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Een routetabel aan een subnet koppelen
 
-De Playbook-code in deze sectie:
+De playbookcode in deze sectie:
 
-* Hiermee maakt u een virtueel netwerk
-* Hiermee maakt u een subnet in het virtuele netwerk
-* Hiermee wordt een route tabel gekoppeld aan het subnet
+* Een virtueel netwerk maken
+* Maakt een subnet binnen het virtuele netwerk
+* Koppelt een routetabel aan het subnet
 
-Route tabellen zijn niet gekoppeld aan virtuele netwerken. Route tabellen worden in plaats daarvan gekoppeld aan het subnet van een virtueel netwerk.
+Routetabellen zijn niet gekoppeld aan virtuele netwerken. Routetabellen zijn eerder gekoppeld aan het subnet van een virtueel netwerk.
 
-De tabel virtueel netwerk en route moet naast elkaar bestaan op dezelfde Azure-locatie en hetzelfde abonnement.
+De virtuele netwerk- en routetabel moet naast elkaar bestaan in dezelfde Azure-locatie en -abonnement.
 
-Subnetten en route tabellen hebben een een-op-veel-relatie. Een subnet kan worden gedefinieerd zonder gekoppelde route tabel of één route tabel. Route tabellen kunnen worden gekoppeld aan geen, één of een groot aantal subnetten. 
+Subnetten en routetabellen hebben een één-op-één-relatie. Een subnet kan worden gedefinieerd zonder bijbehorende routetabel of één routetabel. Routetabellen kunnen worden gekoppeld aan geen, één of veel subnetten. 
 
-Verkeer van het subnet wordt gerouteerd op basis van:
+Verkeer van het subnet wordt omgeleid op basis van:
 
-- routes die zijn gedefinieerd binnen route tabellen
-- [standaard routes](/azure/virtual-network/virtual-networks-udr-overview#default)
-- routes die worden door gegeven vanuit een on-premises netwerk
+- routes gedefinieerd in routetabellen
+- [standaardroutes](/azure/virtual-network/virtual-networks-udr-overview#default)
+- routes die worden gepropageerd vanuit een on-premises netwerk
 
-Het virtuele netwerk moet zijn verbonden met een virtuele Azure-netwerk gateway. De gateway kan ExpressRoute of VPN zijn als u BGP gebruikt met een VPN-gateway.
+Het virtuele netwerk moet zijn verbonden met een virtuele Azure-netwerkgateway. De gateway kan ExpressRoute zijn, of VPN als het BGP gebruikt met een VPN-gateway.
 
 Sla het volgende playbook op als `route_table_associate.yml`:
 
@@ -103,7 +103,7 @@ Sla het volgende playbook op als `route_table_associate.yml`:
         route_table: "{ route_table_name }"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_table_associate.yml
@@ -111,9 +111,9 @@ ansible-playbook route_table_associate.yml
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Een routetabel ontkoppelen van een subnet
 
-Met de Playbook-code in deze sectie wordt een route tabel van een subnet ontkoppeld.
+De playbookcode in deze sectie scheidt een routetabel van een subnet.
 
-Als u een route tabel wilt ontkoppelen van een subnet, stelt u de `route_table` voor het subnet in op `None`. 
+Wanneer u een routetabel van een subnet `route_table` scheidt, stelt `None`u het subnet in op . 
 
 Sla het volgende playbook op als `route_table_dissociate.yml`:
 
@@ -132,7 +132,7 @@ Sla het volgende playbook op als `route_table_dissociate.yml`:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -140,7 +140,7 @@ ansible-playbook route_table_dissociate.yml
 
 ## <a name="create-a-route"></a>Een route maken
 
-De Playbook-code in deze sectie is een route binnen een route tabel. 
+De playbookcode in deze sectie een route binnen een routetabel. 
 
 Sla het volgende playbook op als `route_create.yml`:
 
@@ -160,12 +160,12 @@ Sla het volgende playbook op als `route_create.yml`:
         route_table_name: "{{ route_table_name }}"
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-* `virtual_network_gateway` is gedefinieerd als `next_hop_type`. Zie [route ring Overview](/azure/virtual-network/virtual-networks-udr-overview)(Engelstalig) voor meer informatie over hoe Azure routes selecteert.
-* `address_prefix` is gedefinieerd als `10.1.0.0/16`. Het voor voegsel kan niet worden gedupliceerd in de route tabel.
+* `virtual_network_gateway`wordt gedefinieerd `next_hop_type`als . Zie [Routeringsoverzicht](/azure/virtual-network/virtual-networks-udr-overview)voor meer informatie over hoe Azure routes selecteert.
+* `address_prefix`wordt gedefinieerd `10.1.0.0/16`als . Het voorvoegsel kan niet worden gedupliceerd in de routetabel.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_create.yml
@@ -173,7 +173,7 @@ ansible-playbook route_create.yml
 
 ## <a name="delete-a-route"></a>Een route verwijderen
 
-Met de Playbook-code in deze sectie wordt een route uit een route tabel verwijderd.
+De playbook-code in deze sectie verwijdert een route uit een routetabel.
 
 Sla het volgende playbook op als `route_delete.yml`:
 
@@ -192,15 +192,15 @@ Sla het volgende playbook op als `route_delete.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_delete.yml
 ```
 
-## <a name="get-route-table-information"></a>Informatie over route tabel ophalen
+## <a name="get-route-table-information"></a>Informatie over routetabel
 
-De Playbook-code in deze sectie maakt gebruik van de Ansible-module `azure_rm_routetable_facts` om informatie over de route tabel op te halen.
+De playbookcode in deze sectie gebruikt `azure_rm_routetable_facts` de Ansible-module om routetabelgegevens op te halen.
 
 Sla het volgende playbook op als `route_table_facts.yml`:
 
@@ -220,7 +220,7 @@ Sla het volgende playbook op als `route_table_facts.yml`:
          var: query.route_tables[0]
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_table_facts.yml
@@ -228,11 +228,11 @@ ansible-playbook route_table_facts.yml
 
 ## <a name="delete-a-route-table"></a>Een routetabel verwijderen
 
-De Playbook-code in deze sectie is een route tabel.
+De playbook code in deze sectie een route tabel.
 
-Wanneer een route tabel wordt verwijderd, worden alle bijbehorende routes ook verwijderd.
+Wanneer een routetabel wordt verwijderd, worden ook alle routes verwijderd.
 
-Een route tabel kan niet worden verwijderd als deze is gekoppeld aan een subnet. Koppel [de route tabel van alle subnets](#dissociate-a-route-table-from-a-subnet) voordat u probeert de route tabel te verwijderen. 
+Een routetabel kan niet worden verwijderd als deze is gekoppeld aan een subnet. [De routetabel scheiden van subnetten](#dissociate-a-route-table-from-a-subnet) voordat u probeert de routetabel te verwijderen. 
 
 Sla het volgende playbook op als `route_table_delete.yml`:
 
@@ -249,7 +249,7 @@ Sla het volgende playbook op als `route_table_delete.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook route_table_delete.yml

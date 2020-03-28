@@ -1,6 +1,6 @@
 ---
 title: Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
-description: Logboek-en metrische gegevens die door Azure-resources zijn gegenereerd, archiveren in een opslag account.
+description: Archiveer logboek- en metrische gegevens die door Azure-bronnen worden gegenereerd naar een opslagaccount.
 author: johnkemnetz
 services: azure-monitor
 ms.topic: tutorial
@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661722"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
@@ -33,19 +33,19 @@ In deze zelfstudie beschrijven we hoe u uw Azure-omgeving configureert voor het 
 > * De bewakingsgegevens in het opslagaccount weergeven
 > * Uw resources opschonen
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gearchiveerd. Daarvoor [volgt u deze stappen](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Abonnementlogboeken naar het opslagaccount doorsturen
 
-U bent nu klaar om uw Azure-omgeving in te stellen zodat bewakingsgegevens worden doorgestuurd naar een opslagaccount. We gaan eerst gegevens op abonnementsniveau (in het Azure-activiteitenlogboek) configureren om deze door te sturen naar het opslagaccount. Het [**Azure-activiteitenlogboek**](../../azure-monitor/platform/platform-logs-overview.md) bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. U kunt ernaar zoeken in Azure Portal om te bepalen *wie* *welke* resources heeft gemaakt, bijgewerkt of verwijderd en *wanneer* dat is gebeurd.
+U bent nu klaar om uw Azure-omgeving in te stellen zodat bewakingsgegevens worden doorgestuurd naar een opslagaccount. We gaan eerst gegevens op abonnementsniveau (in het Azure-activiteitenlogboek) configureren om deze door te sturen naar het opslagaccount. Het [**Azure-activiteitenlogboek**](../../azure-monitor/platform/platform-logs-overview.md) bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. U kunt ernaar zoeken in Azure Portal om te bepalen *wie**welke* resources heeft gemaakt, bijgewerkt of verwijderd en *wanneer* dat is gebeurd.
 
 1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Activiteitenlogboek**.
 
@@ -69,7 +69,7 @@ Bewakingsgegevens uit uw abonnement worden nu doorgestuurd naar het opslagaccoun
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Resourcegegevens doorsturen naar het opslagaccount
 
-Nu gaan we gegevens op resource niveau configureren (resource metrieken en resource Logboeken) om te worden doorgestuurd naar het opslag account door **Diagnostische instellingen voor bronnen**in te stellen.
+Nu configureren we gegevens op resourceniveau (resourcestatistieken en bronlogboeken) die naar het opslagaccount moeten worden doorgestuurd door **diagnostische instellingen**voor resources in te stellen.
 
 1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Diagnostische instellingen**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. Als er geen resources in deze lijst staan, kunt u [een logische app maken](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voordat u verdergaat. Zodoende beschikt u over een resource waarvoor u een diagnostische instelling kunt configureren.
 
@@ -161,7 +161,7 @@ Als u de voorgaande stappen hebt gevolgd, worden gegevens nu doorgestuurd naar u
 
 5. Ga naar het bestand PT1H.json door te klikken in de containers voor resource-id, datum en tijd. Klik op het bestand PT1H.json en op **Downloaden**. Elke PT1H.json-blob bevat een JSON-blob van gebeurtenissen die hebben plaatsgevonden binnen het uur dat is opgegeven in de blob-URL (bijvoorbeeld, h=12). Tijdens het huidige uur worden gebeurtenissen toegevoegd aan het bestand PT1H.json wanneer deze zich voordoen. De minuutwaarde (m=00) is altijd 00 omdat logboekgebeurtenissen worden onderverdeeld in afzonderlijke blobs per uur.
 
-   U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen. Voor resource-Resource Logboeken is de indeling voor de blobs:
+   U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen. Voor bronbronlogboeken is de indeling voor de blobs:
 
    insights-logs-{categorienaam logboek}/resourceId=/{resource-id}/y={jaar als vier cijfers}/m={maand als twee cijfers}/d={dag als twee cijfers}/h={uur als twee cijfers in 24-uurs notatie}/m=00/PT1H.json
 

@@ -1,161 +1,161 @@
 ---
-title: ISO 27001 ASE/SQL-werk belasting blauw druk-voor beeld implementeren
-description: Implementeer stappen van het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk, inclusief de para meters voor de artefact parameter.
+title: Iso 27001 ASE/SQL-workloadblauwvoorbeeld implementeren
+description: Stappen implementeren van het blauwdrukvoorbeeld van de besturingselement -besturingselement voor de besturingselement ISO 27001 App Service Environment/SQL Database met details over parameters voor artefacten.
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922581"
 ---
-# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk implementeren
+# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Het blauwdrukvoorbeeld van de ISO 27001 App Service Environment/SQL Database-workload implementeren
 
-De volgende stappen moeten worden uitgevoerd om de Azure-blauw drukken ISO 27001 App Service Environment/SQL Database werk belasting blauw druk-voor beeld te implementeren:
+Als u het blueprintsample azure blueprints ISO 27001 App Service Environment/SQL Database-workload wilt implementeren, moeten de volgende stappen worden genomen:
 
 > [!div class="checklist"]
-> - Het voor beeld van de [ISO 27001-gedeelde services](../iso27001-shared/index.md) gebruiken
-> - Een nieuwe blauw druk maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
+> - Het blauwdrukvoorbeeld [van ISO 27001 Shared Services](../iso27001-shared/index.md) implementeren
+> - Een nieuwe blauwdruk maken uit het voorbeeld
+> - Uw exemplaar van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
 
-## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het voor beeld van de ISO 27001-gedeelde services gebruiken
+## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het blauwdrukvoorbeeld van ISO 27001 Shared Services implementeren
 
-Voordat dit blauw druk-voor beeld kan worden geïmplementeerd, moet het voor beeld van de [ISO 27001-service](../iso27001-shared/index.md) voor het maken van een blauw druk worden geïmplementeerd op het doel abonnement. Zonder een succes volle implementatie van het voor beeld van de ISO 27001 Shared Services-blauw druk, worden in dit voor beeld van de infra structuur ontbrekende infrastructuur afhankelijkheden en mislukken tijdens de implementatie.
+Voordat dit blueprintvoorbeeld kan worden geïmplementeerd, moet het blauwdrukvoorbeeld [van ISO 27001 Shared Services](../iso27001-shared/index.md) worden geïmplementeerd in het doelabonnement. Zonder een succesvolle implementatie van het blauwdrukvoorbeeld van ISO 27001 Shared Services, mist dit blueprint-voorbeeld afhankelijkheden van de infrastructuur en mislukt deze tijdens de implementatie.
 
 > [!IMPORTANT]
-> Dit blauw druk-voor beeld moet worden toegewezen in hetzelfde abonnement als het voor beeld van de [ISO 27001 Shared Services](../iso27001-shared/index.md) -blauw druk.
+> Dit blauwdrukvoorbeeld moet worden toegewezen in hetzelfde abonnement als het blauwdrukvoorbeeld [van ISO 27001 Shared Services.](../iso27001-shared/index.md)
 
-## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-from-sample"></a>Blauwdruk maken uit voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek de **ISO 27001: ASE/SQL-werk belasting** blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-
-   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de ISO 27001 ASE/SQL-workload blauw druk.
-   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van de ISO 27001-standaard.
+Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken met behulp van het voorbeeld als starter.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer op de pagina **Aan de** slag aan de linkerkant de knop **Maken** onder Een _blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op zoals ' eerste versie gepubliceerd vanuit het ISO 27001-blauw druk-voor beeld. ' Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek het **blueprintsample VOOR ISO 27001: ASE/SQL-workload** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Voer de _basisbeginselen_ van het blauwdrukvoorbeeld in:
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+   - **Blauwdruknaam:** geef een naam op voor uw kopie van het ASE/SQL-blauwdrukvoorbeeld van ISO 27001.
+   - **Definitielocatie:** gebruik de ellips en selecteer de beheergroep om uw exemplaar van het voorbeeld op te slaan.
+
+1. Selecteer het tabblad _Artefacten_ boven aan de pagina of **Volgende: Artefacten** onder aan de pagina.
+
+1. Bekijk de lijst met artefacten die deel uitmaken van het blauwdrukvoorbeeld. Veel artefacten hebben parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het bekijken van het blauwdrukvoorbeeld.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. Het is gemaakt in **de conceptmodus** en moet worden **gepubliceerd** voordat het kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar die wijziging kan het verplaatsen van de ISO 27001-standaard.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw exemplaar van het blauwdrukvoorbeeld te vinden en selecteer deze vervolgens.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Geef op de nieuwe pagina aan de rechterkant een **versie** voor uw exemplaar van het blauwdrukvoorbeeld. Deze eigenschap is handig voor als u later een wijziging aanbrengt. **Geef wijzigingsnotities** op, zoals 'Eerste versie gepubliceerd uit het blauwdrukvoorbeeld van ISO 27001'. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **gepubliceerd,** kan deze worden toegewezen aan een abonnement binnen de beheergroep waaraan het is opgeslagen. Deze stap is waar parameters worden verstrekt om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw exemplaar van het blauwdrukvoorbeeld te vinden en selecteer deze vervolgens.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina met blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
-       Wijzig indien nodig of sluit af.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
+     - **Abonnementen:** selecteer een of meer abonnementen in de beheergroep waarop u uw exemplaar van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt voor elk van de parameters een toewijzing gemaakt met behulp van de ingevoerde parameters.
+     - **Toewijzingsnaam:** de naam is vooraf ingevuld op basis van de naam van de blauwdruk.
+       Verander indien nodig of laat zoals het is.
+     - **Locatie:** selecteer een gebied waarin de beheerde identiteit moet worden gemaakt. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources voor](../../../../active-directory/managed-identities-azure-resources/overview.md)meer informatie.
+     - **Versie van de blauwdrukdefinitie**: Kies een **gepubliceerde** versie van uw exemplaar van het blauwdrukvoorbeeld.
 
-   - Toewijzing vergren delen
+   - Vergrendelingstoewijzing
 
-     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor blauwdrukvergrendeling voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
+     Laat de _standaardsysteemtoegewezen beheerde_ identiteitoptie.
 
    - Blauwdrukparameters
 
-     De para meters die in deze sectie zijn gedefinieerd, worden door veel van de artefacten in de definitie van de blauw druk gebruikt om consistentie te bieden.
+     De parameters die in deze sectie worden gedefinieerd, worden door veel van de artefacten in de blauwdrukdefinitie gebruikt om consistentie te bieden.
 
-     - **Organisatie naam**: Voer een korte naam in voor uw organisatie. Deze eigenschap wordt voornamelijk gebruikt voor het benoemen van resources.
-     - **Id van het gedeelde service abonnement**: abonnements-id waar de [ISO 27001](../iso27001-shared/index.md) -voor beeld van een blauw druk is toegewezen.
-     - **Standaard voorvoegsel**van het subnet: de CIDR-notatie voor het standaard subnet van het virtuele netwerk.
-       De standaard waarde is _10.1.0.0/16_.
-     - **Werkbelasting locatie**: bepaalt op welke locatie de artefacten worden geïmplementeerd. Niet alle services zijn beschikbaar op alle locaties. Artefacten die dergelijke services implementeren, bieden een parameter optie voor de locatie waarop die artefact moet worden geïmplementeerd.
+     - **Organisatienaam:** Voer een korte naam in voor uw organisatie. Deze eigenschap wordt voornamelijk gebruikt voor het benoemen van resources.
+     - **Gebruikersnaam voor een abonnement voor gedeelde**service : abonnements-id waarbij het blauwdrukvoorbeeld van [ISO 27001 Shared Services](../iso27001-shared/index.md) is toegewezen.
+     - **Standaardsubnetadresvoorvoegsel:** de CIDR-notatie voor het standaardsubnet van het virtuele netwerk.
+       De standaardwaarde is _10.1.0.0/16_.
+     - **Werkbelastinglocatie:** hiermee bepaalt u naar welke locatie de artefacten worden geïmplementeerd. Niet alle services zijn beschikbaar op alle locaties. Artefacten die dergelijke services implementeren, bieden een parameteroptie voor de locatie om dat artefact te implementeren.
 
-   - Artefact parameters
+   - Artefact-parameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
+     De parameters die in deze sectie zijn gedefinieerd, zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters) omdat ze worden gedefinieerd tijdens de toewijzing van de blauwdruk. Zie [Artefact-parameterstabel](#artifact-parameters-table)voor een volledige lijst of artefactparameters en hun beschrijvingen.
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
+1. Zodra alle parameters zijn ingevoerd, selecteert **u Toewijzen** onder aan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van artefacten begint. Implementatie duurt ongeveer een uur. Als u de status van implementatie wilt controleren, opent u de blauwdruktoewijzing.
 
 > [!WARNING]
-> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
+> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis.** Azure-bronnen worden [geprijsd per product.](https://azure.microsoft.com/pricing/) Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten van het uitvoeren van resources die door dit blauwdrukvoorbeeld worden geïmplementeerd, te schatten.
 
-## <a name="artifact-parameters-table"></a>Tabel artefact parameters
+## <a name="artifact-parameters-table"></a>Tabel Artefactparameters
 
-De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
+In de volgende tabel vindt u een lijst met de parameters van het blauwdrukartefact:
 
-|Artefact naam|Type artefact|Parameternaam|Beschrijving|
+|Artefact-naam|Artefacttype|Parameternaam|Beschrijving|
 |-|-|-|-|
-|Log Analytics resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-log-rg` om de resource groep uniek te maken.|
-|Log Analytics resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Serviceniveau|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Locatie|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
-|Netwerk resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-net-rg` om de resource groep uniek te maken.|
-|Netwerk resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Sjabloon netwerk beveiligings groep|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
-|Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Privé-IP van Azure-firewall|Hiermee configureert u het privé IP-adres van de [Azure-firewall](../../../../firewall/overview.md). Moet deel uitmaken van de CIDR-notatie die is gedefinieerd in _ISO 27001: Shared Services_ artefact parameter **Azure firewall subnet adres voorvoegsel**. De standaard waarde is _10.0.4.4_.|
-|Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|ID van Shared Services-abonnement|De waarde die wordt gebruikt om VNET-peering in te scha kelen tussen een werk belasting en gedeelde services.|
-|Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Adres voorvoegsel Virtual Network|De CIDR-notatie voor het virtuele netwerk. De standaard waarde is _10.1.0.0/16_.|
-|Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Adres voorvoegsel van het standaard subnet|De CIDR-notatie voor het standaard subnet van het virtuele netwerk. De standaard waarde is _10.1.0.0/16_.|
-|Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|IP-adres toevoegen|IP-adres van de eerste virtuele machine toevoegen. Deze waarde wordt gebruikt als aangepaste VNET DNS.|
-|Key Vault resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-kv-rg` om de resource groep uniek te maken.|
-|Key Vault resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Key Vault sjabloon|Resource Manager-sjabloon|AAD-object-ID|De AAD-object-id van het account dat toegang moet hebben tot het Key Vault exemplaar. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.|
-|Key Vault sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
-|Key Vault sjabloon|Resource Manager-sjabloon|Key Vault SKU|Hiermee geeft u de SKU op van de Key Vault die is gemaakt. De standaard waarde is _Premium_.|
-|Key Vault sjabloon|Resource Manager-sjabloon|Gebruikers naam van Azure SQL Server beheerder|De gebruikers naam die wordt gebruikt voor toegang tot Azure SQL Server. Moet overeenkomen met dezelfde eigenschaps waarde in **Azure SQL database sjabloon**. De standaard waarde is _SQL-admin-user_.|
-|Azure SQL Database resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-azsql-rg` om de resource groep uniek te maken.|
-|Azure SQL Database resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Gebruikers naam van Azure SQL Server beheerder|Gebruikers naam voor de Azure-SQL Server. Moet overeenkomen met dezelfde eigenschaps waarde in **Key Vault sjabloon**. De standaard waarde is _SQL-admin-user_.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Wacht woord voor Azure SQL Server-beheerder (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` met de para meter voor de naam blauw druk van de **organisatie** .|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Beheerders wachtwoord voor Azure SQL Server (Key Vault geheime naam)|De gebruikers naam van de SQL Server beheerder. Moet overeenkomen met de waarde in **Key Vault sjabloon** eigenschap **Azure SQL Server gebruikers naam**van de beheerder.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|AAD-beheer object-ID|AAD-object-ID van de gebruiker die wordt toegewezen als een Active Directory beheerder. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.|
-|Azure SQL Database sjabloon|Resource Manager-sjabloon|Aanmelding AAD-beheerder|Op dit moment kunnen micro soft-accounts (zoals live.com of outlook.com) niet als beheerder worden ingesteld. Alleen gebruikers en beveiligings groepen in uw organisatie kunnen als beheerder worden ingesteld. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Kopieer de _gebruikers naam_op de pagina _gebruikers profiel_ .|
-|App Service Environment resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-ase-rg` om de resource groep uniek te maken.|
-|App Service Environment resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|App Service Environment sjabloon|Resource Manager-sjabloon|Domeinnaam|De naam van de Active Directory gemaakt door het voor beeld. De standaard waarde is _contoso.com_.|
-|App Service Environment sjabloon|Resource Manager-sjabloon|Locatie van ASE|App Service Environment locatie. De standaard waarde is _VS-West 2_.|
-|App Service Environment sjabloon|Resource Manager-sjabloon|Bewaar periode Application Gateway logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
+|Logboekanalysebrongroep|Resourcegroep|Name|**Vergrendeld** - Hiermee wordt de naam `-workload-log-rg` van de **organisatie** gekoppeld om de resourcegroep uniek te maken.|
+|Logboekanalysebrongroep|Resourcegroep|Locatie|**Vergrendeld** - Gebruikt de parameter blueprint.|
+|Sjabloon Logboekanalyse|Resource Manager-sjabloon|Servicelaag|Hiermee stelt u de laag van de werkruimte Log Analytics in. Standaardwaarde is _Pernode_.|
+|Sjabloon Logboekanalyse|Resource Manager-sjabloon|Logboekbehoud in dagen|Gegevensbewaring in dagen. Standaardwaarde is _365_.|
+|Sjabloon Logboekanalyse|Resource Manager-sjabloon|Locatie|Regio die wordt gebruikt voor het maken van de werkruimte Log Analytics. Standaardwaarde is _West US 2_.|
+|Netwerkbrongroep|Resourcegroep|Name|**Vergrendeld** - Hiermee wordt de naam `-workload-net-rg` van de **organisatie** gekoppeld om de resourcegroep uniek te maken.|
+|Netwerkbrongroep|Resourcegroep|Locatie|**Vergrendeld** - Gebruikt de parameter blueprint.|
+|Sjabloon netwerkbeveiligingsgroep|Resource Manager-sjabloon|Logboekbehoud in dagen|Gegevensbewaring in dagen. Standaardwaarde is _365_.|
+|Sjabloon virtuele netwerk- en routetabel|Resource Manager-sjabloon|Privé-IP voor Azure-firewall|Hiermee configureert u het privé-IP van de [Azure-firewall](../../../../firewall/overview.md). Moet deel uitmaken van het CIDR-notatie dat is gedefinieerd in _ISO 27001:_ **Subnet-voorvoegsel azure firewall-artefactvoorvoegsel**van gedeelde services. De standaardwaarde is _10.0.4.4_.|
+|Sjabloon virtuele netwerk- en routetabel|Resource Manager-sjabloon|Abonnements-id voor gedeelde services|Waarde die wordt gebruikt om VNET-peering tussen een workload en gedeelde services mogelijk te maken.|
+|Sjabloon virtuele netwerk- en routetabel|Resource Manager-sjabloon|Voorvoegsel voor virtueel netwerkadres|De CIDR-notatie voor het virtuele netwerk. De standaardwaarde is _10.1.0.0/16_.|
+|Sjabloon virtuele netwerk- en routetabel|Resource Manager-sjabloon|Standaardsubnetadresvoorvoegsel|De CIDR-notatie voor het standaardsubnet van het virtuele netwerk. De standaardwaarde is _10.1.0.0/16_.|
+|Sjabloon virtuele netwerk- en routetabel|Resource Manager-sjabloon|VOEGT IP-adres toe|IP-adres van de eerste ADDS VM. Deze waarde wordt gebruikt als aangepaste VNET DNS.|
+|Key Vault-brongroep|Resourcegroep|Name|**Vergrendeld** - Hiermee wordt de naam `-workload-kv-rg` van de **organisatie** gekoppeld om de resourcegroep uniek te maken.|
+|Key Vault-brongroep|Resourcegroep|Locatie|**Vergrendeld** - Gebruikt de parameter blueprint.|
+|Sjabloon Sleutelkluis|Resource Manager-sjabloon|AAD-object-id|De AAD-object-id van het account waarvoor toegang tot de instantie Key Vault vereist is. Geen standaardwaarde en kan niet leeg worden gelaten. Als u deze waarde wilt vinden vanuit de Azure-portal, zoekt en selecteert u 'Gebruikers' onder _Services._ Gebruik het vak _Naam_ om te filteren op de accountnaam en selecteer dat account. Selecteer op de pagina _Gebruikersprofiel_ het pictogram 'Klik om te kopiëren' naast de _object-id._|
+|Sjabloon Sleutelkluis|Resource Manager-sjabloon|Logboekbehoud in dagen|Gegevensbewaring in dagen. Standaardwaarde is _365_.|
+|Sjabloon Sleutelkluis|Resource Manager-sjabloon|Key Vault SKU|Hiermee geeft u de SKU op van de sleutelkluis die is gemaakt. Standaardwaarde is _Premium_.|
+|Sjabloon Sleutelkluis|Resource Manager-sjabloon|Gebruikersnaam Azure SQL Server-beheerder|De gebruikersnaam die wordt gebruikt om toegang te krijgen tot Azure SQL Server. Moet overeenkomen met dezelfde eigenschapswaarde in **azure SQL Database-sjabloon**. Standaardwaarde is _sql-admin-user._|
+|Azure SQL Database-brongroep|Resourcegroep|Name|**Vergrendeld** - Hiermee wordt de naam `-workload-azsql-rg` van de **organisatie** gekoppeld om de resourcegroep uniek te maken.|
+|Azure SQL Database-brongroep|Resourcegroep|Locatie|**Vergrendeld** - Gebruikt de parameter blueprint.|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|Gebruikersnaam Azure SQL Server-beheerder|Gebruikersnaam voor de Azure SQL Server. Moet overeenkomen met dezelfde eigenschapswaarde in **de sjabloon Key Vault**. Standaardwaarde is _sql-admin-user._|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|Azure SQL Server-beheerderswachtwoord (Key Vault Resource ID)|De resource-id van de sleutelkluis. Gebruik "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" `{subscriptionId}` en vervang uw `{orgName}` abonnements-id en de parameter **Organiblauwatie.**|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|Azure SQL Server-beheerderswachtwoord (Sleutelkluis geheime naam)|Gebruikersnaam van de SQL Server-beheerder. Moet overeenkomen met de waarde in de **naamname Azure SQL Server-beheerder van** **key Vault-sjabloon.**|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|Logboekbehoud in dagen|Gegevensbewaring in dagen. Standaardwaarde is _365_.|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|AAD-beheerobject-id|AAD-object-id van de gebruiker die wordt toegewezen als Active Directory-beheerder. Geen standaardwaarde en kan niet leeg worden gelaten. Als u deze waarde wilt vinden vanuit de Azure-portal, zoekt en selecteert u 'Gebruikers' onder _Services._ Gebruik het vak _Naam_ om te filteren op de accountnaam en selecteer dat account. Selecteer op de pagina _Gebruikersprofiel_ het pictogram 'Klik om te kopiëren' naast de _object-id._|
+|Azure SQL-databasesjabloon|Resource Manager-sjabloon|Aad-beheerder inloggen|Momenteel kunnen Microsoft-accounts (zoals live.com of outlook.com) niet worden ingesteld als beheerder. Alleen gebruikers en beveiligingsgroepen binnen uw organisatie kunnen als beheerder worden ingesteld. Geen standaardwaarde en kan niet leeg worden gelaten. Als u deze waarde wilt vinden vanuit de Azure-portal, zoekt en selecteert u 'Gebruikers' onder _Services._ Gebruik het vak _Naam_ om te filteren op de accountnaam en selecteer dat account. Kopieer op de pagina _Gebruikersprofiel_ de _gebruikersnaam_.|
+|Resourcegroep App-serviceomgeving|Resourcegroep|Name|**Vergrendeld** - Hiermee wordt de naam `-workload-ase-rg` van de **organisatie** gekoppeld om de resourcegroep uniek te maken.|
+|Resourcegroep App-serviceomgeving|Resourcegroep|Locatie|**Vergrendeld** - Gebruikt de parameter blueprint.|
+|Sjabloon App-serviceomgeving|Resource Manager-sjabloon|Domeinnaam|Naam van de Active Directory die door het voorbeeld is gemaakt. De standaardwaarde is _contoso.com_.|
+|Sjabloon App-serviceomgeving|Resource Manager-sjabloon|ASE-locatie|Locatie van de app-serviceomgeving. Standaardwaarde is _West US 2_.|
+|Sjabloon App-serviceomgeving|Resource Manager-sjabloon|Behoud van logboeken voor toepassingen in dagen|Gegevensbewaring in dagen. Standaardwaarde is _365_.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen voor het implementeren van het voor beeld van de werk belasting van ISO 27001 App Service Environment/SQL Database workload hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over de architectuur en de beheer toewijzing:
+Nu u de stappen hebt bekeken om het blauwdrukvoorbeeld van de ISO 27001 App Service Environment/SQL Database-workload te implementeren, gaat u naar de volgende artikelen voor meer informatie over de architectuur en beheertoewijzing:
 
 > [!div class="nextstepaction"]
-> [Blauw druk voor iso 27001 app service Environment/SQL database werk belasting-overzicht](./index.md)
-> [ISO 27001 app service Environment/SQL database werk belasting blauw druk-beheer](./control-mapping.md)
+> [BLAUWDRUK VAN ISO 27001 App Service Environment/SQL Database workload - Overzicht](./index.md)
+> [ISO 27001 App Service Environment/SQL Database workload blueprint - Control mapping](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).
+- Meer informatie over de [levenscyclus van de blauwdruk](../../concepts/lifecycle.md).
+- Begrijpen hoe [statische en dynamische parameters](../../concepts/parameters.md)te gebruiken.
+- Leer de volgorde van de [blauwdrukvolgorde](../../concepts/sequencing-order.md)aan te passen.
+- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../../concepts/resource-locking.md)
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../../how-to/update-existing-assignments.md).

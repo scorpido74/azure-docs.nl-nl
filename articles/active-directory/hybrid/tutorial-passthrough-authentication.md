@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie:  Één AD-forest naar Azure met behulp van PTA integreren'
+title: 'Zelfstudie: Één AD-forest integreren in Azure met PTA'
 description: Demonstreert hoe u een hybride identiteit instelt met behulp van pass-through-verificatie.
 services: active-directory
 author: billmath
@@ -12,13 +12,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66473005"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Zelfstudie:  Een enkele AD-forest integreren met pass-through-verificatie (PTA)
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Zelfstudie: Één AD-forest integreren met behulp van pass-through-verificatie (PTA)
 
 ![Maken](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -85,8 +85,8 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. Selecteer **Aangepast:  Alleen Windows installeren (geavanceerd)**
-9. Klik op **Volgende**
+8. **Selecteer Aangepast: Windows alleen installeren (geavanceerd)**
+9. Klik **op Volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ## <a name="install-active-directory-prerequisites"></a>Vereisten voor de installatie van Active Directory Domain Services
@@ -223,17 +223,17 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 2. Ga naar **AzureADConnect.msi** en dubbelklik erop.
 3. Selecteer in het welkomstscherm het vakje waarmee u aangeeft akkoord te gaan met de licentievoorwaarden en klik op **Doorgaan**.  
 4. Klik in het scherm Express-instellingen op **Aanpassen**.  
-5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik op **Install**.  
+5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik **op Installeren**.  
 6. Selecteer op het scherm aanmelden van gebruikers **Pass-through-verificatie** en **Eenmalige aanmelding inschakelen** en klik op **Volgende**.</br>
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
-7. Voer in het scherm Verbinding maken met Azure Active Directory de gebruikersnaam en het wachtwoord van de globale beheerder in die eerder is gemaakt en klik op **Volgende**.
+7. Voer in het scherm Verbinding maken met Azure Active Directory de gebruikersnaam en het wachtwoord van de globale beheerder, die eerder is gemaakt, in en klik op **Volgende**.
 2. Klik in het scherm Verbinding maken met uw mappen op **Volgende**.  Selecteer vervolgens **nieuw AD-account maken**, voer de gebruikersnaam en het wachtwoord in voor contoso\Administrator en klik op **OK**.
-3. Klik op **volgende**.
+3. Klik op **Volgende**.
 4. Selecteer op het scherm van de configuratie van aanmelding bij Azure Active Directory **Doorgaan zonder alle UPN-achtervoegsels op geverifieerde domeinen af te stemmen** en klik op **volgende.**
 5. Klik in het scherm Domein- en OE-filteren op **Volgende**.
 6. In het scherm voor het uniek identificeren uw gebruikers, klikt u op **volgende**.
 7. Klik in het scherm Gebruikers en apparaten filteren op **Volgende**.
-8. Klik in het scherm Optionele functies op **Volgende**.
+8. Klik in het scherm Optionele functies op **volgende**.
 9. Voer op de pagina van de referenties voor eenmalige aanmelding contoso\Administrator gebruikersnaam en wachtwoord in en klik op **Volgende.**
 10. Klik in het venster Gereed om te configureren op **Installeren**.
 11. Wanneer de installatie is voltooid, klikt u op **Afsluiten**.
@@ -251,7 +251,7 @@ We gaan nu controleren of de gebruikers die aanwezig waren in onze on-premises a
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1. Ga naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Blader naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.
    ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)
 
@@ -262,4 +262,4 @@ U hebt nu een omgeving met een hybride identiteit ingesteld die u kunt gebruiken
 
 - [Hardware en vereisten](how-to-connect-install-prerequisites.md) 
 - [Aangepaste instellingen](how-to-connect-install-custom.md)
-- [Pass-through-verificatie](how-to-connect-pta.md)
+- [Doorgeefverificatie](how-to-connect-pta.md)

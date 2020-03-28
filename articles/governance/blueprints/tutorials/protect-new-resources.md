@@ -1,62 +1,62 @@
 ---
-title: 'Zelf studie: nieuwe resources beveiligen met vergren delingen'
-description: In deze zelf studie gebruikt u de opties voor het vergren delen van Azure-blauw drukken alleen-lezen en niet verwijderen om nieuwe geïmplementeerde resources te beveiligen.
+title: 'Zelfstudie: Nieuwe bronnen beveiligen met vergrendelingen'
+description: In deze zelfstudie gebruikt u de opties Read Only en Do Not Delete van Azure Blueprints-bronvergrendelingen om nieuw geïmplementeerde resources te beschermen.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327449"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelfstudie: Nieuwe resources beveiligen met Azure Blueprints-bronvergrendelingen
 
-Met Azure-blauw drukken [resource vergrendeling](../concepts/resource-locking.md)kunt u nieuwe geïmplementeerde resources beveiligen tegen onrecht matig gemanipuleerd, zelfs door een account met de rol van _eigenaar_ . U kunt deze beveiliging toevoegen in de blauw drukken definities van resources die zijn gemaakt met een resource manager-sjabloon artefact.
+Met Azure [Blueprints-bronvergrendelingen](../concepts/resource-locking.md)u voorkomen dat nieuw geïmplementeerde resources worden geknoeid, zelfs door een account met de rol _Eigenaar._ U deze bescherming toevoegen aan de blauwdrukdefinities van bronnen die zijn gemaakt door een resourcebeheersjabloonartefact.
 
-In deze zelf studie voert u de volgende stappen uit:
+In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> - Een definitie van een blauw druk maken
-> - De definitie van uw blauw druk markeren als **gepubliceerd**
-> - De definitie van de blauw druk toewijzen aan een bestaand abonnement
-> - De nieuwe resource groep controleren
-> - De blauw druk voor het verwijderen van de vergren delingen opheffen
+> - Een blauwdrukdefinitie maken
+> - Uw blauwdrukdefinitie markeren als **Gepubliceerd**
+> - Uw blauwdrukdefinitie toewijzen aan een bestaand abonnement
+> - De nieuwe resourcegroep inspecteren
+> - De blauwdruk ongedaan maken om de vergrendelingen te verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
 
-## <a name="create-a-blueprint-definition"></a>Een definitie van een blauw druk maken
+## <a name="create-a-blueprint-definition"></a>Een blauwdrukdefinitie maken
 
-Maak eerst de definitie van de blauw druk.
+Maak eerst de blauwdrukdefinitie.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer op de pagina **aan** de slag aan de linkerkant **maken** onder **een blauw druk maken**.
+1. Selecteer op de pagina **Aan de** slag aan de linkerkant de optie **Maken** onder Een **blauwdruk maken**.
 
-1. Zoek het voor beeld van de **lege blauw** druk boven aan de pagina. Selecteer **beginnen met een lege blauw druk**.
+1. Zoek het voorbeeld van de **blauwdruk van de lege blauwdruk** boven aan de pagina. Selecteer **Begin met een lege blauwdruk**.
 
-1. Voer deze informatie in op het tabblad **basis beginselen** :
+1. Voer deze informatie in op het tabblad **Basisbeginselen:**
 
-   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam **Locked-Storage account**.
-   - **Beschrijving blauw druk**: een beschrijving voor de definitie van de blauw druk toevoegen. Gebruiken **voor het testen van de resource vergrendeling op een blauw druk op geïmplementeerde resources**.
-   - **Definitie locatie**: Selecteer de knop met het weglatings teken (...) en selecteer vervolgens de beheer groep of het abonnement waarvoor u de definitie van de blauw druk wilt opslaan.
+   - **Blauwdruknaam:** geef een naam op voor uw kopie van het blauwdrukvoorbeeld. Voor deze zelfstudie gebruiken we de naam **locked-storageaccount**.
+   - **Blauwdrukbeschrijving**: Voeg een beschrijving toe voor de blauwdrukdefinitie. Gebruiken **Voor het testen van blauwdrukbronvergrendeling op geïmplementeerde resources**.
+   - **Definitielocatie**: Selecteer de knop ellips (...) en selecteer vervolgens de beheergroep of het abonnement om uw blauwdrukdefinitie op te slaan.
 
-1. Selecteer het tabblad **artefacten** boven aan de pagina of selecteer **volgende: artefacten** aan de onderkant van de pagina.
+1. Selecteer het tabblad **Artefacten** boven aan de pagina of selecteer **Volgende: artefacten** onder aan de pagina.
 
-1. Een resource groep toevoegen op het abonnements niveau:
-   1. Selecteer de rij **artefact toevoegen** onder **abonnement**.
-   1. Selecteer **resource groep** onder **Type artefact**.
-   1. Stel de **weergave naam artefact** in op **RGtoLock**.
-   1. Laat de vakken naam en **locatie** van **resource groep** leeg, maar zorg ervoor dat het selectie vakje is ingeschakeld op elke eigenschap om deze **dynamische para meters**te maken.
-   1. Selecteer **toevoegen** om het artefact toe te voegen aan de blauw druk.
+1. Een resourcegroep toevoegen op abonnementsniveau:
+   1. Selecteer de rij **Artefact toevoegen** onder **Abonnement**.
+   1. Selecteer **Resourcegroep** onder **artefacttype**.
+   1. Stel de naam van het **artefact-weergave** in op **RGtoLock**.
+   1. Laat de vakken Naam en **locatie resourcegroep** leeg, maar zorg ervoor dat het selectievakje op elke eigenschap is ingeschakeld om ze **dynamische parameters**te maken. **Resource Group Name**
+   1. Selecteer **Toevoegen** om het artefact aan de blauwdruk toe te voegen.
 
-1. Voeg een sjabloon toe onder de resource groep:
-   1. Selecteer de rij **artefact toevoegen** onder de vermelding **RGtoLock** .
-   1. Selecteer **Azure Resource Manager sjabloon** onder **Type artefact**, stel **weergave naam voor artefact** in op **Storage account**en laat de **Beschrijving** leeg.
-   1. Plak op het tabblad **sjabloon** de volgende Resource Manager-sjabloon in het vak editor.
-      Nadat u de sjabloon hebt geplakt, selecteert u **toevoegen** om het artefact toe te voegen aan de blauw druk.
+1. Een sjabloon toevoegen onder de resourcegroep:
+   1. Selecteer de rij **Artefact toevoegen** onder de **RGtoLock-vermelding.**
+   1. Selecteer **Azure Resource Manager-sjabloon** onder **Artefact-type,** stel **de weergavenaam Artefact** in op **StorageAccount**en laat **Beschrijving** leeg.
+   1. Plak op het tabblad **Sjabloon** de volgende sjabloon Resourcebeheer in het editorvak.
+      Nadat u in de sjabloon hebt geplakt, selecteert u **Toevoegen** om het artefact aan de blauwdruk toe te voegen.
 
    ```json
    {
@@ -100,132 +100,132 @@ Maak eerst de definitie van de blauw druk.
    }
    ```
 
-1. Selecteer **concept opslaan** onder aan de pagina.
+1. Selecteer **Concept opslaan** onder aan de pagina.
 
-Met deze stap maakt u de blauw druk-definitie in de geselecteerde beheer groep of dit abonnement.
+Met deze stap wordt de blauwdrukdefinitie gemaakt in de geselecteerde beheergroep of -abonnement.
 
-Nadat de waarschuwing voor het opslaan van de **blauw druk is geslaagd** , gaat u naar de volgende stap.
+Nadat de **opgeslagen poortmelding voor de bestandsdefinitie opslaan** is weergegeven, gaat u naar de volgende stap.
 
-## <a name="publish-the-blueprint-definition"></a>De definitie van de blauw druk publiceren
+## <a name="publish-the-blueprint-definition"></a>De blauwdrukdefinitie publiceren
 
-De definitie van uw blauw druk is nu gemaakt in uw omgeving. Deze wordt gemaakt in de **concept** modus en moet worden gepubliceerd voordat deze kan worden toegewezen en geïmplementeerd.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de **afgesloten Storage account** blauw druk te vinden en selecteer deze.
-
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Voer in het deel venster Nieuw rechts **1,0** in als de **versie**. Deze eigenschap is handig als u later een wijziging aanbrengt. Voer **wijzigings notities**in, zoals de **eerste versie die is gepubliceerd voor het vergren delen van op blauw drukken geïmplementeerde resources**. Selecteer vervolgens **publiceren** onder aan de pagina.
-
-Met deze stap kunt u de blauw druk toewijzen aan een abonnement. Wanneer de definitie van de blauw druk is gepubliceerd, kunt u nog steeds wijzigingen aanbrengen. Als u wijzigingen aanbrengt, moet u de definitie publiceren met een nieuwe versie waarde om de verschillen tussen versies van dezelfde blauw druk-definitie bij te houden.
-
-Ga naar de volgende stap nadat de portal-melding voor het publiceren van de **blauw druk is voltooid** weer gegeven.
-
-## <a name="assign-the-blueprint-definition"></a>De definitie van de blauw druk toewijzen
-
-Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aan een abonnement binnen de beheer groep waar u het hebt opgeslagen. In deze stap geeft u para meters op om elke implementatie van de definitie van de blauw druk uniek te maken.
+Uw blauwdrukdefinitie is nu gemaakt in uw omgeving. Het is gemaakt in **de conceptmodus** en moet worden gepubliceerd voordat het kan worden toegewezen en geïmplementeerd.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de **afgesloten Storage account** blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om de blauwdrukdefinitie **voor vergrendelde opslagaccount** te vinden en selecteer deze vervolgens.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Voer in het nieuwe deelvenster aan de rechterkant **1.0** in als **versie**. Deze eigenschap is handig als u later een wijziging aanbrengt. Voer **Wijzigingsnotities in,** zoals **Eerste versie die is gepubliceerd voor het vergrendelen van door blueprint geïmplementeerde bronnen**. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+Deze stap maakt het mogelijk om de blauwdruk toe te wijzen aan een abonnement. Nadat de blauwdrukdefinitie is gepubliceerd, u nog steeds wijzigingen aanbrengen. Als u wijzigingen aanbrengt, moet u de definitie publiceren met een nieuwe versiewaarde om verschillen tussen versies van dezelfde blauwdrukdefinitie bij te houden.
 
-   - **Basisinstellingen**
+Nadat de **publicatieblauwdrukdefinitie is opgevolgd,** gaat u naar de volgende stap.
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waar u de definitie van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er voor elk abonnement een toewijzing gemaakt met behulp van de para meters die u invoert.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk. We willen dat deze toewijzing de vergren deling van de nieuwe resource groep aangeeft. Wijzig daarom de naam van de toewijzing in **Assignment-Locked-Storage account-TestingBPLocks**.
-     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-       Voor deze zelf studie selecteert u **VS Oost 2**.
-     - **Definitie van blauw druk-definition**: Selecteer de gepubliceerde versie **1,0** van de blauw druk-definitie.
+## <a name="assign-the-blueprint-definition"></a>De blauwdrukdefinitie toewijzen
 
-   - **Toewijzing vergren delen**
+Nadat de blauwdrukdefinitie is gepubliceerd, u deze toewijzen aan een abonnement binnen de beheergroep waar u het hebt opgeslagen. In deze stap geeft u parameters op om elke implementatie van de blauwdrukdefinitie uniek te maken.
 
-     Selecteer de vergrendelings modus voor **alleen-lezen** blauw drukken. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om de blauwdrukdefinitie **voor vergrendelde opslagaccount** te vinden en selecteer deze vervolgens.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina met blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
+
+   - **Basics**
+
+     - **Abonnementen:** selecteer een of meer abonnementen in de beheergroep waar u uw blauwdrukdefinitie hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt voor elk abonnement een toewijzing gemaakt met behulp van de parameters die u invoert.
+     - **Toewijzingsnaam**: De naam wordt vooraf ingevuld op basis van de naam van de blauwdrukdefinitie. We willen dat deze toewijzing de vergrendeling van de nieuwe resourcegroep vertegenwoordigt, dus wijzig de toewijzingsnaam in **toewijzing-locked-storageaccount-TestingBPLocks**.
+     - **Locatie:** selecteer een gebied waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources voor](../../../active-directory/managed-identities-azure-resources/overview.md)meer informatie.
+       Selecteer voor deze zelfstudie **Oost-VS 2**.
+     - Versie van de **blauwdrukdefinitie**: Selecteer de gepubliceerde versie **1.0** van de blauwdrukdefinitie.
+
+   - **Vergrendelingstoewijzing**
+
+     Selecteer de **modus Alleen-lezen-** blauwdrukvergrendeling. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
 
    - **Beheerde identiteit**
 
-     Gebruik de standaard optie: **toegewezen systeem**. Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
+     Gebruik de standaardoptie: **Systeem toegewezen**. Zie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie .
 
-   - **Artefact parameters**
+   - **Artefact-parameters**
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder ze zijn gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat u ziet in de kolom **waarde** .
+     De parameters die in deze sectie zijn gedefinieerd, zijn van toepassing op het artefact waaronder ze zijn gedefinieerd. Deze parameters zijn [dynamische parameters](../concepts/parameters.md#dynamic-parameters) omdat ze worden gedefinieerd tijdens de toewijzing van de blauwdruk. Stel voor elk artefact de parameterwaarde in op wat u ziet in de kolom **Waarde.**
 
-     |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
+     |Artefact-naam|Artefacttype|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
-     |Resource groep RGtoLock|Resourcegroep|Naam|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |Resource groep RGtoLock|Resourcegroep|Locatie|VS - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
+     |RGtoLock-brongroep|Resourcegroep|Name|Testen BPLocks|Hiermee definieert u de naam van de nieuwe resourcegroep om blauwdrukvergrendelingen op toe te passen.|
+     |RGtoLock-brongroep|Resourcegroep|Locatie|VS - west 2|Hiermee definieert u de locatie van de nieuwe resourcegroep om blauwdrukvergrendelingen op toe te passen.|
+     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag SKU. De standaardwaarde is _Standard_LRS_.|
 
-1. Nadat u alle para meters hebt ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
+1. Nadat u alle parameters hebt ingevoerd, selecteert u **Toewijzen** onder aan de pagina.
 
-Met deze stap implementeert u de gedefinieerde resources en configureert u de geselecteerde **vergrendelings toewijzing**. Het kan tot 30 minuten duren om blauw druk vergrendelingen toe te passen.
+Met deze stap worden de gedefinieerde resources geïmplementeerd en wordt de geselecteerde **vergrendelingstoewijzing geconfigureerd.** Het kan tot 30 minuten duren om blauwdrukvergrendelingen toe te passen.
 
-Nadat de portal-definitie voor het toewijzen van de **blauw druk is geslaagd** , gaat u naar de volgende stap.
+Nadat de **ontwerpblauwdrukdefinitie is geslaagd,** gaat u naar de volgende stap.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Resources controleren die door de toewijzing zijn geïmplementeerd
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Resources inspecteren die door de toewijzing zijn geïmplementeerd
 
-De toewijzing maakt de resource groep _TestingBPLocks_ en het opslag account dat door het Resource Manager-sjabloon artefact wordt geïmplementeerd. De nieuwe resource groep en de geselecteerde vergrendelings status worden weer gegeven op de pagina toewijzings Details.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de Storage account-blauw druk toewijzing met **toewijzings vergrendeling-TestingBPLocks** te vinden en selecteer deze.
-
-   Op deze pagina kunt u zien dat de toewijzing is geslaagd en dat de resources zijn geïmplementeerd met de nieuwe status blauw drukken. Als de toewijzing is bijgewerkt, bevat de vervolg keuzelijst **toewijzings bewerking** Details over de implementatie van elke definitie versie. U kunt de resource groep selecteren om de eigenschappen pagina te openen.
-
-1. Selecteer de resource groep **TestingBPLocks** .
-
-1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant. Selecteer vervolgens het tabblad **roltoewijzingen** .
-
-   Hier zien we dat de toewijzing van de _Storage account-TestingBPLocks_ blauw drukken de rol _eigenaar_ heeft. Deze functie heeft deze rol omdat deze rol is gebruikt om de resource groep te implementeren en te vergren delen.
-
-1. Selecteer het tabblad **toewijzingen weigeren** .
-
-   De toewijzing van de blauw druk heeft een [deny-toewijzing](../../../role-based-access-control/deny-assignments.md) gemaakt voor de geïmplementeerde resource groep om de **alleen-lezen** vergrendelings modus voor blauw drukken af te dwingen. Met de weiger toewijzing kan iemand met de juiste rechten op het tabblad **roltoewijzingen** geen specifieke acties uitvoeren. De weiger toewijzing heeft gevolgen voor _alle principals_.
-
-   Zie [blauw drukken voor resource vergrendeling](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)voor meer informatie over het uitsluiten van een principal van een weigerings toewijzing.
-
-1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
-
-   De toewijzing weigeren voor komt dat alle bewerkingen met de configuratie van de **\*** en de **actie** worden uitgevoerd, maar biedt wel lees toegang door **\*/Read** uit te **sluiten.**
-
-1. Selecteer **TestingBPLocks-Access Control (IAM)** in de breadcrumb Azure Portal. Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam **TestingBPLocks** in om het verwijderen te bevestigen en selecteer vervolgens **verwijderen** onder aan het deel venster.
-
-   De portal melding voor het verwijderen van de **resource groep TestingBPLocks is mislukt** . De fout geeft aan dat hoewel uw account gemachtigd is om de resource groep te verwijderen, de toegang wordt geweigerd door de toewijzing van de blauw druk. Houd er rekening mee dat de **alleen-lezen** modus blauw drukken tijdens het toewijzen van blauw drukken is geselecteerd. Met de vergren deling blauw druk voor komt u dat een account met toestemming, zelfs _eigenaar_, de resource verwijdert. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
-
-Deze stappen laten zien dat onze geïmplementeerde resources nu worden beveiligd met blauw drukken die ongewenste verwijdering voor komen, zelfs van een account dat is gemachtigd om de resources te verwijderen.
-
-## <a name="unassign-the-blueprint"></a>De blauw druk intrekken
-
-De laatste stap bestaat uit het verwijderen van de toewijzing van de definitie van de blauw druk. Als u de toewijzing verwijdert, worden de gekoppelde artefacten niet verwijderd.
+De toewijzing maakt de resourcegroep _TestingBPLocks_ en het opslagaccount dat is geïmplementeerd door het artefact resourcemanager-sjabloon. De nieuwe resourcegroep en de geselecteerde vergrendelingsstatus worden weergegeven op de pagina toewijzingsdetails.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de Storage account-blauw druk toewijzing met **toewijzings vergrendeling-TestingBPLocks** te vinden en selecteer deze.
+1. Selecteer de pagina **Toegewezen blauwdrukken** aan de linkerkant. Gebruik de filters om de blauwdruktoewijzing voor de blauwdruktoewijzing voor de **toewijzing vergrendeld-storageaccount-TestingBPLocks** te vinden en deze vervolgens te selecteren.
 
-1. Selecteer aan de bovenkant van de pagina de optie **blauw** pagina opheffen. Lees de waarschuwing in het bevestigings venster en selecteer **OK**.
+   Op deze pagina kunnen we zien dat de toewijzing is geslaagd en dat de resources zijn geïmplementeerd met de nieuwe status van blauwdrukvergrendeling. Als de toewijzing wordt bijgewerkt, worden in de vervolgkeuzelijst **Toewijzingsbewerking** details weergegeven over de implementatie van elke definitieversie. U de resourcegroep selecteren om de eigenschappenpagina te openen.
 
-   Wanneer de blauw druk-toewijzing wordt verwijderd, worden de blauw druk vergrendelingen ook verwijderd. De resources kunnen opnieuw worden verwijderd door een account met de juiste machtigingen.
+1. Selecteer de brongroep **TestingBPLocks.**
 
-1. Selecteer **resource groepen** in het menu van Azure en selecteer vervolgens **TestingBPLocks**.
+1. Selecteer de pagina **IAM (Access control)** aan de linkerkant. Selecteer vervolgens het tabblad **Toewijzingen van rollen.**
 
-1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant en selecteer vervolgens het tabblad **roltoewijzingen** .
+   Hier zien we dat de _toewijzing-locked-storageaccount-TestingBPLocks_ blauwdruk opdracht heeft de _rol Eigenaar._ Deze rol heeft deze rol omdat deze rol is gebruikt om de resourcegroep te implementeren en te vergrendelen.
 
-De beveiliging voor de resource groep toont aan dat de toewijzing van de blauw druk geen _eigenaars_ toegang meer heeft.
+1. Selecteer het tabblad **Toewijzingen weigeren.**
 
-Ga naar de volgende stap nadat u de portal melding voor het verwijderen van de **blauw druk-toewijzing hebt verwijderd** weer gegeven.
+   De blauwdruktoewijzing heeft een [toewijzing voor weigeren](../../../role-based-access-control/deny-assignments.md) gemaakt in de geïmplementeerde resourcegroep om de modus **Alleen-lezen-blauwdrukvergrendeling** af te dwingen. De toewijzing weigeren voorkomt dat iemand met de juiste rechten op het tabblad **Toewijzingen van rollen** specifieke acties kan uitvoeren. De toewijzing weigeren is van invloed op _alle principals_.
+
+   Zie [blauwdrukken bronvergrendeling](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)voor informatie over het uitsluiten van een principal van een toewijzing voor weigeren.
+
+1. Selecteer de toewijzing weigeren en selecteer de pagina **Geweigerde machtigingen** aan de linkerkant.
+
+   De weigeringstoewijzing voorkomt **\*** alle bewerkingen met de configuratie en **Actie,** maar biedt leestoegang mogelijk door het uitsluiten ** \*/lezen** via **NotActions**.
+
+1. Selecteer in de broodkruimel van de Azure-portal de optie **TestingBPLocks - Access control (IAM)**. Selecteer vervolgens de pagina **Overzicht** aan de linkerkant en vervolgens de knop **Brongroep verwijderen.** Voer de naam **TestingBPLocks** in om de delete te bevestigen en selecteer **Delete** onder aan het deelvenster.
+
+   De portalmelding **TestBPLocks verwijderen van resourcesgroep wordt mislukt.** De fout stelt dat hoewel uw account toestemming heeft om de brongroep te verwijderen, de toegang wordt geweigerd door de blauwdruktoewijzing. Vergeet niet dat we de **lees-alleen-blauwdrukvergrendelingsmodus** hebben geselecteerd tijdens de blauwdruktoewijzing. Het blauwdrukslot voorkomt dat een account met toestemming, zelfs _Eigenaar,_ de bron kan verwijderen. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+
+Deze stappen laten zien dat onze geïmplementeerde resources nu zijn beveiligd met blauwdrukvergrendelingen die ongewenste verwijdering voorkomen, zelfs van een account dat toestemming heeft om de bronnen te verwijderen.
+
+## <a name="unassign-the-blueprint"></a>De blauwdruk ongedaan maken
+
+De laatste stap is het verwijderen van de toewijzing van de blauwdrukdefinitie. Als u de toewijzing verwijdert, worden de bijbehorende artefacten niet verwijderd.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Toegewezen blauwdrukken** aan de linkerkant. Gebruik de filters om de blauwdruktoewijzing voor de blauwdruktoewijzing voor de **toewijzing vergrendeld-storageaccount-TestingBPLocks** te vinden en deze vervolgens te selecteren.
+
+1. Selecteer **Blauwdruk ongedaan maken** boven aan de pagina. Lees de waarschuwing in het bevestigingsdialoogvenster en selecteer **OK**.
+
+   Wanneer de blauwdruktoewijzing wordt verwijderd, worden ook de blauwdrukvergrendelingen verwijderd. De bronnen kunnen opnieuw worden verwijderd door een account met de juiste machtigingen.
+
+1. Selecteer **Resourcegroepen** in het Azure-menu en selecteer **Vervolgens TestBPLocks**.
+
+1. Selecteer de pagina **Toegangsbesturingselement (IAM)** aan de linkerkant en selecteer vervolgens het tabblad **Toewijzingen van rollen.**
+
+De beveiliging voor de resourcegroep geeft aan dat de blauwdruktoewijzing geen _toegang tot de eigenaar_ meer heeft.
+
+Nadat de **geslaagde portalmelding voor het verwijderen van** de ontwerpopdracht is weergegeven, gaat u naar de volgende stap.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze zelf studie, verwijdert u deze resources:
+Als u klaar bent met deze zelfstudie, verwijdert u deze bronnen:
 
-- _TestingBPLocks_ van resource groep
-- Definitie van blauw druk _vergrendeld-Storage account_
+- Testen _bplocks van resourcegroep_
+- Blueprint definitie _locked-storageaccount_
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u nieuwe resources die zijn geïmplementeerd met Azure-blauw drukken kunt beveiligen. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
+In deze zelfstudie hebt u geleerd hoe u nieuwe resources beschermen die zijn geïmplementeerd met Azure Blueprints. Ga voor meer informatie over Azure Blueprints verder naar het artikel over de levenscyclus van de blauwdruk.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de levens duur van de blauw druk](../concepts/lifecycle.md)
+> [Meer informatie over de levenscyclus van de blauwdruk](../concepts/lifecycle.md)

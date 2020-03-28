@@ -1,5 +1,5 @@
 ---
-title: Fouten opsporen in een Azure Service Fabric mesh-web-app die lokaal wordt uitgevoerd
+title: Een Azure Service Fabric Mesh-webapp opsporen die lokaal wordt uitgevoerd
 description: In deze zelfstudie gaat u fouten opsporen in een Azure Service Fabric Mesh-webtoepassing die op uw lokale cluster wordt uitgevoerd.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494956"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Zelfstudie: Fouten opsporen in een Service Fabric Mesh-toepassing die in uw lokale ontwikkelcluster wordt uitgevoerd
@@ -71,7 +71,7 @@ Maak de uitvoering van uw foutopsporing (F5) veel sneller door de instructies in
 
 Er is momenteel een probleem waardoor `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` niet kan worden aangeroepen omdat er geen verbinding met de service kan worden gemaakt. Dit kan zich voordoen wanneer het IP-adres van de host verandert. De oplossing:
 
-1. Verwijder de app uit het lokale cluster (in Visual Studio, **Build** > **Oplossing opschonen**).
+1. Verwijder de app uit het lokale cluster (in Visual Studio, **Build** > **Clean Solution).**
 2. Selecteer uit de Local Cluster Manager van Service Fabric, **Lokaal cluster stoppen** en vervolgens **Lokaal cluster starten**.
 3. Implementeer de app opnieuw (in Visual Studio **F5**).
 

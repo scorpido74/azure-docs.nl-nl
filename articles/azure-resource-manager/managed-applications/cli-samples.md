@@ -1,26 +1,26 @@
 ---
 title: Azure CLI-voorbeelden
-description: Biedt Azure CLI-voorbeeld scripts die u kunt gebruiken bij het werken met Azure Managed Applications.
+description: Biedt Azure CLI-voorbeeldscripts die u gebruiken bij het werken met Azure Managed Applications.
 author: tfitzmac
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: f86eabc30114a3643f5d39297567411e88018378
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649881"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-voorbeelden
 
-De volgende tabel bevat koppelingen naar bash-scripts voor Azure Managed Applications die gebruikmaken van de Azure CLI.
+In de volgende tabel vindt u koppelingen voor bashscripts voor Azure Managed Applications die de Azure CLI gebruiken.
 
 | | |
 |-|-|
-|**Beheerde toepassing maken**||
-| [Definitie van beheerde toepassing maken](scripts/managed-application-cli-sample-create-definition.md) | Hiermee maakt u een definitie van een beheerde toepassing in de Service catalogus.  |
-| [Beheerde toepassing implementeren](scripts/managed-application-cli-sample-create-application.md) | Hiermee implementeert u een beheerde toepassing vanuit de Service catalogus.  |
+|**Een beheerde toepassing maken**||
+| [Beheerde toepassingsdefinitie maken](scripts/managed-application-cli-sample-create-definition.md) | Hiermee maakt u een beheerde toepassingsdefinitie in de servicecatalogus.  |
+| [Beheerde toepassing implementeren](scripts/managed-application-cli-sample-create-application.md) | Implementeert een beheerde toepassing uit de servicecatalogus.  |
 | | |
-|**Beheerde resource groep bijwerken**||
-| [Resources in een beheerde resource groep ophalen en de grootte van virtuele machines wijzigen](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Haalt resources van de beheerde resource groep en de grootte van de Vm's. |
+|**Beheerde resourcegroep bijwerken**||
+| [Resources in beheerde resourcegroep en formaat VM's wijzigen](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Hiermee worden resources uit de beheerde resourcegroep opgehaald en wordt het formaat van de VM's opnieuw gebruikt. |

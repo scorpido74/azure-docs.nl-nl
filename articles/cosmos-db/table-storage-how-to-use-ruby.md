@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Table-API en Azure Table Storage gebruiken met ruby
+title: Azure Cosmos DB Table API en Azure Table Storage gebruiken met Ruby
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770882"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Table Storage en de Azure Cosmos DB Table-API gebruiken met Ruby
@@ -56,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 U verkrijgt deze waarden als volgt van een klassiek of Resource Manager-opslagaccount op Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Log in bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar het opslagaccount dat u wilt gebruiken.
 3. Klik in de blade Instellingen aan de rechterkant op **Toegangssleutels**.
 4. In de blade Toegang die wordt weergegeven, ziet u toegangssleutel 1 en toegangssleutel 2. U kunt een van beide gebruiken.
@@ -71,7 +71,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 ```
 
 ## <a name="create-a-table"></a>Een tabel maken
-Het object **Azure::Storage::Table::TableService** biedt u de mogelijkheid te werken met tabellen en entiteiten. U maakt een tabel met de **create_table()** -methode. In het volgende voorbeeld wordt een tabel gemaakt of de fout afgedrukt als hier sprake van is.
+Het object **Azure::Storage::Table::TableService** biedt u de mogelijkheid te werken met tabellen en entiteiten. U maakt een tabel met de **create_table()**-methode. In het volgende voorbeeld wordt een tabel gemaakt of de fout afgedrukt als hier sprake van is.
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -99,7 +99,7 @@ Er zijn meerdere methoden beschikbaar voor het bijwerken van een bestaande entit
 * **insert_or_merge_entity():** werkt een bestaande entiteit bij door deze te vervangen. Als er geen entiteit bestaat, wordt er een nieuwe ingevoegd:
 * **insert_or_replace_entity():** werkt een bestaande entiteit bij door nieuwe eigenschapswaarden in de bestaande entiteit samen te voegen. Als er geen entiteit bestaat, wordt er een nieuwe ingevoegd.
 
-Het volgende voorbeeld laat zien hoe u een entiteit bijwerkt met **update_entity()** :
+Het volgende voorbeeld laat zien hoe u een entiteit bijwerkt met **update_entity()**:
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -107,10 +107,10 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-Voor **update_entity()** en **merge_entity()** geldt dat als de entiteit die u wilt bijwerken niet bestaat, de updatebewerking mislukt. Dus als een entiteit wilt opslaan ongeacht of deze al bestaat, gebruikt u in plaats daarvan **insert_or_replace_entity()** of **insert_or_merge_entity()** .
+Voor **update_entity()** en **merge_entity()** geldt dat als de entiteit die u wilt bijwerken niet bestaat, de updatebewerking mislukt. Dus als een entiteit wilt opslaan ongeacht of deze al bestaat, gebruikt u in plaats daarvan **insert_or_replace_entity()** of **insert_or_merge_entity()**.
 
 ## <a name="work-with-groups-of-entities"></a>Werken met groepen entiteiten
-Soms is het zinvol om meerdere bewerkingen samen in een batch te verzenden om te zorgen dat ze atomisch worden verwerkt door de server. Om dat te realiseren, maakt u eerst een **Batch**-object en gebruikt u vervolgens de **execute_batch()** -methode op **TableService**. In het volgende voorbeeld ziet u hoe u twee entiteiten met RowKey 2 en 3 in een batch kunt verzenden. Dit werkt alleen voor entiteiten met dezelfde PartitionKey.
+Soms is het zinvol om meerdere bewerkingen samen in een batch te verzenden om te zorgen dat ze atomisch worden verwerkt door de server. Om dat te realiseren, maakt u eerst een **Batch**-object en gebruikt u vervolgens de **execute_batch()**-methode op **TableService**. In het volgende voorbeeld ziet u hoe u twee entiteiten met RowKey 2 en 3 in een batch kunt verzenden. Dit werkt alleen voor entiteiten met dezelfde PartitionKey.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -123,7 +123,7 @@ results = azure_table_service.execute_batch(batch)
 ```
 
 ## <a name="query-for-an-entity"></a>Een query uitvoeren voor een entiteit
-Wanneer u een query wilt uitvoeren voor een entiteit in een tabel, gebruikt u de **get_entity()** -methode en geeft u de tabelnaam, **PartitionKey** en **RowKey** door.
+Wanneer u een query wilt uitvoeren voor een entiteit in een tabel, gebruikt u de **get_entity()**-methode en geeft u de tabelnaam, **PartitionKey** en **RowKey** door.
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -131,7 +131,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 ```
 
 ## <a name="query-a-set-of-entities"></a>Een query uitvoeren voor een aantal entiteiten
-Wanneer u een query wilt uitvoeren voor een aantal entiteiten in een tabel, maakt u een query-hash-object en gebruikt u de **query_entities()** -methode. Het volgende voorbeeld ziet u hoe u alle entiteiten kunt ophalen met dezelfde **PartitionKey**:
+Wanneer u een query wilt uitvoeren voor een aantal entiteiten in een tabel, maakt u een query-hash-object en gebruikt u de **query_entities()**-methode. Het volgende voorbeeld ziet u hoe u alle entiteiten kunt ophalen met dezelfde **PartitionKey**:
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -153,7 +153,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Een entiteit verwijderen
-U verwijdert een entiteit met de methode **delete_entity()** . Geef de naam van de tabel door die de entiteit, de PartitionKey en de RowKey van de entiteit bevat.
+U verwijdert een entiteit met de methode **delete_entity()**. Geef de naam van de tabel door die de entiteit, de PartitionKey en de RowKey van de entiteit bevat.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")

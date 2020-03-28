@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
 ms.openlocfilehash: 63725d55e2b2935ec6a899789249259b096865c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67175730"
 ---
 ### <a name="access-tokens"></a>Toegangstokens
 
-Toegangstokens zijn een meer robuuste methode voor verificatie met Azure ruimtelijke ankers. Met name bij het voorbereiden van uw toepassing voor een productie-implementatie. De samenvatting van deze benadering is voor het instellen van een back-end-service die uw clienttoepassing kan veilig worden geverifieerd met. Uw back-end-service-interfaces met AAD tijdens runtime en de Azure ruimtelijke ankers Secure Token Service om aan te vragen een toegangstoken. Dit token wordt vervolgens geleverd aan de clienttoepassing en in de SDK gebruikt voor verificatie met Azure ruimtelijke ankers.
+Access Tokens zijn een robuustere methode om te verifiëren met Azure Spatial Anchors. Vooral als u uw aanvraag voorbereidt op een productie-implementatie. De samenvatting van deze aanpak is het opzetten van een back-endservice waarmee uw clienttoepassing veilig kan verifiëren. Uw back-endservice interfaces met AAD tijdens runtime en met de Azure Spatial Anchors Secure Token Service om een Access Token aan te vragen. Dit token wordt vervolgens geleverd aan de clienttoepassing en in de SDK gebruikt om te verifiëren met Azure Spatial Anchors.

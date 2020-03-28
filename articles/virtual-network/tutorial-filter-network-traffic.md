@@ -1,7 +1,7 @@
 ---
 title: Netwerkverkeer filteren - zelfstudie - Azure Portal
 titlesuffix: Azure Virtual Network
-description: In deze zelf studie leert u hoe u netwerk verkeer kunt filteren op een subnet, met een netwerk beveiligings groep, met behulp van de Azure Portal.
+description: In deze zelfstudie leert u hoe u netwerkverkeer filtert naar een subnet, met een netwerkbeveiligingsgroep, met behulp van de Azure-portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75350140"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelf studie: netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelfstudie: Netwerkverkeer filteren met een netwerkbeveiligingsgroep met behulp van de Azure-portal
 
 U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtueel netwerk filteren met een netwerkbeveiligingsgroep. Netwerkbeveiligingsgroepen bevatten beveiligingsregels die netwerkverkeer filteren op IP-adres, poort en protocol. Beveiligingsregels worden toegepast op resources die zijn geïmplementeerd in een subnet. In deze zelfstudie leert u het volgende:
 
@@ -33,13 +33,13 @@ U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtue
 
 U kunt deze zelfstudie desgewenst voltooien met behulp van de [Azure CLI](tutorial-filter-network-traffic-cli.md) of [PowerShell](tutorial-filter-network-traffic-powershell.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. 
 2. Selecteer **Netwerken** en selecteer vervolgens **Virtueel netwerk**.
@@ -51,7 +51,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     | Adresruimte           | 10.0.0.0/16                                        |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Nieuwe maken** en voer *myResourceGroup* in. |
-    | Locatie                | Selecteer **US - oost**.                                |
+    | Locatie                | Selecteer **Oost-VS**.                                |
     | Subnet - naam            | mySubnet                                           |
     | Subnet - adresbereik  | 10.0.0.0/24                                        |
 
@@ -111,7 +111,7 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
 
     | Instelling                 | Waarde                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Bestemming             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgWebServers** als **Toepassingsbeveiligingsgroep**.  |
+    | Doel             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgWebServers** als **Toepassingsbeveiligingsgroep**.  |
     | Poortbereiken van doel | Voer 80,443 in                                                                                                    |
     | Protocol                | Selecteer TCP                                                                                                      |
     | Name                    | Allow-Web-All                                                                                                   |
@@ -120,7 +120,7 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
 
     | Instelling                 | Waarde                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Bestemming             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgMgmtServers** als **Toepassingsbeveiligingsgroep**. |
+    | Doel             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgMgmtServers** als **Toepassingsbeveiligingsgroep**. |
     | Poortbereiken van doel | Voer 3389 in                                                                                                      |
     | Protocol                | Selecteer TCP                                                                                                      |
     | Prioriteit                | Voer 110 in                                                                                                       |
@@ -140,29 +140,29 @@ Maak twee VM’s in het virtuele netwerk.
 
 1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. 
 2. Selecteer **Compute** en vervolgens **Windows Server 2016 Datacenter**.
-3. Voer de volgende informatie in of Selecteer deze, en accepteer de standaard waarden voor de overige instellingen:
+3. Voer de volgende gegevens in of selecteer deze en accepteer de standaardinstellingen voor de overige instellingen:
 
     |Instelling|Waarde|
     |---|---|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
     |Name|myVmWeb|
-    |Locatie| Selecteer **US - oost**.|
+    |Locatie| Selecteer **Oost-VS**.|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
 
    
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
-5. Selecteer onder **netwerken**de volgende waarden, en accepteer de resterende standaard waarden:
+5. Selecteer **onder Netwerken**de volgende waarden en accepteer de resterende standaardwaarden:
 
     |Instelling|Waarde|
     |---|---|
     |Virtueel netwerk |Selecteer **myVirtualNetwork**.|
-    |NIC-netwerk beveiligings groep |Selecteer **Geen**.|
+    |NIC-netwerkbeveiligingsgroep |Selecteer **Geen**.|
   
 
-6. Selecteer onder, links **bekijken + maken** de optie **maken** om VM-implementatie te starten.
+6. Selecteer **Controleren + Maken** onder, linkerhoek, selecteer **Maken** om vm-implementatie te starten.
 
 ### <a name="create-the-second-vm"></a>De tweede VM maken
 
@@ -183,7 +183,7 @@ Toen de VM’s werden gemaakt in de portal, werd voor elke VM ook een netwerkint
 
 1. Maak verbinding met de VM *myVmMgmt*. Voer in het zoekvak boven aan de portal *myVmMgmt* in. Wanneer **myVmMgmt** wordt weergegeven in de zoekresultaten, selecteert u deze. Selecteer de knop **Verbinding maken**.
 2. Selecteer **RDP-bestand downloaden**.
-3. Open het gedownloade RDP-bestand en selecteer **Verbinding maken**. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **Meer opties** en vervolgens **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM.
+3. Open het gedownloade rdp-bestand en selecteer **Verbinding maken**. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **Meer opties** en vervolgens **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM.
 4. Selecteer **OK**.
 5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
 
@@ -217,7 +217,7 @@ U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijdere
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
+3. Typ *myResourceGroup* voor **TYPE DE NAAM VAN DE RESOURCEGROEP:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

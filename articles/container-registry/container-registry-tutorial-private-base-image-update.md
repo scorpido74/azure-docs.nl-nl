@@ -1,56 +1,56 @@
 ---
-title: Zelf studie-installatie kopie activeren door de installatie kopie van de persoonlijke basis-update
-description: In deze zelf studie configureert u een Azure Container Registry taak voor het automatisch activeren van container installatie kopieën in de Cloud wanneer een basis installatie kopie in een ander persoonlijk Azure container Registry wordt bijgewerkt.
+title: Zelfstudie - Image build activeren door een update van privébasisafbeeldingen
+description: In deze zelfstudie configureert u een Azure Container Registry Task om automatisch containerimagebuilds in de cloud te activeren wanneer een basisafbeelding in een ander privé-Azure-containerregister wordt bijgewerkt.
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77617700"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Zelf studie: builds van container installatie kopieën automatiseren wanneer een basis installatie kopie wordt bijgewerkt in een ander persoonlijk container register 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Zelfstudie: Automatiseer containerimagebuilds wanneer een basisafbeelding wordt bijgewerkt in een ander register van privécontainers 
 
-ACR-taken bieden ondersteuning voor geautomatiseerde installatie kopieën wanneer de [basis installatie kopie](container-registry-tasks-base-images.md)van een container wordt bijgewerkt, bijvoorbeeld wanneer u het besturings systeem of toepassings raamwerk bijwerkt in een van de basis installatie kopieën. 
+ACR Tasks ondersteunt geautomatiseerde imagebuilds wanneer de basisafbeelding van een container [wordt bijgewerkt,](container-registry-tasks-base-images.md)bijvoorbeeld wanneer u het besturingssysteem of toepassingskader patcht in een van uw basisafbeeldingen. 
 
-In deze zelf studie leert u hoe u een ACR-taak maakt waarmee een build in de Cloud wordt geactiveerd wanneer de basis installatie kopie van een container naar een ander Azure container Registry wordt gepusht. U kunt ook een zelf studie voor het maken van een ACR-taak waarmee een installatie kopie wordt gemaakt, wordt geactiveerd wanneer een basis installatie kopie naar [hetzelfde Azure container Registry](container-registry-tutorial-base-image-update.md)wordt gepusht.
+In deze zelfstudie leert u hoe u een ACR-taak maakt die een build in de cloud activeert wanneer de basisafbeelding van een container naar een ander Azure-containerregister wordt gepusht. U ook een zelfstudie proberen om een ACR-taak te maken die een afbeeldingsbuild activeert wanneer een basisafbeelding naar [hetzelfde Azure-containerregister](container-registry-tutorial-base-image-update.md)wordt gepusht.
 
-In deze zelf studie:
+In deze zelfstudie hebt u het volgende gedaan:
 
 > [!div class="checklist"]
-> * De basis installatie kopie bouwen in een basis register
-> * Een taak voor het bouwen van een toepassing maken in een ander REGI ster om de basis installatie kopie bij te houden 
+> * De basisafbeelding in een basisregister bouwen
+> * Een taak voor het bouwen van toepassingen maken in een ander register om de basisafbeelding bij te houden 
 > * De basisinstallatiekopie bijwerken om een taak voor een toepassingsinstallatiekopie bij te werken
 > * De geactiveerde taak weergeven
 > * De bijgewerkte toepassingsinstallatiekopie controleren
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u de Azure CLI lokaal wilt gebruiken, moet de Azure CLI-versie **2.0.68** of hoger zijn geïnstalleerd. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren][azure-cli].
+Als u de Azure CLI lokaal wilt gebruiken, moet u de Azure CLI-versie **2.0.68** of hoger hebben geïnstalleerd. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren][azure-cli].
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="complete-the-previous-tutorials"></a>De vorige zelfstudies voltooien
 
-In deze zelfstudie wordt ervan uitgegaan dat u de stappen van de eerste twee zelfstudies in de serie al hebt uitgevoerd:
+In deze zelfstudie wordt ervan uitgegaan dat u de stappen van de eerste twee zelfstudies in de reeks al hebt uitgevoerd:
 
 * Azure Container Registry maken
-* Voorbeeldopslagplaats splitsen
+* Voorbeeldopslagplaats fork
 * Voorbeeldopslagplaats klonen
 * Persoonlijk toegangstoken van GitHub maken
 
-Als u dit nog niet hebt gedaan, voltooit u de volgende zelf studies voordat u doorgaat:
+Als u dit nog niet hebt gedaan, voert u de volgende zelfstudies in voordat u verdergaat:
 
 [Zelfstudie: containerinstallatiekopieën bouwen in de cloud met Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
 
 [Builds van containerinstallatiekopieën automatiseren met Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
-Naast het container register dat is gemaakt voor de voor gaande zelf studies, moet u een REGI ster maken om de basis installatie kopieën op te slaan. Als u wilt, maakt u het tweede REGI ster op een andere locatie dan het oorspronkelijke REGI ster.
+Naast het containerregister dat is gemaakt voor de vorige zelfstudies, moet u een register maken om de basisafbeeldingen op te slaan. Als u wilt, maakt u het tweede register op een andere locatie dan het oorspronkelijke register.
 
 ### <a name="configure-the-environment"></a>De omgeving configureren
 
-Vul deze variabelen voor de shell-omgeving in met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevings variabelen niet opgeeft, moet u elke waarde hand matig vervangen, overal waar deze in de voorbeeld opdrachten worden weer gegeven.
+Vul deze variabelen voor de shell-omgeving in met waarden die geschikt zijn voor uw omgeving. Hoewel deze stap strikt genomen niet vereist is, vereenvoudigt u hiermee de uitvoering van meerregelige Azure CLI-opdrachten in deze zelfstudie. Als u deze omgevingsvariabelen niet vult, moet u elke waarde handmatig vervangen, waar deze ook in de voorbeeldopdrachten wordt weergegeven.
 
 ```azurecli-interactive
 BASE_ACR=<base-registry-name>   # The name of your Azure container registry for base images
@@ -61,33 +61,33 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ### <a name="base-image-update-scenario"></a>Bijwerkscenario van basisinstallatiekopieën
 
-In deze zelfstudie wordt u door een bijwerkscenario van een basisinstallatiekopie geleid. Dit scenario bevat een ontwikkel werk stroom voor het beheren van basis installatie kopieën in een gemeen schappelijk container register met persoonlijke vermeldingen bij het maken van toepassings installatie kopieën in andere registers. De basis installatie kopieën kunnen algemene besturings systemen en frameworks opgeven die worden gebruikt door een team of zelfs algemene service onderdelen.
+In deze zelfstudie wordt u door een bijwerkscenario van een basisinstallatiekopie geleid. Dit scenario weerspiegelt een ontwikkelingsworkflow voor het beheren van basisafbeeldingen in een gemeenschappelijk privécontainerregister bij het maken van toepassingsafbeeldingen in andere registers. De basisafbeeldingen kunnen algemene besturingssystemen en frameworks opgeven die door een team of zelfs gemeenschappelijke servicecomponenten worden gebruikt.
 
-Ontwikkel aars die bijvoorbeeld installatie kopieën van toepassingen ontwikkelen in hun eigen registers, kunnen toegang krijgen tot een set basis installatie kopieën die worden onderhouden in het algemene basis register. Het basis register kan zich in een andere regio bevinden of zelfs met geo-replicatie.
+Ontwikkelaars die bijvoorbeeld toepassingsafbeeldingen in hun eigen registers ontwikkelen, hebben toegang tot een set basisafbeeldingen die in het gemeenschappelijke basisregister worden bijgehouden. Het basisregister kan zich in een andere regio bevinden of zelfs geo-gerepliceerd zijn.
 
-Het [code voorbeeld][code-sample] bevat twee Dockerfiles: een toepassings installatie kopie en een installatie kopie die wordt opgegeven als basis. In de volgende secties maakt u een ACR-taak die automatisch een build van de toepassings installatie kopie activeert wanneer een nieuwe versie van de basis installatie kopie naar een ander Azure container Registry wordt gepusht.
+Het [codevoorbeeld][code-sample] bevat twee Dockerfiles: een toepassingsinstallatiekopie en een installatiekopie als basis. In de volgende secties maakt u een ACR-taak die automatisch een build van de toepassingsafbeelding activeert wanneer een nieuwe versie van de basisafbeelding naar een ander Azure-containerregister wordt gepusht.
 
-* [Dockerfile-app][dockerfile-app]: een kleine node. js-webtoepassing die een statische webpagina weergeeft waarin de node. js-versie wordt weer gegeven waarop de service is gebaseerd. De versietekenreeks wordt gesimuleerd: deze geeft de inhoud weer van een omgevingsvariabele, `NODE_VERSION`, die is gedefinieerd in de basisinstallatiekopie.
+* [Dockerfile-app][dockerfile-app]: Een kleine Node.js-webtoepassing die een statische webpagina maakt waarop de Node.js-versie ervan wordt weergegeven. De versietekenreeks wordt gesimuleerd: deze geeft de inhoud weer van een omgevingsvariabele, `NODE_VERSION`, die is gedefinieerd in de basisinstallatiekopie.
 
-* [Dockerfile-base][dockerfile-base]: de afbeelding die `Dockerfile-app` als basis opgeeft. Het is zelf gebaseerd op een [knooppunt][base-node] installatie kopie en bevat de `NODE_VERSION` omgevings variabele.
+* [Dockerfile-basis][dockerfile-base]: De installatiekopie die `Dockerfile-app` opgeeft als basis. Deze is zelf gebaseerd op een [Node][base-node]-installatiekopie en bevat de omgevingsvariabele `NODE_VERSION`.
 
 In de volgende gedeeltes maakt u een taak, werkt u de waarde `NODE_VERSION` in het Docker-bestand van de basisinstallatiekopie bij en gebruikt u ACR Tasks om de basisinstallatiekopie te maken. Zodra de ACR-taak de nieuwe basisinstallatiekopie naar uw register pusht, wordt er automatisch een build van de toepassingsinstallatiekopie geactiveerd. Optioneel kunt u de containerinstallatiekopie van de toepassing lokaal uitvoeren om de verschillende versietekenreeksen in de ingebouwde installatiekopieën te bekijken.
 
-In deze zelf studie bouwt en pusht uw ACR-taak een toepassings container installatie kopie die is opgegeven in een Dockerfile. ACR-taken kunnen ook [taken met meerdere stappen](container-registry-tasks-multi-step.md)uitvoeren, met behulp van een yaml-bestand om de stappen voor het bouwen, pushen en optioneel testen van meerdere containers te definiëren.
+In deze zelfstudie bouwt en pusht uw ACR-taak een afbeelding van de toepassingscontainer die is opgegeven in een Dockerfile. [ACR-taken](container-registry-tasks-multi-step.md)kunnen ook taken in meerdere stappen uitvoeren, met behulp van een YAML-bestand om stappen te definiëren om meerdere containers te bouwen, te pushen en optioneel te testen.
 
 ## <a name="build-the-base-image"></a>De basisinstallatiekopie bouwen
 
-Begin met het bouwen van de basis installatie kopie met een *snelle taak*voor ACR-taken met behulp van [AZ ACR build][az-acr-build]. Zoals beschreven in de [eerste zelfstudie](container-registry-tutorial-quick-task.md) in de reeks, wordt met dit proces niet alleen de installatiekopie gebouwd, maar wordt deze ook naar het containerregister gepusht als de build is gelukt. In dit voor beeld wordt de installatie kopie naar het REGI ster van de basis installatie kopie gepusht.
+Begin met het bouwen van de basisafbeelding met een *snelle taak*van ACR Tasks , met behulp van [az acr build][az-acr-build]. Zoals beschreven in de [eerste zelfstudie](container-registry-tutorial-quick-task.md) in de reeks, wordt met dit proces niet alleen de installatiekopie gebouwd, maar wordt deze ook naar het containerregister gepusht als de build is gelukt. In dit voorbeeld wordt de afbeelding naar het basisbeeldregister gepusht.
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-## <a name="create-a-task-to-track-the-private-base-image"></a>Een taak maken om de persoonlijke basis installatie kopie bij te houden
+## <a name="create-a-task-to-track-the-private-base-image"></a>Een taak maken om de privébasisafbeelding bij te houden
 
-Maak vervolgens een taak in het REGI ster voor toepassings installatie kopieën met [AZ ACR Task Create][az-acr-task-create], waardoor een [beheerde identiteit](container-registry-tasks-authentication-managed-identity.md)wordt ingeschakeld. De beheerde identiteit wordt in latere stappen gebruikt, zodat de taak wordt geverifieerd met het REGI ster van de basis installatie kopie. 
+Maak vervolgens een taak in het applicatieimageregister met [az acr-taak maken,][az-acr-task-create]waardoor een [beheerde identiteit mogelijk wordt](container-registry-tasks-authentication-managed-identity.md). De beheerde identiteit wordt in latere stappen gebruikt, zodat de taak wordt geverifieerd met het basisafbeeldingsregister. 
 
-In dit voor beeld wordt een door het systeem toegewezen identiteit gebruikt, maar u kunt een door de gebruiker toegewezen beheerde identiteit maken en inschakelen voor bepaalde scenario's. Zie [verificatie tussen het REGI ster in een ACR-taak met behulp van een door Azure beheerde identiteit](container-registry-tasks-cross-registry-authentication.md)voor meer informatie.
+In dit voorbeeld wordt een door het systeem toegewezen identiteit gebruikt, maar u een door de gebruiker toegewezen beheerde identiteit voor bepaalde scenario's maken en inschakelen. Zie Verificatie [voor cross-registry in een ACR-taak met een door Azure beheerde identiteit](container-registry-tasks-cross-registry-authentication.md)voor meer informatie.
 
 ```azurecli-interactive
 az acr task create \
@@ -102,17 +102,17 @@ az acr task create \
 ```
 
 
-Deze taak is vergelijkbaar met de taak die in de [vorige zelf studie](container-registry-tutorial-build-task.md)is gemaakt. De taak geeft ACR Tasks de opdracht om een installatiekopiebuild te activeren wanneer doorvoeracties worden gepusht naar de opslagplaats die met `--context` is opgegeven. Terwijl de Dockerfile die wordt gebruikt om de installatie kopie in de vorige zelf studie te maken, een open bare basis installatie kopie (`FROM node:9-alpine`) bevat, geeft de Dockerfile in deze taak, [Dockerfile-app][dockerfile-app], een basis installatie kopie op in het REGI ster van de basis installatie kopie:
+Deze taak is vergelijkbaar met de taak die in de [vorige zelfstudie](container-registry-tutorial-build-task.md)is gemaakt. De taak geeft ACR Tasks de opdracht om een installatiekopiebuild te activeren wanneer doorvoeracties worden gepusht naar de opslagplaats die met `--context` is opgegeven. Terwijl het Dockerfile dat wordt gebruikt om de afbeelding`FROM node:9-alpine`in de vorige zelfstudie te bouwen, een afbeelding van de openbare basis ( ), geeft het Dockerfile-bestand in deze taak, [Dockerfile-app][dockerfile-app], een basisafbeelding op in het basisafbeeldingsregister:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
-Met deze configuratie kunt u eenvoudig een framework-patch in de basis installatie kopie simuleren verderop in deze zelf studie.
+Deze configuratie maakt het eenvoudig om een framework patch in de basisafbeelding later in deze tutorial te simuleren.
 
-## <a name="give-identity-pull-permissions-to-base-registry"></a>Machtigingen voor het verzamelen van identiteiten aan het basis register geven
+## <a name="give-identity-pull-permissions-to-base-registry"></a>Machtigingen voor identiteitspull geven aan basisregister
 
-Als u de beheerde identiteits machtigingen van de taak wilt gebruiken voor het ophalen van installatie kopieën uit het REGI ster van de basis installatie kopie, voert u eerst [AZ ACR Task show][az-acr-task-show] uit om de Service-Principal-id van de identiteit te verkrijgen. Voer [AZ ACR show][az-acr-show] uit om de resource-id van het basis register op te halen:
+Om de beheerde identiteitsmachtigingen van de taak te geven om afbeeldingen uit het basisbeeldregister te halen, moet eerst [az acr-taak worden weergegeven][az-acr-task-show] om de serviceprincipal-id van de identiteit te krijgen. Voer vervolgens [de AZ ACR-show][az-acr-show] uit om de resource-ID van het basisregister te krijgen:
 
 ```azurecli-interactive
 # Get service principal ID of the task
@@ -122,7 +122,7 @@ principalID=$(az acr task show --name taskhelloworld --registry $ACR_NAME --quer
 baseregID=$(az acr show --name $BASE_ACR --query id --output tsv) 
 ```
  
-Wijs de pull-machtigingen voor beheerde identiteiten toe aan het REGI ster door de [opdracht AZ Role Assignment maken][az-role-assignment-create]uit te voeren:
+Wijs de beheerde identiteitspull-machtigingen toe aan het register door het uitvoeren van [az-roltoewijzing:][az-role-assignment-create]
 
 ```azurecli-interactive
 az role assignment create \
@@ -130,9 +130,9 @@ az role assignment create \
   --scope $baseregID --role acrpull 
 ```
 
-## <a name="add-target-registry-credentials-to-the-task"></a>De referenties voor het doel register toevoegen aan de taak
+## <a name="add-target-registry-credentials-to-the-task"></a>Doelregisterreferenties toevoegen aan de taak
 
-Voer [AZ ACR taak referentie add][az-acr-task-credential-add] uit om referenties toe te voegen aan de taak. Geef de para meter `--use-identity [system]` door om aan te geven dat de door het systeem toegewezen beheerde identiteit van de taak toegang kan krijgen tot de referenties.
+Voer [az acr taak referentie toe][az-acr-task-credential-add] te voegen aan referenties toe te voegen aan de taak. Geef `--use-identity [system]` de parameter door om aan te geven dat de door het systeem toegewezen beheerde identiteit van de taak toegang heeft tot de referenties.
 
 ```azurecli-interactive
 az acr task credential add \
@@ -142,9 +142,9 @@ az acr task credential add \
   --use-identity [system] 
 ```
 
-## <a name="manually-run-the-task"></a>De taak hand matig uitvoeren
+## <a name="manually-run-the-task"></a>De taak handmatig uitvoeren
 
-Gebruik [AZ ACR Task run][az-acr-task-run] om de taak hand matig te activeren en de installatie kopie van de toepassing samen te stellen. Deze stap is nodig om ervoor te zorgen dat de taak de afhankelijkheid van de toepassings installatie kopie op de basis installatie kopie bijhoudt.
+Gebruik [de AZ ACR-taak run][az-acr-task-run] om de taak handmatig te activeren en de toepassingsafbeelding te bouwen. Deze stap is nodig zodat de taak de afhankelijkheid van de toepassingsafbeelding van de basisafbeelding bijhoudt.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -156,13 +156,13 @@ Zodra de taak is voltooid, moet u de **run-id** (bijvoorbeeld 'da6') noteren als
 
 Als u lokaal werkt (niet in Cloud Shell) en Docker hebt geïnstalleerd, voert u de container uit om de toepassing te bekijken in een webbrowser voordat u de basisinstallatiekopie opnieuw bouwt. Als u Cloud Shell gebruikt, slaat u deze sectie over (Cloud Shell biedt geen ondersteuning voor `az acr login` of `docker run`).
 
-Verifieer eerst uw container register met [AZ ACR login][az-acr-login]:
+Eerst, authenticeren aan uw container register met [az acr login:][az-acr-login]
 
 ```azurecli
 az acr login --name $ACR_NAME
 ```
 
-Voer de container nu lokaal uit met `docker run`. Vervang **\<run-id\>** door de gevonden run-id in de uitvoer van de vorige stap (bijvoorbeeld 'da6'). In dit voor beeld wordt de container `myapp` en bevat de para meter `--rm` om de container te verwijderen wanneer u deze stopt.
+Voer de container nu lokaal uit met `docker run`. Vervang ** \<run-id\> ** door de run-id in de uitvoer van de vorige stap (bijvoorbeeld 'da6'). In dit voorbeeld `myapp` wordt `--rm` de container vermeld en wordt de parameter bevat om de container te verwijderen wanneer u deze stopt.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -180,7 +180,7 @@ docker stop myapp
 
 ## <a name="list-the-builds"></a>De builds weergeven
 
-Vervolgens wordt een lijst met de taak uitgevoerd die ACR taken uitvoert voor uw REGI ster met de opdracht [AZ ACR Task List-runs][az-acr-task-list-runs] :
+Geef vervolgens een overzicht weer van de taken die ACR Tasks heeft voltooid voor het register door de opdracht [az acr task list-runs][az-acr-task-list-runs] te gebruiken:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
@@ -203,7 +203,7 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 ## <a name="update-the-base-image"></a>De basisinstallatiekopie bijwerken
 
-Hier kunt u een frameworkpatch in de basisinstallatiekopie simuleren. Bewerk de **Dockerfile-basis**  en voeg een 'a' toe achter het versienummer dat is gedefinieerd in `NODE_VERSION`:
+Hier kunt u een frameworkpatch in de basisinstallatiekopie simuleren. Bewerk de **Dockerfile-basis ** en voeg een 'a' toe achter het versienummer dat is gedefinieerd in `NODE_VERSION`:
 
 ```Dockerfile
 ENV NODE_VERSION 9.11.2a
@@ -266,10 +266,10 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een taak configureert om automatisch builds van containerinstallatiekopieën te activeren wanneer een basisinstallatiekopie is bijgewerkt. Ga nu verder met de volgende zelf studie voor meer informatie over het activeren van taken volgens een gedefinieerd schema.
+In deze zelfstudie hebt u geleerd hoe u een taak configureert om automatisch builds van containerinstallatiekopieën te activeren wanneer een basisinstallatiekopie is bijgewerkt. Ga nu naar de volgende zelfstudie om te leren hoe u taken activeren volgens een gedefinieerd schema.
 
 > [!div class="nextstepaction"]
-> [Een taak uitvoeren volgens een schema](container-registry-tasks-scheduled.md)
+> [Een taak volgens een planning uitvoeren](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

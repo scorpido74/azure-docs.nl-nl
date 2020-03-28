@@ -1,37 +1,37 @@
 ---
-title: Resource provider maken
-description: Hierin wordt beschreven hoe u een resource provider maakt en hoe u de aangepaste resource typen implementeert.
+title: Resourceprovider maken
+description: Beschrijft hoe u een resourceprovider maakt en de aangepaste resourcetypen implementeert.
 author: MSEvanhi
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
 ms.openlocfilehash: 393993a44c860525b9bd9a540ed7afff78e5b93c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649867"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Snelstartgids: aangepaste provider maken en aangepaste resources implementeren
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Snelstart: aangepaste provider maken en aangepaste resources implementeren
 
-In deze Quick Start maakt u uw eigen resource provider en implementeert u aangepaste resource typen voor die resource provider. Zie [Preview-versie van Azure Custom providers](overview.md)voor meer informatie over aangepaste providers.
+In deze quickstart maakt u uw eigen resourceprovider en implementeert u aangepaste resourcetypen voor die resourceprovider. Zie overzicht van Azure [Custom Providers Preview](overview.md)voor meer informatie over aangepaste providers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze Snelstartgids wilt uitvoeren, moet u REST-bewerkingen aanroepen. Er zijn [verschillende manieren om rest-aanvragen te verzenden](/rest/api/azure/). Als u nog geen hulp programma voor REST-bewerkingen hebt, installeert u [ARMClient](https://github.com/projectkudu/ARMClient). Het is een open-source opdracht regel programma waarmee u de Azure Resource Manager-API kunt aanroepen.
+Als u de stappen in deze quickstart wilt uitvoeren, moet u REST-bewerkingen aanroepen. Er zijn [verschillende manieren om REST-verzoeken te verzenden.](/rest/api/azure/) Als u nog geen tool hebt voor REST-bewerkingen, installeert u [ARMClient.](https://github.com/projectkudu/ARMClient) Het is een open-source command-line tool die het inroepen van de Azure Resource Manager API vereenvoudigt.
 
 ## <a name="deploy-custom-provider"></a>Aangepaste provider implementeren
 
-Als u de aangepaste provider wilt instellen, implementeert u een [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) in uw Azure-abonnement.
+Als u de aangepaste provider wilt instellen, implementeert u een [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) in uw Azure-abonnement.
 
-Na de implementatie van de sjabloon heeft uw abonnement de volgende resources:
+Nadat u de sjabloon hebt geïmplementeerd, heeft uw abonnement de volgende bronnen:
 
 * Functie-app met de bewerkingen voor de resources en acties.
-* Opslag account voor het opslaan van gebruikers die zijn gemaakt via de aangepaste provider.
-* Aangepaste provider die de aangepaste resource typen en acties definieert. Er wordt gebruikgemaakt van het eind punt voor de functie-app voor het verzenden van aanvragen.
+* Opslagaccount voor het opslaan van gebruikers die zijn gemaakt via de aangepaste provider.
+* Aangepaste provider die de aangepaste resourcetypen en -acties definieert. Het maakt gebruik van de functie-app eindpunt voor het verzenden van verzoeken.
 * Aangepaste resource van de aangepaste provider.
 
-Als u de aangepaste provider wilt implementeren met Power shell, gebruikt u:
+Gebruik het als u de aangepaste provider wilt implementeren met PowerShell:
 
 ```azurepowershell-interactive
 $rgName = "<resource-group-name>"
@@ -43,25 +43,25 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -funcname $funcName
 ```
 
-U kunt ook de oplossing implementeren met behulp van de volgende knop:
+U de oplossing ook implementeren met de volgende knop:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
-## <a name="view-custom-provider-and-resource"></a>Aangepaste provider en resource weer geven
+## <a name="view-custom-provider-and-resource"></a>Aangepaste provider en resource weergeven
 
-In de portal is de aangepaste provider een verborgen resource type. Als u wilt controleren of de resource provider is geïmplementeerd, gaat u naar de resource groep. Selecteer de optie om **verborgen typen weer te geven**.
+In de portal is de aangepaste provider een verborgen resourcetype. Als u wilt controleren of de resourceprovider is geïmplementeerd, navigeert u naar de resourcegroep. Selecteer de optie om **verborgen typen weer te geven**.
 
-![Verborgen resource typen weer geven](./media/create-custom-provider/show-hidden.png)
+![Verborgen resourcetypen weergeven](./media/create-custom-provider/show-hidden.png)
 
-Als u het aangepaste resource type wilt zien dat u hebt geïmplementeerd, gebruikt u de bewerking GET voor het bron type.
+Als u het aangepaste resourcetype wilt weergeven dat u hebt geïmplementeerd, gebruikt u de GET-bewerking op uw resourcetype.
 
 ```
 GET https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users?api-version=2018-09-01-preview
 ```
 
-Met ARMClient, gebruikt u:
+Gebruik met ARMClient:
 
 ```powershell
 $subID = (Get-AzContext).Subscription.Id
@@ -89,17 +89,17 @@ U ontvangt het antwoord:
 }
 ```
 
-## <a name="call-action"></a>Aanroep actie
+## <a name="call-action"></a>Oproepactie
 
-Uw aangepaste provider heeft ook een actie met de naam **ping**. De code waarmee de aanvraag wordt verwerkt, wordt geïmplementeerd in de functie-app. De ping-actie beantwoordt een begroeting.
+Uw aangepaste provider heeft ook een actie met de naam **ping.** De code die de aanvraag verwerkt, wordt geïmplementeerd in de functie-app. De ping-actie antwoordt met een begroeting.
 
-Als u een ping-aanvraag wilt verzenden, gebruikt u de POST-bewerking voor uw aangepaste provider.
+Als u een ping-verzoek wilt verzenden, gebruikt u de bewerking POST op uw aangepaste provider.
 
 ```
 POST https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/ping?api-version=2018-09-01-preview
 ```
 
-Met ARMClient, gebruikt u:
+Gebruik met ARMClient:
 
 ```powershell
 $pingURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/ping?api-version=2018-09-01-preview"
@@ -118,9 +118,9 @@ U ontvangt het antwoord:
 }
 ```
 
-## <a name="create-resource-type"></a>Resource type maken
+## <a name="create-resource-type"></a>Resourcetype maken
 
-Als u het aangepaste resource type wilt maken, kunt u de resource in een sjabloon implementeren. Deze benadering wordt weer gegeven in de sjabloon die u in deze Quick Start hebt geïmplementeerd. U kunt ook een PUT-aanvraag verzenden voor het bron type.
+Als u het aangepaste resourcetype wilt maken, u de bron in een sjabloon implementeren. Deze benadering wordt weergegeven in de sjabloon die u in deze quickstart hebt geïmplementeerd. U ook een PUT-aanvraag voor het resourcetype verzenden.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
@@ -128,7 +128,7 @@ PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>
 {"properties":{"FullName": "Test User", "Location": "Earth"}}
 ```
 
-Met ARMClient, gebruikt u:
+Gebruik met ARMClient:
 
 ```powershell
 $addURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users/testuser?api-version=2018-09-01-preview"
@@ -154,4 +154,4 @@ U ontvangt het antwoord:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Preview-versie van Azure Custom providers](overview.md)voor een inleiding tot aangepaste providers.
+Zie Overzicht van Azure [Custom Providers Preview](overview.md)voor een inleiding tot aangepaste providers.

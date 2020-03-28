@@ -1,21 +1,21 @@
 ---
-title: Een .NET-app maken op Service Fabric in azure
+title: Een .NET-app maken op ServiceFabric in Azure
 description: In deze zelfstudie vindt u informatie over het maken van een toepassing met een ASP.NET Core front-end en een betrouwbare stateful back-endservice en het implementeren van de toepassing in een cluster.
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465469"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Zelfstudie: Een toepassing met een ASP.NET Core web-API front-endservice en een stateful back-endservice maken en implementeren
 
 Deze zelfstudie is deel één van een serie.  U leert hoe u een Azure Service Fabric-toepassing met een front-end van ASP.NET Core web-API en een stateful back-endservice maakt voor het opslaan van uw gegevens. Wanneer u klaar bent, hebt u een stemtoepassing met een ASP.NET Core-web-front-end die stemresultaten opslaat in een stateful back-endservice in het cluster. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](#walkthrough_anchor).  Als u dat liever doet, kunt u ook een [video](https://channel9.msdn.com/Events/Connect/2017/E100) van deze zelfstudie bekijken.
 
-![AngularJS + ASP. NET API front-end, verbinding maken met een stateful back-end-service op Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS+ASP.NET API Front End, Verbinding maken met een stateful backendservice op Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 In deel 1 van de reeks leert u het volgende:
 
@@ -35,17 +35,17 @@ In deze zelfstudiereeks leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 Voor u met deze zelfstudie begint:
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15,5 of hoger met de werk belasting **Azure Development** en **ASP.net en Web Development** .
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/) versie 15.5 of hoger met de **Azure-hulpprogramma's voor ontwikkeling** en **ASP.NET en webontwikkeling.**
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>Een ASP.NET web-API-service als een betrouwbare service maken
 
 Maak eerst de webfront-end van de stemtoepassing met behulp van ASP.NET Core. ASP.NET Core is een lichtgewicht, platformoverschrijdend webontwikkelingsframework dat u kunt gebruiken voor het maken van moderne webgebruikersinterface en web-API's. Voor een completer inzicht in hoe u ASP.NET Core integreert met Service Fabric, raden we u sterk aan het artikel [ASP.NET Core in Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) te lezen. Op dit moment kunt u deze zelfstudie volgen om snel aan de slag te gaan. Zie de [Documentatie bij ASP.NET Core](https://docs.microsoft.com/aspnet/core/) voor meer informatie over ASP.NET Core.
 
-1. Start Visual Studio als **beheerder**.
+1. Visual Studio starten als **beheerder**.
 
-2. Maak een project met **File**->**New**->**Project**.
+2. Een project maken met **Bestand**->**Nieuw**->**Project**.
 
 3. Kies in het dialoogvenster **Nieuw Project** de optie **Cloud > Service Fabric-toepassing**.
 
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 Wanneer de front-endservice VotingWeb is gemaakt, selecteert Visual Studio willekeurig een poort voor de service om op te luisteren.  De VotingWeb-service fungeert als de front-end voor deze toepassing en accepteert extern verkeer, dus gaan we die service met een vaste en bekende poort verbinden.  Het [servicemanifest](service-fabric-application-and-service-manifests.md) declareert de service-eindpunten.
 
-Open in Solution Explorer *VotingWeb/PackageRoot/ServiceManifest.xml*.  Zoek het element **Endpoint** in de sectie **Resources** en wijzig de waarde van **Port** in **8080**. Als u de toepassing lokaal wilt implementeren en uitvoeren, moet de luisterende poort van de toepassing open zijn en beschikbaar zijn op uw computer.
+Open In Solution Explorer *VotingWeb/PackageRoot/ServiceManifest.xml*.  Zoek het element **Endpoint** in de sectie **Resources** en wijzig de waarde van **Port** in **8080**. Als u de toepassing lokaal wilt implementeren en uitvoeren, moet de luisterende poort van de toepassing open zijn en beschikbaar zijn op uw computer.
 
 ```xml
 <Resources>
@@ -335,7 +335,7 @@ Service Fabric biedt u de mogelijkheid om uw gegevens consistent en betrouwbaar 
 
 In deze zelfstudie maakt u een service die een itemwaarde in een betrouwbare verzameling opslaat.
 
-1. Klik in Solution Explorer met de rechtermuisknop op **Services** in het toepassingsproject Voting en kies **Add > New Service Fabric Service...** .
+1. Klik in Solution Explorer met de rechtermuisknop op **Services** in het toepassingsproject Voting en kies **Add > New Service Fabric Service...**.
     
 2. Kies in het dialoogvenster **New Service Fabric Service** de optie **Stateful ASP.NET Core**, noem de service **VotingData** en druk op **OK**.
 
@@ -455,7 +455,7 @@ In deze zelfstudie worden [ASP.NET Core Web API](service-fabric-reliable-service
         ],
 ```
 Als u de omgekeerde proxy-poort wilt zoeken die wordt gebruikt in uw lokale ontwikkelcluster, raadpleegt u het element **HttpApplicationGatewayEndpoint** in het manifest van het lokale Service Fabric-cluster:
-1. Open een browser venster en navigeer naar http:\//localhost: 19080 om het hulp programma Service Fabric Explorer te openen.
+1. Open een browservenster en\/navigeer naar http: /localhost:19080 om het gereedschap Service Fabric Explorer te openen.
 2. Selecteer **Cluster -> Manifest**.
 3. Noteer de poort van het element HttpApplicationGatewayEndpoint. Deze is standaard 19081. Als de poort niet 19081 is, moet u de poort in de methode GetProxyAddress van de volgende VotesController.cs-code wijzigen.
 
@@ -614,9 +614,9 @@ Als u wilt zien wat er in de code gebeurt, moet u de volgende stappen uitvoeren:
 
       ![Front-endservice van Vote toevoegen](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-   2. Maak eerst de URL naar de ReverseProxy voor de back-endservice **(1)** .
-   3. Verzend vervolgens de HTTP PUT-aanvraag naar de ReverseProxy **(2)** .
-   4. Tot slot wordt het antwoord van de back-endservice naar de client geretourneerd **(3)** .
+   2. Maak eerst de URL naar de ReverseProxy voor de back-endservice **(1)**.
+   3. Stuur vervolgens de HTTP PUT-aanvraag naar de ReverseProxy **(2).**
+   4. Tot slot wordt het antwoord van de back-endservice naar de client geretourneerd **(3)**.
 
 5. Druk op **F5** om verder te gaan.
    1. U bent nu op het onderbrekingspunt in de back-endservice aanbeland.

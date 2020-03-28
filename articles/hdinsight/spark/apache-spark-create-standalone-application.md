@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: scala maven-app voor Spark & IntelliJ-Azure HDInsight'
-description: 'Zelf studie: een Spark-toepassing maken die is geschreven in scala met Apache Maven als het build-systeem en een bestaande maven archetype voor scala van IntelliJ-ideeën.'
+title: 'Zelfstudie: Scala Maven-app voor Spark & IntelliJ - Azure HDInsight'
+description: Tutorial - Maak een Spark applicatie geschreven in Scala met Apache Maven als het build systeem en een bestaande Maven archetype voor Scala geleverd door IntelliJ IDEA.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/28/2020
 ms.openlocfilehash: aa23b61967b27fefba863255721f4a0709ec02d5
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78204542"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ
 
-In deze zelfstudie leert u hoe u met behulp van [Apache Maven](./apache-spark-overview.md) met IntelliJ IDEA een [Apache Spark](https://www.scala-lang.org/)-toepassing maakt die is geschreven in [Scala](https://maven.apache.org/). In dit artikel wordt Apache Maven gebruikt als het buildsysteem en er is een bestaand Maven-archetype voor Scala beschikbaar geleverd door IntelliJ IDEA.  Het maken van een Scala-toepassing in IntelliJ IDEA omvat de volgende stappen:
+In deze zelfstudie leert u hoe u met behulp van [Apache Maven](https://maven.apache.org/) met IntelliJ IDEA een [Apache Spark](./apache-spark-overview.md)-toepassing maakt die is geschreven in [Scala](https://www.scala-lang.org/). In dit artikel wordt Apache Maven gebruikt als het buildsysteem en er is een bestaand Maven-archetype voor Scala beschikbaar geleverd door IntelliJ IDEA.  Het maken van een Scala-toepassing in IntelliJ IDEA omvat de volgende stappen:
 
 * Maven gebruiken als het buildsysteem.
 * POM-bestand (Project Object Model) bijwerken om afhankelijkheden van Spark-module om te zetten.
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 
 * [Oracle Java Development Kit](https://www.azul.com/downloads/azure-only/zulu/).  In deze zelfstudie wordt gebruikgemaakt van Java-versie 8.0.202.
 
-* Een Java-IDE. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* Een Java-IDE. Dit artikel maakt gebruik van [IntelliJ IDEA Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure-toolkit voor IntelliJ.  Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in) (De Azure Toolkit voor IntelliJ installeren).
 
@@ -47,13 +47,13 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 1. Open IntelliJ IDEA.
 
-2. Ga op het welkomstscherm naar **Configure** > **Plugins** om het venster **Plugins** te openen.
+2. Navigeer in het welkomstscherm naar**Plug-ins** **configureren** > om het venster **Plug-ins** te openen.
 
-    ![IntelliJ-idee scala-invoeg toepassing inschakelen](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
+    ![IntelliJ IDEA maakt scala plugin mogelijk](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
-3. Select **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
+3. Selecteer **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
 
-    ![IntelliJ-idee scala-invoeg toepassing installeren](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+    ![IntelliJ IDEA installeert scala plugin](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
 
 4. Als de invoegtoepassing is geïnstalleerd, moet u de IDE opnieuw starten.
 
@@ -61,17 +61,17 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 1. Start IntelliJ IDEA en selecteer **Create New Project** om het venster **New Project** te openen.
 
-2. Selecteer **Apache Spark/HDInsight** in het linkerdeel venster.
+2. Selecteer **Apache Spark/HDInsight** in het linkerdeelvenster.
 
 3. Selecteer **Spark Project (Scala)** in het hoofdvenster.
 
-4. Selecteer een van de volgende waarden in de vervolg keuzelijst **Build Tool** :
+4. Selecteer in de vervolgkeuzelijst **Gereedschap bouwen** een van de volgende waarden:
       * **Maven**, voor de ondersteuning van de wizard Scala-project maken.
       * **SBT**, voor het beheren van de afhankelijkheden en het maken van het Scala-project.
 
-   ![Het dialoog venster Nieuw project IntelliJ](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
+   ![IntelliJ Het dialoogvenster Nieuwe project](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 
 6. Geef in het venster **New project** de volgende gegevens op:  
 
@@ -80,11 +80,11 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
   	|Projectnaam| Voer een naam in.|  
   	|Project&nbsp;location| Voer de gewenste locatie in om uw project in op te slaan.|
   	|Project SDK| Als u IDEA voor het eerst gebruikt, is dit veld leeg.  Selecteer **New...** en ga naar uw JDK.|
-  	|Spark-versie|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
+  	|Spark version|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
 
-    ![IntelliJ idee de Spark-SDK selecteren](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
+    ![IntelliJ IDEA Selecteren van de Spark SDK](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
-7. Selecteer **Voltooien**.
+7. Selecteer **Finish**.
 
 ## <a name="create-a-standalone-scala-project"></a>Een zelfstandig Scala-project maken
 
@@ -98,24 +98,24 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 5. Selecteer **org.scala tools.archetypes:scala-archetype-simple** in de lijst van archetypen. Met dit archetype maakt u de juiste mapstructuur en worden de vereiste standaardafhankelijkheden voor het schrijven van het Scala-programma gedownload.
 
-    ![IntelliJ-idee Maven-project maken](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![IntelliJ IDEA maken Maven project](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
-6. Selecteer **Next**.
+6. Selecteer **Volgende**.
 
-7. Verbreid **artefact coördinaten**. Geef relevante waarden voor **GroupId**en **ArtifactId**op. **Naam**en **locatie** worden automatisch ingevuld. In deze zelfstudie worden de volgende waarden gebruikt:
+7. **Artefact-coördinaten uitvouwen**. Geef relevante waarden op voor **GroupId**en **ArtifactId**. **Naam**en **locatie** worden automatisch ingevuld. In deze zelfstudie worden de volgende waarden gebruikt:
 
     - **GroupId:** com.microsoft.spark.example
-    - **ArtifactId:** SparkSimpleApp
+    - **ArtefactId:** SparkSimpleApp
 
-    ![IntelliJ-idee Maven-project maken](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![IntelliJ IDEA maken Maven project](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
-8. Selecteer **Next**.
+8. Selecteer **Volgende**.
 
 9. Controleer de instellingen en selecteer vervolgens **Next**.
 
 10. Controleer de naam en de locatie van het project en selecteer vervolgens **Finish**.  Het duurt enkele minuten voordat het project is geïmporteerd.
 
-11. Als het project is geïmporteerd, gaat u in het linkerdeelvenster naar **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**.  Klik met de rechter muisknop op **MySpec**en selecteer vervolgens **verwijderen...** . U hebt dit bestand niet nodig voor de toepassing.  Selecteer **OK** in het dialoogvenster.
+11. Zodra het project is geïmporteerd, navigeer t u vanuit het linkerdeelvenster naar **sparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**.  Klik met de rechtermuisknop op **MySpec**en selecteer **Verwijderen...**. U hebt dit bestand niet nodig voor de toepassing.  Selecteer **OK** in het dialoogvenster.
   
 12. In de volgende stappen gaat u het bestand **pom.xml** bijwerken om de afhankelijkheden voor de Spark Scala-toepassing te definiëren. Om deze afhankelijkheden automatisch te downloaden en om te zetten, moet Maven op de juiste manier worden geconfigureerd.
 
@@ -125,11 +125,11 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 15. Schakel het selectievakje **Import Maven projects automatically** in.
 
-16. Selecteer **Apply** en vervolgens **OK**.  Vervolgens keert u terug naar het project venster.
+16. Selecteer **Apply** en vervolgens **OK**.  U wordt dan teruggebracht naar het projectvenster.
 
     ![Maven configureren voor automatische downloads](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
-17. Ga in het linkerdeelvenster naar **src** > **main** > **scala** > **com.microsoft.spark.example** en dubbelklik op **App** om App.scala te openen.
+17. Navigeer in het linkerdeelvenster naar **src** > **main** > **scala** > **com.microsoft.spark.example**en dubbelklik vervolgens op **App.scala** om App.scala te openen.
 
 18. Vervang de bestaande voorbeeldcode door de volgende code en sla de wijzigingen op. Deze code leest de gegevens uit HVAC.csv (beschikbaar in alle HDInsight Spark-clusters), haalt de rijen op die maar één cijfer hebben in de zesde kolom en schrijft de uitvoer naar **/HVACOut**, in de standaardopslagcontainer voor het cluster.
 
@@ -176,53 +176,53 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
     1. Selecteer **Project Structure...** in het menu **File**.
 
-    2. Ga in het venster **Project Structure** naar **Artifacts** > **het plusteken +**  > **JAR** > **From modules with dependencies...** .
+    2. Ga in het venster **Project Structure** naar **Artifacts** > **het plusteken +** > **JAR** > **From modules with dependencies...**.
 
-        ![IntelliJ-idee project structuur toevoegen jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
+        ![IntelliJ IDEA projectstructuur toe te voegen pot](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
     3. Selecteer in het venster **Create JAR from Modules** het mappictogram in het tekstvak **Main Class**.
 
     4. Selecteer in het venster **Select Main Class** de klasse die standaard wordt weergegeven en selecteer vervolgens **OK**.
 
-        ![IntelliJ-idee project structuur klasse selecteren](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
+        ![IntelliJ IDEA projectstructuur selecteren klasse](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
 
     5. Controleer of in het venster **Create JAR from Modules** de optie **extract to the target JAR** is geselecteerd en selecteer vervolgens **OK**.  Met deze instelling wordt er één JAR gemaakt met alle afhankelijkheden.
 
-        ![IntelliJ idee project structuur jar vanuit module](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
+        ![IntelliJ IDEA projectstructuur pot uit module](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. Het tabblad **Output Layout** geeft een overzicht van alle JAR-bestanden die zijn opgenomen als onderdeel van het Maven-project. U kunt de bestanden selecteren en verwijderen waarvan de Scala-toepassing niet direct afhankelijk is. Voor de toepassing die u hier maakt, kunt u de laatste verwijderen (**SparkSimpleApp compiler uitvoer**). Selecteer de JAR-bestanden die u wilt verwijderen en selecteer vervolgens het minteken **-** .
+    6. Op het tabblad **Uitvoerindeling** worden alle potten weergegeven die zijn opgenomen als onderdeel van het Maven-project. U kunt de bestanden selecteren en verwijderen waarvan de Scala-toepassing niet direct afhankelijk is. Voor de toepassing, die u hier maakt, u alle behalve de laatste verwijderen **(SparkSimpleApp compileeroutput).** Selecteer de potten die u wilt **-** verwijderen en selecteer vervolgens het negatieve symbool .
 
-        ![Project structuur IntelliJ-ideeën verwijderen uitvoer](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
+        ![IntelliJ IDEA-projectstructuur verwijdert uitvoer](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
         Controleer of het selectievakje **Include in project build** is ingeschakeld, zodat het JAR-bestand telkens wordt gemaakt wanneer het project wordt gecompileerd of bijgewerkt. Selecteer **Apply** en vervolgens **OK**.
 
-    7. Ga naar **Build** > **Build Artifacts** > **Build** om het JAR-bestand te maken. Het project wordt in circa dertig seconden gecompileerd.  Het bestand wordt opgeslagen in **\out\artifacts**.
+    7. Als u de pot wilt maken, navigeert u naar **Build** > **Artifacts** > **Build.** Het project wordt in circa dertig seconden gecompileerd.  Het bestand wordt opgeslagen in **\out\artifacts**.
 
-        ![Uitvoer van IntelliJ-ideeën project artefact](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
+        ![IntelliJ IDEA project artefact output](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>De toepassing uitvoeren in het Apache Spark-cluster
 
 U kunt de volgende methoden gebruiken om de toepassing uit te voeren in het cluster:
 
-* **Kopieer de toepassing jar naar de Azure Storage BLOB** die aan het cluster is gekoppeld. Dit kan met [**AzCopy**](../../storage/common/storage-use-azcopy.md), een opdrachtregelprogramma. Er zijn echter een heleboel clients die u kunt gebruiken om gegevens te uploaden. Meer informatie hierover vindt u in [Gegevens voor Apache Hadoop-taken uploaden in HDInsight](../hdinsight-upload-data.md).
+* **Kopieer de toepassingspot naar de Azure Storage-blob** die aan het cluster is gekoppeld. Dit kan met [**AzCopy**](../../storage/common/storage-use-azcopy.md), een opdrachtregelprogramma. Er zijn echter een heleboel clients die u kunt gebruiken om gegevens te uploaden. Meer informatie hierover vindt u in [Gegevens voor Apache Hadoop-taken uploaden in HDInsight](../hdinsight-upload-data.md).
 
 * **Gebruik Apache Livy om een toepassingstaak op afstand te versturen** naar het Spark-cluster. Spark-clusters in HDInsight ondersteunen Livy voor het aanbieden van REST-eindpunten waarmee Spark-taken op afstand kunnen worden verzonden. Zie [Apache Livy met Spark-clusters in HDInsight gebruiken om Apache Spark-taken op afstand te verzenden](apache-spark-livy-rest-interface.md) voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
+Als u deze toepassing niet meer wilt gebruiken, verwijdert u het cluster dat u met de volgende stappen hebt gemaakt:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 
-1. Selecteer in de lijst met HDInsight-clusters die wordt weer gegeven, de **...** naast het cluster dat u voor deze zelf studie hebt gemaakt.
+1. Selecteer in de lijst met HDInsight-clusters die worden weergegeven de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt.
 
 1. Selecteer **Verwijderen**. Selecteer **Ja**.
 
-![HDInsight Azure Portal cluster verwijderen](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
+![HDInsight azure portal delete cluster HDInsight azure portal](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 
 ## <a name="next-step"></a>Volgende stap
 
