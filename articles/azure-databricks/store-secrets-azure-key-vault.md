@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-toegang tot Blob-opslag met behulp van sleutel kluis met behulp van Azure Databricks
-description: In deze zelf studie wordt beschreven hoe u toegang krijgt tot Azure Blob Storage van Azure Databricks met behulp van geheimen die zijn opgeslagen in een sleutel kluis.
+title: Zelfstudie - Toegang blob-opslag met behulp van sleutelkluis met Azure Databricks
+description: In deze zelfstudie wordt beschreven hoe u azure blob-opslag vanuit Azure Databricks openen met geheimen die zijn opgeslagen in een sleutelkluis.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,156 +8,156 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889059"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelf studie: toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelfstudie: Toegang krijgen tot Azure Blob Storage vanuit Azure Databricks met Azure Key Vault
 
-In deze zelf studie wordt beschreven hoe u toegang krijgt tot Azure Blob Storage van Azure Databricks met behulp van geheimen die zijn opgeslagen in een sleutel kluis.
+In deze zelfstudie wordt beschreven hoe u azure blob-opslag vanuit Azure Databricks openen met geheimen die zijn opgeslagen in een sleutelkluis.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een opslag account en BLOB-container maken
+> * Een opslagaccount en blobcontainer maken
 > * Een Azure Key Vault maken en een geheim toevoegen
-> * Een Azure Databricks-werk ruimte maken en een geheim bereik toevoegen
-> * Toegang tot uw BLOB-container vanuit Azure Databricks
+> * Een Azure Databricks-werkruimte maken en een geheim bereik toevoegen
+> * Toegang tot uw blobcontainer vanuit Azure Databricks
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
-> Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Deze zelfstudie kan niet worden uitgevoerd met **azure free trial subscription**.
+> Als je een gratis account hebt, ga je naar je profiel en wijzig je je abonnement naar **betalen per gebruik.** Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Verwijder vervolgens [de bestedingslimiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraag een quotumverhoging aan](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor vCPU's in uw regio. Wanneer u uw Azure Databricks-werkruimte maakt, u de prijscategorie **Proefkeuzeprijzen (Premium - 14-dagen gratis DU's)** selecteren om de werkruimte gedurende 14 dagen toegang te geven tot gratis Premium Azure Databricks DU's.
 
-## <a name="create-a-storage-account-and-blob-container"></a>Een opslag account en BLOB-container maken
+## <a name="create-a-storage-account-and-blob-container"></a>Een opslagaccount en blobcontainer maken
 
-1. Selecteer in de Azure Portal **een resource maken** > **opslag**. Selecteer vervolgens **opslag account**.
+1. Selecteer in de Azure-portal de optie **Een bronopslag** > **maken**. Selecteer vervolgens **Opslagaccount**.
 
-   ![Azure Storage-account resource zoeken](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
+   ![Azure-opslagaccountbron zoeken](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
-2. Selecteer uw abonnement en resource groep of maak een nieuwe resource groep. Voer vervolgens een naam voor het opslag account in en kies een locatie. Selecteer **Controleren + maken**.
+2. Selecteer uw abonnements- en resourcegroep of maak een nieuwe resourcegroep. Voer vervolgens een naam van een opslagaccount in en kies een locatie. Selecteer **Controleren + maken**.
 
-   ![Eigenschappen van opslag account instellen](./media/store-secrets-azure-key-vault/create-storage-account.png)
+   ![Opslagaccounteigenschappen instellen](./media/store-secrets-azure-key-vault/create-storage-account.png)
 
-3. Als de validatie mislukt, verhelpt u de problemen en probeert u het opnieuw. Als de validatie is geslaagd, selecteert u **maken** en wacht u totdat het opslag account is gemaakt.
+3. Als de validatie mislukt, u de problemen oplossen en het opnieuw proberen. Als de validatie is geslaagd, selecteert u **Maken** en wachten tot het opslagaccount is gemaakt.
 
-4. Navigeer naar het zojuist gemaakte opslag account en selecteer **blobs** onder **Services** op de pagina **overzicht** . Selecteer vervolgens **+ container** en voer een container naam in. Selecteer **OK**.
+4. Navigeer naar uw nieuw gemaakte opslagaccount en selecteer **Blobs** onder **Services** op de pagina **Overzicht.** Selecteer **+ Container** en voer een containernaam in. Selecteer **OK**.
 
    ![Nieuwe container maken](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
-5. Zoek een bestand dat u wilt uploaden naar de BLOB storage-container. Als u geen bestand hebt, kunt u een tekst editor gebruiken om een nieuw tekst bestand met informatie te maken. In dit voor beeld bevat een bestand met de naam **hw. txt** de tekst "Hallo wereld". Sla het tekst bestand lokaal op en upload het naar uw Blob Storage-container.
+5. Zoek een bestand dat u wilt uploaden naar uw blob-opslagcontainer. Als u geen bestand hebt, gebruikt u een teksteditor om een nieuw tekstbestand met bepaalde informatie te maken. In dit voorbeeld bevat een bestand met de naam **hw.txt** de tekst 'hallo wereld'. Sla uw tekstbestand lokaal op en upload het naar uw blob-opslagcontainer.
 
    ![Bestand uploaden naar container](./media/store-secrets-azure-key-vault/upload-txt-file.png)
 
-6. Ga terug naar uw opslag account en selecteer **toegangs sleutels** onder **instellingen**. Kopieer de naam van het **opslag account** en de **sleutel 1** naar een tekst editor voor later gebruik in deze zelf studie.
+6. Ga terug naar uw opslagaccount en selecteer **Toegangssleutels** onder **Instellingen**. Kopieer **de naam van het Opslagaccount** en sleutel **1** naar een teksteditor voor later gebruik in deze zelfstudie.
 
-   ![Toegangs sleutels voor opslag accounts zoeken](./media/store-secrets-azure-key-vault/storage-access-keys.png)
+   ![Toegangssleutels voor opslagaccount zoeken](./media/store-secrets-azure-key-vault/storage-access-keys.png)
 
 ## <a name="create-an-azure-key-vault-and-add-a-secret"></a>Een Azure Key Vault maken en een geheim toevoegen
 
-1. Selecteer in het Azure Portal de optie **een resource maken** en geef **Key Vault** op in het zoekvak.
+1. Selecteer in de Azure-portal **Een resource maken** en voer **Sleutelkluis** in het zoekvak in.
 
-   ![Een zoekvak voor een Azure-resource maken](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
+   ![Een zoekvak voor Azure-bronnen maken](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. De Key Vault resource wordt automatisch geselecteerd. Selecteer **Maken**.
+2. De Key Vault-bron wordt automatisch geselecteerd. Selecteer **Maken**.
 
-   ![Een Key Vault resource maken](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
+   ![Een Key Vault-bron maken](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
-3. Voer op de pagina **sleutel kluis maken** de volgende informatie in en behoud de standaard waarden voor de resterende velden:
+3. Voer op de pagina **Sleutelkluis maken** de volgende gegevens in en bewaar de standaardwaarden voor de overige velden:
 
    |Eigenschap|Beschrijving|
    |--------|-----------|
-   |Name|Een unieke naam voor uw sleutel kluis.|
+   |Name|Een unieke naam voor uw sleutelkluis.|
    |Abonnement|Kies een abonnement.|
-   |Resourcegroep|Kies een resource groep of maak een nieuwe.|
+   |Resourcegroep|Kies een resourcegroep of maak een nieuwe groep.|
    |Locatie|Kies een locatie.|
 
-   ![Eigenschappen van Azure sleutel kluis](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
+   ![Eigenschappen van Azure-sleutelkluis](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
 3. Selecteer na het opgeven van de bovenstaande gegevens **Maken**. 
 
-4. Navigeer naar de zojuist gemaakte sleutel kluis in de Azure Portal en selecteer **geheimen**. Selecteer vervolgens **+ genereren/importeren**. 
+4. Navigeer naar uw nieuw gemaakte sleutelkluis in de Azure-portal en selecteer **Geheimen**. Selecteer vervolgens **+ Genereren/importeren**. 
 
-   ![Nieuw sleutel kluis geheim genereren](./media/store-secrets-azure-key-vault/generate-import-secrets.png)
+   ![Nieuwe sleutelkluisgeheim genereren](./media/store-secrets-azure-key-vault/generate-import-secrets.png)
 
-5. Geef op de pagina **een geheim maken** de volgende informatie op en behoud de standaard waarden voor de resterende velden:
+5. Geef **op de pagina Een geheim maken** de volgende informatie op en bewaar de standaardwaarden voor de resterende velden:
 
    |Eigenschap|Waarde|
    |--------|-----------|
    |Uploadopties|Handmatig|
-   |Name|Beschrijvende naam voor de sleutel van uw opslag account.|
-   |Waarde|Key1 van uw opslag account.|
+   |Name|Vriendelijke naam voor uw opslagaccountsleutel.|
+   |Waarde|toets1 van uw opslagaccount.|
 
-   ![Eigenschappen voor nieuw sleutel kluis geheim](./media/store-secrets-azure-key-vault/create-storage-secret.png)
+   ![Eigenschappen voor nieuw sleutelkluisgeheim](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
-6. Sla de naam van de sleutel op in een tekst editor, zodat u deze later in deze zelf studie kunt gebruiken en selecteer **maken**. Ga vervolgens naar het menu **Eigenschappen** . Kopieer de **DNS-naam** en **resource-id** naar een tekst editor, zodat u deze later in de zelf studie kunt gebruiken.
+6. Sla de sleutelnaam op in een teksteditor voor gebruik later in deze zelfstudie en selecteer **Maken**. Navigeer vervolgens naar het menu **Eigenschappen.** Kopieer de **DNS-naam** en **bron-id** naar een teksteditor voor gebruik later in de zelfstudie.
 
-   ![Azure Key Vault DNS-naam en Resource-ID kopiëren](./media/store-secrets-azure-key-vault/copy-dns-resource.png)
+   ![DNS-naam en resource-id van Azure Key Vault kopiëren](./media/store-secrets-azure-key-vault/copy-dns-resource.png)
 
-## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Een Azure Databricks-werk ruimte maken en een geheim bereik toevoegen
+## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Een Azure Databricks-werkruimte maken en een geheim bereik toevoegen
 
-1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
+1. Selecteer in de Azure-portal de optie **Een resource** > **Analytics** > **Azure Databricks maken**.
 
-    ![Databricks op Azure Portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
+    ![Databricks op Azure-portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 
-2. Geef onder **Azure Databricks service**de volgende waarden op om een Databricks-werk ruimte te maken.
+2. Geef onder **Azure Databricks Service**de volgende waarden om een Databricks-werkruimte te maken.
 
    |Eigenschap  |Beschrijving  |
    |---------|---------|
    |Naam van de werkruimte     | Geef een naam op voor uw Databricks-werkruimte.        |
    |Abonnement     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
-   |Resourcegroep     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
-   |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
-   |Prijsniveau     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+   |Resourcegroep     | Selecteer dezelfde brongroep die uw sleutelkluis bevat. |
+   |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-services die beschikbaar zijn per regio voor](https://azure.microsoft.com/regions/services/)alle beschikbare regio's.        |
+   |Prijscategorie     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
-   ![Eigenschappen van Databricks-werk ruimte](./media/store-secrets-azure-key-vault/create-databricks-service.png)
+   ![Eigenschappen van Databricks-werkruimte](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
    Selecteer **Maken**.
 
-3. Navigeer naar uw nieuw gemaakte Azure Databricks-resource in de Azure Portal en selecteer **werk ruimte starten**.
+3. Navigeer naar uw nieuw gemaakte Azure Databricks-bron in de Azure-portal en selecteer **Werkruimte starten.**
 
-   ![Azure Databricks-werk ruimte starten](./media/store-secrets-azure-key-vault/launch-databricks-workspace.png)
+   ![Azure Databricks-werkruimte starten](./media/store-secrets-azure-key-vault/launch-databricks-workspace.png)
 
-4. Nadat uw Azure Databricks-werk ruimte in een afzonderlijk venster is geopend, voegt u **#secrets/createscope** toe aan de URL. De URL moet de volgende indeling hebben: 
+4. Zodra uw Azure Databricks-werkruimte in een apart venster is geopend, u **#secrets/createScope** toevoegen aan de URL. De URL moet de volgende indeling hebben: 
 
-   **https://< \location >. azuredatabricks. net/? o = < \orgID > #secrets/createscope**.
+   **https://<\locatie>.azuredatabricks.net/?o=<\orgID>#secrets/createScope**.
    
 
-5. Voer een scope naam in en voer de Azure Key Vault DNS-naam en de resource-ID in die u eerder hebt opgeslagen. Sla de naam van het bereik op in een tekst editor, zodat u deze later in deze zelf studie kunt gebruiken. Ten slotte selecteert u **Create**.
+5. Voer een scopenaam in en voer de DNS-naam en resource-id van Azure Key Vault in die u eerder hebt opgeslagen. Sla de naam van het bereik op in een teksteditor voor gebruik later in deze zelfstudie. Ten slotte selecteert u **Create**.
 
-   ![Een geheim bereik maken in de Azure Databricks-werk ruimte](./media/store-secrets-azure-key-vault/create-secret-scope.png)
+   ![Geheime scope maken in de Azure Databricks-werkruimte](./media/store-secrets-azure-key-vault/create-secret-scope.png)
 
-## <a name="access-your-blob-container-from-azure-databricks"></a>Toegang tot uw BLOB-container vanuit Azure Databricks
+## <a name="access-your-blob-container-from-azure-databricks"></a>Toegang tot uw blobcontainer vanuit Azure Databricks
 
-1. Op de start pagina van uw Azure Databricks-werk ruimte selecteert u **Nieuw cluster** onder **algemene taken**.
+1. Selecteer op de startpagina van uw Azure Databricks-werkruimte **Nieuw cluster** onder **Algemene taken**.
 
-   ![Een nieuwe Azure Databricks notitie blok maken](./media/store-secrets-azure-key-vault/create-new-cluster.png)
+   ![Een nieuw Azure Databricks-notitieblok maken](./media/store-secrets-azure-key-vault/create-new-cluster.png)
 
-2. Voer een cluster naam in en selecteer **cluster maken**. Het kan een paar minuten duren voordat het cluster is gemaakt.
+2. Voer een clusternaam in en selecteer **Cluster maken**. Het maken van het cluster duurt enkele minuten.
 
-3. Zodra het cluster is gemaakt, gaat u naar de start pagina van uw Azure Databricks-werk ruimte en selecteert u **Nieuw notitie blok** onder **algemene taken**.
+3. Zodra het cluster is gemaakt, navigeert u naar de startpagina van uw Azure Databricks-werkruimte en selecteert **u Nieuw notitieblok** onder Algemene **taken**.
 
-   ![Een nieuwe Azure Databricks notitie blok maken](./media/store-secrets-azure-key-vault/create-new-notebook.png)
+   ![Een nieuw Azure Databricks-notitieblok maken](./media/store-secrets-azure-key-vault/create-new-notebook.png)
 
-4. Voer de naam van een notitie blok in en stel de taal in op python. Stel het cluster in op de naam van het cluster dat u in de vorige stap hebt gemaakt.
+4. Voer een notitiebloknaam in en stel de taal in op Python. Stel het cluster in op de naam van het cluster dat u in de vorige stap hebt gemaakt.
 
-5. Voer de volgende opdracht uit om de BLOB storage-container te koppelen. Vergeet niet om de waarden voor de volgende eigenschappen te wijzigen:
+5. Voer de volgende opdracht uit om de blobopslagcontainer te monteren. Vergeet niet de waarden voor de volgende eigenschappen te wijzigen:
 
-   * uw-container naam
-   * uw-opslag account-naam
-   * koppelings naam
-   * configuratie sleutel
-   * bereik-naam
-   * sleutel naam
+   * de naam van uw container
+   * uw naam van uw opslag-account
+   * mount-naam
+   * config-toets
+   * scope-naam
+   * sleutelnaam
 
    ```python
    dbutils.fs.mount(
@@ -166,50 +166,50 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
    extra_configs = {"<conf-key>":dbutils.secrets.get(scope = "<scope-name>", key = "<key-name>")})
    ```
 
-   * **mount-name** is een DBFS-pad dat aangeeft waar de BLOB storage container of een map in de container (opgegeven in de bron) wordt gekoppeld.
-   * **conf-sleutel** kan `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` of `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
-   * **bereik: naam** is de naam van het geheime bereik dat u in de vorige sectie hebt gemaakt. 
-   * **sleutel naam** is de naam van het geheim dat u hebt gemaakt voor de sleutel van het opslag account in uw sleutel kluis.
+   * **mount-name** is een DBFS-pad dat aangeeft waar de Blob Storage-container of een map in de container (opgegeven in bron) worden gemonteerd.
+   * **conf-key** kan `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` een van beide of`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **scope-name** is de naam van het geheime bereik dat u in de vorige sectie hebt gemaakt. 
+   * **sleutelnaam** is de naam van het geheim dat u hebt gemaakt voor de opslagaccountsleutel in uw sleutelkluis.
 
-   ![Blob-opslag koppeling in notitie blok maken](./media/store-secrets-azure-key-vault/command1.png)
+   ![Blob-opslagbevestiging maken in notitieblok](./media/store-secrets-azure-key-vault/command1.png)
 
-6. Voer de volgende opdracht uit om het tekst bestand in uw Blob Storage-container te lezen in een data frame. Wijzig de waarden in de opdracht zodat deze overeenkomen met de naam en bestands naam van de koppeling.
+6. Voer de volgende opdracht uit om het tekstbestand in de blobopslagcontainer in een gegevensframe te lezen. Wijzig de waarden in de opdracht die overeenkomen met de naam en bestandsnaam van de houder.
 
    ```python
    df = spark.read.text("mnt/<mount-name>/<file-name>")
    ```
 
-   ![Bestand lezen in data frame](./media/store-secrets-azure-key-vault/command2.png)
+   ![Bestand lezen naar gegevensframe](./media/store-secrets-azure-key-vault/command2.png)
 
 7. Gebruik de volgende opdracht om de inhoud van het bestand weer te geven.
 
    ```python
    df.show()
    ```
-   ![Data frame weer geven](./media/store-secrets-azure-key-vault/command3.png)
+   ![Gegevensframe weergeven](./media/store-secrets-azure-key-vault/command3.png)
 
-8. Voer de volgende opdracht uit om de Blob-opslag te ontkoppelen:
+8. Voer de volgende opdracht uit om de blobopslag los te maken:
 
    ```python
    dbutils.fs.unmount("/mnt/<mount-name>")
    ```
 
-   ![Opslag account ontkoppelen](./media/store-secrets-azure-key-vault/command4.png)
+   ![Opslagaccount demonteren](./media/store-secrets-azure-key-vault/command4.png)
 
-9. Als de koppeling is ontkoppeld, kunt u niet meer lezen uit uw Blob Storage-account.
+9. Merk op dat zodra de mount is losgekoppeld, je niet meer lezen van je blob-opslagaccount.
 
-   ![Fout bij ontkoppelen van opslag account](./media/store-secrets-azure-key-vault/command5.png)
+   ![Fout opslagaccount ongedaan maken](./media/store-secrets-azure-key-vault/command5.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u de hele resource groep door de volgende stappen uit te voeren:
+Als u deze toepassing niet blijft gebruiken, verwijdert u de volgende stappen:
 
-1. Selecteer **resource groepen** in het menu aan de linkerkant in azure Portal en navigeer naar uw resource groep.
+1. Selecteer **resourcegroepen** in het linkermenu in de Azure-portal en navigeer naar uw brongroep.
 
-2. Selecteer **resource groep verwijderen** en typ de naam van de resource groep. Selecteer vervolgens **Verwijderen**. 
+2. Selecteer **Brongroep verwijderen** en typ de naam van uw resourcegroep. Selecteer vervolgens **Verwijderen**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over het implementeren van een door VNet geïnjecteerde Databricks-omgeving met een service-eind punt dat is ingeschakeld voor Cosmos DB.
+Ga naar het volgende artikel om te leren hoe u een VNet-geïnjecteerde Databricks-omgeving implementeert met een Service Endpoint ingeschakeld voor Cosmos DB.
 > [!div class="nextstepaction"]
-> [Zelf studie: Azure Databricks implementeren met een Cosmos DB-eind punt](service-endpoint-cosmosdb.md)
+> [Zelfstudie: Azure Databricks implementeren met een Cosmos DB-eindpunt](service-endpoint-cosmosdb.md)

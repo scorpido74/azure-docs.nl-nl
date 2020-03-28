@@ -17,13 +17,13 @@ ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: db10520508eb0b216a59cc643394ab27fd5ffa69
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77169926"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Voor beeld van Azure-beleid voor het virtuele netwerk
+# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Azure-beleidsvoorbeeld ingebouwde ins voor virtueel netwerk
 
 De volgende tabel bevat koppelingen naar voorbeelden voor [Azure Policy](../governance/policy/overview.md). De voorbeelden staan in [opslagplaats met voorbeelden voor Azure Policy](https://github.com/Azure/azure-policy).
 

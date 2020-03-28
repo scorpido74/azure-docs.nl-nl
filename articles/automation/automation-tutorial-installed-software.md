@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239663"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Uitvinden welke software is geïnstalleerd op uw Azure- en niet-Azure-computers
@@ -31,13 +31,13 @@ In deze zelfstudie leert u het volgende:
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Een [Automation-account](automation-offering-get-started.md) voor het opslaan van de watcher- en actie-runbooks en de Watcher-taak.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) voor de onboarding.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij de Azure-portal op https://portal.azure.com.
+Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
@@ -45,11 +45,11 @@ Voor deze zelfstudie moet u eerst Wijzigingen bijhouden en Inventaris inschakele
 
 Navigeer naar uw Automation-account en selecteer **Inventaris** onder **CONFIGURATIEBEHEER**.
 
-Kies de Log Analytics-werkruimte en het Automation-account en klik op **Inschakelen** om de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
+Kies de werkruimte Log Analytics en het automatiseringsaccount en klik op **Inschakelen** om de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
 ![Banner voor configuratie van onboarden Inventaris](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Om de oplossing in te schakelen configureert u de locatie, de Log Analytics-werkruimte en het Automation-Account en klikt u op **Inschakelen**. Als de velden niet beschikbaar zijn, betekent dit dat er een andere automatiseringsoplossing is ingeschakeld voor de VM en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
+Als u de oplossing wilt inschakelen, configureert u de locatie, de werkruimte Logboekanalyse en het automatiseringsaccount om te gebruiken en klikt u op **Inschakelen**. Als de velden niet beschikbaar zijn, betekent dit dat er een andere automatiseringsoplossing is ingeschakeld voor de VM en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
 
 Een [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte wordt gebruikt om gegevens te verzamelen die worden gegenereerd door functies en services zoals Inventaris.
 De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
@@ -80,7 +80,7 @@ Als u niet-Azure-machines wilt toevoegen, installeert u de agent voor [Windows](
 
 Zodra de oplossing Wijzigingen bijhouden en Inventaris is ingeschakeld, kunt u de resultaten op de pagina **Inventaris** bekijken.
 
-Kies vanuit uw Automation-account **Inventaris** onder  **CONFIGURATIEBEHEER**.
+Kies vanuit uw Automation-account **Inventaris** onder ** CONFIGURATIEBEHEER**.
 
 Op de pagina **Inventaris** klikt u op het tabblad **Software**.
 

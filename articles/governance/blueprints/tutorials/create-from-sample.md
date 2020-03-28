@@ -1,189 +1,189 @@
 ---
-title: 'Zelf studie: voor beeld van blauw druk op nieuwe omgeving'
-description: In deze zelf studie gebruikt u een voor beeld van een blauw druk om een definitie van een blauw druk te maken waarmee twee resource groepen worden ingesteld en voor elke functie toewijzing wordt geconfigureerd.
-ms.date: 11/21/2019
+title: 'Zelfstudie: Voorbeeld van blauwdruk naar nieuwe omgeving'
+description: In deze zelfstudie gebruikt u een blauwdrukvoorbeeld om een blauwdrukdefinitie te maken die twee resourcegroepen instelt en een roltoewijzing voor elk groep configureert.
+ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321736"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80282015"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelf studie: een omgeving maken op basis van een voor beeld van een blauw druk
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Zelfstudie: Een omgeving maken op basis van een blauwdrukvoorbeeld
 
-Voorbeeld blauw drukken biedt voor beelden van wat u kunt doen met Azure-blauw drukken. Elk is een voor beeld met een specifieke intentie of doel, maar maakt zelf geen volledige omgeving. Elk is bedoeld als uitgangs punt om te verkennen met behulp van Azure-blauw drukken met verschillende combi Naties van opgenomen artefacten, ontwerpen en para meters.
+Voorbeeldblauwdrukken geven voorbeelden van wat er met Azure Blueprints kan worden gedaan. Elk is een voorbeeld met een specifieke intentie of doel, maar creëert niet zelf een volledige omgeving. Elk is bedoeld als startplaats om te verkennen met behulp van Azure Blueprints met verschillende combinaties van opgenomen artefacten, ontwerpen en parameters.
 
-In de volgende zelf studie worden de **resource groepen met RBAC** -blauw druk-voor beeld gebruikt om verschillende aspecten van de blauw drukken-service te tonen. De volgende stappen worden behandeld:
+De volgende zelfstudie gebruikt het voorbeeld **resourcegroepen met een Blauwdrukvan RBAC** om verschillende aspecten van de blueprints-service te presenteren. De volgende stappen worden behandeld:
 
 > [!div class="checklist"]
-> - Een nieuwe blauw druk-definitie maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
-> - Geïmplementeerde resources voor de toewijzing controleren
-> - De blauw druk voor het verwijderen van de vergren delingen opheffen
+> - Een nieuwe blauwdrukdefinitie maken in het voorbeeld
+> - Uw exemplaar van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
+> - Geïmplementeerde resources voor de toewijzing inspecteren
+> - De blauwdruk ongedaan maken om de vergrendelingen te verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze zelf studie is een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Om deze zelfstudie te voltooien, is een Azure-abonnement nodig. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="create-blueprint-definition-from-sample"></a>Definitie van blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-definition-from-sample"></a>Blauwdrukdefinitie maken uit voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk. Bij het importeren wordt een nieuwe blauw druk in uw omgeving gemaakt op basis van het voor beeld.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek het **voor beeld van de resource groepen met RBAC** -blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-
-   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam _twee-RGS-with-Role-Assignments_.
-   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep of het abonnement om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. In dit voor beeld worden twee resource groepen gedefinieerd, met weergave namen van _ProdRG_ en _PreProdRG_. De uiteindelijke naam en locatie van elke resource groep worden ingesteld tijdens de toewijzing van blauw drukken. De resource groep _ProdRG_ is toegewezen aan de rol _Inzender_ en de resource groep _PreProdRG_ is toegewezen aan de rollen _eigenaar_ en _lezers_ . De rollen die zijn toegewezen in de definitie zijn statisch, maar de gebruiker, de app of de groep waaraan de rol is toegewezen, wordt ingesteld tijdens de toewijzing van de blauw druk.
-
-1. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-Met deze stap maakt u een kopie van de definitie van de voor beeld-blauw druk in de geselecteerde beheer groep of dit abonnement. De definitie van de opgeslagen blauw druk wordt beheerd zoals elke blauw druk die helemaal is gemaakt. U kunt het voor beeld zo vaak opslaan als nodig voor uw beheer groep of abonnement. Elk exemplaar moet echter een unieke naam hebben.
-
-Wanneer de **definitie van de blauw druk** voor de portal is geslaagd, gaat u verder met de volgende stap.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften. Voor deze zelf studie worden er geen wijzigingen aangebracht.
+Implementeer eerst het blauwdrukvoorbeeld. Als u importeert, wordt een nieuwe blauwdruk in uw omgeving gemaakt op basis van het voorbeeld.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de blauw druk voor _twee RGS-with-Role-Assignments_ te vinden en deze te selecteren.
+1. Selecteer op de pagina **Aan de** slag aan de linkerkant de knop **Maken** onder Een _blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef in het nieuwe deel venster aan de rechter kant versie _1,0_ op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op, zoals ' eerste versie gepubliceerd vanuit de resource groepen met een voor beeld van RBAC-blauw drukken '. Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek de **resourcegroepen met rbac-blauwdrukvoorbeeld** onder _Andere voorbeelden_ en selecteer deze.
 
-Met deze stap kunt u de blauw druk toewijzen aan een abonnement. Nadat de wijzigingen zijn gepubliceerd, kunnen ze nog steeds worden gemaakt. Aanvullende wijzigingen moeten worden gepubliceerd met een nieuwe **versie** waarde voor het bijhouden van verschillen tussen verschillende versies van dezelfde blauw druk-definitie.
+1. Voer de _basisbeginselen_ van het blauwdrukvoorbeeld in:
 
-Wanneer de portal- **definitie voor publicatie blauw** drukken wordt weer gegeven, gaat u naar de volgende stap.
+   - **Blauwdruknaam:** geef een naam op voor uw kopie van het blauwdrukvoorbeeld. Voor deze zelfstudie gebruiken we de naam _twee-rgs-met-rol-opdrachten._
+   - **Definitielocatie**: Gebruik de ellips en selecteer de beheergroep of het abonnement om uw exemplaar van het voorbeeld op te slaan.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Selecteer het tabblad _Artefacten_ boven aan de pagina of **Volgende: Artefacten** onder aan de pagina.
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+1. Bekijk de lijst met artefacten die deel uitmaken van het blauwdrukvoorbeeld. In dit voorbeeld worden twee resourcegroepen gedefinieerd, met weergavenamen van _ProdRG_ en _PreProdRG._ De uiteindelijke naam en locatie van elke resourcegroep worden ingesteld tijdens de blauwdruktoewijzing. Aan de resourcegroep _ProdRG_ wordt de rol _Medewerker_ toegewezen en krijgt de brongroep _PreProdRG_ de rollen _Eigenaar_ en _Lezers_ toegewezen. De rollen die in de definitie zijn toegewezen, zijn statisch, maar de gebruiker, app of groep die de rol toegewezen krijgt, wordt ingesteld tijdens de blauwdruktoewijzing.
+
+1. Selecteer **Concept opslaan** wanneer u klaar bent met het bekijken van het blauwdrukvoorbeeld.
+
+Met deze stap wordt een kopie gemaakt van de blauwdrukdefinitie van het voorbeeld in de geselecteerde beheergroep of -abonnement. De opgeslagen blauwdrukdefinitie wordt beheerd zoals elke blauwdruk die vanuit het niets is gemaakt. U het voorbeeld zo vaak als nodig opslaan in uw beheergroep of abonnement. Elk exemplaar moet echter een unieke naam krijgen.
+
+Zodra de **opgeslagen poortmelding voor het opslaan van de** portal wordt weergegeven, gaat u naar de volgende stap.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. Het is gemaakt in **de conceptmodus** en moet worden **gepubliceerd** voordat het kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften. Voor deze zelfstudie zullen we geen wijzigingen aanbrengen.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om de definitie van de blauw druk voor _twee RGS-with-Role-Assignments_ te vinden en deze te selecteren.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om de blauwdrukdefinitie voor _twee rgs-met-roltoewijzingen_ te vinden en deze vervolgens te selecteren.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Geef in het nieuwe deelvenster aan de rechterkant **versie** als _1.0_ op voor uw exemplaar van het blauwdrukvoorbeeld. Deze eigenschap is handig voor als u later een wijziging aanbrengt. **Geef wijzigingsnotities** op, zoals 'Eerste versie gepubliceerd uit de resourcegroepen met RBAC-blauwdrukvoorbeeld'. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+Deze stap maakt het mogelijk om de blauwdruk toe te wijzen aan een abonnement. Na publicatie kunnen er nog wijzigingen worden aangebracht. Aanvullende wijzigingen vereisen publicatie met een nieuwe **versiewaarde** om verschillen tussen verschillende versies van dezelfde blauwdrukdefinitie bij te houden.
+
+Zodra de **publicatieblauwdrukdefinitie is geslaagd,** gaat u naar de volgende stap.
+
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **gepubliceerd,** kan deze worden toegewezen aan een abonnement binnen de beheergroep waaraan het is opgeslagen. Deze stap is waar parameters worden verstrekt om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om de blauwdrukdefinitie voor _twee rgs-met-roltoewijzingen_ te vinden en deze vervolgens te selecteren.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina met blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
-       Voor deze zelf studie selecteert u _VS Oost 2_.
-     - **Definitie van blauw druk-versie**: Kies de **gepubliceerde** versie _1,0_ van uw kopie van de definitie van de voorbeeld blauw druk.
+     - **Abonnementen:** selecteer een of meer abonnementen in de beheergroep waarop u uw exemplaar van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt voor elk van de parameters een toewijzing gemaakt met behulp van de ingevoerde parameters.
+     - **Toewijzingsnaam:** de naam is vooraf ingevuld op basis van de naam van de blauwdrukdefinitie.
+     - **Locatie:** selecteer een gebied waarin de beheerde identiteit moet worden gemaakt. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources voor](../../../active-directory/managed-identities-azure-resources/overview.md)meer informatie.
+       Selecteer voor deze zelfstudie _Oost-VS 2_.
+     - **Versie van de blauwdrukdefinitie**: Kies de **gepubliceerde** versie _1.0_ van uw exemplaar van de voorbeeldblauwdrukdefinitie.
 
-   - Toewijzing vergren delen
+   - Vergrendelingstoewijzing
 
-     Selecteer de vergrendelings modus voor _alleen-lezen_ blauw drukken. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+     Selecteer de _modus Alleen-lezen-_ blauwdrukvergrendeling. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Wijzig de standaard optie _systeem toegewezen_ . Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
+     Laat de _standaardsysteemtoegewezen optie._ Zie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie .
 
-   - Artefact parameters
+   - Artefact-parameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat in de kolom **waarde** is gedefinieerd. Selecteer uw Azure-gebruikers account voor `{Your ID}`.
+     De parameters die in deze sectie zijn gedefinieerd, zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze parameters zijn [dynamische parameters](../concepts/parameters.md#dynamic-parameters) omdat ze worden gedefinieerd tijdens de toewijzing van de blauwdruk. Stel voor elk artefact de parameterwaarde in op wat is gedefinieerd in de kolom **Waarde.** Selecteer `{Your ID}`hiervoor uw Azure-gebruikersaccount.
 
-     |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
+     |Artefact-naam|Artefacttype|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
-     |Resource groep ProdRG|Resourcegroep|Naam|ProductionRG|Hiermee definieert u de naam van de eerste resource groep.|
-     |Resource groep ProdRG|Resourcegroep|Locatie|VS - west 2|Hiermee stelt u de locatie van de eerste resource groep.|
-     |Inzender|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de rol van _Inzender_ toewijzing moet verlenen binnen de eerste resource groep.|
-     |Resource groep PreProdRG|Resourcegroep|Naam|PreProductionRG|Hiermee definieert u de naam van de tweede resource groep.|
-     |Resource groep PreProdRG|Resourcegroep|Locatie|VS - west|Hiermee stelt u de locatie van de tweede resource groep in.|
-     |Eigenaar|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van de _eigenaar_ binnen de tweede resource groep moet verlenen.|
-     |Lezers|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van _lezers_ moet verlenen in de tweede resource groep.|
+     |ProdRG-resourcegroep|Resourcegroep|Name|ProductieRG|Hiermee definieert u de naam van de eerste resourcegroep.|
+     |ProdRG-resourcegroep|Resourcegroep|Locatie|VS - west 2|Hiermee stelt u de locatie in van de eerste resourcegroep.|
+     |Inzender|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee bepaalt u welke gebruiker of groep de toewijzing van de _bijdrager_ moet verlenen binnen de eerste resourcegroep.|
+     |PreProdRG-resourcegroep|Resourcegroep|Name|PreProductionRG|Hiermee definieert u de naam van de tweede resourcegroep.|
+     |PreProdRG-resourcegroep|Resourcegroep|Locatie|VS - west|Hiermee stelt u de locatie in van de tweede resourcegroep.|
+     |Eigenaar|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee bepaalt u welke gebruiker of groep de _roltoewijzing van eigenaar_ binnen de tweede resourcegroep wilt verlenen.|
+     |Lezers|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee bepaalt u welke gebruiker of groep de roltoewijzing _Lezers_ binnen de tweede resourcegroep wilt verlenen.|
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
+1. Zodra alle parameters zijn ingevoerd, selecteert **u Toewijzen** onder aan de pagina.
 
-Met deze stap implementeert u de gedefinieerde resources en configureert u de geselecteerde **vergrendelings toewijzing**. Het kan tot 30 minuten duren om blauw drukken te vergren delen.
+Met deze stap worden de gedefinieerde resources geïmplementeerd en wordt de geselecteerde **vergrendelingstoewijzing geconfigureerd.** Het kan tot 30 minuten duren voordat blueprint-sloten zijn toegepast.
 
-Als de portal-definitie voor het toewijzen van de **blauw druk is geslaagd** , gaat u verder met de volgende stap.
+Zodra de **ontwerpblauwdrukdefinitie is geslaagd,** gaat u naar de volgende stap.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Resources controleren die door de toewijzing zijn geïmplementeerd
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Resources inspecteren die door de toewijzing zijn geïmplementeerd
 
-De toewijzing blauw drukken maakt en traceert de artefacten die in de definitie van de blauw druk zijn gedefinieerd. We kunnen de status van de resources zien op de pagina blauw druk toewijzen en door de resources rechtstreeks te bekijken.
+De blauwdruktoewijzing maakt en volgt de artefacten die zijn gedefinieerd in de blauwdrukdefinitie. We kunnen de status van de resources zien op de pagina met blauwdruktoewijzing en door rechtstreeks naar de bronnen te kijken.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role-Assignments_ te vinden en selecteer deze.
+1. Selecteer de pagina **Toegewezen blauwdrukken** aan de linkerkant. Gebruik de filters om de _blauwdruktoewijzing Toewijzing-twee-rgs-met-roltoewijzingen_ te vinden en deze vervolgens te selecteren.
 
-   Op deze pagina ziet u dat de toewijzing is geslaagd en de lijst met gemaakte resources samen met de vergrendelings status blauw drukken. Als de toewijzing is bijgewerkt, bevat de vervolg keuzelijst **toewijzings bewerking** Details over de implementatie van elke definitie versie. U kunt op elke genoteerde resource klikken en de eigenschappen pagina van de resources openen.
+   Op deze pagina kunnen we zien dat de toewijzing is geslaagd en de lijst met gemaakte resources samen met de status van hun blauwdrukvergrendeling. Als de toewijzing wordt bijgewerkt, worden in de vervolgkeuzelijst **Toewijzingsbewerking** details weergegeven over de implementatie van elke definitieversie. Op elke vermelde resource die is gemaakt, kan worden geklikt en wordt de eigenschappagina resources geopend.
 
-1. Selecteer de resource groep **ProductionRG** .
+1. Selecteer de **productieRG-brongroep.**
 
-   We zien dat de naam van de resource groep **ProductionRG** is en niet de weergave naam _ProdRG_voor artefacten. Deze naam komt overeen met de waarde die is ingesteld tijdens de blauw druk-toewijzing.
+   We zien dat de naam van de resourcegroep **ProductionRG** is en niet de artefact-weergavenaam _ProdRG._ Deze naam komt overeen met de waardedie is ingesteld tijdens de blauwdruktoewijzing.
 
-1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant en klik vervolgens op het tabblad **roltoewijzingen** .
+1. Selecteer de pagina **Toegangsbesturingselement (IAM)** aan de linkerkant en vervolgens het tabblad **Toewijzingen van rollen.**
 
-   Hier zien we dat uw account is toegewezen aan de rol _Inzender_ voor het bereik van _deze resource_. De toewijzing van de RGS-functie- _two-with-Role-Assignments_ is de rol _eigenaar_ , omdat deze is gebruikt voor het maken van de resource groep. Deze machtigingen worden ook gebruikt voor het beheren van resources met geconfigureerde blauw druk vergrendelingen.
+   Hier zien we dat uw account de rol _van bijdrager_ heeft gekregen voor het bereik van _deze bron._ De blauwdruktoewijzing _Toewijzing-twee-rgs-met-roltoewijzingen_ heeft de rol _Eigenaar_ zoals deze is gebruikt om de resourcegroep te maken. Deze machtigingen worden ook gebruikt om resources met geconfigureerde blauwdrukvergrendelingen te beheren.
 
-1. Selecteer in de Azure Portal breadcrumb **toewijzing-twee RGS-with-Role-Assignments** om één pagina terug te gaan en selecteer vervolgens de resource groep **PreProductionRG** .
+1. Selecteer in de breadcrumb van de **Azure-portal Toewijzing-twee-rgs-met-roltoewijzingen** om één pagina terug te gaan en selecteer vervolgens de brongroep **PreProductionRG.**
 
-1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant en klik vervolgens op het tabblad **roltoewijzingen** .
+1. Selecteer de pagina **Toegangsbesturingselement (IAM)** aan de linkerkant en vervolgens het tabblad **Toewijzingen van rollen.**
 
-   Hier zien we dat aan uw account zowel de rol van _eigenaar_ als _lezer_ zijn verleend, zowel op het bereik van _deze resource_. De toewijzing van de blauw druk heeft ook de rol van _eigenaar_ , zoals de eerste resource groep.
+   Hier zien we dat uw account zowel de _rol van eigenaar_ als van _reader_ heeft gekregen, zowel op het bereik van _deze bron_. De blauwdruktoewijzing heeft ook de rol _Eigenaar,_ zoals de eerste resourcegroep.
 
-1. Selecteer het tabblad **toewijzingen weigeren** .
+1. Selecteer het tabblad **Toewijzingen weigeren.**
 
-   De toewijzing van de blauw druk heeft een [deny-toewijzing](../../../role-based-access-control/deny-assignments.md) gemaakt voor de geïmplementeerde resource groep om de _alleen-lezen_ vergrendelings modus voor blauw drukken af te dwingen. Met de weiger toewijzing kan iemand met de juiste rechten op het tabblad _roltoewijzingen_ geen specifieke acties uitvoeren. De weiger toewijzing heeft gevolgen voor _alle principals_.
+   De blauwdruktoewijzing heeft een [toewijzing voor weigeren](../../../role-based-access-control/deny-assignments.md) gemaakt in de geïmplementeerde resourcegroep om de modus _Alleen-lezen-blauwdrukvergrendeling_ af te dwingen. De toewijzing weigeren voorkomt dat iemand met de juiste rechten op het tabblad _Toewijzingen van rollen_ specifieke acties kan uitvoeren. De toewijzing weigeren is van invloed op _alle principals_.
 
-1. Selecteer de toewijzing weigeren en selecteer vervolgens de pagina **geweigerde machtigingen** aan de linkerkant.
+1. Selecteer de toewijzing weigeren en selecteer de pagina **Geweigerde machtigingen** aan de linkerkant.
 
-   De toewijzing weigeren voor komt dat alle bewerkingen met de configuratie van **\*** en de **actie** worden uitgevoerd, maar biedt Lees toegang door **\*/Read** uit te **sluiten.**
+   De weigeringstoewijzing voorkomt **\*** alle bewerkingen met de configuratie en **Actie,** maar biedt leestoegang door het uitsluiten ** \*/lezen** via **NotActions**uit te sluiten.
 
-1. Selecteer in de Azure Portal brood kruimel **PreProductionRG-Access Control (IAM)** . Selecteer vervolgens de pagina **overzicht** aan de linkerkant en klik vervolgens op de knop **resource groep verwijderen** . Voer de naam _PreProductionRG_ in om de verwijdering te bevestigen en selecteer **verwijderen** onder aan het deel venster.
+1. Selecteer **PreProductionRG - Toegangscontrole (IAM)** in de broodkruimel van de Azure-portal. Selecteer vervolgens de pagina **Overzicht** aan de linkerkant en vervolgens de knop **Brongroep verwijderen.** Voer de naam _PreProductionRG_ in om de delete te bevestigen en selecteer **Delete** onder in het deelvenster.
 
-   De portal melding voor het verwijderen van de **resource groep PreProductionRG is mislukt** . De fout geeft aan dat uw account is gemachtigd om de resource groep te verwijderen, wordt de toegang geweigerd door de toewijzing van de blauw druk. Houd er rekening mee dat de _alleen-lezen_ modus blauw drukken tijdens het toewijzen van blauw drukken is geselecteerd. Met de vergren deling blauw druk voor komt u dat een account met toestemming, zelfs _eigenaar_, de resource verwijdert. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
+   De portalmelding **Verwijder brongroep PreProductionRG is** mislukt. De fout stelt dat terwijl uw account toestemming heeft om de brongroep te verwijderen, de toegang wordt geweigerd door de blauwdruktoewijzing. Vergeet niet dat we de _lees-alleen-blauwdrukvergrendelingsmodus_ hebben geselecteerd tijdens de blauwdruktoewijzing. Het blauwdrukslot voorkomt dat een account met toestemming, zelfs _Eigenaar,_ de bron kan verwijderen. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../concepts/resource-locking.md).
 
-Deze stappen laten zien dat onze resources zijn gemaakt zoals gedefinieerd en dat de blauw drukken vergrendeld ongewenste verwijdering, zelfs van een account met toestemming, blokkeert.
+Deze stappen laten zien dat onze resources zijn gemaakt zoals gedefinieerd en dat de blauwdrukvergrendelingen ongewenste verwijdering hebben voorkomen, zelfs van een account met toestemming.
 
-## <a name="unassign-the-blueprint"></a>De blauw druk intrekken
+## <a name="unassign-the-blueprint"></a>De blauwdruk ongedaan maken
 
-De laatste stap bestaat uit het verwijderen van de toewijzing van de blauw druk en de resources die deze heeft geïmplementeerd.
+De laatste stap is het verwijderen van de toewijzing van de blauwdruk en de resources die deze heeft geïmplementeerd.
 Als u de toewijzing verwijdert, worden de geïmplementeerde artefacten niet verwijderd.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **toegewezen blauw drukken** aan de linkerkant. Gebruik de filters om de toewijzing van de blauw druk _RGS-with-Role-Assignments_ te vinden en selecteer deze.
+1. Selecteer de pagina **Toegewezen blauwdrukken** aan de linkerkant. Gebruik de filters om de _blauwdruktoewijzing Toewijzing-twee-rgs-met-roltoewijzingen_ te vinden en deze vervolgens te selecteren.
 
-1. Selecteer de knop **blauw** drukken opheffen boven aan de pagina. Lees de waarschuwing in het bevestigings venster en selecteer vervolgens **OK**.
+1. Selecteer de **knop Blauwdruk ongedaan maken** boven aan de pagina. Lees de waarschuwing in het bevestigingsdialoogvenster en selecteer **OK**.
 
-   Wanneer de blauw druk-toewijzing is verwijderd, worden de blauw druk-vergren delingen ook verwijderd. De gemaakte resources kunnen opnieuw worden verwijderd door een account met machtigingen.
+   Nu de blauwdruktoewijzing is verwijderd, worden ook de blauwdrukvergrendelingen verwijderd. De gemaakte bronnen kunnen opnieuw worden verwijderd door een account met machtigingen.
 
-1. Selecteer **resource groepen** in het menu van Azure en selecteer vervolgens **ProductionRG**.
+1. Selecteer **Resourcegroepen** in het Azure-menu en selecteer **ProductionRG**.
 
-1. Selecteer de pagina **toegangs beheer (IAM)** aan de linkerkant en klik vervolgens op het tabblad **roltoewijzingen** .
+1. Selecteer de pagina **Toegangsbesturingselement (IAM)** aan de linkerkant en vervolgens het tabblad **Toewijzingen van rollen.**
 
-De beveiliging voor elke resource groepen heeft nog steeds de geïmplementeerde roltoewijzingen, maar de toewijzing van de blauw druk heeft geen _eigenaars_ toegang meer.
+De beveiliging voor elke resourcegroep heeft nog steeds de geïmplementeerde roltoewijzingen, maar de blauwdruktoewijzing heeft geen toegang tot _de eigenaar_ meer.
 
-Als de portal melding voor het verwijderen van de **blauw druk is voltooid** , gaat u naar de volgende stap.
+Zodra de **portalmelding voor het verwijderen van de ontwerpopdracht is** gelukt, gaat u naar de volgende stap.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze zelf studie, moet u de volgende resources verwijderen:
+Als u klaar bent met deze zelfstudie, verwijdert u de volgende bronnen:
 
-- _ProductionRG_ van resource groep
-- _PreProductionRG_ van resource groep
-- Definitie van blauw druk _twee-RGS-with-Role-Assignments_
+- Grondstoffengroep _ProductionRG_
+- Brongroep _PreProductionRG_
+- Blauwdrukdefinitie _twee-rgs-met-rol-opdrachten_
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een nieuwe blauw druk kunt maken op basis van een voorbeeld definitie. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
+In deze zelfstudie hebt u geleerd hoe u een nieuwe blauwdruk maken op basis van een voorbeelddefinitie. Ga voor meer informatie over Azure Blueprints verder naar het artikel over de levenscyclus van de blauwdruk.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de levens duur van de blauw druk](../concepts/lifecycle.md)
+> [Meer informatie over de levenscyclus van de blauwdruk](../concepts/lifecycle.md)

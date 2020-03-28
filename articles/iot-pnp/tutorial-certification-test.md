@@ -1,6 +1,6 @@
 ---
-title: Uw IoT Plug en Play-preview-apparaat certificeren | Microsoft Docs
-description: In deze zelf studie wordt beschreven hoe u uw product gegevens toevoegt aan de catalogus met Azure Certified for IoT-apparaten, uw apparaat verbindt met de Azure IoT-certificerings service en vervolgens de IoT-Plug en Play certificerings tests uitvoert.
+title: Uw IoT Plug and Play Preview-apparaat certificeren | Microsoft Documenten
+description: In deze zelfstudie wordt beschreven hoe u uw productgegevens toevoegt aan de azure certified voor IoT-apparaatcatalogus, uw apparaat aansluit op de Azure IoT-certificeringsservice en vervolgens de IoT Plug and Play-certificeringstests uitvoert.
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
@@ -9,99 +9,99 @@ ms.author: koichih
 author: konichi3
 ms.date: 12/27/2019
 ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75550159"
 ---
-# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Zelf studie: uw IoT Plug en Play-preview-apparaat certificeren
+# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Zelfstudie: Uw IoT Plug and Play Preview-apparaat certificeren
 
-Voor het publiceren van een IoT Plug en Play preview-apparaat in de [catalogus met Azure Certified for IOT-apparaten](https://aka.ms/iotdevcat)moet er een set certificerings tests worden door gegeven. Gebruik de [Azure Certified voor IOT](https://aka.ms/ACFI) -Portal om uw apparaat in te dienen voor certificering. De [Azure IOT-certificerings service](https://aka.ms/azure-iot-aics) voert de certificerings tests uit.
+Als u een IoT Plug and Play Preview-apparaat wilt publiceren in de [azure certified voor IoT-apparaatcatalogus,](https://aka.ms/iotdevcat)moet het een reeks certificeringstests doorstaan. Gebruik de [Azure Certified for IoT-portal](https://aka.ms/ACFI) om uw apparaat in te dienen voor certificering. De [Azure IoT-certificeringsservice](https://aka.ms/azure-iot-aics) voert de certificeringstests uit.
 
-In deze zelf studie leert u het volgende:
+In deze zelfstudie leert u:
 
 > [!div class="checklist"]
-> * Wat zijn de vereisten voor IoT Plug en Play-certificering.
-> * Hoe u uw product naam en-gegevens toevoegt aan de portal.
-> * Verbinding maken en IoT Plug en Play-interfaces ontdekken.
-> * Hoe u IoT-Plug en Play interfaces kunt controleren en certificerings tests kunt uitvoeren.
-> * De gecertificeerde IoT Plug en Play-apparaat publiceren naar de catalogus.
+> * Wat zijn de IoT Plug and Play-certificeringsvereisten?
+> * Hoe voeg je je productnaam en informatie toe aan de portal.
+> * Hoe maak je verbinding en ontdek IoT Plug and Play interfaces.
+> * Hoe u IoT Plug and Play-interfaces bekijkt en certificeringstests uitvoert.
+> * Het gecertificeerde IoT Plug and Play-apparaat publiceren in de catalogus.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een micro soft Partner Center-account.
-* De Microsoft Partner Network-ID.
+* Een Microsoft Partner Center-account.
+* De Microsoft Partner Network ID.
 
-Zie [How to unboard to the Azure Certified for IOT](howto-onboard-portal.md) Portal (Engelstalig) voor meer informatie.
+Zie [Aan boord van de Azure Certified for IoT-portal voor](howto-onboard-portal.md) meer informatie.
 
 ## <a name="certification-requirements"></a>Vereisten voor certificering
 
-Als u uw IoT Plug en Play-apparaat wilt certificeren, moet uw apparaat voldoen aan de volgende vereisten:
+Om uw IoT Plug and Play-apparaat te certificeren, moet uw apparaat aan de volgende vereisten voldoen:
 
-* Uw IoT Plug en Play-apparaatcode moet op uw apparaat zijn geïnstalleerd.
-* Uw IoT Plug en Play-apparaatcode zijn gebouwd met de Azure IoT SDK.
-* Uw apparaatcode moet de [Azure-IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)ondersteunen.
-* Op de apparaatcode moet de [interface voor de apparaatgegevens](concepts-common-interfaces.md)worden geïmplementeerd.
-* Het bekwaamheids model en de apparaatcode werken met IoT Central.
+* De code van uw IoT Plug and Play-apparaat moet op uw apparaat zijn geïnstalleerd.
+* Uw IoT Plug and Play-apparaatcode is gebouwd met de Azure IoT SDK.
+* Uw apparaatcode moet de [Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md)ondersteunen.
+* Uw apparaatcode moet de [apparaatinformatie-interface](concepts-common-interfaces.md)implementeren.
+* Het capaciteitsmodel en de apparaatcode werken met IoT Central.
 
-Alle apparaten die zich momenteel in de catalogus bevinden, worden beschouwd als vooraf gecertificeerde IoT Plug en Play-apparaten. Het biedt geen garantie voor de kwaliteit en naleving van het uiteindelijke product van IoT-Plug en Play software onderdelen zoals SDK en de taal van de digitale dubbele definitie.
+Alle apparaten die momenteel in de catalogus staan, worden beschouwd als vooraf gecertificeerde IoT Plug and Play-apparaten. Het garandeert niet de kwaliteit en naleving van het eindproduct van IoT Plug and Play softwarecomponenten zoals SDK en de Digital Twin Definition Language.
 
-Alle vooraf gecertificeerde IoT Plug en Play-apparaten moeten opnieuw worden gecertificeerd bij de algemene Beschik baarheid van IoT Plug en Play op basis van de definitieve versie van de certificerings vereisten en software onderdelen van micro soft.
+Alle vooraf gecertificeerde IoT Plug and Play-apparaten moeten opnieuw certificeren op basis van de algemene beschikbaarheid van IoT Plug and Play op basis van de definitieve versie van certificeringsvereisten en softwarecomponenten van Microsoft.
 
-## <a name="add-product-name"></a>Product naam toevoegen
+## <a name="add-product-name"></a>Productnaam toevoegen
 
-**Product** is een beschrijvende naam voor een product model dat een klant kan kopen. Een product toevoegen:
+**Product** is een vriendelijke naam voor een productmodel dat een klant kan kopen. Ga als lid van het artikel om een product toe te voegen:
 
-1. Meld u aan bij de [Azure Certified voor IOT](https://aka.ms/ACFI) -Portal.
-1. Ga in het menu links naar de pagina **producten** van de portal en selecteer **+ Nieuw**.
-1. Voer uw beschrijvende product naam in en selecteer **maken**. De naam die u hier opgeeft, wijkt af van de naam die wordt weer gegeven in de catalogus met apparaten.
+1. Meld u aan bij de [Azure Certified for IoT-portal.](https://aka.ms/ACFI)
+1. Ga naar de pagina **Producten** in de portal in het linkermenu en selecteer **+ Nieuw**.
+1. Voer uw vriendelijke productnaam in en selecteer **Maken**. De hier ingevoerde naam verschilt van de naam die in de apparaatcatalogus wordt weergegeven.
 
-## <a name="add-product-information"></a>Product informatie toevoegen
+## <a name="add-product-information"></a>Productinformatie toevoegen
 
-Nadat het product in de portal is gemaakt, wordt het product weer gegeven op de pagina **producten** . De product gegevens toevoegen:
+Nadat u het product in de portal hebt gemaakt, wordt het product weergegeven op de pagina **Producten.** Ga als u de productinformatie toevoegen:
 
-1. Selecteer de gemaakte product koppeling die is gevonden op de **product** pagina in de kolom product. De status moet de status concept hebben.
-1. Selecteer de koppeling **bewerken** naast **product informatie** . Voer informatie over uw product in op de pagina product informatie en zorg ervoor dat u alle vereiste velden hebt voltooid.
-1. Selecteer **Opslaan**. De knop **Opslaan** wordt alleen weer gegeven wanneer u alle vereiste velden hebt voltooid. Als de velden onvolledig zijn, verschijnt de knop **opslaan en later volt ooien**.
-1. Controleer de inhoud die u hebt ingevoerd. Vul alle vereiste velden in om het apparaat naar de catalogus van het apparaat te publiceren. U kunt altijd teruggaan om wijzigingen aan te brengen in de product informatie op de pagina product details door te klikken op de koppeling **bewerken** naast **product informatie** .
+1. Selecteer de gemaakte productkoppeling op **de** productpagina in de productkolom. De staat moet in conceptstaat zijn.
+1. Selecteer de koppeling **Bewerken** naast de kop **Productinformatie.** Voer informatie over uw product in op de pagina met productinformatie en zorg ervoor dat u alle vereiste velden invult.
+1. Selecteer **Opslaan**. De knop **Opslaan** wordt alleen weergegeven wanneer u alle vereiste velden hebt voltooid. Als de velden onvolledig zijn, wordt op de knop **Opslaan en later voltooid.**
+1. Bekijk de inhoud die u hebt ingevoerd. Vul alle vereiste velden in om het apparaat naar de apparaatcatalogus te publiceren. U altijd teruggaan om de productinformatie op de pagina productdetails aan te brengen door op de koppeling **bewerken** naast de kop **Productinformatie** te klikken.
 
-## <a name="connect-and-discover-interfaces"></a>Interfaces verbinden en detecteren
+## <a name="connect-and-discover-interfaces"></a>Interfaces verbinden en ontdekken
 
-Als u de certificerings tests wilt uitvoeren, moet u uw apparaat verbinden met de [Azure IOT-certificerings service](https://aka.ms/azure-iot-aics) (AICS) die beschikbaar is in de portal.
+Als u de certificeringstests wilt uitvoeren, sluit u uw apparaat aan op de [Azure IoT-certificeringsservice](https://aka.ms/azure-iot-aics) (AICS) die beschikbaar is in de portal.
 
-Deze stappen zijn één tijd stap voor het uitvoeren van certificerings tests en het is niet nodig om de code van uw product apparaat te wijzigen. Volg deze stappen om verbinding te maken met AICS:
+Deze stappen zijn een eenmalige stap voor het uitvoeren van certificeringstests en het is niet nodig om de code van uw productapparaat te wijzigen. Volg de volgende stappen om verbinding te maken met AICS:
 
-1. Meld u aan bij de portal met uw partner centrum-account.
-1. Klik op **verbinding + testen** om de certificerings stroom te starten.
-1. Kies de [verificatie methode](../iot-dps/concepts-security.md#attestation-mechanism) om uw apparaat in te RICHTEN op AICS met behulp van de [Azure-IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
-   * Als u een [x. 509-certificaat](../iot-hub/iot-hub-security-x509-get-started.md#prerequisites)gebruikt, uploadt u het gegenereerde x. 509-certificaat. U kunt de voorbeeld code bekijken waarin wordt getoond hoe u X. 509-certificaten gebruikt: [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c), [C#](../iot-hub/iot-hub-security-x509-get-started.md).
-   * Als u een [symmetrische sleutel](../iot-dps/concepts-symmetric-key-attestation.md)gebruikt, kopieert en plakt u de symmetrische sleutel in de code van uw apparaat.
-   * De TPM-verificatie methode wordt op dit moment niet ondersteund.
-1. Kopieer de volgende gegenereerde Id's en plak ze in de code van uw apparaat.
-   * [Registratie-ID](../iot-dps/use-hsm-with-sdk.md)
+1. Meld u aan bij de portal met uw Partner Center-account.
+1. Klik op **Connect + test** om de certificeringsstroom te starten.
+1. Kies de [verificatiemethode](../iot-dps/concepts-security.md#attestation-mechanism) om uw apparaat in te richten op AICS met de [Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+   * Als u een [X.509-certificaat](../iot-hub/iot-hub-security-x509-get-started.md#prerequisites)gebruikt, uploadt u het gegenereerde X.509-certificaat. Misschien wilt u de voorbeeldcode bekijken die laat zien hoe u X.509-certificaten gebruikt: [C,](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c) [C#](../iot-hub/iot-hub-security-x509-get-started.md).
+   * Als u een [symmetrische sleutel](../iot-dps/concepts-symmetric-key-attestation.md)gebruikt, kopieert en plakt u de symmetrische toets in de apparaatcode.
+   * TPM-verificatiemethode wordt op dit moment niet ondersteund.
+1. Kopieer en plak de volgende gegenereerde id's in de apparaatcode.
+   * [Registratie-id](../iot-dps/use-hsm-with-sdk.md)
    * [DPS-ID](../iot-dps/tutorial-set-up-device.md#create-the-device-registration-software)
-   * [DPS-eind punt](../iot-dps/tutorial-set-up-device.md#create-the-device-registration-software)
-1. Wanneer uw apparaatcode is gebouwd en geïmplementeerd op het apparaat, selecteert u **verbinding maken** om de IOT Plug en Play-interfaces te ontdekken.
-1. Wanneer de verbinding met AICS is geslaagd, selecteert u **volgende** om de IOT Plug en Play-interfaces te controleren.
+   * [DPS-eindpunt](../iot-dps/tutorial-set-up-device.md#create-the-device-registration-software)
+1. Wanneer uw apparaatcode is gebouwd en geïmplementeerd op het apparaat, selecteert u **Verbinding maken** om de IoT Plug and Play-interfaces te ontdekken.
+1. Wanneer de verbinding met AICS succesvol is, selecteert u **Volgende** om de IoT Plug and Play-interfaces te bekijken.
 
 ## <a name="run-tests-and-publish-the-device"></a>Tests uitvoeren en het apparaat publiceren
 
-Op de pagina controleren kunt u de gedetecteerde IoT-Plug en Play interfaces bekijken. Op deze pagina kunt u controleren of de primitieven die in de interface worden geïmplementeerd, correct worden weer gegeven. U kunt ook de locatie van de interface controleren.
+Op de beoordelingspagina u de gedetecteerde IoT Plug and Play-interfaces bekijken. Gebruik deze pagina om de primitieven die in de interfaceweergave zijn geïmplementeerd, correct te controleren. U ook de locatie van de interface controleren.
 
-1. Zorg ervoor dat Payload-invoer is ingevoerd voor de vereiste velden. Deze velden bevatten Payload-informatie voor de opdracht primitief voor de opgegeven interface.
-1. Wanneer u alle vereiste gegevens hebt opgegeven, selecteert u **volgende**.
-1. Als u de tests voor de geïmplementeerde IoT Plug en Play-interfaces wilt uitvoeren, selecteert u **tests uitvoeren**.
-1. Alle tests worden automatisch uitgevoerd. Als een test mislukt, selecteert u **Logboeken weer geven** om de fout berichten van AICS en de onbewerkte telemetrie te bekijken die naar Azure IOT hub worden verzonden.
-1. Selecteer **volt ooien**om de certificerings tests te volt ooien.
-1. Publiceer het gecertificeerde IoT Plug en Play-apparaat naar de catalogus. Selecteer **toevoegen aan catalogus** op de werk balk om het gecertificeerde apparaat toe te voegen aan de catalogus. Als de **toevoegen aan catalogus** grijs wordt weer gegeven, betekent dit dat de product gegevens onvolledig zijn of dat de tests zijn mislukt. 
-1. Selecteer de koppeling ' gecertificeerd en IN de catalogus ' om uw gepubliceerde apparaat weer te geven in in de catalogus met apparaten.
+1. Zorg ervoor dat laadvermogeningangen worden ingevoerd voor de vereiste velden. Deze velden bevatten payload-informatie voor de opdracht primitief voor de opgegeven interface.
+1. Wanneer u alle vereiste gegevens hebt ingevoerd, selecteert u **Volgende**.
+1. Als u de tests voor de geïmplementeerde IoT Plug and Play-interfaces wilt uitvoeren, selecteert u **Tests uitvoeren**.
+1. Alle tests worden automatisch uitgevoerd. Als een test mislukt, selecteert u **Logboeken weergeven** om de foutberichten van AICS en de ruwe telemetrie te bekijken die naar Azure IoT Hub worden verzonden.
+1. Als u de certificeringstests wilt voltooien, selecteert u **Voltooien**.
+1. Publiceer het gecertificeerde IoT Plug and Play-apparaat in de catalogus. Als u het gecertificeerde apparaat aan de catalogus wilt toevoegen, selecteert u **Toevoegen aan catalogus** op de werkbalk. Als de **catalogus Toevoegen aan** wordt vergrijsd, betekent dit dat de productinformatie onvolledig is of dat de tests zijn mislukt. 
+1. Selecteer de koppeling 'GECERTIFICEERD EN IN DE CATALOGUS' om uw gepubliceerde apparaat in de apparaatcatalogus weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over het certificeren van IoT Plug en Play-apparaat, is de voorgestelde volgende stap meer informatie over het beheren van mogelijkheden modellen:
+Nu u hebt geleerd over het certificeren van IoT Plug and Play-apparaat, is de voorgestelde volgende stap om meer te weten te komen over het beheren van capaciteitsmodellen:
 
 > [!div class="nextstepaction"]
 > [Modellen beheren](./howto-manage-models.md)

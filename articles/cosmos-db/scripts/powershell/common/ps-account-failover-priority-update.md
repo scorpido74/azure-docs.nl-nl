@@ -1,19 +1,19 @@
 ---
-title: Power shell-script voor het wijzigen van de failover-prioriteit voor een Azure Cosmos-account
-description: Azure PowerShell script-voor beeld-failover-prioriteit wijzigen of failover activeren voor een Azure Cosmos-account
+title: PowerShell-script om failoverprioriteit voor een Azure Cosmos-account met één master te wijzigen
+description: Azure PowerShell-scriptvoorbeeld - Failoverprioriteit wijzigen of failover activeren voor een Azure Cosmos DB-account met één master
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441506"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366123"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Failover-prioriteit wijzigen of failover activeren voor een Azure Cosmos-account met behulp van Power shell
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Failoverprioriteit wijzigen of een failover activeren voor een Azure Cosmos DB single-master-account met PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "75441506"
 ## <a name="sample-script"></a>Voorbeeldscript
 
 > [!NOTE]
-> Elke wijziging in een regio met `failoverPriority=0` een hand matige failover wordt geactiveerd en kan alleen worden uitgevoerd voor een account dat is geconfigureerd voor hand matige failover. Wijzigingen in alle andere regio's veranderen eenvoudigweg de failover-prioriteit voor een Cosmos-account.
+> Elke wijziging in `failoverPriority=0` een regio met triggers een handmatige failover en kan alleen worden gedaan om een account geconfigureerd voor handmatige failover. Wijzigingen in alle andere regio's wijzigt gewoon de failoverprioriteit voor een Cosmos-account.
 > [!NOTE]
-> Dit voor beeld laat zien hoe u een SQL (core) API-account gebruikt. Als u dit voor beeld voor andere Api's wilt gebruiken, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifiek script
+> Dit voorbeeld toont aan dat u een SQL (Core) API-account gebruikt. Als u dit voorbeeld wilt gebruiken voor andere API's, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifieke script
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
@@ -42,9 +42,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Hiermee wordt een actie voor een resource aangeroepen. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Hiermee worden Cosmos DB-accounts vermeld of wordt een opgegeven Cosmos DB-account weergegeven. |
+| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Werk de failoverprioriteitsvolgorde van de regio's van een Cosmos DB-account bij. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

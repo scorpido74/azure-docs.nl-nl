@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239642"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-voorbeelden
@@ -22,7 +22,7 @@ De volgende tabel bevat links naar bash-scripts voor Azure Functions die gebruik
 | App maken | Beschrijving |
 |---|---|
 | [Een functie-app maken voor serverloze uitvoering](scripts/functions-cli-create-serverless.md) | Hiermee maakt u een functie-app in een verbruiksabonnement.  |
-| [Een serverloze python-functie-app maken](scripts/functions-cli-create-serverless-python.md) | Hiermee maakt u een functie-app in een bepaald App Service-abonnement. |
+| [Een serverloze Python-functie-app maken](scripts/functions-cli-create-serverless-python.md) | Hiermee maakt u een functie-app in een bepaald App Service-abonnement. |
 | [Een functie-app maken in een schaalbaar Premium-abonnement](scripts/functions-cli-create-premium-plan.md) | Hiermee maakt u een functie-app in een bepaald App Service-abonnement. |
 | [Een functie-app maken in een speciaal (App Service)-abonnement](scripts/functions-cli-create-app-service-plan.md) | Hiermee maakt u een functie-app in een bepaald App Service-abonnement. |
 
@@ -30,9 +30,9 @@ De volgende tabel bevat links naar bash-scripts voor Azure Functions die gebruik
 |---|---|
 | [Een functie-app maken en deze verbinden met een opslagaccount](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Hiermee maakt u een functie-app en verbindt u deze met een opslagaccount. |
 | [Een functie-app maken en deze verbinden met een Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Hiermee maakt u een functie-app en verbindt u deze met een Azure Cosmos DB. |
-| [Een python-functie-app maken en een Azure Files share koppelen](scripts/functions-cli-mount-files-storage-linux.md) | Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning modellen of andere gegevens in uw functies. | 
+| [Een Python-functie-app maken en een Azure-bestanden-share monteren](scripts/functions-cli-mount-files-storage-linux.md) | Door een share te monteren op uw Linux-functie-app, u gebruikmaken van bestaande machine learning-modellen of andere gegevens in uw functies. | 
 
 | Doorlopende implementatie | Beschrijving|
 |---|---|
 | [Implementeren vanuit GitHub](scripts/functions-cli-create-function-app-github-continuous.md) | Hiermee maakt u een functie-app die wordt geïmplementeerd vanuit een GitHub-opslagplaats.  |
-| [Implementeren vanuit Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Maak een functie-app die wordt geïmplementeerd vanuit een Azure DevOps-opslag plaats.  |
+| [Implementeren vanuit Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Maak een functie-app die wordt geïmplementeerd vanuit een Azure DevOps-repository.  |

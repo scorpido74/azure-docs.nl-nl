@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Automation runbooks gebruiken om clusters te maken-Azure HDInsight'
-description: Meer informatie over het maken en verwijderen van Azure HDInsight-clusters met scripts die worden uitgevoerd in de Cloud met behulp van Azure Automation runbooks.
+title: 'Zelfstudie: Azure Automation-runbooks gebruiken om clusters te maken - Azure HDInsight'
+description: Meer informatie over het maken en verwijderen van Azure HDInsight-clusters met scripts die in de cloud worden uitgevoerd met Azure Automation-runbooks.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,54 +9,54 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75553511"
 ---
-# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Zelf studie: Azure HDInsight-clusters maken met Azure Automation
+# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Zelfstudie: Azure HDInsight-clusters maken met Azure Automation
 
-Met Azure Automation kunt u scripts maken die worden uitgevoerd in de Cloud en Azure-resources op aanvraag of op basis van een schema beheren. In dit artikel wordt beschreven hoe u Power shell-runbooks maakt om Azure HDInsight-clusters te maken en verwijderen.
+Met Azure Automation u scripts maken die in de cloud worden uitgevoerd en Azure-resources on-demand of op basis van een planning beheren. In dit artikel wordt beschreven hoe u PowerShell-runbooks maakt om Azure HDInsight-clusters te maken en te verwijderen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Modules installeren die nodig zijn voor interactie met HDInsight.
-> * Referenties maken en opslaan die nodig zijn tijdens het maken van het cluster.
-> * Maak een nieuw runbook van Azure Automation om een HDInsight-cluster te maken.
+> * Installeer modules die nodig zijn voor interactie met HDInsight.
+> * Maak en sla referenties op die nodig zijn tijdens het maken van het cluster.
+> * Maak een nieuwe Azure Automation-runbook om een HDInsight-cluster te maken.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een bestaand [Azure Automation-account](../automation/automation-quickstart-create-account.md).
-* Een bestaand [Azure Storage-account](../storage/common/storage-account-create.md)dat wordt gebruikt als cluster opslag.
+* Een bestaand [Azure Storage-account](../storage/common/storage-account-create.md), dat wordt gebruikt als clusteropslag.
 
 ## <a name="install-hdinsight-modules"></a>HDInsight-modules installeren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer uw Azure Automation accounts.
-1. Selecteer **modules galerie** onder **gedeelde resources**.
-1. Typ **AzureRM. profile** in het vak en druk op ENTER om te zoeken. Selecteer het beschik bare Zoek resultaat.
-1. Selecteer **importeren**in het scherm **AzureRM. profile** . Schakel het selectie vakje in om Azure-modules bij te werken en selecteer vervolgens **OK**.
+1. Meld u aan bij de [Azure-portal.](https://portal.azure.com)
+1. Selecteer uw Azure Automation-accounts.
+1. Selecteer **galerie Modules** onder Gedeelde **bronnen**.
+1. Typ **AzureRM.Profile** in het vak en druk op Enter om te zoeken. Selecteer het beschikbare zoekresultaat.
+1. **Selecteer**importeren in het scherm **AzureRM.profile** . Schakel het selectievakje in om Azure-modules bij te werken en selecteer **OK**.
 
-    ![AzureRM. profile-module importeren](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    ![AzureRM.profilemodule importeren](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
 
-1. Ga terug naar de galerie modules door **modules galerie** te selecteren onder **gedeelde resources**.
-1. Typ **HDInsight**. Selecteer **AzureRM. HDInsight**.
+1. Ga terug naar de modulesgalerie door **galerie Modules** te selecteren onder **Gedeelde bronnen**.
+1. Typ **HDInsight**. Selecteer **AzureRM.HDInsight**.
 
-    ![Bladeren door HDInsight-modules](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    ![door HDInsight-modules bladeren](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
 
-1. Selecteer **importeren** en **OK**in het deel venster **AzureRM. HDInsight** .
+1. Selecteer **importeren** en **OK**in het deelvenster **AzureRM.HDInsight.**
 
-    ![AzureRM. HDInsight-module importeren](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    ![AzureRM.HDInsight-module importeren](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
 
 ## <a name="create-credentials"></a>Referenties maken
 
-1. Onder **gedeelde bronnen**selecteert u **referenties**.
-1. Selecteer **een referentie toevoegen**.
-1. Voer de vereiste gegevens in het deel venster **nieuwe referentie** in. Deze referentie is het wacht woord van het cluster op te slaan, zodat u zich kunt aanmelden bij Ambari.
+1. Selecteer Onder **Gedeelde bronnen**de optie **Referenties**.
+1. Selecteer **Een referentie toevoegen**.
+1. Voer de vereiste informatie in in het deelvenster **Nieuwe referenties.** Deze referentie is om het clusterwachtwoord op te slaan, waarmee u zich aanmelden bij Ambari.
 
     | Eigenschap | Waarde |
     | --- | --- |
@@ -66,20 +66,20 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
     | Wachtwoord bevestigen | `SECURE_PASSWORD` |
 
 1. Selecteer **Maken**.
-1. Herhaal hetzelfde proces voor een nieuwe referentie `ssh-password` met de gebruikers naam `sshuser` en een wacht woord van uw keuze. Selecteer **Maken**. Deze referentie is om het SSH-wacht woord voor uw cluster op te slaan.
+1. Herhaal hetzelfde proces voor `ssh-password` een `sshuser` nieuwe referentie met gebruikersnaam en een wachtwoord van uw keuze. Selecteer **Maken**. Deze referentie is om het SSH-wachtwoord voor uw cluster op te slaan.
 
     ![referentie maken](./media/manage-clusters-runbooks/create-credentials.png)
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Een runbook maken om een cluster te maken
 
-1. Selecteer **Runbooks** onder **proces automatisering**.
-1. Selecteer **een Runbook maken**.
-1. Voer in het deel venster **een Runbook maken** een naam in voor het runbook, zoals `hdinsight-cluster-create`. Selecteer **Power shell** in de vervolg keuzelijst **type Runbook** .
+1. Selecteer **Runbooks** onder **Procesautomatisering**.
+1. Selecteer **Een runbook maken**.
+1. Voer in het deelvenster **Een runbook maken** een naam `hdinsight-cluster-create`in voor het runbook, zoals . Selecteer **Powershell** in de vervolgkeuzelijst **Runbook type.**
 1. Selecteer **Maken**.
 
     ![runbook maken](./media/manage-clusters-runbooks/create-runbook.png)
 
-1. Voer de volgende code in het scherm **Power shell-Runbook bewerken** in en selecteer **publiceren**:
+1. Voer de volgende code in op het scherm **PowerShell-runbook bewerken** en selecteer **Publiceren:**
 
     ![runbook publiceren](./media/manage-clusters-runbooks/publish-runbook.png)
 
@@ -128,11 +128,11 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="create-a-runbook-to-delete-a-cluster"></a>Een runbook maken om een cluster te verwijderen
 
-1. Selecteer **Runbooks** onder **proces automatisering**.
-1. Selecteer **een Runbook maken**.
-1. Voer in het deel venster **een Runbook maken** een naam in voor het runbook, zoals `hdinsight-cluster-delete`. Selecteer **Power shell** in de vervolg keuzelijst **type Runbook** .
+1. Selecteer **Runbooks** onder **Procesautomatisering**.
+1. Selecteer **Een runbook maken**.
+1. Voer in het deelvenster **Een runbook maken** een naam `hdinsight-cluster-delete`in voor het runbook, zoals . Selecteer **Powershell** in de vervolgkeuzelijst **Runbook type.**
 1. Selecteer **Maken**.
-1. Voer de volgende code in het scherm **Power shell-Runbook bewerken** in en selecteer **publiceren**:
+1. Voer de volgende code in op het scherm **PowerShell-runbook bewerken** en selecteer **Publiceren:**
 
     ```powershell
     Param
@@ -152,22 +152,22 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ### <a name="create-a-cluster"></a>Een cluster maken
 
-1. Bekijk de lijst met Runbooks voor uw Automation-account door **Runbooks** te selecteren onder **proces automatisering**.
-1. Selecteer `hdinsight-cluster-create`, of de naam die u hebt gebruikt bij het maken van het runbook voor het maken van het cluster.
-1. Selecteer **starten** om het runbook direct uit te voeren. U kunt ook runbooks plannen die periodiek worden uitgevoerd. Zie [een Runbook plannen in azure Automation](../automation/shared-resources/schedules.md)
-1. Voer de vereiste para meters voor het script in en selecteer **OK**. Hiermee maakt u een nieuw HDInsight-cluster met de naam die u hebt opgegeven in de para meter **clustername** .
+1. Bekijk de lijst met runbooks voor uw automatiseringsaccount door **Runbooks** te selecteren onder **Procesautomatisering**.
+1. Selecteer `hdinsight-cluster-create`of de naam die u hebt gebruikt bij het maken van uw runbook voor het maken van het clustermaken.
+1. Selecteer **Start** om het runbook onmiddellijk uit te voeren. U ook plannen dat loopboeken periodiek worden uitgevoerd. Zie [Een runbook plannen in Azure Automation](../automation/shared-resources/schedules.md)
+1. Voer de vereiste parameters voor het script in en selecteer **OK**. Hiermee wordt een nieuw HDInsight-cluster gemaakt met de naam die u hebt opgegeven in de parameter **CLUSTERNAME.**
 
-    ![runbook voor het maken van het cluster uitvoeren](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    ![clusterrunbook maken uitvoeren](./media/manage-clusters-runbooks/execute-create-runbook.png)
 
 ### <a name="delete-a-cluster"></a>Een cluster verwijderen
 
-Verwijder het cluster door het `hdinsight-cluster-delete` runbook te selecteren dat u hebt gemaakt. Selecteer **Start**, voer de para meter **clustername** en sselect **OK**in.
+Verwijder het cluster `hdinsight-cluster-delete` door de runbook te selecteren die u hebt gemaakt. Selecteer **Start**, voer de parameter **CLUSTERNAME** in en selecteer **OK**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u het Azure Automation account dat is gemaakt om onbedoelde kosten te voor komen. Als u dit wilt doen, gaat u naar de Azure Portal, selecteert u de resource groep waarin u het Azure Automation account hebt gemaakt, selecteert u het Automation-account en selecteert u vervolgens **verwijderen**.
+Wanneer dit niet meer nodig is, verwijdert u het Azure Automation-account dat is gemaakt om onbedoelde kosten te voorkomen. Ga hiervoor naar de Azure-portal, selecteer de brongroep waarin u het Azure Automation-account hebt gemaakt, selecteer het automatiseringsaccount en selecteer **Vervolgens Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van Azure PowerShell](hdinsight-administer-use-powershell.md)
+> [Apache Hadoop-clusters beheren in HDInsight met Azure PowerShell](hdinsight-administer-use-powershell.md)

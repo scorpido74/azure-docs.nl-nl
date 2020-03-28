@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67175724"
 ---
-### <a name="open-the-publish-wizard"></a>Open de wizard Publiceren
+### <a name="open-the-publish-wizard"></a>De wizard Publiceren openen
 
-In **Solution Explorer**, met de rechtermuisknop op de **SharingService** project en selecteer **publiceren**.
+Klik in **Solution Explorer**met de rechtermuisknop op het **project SharingService** en selecteer **Publiceren**.
 
-De Wizard publiceren wordt gestart. Selecteer **App Service** > **publiceren** openen de **Create App Service** in het dialoogvenster.
+De wizard Publiceren wordt gestart. Selecteer **App-servicepubliceren** > **Publish** om het dialoogvenster **App-service maken** te openen.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-In de **Create App Service** in het dialoogvenster, selecteer **een account toevoegen** en aanmelden bij uw Azure-abonnement. Als u al bent aangemeld, selecteert u het gewenste account uit de vervolgkeuzelijst.
+Selecteer in het dialoogvenster **App-service maken** de optie **Een account toevoegen** en meld u aan bij uw Azure-abonnement. Als u al bent aangemeld, selecteert u het gewenste account in de vervolgkeuzelijst.
 
 > [!NOTE]
 > Als u al bent aangemeld, selecteert u **Maken** nog niet.
@@ -37,26 +37,26 @@ Geef de resourcegroep de naam **myResourceGroup** en selecteer **OK**.
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-Selecteer bij **Hostingabonnement** **Nieuw**.
+Selecteer bij **Hostingabonnement****Nieuw**.
 
-In de **configureren abonnement voor webhosting** dialoogvenster vak, gebruikt u deze instellingen:
+Gebruik de volgende instellingen in het dialoogvenster **Hostingplan configureren:**
 
-| Instelling | Voorgestelde waarde | Description |
+| Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
 |App Service-plan| MySharingServicePlan | De naam van het App Service-plan. |
-| Locatie | US - west | Het datacenter waar de web-app wordt gehost. |
-| Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) waarmee wordt bepaald hosting-functies. |
+| Locatie | VS - west | Het datacenter waar de web-app wordt gehost. |
+| Grootte | Gratis | De [prijslaag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) die hostingfuncties bepaalt. |
 
 Selecteer **OK**.
 
 ### <a name="create-and-publish-the-web-app"></a>De web-app maken en publiceren
 
-In **Appnaam**, voer een unieke app-naam (geldige tekens zijn `a-z`, `0-9`, en `-`), of accepteer de automatisch gegenereerde unieke naam. De URL van de web-app is `https://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
+Voer in **App-naam**een unieke app-naam in (geldige tekens zijn `a-z`, `0-9`en `-`), of accepteer de automatisch gegenereerde unieke naam. De URL van de web-app is `https://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
 
 Selecteer **Maken** om de Azure-resources te gaan maken.
 
-Nadat de wizard is voltooid, wordt de ASP.NET Core web-app gepubliceerd naar Azure en vervolgens de app geopend in de standaardbrowser.
+Nadat de wizard is voltooid, publiceert deze de ASP.NET Core-web-app naar Azure en opent deze de app in uw standaardbrowser.
 
 ![Gepubliceerde ASP.NET-web-app in Azure](./media/spatial-anchors-azure/web-app-running-live.png)
 
-De naam van de app die u hebt gebruikt in deze sectie wordt gebruikt als de URL-voorvoegsel in de indeling `https://<app_name>.azurewebsites.net`. Noteer deze URL omdat u hebt deze nodig.
+De app-naam die u in deze sectie hebt `https://<app_name>.azurewebsites.net`gebruikt, wordt gebruikt als het URL-voorvoegsel in de indeling. Let op deze URL omdat je deze nodig hebt.

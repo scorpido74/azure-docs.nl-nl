@@ -1,6 +1,6 @@
 ---
 title: Een enkelvoudige of pooldatabase beveiligen
-description: Een zelf studie waarin u leert hoe u een enkele of gegroepeerde Data base in Azure SQL Database kunt beveiligen met betips over technieken en functies.
+description: Een zelfstudie die u leert over technieken en functies om een enkele of gepoolde database in Azure SQL Database te beveiligen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,13 +11,13 @@ ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238830"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelf studie: een enkele of gegroepeerde Data Base beveiligen
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Zelfstudie: Een enkele of samengevoegde database beveiligen
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,7 +32,7 @@ Azure SQL Database beveiligt gegevens in een enkelvoudige of pooldatabase door:
 - Toegang te beperken met behulp van firewallregels
 - Verificatiemechanismen die identiteit vereisen
 - Autorisatie via op rollen gebaseerde lidmaatschappen en machtigingen
-- Beveiligingsfuncties inschakelen
+- Beveiligingsfuncties in te schakelen
 
 > [!NOTE]
 > Een Azure SQL-database op een beheerd exemplaar wordt beveiligd met behulp van netwerkbeveiligingsregels en privé-eindpunten, zoals beschreven in [Beheerd exemplaar voor Azure SQL Database](sql-database-managed-instance-index.yml) en [connectiviteitsarchitectuur](sql-database-managed-instance-connectivity-architecture.md).
@@ -40,7 +40,7 @@ Azure SQL Database beveiligt gegevens in een enkelvoudige of pooldatabase door:
 Zie voor meer informatie de artikelen [Overzicht van Azure SQL Database-beveiliging](/azure/sql-database/sql-database-security-index) en [-mogelijkheden](sql-database-security-overview.md).
 
 > [!TIP]
-> De volgende Microsoft Learn module helpt u gratis te leren hoe u [uw Azure SQL database kunt beveiligen](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
+> Met de volgende Microsoft Learn-module u gratis meer te weten komen over het [beveiligen van uw Azure SQL Database.](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,7 +50,7 @@ Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 - Een Azure SQL-server en -database
   - Maak deze met [Azure-portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md) of [PowerShell](sql-database-powershell-samples.md)
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -58,7 +58,7 @@ Voor alle stappen in deze zelfstudie moet u zich aanmelden bij de [Azure-portal]
 
 ## <a name="create-firewall-rules"></a>Firewall-regels maken
 
-SQL-databases worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en de data base geweigerd. Raadpleeg [firewallregels op Azure SQL Database-serverniveau en -databaseniveau](sql-database-firewall-configure.md) voor meer informatie.
+SQL-databases worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en database geweigerd. Raadpleeg [firewallregels op Azure SQL Database-serverniveau en -databaseniveau](sql-database-firewall-configure.md) voor meer informatie.
 
 Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](../virtual-network/virtual-networks-reserved-public-ip.md) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [resourcebeheer](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
 
@@ -90,7 +90,7 @@ U kunt nu verbinding maken met elke database op de server met het opgegeven IP-a
 
 ### <a name="setup-database-firewall-rules"></a>Database-firewallregels instellen
 
-Firewallregels op databaseniveau zijn alleen van toepassing op afzonderlijke databases. Deze regels worden tijdens een failover van de server bewaard in de data base. Firewallregels op databaseniveau kunnen alleen worden geconfigureerd met behulp van T-SQL-instructies (Transact-SQL) en alleen nadat u een firewallregel op serverniveau hebt geconfigureerd.
+Firewallregels op databaseniveau zijn alleen van toepassing op afzonderlijke databases. De database behoudt deze regels tijdens een serverfailover. Firewallregels op databaseniveau kunnen alleen worden geconfigureerd met behulp van T-SQL-instructies (Transact-SQL) en alleen nadat u een firewallregel op serverniveau hebt geconfigureerd.
 
 Firewallregel op databaseniveau instellen:
 
@@ -117,7 +117,7 @@ Zorg ervoor dat u het juiste beheerde Azure Active Directory-domein gebruikt. Se
 
 De Azure AD-beheerder instellen:
 
-1. In Azure Portal selecteert u op de pagina **SQL server** **Active Directory beheerder**. Selecteer vervolgens **beheerder instellen**.
+1. Selecteer **Active Directory-beheerder**in Azure-portal op de **pagina SQL-server** . Selecteer vervolgens **Beheerder instellen**.
 
     ![active directory selecteren](./media/sql-database-security-tutorial/admin-settings.png)  
 
@@ -131,7 +131,7 @@ De Azure AD-beheerder instellen:
     > [!IMPORTANT]
     > Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server.
 
-1. Selecteer bovenaan de pagina **Active Directory-beheerder** de optie **Opslaan**.
+1. Selecteer boven aan de pagina **Active Directory-beheer** de optie **Opslaan**.
 
     Het proces voor het wijzigen van de beheerder kan enkele minuten duren. De nieuwe beheerder wordt weergegeven in het vak **Active Directory-beheerder**.
 
@@ -145,11 +145,11 @@ Zie voor informatie over het configureren van Azure AD:
 - [Microsoft Azure ondersteunt nu federatie met Windows Server AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Uw Azure AD-directory beheren](../active-directory/fundamentals/active-directory-administer.md)
 - [Azure AD beheren met behulp van PowerShell](/powershell/azure/overview?view=azureadps-2.0)
-- [Voor hybride identiteit benodigde poorten en protocollen](../active-directory/hybrid/reference-connect-ports.md)
+- [Hybride identiteit vereiste poorten en protocollen](../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Databasetoegang beheren
 
-Beheer databasetoegang door gebruikers toe te voegen aan de database, of door gebruikerstoegang met beveiligde verbindingsreeksen toe te staan. Verbindingsreeksen zijn nuttig voor externe toepassingen. Zie [aanmeldingen en gebruikers accounts](sql-database-manage-logins.md) en [ad-verificatie](sql-database-aad-authentication.md)beheren voor meer informatie.
+Beheer databasetoegang door gebruikers toe te voegen aan de database, of door gebruikerstoegang met beveiligde verbindingsreeksen toe te staan. Verbindingsreeksen zijn nuttig voor externe toepassingen. Zie [Aanmeldingen en gebruikersaccounts beheren en](sql-database-manage-logins.md) [AD-verificatie](sql-database-aad-authentication.md)voor meer informatie.
 
 Kies het databaseverificatietype om gebruikers toe te voegen:
 
@@ -229,7 +229,7 @@ Ga als volgt te werk om een beveiligde verbindingsreeks te kopiëren:
 
     ![ADO.NET-verbindingsreeks](./media/sql-database-security-tutorial/connection.png)
 
-## <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
+## <a name="enable-security-features"></a>Beveiligingsfuncties in te schakelen
 
 Azure SQL Database biedt beveiligingsfuncties die toegankelijk zijn met behulp van de Azure-portal. Deze functies zijn beschikbaar voor zowel de database als de server, behalve gegevensmaskering, wat alleen beschikbaar is op de database. Zie voor meer informatie deze artikelen over [Advanced Data Security](sql-database-advanced-data-security.md), [controle](sql-database-auditing.md), [dynamische gegevensmaskering](sql-database-dynamic-data-masking-get-started.md) en [transparante gegevensversleuteling](transparent-data-encryption-azure-sql.md).
 
@@ -264,7 +264,7 @@ Als er afwijkende activiteiten worden gedetecteerd, ontvangt u een e-mailbericht
 
 ### <a name="auditing"></a>Controleren
 
-De controle functie houdt database gebeurtenissen bij en schrijft gebeurtenissen naar een audit logboek in azure Storage, Azure Monitor-Logboeken of naar een Event Hub. Controles helpen u zorgen voor naleving van wet- en regelgeving, de activiteit in uw database te begrijpen en inzicht te krijgen in afwijkingen en discrepanties die kunnen wijzen op mogelijke schendingen van de beveiliging.
+De controlefunctie houdt databasegebeurtenissen bij en schrijft gebeurtenissen naar een controlelogboek in Azure-opslag, Azure Monitor-logboeken of naar een gebeurtenishub. Controles helpen u zorgen voor naleving van wet- en regelgeving, de activiteit in uw database te begrijpen en inzicht te krijgen in afwijkingen en discrepanties die kunnen wijzen op mogelijke schendingen van de beveiliging.
 
 Controle inschakelen:
 
@@ -286,7 +286,7 @@ Controle inschakelen:
        - **Log Analytics**, waarin gebeurtenissen automatisch worden opgeslagen voor het uitvoeren query’s of verdere analyse
 
            > [!NOTE]
-           > Een **log Analytics-werk ruimte** is vereist voor de ondersteuning van geavanceerde functies, zoals analyses, aangepaste waarschuwings regels en Excel of het exporteren van Power bi. Zonder een werkruimte is alleen de query-editor beschikbaar.
+           > Er is een **Log Analytics-werkruimte** vereist ter ondersteuning van geavanceerde functies zoals analyse, aangepaste waarschuwingsregels en Excel- of Power BI-export. Zonder een werkruimte is alleen de query-editor beschikbaar.
 
        - **Event Hub**, waarmee gebeurtenissen kunnen worden gerouteerd voor gebruik in andere toepassingen
 

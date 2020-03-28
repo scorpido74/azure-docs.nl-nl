@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: Azure-app configuratie gebruiken om functie vlaggen te beheren'
+title: 'Zelfstudie: Azure-app-configuratie gebruiken om functievlaggen te beheren'
 titleSuffix: Azure App Configuration
-description: In deze zelf studie leert u hoe u functie vlaggen onafhankelijk van uw toepassing kunt beheren met behulp van Azure-app configuratie.
+description: In deze zelfstudie leert u hoe u functievlaggen afzonderlijk van uw toepassing beheert met Azure App Configuration.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -16,65 +16,65 @@ ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76899363"
 ---
-# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Zelf studie: functie vlaggen in Azure-app configuratie beheren
+# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Zelfstudie: Functievlaggen beheren in Azure App-configuratie
 
-U kunt alle functie vlaggen opslaan in Azure-app configuratie en deze beheren vanaf één locatie. App-configuratie heeft een portal voor gebruikers met de naam **feature Manager** die specifiek is ontworpen voor functie vlaggen. App-configuratie biedt ook systeem eigen ondersteuning voor het gegevens schema .NET Core-functie-Flag.
+U alle functievlaggen opslaan in Azure App-configuratie en deze vanaf één plaats beheren. App-configuratie heeft een portal-gebruikersinterface met de naam **Feature Manager** die speciaal is ontworpen voor functievlaggen. App-configuratie ondersteunt ook native het .NET Core-functie-flag-gegevensschema.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Functie vlaggen definiëren en beheren in app-configuratie.
-> * U hebt toegang tot functie vlaggen vanuit uw toepassing.
+> * Functievlaggen definiëren en beheren in app-configuratie.
+> * Toegang functie vlaggen van uw toepassing.
 
-## <a name="create-feature-flags"></a>Functie vlaggen maken
+## <a name="create-feature-flags"></a>Functievlaggen maken
 
-De functie beheerder in de Azure Portal voor app-configuratie biedt een gebruikers interface voor het maken en beheren van de functie vlaggen die u in uw toepassingen gebruikt.
+De functiebeheer in de Azure-portal voor app-configuratie biedt een gebruikersinterface voor het maken en beheren van de functievlaggen die u in uw toepassingen gebruikt.
 
-Een nieuwe functie vlag toevoegen:
+Ga als lid van het volgende over een nieuwe functievlag:
 
-1. Selecteer **functie beheer** >  **+ toevoegen** om een functie vlag toe te voegen.
+1. Selecteer **Functiebeheer** > **+Toevoegen** om een functievlag toe te voegen.
 
-    ![Lijst met functie vlaggen](./media/azure-app-configuration-feature-flags.png)
+    ![Lijst met functievlaggen](./media/azure-app-configuration-feature-flags.png)
 
-1. Voer een unieke sleutel naam in voor de functie vlag. U hebt deze naam nodig om te verwijzen naar de markering in uw code.
+1. Voer een unieke sleutelnaam in voor de functievlag. Je hebt deze naam nodig om naar de vlag in je code te verwijzen.
 
-1. Als u wilt, geeft u de functie een beschrijving.
+1. Geef defunctievlag destijds een beschrijving.
 
-1. De begin status van de functie vlag instellen. Deze status is doorgaans *uitgeschakeld* of *ingeschakeld*. De status *bij* is gewijzigd in *voorwaardelijk* als u een filter aan de functie vlag toevoegt.
+1. Stel de beginstatus van de functievlag in. Deze toestand is meestal *uitgeschakeld* of *aan.* De status *Aan* verandert in *Voorwaardelijk* als u een filter toevoegt aan de functievlag.
 
-    ![Functie vlag maken](./media/azure-app-configuration-feature-flag-create.png)
+    ![Feature flag aanmaken](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Wanneer de status is *ingeschakeld*, selecteert u **+ filter toevoegen** om eventuele aanvullende voor waarden op te geven voor het kwalificeren van de status. Voer een ingebouwde of aangepaste filter sleutel in en selecteer **+ para meter toevoegen** om een of meer para meters aan het filter te koppelen. Ingebouwde filters zijn onder andere:
+1. Wanneer de status *is ingeschakeld,* selecteert u **het filter +Toevoegen** om eventuele aanvullende voorwaarden op te geven om in aanmerking te komen voor de status. Voer een ingebouwde of aangepaste filtertoets in en selecteer **+Parameter toevoegen** om een of meer parameters aan het filter te koppelen. Ingebouwde filters zijn:
 
-    | Sleutel | JSON-para meters |
+    | Sleutel | JSON-parameters |
     |---|---|
     | Microsoft.Percentage | {"Waarde": 0-100 procent} |
-    | Microsoft.TimeWindow | {"Start": UTC-tijd, "end": UTC-tijd} |
+    | Microsoft.TimeWindow | {"Start": UTC-tijd, "Einde": UTC-tijd} |
 
-    ![Functie vlag filter](./media/azure-app-configuration-feature-flag-filter.png)
+    ![Functievlagfilter](./media/azure-app-configuration-feature-flag-filter.png)
 
-## <a name="update-feature-flag-states"></a>Status vlaggen voor onderdelen bijwerken
+## <a name="update-feature-flag-states"></a>Functievlagstatussen bijwerken
 
-De status waarde van een functie vlag wijzigen:
+Ga als lid van het nieuwe bedrijf over de statuswaarde van een functievlag:
 
-1. Selecteer **functie beheer**.
+1. Selecteer **Functiebeheer**.
 
-1. Selecteer het beletsel teken ( **...** ) aan de rechter kant van een functie vlag die u wilt wijzigen en selecteer vervolgens **bewerken**.
+1. Rechts van een functievlag die u wilt wijzigen, selecteert u de ellips (**... )** en selecteert u **Bewerken**.
 
-1. Stel een nieuwe status in voor de functie vlag.
+1. Stel een nieuwe status in voor de functievlag.
 
-## <a name="access-feature-flags"></a>Functie vlaggen voor toegang
+## <a name="access-feature-flags"></a>Access-functievlaggen
 
-Functie vlaggen die zijn gemaakt met functie beheer worden opgeslagen en opgehaald als normale sleutel waarden. Ze worden bewaard onder een speciaal naam ruimte voorvoegsel `.appconfig.featureflag`. Als u de onderliggende sleutel waarden wilt weer geven, gebruikt u de configuratie Verkenner. Uw toepassing kan deze waarden ophalen met behulp van de configuratie providers van de configuratie van de app, Sdk's, opdracht regel uitbreidingen en REST Api's.
+Functievlaggen die door de functiebeheer zijn gemaakt, worden opgeslagen en opgehaald als normale sleutelwaarden. Ze worden bewaard onder een speciaal `.appconfig.featureflag`naamruimtevoorvoegsel. Als u de onderliggende sleutelwaarden wilt weergeven, gebruikt u de Configuratieverkenner. Uw toepassing kan deze waarden ophalen met behulp van de configuratieproviders voor app-configuratie, SDK's, opdrachtregelextensies en REST-API's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u functie vlaggen en hun statussen beheert met behulp van app-configuratie. Zie het volgende artikel voor meer informatie over de ondersteuning voor functie beheer in app-configuratie en ASP.NET Core:
+In deze zelfstudie hebt u geleerd hoe u functievlaggen en hun statussen beheren met behulp van app-configuratie. Zie het volgende artikel voor meer informatie over ondersteuning voor functiebeheer in app-configuratie en ASP.NET Core:
 
-* [Functie vlaggen gebruiken in een ASP.NET Core-app](./use-feature-flags-dotnet-core.md)
+* [Functievlaggen gebruiken in een ASP.NET Core-app](./use-feature-flags-dotnet-core.md)

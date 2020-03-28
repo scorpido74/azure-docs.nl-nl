@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Power shell
+title: Gegevens van SQL Server naar Blob-opslag kopiëren met PowerShell
 description: Meer informatie over het kopiëren van gegevens uit een on-premises gegevensopslag naar Azure-cloud met behulp van de zelf-hostende Integration Runtime in Azure Data Factory.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982598"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Zelfstudie: gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
@@ -34,14 +34,14 @@ In deze zelfstudie voert u de volgende stappen uit:
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
 > * Een pijplijnuitvoering starten.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="azure-subscription"></a>Azure-abonnement
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ### <a name="azure-roles"></a>Azure-rollen
-Als u data factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, toegewezen zijn aan de rollen *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn.
+Als u gegevensfabrieksexemplaren wilt maken, moet het gebruikersaccount dat u gebruikt om u aan te melden bij Azure, een *rol inzender* of *eigenaar* toegewezen krijgen of *beheerder* van het Azure-abonnement zijn.
 
 Als u de machtigingen die u hebt in het abonnement wilt bekijken, gaat u naar Azure Portal, selecteert u rechtsboven in de hoek uw gebruikersnaam en selecteert u vervolgens **Machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren. Zie het artikel [Toegang beheren met RBAC en de Azure-portal](../role-based-access-control/role-assignments-portal.md) voor voorbeeldinstructies voor het toevoegen van een gebruiker aan een rol.
 
@@ -98,9 +98,9 @@ In deze sectie maakt u in uw Azure Blob Storage een blobcontainer met de naam **
 
     ![De optie Blobs selecteren](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. Selecteer in het venster **Blob-service** **Container**.
+1. Selecteer in het venster **Blob-service****Container**.
 
-1. Voer in het venster **Nieuwe container** in het vak **Naam** **adftutorial** in en selecteer **OK**.
+1. Voer in het venster **Nieuwe container** in het vak **Naam****adftutorial** in en selecteer **OK**.
 
     ![Naam van container invoeren](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
@@ -127,13 +127,13 @@ Installeer de nieuwste versie van Azure PowerShell als u deze niet al op uw comp
     Connect-AzAccount
     ```        
 
-1. Als u meerdere Azure-abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
+1. Als u meerdere Azure-abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef een naam op voor de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) (bijvoorbeeld tussen dubbele aanhalingstekens) `"adfrg"`en voer de opdracht uit. 
    
@@ -259,17 +259,17 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
 1. Ga in het venster **Gebruiksrechtovereenkomst** akkoord met de voorwaarden en de gebruiksrechtovereenkomst en selecteer **Volgende**.
 
-1. Selecteer in het venster **Doelmap** **Volgende**.
+1. Selecteer in het venster **Doelmap****Volgende**.
 
-1. Selecteer in het venster **Gereed om Microsoft Integration Runtime te installeren** **Installeren**.
+1. Selecteer in het venster **Gereed om Microsoft Integration Runtime te installeren****Installeren**.
 
-1. Klik in **De installatiewizard voor Microsoft Integration Runtime is voltooid**  op **Voltooien**.
+1. Klik in **De installatiewizard voor Microsoft Integration Runtime is voltooid ** op **Voltooien**.
 
 1. Plak de sleutel die u in de vorige sectie hebt opgeslagen in het venster **Integration Runtime (zelf-hostend) registreren** en selecteer **Registreren**.
 
     ![Integratieruntime registreren](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. Selecteer in het venster **nieuwe Integration runtime (zelf-hostend) knoop punt** **volt ooien**.
+1. Selecteer In het venster **Knooppunt Nieuwe integratie (Self-hosted)** de optie **Voltooien**.
 
     ![Venster Nieuw knooppunt voor Integration Runtime](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -287,7 +287,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
     a. Schakel in het venster **Configuratiebeheer** over naar het tabblad **Diagnostische gegevens**.
 
-    b. Selecteer in het vak **Type gegevensbron** **SqlServer**.
+    b. Selecteer in het vak **Type gegevensbron****SqlServer**.
 
     c. Voer de naam van de server in.
 
@@ -300,7 +300,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
     g. Voer het wachtwoord in dat bij de gebruikersnaam hoort.
 
     h. Selecteer **Test** om te controleren of Integration Runtime verbinding kan maken met de SQL Server.  
-    ![connectiviteit geslaagd](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    ![Connectiviteit geslaagd](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     U ziet een groen vinkje als het gelukt is om verbinding te maken. Anders ontvangt u een foutmelding die bij de fout hoort. Los eventuele problemen op en zorg ervoor dat de Integration Runtime verbinding met uw SQL Server-exemplaar kan maken.
 
@@ -411,8 +411,8 @@ In deze stap gaat u uw on-premises SQL Server-exemplaar aan de data factory kopp
 
     > [!IMPORTANT]
     > - Selecteer de sectie op basis van de verificatie die u gebruikt om verbinding te maken met uw SQL Server-exemplaar.
-    > - Vervang de **\<naam> van de Integration Runtime** door de naam van uw Integration Runtime.
-    > - Vervang **\<servername>** , **\<databasename>** , **\<username**> en **\<password>** door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
+    > - Vervang ** \<de naam van de nalooptijd van** de integratie>door de naam van uw intrede van uw integratie.
+    > - Voordat u het bestand opslaat, vervangt u ** \< ** ** \<servernaam>, ** ** \<databasenaam>, **gebruikersnaam>en ** \<wachtwoord>** door de waarden van uw SQL Server-exemplaar.
     > - Als u een backslash wilt gebruiken (\\) in de naam van uw gebruikersaccount of server, moet u er voor het escapeteken (\\) gebruiken. Gebruik bijvoorbeeld *mydomain\\\\myuser*.
 
 1. Voor het versleutelen van gevoelige gegevens (gebruikersnaam, wachtwoord, enz.), voer de `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet uit.  
@@ -724,7 +724,7 @@ Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie n
 > * Gegevenssets maken voor SQL Server en Azure Blob.
 > * Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
 > * Een pijplijnuitvoering starten.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
 Zie [Ondersteunde gegevensopslagexemplaren](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslagexemplaren die worden ondersteund door Data Factory.
 

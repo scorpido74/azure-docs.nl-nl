@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117616"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Zelfstudie: Afwijkingen aan de rand detecteren met de verbetering voor de externe bewakingsoplossing
@@ -45,7 +45,7 @@ Op het Azure IoT Edge-apparaat gebeurt het volgende:
 
 In deze zelfstudie wordt een Linux-machine als een IoT Edge-apparaat gebruikt. U gaat ook een Edge-module installeren om de jaknikker te simuleren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -62,7 +62,7 @@ Er zijn twee stappen voor het toevoegen van een IoT Edge-apparaat aan de verbete
 
 Als u een IoT Edge-apparaat wilt toevoegen aan de verbetering voor de externe bewakingsoplossing, gaat u naar de pagina **Device Explorer** in de webgebruikersinterface en klikt u op **+ Nieuw apparaat**.
 
-In het deelvenster **Nieuw apparaat** kiest u **IoT Edge-apparaat** en voert u **oil-pump** in als de apparaat-id. Voor de overige instellingen kunt u de standaardwaarden gebruiken. Klik vervolgens op **Toepassen**:
+In het deelvenster **Nieuw apparaat** kiest u **IoT Edge-apparaat** en voert u **oil-pump** in als de apparaat-id. Voor de overige instellingen kunt u de standaardwaarden gebruiken. Klik vervolgens op **Toepassen:**
 
 [![IoT Edge-apparaat toevoegen](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
@@ -78,12 +78,12 @@ Om het beheer van de IoT Edge-apparaten in de oplossing te vergemakkelijken, maa
 
 1. Maak een taak om de tag **IsEdge** aan het apparaat toe te voegen met behulp van de volgende instellingen:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | Taak     | Tags  |
     | Taaknaam | AddEdgeTag |
     | Sleutel     | IsOilPump |
-    | Value   | J     |
+    | Waarde   | J     |
     | Type    | Tekst  |
 
     [![Tag toevoegen](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
@@ -99,7 +99,7 @@ Om het beheer van de IoT Edge-apparaten in de oplossing te vergemakkelijken, maa
     | Name    | OilPumps |
     | Veld   | Tags.IsOilPump |
     | Operator | = Is gelijk aan |
-    | Value    | J |
+    | Waarde    | J |
     | Type     | Tekst |
 
     [![Apparaatgroep maken](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
@@ -158,13 +158,13 @@ U definieert de Stream Analytics-taak in de portal voordat u deze verpakt als ee
 
 1. Maak in de Azure-portal een **Stream Analytics-taak** in de resourcegroep **IoTEdgeDevices**. Gebruik de volgende configuratiewaarden:
 
-    | Optie | Value |
+    | Optie | Waarde |
     | ------ | ----- |
     | Taaknaam | EdgeDeviceJob |
     | Abonnement | Uw Azure-abonnement |
     | Resourcegroep | IoTEdgeDevices |
-    | Locatie | US - oost |
-    | Hostingomgeving | Microsoft Edge |
+    | Locatie | VS - oost |
+    | Hostingomgeving | Edge |
     | Streaming-eenheden | 1 |
 
 1. Open de Stream Analytics-taak **EdgeDeviceJob** in de portal. Klik op Invoer en voeg een **Edge Hub**-invoerstroom toe met de naam **telemetry**.
@@ -205,11 +205,11 @@ Vervolgens maakt u een IoT Edge-implementatiemanifest dat de modules definieert 
 
 1. Klik in de IoT Hub op **IoT Edge** in de sectie **Automatisch apparaatbeheer**. Klik op **Een IoT Edge-implementatie toevoegen**.
 
-1. Voer op de pagina **Implementatie maken > Naam en Label** de naam **oil-pump-device** in. Klik op **volgende**.
+1. Voer op de pagina **Implementatie maken > Naam en Label** de naam **oil-pump-device** in. Klik op **Volgende**.
 
 1. Klik op de pagina **Implementatie maken > Modules toevoegen** op **+ Toevoegen**. Kies **IoT Edge-module**.
 
-1. Voer in het deelvenster **Aangepaste IoT Edge-modules** **temperatureSensor** in als de naam en **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** als de URI van de installatiekopie. Klik op **Opslaan**.
+1. Voer in het deelvenster **Aangepaste IoT Edge-modules****temperatureSensor** in als de naam en **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** als de URI van de installatiekopie. Klik op **Opslaan**.
 
 1. Klik op de pagina **Implementatie maken > Modules toevoegen** op **+ Toevoegen** om nog een module toe te voegen. Kies **Azure Stream Analytics-module**.
 
@@ -231,11 +231,11 @@ Vervolgens maakt u een IoT Edge-implementatiemanifest dat de modules definieert 
 
     Deze code leidt de uitvoer van de Stream Analytics-module om naar de juiste locaties.
 
-    Klik op **volgende**.
+    Klik op **Volgende**.
 
 1. Klik op de pagina **Implementatie maken > Metrische gegevens opgeven** op **Volgende**.
 
-1. Voer op de pagina **Implementatie maken > Doelapparaten** 10 in als de prioriteit. Klik op **volgende**.
+1. Voer op de pagina **Implementatie maken > Doelapparaten** 10 in als de prioriteit. Klik op **Volgende**.
 
 1. Klik op de pagina **Implementatie maken > Implementatie controleren** op **Indienen**:
 
@@ -245,7 +245,7 @@ Vervolgens maakt u een IoT Edge-implementatiemanifest dat de modules definieert 
 
 1. Klik op de implementatie **oil-pump-device** en vervolgens op **IoT Edge-manifest downloaden**. Sla het bestand op als **oil-pump-device.json** op een geschikte locatie op uw lokale computer. U hebt dit bestand nodig in de volgende sectie van deze zelfstudie.
 
-U hebt nu een IoT Edge-manifest te importeren in de oplossing voor externe controle als een pakket gemaakt. Gewoonlijk maakt een ontwikkelaar de IoT Edge-modules en het manifestbestand.
+U hebt nu een IoT Edge-manifest gemaakt dat u als pakket importeren in de oplossing voor externe bewaking. Gewoonlijk maakt een ontwikkelaar de IoT Edge-modules en het manifestbestand.
 
 ## <a name="import-a-package"></a>Een pakket importeren
 
@@ -255,7 +255,7 @@ In deze sectie importeert u het Edge-manifest als een pakket in de verbetering v
 
     [![Nieuw pakket](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. Kies in het deelvenster **Nieuw pakket** **Edge-manifest** als het pakkettype. Klik op **Bladeren** om het bestand **oil-pump-device.json** op uw lokale computer te zoeken en klik op **Uploaden**:
+1. Kies in het deelvenster **Nieuw pakket****Edge-manifest** als het pakkettype. Klik op **Bladeren** om het bestand **oil-pump-device.json** op uw lokale computer te zoeken en klik op **Uploaden**:
 
     [![Pakket uploaden](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
@@ -273,7 +273,7 @@ Nu kunt u het pakket implementeren op uw apparaat.
 
 1. Maak in het deelvenster **Nieuwe implementatie** een implementatie met de volgende instellingen:
 
-    | Optie | Value |
+    | Optie | Waarde |
     | ------ | ----- |
     | Name   | OilPumpDevices |
     | Pakkettype | Edge-manifest |
@@ -312,15 +312,15 @@ Als u operators wilt waarschuwen wanneer de drempelwaarde is bereikt, kunt u een
 1. Navigeer naar de pagina **Regels** en klik op **+ Nieuwe regel**.
 1. Maak een nieuwe regel met de volgende instellingen:
 
-    | Optie | Value |
+    | Optie | Waarde |
     | ------ | ----- |
     | Regelnaam | Oliepomptemperatuur |
-    | Description | Temperatuur van oliepomp hoger dan 300 |
+    | Beschrijving | Temperatuur van oliepomp hoger dan 300 |
     | Apparaatgroep | OilPumps |
     | Berekening | Direct |
     | Veld | temperatuur |
     | Operator | > |
-    | Value | 300 |
+    | Waarde | 300 |
     | Ernstniveau | Info |
 
     [![Regel maken](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
@@ -334,7 +334,7 @@ Als u operators wilt waarschuwen wanneer de drempelwaarde is bereikt, kunt u een
 In deze zelfstudie hebt u geleerd u hoe u een IoT Edge-apparaat toevoegt en configureert in de verbetering voor de externe bewakingsoplossing. Zie de volgende instructiegids voor meer informatie over het werken met IoT Edge-pakketten in de externe bewakingsoplossing:
 
 > [!div class="nextstepaction"]
-> [Een IoT Edge-pakket importeren in de oplossingsverbetering voor Externe bewaking](iot-accelerators-remote-monitoring-import-edge-package.md)
+> [Een IoT Edge-pakket importeren in de verbetering voor de externe bewakingsoplossing](iot-accelerators-remote-monitoring-import-edge-package.md)
 
 Zie [De Azure IoT Edge-runtime installeren in Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md) voor meer informatie over het installeren van de IoT Edge-runtime.
 

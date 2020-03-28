@@ -6,34 +6,34 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183370"
 ---
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Selecteer **toepassingen**.
-1. Selecteer de toepassing *webapi1* om de **Eigenschappen** pagina te openen.
-1. Selecteer **Gepubliceerde bereiken**. Gepubliceerde bereiken kunnen worden gebruikt om bepaalde machtigingen toe te kennen aan een client toepassing voor de Web-API.
-1. Voer voor **bereik**`demo.read`in en voer bij **Beschrijving**`Read access to the web API`in.
-1. Voer voor **bereik**`demo.write`in en voer bij **Beschrijving**`Write access to the web API`in.
+1. Selecteer **Toepassingen**.
+1. Selecteer de *webapi1-toepassing* om de pagina **Eigenschappen** te openen.
+1. Selecteer **Gepubliceerde bereiken**. Gepubliceerde scopes kunnen worden gebruikt om een clienttoepassing bepaalde machtigingen te verlenen voor de web-API.
+1. Voor **SCOPE** `demo.read`, voer , `Read access to the web API`en voor **BESCHRIJVING**, voer .
+1. Voor **SCOPE** `demo.write`, voer , `Write access to the web API`en voor **BESCHRIJVING**, voer .
 1. Selecteer **Opslaan**.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (voorbeeld)](#tab/app-reg-preview/)
 
-1. Selecteer **app-registraties (preview)** .
-1. Selecteer de *webapi1* -toepassing om de pagina **overzicht** te openen.
-1. Onder **beheren**selecteert u **een API zichtbaar**maken.
-1. Selecteer de koppeling **instellen** naast de URI van de **toepassings-id**.
-1. Vervang de standaard waarde (een GUID) door `api`en selecteer vervolgens **Opslaan**. De volledige URI wordt weer gegeven en moet de indeling `https://your-tenant-name.onmicrosoft.com/api`hebben. Wanneer uw webtoepassing een toegangs token voor de API aanvraagt, moet deze de URI toevoegen als het voor voegsel voor elk bereik dat u voor de API definieert.
-1. Selecteer **een bereik toevoegen**onder **scopes die door deze API zijn gedefinieerd**.
-1. Voer de volgende waarden in om een bereik te maken dat lees toegang tot de API definieert, en selecteer vervolgens **bereik toevoegen**:
-    1. **Scope naam**: `demo.read`
-    1. **Weergave naam van beheerders toestemming**: `Read access to demo API`
-    1. **Beschrijving van beheerders toestemming**: `Allows read access to the demo API`
-1. Selecteer **een bereik toevoegen**, voer de volgende waarden in om een bereik toe te voegen waarmee schrijf toegang tot de API wordt gedefinieerd en selecteer vervolgens **bereik toevoegen**:
-    1. **Scope naam**: `demo.write`
-    1. **Weergave naam van beheerders toestemming**: `Write access to demo API`
-    1. **Beschrijving van beheerders toestemming**: `Allows write access to the demo API`
+1. Selecteer **App-registraties (Voorbeeld)**.
+1. Selecteer de *webapi1-toepassing* om de **pagina Overzicht** te openen.
+1. Selecteer **onder Beheren**de optie Een API **blootleggen**.
+1. Selecteer naast **Application ID URI**de koppeling **Instellen.**
+1. Vervang de standaardwaarde (een `api`GUID) door , en selecteer **Vervolgens Opslaan**. De volledige URI wordt weergegeven, en `https://your-tenant-name.onmicrosoft.com/api`moet in het formaat . Wanneer uw webtoepassing een toegangstoken voor de API aanvraagt, moet deze URI worden toegevoegd als het voorvoegsel voor elk bereik dat u definieert voor de API.
+1. Selecteer Onder **Scopes die door deze API zijn gedefinieerd,** de optie **Een bereik toevoegen**.
+1. Voer de volgende waarden in om een bereik te maken dat leestoegang tot de API definieert en selecteer **vervolgens Bereik toevoegen:**
+    1. **Naam van het toepassingsgebied**:`demo.read`
+    1. **Weergavenaam beheerderstoestemming:**`Read access to demo API`
+    1. **Beschrijving van de toestemming van beheerders:**`Allows read access to the demo API`
+1. Selecteer **Een bereik toevoegen,** voer de volgende waarden in om een bereik toe te voegen dat schrijftoegang tot de API definieert en selecteer **vervolgens Bereik toevoegen:**
+    1. **Naam van het toepassingsgebied**:`demo.write`
+    1. **Weergavenaam beheerderstoestemming:**`Write access to demo API`
+    1. **Beschrijving van de toestemming van beheerders:**`Allows write access to the demo API`

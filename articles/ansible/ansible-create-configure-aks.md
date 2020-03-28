@@ -1,23 +1,23 @@
 ---
-title: Zelf studie-clusters van Azure Kubernetes service (AKS) configureren in azure met behulp van Ansible
+title: Zelfstudie - AKS-clusters (Azure Kubernetes Service) configureren in Azure met Ansible
 description: Leer hoe u Ansible gebruikt om een Azure Kubernetes Service-cluster in Azure te maken en beheren
-keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes
+keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, container, aks, kubernetes
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 6672c3fac1c5d546a61622e3fd6df6c5397f87a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156678"
 ---
-# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Zelf studie: Azure Kubernetes service (AKS)-clusters configureren in azure met behulp van Ansible
+# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Zelfstudie: AKS-clusters (Azure Kubernetes Service) configureren in Azure met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-directory/) te gebruiken voor gebruikers verificatie. Eenmaal geconfigureerd, gebruikt u uw Azure AD-verificatie token om u aan te melden bij het AKS-cluster. De RBAC kan worden gebaseerd op de identiteit of het lidmaatschap van de Directory groep van een gebruiker.
+AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-directory/) te gebruiken voor gebruikersverificatie. Nadat u bent geconfigureerd, gebruikt u uw Azure AD-verificatietoken om u aan te melden bij het AKS-cluster. De RBAC kan worden gebaseerd op de identiteit van een gebruiker of directory group membership.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -34,7 +34,7 @@ AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-dir
 
 ## <a name="create-a-managed-aks-cluster"></a>Een beheerd AKS-cluster maken
 
-Met de voorbeeld Playbook maakt u een resource groep en een AKS-cluster in de resource groep.
+In het voorbeeldwerkboek wordt een resourcegroep en een AKS-cluster gemaakt binnen de brongroep.
 
 Sla het volgende playbook op als `azure_create_aks.yml`:
 
@@ -77,20 +77,20 @@ tasks:
         Environment: Production
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-- De eerste sectie in `tasks` definieert een resource groep met de naam `myResourceGroup` binnen de `eastus` locatie.
-- In het tweede gedeelte van `tasks` wordt een AKS-cluster met de naam `myAKSCluster` in de resource groep `myResourceGroup` gedefinieerd.
+- De eerste `tasks` sectie binnen definieert een resourcegroep met de naam `myResourceGroup` binnen de `eastus` locatie.
+- De tweede `tasks` sectie binnen definieert `myAKSCluster` een `myResourceGroup` AKS-cluster met de naam binnen de resourcegroep.
 - Voor de tijdelijke aanduiding `your_ssh_key` voert u uw openbare RSA-sleutel in in de indeling met één regel, beginnend met 'ssh-rsa' (zonder aanhalingstekens).
-- Gebruik de opdracht [AZ AKS Get-verse](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) voor de tijdelijke aanduiding `aks_version`.
+- Voor `aks_version` de tijdelijke aanduiding, gebruik maken van de [az aks get-versies](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) commando.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook azure_create_aks.yml
 ```
 
-Als de Playbook wordt uitgevoerd, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer:
+Als u het draaiboek uitvoert, worden resultaten weergegeven die vergelijkbaar zijn met de volgende uitvoer:
 
 ```Output
 PLAY [Create AKS] 
@@ -110,7 +110,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>AKS-knooppunten schalen
 
-Het voorbeeld-playbook in de vorige sectie definieert twee knooppunten. U kunt het aantal knoop punten aanpassen door de `count` waarde in het blok `agent_pool_profiles` te wijzigen.
+Het voorbeeld-playbook in de vorige sectie definieert twee knooppunten. U past het aantal knooppunten `count` aan door `agent_pool_profiles` de waarde in het blok te wijzigen.
 
 Sla het volgende playbook op als `azure_configure_aks.yml`:
 
@@ -145,17 +145,17 @@ Sla het volgende playbook op als `azure_configure_aks.yml`:
             vm_size: Standard_D2_v2
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
 - Voor de tijdelijke aanduiding `your_ssh_key` voert u uw openbare RSA-sleutel in in de indeling met één regel, beginnend met 'ssh-rsa' (zonder aanhalingstekens).
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
 ```
 
-Als de Playbook wordt uitgevoerd, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer:
+Als u het draaiboek uitvoert, worden resultaten weergegeven die vergelijkbaar zijn met de volgende uitvoer:
 
 ```Output
 PLAY [Scale AKS cluster] 
@@ -172,7 +172,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 ## <a name="delete-a-managed-aks-cluster"></a>Wis een beheerd AKS-cluster
 
-De voor beeld-Playbook verwijdert een AKS-cluster.
+In de voorbeeldplaybook wordt een AKS-cluster verwijderd.
 
 Sla het volgende playbook op als `azure_delete_aks.yml`:
 
@@ -192,13 +192,13 @@ Sla het volgende playbook op als `azure_delete_aks.yml`:
       state: absent
   ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
 ```
 
-Als de Playbook wordt uitgevoerd, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer:
+Als u het draaiboek uitvoert, worden resultaten weergegeven die vergelijkbaar zijn met de volgende uitvoer:
 
 ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] 

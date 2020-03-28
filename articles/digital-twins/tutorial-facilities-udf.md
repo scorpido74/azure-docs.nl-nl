@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een IoT-apparaatapparaat bewaken-Azure Digital Apparaatdubbels | Microsoft Docs'
+title: 'Zelfstudie: Een IoT-apparaatruimte controleren - Azure Digital Twins| Microsoft Documenten'
 description: Leer hoe u uw ruimtelijke resources kunt inrichten en de werkomstandigheden kunt bewaken met Azure Digital Twins door de stappen in deze zelfstudie te volgen.
 services: digital-twins
 ms.author: alinast
@@ -10,15 +10,15 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75895369"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelf studie: uw bouw-en bewakings voorwaarden inrichten met Azure Digital Apparaatdubbels preview
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelfstudie: Uw gebouw inrichten en de werkomstandigheden bewaken met Azure Digital Twins Preview
 
-In deze zelf studie wordt gedemonstreerd hoe u met Azure Digital Apparaatdubbels Preview uw Spaces bewaakt voor gewenste temperatuur omstandigheden en comfort niveau. Nadat u uw [voorbeeldgebouw hebt geconfigureerd](tutorial-facilities-setup.md), kunt u het gebouw inrichten en aangepaste functies uitvoeren voor uw sensorgegevens met behulp van de stappen in deze zelfstudie.
+In deze zelfstudie wordt uitgelegd hoe u Azure Digital Twins Preview gebruiken om uw ruimten te controleren op de gewenste temperatuur- en comfortniveau. Nadat u uw [voorbeeldgebouw hebt geconfigureerd](tutorial-facilities-setup.md), kunt u het gebouw inrichten en aangepaste functies uitvoeren voor uw sensorgegevens met behulp van de stappen in deze zelfstudie.
 
 In deze zelfstudie leert u het volgende:
 
@@ -34,12 +34,12 @@ In deze zelfstudie wordt ervan uitgegaan dat u de [Azure Digital Twins-installat
 
 - Een [Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Een actief exemplaar van Digital Twins. 
-- De gedownloade en uitgepakte [Digital Twins C#-voorbeelden](https://github.com/Azure-Samples/digital-twins-samples-csharp) op een werkcomputer. 
+- De [Digital Twins C# samples](https://github.com/Azure-Samples/digital-twins-samples-csharp) gedownload en geëxtraheerd op je werkmachine. 
 - [.NET Core SDK-versie 2.1.403 of hoger](https://www.microsoft.com/net/download) op een ontwikkelcomputer om het voorbeeld te bouwen en uit te voeren. Voer `dotnet --version` uit om te controleren of de juiste versie is geïnstalleerd. 
 - [Visual Studio Code](https://code.visualstudio.com/) om de voorbeeldcode mee te verkennen. 
 
 >[!TIP]
-> Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
+> Gebruik een unieke digital twins-instantienaam als u een nieuw exemplaar indient.
 
 ## <a name="define-conditions-to-monitor"></a>Werkomstandigheden definiëren die gecontroleerd moeten worden
 
@@ -54,23 +54,23 @@ Voeg de volgende matcher toe onder de bestaande matchers. Zorg ervoor dat de sle
         dataTypeValue: Temperature
 ```
 
-Met deze overeenkomst wordt de `SAMPLE_SENSOR_TEMPERATURE` sensor gevolgd die u in [de eerste zelf studie](tutorial-facilities-setup.md)hebt toegevoegd. 
+Deze matcher volgt `SAMPLE_SENSOR_TEMPERATURE` de sensor die u in [de eerste zelfstudie hebt](tutorial-facilities-setup.md)toegevoegd. 
 
 ## <a name="create-a-user-defined-function"></a>Een door de gebruiker gedefinieerde functie maken
 
 Met behulp van door gebruikers gedefinieerde functies kunt u aanpassen hoe uw sensorgegevens worden verwerkt. Ze bestaan uit aangepaste JavaScript-code die in uw Azure Digital Twins-instantie wordt uitgevoerd als er zich omstandigheden voordoen die door de matchers worden beschreven. U kunt matchers en door gebruikers gedefinieerde functies maken voor elke sensor die u wilt controleren. Lees [Gegevensverwerking en door gebruikers gedefinieerde functies](concepts-user-defined-functions.md) voor meer informatie. 
 
-Zoek in het voor beeld *provisionSample. yaml* -bestand naar een sectie die begint met het type **userdefinedfunctions**. In deze sectie wordt een door de gebruiker gedefinieerde functie met een bepaalde **Naam** ingericht. Deze UDF werkt met de lijst met matchers onder **matcherNames**. Kijk ook hoe u een eigen JavaScript-kunt gebruiken als **script** voor de door de gebruiker gedefinieerde functie.
+Zoek in het *voorbeeldbestand Sample.yaml* naar een sectie die begint met de door de **gebruiker gedefinieerde functies**. In deze sectie wordt een door de gebruiker gedefinieerde functie met een bepaalde **Naam** ingericht. Deze UDF werkt met de lijst met matchers onder **matcherNames**. Kijk ook hoe u een eigen JavaScript-kunt gebruiken als **script** voor de door de gebruiker gedefinieerde functie.
 
 Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van Space Administrator toegewezen aan de door de gebruiker gedefinieerde functie. Met deze rol wordt toegang verkregen tot de gebeurtenissen die afkomstig zijn van een van de ingerichte ruimtes. 
 
-1. Configureer de door de gebruiker gedefinieerde functie zodanig dat de temperatuurmatcher erin wordt opgenomen door de volgende regel in het knooppunt `matcherNames` aan het bestand *provisionSample.yaml* toe te voegen, of door ervoor te zorgen dat deze regel niet als opmerking wordt gezien:
+1. Configureer de UDF om de temperatuurmatcher op te nemen `matcherNames` door de volgende regel toe te voegen of niet te becommentariën in het knooppunt van het *bestand provisionSample.yaml:*
 
     ```yaml
             - Matcher Temperature
     ```
 
-1. Open het bestand **src\actions\userDefinedFunctions\availability.js** in uw editor. Dit is het bestand waarnaar wordt verwezen in het element **script** van *provisionSample. yaml*. Met de door de gebruiker gedefinieerde functie in dit bestand wordt gezocht naar omstandigheden waarbij geen beweging in de ruimte wordt gedetecteerd en waarbij het koolstofdioxideniveau zich onder 1000 ppm bevindt. 
+1. Open het bestand **src\actions\userDefinedFunctions\availability.js** in uw editor. Dit is het bestand waarnaar wordt verwezen in het **scriptelement** van *provisionSample.yaml*. Met de door de gebruiker gedefinieerde functie in dit bestand wordt gezocht naar omstandigheden waarbij geen beweging in de ruimte wordt gedetecteerd en waarbij het koolstofdioxideniveau zich onder 1000 ppm bevindt. 
 
    Wijzig het JavaScript-bestand zodat op temperatuur en andere omstandigheden kan worden gecontroleerd. Voeg de volgende regels code toe om te zoeken naar omstandigheden waarbij geen beweging wordt gedetecteerd in de kamer, het koolstofdioxideniveau lager is dan 1000 ppm en de temperatuur lager is dan 78 graden Fahrenheit.
 
@@ -181,11 +181,11 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
    >[!IMPORTANT]
    > Om te voorkomen dat onbevoegden toegang hebben tot uw beheer-API van Digital Twins, wordt u door de toepassing **occupancy-quickstart** gedwongen u aan te melden met uw Azure-accountreferenties. Uw referenties blijven een korte periode bewaard, zodat u zich niet steeds hoeft aan te melden als u deze wilt uitvoeren. De eerste keer dat dit programma wordt uitgevoerd, en wanneer uw opgeslagen referenties daarna verlopen, wordt u omgeleid naar een aanmeldingspagina en ontvangt u een sessiespecifieke code die u op die pagina moet invoeren. Volg de aanwijzingen om u aan te melden met uw Azure-account.
 
-1. Nadat uw account is geverifieerd, begint de toepassing met het maken van een ruimtelijke voorbeeld grafiek zoals geconfigureerd in *provisionSample. yaml*. Wacht tot het inrichtingsproces is voltooid. Dit duurt enkele minuten. Vervolgens bekijkt u de berichten in het opdrachtvenster en u kunt zien hoe uw ruimtelijke grafiek wordt gemaakt. Observeer hoe een IoT-hub wordt gemaakt op het hoofdknooppunt of de `Venue`.
+1. Nadat uw account is geverifieerd, begint de toepassing met het maken van een voorbeeldruimtelijke grafiek zoals geconfigureerd in *provisionSample.yaml*. Wacht tot het inrichtingsproces is voltooid. Dit duurt enkele minuten. Vervolgens bekijkt u de berichten in het opdrachtvenster en u kunt zien hoe uw ruimtelijke grafiek wordt gemaakt. Observeer hoe een IoT-hub wordt gemaakt op het hoofdknooppunt of de `Venue`.
 
 1. Kopieer de waarde van de `ConnectionString` uit de uitvoer in het opdrachtvenster onder de sectie `Devices` naar het Klembord. U hebt deze waarde nodig om de apparaatverbinding in de volgende sectie te simuleren.
 
-    [voor beeld van ![inrichten](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [![Voorbeeld van inrichting](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 >[!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
@@ -202,13 +202,13 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
     dotnet restore
     ```
 
-1. Open het bestand [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) in een editor en bewerk de volgende waarden:
+1. Open het bestand [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) in uw editor en bewerk de volgende waarden:
 
    a. **DeviceConnectionString**: wijs de waarde toe van `ConnectionString` in het uitvoervenster uit de vorige sectie. Kopieer de volledige tekenreeks (tussen de aanhalingstekens), zodat de simulator correct verbinding maakt met de IoT-hub.
 
-   b. **HardwareId** binnen de **Sens oren** -matrix: omdat u gebeurtenissen simuleert van Sens oren die zijn ingericht naar uw Azure Digital apparaatdubbels-exemplaar, moeten de hardware-id en de namen van de Sens oren in dit bestand overeenkomen met het `sensors` knoop punt van het bestand *provisionSample. yaml* .
+   b. **HardwareId** binnen de array **Sensoren:** Omdat u gebeurtenissen simuleert van sensoren die zijn ingericht met uw Azure Digital Twins-exemplaar, moeten de hardware-id en de namen van de sensoren in dit bestand overeenkomen met het `sensors` knooppunt van het bestand *provisionSample.yaml.*
 
-      Voeg een nieuwe vermelding voor de temperatuursensor toe. Het knoop punt **Sens oren** in *appSettings. json* moet er als volgt uitzien:
+      Voeg een nieuwe vermelding voor de temperatuursensor toe. Het knooppunt **Sensoren** in *appsettings.json* moet er als volgt uitzien:
 
       ```JSON
       "Sensors": [{
@@ -234,7 +234,7 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
 
 ## <a name="get-results-of-the-user-defined-function"></a>Resultaten ophalen van een door de gebruiker gedefinieerde functie
 
-De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw instantie gegevens van het apparaat en de sensor ontvangt. In deze sectie voert de Azure Digital Twins-instantie een query uit om de resultaten van de door de gebruiker gedefinieerde functie op te halen. U ontvangt een melding in bijna real time, wanneer er een ruimte beschikbaar is, dat de lucht schoon is en de Tempe ratuur goed is. 
+De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw instantie gegevens van het apparaat en de sensor ontvangt. In deze sectie voert de Azure Digital Twins-instantie een query uit om de resultaten van de door de gebruiker gedefinieerde functie op te halen. U wordt in bijna realtime op de hoogte gesteld dat de lucht vers is en dat de temperatuur goed is. 
 
 1. Open het opdrachtvenster dat u heb gebruikt voor het inrichten van het voorbeeld, of open een nieuw opdrachtvenster, en ga weer naar de map **occupancy-quickstart\src** van het voorbeeld.
 
@@ -246,7 +246,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   [![uitvoer voor de UDF](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
+   [![Uitvoer voor de UDF](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 

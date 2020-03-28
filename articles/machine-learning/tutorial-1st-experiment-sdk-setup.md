@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: uw eerste ML-experiment maken'
+title: 'Zelfstudie: Uw eerste ML-experiment maken'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie gaat u aan de slag met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks.  In deel 1 maakt u een werk ruimte waarin u experimenten en ML-modellen gaat beheren.
+description: In deze zelfstudie gaat u aan de slag met de Azure Machine Learning Python SDK die wordt uitgevoerd in Jupyter-notitieblokken.  In deel 1 maakt u een werkruimte waarin u experimenten en ML-modellen beheert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,108 +11,108 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239887"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment met de Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze zelf studie voltooit u de end-to-end-stappen om aan de slag te gaan met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks. Deze zelf studie maakt **deel uit van een tweedelige zelf studie reeks**, en omvat het instellen en configureren van python-omgevingen, en het maken van een werk ruimte voor het beheren van uw experimenten en machine learning modellen. [**Deel twee**](tutorial-1st-experiment-sdk-train.md) bouwt hier mee om meerdere machine learning modellen te trainen en het model beheer proces in te stellen met behulp van Azure machine learning Studio en de SDK.
+In deze zelfstudie voltooit u de end-to-end stappen om aan de slag te gaan met de Azure Machine Learning Python SDK die in Jupyter-notitieblokken wordt uitgevoerd. Deze zelfstudie is **onderdeel van een tweedelige zelfstudiereeks**en omvat de installatie en configuratie van python-omgevingen en het maken van een werkruimte om uw experimenten en machine learning-modellen te beheren. [**Deel twee**](tutorial-1st-experiment-sdk-train.md) bouwt hierop voort om meerdere machine learning-modellen te trainen en het modelbeheerproces te introduceren met behulp van zowel Azure Machine Learning studio als de SDK.
 
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Maak een [Azure machine learning-werkruimte](concept-workspace.md) voor gebruik in de volgende zelf studie.
-> * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
-> * Maak een Cloud Compute-instantie met Azure Machine Learning python SDK geïnstalleerd en vooraf geconfigureerd.
+> * Maak een [Azure Machine Learning Workspace](concept-workspace.md) die u gebruiken in de volgende zelfstudie.
+> * Kloon het notitieblok van de zelfstudies naar uw map in de werkruimte.
+> * Maak een op de cloud gebaseerde compute-instantie met Azure Machine Learning Python SDK geïnstalleerd en vooraf geconfigureerd.
 
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een Azure Machine Learning-werk ruimte is een Foundation-resource in de cloud die u gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren. Uw Azure-abonnement en resource groep worden gebonden aan een eenvoudig verbruikte object in de service. 
+Een Azure Machine Learning-werkruimte is een basisbron in de cloud die u gebruikt om machine learning-modellen te experimenteren, te trainen en te implementeren. Het koppelt uw Azure-abonnement en resourcegroep aan een gemakkelijk verbruikt object in de service. 
 
-U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van uw Azure-resources. 
+U maakt een werkruimte via de Azure-portal, een webconsole voor het beheren van uw Azure-bronnen. 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Noteer uw **werk ruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u op de juiste plaats uw experiment kunt maken. 
+> Let op uw **werkruimte** en **abonnement.** U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plaats maakt. 
 
-## <a name="azure"></a>Notitie blok uitvoeren in uw werk ruimte
+## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>Notitieblok uitvoeren in uw werkruimte
 
-In deze zelf studie wordt de Cloud notebook server in uw werk ruimte gebruikt voor een installatie zonder een vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u de controle wilt over uw omgeving, pakketten en afhankelijkheden.
+Deze zelfstudie maakt gebruik van de cloudnotebookserver in uw werkruimte voor een installatievrije en vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u liever controle hebt over uw omgeving, pakketten en afhankelijkheden.
 
-Volg samen met deze video of gebruik de gedetailleerde stappen hieronder om de zelf studie vanuit uw werk ruimte te klonen en uit te voeren. 
+Volg deze video mee of gebruik de onderstaande gedetailleerde stappen om de zelfstudie vanuit uw werkruimte te klonen en uit te voeren. 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
 
 
-### <a name="clone-a-notebook-folder"></a>Een notitieblokmap-map klonen
+### <a name="clone-a-notebook-folder"></a>Een notitieblokmap klonen
 
-U voltooit de volgende proef installatie en voert stappen uit in Azure Machine Learning Studio, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus.
+U voltooit de volgende experimentset-up en voert stappen uit in Azure Machine Learning-studio, een geconsolideerde interface met machine learning-tools om data science-scenario's uit te voeren voor praktijkvoorbeelden van alle vaardigheidsniveaus.
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
+1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com/).
 
-1. Selecteer uw abonnement en de werk ruimte die u hebt gemaakt.
+1. Selecteer uw abonnement en de werkruimte die u hebt gemaakt.
 
-1. Selecteer **notebooks** aan de linkerkant.
+1. Selecteer **Notitieblokken** aan de linkerkant.
 
-1. Open de map met voor **beelden** .
+1. Open de map **Voorbeelden.**
 
-1. Open de map **python** .
+1. Open de **map Python.**
 
-1. Open de map met een versie nummer.  Dit nummer vertegenwoordigt de huidige release voor de python-SDK.
+1. Open de map met een versienummer erop.  Dit nummer vertegenwoordigt de huidige release voor de Python SDK.
 
-1. Selecteer **'... '** aan de rechter kant van de map **zelf studies** en selecteer vervolgens **klonen**.
+1. Selecteer de **map "..."** rechts van de map **met zelfstudies** en selecteer **Vervolgens Kloon**.
 
-    ![Map klonen](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    ![Kloonmap](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Er wordt een lijst met mappen weer gegeven met alle gebruikers die toegang hebben tot de werk ruimte.  Selecteer de map waarin u de map met **zelf studies** wilt klonen.
+1. In een lijst met mappen wordt elke gebruiker weergegeven die toegang heeft tot de werkruimte.  Selecteer uw map om de **map met zelfstudies** daar te klonen.
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a>de gekloonde notebook <a name="open">openen
+### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">Het gekloonde notitieblok openen
 
-1. Open de map onder **gebruikers bestanden** en open vervolgens de map gekloonde **zelf studies** .
+1. Open **onder Gebruikersbestanden** de map en open vervolgens de map met gekloonde **zelfstudies.**
 
-    ![Map met zelf studies openen](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+    ![Map zelfstudies openen](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
 
     > [!IMPORTANT]
-    > U kunt notitie blokken weer geven in de map **samples** , maar u kunt geen notitie blok van daar uitvoeren.  Als u een notitie blok wilt uitvoeren, moet u ervoor zorgen dat u de gekloonde versie van het notitie blok opent in de sectie **gebruikers bestanden** .
+    > U notitieblokken in de **map met voorbeelden** bekijken, maar vanaf daar u geen notitieblok uitvoeren.  Als u een notitieblok wilt uitvoeren, moet u de gekloonde versie van het notitieblok openen in de sectie **Gebruikersbestanden.**
     
-1. Selecteer de **zelf studie-1ste experiment-SDK-Train. ipynb-** bestand in uw **zelf studies/map Create-First-ml-experimenten** .
+1. Selecteer het **bestand tutorial-1st-experiment-sdk-train.ipynb** in uw **map tutorials/create-first-ml-experiment.**
 
-1. Selecteer op de bovenste balk een reken instantie die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met [Alles wat u nodig hebt om Azure machine learning uit te voeren](concept-compute-instance.md#contents). U kunt een virtuele machine selecteren die wordt gemaakt door een gebruiker van uw werk ruimte. 
+1. Selecteer op de bovenste balk een rekeninstantie die u wilt gebruiken om het notitieblok uit te voeren. Deze VM's zijn vooraf geconfigureerd met [alles wat u nodig hebt om Azure Machine Learning uit te voeren.](concept-compute-instance.md#contents) U een vm selecteren die is gemaakt door elke gebruiker van uw werkruimte. 
 
-1. Als er geen Vm's worden gevonden, selecteert u **+ toevoegen** om de VM van het reken proces te maken. 
+1. Als er geen VM's worden gevonden, selecteert u **+ Toevoegen** om de vm van de rekeninstantie te maken. 
 
-    1. Wanneer u een virtuele machine maakt, moet u een naam opgeven.  De naam moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het-teken, en moeten ook uniek zijn binnen uw Azure-abonnement.
+    1. Wanneer u een vm maakt, geeft u een naam op.  De naam moet tussen de 2 en 16 tekens liggen. Geldige tekens zijn letters, cijfers en het - teken en moeten ook uniek zijn voor uw Azure-abonnement.
 
-    1.  Selecteer de grootte van de virtuele machine in de beschik bare opties.
+    1.  Selecteer de grootte van de virtuele machine in de beschikbare opties.
 
-    1. Selecteer vervolgens **Maken**. Het kan ongeveer 5 minuten duren om uw virtuele machine in te stellen.
+    1. Selecteer vervolgens **Maken**. Het kan ongeveer 5 minuten duren om uw VM in te stellen.
 
-1. Zodra de virtuele machine beschikbaar is, wordt deze weer gegeven op de bovenste werk balk.  U kunt het notitie blok nu uitvoeren met de optie **alle uitvoeren** op de werk balk of door **SHIFT + ENTER** te gebruiken in de code cellen van het notitie blok.
+1. Zodra de VM beschikbaar is, wordt deze weergegeven op de bovenste werkbalk.  U het notitieblok nu uitvoeren met **Alles uitvoeren** op de werkbalk of met **Shift+Enter** gebruiken in de codecellen van het notitieblok.
 
-Als u aangepaste widgets hebt of liever Jupyter/Jjupyterlab gebruikt, selecteert u de vervolg keuzelijst **Jupyter** helemaal rechts en selecteert u **Jupyter** of **jjupyterlab**. Het nieuwe browser venster wordt geopend.
+Als u aangepaste widgets of liever met behulp van Jupyter / JupyterLab selecteer de **Jupyter** drop down aan de rechterkant, selecteer dan **Jupyter** of **JupyterLab**. Het nieuwe browservenster wordt geopend.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de volgende taken uitgevoerd:
+In deze zelfstudie hebt u de volgende taken voltooid:
 
-* Er is een Azure Machine Learning-werk ruimte gemaakt.
-* Een Cloud notebook server in uw werk ruimte gemaakt en geconfigureerd.
+* Een Azure Machine Learning-werkruimte gemaakt.
+* Een cloudnotitieblokserver in uw werkruimte maken en configureren.
 
-In **deel twee** van de zelf studie voert u de code in `tutorial-1st-experiment-sdk-train.ipynb` om een machine learning model te trainen. 
+In **deel twee** van de tutorial `tutorial-1st-experiment-sdk-train.ipynb` voer je de code in om een machine learning model te trainen. 
 
 > [!div class="nextstepaction"]
-> [Zelf studie: uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)
+> [Zelfstudie: Train je eerste model](tutorial-1st-experiment-sdk-train.md)
 
 > [!IMPORTANT]
-> Als u niet van plan bent om deel 2 van deze zelf studie of andere zelf studies te plannen, moet u [de VM van de Cloud notebook server stoppen](tutorial-1st-experiment-sdk-train.md#clean-up-resources) wanneer u deze niet gebruikt om de kosten te verlagen.
+> Als u niet van plan bent deel 2 van deze zelfstudie of andere zelfstudies te volgen, moet u [de vm van de cloudnotebookserver stoppen](tutorial-1st-experiment-sdk-train.md#clean-up-resources) wanneer u deze niet gebruikt om de kosten te verlagen.
 
 

@@ -1,6 +1,6 @@
 ---
 title: Bestaande gegevens migreren naar een Table-API-account in Azure Cosmos DB
-description: Informatie over hoe migreren of importeren van on-premises of gegevens naar Azure Table-API-account in Azure Cosmos DB in de cloud.
+description: Lees hoe u on-premises of cloudgegevens migreert of importeert naar Azure Table API-account in Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,15 +9,15 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66242577"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Gegevens migreren naar een Azure Cosmos DB Table-API-account
 
-In deze zelfstudie vindt u instructies voor het importeren van gegevens voor gebruik met de Azure Cosmos DB [Table-API](table-introduction.md). Als u gegevens hebt opgeslagen in Azure Table Storage, kunt u het gegevensmigratieprogramma of AzCopy gebruiken om de gegevens te importeren in Azure Cosmos DB Table-API. Als u gegevens hebt opgeslagen in een Azure Cosmos DB Table-API-account (preview), moet u het gegevensmigratieprogramma gebruiken om uw gegevens te migreren. 
+Deze zelfstudie bevat instructies voor het importeren van gegevens voor gebruik met de Azure Cosmos DB [Table API.](table-introduction.md) Als u gegevens hebt opgeslagen in Azure Table Storage, kunt u het gegevensmigratieprogramma of AzCopy gebruiken om de gegevens te importeren in Azure Cosmos DB Table-API. Als u gegevens hebt opgeslagen in een Azure Cosmos DB Table-API-account (preview), moet u het gegevensmigratieprogramma gebruiken om uw gegevens te migreren. 
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -28,9 +28,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Doorvoer vergroten:** de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor een afzonderlijke container of een reeks containers instelt. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie Prestatieniveaus en prijscategorieën in Azure Cosmos DB voor meer informatie over het verhogen van de doorvoer in Azure Portal.
+* **Verhoog de doorvoer:** De duur van uw gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u hebt ingesteld voor een afzonderlijke container of een set containers. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie Prestatieniveaus en prijscategorieën in Azure Cosmos DB voor meer informatie over het verhogen van de doorvoer in Azure Portal.
 
-* **Azure Cosmos DB-resources maken:** voordat u gegevens gaat migreren, maakt u vooraf alle tabellen vanuit de Azure-portal. Als u migreert naar een Azure Cosmos DB-account dat doorvoer op databaseniveau heeft, moet u een partitiesleutel opgeven bij het maken van de Azure Cosmos DB-tabellen.
+* **Maak Azure Cosmos DB-resources:** voordat u gegevens gaat migreren, maakt u vooraf alle tabellen vanuit de Azure Portal. Als u migreert naar een Azure Cosmos DB-account dat doorvoer op databaseniveau heeft, moet u een partitiesleutel opgeven bij het maken van de Azure Cosmos DB-tabellen.
 
 ## <a name="data-migration-tool"></a>Gegevensmigratieprogramma
 
@@ -66,11 +66,11 @@ Gebruik de volgende bronopties bij het definiëren van Azure Table Storage of Ta
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit Azure Table Storage, opent u Azure Portal, klikt u op **Storage-accounts** > **Account** > **Toegangssleutels** en kopieert u vervolgens de **verbindingsreeks** met de knop Kopiëren.
+Als u de tekenreeks voor bronverbinding wilt ophalen bij het importeren uit Azure Table-opslag, opent u de Azure-portal en klikt u op**Account** > **Accounttoegangssleutels** **voor opslagaccounts** > en gebruikt u de knop Kopiëren om de **verbindingstekenreeks**te kopiëren.
 
 ![Schermopname van HBase-bronopties](./media/table-import/storage-table-access-key.png)
 
-Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit een Azure Cosmos DB Table-API-account (preview), opent u Azure Portal, klikt u op **Azure Cosmos DB** > **Account** > **Verbindingsreeks** en kopieert u vervolgens de **verbindingsreeks** met de knop Kopiëren.
+Als u de tekenreeks voor bronverbinding wilt ophalen wanneer u importeert uit een Azure Cosmos DB Table API -account (preview), opent u de Azure-portal, > klikt u op Azure Cosmos**DB-accountverbindingstekenreeks** > **Connection String** en gebruikt u de kopieerknop om de **verbindingstekenreeks**te kopiëren. **Azure Cosmos DB**
 
 ![Schermopname van HBase-bronopties](./media/table-import/cosmos-connection-string.png)
 
@@ -91,7 +91,7 @@ Gebruik de volgende doelopties bij het definiëren van de Azure Cosmos DB Table-
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Voorbeeldopdracht: bron is Azure-tabelopslag
+### <a name="sample-command-source-is-azure-table-storage"></a>Voorbeeldopdracht: bron is Azure Table Storage
 
 Hier ziet u een voorbeeld van een opdrachtregel voor het importeren vanuit Azure Table Storage in Table-API:
 
