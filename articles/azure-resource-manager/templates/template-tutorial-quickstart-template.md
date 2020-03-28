@@ -1,69 +1,69 @@
 ---
-title: Zelf studie-Quick Start-sjablonen gebruiken
-description: Meer informatie over het gebruik van Azure Quick Start-sjablonen voor het volt ooien van uw sjabloon ontwikkeling.
+title: Zelfstudie - Quickstart-sjablonen gebruiken
+description: Meer informatie over het gebruik van Azure Quickstart-sjablonen om de sjabloonontwikkeling te voltooien.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 8747a4614cb8106ce80c6caef0aae36111d2c384
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368873"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369856"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Zelf studie: Azure Quick Start-sjablonen gebruiken
+# <a name="tutorial-use-azure-quickstart-templates"></a>Zelfstudie: Azure Quickstart-sjablonen gebruiken
 
-[Sjablonen voor Azure Quick](https://azure.microsoft.com/resources/templates/) start is een opslag plaats van community-sjablonen. U kunt de voorbeeld sjablonen gebruiken in de ontwikkeling van uw sjabloon. In deze zelf studie vindt u een bron definitie van een website en voegt u deze toe aan uw eigen sjabloon. Het duurt ongeveer **12 minuten** om te volt ooien.
+[Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/) zijn een opslagplaats van door de community bijgedragen sjablonen. U de voorbeeldsjablonen gebruiken in de ontwikkeling van uw sjabloon. In deze zelfstudie vindt u een definitie van websitebronnen en voegt u deze toe aan uw eigen sjabloon. Het duurt ongeveer **12 minuten** om te voltooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U wordt aangeraden de [zelf studie over geëxporteerde sjablonen](template-tutorial-export-template.md)te volt ooien, maar dit is niet vereist.
+We raden u aan de [zelfstudie over geëxporteerde sjablonen in te](template-tutorial-export-template.md)vullen, maar dit is niet vereist.
 
-U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
+U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
 
-## <a name="review-template"></a>Sjabloon controleren
+## <a name="review-template"></a>Sjabloon bekijken
 
-Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
-Deze sjabloon kan worden gebruikt voor het implementeren van opslag accounts en app service-plannen, maar u wilt mogelijk een website toevoegen. U kunt vooraf gemaakte sjablonen gebruiken om snel de JSON te detecteren die vereist is voor het implementeren van een resource.
+Deze sjabloon werkt voor het implementeren van opslagaccounts en app-serviceplannen, maar u er een website aan toevoegen. U vooraf gebouwde sjablonen gebruiken om snel de JSON te ontdekken die nodig is voor het implementeren van een resource.
 
 ## <a name="find-template"></a>Sjabloon zoeken
 
-1. Open [Azure Quick](https://azure.microsoft.com/resources/templates/) start-sjablonen
-1. Voer in de **Zoek opdracht** **Linux-web-app implementeren**in.
-1. Selecteer het abonnement met de titel **een basis-Linux-web-app implementeren**. Als u deze niet kunt vinden, volgt u de [direct-koppeling](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
-1. Selecteer **Bladeren op github**.
-1. Selecteer **azuredeploy. json**.
-1. Controleer de sjabloon. Zoek in het bijzonder naar de `Microsoft.Web/sites`-resource.
+1. [Azure Quickstart-sjablonen openen](https://azure.microsoft.com/resources/templates/)
+1. Voer in **Zoeken** **de Linux-web-app implementeren**in.
+1. Selecteer de ene met de titel **Een eenvoudige Linux-web-app implementeren**. Als je moeite hebt met het vinden van het, hier is de [directe link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. Selecteer **Bladeren op GitHub**.
+1. Selecteer **azuredeploy.json**.
+1. Bekijk de sjabloon. Zoek in het `Microsoft.Web/sites` bijzonder naar de bron.
 
-    ![Snelstartgids voor de Resource Manager-sjabloon](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
+    ![Resource Manager-sjabloon snelstart-website](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
 ## <a name="revise-existing-template"></a>Bestaande sjabloon herzien
 
-De Quick Start-sjabloon samen voegen met de bestaande sjabloon:
+Voeg de snelstartsjabloon samen met de bestaande sjabloon:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-De naam van de web-app moet uniek zijn binnen Azure. Om te voor komen dat dubbele namen worden opgegeven, is de variabele **webAppPortalName** bijgewerkt van **' webAppPortalName ': ' [concat (para meters (' webapp naam '), '-webapp ')] '** naar **' webAppPortalName ': ' [concat (para meters (' webapp naam '), Unique string (resourceGroup (). id)] '** .
+De naam van de web-app moet uniek zijn in Azure. Om dubbele namen te voorkomen, is de **webAppPortalName-variabele** bijgewerkt van **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** naar **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id)]"**.
 
-Voeg aan het einde van de `Microsoft.Web/serverfarms` definitie een komma toe om de resource definitie te scheiden van de `Microsoft.Web/sites` definitie.
+Voeg aan het einde van `Microsoft.Web/serverfarms` de definitie een komma `Microsoft.Web/sites` toe om de resourcedefinitie van de definitie te scheiden.
 
-Er zijn een aantal belang rijke functies om in deze nieuwe resource te noteren.
+Er zijn een paar belangrijke functies op te merken in deze nieuwe bron.
 
-U ziet dat er een element met de naam **dependsOn** is dat is ingesteld op het app service-plan. Deze instelling is vereist omdat het app service-plan moet bestaan voordat de web-app wordt gemaakt. Het element **dependsOn** vertelt Resource Manager hoe de resources voor implementatie moeten worden geordend.
+U zult merken dat het een element met de naam **dependsOn** dat is ingesteld op de app-service plan. Deze instelling is vereist omdat het app-serviceplan moet bestaan voordat de web-app wordt gemaakt. Het element **dependsOn** vertelt Resource Manager hoe u de resources voor implementatie moet ordenen.
 
-De eigenschap **serverFarmId** maakt gebruik van de functie [resourceId](template-functions-resource.md#resourceid) . Deze functie haalt de unieke id voor een resource op. In dit geval wordt de unieke id voor het app service-plan opgehaald. De web-app is gekoppeld aan één specifiek app service-plan.
+De eigenschap **serverFarmId** maakt gebruik van de [functie resourceId.](template-functions-resource.md#resourceid) Met deze functie krijgt u de unieke id voor een resource. In dit geval krijgt het de unieke id voor het app-serviceplan. De web-app is gekoppeld aan één specifiek app-serviceplan.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Gebruik Azure CLI of Azure PowerShell voor het implementeren van een sjabloon.
+Gebruik Azure CLI of Azure PowerShell om een sjabloon te implementeren.
 
-Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
+Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -75,7 +75,9 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
 
 ```azurecli
 az deployment group create \
@@ -89,18 +91,18 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
+Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
 
-Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
+Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een Quick Start-sjabloon kunt gebruiken voor de ontwikkeling van uw sjabloon. In de volgende zelf studie voegt u tags toe aan de resources.
+U hebt geleerd hoe u een snelstartsjabloon gebruiken voor de ontwikkeling van uw sjabloon. In de volgende zelfstudie voegt u tags toe aan de resources.
 
 > [!div class="nextstepaction"]
 > [Tags toevoegen](template-tutorial-add-tags.md)

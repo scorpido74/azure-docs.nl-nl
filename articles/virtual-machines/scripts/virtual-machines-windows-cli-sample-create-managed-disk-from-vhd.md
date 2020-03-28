@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijf maken op basis van een VHD-bestand in een opslag account in hetzelfde abonnement-CLI-voor beeld
+title: Een beheerde schijf maken op basis van een VHD-bestand in een opslagaccount in hetzelfde abonnement - CLI-voorbeeld
 description: 'Azure CLI-voorbeeldscript: een beheerde schijf maken op basis van een VHD-bestand in een opslagaccount in hetzelfde abonnement'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 9f7126d98b5b769ecf87608861b43af8af9dcaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75375811"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>Maak een beheerde schijf op basis van een VHD-bestand in een opslagaccount in hetzelfde abonnement met CLI
@@ -47,4 +47,4 @@ Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op ba
 
 Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Meer informatie over de CLI-voorbeeld scripts voor virtuele machines en beheerde schijven vindt u in de documentatie van de [Azure Windows-VM](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aanvullende virtuele machine en beheerde schijven CLI-scriptvoorbeelden zijn te vinden in de [Azure Windows VM-documentatie.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

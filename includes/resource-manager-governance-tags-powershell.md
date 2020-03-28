@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67175969"
 ---
-Gebruik twee labels toevoegen aan een resourcegroep, de [Set AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) opdracht:
+Als u twee tags aan een resourcegroep wilt toevoegen, gebruikt u de opdracht [Set-AzResourceGroup:](/powershell/module/az.resources/set-azresourcegroup)
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Gebruik een JSON-tekenreeks om meerdere waarden met elkaar te combineren in een 
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Om toe te voegen een nieuwe tag met verschillende waarden zonder verlies van de bestaande tags, moet u de bestaande tags ophalen, gebruik van een JSON-tekenreeks voor de nieuwe tag en toepassen van de verzameling van labels:
+Als u een nieuwe tag met verschillende waarden wilt toevoegen zonder de bestaande tags te verliezen, moet u de bestaande tags ophalen, een JSON-tekenreeks gebruiken voor de nieuwe tag en de verzameling tags opnieuw toepassen:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag

@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-Azure Service Fabric net-Resources opschonen
+title: Zelfstudie- Mesh-bronnen voor Azure Service Fabric opschonen
 description: Leer hoe u Azure Service Fabric Mesh-resources verwijdert, zodat er geen kosten in rekening worden gebracht voor resources die u niet meer gebruikt.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351879"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Zelfstudie: Azure-resources verwijderen

@@ -5,15 +5,15 @@ ms.subservice: machine-learning
 ms.topic: include
 ms.date: 11/20/2019
 ms.author: garye
-ms.openlocfilehash: eb5755d8e90c8134fe7bcef340820844eeb7e9cc
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 3e8bdafd8f024e7bd2ab0c9f894bb9d714094ab6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462112"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345739"
 ---
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services is momenteel beschikbaar als preview-versie. Registreren voor de preview is momenteel gesloten.
+> Azure SQL Database Machine Learning Services bevindt zich momenteel in preview. Aanmelden voor de preview is momenteel **gesloten.**
 > 
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.

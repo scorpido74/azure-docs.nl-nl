@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: f06d88e94c795955f7c9a0f5cdfea4e06c403a05
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038844"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Zorgen voor verkeer met gelijke taakverdeling tussen maximaal beschikbare virtuele machines
@@ -68,9 +68,9 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. |
 
-U kunt de virtuele machines ook maken met uw eigen aangepaste beheerde installatie kopie. In de VM-configuratie kunt u voor `Set-AzVMSourceImage` de para meters `-Id` en `-VM` gebruiken in plaats van `-PublisherName`, `-Offer`, `-Skus`en `-Version`.
+U de VM's ook maken met uw eigen aangepaste beheerde afbeelding. In de VM-configuratie, `Set-AzVMSourceImage` voor het `-PublisherName` `-Offer`gebruik `-Skus`van `-Version`de `-Id` parameters en `-VM` parameters in plaats van , , , en .
 
-Het maken van de VM-configuratie zou bijvoorbeeld het volgende zijn:
+Het maken van de VM-config zou bijvoorbeeld zijn:
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 -AvailabilitySetId $as.Id | `

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438900"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Zelfstudie: een pijplijn maken met de kopieeractiviteit middels de Data Factory-wizard Kopiëren
@@ -24,9 +24,9 @@ ms.locfileid: "75438900"
 > * [Overzicht en vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [De wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-> * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+> * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
@@ -45,7 +45,7 @@ U dient eerst te voldoen aan de vereisten in het artikel [Overzicht van de zelfs
 ## <a name="create-data-factory"></a>Een gegevensfactory maken
 In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADFTutorialDataFactory** te maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Log in bij [Azure portal](https://portal.azure.com).
 2. Klik in het menu in de linkerbovenhoek op **Een resource maken**, klik op **Gegevens en analyses** en **Data Factory**. 
    
    ![Nieuw -> DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
@@ -55,7 +55,7 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
        De naam van de Azure-gegevensfactory moet wereldwijd uniek zijn. Als dit foutbericht wordt geretourneerd: `Data factory name “ADFTutorialDataFactory” is not available`, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactoryDDMMJJJJ) en maakt een nieuwe. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.  
       
        ![Naam van gegevensfactory niet beschikbaar](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
-   2. Selecteer uw Azure-**abonnement**.
+   2. Selecteer uw **Azure-abonnement**.
    3. Voer een van de volgende stappen uit voor de resourcegroep: 
       
       - Selecteer **Bestaande gebruiken** om een bestaande resourcegroep te selecteren.
@@ -64,10 +64,10 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
         Voor sommige van de stappen in deze zelfstudie wordt ervan uitgegaan dat u voor de resourcegroep de naam **ADFTutorialResourceGroup** gebruikt. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../../azure-resource-manager/management/overview.md) voor meer informatie.
    4. Selecteer een **locatie** voor de gegevensfactory.
    5. Selecteer het selectievakje **Vastmaken aan dashboard** onderaan de blade.  
-   6. Klik op **Maken**.
+   6. Klik **op Maken**.
       
        ![Blade voor een nieuwe gegevensfactory](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
-3. Wanneer het aanmaken is voltooid, ziet u de blade **Gegevensfactory** zoals op de volgende afbeelding wordt weergegeven:
+3. Nadat de creatie is voltooid, ziet u het blade van De **Gegevensfabriek** zoals weergegeven in de volgende afbeelding:
    
    ![Startpagina van de gegevensfactory](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -91,7 +91,7 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
    
    1. Voer **AzureStorageLinkedService** in als **naam van de gekoppelde service**.
    2. Controleer of de optie **Van Azure-abonnementen** is geselecteerd als **accountselectiemethode**.
-   3. Selecteer uw Azure-**abonnement**.  
+   3. Selecteer uw **Azure-abonnement**.  
    4. Selecteer een **Azure-opslagaccount** uit de lijst met Azure-opslagaccounts die beschikbaar is voor het abonnement dat u hebt geselecteerd. U kunt er ook voor kiezen om de opslagaccountinstellingen handmatig op te geven. Selecteer daarvoor de optie **Handmatig invoeren** als **accountselectiemethode** en klik vervolgens op **Volgende**. 
       
       ![Hulpprogramma voor kopiëren - Het Azure Blob Storage-account opgeven](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
@@ -114,7 +114,7 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
    
    1. Typ **AzureSqlLinkedService** in het veld **Verbindingsnaam**.
    2. Controleer of de optie **Van Azure-abonnementen** is geselecteerd als **Server-/databaseselectiemethode**.
-   3. Selecteer uw Azure-**abonnement**.  
+   3. Selecteer uw **Azure-abonnement**.  
    4. Selecteer de **servernaam** en **database**.
    5. Voer de **gebruikersnaam** en het **wachtwoord** in.
    6. Klik op **Volgende**.  

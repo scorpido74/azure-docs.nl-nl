@@ -5,23 +5,23 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dab69c32f7277cd5d746e001b36118e673401bca
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e1cce566fb7aab286c57f32d9348e51dd0a7c1ee
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250141"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239324"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Azure Resource Manager-sjablonen maken
+# <a name="tutorial-create-linked-arm-templates"></a>Zelfstudie: Gekoppelde ARM-sjablonen maken
 
-Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen. Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In deze zelf studie gebruikt u dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md), waarmee u een virtuele machine, een virtueel netwerk en een andere afhankelijke resource met inbegrip van een opslag account maakt. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
+Meer informatie over het maken van gekoppelde ARM-sjablonen (Azure Resource Manager). Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In deze zelfstudie gebruikt u dezelfde sjabloon die wordt gebruikt in [Zelfstudie: ARM-sjablonen maken met afhankelijke resources,](./template-tutorial-create-templates-with-dependent-resources.md)waardoor een virtuele machine, een virtueel netwerk en andere afhankelijke bron, waaronder een opslagaccount, worden gemaakt. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
 
-Het aanroepen van een gekoppelde sjabloon is vergelijkbaar met het maken van een functie aanroep.  U leert ook hoe u parameter waarden kunt door geven aan de gekoppelde sjabloon en hoe u retour waarden ophaalt uit de gekoppelde sjabloon.
+Het aanroepen van een gekoppelde sjabloon is als het maken van een functieaanroep.  U leert ook hoe u parameterwaarden doorgeeft aan de gekoppelde sjabloon en hoe u 'retourwaarden' uit de gekoppelde sjabloon halen.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een quickstartsjabloon openen
+> * Een snelstartsjabloon openen
 > * De gekoppelde sjabloon maken
 > * De gekoppelde sjabloon uploaden
 > * Koppeling maken met de gekoppelde sjabloon
@@ -29,9 +29,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De sjabloon implementeren
 > * Aanvullende procedures
 
-Zie voor meer informatie [gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources](./linked-templates.md).
+Zie [Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources](./linked-templates.md)voor meer informatie.
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -39,23 +39,23 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
-* Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio Code gebruiken om ARM-sjablonen te maken.](use-vs-code-to-create-template.md)
+* Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in de Resource Manager-sjabloonimplementatie](./template-tutorial-use-key-vault.md) voor meer informatie. We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
+    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie](./template-tutorial-use-key-vault.md). We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). Dit is dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md). U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
+Azure QuickStart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). Dit is dezelfde sjabloon die wordt gebruikt in [Zelfstudie: ARM-sjablonen maken met afhankelijke resources.](./template-tutorial-create-templates-with-dependent-resources.md) U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
 
 * **De hoofdsjabloon**: voor het maken van alle resources, met uitzondering van het opslagaccount.
 * **De gekoppelde sjabloon**: voor het maken van het opslagaccount.
 
-1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
+1. Selecteer **Bestand**>**openen bestand**in Visual Studio-code .
 1. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -63,7 +63,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
     ```
 
 1. Selecteer **Openen** om het bestand te openen.
-1. Er zijn zes resources gedefinieerd door de sjabloon:
+1. De sjabloon heeft zes bronnen gedefinieerd:
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
@@ -72,18 +72,18 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     Het is handig om basis informatie over het sjabloon schema op te halen voordat u de sjabloon aanpast.
-1. Selecteer **Bestand**>**Opslaan als** om het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
-1. Selecteer **Bestand**>**Opslaan als** om nog een exemplaar te maken van het bestand met de naam **linkedTemplate.json**.
+     Het is handig om een basiskennis van het sjabloonschema te krijgen voordat u de sjabloon aanwerkt.
+1. Selecteer **Bestand**>**opslaan als** u een kopie van het bestand op uw lokale computer wilt opslaan met de naam **azuredeploy.json**.
+1. Selecteer **Bestand**>**opslaan als** u een andere kopie van het bestand maakt met de naam **linkedTemplate.json**.
 
 ## <a name="create-the-linked-template"></a>De gekoppelde sjabloon maken
 
-De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worden gebruikt als een zelfstandige sjabloon voor het maken van een opslag account. In deze zelf studie heeft de gekoppelde sjabloon twee para meters en wordt er een waarde weer gegeven in de hoofd sjabloon. Deze return-waarde is gedefinieerd in het `outputs`-element.
+De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worden gebruikt als zelfstandige sjabloon om een opslagaccount te maken. In deze zelfstudie neemt de gekoppelde sjabloon twee parameters en geeft een waarde door aan de hoofdsjabloon. Deze "return"-waarde wordt `outputs` gedefinieerd in het element.
 
-1. Open **linkedTemplate. json** in Visual Studio code als het bestand niet wordt geopend.
+1. Open **linkedTemplate.json** in Visual Studio Code als het bestand niet wordt geopend.
 1. Breng de volgende wijzigingen aan:
 
-    * Verwijder alle para meters, met uitzonde ring van de **locatie**.
+    * Verwijder alle andere parameters dan **locatie**.
     * Voeg een parameter met de naam **storageAccountName** toe.
 
       ```json
@@ -95,10 +95,10 @@ De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worde
       },
       ```
 
-      De naam en locatie van het opslag account worden door gegeven van de hoofd sjabloon naar de gekoppelde sjabloon als para meters.
+      De naam en locatie van het opslagaccount worden van de hoofdsjabloon naar de gekoppelde sjabloon als parameters doorgegeven.
 
     * Het element **variables** en alle variabeledefinities te verwijderen.
-    * Verwijder alle andere resources dan het opslag account. U moet in totaal vier resources verwijderen.
+    * Verwijder alle andere bronnen dan het opslagaccount. U moet in totaal vier resources verwijderen.
     * Werk de waarde van het element **name** van de opslagaccount-resource om:
 
         ```json
@@ -165,7 +165,7 @@ De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worde
 
 ## <a name="upload-the-linked-template"></a>De gekoppelde sjabloon uploaden
 
-De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In deze zelf studie gebruikt u de implementatie methode Cloud shell zoals u in de [zelf studie hebt gebruikt: Azure Resource Manager sjablonen met afhankelijke resources maken](./template-tutorial-create-templates-with-dependent-resources.md). De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. Om de zelf studie te vereenvoudigen, downloadt het script een voltooide gekoppelde sjabloon uit een GitHub-opslag plaats. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
+De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In deze zelfstudie gebruikt u de implementatiemethode voor de cloudshell zoals u die gebruikt in [Zelfstudie: ARM-sjablonen maken met afhankelijke resources.](./template-tutorial-create-templates-with-dependent-resources.md) De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. Om de zelfstudie te vereenvoudigen, downloadt het script een voltooide gekoppelde sjabloon uit een GitHub-repository. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
 
 > [!NOTE]
 > De geldigheidsduur van het SAS-token wordt met het script beperkt tot acht uur. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de verlooptijd.
@@ -233,8 +233,8 @@ In de praktijk genereert u een SAS-token wanneer u de hoofdsjabloon implementeer
 
 De hoofdsjabloon heet azuredeploy.json.
 
-1. Open **azuredeploy. json** in Visual Studio code als deze niet is geopend.
-1. Vervang de resource definitie van het opslag account door het volgende JSON-fragment:
+1. Open **azuredeploy.json** in Visual Studio Code als deze niet wordt geopend.
+1. Vervang de definitie van opslagaccountbronnen door het volgende json-fragment:
 
     ```json
     {
@@ -266,7 +266,7 @@ De hoofdsjabloon heet azuredeploy.json.
 
 ## <a name="configure-dependency"></a>Afhankelijkheid configureren
 
-Intrekken uit [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md), de virtuele-machine resource is afhankelijk van het opslag account:
+Terugroepen uit [zelfstudie: maak ARM-sjablonen met afhankelijke resources,](./template-tutorial-create-templates-with-dependent-resources.md)de bron van de virtuele machine is afhankelijk van het opslagaccount:
 
 ![Afhankelijkheidsdiagram van Azure Resource Manager-sjablonen](./media/template-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
@@ -291,22 +291,22 @@ Omdat het opslagaccount nu is gedefinieerd in de gekoppelde sjabloon, moet u de 
 
     ![Gekoppelde Azure Resource Manager-sjablonen configureren afhankelijkheid](./media/template-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    *linkedTemplate* is de naam van de implementatieresource.
+    *linkedTemplate* is de naam van de implementatiebron.
 3. Werk **properties/diagnosticsProfile/bootDiagnostics/storageUri** bij zoals is weergegeven in de vorige schermafbeelding.
 4. Sla de bijgewerkte sjabloon op.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Raadpleeg de sectie [De sjabloon implementeren](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) voor de implementatieprocedure. Gebruik dezelfde resourcegroepsnaam als het opslagaccount voor het opslaan van de gekoppelde sjabloon. Zo wordt het opschonen van resources in de volgende sectie eenvoudiger. Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Zie [Vereisten](#prerequisites).
+Raadpleeg de sectie [De sjabloon implementeren](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) voor de implementatieprocedure. Gebruik dezelfde resourcegroepsnaam als het opslagaccount voor het opslaan van de gekoppelde sjabloon. Zo wordt het opschonen van resources in de volgende sectie eenvoudiger. Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Zie [Voorwaarden](#prerequisites).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="additional-practice"></a>Aanvullende oefening
 
@@ -320,4 +320,4 @@ U kunt het project verder verbeteren door de volgende aanvullende wijzigingen aa
 In deze zelfstudie hebt u een sjabloon gesplitst in een hoofdsjabloon en een gekoppelde sjabloon. Voor meer informatie over het gebruik van extensies van virtuele machines voor de uitvoering van post-implementatietaken raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Extensies van virtuele machines implementeren](./template-tutorial-deploy-vm-extensions.md)
+> [Virtuele machine-extensies implementeren](./template-tutorial-deploy-vm-extensions.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een virtuele Linux-machine en een ASP.NET-console toepassing gebruiken om geheimen op te slaan in Azure Key Vault | Microsoft Docs'
-description: In deze zelf studie leert u hoe u een ASP.NET Core-toepassing kunt configureren voor het lezen van een geheim van Azure sleutel kluis.
+title: Zelfstudie - Gebruik een virtuele Linux-machine en een ASP.NET-consoletoepassing om geheimen op te slaan in Azure Key Vault | Microsoft Documenten
+description: In deze zelfstudie leert u hoe u een ASP.NET Core-toepassing configureert om een geheim uit Azure Key-kluis te lezen.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,46 +10,46 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 05968fdd9e2ddfd89bd9310c744d9ee699f440d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198164"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472721"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Zelf studie: een virtuele Linux-machine en een .NET-app gebruiken om geheimen op te slaan in Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Zelfstudie: Gebruik een Linux-vm en een .NET-app om geheimen op te slaan in Azure Key Vault
 
-Azure Key Vault helpt u bij het beveiligen van geheimen zoals API-sleutels en database verbindings reeksen die nodig zijn voor toegang tot uw toepassingen, services en IT-resources.
+Azure Key Vault helpt u om geheimen te beschermen, zoals API-sleutels en databaseverbindingstekenreeksen die nodig zijn om toegang te krijgen tot uw toepassingen, services en IT-resources.
 
-In deze zelf studie stelt u een .NET-console toepassing in om informatie uit Azure Key Vault te lezen met behulp van beheerde identiteiten voor Azure-resources. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie stelt u een .NET-consoletoepassing in om informatie uit Azure Key Vault te lezen met beheerde identiteiten voor Azure-bronnen. Procedures voor:
 
 > [!div class="checklist"]
 > * Een sleutelkluis maken
 > * Een geheim opslaan in Key Vault
-> * Een virtuele machine van Azure Linux maken
+> * Een Azure Linux virtuele machine maken
 > * Een [Beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) inschakelen voor de virtuele machine
-> * Verleen de vereiste machtigingen voor de console toepassing om gegevens te lezen van Key Vault
+> * De vereiste machtigingen voor de consoletoepassing verlenen om gegevens uit Key Vault te lezen
 > * Een geheim ophalen uit Key Vault
 
-Lees voor meer informatie over de [basis concepten van sleutel kluis](basic-concepts.md).
+Voordat we verder gaan, lees over [de belangrijkste kluis basisconcepten](basic-concepts.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Git](https://git-scm.com/downloads).
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-* [Azure CLI 2,0 of hoger](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of Azure Cloud shell.
+* [Git.](https://git-scm.com/downloads)
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* [Azure CLI 2.0 of hoger](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of Azure Cloud Shell.
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="understand-managed-service-identity"></a>Informatie over Managed Service Identity
 
-Azure Key Vault kan referenties veilig opslaan zodat ze zich niet in uw code bevinden, maar om ze op te halen moet u zich authenticeren bij Azure Key Vault. En om u te verifiëren bij Key Vault, hebt u een referentie nodig. Dat is een klassiek bootstrap-probleem. Met Azure en Azure Active Directory (Azure AD) kan Managed Service Identity (MSI) een Boots trap-identiteit bieden waardoor het veel eenvoudiger is om aan de slag te gaan.
+Azure Key Vault kan referenties veilig opslaan, zodat ze niet in uw code staan, maar om ze op te halen, moet u zich verifiëren naar Azure Key Vault. En om u te verifiëren bij Key Vault, hebt u een referentie nodig. Dat is een klassiek bootstrap-probleem. Met Azure en Azure Active Directory (Azure AD) kan Managed Service Identity (MSI) een bootstrap-identiteit bieden die het veel eenvoudiger maakt om dingen op gang te brengen.
 
-Wanneer u MSI inschakelt voor een Azure-service, zoals Virtual Machines, App Service of functions, maakt Azure een service-principal voor het exemplaar van de service in Azure Active Directory. Azure stuurt de referenties voor de service-principal naar het exemplaar van de service.
+Wanneer u MSI inschakelt voor een Azure-service zoals Virtual Machines, App Service of Functions, maakt Azure een serviceprincipal voor het exemplaar van de service in Azure Active Directory. Azure stuurt de referenties voor de service-principal naar het exemplaar van de service.
 
 ![MSI](media/MSI.png)
 
-Vervolgens wordt met de ​​code een lokale metagegevensservice aangeroepen die beschikbaar is in de Azure-resource, om een ​​toegangstoken te verkrijgen.
+Vervolgens roept uw ​​code een lokale metagegevensservice aan die beschikbaar is op de Azure-resource om een ​​toegangstoken te verkrijgen.
 Uw code gebruikt het toegangstoken dat wordt verkregen van het lokale MSI_ENDPOINT zich te authenticeren bij een Azure Key Vault-service.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -62,9 +62,9 @@ az login
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resource groep met behulp van de opdracht `az group create`. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+Maak een resourcegroep `az group create` met de opdracht. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-Maak een resource groep op de locatie vs-West. Kies een naam voor de resource groep en vervang `YourResourceGroupName` in het volgende voor beeld:
+Maak een resourcegroep op de locatie West-VS. Kies een naam voor uw `YourResourceGroupName` resourcegroep en vervang in het volgende voorbeeld:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -75,23 +75,23 @@ U gebruikt deze resourcegroep in de hele zelfstudie.
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
-Vervolgens maakt u een sleutel kluis in de resource groep. Geef de volgende informatie op:
+Maak vervolgens een sleutelkluis in uw resourcegroep. Geef de volgende informatie op:
 
-* Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen cijfers, letters en afbreek streepjes (0-9, a-z, A-Z en \-) kunnen bevatten.
+* Naam sleutelkluis: een tekenreeks van 3 tot 24 tekens die alleen cijfers, letters en koppeltekens kunnen bevatten \- (0-9, a-z, A-Z en ).
 * Naam van de resourcegroep
-* Locatie: **VS - west**
+* Locatie: **West US**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 
-Op dit moment wordt alleen uw Azure-account gemachtigd voor het uitvoeren van bewerkingen op deze nieuwe kluis.
+Op dit moment is alleen uw Azure-account gemachtigd om bewerkingen uit te voeren op deze nieuwe kluis.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Een geheim toevoegen aan de sleutelkluis
 
-U kunt nu een geheim toevoegen. In een praktijk scenario kunt u een SQL-connection string of andere informatie die u nodig hebt om veilig te bewaren, opslaan, maar beschikbaar maken voor uw toepassing.
+Voeg er een geheim aan toe. In een scenario in de echte wereld slaat u mogelijk een SQL-verbindingstekenreeks of andere informatie op die u veilig moet bewaren, maar die u beschikbaar stelt aan uw toepassing.
 
-Voor deze zelf studie typt u de volgende opdrachten om een geheim te maken in de sleutel kluis. Het geheim wordt **AppSecret** genoemd en de waarde ervan is **MySecret**.
+Typ voor deze zelfstudie de volgende opdrachten om een geheim in de sleutelkluis te maken. Het geheim heet **AppSecret** en de waarde ervan is **MySecret**.
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -99,9 +99,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Een virtuele Linux-machine maken
 
-Maak een virtuele machine met de opdracht `az vm create`.
+Maak een VM `az vm create` met de opdracht.
 
-In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. De para meter `--generate-ssh-keys` wordt gebruikt om automatisch een SSH-sleutel te genereren en te plaatsen in de standaard locatie van de sleutel ( **~/.ssh**). Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. De `--generate-ssh-keys` parameter die ons gebruikte om automatisch een SSH-toets te genereren en deze op de standaardsleutellocatie te plaatsen **(~/.ssh).** Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -112,9 +112,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten. In de volgende voorbeeld uitvoer ziet u dat de bewerking VM maken is voltooid.
+Het maken van de virtuele machine en de ondersteunende resources duurt enkele minuten. In de volgende voorbeelduitvoerwordt weergegeven dat de bewerking voor het maken van vm's is geslaagd.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -139,14 +139,14 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 De uitvoer van de opdracht zou moeten zijn:
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-Noteer de waarde van `systemAssignedIdentity`. U gebruikt deze in de volgende stap.
+Noteer de waarde van `systemAssignedIdentity`. Je gebruikt het in de volgende stap.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>VM-identiteit machtigen voor Key Vault
 
@@ -166,16 +166,16 @@ ssh azureuser@<PublicIpAddress>
 
 ## <a name="install-net-core-on-linux"></a>.NET Core installeren op Linux
 
-Op uw virtuele Linux-machine:
+Op uw Linux VM:
 
-Registreer de product code van micro soft als vertrouwd door de volgende opdrachten uit te voeren:
+Registreer de Microsoft-productcode als vertrouwd door de volgende opdrachten uit te voeren:
 
    ```console
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
    ```
 
-Gewenste versie van het hostbesturingssysteem instellen op basis van het besturings systeem:
+De gewenste versiehostpakketfeed instellen op basis van het besturingssysteem:
 
 ```console
    # Ubuntu 17.10
@@ -202,9 +202,9 @@ Installeer .NET en controleer de versie:
    dotnet --version
    ```
 
-## <a name="create-and-run-a-sample-net-app"></a>Een voor beeld-.NET-app maken en uitvoeren
+## <a name="create-and-run-a-sample-net-app"></a>Een voorbeeld .NET-app maken en uitvoeren
 
-Voer de volgende opdrachten uit. Als het goed is, ziet u "Hallo wereld" afgedrukt op de-console.
+Voer de volgende opdrachten uit. U zou "Hello World" op de console moeten zien.
 
 ```console
 dotnet new console -o helloworldapp
@@ -214,7 +214,7 @@ dotnet run
 
 ## <a name="edit-the-console-app-to-fetch-your-secret"></a>De console-app bewerken om uw geheim op te halen
 
-Open Program.cs-bestand en voeg deze pakketten toe:
+Open Program.cs bestand en voeg deze pakketten toe:
 
    ```csharp
    using System;
@@ -225,12 +225,12 @@ Open Program.cs-bestand en voeg deze pakketten toe:
    using Newtonsoft.Json.Linq;
    ```
 
-Het is een proces in twee stappen om het klassen bestand te wijzigen, zodat de app toegang heeft tot het geheim in de sleutel kluis.
+Het is een proces in twee stappen om het klassenbestand te wijzigen om de app toegang te geven tot het geheim in de sleutelkluis.
 
-1. Haal een token op uit het lokale MSI-eind punt op de virtuele machine die op zijn beurt een token ophaalt uit Azure Active Directory.
-1. Geef het token door om uw geheim te Key Vault en op te halen.
+1. Haal een token op uit het lokale MSI-eindpunt op de VM dat op zijn beurt een token uit Azure Active Directory haalt.
+1. Geef het token door aan Key Vault en haal je geheim op.
 
-   Bewerk het klassen bestand zodat het de volgende code bevat:
+   Bewerk het klassenbestand met de volgende code:
 
    ```csharp
     class Program
@@ -277,7 +277,7 @@ Het is een proces in twee stappen om het klassen bestand te wijzigen, zodat de a
        }
    ```
 
-Nu hebt u geleerd hoe u bewerkingen kunt uitvoeren met Azure Key Vault in een .NET-toepassing die wordt uitgevoerd op een virtuele machine van Azure Linux.
+Nu hebt u geleerd hoe u bewerkingen uitvoeren met Azure Key Vault in een .NET-toepassing die wordt uitgevoerd op een virtuele Azure Linux-machine.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

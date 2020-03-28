@@ -1,42 +1,42 @@
 ---
-title: Zelf studie-sjabloon functies toevoegen
-description: Voeg sjabloon functies toe aan uw Azure Resource Manager sjabloon om waarden te maken.
+title: Zelfstudie - sjabloonfuncties toevoegen
+description: Voeg sjabloonfuncties toe aan uw Azure Resource Manager-sjabloon om waarden te construeren.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7e4282802c287becf9ccb036ba0063d3c48bc332
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370760"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369921"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Zelf studie: sjabloon functies toevoegen aan uw Resource Manager-sjabloon
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>Zelfstudie: sjabloonfuncties toevoegen aan uw ARM-sjabloon
 
-In deze zelf studie leert u hoe u [sjabloon functies](template-functions.md) kunt toevoegen aan uw sjabloon. U gebruikt functies om waarden dynamisch samen te stellen. Naast deze door het systeem opgegeven sjabloon functies kunt u ook door de [gebruiker gedefinieerde functies](./template-user-defined-functions.md)maken. Het volt ooien van deze zelf studie duurt **zeven minuten** .
+In deze zelfstudie leert u hoe u [sjabloonfuncties](template-functions.md) toevoegt aan uw Azure Resource Manager-sjabloon (ARM). U gebruikt functies om waarden dynamisch te construeren. Naast deze door het systeem geleverde sjabloonfuncties u ook [door de gebruiker gedefinieerde functies](./template-user-defined-functions.md)maken. Deze tutorial duurt **7 minuten** om te voltooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U wordt aangeraden de [zelf studie over para meters](template-tutorial-add-parameters.md)te volt ooien, maar dit is niet vereist.
+We raden u aan de [zelfstudie over parameters in](template-tutorial-add-parameters.md)te vullen, maar dit is niet vereist.
 
-U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
+U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
 
-## <a name="review-template"></a>Sjabloon controleren
+## <a name="review-template"></a>Sjabloon bekijken
 
-Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-De locatie van het opslag account wordt vastgelegd in een VS- **Oost**. Het is echter mogelijk dat u het opslag account moet implementeren in andere regio's. Er wordt een probleem opgetreden bij het oplossen van uw sjabloon. U kunt een para meter voor de locatie toevoegen, maar dit zou geweldig zijn als de standaard waarde meer zinniger is dan alleen een hardcoded waarde.
+De locatie van de opslagaccount is hardgecodeerd naar **Oost-VS.** Het is echter mogelijk dat u het opslagaccount moet implementeren in andere regio's. U wordt opnieuw geconfronteerd met een probleem van uw sjabloon ontbreekt flexibiliteit. U een parameter voor locatie toevoegen, maar het zou geweldig zijn als de standaardwaarde logischer is dan alleen een hard-coded waarde.
 
 ## <a name="use-function"></a>Functie gebruiken
 
-Als u de vorige zelf studie in deze serie hebt voltooid, hebt u al een functie gebruikt. Wanneer u **[para meters (' opslag naam ')] '** hebt toegevoegd, hebt u de functie [para meters](template-functions-deployment.md#parameters) gebruikt. De vier Kante haken geven aan dat de syntaxis tussen de haken een [sjabloon expressie](template-expressions.md)is. Resource Manager lost de syntaxis op in plaats van deze als een letterlijke waarde te behandelen.
+Als u de vorige zelfstudie in deze serie hebt voltooid, hebt u al een functie gebruikt. Wanneer u **'[parameters('storageName')]]** hebt toegevoegd, hebt u de functie [parameters](template-functions-deployment.md#parameters) gebruikt. De haakjes geven aan dat de syntaxis in de haakjes een [sjabloonexpressie](template-expressions.md)is. Resourcebeheer lost de syntaxis op in plaats van deze als een letterlijke waarde te behandelen.
 
-Met functies kunt u flexibiliteit toevoegen aan uw sjabloon door dynamische waarden te verkrijgen tijdens de implementatie. In deze zelf studie gebruikt u een functie om de locatie op te halen van de resource groep die u voor de implementatie gebruikt.
+Functies voegen flexibiliteit toe aan uw sjabloon door waarden dynamisch op te halen tijdens de implementatie. In deze zelfstudie gebruikt u een functie om de locatie te krijgen van de resourcegroep die u gebruikt voor implementatie.
 
-In het volgende voor beeld worden de wijzigingen gemarkeerd voor het toevoegen van een para meter met de naam **Location**.  Met de standaard waarde voor de para meter wordt de functie [resourceGroup](template-functions-resource.md#resourcegroup) aangeroepen. Deze functie retourneert een-object met informatie over de resource groep die wordt gebruikt voor de implementatie. Een van de eigenschappen van het object is een locatie-eigenschap. Wanneer u de standaard waarde gebruikt, heeft de locatie van het opslag account dezelfde locatie als de resource groep. De resources in een resource groep hoeven niet dezelfde locatie te delen. U kunt ook een andere locatie opgeven wanneer dat nodig is.
+In het volgende voorbeeld worden de wijzigingen markeert om een parameter toe te voegen die **locatie**wordt genoemd.  De standaardwaarde parameter roept de functie [resourceGroep aan.](template-functions-resource.md#resourcegroup) Met deze functie wordt een object geretourneerd met informatie over de resourcegroep die wordt gebruikt voor implementatie. Een van de eigenschappen op het object is een locatieeigenschap. Wanneer u de standaardwaarde gebruikt, heeft de locatie van het opslagaccount dezelfde locatie als de brongroep. De resources in een resourcegroep hoeven niet dezelfde locatie te delen. U ook een andere locatie bieden wanneer dat nodig is.
 
 Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
@@ -44,11 +44,11 @@ Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-In de vorige zelf studies hebt u een opslag account gemaakt in VS-Oost, maar uw resource groep is gemaakt in de centrale vs. Voor deze zelf studie wordt uw opslag account in dezelfde regio gemaakt als de resource groep. Gebruik de standaard waarde voor locatie, zodat u deze parameter waarde niet hoeft op te geven. U moet een nieuwe naam opgeven voor het opslag account, omdat u een opslag account maakt op een andere locatie. Gebruik bijvoorbeeld **store2** als voor voegsel in plaats van **store1**.
+In de vorige zelfstudies hebt u een opslagaccount in Oost-VS gemaakt, maar uw brongroep is gemaakt in Centraal-VS. Voor deze zelfstudie wordt uw opslagaccount gemaakt in dezelfde regio als de resourcegroep. Gebruik de standaardwaarde voor locatie, zodat u die parameterwaarde niet hoeft op te geven. U moet een nieuwe naam opgeven voor het opslagaccount omdat u een opslagaccount maakt op een andere locatie. Gebruik bijvoorbeeld **store2** als voorvoegsel in plaats van **store1**.
 
-Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
+Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,7 +58,9 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
 
 ```azurecli
 az deployment group create \
@@ -72,27 +74,27 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
+U de implementatie verifiëren door de brongroep te verkennen vanuit de Azure-portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **resource groepen**in het menu links.
-1. Selecteer de resource groep die u hebt geïmplementeerd.
-1. U ziet dat een opslag account resource is geïmplementeerd en dezelfde locatie heeft als de resource groep.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **Resourcegroepen**in het linkermenu .
+1. Selecteer de resourcegroep die u hebt geïmplementeerd.
+1. U ziet dat een opslagaccountbron is geïmplementeerd en dezelfde locatie heeft als de resourcegroep.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
+Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
 
-Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
+Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een functie gebruikt bij het definiëren van de standaard waarde voor een para meter. In deze zelfstudie reeks gaat u functies blijven gebruiken. Aan het einde van de reeks voegt u functies toe aan elke sectie van de sjabloon.
+In deze zelfstudie hebt u een functie gebruikt bij het definiëren van de standaardwaarde voor een parameter. In deze zelfstudiereeks blijft u functies gebruiken. Aan het einde van de reeks voegt u functies toe aan elk gedeelte van de sjabloon.
 
 > [!div class="nextstepaction"]
 > [Variabelen toevoegen](template-tutorial-add-variables.md)

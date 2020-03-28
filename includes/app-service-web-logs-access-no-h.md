@@ -9,13 +9,13 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176511"
 ---
-U kunt toegang tot de logboeken van de console gegenereerd op basis van in de container. Ten eerste container logboekregistratie inschakelen door het uitvoeren van de volgende opdracht uit in de Cloud Shell:
+U hebt toegang tot de consolelogboeken die vanuit de container worden gegenereerd. Schakel eerst containerlogboekregistratie in door de volgende opdracht uit te voeren in de Cloud Shell:
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
@@ -30,6 +30,6 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 Als u de consolelogboeken niet meteen ziet, probeert u het opnieuw na 30 seconden.
 
 > [!NOTE]
-> U kunt ook de logboekbestanden van de browser op inspecteren `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+> U ook de logbestanden `https://<app-name>.scm.azurewebsites.net/api/logs/docker`vanuit de browser bekijken op.
 
-Als u wilt stoppen met logboekstreaming op elk gewenst moment, typt u `Ctrl` + `C`.
+Typ op elk gewenst moment `Ctrl` + `C`het streamen van logboeken.

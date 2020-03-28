@@ -1,40 +1,40 @@
 ---
-title: Zelf studie-Tags toevoegen aan resources in een sjabloon
-description: Tags toevoegen aan resources die u in uw Azure Resource Manager-sjabloon implementeert. Met tags kunt u resources logisch indelen.
+title: Zelfstudie - tags toevoegen aan bronnen in sjabloon
+description: Voeg tags toe aan resources die u implementeert in uw Azure Resource Manager-sjabloon. Met tags u op logische wijze resources ordenen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dd89d41e0980afcef30e11fac3ce5583f439662f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 748a32d0ea8bfb0f23a99ce99d0aaf051118bc19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370709"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369884"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Zelf studie: Tags toevoegen in uw Resource Manager-sjabloon
+# <a name="tutorial-add-tags-in-your-arm-template"></a>Zelfstudie: tags toevoegen aan de ARM-sjabloon
 
-In deze zelf studie leert u hoe u labels kunt toevoegen aan resources in uw sjabloon. Met [Tags](../management/tag-resources.md) kunt u uw resources logisch indelen. De label waarden worden weer gegeven in kosten rapporten. Het volt ooien van deze zelf studie duurt **acht minuten** .
+In deze zelfstudie leert u hoe u tags toevoegt aan resources in uw Azure Resource Manager-sjabloon (ARM). [Tags](../management/tag-resources.md) helpen u uw resources logisch te organiseren. De tagwaarden worden weergegeven in kostenrapporten. Deze tutorial duurt **8 minuten** om te voltooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U wordt aangeraden de [zelf studie over Quick](template-tutorial-quickstart-template.md)start-sjablonen te volt ooien, maar dit is niet vereist.
+We raden u aan de [zelfstudie over Quickstart-sjablonen](template-tutorial-quickstart-template.md)in te vullen, maar dit is niet vereist.
 
-U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
+U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
 
-## <a name="review-template"></a>Sjabloon controleren
+## <a name="review-template"></a>Sjabloon bekijken
 
-Met de vorige sjabloon is een opslag account, App Service plan en web-app geïmplementeerd.
+Uw vorige sjabloon heeft een opslagaccount, een App Service-abonnement en een web-app geïmplementeerd.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json":::
 
-Na de implementatie van deze resources moet u mogelijk de kosten bijhouden en resources zoeken die tot een categorie behoren. U kunt labels toevoegen om deze problemen op te lossen.
+Nadat u deze resources hebt geïmplementeerd, moet u mogelijk kosten bijhouden en resources vinden die tot een categorie behoren. U tags toevoegen om deze problemen op te lossen.
 
 ## <a name="add-tags"></a>Tags toevoegen
 
-U labelt resources om waarden toe te voegen waarmee u het gebruik ervan kunt identificeren. U kunt bijvoorbeeld labels toevoegen die de omgeving en het project vermelden. U kunt Tags toevoegen die een kosten plaats identificeren of het team dat eigenaar is van de resource. Voeg waarden toe die zinvol zijn voor uw organisatie.
+U tagt resources om waarden toe te voegen die u helpen het gebruik ervan te identificeren. U bijvoorbeeld tags toevoegen die de omgeving en het project weergeven. U tags toevoegen die een kostenplaats of het team identificeren dat eigenaar is van de bron. Voeg waarden toe die zinvol zijn voor uw organisatie.
 
-In het volgende voor beeld worden de wijzigingen in de sjabloon gemarkeerd. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
+In het volgende voorbeeld worden de wijzigingen in de sjabloon belicht. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json" range="1-118" highlight="46-52,64,78,102":::
 
@@ -42,9 +42,9 @@ In het volgende voor beeld worden de wijzigingen in de sjabloon gemarkeerd. Kopi
 
 Het is tijd om de sjabloon te implementeren en de resultaten te bekijken.
 
-Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
+Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,7 +56,9 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
 
 ```azurecli
 az deployment group create \
@@ -70,29 +72,29 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
+U de implementatie verifiëren door de brongroep te verkennen vanuit de Azure-portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **resource groepen**in het menu links.
-1. Selecteer de resource groep die u hebt geïmplementeerd.
-1. Selecteer een van de resources, zoals de resource van het opslag account. U ziet dat deze nu labels bevat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **Resourcegroepen**in het linkermenu .
+1. Selecteer de resourcegroep die u hebt geïmplementeerd.
+1. Selecteer een van de bronnen, zoals de bron van het opslagaccount. Je ziet dat het nu tags heeft.
 
-   ![Labels weer geven](./media/template-tutorial-add-tags/show-tags.png)
+   ![Tags weergeven](./media/template-tutorial-add-tags/show-tags.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
+Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
 
-Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
+Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u tags toegevoegd aan de resources. In de volgende zelf studie leert u hoe u parameter bestanden kunt gebruiken om het door geven van waarden aan de sjabloon te vereenvoudigen.
+In deze zelfstudie hebt u tags aan de bronnen toegevoegd. In de volgende zelfstudie leert u hoe u parameterbestanden gebruiken om het doorgeven van waarden aan de sjabloon te vereenvoudigen.
 
 > [!div class="nextstepaction"]
-> [Parameter bestand gebruiken](template-tutorial-use-parameter-file.md)
+> [Parameterbestand gebruiken](template-tutorial-use-parameter-file.md)

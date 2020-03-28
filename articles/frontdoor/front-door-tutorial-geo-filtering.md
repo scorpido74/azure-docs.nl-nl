@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-WAF-beleid voor geo-filtering configureren-Azure front-deur service
-description: In deze zelfstudie leert u hoe u een eenvoudig beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door
+title: Zelfstudie - WAF-beleid voor geofilters configureren - Azure Front Door
+description: In deze zelfstudie leert u hoe u een geofilterbeleid maakt en het beleid koppelt aan uw bestaande front-door frontendhost
 services: frontdoor
 documentationcenter: ''
 author: teresayao
@@ -11,47 +11,47 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: tyao
-ms.openlocfilehash: 393d7790aadc87237081aa5437f8316eda59c52e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e3119745e35140d0344d25f34f54b63939d2542d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184524"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471452"
 ---
-# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Een WAF-beleid voor geografische filters instellen voor uw voor deur
-In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een voorbeeldbeleid voor geofilters te maken en het beleid koppelt aan uw bestaande front-endhost van uw Front Door. Met dit voor beeld-beleid voor geo-filtering worden aanvragen van alle andere landen/regio's geblokkeerd, met uitzonde ring van Verenigde Staten.
+# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>WAF-beleid voor geo-filters instellen voor uw Front Door
+In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een voorbeeldbeleid voor geofilters te maken en het beleid koppelt aan uw bestaande front-endhost van uw Front Door. Met dit voorbeeldbeleid voor geofiltering worden aanvragen van alle andere landen/regio's, behalve de Verenigde Staten, geblokkeerd.
 
 Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u begint met het instellen van een beleid voor geofiltering, stelt u uw Power shell-omgeving in en maakt u een voor deur profiel.
+Voordat u begint met het instellen van een geofilterbeleid, stelt u uw PowerShell-omgeving in en maakt u een voordeurprofiel.
 ### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
 Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en de AZ Power shell-module te installeren.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en installeer de Az PowerShell-module.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoog venster voor aanmelden
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoogvenster voor aanmelden
 ```
 Install-Module -Name Az
 Connect-AzAccount
 ```
-Zorg ervoor dat de huidige versie van PowerShellGet is geïnstalleerd. Voer de onderstaande opdracht uit en open PowerShell opnieuw.
+Zorg ervoor dat u de huidige versie van PowerShellGet hebt geïnstalleerd. Voer de onderstaande opdracht uit en open PowerShell opnieuw.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
-#### <a name="install-azfrontdoor-module"></a>De module AZ.-ingang installeren 
+#### <a name="install-azfrontdoor-module"></a>Az.FrontDoor-module installeren 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
 
-### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
-Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](quickstart-create-front-door.md).
+### <a name="create-a-front-door-profile"></a>Een voordeurprofiel maken
+Maak een voordeurprofiel door de instructies te volgen die in [Quickstart zijn beschreven: Maak een voordeurprofiel.](quickstart-create-front-door.md)
 
-## <a name="define-geo-filtering-match-condition"></a>Voor waarde voor geografische filtering definiëren
+## <a name="define-geo-filtering-match-condition"></a>De voorwaarde voor geofilteringsovereenkomst definiëren
 
-Maak een voor waarde voor het vergelijken van een voor beeld waarbij aanvragen die niet afkomstig zijn van "US" worden geselecteerd met [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) in para meters bij het maken van een matching voorwaarde. [Hier](front-door-geo-filtering.md)vindt u de land codes van twee letters voor land kaarten.
+Maak een voorbeeldovereenkomstvoorwaarde waarmee aanvragen die niet afkomstig zijn van 'VS' worden geselecteerd met [Nieuw-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) op parameters bij het maken van een wedstrijdvoorwaarde. Twee letter land codes naar land mapping zijn [hier](front-door-geo-filtering.md).
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -63,7 +63,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Overeenkomstvoorwaarde voor geofilter toevoegen aan een regel met Actie en Prioriteit
 
-Maak een CustomRule-object `nonUSBlockRule` op basis van de voor waarde match, een actie en een prioriteit met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Een CustomRule kan meerdere overeenkomstvoorwaarden hebben.  In dit voorbeeld is Actie ingesteld op Blokkeren en is Prioriteit ingesteld op 1, de hoogste prioriteit.
+Maak een object `nonUSBlockRule` CustomRule op basis van de wedstrijdvoorwaarde, een actie en een prioriteit met [Nieuw-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Een CustomRule kan meerdere overeenkomstvoorwaarden hebben.  In dit voorbeeld is Actie ingesteld op Blokkeren en is Prioriteit ingesteld op 1, de hoogste prioriteit.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
@@ -75,9 +75,9 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>Regels toevoegen aan een beleid
-Zoek de naam van de resource groep die het voorste deur profiel bevat met behulp van `Get-AzResourceGroup`. Maak vervolgens een `geoPolicy`-beleids object met `nonUSBlockRule` met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat. U moet een unieke naam opgeven voor het geo-beleid. 
+Zoek de naam van de resourcegroep die `Get-AzResourceGroup`het frontdoorprofiel bevat met behulp van . Maak vervolgens `geoPolicy` een beleidsobject `nonUSBlockRule` met [nieuw-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resourcegroep die het frontdoorprofiel bevat. U moet een unieke naam opgeven voor het geofilterbeleid. 
 
-In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](quickstart-create-front-door.md) -artikel maken. Vervang in het onderstaande voor beeld de beleids naam *geoPolicyAllowUSOnly* door een unieke beleids naam.
+In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGroupFD1* gebruikt met de veronderstelling dat u het voordeurprofiel hebt gemaakt met instructies in het [quickstart-artikel: Een voordeurartikel maken.](quickstart-create-front-door.md) Vervang in het onderstaande voorbeeld de beleidsnaam *geoPolicyAllowUSOnly* door een unieke beleidsnaam.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
@@ -88,25 +88,25 @@ $geoPolicy = New-AzFrontDoorWafPolicy `
 -EnabledState Enabled
 ```
 
-## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF-beleid koppelen aan een front-end frontend-host
-Koppel het object WAF-beleid aan de bestaande host front deur frontend en werk front-deur eigenschappen bij. 
+## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF-beleid koppelen aan een frontdoor frontend host
+Koppel het WAF-beleidsobject aan de bestaande frontdoorfrontendhost en werk frontdoor-eigenschappen bij. 
 
-Als u dit wilt doen, haalt u eerst uw voorste deur object op met [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor). 
+Haal hiervoor eerst het voordeurobject op met [Get-AzFrontDoor.](/powershell/module/az.frontdoor/get-azfrontdoor) 
 
 ```
 $geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-Stel vervolgens de front-end WebApplicationFirewallPolicyLink-eigenschap in op de resourceId van de `geoPolicy`met [set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
+Stel vervolgens de eigenschap Frontend WebApplicationFirewallPolicyLink in `geoPolicy`op de resourceId van de [set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
 
 ```
 Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 ```
 
 > [!NOTE] 
-> U hoeft slechts één keer op de eigenschap WebApplicationFirewallPolicyLink in te stellen om een WAF-beleid te koppelen aan een front-end frontend-host. Volgende beleids updates worden automatisch toegepast op de frontend-host.
+> U hoeft de eigenschap WebApplicationFirewallPolicyLink slechts één keer in te stellen om een WAF-beleid te koppelen aan een frontend-host voor de voordeur. Volgende beleidsupdates worden automatisch toegepast op de frontendhost.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Azure Web Application firewall](waf-overview.md).
+- Meer informatie over [Azure-firewall voor webtoepassingen](waf-overview.md).
 - Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).

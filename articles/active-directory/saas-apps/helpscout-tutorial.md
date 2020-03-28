@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Help Scout | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Help Scout | Microsoft Documenten'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Help Scout.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159087"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Zelf studie: integratie Azure Active Directory met Help-gids
+# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Zelfstudie: Azure Active Directory-integratie met Help-verkenner
 
 In deze zelfstudie leert u hoe u Help Scout kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Help Scout met Azure AD biedt de volgende voordelen:
@@ -33,13 +33,13 @@ De integratie van Help Scout met Azure AD biedt de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het configureren van Azure AD-integratie met Help Scout hebt u de volgende zaken nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
 * Een abonnement op Help Scout waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
@@ -53,28 +53,28 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Voor het configureren van de integratie van Help Scout met Azure AD moet u Help Scout uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Help Scout** in het zoekvak.
-1. Selecteer **Help Scout** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Helpscout** in het zoekvak in de sectie **Toevoegen in de galerijsectie.**
+1. Selecteer **Help-verkenner** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Help Scout op basis van een test gebruiker met de naam **B. Simon**.
+In deze sectie configureert en test u Azure AD single sign-on met Help Scout op basis van een testgebruiker genaamd **B.Simon**.
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Help Scout tot stand is gebracht.
 
 Voor het configureren en testen van eenmalige aanmelding via Azure AD bij Help Scout moet u de volgende bouwstenen uitvoeren:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Help SCOUT SSO configureren](#configure-help-scout-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * Meld u aan voor de gebruikers van de **[test gebruiker](#create-help-scout-test-user)** van de Help-functie, zodat deze een soort is van B. Simon in Help Scout dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[HelpScout SSO configureren](#configure-help-scout-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Help Scout-testgebruiker maken](#create-help-scout-test-user)** - om een tegenhanger van B.Simon in Help Scout te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
@@ -92,7 +92,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Help Scout moet u de
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+1. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
     ![Informatie over eenmalige aanmelding bij het Help Scout-domein en Help Scout-URL's](common/idp-intiated.png)
 
@@ -101,7 +101,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Help Scout moet u de
     b. **Antwoord-URL** is de **terugpost-URL (URL voor Assertion Consumer Service)** van Help Scout, die begint met `https://` 
 
     > [!NOTE]
-    > De waarden in deze URL's zijn alleen ter demonstratie. U moet deze waarden bijwerken vanaf de daad werkelijke antwoord-URL en de id. U vindt deze waarden op het tabblad **Eenmalige aanmelding** in de sectie Verificatie, die verderop in de zelfstudie wordt beschreven.
+    > De waarden in deze URL's zijn alleen ter demonstratie. U moet deze waarden wijzigen in de werkelijke antwoord-URL en id. U vindt deze waarden op het tabblad **Eenmalige aanmelding** in de sectie Verificatie, die verderop in de zelfstudie wordt beschreven.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -125,7 +125,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Help Scout moet u de
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-Het doel van deze sectie is het maken van een test gebruiker in de Azure Portal met de naam B. Simon.
+Het doel van deze sectie is het maken van een testgebruiker in de Azure-portal genaamd B.Simon.
 
 1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
@@ -139,18 +139,18 @@ Het doel van deze sectie is het maken van een test gebruiker in de Azure Portal 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Geef **B. Simon**op in het veld **naam** .
+    a. Voer **in** het veld Naam **B.Simon in.**
   
-    b. Typ in het veld **gebruikers naam** **B. Simon\@yourcompanydomain. extension**  
+    b. In het **veld Gebruikersnaam** type **\@B.Simon yourcompanydomain.extension**  
     Bijvoorbeeld: B.Simon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Help Scout.
+In deze sectie stelt u B.Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Help Scout.
 
 1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Help Scout**.
 
@@ -160,7 +160,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     ![De Help Scout-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -168,23 +168,23 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-help-scout-sso"></a>Help Scout SSO configureren
 
-1. Als u de configuratie in Help Scout wilt automatiseren, moet u de **uitbrei ding mijn apps beveiligde aanmelding** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie binnen Help Scout wilt automatiseren, moet u **de beveiligingsextensie Mijn apps secure sign-in** installeren door op **De extensie installeren**te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Extensie Mijn apps](common/install-myappssecure-extension.png)
 
-1. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **Help Scout instellen** , wordt u naar de Help Scout-toepassing geleid. Geef de beheerders referenties op om u aan te melden bij Help Scout. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
+1. Nadat je de extensie aan de browser hebt toegevoegd, klik je op **Help Scout instellen** en stuur je door naar de Help Scout-applicatie. Geef van daaruit de beheerdersreferenties op om u aan te melden bij Help Scout. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Configuratie instellen](common/setup-sso.png)
 
-1. Als u Help Scout hand matig wilt installeren, opent u een nieuw webbrowser venster en meldt u zich aan bij de site van uw Help Scout-bedrijf als beheerder en voert u de volgende stappen uit:
+1. Als je Help Scout handmatig wilt instellen, open je een nieuw webbrowservenster en meld je je aan bij je Help Scout-bedrijfssite als beheerder en voer je de volgende stappen uit:
 
 1. Klik op **Beheren** in het bovenste menu en selecteer vervolgens **Bedrijf** in de vervolgkeuzelijst.
 
@@ -206,7 +206,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
     ![Eenmalige aanmelding configureren](./media/helpscout-tutorial/settings4.png)
 
-    a. Plak in het tekstvak **URL voor eenmalige aanmelding** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
+    a. Plak in het tekstvak **URL van één aanmelding** de waarde van **de aanmeldings-URL**, die u hebt gekopieerd van azure-portal.
 
     b. Klik op **Certificaat uploaden** om het **certificaat (Base64)** te uploaden dat u uit de Azure-portal hebt gedownload.
 
@@ -218,20 +218,20 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ### <a name="create-help-scout-test-user"></a>Help Scout-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Help Scout. Help Scout biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Help Scout bestaat, wordt er een nieuwe gemaakt na de verificatie.
+In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Help Scout. Help Scout biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Help Scout bestaat, wordt er een nieuwe gemaakt na de verificatie.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Help Scout klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Help Scout waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Help Scout proberen met Azure AD](https://aad.portal.azure.com/)
+- [Help-scout uitproberen met Azure AD](https://aad.portal.azure.com/)

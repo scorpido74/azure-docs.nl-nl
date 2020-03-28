@@ -1,6 +1,6 @@
 ---
-title: Routerings resultaten voor Azure IoT Hub-berichten weer geven (.NET) | Microsoft Docs
-description: Nadat u alle resources hebt ingesteld met behulp van deel 1 van de zelf studie, voegt u de mogelijkheid toe om berichten te routeren naar Azure Stream Analytics en de resultaten in PowerBI weer te geven.
+title: Resultaten van Azure IoT Hub-berichtroutering weergeven (.NET) | Microsoft Documenten
+description: Nadat u alle resources hebt ingesteld met deel 1 van de zelfstudie, voegt u de mogelijkheid toe om berichten naar Azure Stream Analytics te routeren en de resultaten in PowerBI weer te geven.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,21 +10,21 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890395"
 ---
-# <a name="tutorial-part-2---view-the-routed-messages"></a>Zelf studie: deel 2-de gerouteerde berichten weer geven
+# <a name="tutorial-part-2---view-the-routed-messages"></a>Zelfstudie: Deel 2 - Bekijk de gerouteerde berichten
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rules-for-routing-the-messages"></a>Regels voor het routeren van berichten
+## <a name="rules-for-routing-the-messages"></a>Regels voor het routeren van de berichten
 
-Dit zijn de regels voor de route ring van berichten. Deze zijn ingesteld in deel 1 van deze zelf studie, en u ziet dat ze in dit tweede deel werken.
+Dit zijn de regels voor de berichtroutering; deze werden opgezet in deel 1 van deze tutorial, en je ziet ze werken in dit tweede deel.
 
 |Waarde |Resultaat|
 |------|------|
@@ -32,119 +32,119 @@ Dit zijn de regels voor de route ring van berichten. Deze zijn ingesteld in deel
 |niveau = 'kritiek' |Schrijf naar een Service Bus-wachtrij. Een logische app haalt het bericht op uit de wachtrij en gebruikt Office 365 om het bericht via e-mail te versturen.|
 |standaardinstelling |Geef deze gegevens weer met Power BI.|
 
-Nu maakt u de resources waarnaar de berichten worden doorgestuurd, voert u een app uit om berichten naar de hub te verzenden en bekijkt u de route ring in actie.
+Nu maakt u de bronnen waarnaar de berichten worden gerouteerd, voert u een app uit om berichten naar de hub te verzenden en ziet u de routebeschrijving in actie.
 
 ## <a name="create-a-logic-app"></a>Een logische app maken  
 
 De Service Bus-wachtrij moet worden gebruikt voor het ontvangen van berichten die zijn aangeduid als kritiek. Installeer een logische app die wordt geactiveerd om de Service Bus-wachtrij te bewaken en een e-mailbericht te verzenden wanneer een bericht wordt toegevoegd aan de wachtrij.
 
-1. Selecteer in het [Azure Portal](https://portal.azure.com) **+ een resource maken**. Typ **logische app** in het zoekvak en klik op Enter. Selecteer in de weer gegeven Zoek resultaten Logic app en selecteer vervolgens **maken** om door te gaan naar het deel venster **logische app maken** . Vul de velden in.
+1. Selecteer in de [Azure-portal](https://portal.azure.com) **+ Een resource maken**. Typ **logische app** in het zoekvak en klik op Enter. Selecteer in de weergegeven zoekresultaten Logic App en selecteer **Vervolgens Maken** om door te gaan naar het deelvenster Logische **app maken.** Vul de velden in.
 
    **Naam**: dit veld is de naam van de logische app. In deze zelfstudie wordt gebruikgemaakt van **ContosoLogicApp**.
 
    **Abonnement**: selecteer uw Azure-abonnement.
 
-   **Resource groep**: Selecteer **bestaande gebruiken** en selecteer uw resource groep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**.
+   **Resourcegroep:** selecteer **Bestaande gebruiken** en selecteer uw resourcegroep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**.
 
-   **Locatie**: gebruik uw locatie. In deze zelfstudie wordt gebruikgemaakt van **US - west**.
+   **Locatie**: gebruik uw locatie. In deze zelfstudie wordt gebruikgemaakt van **VS - west**.
 
    **Log Analytics**: deze wisselknop moet worden uitgeschakeld.
 
-   ![Het scherm logische app maken](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
+   ![Het scherm Logica-app maken](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
    Selecteer **Maken**. Het kan enkele minuten duren voordat de app is geïmplementeerd.
 
-2. Ga nu naar de logische app. De eenvoudigste manier om naar de logische app te gaan, is door **resource groepen**te selecteren, de resource groep te selecteren (deze zelf studie maakt gebruik van **ContosoResources**) en selecteert vervolgens de logische app in de lijst met resources. 
+2. Ga nu naar de logische app. De eenvoudigste manier om naar de Logic App te gaan, is door **Resourcegroepen**te selecteren, uw resourcegroep te selecteren (deze zelfstudie gebruikt **ContosoResources)** en selecteert u vervolgens de Logische App in de lijst met bronnen. 
 
-    De pagina Ontwerpfunctie voor logic apps wordt weergegeven (misschien moet u naar rechts schuiven om de volledige pagina te zien). Schuif op de pagina Logic Apps Designer omlaag totdat u de tegel ziet met de tekst **lege logische app +** en selecteer deze. Het standaard tabblad is ' voor u '. Als dit deel venster leeg is, selecteert u **Alles** om alle beschik bare connectors en triggers weer te geven.
+    De pagina Ontwerpfunctie voor logic apps wordt weergegeven (misschien moet u naar rechts schuiven om de volledige pagina te zien). Schuif op de pagina Logic Apps Designer omlaag totdat u de tegel met de tekst **Blank Logic App +** ziet en selecteer deze. Het standaardtabblad is 'Voor u'. Als dit deelvenster leeg is, selecteert u **Alles** om alle beschikbare connectors en triggers weer te geven.
 
-3. Selecteer **Service Bus** in de lijst met connectors.
+3. Selecteer **Servicebus** in de lijst met connectoren.
 
-   ![De lijst met connectors](./media/tutorial-routing-view-message-routing-results/logic-app-connectors.png)
+   ![De lijst met connectoren](./media/tutorial-routing-view-message-routing-results/logic-app-connectors.png)
 
-4. Er wordt een lijst met triggers weergegeven. Selecteren **Wanneer een bericht wordt ontvangen in een wachtrij (automatisch volt ooien)/service bus**.
+4. Er wordt een lijst met triggers weergegeven. Selecteer **Wanneer een bericht wordt ontvangen in een wachtrij (automatisch aanvullen) / Servicebus**.
 
    ![De lijst met triggers voor de Service Bus](./media/tutorial-routing-view-message-routing-results/logic-app-triggers.png)
 
 5. Vul op het volgende scherm de naam van de verbinding in. In deze zelfstudie wordt gebruikgemaakt van **ContosoConnection**.
 
-   ![Instellen van de verbinding voor de Service Bus wachtrij](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
+   ![De verbinding instellen voor de wachtrij servicebus](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
 
-   Selecteer de Service Bus naam ruimte. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBNamespace**. Wanneer u de naamruimte selecteert, vraagt de portal de Service Bus-naamruimte op voor het ophalen van de sleutels. Selecteer **RootManageSharedAccessKey** en selecteer **maken**.
+   Selecteer de naamruimte servicebus. In deze zelfstudie wordt gebruikgemaakt van **ContosoSBNamespace**. Wanneer u de naamruimte selecteert, vraagt de portal de Service Bus-naamruimte op voor het ophalen van de sleutels. Selecteer **RootManageSharedAccessKey** en selecteer **Maken**.
 
-   ![Instellen van de verbinding volt ooien](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
+   ![Het instellen van de verbinding voltooien](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
 
 6. Selecteer de naam van de wachtrij op het volgende scherm (in deze zelfstudie wordt gebruikgemaakt van **contososbqueue**) in de vervolgkeuzelijst. U kunt de standaardwaarden gebruiken voor de rest van de velden.
 
-   ![De wachtrij opties](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
+   ![De wachtrijopties](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. Stel nu de actie in voor het verzenden van het e-mailbericht wanneer een bericht wordt ontvangen in de wachtrij. Selecteer in de Logic Apps Designer **+ nieuwe stap** om een stap toe te voegen en selecteer vervolgens **Alles** om alle beschik bare opties weer te geven. Zoek in het deel venster **een actie kiezen** en selecteer **Office 365 Outlook**. Selecteer in het scherm acties de optie **een E-mail verzenden/Office 365 Outlook**.  
+7. Stel nu de actie in voor het verzenden van het e-mailbericht wanneer een bericht wordt ontvangen in de wachtrij. Selecteer in de Logische apps designer de optie **+ Nieuwe stap** om een stap toe te voegen en selecteer **Alles** om alle beschikbare opties weer te geven. Zoek en selecteer **Office 365 Outlook**in **het actievenster kiezen** . Selecteer in het scherm Acties de optie **Een e-mail verzenden / Office 365 Outlook**.  
 
    ![De Office365-opties](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Meld u aan bij uw Office 365-account om de verbinding in te stellen. Als er een time-out optreedt, probeert u het opnieuw. Geef de e-mailadressen op voor de ontvanger(s) van de e-mailberichten. Geef tevens het onderwerp op en het type berichten dat u wilt dat de ontvanger in de hoofdtekst zal zien. Vul voor het testen uw eigen e-mailadres in als ontvanger.
+8. Meld u aan bij uw Office 365-account om de verbinding in te stellen. Als dit een keer uitgaat, probeer het dan opnieuw. Geef de e-mailadressen op voor de ontvanger(s) van de e-mailberichten. Geef tevens het onderwerp op en het type berichten dat u wilt dat de ontvanger in de hoofdtekst zal zien. Vul voor het testen uw eigen e-mailadres in als ontvanger.
 
-   Selecteer **dynamische inhoud toevoegen** om de inhoud van het bericht dat u kunt bevatten weer te geven. Selecteer **Inhoud**: hiermee wordt het bericht in het e-mailbericht opgenomen.
+   Selecteer **Dynamische inhoud toevoegen** om de inhoud weer te geven uit het bericht dat u opnemen. Selecteer **Inhoud**: hiermee wordt het bericht in het e-mailbericht opgenomen.
 
-   ![De e-mail opties voor de logische app](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
+   ![De e-mailopties voor de logische app](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
 9. Selecteer **Opslaan**. Sluit daarna de ontwerpfunctie voor de logische app af.
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
 
-Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stream Analytics-taak in om de gegevens op te halen. Houd er rekening mee dat alleen de berichten waarin het **niveau** **normaal** is, worden verzonden naar het standaardeindpunt en door de Stream Analytics-taak voor de Power BI-visualisatie worden opgehaald.
+Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stream Analytics-taak in om de gegevens op te halen. Houd er rekening mee dat alleen de berichten waarin het **niveau****normaal** is, worden verzonden naar het standaardeindpunt en door de Stream Analytics-taak voor de Power BI-visualisatie worden opgehaald.
 
 ### <a name="create-the-stream-analytics-job"></a>De Stream Analytics-taak maken
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** > **Internet of Things** > **Stream Analytics taak**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com)de taak **Een bron** > **internet of things** > **stream analytics**maken .
 
 2. Voer de volgende informatie in voor de taak.
 
    **Taaknaam**: de naam van de taak. De naam moet wereldwijd uniek zijn. In deze zelfstudie wordt gebruikgemaakt van **contosoJob**.
 
-   **Abonnement**: het Azure-abonnement dat u voor de zelf studie gebruikt.
+   **Abonnement:** het Azure-abonnement dat u voor de zelfstudie gebruikt.
 
    **Resourcegroep**: gebruik dezelfde resourcegroep die wordt gebruikt door uw IoT Hub. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**.
 
-   **Locatie**: gebruik dezelfde locatie die u in het instellingsscript hebt gebruikt. In deze zelfstudie wordt gebruikgemaakt van **US - west**.
+   **Locatie**: gebruik dezelfde locatie die u in het instellingsscript hebt gebruikt. In deze zelfstudie wordt gebruikgemaakt van **VS - west**.
 
-   ![De stream Analytics-taak maken](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
+   ![De taak voor streamanalyse maken](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
-3. Selecteer **maken** om de taak te maken. Het kan een paar minuten duren voordat de implementatie is uitgevoerd.
+3. Selecteer **Maken** om de taak te maken. Het kan enkele minuten duren voordat u deze inzet hebt.
 
-    Selecteer **resource groepen**om terug te gaan naar de taak. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**. Selecteer de resource groep en selecteer vervolgens de taak Stream Analytics in de lijst met resources.
+    Als u terug wilt gaan naar de taak, selecteert u **Resourcegroepen**. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**. Selecteer de resourcegroep en selecteer vervolgens de taak Stream Analytics in de lijst met bronnen.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
-1. Selecteer **invoer**onder **taak topologie**.
+1. Selecteer **Invoer onder** **Job Topology**.
 
-2. Selecteer in het deel venster **invoer** de optie **stroom invoer toevoegen** en selecteer IOT hub. Vul de volgende velden in op het scherm dat wordt weergegeven:
+2. Selecteer **in** het deelvenster Invoer de optie **Stream-invoer toevoegen** en selecteer IoT Hub. Vul de volgende velden in op het scherm dat wordt weergegeven:
 
    **Invoeralias**: in deze zelfstudie wordt gebruikgemaakt **contosoinputs**.
 
-   **Selecteer IOT hub uit uw abonnement**: Selecteer deze keuze rondje.
+   **Selecteer IoT Hub in uw abonnement:** Selecteer deze keuze voor een keuzerondje.
 
-   **Abonnement**: Selecteer het Azure-abonnement dat u voor deze zelf studie gebruikt.
+   **Abonnement:** selecteer het Azure-abonnement dat u voor deze zelfstudie gebruikt.
 
-   **IOT hub**: Selecteer de IOT-hub. In deze zelfstudie wordt gebruikgemaakt van **ContosoTestHub**.
+   **IoT-hub:** selecteer de IoT-hub. In deze zelfstudie wordt gebruikgemaakt van **ContosoTestHub**.
 
    **Eindpunt**: selecteer **Berichten**. (Als u Operations Monitoring selecteert, krijgt u de telemetriegegevens over de IoT Hub in plaats van de gegevens die u doorstuurt.) 
 
-   **Naam van beleid voor gedeelde toegang**: Selecteer **service**. In de portal wordt de sleutel van het beleid voor gedeelde toegang voor u ingevuld.
+   **Naam van het beleid voor gedeelde toegang:** **Service selecteren**. In de portal wordt de sleutel van het beleid voor gedeelde toegang voor u ingevuld.
 
-   **Consumenten groep**: Selecteer de consumenten groep die is ingesteld in deel 1 van deze zelf studie. In deze zelfstudie wordt gebruikgemaakt van **contosoconsumers**.
+   **Consumentengroep**: Selecteer de consumentengroep die is ingesteld in deel 1 van deze zelfstudie. In deze zelfstudie wordt gebruikgemaakt van **contosoconsumers**.
    
    Accepteer de standaardwaarden voor de rest van de velden. 
 
-   ![De invoer voor de stream Analytics-taak instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
+   ![De ingangen voor de streamanalysetaak instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
 3. Selecteer **Opslaan**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Een uitvoer aan de Stream Analytics-taak toevoegen
 
-1. Selecteer **uitvoer**onder **taak topologie**.
+1. Selecteer **Job Topology** **Uitvoer .**
 
-2. Selecteer in het deel venster **outputs** de optie **toevoegen**en selecteer vervolgens **Power bi**. Vul de volgende velden in op het scherm dat wordt weergegeven:
+2. Selecteer **Toevoegen**en selecteer Vervolgens Power **BI**in het deelvenster **Uitvoer** . Vul de volgende velden in op het scherm dat wordt weergegeven:
 
    **Uitvoeralias**: de alias die uniek is voor de uitvoer. In deze zelfstudie wordt gebruikgemaakt van **contosooutputs**. 
 
@@ -154,9 +154,9 @@ Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stre
 
    Accepteer de standaardwaarden voor de rest van de velden.
 
-3. Selecteer **autoriseren**en meld u aan bij uw Power bi-account. (Dit kan meer dan één poging doen).
+3. Selecteer **Autoriseren**en meld u aan bij uw Power BI-account. (Dit kan meer dan een keer te proberen).
 
-   ![De uitvoer voor de stream Analytics-taak instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
+   ![De uitvoer voor de taak streamanalytics instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
 4. Selecteer **Opslaan**.
 
@@ -168,27 +168,27 @@ Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stre
 
 3. Vervang `[YourOutputAlias]` door de uitvoeralias van de taak. In deze zelfstudie wordt gebruikgemaakt van **contosooutputs**.
 
-   ![De query voor de stream Analytics-taak instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
+   ![De query instellen voor de taak voor streamanalyse](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
 4. Selecteer **Opslaan**.
 
-5. Sluit het deelvenster Query. U keert terug naar de weer gave van de resources in de resource groep. Selecteer de Stream Analytics taak. In deze zelfstudie heet deze taak **contosoJob**.
+5. Sluit het deelvenster Query. U keert terug naar de weergave van de resources in de resourcegroep. Selecteer de taak Stream Analytics. In deze zelfstudie heet deze taak **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
-Selecteer in de taak Stream Analytics **start** > **nu** > **starten**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
+Selecteer**nu** >  **starten** > **starten**in de taak Stream Analytics . Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
 Als u het Power BI-rapport instelt, hebt u gegevens nodig, dus stelt u Power BI in nadat u het apparaat hebt gemaakt en de simulatietoepassing van het apparaat hebt ingesteld.
 
 ## <a name="run-simulated-device-app"></a>Gesimuleerde apparaat-app uitvoeren
 
-In deel 1 van deze zelf studie stelt u een apparaat in om te simuleren met behulp van een IoT-apparaat. In deze sectie downloadt u de .NET-console-app die het apparaat simuleert dat apparaat-naar-Cloud-berichten verzendt naar een IoT-hub (ervan uitgaande dat u de app en resources in deel 1 niet al hebt gedownload).
+In deel 1 van deze zelfstudie stelt u een apparaat in om te simuleren met behulp van een IoT-apparaat. In deze sectie downloadt u de .NET-console-app die het apparaat simuleert dat apparaat-naar-cloudberichten verzendt naar een IoT-hub (ervan uitgaande dat u de app en bronnen in deel 1 nog niet hebt gedownload).
 
-Met deze toepassing worden berichten verzonden voor elk van de verschillende routerings methoden voor berichten. Er is ook een map in de down load die de volledige Azure Resource Manager sjabloon en het parameter bestand bevat, evenals de Azure CLI-en Power shell-scripts.
+Deze toepassing verzendt berichten voor elk van de verschillende routeringsmethoden voor berichten. Er is ook een map in de download die de volledige Azure Resource Manager-sjabloon en parametersbestand bevat, evenals de Azure CLI- en PowerShell-scripts.
 
-Als u de bestanden niet hebt gedownload uit de opslag plaats in deel 1 van deze zelf studie, kunt u deze nu downloaden vanuit [IOT Device simulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Als u deze koppeling selecteert, wordt een opslag plaats met meerdere toepassingen gedownload. de oplossing die u zoekt is IOT-hub/zelf studies/route ring/IoT_SimulatedDevice. SLN. 
+Als u de bestanden niet hebt gedownload uit de repository in deel 1 van deze zelfstudie, download ze dan nu van [IoT Device Simulation.](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) Als u deze koppeling selecteert, wordt een opslagplaats gedownload met verschillende toepassingen erin; de oplossing die u zoekt is iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln. 
 
-Dubbel klik op het oplossings bestand (IoT_SimulatedDevice. SLN) om de code te openen in Visual Studio en open vervolgens Program.cs. Vervang `{your hub name}` door de hostnaam van de IoT Hub. De indeling van de hostnaam van de IoT Hub is **{iot-hub-name} .azure-devices.net**. Voor deze zelfstudie is de naam van de hubhost **ContosoTestHub.azure devices.net**. Vervang vervolgens `{your device key}` door de apparaatsleutel die u eerder hebt opgeslagen bij het instellen van het gesimuleerde apparaat. 
+Dubbelklik op het oplossingsbestand (IoT_SimulatedDevice.sln) om de code in Visual Studio te openen en open Program.cs. Vervang `{your hub name}` door de hostnaam van de IoT Hub. De indeling van de hostnaam van de IoT Hub is **{iot-hub-name} .azure-devices.net**. Voor deze zelfstudie is de naam van de hubhost **ContosoTestHub.azure devices.net**. Vervang vervolgens `{your device key}` door de apparaatsleutel die u eerder hebt opgeslagen bij het instellen van het gesimuleerde apparaat. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";
@@ -210,23 +210,23 @@ Als alles juist is ingesteld, zou u op dit moment de volgende resultaten moeten 
 
    ![De resulterende e-mails](./media/tutorial-routing-view-message-routing-results/results-in-email.png)
 
-   Dit resulteert in de volgende-instructies: True. 
+   Dit resultaat betekent dat de volgende uitspraken waar zijn. 
 
    * De routering naar de Service Bus-wachtrij werkt correct.
    * De logische app die het bericht uit de Service Bus-wachtrij ophaalt, werkt correct.
    * De connector van de logische app voor Outlook werkt goed. 
 
-2. In de [Azure Portal](https://portal.azure.com)selecteert u **resource groepen** en selecteert u de resource groep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**. 
+2. Selecteer **resourcegroepen** in de [Azure-portal](https://portal.azure.com)en selecteer uw resourcegroep. In deze zelfstudie wordt gebruikgemaakt van **ContosoResources**. 
 
-    Selecteer het opslag account, selecteer **containers**en selecteer vervolgens de container. In deze zelfstudie wordt gebruikgemaakt van **contosoresults**. U zou een map moeten zien, en u kunt inzoomen via de mappen totdat u een of meer bestanden ziet. Open een van deze bestanden; ze bevatten de vermeldingen die zijn doorgestuurd naar het opslagaccount. 
+    Selecteer het opslagaccount, selecteer **Containers**en selecteer vervolgens de container. In deze zelfstudie wordt gebruikgemaakt van **contosoresults**. U zou een map moeten zien, en u kunt inzoomen via de mappen totdat u een of meer bestanden ziet. Open een van deze bestanden; ze bevatten de vermeldingen die zijn doorgestuurd naar het opslagaccount. 
 
-   ![De resultaat bestanden in de opslag](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
+   ![Het resultaat bestanden in opslag](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
-Dit resulteert in de volgende instructie: True.
+Dit resultaat betekent dat de volgende verklaring waar is.
 
    * De routering naar de Service Bus-wachtrij werkt correct.
 
-Nu de toepassing nog steeds wordt uitgevoerd, stelt u de Power BI visualisatie in om de berichten te zien die via de standaard routering worden verzonden.
+Nu de toepassing nog steeds actief is, stelt u de Power BI-visualisatie in om de berichten te zien die via de standaardroutering binnenkomen.
 
 ## <a name="set-up-the-power-bi-visualizations"></a>De Power BI-visualisaties instellen
 
@@ -234,17 +234,17 @@ Nu de toepassing nog steeds wordt uitgevoerd, stelt u de Power BI visualisatie i
 
 2. Ga naar **Werkruimten** en selecteer de werkruimte die u hebt ingesteld toen u de uitvoer voor de Stream Analytics-taak hebt gemaakt. In deze zelfstudie wordt gebruikgemaakt van **Mijn werkruimte**. 
 
-3. Selecteer **gegevens sets**. Als u geen gegevens sets hebt, wacht u een paar minuten en controleert u het opnieuw.
+3. Selecteer **Gegevenssets**. Als u geen gegevenssets hebt, wacht u een paar minuten en controleert u het opnieuw.
 
    U zou de vermelde gegevensset moeten zien die u hebt opgegeven toen u de uitvoer voor de Stream Analytics-taak hebt gemaakt. In deze zelfstudie wordt gebruikgemaakt van **contosodataset**. (Het kan 5-10 minuten duren voordat de gegevensset voor de eerste keer wordt weergegeven.)
 
-4. Onder **acties**, selecteert u het eerste pictogram om een rapport te maken.
+4. Selecteer **onder ACTIES**het eerste pictogram om een rapport te maken.
 
-   ![Power BI werk ruimte met gemarkeerde acties en rapport pictogrammen](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
+   ![Power BI-werkruimte met acties en rapportpictogram gemarkeerd](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
 5. Maak een lijndiagram om in realtime de temperatuur gedurende een bepaalde periode weer te geven.
 
-   * Voeg op de pagina rapport maken een lijn diagram toe door het pictogram lijn diagram te selecteren.
+   * Voeg op de pagina het maken van rapporten een lijndiagram toe door het pictogram lijndiagram te selecteren.
 
      ![De visualisaties en velden](./media/tutorial-routing-view-message-routing-results/power-bi-visualizations-and-fields.png)
 
@@ -256,58 +256,58 @@ Nu de toepassing nog steeds wordt uitgevoerd, stelt u de Power BI visualisatie i
 
    Er wordt een lijndiagram gemaakt. De x-as geeft de datum en tijd in UTC-tijdzone aan. De y-as geeft de temperatuur van de sensor aan.
 
-6. Maak een ander lijndiagram om in realtime de vochtigheid gedurende een bepaalde periode weer te geven. Als u de tweede grafiek wilt instellen, volgt u hetzelfde proces voor de eerste grafiek en plaatst u **EventEnqueuedUtcTime** op de x-as (**as**) en **vochtigheid** op de y-as (**waarden**).
+6. Maak een ander lijndiagram om in realtime de vochtigheid gedurende een bepaalde periode weer te geven. Als u de tweede grafiek wilt instellen, volgt u hetzelfde proces voor de eerste grafiek, waarbij **EventEnqueuedUtcTime** op de x-as **(As**) en **vochtigheid** op de y-as **(Waarden) wordt**geplaatst.
 
-   ![Het uiteindelijke Power BI rapport met de twee grafieken](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
+   ![Het uiteindelijke Power BI-rapport met de twee grafieken](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
-7. Selecteer **Opslaan** om het rapport op te slaan en voer een naam in voor het rapport als u hierom wordt gevraagd.
+7. Selecteer **Opslaan** om het rapport op te slaan en voert een naam in voor het rapport als daarom wordt gevraagd.
 
-U zou gegevens moeten kunnen zien in beide diagrammen. Dit resulteert in de volgende-instructies:
+U zou gegevens moeten kunnen zien in beide diagrammen. Dit resultaat betekent dat de volgende uitspraken waar zijn:
 
    * De routering naar het standaardeindpunt werkt correct.
    * De Azure Stream Analytics-taak stroomt correct.
    * De Power BI-visualisatie is juist ingesteld.
 
-U kunt de grafieken vernieuwen om de meest recente gegevens te zien door de knop Vernieuwen boven aan het Power BI venster te selecteren. 
+U de grafieken vernieuwen om de meest recente gegevens te bekijken door de knop Vernieuwen boven aan het Power BI-venster te selecteren. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 
-Als u alle Azure-resources die u hebt gemaakt, wilt verwijderen uit beide delen van deze zelf studie, verwijdert u de resource groep. Hiermee verwijdert u ook alle resources in de groep. In dit geval worden de IoT Hub, de Service Bus-naamruimte en -wachtrij, de logische app, het opslagaccount en de resourcegroep zelf verwijderd. U kunt ook de Power BI resources verwijderen en de e-mail berichten wissen die tijdens de zelf studie zijn verzonden.
+Als u alle Azure-resources die u via beide delen van deze zelfstudie hebt gemaakt, wilt verwijderen, verwijdert u de brongroep. Hiermee verwijdert u ook alle resources in de groep. In dit geval worden de IoT Hub, de Service Bus-naamruimte en -wachtrij, de logische app, het opslagaccount en de resourcegroep zelf verwijderd. U ook de Power BI-bronnen verwijderen en de e-mails wissen die tijdens de zelfstudie zijn verzonden.
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Resources in de Power BI-visualisatie opschonen
 
-Meld u aan bij uw [Power BI](https://powerbi.microsoft.com/)-account. Ga naar uw werkruimte. In deze zelfstudie wordt gebruikgemaakt van **Mijn werkruimte**. Als u de Power BI visualisatie wilt verwijderen, gaat u naar gegevens sets en selecteert u het prullenbak pictogram om de gegevensset te verwijderen. In deze zelfstudie wordt gebruikgemaakt van **contosodataset**. Wanneer u de gegevensset verwijdert, wordt het rapport ook verwijderd.
+Meld u aan bij uw [Power BI](https://powerbi.microsoft.com/)-account. Ga naar uw werkruimte. In deze zelfstudie wordt gebruikgemaakt van **Mijn werkruimte**. Als u de Power BI-visualisatie wilt verwijderen, gaat u naar DataSets en selecteert u het pictogram prullenbak om de gegevensset te verwijderen. In deze zelfstudie wordt gebruikgemaakt van **contosodataset**. Wanneer u de gegevensset verwijdert, wordt het rapport ook verwijderd.
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>De Azure CLI gebruiken om resources op te schonen
 
-U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` is ingesteld op **ContosoResources** terug aan het begin van deze zelf studie.
+U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup`was ingesteld op **ContosoResources** terug aan het begin van deze tutorial.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-### <a name="use-powershell-to-clean-up-resources"></a>Power shell gebruiken om resources op te schonen
+### <a name="use-powershell-to-clean-up-resources"></a>PowerShell gebruiken om resources op te schonen
 
-U kunt de resourcegroep verwijderen met de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup` is ingesteld op **ContosoResources** terug aan het begin van deze zelf studie.
+U kunt de resourcegroep verwijderen met de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup`was ingesteld op **ContosoResources** terug aan het begin van deze tutorial.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-### <a name="clean-up-test-emails"></a>Test berichten opschonen
+### <a name="clean-up-test-emails"></a>Teste-mails opschonen
 
-Het is ook mogelijk dat u het aantal e-mails in uw postvak in dat is gegenereerd via de logische app wilt verwijderen terwijl de Device-toepassing werd uitgevoerd.
+U ook de hoeveelheid e-mails in uw postvak IN verwijderen die zijn gegenereerd via de Logic App terwijl de apparaattoepassing werd uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie met twee deel woorden hebt u geleerd hoe u bericht routering kunt gebruiken om IoT Hub berichten naar verschillende bestemmingen te sturen door de volgende taken uit te voeren.  
+In deze 2-delige zelfstudie hebt u geleerd hoe u berichtroutering gebruiken om IoT Hub-berichten naar verschillende bestemmingen te routeren door de volgende taken uit te voeren.  
 
-**Deel I: resources maken, bericht routering instellen**
+**Deel I: Resources maken, berichtroutering instellen**
 > [!div class="checklist"]
-> * Maak de resources--een IoT-hub, een opslag account, een Service Bus wachtrij en een gesimuleerd apparaat.
-> * Configureer de eind punten en bericht routes in IoT Hub voor het opslag account en de Service Bus wachtrij.
+> * Maak de resources: een IoT-hub, een opslagaccount, een servicebuswachtrij en een gesimuleerd apparaat.
+> * Configureer de eindpunten en berichtroutes in IoT Hub voor het opslagaccount en de wachtrij voor servicebussen.
 
-**Deel II: berichten verzenden naar de hub, gerouteerde resultaten weer geven**
+**Deel II: Berichten verzenden naar de hub, routeresultaten bekijken**
 > [!div class="checklist"]
 > * Maak een logische app die wordt geactiveerd en een e-mailbericht verzendt wanneer een bericht wordt toegevoegd aan de Service Bus-wachtrij.
 > * Download een app die een IoT-apparaat aanzet tot het verzenden van berichten naar de hub voor de verschillende routeringsopties en voer deze uit.

@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het ophalen van ingerichte door Voer (RU/s) voor de Azure Cosmos DB SQL-API (core)
-description: Azure PowerShell script-Azure Cosmos DB ingerichte door Voer (RU/s) voor SQL-API (core)
+title: PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB SQL API-database of -container te krijgen
+description: Azure PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB SQL API-database of -container te krijgen
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441331"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365601"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>De ingerichte door Voer (RU/s) ophalen voor een Data Base of container voor de API van Azure Cosmos DB-SQL (core)
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Doorvoer (RU/s) voor Azure Cosmos DB SQL API-database of -container
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441331"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -38,9 +38,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-azcosmosDBSqlDatabaseDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Krijg de doorvoer ingericht op een Azure Cosmos DB SQL API Database. |
+| [Get-azcosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Krijg de doorvoer ingericht op een Azure Cosmos DB SQL API-container. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Mimecast-beheer console | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Mimecast-beheerconsole | Microsoft Documenten'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en de Mimecast-beheerconsole.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160663"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Zelf studie: integratie Azure Active Directory met Mimecast-beheer console
+# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Zelfstudie: Azure Active Directory-integratie met Mimecast-beheerconsole
 
 In deze zelfstudie leert u hoe u de Mimecast-beheerconsole kunt integreren met Azure Active Directory (Azure AD).
 De integratie van de Mimecast-beheerconsole met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van de Mimecast-beheerconsole met Azure AD heeft de volgende voord
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van de Mimecast-beheerconsole in Azure A
 
 **Voer de volgende stappen uit om de Mimecast-beheerconsole toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Als u Azure AD-eenmalige aanmelding met de Mimecast-beheerconsole wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor de Mimecast-beheerconsole configureren](#configure-mimecast-admin-console-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Een testgebruiker maken in de Mimecast-beheerconsole](#create-mimecast-admin-console-test-user)** : voor een equivalent van Britta Simon in de Mimecast-beheerconsole dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor de Mimecast-beheerconsole configureren](#configure-mimecast-admin-console-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker maken in de Mimecast-beheerconsole](#create-mimecast-admin-console-test-user)**: voor een equivalent van Britta Simon in de Mimecast-beheerconsole dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -140,15 +140,15 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij de Mimecast-be
 
 3. Klik op **Authentication Profiles**.
 
-    ![Verificatie profielen](./media/mimecast-admin-console-tutorial/ic794999.png "Verificatie profielen")
+    ![Verificatieprofielen](./media/mimecast-admin-console-tutorial/ic794999.png "Verificatieprofielen")
     
 4. Klik op **New Authentication Profile**.
 
-    ![Nieuwe authenticatie profielen](./media/mimecast-admin-console-tutorial/ic795000.png "Nieuwe authenticatie profielen")
+    ![Nieuwe verificatieprofielen](./media/mimecast-admin-console-tutorial/ic795000.png "Nieuwe verificatieprofielen")
 
 5. Voer in de sectie **Authentication Profile** de volgende stappen uit:
 
-    ![Verificatie profiel](./media/mimecast-admin-console-tutorial/ic795015.png "Verificatie profiel")
+    ![Verificatieprofiel](./media/mimecast-admin-console-tutorial/ic795015.png "Verificatieprofiel")
     
     a. Typ in het tekstvak **Description** een naam voor de configuratie.
     
@@ -165,7 +165,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij de Mimecast-be
     >[!NOTE]
     >Voor de Mimecast-beheerconsole zijn de waarden van de aanmeldings- en afmeldings-URL dezelfde.
     
-    g. Open in Kladblok het met Base 64 gecodeerde certificaat dat u hebt gedownload in de Azure-portal, verwijder de eerste regel (“ *--* “) en de laatste regel (“ *--* “), kopieer de rest van de inhoud naar het Klembord en plak deze vervolgens in het tekstvak **Identity Provider Certificate (Metadata)** .
+    g. Open uw basis-64-certificaat dat is gedownload van de Azure-portal in kladblok, verwijder de eerste regel ("*--*") en de laatste regel ("*--*"), kopieer de resterende inhoud ervan in uw klembord en plak het vervolgens in het textbox **(Identity Provider Certificate) (Metadata).**
     
     h. Selecteer **Allow Single Sign On**.
     
@@ -187,14 +187,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -208,7 +208,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Mimecast-beheerconsole in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -216,9 +216,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -228,13 +228,13 @@ Om het gebruikers van Azure AD mogelijk te maken zich aan te melden bij de Mimec
 
 * U moet een domein registreren voordat u gebruikers kunt maken.
 
-**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
+**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
 
 1. Meld u aan bij uw **Mimecast-beheerconsole** als beheerder.
 
 2. Ga naar **Directories \> Internal**.
    
-    ![Adreslijsten](./media/mimecast-admin-console-tutorial/ic795003.png "Mappen")
+    ![Mappen](./media/mimecast-admin-console-tutorial/ic795003.png "Mappen")
 
 3. Klik op **Register New Domain**.
    
@@ -261,11 +261,11 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Mimecast-beheerconsole in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van de Mimecast-beheerconsole waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

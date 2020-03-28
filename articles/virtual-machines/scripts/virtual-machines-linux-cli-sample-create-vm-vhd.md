@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure CLI-script-een virtuele machine maken met een VHD
+title: Azure CLI Script-voorbeeld - Een VM maken met een VHD
 description: 'Azure CLI-Script voorbeeld: een virtuele machine met een virtuele harde schijf maken'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 03/09/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 16f4e3e153cbc02f8626199d168d069add48e4b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037656"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Een virtuele machine met een virtuele harde schijf maken
@@ -49,7 +49,7 @@ az group delete -n az-cli-vhd
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

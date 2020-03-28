@@ -1,5 +1,5 @@
 ---
-title: Een extern bestand en een stream coderen met Azure Media Services v3
+title: Een extern bestand coderen en streamen met Azure Media Services v3
 description: Volg de stappen van deze zelfstudie om met behulp van REST een bestand te coderen op basis van een URL en inhoud te streamen met Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -10,28 +10,28 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238634"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472030"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen - REST
 
-Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Coderen](encoding-concept.md) voor richtlijnen voor codering.
+Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Encoding](encoding-concept.md) voor richtlijnen voor codering.
 
 In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en de video kunt streamen met Azure Media Services. 
 
 ![De video afspelen](./media/stream-files-tutorial-with-api/final-video.png)
 
-In deze zelfstudie ontdekt u hoe u:    
+In deze handleiding ontdekt u hoe u:    
 
 > [!div class="checklist"]
-> * Een Media Services-account maken
-> * Toegang krijgt tot de Media Services API
+> * Een Media Services-account kunt maken
+> * Toegang kunt krijgen tot de Media Services API
 > * Postman-bestanden downloaden
 > * Postman configureren
 > * Aanvragen verzenden met behulp van Postman
@@ -48,7 +48,7 @@ In deze zelfstudie ontdekt u hoe u:
 
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
-    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
+    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio Code** met de REST plugin of **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-bestanden downloaden
 
@@ -58,13 +58,15 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>Toegang tot API
+
+Zie [Referenties opvragen voor toegang tot mediaservices API](access-api-howto.md) voor gedetailleerde informatie
 
 ## <a name="configure-postman"></a>Postman configureren
 
 ### <a name="configure-the-environment"></a>De omgeving configureren 
 
-1. Open de **postman** -app.
+1. Open de **Postbode-app.**
 2. Selecteer rechts van het scherm de optie **Manage environment**.
 
     ![Omgeving beheren](./media/develop-with-postman/postman-import-env.png)
@@ -75,7 +77,7 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
     > [!Note]
     > Werk de toegangsvariabelen bij met waarden die u hebt gekregen in de sectie **Toegang krijgen tot de Media Services API** hierboven.
 
-7. Dubbelklik op het geselecteerde bestand en voer de waarden in die u hebt verkregen door de stappen voor het verkrijgen van [toegang tot API's](#access-the-media-services-api) te volgen.
+7. Dubbelklik op het geselecteerde bestand en voer de waarden in die u hebt verkregen door de stappen voor het verkrijgen van [toegang tot API's](#access-api) te volgen.
 8. Sluit het dialoogvenster.
 9. Selecteer de omgeving **Azure Media Service v3 Environment** in de vervolgkeuzelijst.
 
@@ -94,19 +96,19 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
 In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en maken van URL's zodat uw bestand kan worden gestreamd. In het bijzonder worden de volgende aanvragen verzonden:
 
 1. Azure AD-token verkrijgen voor service-principal-verificatie
-1. Een streaming-eind punt starten
+1. Een streamingeindpunt starten
 2. Een uitvoeractivum maken
 3. Een transformatie maken
 4. Een taak maken
 5. Een streaming-locator maken
-6. Paden van de streaming-Locator weer geven
+6. Toont paden van de streaming-locator
 
 > [!Note]
 >  In deze zelfstudie wordt ervan uitgegaan dat u alle resources maakt met unieke namen.  
 
 ### <a name="get-azure-ad-token"></a>Azure AD-token verkrijgen 
 
-1. Selecteer in het linkerdeel venster van de Postman-app ' stap 1: AAD-verificatie Token ophalen '.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Stap 1: Ontvang AAD Auth-token'.
 2. Selecteer vervolgens Get Azure AD Token for Service Principal Authentication.
 3. Druk op **Verzenden**.
 
@@ -121,41 +123,41 @@ In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en make
     ![AAD-token verkrijgen](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
 
-### <a name="start-a-streaming-endpoint"></a>Een streaming-eind punt starten
+### <a name="start-a-streaming-endpoint"></a>Een streamingeindpunt starten
 
-Als u streaming wilt inschakelen, moet u eerst het [streaming-eind punt](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) starten van waaruit u de video wilt streamen.
+Als u streaming wilt inschakelen, moet u eerst het [streamingeindpunt](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) starten van waaruit u de video wilt streamen.
 
 > [!NOTE]
-> U wordt alleen gefactureerd wanneer uw streaming-eind punt de status actief heeft.
+> Er worden alleen kosten in rekening gebracht wanneer uw streamingeindpunt in de status van actief is.
 
-1. Selecteer in het linkerdeel venster van de Postman-app "streaming en live".
-2. Selecteer vervolgens ' Start StreamingEndpoint '.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Streamen en Live'.
+2. Selecteer vervolgens 'StreamingEndpoint starten'.
 3. Druk op **Verzenden**.
 
-    * De volgende **post** -bewerking wordt verzonden:
+    * De volgende **postbewerking** wordt verzonden:
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * Als de aanvraag is voltooid, wordt de `Status: 202 Accepted` geretourneerd.
+    * Als de aanvraag is `Status: 202 Accepted` geslaagd, wordt deze geretourneerd.
 
-        Deze status betekent dat de aanvraag is geaccepteerd voor verwerking. de verwerking is echter niet voltooid. U kunt een query uitvoeren voor de bewerkings status op basis van de waarde in de `Azure-AsyncOperation`-antwoord header.
+        Deze status betekent dat het verzoek is geaccepteerd voor verwerking; de verwerking is echter nog niet voltooid. U de bewerkingsstatus opvragen op `Azure-AsyncOperation` basis van de waarde in de antwoordkop.
 
-        Met de volgende GET-bewerking wordt bijvoorbeeld de status van de bewerking geretourneerd:
+        De volgende GET-bewerking retourneert bijvoorbeeld de status van uw bewerking:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        In het artikel [asynchrone Azure-bewerkingen bijhouden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
+        In het artikel [over asynchrone Azure-bewerkingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgebreid uitgelegd hoe u de status van asynchrone Azure-bewerkingen bijhouden via waarden die in het antwoord worden geretourneerd.
 
 ### <a name="create-an-output-asset"></a>Een uitvoeractivum maken
 
 In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. 
 
-1. Selecteer ' assets ' in het linkerdeel venster van de Postman-app.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Activa'.
 2. Selecteer vervolgens Create or update an Asset.
 3. Druk op **Verzenden**.
 
-    * De volgende **PUT**-bewerking wordt verzonden:
+    * De volgende **PUT-bewerking** wordt verzonden:
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
@@ -173,16 +175,16 @@ In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het
 
 ### <a name="create-a-transform"></a>Een transformatie maken
 
-Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [Transformaties en taken](transform-concept.md) voor meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
+Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [Transformeren en taken voor](transform-concept.md)meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
 
-Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste parameter is een **TransformOutput**-object. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming** . De voorinstelling codeert de invoervideo in een automatisch gegenereerde bitrate-ladder (bitrate-resolutieparen) op basis van de invoerresolutie en bitsnelheid en produceert ISO MP4-bestanden met H.264-video en AAC-audio die overeenkomen met elk bitrate-resolutiepaar. Zie [een bitrate-ladder automatisch genereren](autogen-bitrate-ladder.md) voor meer informatie over deze voorinstelling.
+Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste parameter is een **TransformOutput**-object. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming **. De voorinstelling codeert de invoervideo in een automatisch gegenereerde bitrate-ladder (bitrate-resolutieparen) op basis van de invoerresolutie en bitsnelheid en produceert ISO MP4-bestanden met H.264-video en AAC-audio die overeenkomen met elk bitrate-resolutiepaar. Zie [een bitrate-ladder automatisch genereren](autogen-bitrate-ladder.md) voor meer informatie over deze voorinstelling.
 
 U kunt een ingebouwde EncoderNamedPreset gebruiken of aangepaste voorinstellingen gebruiken. 
 
 > [!Note]
 > Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/transforms) moet u met de methode **Get** eerst controleren of er al een bestaat. In deze zelfstudie wordt ervan uitgegaan dat u alle transformaties maakt met een unieke naam.
 
-1. Selecteer in het linkerdeel venster van de Postman-app de optie code ring en analyse.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Coderen en analyseren'.
 2. Selecteer daarna Create Transform.
 3. Druk op **Verzenden**.
 
@@ -215,9 +217,9 @@ U kunt een ingebouwde EncoderNamedPreset gebruiken of aangepaste voorinstellinge
 
 Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de eigenlijke aanvraag aan Media Services om de gemaakte **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer.
 
-In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/).
+In dit voorbeeld is de invoer van de taak gebaseerd\/op een HTTPS-URL ("https: /nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
-1. Selecteer in het linkerdeel venster van de Postman-app de optie code ring en analyse.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Coderen en analyseren'.
 2. Selecteer vervolgens Create or Update Job.
 3. Druk op **Verzenden**.
 
@@ -248,9 +250,9 @@ In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https:\//
         }
         ```
 
-De taak neemt enige tijd in beslag en wanneer dit het geval is, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **wordt geannuleerd** en **geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
 #### <a name="job-error-codes"></a>Foutcodes in taak
 
@@ -260,17 +262,17 @@ Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 Wanneer de coderingstaak is voltooid, gaat u in de volgende stap de video in de uitvoer**asset** beschikbaar maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
 
-Het proces voor het maken van een streaming-Locator wordt publicatie genoemd. De streaming-Locator is standaard onmiddellijk geldig nadat u de API-aanroepen hebt uitgevoerd en de laatste keer totdat deze is verwijderd, tenzij u de optionele begin-en eind tijden configureert. 
+Het proces van het maken van een streaming locator heet publiceren. De streaminglocator is standaard geldig direct nadat u de API-aanroepen hebt gedaan en duurt totdat deze is verwijderd, tenzij u de optionele begin- en eindtijden configureert. 
 
-Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u in-de-Clear-inhoud (of niet-versleuteld) streamen, zodat het vooraf gedefinieerde beleid voor clearing van gegevens Predefined_ClearStreamingOnly wordt gebruikt.
+Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voorbeeld streamt u in-the-clear (of niet-versleutelde) inhoud, zodat het vooraf gedefinieerde duidelijke streamingbeleid "Predefined_ClearStreamingOnly" wordt gebruikt.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. 
 
-Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsvermeldingen**. Het is niet mogelijk om voor elke streaming-Locator een nieuw **streaming-beleid** te maken.
+Uw Media Service-account heeft een quotum voor het aantal **inzendingen voor streamingbeleid.** U moet geen nieuw **streamingbeleid** maken voor elke streaminglocator.
 
-1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid en Locators '.
-2. Selecteer vervolgens ' een streaming-Locator maken (wissen) '.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Streamingbeleid en locators'.
+2. Selecteer vervolgens 'Een streaminglocator maken (wissen)".
 3. Druk op **Verzenden**.
 
     * De volgende **PUT**-bewerking wordt verzonden.
@@ -297,7 +299,7 @@ Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsver
 
 Nu de [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen
 
-1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid '.
+1. Selecteer in het linkervenster van de Postman-app de optie 'Streamingbeleid'.
 2. Selecteer vervolgens List Paths.
 3. Druk op **Verzenden**.
 
@@ -366,12 +368,12 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Controleer of het **streaming-eindpunt** vanwaar u wilt streamen, wordt uitgevoerd.
+> Controleer of het **streamingeindpunt** waarvan u wilt streamen, wordt uitgevoerd.
 
 In dit artikel gebruiken we Azure Media Player om de stream te testen. 
 
-1. Open een browser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
-2. Plak in de gemaakte URL in het vak **URL:** . 
+1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)navigeer naar .
+2. Plak in de gemaakte URL in het vak **URL:**. 
 3. Klik op **Update Player**.
 
 Azure Media Player kan worden gebruikt voor testdoeleinden, maar mag niet worden gebruikt in een productieomgeving. 
@@ -392,9 +394,9 @@ Voer de volgende CLI-opdracht uit:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, geef feedback, ontvang updates
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,14 +1,14 @@
 ---
-title: Implementeren naar de Azure Kubernetes-service met Jenkins en het blauw/groen-implementatie patroon
+title: Implementeren in Azure Kubernetes Service met Jenkins en het blauw/groene implementatiepatroon
 description: Leer hoe u kunt implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon.
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blauw/groen-implementatie, continue levering, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251481"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon
@@ -113,10 +113,10 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>De Kubernetes-cluster instellen via het installatiescript uit het voorbeeld
 1. Bewerk het bestand **deploy/aks/setup/setup.sh** door de volgende tijdelijke aanduidingen te vervangen door de toepasselijke waarden voor uw omgeving: 
 
-   - **&lt;your-resource-group-name>**
-   - **&lt;your-kubernetes-cluster-name>**
-   - **&lt;your-location>**
-   - **&lt;your-dns-name-suffix>**
+   - **&lt;uw-resource-groep-naam>**
+   - **&lt;uw-kubernetes-cluster-naam>**
+   - **&lt;uw locatie>**
+   - **&lt;uw-dns-naam-achtervoegsel>**
 
      ![Schermafbeelding van setup.sh-script in Bash, met een aantal tijdelijke aanduidingen gemarkeerd](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
@@ -143,7 +143,7 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Werk de DNS-naam bij voor het openbare eindpunt en de testeindpunten. Wanneer u een Kubernetes-cluster maakt, maakt u ook een [aanvullende resourcegroep](https://github.com/Azure/AKS/issues/3), met het naamgevingspatroon **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** .
+1. Werk de DNS-naam bij voor het openbare eindpunt en de testeindpunten. Wanneer u een Kubernetes-cluster maakt, maakt u ook een [aanvullende resourcegroep](https://github.com/Azure/AKS/issues/3), met het naamgevingspatroon **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>**.
 
     Zoek de openbare IP’s in de resourcegroep.
 
@@ -214,7 +214,7 @@ In deze sectie ziet u hoe u de Jenkins-server kunt voorbereiden om een build uit
     1. Selecteer **Jenkins beheren > Invoegtoepassingen beheren > Beschikbaar**.
     1. Zoek naar en installeer de invoegtoepassing Azure Container Service.
 
-1. Voeg referenties toe om resources in Azure te beheren. Als u de invoeg toepassing nog niet hebt, installeert u de **Azure Credential** -invoeg toepassing.
+1. Voeg referenties toe om resources in Azure te beheren. Als u de plug-in nog niet **Azure Credential** hebt, installeert u de Azure Credential-invoegstop.
 
 1. Voeg uw referenties voor de Azure-service-principal in als het type **Microsoft Azure-service-principal**.
 
@@ -247,7 +247,7 @@ In deze sectie ziet u hoe u de Jenkins-server kunt voorbereiden om een build uit
 ## <a name="create-the-job"></a>De taak maken
 1. Voeg een nieuwe taak toe als het type **Pijplijn**.
 
-1. Selecteer **Pijplijn** > **Definitie** > **Pijplijnscript uit SCM**.
+1. Selecteer **Pipeline** > **Definition** > **Pipeline-script van SCM**.
 
 1. Voer de URL van de SCM-opslagplaats in met &lt;uw-vertakte-opslagplaats>.
 
@@ -280,9 +280,9 @@ Wanneer u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig heb
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u problemen ondervindt met de Jenkins-invoegtoepassingen, kunt u in [Jenkins JIRA](https://issues.jenkins-ci.org/) een ticket openen voor het specifieke onderdeel.
+Als u bugs tegenkomt met de Jenkins-plug-ins, dient u een probleem op in de [Jenkins JIRA](https://issues.jenkins-ci.org/) voor de specifieke component.
 
 ## <a name="next-steps"></a>Volgende stappen
 

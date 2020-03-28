@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75421846"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Onboarding van oplossingen voor updates en het bijhouden van wijzigingen voor Azure Automation
@@ -27,13 +27,13 @@ In deze zelfstudie leert u automatisch onboarding uit te voeren van oplossingen 
 
 Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien:
 
-* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Automation-account](automation-offering-get-started.md) voor het beheren van computers.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) voor de onboarding.
 
 ## <a name="onboard-an-azure-vm"></a>Onboarding van een Azure-VM uitvoeren
 
-Er zijn meerdere manieren om computers vrij te maken, u kunt de oplossing [van een virtuele machine](automation-onboard-solutions-from-vm.md)onboarden, [van het surfen op meerdere computers](automation-onboard-solutions-from-browse.md) [vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)of per runbook. Deze zelfstudie begeleidt u bij het inschakelen van Updatebeheer via een runbook. Voor het uitvoeren van onboarding van Azure-VM's op grote schaal moet onboarding van een bestaande VM worden uitgevoerd met de oplossing Wijzigingen bijhouden of Updatebeheer. In deze stap voert u onboarding van een virtuele machine met Updatebeheer en Wijzigingen bijhouden uit.
+Er zijn meerdere manieren om onboarding van computers uit te voeren. U kunt onboarding van de oplossing uitvoeren [vanaf een virtuele machine](automation-onboard-solutions-from-vm.md), [door meerdere computers te doorzoeken, ](automation-onboard-solutions-from-browse.md) [via uw Automation-account](automation-onboard-solutions-from-automation-account.md) of via een runbook. Deze zelfstudie begeleidt u bij het inschakelen van Updatebeheer via een runbook. Voor het uitvoeren van onboarding van Azure-VM's op grote schaal moet onboarding van een bestaande VM worden uitgevoerd met de oplossing Wijzigingen bijhouden of Updatebeheer. In deze stap voert u onboarding van een virtuele machine met Updatebeheer en Wijzigingen bijhouden uit.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
@@ -77,7 +77,7 @@ Nu de oplossingen zijn ingeschakeld, kunt u een Azure-VM toevoegen voor de onboa
    ![Update-oplossing voor de virtuele machine inschakelen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Als u niet wacht totdat de andere oplossing is voltooid, wordt u bij het inschakelen van de volgende oplossing een bericht ontvangen: de *installatie van een andere oplossing wordt uitgevoerd op deze of een andere virtuele machine. Wanneer deze installatie is voltooid, wordt de knop inschakelen ingeschakeld en kunt u de installatie van de oplossing op deze virtuele machine aanvragen.*
+> Als u niet wacht tot de andere oplossing is voltooid, ontvangt u bij Het inschakelen van de volgende oplossing een bericht met de tekst: *Installatie van een andere oplossing is aan de gang op deze of een andere virtuele machine. Wanneer die installatie is voltooid, is de knop Inschakelen ingeschakeld en u de installatie van de oplossing op deze virtuele machine aanvragen.*
 
 ## <a name="install-and-update-modules"></a>Modules installeren en bijwerken
 
@@ -129,10 +129,10 @@ U moet onboarding van de oplossing Wijzigingen bijhouden of Updatebeheer voor ee
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Een virtuele machine verwijderen uit Updatebeheer:
+Ga als lid van het werk als u een vm verwijdert uit Updatebeheer:
 
-* Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen zoek opdracht voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates`. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
-* Verwijder [micro soft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [log Analytics-agent voor Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Verwijder de VM in uw werkruimte Log Analytics uit `MicrosoftDefaultScopeConfig-Updates`de opgeslagen zoekopdracht naar de scopeconfiguratie. Opgeslagen zoekopdrachten zijn te vinden onder **Algemeen** in uw werkruimte.
+* Verwijder de [Microsoft Monitoring-agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [loganalyse-agent voor Linux.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

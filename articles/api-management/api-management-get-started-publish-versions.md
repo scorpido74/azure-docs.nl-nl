@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176830"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Meerdere versies van uw API publiceren 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
++ Leer de [terminologie van Azure API Management](api-management-terminology.md).
 + Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 + Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
@@ -45,7 +45,7 @@ In deze zelfstudie leert u het volgende:
 ![Contextmenu van API - versie toevoegen](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. Selecteer **Demo Conference API** in de lijst met API's.
-2. Selecteer het contextmenu ( **...** ) ernaast.
+2. Selecteer het contextmenu (**... **) ernaast.
 3. Selecteer **+ Versie toevoegen**.
 
 > [!TIP]
@@ -89,13 +89,13 @@ Als aanroepers de nieuwe versie willen zien, moet deze worden toegevoegd aan een
 3. Selecteer **API's**.
 4. Selecteer **Toevoegen**.
 5. Selecteer **Demo Conference API, versie v1**.
-6. Klik op **Selecteren**.
+6. Klik **op Selecteren**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Blader door de portal voor ontwikkelaars om de versie te zien
 
 1. Selecteer **ontwikkelaarsportal** in het menu bovenaan.
-2. Selecteer **api's** en klik op de **demo conferentie-API**.
-3. U ziet een vervolg keuzelijst met meerdere versies naast de naam van de API.
+2. Selecteer **API's** en klik op de **Demo Conference API**.
+3. U ziet een vervolgkeuzelijst met meerdere versies naast de API-naam.
 4. Selecteer **v1**.
 5. U ziet de **Verzoek-URL** van de eerste bewerking in de lijst. Het laat zien dat het API URL-pad **v1** bevat.
 

@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67175966"
 ---
 Voordat u items gaat maken, gaan we het concept bereik bekijken. Azure biedt vier niveaus van beheer: beheergroepen, abonnement, resourcegroep en resources. [Beheergroepen](../articles/billing/billing-enterprise-mgmt-group-overview.md) zijn in een preview-versie. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
 
-![Scope](./media/resource-manager-governance-scope/scope-levels.png)
+![Bereik](./media/resource-manager-governance-scope/scope-levels.png)
 
 U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u een instelling toepast op het abonnement, wordt die instelling toegepast op alle resourcegroepen en resources in uw abonnement. Wanneer u een instelling toepast op de resourcegroep, wordt die instelling toegepast op de resourcegroep en alle resources daarvan. Een andere resourcegroep heeft die instelling echter niet.
 

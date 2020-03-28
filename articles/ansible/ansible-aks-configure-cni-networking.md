@@ -1,28 +1,28 @@
 ---
-title: 'Zelf studie: Azure CNI-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het configureren van kubenet-netwerken in azure Kubernetes service (AKS)-cluster
-keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes
+title: Zelfstudie - Azure CNI-netwerken configureren in Azure Kubernetes Service (AKS) met Ansible
+description: Meer informatie over het gebruik van Ansible om kubenet-netwerken te configureren in het AKS-cluster (Azure Kubernetes Service)
+keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, container, aks, kubernetes
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156910"
 ---
-# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: Azure CNI-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible
+# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelfstudie: Azure CNI-netwerken configureren in Azure Kubernetes Service (AKS) met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Met AKS kunt u een cluster implementeren met behulp van de volgende netwerk modellen:
+Met AKS u een cluster implementeren met behulp van de volgende netwerkmodellen:
 
-- [Kubenet-netwerken](/azure/aks/configure-kubenet) : netwerk bronnen worden doorgaans gemaakt en geconfigureerd als het AKS-cluster wordt geïmplementeerd.
-- [Azure cni Networking](/azure/aks/configure-azure-cni) -AKS-cluster is verbonden met bestaande bronnen en configuraties van virtuele netwerken (VNET).
+- [Kubenet-netwerken](/azure/aks/configure-kubenet) - Netwerkbronnen worden meestal gemaakt en geconfigureerd wanneer het AKS-cluster wordt geïmplementeerd.
+- [Azure CNI-netwerken](/azure/aks/configure-azure-cni) - AKS-cluster is verbonden met bestaande VNET-bronnen en -configuraties (Virtual Network).
 
-Zie [Network concepten for Applications in AKS](/azure/aks/concepts-network)(Engelstalig) voor meer informatie over netwerken voor uw toepassingen in AKS.
+Zie [Netwerkconcepten voor toepassingen in AKS voor](/azure/aks/concepts-network)meer informatie over netwerken met uw toepassingen in AKS.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -39,10 +39,10 @@ Zie [Network concepten for Applications in AKS](/azure/aks/concepts-network)(Eng
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Een virtueel netwerk en een subnet maken
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
 - Een virtueel netwerk maken
-- Een subnet binnen het virtuele netwerk maken
+- Een subnet maken binnen het virtuele netwerk
 
 Sla het volgende playbook op als `vnet.yml`:
 
@@ -65,9 +65,9 @@ Sla het volgende playbook op als `vnet.yml`:
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- Maak een AKS-cluster in een virtueel netwerk.
+- Maak een AKS-cluster binnen een virtueel netwerk.
 
 Sla het volgende playbook op als `aks.yml`:
 
@@ -102,21 +102,21 @@ Sla het volgende playbook op als `aks.yml`:
   register: aks
 ```
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- Gebruik de module `azure_rm_aks_version` om de ondersteunde versie te vinden.
+- Gebruik `azure_rm_aks_version` de module om de ondersteunde versie te vinden.
 - Het `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
-- De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
-- De waarden `client_id` en `client_secret` worden geladen vanuit `~/.azure/credentials`, het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
+- Het draaiboek `ssh_key` `~/.ssh/id_rsa.pub`laadt van . Als u het wijzigt, gebruikt u de single-line indeling - te beginnen met "ssh-rsa" (zonder de aanhalingstekens).
+- De `client_id` `client_secret` waarden en waarden `~/.azure/credentials`worden geladen uit , dat is de standaard referentiebestand. U deze waarden instellen op uw serviceprincipal of deze waarden laden vanuit omgevingsvariabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>Het voorbeeldvan het voorbeelddraaiboek uitvoeren
 
-De voor beeld-Playbook-code in deze sectie wordt gebruikt om verschillende functies te testen die in deze zelf studie worden weer gegeven.
+De voorbeeld playbook code in deze sectie wordt gebruikt om verschillende functies te testen die tijdens deze zelfstudie worden weergegeven.
 
 Sla het volgende playbook op als `aks-azure-cni.yml`:
 
@@ -146,19 +146,19 @@ Sla het volgende playbook op als `aks-azure-cni.yml`:
            var: aks
 ```
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- Wijzig de `aksansibletest` waarde in de naam van de resource groep.
-- Wijzig de `aksansibletest` waarde in de naam van uw AKS.
-- Wijzig de `eastus` waarde in de locatie van de resource groep.
+- Wijzig `aksansibletest` de waarde in de naam van uw resourcegroep.
+- Wijzig `aksansibletest` de waarde in uw AKS-naam.
+- Wijzig `eastus` de waarde in de locatie van uw resourcegroep.
 
-Voer de Playbook uit met behulp van de ansible-Playbook opdracht:
+Voer het draaiboek uit met de opdracht ansible-playbook:
 
 ```bash
 ansible-playbook aks-azure-cni.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -244,11 +244,11 @@ localhost                  : ok=9    changed=4    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- Verwijder een resource groep waarnaar wordt verwezen in de sectie `vars`.
+- Een brongroep verwijderen waarnaar in de `vars` sectie wordt verwezen.
 
 Sla het volgende playbook op als `cleanup.yml`:
 
@@ -265,12 +265,12 @@ Sla het volgende playbook op als `cleanup.yml`:
             force: yes
 ```
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- Vervang de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
-- Alle resources in de opgegeven resource groep worden verwijderd.
+- Vervang `{{ resource_group_name }}` de tijdelijke aanduiding door de naam van uw resourcegroep.
+- Alle bronnen binnen de opgegeven resourcegroep worden verwijderd.
 
-Voer de Playbook uit met behulp van de ansible-Playbook opdracht:
+Voer het draaiboek uit met de opdracht ansible-playbook:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -279,4 +279,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: Azure Active Directory configureren in AKS met behulp van Ansible](./ansible-aks-configure-rbac.md)
+> [Zelfstudie: Azure Active Directory configureren in AKS met Ansible](./ansible-aks-configure-rbac.md)

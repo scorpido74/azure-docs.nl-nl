@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het ophalen van door Voer (RU/s) voor het Azure Cosmos DB van Cassandra-API resources
-description: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Cassandra-API ophalen
+title: PowerShell-script om doorvoer (RU/s) te krijgen voor Azure Cosmos DB Cassandra API-bronnen
+description: Azure PowerShell-script - Azure Cosmos DB Get Throughput (RU/s) voor Cassandra API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9386b95bbc2a3bfd3e3ea362488fcfcdd0a98299
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f1cae958fce1de000ee4349a2fe8229d69f1a0ae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441573"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366176"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Een door Voer (RU/s) voor een spatie of tabel voor Azure Cosmos DB-Cassandra-API ophalen
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Ontvang doorvoer (RU/s) voor een sleutelruimte of tabel voor Azure Cosmos DB - Cassandra API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBCassandraKeyspaceThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Krijgt de doorvoerwaarde van de opgegeven Cassandra API Keyspace. |
+| [Get-azcosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven Cassandra API-tabel. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

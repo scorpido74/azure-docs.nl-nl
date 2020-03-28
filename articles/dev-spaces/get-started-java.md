@@ -1,21 +1,21 @@
 ---
-title: 'Maak een Kubernetes dev-ruimte: Visual Studio code & Java'
+title: 'Een Kubernetes-dev-ruimte maken: Visual Studio Code & Java'
 services: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een Java-toepassing te herhalen in azure Kubernetes service
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio Code gebruiken om een Java-toepassing op Azure Kubernetes Service te debuggen en snel te herhalen
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d4e335826090d4ca4819c7466c7231cceb0d5bce
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252449"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240542"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en Java met Azure dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Een Kubernetes-dev-ruimte maken: Visual Studio Code en Java met Azure Dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -24,9 +24,9 @@ In deze handleiding leert u het volgende:
 - Uw code op een productieve manier ontwikkelen en testen in een teamomgeving.
 
 > [!Note]
-> Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
+> Als u op enig moment **vast komt te zitten,** raadpleegt u de sectie [Probleemoplossing.](troubleshooting.md)
 
-## <a name="install-the-azure-cli"></a>Azure CLI installeren
+## <a name="install-the-azure-cli"></a>Azure-CLI installeren
 Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
@@ -37,7 +37,7 @@ az login
 ```
 
 > [!Note]
-> Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+> Als u geen Azure-abonnement hebt, u een [gratis account](https://azure.microsoft.com/free)maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
 U kunt uw abonnementen bekijken door het volgende uit te voeren: 
@@ -46,7 +46,7 @@ U kunt uw abonnementen bekijken door het volgende uit te voeren:
 az account list --output table
 ```
 
-Zoek het abonnement met de *waarde True* voor *IsDefault*.
+Zoek het abonnement met *True* voor *IsDefault*.
 Als dit niet het abonnement is dat u wilt gebruiken, kunt u het standaardabonnement wijzigen:
 
 ```azurecli
@@ -55,7 +55,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Een Kubernetes-cluster maken dat is ingeschakeld voor Azure Dev Spaces
 
-Maak vanaf de opdracht prompt de resource groep in een [regio die ondersteuning biedt voor Azure dev Spaces][supported-regions].
+Maak bij de opdrachtprompt de resourcegroep in een [regio die Azure Dev Spaces ondersteunt.][supported-regions]
 
 ```azurecli
 az group create --name MyResourceGroup --location <region>
@@ -93,7 +93,7 @@ Om in Java-toepassingen fouten te kunnen opsporen met Azure Dev Spaces, download
 In deze sectie maakt u een Java-webtoepassing en gaat u deze uitvoeren in een container in Kubernetes.
 
 ### <a name="create-a-java-web-app"></a>Een Java-web-app maken
-Down load code van GitHub door naar [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) te navigeren en **kloon of down load** te selecteren om de GitHub-opslag plaats naar uw lokale omgeving te downloaden. De code voor deze handleiding bevindt zich in `samples/java/getting-started/webfrontend`.
+Download code van GitHub [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) door te navigeren naar en selecteer **Clone of Download** om de GitHub-repository naar uw lokale omgeving te downloaden. De code voor deze handleiding bevindt zich in `samples/java/getting-started/webfrontend`.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Code voorbereiden voor de ontwikkeling van Docker en Kubernetes
 U hebt nu een eenvoudige web-app die lokaal kan worden uitgevoerd. U gaat hier nu een container van maken door assets te maken waarmee de container van de app wordt gedefinieerd evenals hoe deze in Kubernetes wordt geïmplementeerd. Deze taak kan eenvoudig worden uitgevoerd met Azure Dev Spaces: 
@@ -111,11 +111,11 @@ Met de opdracht `azds prep` van Azure-CLI worden Docker- en Kubernetes-assets me
 * Met een [Helm-grafiek](https://docs.helm.sh) die zich onder `./charts/webfrontend` bevindt, wordt beschreven hoe de container in Kubernetes moet worden geïmplementeerd.
 
 > [!TIP]
-> De [Dockerfile-en helm-grafiek](how-dev-spaces-works.md#prepare-your-code) voor uw project wordt gebruikt door Azure dev Spaces om uw code te bouwen en uit te voeren, maar u kunt deze bestanden aanpassen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
+> De [dockerfile- en helmdiagram](how-dev-spaces-works-prep.md#prepare-your-code) voor uw project wordt gebruikt door Azure Dev Spaces om uw code te bouwen en uit te voeren, maar u deze bestanden wijzigen als u de manier waarop het project wordt gebouwd en uitgevoerd wilt wijzigen.
 
 Op dit moment is het nog niet nodig om de volledige inhoud van deze bestanden te begrijpen. Wat u wel moet weten is dat **de dezelfde assets voor 'configuratie als code' in Docker en Kubernetes kunnen worden gebruikt van ontwikkeling tot productie, waardoor er meer consistentie tussen de verschillende omgevingen bestaat.**
  
-Er wordt met de opdracht `./azds.yaml` ook een bestand met de naam `prep` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
+Er wordt met de opdracht `prep` ook een bestand met de naam `./azds.yaml` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Code schrijven en uitvoeren in Kubernetes
 We gaan onze code uitvoeren! In het terminalvenster voert u deze opdracht uit vanuit de **hoofdcodemap**, webfrontend:
@@ -143,18 +143,18 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Bepaal de open bare URL voor de service in de uitvoer van de `up` opdracht. Het eindigt op `.azds.io`. In het bovenstaande voor beeld is de open bare URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Identificeer de openbare URL voor de `up` service in de uitvoer van de opdracht. Het eindigt `.azds.io`in. In het bovenstaande voorbeeld is `http://webfrontend.1234567890abcdef1234.eus.azds.io/`de openbare URL .
 
-Open de open bare URL in een browser om uw web-app te bekijken. U ziet ook `stdout` en `stderr` uitvoer wordt gestreamd naar het Terminal venster *azds Trace* tijdens de interactie met uw web-app. U ziet ook de tracerings gegevens voor HTTP-aanvragen wanneer ze het systeem door lopen. Dit maakt het eenvoudiger voor u om complexe multi-service aanroepen tijdens de ontwikkeling bij te houden. De instrumentatie die wordt toegevoegd door dev Spaces biedt deze aanvraag tracering.
+Als u uw web-app wilt zien, opent u de openbare URL in een browser. Ook wordt `stdout` `stderr` kennisgeving en uitvoer gestreamd naar het *azds trace* terminal-venster terwijl u interactie hebt met uw web-app. U ziet ook trackinginformatie voor HTTP-verzoeken terwijl ze door het systeem gaan. Dit maakt het makkelijker voor u om complexe multi-service gesprekken te volgen tijdens de ontwikkeling. De instrumentatie toegevoegd door Dev Spaces biedt deze aanvraag tracking.
 
 > [!Note]
-> Naast de open bare URL kunt u de alternatieve `http://localhost:<portnumber>` URL gebruiken die wordt weer gegeven in de console-uitvoer. Als u de localhost-URL gebruikt, lijkt het misschien alsof de container lokaal wordt uitgevoerd, maar wordt deze feitelijk uitgevoerd in AKS. Azure dev Spaces maakt gebruik van de Kubernetes *-Poort-Forward-* functionaliteit om de localhost-poort toe te wijzen aan de container die in AKS wordt uitgevoerd. Dit vereenvoudigt het communiceren met de service vanaf uw lokale computer.
+> Naast de openbare URL u `http://localhost:<portnumber>` de alternatieve URL gebruiken die wordt weergegeven in de console-uitvoer. Als u de localhost-URL gebruikt, lijkt het misschien alsof de container lokaal wordt uitgevoerd, maar wordt deze feitelijk uitgevoerd in AKS. Azure Dev Spaces maakt gebruik van Kubernetes *port-forward-functionaliteit* om de localhost-poort in kaart te brengen naar de container die in AKS wordt uitgevoerd. Dit vergemakkelijkt de interactie met de service van uw lokale machine.
 
 ### <a name="update-a-content-file"></a>Een inhoudsbestand bijwerken
 Azure Dev Spaces draait niet alleen om het ophalen van code die wordt uitgevoerd in Kubernetes. Het gaat er om dat u de codewijzigingen snel en iteratief toegepast kunt zien in een Kubernetes-omgeving in de cloud.
 
 1. Druk in het terminalvenster op `Ctrl+C` (om `azds up` te stoppen).
-1. Open `src/main/java/com/ms/sample/webfrontend/Application.java`en bewerk het begroetings bericht op [regel 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+1. Open `src/main/java/com/ms/sample/webfrontend/Application.java`en bewerk het begroetingsbericht op [regel 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
 
     ```java
     return "Hello from webfrontend in Azure!";
@@ -192,7 +192,7 @@ Hiermee wordt de foutopsporingsconfiguratie voor Azure Dev Spaces toegevoegd ond
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Als u geen Azure Dev Spaces-opdrachten ziet in het Opdrachtenpalet, controleert u of u de VS Code-extensie hebt geïnstalleerd voor Azure Dev Spaces. Zorg ervoor dat de werk ruimte die u in VS code hebt geopend, de map is die `azds.yaml`bevat.
+> Als u geen Azure Dev Spaces-opdrachten ziet in het Opdrachtenpalet, controleert u of u de VS Code-extensie hebt geïnstalleerd voor Azure Dev Spaces. Zorg ervoor dat de werkruimte die u `azds.yaml`in VS-code hebt geopend, de map is die bevat.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Fouten opsporen in de container in Kubernetes
 Druk op **F5** om fouten in uw code op te sporen in Kubernetes.
@@ -200,7 +200,7 @@ Druk op **F5** om fouten in uw code op te sporen in Kubernetes.
 Net als bij de opdracht `up` wordt code gesynchroniseerd met de ontwikkelomgeving en wordt een container gemaakt en geïmplementeerd in Kubernetes. Op dit moment is het foutopsporingsprogramma uiteraard gekoppeld aan de externe container.
 
 > [!Tip]
-> De status balk VS-code wordt oranje ingeschakeld, wat aangeeft dat het fout opsporingsprogramma is gekoppeld. Er wordt ook een klikbare URL weer gegeven, die u kunt gebruiken om uw toepassing te openen.
+> De statusbalk VS-code wordt oranje, wat aangeeft dat de foutopsporing is gekoppeld. Het zal ook een klikbare URL weergeven, die u gebruiken om uw toepassing te openen.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -218,7 +218,7 @@ public String greeting()
 }
 ```
 
-Sla het bestand op en klik in het **deel venster acties voor fout opsporing**op de knop **opnieuw opstarten** .
+Sla het bestand op en klik in het **deelvenster Foutopsporingsacties**op de knop **Opnieuw starten.**
 
 ![](media/common/debug-action-refresh.png)
 
@@ -226,7 +226,7 @@ In plaats van telkens als codewijzigingen zijn aangebracht een nieuwe containeri
 
 Vernieuw de web-app in de browser. U ziet dat uw aangepaste bericht wordt weergegeven in de gebruikersinterface.
 
-**U hebt nu een methode voor het snel doorvoeren van code en foutopsporing rechtstreeks in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
+**U beschikt nu over een methode om code snel te ontwikkelen en foutopsporing rechtstreeks uit te voeren in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

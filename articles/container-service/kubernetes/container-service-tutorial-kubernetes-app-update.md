@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274133"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(VEROUDERD) Een toepassing bijwerken in Kubernetes
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een toepassing bijwerken in azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Zie [Zelfstudie: Een toepassing bijwerken in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md)voor de bijgewerkte versie die deze zelfstudie gebruikt voor Azure Kubernetes Service.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -81,19 +81,19 @@ Blader naar `http://localhost:8080` om de bijgewerkte app weer te geven.
 
 Tag de `azure-vote-front`-installatiekopie met de aanmeldingserver van het containerregister. 
 
-Haal de naam van de aanmeldingsserver op met de opdracht [az acr list](/cli/azure/acr#az-acr-list).
+Download de naam van de loginserver met de opdracht [az acr list.](/cli/azure/acr#az-acr-list)
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
+Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry.
+Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -124,7 +124,7 @@ Als er niet meerdere schillen zijn waarin de installatiekopie azure-vote-front w
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Gebruik de opdracht [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) om de toepassing bij te werken. Werk `<acrLoginServer>` bij met de aanmeldingsserver of hostnaam van uw containerregister.
+Gebruik de opdracht [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) om de toepassing bij te werken. Werk `<acrLoginServer>` bij met de aanmeldingserver of hostnaam van uw containerregister.
 
 ```bash
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
@@ -168,7 +168,7 @@ In deze zelfstudie hebt u een toepassing bijgewerkt en deze update geïmplemente
 > * De containerinstallatiekopie is gepusht naar Azure Container Registry
 > * De bijgewerkte toepassing is geïmplementeerd
 
-Ga naar de volgende zelfstudie om te leren hoe u Kubernetes bewaakt met Log Analytics.
+Ga naar de volgende zelfstudie om te leren hoe u Kubernetes controleert met Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Kubernetes bewaken met Log Analystics](./container-service-tutorial-kubernetes-monitor.md)

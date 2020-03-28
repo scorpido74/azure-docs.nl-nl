@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: een virtuele machine in een Lab stoppen en verwijderen'
-description: Dit artikel bevat een Azure CLI-script waarmee u een virtuele machine in een lab in Azure DevTest Labs stopt en verwijdert.
+title: Azure CLI - Een virtuele machine in een lab stoppen en verwijderen
+description: In dit artikel wordt een Azure CLI-script bevat dat een virtuele machine in een lab in Azure DevTest Labs stopt en verwijdert.
 services: lab-services
 author: spelluru
 manager: ''
@@ -15,10 +15,10 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: c4f315593da270155998c3c5bba8def2778f0d41
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76760438"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI gebruiken om een virtuele machine in een lab te stoppen en te verwijderen in Azure DevTest Labs
@@ -45,6 +45,6 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Er zijn extra voorbeelden van Azure Lab Services CLI-scripts te vinden in de [voorbeelden van Azure Lab Services CLI](../samples-cli.md).

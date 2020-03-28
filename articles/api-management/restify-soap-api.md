@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108097"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Een SOAP-API importeren en deze converteren naar REST
@@ -32,11 +32,11 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Een back-end-API importeren en publiceren
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
 1. Selecteer **API's** bij **API MANAGEMENT**.
 2. Selecteer **WSDL** uit de lijst **Nieuwe API toevoegen**.
@@ -61,7 +61,7 @@ Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-start
     * **Onbeperkt**   
 10. Selecteer **Maken**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 

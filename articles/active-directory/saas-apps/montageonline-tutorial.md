@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie met online-montage Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en montage online.
+title: 'Zelfstudie: Azure Active Directory-integratie met Montage Online | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Montage Online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 89713d99b9a6d5f8b56d57c9cf6f184142510420
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160504"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Zelf studie: integratie met online Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Zelfstudie: Azure Active Directory-integratie met Montage Online
 
-In deze zelf studie leert u hoe u on-line montage kunt integreren met Azure Active Directory (Azure AD).
-Het online integreren van montage met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Montage Online integreert met Azure Active Directory (Azure AD).
+Het integreren van Montage Online met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die online toegang tot de montage heeft.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor montage online (eenmalige aanmelding) met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Montage Online.
+* U uw gebruikers automatisch laten aanmelden bij Montage Online (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met montage online wilt configureren, hebt u de volgende items nodig:
+Als u azure AD-integratie wilt configureren met Montage Online, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement online eenmalige aanmelding voor montage ingeschakeld
+* Abonnement met één aanmelding voor Montage Online
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Montage online ondersteunt door **SP** GEÏNITIEERDe SSO
+* Montage Online ondersteunt **SP** geïnitieerde SSO
 
 ## <a name="adding-montage-online-from-the-gallery"></a>Montage online toevoegen vanuit de galerie
 
-Als u de integratie van montage online wilt configureren in azure AD, moet u de online montage vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Montage Online in Azure AD wilt configureren, moet u Montage Online vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om montage online toe te voegen vanuit de galerie:**
+**Als u Montage Online vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Als u de integratie van montage online wilt configureren in azure AD, moet u de 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **montage online**in het zoekvak, selecteer **online montage** vanuit het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Selecteer In het zoekvak **Montage Online**, selecteer **Montage Online** uit het resultaatpaneel en klik op Knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Online montage in de lijst met resultaten](common/search-new-app.png)
+     ![Montage Online in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met montage online op basis van een test gebruiker met de naam **Julia Simon**.
-Voor de werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in montage online tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Montage Online op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Montage Online.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met montage online, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Montage Online, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. De **[eenmalige aanmelding voor de montage online configureren](#configure-montage-online-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een online test gebruiker](#create-montage-online-test-user)** voor de montage van een koppeling van Julia Simon in montage online die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Montage Online Single Sign-On configureren](#configure-montage-online-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak de testgebruiker montage online](#create-montage-online-test-user)** - om een tegenhanger van Britta Simon in Montage Online te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met montage online te configureren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende stappen uit te voeren voor het configureren van Azure AD- AD-aanmelding met Montage Online:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **montage online** -toepassings integratie de optie **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Montage Online-toepassingsintegratie** de optie Eén **aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,28 +103,28 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met montage o
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Gegevens over eenmalige aanmelding voor online montage van domein en Url's](common/sp-identifier.png)
+    ![Informatie over het monteren van online domein en URL's met eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon:
 
     Voor de productieomgeving: `https://<subdomain>.montageonline.co.nz/`
 
-    Voor test omgeving: `https://build-<subdomain>.montageonline.co.nz/`
+    Voor testomgeving:`https://build-<subdomain>.montageonline.co.nz/`
 
-    b. Typ een URL in het tekstvak **id** :
+    b. Typ een URL in het tekstvak **Identifier:**
 
     Voor de productieomgeving: `MOL_Azure`
 
-    Voor test omgeving: `MOL_Azure_Build`
+    Voor testomgeving:`MOL_Azure_Build`
 
     > [!NOTE] 
-    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team voor on-line clients](https://www.montage.co.nz/contact-us/) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [montage online client ondersteuningsteam](https://www.montage.co.nz/contact-us/) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer op de sectie **montage online instellen** de gewenste URL ('s) volgens uw vereiste.
+6. Kopieer in de sectie **Montage Online instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -134,9 +134,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met montage o
 
     c. Afmeldings-URL
 
-### <a name="configure-montage-online-single-sign-on"></a>Eenmalige aanmelding voor de montage online configureren
+### <a name="configure-montage-online-single-sign-on"></a>Montage Online-aanmelding configureren
 
-Als u eenmalige aanmelding wilt configureren voor de **on-montage-online** zijde, moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar het [online ondersteunings team voor montage](https://www.montage.co.nz/contact-us/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant **van Montage Online,** moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Montage Online](https://www.montage.co.nz/contact-us/)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -154,28 +154,28 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de online-montage.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Montage Online.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **montage online**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Montage Online**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen **online montage**.
+2. Selecteer **Montage Online**in de lijst met toepassingen .
 
-    ![De koppeling Online koppelen in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Montage Online in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -183,27 +183,27 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-montage-online-test-user"></a>Online-montage gebruiker maken
+### <a name="create-montage-online-test-user"></a>Testgebruiker Montage Online maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in montage online. Werk samen met het koppelings- [online ondersteunings team](https://www.montage.co.nz/contact-us/) om de gebruikers toe te voegen in het online montage-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Montage Online. Werk samen met [montage online support team](https://www.montage.co.nz/contact-us/) om de gebruikers toe te voegen in de Montage Online platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel online montage in het toegangs venster klikt, moet u automatisch worden aangemeld bij de montage online waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Montage Online in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Montage Online waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
