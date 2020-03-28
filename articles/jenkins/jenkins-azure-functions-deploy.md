@@ -1,24 +1,24 @@
 ---
-title: Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
-description: Meer informatie over het implementeren van Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
+title: Implementeren in Azure-functies met de invoegtoepassing Jenkins Azure Functions
+description: Meer informatie over het implementeren naar Azure-functies met de invoegtoepassing Jenkins Azure Functions
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78250909"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Implementeren in Azure-functies met de invoegtoepassing Jenkins Azure Functions
 
-[Azure Functions](/azure/azure-functions/) is een ‘serverloze’ rekenservice. Met Azure Functions kunt u op aanvraag code uitvoeren zonder infrastructuur te hoeven inrichten of beheren. In deze zelf studie ziet u hoe u een Java-functie implementeert om Azure Functions met behulp van de Azure Functions-invoeg toepassing.
+[Azure Functions](/azure/azure-functions/) is een ‘serverloze’ rekenservice. Met Azure Functions kunt u op aanvraag code uitvoeren zonder infrastructuur te hoeven inrichten of beheren. In deze zelfstudie ziet u hoe u een Java-functie implementeert naar Azure-functies met de invoegtoepassing Azure-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
-- **Jenkins-server**: als u nog geen Jenkins-server hebt geïnstalleerd, raadpleegt u het artikel [een Jenkins-server maken in azure](./install-jenkins-solution-template.md).
+- **Jenkins-server**: Als u geen Jenkins-server hebt geïnstalleerd, raadpleegt u het [artikel, Een Jenkins-server maken op Azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
   > De voor dit artikel gebruikte broncode bevindt zich in de [opslagplaats Visual Studio China van GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
@@ -29,7 +29,7 @@ Als u een Java-functie wilt maken met de Java-runtimestack, kunt u de [Azure-por
 
 In de volgende stappen kunt u zien hoe u een Java-functie maakt met de Azure CLI:
 
-1. Maak een resourcegroep, vervang de tijdelijke aanduiding **&lt;resource_group>** door de naam van uw resourcegroep.
+1. Maak een resourcegroep en ** &lt;** vervang de resource_group>tijdelijke aanduiding door de naam van uw resourcegroep.
 
     ```azurecli
     az group create --name <resource_group> --location eastus
@@ -72,16 +72,16 @@ In de volgende stappen wordt uitgelegd hoe de Jenkins-server wordt voorbereid:
 
 1. Installeer de volgende invoegtoepassingen in het Jenkins-dashboard:
 
-    - Azure Functions-invoeg toepassing
-    - EnvInject-invoeg toepassing
+    - Plug-in azure-functies
+    - EnvInject Plug-in
 
 1. Voor Jenkins is een Azure-service-principal vereist voor het verifiëren en openen van Azure-resources. Zie [Deploy to Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) (Implementeren in Azure App Service) voor stapsgewijze instructies.
 
 1. Voeg met behulp van de Azure-service-principal een Microsoft Azure-service-principal-referentietype aan Jenkins toe. Zie de zelfstudie [Deploy to Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) (Implementeren in Azure App Service).
 
-## <a name="fork-the-sample-github-repo"></a>Splits het voor beeld GitHub opslag plaats
+## <a name="fork-the-sample-github-repo"></a>Vork het monster GitHub repo
 
-1. [Meld u aan bij de GitHub-opslag plaats voor de voor beeld-app voor oneven of nog eens](https://github.com/VSChina/odd-or-even-function.git).
+1. [Meld u aan bij de GitHub repo voor de oneven of zelfs voorbeeld-app.](https://github.com/VSChina/odd-or-even-function.git)
 
 1. Kies **Fork** in de rechterbovenhoek in GitHub.
 
@@ -105,7 +105,7 @@ In deze sectie maakt u de [Jenkins-pijplijn](https://jenkins.io/doc/book/pipelin
     
 1. Selecteer in de sectie **Pipeline->Definition** de optie **Pipeline script from SCM**.
 
-1. Voer de URL en het scriptpad (doc/resources/Jenkins/JenkinsFile) van uw GitHub Fork in om te gebruiken in het [JenkinsFile-voor beeld](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Voer het URL- en scriptpad van uw GitHub-vork ('doc/resources/jenkins/JenkinsFile') in om te gebruiken in het [voorbeeld JenkinsFile.](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)
 
    ```
    node {
@@ -133,7 +133,7 @@ U kunt nu de Jenkins-taak uitvoeren.
 
 1. Haal eerst de autorisatiesleutel op via de instructies in het artikel [HTTP-triggers en -bindingen in Azure Functions](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys).
 
-1. Voer in de browser de URL naar de app in. Vervang de tijdelijke aanduidingen door de desbetreffende waarden en geef een numerieke waarde op voor **&lt;input_number>** als invoer voor de Java-functie.
+1. Voer in de browser de URL naar de app in. Vervang de tijdelijke aanduidingen door de juiste ** &lt;** waarden en geef een numerieke waarde op voor input_number>als invoer voor de javafunctie.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>
@@ -156,4 +156,4 @@ az group delete -y --no-wait -n <resource_group>
 
 Zie de volgende resource voor meer informatie Azure Functions:
 > [!div class="nextstepaction"]
-> [Documentatie van Azure Functions](/azure/azure-functions/)
+> [Documentatie voor Azure Functions](/azure/azure-functions/)

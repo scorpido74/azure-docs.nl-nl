@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het weer geven en ophalen van bewerkingen in de API van Azure Cosmos DB voor MongoDB
-description: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor MongoDB-API
+title: PowerShell-script om bewerkingen in Azure Cosmos DB's API voor MongoDB op te nemen en te krijgen
+description: Azure PowerShell-script - Azure Cosmos DB-lijst en bewerkingen voor MongoDB API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365900"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Data bases en grafieken voor Azure Cosmos DB-MongoDB-API weer geven en ophalen
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Databases en grafieken voor Azure Cosmos DB - MongoDB API aanbieden en opvragen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Hiermee worden Cosmos DB-accounts vermeld of wordt een opgegeven Cosmos DB-account weergegeven. |
+| [Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Hiermee worden Cosmos DB MongoDB API-databases in een account vermeld of wordt een opgegeven Cosmos DB MogoDB API-database in een account weergegeven. |
+| [Get-AzCosmosDBMongoDBCollectie](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Hiermee worden Cosmos DB MongoDB API-verzamelingen weergegeven of wordt een opgegeven Cosmos DB MongoDB-API-verzameling in een database weergegeven |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

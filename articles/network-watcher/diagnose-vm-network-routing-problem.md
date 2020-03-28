@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een probleem met een VM-netwerk routering vaststellen-Azure Portal'
+title: 'Zelfstudie: Een probleem met de routering van een VM-netwerk diagnosticeren - Azure-portal'
 titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u met behulp van de functie Volgende hop van Azure Network Watcher een diagnose uitvoert voor een probleem met de routering in een netwerk van virtuele machines.
 services: network-watcher
@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76845218"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Zelfstudie: Diagnose van een routeringsprobleem in een netwerk van virtuele machines met behulp van Azure Portal
@@ -29,24 +29,24 @@ ms.locfileid: "76845218"
 Wanneer u een virtuele machine (VM) implementeert, maakt Azure verschillende standaardroutes voor de VM. U kunt uw eigen, aangepaste routes maken om de standaardroutes van Azure te overschrijven. Soms kan een aangepaste route tot gevolg hebben dat een VM niet kan communiceren met andere resources. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een VM maken
+> * Een virtuele machine maken
 > * Communicatie naar een URL testen met behulp van de functie Volgende hop van Network Watcher
 > * Communicatie naar een IP-adres testen
 > * Een diagnose stellen voor een routeringsprobleem en leren hoe u dit kunt oplossen
 
 Als u dat liever doet, kunt u de diagnose van een routeringsprobleem in een netwerk van virtuele machines ook uitvoeren met behulp van [Azure CLI](diagnose-vm-network-routing-problem-cli.md) of [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en selecteer vervolgens **Windows Server 2016 Datacenter** of **Ubuntu Server 17.10 VM**.
-3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
+3. Voer de volgende gegevens in of selecteer de volgende gegevens, accepteer de standaardinstellingen voor de overige instellingen en selecteer **OK:**
 
     |Instelling|Waarde|
     |---|---|
@@ -55,7 +55,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer **myResourceGroup** in.|
-    |Locatie| Selecteer **US - oost**|
+    |Locatie| Selecteer **VS - oost**|
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
 5. Accepteer onder **Instellingen** alle standaardwaarden en selecteer **OK**.
@@ -70,7 +70,7 @@ Als u de netwerkcommunicatie wilt testen met Network Watcher, schakelt u eerst e
 Als u al een netwerk-watcher hebt ingeschakeld in ten minste één regio, gaat u verder met [Volgende hop gebruiken](#use-next-hop).
 
 1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
-2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
+2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **VS - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -89,11 +89,11 @@ Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aang
     | Virtuele machine         | Selecteer myVm                                            |
     | Netwerkinterface       | myvm - uw netwerkinterface kan een andere naam hebben.   |
     | IP-adres van bron       | 10.0.0.4                                               |
-    | IP-adres van doel  | 13.107.21.200: een van de adressen voor < www. Bing. com->. |
+    | IP-adres van doel  | 13.107.21.200 - Een van de adressen voor <www.bing.com>. |
 
     ![Volgende hop](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
-    Na enkele seconden ziet u de melding dat het volgende hoptype **Internet** is, en dat de waarde voor **Routetabel-id** **System Route** is. U weet nu dat er een geldige systeemroute naar de bestemming is.
+    Na enkele seconden ziet u de melding dat het volgende hoptype **Internet** is, en dat de waarde voor **Routetabel-id****System Route** is. U weet nu dat er een geldige systeemroute naar de bestemming is.
 
 3. Wijzig de waarde voor **IP-adres van doel** in *172.31.0.100* en selecteer nogmaals **Volgende hop**. In het resultaat ziet u de waarde **Geen** bij **Volgend hoptype**, en dat **Routetabel-id** ook hier **System Route** is. Hieruit kunt u afleiden dat er wel een geldige systeemroute is naar de bestemming, maar dat er geen volgende hop is voor het routeren van het verkeer naar de bestemming.
 
@@ -106,7 +106,7 @@ Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aang
 
     Tijdens het uitvoeren van de test met 13.107.21.200 als waarde voor [IP-adres van doel](#use-next-hop), werd de route met het adresvoorvoegsel 0.0.0.0/0 gebruikt voor het routeren van verkeer naar het adres, aangezien geen enkele andere route het adres bevat. De standaardinstelling is dat alle adressen die niet zijn opgegeven in het adresvoorvoegsel van een andere route, worden doorgestuurd naar internet.
 
-    Bij het uitvoeren van de test met het adres 172.31.0.100 kreeg u echter de melding dat er geen volgend hoptype was gevonden. Zoals u kunt zien in de vorige afbeelding, is er wel een standaardroute naar het voorvoegsel 172.16.0.0/12, waaronder het adres 172.31.0.100 valt, maar is de waarde voor **VOLGEND HOPTYPE** **Geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adresbereik 172.16.0.0/12 hebt toegevoegd aan de adresruimte van het virtuele netwerk, wijzigt Azure de waarde van **VOLGEND HOPTYPE** in **Virtueel netwerk** voor de route. Bij een volgende test wordt dan **Virtueel netwerk** weergegeven bij **VOLGEND HOPTYPE**.
+    Bij het uitvoeren van de test met het adres 172.31.0.100 kreeg u echter de melding dat er geen volgend hoptype was gevonden. Zoals u kunt zien in de vorige afbeelding, is er wel een standaardroute naar het voorvoegsel 172.16.0.0/12, waaronder het adres 172.31.0.100 valt, maar is de waarde voor **VOLGEND HOPTYPE****Geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adresbereik 172.16.0.0/12 hebt toegevoegd aan de adresruimte van het virtuele netwerk, wijzigt Azure de waarde van **VOLGEND HOPTYPE** in **Virtueel netwerk** voor de route. Bij een volgende test wordt dan **Virtueel netwerk** weergegeven bij **VOLGEND HOPTYPE**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -114,7 +114,7 @@ U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijdere
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
+3. Typ *myResourceGroup* voor **TYPE DE NAAM VAN DE RESOURCEGROEP:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

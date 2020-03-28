@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-container-app implementeren in container exemplaar
+title: Zelfstudie - Container-app implementeren in containerinstantie
 description: 'Zelfstudie 3 van 3 voor Azure Container Instances: een containertoepassing implementeren in Azure Container Instances'
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249959"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Zelf studie: een container toepassing implementeren in Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Zelfstudie: Een containertoepassing implementeren in Azure Container Instances
 
 Dit is de laatste zelfstudie in een reeks van drie. U hebt eerder in de reeks [een containerinstallatiekopie gemaakt](container-instances-tutorial-prepare-app.md) en [gepusht naar Azure Container Registry](container-instances-tutorial-prepare-acr.md). In dit artikel wordt de reeks afgerond door de container te implementeren in Azure Container Instances.
 
@@ -32,9 +32,9 @@ In deze sectie gebruikt u Azure CLI om de installatiekopie te implementeren die 
 
 ### <a name="get-registry-credentials"></a>Registerreferenties ophalen
 
-Wanneer u een installatie kopie implementeert die wordt gehost in een persoonlijk Azure-container register, zoals het bestand dat in de [tweede zelf studie](container-instances-tutorial-prepare-acr.md)is gemaakt, moet u referenties opgeven voor toegang tot het REGI ster. 
+Wanneer u een afbeelding implementeert die wordt gehost in een privé-Azure-containerregister zoals die is gemaakt in de [tweede zelfstudie,](container-instances-tutorial-prepare-acr.md)moet u referenties leveren om toegang te krijgen tot het register. 
 
-Een best practice voor veel scenario's is het maken en configureren van een Azure Active Directory Service-Principal met *pull* -machtigingen voor het REGI ster. Zie [verifiëren met Azure container Registry van Azure container instances](../container-registry/container-registry-auth-aci.md) voor voorbeeld scripts om een service-principal met de benodigde machtigingen te maken. Noteer de *Service-Principal-id* en het *Service-Principal-wacht woord*. U gebruikt deze referenties om toegang te krijgen tot het REGI ster wanneer u de container implementeert.
+Een aanbevolen toepassing voor veel scenario's is het maken en configureren van een Azure Active Directory-serviceprincipal met *pull-machtigingen* voor uw register. Zie [Verifiëren met Azure Container Registry van Azure Container Instances](../container-registry/container-registry-auth-aci.md) voor voorbeeldscripts om een serviceprincipal te maken met de benodigde machtigingen. Let op de *service principal ID* en service principal *password*. U gebruikt deze referenties om toegang te krijgen tot het register wanneer u de container implementeert.
 
 U hebt ook de volledige naam nodig van de aanmeldingsserver van het containerregister (vervang `<acrName>` door de naam van het register):
 
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Container implementeren
 
-Gebruik nu de opdracht [AZ container Create][az-container-create] om de container te implementeren. Vervang `<acrLoginServer>` door de waarde die u hebt verkregen met de vorige opdracht. Vervang `<service-principal-ID>` en `<service-principal-password>` door de ID en het wachtwoord van de service-principal die u hebt gemaakt voor toegang tot het register. Vervang `<aciDnsLabel>` door een gewenste DNS-naam.
+Gebruik nu de opdracht [az container create][az-container-create] om de container te implementeren. Vervang `<acrLoginServer>` door de waarde die u hebt verkregen met de vorige opdracht. Vervang `<service-principal-ID>` en `<service-principal-password>` door de ID en het wachtwoord van de service-principal die u hebt gemaakt voor toegang tot het register. Vervang `<aciDnsLabel>` door een gewenste DNS-naam.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -54,17 +54,17 @@ U ontvangt binnen enkele seconden een eerste reactie van Azure. De waarde `--dns
 
 ### <a name="verify-deployment-progress"></a>Voortgang van implementatie verifiëren
 
-Als u de status van de implementatie wilt weer geven, gebruikt u [AZ container show][az-container-show]:
+Gebruik [az container show][az-container-show] om de status van de implementatie te bekijken:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Herhaal de opdracht [AZ container show][az-container-show] totdat de status wordt gewijzigd van *in behandeling* in *actief*. dit duurt minder dan een minuut. Wanneer de container de status *Wordt uitgevoerd* heeft, gaat u verder met de volgende stap.
+Herhaal de opdracht [az container show][az-container-show] totdat de status verandert van *In behandeling* in *Wordt uitgevoerd*. Als het goed is, duurt dit minder dan een minuut. Wanneer de container de status *Wordt uitgevoerd* heeft, gaat u verder met de volgende stap.
 
 ## <a name="view-the-application-and-container-logs"></a>De toepassings- en containerlogboeken bekijken
 
-Zodra de implementatie is voltooid, geeft u de Fully Qualified Domain Name (FQDN) van de container weer met de opdracht [AZ container show][az-container-show] :
+Wanneer de implementatie is geslaagd, geeft u de volledig gekwalificeerde domeinnaam (FQDN) van de container weer met de opdracht [az container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
@@ -95,7 +95,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u in deze zelfstudie reeks hebt gemaakt niet meer nodig hebt, kunt u de opdracht [AZ Group delete][az-group-delete] uitvoeren om de resource groep en alle resources die deze bevat, te verwijderen. Met deze opdracht verwijdert u het containerregister dat u hebt gemaakt, evenals de actieve container en alle gerelateerde resources.
+Als u de resources die u in de zelfstudiereeks hebt gemaakt, niet langer nodig hebt, kunt u de opdracht [az group delete][az-group-delete] uitvoeren om de resourcegroep en alle resources daarin te verwijderen. Met deze opdracht verwijdert u het containerregister dat u hebt gemaakt, evenals de actieve container en alle gerelateerde resources.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

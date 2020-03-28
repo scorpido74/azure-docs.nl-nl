@@ -1,17 +1,17 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Een Log Analytics-werkruimte maken | Microsoft Docs
+title: Logboekanalysewerkruimte maken - Azure PowerShell
 description: Voorbeeld van Azure PowerShell-script - Een Log Analytics-werkruimte maken
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658146"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80054633"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Een Log Analytics-werkruimte maken met PowerShell
 
@@ -29,12 +29,12 @@ Met dit script kunt u snel aan de slag met een Azure Log Analytics-werkruimte. D
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt om een nieuwe Log Analytics-werkruimte voor uw abonnement te maken. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een nieuwe Log Analytics-werkruimte voor uw abonnement te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Hiermee wordt informatie opgehaald over een bestaande werkruimte. |
-| [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Hiermee wordt een werkruimte gemaakt in de opgegeven resourcegroep en locatie. |
+| [Get-azoperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Hiermee wordt informatie opgehaald over een bestaande werkruimte. |
+| [Nieuwe-azoperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Hiermee wordt een werkruimte gemaakt in de opgegeven resourcegroep en locatie. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

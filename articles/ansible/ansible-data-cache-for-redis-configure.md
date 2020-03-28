@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: caches in azure cache configureren voor redis met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het maken, schalen, opnieuw opstarten en toevoegen van een firewall regel aan Azure cache voor redis
-keywords: ansible, azure, devops, bash, Playbook, cache, redis
+title: Zelfstudie - Caches configureren in Azure-cache voor Redis met Ansible
+description: Meer informatie over het gebruik van Ansible voor het maken, schalen, opnieuw opstarten en toevoegen van een firewallregel aan Azure Cache voor Redis
+keywords: ansible, azure, devops, bash, playbook, cache, redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156510"
 ---
-# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Zelf studie: caches in azure cache configureren voor redis met behulp van Ansible
+# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Zelfstudie: Caches configureren in Azure-cache voor Redis met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure cache voor redis](/azure/azure-cache-for-redis/) is een open-source compatibele service waarmee u responsieve apps kunt bouwen door snelle toegang tot gegevens te bieden. 
+[Azure Cache for Redis](/azure/azure-cache-for-redis/) is een open-source compatibele service waarmee u responsieve apps bouwen door snelle toegang tot gegevens te bieden. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "74156510"
 > * Een cache maken
 > * Een cache schalen
 > * Een cache opnieuw opstarten
-> * Een firewall regel toevoegen aan een cache
+> * Een firewallregel toevoegen aan een cache
 > * Een cache verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -34,7 +34,7 @@ ms.locfileid: "74156510"
 
 ## <a name="create-a-cache"></a>Een cache maken
 
-Maak een Azure-cache voor redis binnen een nieuwe resource groep.
+Maak een Azure-cache voor Redis in een nieuwe brongroep.
 
 ```yml
   - name: Create resource group
@@ -51,7 +51,7 @@ Maak een Azure-cache voor redis binnen een nieuwe resource groep.
         size: C1 
 ```
 
-Het inrichten van een cache kan enkele minuten duren. De volgende code vertelt Ansible wachten tot de bewerking is voltooid:
+Het kan enkele minuten duren om een cache in te richten. In de volgende code wordt Ansible wachten tot de bewerking is voltooid:
 
 ```yml
   - name: Wait for Redis provisioning to complete
@@ -64,7 +64,7 @@ Het inrichten van een cache kan enkele minuten duren. De volgende code vertelt A
     delay: 60
 ```
 
-Tijdens het inrichtings proces voor de duur worden verschillende fout berichten weer gegeven. Deze berichten kunnen veilig worden genegeerd. Het belangrijkste bericht is het laatste bericht. In het volgende voor beeld zijn er veel fout berichten tot het laatste bericht (' OK ').
+Tijdens het langdurige inrichtingsproces worden verschillende foutmeldingen weergegeven. Deze berichten kunnen veilig worden genegeerd. De belangrijke boodschap is de laatste boodschap. In het volgende voorbeeld zijn er veel foutmeldingen tot het laatste ("ok") bericht.
 
 ```Output
 FAILED - RETRYING: Get facts (100 retries left).
@@ -82,9 +82,9 @@ ok: [localhost]
 
 ## <a name="scale-the-cache"></a>De cache schalen
 
-Azure cache voor redis heeft verschillende cache aanbiedingen, afhankelijk van de behoeften van uw app. Deze cache opties bieden flexibiliteit bij de keuze van de cache grootte en-functies. Als uw app-vereisten worden gewijzigd nadat de cache is gemaakt, kunt u de cache naar wens schalen. Zie [Azure-cache schalen voor redis](/azure/azure-cache-for-redis/cache-how-to-scale)voor meer informatie over schalen.
+Azure Cache voor Redis heeft verschillende cache-aanbiedingen, afhankelijk van de behoeften van uw app. Deze cacheopties bieden flexibiliteit in de keuze van cachegrootte en functies. Als uw app-vereisten veranderen nadat de cache is gemaakt, u de cache naar behoefte schalen. Zie [Azure-cache schalen voor Redis voor](/azure/azure-cache-for-redis/cache-how-to-scale)meer informatie over schalen.
 
-Met de volgende voorbeeld code wordt de cache geschaald naar **Standard**:
+Met de volgende voorbeeldcode wordt de cache naar **standaard geschaald:**
 
 ```yml
 - name: Scale up Azure Cache for Redis
@@ -96,7 +96,7 @@ Met de volgende voorbeeld code wordt de cache geschaald naar **Standard**:
         size: C1
 ```
 
-Het kan enkele minuten duren om een cache te schalen. De volgende code vertelt Ansible wachten tot de bewerking is voltooid:
+Het kan enkele minuten duren om een cache te schalen. In de volgende code wordt Ansible wachten tot de bewerking is voltooid:
 
 ```yml
   - name: Wait for Redis scaling up to complete
@@ -109,7 +109,7 @@ Het kan enkele minuten duren om een cache te schalen. De volgende code vertelt A
     delay: 60
 ```
 
-Net als bij de taak voor het inrichten van Azure cache voor redis, is uitvoer als volgt:
+Net als bij de taak voor het inrichten van Azure Cache voor Redis, is uitvoer zoals het volgende bericht normaal:
 
 ```Ouput
 **FAILED - RETRYING: Get facts (100 retries left)** is normal.
@@ -117,7 +117,7 @@ Net als bij de taak voor het inrichten van Azure cache voor redis, is uitvoer al
 
 ## <a name="reboot-the-cache"></a>De cache opnieuw opstarten
 
-Met de volgende code wordt de cache die in de vorige secties is gemaakt, opnieuw opgestart.
+Met de volgende code wordt de cache die in eerdere secties is gemaakt opnieuw opgestart.
 
 ```yml
   - name: Reboot Azure Cache for Redis
@@ -128,9 +128,9 @@ Met de volgende code wordt de cache die in de vorige secties is gemaakt, opnieuw
         reboot_type: all
 ```
 
-### <a name="add-firewall-rule"></a>Firewall regel toevoegen
+### <a name="add-firewall-rule"></a>Firewallregel toevoegen
 
-Met de volgende code wordt een firewall regel toegevoegd aan de cache:
+Met de volgende code wordt een firewallregel toegevoegd aan de cache:
 
 ```yml
   - name: Add Firewall rule
@@ -154,11 +154,11 @@ Met de volgende code wordt de cache verwijderd:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>De voor beeld-Playbook ophalen
+## <a name="get-the-sample-playbook"></a>Download het voorbeeld van het draaiboek
 
-Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
-- [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) en sla deze op `rediscache.yml`.
-- Maak een nieuw bestand met de naam `rediscache.yml` en kopieer het naar de volgende inhoud:
+Er zijn twee manieren om het volledige voorbeeld playbook te krijgen:
+- [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) en `rediscache.yml`sla het op in .
+- Maak een nieuw `rediscache.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -234,19 +234,19 @@ Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>Het voorbeeldvan het voorbeelddraaiboek uitvoeren
 
-In deze sectie voert u de Playbook uit om verschillende functies te testen die in dit artikel worden weer gegeven.
+Voer in deze sectie het draaiboek uit om verschillende functies in dit artikel te testen.
 
-Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
+Vervang `vars` in de `{{ resource_group_name }}` sectie de tijdelijke aanduiding door de naam van uw resourcegroep.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook rediscache.yml
 ```
 
-De uitvoer ziet er ongeveer als volgt uit:
+De uitvoer lijkt op de volgende resultaten:
 
 ```Output
 TASK [create resource group] 
@@ -322,9 +322,9 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-Sla de volgende code op als `cleanup.yml`:
+Sla de volgende `cleanup.yml`code op als :
 
 ```yml
 - hosts: localhost
@@ -337,9 +337,9 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
+Vervang `vars` in de `{{ resource_group_name }}` sectie de tijdelijke aanduiding door de naam van uw resourcegroep.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

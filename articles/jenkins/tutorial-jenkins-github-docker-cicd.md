@@ -1,14 +1,14 @@
 ---
-title: Zelf studie-een ontwikkelings pijplijn maken in azure met Jenkins
+title: Zelfstudie - Een ontwikkelpijplijn maken in Azure met Jenkins
 description: Zelfstudie - In deze zelfstudie leert u hoe u een virtuele Jenkins-machine maakt in Azure die bij elke codedoorvoer gegevens ophaalt vanuit GitHub en een nieuwe Docker-container compileert voor het uitvoeren van uw app.
-keywords: Jenkins, azure, devops, pijp lijn, cicd, docker
+keywords: jenkins, azure, devops, pijpleiding, cicd, docker
 ms.topic: tutorial
 ms.date: 03/27/2017
 ms.openlocfilehash: 2560d03282b2b3c8193a0b8c2a7a9f7c4036e75a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77606445"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Zelfstudie: Een infrastructuur voor ontwikkeling maken op een virtuele Linux-machine in Azure met Jenkins, GitHub en Docker
@@ -23,9 +23,9 @@ U kunt een CI/CD-pijplijn (continue integratie en implementatie) gebruiken voor 
 > * Een Docker-kopie van uw app maken
 > * Controleren of de GitHub-doorvoeracties een nieuwe Docker-installatiekopie bouwen en de lopende app bijwerken
 
-In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
+Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Een Jenkins-instantie maken
 In een vorige zelfstudie over [Het aanpassen van een virtuele Linux-machine bij de eerste keer opstarten](../virtual-machines/linux/tutorial-automate-vm-deployment.md), hebt u geleerd hoe u de aanpassing van de virtuele machine met cloud-init moet automatiseren. Deze zelfstudie gebruikt een cloud-init-bestand om Jenkins en een Docker te installeren op een virtuele machine. Jenkins, een populaire open-source automatiseringsserver, integreert naadloos met Azure, wat continue integratie (CI) en continue levering (CD) mogelijk maakt. Voor meer zelfstudies over het gebruik van Jenkins bekijkt u [Jenkins in Azure hub](https://docs.microsoft.com/azure/jenkins/).
@@ -153,7 +153,7 @@ Om Jenkins te laten reageren op een gebeurtenis in GitHub zoals het vastleggen v
 Selecteer in uw Jenkins-website **Nieuwe taken maken** vanaf de startpagina:
 
 - Voer *HelloWorld* in als de taaknaam. Kies **Freestyle-project**, selecteer daarna **OK**.
-- Selecteer onder de sectie **Algemeen** de optie **GitHub-project** en voer de URL van uw gevorkte opslagplaats in, zoals *https://github.com/cynthn/nodejs-docs-hello-world*
+- Selecteer onder de sectie **Algemeen** **github-project** en voer uw gevorkte repo-URL in, zoals*https://github.com/cynthn/nodejs-docs-hello-world*
 - Selecteer onder de sectie **Broncodebeheer** de optie **Git** en voer de *.git*-URL van uw gevorkte opslagplaats in, zoals *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - Onder de sectie **Triggers compileren** selecteert u **GitHub hook-trigger voor GITscm-polling**.
 - Onder de sectie **Build** selecteert u **Build-stap toevoegen**. Selecteer **Shell uitvoeren**, voer dan `echo "Test"` in het opdrachtvenster in.
