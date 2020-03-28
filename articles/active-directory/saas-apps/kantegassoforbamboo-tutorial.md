@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Kantega SSO voor Bamboe | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Kantega SSO voor Bamboe.
+title: 'Zelfstudie: Azure Active Directory-integratie met Kantega SSO voor bamboe | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Kantega SSO voor Bamboe.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 8c951d7f5f1629447b1b5c1fc6e8a1c202246d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099113"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Zelfstudie: Azure Active Directory-integratie met Kantega SSO voor Bamboe
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Zelfstudie: Azure Active Directory-integratie met Kantega SSO voor bamboe
 
-In deze zelfstudie leert u hoe u Kantega SSO voor Bamboe integreren met Azure Active Directory (Azure AD).
-Kantega SSO voor Bamboe integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe Kantega SSO voor Bamboe wordt geïntegreerd met Azure Active Directory (Azure AD).
+De integratie van Kantega SSO for Bamboo met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Kantega SSO voor Bamboe heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Kantega SSO voor Bamboe (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Kantega SSO voor Bamboo.
+* U uw gebruikers automatisch laten aanmelden bij Kantega SSO for Bamboo (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Kantega SSO voor Bamboe, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met Kantega SSO voor bamboe, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Kantega SSO voor eenmalige aanmelding Bamboe ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Kantega SSO voor Bamboo single sign-on enabled subscription Kantega SSO for Bamboo single sign-on enabled subscription Kantega SSO for Bamboo single sign-on enabled subscription Kante
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Kantega SSO voor Bamboe **SP en IDP** gestart door SSO
+* Kantega SSO for Bamboo ondersteunt **SP en IDP** geïnitieerd sso
 
-## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Kantega SSO voor Bamboe uit de galerie toe te voegen
+## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Kantega SSO toevoegen voor bamboe uit de galerie
 
-Voor het configureren van de integratie van Kantega SSO voor Bamboe in Azure AD, moet u Kantega SSO voor Bamboe uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Kantega SSO voor Bamboo in Azure AD wilt configureren, moet u Kantega SSO voor Bamboe vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Kantega SSO voor Bamboe uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Kantega SSO voor bamboe toe te voegen voor bamboe uit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Kantega SSO voor Bamboe in Azure AD,
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Kantega SSO voor Bamboe**, selecteer **Kantega SSO voor Bamboe** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **Kantega**SSO voor Bamboe in het zoekvak, selecteer **Kantega SSO voor bamboe** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-    ![Kantega SSO voor Bamboe in de lijst met resultaten](common/search-new-app.png)
+    ![Kantega SSO voor Bamboe in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie maakt u configureert en test Azure AD eenmalige aanmelding met Kantega SSO voor Bamboe op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Kantega SSO voor Bamboe tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Kantega SSO voor Bamboo op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding voor het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Kantega SSO voor Bamboo.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Kantega SSO voor Bamboe, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD-single sign-on met Kantega SSO voor Bamboe wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van SSO voor Bamboe Single Sign-On Kantega](#configure-kantega-sso-for-bamboo-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Kantega SSO maken voor de testgebruiker Bamboe](#create-kantega-sso-for-bamboo-test-user)**  : als u wilt een equivalent van Britta Simon in Kantega SSO voor Bamboe die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Kantega SSO voor Bamboo Single Sign-On](#configure-kantega-sso-for-bamboo-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Kantega SSO voor Bamboo-testgebruiker](#create-kantega-sso-for-bamboo-test-user)** - om een tegenhanger van Britta Simon in Kantega SSO voor Bamboo te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Kantega SSO voor Bamboe, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om azure AD single sign-on te configureren met Kantega SSO voor Bamboe:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Kantega SSO voor Bamboe** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Kantega SSO voor** bamboo-toepassingsintegratie de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,28 +101,28 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kantega SSO voor Bam
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Kantega SSO voor Bamboe domein en URL's één aanmeldings-informatie](common/idp-intiated.png)
+    ![Kantega SSO voor Bamboo-domein en URL's met eenmalige aanmeldingsinformatie](common/idp-intiated.png)
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Kantega SSO voor Bamboe domein en URL's één aanmeldings-informatie](common/metadata-upload-additional-signon.png)
+    ![Kantega SSO voor Bamboo-domein en URL's met eenmalige aanmeldingsinformatie](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, antwoord-URL en aanmeldings-URL. Deze waarden zijn ontvangen tijdens de configuratie van bamboe-invoegtoepassing die later in de zelfstudie wordt uitgelegd.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en aanmeldings-URL. Deze waarden worden ontvangen tijdens de configuratie van Bamboo plugin die later in de tutorial wordt uitgelegd.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Op de **Kantega SSO voor Bamboe instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+7. Kopieer in de sectie **Kantega SSO for Bamboo** instellen de juiste URL(s) volgens uw eis.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -132,15 +132,15 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kantega SSO voor Bam
 
     c. Afmeldings-URL
 
-### <a name="configure-kantega-sso-for-bamboo-single-sign-on"></a>SSO voor Bamboe Single Sign-On Kantega configureren
+### <a name="configure-kantega-sso-for-bamboo-single-sign-on"></a>Kantega SSO configureren voor bamboo single sign-on
 
-1. In een ander browservenster aanmelden bij uw Bamboe on-premises server als beheerder.
+1. Meld u in een ander browservenster aan bij uw Bamboo on-premises server als beheerder.
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon1.png)
 
-1. Klik onder de tabbladsectie Invoegtoepassingen op **Nieuwe invoegtoepassingen zoeken**. Search **Kantega SSO voor Bamboe (SAML & Kerberos)** en klikt u op **installeren** knop voor het installeren van de nieuwe SAML-invoegtoepassing.
+1. Klik onder de tabbladsectie Invoegtoepassingen op **Nieuwe invoegtoepassingen zoeken**. Zoek **op Kantega SSO for Bamboo (SAML & Kerberos)** en klik op De knop **Installeren** om de nieuwe SAML-plug-in te installeren.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon2.png)
 
@@ -148,7 +148,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kantega SSO voor Bam
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon21.png)
 
-1. Nadat de installatie voltooid is. Klik op **Sluiten**.
+1. Zodra de installatie is voltooid. Klik op **Sluiten**.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon33.png)
 
@@ -160,61 +160,61 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kantega SSO voor Bam
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon3.png)
 
-1. In de **SAML** sectie. Selecteer **Azure Active Directory (Azure AD)** uit de **id-provider toevoegen** vervolgkeuzelijst.
+1. In de **SAML** sectie. Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Identiteitsprovider toevoegen.**
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-1. Selecteer het abonnementsniveau van als **Basic**.
+1. Selecteer abonnementsniveau als **Basis**.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon5.png)
 
-1. Op de **eigenschappen van de App** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **App-eigenschappen** de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon6.png)
 
-    a. Kopiëren de **App ID URI** waarde en deze gebruiken als **-id, de antwoord-URL en de aanmeldings-URL** op de **SAML-basisconfiguratie** sectie in Azure portal.
+    a. Kopieer de **URI-waarde voor app-id's** en gebruik deze als **id, url voor beantwoorden en aanmelding smaken** in de sectie **BasisSAML-configuratie** in Azure-portal.
 
-    b. Klik op **volgende**.
+    b. Klik op **Volgende**.
 
-1. Op de **metagegevens importeren** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Metagegevens import** de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. Selecteer **metagegevensbestand op mijn computer**, en het bestand met metagegevens uploaden, die u hebt gedownload vanuit Azure portal.
+    a. Selecteer **Metagegevensbestand op mijn computer**en upload metagegevensbestand, dat u hebt gedownload van de Azure-portal.
 
-    b. Klik op **volgende**.
+    b. Klik op **Volgende**.
 
-1. Op de **naam en de SSO-locatie** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Naam en SSO de** volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-    a. Naam van de id-Provider in **identiteit providernaam** tekstvak (bijvoorbeeld Azure AD).
+    a. Naam van de identiteitsprovider toevoegen aan het tekstvak **identiteitsprovider** (bijvoorbeeld Azure AD).
 
-    b. Klik op **volgende**.
+    b. Klik op **Volgende**.
 
-1. Controleer of het certificaat voor ondertekening en klikt u op **volgende**.
+1. Controleer het certificaat Ondertekenen en klik op **Volgende**.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon9.png)
 
-1. Op de **Bamboe gebruikersaccounts** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Bamboo-gebruikersaccounts** de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon10.png)
 
-    a. Selecteer **gebruikers in de Bamboe interne Directory maken, indien nodig** en voer de juiste naam van de groep voor gebruikers (kan meerdere Nee. van groepen met door komma's gescheiden).
+    a. Selecteer **Indien nodig gebruikers maken in de interne map** van Bamboo en voer u de juiste naam van de groep voor gebruikers in (kan meerdere nee zijn. van groepen gescheiden door komma).
 
-    b. Klik op **volgende**.
+    b. Klik op **Volgende**.
 
 1. Klik op **Voltooien**.
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon11.png)
 
-1. Op de **bekend domeinen voor Azure AD** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Bekende domeinen voor Azure AD** de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a. Selecteer **bekend domeinen** in het linkerdeelvenster van de pagina.
+    a. Selecteer **Bekende domeinen** in het linkerdeelvenster van de pagina.
 
-    b. Voer de domeinnaam van het in de **bekend domeinen** tekstvak.
+    b. Voer domeinnaam in het tekstvak **Bekende domeinen** in.
 
     c. Klik op **Opslaan**.
 
@@ -234,26 +234,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`  
+    b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Kantega SSO voor Bamboe.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Kantega SSO voor Bamboo.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Kantega SSO voor Bamboe**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Kantega SSO voor Bamboe**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Kantega SSO voor Bamboe**.
+2. Selecteer **Kantega SSO voor bamboe**in de lijst met toepassingen.
 
-    ![De Kantega SSO voor Bamboe koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De Kantega SSO for Bamboo link in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -263,25 +263,25 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-kantega-sso-for-bamboo-test-user"></a>Kantega SSO voor Bamboe testgebruiker maken
+### <a name="create-kantega-sso-for-bamboo-test-user"></a>Maak Kantega SSO voor Bamboo-testgebruiker
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Bamboe, moeten ze worden ingericht voor Bamboe. In het geval van Kantega SSO voor Bamboe is inrichten een handmatige taak.
+Als u Azure AD-gebruikers in staat wilt stellen zich aan te melden bij Bamboo, moeten ze zijn ingericht in Bamboo. In het geval van Kantega SSO voor Bamboe is inrichten een handmatige taak.
 
-**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
-1. Meld u met uw on-premises Bamboe server aan als beheerder.
+1. Meld u aan bij uw Bamboo on-premises server als beheerder.
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **User management**.
 
     ![Werknemer toevoegen](./media/kantegassoforbamboo-tutorial/user1.png)
 
-1. Klik op **Users**. Onder de **gebruiker toevoegen** sectie volgende stappen uitvoeren:
+1. Klik op **Users**. Voer onder de sectie **Gebruiker toevoegen** de volgende stappen uit:
 
     ![Werknemer toevoegen](./media/kantegassoforbamboo-tutorial/user2.png)
 
@@ -289,7 +289,7 @@ Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Bamboe, moeten ze w
 
     b. In het tekstvak **Wachtwoord** typt u het wachtwoord van de gebruiker.
 
-    c. In de **wachtwoord bevestigen** tekstvak, het wachtwoord van gebruiker opnieuw invoeren.
+    c. Voer in het tekstvak **Wachtwoord bevestigen** het wachtwoord van de gebruiker opnieuw in.
 
     d. In het tekstvak **Volledige naam** typt u de volledige naam van de gebruiker, bijvoorbeeld Britta Simon.
 
@@ -299,14 +299,14 @@ Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Bamboe, moeten ze w
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Kantega SSO voor Bamboe tegel in het toegangsvenster, moet u worden automatisch aangemeld bij de Kantega SSO voor Bamboe waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Kantega SSO voor bamboe klikt in het toegangspaneel, moet u automatisch worden aangemeld bij de Kantega SSO for Bamboo waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

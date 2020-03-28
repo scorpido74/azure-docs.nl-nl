@@ -1,76 +1,76 @@
 ---
-title: Zelf studie-een Jupyter-notebook maken en uitvoeren Azure Notebooks preview
-description: Meer informatie over het maken en uitvoeren van een Jupyter-notebook in Azure Notebooks preview waarin het proces van lineaire regressie in data Science wordt gedemonstreerd.
+title: Zelfstudie - een Jupyter-notitieblok maken en uitvoeren - Azure Notebooks Preview
+description: Meer informatie over het maken en uitvoeren van een Jupyter-notitieblok in Azure Notebooks Preview dat het proces van lineaire regressie in gegevenswetenschap demonstreert.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75660814"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: maken en uitvoeren van een Jupyter-notebook met Python
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: een Jupyter-notitieblok maken en uitvoeren met Python
 
-In deze zelfstudie begeleidt u bij het proces van het gebruik van Azure-notitieblokken maken van een volledige Jupyter-notebook die eenvoudige lineaire regressie laat zien. In deze zelfstudie maakt vertrouwd u raken met de Jupyter-notebook gebruikersinterface, waaronder het maken van andere cellen, het uitvoeren van de cellen en presenteert de notebook als een diavoorstelling.
+In deze zelfstudie wordt u door het proces geleid van het gebruik van Azure-notitieblokken om een compleet Jupyter-notitieblok te maken dat eenvoudige lineaire regressie demonstreert. In de loop van deze zelfstudie maakt u kennis met de gebruikersinterface van het Jupyter-notitieblok, waaronder het maken van verschillende cellen, het uitvoeren van cellen en het presenteren van het notitieblok als diavoorstelling.
 
-De voltooide notebook kunt u vinden op [GitHub - voorbeelden voor Azure-notitieblokken](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). In deze zelfstudie begint echter met een nieuw project en de laptop van een leeg, zodat u te maken krijgen kunt met stap te maken.
+Het voltooide notitieblok is te vinden op [GitHub - Azure Notebooks Samples](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Deze zelfstudie begint echter met een nieuw project en een leeg notitieblok, zodat u ervaren het maken van het stap voor stap.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een project notitieblok maken met enkele voorbeeld gegevens
-> * De notebook-interface gebruiken om diverse typen cellen te maken
+> * Een projectnotitieblok maken met enkele voorbeeldgegevens
+> * De notebookinterface gebruiken om verschillende typen cellen te maken
 > * Het notitieblok uitvoeren
-> * Sla het notitie blok op
-> * Fouten opsporen in het notitie blok in Visual Studio code
+> * Het notitieblok opslaan
+> * Het notitieblok debuggen in Visual Studio Code
 
 ## <a name="create-the-project"></a>Het project maken
 
-1. Ga naar [Azure notitieblokken](https://notebooks.azure.com) en meld u aan. (Zie voor meer informatie, [-Snelstart: aanmelden bij Azure-notitieblokken](quickstart-sign-in-azure-notebooks.md)).
+1. Ga naar [Azure-notitieblokken](https://notebooks.azure.com) en meld u aan. (Zie [Snelstart - Aanmelden bij Azure-notitieblokken voor](quickstart-sign-in-azure-notebooks.md)meer informatie).
 
-1. Selecteer in de pagina van uw openbare profiel **Mijn projecten** aan de bovenkant van de pagina:
+1. Selecteer op uw openbare profielpagina **Mijn projecten** boven aan de pagina:
 
-    ![Mijn projecten koppeling boven aan het browservenster](media/quickstarts/my-projects-link.png)
+    ![Koppeling Mijn projecten boven aan het browservenster](media/quickstarts/my-projects-link.png)
 
-1. Op de **Mijn projecten** weergeeft, schakelt **+ nieuw Project** (sneltoets: n); de knop wordt mogelijk weergegeven alleen als **+** als het browservenster smal is:
+1. Selecteer **op** de pagina Mijn projecten **+ Nieuw project** (sneltoets: n); de knop mag **+** alleen worden weergegeven alsof het browservenster smal is:
 
-    ![Nieuw Project-opdracht op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
+    ![Opdracht Nieuw project op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
 
-1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
+1. Selecteer in de pop-up **Nieuw project maken** dat wordt weergegeven, voer de volgende details in of stel u in en selecteer Vervolgens **Maken:**
 
-   - **Naam van het project**: lineaire regressie-voorbeeld - Cricket lijken
-   - **Project-ID**: lineaire regressie-voorbeeld
-   - **Openbare project**: (uitgeschakeld)
-   - **Maken van een README.md**: (uitgeschakeld)
+   - **Projectnaam**: Lineair Regressievoorbeeld - Cricket Chirps
+   - **Project ID**: lineair-regressie-voorbeeld
+   - **Openbaar project**: (gewist)
+   - **Een README.md maken**: (gewist)
 
-1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project.
+1. Na een paar ogenblikken navigeert Azure Notebooks u naar het nieuwe project.
 
 ## <a name="create-the-data-file"></a>Het gegevensbestand maken
 
-Het lineaire regressiemodel dat u in het notitieblok maakt tekent u gegevens uit een bestand in uw project met de naam *cricket_chirps.csv*. U kunt dit bestand maken door het te kopiëren van [github-Azure notebooks-voor beelden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)of door de gegevens rechtstreeks in te voeren. De volgende secties worden beide methoden.
+Het lineaire regressiemodel dat u in het notitieblok maakt, put gegevens uit een bestand in uw project genaamd *cricket_chirps.csv*. U dit bestand maken door het te kopiëren van [GitHub - Azure Notebooks Samples](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)of door de gegevens rechtstreeks in te voeren. In de volgende secties worden beide benaderingen beschreven.
 
-### <a name="upload-the-data-file"></a>Het bestand uploaden
+### <a name="upload-the-data-file"></a>Het gegevensbestand uploaden
 
-1. Selecteer op uw projectdashboard in Azure-notitieblokken **uploaden** > **van URL**
-1. Voer in het pop-upvenster de volgende URL in **bestands-URL** en *cricket_chirps.csv* in **bestandsnaam**en selecteer vervolgens **gedaan**.
+1. Selecteer **Uploaden** > **vanaf URL** in uw projectdashboard in Azure-notitieblokken
+1. Voer in de pop-up de volgende URL in **bestandsURL** en *cricket_chirps.csv* in **Bestandsnaam**in en selecteer **Gereed**.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. De *cricket_chirps.csv* bestand wordt nu weergegeven in de lijst met bestanden van uw project:
+1. Het *bestand cricket_chirps.csv* moet nu worden weergegeven in de bestandslijst van uw project:
 
-    ![Nieuw gemaakte CSV-bestand weergegeven in de lijst met project-bestanden](media/tutorial/csv-file-in-project.png)
+    ![Nieuw gemaakt CSV-bestand dat wordt weergegeven in de lijst met projectbestanden](media/tutorial/csv-file-in-project.png)
 
-### <a name="create-a-file-from-scratch"></a>Maak een bestand maken
+### <a name="create-a-file-from-scratch"></a>Een bestand helemaal opnieuw maken
 
-1. Selecteer op uw projectdashboard in Azure-notitieblokken **+ nieuw** > **leeg bestand**
-1. Een veld wordt weergegeven in de lijst met bestanden van het project. ENTER *cricket_chirps.csv* en druk op Enter.
-1. Met de rechtermuisknop op *cricket_chirps.csv* en selecteer **bestand bewerken**.
-1. Voer de volgende gegevens in de editor die wordt weergegeven:
+1. Selecteer **+ Nieuw** > **leeg bestand** op uw projectdashboard in Azure-notitieblokken
+1. Er wordt een veld weergegeven in de bestandslijst van het project. Voer *cricket_chirps.csv* in en druk op Enter.
+1. Klik met de rechtermuisknop op *cricket_chirps.csv* en selecteer **Bestand bewerken**.
+1. Voer in de editor die wordt weergegeven de volgende gegevens in:
 
     ```csv
     Chirps/Minute,Temperature
@@ -91,13 +91,13 @@ Het lineaire regressiemodel dat u in het notitieblok maakt tekent u gegevens uit
     14.4,76.3
     ```
 
-1. Selecteer **bestand opslaan** Sla het bestand op en gaat u terug naar het projectdashboard.
+1. Selecteer **Bestand opslaan** om het bestand op te slaan en terug te keren naar het projectdashboard.
 
-## <a name="install-project-level-packages"></a>Project-niveau pakketten installeren
+## <a name="install-project-level-packages"></a>Pakketten op projectniveau installeren
 
-Binnen een laptop, kunt u altijd opdrachten zoals gebruiken `!pip install` in een codecel om vereiste pakketten te installeren. Deze opdrachten worden echter uitgevoerd telkens als u van het notitieblok code cellen uitvoeren, en kan lang duren. Daarom kunt u in plaats daarvan installeren pakketten op het project op met een `requirements.txt` bestand.
+In een notitieblok u altijd `!pip install` opdrachten gebruiken, zoals in een codecel, om vereiste pakketten te installeren. Dergelijke opdrachten worden echter elke keer uitgevoerd wanneer u de codecellen van het notitieblok uitvoert en kan veel tijd in beslag nemen. Om deze reden u pakketten op projectniveau installeren met behulp van een `requirements.txt` bestand.
 
-1. Gebruik de procedure beschreven in [maken van een bestand helemaal](#create-a-file-from-scratch) te maken van een bestand met de naam `requirements.txt` met de volgende inhoud:
+1. Gebruik het proces dat is beschreven in Een `requirements.txt` bestand helemaal opnieuw [maken](#create-a-file-from-scratch) om een bestand te maken met de volgende inhoud:
 
     ```text
     matplotlib==3.0.0
@@ -106,78 +106,78 @@ Binnen een laptop, kunt u altijd opdrachten zoals gebruiken `!pip install` in ee
     scikit-learn==0.20.0
     ```
 
-    U kunt ook uploaden een `requirements.txt` bestand vanaf uw lokale computer als u liever, zoals wordt beschreven op [uploaden van het gegevensbestand](#upload-the-data-file).
+    U desgevraagd ook een `requirements.txt` bestand uploaden vanaf uw lokale computer, zoals beschreven in Het [gegevensbestand uploaden.](#upload-the-data-file)
 
-1. Selecteer in het projectdashboard **projectinstellingen**.
-1. Selecteer in het pop-upvenster dat wordt weergegeven, de **omgeving** tabblad, en selecteer vervolgens **+ toevoegen**.
-1. In de eerste vervolgkeuzelijst besturingselement (bewerking) onder **omgeving installatiestappen uit**, kiest u **Requirements.txt**.
-1. Kies in het tweede vervolgkeuzelijst besturingselement (bestandsnaam), *requirements.txt* (het bestand dat u hebt gemaakt).
-1. Kies in het derde vervolgkeuzelijst besturingselement (de Python-versie), **Python versie 3.6**.
+1. Selecteer **projectinstellingen**in het projectdashboard .
+1. Selecteer in de pop-up die wordt weergegeven het tabblad **Omgeving** en selecteer **+Toevoegen**.
+1. Kies **Requirements.txt**in de eerste vervolgkeuzebesturingselement (de bewerking) onder **Stappen voor omgevingsinstellingen**.
+1. Kies in de tweede vervolgkeuzebesturingselement (de bestandsnaam) *requirements.txt* (het bestand dat u hebt gemaakt).
+1. Kies in de derde vervolgkeuzebesturingselement (de Python-versie) **Python-versie 3.6**.
 1. Selecteer **Opslaan**.
 
-![Het tabblad van het Project instellingen omgeving op te geven van een bestand requirements.txt](media/tutorial/tutorial-requirements-txt.png)
+![Het tabblad Projectinstellingen-omgeving waarin een bestand requirements.txt wordt opgegeven](media/tutorial/tutorial-requirements-txt.png)
 
-Met deze stap setup in plaats wordt een laptop die u in het project uitvoert uitgevoerd in een omgeving waar deze pakketten zijn geïnstalleerd.
+Met deze installatiestap wordt elk notitieblok dat u in het project uitvoert, uitgevoerd in een omgeving waarin deze pakketten zijn geïnstalleerd.
 
 ## <a name="create-and-run-a-notebook"></a>Een notebook maken en uitvoeren
 
-Met het gereed gegevensbestand en de project-omgeving is ingesteld, kunt u nu maakt en open het notitieblok.
+Met het gegevensbestand klaar en de projectomgevingset u het notitieblok nu maken en openen.
 
-1. Selecteer in het projectdashboard **+ nieuw** > **Notebook**.
-1. Voer in het pop-upvenster *lineaire regressie-voorbeeld - Cricket Chirps.ipynb* voor **itemnaam**, kiest u **Python 3.6** voor de taal, selecteert u vervolgens **nieuw**.
-1. Nadat de nieuwe notebook op de lijst met bestanden wordt weergegeven, selecteert u dit om te beginnen de notebook. Een nieuw browsertabblad wordt automatisch geopend.
-1. Omdat u hebt een *requirements.txt* bestand in de omgevingsinstellingen voor ziet u het bericht, 'wachten op de container om te voltooien wordt voorbereid." U kunt selecteren **OK** om te sluiten van het bericht en doorgaan met werken in het notitieblok; u cellen met een code echter niet uitvoeren totdat de omgeving volledig is ingesteld.
-1. De notebook wordt geopend in de Jupyter-interface met een één lege codecel als standaardwaarde.
+1. Selecteer **+ Nieuw** > **notitieblok in**het projectdashboard .
+1. Voer in de pop-up *Voorbeeld van Lineaire regressie in - Cricket Chirps.ipynb* voor **objectnaam**, kies **Python 3.6** voor de taal en selecteer **Vervolgens Nieuw**.
+1. Nadat het nieuwe notitieblok in de bestandslijst is weergegeven, selecteert u het notitieblok om het notitieblok te starten. Een nieuw browsertabblad wordt automatisch geopend.
+1. Omdat u een *requirements.txt-bestand* in de omgevinginstellingen hebt, ziet u het bericht 'Wachten tot uw container klaar is met de voorbereiding'. U **OK** selecteren om het bericht te sluiten en verder te werken in het notitieblok. u echter geen codecellen uitvoeren totdat de omgeving volledig is ingesteld.
+1. Het notitieblok wordt standaard geopend in de Jupyter-interface met één lege codecel.
 
-    [![eerste weer gave van een nieuw notitie blok in Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Eerste weergave van een nieuw notitieblok in Azure-notitieblokken](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="tour-the-notebook-interface"></a>Maakt een rondleiding door de notebook-interface
+## <a name="tour-the-notebook-interface"></a>Tour door de notebook-interface
 
-Met de laptop die wordt uitgevoerd, kunt u code en Markdown cellen die cellen uitvoeren en beheren van de werking van de notebook toevoegen. Eerst, het is echter waard een paar minuten om vertrouwd te raken met de interface. Voor volledige documentatie, selecteert u de **Help** > **Notebook Help** -opdracht.
+Terwijl het notitieblok wordt uitgevoerd, u code- en markdowncellen toevoegen, deze cellen uitvoeren en de werking van het notitieblok beheren. Ten eerste is het echter de moeite waard om een paar minuten te nemen om vertrouwd te raken met de interface. Selecteer voor volledige documentatie de menuopdracht > **Help-notitieblok.** **Help**
 
-Aan de bovenkant van het venster ziet u de volgende items:
+Boven aan het venster ziet u de volgende items:
 
-(A) de naam van uw laptop, die u door te klikken bewerken kunt.
-(B) de knoppen om te navigeren naar het project met en het dashboard van uw projecten, waarmee nieuwe tabbladen in uw browser worden geopend.
-(C) een menu met de opdrachten voor het werken met de notebook.
-(D) een werkbalk met snelkoppelingen voor algemene bewerkingen.
-(E) de bewerken canvas met cellen.
-(F) geeft aan of de notebook vertrouwd wordt (de standaardwaarde is **niet-vertrouwd**).
-(G) de kernel gebruikt voor het uitvoeren van het notitieblok, samen met een indicator voor netwerkactiviteit.
+(A) De naam van uw notitieblok, die u bewerken door te klikken.
+(B) Knoppen om te navigeren naar het project met betrekking tot het project en uw projectdashboard, die nieuwe tabbladen openen in uw browser.
+(C) Een menu met opdrachten voor het werken met het notitieblok.
+(D) een werkbalk met sneltoetsen voor algemene bewerkingen.
+(E) het bewerkingscanvas dat cellen bevat.
+(F) indicator of het notitieblok wordt vertrouwd (standaard is **niet vertrouwd).**
+(G) de kernel die wordt gebruikt om het notitieblok samen met een activiteitsindicator uit te voeren.
 
-[![van de primaire UI-gebieden van de Jupyter-interface](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Primaire gebruikersinterfacegebieden van de Jupyter-interface](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter biedt een ingebouwde rondleiding door de primaire UI-elementen. Selecteer eerst de rondleiding door de **Help** > **rondleiding door de Interface van de gebruiker** opdracht en te klikken in het pop-upvensters.
+Jupyter biedt een ingebouwde rondleiding door de primaire UI-elementen. Begin de tour door de opdracht > **Help-gebruikersinterfacetour te** selecteren en door de pop-ups te klikken. **Help**
 
-De groepen van opdrachten zijn als volgt:
+De groepen menuopdrachten zijn als volgt:
 
 | Menu | Beschrijving |
 | --- | --- |
-| Bestand | Opdrachten voor het beheren van de notebook-bestand, met inbegrip van opdrachten voor het maken en kopiëren van notebooks, een afdrukvoorbeeld weergeven en downloaden van het notitieblok in verschillende indelingen. |
-| Bewerken | Gangbare opdrachten Knippen, kopiëren en cellen plakken, zoeken en vervangen door waarden, cel bijlagen beheren en het invoegen van afbeeldingen.  |
-| Weergeven | Opdrachten voor het beheren van de zichtbaarheid van de verschillende onderdelen van de Jupyter-UI. |
-| Invoegen | Opdrachten voor het invoegen van een nieuwe cel boven of onder de huidige cel. U gebruikt deze opdrachten regelmatig bij het maken van een laptop. |
-| Cel | De verschillende **uitvoeren** opdrachten een of meer cellen in verschillende combinaties worden uitgevoerd. De **Type Legendacel** opdrachten wijzigt u het type van een cel tussen **Code**, **Markdown**, en **onbewerkte NBConvert** (tekst zonder opmaak). De **huidige uitvoer** en **alle uitvoer** opdrachten bepalen hoe de uitvoer van de code uitvoeren wordt weergegeven en een opdracht om te wissen van alle uitvoer op te nemen. |
-| Kernel | Opdrachten voor het beheren hoe code wordt uitgevoerd in de kernel, samen met **wijziging kernel** om de taal of Python-versie die wordt gebruikt om uit te voeren van de notebook te wijzigen. |
-| Gegevens | Opdrachten om te uploaden en downloaden van bestanden van het project of de sessie. Zie [werken met gegevens projectbestanden](work-with-project-data-files.md) |
-| Widgets | Opdrachten voor het beheren van [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), die voorzien in extra functies voor visualisatie, toewijzing en plotten.|
-| Help | Opdrachten die hulp documentatie voor de Jupyter-interface en. |
+| File | Opdrachten voor het beheren van het notitieblokbestand, inclusief opdrachten voor het maken en kopiëren van notitieblokken, het weergeven van een afdrukvoorbeeld en het downloaden van het notitieblok in verschillende indelingen. |
+| Bewerken | Typische opdrachten voor het knippen, kopiëren en plakken van cellen, het zoeken en vervangen van waarden, het beheren van celbijlagen en het invoegen van afbeeldingen.  |
+| Weergave | Opdrachten om de zichtbaarheid van verschillende delen van de Jupyter-gebruikersinterface te regelen. |
+| Invoegen | Opdrachten om een nieuwe cel boven of onder de huidige cel in te voegen. U gebruikt deze opdrachten vaak bij het maken van een notitieblok. |
+| Mobiel | De verschillende **opdrachten Uitvoeren** voeren een of meer cellen uit in verschillende combinaties. Met de opdrachten **Celtype** wordt het type cel tussen **Code**, **Markdown**en **Raw NBConvert** (platte tekst) gewijzigd. De opdrachten **Huidige uitvoer** en **Alle uitvoer** bepalen hoe de uitvoer van run-code wordt weergegeven en bevatten een opdracht om alle uitvoer te wissen. |
+| Kernel | Opdrachten om te beheren hoe code wordt uitgevoerd in de kernel, samen met **De kernel wijzigen** om de taal of Python-versie te wijzigen die wordt gebruikt om het notitieblok uit te voeren. |
+| Gegevens | Opdrachten voor het uploaden en downloaden van bestanden uit het project of de sessie. Zie [Werken met projectgegevensbestanden](work-with-project-data-files.md) |
+| Widgets | Opdrachten voor het beheren van [Jupyter-widgets,](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)die extra mogelijkheden bieden voor visualisatie, toewijzing en plotten.|
+| Help | Opdrachten die hulp en documentatie bieden voor de Jupyter-interface. |
 
-De meeste van de opdrachten op de werkbalk hebben gelijkwaardige opdrachten. Een uitzondering is **Enter/bewerken STIJGEN diavoorstelling**, die wordt beschreven op [Share- en aanwezig notitieblokken](present-jupyter-notebooks-slideshow.md).
+De meeste opdrachten op de werkbalk hebben gelijkwaardige menuopdrachten. Een uitzondering is **Enter/Edit RISE Slideshow**, die wordt besproken op [Delen en huidige notitieblokken](present-jupyter-notebooks-slideshow.md).
 
-U een aantal van deze opdrachten gebruiken als u de waarden voor de notebook in de volgende secties.
+U gebruikt een aantal van deze opdrachten terwijl u het notitieblok vult in de volgende secties.
 
-## <a name="create-a-markdown-cell"></a>Een cel Markdown maken
+## <a name="create-a-markdown-cell"></a>Een markdowncel maken
 
-1. Klik in de eerste lege cel wordt weergegeven op het canvas notebook. Een cel is standaard een **Code** type, wat betekent is ontworpen dat om uitvoerbaar code voor de geselecteerde kernel bevatten (Python, R, of F#). Het huidige type wordt weergegeven in het type vervolgkeuzelijst op de werkbalk:
+1. Klik in de eerste lege cel op het notitieblokcanvas. Standaard is een cel een **codetype,** wat betekent dat deze is ontworpen om runnable code voor de geselecteerde kernel (Python, R of F#) te bevatten. Het huidige type wordt weergegeven in de vervolgkeuzelijst tekst op de werkbalk:
 
-    ![Cel type werkbalk vervolgkeuzelijst](media/tutorial/tutorial-cell-type-drop-down.png)
+    ![Vervolgkeuzelijst werkbalk Celtype](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. Wijzigen van het celtype **Markdown** met behulp van de werkbalk vervolgkeuzelijst; u kunt ook gebruik van de **cel** > **Type Legendacel**  >   **Markdown** -opdracht:
+1. Wijzig het celtype in **Markering** met de vervolgkeuzelijst werkbalk. afwisselend de menuopdracht**Het afsteken van** **celceltypen** >  **Cell** > gebruiken:
 
-    ![Cel type opdracht](media/tutorial/tutorial-cell-type-menu.png)
+    ![Menu celtype, opdracht](media/tutorial/tutorial-cell-type-menu.png)
 
-1. Klik in de cel wilt bewerken en voer de volgende Markdown:
+1. Klik in de cel om te beginnen met bewerken en voer de volgende markdown in:
 
     ```markdown
     # Example Linear Regression
@@ -198,9 +198,9 @@ U een aantal van deze opdrachten gebruiken als u de waarden voor de notebook in 
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Voor het renderen van de Markdown in HTML-code voor de browser, selecteer de **uitvoeren** opdracht op de werkbalk of gebruik de **cel** > **uitvoeren cellen** opdracht. De Markdown-code voor het formatteren en koppelingen worden nu weergegeven als u verwacht in een browser.
+1. Als u de markering wilt omzetten in HTML voor de browser, selecteert u de opdracht **Uitvoeren** op de werkbalk of gebruikt u de opdracht**Celruncellen.** **Cell** >  De Markdown-code voor opmaak en koppelingen wordt nu weergegeven zoals u verwacht in een browser.
 
-1. Wanneer u de laatste cel in de notebook uitvoert, maakt Jupyter automatisch een nieuwe cel onder het account dat u hebt uitgevoerd. Meer Markdown in deze cel geplaatst door de stappen in deze sectie met de volgende Markdown te herhalen:
+1. Wanneer u de laatste cel in het notitieblok uitvoert, maakt Jupyter automatisch een nieuwe cel onder de cel die u hebt uitgevoerd. Plaats meer markdown in deze cel door de stappen in deze sectie te herhalen met de volgende markering:
 
     ```markdown
     ## Install packages using pip or conda
@@ -214,13 +214,13 @@ U een aantal van deze opdrachten gebruiken als u de waarden voor de notebook in 
     \```
     ```
 
-1. Als u wilt de Markdown opnieuw bewerken, dubbelklikt u op in de gerenderde cel. Voor het renderen van HTML opnieuw nadat u hebt wijzigingen aangebracht, voer de cel.
+1. Als u de markering opnieuw wilt bewerken, dubbelklikt u in de gerenderde cel. Als u HTML opnieuw wilt renderen nadat u wijzigingen hebt aangebracht, voert u de cel uit.
 
-## <a name="create-a-code-cell-with-commands"></a>Maken van een codecel met opdrachten
+## <a name="create-a-code-cell-with-commands"></a>Een codecel maken met opdrachten
 
-Als de vorige Markdown cel is uitgelegd, kunt u opdrachten rechtstreeks in het notitieblok opnemen. Opdrachten kunt u pakketten installeren, voert u curl of wget ophalen van gegevens of iets anders. Jupyter-notebooks effectief uitgevoerd binnen een virtuele Linux-machine, zodat u beschikt over de volledige Linux-opdracht om te werken met instellen.
+Zoals in de vorige Markdown-cel is uitgelegd, u opdrachten rechtstreeks in het notitieblok opnemen. U opdrachten gebruiken om pakketten te installeren, curl of wget uit te voeren om gegevens op te halen of iets anders. Jupyter notebooks effectief draaien binnen een Linux virtuele machine, dus je hebt de volledige Linux commando ingesteld om mee te werken.
 
-1. Voer de onderstaande opdrachten in de codecel die werden weergegeven nadat u hebt gebruikt **uitvoeren** op de vorige cel van Markdown. Als u een nieuwe cel niet ziet, maakt u een met **invoegen** > **cel onder** of gebruik de **+** op de werkbalk.
+1. Voer de onderstaande opdrachten in de codecel in die is verschenen nadat u **Run** op de vorige Markdown-cel hebt gebruikt. Als u geen nieuwe cel ziet, maakt u er een **+** met Cel **invoegen** > **hieronder** of gebruikt u de knop op de werkbalk.
 
     ```bash
     !pip install numpy
@@ -229,21 +229,21 @@ Als de vorige Markdown cel is uitgelegd, kunt u opdrachten rechtstreeks in het n
     !pip install sklearn
     ```
 
-1. Voordat u de cel uitvoert, maakt u een nieuwe cel met de **+** knop op de werkbalk en voer de volgende uitleg instellen op Markdown:
+1. Voordat u de cel uitvoert, **+** maakt u een nieuwe cel met de knop op de werkbalk, stelt u deze in op Markdown en voert u de volgende uitleg in:
 
     ```markdown
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. Selecteer de **cel** > **alles uitvoeren** opdracht voor het uitvoeren van alle cellen in de notebook. U ziet dat de cellen met Markdown weergegeven als HTML, en de opdracht uitvoeren in de kernel en bekijk de kernel-indicator zoals beschreven in de Markdown zelf:
+1. Selecteer de opdracht **Cel** > **uitvoeren alles** om alle cellen in het notitieblok uit te voeren. Merk op dat de Markdown-cellen als HTML worden weergegeven en dat de opdracht in de kernel wordt uitgevoerd en de kernelindicator observeren zoals beschreven in de markdown zelf:
 
-    ![Bezet indicator voor de notebook-kernel](media/tutorial/tutorial-kernel-busy.png)
+    ![Drukke indicator voor de notebookkernel](media/tutorial/tutorial-kernel-busy.png)
 
-1. Ook duurt het even de tijd voor alle van de `pip install` opdrachten uit te voeren, en omdat u al deze pakketten in de project-omgeving is geïnstalleerd (en omdat ze ook in Azure-notitieblokken standaard opgenomen zijn), ziet u veel berichten die worden gelezen, "vereiste al voldaan." Al deze uitvoer kan visueel afleiden, dus Selecteer die cel (met één klik) en gebruik vervolgens de **cel** > **cel uitvoer** > **wissel knop** om de uitvoer te verbergen. U kunt ook de **wissen** opdracht op die dezelfde submenu volledig verwijderen van de uitvoer.
+1. Het duurt ook een beetje `pip install` tijd voordat alle opdrachten worden uitgevoerd en omdat u deze pakketten al hebt geïnstalleerd in de projectomgeving (en omdat ze standaard ook in Azure-notitieblokken zijn opgenomen), ziet u veel berichten met de tekst :"Vereiste die al is voldaan." Al die uitvoer kan visueel storend zijn, dus selecteer die cel (met één klik) en gebruik vervolgens de > **schakeloptie**  > **Celceluitvoer**om de uitvoer te verbergen. **Cell** U de opdracht **Wissen** ook in hetzelfde submenu gebruiken om de uitvoer volledig te verwijderen.
 
-    De **in-/ uitschakelen** opdracht wordt ingeschakeld, wordt alleen de meest recente uitvoer van de cel; als u de cel opnieuw uitvoert, de uitvoer wordt opnieuw weergegeven.
+    Met de opdracht **Schakelen** worden alleen de meest recente uitvoer uit de cel verborgen. als u de cel opnieuw uitvoert, wordt de uitvoer opnieuw weergegeven.
 
-1. Omdat de pakketten zijn geïnstalleerd in de project-omgeving, opmerkingen bij de `! pip install` opdrachten met behulp van `#`; deze manier ze kunnen blijven in het notitieblok als instructievideo materiaal, maar wordt niet elk gewenst moment om uit te voeren en wordt niet onnodig uitvoer produceren. In dit geval blijven de opmerkingen opdrachten in het notitieblok geeft ook aan van het notitieblok afhankelijkheden.
+1. Omdat de pakketten zijn geïnstalleerd in de `! pip install` projectomgeving, becommentarieert u de opdrachten met behulp van `#`; op deze manier kunnen ze blijven in de notebook als instructiemateriaal, maar zal geen tijd duren om uit te voeren en zal geen onnodige output te produceren. In dit geval geeft het bewaren van de becommentarieerde opdrachten in het notitieblok ook de afhankelijkheden van het notitieblok aan.
 
     ```bash
     # !pip install numpy
@@ -254,15 +254,15 @@ Als de vorige Markdown cel is uitgelegd, kunt u opdrachten rechtstreeks in het n
 
 ## <a name="create-the-remaining-cells"></a>De resterende cellen maken
 
-Om in te vullen van de rest van het notitieblok, maakt u vervolgens een reeks van Markdown en de code cellen. Voor elke cel in de hieronder vermelde eerst maken van de nieuwe cel, klikt u vervolgens stelt u het type en plak de inhoud.
+Als u de rest van het notitieblok wilt vullen, maakt u vervolgens een reeks markerings- en codecellen. Voor elke cel die hieronder wordt vermeld, maakt u eerst de nieuwe cel, stelt u het type in en plakvervolgens in de inhoud.
 
-U kunt wachten met het uitvoeren van het notitieblok nadat u elke cel hebt gemaakt, is maar het interessant om uit te voeren van elke cel als u dit hebt gemaakt. Niet alle cellen weergeven uitvoer. Als u eventuele fouten niet ziet, wordt ervan uitgegaan dat de cel is normaal uitgevoerd.
+Hoewel u wachten om het notitieblok uit te voeren nadat u elke cel hebt gemaakt, is het interessant om elke cel uit te voeren terwijl u deze maakt. Niet alle cellen tonen uitvoer; Als u geen fouten ziet, gaat u ervan uit dat de cel normaal wordt uitgevoerd.
 
-Elke codecel, is afhankelijk van de code die wordt uitgevoerd in de vorige cellen en als u niet een van de cellen uit te voeren, hoger cellen kunnen leiden tot fouten. Als u vindt dat u vergeten bent om uit te voeren van een cel, kunt u proberen de **cel** > **alle uitgevoerd boven** voordat u de huidige cel uitvoert.
+Elke codecel is afhankelijk van de code die in vorige cellen is uitgevoerd en als u verzuimt een van de cellen uit te voeren, kunnen latere cellen fouten veroorzaken. Als u merkt dat u vergeten bent een cel uit te voeren, probeert u de **Cel** > **Run All Above** te gebruiken voordat u de huidige cel uitvoert.
 
-Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren dat elke cel is ingesteld op 'Code' of 'Markdown' indien nodig. Bijvoorbeeld, een 'Ongeldige syntaxis'-fout treedt meestal op wanneer u Markdown in de codecel hebt ingevoerd.
+Als u onverwachte resultaten ziet (wat u waarschijnlijk zult doen!), controleert u of elke cel is ingesteld op "Code" of "Markdown" indien nodig. Een fout met een 'ongeldige syntaxis' treedt bijvoorbeeld meestal op wanneer u Markdown hebt ingevoerd in de codecel.
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     ## Import packages and prepare the dataset
@@ -270,7 +270,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     In this example we're using numpy, pandas, and matplotlib. Data is in the file cricket_chirps.csv. Because this file is in the same project as this present Notebook, we can just load it using a relative pathname.
     ```
 
-1. Codecel; Wanneer uitvoert, ziet de inhoud van de tabel als uitvoer. U kunt de uitvoer onderdrukt door het commentaarteken de `print` instructie.
+1. Codecel; wanneer u wordt uitgevoerd, wordt de inhoud van de tabel weergegeven als uitvoer. U de uitvoer onderdrukken `print` door de instructie uit te geven.
 
     ```python
     import numpy as np
@@ -283,15 +283,15 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     ```
 
     > [!Note]
-    > Ziet u mogelijk waarschuwingen van deze code over 'numpy.dtype grootte gewijzigd'; de waarschuwingen kunnen worden genegeerd.
+    > Mogelijk ziet u waarschuwingen uit deze code over "numpy.dtype size changed"; de waarschuwingen kunnen veilig worden genegeerd.
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     Next, split the dataset into a Training set (2/3rds) and Test set (1/3rd). We don't need to do any feature scaling because there is only one column of independent variables, and packages typically do scaling for you.
     ```
 
-1. Codecel; Wanneer uitvoert, heeft deze cel geen uitvoer.
+1. Codecel; wanneer deze cel wordt uitgevoerd, heeft deze cel geen uitvoer.
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -299,7 +299,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
     ```
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     ## Fit the data to the training set
@@ -311,7 +311,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
-1. Codecel; Wanneer uitvoeren, deze cel toont de uitvoer van de `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`.
+1. Codecel; wanneer deze cel wordt uitgevoerd, wordt de uitvoer weergegeven. `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`
 
     ```python
     from sklearn.linear_model import LinearRegression
@@ -320,7 +320,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     regressor.fit(X_train, y_train)   # Provide training data so the machine can learn to predict using a learned model.
     ```
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     ## Predict the results
@@ -332,14 +332,14 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
 
-1. Codecel; Wanneer uitvoeren, deze cel toont resultaten, zoals `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`.
+1. Codecel; wanneer deze cel wordt `[79.49588055 75.98873911 77.87719989 80.03544077 75.17939878]`uitgevoerd, worden resultaten weergegeven zoals .
 
     ```python
     y_pred = regressor.predict(X_test)
     print(y_pred)
     ```
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     It's interesting to think that all the "predictions" we use in daily life, like weather forecasts, are just regression models of some sort working with various data sets. Those models are much more complicated than what's shown here, but the idea is the same.
@@ -351,7 +351,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     The challenge is determining what data to actually use. For example, with weather, how far back in time do you go? How have weather patterns been changing decade by decade? In any case, something like weather predictions will be doing things hour by hour, day by day, for things like temperature, precipitation, winds, cloud cover, etc. Radar and other observations are of course fed into the model and the predictions are reduced to mathematics.
     ```
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     ## Visualize the results
@@ -359,7 +359,7 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     The following code generates a plot: green dots are training data, red dots are test data, blue dots are predictions. Gray line is the regression itself. You see that all the blue dots are exactly on the line, as they should be, because the predictions exactly fit the model (the line).
     ```
 
-1. Codecel; Wanneer uitvoert, produceert deze cel grafische getekend. Als u niet hoeveel tijd plot de eerste zien (en in plaats daarvan Zie 'Afbeelding grootte 640 x 480 met 1 assen'), voer de cel opnieuw uit.
+1. Codecel; wanneer uitgevoerd, deze cel produceert een grafische plot. Als u de plot de eerste keer niet ziet (en in plaats daarvan 'Figuurgrootte 640x480 met 1 assen' ziet, voert u de cel opnieuw uit.
 
     ```python
     import matplotlib.pyplot as plt
@@ -374,9 +374,9 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     plt.show()
     ```
 
-    ![Grafiek-uitvoer van de code matplotlib](media/tutorial/tutorial-plot-output.png)
+    ![Plotuitvoer van de matplotlib-code](media/tutorial/tutorial-plot-output.png)
 
-1. Cel markdown:
+1. Afwaarderingscel:
 
     ```markdown
     ## Closing comments
@@ -388,37 +388,37 @@ Als er onverwachte resultaten (die u waarschijnlijk wordt!), moet u controleren 
     Again, once you are working with more than one or two independent variables, it's much easier to use machine learning to crunch the numbers than to try to visualize it graphically.
     ```
 
-## <a name="clear-outputs-and-rerun-all-cells"></a>Schakel uitvoer en alle cellen opnieuw uitvoeren
+## <a name="clear-outputs-and-rerun-all-cells"></a>Uitvoer wissen en alle cellen opnieuw uitvoeren
 
-Nadat u de stappen in de vorige sectie voor het vullen van het hele notitieblok, kunt u zowel een stukje code uitvoeren in de context van een volledige zelfstudie over het lineaire regressie hebt gemaakt. Deze direct combinatie van code en de tekst is een van de grote voordelen van notitieblokken.
+Nadat u de stappen in de vorige sectie hebt gevolgd om het hele notitieblok te vullen, hebt u zowel een stukje loopcode gemaakt in de context van een volledige zelfstudie over lineaire regressie. Deze directe combinatie van code en tekst is een van de grote voordelen van notebooks!
 
-Probeer nu opnieuw uit te voeren de hele laptop:
+Probeer het hele notitieblok nu opnieuw uit te voeren:
 
-1. Alle aan de kernel-sessiegegevens wissen en alle cellen uitvoer door te selecteren **Kernel** >  **& wissen uitvoer opnieuw**. Met deze opdracht is altijd goed om uit te voeren wanneer u klaar bent met een laptop, om dit te controleren dat u eventuele vreemd afhankelijkheden tussen de cellen van de code nog niet hebt gemaakt.
+1. Verwijder alle sessiegegevens en alle celuitvoer van de kernel door **Kernel** > **Restart & Clear Output te**selecteren. Deze opdracht is altijd een goede om uit te voeren wanneer u een notitieblok hebt voltooid, alleen maar om ervoor te zorgen dat u geen vreemde afhankelijkheden tussen codecellen hebt gemaakt.
 
-1. Voer nogmaals uit de notebook met **cel** > **alles uitvoeren**. U ziet dat de kernel-indicator wordt ingevuld terwijl de code wordt uitgevoerd.
+1. Voer het notitieblok opnieuw uit met **Cell** > **Run All.** Let op: de kernelindicator wordt ingevuld terwijl de code wordt uitgevoerd.
 
-    Hebt u geen code die wordt uitgevoerd te lang of anders vastloopt, kunt u de kernel stoppen met het **Kernel** > **Interrupt** opdracht.
+    Als u een code hebt die te lang wordt uitgevoerd of anderszins vastloopt, u de kernel stoppen met de opdracht **Kernel** > **Interrupt.**
 
-1. Blader door de notebook Bekijk de resultaten. (Als de grafiek niet wordt opnieuw weergegeven, opnieuw uitvoeren die cel.)
+1. Blader door het notitieblok om de resultaten te onderzoeken. (Als de plot opnieuw niet wordt weergegeven, wordt die cel opnieuw uitgevoerd.)
 
-## <a name="save-halt-and-close-the-notebook"></a>Opslaan en sluiten van de notebook stoppen
+## <a name="save-halt-and-close-the-notebook"></a>Het notitieblok opslaan, stoppen en sluiten
 
-Tijdens de tijd die u een laptop bewerkt, bespaart u de huidige status met het **bestand** > **opslaan en controlepunt** opdracht of het opslaan op de werkbalk. Een "controlepunt", maakt u een momentopname die u kunt teruggaan naar op elk gewenst moment tijdens de sessie. Controlepunten zodat u kunt een reeks experimentele wijzigingen aanbrengen en als deze wijzigingen niet werkt, kunt u alleen terugkeren naar een controlepunt met de **bestand** > **herstellen naar controlepunt** opdracht. Een alternatieve methode is het maken van extra cellen en uitcommentarieer code die u niet uitvoeren wilt. in beide gevallen werkt.
+Tijdens de tijd dat u een notitieblok bewerkt, u de huidige status opslaan met de opdracht **Bestand** > **opslaan en controlepunt** of de knop Opslaan op de werkbalk. Een controlepunt maakt een momentopname waar naar u op elk gewenst moment tijdens de sessie terugkeren. Met controlepunten u een reeks experimentele wijzigingen aanbrengen en als deze wijzigingen niet werken, u gewoon terugkeren naar een controlepunt met de opdracht **Bestand** > **terugschakelen naar controlepunt.** Een alternatieve benadering is om extra cellen te maken en commentaar uit een code die u niet wilt uitvoeren; hoe dan ook werkt.
 
-U kunt ook de **bestand** > **maakt u een kopie** opdracht op elk gewenst moment een kopie van de huidige status van het notitieblok maken in een nieuw bestand in uw project. Deze kopie wordt automatisch geopend in een nieuw browsertabblad.
+U de opdracht **Bestand** > **een kopie** op elk gewenst moment gebruiken om een kopie van de huidige status van het notitieblok in een nieuw bestand in uw project te maken. Die kopie wordt automatisch geopend in een nieuw browsertabblad.
 
-Wanneer u klaar bent met een laptop, gebruikt u de **bestand** > **sluiten en stoppen** opdracht, waarbij de notebook wordt gesloten en de kernel dat actief is geweest deze wordt afgesloten. Het browsertabblad wordt in Azure-notitieblokken automatisch gesloten.
+Wanneer u klaar bent met een notitieblok, gebruikt u de opdracht **Bestand** > **sluiten en stoppen,** waarbij het notitieblok wordt gesloten en de kernel wordt afgesloten waarop het is uitgevoerd. Azure Notebooks sluit vervolgens het browsertabblad automatisch.
 
-## <a name="debug-notebooks-using-visual-studio-code"></a>Fouten opsporen in notitieblokken met behulp van Visual Studio Code
+## <a name="debug-notebooks-using-visual-studio-code"></a>Foutopsporingsnotitieblokken met Visual Studio Code
 
-Als de cellen met code in uw laptop niet gedragen zich zoals verwacht, kunt u code bugs of andere defecten mogelijk. Met andere dan `print`-instructies gebruiken om de waarde van variabelen weer te geven, biedt een typische Jupyter-omgeving echter geen voorzieningen voor fout opsporing.
+Als de codecellen in uw notitieblok zich niet gedragen zoals u verwacht, u codebugs of andere defecten hebben. Echter, anders `print` dan het gebruik van verklaringen om de waarde van variabelen weer te geven, een typische Jupyter omgeving biedt geen debugging faciliteiten.
 
-Gelukkig kunt u het *. ipynb* -bestand van de notebook downloaden en vervolgens openen in Visual Studio code met behulp van de python-extensie. Met de extensie wordt een notitie blok rechtstreeks geïmporteerd als één code bestand, zodat de geprijsde cellen in opmerkingen worden bewaard. Zodra u het notitie blok hebt geïmporteerd, kunt u het Visual Studio code-fout opsporingsprogramma gebruiken om uw code te door lopen, onderbrekings punten in te stellen, de status te controleren, enzovoort. Nadat u de code hebt gecorrigeerd, exporteert u het *. ipynb* -bestand vanuit Visual Studio code en uploadt u het terug naar Azure notebooks.
+Gelukkig kun je het *.ipynb-bestand* van de notebook downloaden en vervolgens openen in Visual Studio Code met behulp van de Python-extensie. De extensie importeert een notitieblok rechtstreeks als één codebestand, waarbij uw Markdown-cellen in opmerkingen behouden blijven. Zodra u het notitieblok hebt geïmporteerd, u de foutopsporing van de Visual Studio-code gebruiken om door uw code te stappen, breekpunten in te stellen, de status te onderzoeken, enzovoort. Nadat u correcties in uw code hebt aangebracht, exporteert u het *.ipynb-bestand* uit Visual Studio Code en uploadt u het terug naar Azure Notebooks.
 
-Zie [debug a Jupyter notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) (Engelstalig) in de documentatie van Visual Studio code voor meer informatie.
+Zie [Een Jupyter-notitieblok debugen](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) in de documentatie van visual studiocode voor meer informatie.
 
-Zie ook [Visual Studio code-Jupyter-ondersteuning](https://code.visualstudio.com/docs/python/jupyter-support) voor aanvullende functies van Visual Studio code for Jupyter-notebooks.
+Zie ook [Visual Studio Code - Jupyter-ondersteuning](https://code.visualstudio.com/docs/python/jupyter-support) voor extra functies van Visual Studio Code voor Jupyter-notebooks.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -431,5 +431,5 @@ Artikelen met procedures:
 - [Pakketten vanuit een notebook installeren](install-packages-jupyter-notebook.md)
 - [Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
 - [Werken met gegevensbestanden](work-with-project-data-files.md)
-- [Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
+- [Toegang tot gegevensresources](access-data-resources-jupyter-notebooks.md)
 - [Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

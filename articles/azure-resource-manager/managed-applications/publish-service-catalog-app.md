@@ -1,24 +1,24 @@
 ---
-title: Door service catalog beheerde app publiceren
+title: Beheerde app servicecatalogus publiceren
 description: In dit artikel leest u hoe u een beheerde Azure-toepassing maakt die is bedoeld voor leden van uw organisatie.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903267"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473010"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>De definitie van een beheerde toepassing maken en publiceren
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Zelfstudie: Een beheerde toepassingsdefinitie maken en publiceren
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 U kunt door Azure [beheerde toepassingen](overview.md) maken en publiceren die bedoeld zijn voor leden van uw organisatie. Zo kan een IT-afdeling beheerde toepassingen publiceren die voldoen aan de organisatiestandaarden. Deze beheerde toepassingen zijn beschikbaar via de servicecatalogus, niet Azure Marketplace.
 
-Als u een beheerde toepassing naar uw Azure-Service catalogus wilt publiceren, moet u het volgende doen:
+Als u een beheerde toepassing wilt publiceren in uw Azure Service Catalog, moet u het als:
 
 * Een sjabloon maken die de resources definieert die met de beheerde toepassing moeten worden geïmplementeerd.
 * De elementen van de gebruikersinterface voor de portal definiëren bij het implementeren van de beheerde toepassing.
@@ -81,13 +81,13 @@ Voeg de volgende JSON-code toe aan uw bestand. Hiermee definieert u de parameter
 
 Sla het bestand mainTemplate.json op.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Uw Maak ervaring definiëren met behulp van CreateUiDefinition. json
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Uw ervaring met maken definiëren met CreateUiDefinition.json
 
-Als uitgever definieert u uw Maak ervaring met behulp van het bestand **createUiDefinition. json** , waarmee de interface wordt gegenereerd voor gebruikers die beheerde toepassingen maken. U definieert hoe gebruikers invoer opgeven voor elke para meter met behulp van [besturings elementen](create-uidefinition-elements.md) , waaronder vervolg keuzelijsten, tekst vakken en wachtwoord vakken.
+Als uitgever definieert u uw maakervaring met het bestand **createUiDefinition.json** dat de interface genereert voor gebruikers die beheerde toepassingen maken. U definieert hoe gebruikers invoer voor elke parameter leveren met behulp van [besturingselementelementen,](create-uidefinition-elements.md) waaronder vervolgkeuzelijsten, tekstvakken en wachtwoordvakken.
 
-Maak een bestand met de naam **createUiDefinition. json** (deze naam is hoofdletter gevoelig)
+Een bestand met de naam **createUiDefinition.json** maken (deze naam is hoofdlettergevoelig)
 
-Voeg de volgende starter-JSON toe aan het bestand en sla het op.
+Voeg de volgende starter JSON toe aan het bestand en sla het op.
 
 ```json
 {
@@ -138,7 +138,7 @@ Voeg de volgende starter-JSON toe aan het bestand en sla het op.
 }
 ```
 
-Zie aan de [slag met CreateUiDefinition](create-uidefinition-overview.md)voor meer informatie.
+Zie [Aan de slag met CreateUiDefinition voor](create-uidefinition-overview.md)meer informatie.
 
 ## <a name="package-the-files"></a>De bestanden verpakken
 
@@ -208,30 +208,30 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Uw eigen opslag plaatsen voor de definitie van de beheerde toepassing
-U kunt ervoor kiezen om de definitie van de beheerde toepassing op te slaan in een opslag account dat u tijdens het maken hebt gekregen, zodat de locatie en toegang volledig door u kan worden beheerd door u voor uw regelgevings behoeften.
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Breng uw eigen opslag mee voor de beheerde toepassingsdefinitie
+U ervoor kiezen om uw beheerde toepassingsdefinitie op te slaan in een opslagaccount dat door u wordt verstrekt tijdens het maken, zodat de locatie en toegang volledig door u kunnen worden beheerd voor uw wettelijke behoeften.
 
 > [!NOTE]
-> Uw eigen opslag ruimte wordt alleen ondersteund met ARM-sjablonen of REST API implementaties van de definitie van de beheerde toepassing.
+> Breng uw eigen opslag wordt alleen ondersteund met ARM Template of REST API implementaties van de beheerde toepassingsdefinitie.
 
-### <a name="select-your-storage-account"></a>Uw opslag account selecteren
-U moet [een opslag account maken](../../storage/common/storage-account-create.md) dat de definitie van de beheerde toepassing bevat voor gebruik met Service Catalog.
+### <a name="select-your-storage-account"></a>Selecteer uw opslagaccount
+U moet [een opslagaccount maken](../../storage/common/storage-account-create.md) om de beheerde toepassingsdefinitie te bevatten voor gebruik met Service Catalog.
 
-Kopieer de resource-ID van het opslag account. Deze wordt later gebruikt bij het implementeren van de definitie.
+Kopieer de bron-id van het opslagaccount. Het zal later worden gebruikt bij het implementeren van de definitie.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Stel de roltoewijzing voor ' toestel resource provider ' in uw opslag account in
-Voordat de definitie van de beheerde toepassing kan worden geïmplementeerd in uw opslag account, moet u Inzender machtigingen verlenen aan de rol van de **resource provider** van het apparaat, zodat de definitie bestanden kunnen worden geschreven naar de container van uw opslag account.
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>De roltoewijzing voor 'Toestelserviceprovider' instellen in uw opslagaccount
+Voordat uw beheerde toepassingsdefinitie kan worden geïmplementeerd in uw opslagaccount, moet u inzendermachtigingen geven aan de rol **van toestelbronprovider,** zodat de definitiebestanden naar de container van uw opslagaccount kunnen worden geschreven.
 
-1. Ga in [Azure Portal](https://portal.azure.com) naar uw opslagaccount.
-1. Selecteer **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het opslag account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
-1. Selecteer de rol **Inzender** in het venster **roltoewijzing toevoegen** . 
-1. Selecteer in het veld **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-Service-Principal**.
-1. Onder **Selecteer** zoeken naar de rol van de provider van het **apparaat** en selecteer deze.
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar uw opslagaccount.
+1. Selecteer **Toegangsbeheer (IAM)** om de toegangscontrole-instellingen voor het opslagaccount weer te geven. Selecteer het tabblad **Toewijzingen van rollen** om de lijst met roltoewijzingen weer te geven.
+1. Selecteer in het venster **Roltoewijzing toevoegen** de rol **Inzender.** 
+1. Selecteer **azure** **AD-gebruiker, -groep of serviceprincipal**in het veld Toegang toewijzen tot veld .
+1. Selecteer **onder** Zoeken naar de rol **Toestelbronprovider** selecteren en selecteer deze.
 1. Sla de roltoewijzing op.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>De definitie van de beheerde toepassing implementeren met een ARM-sjabloon 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>De beheerde toepassingsdefinitie implementeren met een ARM-sjabloon 
 
-Gebruik de volgende ARM-sjabloon om uw ingepakte, beheerde toepassing te implementeren als een nieuwe definitie van een beheerde toepassing in de Service catalogus waarvan de definitie bestanden worden opgeslagen en onderhouden in uw eigen opslag account:
+Gebruik de volgende ARM-sjabloon om uw verpakte beheerde toepassing te implementeren als een nieuwe beheerde toepassingsdefinitie in servicecatalogus waarvan de definitiebestanden worden opgeslagen en onderhouden in uw eigen opslagaccount:
    
 ```json
     {
@@ -303,12 +303,12 @@ Gebruik de volgende ARM-sjabloon om uw ingepakte, beheerde toepassing te impleme
 }
 ```
 
-We hebben een nieuwe eigenschap met de naam **storageAccountId** toegevoegd aan de eigenschappen van uw applicationDefintion en geven de opslag account-id op die u wilt opslaan als waarde:
+We hebben een nieuwe eigenschap met de naam **storageAccountId** toegevoegd aan de eigenschappen van uw applicatieDefintion en bieden een opslagaccount-id waar u uw definitie in wilt opslaan als de waarde:
 
-U kunt controleren of de definitie bestanden van de toepassing worden opgeslagen in het opslag account in een container met de naam **applicationdefinitions**.
+U controleren of de toepassingsdefinitiebestanden zijn opgeslagen in uw opgegeven opslagaccount in een container met de **titel toepassingsdefinities**.
 
 > [!NOTE]
-> Voor extra beveiliging kunt u een definitie van een beheerde toepassing maken en deze opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../../storage/common/storage-service-encryption.md). De inhoud van de definitie wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de definitie in de Service catalogus zien.
+> Voor extra beveiliging u een definitie van beheerde toepassingen maken, deze opslaan in een [blob met Azure-opslagaccount waar versleuteling is ingeschakeld.](../../storage/common/storage-service-encryption.md) De definitie-inhoud wordt versleuteld via de versleutelingsopties van het opslagaccount. Alleen gebruikers met machtigingen voor het bestand kunnen de definitie in de servicecatalogus zien.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Ervoor zorgen dat gebruikers de definitie kunnen zien
 

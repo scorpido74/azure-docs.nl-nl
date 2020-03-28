@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: toegang tot webtoepassingen verbeteren-Azure-toepassing gateway'
+title: 'Zelfstudie: Toegang tot webtoepassingen verbeteren - Azure Application Gateway'
 description: In deze zelfstudie leert u hoe u een automatisch schalende, zone-redundante toepassingsgateway met een gereserveerd IP-adres maakt met Azure PowerShell.
 services: application-gateway
 author: vhorne
@@ -9,13 +9,13 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74011367"
 ---
-# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Zelf studie: een toepassings gateway maken waarmee toegang tot webtoepassingen wordt verbeterd
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Zelfstudie: Een toepassingsgateway maken die de toegang tot webtoepassingen verbetert
 
 Als u als IT-beheerder betrokken bent bij het verbeteren van de toegang tot webtoepassingen, kunt u de toepassingsgateway zodanig optimaliseren dat de schaal ervan wordt aangepast aan de vraag van de klant en dat er meerdere beschikbaarheidszones worden bereikt. In deze zelfstudie wordt uitgelegd hoe u Azure Application Gateway-functies kunt configureren voor automatisch schalen, zone-redundantie en gereserveerde VIP's (statische IP). U maakt gebruik van Azure PowerShell-cmdlets en het Azure Resource Manager-implementatiemodel om het probleem op te lossen.
 
@@ -30,13 +30,13 @@ In deze zelfstudie leert u het volgende:
 > * De toepassingsgateway maken
 > * De toepassingsgateway testen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor deze zelfstudie moet u Azure PowerShell lokaal uitvoeren. U moet Azure PowerShell module versie 1.0.0 of hoger hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor deze zelfstudie moet u Azure PowerShell lokaal uitvoeren. U moet Azure PowerShell-moduleversie 1.0.0 of hoger hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -180,7 +180,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik Get-AzPublicIPAddress om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
+Gebruik Get-AzPublicIPAddress om het openbare IP-adres van de toepassingsgateway te krijgen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 

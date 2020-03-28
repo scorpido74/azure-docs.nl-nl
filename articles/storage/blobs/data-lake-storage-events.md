@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: het data Lake Capture-patroon implementeren om een Azure Databricks Delta tabel bij te werken | Microsoft Docs'
-description: In deze zelf studie ziet u hoe u een Event Grid-abonnement, een Azure-functie en een Azure Databricks taak kunt gebruiken om rijen met gegevens in te voegen in een tabel die is opgeslagen in azure DataLake Storage Gen2.
+title: 'Zelfstudie: Het patroon voor het vastleggen van gegevensmeer implementeren om een Azure Databricks Delta-tabel bij te werken | Microsoft Documenten'
+description: In deze zelfstudie ziet u hoe u een abonnement op eventgrid, een Azure-functie en een Azure Databricks-taak gebruikt om rijen met gegevens in te voegen in een tabel die is opgeslagen in Azure DataLake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,68 +9,68 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303304"
 ---
-# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Zelf studie: het data Lake Capture-patroon implementeren om een Databricks Delta tabel bij te werken
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Zelfstudie: Het patroon voor het vastleggen van gegevensmeer implementeren om een Tabel Met Gegevensbricks Delta bij te werken
 
-In deze zelf studie wordt uitgelegd hoe u gebeurtenissen in een opslag account met een hiërarchische naam ruimte verwerkt.
+In deze zelfstudie ziet u hoe u gebeurtenissen verwerken in een opslagaccount met een hiërarchische naamruimte.
 
-U maakt een kleine oplossing waarmee een gebruiker een Databricks Delta tabel kan vullen door een bestand met door komma's gescheiden waarden (CSV) te uploaden waarin een verkoop order wordt beschreven. U maakt deze oplossing door samen een Event Grid-abonnement, een Azure-functie en een [taak](https://docs.azuredatabricks.net/user-guide/jobs.html) in azure Databricks te verbinden.
+U bouwt een kleine oplossing waarmee een gebruiker een Gegevensbricks Delta-tabel kan invullen door een csv-bestand (comma-separated values) te uploaden waarin een verkooporder wordt beschreven. U bouwt deze oplossing door een Event Grid-abonnement, een Azure-functie en een taak in Azure Databricks met elkaar [te](https://docs.azuredatabricks.net/user-guide/jobs.html) verbinden.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Maak een Event Grid-abonnement dat een Azure-functie aanroept.
-> * Maak een Azure-functie die een melding ontvangt van een gebeurtenis en voert de taak vervolgens uit in Azure Databricks.
-> * Maak een Databricks-taak waarmee een klant order wordt ingevoegd in een Databricks-Delta tabel die zich in het opslag account bevindt.
+> * Maak een Azure-functie die een melding van een gebeurtenis ontvangt en vervolgens de taak uitvoert in Azure Databricks.
+> * Maak een Databricks-taak die een klantorder invoegt in een Gegevensbricks Delta-tabel die zich in het opslagaccount bevindt.
 
-Deze oplossing wordt in omgekeerde volg orde gebouwd, te beginnen met de Azure Databricks-werk ruimte.
+We bouwen deze oplossing in omgekeerde volgorde, te beginnen met de Azure Databricks-werkruimte.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-* Maak een opslag account met een hiërarchische naam ruimte (Azure Data Lake Storage Gen2). In deze zelf studie wordt een opslag account met de naam `contosoorders`gebruikt. Zorg ervoor dat aan uw gebruikersaccount de [rol van Gegevensbijdrager voor opslagblob](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) is toegewezen.
+* Maak een opslagaccount met een hiërarchische naamruimte (Azure Data Lake Storage Gen2). Deze zelfstudie maakt `contosoorders`gebruik van een opslagaccount met de naam . Zorg ervoor dat aan uw gebruikersaccount de [rol van Gegevensbijdrager voor opslagblob](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) is toegewezen.
 
-  Zie [een Azure data Lake Storage Gen2-account maken](data-lake-storage-quickstart-create-account.md).
+  Zie [Een Azure Data Lake Storage Gen2-account maken](data-lake-storage-quickstart-create-account.md).
 
-* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Een service-principal maken. Zie [Hoe: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang hebben tot bronnen.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 
   Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
+  :heavy_check_mark: Wanneer u de stappen uitvoert in de [toepassing Toewijzen aan een rolsectie](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u de rol **Opslagblobgegevensinzender** toewijzen aan de serviceprincipal.
 
   > [!IMPORTANT]
   > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
-  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze waarden later nodig.
+  :heavy_check_mark: Wanneer u de stappen uitvoert in het gedeelte [Waarden opvragen voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en wachtwoordwaarden in een tekstbestand. Die waarden heb je later nodig.
 
-## <a name="create-a-sales-order"></a>Een verkoop order maken
+## <a name="create-a-sales-order"></a>Een verkooporder maken
 
-Maak eerst een CSV-bestand waarin een verkoop order wordt beschreven en upload dat bestand vervolgens naar het opslag account. Later gebruikt u de gegevens uit dit bestand om de eerste rij in onze Databricks Delta tabel in te vullen.
+Maak eerst een csv-bestand dat een verkooporder beschrijft en upload dat bestand vervolgens naar het opslagaccount. Later gebruikt u de gegevens uit dit bestand om de eerste rij in onze Tabel Databricks Delta te vullen.
 
-1. Open Azure Storage Explorer. Ga vervolgens naar uw opslag account en maak in de sectie **BLOB-containers** een nieuwe container met de naam **Data**.
+1. Open Azure Storage Explorer. Navigeer vervolgens naar uw opslagaccount en maak in de sectie **Blob-containers** een nieuwe container met de naam **gegevens**.
 
    ![gegevensmap](./media/data-lake-storage-events/data-container.png "gegevensmap")
 
-   Zie [Azure Storage Explorer gebruiken voor het beheren van gegevens in een Azure data Lake Storage Gen2-account](data-lake-storage-explorer.md)voor meer informatie over het gebruik van Storage Explorer.
+   Zie [Azure Storage Explorer gebruiken om gegevens te beheren in een Azure Data Lake Storage Gen2-account voor](data-lake-storage-explorer.md)meer informatie over het gebruik van Storage Explorer.
 
-2. Maak in de **gegevens** container een map met de naam **input**.
+2. Maak in de **gegevenscontainer** een map met de naam **invoer**.
 
-3. Plak de volgende tekst in een tekst editor.
+3. Plak de volgende tekst in een teksteditor.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Sla dit bestand op uw lokale computer op en geef het de naam **Data. CSV**.
+4. Sla dit bestand op uw lokale computer op en geef het de naam **data.csv**.
 
-5. Upload dit bestand in Storage Explorer naar de map **invoer** .  
+5. Upload dit bestand in Storage Explorer naar de **invoermap.**  
 
 ## <a name="create-a-job-in-azure-databricks"></a>Een taak maken in Azure Databricks
 
@@ -78,35 +78,35 @@ In deze sectie voert u de volgende taken uit:
 
 * Een Azure Databricks-werkruimte maken.
 * Maak een notebook.
-* Een Databricks Delta tabel maken en vullen.
-* Voeg code toe waarmee rijen in de Databricks Delta tabel worden ingevoegd.
+* Een Tabel Databricks Delta maken en invullen.
+* Voeg code toe die rijen invoegt in de tabel Delta met Gegevensstenen.
 * Een taak maken.
 
 ### <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
 In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure Portal.
 
-1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
+1. Selecteer in de Azure-portal de optie **Een resource** > **Analytics** > **Azure Databricks maken**.
 
-    ![Databricks op Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks op Azure Portal")
+    ![Databricks op Azure-portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks op Azure-portal")
 
 2. Geef bij **Azure Databricks Service** de waarden op voor het maken van een Databricks-werkruimte.
 
-    ![Een Azure Databricks-werk ruimte maken](./media/data-lake-storage-events/new-databricks-service.png "Een Azure Databricks-werkruimte maken")
+    ![Een Azure Databricks-werkruimte maken](./media/data-lake-storage-events/new-databricks-service.png "Een Azure Databricks-werkruimte maken")
 
     Het maken van de werkruimte duurt enkele minuten. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
 ### <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de Azure Databricks werk ruimte die u hebt gemaakt en selecteer vervolgens **werk ruimte starten**.
+1. Ga in de [Azure-portal](https://portal.azure.com)naar de Azure Databricks-werkruimte die u hebt gemaakt en selecteer **Vervolgens Werkruimte starten**.
 
-2. U wordt omgeleid naar de Azure Databricks-portal. Selecteer in de portal **Nieuw** > **Cluster**.
+2. U wordt omgeleid naar de Azure Databricks-portal. Selecteer **Nieuw** > **cluster**in de portal .
 
     ![Databricks op Azure](./media/data-lake-storage-events/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in azure](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
+    ![Databricks Spark-cluster maken op Azure](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Databricks Spark-cluster maken op Azure")
 
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
@@ -117,23 +117,23 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html) voor meer informatie over het maken van clusters.
 
-### <a name="create-a-notebook"></a>Een notitie blok maken
+### <a name="create-a-notebook"></a>Een notebook maken
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitie blok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 2. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Python** als taal en selecteer vervolgens het Apache Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitie blok maken in Databricks](./media/data-lake-storage-events/new-databricks-notebook.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/data-lake-storage-events/new-databricks-notebook.png "Notitieblok maken in Databricks")
 
     Selecteer **Maken**.
 
-### <a name="create-and-populate-a-databricks-delta-table"></a>Een Databricks Delta tabel maken en vullen
+### <a name="create-and-populate-a-databricks-delta-table"></a>Een Gegevensbricks Delta-tabel maken en bevullen
 
-1. Kopieer en plak het volgende code blok in de eerste cel van het notitie blok dat u hebt gemaakt, maar voer deze code nog niet uit.  
+1. Kopieer en plak het volgende codeblok in het notitieblok dat u hebt gemaakt in de eerste cel, maar voer deze code nog niet uit.  
 
-   Vervang de `appId`, `password``tenant` waarden voor tijdelijke aanduidingen in dit code blok door de waarden die u hebt verzameld bij het volt ooien van de vereisten van deze zelf studie.
+   Vervang `appId`de `password` `tenant` tijdelijke aanduidingswaarden in dit codeblok door de waarden die u hebt verzameld terwijl u de vereisten van deze zelfstudie voltooit.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -149,14 +149,14 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
     customerTablePath = adlsPath + 'delta-tables/customers'
     ```
 
-    Met deze code wordt een widget gemaakt met de naam **source_file**. Later gaat u een Azure-functie maken die deze code aanroept en een bestandspad naar die widget door gegeven.  Deze code verifieert ook uw service-principal met het opslag account en maakt enkele variabelen die u in andere cellen gebruikt.
+    Met deze code wordt een widget met de naam **source_file**. Later maakt u een Azure-functie die deze code aanroept en een bestandspad doorgeeft aan die widget.  Deze code verifieert ook uw serviceprincipal met het opslagaccount en maakt een aantal variabelen die u in andere cellen zult gebruiken.
 
     > [!NOTE]
-    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. <br><br>In plaats van deze regel code te gebruiken: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`gebruikt u bijvoorbeeld de volgende regel code: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Nadat u deze zelf studie hebt voltooid, raadpleegt u het artikel [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) op de Azure Databricks-website om voor beelden van deze benadering te bekijken.
+    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. <br><br>In plaats van deze coderegel `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`te gebruiken, gebruikt u bijvoorbeeld `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`de volgende coderegel: . <br><br>Nadat u deze zelfstudie hebt voltooid, raadpleegt u het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) op de Azure Databricks-website om voorbeelden van deze aanpak te bekijken.
 
 2. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
-3. Kopieer en plak het volgende code blok in een andere cel en druk op **SHIFT + ENTER** om de code in dit blok uit te voeren.
+3. Kopieer en plak het volgende codeblok in een andere cel en druk vervolgens op de **shift+ ENTER-toetsen** om de code in dit blok uit te voeren.
 
    ```Python
    from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
@@ -185,13 +185,13 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
      .saveAsTable("customer_data", path=customerTablePath))
    ```
 
-   Deze code maakt de Delta tabel Databricks in uw opslag account en laadt vervolgens enkele initiële gegevens uit het CSV-bestand dat u eerder hebt geüpload.
+   Met deze code wordt de Tabel Gegevensbricks Delta gemaakt in uw opslagaccount en worden vervolgens enkele eerste gegevens geladen uit het csv-bestand dat u eerder hebt geüpload.
 
-4. Nadat dit code blok is uitgevoerd, verwijdert u dit code blok uit het notitie blok.
+4. Nadat dit codeblok is uitgevoerd, verwijdert u dit codeblok uit uw notitieblok.
 
-### <a name="add-code-that-inserts-rows-into-the-databricks-delta-table"></a>Code toevoegen waarmee rijen worden ingevoegd in de tabel Databricks Delta
+### <a name="add-code-that-inserts-rows-into-the-databricks-delta-table"></a>Code toevoegen die rijen invoegt in de tabel Delta met Gegevensstenen
 
-1. Kopieer en plak het volgende code blok in een andere cel, maar voer deze cel niet uit.
+1. Kopieer en plak het volgende codeblok in een andere cel, maar voer deze cel niet uit.
 
    ```Python
    upsertDataDF = (spark
@@ -202,9 +202,9 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
    upsertDataDF.createOrReplaceTempView("customer_data_to_upsert")
    ```
 
-   Met deze code worden gegevens in een tijdelijke tabel weergave ingevoegd met behulp van gegevens uit een CSV-bestand. Het pad naar dat CSV-bestand is afkomstig van de invoer widget die u in een eerdere stap hebt gemaakt.
+   Met deze code worden gegevens in een tijdelijke tabelweergave ingevoegd met behulp van gegevens uit een csv-bestand. Het pad naar dat csv-bestand is afkomstig van de invoerwidget die u in een eerdere stap hebt gemaakt.
 
-2. Voeg de volgende code toe om de inhoud van de tijdelijke tabel weergave samen te voegen met de Delta tabel Databricks.
+2. Voeg de volgende code toe om de inhoud van de tijdelijke tabelweergave samen te voegen met de tabel Gegevensbricks Delta.
 
    ```
    %sql
@@ -235,41 +235,41 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
 
 ### <a name="create-a-job"></a>Een taak maken
 
-Maak een taak die het notitie blok uitvoert dat u eerder hebt gemaakt. Later maakt u een Azure-functie waarmee deze taak wordt uitgevoerd wanneer een gebeurtenis wordt gegenereerd.
+Maak een taak waarop het notitieblok wordt uitgevoerd dat u eerder hebt gemaakt. Later maakt u een Azure-functie waarmee deze taak wordt uitgevoerd wanneer een gebeurtenis wordt verhoogd.
 
-1. Klik op **taken**.
+1. Klik **op Vacatures**.
 
-2. Klik op de pagina **taken** op **taak maken**.
+2. Klik **op** de pagina Vacatures op **Taak maken**.
 
-3. Geef de taak een naam en kies vervolgens de `upsert-order-data` werkmap.
+3. Geef de taak een naam `upsert-order-data` en kies de werkmap.
 
    ![Een taak maken](./media/data-lake-storage-events/create-spark-job.png "Een taak maken")
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-Maak een Azure-functie waarmee de taak wordt uitgevoerd.
+Maak een Azure-functie waarop de taak wordt uitgevoerd.
 
-1. Kies in de linkerbovenhoek van de werk ruimte Databricks het pictogram personen en kies vervolgens **gebruikers instellingen**.
+1. Kies in de bovenhoek van de werkruimte Databricks het pictogram Personen en kies **vervolgens Gebruikersinstellingen**.
 
-   ![Account beheren](./media/data-lake-storage-events/generate-token.png "Gebruikers instellingen")
+   ![Account beheren](./media/data-lake-storage-events/generate-token.png "Gebruikersinstellingen")
 
-2. Klik op de knop **nieuw token genereren** en klik vervolgens op de knop **genereren** .
+2. Klik **op** de knop Nieuwe token genereren en klik vervolgens op de knop **Genereren.**
 
-   Zorg ervoor dat u het token naar een veilige plaats kopieert. Uw Azure-functie heeft dit token nodig om te verifiëren bij Databricks, zodat de taak kan worden uitgevoerd.
+   Zorg ervoor dat u het token naar een veilige plaats kopieert. Uw Azure-functie heeft dit token nodig om te verifiëren met Databricks, zodat het werk kan worden uitgevoerd.
   
-3. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal en selecteer vervolgens **reken > functie-app**.
+3. Selecteer de knop **Een resource maken** in de linkerbovenhoek van de Azure-portal en selecteer vervolgens Compute > **Functie-app**.
 
-   ![Een Azure-functie maken](./media/data-lake-storage-events/function-app-create-flow.png "Azure-functie maken")
+   ![Een Azure-functie maken](./media/data-lake-storage-events/function-app-create-flow.png "Azure maken, functie")
 
-4. Zorg ervoor dat op de pagina **maken** van de functie-app **.net core** voor de runtime stack is geselecteerd en zorg ervoor dat u een Application Insights exemplaar configureert.
+4. Selecteer op de pagina **Maken** van de functie-app **.NET Core** voor de runtimestack en configureer een instantie Application Insights.
 
    ![De functie-app configureren](./media/data-lake-storage-events/new-function-app.png "De functie-app configureren")
 
-5. Klik op de pagina **overzicht** van de functie-app op **configuratie**.
+5. Klik op de pagina **Overzicht** van de functie-app op **Configuratie**.
 
    ![De functie-app configureren](./media/data-lake-storage-events/configure-function-app.png "De functie-app configureren")
 
-6. Kies op de pagina **Toepassings instellingen** de knop **nieuwe toepassings instelling** om elke instelling toe te voegen.
+6. Kies op de pagina **Toepassingsinstellingen** de knop **Nieuwe toepassingsinstelling** om elke instelling toe te voegen.
 
    ![Configuratie-instelling toevoegen](./media/data-lake-storage-events/add-application-setting.png "Configuratie-instelling toevoegen")
 
@@ -277,22 +277,22 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
 
    |Naam van instelling | Waarde |
    |----|----|
-   |**DBX_INSTANCE**| De regio van uw databricks-werk ruimte. Bijvoorbeeld: `westus2.azuredatabricks.net`|
-   |**DBX_PAT**| Het persoonlijke toegangs token dat u eerder hebt gegenereerd. |
-   |**DBX_JOB_ID**|De id van de taak die wordt uitgevoerd. In ons geval is deze waarde `1`.|
-7. Klik op de pagina overzicht van de functie-app op de knop **nieuwe functie** .
+   |**DBX_INSTANCE**| De regio van uw databricks-werkruimte. Bijvoorbeeld: `westus2.azuredatabricks.net`|
+   |**DBX_PAT**| Het persoonlijke toegangstoken dat u eerder hebt gegenereerd. |
+   |**DBX_JOB_ID**|De id van de lopende taak. In ons geval is `1`deze waarde.|
+7. Klik op de overzichtspagina van de functie-app op de knop **Nieuwe functie.**
 
    ![Nieuwe functie](./media/data-lake-storage-events/new-function.png "Nieuwe functie")
 
-8. Kies **Azure Event grid trigger**.
+8. Kies **Azure Event Grid Trigger**.
 
-   Installeer de extensie **micro soft. Azure. webjobs. Extensions. EventGrid** als u hierom wordt gevraagd. Als u deze moet installeren, moet u **Azure Event grid trigger** opnieuw kiezen om de functie te maken.
+   Installeer de extensie **Microsoft.Azure.WebJobs.Extensions.EventGrid** als u hierom wordt gevraagd. Als u het moet installeren, moet u **Azure Event Grid Trigger** opnieuw kiezen om de functie te maken.
 
-   Het deel venster **nieuwe functie** wordt weer gegeven.
+   Het deelvenster **Nieuwe functie** wordt weergegeven.
 
-9. Geef in het deel venster **nieuwe functie** de naam van de functie **UpsertOrder**en klik vervolgens op de knop **maken** .
+9. Geef in het deelvenster **Nieuwe functie** de naam van de functie **UpsertOrder**en klik vervolgens op de knop **Maken.**
 
-10. Vervang de inhoud van het code bestand door deze code en klik vervolgens op de knop **Opslaan** :
+10. Vervang de inhoud van het codebestand door deze code en klik op de knop **Opslaan:**
 
     ```cs
     using "Microsoft.Azure.EventGrid"
@@ -336,67 +336,67 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
     }
     ```
 
-   Deze code parseert informatie over de opslag gebeurtenis die is gegenereerd en maakt vervolgens een aanvraag bericht met een URL van het bestand dat de gebeurtenis heeft geactiveerd. Als onderdeel van het bericht geeft de functie een waarde door aan de widget **source_file** die u eerder hebt gemaakt. de functie code verzendt het bericht naar de Databricks-taak en gebruikt het token dat u eerder hebt verkregen als verificatie.
+   Deze code ontleedt informatie over de opslaggebeurtenis die is verhoogd en maakt vervolgens een aanvraagbericht met url van het bestand dat de gebeurtenis heeft geactiveerd. Als onderdeel van het bericht geeft de functie een waarde door aan de **source_file** widget die u eerder hebt gemaakt. de functiecode stuurt het bericht naar de Taak Databricks en gebruikt het token dat u eerder hebt verkregen als verificatie.
 
 ## <a name="create-an-event-grid-subscription"></a>Een Event Grid-abonnement maken
 
-In deze sectie maakt u een Event Grid-abonnement dat de Azure-functie aanroept wanneer bestanden worden geüpload naar het opslag account.
+In deze sectie maakt u een Event Grid-abonnement dat de Azure-functie aanroept wanneer bestanden worden geüpload naar het opslagaccount.
 
-1. Klik op de pagina functie code op de knop **Event grid abonnement toevoegen** .
+1. Klik op de pagina met functiecode op de knop **Abonnement op gebeurtenisraster toevoegen.**
 
-   ![Nieuw gebeurtenis abonnement](./media/data-lake-storage-events/new-event-subscription.png "Nieuw gebeurtenis abonnement")
+   ![Nieuw evenementabonnement](./media/data-lake-storage-events/new-event-subscription.png "Nieuw evenementabonnement")
 
-2. Typ op de pagina **gebeurtenis abonnement maken** de naam van het abonnement en gebruik vervolgens de velden op de pagina om uw opslag account te selecteren.
+2. Geef op de pagina **Gebeurtenisabonnement maken** een naam aan het abonnement en gebruik de velden op de pagina om uw opslagaccount te selecteren.
 
-   ![Nieuw gebeurtenis abonnement](./media/data-lake-storage-events/new-event-subscription-2.png "Nieuw gebeurtenis abonnement")
+   ![Nieuw evenementabonnement](./media/data-lake-storage-events/new-event-subscription-2.png "Nieuw evenementabonnement")
 
-3. Selecteer in de vervolg keuzelijst **filteren op gebeurtenis typen** de **blob die is gemaakt**, en klik op **BLOB verwijderde** gebeurtenissen en vervolgens op de knop **maken** .
+3. Selecteer in de vervolgkeuzelijst **Filter naar gebeurtenistypen** de blob **gemaakt**en **blob verwijderde** gebeurtenissen en klik op de knop **Maken.**
 
-## <a name="test-the-event-grid-subscription"></a>Het Event Grid-abonnement testen
+## <a name="test-the-event-grid-subscription"></a>Het abonnement voor eventgrid testen
 
-1. Maak een bestand met de naam `customer-order.csv`, plak de volgende gegevens in dat bestand en sla het op uw lokale computer op.
+1. Maak een `customer-order.csv`bestand met de naam , plak de volgende informatie in dat bestand en sla het op op uw lokale computer.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,228,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-2. Upload dit bestand in Storage Explorer naar de map **invoer** van uw opslag account.
+2. Upload dit bestand in Storage Explorer naar de **invoermap** van uw opslagaccount.
 
-   Als u een bestand uploadt, wordt de gebeurtenis **micro soft. storage. BlobCreated** gegenereerd. Event Grid worden alle abonnees op die gebeurtenis gewaarschuwd. In ons geval is de Azure-functie de enige abonnee. De functie Azure parseert de gebeurtenis parameters om te bepalen welke gebeurtenis heeft plaatsgevonden. Vervolgens wordt de URL van het bestand door gegeven aan de Databricks-taak. De Databricks-taak leest het bestand en voegt een rij toe aan de tabel Databricks Delta die uw opslag account bevindt.
+   Als u een bestand uploadt, wordt de gebeurtenis **Microsoft.Storage.BlobCreated gesommeerd.** Event Grid waarschuwt alle abonnees van dat evenement. In ons geval is de Azure-functie de enige abonnee. De Azure-functie ontleden de gebeurtenisparameters om te bepalen welke gebeurtenis is opgetreden. Vervolgens wordt de URL van het bestand doorgegeven aan de Taak Databricks. De taak Databricks leest het bestand en voegt een rij toe aan de tabel Gegevensbricks Delta die uw opslagaccount bevindt.
 
-3. Als u wilt controleren of de taak is voltooid, opent u de databricks-werk ruimte, klikt u op de knop **taken** en opent u uw taak.
+3. Als u wilt controleren of de taak is geslaagd, opent u de werkruimte gegevensstenen, klikt u op de knop **Taken** en opent u uw taak.
 
-4. Selecteer de taak om de taak pagina te openen.
+4. Selecteer de taak om de taakpagina te openen.
 
    ![Spark-taak](./media/data-lake-storage-events/spark-job.png "Spark-taak")
 
-   Wanneer de taak is voltooid, ziet u een voltooiings status.
+   Wanneer de taak is voltooid, ziet u een voltooiingsstatus.
 
-   ![De taak is voltooid](./media/data-lake-storage-events/spark-job-completed.png "De taak is voltooid")
+   ![Met succes voltooide taak](./media/data-lake-storage-events/spark-job-completed.png "Met succes voltooide taak")
 
-5. Voer in een nieuwe werkbladcel deze query uit in een cel om de bijgewerkte Delta tabel weer te geven.
+5. Voer deze query in een nieuwe werkmapcel uit in een cel om de bijgewerkte deltatabel weer te geven.
 
    ```
    %sql select * from customer_data
    ```
 
-   De geretourneerde tabel bevat de meest recente record.
+   De geretourneerde tabel toont de laatste plaat.
 
-   ![De meest recente record wordt weer gegeven in de tabel](./media/data-lake-storage-events/final_query.png "De meest recente record wordt weer gegeven in de tabel")
+   ![Laatste record verschijnt in tabel](./media/data-lake-storage-events/final_query.png "Laatste record verschijnt in tabel")
 
-6. Als u deze record wilt bijwerken, maakt u een bestand met de naam `customer-order-update.csv`, plakt u de volgende gegevens in dat bestand en slaat u het op uw lokale computer op.
+6. Als u deze record wilt `customer-order-update.csv`bijwerken, maakt u een bestand met de naam , plakt u de volgende informatie in dat bestand en slaat u het op op uw lokale computer.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Dit CSV-bestand is bijna identiek aan het vorige, behalve dat de hoeveelheid van de order wordt gewijzigd van `228` naar `22`.
+   Dit csv-bestand is bijna identiek aan het vorige bestand, behalve dat de hoeveelheid van de bestelling wordt gewijzigd van `228` . `22`
 
-7. Upload dit bestand in Storage Explorer naar de map **invoer** van uw opslag account.
+7. Upload dit bestand in Storage Explorer naar de **invoermap** van uw opslagaccount.
 
-8. Voer de `select` query opnieuw uit om de bijgewerkte Delta tabel weer te geven.
+8. Voer `select` de query opnieuw uit om de bijgewerkte deltatabel weer te geven.
 
    ```
    %sql select * from customer_data
@@ -404,7 +404,7 @@ In deze sectie maakt u een Event Grid-abonnement dat de Azure-functie aanroept w
 
    De geretourneerde tabel toont de bijgewerkte record.
 
-   ![De bijgewerkte record wordt weer gegeven in de tabel](./media/data-lake-storage-events/final_query-2.png "De bijgewerkte record wordt weer gegeven in de tabel")
+   ![Bijgewerkte record wordt weergegeven in tabel](./media/data-lake-storage-events/final_query-2.png "Bijgewerkte record wordt weergegeven in tabel")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

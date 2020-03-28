@@ -1,76 +1,76 @@
 ---
 title: Continue integratie met Azure-pijplijnen
-description: Meer informatie over het continu bouwen, testen en implementeren van Azure Resource Manager sjablonen.
+description: Meer informatie over het continu bouwen, testen en implementeren van Azure Resource Manager-sjablonen.
 author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75921625"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
+# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines
 
-Meer informatie over het gebruik van Azure-pijp lijnen om voortdurend Azure Resource Manager-sjabloon projecten te bouwen en implementeren.
+Meer informatie over het gebruik van Azure Pipelines om Azure Resource Manager-sjabloonprojecten continu te bouwen en te implementeren.
 
-Azure DevOps biedt ontwikkelaars Services om teams te ondersteunen bij het plannen van werk, het samen werken met code ontwikkeling en het bouwen en implementeren van toepassingen. Ontwikkel aars kunnen werken in de Cloud met behulp van Azure DevOps Services. Azure DevOps biedt een geïntegreerde set functies die u via uw webbrowser of IDE-client kunt openen. Azure-pijp lijn is een van deze functies. Azure-pijp lijnen is een volledig uitgeruste service voor continue integratie (CI) en continue levering (CD). Het werkt met uw favoriete Git-provider en kan worden geïmplementeerd in de meeste belang rijke Cloud Services. Vervolgens kunt u het bouwen, testen en implementeren van uw code automatiseren naar Microsoft Azure, Google Cloud Platform of Amazon Web Services.
+Azure DevOps biedt ontwikkelaarsservices om teams te ondersteunen bij het plannen van werk, samen te werken aan codeontwikkeling en toepassingen te bouwen en te implementeren. Ontwikkelaars kunnen in de cloud werken met Azure DevOps Services. Azure DevOps biedt een geïntegreerde set functies die u openen via uw webbrowser of IDE-client. Azure Pipeline is een van deze functies. Azure Pipelines is een volledig uitgeruste CI-service (continuous integration) en continuous delivery (CD). Het werkt met uw favoriete Git-provider en kan worden geïmplementeerd op de meeste grote cloudservices. Vervolgens u de build, het testen en de implementatie van uw code automatiseren naar Microsoft Azure, Google Cloud Platform of Amazon Web Services.
 
-Deze zelf studie is ontworpen voor Azure Resource Manager sjabloon ontwikkelaars die nieuwe Azure DevOps Services en Azure-pijp lijnen zijn. Als u al bekend bent met GitHub en DevOps, kunt u door gaan met [het maken van een pijp lijn](#create-a-pipeline).
+Deze zelfstudie is ontworpen voor azure resource manager-sjabloonontwikkelaars die nieuwe Azure DevOps-services en Azure Pipelines zijn. Als u al bekend bent met GitHub en DevOps, u een [pijplijn maken.](#create-a-pipeline)
 
 > [!NOTE]
-> Kies een project naam. Wanneer u de zelf studie door lopen, vervangt u de **AzureRmPipeline** door de naam van uw project.
+> Kies een projectnaam. Wanneer u de zelfstudie doorloopt, vervangt u een van de **AzureRmPipeline** door uw projectnaam.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
 > * Een GitHub-opslagplaats voorbereiden
 > * Een Azure DevOps-project maken
-> * Een Azure-pijp lijn maken
-> * De implementatie van de pijp lijn controleren
+> * Een Azure-pijplijn maken
+> * De implementatie van de pijplijn verifiëren
 > * De sjabloon bijwerken en opnieuw implementeren
 > * Resources opschonen
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* **Een github-account**, waar u het gebruikt voor het maken van een opslag plaats voor uw sjablonen. Als u nog geen account hebt, kunt u er [gratis een maken](https://github.com). Zie [Build github-opslag](/azure/devops/pipelines/repos/github)plaatsen voor meer informatie over het gebruik van github-opslag plaatsen.
-* **Installeer Git**. In deze zelfstudie instructie wordt *Git Bash* of *git shell*gebruikt. Zie [git installeren]( https://www.atlassian.com/git/tutorials/install-git)voor instructies.
-* **Een Azure DevOps-organisatie**. Als u er nog geen hebt, kunt u er gratis een maken. Zie [een organisatie-of project verzameling maken]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
+* **Een GitHub-account,** waar u het gebruikt om een opslagplaats voor uw sjablonen te maken. Als u nog geen account hebt, kunt u er [gratis een maken](https://github.com). Zie [GitHub-repositories bouwen](/azure/devops/pipelines/repos/github)voor meer informatie over het gebruik van GitHub-repositories.
+* **Installeer Git**. Deze tutorial instructie maakt gebruik van *Git Bash* of *Git Shell*. Zie [Git installeren voor]( https://www.atlassian.com/git/tutorials/install-git)instructies.
+* **Een Azure DevOps-organisatie**. Als je er geen hebt, kun je er gratis een maken. Zie [Een organisatie of projectverzameling maken]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio Code gebruiken om Azure Resource Manager-sjablonen te maken.](use-vs-code-to-create-template.md)
 
 ## <a name="prepare-a-github-repository"></a>Een GitHub-opslagplaats voorbereiden
 
-GitHub wordt gebruikt voor het opslaan van de project bron code, inclusief Resource Manager-sjablonen. Zie [opslag plaatsen die worden ondersteund door Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)voor andere ondersteunde opslag plaatsen.
+GitHub wordt gebruikt om uw projectbroncode op te slaan, inclusief Resource Manager-sjablonen. Zie [repositories die worden ondersteund door Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)voor andere ondersteunde repositories.
 
-### <a name="create-a-github-repository"></a>Een GitHub-opslag plaats maken
+### <a name="create-a-github-repository"></a>Een GitHub-repository maken
 
-Als u geen GitHub-account hebt, raadpleegt u [vereisten](#prerequisites).
+Zie [Voorwaarden als](#prerequisites)u geen GitHub-account hebt.
 
-1. Meld u aan bij [github](https://github.com).
-2. Selecteer uw account afbeelding in de rechter bovenhoek en selecteer vervolgens **uw opslag**plaatsen.
+1. Meld u aan bij [GitHub](https://github.com).
+2. Selecteer uw accountafbeelding in de rechterbovenhoek en selecteer **Uw opslagplaatsen**.
 
-    ![GitHub-opslag plaats Azure Resource Manager Azure DevOps Azure-pijp lijnen maken](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines maken GitHub-repository](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
 
 1. Selecteer **Nieuw**, een groene knop.
-1. Voer in **naam van opslag plaats**een naam in voor de opslag plaats.  Bijvoorbeeld **AzureRmPipeline-opslag plaats**. Vergeet niet om een van de **AzureRmPipeline** te vervangen door de naam van uw project. U kunt **openbaar** of **privé** selecteren als u deze zelf studie wilt door lopen. En selecteer vervolgens **opslag plaats maken**.
-1. Noteer de URL. De URL van de opslag plaats is de volgende indeling:
+1. Voer **in repository-naam**een naam van de opslagplaats in.  **AzureRmPipeline-repo**. Vergeet niet om een van **AzureRmPipeline** te vervangen door uw projectnaam. U **openbaar** of **privé** selecteren om deze zelfstudie te doorlopen. En selecteer vervolgens **Repository maken**.
+1. Noteer de URL. De URL van de repository is de volgende indeling:
 
     ```url
     https://github.com/[YourAccountName]/[YourRepositoryName]
     ```
 
-Deze opslag plaats wordt een *externe opslag plaats*genoemd. Elk van de ontwikkel aars van hetzelfde project kan zijn/haar eigen *lokale opslag plaats*klonen en de wijzigingen in de externe opslag plaats samen voegen.
+Deze repository wordt aangeduid als een *externe repository*. Elk van de ontwikkelaars van hetzelfde project kan zijn/haar eigen *lokale repository*klonen en de wijzigingen samenvoegen in de externe repository.
 
-### <a name="clone-the-remote-repository"></a>De externe opslag plaats klonen
+### <a name="clone-the-remote-repository"></a>Kloon de externe opslagplaats
 
-1. Open git-shell of git-bash.  Zie [Vereisten](#prerequisites).
-1. Controleer of de huidige map **github**is.
+1. Open Git Shell of Git Bash.  Zie [Voorwaarden](#prerequisites).
+1. Controleer of uw huidige map **github**is.
 1. Voer de volgende opdracht uit:
 
     ```bash
@@ -81,34 +81,34 @@ Deze opslag plaats wordt een *externe opslag plaats*genoemd. Elk van de ontwikke
     pwd
     ```
 
-    Vervang **[YourAccountName]** door de naam van uw github-account en vervang **[YourGitHubRepositoryName]** door de naam van de opslag plaats die u in de vorige procedure hebt gemaakt.
+    Vervang **[YourAccountName]** door de naam van je GitHub-account en vervang **[YourGitHubRepositoryName]** door je repository-naam die je in de vorige procedure hebt gemaakt.
 
-    In de volgende scherm afbeelding ziet u een voor beeld.
+    De volgende schermafbeelding toont een voorbeeld.
 
-    ![GitHub bash Azure Resource Manager Azure DevOps Azure-pijp lijnen maken](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines maken GitHub-bash](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
-De map **CreateAzureStorage** is de map waarin de sjabloon is opgeslagen. De opdracht **pwd** toont het mappad. In de volgende procedure slaat u de sjabloon op in het pad.
+De map **CreateAzureStorage** is de map waar de sjabloon is opgeslagen. De **pwd-opdracht** toont het mappad. Het pad is waar u de sjabloon opslaat in de volgende procedure.
 
-### <a name="download-a-quickstart-template"></a>Een Quick Start-sjabloon downloaden
+### <a name="download-a-quickstart-template"></a>Een Quickstart-sjabloon downloaden
 
-In plaats van een sjabloon te maken, kunt u een Quick Start- [sjabloon]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)downloaden. Met deze sjabloon maakt u een Azure Storage-account.
+In plaats van een sjabloon te maken, u een [Quickstart-sjabloon]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)downloaden. Met deze sjabloon wordt een Azure Storage-account gemaakt.
 
-1. Open Visual Studio code. Zie [Vereisten](#prerequisites).
+1. Open Visual Studio-code. Zie [Voorwaarden](#prerequisites).
 2. Open de sjabloon met de volgende URL:
 
     ```URL
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Sla het bestand op als **azuredeploy. json** in de map **CreateAzureStorage** . Zowel de naam van de map als de bestands naam worden gebruikt zoals in de pijp lijn.  Als u deze namen wijzigt, moet u de namen bijwerken die worden gebruikt in de pijp lijn.
+3. Sla het bestand op als **azuredeploy.json** in de map **CreateAzureStorage.** Zowel de mapnaam als de bestandsnaam worden gebruikt zoals ze in de pijplijn zitten.  Als u deze namen wijzigt, moet u de namen bijwerken die in de pijplijn worden gebruikt.
 
-### <a name="push-the-template-to-the-remote-repository"></a>De sjabloon naar de externe opslag plaats pushen
+### <a name="push-the-template-to-the-remote-repository"></a>De sjabloon naar de externe opslagplaats duwen
 
-De azuredeploy. json is toegevoegd aan de lokale opslag plaats. Vervolgens uploadt u de sjabloon naar de externe opslag plaats.
+De azuredeploy.json is toegevoegd aan de lokale opslagplaats. Vervolgens upload je de sjabloon naar de externe opslagplaats.
 
-1. Open *git-shell* of *Git-Bash*als deze niet is geopend.
-1. Wijzig de map in de map CreateAzureStorage in uw lokale opslag plaats.
-1. Controleer of het bestand **azuredeploy. json** zich in de map bevindt.
+1. Open *Git Shell* of *Git Bash,* als het niet wordt geopend.
+1. Wijzig de map CreateAzureStorage in uw lokale opslagplaats.
+1. Controleer of het bestand **azuredeploy.json** zich in de map bevindt.
 1. Voer de volgende opdracht uit:
 
     ```bash
@@ -117,61 +117,61 @@ De azuredeploy. json is toegevoegd aan de lokale opslag plaats. Vervolgens uploa
     git push origin master
     ```
 
-    Er kan een waarschuwing over LF worden weer gegeven. U kunt de waarschuwing negeren. **Master** is de Master vertakking.  Doorgaans maakt u een vertakking voor elke update. Voor het vereenvoudigen van de zelf studie gebruikt u de hoofd vertakking rechtstreeks.
-1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . De map **CreateAzureStorage** en **Azuredeploy. json** worden weer geven in de map.
+    Je krijgt misschien een waarschuwing over LF. Je de waarschuwing negeren. **meester** is de meestertak.  U maakt meestal een vertakking voor elke update. Om de zelfstudie te vereenvoudigen, gebruikt u de hoofdbranch rechtstreeks.
+1. Blader vanuit een browser naar je GitHub-repository.  De URL is ** https://github.com/[YourAccountName]/[YourGitHubRepository]**. U ziet de map **CreateAzureStorage** en **Azuredeploy.json** in de map.
 
-Tot nu toe hebt u een GitHub-opslag plaats gemaakt en een sjabloon geüpload naar de opslag plaats.
+Tot nu toe hebt u een GitHub-repository gemaakt en een sjabloon naar de opslagplaats geüpload.
 
 ## <a name="create-a-devops-project"></a>Een DevOps-project maken
 
-Er is een DevOps-organisatie vereist voordat u kunt door gaan met de volgende procedure.  Als u er nog geen hebt, raadpleegt u de [vereisten](#prerequisites).
+Een DevOps-organisatie is nodig voordat u naar de volgende procedure gaan.  Zie [Voorwaarden als](#prerequisites)je er geen hebt.
 
 1. Meld u aan bij [Azure DevOps](https://dev.azure.com).
 1. Selecteer een DevOps-organisatie aan de linkerkant.
 
-    ![Azure DevOps-project Azure Resource Manager Azure DevOps Azure-pijp lijnen maken](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines maken Azure DevOps-project](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. Selecteer **Project maken**. Als u geen projecten hebt, wordt de pagina project maken automatisch geopend.
+1. Selecteer **Project maken**. Als u geen projecten hebt, wordt de projectpagina maken automatisch geopend.
 1. Voer de volgende waarden in:
 
-    * **Project naam**: Voer een project naam in. U kunt de project naam gebruiken die u aan het begin van de zelf studie hebt gekozen.
-    * **Versie beheer**: Selecteer **Git**. Mogelijk moet u **Geavanceerd** uitvouwen om **versie beheer**weer te geven.
+    * **Projectnaam:** voer een projectnaam in. U de projectnaam gebruiken die u aan het begin van de zelfstudie hebt gekozen.
+    * **Versiebeheer**: Selecteer **Git**. Mogelijk moet u **Geavanceerd** uitbreiden om versiebeheer te **zien.**
 
-    Gebruik de standaard waarde voor de andere eigenschappen.
+    Gebruik de standaardwaarde voor de andere eigenschappen.
 1. Selecteer **Project maken**.
 
-Maak een service verbinding die wordt gebruikt voor het implementeren van projecten in Azure.
+Maak een serviceverbinding die wordt gebruikt om projecten naar Azure te implementeren.
 
-1. Selecteer **project instellingen** aan de onderkant van het linkermenu.
-1. Selecteer **service verbindingen** onder **pijp lijnen**.
-1. Selecteer **nieuwe service verbinding**en selecteer vervolgens **AzureResourceManager**.
+1. Selecteer **Project-instellingen** onder aan het linkermenu.
+1. Selecteer **Serviceverbindingen** onder **Pijplijnen**.
+1. Selecteer **Nieuwe serviceverbinding**en selecteer **Vervolgens AzureResourceManager**.
 1. Voer de volgende waarden in:
 
-    * **Verbindings naam**: Voer een naam in voor de verbinding. Bijvoorbeeld **AzureRmPipeline-** verbindingen. Noteer deze naam, u hebt de naam nodig wanneer u de pijp lijn maakt.
-    * **Bereik niveau**: Selecteer **abonnement**.
+    * **Verbindingsnaam:** voer een verbindingsnaam in. **AzureRmPipeline-conn**. Noteer deze naam, je hebt de naam nodig wanneer je je pijplijn maakt.
+    * **Bereiksniveau**: selecteer **Abonnement**.
     * **Abonnement**: selecteer uw abonnement.
-    * **Resource groep**: laat het veld leeg.
-    * **Alle pijp lijnen toestaan deze verbinding te gebruiken**. geselecteerde
+    * **Resourcegroep:** Laat het leeg.
+    * **Sta alle pijplijnen toe deze verbinding te gebruiken.** (geselecteerd)
 1. Selecteer **OK**.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-Tot nu toe hebt u de volgende taken voltooid.  Als u de vorige secties overs laat, omdat u bekend bent met GitHub en DevOps, moet u de taken volt ooien voordat u doorgaat.
+Tot nu toe hebt u de volgende taken voltooid.  Als u de vorige secties overslaat omdat u bekend bent met GitHub en DevOps, moet u de taken voltooien voordat u verdergaat.
 
-- Maak een GitHub-opslag plaats en sla [deze sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) op in de map **CreateAzureStorage** in de opslag plaats.
-- Maak een DevOps-project en maak een Azure Resource Manager service verbinding.
+- Maak een GitHub-opslagplaats en sla [deze sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) op in de map **CreateAzureStorage** in de repository.
+- Maak een DevOps-project en maak een Azure Resource Manager-serviceverbinding.
 
-Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
+Ga als lid van het volgende over een pijplijn met een stap om een sjabloon te implementeren:
 
-1. Selecteer **pijp lijnen** in het menu links.
-1. Selecteer **nieuwe pijp lijn**.
-1. Op het tabblad **Verbinding maken** selecteert u **GitHub**. Voer uw GitHub-referenties in als u daarom wordt gevraagd en volg de instructies. Als het volgende scherm wordt weer gegeven, selecteert u **alleen opslag**plaatsen selecteren en controleert u of uw opslag plaats in de lijst voor komt voordat u **& installatie goed keuren**selecteert.
+1. Selecteer **Pijplijnen** in het linkermenu.
+1. Selecteer **Nieuwe pijplijn**.
+1. Op het tabblad **Verbinding maken** selecteert u **GitHub**. Voer desgevraagd uw GitHub-referenties in en volgt de instructies. Als u het volgende scherm ziet, selecteert u **Alleen opslagplaatsen selecteren**en controleert u of uw opslagplaats zich in de lijst bevindt voordat u **& installeren goedkeurt**selecteert.
 
-    ![Azure Resource Manager Azure DevOps Azure-pijp lijnen alleen opslag plaatsen selecteren](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines selecteert alleen repositories](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. Selecteer uw opslag plaats op het tabblad **selecteren** .  De standaard naam is **[YourAccountName]/[YourGitHubRepositoryName]** .
-1. Selecteer op het tabblad **configureren** de optie **Start pijplijn**. Het bevat het pijplijn bestand **Azure-pipelines. yml** met twee script stappen.
-1. Vervang de sectie **stappen** door de volgende YAML:
+1. Selecteer op het tabblad **Selecteren** uw opslagplaats.  De standaardnaam is **[YourAccountName]/[YourGitHubRepositoryName]**.
+1. Selecteer op het tabblad **Configureren** de optie **Aanmaakpijplijn**. Het toont het **azure-pipelines.yml-pijplijnbestand** met twee scriptstappen.
+1. Vervang de **sectie stappen** door de volgende YAML:
 
     ```yaml
     steps:
@@ -188,48 +188,48 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
         deploymentMode: 'Incremental'
     ```
 
-    Het ziet er als volgt uit:
+    Het zal eruit zien als:
 
-    ![Azure Resource Manager Azure DevOps Azure pipelines yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
 
     Breng de volgende wijzigingen aan:
 
-    * **deploymentScope**: Selecteer het implementatie bereik in de opties: `Management Group`, `Subscription` en `Resource Group`. Gebruik de **resource groep** in deze zelf studie. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
-    * **ConnectedServiceName**: Geef de naam van de service verbinding op die u eerder hebt gemaakt.
-    * **Subscriptionname**: Geef de id van het doel abonnement op.
-    * **actie**: de actie voor het **maken of bijwerken van de resource groep** heeft 2 acties-1. Maak een resource groep als er een nieuwe naam voor de resource groep wordt gegeven. twee. Implementeer de opgegeven sjabloon.
-    * **resourceGroupName**: Geef een nieuwe naam op voor de resource groep. Bijvoorbeeld **AzureRmPipeline-RG**.
-    * **locatie**: Geef de locatie voor de resource groep op.
-    * **templateLocation**: als u een **gekoppeld artefact** hebt opgegeven, zoekt de taak het sjabloon bestand rechtstreeks vanuit de verbonden opslag plaats.
-    * **csmFile** is het pad naar het sjabloon bestand. U hoeft geen sjabloon parameters bestand op te geven omdat alle para meters die in de sjabloon zijn gedefinieerd, standaard waarden hebben.
+    * **deploymentScope**: Selecteer het implementatiebereik `Management Group`uit `Subscription` `Resource Group`de opties: , en . Gebruik **Resourcegroep** in deze zelfstudie. Zie Implementatiescopes voor meer informatie over de [scopes.](deploy-rest.md#deployment-scope)
+    * **ConnectedServiceName:** geef de naam van de serviceverbinding op die u eerder hebt gemaakt.
+    * **AbonnementNaam:** geef de doelabonnements-id op.
+    * **actie:** de actie **Resourcegroep maken of bijwerken** doet 2 acties - 1. een resourcegroep maken als er een nieuwe naam van de resourcegroep wordt opgegeven; 2. de opgegeven sjabloon implementeren.
+    * **resourceGroupName:** geef een nieuwe naam van de resourcegroep op. **AzureRmPipeline-rg.**
+    * **locatie:** geef de locatie voor de resourcegroep op.
+    * **TemplateLocatie:** wanneer **gekoppeldartefact** is opgegeven, zoekt de taak rechtstreeks vanuit de verbonden opslagplaats naar het sjabloonbestand.
+    * **csmFile** is het pad naar het sjabloonbestand. U hoeft geen sjabloonparametersbestand op te geven omdat alle parameters die in de sjabloon zijn gedefinieerd, standaardwaarden hebben.
 
-    Zie [implementatie taak voor Azure-resource groep](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)en [Azure Resource Manager sjabloon implementatie taak](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) voor meer informatie over de taak
+    Zie Azure Resource Group [Deployment-taak](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)en [Azure Resource Manager-sjabloonimplementatietaak](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) voor meer informatie over de taak.
 1. Selecteer **Opslaan en uitvoeren**.
-1. Selecteer **opslaan en voer** de bewerking opnieuw uit. Er wordt een kopie van het YAML-bestand opgeslagen in de verbonden opslag plaats. U kunt het YAML-bestand zien door naar uw opslag plaats te bladeren.
-1. Controleer of de pijp lijn is uitgevoerd.
+1. Selecteer Opslaan en opnieuw **uitvoeren.** Een kopie van het YAML-bestand wordt opgeslagen in de verbonden opslagplaats. Je het YAML-bestand bekijken door naar je repository te bladeren.
+1. Controleer of de pijplijn is uitgevoerd.
 
-    ![Azure Resource Manager Azure DevOps Azure pipelines yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Open de resource groep. De naam is wat u hebt opgegeven in het YAML-bestand van de pijp lijn.  U ziet dat er één opslag account is gemaakt.  De naam van het opslag account begint met **Store**.
-1. Selecteer de naam van het opslag account om deze te openen.
-1. Selecteer **Eigenschappen**. Let op: de **replicatie** is **lokaal redundante opslag (LRS)** .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Open de resourcegroep. De naam is wat u hebt opgegeven in het YAML-bestand van de pijplijn.  Er wordt één opslagaccount aangemaakt.  De naam van het opslagaccount begint met **het opslaan**.
+1. Selecteer de naam van het opslagaccount om deze te openen.
+1. Selecteer **Eigenschappen**. De replicatie is **lrs (Localredundant storage)** op de **hoogte.**
 
-    ![Verificatie van de Azure DevOps Azure Pipelins-Portal Azure Resource Manager](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines-portalverificatie](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
 ## <a name="update-and-redeploy"></a>Bijwerken en opnieuw implementeren
 
-Wanneer u de sjabloon bijwerkt en de wijzigingen naar de externe opslag plaats pusht, worden de resources, het opslag account in dit geval automatisch bijgewerkt door de pijp lijn.
+Wanneer u de sjabloon bijwerkt en de wijzigingen naar de externe opslagplaats pusht, wordt de bronnen, het opslagaccount in dit geval, automatisch bijgewerkt.
 
-1. Open **azuredeploy. json** van uw lokale opslag plaats in Visual Studio code.
-1. Werk de **DefaultValue** van **storageAccountType** bij naar **Standard_GRS**. Zie de volgende schermafbeelding:
+1. Open **azuredeploy.json** vanuit uw lokale opslagplaats in Visual Studio Code.
+1. Werk de **standaardwaarde** van **storageAccountType** bij naar **Standard_GRS**. Zie de volgende schermafbeelding:
 
-    ![Azure Resource Manager Azure DevOps Azure pipelines-update yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines update yaml](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 
 1. Sla de wijzigingen op.
-1. Push de wijzigingen naar de externe opslag plaats door de volgende opdrachten uit Git Bash/shell uit te voeren.
+1. Duw de wijzigingen in de externe opslagplaats door de volgende opdrachten van Git Bash/Shell uit te voeren.
 
     ```bash
     git pull origin master
@@ -238,26 +238,26 @@ Wanneer u de sjabloon bijwerkt en de wijzigingen naar de externe opslag plaats p
     git push origin master
     ```
 
-    Met de eerste opdracht wordt de lokale opslag plaats gesynchroniseerd met de externe opslag plaats. Onthoud dat het YAML-bestand van de pijp lijn is toegevoegd aan de externe opslag plaats.
+    De eerste opdracht synchroniseert de lokale opslagplaats met de externe opslagplaats. Vergeet niet de pijplijn YAML-bestand is toegevoegd aan de externe repository.
 
-    Als de hoofd vertakking van de externe opslag plaats is bijgewerkt, wordt de pijp lijn opnieuw geactiveerd.
+    Nu de hoofdtak van de externe opslagplaats is bijgewerkt, wordt de pijplijn opnieuw geactiveerd.
 
-U kunt de wijzigingen controleren door de replicatie-eigenschap van het opslag account te controleren.  Zie [de implementatie controleren](#verify-the-deployment).
+Als u de wijzigingen wilt verifiëren, u de eigenschap Replicatie van het opslagaccount controleren.  Zie [De implementatie verifiëren](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
+1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
+4. Selecteer **Brongroep verwijderen** in het bovenste menu.
 
-Misschien wilt u ook de GitHub-opslag plaats en het Azure DevOps-project verwijderen.
+U ook de GitHub-repository en het Azure DevOps-project verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie maakt u een Azure DevOps-pijp lijn voor het implementeren van een Azure Resource Manager sjabloon. Voor meer informatie over hoe u Azure-resources implementeert in meerdere regio's en hoe u veilige implementatiemethoden gebruikt, raadpleegt u
+In deze zelfstudie maakt u een Azure DevOps-pijplijn om een Azure Resource Manager-sjabloon te implementeren. Voor meer informatie over hoe u Azure-resources implementeert in meerdere regio's en hoe u veilige implementatiemethoden gebruikt, raadpleegt u
 
 > [!div class="nextstepaction"]
 > [Veilige implementatiemethoden gebruiken](./deployment-manager-tutorial.md)

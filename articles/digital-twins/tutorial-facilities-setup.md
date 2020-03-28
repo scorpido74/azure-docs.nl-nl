@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een voorbeeld omgeving en ruimtelijke grafiek implementeren-Azure Digital Apparaatdubbels | Microsoft Docs'
+title: 'Zelfstudie: Een voorbeeldomgeving en ruimtelijke grafiek implementeren - Azure Digital Twins| Microsoft Documenten'
 description: In deze zelfstudie leert u stapsgewijs hoe u uw exemplaar van Azure Digital Twins implementeert en uw ruimtelijke resources configureert.
 services: digital-twins
 ms.author: alinast
@@ -10,17 +10,17 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79371406"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure Digital Twins Preview implementeren en een ruimtelijke grafiek configureren
 
 [!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-U kunt de Azure Digital Apparaatdubbels preview-service gebruiken om mensen, plaatsen en apparaten samen te brengen in een samenhangend ruimtelijk systeem. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
+U de Azure Digital Twins Preview-service gebruiken om mensen, plaatsen en apparaten samen te brengen in een samenhangend ruimtelijk systeem. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
 
 In deze zelfstudies leert u een .NET-consoletoepassing te maken om een scenario op te bouwen voor een kantoorgebouw. Het gebouw heeft meerdere verdiepingen en verschillende ruimten per verdieping. De ruimten bevatten apparaten waaraan bewegings-, temperatuur- en luchtkwaliteitssensoren zijn gekoppeld. 
 
@@ -36,7 +36,7 @@ In de eerste zelfstudie van deze reeks leert u het volgende:
 > * Een voorbeeld-app van Digital Twins wijzigen.
 > * Het gebouw inrichten.
 
-In deze zelfstudies worden dezelfde voorbeelden gebruikt en aangepast als in de [quickstart om beschikbare ruimten te vinden](quickstart-view-occupancy-dotnet.md), voor een meer gedetailleerde en uitgebreide uitleg van de concepten.
+In deze zelfstudies worden dezelfde voorbeelden gebruikt en aangepast als in de [snelstart voor het vinden van beschikbare ruimten](quickstart-view-occupancy-dotnet.md), voor een meer gedetailleerde en uitgebreide uitleg van de concepten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,7 +66,7 @@ In deze sectie ziet u hoe een Azure Digital Twins-toepassing communiceert met de
 
 ### <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Als u de voorbeelden voor de [quickstart om beschikbare ruimten te vinden](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
+Als u de voorbeelden voor de [snelstart voor het vinden van beschikbare ruimten](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
 
 1. Download de [.NET-voorbeelden van Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
 2. Pak de inhoud van de gecomprimeerde map uit op uw computer.
@@ -75,11 +75,11 @@ Als u de voorbeelden voor de [quickstart om beschikbare ruimten te vinden](quick
 
 Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-workspace** uit de uitgepakte voorbeeldmap in Visual Studio Code. Dit bestand bevat twee projecten:
 
-* U kunt het inrichtingsvoorbeeld **occupancy-quickstart** gebruiken voor het configureren en inrichten van een [ruimtelijke informatiegrafiek](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Deze grafiek is de digitale kopie van uw fysieke ruimten en de resources in die ruimten. Hiervoor wordt een [objectmodel](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) gebruikt waarin objecten voor een slim gebouw worden gedefinieerd. Ga voor een volledige lijst van objecten en REST-API's van Digital Twins naar [deze REST API-documentatie](https://docs.westcentralus.azuresmartspaces.net/management/swagger) of de URL van de Beheer API die is gemaakt voor uw [exemplaar](#deploy-digital-twins).
+* U kunt het inrichtingsvoorbeeld **occupancy-quickstart** gebruiken voor het configureren en inrichten van een [ruimtelijke informatiegrafiek](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Deze grafiek is de digitale kopie van uw fysieke ruimten en de resources in die ruimten. Het maakt gebruik van een [objectmodel](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), dat objecten definieert voor een slim gebouw. Ga voor een volledige lijst van objecten en REST-API's van Digital Twins naar [deze REST API-documentatie](https://docs.westcentralus.azuresmartspaces.net/management/swagger) of de URL van de Beheer API die is gemaakt voor [uw exemplaar](#deploy-digital-twins).
 
-   Als u het voor beeld wilt bekijken om te begrijpen hoe het communiceert met uw Digital Apparaatdubbels-exemplaar, kunt u beginnen met de map **src\actions** . De bestanden in deze map implementeren de opdrachten die u in deze zelfstudies gaat gebruiken:
-    - Het bestand **provisionSample.cs** laat zien hoe u de ruimtelijke grafiek kunt inrichten.
-    - Het bestand **getSpaces.cs** haalt informatie over de ingerichte ruimten op.
+   Als u het voorbeeld wilt verkennen om te begrijpen hoe het communiceert met uw exemplaar Digital Twins, u beginnen met de map **src\actions.** De bestanden in deze map implementeren de opdrachten die u in deze zelfstudies gaat gebruiken:
+    - Het **provisionSample.cs** bestand laat zien hoe u uw ruimtelijke grafiek indient.
+    - Het **getSpaces.cs** bestand krijgt informatie over de ingerichte ruimten.
     - Het bestand **getAvailableAndFreshSpaces.cs** haalt de resultaten op van een aangepaste (door de gebruiker gedefinieerde) functie op.
     - Het bestand **createEndpoints.cs** maakt eindpunten voor interactie met andere services.
 
@@ -102,9 +102,9 @@ Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-works
 1. Open in Visual Studio Code het bestand [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) van het project **occupancy-quickstart**. Werk de volgende waarden bij:
    * **ClientId**: voer de toepassings-id van uw Azure AD-app-registratie in. U hebt deze id genoteerd in de sectie voor het [instellen van app-machtigingen](#grant-permissions-to-your-app).
    * **Tenant**: voer de map-id van uw [Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) in. U hebt deze id ook genoteerd in de sectie voor het [instellen van app-machtigingen](#grant-permissions-to-your-app).
-   * **BaseUrl**: voer de URL van uw exemplaar van Digital Twins in. Hiertoe vervangt u de tijdelijke aanduidingen in deze URL door de waarden voor uw exemplaar: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. U kunt deze URL ook verkrijgen door de URL van de Beheer API uit [de implementatiesectie](#deploy-digital-twins) te wijzigen. Vervang **swagger/** door **api/v1.0/** .
+   * **BaseUrl**: voer de URL van uw exemplaar van Digital Twins in. Hiertoe vervangt u de tijdelijke aanduidingen in deze URL door de waarden voor uw exemplaar: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. U kunt deze URL ook verkrijgen door de URL van de Beheer API uit [de implementatiesectie](#deploy-digital-twins) te wijzigen. Vervang **swagger/** door **api/v1.0/**.
 
-1. Bekijk een lijst met digitale Apparaatdubbels-functies die u kunt verkennen met behulp van het voor beeld. Voer de volgende opdracht uit:
+1. Bekijk een lijst met Digital Twins-functies die je verkennen met behulp van het voorbeeld. Voer de volgende opdracht uit:
 
     ```cmd/sh
     dotnet run
@@ -149,9 +149,9 @@ Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
 - **spaces**: in het Digital Twins-objectmodel worden de fysieke locaties vertegenwoordigd door `spaces`. Elke ruimte heeft een `Type`&mdash;, bijvoorbeeld een regio, locatie of klant&mdash;, en een gebruiksvriendelijke `Name`. Ruimten kunnen deel uitmaken van andere ruimten in een hiërarchische structuur. Het bestand provisionSample.yaml bevat een ruimtelijke grafiek van een denkbeeldig gebouw. Merk op dat ruimten van het type `Floor` logisch genest zijn in `Venue`, `Area` in een verdieping, en `Room`-knooppunten in een gebied. 
 
-- **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoon nummer van een gebruiker zijn, een Raspberry Pi sensor Pod of een gateway. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
+- **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld de telefoon van een gebruiker, een Raspberry Pi-sensorpod of een gateway zijn. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Deze zijn opgenomen in provisionSample. yaml als commentaar-out-lijnen. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Deze zijn opgenomen in provisionSample.yaml als commentaar-out lijnen. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature

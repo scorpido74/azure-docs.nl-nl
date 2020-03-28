@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een Spark-machine learning-app bouwen-Azure HDInsight'
-description: 'Zelf studie: stapsgewijze instructies voor het bouwen van Apache Spark machine learning toepassing in HDInsight Spark-clusters met behulp van Jupyter-notebook.'
+title: 'Zelfstudie: Spark-app voor machine learning bouwen - Azure HDInsight'
+description: Zelfstudie - Stapsgewijze instructies voor het bouwen van Apache Spark-machine learning-toepassingen in HDInsight Spark-clusters met behulp van Jupyter-laptop.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,13 +9,13 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494566"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Zelf studie: een Apache Spark machine learning-toepassing bouwen in azure HDInsight
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Zelfstudie: Een Apache Spark-machine learning-toepassing bouwen in Azure HDInsight
 
 In deze zelfstudie leert u hoe u het [Jupyter-notebook](https://jupyter.org/) gebruikt voor het bouwen van een [Apache Spark](https://spark.apache.org/)-toepassing voor Machine Learning voor Azure HDInsight.
 
@@ -27,15 +27,15 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Spark-cluster in HDInsight. Zie [een Apache Spark-cluster maken](./apache-spark-jupyter-spark-sql-use-portal.md).
+* Een Apache Spark-cluster in HDInsight. Zie [Een Cluster Apache Spark maken](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [gegevens laden en query's uitvoeren met Apache Spark op HDInsight](./apache-spark-load-data-run-query.md)voor meer informatie.
+* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [Gegevens laden en query's uitvoeren met Apache Spark op HDInsight](./apache-spark-load-data-run-query.md)voor meer informatie.
 
 ## <a name="understand-the-data-set"></a>Informatie over de gegevensset
 
-De toepassing maakt gebruik van de voorbeeld gegevens van **HVAC. CSV** die standaard beschikbaar zijn op alle clusters. Het bestand bevindt zich op `\HdiSamples\HdiSamples\SensorSampleData\hvac`. De gegevens hebben betrekking op de gewenste temperatuur en de werkelijke temperatuur in enkele gebouwen waarin HVAC-systemen zijn geïnstalleerd. De kolom **System** bevat de id van het betreffende systeem en de kolom **SystemAge** geeft het aantal jaren aan dat het HVAC-systeem wordt gebruikt in het gebouw. Aan de hand van deze gegevens kunt u voorspellen of het in een gebouw warmer of kouder zal zijn gebaseerd op de richttemperatuur, een systeem-id en een leeftijd van het systeem.
+De toepassing maakt gebruik van de **voorbeeldgegevens van HVAC.CSV** die standaard beschikbaar zijn op alle clusters. Het bestand bevindt zich op `\HdiSamples\HdiSamples\SensorSampleData\hvac`. De gegevens hebben betrekking op de gewenste temperatuur en de werkelijke temperatuur in enkele gebouwen waarin HVAC-systemen zijn geïnstalleerd. De kolom **System** bevat de id van het betreffende systeem en de kolom **SystemAge** geeft het aantal jaren aan dat het HVAC-systeem wordt gebruikt in het gebouw. Aan de hand van deze gegevens kunt u voorspellen of het in een gebouw warmer of kouder zal zijn gebaseerd op de richttemperatuur, een systeem-id en een leeftijd van het systeem.
 
-![Moment opname van gegevens die worden gebruikt voor Spark machine learning-voor beeld](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Moment opname van gegevens die worden gebruikt voor Spark machine learning-voor beeld")
+![Momentopname van gegevens die worden gebruikt voor het voorbeeld van Spark-machine learning](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Momentopname van gegevens die worden gebruikt voor het voorbeeld van Spark-machine learning")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Een Spark-toepassing voor machine learning ontwikkelen met Spark MLib
 
@@ -141,7 +141,7 @@ In deze toepassing gebruikt u een [ML-pijplijn](https://spark.apache.org/docs/2.
 
     Vergelijk de uitvoer met het onbewerkte CSV-bestand. De eerste rij van het CSV-bestand bevat bijvoorbeeld deze gegevens:
 
-    ![Voor beeld van een moment opname van uitvoer gegevens voor Spark-machine learning](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Voor beeld van een moment opname van uitvoer gegevens voor Spark-machine learning")
+    ![Momentopname van uitvoergegevens voor spark-machine learning-voorbeeld](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Momentopname van uitvoergegevens voor spark-machine learning-voorbeeld")
 
     U ziet hoe de werkelijke temperatuur lager is dan de richttemperatuur, wat betekent dat het koud is in het gebouw. In de uitvoer van de training is de waarde voor **label** in de eerste rij daarom **0.0**, wat betekent dat het niet warm is in het gebouw.
 
@@ -186,27 +186,27 @@ In deze toepassing gebruikt u een [ML-pijplijn](https://spark.apache.org/docs/2.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>scikit-learn-bibliotheek van Anaconda gebruiken voor een Spark-toepassing voor machine learning
 
-Apache Spark-clusters in HDInsight bevatten Anaconda-bibliotheken, waaronder de bibliotheek **scikit-learn** voor machine learning. De bibliotheek bevat ook verschillende gegevenssets die u kunt gebruiken om rechtstreeks vanuit een Jupyter-notebook voorbeeldtoepassingen te bouwen. Zie [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) voor voorbeelden van het gebruik van de bibliotheek scikit-learn.
+Apache Spark-clusters in HDInsight bevatten Anaconda-bibliotheken, waaronder de bibliotheek **scikit-learn** voor machine learning. De bibliotheek bevat ook verschillende gegevenssets die u kunt gebruiken om rechtstreeks vanuit een Jupyter-notebook voorbeeldtoepassingen te bouwen. Zie voor voorbeelden over het gebruik van [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)de bibliotheek scikit-learn .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
+Als u deze toepassing niet meer wilt gebruiken, verwijdert u het cluster dat u met de volgende stappen hebt gemaakt:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 
-1. Selecteer in de lijst met HDInsight-clusters die wordt weer gegeven, de **...** naast het cluster dat u voor deze zelf studie hebt gemaakt.
+1. Selecteer in de lijst met HDInsight-clusters die worden weergegeven de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt.
 
 1. Selecteer **Verwijderen**. Selecteer **Ja**.
 
-![Een HDInsight-cluster Azure Portal verwijderen](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
+![Azure-portal verwijdert een HDInsight-cluster](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u de Jupyter Notebook kunt gebruiken om een Apache Spark machine learning-toepassing voor Azure HDInsight te maken. Ga naar de volgende zelfstudie voor meer informatie over het gebruik van IntelliJ IDEA voor Spark-taken.
+In deze zelfstudie hebt u geleerd hoe u de Jupyter-notitieblok gebruiken om een Apache Spark-machine learning-toepassing voor Azure HDInsight te bouwen. Ga naar de volgende zelfstudie voor meer informatie over het gebruik van IntelliJ IDEA voor Spark-taken.
 
 > [!div class="nextstepaction"]
-> [Een scala maven-toepassing maken met behulp van IntelliJ](./apache-spark-create-standalone-application.md)
+> [Een Scala Maven-toepassing maken met IntelliJ](./apache-spark-create-standalone-application.md)

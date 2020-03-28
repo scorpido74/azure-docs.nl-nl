@@ -1,6 +1,6 @@
 ---
-title: Een Azure-cache verwijderen voor redis-Azure CLI
-description: Dit Azure CLI-code voorbeeld laat zien hoe u een Azure-cache voor redis-exemplaar verwijdert met de opdracht AZ redis Delete.
+title: Een Azure-cache voor Redis verwijderen - Azure CLI
+description: In dit voorbeeld van azure CLI-code ziet u hoe u een Azure-cache voor redis-instantie verwijdert met behulp van de opdracht az redis delete.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411082"
 ---
-# <a name="delete-an-azure-cache-for-redis"></a>Verwijderen van een Azure-Cache voor Redis
+# <a name="delete-an-azure-cache-for-redis"></a>Een Azure-cache voor Redis verwijderen
 
-In dit scenario leert u hoe u een Azure-Cache verwijderen voor Redis.
+In dit scenario leert u hoe u een Azure-cache voor Redis verwijdert.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,15 +29,15 @@ In dit scenario leert u hoe u een Azure-Cache verwijderen voor Redis.
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Met dit script maakt gebruik van de volgende opdrachten om te verwijderen van een Azure-Cache voor Redis-exemplaar. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een Azure-cache voor de instantie Redis te verwijderen. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [AZ redis delete](https://docs.microsoft.com/cli/azure/redis) | Azure Cache voor Redis-exemplaar verwijderen. |
+| [az redis verwijderen](https://docs.microsoft.com/cli/azure/redis) | Azure-cache verwijderen voor bijvoorbeeld Redis. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende Azure-Cache voor Redis CLI-voorbeeldscripts vindt u de [Azure Cache voor Redis-documentatie](../cli-samples.md).
+Aanvullende Azure-cache voor Redis CLI-scriptvoorbeelden is te vinden in de [Azure Cache for Redis-documentatie.](../cli-samples.md)

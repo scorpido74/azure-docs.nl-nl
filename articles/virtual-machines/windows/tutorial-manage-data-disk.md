@@ -17,10 +17,10 @@ ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
 ms.openlocfilehash: b288091172c71be82e70d90eb8817b2130f2cbef
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277310"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Zelfstudie: Azure-schijven beheren met Azure PowerShell
@@ -38,13 +38,13 @@ Virtuele machines in Azure gebruiken schijven voor het opslaan van het besturing
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="default-azure-disks"></a>Standaard Azure-schijven
 
 Wanneer een virtuele Azure-machine wordt gemaakt, worden automatisch twee schijven aan de virtuele machine gekoppeld. 
 
-**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's. Als u een nieuwe virtuele machine (VM) maakt op basis van een installatie kopie van [Azure Marketplace](https://azure.microsoft.com/marketplace/) , is dit doorgaans 127 GB (maar sommige installatie kopieën hebben een kleinere grootte van de besturingssysteem schijf). De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
+**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's. Als u een nieuwe virtuele machine (VM) maakt op basis van een [Azure Marketplace-afbeelding,](https://azure.microsoft.com/marketplace/) hebben de doorgaans 127 GB (maar sommige afbeeldingen kleinere schijfformaten voor het besturingssysteem). De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
 
 **Tijdelijke schijf**: tijdelijke schijven gebruiken een SSD-schijf die zich op dezelfde Azure-host bevindt als de virtuele machine. Tijdelijke schijven leveren zeer goede prestaties en kunnen worden gebruikt voor bewerkingen als tijdelijke gegevensverwerking. Als de virtuele machine wordt verplaatst naar een nieuwe host, worden gegevens die zijn opgeslagen op een tijdelijke schijf echter verwijderd. De grootte van de tijdelijke schijf wordt bepaald door de [VM-grootte](sizes.md). Tijdelijke schijven krijgen standaard de stationsletter *D:* toegewezen.
 

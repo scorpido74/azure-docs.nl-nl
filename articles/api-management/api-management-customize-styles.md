@@ -1,5 +1,5 @@
 ---
-title: Pagina stijl aanpassen op API Management verouderde ontwikkelaars Portal
+title: Paginastijl aanpassen op de verouderde ontwikkelaarsportal api-beheer
 titleSuffix: Azure API Management
 description: Volg de stappen van deze snelstart voor het aanpassen van de stijl van de elementen in de ontwikkelaarsportal van Azure API Management.
 services: api-management
@@ -15,21 +15,21 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430740"
 ---
-# <a name="customize-the-style-of-the-developer-portal-pages"></a>De stijl van de pagina's van de ontwikkelaars portal aanpassen
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>De stijl van de ontwikkelaarsportalpagina's aanpassen
 
-Er zijn drie veelgebruikte manieren om de ontwikkelaars Portal in azure API Management aan te passen:
+Er zijn drie meest voorkomende manieren om de ontwikkelaarsportal in Azure API Management aan te passen:
  
 * [De inhoud van statische pagina's en pagina-indelingselementen bewerken](api-management-modify-content-layout.md)
 * De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaarsportal (uitgelegd in deze handleiding)
 * [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal](api-management-developer-portal-templates.md) (bijvoorbeeld API-documenten, producten, gebruikersverificatie, enzovoort)
 
-In dit artikel leert u hoe u de stijl van elementen kunt aanpassen op pagina's van de verouderde **ontwikkelaars** Portal en hoe u de wijzigingen weergeeft.
+In dit artikel leert u hoe u de stijl van elementen op pagina's van de verouderde **ontwikkelaarsportal** aanpassen en uw wijzigingen bekijken.
 
 ![stijl aanpassen](./media/modify-developer-portal-style/developer_portal.png)
 
@@ -46,7 +46,7 @@ In dit artikel leert u hoe u de stijl van elementen kunt aanpassen op pagina's v
 ## <a name="customize-the-developer-portal"></a>De ontwikkelaarsportal aanpassen
 
 1. Selecteer **Overzicht**.
-2. Klik op de knop **ontwikkelaars Portal (verouderd)** boven in het venster **overzicht** .
+2. Klik boven aan het venster **Overzicht** op de knop **Ontwikkelaarsportal (legacy).**
 3. In de linkerbovenhoek van het scherm ziet u een pictogram dat bestaat uit twee schilderkwasten. Beweeg de muisaanwijzer over dit pictogram om het menu Portalaanpassing te openen.
 
     ![stijl aanpassen](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -55,11 +55,11 @@ In dit artikel leert u hoe u de stijl van elementen kunt aanpassen op pagina's v
     Alle elementen die u kunt aanpassen met behulp van **Stijlen** worden weergegeven op de pagina
 5. Voer 'headings-color' in het veld **Wijzigen van de waarden om de weergave van het ontwikkelaarsportal aan te passen:** in.
 
-    Het element **kop-color\@** wordt weer gegeven op de pagina. Deze variabele bepaalt de kleur van de tekst.
+    Het ** \@element kop-kleur** wordt op de pagina weergegeven. Deze variabele bepaalt de kleur van de tekst.
 
     ![stijl aanpassen](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klik op het veld voor de variabele **\@koppen-kleur** . 
+6. Klik op het veld voor de ** \@rubrieken-kleurvariabele.** 
     
     De vervolgkeuzelijst Kleurenkiezer wordt geopend.
 7. Selecteer een nieuwe kleur uit de vervolgkeuzelijst Kleurenkiezer.
@@ -72,7 +72,7 @@ In dit artikel leert u hoe u de stijl van elementen kunt aanpassen op pagina's v
 
 ## <a name="view-your-change"></a>Uw wijziging bekijken
 
-1. Navigeer naar de ontwikkelaars Portal.
+1. Navigeer naar de ontwikkelaarsportal.
 2. Hier ziet u de wijziging die u hebt aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen

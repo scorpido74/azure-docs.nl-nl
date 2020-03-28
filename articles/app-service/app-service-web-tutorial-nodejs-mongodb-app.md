@@ -1,22 +1,22 @@
 ---
-title: 'Zelf studie: node. js-app met MongoDB'
-description: Meer informatie over hoe u een node. js-app kunt ophalen in azure, met verbinding met een MongoDB-data base in azure (Cosmos DB). MEAN. js wordt in de zelf studie gebruikt.
+title: 'Zelfstudie: Node.js-app met MongoDB'
+description: Meer informatie over het werken van een Node.js-app in Azure, met verbinding met een MongoDB-database in Azure (Cosmos DB). MEAN.js wordt gebruikt in de tutorial.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.custom: seodec18
-ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 5c37d92504af78cb62cfa17057e089128ca8ad35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500025"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046861"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelf studie: een node. js-en MongoDB-app bouwen in azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een Node.js- en MongoDB-app bouwen in Azure App Service in Linux_  om een app te implementeren in App Service in [Linux](./containers/tutorial-nodejs-mongodb-app.md).
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js- en MongoDB-app bouwen in Azure App Service in Linux ](./containers/tutorial-nodejs-mongodb-app.md) om een app te implementeren in App Service in _Linux_.
 >
 
 Azure App Service biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelfstudie ziet u hoe u een Node.js-app maakt in App Service en deze verbindt met een MongoDB-database. Als u klaar bent, beschikt u over een MEAN-toepassing (MongoDB, Express, AngularJS en Node.js) die wordt uitgevoerd in [Azure App Service](overview.md). In het voorbeeld wordt ter vereenvoudiging gebruikgemaakt van het [MEAN.js-webframework](https://meanjs.org/).
@@ -65,7 +65,7 @@ In deze stap stelt u het lokale Node.js-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-In het terminalvenster, `cd` in een werkmap.  
+Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.  
 
 Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen. 
 
@@ -130,9 +130,9 @@ Voor MongoDB wordt in deze zelfstudie gebruikgemaakt van [Azure Cosmos DB](/azur
 > Er zijn kosten voor het maken van de Azure Cosmos DB-databases in deze zelfstudie in uw eigen Azure-abonnement. Als u gedurende zeven dagen een gratis Azure Cosmos DB-account wilt gebruiken, kunt u de ervaring [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) gebruiken. Klik gewoon op de knop **Maken** in de tegel MongoDB om een gratis MongoDB-database te maken in Azure. Wanneer de database is gemaakt, gaat u naar **Verbindingsreeks** in de portal en haalt u de verbindingsreeks voor Azure Cosmos DB op die u verderop in de zelfstudie gaat gebruiken.
 >
 
-Maak in Cloud Shell een Cosmos DB-account met de opdracht [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create).
+Maak in de Cloud Shell een [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) Cosmos DB-account met de opdracht.
 
-Vervang in de volgende opdracht de tijdelijke aanduiding *\<cosmosdb_name>* door een unieke Cosmos DB-naam. Deze naam wordt gebruikt als onderdeel van het Cosmos DB-eindpunt, `https://<cosmosdb_name>.documents.azure.com/`. De naam moet dus uniek zijn voor alle Cosmos DB-accounts in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn.
+Vervang in de volgende opdracht een unieke * \<* Cosmos DB-naam voor de cosmosdb_name>tijdelijke aanduiding. Deze naam wordt gebruikt als onderdeel van het Cosmos DB-eindpunt, `https://<cosmosdb_name>.documents.azure.com/`. De naam moet dus uniek zijn voor alle Cosmos DB-accounts in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
@@ -164,7 +164,7 @@ In deze stap verbindt u uw MEAN.js-voorbeeldtoepassing met de Cosmos DB-database
 
 ### <a name="retrieve-the-database-key"></a>De databasesleutel ophalen
 
-U hebt de databasesleutel nodig om verbinding te kunnen maken met de Cosmos DB-database. Gebruik in Cloud Shell de opdracht [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) om de primaire sleutel op te halen.
+U hebt de databasesleutel nodig om verbinding te kunnen maken met de Cosmos DB-database. Gebruik de opdracht om [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) in de Cloud Shell de primaire sleutel op te halen.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -186,9 +186,9 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Configureer de verbindingsreeks in uw Node.js-toepassing
 
-Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ is standaard geconfigureerd om dit bestand buiten de opslagplaats te houden. 
+Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_, een bestand met de naam _lokale-productie.js_. _.gitignore_ is standaard geconfigureerd om dit bestand buiten de opslagplaats te houden. 
 
-Kopieer er de volgende code naartoe. Vervang de twee tijdelijke aanduidingen *\<cosmosdb_name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary_master_key>* door de sleutel die u in de vorige stap hebt gekopieerd.
+Kopieer er de volgende code in. Zorg ervoor dat * \<* u de twee cosmosdb_name>tijdelijke aanduidingen vervangt door de naam van uw Cosmos DB-database en de * \<primary_master_key>* tijdelijke aanduiding vervangt door de sleutel die u in de vorige stap hebt gekopieerd.
 
 ```javascript
 module.exports = {
@@ -221,7 +221,7 @@ $env:NODE_ENV = "production"
 node server.js
 ```
 
-`NODE_ENV=production` stelt de omgevingsvariabele in die aan Node.js meldt om in de productieomgeving te worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen. 
+`NODE_ENV=production` stelt de omgevingsvariabele in die aangeeft dat Node.js in de productieomgeving moet worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen. 
 
 Nadat de app is geladen, controleert u of de app wordt uitgevoerd in de productieomgeving:
 
@@ -261,9 +261,9 @@ In deze step implementeert u uw met MongoDB verbonden Node.js-toepassing in Azur
 
 Standaard houdt het MEAN.js-project _config/env/local-production.js_ buiten de Git-opslagplaats. Voor uw Azure-app gebruikt u dus app-instellingen om de MongoDB-verbindingsreeks te definiëren.
 
-Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen. 
+Als u app-instellingen [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) wilt instellen, gebruikt u de opdracht in de Cloud Shell. 
 
-In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduidingen *\<app_name>* , *\<cosmosdb_name>* en *\<primary_master_key>* .
+In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang * \<de app_name>, * * \<cosmosdb_name>* en * \<primary_master_key>* tijdelijke aanduidingen.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -337,7 +337,7 @@ In deze stap wijzigt u het `article`-gegevensmodel en publiceert u de wijziging 
 
 Open _modules/articles/server/models/article.server.model.js_.
 
-Voeg een `ArticleSchema`-type met de naam `String` toe in `comment`. Als u klaar bent, ziet het schema er als volgt uit:
+Voeg een `String`-type met de naam `comment` toe in `ArticleSchema`. Als u klaar bent, ziet het schema er als volgt uit:
 
 ```javascript
 const ArticleSchema = new Schema({
@@ -438,7 +438,7 @@ node server.js
 
 Ga in een browser naar `http://localhost:8443` en zorg dat u bent aangemeld.
 
-Selecteer **Admin > Manage Articles** en voeg een artikel toe door de **+** -knop te selecteren.
+Selecteer **Admin > Manage Articles** en voeg een artikel toe door de **+**-knop te selecteren.
 
 U ziet nu het nieuwe tekstvak `Comment`.
 
@@ -465,7 +465,7 @@ Als u eerder artikelen hebt toegevoegd, kunt u deze nog steeds zien. Bestaande g
 
 Terwijl uw Node.js-toepassing in Azure App Service wordt uitgevoerd, kunt u de consolelogboeken doorgesluisd krijgen naar uw terminal. Op die manier krijgt u de dezelfde diagnostische berichten om toepassingsfouten op te sporen.
 
-Gebruik voor het starten van logboekstreaming de opdracht [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
+Als u logboekstreaming [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) wilt starten, gebruikt u de opdracht in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

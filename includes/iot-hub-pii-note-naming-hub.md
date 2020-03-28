@@ -5,12 +5,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 3c5bb3548c4b8d8aef2935a272aac18c3d18ee25
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66733273"
 ---
 > [!IMPORTANT]
-> Omdat de IoT-hub openbaar kan worden gedetecteerd als een DNS-eind punt, moet u ervoor zorgen dat u geen gevoelige of persoonlijke gegevens invoert wanneer u deze een naam geeft.
+> Omdat de IoT-hub openbaar vindbaar is als DNS-eindpunt, moet u voorkomen dat u gevoelige of persoonlijk identificeerbare informatie invoert wanneer u deze een naam geeft.
 >

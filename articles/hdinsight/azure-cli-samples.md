@@ -1,6 +1,6 @@
 ---
-title: 'Azure HDInsight: Azure CLI-voor beelden'
-description: Azure CLI-voor beelden voor algemene taken in azure HDInsight.
+title: 'Azure HDInsight: Azure CLI-voorbeelden'
+description: Azure CLI-voorbeelden voor veelvoorkomende taken in Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,30 +8,30 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78207095"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-voor beelden
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-voorbeelden
 
 > [!div class="op_single_selector"]
-> [.Net-voor beelden](hdinsight-sdk-dotnet-samples.md)
-> [python-voor](hdinsight-sdk-python-samples.md) beelden
-> [Java-voor beelden](hdinsight-sdk-java-samples.md)
+> [.NET Voorbeelden](hdinsight-sdk-dotnet-samples.md)
+> [Python Voorbeelden](hdinsight-sdk-python-samples.md)
+> [Java Voorbeelden](hdinsight-sdk-java-samples.md)
 
-In dit artikel vindt u voor beelden van scripts voor algemene taken. Werk voor elk voor beeld de variabelen bij met de juiste waarden en voer vervolgens de opdracht uit.
+In dit artikel vindt u voorbeeldscripts voor veelvoorkomende taken. Werk voor elk voorbeeld de variabelen bij met de juiste waarden en voer de opdracht uit.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI. Zie [de Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
+* Azure CLI. Zie [De Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installeren voor stappen.
 
-* Optioneel: bash. In de voor beelden in dit artikel wordt gebruikgemaakt van de bash-shell in Windows 10. Zie het [Windows-subsysteem voor Linux-installatie handleiding voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatie stappen.  De voor beelden zijn van een Windows-opdracht prompt met enkele kleine wijzigingen.
+* Optioneel: Bash. De voorbeelden in dit artikel gebruiken de Bash-shell op Windows 10. Zie [Windows Subsystem for Linux Installation Guide voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  De voorbeelden werken vanuit een Windows Command-prompt met enkele kleine wijzigingen.
 
-## <a name="az-login"></a>AZ login
+## <a name="az-login"></a>az login
 
-[Meld u aan bij Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
+[Log in bij Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
 
 ```azurecli
 az login
@@ -40,11 +40,11 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="az-hdinsight-create"></a>AZ hdinsight Create
+## <a name="az-hdinsight-create"></a>az hdinsight creëren
 
 [Hiermee maakt u een nieuw cluster](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
 
-### <a name="create-a-cluster-with-an-existing-storage-account"></a>Een cluster met een bestaand opslag account maken
+### <a name="create-a-cluster-with-an-existing-storage-account"></a>Een cluster maken met een bestaand opslagaccount
 
 ```azurecli
 # set variables
@@ -62,7 +62,7 @@ az hdinsight create \
     --storage-account $AZURE_STORAGE_ACCOUNT
 ```
 
-### <a name="create-a-cluster-with-the-enterprise-security-package-esp"></a>Een cluster maken met de Enterprise Security Package (ESP)
+### <a name="create-a-cluster-with-the-enterprise-security-package-esp"></a>Een cluster maken met het Enterprise Security Package (ESP)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Een Kafka-cluster maken met [schijf versleuteling](./disk-encryption.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Een Kafka-cluster maken met [schijfversleuteling](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -116,7 +116,7 @@ az hdinsight create \
     --assign-identity $userAssignedIdentity
 ```
 
-### <a name="create-a-cluster-with-azure-data-lake-storage-gen2"></a>Een cluster met Azure Data Lake Storage Gen2 maken
+### <a name="create-a-cluster-with-azure-data-lake-storage-gen2"></a>Een cluster maken met Azure Data Lake Storage Gen2
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -135,7 +135,7 @@ az hdinsight create \
     --storage-account-managed-identity $sami
 ```
 
-### <a name="create-a-cluster-with-configuration-from-json-string"></a>Een cluster met configuratie maken vanuit een JSON-teken reeks
+### <a name="create-a-cluster-with-configuration-from-json-string"></a>Een cluster maken met configuratie op JSON-tekenreeks
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -154,7 +154,7 @@ az hdinsight create \
     --cluster-configuration $clusterConfiguration
 ```
 
-### <a name="create-a-cluster-with-configuration-from-a-local-file"></a>Een cluster met configuratie maken op basis van een lokaal bestand
+### <a name="create-a-cluster-with-configuration-from-a-local-file"></a>Een cluster maken met configuratie op basis van een lokaal bestand
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -173,9 +173,9 @@ az hdinsight create \
     --cluster-configuration $clusterConfiguration
 ```
 
-## <a name="az-hdinsight-application-create"></a>AZ hdinsight Application Create
+## <a name="az-hdinsight-application-create"></a>az hdinsight applicatie te creëren
 
-[Maak een toepassing voor een HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
+[Maak een toepassing voor een HDInsight-cluster.](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create)
 
 ### <a name="create-an-application-with-a-script-uri"></a>Een toepassing maken met een script-URI
 
@@ -196,7 +196,7 @@ az hdinsight application create \
     --script-parameters "$scriptParameters"
 ```
 
-### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Een toepassing maken met een script-URI en een opgegeven grootte van het Edge-knoop punt
+### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Een toepassing maken met een script-URI en opgegeven randknooppuntgrootte
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -217,7 +217,7 @@ az hdinsight application create \
     --edgenode-size $edgenodeSize
 ```
 
-### <a name="create-an-application-with-https-endpoint"></a>Een toepassing met een HTTPS-eind punt maken
+### <a name="create-an-application-with-https-endpoint"></a>Een toepassing maken met HTTPS-eindpunt
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -240,11 +240,11 @@ az hdinsight application create \
     --sub-domain-suffix $subDomainSuffix
 ```
 
-## <a name="az-hdinsight-script-action-execute"></a>AZ hdinsight-script-actie uitvoeren
+## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-actie uit te voeren
 
-[Script acties uitvoeren op het opgegeven HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Scriptacties uitvoeren op het opgegeven HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
 
-### <a name="execute-a-script-action-and-persist-on-success"></a>Een script actie uitvoeren en persistent blijven
+### <a name="execute-a-script-action-and-persist-on-success"></a>Een scriptactie uitvoeren en doorgaan met succes
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME

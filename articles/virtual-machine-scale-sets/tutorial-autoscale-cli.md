@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-een schaalset automatisch schalen met Azure CLI
+title: Zelfstudie - Een schaalset automatisch schalen met de Azure CLI
 description: Leer hoe u met Azure CLI automatisch een schaalset met virtuele machines schaalt wanneer de vraag naar CPU toeneemt en afneemt
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ede78933e6b9e6933b0c5dabce395eb10713c88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0506c7fcb4e3734414fdc3b868aca84450ad8d07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278440"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067029"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met Azure CLI
 
@@ -25,11 +25,11 @@ Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt 
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.32 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.32 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
 
@@ -118,13 +118,13 @@ In de volgende voorbeelduitvoer ziet u de exemplaarnaam, het openbare IP-adres v
 
 Ga met SSH naar uw eerste VM-exemplaar. Geef met de parameter `-p` uw eigen openbare IP-adres en poortnummer op, zoals is vastgesteld in de voorgaande opdracht:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Als u bent aangemeld, installeert u het hulpprogramma **stress**. Start *10* **stress** -werk rollen die CPU-belasting genereren. Deze werkrollen worden gedurende *420* seconden uitgevoerd, wat voldoende is om met de regels voor automatisch schalen de gewenste actie te implementeren.
+Als u bent aangemeld, installeert u het hulpprogramma **stress**. Start *10* **stress**-werkrollen die CPU-belasting genereren. Deze werkrollen worden gedurende *420* seconden uitgevoerd, wat voldoende is om met de regels voor automatisch schalen de gewenste actie te implementeren.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -133,26 +133,26 @@ Wanneer **stress** uitvoer laat zien die vergelijkbaar is met *stress: info: [26
 
 Om te controleren of **stress** CPU-belasting genereert, onderzoekt u de actieve systeembelasting met het hulpprogramma **top**:
 
-```azurecli-interactive
+```console
 top
 ```
 
 Sluit **top** af en verbreek vervolgens de verbinding met het VM-exemplaar. **stress** wordt nog gewoon uitgevoerd op het VM-exemplaar.
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 Maak verbinding met het tweede VM-exemplaar met het poortnummer dat u hebt opgevraagd met de eerdere opdracht [az vmss list-instance-connection-info](/cli/azure/vmss):
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 Voer **stress** met tien werkrollen uit op dit tweede VM-exemplaar.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -161,7 +161,7 @@ Als **stress** ook hier uitvoer laat zien die vergelijkbaar is met *stress: info
 
 Verbreek de verbinding met het tweede VM-exemplaar. **stress** wordt nog gewoon uitgevoerd op het VM-exemplaar.
 
-```azurecli-interactive
+```console
 exit
 ```
 
@@ -178,7 +178,7 @@ watch az vmss list-instances \
 
 Als de CPU-drempelwaarde is bereikt, zorgen de regels voor automatisch schalen ervoor dat het aantal VM-exemplaren in de schaalset wordt verhoogd. In de volgende uitvoer ziet u dat er drie VM's worden gemaakt op het moment dat de schaalset gaat uitschalen:
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -192,7 +192,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 Als **stress** is beëindigd op de eerste VM-exemplaren, wordt de gemiddelde CPU-belasting weer normaal. Na nog eens vijf minuten wordt het aantal VM-exemplaren vervolgens ingeschaald. Hierbij worden VM-exemplaren met de hoogste-id's als eerste verwijderd. Wanneer een schaalset gebruikmaakt van Beschikbaarheidssets of Beschikbaarheidszones, worden inschalingsacties gelijkmatig verdeeld over deze VM-exemplaren. In de volgende voorbeelduitvoer ziet u dat één VM-exemplaar wordt verwijderd als de schaalset wordt ingeschaald:
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
@@ -200,7 +200,7 @@ Sluit *watch* af met `Ctrl-c`. De capaciteit van de schaalset wordt nog steeds o
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resourcegroep en alle bijbehorende resources met [az group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u uw schaalset en extra resources wilt verwijderen, verwijdert u de brongroep en al de bronnen met [de AZ-groep verwijderen](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

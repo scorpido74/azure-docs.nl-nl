@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661649"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Een instelling maken voor automatisch schalen van Azure-resources op basis van prestatiegegevens of een planning
@@ -27,11 +27,11 @@ In deze zelfstudie leert u
 > * Een inschaalactie activeren en bekijken hoe het aantal instanties afneemt
 > * Uw resources opschonen
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Log in bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Een Web-App en een App Service-plan maken
 1. Klik op de optie **Een resource maken** in het navigatievenster aan de linkerkant.
@@ -126,7 +126,7 @@ De Web-App moet meer dan 10 aanvragen hebben in minder dan 5 minuten om de zojui
 
 2. Laad de pagina minstens 10 keer snel achter elkaar opnieuw.
 
-3. Selecteer de optie **Controleren** in het navigatiedeelvenster aan de linkerkant. Selecteer het tabblad **Automatisch schalen** zodra de pagina wordt geladen.
+3. Selecteer de optie **Controleren** in het navigatiedeelvenster aan de linkerkant. Selecteer het tabblad **Autoschaal** zodra de pagina wordt geladen.
 
 4. Selecteer in de lijst het App Service-plan dat in deze zelfstudie wordt gebruikt.
 
@@ -145,7 +145,7 @@ De inschaalvoorwaarde in de instelling voor automatisch schalen wordt geactiveer
 
 2. Laad de Azure Portal.
 
-3. Selecteer de optie **Controleren** in het navigatiedeelvenster aan de linkerkant. Selecteer het tabblad **Automatisch schalen** zodra de pagina wordt geladen.
+3. Selecteer de optie **Controleren** in het navigatiedeelvenster aan de linkerkant. Selecteer het tabblad **Autoschaal** zodra de pagina wordt geladen.
 
 4. Selecteer in de lijst het App Service-plan dat in deze zelfstudie wordt gebruikt.
 

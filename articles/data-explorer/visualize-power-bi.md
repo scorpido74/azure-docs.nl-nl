@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037359"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Zelfstudie: gegevens visualiseren van Azure Data Explorer in Power BI
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie. In deze zelfstudie leert u hoe u visuele elementen kunt genereren in Azure Data Explorer. Vervolgens maakt u via Power BI verbinding met Azure Data Explorer, stelt u een rapport samen op basis van voorbeeldgegevens en publiceert u het rapport in de Power BI-service.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie. In deze zelfstudie leert u hoe u visuele elementen kunt genereren in Azure Data Explorer. Vervolgens maakt u via Power BI verbinding met Azure Data Explorer, stelt u een rapport samen op basis van voorbeeldgegevens en publiceert u het rapport in de Power BI-service.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint. [Meld u aan voor een gratis proefversie](https://app.powerbi.com/signupredirect?pbi_source=web) voordat u begint als u nog niet bent aangemeld voor Power BI Pro.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint. [Meld u aan voor een gratis proefversie](https://app.powerbi.com/signupredirect?pbi_source=web) voordat u begint als u nog niet bent aangemeld voor Power BI Pro.
 
 In deze zelfstudie leert u het volgende:
 
@@ -43,7 +43,7 @@ Naast Azure- en Power BI-abonnementen hebt u ook het volgende nodig om deze zelf
 
 Laten we eens kijken hoe u visuele elementen in Azure Data Explorer kunt genereren voordat we in Power BI duiken. Dit is ideaal voor een snelle analyse.
 
-1. Meld u aan bij [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Log hier [https://dataexplorer.azure.com](https://dataexplorer.azure.com)in
 
 1. Selecteer in het linkerdeelvenster de testdatabase die de StormEvents-voorbeeldgegevens bevat.
 
@@ -157,7 +157,7 @@ Nu de gegevens zijn geïmporteerd en u het gegevensmodel hebt verbeterd, is het 
 
     ![Leeg diagram](media/visualize-power-bi/blank-chart.png)
 
-1. Selecteer in de lijst **VELDEN** **DurationHours** en **State**.
+1. Selecteer in de lijst **VELDEN****DurationHours** en **State**.
 
     ![Velden selecteren](media/visualize-power-bi/select-fields.png)
 
@@ -171,7 +171,7 @@ Nu de gegevens zijn geïmporteerd en u het gegevensmodel hebt verbeterd, is het 
 
     ![Kaart toevoegen](media/visualize-power-bi/add-map.png)
 
-1. Selecteer in de lijst **VELDEN** **CropDamage** en **State**. Wijzig het formaat van de kaart, zodat u de staten van de VS duidelijk kunt zien.
+1. Selecteer in de lijst **VELDEN****CropDamage** en **State**. Wijzig het formaat van de kaart, zodat u de staten van de VS duidelijk kunt zien.
 
     ![Kaart met gewasschade](media/visualize-power-bi/crop-damage-map.png)
 
@@ -219,7 +219,7 @@ Als u het rapport dat u hebt gemaakt niet wilt houden, kunt u gewoon het bestand
 
 1. Schuif onder **Mijn werkruimte** omlaag naar **RAPPORTEN** en zoek **storm-events**.
 
-1. Selecteer het weglatingsteken ( **. . .** ) naast **storm-events** en selecteer vervolgens **VERWIJDEREN**.
+1. Selecteer het weglatingsteken (**. . .**) naast **storm-events** en selecteer vervolgens **VERWIJDEREN**.
 
     ![Rapport verwijderen](media/visualize-power-bi/remove-report.png)
 

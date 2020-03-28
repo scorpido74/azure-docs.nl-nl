@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Qumu Cloud | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Qumu Cloud.
+title: 'Zelfstudie: Azure Active Directory-integratie met Qumu Cloud | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Qumu Cloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,46 +17,46 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a772dfb1fb30e9de93afa91bd0485147029d88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Zelfstudie: Azure Active Directory-integratie met Qumu Cloud
 
-In deze zelfstudie leert u hoe u Qumu Cloud integreren met Azure Active Directory (Azure AD).
-Qumu Cloud integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Qumu Cloud integreert met Azure Active Directory (Azure AD).
+De integratie van Qumu Cloud met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Qumu Cloud heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Qumu Cloud (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Qumu Cloud.
+* U uw gebruikers automatisch laten aanmelden bij Qumu Cloud (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Qumu Cloud, moet u de volgende items:
+Als u azure AD-integratie met Qumu Cloud wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Qumu Cloud ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Qumu Cloud single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Qumu Cloud **SP** en **IDP** gestart door SSO
+* Qumu Cloud ondersteunt **SP** en **IDP** gestart met SSO
 
-* Biedt ondersteuning voor Qumu Cloud **Just In Time** inrichten van gebruikers
+* Qumu Cloud ondersteunt **Just In Time** gebruikersinrichting
 
-## <a name="adding-qumu-cloud-from-the-gallery"></a>Qumu Cloud uit de galerie toe te voegen
+## <a name="adding-qumu-cloud-from-the-gallery"></a>Qumu Cloud toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Qumu Cloud in Azure AD, moet u Qumu Cloud uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Qumu Cloud in Azure AD wilt configureren, moet u Qumu Cloud vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Qumu Cloud uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Qumu Cloud vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -68,31 +68,31 @@ Voor het configureren van de integratie van Qumu Cloud in Azure AD, moet u Qumu 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Qumu Cloud**, selecteer **Qumu Cloud** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Qumu Cloud**in het zoekvak , selecteer **Qumu Cloud** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-    ![Qumu Cloud in de lijst met resultaten](common/search-new-app.png)
+    ![Qumu Cloud in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie maakt u configureert en test Azure AD eenmalige aanmelding met Qumu Cloud op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in de Qumu Cloud tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Qumu Cloud op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Qumu Cloud.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Qumu Cloud, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-singlesign-aan met Qumu Cloud wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Qumu Cloud Single Sign-On](#configure-qumu-cloud-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Qumu Cloud testgebruiker](#create-qumu-cloud-test-user)**  : als u wilt een equivalent van Britta Simon in Qumu Cloud die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Qumu Cloud Single Sign-On](#configure-qumu-cloud-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Qumu Cloud-testgebruiker](#create-qumu-cloud-test-user)** - om een tegenhanger van Britta Simon in Qumu Cloud te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Qumu Cloud, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om azure AD single sign-on met Qumu Cloud te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Qumu Cloud** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Integratie van **Qumu Cloud-toepassingen** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,28 +104,28 @@ Voor het configureren van Azure AD eenmalige aanmelding met Qumu Cloud, moet u d
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Qumu Cloud domein en URL's, eenmalige aanmelding informatie](common/idp-intiated.png)
+    ![Informatie over Qumu Cloud Domain en URL's met eenmalige aanmelding](common/idp-intiated.png)
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<subdomain>.qumucloud.com/saml/SSO`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<subdomain>.qumucloud.com/saml/SSO`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<subdomain>.qumucloud.com/saml/SSO`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Qumu Cloud domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
+    ![Informatie over Qumu Cloud Domain en URL's met eenmalige aanmelding](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.qumucloud.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<subdomain>.qumucloud.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [Qumu Cloud Client ondersteuningsteam](mailto:support@qumu.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [qumu Cloud Client support team](mailto:support@qumu.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Qumu cloudtoepassing wordt verwacht dat de SAML-asserties ondertekend in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van de SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op **bewerken** pictogram openen **gebruikerskenmerken** dialoogvenster.
+6. Qumu Cloud-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik **op Pictogram Bewerken** om het dialoogvenster **Gebruikerskenmerken te** openen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
-7. Bovendien met bovenstaande Qumu Cloud-App wordt verwacht dat enkele meer kenmerken moeten worden doorgegeven in SAML-antwoord. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
+7. Naast bovenstaande, Qumu Cloud applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
     | Name | Bronkenmerk|
     | ---------------| --------------- |    
@@ -136,9 +136,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Qumu Cloud, moet u d
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![installatiekopie](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![installatiekopie](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -150,11 +150,11 @@ Voor het configureren van Azure AD eenmalige aanmelding met Qumu Cloud, moet u d
 
     f. Klik op **Opslaan**.
 
-8. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+8. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-9. Op de **Qumu Cloud instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+9. Kopieer in de sectie **Qumu Cloud instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -164,9 +164,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Qumu Cloud, moet u d
 
     c. Afmeldings-URL
 
-### <a name="configure-qumu-cloud-single-sign-on"></a>Configureer Cloud Qumu Single Sign-On
+### <a name="configure-qumu-cloud-single-sign-on"></a>Qumu Cloud Single Sign-On configureren
 
-Het configureren van eenmalige aanmelding op **Qumu Cloud** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [Qumu Cloud-ondersteuningsteam](mailto:support@qumu.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **de Qumu** Cloud-zijde, moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het Qumu Cloud-ondersteuningsteam](mailto:support@qumu.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -184,25 +184,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Qumu Cloud.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Qumu Cloud.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Qumu Cloud**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Qumu Cloud**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Qumu Cloud**.
+2. Selecteer **Qumu Cloud**in de lijst met toepassingen .
 
-    ![De koppeling Qumu Cloud in de lijst met toepassingen](common/all-applications.png)
+    ![De Qumu Cloud-koppeling in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -212,30 +212,30 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-qumu-cloud-test-user"></a>Testgebruiker Qumu Cloud maken
+### <a name="create-qumu-cloud-test-user"></a>Qumu Cloud-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Qumu Cloud. Qumu Cloud biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in de Qumu bestaat Cloud, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Qumu Cloud. Qumu Cloud ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Qumu Cloud, wordt er een nieuwe gemaakt na verificatie.
 
 >[!Note]
->Als u maken van een gebruiker handmatig wilt, neem dan contact op met [Qumu Cloud Client ondersteuningsteam](mailto:support@qumu.com).
+>Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Qumu Cloud Client](mailto:support@qumu.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Qumu Cloud in het toegangsvenster, moet u worden automatisch aangemeld bij de Qumu Cloud waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Qumu Cloud-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Qumu-cloud waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

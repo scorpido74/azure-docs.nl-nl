@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79382147"
 ---
 ## <a name="app-configuration"></a>App Configuration
@@ -18,11 +18,11 @@ ms.locfileid: "79382147"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
 
-## <a name="automation"></a>Automatisering
+## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Back-up
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
@@ -94,7 +94,7 @@ ms.locfileid: "79382147"
 
 [!INCLUDE [azure-policy-samples-policies-managed-application](azure-policy-samples-policies-managed-application.md)]
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](azure-policy-samples-policies-monitoring.md)]
 
@@ -102,7 +102,7 @@ ms.locfileid: "79382147"
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 
@@ -114,7 +114,7 @@ ms.locfileid: "79382147"
 
 [!INCLUDE [azure-policy-samples-policies-service-bus](azure-policy-samples-policies-service-bus.md)]
 
-## <a name="service-fabric"></a>Infrastructuur van service
+## <a name="service-fabric"></a>Service Fabric
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](azure-policy-samples-policies-service-fabric.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "79382147"
 
 [!INCLUDE [azure-policy-samples-policies-sql](azure-policy-samples-policies-sql.md)]
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 [!INCLUDE [azure-policy-samples-policies-storage](azure-policy-samples-policies-storage.md)]
 

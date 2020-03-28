@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72789392"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
@@ -29,11 +29,11 @@ In deze zelfstudie leert u hoe u AWS-VM’s (Amazon Web Services) naar Azure mig
 > * De failover testen om te controleren of alles werkt
 > * Een eenmalige failover uitvoeren naar Azure
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/) voordat u begint.
 
 
 > [!NOTE]
-> U kunt nu de Azure Migrate-service gebruiken om AWS-exemplaren naar Azure te migreren. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
+> U nu de Azure Migrate-service gebruiken om AWS-exemplaren te migreren naar Azure. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Vereisten
 - Zorg ervoor dat de VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Ondersteunde versies zijn onder andere: 
@@ -51,7 +51,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     > - Voor Linux-VM’s moet het account een hoofdaccount zijn op de Linux-bronserver. 
     > - Voor Windows-accounts schakelt u als u geen domeinaccount gebruikt toegangsbeheer voor externe gebruikers uit op de lokale computer:
     >
-    >      Voeg in het register onder **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** de DWORD-vermelding **LocalAccountTokenFilterPolicy** toe en stel de waarde in op **1**.
+    >      Voeg in het register onder **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**het DWORD-item **LocalAccountTokenFilterPolicy** toe en stel de waarde in op **1**.
 
 - Een afzonderlijke EC2-instantie die u kunt gebruiken als de Site Recovery-configuratieserver. Op deze instantie moet Windows Server 2012 R2 worden uitgevoerd.
 
@@ -59,7 +59,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet een aantal resources gereed hebben in Azure voor gebruik op de gemigreerde EC2-instanties. Het gaat hier om een opslagaccount, een kluis en een virtueel netwerk.
 
-### <a name="create-a-storage-account"></a>Maak een opslagaccount
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. Azure-VM's worden gemaakt vanuit de opslag wanneer u een failover van on-premises naar Azure uitvoert.
 
@@ -86,7 +86,7 @@ Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. 
 5. Selecteer **Aan dashboard vastmaken** voor snelle toegang tot de nieuwe kluis vanaf het dashboard.
 7. Als u gereed bent, selecteert u **Maken**.
 
-Ga naar **Dashboard** > **Alle resources** om de nieuwe kluis te zien. De nieuwe kluis wordt ook weergegeven op de hoofdpagina **Recovery Services-kluizen**.
+Als u de nieuwe kluis wilt bekijken, gaat u naar **Dashboard** > **Alle bronnen**. De nieuwe kluis wordt ook weergegeven op de hoofdpagina **Recovery Services-kluizen**.
 
 ### <a name="set-up-an-azure-network"></a>Een Azure-netwerk instellen
 
@@ -95,14 +95,14 @@ Wanneer Azure-VM’s zijn gemaakt na de migratie (failover), worden ze gekoppeld
 1. Selecteer in [Azure Portal](https://portal.azure.com) achtereenvolgens **Een resource maken** > **Netwerken** >
    **Virtueel netwerk**.
 3. Voer bij **Naam** in **myMigrationNetwork**.
-4. De standaard waarde voor de **adres ruimte** behouden (moet een waarde invoeren).
+4. Laat de standaardwaarde voor **adresruimte** achter (moet waarde invoeren).
 5. Selecteer bij **Abonnement** het abonnement dat u wilt gebruiken.
-6. Selecteer bij **Resourcegroep** de optie **Bestaande gebruiken** en selecteer vervolgens **migrationRG**.
+6. Selecteer **Voor resourcegroep** **Bestaande gebruiken**en selecteer vervolgens **migrationRG**.
 7. Selecteer bij **Locatie** de optie **Europa - west**.
-8. Behoud onder **subnet**de standaard waarden voor **naam** en **IP-bereik (moet waarde invoeren)** .
-9. Voeg instructies toe voor DDoS-beveiligings instellingen.
+8. Laat **onder Subnet**de standaardwaarden voor **naam** en **IP-bereik (moet waarde invoeren) .**
+9. Voeg instructies toe voor DDoS-beveiligingsinstellingen.
 10. Laat de optie **Service-eindpunten** uitgeschakeld.
-11. Instructies toevoegen voor Firewall instellingen.
+11. Instructies toevoegen voor firewall-instellingen.
 12. Als u gereed bent, selecteert u **Maken**.
 
 ## <a name="prepare-the-infrastructure"></a>De infrastructuur voorbereiden
@@ -117,16 +117,16 @@ Selecteer op de pagina **Beveiligingsdoel** de volgende waarden:
 |---------|-----------|
 | Waar bevinden de machines zich? |Selecteer **On-premises**.|
 | Waarnaartoe wilt u de machines repliceren? |Selecteer **Naar Azure**.|
-| Voert u een migratie uit? | Selecteer **Ja**en schakel het selectie vakje naast de **underdstand in, maar ik wil door gaan met Azure site Recovery.**
+| Voert u een migratie uit? | Schakel **Ja**in en schakel het selectievakje naast **Ik onderstel in, maar ik wil verder gaan met Azure Site Recovery.**
 | Zijn de machines gevirtualiseerd? |Selecteer **Niet gevirtualiseerd/overig**.|
 
 Wanneer u gereed bent, selecteert u **OK** om naar de volgende sectie te gaan.
 
-### <a name="2-select-deployment-planning"></a>2: implementatie planning selecteren
+### <a name="2-select-deployment-planning"></a>2: Implementatieplanning selecteren
 
 Selecteer in **Hebt u de implementatieplanning uitgevoerd?** de optie **Dat doe ik later**. Selecteer vervolgens **OK**.
 
-### <a name="3-prepare-source"></a>3: bron voorbereiden
+### <a name="3-prepare-source"></a>3: Bron voorbereiden
 
 Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
 
@@ -138,7 +138,7 @@ Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
 
     1. Selecteer onder **Voordat u begint** de optie **De configuratieserver en processerver installeren**. Selecteer vervolgens **Volgende**.
     2. Selecteer in **Softwarelicentie van derden** de optie **Ik ga akkoord met de licentieovereenkomst van de derde partij**, en selecteer vervolgens **Volgende**.
-    3. Selecteer in **Registratie** de optie **Bladeren** en ga naar de locatie waar u het registratiesleutelbestand voor de kluis hebt opgeslagen. Selecteer **Next**.
+    3. Selecteer in **Registratie** de optie **Bladeren** en ga naar de locatie waar u het registratiesleutelbestand voor de kluis hebt opgeslagen. Selecteer **Volgende**.
     4. Selecteer in **Internetinstellingen** de optie **Rechtstreeks verbinding maken met Azure Site Recovery zonder proxyserver**. Selecteer vervolgens **Volgende**.
     5. Op de pagina **Controle op vereisten** worden controles voor verschillende items uitgevoerd. Wanneer dit is voltooid, selecteert u **Volgende**.
     6. Geef in **MySQL-configuratie** de vereiste wachtwoorden op. Selecteer vervolgens **Volgende**.
@@ -151,7 +151,7 @@ Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
 
 Wanneer u klaar bent met het instellen van de configuratieserver, gaat u terug naar de portal en selecteert u de server die u zojuist hebt gemaakt als **configuratieserver**. Selecteer **OK** om verder te gaan met stap 3: Doel voorbereiden.
 
-### <a name="4-prepare-target"></a>4: doel voorbereiden
+### <a name="4-prepare-target"></a>4: Doel voorbereiden
 
 In deze sectie voert u gegevens in over de resources die u eerder in deze zelfstudie hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).
 
@@ -160,11 +160,11 @@ In deze sectie voert u gegevens in over de resources die u eerder in deze zelfst
 3. Met Site Recovery wordt gecontroleerd of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt. Als het goed is, zijn dit de resources die u eerder in deze zelfstudie hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).
 4. Wanneer u gereed bent, selecteert u **OK**.
 
-### <a name="5-prepare-replication-settings"></a>5: replicatie-instellingen voorbereiden
+### <a name="5-prepare-replication-settings"></a>5: Replicatie-instellingen voorbereiden
 
 Voordat u replicatie kunt inschakelen, moet u replicatiebeleid maken.
 
-1. Selecteer **maken en koppelen**.
+1. Selecteer **Maken en koppelen**.
 2. Voer bij **Naam** in **myReplicationPolicy**.
 3. Laat de rest van de standaardinstellingen ongewijzigd en selecteer **OK** om het beleid te maken. Het nieuwe beleid wordt automatisch gekoppeld aan de configuratieserver.
 
@@ -174,7 +174,7 @@ Wanneer u alle vijf de secties onder **Infrastructuur voorbereiden** hebt voltoo
 
 Schakel replicatie in voor elke VM die u wilt migreren. Wanneer replicatie is ingeschakeld, wordt de Mobility-service automatisch geïnstalleerd met Site Recovery.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure-portal.](https://portal.azure.com)
 1. Selecteer op de pagina voor uw kluis, onder **Aan de slag**, de optie **Site Recovery**.
 2. Selecteer onder **Voor on-premises machines en Azure-VM's** de optie **Stap 1: Toepassing repliceren**. Voltooi de pagina’s van de wizard met de volgende informatie. Selecteer **OK** op elke pagina wanneer u gereed bent:
    - 1: Bron configureren
@@ -227,17 +227,17 @@ Wanneer u een testfailover uitvoert, gebeurt het volgende:
 
 Voer de testfailover uit in de portal:
 
-1. Ga op de pagina voor uw kluis naar **Beveiligde items** > **Gerepliceerde Items**. Selecteer de VM en selecteer vervolgens **Testfailover**.
+1. Ga op de pagina voor uw kluis naar**Gerepliceerde** **items met beveiligde items** > . Selecteer de VM en selecteer vervolgens **Testfailover**.
 2. Selecteer een herstelpunt om voor de failover te gebruiken:
     - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt met Site Recovery. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er sprake is van een lage RTO (Recovery Time Objective).
     - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
     - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer in **Failover testen** het Azure-doelnetwerk waarmee de virtuele Azure-machines moeten worden verbonden nadat de failover heeft plaatsgevonden. Dit moet het netwerk zijn dat u hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).
-4. Selecteer **OK** om de failover te starten. Selecteer de VM om de eigenschappen ervan weer te geven als u de voortgang wilt volgen. Of u kunt de taak **Testfailover** selecteren op de pagina voor uw kluis. Selecteer hiervoor **Controle en rapporten** > **Taken** >  **Site Recovery-taken**.
+4. Selecteer **OK** om de failover te starten. Selecteer de VM om de eigenschappen ervan weer te geven als u de voortgang wilt volgen. Of u kunt de taak **Testfailover** selecteren op de pagina voor uw kluis. Selecteer hiervoor Taken voor het herstellen**van taken voor vacatures** >   **controleren en rapporteert.** > **Site Recovery jobs**
 5. Wanneer de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal. Selecteer **Virtuele machines** om de VM te bekijken. Controleer of de VM de juiste grootte heeft, is verbonden met het juiste netwerk en actief is.
 6. Nu moet u verbinding maken met de gerepliceerde virtuele machine in Azure.
-7. Selecteer **Failovertest opschonen** in het herstelplan om de Azure-VM’s te verwijderen die zijn gemaakt tijdens de testfailover. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
+7. Selecteer **Failovertest opschonen** in het herstelplan om de Azure-VM’s te verwijderen die zijn gemaakt tijdens de testfailover. **Noteer**en sla eventuele waarnemingen in verband met de testfailover op en sla deze op.
 
 In sommige scenario’s is voor failover extra verwerking vereist. Het duurt 8 tot 10 minuten voordat de verwerking is voltooid.
 
@@ -245,8 +245,8 @@ In sommige scenario’s is voor failover extra verwerking vereist. Het duurt 8 t
 
 Voer een werkelijke failover voor de EC2-instanties uit om deze naar Azure-VM’s te migreren:
 
-1. Selecteer in **Beveiligde items** > **Gerepliceerde items** de AWS-instanties. Selecteer vervolgens **Failover**.
-2. Selecteer in **Failover** een **Herstelpunt** om een failover voor uit te voeren. Selecteer het meest recente herstelpunt en start de failover. U kunt de voortgang van de failover volgen op de pagina **Taken**.
+1. Selecteer in**gerepliceerde items met** **beveiligde items** > de AWS-instanties en selecteer **Vervolgens Failover**.
+2. Selecteer in **Failover** een **Herstelpunt** om een failover voor uit te voeren. Selecteer het meest recente herstelpunt en start de failover. U de failovervoortgang volgen op de pagina **Vacatures.**
 1. Controleer of de VM wordt weergegeven in **Gerepliceerde items**.
 2. Klik met de rechtermuisknop op elke VM, en selecteer vervolgens **Migratie voltooien**. Er gebeurt nu het volgende:
 

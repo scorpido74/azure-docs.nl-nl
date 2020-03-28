@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met CODA | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en CODA.
+title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met Coda | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Coda.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,176 +16,176 @@ ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77194598"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met CODA
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Coda
 
-In deze zelf studie leert u hoe u CODA kunt integreren met Azure Active Directory (Azure AD). Wanneer u CODA integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Coda integreert met Azure Active Directory (Azure AD). Wanneer u Coda integreert met Azure AD, u het als:
 
-* Controle in azure AD die toegang heeft tot CODA.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij CODA met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Coda.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Coda met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* CODA (eenmalige aanmelding) ingeschakeld abonnement (Enter prise) met GDrive-integratie uitgeschakeld. Neem contact op met het [CODA-ondersteunings team](mailto:support@coda.io) om Gdrive-integratie voor uw organisatie uit te scha kelen als deze momenteel is ingeschakeld.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Coda single sign-on (SSO) ingeschakeld abonnement (Enterprise) met GDrive integratie uitgeschakeld. Neem contact op met [het ondersteuningsteam van Coda](mailto:support@coda.io) om gdrive-integratie voor uw organisatie uit te schakelen als dit momenteel is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* CODA ondersteunt SSO met **IDP** -started
+* Coda ondersteunt **IDP** geïnitieerde SSO
 
-* CODA ondersteunt **just-in-time** -gebruikers inrichting
+* Coda ondersteunt **Just In Time** gebruikersinrichting
 
-* Zodra u CODA hebt geconfigureerd, kunt u sessie besturings elementen afdwingen waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Coda hebt geconfigureerd, u sessiebesturingselementen afdwingen die exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebesturingselementen zijn van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-coda-from-the-gallery"></a>CODA toevoegen vanuit de galerie
+## <a name="adding-coda-from-the-gallery"></a>Coda toevoegen uit de galerie
 
-Als u de integratie van CODA wilt configureren in azure AD, moet u CODA vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Coda in Azure AD wilt configureren, moet u Coda uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **CODA** in het zoekvak.
-1. Selecteer in het paneel **CODA** in resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Coda** in het zoekvak in de sectie **Toevoegen in de galerie.**
+1. Selecteer **Coda** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor CODA
+## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>Azure AD-aanmelding voor Coda configureren en testen
 
-Azure AD SSO met CODA configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in CODA.
+Azure AD SSO configureren en testen met Coda met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Coda.
 
-Als u Azure AD SSO wilt configureren en testen met CODA, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO met Coda wilt configureren en testen, voert u de volgende bouwstenen in:
 
-1. **[Begin met het configureren van CODA SSO](#begin-configuration-of-coda-sso)** -om de configuratie van SSO in CODA te starten.
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-   * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-   * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[CODA-SSO configureren](#configure-coda-sso)** : voor het volt ooien van de configuratie van instellingen voor eenmalige aanmelding in CODA.
-   * **[Maak een CODA-test gebruiker](#create-coda-test-user)** -om een equivalent van B. Simon te hebben in CODA dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Begin met de configuratie van Coda SSO](#begin-configuration-of-coda-sso)** - om te beginnen met de configuratie van SSO in Coda.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+   * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+   * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Coda SSO](#configure-coda-sso)** - om de configuratie van enkele aanmeldingsinstellingen in Coda te voltooien.
+   * **[Coda-testgebruiker maken](#create-coda-test-user)** - om een tegenhanger van B.Simon in Coda te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="begin-configuration-of-coda-sso"></a>Configuratie van CODA SSO starten
+## <a name="begin-configuration-of-coda-sso"></a>Configuratie van Coda SSO starten
 
-Volg deze stappen in CODA om te beginnen.
+Volg deze stappen in Coda om te beginnen.
 
-1. Open in CODA het deel venster **organisatie-instellingen** .
+1. Open in Coda het deelvenster **Organisatie-instellingen.**
 
    ![Organisatie-instellingen openen](media/coda-tutorial/org-settings.png)
 
-1. Zorg ervoor dat GDrive-integratie is uitgeschakeld voor uw organisatie. Als deze momenteel is ingeschakeld, neemt u contact op met het [CODA-ondersteunings team](mailto:support@coda.io) om te helpen bij het migreren van Gdrive.
+1. Controleer of uw organisatie GDrive-integratie heeft uitgeschakeld. Als dit momenteel is ingeschakeld, neemt u contact op met het [coda-ondersteuningsteam](mailto:support@coda.io) om u te helpen bij het migreren van GDrive.
 
-   ![GDrive is uitgeschakeld](media/coda-tutorial/gdrive-off.png)
+   ![GDrive uitgeschakeld](media/coda-tutorial/gdrive-off.png)
 
-1. Selecteer onder **verifiëren met SSO (SAML)** de optie **SAML configureren** .
+1. Selecteer **onder Verifiëren met SSO (SAML)** de optie **SAML configureren.**
 
-   ![SAML-instellingen](media/coda-tutorial/saml-settings-link.png)
+   ![Saml-instellingen](media/coda-tutorial/saml-settings-link.png)
 
-1. Noteer de waarden voor de **Entiteits-ID** en de **SAML-respons-URL**, die u in de volgende stappen nodig hebt.
+1. Let op de waarden voor **Entiteit-id** en **SAML-antwoord-URL,** die u in de volgende stappen nodig hebt.
 
-   ![Entiteit-ID en SAML-antwoord-URL voor gebruik in azure](media/coda-tutorial/azure-settings.png)
+   ![Url van entiteits-id en SAML-antwoord die moet worden gebruikt in Azure](media/coda-tutorial/azure-settings.png)
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **CODA** -toepassings integratie en selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Coda-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **eenmalige aanmelding met SAML instellen** de waarden in voor de volgende velden:
+1. Voer op de pagina **Eén aanmelding instellen met SAML** de waarden in voor de volgende velden:
 
-   a. Voer in het tekstvak **id** de tekst ' entiteit-id ' in. Dit moet het patroon volgen: `https://coda.io/samlId/<CUSTOMID>`
+   a. Voer **in** het tekstvak Id de 'Entiteits-id' van bovenaf in. Het moet het patroon volgen:`https://coda.io/samlId/<CUSTOMID>`
 
-   b. Voer in het tekstvak **antwoord-URL** het selectie vakje ' SAML-antwoord-URL ' in. Dit moet het patroon volgen: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. Voer in het tekstvak **Antwoord-URL** de URL 'SAML-antwoord' van bovenaf in. Het moet het patroon volgen:`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
-   > Uw waarden verschillen van bovenstaande. u kunt uw waarden vinden in de ' SAML configureren '-console. Werk deze waarden bij met de werkelijke id en antwoord-URL.
+   > Uw waarden zullen afwijken van het bovenstaande; u uw waarden vinden in coda's Configure SAML console. Werk deze waarden bij met de werkelijke id en antwoord-URL.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **CODA instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **Coda instellen** de juiste URL(s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang aan CODA toe te kennen.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Coda.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **CODA**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **Coda**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-   ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+   ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-coda-sso"></a>CODA SSO configureren
+## <a name="configure-coda-sso"></a>Coda SSO configureren
 
-Als u de installatie wilt volt ooien, voert u waarden in Azure Active Directory in het SAML-paneel CODA **configureren** in.
+Als u de installatie wilt voltooien, voert u waarden uit Azure Active Directory in het deelvenster **Saml van** Coda configureren in.
 
-1. Open in CODA het deel venster **organisatie-instellingen** .
-1. Selecteer onder **verifiëren met SSO (SAML)** de optie **SAML configureren** .
-1. Stel de **SAML-provider** in op **Azure Active Directory**.
-1. Plak de **aanmeldings-URL** in de Azure-console in de AANMELDINGS-URL van de **identiteits provider**.
-1. Plak in de uitgever van de **identiteits provider**de **Azure ad-id** uit de Azure-console.
-1. Selecteer in het **open bare certificaat van de identiteits provider**de optie **certificaat uploaden** en selecteer het certificaat bestand dat u eerder hebt gedownload.
+1. Open in Coda het deelvenster **Organisatie-instellingen.**
+1. Selecteer **onder Verifiëren met SSO (SAML)** de optie **SAML configureren.**
+1. **SAML-provider** instellen op **Azure Active Directory**.
+1. Plak in **de url van aanmeldingvan identiteitsprovider**de **aanmeldings-URL** van de Azure-console.
+1. Plak in **De uitgever van de identiteitsprovider**de Azure **AD-id** van de Azure-console.
+1. Selecteer **in het openbaar certificaat van de identiteitsprovider**de optie Certificaat **uploaden** en selecteer het certificaatbestand dat u eerder hebt gedownload.
 1. Selecteer **Opslaan**.
 
-Hiermee wordt het werk voltooid dat nodig is voor de installatie van de SAML SSO-verbinding.
+Hiermee wordt het werk voltooid dat nodig is voor de SAML SSO-verbinding.
 
-### <a name="create-coda-test-user"></a>CODA-test gebruiker maken
+### <a name="create-coda-test-user"></a>Coda-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon in CODA gemaakt. CODA ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in CODA, wordt er na de verificatie een nieuwe gemaakt.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Coda. Coda ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Coda, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de CODA-tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de CODA waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de coda-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Coda waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer CODA met Azure AD](https://aad.portal.azure.com/)
+- [Probeer Coda met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [CODA beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Coda beschermen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

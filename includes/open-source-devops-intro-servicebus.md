@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: eb96027351cf244e9cd4404f702544411130db5e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67176725"
 ---
-[Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) is een onderneming [integratie](https://azure.microsoft.com/product-categories/integration/) berichtenbroker. Servicebus ondersteunt twee typen communicatie: wachtrijen en onderwerpen. 
+[Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) is een berichtenmakelaar voor [bedrijfsintegratie.](https://azure.microsoft.com/product-categories/integration/) De servicebus ondersteunt twee soorten communicatie: wachtrijen en onderwerpen. 
 
-Wachtrijen ondersteuning voor asynchrone communicatie tussen toepassingen. Een app verzendt-berichten naar een wachtrij, waarin de berichten worden opgeslagen. De ontvangende toepassing vervolgens verbinding met en de berichten uit de wachtrij kan lezen.
+Wachtrijen ondersteunen asynchrone communicatie tussen toepassingen. Een app stuurt berichten naar een wachtrij, die de berichten opslaat. De ontvangende toepassing maakt vervolgens verbinding met en leest de berichten uit de wachtrij.
 
-Onderwerpen ondersteunen het publiceren-abonneren patroon, waarmee een een-op-veel-relatie tussen de maker van het bericht en de receiver(s) messager.
+Onderwerpen ondersteunen het patroon van het publiceren abonneren, waardoor een één-op-veel relatie mogelijk is tussen de afzender van het bericht en de ontvanger(en) van de messager.

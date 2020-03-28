@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Palo Alto Networks-Portal | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks Captive Portal | Microsoft Documenten'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Palo Alto Networks Captive Portal configureert.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160161"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Zelf studie: integratie Azure Active Directory met Palo Alto Networks-Portal
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks Captive Portal
 
 In deze zelfstudie leert u hoe u Palo Alto Networks Captive Portal integreert met Azure Active Directory (Azure AD).
 
@@ -35,7 +35,7 @@ De integratie van Palo Alto Networks Captive Portal met Azure AD biedt de volgen
 
 Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/)aan.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -61,7 +61,7 @@ Voeg om te beginnen in de galerie Palo Alto Networks Captive Portal toe aan uw l
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
+2. Selecteer **Enterprise-toepassingen** > **Alle toepassingen**.
 
     ![De optie Bedrijfstoepassingen in het menu](common/enterprise-applications.png)
 
@@ -79,12 +79,12 @@ U configureert en test eenmalige aanmelding van Azure AD met Palo Alto Networks 
 
 Om eenmalige aanmelding van Azure AD met Palo Alto Networks Captive Portal te configureren en testen, moet u de volgende taken uitvoeren:
 
-1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** : Hiermee stelt u de gebruiker in staat om deze functie te gebruiken.
-2. **[Palo Alto Networks-eenmalige aanmelding voor de portal configureren](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Configureer de instellingen voor eenmalige aanmelding in de toepassing.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : de eenmalige aanmelding van Azure AD testen met de gebruiker *Julia Simon*.
-4. **[De Azure AD-test gebruiker toewijzen](#assign-the-azure-ad-test-user)** : Stel Julia Simon in op het gebruik van eenmalige aanmelding voor Azure AD.
-5. **Een Palo Alto Networks-gebruiker**voor de gebruikers van de portal testen: Maak een vergelijk gebruiker *Julia Simon* in Palo Alto Networks portal die is gekoppeld aan de Azure AD-gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : Controleer of de configuratie werkt.
+1. **[Azure AD-aanmelding configureren:](#configure-azure-ad-single-sign-on)** de gebruiker in staat stellen deze functie te gebruiken.
+2. **[Palo Alto Networks Captive Portal single sign-on configureren:](#configure-palo-alto-networks-captive-portal-single-sign-on)** Configureer de instellingen voor één aanmelding in de toepassing.
+3. **[Een Azure AD-testgebruiker maken:](#create-an-azure-ad-test-user)** Azure AD-enkele aanmelding testen met de gebruiker *Britta Simon*.
+4. **[De Azure AD-testgebruiker toewijzen:](#assign-the-azure-ad-test-user)** Britta Simon instellen voor het gebruik van Azure AD single sign-on.
+5. **Maak een Palo Alto Networks Captive Portal-testgebruiker:** Maak een tegenhangergebruiker *Britta Simon* in Palo Alto Networks Captive Portal die is gekoppeld aan de Azure AD-gebruiker.
+6. **[Eenmaal aanmelden testen:](#test-single-sign-on)** controleer of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -145,7 +145,7 @@ Stel vervolgens eenmalige aanmelding in voor Palo Alto Networks Captive Portal:
 
 Maak vervolgens een testgebruiker met de naam *Britta Simon* in de Azure-portal:
 
-1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in de Azure-portal **Azure Active Directory** > **Users** > **All users All users**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -159,7 +159,7 @@ Maak vervolgens een testgebruiker met de naam *Britta Simon* in de Azure-portal:
 
     1. Voer **BrittaSimon** in bij **Naam**.
   
-    2. Voer voor **gebruikers naam** **BrittaSimon\@\<your_company_domain\>** . Bijvoorbeeld **BrittaSimon\@contoso.com**.
+    2. Voer voor **gebruikersnaam** **BrittaSimon\@\<your_company_domain\>** in . Bijvoorbeeld, **BrittaSimon\@contoso.com**.
 
     3. Voer bij **Wachtwoord** een wachtwoord in. Wij raden u aan het wachtwoord dat u invoert te noteren. U kunt het selectievakje **Wachtwoord weergeven** inschakelen om het wachtwoord weer te geven.
 
@@ -169,7 +169,7 @@ Maak vervolgens een testgebruiker met de naam *Britta Simon* in de Azure-portal:
 
 Verleen vervolgens Britta Simon toegang tot Palo Alto Networks Captive Portal zodat ze eenmalige aanmelding met Azure kan gebruiken:
 
-1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer in de Azure-portal **Alle toepassingen voor Bedrijven** > **All applications**selecteren .
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 

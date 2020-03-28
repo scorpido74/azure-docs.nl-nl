@@ -1,6 +1,6 @@
 ---
-title: Bericht routering voor Azure IoT Hub configureren met een Azure Resource Manager sjabloon
-description: Bericht routering voor Azure IoT Hub configureren met een Azure Resource Manager sjabloon
+title: Berichtroutering configureren voor Azure IoT Hub met een Azure Resource Manager-sjabloon
+description: Berichtroutering configureren voor Azure IoT Hub met een Azure Resource Manager-sjabloon
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -10,91 +10,91 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084391"
 ---
-# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Zelf studie: een Azure Resource Manager sjabloon gebruiken om IoT Hub bericht routering te configureren
+# <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Zelfstudie: Een Azure Resource Manager-sjabloon gebruiken om de routeringsroute van iot-hubberichten te configureren
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
 [!INCLUDE [iot-hub-include-routing-create-resources](../../includes/iot-hub-include-routing-create-resources.md)]
 
-## <a name="message-routing"></a>Bericht routering
+## <a name="message-routing"></a>Berichtroutering
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-## <a name="download-the-template-and-parameters-file"></a>De sjabloon en het parameter bestand downloaden
+## <a name="download-the-template-and-parameters-file"></a>Het sjabloon- en parametersbestand downloaden
 
-Voor het tweede deel van deze zelf studie downloadt en voert u een Visual Studio-toepassing uit om berichten naar de IoT Hub te verzenden. Er is een map in die down load die de Azure Resource Manager sjabloon en het parameter bestand bevat, evenals de Azure CLI-en Power shell-scripts.
+Voor het tweede deel van deze zelfstudie download t u een Visual Studio-toepassing om berichten naar de IoT-hub te verzenden. Er is een map in die download die de Azure Resource Manager-sjabloon en parametersbestand bevat, evenals de Azure CLI- en PowerShell-scripts.
 
-Down load de [Azure IOT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) -voor beelden nu nog eens. Pak het zip-bestand master. De Resource Manager-sjabloon en het parameter bestand bevinden zich in/iot-hub/Tutorials/Routing/SimulatedDevice/resources/als **template_iothub. json** en **template_iothub_parameters. json**.
+Download nu de [Azure IoT C#Samples.](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) Rits het bestand master.zip uit. De sjabloon Resourcebeheer en het parametersbestand bevinden zich in /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ as **template_iothub.json** en **template_iothub_parameters.json**.
 
 ## <a name="create-your-resources"></a>Uw resources maken
 
-U gaat een Azure Resource Manager RM-sjabloon gebruiken om al uw resources te maken. De Azure CLI-en Power shell-scripts kunnen een aantal regels tegelijk uitvoeren. Een RM-sjabloon wordt in één stap geïmplementeerd. In dit artikel wordt beschreven hoe u de secties afzonderlijk kunt begrijpen. Vervolgens wordt uitgelegd hoe u de sjabloon implementeert en maakt u het virtuele apparaat om te testen. Nadat de sjabloon is geïmplementeerd, kunt u de configuratie voor bericht routering bekijken in de portal.
+U gaat een RM-sjabloon (Azure Resource Manager) gebruiken om al uw resources te maken. De Azure CLI- en PowerShell-scripts kunnen een paar regels tegelijk worden uitgevoerd. Een RM-sjabloon wordt in één stap geïmplementeerd. In dit artikel ziet u de secties afzonderlijk om u te helpen ze allemaal te begrijpen. Vervolgens wordt u weergegeven hoe u de sjabloon implementeert en maakt u het virtuele apparaat voor tests. Nadat de sjabloon is geïmplementeerd, u de configuratie van de berichtroutering in de portal bekijken.
 
-Er zijn verschillende resource namen die wereld wijd uniek moeten zijn, zoals de naam van de IoT Hub en de naam van het opslag account. Om de naam van de resources gemakkelijker te maken, worden deze resource namen ingesteld om een wille keurige alfanumerieke waarde toe te voegen die is gegenereerd op basis van de huidige datum/tijd. 
+Er zijn verschillende resourcenamen die wereldwijd uniek moeten zijn, zoals de naam IoT Hub en de naam van het opslagaccount. Om de naamgeving van de resources eenvoudiger te maken, worden deze resourcenamen ingesteld om een willekeurige alfanumerieke waarde toe te toevoegen die is gegenereerd op basis van de huidige datum/tijd. 
 
-Als u de sjabloon bekijkt, ziet u dat er variabelen worden ingesteld voor deze resources waarvoor de para meter wordt door gegeven en wordt *randomValue* samengevoegd met de para meter. 
+Als u de sjabloon bekijkt, ziet u waar variabelen zijn ingesteld voor deze resources die de parameter die is doorgegeven en *randomValue* toevoegen aan de parameter. 
 
-In de volgende sectie worden de gebruikte para meters uitgelegd.
+In de volgende sectie worden de gebruikte parameters uitgelegd.
 
 ### <a name="parameters"></a>Parameters
 
-De meeste van deze para meters hebben standaard waarden. De taken die eindigen met **_in** worden samengevoegd met *randomValue* om ze globaal uniek te maken. 
+De meeste van deze parameters hebben standaardwaarden. Degenen die eindigen met **_in** worden gekoppeld met *randomValue* om ze wereldwijd uniek te maken. 
 
-**randomValue**: deze waarde wordt gegenereerd op basis van de huidige datum/tijd wanneer u de sjabloon implementeert. Dit veld bevindt zich niet in het parameter bestand, omdat het in de sjabloon zelf wordt gegenereerd.
+**randomValue:** Deze waarde wordt gegenereerd vanaf de huidige datum/tijd waarop u de sjabloon implementeert. Dit veld bevindt zich niet in het parametersbestand, omdat het wordt gegenereerd in de sjabloon zelf.
 
-**subscriptionId**: dit veld wordt voor u ingesteld op het abonnement waarin u de sjabloon implementeert. Dit veld bevindt zich niet in het parameter bestand omdat het voor u is ingesteld.
+**abonnementId**: Dit veld is ingesteld op het abonnement waarin u de sjabloon implementeert. Dit veld bevindt zich niet in het parametersbestand omdat het voor u is ingesteld.
 
-**IoTHubName_in**: dit veld is de naam van de basis IOT hub die wordt samengevoegd met de randomValue die wereld wijd uniek moet zijn.
+**IoTHubName_in**: Dit veld is de naam van de BasisIoT Hub, die is gekoppeld aan de randomValue om wereldwijd uniek te zijn.
 
-**locatie**: dit veld is de Azure-regio waarin u implementeert, zoals ' westelijke '.
+**locatie:** dit veld is het Azure-gebied waarin u implementeert, zoals 'westus'.
 
-**consumer_group**: dit veld is de gebruikers groep die is ingesteld voor berichten die worden verzonden via het eind punt van de route ring. Het wordt gebruikt voor het filteren van resultaten in Azure Stream Analytics. Zo is de hele stroom waar u alles krijgt, of als u gegevens hebt ontvangen via consumer_group is ingesteld op **Contoso**, kunt u een Azure stream Analytics stroom (en Power bi rapport) zo instellen dat alleen die vermeldingen worden weer gegeven. Dit veld wordt gebruikt in deel 2 van deze zelf studie.
+**consumer_group**: Dit veld is de consumentengroep die is ingesteld voor berichten die door het eindpunt van de routering komen. Het wordt gebruikt om resultaten te filteren in Azure Stream Analytics. Er is bijvoorbeeld de hele stream waar je alles krijgt, of als je gegevens hebt die binnenkomen met consumer_group ingesteld op **Contoso,** dan kun je een Azure Stream Analytics-stream (en Power BI-rapport) instellen om alleen die items weer te geven. Dit veld wordt gebruikt in deel 2 van deze tutorial.
 
-**sku_name**: dit veld is het formaat van de IOT hub. Deze waarde moet S1 of hoger zijn. een gratis laag werkt niet voor deze zelf studie omdat er geen meerdere eind punten zijn toegestaan.
+**sku_name**: Dit veld is de schaling voor de IoT-hub. Deze waarde moet S1 of hoger zijn; een gratis laag werkt niet voor deze zelfstudie omdat het niet meerdere eindpunten toestaat.
 
-**sku_units**: dit veld bevat de **sku_name**en het aantal IOT hub eenheden dat kan worden gebruikt.
+**sku_units**: Dit veld gaat mee met de **sku_name**en is het aantal IoT Hub-eenheden dat kan worden gebruikt.
 
-**d2c_partitions**: dit veld is het aantal partities dat wordt gebruikt voor de gebeurtenis stroom.
+**d2c_partitions:** dit veld is het aantal partities dat wordt gebruikt voor de gebeurtenisstream.
 
-**storageAccountName_in**: dit veld is de naam van het opslag account dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslag account. Dit veld wordt samengevoegd met het randomValue om het globaal uniek te maken.
+**storageAccountName_in:** dit veld is de naam van het opslagaccount dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslagaccount. Dit veld is gekoppeld aan de randomValue om het wereldwijd uniek te maken.
 
-**storageContainerName**: dit veld bevat de naam van de container waarin de berichten worden opgeslagen die naar het opslag account worden doorgestuurd.
+**storageContainerName:** Dit veld is de naam van de container waarin de berichten worden doorgestuurd naar het opslagaccount worden opgeslagen.
 
-**storage_endpoint**: dit veld is de naam voor het eind punt van het opslag account dat wordt gebruikt door de bericht routering.
+**storage_endpoint:** dit veld is de naam voor het eindpunt van het opslagaccount dat wordt gebruikt door de berichtroutering.
 
-**service_bus_namespace_in**: dit veld is de naam van de service bus naam ruimte die u wilt maken. Deze waarde wordt samengevoegd met de randomValue om deze wereld wijd uniek te maken.
+**service_bus_namespace_in:** Dit veld is de naam van de naamruimte servicebus die moet worden gemaakt. Deze waarde wordt gekoppeld aan de randomValue om het wereldwijd uniek te maken.
 
-**service_bus_queue_in**: dit veld is de naam van de service bus wachtrij die wordt gebruikt voor de route ring van berichten. Deze waarde wordt samengevoegd met de randomValue om deze wereld wijd uniek te maken.
+**service_bus_queue_in:** dit veld is de naam van de wachtrij servicebus die wordt gebruikt voor het routeren van berichten. Deze waarde wordt gekoppeld aan de randomValue om het wereldwijd uniek te maken.
 
-**AuthRules_sb_queue**: dit veld bevat de autorisatie regels voor de service bus-wachtrij, die wordt gebruikt voor het ophalen van de Connection String voor de wachtrij.
+**AuthRules_sb_queue**: Dit veld is de autorisatieregels voor de wachtrij voor de servicebus die wordt gebruikt om de verbindingstekenreeks voor de wachtrij op te halen.
 
 ### <a name="variables"></a>Variabelen
 
-Deze waarden worden gebruikt in de sjabloon en worden meestal afgeleid van para meters.
+Deze waarden worden gebruikt in de sjabloon en zijn meestal afgeleid van parameters.
 
-**queueAuthorizationRuleResourceId**: dit veld is het ResourceID voor de autorisatie regel voor de service bus wachtrij. ResourceId wordt weer gebruikt om de connection string voor de wachtrij op te halen.
+**queueAuthorizationRuleResourceId**: Dit veld is de ResourceId voor de autorisatieregel voor de wachtrij servicebus. ResourceId wordt op zijn beurt gebruikt om de verbindingstekenreeks voor de wachtrij op te halen.
 
-**iotHubName**: dit veld is de naam van de IOT hub nadat randomValue is samengevoegd. 
+**iotHubName**: Dit veld is de naam van de IoT-hub nadat de waarde willekeurig is samengevoegd. 
 
-**storageAccountName**: dit veld is de naam van het opslag account nadat randomValue is samengevoegd. 
+**storageAccountName:** Dit veld is de naam van de opslagaccount nadat randomValue is samengevoegd. 
 
-**service_bus_namespace**: dit veld is de naam ruimte nadat randomValue is samengevoegd.
+**service_bus_namespace**: Dit veld is de naamruimte na het hebben van randomValue concatenated.
 
-**service_bus_queue**: dit veld is de service bus wachtrij naam nadat randomValue is samengevoegd.
+**service_bus_queue**: Dit veld is de naam van de wachtrij servicebus nadat u willekeurig waarde hebt geconcateneerd.
 
-**sbVersion**: de versie van de Service Bus-API die moet worden gebruikt. In dit geval is het ' 2017-04-01 '.
+**sbVersion**: THe versie van de Service Bus API te gebruiken. In dit geval is het "2017-04-01".
 
-### <a name="resources-storage-account-and-container"></a>Bronnen: opslag account en container
+### <a name="resources-storage-account-and-container"></a>Resources: Opslagaccount en container
 
-De eerste resource die wordt gemaakt, is het opslag account, samen met de container waarnaar berichten worden doorgestuurd. De container is een resource onder het opslag account. Het bevat een `dependsOn`-component voor het opslag account, waarvoor het opslag account moet worden gemaakt vóór de container.
+De eerste bron die is gemaakt, is het opslagaccount, samen met de container waarnaar berichten worden doorgestuurd. De container is een resource onder het opslagaccount. Het heeft `dependsOn` een clausule voor de opslagrekening, die de opslagrekening vereist vóór de container worden gemaakt.
 
-Dit gedeelte ziet er als volgt uit:
+Zo ziet deze sectie eruit:
 
 ```json
 {
@@ -124,9 +124,9 @@ Dit gedeelte ziet er als volgt uit:
 }
 ```
 
-### <a name="resources-service-bus-namespace-and-queue"></a>Resources: naam ruimte en wachtrij Service Bus
+### <a name="resources-service-bus-namespace-and-queue"></a>Resources: naamruimte en wachtrij servicebus
 
-De tweede resource die wordt gemaakt, is de Service Bus naam ruimte, samen met de Service Bus wachtrij waarnaar berichten worden doorgestuurd. De SKU is ingesteld op Standard. De API-versie wordt opgehaald uit de variabelen. Het wordt ook ingesteld om de Service Bus naam ruimte te activeren bij het implementeren van deze sectie (status: actief). 
+De tweede bron die is gemaakt, is de naamruimte servicebus, samen met de wachtrij servicebus naar welke berichten worden doorgestuurd. De SKU is ingesteld op standaard. De API-versie wordt opgehaald uit de variabelen. Het is ook ingesteld om de naamruimte van de servicebus te activeren wanneer deze sectie wordt geïmplementeerd (status:Actief). 
 
 ```json
 {
@@ -149,7 +149,7 @@ De tweede resource die wordt gemaakt, is de Service Bus naam ruimte, samen met d
 }
 ```
 
-In deze sectie wordt de Service Bus wachtrij gemaakt. Dit deel van het script heeft een `dependsOn`-component waarmee wordt gegarandeerd dat de naam ruimte wordt gemaakt vóór de wachtrij.
+In deze sectie wordt de wachtrij servicebus gesmaakt. Dit deel van het `dependsOn` script heeft een clausule die ervoor zorgt dat de naamruimte wordt gemaakt vóór de wachtrij.
 
 ```json
 {
@@ -165,11 +165,11 @@ In deze sectie wordt de Service Bus wachtrij gemaakt. Dit deel van het script he
 }
 ```
 
-### <a name="resources-iot-hub-and-message-routing"></a>Bronnen: IOT hub en bericht routering
+### <a name="resources-iot-hub-and-message-routing"></a>Bronnen: iot-hub en berichtroutering
 
-Nu het opslag account en de Service Bus wachtrij zijn gemaakt, kunt u de IoT Hub maken waarmee berichten naar deze worden doorgestuurd. De RM-sjabloon maakt gebruik van `dependsOn`-componenten, zodat er niet wordt geprobeerd de hub te maken voordat de Service Bus resources en het opslag account zijn gemaakt. 
+Nu het opslagaccount en de wachtrij voor servicebus zijn gemaakt, maakt u de IoT-hub waarmee berichten naar hen worden verzonden. De RM-sjabloon gebruikt `dependsOn` clausules, zodat deze niet probeert de hub te maken voordat de Service Bus-bronnen en het opslagaccount zijn gemaakt. 
 
-Hier volgt het eerste deel van de sectie IoT Hub. Dit deel van de sjabloon stelt de afhankelijkheden in en begint met de eigenschappen.
+Hier is het eerste deel van de IoT Hub sectie. Dit deel van de sjabloon stelt de afhankelijkheden in en begint met de eigenschappen.
 
 ```json
 {
@@ -191,11 +191,11 @@ Hier volgt het eerste deel van de sectie IoT Hub. Dit deel van de sjabloon stelt
             },
 ```
 
-De volgende sectie is de sectie voor de routerings configuratie voor berichten voor de IOT-hub. Eerste is de sectie voor de eind punten. In dit deel van de sjabloon worden de routering eindpunten voor de Service Bus wachtrij en het opslag account, met inbegrip van de verbindings reeksen, ingesteld.
+De volgende sectie is de sectie voor de configuratie van de berichtroutering voor de Iot Hub. De eerste is de sectie voor de eindpunten. In dit deel van de sjabloon worden de routeringseindpunten voor de wachtrij servicebus en het opslagaccount ingesteld, inclusief de verbindingstekenreeksen.
 
-Als u de connection string voor de wachtrij wilt maken, hebt u de queueAuthorizationRulesResourcedId nodig, die inline wordt opgehaald. Als u de connection string voor het opslag account wilt maken, haalt u de primaire opslag sleutel op en gebruikt u deze in de indeling voor de connection string.
+Als u de verbindingstekenreeks voor de wachtrij wilt maken, hebt u de wachtrijAutorisatieResourcesResourcedId nodig, die inline wordt opgehaald. Als u de verbindingstekenreeks voor het opslagaccount wilt maken, haalt u de primaire opslagsleutel op en gebruikt u deze vervolgens in de indeling voor de verbindingstekenreeks.
 
-De eindpunt configuratie is ook de locatie waar u de BLOB-indeling instelt op `AVRO` of `JSON`.
+De eindpuntconfiguratie is ook de plaats `AVRO` waar `JSON`u de blob-indeling instelt op of .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -229,9 +229,9 @@ De eindpunt configuratie is ook de locatie waar u de BLOB-indeling instelt op `A
     },
 ```
 
-Deze volgende sectie is voor het bericht route naar de eind punten. Er is één voor elk eind punt ingesteld, dus er is een voor de Service Bus wachtrij en één voor de container van het opslag account.
+Deze volgende sectie is voor de berichtroutes naar de eindpunten. Er is één ingesteld voor elk eindpunt, dus er is er een voor de wachtrij servicebus en één voor de opslagaccountcontainer.
 
-Houd er rekening mee dat de query voorwaarde voor de berichten die naar de opslag worden doorgestuurd, wordt `level="storage"`en dat de query voorwaarde voor de berichten die worden doorgestuurd naar de Service Bus wachtrij is `level="critical"`.
+Houd er rekening mee dat de queryvoorwaarde `level="storage"`voor de berichten die naar de opslag worden doorgestuurd, `level="critical"`is en dat de queryvoorwaarde voor de berichten die worden doorgestuurd naar de wachtrij servicebus is .
 
 ```json
 "routes": [
@@ -256,7 +256,7 @@ Houd er rekening mee dat de query voorwaarde voor de berichten die naar de opsla
 ],
 ```
 
-Deze JSON toont de rest van de sectie IoT Hub, die standaard informatie en de SKU voor de hub bevat.
+Deze json toont de rest van de IoT Hub-sectie, die standaardinformatie en de SKU voor de hub bevat.
 
 ```json
             "fallbackRoute": {
@@ -301,9 +301,9 @@ Deze JSON toont de rest van de sectie IoT Hub, die standaard informatie en de SK
 }
 ```
 
-### <a name="resources-service-bus-queue-authorization-rules"></a>Resources: autorisatie regels voor Service Bus-wachtrij
+### <a name="resources-service-bus-queue-authorization-rules"></a>Resources: autorisatieregels voor wachtrijen servicebus
 
-De autorisatie regel voor de Service Bus-wachtrij wordt gebruikt om de connection string voor de Service Bus wachtrij op te halen. Er wordt een `dependsOn`-component gebruikt om ervoor te zorgen dat deze niet wordt gemaakt vóór de Service Bus naam ruimte en de Service Bus wachtrij.
+De autorisatieregel voor wachtrijwachtrijen servicebus wordt gebruikt om de verbindingstekenreeks voor de wachtrij servicebus op te halen. Het maakt `dependsOn` gebruik van een clausule om ervoor te zorgen dat deze niet wordt gemaakt voordat de servicebusnaamruimte en de wachtrij voor servicebus worden gebruikt.
 
 ```json
 {
@@ -324,9 +324,9 @@ De autorisatie regel voor de Service Bus-wachtrij wordt gebruikt om de connectio
 },
 ```
 
-### <a name="resources-consumer-group"></a>Resources: consumenten groep
+### <a name="resources-consumer-group"></a>Bronnen: Consumentengroep
 
-In deze sectie maakt u een Consumer groep voor de IoT Hub gegevens die door de Azure Stream Analytics in het tweede deel van deze zelf studie worden gebruikt.
+In deze sectie maakt u een consumentengroep voor de IoT Hub-gegevens die door de Azure Stream Analytics in het tweede deel van deze zelfstudie moeten worden gebruikt.
 
 ```json
 {
@@ -339,9 +339,9 @@ In deze sectie maakt u een Consumer groep voor de IoT Hub gegevens die door de A
 }
 ```
 
-### <a name="resources-outputs"></a>Resources: uitvoer
+### <a name="resources-outputs"></a>Resources: uitgangen
 
-Als u een waarde wilt verzenden naar het implementatie script dat moet worden weer gegeven, gebruikt u een sectie output. Dit deel van de sjabloon retourneert de connection string voor de Service Bus wachtrij. Het retour neren van een waarde is niet vereist. deze is opgenomen als een voor beeld van het retour neren van resultaten naar het aanroepende script.
+Als u een waarde terug wilt sturen naar het te weergeven implementatiescript, gebruikt u een uitvoersectie. Dit deel van de sjabloon retourneert de verbindingstekenreeks voor de wachtrij servicebus. Het retourneren van een waarde is niet vereist, het is opgenomen als een voorbeeld van hoe u resultaten retourneren naar het aanroepende script.
 
 ```json
 "outputs": {
@@ -354,31 +354,31 @@ Als u een waarde wilt verzenden naar het implementatie script dat moet worden we
 
 ## <a name="deploy-the-rm-template"></a>De RM-sjabloon implementeren
 
-Als u de sjabloon wilt implementeren in azure, uploadt u de sjabloon en het parameter bestand naar Azure Cloud Shell en voert u vervolgens een script uit om de sjabloon te implementeren. Open Azure Cloud Shell en meld u aan. In dit voor beeld wordt Power shell gebruikt.
+Als u de sjabloon wilt implementeren in Azure, uploadt u de sjabloon en het parametersbestand naar Azure Cloud Shell en voert u vervolgens een script uit om de sjabloon te implementeren. Open Azure Cloud Shell en meld u aan. In dit voorbeeld wordt PowerShell gebruikt.
 
-Als u de bestanden wilt uploaden, selecteert u het pictogram **bestanden uploaden/downloaden** in de menu balk en kiest u vervolgens uploaden.
+Als u de bestanden wilt uploaden, selecteert u het pictogram **Bestanden uploaden/downloaden** in de menubalk en kiest u Uploaden.
 
-![Cloud Shell menu balk met gemarkeerde upload-en download bestanden](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![Cloud Shell-menubalk met bestanden uploaden/downloaden gemarkeerd](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-Gebruik de Verkenner die u wilt gebruiken om de bestanden op uw lokale schijf te zoeken en te selecteren en klik vervolgens op **openen**.
+Gebruik de Verkenner die verschijnt om de bestanden op uw lokale schijf te vinden en deze te selecteren en kies **Openen**.
 
-Nadat de bestanden zijn geüpload, wordt een dialoog venster met resultaten weer gegeven zoals in de volgende afbeelding.
+Nadat de bestanden zijn geüpload, wordt in een dialoogvenster met resultaten iets weergegeven als de volgende afbeelding.
 
-![Cloud Shell menu balk met gemarkeerde upload-en download bestanden](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Cloud Shell-menubalk met bestanden uploaden/downloaden gemarkeerd](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
-De bestanden worden geüpload naar de share die wordt gebruikt door uw Cloud Shell-exemplaar. 
+De bestanden worden geüpload naar het aandeel dat wordt gebruikt door uw Cloud Shell-exemplaar. 
 
-Voer het script uit om de implementatie uit te voeren. Met de laatste regel van dit script wordt de variabele opgehaald die is ingesteld om te worden geretourneerd: de Service Bus wachtrij connection string.
+Voer het script uit om de implementatie uit te voeren. De laatste regel van dit script haalt de variabele op die is ingesteld om te worden geretourneerd: de verbindingstekenreeks servicebuswachtrij.
 
-In het script worden de volgende variabelen ingesteld en gebruikt:
+Het script stelt en gebruikt deze variabelen:
 
-**$RGName** is de naam van de resource groep waarnaar de sjabloon moet worden geïmplementeerd. Dit veld wordt gemaakt voordat de sjabloon wordt geïmplementeerd.
+**$RGName** is de naam van de resourcegroep om de sjabloon te implementeren. Dit veld wordt gemaakt voordat de sjabloon wordt geïmplementeerd.
 
-**$Location** is de Azure-locatie die moet worden gebruikt voor de sjabloon, zoals ' westelijke '.
+**$location** is de Azure-locatie die moet worden gebruikt voor de sjabloon, zoals 'westus'.
 
-**implementatiemap** is een naam die u toewijst aan de implementatie om de geretourneerde variabele waarde op te halen.
+**implementatienaam** is een naam die u aan de implementatie toewijst om de terugkerende variabele waarde op te halen.
 
-Hier is het Power shell-script. Kopieer dit Power shell-script en plak het in het venster Cloud Shell en druk vervolgens op ENTER om het uit te voeren.
+Hier is het PowerShell script. Kopieer dit PowerShell-script en plak het in het venster Cloud Shell en druk vervolgens op Enter om het uit te voeren.
 
 ```powershell
 $RGName="ContosoResources"
@@ -406,19 +406,19 @@ New-AzResourceGroupDeployment `
 (Get-AzResourceGroupDeployment -ResourceGroupName $RGName -Name $deploymentname).Outputs.sbq_connectionString.value
 ```
 
-Als u script fouten hebt, kunt u het script lokaal bewerken, het opnieuw uploaden naar de Cloud Shell en het script opnieuw uitvoeren. Wanneer het uitvoeren van het script is voltooid, gaat u verder met de volgende stap.
+Als u scriptfouten hebt, u het script lokaal bewerken, opnieuw uploaden naar de Cloud Shell en het script opnieuw uitvoeren. Nadat het script is voltooid, gaat u verder met de volgende stap.
 
 ## <a name="create-simulated-device"></a>Een gesimuleerd apparaat maken
 
 [!INCLUDE [iot-hub-include-create-simulated-device-portal](../../includes/iot-hub-include-create-simulated-device-portal.md)]
 
-## <a name="view-message-routing-in-the-portal"></a>Bericht routering weer geven in de portal
+## <a name="view-message-routing-in-the-portal"></a>Berichtroutering weergeven in de portal
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u alle resources hebt ingesteld en de bericht routes zijn geconfigureerd, gaat u verder met de volgende zelf studie om te leren hoe u de informatie over de gerouteerde berichten kunt verwerken en weer geven.
+Nu u alle resources hebt ingesteld en de berichtroutes zijn geconfigureerd, gaat u door naar de volgende zelfstudie om te leren hoe u de informatie over de omgeleide berichten verwerken en weergeven.
 
 > [!div class="nextstepaction"]
-> [Deel 2: de routerings resultaten van het bericht weer geven](tutorial-routing-view-message-routing-results.md)
+> [Deel 2 - Bekijk de resultaten van de routeringsresultaten van het bericht](tutorial-routing-view-message-routing-results.md)

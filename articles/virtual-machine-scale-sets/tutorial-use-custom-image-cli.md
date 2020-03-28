@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-een aangepaste VM-installatie kopie gebruiken in een schaalset met Azure CLI
+title: Zelfstudie - Een aangepaste VM-afbeelding gebruiken in een schaalset met Azure CLI
 description: Informatie over het gebruik van Azure CLI voor het maken van een aangepaste VM-installatiekopie die u kunt gebruiken om een virtuele-machineschaalset te implementeren
 author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 95e22b40b56d3ac3129573958c77b8643c0e72dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276134"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062718"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Zelfstudie: Een aangepaste installatiekopie voor virtuele-machineschaalsets maken en gebruiken met Azure CLI
 Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden gebruikt wanneer de VM-exemplaren zijn geïmplementeerd. Om het aantal taken na de implementatie van VM-exemplaren te verminderen, kunt u een aangepaste VM-installatiekopie gebruiken. Deze aangepaste VM-installatiekopie bevat alle geïnstalleerde toepassingen of configuraties die vereist zijn. Alle VM-exemplaren die in de schaalset zijn gemaakt, gebruiken de aangepaste VM-installatiekopie en zijn gereed voor uw toepassingsverkeer. In deze zelfstudie leert u het volgende:
@@ -24,11 +24,11 @@ Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden g
 > * Een aangepaste VM-installatiekopie maken
 > * Een schaalset implementeren die gebruikmaakt van de aangepaste VM-installatiekopie
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-and-configure-a-source-vm"></a>Een bron-VM maken en configureren
@@ -51,7 +51,7 @@ az vm create \
 
 Het openbare IP-adres van uw virtuele machine wordt weergegeven in de uitvoer van de opdracht [az vm create](/cli/azure/vm). SSH in het openbare IP-adres van uw VM als volgt:
 
-```azurecli-interactive
+```console
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -91,7 +91,7 @@ Het duurt enkele minuten om de toewijzing ongedaan te maken en de virtuele machi
 
 U kunt nu een installatiekopie van de virtuele machine maken met behulp van [az image create](/cli//azure/image). In het volgende voorbeeld wordt er een installatiekopie met de naam *myImage* gemaakt van uw virtuele machine:
 
-> ERAAN Als de resource groep en de locatie van de virtuele machine verschillen, kunt u de para meter `--location` toevoegen aan de onderstaande opdrachten voor een specifieke locatie van de bron-VM waarmee de installatie kopie wordt gemaakt. 
+> [OPMERKING] Als de locatie Resourcegroep en Virtuele machine `--location` verschillen, u de parameter aan de onderstaande opdrachten toevoegen aan de locatie van bron-VM die wordt gebruikt om de afbeelding te maken. 
 
 ```azurecli-interactive
 az image create \
@@ -147,7 +147,7 @@ Voer in uw webbrowser het openbare IP-adres in. De standaard NGINX-webpagina wor
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resourcegroep en alle bijbehorende resources met [az group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u uw schaalset en extra resources wilt verwijderen, verwijdert u de brongroep en al de bronnen met [de AZ-groep verwijderen](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

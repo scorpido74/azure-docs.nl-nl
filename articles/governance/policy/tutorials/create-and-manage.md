@@ -1,16 +1,16 @@
 ---
-title: 'Zelf studie: beleid bouwen om naleving af te dwingen'
-description: In deze zelf studie gebruikt u beleids regels voor het afdwingen van standaarden, het beheren van kosten, het onderhouden van de beveiliging en het opstellen van ontwerp principes op ondernemings niveau.
-ms.date: 12/20/2019
+title: 'Zelfstudie: Beleid maken om naleving af te dwingen'
+description: In deze zelfstudie gebruikt u beleidsregels om standaarden af te dwingen, kosten te beheersen, de beveiliging te handhaven en bedrijfsbrede ontwerpprincipes op te leggen.
+ms.date: 03/24/2020
 ms.topic: tutorial
-ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 15a6c3df26938332d42ecbcfff43f958577062c4
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238949"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239935"
 ---
-# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelfstudie: Beleid maken en beheren om naleving af te dwingen
 
 Als u aan uw bedrijfsnormen en serviceovereenkomsten wilt blijven voldoen, is het belangrijk dat u begrijpt hoe u beleidsregels kunt maken en beheren in Azure. In deze zelfstudie leert u hoe u Azure Policy gebruikt om enkele algemene taken voor het maken, toewijzen en beheren van beleid in uw organisatie uit te voeren, zoals:
 
@@ -24,56 +24,57 @@ Als u een beleid wilt toewijzen voor het identificeren van de huidige nalevingss
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="assign-a-policy"></a>Een beleid toewijzen
 
-De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het toewijzen van een beleidsdefinitie. Een beleidsdefinitie definieert onder welke voorwaarde een beleid wordt afgedwongen en welke actie moet worden uitgevoerd. In dit voorbeeld wijzen we een ingebouwde beleidsdefinitie toe met de naam *SQL Server-versie 12.0 vereisen* om de voorwaarde af te dwingen dat alle SQL Server-databases v12.0 moeten zijn om aan het beleid te voldoen.
+De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het toewijzen van een beleidsdefinitie. Een beleidsdefinitie definieert onder welke voorwaarde een beleid wordt afgedwongen en welke actie moet worden uitgevoerd. Wijs in dit voorbeeld de ingebouwde beleidsdefinitie met de naam _Een tag overnemen van de brongroep toe als deze ontbreekt_ om de opgegeven tag met de waarde van de bovenliggende resourcegroep toe te voegen aan nieuwe of bijgewerkte bronnen die de tag missen.
 
-1. Ga naar de Azure Portal om beleid toe te wijzen. Zoek en selecteer **beleid**.
+1. Ga naar de Azure-portal om beleid toe te wijzen. Zoeken naar en selecteer **Beleid**.
 
-   ![Beleid zoeken in de zoek balk](../media/create-and-manage/search-policy.png)
+   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="Zoeken naar beleid in de zoekbalk" border="false":::
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   ![Toewijzingen selecteren op de pagina overzicht van beleid](../media/create-and-manage/select-assignments.png)
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Toewijzingen selecteren op de pagina Beleidsoverzicht" border="false":::
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   ![Een beleids definitie toewijzen van de pagina toewijzingen](../media/create-and-manage/select-assign-policy.png)
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Een beleidsdefinitie toewijzen op de pagina Toewijzingen" border="false":::
 
-1. Selecteer op de pagina **beleid toewijzen** en de **basis principes** het **bereik** door het weglatings teken te selecteren en ofwel een beheer groep of een abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen.
-   Selecteer vervolgens onder aan de **bereik** pagina de **optie selecteren** .
+1. Selecteer op de pagina **Beleid toewijzen** en **Basisbeginselen** het **bereik** door de ellips te selecteren en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen.
+   Selecteer vervolgens **Selecteren** onder aan de **pagina Bereik.**
 
    In dit voorbeeld wordt het abonnement **Contoso** gebruikt. U hebt waarschijnlijk een ander abonnement.
 
 1. Resources kunnen worden uitgesloten op basis van het **bereik**. **Uitsluitingen** starten op één niveau lager dan het niveau van het **bereik**. **Uitsluitingen** zijn optioneel, dus laat dit veld nu nog leeg.
 
-1. Selecteer het weglatingsteken **Beleidsdefinitie** om de lijst van beschikbare definities te openen. U kunt het **Type** van de beleidsdefinitie filteren op *Ingebouwd* om alles te bekijken en de beschrijvingen te lezen.
+1. Selecteer het weglatingsteken **Beleidsdefinitie** om de lijst van beschikbare definities te openen. U kunt het **Type** van de beleidsdefinitie filteren op _Ingebouwd_ om alles te bekijken en de beschrijvingen te lezen.
 
-1. Selecteer **een tag toevoegen of vervangen op resources**. Als u het niet meteen kunt vinden, typt u **toevoegen of vervangen** in het zoekvak en drukt u op ENTER of selecteert u uit het zoekvak. Selecteer **selecteren** onder aan de pagina **beschik bare definities** wanneer u de beleids definitie hebt gevonden en geselecteerd.
+1. Selecteer **Een tag overnemen uit de brongroep als deze ontbreekt**. Als u deze niet meteen vinden, typt u **een tag in** het zoekvak en drukt u op ENTER of selecteert u uit het zoekvak.
+   Selecteer **Selecteer** onder aan de pagina **Beschikbare definities** selecteren zodra u de beleidsdefinitie hebt gevonden en geselecteerd.
 
-   ![Zoek filter gebruiken om een beleid te zoeken](../media/create-and-manage/select-available-definition.png)
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Zoekfilter gebruiken om een beleid te zoeken":::
 
-1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. Voor dit voor beeld moet u *een tag toevoegen of vervangen op resources*. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
+1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. Laat in dit voorbeeld _Een tag overnemen uit de brongroep als deze ontbreekt_. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
 
-1. Sluit het **afdwingen van beleid** af als _ingeschakeld_. Als deze instelling is _uitgeschakeld_, is het mogelijk om het resultaat van het beleid te testen zonder het effect te activeren. Zie de [afdwingings modus](../concepts/assignment-structure.md#enforcement-mode)voor meer informatie.
+1. **Beleidshandhaving als** _ingeschakeld laten_. Wanneer _uitgeschakeld,_ deze instelling maakt het mogelijk het testen van de uitkomst van het beleid zonder triggering het effect. Zie [de handhavingsmodus](../concepts/assignment-structure.md#enforcement-mode)voor meer informatie .
 
 1. **Toegewezen door** wordt automatisch ingevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Selecteer het tabblad **para meters** boven aan de wizard.
+1. Selecteer het tabblad **Parameters** boven aan de wizard.
 
-1. Voer bij **label naam**de waarde _omgeving_ in en voer voor de **tag argument** _dev_in.
+1. Voer **voor Tagnaam** _de omgeving_in .
 
-1. Selecteer het tabblad **herstel** bovenaan de wizard.
+1. Selecteer het tabblad **Herstel** boven aan de wizard.
 
-1. **Een herstel taak maken** uitschakelen is uitgeschakeld. In dit vak kunt u een taak maken voor het wijzigen van bestaande resources naast nieuwe of bijgewerkte resources. Zie [bronnen herstellen](../how-to/remediate-resources.md)voor meer informatie.
+1. Laat **Een hersteltaak** maken onaangevinkt. Met dit vak u een taak maken om bestaande bronnen te wijzigen naast nieuwe of bijgewerkte bronnen. Zie resources [voor](../how-to/remediate-resources.md)meer informatie.
 
-1. Het **maken van een beheerde identiteit** wordt automatisch gecontroleerd omdat deze beleids definitie het [wijzigings](../concepts/effects.md#modify) effect gebruikt. **Machtigingen** worden automatisch ingesteld op _Inzender_ op basis van de beleids definitie. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
+1. **Een beheerde identiteit maken** wordt automatisch gecontroleerd omdat deze beleidsdefinitie het [wijzigingseffect](../concepts/effects.md#modify) gebruikt. **Machtigingen** worden automatisch ingesteld op _Inzender_ op basis van de beleidsdefinitie. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Selecteer boven aan de wizard het tabblad **controleren + maken** .
+1. Selecteer het tabblad **Controleren + maken** boven aan de wizard.
 
-1. Controleer uw selecties en selecteer vervolgens **maken** onder aan de pagina.
+1. Bekijk uw selecties en selecteer **Maken** onder aan de pagina.
 
 ## <a name="implement-a-new-custom-policy"></a>Een nieuw aangepast beleid implementeren
 
@@ -81,7 +82,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   ![De definitie pagina onder de groep ontwerpen](../media/create-and-manage/definition-under-authoring.png)
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Definitiepagina onder Groep Ontwerpen" border="false":::
 
 1. Selecteer **+ Beleidsdefinitie** bovenaan de pagina. Met deze knop opent u de pagina **Beleidsdefinitie**.
 
@@ -92,7 +93,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
      > [!NOTE]
      > Als u van plan bent deze toe te passen op meerdere abonnementen, moet de locatie een beheergroep zijn met de abonnementen waaraan u het beleid toewijst. Hetzelfde geldt voor de definitie van een initiatief.
 
-   - De naam van de beleids definitie-_ *_vereist dat VM-sku's kleiner zijn dan de G-serie_
+   - De naam van de beleidsdefinitie - _*_VM SKU's vereisen die kleiner zijn dan de G-serie_
    - De beschrijving van het doel van de beleidsdefinitie: _Deze beleidsdefinitie dwingt af dat alle virtuele machines die zijn gemaakt in dit bereik, SKU's hebben die kleiner zijn dan de G-serie om kosten te beperken._
    - Kies een van de bestaande opties (zoals _Compute_) of maak een nieuwe categorie voor deze beleidsdefinitie.
    - Kopieer de volgende JSON-code en werk deze vervolgens naar wens bij:
@@ -123,15 +124,15 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
    }
    ```
 
-   De _veld_ eigenschap in de beleids regel moet een ondersteunde waarde zijn. Er is een volledige lijst met waarden gevonden in de [structuur velden van de beleids definitie](../concepts/definition-structure.md#fields). Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
+   De _veldeigenschap_ in de beleidsregel moet een ondersteunde waarde hebben. Een volledige lijst met waarden is te vinden op [de velden beleidsdefinitiestructuur](../concepts/definition-structure.md#fields). Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
 
    Meer Azure Policy-voorbeelden vindt u in [Voorbeelden van Azure Policy](../samples/index.md).
 
 1. Selecteer **Opslaan**.
 
-## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST API
+## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST-API
 
-U kunt een beleid maken met de REST API voor Azure Policy definities. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
+U een beleid maken met de REST API voor Azure Policy Definitions. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -171,7 +172,7 @@ Voeg aanvraagtekst toe die soortgelijk is aan het volgende voorbeeld:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Een beleidsdefinitie maken met PowerShell
 
-Voordat u doorgaat met het Power shell-voor beeld, moet u ervoor zorgen dat u de nieuwste versie van de Azure PowerShell AZ-module hebt geïnstalleerd.
+Voordat u verdergaat met het PowerShell-voorbeeld, moet u ervoor zorgen dat u de nieuwste versie van de Azure PowerShell Az-module hebt geïnstalleerd.
 
 U kunt een beleidsdefinitie maken met de `New-AzPolicyDefinition`-cmdlet.
 
@@ -277,7 +278,7 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 
 ## <a name="create-a-policy-definition-with-azure-cli"></a>Een beleidsdefinitie maken met Azure CLI
 
-Met de `az policy definition` opdracht kunt u een beleids definitie maken met behulp van Azure CLI. Gebruik het volgende voorbeeld om een beleidsdefinitie met een inline regel te maken:
+Met de `az policy definition` opdracht u een beleidsdefinitie maken met Azure CLI. Gebruik het volgende voorbeeld om een beleidsdefinitie met een inline regel te maken:
 
 ```azurecli-interactive
 az policy definition create --name 'denyCoolTiering' --description 'Deny cool access tiering for storage' --rules '{
@@ -341,13 +342,13 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   ![Definitie selecteren op de pagina definities](../media/create-and-manage/definition-under-authoring.png)
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Definitie selecteren op de pagina Definities" border="false":::
 
 1. Selecteer **+ Initiatiefdefinitie** bovenaan de pagina. U gaat dan naar de pagina **Initiatiefdefinitie**.
 
-   ![Pagina definitie van het Review-initiatief](../media/create-and-manage/initiative-definition.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Pagina voor de definitie van initiatieven bekijken" border="false":::
 
-1. Gebruik **Definitielocatie** om een beheergroep of abonnement voor het opslaan van de definitie te selecteren. Als de vorige pagina is gericht op een enkele beheergroep of enkel abonnement, wordt **Definitielocatie** automatisch ingevuld. Zodra dit is geselecteerd, worden de **beschik bare definities** ingevuld.
+1. Gebruik **Definitielocatie** om een beheergroep of abonnement voor het opslaan van de definitie te selecteren. Als de vorige pagina is gericht op een enkele beheergroep of enkel abonnement, wordt **Definitielocatie** automatisch ingevuld. Eenmaal geselecteerd, worden **beschikbare definities** ingevuld.
 
 1. Voer de **naam** en **beschrijving** van het initiatief in.
 
@@ -355,32 +356,32 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Kies voor **Categorie** uit bestaande opties of maak een nieuwe categorie.
 
-1. Blader door de lijst met **Beschikbare definities** (rechterhelft van de pagina **Initiatiefdefinitie**) en selecteer het beleidsdefinitie(s) die u wilt toevoegen aan dit initiatief. Voor het initiatief **Secure** Initiative voegt u de volgende ingebouwde beleids definities toe door de **+** naast de beleids definitie-informatie te selecteren of door een regel voor een beleids definitie te selecteren en vervolgens op de optie **+ toevoegen** te klikken op de pagina Details:
+1. Blader door de lijst met **Beschikbare definities** (rechterhelft van de pagina **Initiatiefdefinitie**) en selecteer het beleidsdefinitie(s) die u wilt toevoegen aan dit initiatief. Voeg voor het initiatief **Veilig worden** de volgende ingebouwde beleidsdefinities toe door het **+** volgende naast de beleidsdefinitiegegevens te selecteren of een rij beleidsdefinitie te selecteren en vervolgens de optie + **Toevoegen** op de pagina details te selecteren:
 
    - Toegestane locaties
-   - Ontbrekende Endpoint Protection in Azure Security Center controleren
-   - De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
-   - Azure Backup moet zijn ingeschakeld voor Virtual Machines
-   - Schijf versleuteling moet worden toegepast op virtuele machines
+   - Ontbrekende endpointbeveiliging controleren in Azure Security Center
+   - Netwerkbeveiligingsgroepregels voor internet waarmee virtuele machines worden geconfronteerd, moeten worden verhard
+   - Azure Backup moet zijn ingeschakeld voor virtuele machines
+   - Schijfversleuteling moet worden toegepast op virtuele machines
 
-   Nadat u de beleids definitie hebt geselecteerd in de lijst, wordt deze toegevoegd onder **categorie**.
+   Nadat u de beleidsdefinitie in de lijst hebt geselecteerd, wordt deze onder **Categorie**toegevoegd .
 
-   ![Para meters voor beoordelings initiatief](../media/create-and-manage/initiative-definition-2.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Parameters voor de definitie van initiatieven herzien" border="false":::
 
-1. Als een beleids definitie die wordt toegevoegd aan het initiatief para meters heeft, worden deze weer gegeven onder de naam van het beleid in het gebied onder **categorie** gebied. U kunt de _waarde_ instellen op Waarde instellen (in code vastgelegd voor alle toewijzingen van dit initiatief) of Initiatiefparameter gebruiken (wordt ingesteld bij elke toewijzing van een initiatief). Als ' set-waarde ' is geselecteerd, kan de vervolg keuzelijst rechts van de _waarde (n)_ de waarde (n) invoeren of selecteren. Als Initiatiefparameter gebruiken is geselecteerd, wordt een nieuwe sectie **Initiatiefparameters** weergegeven waarin u de parameter kunt definiëren die wordt ingesteld tijdens de initiatieftoewijzing. Via de toegestane waarden voor deze initiatiefparameter kunt u verder beperken wat er mag worden ingesteld tijdens de initiatieftoewijzing.
+1. Als een beleidsdefinitie die aan het initiatief wordt toegevoegd, parameters heeft, worden deze weergegeven onder de beleidsnaam in het gebied onder **categoriegebied.** U kunt de _waarde_ instellen op Waarde instellen (in code vastgelegd voor alle toewijzingen van dit initiatief) of Initiatiefparameter gebruiken (wordt ingesteld bij elke toewijzing van een initiatief). Als 'Waarde instellen' is geselecteerd, staat de vervolgkeuzelijst rechts van _Waarde(en)_ het invoeren of selecteren van de waarde(en) toe. Als Initiatiefparameter gebruiken is geselecteerd, wordt een nieuwe sectie **Initiatiefparameters** weergegeven waarin u de parameter kunt definiëren die wordt ingesteld tijdens de initiatieftoewijzing. Via de toegestane waarden voor deze initiatiefparameter kunt u verder beperken wat er mag worden ingesteld tijdens de initiatieftoewijzing.
 
-   ![Para meters voor initiatief definities wijzigen van toegestane waarden](../media/create-and-manage/initiative-definition-3.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Parameters voor initiatiefdefinitie wijzigen van toegestane waarden" border="false":::
 
    > [!NOTE]
-   > Voor sommige `strongType`-parameters kan de lijst met waarden niet automatisch worden bepaald. In deze gevallen wordt een beletselteken rechts van de parameterrij weergegeven. Als u deze optie selecteert, wordt de pagina parameter bereik (&lt;parameter naam&gt;) geopend. Op deze pagina selecteert u het abonnement dat u wilt gebruiken om de waardeopties op te geven. Dit parameterbereik wordt alleen gebruikt tijdens het maken van de initiatiefdefinitie en heeft geen invloed op de evaluatie van het beleid of het bereik van het initiatief na het toewijzen.
+   > Voor sommige `strongType`-parameters kan de lijst met waarden niet automatisch worden bepaald. In deze gevallen wordt een beletselteken rechts van de parameterrij weergegeven. Als u deze selecteert,&lt;wordt&gt;de pagina 'Parameterbereik ( parameternaam)' geopend. Op deze pagina selecteert u het abonnement dat u wilt gebruiken om de waardeopties op te geven. Dit parameterbereik wordt alleen gebruikt tijdens het maken van de initiatiefdefinitie en heeft geen invloed op de evaluatie van het beleid of het bereik van het initiatief na het toewijzen.
 
-   Stel de para meter ' Allowed locations ' in op ' Oost-VS 2 ' en wijzig de standaard waarde ' AuditifNotExists '.
+   Stel de parameter 'Toegestane locaties' in op 'Oost US 2' en laat de anderen achter als de standaard 'AuditifNotExists'.
 
 1. Selecteer **Opslaan**.
 
-#### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Een beleids initiatief definitie maken met Azure CLI
+#### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Een beleidsinitiatiefdefinitie maken met Azure CLI
 
-Met de `az policy set-definition` opdracht kunt u een beleids initiatief definitie maken met behulp van Azure CLI. Gebruik het volgende voor beeld om een beleids initiatief definitie te maken met een bestaande beleids definitie:
+Met de `az policy set-definition` opdracht u een beleidsinitiatiefdefinitie maken met Azure CLI. Als u een beleidsinitiatiefdefinitie wilt maken met een bestaande beleidsdefinitie, gebruikt u het volgende voorbeeld:
 
 ```azurecli-interactive
 az policy set-definition create -n readOnlyStorage --definitions '[
@@ -392,9 +393,9 @@ az policy set-definition create -n readOnlyStorage --definitions '[
     --params '{ "requiredSku": { "type": "String" } }'
 ```
 
-#### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Een beleids initiatief definitie maken met Azure PowerShell
+#### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Een beleidsinitiatiefdefinitie maken met Azure PowerShell
 
-U kunt een beleids initiatief definitie maken met behulp van Azure PowerShell met de `New-AzPolicySetDefinition`-cmdlet. Als u een beleids initiatief definitie met een bestaande beleids definitie wilt maken, gebruikt u het volgende definitie bestand voor het beleid als `VMPolicySet.json`:
+U een beleidsinitiatiefdefinitie maken met `New-AzPolicySetDefinition` Azure PowerShell met de cmdlet. Als u een beleidsinitiatiefdefinitie wilt maken met een bestaande `VMPolicySet.json`beleidsdefinitie, gebruikt u het volgende beleidsinitiatiefdefinitiebestand als:
 
 ```json
 [
@@ -425,11 +426,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Zoek de initiatiefdefinitie **Veilig worden** die u eerder hebt gemaakt en selecteer deze. Selecteer **Toewijzen** bovenaan de pagina om de pagina **Veilig worden: initiatief toewijzen** te openen.
 
-   ![De pagina definitie van de definitie van het initiatief toewijzen](../media/create-and-manage/assign-definition.png)
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Een definitie toewijzen op de pagina Van Initiative-definitie" border="false":::
 
-   U kunt ook met de rechter muisknop op de geselecteerde rij klikken of het weglatings teken aan het einde van de rij voor een context menu selecteren. Selecteer daarna **Toewijzen**.
+   U ook met de rechtermuisknop op de geselecteerde rij klikken of de ellips aan het einde van de rij selecteren voor een contextueel menu. Selecteer daarna **Toewijzen**.
 
-   ![Alternatieve opties voor een initiatief](../media/create-and-manage/select-right-click.png)
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Alternatieve opties voor een initiatief" border="false":::
 
 1. Vul het formulier **Veilig worden: definitie toewijzen** in door de volgende voorbeeldinformatie in te voeren. U kunt uw eigen gegevens gebruiken.
 
@@ -438,66 +439,66 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
    - Uitsluitingen: Configureer alle resources binnen het bereik om te voorkomen dat de initiatieftoewijzing erop wordt toegepast.
    - Initiatiefdefinitie en naam van de Toewijzing: Veilig worden (vooraf ingevuld als de naam van het initiatief dat wordt toegewezen).
    - Beschrijving: deze initiatieftoewijzing heeft als doel deze groep beleidsdefinities af te dwingen.
-   - Beleids afdwinging: als de standaard instelling is _ingeschakeld_.
+   - Beleidshandhaving: Vertrek als standaard _ingeschakeld_.
    - Toegewezen door: automatisch gevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Selecteer het tabblad **para meters** boven aan de wizard. Als u in de vorige stappen een initiatief parameter hebt geconfigureerd, stelt u hier een waarde in.
+1. Selecteer het tabblad **Parameters** boven aan de wizard. Als u in eerdere stappen een parameter voor een initiatief hebt geconfigureerd, stelt u hier een waarde in.
 
-1. Selecteer het tabblad **herstel** bovenaan de wizard. Laat **Beheerde identiteit maken** uitgeschakeld. Dit selectie vakje _moet_ worden ingeschakeld wanneer het beleid of initiatief dat wordt toegewezen, een beleid bevat met het [deployIfNotExists](../concepts/effects.md#deployifnotexists) of [aanpassen](../concepts/effects.md#modify) van effecten. Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
+1. Selecteer het tabblad **Herstel** boven aan de wizard. Laat **Beheerde identiteit maken** uitgeschakeld. Dit vakje _moet_ worden aangevinkt wanneer het toegewezen beleid of initiatief een beleid bevat met de [effecten deployIfNotExists](../concepts/effects.md#deployifnotexists) of [wijzigen.](../concepts/effects.md#modify) Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie voor meer informatie [beheerde identiteiten](../../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](../how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Selecteer boven aan de wizard het tabblad **controleren + maken** .
+1. Selecteer het tabblad **Controleren + maken** boven aan de wizard.
 
-1. Controleer uw selecties en selecteer vervolgens **maken** onder aan de pagina.
+1. Bekijk uw selecties en selecteer **Maken** onder aan de pagina.
 
 ## <a name="check-initial-compliance"></a>Eerste naleving controleren
 
 1. Selecteer **Naleving** links op de Azure Policy-pagina.
 
-1. Zoek het initiatief **Get Secure** . De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
-   Selecteer het initiatief om alle details te bekijken over de voortgang van de toewijzing.
+1. Zoek het **Get Secure-initiatief.** De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
+   Selecteer het initiatief om alle details te krijgen over de voortgang van de opdracht.
 
-   ![Nalevings pagina initiatief-evaluaties niet gestart](../media/create-and-manage/compliance-status-not-started.png)
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Nalevingspagina voor initiatieven - evaluaties niet gestart" border="false":::
 
 1. Wanneer de initiatieftoewijzing is voltooid, wordt de pagina voor naleving bijgewerkt met de _Nalevingsstatus_**Compatibel**.
 
-   ![Nalevings pagina voor initiatief-bronnen compatibel](../media/create-and-manage/compliance-status-compliant.png)
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Pagina naleving van initiatieven: resources voldoen" border="false":::
 
-1. Als u een wille keurig beleid selecteert op de pagina initiatief naleving, wordt de pagina nalevings Details voor dat beleid geopend. Op deze pagina staan de nalevingsdetails op resourceniveau.
+1. Als u een beleid selecteert op de pagina naleving van het initiatief, wordt de pagina nalevingsdetails voor dat beleid geopend. Op deze pagina staan de nalevingsdetails op resourceniveau.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Een bron die niet voldoet of wordt geweigerd uitsluiten met behulp van Uitsluiten
 
-Na het toewijzen van een beleids initiatief om een specifieke locatie te vereisen, wordt een resource die op een andere locatie is gemaakt, geweigerd. In deze sectie gaat u een geweigerde aanvraag voor het maken van een resource oplossen door een uitsluiting voor één resource groep te maken. De uitsluiting voor komt het afdwingen van het beleid (of initiatief) voor die resource groep. In het volgende voor beeld is elke locatie toegestaan in de uitgesloten resource groep. Een uitsluiting kan worden toegepast op een abonnement, een resource groep of een afzonderlijke resources.
+Nadat u een beleidsinitiatief hebt toebedeeld om een specifieke locatie te vereisen, wordt elke resource die op een andere locatie is gemaakt, geweigerd. In deze sectie loopt u door het oplossen van een geweigerd verzoek om een resource te maken door een uitsluiting te maken voor één resourcegroep. De uitsluiting verhindert de handhaving van het beleid (of initiatief) op die resourcegroep. In het volgende voorbeeld is elke locatie toegestaan in de uitgesloten resourcegroep. Een uitsluiting kan van toepassing zijn op een abonnement, een resourcegroep of een afzonderlijke bron.
 
-Implementaties die worden voor komen door een toegewezen beleid of initiatief, kunnen worden weer gegeven op de resource groep waarop de implementatie is gericht: Selecteer **implementaties** aan de linkerkant van de pagina en selecteer vervolgens de **implementatie naam** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Selecteer mislukt om het beleid of initiatief en de toewijzing te bepalen die de resource **heeft geweigerd. Klik hier voor meer informatie->** op de pagina implementatie overzicht. Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
+Implementaties die worden voorkomen door een toegewezen beleid of initiatief, kunnen worden weergegeven in de resourcegroep die is getarget door de implementatie: Selecteer **Implementaties** aan de linkerkant van de pagina en selecteer vervolgens de **implementatienaam** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Als u het beleid of initiatief en de toewijzing wilt bepalen die de resource heeft geweigerd, selecteert u **Mislukt. Klik hier voor meer informatie ->** op de pagina Implementatieoverzicht. Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
 
-![Implementatie geweigerd door beleidstoewijzing](../media/create-and-manage/rg-deployment-denied.png)
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Implementatie geweigerd door beleidstoewijzing" border="false":::
 
-Selecteer op de pagina Azure Policy: **naleving** selecteren aan de linkerkant van de pagina en selecteer het initiatief **veilig beleid ophalen** . Op deze pagina wordt het aantal **weigeringen** voor geblokkeerde resources verhoogd. Op het tabblad **gebeurtenissen** vindt u informatie over wie heeft geprobeerd de resource te maken of te implementeren die is geweigerd door de beleids definitie.
+Op de pagina Azure Policy: Selecteer **Compliance** aan de linkerkant van de pagina en selecteer het beleidsinitiatief **Veilig beveiligen.** Op deze pagina is er een toename van het aantal **weigeringen** voor geblokkeerde resources. Onder het tabblad **Gebeurtenissen** vindt u informatie over wie de resource heeft geprobeerd te maken of te implementeren die is geweigerd door de beleidsdefinitie.
 
-![Overzicht van de naleving van een toegewezen beleid](../media/create-and-manage/compliance-overview.png)
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Overzicht van de naleving van een toegewezen beleid" border="false":::
 
-In dit voorbeeld deed een van de senior virtualisatie-experts van Contoso vereist werk. We moeten Trent een ruimte toekennen voor een uitzonde ring. Er is een nieuwe resource groep gemaakt, **LocationsExcluded**en vervolgens wordt er een uitzonde ring op deze beleids toewijzing verleend.
+In dit voorbeeld deed een van de senior virtualisatie-experts van Contoso vereist werk. We moeten Trent een plek geven voor een uitzondering. Hiermee heeft u een nieuwe resourcegroep **gemaakt, Locaties Uitgesloten**en deze vervolgens een uitzondering op deze beleidstoewijzing verlenen.
 
 ### <a name="update-assignment-with-exclusion"></a>Toewijzing met uitsluiting bijwerken
 
 1. Selecteer **Toewijzingen** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-1. Blader door alle beleids toewijzingen en open de toewijzing _beveiligd beleid ophalen_ .
+1. Blader door alle beleidstoewijzingen en open de beleidstoewijzing _Veilig zoeken._
 
-1. Stel de **uitsluiting** in door het beletsel teken te selecteren en de resource groep te selecteren die u wilt uitsluiten, _LocationsExcluded_ in dit voor beeld. Selecteer **toevoegen aan geselecteerde scope** en selecteer vervolgens **Opslaan**.
+1. Stel de **uitsluiting** in door de ellips te selecteren en de resourcegroep te selecteren die u wilt uitsluiten, _Locaties Uitgesloten_ in dit voorbeeld. Selecteer **Toevoegen aan geselecteerd bereik** en selecteer **Opslaan**.
 
-   ![Een uitgesloten resource groep toevoegen aan de beleids toewijzing](../media/create-and-manage/request-exclusion.png)
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Een uitgesloten resourcegroep toevoegen aan de beleidstoewijzing" border="false":::
 
    > [!NOTE]
-   > Afhankelijk van de beleids definitie en het effect daarvan kan de uitsluiting ook worden verleend aan specifieke resources binnen het bereik van de toewijzing. Als een **deny** -effect in deze zelf studie wordt gebruikt, is het niet logisch om de uitsluiting in te stellen voor een specifieke resource die al bestaat.
+   > Afhankelijk van de beleidsdefinitie en het effect ervan kan de uitsluiting ook worden toegestaan aan specifieke resources binnen een resourcegroep binnen het bereik van de toewijzing. Aangezien een **Weigeren-effect** werd gebruikt in deze zelfstudie, zou het geen zin hebben om de uitsluiting in te stellen op een specifieke resource die al bestaat.
 
-1. Selecteer **controleren en opslaan** en selecteer vervolgens **Opslaan**.
+1. Selecteer **Controleren + opslaan** en selecteer **Opslaan**.
 
 In deze sectie hebt u de geweigerde aanvraag toch uitgevoerd door een uitsluiting te maken in één resourcegroep.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u klaar bent met het werken met resources uit deze zelf studie, gebruikt u de volgende stappen om de beleids toewijzingen of-definities te verwijderen die hierboven zijn gemaakt:
+Als u klaar bent met het werken met bronnen uit deze zelfstudie, gebruikt u de volgende stappen om een van de hierboven gemaakte beleidstoewijzingen of -definities te verwijderen:
 
 1. Selecteer **Definities** (of **Toewijzingen** als u een toewijzing wilt verwijderen) onder **Ontwerpen** in het linkerdeelvenster van de Azure Policy-pagina.
 
@@ -520,4 +521,4 @@ In deze zelfstudie hebt u de volgende taken uitgevoerd:
 Lees het volgende artikel voor meer informatie over de structuur van beleidsdefinities:
 
 > [!div class="nextstepaction"]
-> [Structuur van Azure Policy-definities](../concepts/definition-structure.md)
+> [Structuur van Azure-beleidsdefinities](../concepts/definition-structure.md)

@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van Azure CLI-script-een virtuele Linux-machine maken met Azure Monitor
-description: Voor beeld van Azure CLI-script-een virtuele Linux-machine maken met Azure Monitor
+title: Azure CLI Script-voorbeeld - Een Linux-VM maken met Azure-monitor
+description: Azure CLI Script-voorbeeld - Een Linux-VM maken met Azure-monitor
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -17,13 +17,13 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: af71bc8e0ad793c37084ce3e5cc9f48ef8f55714
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037699"
 ---
-# <a name="monitor-a-vm-with-azure-monitor"></a>Een virtuele machine met Azure Monitor bewaken
+# <a name="monitor-a-vm-with-azure-monitor"></a>Een VM bewaken met Azure Monitor
 
 Met dit script maakt u een virtuele machine in Azure, installeert u de Log Analytics-agent en registreert u het systeem bij een Log Analytics-werkruimte. Nadat het script is uitgevoerd, is de virtuele machine zichtbaar in de console.
 
@@ -45,13 +45,13 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Hiermee voert u de extensie van een virtuele machine uit op een virtuele machine. In dit geval wordt de uitbrei ding van de Azure Monitor-agent gebruikt om de Log Analytics agent te installeren en de virtuele machine in te schrijven in een Log Analytics-werk ruimte. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Hiermee voert u de extensie van een virtuele machine uit op een virtuele machine. In dit geval wordt de Azure Monitor-agentextensie gebruikt om de log-analyse-agent te installeren en de VM in te schrijven in een logboekanalysewerkruimte. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

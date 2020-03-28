@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 7219a457a2631f9ff6beee06eff34bce0ff5a23f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67175737"
 ---
-Net als met toegangstokens, moet als een Azure AD-token is ingesteld, u de gebeurtenis TokenRequired verwerken, of de methode tokenRequired implementeren op het protocol gemachtigde.
+Als een Azure AD-token niet is ingesteld, moet u, net als bij toegangstokens, de gebeurtenis TokenRequired afhandelen of de tokenVereiste-methode implementeren op het gemachtigdeprotocol.
 
-U kunt de gebeurtenis synchroon verwerken door de eigenschap voor de gebeurtenisargumenten.
+U de gebeurtenis synchroon afhandelen door de eigenschap in te stellen op de gebeurtenisargumenten.

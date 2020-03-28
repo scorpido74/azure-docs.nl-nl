@@ -1,6 +1,6 @@
 ---
-title: Continue implementatie vanuit Azure opslag plaatsen
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u CI/CD instelt vanuit Azure opslag plaatsen.
+title: Continue implementatie vanuit Azure Repos
+description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u CI/CD instelt vanuit Azure Repos.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1b1d829f2e1e9dcf277f3be5276a1494d5b96c12
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c0e9db3825de9c8c1429bec1edcc6bbb65588fcd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688399"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058043"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Een App Service-app maken met continue implementatie met behulp van Azure CLI
 
-Met dit voorbeeld script wordt een app gemaakt in App Service met de bijbehorende resources en wordt vervolgens doorlopende implementatie vanuit een Azure DevOps-opslag plaats ingesteld. Voor dit voorbeeld hebt u het volgende nodig:
+Met dit voorbeeldscript wordt een app in App-service gemaakt met de bijbehorende resources en wordt de continue implementatie vanuit een Azure DevOps-opslagplaats ingesteld. Voor dit voorbeeld hebt u het volgende nodig:
 
-* Een Azure DevOps-opslag plaats met toepassings code, waarvoor u beheerders machtigingen hebt.
+* Een Azure DevOps-opslagplaats met toepassingscode waarvoor u beheerdersmachtigingen hebt.
 * Een [persoonlijk toegangstoken (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) voor uw Azure DevOps-organisatie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -42,13 +42,13 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Hiermee koppelt u een App Service-app aan een Git- of Mercurial-opslagplaats. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-een upgrade uitvoeren van een app die wordt uitgevoerd in azure Service Fabric mesh
+title: Zelfstudie- Een app upgraden die wordt uitgevoerd in Azure Service Fabric-mesh
 description: In deze zelfstudie leert u hoe u een Service Fabric kunt upgraden in een toepassing die wordt uitgevoerd in Service Fabric Mesh.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351736"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een Service Fabric-toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
@@ -25,10 +25,10 @@ In deel drie van de serie leert u het volgende:
 
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
-> * [Een toepassing met behulp van een sjabloon implementeren in Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [Een toepassing implementeren in Service Fabric Mesh met behulp van een sjabloon](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * [Een toepassing schalen die wordt uitgevoerd in Service Fabric Mesh](service-fabric-mesh-tutorial-template-scale-services.md)
 > * Een toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
-> * [Een app verwijderen](service-fabric-mesh-tutorial-template-remove-app.md)
+> * [Een toepassing verwijderen](service-fabric-mesh-tutorial-template-remove-app.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -44,7 +44,7 @@ Voor u met deze zelfstudie begint:
 
 Een van de belangrijkste voordelen van het implementeren van toepassingen in Service Fabric Mesh is de mogelijkheid uw toepassingsconfiguratie makkelijk bij te werken.  Bijvoorbeeld de CPU of geheugenbronnen voor uw services.
 
-In deze zelfstudie wordt het voorbeeld To Do List gebruikt. Dit voorbeeld is [eerder geïmplementeerd](service-fabric-mesh-tutorial-template-deploy-app.md) en moet nu worden uitgevoerd. De toepassing heeft twee services: WebFrontEnd en ToDoService. Elke service is in eerste instantie geïmplementeerd met de waarde 0,5 voor de CPU-bronnen.  Als u de CPU-bronnen voor de service WebFrontEnd wilt zien, voert u deze opdracht uit:
+In deze zelfstudie wordt het voorbeeld To Do List gebruikt als voorbeeld. Dit voorbeeld is [eerder geïmplementeerd](service-fabric-mesh-tutorial-template-deploy-app.md) en moet nu worden uitgevoerd. De toepassing heeft twee services: WebFrontEnd en ToDoService. Elke service is in eerste instantie geïmplementeerd met de waarde 0,5 voor de CPU-bronnen.  Als u de CPU-bronnen voor de service WebFrontEnd wilt zien, voert u deze opdracht uit:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp

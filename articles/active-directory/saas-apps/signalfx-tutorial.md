@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SignalFx | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met SignalFx | Microsoft Documenten'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SignalFx.
 services: active-directory
 documentationCenter: na
@@ -16,169 +16,169 @@ ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79136411"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SignalFx
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met SignalFx
 
-In deze zelf studie leert u hoe u SignalFx integreert met Azure Active Directory (Azure AD). Wanneer u SignalFx integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SignalFx integreren met Azure Active Directory (Azure AD). Wanneer u SignalFx integreert met Azure AD, u het als nog niet doen:
 
-* Besturings element van Azure AD die toegang heeft tot SignalFx;
-* Stel in dat uw gebruikers automatisch worden aangemeld bij SignalFx met hun Azure AD-accounts. maar
-* Beheer uw accounts op één locatie (de Azure Portal).
+* Beheer vanuit Azure AD die toegang heeft tot SignalFx;
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij SignalFx met hun Azure AD-accounts; En
+* Beheer uw accounts op één locatie (de Azure-portal).
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van SaaS-toepassingen met Azure AD.
+Zie [Wat is toepassingstoegang voor toepassingen en eenmalige aanmelding met Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van SaaS-toepassingen met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, hebt u het volgende nodig:
+Voordat u begint, moet u:
 
 * Een Azure AD-abonnement
-    * Als u geen abonnement hebt, kunt u [hier een gratis account](https://azure.microsoft.com/free/)aanvragen.
-* SignalFx-abonnement met eenmalige aanmelding (SSO)
+    * Wanneer je nog geen abonnement hebt kun je hier een [gratis account aanmaken.](https://azure.microsoft.com/free/)
+* SignalFx single sign-on (SSO) ingeschakeld abonnement
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie gaat u Azure AD-SSO configureren en testen in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* SignalFx ondersteunt door **IDP** GEÏNITIEERDe SSO
-* SignalFx ondersteunt **just-in-time** -gebruikers inrichting
-* Nadat u SignalFx hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* SignalFx ondersteunt **IDP** geïnitieerde SSO
+* SignalFx ondersteunt **Just In Time** gebruikersinrichting
+* Zodra u SignalFx hebt geconfigureerd, u sessiecontrole afdwingen, wat exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermt. Sessiebesturingselement strekt zich uit van Voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="step-1-add-the-signalfx-application-in-azure"></a>Stap 1: de toepassing SignalFx toevoegen in azure
+## <a name="step-1-add-the-signalfx-application-in-azure"></a>Stap 1: De SignalFx-toepassing toevoegen in Azure
 
-Gebruik deze instructies om de toepassing SignalFx toe te voegen aan uw lijst met beheerde SaaS-apps.
+Gebruik deze instructies om de SignalFx-toepassing toe te voegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **Azure Active Directory**in het navigatie venster aan de linkerkant.
-1. Selecteer **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **Azure Active Directory**in het navigatievenster aan de linkerkant .
+1. Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 1. Selecteer **Nieuwe toepassing**.
-1. In de sectie **toevoegen vanuit de galerie** typt en selecteert u **SignalFx**in het zoekvak.
-     * Mogelijk moet u enkele minuten wachten totdat de toepassing is toegevoegd aan uw Tenant.
-1. Verlaat de Azure Portal open en open vervolgens een nieuw tabblad Web.    
+1. Voer in de sectie **Toevoegen vanuit de galerie** in het zoekvak **SignalFx**in en selecteer deze .
+     * Het kan nodig zijn om een paar minuten te wachten voor de toepassing wordt toegevoegd aan uw tenant.
+1. Laat de Azure-portal openen en open een nieuw webtabblad.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>Stap 2: SignalFx SSO-configuratie starten
 
-Gebruik deze instructies om het configuratie proces voor de SignalFx SSO te starten.
+Gebruik deze instructies om het configuratieproces voor de SignalFx SSO te starten.
 
-1. Open het tabblad geopend en meld u aan bij de SignalFx-gebruikers interface. 
-1. Klik in het bovenste menu op **integraties**. 
-1. Voer in het zoek veld **Azure Active Directory**in en selecteer het.
-1. Klik op **nieuwe integratie maken**.
-1. Voer bij **naam**een gemakkelijk herken bare naam in die uw gebruikers begrijpen.
-1. Markeer **weer geven op de aanmeldings pagina**.
-    * Met deze functie wordt een aangepaste knop op de aanmeldings pagina weer gegeven waarop uw gebruikers kunnen klikken. 
-    * De gegevens die u in **naam** hebt ingevoerd, worden weer gegeven op de knop. Als gevolg hiervan voert u een **naam** in die door uw gebruikers wordt herkend. 
-    * Deze optie werkt alleen als u een aangepast subdomein gebruikt voor de SignalFx-toepassing, zoals **yourcompanyname.signalfx.com**. Neem contact op met SignalFx-ondersteuning om een aangepast subdomein te verkrijgen. 
-1. Kopieer de **integratie-id**. U hebt deze informatie nodig in een latere stap. 
-1. De SignalFx-gebruikers interface geopend laten. 
+1. In het onlangs geopende tabblad u toegang krijgen tot en inloggen op de SignalFx-gebruikersinterface. 
+1. Klik in het bovenste menu op **Integraties**. 
+1. Voer in het zoekveld **Azure Active Directory**in en selecteer deze .
+1. Klik **op Nieuwe integratie maken**.
+1. Voer in **Naam**een gemakkelijk herkenbare naam in die uw gebruikers zullen begrijpen.
+1. Markeren **Weergeven op de aanmeldingspagina**.
+    * Deze functie geeft een aangepaste knop weer op de aanmeldingspagina waarop uw gebruikers kunnen klikken. 
+    * De gegevens die u in **Naam** hebt ingevoerd, worden op de knop weergegeven. Voer daarom een **naam** in die uw gebruikers zullen herkennen. 
+    * Deze optie werkt alleen als u een aangepast subdomein gebruikt voor de SignalFx-toepassing, zoals **yourcompanyname.signalfx.com.** Neem contact op met SignalFx-ondersteuning om een aangepast subdomein te verkrijgen. 
+1. Kopieer de **integratie-id**. U zult deze informatie in een latere stap nodig hebben. 
+1. Laat de SignalFx UI open. 
 
 ## <a name="step-3-configure-azure-ad-sso"></a>Stap 3: Azure AD SSO configureren
 
-Gebruik deze instructies om Azure AD SSO in te scha kelen in de Azure Portal.
+Gebruik deze instructies om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Ga terug naar het [Azure Portal](https://portal.azure.com/)en zoek op de pagina Toepassings integratie van **SignalFx** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram pen (bewerken) voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Ga terug naar de [Azure-portal](https://portal.azure.com/)en zoek op de integratiepagina **van de SignalFx-toepassing** de sectie **Beheren** en selecteer **Vervolgens Eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram pen (bewerken) voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Vul op de pagina **eenmalige aanmelding met SAML instellen** de volgende velden in: 
+1. Vul op de pagina **Eén aanmelding instellen met SAML** de volgende velden in: 
 
-    a. Voer in **id**de volgende URL `https://api.<realm>.signalfx.com/v1/saml/metadata` in en vervang `<realm>` door uw SignalFx-realm. 
+    a. Voer in **Id**de `https://api.<realm>.signalfx.com/v1/saml/metadata` volgende `<realm>` URL in en vervang deze door uw SignalFx-realm. 
 
-    b. Voer bij **antwoord-URL**de volgende URL in `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` en vervang `<realm>` met uw SignalFx-realm, evenals `<integration ID>` met de **integratie-id** die u eerder hebt gekopieerd via de SignalFx-gebruikers interface.
+    b. Voer in De URL `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` van `<realm>` **antwoord**de volgende URL in `<integration ID>` en vervang deze door uw SignalFx-realm, evenals met de **integratie-id** die u eerder hebt gekopieerd van de SignalFx-gebruikersinterface.
 
-1. De SignalFx-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. 
+1. SignalFx-toepassing verwacht de SAML-beweringen in een specifiek formaat, waarvoor u aangepaste attribuuttoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. 
     
-1. Controleer en controleer of de volgende claims worden toegewezen aan de bron kenmerken die zijn ingevuld in de Active Directory. 
+1. Controleer en controleer of de volgende claims worden toegewezen aan de bronkenmerken die worden ingevuld in de Active Directory. 
 
-    | Naam |  Bronkenmerk|
+    | Name |  Bronkenmerk|
     | ------------------- | -------------------- |
     | User.FirstName  | user.givenname |
-    | Gebruiker. e-mail adres  | user.mail |
+    | User.email  | user.mail |
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
     > [!NOTE]
-    > Dit proces vereist dat uw Active Directory is geconfigureerd met ten minste één geverifieerd aangepast domein en dat toegang heeft tot de e-mail accounts in dit domein. Als u niet zeker weet of hulp nodig hebt bij deze configuratie, neemt u contact op met de SignalFx-ondersteuning.  
+    > Dit proces vereist dat uw Active Directory is geconfigureerd met ten minste één geverifieerd aangepast domein en toegang heeft tot de e-mailaccounts in dit domein. Als u niet zeker weet of hulp nodig hebt bij deze configuratie, neem dan contact op met signalfx-ondersteuning.  
 
-1. Op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** zoeken naar **certificaat (base64)** en selecteert u **downloaden**. Down load het certificaat en sla het op uw computer op. Kopieer vervolgens de URL-waarde voor de **federatieve meta gegevens** van de app. u hebt deze informatie nodig in een latere stap in de SignalFx-gebruikers interface. 
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op **Certificaat (Base64)** en selecteer **Download**. Download het certificaat en sla het op uw computer op. Kopieer vervolgens de **url-waarde van de appfederatie.** u deze informatie in een latere stap in de SignalFx UI nodig hebt. 
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer de **Azure ad-id** -waarde in de sectie **SignalFx instellen** . U hebt deze informatie nodig in een latere stap in de SignalFx-gebruikers interface. 
+1. Kopieer in de sectie **SignalFx instellen** de waarde **van azure AD-id.** U hebt deze informatie in een latere stap in de SignalFx-gebruikersinterface nodig. 
 
-## <a name="step-4-create-an-azure-ad-test-user"></a>Stap 4: een Azure AD-test gebruiker maken
+## <a name="step-4-create-an-azure-ad-test-user"></a>Stap 4: Een Azure AD-testgebruiker maken
 
-Gebruik deze instructies om een test gebruiker te maken in de Azure Portal met de naam **B. Simon**.
+Gebruik deze instructies om een testgebruiker te maken in de Azure-portal genaamd **B.Simon**.
 
-1. In de Azure Portal, in het navigatie venster aan de linkerkant, selecteert u **Azure Active Directory**, selecteert u **gebruikers**en selecteert u vervolgens **alle gebruikers**.
-1. Selecteer aan de bovenkant van de pagina **nieuwe gebruiker**.
-1. In de **gebruikers** eigenschappen:
-   1. Voer in **gebruikers naam**`username@companydomain.extension`in, zoals `b.simon@contoso.com`.
-   1. Voer in **naam**`B.Simon`in.
-   1. Markeer **wacht woord weer geven**en kopieer de weer gegeven waarde in het **wacht woord**. U hebt deze informatie nodig in de volgende stap om deze integratie te testen. 
-   1. Klik op **Create**.
+1. Selecteer in de Azure-portal in het navigatievenster aan de linkerkant **Azure Active Directory,** selecteer **vervolgens Gebruikers**en selecteer alle **gebruikers**.
+1. Selecteer boven aan de pagina De optie **Nieuwe gebruiker**.
+1. In de eigenschappen **gebruiker:**
+   1. Voer **User name**in gebruikersnaam `username@companydomain.extension`, `b.simon@contoso.com`zoals .
+   1. In **Naam** `B.Simon`, voer .
+   1. Het **wachtwoord weergeven**markeren en kopieer de weergegeven waarde in **Wachtwoord**. U hebt deze informatie later nodig om deze integratie te testen. 
+   1. Klik **op Maken**.
 
-## <a name="step-5-assign-the-azure-ad-test-user"></a>Stap 5: de Azure AD-test gebruiker toewijzen
+## <a name="step-5-assign-the-azure-ad-test-user"></a>Stap 5: De Azure AD-testgebruiker toewijzen
 
-Gebruik deze instructies om de test gebruiker in staat te stellen om eenmalige aanmelding van Azure te gebruiken voor SignalFx.
+Gebruik deze instructies om de testgebruiker in staat te stellen Azure single sign-on voor SignalFx te gebruiken.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **SignalFx**.
-1. Zoek de sectie **beheren** op de pagina overzicht van de app en selecteer vervolgens **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **SignalFx**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **vervolgens Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens in het dialoogvenster Toewijzing **toevoegen** de optie Gebruikers **en groepen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** in de lijst **gebruikers** de optie **B. Simon**en klik onder aan de pagina op **selecteren**.
-1. Als u een wille keurige rol in de SAML-bewering verwacht, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op **selecteren** onder aan de pagina.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de **toewijzen**.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** in de lijst **Gebruikers** de optie **B.Simon**en klik vervolgens onder aan de pagina op **Selecteren**.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u onder aan de pagina op **Selecteren.**
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op **toewijzen**.
 
-## <a name="step-6-complete-the-signalfx-sso-configuration"></a>Stap 6: de SignalFx SSO-configuratie volt ooien 
+## <a name="step-6-complete-the-signalfx-sso-configuration"></a>Stap 6: Voltooi de SignalFx SSO-configuratie 
 
-1. Open het vorige tabblad en ga terug naar de SignalFx-gebruikers interface om de huidige Azure Active Directory Integration-pagina weer te geven. 
-1. Klik naast **certificaat (base64)** op **bestand uploaden**en zoek het met **Base64 gecodeerde certificaat** bestand dat u eerder hebt gedownload van Azure Portal.
-1. Plak naast **Azure ad id**de waarde voor de **Azure ad-id** die u eerder hebt gekopieerd uit het Azure Portal. 
-1. Plak naast **URL voor federatieve meta**gegevens de waarde voor de URL van de **app Federation-meta gegevens** die u eerder hebt gekopieerd uit de Azure Portal. 
+1. Open het vorige tabblad en ga terug naar de Gebruikersinterface van SignalFx om de huidige Azure Active Directory-integratiepagina weer te geven. 
+1. Klik naast **Certificate (Base64)** op **Bestand uploaden**en zoek vervolgens het bestand bestand **base64 gecodeerd certificaat** dat u eerder hebt gedownload van azure-portal.
+1. Plak naast **Azure AD-id**de Azure **AD-id-waarde** die u eerder hebt gekopieerd uit de Azure-portal. 
+1. Plak naast **de URL van federatiemetagegevens**de **url-waarde van de appfederatie-metagegevens** die u eerder hebt gekopieerd van de Azure-portal. 
 1. Klik op **Opslaan**.
 
-## <a name="step-7-test-sso"></a>Stap 7: SSO testen
+## <a name="step-7-test-sso"></a>Stap 7: Test SSO
 
-Bekijk de volgende informatie over het testen van SSO, evenals verwachtingen voor de eerste keer aanmelden bij SignalFx. 
+Bekijk de volgende informatie over het testen van SSO, evenals de verwachtingen voor het inloggen op SignalFx voor de eerste keer. 
 
 ### <a name="test-logins"></a>Aanmeldingen testen
 
-* Als u de aanmelding wilt testen, gebruikt u een privé-incognito venster of kunt u zich afmelden bij de Azure Portal. Als dat niet het geval is, zorgt u ervoor dat de cookies voor de gebruiker die de toepassing heeft geconfigureerd, een geslaagde aanmelding met de test gebruiker belemmeren.
+* Als u de aanmelding wilt testen, moet u een privé-/incognitovenster gebruiken of u zich afmelden bij de Azure-portal. Zo niet, dan worden cookies voor de gebruiker die de toepassing heeft geconfigureerd, interfereert en voorkomen u een succesvolle aanmelding bij de testgebruiker.
 
-* Wanneer een nieuwe test gebruiker zich voor de eerste keer aanmeldt, wordt een wachtwoord wijziging door Azure geforceerd. Als dit gebeurt, wordt het SSO-aanmeldings proces niet voltooid. de test gebruiker wordt omgeleid naar de Azure Portal. Om problemen op te lossen, moet de test gebruiker het wacht woord wijzigen, naar de aanmeldings pagina van SignalFx of naar het toegangs paneel gaan en het opnieuw proberen.
-    * Wanneer u op de tegel SignalFx in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SignalFx. 
+* Wanneer een nieuwe testgebruiker zich voor de eerste keer aanmeldt, forceert Azure een wachtwoordwijziging. Wanneer dit gebeurt, wordt het SSO-aanmeldingsproces niet voltooid; de testgebruiker wordt naar de Azure-portal geleid. Om problemen op te lossen, moet de testgebruiker zijn wachtwoord wijzigen en naar de signalfx-aanmeldingspagina of naar het toegangspaneel navigeren en het opnieuw proberen.
+    * Wanneer u op de SignalFx-tegel in het access panel klikt, moet u automatisch worden aangemeld bij de SignalFx. 
         * Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-* SignalFx-toepassing kan worden geopend vanuit het toegangs venster of via een aangepaste aanmeldings pagina die aan de organisatie is toegewezen. De test gebruiker moet de integratie testen vanaf een van deze locaties.
-    * De test gebruiker kan de referenties gebruiken die eerder in dit proces zijn gemaakt voor **b.simon@contoso.com** .
+* SignalFx applicatie kan worden benaderd vanuit het Access Panel of via een aangepaste login pagina toegewezen aan de organisatie. De testgebruiker moet de integratie vanaf een van deze locaties testen.
+    * De testgebruiker kan de eerder in dit **b.simon@contoso.com**proces gemaakte referenties gebruiken voor .
 
-### <a name="first-time-logins"></a>Aanmeldingen voor de eerste keer
+### <a name="first-time-logins"></a>Eerste aanmeldingen
 
-* Wanneer een gebruiker zich voor de eerste keer aanmeldt bij SignalFx van de SAML SSO, ontvangt de gebruiker een SignalFx-e-mail met een koppeling. De gebruiker moet op de koppeling klikken voor verificatie doeleinden. Deze e-mail validatie vindt alleen plaats voor de eerste keer dat gebruikers worden uitgevoerd. 
+* Wanneer een gebruiker zich voor het eerst aanmeldt bij SignalFx van de SAML SSO, ontvangt de gebruiker een SignalFx-e-mail met een link. De gebruiker moet op de koppeling klikken voor verificatiedoeleinden. Deze e-mailvalidatie vindt alleen plaats voor nieuwe gebruikers. 
 
-* SignalFx ondersteunt **just-in-time** gebruiker maken, wat betekent dat als een gebruiker niet aanwezig is in SignalFx, het account van de gebruiker wordt gemaakt bij de eerste aanmeldings poging.
+* SignalFx ondersteunt **Just In Time** user creation, wat betekent dat als een gebruiker niet bestaat in SignalFx, het account van de gebruiker wordt gemaakt bij de eerste inlogpoging.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Probeer SignalFx met Azure AD](https://aad.portal.azure.com/)
