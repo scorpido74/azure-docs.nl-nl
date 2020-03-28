@@ -1,19 +1,19 @@
 ---
-title: Zelf studie-een VM-schijf herstellen met Azure Backup
+title: Zelfstudie - Een VM-schijf herstellen met Azure Backup
 description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Azure met Backup and Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238732"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Een schijf herstellen en een herstelde VM maken in Azure
 
-Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante kluizen van Recovery Services. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of afzonderlijke bestanden herstellen. In dit artikel wordt uitgelegd hoe u een volledige VM herstelt met behulp van CLI. In deze zelfstudie leert u het volgende:
+Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of afzonderlijke bestanden herstellen. In dit artikel wordt uitgelegd hoe u een volledige VM herstelt met behulp van CLI. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
@@ -25,11 +25,11 @@ Zie [Back up and restore Azure VMs with PowerShell](backup-azure-vms-automation.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of nieuwer uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie vereist een Linux-VM die is beveiligd met Azure Backup. Om het per ongeluk verwijderen van een VM en het herstelproces te simuleren, maakt u een VM op basis van een schijf in een herstelpunt. Zie [Een back-up van een virtuele machine maken in Azure met de CLI](quick-backup-vm-cli.md) als u een Linux-VM nodig hebt die is beschermd met Azure Backup.
+Deze zelfstudie vereist een Linux-VM die met Azure Backup is beschermd. Om het per ongeluk verwijderen van een VM en het herstelproces te simuleren, maakt u een VM op basis van een schijf in een herstelpunt. Zie [Een back-up van een virtuele machine maken in Azure met de CLI](quick-backup-vm-cli.md) als u een Linux-VM nodig hebt die is beschermd met Azure Backup.
 
 ## <a name="backup-overview"></a>Overzicht van Backup
 
@@ -59,11 +59,11 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Een VM-schijf herstellen
 
 > [!IMPORTANT]
-> Het wordt zeer ten zeerste aanbevolen AZ CLI version 2.0.74 of hoger te gebruiken om alle voor delen van een snelle herstel bewerking te krijgen, inclusief het terugzetten van de beheerde schijf. Het is het beste als de gebruiker altijd de nieuwste versie gebruikt.
+> Het is zeer sterk aanbevolen om Az CLI versie 2.0.74 of later te gebruiken om alle voordelen van een snelle herstel inclusief beheerde schijf te herstellen. Het is het beste als de gebruiker altijd de nieuwste versie gebruikt.
 
-### <a name="managed-disk-restore"></a>Beheer van beheerde schijven
+### <a name="managed-disk-restore"></a>Beheerde schijfherstel
 
-Als de virtuele machine waarvoor een back-up is gemaakt, beheerde schijven heeft en de bedoeling is om beheerde schijven te herstellen vanaf het herstel punt, geeft u eerst een Azure-opslag account op. Dit opslag account wordt gebruikt voor het opslaan van de VM-configuratie en de implementatie sjabloon die later kunnen worden gebruikt om de virtuele machine vanaf de herstelde schijven te implementeren. Vervolgens geeft u ook een doel resource groep op voor de beheerde schijven die moeten worden hersteld.
+Als de back-upVM schijven heeft beheerd en als het de bedoeling is beheerde schijven vanaf het herstelpunt te herstellen, geeft u eerst een Azure-opslagaccount op. Dit opslagaccount wordt gebruikt om de VM-configuratie en de implementatiesjabloon op te slaan die later kunnen worden gebruikt om de VM vanaf de herstelde schijven te implementeren. Vervolgens biedt u ook een doelgroep voor de beheerde schijven die moeten worden hersteld.
 
 1. Gebruik [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
 
@@ -74,7 +74,7 @@ Als de virtuele machine waarvoor een back-up is gemaakt, beheerde schijven heeft
         --sku Standard_LRS
     ```
 
-2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstel punt dat u hebt verkregen in de uitvoer van de vorige opdracht [AZ backup Recovery Point List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) . ***Geef ook de doel resource groep op waarop de beheerde schijven worden teruggezet***.
+2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen in de uitvoer van de vorige [opdracht voor az-back-upherstelpunten.](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) ***Geef ook de doelgroep aan waarnaar de beheerde schijven worden hersteld in***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,11 +88,11 @@ Als de virtuele machine waarvoor een back-up is gemaakt, beheerde schijven heeft
     ```
 
 > [!WARNING]
-> Als de doel bron-groep niet is opgegeven, worden de beheerde schijven teruggezet als onbeheerde schijven naar het opgegeven opslag account. Dit heeft belang rijke gevolgen voor de herstel tijd sinds de tijd die nodig is om de schijven volledig te herstellen, is afhankelijk van het opgegeven opslag account.
+> Als er geen doelbrongroep wordt verstrekt, worden de beheerde schijven hersteld als onbeheerde schijven naar het opgegeven opslagaccount. Dit zal aanzienlijke gevolgen hebben voor het herstel tijd sinds de tijd die nodig is om de schijven te herstellen volledig afhankelijk is van de gegeven opslag account.
 
 ### <a name="unmanaged-disks-restore"></a>Onbeheerde schijven herstellen
 
-Als de back-up van de virtuele machine niet-beheerde schijven bevat en als de bedoeling is om schijven te herstellen vanaf het herstel punt, geeft u eerst een Azure-opslag account op. Dit opslag account wordt gebruikt voor het opslaan van de VM-configuratie en de implementatie sjabloon die later kunnen worden gebruikt om de virtuele machine vanaf de herstelde schijven te implementeren. Standaard worden de niet-beheerde schijven teruggezet naar de oorspronkelijke opslag accounts. Als de gebruiker alle niet-beheerde schijven op één locatie wil herstellen, kan het opgegeven opslag account ook worden gebruikt als tijdelijke locatie voor die schijven.
+Als de back-upvm onbeheerde schijven heeft en als het de bedoeling is schijven te herstellen vanaf het herstelpunt, geeft u eerst een Azure-opslagaccount op. Dit opslagaccount wordt gebruikt om de VM-configuratie en de implementatiesjabloon op te slaan die later kunnen worden gebruikt om de VM vanaf de herstelde schijven te implementeren. Standaard worden de niet-beheerde schijven hersteld naar hun oorspronkelijke opslagaccounts. Als de gebruiker alle onbeheerde schijven naar één plaats wil herstellen, kan het opgegeven opslagaccount ook worden gebruikt als faseringslocatie voor die schijven.
 
 In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
 
@@ -117,7 +117,7 @@ In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
         --rp-name myRecoveryPointName
     ```
 
-Zoals hierboven vermeld, worden de niet-beheerde schijven teruggezet naar hun oorspronkelijke opslag account. Dit biedt de beste prestaties voor herstel. Maar als alle niet-beheerde schijven moeten worden hersteld naar een opgegeven opslag account, gebruikt u de relevante vlag zoals hieronder wordt weer gegeven.
+Zoals hierboven vermeld, worden de niet-beheerde schijven hersteld naar hun oorspronkelijke opslagaccount. Dit zorgt voor de beste herstelprestaties. Maar als alle onbeheerde schijven moeten worden hersteld naar een gegeven opslagaccount, gebruik dan de relevante vlag zoals hieronder weergegeven.
 
 ```azurecli-interactive
     az backup restore restore-disks \
@@ -151,15 +151,15 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Wanneer de *status* van de herstel taak rapporten *is voltooid*, zijn de benodigde gegevens (VM-configuratie en de implementatie sjabloon) hersteld naar het opslag account.
+Wanneer de *status* van de hersteltaakrapporten *Voltooid*is, is de benodigde informatie (VM-configuratie en de implementatiesjabloon) hersteld naar het opslagaccount.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Een VM maken op basis van de herstelde schijf
 
-De laatste stap bestaat uit het maken van een virtuele machine op basis van de herstelde schijven. U kunt de implementatie sjabloon die is gedownload naar het opgegeven opslag account gebruiken om de virtuele machine te maken.
+De laatste stap is het maken van een VM van de herstelde schijven. U de implementatiesjabloon die naar het opgegeven opslagaccount is gedownload, gebruiken om de VM te maken.
 
-### <a name="fetch-the-job-details"></a>De taak Details ophalen
+### <a name="fetch-the-job-details"></a>De taakgegevens ophalen
 
-De resulterende taak details geven de sjabloon-URI die kan worden opgevraagd en geïmplementeerd. Gebruik de opdracht show command om meer informatie te krijgen over de geactiveerde herstelde taak.
+De resulterende taakgegevens geven de sjabloon URI die kan worden opgevraagd en geïmplementeerd. Gebruik de opdracht Taakshow om meer details te krijgen voor de geactiveerde herstelde taak.
 
 ```azurecli-interactive
 az backup job show \
@@ -168,7 +168,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-De uitvoer van deze query geeft alle details, maar we zijn alleen geïnteresseerd in de inhoud van het opslag account. We kunnen de [query mogelijkheid](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) van Azure CLI gebruiken om de relevante gegevens op te halen
+De uitvoer van deze query geeft alle details, maar we zijn alleen geïnteresseerd in de inhoud van het opslagaccount. We kunnen de [querycapaciteit](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) van Azure CLI gebruiken om de relevante gegevens op te halen
 
 ```azurecli-interactive
 az backup job show \
@@ -189,11 +189,11 @@ az backup job show \
 }
 ```
 
-### <a name="fetch-the-deployment-template"></a>De implementatie sjabloon ophalen
+### <a name="fetch-the-deployment-template"></a>De implementatiesjabloon ophalen
 
-De sjabloon is niet direct toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. U hebt de volledige URL (samen met een tijdelijk SAS-token) nodig om toegang te krijgen tot deze sjabloon.
+De sjabloon is niet direct toegankelijk omdat deze onder het opslagaccount van een klant en de opgegeven container valt. We hebben de volledige URL (samen met een tijdelijk SAS-token) nodig om toegang te krijgen tot deze sjabloon.
 
-Extraheer eerst de URI van de sjabloon-Blob uit taak Details
+Haal eerst de sjabloonblob Uri uit taakgegevens
 
 ```azurecli-interactive
 az backup job show \
@@ -205,15 +205,15 @@ az backup job show \
 "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
 ```
 
-De URI van de sjabloon-BLOB heeft de volgende indeling en extraheert de sjabloon naam
+De sjabloonblob Uri is van deze indeling en haalt de naam van de sjabloon uit
 
 ```https
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-De naam van de sjabloon in het bovenstaande voor beeld wordt dus ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` en de naam van de container is ```myVM-daa1931199fd4a22ae601f46d8812276```
+Dus, de sjabloon naam van ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` het bovenstaande voorbeeld zal zijn en de container naam is```myVM-daa1931199fd4a22ae601f46d8812276```
 
-Down load nu het SAS-token voor deze container en sjabloon, zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) wordt beschreven
+Nu krijgt u het SAS-token voor deze container en sjabloon zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) beschreven
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -235,9 +235,9 @@ url=$(az storage blob url \
     --connection-string $connection)
 ```
 
-### <a name="deploy-the-template-to-create-the-vm"></a>De sjabloon implementeren om de virtuele machine te maken
+### <a name="deploy-the-template-to-create-the-vm"></a>De sjabloon implementeren om de VM te maken
 
-Implementeer nu de sjabloon voor het maken van de virtuele machine, zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)wordt uitgelegd.
+Implementeer nu de sjabloon om de VM te maken zoals [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)uitgelegd.
 
 ```azurecli-interactive
 az group deployment create \

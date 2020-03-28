@@ -1,55 +1,55 @@
 ---
 title: SSL-certificaten toevoegen en beheren
-description: Maak een gratis certificaat, importeer een App Service certificaat, importeer een Key Vault certificaat of koop een App Service certificaat in Azure App Service.
+description: Maak een gratis certificaat, importeer een App Service-certificaat, importeer een Key Vault-certificaat of koop een App Service-certificaat in Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239761"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
+# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat toevoegen in Azure App Service
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In dit artikel wordt beschreven hoe u een persoonlijk certificaat of een openbaar certificaat maakt, uploadt of importeert in App Service. 
+[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice. In dit artikel ziet u hoe u een privécertificaat of een openbaar certificaat maken, uploaden of importeren in App Service. 
 
-Zodra het certificaat is toegevoegd aan uw App Service app of [functie-app](https://docs.microsoft.com/azure/azure-functions/), kunt u [een aangepaste DNS-naam beveiligen](configure-ssl-bindings.md) of [gebruiken in uw toepassings code](configure-ssl-certificate-in-code.md).
+Zodra het certificaat is toegevoegd aan uw App Service-app of [functie-app,](https://docs.microsoft.com/azure/azure-functions/)u [er een aangepaste DNS-naam mee beveiligen](configure-ssl-bindings.md) of gebruiken in uw [toepassingscode.](configure-ssl-certificate-in-code.md)
 
-De volgende tabel bevat de opties die u hebt voor het toevoegen van certificaten in App Service:
+In de volgende tabel worden de opties weergegeven die u hebt voor het toevoegen van certificaten in App-service:
 
 |Optie|Beschrijving|
 |-|-|
-| Een gratis door App Service beheerd certificaat maken (preview) | Een persoonlijk certificaat dat eenvoudig te gebruiken is als u alleen uw `www` [aangepast domein](app-service-web-tutorial-custom-domain.md) of een niet-gelastig domein in app service moet beveiligen. |
-| Een App Service-certificaat kopen | Een persoonlijk certificaat dat wordt beheerd door Azure. Het combineert de eenvoud van geautomatiseerd certificaat beheer en de flexibiliteit van de opties voor het vernieuwen en exporteren. |
-| Een certificaat importeren uit Key Vault | Dit is handig als u [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) gebruikt voor het beheren van uw [pkcs12/pfx-profiel-certificaten](https://wikipedia.org/wiki/PKCS_12). Zie [vereisten voor persoonlijke certificaten](#private-certificate-requirements). |
-| Een persoonlijk certificaat uploaden | Als u al een persoonlijk certificaat van een externe provider hebt, kunt u het uploaden. Zie [vereisten voor persoonlijke certificaten](#private-certificate-requirements). |
-| Een openbaar certificaat uploaden | Open bare certificaten worden niet gebruikt voor het beveiligen van aangepaste domeinen, maar u kunt ze ook in uw code laden als u deze nodig hebt om toegang te krijgen tot externe bronnen. |
+| Een gratis certificaat voor beheerde app-service maken (voorbeeld) | Een privécertificaat dat eenvoudig te gebruiken is als `www` u alleen uw [aangepaste domein](app-service-web-tutorial-custom-domain.md) of een niet-naakt domein in App Service moet beveiligen. |
+| Een App Service-certificaat kopen | Een privécertificaat dat wordt beheerd door Azure. Het combineert de eenvoud van geautomatiseerd certificaatbeheer en de flexibiliteit van vernieuwings- en exportopties. |
+| Een certificaat importeren uit Key Vault | Handig als u [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) gebruikt om uw [PKCS12-certificaten](https://wikipedia.org/wiki/PKCS_12)te beheren. Zie [Vereisten voor privécertificaten](#private-certificate-requirements). |
+| Een privécertificaat uploaden | Als u al een privécertificaat van een externe provider hebt, u het uploaden. Zie [Vereisten voor privécertificaten](#private-certificate-requirements). |
+| Een openbaar certificaat uploaden | Openbare certificaten worden niet gebruikt om aangepaste domeinen te beveiligen, maar u ze in uw code laden als u ze nodig hebt om toegang te krijgen tot externe bronnen. |
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze hand leiding wilt volgen:
+Volg deze handleiding:
 
-- [Een app service-app maken](/azure/app-service/).
-- Gratis certificaat: wijs een subdomein (bijvoorbeeld `www.contoso.com`) toe aan App Service met een CNAME- [record](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
+- [Maak een App Service-app](/azure/app-service/).
+- Alleen gratis certificaat: breng een subdomein `www.contoso.com`(bijvoorbeeld) naar App Service met een [CNAME-record.](app-service-web-tutorial-custom-domain.md#map-a-cname-record)
 
-## <a name="private-certificate-requirements"></a>Vereisten voor persoonlijke certificaten
+## <a name="private-certificate-requirements"></a>Vereisten voor privécertificaten
 
 > [!NOTE]
-> Azure Web Apps biedt **geen** ondersteuning voor AES256 en alle pfx-bestanden moeten worden versleuteld met TripleDES.
+> Azure Web Apps ondersteunt **geen** AES256 en alle pfx-bestanden moeten worden versleuteld met TripleDES.
 
-Het [gratis door app service beheerde certificaat](#create-a-free-certificate-preview) of het [app service certificaat](#import-an-app-service-certificate) voldoet al aan de vereisten van app service. Als u ervoor kiest om een persoonlijk certificaat te uploaden of te importeren naar App Service, moet uw certificaat voldoen aan de volgende vereisten:
+Het [gratis App Service Managed Certificate](#create-a-free-certificate-preview) of het App [Service-certificaat](#import-an-app-service-certificate) voldoen al aan de vereisten van App Service. Als u ervoor kiest een privécertificaat te uploaden of te importeren naar App Service, moet uw certificaat aan de volgende vereisten voldoen:
 
-* Geëxporteerd als een [PFX-bestand met wachtwoord beveiliging](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
+* Geëxporteerd als [een PFX-bestand met wachtwoord](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
 * Bevat een persoonlijke sleutel van minstens 2048 bits
 * Bevat alle tussenliggende certificaten in de certificaatketen
 
-Voor het beveiligen van een aangepast domein in een SSL-binding gelden aanvullende vereisten voor het certificaat:
+Als u een aangepast domein in een SSL-binding wilt beveiligen, heeft het certificaat aanvullende vereisten:
 
-* Bevat een [uitgebreide-sleutel gebruik](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) voor Server verificatie (OID = 1.3.6.1.5.5.7.3.1)
+* Bevat een [uitgebreid sleutelgebruik](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) voor serververificatie (OID = 1.3.6.1.5.5.7.3.1)
 * Ondertekend door een vertrouwde certificeringsinstantie
 
 > [!NOTE]
@@ -57,157 +57,157 @@ Voor het beveiligen van een aangepast domein in een SSL-binding gelden aanvullen
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Een gratis certificaat maken (preview)
+## <a name="create-a-free-certificate-preview"></a>Een gratis certificaat maken (Voorbeeld)
 
-Het gratis door App Service beheerde certificaat is een zet-sleutel oplossing voor het beveiligen van uw aangepaste DNS-naam in App Service. Het is een volledig functioneel SSL-certificaat dat wordt beheerd door App Service en automatisch wordt vernieuwd. Het gratis certificaat wordt geleverd met de volgende beperkingen:
+Het gratis App Service Managed Certificate is een turn-key oplossing voor het beveiligen van uw aangepaste DNS-naam in App Service. Het is een volledig functioneel SSL-certificaat dat wordt beheerd door App Service en automatisch wordt vernieuwd. Het gratis certificaat wordt geleverd met de volgende beperkingen:
 
-- Ondersteunt geen joker tekens.
-- Biedt geen ondersteuning voor niet-geblote domeinen.
-- Kan niet worden geëxporteerd.
-- Biedt geen ondersteuning voor DNS A-records.
+- Ondersteunt geen wildcardcertificaten.
+- Ondersteunt geen naakte domeinen.
+- Is niet exporteerbaar.
+- Ondersteunt geen DNS A-records.
 
 > [!NOTE]
-> Het gratis certificaat wordt uitgegeven door DigiCert. Voor sommige domeinen van het hoogste niveau moet u DigiCert als een certificaat verlener expliciet toestaan door een CAA- [domein record](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) te maken met de waarde: `0 issue digicert.com`.
+> Het gratis certificaat wordt uitgegeven door DigiCert. Voor sommige topdomeinen moet u DigiCert expliciet toestaan als certificaatuitgever door een [CAA-domeinrecord](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) te maken met de waarde: `0 issue digicert.com`.
 > 
 
-Een gratis door App Service beheerd certificaat maken:
+Ga als lid van het werk om een gratis door de app-service beheerd certificaat te maken:
 
-Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
+Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
 
-Selecteer in de linkernavigatiebalk van uw app de **instellingen voor TLS/SSL** > **certificaten voor persoonlijke sleutels (. pfx)**  > **app service beheerd certificaat maken**.
+Selecteer **tls/SSL-instellingen** > **Private Key Certificates (.pfx)** > App Service Managed**Certificate**in de linkernavigatie van uw app.
 
-![Een gratis certificaat maken in App Service](./media/configure-ssl-certificate/create-free-cert.png)
+![Gratis certificaat maken in App-service](./media/configure-ssl-certificate/create-free-cert.png)
 
-In het dialoog venster wordt een niet-onwaar domein gekoppeld aan uw app met een CNAME-record. Selecteer het aangepaste domein waarvoor u een gratis certificaat wilt maken en selecteer **maken**. U kunt slechts één certificaat maken voor elk ondersteund aangepast domein.
+Elk niet-naakt domein dat goed is toegewezen aan uw app met een CNAME-record, wordt in het dialoogvenster weergegeven. Selecteer het aangepaste domein om een gratis certificaat voor te maken en selecteer **Maken**. U slechts één certificaat maken voor elk ondersteund aangepast domein.
 
-Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst met **certificaten voor persoonlijke sleutels** .
+Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst **Met privésleutelcertificaten.**
 
-![Gratis certificaat maken is voltooid](./media/configure-ssl-certificate/create-free-cert-finished.png)
+![Gratis certificaat maken voltooid](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
 > [!IMPORTANT] 
-> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaat binding maken. Volg de stappen in [Create binding](configure-ssl-bindings.md#create-binding).
+> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaatbinding maken. Volg de stappen in [Binding maken](configure-ssl-bindings.md#create-binding).
 >
 
-## <a name="import-an-app-service-certificate"></a>Een App Service Certificate importeren
+## <a name="import-an-app-service-certificate"></a>Een App-servicecertificaat importeren
 
-Als u een App Service Certificate aanschaft vanuit Azure, beheert Azure de volgende taken:
+Als u een App Service Certificate in Azure aanschaft, beheert Azure de volgende taken:
 
-- Zorgt voor het aankoop proces van GoDaddy.
-- Voert een domein verificatie van het certificaat uit.
+- Zorgt voor het aankoopproces van GoDaddy.
+- Voert domeinverificatie van het certificaat uit.
 - Onderhoudt het certificaat in [Azure Key Vault](../key-vault/key-vault-overview.md).
-- Hiermee beheert u het vernieuwen van certificaten (Zie [certificaat vernieuwen](#renew-certificate)).
-- Synchroniseer het certificaat automatisch met de geïmporteerde kopieën in App Service-apps.
+- Beheert certificaatverlenging (zie [Certificaat verlengen).](#renew-certificate)
+- Synchroniseer het certificaat automatisch met de geïmporteerde exemplaren in App Service-apps.
 
-Als u een App Service certificaat wilt kopen, gaat u naar [Start Certificate order](#start-certificate-order).
+Als u een App Service-certificaat wilt kopen, gaat u naar [Certificaatvolgorde starten](#start-certificate-order).
 
-Als u al een werk App Service certificaat hebt, kunt u het volgende doen:
+Als u al een werkend App Service-certificaat hebt, u het:
 
-- [Importeer het certificaat in app service](#import-certificate-into-app-service).
-- [Beheer het certificaat](#manage-app-service-certificates), zoals vernieuwen, opnieuw genereren en exporteer het.
+- [Importeer het certificaat in App Service](#import-certificate-into-app-service).
+- [Beheer het certificaat](#manage-app-service-certificates), zoals vernieuwen, opnieuw sleutelen en exporteren.
 
-### <a name="start-certificate-order"></a>Certificaat volgorde starten
+### <a name="start-certificate-order"></a>Certificaatorder starten
 
-Start een App Service-certificaat volgorde op de <a href="https://portal.azure.com/#create/Microsoft.SSL" target="_blank">pagina app service Certificate maken</a>.
+Start een app-servicecertificaatorder op de <a href="https://portal.azure.com/#create/Microsoft.SSL" target="_blank">pagina App Service Certificate create</a>.
 
-![App Service certificaat kopen starten](./media/configure-ssl-certificate/purchase-app-service-cert.png)
+![Aankoop van App Service-certificaat starten](./media/configure-ssl-certificate/purchase-app-service-cert.png)
 
-Gebruik de volgende tabel om u te helpen bij het configureren van het certificaat. Klik op **Create** als u klaar bent.
+Gebruik de volgende tabel om u te helpen het certificaat te configureren. Klik op **Create** als u klaar bent.
 
 | Instelling | Beschrijving |
 |-|-|
-| Naam | Een beschrijvende naam voor uw App Service certificaat. |
-| Naam van het Blot-domein | Geef hier het hoofd domein op. Het verleende certificaat beveiligt *zowel* het hoofd domein als het subdomein `www`. In het verleende certificaat bevat het veld algemene naam het hoofd domein en het veld alternatieve naam voor onderwerp bevat het `www` domein. Als u alleen een subdomein wilt beveiligen, geeft u de Fully Qualified Domain Name van het subdomein hier op (bijvoorbeeld `mysubdomain.contoso.com`).|
-| Abonnement | Het abonnement dat het certificaat zal bevatten. |
-| Resourcegroep | De resource groep die het certificaat zal bevatten. U kunt een nieuwe resource groep gebruiken of dezelfde resource groep selecteren als uw App Service-app, bijvoorbeeld. |
-| Certificaat-SKU | Hiermee wordt het type certificaat bepaald dat moet worden gemaakt, of het een standaard certificaat of een [certificaat voor joker tekens](https://wikipedia.org/wiki/Wildcard_certificate)is. |
-| Juridische voor waarden | Klik om te bevestigen dat u akkoord gaat met de juridische voor waarden. De certificaten worden opgehaald van GoDaddy. |
+| Name | Een vriendelijke naam voor uw App Service-certificaat. |
+| Naakte domeinnaam | Geef hier het hoofddomein op. Het uitgegeven certificaat beveiligt zowel `www` het hoofddomein *als* het subdomein. In het uitgegeven certificaat bevat het veld Algemene naam het hoofddomein `www` en het veld Alternatieve naam onderwerp bevat het domein. Als u alleen een subdomein wilt beveiligen, geeft u hier `mysubdomain.contoso.com`de volledig gekwalificeerde domeinnaam van het subdomein op (bijvoorbeeld).|
+| Abonnement | Het abonnement dat het certificaat bevat. |
+| Resourcegroep | De resourcegroep die het certificaat bevat. U bijvoorbeeld een nieuwe brongroep gebruiken of dezelfde resourcegroep selecteren als uw App Service-app. |
+| Certificaat SKU | Hiermee bepaalt u het type certificaat dat moet worden gemaakt, of het nu gaat om een standaardcertificaat of een [wildcardcertificaat](https://wikipedia.org/wiki/Wildcard_certificate). |
+| Wettelijke voorwaarden | Klik hier om te bevestigen dat u akkoord gaat met de wettelijke voorwaarden. De certificaten zijn verkrijgbaar bij GoDaddy. |
 
 ### <a name="store-in-azure-key-vault"></a>Opslaan in Azure Key Vault
 
-Zodra het aankoop proces van het certificaat is voltooid, zijn er nog enkele stappen die u moet volt ooien voordat u dit certificaat kunt gaan gebruiken. 
+Zodra het aankoopproces van certificaten is voltooid, zijn er nog enkele stappen die u moet voltooien voordat u dit certificaat gebruiken. 
 
-Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klik vervolgens op **certificaat configuratie** > **stap 1: opslaan**.
+Selecteer het certificaat op de pagina [App Service-certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klik op Stap 1 **certificaatconfiguratie:** > **Opslaan**.
 
-![Key Vault opslag van App Service certificaat configureren](./media/configure-ssl-certificate/configure-key-vault.png)
+![Key Vault-opslag van App Service-certificaat configureren](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) is een Azure-service die helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Het is de opslag van de keuze voor App Service certificaten.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) is een Azure-service die cryptografische sleutels en geheimen beschermt die worden gebruikt door cloudtoepassingen en -services. Het is de opslag van keuze voor App Service-certificaten.
 
-Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nieuwe kluis te maken of kies een bestaande kluis. Als u ervoor kiest om een nieuwe kluis te maken, gebruikt u de volgende tabel om u te helpen de kluis te configureren en klikt u op maken. Maak de nieuwe Key Vault binnen hetzelfde abonnement en dezelfde resource groep als uw App Service-app.
+Klik op de pagina **Key Vault Status** op Key Vault **Repository** om een nieuwe kluis te maken of kies een bestaande kluis. Als u ervoor kiest een nieuwe kluis te maken, gebruikt u de volgende tabel om u te helpen de kluis te configureren en op Maken te klikken. Maak de nieuwe Key Vault in dezelfde abonnements- en resourcegroep als uw App Service-app.
 
 | Instelling | Beschrijving |
 |-|-|
-| Naam | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
-| Resourcegroep | Als aanbeveling selecteert u dezelfde resource groep als uw App Service certificaat. |
+| Name | Een unieke naam die bestaat uit alfanumerieke tekens en streepjes. |
+| Resourcegroep | Selecteer als aanbeveling dezelfde resourcegroep als uw App Service-certificaat. |
 | Locatie | Selecteer dezelfde locatie als uw App Service-app. |
-| Prijscategorie | Zie [Azure Key Vault prijs informatie](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie. |
-| Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Toegang Virtual Network | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
+| Prijscategorie | Zie voor meer informatie de [prijsgegevens van Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Toegangsbeleidsregels| Hiermee definieert u de toepassingen en de toegestane toegang tot de kluisbronnen. U het later configureren, volgens de stappen bij [Meerdere toepassingen toegang verlenen tot een sleutelkluis.](../key-vault/key-vault-group-permissions-for-apps.md) |
+| Toegang tot virtueel netwerk | Beperk de toegang tot bepaalde virtuele Azure-netwerken. U het later configureren, volgens de stappen bij [Azure Key Vault Firewalls en Virtual Networks configureren](../key-vault/key-vault-network-security.md) |
 
-Wanneer u de kluis hebt geselecteerd, sluit u de pagina **Key Vault opslag plaats** . Bij **stap 1:** de optie opslaan wordt een groen vinkje weer gegeven voor geslaagde pogingen. Laat de pagina voor de volgende stap geopend.
+Zodra u de kluis hebt geselecteerd, sluit u de pagina **Key Vault Repository.** De **optie Stap 1: Opslaan** moet een groen vinkje voor succes weergeven. Houd de pagina open voor de volgende stap.
 
-### <a name="verify-domain-ownership"></a>Domein eigendom verifiëren
+### <a name="verify-domain-ownership"></a>Domeineigendom verifiëren
 
-Klik op de pagina **certificaat configuratie** die u in de laatste stap hebt gebruikt, op **stap 2: controleren**.
+Klik op dezelfde **pagina Certificaatconfiguratie** die u in de laatste stap hebt gebruikt op **Stap 2: Verifiëren**.
 
-![Domein verifiëren voor App Service certificaat](./media/configure-ssl-certificate/verify-domain.png)
+![Domein voor App Service-certificaat verifiëren](./media/configure-ssl-certificate/verify-domain.png)
 
-Selecteer **app service verificatie**. Omdat u het domein al aan uw web-app hebt toegewezen (Zie [vereisten](#prerequisites)), is het al gecontroleerd. Klik op **verifiëren** om deze stap te volt ooien. Klik op de knop **vernieuwen** totdat het bericht **certificaat is geverifieerd op domein** wordt weer gegeven.
+Selecteer **Verificatie van app-service**. Aangezien u het domein al aan uw web-app hebt toegewezen (zie [Vereisten),](#prerequisites)is het al geverifieerd. Klik op **Verifiëren** om deze stap te voltooien. Klik **op** de knop Vernieuwen totdat het **berichtcertificaat is geverifieerd.**
 
 > [!NOTE]
-> Er worden vier typen domein verificatie methoden ondersteund: 
+> Vier typen domeinverificatiemethoden worden ondersteund: 
 > 
-> - **App service** : de handigste optie wanneer het domein al is toegewezen aan een app service-app in hetzelfde abonnement. Er wordt gebruikgemaakt van het feit dat de App Service-app al het eigendom van het domein heeft gecontroleerd.
-> - **Domein** : een [app service domein controleren dat u hebt aangeschaft vanuit Azure](manage-custom-dns-buy-domain.md). Azure voegt de bevestigings-TXT-record automatisch voor u toe en voltooit het proces.
-> - **E-mail** : Controleer het domein door een e-mail te verzenden naar de domein beheerder. Er worden instructies gegeven wanneer u de optie selecteert.
-> - **Hand matig** : Verifieer het domein met behulp van een HTML-pagina (alleen**standaard** certificaat) of een DNS TXT-record. Er worden instructies gegeven wanneer u de optie selecteert.
+> - **App Service** - De meest handige optie wanneer het domein al is toegewezen aan een App Service-app in hetzelfde abonnement. Het maakt gebruik van het feit dat de App Service-app het domeineigendom al heeft geverifieerd.
+> - **Domein** : controleer een [App Service-domein dat u in Azure hebt gekocht.](manage-custom-dns-buy-domain.md) Azure voegt automatisch de verificatie-TXT-record voor u toe en voltooit het proces.
+> - **E-mail** - Verifieer het domein door een e-mail naar de domeinbeheerder te sturen. Instructies worden gegeven wanneer u de optie selecteert.
+> - **Handleiding** - Controleer het domein met behulp van een HTML-pagina **(alleen standaardcertificaat)** of een DNS TXT-record. Instructies worden gegeven wanneer u de optie selecteert.
 
-### <a name="import-certificate-into-app-service"></a>Certificaat importeren in App Service
+### <a name="import-certificate-into-app-service"></a>Certificaat importeren in App-service
 
-Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
+Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
 
-Selecteer in de linkernavigatiebalk van uw app de **instellingen voor TLS/SSL** > **certificaten voor persoonlijke sleutels (. pfx)**  > het **importeren van app service Certificate**.
+Selecteer **tls/SSL-instellingen** > **Private Key Certificates (.pfx)** > Import App Service**Certificate**in de linkernavigatie van uw app.
 
-![App Service certificaat in App Service importeren](./media/configure-ssl-certificate/import-app-service-cert.png)
+![App-servicecertificaat importeren in App-service](./media/configure-ssl-certificate/import-app-service-cert.png)
 
-Selecteer het certificaat dat u zojuist hebt aangeschaft en selecteer **OK**.
+Selecteer het certificaat dat u zojuist hebt gekocht en selecteer **OK**.
 
-Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst met **certificaten voor persoonlijke sleutels** .
+Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst **Met privésleutelcertificaten.**
 
-![App Service certificaat is geïmporteerd](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+![App-servicecertificaat importeren voltooid](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!IMPORTANT] 
-> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaat binding maken. Volg de stappen in [Create binding](configure-ssl-bindings.md#create-binding).
+> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaatbinding maken. Volg de stappen in [Binding maken](configure-ssl-bindings.md#create-binding).
 >
 
 ## <a name="import-a-certificate-from-key-vault"></a>Een certificaat importeren uit Key Vault
 
-Als u Azure Key Vault gebruikt om uw certificaten te beheren, kunt u een PKCS12/pfx-profiel-certificaat importeren van Key Vault in App Service zolang dit [voldoet aan de vereisten](#private-certificate-requirements).
+Als u Azure Key Vault gebruikt om uw certificaten te beheren, u een PKCS12-certificaat importeren uit Key Vault in App Service zolang het [aan de vereisten voldoet.](#private-certificate-requirements)
 
-Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
+Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
 
-Selecteer in de linkernavigatiebalk van uw app de **instellingen voor TLS/SSL** > **certificaten voor persoonlijke sleutels (. pfx)**  > **Key Vault certificaat importeren**.
+Selecteer **tls/SSL-instellingen** > **Private Key Certificates (.pfx)** > Import Key Vault**Certificate**in de linkernavigatie van uw app.
 
-![Key Vault certificaat in App Service importeren](./media/configure-ssl-certificate/import-key-vault-cert.png)
+![Key Vault-certificaat importeren in App-service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
-Gebruik de volgende tabel om u te helpen bij het selecteren van het certificaat.
+Gebruik de volgende tabel om u te helpen het certificaat te selecteren.
 
 | Instelling | Beschrijving |
 |-|-|
-| Abonnement | Het abonnement waarvan de Key Vault deel uitmaakt. |
+| Abonnement | Het abonnement waartoe de Key Vault behoort. |
 | Key Vault | De kluis met het certificaat dat u wilt importeren. |
-| Certificaat | Selecteer in de lijst met PKCS12/pfx-profiel-certificaten in de kluis. Alle PKCS12/pfx-profiel-certificaten in de kluis worden weer gegeven met hun vinger afdrukken, maar niet alle worden ondersteund in App Service. |
+| Certificaat | Kies uit de lijst met PKCS12-certificaten in de kluis. Alle PKCS12-certificaten in de kluis worden weergegeven met hun duimafdrukken, maar niet alle worden ondersteund in App Service. |
 
-Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst met **certificaten voor persoonlijke sleutels** . Als het importeren mislukt met een fout, voldoet het certificaat niet aan de [vereisten voor app service](#private-certificate-requirements).
+Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst **Met privésleutelcertificaten.** Als de import mislukt met een fout, voldoet het certificaat niet aan de [vereisten voor App Service](#private-certificate-requirements).
 
-![Key Vault certificaat is geïmporteerd](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+![Certificaat Sleutelkluis importeren voltooid](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!IMPORTANT] 
-> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaat binding maken. Volg de stappen in [Create binding](configure-ssl-bindings.md#create-binding).
+> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaatbinding maken. Volg de stappen in [Binding maken](configure-ssl-bindings.md#create-binding).
 >
 
-## <a name="upload-a-private-certificate"></a>Een persoonlijk certificaat uploaden
+## <a name="upload-a-private-certificate"></a>Een privécertificaat uploaden
 
-Zodra u een certificaat van uw certificaat provider hebt ontvangen, volgt u de stappen in deze sectie om de app gereed te maken voor App Service.
+Zodra u een certificaat hebt verkregen bij uw certificaatprovider, volgt u de stappen in deze sectie om het klaar te maken voor app-service.
 
 ### <a name="merge-intermediate-certificates"></a>Tussenliggende certificaten samenvoegen
 
@@ -239,7 +239,7 @@ Maak een bestand voor het samengevoegde certificaat met de naam _mergedcertifica
 
 Exporteer uw samengevoegde SSL-certificaat met de persoonlijke sleutel die met uw certificaataanvraag is gegenereerd.
 
-Als u de certificaataanvraag met OpenSSL hebt gegenereerd, hebt u een bestand met een persoonlijke sleutel gemaakt. Voer de volgende opdracht uit om uw certificaat naar PFX te exporteren. Vervang de tijdelijke aanduidingen _&lt;private-key-file>_ en _&lt;merged-certificate-file>_ door de paden naar uw persoonlijke sleutel en uw bestand met samengevoegde certificaten.
+Als u de certificaataanvraag met OpenSSL hebt gegenereerd, hebt u een bestand met een persoonlijke sleutel gemaakt. Voer de volgende opdracht uit om uw certificaat naar PFX te exporteren. Vervang de tijdelijke aanduidingen _ &lt;met een privésleutelbestand>_ en _ &lt;samengevoegd-certificaatbestand>_ door de paden naar uw privésleutel en uw samengevoegde certificaatbestand.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
@@ -249,86 +249,86 @@ Wanneer u daarom wordt gevraagd, geeft u een wachtwoord voor export op. U gebrui
 
 Als u IIS of _Certreq.exe_ hebt gebruikt voor het genereren van uw certificaataanvraag, installeert u het certificaat op uw lokale computer en [exporteert u het certificaat naar PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-### <a name="upload-certificate-to-app-service"></a>Certificaat uploaden naar App Service
+### <a name="upload-certificate-to-app-service"></a>Certificaat uploaden naar App-service
 
-U bent nu klaar om het certificaat te uploaden naar App Service.
+U het certificaat nu uploaden naar App Service.
 
-Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
+Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
 
-Selecteer in de linkernavigatiebalk van uw app de **instellingen voor TLS/SSL** > **certificaten voor persoonlijke sleutels (. pfx)**  > uploaden van het **certificaat**.
+Selecteer **tls/SSL-instellingen** > **Private Key Certificates (.pfx)** > Upload**Certificate**in de linkernavigatie van uw app.
 
-![Persoonlijk certificaat uploaden in App Service](./media/configure-ssl-certificate/upload-private-cert.png)
+![Privécertificaat uploaden in App-service](./media/configure-ssl-certificate/upload-private-cert.png)
 
-In **PFX-certificaatbestand** selecteert u uw PFX-bestand. Typ in **Certificaatwachtwoord** het wachtwoord dat u hebt gemaakt toen u het PFX-bestand exporteerde. Wanneer u klaar bent, klikt u op **uploaden**. 
+In **PFX-certificaatbestand** selecteert u uw PFX-bestand. Typ in **Certificaatwachtwoord** het wachtwoord dat u hebt gemaakt toen u het PFX-bestand exporteerde. Klik op **Uploaden**als u klaar bent. 
 
-Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst met **certificaten voor persoonlijke sleutels** .
+Wanneer de bewerking is voltooid, ziet u het certificaat in de lijst **Met privésleutelcertificaten.**
 
-![Certificaat uploaden is voltooid](./media/configure-ssl-certificate/create-free-cert-finished.png)
+![Uploadcertificaat voltooid](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
 > [!IMPORTANT] 
-> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaat binding maken. Volg de stappen in [Create binding](configure-ssl-bindings.md#create-binding).
+> Als u een aangepast domein met dit certificaat wilt beveiligen, moet u nog steeds een certificaatbinding maken. Volg de stappen in [Binding maken](configure-ssl-bindings.md#create-binding).
 >
 
 ## <a name="upload-a-public-certificate"></a>Een openbaar certificaat uploaden
 
-Open bare certificaten worden ondersteund in de *. CER* -indeling. 
+Openbare certificaten worden ondersteund in de *.cer-indeling.* 
 
-Selecteer in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a> **app Services** > \<naam van de **app >** .
+Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
 
-Klik vanuit de linkernavigatiebalk van uw app op **TLS/SSL-instellingen** > **open bare certificaten (. CER)**  > **certificaat voor open bare sleutel uploaden**.
+Klik links in de navigatie van uw app op **TLS/SSL-instellingen** > **Openbare certificaten (.cer)** > Public Key Certificate**uploaden.**
 
-Typ in **naam**een naam voor het certificaat. Selecteer in **CER-certificaat bestand**uw CER-bestand.
+Typ in **Naam**een naam voor het certificaat. Selecteer in **het bestand CER-certificaat**uw CER-bestand.
 
 Klik op **Uploaden**.
 
-![Openbaar certificaat uploaden in App Service](./media/configure-ssl-certificate/upload-public-cert.png)
+![Openbaar certificaat uploaden in App-service](./media/configure-ssl-certificate/upload-public-cert.png)
 
-Nadat het certificaat is geüpload, kopieert u de vinger afdruk van het certificaat en raadpleegt [u het certificaat toegankelijk maken](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
+Zodra het certificaat is geüpload, kopieert u de duimafdruk van het certificaat en ziet [u het certificaat toegankelijk maken.](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)
 
-## <a name="manage-app-service-certificates"></a>App Service certificaten beheren
+## <a name="manage-app-service-certificates"></a>App Service-certificaten beheren
 
-In deze sectie wordt beschreven hoe u een App Service certificaat kunt beheren dat u hebt aangeschaft in [een app service certificaat importeren](#import-an-app-service-certificate).
+In deze sectie ziet u hoe u een App Service-certificaat beheert dat u hebt gekocht in [Een App Service-certificaat importeren.](#import-an-app-service-certificate)
 
-- [Certificaat opnieuw genereren](#rekey-certificate)
-- [Certificaat vernieuwen](#renew-certificate)
+- [Hersleutelcertificaat](#rekey-certificate)
+- [Certificaat verlengen](#renew-certificate)
 - [Certificaat exporteren](#export-certificate)
 - [Certificaat verwijderen](#delete-certificate)
 
-### <a name="rekey-certificate"></a>Certificaat opnieuw genereren
+### <a name="rekey-certificate"></a>Hersleutelcertificaat
 
-Als u denkt dat de persoonlijke sleutel van uw certificaat is aangetast, kunt u uw certificaat opnieuw genereren. Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en selecteer vervolgens opnieuw **genereren en synchroniseren** vanuit de linkernavigatiebalk.
+Als u denkt dat de privésleutel van uw certificaat is gecompromitteerd, u uw certificaat opnieuw sleutelen. Selecteer het certificaat op de pagina [App Service-certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en selecteer **Vervolgens Opnieuw sleutelen en Synchroniseren** vanaf de linkernavigatie.
 
-Klik op opnieuw **genereren** om het proces te starten. Dit proces kan 1-10 minuten duren.
+Klik **op Opnieuw sleutelen** om het proces te starten. Dit proces kan 1-10 minuten in beslag nemen.
 
-![Een App Service certificaat opnieuw genereren](./media/configure-ssl-certificate/rekey-app-service-cert.png)
+![Een App-servicecertificaat opnieuw sleutelen](./media/configure-ssl-certificate/rekey-app-service-cert.png)
 
-Als u het certificaat opnieuw keying, wordt het certificaat gedistribueerd met een nieuw certificaat dat is uitgegeven door de certificerings instantie.
+Als u uw certificaat opnieuw sleutelt, wordt het certificaat gehersleuteld met een nieuw certificaat dat is afgegeven door de certificaatautoriteit.
 
-Zodra de bewerking voor opnieuw genereren is voltooid, klikt u op **synchroniseren**. Met de synchronisatie bewerking worden de hostname-bindingen voor het certificaat in App Service automatisch bijgewerkt zonder dat er uitval tijd voor uw apps wordt veroorzaakt.
-
-> [!NOTE]
-> Als u niet op **synchroniseren**klikt, wordt app service uw certificaat automatisch gesynchroniseerd binnen 48 uur.
-
-### <a name="renew-certificate"></a>Certificaat vernieuwen
-
-Als u de automatische verlenging van uw certificaat op elk gewenst moment wilt inschakelen, selecteert u het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klikt u vervolgens op **instellingen voor automatisch verlengen** in het linkernavigatievenster. App Service certificaten hebben standaard een geldigheids periode van één jaar.
-
-Selecteer **aan** en klik op **Opslaan**. Certificaten kunnen 60 dagen vóór de verval datum automatisch worden vernieuwd als u automatische verlenging hebt ingeschakeld.
-
-![App Service certificaat automatisch vernieuwen](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
-
-Als u het certificaat hand matig wilt vernieuwen, klikt u op **hand matig verlengen**. U kunt aanvragen om uw certificaat 60 dagen voor de verval datum hand matig te verlengen.
-
-Zodra de vernieuwings bewerking is voltooid, klikt u op **synchroniseren**. Met de synchronisatie bewerking worden de hostname-bindingen voor het certificaat in App Service automatisch bijgewerkt zonder dat er uitval tijd voor uw apps wordt veroorzaakt.
+Zodra de rekey-bewerking is voltooid, klikt u op **Synchroniseren**. De synchronisatiebewerking werkt automatisch de hostnaambindingen voor het certificaat in App-service bij zonder dat uw apps minder tijd uitvalt.
 
 > [!NOTE]
-> Als u niet op **synchroniseren**klikt, wordt app service uw certificaat automatisch gesynchroniseerd binnen 48 uur.
+> Als u niet op **Synchroniseren**klikt, synchroniseert App Service uw certificaat automatisch binnen 48 uur.
+
+### <a name="renew-certificate"></a>Certificaat verlengen
+
+Als u automatische verlenging van uw certificaat op elk gewenst moment wilt inschakelen, selecteert u het certificaat op de pagina [App-servicecertificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klikt u vervolgens op **Instellingen voor automatisch verlengen** in de linkernavigatie. Standaard hebben App Service-certificaten een geldigheidsduur van één jaar.
+
+Selecteer **Aan** en klik op **Opslaan**. Certificaten kunnen 60 dagen voor het verstrijken automatisch worden verlengd als u automatische verlenging hebt ingeschakeld.
+
+![App Service-certificaat automatisch verlengen](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
+
+Als u het certificaat handmatig wilt verlengen, klikt u op **Handmatig verlengen**. U vragen om uw certificaat 60 dagen voor het verstrijken handmatig te verlengen.
+
+Zodra de vernieuwingsbewerking is voltooid, klikt u op **Synchroniseren**. De synchronisatiebewerking werkt automatisch de hostnaambindingen voor het certificaat in App-service bij zonder dat uw apps minder tijd uitvalt.
+
+> [!NOTE]
+> Als u niet op **Synchroniseren**klikt, synchroniseert App Service uw certificaat automatisch binnen 48 uur.
 
 ### <a name="export-certificate"></a>Certificaat exporteren
 
-Omdat een App Service Certificate een [Key Vault geheim](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)is, kunt u een pfx-kopie van het bestand exporteren en gebruiken voor andere Azure-Services of buiten Azure.
+Omdat een App Service Certificate een [Key Vault-geheim](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)is, u een PFX-kopie exporteren en gebruiken voor andere Azure-services of buiten Azure.
 
-Als u de App Service Certificate als een PFX-bestand wilt exporteren, voert u de volgende opdrachten uit in de [Cloud shell](https://shell.azure.com). U kunt deze ook lokaal uitvoeren als u [Azure cli hebt geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli). Vervang de tijdelijke aanduidingen door de namen die u hebt gebruikt bij [het maken van het app service certificaat](#start-certificate-order).
+Als u het App Service Certificate als PFX-bestand wilt exporteren, voert u de volgende opdrachten uit in de [Cloud Shell](https://shell.azure.com). U het ook lokaal uitvoeren als u [Azure CLI hebt geïnstalleerd.](https://docs.microsoft.com/cli/azure/install-azure-cli) Vervang de tijdelijke aanduidingen door de namen die u hebt gebruikt toen u [het App Service-certificaat maakte.](#start-certificate-order)
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -345,23 +345,23 @@ az keyvault secret download \
     --encoding base64
 ```
 
-Het gedownloade bestand *appservicecertificate. pfx* is een onbewerkt pkcs12/pfx-profiel-bestand met zowel de open bare als de persoonlijke certificaten. In elke prompt gebruikt u een lege teken reeks voor het import wachtwoord en de PEM-wachtwoordzin.
+Het gedownloade *appservicecertificate.pfx-bestand* is een ruw PKCS12-bestand dat zowel de openbare als de privécertificaten bevat. Gebruik in elke prompt een lege tekenreeks voor het importwachtwoord en de pem-paszin.
 
 ### <a name="delete-certificate"></a>Certificaat verwijderen 
 
-Het verwijderen van een App Service certificaat is definitief en onomkeerbaar. Als een App Service Certificate bron wordt verwijderd, wordt het certificaat ingetrokken. Een binding in App Service met dit certificaat wordt ongeldig. Azure plaatst een vergren deling van het certificaat om onbedoelde verwijdering te voor komen. Als u een App Service certificaat wilt verwijderen, moet u eerst de verwijderings vergrendeling verwijderen van het certificaat.
+Het verwijderen van een App Service-certificaat is definitief en onomkeerbaar. Als u een bron van een App Service Certificate overmaakt, wordt het certificaat ingetrokken. Elke binding in App Service met dit certificaat wordt ongeldig. Om onbedoelde verwijdering te voorkomen, plaatst Azure een vergrendeling op het certificaat. Als u een App Service-certificaat wilt verwijderen, moet u eerst het vergrendelingsbericht op het certificaat verwijderen.
 
-Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en selecteer vervolgens **vergren** delen in het linkernavigatievenster.
+Selecteer het certificaat op de pagina [App-servicecertificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en selecteer **Sloten** in de linkernavigatie.
 
-Zoek de vergren deling van uw certificaat met het vergrendelings type **verwijderen**. Klik rechts hiervan op **verwijderen**.
+Zoek het slot op uw certificaat met het vergrendelingstype **Verwijderen**. Selecteer Rechts verwijderen **.**
 
-![Vergren deling voor App Service certificaat verwijderen](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
+![Vergrendeling voor App Service-certificaat verwijderen](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
-U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **verwijderen**in het linkernavigatievenster. Typ in het bevestigings dialoogvenster de naam van het certificaat en selecteer **OK**.
+Nu u het App Service-certificaat verwijderen. Selecteer **Overzicht** > **verwijderen**in de linkernavigatie . Typ in het bevestigingsdialoogvenster de certificaatnaam en selecteer **OK**.
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -374,5 +374,5 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 * [Een aangepaste DNS-naam beveiligen met een SSL-binding](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 afdwingen](configure-ssl-bindings.md#enforce-tls-versions)
-* [Een SSL-certificaat gebruiken in uw toepassings code](configure-ssl-certificate-in-code.md)
-* [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Een SSL-certificaat gebruiken in uw toepassingscode](configure-ssl-certificate-in-code.md)
+* [Veelgestelde vragen: App-servicecertificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

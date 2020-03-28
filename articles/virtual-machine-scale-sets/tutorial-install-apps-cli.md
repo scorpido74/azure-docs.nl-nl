@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: toepassingen installeren in een schaalset met Azure CLI'
+title: Zelfstudie - Toepassingen installeren in een schaalset met Azure CLI
 description: Informatie over het gebruik van Azure CLI om toepassingen met de aangepaste scriptextensie te installeren in schaalsets voor virtuele machines
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b1f26444a2ab5407d3e98996f6826443b107e76a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271399"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Zelfstudie: Toepassingen installeren in schaalsets voor virtuele machines met Azure CLI
@@ -23,11 +23,11 @@ Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM)
 > * De aangepaste scriptextensie van Azure gebruiken
 > * Een actieve toepassing in een schaalset bijwerken
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Wat is de aangepaste scriptextensie van Azure?
@@ -52,7 +52,7 @@ Maak in uw huidige shell een bestand met de naam *customConfig.json* en plak de 
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de *locatie Eastus geaald:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -122,7 +122,7 @@ Sluit de webbrowser niet af, zodat u in de volgende stap een bijgewerkte versie 
 
 
 ## <a name="update-app-deployment"></a>App-implementatie bijwerken
-Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Bij het maken van de schaalset in een vorige stap is `--upgrade-policy-mode` ingesteld op *Automatic*. Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
+Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Toen de schaalset in een vorige `--upgrade-policy-mode` stap werd gemaakt, werd de set ingesteld op *automatisch*. Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
 
 Maak in uw huidige shell een bestand met de naam *customConfigv2.json* en plak de volgende configuratie in het bestand. Deze definitie voert een bijgewerkte versie *v2* van het installatiescript van de toepassing uit:
 
@@ -151,7 +151,7 @@ Alle VM-exemplaren in de schaalset worden automatisch bijgewerkt met de meest re
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resourcegroep en alle bijbehorende resources met [az group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u uw schaalset en extra resources wilt verwijderen, verwijdert u de brongroep en al de bronnen met [de AZ-groep verwijderen](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes
