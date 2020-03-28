@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Image Insights ophalen met behulp van de REST API en python-Bing Visual Search'
+title: 'Snelstart: krijg beeldinzichten met behulp van de REST API en Python - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446592"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Snelstartgids: Image Insights ophalen met behulp van de Bing Visual Search REST API en python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Snelstart: krijg beeldinzichten met de Bing Visual Search REST API en Python
 
-Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten weer te geven. Deze python-toepassing uploadt een installatie kopie naar de API en geeft de informatie weer die wordt geretourneerd. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze snelstart om uw eerste gesprek te voeren naar de Bing Visual Search API en de resultaten weer te geven. Deze Python-toepassing uploadt een afbeelding naar de API en geeft de informatie weer die wordt geretourneerd. Hoewel deze toepassing is geschreven in Python, is de API een RESTful Web-service die compatibel is met de meeste programmeertalen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,13 +29,13 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een nieuw python-bestand in uw favoriete IDE of editor en voeg de volgende `import`-instructie toe:
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende `import` instructie toe:
 
     ```python
     import requests, json
     ```
 
-2. Maak variabelen voor de abonnementssleutel, het eindpunt en het pad voor de afbeelding die u uploadt. `BASE_URI` kunnen het globale eind punt hieronder zijn of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource:
+2. Maak variabelen voor de abonnementssleutel, het eindpunt en het pad voor de afbeelding die u uploadt. `BASE_URI`kan het algemene eindpunt hieronder zijn of het [aangepaste eindpunt voor subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron:
 
     ```python
 
@@ -44,7 +44,7 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
     imagePath = 'your-image-path'
     ```
     
-    Wanneer u een lokale installatie kopie uploadt, moeten de formulier gegevens de `Content-Disposition`-header bevatten. U moet de para meter `name` instellen op "afbeelding" en u kunt de para meter `filename` instellen op elke wille keurige teken reeks. De inhoud van het formulier bevat de binaire gegevens van de installatie kopie. De maximale afbeeldings grootte die u kunt uploaden, is 1 MB.
+    Wanneer u een lokale afbeelding uploadt, `Content-Disposition` moeten de formuliergegevens de koptekst bevatten. U moet `name` de parameter instellen op 'afbeelding' en u de `filename` parameter instellen op elke tekenreeks. De inhoud van het formulier bevat de binaire gegevens van de afbeelding. De maximale afbeeldingsgrootte die u uploaden is 1 MB.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
     --boundary_1234-abcd--
     ```
 
-3. Maak een woordenlijst object voor de koptekst gegevens van uw aanvraag. Bind uw abonnements sleutel met de teken reeks `Ocp-Apim-Subscription-Key`, zoals hieronder wordt weer gegeven:
+3. Maak een woordenboekobject om de koptekstgegevens van uw aanvraag vast te houden. Bind uw abonnementssleutel `Ocp-Apim-Subscription-Key`aan de tekenreeks, zoals hieronder wordt weergegeven:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Maak een andere woorden lijst die uw afbeelding bevat, die wordt geopend en geüpload wanneer u de aanvraag verzendt:
+4. Maak een ander woordenboek met uw afbeelding, die wordt geopend en geüpload wanneer u het verzoek verzendt:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,7 +69,7 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
 
 ## <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-1. Maak een methode met de naam `print_json()` om in de API-reactie te nemen en druk de JSON af:
+1. Maak een `print_json()` methode die moet worden aangeroepen om de API-respons op te nemen en druk de JSON af:
 
     ```python
     def print_json(obj):
@@ -79,7 +79,7 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-1. Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. `response.json()` met `print_json()`afdrukken:
+1. Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. Afdrukken `response.json()` `print_json()`met :
 
     ```python
     try:
@@ -94,4 +94,4 @@ Gebruik deze Quick Start om de Bing Visual Search-API te maken en de resultaten 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een Visual Search Web-app met één pagina maken](../tutorial-bing-visual-search-single-page-app.md)
+> [Een web-app voor visueel zoeken met één pagina maken](../tutorial-bing-visual-search-single-page-app.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: tekst script converteren-Translator Text'
+title: 'Snelstart: tekstscript converteren - Tekst vertaler'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u tekst transkeert (converteert) van het ene script naar het andere met behulp van de Translator Text-API. In dit voorbeeld is sprake van transliteratie van Japans voor gebruik van het Latijnse alfabet.
+description: In deze quickstart leert u hoe u tekst van het ene script naar het andere translitereren (converteren) met behulp van de Translator Text API. In dit voorbeeld wordt Japans omgezet voor gebruik van het Latijnse alfabet.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525111"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Snelstartgids: de Translator Text-API gebruiken om tekst te translitereren
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Snelstart: de API voor vertalertekst gebruiken om tekst te translitereren
 
-In deze Quick Start leert u hoe u tekst transkeert (converteert) van het ene script naar het andere met behulp van de Translator Text REST API. In het gegeven voorbeeld is sprake van transliteratie van Japans voor gebruik van het Latijnse alfabet.
+In deze quickstart leert u hoe u tekst van het ene script naar het andere translitereren (converteren) met behulp van de Translator Text REST API. In het gegeven voorbeeld wordt Japans omgezet voor gebruik van het Latijnse alfabet.
 
 Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator Text-resource vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 

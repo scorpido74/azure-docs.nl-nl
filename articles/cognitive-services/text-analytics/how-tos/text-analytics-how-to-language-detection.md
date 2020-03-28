@@ -1,7 +1,7 @@
 ---
-title: Taal detecteren met de Text Analytics REST API
+title: Taal detecteren met de TEXT Analytics REST API
 titleSuffix: Azure Cognitive Services
-description: Taal detecteren met behulp van de Text Analytics REST API van Azure Cognitive Services.
+description: Taal detecteren met behulp van de TEXT Analytics REST API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70387793"
 ---
-# <a name="example-detect-language-with-text-analytics"></a>Voorbeeld: Taal met Text Analytics detecteren
+# <a name="example-detect-language-with-text-analytics"></a>Voorbeeld: Taal detecteren met Text Analytics
 
-De [taaldetectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) functie van de Azure Text Analytics rest API de tekst invoer voor elk document evalueren en taal-id's retourneert met een score die de sterkte van de analyse aangeeft.
+De functie [Taaldetectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) van de AZURE Text Analytics REST API evalueert tekstinvoer voor elk document en retourneert taal-id's met een score die de sterkte van de analyse aangeeft.
 
-Deze mogelijkheid is handig voor inhoudsarchieven die willekeurige tekst verzamelen, waarin de taal onbekend is. U kunt de resultaten van deze analyse parseren om te bepalen welke taal wordt gebruikt in het ingevoerde document. Het antwoord retourneert ook een score die het vertrouwen van het model weergeeft. De waarde van de Score ligt tussen 0 en 1.
+Deze mogelijkheid is handig voor inhoudsarchieven die willekeurige tekst verzamelen, waarin de taal onbekend is. U kunt de resultaten van deze analyse parseren om te bepalen welke taal wordt gebruikt in het ingevoerde document. Het antwoord geeft ook een score die het vertrouwen van het model weerspiegelt. De scorewaarde ligt tussen 0 en 1.
 
-Met de functie Taaldetectie kunt u een breed scala aan talen, varianten, dialecten en bepaalde regionale of culturele talen detecteren. De exacte lijst met talen voor deze functie wordt niet gepubliceerd.
+De functie Taaldetectie kan een breed scala aan talen, varianten, dialecten en sommige regionale of culturele talen detecteren. De exacte lijst met talen voor deze functie wordt niet gepubliceerd.
 
-Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u de functie Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd `unknown`is.
+Als u inhoud hebt uitgedrukt in een minder vaak gebruikte taal, u de functie Taaldetectie proberen om te zien of een code wordt geretourneerd. Het antwoord voor talen die niet `unknown`kunnen worden gedetecteerd, is .
 
 > [!TIP]
 > Text Analytics biedt ook een Docker-containerinstallatiekopie op basis van Linux voor taaldetectie. U kunt de [Text Analytics-container dus dicht bij uw gegevens installeren en uitvoeren](text-analytics-how-to-install-containers.md).
 
 ## <a name="preparation"></a>Voorbereiding
 
-U moet JSON-documenten hebben in deze indeling: ID en tekst.
+U moet JSON-documenten in deze indeling hebben: ID en tekst.
 
-De document grootte moet kleiner zijn dan 5.120 tekens per document. U kunt Maxi maal 1.000 items per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voor beeld is een voor beeld van inhoud die u kunt verzenden voor taal detectie:
+De documentgrootte moet minder dan 5.120 tekens per document bevatten. U maximaal 1.000 items (ID's) per collectie hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voorbeeld is een voorbeeld van inhoud die u indienen voor taaldetectie:
 
 ```json
     {
@@ -63,35 +63,35 @@ De document grootte moet kleiner zijn dan 5.120 tekens per document. U kunt Maxi
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Stap 1: Structureer de aanvraag
+## <a name="step-1-structure-the-request"></a>Stap 1: Structuur van de aanvraag
 
-Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor meer informatie over de definitie van de aanvraag. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
+Zie De API voor [Text Analytics aanroepen](text-analytics-how-to-call-api.md)voor meer informatie over de definitie van aanvragen. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
 
-+ Maak een POST-aanvraag. Als u de API-documentatie voor deze aanvraag wilt bekijken, raadpleegt u de [taaldetectie-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
++ Maak een POST-aanvraag. Zie de [API voor taaldetectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)voor deze aanvraag om de API voor api voor taaldetectie te bekijken.
 
-+ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics resource in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet in `/text/analytics/v2.1/languages` de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Het HTTP-eindpunt voor taaldetectie instellen. Gebruik een Text Analytics-bron op Azure of een geinstantiëerde [Text Analytics-container.](text-analytics-how-to-install-containers.md) U moet `/text/analytics/v2.1/languages` opnemen in de URL. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
-+ Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
++ Stel een aanvraagkop in om de [toegangssleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics-bewerkingen op te nemen.
 
 + Verstrek in de hoofdtekst van de aanvraag de JSON-documentenverzameling die u hebt voorbereid voor deze analyse.
 
 > [!Tip]
 > Gebruik [Postman](text-analytics-how-to-call-api.md) of open de **API-testconsole** in de [documentatie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) om de aanvraag te structureren en POST deze in de service.
 
-## <a name="step-2-post-the-request"></a>Stap 2: De aanvraag plaatsen
+## <a name="step-2-post-the-request"></a>Stap 2: POST het verzoek
 
-Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor meer informatie over de grootte en het aantal aanvragen dat u per minuut en seconde kunt verzenden.
+Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevenslimieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut en seconde verzenden.
 
 Terughalen als de service staatloos is. Er worden geen gegevens opgeslagen in uw account. Resultaten worden onmiddellijk in het antwoord geretourneerd.
 
 
-## <a name="step-3-view-the-results"></a>Stap 3: De resultaten bekijken
+## <a name="step-3-view-the-results"></a>Stap 3: Bekijk de resultaten
 
-Alle POST-aanvragen retour neren een reactie in JSON-indeling met de Id's en gedetecteerde eigenschappen.
+Alle POST-aanvragen retourneren een JSON-geformatteerd antwoord met de id's en gedetecteerde eigenschappen.
 
-Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer opslaan in een bestand op het lokale systeem. Importeer vervolgens de uitvoer in een toepassing die u kunt gebruiken om de gegevens te sorteren, te zoeken en te bewerken.
+Uitvoer wordt onmiddellijk geretourneerd. U de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer opslaan in een bestand op het lokale systeem. Importeer vervolgens de uitvoer in een toepassing die u gebruiken om de gegevens te sorteren, zoeken en manipuleren.
 
-Resultaten voor de voorbeeldaanvraag moeten eruitzien als de volgende JSON. U ziet dat het één document is met meerdere items. Uitvoer is in het Engels. Taal-id's zijn onder andere een beschrijvende naam en een taalcode in [ISO 639-1](https://www.iso.org/standard/22109.html) indeling.
+Resultaten voor de voorbeeldaanvraag moeten eruitzien als de volgende JSON. Merk op dat het één document is met meerdere items. Uitvoer is in het Engels. Taal-id's zijn onder andere een beschrijvende naam en een taalcode in [ISO 639-1](https://www.iso.org/standard/22109.html) indeling.
 
 Een positief score van 1.0 staat voor het hoogst mogelijke vertrouwensniveau van de analyse.
 
@@ -155,9 +155,9 @@ Een positief score van 1.0 staat voor het hoogst mogelijke vertrouwensniveau van
 
 ### <a name="ambiguous-content"></a>Niet-eenduidige inhoud
 
-In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis van de invoer. U kunt de `countryHint` para meter gebruiken om een land nummer van twee letters op te geven. Standaard gebruikt de API de standaard countryHint om dit gedrag te verwijderen, kunt u deze para meter opnieuw instellen door deze waarde in te stellen op een lege teken reeks `countryHint = ""` .
+In sommige gevallen kan het moeilijk zijn om talen te disambiguate op basis van de input. U `countryHint` de parameter gebruiken om een landcode van 2 letters op te geven. Standaard gebruikt de API de 'US' als standaardlandHint, om dit gedrag te verwijderen kunt `countryHint = ""` u deze parameter opnieuw instellen door deze waarde in te stellen op lege tekenreeks.
 
-"Onmogelijk" is bijvoorbeeld gebruikelijk voor Engels en Frans, en als dit wordt gegeven met een beperkte context, wordt het antwoord gebaseerd op de "Amerikaanse" land hint. Als de oorsprong van de tekst afkomstig is uit Frank rijk, die als hint kan worden gegeven.
+"Onmogelijk" is bijvoorbeeld gemeenschappelijk voor zowel Engels als Frans en als het antwoord met beperkte context wordt gegeven, wordt het antwoord gebaseerd op de hint van het "Amerikaanse" land. Als de tekst uit Frankrijk afkomstig is, kan dat als hint worden gegeven.
 
 **Invoer**
 
@@ -177,9 +177,9 @@ In sommige gevallen kan het lastig zijn om talen te dubbel zinnigheid op basis v
     }
 ```
 
-De service heeft nu aanvullende context om een betere beslissing te nemen: 
+De dienst heeft nu extra context om een beter oordeel te vellen: 
 
-**Uitvoer**
+**Output**
 
 ```json
     {
@@ -209,7 +209,7 @@ De service heeft nu aanvullende context om een betere beslissing te nemen:
     }
 ```
 
-Als de analyse functie de invoer niet kan parseren `(Unknown)`, wordt geretourneerd. Een voor beeld is als u een tekst blok verzendt dat uitsluitend uit Arabische cijfers bestaat.
+Als de analyzer de invoer niet kan `(Unknown)`ontschepen, wordt deze geretourneerd. Een voorbeeld is als u een tekstblok indient dat uitsluitend uit Arabische cijfers bestaat.
 
 ```json
     {
@@ -224,9 +224,9 @@ Als de analyse functie de invoer niet kan parseren `(Unknown)`, wordt geretourne
     }
 ```
 
-### <a name="mixed-language-content"></a>Inhoud in gemengde taal
+### <a name="mixed-language-content"></a>Gemengde inhoud
 
-Gemengde inhoud in hetzelfde document retourneert de taal met de grootste weer gave in de inhoud, maar met een lagere positieve beoordeling. De classificatie weerspiegelt de marginale sterkte van de evaluatie. De invoer in het volgende voorbeeld is een combinatie van Engels, Spaans en Frans. De analyzer telt tekens in elk segment om te bepalen van de overheersende taal.
+Gemengde inhoud binnen hetzelfde document retourneert de taal met de grootste weergave in de inhoud, maar met een lagere positieve beoordeling. De rating weerspiegelt de marginale sterkte van de beoordeling. De invoer in het volgende voorbeeld is een combinatie van Engels, Spaans en Frans. De analyzer telt tekens in elk segment om te bepalen van de overheersende taal.
 
 **Invoer**
 
@@ -241,9 +241,9 @@ Gemengde inhoud in hetzelfde document retourneert de taal met de grootste weer g
     }
 ```
 
-**Uitvoer**
+**Output**
 
-De resulterende uitvoer bestaat uit de meest voorkomende taal, met een Score van minder dan 1,0, wat een zwakker vertrouwens niveau aangeeft.
+De resulterende output bestaat uit de overheersende taal, met een score van minder dan 1,0, wat wijst op een zwakker niveau van vertrouwen.
 
 ```json
     {
@@ -265,12 +265,12 @@ De resulterende uitvoer bestaat uit de meest voorkomende taal, met een Score van
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werk stromen geleerd voor taal detectie door gebruik te maken van Text Analytics in azure Cognitive Services. De volgende punten zijn uitgelegd en aangetoond:
+In dit artikel hebt u concepten en werkstroom voor taaldetectie geleerd met behulp van Text Analytics in Azure Cognitive Services. De volgende punten werden toegelicht en aangetoond:
 
-+ [Taal detectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) is beschikbaar voor een breed scala aan talen, varianten, dialecten en enkele regionale of culturele talen.
-+ JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID en tekst.
-+ De post-aanvraag is naar `/languages` een eind punt met behulp van een aangepaste [toegangs sleutel en een eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
-+ De reactie-uitvoer bestaat uit taal-id's voor elke document-ID. De uitvoer kan worden gestreamd naar alle apps die JSON accepteren. Voor beeld-apps zijn Excel en Power BI, om een paar te noemen.
++ [Taaldetectie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) is beschikbaar voor een breed scala aan talen, varianten, dialecten en sommige regionale of culturele talen.
++ JSON-documenten in de aanvraaginstantie bevatten een identiteitsbewijs en tekst.
++ Het POST-verzoek `/languages` is een eindpunt met behulp van een gepersonaliseerde [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dat geldig is voor uw abonnement.
++ Responsuitvoer bestaat uit taal-id's voor elke document-id. De uitvoer kan worden gestreamd naar elke app die JSON accepteert. Voorbeeld-apps zijn Excel en Power BI, om er maar een paar te noemen.
 
 ## <a name="see-also"></a>Zie ook
 

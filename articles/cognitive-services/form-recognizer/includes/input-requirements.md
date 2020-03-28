@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
 ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75379423"
 ---
-Formulier herkenning werkt op invoer documenten die aan de volgende vereisten voldoen:
+Form Recognizer werkt aan invoerdocumenten die aan deze vereisten voldoen:
 
-* Indeling moet JPG, PNG, PDF (tekst of gescand) of TIFF zijn. Tekst-Inge sloten Pdf's zijn het beste omdat er geen mogelijke fout is in teken extractie en locatie.
-* Als uw Pdf's met een wacht woord zijn vergrendeld, moet u de vergren deling verwijderen voordat u ze verzendt.
-* PDF-en TIFF-documenten moeten 200 pagina's of minder zijn en de totale grootte van de set met trainings gegevens moet 500 pagina's of minder zijn.
+* De opmaak moet JPG, PNG, PDF (tekst of gescand) of TIFF zijn. Tekstingesloten PDF's zijn het beste omdat er geen kans is op fout in tekenextractie en locatie.
+* Als uw PDF's met een wachtwoord zijn vergrendeld, moet u het slot verwijderen voordat u ze indient.
+* PDF- en TIFF-documenten moeten 200 pagina's of minder zijn en de totale grootte van de trainingsgegevensset moet 500 pagina's of minder zijn.
 * Voor afbeeldingen moeten de afmetingen tussen 600 x 100 pixels en 4200 x 4200 pixels liggen.
-* Als u scant vanuit papieren documenten, moeten formulieren kwalitatief hoogwaardige scans zijn.
+* Als gescand op basis van papieren documenten, formulieren moeten worden van hoge kwaliteit scans.
 * Tekst moet het Latijnse alfabet (Engelse tekens) gebruiken.
-* Gegevens moeten sleutels en waarden bevatten voor leren zonder super visie (geen gelabelde gegevens).
-* Voor niet-verouderd leren (zonder gelabelde gegevens), moeten sleutels boven of links van de waarden worden weer gegeven. ze kunnen niet onder of rechts worden weer gegeven.
+* Voor onbegeleid leren (zonder gelabelde gegevens) moeten gegevens sleutels en waarden bevatten.
+* Voor leren zonder toezicht (zonder gelabelde gegevens) moeten toetsen boven of links van de waarden worden weergegeven; ze kunnen niet onder of rechts worden weergegeven.
 
-Dit type invoer gegevens wordt momenteel niet door de formulier herkenning ondersteund:
+Form Recognizer ondersteunt momenteel geen dit soort invoergegevens:
 
 * Complexe tabellen (geneste tabellen, samengevoegde kopteksten of cellen, enzovoort).
-* Selectie vakjes of keuze rondjes.
+* Selectievakjes of keuzerondjes.

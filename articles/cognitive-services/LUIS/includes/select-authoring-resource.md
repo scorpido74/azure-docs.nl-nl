@@ -1,22 +1,17 @@
 ---
-title: Resource voor ontwerpen selecteren
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
+title: Bron voor het ontwerpen selecteren
 ms.topic: include
-ms.date: 11/04/2019
-ms.author: diberry
-ms.openlocfilehash: 969ba0981ecb0a17f0a808e39c3ad15802418f78
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 03/25/2020
+ms.openlocfilehash: 33519f1723ec9e109fc41d5dfc2928427df14643
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580451"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287761"
 ---
-## <a name="select-subscription-and-authoring-resource"></a>Abonnement selecteren en resource ontwerpen
+## <a name="select-subscription-and-authoring-resource"></a>Abonnements- en ontwerpbron selecteren
 
-In de LUIS-Portal kunt u een lijst met apps weer geven of een app maken door het abonnement en de resource te selecteren. Apps worden gebruikt door de LUIS-ontwerp bron. 
+Selecteer in de LUIS-portal een lijst met apps of om een app te maken de abonnements- en ontwerpbron. Apps zijn toegankelijk via de LUIS-ontwerpbron.
 
-![Het abonnement voor ontwerpen en het ontwerpen van de resource selecteren](../media/select-authoring-resource/select-authoring-resource.png)
+> [!div class="mx-imgBorder"]
+> ![Het schrijven van een abonnement en het ontwerpen van resource selecteren](../media/select-authoring-resource/select-authoring-resource.png)

@@ -1,7 +1,7 @@
 ---
-title: Quick start voor project akoestische met Unreal
+title: Project Acoustics snel aan de slag met Unreal
 titlesuffix: Azure Cognitive Services
-description: Gebruik voorbeeld inhoud om te experimenteren met de ontwerp besturings elementen voor project akoestische in Unreal en WWise, en implementeer het op Windows Desktop.
+description: Gebruik voorbeeldinhoud om te experimenteren met ontwerpbesturingselementen voor Project Acoustics in Unreal en Wwise en implementeer naar Windows-bureaublad.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,90 +12,90 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d3afcded894f72626a4f24bcbe85c34ac1329c29
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72242924"
 ---
-# <a name="project-acoustics-unrealwwise-quickstart"></a>Unreal/WWise Quick start voor project akoestische
-In deze Snelstartgids gaat u experimenteren met de ontwerp besturings elementen voor project akoestische door voorbeeld inhoud te gebruiken voor de Unreal-Engine en WWise.
+# <a name="project-acoustics-unrealwwise-quickstart"></a>Project Acoustics Unreal/Wwise snel aan de slag
+In deze quickstart experimenteer je met ontwerpbesturingselementen voor Project Acoustics met behulp van voorbeeldinhoud voor de Unreal Engine en Wwise.
 
-Software vereisten voor het gebruik van de voorbeeld inhoud:
-* [Unreal-Engine](https://www.unrealengine.com/) 4,22
-* [AudioKinetic WWise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
+Softwarevereisten voor het gebruik van de voorbeeldinhoud:
+* [Unreal Engine](https://www.unrealengine.com/) 4.22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
-## <a name="download-the-sample-package"></a>Het voorbeeld pakket downloaden
-Down load het [Unreal-en WWise-voorbeeld pakket van het project akoestische](https://www.microsoft.com/download/details.aspx?id=58090). Het voorbeeld pakket bevat:
-- Unreal Engine-project
-- WWise-project voor het Unreal-project
-- WWise-invoeg toepassing voor project akoestische
+## <a name="download-the-sample-package"></a>Het voorbeeldpakket downloaden
+Download het [voorbeeldpakket project acoustics Unreal en Wwise.](https://www.microsoft.com/download/details.aspx?id=58090) De voorbeeldverpakking bevat:
+- Unreal Engine project
+- Wwise project voor het Unreal project
+- Project Acoustics Wwise plug-in
 
-## <a name="set-up-the-project-acoustics-sample-project"></a>Het voorbeeld project van het project akoestische instellen
-Installeer eerst de invoeg toepassing voor project akoestische in WWise. Implementeer vervolgens de binaire WWise-bestanden voor het Unreal-project. Pas vervolgens de WWise Unreal-invoeg toepassing aan om project akoestische te ondersteunen.
+## <a name="set-up-the-project-acoustics-sample-project"></a>Het voorbeeldproject Project Acoustics instellen
+Installeer eerst de Project Acoustics plug-in in Wwise. Implementeer vervolgens de Wwise-binaries in het Unreal-project. Pas vervolgens de Wwise Unreal-plug-in aan om Project Acoustics te ondersteunen.
 
-### <a name="install-the-project-acoustics-wwise-plug-in"></a>De WWise-invoeg toepassing voor project akoestische installeren
-Open het start programma voor WWise. Selecteer op het tabblad invoeg **toepassingen** onder **nieuwe invoeg toepassingen installeren**de optie **toevoegen uit map**. Kies de *AcousticsWwisePlugin\ProjectAcoustics* -map die is opgenomen in het pakket dat u hebt gedownload.
+### <a name="install-the-project-acoustics-wwise-plug-in"></a>De Project Acoustics Wwise-plug-in installeren
+Open de Wwise Launcher. Selecteer op het tabblad **Plug-ins** onder **Nieuwe plug-ins installeren**de optie **Toevoegen uit map**. Kies de *map AcousticsWwisePlugin\ProjectAcoustics* die is opgenomen in het pakket dat u hebt gedownload.
 
-![De optie voor het installeren van de WWise-invoeg toepassing in het start programma voor WWise](media/wwise-install-new-plugin.png)
+![De optie om de Wwise-plug-in te installeren in de Wwise Launcher](media/wwise-install-new-plugin.png)
 
-### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>WWise binaire bestanden toevoegen aan het project akoestische Unreal-voorbeeld project
-1. Selecteer in WWise Launcher het tabblad **Unreal Engine** . 
-1. Selecteer het menu ' Hamburger ' (pictogram) naast de **recente Unreal-Engine projecten**en selecteer vervolgens **Bladeren voor project**. Open het voorbeeld bestand Unreal project *. uproject* in het pakket *AcousticsSample\AcousticsGame\AcousticsGame.uproject*.
+### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Wwise-binaries toevoegen aan het project Project Acoustics Unreal
+1. Selecteer in Wwise Launcher het tabblad **Unreal Engine.** 
+1. Selecteer het menu 'hamburger' (pictogram) naast **Recente Unreal Engine-projecten**en selecteer **Bladeren naar project**. Open het voorbeeld Unreal project *.uproject* bestand in het pakket *AcousticsSample\AcousticsGame\AcousticsGame.uproject*.
 
-   ![Het tabblad Unreal in het start programma voor WWise](media/wwise-unreal-tab.png)
+   ![Het tabblad Onwerkelijk in de Wwise Launcher](media/wwise-unreal-tab.png)
 
-3. Naast het voorbeeld project van het project akoestische, selecteert u **WWise in Project integreren**.
+3. Selecteer naast het voorbeeldproject Project Acoustics de optie **Wwise integreren in Project**.
 
-   ![De WWise Launcher toont het Unreal-project van het akoestische spel met de optie integreren gemarkeerd.](media/wwise-acoustics-game-project.png)
+   ![De Wwise Launcher toont het Acoustics Game Unreal-project met de optie Integreren gemarkeerd.](media/wwise-acoustics-game-project.png)
 
-### <a name="extend-wwise-unreal-plug-in-functionality"></a>WWise Unreal-invoeg toepassings functionaliteit uitbreiden
-De Unreal-invoeg toepassing voor project akoestische vereist extra gedrag dat wordt weer gegeven vanuit de WWise Unreal-invoeg toepassings-API. Voer het batch bestand uit dat is geleverd met de Unreal-invoeg toepassing voor project akoestische om deze wijzigingen te automatiseren.
-* Voer *PatchWwise. bat*in *AcousticsGame\Plugins\ProjectAcoustics\Resources*uit.
+### <a name="extend-wwise-unreal-plug-in-functionality"></a>Wwise Unreal-plug-infunctionaliteit uitbreiden
+De Project Acoustics Unreal plug-in moet extra gedrag blootgesteld van de Wwise Unreal plug-in API. Voer het batchbestand uit dat bij de Project Acoustics Unreal-plug-in is opgenomen om deze wijzigingen te automatiseren.
+* Binnen *AcousticsGame\Plugins\ProjectAcoustics\Resources,* voer *PatchWwise.bat*.
 
-    ![Het script voor het bijwerken van het WWise-project dat is gemarkeerd in een Windows Verkenner-venster](media/patch-wwise-script.png)
+    ![Het script om het Wwise-project te patchen dat is gemarkeerd in een Windows Explorer-venster](media/patch-wwise-script.png)
 
-* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van WWise die u gebruikt, moet u mogelijk een opmerking plaatsen bij de regel met `DXSDK_DIR` in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs*:
+* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van Wwise die u `DXSDK_DIR` gebruikt, moet u mogelijk commentaar geven op de regel die bevat in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs:*
 
-    ![De code-editor met de opmerking ' DXSDK '](media/directx-sdk-comment.png)
+    ![De code editor met "DXSDK" commentaar uit](media/directx-sdk-comment.png)
 
-* Als u compileert met behulp van Visual Studio 2019: als u een koppelings fout met WWise wilt omzeilen, wijzigt u de standaard waarde *VSVersion* in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs* hand matig in **vc150**:
+* Als u compileert met Visual Studio 2019: Als u een koppelingsfout met Wwise wilt omzeilen, wijzigt u handmatig de standaardwaarde *VSVersion* in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* naar **vc150:**
 
-    ![De code-editor met VSVersion is gewijzigd in ' vc150 '](media/vsversion-comment.png)
+    ![De codeeditor met VSVersion is gewijzigd in "vc150"](media/vsversion-comment.png)
 
-### <a name="open-the-unreal-project"></a>Het project Unreal openen 
-Wanneer u het project Unreal opent, wordt u gevraagd om de modules opnieuw te bouwen. Selecteer **Ja**.
+### <a name="open-the-unreal-project"></a>Het Unreal Project openen 
+Wanneer u het Unreal-project opent, wordt u gevraagd om modules opnieuw op te bouwen. Selecteer **Ja**.
 
-Als het project niet kan worden geopend vanwege build-fouten, controleert u of u de WWise-invoeg toepassing voor project akoestische hebt geïnstalleerd in dezelfde versie van WWise die werd gebruikt in het voorbeeld project van het project akoestische.
+Als het openen van het project mislukt vanwege bouwfouten, controleert u of u de Project Acoustics Wwise-plug-in hebt geïnstalleerd op dezelfde versie van Wwise die is gebruikt in het project Acoustics-voorbeeldproject.
 
-Als u een versie van [AudioKinetic WWise](https://www.audiokinetic.com/products/wwise/) gebruikt die ouder is dan versie 2019,1, kunt u geen geluids banken genereren met behulp van het project akoestische voor beeld-project. U moet WWise-versie 2019,1 integreren in het voorbeeld project.
+Als u een versie van [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) eerder gebruikt dan versie 2019.1, u geen geluidsbanken genereren met behulp van het project Acoustics-voorbeeldproject. U moet Wwise versie 2019.1 integreren in het voorbeeldproject.
 
-## <a name="experiment-with-project-acoustics-design-controls"></a>Experimenteer met ontwerp controles voor project akoestische
-Luister naar hoe de scène klinkt door de knop afspelen te selecteren in de Unreal-editor. Gebruik de sleutels W, A, S en D en de muis om door te gaan. Selecteer F1 om sneltoetsen voor extra besturings elementen weer te geven.
+## <a name="experiment-with-project-acoustics-design-controls"></a>Experimenteren met ontwerpregelaars van Project Acoustics
+Luister naar hoe de scène klinkt door de afspeelknop in de Unreal-editor te selecteren. Gebruik de toetsen W, A, S en D en de muis om te bewegen. Als u sneltoetsen voor extra besturingselementen wilt bekijken, selecteert u F1.
 
-In de volgende informatie worden enkele ontwerp activiteiten beschreven die u kunt proberen.
+De volgende informatie beschrijft een aantal ontwerpactiviteiten om te proberen.
 
-### <a name="modify-occlusion-and-transmission"></a>Bedekking en overdracht wijzigen
-Er zijn het ontwerp besturings elementen per bron project op elke Unreal-geluids actor.
+### <a name="modify-occlusion-and-transmission"></a>Occlusie en transmissie wijzigen
+Er zijn ontwerpbesturingselementen per bron voor Project Acoustics op elke Unreal-geluidsactor.
 
-![Het ontwerp besturings elementen van de Unreal-editor](media/demo-scene-sound-source-design-controls.png)
+![De Unreal Editor akoestiek ontwerp controles](media/demo-scene-sound-source-design-controls.png)
 
-Als de **bedekking** vermenigvuldiger groter is dan 1 (de standaard waarde is 1), is bedekking exaggerated. Een instelling van minder dan 1 maakt het effect van de bedekking subtieler.
+Als de **occlusiemultiplier** groter is dan 1 (de standaardwaarde is 1), wordt occlusie overdreven. Een instelling van minder dan 1 maakt het occlusie-effect subtieler.
 
-Als u de verzen ding via de wand wilt inschakelen, verplaatst u de schuif regelaar voor **verzen ding (DB)** vanaf het laagste niveau.
+Als u de transmissie via de muur wilt inschakelen, verplaatst u de schuifregelaar **Transmission (dB)** van het laagste niveau.
 
-### <a name="modify-wetness-for-a-source"></a>Wetness voor een bron wijzigen
-Gebruik **Perceptueel, afstands verdraaiing**om te wijzigen hoe snel wetness verandert met afstand. Met de geluids sterkte van het project worden natte niveaus in de gehele ruimte berekend met behulp van simulatie. De niveaus kunnen soepel en op afstand verschillen en geven waarnemingen op afstand. Als u dit effect wilt exaggerate, verhoogt u de natte afstands niveaus om de afstands verdraaiing te verhogen. Het verdraaien van waarden kleiner dan 1 maken de op afstand gebaseerde reverberation subtieler. U kunt dit effect ook nauw keurig aanpassen via de instelling **Wetness (DB)** .
+### <a name="modify-wetness-for-a-source"></a>Nattigheid voor een bron wijzigen
+Als u wilt veranderen hoe snel de nattigheid verandert met afstand, gebruikt u **Perceptuele Afstandwarp.** Project Acoustics berekent natte niveaus in de ruimte door middel van simulatie. De niveaus variëren soepel met afstand en bieden perceptuele afstand signalen. Om dit effect te overdrijven, verhoogt u de afstandgerelateerde natte niveaus om de afstandsvervorming te verhogen. Kromtrekkenwaarden van minder dan 1 maken de op afstand gebaseerde nagalm subtieler. U dit effect ook fijner aanpassen via de **instelling Wetness (dB).**
 
-Als u de verval tijd in de ruimte wilt verg Roten, past u de schaal voor de **verval tijd**aan. Houd rekening met een geval waarbij het simulatie resultaat een verval tijd van 1,5 seconden is. Het instellen van de **verval tijd** op 2 resulteert in een verval tijd van 3 seconden die is toegepast op de bron.
+Als u de vervaltijd in de ruimte wilt verhogen, past u **de vervaltijdschaal**aan. Overweeg een geval waarin het simulatieresultaat een vervaltijd van 1,5 seconden is. Als **u de vervaltijdschaal** instelt op 2, wordt een vervaltijd van 3 seconden ingesteld op de bron.
 
-### <a name="modify-distance-based-attenuation"></a>Afzwakking op afstand wijzigen
-De WWise-invoeg toepassing voor project akoestische is een afname van de op afstand gebaseerde demping per bron die in WWise is ingebouwd. Als u deze curve wijzigt, wordt het niveau van het droog-pad gewijzigd. De invoeg toepassing voor project akoestische past het natte niveau aan om het natte/droge mix dat is opgegeven door de besturings elementen simulatie en ontwerp, te behouden.
+### <a name="modify-distance-based-attenuation"></a>Demping op afstand wijzigen
+De Project Acoustics Wwise mixer plug-in respecteert de per-source afstand-gebaseerde demping die is ingebouwd in Wwise. Als u deze curve wijzigt, verandert het droogpadniveau. De Project Acoustics plug-in past het natte niveau aan om de natte/droge mix te behouden die door de simulatie- en ontwerpregelaars wordt gespecificeerd.
 
-![Het deel venster WWise-verzwakking met demping naar 0 vóór de simulatie grens](media/demo-sounds-attenuation.png)
+![Het Wwise-dempingscurvepaneel met demping die naar 0 gaat vóór de simulatiegrens](media/demo-sounds-attenuation.png)
 
-De geluids processen van het project worden berekend in een ' simulatie regio ' die is gecentreerd rond elke gesimuleerde speler locatie. De akoestische activa in het voor beeld van het pakket zijn geïntegreerde met een simulatie gebied straal van 45 meters. Verzwakkingen zijn ontworpen om 0 vóór 45 meters te bevallen. Hoewel deze wegvalheid geen strikte vereiste is, is het het voor behoud dat alleen de geometrie binnen 45 meters van de listener occlude.
+Project Acoustics berekent in een "simulatiegebied" vak dat is gecentreerd rond elke gesimuleerde speler locatie. De akoestiek activa in het monster pakket werden gebakken met een simulatie regio straal van 45 meter. Dempingen werden ontworpen om te vallen tot 0 voor 45 meter. Hoewel deze falloff is niet een strikte eis, het draagt het voorbehoud dat alleen geometrie binnen 45 meter van de luisteraar zal occlude geluiden.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Integreer de](unreal-integration.md) invoeg toepassing voor project akoestische in uw Unreal-project.
-* [Maak een Azure-account](create-azure-account.md) voor uw eigen Bakes.
+* [Integreer de Project Acoustics](unreal-integration.md) plug-in in uw Unreal project.
+* [Maak een Azure-account](create-azure-account.md) voor uw eigen bakken.

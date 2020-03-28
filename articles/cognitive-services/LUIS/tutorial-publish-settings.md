@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: publicatie-instellingen-LUIS'
+title: 'Zelfstudie: Publicatie-instellingen - LUIS'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie wijzigt u de publicatie-instellingen voor het verbeteren van voor spellingen.
+description: Wijzig in deze zelfstudie de publicatie-instellingen om voorspellingen te verbeteren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,22 +12,22 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
 ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890391"
 ---
-# <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelf studie: sentiment-analyse toevoegen als publicatie-instelling
+# <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelfstudie: Sentimentanalyse toevoegen als publicatie-instelling
 
-In deze zelf studie wijzigt u de publicatie-instellingen om sentiment analyse te extra heren en vervolgens voert u een query uit op het LUIS-eind punt om de geretourneerde sentiment van een gebruiker utterance te bekijken.
+Wijzig in deze zelfstudie de publicatie-instellingen om sentimentanalyse te extraheren en vervolgens het LUIS-eindpunt op te vragen om het geretourneerde sentiment van een gebruikersutterance te zien.
 
 **In deze zelfstudie leert u het volgende:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Sentiment-analyse als een publicatie-instelling toevoegen
-> * Sentiment van een utterance ophalen uit het gepubliceerde eind punt
+> * Sentimentanalyse toevoegen als publicatie-instelling
+> * Het sentiment van een utterance ophalen van het gepubliceerde eindpunt
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -37,16 +37,16 @@ De volgende utterances zijn voorbeelden van gevoelens:
 
 |Sentiment|Score|Utterance|
 |:--|:--|:--|
-|negatief|0,01 |De pizza is awful.|
-|positief|0,97 |De kaas pizza was geweldig.|
+|negatief|0,01 |De pizza was verschrikkelijk.|
+|positief|0.97 |De kaas pizza was geweldig.|
 
-Sentimentanalyse is een publicatie-instelling die voor elke uiting geldt. Als uw app eenmaal is ingesteld, wordt de sentiment van een utterance geretourneerd zonder dat u gegevens hoeft te labelen.
+Sentimentanalyse is een publicatie-instelling die voor elke uiting geldt. Eenmaal ingesteld, retourneert uw app het gevoel van een utterance zonder dat u gegevens hoeft te labelen.
 
-Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel items of entiteiten. De instelling is te zien in het deelvenster [Interactieve test](luis-interactive-test.md#view-sentiment-results) of bij het uitvoeren van tests bij de eindpunt-URL.
+Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intenties of entiteitenpagina's. De instelling is te zien in het deelvenster [Interactieve test](luis-interactive-test.md#view-sentiment-results) of bij het uitvoeren van tests bij de eindpunt-URL.
 
-## <a name="import-example-json-to-begin-app"></a>Voor beeld van import. json voor het starten van de app
+## <a name="import-example-json-to-begin-app"></a>Voorbeeld .json importeren om app te starten
 
-1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
+1.  Download en sla het [JSON-bestand van](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)de app op.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -56,10 +56,10 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>App configureren voor gebruik van sentimentanalyse
 
-1. Selecteer **publiceren** in het bovenste menu. Sentiment analyse is een publicatie-instelling.
+1. Selecteer **Publiceren** in het bovenste menu. Sentimentanalyse is een publicatie-instelling.
 
-1. Selecteer **productie sleuf** en selecteer vervolgens **instellingen wijzigen**.
-1. Stel de Sentimentanalyse-instelling in **op aan**.
+1. Selecteer **Productiesleuf** en selecteer **Instellingen wijzigen**.
+1. Stel de instelling Gevoelanalyse in **op Aan**.
 
     ![Sentimentanalyse als publicatie-instelling inschakelen](./media/luis-quickstart-intent-and-sentiment-analysis/select-sentiment-publishing-setting.png)
 
@@ -71,7 +71,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    De laatste parameter van de queryreeks is `query`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
+    De laatste querytekenreeksparameter is `query`de **utterancequery**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `OrderPizza` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
 
     ```json
     {
@@ -120,7 +120,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
     }
     ```
 
-    De sentiment-analyse is positief met een Score van 86%.
+    De sentimentanalyse is positief met een score van 86%.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
