@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met een helder patroon Omnichannel contact punt | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en helder patroon Omnichannel contact centrum.
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Bright Pattern Omnichannel Contact Center | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Bright Pattern Omnichannel Contact Center.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,158 +17,158 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27cda1f1a797ca0cb8e1b9d1c4cd7498c22ddde5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081937"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met een helder patroon Omnichannel contact punt
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Bright Pattern Omnichannel Contact Center
 
-In deze zelf studie leert u hoe u een helder patroon Omnichannel contact centrum integreert met Azure Active Directory (Azure AD). Wanneer u een helder patroon Omnichannel contact met Azure AD integreert, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Bright Pattern Omnichannel Contact Center integreren met Azure Active Directory (Azure AD). Wanneer u Bright Pattern Omnichannel Contact Center integreert met Azure AD, u het zelfde als:
 
-* Beheer in azure AD die toegang heeft tot een helder patroon Omnichannel contact punt.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij een helder patroon Omnichannel contact punt met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Bright Pattern Omnichannel Contact Center.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Bright Pattern Omnichannel Contact Center met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Helder patroon Omnichannel contact punt eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Bright Pattern Omnichannel Contact Center single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
 
 
-* Helder patroon Omnichannel contact Centrum ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
-* Helder patroon Omnichannel contact Centrum ondersteunt **just-in-time** -gebruikers inrichting
+* Bright Pattern Omnichannel Contact Center ondersteunt **SP en IDP** geïnitieerde SSO
+* Bright Pattern Omnichannel Contact Center ondersteunt **Just In Time** gebruikersinrichting
 
 
-## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Helder patroon toevoegen Omnichannel contact punt in de galerie
+## <a name="adding-bright-pattern-omnichannel-contact-center-from-the-gallery"></a>Bright Pattern Omnichannel Contact Center toevoegen vanuit de galerij
 
-Als u de integratie van helder patroon Omnichannel contact in azure AD wilt configureren, moet u een helder patroon Omnichannel contact punt toevoegen vanuit de galerie naar uw lijst met beheerde SaaS-apps.
+Als u de integratie van Bright Pattern Omnichannel Contact Center in Azure AD wilt configureren, moet u Bright Pattern Omnichannel Contact Center vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **helder patroon Omnichannel contact punt** in het zoekvak.
-1. Selecteer **helder patroon Omnichannel contact punt** in het resultaten paneel en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Bright Pattern Omnichannel Contact Center** in de sectie Toevoegen in de **galerijsectie** in het zoekvak.
+1. Selecteer **Bright Pattern Omnichannel Contact Center** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor helder patroon Omnichannel contact punt
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bright-pattern-omnichannel-contact-center"></a>Azure AD-aanmelding configureren en testen voor Bright Pattern Omnichannel Contact Center
 
-Configureer en test Azure AD SSO met een helder patroon Omnichannel contact punt met behulp van een test gebruiker met de naam **B. Simon**. Voor eenmalige aanmelding moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in helder patroon Omnichannel contact centrum.
+Azure AD SSO configureren en testen met Bright Pattern Omnichannel Contact Center met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Bright Pattern Omnichannel Contact Center.
 
-Als u Azure AD SSO wilt configureren en testen met een helder patroon Omnichannel contact punt, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met Bright Pattern Omnichannel Contact Center, voert u de volgende bouwstenen uit:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Helder patroon configureren Omnichannel contact met SSO](#configure-bright-pattern-omnichannel-contact-center-sso)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een helder patroon Omnichannel contact met test gebruiker](#create-bright-pattern-omnichannel-contact-center-test-user)** : als u een equivalent van B. Simon wilt hebben in helder patroon Omnichannel contact centrum dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Bright Pattern Omnichannel Contact Center SSO](#configure-bright-pattern-omnichannel-contact-center-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    1. **[Maak bright pattern Omnichannel Contact Center-testgebruiker](#create-bright-pattern-omnichannel-contact-center-test-user)** - om een tegenhanger van B.Simon te hebben in Bright Pattern Omnichannel Contact Center dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **helder patroon Omnichannel contact punt** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Bright Pattern Omnichannel Contact Center-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `<SUBDOMAIN>_sso`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`<SUBDOMAIN>_sso`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.brightpattern.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.brightpattern.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [heldere patroon Omnichannel contact centrum client ondersteuning](mailto:support@brightpattern.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [Bright Pattern Omnichannel Contact Center Client support team](mailto:support@brightpattern.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Het heldere patroon Omnichannel contact centrum toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Bright Pattern Omnichannel Contact Center-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/edit-attribute.png)
 
-1. Behalve hierboven verwachtte het helder patroon Omnichannel contact centrum toepassing nog maar weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+1. Naast bovenstaande, Bright Pattern Omnichannel Contact Center applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw eis.
 
-    | Naam | Naamruimte  |
+    | Name | Naamruimte  |
     | ---------------| --------------- |
     | voornaam | user.givenname |
     | achternaam | user.surname |
     | e-mail | user.mail |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer de juiste URL ('s) op basis van uw vereiste op de sectie **helder patroon instellen Omnichannel contact punt** .
+1. Kopieer in de sectie **Bright Pattern Omnichannel Contact Center** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen aan het helder patroon Omnichannel contact centrum.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Bright Pattern Omnichannel Contact Center.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen **helder patroon Omnichannel contact punt**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer Bright Pattern **Omnichannel Contact Center**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Helder patroon configureren Omnichannel contact centrum SSO
+## <a name="configure-bright-pattern-omnichannel-contact-center-sso"></a>Bright Pattern Omnichannel Contact Center SSO configureren
 
-Voor het configureren van eenmalige aanmelding op **helder patroon Omnichannel contact punt** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar een [helder patroon Omnichannel contact centrum ondersteunings team](mailto:support@brightpattern.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op de kant **van bright pattern Omnichannel Contact Center,** moet u het gedownloade certificaat **(Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Bright Pattern Omnichannel Contact Center](mailto:support@brightpattern.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Een helder patroon maken Omnichannel contact persoon test gebruiker
+### <a name="create-bright-pattern-omnichannel-contact-center-test-user"></a>Bright Pattern Omnichannel Contact Center testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in helder patroon Omnichannel contact centrum. Helder patroon Omnichannel contact centrum biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al bestaat in een helder patroon Omnichannel contact punt, wordt er na verificatie een nieuwe gemaakt.
+In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Bright Pattern Omnichannel Contact Center. Bright Pattern Omnichannel Contact Center ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Bright Pattern Omnichannel Contact Center, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Test SSO 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel licht patroon Omnichannel contact punt in het toegangs venster klikt, moet u automatisch worden aangemeld bij het heldere patroon Omnichannel contact centrum waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Bright Pattern Omnichannel Contact Center in het toegangspaneel klikt, moet u automatisch worden aangemeld bij het Bright Pattern Omnichannel Contact Center waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Helder patroon proberen Omnichannel contact met Azure AD](https://aad.portal.azure.com/)
+- [Bright Pattern Omnichannel Contact Center uitproberen met Azure AD](https://aad.portal.azure.com/)
 

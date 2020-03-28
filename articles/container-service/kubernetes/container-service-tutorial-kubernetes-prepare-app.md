@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275432"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(AFGESCHAFT) Containerinstallatiekopieën maken om te gebruiken bij Azure Container Service
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een toepassing voorbereiden voor Azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Zie [Zelfstudie: Een toepassing voorbereiden voor Azure Kubernetes Service (AKS) voor](../../aks/tutorial-kubernetes-prepare-app.md)de bijgewerkte versie van deze zelfstudie die Azure Kubernetes Service gebruikt.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ In de volgende zelfstudies wordt de containerinstallatiekopie geüpload naar een
 
 In deze zelfstudie wordt ervan uitgegaan dat u een basiskennis hebt van Docker-kernconcepten zoals containers, containerinstallatiekopieën en Docker-basisopdrachten. Zie, indien nodig, [Aan de slag met Docker]( https://docs.docker.com/get-started/) voor een uitleg van de basisprincipes van containers. 
 
-Voor deze zelfstudie hebt u een Docker-ontwikkelomgeving nodig. Docker biedt pakketten die eenvoudig Docker op elke configureren op elk [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- of [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-systeem.
+Voor deze zelfstudie hebt u een Docker-ontwikkelomgeving nodig. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- of [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-systeem.
 
 Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elke stap in deze zelfstudie te voltooien. Daarom raden wij u aan een volledige Docker-ontwikkelomgeving te gebruiken.
 
@@ -62,7 +62,7 @@ In de map bevinden zich de broncode van de toepassing, een vooraf gemaakt Docker
 
 ## <a name="create-container-images"></a>Containerinstallatiekopieën maken
 
-[Docker Compose](https://docs.docker.com/compose/) kan worden gebruikt voor het automatiseren van de build op basis van containerinstallatiekopieën en de implementatie van toepassingen met meerdere containers.
+[Docker Compose](https://docs.docker.com/compose/) kan worden gebruikt om de build te automatiseren op basis van containerinstallatiekopieën en de implementatie van toepassingen met meerdere containers.
 
 Voer het bestand `docker-compose.yml` uit om de containerinstallatiekopie te maken, download de Redis-installatiekopie en start de toepassing.
 
@@ -85,7 +85,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Voer de opdracht [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) uit om de actieve containers te zien.
+Voer de opdracht [docker ps uit](https://docs.docker.com/engine/reference/commandline/ps/) om de lopende containers te bekijken.
 
 ```bash
 docker ps
@@ -135,4 +135,4 @@ In deze zelfstudie is een toepassing getest en zijn containerinstallatiekopieën
 Ga verder met de volgende zelfstudie voor meer informatie over het opslaan van installatiekopieën van de container in een Azure Container Registry.
 
 > [!div class="nextstepaction"]
-> [Installatiekopieën pushen naar Azure Container Registry](./container-service-tutorial-kubernetes-prepare-acr.md)
+> [Installatiekopieën naar Azure Container Registry pushen](./container-service-tutorial-kubernetes-prepare-acr.md)

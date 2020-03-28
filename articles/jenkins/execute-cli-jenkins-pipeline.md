@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, app service, cli
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158831"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Implementeren in Azure App Service met Jenkins en de Azure CLI
@@ -27,13 +27,13 @@ Voor deze zelfstudie is versie 2.0.4 of hoger van de Azure CLI vereist. Voer `az
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Een Jenkins-exemplaar maken en configureren
-Als u nog geen Jenkins-master hebt, begint u met de [oplossings sjabloon](install-jenkins-solution-template.md), die standaard de vereiste [Azure-referenties](https://plugins.jenkins.io/azure-credentials) -invoeg toepassing bevat. 
+Als u nog geen Jenkins-master hebt, begint u met de [oplossingssjabloon](install-jenkins-solution-template.md), die standaard de vereiste [Azure-invoeginstellingen](https://plugins.jenkins.io/azure-credentials) bevat. 
 
-Met de Azure Credential-invoeg toepassing kunt u Microsoft Azure Service-Principal-referenties opslaan in Jenkins. In versie 1.2 hebben we de ondersteuning toegevoegd, zodat de Jenkins-pijplijn de Azure-referenties kan ophalen. 
+Met de Azure Credential-plug-in u microsoft Azure-servicehoofdreferenties opslaan in Jenkins. In versie 1.2 hebben we de ondersteuning toegevoegd, zodat de Jenkins-pijplijn de Azure-referenties kan ophalen. 
 
 Controleer of u versie 1.2 of hoger hebt:
 * Klik in het dashboard van Jenkins op **Jenkins beheren -> Invoegtoepassingenbeheer ->** en zoek naar **Azure Credential**. 
-* Werk de invoeg toepassing bij als de versie lager is dan 1,2.
+* Werk de plug-in bij als de versie eerder is dan 1.2.
 
 Java JDK en Maven zijn ook vereist in de Jenkins-master. Als u deze wilt installeren, meldt u zich aan bij de Jenkins-master met SSH en voert u de volgende opdrachten uit:
 ```bash
@@ -45,7 +45,7 @@ sudo apt-get install -y maven
 
 Azure-referenties zijn nodig om de Azure CLI uit te voeren.
 
-* Klik in het dashboard van Jenkins op **Referenties -> Systeem ->** . Klik op **Algemene referenties (onbeperkt)** .
+* Klik in het dashboard van Jenkins op **Referenties -> Systeem ->**. Klik op **Algemene referenties (onbeperkt)**.
 * Klik op **Referenties toevoegen** als u een [Microsoft Azure-service-principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) wilt toevoegen door Abonnements-id, Client-id, Clientgeheim en OAuth 2.0 Token-eindpunt in te vullen. Geef een id op voor gebruik in de volgende stap.
 
 ![Referenties toevoegen](./media/execute-cli-jenkins-pipeline/add-credentials.png)
@@ -148,7 +148,7 @@ Open Jenkins in een webbrowser en klik op **Nieuw item**.
 * Selecteer bij **Definitie** de optie **Pijplijnscript uit SCM**.
 * Bij **SCM** selecteert u **Git**.
 * Voer de GitHub-URL voor de vertakte opslagplaats in: https:\<uw vertakte opslagplaats\>.git
-* Klik op **Opslaan**.
+* Klik **op Opslaan**
 
 ## <a name="test-your-pipeline"></a>Test uw pijplijn
 * Ga naar de pijplijn die u hebt gemaakt en klik op **Nu maken**
@@ -170,7 +170,7 @@ U ziet:
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Implementeren in Azure Web App on Linux
 Nu u weet hoe u Azure CLI gebruikt in uw Jenkins-pijplijn, kunt u het script wijzigen om te implementeren in Azure Web App on Linux.
 
-Web App on Linux ondersteunt een andere implementatiemethode. Hierbij wordt namelijk Docker gebruikt. Om uw web-app te implementeren met Docker moet u een Dockerfile opgeven waarmee uw web-app met een serviceruntime in een Docker-installatiekopie wordt verpakt. De invoeg toepassing maakt vervolgens de installatie kopie, pusht deze naar een docker-REGI ster en implementeert de installatie kopie in uw web-app.
+Web App on Linux ondersteunt een andere implementatiemethode. Hierbij wordt namelijk Docker gebruikt. Om uw web-app te implementeren met Docker moet u een Dockerfile opgeven waarmee uw web-app met een serviceruntime in een Docker-installatiekopie wordt verpakt. De plug-in bouwt vervolgens de afbeelding, duwt deze naar een Docker-register en implementeert de afbeelding in uw web-app.
 
 * Voer de stappen [hier](../app-service/containers/quickstart-nodejs.md) uit om een Azure-web-app te maken die wordt uitgevoerd op Linux.
 * Installeer Docker op uw Jenkins-exemplaar door de instructies in dit [artikel](https://docs.docker.com/engine/installation/linux/ubuntu/) te volgen.

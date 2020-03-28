@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: tyfox
 ms.openlocfilehash: be8f008458dc3e20f625db19c36fadaec0d1b4a2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71074928"
 ---
-## <a name="additional-sdk-functionality"></a>Aanvullende SDK-functionaliteit
+## <a name="additional-sdk-functionality"></a>Extra SDK-functionaliteit
 
-* Clusters weer geven
+* Lijstclusters
 * Clusters verwijderen
-* Grootte van clusters wijzigen
+* Het formaat van clusters wijzigen
 * Bewaking
-* Script acties
+* Scriptacties

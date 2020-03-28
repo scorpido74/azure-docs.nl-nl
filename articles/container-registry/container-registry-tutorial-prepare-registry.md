@@ -1,14 +1,14 @@
 ---
-title: Zelf studie-het geo-gerepliceerde REGI ster maken
+title: Zelfstudie - Geo-gerepliceerd register maken
 description: Een Azure-containerregister maken, geo-replicatie configureren, een Docker-installatiekopie voorbereiden en implementeren in het register. Deel één van een serie van drie.
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238522"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: een Azure-containerregister met geo-replicatie voorbereiden
@@ -27,7 +27,7 @@ In volgende zelfstudies implementeert u de container vanuit uw privéregister na
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor deze zelfstudie is een lokale installatie van de Azure CLI (versie 2.0.31 of hoger) vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Voor deze zelfstudie is een lokale installatie van de Azure CLI (versie 2.0.31 of hoger) vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 U moet bekend zijn met Docker-kernconcepten zoals containers, containerinstallatiekopieën en Docker CLI-basisopdrachten. Zie [Aan de slag met Docker]( https://docs.docker.com/get-started/) voor een uitleg van de basisprincipes van containers.
 
@@ -37,25 +37,25 @@ Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elk
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
+Selecteer Een Azure Container Registry voor**resourcecontainers** >  **Create a resource** > **maken**.
 
 ![Een containerregister maken met Azure Portal][tut-portal-01]
 
 Configureer uw nieuwe register met de volgende instellingen:
 
 * **Registernaam**: maak een registernaam die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
-* **Resourcegroep**: **Nieuwe maken** > `myResourceGroup`
-* **Locatie**: `West US`
-* **Gebruiker met beheerdersrechten**: `Enable` (vereist voor Web App for Containers voor het pullen van installatiekopieën)
-* **SKU**: `Premium` (vereist voor de geo-replicatie)
+* **Resourcegroep:** **nieuwe maken** > `myResourceGroup`
+* **Locatie**:`West US`
+* **Beheerdersgebruiker** `Enable` : (vereist dat Web App voor containers afbeeldingen kan opvragen)
+* **SKU** `Premium` : (vereist voor geo-replicatie)
 
 Selecteer **Maken** om de ACR-instantie te implementeren.
 
 ![Een containerregister maken met Azure Portal][tut-portal-02]
 
-In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam**.
+Gedurende de rest van deze `<acrName>` zelfstudie gebruiken we als tijdelijke aanduiding voor de **naam van het containerregister** dat u hebt gekozen.
 
 > [!TIP]
 > Omdat Azure-containerregisters doorgaans lang meegaande resources zijn die op meerdere hosts van de container worden gebruikt, wordt u aangeraden het register in een eigen resourcegroep te maken. Als u registers met geo-replicatie en webhooks configureert, worden deze extra resources in dezelfde resourcegroep geplaatst.
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Als `git` niet is geïnstalleerd, kunt u [het zip-archief rechtstreeks downloaden][acr-helloworld-zip] vanuit github.
+Als u `git` niet hebt geïnstalleerd, kunt u [het ZIP-archief downloaden][acr-helloworld-zip] rechtstreeks vanuit GitHub.
 
 ## <a name="update-dockerfile"></a>Dockerfile bijwerken
 
-Het Dockerfile dat deel uitmaakt van de voorbeeldopslagplaats laat zien hoe de container wordt gebouwd. Het begint met een officiële [aspnetcore][dockerhub-aspnetcore]-installatiekopie, kopieert de toepassingsbestanden naar de container, installeert afhankelijkheden, compileert de uitvoer met behulp van de officiële [aspnetcore-build][dockerhub-aspnetcore-build]-installatiekopie en maakt tot slot een geoptimaliseerde aspnetcore-installatiekopie.
+Het Dockerfile dat deel uitmaakt van de voorbeeldopslagplaats laat zien hoe de container wordt gebouwd. Het begint met een officiële [aspnetcore][dockerhub-aspnetcore]-installatiekopie, kopieert de toepassingsbestanden naar de container, installeert afhankelijkheden, compileert de uitvoer met de officiële [aspnetcore-build][dockerhub-aspnetcore-build]-installatiekopie en maakt tot slot een geoptimaliseerde aspnetcore-installatiekopie.
 
-De [Dockerfile][dockerfile] bevindt zich op `./AcrHelloworld/Dockerfile` in de gekloonde bron.
+De [Dockerfile][dockerfile] bevindt zich in `./AcrHelloworld/Dockerfile` in de gekloonde bron.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

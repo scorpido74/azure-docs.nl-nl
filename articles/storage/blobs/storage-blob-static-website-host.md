@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een statische website hosten op Blob Storage-Azure Storage'
+title: 'Zelfstudie: Een statische website hosten in Blob-opslag - Azure Storage'
 description: Bekijk informatie over het configureren van een opslagaccount voor het hosten van een statische website en het implementeren van een statische website op Azure Storage.
 author: normesta
 ms.service: storage
@@ -9,17 +9,17 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78330392"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Zelf studie: een statische website op Blob Storage hosten
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Zelfstudie: Een statische website hosten op Blob-opslag
 
-In deze zelf studie leert u hoe u een statische website bouwt en implementeert voor Azure Storage. Wanneer u klaar bent, hebt u een statische website die openbaar toegankelijk is voor gebruikers. 
+In deze zelfstudie leert u hoe u een statische website bouwen en implementeren in Azure Storage. Wanneer u klaar bent, hebt u een statische website die openbaar toegankelijk is voor gebruikers. 
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> Zorg ervoor dat u een standaard-opslag account voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslag account.
+> Zorg ervoor dat u een v2-opslagaccount voor algemene doeleinden aanmaakt . Statische websites zijn niet beschikbaar in een ander type opslagaccount.
 
 In deze zelfstudie wordt gebruikgemaakt van [Visual Studio Code](https://code.visualstudio.com/download), een gratis hulpprogramma voor programmeurs, waarmee de statische website kan worden gebouwd en in een Azure Storage-account kan worden geïmplementeerd.
 
@@ -45,14 +45,14 @@ Nadat u Visual Studio Code hebt geïnstalleerd, installeert u de previewextensie
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/) om aan de slag te gaan.
+Meld u aan bij de [Azure-portal](https://portal.azure.com/) om aan de slag te gaan.
 
 ## <a name="configure-static-website-hosting"></a>Het hosten van een statische website configureren
 
 De eerste stap is het configureren van uw opslagaccount voor het hosten van een statische website in de Azure-portal. Wanneer u uw account configureert voor het hosten van een statische website, maakt Azure Storage automatisch een container met de naam *$web*. De *$web*-container bevat de bestanden voor uw statische website. 
 
-1. Open [Azure Portal](https://portal.azure.com/) in uw webbrowser. 
-1. Zoek uw opslagaccount op en geef het accountoverzicht weer.
+1. Open de [Azure-portal](https://portal.azure.com/) in uw webbrowser. 
+1. Zoek uw opslagaccount en geef het accountoverzicht weer.
 1. Selecteer **Statische website** om de configuratiepagina voor statische websites weer te geven.
 1. Selecteer **Ingeschakeld** om het hosten van statische websites in te schakelen voor het opslagaccount.
 1. Geef in het veld **Naam van het indexdocument** een standaardindexpagina van *index.html* op. De standaardindexpagina wordt weergegeven wanneer een gebruiker naar de hoofdmap van uw statische website navigeert.  
@@ -87,19 +87,19 @@ Maak vervolgens een 'Hallo wereld'-webpagina met Visual Studio Code en implement
     <h1>404</h1>
     ```
 
-1. Klik met de rechtermuisknop onder de map *MijnWebsite* in het deelvenster **Explorer** en selecteer **Implementeren in statische website...**  om uw website te implementeren. U wordt gevraagd u aan te melden bij Azure om een lijst met abonnementen op te halen.
+1. Klik met de rechtermuisknop onder de map *MijnWebsite* in het deelvenster **Explorer** en selecteer **Implementeren in statische website... ** om uw website te implementeren. U wordt gevraagd u aan te melden bij Azure om een lijst met abonnementen op te halen.
 
 1. Selecteer het abonnement met het opslagaccount waarvoor u het hosten van een statische website hebt ingeschakeld. Selecteer vervolgens het opslagaccount wanneer u hierom wordt gevraagd.
 
 Visual Studio Code uploadt nu uw bestanden naar uw webeindpunt en geeft de statusbalk voor succes weer. Start de website om deze te bekijken in Azure.
 
-U hebt de zelf studie voltooid en een statische website geïmplementeerd in Azure.
+U hebt de zelfstudie voltooid en een statische website geïmplementeerd in Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u uw Azure Storage-account kunt configureren voor het hosten van statische websites, en hoe u een statische website maakt en implementeert in een Azure-eind punt.
+In deze zelfstudie hebt u geleerd hoe u uw Azure Storage-account configureert voor statische websitehosting en hoe u een statische website maken en implementeren op een Azure-eindpunt.
 
-Vervolgens leert u hoe u een aangepast domein configureert met uw statische website.
+Leer vervolgens hoe u een aangepast domein configureert met uw statische website.
 
 > [!div class="nextstepaction"]
-> [Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)
+> [Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt](storage-custom-domain-name.md)

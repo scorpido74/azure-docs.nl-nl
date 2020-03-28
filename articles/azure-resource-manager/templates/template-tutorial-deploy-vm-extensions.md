@@ -1,20 +1,20 @@
 ---
-title: VM-extensies implementeren met een sjabloon
+title: VM-extensies implementeren met sjabloon
 description: Informatie over het implementeren van extensies voor virtuele machines met Azure Resource Manager-sjablonen
 author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b7aeaed0bfc2621cb2c71ab3f5e618771a1c26
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250085"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239254"
 ---
-# <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen
+# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Zelfstudie: Virtuele machine-extensies implementeren met ARM-sjablonen
 
-Meer informatie over het gebruik van [extensies voor virtuele Azure-machines](../../virtual-machines/extensions/features-windows.md) voor het uitvoeren van configuratie- en automatiseringstaken na de implementatie op virtuele Azure-machines. Er zijn veel verschillende VM-extensies beschikbaar voor gebruik met Azure-VM's. In deze zelfstudie implementeert u een aangepaste scriptextensie van een Azure Resource Manager-sjabloon om een PowerShell-script uit te voeren op een Windows-VM.  Met het script wordt een webserver op de virtuele machine geïnstalleerd.
+Meer informatie over het gebruik van [extensies voor virtuele Azure-machines](../../virtual-machines/extensions/features-windows.md) voor het uitvoeren van configuratie- en automatiseringstaken na de implementatie op virtuele Azure-machines. Er zijn veel verschillende VM-extensies beschikbaar voor gebruik met Azure-VM's. In deze zelfstudie implementeert u een Aangepaste Script-extensie vanuit een ARM-sjabloon (Azure Resource Manager) om een PowerShell-script op een Windows-vm uit te voeren.  Met het script wordt een webserver op de virtuele machine geïnstalleerd.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -25,24 +25,24 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De sjabloon implementeren
 > * De implementatie controleren
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
-* Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio Code gebruiken om ARM-sjablonen te maken.](use-vs-code-to-create-template.md)
+* Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in de Resource Manager-sjabloonimplementatie](./template-tutorial-use-key-vault.md) voor meer informatie. We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
+    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie](./template-tutorial-use-key-vault.md). We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
 
 ## <a name="prepare-a-powershell-script"></a>Een PowerShell-script voorbereiden
 
-Een Power shell-script met de volgende inhoud wordt gedeeld vanuit [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
+Een PowerShell-script met de volgende inhoud wordt gedeeld vanuit [GitHub:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -52,9 +52,9 @@ Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u het e
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren).
+Azure Quickstart-sjablonen is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren).
 
-1. Selecteer in Visual Studio Code **File** > **Open File**.
+1. Selecteer **Bestand** > **openen bestand**in Visual Studio-code .
 1. Plak de volgende URL in het vak **File name**: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
 1. Selecteer **Open** om het bestand te openen.
@@ -68,7 +68,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 
      Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
 
-1. Selecteer *File*Save As >  om een kopie van het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
+1. Selecteer **File** > **Save As** om een kopie van het bestand op uw lokale computer op te slaan als *azuredeploy.json*.
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
@@ -100,19 +100,19 @@ Voeg een VM-extensieresource toe aan de bestaande sjabloon met de volgende inhou
 
 Zie de [extensieverwijzing](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions) voor meer informatie over deze resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
-* **name**: omdat de extensiebron een onderliggende resource van het virtuele-machineobject is, moet de naam het voorvoegsel van de naam van de virtuele machine hebben. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md).
-* **dependsOn**: Maak de uitbreidings resource nadat u de virtuele machine hebt gemaakt.
-* **fileUris**: de locaties waar de script bestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
-* **commandToExecute**: met deze opdracht wordt het script aangeroepen.
+* **name**: omdat de extensiebron een onderliggende resource van het virtuele-machineobject is, moet de naam het voorvoegsel van de naam van de virtuele machine hebben. Zie [Naam en type instellen voor onderliggende resources](child-resource-name-type.md).
+* **dependsOn:** Maak de extensiebron nadat u de virtuele machine hebt gemaakt.
+* **fileUris**: De locaties waar de scriptbestanden worden opgeslagen. Als u ervoor kiest om de meegeleverde locaties niet te gebruiken, moet u de waarden bijwerken.
+* **commandToExecute:** Deze opdracht roept het script aan.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Zie de sectie ' de sjabloon implementeren ' in de [zelf studie: een Azure Resource Manager sjablonen met afhankelijke resources maken](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)voor de implementatie procedure. Het wordt aanbevolen een gegenereerd wachtwoord te gebruiken voor het beheerdersaccount van de virtuele machine. Zie de sectie [Vereisten](#prerequisites) van dit artikel voor meer informatie.
+Zie voor de implementatieprocedure het gedeelte 'De sjabloon implementeren' van [Zelfstudie: ARM-sjablonen maken met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Het wordt aanbevolen een gegenereerd wachtwoord te gebruiken voor het beheerdersaccount van de virtuele machine. Zie de sectie [Vereisten](#prerequisites) van dit artikel voor meer informatie.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
 1. Selecteer de VM in de Azure-portal.
-1. Kopieer in het overzicht van de virtuele machine het IP-adres door **klikken te selecteren om te kopiëren**en plak het vervolgens op een browser tabblad. De welkomst pagina van de standaard Internet Information Services (IIS) wordt geopend:
+1. Kopieer in het VM-overzicht het IP-adres door **Klik om te kopiëren te**selecteren en plak het vervolgens in een browsertabblad. De standaard welkomstpagina van Internet Information Services (IIS) wordt geopend:
 
 ![De welkomstpagina van Internet Information Services](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

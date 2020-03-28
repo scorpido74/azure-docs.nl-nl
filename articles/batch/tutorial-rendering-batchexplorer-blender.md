@@ -8,13 +8,13 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60617631"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Zelfstudie: Een met behulp van Batch Explorer Blender-scène renderen
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Zelfstudie: Een Blender-scène met Batch Explorer renderen
 
 Deze zelfstudie laat zien hoe u meerdere frames van een Blender-demoscène rendert. Blender wordt gebruikt voor de zelfstudie omdat de client en het renderen van virtuele machines gratis zijn, maar het proces is vergelijkbaar wanneer andere toepassingen, zoals Maya of 3ds Max, zouden worden gebruikt.
 
@@ -90,7 +90,7 @@ Maak een Batch-pool met rendering van de Microsoft Azure Marketplace VM-installa
 > [!WARNING]
 > Houd er rekening mee dat wanneer virtuele machines aanwezig zijn in een groep, de kosten van deze virtuele machines in rekening worden gebracht op uw Azure-abonnement. De groep of de virtuele machines moeten worden verwijderd om het in rekening brengen van de kosten te stoppen. Verwijder de groep aan het einde van deze zelfstudie om te voorkomen dat er nog kosten in rekening worden gebracht.
 
-De status van de groep van toepassingen en virtuele machines kan worden gecontroleerd in de weergave 'Groepen'; het volgende voorbeeld ziet u alle drie VM's zijn toegewezen, twee zijn gestart en niet actief zijn, een nog steeds wordt gestart: ![Heatmap van pool](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+De status van de pool van toepassingen en virtuele machines kan worden gecontroleerd in de weergave 'Pools'. In het volgende voorbeeld ziet u dat alle drie de VM's zijn toegewezen, twee zijn gestart en niet actief, een wordt nog steeds opgestart: ![Heatmap van pool](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>Een renderingtaak maken
 
@@ -109,25 +109,25 @@ Maak een renderingtaak voor het renderen van een aantal frames met behulp van de
 
 ![Sjabloon voor taken voor Blender](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-Zodra de job en alle taken zijn gemaakt, wordt de taak wordt weergegeven, samen met de taken: ![Lijst met taken](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+Zodra de job en alle taken zijn gemaakt, wordt de taak wordt weergegeven, samen met de opdrachten van de taak: ![Lijst met taakopdrachten](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Wanneer een taak voor de eerste keer start met uitvoeren op een VM-pool, wordt een voorbereidingsopdracht voor de Batch-taak uitgevoerd waarvan de scènebestanden uit de bestandsopslaggroep naar de virtuele machine worden gekopieerd, zodat ze kunnen worden geopend door Blender.
 De status van de weergave kan worden bepaald door het logboekbestand voor stdout.txt te bekijken dat wordt gemaakt door Blender.  Selecteer een taak. 'Taakuitvoer' wordt standaard weergegeven en het bestand 'stdout.txt' kan worden geselecteerd en bekeken.
 ![stdout-bestand](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-Als de blender-windows-groep is geselecteerd, wordt de pool-VM's worden weergegeven in een status running doorbrengt: ![Heatmap van pool bij het uitvoeren van knooppunten](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+Als de 'blender-windows'-pool is geselecteerd, is de groep virtuele machines zichtbaar in een uitvoerende status: ![Heatmap van pool waarbij knooppunten worden uitgevoerd](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 Het duurt enkele minuten om de gerenderde installatiekopieën te produceren, afhankelijk van de geselecteerde VM-grootte.  Met behulp van de eerder opgegeven VM F16 duurde het ongeveer 16 minuten om frames te renderen.
 
 ## <a name="view-the-rendering-output"></a>De gerenderde uitvoer bekijken
 
-Wanneer frames rendering hebt, worden deze taken worden weergegeven als voltooid: ![Taken uitvoeren](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Wanneer frames klaar zijn met renderen, worden deze taken weergegeven als voltooid: ![Taken voltooien](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-De gerenderde afbeelding worden geschreven naar de virtuele machine eerst en kan worden weergegeven door de map 'Word' te selecteren: ![Een installatiekopie op een knooppunt in de pool weergegeven](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+De gerenderde installatiekopie wordt eerst naar de virtuele machine geschreven en kan worden weergegeven door het selecteren van de map 'wd': ![Rendered afbeelding op een poolknooppunt](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-Het sjabloon van de taak geeft ook aan dat de uitvoerbestanden en logboekbestanden worden teruggeschreven naar de opgegeven Microsoft Azure Storage-accountgroep wanneer de taak is gemaakt.  De gebruikersinterface van 'gegevens' kan worden gebruikt om de logboeken; en de uitvoerbestanden weer te geven het kan ook worden gebruikt om de bestanden te downloaden: ![Afbeelding in bestand opslaggroep weergegeven](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+Het sjabloon van de taak geeft ook aan dat de uitvoerbestanden en logboekbestanden worden teruggeschreven naar de opgegeven Microsoft Azure Storage-accountgroep wanneer de taak is gemaakt.  De 'Gegevens'-gebruikersinterface kan worden gebruikt om de logboeken en de uitvoerbestanden weer te geven. Deze kan ook worden gebruikt om de bestanden te downloaden: ![Gerenderde installatiekopie in de opslaggroep van het bestand](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Wanneer alle taken zijn voltooid, wordt de taak wordt gemarkeerd als voltooid: ![Taak en alle taken zijn voltooid](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Wanneer alle taken zijn voltooid, wordt de taak gemarkeerd als voltooid: ![Taak en alle opdrachten zijn voltooid](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

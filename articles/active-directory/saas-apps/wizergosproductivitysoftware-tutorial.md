@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Wizergos productiviteitssoftware | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Wizergos productiviteitssoftware.
+title: 'Zelfstudie: Azure Active Directory-integratie met Wizergos Productivity Software | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Wizergos Productivity Software.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: b6491013cb35f2473eff6c2019fe2a80dd9e9b08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086988"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Zelfstudie: Azure Active Directory-integratie met Wizergos productiviteitssoftware
+# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Zelfstudie: Azure Active Directory-integratie met Wizergos Productivity Software
 
-In deze zelfstudie leert u hoe u Wizergos productiviteit om Software te integreren met Azure Active Directory (Azure AD).
-Wizergos productiviteitssoftware integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Wizergos Productivity Software integreren met Azure Active Directory (Azure AD).
+De integratie van Wizergos Productivity Software met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Wizergos productiviteitssoftware heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Wizergos productiviteitssoftware (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Wizergos Productivity Software.
+* U uw gebruikers automatisch laten inloggen op Wizergos Productivity Software (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Wizergos productiviteitssoftware, moet u de volgende items:
+Als u azure AD-integratie wilt configureren met Wizergos Productivity Software, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Wizergos productiviteitssoftware ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Wizergos Productivity Software single sign-on enabled subscription Wizergos Productivity Software
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor productiviteitssoftware Wizergos **IDP** gestart door SSO
+* Wizergos Productivity Software ondersteunt **IDP** geïnitieerde SSO
 
-## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Wizergos productiviteitssoftware uit de galerie toe te voegen
+## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Wizergos Productivity Software toevoegen vanuit de galerij
 
-Voor het configureren van de integratie van Wizergos productiviteitssoftware in Azure AD, moet u Wizergos productiviteitssoftware uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Wizergos Productivity Software in Azure AD wilt configureren, moet u Wizergos Productivity Software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Wizergos productiviteitssoftware in de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Wizergos Productivity Software uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Wizergos productiviteitssoftware in 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Wizergos productiviteitssoftware**, selecteer **Wizergos productiviteitssoftware** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Wizergos Productivity Software**in het zoekvak , selecteer **Wizergos Productivity Software** uit het resultaatpaneel en klik op Knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Wizergos productiviteitssoftware in de lijst met resultaten](common/search-new-app.png)
+     ![Wizergos Productivity Software in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Wizergos productiviteitssoftware op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Wizergos productiviteitssoftware tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Wizergos Productivity Software op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Wizergos Productivity Software.
 
-Als u wilt configureren en Azure AD eenmalige aanmelding met Wizergos productiviteitssoftware testen, moet u uitvoeren van de volgende bouwstenen:
+Als u Azure AD-singlesign-on wilt configureren en testen met Wizergos Productivity Software, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Wizergos productiviteit Software Single Sign-On](#configure-wizergos-productivity-software-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Wizergos productiviteitssoftware testgebruiker](#create-wizergos-productivity-software-test-user)**  : als u wilt een equivalent van Britta Simon in Wizergos productiviteitssoftware die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Wizergos Productivity Software Single Sign-On](#configure-wizergos-productivity-software-single-sign-on)** configureren om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Wizergos Productivity Software test gebruiker](#create-wizergos-productivity-software-test-user)** - om een tegenhanger van Britta Simon in Wizergos Productivity Software die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Wizergos productiviteitssoftware, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om azure AD single sign-on te configureren met Wizergos Productivity Software:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Wizergos productiviteitssoftware** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Wizergos Productivity** Software-toepassingsintegratie de optie **Enkele aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Wizergos productivit
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Wizergos productiviteit Software domein en URL's, eenmalige aanmelding informatie](common/idp-identifier.png)
+    ![Wizergos Productivity Software Domain en URL's single sign-on informatie](common/idp-identifier.png)
 
     In het tekstvak **Id** typt u een URL: `https://www.wizergos.net`
 
@@ -111,7 +111,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Wizergos productivit
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **Wizergos productiviteitssoftware instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **Wizergos Productivity Software** instellen de juiste URL(s) volgens uw eis.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -121,31 +121,31 @@ Voor het configureren van Azure AD eenmalige aanmelding met Wizergos productivit
 
     c. Afmeldings-URL
 
-### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Wizergos productiviteit Software eenmalige aanmelding configureren
+### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Wizergos-productiviteitssoftware eenmalig aanmelden configureren
 
-1. In een ander browservenster aanmelden voor uw tenant Wizergos productiviteitssoftware als een beheerder.
+1. Meld je in een ander browservenster aan bij de huurder van de Wizergos Productivity Software als beheerder.
 
-2. Selecteer in het hamburgermenu **Admin**.
+2. Selecteer In het hamburgermenu de optie **Beheerder**.
 
     ![Eenmalige aanmelding in de app configureren](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
-3. Selecteer in de beheerpagina in het menu links **verificatie** en klikt u op **Azure AD**.
+3. Selecteer in de pagina Beheerder in het menu AAN de linkerkant **VERIFICATIE** en klik op **Azure AD**.
 
     ![Eenmalige aanmelding in de app configureren](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
-4. Voer de volgende stappen uit op **verificatie** sectie.
+4. Voer de volgende stappen uit in de sectie **VERIFICATIE.**
 
     ![Eenmalige aanmelding in de app configureren](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a. Klik op **uploaden** knop om de gedownloade certificaat van Azure AD te uploaden.
+    a. Klik op de knop **UPLOADen** om het gedownloade certificaat te uploaden vanuit Azure AD.
     
-    b. In de **URL-verlener** tekstvak, plak de **Azure AD-id** waarde die u hebt gekopieerd vanuit Azure portal.
+    b. Plak in het tekstvak **van de url van de uitgever** de Azure **AD-id-waarde** die u hebt gekopieerd vanuit azure-portal.
     
-    c. In de **-URL met eenmalige aanmelding** tekstvak, plak de **aanmeldings-URL** waarde die u hebt gekopieerd vanuit Azure portal.
+    c. Plak in het tekstvak URL voor één aanmelding de **URL-waarde** **aanmelden** die u hebt gekopieerd van azure-portal.
     
-    d. In de **URL voor eenmalige afmelding** tekstvak, plak de **afmeldings-URL van** waarde die u hebt gekopieerd vanuit Azure portal.
+    d. Plak in het tekstvak URL voor één afmelding de **URL-waarde** **van afmelden** die u hebt gekopieerd uit azure-portal.
     
-    e. Klik op **opslaan** knop.
+    e. Klik op de knop **Save**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -163,25 +163,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Wizergos productiviteitssoftware.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Wizergos Productivity Software.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Wizergos productiviteitssoftware**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **vervolgens Wizergos Productivity Software**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Wizergos productiviteitssoftware**.
+2. Selecteer **Wizergos Productivity Software**in de lijst met toepassingen.
 
-    ![De koppeling Wizergos productiviteitssoftware in de lijst met toepassingen](common/all-applications.png)
+    ![De Wizergos Productivity Software link in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -191,27 +191,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-wizergos-productivity-software-test-user"></a>Wizergos productiviteitssoftware testgebruiker maken
+### <a name="create-wizergos-productivity-software-test-user"></a>Wizergos Productivity Software test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in Wizergos productiviteitssoftware. Werken met [Wizergos productiviteitssoftware ondersteuningsteam](mailTo:support@wizergos.com) om toe te voegen de gebruikers in het platform Software voor Wizergos productiviteit.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Wizergos Productivity Software. Werk samen met [wizergos Productivity Software support team](mailTo:support@wizergos.com) om de gebruikers toe te voegen in het Wizergos Productivity Software platform.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Wizergos productiviteitssoftware in het toegangsvenster, moet u worden automatisch aangemeld bij de Wizergos productiviteitssoftware waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Wizergos Productivity Software in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Wizergos Productivity Software waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368538"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474421"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Zelfstudie: PowerShell gebruiken om HSM's te implementeren in een bestaand virtueel netwerk
 
@@ -217,7 +217,7 @@ Het SSH-hulpprogramma wordt gebruikt om verbinding te maken met de virtuele mach
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Gebruik het wachtwoord uit het parameterbestand.
-Zodra u bent aangemeld bij de virtuele Linux-machine, kunt u zich aanmelden bij de HSM met behulp van het privé-IP-adres dat is gevonden in de portal voor de resource \<voor voegsel > hsm_vnic.
+Eenmaal aangemeld bij de Linux VM u inloggen op de HSM met \<behulp van het prive-IP-adres gevonden in de portal voor de bron voorvoegsel>hsm_vnic.
 
 ```powershell
 
@@ -245,20 +245,12 @@ Op dit moment hebt u alle resources toegewezen voor een implementatie van twee H
 
 ## <a name="delete-or-clean-up-resources"></a>Resources verwijderen of opschonen
 
-Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. De beste manier om ' zeroize ' een apparaat te verkrijgen, is het wacht woord voor de HSM-beheerder niet de juiste drie keer op te halen (Opmerking: dit is geen apparaat beheerder, het is de daad werkelijke HSM-beheerder). Als veiligheids maatregel om belang rijk materiaal te beschermen, kan het apparaat niet worden verwijderd als Azure-resource totdat het de status in nul heeft.
+Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. De beste manier om "zeroize" een apparaat is om de HSM admin wachtwoord verkeerd te krijgen 3 keer (let op: dit is niet toestel admin, het is de werkelijke HSM admin). Als veiligheidsmaatregel om belangrijk materiaal te beschermen, kan het apparaat niet worden verwijderd als een Azure-bron totdat het in de zeroized-status is.
 
 > [!NOTE]
 > Als u problemen hebt met de configuratie van een Gemalto-apparaat, neemt u contact op met [Gemalto-klantondersteuning](https://safenet.gemalto.com/technical-support/).
 
-Als u alleen de HSM-resource in azure wilt verwijderen, kunt u de volgende opdracht gebruiken om de $-variabelen te vervangen door uw unieke para meters:
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-Als u klaar bent met resources in deze resourcegroep, kunt u ze allemaal verwijderen door de volgende opdracht uit te voeren:
+Als u de HSM-bron in Azure wilt verwijderen, u de volgende opdracht gebruiken om de variabelen '$' te vervangen door uw unieke parameters:
 
 ```powershell
 
@@ -275,6 +267,6 @@ Wanneer u de stappen in de zelfstudie hebt voltooid, zijn toegewezen HSM-resourc
 
 * [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
-* [Netwerken](networking.md)
-* [Controle](monitoring.md)
+* [Networking](networking.md)
+* [Monitoring](monitoring.md)
 * [Ondersteuning](supportability.md)

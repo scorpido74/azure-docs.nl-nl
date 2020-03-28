@@ -2,25 +2,19 @@
 title: Azure CLI-voorbeeldscript - Blobcontainergrootte berekenen | Microsoft Docs
 description: Bereken de grootte van een container in Azure Blob Storage door de grootte van de blobs in de container op te tellen.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245052"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067113"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>De grootte van een Blob Storage-container berekenen
 
@@ -37,7 +31,7 @@ Met dit script wordt de grootte van een container in Azure Blob Storage berekend
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Opschonen van implementatie 
+## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
 Gebruik de volgende opdracht om de resourcegroep, container en alle gerelateerde resources te verwijderen.
 
@@ -57,6 +51,6 @@ In dit script worden de volgende opdrachten gebruikt om de grootte van de Blob S
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer CLI-voorbeeldscripts voor Storage vindt u in de [Azure CLI-voorbeelden voor Azure Blob Storage](../blobs/storage-samples-blobs-cli.md).

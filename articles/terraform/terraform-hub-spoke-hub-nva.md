@@ -1,40 +1,40 @@
 ---
-title: 'Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform'
-description: Zelf studie implementeert het maken van een hub-VNet dat fungeert als een algemeen verbindings punt tussen alle andere netwerken
+title: Zelfstudie - Een virtueel netwerktoestel voor hubs maken in Azure met Terraform
+description: Zelfstudie implementeert het maken van Hub VNet dat fungeert als een gemeenschappelijk verbindingspunt tussen alle andere netwerken
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159244"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Zelfstudie: Een virtueel netwerktoestel voor hubs maken in Azure met Terraform
 
-Een **VPN-apparaat** is een apparaat dat externe verbinding met een on-premises netwerk biedt. Het VPN-apparaat kan een hardwareapparaat of een software oplossing zijn. Een voor beeld van een software oplossing is route ring en Remote Access service (RRAS) in Windows Server 2012. Zie [over VPN-apparaten voor site-naar-site-VPN gateway verbindingen](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)voor meer informatie over VPN-apparatuur.
+Een **VPN-apparaat** is een apparaat dat externe connectiviteit biedt met een on-premises netwerk. Het VPN-apparaat kan een hardwareapparaat of een softwareoplossing zijn. Een voorbeeld van een softwareoplossing is Routing and Remote Access Service (RRAS) in Windows Server 2012. Zie [Over VPN-apparaten voor Site-to-Site VPN-gatewayverbindingen voor](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)meer informatie over VPN-apparaten.
 
-Azure biedt ondersteuning voor een breed scala aan virtuele netwerk apparaten waaruit u kunt kiezen. Voor deze zelf studie wordt een Ubuntu-afbeelding gebruikt. Ga naar de [Start pagina van netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/)voor meer informatie over de vele verschillende oplossingen die worden ondersteund in Azure.
+Azure ondersteunt een breed scala aan virtuele netwerkapparaten om uit te kiezen. Voor deze zelfstudie wordt een Ubuntu-afbeelding gebruikt. Zie de startpagina van [netwerkapparaten](https://azure.microsoft.com/solutions/network-appliances/)voor meer informatie over de grote verscheidenheid aan apparaatoplossingen die in Azure worden ondersteund.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Gebruik de HCL (HashiCorp Language) voor het implementeren van de hub VNet in hub-spoke-topologie
-> * Terraform gebruiken voor het maken van een hub netwerk virtuele machine die fungeert als apparaat
-> * Terraform gebruiken om routes in te scha kelen met behulp van CustomScript-extensies
-> * Terraform gebruiken voor het maken van hub-en spoke gateway-route tabellen
+> * Gebruik HCL (HashiCorp Language) om de Hub VNet te implementeren in hub-spoke topologie
+> * Terraform gebruiken om Hub Network Virtual Machine te maken die fungeert als toestel
+> * Terraform gebruiken om routes in te schakelen met CustomScript-extensies
+> * Terraform gebruiken om hub- en spoke-gatewayroutetabellen te maken
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
-1. [Maak een on-premises virtueel netwerk met terraform in azure](./terraform-hub-spoke-on-prem.md).
-1. [Een hub-virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-hub-network.md).
+1. [Maak een hub- en spoke hybride netwerktopologie met Terraform in Azure.](./terraform-hub-spoke-introduction.md)
+1. [On-premises virtueel netwerk maken met Terraform in Azure.](./terraform-hub-spoke-on-prem.md)
+1. [Maak een virtueel hubnetwerk met Terraform in Azure.](./terraform-hub-spoke-hub-network.md)
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
-1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
+1. Azure [Cloud Shell openen](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
     ![Cloud Shell-prompt](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -50,11 +50,11 @@ Deze zelfstudie bestaat uit de volgende taken:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-network-appliance"></a>Het hub-netwerk apparaat declareren
+## <a name="declare-the-hub-network-appliance"></a>Het hubnetwerktoestel declareren
 
-Maak het terraform-configuratie bestand dat een on-premises virtueel netwerk declareert.
+Maak het terraform-configuratiebestand dat een on-premises virtueel netwerk declareert.
 
-1. Maak in Cloud Shell een nieuw bestand met de naam `hub-nva.tf`.
+1. Maak in Cloud Shell een `hub-nva.tf`nieuw bestand met de naam .
 
     ```bash
     code hub-nva.tf
@@ -271,4 +271,4 @@ Maak het terraform-configuratie bestand dat een on-premises virtueel netwerk dec
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een spoke-virtuele netwerk maken met terraform in azure](./terraform-hub-spoke-spoke-network.md)
+> [Een gesproken virtuele netwerk maken met Terraform in Azure](./terraform-hub-spoke-spoke-network.md)

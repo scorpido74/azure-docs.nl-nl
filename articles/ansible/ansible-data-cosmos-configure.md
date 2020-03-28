@@ -1,28 +1,28 @@
 ---
-title: Zelf studie-Azure Cosmos DB accounts configureren met Ansible
-description: Meer informatie over het gebruik van Ansible voor het maken en configureren van een Azure Cosmos DB
-keywords: ansible, azure, devops, bash, Playbook, Cosmo DB, data base
+title: Zelfstudie - Azure Cosmos DB-accounts configureren met Ansible
+description: Meer informatie over het gebruik van Ansible om een Azure Cosmos DB te maken en te configureren
+keywords: ansible, azuurblauw, devops, bash, playbook, cosmo db, database
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156486"
 ---
-# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Zelf studie: Azure Cosmos DB accounts configureren met behulp van Ansible
+# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Zelfstudie: Azure Cosmos DB-accounts configureren met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure Cosmos DB](/azure/cosmos-db/) is een database service die ondersteuning biedt voor verschillende database typen. Deze database typen zijn onder andere document, sleutel waarde, brede kolom en grafiek. Met Ansible kunt u de implementatie en configuratie van resources in uw omgeving automatiseren.
+[Azure Cosmos DB](/azure/cosmos-db/) is een databaseservice die verschillende databasetypen ondersteunt. Deze databasestypen omvatten document, sleutelwaarde, brede kolom en grafiek. Met Ansible u de implementatie en configuratie van resources in uw omgeving automatiseren.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Een account maken
-> * De account sleutels ophalen
+> * De accountsleutels ophalen
 > * Het account verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
@@ -31,9 +31,9 @@ ms.locfileid: "74156486"
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>Een wille keurige achtervoegsel maken
+## <a name="create-a-random-postfix"></a>Een willekeurig postfix maken
 
-Het Playbook-voorbeeld fragment maakt een wille keurige achtervoegsel. De achtervoegsel wordt gebruikt als onderdeel van de naam van het Azure Cosmos DB-account.
+Het voorbeeld van playbook snippet maakt een willekeurig postfix. Het postfix wordt gebruikt als onderdeel van de naam van het Azure Cosmos DB-account.
 
 ```yml
   - hosts: localhost
@@ -46,7 +46,7 @@ Het Playbook-voorbeeld fragment maakt een wille keurige achtervoegsel. De achter
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
 
-Het Playbook-voorbeeld fragment maakt een Azure-resource groep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+In het voorbeeldvan playbook-fragment wordt een Azure-brongroep gemaakt. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 ```yml
   - name: Create a resource group
@@ -57,7 +57,7 @@ Het Playbook-voorbeeld fragment maakt een Azure-resource groep. Een resourcegroe
 
 ## <a name="create-virtual-network-and-subnet"></a>Virtueel netwerk en subnet maken
 
-Met de volgende code maakt u een virtueel netwerk en een subnet voor het Azure Cosmos DB account:
+Met de volgende code wordt een virtueel netwerk en subnet gemaakt voor het Azure Cosmos DB-account:
 
 ```yml
   - name: Create virtual network
@@ -106,11 +106,11 @@ Met de volgende code wordt het Cosmos DB-account gemaakt:
       enable_automatic_failover: yes
 ```
 
-Het kan enkele minuten duren voordat het account is gemaakt.
+Het maken van een account duurt enkele minuten.
 
 ## <a name="retrieve-the-keys"></a>De sleutels ophalen
 
-Met de volgende code worden de sleutels opgehaald die u in uw app kunt gebruiken.
+Met de volgende code worden de sleutels opgehaald die in uw app moeten worden gebruikt.
 
 ```yml
   - name: Get Cosmos DB Account facts with keys
@@ -125,9 +125,9 @@ Met de volgende code worden de sleutels opgehaald die u in uw app kunt gebruiken
       var: output
 ```
 
-## <a name="delete-the-azure-cosmos-db-account"></a>Het Azure Cosmos DB account verwijderen
+## <a name="delete-the-azure-cosmos-db-account"></a>Het Azure Cosmos DB-account verwijderen
 
-Ten slotte ziet u hoe een Azure Cosmos DB account moet worden verwijderd in het laatste fragment.
+Ten slotte laat het laatste fragment zien hoe u een Azure Cosmos DB-account verwijdert.
 
 ```yml
   - name: Delete instance of Cosmos DB Account
@@ -137,11 +137,11 @@ Ten slotte ziet u hoe een Azure Cosmos DB account moet worden verwijderd in het 
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>De voor beeld-Playbook ophalen
+## <a name="get-the-sample-playbook"></a>Download het voorbeeld van het draaiboek
 
-Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
-- [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) en sla deze op `cosmosdb.yml`.
-- Maak een nieuw bestand met de naam `cosmosdb.yml` en kopieer het naar de volgende inhoud:
+Er zijn twee manieren om het volledige voorbeeld playbook te krijgen:
+- [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) en `cosmosdb.yml`sla het op in .
+- Maak een nieuw `cosmosdb.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 ---
@@ -225,15 +225,15 @@ Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>Het voorbeeldvan het voorbeelddraaiboek uitvoeren
 
-In deze sectie voert u de Playbook uit om verschillende functies te testen die in dit artikel worden weer gegeven.
+Voer in deze sectie het draaiboek uit om verschillende functies in dit artikel te testen.
 
-Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
-- Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
-- Zorg ervoor dat de cosmosdbaccount_name alleen kleine letters bevat en wereld wijd uniek is.
+Breng de volgende wijzigingen aan voordat u het draaiboek uitvoert:
+- Vervang `vars` in de `{{ resource_group_name }}` sectie de tijdelijke aanduiding door de naam van uw resourcegroep.
+- Zorg ervoor dat de 'cosmosdbaccount_name alleen kleine letters bevat en wereldwijd uniek is.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -241,9 +241,9 @@ ansible-playbook cosmosdb.yml
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-Sla de volgende code op als `cleanup.yml`:
+Sla de volgende `cleanup.yml`code op als :
 
 ```yml
 - hosts: localhost
@@ -257,7 +257,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

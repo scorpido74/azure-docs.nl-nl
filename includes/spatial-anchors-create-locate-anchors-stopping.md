@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 6d6886996d926ce778600dfa1d69caaa1c7ac004
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67175756"
 ---
-## <a name="pause-reset-or-stop-the-session"></a>Onderbreken of stoppen van de sessie opnieuw instellen
+## <a name="pause-reset-or-stop-the-session"></a>De sessie onderbreken, opnieuw instellen of stoppen
 
-Stoppen van de sessie kunt u tijdelijk aanroepen `Stop()`. In dat geval stopt alle Volgers en verwerking van de omgeving, zelfs als u ProcessFrame() aanroepen. Vervolgens kunt u aanroepen `Start()` om de verwerking. Wanneer hervat, wordt omgevingsgegevens al is vastgelegd in de sessie bijgehouden.
+Als u de sessie tijdelijk `Stop()`wilt stoppen, u een beroep doen op. Als u dit doet, worden alle watchers en de verwerking van de omgeving gestopt, zelfs als u ProcessFrame() aanroept. U `Start()` vervolgens een beroep doen op de verwerking. Bij hervatting worden omgevingsgegevens die al in de sessie zijn vastgelegd, bijgehouden.

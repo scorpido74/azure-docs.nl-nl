@@ -9,10 +9,10 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d7ac457041474f4e774414b1d5e6f9ed09dc856
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67176132"
 ---
 <!-- this tells how to get the connection string for your hub -->
@@ -20,7 +20,7 @@ ms.locfileid: "67176132"
 
 Nadat uw hub is gemaakt, haalt u de verbindingsreeks voor de hub op. Deze wordt gebruikt om apparaten en toepassingen met uw hub te verbinden. 
 
-1. Klik op de hub om het deelvenster van IoT Hub weer te geven met Instellingen, enzovoort. Klik op **Gedeeld toegangsbeleid**.
+1. Klik op de hub om het deelvenster van IoT Hub weer te geven met Instellingen, enzovoort. Klik **op Beleid voor gedeelde toegang**.
    
 2. In **Gedeeld toegangsbeleid** selecteert u het beleid **iothubowner**. 
 

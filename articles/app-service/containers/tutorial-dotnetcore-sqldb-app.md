@@ -1,25 +1,25 @@
 ---
-title: 'Zelf studie: Linux ASP.NET Core met SQL DB'
-description: Meer informatie over het verkrijgen van een gegevensgestuurde Linux ASP.NET Core-app in Azure App Service, met verbinding met een SQL Database.
+title: 'Zelfstudie: Linux ASP.NET Core met SQL DB'
+description: Meer informatie over het gebruik van een datagestuurde Linux-ASP.NET Core-app in Azure App Service, met verbinding met een SQL-database.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 4de30b45aac9bb6b27474b1eaa0e8917760a6928
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524084"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045621"
 ---
-# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service in Linux
+# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Een ASP.NET Core- en SQL Database-app bouwen in Azure App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een .NET Core- en SQL Database-app maken in Azure App Service_ als u in App Service wilt implementeren in [Windows](../app-service-web-tutorial-dotnetcore-sqldb.md).
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een .NET Core- en SQL Database-app maken in Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md) als u in App Service wilt implementeren in _Windows_.
 >
 
-[App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die onder Linux in App Service wordt uitgevoerd.
+[Azure App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die onder Linux in App Service wordt uitgevoerd.
 
 ![app die onder Linux in App Service wordt uitgevoerd](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 Vereisten om deze zelfstudie te voltooien:
 
 * [Git installeren](https://git-scm.com/)
-* [Installeer .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* [.NET Core SDK 2.2 installeren](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 ## <a name="create-local-net-core-app"></a>Lokale .NET Core-app maken
 
@@ -48,7 +48,7 @@ In deze stap stelt u het lokale .NET Core-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-In het terminalvenster, `cd` in een werkmap.
+Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.
 
 Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen en de hoofdmap ervan te wijzigen.
 
@@ -89,9 +89,9 @@ Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Databas
 
 ### <a name="create-a-sql-database-logical-server"></a>Een logische SQL Database-server maken
 
-Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
+Maak in de Cloud Shell een logische [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) SQL Database-server met de opdracht.
 
-Vervang de tijdelijke aanduiding voor de *\<server naam >* door een unieke SQL database naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang ook *\<DB-gebruikers naam >* en *\<DB-wacht woord >* door de gebruikers naam en het wacht woord van uw keuze. 
+Vervang de * \<servernaam>* tijdelijke aanduiding door een unieke SQL-databasenaam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang ook * \<db-username>* en * \<db-password>* door een gebruikersnaam en wachtwoord naar keuze. 
 
 
 ```azurecli-interactive
@@ -126,7 +126,7 @@ Maak een [firewallregel op Azure SQL Database-serverniveau](../../sql-database/s
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
-### <a name="create-a-database"></a>Een database maken
+### <a name="create-a-database"></a>Database maken
 
 Maak een database met een [prestatieniveau van S0](../../sql-database/sql-database-service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
 
@@ -136,7 +136,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Verbindingsreeks maken
 
-Vervang de volgende teken reeks door de *\<server naam >* , *\<db-username >* en *\<db-wachtwoord >* die u eerder hebt gebruikt.
+Vervang de volgende tekenreeks door de * \<servernaam>, * * \<db-username>* en * \<db-password>* die u eerder hebt gebruikt.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -160,29 +160,29 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
-### <a name="configure-connection-string"></a>connection string configureren
+### <a name="configure-connection-string"></a>Verbindingstekenreeks configureren
 
-Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. Vervang in de volgende opdracht de *\<app-naam >* en de para meter *\<verbindingsteken reeks >* met de Connection String die u eerder hebt gemaakt.
+Als u verbindingstekenreeksen voor uw [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Azure-app wilt instellen, gebruikt u de opdracht in de Cloud Shell. Vervang * \<* * \< *in de volgende opdracht de>van de app-naam en de parameter>verbinding met de verbindingstekenreeks die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
-In ASP.NET Core kunt u deze benoemde connection string (`MyDbConnection`) gebruiken met het standaard patroon, zoals elke connection string die is opgegeven in *appSettings. json*. In dit geval wordt `MyDbConnection` ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
+In ASP.NET Core u deze`MyDbConnection`benoemde verbindingstekenreeks () gebruiken met behulp van het standaardpatroon, zoals elke verbindingstekenreeks die is opgegeven in *appsettings.json*. In dit `MyDbConnection` geval wordt ook gedefinieerd in uw *appsettings.json*. Wanneer u wordt uitgevoerd in App-service, heeft de verbindingstekenreeks die is gedefinieerd in App-service voorrang op de verbindingstekenreeks die is gedefinieerd in uw *appsettings.json*. De code gebruikt de waarde *appsettings.json* tijdens lokale ontwikkeling en dezelfde code gebruikt de waarde appservice wanneer deze wordt geïmplementeerd.
 
-Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in-production)om te zien hoe de Connection String in uw code wordt verwezen.
+Zie Verbinding maken met SQL Database in [productie](#connect-to-sql-database-in-production)om te zien hoe naar de verbindingstekenreeks wordt verwezen.
 
-### <a name="configure-environment-variable"></a>Omgevings variabele configureren
+### <a name="configure-environment-variable"></a>Omgevingsvariabele configureren
 
-Vervolgens stelt u de instelling voor de app `ASPNETCORE_ENVIRONMENT` in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
+Vervolgens stelt u de instelling voor de app `ASPNETCORE_ENVIRONMENT` in op _Productie_. Met deze instelling weet u of u actief bent in Azure, omdat u SQLite gebruikt voor uw lokale ontwikkelomgeving en SQL Database voor uw Azure-omgeving.
 
-In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de *\<app-naam >* .
+In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de * \<app-naam>* tijdelijke aanduiding.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
-Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in-production)om te zien hoe de omgevings variabele in uw code wordt verwezen.
+Zie Verbinding maken met SQL Database in [productie](#connect-to-sql-database-in-production)om te zien hoe naar de omgevingsvariabele wordt verwezen in uw code.
 
 ### <a name="connect-to-sql-database-in-production"></a>Verbinding maken met SQL Database in productie
 
@@ -208,9 +208,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Als deze code detecteert dat deze in productie wordt uitgevoerd (wat de Azure-omgeving aanduidt), gebruikt deze de connection string die u hebt geconfigureerd om verbinding te maken met de SQL Database. Zie [Access Environment Varia bles](configure-language-dotnetcore.md#access-environment-variables)(Engelstalig) voor meer informatie over de manier waarop app-instellingen worden gebruikt in app service.
+Als deze code detecteert dat deze in productie wordt uitgevoerd (wat de Azure-omgeving aangeeft), wordt de verbindingstekenreeks gebruikt die u hebt geconfigureerd om verbinding te maken met de SQL-database. Zie [Toegankelijkheidsomgevingsvariabelen](configure-language-dotnetcore.md#access-environment-variables)voor informatie over hoe app-instellingen worden geopend in App-service.
 
-De `Database.Migrate()`-aanroep helpt u wanneer deze wordt uitgevoerd in azure, omdat hiermee automatisch de data bases worden gemaakt die uw .NET core-app nodig heeft, op basis van de migratie configuratie.
+De `Database.Migrate()` oproep helpt u wanneer deze wordt uitgevoerd in Azure, omdat het automatisch de databases maakt die uw .NET Core-app nodig heeft, op basis van de migratieconfiguratie.
 
 Sla uw wijzigingen op en voer deze door naar de Git-opslagplaats.
 
@@ -357,7 +357,7 @@ Zodra `git push` is voltooid, gaat u naar de Azure-app en probeert u de nieuwe f
 
 ![Azure-app na Code First Migration](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
-Alle bestaande taakitems worden nog steeds weergegeven. Wanneer u uw .NET core-app opnieuw publiceert, gaan bestaande gegevens in uw SQL Database verloren. En met Entity Framework Core Migrations wordt alleen het gegevensschema gewijzigd. De bestaande gegevens blijven ongewijzigd.
+Alle bestaande taakitems worden nog steeds weergegeven. Wanneer u uw .NET Core-app opnieuw publiceert, gaan bestaande gegevens in uw SQL-database niet verloren. En met Entity Framework Core Migrations wordt alleen het gegevensschema gewijzigd. De bestaande gegevens blijven ongewijzigd.
 
 ## <a name="stream-diagnostic-logs"></a>Diagnostische logboeken streamen
 
@@ -404,9 +404,9 @@ Wat u hebt geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelfstudie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
-U kunt ook andere resources bekijken:
+Of bekijk andere bronnen:
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core-app configureren](configure-language-dotnetcore.md)

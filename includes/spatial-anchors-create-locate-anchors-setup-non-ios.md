@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67175739"
 ---
-## <a name="set-up-the-session"></a>Instellen van de sessie
+## <a name="set-up-the-session"></a>De sessie instellen
 
-Aanroepen `Start()` om in te schakelen van de sessie-omgeving om gegevens te verwerken.
+Een `Start()` beroep doen om uw sessie in staat te stellen omgevingsgegevens te verwerken.
 
-Koppel een gebeurtenis-handler voor het afhandelen van gebeurtenissen die worden gegenereerd door uw sessie.
+Als u gebeurtenissen wilt afhandelen die door uw sessie zijn opgehaald, koppelt u een gebeurtenishandler.

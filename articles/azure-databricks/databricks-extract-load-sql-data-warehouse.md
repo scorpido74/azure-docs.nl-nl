@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-ETL-bewerkingen uitvoeren met Azure Databricks
-description: In deze zelf studie leert u hoe u gegevens extraheert van Data Lake Storage Gen2 naar Azure Databricks, hoe u de gegevens transformeert en vervolgens de gegevens in Azure SQL Data Warehouse laadt.
+title: Zelfstudie - ETL-bewerkingen uitvoeren met Azure Databricks
+description: In deze zelfstudie leert u hoe u gegevens uit Data Lake Storage Gen2 extraheren in Azure Databricks, de gegevens transformeren en de gegevens vervolgens laden in Azure SQL Data Warehouse.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301689"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239417"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks
 
-In deze zelfstudie voert u een ETL-bewerking (Extraction, Transformation, and Loading) uit met behulp van Azure Databricks. U haalt gegevens op uit Azure Data Lake Storage Gen2 naar Azure Databricks, voert trans formaties uit op de gegevens in Azure Databricks en laadt de getransformeerde gegevens in Azure SQL Data Warehouse.
+In deze zelfstudie voert u een ETL-bewerking (Extraction, Transformation, and Loading) uit met behulp van Azure Databricks. U haalt gegevens uit Azure Data Lake Storage Gen2 uit in Azure Databricks, voert transformaties uit op de gegevens in Azure Databricks en laadt de getransformeerde gegevens in Azure SQL Data Warehouse.
 
 Voor de stappen in deze zelfstudie wordt gebruik gemaakt van de SQL Data Warehouse-connector voor Azure Databricks om gegevens over te dragen naar Azure Databricks. Op zijn beurt gebruikt deze connector Azure Blob Storage als tijdelijke opslag voor de gegevens die worden overgebracht tussen een Azure Databricks-cluster en Azure SQL Data Warehouse.
 
@@ -37,35 +37,35 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens transformeren in Azure Databricks.
 > * Gegevens laden in Azure SQL Data Warehouse.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 > [!Note]
-> Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Deze zelfstudie kan niet worden uitgevoerd met **azure free trial subscription**.
+> Als je een gratis account hebt, ga je naar je profiel en wijzig je je abonnement naar **betalen per gebruik.** Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Verwijder vervolgens [de bestedingslimiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraag een quotumverhoging aan](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor vCPU's in uw regio. Wanneer u uw Azure Databricks-werkruimte maakt, u de prijscategorie **Proefkeuzeprijzen (Premium - 14-dagen gratis DU's)** selecteren om de werkruimte gedurende 14 dagen toegang te geven tot gratis Premium Azure Databricks DU's.
      
 ## <a name="prerequisites"></a>Vereisten
 
 Voltooi deze taken voordat u aan deze zelfstudie begint:
 
-* Maak een Azure SQL Data Warehouse, maak een firewall regel op server niveau en maak verbinding met de server als server beheerder. Zie [Quick Start: een Azure SQL-Data Warehouse maken en er een query op uitvoeren in de Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Maak een Azure SQL-gegevensmagazijn, maak een firewallregel op serverniveau en maak verbinding met de server als serverbeheerder. Zie [Snelstart: een Azure SQL-gegevensmagazijn maken en opvragen in de Azure-portal.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 
-* Maak een hoofd sleutel voor Azure SQL Data Warehouse. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Maak een hoofdsleutel voor het Azure SQL-gegevensmagazijn. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Maak een Azure Blob-opslagaccount met daarin een container. Haal ook de toegangssleutel op voor toegang tot het opslagaccount. Zie [Quick Start: blobs uploaden, downloaden en vermelden met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Maak een Azure Blob-opslagaccount met daarin een container. Haal ook de toegangssleutel op voor toegang tot het opslagaccount. Zie [Snelstart: blobs uploaden, downloaden en weergeven met de Azure-portal.](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-* Een Azure Data Lake Storage Gen2-opslagaccount maken. Zie [Quick Start: een Azure data Lake Storage Gen2-opslag account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Een Azure Data Lake Storage Gen2-opslagaccount maken. Zie [Snelstart: maak een Azure Data Lake Storage Gen2-opslagaccount](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Een service-principal maken. Zie [Hoe: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang hebben tot bronnen.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 
    Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-   * Bij het uitvoeren van de stappen in de sectie [de toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u ervoor zorgen dat u de rol voor **blobgegevens voor gegevens opslag** toewijst aan de Service-Principal in het bereik van het data Lake Storage Gen2-account. Als u de rol toewijst aan de bovenliggende resource groep of het abonnement, ontvangt u aan machtigingen gerelateerde fouten tot deze roltoewijzingen worden door gegeven aan het opslag account.
+   * Wanneer u de stappen uitvoert in de [toepassing Toewijzen aan een rolsectie](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) van het artikel, moet u de rol **Opslagblobgegevensbijdrager** toewijzen aan de serviceprincipal in het bereik van het Gen2-account gegevensopslagopslag. Als u de rol toewijst aan de bovenliggende resourcegroep of -abonnement, ontvangt u fouten die betrekking hebben op machtigingen totdat deze roltoewijzingen worden doorgegeven aan het opslagaccount.
 
-      Als u liever een toegangs beheer lijst (ACL) wilt gebruiken om de service-principal te koppelen aan een specifiek bestand of een specifieke directory, verwijst u naar het [toegangs beheer in azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+      Als u liever een toegangscontrolelijst (ACL) gebruikt om de serviceprincipal te koppelen aan een specifiek bestand of een specifieke map, raadpleegt u [toegangsbeheer in Azure Data Lake Storage Gen2.](../storage/blobs/data-lake-storage-access-control.md)
 
-   * Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel plakt u de Tenant-id, app-id en geheime waarden in een tekst bestand. U hebt deze binnenkort nodig.
+   * Wanneer u de stappen uitvoert in het gedeelte [Waarden downloaden voor aanmelden in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel, plakt u de tenant-id, app-id en geheime waarden in een tekstbestand. U hebt deze binnenkort nodig.
 
-* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+* Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Verzamel de benodigde informatie
 
@@ -73,29 +73,29 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
    Voor u begint, moet u de volgende gegevens hebben:
 
-   : heavy_check_mark: de naam van de data base, de naam van de database server, de gebruikers naam en het wacht woord van uw Azure SQL Data Warehouse.
+   :heavy_check_mark: de databasenaam, de naam van de databaseserver, de gebruikersnaam en het wachtwoord van uw Azure SQL Data-magazijn.
 
-   : heavy_check_mark: de toegangs sleutel van uw Blob Storage-account.
+   :heavy_check_mark: de toegangssleutel van uw blob-opslagaccount.
 
-   : heavy_check_mark: de naam van uw Data Lake Storage Gen2 Storage-account.
+   :heavy_check_mark: de naam van uw Data Lake Storage Gen2-opslagaccount.
 
-   : heavy_check_mark: de Tenant-ID van uw abonnement.
+   :heavy_check_mark: De tenant-id van uw abonnement.
 
-   : heavy_check_mark: de toepassings-ID van de app die u hebt geregistreerd bij Azure Active Directory (Azure AD).
+   :heavy_check_mark: de toepassings-id van de app die u hebt geregistreerd bij Azure Active Directory (Azure AD).
 
-   : heavy_check_mark: de verificatie sleutel voor de app die u hebt geregistreerd bij Azure AD.
+   :heavy_check_mark: de verificatiesleutel voor de app die u hebt geregistreerd bij Azure AD.
 
 ## <a name="create-an-azure-databricks-service"></a>Een Azure Databricks-service maken
 
 In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azure-portal.
 
-1. Selecteer in het menu Azure Portal de optie **een resource maken**.
+1. Selecteer in het menu azure portal de optie **Een resource maken**.
 
-    ![Een resource maken op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+    ![Een resource maken op Azure-portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
 
     Selecteer vervolgens **Analytics** > **Azure Databricks**.
 
-    ![Azure Databricks maken op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+    ![Azure Databricks maken op Azure-portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
 
 
 
@@ -107,7 +107,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **VS - west 2**.  Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.      |
-    |**Prijscategorie**     |  selecteer **Standaard**.     |
+    |**Prijsniveau**     |  Selecteer **Standaard**.     |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -123,13 +123,13 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
+    ![Databricks Spark-cluster maken op Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Databricks Spark-cluster maken op Azure")
 
 4. Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
 
     * Voer een naam in voor het cluster.
 
-    * Zorg ervoor dat u het selectievakje **Beëindigen na \_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
+    * Schakel het selectievakje **Beëindigen \_ \_ na minuten inactiviteit in.** Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
 
     * Selecteer **Cluster maken**. Als het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Apache Spark-taken uitvoeren.
 
@@ -137,31 +137,31 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
 In deze sectie maakt u een notebook in de Azure Databricks-werkruimte en voert u vervolgens codefragmenten uit om het opslagaccount te configureren
 
-1. Ga in de [Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
+1. Ga in de [Microsoft Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
 
 2. Selecteer aan de linkerkant **Werkruimte**. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitie blok maken in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Een notitie blok maken in Databricks")
+    ![Een notitieblok maken in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 3. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Details opgeven voor een notitie blok in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Details opgeven voor een notitie blok in Databricks")
+    ![Details geven voor een notitieblok in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Details geven voor een notitieblok in Databricks")
 
 4. Selecteer **Maken**.
 
-5. In het volgende code blok worden de standaard referenties voor de Service-Principal ingesteld voor elk ADLS gen 2-account dat in de Spark-sessie wordt geopend. Het tweede code blok voegt de account naam toe aan de instelling om referenties op te geven voor een specifiek ADLS gen 2-account.  Kopieer en plak een van beide code blokken in de eerste cel van uw Azure Databricks notitie blok.
+5. In het volgende codeblok worden standaardservicehoofdreferenties ingesteld voor elk ADLS Gen 2-account dat is geopend in de Spark-sessie. Het tweede codeblok voegt de accountnaam toe aan de instelling om referenties op te geven voor een specifiek ADLS Gen 2-account.  Kopieer en plak een codeblok in de eerste cel van uw Azure Databricks-notitieblok.
 
-   **Sessie configuratie**
+   **Sessieconfiguratie**
 
    ```scala
    val appID = "<appID>"
-   val password = "<password>"
+   val secret = "<secret>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<secret>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    ```
@@ -343,7 +343,7 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Geef de waarden op om verbinding te maken met de Azure SQL Data Warehouse-instantie. U moet als vereiste een SQL-datawarehouse hebben gemaakt. Gebruik de volledig gekwalificeerde server naam voor **dwServer**. Bijvoorbeeld `<servername>.database.windows.net`.
+4. Geef de waarden op om verbinding te maken met de Azure SQL Data Warehouse-instantie. U moet als vereiste een SQL-datawarehouse hebben gemaakt. Gebruik de volledig gekwalificeerde servernaam voor **dwServer.** Bijvoorbeeld `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings
@@ -368,29 +368,29 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    ```
 
    > [!NOTE]
-   > In dit voor beeld wordt gebruikgemaakt van de `forward_spark_azure_storage_credentials` vlag, waarmee SQL Data Warehouse toegang krijgt tot gegevens uit de Blob-opslag met behulp van een toegangs sleutel. Dit is de enige ondersteunde verificatie methode.
+   > In dit `forward_spark_azure_storage_credentials` voorbeeld wordt de vlag gebruikt, waardoor SQL Data Warehouse toegang krijgt tot gegevens uit blobopslag met behulp van een Access-sleutel. Dit is de enige ondersteunde verificatiemethode.
    >
-   > Als uw Azure-Blob Storage is beperkt tot het selecteren van virtuele netwerken, heeft SQL Data Warehouse [Managed Service Identity vereist in plaats van toegangs sleutels](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dit leidt ertoe dat de fout ' deze aanvraag is niet gemachtigd om deze bewerking uit te voeren. '
+   > Als uw Azure Blob Storage is beperkt tot het selecteren van virtuele netwerken, vereist SQL Data Warehouse [Managed Service Identity in plaats van Access Keys.](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) Dit zal de fout veroorzaken "Deze aanvraag is niet gemachtigd om deze bewerking uit te voeren."
 
 6. Maak verbinding met de SQL-database en controleer of u de database **SampleTable** ziet.
 
-   ![De voorbeeld tabel verifiëren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Voorbeeld tabel verifiëren")
+   ![De voorbeeldtabel verifiëren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Voorbeeldtabel verifiëren")
 
 7. Voer een Select-query uit om de inhoud van de tabel te controleren. De tabel moet dezelfde gegevens bevatten als het dataframe **renamedColumnsDF**.
 
-    ![De inhoud van de voorbeeld tabel controleren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "De inhoud van de voorbeeld tabel controleren")
+    ![De inhoud van de voorbeeldtabel verifiëren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "De inhoud van de voorbeeldtabel verifiëren")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Selecteer links **Clusters** vanuit de Azure Databricks-werkruimte. Als u het cluster wilt beëindigen, wijst u onder **Acties** het beletselteken (...) aan en selecteert u het pictogram **Beëindigen**.
 
-![Een Databricks-cluster stoppen](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
+![Een cluster met Databricks stoppen](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Een cluster met Databricks stoppen")
 
-Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten van inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
+Als u het cluster niet handmatig beëindigt, wordt het automatisch gestopt, op voorwaarde dat u het selectievakje **Beëindigen na \_ \_ minuten van inactiviteit** hebt ingeschakeld toen u het cluster maakte. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-service maken

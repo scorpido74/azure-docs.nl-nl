@@ -10,15 +10,15 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67176655"
 ---
 1. Open in de browser de [Azure Marketplace-installatiekopie voor Jenkins](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
-1. Selecteer **GET IT NOW**.
+1. Selecteer **Nu ophalen**.
 
     ![Selecteer GET IT NOW om het installatieproces te starten voor de Jenkins Marketplace-installatiekopie.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "67176655"
    - **Openbare SSH-sleutel**: kopieer en plak een openbare RSA-sleutel in een indeling met één regel (de sleutel moet beginnen met `ssh-rsa`) of in de PEM-indeling met meerdere regels. U kunt SSH-sleutels genereren met ssh-keygen in Linux en macOS, of met PuTTYGen in Windows. Raadpleeg het artikel [SSH-sleutels gebruiken met Windows in Azure](/azure/virtual-machines/linux/ssh-from-windows) voor meer informatie over SSH-sleutels en Azure.
    - **Abonnement**: selecteer het Azure-abonnement waarin u Jenkins wilt installeren.
    - **Resourcegroep**: selecteer **Nieuwe maken** en voer een naam in voor de resourcegroep die dient als logische container voor de verzameling resources die samen de Jenkins-installatie vormen.
-   - **Locatie**: selecteer **US - oost**.
+   - **Locatie**: selecteer **VS - oost**.
 
      ![Voer op het tabblad Basisinformatie de verificatie en resourcegroep voor Jenkins in.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "67176655"
    - **Subnetten**: selecteer **Subnetten**, controleer de gegevens en selecteer **OK**.
    - **Openbaar IP-adres**: de naam van het IP-adres is standaard de Jenkins-naam die u hebt opgegeven op de vorige pagina, met het achtervoegsel -IP. U kunt ervoor kiezen om deze standaardinstelling te wijzigen.
    - **Domeinnaamlabel**: geef de waarde op voor de volledig gekwalificeerde URL naar de virtuele Jenkins-machine.
-   - **Jenkins-releasetype**: selecteer het gewenste releasetype uit de opties: `LTS`, `Weekly build` of `Azure Verified`. De opties `LTS` en `Weekly build` worden toegelicht in het artikel [Jenkins LTS Release Line](https://jenkins.io/download/lts/). De optie `Azure Verified` verwijst naar een [Jenkins LTS-versie](https://jenkins.io/download/lts/) die is geverifieerd voor uitvoering in Azure. 
+   - **Jenkins release type** - Selecteer het gewenste `LTS` `Weekly build`releasetype `Azure Verified`in de opties: , , of . De opties `LTS` en `Weekly build` worden toegelicht in het artikel [Jenkins LTS Release Line](https://jenkins.io/download/lts/). De optie `Azure Verified` verwijst naar een [Jenkins LTS-versie](https://jenkins.io/download/lts/) die is geverifieerd voor uitvoering in Azure. 
    - **JDK-type**: JDK die moet worden geïnstalleerd. Standaard wordt Zulu getest, gecertificeerde builds van OpenJDK.
 
      ![Voer op het tabblad Instellingen de instellingen in voor de virtuele Jenkins-machine.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
