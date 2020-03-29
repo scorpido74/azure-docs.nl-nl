@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array apparaat overzichtsblade | Microsoft Docs
-description: Beschrijving van de blade samenvatting voor StorSimple Device Manager en wordt uitgelegd hoe u deze gebruiken voor het bewaken van de status van uw StorSimple Virtual Array.
+title: StorSimple Virtual Array-apparaatoverzichtsblad | Microsoft Documenten
+description: Beschrijft het apparaatoverzichtsblad voor StorSimple Device Manager en legt uit hoe u het gebruiken om de status van uw StorSimple Virtual Array te controleren.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408479"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Gebruik de blade samenvatting voor StorSimple Device Manager is verbonden met StorSimple Virtual Array
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Het apparaatoverzichtsblad gebruiken voor StorSimple Device Manager dat is aangesloten op StorSimple Virtual Array
 
 ## <a name="overview"></a>Overzicht
 
-De blade StorSimple Device Manager geeft een overzicht van een StorSimple Virtual Array die is geregistreerd met een opgegeven StorSimple Device Manager markeren die apparaat-problemen die aandacht vereist een systeembeheerder. In deze zelfstudie introduceert de overzichtsblade van het apparaat, wordt de inhoud en de functie uitgelegd en beschrijft de taken die u vanaf deze blade uitvoeren kunt.
+Het StorSimple Device Manager-apparaatblad biedt een overzicht van een StorSimple Virtual Array die is geregistreerd bij een bepaalde StorSimple Device Manager, waarbij de apparaatproblemen worden benadrukt die de aandacht van een systeembeheerder nodig hebben. Deze zelfstudie introduceert het apparaatoverzichtsblad, legt de inhoud en functie uit en beschrijft de taken die u vanaf dit blad uitvoeren.
 
-De blade samenvatting bevat de volgende informatie:
+Op het overzichtsblad van het apparaat worden de volgende gegevens weergegeven:
 
 ![Apparaatdashboard](./media/storsimple-virtual-array-device-summary/device-blade.png)
 
@@ -35,25 +35,25 @@ De blade samenvatting bevat de volgende informatie:
 
 ## <a name="management"></a>Beheer
 
-In de blade van de StorSimple-apparaat ziet u de opties voor het beheren van uw StorSimple-apparaat. Aan de bovenkant van de blade en aan de linkerkant ziet u de opdrachten voor het beheer. Gebruik deze opties shares of volumes, toevoegen of bijwerken of failover van uw virtuele matrix.
+In het StorSimple-apparaatblad ziet u de opties voor het beheren van uw StorSimple-apparaat. U ziet de management commando's over de bovenkant van het blad en aan de linkerkant. Gebruik deze opties om aandelen of volumes toe te voegen of bij te werken of te mislukken via uw virtuele array.
 
-Het gebied essentials bevat enkele belangrijke eigenschappen, zoals de status, model, softwareversie, evenals een koppeling naar de **Webgebruikersinterface** van de matrix. Als u van een intern netwerk gebruikmaakt, kunt u rechtstreeks starten de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor het beheren van uw virtuele matrix.
+Het gebied essentials vangt een aantal van de belangrijke eigenschappen, zoals de status, het model, de softwareversie en een link naar de **web-gebruikersinterface** van de array. Als u zich op een intern netwerk bevindt, u de [lokale webgebruikersinterface](storsimple-ova-web-ui-admin.md) rechtstreeks starten om uw virtuele array te beheren.
 
-![Apparaat essentials](./media/storsimple-virtual-array-device-summary/device-essentials.png)
+![Apparaatbenodigdheden](./media/storsimple-virtual-array-device-summary/device-essentials.png)
 
-## <a name="storsimple-device-summary"></a>Overzicht StorSimple-apparaat
+## <a name="storsimple-device-summary"></a>StorSimple-apparaatoverzicht
 
-* De **waarschuwingen** tegel biedt een momentopname van de actieve waarschuwingen voor uw virtuele array, gegroepeerd op ernst van waarschuwing. Klik op de tegel te openen de **waarschuwingen** blade en klik vervolgens op een afzonderlijke waarschuwing om weer te geven aanvullende informatie over deze waarschuwing, inclusief alle aanbevolen acties. U kunt ook de waarschuwing wissen als het probleem is opgelost.
+* De tegel **Waarschuwingen** biedt een momentopname van alle actieve waarschuwingen voor uw virtuele array, gegroepeerd op waarschuwingsernst. Klik op de tegel om het zwaard **Waarschuwingen** te openen en klik vervolgens op een afzonderlijke waarschuwing om aanvullende details over die waarschuwing weer te geven, inclusief aanbevolen acties. U de waarschuwing ook wissen als het probleem is opgelost.
 
-* De **capaciteit** tegel toont de primaire opslag die is ingericht en resterende binnen het virtuele apparaat ten opzichte van de totale beschikbare opslag voor dezelfde. **Ingericht** verwijst naar de hoeveelheid opslag die is voorbereid en is toegewezen voor gebruik, **resterend** verwijst naar de resterende capaciteit die kan worden ingericht op dit apparaat. De **resterende gelaagde** capaciteit is de beschikbare capaciteit die kan worden ingericht met inbegrip van de cloud, terwijl de **resterende lokale** de resterende capaciteit op de schijven die zijn gekoppeld aan deze virtuele matrix is.
+* De tegel **Capaciteit** geeft de primaire opslag weer die is ingericht en over het virtuele apparaat blijft ten opzichte van de totale opslagruimte die beschikbaar is voor hetzelfde. **Provisioned** verwijst naar de hoeveelheid opslagruimte die is voorbereid en toegewezen voor gebruik, **Remaining** verwijst naar de resterende capaciteit die kan worden ingericht over dit apparaat. De **resterende gelaagde** capaciteit is de beschikbare capaciteit die kan worden ingericht, inclusief cloud, terwijl **de resterende lokale** is de capaciteit die overblijft op de schijven die zijn gekoppeld aan deze virtuele array.
 
-* In de **gebruik** grafiek, u kunt weergeven die worden gebruikt in uw virtuele array primaire opslag, evenals de opslag in de cloud gebruikt gedurende de afgelopen 7 dagen, de standaard time-outperiode. Gebruik de **bewerken** optie in de rechterbovenhoek van de grafiek naar een ander tijdstip schaal kiezen.
+* In de grafiek **Gebruik** u de primaire opslag weergeven die wordt gebruikt voor uw virtuele array en de cloudopslag die in de afgelopen zeven dagen is verbruikt, de standaardperiode. Gebruik de optie **Bewerken** in de rechterbovenhoek van de grafiek om een andere tijdschaal te kiezen.
 
-* De **Shares** of **Volumes** tegel bevat een samenvatting van het aantal shares of volumes op uw apparaat op status gegroepeerd. Klik op de tegel te openen de **Shares** of **Volumes** blade lijst en klik vervolgens op een afzonderlijke share of een volume weergeven of wijzigen van de eigenschappen ervan. Zie voor meer informatie over het [beheren van bestandsshares](storsimple-virtual-array-manage-shares.md) of [volumes beheren](storsimple-virtual-array-manage-volumes.md).
+* De tegel **Aandelen** of **Volumes** geeft een overzicht van het aantal aandelen of volumes in uw apparaat gegroepeerd op status. Klik op de tegel om het lijstblad **Aandelen** of **Volumes** te openen en klik vervolgens op een afzonderlijk aandeel of volume om de eigenschappen ervan weer te geven of te wijzigen. Zie voor meer informatie hoe [u aandelen beheert](storsimple-virtual-array-manage-shares.md) of volumes [beheert](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Leer hoe u het volgende doet:
-- [Beheren van bestandsshares op een StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md)
+- [Aandelen beheren op een StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md)
     
-- [Beheren van volumes op een StorSimple Virtual Array](storsimple-virtual-array-manage-volumes.md)
+- [Volumes beheren op een StorSimple Virtual Array](storsimple-virtual-array-manage-volumes.md)
 

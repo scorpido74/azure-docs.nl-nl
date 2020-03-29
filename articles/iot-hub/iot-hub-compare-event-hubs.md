@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub met Azure Eventhubs vergelijken | Microsoft Docs
-description: Een vergelijking van de IoT Hub en Event Hubs-Azure-services markering functionele verschillen en use-cases. De vergelijking bevat de ondersteunde protocollen, beheer van apparaten, bewaking, en uploaden van bestanden.
+title: Azure IoT Hub vergelijken met Azure Event Hubs | Microsoft Documenten
+description: Een vergelijking van de Azure-services van IoT Hub en Event Hubs die functionele verschillen en use cases benadrukken. De vergelijking omvat ondersteunde protocollen, apparaatbeheer, bewaking en bestandsuploads.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735509"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-apparaten verbinden met Azure: IoT Hub en Eventhubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT-apparaten verbinden met Azure: IoT Hub en Event Hubs
 
-Azure biedt speciaal ontwikkeld voor diverse typen connectiviteit en communicatie kunt u uw gegevens verbinden met de kracht van de cloud. Zowel Azure IoT Hub en Azure Event Hubs zijn cloud-services die u kunnen opnemen van grote hoeveelheden gegevens en verwerken of opslaan van die gegevens voor zakelijke inzichten worden verkregen. De twee services zijn vergelijkbaar in dat deze beide ondersteuning bieden voor opname van gegevens met lage latentie en hoge betrouwbaarheid, maar ze zijn ontworpen voor verschillende doeleinden. IoT Hub is ontwikkeld om de unieke vereisten van de IoT-apparaten verbinden met de Azure-cloud terwijl Event Hubs is ontworpen voor het streamen van big data op te lossen. Microsoft raadt het gebruik van Azure IoT Hub IoT-apparaten verbinden met Azure
+Azure biedt services die speciaal zijn ontwikkeld voor verschillende soorten connectiviteit en communicatie om u te helpen uw gegevens te verbinden met de kracht van de cloud. Zowel Azure IoT Hub als Azure Event Hubs zijn cloudservices die grote hoeveelheden gegevens kunnen opnemen en die gegevens kunnen verwerken of opslaan voor bedrijfsinzichten. De twee services zijn vergelijkbaar omdat ze beide ondersteuning bieden voor het innemen van gegevens met een lage latentie en hoge betrouwbaarheid, maar ze zijn ontworpen voor verschillende doeleinden. IoT Hub is ontwikkeld om tegemoet te komen aan de unieke vereisten voor het verbinden van IoT-apparaten met de Azure-cloud, terwijl Event Hubs is ontworpen voor het streamen van big data. Microsoft raadt aan Azure IoT Hub te gebruiken om IoT-apparaten te verbinden met Azure
 
-Azure IoT Hub is de cloudgateway die wordt aangesloten IoT-apparaten voor het verzamelen van gegevens en tot zakelijke inzichten en automatisering. IoT Hub bevat bovendien functies die de relatie tussen uw apparaten en uw back-endsystemen verrijken. Bi-directionele communicatiemogelijkheden betekenen dat terwijl u gegevens ontvangt van apparaten u ook opdrachten te verzenden kunt en beleidsregels voor back-ups op apparaten maken. Gebruik bijvoorbeeld cloud-naar-apparaat berichten voor het bijwerken van eigenschappen of aanroepen van acties voor het beheer van apparaten. Communicatie van cloud-naar-apparaat kunt u ook met Azure IoT Edge intelligentie van de cloud naar uw edge-apparaten verzenden. De unieke id van op apparaatniveau opgegeven IoT Hub biedt betere beveiliging, helpt uw IoT-oplossing van mogelijke aanvallen. 
+Azure IoT Hub is de cloudgateway die IoT-apparaten verbindt om gegevens te verzamelen en bedrijfsinzichten en automatisering te stimuleren. Daarnaast bevat IoT Hub functies die de relatie tussen uw apparaten en uw backend-systemen verrijken. Bidirectionele communicatiemogelijkheden betekenen dat u, terwijl u gegevens van apparaten ontvangt, ook opdrachten en beleidsregels terug sturen naar apparaten. Gebruik bijvoorbeeld cloud-to-device messaging om eigenschappen bij te werken of apparaatbeheeracties aan te roepen. Cloud-to-device-communicatie stelt u ook in staat om cloudintelligence naar uw edge-apparaten te sturen met Azure IoT Edge. De unieke identiteit op apparaatniveau van IoT Hub helpt uw IoT-oplossing beter te beveiligen tegen mogelijke aanvallen. 
 
-[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) is van de big data. de service van Azure. Het is ontworpen voor hoge gegevensdoorvoer streaming scenario's waarbij klanten miljarden aanvragen per dag verzenden. Eventhubs maakt gebruik van een basis van gepartitioneerd gebruik-model uit uw stream te schalen en is geïntegreerd in de big data- en analyseservices van Azure, met inbegrip van Databricks, Stream Analytics, ADLS en HDInsight. Deze service is ontworpen met functies zoals Event Hubs Capture en automatisch vergroten, ter ondersteuning van uw big data-toepassingen en oplossingen. IoT Hub worden Event Hubs gebruikt voor het pad van de stroom telemetrie, zodat uw IoT-oplossing ook van de enorme mogelijkheden van Event Hubs profiteren.
+[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) is de big data streaming service van Azure. Het is ontworpen voor scenario's voor gegevensstromen met een hoge doorvoer waarbij klanten miljarden aanvragen per dag kunnen verzenden. Event Hubs maakt gebruik van een gepartitioneerd verbruikersmodel om uw stroom uit te breiden, en is geïntegreerd in de big data- en analyseservices van Azure, met inbegrip van Databricks, Stream Analytics, ADLS en HDInsight. Met functies zoals Event Hubs Capture en Auto-Inflate, is deze service ontworpen om uw big data-apps en -oplossingen te ondersteunen. Daarnaast gebruikt IoT Hub Event Hubs voor het telemetriestroompad, zodat uw IoT-oplossing ook profiteert van de enorme kracht van Event Hubs.
 
-Beide oplossingen zijn ontworpen om samen te vatten, voor opname van gegevens op een zeer grote schaal. Alleen IoT Hub biedt de uitgebreide IoT-specifieke mogelijkheden die zijn ontworpen voor u de waarde voor het bedrijf van uw IoT-apparaten verbinden met de Azure-cloud te maximaliseren.  Als uw IoT-traject net begint, basismodel beginnend met IoT Hub ter ondersteuning van uw gegevens opnemen's u hebt direct toegang tot de complete IoT-capaciteiten zodra uw zakelijke en technische behoeften ze nodig hebben.
+Om samen te vatten, beide oplossingen zijn ontworpen voor het innemen van gegevens op grote schaal. Alleen IoT Hub biedt de uitgebreide IoT-specifieke mogelijkheden die zijn ontworpen voor u om de bedrijfswaarde van het verbinden van uw IoT-apparaten met de Azure-cloud te maximaliseren.  Als uw IoT-reis nog maar net is begonnen, zorgt u ervoor dat u vanaf het begin met IoT Hub uw scenario's voor het innemen van gegevens direct toegang hebt tot de volledige IoT-mogelijkheden zodra uw bedrijf en technische behoeften dit vereisen.
 
-De volgende tabel bevat informatie over hoe de twee niveaus van IoT-Hub met Event Hubs vergelijken als u ze voor IoT-mogelijkheden evalueren wilt. Zie voor meer informatie over de lagen standard en basic van IoT-Hub, [u bij het kiezen van de juiste IoT Hub-laag](iot-hub-scaling.md).
+In de volgende tabel vindt u meer informatie over hoe de twee lagen IoT Hub zich verhouden tot gebeurtenishubs wanneer u ze evalueert op IoT-mogelijkheden. Zie Hoe u [de juiste IoT Hub-laag kiest](iot-hub-scaling.md)voor meer informatie over de standaard- en basislagen van IoT Hub.
 
-| IoT-mogelijkheid | Standard-laag van IoT Hub | IoT Hub basic-laag | Event Hubs |
+| IoT-mogelijkheden | Standaardlaag IoT Hub | Basislaag voor IoT-hub | Event Hubs |
 | --- | --- | --- | --- |
-| Apparaat-naar-cloud-berichten | ![Selecteren][checkmark] | ![Selecteren][checkmark] | ![Selecteren][checkmark] |
+| Device-to-cloud berichten | ![Selecteren][checkmark] | ![Selecteren][checkmark] | ![Selecteren][checkmark] |
 | Protocollen: HTTPS, AMQP, AMQP via webSockets | ![Selecteren][checkmark] | ![Selecteren][checkmark] | ![Selecteren][checkmark] |
-| Protocollen: MQTT-, MQTT via webSockets | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
-| Id per apparaat | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
-| Bestanden van apparaten uploaden | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
-| Device Provisioning Service | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
-| Cloud-naar-apparaat-berichten | ![Selecteren][checkmark] |  |  |
-| Dubbele apparaat- en Apparaatbeheer | ![Selecteren][checkmark] |  |  |
-| Apparaat-streams (preview) | ![Selecteren][checkmark] |  |  |
+| Protocollen: MQTT, MQTT via webSockets | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
+| Identiteit per apparaat | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
+| Bestandsupload vanaf apparaten | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
+| Service voor inrichting van apparaten | ![Selecteren][checkmark] | ![Selecteren][checkmark] |  |
+| Cloud-to-device messaging | ![Selecteren][checkmark] |  |  |
+| Apparaatdubbel- en apparaatbeheer | ![Selecteren][checkmark] |  |  |
+| Apparaatstreams (voorbeeld) | ![Selecteren][checkmark] |  |  |
 | IoT Edge | ![Selecteren][checkmark] |  |  |
 
-Zelfs als de enige use-case opname van apparaat-naar-cloud-gegevens wordt sterk aangeraden met behulp van IoT Hub biedt een service die is ontworpen voor connectiviteit van IoT-apparaten. 
+Zelfs als de enige use case device-to-cloud data opname is, raden we ten zeerste aan om IoT Hub te gebruiken, omdat het een service biedt die is ontworpen voor IoT-apparaatconnectiviteit. 
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Als u wilt de mogelijkheden van IoT Hub verder verkennen, Zie de [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md).
+Zie de [IoT Hub-ontwikkelaarshandleiding](iot-hub-devguide.md)om de mogelijkheden van IoT Hub verder te verkennen.
 
 <!-- This one reference link is used over and over. --robinsh -->
 [checkmark]: ./media/iot-hub-compare-event-hubs/ic195031.png

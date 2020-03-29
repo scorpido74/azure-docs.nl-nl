@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-bewerkingen bewaken (afgeschaft) | Microsoft Docs
-description: Het gebruik van Azure IoT Hub-bewerkingen controleren voor het controleren van de status van bewerkingen op uw IoT-hub in realtime.
+title: Azure IoT Hub-bewerkingenbewaking (afgeschaft) | Microsoft Documenten
+description: Azure IoT Hub-bewerkingenbewaking gebruiken om de status van bewerkingen op uw IoT-hub in realtime te controleren.
 author: nberdy
 manager: briz
 ms.service: iot-hub
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345726"
 ---
-# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-bewerkingen bewaken (afgeschaft)
+# <a name="iot-hub-operations-monitoring-deprecated"></a>Monitoring van IoT Hub-bewerkingen (afgeschaft)
 
-IoT Hub-bewerkingen controleren kunt u de status van de bewerkingen op uw IoT-hub in realtime controleren. IoT Hub worden gebeurtenissen bijgehouden in meerdere categorieën met bewerkingen. U kunt kiezen voor het verzenden van gebeurtenissen uit een of meer categorieën naar een eindpunt van uw IoT-hub voor verwerking. U kunt de gegevens op fouten controleren of instellen van meer complexe verwerking op basis van, gegevenspatronen.
+Met iot-hub-bewerkingenbewaking u de status van bewerkingen op uw IoT-hub in realtime controleren. IoT Hub houdt gebeurtenissen bij in verschillende categorieën bewerkingen. U ervoor kiezen om gebeurtenissen van een of meer categorieën naar een eindpunt van uw IoT-hub te verzenden voor verwerking. U de gegevens controleren op fouten of complexere verwerkinginstellen op basis van gegevenspatronen.
 
 >[!NOTE]
->IoT Hub **bewerkingen controleren is afgeschaft en is verwijderd uit de IoT-Hub op 10 maart 2019**. Zie voor het bewaken van de operations- en status van IoT Hub, [de status van Azure IoT Hub bewaken en problemen vast te stellen](iot-hub-monitor-resource-health.md). Zie voor meer informatie over de tijdlijn afschaffing [bewaken van uw Azure-IoT-oplossingen met Azure Monitor en Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>IoT Hub **operations monitoring is afgeschaft en is verwijderd uit IoT Hub op 10 maart 2019**. Zie [De status van Azure IoT Hub controleren en problemen snel diagnosticeren](iot-hub-monitor-resource-health.md)voor het bewaken van de bewerkingen en status van IoT Hub. Zie [Uw Azure IoT-oplossingen met Azure Monitor en Azure Resource Health controleren](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)voor meer informatie over de afschrijvingstijdlijn.
 
-IoT Hub bewaakt zes categorieën van gebeurtenissen:
+IoT Hub monitort zes categorieën gebeurtenissen:
 
-* Bewerkingen voor apparaat-id
-* Telemetrie van apparaten
-* Cloud-naar-apparaat-berichten
+* Apparaatidentiteitsbewerkingen
+* Apparaattelemetrie
+* Cloud-to-device berichten
 * Verbindingen
-* Uploaden van bestanden
+* Bestandsuploads
 * Berichtroutering
 
 > [!IMPORTANT]
-> IoT Hub-bewerkingen controleren is geen garantie voor lijsten met en betrouwbare bezorging van gebeurtenissen. Afhankelijk van de onderliggende infrastructuur IoT-Hub, kunnen sommige gebeurtenissen worden verloren of die niet de juiste volgorde worden geleverd. Bewerkingen controleren voor het genereren van waarschuwingen op basis van de fout signalen, zoals mislukte verbindingspogingen of hoge frequentie verbroken verbindingen voor specifieke apparaten gebruiken. U niet afhankelijk zijn van bewerkingen controleren van gebeurtenissen voor het maken van een consistente archief voor de status van het apparaat, bijvoorbeeld een archief bijhouden verbonden of de status van een apparaat verbroken. 
+> IoT Hub operations monitoring garandeert geen betrouwbare of bestelde levering van evenementen. Afhankelijk van de onderliggende infrastructuur van iot-hub kunnen sommige gebeurtenissen verloren gaan of buiten de bestelling worden geleverd. Gebruik bedrijfsbewaking om waarschuwingen te genereren op basis van foutsignalen, zoals mislukte verbindingspogingen of hoogfrequente verbindingen voor specifieke apparaten. U moet niet vertrouwen op gebeurtenissen voor het bewaken van bewerkingen om een consistent archief voor apparaatstatus te maken, bijvoorbeeld een winkeldie is verbonden of de verbroken status van een apparaat heeft verbroken. 
 
-## <a name="how-to-enable-operations-monitoring"></a>Bewerkingen controleren inschakelen
+## <a name="how-to-enable-operations-monitoring"></a>Hoe operationele monitoring mogelijk te maken
 
-1. Maak een IoT-hub. U vindt instructies over het maken van een IoT-hub in de [aan de slag](quickstart-send-telemetry-dotnet.md) handleiding.
+1. Maak een IoT-hub. Instructies voor het maken van een IoT-hub vindt u in de handleiding [Aan de slag.](quickstart-send-telemetry-dotnet.md)
 
-2. Open de blade van uw IoT-hub. Van daaruit, klikt u op **bewerkingen controleren**.
+2. Open het blad van uw IoT-hub. Klik van daaruit op **Operations monitoring**.
 
-    ![Bewerkingen voor gegevenstoegang configuratie in de portal bewaken](./media/iot-hub-operations-monitoring/enable-OM-1.png)
+    ![Configuratie van de bewaking van toegangsbewerkingen in de portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Selecteer de bewaking categorieën die u wilt controleren, en klik vervolgens op **opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen van de Event Hub-compatibele eindpunt die worden vermeld in **controle-instellingen**. De IoT Hub-eindpunt aangeroepen `messages/operationsmonitoringevents`.
+3. Selecteer de bewakingscategorieën die u wilt controleren en klik op **Opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen via het eindpunt dat compatibel is met de gebeurtenishub in **de controle-instellingen**. Het Eindpunt van de `messages/operationsmonitoringevents`IoT-hub wordt genoemd .
 
-    ![Bewerkingen controleren op uw IoT-hub configureren](./media/iot-hub-operations-monitoring/enable-OM-2.png)
+    ![Operations monitoring configureren op uw IoT-hub](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> Selecteren **uitgebreid** bewaking voor de **verbindingen** categorie zorgt ervoor dat de IoT Hub kunt u extra diagnostische berichten genereren. Voor alle andere categorieën, de **uitgebreid** in elke foutbericht instellen van de hoeveelheid gegevens IoT Hub bevat.
+> Als **u Verbose-bewaking** selecteert voor de categorie **Verbindingen,** genereert IoT Hub extra diagnostische berichten. Voor alle andere categorieën wijzigt de instelling **Verbose** de hoeveelheid informatie die IoT Hub in elk foutbericht bevat.
 
-## <a name="event-categories-and-how-to-use-them"></a>Gebeurteniscategorieën en hoe ze te gebruiken
+## <a name="event-categories-and-how-to-use-them"></a>Gebeurteniscategorieën en hoe deze te gebruiken
 
-Elke bewerkingen controleren categorie houdt een ander type interactie met IoT Hub, en elke controle categorie bevat een schema dat definieert hoe gebeurtenissen in die categorie worden opgebouwd.
+Elke categorie voor het monitoren van bewerkingen houdt een ander type interactie met IoT Hub bij en elke bewakingscategorie heeft een schema dat bepaalt hoe gebeurtenissen in die categorie zijn gestructureerd.
 
-### <a name="device-identity-operations"></a>Bewerkingen voor apparaat-id
+### <a name="device-identity-operations"></a>Apparaatidentiteitsbewerkingen
 
-De apparaatcategorie die identiteit operations houdt bij of fouten die optreden wanneer u probeert te maken, bijwerken of verwijderen van een vermelding in het identiteitenregister van uw IoT-hub. Het bijhouden van deze categorie is handig voor het inrichten van scenario's.
+De categorie apparaatidentiteitsbewerkingen houdt fouten bij die optreden wanneer u een vermelding in het identiteitsregister van uw IoT-hub probeert te maken, bijwerken of verwijderen. Het bijhouden van deze categorie is handig voor het inrichten van scenario's.
 
 ```json
 {
@@ -72,9 +72,9 @@ De apparaatcategorie die identiteit operations houdt bij of fouten die optreden 
 }
 ```
 
-### <a name="device-telemetry"></a>Telemetrie van apparaten
+### <a name="device-telemetry"></a>Apparaattelemetrie
 
-De apparaatcategorie telemetrie houdt bij of fouten die optreden bij de IoT-hub en zijn gerelateerd aan de pijplijn telemetrie. Deze categorie bevat fouten die optreden bij het verzenden van telemetriegebeurtenissen (zoals beperking) en telemetriegebeurtenissen (zoals niet-geautoriseerde lezer) ontvangen. Deze categorie worden geen fouten veroorzaakt door de code die wordt uitgevoerd op het apparaat zelf gedetecteerd.
+De categorie telemetrie van het apparaat houdt fouten bij die optreden op de IoT-hub en zijn gerelateerd aan de telemetriepijplijn. Deze categorie bevat fouten die optreden bij het verzenden van telemetriegebeurtenissen (zoals beperking) en het ontvangen van telemetriegebeurtenissen (zoals onbevoegde lezer). Deze categorie kan geen fouten opvangen die worden veroorzaakt door code die op het apparaat zelf wordt uitgevoerd.
 
 ```json
 {
@@ -96,9 +96,9 @@ De apparaatcategorie telemetrie houdt bij of fouten die optreden bij de IoT-hub 
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Cloud-naar-apparaatopdrachten
+### <a name="cloud-to-device-commands"></a>Opdrachten voor cloud-naar-apparaat
 
-De categorie cloud-naar-apparaatopdrachten houdt bij of fouten die optreden bij de IoT-hub en zijn gerelateerd aan de pijplijn cloud-naar-apparaat bericht. Deze categorie bevat fouten die optreden bij het verzenden van berichten van cloud-naar-apparaat (zoals niet-geautoriseerde afzender), het ontvangen van berichten van cloud-naar-apparaat (zoals aantal bezorgingen is overschreden) en het ontvangen van feedback van cloud-naar-apparaat bericht (zoals feedback verlopen). Deze categorie geen fouten van een apparaat dat een cloud-naar-apparaat-bericht niet goed verwerkt als de cloud-naar-apparaat-bericht met succes is afgeleverd af.
+De categorie opdrachten voor cloud-to-device houdt fouten bij die zich voordoen op de IoT-hub en zijn gerelateerd aan de berichtenpijplijn van cloud-to-device. Deze categorie bevat fouten die optreden bij het verzenden van cloud-naar-device-berichten (zoals ongeautoriseerde afzender), het ontvangen van cloud-to-device-berichten (zoals het aantal meldingen van bezorging overschreden) en het ontvangen van feedback van cloud naar apparaat (zoals feedback is verlopen). Deze categorie vangt geen fouten op van een apparaat dat een cloud-to-device-bericht onjuist verwerkt als het cloud-to-device-bericht is geleverd.
 
 ```json
 {
@@ -122,7 +122,7 @@ De categorie cloud-naar-apparaatopdrachten houdt bij of fouten die optreden bij 
 
 ### <a name="connections"></a>Verbindingen
 
-De categorie verbindingen houdt bij of fouten die optreden wanneer apparaten koppelen aan of van een IoT-hub loskoppelen. Het bijhouden van deze categorie is handig voor het identificeren van niet-geautoriseerde verbindingspogingen en voor het bijhouden van een verbinding is verbroken voor apparaten in de gebieden van slechte connectiviteit.
+De categorie verbindingen houdt fouten bij die optreden wanneer apparaten verbinding maken of de verbinding verbreken van een IoT-hub. Het bijhouden van deze categorie is handig voor het identificeren van ongeautoriseerde verbindingspogingen en voor het bijhouden wanneer een verbinding verloren gaat voor apparaten in gebieden met slechte connectiviteit.
 
 ```json
 {
@@ -140,17 +140,17 @@ De categorie verbindingen houdt bij of fouten die optreden wanneer apparaten kop
 }
 ```
 
-### <a name="file-uploads"></a>Uploaden van bestanden
+### <a name="file-uploads"></a>Bestandsuploads
 
-De categorie van bestand uploaden bijgehouden fouten die optreden bij de IoT-hub en zijn gerelateerd aan functionaliteit voor het uploaden van bestand. Deze categorie omvat:
+De categorie voor het uploaden van bestanden houdt fouten bij die optreden op de IoT-hub en zijn gerelateerd aan de functionaliteit voor het uploaden van bestanden. Deze categorie omvat:
 
-* Fouten die met de SAS-URI optreden, zoals wanneer het verloopt voordat een apparaat aan de hub van het uploaden van een voltooide gecommuniceerd.
+* Fouten die optreden met de SAS URI, zoals wanneer deze verloopt voordat een apparaat de hub van een voltooide upload op de hoogte stelt.
 
-* Kan geen uploads gemeld door het apparaat.
+* Mislukte uploads die door het apparaat worden gerapporteerd.
 
-* Fouten die optreden wanneer een bestand niet in de opslag tijdens het maken van IoT-Hub melding weergegeven gevonden is.
+* Fouten die optreden wanneer een bestand niet wordt gevonden in de opslag tijdens het maken van iot-hubberichten.
 
-Deze categorie worden geen fouten die optreden wanneer het apparaat een bestand naar storage uploaden is gedetecteerd.
+Deze categorie kan geen fouten opvangen die rechtstreeks optreden terwijl het apparaat een bestand uploadt naar opslag.
 
 ```json
 {
@@ -171,7 +171,7 @@ Deze categorie worden geen fouten die optreden wanneer het apparaat een bestand 
 
 ### <a name="message-routing"></a>Berichtroutering
 
-De categorie voor het doorsturen van bericht houdt bij of fouten die optreden tijdens de evaluatie van bericht route en eindpunt status van de waargenomen door de IoT Hub. Deze categorie omvat gebeurtenissen zoals wanneer een regel resulteert in 'niet-gedefinieerde', wanneer IoT-Hub markeert een eindpunt als onbestelbaar en eventuele andere fouten die zijn ontvangen van een eindpunt. Deze categorie bevat geen specifieke fouten over berichten zelf (zoals apparaat beperkingsfouten), die worden gerapporteerd in de categorie 'apparaattelemetrie'.
+De categorie berichtroutering houdt fouten bij die optreden tijdens de evaluatie van de berichtroute en de status van eindpunt en zoals waargenomen door IoT Hub. Deze categorie bevat gebeurtenissen zoals wanneer een regel evalueert op 'niet gedefinieerd', wanneer IoT Hub een eindpunt als dood markeert en alle andere fouten die van een eindpunt zijn ontvangen. Deze categorie bevat geen specifieke fouten over de berichten zelf (zoals apparaatbeperkingsfouten), die worden gerapporteerd onder de categorie 'apparaattelemetrie'.
 
 ```json
 {
@@ -188,31 +188,31 @@ De categorie voor het doorsturen van bericht houdt bij of fouten die optreden ti
 }
 ```
 
-## <a name="connect-to-the-monitoring-endpoint"></a>Verbinding maken met de controle-eindpunt
+## <a name="connect-to-the-monitoring-endpoint"></a>Verbinding maken met het bewakingseindpunt
 
-De controle-eindpunt op uw IoT-hub is een Event Hub-compatibele eindpunt. U kunt een mechanisme dat werkt met Event Hubs controleren om berichten te lezen vanaf dit eindpunt. Het volgende voorbeeld maakt u een basislezer die niet geschikt voor een implementatie met hoge doorvoer. Zie voor meer informatie over het verwerken van berichten van Event Hubs, de [aan de slag met Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) zelfstudie.
+Het bewakingseindpunt op uw IoT-hub is een eventhubcompatibel eindpunt. U elk mechanisme dat werkt met gebeurtenishubs gebruiken om bewakingsberichten vanaf dit eindpunt te lezen. In het volgende voorbeeld wordt een basislezer gemaakt die niet geschikt is voor een implementatie met een hoge doorvoer. Zie voor meer informatie over het verwerken van Event Hubs-berichten de zelfstudie [Aan de slag met Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-Voor verbinding met de controle-eindpunt, moet u een verbindingsreeks en de naam van het eindpunt. De volgende stappen laten zien hoe u de vereiste waarden vinden in de portal:
+Als u verbinding wilt maken met het bewakingseindpunt, hebt u een verbindingstekenreeks en de naam van het eindpunt nodig. In de volgende stappen ziet u hoe u de benodigde waarden in de portal vinden:
 
-1. Navigeer naar de resourceblade van uw IoT-Hub in de portal.
+1. Navigeer in de portal naar uw IoT Hub-bronblad.
 
-2. Kies **bewerkingen controleren**, en noteer de **Event Hub-compatibele naam** en **Event Hub-compatibele eindpunt** waarden:
+2. Kies **Operations-bewaking**en noteer de **naam van de Gebeurtenishub** en de **endpoint-waarden die compatibel zijn met gebeurtenishubs:**
 
-    ![Event Hub-compatibele eindpunt waarden](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
+    ![Endpoint-waarden die compatibel zijn met gebeurtenishub](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Kies **beleid voor gedeelde toegang**, en kies vervolgens **service**. Noteer de **primaire sleutel** waarde:
+3. Kies **Beleid voor gedeelde toegang**en kies **service**. Noteer de waarde **primaire sleutel:**
 
-    ![Primaire sleutel voor service gedeelde toegang beleid](./media/iot-hub-operations-monitoring/service-key.png)
+    ![Primaire sleutel voor gedeeld toegangsbeleid voor gedeelde service](./media/iot-hub-operations-monitoring/service-key.png)
 
-De volgende C#-codevoorbeeld is afkomstig uit een Visual Studio **Windows Classic Desktop** C#-consoletoepassing. Het project heeft de **WindowsAzure.ServiceBus** NuGet-pakket geïnstalleerd.
+Het volgende c#-codevoorbeeld wordt genomen vanuit een Visual Studio **Windows Classic Desktop** C#-console-app. Het project heeft het **WindowsAzure.ServiceBus** NuGet-pakket geïnstalleerd.
 
-* Vervang de tijdelijke aanduiding voor tekenreeks met een verbindingsreeks die gebruikmaakt van de **Event Hub-compatibele eindpunt** en service **primaire sleutel** waarden die u hebt genoteerd eerder zoals wordt weergegeven in het volgende voorbeeld:
+* Vervang de tijdelijke aanduiding voor de verbindingstekenreeks door een verbindingstekenreeks die gebruikmaakt van het **eindpunt** en de **hoofdthemawaarden** voor serviceprimaire die u eerder hebt opgemerkt zoals weergegeven in het volgende voorbeeld:
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Vervang de bewaking eindpunt de naam van de tijdelijke aanduiding met de **Event Hub-compatibele naam** waarde die u eerder hebt genoteerd.
+* Vervang de tijdelijke aanduiding voor de tijdelijke aanduiding voor het eindpunt van het bewakingspunt door de waarde die u eerder hebt opgemerkt door de waarde van de gebeurtenishub.Replace the monitoring endpoint name placeholder with the **Event Hub-compatible name** value you noted previously.
 
 ```csharp
 class Program
@@ -266,8 +266,8 @@ class Program
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt de mogelijkheden van IoT Hub verder verkennen, Zie:
+Zie:
 
-* [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md)
+* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)
 
-* [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory hybride identiteit ontwerpoverwegingen - overzicht | Microsoft Docs
-description: Overzicht en inhoudsoverzicht van handleiding met ontwerpoverwegingen voor hybride identiteit
+title: Overwegingen voor hybride identiteitsontwerp in Azure Active Directory - overzicht | Microsoft Documenten
+description: Overzicht en inhoud kaart van Hybrid Identity design overwegingen gids
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,52 +17,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381456"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Ontwerpoverwegingen voor Azure Active Directory Hybrid Identity
-Consumenten-apparaten worden de zakelijke wereld proliferating en cloud-gebaseerde software-as-a-service (SaaS)-toepassingen zijn eenvoudig vast te stellen. Als gevolg hiervan, is het beheer van toegang tot de toepassing van gebruikers voor interne-datacenters en cloud-platformen lastig.  
+Consumentenapparaten verspreiden de bedrijfswereld en cloudgebaseerde software-as-a-service (SaaS)-toepassingen zijn eenvoudig te gebruiken. Als gevolg hiervan is het een uitdaging om de controle over de toegang tot applicaties van gebruikers in interne datacenters en cloudplatforms te behouden.  
 
-De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. Dit concept staat bekend als hybride identiteit. Er zijn verschillende ontwerp- en configuratieopties voor hybride identiteit met Microsoft-oplossingen, en in sommige gevallen die kan het moeilijk om te bepalen welke combinatie wordt aanbevolen zijn voldoen aan de behoeften van uw organisatie. 
+De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. Dit concept staat bekend als Hybrid Identity. Er zijn verschillende ontwerp- en configuratieopties voor hybride identiteit met behulp van Microsoft-oplossingen en in sommige gevallen kan het moeilijk zijn om te bepalen welke combinatie het beste aan de behoeften van uw organisatie voldoet. 
 
-Deze handleiding hybride identiteit met ontwerpoverwegingen helpt u om te begrijpen hoe een hybride identiteitsoplossing ontwerpt die beste past bij de zakelijke en technologische behoeften voor uw organisatie.  Deze handleiding beschrijft een reeks stappen en taken die u volgen kunt om u te helpen bij het ontwerpen van een hybride identiteitsoplossing die voldoet aan de unieke vereisten van uw organisatie. In de stappen en taken, de handleiding wordt presenteren de relevante technologieën en functie van opties beschikbaar voor organisaties om te voldoen aan de functionaliteit en servicekwaliteit (zoals beschikbaarheid, schaalbaarheid, prestaties, beheerbaarheid en beveiliging) niveau vereisten. 
+Deze Hybrid Identity Design Considerations Guide helpt u te begrijpen hoe u een hybride identiteitsoplossing ontwerpen die het beste past bij de zakelijke en technologische behoeften van uw organisatie.  In deze handleiding beschrijft u een reeks stappen en taken die u volgen om u te helpen bij het ontwerpen van een hybride identiteitsoplossing die voldoet aan de unieke vereisten van uw organisatie. Tijdens de stappen en taken presenteert de gids de relevante technologieën en functieopties die beschikbaar zijn voor organisaties om te voldoen aan de functionele en servicekwaliteit (zoals beschikbaarheid, schaalbaarheid, prestaties, beheerbaarheid en beveiligingsniveau) Eisen. 
 
-Specifiek, zijn de handleiding doelstellingen voor hybride identiteit ontwerp overwegingen met betrekking tot de volgende vragen beantwoorden: 
+In het bijzonder, de hybride identiteit overwegingen overwegingen gids doelen zijn het beantwoorden van de volgende vragen: 
 
-* Welke vragen moet ik gebruiken om te stellen en beantwoorden om een hybride identiteit-specifiek ontwerp voor een technologie of probleemgebied domein dat het beste aan mijn vereisten voldoet?
-* De volgorde van activiteiten moet ik me voor het ontwerpen van een oplossing voor hybride identiteit voor de technologie of probleem? 
-* Welke hybride identiteit-technologie en configuratieopties kan ik mijn vereisten te voldoen aan zijn? Wat zijn de wisselwerking tussen deze opties zodat ik de beste optie voor mijn bedrijf selecteren kan?
+* Welke vragen moet ik stellen en beantwoorden om een hybride identiteitsspecifiek ontwerp te besturen voor een technologie of probleemdomein dat het beste aan mijn eisen voldoet?
+* Welke reeks activiteiten moet ik voltooien om een hybride identiteitsoplossing voor de technologie of het probleemdomein te ontwerpen? 
+* Welke hybride identiteitstechnologie en configuratieopties zijn beschikbaar om mij te helpen aan mijn vereisten te voldoen? Wat zijn de afwegingen tussen deze opties, zodat ik de beste optie voor mijn bedrijf kan selecteren?
 
-## <a name="who-is-this-guide-intended-for"></a>Wie is deze handleiding bedoeld?
- CIO, CITO, Chief identiteit architecten, Enterprise-architecten en IT-architecten die verantwoordelijk zijn voor het ontwerpen van een hybride identiteitsoplossing voor grote of middelgrote organisaties.
+## <a name="who-is-this-guide-intended-for"></a>Voor wie is deze handleiding bedoeld?
+ CIO, CITO, Chief Identity Architects, Enterprise Architects en IT Architects verantwoordelijk voor het ontwerpen van een hybride identiteitsoplossing voor middelgrote of grote organisaties.
 
 ## <a name="how-can-this-guide-help-you"></a>Hoe kan deze handleiding u helpen?
-U kunt deze handleiding gebruiken om te begrijpen hoe u een oplossing voor hybride identiteit die is een cloud-gebaseerde identiteitsbeheersysteem integreren in uw huidige on-premises identity-oplossing ontwerpt. 
+U deze handleiding gebruiken om te begrijpen hoe u een hybride identiteitsoplossing ontwerpt die in staat is om een cloudgebaseerd identiteitsbeheersysteem te integreren met uw huidige on-premises identiteitsoplossing. 
 
-De volgende afbeelding toont een voorbeeld van een hybride identiteitsoplossing waarmee IT-beheerders voor het beheren van hun huidige Windows Server Active Directory oplossing zich on-premises integreren met Microsoft Azure Active Directory om gebruikers te gebruiken (Single Sign-On Eenmalige aanmelding) voor toepassingen die zich in de cloud en on-premises.
+In de volgende afbeelding wordt een voorbeeld weergegeven van een hybride identiteitsoplossing waarmee IT-beheerders hun huidige Windows Server Active Directory-oplossing on-premises kunnen integreren met Microsoft Azure Active Directory , zodat gebruikers Single Sign-On kunnen gebruiken ( SSO) voor applicaties in de cloud en on-premises.
 
 ![Voorbeeld](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 
-De bovenstaande afbeelding is een voorbeeld van een hybride identiteitsoplossing dat gebruikmaakt van cloudservices integreren met on-premises mogelijkheden om te kunnen bieden één ervaring voor het proces van de verificatie door eindgebruikers en te vergemakkelijken IT die beheren resources. Hoewel in dit voorbeeld een veelvoorkomend scenario is, is het ontwerp voor hybride identiteit van elke organisatie waarschijnlijk anders dan het voorbeeld in afbeelding 1 vanwege verschillende vereisten. 
+De bovenstaande illustratie is een voorbeeld van een hybride identiteitsoplossing die gebruik maakt van cloudservices om te integreren met on-premises mogelijkheden om één ervaring te bieden aan het verificatieproces van eindgebruikers en om IT-beheer te vergemakkelijken Middelen. Hoewel dit voorbeeld een veelvoorkomend scenario kan zijn, is het hybride identiteitsontwerp van elke organisatie waarschijnlijk anders dan het voorbeeld dat in figuur 1 wordt geïllustreerd vanwege verschillende vereisten. 
 
-Deze handleiding bevat een reeks stappen en taken die u volgen kunt om het ontwerpen van een hybride identiteitsoplossing die voldoet aan de unieke vereisten van uw organisatie. In de volgende stappen en taken geeft de handleiding voor de relevante technologieën en functieopties aan u om te voldoen aan de functionele en niveau servicekwaliteitsvereisten voor uw organisatie.
+Deze handleiding bevat een reeks stappen en taken die u volgen om een hybride identiteitsoplossing te ontwerpen die voldoet aan de unieke vereisten van uw organisatie. Tijdens de volgende stappen en taken presenteert de gids de relevante technologieën en functieopties die voor u beschikbaar zijn om te voldoen aan functionele en servicekwaliteitsniveauvereisten voor uw organisatie.
 
-**Veronderstellingen**: U hebt enige ervaring met Windows Server, Active Directory Domain Services en Azure Active Directory. In dit document wordt ervan uitgegaan dat u zoekt hoe deze oplossingen kunnen voldoen aan de behoeften van uw bedrijf op hun eigen of in een geïntegreerde oplossing.
+**Aannames:** u hebt enige ervaring met Windows Server, Active Directory Domain Services en Azure Active Directory. In dit document wordt ervan uitgegaan dat u op zoek bent naar hoe deze oplossingen zelf aan uw bedrijfsbehoeften kunnen voldoen, of in een geïntegreerde oplossing.
 
 ## <a name="design-considerations-overview"></a>Overzicht ontwerpoverwegingen
-Dit document bevat een reeks stappen en taken die u volgen kunt om het ontwerpen van een hybride identiteitsoplossing die het beste aan uw vereisten. De stappen worden weergegeven in een geordende reeks. Ontwerpoverwegingen die u in latere stappen leert mogelijk wanneer u de gemaakte beslissingen die u hebt aangebracht in de eerdere stappen echter vanwege conflicterende ontwerpkeuzes. Elke poging wordt gedaan om u te waarschuwen voor mogelijke ontwerpconflicten in het hele document. 
+Dit document bevat een reeks stappen en taken die u volgen om een hybride identiteitsoplossing te ontwerpen die het beste aan uw vereisten voldoet. De stappen worden op een geordende wijze weergegeven. Ontwerpoverwegingen die u in latere stappen leert, vereisen mogelijk dat u beslissingen wijzigt die u in eerdere stappen hebt gemaakt, vanwege conflicterende ontwerpkeuzes. Elke poging wordt gedaan om u te waarschuwen voor mogelijke ontwerpconflicten in het hele document. 
 
-U ontvangt bij het ontwerp dat het beste aan uw vereisten voldoet alleen na het doorlopen van de stappen zo vaak als nodig is om alle overwegingen in het document. 
+U komt bij het ontwerp dat het beste aan uw eisen voldoet pas na het doorlopen van de stappen zo vaak als nodig is om alle overwegingen in het document op te nemen. 
 
-| Hybride identiteit fase | De lijst met onderwerpen |
+| Hybride identiteitsfase | Onderwerplijst |
 | --- | --- |
-| Identiteitsvereisten vaststellen |[Bedrijfsbehoeften vaststellen](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Bepaal de vereisten voor directory-synchronisatie](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Bepaal de vereisten voor meervoudige verificatie](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Een strategie voor hybride identiteit ingebruikname definiëren](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
-| Plan voor het verbeteren van de beveiliging van gegevens via een goede oplossing voor identiteitsbeheer |[Bepalen van de beveiligingsvereisten voor gegevens](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Bepaal de vereisten voor inhoudsbeheer](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Vereisten voor toegangsbeheer bepalen](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Bepaal de vereisten voor respons op incidenten](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Gegevensbeveiligingsstrategie definiëren](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| De levenscyclus van een hybride identiteit plannen |[Beheertaken voor hybride identiteit bepalen](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Synchronisatie Management](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Acceptatiestrategie voor hybride identiteit management bepalen](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
+| Identiteitsvereisten vaststellen |[Bepalen van de zakelijke behoeften](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Adreslijstsynchronisatievereisten bepalen](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Vereisten voor meervoudige verificatie bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Een strategie voor hybride identiteitsacceptatie definiëren](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Plan voor het verbeteren van de gegevensbeveiliging door middel van een sterke identiteitsoplossing |[Vereisten voor gegevensbescherming bepalen](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Vereisten voor inhoudsbeheer vaststellen](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Vereisten voor toegangsbeheer vaststellen](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Vereisten voor reageren op incidenten vaststellen](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Strategie voor gegevensbescherming definiëren](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
+| De levenscyclus van een hybride identiteit plannen |[Hybride identiteitsbeheertaken bepalen](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Synchronisatiebeheer](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Bepalen hybride identity management adoptie strategie](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
 ## <a name="next-steps"></a>Volgende stappen
-[ID-vereisten bepalen](plan-hybrid-identity-design-considerations-business-needs.md)
+[Identiteitsvereisten vaststellen](plan-hybrid-identity-design-considerations-business-needs.md)
 

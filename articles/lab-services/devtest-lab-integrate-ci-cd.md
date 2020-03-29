@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs integreren in uw Azure-pijp lijnen
-description: Meer informatie over het integreren van Azure DevTest Labs in uw Azure pijplijnen continue integratie en leveringspijplijn
+title: Azure DevTest Labs integreren in uw Azure-pijplijnen
+description: Meer informatie over het integreren van Azure DevTest Labs in uw Azure Pipelines-pijplijnen voor continue integratie en leveringspijplijn
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293212"
 ---
-# <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijp lijn van Azure pipelines
+# <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijplijn voor Azure Pipelines
 
-U kunt de uitbrei ding *Azure DevTest Labs taken* gebruiken voor het integreren van de continue integratie van Azure pipelines en de pijp lijnen voor continue levering (CI/cd) met Azure DevTest Labs. De uitbrei ding installeert verschillende taken, waaronder: 
+U de azure *DevTest Labs-taken-extensie* gebruiken om uw Azure Pipelines continuous integration en continuous delivery (CI/CD) build- en releasepipelines te integreren met Azure DevTest Labs. De extensie installeert verschillende taken, waaronder: 
 
 - Een virtuele machine (VM) maken
 - Een aangepaste installatiekopie maken vanaf een virtuele machine
 - Een VM verwijderen 
 
-Met deze taken kunt u bijvoorbeeld snel een *gouden installatie kopie* -VM implementeren voor een specifieke test taak en vervolgens de virtuele machine verwijderen wanneer de test is voltooid.
+Met deze taken u bijvoorbeeld eenvoudig snel een *gouden afbeeldings-VM* implementeren voor een specifieke testtaak en vervolgens de VM verwijderen wanneer de test is voltooid.
 
-In dit artikel wordt beschreven hoe u Azure DevTest Labs-taken gebruikt voor het maken en implementeren van een virtuele machine, het maken van een aangepaste installatie kopie en het verwijderen van de virtuele machine, allemaal als een release pijplijn. Normaal gesp roken voert u de taken afzonderlijk uit in uw eigen aangepaste bouw-, test-en implementatie pijplijnen.
+In dit artikel ziet u hoe u Azure DevTest Labs-taken gebruikt om een vm te maken en te implementeren, een aangepaste afbeelding te maken en vervolgens de VM te verwijderen, allemaal als één releasepijplijn. U zou de taken normaal gesproken afzonderlijk uitvoeren in uw eigen aangepaste pijplijnen, testen en implementeren.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Registreer of Meld u aan bij uw [Azure DevOps](https://dev.azure.com) -organisatie en [Maak een project](/vsts/organizations/projects/create-project) in de organisatie. 
+- Registreer of meld u aan bij uw [Azure DevOps-organisatie](https://dev.azure.com) en [maak een project](/vsts/organizations/projects/create-project) in de organisatie. 
   
-- Installeer de extensie Azure DevTest Labs taken vanuit Visual Studio Marketplace.
+- Installeer de azure DevTest Labs-takenextensie van Visual Studio Marketplace.
   
   1. Ga naar [Azure DevTest Labs-taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-  1. Selecteer **gratis downloaden**.
-  1. Selecteer uw Azure DevOps-organisatie in de vervolg keuzelijst en selecteer **installeren**. 
+  1. Selecteer **Gratis krijgen**.
+  1. Selecteer uw Azure DevOps-organisatie in de vervolgkeuzelijst en selecteer **Installeren**. 
   
-## <a name="create-the-template-to-build-an-azure-vm"></a>De sjabloon maken voor het bouwen van een Azure VM 
+## <a name="create-the-template-to-build-an-azure-vm"></a>De sjabloon maken om een Azure-vm te maken 
 
-In deze sectie wordt beschreven hoe u de Azure Resource Manager sjabloon maakt die u gebruikt om een Azure VM op aanvraag te maken.
+In deze sectie wordt beschreven hoe u de Azure Resource Manager-sjabloon maakt die u gebruikt om een Azure VM on demand te maken.
 
-1. Als u een resource manager-sjabloon in uw abonnement wilt maken, volgt u de procedure in [een resource manager-sjabloon gebruiken](devtest-lab-use-resource-manager-template.md).
+1. Als u een resourcemanagersjabloon in uw abonnement wilt maken, volgt u de procedure in [Een resourcebeheersjabloon gebruiken.](devtest-lab-use-resource-manager-template.md)
    
-1. Voordat u de Resource Manager-sjabloon hebt gegenereerd, toevoegen de [WinRM artefact](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-winrm) als onderdeel van het maken van de virtuele machine. Voor implementatie taken zoals *Azure File Copy* en *Power shell op doel machines* is WinRM-toegang vereist. Voor het WinRM-artefact is een hostnaam vereist als para meter. dit moet de Fully Qualified Domain Name (FQDN) van de virtuele machine zijn. 
+1. Voordat u de sjabloon Resourcemanager genereert, voegt u het [WinRM-artefact](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-winrm) toe als onderdeel van het maken van de VM. Implementatietaken zoals *Azure File Copy* en *PowerShell op doelmachines* hebben WinRM-toegang nodig. Het WinRM-artefact vereist een hostnaam als parameter, die de volledig gekwalificeerde domeinnaam (FQDN) van de VM moet zijn. 
    
    > [!NOTE]
-   > Als u WinRM met een gedeelde IP-adres gebruikt, moet u een NAT-regel voor het toewijzen van een externe poort op de WinRM-poort toevoegen. U hebt de NAT-regel niet nodig als u de virtuele machine met een openbaar IP-adres maakt.
+   > Wanneer u WinRM met een gedeeld IP-adres gebruikt, moet u een NAT-regel toevoegen om een externe poort aan de WinRM-poort toe te voegen. U hebt de NAT-regel niet nodig als u de VM maakt met een openbaar IP-adres.
    
    
-1. Sla de sjabloon op uw computer op als een bestand met de naam *CreateVMTemplate. json*.
+1. Sla de sjabloon op uw computer op als een bestand met de naam *CreateVMTemplate.json*.
    
-1. Check de sjabloon in op uw broncode beheer systeem.
+1. Controleer de sjabloon bij uw bronbesturingssysteem.
 
-## <a name="create-a-script-to-get-vm-properties"></a>Een script maken voor het ophalen van VM-eigenschappen
+## <a name="create-a-script-to-get-vm-properties"></a>Een script maken om VM-eigenschappen te krijgen
 
-Wanneer u taken uitvoert zoals *Azure File Copy* of *Power shell op doel computers* in de release pijplijn, verzamelt het volgende script de waarden die u nodig hebt om een app te implementeren in een VM. Normaal gesp roken gebruikt u deze taken om uw app te implementeren op een Azure-VM. Voor de taken zijn waarden vereist, zoals de naam van de VM-resource groep, het IP-adres en de FQDN.
+Wanneer u taakstappen uitvoert zoals *Azure File Copy* of *PowerShell op doelmachines* in de releasepijplijn, verzamelt het volgende script de waarden die u nodig hebt om een app te implementeren op een vm. Normaal gesproken gebruikt u deze taken om uw app te implementeren op een Azure VM. De taken vereisen waarden zoals de naam vm-brongroep, IP-adres en FQDN.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Het script bestand maken:
+Ga als u het scriptbestand maken:
 
 1. Open een teksteditor en plak het volgende script erin.
    
@@ -100,134 +100,134 @@ Het script bestand maken:
    Write-Host "##vso[task.setvariable variable=labVMFqdn;]$labVMFqdn"
    ```
 
-1. Sla het bestand op met een naam zoals *GetLabVMParams. ps1*en check het in op uw broncode beheersysteem. 
+1. Sla het bestand op met een naam als *GetLabVMParams.ps1*en check het in bij uw bronbesturingssysteem. 
 
 ## <a name="create-a-release-pipeline-in-azure-pipelines"></a>Een release-pijplijn in Azure Pipelines maken
 
-Een nieuwe release pijplijn maken:
+Ga als lid van het nieuws naar een nieuwe releasepijplijn:
 
-1. Selecteer op de pagina Azure DevOps-project **pijp lijnen** > **releases** van de linkernavigatiebalk.
-1. Selecteer **nieuwe pijp lijn**.
-1. Schuif onder **Selecteer een sjabloon**omlaag, selecteer **lege taak**en selecteer vervolgens **Toep assen**.
+1. Selecteer op uw Azure DevOps-projectpagina **pijplijnen** > **releases** van de linkernavigatie.
+1. Selecteer **Nieuwe pijplijn**.
+1. Schuif **onder Een sjabloon selecteren**naar beneden en selecteer Taak **leeg**maken en selecteer Vervolgens **Toepassen**.
 
 ### <a name="add-and-set-variables"></a>Variabelen toevoegen en instellen
 
-De pijplijn taken gebruiken de waarden die u aan de virtuele machine hebt toegewezen toen u de Resource Manager-sjabloon in de Azure Portal hebt gemaakt. 
+De pijplijntaken gebruiken de waarden die u aan de VM hebt toegewezen toen u de sjabloon Resourcebeheer in de Azure-portal hebt gemaakt. 
 
-Variabelen toevoegen voor de waarden: 
+Ga als u variabelen voor de waarden toevoegt: 
 
-1. Op de pijplijn pagina selecteert u het tabblad **variabelen** .
+1. Selecteer op de pagina pijplijn het tabblad **Variabelen.**
    
-1. Selecteer voor elke variabele **toevoegen** en voer de naam en waarde in:
+1. Selecteer Voor elke variabele **Toevoegen** en voer de naam en waarde in:
    
    |Name|Waarde|
    |---|---|
-   |*vmName*|De naam van de virtuele machine die u hebt toegewezen in de Resource Manager-sjabloon|
-   |*Gebruikers*|Gebruikers naam voor toegang tot de virtuele machine|
-   |*Wachtwoord*|Wacht woord voor de gebruikers naam. Selecteer het vergrendelings pictogram om het wacht woord te verbergen en te beveiligen.
+   |*vmName*|VM-naam die u hebt toegewezen in de sjabloon Resourcemanager|
+   |*Gebruikersnaam*|Gebruikersnaam om toegang te krijgen tot de VM|
+   |*wachtwoord*|Wachtwoord voor de gebruikersnaam. Selecteer het vergrendelingspictogram om het wachtwoord te verbergen en te beveiligen.
 
-### <a name="create-a-devtest-labs-vm"></a>Een DevTest Labs-VM maken
+### <a name="create-a-devtest-labs-vm"></a>Een VM Voor DevTest Labs maken
 
-De volgende stap is het maken van de gouden installatie kopie-VM die moet worden gebruikt voor toekomstige implementaties. U maakt de virtuele machine in uw Azure DevTest Labs-exemplaar met behulp van de *Azure DEVTEST Labs VM* -taak maken.
+De volgende stap is het maken van de gouden afbeelding VM te gebruiken voor toekomstige implementaties. U maakt de VM binnen uw Azure DevTest Labs-exemplaar met behulp van de *azure devTest Labs-taak VM maken.*
 
-1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
+1. Selecteer op het tabblad **Pijplijn voor** de pijplijn voor vrijgave de hyperlinktekst in **fase 1** om **fasetaken**weer te geven en selecteer vervolgens het plusteken **+** naast de taak **Agent**. 
    
-1. Onder **taken toevoegen**selecteert u **Azure DevTest Labs virtuele machine maken**en selecteert u **toevoegen**. 
+1. Selecteer **onder Taken toevoegen**de optie Azure **DevTest Labs Vm maken**en selecteer **Toevoegen**. 
    
-1. Selecteer **Azure DEVTEST Labs VM maken** in het linkerdeel venster. 
+1. Selecteer **Azure DevTest Labs VM maken** in het linkerdeelvenster. 
 
-1. Vul in het rechterdeel venster het formulier als volgt in:
-   
-   |Veld|Waarde|
-   |---|---|
-   |**Azure RM-abonnement**|Selecteer een service verbinding of abonnement bij **beschik bare Azure-service verbindingen** of **beschik bare Azure-abonnementen** in de vervolg keuzelijst en Selecteer indien nodig **autoriseren** .<br /><br />**Opmerking:** Zie [Azure Resource Manager service-eind punt](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)voor meer informatie over het maken van een verbinding met beperkte machtigingen voor uw Azure-abonnement.|
-   |**Naam van Lab**|Selecteer de naam van een bestaand Lab waarin de VM van het lab wordt gemaakt.|
-   |**Sjabloon naam**|Geef het volledige pad en de naam op van het sjabloon bestand dat u hebt opgeslagen in de opslag plaats van de bron code. U kunt de ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
-   |**Sjabloon parameters**|Voer de para meters in voor de variabelen die u eerder hebt gedefinieerd:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
-   |**Uitvoer variabelen** > **Lab-VM-id**|Voer de variabele voor de gemaakte Lab-VM-ID in. Als u de standaard **labVMId**gebruikt, kunt u naar de variabele in volgende taken verwijzen als *$ (labVMId)* .<br /><br />U kunt een andere naam dan de standaard waarde maken, maar vergeet niet om de juiste naam in volgende taken te gebruiken. U kunt de test-VM-ID in het volgende formulier schrijven:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
-
-### <a name="collect-the-details-of-the-devtest-labs-vm"></a>De details van de DevTest Labs-VM verzamelen
-
-Voer het script dat u eerder hebt voor het verzamelen van de details van de DevTest Labs-virtuele machine gemaakt. 
-
-1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
-   
-1. Selecteer onder **taken toevoegen**de optie **Azure PowerShell**en selecteer **toevoegen**. 
-   
-1. Selecteer **Azure PowerShell script: filepath** in het linkerdeel venster. 
-   
-1. Vul in het rechterdeel venster het formulier als volgt in:
+1. Vul in het rechterdeelvenster het formulier als volgt in:
    
    |Veld|Waarde|
    |---|---|
-   |**Type Azure-verbinding**|Selecteer **Azure Resource Manager**.|
-   |**Azure-abonnement**|Selecteer uw service verbinding of abonnement.| 
-   |**Script type**|Selecteer het **pad naar het script bestand**.|
-   |**Scriptpad**|Geef het volledige pad en de naam op van het Power shell-script dat u hebt opgeslagen in de opslag plaats van de bron code. U kunt de ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory/Scripts/GetLabVMParams.ps1`|
-   |**Script argumenten**|Voer de naam in van de *labVmId* -variabele die is gevuld door de vorige taak, bijvoorbeeld:<br /><br />`-labVmId '$(labVMId)'`|
+   |**Azure RM-abonnement**|Selecteer een serviceverbinding of -abonnement in **beschikbare Azure-serviceverbindingen** of **beschikbare Azure-abonnementen** in de vervolgkeuzelijst en selecteer Indien nodig **autoriseren.**<br /><br />**Let op:** Zie Eindpunt azure [Resource Manager-service](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)voor informatie over het maken van een verbinding met beperktere machtigingen voor uw Azure-abonnement.|
+   |**Labnaam**|Selecteer de naam van een bestaand lab waarin de lab-VM wordt gemaakt.|
+   |**Sjabloonnaam**|Voer het volledige pad en de naam in van het sjabloonbestand dat u hebt opgeslagen in uw broncodeopslagplaats. U ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
+   |**Sjabloonparameters**|Voer de parameters in voor de variabelen die u eerder hebt gedefinieerd:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
+   |**VM-ID uitvoervariabelen** > **lab**|Voer de variabele in voor de gemaakte labVM-id. Als u de standaard **labVMId gebruikt,** u de variabele in volgende taken als *$(labVMId)* verwijzen.<br /><br />U een andere naam maken dan de standaardnaam, maar vergeet niet de juiste naam te gebruiken in volgende taken. U de Lab VM-id in de volgende vorm schrijven:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
-Het script verzamelt de vereiste waarden en slaat ze op in omgevings variabelen binnen de release-pijp lijn, zodat u deze eenvoudig kunt raadplegen in de volgende stappen.
+### <a name="collect-the-details-of-the-devtest-labs-vm"></a>Verzamel de details van de VM DevTest Labs
 
-### <a name="create-a-vm-image-from-the-devtest-labs-vm"></a>Een VM-installatie kopie maken van de DevTest Labs-VM
+Voer het script uit dat u eerder hebt gemaakt om de details van de VM DevTest Labs te verzamelen. 
 
-De volgende taak is het maken van een installatie kopie van de zojuist geïmplementeerde virtuele machine in uw Azure DevTest Labs-exemplaar. U kunt vervolgens de installatiekopie te maken van kopieën van de virtuele machine op aanvraag wanneer u wilt uitvoeren van een taak ontwikkelen of bepaalde tests worden uitgevoerd. 
-
-1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
+1. Selecteer op het tabblad **Pijplijn voor** de pijplijn voor vrijgave de hyperlinktekst in **fase 1** om **fasetaken**weer te geven en selecteer vervolgens het plusteken **+** naast de taak **Agent**. 
    
-1. Selecteer onder **taken toevoegen**de optie **Azure DevTest Labs aangepaste installatie kopie maken**en selecteer **toevoegen**. 
+1. Selecteer **onder Taken toevoegen**Azure **PowerShell**en selecteer **Toevoegen**. 
    
-1. De taak als volgt configureren:
+1. Selecteer **Azure PowerShell-script: FilePath** in het linkerdeelvenster. 
+   
+1. Vul in het rechterdeelvenster het formulier als volgt in:
    
    |Veld|Waarde|
    |---|---|
-   |**Azure RM-abonnement**|Selecteer uw service verbinding of abonnement.|
-   |**Naam van Lab**|Selecteer de naam van een bestaand Lab waarin de installatie kopie wordt gemaakt.|
-   |**Naam van aangepaste installatie kopie**|Voer een naam in voor de aangepaste installatie kopie.|
-   |**Beschrijving** (optioneel)|Voer een beschrijving in zodat u de juiste installatie kopie later eenvoudig kunt selecteren.|
-   |**Resource Lab VM** **- > bron Lab VM-id**|Als u de standaard naam van de variabele LabVMId hebt gewijzigd, voert u deze hier in. De standaardwaarde is **$(labVMId)** .|
-   |**Uitvoer variabelen** > **aangepaste installatie kopie-id**|U kunt de standaard naam van de variabele indien nodig bewerken.|
+   |**Azure-verbindingstype**|Selecteer **Azure Resource Manager**.|
+   |**Azure-abonnement**|Selecteer uw serviceverbinding of abonnement.| 
+   |**Scripttype**|Selecteer **Scriptbestandspad**.|
+   |**Scriptpad**|Voer het volledige pad en de naam in van het PowerShell-script dat u hebt opgeslagen in uw broncodeopslagplaats. U ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory/Scripts/GetLabVMParams.ps1`|
+   |**Scriptargumenten**|Voer de naam in van de *variabele labVmId* die is ingevuld door de vorige taak, bijvoorbeeld:<br /><br />`-labVmId '$(labVMId)'`|
+
+Het script verzamelt de vereiste waarden en slaat deze op in omgevingsvariabelen in de releasepijplijn, zodat u ze in volgende stappen eenvoudig doorverwijzen.
+
+### <a name="create-a-vm-image-from-the-devtest-labs-vm"></a>Een VM-afbeelding maken op basis van de VM DevTest Labs
+
+De volgende taak is het maken van een afbeelding van de nieuw geïmplementeerde VM in uw Azure DevTest Labs-exemplaar. U de afbeelding vervolgens gebruiken om kopieën van de VM op aanvraag te maken wanneer u een dev-taak wilt uitvoeren of een aantal tests wilt uitvoeren. 
+
+1. Selecteer op het tabblad **Pijplijn voor** de pijplijn voor vrijgave de hyperlinktekst in **fase 1** om **fasetaken**weer te geven en selecteer vervolgens het plusteken **+** naast de taak **Agent**. 
    
-### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Uw app implementeren op de DevTest Labs VM (optioneel)
+1. Selecteer **onder Taken toevoegen**de optie Azure **DevTest Labs Aangepaste afbeelding maken**en selecteer **Toevoegen**. 
+   
+1. Configureer de taak als volgt:
+   
+   |Veld|Waarde|
+   |---|---|
+   |**Azure RM-abonnement**|Selecteer uw serviceverbinding of abonnement.|
+   |**Labnaam**|Selecteer de naam van een bestaand lab waarin de afbeelding wordt gemaakt.|
+   |**Aangepaste afbeeldingsnaam**|Voer een naam in voor de aangepaste afbeelding.|
+   |**Beschrijving** (optioneel)|Voer een beschrijving in om het eenvoudig te maken om de juiste afbeelding later te selecteren.|
+   |**Bron Lab VM** > **Source Lab VM ID**|Als u de standaardnaam van de variabele LabVMId hebt gewijzigd, voert u deze hier in. De standaardwaarde is **$(labVMId)**.|
+   |**Aangepaste** > **afbeeldings-id** voor uitvoervariabelen|U indien nodig de standaardnaam van de variabele bewerken.|
+   
+### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Uw app implementeren op de VM DevTest Labs (optioneel)
 
-U kunt taken toevoegen om uw app te implementeren op de nieuwe DevTest Labs VM. De taken die u doorgaans gebruikt om de app te implementeren, zijn *Azure File Copy* en *Power shell op doel computers*.
+U taken toevoegen om uw app te implementeren aan de nieuwe VM DevTest Labs. De taken die u gewoonlijk gebruikt om de app te implementeren, zijn *Azure File Copy* en *PowerShell op doelmachines.*
 
-De VM-gegevens die u nodig hebt voor de para meters van deze taken, worden opgeslagen in drie configuratie variabelen met de naam **labVmRgName**, **labVMIpAddress**en **labVMFqdn** binnen de release pijplijn. Als u wilt dat alleen om te experimenteren met het maken van een DevTest Labs-virtuele machine en een aangepaste installatiekopie, zonder dat een app implementeren op deze, kunt u deze stap overslaan.
+De VM-informatie die u nodig hebt voor de parameters van deze taken wordt opgeslagen in drie configuratievariabelen met de naam **labVmRgName,** **labVMIpAddress**en **labVMFqdn** in de releasepijplijn. Als u alleen wilt experimenteren met het maken van een VM voor DevTest Labs en een aangepaste afbeelding, zonder er een app op te implementeren, u deze stap overslaan.
 
 ### <a name="delete-the-vm"></a>De VM verwijderen
 
-De laatste taak is het verwijderen van de virtuele machine die u in uw Azure DevTest Labs-exemplaar hebt geïmplementeerd. Normaal gesproken verwijdert u de virtuele machine nadat u de dev-taken uitvoeren of Voer de tests die u nodig hebt op de geïmplementeerde virtuele machine. 
+De laatste taak is het verwijderen van de VM die u hebt geïmplementeerd in uw Azure DevTest Labs-exemplaar. Normaal gesproken verwijdert u de VM nadat u de dev-taken hebt uitgevoerd of de tests uitvoert die u op de geïmplementeerde VM nodig hebt. 
 
-1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
+1. Selecteer op het tabblad **Pijplijn voor** de pijplijn voor vrijgave de hyperlinktekst in **fase 1** om **fasetaken**weer te geven en selecteer vervolgens het plusteken **+** naast de taak **Agent**. 
    
-1. Onder **taken toevoegen**selecteert u **Azure DevTest Labs virtuele machine verwijderen**en selecteert u **toevoegen**. 
+1. Selecteer **onder Taken toevoegen**de optie Azure **DevTest Labs Delete VM**en selecteer **Toevoegen**. 
    
-1. De taak als volgt configureren:
+1. Configureer de taak als volgt:
    
-   - Selecteer uw service verbinding of abonnement onder **Azure RM-abonnement**. 
-   - Als u de standaard naam van de variabele LabVMId hebt gewijzigd, voert u deze hier in voor de **test-VM-id**. De standaardwaarde is **$(labVMId)** .
+   - Selecteer onder **Azure RM-abonnement**uw serviceverbinding of -abonnement. 
+   - Als **Lab VM ID**u de standaardnaam van de variabele LabVMId hebt gewijzigd, voert u deze hier in als u de standaardnaam van de variabele LabVMId hebt gewijzigd. De standaardwaarde is **$(labVMId)**.
    
-### <a name="save-the-release-pipeline"></a>De release pijplijn opslaan
+### <a name="save-the-release-pipeline"></a>De releasepijplijn opslaan
 
-De nieuwe release pijplijn opslaan:
+Ga als volgende over de volgende keer dat u de nieuwe releasepijplijn wilt opslaan:
 
-1. Selecteer de **nieuwe release pijplijn** naam op de pagina release pijplijn en voer een nieuwe naam in voor de pijp lijn. 
+1. Selecteer de naam **Nieuwe releasepijplijn** op de pagina releasepijplijn en voer een nieuwe naam in voor de pijplijn. 
    
-1. Selecteer het pictogram **Opslaan** in de rechter bovenhoek. 
+1. Selecteer het pictogram **Opslaan** rechtsboven. 
 
 ## <a name="create-and-run-a-release"></a>Een release maken en uitvoeren
 
-Een release maken en uitvoeren met de nieuwe pijp lijn:
+Ga als lid van de nieuwe pijplijn naar een release en voer deze uit:
 
-1. Selecteer **vrijgave** in de rechter bovenhoek op de pagina release pijplijn. 
+1. Selecteer Release rechtsboven **maken** op de pagina releasepijplijn. 
    
-1. Selecteer onder **artefacten**de nieuwste build en selecteer vervolgens **maken**.
+1. Selecteer **onder Artefacten**de nieuwste build en selecteer **Vervolgens Maken**.
    
-1. Vernieuw in elke release fase de weer gave van uw DevTest Labs-exemplaar in het Azure Portal om het maken van de VM, het maken van installatie kopieën en het verwijderen van de VM weer te geven.
+1. Vernieuw in elke releasefase de weergave van uw devTest Labs-instantie in de Azure-portal om de vm-creatie, het maken van afbeeldingen en het verwijderen van vm's weer te geven.
 
-U kunt de aangepaste installatie kopie gebruiken om Vm's te maken wanneer u ze nodig hebt.
+U de aangepaste afbeelding gebruiken om VM's te maken wanneer u ze nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [multi-VM-omgevingen maken met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md).
-- Meer snelstartsjablonen van het type Resource Manager voor het automatiseren van DevTest Labs verkennen de [openbare DevTest Labs GitHub-opslagplaats](https://github.com/Azure/azure-quickstart-templates).
-- Ga indien nodig naar de pagina voor het [oplossen van problemen met Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) .
+- Meer informatie over het [maken van multi-VM-omgevingen met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md).
+- Ontdek meer quickstart Resource Manager-sjablonen voor DevTest Labs-automatisering vanuit de [openbare DevTest Labs GitHub-repo.](https://github.com/Azure/azure-quickstart-templates)
+- Raadpleeg indien nodig de pagina [Azure DevOps voor probleemoplossing.](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting)
  

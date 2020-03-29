@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Selecteer het installatietype | Microsoft Docs'
-description: In dit onderwerp leert u hoe u het installatietype voor Azure AD Connect selecteren
+title: 'Azure AD Connect: selecteer uw installatietype | Microsoft Documenten'
+description: In dit onderwerp u het installatietype selecteren dat moet worden gebruikt voor Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348277"
 ---
-# <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Selecteer het installatietype voor Azure AD Connect
-Azure AD Connect heeft twee installatietypen voor nieuwe installatie: Express en Aangepast. Dit onderwerp helpt u om te bepalen welke optie voor het gebruik tijdens de installatie.
+# <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Het installatietype voor Azure AD Connect selecteren
+Azure AD Connect heeft twee installatietypen voor nieuwe installatie: Express en aangepast. Dit onderwerp helpt u om te beslissen welke optie te gebruiken tijdens de installatie.
 
 ## <a name="express"></a>Express
-Express is de meest voorkomende optie en wordt gebruikt door ongeveer 90% van alle nieuwe installaties. Het is ontworpen voor een configuratie die geschikt is voor de meest voorkomende scenario's voor de klant.
+Express is de meest voorkomende optie en wordt gebruikt door ongeveer 90% van alle nieuwe installaties. Het is ontworpen om een configuratie te bieden die werkt voor de meest voorkomende klantscenario's.
 
-Hierbij wordt ervan uitgegaan:
+Het veronderstelt:
 
-- U hebt een enkele Active Directory on-premises forest.
-- U hebt een enterprise-administrator-account die kunt u voor de installatie.
+- U hebt één Active Directory-forest on-premises.
+- U hebt een bedrijfsbeheerdersaccount dat u voor de installatie gebruiken.
 - U hebt minder dan 100.000 objecten in uw on-premises Active Directory.
 
-U krijgt:
+Je krijgt:
 
-- [Wachtwoord-hashsynchronisatie](how-to-connect-password-hash-synchronization.md) van on-premises naar Azure AD voor eenmalige aanmelding.
-- Een configuratie die wordt gesynchroniseerd [gebruikers, groepen, contactpersonen en Windows 10-computers](concept-azure-ad-connect-sync-default-configuration.md).
+- [Synchronisatie van wachtwoordhash](how-to-connect-password-hash-synchronization.md) van on-premises naar Azure AD voor eenmalige aanmelding.
+- Een configuratie die [gebruikers, groepen, contactpersonen en Windows 10-computers](concept-azure-ad-connect-sync-default-configuration.md)synchroniseert.
 - Synchronisatie van alle in aanmerking komende objecten in alle domeinen en alle OE's.
-- [Automatische upgrade](how-to-connect-install-automatic-upgrade.md) om ervoor te zorgen dat u altijd de meest recente beschikbare versie is ingeschakeld.
+- [Automatische upgrade](how-to-connect-install-automatic-upgrade.md) is ingeschakeld om ervoor te zorgen dat u altijd de nieuwste beschikbare versie gebruikt.
 
-Opties voor waar u nog steeds Express kunt gebruiken:
+Opties waar u Express nog steeds gebruiken:
 
-- Als u niet synchroniseren van alle OE's wilt, kunt u nog steeds Express gebruikt en op de laatste pagina, schakel **Start het synchronisatieproces...** *. De installatiewizard opnieuw uitvoeren en wijzigen van de organisatie-eenheden in [configuratieopties](how-to-connect-installation-wizard.md#customize-synchronization-options) en geplande synchronisatie in te schakelen.
-- Wilt u een van de nieuwe functies in Azure AD Premium, zoals het terugschrijven van wachtwoorden inschakelen. Ga eerst via express om op te halen van de eerste installatie is voltooid. Voer de installatiewizard opnieuw uit en wijzig de [configuratieopties](how-to-connect-installation-wizard.md#customize-synchronization-options).
+- Als u niet alle Ok's wilt synchroniseren, u Express nog steeds gebruiken en op de laatste pagina u de selectie deselectie uitdeschakelt **Start het synchronisatieproces...***. Voer vervolgens de wizard Installatie opnieuw uit en wijzig de OK's in [configuratieopties](how-to-connect-installation-wizard.md#customize-synchronization-options) en schakel geplande synchronisatie in.
+- U wilt een van de functies in Azure AD Premium inschakelen, zoals terugschrijven van wachtwoorden. Ga eerst door express om de eerste installatie voltooid te krijgen. Voer vervolgens de wizard installatie opnieuw uit en wijzig de [configuratieopties](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Aangepast telefoonnummer
-Het aangepaste pad kunt veel meer opties dan express. Het moet worden gebruikt in alle gevallen waarin de configuratie die wordt beschreven in de vorige sectie voor snelle niet representatief zijn voor uw organisatie.
+Het aangepaste pad biedt veel meer opties dan express. Het moet worden gebruikt in alle gevallen waarin de configuratie beschreven in de vorige sectie voor express is niet representatief voor uw organisatie.
 
 Gebruiken wanneer:
 
-- U hebt geen toegang tot een enterprise-beheerdersaccount in Active Directory.
-- U hebt meer dan één forest of u van plan bent om te synchroniseren van meer dan één forest in de toekomst.
-- U hebt domeinen in uw forest niet bereikbaar is vanaf de Connect-server.
-- U van plan bent federation of Pass through-verificatie voor aanmelden van gebruikers te gebruiken.
+- U hebt geen toegang tot een bedrijfsbeheerdersaccount in Active Directory.
+- U hebt meer dan één forest of u bent van plan om in de toekomst meer dan één forest te synchroniseren.
+- U hebt domeinen in uw forest die niet bereikbaar zijn vanaf de Connect-server.
+- U bent van plan federatie- of doorreisverificatie te gebruiken voor aanmelding door gebruikers.
 - U hebt meer dan 100.000 objecten en moet een volledige SQL Server gebruiken.
-- U wilt gebruiken op basis van een groep filteren en niet alleen domein of OE filteren.
+- U bent van plan om groepsfiltering te gebruiken en niet alleen domein- of OU-filtering.
 
-## <a name="upgrade-from-dirsync"></a>Upgraden van DirSync
-Als u momenteel van DirSync gebruikmaakt, volgt u de stappen in [Upgrade van DirSync](how-to-dirsync-upgrade-get-started.md) uw bestaande configuratie bijwerken. Er zijn twee verschillende upgrade-opties:
+## <a name="upgrade-from-dirsync"></a>Upgrade van DirSync
+Als u momenteel DirSync gebruikt, voert u de stappen in [Upgrade van DirSync](how-to-dirsync-upgrade-get-started.md) uit om uw bestaande configuratie te upgraden. Er zijn twee verschillende upgradeopties:
 
-- In-place upgrade naar het Connect installeert op dezelfde server.
-- Parallelle implementatie Connect installeren op een nieuwe server terwijl de bestaande DirSync-server nog steeds operationeel is.
+- In-place upgrade om Connect op dezelfde server te installeren.
+- Parallelle implementatie om Connect op een nieuwe server te installeren terwijl de bestaande DirSync-server nog operationeel is.
 
-## <a name="upgrade-from-azure-ad-sync"></a>Een upgrade uitvoeren voor Azure AD Sync
-Als u Azure AD Sync momenteel gebruikt, dan kunt u volgen de [dezelfde stappen](how-to-upgrade-previous-version.md) als bij de upgrade van een verbinding maken met versie naar een nieuwere. Er zijn twee verschillende upgrade-opties:
+## <a name="upgrade-from-azure-ad-sync"></a>Upgraden van Azure AD Sync
+Als u momenteel Azure AD Sync gebruikt, u [dezelfde stappen](how-to-upgrade-previous-version.md) volgen als wanneer u een upgrade uitvoert van de ene Connect-versie naar een nieuwere versie. Er zijn twee verschillende upgradeopties:
 
-- In-place upgrade naar het Connect installeert op dezelfde server.
-- Swingmigratie Connect op een nieuwe server installeren tijdens de bestaande Azure AD Sync-server nog steeds operationeel is.
+- In-place upgrade om Connect op dezelfde server te installeren.
+- Swing-migratie om Connect op een nieuwe server te installeren terwijl de bestaande Azure AD Sync-server nog steeds operationeel is.
 
-## <a name="migrate-from-fim2010-or-mim2016"></a>Migreren van FIM 2010 wachtwoordherstelextensies of MIM2016
-Als u momenteel van Forefront Identity Manager 2010 of Microsoft Identity Manager 2016 met de Azure AD-Connector gebruikmaakt, is de enige mogelijkheid een migratie. Volg de stappen [swingmigratie](how-to-upgrade-previous-version.md#swing-migration). In de stappen, kunt u een melding van Azure AD Sync vervangen door FIM 2010 wachtwoordherstelextensies/MIM2016.
+## <a name="migrate-from-fim2010-or-mim2016"></a>Migreren van FIM2010 of MIM2016
+Als u momenteel Forefront Identity Manager 2010 of Microsoft Identity Manager 2016 gebruikt met de Azure AD Connector, is uw enige optie een migratie. Volg de stappen beschreven in [swing-migratie](how-to-upgrade-previous-version.md#swing-migration). Vervang in de stappen elke vermelding van Azure AD Sync door FIM2010/MIM2016.
 
 ## <a name="next-steps"></a>Volgende stappen
-Afhankelijk van de optie die u hebt geselecteerd om te gebruiken, gebruikt u de inhoudsopgave aan de linkerkant te vinden van uw artikel met gedetailleerde stappen.
+Afhankelijk van de optie die u hebt geselecteerd om te gebruiken, gebruikt u de inhoudstabel links om uw artikel met de gedetailleerde stappen te vinden.

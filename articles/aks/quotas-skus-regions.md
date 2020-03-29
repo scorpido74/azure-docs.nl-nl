@@ -1,21 +1,21 @@
 ---
-title: Beschik baarheid van quota's, Sku's en regio's in azure Kubernetes service (AKS)
-description: Meer informatie over de standaard quota's, de beperkte VM-groottes voor knoop punten en de beschik baarheid van regio's van de Azure Kubernetes-service (AKS).
+title: Quota, SKU's en regiobeschikbaarheid in Azure Kubernetes Service (AKS)
+description: Meer informatie over de standaardquota, de VM-sKU-formaten met beperkte node en de beschikbaarheid van de Azure Kubernetes-service (AKS) in de regio.
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252829"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Quota, beperkingen voor de grootte van virtuele machines en regiobeschikbaarheid in Azure Kubernetes Service (AKS)
 
-Alle Azure-Services hebben standaard limieten en-quota ingesteld voor resources en functies. Bepaalde VM-Sku's (virtuele machine) zijn ook beperkt voor gebruik.
+Alle Azure-services stellen standaardlimieten en quota in voor resources en functies. Bepaalde virtuele machine (VM) SKU's zijn ook beperkt voor gebruik.
 
-In dit artikel worden de standaard resource limieten beschreven voor Azure Kubernetes service (AKS)-resources en de beschik baarheid van AKS in azure-regio's.
+In dit artikel worden de standaardbronlimieten voor AKS-bronnen (Azure Kubernetes Service) en de beschikbaarheid van AKS in Azure-regio's beschreven.
 
 ## <a name="service-quotas-and-limits"></a>Servicequota en -limieten
 
@@ -23,14 +23,14 @@ In dit artikel worden de standaard resource limieten beschreven voor Azure Kuber
 
 ## <a name="provisioned-infrastructure"></a>Ingerichte infrastructuur
 
-Alle andere beperkingen voor netwerk, berekening en opslag zijn van toepassing op de ingerichte infrastructuur. Zie [Azure-abonnement en service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md)voor de relevante limieten.
+Alle andere beperkingen voor netwerk, berekening en opslag zijn van toepassing op de ingerichte infrastructuur. Zie [Azure-abonnements- en servicelimieten](../azure-resource-manager/management/azure-subscription-service-limits.md)voor de relevante limieten .
 
 > [!IMPORTANT]
-> Wanneer u een AKS-cluster bijwerkt, worden er tijdelijk extra resources verbruikt. Deze resources omvatten beschik bare IP-adressen in een subnet van een virtueel netwerk of een vCPU-quotum van een virtuele machine. Als u Windows Server-containers gebruikt (momenteel als preview-versie in AKS), is de enige geviseerde benadering voor het Toep assen van de meest recente updates voor de knoop punten het uitvoeren van een upgrade bewerking. Een mislukte upgrade van een cluster kan erop wijzen dat u niet over de beschik bare IP-adres ruimte of het vCPU quotum beschikt om deze tijdelijke bronnen te verwerken. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over het upgrade proces voor Windows Server-knoop punten.
+> Wanneer u een AKS-cluster upgradet, worden er tijdelijk extra resources verbruikt. Deze bronnen omvatten beschikbare IP-adressen in een virtueel netwerksubnet of vCPU-quotum voor virtuele machines. Als u Windows Server-containers gebruikt (momenteel in preview in AKS), is de enige goedgekeurde benadering om de nieuwste updates op de knooppunten toe te passen het uitvoeren van een upgradebewerking. Een mislukt clusterupgradeproces kan erop wijzen dat u niet over de beschikbare IP-adresruimte of vCPU-quotum beschikt om deze tijdelijke resources te verwerken. Zie [Een knooppuntgroep in AKS upgraden][nodepool-upgrade]voor meer informatie over het upgradeproces voor het knooppunt van Windows Server.
 
-## <a name="restricted-vm-sizes"></a>Beperkte VM-grootten
+## <a name="restricted-vm-sizes"></a>Beperkte VM-formaten
 
-Elk knoop punt in een AKS-cluster bevat een vaste hoeveelheid reken resources, zoals vCPU en geheugen. Als een AKS-knoop punt onvoldoende Compute-bronnen bevat, kan het samen werken mogelijk niet op de juiste wijze worden uitgevoerd. **Gebruik niet de volgende VM-sku's in AKS**om ervoor te zorgen dat het vereiste *uitvoeren-systeem* en uw toepassingen betrouwbaar kunnen worden gepland:
+Elk knooppunt in een AKS-cluster bevat een vaste hoeveelheid rekenbronnen zoals vCPU en geheugen. Als een AKS-knooppunt onvoldoende rekenbronnen bevat, kunnen pods mogelijk niet correct worden uitgevoerd. Gebruik de **volgende VM SKU's in AKS**om ervoor te zorgen dat de vereiste *kube-systeempods* en uw toepassingen betrouwbaar kunnen worden gepland:
 
 - Standard_A0
 - Standard_A1
@@ -40,15 +40,15 @@ Elk knoop punt in een AKS-cluster bevat een vaste hoeveelheid reken resources, z
 - Standard_F1
 - Standard_F1s
 
-Zie [grootten voor virtuele machines in azure][vm-skus]voor meer informatie over VM-typen en hun reken resources.
+Zie Grootte voor virtuele machines in [Azure voor][vm-skus]meer informatie over VM-typen en hun rekenbronnen.
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Zie [AKS Gewest Availability][region-availability](Engelstalig) voor de meest recente lijst van waar u clusters kunt implementeren en uitvoeren.
+Zie de beschikbaarheid van [AKS-regio's][region-availability]voor de meest recente lijst met waar u clusters implementeren en uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als uw resource een verhoging ondersteunt, vraagt u de verhoging via een [Azure-ondersteunings aanvraag][azure-support] (voor **type probleem**, selecteert u **quotum**).
+Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als uw resource een verhoging ondersteunt, vraagt u de verhoging aan via een [Azure-ondersteuningsaanvraag][azure-support] (selecteer Quotum voor **probleemtype).** **Quota**
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

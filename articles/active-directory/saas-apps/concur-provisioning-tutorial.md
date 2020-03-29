@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Concur configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Concur configureren voor automatische gebruikersvoorziening met Azure Active Directory| Microsoft Documenten'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Concur configureert.
 services: active-directory
 documentationCenter: na
@@ -16,114 +16,114 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60280403"
 ---
-# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Zelfstudie: Concur configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Zelfstudie: Akkoord configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelfstudie is om weer te geven u de stappen die u uitvoeren in Concur en Azure AD wilt voor het automatisch inrichten en inrichting van gebruikersaccounts vanuit Azure AD naar Concur ongedaan maken.
+Het doel van deze zelfstudie is om u de stappen te laten zien die u moet uitvoeren in Concur en Azure AD om gebruikersaccounts automatisch in te richten en te de-provisionen van Azure AD naar Concur.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende items hebt:
 
-*   Een Azure Active directory-tenant.
-*   Een Concur eenmalige aanmelding ingeschakeld abonnement.
-*   Een gebruikersaccount in Concur met Team beheerdersmachtigingen.
+*   Een Azure Active directory tenant.
+*   Een contract met één aanmelding ingeschakeld.
+*   Een gebruikersaccount in Concur met machtigingen voor teambeheerder.
 
 ## <a name="assigning-users-to-concur"></a>Gebruikers toewijzen aan Concur
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, wordt alleen de gebruikers en groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van automatische gebruikersaccountinrichting worden alleen de gebruikers en groepen die zijn 'toegewezen' aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u om te bepalen welke gebruikers en/of groepen in Azure AD de gebruikers die toegang nodig tot uw app Concur vertegenwoordigen. Als besloten, kunt u deze gebruikers toewijzen aan uw app Concur door de instructies hier:
+Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Concur-app. Eenmaal besloten, u deze gebruikers toewijzen aan uw Concur-app door de instructies hier te volgen:
 
-[Een gebruiker of groep toewijzen aan een enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfsapp](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>Belangrijke tips voor het toewijzen van gebruikers aan Concur
 
-*   Het wordt aanbevolen dat één Azure AD-gebruiker worden toegewezen aan Concur voor het testen van de configuratie van de inrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+*   Het wordt aanbevolen dat één Azure AD-gebruiker aan Concur wordt toegewezen om de inrichtingsconfiguratie te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-*   Wanneer een gebruiker aan Concur toewijzen, moet u een geldige gebruikersrol selecteren. De rol 'standaardtoegang' werkt niet voor het inrichten.
+*   Wanneer u een gebruiker aan Concur toewijs, moet u een geldige gebruikersrol selecteren. De rol 'Standaardtoegang' werkt niet voor inrichten.
 
-## <a name="enable-user-provisioning"></a>Gebruikersinrichting inschakelen
+## <a name="enable-user-provisioning"></a>Gebruikersvoorziening inschakelen
 
-In deze sectie helpt u bij het verbinden van uw Azure AD aan de gebruikersaccount van Concur Inrichtings-API en configureren van de provisioning-service voor het maken, bijwerken en uitschakelen van toegewezen gebruikersaccounts in Concur op basis van gebruikers en groepen in Azure AD.
+In deze sectie u uw Azure AD verbinden met de API voor het inrichten van het gebruikersaccount van Concur en de inrichtingsservice configureren om toegewezen gebruikersaccounts in Concur te maken, bij te werken en uit te schakelen op basis van gebruikers- en groepstoewijzing in Azure AD.
 
 > [!Tip] 
-> U kunt ook op SAML gebaseerde eenmalige aanmelding ingeschakeld voor Concur, vindt u de instructies te volgen in [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies een fraaie aanvulling in elkaar.
+> U er ook voor kiezen om SAML-gebaseerde single sign-On voor Concur in te schakelen, volgens de instructies in [Azure portal.](https://portal.azure.com) Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-user-account-provisioning"></a>Het configureren van het inrichten van gebruikersaccounts:
+### <a name="to-configure-user-account-provisioning"></a>Ga als een te meer meting in de inrichting van gebruikersaccounts:
 
-Het doel van deze sectie is om te beschrijven hoe u inrichting van Active Directory-gebruikersaccounts met Concur inschakelen.
+Het doel van deze sectie is om te schetsen hoe u de inrichting van Active Directory-gebruikersaccounts voor Concur inschakelen.
 
-Heeft om in te schakelen van apps in de Service onkosten, er moet een juiste installatie en het gebruik van een Web-servicebeheerder-profiel. Niet de rol Admin WS niet toevoegen aan uw bestaande administrator-profiel dat u voor T & E beheerfuncties gebruikt.
+Om apps in de onkostenservice in te schakelen, moet er een goede installatie en het gebruik van een Web Service Admin-profiel zijn. Voeg de ws-beheerrol niet toe aan uw bestaande beheerdersprofiel dat u gebruikt voor T-&E-beheerfuncties.
 
-Concur consultants van Microsoft of de clientbeheerder van de moet een afzonderlijke Web Service Administrator-profiel maken en de beheerder van de Client moet dit profiel gebruiken voor de beheerder van Web Services-functies (bijvoorbeeld om apps). Deze profielen moeten gescheiden worden gehouden van van de clientbeheerder dagelijkse T & E admin-profiel (het T & E admin-profiel moet niet over de WSAdmin rol).
+Concur Consultants of de clientbeheerder moeten een duidelijk Web Service Administrator-profiel maken en de clientbeheerder moet dit profiel gebruiken voor de webservicesbeheerdersfuncties (bijvoorbeeld het inschakelen van apps). Deze profielen moeten gescheiden worden gehouden van het dagelijkse T-&E-beheerdersprofiel van de clientbeheerder (het T-&E-beheerdersprofiel mag de WSAdmin-rol niet hebben toegewezen).
 
-Wanneer u het profiel moet worden gebruikt voor het inschakelen van de app maakt, voert u de naam van de clientbeheerder in de velden van gebruiker-profiel. Dit wijst eigendom toe aan het profiel. Als een of meer profielen is gemaakt, de client moet zich aanmelden met dit profiel in klikt u op de '*inschakelen*"knop voor een App-Partner in het menu Web Services.
+Wanneer u het profiel maakt dat moet worden gebruikt om de app in te schakelen, voert u de naam van de clientbeheerder in in de gebruikersprofielvelden. Dit wijst eigendom toe aan het profiel. Zodra een of meer profielen zijn aangemaakt, moet de client zich aanmelden met dit profiel om op de knop*Inschakelen*voor een partner-app in het menu van Web Services te klikken.
 
-De volgende oorzaken hebben, moet deze actie niet worden uitgevoerd met het profiel dat ze voor het beheer van normale T & E gebruiken.
+Om de volgende redenen mag deze actie niet worden uitgevoerd met het profiel dat zij gebruiken voor een normale T&E-administratie.
 
-* De client moet het account klikt op '*Ja*' in het dialoogvenster-upvenster dat wordt weergegeven nadat een app is ingeschakeld. Hier klikken erkent dat de client wil voor de Partner-toepassing voor toegang tot hun gegevens, zodat u of de Partner kan niet klikt u op die knop Ja.
+* De client moet degene zijn die op *"Ja"* klikt op het dialoogvenster dat wordt weergegeven nadat een app is ingeschakeld. Met deze klik wordt erkend dat de client bereid is dat de partnertoepassing toegang heeft tot hun gegevens, zodat u of de Partner niet op die ja-knop klikken.
 
-* Als de clientbeheerder van een die een app is ingeschakeld met behulp van de beheerder T & E profiel het bedrijf verlaat (wat resulteert in het profiel wordt gedeactiveerd), alle apps die zijn ingeschakeld met behulp van profiel niet werken totdat de app is ingeschakeld met een andere actieve WS-Admin-profiel. Dit is de reden waarom u moet afzonderlijke WS-Admin-profielen maken.
+* Als een clientbeheerder die een app heeft ingeschakeld met het T-&E-beheerdersprofiel het bedrijf verlaat (waardoor het profiel wordt geïnactiveerd), werken alle apps die zijn ingeschakeld met dat profiel niet totdat de app is ingeschakeld met een ander actief WS-beheerdersprofiel. Dit is de reden waarom je wordt verondersteld om verschillende WS Admin profielen te maken.
 
-* Als een beheerder van het bedrijf verlaat, kan de naam die is gekoppeld aan het profiel WS-beheerder worden gewijzigd in de beheerder van de vervangende indien gewenst zonder gevolgen voor dat de ingeschakelde app omdat dit profiel niet hoeft uitgeschakeld.
+* Als een beheerder het bedrijf verlaat, kan de naam die is gekoppeld aan het WS-beheerdersprofiel indien gewenst worden gewijzigd in de vervangende beheerder zonder dat dit gevolgen heeft voor de ingeschakelde app, omdat dat profiel niet hoeft te worden geactiveerd.
 
-**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
+**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
 
-1. Meld u aan bij uw **Concur** tenant.
+1. Meld u **Concur** aan bij uw Concur-huurder.
 
-2. Uit de **beheer** in het menu **webservices**.
+2. Selecteer **Webservices** in **Web Services**het menu Beheer .
    
-    ![Concur tenant](./media/concur-provisioning-tutorial/IC721729.png "Concur tenant")
+    ![De huurder van Concur](./media/concur-provisioning-tutorial/IC721729.png "De huurder van Concur")
 
-3. Aan de linkerkant van de **webservices** venster **partnertoepassing inschakelen**.
+3. Selecteer aan de linkerkant in het deelvenster **Webservices** de optie **Partnertoepassing inschakelen**.
    
-    ![Partnertoepassing inschakelen](./media/concur-provisioning-tutorial/ic721730.png "partnertoepassing inschakelen")
+    ![Partnertoepassing inschakelen](./media/concur-provisioning-tutorial/ic721730.png "Partnertoepassing inschakelen")
 
-4. Uit de **toepassing inschakelen** in de lijst met **Azure Active Directory**, en klik vervolgens op **inschakelen**.
+4. Selecteer in de lijst **Toepassing inschakelen** de optie Azure **Active Directory**en klik op **Inschakelen**.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. Klik op **Ja** sluiten de **actie bevestigen** dialoogvenster.
+5. Klik **op Ja** om het dialoogvenster Actie **bevestigen** te sluiten.
    
-    ![Bevestig de actie](./media/concur-provisioning-tutorial/ic721732.png "Bevestig de actie")
+    ![Actie bevestigen](./media/concur-provisioning-tutorial/ic721732.png "Actie bevestigen")
 
-6. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory > Bedrijfsapps > alle toepassingen** sectie.
+6. Blader in de [Azure-portal](https://portal.azure.com)naar de sectie **Azure Active Directory > Enterprise Apps > Alle toepassingen.**
 
-7. Als u al Concur hebt geconfigureerd voor eenmalige aanmelding, zoeken naar uw exemplaar van Concur met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **Concur** in de toepassingengalerie. Selecteer Concur in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+7. Als u Concur al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Concur via het zoekveld. Selecteer anders **Toevoegen** en zoeken naar **Akkoord** in de toepassingsgalerie. Selecteer Akkoord in de zoekresultaten en voeg deze toe aan uw lijst met toepassingen.
 
-8. Selecteer uw exemplaar van Concur en selecteer vervolgens de **Provisioning** tabblad.
+8. Selecteer uw exemplaar van Concur en selecteer vervolgens het tabblad **Inrichten.**
 
-9. Stel de **Inrichtingsmodus** naar **automatische**. 
+9. Stel de **inrichtingsmodus** in op **Automatisch**. 
  
-    ![Inrichting](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Provisioning](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. Onder de **beheerdersreferenties** sectie, voer de **gebruikersnaam** en de **wachtwoord** van uw beheerder Concur.
+10. Voer onder de sectie **Beheerdersreferenties** de **gebruikersnaam** en het **wachtwoord** van uw Concur-beheerder in.
 
-11. Klik in de Azure-portal op **testverbinding** om te controleren of Azure AD kunt verbinden met uw app Concur. Als de verbinding is mislukt, controleert u of dat uw account Concur Teambeheerder machtigingen heeft.
+11. Klik in de Azure-portal op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Concur-app. Als de verbinding mislukt, moet u ervoor zorgen dat uw Concur-account machtigingen voor teambeheer heeft.
 
-12. Voer het e-mailadres van een persoon of groep die inrichting fout meldingen moet ontvangen de **e-mailmelding** veld en schakel het selectievakje in.
+12. Voer het e-mailadres in van een persoon of groep die meldingen van provisioning-fouten moet ontvangen in het veld **E-mail melden** en schakel het selectievakje in.
 
-13. Klik op **opslaan.**
+13. Klik **op Opslaan.**
 
-14. Selecteer onder de sectie toewijzingen **synchroniseren Azure Active Directory: gebruikers aan Concur.**
+14. Selecteer Azure **Active Directory-gebruikers synchroniseren met Akkoord** onder de sectie Toewijzingen.
 
-15. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd naar Concur. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in Concur voor update-bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
+15. Controleer in de sectie **Toewijzingen van kenmerken** de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Concur. De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Concur te matchen voor updatebewerkingen. Selecteer de knop Opslaan om wijzigingen door te voeren.
 
-16. Als wilt inschakelen in de Azure AD-inrichtingsservice voor Concur, wijzigt de **Inrichtingsstatus** naar **op** in de **instellingen** sectie
+16. Als u de Azure AD-inrichtingsservice voor Concur wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen**
 
-17. Klik op **opslaan.**
+17. Klik **op Opslaan.**
 
-U kunt nu een testaccount maken. Wacht tot 20 minuten om te verifiëren dat het account is gesynchroniseerd met Concur.
+U nu een testaccount aanmaken. Wacht tot 20 minuten om te controleren of het account is gesynchroniseerd met Concur.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-* [Eenmalige aanmelding configureren](concur-tutorial.md)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](tutorial-list.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Eén aanmelding configureren](concur-tutorial.md)
 

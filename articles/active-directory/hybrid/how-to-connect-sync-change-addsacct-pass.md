@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie:  Het wachtwoord van het AD DS-account wijzigen | Microsoft Docs'
-description: Dit document onderwerp wordt beschreven hoe u Azure AD Connect bijwerken nadat het wachtwoord van het AD DS-account is gewijzigd.
+title: 'Azure AD Connect-synchronisatie: het wachtwoord van het AD DS-account wijzigen | Microsoft Documenten'
+description: In dit onderwerpdocument wordt beschreven hoe u Azure AD Connect bijwerken nadat het wachtwoord van het AD DS-account is gewijzigd.
 services: active-directory
 keywords: AD DS-account, Active Directory-account, wachtwoord
 documentationcenter: ''
@@ -18,43 +18,43 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60241592"
 ---
-# <a name="changing-the-ad-ds-account-password"></a>Het wachtwoord van het AD DS-account wijzigen
-De AD DS-account verwijst naar het gebruikersaccount dat door Azure AD Connect gebruikt om te communiceren met on-premises Active Directory. Als u het wachtwoord van het AD DS-account wijzigt, moet u Azure AD Connect-synchronisatieservice bijwerken met het nieuwe wachtwoord. Anders wordt de synchronisatie kan niet meer correct synchroniseren met de on-premises Active Directory en u de volgende fouten optreden:
+# <a name="changing-the-ad-ds-account-password"></a>Het wachtwoord voor het AD DS-account wijzigen
+Het AD DS-account verwijst naar het gebruikersaccount dat wordt gebruikt door Azure AD Connect om te communiceren met on-premises Active Directory. Als u het wachtwoord van het AD DS-account wijzigt, moet u Azure AD Connect Synchronization Service bijwerken met het nieuwe wachtwoord. Anders kan de synchronisatie niet meer correct synchroniseren met de on-premises Active Directory en worden de volgende fouten ervaren:
 
-* In de bewerking Synchronization Service Manager, importeren of exporteren met on-premises AD die is mislukt met **geen-start-referenties** fout.
+* In de synchronisatieservicemanager mislukt elke import- of exportbewerking met on-premises AD met fout **met geen beginreferenties.**
 
-* In Windows-Logboeken, het logboek voor toepassingsgebeurtenissen bevat een fout opgetreden bij het **gebeurtenis-ID 6000** en het bericht **'de beheeragent 'contoso.com' kan niet worden uitgevoerd omdat de referenties ongeldig zijn'** .
+* Onder Windows Event Viewer bevat het logboek van de toepassingsgebeurtenis een fout met **gebeurtenis-id 6000** en het bericht **'De beheeragent 'contoso.com' kan niet worden uitgevoerd omdat de referenties ongeldig waren.**
 
 
-## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Het bijwerken van de Synchronization Service met een nieuw wachtwoord voor AD DS-account
-De synchronisatieservice bijwerken met het nieuwe wachtwoord:
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>De synchronisatieservice bijwerken met een nieuw wachtwoord voor AD DS-account
+Ga als volgende over de synchronisatieservice met het nieuwe wachtwoord:
 
-1. Start de Synchronization Service Manager (→-synchronisatieservice START).
-</br>![Sync Service Manager](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
+1. Start de Synchronisatieservicebeheer (START → Synchronisatieservice).
+</br>![Onderhoudsbeheer synchroniseren](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
 
-2. Ga naar de **Connectors** tabblad.
+2. Ga naar het tabblad **Connectors.**
 
-3. Selecteer de **AD-Connector** die overeenkomt met de AD DS-account waarvoor u het wachtwoord is gewijzigd.
+3. Selecteer de **AD-connector** die overeenkomt met het AD DS-account waarvoor het wachtwoord is gewijzigd.
 
-4. Onder **acties**, selecteer **eigenschappen**.
+4. Selecteer **Eigenschappen**onder **Acties**.
 
-5. Selecteer in het pop-updialoogvenster **verbinding maken met Active Directory-Forest**:
+5. Selecteer verbinding maken met **Active Directory Forest**in het pop-updialoogvenster:
 
-6. Voer het nieuwe wachtwoord van de AD DS-account in de **wachtwoord** tekstvak.
+6. Voer het nieuwe wachtwoord van het AD DS-account in het tekstvak **Wachtwoord** in.
 
-7. Klik op **OK** het nieuwe wachtwoord opslaan en sluiten van het pop-updialoogvenster.
+7. Klik op **OK** om het nieuwe wachtwoord op te slaan en het pop-updialoogvenster te sluiten.
 
-8. Opnieuw opstarten van de Azure AD Connect synchronisatieservice onder Windows Service Control Manager. Dit is om ervoor te zorgen dat elke verwijzing naar het oude wachtwoord is verwijderd uit het cachegeheugen.
+8. Start de Azure AD Connect-synchronisatieservice opnieuw onder Windows Service Control Manager. Dit is om ervoor te zorgen dat elke verwijzing naar het oude wachtwoord wordt verwijderd uit de geheugencache.
 
 ## <a name="next-steps"></a>Volgende stappen
 **Overzichtsonderwerpen**
 
-* [Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie](how-to-connect-sync-whatis.md)
+* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
 
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

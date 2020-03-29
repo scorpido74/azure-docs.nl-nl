@@ -1,6 +1,6 @@
 ---
-title: End-to-end-BLOB-opname in azure Data Explorer viaC#
-description: In dit artikel leert u hoe u blobs kunt opnemen in azure Data Explorer met een end-to-end-voor beeld C#waarin wordt gebruikt.
+title: 'End-to-end blob opname in Azure Data Explorer via C #'
+description: In dit artikel leert u hoe u blobs inneemt in Azure Data Explorer met een end-to-end voorbeeld dat C#gebruikt.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964512"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>End-to-end-BLOB-opname in azure Data Explorer viaC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>End-to-end blob opname in Azure Data Explorer via C #
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Data Explorer is een snelle en schaal bare service voor gegevens exploratie voor logboek-en telemetriegegevens. In dit artikel vindt u een end-to-end-voor beeld van het opnemen van gegevens uit Azure Blob Storage in azure Data Explorer. 
+Azure Data Explorer is een snelle en schaalbare gegevensverkenningsservice voor logboek- en telemetriegegevens. In dit artikel vindt u een end-to-end voorbeeld van het innemen van gegevens uit Azure Blob-opslag in Azure Data Explorer. 
 
-U leert hoe u via programma code een resource groep, een opslag account en een container, een Event Hub en een Azure Data Explorer-cluster en-data base maakt. U leert ook hoe u Azure Data Explorer programmatisch kunt configureren om gegevens op te nemen uit het nieuwe opslag account.
+U leert hoe u programmatisch een resourcegroep, een opslagaccount en een container, een gebeurtenishub en een Azure Data Explorer-cluster en -database maken. U leert ook hoe u Azure Data Explorer programmatisch configureert om gegevens uit het nieuwe opslagaccount in te nemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="install-c-nuget"></a>NuGet C# installeren
+## <a name="install-c-nuget"></a>C# NuGet installeren
 
-* Installeer [micro soft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Installeer [micro soft. Azure. Management. Resource Manager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
-* Installeer [micro soft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
-* Installeer [micro soft. Azure. storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
-* Installeer [micro soft. rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) voor authenticatie.
+* Installeer [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Installeer [Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
+* Installeer [Microsoft.azure.management.eventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
+* Installeer [Microsoft.Azure.Storage.Blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
+* Installeer [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) voor verificatie.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
@@ -43,9 +43,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](htt
 
 ## <a name="code-example"></a>Voorbeeld van code 
 
-Het volgende code voorbeeld geeft u een stapsgewijs proces dat resulteert in de opname van gegevens in azure Data Explorer. 
+In het volgende codevoorbeeld ziet u een stapsgewijs proces dat resulteert in het innemen van gegevens in Azure Data Explorer. 
 
-U maakt eerst een resource groep. U maakt ook Azure-resources, zoals een opslag account en een container, een Event Hub, een Azure Data Explorer cluster en data base, en toevoegen van principals. Vervolgens maakt u een Azure Event Grid-abonnement, samen met een tabel-en kolom toewijzing, in de Azure Data Explorer-data base. Ten slotte maakt u de gegevens verbinding om Azure Data Explorer te configureren voor het opnemen van gegevens van het nieuwe opslag account. 
+U maakt eerst een resourcegroep. U maakt ook Azure-bronnen, zoals een opslagaccount en een container, een gebeurtenishub en een Azure Data Explorer-cluster en -database en voegt principals toe. Vervolgens maakt u een Azure Event Grid-abonnement, samen met een tabel- en kolomtoewijzing, in de Azure Data Explorer-database. Ten slotte maakt u de gegevensverbinding om Azure Data Explorer te configureren om gegevens uit het nieuwe opslagaccount in te nemen. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -174,16 +174,16 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
                 kustoDatabaseName, dataConnectionName: kustoDataConnectionName, new EventGridDataConnection(storageResourceId, eventHubResourceId, consumerGroup: "$Default", location: location, tableName:kustoTableName, mappingRuleName: kustoColumnMappingName, dataFormat: "csv"));
 
 ```
-| **Instelling** | **Beschrijving van veld** |
+| **Instelling** | **Veldbeschrijving** |
 |---|---|---|
-| tenantId | Uw Tenant-ID. Het wordt ook wel een directory-ID genoemd.|
+| tenantId | Je pacht-id. Het is ook bekend als een directory-ID.|
 | subscriptionId | De abonnements-ID die u gebruikt voor het maken van resources.|
-| clientId | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
-| clientSecret | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
+| clientId | De client-id van de toepassing die toegang heeft tot bronnen in uw tenant.|
+| clientGeheim | Het clientgeheim van de toepassing die toegang heeft tot bronnen in uw tenant. |
 
-## <a name="test-the-code-example"></a>Het code voorbeeld testen
+## <a name="test-the-code-example"></a>Het codevoorbeeld testen
 
-1. Upload een bestand naar het opslag account.
+1. Upload een bestand naar het opslagaccount.
 
     ```csharp
     string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
@@ -195,11 +195,11 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     2007-01-01 00:00:00.0000000,4171,Winter Storm";
     await blockBlob.UploadTextAsync(blobContent);
     ```
-    |**Instelling** | **Beschrijving van veld**|
+    |**Instelling** | **Veldbeschrijving**|
     |---|---|---|
-    | storageConnectionString | De connection string van het programmatisch gemaakte opslag account.|
+    | StorageConnectionString | De verbindingstekenreeks van het programmatisch gemaakte opslagaccount.|
 
-2. Voer een test query uit in azure Data Explorer.
+2. Voer een testquery uit in Azure Data Explorer.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -226,7 +226,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resource groep wilt verwijderen en resources wilt opschonen, gebruikt u de volgende opdracht:
+Als u de brongroep wilt verwijderen en resources wilt opschonen, gebruikt u de volgende opdracht:
 
 ```csharp
 await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
@@ -234,7 +234,7 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*  Zie [een Azure Data Explorer-cluster en-data base maken](create-cluster-database-csharp.md)voor meer informatie over andere manieren om een cluster en Data Base te maken.
-* Zie voor meer informatie over opname methoden [Azure Data Explorer gegevens opname](ingest-data-overview.md).
-* Voor meer informatie over de webtoepassing raadpleegt u [Quick Start: Query's uitvoeren in de Web-UI van Azure Data Explorer](web-query-data.md).
-* [Schrijf query's](write-queries.md) met een Kusto-query taal.
+*  Zie [Een Azure Data Explorer-cluster en -database maken](create-cluster-database-csharp.md)voor meer informatie over andere manieren om een cluster en database te maken.
+* Zie [Azure Data Explorer-gegevensopname](ingest-data-overview.md)voor meer informatie over innamemethoden.
+* Zie [Snelstart: Querygegevens in de webgebruikersinterface van Azure Data Explorer voor](web-query-data.md)meer informatie over de webtoepassing.
+* [Query's schrijven](write-queries.md) met Kusto Query Language.

@@ -1,6 +1,6 @@
 ---
-title: Een Azure Media Services encoding-taak maken die fMP4-chunks worden | Microsoft Docs
-description: In dit onderwerp laat zien hoe een coderingstaak waarmee fMP4-chunks worden gemaakt. Wanneer deze taak wordt gebruikt met de Media Encoder Standard of codering Media Encoder Premium Workflow, bevat de uitvoerasset fMP4-chunks in plaats van ISO MP4-bestanden.
+title: Een Azure Media Services-coderingstaak maken die fMP4-segmenten genereert | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u een coderingstaak maakt die fMP4-segmenten genereert. Wanneer deze taak wordt gebruikt met de Media Encoder Standard of Media Encoder Premium Workflow encoder, bevat het uitvoeritem fMP4-segmenten in plaats van ISO MP4-bestanden.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463838"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Een coderingstaak waarmee fMP4-chunks worden maken
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Een coderingstaak maken die fMP4-segmenten genereert
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel wordt beschreven hoe u maakt een coderingstaak die wordt gegenereerd gefragmenteerde MP4 (fMP4) segmenten in plaats van ISO MP4-bestanden. Voor het genereren van fMP4-chunks, gebruikt u de **Media Encoder Standard** of **Media Encoder Premium Workflow** coderingsprogramma te maken van een coderingstaak ook opgeven **AssetFormatOption.AdaptiveStreaming**  optie, zoals in dit codefragment wordt getoond:  
+In dit artikel ziet u hoe u een coderingstaak maakt die gefragmenteerde MP4-segmenten (fMP4) genereert in plaats van ISO MP4-bestanden. Als u fMP4-segmenten wilt genereren, gebruikt u de **media-encoderstandaard** of **mediaencoder premium** workflow-encoder om een coderingstaak te maken en specificeert u ook **assetformatoption.adaptivestreaming,** zoals in dit codefragment wordt weergegeven:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,20 +32,20 @@ Dit artikel wordt beschreven hoe u maakt een coderingstaak die wordt gegenereerd
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Coderen met mediaservices .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Coderen met Media Services .NET SDK
 
-Het volgende codevoorbeeld maakt gebruik van Media Services .NET SDK aan de volgende taken uitvoeren:
+In het volgende codevoorbeeld wordt Media Services .NET SDK gebruikt om de volgende taken uit te voeren:
 
 - Maak een coderingstaak.
-- Geen verwijzing ophalen naar de **Media Encoder Standard** coderingsprogramma.
-- Een coderingstaak toevoegen aan het project en geef voor het gebruik van de **adaptief streamen** vooraf ingestelde. 
-- Maak een uitvoerasset die fMP4-chunks en een ISM-bestand zal bevatten.
-- Voeg een gebeurtenis-handler om te controleren of de taak wordt uitgevoerd.
+- Hier krijg je een verwijzing naar de **Media Encoder Standard** encoder.
+- Voeg een coderingstaak toe aan de taak en geef op om de **voorinstelling Adaptieve streaming** te gebruiken. 
+- Maak een uitvoerelement dat fMP4-segmenten en een .ism-bestand bevat.
+- Voeg een gebeurtenishandler toe om de voortgang van de taak te controleren.
 - Verzend de taak.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zie ook
-[Media Services Encoding overzicht](media-services-encode-asset.md)
+[Overzicht van mediaservices codering](media-services-encode-asset.md)
 

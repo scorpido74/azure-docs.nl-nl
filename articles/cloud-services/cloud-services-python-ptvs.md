@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Python en Azure Cloud Services | Microsoft Docs
-description: Overzicht van het gebruik van Python Tools for Visual Studio om Azure-cloudservices te maken, inclusief webrollen en werkrollen.
+description: Overzicht van het gebruik van Python-tools voor Visual Studio voor het maken van Azure Cloud Services, met inbegrip van webrollen en werkrollen.
 services: cloud-services
 documentationcenter: python
 author: tgore03
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360715"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
@@ -23,15 +23,15 @@ Dit artikel biedt een overzicht van het gebruik van Python-web- en -werkrollen m
 ## <a name="prerequisites"></a>Vereisten
 * [Visual Studio 2013, 2015 of 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [Azure SDK-Hulpprogram ma's voor VS 2013][Azure SDK Tools for VS 2013] of  
-[Azure SDK-Hulpprogram ma's voor VS 2015][Azure SDK Tools for VS 2015] of  
-[Azure SDK-Hulpprogram Ma's voor VS 2017][Azure SDK Tools for VS 2017]
+* [Azure SDK-hulpprogramma’s voor VS 2013][Azure SDK Tools for VS 2013] of  
+[Azure SDK-hulpprogramma’s voor VS 2015][Azure SDK Tools for VS 2015] of  
+[Azure SDK-tools voor VS 2017][Azure SDK Tools for VS 2017]
 * [Python 2.7 32-bits][Python 2.7 32-bit] of [Python 3.5 32-bits][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Wat zijn Python-web- en -werkrollen?
-Azure biedt drie reken modellen voor het uitvoeren van toepassingen: [Web apps functie in azure app service][execution model-web sites], [Azure Virtual Machines][execution model-vms]en [Azure Cloud Services][execution model-cloud services]. Alle drie modellen ondersteunen Python. Cloud Services, die web- en werkrollen bevatten, bieden *Platform as a Service (PaaS)* . Binnen een cloudservice biedt een webrol een speciale IIS-webserver (Internet Information Services) voor het hosten van front-end webtoepassingen. Een werkrol kan asynchrone langlopende of permanente taken uitvoeren onafhankelijk van de interactie of invoer van de gebruiker.
+Azure biedt drie rekenmodellen voor het uitvoeren van toepassingen: [web-appsfunctie in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] en [Azure Cloud Services][execution model-cloud services]. Alle drie modellen ondersteunen Python. Cloud Services, die web- en werkrollen bevatten, bieden *Platform as a Service (PaaS)*. Binnen een cloudservice biedt een webrol een speciale IIS-webserver (Internet Information Services) voor het hosten van front-end webtoepassingen. Een werkrol kan asynchrone langlopende of permanente taken uitvoeren onafhankelijk van de interactie of invoer van de gebruiker.
 
 Zie [Wat is een cloudservice?] voor meer informatie.
 
@@ -323,7 +323,7 @@ De voortgang wordt gedeeltelijk weergegeven in het uitvoervenster. Vervolgens zi
 De implementatie duurt enkele minuten. Daarna worden uw web- en/of werkrollen uitgevoerd in Azure.
 
 ### <a name="investigate-logs"></a>Logboeken onderzoeken
-Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **C:\Resources\Directory\\{role}\LogFiles**. **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
+Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **C:\Resources\Directory\\{role}\LogFiles.** **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de documentatie bij PTVS voor meer informatie over het werken met web- en werkrollen in Python-tools voor Visual Studio:
@@ -334,7 +334,7 @@ Zie de volgende artikelen voor meer informatie over het gebruik van Azure-servic
 
 * [Blob-service][Blob Service]
 * [Tabelservice][Table Service]
-* [Wachtrijservice][Queue Service]
+* [Queue-service][Queue Service]
 * [Service Bus-wachtrijen][Service Bus Queues]
 * [Service Bus-onderwerpen][Service Bus Topics]
 

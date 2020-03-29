@@ -1,6 +1,6 @@
 ---
-title: Concepten van Azure IoT Hub x.509-beveiliging | Microsoft Docs
-description: Concept - inzicht in de waarde X.509-certificaat certificaten van certificeringsinstanties in IoT-apparaat-productie en verificatie.
+title: Concepten van Azure IoT Hub X.509-beveiliging | Microsoft Documenten
+description: Concept - inzicht in de waarde X.509 certificaatautoriteitencertificaten in de productie en verificatie van IoT-apparaten .
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,124 +9,124 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61320239"
 ---
-# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Conceptuele kennis van x.509-CA-certificaten in de branche IoT
+# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Conceptueel begrip van X.509 CA-certificaten in de IoT-industrie
 
-Dit artikel beschrijft de waarde van het gebruik van x.509-certificaten van certificeringsinstanties (CA) in IoT-apparaat-productie en verificatie met IoT Hub. Het bevat informatie over het aanbod keten van setup en markeer voordelen.
+In dit artikel wordt de waarde beschreven van het gebruik van Ca-certificaten (X.509-certificaatautoriteiten) in de productie en verificatie van IoT-apparaten naar IoT Hub. Het bevat informatie over supply chain setup en hoogtepunten voordelen.
 
-Dit artikel wordt beschreven:
+In dit artikel wordt beschreven:
 
-* Wat CA X.509-certificaten zijn en hoe u ze
+* Wat X.509 CA-certificaten zijn en hoe u ze krijgen
 
-* Informatie over het registreren van uw X.509-CA-certificaat naar IoT Hub
+* Uw X.509 CA-certificaat registreren bij IoT Hub
 
-* Over het instellen van een productiebedrijf toeleveringsketen voor verificatie op basis van X.509-CA
+* Een productieketen instellen voor X.509 CA-gebaseerde verificatie
 
-* Hoe apparaten die zijn ondertekend met een X.509-CA verbinding maken met IoT Hub
+* Hoe apparaten die zijn ondertekend met X.509 CA verbinding maken met IoT Hub
 
 ## <a name="overview"></a>Overzicht
 
-X.509-certificaat (Certificeringsinstantie) verificatie is een benadering voor het verifiëren van apparaten bij IoT Hub met behulp van een methode die drastisch identiteit maken en de levenscyclus van Apparaatbeheer in de toeleveringsketen vereenvoudigt.
+X.509 Certificate Authority (CA) authenticatie is een benadering voor het authenticeren van apparaten naar IoT Hub met behulp van een methode die het creëren van apparaatidentiteiten en levenscyclusbeheer in de supply chain drastisch vereenvoudigt.
 
-Een onderscheidende kenmerk van de X.509-CA-verificatie is een een-op-veel-relatie die een CA-certificaat met de downstream-apparaten heeft. Deze relatie kunt registratie van een willekeurig aantal apparaten in IoT Hub door het registreren van een X.509-CA-certificaat eenmaal, anders unieke certificaten voor apparaten vooraf geregistreerde voor elk apparaat moeten zijn voordat een apparaat verbinding kan maken. Deze een-op-veel-relatie vereenvoudigt ook de bewerkingen voor certificaten levenscyclus van Apparaatbeheer.
+Een onderscheidend kenmerk van de X.509 CA-verificatie is een één-op-één relatie die een CA-certificaat heeft met zijn downstream-apparaten. Deze relatie maakt registratie van een willekeurig aantal apparaten in IoT Hub mogelijk door één keer een X.509 CA-certificaat te registreren, anders moeten unieke certificaten van het apparaat vooraf worden geregistreerd voor elk apparaat voordat een apparaat verbinding kan maken. Deze één-op-vele relatie vereenvoudigt ook het beheer van apparaatcertificaten tijdens het levenscyclusbeheer.
 
-Een ander belangrijk kenmerk van de X.509-CA-verificatie is supply chain logistiek te vereenvoudigen. Veilige verificatie van apparaten is vereist dat elk apparaat een unieke geheim, zoals een sleutel als basis voor de vertrouwensrelatie bevat. In de verificatie op basis van certificaten is dit geheim een persoonlijke sleutel. Een typische apparaat productie-stroom omvat meerdere stappen en bewaarders. Veilig is meerdere bewaarders apparaat persoonlijke sleutels te beheren en onderhouden van de vertrouwensrelatie moeilijk en kostbaar. Met behulp van certificeringsinstanties lost dit probleem op door elke beheerder in een cryptografische vertrouwensketen ondertekening in plaats van waarbij ze met persoonlijke sleutels van apparaat. Elke beheerder zich op zijn beurt apparaten bij hun respectieve processtap van de productiestroom. Het resultaat is een optimale toeleveringsketen met ingebouwde aansprakelijkheid wordt versterkt door gebruik te maken van de cryptografische keten van vertrouwen. Het is vermelden waard dat dit proces resulteert in de meeste beveiliging wanneer apparaten de unieke persoonlijke sleutels beveiligt. Om dit te bereiken adviseren we het gebruik van Hardware Secure Modules (HSM) die geschikt is voor het genereren van intern persoonlijke sleutels die het licht van de dag wordt nooit te zien.
+Een ander belangrijk kenmerk van de X.509 CA authenticatie is vereenvoudiging van supply chain logistiek. Veilige verificatie van apparaten vereist dat elk apparaat een uniek geheim heeft als een sleutel als basis voor vertrouwen. Bij verificatie op basis van certificaten is dit geheim een privésleutel. Een typische productiestroom van apparaten omvat meerdere stappen en bewaarders. Het veilig beheren van persoonlijke sleutels van apparaten tussen meerdere bewaarders en het onderhouden van vertrouwen is moeilijk en duur. Met behulp van certificaatautoriteiten lost dit probleem op door elke beheerder in een cryptografische vertrouwensketen te ondertekenen in plaats van ze te voorzien van persoonlijke sleutels van het apparaat. Elke bewaarder op zijn beurt tekent apparaten op hun respectieve processtap van de productiestroom. Het algemene resultaat is een optimale supply chain met ingebouwde verantwoording door gebruik te maken van de cryptografische vertrouwensketen. Het is vermeldenswaard dat dit proces de meeste veiligheid oplevert wanneer apparaten hun unieke privésleutels beschermen. Hiertoe dringen we aan op het gebruik van Hardware Secure Modules (HSM) die in staat zijn om intern privésleutels te genereren die nooit het daglicht zullen zien.
 
-In dit artikel biedt een end-to-end-weergave van het gebruik van de X.509-CA-verificatie, vanuit supply chain setup apparaat verbinding, tijdens het maken van het gebruik van een voorbeeld van de echte wereld duidelijker begrip.
+Dit artikel biedt een end-to-end weergave van het gebruik van de X.509 CA-authenticatie, van supply chain-setup tot apparaatverbinding, terwijl gebruik wordt gemaakt van een voorbeeld in de echte wereld om begrip te verharden.
 
 ## <a name="introduction"></a>Inleiding
 
-Het X.509-CA-certificaat is een digitaal certificaat waarvan houder van andere certificaten ondertekenen kunt. Deze digitale certificaten X.509 is omdat het voldoet aan een certificaat opmaak van IETF RFC 5280 standaard voorgeschreven standard en een certificeringsinstantie (CA) is, omdat de houder van andere certificaten kunt ondertekenen.
+Het X.509 CA-certificaat is een digitaal certificaat waarvan de houder andere certificaten kan ondertekenen. Dit digitale certificaat is X.509 omdat het voldoet aan een certificaatopmaakstandaard die is voorgeschreven door de RFC 5280-standaard van IETF en een certificaatautoriteit (CA) is omdat de houder andere certificaten kan ondertekenen.
 
-Het gebruik van X.509-CA is het best ten opzichte van een voorbeeld van een concreet begrijpen. Houd rekening met bedrijf X, maker van Smart-X-Widgets die is ontworpen voor installatie professional. Bedrijf X heeft zowel productie- en installatie. Deze opdrachten Factory-Y voor de productie van de smartcard-X-Widgets en serviceprovider technicus Z voor het installeren van de fabrikant van. Bedrijf X wenst dat Smart-X-Widget rechtstreeks afkomstig is van Factory-Y technicus-z voor de installatie en dat deze maakt rechtstreeks verbinding met bedrijfs-exemplaar van IoT-Hub x na de installatie zonder verdere tussenkomst van de uit bedrijf X. Als u wilt dit gebeurt, moet bedrijf X enkele eenmalige installatiebewerkingen voor smartcard-X-Widget voor automatische verbinding moet worden voltooid. De rest van dit artikel is met het end-to-end-scenario in gedachten, als volgt opgebouwd:
+Het gebruik van X.509 CA is het best te begrijpen in relatie tot een concreet voorbeeld. Denk aan Company-X, een maker van Smart-X-Widgets die zijn ontworpen voor professionele installatie. Company-X besteedt zowel de productie als de installatie uit. Het contracteert fabrikant Factory-Y om de Smart-X-Widgets te produceren, en dienstverlener Technician-Z te installeren. Company-X wil dat Smart-X-Widget rechtstreeks wordt verzonden van Factory-Y naar Technician-Z voor installatie en dat het direct verbinding maakt met Het geval van IoT Hub van Company-X na installatie zonder verdere tussenkomst van Company-X. Om dit mogelijk te maken, moet Company-X een paar eenmalige installatiebewerkingen voltooien om Smart-X-Widget te primeeren voor automatische verbinding. Met het end-to-end scenario in het achterhoofd, is de rest van dit artikel als volgt gestructureerd:
 
-* De X.509-CA-certificaat verkrijgen
+* Het X.509 CA-certificaat verkrijgen
 
-* X.509-CA-certificaat naar IoT Hub registreren
+* X.509 CA-certificaat registreren bij IoT Hub
 
-* Meld u apparaten in een certificaatketen van vertrouwensrelatie
+* Apparaten aanmelden bij een vertrouwensketen
 
 * Apparaatverbinding
 
-## <a name="acquire-the-x509-ca-certificate"></a>De X.509-CA-certificaat verkrijgen
+## <a name="acquire-the-x509-ca-certificate"></a>Het X.509 CA-certificaat verkrijgen
 
-Bedrijf X is de optie aanschaffen van een X.509-CA-certificaat van een openbare basiscertificeringsinstantie of een door een zelf-ondertekend proces te maken. Een optie zijn optimale of andere afhankelijk van het toepassingsscenario. Ongeacht de optie houdt de twee fundamentele stappen, een openbaar/persoonlijk sleutelpaar genereren en de openbare sleutel in een certificaat voor ondertekening.
+Company-X heeft de mogelijkheid om een X.509 CA-certificaat aan te schaffen bij een openbare basiscertificaatautoriteit of er een te maken via een zelfondertekend proces. De ene optie zou optimaal zijn ten opzichte van de andere, afhankelijk van het toepassingsscenario. Ongeacht de optie, het proces omvat twee fundamentele stappen, het genereren van een publiek / private sleutelpaar en het ondertekenen van de openbare sleutel in een certificaat.
 
 ![Stroom voor het genereren van een X509CA-certificaten](./media/iot-hub-x509ca-concept/csr-flow.png)
 
-Meer informatie over het uitvoeren van deze stappen verschillen met verschillende serviceproviders.
+Details over het uitvoeren van deze stappen verschillen met verschillende dienstverleners.
 
-### <a name="purchasing-an-x509-ca-certificate"></a>Een X.509-CA-certificaat kopen
+### <a name="purchasing-an-x509-ca-certificate"></a>Een X.509 CA-certificaat kopen
 
-Aanschaffen van een CA-certificaat heeft het voordeel van een bekende basis-CA-act dat als een vertrouwde derde partij garant staat voor de geldigheid van IoT-apparaten wanneer de apparaten verbinding maken. Bedrijf X kiest deze optie als ze van plan bent Smart-X-Widget om te communiceren met producten van derden of services na de eerste verbinding met IoT Hub.
+De aankoop van een CA-certificaat heeft het voordeel dat een bekende root CA optreedt als een vertrouwde derde partij om in te staan voor de legitimiteit van IoT-apparaten wanneer de apparaten verbinding maken. Bedrijf-X zou deze optie kiezen als ze van plan smart-x-widget om te communiceren met producten of diensten van derden na de eerste verbinding met IoT Hub.
 
-Bedrijf X kiest voor een X.509-CA-certificaat hebt gekocht, een basis-certificaten services-provider. Goede leads resulteert in een internet zoeken naar de woordgroep basis-CA. De basis-CA leidt bedrijf X voor het maken van het openbare/persoonlijke sleutelpaar en het genereren van een Certificate Signing Request (CSR) voor de services. Een CSR is het formele proces van het toepassen van een certificaat van een certificeringsinstantie. Het resultaat van deze aankoop is een certificaat voor gebruik als een certificaat. Gezien de alomtegenwoordigheid van X.509-certificaten, is het certificaat waarschijnlijk goed aan de IETF RFC 5280 standard zijn opgemaakt.
+Als u een X.509 CA-certificaat wilt kopen, kiest Company-X een leverancier van rootcertificatenservices. Een internet zoektocht naar de zinsnede 'Root CA' zal opleveren goede leads. De hoofd-CA zal Company-X begeleiden over het maken van het publiek/private sleutelpaar en hoe u een Certificaatondertekeningsaanvraag (CSR) voor hun services genereren. Een MVO is het formele proces van het aanvragen van een certificaat bij een certificeringsinstantie. Het resultaat van deze aankoop is een certificaat voor gebruik als een autoriteit certificaat. Gezien de alomtegenwoordigheid van X.509-certificaten, is het certificaat waarschijnlijk goed geformatteerd volgens de RFC 5280-standaard van IETF.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Het maken van een zelfondertekend x.509-CA-certificaat
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Een zelfondertekend X.509 CA-certificaat maken
 
-Het proces voor het maken van een zelfondertekend x.509-CA-certificaat is vergelijkbaar met het aanschaffen met uitzondering van met betrekking tot een ondertekenaar van derden, zoals de basis-CA. Bedrijf X ondertekent het certificaat in plaats van een basis-CA-certificaat in ons voorbeeld. Bedrijf X kan deze optie voor het testen van totdat ze klaar om aan te schaffen van een certificaat. Bedrijf X kan een zelfondertekend X.509-CA-certificaat in productie, ook gebruiken als Smart-X-object is niet bedoeld voor het verbinding maken met services van derden buiten de IoT-Hub.
+Het proces voor het maken van een zelfondertekend X.509 CA-certificaat is vergelijkbaar met de aankoop, met uitzondering van het betrekken van een derde ondertekenaar zoals de rootcertificaatautoriteit. In ons voorbeeld zal Company-X het autoriteitscertificaat ondertekenen in plaats van een basiscertificaatautoriteit. Bedrijf-X kan deze optie kiezen voor het testen totdat ze klaar zijn om een certificaat van de autoriteit te kopen. Company-X kan ook een zelfondertekend X.509 CA-certificaat in productie gebruiken, als Smart-X-Widget niet bedoeld is om verbinding te maken met services van derden buiten de IoT Hub.
 
-## <a name="register-the-x509-certificate-to-iot-hub"></a>Registreren van het X.509-certificaat naar IoT Hub
+## <a name="register-the-x509-certificate-to-iot-hub"></a>Het X.509-certificaat registreren op IoT Hub
 
-Bedrijf X moet voor het registreren van het X.509-CA naar IoT Hub waar fungeren Smart-X-Widgets verifiëren omdat ze verbinding maken. Dit is een eenmalige proces dat het mogelijk om te verifiëren en een willekeurig aantal Smart-X-Widget apparaten te beheren. Dit proces is eenmalige vanwege een een-op-veel-relatie tussen een certificaat en de apparaten en ook vormt een van de belangrijkste voordelen van het gebruik van de X.509-CA-verificatiemethode. Het alternatief is voor het uploaden van afzonderlijke certificaatvingerafdrukken voor elk Smart-X-Widget apparaat waardoor toe te voegen aan operationele kosten.
+Company-X moet de X.509 CA registreren bij IoT Hub, waar het zal dienen om Smart-X-Widgets te authenticeren terwijl ze verbinding maken. Dit is een eenmalig proces waarmee u een willekeurig aantal Smart-X-Widget-apparaten verifiëren en beheren. Dit proces is eenmalig vanwege een eenmalige relatie tussen het certificaat van de autoriteit en apparaten en vormt ook een van de belangrijkste voordelen van het gebruik van de X.509 CA-verificatiemethode. Het alternatief is om individuele certificaat duimafdrukken uploaden voor elk Smart-X-Widget apparaat waardoor de operationele kosten.
 
-Registratie van het X.509-CA-certificaat is een proces in twee stappen, het certificaat uploaden en het certificaat van bewijs van eigendom.
+Het registreren van het X.509 CA-certificaat is een proces in twee stappen, het uploaden van certificaten en het bewijs van het bezit van het certificaat.
 
-![Registreren van een certificaat X509CA](./media/iot-hub-x509ca-concept/pop-flow.png)
+![Een X509CA-certificaat registreren](./media/iot-hub-x509ca-concept/pop-flow.png)
 
-### <a name="x509-ca-certificate-upload"></a>X.509-CA-certificaat uploaden
+### <a name="x509-ca-certificate-upload"></a>X.509 CA-certificaat uploaden
 
-Het x.509-CA-certificaat uploaden dat is, het CA-certificaat uploaden naar IoT Hub. IoT Hub wordt verwacht dat het certificaat in een bestand. Bedrijf X uploadt gewoon het certificaatbestand. Het certificaatbestand moet niet onder alle omstandigheden bevat geen persoonlijke sleutels. Best practices van normen opgelegd Public Key Infrastructure (PKI) deze kennis van bedrijf mandaten-x particuliere in dit geval exclusief binnen het bedrijf X zich bevindt.
+Het X.509 CA-certificaat uploadproces is precies dat, upload het CA-certificaat naar IoT Hub. IoT Hub verwacht het certificaat in een bestand. Company-X uploadt eenvoudig het certificaatbestand. Het certificaatbestand MAG IN GEEN GEVAL privésleutels bevatten. Best practices van normen voor Public Key Infrastructure (PKI) mandaten dat kennis van Company-X's prive in dit geval uitsluitend binnen Company-X.
 
-### <a name="proof-of-possession-of-the-certificate"></a>Bewijs van eigendom van het certificaat
+### <a name="proof-of-possession-of-the-certificate"></a>Bewijs van bezit van het certificaat
 
-Net als een digitaal certificaat, de X.509-CA-certificaat is openbare informatie die is deze vatbaar voor inbreuk. Als zodanig kan meeluistert onderscheppen van een certificaat en probeert te uploaden als hun eigen. In ons voorbeeld graag IoT Hub om ervoor te zorgen dat de CA-certificaat van bedrijf X uploaden echt deel uitmaakt van bedrijf X. Dit gebeurt, zodat door uitdagende bedrijf X om te controleren die ze in feite bezit zijn van het certificaat via een [bewijs van eigendom (PoP)-stroom](https://tools.ietf.org/html/rfc5280#section-3.1). De stroom bewijs van eigendom omvat IoT-Hub genereren van een willekeurig getal moet worden ondertekend door de bedrijfsportal-X met behulp van de persoonlijke sleutel. Als bedrijf X gevolgd PKI aanbevolen procedures en de persoonlijke sleutel beveiligd vervolgens alleen ze zou bevindt zich op positie goed reageren op de challenge bewijs van eigendom. IoT Hub wordt voortgezet voor het registreren van het x.509-CA-certificaat bij een geslaagde respons van de uitdaging bewijs van eigendom.
+Het X.509 CA-certificaat is, net als elk digitaal certificaat, openbare informatie die vatbaar is voor afluisteren. Als zodanig kan een afluisteraar een certificaat onderscheppen en proberen het als zijn eigen certificaat te uploaden. In ons voorbeeld wil IoT Hub ervoor zorgen dat het CA-certificaat Company-X echt van Company-X is. Zij doet dit door Company-X uit te dagen om aan te tonen dat zij in feite het certificaat bezitten door middel van een [proof-of-possession (PoP) flow](https://tools.ietf.org/html/rfc5280#section-3.1). De proof-of-possession flow houdt in dat IoT Hub een willekeurig nummer genereert dat door Company-X moet worden ondertekend met behulp van zijn private key. Als Company-X pki best practices volgde en hun privésleutel beschermde, zouden alleen zij in staat zijn om correct te reageren op de proof-of-possession-uitdaging. IoT Hub gaat over tot het registreren van het X.509 CA-certificaat na een succesvolle reactie van de proof-of-possession-uitdaging.
 
-Een geslaagde reactie op de uitdaging bewijs van eigendom van IoT Hub is voltooid voor de registratie van de X.509-CA.
+Een succesvol antwoord op de proof-of-possession challenge van IoT Hub maakt de X.509 CA registratie compleet.
 
-## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Meld u apparaten in een certificaatketen van vertrouwensrelatie
+## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Apparaten aanmelden bij een vertrouwensketen van certificaten
 
-IoT moet elk apparaat in het bezit van een unieke identiteit. Deze id's in de vorm certificaten voor verificatie op basis van certificaat schema's. In ons voorbeeld, betekent dit dat elke smartcard-X-Widget moet beschikken over een unieke apparaat-certificaat. Hoe werkt bedrijf X setup voor deze in de toeleveringsketen?
+IoT vereist dat elk apparaat een unieke identiteit bezit. Deze identiteiten staan in de formuliercertificaten voor verificatieschema's op basis van certificaten. In ons voorbeeld betekent dit dat elke Smart-X-Widget in het bezit moet zijn van een uniek apparaatcertificaat. Hoe is Company-X hiervoor in de supply chain aan de opte erin gaan?
 
-Een manier om te gaan hierover is voor het vooraf genereren van certificaten voor smartcard-X-Widgets en aanwijzing kennis van de bijbehorende persoonlijke sleutels van de unieke apparaat met supply chain partners. Voor bedrijf X, betekent dit dat aanwijzing Factory-Y en technicus Z. Hoewel dit een geldige methode, beschikt u over de uitdagingen die moeten worden verholpen om ervoor te zorgen vertrouwensrelatie als volgt:
+Een manier om dit te doen is het vooraf genereren van certificaten voor Smart-X-Widgets en het toevertrouwen van kennis van overeenkomstige unieke apparaat private keys met supply chain partners. Voor Company-X betekent dit dat factory-Y en Technicus-Z moeten worden toevertrouwen. Hoewel dit een geldige methode is, komt het met uitdagingen die moeten worden overwonnen om het vertrouwen als volgt te waarborgen:
 
-1. Voor het delen van persoonlijke sleutels van apparaat met toeleverende partners, naast de PKI worden genegeerd met procedures aanbevolen van het delen van persoonlijke sleutels, maakt het bouwen van vertrouwen in de toeleveringsketen dure nooit. Betekent dit dat kapitaal systemen zoals beveiligde ruimten naar huis apparaat persoonlijke sleutels en processen, zoals een periodieke beveiligingscontrole moeten worden geïnstalleerd. Beide toevoegen kosten aan de toeleveringsketen.
+1. Het hebben van apparaat private sleutels te delen met supply chain partners, naast het negeren van PKI best practices van nooit delen van prive-sleutels, maakt het opbouwen van vertrouwen in de supply chain duur. Het betekent dat kapitaalsystemen zoals beveiligde kamers om persoonlijke sleutels van apparaten te huisvesten, en processen zoals periodieke beveiligingsaudits moeten worden geïnstalleerd. Beide voegen kosten toe aan de supply chain.
 
-2. Veilig accounting voor apparaten in de toeleveringsketen en beheren van deze later in de implementatie wordt een-op-een taak voor elk paar sleutel-naar-apparaat vanaf het moment van apparaat uniek certificaat (daarom persoonlijke sleutel) genereren voor het buiten gebruik stellen. Deze uitsluit groepsbeheer van apparaten, tenzij het concept van groepen is expliciet ingebouwd in het proces loopt de toepassing. Veilig accounting- en apparaat levenscyclus beheer, wordt daarom een werkbelasting met zware bewerkingen. Bedrijf X zou deze last draagt in ons voorbeeld.
+2. Veilig goed voor apparaten in de supply chain en later beheren ze in de implementatie wordt een een-op-een taak voor elke key-to-device paar vanaf het punt van apparaat unieke certificaat (vandaar prive-sleutel) generatie tot apparaat pensionering. Dit sluit groepsbeheer van apparaten uit, tenzij het concept van groepen op de een of andere manier expliciet in het proces is ingebouwd. Veilig beheer van de boekhouding en de levenscyclus van apparaten wordt daarom een zware operationele last. In ons voorbeeld zou Company-X deze last dragen.
 
-Verificatie via X.509-CA-certificaat biedt elegante oplossingen voor afore uitdagingen door het gebruik van certificaatketens vermeld. Een certificaatketen resultaat is van een CA een tussenliggende CA die op zijn beurt ondertekent een andere tussenliggende CA en dus gezet totdat een definitieve tussenliggende CA zich aanmeldt voor een apparaat te ondertekenen. In ons voorbeeld ondertekent bedrijf X Factory-Y, die zich op zijn beurt technicus-Z, die zich ten slotte Smart-X-Widget.
+X.509 CA certificaat authenticatie biedt elegante oplossingen voor afore genoemde uitdagingen door het gebruik van certificaatketens. Een certificaatketen is het resultaat van een CA die een tussenliggende CA ondertekent die op zijn beurt een andere tussenliggende CA tekent en zo verder gaat totdat een laatste tussenliggende CA een apparaat ondertekent. In ons voorbeeld, Company-X tekent Factory-Y, die op zijn beurt tekent Technician-Z dat eindelijk tekent Smart-X-Widget.
 
-![Certificaathiërarchie keten](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
+![Hiërarchie van certificaatketen](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
 
-Geeft de logische aflevering van instantie hierboven cascade van certificaten in de keten. Veel toeleveringsketens, volgt u deze logische aflevering waarbij elke tussenliggende CA wordt ondertekend in de keten bij het ontvangen van alle upstream CA-certificaten en de laatste tussenliggende CA zich ten slotte elk apparaat en alle CA-certificaten van de keten invoeren bij het apparaat. Dit is gebruikelijk wanneer het contract productiebedrijf met een hiërarchie van de fabrieken commissies een bepaalde factory doen van de productie. Tijdens de hiërarchie kan mogelijk op verschillende niveaus worden diep (bijvoorbeeld per geografische locatie/product type/productie regel), alleen de fabriek aan het einde opgehaald om te communiceren met het apparaat, maar de keten vanaf de bovenkant van de hiërarchie wordt onderhouden.
+Bovenstaande cascade van certificaten in de keten presenteert de logische overdracht van autoriteit. Veel supply chains volgen deze logische overdracht waarbij elke tussentijdse CA wordt aangemeld in de keten terwijl het ontvangen van alle upstream CA-certificaten, en de laatste tussentijdse CA eindelijk elk apparaat ondertekent en alle autoriteitscertificaten uit de keten injecteert in het apparaat. Dit is gebruikelijk wanneer het contract productiebedrijf met een hiërarchie van fabrieken opdracht geeft aan een bepaalde fabriek om de productie te doen. Hoewel de hiërarchie kan worden verschillende niveaus diep (bijvoorbeeld door geografie / producttype / productielijn), alleen de fabriek aan het einde krijgt om te communiceren met het apparaat, maar de keten wordt gehandhaafd vanaf de top van de hiërarchie.
 
-Alternatieve ketens mogelijk verschillende tussenliggende CA communiceren met het apparaat waarop injects geval de CA-interactie met het apparaat inhoud voor keten van certificaten op dat moment. Hybride modellen zijn ook mogelijk waarbij slechts enkele van de CA fysiek interactie met het apparaat heeft.
+Alternatieve ketens kunnen verschillende tussenliggende CA-interactie met het apparaat hebben, in welk geval de CA die met het apparaat communiceert, op dat moment de inhoud van de certificaatketen injecteert. Hybride modellen zijn ook mogelijk wanneer slechts een deel van de CA fysieke interactie met het apparaat heeft.
 
-In ons voorbeeld communiceren zowel Factory-Y als medewerker Z met de smartcard-X-Widget. Terwijl het bedrijf X is eigenaar van de smartcard-X-Widget, communiceert het daadwerkelijk fysiek niet met deze in de hele toeleveringsketen. Bedrijf X daarom deel uitmaken van de certificaatketen van de vertrouwensrelatie voor smartcard-X-Widget Factory-Y die zich op zijn beurt technicus-Z, dat vervolgens laatste handtekening in de Smart-X-Widget ondertekenen. De productie en de installatie van Smart-X-Widget omvatten Factory-Y en technicus-Z met behulp van hun respectieve tussenliggende CA-certificaten aan te melden elk Smart-X-Widgets. Het eindresultaat van dit hele proces is Smart-X-Widgets met unieke apparaat-certificaten en certificaatvertrouwensketen toe aan bedrijf X CA-certificaat.
+In ons voorbeeld werken zowel Factory-Y als Technician-Z samen met de Smart-X-Widget. Terwijl Company-X eigenaar is van Smart-X-Widget, het eigenlijk niet fysiek interactie met het in de gehele supply chain. De certificaatketen van vertrouwen voor Smart-X-Widget omvat daarom Company-X ondertekening Factory-Y die op zijn beurt tekent Technician-Z die vervolgens zal de definitieve handtekening van Smart-X-Widget. De productie en installatie van Smart-X-Widget omvatten Factory-Y en Technician-Z met behulp van hun respectieve tussentijdse CA-certificaten om elke Smart-X-Widgets te ondertekenen. Het eindresultaat van dit hele proces is Smart-X-Widgets met unieke apparaatcertificaten en certificaatketen van vertrouwen die naar het Company-X CA-certificaat gaan.
 
-![Vertrouwensketen van de certificaten van een bedrijf aan de certificaten van een ander bedrijf](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
+![Vertrouwensketen van de certs van het ene bedrijf tot de certs van een ander bedrijf](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
 
-Dit is een goed punt om te controleren van de waarde van de X.509-CA-methode. In plaats van het vooraf genereren en afleveren van certificaten voor elke smartcard-X-Widget in de toeleveringsketen, moesten bedrijf X alleen Factory-Y één keer aanmelden. Bedrijf X kan nu in plaats van dat voor het bijhouden van elk apparaat in de gehele levenscyclus van het apparaat, bijhouden en apparaten beheren via de groepen die op een natuurlijke manier de toeleveringsprocessen bijvoorbeeld apparaten zijn geïnstalleerd door technicus Z na juli van een jaar geven.
+Dit is een goed punt om de waarde van de X.509 CA-methode te bekijken. In plaats van certificaten voor elke Smart-X-Widget vooraf te genereren en af te geven in de supply chain, hoefde Company-X factory-Y maar één keer te ondertekenen. In plaats van elk apparaat gedurende de gehele levenscyclus van het apparaat te moeten volgen, kan Company-X nu apparaten volgen en beheren via groepen die natuurlijk uit het supply chain-proces komen, bijvoorbeeld apparaten die door Technician-Z na juli van een jaar zijn geïnstalleerd.
 
-Laatste, maar niet in het minst infuses de CA verificatiemethode beveiligde aansprakelijkheid bij het apparaat productie toeleveringsketen. De acties van elk lid in de keten is vanwege het proces van de certificaatketen cryptografisch opgenomen en te verifiëren.
+Last but not least, de CA-methode van authenticatie betrekt veilige verantwoording in de apparaat productie supply chain. Vanwege het proces van de certificaatketen worden de acties van elk lid in de keten cryptografisch geregistreerd en verifieerbaar.
 
-Dit proces is afhankelijk van bepaalde veronderstellingen die voor de volledigheid moeten worden opgehaald. Dit is vereist voor onafhankelijke maken van apparaat uniek openbaar/persoonlijk sleutelpaar en dat de persoonlijke sleutel in het apparaat worden beveiligd. Gelukkig bestaan beveiligde silicon chips in de vorm van Hardware beveiligde Modules (HSM) kan intern genereren van sleutels en de bescherming van persoonlijke sleutels. Bedrijf X moet alleen een van deze chips in stuklijst Smart-X-Widget onderdeel toevoegen.
+Dit proces is gebaseerd op bepaalde veronderstellingen die moeten worden opgedoken voor volledigheid. Het vereist onafhankelijke creatie van apparaat unieke openbare / private key pair en dat de private key worden beschermd in het apparaat. Gelukkig, veilige silicium chips in de vorm van Hardware Secure Modules (HSM) in staat om intern het genereren van sleutels en de bescherming van prive-sleutels bestaan. Company-X hoeft slechts een van dergelijke chips toe te voegen aan de component bill of materials van Smart-X-Widget.
 
 ## <a name="device-connection"></a>Apparaatverbinding
 
-Voorgaande secties in bovenstaande hebt zijn waarbij wordt gebouwd op het apparaatverbinding. Registreert gewoon een X.509-CA-certificaat naar IoT Hub een keer, hoe mogelijk miljoenen apparaten verbinden en ophalen van de eerste keer is geverifieerd?  Eenvoudige; via het hetzelfde certificaat uploaden en bewijs van eigendom stroom er eerder is met de registratie van het X.509-CA-certificaat.
+Eerdere secties hierboven zijn opgebouwd tot apparaatverbinding. Door simpelweg een X.509 CA-certificaat één keer te registreren bij IoT Hub, hoe maken potentieel miljoenen apparaten verbinding en worden ze vanaf de eerste keer geverifieerd?  Simpel; via hetzelfde certificaat uploaden en proof-of-possession flow die we eerder tegenkwamen bij het registreren van het X.509 CA certificaat.
 
-Apparaten die zijn geproduceerd voor X.509-CA-verificatie zijn uitgerust met unieke certificaten voor apparaten en een certificaatketen van hun respectieve productie toeleveringsketen. Apparaatverbinding, zelfs voor de eerste keer, gebeurt er in een proces in twee stappen: keten uploaden en bewijs van eigendom van het certificaat.
+Apparaten die zijn vervaardigd voor X.509 CA-verificatie zijn uitgerust met unieke certificaten van het apparaat en een certificaatketen uit hun respectieve productieketen. Apparaatverbinding, zelfs voor de allereerste keer, gebeurt in een proces in twee stappen: certificaatketen uploaden en proof-of-possession.
 
-Tijdens het uploaden van de certificaatketen uploadt het apparaat het unieke apparaat-certificaat, samen met de certificaatketen die is geïnstalleerd in het IoT-hub. Met behulp van het vooraf geregistreerde X.509-CA-certificaat, kunt IoT-Hub cryptografisch valideren een aantal dingen, dat de geüploade certificaatketen intern consistent is, en dat de keten is afkomstig van de geldige eigenaar van het x.509-CA-certificaat. NET was met het registratieproces X.509-CA, IoT-Hub wilt initiëren een bewijs van eigendom vraag en antwoord-proces vast te stellen de keten en daarom apparaatcertificaat daadwerkelijk behoort tot het uploaden van het apparaat. Dit gebeurt door het genereren van een willekeurige uitdaging om te worden ondertekend door het apparaat met behulp van de persoonlijke sleutel voor de validatie van IoT-Hub. Een geslaagde respons wordt geactiveerd voor IoT Hub om te accepteren van het apparaat als authentiek en het verbinding geven.
+Tijdens het uploaden van de certificaatketen uploadt het apparaat het unieke certificaat van het apparaat samen met de certificaatketen die erin is geïnstalleerd naar IoT Hub. Met behulp van het vooraf geregistreerde X.509 CA-certificaat kan IoT Hub een aantal dingen cryptografisch valideren, dat de geüploade certificaatketen intern consistent is en dat de keten is ontstaan door de geldige eigenaar van het X.509 CA-certificaat. Net was met de X.509 CA registratieproces, IoT Hub zou een proof-of-possession challenge-response proces om na te gaan dat de keten en dus apparaat certificaat eigenlijk behoort tot het apparaat uploaden. Het doet dit door het genereren van een willekeurige uitdaging te worden ondertekend door het apparaat met behulp van de private sleutel voor validatie door IoT Hub. Een succesvolle reactie activeert IoT Hub om het apparaat als authentiek te accepteren en het verbinding te verlenen.
 
-In ons voorbeeld zou elke smartcard-X-Widget het unieke apparaat-certificaat, samen met Factory-Y en technicus Z X.509-CA-certificaten te uploaden en vervolgens te reageren op voor de controle bewijs van eigendom van IoT Hub.
+In ons voorbeeld zou elke Smart-X-Widget zijn unieke certificaat voor apparaten uploaden samen met Factory-Y- en Technician-Z X.509 CA-certificaten en vervolgens reageren op de proof-of-possession-uitdaging van IoT Hub.
 
-![Stromen van een certificaat naar een andere, pop uitdaging van hub](./media/iot-hub-x509ca-concept/device-pop-flow.png)
+![Stroom van het ene cert naar het andere, pop uitdaging van hub](./media/iot-hub-x509ca-concept/device-pop-flow.png)
 
-U ziet dat de basis van de vertrouwensrelatie berust bij het beschermen van persoonlijke sleutels, met inbegrip van persoonlijke sleutels van apparaat. We daarom kan niet zorgen voldoende het belang van beveiligde silicon chips in de vorm van Hardware beveiligde Modules (HSM) voor het beveiligen van persoonlijke sleutels van apparaat, en de algemene aanbevolen procedures nooit delen van persoonlijke sleutels, zoals een factory aanwijzing van een ander met de persoonlijke sleutel.
+Merk op dat de basis van vertrouwen ligt in de bescherming van privésleutels, waaronder persoonlijke sleutels van het apparaat. We kunnen daarom niet genoeg benadrukken het belang van veilige silicium chips in de vorm van Hardware Secure Modules (HSM) voor de bescherming van het apparaat prive-sleutels, en de algehele beste praktijk van nooit delen van prive-sleutels, zoals een fabriek toevertrouwen een andere met haar privésleutel.

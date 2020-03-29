@@ -1,6 +1,6 @@
 ---
-title: Genereer een miniatuur sprite met Azure Media Services | Microsoft Docs
-description: In dit onderwerp laat zien hoe voor het genereren van een miniatuur sprite met Azure Media Services.
+title: Een miniatuursprite genereren met Azure Media Services | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u een miniatuursprite genereert met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,26 +12,26 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61229047"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Een miniatuursprite genereren  
 
-U kunt Media Encoder Standard gebruiken voor het genereren van een miniatuur sprite, dit is een JPEG-bestand met meerdere kleine resolutie miniaturen stitched samen in één (groot) installatiekopie, samen met een VTT-bestand. Dit bestand VTT Hiermee geeft u het tijdsbereik in de invoervideo die staat voor een miniatuur, samen met de grootte en de coördinaten van deze miniatuur binnen de grote JPEG-bestanden. De installatiekopie van het VTT-bestand en sprite videospelers gebruiken voor het weergeven van een 'visual' zoekbalk een viewer voorzien van visuele feedback wanneer het weer voor het reinigen en doorsturen in de tijdlijn van de video.
+U Media Encoder Standard gebruiken om een miniatuursprite te genereren, een JPEG-bestand dat meerdere miniaturen met kleine resolutie bevat die zijn samengestikt in één (grote) afbeelding, samen met een VTT-bestand. Dit VTT-bestand geeft het tijdsbereik op in de invoervideo die elke miniatuur vertegenwoordigt, samen met de grootte en coördinaten van die miniatuur in het grote JPEG-bestand. Videospelers gebruiken het VTT-bestand en de sprite-afbeelding om een 'visuele' zoekbalk weer te geven, waardoor een kijker visuele feedback krijgt bij het schrobben naar achteren en vooruit langs de videotijdlijn.
 
-Als u wilt gebruiken voor het genereren van miniaturen Sprite, de vooraf ingestelde Media Encoder Standard:
+Om Media Encoder Standard te gebruiken om Thumbnail Sprite te genereren, de preset:
 
-1. JPG miniatuurafbeelding indeling moet gebruiken
-2. Start/stap/bereik waarden als een van beide tijdstempels of % waarden (en niet frame aantallen) moet opgeven 
+1. Moet jpg-miniatuurafbeeldingsindeling gebruiken
+2. Moet start-/stap-/bereikwaarden opgeven als tijdstempels of %waarden (en geen frametellingen) 
     
-    1. Het is goed dat tijdstempels en % waarden combineren
+    1. Het is goed om tijdstempels en % waarden te mengen
 
-3. De waarde SpriteColumn moet hebben als een niet-negatief getal groter dan of gelijk aan 1
+3. Moet de waarde SpriteColumn hebben, als een niet-negatief getal dat groter is dan of gelijk is aan 1
 
-    1. Als SpriteColumn is ingesteld op M > = 1, de installatiekopie van de uitvoer is een rechthoek met M-kolommen. Als het getal van miniatuurweergaven die is gegenereerd via #2 een veelvoud van M is, worden de laatste rij onvolledig en links met zwarte pixels.  
+    1. Als SpriteColumn is ingesteld op M >= 1, is de uitvoerafbeelding een rechthoek met M-kolommen. Als het aantal miniaturen dat via #2 wordt gegenereerd geen exact veelvoud van M is, is de laatste rij onvolledig en blijft de zwarte pixels achter.  
 
 Hier volgt een voorbeeld:
 
@@ -68,9 +68,9 @@ Hier volgt een voorbeeld:
 
 ## <a name="known-issues"></a>Bekende problemen
 
-1.  Het is niet mogelijk voor het genereren van een installatiekopie sprite met één rij van installatiekopieën (SpriteColumn = 1 resulteert in een afbeelding met één kolom).
-2.  Logische groepen te verdelen van de installatiekopieën sprite in matig grootte JPEG-afbeeldingen is nog niet ondersteund. Dus wees voorzichtig om te beperken het nummer van miniaturen en de grootte, zodat de resulterende stitched miniatuur Sprite rond 8 miljoen pixels of minder.
-3.  Azure Media Player ondersteunt sprites in Microsoft Edge, Chrome en Firefox browsers. Parseren van VTT wordt niet ondersteund in IE11.
+1.  Het is niet mogelijk om een sprite-afbeelding te genereren met één rij afbeeldingen (SpriteColumn = 1 resulteert in een afbeelding met één kolom).
+2.  Chunking van de sprite-afbeeldingen in jpeg-afbeeldingen met een bescheiden formaat wordt nog niet ondersteund. Daarom moet ervoor worden gezorgd dat het aantal miniaturen en hun grootte wordt beperkt, zodat de resulterende gestikte miniatuur sprite ongeveer 8M pixels of minder is.
+3.  Azure Media Player ondersteunt sprites in Microsoft Edge-, Chrome- en Firefox-browsers. VTT parsing wordt niet ondersteund in IE11.
 
 ## <a name="next-steps"></a>Volgende stappen
 

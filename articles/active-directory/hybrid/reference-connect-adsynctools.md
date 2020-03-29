@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: ADSyncTools PowerShell Reference | Microsoft Docs'
+title: 'Azure AD Connect: ADSyncTools PowerShell-referentie | Microsoft Documenten'
 description: Dit document bevat referentie-informatie voor de ADSyncTools.psm1 PowerShell-module.
 author: billmath
 manager: daveba
@@ -11,19 +11,19 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60454656"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  ADSyncTools PowerShell Reference
-De volgende documentatie bevat referentie-informatie voor de ADSyncTools.psm1 PowerShell-Module die is opgenomen in Azure AD Connect.
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell-referentie
+De volgende documentatie bevat referentiegegevens voor de ADSyncTools.psm1 PowerShell-module die is opgenomen in Azure AD Connect.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SAMENVATTING
-Schakel de mS-Ds-ConsistencyGuid van AD-gebruiker
+De mS-Ds-consistencyGuid wissen van AD-gebruiker
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -32,7 +32,7 @@ Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Wis de waarde in mS-Ds-ConsistencyGuid voor de-AD-doelgebruiker
+De waarde in mS-Ds-ConsistencyGuid voor de doel-AD-gebruiker wissen
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -65,12 +65,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -79,7 +79,7 @@ Confirm-ADSyncToolsADModuleLoaded
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -88,12 +88,12 @@ Confirm-ADSyncToolsADModuleLoaded
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -103,7 +103,7 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -112,12 +112,12 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-database"></a>-Database
-{{Beschrijving van de Database vullen}}
+{{Vullingdatabasebeschrijving}}
 
 ```yaml
 Type: String
@@ -131,8 +131,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-instance"></a>-Exemplaar
-{{Vullen exemplaar beschrijving}}
+#### <a name="-instance"></a>-Instantie
+{{Beschrijving van de instantie vulling}}
 
 ```yaml
 Type: String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-password"></a>-Password
-{{Invullen van wachtwoorden}}
+{{Beschrijving wachtwoord invullen}}
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Server
-{{Beschrijving van de Server vullen}}
+{{Fill Server Description}}
 
 ```yaml
 Type: String
@@ -176,8 +176,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-username"></a>-UserName
-{{Fill UserName Description}}
+#### <a name="-username"></a>-GebruikersNaam
+{{Beschrijving gebruikersnaam invullen}}
 
 ```yaml
 Type: String
@@ -193,12 +193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SAMENVATTING
-ConsistencyGuid rapport exporteren
+Consistentie exporterenGuid-rapport
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -208,7 +208,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Genereert een ConsistencyGuid rapport op basis van een CSV-bestand importeren van de Import-ADSyncToolsImmutableIdMigration
+Genereert een ConsistencyGuid-rapport op basis van een CSV-bestand importeren uit Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -224,8 +224,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-alternativeloginid"></a>-AlternativeLoginId
-Gebruik alternatieve aanmeldings-ID (e-mail)
+#### <a name="-alternativeloginid"></a>-AlternatiefLoginId
+Alternatieve inlog-id gebruiken (e-mail)
 
 ```yaml
 Type: SwitchParameter
@@ -254,8 +254,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-immutableidguid"></a>-ImmutableIdGUID
-ImmutableIdGUID
+#### <a name="-immutableidguid"></a>-Onveranderlijke IdGUID
+OnveranderlijkE IdGUID
 
 ```yaml
 Type: String
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-output"></a>-Uitvoer
-Uitvoerbestand voor CSV- en LOGBOEKBESTANDEN
+Bestandsnaam uitvoer voor CSV- en LOG-bestanden
 
 ```yaml
 Type: String
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -300,7 +300,7 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -309,12 +309,12 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-hostname"></a>-hostName
-{{Vullen hostnaam beschrijving}}
+#### <a name="-hostname"></a>-hostNaam
+{{Fill hostName Description}}
 
 ```yaml
 Type: String
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 ## <a name="get-adsynctoolsaduser"></a>Get-ADSyncToolsADuser
 
 ### <a name="synopsis"></a>SAMENVATTING
-Gebruiker ophalen uit Active Directory
+Gebruiker ophalen bij AD
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -340,7 +340,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Retourneert een AD-object te doen: Ondersteuning voor meerdere forests
+Geeft als resultaat een AD-object TO DO: Ondersteuning voor meerdere foresten
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -357,7 +357,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
-Doelgebruiker in AD ConsistencyGuid instellen
+Doelgebruiker in AD om Consistentie Guid in te stellen
 
 ```yaml
 Type: Object
@@ -373,12 +373,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SAMENVATTING
-MS-Ds-ConsistencyGuid van AD-gebruiker ophalen
+Haal de mS-Ds-ConsistencyGuid van AD-gebruiker
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -387,7 +387,7 @@ Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Retourneert de waarde in mS-Ds-ConsistencyGuid kenmerk van de-AD-doelgebruiker in GUID-indeling
+Geeft als resultaat de waarde in het kenmerk mS-Ds-ConsistencyGuid van de doel-AD-gebruiker in de GUID-indeling
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -420,12 +420,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
 ### <a name="synopsis"></a>SAMENVATTING
-De ObjectGuid van AD-gebruiker ophalen
+De ObjectGuid ophalen van AD-gebruiker
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -434,7 +434,7 @@ Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Retourneert de waarde in het kenmerk ObjectGUID van de-AD-doelgebruiker in GUID-indeling
+Geeft als resultaat de waarde in objectGUId-kenmerk van de doel-AD-gebruiker in de GUID-indeling
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -467,12 +467,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>SAMENVATTING
-Get AAD Connect Uitvoeringsgeschiedenis
+Ontvang aad connect run-geschiedenis
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -481,7 +481,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Functie die resulteert in de geschiedenis uitvoeren van AAD Connect in XML-indeling
+Functie waarin de AAD Connect Run-geschiedenis in XML-indeling wordt geretourneerd
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -498,7 +498,7 @@ Get-ADSyncToolsRunHistory -Days 1
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-days"></a>-Dagen
-{{Dagen doorvoeren beschrijving}}
+{{Vuldagen Beschrijving}}
 
 ```yaml
 Type: Int32
@@ -514,12 +514,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
+## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorGewijzigd
 
 ### <a name="synopsis"></a>SAMENVATTING
-Aan de gebruikers met fouten SourceAnchor gewijzigd
+Gebruikers met gewijzigde fouten van SourceAnchor krijgen
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -528,7 +528,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Query's AAD Connect Run History functioneren en uitvoer van alle gebruikers die de fout te melden: "SourceAnchor-kenmerk is gewijzigd."
+Functiequery's AAD Connect Run History en exporteert alle gebruikers die de fout melden: 'Het kenmerk SourceAnchor is gewijzigd'.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -537,7 +537,7 @@ Query's AAD Connect Run History functioneren en uitvoer van alle gebruikers die 
 #Required Parameters
 ```
 
-$sourcePath = Read-Host - Prompt 'Voer uw pad naar logboekbestand met de bestandsnaam van het ' # '\<Source_Path\>"$outputPath = Read-Host-vragen ' Voer uw out bestandspad met bestandsnaam ' # '\<Out_Path\>"
+$sourcePath = Lees-Host -Prompt "Voer uw logboekbestandspad\<\>met bestandsnaam in" Source_Path " $outputPath = Lees-Host\<-Prompt "Voer uw bestandspad met bestandsnaam in" Out_Path\>"
  
  Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
 
@@ -549,7 +549,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-sourcepath"></a>-sourcePath
-{{Vullen bronpad beschrijving}}
+{{VulbronPath-beschrijving}}
 
 ```yaml
 Type: Object
@@ -563,8 +563,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-outputpath"></a>-outputPath
-{{OutputPath beschrijving vullen}}
+#### <a name="-outputpath"></a>-outputPad
+{{VullingoutputPath-beschrijving}}
 
 ```yaml
 Type: Object
@@ -580,12 +580,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>SAMENVATTING
-ImmutableID importeren uit AAD
+ImmutableID importeren van AAD
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -595,7 +595,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Hiermee genereert u een bestand met alle Azure AD-gesynchroniseerde gebruikers met de waarde ImmutableID in GUID-indeling vereisten: MSOnline PowerShell-Module
+Hiermee genereert u een bestand met alle Azure AD-gesynchroniseerde gebruikers die de waarde Onveranderlijke ID bevatten in GUID-indelingsvereisten: MSOnline PowerShell-module
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -612,7 +612,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-output"></a>-Uitvoer
-CSV-bestand voor uitvoer
+CSV-bestand uitvoeren
 
 ```yaml
 Type: String
@@ -626,8 +626,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-includesyncusersfromrecyclebin"></a>-IncludeSyncUsersFromRecycleBin
-Gesynchroniseerd gebruikers van Azure AD-Prullenbak
+#### <a name="-includesyncusersfromrecyclebin"></a>-IncludeSyncUsersFromRecyclbin
+Gesynchroniseerde gebruikers ophalen vanuit Azure AD-prullenbak
 
 ```yaml
 Type: SwitchParameter
@@ -643,13 +643,13 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 
-## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
+## <a name="invoke-adsyncdatabasequery"></a>Aanroepen-AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -658,7 +658,7 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -667,12 +667,12 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-query"></a>-Query
-{{Querybeschrijving vullen}}
+{{Querybeschrijving invullen}}
 
 ```yaml
 Type: String
@@ -687,7 +687,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-sqlconnection"></a>-SqlConnection
-{{Vullen SqlConnection beschrijving}}
+{{Fill SqlConnection Description}}
 
 ```yaml
 Type: SqlConnection
@@ -703,12 +703,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
+## <a name="remove-adsynctoolsexpiredcertificates"></a>Verlopen certificaten verwijderen-ADSyncToolsverlopen
 
 ### <a name="synopsis"></a>SAMENVATTING
-Script voor het kenmerk UserCertificate van verlopen certificaten verwijderen
+Script om verlopen certificaten te verwijderen uit kenmerk UserCertificate
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -718,10 +718,10 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met dit script neemt alle objecten van een doel voor organisatie-eenheid in uw Active Directory-domein - gefilterd op objectklasse (gebruiker/Computer) en Hiermee verwijdert u alle verlopen certificaten aanwezig zijn in het kenmerk UserCertificate.
-Standaard (BackupOnly modus), die deze wordt alleen back-up van verlopen certificaten naar een bestand en niet alle wijzigingen in AD.
-Als u gebruik - BackupOnly $false en vervolgens een certificaat verlopen aanwezig zijn in kenmerk UserCertificate voor deze objecten wordt verwijderd uit AD na wordt gekopieerd naar bestand.
-Elk certificaat worden back-ups voor een gescheiden filename: Het script ObjectClass_ObjectGUID_CertThumprint.cer maakt ook een logboekbestand in CSV-indeling waarin alle gebruikers met certificaten die zijn ongeldig of verlopen met inbegrip van de werkelijke uitgevoerde actie (overgeslagen/geëxporteerde/verwijderd).
+Met dit script worden alle objecten uit een doelorganisatie-eenheid in uw Active Directory-domein - gefilterd op objectklasse (gebruiker/computer) en worden alle verlopen certificaten in het kenmerk UserCertificate verwijderd.
+Standaard (BackupOnly-modus) wordt alleen een back-up gemaakt van verlopen certificaten in een bestand en worden er geen wijzigingen aangebracht in AD.
+Als u -BackupOnly $false, wordt elk verlopen certificaat dat aanwezig is in het kenmerk UserCertificate voor deze objecten uit AD verwijderd nadat ze naar het bestand zijn gekopieerd.
+Er wordt een back-up van elk certificaat gemaakt met een gescheiden bestandsnaam: ObjectClass_ObjectGUID_CertThumprint.cer Het script maakt ook een logbestand in CSV-indeling met alle gebruikers met certificaten die geldig zijn of verlopen, inclusief de werkelijke actie die is ondernomen (Overgeslagen/Geëxporteerd/Verwijderd).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -730,19 +730,19 @@ Elk certificaat worden back-ups voor een gescheiden filename: Het script ObjectC
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Users,OU=Corp,DC=Contoso,DC=com" -ObjectClass user
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Users,OU=Corp,DC=Contoso,DC=com" -ObjectClass-gebruiker
 
 #### <a name="example-2"></a>VOORBEELD 2
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass computer -BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass-computer -BackupOnly $false
 
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-targetou"></a>-TargetOU
-Doel organisatie-eenheid lookup voor AD-objecten
+Doel-eenheid om ad-objecten op te zoeken
 
 ```yaml
 Type: String
@@ -756,8 +756,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-backuponly"></a>-BackupOnly
-BackupOnly worden niet alle certificaten verwijderd uit Active Directory
+#### <a name="-backuponly"></a>-Alleen back-up
+BackupOnly verwijdert geen certificaten uit AD
 
 ```yaml
 Type: Boolean
@@ -771,8 +771,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-objectclass"></a>-ObjectClass
-Filter voor object-klasse
+#### <a name="-objectclass"></a>-ObjectKlasse
+Objectklasse, filter
 
 ```yaml
 Type: String
@@ -788,9 +788,9 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Reparatie-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SAMENVATTING
 Korte beschrijving
@@ -816,10 +816,10 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAdres
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -828,7 +828,7 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -837,12 +837,12 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-hostname"></a>-hostName
-{{Vullen hostnaam beschrijving}}
+#### <a name="-hostname"></a>-hostNaam
+{{Fill hostName Description}}
 
 ```yaml
 Type: String
@@ -856,10 +856,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Herstel-ADSyncToolsVerlopencertificaten
 
 ### <a name="synopsis"></a>SAMENVATTING
-(MOET IK DOEN) Kenmerk AD UserCertificate herstelt vanuit een certificaatbestand
+(TE DOEN) Kenmerk AD-gebruikerscertificaat herstellen uit een certificaatbestand
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -882,10 +882,10 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
+## <a name="set-adsynctoolsconsistencyguid"></a>Consistentie guid instellen-ADSyncTools
 
 ### <a name="synopsis"></a>SAMENVATTING
-MS-Ds-ConsistencyGuid op AD-gebruiker instellen
+MS-Ds-consistencyGuid instellen op AD-gebruiker
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -894,7 +894,7 @@ Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParame
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Een waarde in mS-Ds-ConsistencyGuid-kenmerk voor de doel-AD-gebruiker instellen
+Een waarde instellen in het kenmerk mS-Ds-ConsistencyGuid voor de doel-AD-gebruiker
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -911,7 +911,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
-Doelgebruiker in AD ConsistencyGuid instellen
+Doelgebruiker in AD om Consistentie Guid in te stellen
 
 ```yaml
 Type: Object
@@ -926,7 +926,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-value"></a>-Waarde
-ImmutableId (bytematrix, GUID, GUID-tekenreeks of Base64-tekenreeks)
+Onveranderlijke id (matrix byte, GUID, GUID-tekenreeks of Base64-tekenreeks)
 
 ```yaml
 Type: Object
@@ -942,12 +942,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>SAMENVATTING
-{{Vult u de samenvatting}}
+{{Vul de Synopsis}}
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -956,7 +956,7 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-{{Vullen in de beschrijving}}
+{{Vul de beschrijving in}}
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -965,12 +965,12 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{Toevoegen voorbeeld beschrijving hier}}
+{{ Voorbeeldbeschrijving toevoegen }}
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-hostname"></a>-hostName
-{{Vullen hostnaam beschrijving}}
+#### <a name="-hostname"></a>-hostNaam
+{{Fill hostName Description}}
 
 ```yaml
 Type: String
@@ -984,8 +984,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-port"></a>-port
-{{Vullen poort beschrijving}}
+#### <a name="-port"></a>-poort
+{{Beschrijving van de vulpoort}}
 
 ```yaml
 Type: String
@@ -1002,7 +1002,7 @@ Accept wildcard characters: False
 ## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>SAMENVATTING
-Maakt een traceringsbestand van en de stap AD importeren
+Maakt een traceerbestand van en AD Import Stap
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -1012,7 +1012,7 @@ Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootD
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Traceringen alle ldap-query's van een AAD Connect AD Import uitvoeren vanaf een controlepunt van een bepaalde AD watermerk (cookie partitie). Maakt een traceringsbestand '.\ADimportTrace_yyyyMMddHHmmss.log' op de huidige map.
+Hiermee worden alle ldap-query's van een AAD Connect AD Import-run traceert vanuit een bepaald CONTROLEpunt voor ad-watermerk (partitiecookie). Hiermee maakt u een traceerbestand '.\ADimportTrace_yyyyMMddHHmmss.log' op de huidige map.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -1029,7 +1029,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
-{{Fill ADConnectorXML Description}}
+{{Fill ADConnectorXML-beschrijving}}
 
 ```yaml
 Type: String
@@ -1044,7 +1044,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-dc"></a>-dc
-XML-bestand van het exporteren van de AD-Connector
+XML-bestand van AD-connectorexporteren
 
 ```yaml
 Type: String
@@ -1059,7 +1059,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-rootdn"></a>-rootDN
-Doel-domeincontroller
+Doeldomeincontroller
 
 ```yaml
 Type: String
@@ -1074,7 +1074,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-filter"></a>-filter
-Forest Root DN
+Boswortel DN
 
 ```yaml
 Type: String
@@ -1088,8 +1088,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipcredentials"></a>-SkipCredentials
-Typen AD-objecten te traceren \> * = alle objecttypen
+#### <a name="-skipcredentials"></a>-Referenties overslaan
+Typen AD-objecten \> die moeten worden getraceerd * = alle objecttypen
 
 ```yaml
 Type: SwitchParameter
@@ -1103,9 +1103,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adwatermark"></a>-ADwatermark
-Als al wordt uitgevoerd als domeinbeheerder is er niet nodig voor AD-referenties.
-Handmatige invoer van het watermerk, in plaats van XML-bestand bijvoorbeeld $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAA(...)"
+#### <a name="-adwatermark"></a>-ADwatermerk
+Als u al als domeinbeheerder wordt uitgevoerd, hoeft u geen AD-referenties op te geven.
+Handmatige invoer van watermerk, in plaats van XML-bestand bijvoorbeeld $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAAAA(...)"
 
 ```yaml
 Type: String
@@ -1121,7 +1121,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
@@ -1153,7 +1153,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-context"></a>-Context
-Beschrijving van param1 help
+Param1 help beschrijving
 
 ```yaml
 Type: String
@@ -1168,7 +1168,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Server
-Beschrijving van param2 help
+Param2 help beschrijving
 
 ```yaml
 Type: String
@@ -1183,7 +1183,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-port"></a>-Port
-Beschrijving van param2 help
+Param2 help beschrijving
 
 ```yaml
 Type: Int32
@@ -1198,7 +1198,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-filter"></a>-Filter
-Beschrijving van param2 help
+Param2 help beschrijving
 
 ```yaml
 Type: String
@@ -1214,12 +1214,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SAMENVATTING
-Gebruikers wordt bijgewerkt met de nieuwe ConsistencyGuid (ImmutableId)
+Werkt gebruikers bij met de nieuwe ConsistencyGuid (ImmutableId)
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -1229,7 +1229,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Gebruikers met de nieuwe ConsistencyGuid (ImmutableId)-waarde die is overgenomen uit de ConsistencyGuid rapport deze functie ondersteunt de switch WhatIf Opmerking updates: ConsistencyGuid rapport moet worden geïmporteerd met tabblad scheidingsteken
+Updates gebruikers met de nieuwe ConsistencyGuid (ImmutableId) waarde uit de ConsistencyGuid Report Deze functie ondersteunt de WhatIf-schakelaar Opmerking: ConsistencyGuid Report moet worden geïmporteerd met Tab Demiliter
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -1260,8 +1260,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-immutableidguid"></a>-ImmutableIdGUID
-ImmutableIdGUID
+#### <a name="-immutableidguid"></a>-Onveranderlijke IdGUID
+OnveranderlijkE IdGUID
 
 ```yaml
 Type: String
@@ -1276,7 +1276,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-action"></a>-Actie
-Bewerking
+Actie
 
 ```yaml
 Type: String
@@ -1291,7 +1291,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-output"></a>-Uitvoer
-Uitvoerbestand voor de logboekbestanden
+Bestandsnaam uitvoervoor LOG-bestanden
 
 ```yaml
 Type: String
@@ -1306,7 +1306,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -1321,8 +1321,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -1338,4 +1338,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .

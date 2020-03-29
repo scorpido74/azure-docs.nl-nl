@@ -1,6 +1,6 @@
 ---
-title: Azure IoT-protocolgateway | Microsoft Docs
-description: Het gebruik van een Azure-IoT-protocol-gateway om uit te breiden van IoT Hub mogelijkheden en protocolondersteuning waarmee apparaten verbinding maken met uw hub met behulp van protocollen die worden niet ondersteund door IoT Hub.
+title: Azure IoT-protocolgateway | Microsoft Documenten
+description: Een Azure IoT-protocolgateway gebruiken om iot-hub-mogelijkheden en protocolondersteuning uit te breiden zodat apparaten verbinding kunnen maken met uw hub met protocollen die niet door IoT Hub worden ondersteund.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,40 +9,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345393"
 ---
-# <a name="support-additional-protocols-for-iot-hub"></a>Aanvullende protocollen ondersteunen voor IoT-Hub
+# <a name="support-additional-protocols-for-iot-hub"></a>Aanvullende protocollen voor IoT Hub ondersteunen
 
-Azure IoT Hub biedt systeemeigen ondersteuning voor communicatie via het MQTT-, AMQP- en HTTPS-protocollen. In sommige gevallen, apparaten of veldgateways niet mogelijk gebruikt u een van de volgende standaardprotocollen en vereisen dat protocol aanpassing. In dergelijke gevallen kunt u een aangepaste gateway. Een aangepaste gateway zorgt voor protocol-aanpassing voor IoT Hub-eindpunten door het verkeer van en naar IoT Hub-bridging. U kunt de [protocolgateway van Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) als een aangepaste gateway om in te schakelen protocol-aanpassing voor IoT-Hub.
+Azure IoT Hub ondersteunt native communicatie via de MQTT-, AMQP- en HTTPS-protocollen. In sommige gevallen kunnen apparaten of veldgateways een van deze standaardprotocollen mogelijk niet gebruiken en vereisen ze aanpassing van het protocol. In dergelijke gevallen u een aangepaste gateway gebruiken. Een aangepaste gateway maakt protocolaanpassing voor IoT Hub-eindpunten mogelijk door het verkeer van en naar IoT Hub te overbruggen. U de [Azure IoT-protocolgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) gebruiken als een aangepaste gateway om protocolaanpassing voor IoT Hub mogelijk te maken.
 
-## <a name="azure-iot-protocol-gateway"></a>Azure IoT-protocol-gateway
+## <a name="azure-iot-protocol-gateway"></a>Azure IoT-protocolgateway
 
-De Azure IoT-protocol-gateway is een framework voor aanpassing van protocol die is ontworpen voor grote schaal, bidirectionele communicatie voor het apparaat met IoT Hub. De protocolgateway is een Pass Through-onderdeel dat apparaatverbindingen via een specifieke protocol accepteert. Deze verbinding van het verkeer naar IoT Hub via AMQP 1.0.
+De Azure IoT-protocolgateway is een framework voor protocolaanpassing dat is ontworpen voor grootschalige, bidirectionele apparaatcommunicatie met IoT Hub. De protocolgateway is een pass-through-component die apparaatverbindingen via een specifiek protocol accepteert. Het overbrugt het verkeer naar IoT Hub via AMQP 1.0.
 
-U kunt de protocolgateway in Azure implementeren op een zeer schaalbare manier met behulp van Azure Service Fabric, Azure Cloud Services-werkrollen of Windows Virtual Machines. Bovendien kan de protocolgateway worden geïmplementeerd in on-premises omgevingen, zoals veldgateways.
+U de protocolgateway in Azure op een zeer schaalbare manier implementeren met Azure Service Fabric, Azure Cloud Services-werkrollen of Windows Virtual Machines. Bovendien kan de protocolgateway worden geïmplementeerd in on-premises omgevingen, zoals veldgateways.
 
-De Azure IoT-protocol-gateway bevat een MQTT-protocol-adapter, waarmee u het MQTT-protocol gedrag indien nodig aanpassen. Sinds de IoT Hub biedt ingebouwde ondersteuning voor het protocol van MQTT v3.1.1, alleen rekening met behulp van de adapter MQTT-protocol als protocol aanpassingen of specifieke vereisten voor aanvullende functionaliteit vereist zijn.
+De Azure IoT-protocolgateway bevat een MQTT-protocoladapter waarmee u het MQTT-protocolgedrag zo nodig aanpassen. Aangezien IoT Hub ingebouwde ondersteuning biedt voor het MQTT v3.1.1-protocol, moet u alleen overwegen om de MQTT-protocoladapter te gebruiken als protocolaanpassingen of specifieke vereisten voor extra functionaliteit vereist zijn.
 
-De adapter MQTT laat ook zien het programmeermodel voor het bouwen van protocol adapters voor andere protocollen. Bovendien kunt het programmeermodel van Azure IoT-protocol-gateway u in aangepaste onderdelen voor de verwerking van gespecialiseerde zoals aangepaste verificatie, bericht transformaties, compressie/decompressie of versleuteling/ontsleuteling van verkeer tussen de apparaten en IoT-Hub.
+De MQTT-adapter demonstreert ook het programmeermodel voor het bouwen van protocoladapters voor andere protocollen. Bovendien u met het Azure IoT-protocol gateway-gateway-model aangepaste componenten aansluiten voor gespecialiseerde verwerking, zoals aangepaste verificatie, berichttransformaties, compressie/decompressie of versleuteling/decryptie van verkeer tussen de apparaten en IoT Hub.
 
-Voor flexibiliteit, de Azure IoT-protocolgateway en MQTT uitvoering vindt u in een open-source-software-project. U kunt de open source-project het toevoegen van ondersteuning voor verschillende protocollen en -protocolversies gebruiken of aanpassen van de implementatie voor uw scenario. 
+Voor flexibiliteit worden de Azure IoT-protocolgateway en MQTT-implementatie geleverd in een open-source softwareproject. U het open-sourceproject gebruiken om ondersteuning toe te voegen voor verschillende protocollen en protocolversies of om de implementatie voor uw scenario aan te passen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de Azure IoT-protocol-gateway en het gebruiken en deze implementeren als onderdeel van uw IoT-oplossing:
+Zie voor meer informatie over de Azure IoT-protocolgateway en het gebruik en de implementatie ervan als onderdeel van uw IoT-oplossing:
 
-* [Protocol Azure IoT gateway-bibliotheek op GitHub](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+* [Azure IoT-protocolgatewayrepository op GitHub](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 
-* [Azure IoT gateway developer-protocolhandleiding](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+* [Handleiding voor Azure IoT-protocolgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-Zie voor meer informatie over het plannen van de implementatie van uw IoT Hub:
+Zie voor meer informatie over het plannen van uw IoT Hub-implementatie:
 
-* [Met Eventhubs vergelijken](iot-hub-compare-event-hubs.md)
+* [Vergelijken met gebeurtenishubs](iot-hub-compare-event-hubs.md)
 
 * [Schalen, hoge beschikbaarheid en herstel na noodgevallen](iot-hub-scaling.md)
 
-* [Ontwikkelaarshandleiding voor IoT Hub](iot-hub-devguide.md)
+* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)

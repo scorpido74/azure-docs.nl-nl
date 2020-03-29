@@ -1,6 +1,6 @@
 ---
-title: Problemen met de gedegradeerde status op Azure Traffic Manager oplossen
-description: Problemen met Traffic Manager profielen oplossen wanneer deze worden weer gegeven als gedegradeerde status.
+title: Probleemoplossing voor de gedegradeerde status in Azure Traffic Manager
+description: Hoe problemen op te lossen Traffic Manager profielen wanneer het wordt weergegeven als gedegradeerde status.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,42 +13,42 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
 ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938368"
 ---
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Oplossen van problemen met een gedegradeerde status op Azure Traffic Manager
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problemen oplossen met verminderde beschikbaarheid in Azure Traffic Manager
 
-In dit artikel wordt beschreven hoe u een Azure Traffic Manager-profiel oplost dat een gedegradeerde status weergeeft. Als eerste stap in het oplossen van problemen met de status van een Azure-Traffic Manager is de functie voor diagnostische logboek registratie ingeschakeld.  Raadpleeg [Diagnostische logboeken inschakelen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) voor meer informatie. Voor dit scenario moet u een Traffic Manager profiel hebben geconfigureerd dat verwijst naar een aantal van uw gehoste cloudapp.net-services. Als de status van uw Traffic Manager een **gedegradeerde** status weergeeft, kan de status van een of meer eind punten worden **verslechterd**:
+In dit artikel wordt beschreven hoe u een Azure Traffic Manager-profiel oplossen dat een gedegradeerde status weergeeft. Als eerste stap in het oplossen van problemen is een Azure Traffic Manager gedegradeerde status het inschakelen van diagnostische logboekregistratie.  Raadpleeg [Diagnostische logboeken inschakelen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) voor meer informatie. Houd er in dit scenario rekening mee dat u een Traffic Manager-profiel hebt geconfigureerd dat naar een aantal van uw cloudapp.net gehoste services wijst. Als de status van uw verkeersbeheerder een **gedegradeerde** status weergeeft, kan de status van een of meer eindpunten worden **afgebroken:**
 
-![gedegradeerde eindpunt status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![gedegradeerde eindpuntstatus](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Als in de status van uw Traffic Manager een **inactieve** status wordt weer gegeven, kunnen beide eind punten worden **uitgeschakeld**:
+Als de status van uw verkeersbeheermanager een **inactieve** status weergeeft, kunnen beide eindpunten worden **uitgeschakeld:**
 
-![Inactieve Traffic Manager status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Inactieve traffic manager-status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Wat is Traffic Manager tests?
+## <a name="understanding-traffic-manager-probes"></a>Inzicht in verkeersmanager-sondes
 
-* Traffic Manager beschouwt een eind punt alleen ONLINE als de test een HTTP 200-antwoord ontvangt van het pad naar de test. Als u een andere HTTP-antwoord code retourneert, moet u die antwoord code toevoegen aan de [verwachte status codes](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) van uw Traffic Manager profiel.
-* Een 30x beter worden-omleidings antwoord wordt behandeld als een fout, tenzij u dit als een geldige antwoord code hebt opgegeven in de [verwachte status codes](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) van uw Traffic Manager-profiel. Het omleidings doel wordt niet door Traffic Manager getest.
-* Voor HTTPs-tests worden certificaat fouten genegeerd.
-* De werkelijke inhoud van het pad naar de test is niet van belang, zolang een 200 wordt geretourneerd. Het zoeken naar een URL naar bepaalde statische inhoud, zoals '/favicon.ico ', is een gang bare techniek. Dynamische inhoud, zoals de ASP-pagina's, retourneert niet altijd 200, zelfs als de toepassing in orde is.
-* Een best practice bestaat uit het instellen van het probe-pad naar iets dat voldoende logica heeft om te bepalen of de site al dan niet actief is. In het vorige voor beeld, door het pad in te stellen op '/favicon.ico ', moet u alleen testen of W3wp. exe reageert. Deze test geeft mogelijk niet aan dat uw webtoepassing in orde is. Een betere optie is het instellen van een pad naar een iets zoals '/probe.aspx ' die logica heeft om de status van de site te bepalen. U kunt bijvoorbeeld prestatie meter items gebruiken om het CPU-gebruik te bepalen of het aantal mislukte aanvragen te meten. U kunt ook proberen om toegang te krijgen tot database bronnen of sessie status om ervoor te zorgen dat de webtoepassing werkt.
-* Als alle eind punten in een profiel worden gedegradeerd, worden alle eind punten door Traffic Manager als gezond beschouwd en wordt verkeer naar alle eind punten gerouteerd. Dit gedrag zorgt ervoor dat problemen met het mechanisme voor het zoeken niet leiden tot een volledige onderbreking van uw service.
+* Traffic Manager beschouwt een eindpunt alleen als online wanneer de sonde een HTTP 200-respons terugontvangt van het sondepad. Als u een andere HTTP-antwoordcode retourneert, moet u die antwoordcode toevoegen aan [de verwachte statuscodebereiken](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) van uw Traffic Manager-profiel.
+* Een antwoord van 30x omleiding wordt als mislukt beschouwd, tenzij u dit hebt opgegeven als een geldige reactiecode in [verwachte statuscodebereiken](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) van uw Traffic Manager-profiel. Traffic Manager controleert het omleidingsdoel niet.
+* Voor HTTP-sondes worden certificaatfouten genegeerd.
+* De werkelijke inhoud van het sondepad maakt niet uit, zolang een 200 wordt geretourneerd. Het onderzoeken van een URL naar een aantal statische inhoud zoals "/favicon.ico" is een veel voorkomende techniek. Dynamische inhoud, zoals de ASP-pagina's, kan niet altijd 200 retourneren, zelfs niet als de toepassing in orde is.
+* Een aanbevolen methode is om het sondepad in te stellen op iets dat voldoende logica heeft om te bepalen dat de site omhoog of omlaag is. In het vorige voorbeeld test u alleen door het pad in te stellen op "/favicon.ico". Deze sonde geeft mogelijk niet aan dat uw webtoepassing in orde is. Een betere optie zou zijn om een pad in te stellen op een iets als "/Probe.aspx" dat logica heeft om de status van de site te bepalen. U bijvoorbeeld prestatiemeteritems gebruiken voor het cpu-gebruik of het aantal mislukte aanvragen meten. U ook proberen toegang te krijgen tot databasebronnen of sessiestatus om ervoor te zorgen dat de webtoepassing werkt.
+* Als alle eindpunten in een profiel zijn afgebroken, behandelt Traffic Manager alle eindpunten als gezond en leidt het verkeer naar alle eindpunten. Dit gedrag zorgt ervoor dat problemen met het indringende mechanisme niet leiden tot een volledige uitval van uw service.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u een test fout wilt oplossen, hebt u een hulp programma nodig dat de HTTP-status code retourneert van de test-URL. Er zijn veel hulpprogram ma's beschikbaar die het onbewerkte HTTP-antwoord tonen.
+Als u een fout in een sonde wilt oplossen, hebt u een hulpprogramma nodig dat de HTTP-statuscode retour van de URL van de sonde weergeeft. Er zijn veel tools beschikbaar die u de ruwe HTTP-respons laten zien.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
-* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+* [Curl](https://curl.haxx.se/)
+* [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-U kunt ook het tabblad netwerk van de F12-Hulpprogram Ma's voor fout opsporing in Internet Explorer gebruiken om de HTTP-antwoorden te bekijken.
+U ook het tabblad Netwerk van de hulpprogramma's voor foutopsporing F12 in Internet Explorer gebruiken om de HTTP-antwoorden weer te geven.
 
-Voor dit voor beeld willen we het antwoord zien van onze test-URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Het volgende Power shell-voor beeld illustreert het probleem.
+Voor dit voorbeeld willen we het antwoord van\/onze sonde URL zien: http: /watestsdp2008r2.cloudapp.net:80/Probe. Het volgende PowerShell-voorbeeld illustreert het probleem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Voorbeelduitvoer:
     ---------- -----------------
            301 Moved Permanently
 
-U ziet dat er een omleidings antwoord is ontvangen. Zoals eerder vermeld, wordt een andere status code dan 200 beschouwd als een fout. Traffic Manager wijzigt de eindpunt status in offline. Om het probleem op te lossen, controleert u de website configuratie om ervoor te zorgen dat de juiste status code kan worden geretourneerd vanaf het pad van de test. Configureer de Traffic Manager-test opnieuw zodat deze verwijst naar een pad dat een 200 retourneert.
+Merk op dat we een omleidingsreactie hebben ontvangen. Zoals eerder vermeld, wordt een andere StatusCode dan 200 beschouwd als een fout. Traffic Manager wijzigt de eindpuntstatus in Offline. Als u het probleem wilt oplossen, controleert u de websiteconfiguratie om ervoor te zorgen dat de juiste StatusCode kan worden geretourneerd van het sondepad. Configureer de sonde Verkeersbeheer opnieuw om een pad aan te wijzen dat een 200 retourneert.
 
-Als uw test het HTTPS-protocol gebruikt, moet u mogelijk de certificaat controle uitschakelen om SSL/TLS-fouten tijdens uw test te voor komen. Met de volgende Power shell-instructies wordt certificaat validatie voor de huidige Power shell-sessie uitgeschakeld:
+Als uw sonde het HTTPS-protocol gebruikt, moet u mogelijk certificaatcontrole uitschakelen om SSL/TLS-fouten tijdens uw test te voorkomen. Met de volgende PowerShell-instructies wordt de certificaatvalidatie voor de huidige PowerShell-sessie uitgeschakeld:
 
 ```powershell
 add-type @"
@@ -81,16 +81,16 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Over Traffic Manager routerings methoden voor verkeer](traffic-manager-routing-methods.md)
+[Over verkeersbeheermethoden](traffic-manager-routing-methods.md)
 
 [Wat is Traffic Manager](traffic-manager-overview.md)
 
-[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Cloudservices](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
 [Bewerkingen op Traffic Manager (REST API-referentiemateriaal)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager-cmdlets][1]
+[Azure Traffic Manager Cmdlets][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

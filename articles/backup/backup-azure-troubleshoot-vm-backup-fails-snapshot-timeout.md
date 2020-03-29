@@ -1,257 +1,257 @@
 ---
-title: Problemen met agent-en uitbrei dingen oplossen
-description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met betrekking tot agent, uitbrei ding en schijven.
+title: Problemen met agenten en extensieoplossen
+description: Symptomen, oorzaken en oplossingen van Azure Backup-fouten met betrekking tot agent, extensie en schijven.
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248019"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup-fout oplossen: problemen met de agent of extensie
 
-Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplossen van Azure Backup fouten met betrekking tot communicatie met de VM-agent en-extensie.
+In dit artikel vindt u stappen voor het oplossen van problemen die u kunnen helpen azure back-upfouten op te lossen die verband houden met de communicatie met de VM-agent en extensie.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: de VM-agent kan niet communiceren met Azure Backup
+## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM-agent kan niet communiceren met Azure Backup
 
-**Fout code**: UserErrorGuestAgentStatusUnavailable <br>
-**Fout bericht**: de VM-agent kan niet communiceren met Azure backup<br>
+**Foutcode**: UserErrorGuestAgentStatusNiet beschikbaar <br>
+**Foutbericht:** VM-agent kan niet communiceren met Azure Backup<br>
 
-De Azure VM-agent is mogelijk gestopt, verouderd, in een inconsistente status of niet geïnstalleerd. Deze statussen verhinderen dat de Azure Backup-Service moment opnamen kan starten.
+De Azure VM-agent kan worden gestopt, verouderd, in een inconsistente status of niet geïnstalleerd. Deze statussen voorkomen dat de Azure Backup-service momentopnamen activeert.
 
-- **Open Azure Portal > VM-> instellingen > deel venster eigenschappen** > Controleer of de **status** van de VM **actief** is en de **agent status** **gereed**is. Als de VM-agent is gestopt of een inconsistente status heeft, start u de agent opnieuw op<br>
-  - Voor virtuele Windows-machines voert u de volgende [stappen uit](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) om de gast agent opnieuw te starten.<br>
-  - Voor Linux Vm's voert u deze [stappen uit](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gast agent opnieuw te starten.
-- **Open Azure Portal > VM > instellingen > extensies** > ervoor te zorgen dat alle uitbrei dingen de status **voltooid** hebben. Als dat niet het geval is, volgt u deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) om het probleem op te lossen.
+- **Open het deelvenster Azure-portal > VM >->-instellingen > eigenschappen** > ervoor te zorgen dat de VM-status **wordt uitgevoerd** en de **agentstatus** **gereed**is. **Status** Als de VM-agent is gestopt of in een inconsistente toestand verkeert, start u de agent opnieuw<br>
+  - Voer voor Windows VM's de volgende [stappen](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) uit om de gastagent opnieuw te starten.<br>
+  - Volg voor Linux-VM's deze [stappen](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) om de gastagent opnieuw te starten.
+- **Open Azure portal > VM > Instellingen > Extensies** > Zorg ervoor dat alle extensies de gewenste **status** inrichten. Als dit niet het zo is, volgt u deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) om het probleem op te lossen.
 
-## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: kan niet communiceren met de VM-agent voor de status van de moment opname
+## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Kan niet communiceren met de VM-agent voor de status van de momentopname
 
-**Fout code**: GuestAgentSnapshotTaskStatusError<br>
-**Fout bericht**: kan niet communiceren met de VM-agent voor de status van de moment opname <br>
+**Foutcode**: GuestAgentSnapshotTaskStatusError<br>
+**Foutbericht:** kan niet communiceren met de VM-agent voor momentopnamestatus <br>
 
-Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en gepland, wordt de taak door de back-up gestart door te communiceren met de back-upextensie van de VM om een moment opname van een bepaald tijdstip te maken. Een van de volgende situaties kan verhinderen dat de moment opname wordt geactiveerd. Als de moment opname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor probleem oplossing in de aangegeven volg orde uit en voer de bewerking opnieuw uit:  
+Nadat u een VM voor de Azure Backup-service hebt geregistreerd en gepland, start Back-up de taak door te communiceren met de VM-back-upextensie om een point-in-time momentopname te maken. Een van de volgende voorwaarden kan voorkomen dat de momentopname wordt geactiveerd. Als de momentopname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor het oplossen van problemen in de vermelde volgorde uit en probeer de bewerking opnieuw:  
 
-**Oorzaak 1: [de agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Oorzaak 1: [de agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 
-**Oorzaak 2: [de agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Oorzaak 2: [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
-**Oorzaak 3: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
+**Oorzaak 3: [De momentopnamestatus kan niet worden opgehaald of een momentopname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
-**Oorzaak 4: er [zijn geen configuratie opties voor de VM-agent ingesteld (voor Linux-vm's)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+**Oorzaak 4: [VM-Agent-configuratieopties zijn niet ingesteld (voor Linux VM's)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de virtuele machine heeft een mislukte inrichtings status
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed - De VM is in de status van inrichting
 
-**Fout code**: UserErrorVmProvisioningStateFailed<br>
-**Fout bericht**: de inrichtings status van de virtuele machine is mislukt<br>
+**Foutcode**: UserErrorVmProvisioningState Failed<br>
+**Foutbericht:** de VM is in de status van inrichting<br>
 
-Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inricht bij het inrichten van de status mislukt.<br>**Open Azure Portal > VM > instellingen > extensies > uitbrei dingen status** en controleer of alle uitbrei dingen de status **geslaagd** hebben. Zie [inrichtings statussen](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)voor meer informatie.
+Deze fout treedt op wanneer een van de extensiefouten de VM in de status inrichting saneren.<br>**Open de status van Azure-portal > VM > Instellingen > Extensies > extensies** en controleer of alle extensies de status van **inprovisionering hebben.** Zie [Provisioning-staten](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)voor meer informatie.
 
-- Als de extensie VMSnapshot de status Mislukt heeft, klikt u met de rechter muisknop op de uitbrei ding die is mislukt en verwijdert u deze. Activeer een back-up op aanvraag. Met deze actie worden de uitbrei dingen opnieuw geïnstalleerd en wordt de back-uptaak uitgevoerd.  <br>
-- Als een andere uitbrei ding een mislukte status heeft, kan deze de back-up verstoren. Zorg ervoor dat de problemen met de extensie zijn opgelost en voer de back-upbewerking opnieuw uit.
-- Als de inrichtings status van de virtuele machine een update status heeft, kan deze de back-up verstoren. Zorg ervoor dat deze in orde is en probeer de back-upbewerking opnieuw uit te voeren.
+- Als de VMSnapshot-extensie in een mislukte status verkeert, klikt u met de rechtermuisknop op de mislukte extensie en verwijdert u deze. Activeer een on-demand back-up. Met deze actie worden de extensies opnieuw geïnstalleerd en wordt de back-uptaak uitgevoerd.  <br>
+- Als een andere extensie is in een mislukte staat, dan kan interfereren met de back-up. Zorg ervoor dat deze uitbreidingsproblemen zijn opgelost en probeer de back-upbewerking opnieuw.
+- Als de status van vm-inrichting in een updatestatus is, kan deze de back-up verstoren. Zorg ervoor dat deze in orde is en probeer de back-upbewerking opnieuw.
 
-## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached-de maximale limiet voor de verzameling met herstel punten is bereikt
+## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - De limiet voor de verzameling herstelpunten is bereikt
 
-**Fout code**: UserErrorRpCollectionLimitReached <br>
-**Fout bericht**: de maximale limiet voor de verzameling met herstel punten is bereikt. <br>
+**Foutcode**: UserErrorRpCollectionLimitReached <br>
+**Foutbericht:** de maximumlimiet voor de verzameling Herstelpunt is bereikt. <br>
 
-- Dit probleem kan zich voordoen als er een vergren deling van de resource groep herstel punt wordt voor komen dat het automatisch opruimen van herstel punten wordt verhinderd.
-- Dit probleem kan ook optreden als meerdere back-ups per dag worden geactiveerd. Momenteel wordt slechts één back-up per dag aanbevolen, omdat de onmiddellijke herstel punten gedurende 1-5 dagen worden bewaard per de geconfigureerde moment opname en slechts 18 direct RPs kunnen worden gekoppeld aan een VM op een bepaald moment. <br>
-- Het aantal herstel punten tussen herstel punt verzamelingen en resource groepen voor een virtuele machine mag niet groter zijn dan 18. Als u een nieuw herstel punt wilt maken, verwijdert u de bestaande herstel punten.
+- Dit probleem kan optreden als er een vergrendeling is op de resourcegroep herstelpunt die voorkomt dat herstelpunten automatisch worden opschonen.
+- Dit probleem kan ook optreden als er meerdere back-ups per dag worden geactiveerd. Momenteel raden we slechts één back-up per dag aan, omdat de directe herstelpunten gedurende 1-5 dagen per de geconfigureerde momentopnameretentie worden bewaard en slechts 18 instant RPs op een bepaald moment aan een VM kunnen worden gekoppeld. <br>
+- Het aantal herstelpunten voor herstelpuntverzamelingen en resourcegroepen voor een virtuele machine kan niet hoger zijn dan 18. Als u een nieuw herstelpunt wilt maken, verwijdert u bestaande herstelpunten.
 
 Aanbevolen actie:<br>
-U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
+Als u dit probleem wilt oplossen, verwijdert u het slot op de resourcegroep van de virtuele machine en probeert u de bewerking opnieuw om het opschonen te activeren.
 > [!NOTE]
-> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_`<Geo>`_`<number>` bijvoorbeeld: AzureBackupRG_northeurope_1
+> Back-upservice maakt een afzonderlijke resourcegroep dan de resourcegroep van de VM om het herstellen van puntenverzameling op te slaan. Klanten wordt geadviseerd de resourcegroep die is gemaakt voor gebruik door de back-upservice niet te vergrendelen. De naamgevingsindeling van de resourcegroep die`<Geo>``<number>` is gemaakt door back-upservice is: AzureBackupRG_ _ Bijv: AzureBackupRG_northeurope_1
 
-**Stap 1: [de vergren deling van de resource groep voor het herstel punt verwijderen](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**Stap 2: [herstel punt verzameling opschonen](#clean_up_restore_point_collection)**<br>
+**Stap 1: [Vergrendeling verwijderen uit de brongroep herstelpunt](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**Stap 2: [Herstelpuntverzameling opruimen](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured-backup heeft niet voldoende machtigingen voor de sleutel kluis voor het maken van een back-up van versleutelde Vm's
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - Back-up heeft onvoldoende machtigingen voor de sleutelkluis voor back-ups van versleutelde VM's
 
-**Fout code**: UserErrorKeyvaultPermissionsNotConfigured <br>
-**Fout bericht**: back-up beschikt niet over voldoende machtigingen voor de sleutel kluis voor het maken van back-ups van versleutelde vm's. <br>
+**Foutcode**: UserErrorKeyvaultPermissionsNotConfigured <br>
+**Foutbericht:** Back-up heeft onvoldoende machtigingen voor de sleutelkluis voor back-ups van versleutelde VM's. <br>
 
-Een back-upbewerking kan alleen worden uitgevoerd op versleutelde Vm's als deze over machtigingen voor toegang tot de sleutel kluis beschikt. Machtigingen kunnen worden ingesteld via de [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) of via [Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
+Als een back-upbewerking kan worden uitgevoerd op versleutelde VM's, moet deze machtigingen hebben om toegang te krijgen tot de sleutelkluis. Machtigingen kunnen worden ingesteld via de [Azure-portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) of via [PowerShell.](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
 
-## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork-momentopname bewerking is mislukt omdat er geen netwerk verbinding is op de virtuele machine
+## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Momentopname mislukt omdat er geen netwerkverbinding beschikbaar is op de virtuele machine
 
-**Fout code**: ExtensionSnapshotFailedNoNetwork<br>
-**Fout bericht**: de momentopname bewerking is mislukt omdat er geen netwerk verbinding is op de virtuele machine<br>
+**Foutcode:** ExtensionSnapshotFailedNoNetwork<br>
+**Foutbericht:** momentopnamebewerking is mislukt omdat er geen netwerkverbinding op de virtuele machine is<br>
 
-Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en gepland, wordt de taak door de back-up gestart door te communiceren met de back-upextensie van de VM om een moment opname van een bepaald tijdstip te maken. Een van de volgende situaties kan verhinderen dat de moment opname wordt geactiveerd. Als de moment opname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stap voor het oplossen van problemen uit en voer de bewerking opnieuw uit:
+Nadat u een VM voor de Azure Backup-service hebt geregistreerd en gepland, start Back-up de taak door te communiceren met de VM-back-upextensie om een point-in-time momentopname te maken. Een van de volgende voorwaarden kan voorkomen dat de momentopname wordt geactiveerd. Als de momentopname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende probleemoplossingsstap uit en probeer uw bewerking opnieuw:
 
-**[De status van de moment opname kan niet worden opgehaald, of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**[De momentopnamestatus kan niet worden opgehaald of een momentopname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
-## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Bewerking voor ExtensionOperationFailedForManagedDisks-VMSnapshot-extensie is mislukt
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot-extensiebewerking is mislukt
 
-**Fout code**: ExtensionOperationFailedForManagedDisks <br>
-**Fout bericht**: de VMSnapshot-extensie bewerking is mislukt<br>
+**Foutcode**: ExtensionOperationFailedForManagedDisks <br>
+**Foutbericht:** VMSnapshot-extensiebewerking is mislukt<br>
 
-Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en gepland, wordt de taak door de back-up gestart door te communiceren met de back-upextensie van de VM om een moment opname van een bepaald tijdstip te maken. Een van de volgende situaties kan verhinderen dat de moment opname wordt geactiveerd. Als de moment opname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor probleem oplossing in de aangegeven volg orde uit en voer de bewerking opnieuw uit:  
-**Oorzaak 1: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Oorzaak 2: [de agent is geïnstalleerd in de VM, maar reageert niet (voor Windows-vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Oorzaak 3: [de agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+Nadat u een VM voor de Azure Backup-service hebt geregistreerd en gepland, start Back-up de taak door te communiceren met de VM-back-upextensie om een point-in-time momentopname te maken. Een van de volgende voorwaarden kan voorkomen dat de momentopname wordt geactiveerd. Als de momentopname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor het oplossen van problemen in de vermelde volgorde uit en probeer de bewerking opnieuw:  
+**Oorzaak 1: [de momentopnamestatus kan niet worden opgehaald of een momentopname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**Oorzaak 2: [De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Oorzaak 3: [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
-## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2-back-up mislukt, met een interne fout
+## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed / BackUpOperationFailedV2 - Back-up mislukt met een interne fout
 
-**Fout code**: BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**Fout bericht**: de back-up is mislukt met een interne fout. Voer de bewerking over een paar minuten opnieuw uit <br>
+**Foutcode:** BackUpOperationFailed / BackUpOperationFailedV2 <br>
+**Foutbericht:** Back-up is mislukt met een interne fout - Probeer de bewerking binnen enkele minuten opnieuw <br>
 
-Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en gepland, wordt met de back-up de taak gestart door te communiceren met de back-upextensie van de VM om een tijdgebonden moment opname te maken. Een van de volgende situaties kan verhinderen dat de moment opname wordt geactiveerd. Als de moment opname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor probleem oplossing in de aangegeven volg orde uit en voer de bewerking opnieuw uit:  
-**Oorzaak 1: [de agent die is geïnstalleerd op de VM, maar die niet reageert (voor Windows-vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Oorzaak 2: [de agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Oorzaak 3: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Oorzaak 4: [de back-upservice heeft geen machtiging voor het verwijderen van de oude herstel punten vanwege een vergren deling van een resource groep](#remove_lock_from_the_recovery_point_resource_group)**<br>
+Nadat u een VM voor de Azure Backup-service hebt geregistreerd en gepland, initieert Backup de taak door te communiceren met de VM-back-upextensie om een point-in-time momentopname te maken. Een van de volgende voorwaarden kan voorkomen dat de momentopname wordt geactiveerd. Als de momentopname niet wordt geactiveerd, kan er een back-upfout optreden. Voer de volgende stappen voor het oplossen van problemen in de vermelde volgorde uit en probeer de bewerking opnieuw:  
+**Oorzaak 1: [de agent die in de VM is geïnstalleerd, maar deze reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Oorzaak 2: [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Oorzaak 3: [De momentopnamestatus kan niet worden opgehaald of een momentopname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**Oorzaak 4: [Back-upservice heeft geen toestemming om de oude herstelpunten te verwijderen vanwege een brongroepvergrendeling](#remove_lock_from_the_recovery_point_resource_group)**<br>
 
-## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize: de geconfigureerde schijf grootte (s) wordt momenteel niet ondersteund door de Azure Backup
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize - De geconfigureerde schijfgrootte(s) wordt momenteel niet ondersteund door Azure Backup
 
-**Fout code**: UserErrorUnsupportedDiskSize <br>
-**Fout bericht**: de geconfigureerde schijf grootte (s) wordt momenteel niet ondersteund door Azure backup. <br>
+**Foutcode**: UserErrorUnsupportedDiskSize <br>
+**Foutbericht:** de geconfigureerde schijfgrootte(s) wordt momenteel niet ondersteund door Azure Backup. <br>
 
-De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele machine met een schijf grootte van meer dan 32 TB. Het maken van een back-up van versleutelde schijven met een grootte van meer dan 4 TB wordt momenteel niet ondersteund. Zorg ervoor dat de schijf grootte (s) kleiner is dan of gelijk is aan de ondersteunde limiet door de schijven te splitsen.
+Uw back-upbewerking kan mislukken bij het maken van een back-up van een vm met een schijfgrootte van meer dan 32 TB. Ook wordt back-up van versleutelde schijven groter dan 4 TB momenteel niet ondersteund. Zorg ervoor dat de schijfgrootte(s) kleiner is dan of gelijk is aan de ondersteunde limiet door de schijf(en) te splitsen.
 
-## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: kan geen back-up initiëren omdat er momenteel een andere back-upbewerking wordt uitgevoerd
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - Kan geen back-up starten omdat er momenteel een andere back-upbewerking wordt uitgevoerd
 
-**Fout code**: UserErrorBackupOperationInProgress <br>
-**Fout bericht**: kan de back-up niet starten omdat er momenteel een andere back-upbewerking wordt uitgevoerd<br>
+**Foutcode**: UserErrorBackupOperationInProgress <br>
+**Foutbericht:** Kan geen back-up starten omdat er momenteel een andere back-upbewerking wordt uitgevoerd<br>
 
-De recente back-uptaak is mislukt, omdat er een bestaande back-uptaak wordt uitgevoerd. U kunt pas een nieuwe back-uptaak starten als de huidige taak is voltooid. Controleer of de back-upbewerking die momenteel wordt uitgevoerd, is voltooid voordat u een andere back-up maakt of plant. Als u de status van de back-uptaken wilt controleren, voert u de volgende stappen uit:
+Uw recente back-uptaak is mislukt omdat er een bestaande back-uptaak aan de gang is. U geen nieuwe back-uptaak starten totdat de huidige taak is voltooid. Zorg ervoor dat de back-upbewerking die momenteel loopt, is voltooid voordat u een andere back-upbewerking activeert of plant. Ga als volgt te werk om de status van back-uptaken te controleren:
 
-1. Meld u aan bij de Azure Portal en klik op **alle services**. Typ Recovery Services en klik op **Recovery Services-kluizen**. De lijst met Recovery Services-kluizen wordt weergegeven.
-2. Selecteer in de lijst met Recovery Services-kluizen een kluis waarin de back-up is geconfigureerd.
-3. Klik in het menu van het kluis dashboard op **back-uptaken** . alle back-uptaken worden weer gegeven.
-   - Als er een back-uptaak wordt uitgevoerd, wacht u totdat deze klaar is of annuleert u de back-uptaak.
-     - Als u de back-uptaak wilt annuleren, klikt u met de rechter muisknop op de back-uptaak en klikt u op **Annuleren** of [Power shell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)gebruiken.
-   - Als u de back-up opnieuw hebt geconfigureerd in een andere kluis, controleert u of er geen back-uptaken worden uitgevoerd in de oude kluis. Als deze bestaat, annuleert u de back-uptaak.
+1. Meld u aan bij de Azure-portal en klik op **Alle services**. Typ Recovery Services en klik op **Recovery Services-kluizen**. De lijst met Recovery Services-kluizen wordt weergegeven.
+2. Selecteer in de lijst met kluizen van herstelservices een kluis waarin de back-up is geconfigureerd.
+3. Klik in het menu van het vault-dashboard op **Back-uptaken** waarop alle back-uptaken worden weergegeven.
+   - Als er een back-uptaak aan de gang is, wacht u tot deze is voltooid of annuleert u de back-uptaak.
+     - Als u de back-uptaak wilt annuleren, klikt u met de rechtermuisknop op de back-uptaak en klikt u op **Annuleren** of [powershell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)gebruiken.
+   - Als u de back-up opnieuw hebt geconfigureerd in een andere kluis, moet u ervoor zorgen dat er geen back-uptaken worden uitgevoerd in de oude kluis. Als deze bestaat, annuleert u de back-uptaak.
      - Als u de back-uptaak wilt annuleren, klikt u met de rechtermuisknop op de back-uptaak en klikt u op **Annuleren**, of gebruikt u [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
-4. Voer de back-upbewerking opnieuw uit.
+4. Probeer een back-upbewerking opnieuw.
 
-Als de geplande back-upbewerking langer duurt, conflicteert met de volgende back-upconfiguratie, raadpleegt u de [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices), [back-upprestaties](backup-azure-vms-introduction.md#backup-performance)en [Restore-overwegingen](backup-azure-vms-introduction.md#backup-and-restore-considerations).
+Als de geplande back-upbewerking langer duurt, in strijd met de volgende back-upconfiguratie, controleert u de [aanbevolen procedures](backup-azure-vms-introduction.md#best-practices), [back-upprestaties](backup-azure-vms-introduction.md#backup-performance)en [hersteloverweging](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError-back-up is mislukt vanwege een fout. Zie voor meer informatie taak fout bericht Details
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError - Back-up is mislukt als gevolg van een fout. Zie Berichtgegevens taakfout voor meer informatie
 
-**Fout code**: UserErrorCrpReportedUserError <br>
-**Fout bericht**: het maken van de back-up is mislukt vanwege een fout. Zie Details van het taak fout bericht voor meer informatie.
+**Foutcode**: UserErrorCrpReportedUserError <br>
+**Foutbericht:** Back-up is mislukt als gevolg van een fout. Zie Details van het bericht taakfout voor meer informatie.
 
-Deze fout wordt gerapporteerd vanuit de IaaS-VM. Als u de hoofd oorzaak van het probleem wilt vaststellen, gaat u naar de Recovery Services kluis instellingen. Selecteer in de sectie **controle** de optie **back-uptaken** om de status te filteren en weer te geven. Klik op **fouten** om de details van het onderliggende fout bericht weer te geven. Onderneem verdere acties op basis van de aanbevelingen op de pagina met fout Details.
+Deze fout wordt gemeld door de IaaS VM. Als u de hoofdoorzaak van het probleem wilt identificeren, gaat u naar de kluisinstellingen van Recovery Services. Selecteer **onder** de sectie Controle de optie **Back-uptaken** filteren en de status weergeven. Klik op **Fouten** om de onderliggende foutberichtgegevens te bekijken. Verdere acties uitvoeren volgens de aanbevelingen op de pagina foutdetails.
 
 ## <a name="causes-and-solutions"></a>Oorzaken en oplossingen
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)
+### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)
 
 #### <a name="solution"></a>Oplossing
 
-De VM-agent is mogelijk beschadigd of de service is gestopt. Het opnieuw installeren van de VM-agent helpt de meest recente versie op te halen. Het helpt ook om communicatie met de service opnieuw te starten.
+De VM-agent is mogelijk beschadigd of de service is mogelijk gestopt. Het opnieuw installeren van de VM-agent helpt om de nieuwste versie te krijgen. Het helpt ook de communicatie met de service opnieuw op te starten.
 
-1. Bepaal of de Windows Azure Guest Agent-service wordt uitgevoerd in de VM-Services (Services. msc). Probeer de service Windows Azure Guest agent opnieuw te starten en de back-up te initiëren.
-2. Als de Windows Azure Guest Agent-service niet wordt weer gegeven in Services, gaat u in het configuratie scherm naar **Program ma's en onderdelen** om te bepalen of de service Windows Azure Guest agent is geïnstalleerd.
-3. Als de Windows Azure Guest-agent wordt weer gegeven in **Program ma's en onderdelen**, verwijdert u de Windows Azure-gast agent.
-4. Down load en installeer de [nieuwste versie van de agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U moet over beheerders rechten beschikken om de installatie te volt ooien.
-5. Controleer of de services van de Windows Azure Guest agent in Services worden weer gegeven.
-6. Een back-up op aanvraag uitvoeren:
-   - Selecteer in de portal **Nu back-up maken**.
+1. Bepaal of de Windows Azure Guest Agent-service wordt uitgevoerd in de VM-services (services.msc). Probeer de Windows Azure Guest Agent-service opnieuw te starten en start de back-up.
+2. Als de Windows Azure Guest Agent-service niet zichtbaar is in services, gaat u in het Configuratiescherm naar **Programma's en onderdelen** om te bepalen of de Windows Azure Guest Agent-service is geïnstalleerd.
+3. Als de Windows Azure Guest Agent wordt weergegeven in **Programma's en onderdelen,** verwijdert u de Windows Azure Guest Agent.
+4. Download en installeer de [nieuwste versie van de agent MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U moet beheerdersrechten hebben om de installatie te voltooien.
+5. Controleer of de Windows Azure Guest Agent-services worden weergegeven in services.
+6. Voer een on-demand back-up uit:
+   - Selecteer **nu back-up**in de portal .
 
-Controleer ook of [Microsoft .NET 4,5 is geïnstalleerd](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. .NET 4,5 is vereist voor de VM-agent om te communiceren met de service.
+Controleer ook of [Microsoft .NET 4.5 is geïnstalleerd](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. .NET 4.5 is vereist dat de VM-agent met de service communiceert.
 
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)
 
 #### <a name="solution"></a>Oplossing
 
-De meeste fout-en extensie-gerelateerde storingen voor Linux-Vm's worden veroorzaakt door problemen die van invloed zijn op een verouderde VM-agent. Volg deze algemene richt lijnen om dit probleem op te lossen:
+De meeste agent-gerelateerde of extensie-gerelateerde fouten voor Linux VM's worden veroorzaakt door problemen die van invloed zijn op een verouderde VM-agent. Volg de volgende algemene richtlijnen om dit probleem op te lossen:
 
-1. Volg de instructies voor [het bijwerken van de Linux VM-agent](../virtual-machines/linux/update-agent.md).
+1. Volg de instructies voor [het bijwerken van de Linux VM-agent.](../virtual-machines/linux/update-agent.md)
 
    > [!NOTE]
-   > We *raden u ten zeerste* aan de agent alleen bij te werken via een distributie opslagplaats. Het is niet raadzaam de agent code rechtstreeks vanuit GitHub te downloaden en bij te werken. Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. Als u de meest recente agent wilt controleren, gaat u naar de pagina van de [Windows Azure Linux-agent](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslag plaats.
+   > We raden u *ten zeerste aan* de agent alleen te updaten via een distributieopslagplaats. We raden niet aan om de agentcode rechtstreeks van GitHub te downloaden en bij te werken. Als de nieuwste agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributieondersteuning voor instructies over het installeren ervan. Als u wilt controleren op de meest recente agent, gaat u naar de Windows [Azure Linux-agentpagina](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslagplaats.
 
-2. Zorg ervoor dat de Azure-agent op de virtuele machine wordt uitgevoerd door de volgende opdracht uit te voeren: `ps -e`
+2. Controleer of de Azure-agent op de VM wordt uitgevoerd door de volgende opdracht uit te voeren:`ps -e`
 
-   Als het proces niet wordt uitgevoerd, start u het opnieuw met behulp van de volgende opdrachten:
+   Als het proces niet wordt uitgevoerd, start u het opnieuw op met de volgende opdrachten:
 
-   - Voor Ubuntu: `service walinuxagent start`
-   - Voor andere distributies: `service waagent start`
+   - Voor Ubuntu:`service walinuxagent start`
+   - Voor andere distributies:`service waagent start`
 
-3. [Configureer de agent voor automatisch opnieuw opstarten](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-4. Voer een nieuwe test back-up uit. Als de fout zich blijft voordoen, verzamelt u de volgende logboeken van de VM:
+3. [De automatische herstartagent configureren](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+4. Voer een nieuwe testback-up uit. Als de fout zich voortduurt, verzamelt u de volgende logboeken van de vm:
 
-   - /var/lib/waagent/*. XML
+   - /var/lib/waagent/*.xml
    - /var/log/waagent.log
    - /var/log/azure/*
 
-Als u uitgebreide logboek registratie voor waagent nodig hebt, voert u de volgende stappen uit:
+Als u verbose logging voor waagent nodig hebt, voert u de volgende stappen uit:
 
-1. Zoek in het bestand/etc/waagent.conf de volgende regel: **uitgebreide logboek registratie inschakelen (y | n)**
-2. Wijzig de **Logboeken. uitgebreide** waarde van *n* tot en met *y*.
-3. Sla de wijziging op en start waagent opnieuw door de stappen uit te voeren die eerder in deze sectie zijn beschreven.
+1. Zoek in het bestand /etc/waagent.conf de volgende regel: **Verboselogging inschakelen (y|n)**
+2. Wijzig de waarde **Logs.Verbose** van *n* naar *y*.
+3. Sla de wijziging op en start waagent opnieuw door de eerder in deze sectie beschreven stappen in te vullen.
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-agent configuratie opties zijn niet ingesteld (voor Linux-Vm's)
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-Agent-configuratieopties zijn niet ingesteld (voor Linux VM's)
 
-Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Extensie van configuratie bestand opties **. inschakelen** en **inrichten.** voor het werken moet de agent worden ingesteld op **y** voor back-up.
-Zie <https://github.com/Azure/WALinuxAgent#configuration-file-options> voor een volledige lijst met opties voor het configuratie bestand van de VM-agent.
+Een configuratiebestand (/etc/waagent.conf) regelt de acties van waagent. Configuration File Options **Extensions.Enable** en **Provisioning.Agent** moeten worden ingesteld op **y** voor Back-up om te werken.
+Zie Voor de volledige lijst met configuratiebestandsopties van VM-agent<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>De status van de moment opname kan niet worden opgehaald, of een moment opname kan niet worden gemaakt
+### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>De momentopnamestatus kan niet worden opgehaald of een momentopname kan niet worden gemaakt
 
-De back-up van de virtuele machine is afhankelijk van het uitgeven van een momentopname opdracht aan het onderliggende opslag account. Het maken van een back-up kan mislukken omdat deze geen toegang heeft tot het opslag account, of omdat de uitvoering van de momentopname taak is vertraagd.
+De VM-back-up is gebaseerd op het uitgeven van een momentopnameopdracht naar het onderliggende opslagaccount. Back-up kan mislukken omdat deze geen toegang heeft tot het opslagaccount of omdat de uitvoering van de momentopnametaak is vertraagd.
 
 #### <a name="solution"></a>Oplossing
 
-De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
+De volgende voorwaarden kunnen ertoe leiden dat de momentopnametaak mislukt:
 
 | Oorzaak | Oplossing |
 | --- | --- |
-| De status van de virtuele machine wordt onjuist gerapporteerd, omdat de VM wordt afgesloten in Remote Desktop Protocol (RDP). | Als u de virtuele machine in RDP afsluit, controleert u de portal om te bepalen of de status van de virtuele machine juist is. Als dat niet het geval is, sluit u de virtuele machine in de portal af met de optie **Afsluiten** in het VM-dash board. |
-| De VM kan de host of het infrastructuur adres niet ophalen van DHCP. | DHCP moet zijn ingeschakeld in de gast voor het werken met de IaaS VM-back-up. Als de VM de host of het infrastructuur adres niet kan ophalen van DHCP-antwoord 245, kan er geen uitbrei dingen worden gedownload of uitgevoerd. Als u een statisch privé IP-adres nodig hebt, moet u dit configureren via de **Azure Portal** of **Power shell** en ervoor zorgen dat de DHCP-optie in de virtuele machine is ingeschakeld. Meer [informatie](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) over het instellen van een statisch IP-adres met Power shell.
+| De VM-status wordt onjuist gerapporteerd omdat de VM is afgesloten in Extern bureaublad-protocol (RDP). | Als u de VM in RDP afsluit, controleert u de portal om te bepalen of de VM-status juist is. Als dit niet klopt, sluit u de VM in de portal af met de optie **Afsluiten** op het VM-dashboard. |
+| De VM kan het host- of fabricadres niet van DHCP krijgen. | DHCP moet in de gast zijn ingeschakeld om de IaaS VM-back-up te laten werken. Als de vm het host- of fabricadres van DHCP-antwoord 245 niet kan ophalen, kan deze geen extensies downloaden of uitvoeren. Als u een statisch privé-IP-adres nodig hebt, moet u dit configureren via de **Azure-portal** of **PowerShell** en ervoor zorgen dat de DHCP-optie in de VM is ingeschakeld. [Meer informatie](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) over het instellen van een statisch IP-adres met PowerShell.
 
-### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
+### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergrendeling verwijderen uit de brongroep herstelpunt
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar **alle resources optie**, selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
-3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
-4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Ga naar **de optie Alle bronnen,** selecteer de brongroep bronvan het herstelpuntverzameling in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
+3. Selecteer **In** de sectie Instellingen de optie **Sloten** om de vergrendelingen weer te geven.
+4. Als u het slot wilt verwijderen, selecteert u de ellips en klikt u op **Verwijderen**.
 
-    ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![Vergrendeling verwijderen](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean_up_restore_point_collection"></a>Herstel punt verzameling opruimen
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>Herstelpuntverzameling opruimen
 
-Na het verwijderen van de vergren deling, moeten de herstel punten worden opgeruimd.
+Na het verwijderen van het slot moeten de herstelpunten worden opgeruimd.
 
-Als u de resource groep van de virtuele machine of de virtuele machine zelf verwijdert, blijven de moment opnamen voor direct terugzetten van beheerde schijven actief en verlopen op basis van de Bewaar termijn. Als u de moment opnamen voor direct terugzetten wilt verwijderen (als u deze niet meer nodig hebt) die zijn opgeslagen in de herstel punt verzameling, reinigt u de verzameling met herstel punten op basis van de onderstaande stappen.
+Als u de resourcegroep van de vm of de VM zelf verwijdert, blijven de momentopnamen van beheerde schijven direct hersteld en verlopen ze volgens de bewaarset. Als u de momentopnamen voor het direct herstellen (als u ze niet meer nodig hebt) wilt verwijderen die zijn opgeslagen in de herstelpuntverzameling, ruimt u de verzameling herstelpunten op volgens de onderstaande stappen.
 
-Volg een van de volgende methoden om de herstel punten op te schonen:<br>
+Volg een van de methoden om de herstelpunten op te ruimen:<br>
 
-- [Herstel punt verzameling opschonen door back-ups op aanvraag uit te voeren](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
-- [Herstel punt verzameling opschonen van Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
+- [Herstelpuntverzameling opschonen door on-demand back-up uit te voeren](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
+- [Herstelpuntverzameling ophalen vanuit Azure-portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Herstel punt verzameling opschonen door back-ups op aanvraag uit te voeren
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Herstelpuntverzameling opschonen door on-demand back-up uit te voeren
 
-Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starten. Met deze actie wordt ervoor gezorgd dat de herstel punten automatisch worden opgeruimd. Verwacht dat deze on-demand-bewerking de eerste keer mislukt. het zorgt er echter voor dat automatisch opschonen in plaats van het hand matig verwijderen van herstel punten. Na het opschonen moet de volgende geplande back-up slagen.
-
-> [!NOTE]
-> Automatische opschoning gebeurt na enkele uren dat de back-up op aanvraag wordt geactiveerd. Als uw geplande back-up nog steeds mislukt, probeert u de verzameling met herstel punten hand matig te verwijderen met behulp van de stappen die [hier](#clean-up-restore-point-collection-from-azure-portal)worden beschreven.
-
-#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Herstel punt verzameling opschonen van Azure Portal <br>
-
-Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
-
-    ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
-
-3. Klik op resource groep, het deel venster **overzicht** wordt weer gegeven.
-4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_`<VMName>`_`<number>`.
-
-    ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
-
-5. Klik op **verwijderen** om de verzameling met herstel punten op te schonen.
-6. Voer de back-upbewerking opnieuw uit.
+Nadat u het slot hebt verwijderd, activeert u een on-demand back-up. Deze actie zorgt ervoor dat de herstelpunten automatisch worden opgeschoond. Verwacht dat deze on-demand bewerking de eerste keer mislukt; het zorgt echter voor automatische opruiming in plaats van handmatig verwijderen van herstelpunten. Na het opruimen moet uw volgende geplande back-up slagen.
 
 > [!NOTE]
- >Als de resource (RP-verzameling) een groot aantal herstel punten heeft, kan de time-out van de-portal worden verwijderd en mislukt. Dit is een bekend CRP-probleem, waarbij alle herstel punten niet worden verwijderd binnen de vastgestelde tijd en er een time-out optreedt voor de bewerking. de verwijderings bewerking slaagt echter normaal gesp roken na 2 of 3 nieuwe pogingen.
+> Automatisch opruimen gebeurt na enkele uren van het activeren van de on-demand back-up. Als uw geplande back-up nog steeds mislukt, probeert u de verzameling herstelpunten handmatig te verwijderen met behulp van de [hier](#clean-up-restore-point-collection-from-azure-portal)vermelde stappen.
+
+#### <a name="clean-up-restore-point-collection-from-azure-portal-br"></a><a name="clean-up-restore-point-collection-from-azure-portal"></a>Herstelpuntverzameling ophalen vanuit Azure-portal <br>
+
+Als u de verzameling herstelpunten handmatig wilt wissen, die niet is gewist vanwege het slot op de resourcegroep, probeert u de volgende stappen:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Klik **in** het menu Hub op **Alle bronnen**,`<Geo>`selecteer`<number>` de groep Resource met de volgende indeling AzureBackupRG_ _ waar uw vm zich bevindt.
+
+    ![Vergrendeling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
+
+3. Klik op Resourcegroep, het deelvenster **Overzicht** wordt weergegeven.
+4. Selecteer de optie **Verborgen typen weergeven** om alle verborgen bronnen weer te geven. Selecteer de herstelpuntverzamelingen met`<VMName>``<number>`de volgende indeling AzureBackupRG_ _ .
+
+    ![Vergrendeling verwijderen](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+
+5. Klik **op Verwijderen** om de verzameling herstelpunten op te schonen.
+6. Probeer de back-upbewerking opnieuw.
+
+> [!NOTE]
+ >Als de resource (RP-verzameling) een groot aantal herstelpunten heeft, kan het verwijderen van deze resources uit de portal een time-out hebben en mislukken. Dit is een bekend CRP-probleem, waarbij alle herstelpunten niet worden verwijderd in de afgesproken tijd en de werking een time-out heeft; nochtans slaagt de schrapbewerking gewoonlijk na 2 of 3 opnieuwpogingen.

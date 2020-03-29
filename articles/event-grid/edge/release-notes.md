@@ -1,6 +1,6 @@
 ---
-title: Release opmerkingen-Azure Event Grid IoT Edge | Microsoft Docs
-description: Opmerkingen over IoT Edge-release Azure Event Grid
+title: Releasenotes - IoT Edge voor Azure Event Grid | Microsoft Documenten
+description: Azure-gebeurtenisraster op Notities voor het vrijgeven van IoT Edge
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,42 +9,42 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76849706"
 ---
-# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Release opmerkingen: Azure Event Grid op IoT Edge
+# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Releasenotes: Azure Event Grid op IoT Edge
 
 ## <a name="100-preview1"></a>1.0.0-preview1
 
-De eerste versie van Azure Event Grid op IoT Edge. Opgenomen functies:
+Eerste release van Azure Event Grid op IoT Edge. Inbegrepen functies:
 
-* Onderwerp maken
-* Gebeurtenis abonnement maken
+* Onderwerp creatie
+* Het maken van gebeurtenisabonnementen
 * Geavanceerde filters
 * Batchverwerking van uitvoer
 * Beleid opnieuw proberen
-* Module publicatie module
-* Publiceren op webhook als doel
-* Publiceren naar IoT Edge hub als doel
-* Publiceren naar Azure Event Grid Cloud service als doel
-* Permanente status voor meta gegevens
-* Integratie van Blob Storage-module
+* Module naar module publicatie
+* Publiceren naar WebHook als bestemming
+* Publiceren naar IoT Edge Hub als bestemming
+* Publiceren naar Azure Event Grid-cloudservice als bestemming
+* Persistentstate for metadata Persisted state for metadata Persisted state for metadata Persisted state
+* Integratie van blob-opslagmodule
 
-Tags: `1.0.0-preview1`
+Tags:`1.0.0-preview1`
 
 ## <a name="100-preview2"></a>1.0.0-preview2
 
-Preview 2 van Azure Event Grid op IoT Edge toegevoegd:
+Voorbeeld van 2 van Azure Event Grid op IoT Edge toegevoegd:
 
-* Configureer bare persistentie gebeurtenissen op schijf
-* Metrische gegevens over het onderwerp
-* Metrische gegevens van gebeurtenis abonnementen
-* Publiceren naar Event Hubs als doel
-* Publiceren naar Service Bus wachtrijen als bestemming
-* Publiceren naar Service Bus-onderwerpen als doel
-* Publiceren naar opslag wachtrijen als doel
+* Configureerbare voorthoudende gebeurtenissen op schijf
+* Onderwerpstatistieken
+* Statistieken voor evenementabonnementen
+* Publiceren naar gebeurtenishubs als bestemming
+* Publiceren naar servicebuswachtrijen als bestemming
+* Publiceren naar servicebusonderwerpen als bestemming
+* Publiceren naar opslagwachtrijen als bestemming
 
-Tags: `1.0.0-preview2`, `1.0``latest`
+Tags: `1.0.0-preview2` `1.0`, ,`latest`

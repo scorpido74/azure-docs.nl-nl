@@ -1,19 +1,19 @@
 ---
-title: Azure-Service Fabric-opslagplaats referenties voor container configureren
-description: Opslagplaats referenties configureren voor het downloaden van installatie kopieën uit het container register
+title: Azure Service Fabric - Referenties voor containeropslagplaatsen configureren
+description: Repository-referenties configureren om afbeeldingen uit containerregister te downloaden
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934979"
 ---
-# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Opslagplaats referenties voor uw toepassing configureren om container installatie kopieën te downloaden
+# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Repository-referenties configureren voor uw toepassing om containerafbeeldingen te downloaden
 
-Configureer de verificatie van het container register door `RepositoryCredentials` toe te voegen aan de sectie `ContainerHostPolicies` van het toepassings manifest. Voeg het account en het wacht woord voor uw container register toe (*myregistry.azurecr.io* in het onderstaande voor beeld), zodat de service de container installatie kopie kan downloaden uit de opslag plaats.
+Configureer verificatie van `RepositoryCredentials` het `ContainerHostPolicies` containerregister door toe te voegen aan het gedeelte van het toepassingsmanifest. Voeg het account en wachtwoord voor uw containerregister toe *(myregistry.azurecr.io* in het onderstaande voorbeeld), waarmee de service de containerafbeelding uit de opslagplaats kan downloaden.
 
 ```xml
 <ServiceManifestImport>
@@ -28,14 +28,14 @@ Configureer de verificatie van het container register door `RepositoryCredential
 </ServiceManifestImport>
 ```
 
-Het is raadzaam om het wacht woord voor de opslag plaats te versleutelen met behulp van een coderings certificaat dat is geïmplementeerd op alle knoop punten van het cluster. Wanneer Service Fabric het servicepakket naar het cluster implementeert, wordt het versleutelingscertificaat gebruikt om de versleutelde tekst te ontsleutelen. De cmdlet Invoke-ServiceFabricEncryptText wordt gebruikt om de gecodeerde tekst voor het wachtwoord te maken, die wordt toegevoegd aan het bestand ApplicationManifest.xml.
-Zie [geheim beheer](service-fabric-application-secret-management.md) voor meer informatie over certificaten en de semantiek van versleuteling.
+Het wordt aanbevolen om het archiefwachtwoord te versleutelen met behulp van een certificaat voor vercijfering dat is geïmplementeerd op alle knooppunten van het cluster. Wanneer Service Fabric het servicepakket naar het cluster implementeert, wordt het versleutelingscertificaat gebruikt om de versleutelde tekst te ontsleutelen. De cmdlet Invoke-ServiceFabricEncryptText wordt gebruikt om de gecodeerde tekst voor het wachtwoord te maken, die wordt toegevoegd aan het bestand ApplicationManifest.xml.
+Zie [Geheim beheer](service-fabric-application-secret-management.md) voor meer informatie over certificaten en versleutelingssemantiek.
 
-## <a name="configure-cluster-wide-credentials"></a>Referenties voor het hele cluster configureren
+## <a name="configure-cluster-wide-credentials"></a>Clusterbrede referenties configureren
 
-Met Service Fabric kunt u referenties voor het hele cluster configureren die als standaard referenties voor de opslag plaats kunnen worden gebruikt door toepassingen.
+Met Service Fabric u clusterbrede referenties configureren die kunnen worden gebruikt als standaardreferenties voor opslagplaatsen door toepassingen.
 
-Deze functie kan worden ingeschakeld of uitgeschakeld door het `UseDefaultRepositoryCredentials` kenmerk toe te voegen aan `ContainerHostPolicies` in ApplicationManifest. XML met een `true` of `false` waarde.
+Deze functie kan worden ingeschakeld of `UseDefaultRepositoryCredentials` uitgeschakeld `ContainerHostPolicies` door het kenmerk toe `true` `false` te voegen aan in ApplicationManifest.xml met een of waarde.
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +49,14 @@ Deze functie kan worden ingeschakeld of uitgeschakeld door het `UseDefaultReposi
 </ServiceManifestImport>
 ```
 
-Service Fabric maakt vervolgens gebruik van de standaard referenties voor de opslag plaats die kunnen worden opgegeven in de ClusterManifest onder de sectie `Hosting`.  Als `UseDefaultRepositoryCredentials` `true`is, leest Service Fabric de volgende waarden uit de ClusterManifest:
+Servicefabric gebruikt vervolgens de standaardrepository-referenties die kunnen worden `Hosting` opgegeven in het clustermanifest onder de sectie.  Als `UseDefaultRepositoryCredentials` `true`dat zo is, leest Service Fabric de volgende waarden uit het Clustermanifest:
 
-* DefaultContainerRepositoryAccountName (teken reeks)
-* DefaultContainerRepositoryPassword (teken reeks)
-* IsDefaultContainerRepositoryPasswordEncrypted (BOOL)
-* DefaultContainerRepositoryPasswordType (teken reeks)
+* StandaardContainerRepositoryAccountName (tekenreeks)
+* DefaultContainerRepositoryPassword (tekenreeks)
+* IsDefaultContainerRepositoryPasswordEncrypted (bool)
+* DefaultContainerRepositoryPasswordType (tekenreeks)
 
-Hier volgt een voor beeld van wat kan worden toegevoegd in de sectie `Hosting` in het bestand ClusterManifestTemplate. json. U kunt de sectie `Hosting` toevoegen tijdens het maken van een cluster of later in een configuratie-upgrade. Zie [azure service Fabric-cluster instellingen wijzigen](service-fabric-cluster-fabric-settings.md) en [Azure service Fabric-toepassings geheimen beheren](service-fabric-application-secret-management.md) voor meer informatie
+Hier vindt u een voorbeeld van `Hosting` wat er in de sectie in het bestand ClusterManifestTemplate.json kan worden toegevoegd. De `Hosting` sectie kan worden toegevoegd bij het maken van het cluster of later in een configuratie-upgrade. Zie [Clusterinstellingen voor Azure Service Fabric wijzigen](service-fabric-cluster-fabric-settings.md) en azure [servicefabric-toepassingsgeheimen beheren](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -89,19 +89,19 @@ Hier volgt een voor beeld van wat kan worden toegevoegd in de sectie `Hosting` i
 ]
 ```
 
-## <a name="use-tokens-as-registry-credentials"></a>Tokens gebruiken als register referenties
+## <a name="use-tokens-as-registry-credentials"></a>Tokens gebruiken als registerreferenties
 
-Service Fabric ondersteunt het gebruik van tokens als referenties voor het downloaden van installatie kopieën voor uw containers.  Deze functie maakt gebruik van de *beheerde identiteit* van de onderliggende schaalset voor virtuele machines om te verifiëren bij het REGI ster, waardoor het niet nodig is om gebruikers referenties te beheren.  Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.  Als u deze functie wilt gebruiken, moeten de volgende stappen worden uitgevoerd:
+Service Fabric ondersteunt het gebruik van tokens als referenties om afbeeldingen voor uw containers te downloaden.  Deze functie maakt gebruik van de *beheerde identiteit* van de onderliggende virtuele machineschaal die is ingesteld om te verifiëren in het register, waardoor gebruikersreferenties niet meer hoeven te worden beheerd.  Zie [Beheerde identiteiten voor Azure-bronnen](../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.  Het gebruik van deze functie vereist de volgende stappen:
 
-1. Zorg ervoor dat door het *systeem toegewezen beheerde identiteit* is ingeschakeld voor de virtuele machine.
+1. Controleer of *System Assigned Managed Identity* is ingeschakeld voor de VM.
 
-    ![Azure Portal: identiteits optie voor schaal sets voor virtuele machines maken](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Azure-portal: de optie voor het schalen van virtuele machines maken](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2. Ken machtigingen toe aan de schaalset voor virtuele machines voor het ophalen/lezen van installatie kopieën uit het REGI ster. Voeg op de Blade Access Control (IAM) van uw Azure Container Registry in de Azure Portal een *roltoewijzing* voor uw virtuele machine toe:
+2. Geef machtigingen toe aan de virtuele machineschaal die is ingesteld om afbeeldingen uit het register te trekken/lezen. Voeg vanuit het IAM-blad (Access Control) van uw Azure Container Registry toe in de Azure-portal een *roltoewijzing* voor uw virtuele machine:
 
-    ![VM-Principal toevoegen aan ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
+    ![VM-principal toevoegen aan ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Wijzig vervolgens het toepassings manifest. Voeg in de sectie `ContainerHostPolicies` het kenmerk `‘UseTokenAuthenticationCredentials=”true”`toe.
+3. Wijzig vervolgens het toepassingsmanifest. Voeg `ContainerHostPolicies` in de sectie `‘UseTokenAuthenticationCredentials=”true”`het kenmerk toe .
 
     ```xml
       <ServiceManifestImport>
@@ -116,8 +116,8 @@ Service Fabric ondersteunt het gebruik van tokens als referenties voor het downl
     ```
 
     > [!NOTE]
-    > De vlag `UseDefaultRepositoryCredentials` ingesteld op true wanneer `UseTokenAuthenticationCredentials` True is, veroorzaakt een fout tijdens de implementatie.
+    > De `UseDefaultRepositoryCredentials` vlag ingesteld `UseTokenAuthenticationCredentials` op true terwijl waar is, veroorzaakt een fout tijdens de implementatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie meer informatie over [container Registry-verificatie](../container-registry/container-registry-authentication.md).
+* Meer informatie over [verificatie van het containerregister](../container-registry/container-registry-authentication.md).

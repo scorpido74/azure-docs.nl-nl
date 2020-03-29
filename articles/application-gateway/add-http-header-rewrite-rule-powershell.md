@@ -1,6 +1,6 @@
 ---
-title: Herschrijf de HTTP-headers in Azure Application Gateway
-description: Dit artikel bevat informatie over het herschrijven van HTTP-headers in Azure Application Gateway met behulp van Azure PowerShell
+title: HTTP-headers opnieuw schrijven in Azure Application Gateway
+description: In dit artikel vindt u informatie over het herschrijven van HTTP-headers in Azure Application Gateway met Azure PowerShell
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -8,50 +8,50 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
 ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64947193"
 ---
-# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Herschrijf de HTTP-aanvraag- en reactieheaders met Azure Application Gateway - Azure PowerShell
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP-aanvraag- en antwoordkoppen opnieuw schrijven met Azure Application Gateway - Azure PowerShell
 
-In dit artikel wordt beschreven hoe u Azure PowerShell gebruiken voor het configureren van een [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) exemplaar te herschrijven van de HTTP-headers in aanvragen en antwoorden.
+In dit artikel wordt beschreven hoe u Azure PowerShell gebruiken om een [V2 SKU-instantie van de Toepassingsgateway](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) te configureren om de HTTP-headers in aanvragen en antwoorden te herschrijven.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-- U moet Azure PowerShell als de stappen in dit artikel lokaal wilt uitvoeren. U moet ook zijn Az moduleversie 1.0.0 of hoger is geïnstalleerd. Voer `Import-Module Az` en vervolgens `Get-Module Az` om te bepalen van de versie die u hebt geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
-- U moet een Application Gateway v2 SKU-exemplaar. Headers herschrijven wordt niet in de v1-SKU ondersteund. Als u de v2-SKU hebt, maakt u een [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) exemplaar voordat u begint.
+- U moet Azure PowerShell lokaal uitvoeren om de stappen in dit artikel uit te voeren. U moet ook Az-module versie 1.0.0 of hoger hebben geïnstalleerd. Voer `Import-Module Az` uit `Get-Module Az` en bepaal vervolgens de versie die u hebt geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+- U moet een Instantie Application Gateway v2 SKU hebben. Het herschrijven van kopteksten wordt niet ondersteund in de v1 SKU. Als u de v2 SKU niet hebt, maakt u een [Instantie Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) voordat u begint.
 
 ## <a name="create-required-objects"></a>Vereiste objecten maken
 
-Voor het configureren van HTTP-header herschrijven, moet u deze stappen hebt voltooid.
+Als u http-headerherschrijven wilt configureren, moet u deze stappen uitvoeren.
 
-1. Maak de objecten die vereist voor HTTP-header herschrijven zijn:
+1. Maak de objecten die nodig zijn voor het herschrijven van HTTP-koppen:
 
-   - **RequestHeaderConfiguration**: Gebruikt om op te geven velden in de aanvraagheader die u van plan bent om te schrijven en de nieuwe waarde voor de headers.
+   - **RequestHeaderConfiguration:** Wordt gebruikt om de velden van de aanvraagkoptekst op te geven die u wilt herschrijven en de nieuwe waarde voor de kopteksten.
 
-   - **ResponseHeaderConfiguration**: Hiermee geeft de antwoord-header-velden die u van plan bent om te schrijven en de nieuwe waarde voor de headers.
+   - **ResponseHeaderConfiguration:** wordt gebruikt om de antwoordkopvelden op te geven die u wilt herschrijven en de nieuwe waarde voor de kopteksten.
 
-   - **ActionSet**: Bevat de configuratie van de aanvraag- en reactieheaders die eerder zijn opgegeven.
+   - **ActionSet:** bevat de configuraties van de eerder opgegeven aanvraag- en antwoordkoppen.
 
-   - **Voorwaarde**: Een optionele configuratie. Herschrijven voorwaarden evalueren de inhoud van HTTP (S) aanvragen en antwoorden. De actie herschrijven treedt op als de HTTP (S)-aanvraag of antwoord komt overeen met de voorwaarde herschrijven.
+   - **Voorwaarde**: Een optionele configuratie. Voorwaarden herschrijven evalueert de inhoud van HTTP(S)-verzoeken en -antwoorden. De herschrijfactie vindt plaats als het HTTP(S)-verzoek of -antwoord overeenkomt met de herschrijfvoorwaarde.
 
-     Als u meer dan één voorwaarde aan een actie koppelen, wordt de actie optreedt, alleen wanneer alle voorwaarden wordt voldaan. De bewerking is met andere woorden, een logische AND-bewerking.
+     Als u meer dan één voorwaarde aan een actie koppelt, vindt de actie alleen plaats wanneer aan alle voorwaarden is voldaan. Met andere woorden, de bewerking is een logische EN operatie.
 
-   - **RewriteRule**: Bevat meerdere herschrijven actie / Herschrijf de voorwaarde combinaties.
+   - **HerschrijvenRegel:** Bevat meerdere herschrijfactie / herschrijven van conditiecombinaties.
 
-   - **RuleSequence**: Een optionele configuratie die helpt te bepalen in welke volgorde de regels schrijven uitvoeren. Deze configuratie is handig wanneer u meerdere herschrijvingsregels in een set herschrijven hebt. Eerste een herschrijvingsregel voor met een lagere waarde van de regel-reeks wordt gestart. Als u dezelfde regel reekswaarde aan twee herschrijvingsregels toewijzen, is de volgorde van de uitvoering van niet-deterministisch.
+   - **Regelvolgorde:** een optionele configuratie die helpt bij het bepalen van de volgorde waarin herschrijfregels worden uitgevoerd. Deze configuratie is handig wanneer u meerdere herschrijfregels in een herschrijfset hebt. Een herschrijfregel met een lagere regelvolgordewaarde wordt eerst uitgevoerd. Als u dezelfde regelvolgordewaarde toewijst aan twee herschrijfregels, is de uitvoeringsvolgorde niet-deterministisch.
 
-     Als u niet expliciet de RuleSequence opgeeft, wordt een standaardwaarde van 100 ingesteld.
+     Als u de regelvolgorde niet expliciet opgeeft, wordt een standaardwaarde van 100 ingesteld.
 
-   - **RewriteRuleSet**: Bevat meerdere herschrijvingsregels dat gekoppeld aan een regel voor het doorsturen van aanvragen is.
+   - **RewriteRuleSet**: Bevat meerdere herschrijfregels die worden gekoppeld aan een regel voor het routeren van aanvragen.
 
-2. De RewriteRuleSet koppelen aan een regel voor doorsturen. De configuratie opnieuw schrijven is gekoppeld aan de bron-listener via de regel voor doorsturen. Wanneer u een regel voor het doorsturen van basic gebruikt, wordt de configuratie van de herschrijven header is gekoppeld aan de listener van een bron en is een algemene header herschrijven. Wanneer u een pad gebaseerde routering regel gebruikt, wordt de configuratie van de koptekst opnieuw schrijven is gedefinieerd in de URL-path-map. In dat geval van de toepassing alleen op het padgebied van het specifieke van een site.
+2. Voeg de rewriteRuleSet toe aan een routeringsregel. De herschrijfconfiguratie is via de routeringsregel gekoppeld aan de bronlistener. Wanneer u een basisrouteringsregel gebruikt, wordt de configuratie van de koptekst herschrijven gekoppeld aan een bronlistener en is een globale koptekst herschrijven. Wanneer u een routeringsregel op basis van paden gebruikt, wordt de configuratie van de koptekst herschrijven gedefinieerd op de URL-padkaart. In dat geval is het alleen van toepassing op het specifieke padgebied van een site.
 
-U kunt meerdere sets van HTTP-header herschrijven maken en toepassen van elke opnieuw ingesteld op meerdere listeners. Maar u kunt alleen een is ingesteld op een specifieke listener opnieuw toepassen.
+U meerdere HTTP-koptekstsets opnieuw schrijven en elke herschrijfset toepassen op meerdere listeners. U echter slechts één herschrijvenset toepassen op een specifieke listener.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -60,9 +60,9 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Geef de HTTP-header herschrijven regelconfiguratie
+## <a name="specify-the-http-header-rewrite-rule-configuration"></a>De configuratie van de HTTP-koptekst opnieuw schrijven
 
-In dit voorbeeld wijzigen we een Omleidings-URL door de location-header in het HTTP-antwoord voor het herschrijven wanneer de location-header een verwijzing naar azurewebsites.net bevat. Om dit te doen, gaan we een voorwaarde om te beoordelen of de location-header in het antwoord azurewebsites.net bevat toevoegen. We gebruiken het patroon `(https?):\/\/.*azurewebsites\.net(.*)$`. En we gebruiken `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als waarde van de header. Deze waarde wordt vervangen door *azurewebsites.net* met *contoso.com* in de location-header.
+In dit voorbeeld wijzigen we een omleidings-URL door de locatiekoptekst in het HTTP-antwoord te herschrijven wanneer de locatiekopeen verwijzing naar azurewebsites.net bevat. Hiervoor voegen we een voorwaarde toe om te evalueren of de locatiekoptekst in het antwoord azurewebsites.net bevat. We gebruiken het `(https?):\/\/.*azurewebsites\.net(.*)$`patroon. En we gebruiken `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als de header waarde. Deze waarde vervangt *azurewebsites.net* door *contoso.com* in de locatiekoptekst.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
@@ -72,19 +72,19 @@ $rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionS
 $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name LocationHeaderRewrite -RewriteRule $rewriteRule
 ```
 
-## <a name="retrieve-the-configuration-of-your-application-gateway"></a>Ophalen van de configuratie van uw application gateway
+## <a name="retrieve-the-configuration-of-your-application-gateway"></a>De configuratie van de toepassingsgateway ophalen
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
-## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>De configuratie van de regel voor het doorsturen van aanvraag ophalen
+## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>De configuratie van de regel voor het routeren van aanvragen ophalen
 
 ```azurepowershell
 $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name rule1 -ApplicationGateway $appgw
 ```
 
-## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Bijwerken van de application gateway met de configuratie voor het herschrijven van HTTP-headers
+## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>De toepassingsgateway bijwerken met de configuratie voor het herschrijven van HTTP-headers
 
 ```azurepowershell
 Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name LocationHeaderRewrite -RewriteRule $rewriteRuleSet.RewriteRules
@@ -92,7 +92,7 @@ Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="delete-a-rewrite-rule"></a>Een herschrijvingsregel voor verwijderen
+## <a name="delete-a-rewrite-rule"></a>Een herschrijfregel verwijderen
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
@@ -104,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het instellen van enkele veelvoorkomende use cases, [algemene header scenario's herschrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Zie [veelvoorkomende scenario's voor het herschrijven van kopteksten voor](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)meer informatie over het instellen van een aantal veelvoorkomende use cases.

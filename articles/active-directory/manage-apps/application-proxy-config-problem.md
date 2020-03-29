@@ -1,6 +1,6 @@
 ---
-title: Probleem bij het maken van een toepassing toepassingsproxy | Microsoft Docs
-description: Het oplossen van problemen met het maken van de toepassingsproxy-toepassingen in de Azure AD-beheerportal
+title: Probleem met het maken van een application proxy-toepassing | Microsoft Documenten
+description: Problemen oplossen bij het maken van toepassingsproxytoepassingen in de Azure AD-beheerportal
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,39 +17,39 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 104b98cba0948ec5d0896877e54eab1e7cd4049f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825808"
 ---
-# <a name="problem-creating-an-application-proxy-application"></a>Probleem bij het maken van een toepassing Application Proxy 
+# <a name="problem-creating-an-application-proxy-application"></a>Probleem met het maken van een toepassingsproxytoepassing 
 
-Hieronder vindt u enkele van de algemene problemen gezichten van mensen bij het maken van een nieuwe application proxy-toepassing.
+Hieronder staan enkele van de veelvoorkomende problemen waarmee mensen worden geconfronteerd bij het maken van een nieuwe applicatieproxytoepassing.
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten 
 
-Zie voor meer informatie over het maken van een Application Proxy-toepassing via de beheerportal, [toepassingen publiceren die gebruikmaken van Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md).
+Zie [Toepassingen publiceren met Azure AD Application Proxy](application-proxy-add-on-premises-application.md)voor meer informatie over het maken van een application proxy-toepassing via de beheerportal.
 
-Als u de stappen in dit document volgen en zijn er een fout optreedt bij het maken van de toepassing, Zie de foutdetails voor meer informatie en suggesties voor het oplossen van de toepassing. De meeste foutberichten bevatten een voorgestelde oplossing. 
+Als u de stappen in dat document volgt en er een fout optreedt bij het maken van de toepassing, raadpleegt u de foutgegevens voor informatie en suggesties voor het oplossen van de toepassing. De meeste foutmeldingen bevatten een voorgestelde oplossing. 
 
-## <a name="specific-things-to-check"></a>Bepaalde dingen om te controleren
+## <a name="specific-things-to-check"></a>Specifieke dingen om te controleren
 
-Algemene om fouten te voorkomen, controleert u of:
+Controleer het als volgt om veelvoorkomende fouten te voorkomen:
 
--   U bent een beheerder met de machtiging voor het maken van een toepassing Application Proxy
+-   U bent een beheerder met toestemming om een application proxy-toepassing te maken
 
 -   De interne URL is uniek
 
 -   De externe URL is uniek
 
--   De URL's met http of https beginnen en eindigen met een '/'
+-   De URL's beginnen met http of https en eindigen met een "/"
 
--   De URL moet de naam van een domein en niet een IP-adres
+-   De URL moet een domeinnaam zijn en geen IP-adres
 
-Het foutbericht moet worden weergegeven in de rechterbovenhoek bij het maken van de toepassing. U kunt ook het meldingspictogram om te zien van de foutberichten selecteren.
+Het foutbericht moet in de rechterbovenhoek worden weergegeven wanneer u de toepassing maakt. U ook het meldingspictogram selecteren om de foutmeldingen te zien.
 
-   ![Melding prompt](./media/application-proxy-config-problem/error-message.png)
+   ![Meldingsprompt](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Toepassingsproxy inschakelen in Azure portal](application-proxy-add-on-premises-application.md)
+[Toepassingsproxy inschakelen in de Azure-portal](application-proxy-add-on-premises-application.md)

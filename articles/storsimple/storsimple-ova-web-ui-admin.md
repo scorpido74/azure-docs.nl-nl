@@ -1,6 +1,6 @@
 ---
-title: Beheer van StorSimple Virtual array Web UI | Microsoft Docs
-description: Hierin wordt beschreven hoe u basis taken voor het beheer van apparaten uitvoert via de webgebruikersinterface van de StorSimple-virtuele matrix.
+title: StorSimple Virtual Array web gebruikersinterfacebeheer | Microsoft Documenten
+description: Beschrijft hoe u basistaken voor apparaatbeheer uitvoert via de webgebruikersinterface van StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254727"
 ---
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>De Web-UI gebruiken voor het beheren van uw virtuele StorSimple-matrix
-![proces stroom instellen](./media/storsimple-ova-web-ui-admin/manage4.png)
+# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Gebruik de webgebruikersinterface om uw StorSimple Virtual Array te beheren
+![installatieprocesstroom](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## <a name="overview"></a>Overzicht
-De zelf studies in dit artikel zijn van toepassing op de Microsoft Azure StorSimple virtuele matrix (ook wel het StorSimple on-premises virtuele apparaat genoemd) met de versie van de algemene Beschik baarheid (GA) van maart 2016. In dit artikel worden enkele van de complexe werk stromen en beheer taken beschreven die kunnen worden uitgevoerd op de virtuele StorSimple-matrix. U kunt de virtuele StorSimple-matrix beheren met behulp van de gebruikers interface van de StorSimple Manager-service (aangeduid als de portal-gebruikers interface) en de lokale web-UI voor het apparaat. Dit artikel is gericht op de taken die u kunt uitvoeren met behulp van de Web-UI.
+De zelfstudies in dit artikel zijn van toepassing op de Microsoft Azure StorSimple Virtual Array (ook bekend als het storSimple on-premises virtuele apparaat) met de release algemene beschikbaarheid (GA) van maart 2016. In dit artikel worden enkele complexe werkstromen en beheertaken beschreven die kunnen worden uitgevoerd op de Virtuele Array van StorSimple. U de StorSimple Virtual Array beheren met de Gebruikersinterface van de StorSimple Manager-service (aangeduid als de gebruikersinterface van de portal) en de lokale web-gebruikersinterface voor het apparaat. In dit artikel wordt zich gericht op de taken die u uitvoeren met de webgebruikersinterface.
 
 Dit artikel bevat de volgende zelfstudies:
 
-* De versleutelings sleutel voor service gegevens ophalen
-* Problemen met de installatie van de Web-UI oplossen
-* Een logboek pakket genereren
+* De versleutelingssleutel voor servicegegevens
+* Problemen met installatiefouten in de web-gebruikersinterface oplossen
+* Een logboekpakket genereren
 * Apparaat uitschakelen of opnieuw opstarten
 
-## <a name="get-the-service-data-encryption-key"></a>De versleutelings sleutel voor service gegevens ophalen
-Er wordt een versleutelings sleutel voor service gegevens gegenereerd wanneer u uw eerste apparaat registreert bij de StorSimple Manager-service. Deze sleutel is vervolgens vereist bij de service registratie sleutel om extra apparaten te registreren bij de StorSimple Manager-service.
+## <a name="get-the-service-data-encryption-key"></a>De versleutelingssleutel voor servicegegevens
+Er wordt een versleutelingssleutel voor servicegegevens gegenereerd wanneer u uw eerste apparaat registreert bij de StorSimple Manager-service. Deze sleutel is dan vereist met de serviceregistratiesleutel om extra apparaten te registreren bij de StorSimple Manager-service.
 
-Als u uw versleutelings sleutel voor service gegevens verkeerd hebt gehaald en deze moet ophalen, voert u de volgende stappen uit in de lokale web-UI van het apparaat dat is geregistreerd bij uw service.
+Als u de versleutelingssleutel voor servicegegevens kwijt bent en deze moet ophalen, voert u de volgende stappen uit in de lokale webgebruikersinterface van het apparaat dat bij uw service is geregistreerd.
 
-#### <a name="to-get-the-service-data-encryption-key"></a>De versleutelings sleutel voor service gegevens ophalen
-1. Verbinding maken met de lokale web-UI. Ga naar **configuratie** - > **Cloud instellingen**.
-2. Klik onder aan de pagina op **versleutelings sleutel voor service gegevens ophalen**. Er wordt een sleutel weer gegeven. Kopieer deze sleutel en sla deze op.
+#### <a name="to-get-the-service-data-encryption-key"></a>De versleutelingssleutel voor servicegegevens
+1. Maak verbinding met de lokale webgebruikersinterface. Ga naar > **Configuratiecloudinstellingen**. **Configuration**
+2. Klik onder aan de pagina op **Versleutelingssleutel servicegegevens opvragen.** Er verschijnt een sleutel. Kopieer en bewaar deze sleutel.
    
-    ![versleutelings sleutel voor service gegevens ophalen 1](./media/storsimple-ova-web-ui-admin/image27.png)
+    ![versleutelingssleutel voor servicegegevens krijgen 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
-## <a name="troubleshoot-web-ui-setup-errors"></a>Problemen met de installatie van de Web-UI oplossen
-In sommige gevallen wanneer u het apparaat configureert via de lokale web-UI, worden er mogelijk fouten optreden. Als u dergelijke fouten wilt vaststellen en oplossen, kunt u de diagnostische tests uitvoeren.
+## <a name="troubleshoot-web-ui-setup-errors"></a>Problemen met installatiefouten in de web-gebruikersinterface oplossen
+In sommige gevallen wanneer u het apparaat configureert via de lokale webgebruikersinterface, u fouten tegenkomen. Als u dergelijke fouten wilt diagnosticeren en oplossen, u de diagnostische tests uitvoeren.
 
 #### <a name="to-run-the-diagnostic-tests"></a>De diagnostische tests uitvoeren
-1. Ga in de lokale web-UI naar **problemen oplossen** > **diagnostische tests**.
+1. Ga in de lokale webgebruikersinterface naar**Diagnostische tests** **oplossen** > .
    
-    ![Diagnostische gegevens uitvoeren 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. Klik onder aan de pagina op **diagnostische tests uitvoeren**. Hiermee worden tests gestart om mogelijke problemen met uw netwerk, apparaat, webproxy, tijd of Cloud instellingen te diagnosticeren. Er wordt een melding weer gegeven dat er tests worden uitgevoerd op het apparaat.
-3. Nadat de tests zijn voltooid, worden de resultaten weer gegeven. In het volgende voor beeld worden de resultaten van diagnostische tests weer gegeven. Houd er rekening mee dat de webproxy-instellingen niet op dit apparaat zijn geconfigureerd, waardoor de webproxy test niet is uitgevoerd. Alle andere tests voor netwerk instellingen, DNS-server en tijd instellingen zijn geslaagd.
+    ![diagnostische gegevens uitvoeren 1](./media/storsimple-ova-web-ui-admin/image29.png)
+2. Klik onder aan de pagina op **Diagnostische tests uitvoeren**. Hiermee worden tests gestart om eventuele problemen met uw netwerk, apparaat, webproxy, tijd of cloudinstellingen te diagnosticeren. U krijgt een melding dat het apparaat tests uitvoert.
+3. Nadat de tests zijn voltooid, worden de resultaten weergegeven. In het volgende voorbeeld worden de resultaten van diagnostische tests weergegeven. Houd er rekening mee dat de webproxy-instellingen niet zijn geconfigureerd op dit apparaat en dat de webproxytest daarom niet is uitgevoerd. Alle andere tests voor netwerkinstellingen, DNS-server en tijdinstellingen zijn geslaagd.
    
-    ![Diagnostische gegevens uitvoeren 2](./media/storsimple-ova-web-ui-admin/image30.png)
+    ![diagnostische gegevens uitvoeren 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
-## <a name="generate-a-log-package"></a>Een logboek pakket genereren
-Een logboek pakket bestaat uit alle relevante logboeken die Microsoft Ondersteuning kunnen helpen bij het oplossen van problemen met apparaten. In deze release kan een logboek pakket worden gegenereerd via de lokale webgebruikersinterface.
+## <a name="generate-a-log-package"></a>Een logboekpakket genereren
+Een logboekpakket bestaat uit alle relevante logboeken die Microsoft Support kunnen helpen bij het oplossen van apparaatproblemen. In deze release kan een logpakket worden gegenereerd via de lokale web-gebruikersinterface.
 
-#### <a name="to-generate-the-log-package"></a>Het logboek pakket genereren
-1. Ga in de lokale web-UI naar **problemen oplossen** > **systeem logboeken**.
+#### <a name="to-generate-the-log-package"></a>Het logboekpakket genereren
+1. Ga in de lokale webgebruikersinterface naar **Logboeken van probleemoplossingssysteem** > **System logs**.
    
-    ![logboek pakket 1 genereren](./media/storsimple-ova-web-ui-admin/image31.png)
-2. Klik onder aan de pagina op **logboek pakket maken**. Er wordt een pakket van de systeem logboeken gemaakt. Dit kan enkele minuten duren.
+    ![logboekpakket genereren 1](./media/storsimple-ova-web-ui-admin/image31.png)
+2. Klik onder aan de pagina op **Logboekpakket maken**. Er wordt een pakket van de systeemlogboeken gemaakt. Dit duurt een paar minuten.
    
-    ![logboek pakket 2 genereren](./media/storsimple-ova-web-ui-admin/image32.png)
+    ![logboekpakket genereren 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    U krijgt een melding wanneer het pakket is gemaakt en de pagina wordt bijgewerkt om de datum en tijd op te geven waarop het pakket is gemaakt.
+    U wordt hiervan op de hoogte gesteld nadat het pakket is gemaakt en de pagina wordt bijgewerkt om de tijd en datum aan te geven waarop het pakket is gemaakt.
    
-    ![logboek pakket 3 genereren](./media/storsimple-ova-web-ui-admin/image33.png)
-3. Klik op **logboek pakket downloaden**. Er wordt een gezipt pakket gedownload op uw systeem.
+    ![logboekpakket genereren 3](./media/storsimple-ova-web-ui-admin/image33.png)
+3. Klik **op Logboekpakket downloaden**. Een zip-pakket zal worden gedownload op uw systeem.
    
-    ![logboek pakket 4 genereren](./media/storsimple-ova-web-ui-admin/image34.png)
-4. U kunt het gedownloade logboek pakket uitpakken en de logboek bestanden van het systeem weer geven.
+    ![logboekpakket genereren 4](./media/storsimple-ova-web-ui-admin/image34.png)
+4. U het gedownloade logboekpakket uitpakken en de systeemlogboekbestanden bekijken.
 
-## <a name="shut-down-and-restart-your-device"></a>Sluit het apparaat af en start het opnieuw op
-U kunt het virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. U kunt het beste de volumes of shares offline halen op de host en vervolgens het apparaat. Hierdoor is de kans op gegevens beschadiging beperkt. 
+## <a name="shut-down-and-restart-your-device"></a>Uw apparaat afsluiten en opnieuw opstarten
+U uw virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lokale web-gebruikersinterface. We raden u aan voordat u opnieuw wordt opgestart, de volumes of aandelen offline te halen op de host en vervolgens op het apparaat. Dit minimaliseert de kans op gegevensbeschadiging. 
 
-#### <a name="to-shut-down-your-virtual-device"></a>Het virtuele apparaat afsluiten
-1. Ga in de lokale web-UI naar **onderhoud** > **energie-instellingen**.
+#### <a name="to-shut-down-your-virtual-device"></a>Uw virtuele apparaat uitschakelen
+1. Ga in de lokale webgebruikersinterface naar De instellingen **voor onderhoudskracht** > **Power settings**.
 2. Klik onder aan de pagina op **Afsluiten**.
    
     ![apparaat afsluiten 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Er wordt een waarschuwing weer gegeven waarin wordt vermeld dat het apparaat wordt onderbroken door een stop bewerking, wat resulteert in een uitval tijd. Klik op het vinkje ![vinkje](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Er verschijnt een waarschuwing waarin staat dat een uitschakeling van het apparaat elke IO die aan de gang was zal onderbreken, wat resulteert in een downtime. Klik op het vinkje ![vinkje](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![waarschuwing voor afsluiten van apparaat](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![waarschuwing voor het afsluiten van het apparaat](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Er wordt een melding weer gegeven dat het afsluiten is gestart.
+    U krijgt een melding dat de afsluiting is gestart.
    
-    ![afsluiten van apparaat gestart](./media/storsimple-ova-web-ui-admin/image38.png)
+    ![apparaatuitschakeling gestart](./media/storsimple-ova-web-ui-admin/image38.png)
    
-    Het apparaat wordt nu afgesloten. Als u uw apparaat wilt starten, moet u dit doen via Hyper-V-beheer.
+    Het apparaat wordt nu afgesloten. Als u uw apparaat wilt starten, moet u dat doen via de Hyper-V Manager.
 
-#### <a name="to-restart-your-virtual-device"></a>Het virtuele apparaat opnieuw opstarten
-1. Ga in de lokale web-UI naar **onderhoud** > **energie-instellingen**.
-2. Klik onder aan de pagina op **opnieuw opstarten**.
+#### <a name="to-restart-your-virtual-device"></a>Uw virtuele apparaat opnieuw opstarten
+1. Ga in de lokale webgebruikersinterface naar De instellingen **voor onderhoudskracht** > **Power settings**.
+2. Klik onder aan de pagina op **Opnieuw starten**.
    
     ![apparaat opnieuw opstarten](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Er wordt een waarschuwing weer gegeven met de mede deling dat het apparaat opnieuw moet worden opgestart, waardoor alle IOss worden onderbroken, wat leidt tot uitval tijd. Klik op het vinkje ![vinkje](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Er verschijnt een waarschuwing waarin staat dat het opnieuw opstarten van het apparaat alle IOs die aan de gang waren zal onderbreken, wat resulteert in een downtime. Klik op het vinkje ![vinkje](./media/storsimple-ova-web-ui-admin/image3.png).
    
-    ![waarschuwing voor opnieuw opstarten](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![waarschuwing opnieuw opstarten](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Er wordt een melding weer gegeven dat de computer opnieuw moet worden opgestart.
+    U krijgt een melding dat de herstart is gestart.
    
-    ![opnieuw opstarten gestart](./media/storsimple-ova-web-ui-admin/image39.png)
+    ![herstart gestart](./media/storsimple-ova-web-ui-admin/image39.png)
    
-    Wanneer de computer opnieuw wordt opgestart, wordt de verbinding met de gebruikers interface verbroken. U kunt de herstart controleren door de gebruikers interface periodiek te vernieuwen. U kunt ook de status van het apparaat opnieuw starten bewaken via Hyper-V-beheer.
+    Terwijl de herstart aan de gang is, verliest u de verbinding met de gebruikersinterface. U de herstart controleren door de gebruikersinterface periodiek te vernieuwen. U ook de herstartstatus van het apparaat controleren via de Hyper-V Manager.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het gebruik van de StorSimple Manager-service om uw apparaat te beheren](storsimple-virtual-array-manager-service-administration.md).
+Meer informatie over het [gebruik van de StorSimple Manager-service om uw apparaat te beheren.](storsimple-virtual-array-manager-service-administration.md)
 

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246199"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pijplijnen uitvoeren en triggers in Azure Data Factory
@@ -79,10 +79,10 @@ In de JSON-definitie heeft de pijplijn twee parameters: **sourceBlobContainer** 
 U kunt de pijplijn handmatig uitvoeren met een van de volgende methoden:
 - .NET SDK
 - Azure PowerShell-module
-- REST-API
-- Python-SDK
+- REST API
+- Python SDK
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 In de volgende voorbeeldopdracht wordt getoond hoe u de pijplijn handmatig kunt uitvoeren met behulp van de REST-API:
 
 ```
@@ -142,7 +142,7 @@ Triggers zijn een andere manier om een pijplijnuitvoering te starten. Triggers z
 
 - Trigger op basis van gebeurtenissen: een trigger die reageert op een gebeurtenis.
 
-Pijp lijnen en triggers hebben een veel-op-veel-relatie (met uitzonde ring van de venster trigger voor tumblingvenstertriggers). Meerdere triggers kunnen één pijp lijn starten en één trigger kan meerdere pijp lijnen starten. In de volgende triggerdefinitie verwijst de eigenschap **pijplijnen** naar een lijst met pijplijnen die worden geactiveerd door de bijbehorende trigger. In de definitie van de eigenschap zijn waarden opgenomen voor de pijplijnparameters.
+Pijplijnen en triggers hebben een veel-op-veel relatie (met uitzondering van de tuimelende venster trigger). Meerdere triggers kunnen één pijplijn starten of één trigger kan meerdere pijplijnen starten. In de volgende triggerdefinitie verwijst de eigenschap **pijplijnen** naar een lijst met pijplijnen die worden geactiveerd door de bijbehorende trigger. In de definitie van de eigenschap zijn waarden opgenomen voor de pijplijnparameters.
 
 ### <a name="basic-trigger-definition"></a>Basisdefinitie voor trigger
 
@@ -237,8 +237,8 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 | **timeZone** | De tijdzone. Momenteel wordt alleen de tijdzone UTC ondersteund. |
 | **recurrence** | Een recurrence-object bepaalt de regels voor het terugkeerpatroon van de trigger. Het recurrence-object ondersteunt de elementen **frequency**, **interval**, **endTime**, **count** en **schedule**. Als een recurrence-object wordt gedefinieerd, is het element **frequency** vereist. De overige elementen van het recurrence-object zijn optioneel. |
 | **frequency** | Hiermee geeft u de frequentie aan waarmee de trigger wordt uitgevoerd. De ondersteunde waarden omvatten 'minuut', 'uur', 'dag', 'week' en 'maand'. |
-| **interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. De waarde **frequency** bepaalt hoe vaak de trigger wordt uitgevoerd. Als **interval** bijvoorbeeld 3 is en **frequency** 'week', dan wordt de trigger elke drie weken uitgevoerd. |
-| **schedule** | Het terugkeerschema voor de trigger. Een trigger met een opgegeven waarde voor **frequency** wijzigt het terugkeerpatroon op basis van een terugkeerschema. De eigenschap **schedule** bevat wijzigingen voor het terugkeerpatroon die zijn gebaseerd op minuten, uren, weekdagen, maanddagen en weeknummer.
+| **Interval** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. De waarde **frequency** bepaalt hoe vaak de trigger wordt uitgevoerd. Als **interval** bijvoorbeeld 3 is en **frequency** 'week', dan wordt de trigger elke drie weken uitgevoerd. |
+| **Schema** | Het terugkeerschema voor de trigger. Een trigger met een opgegeven waarde voor **frequency** wijzigt het terugkeerpatroon op basis van een terugkeerschema. De eigenschap **schedule** bevat wijzigingen voor het terugkeerpatroon die zijn gebaseerd op minuten, uren, weekdagen, maanddagen en weeknummer.
 
 ### <a name="schedule-trigger-example"></a>Voorbeeld van schedule-trigger
 
@@ -278,11 +278,11 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 
 | JSON-eigenschap | Type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | tekenreeks | Ja | None | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Ja | None | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | getal | Nee | 1 | 1 tot 1000 | `"interval":10` |
-| **endTime** | tekenreeks | Ja | None | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Nee | None | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | tekenreeks | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Ja | Geen | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **Interval** | getal | Nee | 1 | 1 tot 1000 | `"interval":10` |
+| **endTime** | tekenreeks | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **Schema** | object | Nee | Geen | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Eigenschap startTime
 In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van een trigger bepaalt:
@@ -290,11 +290,11 @@ In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van ee
 | startTime-waarde | Recurrence zonder schedule | Recurrence met schedule |
 |:--- |:--- |:--- |
 | **Starttijd ligt in het verleden** | Berekent de eerstvolgende uitvoering na de starttijd en voert deze op dat moment uit.<br /><br />Voert volgende uitvoeringen uit die zijn bekend op basis van de tijd waarop de laatste uitvoering heeft plaatsgevonden.<br /><br />Zie het voorbeeld onder deze tabel. | De trigger wordt _nooit vóór_ de opgegeven begintijd geactiveerd. De eerste uitvoering is gebaseerd op de planning die wordt berekend op basis van de starttijd.<br /><br />Volgende uitvoeringen worden op basis van het terugkeerschema uitgevoerd. |
-| **Starttijd ligt in de toekomst of op de huidige tijd** | Uitvoering vindt eenmaal plaats op de opgegeven starttijd.<br /><br />Voert volgende uitvoeringen uit die zijn bekend op basis van de tijd waarop de laatste uitvoering heeft plaatsgevonden. | De trigger wordt _nooit vóór_ de opgegeven begintijd geactiveerd. De eerste uitvoering is gebaseerd op de planning die wordt berekend op basis van de starttijd.<br /><br />Volgende uitvoeringen worden op basis van het terugkeerschema uitgevoerd. |
+| **Starttijd ligt in de toekomst of op de huidige tijd** | Uitvoering vindt eenmaal plaats op de opgegeven starttijd.<br /><br />Voert volgende uitvoeringen uit die zijn bekend op basis van de tijd waarop de laatste uitvoering heeft plaatsgevonden. | De trigger start _niet eerder_ dan de opgegeven begintijd. De eerste uitvoering is gebaseerd op de planning die wordt berekend op basis van de starttijd.<br /><br />Volgende uitvoeringen worden op basis van het terugkeerschema uitgevoerd. |
 
-Laten we eens kijken naar een voorbeeld van wat er gebeurt wanneer de startTime in het verleden ligt en er een terugkeerpatroon (recurrence), maar geen schema (schedule) is opgegeven. Neem aan dat de huidige tijd 2017-04-08 13:00 is, de starttijd 2017-04-07 14:00 en het terugkeerpatroon om de dag. (De waarde voor het **terugkeer patroon** wordt gedefinieerd door de eigenschap **Frequency** in te stellen op ' dag ' en de eigenschap **interval** op 2.) U ziet dat de waarde voor **StartTime** in het verleden ligt en vóór de huidige tijd plaatsvindt.
+Laten we eens kijken naar een voorbeeld van wat er gebeurt wanneer de startTime in het verleden ligt en er een terugkeerpatroon (recurrence), maar geen schema (schedule) is opgegeven. Neem aan dat de huidige tijd 2017-04-08 13:00 is, de starttijd 2017-04-07 14:00 en het terugkeerpatroon om de dag. (De **herhalingswaarde** wordt gedefinieerd door de **eigenschap frequency** property in te stellen op 'dag' en de eigenschap **interval** op 2.) Merk op dat de **startTime-waarde** in het verleden is en vóór de huidige tijd plaatsvindt.
 
-Onder deze omstandigheden is de eerste uitvoering 2017-04-09 op 14:00. De scheduler-engine berekent uitvoeringen vanaf de startTime. Alle uitvoeringen in het verleden worden genegeerd. De engine gebruikt de eerstvolgende uitvoering die in de toekomst plaatsvindt. In dit scenario is de starttijd 2017-04-07 om 14:00 uur. De volgende uitvoering is twee dagen daarna op 2017-04-09 om 14:00 uur.
+Onder deze omstandigheden is de eerste uitvoering 2017-04-09 om 14:00 uur. De scheduler-engine berekent uitvoeringen vanaf de startTime. Alle uitvoeringen in het verleden worden genegeerd. De engine gebruikt de eerstvolgende uitvoering die in de toekomst plaatsvindt. In dit scenario is de starttijd 2017-04-07 om 14:00 uur. De volgende uitvoering is twee dagen daarna op 2017-04-09 om 14:00 uur.
 
 De eerste uitvoeringstijd is de hetzelfde, zelfs als **startTime** 2017-04-05 14:00 of 2017-04-01 14:00 is. Na de eerste uitvoering worden volgende uitvoeringen berekend met behulp van het schema. Daarom vinden de volgende uitvoeringen plaats op 2017-04-11 om 14:00 uur, op 2017-04-13 om 14:00 uur en op 2017-04-15 om 14:00 uur enzovoort.
 
@@ -314,7 +314,7 @@ In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 | **minutes** | Minuten van het uur waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen|
 | **hours** | Uren van de dag waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen|
 | **weekDays** | Dagen van de week waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een weekfrequentie.|<br />- maandag<br />- dinsdag<br />- woensdag<br />- donderdag<br />- vrijdag<br />- zaterdag<br />- zondag<br />- Matrix met dagwaarden (maximale grootte van de matrix is 7)<br /><br />Dagwaarden zijn niet hoofdlettergevoelig|
-| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |-Matrix van **monthlyOccurrence** -objecten: `{ "day": day, "occurrence": occurrence }`<br />- Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.<br />- Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.|
+| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |- Array van **maandelijksVoorkomen** objecten:`{ "day": day, "occurrence": occurrence }`<br />- Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.<br />- Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.|
 | **monthDays** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |- Alle waarden < = -1 en > =-31<br />- Alle waarden > = 1 en < =31<br />- Matrix met waarden|
 
 ## <a name="tumbling-window-trigger"></a>Tumblingvenstertrigger
@@ -324,7 +324,7 @@ Zie [Tumblingvenstertriggers maken](how-to-create-tumbling-window-trigger.md) vo
 
 ## <a name="event-based-trigger"></a>Trigger op basis van gebeurtenissen
 
-Een trigger op basis van een gebeurtenis voert pijp lijnen uit als reactie op een gebeurtenis, zoals de ontvangst van een bestand of het verwijderen van een bestand, in Azure Blob Storage.
+Een trigger op basis van gebeurtenissen voert pijplijnen uit als reactie op een gebeurtenis, zoals de aankomst van een bestand of het verwijderen van een bestand in Azure Blob Storage.
 
 Zie [Een trigger maken die een pijplijn uitvoert in reactie op een gebeurtenis](how-to-create-event-trigger.md) voor meer informatie over triggers op basis van gebeurtenissen.
 

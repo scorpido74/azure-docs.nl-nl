@@ -1,6 +1,6 @@
 ---
-title: Uitvoering Azure Data Lake U-SQL-scripts op uw lokale computer
-description: Leer hoe u met Azure Data Lake Tools voor Visual Studio kunt U-SQL-taken uitvoeren op uw lokale computer.
+title: Azure Data Lake U-SQL-scripts uitvoeren op uw lokale machine
+description: Meer informatie over het gebruik van Azure Data Lake Tools voor Visual Studio om U-SQL-taken uit te voeren op uw lokale machine.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62113932"
 ---
-# <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-scripts uitvoeren op uw lokale computer
+# <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-scripts uitvoeren op uw lokale machine
 
-Wanneer u U-SQL-scripts ontwikkelen, bespaart u tijd en geld door de scripts lokaal worden uitgevoerd. Azure Data Lake Tools voor Visual Studio biedt ondersteuning voor actieve U-SQL-scripts op uw lokale computer. 
+Wanneer u U-SQL-scripts ontwikkelt, u tijd en kosten besparen door de scripts lokaal uit te voeren. Azure Data Lake Tools voor Visual Studio ondersteunt het uitvoeren van U-SQL-scripts op uw lokale machine. 
 
-## <a name="basic-concepts-for-local-runs"></a>Basisbeginselen voor het lokaal wordt uitgevoerd
+## <a name="basic-concepts-for-local-runs"></a>Basisconcepten voor lokale runs
 
-Het volgende diagram ziet u de onderdelen voor het lokaal uitvoeren en hoe deze onderdelen worden toegewezen aan cloud uitvoeren.
+In de volgende grafiek worden de componenten voor lokale run weergegeven en hoe deze componenten worden toegewezen aan de cloud.
 
-|Onderdeel|Lokaal uitvoeren|Cloud uitvoeren|
+|Onderdeel|Lokaal uitvoeren|Cloudrun|
 |---------|---------|---------|
-|Opslag|Hoofdmap van de lokale gegevens|Standaard Azure Data Lake Store-account|
-|Compute|U-SQL-engine met lokaal uitvoeren|Azure Data Lake Analytics-service|
-|Omgeving worden uitgevoerd|Werkmap op de lokale computer|Azure Data Lake Analytics-cluster|
+|Storage|Hoofdmap lokale gegevens|Standaard Azure Data Lake Store-account|
+|Compute|U-SQL lokale run engine|Azure Data Lake Analytics-service|
+|Beheer omgeving|Werkmap op lokale machine|Azure Data Lake Analytics-cluster|
 
-De volgende secties geven informatie over de onderdelen van lokaal uitvoeren.
+De volgende secties geven meer informatie over lokale runcomponenten.
 
-### <a name="local-data-root-folders"></a>Hoofdmappen van lokale gegevens
+### <a name="local-data-root-folders"></a>Hoofdmappen voor lokale gegevens
 
-De hoofdmap van een lokale gegevens is een **lokale archief** voor de lokale compute-account. Een willekeurige map in het lokale bestandssysteem op uw lokale computer is de hoofdmap van een lokale gegevens. Dit is hetzelfde als het Azure Data Lake Store-standaardaccount van een Data Lake Analytics-account. Overschakelen naar de hoofdmap van een andere gegevens is net als het overschakelen naar een andere store-standaardaccount. 
+Een lokale map met gegevensbasis is een **lokaal archief** voor het lokale compute-account. Elke map in het lokale bestandssysteem op uw lokale machine kan een lokale hoofdmap voor gegevens zijn. Het is hetzelfde als het standaard Azure Data Lake Store-account van een Data Lake Analytics-account. Overschakelen naar een andere gegevenshoofdmap is net als overschakelen naar een ander standaardwinkelaccount. 
 
-De hoofdmap van de gegevens wordt als volgt gebruikt:
-- Metagegevens Store. Voorbeelden zijn databases, tabellen, tabelfuncties en assembly's.
-- Zoek de invoer- en paden die zijn gedefinieerd als relatieve paden in U-SQL-scripts. Met behulp van relatieve paden, is het gemakkelijker te implementeren van uw U-SQL-scripts in Azure.
+De hoofdmap voor gegevens wordt als volgt gebruikt:
+- Metagegevens opslaan. Voorbeelden zijn databases, tabellen, functies met tabelwaarde en samenstellingen.
+- Zoek de invoer- en uitvoerpaden op die worden gedefinieerd als relatieve paden in U-SQL-scripts. Door relatieve paden te gebruiken, is het eenvoudiger om uw U-SQL-scripts te implementeren in Azure.
 
-### <a name="u-sql-local-run-engines"></a>U-SQL lokaal uitvoeren engines
+### <a name="u-sql-local-run-engines"></a>U-SQL lokale run engines
 
-Een U-SQL lokaal uitvoeren-engine is een **lokale compute-account** voor U-SQL-taken. Gebruikers kunnen U-SQL-taken lokaal uitvoeren via Azure Data Lake Tools voor Visual Studio. Lokaal wordt uitgevoerd, worden ook ondersteund via de opdrachtregel en programming interfaces voor Azure Data Lake U-SQL-SDK. Meer informatie over de [Azure Data Lake U-SQL-SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
+Een U-SQL local run engine is een **lokaal compute account** voor U-SQL-taken. Gebruikers kunnen U-SQL-taken lokaal uitvoeren via Azure Data Lake Tools voor Visual Studio. Lokale uitvoeringen worden ook ondersteund via de Azure Data Lake U-SQL SDK-opdrachtregel en programmeerinterfaces. Meer informatie over de [Azure Data Lake U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
 
-### <a name="working-directories"></a>Mappen werken
+### <a name="working-directories"></a>Werkmappen
 
-Wanneer u een U-SQL-script uitvoert, wordt een werkmap directory nodig om te compileren resultaten in de cache, uitvoeren van Logboeken en andere functies uitvoeren. In Azure Data Lake Tools voor Visual Studio is de werkmap van het project U-SQL-werkmap. Deze bevindt zich onder `<U-SQL project root path>/bin/debug>`. De werkmap is opgeschoond telkens wanneer een nieuwe uitvoering wordt geactiveerd.
+Wanneer u een U-SQL-script uitvoert, is een werkende mapmap nodig om compilatieresultaten in de cache op te zetten, logboeken uit te voeren en andere functies uit te voeren. In Azure Data Lake Tools voor Visual Studio is de werkmap de werkmap van het U-SQL-project. Het bevindt `<U-SQL project root path>/bin/debug>`zich onder. De werkmap wordt elke keer dat een nieuwe run wordt geactiveerd, gereinigd.
 
-## <a name="local-runs-in-microsoft-visual-studio"></a>Lokaal wordt uitgevoerd in Microsoft Visual Studio
+## <a name="local-runs-in-microsoft-visual-studio"></a>Lokale uitvoeringen in Microsoft Visual Studio
 
-Azure Data Lake Tools voor Visual Studio hebben een ingebouwde lokale uitvoeren-engine. De engine van surface de hulpprogramma's voor als een lokale compute-account. Als u wilt een U-SQL-script lokaal uitvoeren, selecteert u de **Local machine** of **lokale-project** -account in van het script-editor marge in het menu. Selecteer vervolgens **indienen**.
+Azure Data Lake-hulpprogramma's voor Visual Studio hebben een ingebouwde lokale run engine. De tools oppervlak de motor als een lokale compute account. Als u een U-SQL-script lokaal wilt uitvoeren, selecteert u het vervolgkeuzemenu **lokaal-machine-** of **Lokaal-project** in het vervolgkeuzemenu voor de editormarge van het script. Selecteer vervolgens **Verzenden**.
 
-![Indienen van een U-SQL-script voor een lokaal account](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+![Een U-SQL-script verzenden naar een lokaal account](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
-## <a name="local-runs-with-a-local-machine-account"></a>Lokaal wordt uitgevoerd met een lokaal computeraccount
+## <a name="local-runs-with-a-local-machine-account"></a>Lokaal wordt uitgevoerd met een lokaal-machine-account
 
-Een **Local machine** -account is een gedeelde lokale compute-account met de hoofdmap van een enkele lokale gegevens als het lokale archief-account. Standaard de hoofdmap van de gegevens zich bevindt op **C:\Users\<gebruikersnaam > \AppData\Local\USQLDataRoot**. Het is ook worden geconfigureerd via **extra** > **Data Lake** > **opties en instellingen**.
+Een **lokaal-machine-account** is een gedeeld lokaal rekenaccount met één lokale hoofdmap voor gegevens als het lokale winkelaccount. Standaard bevindt de map gegevensbasis zich op **C:\Gebruikersgebruikersnaam\<>\AppData\Local\USQLDataRoot**. Het is ook configureerbaar via **Tools** > **Data Lake-opties** > **en -instellingen.**
 
-![Configureren van de hoofdmap van een lokale gegevens](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+![Een hoofdmap voor lokale gegevens configureren](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
-Een U-SQL-project is vereist voor een lokaal uitvoeren. De werkmap van de U-SQL-project wordt gebruikt voor de U-SQL lokaal uitvoeren werkmap. Compilatieresultaten, logboeken en andere bestanden met betrekking tot uitvoeren van taak uitvoeren worden gegenereerd en opgeslagen onder de werkmap tijdens het lokaal uitvoeren. Telkens wanneer u het script opnieuw uitvoeren, worden alle bestanden in de werkmap verwijderd en opnieuw gegenereerd.
+Een U-SQL-project is vereist voor een lokale run. De werkmap van het U-SQL-project wordt gebruikt voor de u-SQL local run working directory. Compilatieresultaten, logboeken uitvoeren en andere taakrungerelateerde bestanden worden gegenereerd en opgeslagen onder de map werken tijdens de lokale run. Elke keer dat u het script opnieuw uitvoert, worden alle bestanden in de werkmap gereinigd en geregenereerd.
 
-## <a name="local-runs-with-a-local-project-account"></a>Lokaal wordt uitgevoerd met een account met lokale-project
+## <a name="local-runs-with-a-local-project-account"></a>Lokale uitvoeringen met een lokaal projectaccount
 
-Een **lokale-project** -account is een project afgeschermd lokale compute-account voor elk project met de hoofdmap van een geïsoleerde lokale gegevens. Elke actieve U-SQL-project dat wordt geopend in Solution Explorer in Visual Studio beschikt over een corresponderende `(Local-project: <project name>)` account. De accounts zijn opgenomen in Server Explorer in Visual Studio en de marge van U-SQL-script-editor.  
+Een **lokaal projectaccount** is een projectgeïsoleerde lokale compute-account voor elk project met een geïsoleerde lokale gegevenshoofdmap. Elk actief U-SQL-project dat wordt geopend in `(Local-project: <project name>)` Solution Explorer in Visual Studio heeft een bijbehorend account. De accounts worden weergegeven in zowel Server Explorer in Visual Studio als in de marge van de U-SQL-scripteditor.  
 
-De **lokale-project** account voorziet in een schone en geïsoleerde omgeving. Een **Local machine** account heeft de hoofdmap van een gedeelde lokale gegevens waarmee gegevens van metagegevens en invoer en uitvoer voor alle lokale taken worden opgeslagen. Maar een **lokale-project** account de hoofdmap van een tijdelijke lokale gegevens onder de werkmap van een U-SQL-project wordt gemaakt telkens wanneer een U-SQL-script wordt uitgevoerd. Deze hoofdmap tijdelijke gegevens worden gewist wanneer een opnieuw maken of gebeurt opnieuw uitvoeren. 
+Het **lokale projectaccount** biedt een schone en geïsoleerde ontwikkelomgeving. Een **lokaal-machine-account** heeft een gedeelde lokale hoofdmap voor gegevens die metagegevens en invoer- en uitvoergegevens opslaat voor alle lokale taken. Maar een **lokaal projectaccount** maakt een tijdelijke lokale gegevenshoofdmap onder een U-SQL-projectwerkmap elke keer dat een U-SQL-script wordt uitgevoerd. Deze tijdelijke hoofdmap voor gegevens wordt gereinigd wanneer een herbouw of opnieuw uitvoeren plaatsvindt. 
 
-Een U-SQL project beheert de geïsoleerde lokale uitvoeringsomgeving door middel van een project referentie en de eigenschap. U kunt de invoergegevensbronnen voor U-SQL-scripts configureren in de omgeving waarnaar wordt verwezen, database en het project.
+Een U-SQL-project beheert de geïsoleerde lokale run-omgeving via een projectverwijzing en -eigenschap. U de invoergegevensbronnen voor U-SQL-scripts configureren in zowel het project als de databaseomgevingen waarnaar wordt verwezen.
 
-### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Beheren van de bron van de invoergegevens voor een account met lokale-project 
+### <a name="manage-the-input-data-source-for-a-local-project-account"></a>De invoergegevensbron voor een lokaal projectaccount beheren 
 
-Een U-SQL-project wordt gemaakt van de hoofdmap van een lokale gegevens en stelt u de gegevens voor een **lokale-project** account. De hoofdmap van een tijdelijke gegevens is verwijderd en opnieuw worden gemaakt onder de werkmap van de U-SQL-project telkens wanneer een opnieuw opbouwen en lokaal uitvoeren gebeurt. Alle gegevensbronnen die zijn geconfigureerd met de U-SQL-project worden gekopieerd naar de hoofdmap van deze tijdelijke lokale gegevens voordat de lokale taak wordt uitgevoerd. 
+Een U-SQL-project maakt een lokale gegevenshoofdmap en stelt gegevens in voor een **lokaal projectaccount.** Een tijdelijke map met gegevensroot wordt schoongemaakt en opnieuw gemaakt onder de werkmap u-SQL-project elke keer dat een heropbouw en lokale run plaatsvindt. Alle gegevensbronnen die zijn geconfigureerd door het U-SQL-project, worden naar deze tijdelijke lokale map met lokale gegevens gekopieerd voordat de lokale taak wordt uitgevoerd. 
 
-U kunt de hoofdmap van uw gegevensbronnen configureren. Met de rechtermuisknop op **U-SQL project** > **eigenschap** > **gegevensbron testen**. Wanneer u een U-SQL-script uitvoert op een **lokale-project** -account, worden alle bestanden en submappen in de **gegevensbron testen** map worden gekopieerd naar de hoofdmap van de tijdelijke lokale gegevens. Bestanden in submappen worden opgenomen. Nadat een lokale taak is uitgevoerd, resultaten van de uitvoer kunnen ook te vinden onder de hoofdmap van de tijdelijke lokale gegevens in de werkmap project. Alle deze uitvoer is verwijderd en opgeschoond wanneer het project wordt opnieuw opgebouwd en opgeschoond. 
+U de hoofdmap van uw gegevensbronnen configureren. Klik met de rechtermuisknop op **U-SQL-projectProperty** > **Property** > **Test Data Source**. Wanneer u een U-SQL-script uitvoert op een **lokaal projectaccount,** worden alle bestanden en submappen in de map **Testgegevensbron** gekopieerd naar de tijdelijke lokale map met gegevens. Bestanden onder submappen zijn inbegrepen. Nadat een lokale taak is uitgevoerd, kunnen de uitvoerresultaten ook worden gevonden onder de tijdelijke lokale hoofdmap voor lokale gegevens in de werkmap van het project. Al deze uitvoer wordt verwijderd en gereinigd wanneer het project wordt herbouwd en gereinigd. 
 
-![Configureren van een project test-gegevensbron](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
+![De testgegevensbron van een project configureren](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Beheren van de omgeving van een database waarnaar wordt verwezen voor een **lokale-project** account 
+### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Een databaseomgeving met verwijzing beheren voor een **lokaal projectaccount** 
 
-Als een U-SQL query gebruikt of query's met U-SQL database-objecten, moet u de databaseomgevingen klaar lokaal voordat u de U-SQL-script lokaal uitvoeren. Voor een **lokale-project** U-SQL-database afhankelijkheden kunnen worden beheerd door de projectverwijzingen U-SQL-account. U kunt U-SQL-database projectverwijzingen aan uw project U-SQL kunt toevoegen. Voordat U-SQL-scripts worden uitgevoerd op een **lokale-project** -account, alle waarnaar wordt verwezen, databases zijn geïmplementeerd naar de hoofdmap van de tijdelijke lokale gegevens. En voor elke uitvoering, wordt de hoofdmap van de tijdelijke gegevens opgeschoond als een nieuwe geïsoleerde omgeving.
+Als een U-SQL-query wordt gebruikt of query's met U-SQL-databaseobjecten worden gebruikt, moet u de databaseomgevingen lokaal gereed maken voordat u het U-SQL-script lokaal uitvoert. Voor een **lokaal-projectaccount** kunnen u-SQL-databaseafhankelijkheden worden beheerd door U-SQL-projectverwijzingen. U U-SQL-databaseprojectverwijzingen toevoegen aan uw U-SQL-project. Voordat U-SQL-scripts worden uitgevoerd op een **lokaal projectaccount,** worden alle databases waarnaar wordt verwezen geïmplementeerd in de tijdelijke lokale map met gegevens. En voor elke run wordt de tijdelijke map met gegevensroot gereinigd als een nieuwe geïsoleerde omgeving.
 
-Dit verwante artikel raadplegen:
-* Informatie over het beheren van definities van U-SQL-database en verwijzingen in [U-SQL database-projecten](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Zie dit gerelateerde artikel:
+* Meer informatie over het beheren van U-SQL-databasedefinities en -verwijzingen in [U-SQL-databaseprojecten](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
-## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>Het verschil tussen **Local machine** en **lokale-project** accounts
+## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>Het verschil tussen **lokale-machine** en **lokaal-project** accounts
 
-Een **Local machine** account simuleert een Azure Data Lake Analytics-account op lokale computers van gebruikers. Deze deelt dezelfde ervaring met een Azure Data Lake Analytics-account. Een **lokale-project** account voorziet in een gebruiksvriendelijke lokale ontwikkelomgeving. Deze omgeving helpt gebruikers van databaseverwijzingen en invoergegevens voordat ze lokaal uitvoeren van scripts implementeren. Een **Local machine** account voorziet in een gedeelde permanente omgeving die kan worden benaderd via alle projecten. Een **lokale-project** account voorziet in een geïsoleerde ontwikkelomgeving voor elk project. Voor elke uitvoering wordt deze vernieuwd. Een **lokale-project** account biedt een snellere ontwikkelingservaring door snel nieuwe wijzigingen toepassen.
+Een **lokaal-machine-account** simuleert een Azure Data Lake Analytics-account op lokale machines van gebruikers. Het deelt dezelfde ervaring met een Azure Data Lake Analytics-account. Een **lokaal projectaccount** biedt een gebruiksvriendelijke lokale ontwikkelomgeving. Met deze omgeving kunnen gebruikers databaseverwijzingen en invoergegevens implementeren voordat ze scripts lokaal uitvoeren. Een **lokaal-machine-account** biedt een gedeelde permanente omgeving die toegankelijk is via alle projecten. Een **lokaal projectaccount** biedt voor elk project een geïsoleerde ontwikkelomgeving. Het is vernieuwd voor elke run. Een **Lokaal projectaccount** biedt een snellere ontwikkelingservaring door snel nieuwe wijzigingen toe te passen.
 
-Meer verschillen tussen **Local machine** en **lokale-project** -accounts worden weergegeven in de volgende tabel:
+Meer verschillen tussen **lokale-machine-** en **lokale projectaccounts** worden weergegeven in de volgende tabel:
 
-|Verschil hoek|Lokale machine|Local-project|
+|Verschilhoek|Lokale machine|Lokaal project|
 |----------------|---------------|---------------|
-|Lokale toegang|Kunnen worden geopend door alle projecten.|Alleen het bijbehorende project hebben toegang tot dit account.|
-|Hoofdmap van de lokale gegevens|Een permanente lokale map. Geconfigureerde via **extra** > **Data Lake** > **opties en instellingen**.|Een tijdelijke map gemaakt voor elke lokale uitvoering onder de U-SQL project werkmap. De map wordt verwijderd bij het opnieuw opbouwen of voer er gebeurt.|
-|De invoergegevens voor een U-SQL-script|Het relatieve pad onder de hoofdmap van de permanente lokale gegevens.|Stel via **U-SQL projecteigenschap** > **gegevensbron testen**. Alle bestanden en submappen worden gekopieerd naar de hoofdmap van de tijdelijke gegevens voordat u een lokaal uitvoeren.|
-|Uitvoergegevens voor een U-SQL-script|Relatief pad in de hoofdmap van de permanente lokale gegevens.|Uitvoer naar de hoofdmap van de tijdelijke gegevens. De resultaten worden opgeschoond bij het opnieuw opbouwen of voer er gebeurt.|
-|Implementatie van de database waarnaar wordt verwezen|Databases waarnaar wordt verwezen niet worden automatisch geïmplementeerd met het uitvoeren in een **Local machine** account. Dit is hetzelfde voor het indienen van een Azure Data Lake Analytics-account.|Waarnaar wordt verwezen, databases zijn geïmplementeerd op de **lokale-project** account automatisch voordat u een lokaal uitvoeren. Alle databaseomgevingen worden schoongemaakt en opnieuw wordt geïmplementeerd als een opnieuw maken of gebeurt opnieuw uitvoeren.|
+|Lokale toegang|Kan worden benaderd door alle projecten.|Alleen het bijbehorende project heeft toegang tot dit account.|
+|Hoofdmap lokale gegevens|Een permanente lokale map. Geconfigureerd via **tools** > **gegevensmeeropties** > en **-instellingen**.|Een tijdelijke map die is gemaakt voor elke lokale run onder de werkmap U-SQL-project. De map wordt schoongemaakt wanneer een herbouw of opnieuw wordt uitgevoerd.|
+|Invoergegevens voor een U-SQL-script|Het relatieve pad onder de permanente lokale hoofdmap voor gegevens.|Instellen via **U-SQL-projecteigenschap** > **Testgegevensbron**. Alle bestanden en submappen worden gekopieerd naar de tijdelijke hoofdmap voor gegevens voordat een lokale run wordt uitgevoerd.|
+|Uitvoergegevens voor een U-SQL-script|Relatief pad onder de permanente lokale map met gegevens.|Uitvoer naar de tijdelijke hoofdmap voor gegevens. De resultaten worden gereinigd wanneer een herbouw of rerun plaatsvindt.|
+|Database-implementatie onder verwijzing|Naar basisgegevens worden niet automatisch geïmplementeerd wanneer ze worden uitgevoerd op een **lokaal-machine-account.** Hetzelfde geldt voor het indienen bij een Azure Data Lake Analytics-account.|Naar basisgegevens worden automatisch geïmplementeerd in het **lokale projectaccount** voordat een lokale run wordt uitgevoerd. Alle databaseomgevingen worden schoongemaakt en opnieuw geïmplementeerd wanneer een heropbouw of opnieuw wordt uitgevoerd.|
 
-## <a name="a-local-run-with-the-u-sql-sdk"></a>Een lokaal uitvoeren met de U-SQL-SDK
+## <a name="a-local-run-with-the-u-sql-sdk"></a>Een lokale run met de U-SQL SDK
 
-U kunt U-SQL-scripts lokaal uitvoeren in Visual Studio en daarnaast de Azure Data Lake U-SQL-SDK gebruiken om het U-SQL-scripts lokaal uitvoeren met de opdrachtregel en programming interfaces. Via deze interfaces, kunt u U-SQL lokaal wordt uitgevoerd en tests automatiseren.
+U U-SQL-scripts lokaal uitvoeren in Visual Studio en ook de Azure Data Lake U-SQL SDK gebruiken om U-SQL-scripts lokaal uit te voeren met opdrachtregel- en programmeerinterfaces. Via deze interfaces u lokale u-SQL-uitvoeringen en tests automatiseren.
 
-Meer informatie over de [Azure Data Lake U-SQL-SDK](data-lake-analytics-u-sql-sdk.md).
+Meer informatie over de [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een CI/CD-pijplijn instellen voor Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md).
-- [Het testen van uw Azure Data Lake Analytics-code](data-lake-analytics-cicd-test.md).
+- [Uw Azure Data Lake Analytics-code testen.](data-lake-analytics-cicd-test.md)

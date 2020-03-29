@@ -1,6 +1,6 @@
 ---
-title: Opties voor grote gegevenssets met weinig of geen bandbreedte van het netwerk van Azure de gegevensoverdracht | Microsoft Docs
-description: Informatie over het kiezen van een Azure-oplossing voor de overdracht van wanneer u hebt beperkt tot er geen netwerkbandbreedte in uw omgeving en u van plan bent om over te dragen van grote gegevenssets.
+title: Azure-opties voor gegevensoverdracht voor grote gegevenssets met een lage of geen netwerkbandbreedte| Microsoft Documenten
+description: Lees hoe u een Azure-oplossing voor gegevensoverdracht kiezen wanneer u zich beperkt hebt tot geen netwerkbandbreedte in uw omgeving en u van plan bent grote gegevenssets over te zetten.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,56 +9,56 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730687"
 ---
-# <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Voor gegevensoverdracht voor grote gegevenssets met weinig of geen netwerkbandbreedte
+# <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met weinig of geen netwerkbandbreedte
  
-In dit artikel bevat een overzicht van de gegevensoverdracht oplossingen bij u hebben beperkt tot er geen netwerkbandbreedte in uw omgeving en u van plan bent om over te dragen van grote gegevenssets. Het artikel beschrijft ook de aanbevolen data transfer-opties en de bijbehorende sleutel mogelijkhedenmatrix voor dit scenario.
+Dit artikel geeft een overzicht van de oplossingen voor gegevensoverdracht wanneer u zich beperkt hebt tot geen netwerkbandbreedte in uw omgeving en u van plan bent grote gegevenssets over te dragen. Het artikel beschrijft ook de aanbevolen opties voor gegevensoverdracht en de respectievelijke sleutelcapaciteitsmatrix voor dit scenario.
 
-Voor een overzicht van alle beschikbare overdracht Gegevensopties, gaat u naar [een Azure data transfer-oplossing kiezen](storage-choose-data-transfer-solution.md).
+Als u een overzicht wilt begrijpen van alle beschikbare opties voor gegevensoverdracht, gaat u naar [Een Azure-oplossing voor gegevensoverdracht kiezen.](storage-choose-data-transfer-solution.md)
 
-## <a name="offline-transfer-or-network-transfer"></a>Offline overdracht of netwerk overdracht
+## <a name="offline-transfer-or-network-transfer"></a>Offline overdracht of netwerkoverdracht
 
-Grote gegevenssets impliceren dat er enkele TB aan enkele PBs van gegevens. U hebt beperkt tot er geen netwerkbandbreedte, het netwerk is traag of onbetrouwbaar is. Daarnaast:
+Grote gegevenssets impliceren dat u weinig tb's tot weinig PCB's aan gegevens hebt. U hebt zich beperkt tot geen netwerkbandbreedte, uw netwerk is traag of onbetrouwbaar. Daarnaast:
 
-- Er gelden limieten voor kosten voor netwerkoverdracht van uw internetproviders (ISP's).
-- Beveiligings- of organisatiebeleid Sta geen uitgaande verbindingen wanneer omgaan met gevoelige gegevens.
+- U bent beperkt door de kosten van netwerkoverdracht van uw Internet Service Providers (ISP's).
+- Beveiligings- of organisatiebeleid staat geen uitgaande verbindingen toe bij het omgaan met gevoelige gegevens.
 
-Gebruik in de bovenstaande gevallen, een fysiek apparaat voor een eenmalige bulksgewijs gegevensoverdracht. Kies in de Data Box-schijf, Data Box, gegevens in het zware apparaten die worden geleverd door Microsoft of uw eigen schijven voor de Import/Export.
+Gebruik in alle bovenstaande exemplaren een fysiek apparaat om een eenmalige bulkgegevensoverdracht uit te voeren. Kies uit Data Box Disk, Data Box, Data Box Heavy-apparaten die door Microsoft worden geleverd of Importeren/exporteren met uw eigen schijven.
 
-Gebruik de volgende tabel om te bevestigen of een fysiek apparaat de juiste optie. Het bevat de geschatte tijd voor de overdracht van netwerk, voor de verschillende beschikbare bandbreedten (ervan uitgaande dat 90% gebruik). Als netwerkoverdracht prognoses worden te langzaam verlopen, moet u een fysiek apparaat gebruiken.  
+Als u wilt controleren of een fysiek apparaat de juiste optie is, gebruikt u de volgende tabel. Het toont de verwachte tijd voor netwerkgegevensoverdracht, voor verschillende beschikbare bandbreedtes (uitgaande van 90% gebruik). Als de netwerkoverdracht naar verwachting te traag is, moet u een fysiek apparaat gebruiken.  
 
-![Netwerkoverdracht of offline](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
+![Netwerkoverdracht of offlineoverdracht](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
 ## <a name="recommended-options"></a>Aanbevolen opties
 
-De beschikbare opties in dit scenario zijn apparaten voor Azure Data Box offline overdracht of Azure Import/Export.
+De opties die in dit scenario beschikbaar zijn, zijn apparaten voor offline overdracht van Azure Data Box of Azure Import/Export.
 
-- **Azure Data Box-serie voor offline-overdrachten** – apparaten door Microsoft geleverde Data Box apparaten gebruiken voor het verplaatsen van grote hoeveelheden gegevens naar Azure wanneer u door de tijd, de beschikbaarheid van het netwerk of de kosten beperkt bent. On-premises gegevens kopiëren met behulp van hulpprogramma's zoals Robocopy. Afhankelijk van de gegevensgrootte die bestemd zijn voor de overdracht, kunt u kiezen uit Data Box-schijf, Data Box of gegevens in het zware.
-- **Azure Import/Export** – gebruik Azure Import/Export-service door het verzenden van uw eigen schijven voor het veilig grote hoeveelheden gegevens importeren naar Azure Blob storage en Azure Files. Deze service kan ook worden gebruikt voor gegevensoverdracht van Azure Blob-opslag op schijven en verzend deze naar uw on-premises sites.
+- **Azure Data Box-familie voor offline overdrachten** : gebruik apparaten van door Microsoft geleverde Data Box-apparaten om grote hoeveelheden gegevens naar Azure te verplaatsen wanneer u beperkt bent door tijd, beschikbaarheid van het netwerk of kosten. On-premises gegevens kopiëren met behulp van tools zoals Robocopy. Afhankelijk van de gegevensgrootte die is bedoeld voor overdracht, u kiezen uit Data Box Disk, Data Box of Data Box Heavy.
+- **Azure Import/Export** : gebruik azure import/exportservice door uw eigen schijven te verzenden om grote hoeveelheden gegevens veilig te importeren naar Azure Blob-opslag en Azure-bestanden. Deze service kan ook worden gebruikt om gegevens van Azure Blob-opslag over te zetten naar schijven en te verzenden naar uw on-premises sites.
 
 ## <a name="comparison-of-key-capabilities"></a>Vergelijking van de belangrijkste mogelijkheden
 
-De volgende tabel geeft een overzicht van de verschillen in de belangrijkste mogelijkheden.
+In de volgende tabel worden de verschillen in sleutelmogelijkheden samengevat.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Gegevensgrootte                        |    Tot 35 TB                 |    Maximaal 80 TB per apparaat                       |    Maximaal 800 TB per apparaat               |    Variabele                            |
-|    Gegevenstype                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
-|    Vormfactor                      |    5 SSD's per order             |    1 x 50-lbs. Desktop-formaat apparaat per order    |    1 X ~500-lbs. grote apparaat per order    |    Maximaal 10 HDD's / SSD's per order        |
-|    Initiële insteltijd               |    Laag <br>(15 minuten)            |    Lage tot gemiddelde <br> (<30 mins)               |    Gemiddeld<br>(1-2 uur)               |    Gemiddelde tot moeilijk<br>(variabele) |
+|    Gegevensgrootte                        |    Tot 35 tbs                 |    Tot 80 tbs per apparaat                       |    Tot 800 TB per apparaat               |    Variabele                            |
+|    Gegevenstype                        |    Azure-blobs                  |    Azure-blobs<br>Azure Files                    |    Azure-blobs<br>Azure Files            |    Azure-blobs<br>Azure Files          |
+|    Vormfactor                      |    5 SSD's per bestelling             |    1 X 50-lbs. apparaat van desktopformaat per bestelling    |    1 X ~500-lbs. groot apparaat per bestelling    |    Maximaal 10 HDD's/SSD's per bestelling        |
+|    Initiële insteltijd               |    Laag <br>(15 minuten)            |    Laag tot matig <br> (<30 minuten)               |    Gemiddeld<br>(1-2 uur)               |    Matig tot moeilijk<br>(variabel) |
 |    Gegevens verzenden naar Azure               |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    Gegevens exporteren van Azure           |    Nee                           |    Nee                                            |    Nee                                    |    Ja                                 |
-|    Versleuteling                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
-|    Hardware                         |     Microsoft geleverd          |    Microsoft geleverd                            |    Microsoft geleverd                    |    De klant worden verstrekt                   |
-|    Netwerkinterface                |    USB-3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Partnerintegratie              |    Sommige                         |    [Hoog](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Hoog](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Sommige                                |
-|    Verzending                         |    Beheerd door Microsoft            |    Beheerd door Microsoft                             |    Beheerd door Microsoft                     |    Beheerd door de klant                    |
-| Gebruik deze sjabloon wanneer gegevens worden verplaatst         |Binnen een grens commerce|Binnen een grens commerce|Binnen een grens commerce|Over de geografische grenzen, bijvoorbeeld VS EU|
+|    Gegevens vanuit Azure exporteren           |    Nee                           |    Nee                                            |    Nee                                    |    Ja                                 |
+|    Versleuteling                       |    AES 128-bits                  |    AES 256-bits                                   |    AES 256-bits                           |    AES 128-bits                         |
+|    Hardware                         |     Microsoft geleverd          |    Microsoft geleverd                            |    Microsoft geleverd                    |    Geleverde klant                   |
+|    Netwerkinterface                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
+|    Partnerintegratie              |    Sommige                         |    [Hoge](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Hoge](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Sommige                                |
+|    Verzenden                         |    Microsoft beheerd            |    Microsoft beheerd                             |    Microsoft beheerd                     |    Klant beheerd                    |
+| Gebruiken wanneer gegevens worden verplaatst         |Binnen een handelsgrens|Binnen een handelsgrens|Binnen een handelsgrens|Over geografische grenzen heen, bijvoorbeeld tussen de VS en de EU|
 |    Prijzen                          |    [Prijzen](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
@@ -66,6 +66,6 @@ De volgende tabel geeft een overzicht van de verschillen in de belangrijkste mog
 
 - Begrijpen hoe u
 
-    - [Gegevens overdragen met Data Box-schijf](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Gegevens overdragen met Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
-    - [Gegevens overdragen met Import/Export](/azure/storage/common/storage-import-export-data-to-blobs).
+    - [Gegevens overbrengen met gegevensvakschijf](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
+    - [Gegevens overbrengen met gegevensvak](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Gegevens overdragen met Importeren/exporteren](/azure/storage/common/storage-import-export-data-to-blobs).

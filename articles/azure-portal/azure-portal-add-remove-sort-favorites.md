@@ -1,8 +1,8 @@
 ---
-title: Favorieten toevoegen, verwijderen en rangschikken in Azure Portal | Microsoft Docs
-description: Meer informatie over het toevoegen of verwijderen van items in de lijst met favorieten en het rangschikken van de volg orde van items
+title: Favorieten toevoegen, verwijderen en rangschikken in Azure-portal | Microsoft Documenten
+description: Meer informatie over het toevoegen of verwijderen van items uit de favorietenlijst en het opnieuw rangschikken van de volgorde van items
 services: azure-portal
-keywords: Favorieten, portal
+keywords: favorieten, portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
@@ -11,59 +11,59 @@ ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310812"
 ---
-# <a name="add-remove-and-rearrange-favorites"></a>Favorieten toevoegen, verwijderen en opnieuw ordenen
+# <a name="add-remove-and-rearrange-favorites"></a>Favorieten toevoegen, verwijderen en opnieuw rangschikken
 
-Items toevoegen aan of verwijderen uit uw lijst met **Favorieten** , zodat u snel naar de Services kunt gaan die u het meest gebruikt. Er zijn al enkele algemene services aan uw lijst met **Favorieten** toegevoegd, maar u wilt deze waarschijnlijk aanpassen. U bent de enige die de wijzigingen die u aanbrengt in **Favorieten**ziet.
+Items toevoegen of verwijderen uit uw **favorietenlijst,** zodat u snel naar de services gaan die u het vaakst gebruikt. We hebben al een aantal algemene services toegevoegd aan je **favorietenlijst,** maar je wilt deze waarschijnlijk aanpassen. U bent de enige die de wijzigingen ziet die u aanbrengt in **Favorieten.**
 
 ## <a name="add-a-favorite"></a>Een favoriet toevoegen
 
-Items die worden vermeld onder **Favorieten** , worden geselecteerd in **alle services**. Beweeg de muis aanwijzer over een service naam om informatie en resources met betrekking tot de service weer te geven. Een gevuld ster pictogram ![gevulde ster pictogram](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) naast de service naam geeft aan dat het item wordt weer gegeven in de lijst met **Favorieten** . Selecteer het ster pictogram om een service toe te voegen aan de lijst met **Favorieten** .
+Objecten die worden aangeboden onder **Favorieten,** worden geselecteerd uit **Alle services**. Plaats de plaats van een servicenaam om informatie en bronnen met betrekking tot de service weer te geven. Een gevuld ![sterpictogram](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) Gevuld sterpictogram naast de servicenaam geeft aan dat het item wordt weergegeven in de lijst **Favorieten.** Selecteer het sterpictogram om een service toe te voegen aan de lijst **Favorieten.**
 
-### <a name="add-cost-management--billing-to-favorites"></a>Cost Management en facturering toevoegen aan favorieten
+### <a name="add-cost-management--billing-to-favorites"></a>Kostenbeheer + Facturering toevoegen aan favorieten
 
-1. Selecteer **alle services** in het Azure Portal menu.
+1. Selecteer **Alle services** in het menu azure portal.
 
-    ![Scherm opname met alle geselecteerde services](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-new-all-services.png)
+    ![Schermafbeelding van alle geselecteerde services](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-new-all-services.png)
 
-1. Voer het woord ' cost ' in het zoek veld in. Services met de waarde ' cost ' in de titel of waarvoor ' cost ' als tref woord worden weer gegeven.
+1. Voer het woord 'kosten' in het zoekveld in. Services met 'kosten' in de titel of die 'kosten' als trefwoord hebben, worden weergegeven.
 
-   ![Scherm opname van zoeken in alle services](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-find-service.png)
+   ![Schermafbeelding van zoeken in Alle services](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-find-service.png)
 
-1. Beweeg de muis aanwijzer over de service naam om de kaart **Cost Management en facturerings** gegevens weer te geven. Selecteer het ster pictogram.
+1. Plaats de plaats van de servicenaam om de **kostenbeheer + factureringsinformatiekaart** weer te geven. Selecteer het sterpictogram.
 
-   ![Scherm afbeelding met de ster naast kosten beheer en facturering geselecteerd](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
+   ![Schermafbeelding van ster naast kostenbeheer + facturering geselecteerd](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
 
-1. **Cost Management + facturering** is nu toegevoegd als het laatste item in de lijst met **Favorieten** .
+1. **Kostenbeheer + Facturering** is nu toegevoegd als het laatste object in uw **lijst met favorieten.**
 
-## <a name="remove-an-item-from-favorites"></a>Een item uit favorieten verwijderen
+## <a name="remove-an-item-from-favorites"></a>Een item verwijderen uit favorieten
 
-U kunt nu een item rechtstreeks uit de lijst met **Favorieten** verwijderen.
+U nu een item rechtstreeks uit de lijst **Favorieten** verwijderen.
 
-1. Beweeg de muis aanwijzer in de sectie **Favorieten** van het menu van de portal over de naam van de service die u wilt verwijderen.
+1. Plaats **in** het gedeelte Favorieten van het portalmenu de plaats boven de naam van de service die u wilt verwijderen.
 
-   ![Scherm opname van het gedrag van de muis aanwijzer in Favorieten](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-remove.png)
+   ![Schermafbeelding van het zwevend gedrag in Favorieten](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-remove.png)
 
-2. Selecteer op de informatie kaart de ster zodat deze wordt gewijzigd van gevuld naar niet-gevuld. De service wordt verwijderd uit de lijst met **Favorieten** .
+2. Selecteer op de informatiekaart de ster zodat deze van gevuld naar ongevuld verandert. De service wordt verwijderd uit de lijst **Favorieten.**
 
-## <a name="rearrange-favorites"></a>Favorieten opnieuw ordenen
+## <a name="rearrange-favorites"></a>Favorieten opnieuw rangschikken
 
-U kunt de volg orde wijzigen waarin uw favoriete services worden weer gegeven. U kunt het menu-item alleen naar een andere locatie onder **Favorieten**slepen en neerzetten.
+U de volgorde wijzigen die uw favoriete services worden vermeld. Sleep en zet het menu-item neer op een andere locatie onder **Favorieten**.
 
-### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Cost Management + factuur verplaatsen naar de bovenkant van favorieten
+### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Kostenbeheer + Facturering naar de bovenkant van favorieten verplaatsen
 
-1. Selecteer de **Cost Management + facturerings** vermelding in de lijst met **Favorieten** en houd deze ingedrukt.
+1. Selecteer en houd het vermelding **Kostenbeheer + Facturering** in de lijst **Favorieten.**
 
-   ![Scherm opname van kosten beheer en facturering geselecteerd](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
+   ![Schermafbeelding van kostenbeheer + facturering geselecteerd](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
 
-1. Terwijl u doorgaat, sleept u het item naar de bovenkant van **Favorieten** en geeft u het vervolgens vrij.
+1. Terwijl u doorgaat met vasthouden, sleept u het item naar de bovenkant van **Favorieten** en laat u het vervolgens los.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Dash boards maken en delen in de Azure Portal](../azure-portal/azure-portal-dashboards.md) als u een werk ruimte op project gericht wilt maken.
-* Ontdek meer over hoe u kunt vinden in de [video serie over het Azure Portal](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)
+* Zie [Dashboards maken en delen in de Azure-portal](../azure-portal/azure-portal-dashboards.md) als u een projectgerichte werkruimte wilt maken
+* Ontdek meer how-to's in de [how-to-videoserie van Azure-portalen](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

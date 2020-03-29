@@ -1,6 +1,6 @@
 ---
-title: De Azure AD Connect Sync Service Manager Metaverse zoeken | Microsoft-Docs
-description: Meer informatie over het tabblad Metaverse zoeken in de Synchronization Service Manager voor Azure AD Connect.
+title: De Azure AD Connect Sync Service Manager Metaverse Search| Microsoft Docs'
+description: Het tabblad Metaverse zoeken in het synchronisatieservicebeheer voor Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382914"
 ---
-# <a name="sync-service-manager-metaverse-search"></a>Synchronisatie van Service Manager Metaverse zoeken
+# <a name="sync-service-manager-metaverse-search"></a>Metaverse zoeken van onderhoudsbeheerbeheer
 
-![Synchronisatie van Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
+![Onderhoudsbeheer synchroniseren](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-Het tabblad metaverse zoeken is handig voor het oplossen van problemen met betrekking tot de gegevens. In het bovenste gedeelte, kunt u een query op basis van een combinatie van kenmerken. Wanneer u tevreden met uw query bent, klikt u op **zoeken**. Het resultaat wordt weergegeven in het raster onder. U kunt selecteren welke kolommen worden weergegeven met **kolominstellingen**.
+Het metaverse zoektabblad is handig voor het oplossen van gegevensgerelateerde problemen. In de bovenste helft u een query maken op basis van een combinatie van kenmerken. Wanneer u tevreden bent met uw zoekopdracht, klikt u op **Zoeken**. Het resultaat is zichtbaar in het onderste raster. U selecteren welke kolommen zichtbaar moeten zijn met **Kolominstellingen**.
 
-Selecteer een object in de lijst met zoekresultaten en **eigenschappen** om te zien de [eigenschappen van het metaverseobject](tshoot-connect-object-not-syncing.md#metaverse-object-properties).
+Selecteer in de zoekresultaten een object en **eigenschappen** om de [metaverse objecteigenschappen](tshoot-connect-object-not-syncing.md#metaverse-object-properties)te zien.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md) configuratie.
+Meer informatie over de [synchronisatieconfiguratie van Azure AD Connect.](how-to-connect-sync-whatis.md)
 
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

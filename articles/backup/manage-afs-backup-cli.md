@@ -1,18 +1,18 @@
 ---
-title: Back-ups van Azure-bestands shares beheren met de Azure CLI
-description: Meer informatie over het gebruik van de Azure CLI voor het beheren en controleren van back-ups van Azure-bestands shares van Azure Backup.
+title: Back-ups van Azure-bestandsshare beheren met de Azure CLI
+description: Meer informatie over het gebruik van azure CLI voor het beheren en bewaken van Azure-bestandsshares waareen back-up van azure backup wordt gemaakt.
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 44a49913abd99b285397b8b78ad9d4c0f9df52ea
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934875"
 ---
-# <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Back-ups van Azure-bestands shares beheren met de Azure CLI
+# <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Back-ups van Azure-bestandsshare beheren met de Azure CLI
 
-De Azure CLI biedt een opdracht regel ervaring voor het beheer van Azure-resources. Het is een uitstekend hulp programma voor het maken van aangepaste automatisering om Azure-resources te gebruiken. In dit artikel wordt uitgelegd hoe u taken kunt uitvoeren voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview). U kunt deze stappen ook uitvoeren met de [Azure Portal](https://portal.azure.com/). 
+De Azure CLI biedt een opdrachtregelervaring voor het beheer van Azure-resources. Het is een geweldig hulpmiddel voor het bouwen van aangepaste automatisering om Azure-resources te gebruiken. In dit artikel wordt uitgelegd hoe u taken uitvoert voor het beheren en bewaken van de Azure-bestandsshares waarvan een back-up wordt gemaakt door [Azure Backup.](https://docs.microsoft.com/azure/backup/backup-overview) U deze stappen ook uitvoeren met de [Azure-portal.](https://portal.azure.com/) 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -20,18 +20,18 @@ Als u de CLI lokaal wilt installeren en gebruiken, moet u de Azure CLI-versie 2.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u al een back-up van een Azure-bestands share hebt gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview). Als u er nog geen hebt, raadpleegt u back-ups [maken van Azure-bestands shares met de CLI](backup-afs-cli.md) voor het configureren van back-ups voor uw bestands shares. Voor dit artikel gebruikt u de volgende bronnen:
+In dit artikel wordt ervan uitgegaan dat er al een Azure-bestandsshare is gemaakt waareen [back-up](https://docs.microsoft.com/azure/backup/backup-overview)van maakt door Azure Backup. Zie [Back-up van Azure-bestandsshares met de CLI](backup-afs-cli.md) om back-ups voor uw bestandsshares te configureren als u er geen hebt. Voor dit artikel gebruikt u de volgende bronnen:
 
-* **Resource groep**: *Azure files*
+* **Resourcegroep**: *azurefiles*
 * **RecoveryServicesVault**: *azurefilesvault*
-* **Opslag account**: *afsaccount*
-* **Bestands share**: *Azure files*
+* **Opslagrekening**: *afsaccount*
+* **Bestandsshare:** *azurefiles*
 
 ## <a name="monitor-jobs"></a>Taken controleren
 
-Wanneer u back-up-of herstel bewerkingen uitvoert, maakt de back-upservice een taak voor tracering. Als u voltooide of momenteel actieve taken wilt controleren, gebruikt u de cmdlet [AZ Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) . Met de CLI kunt u ook [een taak die momenteel wordt uitgevoerd, onderbreken](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) of [wachten tot een taak is voltooid](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait).
+Wanneer u back-up- of herstelbewerkingen activeert, maakt de back-upservice een taak voor het bijhouden. Gebruik de cmdlet van de [AZ-back-uptakenlijst](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) om voltooide of momenteel lopende taken te controleren. Met de CLI u ook [een momenteel lopende taak opschorten](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) of wachten tot een taak is [voltooid.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)
 
-In het volgende voor beeld wordt de status van back-uptaken voor de *azurefilesvault* -Recovery Services kluis weer gegeven:
+In het volgende voorbeeld wordt de status van back-uptaken voor de kluis *Azurefilesvault* Recovery Services weergegeven:
 
 ```azurecli-interactive
 az backup job list --resource-group azurefiles --vault-name azurefilesvault
@@ -94,24 +94,24 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 
 ## <a name="modify-policy"></a>Beleid wijzigen
 
-U kunt een back-upbeleid wijzigen om de back-upfrequentie of het Bewaar bereik te wijzigen met behulp van [AZ backup item set-Policy](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-set-policy).
+U een back-upbeleid wijzigen om de back-upfrequentie of het bewaarbereik te wijzigen met behulp van [het setbeleid voor AZ-back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-set-policy).
 
-Als u het beleid wilt wijzigen, definieert u de volgende para meters:
+Als u het beleid wilt wijzigen, definieert u de volgende parameters:
 
-* **--container naam**: de naam van het opslag account dat als host fungeert voor de bestands share. Als u de **naam** of **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--naam**: de naam van de bestands share waarvoor u het beleid wilt wijzigen. Als u de **naam** of **beschrijvende naam** van het back-upitem wilt ophalen, gebruikt u de opdracht [AZ back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
-* **--beleids naam**: de naam van het back-upbeleid dat u wilt instellen voor de bestands share. U kunt de [lijst AZ back-upbeleid](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list) gebruiken om alle beleids regels voor uw kluis weer te geven.
+* **--containernaam:** de naam van het opslagaccount dat het bestandsaandeel host. Als u de **naam** of **de vriendelijke naam** van uw container wilt ophalen, gebruikt u de opdracht [az-back-upcontainerlijst.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
+* **--naam:** de naam van de bestandsshare waarvoor u het beleid wilt wijzigen. Als u de **naam** of **de vriendelijke naam** van uw back-upitem wilt ophalen, gebruikt u de opdracht lijst met [AZ-back-upitems.](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)
+* **--beleidsnaam:** de naam van het back-upbeleid dat u wilt instellen voor uw bestandsshare. U [de lijst met az-back-upbeleid](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list) gebruiken om alle beleidsregels voor uw kluis weer te geven.
 
-In het volgende voor beeld wordt het *schedule2* -back-upbeleid ingesteld voor de *Azure files* -bestands share die aanwezig is in het *afsaccount* -opslag account.
+In het volgende voorbeeld wordt het back-upbeleid *schedule2* ingesteld voor het *azurefiles-bestandsaandeel* dat aanwezig is in het account voor opslag van *afsaccount.*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --name "AzureFileShare;azurefiles" --backup-management-type azurestorage --out table
 ```
 
-U kunt ook de vorige opdracht uitvoeren door de beschrijvende namen voor de container en het item te gebruiken door de volgende twee extra para meters op te geven:
+U de vorige opdracht ook uitvoeren door de vriendelijke namen voor de container en het item te gebruiken door de volgende twee extra parameters op te geven:
 
-* **--back-upbeheer-type**: *opslag*
-* **--workload-type**: *azurefileshare*
+* **--back-up-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -123,36 +123,36 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die door de back-upservice is gemaakt voor de bewerking van het wijzigings beleid. Als u de status van de taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+Het kenmerk **Naam** in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw wijzigingsbeleidsbewerking. Gebruik de [az-back-upfunctie](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet om de status van de taak bij te houden.
 
 ## <a name="stop-protection-on-a-file-share"></a>De beveiliging voor een bestandsshare stoppen
 
 Er zijn twee manieren om het beveiligen van Azure-bestandsshares te stoppen:
 
-* Stop alle toekomstige back-uptaken en *Verwijder* alle herstel punten.
-* Stop alle toekomstige back-uptaken, maar *verlaat* de herstel punten.
+* Stop alle toekomstige back-uptaken en *verwijder* alle herstelpunten.
+* Stop alle toekomstige back-uptaken, maar laat de herstelpunten *achter.*
 
-Er zijn mogelijk kosten verbonden aan het verlaten van de herstel punten in de opslag, omdat de onderliggende moment opnamen die zijn gemaakt door Azure Backup, behouden blijven. Het voor deel van het verlaten van de herstel punten is de optie om de bestands share later te herstellen, indien gewenst. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/storage/files)voor meer informatie over de kosten voor het verlaten van de herstel punten. Als u ervoor kiest om alle herstel punten te verwijderen, kunt u de bestands share niet herstellen.
+Er kunnen kosten verbonden zijn aan het verlaten van de herstelpunten in de opslag, omdat de onderliggende momentopnamen die zijn gemaakt door Azure Backup behouden blijven. Het voordeel van het verlaten van de herstelpunten is de optie om het bestandsaandeel later te herstellen, als u dat wilt. Zie de [prijsdetails](https://azure.microsoft.com/pricing/details/storage/files)voor informatie over de kosten van het verlaten van de herstelpunten. Als u ervoor kiest om alle herstelpunten te verwijderen, u de bestandsshare niet herstellen.
 
-Als u de beveiliging voor de bestands share wilt stoppen, definieert u de volgende para meters:
+Als u de beveiliging van de bestandsshare wilt stoppen, definieert u de volgende parameters:
 
-* **--container naam**: de naam van het opslag account dat als host fungeert voor de bestands share. Als u de **naam** of **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--item-name**: de naam van de bestands share waarvoor u de beveiliging wilt stoppen. Als u de **naam** of **beschrijvende naam** van het back-upitem wilt ophalen, gebruikt u de opdracht [AZ back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
+* **--containernaam:** de naam van het opslagaccount dat het bestandsaandeel host. Als u de **naam** of **de vriendelijke naam** van uw container wilt ophalen, gebruikt u de opdracht [az-back-upcontainerlijst.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
+* **--item-naam:** de naam van de bestandsshare waarvoor u de beveiliging wilt stoppen. Als u de **naam** of **de vriendelijke naam** van uw back-upitem wilt ophalen, gebruikt u de opdracht lijst met [AZ-back-upitems.](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)
 
-### <a name="stop-protection-and-retain-recovery-points"></a>Beveiliging stoppen en herstel punten behouden
+### <a name="stop-protection-and-retain-recovery-points"></a>Stop de beveiliging en bewaar herstelpunten
 
-Als u de beveiliging wilt stoppen tijdens het bewaren van gegevens, gebruikt u de cmdlet [AZ Backup Protection Disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) .
+Gebruik de [az-back-upbeveiliging](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) om de bescherming van gegevens te stoppen met het bewaren van gegevens.
 
-In het volgende voor beeld wordt de beveiliging van de *Azure files* -bestands share gestopt, maar worden alle herstel punten bewaard.
+In het volgende voorbeeld wordt de beveiliging voor het *azurefiles-bestand* niet meer beschermd, maar worden alle herstelpunten behouden.
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --out table
 ```
 
-U kunt ook de vorige opdracht uitvoeren door de beschrijvende naam voor de container en het item te gebruiken door de volgende twee extra para meters op te geven:
+U de vorige opdracht ook uitvoeren door de vriendelijke naam voor de container en het item te gebruiken door de volgende twee extra parameters op te geven:
 
-* **--back-upbeheer-type**: *opslag*
-* **--workload-type**: *azurefileshare*
+* **--back-up-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -164,22 +164,22 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die wordt gemaakt door de back-upservice voor uw stop-beveiligings bewerking. Als u de status van de taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+Het kenmerk **Naam** in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw stopbeveiligingsbewerking. Gebruik de [az-back-upfunctie](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet om de status van de taak bij te houden.
 
-### <a name="stop-protection-without-retaining-recovery-points"></a>Beveiliging stoppen zonder herstel punten te bewaren
+### <a name="stop-protection-without-retaining-recovery-points"></a>Stop de beveiliging zonder herstelpunten te behouden
 
-Als u de beveiliging wilt stoppen zonder herstel punten te bewaren, gebruikt u de optie [AZ Backup Protection Disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet with **Delete-Backup-Data** Option ingesteld op **True**.
+Gebruik de [az-back-upbeveiliging](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) om de beveiliging van de BACK-up te stoppen met de optie **delete-backup-data** die is ingesteld op **true**om de beveiliging te stoppen zonder herstelpunten te behouden.
 
-In het volgende voor beeld wordt de beveiliging van de *Azure files* -bestands share stopgezet zonder dat er herstel punten worden bewaard.
+In het volgende voorbeeld wordt de beveiliging voor het delen *van azurefiles-bestanden* gestopt zonder herstelpunten te behouden.
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --delete-backup-data true --out table
 ```
 
-U kunt ook de vorige opdracht uitvoeren door de beschrijvende naam voor de container en het item te gebruiken door de volgende twee extra para meters op te geven:
+U de vorige opdracht ook uitvoeren door de vriendelijke naam voor de container en het item te gebruiken door de volgende twee extra parameters op te geven:
 
-* **--back-upbeheer-type**: *opslag*
-* **--workload-type**: *azurefileshare*
+* **--back-up-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -187,24 +187,24 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 ## <a name="resume-protection-on-a-file-share"></a>De beveiliging voor een bestandsshare hervatten
 
-Als u de beveiliging van een Azure-bestands share en behouden herstel punten hebt gestopt, kunt u de beveiliging later hervatten. Als u de herstel punten niet behoudt, kunt u de beveiliging niet hervatten.
+Als u de beveiliging voor een Azure-bestandsshare hebt gestopt, maar herstelpunten hebt behouden, u de beveiliging later hervatten. Als u de herstelpunten niet behoudt, u de beveiliging niet hervatten.
 
-Als u de beveiliging voor de bestands share wilt hervatten, definieert u de volgende para meters:
+Als u de beveiliging van het bestandsaandeel wilt hervatten, definieert u de volgende parameters:
 
-* **--container naam**: de naam van het opslag account dat als host fungeert voor de bestands share. Als u de **naam** of **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--item-name**: de naam van de bestands share waarvoor u de beveiliging wilt hervatten. Als u de **naam** of **beschrijvende naam** van het back-upitem wilt ophalen, gebruikt u de opdracht [AZ back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
-* **--Policy name**: de naam van het back-upbeleid waarvoor u de beveiliging voor de bestands share wilt hervatten.
+* **--containernaam:** de naam van het opslagaccount dat het bestandsaandeel host. Als u de **naam** of **de vriendelijke naam** van uw container wilt ophalen, gebruikt u de opdracht [az-back-upcontainerlijst.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
+* **--item-naam:** de naam van de bestandsshare waarvoor u de beveiliging wilt hervatten. Als u de **naam** of **de vriendelijke naam** van uw back-upitem wilt ophalen, gebruikt u de opdracht lijst met [AZ-back-upitems.](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)
+* **--beleidsnaam:** de naam van het back-upbeleid waarvoor u de beveiliging voor de bestandsshare wilt hervatten.
 
-In het volgende voor beeld wordt de cmdlet [AZ Backup Protection resume](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) gebruikt om de beveiliging van de *Azure files* -bestands share te hervatten met behulp van het *schedule1* -back-upbeleid.
+In het volgende voorbeeld wordt de cmdlet voor de cv-cmdlet van [AZ-back-upbeveiliging](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) gebruikt om de beveiliging van het *azurefiles-bestand* te hervatten met behulp van het back-upbeleid *schema1.*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
 ```
 
-U kunt ook de vorige opdracht uitvoeren door de beschrijvende naam voor de container en het item te gebruiken door de volgende twee extra para meters op te geven:
+U de vorige opdracht ook uitvoeren door de vriendelijke naam voor de container en het item te gebruiken door de volgende twee extra parameters op te geven:
 
-* **--back-upbeheer-type**: *opslag*
-* **--workload-type**: *azurefileshare*
+* **--back-up-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -216,23 +216,23 @@ Name                                  ResourceGroup
 75115ab0-43b0-4065-8698-55022a234b7f  azurefiles
 ```
 
-Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die door de back-upservice is gemaakt voor de bewerking voor het hervatten van de beveiliging. Als u de status van de taak wilt bijhouden, gebruikt u de [opdracht AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet.
+Het kenmerk **Naam** in de uitvoer komt overeen met de naam van de taak die is gemaakt door de back-upservice voor uw cv-beveiligingsbewerking. Gebruik de [az-back-upfunctie](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet om de status van de taak bij te houden.
 
-## <a name="unregister-a-storage-account"></a>Registratie van een opslag account ongedaan maken
+## <a name="unregister-a-storage-account"></a>Een opslagaccount uitschrijven
 
-Als u uw bestands shares in een bepaald opslag account wilt beveiligen met behulp van een andere Recovery Services kluis, moet u eerst de [beveiliging stoppen voor alle bestands shares](#stop-protection-on-a-file-share) in dat opslag account. Hef de registratie van het account vervolgens op van de Recovery Services kluis die momenteel wordt gebruikt voor de beveiliging.
+Als u uw bestandsshares in een bepaald opslagaccount wilt beveiligen met behulp van een andere vault van Recovery Services, stopt u eerst [de beveiliging van alle bestandsshares](#stop-protection-on-a-file-share) in die opslagaccount. Registreer het account vervolgens uit de kluis van de Herstelservices die momenteel voor bescherming wordt gebruikt.
 
-U moet een container naam opgeven om de registratie van het opslag account ongedaan te maken. Als u de **naam** of de **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
+U moet een containernaam opgeven om het opslagaccount uit te schrijven. Als u de **naam** of de **vriendelijke naam** van uw container wilt ophalen, gebruikt u de opdracht [az-back-upcontainerlijst.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)
 
-In het volgende voor beeld wordt de registratie van de *afsaccount* -opslag account uit *azurefilesvault* ongedaan gemaakt met behulp van de cmdlet [AZ backup container unregister](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-unregister) .
+In het volgende voorbeeld wordt het *account van de afsaccountopslag* van *azurefilesvault* losgekoppeld met behulp van de cmdlet [voor az-back-upcontainer unregister.](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-unregister)
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table
 ```
 
-U kunt ook de vorige cmdlet uitvoeren met behulp van de beschrijvende naam voor de container door de volgende aanvullende para meter op te geven:
+U de vorige cmdlet ook uitvoeren met de vriendelijke naam voor de container door de volgende extra parameter op te geven:
 
-* **--back-upbeheer-type**: *opslag*
+* **--back-up-management-type:** *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table
@@ -240,4 +240,4 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met back-ups van Azure-bestands shares oplossen](troubleshoot-azure-files.md)voor meer informatie.
+Zie [Problemen met azure-bestandsshares back-up oplossen](troubleshoot-azure-files.md)voor meer informatie.

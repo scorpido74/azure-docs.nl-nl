@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61127808"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Bestanden uploaden naar een Media Services-account via Azure Portal 
@@ -26,21 +26,21 @@ ms.locfileid: "61127808"
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
-> * [REST](media-services-rest-upload-files.md)
+> * [Rest](media-services-rest-upload-files.md)
 > 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In Azure Media Services uploadt u de digitale bestanden naar een asset. De asset kan video, audio, afbeeldingen, verzamelingen van miniaturen, tekstsporen en ondertitelingsbestanden (en de metagegevens voor deze bestanden) bevatten. Nadat de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming.
 
 Media Services heeft een maximale bestandsgrootte voor het verwerken van bestanden. Zie [Media Services quotas and limitations](media-services-quotas-and-limitations.md) (Quota en beperkingen voor Media Services) voor meer informatie over maximale bestandsgrootte.
 
-U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie. 
+U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie gratis [proefversie van Azure voor](https://azure.microsoft.com/pricing/free-trial/)meer informatie. 
 
 ## <a name="upload-files"></a>Bestanden uploaden
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Instellingen** > **Assets**. Selecteer de knop **Uploaden**.
+2. Selecteer **Instellingen** > **-middelen**. Selecteer de knop **Uploaden**.
    
     ![Bestanden uploaden](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -64,6 +64,6 @@ Wanneer het uploaden is voltooid, wordt de nieuwe asset in het deelvenster **Ass
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [coderen van de geüploade assets](media-services-portal-encode.md).
 
-* U kunt ook Azure Functions gebruiken om een coderingstaak te activeren wanneer er een bestand binnenkomt in de geconfigureerde container. Zie voor meer informatie het voorbeeld in [Media Services: Azure Media Services integreren met Azure Functions en Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
+* U kunt ook Azure Functions gebruiken om een coderingstaak te activeren wanneer er een bestand binnenkomt in de geconfigureerde container. Bekijk voor meer informatie het voorbeeld in [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) (Media Services: Azure Media Services integreren met Azure Functions en Logic Apps).
 
 

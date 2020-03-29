@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs beveiligings model
-description: Meer informatie over het beveiligings model voor Azure Notification Hubs.
+title: Beveiligingsmodel voor meldingshubs
+description: Meer informatie over het beveiligingsmodel voor Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,61 +17,61 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263758"
 ---
-# <a name="notification-hubs-security"></a>Notification Hubs beveiliging
+# <a name="notification-hubs-security"></a>Beveiliging van meldingshubs
 
 ## <a name="overview"></a>Overzicht
 
-In dit onderwerp wordt het beveiligings model van Azure Notification Hubs beschreven.
+In dit onderwerp wordt het beveiligingsmodel van Azure Notification Hubs beschreven.
 
-## <a name="shared-access-signature-security"></a>Shared Access Signature beveiliging
+## <a name="shared-access-signature-security"></a>Beveiliging van gedeelde toegangshandtekeningen
 
-Notification Hubs implementeert een beveiligings schema op entiteits niveau met de naam een *Shared Access Signature* (SAS). Elke regel bevat een naam, een sleutel waarde (gedeeld geheim) en een set rechten, zoals verderop in [beveiligings claims](#security-claims)wordt uitgelegd. 
+Notification Hubs implementeert een beveiligingssysteem op entiteitsniveau, een *SAS (Shared Access Signature).* Elke regel bevat een naam, een sleutelwaarde (gedeeld geheim) en een set rechten, zoals later in [Beveiligingsclaims](#security-claims)wordt uitgelegd. 
 
-Wanneer u een hub maakt, worden er automatisch twee regels gemaakt: één met **Luister** rechten (die de client-app gebruikt) en één met **alle** rechten (die de app-back-end gebruikt):
+Bij het maken van een hub worden automatisch twee regels gemaakt: een met **luisterrechten** (die de client-app gebruikt) en een met **alle** rechten (die de app backend gebruikt):
 
-- **DefaultListenSharedAccessSignature**: verleent alleen **listen** -machtiging.
-- **DefaultFullSharedAccessSignature**: verleent machtigingen voor **Luis teren**, **beheren**en **verzenden** . Dit beleid wordt alleen gebruikt in de back-end van uw app. Gebruik het niet in client toepassingen. Gebruik een beleid met alleen toegang voor **Luis teren** . Zie [SAS-tokens voor toegangs beleid](#sas-tokens-for-access-policies) verderop in dit artikel voor meer informatie over het maken van een nieuw aangepast toegangs beleid met een nieuwe SAS-token.
+- **DefaultListenSharedAccessSignature**: verleent alleen **luistertoestemming.**
+- **DefaultFullSharedAccessSignature:** geeft **machtigingen voor luisteren,** **beheren**en **verzenden toe.** Dit beleid mag alleen worden gebruikt in uw back-end van de app. Gebruik het niet in clienttoepassingen; gebruik een beleid met alleen **toegang tot luisteren.** Zie [SAS-tokens voor toegangsbeleid](#sas-tokens-for-access-policies) later in dit artikel om een nieuw aangepast toegangsbeleid te maken met een nieuw SAS-token.
 
-Bij het uitvoeren van registratie beheer vanuit client-apps, als de gegevens die via meldingen worden verzonden, niet gevoelig zijn (bijvoorbeeld weer updates), een veelgebruikte manier om toegang te krijgen tot een notification hub is de sleutel waarde van de regel alleen-lezen toegang tot de client-app te geven. en om de sleutel waarde van de regel volledige toegang te geven tot de back-end van de app.
+Bij het uitvoeren van registratiebeheer vanuit client-apps, als de informatie die via meldingen wordt verzonden niet gevoelig is (bijvoorbeeld weerupdates), is een veelvoorkomende manier om toegang te krijgen tot een Meldingshub om de belangrijkste waarde van de regel Alleen-luisteren toegang te geven tot de client-app, en om de belangrijkste waarde van de regel volledige toegang tot de app backend te geven.
 
-Apps moeten de sleutel waarde niet insluiten in Windows Store-client-apps. Laat de client-app in plaats daarvan het ophalen van de back-end van de app bij het opstarten.
+Apps mogen de sleutelwaarde niet insluiten in Windows Store-client-apps. in plaats daarvan laat de client-app deze ophalen uit de back-end van de app bij het opstarten.
 
-De sleutel met **listen** -toegang kan een client-app voor elk label registreren. Als uw app de registraties beperkt tot specifieke tags voor specifieke clients (bijvoorbeeld wanneer labels gebruikers-Id's vertegenwoordigen), moet uw app-back-end de registraties uitvoeren. Zie [registratie beheer](notification-hubs-push-notification-registration-management.md)voor meer informatie. Op deze manier is de client-app niet rechtstreeks toegang tot Notification Hubs.
+Met de sleutel met **Toegang luisteren** kan een client-app zich registreren voor elke tag. Als uw app registraties moet beperken tot specifieke tags voor specifieke clients (bijvoorbeeld wanneer tags gebruikersnamen vertegenwoordigen), moet uw back-end van de app de registraties uitvoeren. Zie [Registratiebeheer](notification-hubs-push-notification-registration-management.md)voor meer informatie. Houd er rekening mee dat de client-app op deze manier geen directe toegang heeft tot Meldingenhubs.
 
-## <a name="security-claims"></a>Beveiligings claims
+## <a name="security-claims"></a>Beveiligingsclaims
 
-Net als andere entiteiten zijn notification hub-bewerkingen toegestaan voor drie beveiligings claims: **Luis teren**, **verzenden**en **beheren**.
+Net als bij andere entiteiten zijn Notification Hub-bewerkingen toegestaan voor drie beveiligingsclaims: **Luisteren,** **Verzenden**en **beheren**.
 
-| Claim   | Beschrijving                                          | Toegestane bewerkingen |
+| Claim   | Beschrijving                                          | Bewerkingen toegestaan |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Luisteren  | Enkelvoudige registraties maken/bijwerken, lezen en verwijderen | Registratie maken/bijwerken<br><br>Registratie lezen<br><br>Alle registraties voor een ingang lezen<br><br>Registratie verwijderen |
-| Verzenden    | Berichten verzenden naar de notification hub                | Bericht verzenden |
-| Beheer  | RUWE gegevens op Notification Hubs (inclusief het bijwerken van PNS-referenties en beveiligings sleutels) en het lezen van registraties op basis van Tags |Hubs maken/bijwerken/lezen/verwijderen<br><br>Registraties per tag lezen |
+| Luisteren  | Afzonderlijke registraties maken/bijwerken, lezen en verwijderen | Registratie maken/bijwerken<br><br>Registratie lezen<br><br>Alle registraties voor een handvat lezen<br><br>Registratie verwijderen |
+| Verzenden    | Berichten verzenden naar de meldingshub                | Bericht verzenden |
+| Beheren  | CRUD's op meldinghubs (inclusief het bijwerken van PNS-referenties en beveiligingssleutels) en leesregistraties op basis van tags |Hubs maken/bijwerken/lezen/verwijderen<br><br>Registraties lezen op tag |
 
 Notification Hubs accepteert SAS-tokens die zijn gegenereerd met gedeelde sleutels die rechtstreeks op de hub zijn geconfigureerd.
 
-Het is niet mogelijk om een melding naar meer dan één naam ruimte te verzenden. Naam ruimten zijn logische containers voor Notification Hubs en zijn niet betrokken bij het verzenden van meldingen.
+Het is niet mogelijk om een melding naar meer dan één naamruimte te sturen. Naamruimten zijn logische containers voor Meldingshubs en zijn niet betrokken bij het verzenden van meldingen.
 
-Gebruik het toegangs beleid op naam ruimte niveau (referenties) voor bewerkingen op naam ruimte niveau. bijvoorbeeld: het vermelden van hubs, het maken of verwijderen van hubs, enzovoort. Alleen met het toegangs beleid op hubniveau kunt u meldingen verzenden.
+Gebruik het toegangsbeleid op naamruimteniveau (referenties) voor bewerkingen op naamruimteniveau. bijvoorbeeld: hubs aanbieden, hubs maken of verwijderen, enz. Alleen met het toegangsbeleid op hubniveau u meldingen verzenden.
 
-### <a name="sas-tokens-for-access-policies"></a>SAS-tokens voor toegangs beleid
+### <a name="sas-tokens-for-access-policies"></a>SAS-tokens voor toegangsbeleid
 
-Ga als volgt te werk om een nieuwe beveiligings claim te maken of om bestaande SAS-sleutels weer te geven:
+Ga als volgt te werk om een nieuwe beveiligingsclaim te maken of bestaande SAS-sleutels weer te geven:
 
 1. Meld u aan bij Azure Portal.
 2. Selecteer **Alle resources**.
-3. Selecteer de naam van de notification hub waarvoor u de claim wilt maken of Bekijk de SAS-sleutel.
-4. Selecteer in het linkermenu **toegangs beleid**.
-5. Selecteer **Nieuw beleid** om een nieuwe beveiligings claim te maken. Geef het beleid een naam en selecteer de machtigingen die u wilt verlenen. Selecteer vervolgens **OK**.
-6. De volledige connection string (inclusief de nieuwe SAS-sleutel) wordt weer gegeven in het venster toegangs beleid. U kunt deze teken reeks naar het klem bord kopiëren voor later gebruik.
+3. Selecteer de naam van de meldingshub waarvoor u de claim wilt maken of de SAS-sleutel wilt bekijken.
+4. Selecteer **Access-beleid**in het linkermenu .
+5. Selecteer **Nieuw beleid** om een nieuwe beveiligingsclaim te maken. Geef het beleid een naam en selecteer de machtigingen die u wilt verlenen. Selecteer vervolgens **OK**.
+6. De volledige verbindingstekenreeks (inclusief de nieuwe SAS-toets) wordt weergegeven in het venster Toegangsbeleid. U deze tekenreeks naar het klembord kopiëren voor later gebruik.
 
-Als u de SAS-sleutel uit een specifiek beleid wilt extra heren, selecteert u de knop **kopiëren** naast het beleid met de gewenste SAS-sleutel. Plak deze waarde op een tijdelijke locatie en kopieer vervolgens het SAS-sleutel gedeelte van de connection string. In dit voor beeld wordt gebruikgemaakt van een Notification Hubs naam ruimte met de naam **mytestnamespace1**en een beleid met de naam **policy2**. De SAS-sleutel is de waarde aan het einde van de teken reeks, opgegeven door **SharedAccessKey**:
+Als u de SAS-sleutel uit een specifiek beleid wilt halen, selecteert u de knop **Kopiëren** naast het beleid met de gewenste SAS-toets. Plak deze waarde op een tijdelijke locatie en kopieer vervolgens het SAS-sleutelgedeelte van de verbindingstekenreeks. In dit voorbeeld wordt een naamruimte voor meldinghubs gebruikt, **mytestnamespace1**genaamd , en een beleid met de naam **policy2**. De SAS-sleutel is de waarde aan het einde van de tekenreeks, opgegeven door **SharedAccessKey:**
 
 ```shell
 Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
@@ -81,4 +81,4 @@ Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=polic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Notification Hubs](notification-hubs-push-notification-overview.md)
+- [Overzicht van meldingshubs](notification-hubs-push-notification-overview.md)

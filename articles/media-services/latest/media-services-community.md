@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure Media Services v3-Community
-description: Op deze Azure Media Services Community-pagina worden verschillende manieren beschreven om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+title: Overzicht van Azure Media Services v3-community
+description: Op deze communitypagina van Azure Media Services worden verschillende manieren besproken waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
 ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545922"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure Media Services v3-Community  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3-community  
 
-Op deze Azure Media Services Community-pagina worden verschillende manieren beschreven om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Op deze communitypagina van Azure Media Services worden verschillende manieren besproken waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
 
 ## <a name="provide-feedback-and-make-suggestions"></a>Feedback geven en suggesties doen
 
@@ -32,19 +32,19 @@ Op deze Azure Media Services Community-pagina worden verschillende manieren besc
 
 ### <a name="twitter"></a>Twitter
 
-U kunt de [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter-handle gebruiken om contact met ons op te nemen of om updates op Twitter te volgen. Gebruik de [@AzureSupport](https://twitter.com/azuresupport) Twitter-handle om ondersteuning op Twitter aan te vragen.  
+U [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) gebruik maken van de twitter handvat om contact met ons op of volg updates op Twitter. Gebruik [@AzureSupport](https://twitter.com/azuresupport) de twitter handle om ondersteuning te vragen op Twitter.  
 
-### <a name="online-forums"></a>Onlineforums
+### <a name="online-forums"></a>Online forums
 
-De volgende forums kunnen worden gebruikt voor het stellen van vragen over huidige producten en functies.
+De volgende forums kunnen worden gebruikt voor het stellen van vragen over de huidige producten en functies.
 
-Op dit moment is MSDN Media Services het primaire Community-Forum van het team.
+Momenteel is MSDN het primaire communityforum van het Media Services-team.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Media-Services '.
+Het team monitort ook vragen die zijn getagd op Stack Overflow met 'azure-media-services'.
 
-[![stack overflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![Stackoverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="next-steps"></a>Volgende stappen
 

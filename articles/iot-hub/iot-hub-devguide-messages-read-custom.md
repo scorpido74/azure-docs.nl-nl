@@ -1,6 +1,6 @@
 ---
-title: Informatie over aangepaste eindpunten van Azure IoT Hub | Microsoft Docs
-description: Handleiding voor ontwikkelaars - routering query's gebruiken voor het routeren van apparaat-naar-cloud-berichten met aangepaste eindpunten.
+title: Aangepaste eindpunten van Azure IoT Hub begrijpen | Microsoft Documenten
+description: Handleiding voor ontwikkelaars - met behulp van routeringsquery's om berichten van apparaat naar cloud te routeren naar aangepaste eindpunten.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,53 +9,53 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244341"
 ---
-# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Gebruik berichtroutes en aangepaste eindpunten voor apparaat-naar-cloud-berichten
+# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Berichtroutes en aangepaste eindpunten gebruiken voor device-to-cloudberichten
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub [berichtroutering](iot-hub-devguide-routing-query-syntax.md) kunnen gebruikers voor het routeren van apparaat-naar-cloud-berichten met gerichte service-eindpunten. Routering biedt ook een mogelijkheid een query uitvoeren op voor het filteren van de gegevens voordat deze naar de eindpunten. Elke routering query die u configureert heeft de volgende eigenschappen:
+Met IoT Hub [Message Routing](iot-hub-devguide-routing-query-syntax.md) kunnen gebruikers device-to-cloud berichten doorsturen naar servicegerichte eindpunten. Routering biedt ook een querymogelijkheid om de gegevens te filteren voordat deze naar de eindpunten worden geleid. Elke routeringsquery die u configureert, heeft de volgende eigenschappen:
 
 | Eigenschap      | Beschrijving |
 | ------------- | ----------- |
-| **Naam**      | De unieke naam ter identificatie van de query. |
-| **Bron**    | De oorsprong van de gegevensstroom worden gereageerd. Bijvoorbeeld: telemetrie van apparaten. |
-| **voorwaarde** | De query-expressie voor de routering query die wordt uitgevoerd op de berichteigenschappen van de toepassing, Systeemeigenschappen berichttekst, apparaat apparaatdubbel-tags en apparaatdubbeleigenschappen om te bepalen of er een overeenkomst voor het eindpunt. Zie voor meer informatie over het maken van een query de Zie [message routing query-syntaxis](iot-hub-devguide-routing-query-syntax.md) |
-| **Endpoint**  | De naam van het eindpunt waar de IoT Hub-berichten die overeenkomen met de query verzendt. Het is raadzaam dat u een eindpunt in dezelfde regio als uw IoT-hub. |
+| **Naam**      | De unieke naam die de query identificeert. |
+| **Bron**    | De oorsprong van de te handelen gegevensstroom. Bijvoorbeeld apparaattelemetrie. |
+| **Voorwaarde** | De queryexpressie voor de routeringsquery die wordt uitgevoerd tegen de eigenschappen van de berichttoepassing, systeemeigenschappen, berichttekst, dubbele tags van het apparaat en twee eigenschappen van het apparaat om te bepalen of het een overeenkomst voor het eindpunt is. Zie de [syntaxis](iot-hub-devguide-routing-query-syntax.md) van de query see Message Routing |
+| **Eindpunt**  | De naam van het eindpunt waar IoT Hub berichten verzendt die overeenkomen met de query. We raden u aan een eindpunt te kiezen in dezelfde regio als uw IoT-hub. |
 
-Een enkel bericht mogelijk overeenkomt met de voorwaarde op meerdere Routering query's, geval IoT Hub waarin het bericht naar het eindpunt dat is gekoppeld aan elke overeenkomende query biedt. IoT Hub ook automatisch beleidinstellingen bezorging van berichten, zodat als een bericht overeenkomt met meerdere query's die hetzelfde doel hebben, ze alleen één keer naar deze bestemming geschreven worden.
+Eén bericht kan overeenkomen met de voorwaarde voor meerdere routeringsquery's, in welk geval IoT Hub het bericht levert aan het eindpunt dat aan elke overeenkomende query is gekoppeld. IoT Hub dedupeert ook automatisch de bezorging van berichten, dus als een bericht overeenkomt met meerdere query's die dezelfde bestemming hebben, wordt het slechts één keer naar die bestemming geschreven.
 
 ## <a name="endpoints-and-routing"></a>Eindpunten en routering
 
-Een IoT-hub is een standaard [ingebouwd eindpunt](iot-hub-devguide-messages-read-builtin.md). U kunt aangepaste eindpunten om berichten te routeren naar maken door andere services in uw abonnement koppelen aan de hub. IoT Hub ondersteunt momenteel Azure Storage-containers, Event Hubs, Service Bus-wachtrijen en Service Bus-onderwerpen als aangepaste eindpunten.
+Een IoT-hub heeft een standaard [ingebouwd eindpunt.](iot-hub-devguide-messages-read-builtin.md) U aangepaste eindpunten maken om berichten naar te leiden door andere services in uw abonnement aan de hub te koppelen. IoT Hub ondersteunt momenteel Azure Storage-containers, Gebeurtenishubs, ServiceBus-wachtrijen en servicebus-onderwerpen als aangepaste eindpunten.
 
-Wanneer u Routering en aangepaste eindpunten, worden alleen berichten met het ingebouwde eindpunt geleverd als ze niet overeenkomen met elke query. Om berichten te leveren met het ingebouwde eindpunt evenals garantie voor een aangepast eindpunt, toevoegen een route waarmee berichten worden verzonden in de ingebouwde **gebeurtenissen** eindpunt.
+Wanneer u routerings- en aangepaste eindpunten gebruikt, worden berichten alleen geleverd aan het ingebouwde eindpunt als ze niet overeenkomen met een query. Als u berichten wilt leveren aan het ingebouwde eindpunt en aan een aangepast eindpunt, voegt u een route toe die berichten naar het eindpunt van de ingebouwde **gebeurtenissen** verzendt.
 
 > [!NOTE]
-> * IoT Hub biedt alleen ondersteuning voor het schrijven van gegevens naar Azure Storage-containers als blobs.
-> * Service Bus-wachtrijen en onderwerpen met **sessies** of **detectie van dubbele** ingeschakeld worden niet ondersteund als aangepaste eindpunten.
+> * IoT Hub ondersteunt alleen het schrijven van gegevens naar Azure Storage-containers als blobs.
+> * Wachtrijen voor servicebussen en onderwerpen met **Sessies** of **Dubbele detectie** ingeschakeld, worden niet ondersteund als aangepaste eindpunten.
 
-Zie voor meer informatie over het maken van aangepaste eindpunten van IoT-Hub [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md).
+Zie [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md)voor meer informatie over het maken van aangepaste eindpunten in IoT Hub.
 
-Zie voor meer informatie over het lezen van het aangepaste eindpunten:
+Zie voor meer informatie over het lezen van aangepaste eindpunten:
 
-* Lezen van [Azure Storage-containers](../storage/blobs/storage-blobs-introduction.md).
+* Lezen uit [Azure Storage-containers](../storage/blobs/storage-blobs-introduction.md).
 
-* Lezen van [Eventhubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Lezen van [Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-* Lezen van [Service Bus-wachtrijen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+* Lezen van [Service Bus wachtrijen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-* Lezen van [Service Bus-onderwerpen](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
+* Lezen van [Service Bus onderwerpen](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over IoT Hub-eindpunten, [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md).
+* Zie [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md)voor meer informatie over eindpunten van IoT Hub.
 
-* Zie voor meer informatie over de querytaal die u gebruikt voor het definiëren van routering query's [bericht routering querysyntaxis](iot-hub-devguide-routing-query-syntax.md).
+* Zie Syntaxis van de opdracht [voor berichtroutering](iot-hub-devguide-routing-query-syntax.md)voor meer informatie over de querytaal die u gebruikt om routeringsquery's te definiëren.
 
-* De [Process IoT Hub apparaat-naar-cloud-berichten met behulp van routes](tutorial-routing.md) zelfstudie leert u hoe u routering query's en aangepaste eindpunten.
+* In [de zelfstudie van Process IoT Hub device-to-cloud-berichten met routes](tutorial-routing.md) ziet u hoe u routeringsquery's en aangepaste eindpunten gebruiken.

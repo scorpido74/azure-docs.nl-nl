@@ -1,6 +1,6 @@
 ---
-title: Een service toevoegen aan de oplossing voor externe controle UI - Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u voor het toevoegen van een nieuwe service in de Remote Monitoring solution accelerator-Webgebruikersinterface.
+title: Een service toevoegen aan de gebruikersinterface van de oplossing voor externe bewaking - Azure | Microsoft Documenten
+description: In dit artikel ziet u hoe u een nieuwe service toevoegt aan de webgebruikersinterface voor het versnellersweb van de Remote Monitoring-oplossing.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,81 +9,81 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447043"
 ---
-# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste service toevoegen aan de Remote Monitoring solution accelerator-Webgebruikersinterface
+# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste service toevoegen aan de webgebruikersinterface voor de versneller van de oplossing voor externe bewaking
 
-In dit artikel wordt beschreven hoe u voor het toevoegen van een nieuwe service in de Remote Monitoring solution accelerator-Webgebruikersinterface. Dit artikel wordt beschreven:
+In dit artikel ziet u hoe u een nieuwe service toevoegt aan de webgebruikersinterface voor het versnellersweb van de Remote Monitoring-oplossing. Het artikel beschrijft:
 
-- Klik hier voor meer informatie over het voorbereiden van een lokale ontwikkelingsomgeving.
-- Hoe u een nieuwe service toevoegen aan de web-UI.
+- Hoe maak je een lokale ontwikkelingsomgeving voor te bereiden.
+- Een nieuwe service toevoegen aan de gebruikersinterface van het web.
 
-De voorbeeld-service in dit artikel bevat de gegevens voor een raster die de [een aangepaste raster toevoegen aan de Remote Monitoring solution accelerator-Webgebruikersinterface](iot-accelerators-remote-monitoring-customize-grid.md) procedures artikel leest u hoe om toe te voegen.
+De voorbeeldservice in dit artikel bevat de gegevens voor een raster dat met het aangepaste raster toevoegen aan het artikel over de web-to-pagina van [de rasoplossing voor externe bewaking](iot-accelerators-remote-monitoring-customize-grid.md) van de oplossing sto toont hoe u toevoegen.
 
-In een React-toepassing communiceert een service doorgaans met een back-endservice. Voorbeelden in de oplossingsverbetering voor externe controle zijn services die interactie hebben met de IoT hub-beheer en de configuratie van microservices.
+In een React-toepassing werkt een service doorgaans samen met een back-endservice. Voorbeelden in de remote monitoring oplossingversneller zijn services die communiceren met de IoT-hubmanager en configuratiemicroservices.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt de stappen in deze handleiding hebt voltooid, moet u de volgende software is geïnstalleerd op uw lokale ontwikkelcomputer:
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u de volgende software nodig die op uw lokale ontwikkelingsmachine is geïnstalleerd:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-U moet de stappen in de [een aangepaste pagina toevoegen aan de Remote Monitoring solution accelerator-Webgebruikersinterface](iot-accelerators-remote-monitoring-customize-page.md) artikel met instructies voordat u doorgaat.
+Voer de stappen in de [pagina Een aangepaste pagina toevoegen uit aan de web-gebruikersinterface](iot-accelerators-remote-monitoring-customize-page.md) van de rasoplossing voor externe bewaking voordat u verdergaat.
 
 ## <a name="add-a-service"></a>Een service toevoegen
 
-Een service toevoegen aan de web-UI, moet u de bronbestanden die de service ook definiëren toevoegen en wijzigen van bestaande bestanden zodat de web-UI op de hoogte van de nieuwe service.
+Als u een service wilt toevoegen aan de webgebruikersinterface, moet u de bronbestanden toevoegen die de service definiëren en enkele bestaande bestanden wijzigen om de webgebruikersinterface op de hoogte te brengen van de nieuwe service.
 
-### <a name="add-the-new-files-that-define-the-service"></a>Toevoegen van de nieuwe bestanden die de service ook definiëren
+### <a name="add-the-new-files-that-define-the-service"></a>De nieuwe bestanden toevoegen die de service definiëren
 
-Aan de slag te gaan, de **src/overzicht/services** map bevat de bestanden die u een eenvoudige service definieert:
+Om u op weg te helpen, bevat de map **src/walkthrough/services** de bestanden die een eenvoudige service definiëren:
 
-**exampleService.js**
+**voorbeeldService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
-Zie voor meer informatie over hoe de services zijn geïmplementeerd, [de inleiding tot reactieve programmering u hebt gemist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+Zie [De inleiding tot Reactieve programmering die u hebt gemist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)voor meer informatie over hoe services worden geïmplementeerd.
 
-**model/exampleModels.js**
+**model/voorbeeldModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Kopie **exampleService.js** naar de **src/services** map en kopieer **exampleModels.js** naar de **src/services/modellen** map.
+Kopieer **exampleService.js** naar de **map src/services** en kopieer **voorbeeldModels.js** naar de map **src/services/models.**
 
-Update de **index.js** -bestand in de **src/services** map voor het exporteren van de nieuwe service:
+Werk het **bestand index.js** bij in de map **src/services** om de nieuwe service te exporteren:
 
 ```js
 export * from './exampleService';
 ```
 
-Update de **index.js** -bestand in de **src/services/modellen** map voor het exporteren van het nieuwe model:
+Werk het **bestand index.js** bij in de map **src/services/models** om het nieuwe model te exporteren:
 
 ```js
 export * from './exampleModels';
 ```
 
-### <a name="set-up-the-calls-to-the-service-from-the-store"></a>Instellen van de aanroepen naar de service uit de store
+### <a name="set-up-the-calls-to-the-service-from-the-store"></a>De gesprekken naar de service vanuit de winkel instellen
 
-Aan de slag te gaan, de **src/overzicht/store/reducers tegelijkertijd** map bevat een voorbeeld-reducer:
+Om u op weg te helpen, bevat de map **src/walkthrough/store/reducers** een voorbeeldreducer:
 
-**exampleReducer.js**
+**voorbeeldReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Kopie **exampleReducer.js** naar de **src/store/reducers tegelijkertijd** map.
+Kopieer **voorbeeldReducer.js** naar de map **src/store/reducers.**
 
-Voor meer informatie over de reducer en **Epics**, Zie [redux zichtbaar](https://redux-observable.js.org/).
+Voor meer informatie over de reducer en **Epics,** zie [redux-waarneembare](https://redux-observable.js.org/).
 
 ### <a name="configure-the-middleware"></a>De middleware configureren
 
-Voor het configureren van de middleware, toevoegen de reducer naar de **rootReducer.js** -bestand in de **src/store** map:
+Als u de middleware wilt configureren, voegt u de reducer toe aan het bestand **rootReducer.js** in de map **src/store:**
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Toevoegen van de epics naar de **rootEpics.js** -bestand in de **src/store** map:
+Voeg de epics toe aan het **bestand rootEpics.js** in de **src/store** map:
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';
@@ -114,8 +114,8 @@ const epics = [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de resources beschikbaar om u te helpen bij het toevoegen of aanpassen van services in de web-UI in de oplossingsverbetering voor externe controle.
+In dit artikel leert u over de beschikbare bronnen om u te helpen services toe te voegen of aan te passen in de webgebruikersinterface in de versneller van de oplossing voor externe bewaking.
 
-Nu u een service hebt gedefinieerd, wordt de volgende stap is het [een aangepaste raster toevoegen aan de Remote Monitoring solution accelerator-Webgebruikersinterface](iot-accelerators-remote-monitoring-customize-grid.md) die gegevens die zijn geretourneerd door de service worden weergegeven.
+Nu u een service hebt gedefinieerd, is de volgende stap het [toevoegen van een aangepast raster aan de webgebruikersinterface voor het versnellerssysteem voor externe bewaking](iot-accelerators-remote-monitoring-customize-grid.md) met gegevens die door de service zijn geretourneerd.
 
-Zie voor meer informatie over de oplossingsverbetering voor externe controle [architectuur voor externe controle](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Zie [Remote Monitoring architecture](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de remote monitoring oplossingsversneller.

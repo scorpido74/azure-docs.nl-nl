@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie | Microsoft Docs'
-description: Legt uit hoe Azure AD Connect synchroniseren werkt en hoe u om aan te passen.
+title: 'Azure AD Connect-synchronisatie: synchronisatie begrijpen en aanpassen | Microsoft Documenten'
+description: Hier wordt uitgelegd hoe Azure AD Connect-synchronisatie werkt en hoe u deze aanpassen.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,54 +17,54 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348736"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect-synchronisatie: Begrijpen en aanpassen van synchronisatie
-De Azure Active Directory Connect-Synchronisatieservices (Azure AD Connect-synchronisatie) is een belangrijkste onderdeel van Azure AD Connect. Dit zorgt dat alle bewerkingen die zijn gerelateerd aan het synchroniseren van identiteitsgegevens tussen uw on-premises omgeving en Azure AD. Azure AD Connect-synchronisatie is de opvolger van DirSync, Azure AD Sync en Forefront Identity Manager met de Azure Active Directory-Connector geconfigureerd.
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen
+De Azure Active Directory Connect-synchronisatieservices (Azure AD Connect-synchronisatie) is een belangrijk onderdeel van Azure AD Connect. Het zorgt voor alle bewerkingen die verband houden met het synchroniseren van identiteitsgegevens tussen uw on-premises omgeving en Azure AD. Azure AD Connect-synchronisatie is de opvolger van DirSync, Azure AD Sync en Forefront Identity Manager met de Azure Active Directory Connector geconfigureerd.
 
-In dit onderwerp is de thuisbasis voor **Azure AD Connect-synchronisatie** (ook wel genoemd **synchronisatie-engine**) en een lijst met koppelingen naar alle andere onderwerpen met betrekking tot het. Zie voor koppelingen naar Azure AD Connect [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).
+Dit onderwerp is het thuis voor **Azure AD Connect-synchronisatie** (ook wel **synchronisatieengine**genoemd) en bevat koppelingen naar alle andere onderwerpen die ermee verband houden. Zie [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)voor koppelingen naar Azure AD Connect.
 
-De synchronisatieservice bestaat uit twee onderdelen: de on-premises **Azure AD Connect-synchronisatie** onderdeel en de kant van de service in Azure AD met de naam **Azure AD Connect-synchronisatieservice**.
+De synchronisatieservice bestaat uit twee componenten, de on-premises **Azure AD Connect-synchronisatiecomponent** en de servicezijde in Azure AD, **azure AD Connect-synchronisatieservice**genaamd.
 
-## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect sync-onderwerpen
-| Onderwerp | Er wordt aangegeven en bij het lezen |
+## <a name="azure-ad-connect-sync-topics"></a>Synchronisatieonderwerpen voor Azure AD Connect
+| Onderwerp | Wat het dekt en wanneer te lezen |
 | --- | --- |
-| **Grondbeginselen van Azure AD Connect-synchronisatie** | |
-| [Inzicht in de architectuur](concept-azure-ad-connect-sync-architecture.md) |Voor het geval u die niet bekend bent met de synchronisatie-engine en meer informatie over de architectuur en de termen die worden gebruikt. |
-| [Technische concepten](how-to-connect-sync-technical-concepts.md) |Een verkorte versie van het onderwerp van de architectuur en kort wordt uitgelegd dat de termen die worden gebruikt. |
-| [Topologieën voor Azure AD Connect](plan-connect-topologies.md) |Beschrijft de verschillende topologieën en scenario's die biedt ondersteuning voor de synchronisatie-engine. |
+| **Synchronisatiefundamenten van Azure AD Connect** | |
+| [Inzicht in de architectuur](concept-azure-ad-connect-sync-architecture.md) |Voor degenen onder u die nieuw zijn in de sync engine en willen leren over de architectuur en de gebruikte termen. |
+| [Technische concepten](how-to-connect-sync-technical-concepts.md) |Een korte versie van het architectuuronderwerp en legt kort de gebruikte termen uit. |
+| [Topologieën voor Azure AD Connect](plan-connect-topologies.md) |Beschrijft de verschillende topologieën en scenario's die de synchronisatieengine ondersteunt. |
 | **Aangepaste configuratie** | |
-| [De installatiewizard opnieuw uit te voeren](how-to-connect-installation-wizard.md) |Wordt uitgelegd wat u opties beschikbaar zijn wanneer u de Azure AD Connect-installatiewizard opnieuw uitvoert. |
-| [Informatie over declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md) |Beschrijving van het configuratiemodel met de naam declaratieve inrichting. |
-| [Inzicht in verklarende Inrichtingsexpressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |Beschrijving van de syntaxis voor de expressietaal die wordt gebruikt in de declaratieve inrichting. |
-| [Inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md) |Beschrijving van de out-of-box-regels en de standaardconfiguratie. Beschrijft ook hoe de regels samenwerken voor de out-of-box-scenario's om te werken. |
-| [Inzicht krijgen in gebruikers en contactpersonen](concept-azure-ad-connect-sync-user-and-contacts.md) |Blijft op het vorige onderwerp en wordt beschreven hoe de configuratie voor gebruikers en contactpersonen werkt samen met name in een omgeving met meerdere forests. |
-| [Hoe u een wijziging in de standaardconfiguratie](how-to-connect-sync-change-the-configuration.md) |Helpt u bij het maken van een algemene configuratie kenmerkstromen wijzigen. |
-| [Aanbevolen procedures voor het wijzigen van de standaardconfiguratie](how-to-connect-sync-best-practices-changing-default-configuration.md) |Beperkingen voor de ondersteuning en voor het aanbrengen van wijzigingen aan de out-of-box-configuratie. |
-| [Filteren configureren](how-to-connect-sync-configure-filtering.md) |Beschrijft de verschillende opties voor hoe u wilt beperken welke objecten worden gesynchroniseerd met Azure AD en stapsgewijs hoe u deze opties configureert. |
-| **Functies en scenario 's** | |
-| [Onopzettelijke verwijderingen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) |Beschrijft de *onopzettelijke verwijderingen voorkomen* functie en over hoe dit moet worden geconfigureerd. |
-| [Scheduler](how-to-connect-sync-feature-scheduler.md) |Beschrijving van de ingebouwde scheduler, is importeren en synchroniseren en exporteren van gegevens. |
-| [Wachtwoord-hashsynchronisatie implementeren](how-to-connect-password-hash-synchronization.md) |Beschrijft hoe werkt Wachtwoordsynchronisatie, hoe u wilt implementeren, en om te werken en op te lossen. |
-| [Write-back van apparaat](how-to-connect-device-writeback.md) |Hierin wordt beschreven hoe apparaat terugschrijven werkt in Azure AD Connect. |
-| [Uitbreidingen van de directory](how-to-connect-sync-feature-directory-extensions.md) |Beschrijft hoe u de Azure AD-schema met uw eigen aangepaste kenmerken uit te breiden. |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Beschrijft hoe u Office 365-resources van de gebruiker in dezelfde regio als de gebruiker geplaatst. |
-| **Sync-Service** | |
-| [Functies van Azure AD Connect sync-service](how-to-connect-syncservice-features.md) |Beschrijving van de synchronisatie-servicezijde en het synchronisatie-instellingen wijzigen in Azure AD. |
-| [Tolerantie van dubbele kenmerken](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Beschrijft hoe u wilt inschakelen en gebruiken **userPrincipalName** en **proxyAddresses** tolerantie van dubbel kenmerk waarden. |
-| **Bewerkingen en -gebruikersinterface** | |
-| [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Beschrijving van de Synchronization Service Manager-UI, met inbegrip van [Operations](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse-ontwerper](how-to-connect-sync-service-manager-ui-mvdesigner.md), en [Metaverse zoeken](how-to-connect-sync-service-manager-ui-mvsearch.md) tabbladen. |
-| [Operationele taken en overwegingen](how-to-connect-sync-operations.md) |Beschrijving van operationele problemen, zoals herstel na noodgevallen. |
+| [De wizard Installatie opnieuw uitvoeren](how-to-connect-installation-wizard.md) |Hier wordt uitgelegd welke opties beschikbaar zijn wanneer u de wizard Azure AD Connect-installatie opnieuw uitvoert. |
+| [Inzicht in declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md) |Beschrijft het configuratiemodel genaamd declaratieve inrichting. |
+| [Inzicht in verklarende inrichtingsexpressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |Beschrijft de syntaxis voor de expressietaal die wordt gebruikt bij declaratieve inrichting. |
+| [Inzicht in de standaardconfiguratie](concept-azure-ad-connect-sync-default-configuration.md) |Beschrijft de out-of-box regels en de standaardconfiguratie. Beschrijft ook hoe de regels samenwerken om de out-of-box scenario's te laten werken. |
+| [Gebruikers en contactpersonen begrijpen](concept-azure-ad-connect-sync-user-and-contacts.md) |Gaat verder met het vorige onderwerp en beschrijft hoe de configuratie voor gebruikers en contactpersonen samenwerkt, met name in een omgeving met meerdere bossen. |
+| [Een wijziging aanbrengen in de standaardconfiguratie](how-to-connect-sync-change-the-configuration.md) |Hiermee u een algemene configuratiewijziging aanbrengen in kenmerkstromen. |
+| [Aanbevolen procedures voor het wijzigen van de standaardconfiguratie](how-to-connect-sync-best-practices-changing-default-configuration.md) |Ondersteuningsbeperkingen en voor het aanbrengen van wijzigingen in de out-of-box configuratie. |
+| [Filteren configureren](how-to-connect-sync-configure-filtering.md) |Beschrijft de verschillende opties voor het beperken van welke objecten worden gesynchroniseerd met Azure AD en stap voor stap hoe u deze opties configureert. |
+| **Functies en scenario's** | |
+| [Onopzettelijke verwijderingen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) |Beschrijft de functie *voor het per ongeluk verwijderen en* hoe u deze configureren. |
+| [Scheduler](how-to-connect-sync-feature-scheduler.md) |Beschrijft de ingebouwde scheduler, die gegevens importeert, synchroniseert en exporteert. |
+| [Synchronisatie van wachtwoordhash implementeren](how-to-connect-password-hash-synchronization.md) |Beschrijft hoe wachtwoordsynchronisatie werkt, hoe u deze implementeert en hoe u werken en problemen oplossen. |
+| [Apparaat terugschrijven](how-to-connect-device-writeback.md) |Beschrijft hoe apparaatterugschrijfinformatie werkt in Azure AD Connect. |
+| [Uitbreidingen van de directory](how-to-connect-sync-feature-directory-extensions.md) |Beschrijft hoe u het Azure AD-schema uitbreidt met uw eigen aangepaste kenmerken. |
+| [Office 365 PreferredDataLocatie](how-to-connect-sync-feature-preferreddatalocation.md) |Beschrijft hoe u de Office 365-bronnen van de gebruiker in dezelfde regio plaatst als de gebruiker. |
+| **Synchronisatieservice** | |
+| [Functies van de Azure AD Connect-synchronisatieservice](how-to-connect-syncservice-features.md) |Beschrijft de synchronisatieservicekant en hoe u synchronisatie-instellingen in Azure AD wijzigen. |
+| [Tolerantie voor het dupliceren van kenmerkentie](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Beschrijft hoe u de tolerantie van **userPrincipalName** en **proxyAddresses** dubbele kenmerken inschakelt. |
+| **Bewerkingen en gebruikersinterface** | |
+| [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Beschrijft de tabbladen Synchronization Service Manager, inclusief [Operations,](how-to-connect-sync-service-manager-ui-operations.md) [Connectors,](how-to-connect-sync-service-manager-ui-connectors.md) [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)en [Metaverse Search.](how-to-connect-sync-service-manager-ui-mvsearch.md) |
+| [Operationele taken en overwegingen](how-to-connect-sync-operations.md) |Beschrijft operationele problemen, zoals disaster recovery. |
 | **Procedures...** | |
-| [Opnieuw instellen van de Azure AD-account](how-to-connect-azureadaccount.md) |Het opnieuw instellen van de referenties van de serviceaccount waarmee verbinding wordt gemaakt van Azure AD Connect-synchronisatie met Azure AD. |
-| **Meer informatie en verwijzingen** | |
-| [Poorten](reference-connect-ports.md) |Een lijst met welke poorten moet u openen tussen de synchronisatie-engine en uw on-premises directory's en Azure AD. |
-| [Kenmerken gesynchroniseerd naar Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Een lijst met alle kenmerken worden gesynchroniseerd tussen on-premises AD en Azure AD. |
-| [Functieverwijzing](reference-connect-sync-functions-reference.md) |Geeft een lijst van alle functies die beschikbaar zijn in de declaratieve inrichting. |
+| [Het Azure AD-account opnieuw instellen](how-to-connect-azureadaccount.md) |De referenties van het serviceaccount dat wordt gebruikt om verbinding te maken vanuit Azure AD Connect-synchronisatie met Azure AD opnieuw instellen. |
+| **Meer informatie en referenties** | |
+| [Poorten](reference-connect-ports.md) |Geeft aan welke poorten u moet openen tussen de synchronisatieengine en uw on-premises mappen en Azure AD. |
+| [Kenmerken gesynchroniseerd naar Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Hiermee worden alle kenmerken weergegeven die worden gesynchroniseerd tussen on-premises AD en Azure AD. |
+| [Functieverwijzing](reference-connect-sync-functions-reference.md) |Bevat alle functies die beschikbaar zijn in declaratieve inrichting. |
 
 ## <a name="additional-resources"></a>Aanvullende resources
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

@@ -1,5 +1,5 @@
 ---
-title: Toegangssleutel rouleren voor Azure SignalR Service
+title: Toegangssleutel voor Azure SignalR Service roteren
 description: In dit artikel leest u waarom de klant de toegangssleutels regelmatig moet roteren en hoe dit kan worden gedaan via de gebruikersinterface van de Azure-portal en de Azure CLI.
 author: sffamily
 ms.service: signalr
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67565728"
 ---
-# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Toegangssleutel rouleren voor Azure SignalR Service
+# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Toegangssleutel voor Azure SignalR Service roteren
 
 Elk Azure SignalR Service-exemplaar heeft een paar toegangssleutels: de Primaire en de Secundaire sleutel. Deze worden gebruikt om SignalR-klanten te verifiëren wanneer aanvragen bij de service worden gedaan. De sleutels zijn gekoppeld aan de eindpunt-URL van het exemplaar. Het is verstandig uw sleutels te beveiligen en regelmatig te roteren. U krijgt twee toegangssleutels, zodat u met één sleutel verbonden kunt blijven terwijl u de andere sleutel opnieuw genereert.
 
@@ -23,7 +23,7 @@ Uit veiligheidsoverwegingen en nalevingsvereisten moet u uw toegangssleutels reg
 
 ## <a name="regenerate-access-keys"></a>Toegangssleutels regenereren
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en meld u aan met uw referenties.
+1. Ga naar de [Azure-portal](https://portal.azure.com/)en meld u aan met uw referenties.
 
 1. Zoek de sectie **Sleutels** in het Azure SignalR Service-exemplaar met de sleutels die u opnieuw wilt genereren.
 
@@ -56,7 +56,7 @@ Het regelmatig roteren van toegangssleutels is een goede beveiligingstoepassing.
 In deze gids hebt u geleerd hoe u toegangssleutels opnieuw kunt genereren. Ga door met de volgende zelfstudies over verificatie met OAuth of met Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Integreren met ASP.NET Core-identiteit](./signalr-concept-authenticate-oauth.md)
+> [Integreren met ASP.NET kernidentiteit](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [Een serverloze, realtime app met verificatie bouwen](./signalr-tutorial-authenticate-azure-functions.md)
+> [Een serverloze real-time app bouwen met verificatie](./signalr-tutorial-authenticate-azure-functions.md)

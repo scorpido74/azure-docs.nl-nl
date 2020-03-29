@@ -1,6 +1,6 @@
 ---
-title: Streaming-beleid in Azure mediaservices | Microsoft Docs
-description: Dit artikel bevat een uitleg over wat Streaming beleidsregels zijn en hoe ze worden gebruikt door Azure Media Services.
+title: Streamingbeleid in Azure Media Services | Microsoft Documenten
+description: In dit artikel wordt uitgelegd wat streamingbeleid is en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66392925"
 ---
 # <a name="streaming-policies"></a>Beleid voor streaming
 
-In Azure Media Services v3, [beleid Streaming](https://docs.microsoft.com/rest/api/media/streamingpolicies) kunt u voor het definiëren van protocollen voor streaming- en versleutelingsopties voor uw [Streaming-Locators](streaming-locators-concept.md). Media Services v3 biedt dat enkele vooraf gedefinieerde Streaming beleid zodat u ze voor evaluatie- of productie gebruiken kunt. 
+Met [Streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) u in Azure Media Services v3 streamingprotocollen en versleutelingsopties definiëren voor uw [streaminglocators.](streaming-locators-concept.md) Media Services v3 biedt een aantal vooraf gedefinieerde streamingbeleidsregels, zodat u ze rechtstreeks gebruiken voor proefversie of productie. 
 
-De momenteel beschikbare vooraf gedefinieerd beleid Streaming:<br/>
+Het momenteel beschikbare vooraf gedefinieerde streamingbeleid:<br/>
 * 'Predefined_DownloadOnly'
 * 'Predefined_ClearStreamingOnly'
 * 'Predefined_DownloadAndClearStreaming'
@@ -30,11 +30,11 @@ De momenteel beschikbare vooraf gedefinieerd beleid Streaming:<br/>
 * 'Predefined_MultiDrmCencStreaming' 
 * 'Predefined_MultiDrmStreaming'
 
-De volgende "beslissingsstructuur' kunt u een vooraf gedefinieerd beleid Streaming voor uw scenario kiezen.
+Met de volgende 'beslissingsstructuur' u een vooraf gedefinieerd streamingbeleid voor uw scenario kiezen.
 
 > [!IMPORTANT]
-> * Eigenschappen van **beleid Streaming** die van de datum/tijd zijn altijd in UTC-notatie zijn.
-> * U moet een beperkte set beleidsregels ontwerpen voor uw Media Service-account en opnieuw gebruiken voor uw Streaming-Locators wanneer dezelfde opties nodig zijn. Zie voor meer informatie, [quota en beperkingen](limits-quotas-constraints.md).
+> * Eigenschappen van **streamingbeleid** die van het type Datetime zijn, zijn altijd in UTC-indeling.
+> * U moet een beperkt aantal beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde opties nodig zijn. Zie [Quota en beperkingen](limits-quotas-constraints.md)voor meer informatie .
 
 ## <a name="decision-tree"></a>Beslissingsstructuur
 
@@ -42,13 +42,13 @@ Klik op de afbeelding om deze in volledig formaat weer te geven.
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-Als uw inhoud versleutelen, moet u maken een [inhoud sleutel beleid](content-key-policy-concept.md), wordt de **inhoud sleutel beleid** is niet nodig voor het wissen te streamen of te downloaden. 
+Als u uw inhoud versleutelt, moet u een [inhoudssleutelbeleid](content-key-policy-concept.md)maken, het **beleid voor inhoudssleutel** is niet nodig voor het wissen van streaming of downloaden. 
 
-Als u speciale vereisten (bijvoorbeeld, als u wilt opgeven van verschillende protocollen, moet een aangepaste sleutelleveringsservice gebruiken of wilt gebruiken, schakel audiotrack) hebt, kunt u [maken](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) een aangepast beleid voor Streaming. 
+Als u speciale vereisten hebt (bijvoorbeeld als u verschillende protocollen wilt opgeven, een aangepaste service voor het leveren van sleutels moet gebruiken of een duidelijke audiotrack moet gebruiken), u een aangepast streamingbeleid [maken.](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) 
 
-## <a name="get-a-streaming-policy-definition"></a>Een Streaming-beleidsdefinitie ophalen  
+## <a name="get-a-streaming-policy-definition"></a>Een definitie van streamingbeleid  
 
-Als u zien van de definitie van een Streaming-beleid wilt, gebruikt u [ophalen](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) en geef de naam van het beleid. Bijvoorbeeld:
+Als u de definitie van een streamingbeleid wilt zien, gebruikt u [Opget](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) en geeft u de beleidsnaam op. Bijvoorbeeld:
 
 ### <a name="rest"></a>REST
 
@@ -79,12 +79,12 @@ Reactie:
 }
 ```
 
-## <a name="filtering-ordering-paging"></a>Filters, bestellen, wisselbestand
+## <a name="filtering-ordering-paging"></a>Filteren, bestellen, paging
 
-Zie [filteren, bestellen, voor het wisselbestand van Media Services-entiteiten](entities-overview.md).
+Zie [Het filteren, bestellen, paging van mediaservices entiteiten](entities-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een bestand streamen](stream-files-dotnet-quickstart.md)
-* [Gebruik dynamische AES-128-versleuteling en de sleutelleveringsservice](protect-with-aes128.md)
-* [Gebruik DRM dynamische versleuteling en licentie leveringsservice voor](protect-with-drm.md)
+* [AES-128 dynamische versleuteling en de key delivery service gebruiken](protect-with-aes128.md)
+* [De Digital Rights Management-service gebruiken voor dynamische versleuteling en licentielevering](protect-with-drm.md)

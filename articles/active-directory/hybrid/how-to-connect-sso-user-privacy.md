@@ -1,8 +1,8 @@
 ---
-title: Gebruikersprivacy en Azure AD naadloze eenmalige aanmelding | Microsoft Docs
-description: In dit artikel behandelt de naadloze eenmalige aanmelding voor Azure Active Directory (Azure AD) en de GDPR-naleving.
+title: Gebruikersprivacy en Azure AD Naadloze enkele aanmelding | Microsoft Documenten
+description: In dit artikel wordt ingehouden op Azure Active Directory (Azure AD) Seamless SSO en GDPR compliance.
 services: active-directory
-keywords: Wat is Azure AD Connect, Avg, onderdelen vereist voor Azure AD, SSO, Single Sign-on
+keywords: wat is Azure AD Connect, GDPR, vereiste onderdelen voor Azure AD, SSO, Single Sign-on
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,38 +17,38 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60242104"
 ---
-# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Gebruikersprivacy en Azure AD naadloze eenmalige aanmelding
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Gebruikersprivacy en naadloze eenmalige aanmelding van Azure AD
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Overzicht
 
 
-Azure AD naadloze eenmalige aanmelding wordt gemaakt van de volgende Logboektype die persoonlijke gegevens bevat: 
+Azure AD Seamless SSO maakt het volgende logboektype, dat persoonlijke gegevens kan bevatten: 
 
-- Azure AD Connect logboekbestanden voor tracering.
+- Azure AD Connect tracelogbestanden.
 
-De privacy van gebruikers verbeteren voor naadloze eenmalige aanmelding op twee manieren:
+Verbeter de privacy van gebruikers voor Seamless SSO op twee manieren:
 
-1.  Gegevens ophalen voor een persoon op aanvraag, en gegevens verwijderen van die persoon de installaties.
-2.  Zorg ervoor dat er geen gegevens worden bewaard na 48 uur.
+1.  Haal op verzoek gegevens voor een persoon en verwijder gegevens van die persoon uit de installaties.
+2.  Zorg ervoor dat gegevens niet langer dan 48 uur worden bewaard.
 
-Wij raden de tweede optie als het is eenvoudiger te implementeren en onderhouden. Zie de instructies volgen voor elk type:
+We raden de tweede optie ten zeerste aan, omdat het gemakkelijker te implementeren en te onderhouden is. Zie de volgende instructies voor elk logboektype:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Logboekbestanden voor tracering van Azure AD Connect verwijderen
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect-traceringslogboekbestanden verwijderen
 
-Controleer de inhoud van **%ProgramData%\AADConnect** map en verwijder de tracering het foutenlogboek van inhoud (**trace -\*.log** bestanden) van deze map binnen 48 uur na het installeren of upgraden van Azure AD Connect of wijzigen van naadloze eenmalige aanmelding-configuratie, als deze actie kan maken van gegevens AVG vallen.
+Controleer de inhoud van **de map %ProgramData%\AADConnect** en verwijder de inhoud van het tracelog **(trace-\*.log-bestanden)** van deze map binnen 48 uur na het installeren of upgraden van Azure AD Connect of het wijzigen van de Seamless SSO-configuratie, omdat deze actie gegevens kan maken die onder de AVG vallen.
 
 >[!IMPORTANT]
->Verwijder niet de **PersistedState.xml** in deze map, bestand, zoals dit bestand wordt gebruikt om de status van de vorige installatie van Azure AD Connect te behouden en wordt gebruikt wanneer de installatie van een upgrade is voltooid. Dit bestand bevat geen gegevens over een persoon nooit en moet nooit worden verwijderd.
+>Verwijder het bestand **PersistedState.xml** niet in deze map, omdat dit bestand wordt gebruikt om de status van de vorige installatie van Azure AD Connect te behouden en wordt gebruikt wanneer een upgrade-installatie is uitgevoerd. Dit bestand bevat nooit gegevens over een persoon en mag nooit worden verwijderd.
 
-U kunt controleren en verwijderen van deze logboekbestanden voor tracering met behulp van Windows Explorer of u kunt de volgende PowerShell-script gebruiken om uit te voeren van de nodige maatregelen:
+U deze traceerlogboekbestanden controleren en verwijderen met Windows Verkenner of u het volgende PowerShell-script gebruiken om de nodige acties uit te voeren:
 
 ```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -58,16 +58,16 @@ Foreach ($file in $Files) {
 }
 ```
 
-Sla het script in een bestand met de '. Ps1 "extensie. Voer dit script zo nodig.
+Sla het script op in een bestand met de ". PS1" extensie. Voer dit script uit als dat nodig is.
 
-Voor meer informatie over gerelateerde vereisten voor Azure AD Connect Avg, Zie [in dit artikel](reference-connect-user-privacy.md).
+Zie [dit artikel](reference-connect-user-privacy.md)voor meer informatie over gerelateerde AZURE AD Connect GDPR-vereisten.
 
-### <a name="note-about-domain-controller-logs"></a>Houd er rekening mee over de Domain controller Logboeken
+### <a name="note-about-domain-controller-logs"></a>Opmerking over logboeken van domeincontroller
 
-Als logboekregistratie is ingeschakeld, kan dit product-logboeken genereren voor uw domeincontrollers. Lees voor meer informatie over het configureren van controlebeleid, dit [artikel](https://technet.microsoft.com/library/dd277403.aspx).
+Als controlelogboekregistratie is ingeschakeld, kan dit product beveiligingslogboeken genereren voor uw domeincontrollers. Lees dit [artikel](https://technet.microsoft.com/library/dd277403.aspx)voor meer informatie over het configureren van controlebeleid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De Microsoft Privacy controlebeleid op Vertrouwenscentrum](https://www.microsoft.com/trustcenter)
-  - [**Problemen oplossen** ](tshoot-connect-sso.md) -informatie over het oplossen van veelvoorkomende problemen met de functie.
-  - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - voor de nieuwe functieaanvragen in te dienen.
+* [Het Privacybeleid van Microsoft controleren op het vertrouwenscentrum](https://www.microsoft.com/trustcenter)
+  - [**Problemen oplossen**](tshoot-connect-sso.md) : meer informatie over het oplossen van veelvoorkomende problemen met de functie.
+  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Voor het indienen van nieuwe functieaanvragen.

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met omgevingen van een lab vnet in Azure DevTest Labs | Microsoft Docs
-description: Leer hoe u verbinding maken met een omgeving (zoals Service Fabric-cluster) met virtueel netwerk van uw lab in Azure DevTest Labs
+title: Omgevingen verbinden met het vnet van een lab in Azure DevTest Labs | Microsoft Documenten
+description: Meer informatie over het verbinden van een omgeving (zoals het cluster Service Fabric) met het virtuele netwerk van uw lab in Azure DevTest Labs
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60777165"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Verbinding maken met een omgeving met virtuele netwerk van uw lab in Azure DevTest Labs
-Azure DevTest Labs kunt u eenvoudig virtuele machines maken in een testomgeving met [ingebouwde netwerken](devtest-lab-configure-vnet.md). Er wordt een grote mate van flexibiliteit met de mogelijkheid om [multi-VM-omgevingen maken](devtest-lab-test-env.md). In dit artikel wordt beschreven hoe u virtuele machines in een omgeving met het virtuele netwerk lab verbinding kunnen maken. Een scenario waarin het gebruik van deze functie wordt ingesteld met een N-tier-app met een SQL Server-gegevenslaagtoepassingen die is verbonden met het VNet toestaan testresultaten VM's in een testomgeving om deze te openen.  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Een omgeving verbinden met het virtuele netwerk van uw lab in Azure DevTest Labs
+Azure DevTest Labs maakt het eenvoudig om VM's te maken in een lab met [ingebouwde netwerken.](devtest-lab-configure-vnet.md) Het heeft veel flexibiliteit met de mogelijkheid om [multi-VM-omgevingen](devtest-lab-test-env.md)te creëren. In dit artikel ziet u hoe u VM's in een omgeving verbinden met het virtuele labnetwerk. Een scenario waarin u deze functie gebruikt, is het instellen van een N-tier-app met een SQL Server-gegevenslaag die is verbonden met het lab VNet, waardoor testVM's in het lab toegang krijgen tot deze technologie.  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>Voorbeeldomgeving die gebruikmaakt van lab VNet
-Hier is een eenvoudige omgeving-sjabloon die verbinding van het lab-subnet maakt. In dit voorbeeld wordt de `DTLSubnetId` parameter geeft de ID van het subnet waarin het lab bestaat. Deze toegewezen aan: `$(LabSubnetId)`, die automatisch kan worden opgelost met DevTest Labs met de ID van het lab-subnet. De **subnet** eigenschap van de **netwerkinterface** van de virtuele machine in deze definitie is ingesteld op `DTLSubnetId` zodat deze lid wordt van hetzelfde subnet bevinden. 
+## <a name="sample-environment-that-uses-lab-vnet"></a>Voorbeeldomgeving die gebruik maakt van lab VNet
+Hier is een eenvoudige omgevingssjabloon die het subnet van het lab verbindt. In dit voorbeeld `DTLSubnetId` vertegenwoordigt de parameter de id van het subnet waarin het lab bestaat. Het is toegewezen `$(LabSubnetId)`aan: , die automatisch wordt opgelost door DevTest Labs om de ID van het subnet van het lab. De **subneteigenschap** van de **netwerkinterface** van de `DTLSubnetId` VM in deze definitie is zo ingesteld dat deze zich bij hetzelfde subnet aansluit. 
 
 ```json
 {
@@ -161,4 +161,4 @@ Hier is een eenvoudige omgeving-sjabloon die verbinding van het lab-subnet maakt
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor het gebruik van de Azure-portal voor deze bewerkingen: [Een VM opnieuw opstarten](devtest-lab-restart-vm.md).
+Zie het volgende artikel voor het gebruik van de Azure-portal om deze bewerkingen uit te voeren: [Start een VM opnieuw](devtest-lab-restart-vm.md)op.

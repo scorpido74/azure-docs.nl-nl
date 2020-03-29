@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen1 regio-overschrijdende-migratie | Microsoft Docs
-description: Meer informatie over de migratie van de regio-overschrijdende voor Azure Data Lake Storage Gen1.
+title: Azure Data Lake Storage Gen1 migratie over verschillende regio's | Microsoft Documenten
+description: Meer informatie over migratie tussen regio's voor Azure Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -13,42 +13,42 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60518471"
 ---
-# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migreren tussen regio 's
+# <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migreren naar verschillende regio's
 
-Als Azure Data Lake Storage Gen1 in nieuwe regio's beschikbaar komt, kunt u ervoor kiezen om te doen eenmalig worden gemigreerd, om te profiteren van de nieuwe regio. Meer informatie over wat u moet overwegen bij het plannen en uitvoeren van de migratie.
+Aangezien Azure Data Lake Storage Gen1 beschikbaar komt in nieuwe regio's, u ervoor kiezen om een eenmalige migratie uit te voeren om te profiteren van de nieuwe regio. Meer informatie over wat u moet overwegen wanneer u de migratie plant en voltooit.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Azure-abonnement**. Zie voor meer informatie, [Maak vandaag nog uw gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/).
-* **Een Data Lake Storage Gen1-account in twee verschillende regio's**. Zie voor meer informatie, [aan de slag met Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
-* **Azure Data Factory**. Zie voor meer informatie [Inleiding tot Azure Data Factory](../data-factory/introduction.md).
+* **Een Azure-abonnement**. Zie [Vandaag nog uw gratis Azure-account maken](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie.
+* **Een Data Lake Storage Gen1-account in twee verschillende regio's**. Zie [Aan de slag met Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)voor meer informatie.
+* **Azure-gegevensfabriek**. Zie voor meer informatie [Inleiding tot Azure Data Factory](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Overwegingen bij migraties
 
-Bepaal eerst de strategie voor clientmigratie die geschikt is voor uw toepassing die wordt geschreven, leest of gegevens in Data Lake Storage Gen1 worden verwerkt. Als u een strategie kiest, houd rekening met de beschikbaarheidsvereisten van uw toepassing en de downtime die optreedt tijdens een migratie. Bijvoorbeeld, mogelijk de eenvoudigste manier om te gebruiken van de 'lift-and-shift'-migratie cloudmodel. In deze benadering onderbreekt u de toepassing in uw bestaande regio terwijl al uw gegevens worden gekopieerd naar de nieuwe regio. Wanneer het kopieerproces is voltooid, moet u doorgaan met uw toepassing in de nieuwe regio en verwijder vervolgens het oude Gen1 van Data Lake Storage-account. Downtime tijdens de migratie is vereist.
+Identificeer eerst de migratiestrategie die het beste werkt voor uw toepassing die gegevens schrijft, leest of verwerkt in Data Lake Storage Gen1. Wanneer u een strategie kiest, moet u rekening houden met de beschikbaarheidsvereisten van uw toepassing en de downtime die optreedt tijdens een migratie. Uw eenvoudigste aanpak kan bijvoorbeeld zijn om het cloudmigratiemodel 'lift-and-shift'.For example, your simplest approach might use the "lift-and-shift" cloud migration model. In deze benadering pauzeert u de toepassing in uw bestaande regio terwijl al uw gegevens naar de nieuwe regio worden gekopieerd. Wanneer het kopieerproces is voltooid, hervat u uw aanvraag in de nieuwe regio en verwijdert u het oude Data Lake Storage Gen1-account. Downtime tijdens de migratie is vereist.
 
-U downtime verminderen, kunt u onmiddellijk starten opnemen van nieuwe gegevens in de nieuwe regio. Wanneer u de minimumhoeveelheid gegevens die nodig hebt, kunt u uw toepassing uitvoert in de nieuwe regio. Doorgaan met het kopiëren van oudere gegevens van de bestaande Gen1 van Data Lake Storage-account naar de nieuwe Gen1 van Data Lake Storage-account in de nieuwe regio op de achtergrond. Met behulp van deze benadering kunt u de switch naar de nieuwe regio met weinig downtime. Wanneer de oudere gegevens zijn gekopieerd, verwijdert u de oude Gen1 van Data Lake Storage-account.
+Om downtime te verminderen, u meteen beginnen met het opnemen van nieuwe gegevens in de nieuwe regio. Wanneer u over de minimale gegevens beschikt die nodig zijn, voert u uw toepassing uit in de nieuwe regio. Op de achtergrond u oudere gegevens van het bestaande Data Lake Storage Gen1-account blijven kopiëren naar het nieuwe Data Lake Storage Gen1-account in de nieuwe regio. Door deze aanpak te gebruiken, u de overstap maken naar de nieuwe regio met weinig downtime. Wanneer alle oudere gegevens zijn gekopieerd, verwijdert u het oude Data Lake Storage Gen1-account.
 
-Er zijn andere belangrijke informatie om te overwegen bij het plannen van uw migratie:
+Andere belangrijke details om rekening mee te houden bij het plannen van uw migratie zijn:
 
-* **Gegevensvolume**. De hoeveelheid gegevens (in gigabytes, het aantal bestanden en mappen, enzovoort) is van invloed op de tijd en resources die u nodig hebt voor de migratie.
+* **Gegevensvolume**. Het volume van de gegevens (in gigabytes, het aantal bestanden en mappen, enzovoort) is van invloed op de tijd en middelen die u nodig hebt voor de migratie.
 
-* **Data Lake Storage Gen1 accountnaam**. De nieuwe accountnaam in de nieuwe regio moet globaal uniek zijn. De naam van uw oude Gen1 van Data Lake Storage-account in VS-Oost 2 is bijvoorbeeld mogelijk contosoeastus2.azuredatalakestore.net. U kunt uw nieuwe Gen1 van Data Lake Storage-account in de EU Noord contosonortheu.azuredatalakestore.net naam.
+* **Gegevens Lake Storage Gen1 accountnaam**. De nieuwe accountnaam in de nieuwe regio moet wereldwijd uniek zijn. De naam van uw oude Data Lake Storage Gen1-account in Oost-VS 2 is bijvoorbeeld mogelijk contosoeastus2.azuredatalakestore.net. U uw nieuwe Data Lake Storage Gen1-account in Noord-EU-contosonortheu.azuredatalakestore.net.
 
-* **Tools**. Het is raadzaam dat u de [Azure Data Factory Copy Activity](../data-factory/connector-azure-data-lake-store.md) Data Lake Storage Gen1 bestanden te kopiëren. Data Factory ondersteunt de verplaatsing van gegevens met hoge prestaties en betrouwbaarheid. Houd er rekening mee dat Data Factory alleen de mappenhiërarchie en de inhoud van deze bestanden kopieert. U moet handmatig toepassen eventuele toegangscontrolelijsten (ACL's) die u in het oude account aan het nieuwe account gebruiken. Zie voor meer informatie, met inbegrip van prestatiedoelen voor het scenario's, de [Kopieeractiviteit prestatie- en afstemmingshandleiding](../data-factory/copy-activity-performance.md). Als u wilt dat gegevens sneller worden gekopieerd, moet u mogelijk aanvullende Cloud Gegevensverplaatsingseenheden gebruiken. Sommige andere hulpmiddelen, zoals AdlCopy, ondersteunen geen kopiëren van gegevens tussen regio's.  
+* **Gereedschap**. We raden u aan de [kopieeractiviteit van Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) te gebruiken om Gegevens Lake Storage Gen1-bestanden te kopiëren. Data Factory ondersteunt dataverkeer met hoge prestaties en betrouwbaarheid. Houd er rekening mee dat Data Factory alleen de maphiërarchie en inhoud van de bestanden kopieert. U moet handmatig alle toegangscontrolelijsten (ACL's) die u in het oude account gebruikt, handmatig toepassen op het nieuwe account. Zie de handleiding Voor de [prestaties en afstemming van de kopieeractiviteit](../data-factory/copy-activity-performance.md)voor meer informatie, inclusief prestatiedoelen voor de beste scenario's. Als u wilt dat gegevens sneller worden gekopieerd, moet u mogelijk extra cloudgegevensbewegingseenheden gebruiken. Sommige andere hulpprogramma's, zoals AdlCopy, ondersteunen geen kopiëren van gegevens tussen regio's.  
 
-* **Bandbreedte kosten**. [Bandbreedte kosten](https://azure.microsoft.com/pricing/details/bandwidth/) worden toegepast omdat de gegevens worden overgebracht buiten een Azure-regio.
+* **Bandbreedtekosten**. [Bandbreedtekosten](https://azure.microsoft.com/pricing/details/bandwidth/) zijn van toepassing omdat gegevens worden overgedragen vanuit een Azure-gebied.
 
-* **ACL's op uw gegevens**. Uw gegevens in de nieuwe regio worden beveiligd door de ACL's toepassen op bestanden en mappen. Zie voor meer informatie, [beveiligen van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-secure-data.md). U wordt aangeraden dat u de migratie gebruiken om te werken en uw ACL's aanpassen. Het is raadzaam om instellingen die vergelijkbaar is met uw huidige instellingen te gebruiken. U kunt de ACL's die worden toegepast op alle bestanden met behulp van de Azure-portal weergeven [PowerShell-cmdlets](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission), of -SDK's.  
+* **ACL's op uw gegevens**. Beveilig uw gegevens in de nieuwe regio door ACL's toe te passen op bestanden en mappen. Zie [Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-secure-data.md)voor meer informatie. We raden u aan de migratie te gebruiken om uw ACL's bij te werken en aan te passen. Misschien wilt u instellingen gebruiken die vergelijkbaar zijn met uw huidige instellingen. U de ACL's bekijken die op elk bestand worden toegepast met behulp van de Azure-portal, [PowerShell-cmdlets](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission)of SDK's.  
 
-* **Locatie van analyseservices**. Voor de beste prestaties, moeten de analytics-services, zoals Azure Data Lake Analytics of Azure HDInsight, zich in dezelfde regio als uw gegevens.  
+* **Locatie van analyseservices**. Voor de beste prestaties moeten uw analyseservices, zoals Azure Data Lake Analytics of Azure HDInsight, zich in dezelfde regio bevinden als uw gegevens.  
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)

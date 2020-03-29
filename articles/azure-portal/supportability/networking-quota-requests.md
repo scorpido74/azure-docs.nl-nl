@@ -1,5 +1,5 @@
 ---
-title: Netwerk limiet verhogen | Microsoft Docs
+title: Verhoging van de netwerklimiet | Microsoft Documenten
 description: Netwerklimiet verhoogd
 author: anavinahar
 ms.author: anavin
@@ -8,68 +8,68 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76547740"
 ---
 # <a name="networking-limit-increase"></a>Netwerklimiet verhoogd
 
-Gebruik de [Azure Portal](https://portal.azure.com) om uw netwerk quotum te verg Roten.
+Gebruik de [Azure-portal](https://portal.azure.com) om uw netwerkquotum te verhogen.
 
-Als u uw huidige netwerk gebruik en-quotum in Azure Portal wilt weer geven, opent u uw abonnement en selecteert u vervolgens **gebruik en quota's**. U kunt ook de volgende opties gebruiken om uw netwerk gebruik en-limieten te bekijken.
+Als u uw huidige netwerkgebruik en -quotum wilt weergeven in de Azure-portal, opent u uw abonnement en selecteert u **Gebruik + quota**. U ook de volgende opties gebruiken om uw netwerkgebruik en -limieten te bekijken.
 
 * [Gebruik CLI](/cli/azure/network#az-network-list-usages)
-* [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
-* [De API voor netwerk gebruik](/rest/api/virtualnetwork/virtualnetworks/listusage)
+* [Powershell](/powershell/module/azurerm.network/get-azurermnetworkusage)
+* [De API voor netwerkgebruik](/rest/api/virtualnetwork/virtualnetworks/listusage)
 
-U kunt een verhoging aanvragen met **behulp van Help + ondersteuning** of in **gebruik + quota's** in de portal.
+U een verhoging aanvragen door **Help + ondersteuning of** in Gebruik + **quota** in de portal te gebruiken.
 
 > [!Note]
-> Als u de standaard grootte van **open bare IP-voor voegsels**wilt wijzigen, selecteert u **min. duur openbaar IP-Internet** werk in de vervolg keuzelijst.
+> Als u de standaardgrootte van **openbare IP-voorvoegsels**wilt wijzigen, selecteert u **Min Public IP InterNetwork Prefix Length** in de vervolgkeuzelijst.
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Netwerk quotum verhoging op abonnements niveau aanvragen met behulp van Help en ondersteuning
+## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Netwerkquotumverhogen aanvragen op abonnementsniveau met Behulp van Help + ondersteuning
 
-Volg de onderstaande instructies om een ondersteunings aanvraag te maken met behulp van **Help en ondersteuning** in de Azure Portal.
+Volg de onderstaande instructies om een ondersteuningsaanvraag te maken met Behulp van **Help + ondersteuning** in de Azure-portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com)en selecteer **Help + ondersteuning** in het menu Azure portal of zoek naar en selecteer **Help + ondersteuning**.
+1. Meld u aan bij [azure portal](https://portal.azure.com)en selecteer vervolgens Help **+ ondersteuning** in het azure portal-menu of zoek naar Help + ondersteuning en selecteer help **+ ondersteuning**.
 
     ![Help en ondersteuning](./media/networking-quota-request/help-plus-support.png)
 
-1. Selecteer **Nieuwe ondersteuningsaanvraag**.
+1. Selecteer **Nieuw ondersteuningsverzoek**.
 
     ![Nieuw ondersteuningsverzoek](./media/networking-quota-request/new-support-request.png)
 
-1. Kies voor **probleem type** **service-en abonnements limieten (quota's)** .
+1. Kies **Service- en abonnementslimieten (quota)** voor **Issue-type**.
 
-    ![Abonnements limieten selecteren in vervolg keuzelijst probleem type](./media/networking-quota-request/select-quota-issue-type.png)
+    ![Selecteer abonnementslimieten in de vervolgkeuzelijst van het type probleem](./media/networking-quota-request/select-quota-issue-type.png)
 
 1. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
 
-    ![Abonnement-Nieuwsset selecteren](./media/networking-quota-request/select-subscription-support-request.png)
+    ![Abonnement newSR selecteren](./media/networking-quota-request/select-subscription-support-request.png)
 
-1. Onder **quotum type**selecteert u **netwerken**. Selecteer **volgende: oplossingen**.
+1. Selecteer **Netwerken onder Quotumtype** **.** Selecteer **Volgende: Oplossingen**.
 
-    ![Quotum type selecteren](./media/networking-quota-request/select-quota-type-network.png)
+    ![Quotumtype selecteren](./media/networking-quota-request/select-quota-type-network.png)
 
-1. In **Details**van het probleem selecteert u **Details opgeven** en vult u aanvullende informatie in om uw aanvraag te verwerken.
+1. Selecteer **in PROBLEEMGEGEVENS**de optie **Details opgeven** en aanvullende informatie invullen om uw aanvraag te verwerken.
 
-    ![Details opgeven](./media/networking-quota-request/provide-details-link.png)
+    ![Details geven](./media/networking-quota-request/provide-details-link.png)
 
-1. Selecteer in het deel venster **quotum Details** een implementatie model, een locatie en de resources die in uw aanvraag moeten worden meegenomen.
+1. Selecteer in het deelvenster **Quotadetails** een implementatiemodel, een locatie en de resources die u in uw aanvraag wilt opnemen.
 
-    ![Quotum Details DM](./media/networking-quota-request/quota-details-network.png)
+    ![Quotumdetails DM](./media/networking-quota-request/quota-details-network.png)
 
-1. Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, maakt u de selectie van de resource in het menu **resources** ongedaan of selecteert u het pictogram ' x '. Nadat u het quotum voor elke resource hebt ingevoerd, selecteert u **opslaan en** gaat u verder met het maken van de ondersteunings aanvraag.
+1. Voer de nieuwe limieten in die u op het abonnement wilt hebben. Als u een regel wilt verwijderen, schakelt u de selectie uit het menu **Resources** uit of selecteert u het pictogram 'x' verwijderen. Nadat u het quotum voor elke resource hebt ingevoerd, selecteert u **Opslaan en doorgaan** met het maken van ondersteuningsaanvragen.
 
     ![Nieuwe limieten](./media/networking-quota-request/network-new-limits.png)
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>Netwerk quotum verhoging op abonnements niveau aanvragen met gebruik van + quota
+## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>Netwerkquotumverhoging aanvragen op abonnementsniveau met gebruiksgebruik + quota
 
-Volg deze instructies om een ondersteunings aanvraag te maken met behulp van **gebruik en quotum** in de Azure Portal.
+Volg deze instructies om een ondersteuningsaanvraag te maken met **gebruikgebruik + quotum** in de Azure-portal.
 
-1. Zoek en selecteer **abonnementen**in https://portal.azure.com.
+1. Zoeken https://portal.azure.comnaar en selecteer **Abonnementen**.
 
     ![Abonnementen](./media/networking-quota-request/search-for-suscriptions.png)
 
@@ -77,16 +77,16 @@ Volg deze instructies om een ondersteunings aanvraag te maken met behulp van **g
 
     ![Abonnement selecteren](./media/networking-quota-request/select-subscription-change-quota.png)
 
-1. **Gebruik en quota's** selecteren
+1. Selecteer **Gebruik + quota**
 
-    ![Gebruik en quota's selecteren](./media/networking-quota-request/select-usage-plus-quotas.png)
+    ![Gebruiken en quota selecteren](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-1. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
+1. Selecteer In de rechterbovenhoek de optie **Aanvraag verhogen**.
 
-    ![Toename aanvragen](./media/networking-quota-request/request-increase-from-subscription.png)
+    ![Aanvraagverhoging](./media/networking-quota-request/request-increase-from-subscription.png)
 
-1. Volg de stappen die beginnen met stap 3 in [netwerk quotum toename aanvragen op abonnements niveau](#request-networking-quota-increase-at-subscription-level-using-help--support).
+1. Volg de stappen die beginnen met stap 3 in [Het quotum verhogen van het quotum voor netwerken aanvragen op abonnementsniveau](#request-networking-quota-increase-at-subscription-level-using-help--support).
 
-## <a name="about-networking-limits"></a>Over netwerk limieten
+## <a name="about-networking-limits"></a>Over netwerklimieten
 
-Zie de [sectie netwerken](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) op de pagina limieten of onze veelgestelde vragen over netwerk limieten voor meer informatie over netwerk limieten.
+Zie het [gedeelte Netwerken](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) van de limietenpagina of onze veelgestelde vragen over netwerklimieten voor meer informatie over netwerklimieten.

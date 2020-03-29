@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect sync-service de kenmerken van | Microsoft Docs
-description: Beschrijving van de werking van de kenmerken in Azure AD Connect sync-service.
+title: Schaduwkenmerken van Azure AD Connect-synchronisatieservice | Microsoft Documenten
+description: Beschrijft hoe schaduwkenmerken werken in de synchronisatieservice van Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,63 +17,63 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60384699"
 ---
-# <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect sync-service de kenmerken van
-De meeste kenmerken worden dezelfde manier weergegeven in Azure AD zoals in uw on-premises Active Directory. Maar bepaalde kenmerken enkele speciale verwerking hebben en de waarde van het kenmerk in Azure AD is mogelijk anders dan wat Azure AD Connect synchroniseert.
+# <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schaduwkenmerken van Azure AD Connect-synchronisatieservice
+De meeste kenmerken worden in Azure AD op dezelfde manier weergegeven als in uw on-premises Active Directory. Sommige kenmerken hebben echter een speciale verwerking en de kenmerkwaarde in Azure AD kan anders zijn dan wat Azure AD Connect synchroniseert.
 
-## <a name="introducing-shadow-attributes"></a>Maak kennis met de kenmerken van
-Sommige kenmerken zijn twee manieren in Azure AD. Zowel de waarde van de on-premises en een berekende waarde worden opgeslagen. Deze extra kenmerken worden de kenmerken van genoemd. Zijn de twee meest voorkomende kenmerken waar u dit gedrag zien **userPrincipalName** en **proxyAddress**. De wijziging in de kenmerkwaarden treedt op wanneer er waarden zijn in deze kenmerken die niet-gecontroleerde domeinen. Maar de synchronisatie-engine in Connect leest de waarde in het kenmerk shadow, vanuit het perspectief, het kenmerk is bevestigd door Azure AD.
+## <a name="introducing-shadow-attributes"></a>Schaduwkenmerken introduceren
+Sommige kenmerken hebben twee weergaven in Azure AD. Zowel de on-premises waarde als een berekende waarde worden opgeslagen. Deze extra kenmerken worden schaduwkenmerken genoemd. De twee meest voorkomende kenmerken waarbij u dit gedrag ziet, zijn **userPrincipalName** en **proxyAddress**. De wijziging in kenmerkwaarden gebeurt wanneer er waarden in deze kenmerken staan die niet-geverifieerde domeinen vertegenwoordigen. Maar de synchronisatie-engine in Connect leest de waarde in het schaduwattribuut, dus vanuit het perspectief is het kenmerk bevestigd door Azure AD.
 
-U kunt de kenmerken van met behulp van Azure portal of met PowerShell niet zien. Maar wat het concept helpt u bij het oplossen van bepaalde scenario's waar het kenmerk verschillende waarden voor de on-premises heeft en in de cloud.
+U de schaduwkenmerken niet zien via de Azure-portal of met PowerShell. Maar het begrijpen van het concept helpt u om bepaalde scenario's op te lossen waarbij het kenmerk verschillende waarden on-premises en in de cloud heeft.
 
-Bekijk voor meer informatie over het gedrag, in dit voorbeeld van Fabrikam:  
+Om het gedrag beter te begrijpen, kijk naar dit voorbeeld van Fabrikam:  
 ![Domeinen](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
-Ze hebben meerdere UPN-achtervoegsels in hun on-premises Active Directory, maar ze deze alleen hebt gecontroleerd.
+Ze hebben meerdere UPN-achtervoegsels in hun on-premises Active Directory, maar ze hebben er slechts één geverifieerd.
 
 ### <a name="userprincipalname"></a>userPrincipalName
-Een gebruiker heeft de volgende kenmerkwaarden in een niet-gecontroleerd domein:
+Een gebruiker heeft de volgende kenmerkwaarden in een niet-geverifieerd domein:
 
-| Kenmerk | Value |
+| Kenmerk | Waarde |
 | --- | --- |
 | on-premises userPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD userPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
+| Azure AD-shadowUserPrincipalName | lee.sperry@fabrikam.com |
+| Azure AD-userPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
 
-Het kenmerk userPrincipalName is de waarde die u ziet wanneer u met behulp van PowerShell.
+Het kenmerk userPrincipalName is de waarde die u ziet bij het gebruik van PowerShell.
 
-Omdat de waarde van het kenmerk echte on-premises zijn opgeslagen in Azure AD, wanneer u het domein fabrikam.com verifiëren, Azure AD het kenmerk userPrincipalName bijgewerkt met de waarde van de shadowUserPrincipalName. U hoeft niet te synchroniseren van wijzigingen uit Azure AD Connect voor deze waarden worden bijgewerkt.
+Aangezien de werkelijke on-premises kenmerkwaarde wordt opgeslagen in Azure AD, wordt Azure AD, wanneer u het fabrikam.com-domein verifiëren, het kenmerk userPrincipalName bijgewerkt met de waarde van de shadowUserPrincipalName. U hoeft geen wijzigingen van Azure AD Connect te synchroniseren om deze waarden te kunnen bijwerken.
 
 ### <a name="proxyaddresses"></a>proxyAddresses
-Hetzelfde proces voor het opnemen van alleen geverifieerde domeinen vindt ook plaats voor proxyAddresses, maar met enkele aanvullende logica. De controle voor geverifieerde domeinen wordt alleen uitgevoerd voor Postvak gebruikers. Een gebruiker e-mailadres of neem contact op met vertegenwoordigen een gebruiker in een andere Exchange-organisatie en u kunt alle waarden in proxyAddresses toevoegen aan deze objecten.
+Hetzelfde proces voor alleen het opnemen van geverifieerde domeinen vindt ook plaats voor proxyAdressen, maar met een aantal extra logica. De controle op geverifieerde domeinen gebeurt alleen voor postvakgebruikers. Een gebruiker of contactpersoon met e-mail vertegenwoordigt een gebruiker in een andere Exchange-organisatie en u alle waarden in proxyAdressen aan deze objecten toevoegen.
 
-Voor de postvakgebruiker van een, on-premises of in Exchange Online, worden er alleen waarden voor geverifieerde domeinen weergegeven. Het kan er als volgt:
+Voor een postvakgebruiker, on-premises of in Exchange Online, worden alleen waarden voor geverifieerde domeinen weergegeven. Het kan er zo uitzien:
 
-| Kenmerk | Value |
+| Kenmerk | Waarde |
 | --- | --- |
-| on-premises proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
-| Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
+| on-premises proxyAdressen | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
+| Exchange Online-proxyAdressen | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-In dit geval **smtp:abbie.spencer\@fabrikam.com** is verwijderd omdat dit domein is niet geverifieerd. Maar ook toegevoegd Exchange **SIP:abbie.spencer\@fabrikamonline.com**. Fabrikam Lync/Skype on-premises, Azure AD, maar niet gebruikt en Exchange Online voorbereiden voor het.
+In dit geval **is smtp:abbie.spencer\@fabrikam.com** is verwijderd omdat dat domein niet is geverifieerd. Maar Exchange voegde ook **SIP:abbie.spencer\@fabrikamonline.com**. Fabrikam heeft lync/Skype niet on-premises gebruikt, maar Azure AD en Exchange Online bereiden zich erop voor.
 
-Deze logica voor proxyAddresses wordt aangeduid als **ProxyCalc**. ProxyCalc bij elke wijziging van een gebruiker die wordt aangeroepen wanneer:
+Deze logica voor proxyAdressen wordt **proxycalc genoemd.** ProxyCalc wordt aangeroepen bij elke wijziging op een gebruiker wanneer:
 
-- De gebruiker is toegewezen een serviceabonnement met Exchange Online, zelfs als de gebruiker is geen licentie voor Exchange. Bijvoorbeeld, als de gebruiker de Office-E3-SKU is toegewezen, maar alleen aan is toegewezen SharePoint Online. Dit geldt zelfs als uw postvak nog steeds on-premises wordt.
+- Aan de gebruiker is een serviceplan toegewezen dat Exchange Online bevat, zelfs als de gebruiker geen licentie heeft voor Exchange. Als de gebruiker bijvoorbeeld de Office E3 SKU toegewezen krijgt, maar alleen SharePoint Online is toegewezen. Dit geldt zelfs als uw mailbox nog on-premises is.
 - Het kenmerk msExchRecipientTypeDetails heeft een waarde.
-- U aanbrengt een wijziging in proxyAddresses of userPrincipalName.
+- U wijzigt proxyAdressen of userPrincipalName.
 
-ProxyCalc kan even duren voor het verwerken van een gebruiker wordt gewijzigd en is niet synchroon met de Azure AD Connect-exportproces.
+Het kan enige tijd duren voordat ProxyCalc een wijziging voor een gebruiker verwerkt en is niet synchroon met het Azure AD Connect-exportproces.
 
 > [!NOTE]
-> De logica ProxyCalc heeft enkele aanvullende gedrag voor geavanceerde scenario's die niet wordt vermeld in dit onderwerp. In dit onderwerp is bedoeld voor u meer inzicht in het gedrag en niet alle interne logica.
+> De ProxyCalc-logica heeft een aantal aanvullende gedragingen voor geavanceerde scenario's die niet zijn gedocumenteerd in dit onderwerp. Dit onderwerp is bedoeld om het gedrag te begrijpen en niet alle interne logica te documenteren.
 
 ### <a name="quarantined-attribute-values"></a>In quarantaine geplaatste kenmerkwaarden
-De kenmerken worden ook gebruikt als er dubbele kenmerkwaarden. Zie voor meer informatie, [tolerantie van dubbel kenmerk](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
+Schaduwkenmerken worden ook gebruikt wanneer er dubbele attribuutwaarden zijn. Zie [tolerantie voor dubbele kenmerken voor](how-to-connect-syncservice-duplicate-attribute-resiliency.md)meer informatie .
 
 ## <a name="see-also"></a>Zie ook
-* [Azure AD Connect-synchronisatie](how-to-connect-sync-whatis.md)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).
+* [Synchronisatie van Azure AD Connect](how-to-connect-sync-whatis.md)
+* [Uw on-premises identiteiten integreren met Azure Active Directory.](whatis-hybrid-identity.md)

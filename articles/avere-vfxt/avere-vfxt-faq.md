@@ -1,94 +1,94 @@
 ---
-title: Veelgestelde vragen-avere vFXT voor Azure
-description: Veelgestelde vragen over avere vFXT voor Azure
+title: Veelgestelde vragen - Avere vFXT voor Azure
+description: Veelgestelde vragen over Avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153459"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
-In dit artikel vindt u antwoorden op vragen die u kunnen helpen bij het bepalen of avere vFXT voor Azure geschikt is voor uw behoeften. Het bevat algemene informatie over avere vFXT en legt uit hoe het werkt met andere Azure-onderdelen en met producten van externe leveranciers.
+In dit artikel worden vragen beantwoord die u kunnen helpen beslissen of Avere vFXT voor Azure geschikt is voor uw behoeften. Het geeft basisinformatie over Avere vFXT en legt uit hoe het werkt met andere Azure-componenten en met producten van externe leveranciers.
 
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
 
-AVERE vFXT voor Azure is een bestands systeem met hoge prestaties waarmee actieve gegevens in azure Compute worden opgeslagen voor efficiënte verwerking van kritieke workloads.
+Avere vFXT voor Azure is een performevend bestandssysteem dat actieve gegevens in Azure-gegevens caches voor een efficiënte verwerking van kritieke workloads.
 
-### <a name="is-avere-vfxt-a-storage-solution"></a>Is avere vFXT een opslag oplossing?
+### <a name="is-avere-vfxt-a-storage-solution"></a>Is Avere vFXT een opslagoplossing?
 
-Nee. AVERE vFXT voor Azure is een bestandssysteem *cache* die is gekoppeld aan opslag omgevingen, zoals uw EMC-of NetApp NAS of een Azure Blob-container. AVERE vFXT stroomlijnt gegevens aanvragen van clients en slaat de gegevens op in de cache om de prestaties op schaal en na verloop van tijd te verbeteren. AVERE vFXT zelf slaat geen gegevens op. Het bevat geen informatie over de hoeveelheid gegevens die achter het bestand is opgeslagen.
+Nee. Avere vFXT voor Azure is een *bestandssysteemcache* die wordt gekoppeld aan opslagomgevingen, zoals uw EMC of NetApp NAS, of een Azure blob-container. Avere vFXT stroomlijnt gegevensaanvragen van clients en caches de gegevens die het dient om de prestaties op schaal en in de loop van de tijd te verbeteren. Avere vFXT zelf slaat geen gegevens op. Het heeft geen informatie over de hoeveelheid gegevens die erachter zijn opgeslagen.
 
-### <a name="is-avere-vfxt-a-tiering-solution"></a>Is avere vFXT een laag oplossing?
+### <a name="is-avere-vfxt-a-tiering-solution"></a>Is Avere vFXT een tiering oplossing?
 
-AVERE vFXT voor Azure belaagt niet automatisch gegevens tussen warme en coole lagen.  
+Avere vFXT voor Azure controleert niet automatisch gegevens tussen hot en cool lagen.  
 
-### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Hoe kan ik weet of een omgeving geschikt is voor avere vFXT?
+### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Hoe weet ik of een omgeving geschikt is voor Avere vFXT?
 
-De beste manier om te denken over deze vraag is het volgende te vragen: "is de werk belasting in de cache?" Dat wil zeggen dat de workload een hoge lees-naar-schrijf verhouding heeft? Een voor beeld is 80/20 of 70/30 leest/schrijft.
+De beste manier om na te denken over deze vraag is om te vragen: "Is de werkbelasting cachebaar?" Dat wil zeggen, heeft de werklast een hoge lees-naar-schrijfverhouding? Een voorbeeld is 80/20 of 70/30 leest/schrijft.
 
-Overweeg avere vFXT voor Azure als u een analytische pijp lijn hebt die wordt uitgevoerd op een groot aantal virtuele machines van Azure en voldoet aan een of meer van de volgende voor waarden:
+Overweeg Avere vFXT voor Azure als u een op bestanden gebaseerde analytische pijplijn hebt die wordt uitgevoerd over een groot aantal virtuele Azure-machines en voldoet aan een of meer van de volgende voorwaarden:
 
-* De algehele prestaties zijn traag of inconsistent vanwege lange bestands toegangs tijden (tien tallen milliseconden of seconden), afhankelijk van de vereisten. Deze latentie is onaanvaardbaar voor de klant.
+* De algehele prestaties zijn traag of inconsistent vanwege lange bestandstoegangstijden (tientallen milliseconden of seconden, afhankelijk van de vereisten). Deze latentie is onaanvaardbaar voor de klant.
 
-* De gegevens die nodig zijn voor de verwerking bevinden zich helemaal aan het einde van een WAN-omgeving en het is niet praktisch om die gegevens permanent te verplaatsen. De gegevens kunnen zich in een andere Azure-regio of in een klant centrum bevinden.
+* Gegevens die nodig zijn voor verwerking bevinden zich aan het uiteinde van een WAN-omgeving en het is onpraktisch om die gegevens permanent te verplaatsen. De gegevens bevinden zich mogelijk in een andere Azure-regio of in een klantdatacenter.
 
-* Een groot aantal clients vraagt de gegevens bijvoorbeeld op in een HPC-cluster (High-Performance Computing). Het grote aantal gelijktijdige aanvragen kan de latentie verhogen.
+* Een aanzienlijk aantal clients vraagt de gegevens op, bijvoorbeeld in een HPC-cluster (high-performance computing). Het grote aantal gelijktijdige aanvragen kan de latentie verhogen.
 
-* De klant wil de huidige pijp lijn uitvoeren "zoals is" in azure virtual machines en heeft een op POSIX gebaseerde, gedeelde opslag (of caching)-oplossing nodig voor schaal baarheid. Door avere vFXT voor Azure te gebruiken, hoeft u de werk pijplijn niet opnieuw te architecten om systeem eigen aanroepen naar Azure Blob-opslag te maken.
+* De klant wil zijn huidige pijplijn "as is" uitvoeren in azure virtuele machines, en heeft een POSIX-gebaseerde shared storage (of caching) oplossing nodig voor schaalbaarheid. Door Avere vFXT voor Azure te gebruiken, hoeft u de werkpijplijn niet opnieuw te ontwerpen om native calls naar Azure Blob-opslag te voeren.
 
-* Uw HPC-toepassing is gebaseerd op NFSv3-clients. (In sommige gevallen kan het SMB 2,1-clients gebruiken, maar de prestaties zijn beperkt.)
+* Uw HPC-toepassing is gebaseerd op NFSv3-clients. (In sommige omstandigheden kan het smb 2.1-clients gebruiken, maar de prestaties zijn beperkt.)
 
-Het volgende diagram kan u helpen bij het beantwoorden van deze vraag. Hoe dichter uw werk stroom zich helemaal rechtsboven bevindt, des te waarschijnlijker is dat de oplossing voor het opslaan van de avere vFXT voor Azure geschikt is voor uw omgeving.
+Met het volgende diagram u deze vraag beantwoorden. Hoe dichter uw workflow zich bovenaan bevindt, hoe groter de kans dat de Avere vFXT voor Azure caching-oplossing geschikt is voor uw omgeving.
 
-![Grafiek diagram waarin wordt getoond dat het lezen-zwaar laden met duizenden clients beter geschikt is voor avere vFXT](media/avere-vfxt-fit-assessment.png)
+![Grafiekdiagram waaruit blijkt dat leeszware lasten met duizenden clients beter geschikt zijn voor Avere vFXT](media/avere-vfxt-fit-assessment.png)
 
-### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Op welke schaal van clients is de avere vFXT-oplossing het meest zinnig?
+### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Op welke schaal van klanten heeft de Avere vFXT oplossing het meest zinvol?
 
-De avere vFXT-cache oplossing is gebouwd om honderden, duizenden of tien tallen duizenden reken kernen af te handelen. Als er een paar computers met licht werk zijn, is avere vFXT niet de juiste oplossing.
+De Avere vFXT-cacheoplossing is gebouwd om honderden, duizenden of tienduizenden rekenkernen te verwerken. Als u een paar machines hebt die licht werken, is Avere vFXT niet de juiste oplossing.
 
-Typische avere vFXT-klanten voeren veeleisende workloads uit met ongeveer 1.000 CPU-kernen. Deze omgevingen kunnen een grootte hebben van 50.000 kernen of meer. Omdat avere vFXT schaalbaar is, kunt u knoop punten toevoegen ter ondersteuning van deze werk belastingen wanneer ze groeien om meer door Voer of meer IOPS te vereisen.
+Typische Avere vFXT-klanten draaien veeleisende workloads vanaf ongeveer 1.000 CPU-cores. Deze omgevingen kunnen zo groot zijn als 50.000 cores of meer. Omdat Avere vFXT schaalbaar is, u knooppunten toevoegen om deze workloads te ondersteunen terwijl ze groeien om meer doorvoer of meer IOPS te vereisen.
 
-### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Hoeveel gegevens kan een avere vFXT-omgevings opslag?
+### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Hoeveel gegevens kan een Avere vFXT-omgeving opslaan?
 
-AVERE vFXT voor Azure is een cache. De gegevens worden niet specifiek opgeslagen. Er wordt gebruikgemaakt van een combi natie van RAM en Ssd's voor het opslaan van de gegevens in de cache. De gegevens worden permanent opgeslagen op een back-end-opslag systeem (bijvoorbeeld een NetApp NAS-systeem of een BLOB-container). Het avere vFXT-systeem heeft geen informatie over de hoeveelheid gegevens die erop zijn opgeslagen. AVERE vFXT slaat alleen de subset van die gegevens op die door clients worden aangevraagd.  
+Avere vFXT voor Azure is een cache. Het slaat niet specifiek gegevens op. Het maakt gebruik van een combinatie van RAM en SSD's om de gegevens in de cache op te slaan. De gegevens worden permanent opgeslagen op een back-end opslagsysteem (bijvoorbeeld een NetApp NAS-systeem of een blobcontainer). Het Avere vFXT-systeem heeft geen informatie over de hoeveelheid gegevens die erachter zijn opgeslagen. Avere vFXT caches alleen de subset van die gegevens die clients vragen.  
 
 ### <a name="what-regions-are-supported"></a>Welke regio's worden ondersteund?
 
-AVERE vFXT voor Azure wordt ondersteund in alle regio's, met uitzonde ring van soevereine regio's (China, Duitsland). Zorg ervoor dat de regio die u wilt gebruiken, ondersteuning biedt voor het grote aantal reken kernen en de VM-exemplaren die nodig zijn om het avere vFXT-cluster te maken.
+Avere vFXT voor Azure wordt ondersteund in alle regio's, behalve in soevereine regio's (China, Duitsland). Zorg ervoor dat de regio die u wilt gebruiken, de grote hoeveelheid rekenkernen en de VM-exemplaren kan ondersteunen die nodig zijn om het Avere vFXT-cluster te maken.
 
-### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hoe kan ik hulp krijgen bij avere vFXT?
+### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hoe krijg ik hulp met Avere vFXT?
 
-Een gespecialiseerde groep ondersteunings medewerkers biedt hulp bij avere vFXT voor Azure. Volg de instructies in [hulp bij uw systeem verkrijgen](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteunings ticket te openen via de Azure Portal.
+Een gespecialiseerde groep ondersteuningsmedewerkers biedt hulp met Avere vFXT voor Azure. Volg de instructies in [Help met uw systeem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteuningsticket te openen vanaf de Azure-portal.
 
-### <a name="is-avere-vfxt-highly-available"></a>Is avere vFXT Maxi maal beschikbaar?
+### <a name="is-avere-vfxt-highly-available"></a>Is Avere vFXT zeer beschikbaar?
 
-Ja, avere vFXT wordt uitsluitend uitgevoerd als een HA-oplossing.
+Ja, Avere vFXT draait uitsluitend als HA-oplossing.
 
-### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Ondersteunt avere vFXT voor Azure ook andere Cloud Services?
+### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Ondersteunt Avere vFXT voor Azure ook andere cloudservices?
 
-Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cluster. Het ondersteunt AWS S3 Standard buckets, Google Cloud Services Standard buckets en Azure Blob-containers.
+Ja, klanten kunnen meer dan één cloudprovider gebruiken met het Avere vFXT-cluster. Het ondersteunt AWS S3-standaardbuckets, Standaardbuckets van Google Cloud Services en Azure blob-containers.
 
 > [!NOTE]
-> Een software vergoeding is van toepassing op het gebruik van AVERE vFXT met AWS of Google Cloud Storage. Er zijn geen extra software kosten voor het gebruik van Azure Blob Storage.
+> Er zijn softwarekosten van toepassing voor het gebruik van Avere vFXT met AWS- of Google Cloud-opslag. Er zijn geen extra softwarekosten verbonden aan het gebruik van Azure blob-opslag.
 
-## <a name="technical-compute"></a>Technisch: berekenen
+## <a name="technical-compute"></a>Technisch: Compute
 
-### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Kunt u beschrijven wat een avere vFXT-omgeving lijkt?
+### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>u beschrijven hoe een Avere vFXT-omgeving eruit ziet?
 
-AVERE vFXT is een geclusterd apparaat dat bestaat uit meerdere virtuele machines van Azure. Een python-bibliotheek verwerkt het maken, verwijderen en wijzigen van het cluster. Lees [Wat is avere vFXT voor Azure?](avere-vfxt-overview.md) voor meer informatie.
+Avere vFXT is een geclusterd toestel gemaakt van meerdere Azure virtuele machines. Een Python-bibliotheek verwerkt het maken, verwijderen en wijzigen van het cluster. Lees [Wat is Avere vFXT voor Azure?](avere-vfxt-overview.md)
 
-### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Op welke soort virtuele Azure-machines wordt avere vFXT uitgevoerd?  
+### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Op wat voor soort Azure virtuele machines draait Avere vFXT?  
 
-Een avere vFXT voor Azure-cluster maakt gebruik van Microsoft Azure E32s_v3 virtuele machines.
+Een Avere vFXT voor Azure-cluster maakt gebruik van Microsoft Azure-E32s_v3 virtuele machines.
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -99,196 +99,196 @@ No, you must choose one virtual machine type or the other.
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
 -->
 
-### <a name="does-the-avere-vfxt-environment-scale"></a>Wordt de omgeving van de avere-vFXT geschaald?
+### <a name="does-the-avere-vfxt-environment-scale"></a>Schaalt de Avere vFXT-omgeving?
 
-Het avere vFXT-cluster kan Maxi maal drie virtuele-machine knooppunten of Maxi maal 24 knoop punten zijn. Neem contact op met de technische ondersteuning van Azure voor hulp bij de planning als u denkt dat u een cluster van meer dan negen knoop punten nodig hebt. Het grotere aantal knoop punten vereist een grotere implementatie architectuur.
+Het Avere vFXT-cluster kan zo klein zijn als drie virtuele machineknooppunten of zo groot als 24 knooppunten. Neem contact op met de technische ondersteuning van Azure voor hulp bij de planning als u denkt dat u een cluster van meer dan negen knooppunten nodig hebt. Het grotere aantal knooppunten vereist een grotere implementatiearchitectuur.
 
-### <a name="does-the-avere-vfxt-environment-autoscale"></a>Is de avere vFXT-omgeving "automatisch schalen"?
+### <a name="does-the-avere-vfxt-environment-autoscale"></a>Is de Avere vFXT omgeving "autoscale"?
 
-Nee. U kunt de cluster grootte omhoog en omlaag schalen, maar het toevoegen of verwijderen van cluster knooppunten is een hand matige stap.
+Nee. U de clustergrootte op en neer schalen, maar het toevoegen of verwijderen van clusterknooppunten is een handmatige stap.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Kan ik het avere vFXT-cluster uitvoeren als een schaalset voor virtuele machines?
+### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Kan ik het Avere vFXT-cluster uitvoeren als een virtuele machineschaalset?
 
-AVERE vFXT biedt geen ondersteuning voor de implementatie van een schaalset met virtuele machines. Verschillende ingebouwde beschik bare ondersteunings mechanismen zijn alleen ontworpen voor atomische Vm's die deel uitmaken van een cluster.  
+Avere vFXT ondersteunt geen implementatie van een virtuele machineschaalset. Verschillende ingebouwde beschikbaarheidsondersteuningsmechanismen zijn alleen ontworpen voor atomaire VM's die deelnemen aan een cluster.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Kan ik het avere vFXT-cluster op virtuele machines met lage prioriteit uitvoeren?
+### <a name="can-i-run-the-avere-vfxt-cluster-on-low-priority-vms"></a>Kan ik het Avere vFXT-cluster uitvoeren op VM's met lage prioriteit?
 
 Nee, het systeem vereist een onderliggende stabiele set virtuele machines.
 
-### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Kan ik het avere vFXT-cluster in containers uitvoeren?
+### <a name="can-i-run-the-avere-vfxt-cluster-in-containers"></a>Kan ik het Avere vFXT-cluster in containers uitvoeren?
 
-Nee, avere vFXT moet als een onafhankelijke toepassing worden geïmplementeerd.
+Nee, Avere vFXT moet worden geïmplementeerd als een onafhankelijke toepassing.
 
-### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Is het aantal avere vFXT-Vm's voor mijn reken quota?
+### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Tellen de Avere vFXT VM's mee voor mijn compute quota?
 
-Ja. Zorg ervoor dat de regio voldoende quota heeft voor de ondersteuning van het cluster.  
+Ja. Zorg ervoor dat u voldoende quota in de regio hebt om het cluster te ondersteunen.  
 
-### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Kan ik de avere vFXT-cluster machines in verschillende beschikbaarheids zones uitvoeren?
+### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Kan ik de Avere vFXT-clustermachines in verschillende beschikbaarheidszones uitvoeren?
 
-Nee. Het model voor hoge Beschik baarheid in avere vFXT biedt momenteel geen ondersteuning voor afzonderlijke avere vFXT-cluster leden die zich in verschillende beschikbaarheids zones bevinden.
+Nee. Het hoge beschikbaarheidsmodel in Avere vFXT biedt momenteel geen ondersteuning voor individuele Avere vFXT-clusterleden in verschillende beschikbaarheidszones.
 
-### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Kan ik virtuele machines van AVERE vFXT klonen?
+### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Kan ik Avere vFXT virtuele machines klonen?
 
-Nee, u moet het ondersteunde python-script gebruiken om knoop punten toe te voegen aan of te verwijderen uit het avere vFXT-cluster. Lees [Manage the avere vFXT cluster](avere-vfxt-manage-cluster.md)voor meer informatie.
+Nee, u moet het ondersteunde Python-script gebruiken om knooppunten toe te voegen of te verwijderen in het Avere vFXT-cluster. Lees Voor meer informatie [het avere vFXT-cluster beheren.](avere-vfxt-manage-cluster.md)
 
-### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Is er een VM-versie van de software die ik in mijn eigen lokale omgeving kan uitvoeren?
+### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Is er een "VM" versie van de software die ik kan draaien in mijn eigen lokale omgeving?
 
-Nee, het systeem wordt aangeboden als een geclusterd apparaat en getest op specifieke typen virtuele machines. Deze beperking helpt klanten bij het maken van een systeem dat geen ondersteuning biedt voor de hoge prestatie vereisten van een typische avere vFXT-werk stroom.
+Nee, het systeem wordt aangeboden als een geclusterd toestel en getest op specifieke virtuele machinetypes. Deze beperking helpt klanten te voorkomen dat ze een systeem maken dat de hoge prestatievereisten van een typische Avere vFXT-workflow niet ondersteunt.
 
-## <a name="technical-disks"></a>Technisch: schijven
+## <a name="technical-disks"></a>Technisch: Schijven
 
-### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Welke typen schijven worden ondersteund voor de virtuele Azure-machines?
+### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Welke typen schijven worden ondersteund voor de Azure VM's?
 
-AVERE vFXT voor Azure kan gebruikmaken van 1 TB of 4 TB Premium SSD-configuraties. De Premium SSD-configuratie kan worden geïmplementeerd als meerdere beheerde schijven.
+Avere vFXT voor Azure kan gebruik maken van 1-TB of 4-TB premium SSD configuraties. De premium SSD-configuratie kan worden geïmplementeerd als meerdere beheerde schijven.
 
-### <a name="does-the-cluster-support-unmanaged-disks"></a>Ondersteunt het cluster niet-beheerde schijven?
+### <a name="does-the-cluster-support-unmanaged-disks"></a>Ondersteunt het cluster onbeheerde schijven?
 
 Nee, het cluster vereist beheerde schijven.
 
-### <a name="does-the-system-support-local-attached-ssds"></a>Ondersteunt het systeem lokale (gekoppelde) Ssd's?
+### <a name="does-the-system-support-local-attached-ssds"></a>Ondersteunt het systeem lokale (bijgevoegde) SSD's?
 
-AVERE vFXT voor Azure biedt momenteel geen ondersteuning voor lokale Ssd's. Schijven die worden gebruikt voor avere vFXT moeten kunnen worden afgesloten en opnieuw worden opgestart, maar lokale gekoppelde Ssd's in deze configuratie kan alleen worden beëindigd.
+Avere vFXT voor Azure biedt momenteel geen ondersteuning voor lokale SSD's. Schijven die worden gebruikt voor Avere vFXT moeten kunnen worden afgesloten en opnieuw opgestart, maar lokale gekoppelde SSD's in deze configuratie kunnen alleen worden beëindigd.
 
-### <a name="does-the-system-support-ultra-ssds"></a>Ondersteunt het systeem Ultra Ssd's?
+### <a name="does-the-system-support-ultra-ssds"></a>Ondersteunt het systeem ultra-SSD's?
 
-Nee, het systeem ondersteunt alleen Premium SSD-configuraties.
+Nee, het systeem ondersteunt alleen premium SSD-configuraties.
 
-### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Kan ik mijn Premium Ssd's ontkoppelen en later opnieuw koppelen om de cache-inhoud tussen het gebruik te bewaren?
+### <a name="can-i-detach-my-premium-ssds-and-reattach-them-later-to-preserve-cache-contents-between-use"></a>Kan ik mijn premium SSD's loskoppelen en ze later opnieuw koppelen om cache-inhoud tussen het gebruik te bewaren?
 
-Het loskoppelen en opnieuw koppelen van Ssd's wordt niet ondersteund. Meta gegevens of bestands inhoud op de bron zijn mogelijk gewijzigd tussen het gebruik, wat kan leiden tot problemen met de gegevens integriteit.
+Het loskoppelen en opnieuw bevestigen van SSD's wordt niet ondersteund. Metagegevens of bestandsinhoud op de bron kunnen tussen het gebruik zijn gewijzigd, wat problemen met de integriteit van gegevens kan veroorzaken.
 
-### <a name="does-the-system-encrypt-the-cache"></a>Wordt de cache door het systeem versleuteld?
+### <a name="does-the-system-encrypt-the-cache"></a>Versleutelt het systeem de cache?
 
-De gegevens worden gestripd over de schijven, maar niet versleuteld. De schijven zelf kunnen echter worden versleuteld. Zie voor meer informatie [beleid voor veilig en gebruik van virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Gegevens worden over de schijven gestreept, maar niet versleuteld. De schijven zelf kunnen echter worden versleuteld. Zie [Beleid beveiligen en gebruiken op virtuele machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption)voor meer informatie.
 
-## <a name="technical-networking"></a>Technisch: netwerken
+## <a name="technical-networking"></a>Technisch: Netwerken
 
 ### <a name="what-network-is-recommended"></a>Welk netwerk wordt aanbevolen?
 
-Als u gebruikmaakt van on-premises opslag met avere vFXT, hebt u een netwerk verbinding van 1 Gbps of beter tussen uw opslag en het cluster nodig. Als u een kleine hoeveelheid gegevens hebt en bereid bent om gegevens te kopiëren naar de Cloud voordat u taken uitvoert, kan de VPN-verbinding voldoende zijn.
+Als u on-premises opslag gebruikt met Avere vFXT, moet u een 1-Gbps of betere netwerkverbinding hebben tussen uw opslag en het cluster. Als u een kleine hoeveelheid gegevens hebt en bereid bent om gegevens naar de cloud te kopiëren voordat u taken uitvoert, kan vpn-connectiviteit voldoende zijn.
 
 > [!TIP]
-> Hoe langzamer de netwerk koppeling is, hoe langzamer de eerste Lees bewerkingen zijn. Trage Lees bewerkingen verhogen de latentie van de werk pijplijn.
+> Hoe langzamer de netwerkkoppeling is, hoe langzamer de eerste "koude" leest zal zijn. Langzame leest verhogen de latentie van de werkpijplijn.
 
-### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Kan ik avere vFXT uitvoeren in een ander virtueel netwerk dan mijn berekenings cluster?
+### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Kan ik Avere vFXT uitvoeren in een ander virtueel netwerk dan mijn compute cluster?
 
-Ja, u kunt uw avere vFXT-systeem maken in een ander virtueel netwerk. Raadpleeg [uw avere vFXT-systeem plannen](avere-vfxt-deploy-plan.md) voor meer informatie.
+Ja, u uw Avere vFXT-systeem in een ander virtueel netwerk maken. Lees [Plan uw Avere vFXT-systeem](avere-vfxt-deploy-plan.md) voor meer informatie.
 
-### <a name="does-avere-vfxt-require-its-own-subnet"></a>Is avere vFXT een eigen subnet nodig?
+### <a name="does-avere-vfxt-require-its-own-subnet"></a>Heeft Avere vFXT een eigen subnet nodig?
 
-Ja. AVERE vFXT wordt uitsluitend als een cluster met hoge Beschik baarheid (HA) uitgevoerd en vereist dat meerdere IP-adressen actief zijn. Als het cluster zich in een eigen subnet bevindt, vermijdt u het risico op conflicten met IP-adressen. Dit kan leiden tot problemen met de installatie en de normale werking. Het subnet van het cluster kan zich in een virtueel netwerk bevinden dat door andere bronnen wordt gebruikt, zolang er geen IP-adressen zijn die elkaar overlappen.
+Ja. Avere vFXT draait strikt als een HA-cluster (high availability) en vereist meerdere IP-adressen om te werken. Als het cluster zich in een eigen subnet bevindt, vermijdt u het risico van IP-adresconflicten, wat problemen kan veroorzaken voor de installatie en de normale werking. Het subnet van het cluster kan zich binnen een virtueel netwerk bevinden dat door andere bronnen wordt gebruikt, zolang er geen IP-adressen elkaar overlappen.
 
-### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Kan ik avere vFXT op InfiniBand uitvoeren?
+### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Kan ik Avere vFXT draaien op InfiniBand?
 
-Nee, avere vFXT gebruikt alleen Ethernet/IP.
+Nee, Avere vFXT maakt alleen gebruik van Ethernet/IP.
 
-### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Hoe kan ik toegang tot mijn on-premises NAS-omgeving vanuit avere vFXT?
+### <a name="how-do-i-access-my-on-premises-nas-environment-from-avere-vfxt"></a>Hoe krijg ik toegang tot mijn on-premises NAS-omgeving van Avere vFXT?
 
-De avere vFXT-omgeving is net als elke andere virtuele machine van Azure, omdat hiervoor gerouteerde toegang via een netwerk gateway of VPN naar het Data Center van de klant is vereist. Overweeg het gebruik van Azure ExpressRoute-connectiviteit als deze beschikbaar is in uw omgeving.
+De Avere vFXT-omgeving is net als elke andere Azure VM in die zin dat het vereist gerouteerd toegang via een netwerk gateway of VPN naar de klant datacenter (en terug). Overweeg azure ExpressRoute-connectiviteit te gebruiken als deze beschikbaar is in uw omgeving.
 
-### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Wat zijn de bandbreedte vereisten voor avere vFXT?
+### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Wat zijn de bandbreedtevereisten voor Avere vFXT?
 
-De vereiste voor de totale band breedte is afhankelijk van twee factoren:
+De algemene bandbreedtevereiste is afhankelijk van twee factoren:
 
-* De hoeveelheid gegevens die wordt aangevraagd vanuit de bron
-* De tolerantie van het client systeem tijdens het laden van initiële gegevens  
+* De hoeveelheid gegevens die bij de bron wordt opgevraagd
+* De tolerantie van het clientsysteem voor latentie tijdens het laden van gegevens  
 
-Voor latentie gevoelige omgevingen moet u een glasvezel oplossing gebruiken met een minimale verbindings snelheid van 1 Gbps. Gebruik ExpressRoute als deze beschikbaar is.  
+Voor latentiegevoelige omgevingen moet u een vezeloplossing gebruiken met een minimale verbindingssnelheid van 1 Gbps. Gebruik ExpressRoute als deze beschikbaar is.  
 
-### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Kan ik avere vFXT uitvoeren met open bare IP-adressen?
+### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Kan ik Avere vFXT uitvoeren met openbare IP-adressen?
 
-Nee, avere vFXT is bedoeld om te worden gebruikt in een netwerk omgeving die wordt beveiligd met aanbevolen procedures.
+Nee, Avere vFXT is bedoeld om te worden gebruikt in een netwerkomgeving beveiligd door middel van best practices.
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Kan ik Internet toegang vanuit het virtuele netwerk van mijn cluster beperken?
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Kan ik de toegang tot internet beperken tot het virtuele netwerk van mijn cluster?
 
-Over het algemeen kunt u zo nodig extra beveiliging op het virtuele netwerk configureren, maar sommige beperkingen kunnen de werking van het cluster belemmeren.
+In het algemeen u indien nodig extra beveiliging op uw virtuele netwerk configureren, maar sommige beperkingen kunnen de werking van het cluster verstoren.
 
-Als u bijvoorbeeld de uitgaande internet toegang van uw virtuele netwerk beperkt, worden er problemen voor het cluster veroorzaakt, tenzij u ook een regel toevoegt waarmee expliciet toegang tot Cloud wordt toegestaan. Deze situatie wordt beschreven in [aanvullende documentatie over github](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Het beperken van uitgaande internettoegang vanuit uw virtuele netwerk veroorzaakt bijvoorbeeld problemen voor het cluster, tenzij u ook een regel toevoegt die expliciet toegang tot AzureCloud toestaat. Deze situatie wordt beschreven in [aanvullende documentatie op GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
-Neem contact op met de ondersteuning, zoals wordt beschreven in [hulp vragen bij uw systeem](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)voor hulp bij aangepaste beveiliging.
+Neem voor hulp bij aangepaste beveiliging contact op met ondersteuning zoals beschreven in [Hulp bij uw systeem.](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)
 
-## <a name="technical-back-end-storage-core-filers"></a>Technisch: back-end-opslag (kern bestanden)
+## <a name="technical-back-end-storage-core-filers"></a>Technisch: Back-end opslag (core filers)
 
-### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Hoeveel kern bestanden ondersteunt één avere vFXT-omgeving?
+### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Hoeveel core filers ondersteunt één Avere vFXT-omgeving?
 
-Een avere vFXT-cluster ondersteunt Maxi maal 20 kern bestanden.
+Een Avere vFXT-cluster ondersteunt maximaal 20 core-filers.
 
-### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Hoe worden gegevens opgeslagen in de omgeving van de avere-vFXT?
+### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Hoe slaat de Avere vFXT-omgeving gegevens op?
 
-AVERE vFXT is geen opslag ruimte. Het is een cache die gegevens leest uit en schrijft van meerdere opslag doelen die kern bestanden worden genoemd. Gegevens die zijn opgeslagen op Premium SSD-schijven in avere vFXT, zijn tijdelijk en worden uiteindelijk leeg gemaakt naar de back-end-kern bestands opslag.
+Avere vFXT is geen opslag. Het is een cache die gegevens van meerdere opslagdoelen leest en schrijft, de zogenaamde core filers. Gegevens die zijn opgeslagen op premium SSD-schijven in Avere vFXT zijn van voorbijgaande aard en worden uiteindelijk doorgespoeld naar de back-end core filer-opslag.
 
-### <a name="which-core-filers-does-avere-vfxt-support"></a>Welke kern bestanden ondersteunt avere vFXT?
+### <a name="which-core-filers-does-avere-vfxt-support"></a>Welke core filers ondersteunt Avere vFXT?
 
-In het algemeen worden in avere vFXT voor Azure de volgende systemen ondersteund als kern bestanden:
+In het algemeen ondersteunt Avere vFXT voor Azure de volgende systemen als core filers:
 
-* Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 en 8,1) 
-* NetApp ONTAP (geclusterde modus 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) en (7-modus 7. *, 8.0-8,3)
+* Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 en 8.1) 
+* NetApp ONTAP (geclusterde modus 9.4, 9.3, 9.2, 9.1P1, 8.0-8.3) en (7-Modus 7.*, 8.0-8.3)
 
-* Azure Blob-containers (alleen lokaal redundante opslag)
+* Azure blob-containers (alleen lokaal redundante opslag)
 * AWS S3-buckets
-* Google-Cloud-buckets
+* Google Cloud-buckets
 
-### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Waarom biedt avere vFXT geen ondersteuning voor alle NFS-bestanden?
+### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Waarom ondersteunt Avere vFXT niet alle NFS-filers?
 
-Hoewel alle NFS-platforms voldoen aan dezelfde IETF-normen, heeft elke implementatie in de praktijk een eigen quirks. Deze details beïnvloeden hoe avere vFXT communiceert met het opslag systeem. De ondersteunde systemen zijn de meest gebruikte platforms op Marketplace.
+Hoewel alle NFS-platforms aan dezelfde IETF-normen voldoen, heeft elke implementatie in de praktijk zijn eigen eigenaardigheden. Deze details beïnvloeden hoe Avere vFXT met het opslagsysteem omgaat. De ondersteunde systemen zijn de meest gebruikte platforms in de markt.
 
-### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Biedt avere vFXT ondersteuning voor opslag van persoonlijke objecten (zoals SwiftStack)?
+### <a name="does-avere-vfxt-support-private-object-storage-such-as-swiftstack"></a>Ondersteunt Avere vFXT private object storage (zoals SwiftStack)?
 
-AVERE vFXT biedt geen ondersteuning voor opslag van privé-objecten.
+Avere vFXT ondersteunt geen private objectopslag.
 
-### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Hoe krijg ik een specifiek opslag product onder ondersteuning?
+### <a name="how-can-i-get-a-specific-storage-product-under-support"></a>Hoe kan ik een specifiek opslagproduct onder ondersteuning krijgen?
 
-Ondersteuning is gebaseerd op de hoeveelheid vraag in het veld. Als er voldoende op omzet gebaseerde aanvragen zijn voor de ondersteuning van een NAS-oplossing, worden deze beschouwd. Aanvragen indienen via ondersteuning voor Azure.
+Ondersteuning is gebaseerd op de hoeveelheid vraag in het veld. Als er voldoende op inkomsten gebaseerde verzoeken zijn om een NAS-oplossing te ondersteunen, zullen we dit overwegen. Doe aanvragen via Azure-ondersteuning.
 
-### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Kan ik Azure Blob-opslag als kern bestand gebruiken?
+### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Kan ik Azure Blob-opslag gebruiken als een core filer?
 
-Ja, avere vFXT voor Azure kan gebruikmaken van een blok-BLOB-container als een Cloud core-bestand.
+Ja, Avere vFXT voor Azure kan een block blob-container gebruiken als cloudcore-filer.
 
-### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Wat zijn de vereisten voor het opslag account voor een BLOB core-bestand?
+### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Wat zijn de vereisten voor opslagaccount voor een blobcore-filer?
 
-Uw opslag account moet een GPv2-account (General-Purpose v2) zijn en alleen worden geconfigureerd voor lokaal redundante opslag. Geografisch redundante opslag en zone-redundante opslag worden niet ondersteund.
+Uw opslagaccount moet een G2-account (gpv2) voor algemene doeleinden zijn en alleen zijn geconfigureerd voor lokaal redundante opslag. Georedundante opslag en zoneredundante opslag worden niet ondersteund.
 
-Lees [Azure Blob Storage Cloud core filer](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) voor meer informatie over de vereisten voor het opslag account.
+Lees [Azure Blob Storage cloud core filer](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) voor meer informatie over de vereisten voor opslagaccount.
 
-### <a name="can-i-use-archive-blob-storage"></a>Kan ik archief-Blob-opslag gebruiken?
+### <a name="can-i-use-archive-blob-storage"></a>Kan ik archiefblobopslag gebruiken?
 
-Nee. De Service Level Agreement (SLA) voor archief opslag is niet compatibel met de real-time Directory-en bestands toegangs behoeften van het avere vFXT-systeem.
+Nee. De service-level agreement (SLA) voor archiefopslag is niet compatibel met de realtime directory- en bestandstoegangsbehoeften van het Avere vFXT-systeem.
 
-### <a name="can-i-use-cool-blob-storage"></a>Kan ik de cool Blob-opslag gebruiken?
+### <a name="can-i-use-cool-blob-storage"></a>Kan ik coole blob-opslag gebruiken?
 
-Blob-opslag voor de cool-laag wordt doorgaans niet aanbevolen voor een avere vFXT voor Azure core-bestanden. Cool-laag biedt lagere opslag kosten, maar hogere bewerkings kosten. (Zie [prijzen voor blok-blobs](<https://azure.microsoft.com/pricing/details/storage/blobs/>) voor meer informatie.) Als gegevens regel matig worden geopend en gewijzigd of verwijderd, kunt u overwegen de warme laag te gebruiken.
+Cool tier blob-opslag wordt meestal niet aanbevolen voor een Avere vFXT voor Azure core filer. Cool tier biedt lagere opslagkosten, maar hogere bedrijfskosten. (Zie [Blob-prijzen blokkeren](<https://azure.microsoft.com/pricing/details/storage/blobs/>) voor meer informatie.) Als gegevens vaak worden geopend en gewijzigd of verwijderd, u overwegen de laag Hot te gebruiken.
 
-[Toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) biedt meer informatie over wanneer het zinvol is om de cool-laag opslag te gebruiken als een vFXT-kern bestand.
+[Access-lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) geven meer informatie over wanneer het zinvol is om Cool tier-opslag te gebruiken als een vFXT-core filer.
 
-### <a name="how-do-i-encrypt-the-blob-container"></a>Hoe kan ik de BLOB-container versleutelen?
+### <a name="how-do-i-encrypt-the-blob-container"></a>Hoe versleutel ik de blobcontainer?
 
-U kunt BLOB-versleuteling configureren in azure (bij voor keur) of op het niveau van de avere vFXT core-bestand.  
+U blob-versleuteling configureren in Azure (voorkeur) of op het niveau van de Avere vFXT-kernfiler.  
 
-### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Kan ik mijn eigen versleutelings sleutel gebruiken voor een BLOB-kern bestand?
+### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Kan ik mijn eigen encryptiesleutel gebruiken voor een blob core filer?
 
-Standaard worden gegevens versleuteld met door micro soft beheerde sleutels voor Azure Blob, Table en Queue Storage, plus Azure Files. U kunt uw eigen sleutel voor versleuteling van de Blob-opslag en Azure Files. Als u ervoor kiest om avere vFXT-versleuteling te gebruiken, moet u de door avere gegenereerde sleutel gebruiken en deze lokaal opslaan.
+Standaard worden gegevens versleuteld via door Microsoft beheerde sleutels voor Azure Blob-, Tabel- en Queue-opslag, plus Azure-bestanden. U uw eigen sleutel voor versleuteling voor Blob-opslag en Azure-bestanden meenemen. Als u ervoor kiest om Avere vFXT-versleuteling te gebruiken, moet u de door Avere gegenereerde sleutel gebruiken en lokaal opslaan.
 
-## <a name="purchasing"></a>Inkopen
+## <a name="purchasing"></a>Aanschaffen
 
-### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Hoe kan ik avere vFXT voor Azure-licenties ophalen?
+### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Hoe krijg ik Avere vFXT voor Azure-licenties?
 
-Het verkrijgen van een avere vFXT voor Azure-licentie is eenvoudig via Azure Marketplace. Meld u aan voor een Azure-account en volg de instructies in [Deploy the avere vFXT cluster](avere-vfxt-deploy.md) om een avere vFXT-cluster te maken.
+Het verkrijgen van een Avere vFXT voor Azure-licentie is eenvoudig via de Azure Marketplace. Meld u aan voor een Azure-account en volg de instructies in [Het Avere vFXT-cluster implementeren](avere-vfxt-deploy.md) om een Avere vFXT-cluster te maken.
 
-### <a name="how-much-does-avere-vfxt-cost"></a>Wat kost avere vFXT?
+### <a name="how-much-does-avere-vfxt-cost"></a>Hoeveel kost Avere vFXT?
 
-In azure zijn er geen extra licentie kosten verbonden aan het gebruik van AVERE vFXT-clusters. Klanten zijn verantwoordelijk voor opslag en andere kosten voor Azure-verbruik.
+In Azure zijn er geen extra licentiekosten voor het gebruik van Avere vFXT-clusters. Klanten zijn verantwoordelijk voor opslag en andere Azure-verbruikskosten.
 
-### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Kunnen avere vFXT-Vm's als lage prioriteit worden uitgevoerd?
+### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Kunnen Avere vFXT VM's worden uitgevoerd als lage prioriteit?
 
-Nee, avere vFXT-clusters vereisen de service ' always on '. De clusters kunnen worden uitgeschakeld wanneer ze niet nodig zijn.
+Nee, Avere vFXT-clusters vereisen "always on" service. De clusters kunnen worden uitgeschakeld wanneer dit niet nodig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees deze artikelen voor meer informatie over het plannen en implementeren van uw eigen systeem om aan de slag te gaan met avere vFXT voor Azure:
+Lees deze artikelen om aan de slag te gaan met Avere vFXT voor Azure:
 
 * [Uw Avere vFXT-systeem plannen](avere-vfxt-deploy-plan.md)
-* [Implementatie-overzicht](avere-vfxt-deploy-overview.md)
-* [Voorbereiden op het maken van een avere vFXT-cluster](avere-vfxt-prereqs.md)
+* [Implementatieoverzicht](avere-vfxt-deploy-overview.md)
+* [Bereid je voor om een Avere vFXT-cluster te maken](avere-vfxt-prereqs.md)
 * [Het Avere vFXT-cluster implementeren](avere-vfxt-deploy.md)
 
-Ga naar [avere vFXT voor Azure](https://azure.microsoft.com/services/storage/avere-vfxt/)voor meer informatie over mogelijkheden en use cases voor avere vFXT.
+Ga voor meer informatie over mogelijkheden en use cases voor Avere vFXT naar [Avere vFXT voor Azure.](https://azure.microsoft.com/services/storage/avere-vfxt/)

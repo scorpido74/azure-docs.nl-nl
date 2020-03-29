@@ -1,6 +1,6 @@
 ---
-title: Certificaat vernieuwen voor Office 365 en Azure AD-gebruikers | Microsoft Docs
-description: In dit artikel wordt uitgelegd aan Office 365-gebruikers over het oplossen van problemen met e-mailberichten die ze hierover te informeren over het vernieuwen van een certificaat.
+title: Certificaatverlenging voor Office 365- en Azure AD-gebruikers | Microsoft Documenten
+description: In dit artikel worden Office 365-gebruikers uitgelegd hoe ze problemen met e-mails kunnen oplossen die hen informeren over het vernieuwen van een certificaat.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,49 +17,49 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244840"
 ---
-# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Federatiecertificaten vernieuwen voor Office 365 en Azure Active Directory
+# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Federatiecertificaten voor Office 365 en Azure Active Directory verlengen
 ## <a name="overview"></a>Overzicht
-Geslaagde federatie tussen Azure Active Directory (Azure AD) en Active Directory Federation Services (AD FS), de certificaten die zijn gebruikt door AD FS voor het ondertekenen van beveiligingstokens aan Azure AD moeten overeenkomen met wat in Azure AD is geconfigureerd. Niet overeenkomen, kan leiden tot verbroken vertrouwensrelatie. Azure AD zorgt ervoor dat deze gegevens synchroon worden gehouden bij het implementeren van AD FS en Web Application Proxy (voor toegang tot het extranet).
+Voor een succesvolle federatie tussen Azure Active Directory (Azure AD) en Active Directory Federation Services (AD FS) moeten de certificaten die DOOR AD FS worden gebruikt om beveiligingstokens aan Azure AD te ondertekenen, overeenkomen met wat is geconfigureerd in Azure AD. Elke mismatch kan leiden tot gebroken vertrouwen. Azure AD zorgt ervoor dat deze informatie gesynchroniseerd wordt gehouden wanneer u AD FS en Web Application Proxy implementeert (voor extranettoegang).
 
-Dit artikel vindt u aanvullende informatie voor het beheren van uw token handtekeningcertificaten en synchroniseren met Azure AD in de volgende gevallen:
+In dit artikel vindt u aanvullende informatie om uw tokenondertekeningscertificaten te beheren en deze in de volgende gevallen synchroon te houden met Azure AD:
 
-* Implementeert u de Web Application Proxy en de federatiemetagegevens is daarom niet beschikbaar in het extranet.
-* U de standaardconfiguratie van AD FS niet gebruikt voor token-ondertekening van certificaten.
-* U kunt een externe id-provider worden gebruikt.
+* U implementeert de proxy van de webtoepassing niet en daarom zijn de federatiemetagegevens niet beschikbaar in het extranet.
+* U gebruikt de standaardconfiguratie van AD FS niet voor tokenondertekeningscertificaten.
+* U gebruikt een externe identiteitsprovider.
 
-## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standaardconfiguratie van AD FS voor token-ondertekening van certificaten
-Het token-ondertekening en certificaten decoderen-token zijn meestal zelfondertekende certificaten en geschikt zijn voor één jaar. Standaard AD FS bevat een automatische verlenging-proces met de naam **AutoCertificateRollover**. Als u AD FS 2.0 of hoger, Office 365 en Azure AD automatisch bijwerken van uw certificaat voordat deze verloopt.
+## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standaardconfiguratie van AD FS voor tokenondertekeningscertificaten
+De tokensigning- en tokendecrypting-certificaten zijn meestal zelfondertekende certificaten en zijn goed voor een jaar. Ad FS bevat standaard een automatisch vernieuwingsproces met de naam **AutoCertificateRollover**. Als u AD FS 2.0 of hoger gebruikt, worden uw certificaat automatisch bijgewerkt in Office 365 en Azure AD voordat het verloopt.
 
-### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Melding van de verlenging van het Microsoft 365-beheercentrum of een e-mailbericht
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Meldingen vernieuwen vanuit het Microsoft 365-beheercentrum of een e-mail
 > [!NOTE]
-> Als u een e-mailadres of een portalmelding of u wilt een certificaat vernieuwen voor Office, Zie ontvangen [beheren van wijzigingen naar certificaten voor tokenondertekening](#managecerts) om te controleren als u geen actie te ondernemen. Microsoft is op de hoogte van een mogelijk probleem die tot meldingen voor certificaatvernieuwing wordt verzonden leiden kan, zelfs wanneer er is geen actie vereist.
+> Zie Wijzigingen beheren in certificaten voor [tokenondertekenen](#managecerts) als u een e-mail of een portalmelding hebt ontvangen waarin u wordt gevraagd uw certificaat voor Office te vernieuwen. Microsoft is op de hoogte van een mogelijk probleem dat kan leiden tot meldingen voor certificaatverlenging, zelfs als er geen actie vereist is.
 >
 >
 
-Azure AD wordt geprobeerd om te controleren van de federatiemetagegevens en bijwerken van het token-ondertekening van certificaten, zoals aangegeven door deze metagegevens. 30 dagen vóór de vervaldatum van token-ondertekening van certificaten, controleert Azure AD of er nieuwe certificaten beschikbaar zijn door de federatiemetagegevens polling.
+Azure AD probeert de federatiemetagegevens te controleren en de tokenondertekeningscertificaten bij te werken zoals aangegeven met deze metagegevens. 30 dagen voor het verstrijken van de tokenondertekeningscertificaten controleert Azure AD of er nieuwe certificaten beschikbaar zijn door de metagegevens van de federatie te peilen.
 
-* Als deze kan pollen van de federatiemetagegevens en de nieuwe certificaten ophalen, wordt zonder e-mailmelding of de waarschuwing in het Microsoft 365-beheercentrum verleend aan de gebruiker.
-* Als deze geen nieuwe token-ondertekening van certificaten ophalen, ofwel omdat de federatiemetagegevens is niet bereikbaar is of automatische certificaatrollover niet is ingeschakeld, omdat Azure AD geeft een e-mailbericht en een waarschuwing in het Microsoft 365-beheercentrum.
+* Als de federatie metagegevens met succes kan worden gepeild en de nieuwe certificaten kan ophalen, wordt er geen e-mailmelding of waarschuwing in het Microsoft 365-beheercentrum aan de gebruiker uitgegeven.
+* Als de nieuwe tokenondertekeningscertificaten niet kunnen worden opgehaald, omdat de metagegevens van de federatie niet bereikbaar zijn of automatische certificaatrollover niet is ingeschakeld, geeft Azure AD een e-mailmelding en een waarschuwing uit in het Microsoft 365-beheercentrum.
 
 ![Office 365-portalmelding](./media/how-to-connect-fed-o365-certs/notification.png)
 
 > [!IMPORTANT]
-> Als u AD FS wordt gebruikt voor bedrijfscontinuïteit te waarborgen, Controleer of dat uw servers beschikken over de volgende updates zodat verificatiefouten voor bekende problemen, niet wordt uitgevoerd. Dit vermindert het probleem van bekende problemen met AD FS proxy-server voor deze vernieuwen en van toekomstige vernieuwingsperioden:
+> Als u AD FS gebruikt om de bedrijfscontinuïteit te garanderen, controleert u of uw servers de volgende updates hebben, zodat verificatiefouten voor bekende problemen niet optreden. Dit vermindert bekende AD FS-proxyserverproblemen voor deze verlengings- en toekomstige verlengingsperioden:
 >
-> Server 2012 R2 - [WindowsServer mei 2014 samenvouwen](https://support.microsoft.com/kb/2955164)
+> Server 2012 R2 - [Rollup van Windows Server mei 2014](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 en 2012 - [verificatie via proxy is mislukt in Windows Server 2012 of Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
+> Server 2008 R2 en 2012 - [Verificatie via proxy mislukt in Windows Server 2012 of Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 
-## Controleer of de certificaten moeten worden bijgewerkt <a name="managecerts"></a>
-### <a name="step-1-check-the-autocertificaterollover-state"></a>Stap 1: Controleer de status van de AutoCertificateRollover
+## <a name="check-if-the-certificates-need-to-be-updated"></a>Controleren of de certificaten moeten worden bijgewerkt<a name="managecerts"></a>
+### <a name="step-1-check-the-autocertificaterollover-state"></a>Stap 1: De status AutoCertificateRollover controleren
 Open PowerShell op uw AD FS-server. Controleer of de waarde AutoCertificateRollover is ingesteld op True.
 
     Get-Adfsproperties
@@ -67,117 +67,117 @@ Open PowerShell op uw AD FS-server. Controleer of de waarde AutoCertificateRollo
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->Als u van AD FS 2.0 gebruikmaakt, moet u eerst Add-Pssnapin Microsoft.Adfs.Powershell uitvoeren.
+>Als u AD FS 2.0 gebruikt, voert u eerst Add-Pssnapin Microsoft.Adfs.Powershell uit.
 
-### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Stap 2: Bevestig dat de AD FS en Azure AD gesynchroniseerd zijn
-Open de MSOnline PowerShell-prompt op uw AD FS-server en verbinding maken met Azure AD.
+### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Stap 2: Bevestigen dat AD FS en Azure AD gesynchroniseerd zijn
+Open op uw AD FS-server de MSOnline PowerShell-prompt en maak verbinding met Azure AD.
 
 > [!NOTE]
-> MSOL-Cmdlets zijn onderdeel van de MSOnline PowerShell-module.
-> U kunt de MSOnline PowerShell-Module downloaden rechtstreeks vanuit de PowerShell Gallery.
+> MSOL-Cmdlets maken deel uit van de MSOnline PowerShell module.
+> U de MSOnline PowerShell Module rechtstreeks downloaden vanuit de PowerShell Gallery.
 > 
 >
 
     Install-Module MSOnline
 
-Verbinding maken met Azure AD met behulp van de MSOnline PowerShell-Module.
+Maak verbinding met Azure AD met de MSOnline PowerShell-module.
 
     Import-Module MSOnline
     Connect-MsolService
 
-Controleer de certificaten die zijn geconfigureerd in AD FS en Azure AD-eigenschappen voor het opgegeven domein vertrouwen.
+Controleer de certificaten die zijn geconfigureerd in AD FS- en Azure AD-vertrouwenseigenschappen voor het opgegeven domein.
 
     Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
-Als de vingerafdrukken in zowel de uitvoer overeenkomen, is uw certificaten zijn gesynchroniseerd met Azure AD.
+Als de duimafdrukken in beide uitvoerresultaten overeenkomen, worden uw certificaten gesynchroniseerd met Azure AD.
 
-### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Stap 3: Controleer of het certificaat verloopt binnenkort
-Schakel in de uitvoer van Get-MsolFederationProperty of Get-AdfsCertificate, voor de datum bij "Niet na." Als de datum minder dan 30 dagen opgeslagen is, moet u actie ondernemen.
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Stap 3: Controleren of uw certificaat bijna verloopt
+Controleer in de uitvoer van Get-MsolFederationProperty of Get-AdfsCertificate de datum onder 'Niet na'. Als de datum minder dan 30 dagen weg is, moet u actie ondernemen.
 
-| AutoCertificateRollover | Met Azure AD gesynchroniseerde certificaten | Federatiemetagegevens is openbaar toegankelijk | Geldigheidsduur | Bewerking |
+| AutoCertificateRollover | Certificaten die synchroon zijn met Azure AD | Federatiemetagegevens zijn openbaar toegankelijk | Geldigheid | Actie |
 |:---:|:---:|:---:|:---:|:---:|
-| Ja |Ja |Ja |- |Er is geen actie nodig. Zie [automatisch vernieuwen token-ondertekening certificaat](#autorenew). |
-| Ja |Nee |- |Minder dan 15 dagen |Onmiddellijk vernieuwen. Zie [handmatig vernieuwen token-ondertekening certificaat](#manualrenew). |
-| Nee |- |- |Minder dan 30 dagen |Onmiddellijk vernieuwen. Zie [handmatig vernieuwen token-ondertekening certificaat](#manualrenew). |
+| Ja |Ja |Ja |- |Geen actie nodig. Zie [certificaat voor tokenondertekening automatisch verlengen](#autorenew). |
+| Ja |Nee |- |Minder dan 15 dagen |Onmiddellijk verlengen. Zie [Certificaat voor tokenondertekening handmatig verlengen](#manualrenew). |
+| Nee |- |- |Minder dan 30 dagen |Onmiddellijk verlengen. Zie [Certificaat voor tokenondertekening handmatig verlengen](#manualrenew). |
 
 \[-] Maakt niet uit
 
-## Het token-ondertekening certificaat automatisch vernieuwen (aanbevolen) <a name="autorenew"></a>
-U moet geen eventuele handmatige stappen uitvoeren als beide van de volgende waar zijn:
+## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>Het certificaat voor het ondertekenen van certificaten automatisch verlengen (aanbevolen)<a name="autorenew"></a>
+U hoeft geen handmatige stappen uit te voeren als beide van de volgende stappen waar zijn:
 
-* Web Application Proxy, die toegang tot de federatiemetagegevens van het extranet kunt inschakelen als u hebt geïmplementeerd.
-* U gebruikt de standaardconfiguratie van de AD FS (AutoCertificateRollover is ingeschakeld).
+* U hebt Web Application Proxy geïmplementeerd, waarmee toegang tot de federatiemetagegevens van het extranet kan worden ingeschakeld.
+* U gebruikt de standaardconfiguratie van AD FS (AutoCertificateRollover is ingeschakeld).
 
-Controleer het volgende om te bevestigen dat het certificaat automatisch kan worden bijgewerkt.
+Controleer het volgende om te controleren of het certificaat automatisch kan worden bijgewerkt.
 
-**1. De AD FS-eigenschap AutoCertificateRollover moet worden ingesteld op True.** Hiermee wordt aangegeven dat AD FS genereert automatisch nieuwe token-ondertekening en certificaten voor token-decodering, voordat u de oude zijn verlopen.
+**1. De ad fs-eigenschap AutoCertificateRollover moet zijn ingesteld op True.** Dit geeft aan dat AD FS automatisch nieuwe certificaten voor tokenondertekening en tokendecryptie genereert, voordat de oude verlopen.
 
-**2. De AD FS-federatiemetagegevens is openbaar toegankelijk.** Controleer of de federatiemetagegevens openbaar toegankelijk is door te navigeren naar de volgende URL vanaf een computer op het openbare internet (buiten het bedrijfsnetwerk):
+**2. De metadata van de AD FS-federatie is openbaar toegankelijk.** Controleer of uw federatiemetagegevens openbaar toegankelijk zijn door vanaf een computer op het openbare internet naar de volgende URL te navigeren (buiten het bedrijfsnetwerk):
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-waar `(your_FS_name)` wordt vervangen door de hostnaam van de federation-service gebruikmaakt van uw organisatie, zoals fs.contoso.com.  Als u kunt om te controleren of beide van deze instellingen is, u niet hoeft te doen.  
+waar `(your_FS_name)` wordt vervangen door de hostnaam van de federatieservice die uw organisatie gebruikt, zoals fs.contoso.com.  Als u beide instellingen met succes verifiëren, hoeft u niets anders te doen.  
 
 Voorbeeld: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-## Het token-ondertekening certificaat handmatig vernieuwen <a name="manualrenew"></a>
-U kunt kiezen om het token handtekeningcertificaten handmatig te verlengen. Bijvoorbeeld, de volgende scenario's werken mogelijk beter voor handmatig verlengen:
+## <a name="renew-the-token-signing-certificate-manually"></a>Het certificaat voor tokenondertekening handmatig verlengen<a name="manualrenew"></a>
+U ervoor kiezen om de tokenondertekeningscertificaten handmatig te verlengen. De volgende scenario's werken bijvoorbeeld beter voor handmatige vernieuwing:
 
-* Token handtekeningcertificaten zijn geen zelfondertekende certificaten. De meest voorkomende reden hiervoor is dat AD FS-certificaten die zijn geregistreerd bij een organisatie-certificeringsinstantie wordt beheerd door uw organisatie.
-* Beveiliging van het netwerk is niet toegestaan voor de federatiemetagegevens moet openbaar beschikbaar.
+* Tokenondertekeningscertificaten zijn geen zelfondertekende certificaten. De meest voorkomende reden hiervoor is dat uw organisatie AD FS-certificaten beheert die zijn ingeschreven bij een certificeringsinstantie voor een organisatiecertificaat.
+* Netwerkbeveiliging staat niet toe dat de federatiemetagegevens openbaar beschikbaar zijn.
 
-In deze scenario's telkens wanneer u het token bijwerkt-ondertekening van certificaten, moet u ook bijwerken uw Office 365-domein met behulp van de PowerShell-opdracht, Update-MsolFederatedDomain.
+In deze scenario's moet u elke keer dat u de tokenondertekeningscertificaten bijwerkt, ook uw Office 365-domein bijwerken met behulp van de powershell-opdracht Update-MsolFederatedDomain.
 
-### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Stap 1: Zorg ervoor dat AD FS heeft nieuwe token handtekeningcertificaten
-**Niet-standaard-configuratie**
+### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Stap 1: Ervoor zorgen dat AD FS nieuwe tokenondertekeningscertificaten heeft
+**Niet-standaardconfiguratie**
 
-Als u een niet-standaard-configuratie van AD FS (waarbij **AutoCertificateRollover** is ingesteld op **False**), gebruikt u waarschijnlijk aangepaste certificaten (niet zelf ondertekend). Zie voor meer informatie over het vernieuwen van de AD FS-token handtekeningcertificaten [richtlijnen voor klanten die AD FS niet gebruikt zelfondertekende certificaten](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Als u een niet-standaardconfiguratie van AD FS gebruikt (waarbij **AutoCertificateRollover** is ingesteld op **False),** gebruikt u waarschijnlijk aangepaste certificaten (niet zelf ondertekend). Zie Richtlijnen voor klanten die zelfondertekende certificaten van AD FS niet gebruiken voor meer informatie over het verlengen van de ad [FS-tokenondertekeningscertificaten.](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)
 
-**Federatiemetagegevens is niet openbaar beschikbaar**
+**Federatiemetagegevens zijn niet openbaar beschikbaar**
 
-Aan de andere kant als **AutoCertificateRollover** is ingesteld op **waar**, maar uw federatiemetagegevens is niet openbaar toegankelijk is, eerst voor zorgen dat nieuwe certificaten voor tokenondertekening zijn gegenereerd door de AD FS. Controleer of er nieuwe token-ondertekening van certificaten door de volgende stappen uit:
+Als **AutoCertificateRollover daarentegen** is ingesteld op **True,** maar uw federatiemetagegevens niet openbaar toegankelijk zijn, moet u er eerst voor zorgen dat er nieuwe tokenondertekeningscertificaten zijn gegenereerd door AD FS. Bevestig dat u nieuwe tokenondertekeningscertificaten hebt door de volgende stappen te nemen:
 
-1. Controleer of u bent aangemeld met de primaire AD FS-server.
-2. Controleer de huidige handtekeningcertificaten in AD FS door een PowerShell-opdrachtvenster openen en het uitvoeren van de volgende opdracht uit:
+1. Controleer of u bent aangemeld bij de primaire AD FS-server.
+2. Controleer de huidige ondertekeningscertificaten in AD FS door een PowerShell-opdrachtvenster te openen en de volgende opdracht uit te voeren:
 
-    PS C:\>Get-ADFSCertificate – CertificateType token-ondertekening
+    PS C:\>Get-ADFSCertificate –CertificateType-tokenondertekenen
 
    > [!NOTE]
-   > Als u van AD FS 2.0 gebruikmaakt, moet u eerst Add-Pssnapin Microsoft.Adfs.Powershell uitvoeren.
+   > Als u AD FS 2.0 gebruikt, moet u eerst Add-Pssnapin Microsoft.Adfs.Powershell uitvoeren.
    >
    >
-3. Bekijk de uitvoer van de opdracht op alle certificaten die worden vermeld. Als u AD FS is een nieuw certificaat gegenereerd, ziet u twee certificaten in de uitvoer: een waarvoor de **IsPrimary** waarde is **waar** en de **NotAfter** datum valt binnen vijf dagen , en één waarvoor **IsPrimary** is **False** en **NotAfter** is over een jaar in de toekomst.
-4. Als er slechts één certificaat en de **NotAfter** datum valt binnen vijf dagen, moet u een nieuw certificaat genereren.
-5. Als u wilt een nieuw certificaat genereren, dan de volgende opdracht achter de PowerShell-opdrachtprompt: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Controleer of de update door de volgende opdracht nogmaals uit te voeren: PS C:\>Get-ADFSCertificate – CertificateType token-ondertekening
+3. Bekijk de opdrachtuitvoer bij alle vermelde certificaten. Als AD FS een nieuw certificaat heeft gegenereerd, ziet u twee certificaten in de uitvoer: een waarvoor de **IsPrimary-waarde** **True** is en de **NotAfter-datum** binnen 5 dagen is en een certificaat waarvoor **IsPrimary** **Onwaar** is en **NotAfter** ongeveer een jaar in de toekomst.
+4. Als u slechts één certificaat ziet en de **NotAfter-datum** binnen 5 dagen is, moet u een nieuw certificaat genereren.
+5. Als u een nieuw certificaat wilt genereren, voert `PS C:\>Update-ADFSCertificate –CertificateType token-signing`u de volgende opdracht uit bij een PowerShell-opdrachtprompt: .
+6. Controleer de update door opnieuw de volgende\>opdracht uit te voeren: PS C: Get-ADFSCertificate –CertificateType-tokenondertekenen
 
-Twee certificaten moeten nu worden weergegeven, die een **NotAfter** datum van ongeveer één jaar in de toekomst, en waarvoor de **IsPrimary** waarde **False**.
+Er moeten nu twee certificaten worden vermeld, waarvan er één een **NotAfter-datum** heeft van ongeveer een jaar in de toekomst en waarvoor de **IsPrimary-waarde** **onwaar**is.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Stap 2: Het nieuwe token-ondertekening van certificaten voor de Office 365-vertrouwensrelatie bijwerken
-Office 365 met het nieuwe token-ondertekening van certificaten moet worden gebruikt voor de vertrouwensrelatie als volgt bijwerken.
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Stap 2: De nieuwe tokenondertekeningscertificaten bijwerken voor de Office 365-vertrouwensrelatie
+Werk Office 365 als volgt bij met de nieuwe tokenondertekeningscertificaten die voor de vertrouwensrelatie moeten worden gebruikt.
 
-1. Open de Microsoft Azure Active Directory-Module voor Windows PowerShell.
-2. Run $cred=Get-Credential. Wanneer deze cmdlet u om referenties vraagt, typt u uw referenties met administrator-account voor cloud-service.
-3. Connect-MsolService uitvoeren: $cred van referenties. Deze cmdlet maakt u verbinding met de cloudservice. Het maken van een context die u maakt verbinding met de cloudservice is vereist voordat u een van de aanvullende cmdlets geïnstalleerd door het hulpprogramma uitvoert.
-4. Als u deze opdrachten op een computer die niet de primaire AD FS-federatieserver uitvoert, voert u Set-MSOLAdfscontext-Computer &lt;primaire AD FS-server&gt;, waarbij &lt;primaire AD FS-server&gt; is de interne FQDN-naam de naam van de primaire AD FS-server. Met deze cmdlet maakt een context die u met AD FS verbindt.
-5. Voer Update-MSOLFederatedDomain – DomainName &lt;domein&gt;. Deze cmdlet worden de instellingen van AD FS in de cloudservice-updates en configureert u de vertrouwensrelatie tussen de twee.
+1. Open de Microsoft Azure Active Directory Module voor Windows PowerShell.
+2. Voer $cred=Get-Credential uit. Wanneer deze cmdlet u om referenties vraagt, typt u uw accountreferenties voor cloudservicebeheerders.
+3. Voer Connect-MsolService –Credential $cred uit. Deze cmdlet verbindt u met de cloudservice. Het maken van een context die u verbindt met de cloudservice is vereist voordat een van de extra cmdlets die door het hulpprogramma zijn geïnstalleerd, wordt uitgevoerd.
+4. Als u deze opdrachten uitvoert op een computer die niet de primaire federatieserver van AD &lt;FS is,&gt;voert &lt;u de&gt; primaire server Set-MSOLAdfscontext -Computer AD FS uit, waarbij de primaire AD FS-server de interne FQDN-naam van de primaire AD FS-server is. Deze cmdlet creëert een context die u verbindt met AD FS.
+5. Uitvoeren Update-MSOLFederatedDomain –DomainName-domein &lt;&gt;. Deze cmdlet werkt de instellingen van AD FS bij in de cloudservice en configureert de vertrouwensrelatie tussen de twee.
 
 > [!NOTE]
-> Als u nodig hebt ter ondersteuning van meerdere domeinen op het hoogste niveau, zoals contoso.com en fabrikam.com, moet u de **SupportMultipleDomain** overschakelen met cmdlets. Zie voor meer informatie, [ondersteuning voor meerdere domeinen van het hoogste niveau](how-to-connect-install-multiple-domains.md).
+> Als u meerdere domeinen op het hoogste niveau moet ondersteunen, zoals contoso.com en fabrikam.com, moet u de **supportmultipledomain-schakelaar** gebruiken met alle cmdlets. Zie [Ondersteuning voor meerdere topleveldomeinen voor](how-to-connect-install-multiple-domains.md)meer informatie .
 >
 
 
-## Azure AD-vertrouwensrelatie herstellen met behulp van Azure AD Connect <a name="connectrenew"></a>
-Als u uw AD FS-farm en Azure AD-vertrouwensrelatie met behulp van Azure AD Connect hebt geconfigureerd, kunt u Azure AD Connect kunt gebruiken om te detecteren als u geen actie voor uw token handtekeningcertificaten te ondernemen. Als u de certificaten vernieuwen wilt, kunt u Azure AD Connect kunt gebruiken om dit te doen.
+## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Azure AD-vertrouwensrelatie herstellen met Azure AD Connect<a name="connectrenew"></a>
+Als u uw AD FS-farm en Azure AD-vertrouwensrelatie hebt geconfigureerd met Azure AD Connect, u Azure AD Connect gebruiken om te detecteren of u actie moet ondernemen voor uw tokenondertekeningscertificaten. Als u de certificaten moet vernieuwen, u Azure AD Connect gebruiken om dit te doen.
 
-Zie voor meer informatie, [herstellen van de vertrouwensrelatie](how-to-connect-fed-management.md).
+Zie [Het vertrouwen herstellen voor](how-to-connect-fed-management.md)meer informatie.
 
-## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>AD FS en Azure AD-certificaten updatestappen
-Token handtekeningcertificaten worden standaard X509 certificaten die worden gebruikt voor het ondertekenen van veilig alle tokens die de federatieserver heeft uitgegeven. Certificaten voor token-decodering zijn standaard X509 certificaten die worden gebruikt voor het ontsleutelen van eventuele binnenkomend tokens. 
+## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>Updatestappen AD FS en Azure AD-certificaatupdate
+Tokenondertekeningscertificaten zijn standaard X509-certificaten die worden gebruikt om alle tokens die de federatieserver uitgeeft, veilig te ondertekenen. Tokendecryptiecertificaten zijn standaard X509-certificaten die worden gebruikt om binnenkomende tokens te decoderen. 
 
-AD FS is standaard geconfigureerd automatisch genereren van certificaten voor token-decodering en token-ondertekening, zowel op het moment van de eerste configuratie en wanneer de certificaten de vervaldatum nadert.
+Ad FS is standaard geconfigureerd om certificaten voor tokenondertekening en tokendecryptie automatisch te genereren, zowel op het beginmoment als wanneer de certificaten hun vervaldatum naderen.
 
-Azure AD probeert op te halen van een nieuw certificaat uit de metagegevens van uw federation service 30 dagen vóór de vervaldatum van het huidige certificaat. Een nieuw certificaat op dat moment niet beschikbaar is, blijft Azure AD voor het bewaken van de metagegevens van de dagelijkse regelmatig. Zodra het nieuwe certificaat in de metagegevens beschikbaar is, wordt de federatie-instellingen voor het domein worden bijgewerkt met de gegevens van het nieuwe certificaat. U kunt `Get-MsolDomainFederationSettings` om te controleren als u het nieuwe certificaat in de NextSigningCertificate ziet / SigningCertificate.
+Azure AD probeert 30 dagen voor het verstrijken van het huidige certificaat een nieuw certificaat uit de metagegevens van uw federatieservice op te halen. Als er op dat moment geen nieuw certificaat beschikbaar is, blijft Azure AD de metagegevens regelmatig dagelijks controleren. Zodra het nieuwe certificaat beschikbaar is in de metagegevens, worden de federatie-instellingen voor het domein bijgewerkt met de nieuwe certificaatgegevens. U kunt `Get-MsolDomainFederationSettings` controleren of u het nieuwe certificaat ziet in het NextSigningCertificate / SigningCertificate.
 
-Zie voor meer informatie over het Token-ondertekening certificaten in AD FS [verkrijgen en configureren van Token-ondertekening en Token Ontsleutelingscertificaten voor AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+Zie Certificaten voor [tokenondertekening en tokendecryptie voor AD FS verkrijgen en configureren voor](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs) meer informatie over tokenondertekeningscertificaten in AD FS
